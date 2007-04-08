@@ -1,0 +1,14 @@
+  [xmlplayerlist.cpp:29]	II Creation xmlPlayerList
+  [xmlplayerlist.cpp:40]	II xmlPlayerList refresh function called
+  [globaluri.cpp:36]	WW Using the local website (127.0.0.1)
+  [curlgetfile.cpp:64]	II Performing CurlGetFile writeToFile action, filename :
+  [curlgetfile.cpp:74]	II ==> Setting the licurl URL
+  [curlinterface.cpp:116]	II Setting the default WriteFunction
+  [curldefaultwritefunction.h:30]	II Using the default writedata Function.
+  [curlgetfile.cpp:94]	II Getting the last HTTP server status code
+  [curlgetfile.cpp:101]	II The CurlGetInfo was successfull
+  [curlgetfile.cpp:109]	WW HTTP server returns an error status code :
+  [httpresponse.cpp:31]	II Creating the HttpResponse stl map
+  [curlgetfile.cpp:111]	WW 404 Not found : The server has not found anything matching the URI given
+  [curlfiletoxml.cpp:109]	WW The writeToFile operation failed
+  [xmlplayerlist.cpp:57]	WW An error occured while getting xmlPlayerList

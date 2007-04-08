@@ -1,0 +1,6 @@
+base referer
+rect $classRainbruRPG_1_1Exception_1_1BoolAttribute.html 41,84 316,108
+rect $classRainbruRPG_1_1Exception_1_1IntAttribute.html 352,84 616,108
+rect $classRainbruRPG_1_1Exception_1_1ShowStatsAttribute.html 8,158 325,182
+rect $classRainbruRPG_1_1Exception_1_1FpsAttribute.html 349,158 618,182
+rect $classRainbruRPG_1_1Exception_1_1GuiTransAttribute.html 642,158 946,182

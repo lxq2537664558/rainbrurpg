@@ -1,0 +1,5 @@
+base referer
+rect $classTiXmlDocument.html 11,209 129,233
+rect $classTiXmlNode.html 67,109 155,133
+rect $classTiXmlElement.html 153,209 257,233
+rect $classTiXmlBase.html 69,9 154,33

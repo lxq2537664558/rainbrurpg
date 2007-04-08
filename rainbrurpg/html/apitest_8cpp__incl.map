@@ -1,0 +1,11 @@
+base referer
+rect $terminalapp_8h.html 232,259 349,283
+rect $hook_8h.html 412,306 479,330
+rect $menubar_8h.html 399,207 492,231
+rect $menu_8h.html 543,107 615,131
+rect $window_8h.html 403,354 488,378
+rect $label_8h.html 257,456 324,480
+rect $lineedit_8h.html 248,504 333,528
+rect $listbox_8h.html 251,554 331,578
+rect $pushbutton_8h.html 235,655 347,679
+rect $infodialog_8h.html 240,408 341,432

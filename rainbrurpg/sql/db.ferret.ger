@@ -1,0 +1,128 @@
+RainbruRPG_Server
+/home/mouse/programmation/rpg/sql/db.ferret.ger
+Jérôme PASQUIER
+7
+7
+0 0 -276 768
+6
+Config
+10
+16
+3
+idConfig INT
+ConfigName CHAR(30)
+ConfigValue VARCHAR
+1
+idConfig
+0
+Position
+832
+15
+4
+PositionId INT
+PositionX DOUBLE
+PositionY DOUBLE
+PositionZ DOUBLE
+1
+PositionId
+1
+Set_position
+Orientation
+781
+138
+5
+OrientationId INT
+OrientationW DOUBLE
+OrientationX DOUBLE
+OrientationY DOUBLE
+OrientationZ DOUBLE
+1
+OrientationId
+1
+Orient
+ObjectType
+27
+122
+2
+ObjectTypeId INT
+ObjectTypeName CHAR(20)
+1
+ObjectTypeId
+1
+Is_typed
+Object
+194
+129
+3
+ObjectId INT
+ObjectTypeId INT
+ObjectName VARCHAR
+1
+ObjectId
+2
+Is_typed
+Instancied
+ObjectInstance
+450
+25
+5
+ObjectInstanceId INT
+ObjectInstanceName VARCHAR
+ObjectId INT
+PositionId INT
+OrientationId INT
+1
+ObjectInstanceId
+3
+Instancied
+Set_position
+Orient
+4
+Is_typed
+0
+9
+206
+0
+2
+ObjectType
+1
+1
+Object
+1
+1
+Instancied
+0
+397
+149
+0
+2
+Object
+1
+1
+ObjectInstance
+1
+1
+Set_position
+0
+640
+29
+0
+2
+ObjectInstance
+1
+1
+Position
+0
+N
+Orient
+0
+590
+155
+0
+2
+ObjectInstance
+1
+1
+Orientation
+1
+1

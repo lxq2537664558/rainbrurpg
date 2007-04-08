@@ -1,0 +1,6 @@
+base referer
+rect $curlinterface_8h.html 265,243 385,267
+rect $curlposteddata_8h.html 257,553 393,577
+rect $hashpassword_8h.html 444,56 575,80
+rect $logger_8h.html 624,404 701,428
+rect $xmlplayerlist_8h.html 448,651 571,675

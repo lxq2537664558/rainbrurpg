@@ -1,0 +1,21 @@
+tinystr.lo .libs/tinystr.o: tinystr.cpp tinystr.h /usr/include/assert.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/gnu/stubs.h /usr/include/string.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
+  /usr/include/xlocale.h
+
+tinystr.h:
+
+/usr/include/assert.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/string.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
+
+/usr/include/xlocale.h:

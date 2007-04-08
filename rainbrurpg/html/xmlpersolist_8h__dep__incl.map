@@ -1,0 +1,6 @@
+base referer
+rect $curlpersoheaderadd_8h.html 235,6 469,30
+rect $curlpersomodifattrb_8h.html 236,54 468,78
+rect $xmlpersolist_8cpp.html 253,102 451,126
+rect $curlpersoheaderadd_8cpp.html 517,6 768,30
+rect $curlpersomodifattrb_8cpp.html 519,54 767,78

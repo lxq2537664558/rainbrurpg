@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<BonusFile>
+  <Choice>
+    <Name>Barbarian</Name>
+    <Desc>A barbarian as left is life in arenas...</Desc>
+    <AttributesModifiers>
+      
+      <Modifier>
+	<Attrb>Constitution</Attrb>
+	<Mod>+2</Mod>
+       </Modifier>
+     <Modifier>
+	<Attrb>Intelligence</Attrb>
+	<Mod>-2</Mod>
+      </Modifier>
+    <Modifier><Attrb>Strengh</Attrb><Mod>+2</Mod></Modifier></AttributesModifiers>
+  </Choice>
+  <Choice>
+    <Name>Merchant</Name>
+    <Desc>A merchant has sell merchandise in all world roads...</Desc>
+    <AttributesModifiers>
+      <Modifier>
+	<Attrb>Endurance</Attrb>
+	<Mod>+20</Mod>
+      </Modifier>
+      <Modifier>
+	<Attrb>Constitution</Attrb>
+	<Mod>-2</Mod>
+      </Modifier>
+      <Modifier>
+	<Attrb>Intelligence</Attrb>
+	<Mod>+2</Mod>
+      </Modifier>
+      <Modifier>
+	<Attrb>Merchandising</Attrb>
+	<Mod>+4</Mod>
+      </Modifier>
+    </AttributesModifiers>
+  </Choice>
+</BonusFile>
+

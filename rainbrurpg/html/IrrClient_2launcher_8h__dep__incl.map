@@ -1,0 +1,4 @@
+base referer
+rect $oldLauncher_8cpp.html 207,6 468,30
+rect $IrrClient_2launcher_8cpp.html 255,54 420,78
+rect $IrrClient_2main_8cpp.html 267,102 408,126

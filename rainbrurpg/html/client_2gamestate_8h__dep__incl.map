@@ -1,0 +1,6 @@
+base referer
+rect $client_2gameengine_8h.html 205,56 365,80
+rect $client_2gameengine_8cpp.html 623,56 799,80
+rect $client_2gamestate_8cpp.html 203,203 368,227
+rect $client_2guimanager_8h.html 416,56 573,80
+rect $client_2main_8cpp.html 432,104 557,128

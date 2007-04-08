@@ -1,0 +1,108 @@
+* v 0.0.0-25
+- The UP and DOWN keys can call older commands 
+- The 'Command not found' console message is indented
+- The command index is shown in a static text
+- A debugging command STL vector
+- The 'list' command shows the older command list
+- The PAGEUP and PAGEDOWN keys make the console scoll up and scroll down
+- A initScrollBar() function initialize the Jox's code
+
+* v 0.0.0-24
+- The clear command can clears the console
+- Implementation of the help command
+- The debugging command must always show the last inserted line
+- The debugging command indentation
+
+* v 0.0.0-23
+- Debugging console : the pompt is an Irrlicht static text
+- The debugging command are added to the debugging console when Enter
+  is pressed
+
+* v 0.0.0-22
+- Show the primCount with getPrimitiveCountDrawn() in irrDriver
+- The debugging console is a singleton
+- The debugging console set the game to don't change gamestate
+- The debugging console is shown/hidden with the F1 key
+- The Enter key logs
+
+* v 0.0.0-21
+- GuiManager::NumDebugWindow prints Min/Cur/Max FPS
+- In the launcher, the graphic driver can now be selected with a
+  mouse double click
+- A singleton GuiManager : it will manage GUI centered windows and
+  some common elements (debugging console, NumDebugWindow...)
+
+* v 0.0.0-20
+- Billboard first test
+- The billboard, triangle and model selectors can now set enabled/disabled
+
+* v 0.0.0-19
+- Fix Bugs #3 and #5
+- Some valgrind errors fixed
+
+* v 0.0.0-18
+- Reimplementation of GameEngine::run()
+
+* v 0.0.0-17
+- GameEngine manages several EventsReceiver in a STL Vector
+
+* v 0.0.0-16
+- A run function gsgame called from main.cpp (no more triangle selector,
+  event receiver or faeris selector)
+
+* v 0.0.0-15
+- Quit the game when we click on the GameEsc::quit button
+- gsGameEsc is an in-game menu whith the its own event receiver (erGameEsc)
+  We can also go back to the game
+- All the GUI is printed in an Irrlicht Tab and we sho/hide it
+  with setVisible(boolean)
+
+* v 0.0.0-14
+- An IEventReceiver for gsGameEsc : install it when we switchbetween gamestates
+- A failed attempt to make screenshot with DevIL
+
+* v 0.0.0-13
+- Using Irrlicht build-in GUI instead of CEGUI
+- An IEventReceiver for gsGame called erGame which log the ESC key events
+
+* v 0.0.0-12
+- gsGame is called when we clik on 'Play' to test Irrlicht and CEGUI
+- Launcher must inherits FL_Window
+- CEGUI initialization is in GameEngine::init();
+- The Logger can write in stdout or in a file or in both
+  The enumeration LogOutType { STDOUT, FILE, BOTH );
+
+* v 0.0.0-11
+- bug #1 : The option editor dialog must be closable
+- bug #2 : GameEngine::init is called even if we Exit the game from the 
+  launcher
+- GameEngine::initStates() attempts to loads the gamestates in a given order
+- gsGame works
+
+* v 0.0.0-10
+- GameEngine manages Irrlicht
+- A triangle detector outlining the actual triangle we face off (can be 
+  desabled)
+
+* v 0.0.0-9
+- GameEngine can be called from the main() function after the Launcher which
+  make easier to know the last used video driver
+- GameEngine know which video drivier was selected in the Launcher
+
+* v 0.0.0-8
+- CEGUI and Irrlicht are initialized according to the RenderEngine chosen in
+  the Launcher
+- The GamerEngine::setDriverType(irr::video::E_DRIVER_TYPE) method get the
+  value from  Launcher::cbPlay;
+- starting creation of gsGame (the Game gamestate)
+
+* v 0.0.0-7
+- The 'Exit' button of the Launcher
+- We can use the option editor from the launcher
+- Doxygen Documentation
+
+* v 0.0.0-4
+- A Singleton template
+- A basic Logger class
+- A Gamestate class
+- Using fltk for the client Launcher : The options are not saved and loaded

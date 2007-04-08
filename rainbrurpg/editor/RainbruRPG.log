@@ -1,0 +1,24 @@
+  [main.cpp:35]	II Starting RainbruRPG editor
+  [mainwindow.cpp:38]	II Creating MainWindow
+  [ogreview.cpp:43]	II Creating OgreView
+  [ogreview.cpp:122]	II Setting OgreView ressources
+  [ogreview.cpp:146]	II Initialise Ogre Root
+  [ogreview.cpp:148]	II OgreView ressources loadded
+  [ogreview.cpp:87]	II OgreView created
+  [objectstab.cpp:38]	II Creating ObjectsTab
+  [xmlobjectlist.cpp:29]	II Loading object list
+  [xmlobjectlist.cpp:41]	II Object list correctly loaded
+  [objectstab.cpp:55]	II ObjectsTab created
+  [mainwindow.cpp:98]	II MainWindow created
+  [main.cpp:47]	II Mainwin::show() ended
+  [environmentsetup.cpp:35]	II Starting environment setup
+  [environmentsetup.cpp:41]	II Creating SceneManeger
+  [environmentsetup.cpp:43]	II Creating camera
+  [environmentsetup.cpp:45]	II Creating viewport
+  [environmentsetup.cpp:47]	II Creating light
+  [environmentsetup.cpp:49]	II Initialising Ogre resources
+  [environmentsetup.cpp:52]	II Starting adding objects
+  [xmlobjectlist.cpp:29]	II Loading object list
+  [xmlobjectlist.cpp:41]	II Object list correctly loaded
+  [environmentsetup.cpp:54]	II Environment correctly setup
+  [main.cpp:53]	II Entering Qt main loop

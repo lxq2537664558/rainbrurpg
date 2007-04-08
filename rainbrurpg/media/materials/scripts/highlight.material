@@ -1,0 +1,15 @@
+
+material Outline
+{
+	technique
+	{
+		pass
+		{
+
+			texture_unit
+			{
+				texture outline.png
+			}
+		}
+	}
+}

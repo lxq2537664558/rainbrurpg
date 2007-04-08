@@ -1,0 +1,48 @@
+<Options>
+    <LastUsed>High quality</LastUsed>
+    <Snapshot name="High quality">
+        <Panel name="Graphics">
+            <Button name="Renderer">
+                <Attribute name="IntAttribute">23</Attribute>
+                <Attribute name="StringAttrb">HightQuality text</Attribute>
+                <Attribute name="Fullscreen">true</Attribute>
+                <Attribute name="Resolution">1600 X 1200</Attribute>
+                <Attribute name="Shadows">Texture modulative</Attribute>
+            </Button>
+        </Panel>
+    </Snapshot>
+    <Snapshot name="Low quality">
+        <Panel name="Graphics">
+            <Button name="Renderer">
+                <Attribute name="IntAttribute">6</Attribute>
+                <Attribute name="StringAttrb">Lowquality text</Attribute>
+                <Attribute name="Fullscreen">false</Attribute>
+                <Attribute name="Resolution">640x480</Attribute>
+                <Attribute name="Shadows">none</Attribute>
+            </Button>
+        </Panel>
+    </Snapshot>
+    <Snapshot name="copylow">
+        <Panel name="Graphics">
+            <Button name="Renderer">
+                <Attribute name="IntAttribute">6</Attribute>
+                <Attribute name="StringAttrb">Lowquality text2</Attribute>
+                <Attribute name="Fullscreen">false</Attribute>
+                <Attribute name="Resolution">1280 X 1024</Attribute>
+                <Attribute name="Shadows">Stencil modulative</Attribute>
+            </Button>
+        </Panel>
+        <Panel name="Sounds" />
+    </Snapshot>
+    <Snapshot name="copyhigh">
+        <Panel name="Graphics">
+            <Button name="Renderer">
+                <Attribute name="IntAttribute">23</Attribute>
+                <Attribute name="StringAttrb">HightQuality text</Attribute>
+                <Attribute name="Fullscreen">true</Attribute>
+                <Attribute name="Resolution">1600 X 1200</Attribute>
+                <Attribute name="Shadows">Texture modulative</Attribute>
+            </Button>
+        </Panel>
+    </Snapshot>
+</Options>

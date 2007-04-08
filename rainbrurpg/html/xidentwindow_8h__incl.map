@@ -1,0 +1,5 @@
+base referer
+rect $logger_8h.html 476,499 554,523
+rect $playerlist_8h.html 278,259 374,283
+rect $serverlist_8h.html 278,307 374,331
+rect $tidentreturn_8h.html 268,656 383,680

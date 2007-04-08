@@ -1,0 +1,4 @@
+base referer
+rect $freelayout_8h.html 256,32 360,56
+rect $layout_8h.html 408,56 486,80
+rect $widget_8h.html 534,56 614,80

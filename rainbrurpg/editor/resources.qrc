@@ -1,0 +1,13 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/light.png</file>
+    <file>images/modify.png</file>
+    <file>images/object.png</file>
+    <file>images/ogre.png</file>
+    <file>images/remove.png</file>
+    <file>images/splash.png</file>
+    <file>images/world.png</file>
+    <file>images/3d.png</file>
+    <file>images/script.png</file>
+</qresource>
+</RCC>

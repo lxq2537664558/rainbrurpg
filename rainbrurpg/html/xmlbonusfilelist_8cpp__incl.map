@@ -1,0 +1,10 @@
+base referer
+rect $xmlbonusfilelist_8h.html 275,281 416,305
+rect $loadbmp_8h.html 651,253 744,277
+rect $common_2tplayerlist_8h.html 647,501 748,525
+rect $common_2tnotelist_8h.html 485,56 576,80
+rect $xmltimestamp_8h.html 465,305 596,329
+rect $tidentreturn_8h.html 473,404 588,428
+rect $logger_8h.html 659,205 736,229
+rect $curlfiletoxml_8h.html 472,452 589,476
+rect $globaluri_8h.html 484,156 577,180

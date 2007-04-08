@@ -1,0 +1,8 @@
+base referer
+rect $window_8h.html 295,105 460,129
+rect $scrollingpanel_8cpp.html 264,153 491,177
+rect $server_8cpp.html 831,32 922,56
+rect $apitest_8cpp.html 787,80 966,104
+rect $terminalapp_8h.html 540,56 738,80
+rect $testwindow_8h.html 543,155 735,179
+rect $window_8cpp.html 548,203 730,227

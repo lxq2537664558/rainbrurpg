@@ -1,0 +1,6 @@
+base referer
+rect $xidentwindow_8h.html 283,332 411,356
+rect $logger_8h.html 668,499 746,523
+rect $playerlist_8h.html 470,259 566,283
+rect $serverlist_8h.html 470,307 566,331
+rect $tidentreturn_8h.html 460,656 575,680

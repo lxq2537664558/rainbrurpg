@@ -1,0 +1,4 @@
+base referer
+rect $classRainbruRPG_1_1Core_1_1gsGameBase.html 128,97 368,121
+rect $classRainbruRPG_1_1Core_1_1GameState.html 5,7 232,31
+rect $classRainbruRPG_1_1Core_1_1InputWrapper.html 256,7 499,31

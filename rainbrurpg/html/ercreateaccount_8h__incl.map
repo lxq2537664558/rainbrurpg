@@ -1,0 +1,16 @@
+base referer
+rect $IrrClient_2gameengine_8h.html 256,476 376,500
+rect $logger_8h.html 664,408 742,432
+rect $singleton_8h.html 820,235 916,259
+rect $stringconv_8h.html 651,259 755,283
+rect $clientconnect_8h.html 443,695 568,719
+rect $IrrClient_2guimanager_8h.html 448,209 563,233
+rect $xmloptions_8h.html 451,743 560,767
+rect $IrrClient_2gamestate_8h.html 452,356 559,380
+rect $ergame_8h.html 463,548 548,572
+rect $ergameesc_8h.html 451,500 560,524
+rect $erconsole_8h.html 456,839 555,863
+rect $erconnection_8h.html 444,404 567,428
+rect $erchangepassword_8h.html 424,452 587,476
+rect $erselectperso_8h.html 443,791 568,815
+rect $ercreateperso_8h.html 442,308 570,332

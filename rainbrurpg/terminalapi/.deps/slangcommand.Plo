@@ -1,0 +1,3 @@
+slangcommand.lo .libs/slangcommand.o: slangcommand.cpp slangcommand.h
+
+slangcommand.h:

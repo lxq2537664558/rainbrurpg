@@ -1,0 +1,7 @@
+base referer
+rect $stringconv_8h.html 444,209 548,233
+rect $xmlattrbcatlist_8h.html 429,407 563,431
+rect $xmlattributelist_8h.html 427,359 565,383
+rect $IrrClient_2gamestate_8h.html 257,700 364,724
+rect $irrfontmanager_8h.html 243,119 379,143
+rect $ercreateperso_8h.html 247,305 375,329

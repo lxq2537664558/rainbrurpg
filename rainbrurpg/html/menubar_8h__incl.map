@@ -1,0 +1,5 @@
+base referer
+rect $logger_8h.html 504,108 581,132
+rect $menu_8h.html 231,109 303,133
+rect $singleton_8h.html 631,12 727,36
+rect $menuitem_8h.html 352,107 456,131

@@ -1,0 +1,7 @@
+base referer
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlSubmitForm.html 329,279 657,303
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlInterface.html 5,188 312,212
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlGetFile.html 12,279 305,303
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlPostedData.html 336,188 659,212
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1xmlServerList.html 135,434 447,458
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlFileToXml.html 109,356 419,380

@@ -1,0 +1,8 @@
+base referer
+rect $dialog_8h.html 231,83 305,107
+rect $caption_8h.html 524,59 609,83
+rect $pushbutton_8h.html 355,183 467,207
+rect $logger_8h.html 667,256 744,280
+rect $widget_8h.html 527,208 607,232
+rect $menuitem_8h.html 515,256 619,280
+rect $singleton_8h.html 793,280 889,304

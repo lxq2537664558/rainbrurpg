@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<GUILayout>
+  <Window Type="Vanilla/StaticImage" Name="RainbruRPG/ConnectionRoot">
+    <Property Name="AlwaysOnTop" Value="True" />
+    <Property Name="RelativeMinSize" Value="w:0.2 h:0.2" />
+    <Property Name="RelativeMaxSize" Value="w:0.8 h:0.8" />
+    <Property Name="Position" Value="x:0.5 y:0.2" />
+    <Property Name="Size" Value="w:0.5 h:0.8" />
+    <Property Name="Text" Value="Main menu" />
+    <Property Name="FrameEnabled" Value="False"/>
+    <Property Name="BackgroundEnabled" Value="False"/>
+
+    <Window Type="TaharezLook/FrameWindow" Name="RainbruRPG/Connection">
+      <Property Name="AlwaysOnTop" Value="True" />
+      <Property Name="RelativeMinSize" Value="w:0.2 h:0.2" />
+      <Property Name="RelativeMaxSize" Value="w:0.8 h:0.8" />
+      <Property Name="Position" Value="x:0.1 y:0.1" />
+      <Property Name="Size" Value="w:0.8 h:0.55" />
+      <Property Name="Text" Value="User connection" /> 
+      <Property Name="CloseButtonEnabled" Value="False" />
+
+      <Window Type="TaharezLook/StaticText"
+              Name="RainbruRPG/Connection/StaticName">
+         <Property Name="Position" Value="x:0.05 y:0.2" />
+         <Property Name="RelativeMaxSize" Value="w:3.0 h:3.0" />
+         <Property Name="Size" Value="w:0.35 h:0.1" />
+         <Property Name="Text" Value="User name" />
+       </Window>
+
+
+       <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Name">
+         <Property Name="ID" Value="3" />
+         <Property Name="ReadOnly" Value="False" />
+         <Property Name="RelativeMaxSize" Value="w:1.0 h:1.0" />
+         <Property Name="Position" Value="x:0.40 y:0.2" />
+         <Property Name="Size" Value="w:0.55 h:0.1" />
+         <Property Name="Text" Value="" />
+       </Window>
+
+       <Window Type="TaharezLook/StaticText"
+               Name="RainbruRPG/Connection/StaticPwd">
+          <Property Name="Position" Value="x:0.05 y:0.32" />
+          <Property Name="RelativeMaxSize" Value="w:3.0 h:3.0" />
+          <Property Name="Size" Value="w:0.35 h:0.1" />
+          <Property Name="Text" Value="Password" />
+       </Window>
+
+
+       <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Pwd">
+         <Property Name="ID" Value="3" />
+         <Property Name="ReadOnly" Value="False" />
+         <Property Name="RelativeMaxSize" Value="w:1.0 h:1.0" />
+         <Property Name="Position" Value="x:0.40 y:0.32" />
+         <Property Name="Size" Value="w:0.55 h:0.1" />
+         <Property Name="Text" Value="" />
+       </Window>
+
+    <Window Type="TaharezLook/Button" Name="Connect">
+          <Property Name="Position" Value="x:0.15 y:0.50" />
+         <Property Name="Size" Value="w:0.7 h:0.12" />
+     <Property Name="Text" Value="Connect" />
+    </Window>
+
+    <Window Type="TaharezLook/Button" Name="CreateAccount">
+          <Property Name="Position" Value="x:0.15 y:0.65" />
+         <Property Name="Size" Value="w:0.7 h:0.12" />
+     <Property Name="Text" Value="Create account" />
+    </Window>
+
+    <Window Type="TaharezLook/Button" Name="LostPassword">
+          <Property Name="Position" Value="x:0.25 y:0.84" />
+         <Property Name="Size" Value="w:0.5 h:0.10" />
+     <Property Name="Text" Value="Lost Password" />
+    </Window>
+
+    </Window>
+
+    <Window Type="Vanilla/Button" Name="Back">
+     <Property Name="AbsoluteRect" Value="l:224 t:216 r:416 b:264" /> 
+      <Property Name="RelativeRect" Value="l:0.1 t:0.7 r:0.9 b:0.9" />
+      <Property Name="Text" Value="Back" />
+    </Window>
+
+  </Window>
+</GUILayout>
