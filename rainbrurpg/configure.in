@@ -1,0 +1,182 @@
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(RainbruRPG.cc)
+dnl Every other copy of the package version number gets its value from here
+AM_INIT_AUTOMAKE(RainbruRPG, 0.0.4)
+dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
+AM_CONFIG_HEADER(config.h)
+AC_SUBST(VERSION)
+
+AC_DEFINE([BUILD_RELEASE], [], [The build release number])
+AC_DEFINE_UNQUOTED(BUILD_RELEASE, "117")
+
+
+
+dnl -----------------------------------------------
+dnl Package name and version number (user defined)
+dnl -----------------------------------------------
+
+dnl The basename of all the RainbruRPG libraries' include
+dnl directories
+GENERIC_LIBRARY_NAME=RainbruRPG
+
+dnl Defines the name of the libraries include directories
+dnl   RainbruRPG-common
+LIB_COMMON_NAME=common
+AC_SUBST(LIB_COMMON_NAME)
+dnl   RainbruRPG-terminalAPI
+LIB_TERAPI_NAME=terminalAPI
+AC_SUBST(LIB_TERAPI_NAME)
+dnl   RainbruRPG-core
+LIB_CORE_NAME=core
+AC_SUBST(LIB_CORE_NAME)
+
+#release versioning
+GENERIC_MAJOR_VERSION=0
+GENERIC_MINOR_VERSION=3
+GENERIC_MICRO_VERSION=0
+
+#API version (often = GENERIC_MAJOR_VERSION.GENERIC_MINOR_VERSION)
+GENERIC_API_VERSION=1.0
+AC_SUBST(GENERIC_API_VERSION)
+
+#shared library versioning
+GENERIC_LIBRARY_VERSION=1:2:0
+
+dnl --------------------------------
+dnl Package name and version number
+dnl --------------------------------
+
+AC_SUBST(GENERIC_LIBRARY_VERSION)
+
+PACKAGE=$GENERIC_LIBRARY_NAME
+AC_SUBST(GENERIC_LIBRARY_NAME)
+
+GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
+GENERIC_RELEASE=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION
+AC_SUBST(GENERIC_RELEASE)
+AC_SUBST(GENERIC_VERSION)
+
+VERSION=$GENERIC_VERSION
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+dnl Call a custom m4 MAcro that defines the install dir in config.h
+RB_INSTALL_DIR
+
+dnl The date
+ISODATE=`date +%Y-%m-%d`
+AC_SUBST(ISODATE)
+AC_CANONICAL_HOST
+
+dnl Checks for programs.
+AC_PROG_INSTALL
+AC_PROG_CC
+AC_PROG_CXX
+
+AC_DISABLE_STATIC
+AM_PROG_LIBTOOL
+AM_SANITY_CHECK
+
+AC_LANG_CPLUSPLUS
+
+dnl Checks for libraries and headers
+RB_CHECK_OGREMAIN
+RB_CHECK_CEGUIBASE
+RB_CHECK_CEGUIOGRE
+RB_CHECK_PLSM2
+RB_CHECK_LIBOIS
+RB_CHECK_LIBFOX
+RB_CHECK_LIBCURL
+RB_CHECK_LIBSLANG
+RB_CHECK_BOOST_FS
+RB_CHECK_QT4
+RB_CHECK_ENET
+RB_CHECK_GLIB
+RB_CHECK_LIBSIG
+RB_CHECK_LIBGD
+
+dnl #################################################################"""
+dnl #################################################################"""
+dnl #################################################################"""
+dnl Find the optional components we should build
+RB_OPTION_SERVER
+RB_OPTION_TESTS
+RB_OPTION_EDITOR
+RB_OPTION_TOOLS
+RB_OPTION_ALL
+dnl #################################################################"""
+dnl #################################################################"""
+dnl #################################################################"""
+
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(unistd.h sys/param.h sys/time.h time.h sys/mkdev.h sys/sysmacros.h string.h memory.h fcntl.h dirent.h sys/ndir.h ndir.h alloca.h locale.h )
+
+jm_CHECK_TYPE_STRUCT_UTIMBUF
+AC_HEADER_MAJOR
+AC_FUNC_ALLOCA
+AC_STRUCT_TM
+AC_STRUCT_ST_BLOCKS
+AC_FUNC_CLOSEDIR_VOID
+AC_CHECK_FUNCS(mkfifo)
+AC_CHECK_FUNC(mknod)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+
+dnl Checks for library functions.
+
+AC_CONFIG_FILES([Makefile			\
+          common/Makefile			\
+          terminalapi/Makefile			\
+	  maincore/Makefile			\
+	  client/Makefile			\
+	  editor/Makefile			\
+	  server/Makefile			\
+	  tests/Makefile			\
+	  tools/Makefile			\
+	  tools/transmsg/Makefile		\
+	  tools/xident/Makefile			\
+	  tools/netflooder/Makefile		\
+	  \
+	  config/Makefile			\
+	  data/Makefile				\
+	  data/fox/Makefile			\
+	  data/gui/Makefile			\
+	  data/gui/XMLRefSchema/Makefile	\
+	  data/gui/schemes/Makefile		\
+	  data/gui/imagesets/Makefile		\
+	  data/gui/looknfeel/Makefile		\
+	  data/gui/fonts/Makefile		\
+	  data/gui/layouts/Makefile		\
+	  data/gui/overlays/Makefile		\
+	  \
+	  media/Makefile			\
+	  media/packs/Makefile			\
+	  media/materials/Makefile		\
+	  media/materials/scripts/Makefile	\
+	  media/materials/textures/Makefile	\
+	  \
+	  mapdata/Makefile			\
+	  mapdata/terrains/Makefile		\
+	  mapdata/terrains/hf129_3/Makefile	\
+	  mapdata/materials/Makefile		\
+	  mapdata/materials/textures/Makefile	\
+	  mapdata/materials/scripts/Makefile	\
+	  mapdata/models/Makefile		\
+	  \
+	  RainbruRPG.lsm RainbruRPG.spec	\
+	  terminalapi-1.0.pc			\
+	  RainbruRPG-common.pc])
+
+dnl Removed by make clean
+dnl	  RainbruRPG.html/Makefile	        \
+
+
+AC_OUTPUT
+
+echo
+echo "#####################################"
+echo
+echo " You can generate a pdf manual by calling :"
+echo "   make pdf"

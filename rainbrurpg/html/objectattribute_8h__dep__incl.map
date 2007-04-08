@@ -1,0 +1,5 @@
+base referer
+rect $boolattribute_8h.html 264,6 443,30
+rect $consoleobject_8h.html 260,54 447,78
+rect $intattribute_8h.html 269,102 437,126
+rect $objectattribute_8cpp.html 249,150 457,174

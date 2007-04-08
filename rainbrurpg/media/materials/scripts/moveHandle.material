@@ -1,0 +1,15 @@
+
+material MoveHandle
+{
+	technique
+	{
+		pass
+		{
+
+			texture_unit
+			{
+				texture moveHandle.png
+			}
+		}
+	}
+}

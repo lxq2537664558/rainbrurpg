@@ -1,0 +1,5 @@
+base referer
+rect $optionpanel_8h.html 249,80 364,104
+rect $logger_8h.html 584,142 661,166
+rect $optionbutton_8h.html 413,104 536,128
+rect $singleton_8h.html 711,238 807,262

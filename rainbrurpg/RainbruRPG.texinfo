@@ -1,0 +1,220 @@
+\input texinfo @c -*-texinfo-*-
+@c This file uses the @command command introduced in Texinfo 4.0.
+@c %**start of header
+@setfilename RainbruRPG.info
+@settitle RainbruRPG
+@finalout
+@setchapternewpage odd
+@c %**end of header
+
+@set VERSION 0.0.3-105
+
+@ifinfo
+@command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
+
+Copyright (C) 2007 Jerome PASQUIER
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+@ignore
+Permission is granted to process this file through TeX and print the
+results, provided the printed document carries copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+
+@end ignore
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end ifinfo
+
+@titlepage
+@title RainbruRPG
+@subtitle RainbruRPG is a in-development Multiplayer Online Role-Playing Game
+@subtitle for RainbruRPG Version @value{VERSION}
+@author by Jérôme PASQUIER
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2007 Jérôme PASQUIER
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end titlepage
+
+@c All the nodes can be updated using the EMACS command
+@c texinfo-every-node-update, which is normally bound to C-c C-u C-e.
+@node Top, Instructions, (dir), (dir)
+
+@ifinfo
+This file documents the @command{RainbruRPG} command to RainbruRPG is a in-development Multiplayer Online Role-Playing Game.
+@end ifinfo
+
+@c All the menus can be updated with the EMACS command
+@c texinfo-all-menus-update, which is normally bound to C-c C-u C-a.
+@menu
+* Instructions::                How to read this manual. 
+* Copying::                     The GNU General Public License
+* Overview::                    Preliminary information.
+* Server::                      How works the @command{RainbruRPG-server}
+* Sample::                      Sample output from @command{RainbruRPG}.
+* Invoking RainbruRPG::         How to run @command{RainbruRPG}.
+* Problems::                    Reporting bugs.
+* Concept Index::               Index of concepts.
+@end menu
+
+@node Instructions, Copying, Top, Top
+@chapter How to Read This Manual
+
+@cindex reading
+@cindex manual, how to read
+@cindex how to read
+This document attempts to be a user's manual for main RainbruRPG programs :
+@itemize
+@item
+RainbruRPG : the client used to play
+@item
+RainbruRPG-server : the game server
+@item
+RainbruRPG-editor : the game editor
+@end itemize
+
+@node Copying, Overview, Instructions, Top
+@chapter Copying
+@include gpl.texinfo
+
+@node Overview, Server, Copying, Top
+@chapter Overview
+@cindex greetings
+@cindex overview
+
+The GNU @command{RainbruRPG} program produces a familiar, friendly greeting.
+It allows nonprogrammers to use a classic computer science tool which
+would otherwise be unavailable to them.  Because it is protected by the
+GNU General Public License, users are free to share and change it.
+
+GNU @command{RainbruRPG} was written by Jérôme PASQUIER.
+
+@c The server documentation starts here
+@node Server, Sample, Overview, Top
+@chapter Server
+@cindex sample
+
+The GNU @command{RainbruRPG-server} program is used to create a public server.
+Each client must be connected to a server to be able to play but a single
+server can accept multiple clients.
+
+@section Identification
+@cindex Identification
+
+The identification of a server is done by an IP adress/UDP port pair. A problem
+can occur if you are behind a router/firewall/NAT/DSL box. In this case, the 
+IP adress of the computer running the game server is hidden by the router. 
+
+You must use the port forwarding to provide access to your server from outside 
+your local network. If your IP adress is 192.168.x.x ou 10.x.x.x, you're 
+probably behind a router. Please see your router's documentation to know how
+setting a port forwarding.
+
+
+@node Sample, Invoking RainbruRPG, Server, Top
+@chapter Sample Output
+@cindex sample
+
+Here are some realistic examples of running @command{RainbruRPG}.
+
+This is the output of the command @samp{RainbruRPG}:
+
+@example
+hello, world!
+@end example
+
+This is the output of the command @samp{RainbruRPG --help}:
+
+@example
+Usage: RainbruRPG [OPTION...] [FILE...]
+RainbruRPG is a in-development Multiplayer Online Role-Playing Game
+
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Report bugs to <rainbru@@free.fr>.
+@end example
+
+@node Invoking RainbruRPG, Problems, Sample, Top
+@chapter Invoking @command{RainbruRPG}
+@cindex invoking
+@cindex version
+@cindex options
+@cindex usage
+@cindex help
+@cindex getting help
+
+The format for running the @command{RainbruRPG} program is:
+
+@example
+RainbruRPG @var{option} @dots{}
+@end example
+
+@code{RainbruRPG} supports the following options:
+
+@c Formatting copied from the Texinfo 4.0 manual.
+@table @code
+@item --help
+@itemx -?
+Print an informative help message describing the options and then exit
+successfully.
+
+@item --usage
+Briefly list the options.
+
+@item --version
+@itemx -V
+Print the version number of @command{RainbruRPG} on the standard output
+and then exit successfully.
+@end table
+
+@node Problems, Concept Index, Invoking RainbruRPG, Top
+@chapter Reporting Bugs
+@cindex bugs
+@cindex problems
+
+If you find a bug in @command{RainbruRPG}, please send electronic mail to
+@email{rainbru@@free.fr}.  Include the version number, which you can find by
+running @w{@samp{RainbruRPG --version}}.  Also include in your message the
+output that the program produced and the output you expected.@refill
+
+If you have other questions, comments or suggestions about
+@command{RainbruRPG}, contact the author via electronic mail to
+@email{rainbru@@free.fr}.  The author will try to help you out, although he
+may not have time to fix your problems.
+
+@node Concept Index,  , Problems, Top
+@unnumbered Concept Index
+
+@cindex tail recursion
+@printindex cp
+
+@shortcontents
+@contents
+@bye

@@ -1,0 +1,27 @@
+graph mcd {
+       edge  [
+       len=2
+       labeldistance=0
+       ];
+ 
+   "Person" [
+       shape=record
+       label="{\N|First Name\lName\lBrith\l}"
+  ];
+
+  "Role" [
+      shape=record
+      label="{\N|description\lsalary\l}"
+  ];
+
+  "Employe" [
+      shape=Mrecord
+      label="{\N|start date\lend date\l}"
+  ];
+
+
+"Person" -- "Employe" [ label="1,n" ];
+"Role" -- "Employe" [ label="1,n" ];
+yournode [shapefile="key.png"];
+psnode [shape=DFDbox];
+}

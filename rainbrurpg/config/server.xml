@@ -1,0 +1,9 @@
+<ServerConfig>
+  <Name>xmlName</Name>
+  <Description>A long description...
+    can be multiline
+  </Description>
+  <TechnicalNote>AZE</TechnicalNote>
+  <Modes play="true" editor="false" flood="true" />
+  <Options ip="192.168.0.2" port="1235" maxClient="25" />
+</ServerConfig>

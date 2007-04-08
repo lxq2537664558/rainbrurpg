@@ -1,0 +1,5 @@
+base referer
+rect $classOgre_1_1PagingLandScapeRenderable.html 268,188 527,212
+rect $classOgre_1_1PagingLandScapeRenderableManager.html 5,98 325,122
+rect $classOgre_1_1PagingLandScapeTileInfo.html 257,7 489,31
+rect $classOgre_1_1PagingLandScapeTileManager.html 513,7 780,31

@@ -1,0 +1,5 @@
+base referer
+rect $ercreateaccount_8h.html 284,106 428,130
+rect $screenshotmanager_8h.html 272,32 440,56
+rect $IrrClient_2gameengine_8h.html 496,56 616,80
+rect $logger_8h.html 517,203 595,227

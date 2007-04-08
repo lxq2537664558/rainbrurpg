@@ -1,0 +1,7 @@
+base referer
+rect $testwindow_8h.html 263,102 372,126
+rect $window_8h.html 421,102 507,126
+rect $scrollingpanel_8h.html 556,102 684,126
+rect $layout_8h.html 733,151 811,175
+rect $freelayout_8h.html 568,200 672,224
+rect $widget_8h.html 859,151 939,175

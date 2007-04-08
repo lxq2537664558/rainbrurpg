@@ -1,0 +1,4 @@
+base referer
+rect $server_8cpp.html 268,6 359,30
+rect $apitest_8cpp.html 224,54 403,78
+rect $lineedit_8cpp.html 223,102 404,126

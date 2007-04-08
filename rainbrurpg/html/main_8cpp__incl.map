@@ -1,0 +1,7 @@
+base referer
+rect $launcher_8h.html 145,370 227,394
+rect $gameengine_8h.html 133,127 239,151
+rect $launcheroptions_8h.html 303,346 429,370
+rect $singleton_8h.html 323,103 409,127
+rect $xmloptions_8h.html 317,151 415,175
+rect $gamestate_8h.html 318,199 414,223

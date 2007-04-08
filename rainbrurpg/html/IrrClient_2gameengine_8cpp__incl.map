@@ -1,0 +1,13 @@
+base referer
+rect $IrrClient_2gameengine_8h.html 431,153 551,177
+rect $IrrClient_2gamestate_8h.html 636,353 743,377
+rect $logger_8h.html 806,353 883,377
+rect $console_8h.html 262,107 347,131
+rect $gsgame_8h.html 260,205 348,229
+rect $gsgameesc_8h.html 248,253 360,277
+rect $gsconnection_8h.html 428,449 554,473
+rect $irrfontmanager_8h.html 622,449 758,473
+rect $gscreateaccount_8h.html 418,497 564,521
+rect $gschangepassword_8h.html 410,353 572,377
+rect $gsselectperso_8h.html 427,401 555,425
+rect $gscreateperso_8h.html 426,545 556,569

@@ -1,0 +1,6 @@
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:44: Warning: Member CPPUNIT_TEST(testIfNull) (function) of class AttributeModifierListTest is not documented.
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:45: Warning: Member CPPUNIT_TEST(testStep1) (function) of class AttributeModifierListTest is not documented.
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:46: Warning: Member CPPUNIT_TEST(testStep2) (function) of class AttributeModifierListTest is not documented.
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:47: Warning: Member CPPUNIT_TEST(testStep3) (function) of class AttributeModifierListTest is not documented.
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:48: Warning: Member CPPUNIT_TEST(testUnsigned) (function) of class AttributeModifierListTest is not documented.
+/home/mouse/programmation/rpg/tests/common/attributemodifierlisttest.h:49: Warning: Member CPPUNIT_TEST(testTotalString) (function) of class AttributeModifierListTest is not documented.

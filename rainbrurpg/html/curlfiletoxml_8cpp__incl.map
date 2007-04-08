@@ -1,0 +1,7 @@
+base referer
+rect $curlfiletoxml_8h.html 255,404 372,428
+rect $curlgetfile_8h.html 423,330 524,354
+rect $curlinterface_8h.html 576,304 696,328
+rect $httpresponse_8h.html 575,156 697,180
+rect $logger_8h.html 753,206 831,230
+rect $singleton_8h.html 887,230 983,254

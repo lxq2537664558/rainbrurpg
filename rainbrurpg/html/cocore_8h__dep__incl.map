@@ -1,0 +1,7 @@
+base referer
+rect $cocore_8cpp.html 194,30 346,54
+rect $console_8h.html 198,78 342,102
+rect $console_8cpp.html 412,6 572,30
+rect $erconsole_8cpp.html 406,54 579,78
+rect $ergame_8cpp.html 412,102 572,126
+rect $IrrClient_2gameengine_8cpp.html 396,150 588,174

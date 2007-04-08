@@ -1,0 +1,6 @@
+base referer
+rect $classRainbruRPG_1_1Options_1_1OptionBoolAttribute.html 336,6 643,30
+rect $classRainbruRPG_1_1Options_1_1OptionFloatAttribute.html 335,54 644,78
+rect $classRainbruRPG_1_1Options_1_1OptionIntAttribute.html 343,102 636,126
+rect $classRainbruRPG_1_1Options_1_1OptionListAttribute.html 340,150 639,174
+rect $classRainbruRPG_1_1Options_1_1OptionStringAttribute.html 331,198 648,222

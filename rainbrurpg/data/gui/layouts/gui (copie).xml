@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<GUILayout>
+  <Window Type="TaharezLook/FrameWindow" Name="RainbruRPG/Connection">
+    <Property Name="AlwaysOnTop" Value="True" />
+    <Property Name="RelativeMinSize" Value="w:0.2 h:0.2" />
+    <Property Name="RelativeMaxSize" Value="w:0.8 h:0.8" />
+    <Property Name="Position" Value="x:0.5 y:0.6" />
+    <Property Name="Size" Value="w:0.5 h:0.45" />
+    <Property Name="Text" Value="User connection" />
+    <Property Name="CloseButtonEnabled" Value="False" />
+    
+
+    <Window Type="TaharezLook/StaticText" 
+	    Name="RainbruRPG/Connection/StaticName">
+      <Property Name="Position" Value="x:0.05 y:0.2" />
+      <Property Name="RelativeMaxSize" Value="w:3.0 h:3.0" />
+      <Property Name="Size" Value="w:0.45 h:0.1" />
+      <Property Name="Text" Value="User name" />
+    </Window>
+
+
+    <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Name">
+      <Property Name="ID" Value="3" />
+      <Property Name="ReadOnly" Value="False" />
+      <Property Name="RelativeMaxSize" Value="w:1.0 h:1.0" />
+      <Property Name="Position" Value="x:0.55 y:0.2" />
+      <Property Name="Size" Value="w:0.40 h:0.1" />
+       <Property Name="Text" Value="" />
+   </Window>
+    
+    <Window Type="TaharezLook/StaticText" 
+	    Name="RainbruRPG/Connection/StaticPwd">
+      <Property Name="Position" Value="x:0.05 y:0.32" />
+      <Property Name="RelativeMaxSize" Value="w:3.0 h:3.0" />
+      <Property Name="Size" Value="w:0.45 h:0.1" />
+      <Property Name="Text" Value="Password" />
+    </Window>
+
+
+    <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Pwd">
+      <Property Name="ID" Value="3" />
+      <Property Name="ReadOnly" Value="False" />
+      <Property Name="TextMasked"  Value="True" />
+      <Property Name="RelativeMaxSize" Value="w:1.0 h:1.0" />
+      <Property Name="Position" Value="x:0.55 y:0.32" />
+      <Property Name="Size" Value="w:0.40 h:0.1" />
+       <Property Name="Text" Value="" />
+   </Window>
+ 
+
+    <Window Type="TaharezLook/Button" Name="Quit">
+      <Property Name="AbsoluteRect" Value="l:224.000000 t:216.000000 r:416.000000 b:264.000000" />
+      <Property Name="RelativeRect" Value="l:0.350000 t:0.450000 r:0.650000 b:0.550000" />
+      <Property Name="Text" Value="Quit" />
+    </Window>
+  </Window>
+</GUILayout>

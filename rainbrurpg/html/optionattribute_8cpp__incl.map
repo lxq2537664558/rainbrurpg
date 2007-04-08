@@ -1,0 +1,4 @@
+base referer
+rect $optionattribute_8h.html 270,54 406,78
+rect $logger_8h.html 454,90 531,114
+rect $singleton_8h.html 580,198 676,222

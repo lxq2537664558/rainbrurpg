@@ -1,0 +1,13 @@
+base referer
+rect $xmlplayerlist_8h.html 243,351 365,375
+rect $common_2tplayerlist_8h.html 429,626 531,650
+rect $hashpassword_8h.html 415,726 545,750
+rect $loadbmp_8h.html 615,204 708,228
+rect $common_2tnotelist_8h.html 435,351 525,375
+rect $xmltimestamp_8h.html 596,252 727,276
+rect $tidentreturn_8h.html 423,50 537,74
+rect $logger_8h.html 623,551 700,575
+rect $curlfiletoxml_8h.html 603,78 720,102
+rect $globaluri_8h.html 433,502 527,526
+rect $singleton_8h.html 780,551 876,575
+rect $curlgetfile_8h.html 777,6 879,30

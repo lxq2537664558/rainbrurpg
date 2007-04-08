@@ -1,0 +1,6 @@
+base referer
+rect $classRainbruRPG_1_1Core_1_1GameState.html 6,30 232,54
+rect $classRainbruRPG_1_1Core_1_1gsGameBase.html 280,6 520,30
+rect $classRainbruRPG_1_1Core_1_1gsMenuBase.html 282,54 519,78
+rect $classRainbruRPG_1_1Core_1_1gsLocalTest.html 574,6 800,30
+rect $classRainbruRPG_1_1Core_1_1gsMainMenu.html 570,54 804,78

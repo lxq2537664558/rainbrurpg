@@ -1,0 +1,5 @@
+base referer
+rect $curlsubmitform_8h.html 272,128 411,152
+rect $curlinterface_8h.html 468,152 588,176
+rect $curlposteddata_8h.html 460,56 596,80
+rect $hashpassword_8h.html 463,104 593,128

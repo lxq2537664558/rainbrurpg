@@ -1,0 +1,7 @@
+base referer
+rect $classOgre_1_1PagingLandScapeSceneManager.html 823,550 1105,574
+rect $classOgre_1_1PagingLandScapeData2DManager.html 1645,780 1939,804
+rect $classOgre_1_1PagingLandScapeRenderableManager.html 1632,588 1952,612
+rect $classOgre_1_1PagingLandScapeOptions.html 1281,482 1516,506
+rect $classOgre_1_1PagingLandScapeTextureManager.html 1647,376 1937,400
+rect $classOgre_1_1PagingLandScapeCamera.html 7,338 241,362

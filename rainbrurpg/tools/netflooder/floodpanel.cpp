@@ -1,0 +1,185 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
+#include "floodpanel.h"
+
+#include <logger.h>
+#include <fox-1.6/FXMessageBox.h>
+
+#include "ftreliable.h"
+
+
+FXDEFMAP(RainbruRPG::Gui::FloodPanel) FloodPanelMap[]={
+  //____Message_Type_____________ID_______________Message_Handler_______
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FloodPanel::ID_NYI, RainbruRPG::Gui::FloodPanel::onNotYetImplemented),
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FloodPanel::ID_TEST_COMBO, RainbruRPG::Gui::FloodPanel::onTestComboChanged),
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FloodPanel::ID_RUN, RainbruRPG::Gui::FloodPanel::onRunClicked),
+
+};
+
+FXIMPLEMENT(RainbruRPG::Gui::FloodPanel,FXPacker,FloodPanelMap,ARRAYNUMBER(FloodPanelMap));
+
+/** The constructor
+  *
+  * The parent must not be NULL
+  *
+  * \param parent The parent composite
+  * \param opts The FOX construction parameter
+  * \param c The enet client used for connection
+  *
+  */
+RainbruRPG::Gui::FloodPanel::
+FloodPanel(FXComposite *parent,FXuint opts, EnetFlooderClient* c)
+  :FXPacker(parent, opts)
+{
+
+  FXVerticalFrame *root = new FXVerticalFrame(this,
+             LAYOUT_FILL_X|LAYOUT_FILL_Y);
+
+  // The help label
+  FXString lab="The connection to the server is successfull. You can now "
+    "choose flooding options.";
+  FXLabel* labHelp=new FXLabel(root, lab);
+
+  // The progress bar frame
+  FXVerticalFrame *frProg = new FXVerticalFrame(root,
+             LAYOUT_FILL_X);
+  pgGlobal=new  FXProgressBar(frProg, this, ID_NYI, 
+	PROGRESSBAR_NORMAL|LAYOUT_FILL_X|PROGRESSBAR_PERCENTAGE );
+  pgGlobal->setTotal(5);
+
+  pgStep=new  FXProgressBar(frProg, this, ID_NYI, 
+	PROGRESSBAR_NORMAL|LAYOUT_FILL_X|PROGRESSBAR_PERCENTAGE );
+  pgStep->setTotal(5);
+
+  // The test combobox
+  FXLabel* labTests=new FXLabel(frProg, "Available tests :");
+  FXComboBox* cbTest=new FXComboBox(frProg, 0, this, ID_TEST_COMBO, 
+				    COMBOBOX_STATIC|LAYOUT_FILL_X);
+
+  cbTest->appendItem("All test - Perform all available tests (may be long)");
+  cbTest->appendItem("---------------");
+  cbTest->setNumVisible(5);
+
+  // The buttons
+  FXHorizontalFrame *frButtons = new FXHorizontalFrame(frProg,
+             LAYOUT_FILL_X|PACK_UNIFORM_WIDTH);
+  FXButton* btnRun=new FXButton(frButtons, "Flood", NULL, this, 
+				ID_RUN, BUTTON_NORMAL|LAYOUT_CENTER_X);
+
+
+  // TestList
+  testList=new tFlooderTestList();
+  ftReliable* testReliable=new ftReliable();
+  testList->push_back(testReliable);
+
+  feedTestCombo(cbTest);
+}
+
+/** The destructor
+ *
+ */
+RainbruRPG::Gui::FloodPanel::~FloodPanel(){
+  delete pgGlobal;
+  delete pgStep;
+
+  delete testList;
+}
+
+/** The FOX-Toolkit create method
+  *
+  * It creates and execute a FloodPanel instance.
+  *
+  */
+void RainbruRPG::Gui::FloodPanel::create(){
+  FXPacker::create();
+  this->show();
+}
+
+
+/** The NotYetImplemented callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FloodPanel::
+onNotYetImplemented(FXObject * o,FXSelector s,void* v){
+  LOGW("Not yet implemented");
+  return 1;
+}
+
+/** Feed the combobox containing all test with the content of the testList
+  *
+  * \param cb The combo box to feed
+  *
+  */
+void RainbruRPG::Gui::FloodPanel::feedTestCombo(FXComboBox* cb){
+  LOGI("feedTestCombo called");
+
+  tFlooderTestList::const_iterator iter;
+  // Iterate through list and output each element.
+  for (iter=testList->begin(); iter != testList->end(); iter++){
+    LOGI("One etst found");
+    FXString s;
+    s=(*iter)->getName();
+    s+=" (";
+    s+=(*iter)->getDescription();
+    s+=")";
+    cb->appendItem(s);
+  }
+}
+
+/** The test list combobox callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FloodPanel::
+onTestComboChanged(FXObject* o,FXSelector s,void* v){
+  LOGI("onTestComboChanged called");
+}
+
+/** The flood button callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FloodPanel::
+onRunClicked(FXObject* o,FXSelector s,void* v){
+  LOGI("onRunClicked called");
+
+}

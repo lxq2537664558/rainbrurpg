@@ -1,0 +1,57 @@
+# To make the HTML version of the texinfo help
+# You need trhe texinfo package
+bin_PROGRAMS=RainbruRPG2
+
+# The sources
+SUBDIRS = common terminalapi maincore client
+
+# The data files
+SUBDIRS+= config data media mapdata
+
+# Bug ?
+# RainbruRPG.html
+
+if RB_OPTION_EDITOR_FLAGS
+  SUBDIRS+=editor
+endif
+
+if RB_OPTION_SERVER_FLAGS
+  SUBDIRS+=server
+endif
+
+if RB_OPTION_TOOLS_FLAGS
+  SUBDIRS+=tools
+endif
+
+if RB_OPTION_TESTS_FLAGS
+  SUBDIRS+=tests
+endif
+
+if RB_OPTION_ALL_FLAGS
+  SUBDIRS+=editor server tools tests
+endif 
+
+RainbruRPG2dir=..
+
+RainbruRPG2_SOURCES=RainbruRPG.cc RainbruRPG.6 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = terminalapi-1.0.pc
+
+EXTRA_DIST=RainbruRPG.lsm.in  \
+	   RainbruRPG.texinfo \
+	   RainbruRPG.spec.in \
+	   Doxyfile
+
+#  if you write a self-test script named `chk', uncomment the
+#  following and add `chk' to the EXTRA_DIST list
+#TESTS=chk
+
+#  build and install the .info pages
+info_TEXINFOS = RainbruRPG.texinfo
+RainbruRPG_TEXINFOS = gpl.texinfo
+
+#  install the man pages
+man_MANS=RainbruRPG.6        \
+	 RainbruRPG-server.6 \
+	 RainbruRPG-editor.6

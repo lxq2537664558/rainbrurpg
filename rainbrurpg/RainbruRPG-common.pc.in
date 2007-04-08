@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Pasquier
+Description: The library used by all RainbruRPG programms
+Version: @VERSION@
+Libs: -L${libdir} -l@GENERIC_LIBRARY_NAME@-@GENERIC_API_VERSION@
+Cflags: -I${includedir}/@GENERIC_LIBRARY_NAME@/@LIB_COMMON_NAME@ -I${libdir}/@GENERIC_LIBRARY_NAME@-@LIB_COMMON_NAME@/include

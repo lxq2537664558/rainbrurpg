@@ -1,0 +1,7 @@
+base referer
+rect $showcurlerror_8h.html 281,155 407,179
+rect $curlsubmitform_8h.html 456,155 595,179
+rect $httpresponse_8h.html 464,252 587,276
+rect $curlinterface_8h.html 652,56 772,80
+rect $curlposteddata_8h.html 644,155 780,179
+rect $hashpassword_8h.html 647,203 777,227

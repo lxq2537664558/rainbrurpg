@@ -1,0 +1,7 @@
+base referer
+rect $playerlist_8h.html 299,78 480,102
+rect $playernotepad_8cpp.html 273,126 505,150
+rect $addplayer_8cpp.html 560,6 763,30
+rect $xmlserverlist_8h.html 559,54 764,78
+rect $playerlist_8cpp.html 563,102 760,126
+rect $xidentwindow_8h.html 556,150 767,174

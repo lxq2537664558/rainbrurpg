@@ -1,0 +1,13 @@
+base referer
+rect $classOgre_1_1PagingLandScapeOptions.html 1015,503 1250,527
+rect $classOgre_1_1PagingLandScapePageManager.html 2003,271 2278,295
+rect $classOgre_1_1PagingLandScapeRenderableManager.html 1483,311 1803,335
+rect $classOgre_1_1PagingLandScapeData2DManager.html 2432,316 2726,340
+rect $classOgre_1_1PagingLandScapeTextureManager.html 1498,191 1788,215
+rect $classOgre_1_1PagingLandScapeTileManager.html 1510,780 1776,804
+rect $classOgre_1_1PagingLandScapeIndexBufferManager.html 972,904 1292,928
+rect $classOgre_1_1PagingLandScapeOctreeSceneManager.html 7,392 335,416
+rect $classOgre_1_1PagingLandScapeHorizon.html 1526,396 1760,420
+rect $classOgre_1_1PagingLandScapeTextureCoordinatesManager.html 1456,640 1830,664
+rect $classOgre_1_1PagingLandScapeListenerManager.html 23,440 319,464
+rect $classOgre_1_1PagingLandScapeTileInfo.html 55,488 287,512

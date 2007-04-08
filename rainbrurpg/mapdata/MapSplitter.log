@@ -1,0 +1,95 @@
+00:23:13: Creating resource group General
+00:23:13: Creating resource group Internal
+00:23:13: Creating resource group Autodetect
+00:23:13: Registering ResourceManager for type Material
+00:23:13: Registering ResourceManager for type Mesh
+00:23:13: Registering ResourceManager for type Skeleton
+00:23:13: MovableObjectFactory for type 'ParticleSystem' registered.
+00:23:13: Loading library libOgrePlatform.so
+00:23:13: OverlayElementFactory for type Panel registered.
+00:23:13: OverlayElementFactory for type BorderPanel registered.
+00:23:13: OverlayElementFactory for type TextArea registered.
+00:23:13: Registering ResourceManager for type Font
+00:23:13: ArchiveFactory for archive type FileSystem registered.
+00:23:13: ArchiveFactory for archive type Zip registered.
+00:23:13: DevIL version: Developer's Image Library (DevIL) 1.6.5
+00:23:13: DevIL image formats: bmp dib cut dcx dds gif ico cur jpg jpe jpeg lif mdl mng jng pcx pic pix png pbm pgm pnm ppm psd pdd psp pxr sgi bw rgb rgba tga vda icb vst tif tiff wal xpm raw 
+00:23:13: Registering ResourceManager for type HighLevelGpuProgram
+00:23:13: Registering ResourceManager for type Compositor
+00:23:13: MovableObjectFactory for type 'Entity' registered.
+00:23:13: MovableObjectFactory for type 'Light' registered.
+00:23:13: MovableObjectFactory for type 'BillboardSet' registered.
+00:23:13: MovableObjectFactory for type 'ManualObject' registered.
+00:23:13: MovableObjectFactory for type 'BillboardChain' registered.
+00:23:13: MovableObjectFactory for type 'RibbonTrail' registered.
+00:23:13: *-*-* OGRE Initialising
+00:23:13: *-*-* Version 1.2.4 (Dagon)
+00:23:13: Creating resource group PLSM2
+00:23:13: Added resource location './' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'datasrcs' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'terrains' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'gui' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'models' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'overlays' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'materials' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'materials/programs' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'materials/scripts' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Added resource location 'materials/textures' of type 'FileSystem' to resource group 'PLSM2'
+00:23:13: Width : 129
+00:23:13:   Height : 129
+00:23:13:   Bypp : 2
+00:23:13: hf129_3.png
+00:23:13: stretchFactor : 4
+00:23:14: normal Map Calc  
+00:23:14: Shadow Map Calc  
+00:23:14: light Map Calc  
+00:23:14: Width : 513
+00:23:14:  Height : 513
+00:23:14:  Bpp : 1
+00:23:14: hf129_3.Light.png
+00:23:15: Map Calc 
+00:23:15: Width : 513
+00:23:15:  Height : 513
+00:23:15:  Bpp : 3
+00:23:15: hf129_3.Base.png
+00:23:16: Width : 513
+00:23:16:  Height : 513
+00:23:16:  Bpp : 4
+00:23:16: hf129_3.Coverage.0.png
+00:23:17: Width : 513
+00:23:17:  Height : 513
+00:23:17:  Bpp : 1
+00:23:17: hf129_3.Alpha.0.png
+00:23:17: Width : 513
+00:23:17:  Height : 513
+00:23:17:  Bpp : 1
+00:23:17: hf129_3.Alpha.1.png
+00:23:17: Width : 513
+00:23:17:  Height : 513
+00:23:17:  Bpp : 1
+00:23:17: hf129_3.Alpha.2.png
+00:23:17: Width : 513
+00:23:17:  Height : 513
+00:23:17:  Bpp : 1
+00:23:17: hf129_3.Alpha.3.png
+00:23:17: Horizon Map Calc 
+00:23:29: Width : 513
+00:23:29:  Height : 513
+00:23:29:  Bpp : 3
+00:23:29: hf129_3.HS.png
+00:23:29: Width : 513
+00:23:29:  Height : 513
+00:23:29:  Bpp : 4
+00:23:29: hf129_3.HSP.png
+00:23:31: Width : 513
+00:23:31:  Height : 513
+00:23:31:  Bpp : 4
+00:23:31: hf129_3.HSN.png
+00:23:32: *-*-* OGRE Shutdown
+00:23:32: Unregistering ResourceManager for type Compositor
+00:23:32: Unregistering ResourceManager for type Font
+00:23:32: Unregistering ResourceManager for type Skeleton
+00:23:32: Unregistering ResourceManager for type Mesh
+00:23:32: Unregistering ResourceManager for type HighLevelGpuProgram
+00:23:32: Unregistering ResourceManager for type Material
+00:23:32: Unloading library libOgrePlatform.so

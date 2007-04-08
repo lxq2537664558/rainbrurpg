@@ -1,0 +1,5 @@
+base referer
+rect $console_8cpp.html 217,6 377,30
+rect $erconsole_8cpp.html 211,54 384,78
+rect $ergame_8cpp.html 217,102 377,126
+rect $IrrClient_2gameengine_8cpp.html 201,150 393,174

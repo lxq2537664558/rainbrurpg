@@ -1,0 +1,5 @@
+base referer
+rect $intattribute_8h.html 241,30 351,54
+rect $logger_8h.html 257,102 335,126
+rect $objectattribute_8h.html 401,6 535,30
+rect $singleton_8h.html 420,198 516,222
