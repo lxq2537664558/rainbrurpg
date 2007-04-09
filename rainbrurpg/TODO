@@ -162,6 +162,7 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-126
+- Initial CVS commit 
 - a basic npFlooder0004 : a packet of 4 bytes (npId+responseId)
 - Each packet used by EnetFlooderClient must have a unique Id
   to be sure the packet we received was a response.
