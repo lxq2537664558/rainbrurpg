@@ -1,7 +1,0 @@
-base referer
-rect $xmlplayerlist_8h.html 219,6 403,30
-rect $xmlpersolist_8h.html 220,54 402,78
-rect $xmlattrbcatlist_8h.html 214,102 408,126
-rect $xmlattributelist_8h.html 211,150 411,174
-rect $xmlbonusfile_8h.html 219,198 403,222
-rect $xmlbonusfilelist_8h.html 208,246 414,270

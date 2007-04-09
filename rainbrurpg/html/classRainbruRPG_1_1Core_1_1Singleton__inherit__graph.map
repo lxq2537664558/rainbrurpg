@@ -1,8 +1,0 @@
-base referer
-rect $classRainbruRPG_1_1Core_1_1GameEngine.html 353,6 839,30
-rect $classRainbruRPG_1_1Core_1_1StringConv.html 367,54 825,78
-rect $classRainbruRPG_1_1Editor_1_1SelectionManager.html 311,102 881,126
-rect $classRainbruRPG_1_1Exception_1_1Logger.html 359,150 833,174
-rect $classRainbruRPG_1_1Gui_1_1GuiManager.html 367,198 825,222
-rect $classRainbruRPG_1_1Options_1_1OptionManager.html 315,246 877,270
-rect $classRainbruRPG_1_1Terminal_1_1TerminalApp.html 331,294 861,318

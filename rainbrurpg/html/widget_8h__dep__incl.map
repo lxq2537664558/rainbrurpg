@@ -1,7 +1,0 @@
-base referer
-rect $pushbutton_8h.html 216,6 411,30
-rect $layout_8h.html 235,54 392,78
-rect $label_8h.html 239,102 388,126
-rect $lineedit_8h.html 231,150 396,174
-rect $listbox_8h.html 233,198 393,222
-rect $widget_8cpp.html 224,246 403,270

@@ -1,4 +1,0 @@
-base referer
-rect $gamestate_8h.html 219,102 326,126
-rect $logger_8h.html 374,102 451,126
-rect $singleton_8h.html 500,198 596,222

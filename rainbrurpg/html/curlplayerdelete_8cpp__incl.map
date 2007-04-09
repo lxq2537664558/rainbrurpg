@@ -1,6 +1,0 @@
-base referer
-rect $curlplayerdelete_8h.html 279,80 423,104
-rect $globaluri_8h.html 679,44 772,68
-rect $curlsubmitform_8h.html 472,104 611,128
-rect $hashpassword_8h.html 660,116 791,140
-rect $xmlplayerlist_8h.html 480,56 603,80

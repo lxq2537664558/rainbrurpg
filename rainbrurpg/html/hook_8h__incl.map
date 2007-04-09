@@ -1,6 +1,0 @@
-base referer
-rect $terminalapp_8h.html 203,224 320,248
-rect $singleton_8h.html 421,296 517,320
-rect $menubar_8h.html 423,200 516,224
-rect $window_8h.html 427,443 512,467
-rect $dialog_8h.html 432,395 507,419

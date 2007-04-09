@@ -1,5 +1,0 @@
-base referer
-rect $fpsattribute_8h.html 246,5 360,29
-rect $stringconv_8h.html 412,104 516,128
-rect $IrrClient_2gameengine_8h.html 243,104 363,128
-rect $logger_8h.html 264,203 342,227

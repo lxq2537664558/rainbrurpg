@@ -1,8 +1,0 @@
-base referer
-rect $oldLauncher_8h.html 292,6 538,30
-rect $oldLauncherOptions_8cpp.html 258,54 572,78
-rect $IrrClient_2launcher_8h.html 340,102 490,126
-rect $IrrClient_2launcheroptions_8cpp.html 307,150 523,174
-rect $oldLauncher_8cpp.html 623,54 884,78
-rect $IrrClient_2launcher_8cpp.html 671,102 836,126
-rect $IrrClient_2main_8cpp.html 683,150 824,174

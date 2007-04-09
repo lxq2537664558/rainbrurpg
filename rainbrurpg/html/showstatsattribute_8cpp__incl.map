@@ -1,6 +1,0 @@
-base referer
-rect $showstatsattribute_8h.html 290,30 450,54
-rect $logger_8h.html 331,102 408,126
-rect $boolattribute_8h.html 499,6 622,30
-rect $objectattribute_8h.html 671,6 804,30
-rect $singleton_8h.html 512,198 608,222

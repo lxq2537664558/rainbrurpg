@@ -1,5 +1,0 @@
-base referer
-rect $consoleobject_8h.html 256,78 384,102
-rect $logger_8h.html 281,198 359,222
-rect $objectattribute_8h.html 433,102 567,126
-rect $singleton_8h.html 452,294 548,318

@@ -1,5 +1,0 @@
-base referer
-rect $client_2gameengine_8h.html 241,5 401,29
-rect $IrrClient_2gameengine_8h.html 233,53 409,77
-rect $IrrClient_2main_8cpp.html 465,79 607,103
-rect $IrrClient_2guimanager_8cpp.html 227,152 416,176

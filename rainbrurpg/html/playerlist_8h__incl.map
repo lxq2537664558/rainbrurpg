@@ -1,8 +1,0 @@
-base referer
-rect $logger_8h.html 683,636 760,660
-rect $xmlplayerlist_8h.html 491,344 613,368
-rect $curlplayerdelete_8h.html 256,197 400,221
-rect $addplayer_8h.html 277,688 379,712
-rect $showcurlerror_8h.html 489,835 615,859
-rect $tools_2xident_2tplayerlist_8h.html 277,888 379,912
-rect $playernotepad_8h.html 261,491 395,515

@@ -1,5 +1,0 @@
-base referer
-rect $serverlist_8h.html 252,348 348,372
-rect $logger_8h.html 657,73 735,97
-rect $xmlserverlist_8h.html 429,73 552,97
-rect $addserver_8h.html 440,223 541,247
