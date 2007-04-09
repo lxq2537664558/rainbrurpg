@@ -47,10 +47,10 @@
 <a name="l00029"></a>00029 
 <a name="l00030"></a>00030 FXDEFMAP(<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html">RainbruRPG::Gui::XIdentWindow</a>) XIdentWindowMap[]={
 <a name="l00031"></a>00031   <span class="comment">//____Message_Type_____________ID_______________Message_Handler_______</span>
-<a name="l00032"></a>00032   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3d474bfdedd44d086fa789576d537d169b">RainbruRPG::Gui::XIdentWindow::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#c4ae2fbc4b756b471c8341a4428d11fd">RainbruRPG::Gui::XIdentWindow::onNotYetImplemented</a>),
-<a name="l00033"></a>00033   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3d734411e24143f5dd7ddb1d7fbb6ecc34">RainbruRPG::Gui::XIdentWindow::ID_HELP_ABOUT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d25648e5a78ecc7995f903aeb4e8e58b">RainbruRPG::Gui::XIdentWindow::onHelpAbout</a>),
-<a name="l00034"></a>00034   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3d882eb3199234f147ecde7cbbcf3ce381">RainbruRPG::Gui::XIdentWindow::ID_TOOL_ACCOUNT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#7a680b86f632b5c237b7f4c9114af1be">RainbruRPG::Gui::XIdentWindow::onManageAccount</a>),
-<a name="l00035"></a>00035   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3dca27c01e3baa2467ba828734a4ddcecb">RainbruRPG::Gui::XIdentWindow::ID_TOOL_SERVER</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#ebadf8b8257b35a6bd2caa80c9bd68cd">RainbruRPG::Gui::XIdentWindow::onManageServer</a>),
+<a name="l00032"></a>00032   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349474bfdedd44d086fa789576d537d169b">RainbruRPG::Gui::XIdentWindow::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#c4ae2fbc4b756b471c8341a4428d11fd">RainbruRPG::Gui::XIdentWindow::onNotYetImplemented</a>),
+<a name="l00033"></a>00033   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349734411e24143f5dd7ddb1d7fbb6ecc34">RainbruRPG::Gui::XIdentWindow::ID_HELP_ABOUT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d25648e5a78ecc7995f903aeb4e8e58b">RainbruRPG::Gui::XIdentWindow::onHelpAbout</a>),
+<a name="l00034"></a>00034   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349882eb3199234f147ecde7cbbcf3ce381">RainbruRPG::Gui::XIdentWindow::ID_TOOL_ACCOUNT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#7a680b86f632b5c237b7f4c9114af1be">RainbruRPG::Gui::XIdentWindow::onManageAccount</a>),
+<a name="l00035"></a>00035   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349ca27c01e3baa2467ba828734a4ddcecb">RainbruRPG::Gui::XIdentWindow::ID_TOOL_SERVER</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#ebadf8b8257b35a6bd2caa80c9bd68cd">RainbruRPG::Gui::XIdentWindow::onManageServer</a>),
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 };
@@ -80,15 +80,15 @@
 <a name="l00067"></a>00067   <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d0f8e583acf9519ee466de31ae1e3899">toolmenu</a> = <span class="keyword">new</span> FXMenuPane(<span class="keyword">this</span>);
 <a name="l00068"></a>00068   <span class="keyword">new</span> FXMenuCommand(<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d0f8e583acf9519ee466de31ae1e3899">toolmenu</a>,<span class="stringliteral">"&amp;Accounts\tCtl-A\t"</span>
 <a name="l00069"></a>00069                     <span class="stringliteral">"Creates, deletes and manages accounts."</span>,
-<a name="l00070"></a>00070                     NULL,<span class="keyword">this</span>,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3d882eb3199234f147ecde7cbbcf3ce381">ID_TOOL_ACCOUNT</a>);
+<a name="l00070"></a>00070                     NULL,<span class="keyword">this</span>,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349882eb3199234f147ecde7cbbcf3ce381">ID_TOOL_ACCOUNT</a>);
 <a name="l00071"></a>00071   <span class="keyword">new</span> FXMenuCommand(<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d0f8e583acf9519ee466de31ae1e3899">toolmenu</a>,<span class="stringliteral">"&amp;Servers\tCtl-A\t"</span>
 <a name="l00072"></a>00072                     <span class="stringliteral">"Creates, deletes and manages servers."</span>,
-<a name="l00073"></a>00073                     NULL,<span class="keyword">this</span>,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3dca27c01e3baa2467ba828734a4ddcecb">ID_TOOL_SERVER</a>);
+<a name="l00073"></a>00073                     NULL,<span class="keyword">this</span>,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349ca27c01e3baa2467ba828734a4ddcecb">ID_TOOL_SERVER</a>);
 <a name="l00074"></a>00074 
 <a name="l00075"></a>00075   <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#b72713eedf6fe6882aadd353829adfa1">helpmenu</a> = <span class="keyword">new</span> FXMenuPane(<span class="keyword">this</span>);
 <a name="l00076"></a>00076   <span class="keyword">new</span> FXMenuCommand(<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#b72713eedf6fe6882aadd353829adfa1">helpmenu</a>,<span class="stringliteral">"About x&amp;Ident\tCtl-I\t"</span>
 <a name="l00077"></a>00077                     <span class="stringliteral">"Primary informations about xident."</span>,NULL,<span class="keyword">this</span>,
-<a name="l00078"></a>00078                     <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d2434eef235ff65d56bf1f9d31fbbd3d734411e24143f5dd7ddb1d7fbb6ecc34">ID_HELP_ABOUT</a>);
+<a name="l00078"></a>00078                     <a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#88d5e534ffb9588333467b3177cd0349734411e24143f5dd7ddb1d7fbb6ecc34">ID_HELP_ABOUT</a>);
 <a name="l00079"></a>00079 
 <a name="l00080"></a>00080   <span class="keyword">new</span> FXMenuTitle(menubar,<span class="stringliteral">"&amp;File"</span>,NULL,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#bb83c54bd1498ca9d6c3ffa0fffd3688">filemenu</a>);
 <a name="l00081"></a>00081   <span class="keyword">new</span> FXMenuTitle(menubar,<span class="stringliteral">"&amp;Manage"</span>,NULL,<a class="code" href="classRainbruRPG_1_1Gui_1_1XIdentWindow.html#d0f8e583acf9519ee466de31ae1e3899">toolmenu</a>);
@@ -173,7 +173,7 @@
 <a name="l00209"></a>00209 
 <a name="l00210"></a>00210 }
 <a name="l00211"></a>00211 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

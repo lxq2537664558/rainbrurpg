@@ -302,3 +302,7 @@ void RainbruRPG::Gui::WaitingPanel::reset(){
   setAllStepsDisable();
   prog->setProgress(0);
 }
+
+EnetFlooderClient* RainbruRPG::Gui::WaitingPanel::getClient(){
+  return this->client;
+}

@@ -22,6 +22,8 @@
 
 #include "ftreliable.h"
 
+#include <logger.h>
+
 /** The default constructor
   *
   */
@@ -57,6 +59,12 @@ int RainbruRPG::Network::ftReliable::getTotalProgressStep(){
   * \param host The host uses to send test packets
   *
   */
-void RainbruRPG::Network::ftReliable::run(EnetBase* host){
+void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
+  LOGI("ftReliable test running...");
 
+
+  // Creates a packet of 4 bytes long with the identifier '1'
+  npFlooder0004 *p1=new npFlooder0004(1);
+  // Get the response time
+  int ms=host->sendPacketAndWaitResponse(p1, false);
 }

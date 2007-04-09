@@ -91,6 +91,8 @@ namespace RainbruRPG{
 
       void reset();
 
+      EnetFlooderClient* getClient();
+
     private:
       void setAllStepsDisable();
       void setStepEnable(unsigned int);

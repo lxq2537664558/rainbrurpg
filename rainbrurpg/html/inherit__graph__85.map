@@ -1,2 +1,2 @@
 base referer
-rect $structRainbruRPG_1_1Network_1_1tReceivedPacket.html 7,6 292,30
+rect $unionRainbruRPG_1_1Network_1_1npPacketBaseData.html 7,6 308,30

@@ -45,10 +45,10 @@
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028 FXDEFMAP(<a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html">RainbruRPG::Gui::ModifyServer</a>) ModifyServerMap[]={
 <a name="l00029"></a>00029   <span class="comment">//____Message_Type_____________ID_______________Message_Handler_______</span>
-<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7be468d15b7f1841c1f7ae14a752342a5b2">RainbruRPG::Gui::ModifyServer::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#4790d06ac319e1b439f1a8b1fe9980af">RainbruRPG::Gui::ModifyServer::onNotYetImplemented</a>),
-<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7bed88aa090e966cfdfa67bdad375a05258">RainbruRPG::Gui::ModifyServer::ID_BTN_OK</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#6fb9385f567c8a26683e518b0b8356aa">RainbruRPG::Gui::ModifyServer::onOkClicked</a>),
-<a name="l00032"></a>00032   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7be8d75604eaac145e21b05bff0731921bb">RainbruRPG::Gui::ModifyServer::ID_BTN_CANCEL</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#8cfe0a894f06f4daa5233ae8e893f389">RainbruRPG::Gui::ModifyServer::onCancelClicked</a>),
-<a name="l00033"></a>00033   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7be82529324c7008dfa41604908b36825f7">RainbruRPG::Gui::ModifyServer::ID_SPI_CLI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#ff335c6334a977638ac88c14e8aebf58">RainbruRPG::Gui::ModifyServer::onSpinnerClicked</a>),
+<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d6359863468d15b7f1841c1f7ae14a752342a5b2">RainbruRPG::Gui::ModifyServer::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#4790d06ac319e1b439f1a8b1fe9980af">RainbruRPG::Gui::ModifyServer::onNotYetImplemented</a>),
+<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d6359863d88aa090e966cfdfa67bdad375a05258">RainbruRPG::Gui::ModifyServer::ID_BTN_OK</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#6fb9385f567c8a26683e518b0b8356aa">RainbruRPG::Gui::ModifyServer::onOkClicked</a>),
+<a name="l00032"></a>00032   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d63598638d75604eaac145e21b05bff0731921bb">RainbruRPG::Gui::ModifyServer::ID_BTN_CANCEL</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#8cfe0a894f06f4daa5233ae8e893f389">RainbruRPG::Gui::ModifyServer::onCancelClicked</a>),
+<a name="l00033"></a>00033   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d635986382529324c7008dfa41604908b36825f7">RainbruRPG::Gui::ModifyServer::ID_SPI_CLI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#ff335c6334a977638ac88c14e8aebf58">RainbruRPG::Gui::ModifyServer::onSpinnerClicked</a>),
 <a name="l00034"></a>00034 
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 };
@@ -84,7 +84,7 @@
 <a name="l00072"></a>00072                                LABEL_NORMAL|LAYOUT_FILL_X);
 <a name="l00073"></a>00073 
 <a name="l00074"></a>00074   <span class="comment">// The Spinner</span>
-<a name="l00075"></a>00075   FXSpinner* spiCli=<span class="keyword">new</span> FXSpinner(root, 2, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7be82529324c7008dfa41604908b36825f7">ID_SPI_CLI</a>, 
+<a name="l00075"></a>00075   FXSpinner* spiCli=<span class="keyword">new</span> FXSpinner(root, 2, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d635986382529324c7008dfa41604908b36825f7">ID_SPI_CLI</a>, 
 <a name="l00076"></a>00076                                   LAYOUT_FILL_X|SPIN_NORMAL);
 <a name="l00077"></a>00077   spiCli-&gt;setRange(0, maxCli);
 <a name="l00078"></a>00078   spiCli-&gt;setValue(actCli);
@@ -94,9 +94,9 @@
 <a name="l00082"></a>00082   FXuint btnOpts= LAYOUT_RIGHT|BUTTON_NORMAL|LAYOUT_FIX_WIDTH ;
 <a name="l00083"></a>00083   FXint btnWidth=120;
 <a name="l00084"></a>00084   FXButton* btn1=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"Cancel"</span>, NULL, <span class="keyword">this</span>, 
-<a name="l00085"></a>00085                                <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7be8d75604eaac145e21b05bff0731921bb">ID_BTN_CANCEL</a>, btnOpts, 0, 0, btnWidth);
+<a name="l00085"></a>00085                                <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d63598638d75604eaac145e21b05bff0731921bb">ID_BTN_CANCEL</a>, btnOpts, 0, 0, btnWidth);
 <a name="l00086"></a>00086   btn1-&gt;setDefault(<span class="keyword">true</span>);
-<a name="l00087"></a>00087   FXButton* btn2=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"OK"</span>, NULL, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#dc7578622ba2fa1973e7a6577954c7bed88aa090e966cfdfa67bdad375a05258">ID_BTN_OK</a>, 
+<a name="l00087"></a>00087   FXButton* btn2=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"OK"</span>, NULL, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#f17cd01dc854050ec815a011d6359863d88aa090e966cfdfa67bdad375a05258">ID_BTN_OK</a>, 
 <a name="l00088"></a>00088                                BUTTON_NORMAL|LAYOUT_FIX_WIDTH, 0, 0, btnWidth);
 <a name="l00089"></a>00089 
 <a name="l00090"></a>00090 
@@ -163,7 +163,7 @@
 <a name="l00202"></a>00202   LOGCAT();
 <a name="l00203"></a>00203   <a class="code" href="classRainbruRPG_1_1Gui_1_1ModifyServer.html#ae871d12610b728ac722de53ac2c0117">actClients</a>=i;
 <a name="l00204"></a>00204 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

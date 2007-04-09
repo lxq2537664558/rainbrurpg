@@ -43,28 +43,77 @@
 <a name="l00030"></a><a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#4d74227fbeca5d0861c4623eaf73d8fd">00030</a> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#4d74227fbeca5d0861c4623eaf73d8fd">RainbruRPG::Editor::ScriptEditor::ScriptEditor</a>(QWidget* parent)
 <a name="l00031"></a>00031   : QWidget(parent)
 <a name="l00032"></a>00032 {
-<a name="l00033"></a>00033   QHBoxLayout* hb1=<span class="keyword">new</span> QHBoxLayout();
-<a name="l00034"></a>00034   setLayout(hb1);
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>=<span class="keyword">new</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1LuaHighlighter.html">LuaHighlighter</a>();
-<a name="l00037"></a>00037   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>=<span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);
-<a name="l00038"></a>00038   hb1-&gt;addWidget(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>);
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040   QFont font;
-<a name="l00041"></a>00041   font.setFamily(<span class="stringliteral">"Monospace"</span>);
-<a name="l00042"></a>00042   font.setFixedPitch(<span class="keyword">true</span>);
-<a name="l00043"></a>00043   font.setPointSize(10);
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;setFont(font);
-<a name="l00046"></a>00046   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>-&gt;<a class="code" href="classRainbruRPG_1_1Editor_1_1Highlighter.html#5208b27421fb6bb5f6faf36f44a7822c">addToDocument</a>(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;document());
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 }
-<a name="l00049"></a>00049 
-<a name="l00053"></a><a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#1b7c76207f1dcc8c5238224fc672972e">00053</a> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#1b7c76207f1dcc8c5238224fc672972e">RainbruRPG::Editor::ScriptEditor::~ScriptEditor</a>(){
-<a name="l00054"></a>00054   <span class="keyword">delete</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>;
-<a name="l00055"></a>00055   <span class="keyword">delete</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>;
-<a name="l00056"></a>00056 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:40 2007 for RainbruRPG by&nbsp;
+<a name="l00033"></a>00033   <span class="comment">// Layout </span>
+<a name="l00034"></a>00034   QVBoxLayout* hb1=<span class="keyword">new</span> QVBoxLayout();
+<a name="l00035"></a>00035   setLayout(hb1);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037   QFont font;
+<a name="l00038"></a>00038   font.setFamily(<span class="stringliteral">"Monospace"</span>);
+<a name="l00039"></a>00039   font.setFixedPitch(<span class="keyword">true</span>);
+<a name="l00040"></a>00040   font.setPointSize(10);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042   <span class="comment">// Editor</span>
+<a name="l00043"></a>00043   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>=<span class="keyword">new</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1LuaHighlighter.html">LuaHighlighter</a>();
+<a name="l00044"></a>00044   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>=<span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);
+<a name="l00045"></a>00045   hb1-&gt;addWidget(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>);
+<a name="l00046"></a>00046   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;setFont(font);
+<a name="l00047"></a>00047   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>-&gt;<a class="code" href="classRainbruRPG_1_1Editor_1_1Highlighter.html#5208b27421fb6bb5f6faf36f44a7822c">addToDocument</a>(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;document());
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;setLineWrapMode( QTextEdit::NoWrap );
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052   <span class="comment">// Status bar </span>
+<a name="l00053"></a>00053   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#79ec58aea3da00008d08c7bb5d6a8486">statusBar</a>=<span class="keyword">new</span> QStatusBar(<span class="keyword">this</span>);
+<a name="l00054"></a>00054   hb1-&gt;addWidget(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#79ec58aea3da00008d08c7bb5d6a8486">statusBar</a>);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">cursorPositionChanged</a>();
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058   connect(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>, SIGNAL(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">cursorPositionChanged</a>()), 
+<a name="l00059"></a>00059           <span class="keyword">this</span>, SLOT(<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">cursorPositionChanged</a>()));
+<a name="l00060"></a>00060 }
+<a name="l00061"></a>00061 
+<a name="l00065"></a><a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#1b7c76207f1dcc8c5238224fc672972e">00065</a> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#1b7c76207f1dcc8c5238224fc672972e">RainbruRPG::Editor::ScriptEditor::~ScriptEditor</a>(){
+<a name="l00066"></a>00066   <span class="keyword">delete</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a>;
+<a name="l00067"></a>00067   <span class="keyword">delete</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>;
+<a name="l00068"></a>00068   <span class="keyword">delete</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#79ec58aea3da00008d08c7bb5d6a8486">statusBar</a>;
+<a name="l00069"></a>00069 }
+<a name="l00070"></a>00070 
+<a name="l00074"></a><a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">00074</a> <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">RainbruRPG::Editor::ScriptEditor::cursorPositionChanged</a>(){
+<a name="l00075"></a>00075   <span class="keywordtype">int</span> cursorPos=<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;textCursor().position();
+<a name="l00076"></a>00076   <span class="keywordtype">int</span> col=cursorPos;
+<a name="l00077"></a>00077   <span class="keywordtype">int</span> line=1;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079   QString text=<a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a>-&gt;toPlainText();
+<a name="l00080"></a>00080   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt; text.size(); i++){
+<a name="l00081"></a>00081     i=text.indexOf(<span class="stringliteral">"\n"</span>, i );
+<a name="l00082"></a>00082     <span class="keywordflow">if</span> (i&lt;cursorPos&amp;&amp; i!=-1){
+<a name="l00083"></a>00083       col=cursorPos-i;
+<a name="l00084"></a>00084       line++;
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086     <span class="keywordflow">else</span>{
+<a name="l00087"></a>00087       <span class="keywordflow">break</span>;
+<a name="l00088"></a>00088     }
+<a name="l00089"></a>00089   }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091   <span class="comment">// For a bug</span>
+<a name="l00092"></a>00092   <span class="keywordflow">if</span> (line==1) col++;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094   QString l=tr(<span class="stringliteral">"Line : "</span>);
+<a name="l00095"></a>00095   QString l2;
+<a name="l00096"></a>00096   l2.setNum(line);
+<a name="l00097"></a>00097   l+=l2;
+<a name="l00098"></a>00098   l+=<span class="stringliteral">" "</span>;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100   QString c=tr(<span class="stringliteral">"Column : "</span>);
+<a name="l00101"></a>00101   QString c2;
+<a name="l00102"></a>00102   c2.setNum(col);
+<a name="l00103"></a>00103   c+=c2;
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105   l+=c;
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107   <a class="code" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#79ec58aea3da00008d08c7bb5d6a8486">statusBar</a>-&gt;showMessage(l);
+<a name="l00108"></a>00108 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:51 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

@@ -92,6 +92,12 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#b0d16930e28f32de19b949af6b7e4b86">typeToString</a> (<a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce">tNetPacketIdentifier</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a string from a packet identifier.  <a href="#b0d16930e28f32de19b949af6b7e4b86"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bc1df3edeeaca1c689c80e6611871841">setReliable</a> (bool)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the reliable attribute of the packet.  <a href="#bc1df3edeeaca1c689c80e6611871841"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bbd8434fcc472f67a85f75830c22a5d1">isReliable</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is this packet sent in reliable mode ?  <a href="#bbd8434fcc472f67a85f75830c22a5d1"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f0a10af840f57e1834a7963f4f27cbce">convert</a> (int)</td></tr>
 
@@ -394,7 +400,60 @@ Get a string from a packet identifier.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>A string corresponding to the given packet identifier </dd></dl>
 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00114">114</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00118">118</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+</div>
+</div><p>
+<a class="anchor" name="bc1df3edeeaca1c689c80e6611871841"></a><!-- doxytag: member="RainbruRPG::Network::npConnectionResponse::setReliable" ref="bc1df3edeeaca1c689c80e6611871841" args="(bool)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RainbruRPG::Network::NetPacketBase::setReliable           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>r</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set the reliable attribute of the packet. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>The new reliable status </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00148">148</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+</div>
+</div><p>
+<a class="anchor" name="bbd8434fcc472f67a85f75830c22a5d1"></a><!-- doxytag: member="RainbruRPG::Network::npConnectionResponse::isReliable" ref="bbd8434fcc472f67a85f75830c22a5d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RainbruRPG::Network::NetPacketBase::isReliable           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Is this packet sent in reliable mode ? 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>The reliable status </dd></dl>
+
+<p>
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00157">157</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <a class="anchor" name="f0a10af840f57e1834a7963f4f27cbce"></a><!-- doxytag: member="RainbruRPG::Network::npConnectionResponse::convert" ref="f0a10af840f57e1834a7963f4f27cbce" args="(int)" -->
@@ -418,7 +477,7 @@ Convert an int to the little-endian Byte Order.
 <p>
 If your CPU work in little-endian, it does nothing but if it is big-endian, a conversion is needed. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00065">65</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00069">69</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -438,12 +497,12 @@ The packet identifier.
 <p>
 You must set this in the sub-class constructor. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00199">199</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00209">209</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>common/<a class="el" href="npconnectionresponse_8h-source.html">npconnectionresponse.h</a><li>common/<a class="el" href="npconnectionresponse_8cpp-source.html">npconnectionresponse.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:43 2007 for RainbruRPG by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:59 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

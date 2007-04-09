@@ -333,8 +333,7 @@ netflooderwindow.o netflooderwindow.o: netflooderwindow.cpp \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_multimap.h \
   ../../common/stringconv.h ../../common/stringconv.h \
   ../../common/npidentification.h floodpanel.h floodertestbase.h \
-  ../../common/enetbase.h ../../config.h connectionpanel.h \
-  /usr/include/fox-1.6/FXMessageBox.h
+  ../../config.h connectionpanel.h /usr/include/fox-1.6/FXMessageBox.h
 
 netflooderwindow.h:
 
@@ -1309,8 +1308,6 @@ waitingpanel.h:
 floodpanel.h:
 
 floodertestbase.h:
-
-../../common/enetbase.h:
 
 ../../config.h:
 

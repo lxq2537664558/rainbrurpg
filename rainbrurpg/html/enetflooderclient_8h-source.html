@@ -51,32 +51,35 @@
 <a name="l00033"></a>00033 <span class="preprocessor">#include &lt;netpacketbase.h&gt;</span>
 <a name="l00034"></a>00034 <span class="preprocessor">#include &lt;sigc++/sigc++.h&gt;</span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">namespace </span>RainbruRPG{
-<a name="l00037"></a>00037   <span class="keyword">namespace </span>Network{
-<a name="l00038"></a>00038 
-<a name="l00044"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html">00044</a>     <span class="keyword">class </span><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html">EnetFlooderClient</a> : <span class="keyword">public</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html">EnetClient</a>, <span class="keyword">public</span> sigc::trackable {
-<a name="l00045"></a>00045     <span class="keyword">public</span>:
-<a name="l00047"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">00047</a>       <span class="keyword">typedef</span> sigc::signal&lt;void&gt; <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a>;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#cf8fa5de2b473ddbcf425daf1c0d6a73">EnetFlooderClient</a>();
-<a name="l00050"></a>00050       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#83f9decbdbbe87f22727048430652ed0">~EnetFlooderClient</a>();
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052       <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#aaf8cc21c440447d2df389d3ad0064c1">eventLoop</a>();
+<a name="l00036"></a>00036 <span class="preprocessor">#include "netpacketflooderbase.h"</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="keyword">namespace </span>RainbruRPG{
+<a name="l00039"></a>00039   <span class="keyword">namespace </span>Network{
+<a name="l00040"></a>00040 
+<a name="l00046"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html">00046</a>     <span class="keyword">class </span><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html">EnetFlooderClient</a> : <span class="keyword">public</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html">EnetClient</a>, <span class="keyword">public</span> sigc::trackable {
+<a name="l00047"></a>00047     <span class="keyword">public</span>:
+<a name="l00049"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">00049</a>       <span class="keyword">typedef</span> sigc::signal&lt;void&gt; <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a>;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#cf8fa5de2b473ddbcf425daf1c0d6a73">EnetFlooderClient</a>();
+<a name="l00052"></a>00052       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#83f9decbdbbe87f22727048430652ed0">~EnetFlooderClient</a>();
 <a name="l00053"></a>00053 
-<a name="l00055"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#49802ecfc7aabe1a8f0c3becf0cae08b">00055</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#49802ecfc7aabe1a8f0c3becf0cae08b">sigConnectionAccepted</a>;
-<a name="l00057"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#a78d811a2bfd42f1d92d129c670fac39">00057</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#a78d811a2bfd42f1d92d129c670fac39">sigConnectionRefused</a>;
-<a name="l00059"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2c1e9f412e918280929ff09e2002eb73">00059</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2c1e9f412e918280929ff09e2002eb73">sigConnectionUndefined</a>;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061     <span class="keyword">private</span>:
-<a name="l00062"></a>00062       <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2ea54b08572dcf8e143dccb89ac23c85">treatPacket</a>(<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html">NetPacketBase</a>*, ENetEvent* );
+<a name="l00054"></a>00054       <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#aaf8cc21c440447d2df389d3ad0064c1">eventLoop</a>();
+<a name="l00055"></a>00055       <span class="keywordtype">int</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#c7451eb2cb0218509047f89738a72dd2">sendPacketAndWaitResponse</a>(<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketFlooderBase.html">NetPacketFlooderBase</a>*, <span class="keywordtype">bool</span>);
+<a name="l00056"></a>00056 
+<a name="l00058"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#49802ecfc7aabe1a8f0c3becf0cae08b">00058</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#49802ecfc7aabe1a8f0c3becf0cae08b">sigConnectionAccepted</a>;
+<a name="l00060"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#a78d811a2bfd42f1d92d129c670fac39">00060</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#a78d811a2bfd42f1d92d129c670fac39">sigConnectionRefused</a>;
+<a name="l00062"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2c1e9f412e918280929ff09e2002eb73">00062</a>       <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#ab98d8a531d61c5fa86b996b58aeaec4">tVoidSignal</a> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2c1e9f412e918280929ff09e2002eb73">sigConnectionUndefined</a>;
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064     };
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066   }
-<a name="l00067"></a>00067 }
+<a name="l00064"></a>00064     <span class="keyword">private</span>:
+<a name="l00065"></a>00065       <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetFlooderClient.html#2ea54b08572dcf8e143dccb89ac23c85">treatPacket</a>(<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html">NetPacketBase</a>*, ENetEvent* );
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067     };
 <a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="preprocessor">#endif // ENET_FLOODER_CLIENT_H</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+<a name="l00069"></a>00069   }
+<a name="l00070"></a>00070 }
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="preprocessor">#endif // ENET_FLOODER_CLIENT_H</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

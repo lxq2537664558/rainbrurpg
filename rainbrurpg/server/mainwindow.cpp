@@ -441,9 +441,12 @@ packetReceived(const tReceivedPacket& e){
 
     server->getServer()->sendPacket(e.peer, &ncr);
   }
+  else if (i==NPI_FLOOD_0004){
+    LOGI("A netflooder paquet with 4 bytes long was received");
+  }
 }
 
-/** Is the given client type is accepted
+/** Is the given client type accepted ?
   *
   * \param t The client type to test
   *

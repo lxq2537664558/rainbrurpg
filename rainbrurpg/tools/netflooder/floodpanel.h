@@ -65,6 +65,9 @@ namespace RainbruRPG{
 
       virtual void create();
       
+
+      void setClient(EnetFlooderClient* );
+
       /** The enumeration defining the Fox selectors, used in event 
         * mechanism
 	*/
@@ -86,6 +89,8 @@ namespace RainbruRPG{
 
     private:
       void feedTestCombo(FXComboBox*);
+      void performTest(int);
+      void performAllTests();
 
       /** The global progress bar */
       FXProgressBar* pgGlobal;
@@ -93,6 +98,16 @@ namespace RainbruRPG{
       FXProgressBar* pgStep;
       /** The test list */
       tFlooderTestList* testList;
+
+      /** The index of the selected test in the combobox
+        *
+	* If 0 (zero) all test must be perform.
+	*
+	*/
+      int selectedTest;
+
+      /** The flooder enet client kept to send packet */
+      EnetFlooderClient* client;
     }; 
   }
 }

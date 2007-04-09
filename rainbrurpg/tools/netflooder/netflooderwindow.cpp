@@ -50,7 +50,7 @@ FXIMPLEMENT(RainbruRPG::Gui::NetFlooderWindow,FXMainWindow,NetFlooderWindowMap,A
   *
   */
 RainbruRPG::Gui::NetFlooderWindow::NetFlooderWindow(FXApp * a)
-   :FXMainWindow(a,"RainbruRPG Xident",NULL,NULL,DECOR_ALL,0,0,800,600){
+   :FXMainWindow(a,"RainbruRPG netflooder",NULL,NULL,DECOR_ALL,0,0,800,600){
 
   // We start with an incremental panel identifier at 0
   switcherChildId=0;
@@ -278,5 +278,6 @@ onManageFlood(FXObject* o,FXSelector s,void* v){
 void RainbruRPG::Gui::NetFlooderWindow::slotConnectionAccepted(){
   LOGI("NetFlooderWindow::slotConnectionAccepted");
   switcher->setCurrent(panelFloodId, false);
+  fp->setClient(wp->getClient());
   wp->reset();
 }

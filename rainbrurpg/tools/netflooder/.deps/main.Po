@@ -363,8 +363,7 @@ main.o main.o: main.cpp \
   /usr/include/curl/curl.h ../../common/curlgetfile.h \
   ../../common/curlinterface.h ../../common/httpresponse.h \
   ../../common/stringconv.h ../../common/stringconv.h \
-  ../../common/npidentification.h floodpanel.h floodertestbase.h \
-  ../../common/enetbase.h
+  ../../common/npidentification.h floodpanel.h floodertestbase.h
 
 /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream:
 
@@ -1409,5 +1408,3 @@ waitingpanel.h:
 floodpanel.h:
 
 floodertestbase.h:
-
-../../common/enetbase.h:

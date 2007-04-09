@@ -110,14 +110,29 @@
 <a name="l00117"></a><a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#f323f61e69425dbd5ad2fabde4c2255b">00117</a> <span class="keywordtype">void</span> <a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#f323f61e69425dbd5ad2fabde4c2255b">RainbruRPG::Network::EnetClient::sendPacket</a>(<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html">NetPacketBase</a>* p){
 <a name="l00118"></a>00118   p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#4af94e813a122a436851cac337ee9827">netSerialize</a>();
 <a name="l00119"></a>00119 
-<a name="l00120"></a>00120   ENetPacket * packet = enet_packet_create 
-<a name="l00121"></a>00121     (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), 0);<span class="comment">//, ENET_PACKET_FLAG_RELIABLE);</span>
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123   enet_peer_send (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#5189902436297f3d520a64881af7fce9">peer</a>, 0, packet);
-<a name="l00124"></a>00124   enet_host_flush (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#16a716de9a204f09666fbcc579931a60">client</a>);
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:39 2007 for RainbruRPG by&nbsp;
+<a name="l00120"></a>00120   ENetPacket * packet;
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 <span class="preprocessor">#ifndef ALWAYS_USE_RELIABLE</span>
+<a name="l00123"></a>00123 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bbd8434fcc472f67a85f75830c22a5d1">isReliable</a>()){
+<a name="l00124"></a>00124     packet= enet_packet_create 
+<a name="l00125"></a>00125       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), ENET_PACKET_FLAG_RELIABLE);
+<a name="l00126"></a>00126   }
+<a name="l00127"></a>00127   <span class="keywordflow">else</span>{
+<a name="l00128"></a>00128     packet = enet_packet_create 
+<a name="l00129"></a>00129       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), 0);
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131   }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 <span class="preprocessor">#else</span>
+<a name="l00134"></a>00134 <span class="preprocessor"></span>    packet= enet_packet_create 
+<a name="l00135"></a>00135       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), ENET_PACKET_FLAG_RELIABLE);
+<a name="l00136"></a>00136 <span class="preprocessor">#endif</span>
+<a name="l00137"></a>00137 <span class="preprocessor"></span>
+<a name="l00138"></a>00138   enet_peer_send (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#5189902436297f3d520a64881af7fce9">peer</a>, 0, packet);
+<a name="l00139"></a>00139   enet_host_flush (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetClient.html#16a716de9a204f09666fbcc579931a60">client</a>);
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:51 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

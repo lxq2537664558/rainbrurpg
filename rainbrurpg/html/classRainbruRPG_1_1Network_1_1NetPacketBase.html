@@ -27,8 +27,10 @@
 <p>
 Inheritance diagram for RainbruRPG::Network::NetPacketBase:<p><center><img src="classRainbruRPG_1_1Network_1_1NetPacketBase__inherit__graph.png" border="0" usemap="#RainbruRPG_1_1Network_1_1NetPacketBase__inherit__map" alt="Inheritance graph"></center>
 <map name="RainbruRPG_1_1Network_1_1NetPacketBase__inherit__map">
-<area href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html" shape="rect" coords="6,81,339,105" alt="">
-<area href="classRainbruRPG_1_1Network_1_1npIdentification.html" shape="rect" coords="363,81,646,105" alt="">
+<area href="classRainbruRPG_1_1Network_1_1NetPacketFlooderBase.html" shape="rect" coords="5,82,331,106" alt="">
+<area href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html" shape="rect" coords="355,82,688,106" alt="">
+<area href="classRainbruRPG_1_1Network_1_1npIdentification.html" shape="rect" coords="712,82,995,106" alt="">
+<area href="classRainbruRPG_1_1Network_1_1npFlooder0004.html" shape="rect" coords="29,156,307,180" alt="">
 </map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center>Collaboration diagram for RainbruRPG::Network::NetPacketBase:<p><center><img src="classRainbruRPG_1_1Network_1_1NetPacketBase__coll__graph.png" border="0" usemap="#RainbruRPG_1_1Network_1_1NetPacketBase__coll__map" alt="Collaboration graph"></center>
 <map name="RainbruRPG_1_1Network_1_1NetPacketBase__coll__map">
@@ -49,7 +51,7 @@ The conversion is made in the <a class="el" href="classRainbruRPG_1_1Network_1_1
 <p>
 
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00148">148</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00155">155</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.<table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#67e62b9e6f8b963fe68121ac13fb0973">NetPacketBase</a> ()</td></tr>
@@ -88,6 +90,12 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#b0d16930e28f32de19b949af6b7e4b86">typeToString</a> (<a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce">tNetPacketIdentifier</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a string from a packet identifier.  <a href="#b0d16930e28f32de19b949af6b7e4b86"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bc1df3edeeaca1c689c80e6611871841">setReliable</a> (bool)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the reliable attribute of the packet.  <a href="#bc1df3edeeaca1c689c80e6611871841"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bbd8434fcc472f67a85f75830c22a5d1">isReliable</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is this packet sent in reliable mode ?  <a href="#bbd8434fcc472f67a85f75830c22a5d1"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f0a10af840f57e1834a7963f4f27cbce">convert</a> (int)</td></tr>
 
@@ -97,9 +105,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The packet identifier.  <a href="#fbad155de1eb9a69d9323f0533919b32"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4656349c8e20a3875ebaac6d372246c">isReliable</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#4d6f07175fbb1ce082e0b1070a0f6308">reliable</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines if the packet is reliable.  <a href="#f4656349c8e20a3875ebaac6d372246c"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines if the packet is reliable.  <a href="#4d6f07175fbb1ce082e0b1070a0f6308"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ede8ee38d277919427790feffcd6a160"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::data" ref="ede8ee38d277919427790feffcd6a160" args="" -->
 <a class="el" href="unionRainbruRPG_1_1Network_1_1npPacketBaseData.html">npPacketBaseData</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#ede8ee38d277919427790feffcd6a160">data</a></td></tr>
 
@@ -124,9 +132,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>
 Default constructor. 
 <p>
-It sets the current id to NPI_INVALID. 
+It sets the current id to NPI_INVALID and the packet is by default reliable. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00032">32</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00033">33</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <a class="anchor" name="6aa0c461d1a39235f44159e71b68a119"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::NetPacketBase" ref="6aa0c461d1a39235f44159e71b68a119" args="(tNetPacketIdentifier)" -->
@@ -148,6 +156,7 @@ Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00032">32
 <p>
 The identified constructor. 
 <p>
+The packet is by default reliable.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>The identifier of the packet </td></tr>
@@ -155,7 +164,7 @@ The identified constructor.
 </dl>
 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00043">43</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00046">46</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -179,9 +188,9 @@ Serialize the packet to go over the network.
 <p>
 It creates the packet's data according to this class instance values. 
 <p>
-Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#8564bb396952e1d739ddd080e74ed95f">RainbruRPG::Network::npConnectionResponse</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#c3e77c5b5d93ca376f635e04145dc7c3">RainbruRPG::Network::npIdentification</a>.
+Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#8564bb396952e1d739ddd080e74ed95f">RainbruRPG::Network::npConnectionResponse</a>, <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#c3e77c5b5d93ca376f635e04145dc7c3">RainbruRPG::Network::npIdentification</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#5c6636817cd9c6765af7b5e8a4c94290">RainbruRPG::Network::npFlooder0004</a>.
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00160">160</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00167">167</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <a class="anchor" name="dfb6a1d1134bf74c0b3e41ac56aec3b3"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::netDeserialize" ref="dfb6a1d1134bf74c0b3e41ac56aec3b3" args="()" -->
@@ -204,9 +213,9 @@ Deserialize a packet coming from the network.
 <p>
 It initalize this class instance's values with a packet coming from the network. 
 <p>
-Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#8bb4c892d94606a8cceb56517018bac5">RainbruRPG::Network::npConnectionResponse</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#96b58d129bfa28fbf61d22e7c2202bc6">RainbruRPG::Network::npIdentification</a>.
+Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#8bb4c892d94606a8cceb56517018bac5">RainbruRPG::Network::npConnectionResponse</a>, <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#96b58d129bfa28fbf61d22e7c2202bc6">RainbruRPG::Network::npIdentification</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#a259c719e806c682bae0008baf1e3c0d">RainbruRPG::Network::npFlooder0004</a>.
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00168">168</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00175">175</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <a class="anchor" name="f4783dc2543a29f05f82db500f3960f1"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::getData" ref="f4783dc2543a29f05f82db500f3960f1" args="()" -->
@@ -230,9 +239,9 @@ Get the resulting data of the netSerialization.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>The packet data </dd></dl>
 
 <p>
-Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#adaa788392e41f97eefeff8f6ad29039">RainbruRPG::Network::npConnectionResponse</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#df24ec78a8f59f8db68748ed4a975c8c">RainbruRPG::Network::npIdentification</a>.
+Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#adaa788392e41f97eefeff8f6ad29039">RainbruRPG::Network::npConnectionResponse</a>, <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#df24ec78a8f59f8db68748ed4a975c8c">RainbruRPG::Network::npIdentification</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#e3a4f91505ab800d60eb58fb4012d2b7">RainbruRPG::Network::npFlooder0004</a>.
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00175">175</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00182">182</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <a class="anchor" name="b103beb46db3774ed1f4b1cc93bb0be9"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::setData" ref="b103beb46db3774ed1f4b1cc93bb0be9" args="(enet_uint8 *, size_t)" -->
@@ -271,9 +280,9 @@ Set the data from a ENetPacket data structure.
 </dl>
 
 <p>
-Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#b600775f14dfa5f46bf0fa3fd12dc7aa">RainbruRPG::Network::npConnectionResponse</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#fc63dfc3b1425ab873179d6c4df444dd">RainbruRPG::Network::npIdentification</a>.
+Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#b600775f14dfa5f46bf0fa3fd12dc7aa">RainbruRPG::Network::npConnectionResponse</a>, <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#fc63dfc3b1425ab873179d6c4df444dd">RainbruRPG::Network::npIdentification</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#ff66e49419739d3a32522f6c98898cf3">RainbruRPG::Network::npFlooder0004</a>.
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00099">99</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00103">103</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <a class="anchor" name="141d83a3cbaec7d40cccff2a2953b5ff"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::getDataLength" ref="141d83a3cbaec7d40cccff2a2953b5ff" args="()" -->
@@ -297,9 +306,9 @@ The data length.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the data length as given from sizeof() </dd></dl>
 
 <p>
-Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#05470772a00b679ab1710ac349bbd295">RainbruRPG::Network::npConnectionResponse</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#02347afc31ec73e1ac691d602667deb1">RainbruRPG::Network::npIdentification</a>.
+Reimplemented in <a class="el" href="classRainbruRPG_1_1Network_1_1npConnectionResponse.html#05470772a00b679ab1710ac349bbd295">RainbruRPG::Network::npConnectionResponse</a>, <a class="el" href="classRainbruRPG_1_1Network_1_1npIdentification.html#02347afc31ec73e1ac691d602667deb1">RainbruRPG::Network::npIdentification</a>, and <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#9bb3e04bd90e559554f75d88c480ffec">RainbruRPG::Network::npFlooder0004</a>.
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00183">183</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00190">190</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <a class="anchor" name="b0d16930e28f32de19b949af6b7e4b86"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::typeToString" ref="b0d16930e28f32de19b949af6b7e4b86" args="(tNetPacketIdentifier)" -->
@@ -329,7 +338,60 @@ Get a string from a packet identifier.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>A string corresponding to the given packet identifier </dd></dl>
 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00114">114</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00118">118</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+</div>
+</div><p>
+<a class="anchor" name="bc1df3edeeaca1c689c80e6611871841"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::setReliable" ref="bc1df3edeeaca1c689c80e6611871841" args="(bool)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RainbruRPG::Network::NetPacketBase::setReliable           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>r</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set the reliable attribute of the packet. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>The new reliable status </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00148">148</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+</div>
+</div><p>
+<a class="anchor" name="bbd8434fcc472f67a85f75830c22a5d1"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::isReliable" ref="bbd8434fcc472f67a85f75830c22a5d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RainbruRPG::Network::NetPacketBase::isReliable           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Is this packet sent in reliable mode ? 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>The reliable status </dd></dl>
+
+<p>
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00157">157</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <a class="anchor" name="f0a10af840f57e1834a7963f4f27cbce"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::convert" ref="f0a10af840f57e1834a7963f4f27cbce" args="(int)" -->
@@ -353,7 +415,7 @@ Convert an int to the little-endian Byte Order.
 <p>
 If your CPU work in little-endian, it does nothing but if it is big-endian, a conversion is needed. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00065">65</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
+Definition at line <a class="el" href="netpacketbase_8cpp-source.html#l00069">69</a> of file <a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -373,15 +435,15 @@ The packet identifier.
 <p>
 You must set this in the sub-class constructor. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00199">199</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00209">209</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
-<a class="anchor" name="f4656349c8e20a3875ebaac6d372246c"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::isReliable" ref="f4656349c8e20a3875ebaac6d372246c" args="" -->
+<a class="anchor" name="4d6f07175fbb1ce082e0b1070a0f6308"></a><!-- doxytag: member="RainbruRPG::Network::NetPacketBase::reliable" ref="4d6f07175fbb1ce082e0b1070a0f6308" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4656349c8e20a3875ebaac6d372246c">RainbruRPG::Network::NetPacketBase::isReliable</a><code> [private]</code>          </td>
+          <td class="memname">bool <a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#4d6f07175fbb1ce082e0b1070a0f6308">RainbruRPG::Network::NetPacketBase::reliable</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -392,12 +454,12 @@ Defines if the packet is reliable.
 <p>
 This value is overriden by the ALWAYS_USE_RELIABLE if defined. 
 <p>
-Definition at line <a class="el" href="netpacketbase_8h-source.html#l00208">208</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
+Definition at line <a class="el" href="netpacketbase_8h-source.html#l00218">218</a> of file <a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>common/<a class="el" href="netpacketbase_8h-source.html">netpacketbase.h</a><li>common/<a class="el" href="netpacketbase_8cpp-source.html">netpacketbase.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:43 2007 for RainbruRPG by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:59 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

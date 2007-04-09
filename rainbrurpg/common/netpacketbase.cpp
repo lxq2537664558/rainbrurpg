@@ -128,6 +128,10 @@ typeToString(tNetPacketIdentifier t){
     ret="Server connection response";
     break;
 
+  case NPI_FLOOD_0004:
+    ret="Net flooder packet (4 bytes)";
+    break;
+
   case NPI_INVALID:
     ret="Unset";
     break;

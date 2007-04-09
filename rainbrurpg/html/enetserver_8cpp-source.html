@@ -142,14 +142,27 @@
 <a name="l00155"></a>00155   LOGI(<span class="stringliteral">"Sending a packet"</span>);
 <a name="l00156"></a>00156 
 <a name="l00157"></a>00157   p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#4af94e813a122a436851cac337ee9827">netSerialize</a>();
-<a name="l00158"></a>00158 
-<a name="l00159"></a>00159   ENetPacket * packet = enet_packet_create 
-<a name="l00160"></a>00160     (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), 0);<span class="comment">//, ENET_PACKET_FLAG_RELIABLE);</span>
-<a name="l00161"></a>00161 
-<a name="l00162"></a>00162   enet_peer_send (peer, 0, packet);
-<a name="l00163"></a>00163   enet_host_flush (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetServer.html#113f06d3bdf60f3b8dbc0eeb29569edc">server</a>);
-<a name="l00164"></a>00164 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+<a name="l00158"></a>00158   ENetPacket * packet;
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 <span class="preprocessor">#ifndef ALWAYS_USE_RELIABLE</span>
+<a name="l00161"></a>00161 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#bbd8434fcc472f67a85f75830c22a5d1">isReliable</a>()){
+<a name="l00162"></a>00162     packet = enet_packet_create 
+<a name="l00163"></a>00163       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), ENET_PACKET_FLAG_RELIABLE);
+<a name="l00164"></a>00164   }
+<a name="l00165"></a>00165   <span class="keywordflow">else</span>{
+<a name="l00166"></a>00166     packet = enet_packet_create 
+<a name="l00167"></a>00167       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), 0);
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169   }
+<a name="l00170"></a>00170 <span class="preprocessor">#else</span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span>    packet = enet_packet_create 
+<a name="l00172"></a>00172       (p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#f4783dc2543a29f05f82db500f3960f1">getData</a>(), p-&gt;<a class="code" href="classRainbruRPG_1_1Network_1_1NetPacketBase.html#141d83a3cbaec7d40cccff2a2953b5ff">getDataLength</a>(), ENET_PACKET_FLAG_RELIABLE);
+<a name="l00173"></a>00173 <span class="preprocessor">#endif</span>
+<a name="l00174"></a>00174 <span class="preprocessor"></span>
+<a name="l00175"></a>00175   enet_peer_send (peer, 0, packet);
+<a name="l00176"></a>00176   enet_host_flush (<a class="code" href="classRainbruRPG_1_1Network_1_1EnetServer.html#113f06d3bdf60f3b8dbc0eeb29569edc">server</a>);
+<a name="l00177"></a>00177 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

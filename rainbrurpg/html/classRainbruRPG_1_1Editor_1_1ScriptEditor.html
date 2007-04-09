@@ -36,7 +36,7 @@ Provides a script editor for the <a class="el" href="namespaceRainbruRPG.html">R
 <p>
 
 <p>
-Definition at line <a class="el" href="scripteditor_8h-source.html#l00043">43</a> of file <a class="el" href="scripteditor_8h-source.html">scripteditor.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+Definition at line <a class="el" href="scripteditor_8h-source.html#l00046">46</a> of file <a class="el" href="scripteditor_8h-source.html">scripteditor.h</a>.<table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#4d74227fbeca5d0861c4623eaf73d8fd">ScriptEditor</a> (QWidget *parent=0)</td></tr>
@@ -46,6 +46,15 @@ Definition at line <a class="el" href="scripteditor_8h-source.html#l00043">43</a
 &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#1b7c76207f1dcc8c5238224fc672972e">~ScriptEditor</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The destructor. <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Slots</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7dfa02b41a5e164a35cfc4da1013f940"></a><!-- doxytag: member="RainbruRPG::Editor::ScriptEditor::cursorPositionChanged" ref="7dfa02b41a5e164a35cfc4da1013f940" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#7dfa02b41a5e164a35cfc4da1013f940">cursorPositionChanged</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Computes the line and column position of the text cursor and draw it. <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="468af5deadba1cd19a26cf911755cf33"></a><!-- doxytag: member="RainbruRPG::Editor::ScriptEditor::showStatusBarMessage" ref="468af5deadba1cd19a26cf911755cf33" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>showStatusBarMessage</b> ()</td></tr>
+
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9ddef1ad3243bd7e9374529d8520d5b5"></a><!-- doxytag: member="RainbruRPG::Editor::ScriptEditor::highlighter" ref="9ddef1ad3243bd7e9374529d8520d5b5" args="" -->
 <a class="el" href="classRainbruRPG_1_1Editor_1_1Highlighter.html">Highlighter</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#9ddef1ad3243bd7e9374529d8520d5b5">highlighter</a></td></tr>
@@ -55,6 +64,10 @@ Definition at line <a class="el" href="scripteditor_8h-source.html#l00043">43</a
 QTextEdit *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#2451c9307bff28b867d4285bbce9f55b">edit</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The text edit widget. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="79ec58aea3da00008d08c7bb5d6a8486"></a><!-- doxytag: member="RainbruRPG::Editor::ScriptEditor::statusBar" ref="79ec58aea3da00008d08c7bb5d6a8486" args="" -->
+QStatusBar *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Editor_1_1ScriptEditor.html#79ec58aea3da00008d08c7bb5d6a8486">statusBar</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The status bar. <br></td></tr>
 </table>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="4d74227fbeca5d0861c4623eaf73d8fd"></a><!-- doxytag: member="RainbruRPG::Editor::ScriptEditor::ScriptEditor" ref="4d74227fbeca5d0861c4623eaf73d8fd" args="(QWidget *parent=0)" -->
@@ -88,7 +101,7 @@ Definition at line <a class="el" href="scripteditor_8cpp-source.html#l00030">30<
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>editor/<a class="el" href="scripteditor_8h-source.html">scripteditor.h</a><li>editor/<a class="el" href="scripteditor_8cpp-source.html">scripteditor.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:42 2007 for RainbruRPG by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:58 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

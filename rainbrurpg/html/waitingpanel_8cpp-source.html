@@ -45,8 +45,8 @@
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028 FXDEFMAP(<a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html">RainbruRPG::Gui::WaitingPanel</a>) WaitingPanelMap[]={
 <a name="l00029"></a>00029   <span class="comment">//____Message_Type_____________ID_______________Message_Handler_______</span>
-<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#eced116f36b3aa34cfce736c874b2443afe85ecde301527331d44b968205a5d3">RainbruRPG::Gui::WaitingPanel::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#f5343cb737aafd97d10ec547ae0a9cfa">RainbruRPG::Gui::WaitingPanel::onNotYetImplemented</a>),
-<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#eced116f36b3aa34cfce736c874b2443c555a937b4f31f273e9f019963645ea0">RainbruRPG::Gui::WaitingPanel::ID_RUN_CLIENT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#b7e6d59c43e0f91d540b1b736e5cdbc5">RainbruRPG::Gui::WaitingPanel::onRunClient</a>),
+<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#30181588c6b686a9f0a9ed5afa43a22aafe85ecde301527331d44b968205a5d3">RainbruRPG::Gui::WaitingPanel::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#f5343cb737aafd97d10ec547ae0a9cfa">RainbruRPG::Gui::WaitingPanel::onNotYetImplemented</a>),
+<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#30181588c6b686a9f0a9ed5afa43a22ac555a937b4f31f273e9f019963645ea0">RainbruRPG::Gui::WaitingPanel::ID_RUN_CLIENT</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#b7e6d59c43e0f91d540b1b736e5cdbc5">RainbruRPG::Gui::WaitingPanel::onRunClient</a>),
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033 };
 <a name="l00034"></a>00034 
@@ -69,7 +69,7 @@
 <a name="l00060"></a>00060   <span class="comment">// The progress bar frame</span>
 <a name="l00061"></a>00061   FXVerticalFrame *frProg = <span class="keyword">new</span> FXVerticalFrame(root,
 <a name="l00062"></a>00062              LAYOUT_FILL_X);
-<a name="l00063"></a>00063   <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#21b6314330d8e50728982ee041b74aca">prog</a>=<span class="keyword">new</span>  FXProgressBar(frProg, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#eced116f36b3aa34cfce736c874b2443afe85ecde301527331d44b968205a5d3">ID_NYI</a>, 
+<a name="l00063"></a>00063   <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#21b6314330d8e50728982ee041b74aca">prog</a>=<span class="keyword">new</span>  FXProgressBar(frProg, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#30181588c6b686a9f0a9ed5afa43a22aafe85ecde301527331d44b968205a5d3">ID_NYI</a>, 
 <a name="l00064"></a>00064         PROGRESSBAR_NORMAL|LAYOUT_FILL_X|PROGRESSBAR_PERCENTAGE );
 <a name="l00065"></a>00065   <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#21b6314330d8e50728982ee041b74aca">prog</a>-&gt;setTotal(5);
 <a name="l00066"></a>00066 
@@ -83,10 +83,10 @@
 <a name="l00074"></a>00074   FXHorizontalFrame *frButtons = <span class="keyword">new</span> FXHorizontalFrame(frProg,
 <a name="l00075"></a>00075              LAYOUT_FILL_X|PACK_UNIFORM_WIDTH);
 <a name="l00076"></a>00076   FXButton* btnRun=<span class="keyword">new</span> FXButton(frButtons, <span class="stringliteral">"Run"</span>, NULL, <span class="keyword">this</span>, 
-<a name="l00077"></a>00077                                 <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#eced116f36b3aa34cfce736c874b2443c555a937b4f31f273e9f019963645ea0">ID_RUN_CLIENT</a>, BUTTON_NORMAL|LAYOUT_CENTER_X);
+<a name="l00077"></a>00077                                 <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#30181588c6b686a9f0a9ed5afa43a22ac555a937b4f31f273e9f019963645ea0">ID_RUN_CLIENT</a>, BUTTON_NORMAL|LAYOUT_CENTER_X);
 <a name="l00078"></a>00078 
 <a name="l00079"></a>00079   FXButton* btnRefresh=<span class="keyword">new</span> FXButton(frButtons, <span class="stringliteral">"Cancel"</span>, NULL, <span class="keyword">this</span>, 
-<a name="l00080"></a>00080                                     <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#eced116f36b3aa34cfce736c874b2443afe85ecde301527331d44b968205a5d3">ID_NYI</a>, BUTTON_NORMAL|LAYOUT_CENTER_X);
+<a name="l00080"></a>00080                                     <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#30181588c6b686a9f0a9ed5afa43a22aafe85ecde301527331d44b968205a5d3">ID_NYI</a>, BUTTON_NORMAL|LAYOUT_CENTER_X);
 <a name="l00081"></a>00081 
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083   <span class="comment">// Disable all steps</span>
@@ -245,7 +245,7 @@
 <a name="l00302"></a>00302   <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#5458c0b0585ae09ae338bc5e4482b43b">setAllStepsDisable</a>();
 <a name="l00303"></a>00303   <a class="code" href="classRainbruRPG_1_1Gui_1_1WaitingPanel.html#21b6314330d8e50728982ee041b74aca">prog</a>-&gt;setProgress(0);
 <a name="l00304"></a>00304 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

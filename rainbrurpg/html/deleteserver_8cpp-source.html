@@ -44,9 +44,9 @@
 <a name="l00026"></a>00026 
 <a name="l00027"></a>00027 FXDEFMAP(<a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html">RainbruRPG::Gui::DeleteServer</a>) DeleteServerMap[]={
 <a name="l00028"></a>00028   <span class="comment">//____Message_Type_____________ID_______________Message_Handler_______</span>
-<a name="l00029"></a>00029   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#503de2abf036d853abc1a259f98c922a4ad47f865880c7d4c2e2f6755856a709">RainbruRPG::Gui::DeleteServer::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#6a8a0f81c1af84858ae8bf86312292b2">RainbruRPG::Gui::DeleteServer::onNotYetImplemented</a>),
-<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#503de2abf036d853abc1a259f98c922a2cf6fa22e2f23ebeec17303c1d7ac814">RainbruRPG::Gui::DeleteServer::ID_BTN_CANCEL</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#44ed721eb98a71d71b1d652fba84c666">RainbruRPG::Gui::DeleteServer::onCancelClicked</a>),
-<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#503de2abf036d853abc1a259f98c922a94e0b7579baca035191056672fec664b">RainbruRPG::Gui::DeleteServer::ID_BTN_OK</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#786a83f0cfc1577b9a49d669703f262b">RainbruRPG::Gui::DeleteServer::onOkClicked</a>),
+<a name="l00029"></a>00029   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#174d77b73fe908c4e7c9b1d005c28ee74ad47f865880c7d4c2e2f6755856a709">RainbruRPG::Gui::DeleteServer::ID_NYI</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#6a8a0f81c1af84858ae8bf86312292b2">RainbruRPG::Gui::DeleteServer::onNotYetImplemented</a>),
+<a name="l00030"></a>00030   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#174d77b73fe908c4e7c9b1d005c28ee72cf6fa22e2f23ebeec17303c1d7ac814">RainbruRPG::Gui::DeleteServer::ID_BTN_CANCEL</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#44ed721eb98a71d71b1d652fba84c666">RainbruRPG::Gui::DeleteServer::onCancelClicked</a>),
+<a name="l00031"></a>00031   FXMAPFUNC(SEL_COMMAND, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#174d77b73fe908c4e7c9b1d005c28ee794e0b7579baca035191056672fec664b">RainbruRPG::Gui::DeleteServer::ID_BTN_OK</a>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#786a83f0cfc1577b9a49d669703f262b">RainbruRPG::Gui::DeleteServer::onOkClicked</a>),
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033 };
 <a name="l00034"></a>00034 
@@ -70,9 +70,9 @@
 <a name="l00062"></a>00062   FXuint btnOpts= LAYOUT_RIGHT|BUTTON_NORMAL|LAYOUT_FIX_WIDTH ;
 <a name="l00063"></a>00063   FXint btnWidth=120;
 <a name="l00064"></a>00064   FXButton* btn1=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"Cancel"</span>, NULL, <span class="keyword">this</span>, 
-<a name="l00065"></a>00065                                <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#503de2abf036d853abc1a259f98c922a2cf6fa22e2f23ebeec17303c1d7ac814">ID_BTN_CANCEL</a>, btnOpts, 0, 0, btnWidth);
+<a name="l00065"></a>00065                                <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#174d77b73fe908c4e7c9b1d005c28ee72cf6fa22e2f23ebeec17303c1d7ac814">ID_BTN_CANCEL</a>, btnOpts, 0, 0, btnWidth);
 <a name="l00066"></a>00066   btn1-&gt;setDefault(<span class="keyword">true</span>);
-<a name="l00067"></a>00067   FXButton* btn2=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"OK"</span>, NULL, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#503de2abf036d853abc1a259f98c922a94e0b7579baca035191056672fec664b">ID_BTN_OK</a>, 
+<a name="l00067"></a>00067   FXButton* btn2=<span class="keyword">new</span> FXButton( btnFrame, <span class="stringliteral">"OK"</span>, NULL, <span class="keyword">this</span>, <a class="code" href="classRainbruRPG_1_1Gui_1_1DeleteServer.html#174d77b73fe908c4e7c9b1d005c28ee794e0b7579baca035191056672fec664b">ID_BTN_OK</a>, 
 <a name="l00068"></a>00068                                BUTTON_NORMAL|LAYOUT_FIX_WIDTH, 0, 0, btnWidth);
 <a name="l00069"></a>00069 
 <a name="l00070"></a>00070 }
@@ -123,7 +123,7 @@
 <a name="l00154"></a>00154   handle(<span class="keyword">this</span>, FXSEL(SEL_COMMAND, FXDialogBox::ID_ACCEPT), NULL);
 <a name="l00155"></a>00155   <span class="keywordflow">return</span> 1;
 <a name="l00156"></a>00156 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:41 2007 for RainbruRPG by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:52 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

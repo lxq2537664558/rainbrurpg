@@ -87,6 +87,15 @@ All the classes used for <a class="el" href="namespaceRainbruRPG_1_1Network.html
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1ftReliable.html">ftReliable</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A flooder test to compare performance of reliable/non-reliable packets.  <a href="classRainbruRPG_1_1Network_1_1ftReliable.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1NetPacketFlooderBase.html">NetPacketFlooderBase</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A class implementaing a response identifier used by NetFlooder.  <a href="classRainbruRPG_1_1Network_1_1NetPacketFlooderBase.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">union &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionRainbruRPG_1_1Network_1_1npFlooder0004Data.html">npFlooder0004Data</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">defines the data of a <a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html">npFlooder0004</a> packet  <a href="unionRainbruRPG_1_1Network_1_1npFlooder0004Data.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html">npFlooder0004</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A basic netflooder packet with a lenght of 4 bytes.  <a href="classRainbruRPG_1_1Network_1_1npFlooder0004.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRainbruRPG_1_1Network_1_1Ident.html">Ident</a></td></tr>
 
@@ -109,6 +118,7 @@ char * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The pair type which are added to the HttpMessageMap. <br></td></tr>
 <tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce">tNetPacketIdentifier</a> { <a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce9ddf2b7ade8517d8a86e8e927d314462">NPI_GEN_IDENT</a> =  0x0000, 
+<a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce1f78811f24931fd1727f9857ddbfb33e">NPI_FLOOD_0004</a> =  0x1000, 
 <a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2ce23904abeadfdfc1b0dfdd171d5028489">NPI_SVR_CONRESP</a> =  0x4000, 
 <a class="el" href="namespaceRainbruRPG_1_1Network.html#e9bf5cd2fe7aac37e17156608c2fb2cefc54a54bec4cba756e59a9c4fe0a83e2">NPI_INVALID</a> = 0xFFFF
  }</td></tr>
@@ -156,6 +166,11 @@ This identifier should be the first field of all packet.<p>
 <b>The identification packet identifier</b> 
 <p>
 This type of packet is sent to a server to tell what type of client is asking the connection. This identifier only tells that the packet is an identification packet, it does not give the type of client but the packet's data does. See the identification packet documentation for more information. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="e9bf5cd2fe7aac37e17156608c2fb2ce1f78811f24931fd1727f9857ddbfb33e"></a><!-- doxytag: member="NPI_FLOOD_0004" ref="e9bf5cd2fe7aac37e17156608c2fb2ce1f78811f24931fd1727f9857ddbfb33e" args="" -->NPI_FLOOD_0004</em>&nbsp;</td><td>
+A packet of 4 bytes for the netflooder. 
+<p>
+<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classRainbruRPG_1_1Network_1_1npFlooder0004.html">npFlooder0004</a> </dd></dl>
+</td></tr>
 <tr><td valign="top"><em><a class="anchor" name="e9bf5cd2fe7aac37e17156608c2fb2ce23904abeadfdfc1b0dfdd171d5028489"></a><!-- doxytag: member="NPI_SVR_CONRESP" ref="e9bf5cd2fe7aac37e17156608c2fb2ce23904abeadfdfc1b0dfdd171d5028489" args="" -->NPI_SVR_CONRESP</em>&nbsp;</td><td>
 <b>The server connection response</b> 
 <p>
@@ -192,7 +207,7 @@ It is stored in a guint8 type so it needs 1 byte.<p>
 Definition at line <a class="el" href="npidentification_8h-source.html#l00043">43</a> of file <a class="el" href="npidentification_8h-source.html">npidentification.h</a>.
 </div>
 </div><p>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Apr 4 15:30:43 2007 for RainbruRPG by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon Apr 9 15:53:58 2007 for RainbruRPG by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

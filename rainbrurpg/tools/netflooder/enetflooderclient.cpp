@@ -28,7 +28,10 @@
 /** The default constructor
   *
   */
-RainbruRPG::Network::EnetFlooderClient::EnetFlooderClient(){
+RainbruRPG::Network::EnetFlooderClient::EnetFlooderClient()
+  :EnetClient()
+
+{
 
 }
 
@@ -136,6 +139,32 @@ treatPacket(NetPacketBase* p, ENetEvent* e ){
   */
 int RainbruRPG::Network::EnetFlooderClient::
 sendPacketAndWaitResponse(NetPacketFlooderBase* p, bool reliable){
+  LOGI("sendPacketAndWaitResponse called");
+
   // To be sure the packet is (or not) reliable
   p->setReliable(reliable);
+  p->netSerialize();
+
+  ENetPacket * packet;
+
+  if (p->isReliable()){
+    packet= enet_packet_create 
+      (p->getData(), p->getDataLength(), ENET_PACKET_FLAG_RELIABLE);
+  }
+  else{
+    packet = enet_packet_create 
+      (p->getData(), p->getDataLength(), 0);
+
+  }
+
+  if (peer==NULL){
+    LOGE("Enet peer not initialized, the program will probably crash");
+  }
+
+  if (packet==NULL){
+    LOGE("Enet packet not initialized, the program will probably crash");
+  }
+
+  enet_peer_send (peer, 0, packet);
+  enet_host_flush (client);
 }

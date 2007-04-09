@@ -28,7 +28,7 @@
 #ifndef FLOODER_TEST_BASE
 #define FLOODER_TEST_BASE
 
-#include <enetbase.h>
+#include "enetflooderclient.h"
 
 namespace RainbruRPG{
   namespace Network{
@@ -66,7 +66,7 @@ namespace RainbruRPG{
 	* \param host The host uses to send test packets
 	*
 	*/
-      virtual void run(EnetBase* host)=0;
+      virtual void run(EnetFlooderClient* host)=0;
 
       const char* getName();
       const char* getDescription();

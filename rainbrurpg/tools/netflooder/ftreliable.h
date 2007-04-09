@@ -30,6 +30,8 @@
 
 #include "floodertestbase.h"
 
+#include "npflooder0004.h"
+
 namespace RainbruRPG{
   namespace Network{
 
@@ -45,7 +47,7 @@ namespace RainbruRPG{
       virtual ~ftReliable();
 
       virtual int getTotalProgressStep();
-      virtual void run(EnetBase* );
+      virtual void run(EnetFlooderClient* );
     };
 
   }

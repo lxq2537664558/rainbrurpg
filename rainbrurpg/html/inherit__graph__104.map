@@ -1,3 +1,2 @@
 base referer
-rect $classRainbruRPG_1_1Terminal_1_1Dialog.html 5,6 227,30
-rect $classRainbruRPG_1_1Terminal_1_1InfoDialog.html 276,6 521,30
+rect $classRainbruRPG_1_1Terminal_1_1Caption.html 5,6 235,30

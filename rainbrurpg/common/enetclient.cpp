@@ -29,6 +29,7 @@
  */
 RainbruRPG::Network::EnetClient::EnetClient(){
   init();
+  peer=NULL;
 
   connected=false;
 
@@ -52,6 +53,7 @@ RainbruRPG::Network::EnetClient::~EnetClient(){
 
   client=NULL;
   address=NULL;
+  peer=NULL;
 
   deinit();
 }

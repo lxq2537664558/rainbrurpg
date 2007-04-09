@@ -51,6 +51,8 @@ RainbruRPG::Gui::FloodPanel::
 FloodPanel(FXComposite *parent,FXuint opts, EnetFlooderClient* c)
   :FXPacker(parent, opts)
 {
+  selectedTest=0;
+  client=c;
 
   FXVerticalFrame *root = new FXVerticalFrame(this,
              LAYOUT_FILL_X|LAYOUT_FILL_Y);
@@ -143,7 +145,7 @@ void RainbruRPG::Gui::FloodPanel::feedTestCombo(FXComboBox* cb){
   tFlooderTestList::const_iterator iter;
   // Iterate through list and output each element.
   for (iter=testList->begin(); iter != testList->end(); iter++){
-    LOGI("One etst found");
+    LOGI("One test found");
     FXString s;
     s=(*iter)->getName();
     s+=" (";
@@ -166,6 +168,12 @@ void RainbruRPG::Gui::FloodPanel::feedTestCombo(FXComboBox* cb){
 long RainbruRPG::Gui::FloodPanel::
 onTestComboChanged(FXObject* o,FXSelector s,void* v){
   LOGI("onTestComboChanged called");
+
+  FXComboBox* comb=(FXComboBox*)o;
+  int i= comb->getCurrentItem();
+  LOGCATS("Selected item :");
+  LOGCATI(i);
+  LOGCAT();
 }
 
 /** The flood button callback
@@ -182,4 +190,56 @@ long RainbruRPG::Gui::FloodPanel::
 onRunClicked(FXObject* o,FXSelector s,void* v){
   LOGI("onRunClicked called");
 
+  if (selectedTest>-1){
+
+    if (selectedTest==0){
+      performAllTests();
+    }
+    else{
+      performTest(selectedTest-2);
+    }
+
+  }
+  else{
+    LOGW("Cannot performs tests, no test selected");
+  }
+}
+
+/** Performs the given test
+  *
+  * The given parameter is the index of the text in the list, not in the
+  * combo.
+  *
+  * \param i The index of the test in the list
+  *
+  */
+void RainbruRPG::Gui::FloodPanel::performTest(int i){
+  int j=0;
+
+  tFlooderTestList::const_iterator iter;
+  // Iterate through list and output each element.
+  for (iter=testList->begin(); iter != testList->end(); iter++){
+    if (j==i){
+      (*iter)->run(client);
+      break;
+    }
+    else{
+      j++;
+    }
+  }
+}
+
+/** Performs all tests
+  *
+  */
+void RainbruRPG::Gui::FloodPanel::performAllTests(){
+  tFlooderTestList::const_iterator iter;
+  // Iterate through list and output each element.
+  for (iter=testList->begin(); iter != testList->end(); iter++){
+    (*iter)->run(client);
+  }
+}
+
+void RainbruRPG::Gui::FloodPanel::setClient(EnetFlooderClient* c){
+  this->client=c;
 }
