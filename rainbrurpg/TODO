@@ -24,7 +24,6 @@ o [mouse] FlooderTest imlementation
   list. In the Flood panel, we can choose a single test or all the
   tests. Each test must be able to return a list of value that can
   be drawn in a chart.
-- The server answers to the npFlooder0004 packet
 - EnetFlooderClient get the response time of the server
 - int EnetFlooderClient::sendPacketAndWaitResponse() implementation
 - ftReliable sends a npFlooder0004 packet
@@ -165,6 +164,7 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-126
+- The server answers to the npFlooder0004 packet
 - delete documentation from CVS
 - Change the NetFlooder MainWindow title
 - Do the flooder execute selected tests

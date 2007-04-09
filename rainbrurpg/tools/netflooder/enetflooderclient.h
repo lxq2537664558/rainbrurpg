@@ -33,7 +33,11 @@
 #include <netpacketbase.h>
 #include <sigc++/sigc++.h>
 
+#include <iostream>
+
 #include "netpacketflooderbase.h"
+
+using namespace std;
 
 namespace RainbruRPG{
   namespace Network{
@@ -63,6 +67,8 @@ namespace RainbruRPG{
 
     private:
       void treatPacket(NetPacketBase*, ENetEvent* );
+
+      bool waitPacket(tNetPacketIdentifier, unsigned short);
 
     };
 

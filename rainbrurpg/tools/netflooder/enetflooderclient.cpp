@@ -24,6 +24,7 @@
 
 #include <logger.h>
 #include <npconnectionresponse.h>
+#include <npflooder0004.h>
 
 /** The default constructor
   *
@@ -124,6 +125,66 @@ treatPacket(NetPacketBase* p, ENetEvent* e ){
 
 }
 
+/** Wait a packet of a type with a given response
+  *
+  * return true if received
+  *
+  */
+bool RainbruRPG::Network::EnetFlooderClient::
+waitPacket(tNetPacketIdentifier packetId, unsigned short responseId){
+
+  NetPacketBase npb;
+  npFlooder0004 npf4(0);
+  tNetPacketIdentifier i1;
+
+  while (enet_host_service (client, & event, 3000) > 0){
+
+    switch (event.type){
+    case ENET_EVENT_TYPE_CONNECT:
+      break;
+      
+    case ENET_EVENT_TYPE_RECEIVE:
+      npb.setData(event.packet -> data, event.packet -> dataLength);
+      npb.netDeserialize();
+
+      i1=npb.getIdentifier();
+      // The packet type is good
+      if (i1==packetId){
+
+	if (i1==NPI_FLOOD_0004){
+
+	  npf4.setData(event.packet -> data, event.packet -> dataLength);
+	  npf4.netDeserialize();
+	  if (responseId==npf4.getResponseId()){
+	    return true;
+	  }
+	  else{
+	    return false;
+	  }
+
+	}
+	else{
+	  return false;
+	}
+
+      }
+      else{
+	return false;
+      }
+
+      /* Clean up the packet now that we're done using it. */
+      enet_packet_destroy (event.packet);
+      break;
+      
+    case ENET_EVENT_TYPE_DISCONNECT:
+      break;
+
+    case ENET_EVENT_TYPE_NONE:
+      break;
+    }
+  }
+}
+
 /** Send a packet and wait the response
   *
   * This function send the given packet over the network and wait for
@@ -167,4 +228,13 @@ sendPacketAndWaitResponse(NetPacketFlooderBase* p, bool reliable){
 
   enet_peer_send (peer, 0, packet);
   enet_host_flush (client);
+  //  bool ret=waitPacket(p->getIdentifier(), p->getResponseId());
+  bool ret=waitPacket(p->getIdentifier(), p->getResponseId());
+
+  if (ret){
+    LOGI("The packet is comming back");
+  }
+
+
 }
+

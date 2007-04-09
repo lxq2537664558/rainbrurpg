@@ -28,9 +28,13 @@
 #ifndef FLOODER_TEST_RELIABLE
 #define FLOODER_TEST_RELIABLE
 
-#include "floodertestbase.h"
+#include <ctime>
+#include <iostream>
 
+#include "floodertestbase.h"
 #include "npflooder0004.h"
+
+using namespace std;
 
 namespace RainbruRPG{
   namespace Network{
@@ -48,8 +52,12 @@ namespace RainbruRPG{
 
       virtual int getTotalProgressStep();
       virtual void run(EnetFlooderClient* );
-    };
 
+    private:
+
+      unsigned long getInterval(clock_t, clock_t );
+
+    };
   }
 }
 

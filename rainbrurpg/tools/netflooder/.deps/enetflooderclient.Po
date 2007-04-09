@@ -202,7 +202,8 @@ enetflooderclient.o enetflooderclient.o: enetflooderclient.cpp \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
-  ../../common/singleton.h ../../common/npconnectionresponse.h
+  ../../common/singleton.h ../../common/npconnectionresponse.h \
+  ../../common/npflooder0004.h ../../common/netpacketflooderbase.h
 
 enetflooderclient.h:
 
@@ -719,3 +720,7 @@ enetflooderclient.h:
 ../../common/singleton.h:
 
 ../../common/npconnectionresponse.h:
+
+../../common/npflooder0004.h:
+
+../../common/netpacketflooderbase.h:

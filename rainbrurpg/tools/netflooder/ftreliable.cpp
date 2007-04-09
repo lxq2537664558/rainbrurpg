@@ -62,9 +62,28 @@ int RainbruRPG::Network::ftReliable::getTotalProgressStep(){
 void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
   LOGI("ftReliable test running...");
 
+  int testNumber=100;
 
-  // Creates a packet of 4 bytes long with the identifier '1'
-  npFlooder0004 *p1=new npFlooder0004(1);
-  // Get the response time
-  int ms=host->sendPacketAndWaitResponse(p1, false);
+  clock_t time1=clock();
+
+  for (int i=0; i<testNumber; i++){
+
+    // Creates a packet of 4 bytes long with the identifier '1'
+    npFlooder0004 *p1=new npFlooder0004(1+i);
+    host->sendPacketAndWaitResponse(p1, false);
+  }
+
+  clock_t time2=clock();
+   cout << "Interval = " << getInterval(time1, time2) << endl;
+
+
+}
+
+
+
+
+unsigned long RainbruRPG::Network::ftReliable::
+getInterval(clock_t time1, clock_t time2 ){
+
+  return (unsigned long)((float)(time2-time1) / ((float)CLOCKS_PER_SEC/1000.0));
 }
