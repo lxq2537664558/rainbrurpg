@@ -54,8 +54,7 @@ am_rainbrurpg_tools_netflooder_OBJECTS = main.$(OBJEXT) \
 	netflooderwindow.$(OBJEXT) connectionpanel.$(OBJEXT) \
 	waitingpanel.$(OBJEXT) enetflooderclient.$(OBJEXT) \
 	floodpanel.$(OBJEXT) floodertestbase.$(OBJEXT) \
-	ftreliable.$(OBJEXT) netpacketflooderbase.$(OBJEXT) \
-	npflooder0004.$(OBJEXT)
+	ftreliable.$(OBJEXT)
 rainbrurpg_tools_netflooder_OBJECTS =  \
 	$(am_rainbrurpg_tools_netflooder_OBJECTS)
 rainbrurpg_tools_netflooder_DEPENDENCIES =
@@ -208,9 +207,7 @@ rainbrurpg_tools_netflooder_SOURCES = main.cpp			\
 				      enetflooderclient.cpp	\
 				      floodpanel.cpp		\
 				      floodertestbase.cpp	\
-				      ftreliable.cpp		\
-				      netpacketflooderbase.cpp  \
-				      npflooder0004.cpp
+				      ftreliable.cpp	
 
 all: all-am
 
@@ -290,8 +287,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftreliable.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/netflooderwindow.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/netpacketflooderbase.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/npflooder0004.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/waitingpanel.Po@am__quote@
 
 .cpp.o:

@@ -353,8 +353,8 @@ main.o main.o: main.cpp \
   /usr/include/glib-2.0/glib/gthreadpool.h \
   /usr/include/glib-2.0/glib/gtimer.h /usr/include/glib-2.0/glib/gtree.h \
   ../../common/enetbase.h ../../common/netpacketbase.h \
-  ../../common/netpacketbase.h netpacketflooderbase.h waitingpanel.h \
-  ../../common/xmlserverlist.h ../../common/tinyxml.h \
+  ../../common/netpacketbase.h ../../common/netpacketflooderbase.h \
+  waitingpanel.h ../../common/xmlserverlist.h ../../common/tinyxml.h \
   ../../common/tinystr.h ../../common/tnotelist.h \
   ../../common/xmltimestamp.h ../../common/tinyxml.h \
   ../../common/curlfiletoxml.h /usr/include/curl/curl.h \
@@ -1363,7 +1363,7 @@ enetflooderclient.h:
 
 ../../common/netpacketbase.h:
 
-netpacketflooderbase.h:
+../../common/netpacketflooderbase.h:
 
 waitingpanel.h:
 

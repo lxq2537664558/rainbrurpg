@@ -330,7 +330,7 @@ waitingpanel.o waitingpanel.o: waitingpanel.cpp waitingpanel.h \
   /usr/include/sigc++-2.0/sigc++/adaptors/lambda/group.h \
   /usr/include/sigc++-2.0/sigc++/functors/functors.h enetflooderclient.h \
   ../../common/enetclient.h ../../common/enetbase.h \
-  ../../common/netpacketbase.h netpacketflooderbase.h \
+  ../../common/netpacketbase.h ../../common/netpacketflooderbase.h \
   /usr/include/fox-1.6/FXMessageBox.h
 
 waitingpanel.h:
@@ -1299,6 +1299,6 @@ enetflooderclient.h:
 
 ../../common/netpacketbase.h:
 
-netpacketflooderbase.h:
+../../common/netpacketflooderbase.h:
 
 /usr/include/fox-1.6/FXMessageBox.h:

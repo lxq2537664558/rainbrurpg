@@ -64,7 +64,9 @@ h_sources= logger.h				\
 	  npconnectionresponse.h		\
 	  chartbase.h				\
 	  chartserie.h				\
-	  chartline.h
+	  chartline.h				\
+	  npflooder0004.h			\
+	  netpacketflooderbase.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -129,7 +131,9 @@ cc_sources= loadbmp.cpp				\
 	  npconnectionresponse.cpp		\
 	  chartbase.cpp				\
 	  chartserie.cpp			\
-	  chartline.cpp
+	  chartline.cpp				\
+	  npflooder0004.cpp			\
+	  netpacketflooderbase.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

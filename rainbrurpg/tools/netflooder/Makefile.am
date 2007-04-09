@@ -17,6 +17,4 @@ rainbrurpg_tools_netflooder_SOURCES = main.cpp			\
 				      enetflooderclient.cpp	\
 				      floodpanel.cpp		\
 				      floodertestbase.cpp	\
-				      ftreliable.cpp		\
-				      netpacketflooderbase.cpp  \
-				      npflooder0004.cpp
+				      ftreliable.cpp	

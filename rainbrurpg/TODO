@@ -165,6 +165,7 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-126
+- delete documentation from CVS
 - Change the NetFlooder MainWindow title
 - Do the flooder execute selected tests
 - Initial CVS commit on sourceforge.net

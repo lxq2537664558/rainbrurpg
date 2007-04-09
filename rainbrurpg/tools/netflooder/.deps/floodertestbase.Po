@@ -198,7 +198,7 @@ floodertestbase.o floodertestbase.o: floodertestbase.cpp \
   /usr/include/sigc++-2.0/sigc++/adaptors/lambda/operator.h \
   /usr/include/sigc++-2.0/sigc++/adaptors/lambda/group.h \
   /usr/include/sigc++-2.0/sigc++/functors/functors.h \
-  netpacketflooderbase.h
+  ../../common/netpacketflooderbase.h
 
 floodertestbase.h:
 
@@ -704,4 +704,4 @@ enetflooderclient.h:
 
 /usr/include/sigc++-2.0/sigc++/functors/functors.h:
 
-netpacketflooderbase.h:
+../../common/netpacketflooderbase.h:

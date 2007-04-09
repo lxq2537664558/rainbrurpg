@@ -313,8 +313,8 @@ netflooderwindow.o netflooderwindow.o: netflooderwindow.cpp \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_vector.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_bvector.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/vector.tcc \
-  ../../common/netpacketbase.h netpacketflooderbase.h waitingpanel.h \
-  ../../common/xmlserverlist.h ../../common/logger.h \
+  ../../common/netpacketbase.h ../../common/netpacketflooderbase.h \
+  waitingpanel.h ../../common/xmlserverlist.h ../../common/logger.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
@@ -1241,7 +1241,7 @@ enetflooderclient.h:
 
 ../../common/netpacketbase.h:
 
-netpacketflooderbase.h:
+../../common/netpacketflooderbase.h:
 
 waitingpanel.h:
 

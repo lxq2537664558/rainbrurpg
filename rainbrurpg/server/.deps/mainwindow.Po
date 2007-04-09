@@ -479,8 +479,10 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTreeWidget \
   /usr/include/qt4/QtCore/QTime /usr/include/qt4/QtGui/QColor \
   /usr/include/qt4/QtCore/QTextStream xmlserverconf.h helpviewer.h \
-  /usr/include/qt4/QtGui/QTextEdit /usr/include/qt4/QtGui/QDockWidget \
-  /usr/include/qt4/QtGui/QMenu /usr/include/qt4/QtGui/QWorkspace
+  ../common/npflooder0004.h ../common/netpacketflooderbase.h \
+  ../common/netpacketbase.h /usr/include/qt4/QtGui/QTextEdit \
+  /usr/include/qt4/QtGui/QDockWidget /usr/include/qt4/QtGui/QMenu \
+  /usr/include/qt4/QtGui/QWorkspace
 
 mainwindow.h:
 
@@ -1809,6 +1811,12 @@ serverlog.h:
 xmlserverconf.h:
 
 helpviewer.h:
+
+../common/npflooder0004.h:
+
+../common/netpacketflooderbase.h:
+
+../common/netpacketbase.h:
 
 /usr/include/qt4/QtGui/QTextEdit:
 

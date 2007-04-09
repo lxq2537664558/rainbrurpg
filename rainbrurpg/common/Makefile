@@ -80,7 +80,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	curlaccountconfirmmail.lo curlaccounttoggleblacklist.lo \
 	netpacketbase.lo npidentification.lo enetbase.lo enetclient.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
-	chartline.lo
+	chartline.lo npflooder0004.lo netpacketflooderbase.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -296,7 +296,9 @@ h_sources = logger.h				\
 	  npconnectionresponse.h		\
 	  chartbase.h				\
 	  chartserie.h				\
-	  chartline.h
+	  chartline.h				\
+	  npflooder0004.h			\
+	  netpacketflooderbase.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -360,7 +362,9 @@ cc_sources = loadbmp.cpp				\
 	  npconnectionresponse.cpp		\
 	  chartbase.cpp				\
 	  chartserie.cpp			\
-	  chartline.cpp
+	  chartline.cpp				\
+	  npflooder0004.cpp			\
+	  netpacketflooderbase.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -470,7 +474,9 @@ include ./$(DEPDIR)/languagelistitem.Plo
 include ./$(DEPDIR)/loadbmp.Plo
 include ./$(DEPDIR)/logger.Plo
 include ./$(DEPDIR)/netpacketbase.Plo
+include ./$(DEPDIR)/netpacketflooderbase.Plo
 include ./$(DEPDIR)/npconnectionresponse.Plo
+include ./$(DEPDIR)/npflooder0004.Plo
 include ./$(DEPDIR)/npidentification.Plo
 include ./$(DEPDIR)/objectmesh.Plo
 include ./$(DEPDIR)/objectpos.Plo

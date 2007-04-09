@@ -26,6 +26,7 @@
 #include "helpviewer.h"
 
 #include <logger.h>
+#include <npflooder0004.h>
 
 #include <QTextEdit>
 #include <QDockWidget>
@@ -443,6 +444,14 @@ packetReceived(const tReceivedPacket& e){
   }
   else if (i==NPI_FLOOD_0004){
     LOGI("A netflooder paquet with 4 bytes long was received");
+    npFlooder0004 np4(0);
+    np4.setData(e.data, e.dataLength);
+    np4.netDeserialize();
+    np4.netSerialize();
+
+    server->getServer()->sendPacket(e.peer, &np4);
+
+
   }
 }
 

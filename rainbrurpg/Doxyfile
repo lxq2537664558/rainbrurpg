@@ -25,7 +25,7 @@ ABBREVIATE_BRIEF       = "The $name class" \
 ALWAYS_DETAILED_SEC    = NO
 INLINE_INHERITED_MEMB  = YES
 FULL_PATH_NAMES        = YES
-STRIP_FROM_PATH        = /home/mouse/programmation/rpg
+STRIP_FROM_PATH        = /home/mouse/programmation/rainbrurpgrpg
 STRIP_FROM_INC_PATH    = 
 SHORT_NAMES            = NO
 JAVADOC_AUTOBRIEF      = YES
@@ -82,8 +82,8 @@ WARN_LOGFILE           = doxygen.log
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/mouse/programmation/rpg \
-                         /home/mouse/programmation/rpg/doc/doc.h
+INPUT                  = /home/mouse/programmation/rainbrurpg \
+                         /home/mouse/programmation/rainbrurpg/doc/doc.h
 FILE_PATTERNS          = *.cpp \
                          *.h \
                          *.php \
@@ -91,29 +91,29 @@ FILE_PATTERNS          = *.cpp \
                          *.PHP \
                          *.PHP3
 RECURSIVE              = YES
-EXCLUDE                = /home/mouse/programmation/rpg/include/ \
-                         /home/mouse/programmation/rpg/common/EasyBMP.cpp \
-                         /home/mouse/programmation/rpg/common/EasyBMP.h \
-                         /home/mouse/programmation/rpg/common/EasyBMP_DataStructures.h \
-                         /home/mouse/programmation/rpg/common/EasyBMP_VariousBMPutilities.h \
-                         /home/mouse/programmation/rpg/common/sha1.h \
-                         /home/mouse/programmation/rpg/common/sha1.cpp \
-                         /home/mouse/programmation/rpg/common/tinystr.cpp \
-                         /home/mouse/programmation/rpg/common/tinystr.h \
-                         /home/mouse/programmation/rpg/common/tinyxml.cpp \
-                         /home/mouse/programmation/rpg/common/tinyxml.h \
-                         /home/mouse/programmation/rpg/common/tinyxmlerror.cpp \
-                         /home/mouse/programmation/rpg/common/tinyxmlparser.cpp \
-                         /home/mouse/programmation/rpg/common/EasyBMP_BMP.h \
-                         /home/mouse/programmation/rpg/IrrClient/ \
-                         /home/mouse/programmation/rpg/client/oldLauncher/ \
-                         /home/mouse/programmation/rpg/tests/
+EXCLUDE                = /home/mouse/programmation/rainbrurpg/include/ \
+                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.h \
+                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_DataStructures.h \
+                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_VariousBMPutilities.h \
+                         /home/mouse/programmation/rainbrurpg/common/sha1.h \
+                         /home/mouse/programmation/rainbrurpg/common/sha1.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/tinystr.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/tinystr.h \
+                         /home/mouse/programmation/rainbrurpg/common/tinyxml.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/tinyxml.h \
+                         /home/mouse/programmation/rainbrurpg/common/tinyxmlerror.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/tinyxmlparser.cpp \
+                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_BMP.h \
+                         /home/mouse/programmation/rainbrurpg/IrrClient/ \
+                         /home/mouse/programmation/rainbrurpg/client/oldLauncher/ \
+                         /home/mouse/programmation/rainbrurpg/tests/
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = moc_*
-EXAMPLE_PATH           = /home/mouse/programmation/rpg/doc/
+EXAMPLE_PATH           = /home/mouse/programmation/rainbrurpg/doc/
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
-IMAGE_PATH             = /home/mouse/programmation/rpg/doc
+IMAGE_PATH             = /home/mouse/programmation/rainbrurpg/doc
 INPUT_FILTER           = 
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO
