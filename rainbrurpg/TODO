@@ -25,6 +25,12 @@ o [mouse] FlooderTest imlementation
   tests. Each test must be able to return a list of value that can
   be drawn in a chart.
 
+- ChartBase::setLeftCaption and setBottomCaption methods
+- The server answer with a reliable packet if the received one is reliable
+- FlooderTestBase has a pure virtual int getTotalSteps() function
+- Showing progress during netflooder tests
+- NetFlooder uses an ChartViewer dialog to show test results
+
 - Test the reliable packets usage (ftReliable)
 - Test the implementation with the packet size (how the performance
    decrease) (ftSize)
@@ -158,6 +164,11 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 * ***************** Changelog ***************************
 * *******************************************************
+
+* v 0.0.4-127
+- ChartLine::drawLeftCaption take a long time (about 20 sec). Fix it
+- ftReliable build ChartSerie for reliable and non-reliable tests
+- ftReliable calls ChartLine::draw for bluit tests
 
 * v 0.0.4-126
 - ftReliable get the response time of the server

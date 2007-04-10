@@ -30,6 +30,7 @@
 
 #include <fox-1.6/fx.h>
 #include <list>
+#include <sigc++/sigc++.h>
 
 #include "enetflooderclient.h"
 #include "floodertestbase.h"
@@ -91,6 +92,8 @@ namespace RainbruRPG{
       void feedTestCombo(FXComboBox*);
       void performTest(int);
       void performAllTests();
+
+      void slotProgressOneStep();
 
       /** The global progress bar */
       FXProgressBar* pgGlobal;

@@ -30,9 +30,19 @@
 
 #include <ctime>
 #include <iostream>
+#include <chartserie.h>
+#include <chartline.h>
+#include <sigc++/sigc++.h>
 
 #include "floodertestbase.h"
 #include "npflooder0004.h"
+
+/** If a response is more than this, it is eaqual to this
+  *
+  * It is used to get a more readable chart.
+  *
+  */
+#define MAX_INTERVAL_ACCEPTED 15000
 
 using namespace std;
 
@@ -47,11 +57,22 @@ namespace RainbruRPG{
       */
     class ftReliable : public FlooderTestBase{
     public:
+      /** Defines a signal returning void with none parameters */
+      typedef sigc::signal<void> tVoidSignal;
+
       ftReliable();
       virtual ~ftReliable();
 
       virtual int getTotalProgressStep();
       virtual void run(EnetFlooderClient* );
+      virtual int getTotalSteps();
+
+      /** A signal when test progress*/
+      tVoidSignal sigProgressOneStep;
+
+    private:
+      /** Number of test for each packet type */
+      int nbTest;
 
     };
   }

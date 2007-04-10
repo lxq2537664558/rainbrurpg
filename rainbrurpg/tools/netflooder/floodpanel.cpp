@@ -94,6 +94,10 @@ FloodPanel(FXComposite *parent,FXuint opts, EnetFlooderClient* c)
   ftReliable* testReliable=new ftReliable();
   testList->push_back(testReliable);
 
+  testReliable->sigProgressOneStep.connect(sigc::mem_fun(this, 
+     &RainbruRPG::Gui::FloodPanel::slotProgressOneStep));
+
+
   feedTestCombo(cbTest);
 }
 
@@ -220,6 +224,8 @@ void RainbruRPG::Gui::FloodPanel::performTest(int i){
   // Iterate through list and output each element.
   for (iter=testList->begin(); iter != testList->end(); iter++){
     if (j==i){
+      pgStep->setTotal((*iter)->getTotalSteps());
+      pgStep->setProgress(0);
       (*iter)->run(client);
       break;
     }
@@ -236,10 +242,26 @@ void RainbruRPG::Gui::FloodPanel::performAllTests(){
   tFlooderTestList::const_iterator iter;
   // Iterate through list and output each element.
   for (iter=testList->begin(); iter != testList->end(); iter++){
+    pgStep->setTotal((*iter)->getTotalSteps());
+    pgStep->setProgress(0);
     (*iter)->run(client);
   }
 }
 
+/** Changes the client flooded
+  *
+  * \param c The client to be flooded
+  *
+  */
 void RainbruRPG::Gui::FloodPanel::setClient(EnetFlooderClient* c){
   this->client=c;
+}
+
+/** The tests are in progress
+  *
+  */
+void RainbruRPG::Gui::FloodPanel::slotProgressOneStep(){
+  LOGI("slotProgressOneStep called");
+  pgStep->increment(1);
+
 }

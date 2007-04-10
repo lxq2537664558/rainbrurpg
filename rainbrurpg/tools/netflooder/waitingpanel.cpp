@@ -303,6 +303,11 @@ void RainbruRPG::Gui::WaitingPanel::reset(){
   prog->setProgress(0);
 }
 
+/** Return the current client
+  *
+  * \return The current Enet client used
+  *
+  */
 EnetFlooderClient* RainbruRPG::Gui::WaitingPanel::getClient(){
   return this->client;
 }

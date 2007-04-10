@@ -35,6 +35,7 @@
 #include <sstream>
 
 #include <chartbase.h>
+#include <logger.h>
 
 using namespace std;
 

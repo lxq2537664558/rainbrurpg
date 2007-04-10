@@ -22,28 +22,48 @@
 
 #include "timer.h"
 
+/** The default constructor
+  *
+  * Automatically starts the timer.
+  *
+  */
 RainbruRPG::Core::Timer::Timer(){
   start=g_timer_new();
   g_timer_start(start);
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::Core::Timer::~Timer(){ 
   g_timer_stop(start);
   g_timer_destroy(start);
 }
-		
+
+/** Reset the elapsed time
+  *
+  */
 void RainbruRPG::Core::Timer::reset(){
   g_timer_reset(start);
 
 }
-		
+	
+/** Get the elapsed time since the construction or last reset
+  *	
+  * \return The elapsed time in milliseconds
+  *
+  */
 unsigned long RainbruRPG::Core::Timer::getMilliseconds() { 
   gulong l;
   g_timer_elapsed(start, &l);
   return l/1000;
 }
-		
 
+/** Get the elapsed time since the construction or last reset
+  *	
+  * \return The elapsed time in microseconds
+  *
+  */
 unsigned long RainbruRPG::Core::Timer::getMicroseconds() { 
   gulong l;
   g_timer_elapsed(start, &l);

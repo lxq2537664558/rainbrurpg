@@ -32,6 +32,13 @@
 
 namespace RainbruRPG {
   namespace Core {
+
+    /** A Timer based on glib 2.0
+      *
+      * Used to get elapsed time in microseconds or milliseconds.
+      * The timer is automatically started in the constructor. Call reset()
+      * To start it from 0.
+      */
     class Timer {
     public:
       Timer();
@@ -43,6 +50,7 @@ namespace RainbruRPG {
       unsigned long getMicroseconds() ;
 
     private:	
+      /** The glib Timer object */
       GTimer* start;    
 	
     } ;

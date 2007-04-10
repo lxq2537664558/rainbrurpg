@@ -177,6 +177,8 @@ waitPacket(tNetPacketIdentifier packetId, unsigned short responseId){
       break;
       
     case ENET_EVENT_TYPE_DISCONNECT:
+
+      LOGW("Client disconnected");
       break;
 
     case ENET_EVENT_TYPE_NONE:

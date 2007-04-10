@@ -45,6 +45,7 @@ RainbruRPG::Core::ChartLine::~ChartLine(){
   *
   */
 void RainbruRPG::Core::ChartLine::draw(){
+  LOGI("ChartLine::draw() called");
   computeMargins();
   /* Declare the image */
   gdImagePtr im;
@@ -68,25 +69,36 @@ void RainbruRPG::Core::ChartLine::draw(){
   computePreDrawing();
 
   // Drawing private functions 
+  LOGI("ChartLine: drawing axis");
   drawAxis(im, black);
+  LOGI("ChartLine: drawing chart's title");
   drawChartTitle(im, black);
+  LOGI("ChartLine: drawing Y axis caption");
   drawYAxisCaption(im, black);
+  LOGI("ChartLine: drawing X axis caption");
   drawXAxisCaption(im, black);
+  LOGI("ChartLine: drawing legend background");
   drawLegendBackground(im, black, lightGray);
+  LOGI("ChartLine: drawing left caption");
   drawLeftCaption(im);
+  LOGI("ChartLine: drawing bottom caption");
   drawBottomCaption(im);
 
+  LOGI("ChartLine: drawing legend");
   drawLegend(im);
 
+  LOGI("ChartLine: drawing series");
   drawSeries(im);
 
   // Save file
+  LOGI("ChartLine: saving image");
   pngout = fopen(filename, "wb");
   gdImagePng(im, pngout);
   fclose(pngout);
 
   // Destroy the image in memory.
   gdImageDestroy(im);
+  LOGI("ChartLine: drawing complete");
 }
 
 /** Draw all series
@@ -177,7 +189,7 @@ void RainbruRPG::Core::ChartLine::computePreDrawing(){
     serieInterval=2;
   }
 
-  // Get thze biggest serie
+  // Get the biggest serie
   ChartSerie* bigSerie=getBiggestSerie();
   xDev=(right-left)/(bigSerie->size()-1);
 
@@ -235,6 +247,7 @@ int RainbruRPG::Core::ChartLine::getLeftCaptionMaxWidth(){
   *
   */
 void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
+  LOGI("drawLeftCaption called");
   int indicWidth=3;
   int valueTextWidth;
 
@@ -245,7 +258,41 @@ void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
 
   std::stringstream valueText;
 
-  for (int value=getSeriesMinValue(); value<getSeriesMaxValue()+1; value++){
+  // Calculate the valueIndent (space beetween drawn values)
+  int minValueIndent=captionFontSize+5;
+  int valueIndent=1;
+
+  LOGI("Searching for valueIndent");
+  while (true){
+    int val1=bottom-((graphHeight*1)/serieInterval);
+    int val2=bottom-((graphHeight*(1+valueIndent))/serieInterval);
+    int val3=val1-val2;
+
+    if (val3<minValueIndent){
+      if (valueIndent==1){
+	valueIndent=10;
+      }
+      else if (valueIndent<100){
+	valueIndent+=10;
+      }
+      else if (valueIndent<1000){
+	valueIndent+=100;
+      }
+      else{
+	valueIndent+=1000;
+      }
+    }
+    else{
+      LOGCATS("valueIndent=");
+      LOGCATI(valueIndent);
+      LOGCAT();
+      break;
+    }
+  }
+
+  LOGI("drawLeftCaption starting to draw");
+
+  for (int value=getSeriesMinValue(); value<getSeriesMaxValue()+1; value+=valueIndent){
     // Draws the indicators
     int y=bottom-((graphHeight*value)/serieInterval);
     gdImageLine(im, left-indicWidth, y, left, y, black); 
@@ -278,39 +325,6 @@ RainbruRPG::Core::ChartSerie* RainbruRPG::Core::ChartLine::getBiggestSerie(){
     }
   }
   return ret;
-}
-
-/** Draw the bottom axis caption
-  *
-  * \param im The image to draw
-  *
-  */
-void RainbruRPG::Core::ChartLine::drawBottomCaption(gdImagePtr im){
-  int indicWidth=3;
-  int x2=left;
-  int valueTextWidth;
-
-  ChartSerie* bigOne=getBiggestSerie();
-
-  int black=gdTrueColor(0, 0, 0);
-
-  std::string valueText;
-
-  for (int i=0; i<bigOne->size(); i++){
-    // Draws the indicators
-    gdImageLine(im, x2, bottom, x2, bottom+indicWidth, black); 
-
-    // Draws the captions
-    valueText=bigOne->getXCaption(i);
-    valueTextWidth=getTextWidth(valueText, captionFontSize);
-
-    drawTrueTypeUp (valueText, x2+(captionFontSize/2), 
-		  bottom+valueTextWidth+5, im, black, captionFontSize);
-
-    // Next step ^^
-    x2+=xDev;
-
-  }
 }
 
 /** Get the height of the bottom axis caption
@@ -378,4 +392,43 @@ void RainbruRPG::Core::ChartLine::drawLegend(gdImagePtr im){
     color++;
     top+=20;
   }    
+}
+
+/** Draw the bottom axis caption
+  *
+  * \param im The image to draw
+  *
+  */
+void RainbruRPG::Core::ChartLine::drawBottomCaption(gdImagePtr im){
+  int indicWidth=3;
+  int x2=left;
+  int valueTextWidth;
+
+  // Find valueIdent
+  int valueIndent=1;
+  int minValueIndent=captionFontSize+5;
+
+  LOGI("Searching valueIndent");
+
+  ChartSerie* bigOne=getBiggestSerie();
+
+  int black=gdTrueColor(0, 0, 0);
+
+  std::string valueText;
+
+  for (int i=0; i<bigOne->size(); i+=valueIndent){
+    // Draws the indicators
+    gdImageLine(im, x2, bottom, x2, bottom+indicWidth, black); 
+
+    // Draws the captions
+    valueText=bigOne->getXCaption(i);
+    valueTextWidth=getTextWidth(valueText, captionFontSize);
+
+    drawTrueTypeUp (valueText, x2+(captionFontSize/2), 
+		  bottom+valueTextWidth+5, im, black, captionFontSize);
+
+    // Next step ^^
+    x2+=(xDev*valueIndent);
+
+  }
 }

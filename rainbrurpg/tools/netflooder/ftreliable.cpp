@@ -30,7 +30,7 @@
   */
 RainbruRPG::Network::ftReliable::ftReliable()
   :FlooderTestBase(){
-
+  nbTest=50;
   this->name="Reliable";
   this->description="Compare performance between reliable and "
     "non-reliable packets";
@@ -63,16 +63,78 @@ int RainbruRPG::Network::ftReliable::getTotalProgressStep(){
 void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
   LOGI("ftReliable test running...");
 
+  unsigned long interval;
+
+  ChartSerie serie1("Non-reliable");
+  ChartSerie serie2("Reliable");
+
   Timer t;
-  t.reset();
 
-  // Creates a packet of 4 bytes long with the identifier '1'
-  npFlooder0004 *p1=new npFlooder0004(1);
-  host->sendPacketAndWaitResponse(p1, false);
-  unsigned long interval=t.getMicroseconds();
+  // Non reliable test
+  for (int i=0; i<nbTest; i++){
+    t.reset();
+    // Creates a packet of 4 bytes long with the identifier '1'
+    npFlooder0004 *p1=new npFlooder0004(1+i);
+    host->sendPacketAndWaitResponse(p1, false);
+    interval=t.getMicroseconds();
+  
+    tChartSerieValue* val1=new tChartSerieValue();
+    val1->value=interval;
 
-  cout << "Interval = " << interval << " microseconds"<< endl;
+    if (interval>MAX_INTERVAL_ACCEPTED)
+      val1->value=MAX_INTERVAL_ACCEPTED;
+
+    val1->xCaption="";
+    val1->yCaption="";
+    serie2.addValue(val1);
+    sigProgressOneStep.emit();
+
+    LOGCATS("Running test ");
+    LOGCATI(1+i);
+    LOGCATS("/");
+    LOGCATI(getTotalSteps());
+    LOGCAT();
+  }
+
+  // Reliable test
+  for (int i=0; i<nbTest; i++){
+    t.reset();
+    // Creates a packet of 4 bytes long with the identifier '1'
+    npFlooder0004 *p1=new npFlooder0004(1+i+nbTest);
+    host->sendPacketAndWaitResponse(p1, true);
+    interval=t.getMicroseconds();
+  
+    tChartSerieValue* val1=new tChartSerieValue();
+    val1->value=interval;
+
+    if (interval>MAX_INTERVAL_ACCEPTED)
+      val1->value=MAX_INTERVAL_ACCEPTED;
+
+    val1->xCaption="";
+    val1->yCaption="";
+    serie1.addValue(val1);
+    sigProgressOneStep.emit();
+
+    LOGCATS("Running test ");
+    LOGCATI(1+i+nbTest);
+    LOGCATS("/");
+    LOGCATI(getTotalSteps());
+    LOGCAT();
+  }
+
+  LOGI("All tests are complete, drawing chart");
+  ChartLine g(700,500);
+  g.addSerie(&serie1);
+  g.addSerie(&serie2);
+  LOGI("Series added to the chart, drawing chart...");
+
+  g.draw();
+  LOGI("Chart is drawn");
+  sigProgressOneStep.emit();
 
 
 }
 
+int RainbruRPG::Network::ftReliable::getTotalSteps(){
+  return (nbTest*2)+1;
+}

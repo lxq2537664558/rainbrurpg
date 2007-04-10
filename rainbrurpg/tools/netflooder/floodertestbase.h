@@ -68,6 +68,15 @@ namespace RainbruRPG{
 	*/
       virtual void run(EnetFlooderClient* host)=0;
 
+      /** Get the total number of test
+        *
+	* It is taken to setup Progress bar
+	*
+	* \return The number of test to complete the test
+	*
+	*/
+      virtual int getTotalSteps()=0;
+
       const char* getName();
       const char* getDescription();
 
