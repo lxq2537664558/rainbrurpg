@@ -66,7 +66,8 @@ h_sources= logger.h				\
 	  chartserie.h				\
 	  chartline.h				\
 	  npflooder0004.h			\
-	  netpacketflooderbase.h
+	  netpacketflooderbase.h		\
+	  timer.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -133,7 +134,8 @@ cc_sources= loadbmp.cpp				\
 	  chartserie.cpp			\
 	  chartline.cpp				\
 	  npflooder0004.cpp			\
-	  netpacketflooderbase.cpp
+	  netpacketflooderbase.cpp		\
+	  timer.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

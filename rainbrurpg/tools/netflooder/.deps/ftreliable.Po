@@ -198,7 +198,8 @@ ftreliable.o ftreliable.o: ftreliable.cpp ftreliable.h \
   /usr/include/sigc++-2.0/sigc++/adaptors/lambda/group.h \
   /usr/include/sigc++-2.0/sigc++/functors/functors.h \
   ../../common/netpacketflooderbase.h ../../common/npflooder0004.h \
-  ../../common/netpacketflooderbase.h ../../common/logger.h \
+  ../../common/netpacketflooderbase.h ../../common/timer.h \
+  ../../common/logger.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
@@ -715,6 +716,8 @@ enetflooderclient.h:
 ../../common/npflooder0004.h:
 
 ../../common/netpacketflooderbase.h:
+
+../../common/timer.h:
 
 ../../common/logger.h:
 

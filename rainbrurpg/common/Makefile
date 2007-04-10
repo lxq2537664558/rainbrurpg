@@ -80,7 +80,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	curlaccountconfirmmail.lo curlaccounttoggleblacklist.lo \
 	netpacketbase.lo npidentification.lo enetbase.lo enetclient.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
-	chartline.lo npflooder0004.lo netpacketflooderbase.lo
+	chartline.lo npflooder0004.lo netpacketflooderbase.lo timer.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -150,7 +150,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-04-09
+ISODATE = 2007-04-10
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -298,7 +298,8 @@ h_sources = logger.h				\
 	  chartserie.h				\
 	  chartline.h				\
 	  npflooder0004.h			\
-	  netpacketflooderbase.h
+	  netpacketflooderbase.h		\
+	  timer.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -364,7 +365,8 @@ cc_sources = loadbmp.cpp				\
 	  chartserie.cpp			\
 	  chartline.cpp				\
 	  npflooder0004.cpp			\
-	  netpacketflooderbase.cpp
+	  netpacketflooderbase.cpp		\
+	  timer.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -494,6 +496,7 @@ include ./$(DEPDIR)/options.Plo
 include ./$(DEPDIR)/optionstringattribute.Plo
 include ./$(DEPDIR)/sha1.Plo
 include ./$(DEPDIR)/stringconv.Plo
+include ./$(DEPDIR)/timer.Plo
 include ./$(DEPDIR)/tinystr.Plo
 include ./$(DEPDIR)/tinyxml.Plo
 include ./$(DEPDIR)/tinyxmlerror.Plo

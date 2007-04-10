@@ -80,7 +80,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	curlaccountconfirmmail.lo curlaccounttoggleblacklist.lo \
 	netpacketbase.lo npidentification.lo enetbase.lo enetclient.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
-	chartline.lo npflooder0004.lo netpacketflooderbase.lo
+	chartline.lo npflooder0004.lo netpacketflooderbase.lo timer.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -298,7 +298,8 @@ h_sources = logger.h				\
 	  chartserie.h				\
 	  chartline.h				\
 	  npflooder0004.h			\
-	  netpacketflooderbase.h
+	  netpacketflooderbase.h		\
+	  timer.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -364,7 +365,8 @@ cc_sources = loadbmp.cpp				\
 	  chartserie.cpp			\
 	  chartline.cpp				\
 	  npflooder0004.cpp			\
-	  netpacketflooderbase.cpp
+	  netpacketflooderbase.cpp		\
+	  timer.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -494,6 +496,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/optionstringattribute.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sha1.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stringconv.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/timer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tinystr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tinyxml.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tinyxmlerror.Plo@am__quote@

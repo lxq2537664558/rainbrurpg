@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -20,41 +20,32 @@
  *
  */
 
-/* Modifications : 
- * - 27 mar 2007 : starting implementation
+/* Modifications :
+ * - 10 apr 2007 : Starting implementation
  *
  */
 
-#ifndef FLOODER_TEST_RELIABLE
-#define FLOODER_TEST_RELIABLE
+#ifndef __Timer_H__
+#define __Timer_H__
 
-#include <ctime>
-#include <iostream>
+#include <glib.h>
 
-#include "floodertestbase.h"
-#include "npflooder0004.h"
-
-using namespace std;
-
-namespace RainbruRPG{
-  namespace Network{
-
-    /** A flooder test to compare performance of reliable/non-reliable packets
-      *
-      * 
-      *
-      *
-      */
-    class ftReliable : public FlooderTestBase{
+namespace RainbruRPG {
+  namespace Core {
+    class Timer {
     public:
-      ftReliable();
-      virtual ~ftReliable();
+      Timer();
+      ~Timer();
+		
+      void reset();
+		
+      unsigned long getMilliseconds() ;
+      unsigned long getMicroseconds() ;
 
-      virtual int getTotalProgressStep();
-      virtual void run(EnetFlooderClient* );
-
-    };
+    private:	
+      GTimer* start;    
+	
+    } ;
   }
 }
-
-#endif // FLOODER_TEST_RELIABLE
+#endif

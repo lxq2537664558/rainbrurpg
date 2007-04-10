@@ -24,10 +24,6 @@ o [mouse] FlooderTest imlementation
   list. In the Flood panel, we can choose a single test or all the
   tests. Each test must be able to return a list of value that can
   be drawn in a chart.
-- EnetFlooderClient get the response time of the server
-- int EnetFlooderClient::sendPacketAndWaitResponse() implementation
-- ftReliable sends a npFlooder0004 packet
-  Using EnetFlooderClient::sendPacketAndWaitResponse
 
 - Test the reliable packets usage (ftReliable)
 - Test the implementation with the packet size (how the performance
@@ -164,6 +160,11 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-126
+- ftReliable get the response time of the server
+- ftReliable sends a npFlooder0004 packet
+  Using EnetFlooderClient::sendPacketAndWaitResponse
+- int EnetFlooderClient::sendPacketAndWaitResponse() implementation
+- A Timer class based on glib2.0 added in common/
 - The server answers to the npFlooder0004 packet
 - delete documentation from CVS
 - Change the NetFlooder MainWindow title
