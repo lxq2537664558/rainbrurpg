@@ -91,7 +91,9 @@ void RainbruRPG::Core::ChartLine::draw(){
   drawSeries(im);
 
   // Save file
-  LOGI("ChartLine: saving image");
+  LOGCATS("ChartLine: saving image in ");
+  LOGCATS(filename);
+  LOGCAT();
   pngout = fopen(filename, "wb");
   gdImagePng(im, pngout);
   fclose(pngout);

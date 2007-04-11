@@ -432,3 +432,39 @@ void RainbruRPG::Core::ChartBase::drawYAxisCaption(gdImagePtr im, int c){
 
 }
 
+/** Change the Y-axis caption
+  *
+  * \param s The new caption
+  *
+  */
+void RainbruRPG::Core::ChartBase::setLeftCaption(const std::string& s){
+  yAxisCaption=s;
+}
+
+/** Change the X-axis caption
+  *
+  * \param s The new caption
+  *
+  */
+void RainbruRPG::Core::ChartBase::setBottomCaption(const std::string& s){
+  xAxisCaption=s;
+}
+
+/** Change the graph title
+  *
+  * \param s The new title
+  *
+  */
+void RainbruRPG::Core::ChartBase::setTitle(const std::string& s){
+  graphTitle=s;
+}
+
+/** Change the image filename
+  *
+  * \param s The new filename
+  *
+  */
+void RainbruRPG::Core::ChartBase::setFilename(const char* s){
+  filename=s;
+}
+

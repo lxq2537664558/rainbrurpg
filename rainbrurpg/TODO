@@ -25,10 +25,8 @@ o [mouse] FlooderTest imlementation
   tests. Each test must be able to return a list of value that can
   be drawn in a chart.
 
-- ChartBase::setLeftCaption and setBottomCaption methods
+- A ChartViewer dialog to view chart image
 - The server answer with a reliable packet if the received one is reliable
-- FlooderTestBase has a pure virtual int getTotalSteps() function
-- Showing progress during netflooder tests
 - NetFlooder uses an ChartViewer dialog to show test results
 
 - Test the reliable packets usage (ftReliable)
@@ -137,28 +135,6 @@ o [mouse] FlooderTest imlementation
 	  durée à l'aide de xident.
 - Se renseigner sur Audiere
 
-* Client Debugging console
-  La console de debuguage necessuite d'etre reimplementee
-  entierement. Son ancienne implementation se trouve dans IrrClient.
-- Les objets et attributs de la console de debugage... 
-  font partie d'une lib à part
-- Utiliser la propriete desc des attributs
-- get core.showstats
-- bool set core.showstats
-	- creer les set et get avec using;
-- A correct documentation for the console
-- core.driver renvoi un charAttribute (OpenGL, D3D...)
-- Implementer minFpsAttribute, maxFpsAttribute
-- Faire des headers pour les liste d'objets, les liste d'attributs
-- En plus de ObjectAttribute, il y a ObjectMethod. On peut l'appeler avec 
-  call object.method (exemple core.reinitstats : reinit le nbre de fps
-  et de primitive. Le type est action.
-- Console doit prendre en compte le type de commande en retour de Tokenizer
-  plutot que de traiter simpleCommand puis doubleCommand
-- ObjectAttribute superclasse de IntAttribute, BoolAttribute et CharAttribute
-
-
-
 
 
 * *******************************************************
@@ -166,6 +142,11 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-127
+- ftReliable setup correctly ChartLine
+- FlooderTestBase has a pure virtual int getTotalSteps() function
+- Showing progress during netflooder tests
+- ChartBase::setLeftCaption and setBottomCaption methods
+- ChartBase::setTitle and setFilename methods
 - ChartLine::drawLeftCaption take a long time (about 20 sec). Fix it
 - ftReliable build ChartSerie for reliable and non-reliable tests
 - ftReliable calls ChartLine::draw for bluit tests

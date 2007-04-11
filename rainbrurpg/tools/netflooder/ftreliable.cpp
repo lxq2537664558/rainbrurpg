@@ -124,6 +124,12 @@ void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
 
   LOGI("All tests are complete, drawing chart");
   ChartLine g(700,500);
+
+  g.setLeftCaption("Server response (microseconds)");
+  g.setBottomCaption("");
+  g.setTitle("Netflooder reliable test");
+  g.setFilename("ftreliable.png");
+
   g.addSerie(&serie1);
   g.addSerie(&serie2);
   LOGI("Series added to the chart, drawing chart...");

@@ -111,6 +111,11 @@ namespace RainbruRPG {
       void addSerieColor(int, int, int );
       void changeSerieColor(int, int, int, int);
 
+      void setLeftCaption(const std::string&);
+      void setBottomCaption(const std::string&);
+      void setTitle(const std::string&);
+      void setFilename(const char*);
+
     protected:
       void drawAxis(gdImagePtr, int);
       void drawChartTitle(gdImagePtr, int);
