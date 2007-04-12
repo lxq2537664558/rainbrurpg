@@ -322,7 +322,7 @@ floodpanel.o floodpanel.o: floodpanel.cpp floodpanel.h \
   /usr/include/gd.h /usr/include/gd_io.h /usr/include/gdfx.h \
   /usr/include/gd.h /usr/include/gdfonts.h ../../common/chartbase.h \
   ../../common/chartserie.h ../../common/npflooder0004.h \
-  ../../common/netpacketflooderbase.h
+  ../../common/netpacketflooderbase.h chartviewer.h
 
 floodpanel.h:
 
@@ -1269,3 +1269,5 @@ ftreliable.h:
 ../../common/npflooder0004.h:
 
 ../../common/netpacketflooderbase.h:
+
+chartviewer.h:

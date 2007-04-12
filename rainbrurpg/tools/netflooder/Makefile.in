@@ -54,7 +54,7 @@ am_rainbrurpg_tools_netflooder_OBJECTS = main.$(OBJEXT) \
 	netflooderwindow.$(OBJEXT) connectionpanel.$(OBJEXT) \
 	waitingpanel.$(OBJEXT) enetflooderclient.$(OBJEXT) \
 	floodpanel.$(OBJEXT) floodertestbase.$(OBJEXT) \
-	ftreliable.$(OBJEXT)
+	ftreliable.$(OBJEXT) chartviewer.$(OBJEXT)
 rainbrurpg_tools_netflooder_OBJECTS =  \
 	$(am_rainbrurpg_tools_netflooder_OBJECTS)
 rainbrurpg_tools_netflooder_DEPENDENCIES =
@@ -207,7 +207,8 @@ rainbrurpg_tools_netflooder_SOURCES = main.cpp			\
 				      enetflooderclient.cpp	\
 				      floodpanel.cpp		\
 				      floodertestbase.cpp	\
-				      ftreliable.cpp	
+				      ftreliable.cpp		\
+				      chartviewer.cpp
 
 all: all-am
 
@@ -280,6 +281,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/chartviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/connectionpanel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/enetflooderclient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/floodertestbase.Po@am__quote@

@@ -35,6 +35,9 @@ RainbruRPG::Network::ftReliable::ftReliable()
   this->description="Compare performance between reliable and "
     "non-reliable packets";
 
+  imageFilename="ftreliable.png";
+  imageWidth=700;
+  imageHeiht=500;
 }
 
 /** The destructor
@@ -123,12 +126,12 @@ void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
   }
 
   LOGI("All tests are complete, drawing chart");
-  ChartLine g(700,500);
+  ChartLine g(imageWidth,imageHeiht);
 
   g.setLeftCaption("Server response (microseconds)");
   g.setBottomCaption("");
   g.setTitle("Netflooder reliable test");
-  g.setFilename("ftreliable.png");
+  g.setFilename(imageFilename);
 
   g.addSerie(&serie1);
   g.addSerie(&serie2);
@@ -138,9 +141,15 @@ void RainbruRPG::Network::ftReliable::run(EnetFlooderClient* host){
   LOGI("Chart is drawn");
   sigProgressOneStep.emit();
 
-
 }
 
+/** Get the total number of test
+  *
+  * It is used to setup the progress bar
+  *
+  * \return The total number of steps performed by this test
+  *
+  */
 int RainbruRPG::Network::ftReliable::getTotalSteps(){
   return (nbTest*2)+1;
 }

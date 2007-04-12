@@ -54,7 +54,7 @@ am_rainbrurpg_tools_netflooder_OBJECTS = main.$(OBJEXT) \
 	netflooderwindow.$(OBJEXT) connectionpanel.$(OBJEXT) \
 	waitingpanel.$(OBJEXT) enetflooderclient.$(OBJEXT) \
 	floodpanel.$(OBJEXT) floodertestbase.$(OBJEXT) \
-	ftreliable.$(OBJEXT)
+	ftreliable.$(OBJEXT) chartviewer.$(OBJEXT)
 rainbrurpg_tools_netflooder_OBJECTS =  \
 	$(am_rainbrurpg_tools_netflooder_OBJECTS)
 rainbrurpg_tools_netflooder_DEPENDENCIES =
@@ -114,7 +114,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-04-10
+ISODATE = 2007-04-12
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -207,7 +207,8 @@ rainbrurpg_tools_netflooder_SOURCES = main.cpp			\
 				      enetflooderclient.cpp	\
 				      floodpanel.cpp		\
 				      floodertestbase.cpp	\
-				      ftreliable.cpp	
+				      ftreliable.cpp		\
+				      chartviewer.cpp
 
 all: all-am
 
@@ -280,6 +281,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/chartviewer.Po
 include ./$(DEPDIR)/connectionpanel.Po
 include ./$(DEPDIR)/enetflooderclient.Po
 include ./$(DEPDIR)/floodertestbase.Po

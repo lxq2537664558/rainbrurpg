@@ -25,9 +25,11 @@ o [mouse] FlooderTest imlementation
   tests. Each test must be able to return a list of value that can
   be drawn in a chart.
 
-- A ChartViewer dialog to view chart image
-- The server answer with a reliable packet if the received one is reliable
-- NetFlooder uses an ChartViewer dialog to show test results
+- floodpanel opens chartviewer with the FlooderTestBase
+   getImageFilename, getImageWidth, getImageHeight values
+
+
+
 
 - Test the reliable packets usage (ftReliable)
 - Test the implementation with the packet size (how the performance
@@ -142,6 +144,9 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-127
+- A ChartViewer dialog to view chart image
+- FlooderTestBase::getFilename, getImageWidth, getImageHeight
+   implementation
 - ftReliable setup correctly ChartLine
 - FlooderTestBase has a pure virtual int getTotalSteps() function
 - Showing progress during netflooder tests

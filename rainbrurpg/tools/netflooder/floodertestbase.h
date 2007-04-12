@@ -80,6 +80,11 @@ namespace RainbruRPG{
       const char* getName();
       const char* getDescription();
 
+      const char* getImageFilename();
+      int getImageWidth();
+      int getImageHeight();
+
+
     protected:
       /** The test name */
       const char* name;
@@ -89,6 +94,21 @@ namespace RainbruRPG{
 	*
 	*/
       const char* description;
+
+      /** The name of the generated image
+        *
+	*/
+      const char* imageFilename;
+
+      /** The width of the generated image (in pixels)
+        *
+	*/
+      int imageWidth;
+
+      /** The height of the generated image (in pixels)
+        *
+	*/
+      int imageHeiht;
     };
   }
 }

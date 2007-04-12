@@ -26,7 +26,9 @@
   *
   */
 RainbruRPG::Network::FlooderTestBase::FlooderTestBase(){
-
+  imageFilename="";
+  imageWidth=0;
+  imageHeiht=0;
 }
 
 /** The destructor
@@ -52,5 +54,17 @@ const char* RainbruRPG::Network::FlooderTestBase::getName(){
   */
 const char* RainbruRPG::Network::FlooderTestBase::getDescription(){
   return this->description;
+}
+
+const char* RainbruRPG::Network::FlooderTestBase::getImageFilename(){
+  return imageFilename;
+}
+
+int RainbruRPG::Network::FlooderTestBase::getImageWidth(){
+  return imageWidth
+}
+
+int RainbruRPG::Network::FlooderTestBase::getImageHeight(){
+  return imageHeiht
 }
 

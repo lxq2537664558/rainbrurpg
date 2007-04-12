@@ -26,7 +26,7 @@
 #include <fox-1.6/FXMessageBox.h>
 
 #include "ftreliable.h"
-
+#include "chartviewer.h"
 
 FXDEFMAP(RainbruRPG::Gui::FloodPanel) FloodPanelMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
@@ -245,6 +245,11 @@ void RainbruRPG::Gui::FloodPanel::performAllTests(){
     pgStep->setTotal((*iter)->getTotalSteps());
     pgStep->setProgress(0);
     (*iter)->run(client);
+
+
+    ChartViewer cw(getApp(), "ftreliable.png");
+    cw.execute(PLACEMENT_SCREEN);
+
   }
 }
 
