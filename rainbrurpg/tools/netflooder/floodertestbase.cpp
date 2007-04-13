@@ -56,15 +56,30 @@ const char* RainbruRPG::Network::FlooderTestBase::getDescription(){
   return this->description;
 }
 
+/** Get the result image filename
+  *
+  * \return The filename where the image will be saved
+  *
+  */
 const char* RainbruRPG::Network::FlooderTestBase::getImageFilename(){
   return imageFilename;
 }
 
+/** Get the image width in pixels
+  *
+  * \return The image width
+  *
+  */
 int RainbruRPG::Network::FlooderTestBase::getImageWidth(){
-  return imageWidth
+  return imageWidth;
 }
 
+/** Get the image height in pixels
+  *
+  * \return The image height
+  *
+  */
 int RainbruRPG::Network::FlooderTestBase::getImageHeight(){
-  return imageHeiht
+  return imageHeiht;
 }
 

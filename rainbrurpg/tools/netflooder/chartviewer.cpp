@@ -30,6 +30,8 @@ FXDEFMAP(RainbruRPG::Gui::ChartViewer) ChartViewerMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ChartViewer::ID_NYI, 
 	    RainbruRPG::Gui::ChartViewer::onNotImplemented),
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ChartViewer::ID_CLOSE, 
+	    RainbruRPG::Gui::ChartViewer::onClose),
 
 
 };
@@ -41,10 +43,16 @@ FXIMPLEMENT(RainbruRPG::Gui::ChartViewer,FXDialogBox,
 
 /** Default constructor
   *
+  * \param a The FXApp pointer needed to create the widget
+  * \param filename The filename of the image to show
+  * \param width The width of the image to show
+  * \param height The height of the image to show
+  *
   */
-RainbruRPG::Gui::ChartViewer::ChartViewer(FXApp * a, const char* filename)
+RainbruRPG::Gui::ChartViewer::
+ChartViewer(FXApp * a, const char* filename, int width, int height)
    :FXDialogBox(a,"Netflooder chart's viewer", DECOR_TITLE|DECOR_CLOSE|DECOR_BORDER|DECOR_SHRINKABLE|DECOR_STRETCHABLE|DECOR_MENU, 100, 100, 
-		500, 400, 10, 10, 10, 10, 4, 4){
+		width+30, height+30+25, 10, 10, 10, 10, 4, 4){
  
   FXImage *img=this->loadImage(filename);
 
@@ -53,6 +61,8 @@ RainbruRPG::Gui::ChartViewer::ChartViewer(FXApp * a, const char* filename)
   // The image
   new FXImageFrame( frame, img);
 
+  FXButton* btnRun=new FXButton(frame, "Close", NULL, this, 
+				ID_CLOSE, BUTTON_NORMAL|LAYOUT_CENTER_X);
 
 }
 
@@ -112,4 +122,21 @@ FX::FXImage* RainbruRPG::Gui::ChartViewer::loadImage(const char* filename){
   }
 
   return img;
+}
+
+/** An event receiver used during development
+  *
+  * The widgets that send a usefull signal that have unimplemented
+  * event handler are connected to this to avoid compilation errors.
+  *
+  * \param o Internally used by FOX
+  * \param s Internally used by FOX
+  * \param v Internally used by FOX
+  *
+  * \return Always 1
+  */
+long RainbruRPG::Gui::ChartViewer::onClose(FXObject *o,FXSelector s,void* v){
+
+  this->handle(this, FXSEL(SEL_COMMAND, FXDialogBox::ID_CANCEL), NULL);
+
 }

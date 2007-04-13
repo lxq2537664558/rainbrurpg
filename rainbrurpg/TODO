@@ -6,8 +6,11 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 * Connection desactivee dans erconnection.cpp *
 * delete oldXident
 
-* Unittest doxygen documentation
+o [mouse] Unittest implementation
 - In this order
+   ChartBase
+   ChartLine
+   ChartSerie
    CurlAccountDelete
    curlaccounttoggleblacklist
    curldefaultwritefunction
@@ -16,22 +19,10 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 - GNU headers
 - rename m_caption for each class
 
-* ScriptEditor improvement
-- A test to change the tab width
+o [mouse] ChartBase Unittest
+- tests/common/chartbasetest.h Implementation
 
-o [mouse] FlooderTest imlementation
-  All tests must have a name and a description. We may made a test
-  list. In the Flood panel, we can choose a single test or all the
-  tests. Each test must be able to return a list of value that can
-  be drawn in a chart.
-
-- floodpanel opens chartviewer with the FlooderTestBase
-   getImageFilename, getImageWidth, getImageHeight values
-
-
-
-
-- Test the reliable packets usage (ftReliable)
+* FlooderTest
 - Test the implementation with the packet size (how the performance
    decrease) (ftSize)
 - Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
@@ -144,6 +135,20 @@ o [mouse] FlooderTest imlementation
 * *******************************************************
 
 * v 0.0.4-127
+- Add some function :
+getSerieCount() for testing addSerie (ChartSerie *) 
+getSerieColorCount() for testing addSerieColor (int, int, int)
+getLeftCaption() for testing setLeftCaption (const std::string &)
+getBottomCaption for testing setBottomCaption (const std::string &)
+getTitle() for testing setTitle (const std::string &)
+getFilename() for testing setFilename (const char *)
+getImageWidth() and getImageHeight() to test the constructor parameters 
+- Doxygen documentation
+- Open all ChartViewer after all tests computed
+- ChartViewer : Makes the close button close the dialog
+- A 'close' button in the chartviewer
+- floodpanel opens chartviewer with the FlooderTestBase
+   getImageFilename, getImageWidth, getImageHeight values
 - A ChartViewer dialog to view chart image
 - FlooderTestBase::getFilename, getImageWidth, getImageHeight
    implementation

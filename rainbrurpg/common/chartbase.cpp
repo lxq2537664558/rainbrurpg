@@ -468,3 +468,76 @@ void RainbruRPG::Core::ChartBase::setFilename(const char* s){
   filename=s;
 }
 
+/** Get the number of series
+  * 
+  * \return The size of the serie list
+  *
+  */
+unsigned int RainbruRPG::Core::ChartBase::getSerieCount(){
+  chartSerieList->size();
+}
+
+/** Get the number of serie colors
+  * 
+  * \return The size of the seriesColor list
+  *
+  */
+unsigned int RainbruRPG::Core::ChartBase::getSerieColorCount(){
+  seriesColor.size();
+}
+
+/** Get the text of the left caption
+  *
+  * \return The string drawn
+  *
+  */
+std::string RainbruRPG::Core::ChartBase::getLeftCaption(){
+  return yAxisCaption;
+}
+
+/** Get the text of the bottom caption
+  *
+  * \return The string drawn
+  *
+  */
+std::string RainbruRPG::Core::ChartBase::getBottomCaption(){
+  return xAxisCaption;
+}
+
+/** Get the text of the title
+  *
+  * \return The string drawn
+  *
+  */
+std::string RainbruRPG::Core::ChartBase::getTitle(){
+  return graphTitle;
+}
+
+/** Get the filename of the image
+  *
+  * \return The image filename
+  *
+  */
+const char* RainbruRPG::Core::ChartBase::getFilename(){
+  return filename;
+}
+
+/** Get the image width
+  *
+  * \return The width of the image in pixels
+  *
+  */
+int RainbruRPG::Core::ChartBase::getImageWidth(){
+  return imageWidth;
+}
+
+/** Get the image height
+  *
+  * \return The height of the image in pixels
+  *
+  */
+int RainbruRPG::Core::ChartBase::getImageHeight(){
+  return imageHeight;
+}
+
+

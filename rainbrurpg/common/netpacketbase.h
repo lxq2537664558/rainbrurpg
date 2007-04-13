@@ -22,7 +22,7 @@
 
 /* Modifications :
  * - 19 mar 2007 : Documentation update
-                   Adding getData and getDataLenght
+ *                 Adding getData and getDataLenght
  * - 04 mar 2007 : starting implementation
  */
 
@@ -39,8 +39,8 @@
 
 using namespace std;
 
-/** The packets are all reliable if defined */
-//#define ALWAYS_USE_RELIABLE
+/* The packets are all reliable if defined */
+#define ALWAYS_USE_RELIABLE
 
 namespace RainbruRPG{
   namespace Network{
@@ -150,6 +150,12 @@ namespace RainbruRPG{
       * http://developer.gnome.org/doc/API/glib/glib-byte-order-macros.html
       * for the available conversion macros.
       *
+      * \section sec_Reliable Reliable or not reliable ?
+      *
+      * A preprocessor macro called ALWAYS_USE_RELIABLE is defined in
+      * the header common/netpacketbase.h to tells always use reliable
+      * network packets.
+      * 
       * \sa tNetPacketIdentifier
       */
     class NetPacketBase{

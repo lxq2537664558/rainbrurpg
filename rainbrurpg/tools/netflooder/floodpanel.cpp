@@ -246,10 +246,14 @@ void RainbruRPG::Gui::FloodPanel::performAllTests(){
     pgStep->setProgress(0);
     (*iter)->run(client);
 
+  }
 
-    ChartViewer cw(getApp(), "ftreliable.png");
+  // Show the result of all tests
+  for (iter=testList->begin(); iter != testList->end(); iter++){
+    ChartViewer cw(getApp(), (*iter)->getImageFilename(), 
+		   (*iter)->getImageWidth(), (*iter)->getImageHeight());
+
     cw.execute(PLACEMENT_SCREEN);
-
   }
 }
 

@@ -127,7 +127,10 @@ treatPacket(NetPacketBase* p, ENetEvent* e ){
 
 /** Wait a packet of a type with a given response
   *
-  * return true if received
+  * \param packetId The packet identifier we are waiting
+  * \param responseId The response we are waiting
+  *
+  * \return true if received
   *
   */
 bool RainbruRPG::Network::EnetFlooderClient::

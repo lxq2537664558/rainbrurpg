@@ -272,7 +272,7 @@
 
 /** \namespace RainbruRPG
   *
-  * The global RainbruRPG namespace.
+  * \brief The global RainbruRPG namespace.
   *
   * All the classes used for this game must be part of this namespace
   * or one of its child.

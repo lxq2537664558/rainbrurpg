@@ -54,8 +54,6 @@ namespace RainbruRPG{
       void cursorPositionChanged();
 
     private:
-      void showStatusBarMessage();
-
       /** The syntax highlighter of the text editor */
       Highlighter* highlighter;
       /** The text edit widget */

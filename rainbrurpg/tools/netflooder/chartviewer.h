@@ -44,7 +44,6 @@ namespace RainbruRPG{
       virtual ~ChartViewer(); 
       
       virtual void create();
-      void update();
 
       /** An enumeration definining the FOX identifiers
         *
@@ -54,11 +53,14 @@ namespace RainbruRPG{
       enum{
 	/** The FOX identifier of an unimplemented button */
 	ID_NYI=FXDialogBox::ID_LAST, 
+	/** The close button identifier */
+	ID_CLOSE,
 	/** Internally used identifier */
 	ID_LAST
       };
       
       long onNotImplemented(FXObject *,FXSelector,void*);
+      long onClose(FXObject *,FXSelector,void*);
 
     private:
       /** An empty default constructor

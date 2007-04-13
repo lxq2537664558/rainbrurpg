@@ -116,6 +116,15 @@ namespace RainbruRPG {
       void setTitle(const std::string&);
       void setFilename(const char*);
 
+      unsigned int getSerieCount();
+      unsigned int getSerieColorCount();
+      std::string getLeftCaption();
+      std::string getBottomCaption();
+      std::string getTitle();
+      const char* getFilename();
+      int getImageWidth();
+      int getImageHeight();
+
     protected:
       void drawAxis(gdImagePtr, int);
       void drawChartTitle(gdImagePtr, int);
