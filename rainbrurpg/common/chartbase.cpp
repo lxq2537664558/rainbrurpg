@@ -474,7 +474,7 @@ void RainbruRPG::Core::ChartBase::setFilename(const char* s){
   *
   */
 unsigned int RainbruRPG::Core::ChartBase::getSerieCount(){
-  chartSerieList->size();
+    return chartSerieList->size();
 }
 
 /** Get the number of serie colors
@@ -483,7 +483,7 @@ unsigned int RainbruRPG::Core::ChartBase::getSerieCount(){
   *
   */
 unsigned int RainbruRPG::Core::ChartBase::getSerieColorCount(){
-  seriesColor.size();
+    return seriesColor.size();
 }
 
 /** Get the text of the left caption
@@ -540,4 +540,31 @@ int RainbruRPG::Core::ChartBase::getImageHeight(){
   return imageHeight;
 }
 
+/** Get the color from its index
+  *
+  * \param index The index of the serie
+  *
+  * \return The color in the gd format
+  *
+  */
+int RainbruRPG::Core::ChartBase::getSerieColor(int index){
+  return seriesColor[index];
+}
 
+/** Set the imageWidth
+  *
+  * \param i The new image Width
+  *
+  */
+void RainbruRPG::Core::ChartBase::setImageWidth(int i){
+  imageWidth=i;
+}
+
+/** Set the imageHeight
+  *
+  * \param i The new image height
+  *
+  */
+void RainbruRPG::Core::ChartBase::setImageHeight(int i){
+  imageHeight=i;
+}

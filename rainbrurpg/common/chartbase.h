@@ -124,8 +124,12 @@ namespace RainbruRPG {
       const char* getFilename();
       int getImageWidth();
       int getImageHeight();
+      int getSerieColor(int);
 
-    protected:
+      void setImageWidth(int);
+      void setImageHeight(int);
+
+   protected:
       void drawAxis(gdImagePtr, int);
       void drawChartTitle(gdImagePtr, int);
       void drawYAxisCaption(gdImagePtr, int);

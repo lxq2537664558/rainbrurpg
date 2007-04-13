@@ -8,7 +8,6 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 
 o [mouse] Unittest implementation
 - In this order
-   ChartBase
    ChartLine
    ChartSerie
    CurlAccountDelete
@@ -20,7 +19,11 @@ o [mouse] Unittest implementation
 - rename m_caption for each class
 
 o [mouse] ChartBase Unittest
-- tests/common/chartbasetest.h Implementation
+- ChartSerie unit test implementation
+Test size() by adding series
+Test getMinValue, getMaxValue
+Test getXCaption(int), getYCaption(int)
+Test SetLengendCaption
 
 * FlooderTest
 - Test the implementation with the packet size (how the performance
@@ -135,9 +138,20 @@ o [mouse] ChartBase Unittest
 * *******************************************************
 
 * v 0.0.4-127
-- Add some function :
+- ChartLine unit test doesn't need tests
+- tests/common/chartbasetest.h Implementation
+Constructor initial values
+testing addSerie (ChartSerie *) 
+testing addSerieColor (int, int, int)
+testing getSerieColor(int) with black(0) and white(FFFFFF);
+testing setLeftCaption (const std::string &)
+testing setBottomCaption (const std::string &)
+testing setTitle (const std::string &)
+testing setFilename (const char *)
+- Add some function in ChartBase for unit test purpose :
 getSerieCount() for testing addSerie (ChartSerie *) 
 getSerieColorCount() for testing addSerieColor (int, int, int)
+getSerieColor(int);
 getLeftCaption() for testing setLeftCaption (const std::string &)
 getBottomCaption for testing setBottomCaption (const std::string &)
 getTitle() for testing setTitle (const std::string &)

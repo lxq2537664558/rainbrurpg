@@ -162,6 +162,7 @@ commontestsuite.o commontestsuite.o: commontestsuite.cpp \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_list.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/list.tcc \
   ../common/logger.h ../common/singleton.h ../common/stringconv.h \
+  common/chartbasetest.h ../common/chartserie.h common/chartserietest.h \
   common/clientconnecttest.h ../common/clientconnect.h \
   ../common/xmlaccountlist.h ../common/tinyxml.h /usr/include/assert.h \
   ../common/tinystr.h ../common/loadbmp.h /usr/include/math.h \
@@ -189,7 +190,10 @@ commontestsuite.o commontestsuite.o: commontestsuite.cpp \
   ../common/curlposteddata.h ../common/curlaccountdelete.h \
   ../common/curlaccountconfirmmail.h \
   ../common/curlaccounttoggleblacklist.h common/virtualaccount.h \
-  common/curlaccountaddtest.h common/curlaccountconfirmmailtest.h
+  common/curlaccountaddtest.h common/curlaccountconfirmmailtest.h \
+  ../common/chartbase.h /usr/include/gd.h /usr/include/gd_io.h \
+  /usr/include/gdfx.h /usr/include/gd.h /usr/include/gdfonts.h \
+  ../common/chartserie.h
 
 commontestsuite.h:
 
@@ -587,6 +591,12 @@ common/attributemodifierlisttest.h:
 
 ../common/stringconv.h:
 
+common/chartbasetest.h:
+
+../common/chartserie.h:
+
+common/chartserietest.h:
+
 common/clientconnecttest.h:
 
 ../common/clientconnect.h:
@@ -700,3 +710,17 @@ common/virtualaccount.h:
 common/curlaccountaddtest.h:
 
 common/curlaccountconfirmmailtest.h:
+
+../common/chartbase.h:
+
+/usr/include/gd.h:
+
+/usr/include/gd_io.h:
+
+/usr/include/gdfx.h:
+
+/usr/include/gd.h:
+
+/usr/include/gdfonts.h:
+
+../common/chartserie.h:

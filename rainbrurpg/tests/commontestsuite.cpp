@@ -24,12 +24,16 @@
 
 // TestFixtures implementations
 #include "attributemodifierlisttest.h"
+#include "chartbasetest.h"
+#include "chartserietest.h"
 #include "clientconnecttest.h"
 #include "curlaccountaddtest.h"
 #include "curlaccountconfirmmailtest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
+#include <chartbase.h>
+#include <chartserie.h>
 #include <clientconnect.h>
 #include <curlaccountadd.h>
 #include <curlaccountconfirmmail.h>
@@ -41,6 +45,8 @@ CommonTestSuite::CommonTestSuite()
   :TestSuite("Common")
 {
   addTest( AttributeModifierListTest<AttributeModifierList>::suite() );
+  addTest( ChartBaseTest<ChartBase>::suite() );
+  addTest( ChartSerieTest<ChartSerie>::suite() );
   addTest( ClientConnectTest<ClientConnect>::suite() );
   addTest( CurlAccountAddTest<CurlAccountAdd>::suite() );
   addTest( CurlAccountConfirmMailTest<CurlAccountConfirmMail>::suite() );
