@@ -41,11 +41,46 @@ class AttributeModifierListTest : public CPPUNIT_NS::TestFixture
   /// Start the test 
   CPPUNIT_TEST_SUITE( AttributeModifierListTest );
 
+  /** The testIfNull test
+    *
+    * \sa testIfNull
+    *
+    */
   CPPUNIT_TEST( testIfNull );
+
+  /** The testStep1 test
+    *
+    * \sa testStep1
+    *
+    */
   CPPUNIT_TEST( testStep1 );
+
+  /** The testStep2 test
+    *
+    * \sa testStep2
+    *
+    */
   CPPUNIT_TEST( testStep2 );
+
+  /** The testStep3 test
+    *
+    * \sa testStep3
+    *
+    */
   CPPUNIT_TEST( testStep3 );
+
+  /** The testUnsigned test
+    *
+    * \sa testUnsigned
+    *
+    */
   CPPUNIT_TEST( testUnsigned );
+
+  /** The testTotalString test
+    *
+    * \sa testTotalString
+    *
+    */
   CPPUNIT_TEST( testTotalString );
 
 

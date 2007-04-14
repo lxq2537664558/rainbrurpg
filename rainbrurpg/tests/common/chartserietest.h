@@ -40,12 +40,47 @@ class ChartSerieTest : public CPPUNIT_NS::TestFixture
   /// Start the test 
   CPPUNIT_TEST_SUITE( ChartSerieTest );
 
-  /** Tests the ChartSerie initial values
+  /** Tests the size function
     *
-    * \sa testInitialValues
+    * \sa testSize
     *
     */
-  CPPUNIT_TEST( testInitialValues );
+  CPPUNIT_TEST( testSize );
+
+  /** Tests the min value
+    *
+    * \sa testGetMinValue
+    *
+    */
+  CPPUNIT_TEST( testGetMinValue );
+
+  /** Tests the max value
+    *
+    * \sa testGetMaxValue
+    *
+    */
+  CPPUNIT_TEST( testGetMaxValue );
+
+  /** Tests the getXCaption function
+    *
+    * \sa testGetXCaption
+    *
+    */
+  CPPUNIT_TEST( testGetXCaption );
+
+  /** Tests the getYCaption function
+    *
+    * \sa testGetYCaption
+    *
+    */
+  CPPUNIT_TEST( testGetYCaption );
+
+  /** Tests the legend caption
+    *
+    * \sa testLegendCaption
+    *
+    */
+  CPPUNIT_TEST( testLegendCaption );
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -78,13 +113,127 @@ public:
     delete this->m_caption; 
   }
   
-  /** Test the initial values of ChartBase
+  /** Test the ChartSerie size function
     *
-    * This tests are called after the instance is constructed.
+    * Add a value and control is the size has grown
     *
     */
-  void testInitialValues(){ 
-//    CPPUNIT_ASSERT( series==0 );
+  void testSize(){ 
+
+    unsigned int size1=this->m_caption->size();
+
+    tChartSerieValue v;
+    v.value=17;
+    this->m_caption->addValue(&v);
+
+    unsigned int size2=this->m_caption->size();
+    CPPUNIT_ASSERT( size2==++size1 );
+  }
+
+  /** Test the getMinValue() function
+    *
+    * This function may return 0 (zero) at startup and should change when
+    * a value inferior to 0 (zero) is added
+    *
+    */
+  void testGetMinValue(){
+    double minVal1=this->m_caption->getMinValue();
+    CPPUNIT_ASSERT( minVal1==0 );
+
+    this->m_caption->addValue(createSerieValue(5));
+    double minVal2=this->m_caption->getMinValue();
+    CPPUNIT_ASSERT( minVal2==0 );
+
+    this->m_caption->addValue(createSerieValue(-2));
+    double minVal3=this->m_caption->getMinValue();
+    CPPUNIT_ASSERT( minVal3==-2 );
+
+    this->m_caption->addValue(createSerieValue(-18));
+    double minVal4=this->m_caption->getMinValue();
+    CPPUNIT_ASSERT( minVal4==-18 );
+
+    this->m_caption->addValue(createSerieValue(-9));
+    double minVal5=this->m_caption->getMinValue();
+    CPPUNIT_ASSERT( minVal5==-18 );
+
+  }
+
+  /** Test the getMaxValue() function
+    *
+    * This function may return 0 (zero) at startup and should change when
+    * a value superior to 0 (zero) is added
+    *
+    */
+  void testGetMaxValue(){
+    double maxVal;
+
+    maxVal=this->m_caption->getMaxValue();
+    CPPUNIT_ASSERT( maxVal==0 );
+
+    this->m_caption->addValue(createSerieValue(5));
+    maxVal=this->m_caption->getMaxValue();
+    CPPUNIT_ASSERT( maxVal==5 );
+
+    this->m_caption->addValue(createSerieValue(2));
+    maxVal=this->m_caption->getMaxValue();
+    CPPUNIT_ASSERT( maxVal==5 );
+  }
+
+  /** Creates a tChartSerieValue and return it
+    *
+    * \param v The value
+    * \param xCaption The x-axis caption
+    * \param yCaption The y-axis caption
+    *
+    * \return The newly created tChartSerieValue
+    *
+    */
+  tChartSerieValue* createSerieValue(double v, const char* xCaption="", 
+				     const char* yCaption=""){
+
+    tChartSerieValue* value=new tChartSerieValue();
+    value->value=v;
+    value->xCaption=xCaption;
+    value->yCaption=yCaption;
+    return value;
+  }
+
+  /** Test the getXCaption function
+    * 
+    * Adds a new tChartSerieValue and get the x-axis caption to test it
+    *
+    */
+  void testGetXCaption(){
+    this->m_caption->addValue(createSerieValue(5, "newXCaption"));
+    const char* xc=this->m_caption->getXCaption(0);
+
+    CPPUNIT_ASSERT( strcmp(xc,"newXCaption" )==0 );
+
+  }
+
+  /** Test the getYCaption function
+    * 
+    * Adds a new tChartSerieValue and get the y-axis caption to test it
+    *
+    */
+  void testGetYCaption(){
+    this->m_caption->addValue(createSerieValue(5, "", "newYCaption"));
+    const char* xc=this->m_caption->getYCaption(0);
+
+    CPPUNIT_ASSERT( strcmp(xc,"newYCaption" )==0 );
+  }
+
+  /** Test the legendCaption
+    *
+    * Change it and test if it was changed correctly
+    *
+    */
+  void testLegendCaption(){
+    std::string lc1="new LegendCaption";
+    this->m_caption->setLegendCaption(lc1);
+    std::string lc2=this->m_caption->getLegendCaption();
+
+    CPPUNIT_ASSERT( lc1.compare(lc2)==0 );
   }
 
 };

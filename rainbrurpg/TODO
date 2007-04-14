@@ -6,24 +6,11 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 * Connection desactivee dans erconnection.cpp *
 * delete oldXident
 
-o [mouse] Unittest implementation
+* Unittest implementation
 - In this order
-   ChartLine
-   ChartSerie
    CurlAccountDelete
    curlaccounttoggleblacklist
    curldefaultwritefunction
-- Some classes undocumented
-   Take tests/tapi/captiontest as example
-- GNU headers
-- rename m_caption for each class
-
-o [mouse] ChartBase Unittest
-- ChartSerie unit test implementation
-Test size() by adding series
-Test getMinValue, getMaxValue
-Test getXCaption(int), getYCaption(int)
-Test SetLengendCaption
 
 * FlooderTest
 - Test the implementation with the packet size (how the performance
@@ -50,32 +37,6 @@ Test SetLengendCaption
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
-
-* Editeur
-  The editor need a server to modify the world.
-- Un dbl-clk sur un ObjectPos De Objectstab Ouvre PosorDialog
-  PosorDialog permet de modifier la position ou l'orientation d'un
-  objet. Lorsqu'on clique sur un ObjectPos de ObjectsTab, on doit
-  l'ouvrir. 
-- PosorDialog est un dialogue Qt 
-  Ce dialog permet de changer la position et l'orientation d'un objet
-- Nettoyer OgreView 
-  Supprimer les fonctions inutiles et les variables globales qui ne
-  sont pas de moi. Ca evitera peut etre une implementation de 1400
-  lignes.
-- SelectionCycle teste si le nom d'Entity retourne contient Outline
-	- Cela evitera un Segfault
-  [ogreview.cpp:1178]           -- Selected object name : Arbre1_1Outline
-  [selectionmanager.cpp:107]    II Deleting last selection highlight
-  [selectionmanager.cpp:121]    II Creating selection highlight
-  Erreur de segmentation
-
-- SelectionManager gere la selection multiple
-- Un overlay d'aide lors de la selection d'un mesh
-- Destructeur de MeshViewer 
-  Permet la possibilite d'afficher 2 MeshViewer l'un apres l'autre
-  pour l'instant, cela cause un segfault a la deuxieme ouverture
-- Environmentsetup utilise le skydome et le fog
 
 * Objectifs Seb
 - Etape 2
@@ -138,7 +99,12 @@ Test SetLengendCaption
 * *******************************************************
 
 * v 0.0.4-127
-- ChartLine unit test doesn't need tests
+- ChartSerie unit test implementation
+Test size() by adding series
+Test getMinValue, getMaxValue
+Test getXCaption(int), getYCaption(int)
+Test SetLengendCaption
+- ChartLine doesn't need unit tests
 - tests/common/chartbasetest.h Implementation
 Constructor initial values
 testing addSerie (ChartSerie *) 

@@ -1,3 +1,25 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 #ifndef FREELAYOUT_TEST_H
 #define FREELAYOUT_TEST_H
 
@@ -13,7 +35,7 @@ using namespace std;
 /** A class to test TerminalAPI FreeLayout widget
   *
   */
-template<class GAMECLASS> 
+template<class TESTEDCLASS> 
 class FreeLayoutTest : public CPPUNIT_NS::TestFixture 
 {
   /// The entry macro of the FreeLayout test
@@ -36,7 +58,7 @@ class FreeLayoutTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST_SUITE_END();
 protected:
   /// The working instance
-  GAMECLASS	*m_caption;
+  TESTEDCLASS	*m_caption;
   
 public:
   
@@ -53,7 +75,7 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new GAMECLASS; 
+    this->m_caption = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
