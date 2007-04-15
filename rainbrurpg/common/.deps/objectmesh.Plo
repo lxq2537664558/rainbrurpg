@@ -84,7 +84,39 @@ objectmesh.lo .libs/objectmesh.o: objectmesh.cpp objectmesh.h objectpos.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_string.tcc \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/list \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_list.h \
-  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/list.tcc
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/list.tcc \
+  logger.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ostream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ios \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/localefwd.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ios_base.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_classes.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/streambuf \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf_iterator.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwctype \
+  /usr/include/wctype.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_base.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_inline.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/codecvt.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/time_members.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/messages_members.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ostream.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/locale \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/typeinfo \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/istream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/istream.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/sstream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/sstream.tcc \
+  singleton.h
 
 objectmesh.h:
 
@@ -315,3 +347,67 @@ objectpos.h:
 /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_list.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/list.tcc:
+
+logger.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ostream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ios:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/localefwd.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ios_base.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_classes.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/streambuf:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/streambuf_iterator.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_base.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/ctype_inline.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/codecvt.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/time_members.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/messages_members.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/basic_ios.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/ostream.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/locale:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/locale_facets.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/typeinfo:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/istream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/istream.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/sstream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/sstream.tcc:
+
+singleton.h:

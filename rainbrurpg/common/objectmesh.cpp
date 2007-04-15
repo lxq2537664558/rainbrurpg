@@ -22,6 +22,8 @@
 
 #include "objectmesh.h"
 
+#include "logger.h"
+
 /** The default constructor
   *
   */
@@ -132,4 +134,38 @@ void RainbruRPG::Core::ObjectMesh::addPos(const ObjectPos& pos){
   //  objPos=new ObjectPos(pos);
   posList.push_back(pos);
   //  objPos=NULL;
+}
+
+/** Get an ObjectPos by its name
+  *
+  * \param name The name of the ObjectPos you want
+  *
+  * \return The ObjectPos pointer if found or NULL if not found
+  *
+  */
+const RainbruRPG::Core::ObjectPos&
+RainbruRPG::Core::ObjectMesh::getPosByName(const std::string& name){
+
+  std::string omName;
+  bool found=false;
+
+  ObjectPos pos;
+
+  ObjectPosList::const_iterator iter;
+  for (iter=posList.begin(); iter != posList.end(); iter++){
+    pos=(*iter);
+    omName=pos.getName();
+
+    // The given name was found
+    if (omName.compare(name)==0){
+      found=true;
+      return (*iter);
+    }
+  }
+
+  // No object found
+  if (!found){
+    LOGW("ObjectPos not found");
+  }
+
 }

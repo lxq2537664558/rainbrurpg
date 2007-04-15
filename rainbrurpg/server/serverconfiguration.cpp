@@ -200,3 +200,87 @@ setIpAdress(const std::string& s){
 const std::string& RainbruRPG::Server::ServerConfiguration::getIpAdress()const{
   return ipAdress;
 }
+
+/** Sets the hostname used in database connection
+  *
+  * \param hostname The new hostname
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::
+setHostName(const std::string& hostname){
+ dbHostName=hostname;
+}
+
+/** Sets the database name used in database connection
+  *
+  * \param dbname The new database name
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::
+setDatabaseName(const std::string& dbname){
+ dbDatabaseName=dbname;
+
+}
+
+/** Sets the user name used in database connection
+  *
+  * \param username The new user name
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::
+setUserName(const std::string& username){
+ dbUserName=username;
+ 
+}
+
+/** Sets the user password used in database connection
+  *
+  * \param username The new user password
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::
+setPassword(const std::string& password){
+ dbPassword=password;
+
+}
+
+/** Get the hostname used in database connection
+  *
+  * \return The host name
+  *
+  */
+const std::string& RainbruRPG::Server::ServerConfiguration::
+getHostName()const{
+  return dbHostName;
+}
+
+/** Get the database name used in database connection
+  *
+  * \return The database name
+  *
+  */
+const std::string& RainbruRPG::Server::ServerConfiguration::
+getDatabaseName()const{
+  return dbDatabaseName;
+}
+
+/** Get the user name used in database connection
+  *
+  * \return The user name
+  *
+  */
+const std::string& RainbruRPG::Server::ServerConfiguration::
+getUserName()const{
+  return dbUserName;
+}
+
+/** Get the password used in database connection
+  *
+  * \return The user's password
+  *
+  */
+const std::string& RainbruRPG::Server::ServerConfiguration::
+getPassword()const{
+  return dbPassword;
+
+}

@@ -25,6 +25,8 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QLabel>
+#include <QDoubleSpinBox>
 
 #include "objectpos.h"
 
@@ -48,12 +50,31 @@ namespace RainbruRPG{
       Q_OBJECT
     public:
       PosorDialog(QWidget* parent=0);
-      void setPosName(const QString &);
+      void setPosName(const QString &, const QString &);
 
     private:
       void createPosorWidget(QWidget*);
       /** The ObjectPos to be modified */
       ObjectPos* objectPos;
+      /** A label containing the ObjectPos name */
+      QLabel* lblObjectName;
+
+      /** The spin box containing the x-axis position */
+      QDoubleSpinBox* posX;
+      /** The spin box containing the y-axis position */
+      QDoubleSpinBox* posY;
+      /** The spin box containing the z-axis position */
+      QDoubleSpinBox* posZ;
+
+      /** The spin box containing the w-axis rotation */
+      QDoubleSpinBox* spRotW;
+      /** The spin box containing the x-axis rotation */
+      QDoubleSpinBox* spRotX;
+      /** The spin box containing the y-axis rotation */
+      QDoubleSpinBox* spRotY;
+      /** The spin box containing the z-axis rotation */
+      QDoubleSpinBox* spRotZ;
+
     };
   }
 }

@@ -46,7 +46,7 @@ namespace RainbruRPG{
       ~xmlObjectList();
 
       ObjectMeshList* getMeshList();
-      ObjectMesh* getObjectMeshByName(std::string);
+      ObjectMesh* getObjectMeshByName(const std::string&);
 
     private:
       void treatAllObjects();

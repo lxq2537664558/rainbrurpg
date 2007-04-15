@@ -111,6 +111,32 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
   sbCli->setValue(DEFAULT_MAX_CLIENTS);
   glOpts->addWidget(sbCli, 2, 1);
 
+  // Database connection
+  QGroupBox* dbGroup=new QGroupBox(tr("Database connection"), this);
+  vb1->addWidget(dbGroup);
+  QGridLayout *dbOpts=new QGridLayout();
+  dbGroup->setLayout(dbOpts);
+
+  QLabel* labDbHost=new QLabel(tr("HostName"));
+  dbOpts->addWidget(labDbHost, 0, 0);
+  QLineEdit* leDbHost=new QLineEdit("localhost", this);
+  dbOpts->addWidget(leDbHost, 0, 1);
+
+  QLabel* labDbName=new QLabel(tr("Database name"));
+  dbOpts->addWidget(labDbName, 1, 0);
+  QLineEdit* leDbName=new QLineEdit("rainbrurpg", this);
+  dbOpts->addWidget(leDbName, 1, 1);
+
+  QLabel* labDbRole=new QLabel(tr("Role name"));
+  dbOpts->addWidget(labDbRole, 2, 0);
+  QLineEdit* leDbRole=new QLineEdit("rainbrurpg", this);
+  dbOpts->addWidget(leDbRole, 2, 1);
+
+  QLabel* labDbPwd=new QLabel(tr("Password"));
+  dbOpts->addWidget(labDbPwd, 3, 0);
+  QLineEdit* leDbPwd=new QLineEdit("", this);
+  leDbPwd->setEchoMode(QLineEdit::Password);
+  dbOpts->addWidget(leDbPwd, 3, 1);
 
   // The dialog's button
   QHBoxLayout *buttonLayout=new QHBoxLayout();
@@ -118,6 +144,7 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
   buttonLayout->addStretch(100);
   QPushButton *btnOk=new QPushButton(tr("OK"), this );
   buttonLayout->addWidget(btnOk);
+
 
   // Connections
   connect (btnOk, SIGNAL(clicked()), this, SLOT(controls()));

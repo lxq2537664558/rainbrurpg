@@ -181,4 +181,25 @@ void RainbruRPG::Core::ObjectPos::setRotZ(double d){
   rotZ=d;
 }
 
+/** The assignment operator
+  *
+  * \param p The object to assign
+  *
+  * \return The assigned object
+  *
+  */
+RainbruRPG::Core::ObjectPos& 
+RainbruRPG::Core::ObjectPos::operator=(const RainbruRPG::Core::ObjectPos& p){
 
+  if (this == &p) return *this;
+
+  this->name=p.name;
+  this->posX=p.posX;
+  this->posY=p.posY;
+  this->posZ=p.posZ;
+  this->rotW=p.rotX;
+  this->rotX=p.rotX;
+  this->rotY=p.rotY;
+  this->rotZ=p.rotZ;
+
+}

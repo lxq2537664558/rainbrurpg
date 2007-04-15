@@ -119,7 +119,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-04-12
+ISODATE = 2007-04-14
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -201,7 +201,7 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 rainbrurpg_server_LDADD = -lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0
+			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) 
 INCLUDES = -I$(top_srcdir)/common \

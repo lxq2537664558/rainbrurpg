@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'posordialog.h'
 **
-** Created: Sun Feb 4 23:49:38 2007
-**      by: The Qt Meta Object Compiler version 59 (Qt 4.2.1)
+** Created: Sat Apr 14 18:02:02 2007
+**      by: The Qt Meta Object Compiler version 59 (Qt 4.2.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'posordialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 59
-#error "This file was generated using the moc from 4.2.1. It"
+#error "This file was generated using the moc from 4.2.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif

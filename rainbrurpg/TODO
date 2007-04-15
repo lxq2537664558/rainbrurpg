@@ -12,18 +12,10 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curlaccounttoggleblacklist
    curldefaultwritefunction
 
-* FlooderTest
-- Test the implementation with the packet size (how the performance
-   decrease) (ftSize)
-- Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
-
-* Serveur
+o [mouse] Serveur
+- server.xml contains 
+- xmlserverconf saves and load database settings
 - Update the client number in statusbar
-- Try to create the DB with a sh or sql script
-  To allow use of custom type such as $(customType)
-  We call mysql with : $mysql --user=name --password=pw
-                        --execute='statement' db_name
-  We can log informations with standard shell echo command
 - Un dialog pour l'exportation du log (LogExportDialog)
   Choisir le nom de fichier d'exportation du log
 - Modele Conceptuel de Donnees pour la base de donnees
@@ -31,6 +23,32 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
   base et de ses tables. Il s'agit pour l'instant de faire une bdd
   minimale qui acceptera la modification des positions et orientation
   des objets par connection au serveur.
+
+* Editeur
+- PosorDialog initialization with the ObjectPos values
+  PosorDialog::setPosName must know the ObjectMesh name
+- Nettoyer OgreView 
+  Supprimer les fonctions inutiles et les variables globales qui ne
+  sont pas de moi. Ca evitera peut etre une implementation de 1400
+  lignes.
+- SelectionCycle teste si le nom d'Entity retourne contient Outline
+	- Cela evitera un Segfault
+  [ogreview.cpp:1178]           -- Selected object name : Arbre1_1Outline
+  [selectionmanager.cpp:107]    II Deleting last selection highlight
+  [selectionmanager.cpp:121]    II Creating selection highlight
+  Erreur de segmentation
+
+- SelectionManager gere la selection multiple
+- Un overlay d'aide lors de la selection d'un mesh
+- Destructeur de MeshViewer 
+  Permet la possibilite d'afficher 2 MeshViewer l'un apres l'autre
+  pour l'instant, cela cause un segfault a la deuxieme ouverture
+- Environmentsetup utilise le skydome et le fog
+
+* FlooderTest
+- Test the implementation with the packet size (how the performance
+   decrease) (ftSize)
+- Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
 * Client
 - SEGFAULT when exiting the game
@@ -98,31 +116,20 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-128
+- Database connection values in the serverconfiguration.h/cpp
+- Setting up database connection in the options 
+- Database connection test OK
+- Try to create the DB with a sql script
+- ObjectMesh::getPosByName(std::string) implementation
+- PosorDialog implementation
+- An error when we dbl-click on an obect name (not an instance) FIXED
+
 * v 0.0.4-127
 - ChartSerie unit test implementation
-Test size() by adding series
-Test getMinValue, getMaxValue
-Test getXCaption(int), getYCaption(int)
-Test SetLengendCaption
 - ChartLine doesn't need unit tests
 - tests/common/chartbasetest.h Implementation
-Constructor initial values
-testing addSerie (ChartSerie *) 
-testing addSerieColor (int, int, int)
-testing getSerieColor(int) with black(0) and white(FFFFFF);
-testing setLeftCaption (const std::string &)
-testing setBottomCaption (const std::string &)
-testing setTitle (const std::string &)
-testing setFilename (const char *)
 - Add some function in ChartBase for unit test purpose :
-getSerieCount() for testing addSerie (ChartSerie *) 
-getSerieColorCount() for testing addSerieColor (int, int, int)
-getSerieColor(int);
-getLeftCaption() for testing setLeftCaption (const std::string &)
-getBottomCaption for testing setBottomCaption (const std::string &)
-getTitle() for testing setTitle (const std::string &)
-getFilename() for testing setFilename (const char *)
-getImageWidth() and getImageHeight() to test the constructor parameters 
 - Doxygen documentation
 - Open all ChartViewer after all tests computed
 - ChartViewer : Makes the close button close the dialog

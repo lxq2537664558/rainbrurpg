@@ -22,7 +22,7 @@
 
 -- RainbruRPG-Server Database creation script
 --
--- SQL script for MySQL v5.0.x
+-- SQL script for MySQL v5.0.xpostgres 8.1
 --
 -- To execute this script in a terminal :
 -- * from the shell :$mysql database < createdb.sql
@@ -32,7 +32,7 @@
 -- * UNDIGNED INT
 -- * BOOL
 -- * DOUBLE
--- * VARCHAR(20) for names...
+-- * VARCHAR(40) for names...
 -- * VARCHAR for description... (max 255 chars)
 -- * TEXT for extremly long texts (65535 chars)
 --
@@ -45,18 +45,15 @@
 --
 -- Summary :
 -- * Tables creation
+-- * Data insertion
 
--- Creates the database
-SELECT "Creating Database :";
-CREATE DATABASE RainbruRPG_Server;
+-- A role called as your unix username must exist
+-- call createuser when you are postgres admin
+-- The new role should be able to create a database
 
--- Sets the newly created database to be used
-USE RainbruRPG_Server;
+-- Execute the script with the following command :
+-- psql -f createdb.sql <database_name>
 
--- Setting user Types
-typeIdentifier = 'MEDIUMINT NOT NULL AUTO_INCREMENT';
-
-SELECT 'Creating Tables :';
 
 /* A table designing an object
  * 
@@ -65,9 +62,36 @@ SELECT 'Creating Tables :';
  * a single object, without position or orientation.
  *
  */
-CREATE TABLE Object(
-	idObject typeIdentifier,
+CREATE TABLE ObjectMesh(
+	idObject SERIAL,
+	objectMeshName VARCHAR(40), -- The object name
+	objectMeshFile VARCHAR(40), -- The 3D mesh filename
+
 	PRIMARY KEY (idObject)
 );
 
-SHOW TABLES;
+CREATE TABLE ObjectPos(
+	idObjectPos SERIAL,
+	objectPosIdMesh integer REFERENCES ObjectMesh(idObject),
+
+	objectPosName VARCHAR(40), -- The object instance name
+
+	posx float, -- The x-axis position
+	posy float, -- The y-axis position
+	posz float,
+
+	rotw float,
+	rotx float,
+	roty float,
+	rotz float,
+
+	objectMeshFile VARCHAR(40),
+
+	PRIMARY KEY (idObjectPos)
+);
+
+-- Creating initial datas
+INSERT INTO ObjectMesh VALUES ( 0, 'Tree1', 'MyPineTree.mesh');
+INSERT INTO ObjectMesh VALUES ( 1, 'Tree2', 'MySecondTree.mesh');
+
+--INSERT INTO ObjectPos VALUES ('

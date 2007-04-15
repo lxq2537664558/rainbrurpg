@@ -22,6 +22,11 @@
 
 -- RainbruRPG-Server Database remove script
 --
--- SQL script for MySQL v5.0.x
+-- SQL script for Postgres 8.1
 --
-DROP DATABASE RainbruRPG
+
+-- Execute the script with the following command :
+-- psql -f dropdb.sql <database_name>
+
+DROP TABLE objectpos;
+DROP TABLE objectmesh;

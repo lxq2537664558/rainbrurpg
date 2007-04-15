@@ -20,6 +20,10 @@
  *
  */
 
+/* Modifications :
+ * - 14 apr 2007 : Adding database connection options
+ *
+ */
 #ifndef SERVER_CONFIGURATION_H
 #define SERVER_CONFIGURATION_H
 
@@ -63,6 +67,16 @@ namespace RainbruRPG{
       int getPort();
       int getMaxClient();
 
+      void setHostName(const std::string&);
+      void setDatabaseName(const std::string&);
+      void setUserName(const std::string&);
+      void setPassword(const std::string&);
+
+      const std::string& getHostName()const;
+      const std::string& getDatabaseName()const;
+      const std::string& getUserName()const;
+      const std::string& getPassword()const;
+
     private:
       /** The name of the server */
       std::string name;
@@ -84,6 +98,15 @@ namespace RainbruRPG{
       int port;
       /** The maximum number of clients allowed in this server */
       int maxClient;
+
+      /** The hostname of the Postgres server */
+      std::string dbHostName;
+      /** The database name */
+      std::string dbDatabaseName;
+      /** The username used for database connection */
+      std::string dbUserName;
+      /** The password  used for database connection */
+      std::string dbPassword;
 
     };
 

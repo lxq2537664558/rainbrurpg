@@ -205,23 +205,30 @@ objectTreeClicked( QTreeWidgetItem * it, int col)
 
   LOGI("The treeView was clicked");
   int i=objTree->indexOfTopLevelItem(it);
-  const char* name=it->text(0).toLatin1();
+  std::string name(it->text(0).toLatin1());
 
   if (i==-1){
+    std::string  parentName(it->parent()->text(0).toLatin1());
     LOGI("An ObjectPos was clicked");
+    LOGCATS("ObjectMesh name :");
+    LOGCATS(parentName.c_str());
+    LOGCATS(" ObjectPos name :");
+    LOGCATS(name.c_str());
+    LOGCAT();
+
     //    lookAtObject(it);
     selectObject(it->text(0));
     PosorDialog pod;
-    pod.setPosName(it->text(0));
+    pod.setPosName(parentName.c_str(), it->text(0));
     pod.exec();
   }
   else{
     LOGI("An ObjectMesh was clicked");
     LOGCATS("ObjectMesh name : ");
-    LOGCATS(name);
+    LOGCATS(name.c_str());
     LOGCAT();
 
-    StaticMeshDialog smd(name);
+    StaticMeshDialog smd(name.c_str());
     int res=smd.exec();
   }
 }

@@ -171,7 +171,7 @@ ObjectMeshList* RainbruRPG::Core::xmlObjectList::getMeshList(){
   *
   */
 ObjectMesh* RainbruRPG::Core::xmlObjectList::
-getObjectMeshByName(std::string name){
+getObjectMeshByName(const std::string& name){
 
   std::string omName;
   bool found=false;

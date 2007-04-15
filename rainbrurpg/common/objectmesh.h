@@ -58,6 +58,7 @@ namespace RainbruRPG{
       ObjectPosList getPosList();
       
       void addPos(const ObjectPos&);
+      const ObjectPos& getPosByName(const std::string&);
 
     private:
       /** The name of the mesh */

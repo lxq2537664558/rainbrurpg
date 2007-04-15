@@ -482,7 +482,9 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   ../common/npflooder0004.h ../common/netpacketflooderbase.h \
   ../common/netpacketbase.h /usr/include/qt4/QtGui/QTextEdit \
   /usr/include/qt4/QtGui/QDockWidget /usr/include/qt4/QtGui/QMenu \
-  /usr/include/qt4/QtGui/QWorkspace
+  /usr/include/qt4/QtGui/QWorkspace /usr/include/qt4/QtSql/QSqlDatabase \
+  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/qsql.h \
+  /usr/include/qt4/QtSql/QSqlError /usr/include/qt4/QtSql/qsqlerror.h
 
 mainwindow.h:
 
@@ -1825,3 +1827,13 @@ helpviewer.h:
 /usr/include/qt4/QtGui/QMenu:
 
 /usr/include/qt4/QtGui/QWorkspace:
+
+/usr/include/qt4/QtSql/QSqlDatabase:
+
+/usr/include/qt4/QtSql/qsqldatabase.h:
+
+/usr/include/qt4/QtSql/qsql.h:
+
+/usr/include/qt4/QtSql/QSqlError:
+
+/usr/include/qt4/QtSql/qsqlerror.h:

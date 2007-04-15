@@ -201,7 +201,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 rainbrurpg_server_LDADD = -lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0
+			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) 
 INCLUDES = -I$(top_srcdir)/common \

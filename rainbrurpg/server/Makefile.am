@@ -2,7 +2,7 @@
 bin_PROGRAMS = rainbrurpg-server
 
 rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0
+			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) 
 

@@ -33,6 +33,14 @@
 #include <QMenu>
 #include <QWorkspace>
 
+
+// Database needs
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlError>
+
+
+
+
 /** The default constructor
   *
   * \param fileName A string
@@ -254,7 +262,29 @@ void RainbruRPG::Server::MainServerWindow::startServer(){
       server->setMaxClient(serverConfig->getMaxClient());
       server->createServer();
       server->start();
-     }
+
+      // Init database
+      QSqlDatabase db= QSqlDatabase::addDatabase("QPSQL");
+      db.setHostName("localhost");
+      db.setDatabaseName("test");
+      db.setUserName("rainbrurpg");
+      db.setPassword("rainbrurpg");
+      bool ok = db.open();
+
+      if (ok){
+	LOGI("Connection to database successfull");
+      }
+      else{
+
+	QSqlError err=db.lastError();
+	LOGW("Connection to db failed");
+	LOGCATS("Connection error : ");
+	LOGCATS(err.text().toLatin1());
+	LOGCAT();
+	stopServer();
+      }
+
+    }
   }
 }
 

@@ -142,15 +142,28 @@ posordialog.o posordialog.o: posordialog.cpp posordialog.h \
   /usr/include/qt4/QtGui/qfontinfo.h /usr/include/qt4/QtGui/qsizepolicy.h \
   /usr/include/qt4/QtGui/qcursor.h /usr/include/qt4/QtGui/qkeysequence.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/qwidget.h \
-  ../common/objectpos.h /usr/include/qt4/QtGui/QVBoxLayout \
-  /usr/include/qt4/QtGui/qboxlayout.h /usr/include/qt4/QtGui/qlayout.h \
-  /usr/include/qt4/QtGui/qlayoutitem.h \
+  /usr/include/qt4/QtGui/QLabel /usr/include/qt4/QtGui/qlabel.h \
+  /usr/include/qt4/QtGui/qframe.h /usr/include/qt4/QtGui/QDoubleSpinBox \
+  /usr/include/qt4/QtGui/qspinbox.h \
+  /usr/include/qt4/QtGui/qabstractspinbox.h \
+  /usr/include/qt4/QtGui/qvalidator.h ../common/objectpos.h \
+  ../common/xmlobjectlist.h ../common/logger.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/sstream \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/sstream.tcc \
+  ../common/singleton.h ../common/tinyxml.h /usr/include/assert.h \
+  ../common/tinystr.h ../common/objectmesh.h ../common/objectpos.h \
+  /usr/include/qt4/QtGui/QVBoxLayout /usr/include/qt4/QtGui/qboxlayout.h \
+  /usr/include/qt4/QtGui/qlayout.h /usr/include/qt4/QtGui/qlayoutitem.h \
   /usr/include/qt4/QtGui/qboxlayout.h \
   /usr/include/qt4/QtGui/qgridlayout.h /usr/include/qt4/QtGui/QHBoxLayout \
-  /usr/include/qt4/QtGui/QLabel /usr/include/qt4/QtGui/qlabel.h \
-  /usr/include/qt4/QtGui/qframe.h /usr/include/qt4/QtGui/QGroupBox \
-  /usr/include/qt4/QtGui/qgroupbox.h /usr/include/qt4/QtGui/QSizePolicy \
-  /usr/include/qt4/QtGui/qsizepolicy.h
+  /usr/include/qt4/QtGui/QGroupBox /usr/include/qt4/QtGui/qgroupbox.h \
+  /usr/include/qt4/QtGui/QSizePolicy /usr/include/qt4/QtGui/qsizepolicy.h \
+  /usr/include/qt4/QtGui/QPushButton /usr/include/qt4/QtGui/qpushbutton.h \
+  /usr/include/qt4/QtGui/qabstractbutton.h /usr/include/qt4/QtGui/qicon.h
 
 posordialog.h:
 
@@ -536,6 +549,48 @@ posordialog.h:
 
 /usr/include/qt4/QtGui/qwidget.h:
 
+/usr/include/qt4/QtGui/QLabel:
+
+/usr/include/qt4/QtGui/qlabel.h:
+
+/usr/include/qt4/QtGui/qframe.h:
+
+/usr/include/qt4/QtGui/QDoubleSpinBox:
+
+/usr/include/qt4/QtGui/qspinbox.h:
+
+/usr/include/qt4/QtGui/qabstractspinbox.h:
+
+/usr/include/qt4/QtGui/qvalidator.h:
+
+../common/objectpos.h:
+
+../common/xmlobjectlist.h:
+
+../common/logger.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/iostream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/fstream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/basic_file.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/sstream:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/sstream.tcc:
+
+../common/singleton.h:
+
+../common/tinyxml.h:
+
+/usr/include/assert.h:
+
+../common/tinystr.h:
+
+../common/objectmesh.h:
+
 ../common/objectpos.h:
 
 /usr/include/qt4/QtGui/QVBoxLayout:
@@ -552,12 +607,6 @@ posordialog.h:
 
 /usr/include/qt4/QtGui/QHBoxLayout:
 
-/usr/include/qt4/QtGui/QLabel:
-
-/usr/include/qt4/QtGui/qlabel.h:
-
-/usr/include/qt4/QtGui/qframe.h:
-
 /usr/include/qt4/QtGui/QGroupBox:
 
 /usr/include/qt4/QtGui/qgroupbox.h:
@@ -565,3 +614,11 @@ posordialog.h:
 /usr/include/qt4/QtGui/QSizePolicy:
 
 /usr/include/qt4/QtGui/qsizepolicy.h:
+
+/usr/include/qt4/QtGui/QPushButton:
+
+/usr/include/qt4/QtGui/qpushbutton.h:
+
+/usr/include/qt4/QtGui/qabstractbutton.h:
+
+/usr/include/qt4/QtGui/qicon.h:

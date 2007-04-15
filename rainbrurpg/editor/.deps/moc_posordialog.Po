@@ -142,7 +142,11 @@ moc_posordialog.o moc_posordialog.o: moc_posordialog.cpp posordialog.h \
   /usr/include/qt4/QtGui/qfontinfo.h /usr/include/qt4/QtGui/qsizepolicy.h \
   /usr/include/qt4/QtGui/qcursor.h /usr/include/qt4/QtGui/qkeysequence.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/qwidget.h \
-  ../common/objectpos.h
+  /usr/include/qt4/QtGui/QLabel /usr/include/qt4/QtGui/qlabel.h \
+  /usr/include/qt4/QtGui/qframe.h /usr/include/qt4/QtGui/QDoubleSpinBox \
+  /usr/include/qt4/QtGui/qspinbox.h \
+  /usr/include/qt4/QtGui/qabstractspinbox.h \
+  /usr/include/qt4/QtGui/qvalidator.h ../common/objectpos.h
 
 posordialog.h:
 
@@ -527,5 +531,19 @@ posordialog.h:
 /usr/include/qt4/QtGui/QWidget:
 
 /usr/include/qt4/QtGui/qwidget.h:
+
+/usr/include/qt4/QtGui/QLabel:
+
+/usr/include/qt4/QtGui/qlabel.h:
+
+/usr/include/qt4/QtGui/qframe.h:
+
+/usr/include/qt4/QtGui/QDoubleSpinBox:
+
+/usr/include/qt4/QtGui/qspinbox.h:
+
+/usr/include/qt4/QtGui/qabstractspinbox.h:
+
+/usr/include/qt4/QtGui/qvalidator.h:
 
 ../common/objectpos.h:
