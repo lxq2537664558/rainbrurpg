@@ -476,7 +476,13 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   ../common/netpacketbase.h clientlist.h serverlog.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTreeWidget \
   /usr/include/qt4/QtCore/QTime /usr/include/qt4/QtGui/QColor \
-  /usr/include/qt4/QtCore/QTextStream
+  /usr/include/qt4/QtCore/QTextStream objectlist.h \
+  /usr/include/qt4/QtSql/QSqlDatabase \
+  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/qsql.h \
+  /usr/include/qt4/QtSql/QSqlQuery /usr/include/qt4/QtSql/qsqlquery.h \
+  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/QSqlRecord \
+  /usr/include/qt4/QtSql/qsqlrecord.h /usr/include/qt4/QtSql/QSqlError \
+  /usr/include/qt4/QtSql/qsqlerror.h
 
 /usr/include/qt4/QtGui/QApplication:
 
@@ -1803,3 +1809,25 @@ serverlog.h:
 /usr/include/qt4/QtGui/QColor:
 
 /usr/include/qt4/QtCore/QTextStream:
+
+objectlist.h:
+
+/usr/include/qt4/QtSql/QSqlDatabase:
+
+/usr/include/qt4/QtSql/qsqldatabase.h:
+
+/usr/include/qt4/QtSql/qsql.h:
+
+/usr/include/qt4/QtSql/QSqlQuery:
+
+/usr/include/qt4/QtSql/qsqlquery.h:
+
+/usr/include/qt4/QtSql/qsqldatabase.h:
+
+/usr/include/qt4/QtSql/QSqlRecord:
+
+/usr/include/qt4/QtSql/qsqlrecord.h:
+
+/usr/include/qt4/QtSql/QSqlError:
+
+/usr/include/qt4/QtSql/qsqlerror.h:

@@ -55,7 +55,10 @@ namespace RainbruRPG{
       bool getPlayMode();
       bool getEditMode();
       bool getFloodMode();
+
       const char* getOption(const char*);
+      const char* getDbValue(const char*)const;
+
       int getPort();
       int getMaxClient();
 
@@ -64,6 +67,14 @@ namespace RainbruRPG{
       void setTechNote(const std::string&);
       void setServerMode(bool, bool, bool);
       void setServerOption(const std::string&, int, int );
+
+      const std::string& getDbHostName()const;
+      const std::string& getDbName()const;
+      const std::string& getDbUserName()const;
+      const std::string& getDbUserPwd()const;
+
+      void setDatabase(const std::string&,const std::string&,
+		       const std::string&,const std::string&);
 
       /** The name of the xml file to open */
       std::string filename;

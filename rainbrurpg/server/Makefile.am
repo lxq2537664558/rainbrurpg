@@ -26,6 +26,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
+			    objectlist.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -35,7 +36,8 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
-			    moc_serverthread.cpp
+			    moc_serverthread.cpp	\
+			    moc_objectlist.cpp
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.

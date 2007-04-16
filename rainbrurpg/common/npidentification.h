@@ -105,6 +105,7 @@ namespace RainbruRPG{
       npIdentificationData* data;
       /** The client type */
       tNetworkClientType clientType;
+
     };
 
   }

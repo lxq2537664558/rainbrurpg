@@ -478,13 +478,17 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   ../common/netpacketbase.h clientlist.h serverlog.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTreeWidget \
   /usr/include/qt4/QtCore/QTime /usr/include/qt4/QtGui/QColor \
-  /usr/include/qt4/QtCore/QTextStream xmlserverconf.h helpviewer.h \
+  /usr/include/qt4/QtCore/QTextStream objectlist.h \
+  /usr/include/qt4/QtSql/QSqlDatabase \
+  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/qsql.h \
+  /usr/include/qt4/QtSql/QSqlQuery /usr/include/qt4/QtSql/qsqlquery.h \
+  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/QSqlRecord \
+  /usr/include/qt4/QtSql/qsqlrecord.h /usr/include/qt4/QtSql/QSqlError \
+  /usr/include/qt4/QtSql/qsqlerror.h xmlserverconf.h helpviewer.h \
   ../common/npflooder0004.h ../common/netpacketflooderbase.h \
   ../common/netpacketbase.h /usr/include/qt4/QtGui/QTextEdit \
   /usr/include/qt4/QtGui/QDockWidget /usr/include/qt4/QtGui/QMenu \
-  /usr/include/qt4/QtGui/QWorkspace /usr/include/qt4/QtSql/QSqlDatabase \
-  /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/qsql.h \
-  /usr/include/qt4/QtSql/QSqlError /usr/include/qt4/QtSql/qsqlerror.h
+  /usr/include/qt4/QtGui/QWorkspace
 
 mainwindow.h:
 
@@ -1810,6 +1814,28 @@ serverlog.h:
 
 /usr/include/qt4/QtCore/QTextStream:
 
+objectlist.h:
+
+/usr/include/qt4/QtSql/QSqlDatabase:
+
+/usr/include/qt4/QtSql/qsqldatabase.h:
+
+/usr/include/qt4/QtSql/qsql.h:
+
+/usr/include/qt4/QtSql/QSqlQuery:
+
+/usr/include/qt4/QtSql/qsqlquery.h:
+
+/usr/include/qt4/QtSql/qsqldatabase.h:
+
+/usr/include/qt4/QtSql/QSqlRecord:
+
+/usr/include/qt4/QtSql/qsqlrecord.h:
+
+/usr/include/qt4/QtSql/QSqlError:
+
+/usr/include/qt4/QtSql/qsqlerror.h:
+
 xmlserverconf.h:
 
 helpviewer.h:
@@ -1827,13 +1853,3 @@ helpviewer.h:
 /usr/include/qt4/QtGui/QMenu:
 
 /usr/include/qt4/QtGui/QWorkspace:
-
-/usr/include/qt4/QtSql/QSqlDatabase:
-
-/usr/include/qt4/QtSql/qsqldatabase.h:
-
-/usr/include/qt4/QtSql/qsql.h:
-
-/usr/include/qt4/QtSql/QSqlError:
-
-/usr/include/qt4/QtSql/qsqlerror.h:

@@ -130,6 +130,27 @@ bool RainbruRPG::Server::xmlServerConf::load(ServerConfiguration* sc){
   LOGCATS("'");
   LOGCAT();
 
+  // Database debug
+  LOGCATS("  dbHostName : '");
+  LOGCATS( getDbHostName().c_str() );
+  LOGCATS("'");
+  LOGCAT();
+
+  LOGCATS("  DbName : '");
+  LOGCATS( getDbName().c_str() );
+  LOGCATS("'");
+  LOGCAT();
+
+  LOGCATS(" DbUserName  : '");
+  LOGCATS( getDbUserName().c_str() );
+  LOGCATS("'");
+  LOGCAT();
+
+  LOGCATS(" DbUserPwd  : '");
+  LOGCATS( getDbUserPwd().c_str() );
+  LOGCATS("'");
+  LOGCAT();
+
   sc->setName(getServerName());
   sc->setDesc(getServerDesc());
   sc->setTechNote(getTechNote());
@@ -139,6 +160,11 @@ bool RainbruRPG::Server::xmlServerConf::load(ServerConfiguration* sc){
   sc->setPort(getPort());
   sc->setMaxClient(getMaxClient());
   sc->setIpAdress(getIpAdress());
+  //database values
+  sc->setHostName(getDbHostName().c_str());
+  sc->setDatabaseName(getDbName().c_str());
+  sc->setUserName(getDbUserName().c_str());
+  sc->setPassword(getDbUserPwd().c_str());
 }
 
 
@@ -321,6 +347,10 @@ bool RainbruRPG::Server::xmlServerConf::save(ServerConfiguration* sc){
   setServerMode(sc->getPlayMode(), sc->getEditMode(), sc->getFloodMode());
   setServerOption(sc->getIpAdress(), sc->getPort(), sc->getMaxClient());
 
+  // Database
+  setDatabase(sc->getHostName(), sc->getDatabaseName(), 
+	      sc->getUserName(), sc->getPassword() );
+
   bool success=doc->SaveFile(this->filename.c_str());
   if (!success){
     LOGW("An error occurs during server configuration saved");
@@ -432,4 +462,87 @@ setServerOption(const std::string& ip, int port, int maxClients){
   */
 const char* RainbruRPG::Server::xmlServerConf::getIpAdress(){
   return getOption("ip");
+}
+
+/** Get a database attribute
+  *
+  * \param attrb The attribute name
+  *
+  * \return The value of the attribute
+  *
+  */
+const char* RainbruRPG::Server::xmlServerConf::
+getDbValue(const char* attrb)const{
+  TiXmlNode* childNode = root->FirstChild( "Database" );
+  if (childNode){
+    TiXmlElement* lu= childNode->ToElement();
+    if (lu){
+      return lu->Attribute(attrb);
+    }
+    else{
+      return "";
+    }
+  }
+  else{
+    return "";
+  }
+}
+
+
+/** Get the hostname field of the database connection
+  *
+  * \return The host name
+  *
+  */
+const std::string& RainbruRPG::Server::xmlServerConf::getDbHostName()const{
+  return getDbValue("hostname");
+}
+
+/** Get the database name field of the database connection
+  *
+  * \return The database name
+  *
+  */
+const std::string& RainbruRPG::Server::xmlServerConf::getDbName()const{
+  return getDbValue("dbname");
+}
+
+/** Get the username field of the database connection
+  *
+  * \return The user name
+  *
+  */
+const std::string& RainbruRPG::Server::xmlServerConf::getDbUserName()const{
+  return getDbValue("user");
+}
+
+/** Get the user password field of the database connection
+  *
+  * \return The password
+  *
+  */
+const std::string& RainbruRPG::Server::xmlServerConf::getDbUserPwd()const{
+  return getDbValue("pwd");
+}
+
+/** Change the database informations in the xml file
+  *
+  * \param host The hostname of the postgres server
+  * \param dbName The database name
+  * \param user The user name
+  * \param pwd The user password
+  *
+  */
+void RainbruRPG::Server::xmlServerConf::
+setDatabase(const std::string& host,const std::string& dbName, 
+	    const std::string& user,const std::string& pwd){
+
+  TiXmlElement* childNode = root->FirstChild( "Database" )->ToElement();
+  if (childNode){
+    childNode->Clear();
+    childNode->SetAttribute("hostname", host.c_str());
+    childNode->SetAttribute("dbname", dbName.c_str());
+    childNode->SetAttribute("user", user.c_str());
+    childNode->SetAttribute("pwd", pwd.c_str());
+  }
 }

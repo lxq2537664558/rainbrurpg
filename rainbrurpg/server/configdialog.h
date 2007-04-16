@@ -73,6 +73,15 @@ namespace RainbruRPG{
       /** The IP adress LineEdit */
       QLineEdit* leIp;
 
+      /** The database hostname lineedit */
+      QLineEdit* leDbHost;
+      /** The database name lineedit */
+      QLineEdit* leDbName;
+      /** The database role lineedit */
+      QLineEdit* leDbRole;
+      /** The database password lineedit */
+      QLineEdit* leDbPwd;
+
     private slots:
       void descriptionChanged();
       void nameChanged();
@@ -82,6 +91,12 @@ namespace RainbruRPG{
       void portChanged(int);
       void maxClientChanged(int);
       void ipAddressChanged(const QString&);
+
+      void hostNameChanged(const QString&);
+      void dbNameChanged(const QString&);
+      void UserNameChanged(const QString&);
+      void passwordChanged(const QString&);
+
       void controls();
     };
   }

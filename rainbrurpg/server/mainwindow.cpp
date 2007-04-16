@@ -53,6 +53,7 @@ MainServerWindow(const QString &fileName, QWidget *parent)
 {
   LOGI("Creating MainWindow");
   clientList=NULL;
+  objectList=NULL;
   running=false;
   server=new ServerThread();
 
@@ -87,6 +88,35 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   xmlServerConf xsc;
   xsc.load(serverConfig);
 
+  // Init database
+  QSqlDatabase db= QSqlDatabase::addDatabase("QPSQL", "rainbru");
+  db.setHostName(serverConfig->getHostName().c_str());
+  db.setDatabaseName(serverConfig->getDatabaseName().c_str());
+  db.setUserName(serverConfig->getUserName().c_str());
+  db.setPassword(serverConfig->getPassword().c_str());
+  bool ok = db.open();
+  
+  if (ok){
+    LOGI("Connection to database successfull");
+    serverLog->addMessage (SLL_INFORMATIVE, 
+      tr("Connection to database successfull"));
+  }
+  else{
+    QMessageBox::critical ( this, tr("Database connection error"), 
+      tr("An error occured during the database connection. Please "
+	 "change the server's configuration and restart the server."));
+
+    serverLog->addMessage (SLL_ERROR, 
+      tr("Database connection failed : you MUST restart server."));
+
+    QSqlError err=db.lastError();
+    LOGW("Connection to db failed");
+    LOGCATS("Connection error : ");
+    LOGCATS(err.text().toLatin1());
+    LOGCAT();
+    stopServer();
+  }
+
   connect(server, SIGNAL(clientConnected(const ENetAddress &)),
 	  this, SLOT(clientConnected(const ENetAddress &)));
   connect(server, SIGNAL(packetReceived(const tReceivedPacket&)),
@@ -108,6 +138,10 @@ RainbruRPG::Server::MainServerWindow::~MainServerWindow(){
 
   if (clientList){
     delete clientList;
+  }
+
+  if (objectList){
+    delete objectList;
   }
 }
 
@@ -155,6 +189,12 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   logAct->setShortcut(tr("Ctrl+L"));
   logAct->setStatusTip(tr("Manages the server's log"));
 
+  // The Manage/objects Action
+  QAction* objAct = new QAction(tr("&Objects"), this);
+  objAct->setShortcut(tr("Ctrl+O"));
+  objAct->setStatusTip(tr("Manages the objects"));
+
+
 
 
   // The Help/about action
@@ -180,7 +220,7 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   QMenu* manageMenu = menuBar()->addMenu(tr("&Manage"));
   manageMenu->addAction(clientsAct);
   manageMenu->addAction(logAct);
-
+  manageMenu->addAction(objAct);
 
   QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
   helpMenu->addAction(aboutAct);
@@ -200,6 +240,7 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
 
   connect(clientsAct, SIGNAL(triggered()), this, SLOT(manageClients()));
   connect(logAct, SIGNAL(triggered()), this, SLOT(showLog()));
+  connect(objAct, SIGNAL(triggered()), this, SLOT(manageObjects()));
 
   connect(stopAct, SIGNAL(triggered()), this, SLOT(stopServer()));
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
@@ -262,27 +303,6 @@ void RainbruRPG::Server::MainServerWindow::startServer(){
       server->setMaxClient(serverConfig->getMaxClient());
       server->createServer();
       server->start();
-
-      // Init database
-      QSqlDatabase db= QSqlDatabase::addDatabase("QPSQL");
-      db.setHostName("localhost");
-      db.setDatabaseName("test");
-      db.setUserName("rainbrurpg");
-      db.setPassword("rainbrurpg");
-      bool ok = db.open();
-
-      if (ok){
-	LOGI("Connection to database successfull");
-      }
-      else{
-
-	QSqlError err=db.lastError();
-	LOGW("Connection to db failed");
-	LOGCATS("Connection error : ");
-	LOGCATS(err.text().toLatin1());
-	LOGCAT();
-	stopServer();
-      }
 
     }
   }
@@ -511,10 +531,24 @@ isClientAccepted(tNetworkClientType t){
   return ret;
 }
 
-/** Show the log window
+/** Shows the log window
   *
   */
 void RainbruRPG::Server::MainServerWindow::showLog(){
   serverLog->show();
 
+}
+
+/** Showsthe object managing widget
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::manageObjects(){
+  LOGI("manageObjects called");
+
+  if (!objectList){
+   objectList =new ObjectList();
+  }
+  workspace->addWindow(objectList);
+  objectList->show();
+  
 }

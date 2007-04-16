@@ -56,11 +56,12 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
 	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
-	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
-	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
-	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
-	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT)
+	clientlist.$(OBJEXT) objectlist.$(OBJEXT) \
+	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
+	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
+	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
+	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -119,7 +120,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-04-14
+ISODATE = 2007-04-16
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -225,6 +226,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
+			    objectlist.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -234,7 +236,8 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
-			    moc_serverthread.cpp
+			    moc_serverthread.cpp	\
+			    moc_objectlist.cpp
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -324,9 +327,11 @@ include ./$(DEPDIR)/moc_enetserver.Po
 include ./$(DEPDIR)/moc_helpviewer.Po
 include ./$(DEPDIR)/moc_logexportdialog.Po
 include ./$(DEPDIR)/moc_mainwindow.Po
+include ./$(DEPDIR)/moc_objectlist.Po
 include ./$(DEPDIR)/moc_serverlog.Po
 include ./$(DEPDIR)/moc_serverthread.Po
 include ./$(DEPDIR)/moc_technotedialog.Po
+include ./$(DEPDIR)/objectlist.Po
 include ./$(DEPDIR)/resources.Po
 include ./$(DEPDIR)/serverconfiguration.Po
 include ./$(DEPDIR)/serverlog.Po

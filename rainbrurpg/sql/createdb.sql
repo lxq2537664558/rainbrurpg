@@ -22,7 +22,7 @@
 
 -- RainbruRPG-Server Database creation script
 --
--- SQL script for MySQL v5.0.xpostgres 8.1
+-- SQL script for postgres 8.1
 --
 -- To execute this script in a terminal :
 -- * from the shell :$mysql database < createdb.sql
@@ -49,7 +49,8 @@
 
 -- A role called as your unix username must exist
 -- call createuser when you are postgres admin
--- The new role should be able to create a database
+-- In the pgsql shell, call CREATE ROLE.
+-- GRANT the SELECT, INSERT, UPDATE, DELETE rights to this role.
 
 -- Execute the script with the following command :
 -- psql -f createdb.sql <database_name>
@@ -89,6 +90,14 @@ CREATE TABLE ObjectPos(
 
 	PRIMARY KEY (idObjectPos)
 );
+
+CREATE TABLE StaticObject(
+
+)INHERITS(ObjectPos);
+
+CREATE TABLE DynamicObject(
+	scriptName VARCHAR(40)
+)INHERITS(ObjectPos);
 
 -- Creating initial datas
 INSERT INTO ObjectMesh VALUES ( 0, 'Tree1', 'MyPineTree.mesh');

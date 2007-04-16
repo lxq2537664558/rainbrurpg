@@ -13,8 +13,8 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] Serveur
-- server.xml contains 
-- xmlserverconf saves and load database settings
+- The database must be connected even if the server is not started
+  To look for objects without connecting the server
 - Update the client number in statusbar
 - Un dialog pour l'exportation du log (LogExportDialog)
   Choisir le nom de fichier d'exportation du log
@@ -117,6 +117,15 @@ o [mouse] Serveur
 * *******************************************************
 
 * v 0.0.4-128
+- A MDI Child for the Objects (list, add delete...) (ObjectList)
+- A manage->objects menu item
+- Database has StaticObject and DynamicObject tables
+- Server uses serverconfiguration values for database connection
+- xmlserverconf saves database settings
+- configdialog set changes in serverconfiguration
+- Server's config dialog initialized with serverconfiguration database values
+- xmlserverconf load database settings
+- config/server.xml contains database informations
 - Database connection values in the serverconfiguration.h/cpp
 - Setting up database connection in the options 
 - Database connection test OK

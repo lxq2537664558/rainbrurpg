@@ -119,22 +119,22 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
 
   QLabel* labDbHost=new QLabel(tr("HostName"));
   dbOpts->addWidget(labDbHost, 0, 0);
-  QLineEdit* leDbHost=new QLineEdit("localhost", this);
+  leDbHost=new QLineEdit("localhost", this);
   dbOpts->addWidget(leDbHost, 0, 1);
 
   QLabel* labDbName=new QLabel(tr("Database name"));
   dbOpts->addWidget(labDbName, 1, 0);
-  QLineEdit* leDbName=new QLineEdit("rainbrurpg", this);
+  leDbName=new QLineEdit("rainbrurpg", this);
   dbOpts->addWidget(leDbName, 1, 1);
 
   QLabel* labDbRole=new QLabel(tr("Role name"));
   dbOpts->addWidget(labDbRole, 2, 0);
-  QLineEdit* leDbRole=new QLineEdit("rainbrurpg", this);
+  leDbRole=new QLineEdit("rainbrurpg", this);
   dbOpts->addWidget(leDbRole, 2, 1);
 
   QLabel* labDbPwd=new QLabel(tr("Password"));
   dbOpts->addWidget(labDbPwd, 3, 0);
-  QLineEdit* leDbPwd=new QLineEdit("", this);
+  leDbPwd=new QLineEdit("", this);
   leDbPwd->setEchoMode(QLineEdit::Password);
   dbOpts->addWidget(leDbPwd, 3, 1);
 
@@ -160,7 +160,15 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
   connect(leIp, SIGNAL(textChanged(const QString&)), this, 
 	  SLOT(ipAddressChanged(const QString&)));
 
-
+  // database related connections
+  connect(leDbHost, SIGNAL(textChanged(const QString&)), this, 
+	  SLOT(hostNameChanged(const QString&)));
+  connect(leDbName, SIGNAL(textChanged(const QString&)), this, 
+	  SLOT(dbNameChanged(const QString&)));
+  connect(leDbRole, SIGNAL(textChanged(const QString&)), this, 
+	  SLOT(UserNameChanged(const QString&)));
+  connect(leDbPwd, SIGNAL(textChanged(const QString&)), this, 
+	  SLOT(passwordChanged(const QString&)));
 
   initValues();
 }
@@ -178,6 +186,13 @@ RainbruRPG::Server::ConfigDialog::~ConfigDialog(){
   delete sbCli;
   delete showTechNote;
   delete leIp;
+
+  // Database line edit widgets
+  delete leDbHost;
+  delete leDbName;
+  delete leDbRole;
+  delete leDbPwd;
+
 }
 
 /** Initialize the dialog's values
@@ -209,8 +224,13 @@ void RainbruRPG::Server::ConfigDialog::initValues(){
 
   showTechNote->setText(t);
 
-}
+  // Database values
+  leDbHost->setText(serverConfig->getHostName().c_str());
+  leDbName->setText(serverConfig->getDatabaseName().c_str());
+  leDbRole->setText(serverConfig->getUserName().c_str());
+  leDbPwd->setText(serverConfig->getPassword().c_str());
 
+}
 /** A slot used when the server's description changed
   *
   */
@@ -310,7 +330,7 @@ void RainbruRPG::Server::ConfigDialog::controls(){
   }
 }
 
-/** The slot called id the IP address change
+/** The slot called if the IP address change
   *
   * \param t The new IP address
   *
@@ -319,3 +339,47 @@ void RainbruRPG::Server::ConfigDialog::ipAddressChanged(const QString& t){
   std::string temp(t.toLatin1());
   serverConfig->setIpAdress(temp);
 }
+
+/** The slot called if the hostname change
+  *
+  * \param t The new value
+  *
+  */
+void RainbruRPG::Server::ConfigDialog::hostNameChanged(const QString& t){
+  std::string temp(t.toLatin1());
+  serverConfig->setHostName (temp);
+}
+
+/** The slot called if the database name change
+  *
+  * \param t The new value
+  *
+  */
+void RainbruRPG::Server::ConfigDialog::dbNameChanged(const QString& t){
+  std::string temp(t.toLatin1());
+  serverConfig->setDatabaseName (temp);
+
+}
+
+/** The slot called if the username change
+  *
+  * \param t The new value
+  *
+  */
+void RainbruRPG::Server::ConfigDialog::UserNameChanged(const QString& t){
+  std::string temp(t.toLatin1());
+  serverConfig->setUserName (temp);
+
+}
+
+/** The slot called if the password change
+  *
+  * \param t The new value
+  *
+  */
+void RainbruRPG::Server::ConfigDialog::passwordChanged(const QString& t){
+  std::string temp(t.toLatin1());
+  serverConfig->setPassword (temp);
+
+}
+

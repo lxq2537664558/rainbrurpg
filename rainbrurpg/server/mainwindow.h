@@ -45,6 +45,7 @@
 #include "serverthread.h"
 #include "clientlist.h"
 #include "serverlog.h"
+#include "objectlist.h"
 
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Network;
@@ -62,7 +63,23 @@ namespace RainbruRPG{
       MainServerWindow(const QString &fileName, QWidget *parent = 0);
       ~MainServerWindow();
 
-    private:
+    public slots:
+      void exitRequested();
+
+    private slots:
+      void showConfigDialog();
+      void showTechNoteDialog();
+      void showHelpDialog();
+      void showLog();
+      void startServer();
+      void stopServer();
+      void manageClients();
+      void manageObjects();
+
+      void clientConnected(const ENetAddress&);
+      void packetReceived(const tReceivedPacket&);  
+
+     private:
       void setupActions();  
       bool registerServer();
       bool unregisterServer();
@@ -98,21 +115,8 @@ namespace RainbruRPG{
       ClientList * clientList;
       /** The server log widget */
       ServerLog* serverLog;
-
-    public slots:
-      void exitRequested();
-
-    private slots:
-      void showConfigDialog();
-      void showTechNoteDialog();
-      void showHelpDialog();
-      void showLog();
-      void startServer();
-      void stopServer();
-      void manageClients();
-
-      void clientConnected(const ENetAddress&);
-      void packetReceived(const tReceivedPacket&);    
+      /** A unique objects list widget */
+      ObjectList* objectList;
     };
   }
 }

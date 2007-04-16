@@ -56,11 +56,12 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
 	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
-	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
-	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
-	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
-	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT)
+	clientlist.$(OBJEXT) objectlist.$(OBJEXT) \
+	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
+	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
+	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
+	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -225,6 +226,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
+			    objectlist.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -234,7 +236,8 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
-			    moc_serverthread.cpp
+			    moc_serverthread.cpp	\
+			    moc_objectlist.cpp
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -324,9 +327,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_helpviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_logexportdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_mainwindow.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_objectlist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_serverlog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_serverthread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_technotedialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/objectlist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resources.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serverconfiguration.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serverlog.Po@am__quote@
