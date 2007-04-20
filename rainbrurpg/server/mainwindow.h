@@ -120,7 +120,7 @@ namespace RainbruRPG{
       ServerLog* serverLog;
       /** A unique objects list widget */
       ObjectList* objectList;
-
+      /** The FTP server used to transfer files */
       FtpServer* ftpServer;
     };
   }

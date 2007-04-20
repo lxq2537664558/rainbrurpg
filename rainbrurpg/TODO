@@ -13,16 +13,13 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP Server
-- GNU headers
-   FtpServer         
-   FtpControl        
-   FtpTransfer       
-   TransferVisual    
+- We can take a pair Ip/filename as a key for downloads
+- Doxygen documentation
 - Impementation de LS (reponse envoyée par canal de donnée)
 - Implementation de USER <username>
 
 
-o [mouse] GameServer
+* GameServer
 - Add the FTP control channel port in the ServerConfiguration
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
@@ -128,6 +125,7 @@ o [mouse] GameServer
 * *******************************************************
 
 * v 0.0.4-128
+- GNU headers
 - FTP classes in RainbruRPG::Network::Ftp namespace
    FtpServer         OK
    FtpControl        OK

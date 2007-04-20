@@ -1,7 +1,31 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 
 #include "ftpcontrol.h"
 
-/** An implementation of the Control Channel using by the FTP protocol
+/** The constructor
+  *
+  * \param port The port the TCP server will listen for new connections
   *
   */
 RainbruRPG::Network::Ftp::FtpControl::FtpControl(quint16 port)
@@ -16,10 +40,16 @@ RainbruRPG::Network::Ftp::FtpControl::FtpControl(quint16 port)
   connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::Network::Ftp::FtpControl::~FtpControl(){
   delete server;
 }
 
+/** Run the thread
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpControl::run(){
   QString s2;
   s2.setNum(port);
@@ -30,6 +60,9 @@ void RainbruRPG::Network::Ftp::FtpControl::run(){
   emit(log(s));
 }
 
+/** A new connection was requested
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
   emit(log( "A new connection is requested" ));
 
@@ -48,6 +81,9 @@ void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
   tcpSocket->flush();
 }
 
+/** Read a comming socket
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
   QTcpSocket *tcpSocket = socket1;
   if (tcpSocket){

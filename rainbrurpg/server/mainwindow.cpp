@@ -560,6 +560,9 @@ void RainbruRPG::Server::MainServerWindow::manageObjects(){
   
 }
 
+/** Show the FTP server widget
+  *
+  */
 void RainbruRPG::Server::MainServerWindow::manageFtp(){
   workspace->addWindow(ftpServer);
   ftpServer->show();
