@@ -30,6 +30,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftpcontrol.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
+			    transfervisual.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\

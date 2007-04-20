@@ -46,9 +46,11 @@
 #include "clientlist.h"
 #include "serverlog.h"
 #include "objectlist.h"
+#include "ftpserver.h"
 
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Network;
+using namespace RainbruRPG::Network::Ftp;
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG{
@@ -75,6 +77,7 @@ namespace RainbruRPG{
       void stopServer();
       void manageClients();
       void manageObjects();
+      void manageFtp();
 
       void clientConnected(const ENetAddress&);
       void packetReceived(const tReceivedPacket&);  
@@ -117,6 +120,8 @@ namespace RainbruRPG{
       ServerLog* serverLog;
       /** A unique objects list widget */
       ObjectList* objectList;
+
+      FtpServer* ftpServer;
     };
   }
 }

@@ -338,6 +338,10 @@ AC_DEFUN([RB_CHECK_QT4],
     echo "Error! You need to have Qt4 (Core and Gui) installed."
     exit -1
   ])
+  AC_CHECK_LIB(QtNetwork, main, [], [
+    echo "Error! You need to have Qt4 (Core and Gui) installed."
+    exit -1
+  ])
 dnl  AC_CHECK_HEADER([qt4/Qt/qevent.h], [], [
 dnl    echo "Error! Cannot find Qt4 headers."
 dnl    exit -1

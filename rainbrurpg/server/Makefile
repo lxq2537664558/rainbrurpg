@@ -58,13 +58,13 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
 	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
-	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
-	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
-	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
-	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
-	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
-	moc_ftpserver.$(OBJEXT)
+	transfervisual.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
+	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
+	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
+	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
+	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
+	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
+	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -126,7 +126,7 @@ INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
 ISODATE = 2007-04-20
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
+LIBS = -lgd -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
@@ -233,6 +233,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftpcontrol.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
+			    transfervisual.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -352,6 +353,7 @@ include ./$(DEPDIR)/serverconfiguration.Po
 include ./$(DEPDIR)/serverlog.Po
 include ./$(DEPDIR)/serverthread.Po
 include ./$(DEPDIR)/technotedialog.Po
+include ./$(DEPDIR)/transfervisual.Po
 include ./$(DEPDIR)/xmlserverconf.Po
 
 .cpp.o:

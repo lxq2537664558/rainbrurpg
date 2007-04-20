@@ -6646,13 +6646,17 @@ m4trace:acinclude.m4:331: -1- AC_DEFUN([RB_CHECK_QT4], [
     echo "Error! You need to have Qt4 (Core and Gui) installed."
     exit -1
   ])
+  AC_CHECK_LIB(QtNetwork, main, [], [
+    echo "Error! You need to have Qt4 (Core and Gui) installed."
+    exit -1
+  ])
 dnl  AC_CHECK_HEADER([qt4/Qt/qevent.h], [], [
 dnl    echo "Error! Cannot find Qt4 headers."
 dnl    exit -1
 dnl  ])
 
 ])
-m4trace:acinclude.m4:351: -1- AC_DEFUN([RB_CHECK_ENET], [
+m4trace:acinclude.m4:355: -1- AC_DEFUN([RB_CHECK_ENET], [
 
   AC_CHECK_LIB(enet, main, [], [
     echo "Error! You need to have libenet-dev installed."
@@ -6665,7 +6669,7 @@ m4trace:acinclude.m4:351: -1- AC_DEFUN([RB_CHECK_ENET], [
   ])
 
 ])
-m4trace:acinclude.m4:371: -1- AC_DEFUN([RB_OPTION_TESTS], [
+m4trace:acinclude.m4:375: -1- AC_DEFUN([RB_OPTION_TESTS], [
   AC_ARG_ENABLE(tests, AC_HELP_STRING([--enable-tests],
     [Build the RainbruRPG unit tests. It is recommended only for package
 	maintainers and curious users
@@ -6687,7 +6691,7 @@ m4trace:acinclude.m4:371: -1- AC_DEFUN([RB_OPTION_TESTS], [
   esac
   AM_CONDITIONAL([RB_OPTION_TESTS_FLAGS], [test x$tests = xtrue])
 ])
-m4trace:acinclude.m4:397: -1- AC_DEFUN([RB_CHECK_GLIB], [
+m4trace:acinclude.m4:401: -1- AC_DEFUN([RB_CHECK_GLIB], [
   AC_CHECK_LIB(glib-2.0, main, [], [
     echo "Error! You need to have glib-2.0 installed."
     exit -1
@@ -6697,13 +6701,13 @@ dnl     echo "Error! Cannot find the glib-2.0 headers."
 dnl     exit -1
 dnl   ])
 ])
-m4trace:acinclude.m4:411: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
+m4trace:acinclude.m4:415: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
   AC_CHECK_LIB(sigc-2.0, main, [], [
     echo "Error! You need to have sigc++-2.0 installed."
     exit -1
   ])
 ])
-m4trace:acinclude.m4:421: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
+m4trace:acinclude.m4:425: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
   AC_CHECK_LIB(gd, main, [], [
     echo "Error! You need to have libgd installed."
     exit -1
@@ -9442,6 +9446,7 @@ m4trace:configure.in:91: -1- m4_pattern_allow([^HAVE_LIBBOOST_FILESYSTEM$])
 m4trace:configure.in:92: -1- RB_CHECK_QT4
 m4trace:configure.in:92: -1- m4_pattern_allow([^HAVE_LIBQTCORE$])
 m4trace:configure.in:92: -1- m4_pattern_allow([^HAVE_LIBQTGUI$])
+m4trace:configure.in:92: -1- m4_pattern_allow([^HAVE_LIBQTNETWORK$])
 m4trace:configure.in:93: -1- RB_CHECK_ENET
 m4trace:configure.in:93: -1- m4_pattern_allow([^HAVE_LIBENET$])
 m4trace:configure.in:94: -1- RB_CHECK_GLIB
@@ -9459,7 +9464,7 @@ m4trace:configure.in:102: -1- m4_pattern_allow([^RB_OPTION_SERVER_FLAGS_FALSE$])
 m4trace:configure.in:103: -1- RB_OPTION_TESTS
 m4trace:configure.in:103: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:371: RB_OPTION_TESTS is expanded from...
+acinclude.m4:375: RB_OPTION_TESTS is expanded from...
 configure.in:103: the top level])
 m4trace:configure.in:103: -1- AM_CONDITIONAL([RB_OPTION_TESTS_FLAGS], [test x$tests = xtrue])
 m4trace:configure.in:103: -1- m4_pattern_allow([^RB_OPTION_TESTS_FLAGS_TRUE$])

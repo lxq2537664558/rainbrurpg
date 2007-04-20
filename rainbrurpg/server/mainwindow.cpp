@@ -56,6 +56,7 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   objectList=NULL;
   running=false;
   server=new ServerThread();
+  ftpServer=new FtpServer;
 
   // Registrering metatype (needed for signal/slot argumenst)
   qRegisterMetaType<ENetAddress>("ENetAddress");
@@ -194,6 +195,10 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   objAct->setShortcut(tr("Ctrl+O"));
   objAct->setStatusTip(tr("Manages the objects"));
 
+  // The Manage/FTP server Action
+  QAction* ftpAct = new QAction(tr("&FTP Server"), this);
+  ftpAct->setShortcut(tr("Ctrl+F"));
+  ftpAct->setStatusTip(tr("Manages the FTP server"));
 
 
 
@@ -221,6 +226,7 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   manageMenu->addAction(clientsAct);
   manageMenu->addAction(logAct);
   manageMenu->addAction(objAct);
+  manageMenu->addAction(ftpAct);
 
   QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
   helpMenu->addAction(aboutAct);
@@ -241,6 +247,7 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   connect(clientsAct, SIGNAL(triggered()), this, SLOT(manageClients()));
   connect(logAct, SIGNAL(triggered()), this, SLOT(showLog()));
   connect(objAct, SIGNAL(triggered()), this, SLOT(manageObjects()));
+  connect(ftpAct, SIGNAL(triggered()), this, SLOT(manageFtp()));
 
   connect(stopAct, SIGNAL(triggered()), this, SLOT(stopServer()));
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
@@ -551,4 +558,10 @@ void RainbruRPG::Server::MainServerWindow::manageObjects(){
   workspace->addWindow(objectList);
   objectList->show();
   
+}
+
+void RainbruRPG::Server::MainServerWindow::manageFtp(){
+  workspace->addWindow(ftpServer);
+  ftpServer->show();
+
 }

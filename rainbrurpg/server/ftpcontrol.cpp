@@ -4,7 +4,7 @@
 /** An implementation of the Control Channel using by the FTP protocol
   *
   */
-FtpControl::FtpControl(quint16 port)
+RainbruRPG::Network::Ftp::FtpControl::FtpControl(quint16 port)
 :QThread(){
   this->port=port;
   currentDirectory="/home/mouse";
@@ -16,11 +16,11 @@ FtpControl::FtpControl(quint16 port)
   connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
 }
 
-FtpControl::~FtpControl(){
+RainbruRPG::Network::Ftp::FtpControl::~FtpControl(){
   delete server;
 }
 
-void FtpControl::run(){
+void RainbruRPG::Network::Ftp::FtpControl::run(){
   QString s2;
   s2.setNum(port);
   QString s="Control channel now listening for new connections on port ";
@@ -30,7 +30,7 @@ void FtpControl::run(){
   emit(log(s));
 }
 
-void FtpControl::newConnection(){
+void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
   emit(log( "A new connection is requested" ));
 
   QTcpSocket *tcpSocket=server->nextPendingConnection();
@@ -48,7 +48,7 @@ void FtpControl::newConnection(){
   tcpSocket->flush();
 }
 
-void FtpControl::readSocket(){
+void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
   QTcpSocket *tcpSocket = socket1;
   if (tcpSocket){
     int ba=tcpSocket->bytesAvailable();

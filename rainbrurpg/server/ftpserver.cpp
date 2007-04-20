@@ -5,11 +5,10 @@
   * \param port The port used to connect to the Protocol Interpreter
   *
   */
-FtpServer::FtpServer(quint16 port)
+RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   : QWidget(){
 
   setWindowTitle("RainbruRPG FTP server");
-  setMinimumWidth(600);
 
   QVBoxLayout *mainLayout = new QVBoxLayout;
 
@@ -49,7 +48,7 @@ FtpServer::FtpServer(quint16 port)
 /** The destructor
   *
   */
-FtpServer::~FtpServer(){
+RainbruRPG::Network::Ftp::FtpServer::~FtpServer(){
   control->quit();
   delete control;
   transfer->quit();
@@ -62,11 +61,11 @@ FtpServer::~FtpServer(){
   * \param s The string to append
   *
   */
-void FtpServer::log(const QString&s){
+void RainbruRPG::Network::Ftp::FtpServer::log(const QString&s){
   textEdit->append(s);
 }
 
-void FtpServer::addTransfer(TransferVisual* tv){
+void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
   QTreeWidgetItem *wi=new QTreeWidgetItem();
   wi->setText(0,tv->getIp());
   wi->setText(1,tv->getFilename());

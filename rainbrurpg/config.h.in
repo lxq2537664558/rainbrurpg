@@ -72,6 +72,9 @@
 /* Define to 1 if you have the `QtGui' library (-lQtGui). */
 #undef HAVE_LIBQTGUI
 
+/* Define to 1 if you have the `QtNetwork' library (-lQtNetwork). */
+#undef HAVE_LIBQTNETWORK
+
 /* Define to 1 if you have the `slang' library (-lslang). */
 #undef HAVE_LIBSLANG
 

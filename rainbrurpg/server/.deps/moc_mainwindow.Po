@@ -484,7 +484,17 @@ moc_mainwindow.o moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
   /usr/include/qt4/QtSql/QSqlQuery /usr/include/qt4/QtSql/qsqlquery.h \
   /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/QSqlRecord \
   /usr/include/qt4/QtSql/qsqlrecord.h /usr/include/qt4/QtSql/QSqlError \
-  /usr/include/qt4/QtSql/qsqlerror.h
+  /usr/include/qt4/QtSql/qsqlerror.h ftpserver.h \
+  /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTextEdit \
+  /usr/include/qt4/QtGui/QtGui /usr/include/qt4/QtGui/QTreeWidget \
+  ftpcontrol.h /usr/include/qt4/QtCore/QDataStream \
+  /usr/include/qt4/QtNetwork/QTcpServer \
+  /usr/include/qt4/QtNetwork/qtcpserver.h \
+  /usr/include/qt4/QtNetwork/qabstractsocket.h \
+  /usr/include/qt4/QtNetwork/qhostaddress.h \
+  /usr/include/qt4/QtNetwork/QTcpSocket \
+  /usr/include/qt4/QtNetwork/qtcpsocket.h ftptransfer.h transfervisual.h \
+  /usr/include/qt4/QtCore/QString
 
 mainwindow.h:
 
@@ -1831,3 +1841,35 @@ objectlist.h:
 /usr/include/qt4/QtSql/QSqlError:
 
 /usr/include/qt4/QtSql/qsqlerror.h:
+
+ftpserver.h:
+
+/usr/include/qt4/QtGui/QWidget:
+
+/usr/include/qt4/QtGui/QTextEdit:
+
+/usr/include/qt4/QtGui/QtGui:
+
+/usr/include/qt4/QtGui/QTreeWidget:
+
+ftpcontrol.h:
+
+/usr/include/qt4/QtCore/QDataStream:
+
+/usr/include/qt4/QtNetwork/QTcpServer:
+
+/usr/include/qt4/QtNetwork/qtcpserver.h:
+
+/usr/include/qt4/QtNetwork/qabstractsocket.h:
+
+/usr/include/qt4/QtNetwork/qhostaddress.h:
+
+/usr/include/qt4/QtNetwork/QTcpSocket:
+
+/usr/include/qt4/QtNetwork/qtcpsocket.h:
+
+ftptransfer.h:
+
+transfervisual.h:
+
+/usr/include/qt4/QtCore/QString:

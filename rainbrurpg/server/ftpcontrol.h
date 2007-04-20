@@ -1,4 +1,6 @@
 
+#ifndef _FTP_CONTROL_H_
+#define _FTP_CONTROL_H_
 
 #include <QThread>
 #include <QDataStream>
@@ -9,28 +11,37 @@
 
 using namespace std;
 
-/** An implementation of the Control Channel using by the FTP protocol
-  *
-  */
-class FtpControl : public QThread {
-  Q_OBJECT
-public:
-  FtpControl(quint16);
-  ~FtpControl();
+namespace RainbruRPG{
+  namespace Network{
+    namespace Ftp{
 
-  virtual void run ();
+      /** An implementation of the Control Channel using by the FTP protocol
+        *
+	*/
+      class FtpControl : public QThread {
+	Q_OBJECT
+	  public:
+	FtpControl(quint16);
+	~FtpControl();
+	
+	virtual void run ();
+	
+      signals:
+	void log(const QString&);
+	
+	private slots:
+	  void newConnection();
+	void readSocket();
+	
+      private:
+	quint16 port;
+	QTcpServer* server;
+	int descriptor;
+	QTcpSocket* socket1;
+	QString currentDirectory;
+      };
+    }
+  }
+}
 
-signals:
-  void log(const QString&);
-
-private slots:
-  void newConnection();
-  void readSocket();
-
-private:
-  quint16 port;
-  QTcpServer* server;
-  int descriptor;
-  QTcpSocket* socket1;
-  QString currentDirectory;
-};
+#endif //_FTP_CONTROL_H_

@@ -58,13 +58,13 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
 	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
-	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
-	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
-	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
-	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
-	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
-	moc_ftpserver.$(OBJEXT)
+	transfervisual.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
+	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
+	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
+	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
+	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
+	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
+	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -233,6 +233,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftpcontrol.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
+			    transfervisual.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -352,6 +353,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serverlog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serverthread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/technotedialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/transfervisual.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xmlserverconf.Po@am__quote@
 
 .cpp.o:
