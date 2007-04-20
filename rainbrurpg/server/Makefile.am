@@ -27,6 +27,9 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
 			    objectlist.cpp		\
+			    ftpcontrol.cpp		\
+			    ftptransfer.cpp		\
+			    ftpserver.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -37,7 +40,10 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\
-			    moc_objectlist.cpp
+			    moc_objectlist.cpp		\
+			    moc_ftpcontrol.cpp		\
+			    moc_ftptransfer.cpp		\
+			    moc_ftpserver.cpp
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.

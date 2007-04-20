@@ -24,6 +24,11 @@
 
 #include <logger.h>
 
+/** The default constructor
+  *
+  * \param parent The parent widget
+  *
+  */
 RainbruRPG::Gui::ObjectList::ObjectList(QWidget* parent) 
   :QWidget(parent) {
 
@@ -45,9 +50,8 @@ RainbruRPG::Gui::ObjectList::ObjectList(QWidget* parent)
     meshTree=new QTreeWidget(this);
     meshTree->setSortingEnabled(true);
     QStringList header;
-    header << tr("Ip") << tr("Port") << tr("Type") << tr("Status") 
-	   << tr("Try");
-    meshTree->setColumnCount(5);
+    header << tr("Id") << tr("Name") << tr("filename");
+    meshTree->setColumnCount(3);
     meshTree->setHeaderLabels(header);
     vbMeshes->addWidget(meshTree);
 
@@ -56,13 +60,19 @@ RainbruRPG::Gui::ObjectList::ObjectList(QWidget* parent)
   feed();
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::Gui::ObjectList::~ObjectList(){
   delete meshTree;
 }
 
+/** Feet the tab widgets with the database vaues
+  *
+  */
 void RainbruRPG::Gui::ObjectList::feed(){
   QSqlDatabase db=QSqlDatabase::database ( "rainbru" );
-  QSqlQuery q=db.exec("select * from objectpos");
+  QSqlQuery q=db.exec("select * from objectmesh");
   QSqlRecord rec = q.record();
 
   if (q.isActive()){
@@ -82,20 +92,15 @@ void RainbruRPG::Gui::ObjectList::feed(){
     LOGCAT();
   }
 
-  while (q.next())
-    qDebug() << q.value(1).toString(); // output all names
+  while (q.next()){
+    //    qDebug() << q.value(1).toString(); // output all names
 
-  // It is a new client, adding it to the list
-  /*  QTreeWidgetItem *it= new QTreeWidgetItem(tree);
-  it->setText(0,ipText );
-  it->setText(1, portText);
-  it->setText(2, typeText);
-  it->setText(3, statusText);
-  if (!accepted){
-    it->setTextColor(3, r);
+    // It is a new client, adding it to the list
+    QTreeWidgetItem *it= new QTreeWidgetItem(meshTree);
+    it->setText(0, q.value(0).toString() );
+    it->setText(1, q.value(1).toString() );
+    it->setText(2, q.value(2).toString() );
+    
+    meshTree->addTopLevelItem( it );
   }
-  it->setText(4, "1");
-  
-  meshTree->addTopLevelItem( it );
-  */
 }

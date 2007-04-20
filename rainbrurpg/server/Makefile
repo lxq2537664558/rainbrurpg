@@ -56,12 +56,15 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
 	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) objectlist.$(OBJEXT) \
+	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
+	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
 	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
 	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
 	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
 	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT)
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
+	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
+	moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -120,7 +123,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-04-16
+ISODATE = 2007-04-20
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgd -lglib-2.0 -lenet -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -227,6 +230,9 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
 			    objectlist.cpp		\
+			    ftpcontrol.cpp		\
+			    ftptransfer.cpp		\
+			    ftpserver.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -237,7 +243,10 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\
-			    moc_objectlist.cpp
+			    moc_objectlist.cpp		\
+			    moc_ftpcontrol.cpp		\
+			    moc_ftptransfer.cpp		\
+			    moc_ftpserver.cpp
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -317,6 +326,9 @@ distclean-compile:
 include ./$(DEPDIR)/clientlist.Po
 include ./$(DEPDIR)/configdialog.Po
 include ./$(DEPDIR)/enetserver.Po
+include ./$(DEPDIR)/ftpcontrol.Po
+include ./$(DEPDIR)/ftpserver.Po
+include ./$(DEPDIR)/ftptransfer.Po
 include ./$(DEPDIR)/helpviewer.Po
 include ./$(DEPDIR)/logexportdialog.Po
 include ./$(DEPDIR)/main.Po
@@ -324,6 +336,9 @@ include ./$(DEPDIR)/mainwindow.Po
 include ./$(DEPDIR)/moc_clientlist.Po
 include ./$(DEPDIR)/moc_configdialog.Po
 include ./$(DEPDIR)/moc_enetserver.Po
+include ./$(DEPDIR)/moc_ftpcontrol.Po
+include ./$(DEPDIR)/moc_ftpserver.Po
+include ./$(DEPDIR)/moc_ftptransfer.Po
 include ./$(DEPDIR)/moc_helpviewer.Po
 include ./$(DEPDIR)/moc_logexportdialog.Po
 include ./$(DEPDIR)/moc_mainwindow.Po

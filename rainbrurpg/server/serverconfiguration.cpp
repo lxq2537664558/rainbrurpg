@@ -235,7 +235,7 @@ setUserName(const std::string& username){
 
 /** Sets the user password used in database connection
   *
-  * \param username The new user password
+  * \param password The new user password
   *
   */
 void RainbruRPG::Server::ServerConfiguration::

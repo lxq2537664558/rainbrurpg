@@ -56,12 +56,15 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
 	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) objectlist.$(OBJEXT) \
+	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
+	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
 	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
 	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
 	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
 	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT)
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
+	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
+	moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -227,6 +230,9 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
 			    objectlist.cpp		\
+			    ftpcontrol.cpp		\
+			    ftptransfer.cpp		\
+			    ftpserver.cpp		\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -237,7 +243,10 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\
-			    moc_objectlist.cpp
+			    moc_objectlist.cpp		\
+			    moc_ftpcontrol.cpp		\
+			    moc_ftptransfer.cpp		\
+			    moc_ftpserver.cpp
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -317,6 +326,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/clientlist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/configdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/enetserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpcontrol.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftptransfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/helpviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logexportdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
@@ -324,6 +336,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_clientlist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_configdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_enetserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpcontrol.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpserver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftptransfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_helpviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_logexportdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_mainwindow.Po@am__quote@

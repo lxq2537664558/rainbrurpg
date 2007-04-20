@@ -12,7 +12,12 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curlaccounttoggleblacklist
    curldefaultwritefunction
 
-o [mouse] Serveur
+o [mouse] FTP Server
+- Impementation de LS (reponse envoyée par canal de donnée)
+- Implementation de USER <username>
+
+
+o [mouse] GameServer
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
 - Update the client number in statusbar
@@ -117,6 +122,8 @@ o [mouse] Serveur
 * *******************************************************
 
 * v 0.0.4-128
+- FTP classes in server/
+- Doxygen documentation
 - A MDI Child for the Objects (list, add delete...) (ObjectList)
 - A manage->objects menu item
 - Database has StaticObject and DynamicObject tables
