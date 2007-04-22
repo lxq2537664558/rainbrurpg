@@ -29,8 +29,8 @@ Paramêtres par defaut
 TYPE - ASCII Non-print
 MODE - Stream
 STRU - File
-- Impementation de LIST (reponse envoyée par canal de donnée)
 - Implementation de USER <username>
+  User list is taken from the AdminSite and store in ftpControl
 
 
 * GameServer
@@ -139,6 +139,8 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-129
+- Doxygen documentation
+- FTP server : LIST command implementation
 - PORT command implementation (with a given port)
 - FtpControl send 502 Not implemented command
 - CurlAccountDelete unit test implementation

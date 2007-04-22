@@ -76,6 +76,12 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
 }
 
+/** Change the host configuration if a PORT command occured
+  *
+  * \param host The host IP adress
+  * \param port The host port
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 changeHost(const QString& host,int port){
 
@@ -93,13 +99,9 @@ changeHost(const QString& host,int port){
 
 }
 
-// correctly set packetData and call this
-void RainbruRPG::Network::Ftp::FtpTransfer::sendPacket(){
-  socket1->write(packetData.toLatin1());
-  socket1->flush();
-
-}
-
+/** Send the packet for the LS command
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
   emit(log("Sending LS result"));
 
@@ -152,14 +154,19 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
   qDebug(sock.peerName().toLatin1()); 
 }
 
-void RainbruRPG::Network::Ftp::FtpTransfer::packetSent(){
-}
-
+/** A slot called is an error occured in the current socket
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 error ( QAbstractSocket::SocketError socketError ){
   cout << "AN ERROR OCCURED" << endl;
 }
 
+/** Creates the \c ls command result 
+  *
+  * It creates it in the packetData string.
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
   unsigned int childs=1;
   packetData="";
@@ -172,7 +179,6 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
 
   cout << "Sending "<<list.size()<< "files ? " << endl;
   for (int i = 0; i < list.size(); ++i) {
-    packetData+=" ";
     QFileInfo fileInfo = list.at(i);
 
     // ====== User permissions
@@ -203,14 +209,29 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
     // Child number
     QString sChild;
     sChild.setNum(childs);
-    sChild=sChild.rightJustified(6);
+    sChild=sChild.rightJustified(5);
     packetData+=sChild;
 
+    // Owner and group names
+    packetData+=' ';
+    QString sOwner=fileInfo.owner();
+    sOwner=sOwner.leftJustified(9);
+    packetData+=sOwner;
+    QString sGroup=fileInfo.group();
+    sGroup=sGroup.leftJustified(9);
+    packetData+=sGroup;
 
+    // File size
+    qint64 size=fileInfo.size();
 
+    QString sSize=fileSizeToString(size);
+    sSize=sSize.rightJustified(8);
+    packetData+=sSize;
 
-
-
+    // Last modified time
+    packetData+=" ";
+    QDateTime dt=fileInfo.lastModified();
+    packetData+=dt.toString("yyyy-MM-dd hh:mm");
 
     // File name and EOL
     packetData+=" ";
@@ -219,6 +240,48 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
   }
 }
 
+/** Get a human-readable string from a file size
+  *
+  * It try to wotks lithe the <code>ls -lh</code> command of an 
+  * unix-like system.
+  *
+  * \param s The file size
+  *
+  * \return The result string
+  *
+  */
+QString RainbruRPG::Network::Ftp::FtpTransfer::fileSizeToString(qint64 s){
+  QString ret;
+  double d;
+
+
+  if (s<1000){
+    return ret.setNum(s);
+  }
+  else if (s>999 && s<1000000){
+    d=(double)s/1000;
+    ret.setNum(d, 'f', 2);
+    ret+= "K";
+    return ret;
+  }
+  else{
+    d=(double)s/1000000;
+    ret.setNum(d, 'f', 2);
+    ret+= "M";
+    return ret;
+
+  }
+}
+
+/** Create a string defining the given access permissions
+  *
+  * \param r The read permission
+  * \param w The write permission
+  * \param x The execution permission
+  *
+  * \return A string representing the given permissions
+  *
+  */
 QString RainbruRPG::Network::Ftp::FtpTransfer::
 filePermissions(bool r,bool w,bool x){
   QString s="";

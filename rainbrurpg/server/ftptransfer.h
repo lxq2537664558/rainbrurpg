@@ -33,6 +33,7 @@
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
 #include <QDir>
+#include <QDateTime>
 
 #include <iostream>
 
@@ -42,18 +43,32 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
+      /** An enumeration describing the FTP transfer mode
+        *
+	* The default is FTM_PASSIVE.
+	*
+	*/
       typedef enum tTransferMode{
-	FTM_ACTIVE,
-	FTM_PASSIVE,
+	FTM_ACTIVE,  //!< Active server mode
+	FTM_PASSIVE, //!< Passive server mode
       };
 
+      /** An enumeration describing the FTP transfer type
+        *
+	* It defines howx a file is transfered.
+	*
+	* The default is FTT_ASCII.
+	*
+	*/
       typedef enum tTransferType { 
-	FTT_BINARY, 
-	FTT_ASCII,
+	FTT_BINARY, //!< The file is opened in binary mode
+	FTT_ASCII,  //!< The file is opened in ascii mode
       };
 
       /** An implementation of the Transfer Channel using by the FTP protocol
         *
+	* \sa FtpServer
+	*
 	*/
       class FtpTransfer : public QThread {
 	Q_OBJECT
@@ -66,6 +81,7 @@ namespace RainbruRPG{
       signals:
 	/** A signal used to log messages */
 	void log(const QString&);
+	/** A signal emited when the transfer is complete */
 	void transferComplete();
 
       public slots:
@@ -74,13 +90,11 @@ namespace RainbruRPG{
 
       private slots:
 	void newConnection();
-        void sendPacket();
-	void packetSent();
 	void error ( QAbstractSocket::SocketError socketError );
 
       private:
 	void lsResult();
-
+	QString fileSizeToString(qint64);
 	QString filePermissions(bool,bool,bool);
 
 	/** The listening port */
@@ -94,12 +108,17 @@ namespace RainbruRPG{
 	/** The current working directory */
 	QString currentDirectory;
 
+	/** The host adress */
 	QString hostAdress;
+	/** The host port */
 	int hostPort;
 
+	/** The data of the packet that will be sent */
 	QString packetData;
 
+	/** The current transfer mode */
 	tTransferMode transferMode;
+	/** The current transfer type */
 	tTransferType transferType;
       };
 

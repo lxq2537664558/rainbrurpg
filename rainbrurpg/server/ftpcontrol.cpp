@@ -160,7 +160,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if (s.contains("LIST")){
 	  emit(log("LS command received"));
 	  tcpSocket->write("150 Opening ASCII mode.\r\n");
-	  //tcpSocket->write("213-Status follows:\r\n");
 	  emit(commandLIST());
 	}
 	else if (s.contains("PORT")){
@@ -216,6 +215,9 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
   }
 }
 
+/** A slot called when a transfer is complete
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpControl::transferComplete(){
   log("Transfer complete");
   socket1->write("226 Transfer complete.\r\n");

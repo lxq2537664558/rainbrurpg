@@ -31,10 +31,12 @@
 #include <QDataStream>
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
-
 #include <iostream>
+#include <xmlaccountlist.h>
+
 
 using namespace std;
+using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG{
   namespace Network{
@@ -56,6 +58,7 @@ namespace RainbruRPG{
 	void log(const QString&);
 	/** A PORT command was received with this port */
 	void transferListeningPort(const QString&, int);
+	/** A signal emitted when a LIST command occured */
 	void commandLIST();
 
       public slots:
@@ -76,6 +79,8 @@ namespace RainbruRPG{
 	QTcpSocket* socket1;
 	/** The current FTP directory */
 	QString currentDirectory;
+
+	xmlAccountList accountList;
       };
     }
   }

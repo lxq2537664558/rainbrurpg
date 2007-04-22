@@ -491,9 +491,19 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtNetwork/qabstractsocket.h \
   /usr/include/qt4/QtNetwork/qhostaddress.h \
   /usr/include/qt4/QtNetwork/QTcpSocket \
-  /usr/include/qt4/QtNetwork/qtcpsocket.h ftptransfer.h \
-  /usr/include/qt4/QtCore/QDir transfervisual.h \
-  /usr/include/qt4/QtCore/QString
+  /usr/include/qt4/QtNetwork/qtcpsocket.h ../common/xmlaccountlist.h \
+  ../common/loadbmp.h /usr/include/math.h /usr/include/bits/huge_val.h \
+  /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
+  /usr/include/bits/inf.h /usr/include/bits/nan.h \
+  /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathinline.h ../common/EasyBMP.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cmath \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/cmath.tcc \
+  ../common/EasyBMP_DataStructures.h ../common/EasyBMP_BMP.h \
+  ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
+  ../common/tidentreturn.h ../common/globaluri.h ftptransfer.h \
+  /usr/include/qt4/QtCore/QDir /usr/include/qt4/QtCore/QDateTime \
+  transfervisual.h /usr/include/qt4/QtCore/QString
 
 /usr/include/qt4/QtGui/QApplication:
 
@@ -1869,9 +1879,51 @@ ftpcontrol.h:
 
 /usr/include/qt4/QtNetwork/qtcpsocket.h:
 
+../common/xmlaccountlist.h:
+
+../common/loadbmp.h:
+
+/usr/include/math.h:
+
+/usr/include/bits/huge_val.h:
+
+/usr/include/bits/huge_valf.h:
+
+/usr/include/bits/huge_vall.h:
+
+/usr/include/bits/inf.h:
+
+/usr/include/bits/nan.h:
+
+/usr/include/bits/mathdef.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
+
+../common/EasyBMP.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cmath:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/cmath.tcc:
+
+../common/EasyBMP_DataStructures.h:
+
+../common/EasyBMP_BMP.h:
+
+../common/EasyBMP_VariousBMPutilities.h:
+
+../common/taccountlist.h:
+
+../common/tidentreturn.h:
+
+../common/globaluri.h:
+
 ftptransfer.h:
 
 /usr/include/qt4/QtCore/QDir:
+
+/usr/include/qt4/QtCore/QDateTime:
 
 transfervisual.h:
 
