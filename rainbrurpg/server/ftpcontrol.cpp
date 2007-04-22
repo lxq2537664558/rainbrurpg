@@ -23,6 +23,9 @@
 
 #include "ftpcontrol.h"
 
+#include <QStringList>
+
+
 /** The constructor
   *
   * \param port The port the TCP server will listen for new connections
@@ -64,7 +67,7 @@ void RainbruRPG::Network::Ftp::FtpControl::run(){
   *
   */
 void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
-  emit(log( "A new connection is requested" ));
+  emit(log( "A new connection is requested on control channel" ));
 
   QTcpSocket *tcpSocket=server->nextPendingConnection();
 
@@ -78,7 +81,6 @@ void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
   socket1=tcpSocket;
 
   tcpSocket->write(s.toLatin1());
-  tcpSocket->flush();
 }
 
 /** Read a comming socket
@@ -144,7 +146,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	}
 	else if (s.contains("PWD")){
 	  emit(log("PWD command received"));
-	  //	  tcpSocket->write("230 Session opened\r\n");
 	  QString tmp="257 \"";
 	  tmp+=currentDirectory;
 	  tmp+="\" is current directory\r\n";
@@ -153,8 +154,52 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	}
 	else if (s.contains("PASV")){
 	  emit(log("PASV command received"));
-	  //	  tcpSocket->write("230 Session opened\r\n");
-	  tcpSocket->write("Using binary mode to transfer files.");
+	  tcpSocket->write("227 Using binary mode to transfer files.\r\n");
+
+	}
+	else if (s.contains("LIST")){
+	  emit(log("LS command received"));
+	  tcpSocket->write("150 Opening ASCII mode.\r\n");
+	  //tcpSocket->write("213-Status follows:\r\n");
+	  emit(commandLIST());
+	}
+	else if (s.contains("PORT")){
+	  emit(log("PORT command received"));
+	  // Find the port number
+	  QStringList list1 = s.split(",");
+	  QString p1=list1.at(4);
+	  QString p2=list1.at(5);
+
+	  QString p11=QString::number(p1.toInt(), 16);
+	  QString p21=QString::number(p2.toInt(), 16);
+	  p11=p11.rightJustified(2, '0');
+	  p21=p21.rightJustified(2, '0');
+
+
+	  QString hex=p11;
+	  hex+=p21;
+	  qDebug(p11.toLatin1());
+	  qDebug(p21.toLatin1());
+	  qDebug(hex.toLatin1());
+
+	  bool ok;
+	  int i=hex.toInt(&ok, 16);
+
+	  // Find the IP adress
+
+	  QString h1=list1.at(0);
+	  QString h2=h1.right(h1.length()-4);
+	  h2+=".";
+	  h2+=list1.at(1);
+	  h2+=".";
+	  h2+=list1.at(2);
+	  h2+=".";
+	  h2+=list1.at(3);
+
+	  qDebug(h2.toLatin1());
+	  cout << "new port : " << i << endl;
+	  emit(transferListeningPort(h2,i));
+	  tcpSocket->write("225 Transfer channel opened.\r\n");
 
 	}
 	else{
@@ -163,9 +208,15 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  cout << "  Packet lenght : " << ba << endl;
 	  //	cout << "  String lenght : " << s.size() << endl;
 	  cout << "  Contains : " << c << endl;
+	  tcpSocket->write("502 Command not implemented.\r\n");
 	  
 	}
       }
     }
   }
+}
+
+void RainbruRPG::Network::Ftp::FtpControl::transferComplete(){
+  log("Transfer complete");
+  socket1->write("226 Transfer complete.\r\n");
 }

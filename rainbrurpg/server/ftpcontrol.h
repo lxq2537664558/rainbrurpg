@@ -54,7 +54,13 @@ namespace RainbruRPG{
       signals:
 	/** A signal used to log a message */
 	void log(const QString&);
-	
+	/** A PORT command was received with this port */
+	void transferListeningPort(const QString&, int);
+	void commandLIST();
+
+      public slots:
+	void transferComplete();
+
       private slots:
 	void newConnection();
 	void readSocket();

@@ -31,7 +31,7 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   : QWidget(){
 
   setWindowTitle("RainbruRPG FTP server");
-
+  setMinimumWidth(550);
   QVBoxLayout *mainLayout = new QVBoxLayout;
 
   // Control widgets
@@ -60,6 +60,17 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   connect(transfer, SIGNAL(log(const QString&)), this, 
 	  SLOT(log(const QString&)));
   transfer->run();
+
+  connect(control, SIGNAL(transferListeningPort(const QString&,int)), 
+	  transfer, SLOT(changeHost(const QString&,int)));
+
+  connect(control, SIGNAL(commandLIST()), 
+	  transfer, SLOT(commandLIST()));
+
+
+  connect(transfer, SIGNAL(transferComplete()), 
+	  control, SLOT(transferComplete()));
+
 
   TransferVisual* tv=new TransferVisual();
   tv->setIp("123.23.12.123");

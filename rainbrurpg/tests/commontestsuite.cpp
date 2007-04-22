@@ -29,6 +29,7 @@
 #include "clientconnecttest.h"
 #include "curlaccountaddtest.h"
 #include "curlaccountconfirmmailtest.h"
+#include "curlaccountdeletetest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -37,6 +38,7 @@
 #include <clientconnect.h>
 #include <curlaccountadd.h>
 #include <curlaccountconfirmmail.h>
+#include <curlaccountdelete.h>
 
 /** The default constructor
   *
@@ -50,6 +52,7 @@ CommonTestSuite::CommonTestSuite()
   addTest( ClientConnectTest<ClientConnect>::suite() );
   addTest( CurlAccountAddTest<CurlAccountAdd>::suite() );
   addTest( CurlAccountConfirmMailTest<CurlAccountConfirmMail>::suite() );
+  addTest( CurlAccountDeleteTest<CurlAccountDelete>::suite() );
 
 }
 

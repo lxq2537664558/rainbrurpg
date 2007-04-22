@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 apr 2007 : LIST command imlementation
  * - 20 apr 2007 : Starting implementation
  */
 
@@ -31,6 +32,7 @@
 #include <QDataStream>
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
+#include <QDir>
 
 #include <iostream>
 
@@ -39,6 +41,16 @@ using namespace std;
 namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
+
+      typedef enum tTransferMode{
+	FTM_ACTIVE,
+	FTM_PASSIVE,
+      };
+
+      typedef enum tTransferType { 
+	FTT_BINARY, 
+	FTT_ASCII,
+      };
 
       /** An implementation of the Transfer Channel using by the FTP protocol
         *
@@ -54,8 +66,23 @@ namespace RainbruRPG{
       signals:
 	/** A signal used to log messages */
 	void log(const QString&);
-	
+	void transferComplete();
+
+      public slots:
+	void changeHost(const QString&, int);
+	void commandLIST();
+
+      private slots:
+	void newConnection();
+        void sendPacket();
+	void packetSent();
+	void error ( QAbstractSocket::SocketError socketError );
+
       private:
+	void lsResult();
+
+	QString filePermissions(bool,bool,bool);
+
 	/** The listening port */
 	quint16 port;
 	/** The TCP server instance */
@@ -66,6 +93,14 @@ namespace RainbruRPG{
 	QTcpSocket* socket1;
 	/** The current working directory */
 	QString currentDirectory;
+
+	QString hostAdress;
+	int hostPort;
+
+	QString packetData;
+
+	tTransferMode transferMode;
+	tTransferType transferType;
       };
 
     }

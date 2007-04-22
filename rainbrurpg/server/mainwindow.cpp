@@ -52,6 +52,7 @@ MainServerWindow(const QString &fileName, QWidget *parent)
 		  : QMainWindow(parent)
 {
   LOGI("Creating MainWindow");
+  setWindowTitle(tr("RainbruRPG-server"));
   clientList=NULL;
   objectList=NULL;
   running=false;

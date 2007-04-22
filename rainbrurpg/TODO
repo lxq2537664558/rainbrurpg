@@ -8,14 +8,28 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 
 * Unittest implementation
 - In this order
-   CurlAccountDelete
    curlaccounttoggleblacklist
    curldefaultwritefunction
 
 o [mouse] FTP Server
-- We can take a pair Ip/filename as a key for downloads
-- Doxygen documentation
-- Impementation de LS (reponse envoyée par canal de donnée)
+   A transfered byte is always 8-bit lenght
+   The end of the transfer is signaled by a EOF sequence or when the channel
+     is closed
+   We can take a pair Ip/filename as a key for downloads
+Minimale
+Type - ASCII Non-print
+Mode - Flux
+STRUCTURE - Fichier, Enregistrement
+COMMANDES - USER, QUIT, PORT
+  TYPE, MODE, STRU, pour les valeurs par defaut
+  RETR, STOR
+  NOOP.
+
+Paramêtres par defaut
+TYPE - ASCII Non-print
+MODE - Stream
+STRU - File
+- Impementation de LIST (reponse envoyée par canal de donnée)
 - Implementation de USER <username>
 
 
@@ -124,8 +138,14 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-129
+- PORT command implementation (with a given port)
+- FtpControl send 502 Not implemented command
+- CurlAccountDelete unit test implementation
+
 * v 0.0.4-128
-- GNU headers
+- Doxygen documentation
+- GNU headers for FTP
 - FTP classes in RainbruRPG::Network::Ftp namespace
    FtpServer         OK
    FtpControl        OK

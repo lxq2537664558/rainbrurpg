@@ -385,6 +385,16 @@
   *
   */
 
+/** \namespace RainbruRPG::Network::Ftp
+  *
+  * The FTP (File Trnsfer Protocol) namespace
+  *
+  * The class that belongs to this namespace are part of the FTP server or
+  * the FTP client. FTP is used to synchronized data files between a server
+  * and its clients.
+  *
+  */
+
 /** \namespace RainbruRPG::Network::Ident
   *
   * The namespace used by the identification protocol
