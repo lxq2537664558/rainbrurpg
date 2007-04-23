@@ -142,7 +142,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if (s.contains("PASS")){
 	  emit(log("PASS command received"));
 	  tcpSocket->write("230 User logged in.\r\n");
-
 	}
 	else if (s.contains("PWD")){
 	  emit(log("PWD command received"));
@@ -154,6 +153,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	}
 	else if (s.contains("PASV")){
 	  emit(log("PASV command received"));
+	  emit(commandPASV());
 	  tcpSocket->write("227 Using binary mode to transfer files.\r\n");
 
 	}
@@ -201,6 +201,14 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  tcpSocket->write("225 Transfer channel opened.\r\n");
 
 	}
+	else if (s.contains("RETR")){
+	  QStringList list1 = read.split(" ");
+	  QString h1=list1.at(1);
+	  QString l("Requesting file ");
+	  l+=h1;
+	  emit(log(l));
+	  emit(commandRETR(h1));
+	}
 	else{
 	  //	std::string s20(s.toLatin1());
 	  cout << "New packet received (unknown command)"<< endl;
@@ -221,4 +229,24 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 void RainbruRPG::Network::Ftp::FtpControl::transferComplete(){
   log("Transfer complete");
   socket1->write("226 Transfer complete.\r\n");
+}
+
+/** A slot called when a transfer start
+  *
+  * \param filename The file name
+  * \param filesize The file size
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpControl::startTransferFile(const QString& filename, qint64 filesize){
+  QString s2;
+  s2.setNum(filesize);
+
+  QString s("150 Opening ASCII mode data connection for ");
+  s+=filename;
+  s+=" (";
+  s+=s2;
+  s+=")\r\n";
+
+  socket1->write(s.toLatin1());
+
 }

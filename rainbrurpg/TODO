@@ -12,6 +12,9 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP Server
+- RETR command implementation
+- Ls is actually active, implement it passive
+- Se renseigner sur le port triggering
    A transfered byte is always 8-bit lenght
    The end of the transfer is signaled by a EOF sequence or when the channel
      is closed

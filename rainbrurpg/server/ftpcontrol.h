@@ -60,9 +60,13 @@ namespace RainbruRPG{
 	void transferListeningPort(const QString&, int);
 	/** A signal emitted when a LIST command occured */
 	void commandLIST();
-
+	/** A signal emitted when a PASS command occured */
+	void commandPASV();
+	/** A signal emitted when a file is retrieved */
+	void commandRETR(const QString&);
       public slots:
 	void transferComplete();
+        void startTransferFile(const QString&, qint64);
 
       private slots:
 	void newConnection();

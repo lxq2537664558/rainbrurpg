@@ -503,7 +503,8 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
   ../common/tidentreturn.h ../common/globaluri.h ftptransfer.h \
   /usr/include/qt4/QtCore/QDir /usr/include/qt4/QtCore/QDateTime \
-  transfervisual.h /usr/include/qt4/QtCore/QString
+  /usr/include/qt4/QtCore/QFile transfervisual.h \
+  /usr/include/qt4/QtCore/QString
 
 /usr/include/qt4/QtGui/QApplication:
 
@@ -1924,6 +1925,8 @@ ftptransfer.h:
 /usr/include/qt4/QtCore/QDir:
 
 /usr/include/qt4/QtCore/QDateTime:
+
+/usr/include/qt4/QtCore/QFile:
 
 transfervisual.h:
 

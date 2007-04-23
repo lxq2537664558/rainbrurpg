@@ -31,14 +31,15 @@
 RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port) 
   :QThread() {
 
-  transferMode=FTM_PASSIVE;
+  transferMode=FTM_ACTIVE;
   transferType=FTT_ASCII;
 
   this->port=port;
   currentDirectory="/home/mouse/programmation/rainbrurpg/";
-
+  QDir::setCurrent(currentDirectory);
   descriptor=1;
   server=new QTcpServer();
+  server->listen( QHostAddress::Any, port );
 
   connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
 
@@ -94,65 +95,15 @@ changeHost(const QString& host,int port){
   s+=s2;
   hostPort=port;
 
+
+  this->port=port;
+  server->listen( QHostAddress::Any, port );
+
   //  server->listen( QHostAddress(host), port );
   emit(log(s));
 
 }
 
-/** Send the packet for the LS command
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
-  emit(log("Sending LS result"));
-
-  QTcpSocket sock;
-
-  if (sock.state()==QAbstractSocket::ConnectedState){
-    sock.disconnectFromHost();
-  }
-
-  bool b=sock.setSocketDescriptor(++descriptor, 
-				  QAbstractSocket::UnconnectedState, 
-				  QIODevice::WriteOnly);
-
-  if (b){
-    cout << "Socket descriptor accepted" << endl;
-  }
-  else{
-    cout << "Socket descriptor refused" << endl;
-
-  }
-
-  sock.connectToHost(hostAdress, hostPort );
-  connect (&sock, SIGNAL(error ( QAbstractSocket::SocketError )),
-	   this, SLOT(error ( QAbstractSocket::SocketError )));
-
-
-    cout << "Waiting for connection" << endl;
-  if (sock.waitForConnected(3000)){
-    cout << "Connection opened" << endl;
-    lsResult();
-    int rep=sock.write(packetData.toLatin1());
-    if (rep==-1){
-      cout << "AN ERROR OCCURED" << endl;
-    }
-    cout << "Waiting for writing bytes" << endl;
-
-    if (sock.waitForBytesWritten(3000)){
-      emit(log("Transfer channel closed"));
-      emit(transferComplete());
-      sock.disconnectFromHost();
-      cout << "Transfer complete" << endl;
-
-    }
-  }
-  else{
-    cout << "Waiting for writing bytes" << endl;
-    qDebug(sock.errorString().toLatin1());
-  }
-
-  qDebug(sock.peerName().toLatin1()); 
-}
 
 /** A slot called is an error occured in the current socket
   *
@@ -294,4 +245,184 @@ filePermissions(bool r,bool w,bool x){
   if (x) s+="x";
   else   s+="-";
   return s;
+}
+
+/** Send the packet for the LS command
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
+  emit(log("Sending LS result"));
+
+  QTcpSocket sock;
+  if (waitForConnection(&sock)){
+    lsResult();
+    int rep=sock.write(packetData.toLatin1());
+    if (rep==-1){
+      cout << "AN ERROR OCCURED" << endl;
+    }
+    cout << "Waiting for writing bytes" << endl;
+
+    if (sock.waitForBytesWritten(3000)){
+      emit(log("Transfer channel closed"));
+      emit(transferComplete());
+      sock.disconnectFromHost();
+      cout << "Transfer complete" << endl;
+
+    }
+  }
+}
+
+/** Wait for an active connection
+  *
+  * \param sock The socket used
+  *
+  * \return \c true if the connection is successfull, \c false if an
+  *         error occured
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpTransfer::
+waitForActiveConnection(QTcpSocket* sock){
+
+  if (sock->state()==QAbstractSocket::ConnectedState){
+    sock->disconnectFromHost();
+  }
+
+  bool b=sock->setSocketDescriptor(++descriptor, 
+				  QAbstractSocket::UnconnectedState, 
+				  QIODevice::WriteOnly);
+
+  if (b){
+    cout << "Socket descriptor accepted" << endl;
+  }
+  else{
+    cout << "Socket descriptor refused" << endl;
+  }
+
+  sock->connectToHost(hostAdress, hostPort );
+  connect (sock, SIGNAL(error ( QAbstractSocket::SocketError )),
+	   this, SLOT(error ( QAbstractSocket::SocketError )));
+
+
+    cout << "Waiting for connection" << endl;
+  if (sock->waitForConnected(3000)){
+    cout << "Connection opened" << endl;
+    return true;
+  }
+  else{
+    cout << "Waiting for writing bytes" << endl;
+    qDebug(sock->errorString().toLatin1());
+
+    return false;
+  }
+}
+
+/** Wait for a passive connection
+  *
+  * \param sock The socket used
+  *
+  * \return \c true if the connection is successfull, \c false if an
+  *         error occured
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpTransfer::
+waitForPassiveConnection(QTcpSocket* sock){
+
+  cout << "WaitForActiveConnection called" << endl;
+}
+
+/** A PASV command received
+  *
+  * The PASV command is used to switch the server mode between
+  * Active and Passive modes.
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::commandPASV(){
+  if (transferMode==FTM_PASSIVE){
+    transferMode=FTM_ACTIVE;
+  }
+  else{
+    transferMode==FTM_PASSIVE;
+  }
+
+  QString s("Switching to ");
+  if (transferMode==FTM_PASSIVE){
+    s+="PASSIVE";
+  }
+  else{
+    s+="ACTIVE";
+  }
+  s+=" mode";
+  emit(log(s));
+}
+
+/** Wait for an active or passive connection
+  *
+  * \param sock The socket used
+  *
+  * \return \c true if the connection is successfull, \c false if an
+  *         error occured
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpTransfer::
+waitForConnection(QTcpSocket* sock){
+  if (transferMode==FTM_PASSIVE){
+    return waitForPassiveConnection(sock);
+  }
+  else{
+    return waitForActiveConnection(sock);
+  }
+}
+
+/** A file is requested by the host
+  *
+  * \param filename The filename
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::
+commandRETR(const QString& filename){
+
+  QString s("Sending file ");
+  s+=filename;
+  emit(log(s));
+
+  const char* aze=filename.toLatin1();
+  const char* aze2=QDir::currentPath().toLatin1();
+
+  cout << "Opening file :"<< aze << " in "<< aze2 <<endl;
+
+  QFile f(filename);
+  if(f.open(QIODevice::ReadOnly)){
+
+    QTcpSocket sock;
+    if (waitForConnection(&sock)){
+      emit(startTransferFile(filename, f.size()));
+      
+      int rep=sock.write(f.read(MAX_READ_LENGTH));
+      if (rep==-1){
+	cout << "AN ERROR OCCURED" << endl;
+      }
+      cout << "Waiting for writing bytes" << endl;
+      
+      if (sock.waitForBytesWritten(3000)){
+	emit(log("Transfer channel closed"));
+	emit(transferComplete());
+	sock.disconnectFromHost();
+	cout << "Transfer complete" << endl;
+	
+      }
+    }
+  }
+  else{
+    emit(log("An error occured during opening file :"));
+    QFile::FileError fe=f.error();
+
+    QString feText;
+    if (fe==QFile::OpenError){
+      feText=("5 The file could not be opened.");
+    }
+    else{
+      feText.setNum(fe);
+    }
+    emit(log(feText));
+  }
 }

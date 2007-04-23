@@ -34,8 +34,12 @@
 #include <QtNetwork/QTcpSocket>
 #include <QDir>
 #include <QDateTime>
+#include <QFile>
+
 
 #include <iostream>
+
+#define MAX_READ_LENGTH 1024
 
 using namespace std;
 
@@ -83,10 +87,14 @@ namespace RainbruRPG{
 	void log(const QString&);
 	/** A signal emited when the transfer is complete */
 	void transferComplete();
+	/* A signal emitted when a transfer starts */
+        void startTransferFile(const QString&, qint64);
 
       public slots:
 	void changeHost(const QString&, int);
 	void commandLIST();
+	void commandPASV();
+	void commandRETR(const QString&);
 
       private slots:
 	void newConnection();
@@ -97,7 +105,12 @@ namespace RainbruRPG{
 	QString fileSizeToString(qint64);
 	QString filePermissions(bool,bool,bool);
 
-	/** The listening port */
+	bool waitForActiveConnection(QTcpSocket*);
+	bool waitForPassiveConnection(QTcpSocket*);
+
+	bool waitForConnection(QTcpSocket*);
+
+	/** The listening port used in passive mode */
 	quint16 port;
 	/** The TCP server instance */
 	QTcpServer* server;
@@ -108,9 +121,9 @@ namespace RainbruRPG{
 	/** The current working directory */
 	QString currentDirectory;
 
-	/** The host adress */
+	/** The host adress used in active mode */
 	QString hostAdress;
-	/** The host port */
+	/** The host port used in active mode */
 	int hostPort;
 
 	/** The data of the packet that will be sent */

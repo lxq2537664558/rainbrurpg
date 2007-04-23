@@ -505,7 +505,8 @@ moc_mainwindow.o moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
   ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
   ../common/tidentreturn.h ../common/globaluri.h ftptransfer.h \
   /usr/include/qt4/QtCore/QDir /usr/include/qt4/QtCore/QDateTime \
-  transfervisual.h /usr/include/qt4/QtCore/QString
+  /usr/include/qt4/QtCore/QFile transfervisual.h \
+  /usr/include/qt4/QtCore/QString
 
 mainwindow.h:
 
@@ -1924,6 +1925,8 @@ ftptransfer.h:
 /usr/include/qt4/QtCore/QDir:
 
 /usr/include/qt4/QtCore/QDateTime:
+
+/usr/include/qt4/QtCore/QFile:
 
 transfervisual.h:
 
