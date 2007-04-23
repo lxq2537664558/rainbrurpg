@@ -202,8 +202,10 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 	}
 	else if (s.contains("RETR")){
-	  QStringList list1 = read.split(" ");
+	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
+	  h1.chop(2);
+	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
 	  emit(log(l));
@@ -245,7 +247,7 @@ void RainbruRPG::Network::Ftp::FtpControl::startTransferFile(const QString& file
   s+=filename;
   s+=" (";
   s+=s2;
-  s+=")\r\n";
+  s+=" bytes)\r\n";
 
   socket1->write(s.toLatin1());
 

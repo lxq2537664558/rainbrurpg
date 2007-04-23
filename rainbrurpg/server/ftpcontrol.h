@@ -84,6 +84,7 @@ namespace RainbruRPG{
 	/** The current FTP directory */
 	QString currentDirectory;
 
+	/** Account list used in user log in verification */
 	xmlAccountList accountList;
       };
     }

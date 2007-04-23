@@ -12,7 +12,7 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP Server
-- RETR command implementation
+- STOR command implementation
 - Ls is actually active, implement it passive
 - Se renseigner sur le port triggering
    A transfered byte is always 8-bit lenght
@@ -142,6 +142,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-129
+- RETR command implementation started
 - Doxygen documentation
 - FTP server : LIST command implementation
 - PORT command implementation (with a given port)

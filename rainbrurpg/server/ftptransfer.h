@@ -87,7 +87,7 @@ namespace RainbruRPG{
 	void log(const QString&);
 	/** A signal emited when the transfer is complete */
 	void transferComplete();
-	/* A signal emitted when a transfer starts */
+	/** A signal emitted when a transfer starts */
         void startTransferFile(const QString&, qint64);
 
       public slots:

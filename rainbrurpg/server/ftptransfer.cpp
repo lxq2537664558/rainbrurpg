@@ -387,29 +387,38 @@ commandRETR(const QString& filename){
 
   const char* aze=filename.toLatin1();
   const char* aze2=QDir::currentPath().toLatin1();
+  cout << "Opening file '"<< aze << "' in "<< aze2 <<endl;
 
-  cout << "Opening file :"<< aze << " in "<< aze2 <<endl;
+  QDir a(currentDirectory);
+  QFile f(a.filePath(filename));
 
-  QFile f(filename);
   if(f.open(QIODevice::ReadOnly)){
 
     QTcpSocket sock;
     if (waitForConnection(&sock)){
       emit(startTransferFile(filename, f.size()));
-      
-      int rep=sock.write(f.read(MAX_READ_LENGTH));
-      if (rep==-1){
-	cout << "AN ERROR OCCURED" << endl;
-      }
-      cout << "Waiting for writing bytes" << endl;
-      
-      if (sock.waitForBytesWritten(3000)){
-	emit(log("Transfer channel closed"));
-	emit(transferComplete());
-	sock.disconnectFromHost();
-	cout << "Transfer complete" << endl;
+      int rep=0;
+
+      while (!f.atEnd()){
+	rep=sock.write(f.read(MAX_READ_LENGTH));
+	if (rep==-1){
+	  cout << "AN ERROR OCCURED" << endl;
+	  break;
+	}
+	else{
+	  cout << "Writing "<< rep << " bytes" << endl;
 	
+	  sock.waitForBytesWritten(3000);
+	}
       }
+
+      // Transfer complete
+      emit(log("Transfer channel closed"));
+      emit(transferComplete());
+      sock.disconnectFromHost();
+      cout << "Transfer complete" << endl;
+
+
     }
   }
   else{
