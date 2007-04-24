@@ -89,12 +89,15 @@ namespace RainbruRPG{
 	void transferComplete();
 	/** A signal emitted when a transfer starts */
         void startTransferFile(const QString&, qint64);
+	/** A signal emitted when we wait the transfer to starts */
+        void waitTransferFile(const QString&);
 
       public slots:
 	void changeHost(const QString&, int);
 	void commandLIST();
 	void commandPASV();
 	void commandRETR(const QString&);
+	void commandSTOR(const QString&);
 
       private slots:
 	void newConnection();

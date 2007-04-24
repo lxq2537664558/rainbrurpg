@@ -198,7 +198,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  qDebug(h2.toLatin1());
 	  cout << "new port : " << i << endl;
 	  emit(transferListeningPort(h2,i));
-	  tcpSocket->write("225 Transfer channel opened.\r\n");
+	  tcpSocket->write("200 Port command succeeded.\r\n");
 
 	}
 	else if (s.contains("RETR")){
@@ -210,6 +210,16 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  l+=h1;
 	  emit(log(l));
 	  emit(commandRETR(h1));
+	}
+	else if (s.contains("STOR")){
+	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
+	  QString h1=list1.at(1);
+	  h1.chop(2);
+	  h1=h1.simplified();
+	  QString l("Requesting file ");
+	  l+=h1;
+	  emit(log(l));
+	  emit(commandSTOR(h1));
 	}
 	else{
 	  //	std::string s20(s.toLatin1());
@@ -251,4 +261,20 @@ void RainbruRPG::Network::Ftp::FtpControl::startTransferFile(const QString& file
 
   socket1->write(s.toLatin1());
 
+}
+
+/** A slot called when the transfer channel is waiting for the given file
+  *
+  * \param fn The filename of the file we are waiting
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpControl::waitTransferFile(const QString& fn){
+  cout << "waitTransferFile called" << endl;
+
+  QString s("150 Opening ASCII mode data connection for ");
+  s+=fn;
+  s+="\r\n";
+
+  socket1->write(s.toLatin1());
+  socket1->flush();
 }

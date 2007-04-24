@@ -23,6 +23,8 @@
 
 #include "ftptransfer.h"
 
+#include <logger.h>
+
 /** The constructor
   *
   * \param port The listening port
@@ -110,7 +112,29 @@ changeHost(const QString& host,int port){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 error ( QAbstractSocket::SocketError socketError ){
-  cout << "AN ERROR OCCURED" << endl;
+  const char* msg;
+
+  LOGE( "A socket error occured ");
+
+
+  if (socketError==0){
+    msg="The connection was refused by the peer (or timed out)";
+    LOGCATS("error message : " );
+    LOGCATS( msg );
+    LOGCAT();
+  }
+  else if (socketError==1){
+    msg="The remote host closed the connection";
+    LOGCATS("error message : " );
+    LOGCATS( msg );
+    LOGCAT();
+  }
+  else{
+    LOGCATS("error code : " );
+    LOGCATI(socketError);
+    LOGCAT();
+
+  }
 }
 
 /** Creates the \c ls command result 
@@ -258,7 +282,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
     lsResult();
     int rep=sock.write(packetData.toLatin1());
     if (rep==-1){
-      cout << "AN ERROR OCCURED" << endl;
+      cout << "AN ERROR OCCURED DURING LIST COMMAND" << endl;
     }
     cout << "Waiting for writing bytes" << endl;
 
@@ -288,8 +312,7 @@ waitForActiveConnection(QTcpSocket* sock){
   }
 
   bool b=sock->setSocketDescriptor(++descriptor, 
-				  QAbstractSocket::UnconnectedState, 
-				  QIODevice::WriteOnly);
+				  QAbstractSocket::UnconnectedState);
 
   if (b){
     cout << "Socket descriptor accepted" << endl;
@@ -402,7 +425,7 @@ commandRETR(const QString& filename){
       while (!f.atEnd()){
 	rep=sock.write(f.read(MAX_READ_LENGTH));
 	if (rep==-1){
-	  cout << "AN ERROR OCCURED" << endl;
+	  cout << "AN ERROR OCCURED DURING RETR" << endl;
 	  break;
 	}
 	else{
@@ -417,7 +440,7 @@ commandRETR(const QString& filename){
       emit(transferComplete());
       sock.disconnectFromHost();
       cout << "Transfer complete" << endl;
-
+      f.close();
 
     }
   }
@@ -434,4 +457,74 @@ commandRETR(const QString& filename){
     }
     emit(log(feText));
   }
+}
+
+/** A file is sent by the host
+  *
+  * \param filename The filename to create
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::
+commandSTOR(const QString& filename){
+  QString s("Receiving file ");
+  s+=filename;
+  emit(log(s));
+
+  QDir a(currentDirectory);
+  if (a.exists(filename)){
+    cout << "The file already exist" << endl;
+    a.remove(filename);
+  }
+
+  QFile f(a.filePath(filename));
+    
+    if(f.open(QIODevice::WriteOnly|QIODevice::Append)){
+      
+      QTcpSocket sock;
+      if (waitForConnection(&sock)){
+	emit(waitTransferFile(filename));
+	int rep=0;
+	
+	//	while(sock.state()==QAbstractSocket::ConnectedState&&(rep!=-1)){
+	LOGI("waitForReadyRead called");
+	  sock.waitForReadyRead(30000);
+	LOGI("reading packet...");
+	  QByteArray ba=sock.readAll();
+	LOGI("Packet read");
+
+	  rep=f.write(ba);
+	  if (rep==-1){
+	    cout << "AN ERROR OCCURED DURING WRITING "<< endl;
+	    qDebug("ErrorString :"+f.errorString().toLatin1());
+	    //	    break;
+	  }
+	  else{
+	    cout << "Writing "<< rep << " bytes" << endl;
+	  }
+	  //	}
+	      
+	// Transfer complete
+	emit(log("Transfer channel closed"));
+	emit(transferComplete());
+	sock.disconnectFromHost();
+	cout << "Transfer complete" << endl;
+	f.close();
+	
+      }
+    }
+    else{
+      emit(log("An error occured during opening file :"));
+      QFile::FileError fe=f.error();
+      
+      QString feText;
+      if (fe==QFile::OpenError){
+	feText=("5 The file could not be opened.");
+      }
+      else{
+	feText.setNum(fe);
+      }
+      emit(log(feText));
+    }
+  
+
 }

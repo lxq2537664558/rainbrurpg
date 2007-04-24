@@ -74,9 +74,15 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   connect(control, SIGNAL(commandRETR(const QString&)), 
 	  transfer, SLOT(commandRETR(const QString&)));
 
+  connect(control, SIGNAL(commandSTOR(const QString&)), 
+	  transfer, SLOT(commandSTOR(const QString&)));
+
   // transfer control
   connect(transfer, SIGNAL(startTransferFile(const QString&, qint64)), 
 	  control, SLOT(startTransferFile(const QString&, qint64)));
+
+  connect(transfer, SIGNAL(waitTransferFile(const QString&)), 
+	  control, SLOT(waitTransferFile(const QString&)));
 
   connect(transfer, SIGNAL(transferComplete()), 
 	  control, SLOT(transferComplete()));

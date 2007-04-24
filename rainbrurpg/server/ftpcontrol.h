@@ -64,9 +64,13 @@ namespace RainbruRPG{
 	void commandPASV();
 	/** A signal emitted when a file is retrieved */
 	void commandRETR(const QString&);
+	/** A signal emitted when a file is sent */
+	void commandSTOR(const QString&);
+
       public slots:
 	void transferComplete();
         void startTransferFile(const QString&, qint64);
+        void waitTransferFile(const QString&);
 
       private slots:
 	void newConnection();

@@ -12,12 +12,11 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP Server
-- STOR command implementation
+- STOR make a error log entry is the sent file is 0 bytes size
+- Create a treeviewItem for each transfer
+- Update the treeview item for each packet wrote or received
 - Ls is actually active, implement it passive
 - Se renseigner sur le port triggering
-   A transfered byte is always 8-bit lenght
-   The end of the transfer is signaled by a EOF sequence or when the channel
-     is closed
    We can take a pair Ip/filename as a key for downloads
 Minimale
 Type - ASCII Non-print
@@ -142,6 +141,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-129
+- STOR command implementation
 - RETR command implementation started
 - Doxygen documentation
 - FTP server : LIST command implementation
