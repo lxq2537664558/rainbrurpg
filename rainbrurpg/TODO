@@ -10,6 +10,10 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curlaccounttoggleblacklist
    curldefaultwritefunction
 
+o [mouse] FTP client
+- Text widget for IP adress and server port
+- Connect button
+
 o [mouse] FTP Server
 - During a transfer, the GUI is blocked
 - The control channel only accepts one client

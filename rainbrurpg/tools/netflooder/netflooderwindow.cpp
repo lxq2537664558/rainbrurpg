@@ -91,7 +91,7 @@ RainbruRPG::Gui::NetFlooderWindow::NetFlooderWindow(FXApp * a)
 		  FX::LAYOUT_RIGHT| FX::LAYOUT_TOP);
 
 
-  // Matric containing Admin info
+  // Matrix containing Admin info
   FXHorizontalFrame* frMatrix=new FXHorizontalFrame(frame, LAYOUT_FILL_X);
 
   // Admin info

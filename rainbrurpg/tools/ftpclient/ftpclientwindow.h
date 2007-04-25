@@ -30,10 +30,6 @@
 #include <fox-1.6/fx.h>
 #include <sigc++/sigc++.h>
 
-#include "enetflooderclient.h"
-#include "waitingpanel.h"
-#include "floodpanel.h"
-
 namespace RainbruRPG{
   namespace Gui{
 
@@ -58,14 +54,15 @@ namespace RainbruRPG{
       enum{
 	/** Not Yet Implemented Identifier */
 	ID_NYI=FXMainWindow::ID_LAST,
-	/** The Not yet implemented identifier */
-	ID_NYI,
+	/** A new command was entered */
+	ID_NEW_CMD,
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
 	ID_LAST
       };
  
       long onNotYetImplemented(FXObject *,FXSelector,void*);
- 
+      long treatNewCommand(FXObject *,FXSelector,void*);
+
     private:
       /** Required or Undefined references */
       FtpClientWindow(){};
@@ -74,6 +71,10 @@ namespace RainbruRPG{
       /** Required or Undefined references */
       FtpClientWindow &operator=(const FtpClientWindow&);
 
+      /** The file menu item */
+      FXMenuPane*filemenu;
+      /** The widget where we treat commands */
+      FXText* fxText;
     }; 
   }
 }
