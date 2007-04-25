@@ -178,7 +178,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = transmsg xident netflooder
+SUBDIRS = transmsg xident netflooder ftpclient
 all: all-recursive
 
 .SUFFIXES:

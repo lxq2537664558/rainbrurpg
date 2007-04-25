@@ -138,6 +138,7 @@ AC_CONFIG_FILES([Makefile			\
 	  tools/transmsg/Makefile		\
 	  tools/xident/Makefile			\
 	  tools/netflooder/Makefile		\
+	  tools/ftpclient/Makefile		\
 	  \
 	  config/Makefile			\
 	  data/Makefile				\

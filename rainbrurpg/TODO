@@ -116,16 +116,8 @@ STRU - File
 * Divers
 - xmlPlayerList inherits CurlGetFile
   Now, it simply uses it. It must do like xmlServerList, inherits it.
-- Imaginer un Flooder reseau
-  C'est un petit client qui envoie des demandes en continue, comme
-  pour simuler des clients. On peut alors faire des statistiques.
-- Tenter le portage de skyworks
-  Page de telechargement des sources http://www.markmark.net/SkyWorks/
-  Ca s'annonce difficile car le programme utilise des extension OpenGL
-  non standard
 - modifpersoattrb.php ne teste pas si les champs sont vides, 
   Resultat les champs sont mis a vide.
-- ercreateperso utilise CurlPersoHeaderAdd et CurlPersoModifAttrb
 - CurlSubmitForm::computePostedData est-il utilise?
 - Un fichier adminmsg.xml contenant :
 	- Un message de l'admin au joueur
@@ -142,6 +134,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-130
+- tools/ftpclient skeleton
 - Implementation of the binary mode
 
 * v 0.0.4-129

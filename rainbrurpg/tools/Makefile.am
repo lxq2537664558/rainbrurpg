@@ -1,1 +1,1 @@
-SUBDIRS= transmsg xident netflooder
+SUBDIRS= transmsg xident netflooder ftpclient

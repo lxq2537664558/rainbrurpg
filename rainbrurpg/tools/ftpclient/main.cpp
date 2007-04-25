@@ -20,17 +20,22 @@
  *
  */
 
+/* Modifications :
+ * - 25 apr 2007 : Starting implementation
+ *
+ */
+
 #include <iostream>
 #include <logger.h>
 #include <version.h>
 #include <fox-1.6/fx.h>
 
-#include "netflooderwindow.h"
+#include "ftpclientwindow.h"
 
 using namespace FX;
 using namespace RainbruRPG::Gui;
 
-/** xIdent main entry
+/** ftpClient main entry
   *
   */
 int main(int argc, char **argv){
@@ -40,7 +45,7 @@ int main(int argc, char **argv){
   // The true should cause a segfault if omitted
   application.init(argc,argv, true);
   
-  new NetFlooderWindow(&application);
+  new FtpClientWindow(&application);
   
   application.create();
 
