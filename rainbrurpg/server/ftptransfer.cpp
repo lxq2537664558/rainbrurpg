@@ -37,7 +37,7 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   transferType=FTT_ASCII;
 
   this->port=port;
-  currentDirectory="/home/mouse/programmation/rainbrurpg/";
+  currentDirectory="/home/mouse/servertest/";
   QDir::setCurrent(currentDirectory);
   descriptor=1;
   server=new QTcpServer();
@@ -414,14 +414,25 @@ commandRETR(const QString& filename){
 
   QDir a(currentDirectory);
   QFile f(a.filePath(filename));
+  QIODevice::OpenMode om;
 
-  if(f.open(QIODevice::ReadOnly)){
+  // We are in Binary mode
+  if (transferType==FTT_BINARY){
+    om=QIODevice::ReadOnly;
+  }
+  // We are in ASCII mode
+  else if (transferType==FTT_ASCII){
+    om=QIODevice::ReadOnly|QIODevice::Text;
+  }
 
+
+  if(f.open(om)){
+    
     QTcpSocket sock;
     if (waitForConnection(&sock)){
       emit(startTransferFile(filename, f.size()));
       int rep=0;
-
+      
       while (!f.atEnd()){
 	rep=sock.write(f.read(MAX_READ_LENGTH));
 	if (rep==-1){
@@ -430,11 +441,11 @@ commandRETR(const QString& filename){
 	}
 	else{
 	  cout << "Writing "<< rep << " bytes" << endl;
-	
+	  
 	  sock.waitForBytesWritten(3000);
 	}
       }
-
+      
       // Transfer complete
       emit(log("Transfer channel closed"));
       emit(transferComplete());
@@ -459,6 +470,22 @@ commandRETR(const QString& filename){
   }
 }
 
+/** Switch to the Binary transfer type
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::switchToBinaryType(){
+  emit(log("Transfer type set to BINARY"));
+  transferType=FTT_BINARY;
+}
+
+/** Switch to the Ascii transfer type
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::switchToAsciiType(){
+  emit(log("Transfer type set to ASCII"));
+  transferType=FTT_ASCII;
+}
+
 /** A file is sent by the host
   *
   * \param filename The filename to create
@@ -478,53 +505,63 @@ commandSTOR(const QString& filename){
 
   QFile f(a.filePath(filename));
     
-    if(f.open(QIODevice::WriteOnly|QIODevice::Append)){
+  QIODevice::OpenMode om;
+
+  // We are in Binary mode
+  if (transferType==FTT_BINARY){
+    om=QIODevice::WriteOnly|QIODevice::Append;
+  }
+  // We are in ASCII mode
+  else if (transferType==FTT_ASCII){
+    om=QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append;
+  }
+
+  if(f.open(om)){
       
-      QTcpSocket sock;
-      if (waitForConnection(&sock)){
-	emit(waitTransferFile(filename));
-	int rep=0;
+    QTcpSocket sock;
+    if (waitForConnection(&sock)){
+      emit(waitTransferFile(filename));
+      int rep=0;
 	
-	//	while(sock.state()==QAbstractSocket::ConnectedState&&(rep!=-1)){
+      while(sock.state()==QAbstractSocket::ConnectedState&&(rep!=-1)){
 	LOGI("waitForReadyRead called");
-	  sock.waitForReadyRead(30000);
+	sock.waitForReadyRead(30000);
 	LOGI("reading packet...");
-	  QByteArray ba=sock.readAll();
+	QByteArray ba=sock.readAll();
 	LOGI("Packet read");
 
-	  rep=f.write(ba);
-	  if (rep==-1){
-	    cout << "AN ERROR OCCURED DURING WRITING "<< endl;
-	    qDebug("ErrorString :"+f.errorString().toLatin1());
-	    //	    break;
-	  }
-	  else{
-	    cout << "Writing "<< rep << " bytes" << endl;
-	  }
-	  //	}
-	      
-	// Transfer complete
-	emit(log("Transfer channel closed"));
-	emit(transferComplete());
-	sock.disconnectFromHost();
-	cout << "Transfer complete" << endl;
-	f.close();
-	
+	rep=f.write(ba);
+	if (rep==-1){
+	  cout << "AN ERROR OCCURED DURING WRITING "<< endl;
+	  qDebug("ErrorString :"+f.errorString().toLatin1());
+	  break;
+	}
+	else{
+	  cout << "Writing "<< rep << " bytes" << endl;
+	}
       }
+      
+      // Transfer complete
+      emit(log("Transfer channel closed"));
+      emit(transferComplete());
+      sock.disconnectFromHost();
+      cout << "Transfer complete" << endl;
+      f.close();
+      
+    }
+  }
+  else{
+    emit(log("An error occured during opening file :"));
+    QFile::FileError fe=f.error();
+    
+    QString feText;
+    if (fe==QFile::OpenError){
+      feText=("5 The file could not be opened.");
     }
     else{
-      emit(log("An error occured during opening file :"));
-      QFile::FileError fe=f.error();
-      
-      QString feText;
-      if (fe==QFile::OpenError){
-	feText=("5 The file could not be opened.");
-      }
-      else{
-	feText.setNum(fe);
-      }
-      emit(log(feText));
+      feText.setNum(fe);
     }
-  
-
+    emit(log(feText));
+  }
 }
+

@@ -66,6 +66,10 @@ namespace RainbruRPG{
 	void commandRETR(const QString&);
 	/** A signal emitted when a file is sent */
 	void commandSTOR(const QString&);
+	/** A signal emitted when BINARY transfer type is on */
+	void switchToBinaryType();
+	/** A signal emitted when ASCII transfer type is on */
+	void switchToAsciiType();
 
       public slots:
 	void transferComplete();

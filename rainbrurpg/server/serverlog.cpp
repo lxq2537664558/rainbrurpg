@@ -39,6 +39,8 @@
 RainbruRPG::Server::ServerLog::ServerLog(QWidget* parent)
   :QWidget(parent)
 {
+  setWindowTitle(tr("Server log"));
+
   // The main layout
   QVBoxLayout* vb1=new QVBoxLayout();
   this->setLayout(vb1);

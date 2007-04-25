@@ -30,6 +30,7 @@
 
 #include <QThread>
 #include <QDataStream>
+#include <QTextStream>
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
 #include <QDir>
@@ -98,6 +99,8 @@ namespace RainbruRPG{
 	void commandPASV();
 	void commandRETR(const QString&);
 	void commandSTOR(const QString&);
+	void switchToBinaryType();
+	void switchToAsciiType();
 
       private slots:
 	void newConnection();

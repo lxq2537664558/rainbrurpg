@@ -95,10 +95,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
       in.setVersion(QDataStream::Qt_4_0);
       in.setDevice(tcpSocket);
 
-      //      QString s;
-      //      in >> s;
-      //      qDebug(s.toLatin1());  
-
       char *c;
       c=(char*)malloc(ba*sizeof(char));
       int res=in.readRawData( c, ba );
@@ -220,6 +216,14 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  l+=h1;
 	  emit(log(l));
 	  emit(commandSTOR(h1));
+	}
+	else if (s.contains("TYPE I")){
+	  emit(switchToBinaryType());
+	  tcpSocket->write("200 Type set to BINARY.\r\n");
+	}
+	else if (s.contains("TYPE A")){
+	  emit(switchToAsciiType());
+	  tcpSocket->write("200 Type set to ASCII.\r\n");
 	}
 	else{
 	  //	std::string s20(s.toLatin1());
