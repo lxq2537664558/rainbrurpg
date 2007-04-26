@@ -30,6 +30,9 @@
 #include <fox-1.6/fx.h>
 #include <sigc++/sigc++.h>
 
+#include <gnet.h>
+#include <logger.h>
+
 namespace RainbruRPG{
   namespace Gui{
 
@@ -56,14 +59,19 @@ namespace RainbruRPG{
 	ID_NYI=FXMainWindow::ID_LAST,
 	/** A new command was entered */
 	ID_NEW_CMD,
+	/** The connect button identifier */
+	ID_CONN,
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
 	ID_LAST
       };
  
       long onNotYetImplemented(FXObject *,FXSelector,void*);
       long treatNewCommand(FXObject *,FXSelector,void*);
+      long onConnect(FXObject *,FXSelector,void*);
 
     private:
+      void logMessage(FXString);
+
       /** Required or Undefined references */
       FtpClientWindow(){};
       /** Required or Undefined references */
@@ -75,6 +83,11 @@ namespace RainbruRPG{
       FXMenuPane*filemenu;
       /** The widget where we treat commands */
       FXText* fxText;
+      /** The command text field */
+      FXTextField* fxTextField;
+
+      FXTextField* tfHostIp;
+      FXTextField* tfHostPort;
     }; 
   }
 }

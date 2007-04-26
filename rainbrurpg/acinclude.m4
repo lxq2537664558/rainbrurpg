@@ -422,7 +422,7 @@ AC_DEFUN([RB_CHECK_LIBSIG],
 
 dnl Tests the libgd library and headers
 dnl
-AC_DEFUN([RB_CHECK_LIBSIG],
+AC_DEFUN([RB_CHECK_LIBGD],
 [
   AC_CHECK_LIB(gd, main, [], [
     echo "Error! You need to have libgd installed."
@@ -432,5 +432,19 @@ AC_DEFUN([RB_CHECK_LIBSIG],
      echo "Error! Cannot find the libgd headers."
      exit -1
    ])
+])
+
+dnl Tests the libgd library and headers
+dnl
+AC_DEFUN([RB_CHECK_LIBGNET],
+[
+  AC_CHECK_LIB(gnet-2.0, main, [], [
+    echo "Error! You need to have GNet installed."
+    exit -1
+  ])
+dnl  AC_CHECK_HEADER([gnet-2.0/tcp.h], [], [
+dnl     echo "Error! Cannot find the GNet headers."
+dnl     exit -1
+dnl   ])
 ])
 

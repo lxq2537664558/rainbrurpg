@@ -30,6 +30,8 @@
 #include <version.h>
 #include <fox-1.6/fx.h>
 
+#include <gnet.h>
+
 #include "ftpclientwindow.h"
 
 using namespace FX;
@@ -39,6 +41,8 @@ using namespace RainbruRPG::Gui;
   *
   */
 int main(int argc, char **argv){
+
+  gnet_init();
 
   FX::FXApp application("RainbruRPG","rainbruFreeFr");
   

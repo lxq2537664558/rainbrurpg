@@ -6707,7 +6707,7 @@ m4trace:acinclude.m4:415: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
     exit -1
   ])
 ])
-m4trace:acinclude.m4:425: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
+m4trace:acinclude.m4:425: -1- AC_DEFUN([RB_CHECK_LIBGD], [
   AC_CHECK_LIB(gd, main, [], [
     echo "Error! You need to have libgd installed."
     exit -1
@@ -6716,6 +6716,16 @@ m4trace:acinclude.m4:425: -1- AC_DEFUN([RB_CHECK_LIBSIG], [
      echo "Error! Cannot find the libgd headers."
      exit -1
    ])
+])
+m4trace:acinclude.m4:439: -1- AC_DEFUN([RB_CHECK_LIBGNET], [
+  AC_CHECK_LIB(gnet-2.0, main, [], [
+    echo "Error! You need to have GNet installed."
+    exit -1
+  ])
+dnl  AC_CHECK_HEADER([gnet-2.0/tcp.h], [], [
+dnl     echo "Error! Cannot find the GNet headers."
+dnl     exit -1
+dnl   ])
 ])
 m4trace:configure.in:3: -1- m4_pattern_forbid([^_?A[CHUM]_])
 m4trace:configure.in:3: -1- m4_pattern_forbid([_AC_])
@@ -9452,72 +9462,76 @@ m4trace:configure.in:93: -1- m4_pattern_allow([^HAVE_LIBENET$])
 m4trace:configure.in:94: -1- RB_CHECK_GLIB
 m4trace:configure.in:94: -1- m4_pattern_allow([^HAVE_LIBGLIB_2_0$])
 m4trace:configure.in:95: -1- RB_CHECK_LIBSIG
-m4trace:configure.in:95: -1- m4_pattern_allow([^HAVE_LIBGD$])
-m4trace:configure.in:102: -1- RB_OPTION_SERVER
-m4trace:configure.in:102: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
-You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:201: RB_OPTION_SERVER is expanded from...
-configure.in:102: the top level])
-m4trace:configure.in:102: -1- AM_CONDITIONAL([RB_OPTION_SERVER_FLAGS], [test x$server = xtrue])
-m4trace:configure.in:102: -1- m4_pattern_allow([^RB_OPTION_SERVER_FLAGS_TRUE$])
-m4trace:configure.in:102: -1- m4_pattern_allow([^RB_OPTION_SERVER_FLAGS_FALSE$])
-m4trace:configure.in:103: -1- RB_OPTION_TESTS
+m4trace:configure.in:95: -1- m4_pattern_allow([^HAVE_LIBSIGC_2_0$])
+m4trace:configure.in:96: -1- RB_CHECK_LIBGD
+m4trace:configure.in:96: -1- m4_pattern_allow([^HAVE_LIBGD$])
+m4trace:configure.in:97: -1- RB_CHECK_LIBGNET
+m4trace:configure.in:97: -1- m4_pattern_allow([^HAVE_LIBGNET_2_0$])
+m4trace:configure.in:103: -1- RB_OPTION_SERVER
 m4trace:configure.in:103: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:375: RB_OPTION_TESTS is expanded from...
+acinclude.m4:201: RB_OPTION_SERVER is expanded from...
 configure.in:103: the top level])
-m4trace:configure.in:103: -1- AM_CONDITIONAL([RB_OPTION_TESTS_FLAGS], [test x$tests = xtrue])
-m4trace:configure.in:103: -1- m4_pattern_allow([^RB_OPTION_TESTS_FLAGS_TRUE$])
-m4trace:configure.in:103: -1- m4_pattern_allow([^RB_OPTION_TESTS_FLAGS_FALSE$])
-m4trace:configure.in:104: -1- RB_OPTION_EDITOR
+m4trace:configure.in:103: -1- AM_CONDITIONAL([RB_OPTION_SERVER_FLAGS], [test x$server = xtrue])
+m4trace:configure.in:103: -1- m4_pattern_allow([^RB_OPTION_SERVER_FLAGS_TRUE$])
+m4trace:configure.in:103: -1- m4_pattern_allow([^RB_OPTION_SERVER_FLAGS_FALSE$])
+m4trace:configure.in:104: -1- RB_OPTION_TESTS
 m4trace:configure.in:104: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:230: RB_OPTION_EDITOR is expanded from...
+acinclude.m4:375: RB_OPTION_TESTS is expanded from...
 configure.in:104: the top level])
-m4trace:configure.in:104: -1- AM_CONDITIONAL([RB_OPTION_EDITOR_FLAGS], [test x$editor = xtrue])
-m4trace:configure.in:104: -1- m4_pattern_allow([^RB_OPTION_EDITOR_FLAGS_TRUE$])
-m4trace:configure.in:104: -1- m4_pattern_allow([^RB_OPTION_EDITOR_FLAGS_FALSE$])
-m4trace:configure.in:105: -1- RB_OPTION_TOOLS
+m4trace:configure.in:104: -1- AM_CONDITIONAL([RB_OPTION_TESTS_FLAGS], [test x$tests = xtrue])
+m4trace:configure.in:104: -1- m4_pattern_allow([^RB_OPTION_TESTS_FLAGS_TRUE$])
+m4trace:configure.in:104: -1- m4_pattern_allow([^RB_OPTION_TESTS_FLAGS_FALSE$])
+m4trace:configure.in:105: -1- RB_OPTION_EDITOR
 m4trace:configure.in:105: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:275: RB_OPTION_TOOLS is expanded from...
+acinclude.m4:230: RB_OPTION_EDITOR is expanded from...
 configure.in:105: the top level])
-m4trace:configure.in:105: -1- AM_CONDITIONAL([RB_OPTION_TOOLS_FLAGS], [test x$tools = xtrue])
-m4trace:configure.in:105: -1- m4_pattern_allow([^RB_OPTION_TOOLS_FLAGS_TRUE$])
-m4trace:configure.in:105: -1- m4_pattern_allow([^RB_OPTION_TOOLS_FLAGS_FALSE$])
-m4trace:configure.in:106: -1- RB_OPTION_ALL
+m4trace:configure.in:105: -1- AM_CONDITIONAL([RB_OPTION_EDITOR_FLAGS], [test x$editor = xtrue])
+m4trace:configure.in:105: -1- m4_pattern_allow([^RB_OPTION_EDITOR_FLAGS_TRUE$])
+m4trace:configure.in:105: -1- m4_pattern_allow([^RB_OPTION_EDITOR_FLAGS_FALSE$])
+m4trace:configure.in:106: -1- RB_OPTION_TOOLS
 m4trace:configure.in:106: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
-acinclude.m4:304: RB_OPTION_ALL is expanded from...
+acinclude.m4:275: RB_OPTION_TOOLS is expanded from...
 configure.in:106: the top level])
-m4trace:configure.in:106: -1- AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
-m4trace:configure.in:106: -1- m4_pattern_allow([^RB_OPTION_ALL_FLAGS_TRUE$])
-m4trace:configure.in:106: -1- m4_pattern_allow([^RB_OPTION_ALL_FLAGS_FALSE$])
-m4trace:configure.in:113: -1- m4_pattern_allow([^STDC_HEADERS$])
-m4trace:configure.in:116: -1- jm_CHECK_TYPE_STRUCT_UTIMBUF
-m4trace:configure.in:116: -1- m4_pattern_allow([^TIME_WITH_SYS_TIME$])
-m4trace:configure.in:116: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
+m4trace:configure.in:106: -1- AM_CONDITIONAL([RB_OPTION_TOOLS_FLAGS], [test x$tools = xtrue])
+m4trace:configure.in:106: -1- m4_pattern_allow([^RB_OPTION_TOOLS_FLAGS_TRUE$])
+m4trace:configure.in:106: -1- m4_pattern_allow([^RB_OPTION_TOOLS_FLAGS_FALSE$])
+m4trace:configure.in:107: -1- RB_OPTION_ALL
+m4trace:configure.in:107: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
+acinclude.m4:304: RB_OPTION_ALL is expanded from...
+configure.in:107: the top level])
+m4trace:configure.in:107: -1- AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
+m4trace:configure.in:107: -1- m4_pattern_allow([^RB_OPTION_ALL_FLAGS_TRUE$])
+m4trace:configure.in:107: -1- m4_pattern_allow([^RB_OPTION_ALL_FLAGS_FALSE$])
+m4trace:configure.in:114: -1- m4_pattern_allow([^STDC_HEADERS$])
+m4trace:configure.in:117: -1- jm_CHECK_TYPE_STRUCT_UTIMBUF
+m4trace:configure.in:117: -1- m4_pattern_allow([^TIME_WITH_SYS_TIME$])
+m4trace:configure.in:117: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:2367: AC_TRY_COMPILE is expanded from...
 ../../lib/m4sugar/m4sh.m4:516: AS_IF is expanded from...
 ../../lib/autoconf/general.m4:1898: AC_CACHE_VAL is expanded from...
 ../../lib/autoconf/general.m4:1911: AC_CACHE_CHECK is expanded from...
 acinclude.m4:9: jm_CHECK_TYPE_STRUCT_UTIMBUF is expanded from...
-configure.in:116: the top level])
-m4trace:configure.in:116: -1- m4_pattern_allow([^HAVE_STRUCT_UTIMBUF$])
-m4trace:configure.in:117: -1- m4_pattern_allow([^MAJOR_IN_MKDEV$])
-m4trace:configure.in:117: -1- m4_pattern_allow([^MAJOR_IN_SYSMACROS$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^HAVE_ALLOCA_H$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^HAVE_ALLOCA$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^ALLOCA$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^C_ALLOCA$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^CRAY_STACKSEG_END$])
-m4trace:configure.in:118: -1- m4_pattern_allow([^STACK_DIRECTION$])
-m4trace:configure.in:119: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
-m4trace:configure.in:120: -1- m4_pattern_allow([^HAVE_STRUCT_STAT_ST_BLOCKS$])
-m4trace:configure.in:120: -1- m4_pattern_allow([^HAVE_ST_BLOCKS$])
-m4trace:configure.in:120: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.in:121: -1- m4_pattern_allow([^CLOSEDIR_VOID$])
-m4trace:configure.in:177: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.in:177: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.in:177: -1- _AC_AM_CONFIG_HEADER_HOOK([$ac_file])
-m4trace:configure.in:177: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+configure.in:117: the top level])
+m4trace:configure.in:117: -1- m4_pattern_allow([^HAVE_STRUCT_UTIMBUF$])
+m4trace:configure.in:118: -1- m4_pattern_allow([^MAJOR_IN_MKDEV$])
+m4trace:configure.in:118: -1- m4_pattern_allow([^MAJOR_IN_SYSMACROS$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^HAVE_ALLOCA_H$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^HAVE_ALLOCA$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^ALLOCA$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^C_ALLOCA$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^CRAY_STACKSEG_END$])
+m4trace:configure.in:119: -1- m4_pattern_allow([^STACK_DIRECTION$])
+m4trace:configure.in:120: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
+m4trace:configure.in:121: -1- m4_pattern_allow([^HAVE_STRUCT_STAT_ST_BLOCKS$])
+m4trace:configure.in:121: -1- m4_pattern_allow([^HAVE_ST_BLOCKS$])
+m4trace:configure.in:121: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.in:122: -1- m4_pattern_allow([^CLOSEDIR_VOID$])
+m4trace:configure.in:178: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.in:178: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.in:178: -1- _AC_AM_CONFIG_HEADER_HOOK([$ac_file])
+m4trace:configure.in:178: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

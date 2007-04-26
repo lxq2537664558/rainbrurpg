@@ -6,13 +6,13 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 * delete oldXident
 
 * Unittest implementation
+- Try to connect the client using GNet
+   http://www.gnetlibrary.org
 - In this order
    curlaccounttoggleblacklist
    curldefaultwritefunction
 
 o [mouse] FTP client
-- Text widget for IP adress and server port
-- Connect button
 
 o [mouse] FTP Server
 - During a transfer, the GUI is blocked
@@ -138,6 +138,12 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-130
+- GNet basic connection
+- A connect button callback wich set text widgets enabled
+- Text widgets are disabled
+- GNet added to the dependencies
+- Text widget for IP adress and server port
+- Connect button
 - tools/ftpclient skeleton
 - Implementation of the binary mode
 

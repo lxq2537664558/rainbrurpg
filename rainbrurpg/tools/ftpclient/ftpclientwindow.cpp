@@ -23,7 +23,6 @@
 
 #include "ftpclientwindow.h"
 
-#include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
 FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
@@ -31,6 +30,8 @@ FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_NYI, RainbruRPG::Gui::FtpClientWindow::onNotYetImplemented),
 
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_NEW_CMD, RainbruRPG::Gui::FtpClientWindow::treatNewCommand),
+
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_CONN, RainbruRPG::Gui::FtpClientWindow::onConnect),
 
 };
 
@@ -65,16 +66,20 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   FXHorizontalFrame* frMatrix=new FXHorizontalFrame(frame, LAYOUT_FILL_X);
 
   // Admin info
-  FXLabel* labAdminName=new FXLabel(frMatrix, "Server IP :");
-  FXTextField* tfAdminName=new FXTextField (frMatrix, 20 );
-  FXLabel* labAdminPwd=new FXLabel(frMatrix, "port :");
-  FXTextField* tfAdminPwd=new FXTextField (frMatrix, 20 );
+  FXLabel* labIp=new FXLabel(frMatrix, "Server IP :");
+  tfHostIp=new FXTextField (frMatrix, 20 );
+  tfHostIp->setText("82.232.174.195");
+  FXLabel* labHostPort=new FXLabel(frMatrix, "port :");
+  tfHostPort=new FXTextField (frMatrix, 20 );
+  tfHostPort->setText("50002");
 
-  FXButton* btnConnect=new FXButton(frMatrix, "Connect" , NULL, this, ID_NYI);
+  FXButton* btnConnect=new FXButton(frMatrix, "Connect" , NULL, this, ID_CONN);
 
   // Command lines remenber
   fxText=new FXText(frame, this, ID_NYI, LAYOUT_FILL_X|LAYOUT_FILL_Y|FX::TEXT_READONLY);
-  FXTextField* fxTextField=new FXTextField(frame, 20, this, ID_NEW_CMD, LAYOUT_FILL_X);
+  fxText->disable();
+  fxTextField=new FXTextField(frame, 20, this, ID_NEW_CMD, LAYOUT_FILL_X);
+  fxTextField->disable();
 
 }
 
@@ -85,6 +90,11 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
 RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
   delete filemenu;
   delete fxText;
+  delete fxTextField;
+
+  delete tfHostIp;
+  delete tfHostPort;
+
 }
 
 
@@ -143,4 +153,42 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
   }
 
   return 1;
+}
+
+/** The connect button callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FtpClientWindow::
+onConnect(FXObject* o,FXSelector s,void* v){
+  FXString sIp=tfHostIp->getText();
+  FXString sPort=tfHostPort->getText();
+
+  GTcpSocket* socket=gnet_tcp_socket_connect(sIp.text(),
+                                             FXIntVal(sPort));
+
+  if (socket==NULL){
+    LOGE("Connection to FTP Host failed");
+    logMessage("Connection to FTP Host failed");
+  }
+  else{
+    LOGI("Connection to FTP host successfull");
+    logMessage("Connection to FTP host successfull");
+  }
+
+  fxText->enable();
+  fxTextField->enable();
+
+}
+
+void RainbruRPG::Gui::FtpClientWindow::logMessage(FXString s){
+  fxText->appendText( s );
+  fxText->appendText( "\n" );
+  fxTextField->setFocus();
 }
