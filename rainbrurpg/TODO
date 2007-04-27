@@ -139,6 +139,7 @@ STRU - File
 * v 0.0.4-131
 
 * v 0.0.4-130
+- CVS .cvsignore files maintenance
 - Help+command implementation (USER, PORT, PASS)
 - A help text (from menu item and HELP command)
 - FTPClient : Add a statusbar
