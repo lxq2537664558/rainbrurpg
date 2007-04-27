@@ -80,6 +80,7 @@ namespace RainbruRPG{
       void showHelpUser();
       void showHelpPort();
       void showHelpPass();
+      void scrollDown();
 
       /** Required or Undefined references */
       FtpClientWindow(){};

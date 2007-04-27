@@ -11,7 +11,7 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
-- Always scroll down to the end of FXText
+- a common/ftpclient class
 
 o [mouse] FTP Server
 - During a transfer, the GUI is blocked
@@ -137,6 +137,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-131
+- FTPClient : Always scroll down to the end of FXText
 
 * v 0.0.4-130
 - CVS .cvsignore files maintenance

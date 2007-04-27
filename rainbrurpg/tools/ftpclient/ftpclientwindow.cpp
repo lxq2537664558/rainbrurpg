@@ -178,6 +178,7 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
 
   }
 
+  scrollDown();
   return 1;
 }
 
@@ -312,4 +313,10 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpPass(){
   showHelpCommand("PASS <password>", help);
 
 
+}
+
+void RainbruRPG::Gui::FtpClientWindow::scrollDown(){
+  FXString t=fxText->getText();
+  FXint i=t.length();
+  fxText->makePositionVisible(i);
 }
