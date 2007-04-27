@@ -28,18 +28,30 @@
 #ifndef _FTP_CLIENT_H_
 #define _FTP_CLIENT_H_
 
+#include <string>
+
 #include <gnet.h>
+
+using namespace std;
 
 namespace RainbruRPG {
   namespace Network{
 
     /** A class that implements the FTP protocol for client-side using
       *
+      * This class is based on the GNet library (http://www.gnetlibrary.org/)
+      * as a result, <b>before using it</b> you should call the \c gnet_init() 
+      * function.  This function is found in the \c gnet.h header.
       *
+      * It implements both the control and the data channel.
       *
       */
     class FtpClient{
+    public:
+      FtpClient();
+      ~FtpClient();
 
+      bool connectToHost(std::string, int );
 
 
     };

@@ -21,3 +21,30 @@
  */
 
 #include "ftpclient.h"
+
+/** The default constructor
+  *
+  */
+RainbruRPG::Network::FtpClient::FtpClient(){
+
+}
+
+/** The destructor
+  *
+  */
+RainbruRPG::Network::FtpClient::~FtpClient(){
+
+}
+
+/** Try to open a connection in the given host
+  *
+  * \param ip The ip adress of the host
+  * \param port The port the host should listen
+  *
+  * \return \c true if the connection is successfull, \c false if an
+  *         error occured
+  *
+  */
+bool RainbruRPG::Network::FtpClient::connectToHost(std::string ip, int port){
+
+}
