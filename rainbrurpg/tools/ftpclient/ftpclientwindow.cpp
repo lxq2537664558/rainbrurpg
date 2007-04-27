@@ -45,7 +45,7 @@ FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARR
   *
   */
 RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
-   :FXMainWindow(a,"RainbruRPG FTP client",NULL,NULL,DECOR_ALL,0,0,800,600){
+   :FXMainWindow(a,"RainbruRPG FTP client",NULL,NULL,DECOR_ALL,0,0,550,600){
 
   FXint opt= BUTTON_NORMAL|LAYOUT_FIX_WIDTH;
 
@@ -81,6 +81,8 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   // Command lines remenber
   fxText=new FXText(frame, this, ID_NYI, LAYOUT_FILL_X|LAYOUT_FILL_Y|FX::TEXT_READONLY);
   fxText->disable();
+  fxText->setStyled(true);
+
   fxTextField=new FXTextField(frame, 20, this, ID_NEW_CMD, LAYOUT_FILL_X);
   fxTextField->disable();
 
@@ -156,6 +158,24 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     FXTextField* a=(FXTextField*)o;
     a->setText("");
 
+
+    str=str.upper();
+    if (str.contains("HELP")!=0){
+      if (str.contains("USER")!=0){
+	showHelpUser();
+      }
+      else if (str.contains("PORT")!=0){
+	showHelpPort();
+      }
+      else if (str.contains("PASS")!=0){
+	showHelpPass();
+      }
+      else{
+	onHelp(NULL,0,NULL);
+
+      }
+    }
+
   }
 
   return 1;
@@ -218,16 +238,78 @@ long RainbruRPG::Gui::FtpClientWindow::
 onHelp(FXObject* o,FXSelector s,void* v){
   LOGI("Help text requested");
 
-  FXString help;
-  help = "RainbruRPG FTPClient help :\n";
-  help+= "\n";
-  help+= "USER <username>\n";
-  help+= "          Use username to log to the server\n";
-  help+= "PASS <password>\n";
-  help+= "          Enter user password\n";
-  help+= "PORT <h1,h2,h3,h4,p1,p2>\n";
-  help+= "          Change host and port used for data channel\n";
-  fxText->appendText( help );
+  fxText->appendText( "RainbruRPG FTPClient help :\n" );
+  showHelpCommand("USER <username>", "Use username to log to the server");
+  showHelpCommand("PASS <password>", "Enter user password");
+  showHelpCommand("PORT <IP adress> <port>", 
+		  "Change host and port used for data channel");
+  showHelpCommand("HELP <command>", 
+		  "A more detailled description of a command");
 
   return 1;
+}
+
+/** Show the help text on the USER command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpUser(){
+  FXString help;
+  help+= "Use username to log to the server. A password may be\n";
+  help+= HELP_INDENT"prompted just after the host answer. The user and password\n";
+  help+= HELP_INDENT"are taken from the administration website. It is the\n";
+  help+= HELP_INDENT"account information you use to login to the game.\n";
+
+  showHelpCommand("USER <username>", help);
+}
+
+/** Print a help text
+  *
+  * \param title The command name
+  * \param text The command help text
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::
+showHelpCommand(FXString title, FXString text){
+
+  title+="\n";
+  FXString text2=HELP_INDENT;
+  text2+=text;
+  text2+="\n";
+
+  fxText->appendStyledText( title, FXText::STYLE_BOLD );
+  fxText->appendText( text2 );
+
+}
+
+/** Show the help text on the PORT command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpPort(){
+  FXString help;
+  help+=            "Change the port of the FTP data channel. This port will\n";
+  help+= HELP_INDENT"be used by the server to connect the data channel to\n";
+  help+= HELP_INDENT"when needed. This is a convenient command, not in native\n";
+  help+= HELP_INDENT"FTP format.\n";
+
+  help+= HELP_INDENT"The native format of the PORT command is: .\n";
+  help+= HELP_INDENT"PORT h1,h2,h3,h4,p1,p2. See FTC 0959 for further .\n";
+  help+= HELP_INDENT"informations.\n";
+
+  showHelpCommand("PORT <IP adress> <port>", help);
+
+}
+
+/** Show the help text on the PASS command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpPass(){
+
+  FXString help;
+  help+=            "This command is used to send the user password.\n";
+  help+= HELP_INDENT"It is often used just after a USER command and should\n";
+  help+= HELP_INDENT"not be used by the end-user. The password is not crypted.";
+
+  showHelpCommand("PASS <password>", help);
+
+
 }

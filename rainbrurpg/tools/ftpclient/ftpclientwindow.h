@@ -33,6 +33,8 @@
 #include <gnet.h>
 #include <logger.h>
 
+#define HELP_INDENT "            "
+
 namespace RainbruRPG{
   namespace Gui{
 
@@ -74,6 +76,10 @@ namespace RainbruRPG{
 
     private:
       void logMessage(FXString);
+      void showHelpCommand(FXString, FXString);
+      void showHelpUser();
+      void showHelpPort();
+      void showHelpPass();
 
       /** Required or Undefined references */
       FtpClientWindow(){};

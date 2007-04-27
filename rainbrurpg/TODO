@@ -11,7 +11,7 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
-- A help text (from menu item and HELP command)
+- Always scroll down to the end of FXText
 
 o [mouse] FTP Server
 - During a transfer, the GUI is blocked
@@ -136,7 +136,11 @@ STRU - File
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-131
+
 * v 0.0.4-130
+- Help+command implementation (USER, PORT, PASS)
+- A help text (from menu item and HELP command)
 - FTPClient : Add a statusbar
 - GNet basic connection
 - A connect button callback wich set text widgets enabled
