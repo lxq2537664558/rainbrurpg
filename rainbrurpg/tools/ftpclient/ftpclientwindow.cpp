@@ -33,6 +33,7 @@ FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
 
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_CONN, RainbruRPG::Gui::FtpClientWindow::onConnect),
 
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_HELP, RainbruRPG::Gui::FtpClientWindow::onHelp),
 };
 
 FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARRAYNUMBER(FtpClientWindowMap));
@@ -57,10 +58,12 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
 
   filemenu = new FXMenuPane(this);
   new FXMenuTitle(menubar,"&File",NULL,filemenu);
-
+  new FXMenuCommand(filemenu,"&Help\tCtl-H\tPrint a help text.",
+		    NULL,this,ID_HELP);
 
   new FXMenuCommand(filemenu,"&Quit\tCtl-Q\tQuit the application.",
 		    NULL,getApp(),FXApp::ID_QUIT);
+
 
   // Matrix containing Admin info
   FXHorizontalFrame* frMatrix=new FXHorizontalFrame(frame, LAYOUT_FILL_X);
@@ -81,6 +84,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   fxTextField=new FXTextField(frame, 20, this, ID_NEW_CMD, LAYOUT_FILL_X);
   fxTextField->disable();
 
+  // The status bar
+  FXStatusBar* sb=new FXStatusBar (frame, LAYOUT_FILL_X|
+				   STATUSBAR_WITH_DRAGCORNER);
 }
 
 /** The default destructor
@@ -187,8 +193,41 @@ onConnect(FXObject* o,FXSelector s,void* v){
 
 }
 
+/** Log a message in the history text view
+  *
+  * \param s The text to print
+  *
+  */
 void RainbruRPG::Gui::FtpClientWindow::logMessage(FXString s){
   fxText->appendText( s );
   fxText->appendText( "\n" );
   fxTextField->setFocus();
+}
+
+/** The connect button callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FtpClientWindow::
+onHelp(FXObject* o,FXSelector s,void* v){
+  LOGI("Help text requested");
+
+  FXString help;
+  help = "RainbruRPG FTPClient help :\n";
+  help+= "\n";
+  help+= "USER <username>\n";
+  help+= "          Use username to log to the server\n";
+  help+= "PASS <password>\n";
+  help+= "          Enter user password\n";
+  help+= "PORT <h1,h2,h3,h4,p1,p2>\n";
+  help+= "          Change host and port used for data channel\n";
+  fxText->appendText( help );
+
+  return 1;
 }

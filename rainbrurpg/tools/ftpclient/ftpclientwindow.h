@@ -59,15 +59,18 @@ namespace RainbruRPG{
 	ID_NYI=FXMainWindow::ID_LAST,
 	/** A new command was entered */
 	ID_NEW_CMD,
+	/** A new command was entered */
+	ID_HELP,
 	/** The connect button identifier */
 	ID_CONN,
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
 	ID_LAST
       };
  
-      long onNotYetImplemented(FXObject *,FXSelector,void*);
-      long treatNewCommand(FXObject *,FXSelector,void*);
-      long onConnect(FXObject *,FXSelector,void*);
+      long onNotYetImplemented(FXObject* ,FXSelector,void*);
+      long treatNewCommand(FXObject* ,FXSelector,void*);
+      long onConnect(FXObject* ,FXSelector,void*);
+      long onHelp(FXObject* ,FXSelector,void*);
 
     private:
       void logMessage(FXString);
@@ -86,7 +89,9 @@ namespace RainbruRPG{
       /** The command text field */
       FXTextField* fxTextField;
 
+      /** The etxt field used to enter the host IP adress */
       FXTextField* tfHostIp;
+      /** The etxt field used to enter the host port */
       FXTextField* tfHostPort;
     }; 
   }
