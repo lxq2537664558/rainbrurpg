@@ -51,9 +51,10 @@ namespace RainbruRPG {
       FtpClient();
       ~FtpClient();
 
-      bool connectToHost(std::string, int );
+      bool connectToHost(const std::string&, int );
 
-
+    private:
+      void sendString(const std::string&);
     };
 
   }

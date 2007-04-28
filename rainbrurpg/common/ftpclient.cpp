@@ -45,6 +45,17 @@ RainbruRPG::Network::FtpClient::~FtpClient(){
   *         error occured
   *
   */
-bool RainbruRPG::Network::FtpClient::connectToHost(std::string ip, int port){
+bool RainbruRPG::Network::FtpClient::
+connectToHost(const std::string& ip, int port){
+
+}
+
+/** Send a string through the control channel
+  *
+  * The user should not use this function. It should use commandLIST 
+  * and otrhers instead.
+  *
+  */
+void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
 
 }
