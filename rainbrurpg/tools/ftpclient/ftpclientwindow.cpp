@@ -47,6 +47,8 @@ FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARR
 RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
    :FXMainWindow(a,"RainbruRPG FTP client",NULL,NULL,DECOR_ALL,0,0,550,600){
 
+  ftpClient=new FtpClient();
+
   FXint opt= BUTTON_NORMAL|LAYOUT_FIX_WIDTH;
 
   // frame containing admin info and button
@@ -103,6 +105,7 @@ RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
   delete tfHostIp;
   delete tfHostPort;
 
+  delete ftpClient;
 }
 
 
@@ -175,7 +178,14 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
 
       }
     }
-
+    else if (str.contains("LIST")!=0){
+      ftpClient->commandLIST();
+    }
+    else if (str.contains("PASV")!=0){
+      ftpClient->toggleTransferMode();
+      string s=ftpClient->waitControlResponse();
+      logMessage(s.c_str());
+    }
   }
 
   scrollDown();
@@ -197,16 +207,16 @@ onConnect(FXObject* o,FXSelector s,void* v){
   FXString sIp=tfHostIp->getText();
   FXString sPort=tfHostPort->getText();
 
-  GTcpSocket* socket=gnet_tcp_socket_connect(sIp.text(),
-                                             FXIntVal(sPort));
+  bool ret=ftpClient->connectToHost(sIp.text(), FXIntVal(sPort));
 
-  if (socket==NULL){
-    LOGE("Connection to FTP Host failed");
-    logMessage("Connection to FTP Host failed");
-  }
-  else{
+  if (ret){
     LOGI("Connection to FTP host successfull");
     logMessage("Connection to FTP host successfull");
+
+  }
+  else{
+    LOGE("Connection to FTP Host failed");
+    logMessage("Connection to FTP Host failed");
   }
 
   fxText->enable();
@@ -246,6 +256,8 @@ onHelp(FXObject* o,FXSelector s,void* v){
 		  "Change host and port used for data channel");
   showHelpCommand("HELP <command>", 
 		  "A more detailled description of a command");
+  showHelpCommand("PASV",
+		  "Toggle the transfer mode (Active/Passive)");
 
   return 1;
 }

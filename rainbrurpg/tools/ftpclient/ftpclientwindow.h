@@ -32,8 +32,11 @@
 
 #include <gnet.h>
 #include <logger.h>
+#include <ftpclient.h>
 
 #define HELP_INDENT "            "
+
+using namespace RainbruRPG::Network;
 
 namespace RainbruRPG{
   namespace Gui{
@@ -100,6 +103,8 @@ namespace RainbruRPG{
       FXTextField* tfHostIp;
       /** The etxt field used to enter the host port */
       FXTextField* tfHostPort;
+
+      FtpClient* ftpClient;
     }; 
   }
 }

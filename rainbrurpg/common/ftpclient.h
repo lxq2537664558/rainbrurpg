@@ -29,6 +29,7 @@
 #define _FTP_CLIENT_H_
 
 #include <string>
+#include <vector>
 
 #include <gnet.h>
 
@@ -43,7 +44,9 @@ namespace RainbruRPG {
       * as a result, <b>before using it</b> you should call the \c gnet_init() 
       * function.  This function is found in the \c gnet.h header.
       *
-      * It implements both the control and the data channel.
+      * It implements both the control and the data channel. You should call
+      * connectToHost() with the control channel host port (L). The host
+      * should listen in the data channel port L-1.
       *
       */
     class FtpClient{
@@ -52,9 +55,26 @@ namespace RainbruRPG {
       ~FtpClient();
 
       bool connectToHost(const std::string&, int );
+      bool openDataChannel();
+      bool closeDataChannel();
+      void toggleTransferMode();
+
+      std::string commandLIST();
+      std::string waitControlResponse();
 
     private:
       void sendString(const std::string&);
+
+      /** The host IP adress */
+      std::string hostIp;
+      /** The host port for control channel */
+      int hostPort;
+
+      /** The control channel socket */
+      GTcpSocket* controlSock;
+
+      /** Is the control channel connected ? */
+      bool controlChannelConnected;
     };
 
   }
