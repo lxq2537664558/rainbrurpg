@@ -81,6 +81,13 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   gsize bytesWritten;
 
   GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(controlSock);
+
+  // Try to use a callback
+  /*  g_io_add_watch(ioChannel,  G_IO_IN,
+                                             GIOFunc func,
+                                             gpointer user_data);
+  */
+
   GIOError err=gnet_io_channel_writen( ioChannel, &(raw[0]), 
 				       s.size(), &bytesWritten);
 
@@ -139,15 +146,17 @@ void RainbruRPG::Network::FtpClient::toggleTransferMode(){
   */
 std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
   LOGI("waitControlResponse called");
-  char buffer[128];
+  gchar buffer[128];
   gsize bytesWritten;
 
   GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(controlSock);
-  GIOError err=gnet_io_channel_writen( ioChannel, &buffer, 
+  GIOError err=gnet_io_channel_readline( ioChannel, buffer, 
 				       128, &bytesWritten);
 
   string s;
   s=buffer;
+  // To remove ^M at the end of the string
+  s=s.substr(0, s.size()-2);
   LOGCATS("Text found : '");
   LOGCATS(s.c_str());
   LOGCATS("'");

@@ -11,8 +11,6 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
-- look g_io_add_watch() to read the GIOChannel
-   To be uszed for reading the server response
 - ftpclient::commandPASV implementation
 - ftpclient::commandLIST implementation
 - ftpclient::sendString implementation
@@ -141,6 +139,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-131
+- common/FtpClient::waitControlResponse()   OK
 - a common/ftpclient class
 - FTPClient : Always scroll down to the end of FXText
 
