@@ -83,6 +83,7 @@ namespace RainbruRPG{
       void showHelpUser();
       void showHelpPort();
       void showHelpPass();
+      void showHelpPasv();
       void scrollDown();
 
       /** Required or Undefined references */

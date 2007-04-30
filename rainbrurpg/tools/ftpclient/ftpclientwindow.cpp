@@ -173,6 +173,9 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       else if (str.contains("PASS")!=0){
 	showHelpPass();
       }
+      else if (str.contains("PASV")!=0){
+	showHelpPasv();
+      }
       else{
 	onHelp(NULL,0,NULL);
 
@@ -332,3 +335,17 @@ void RainbruRPG::Gui::FtpClientWindow::scrollDown(){
   FXint i=t.length();
   fxText->makePositionVisible(i);
 }
+
+void RainbruRPG::Gui::FtpClientWindow::showHelpPasv(){
+  FXString help;
+  help+=            "Switch beetween active and passive transfer mode.\n";
+  help+= HELP_INDENT"In active mode, the client will try to connect to the\n";
+  help+= HELP_INDENT"server's data channel. It passive mode, The server\n";
+  help+= HELP_INDENT"take the initiative of the connection.\n\n";
+  help+= HELP_INDENT"The default client configuration is active. The\n";
+  help+= HELP_INDENT"RainbruRPG FTP server is by default in passive mode.";
+
+  showHelpCommand("PASV", help);
+
+}
+
