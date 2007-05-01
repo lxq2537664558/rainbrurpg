@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 01 may 2007 : PASSIVE mode implementation
  * - 22 apr 2007 : LIST command imlementation
  * - 20 apr 2007 : Starting implementation
  */

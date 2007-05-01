@@ -20,7 +20,6 @@
  *
  */
 
-
 #include "ftptransfer.h"
 
 #include <logger.h>
@@ -43,7 +42,7 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   server=new QTcpServer();
   server->listen( QHostAddress::Any, port );
 
-  connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
+  //  connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
 
 }
 
@@ -75,7 +74,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   LOGCAT();
   
   QString s="essai.txt\naze.lf\r\n";
-  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
+  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
   socket1=tcpSocket;
 
   tcpSocket->write(s.toLatin1());
@@ -152,6 +151,7 @@ error ( QAbstractSocket::SocketError socketError ){
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
+  LOGI("LIST command result :");
   unsigned int childs=1;
   packetData="";
 
@@ -161,7 +161,11 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
 
   QFileInfoList list = dir.entryInfoList();
 
-  cout << "Sending "<<list.size()<< "files ? " << endl;
+  LOGCATS("Sending ");
+  LOGCATI(list.size());
+  LOGCATS(" files.");
+  LOGCAT();
+
   for (int i = 0; i < list.size(); ++i) {
     QFileInfo fileInfo = list.at(i);
 
@@ -284,22 +288,35 @@ filePermissions(bool r,bool w,bool x){
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
-  emit(log("Sending LS result"));
+  // The socket::write returned value
+  int rep;
 
   QTcpSocket sock;
   if (waitForConnection(&sock)){
     lsResult();
-    int rep=sock.write(packetData.toLatin1());
-    if (rep==-1){
-      cout << "AN ERROR OCCURED DURING LIST COMMAND" << endl;
+    emit(log("Sending LS result"));
+
+    // If we are in ACTIVE mode, we can use the socket
+    // returned by waitForConnection() else, we should
+    // use the TCP server.
+    if (transferMode==FTM_ACTIVE){
+      rep=sock.write(packetData.toLatin1());
     }
-    cout << "Waiting for writing bytes" << endl;
+    else{
+      rep=server->nextPendingConnection()->write(packetData.toLatin1());
+    }
+
+
+    if (rep==-1){
+      LOGE("An error occured during LIST command");
+    }
+    LOGI("Waiting for writing bytes");
 
     if (sock.waitForBytesWritten(3000)){
       emit(log("Transfer channel closed"));
       emit(transferComplete());
       sock.disconnectFromHost();
-      cout << "Transfer complete" << endl;
+      LOGI( "LIST command complete");
 
     }
   }
@@ -324,10 +341,10 @@ waitForActiveConnection(QTcpSocket* sock){
 				  QAbstractSocket::UnconnectedState);
 
   if (b){
-    cout << "Socket descriptor accepted" << endl;
+    LOGI("Socket descriptor accepted");
   }
   else{
-    cout << "Socket descriptor refused" << endl;
+    LOGW( "Socket descriptor refused");
   }
 
   sock->connectToHost(hostAdress, hostPort );
@@ -335,14 +352,14 @@ waitForActiveConnection(QTcpSocket* sock){
 	   this, SLOT(error ( QAbstractSocket::SocketError )));
 
 
-    cout << "Waiting for connection" << endl;
+  LOGI("Waiting for connection");
   if (sock->waitForConnected(3000)){
-    cout << "Connection opened" << endl;
+    LOGI( "Connection opened");
     return true;
   }
   else{
-    cout << "Waiting for writing bytes" << endl;
-    qDebug(sock->errorString().toLatin1());
+    LOGI( "Waiting for writing bytes" );
+    LOGW(sock->errorString().toLatin1());
 
     return false;
   }
@@ -363,11 +380,12 @@ waitForPassiveConnection(QTcpSocket* sock){
   bool success=server->waitForNewConnection(3000, &timeOut);
   if (success){
     LOGI("Passive connection happened");
-    sock=server->nextPendingConnection();
+    return true;
   }
   else{
     LOGE("Passive connection failed");
   }
+  return false;
 }
 
 /** A PASV command received
@@ -420,14 +438,18 @@ waitForConnection(QTcpSocket* sock){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 commandRETR(const QString& filename){
-
+  LOGI("Sending file...");
   QString s("Sending file ");
   s+=filename;
   emit(log(s));
 
   const char* aze=filename.toLatin1();
   const char* aze2=QDir::currentPath().toLatin1();
-  cout << "Opening file '"<< aze << "' in "<< aze2 <<endl;
+  LOGCATS("Opening file '");
+  LOGCATS(aze);
+  LOGCATS("' in ");
+  LOGCATS(aze2);
+  LOGCAT();
 
   QDir a(currentDirectory);
   QFile f(a.filePath(filename));
@@ -453,11 +475,14 @@ commandRETR(const QString& filename){
       while (!f.atEnd()){
 	rep=sock.write(f.read(MAX_READ_LENGTH));
 	if (rep==-1){
-	  cout << "AN ERROR OCCURED DURING RETR" << endl;
+	  LOGE("An error occured during RETR command");
 	  break;
 	}
 	else{
-	  cout << "Writing "<< rep << " bytes" << endl;
+	  LOGCATS("Writing ");
+	  LOGCATI(rep);
+	  LOGCATS(" bytes");
+	  LOGCAT();
 	  
 	  sock.waitForBytesWritten(3000);
 	}
@@ -467,7 +492,7 @@ commandRETR(const QString& filename){
       emit(log("Transfer channel closed"));
       emit(transferComplete());
       sock.disconnectFromHost();
-      cout << "Transfer complete" << endl;
+      LOGI("Transfer complete");
       f.close();
 
     }
@@ -510,13 +535,14 @@ void RainbruRPG::Network::Ftp::FtpTransfer::switchToAsciiType(){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 commandSTOR(const QString& filename){
+  LOGI("Executing STOR command");
   QString s("Receiving file ");
   s+=filename;
   emit(log(s));
 
   QDir a(currentDirectory);
   if (a.exists(filename)){
-    cout << "The file already exist" << endl;
+    LOGI("The file already exist");
     a.remove(filename);
   }
 
@@ -549,12 +575,16 @@ commandSTOR(const QString& filename){
 
 	rep=f.write(ba);
 	if (rep==-1){
-	  cout << "AN ERROR OCCURED DURING WRITING "<< endl;
-	  qDebug("ErrorString :"+f.errorString().toLatin1());
+	  LOGE("An error occured during STOR file writing");
+	  LOGCATS("ErrorString :");
+	  LOGCATS(f.errorString().toLatin1());
 	  break;
 	}
 	else{
-	  cout << "Writing "<< rep << " bytes" << endl;
+	  LOGCATS("Writing ");
+	  LOGCATI(rep);
+	  LOGCATS(" bytes");
+	  LOGCAT();
 	}
       }
       
@@ -562,7 +592,7 @@ commandSTOR(const QString& filename){
       emit(log("Transfer channel closed"));
       emit(transferComplete());
       sock.disconnectFromHost();
-      cout << "Transfer complete" << endl;
+      LOGI("Transfer complete");
       f.close();
       
     }

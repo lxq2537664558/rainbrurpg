@@ -185,29 +185,29 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
   return s;
 }
 
+/** Returns the content of the data channel
+  *
+  * \return The content of the data channel
+  * 
+  */
 std::string RainbruRPG::Network::FtpClient::readDataChannel(){
   LOGI("readDataChannel called");
   gchar buffer[128];
-  gsize bytesWritten=10;
+  gsize bytesWritten=128;
   string s;
   s="";
 
   GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
+
   GIOError err=gnet_io_channel_readn( ioChannel, buffer, 
-					   128, &bytesWritten);
+					128, &bytesWritten);
+    
   s+=buffer;
   LOGCATI(bytesWritten);
-  LOGCATS("bytes read.");
+  LOGCATS(" bytes read.");
   LOGCAT();
-  
 
-  // To remove ^M at the end of the string
-  if (s.size()>2){
-    s=s.substr(0, s.size()-2);
-    LOGCATS("Text found : '");
-    LOGCATS(s.c_str());
-    LOGCATS("'");
-    LOGCAT();
-  }
+  LOGI("readDataChannel finished");
+
   return s;
 }

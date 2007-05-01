@@ -331,12 +331,20 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpPass(){
 
 }
 
+/** Always scroll the text ecit down
+  * 
+  * Shows the last line of the text edit
+  *
+  */
 void RainbruRPG::Gui::FtpClientWindow::scrollDown(){
   FXString t=fxText->getText();
   FXint i=t.length();
   fxText->makePositionVisible(i);
 }
 
+/** Show a help text on the PASV command
+  *
+  */
 void RainbruRPG::Gui::FtpClientWindow::showHelpPasv(){
   FXString help;
   help+=            "Switch beetween active and passive transfer mode.\n";

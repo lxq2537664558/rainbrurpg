@@ -32,6 +32,7 @@
 #include <vector>
 
 #include <gnet.h>
+#include <glib.h>
 
 using namespace std;
 
