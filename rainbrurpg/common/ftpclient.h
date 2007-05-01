@@ -64,6 +64,7 @@ namespace RainbruRPG {
 
     private:
       void sendString(const std::string&);
+      std::string readDataChannel();
 
       /** The host IP adress */
       std::string hostIp;
@@ -72,6 +73,8 @@ namespace RainbruRPG {
 
       /** The control channel socket */
       GTcpSocket* controlSock;
+      /** The data channel socket */
+      GTcpSocket* dataSock;
 
       /** Is the control channel connected ? */
       bool controlChannelConnected;

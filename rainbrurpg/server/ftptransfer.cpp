@@ -65,11 +65,14 @@ void RainbruRPG::Network::Ftp::FtpTransfer::run (){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   emit(log( "A new connection is requested on transfer channel" ));
+  LOGI("A new connection is requested on transfer channel" );
 
   QTcpSocket *tcpSocket=server->nextPendingConnection();
 
   descriptor=tcpSocket->socketDescriptor();
-  cout << "Socket descriptor is "<< descriptor << endl;
+  LOGCATS("Socket descriptor is ");
+  LOGCATI( descriptor );
+  LOGCAT();
   
   QString s="essai.txt\naze.lf\r\n";
   connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
@@ -117,14 +120,20 @@ error ( QAbstractSocket::SocketError socketError ){
   LOGE( "A socket error occured ");
 
 
-  if (socketError==0){
-    msg="The connection was refused by the peer (or timed out)";
+  if (socketError==QAbstractSocket::ConnectionRefusedError){
+    msg="0 - The connection was refused by the peer (or timed out)";
     LOGCATS("error message : " );
     LOGCATS( msg );
     LOGCAT();
   }
-  else if (socketError==1){
-    msg="The remote host closed the connection";
+  else if (socketError==QAbstractSocket::RemoteHostClosedError){
+    msg="1 - The remote host closed the connection";
+    LOGCATS("error message : " );
+    LOGCATS( msg );
+    LOGCAT();
+  }
+  else if (socketError==QAbstractSocket::HostNotFoundError){
+    msg="2 - The host adress was not found";
     LOGCATS("error message : " );
     LOGCATS( msg );
     LOGCAT();
@@ -349,8 +358,16 @@ waitForActiveConnection(QTcpSocket* sock){
   */
 bool RainbruRPG::Network::Ftp::FtpTransfer::
 waitForPassiveConnection(QTcpSocket* sock){
-
-  cout << "WaitForActiveConnection called" << endl;
+  LOGI("WaitForPassiveConnection called");
+  bool timeOut;
+  bool success=server->waitForNewConnection(3000, &timeOut);
+  if (success){
+    LOGI("Passive connection happened");
+    sock=server->nextPendingConnection();
+  }
+  else{
+    LOGE("Passive connection failed");
+  }
 }
 
 /** A PASV command received
@@ -364,7 +381,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandPASV(){
     transferMode=FTM_ACTIVE;
   }
   else{
-    transferMode==FTM_PASSIVE;
+    transferMode=FTM_PASSIVE;
   }
 
   QString s("Switching to ");

@@ -50,8 +50,8 @@ RainbruRPG::Network::FtpClient::~FtpClient(){
   */
 bool RainbruRPG::Network::FtpClient::
 connectToHost(const std::string& ip, int port){
-  std::string hostIp=ip;
-  int hostPort=port;
+  this->hostIp=ip;
+  this->hostPort=port;
   controlSock=gnet_tcp_socket_connect(ip.c_str(), port);
 
   if (controlSock==NULL){
@@ -102,10 +102,16 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::openDataChannel(){
-  controlSock=gnet_tcp_socket_connect(hostIp.c_str(), hostPort-1);
+  dataSock=gnet_tcp_socket_connect(hostIp.c_str(), hostPort-1);
 
-  if (controlSock==NULL){
+  if (dataSock==NULL){
     LOGE("Cannot open data channel");
+    LOGCATS("Host IP : '");
+    LOGCATS(hostIp.c_str());
+    LOGCATS("' Host port : '");
+    LOGCATI(hostPort-1);
+    LOGCATS("'");
+    LOGCAT();
     return false;
   }
   else{
@@ -122,11 +128,6 @@ bool RainbruRPG::Network::FtpClient::openDataChannel(){
   */
 bool RainbruRPG::Network::FtpClient::closeDataChannel(){
 
-}
-
-std::string RainbruRPG::Network::FtpClient::commandLIST(){
-  sendString("LIST\r\n");
-  openDataChannel();
 }
 
 /** Toggle the transfer mode between Active/Passive modes
@@ -156,10 +157,57 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
   string s;
   s=buffer;
   // To remove ^M at the end of the string
-  s=s.substr(0, s.size()-2);
-  LOGCATS("Text found : '");
-  LOGCATS(s.c_str());
-  LOGCATS("'");
+  if (s.size()>2){
+    s=s.substr(0, s.size()-2);
+    LOGCATS("Text found : '");
+    LOGCATS(s.c_str());
+    LOGCATS("'");
+    LOGCAT();
+  }
+  return s;
+}
+
+/** Send a LIST command and wait for the response
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::commandLIST(){
+  std::string s;
+
+  sendString("LIST\r\n");
+  s=waitControlResponse();
+  s+="\n";
+  if (openDataChannel()){
+    s+=readDataChannel();
+  }
+
+  closeDataChannel();
+
+  return s;
+}
+
+std::string RainbruRPG::Network::FtpClient::readDataChannel(){
+  LOGI("readDataChannel called");
+  gchar buffer[128];
+  gsize bytesWritten=10;
+  string s;
+  s="";
+
+  GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
+  GIOError err=gnet_io_channel_readn( ioChannel, buffer, 
+					   128, &bytesWritten);
+  s+=buffer;
+  LOGCATI(bytesWritten);
+  LOGCATS("bytes read.");
   LOGCAT();
+  
+
+  // To remove ^M at the end of the string
+  if (s.size()>2){
+    s=s.substr(0, s.size()-2);
+    LOGCATS("Text found : '");
+    LOGCATS(s.c_str());
+    LOGCATS("'");
+    LOGCAT();
+  }
   return s;
 }

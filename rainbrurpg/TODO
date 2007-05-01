@@ -11,8 +11,14 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
+- FtpTransfer uses logger instead of cout
+- fixing FTP server passive mode
+- FtpTransfer::waitForPassiveConnection
 - ftpclient::commandLIST implementation
-- ftpclient::sendString implementation
+- ftpclient::commandBINARY implementation (TYPE I)
+- ftpclient::commandASCII implementation (TYPE A)
+- ftpclient::commandSTORE implementation
+- ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
 - During a transfer, the GUI is blocked
@@ -138,6 +144,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-131
+- ftpclient::sendString implementation
 - A help detail for the PASV command
 - ftpclient::toggleTransferMode implementation (PASV)
 - common/FtpClient::waitControlResponse()   OK

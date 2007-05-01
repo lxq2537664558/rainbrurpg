@@ -182,7 +182,8 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       }
     }
     else if (str.contains("LIST")!=0){
-      ftpClient->commandLIST();
+      string s=ftpClient->commandLIST();
+      logMessage(s.c_str());
     }
     else if (str.contains("PASV")!=0){
       ftpClient->toggleTransferMode();
