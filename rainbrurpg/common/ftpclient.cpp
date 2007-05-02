@@ -179,6 +179,7 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
   if (openDataChannel()){
     s+=readDataChannel();
   }
+  s+=waitControlResponse();
 
   closeDataChannel();
 
@@ -223,4 +224,17 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
   LOGI("readDataChannel finished");
 
   return s;
+}
+
+/** Sends a PWD command and returns its value
+  *
+  * \return The working directory of the FTP server
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::commandPWD(){
+  sendString("PWD\r\n");
+  std::string s=waitControlResponse();
+
+  return s;
+
 }

@@ -176,6 +176,9 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       else if (str.contains("PASV")!=0){
 	showHelpPasv();
       }
+      else if (str.contains("PWD")!=0){
+	showHelpPwd();
+      }
       else{
 	onHelp(NULL,0,NULL);
 
@@ -183,12 +186,22 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     }
     else if (str.contains("LIST")!=0){
       string s=ftpClient->commandLIST();
-      logMessage(s.c_str());
+      FXString str=s.c_str();
+      str.substitute('\r', ' ', true );
+      logMessage(str);
     }
     else if (str.contains("PASV")!=0){
       ftpClient->toggleTransferMode();
       string s=ftpClient->waitControlResponse();
       logMessage(s.c_str());
+    }
+    else if (str.contains("PWD")!=0){
+      string s=ftpClient->commandPWD();
+      logMessage(s.c_str());
+    }
+    else{
+      logMessage("Unknown command");
+
     }
   }
 
@@ -216,7 +229,8 @@ onConnect(FXObject* o,FXSelector s,void* v){
   if (ret){
     LOGI("Connection to FTP host successfull");
     logMessage("Connection to FTP host successfull");
-
+    std::string s=ftpClient->waitControlResponse();
+    logMessage(s.c_str());
   }
   else{
     LOGE("Connection to FTP Host failed");
@@ -262,6 +276,8 @@ onHelp(FXObject* o,FXSelector s,void* v){
 		  "A more detailled description of a command");
   showHelpCommand("PASV",
 		  "Toggle the transfer mode (Active/Passive)");
+  showHelpCommand("PWD",
+		  "Prints the server's working directory");
 
   return 1;
 }
@@ -358,3 +374,17 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpPasv(){
 
 }
 
+/** Show a help text on the PWD command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpPwd(){
+  FXString help;
+  help+=            "Print the current server's working directory.\n";
+  help+= HELP_INDENT"When you retrieve or store a file from/to a FTP\n";
+  help+= HELP_INDENT"server the filename is always relative to the\n";
+  help+= HELP_INDENT"working directory. This command let you know\n";
+  help+= HELP_INDENT"the current working directory of the server.";
+
+  showHelpCommand("PWD", help);
+
+}

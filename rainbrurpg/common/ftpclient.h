@@ -61,6 +61,7 @@ namespace RainbruRPG {
       void toggleTransferMode();
 
       std::string commandLIST();
+      std::string commandPWD();
       std::string waitControlResponse();
 
     private:

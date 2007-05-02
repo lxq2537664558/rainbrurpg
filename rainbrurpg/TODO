@@ -11,7 +11,8 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
-- ftpclient::commandPWD implementation
+- FtpServer error :
+   [ftptransfer.cpp:386] EE Passive connection failed
 - ftpclient::commandBINARY implementation (TYPE I)
 - ftpclient::commandASCII implementation (TYPE A)
 - ftpclient::commandSTORE implementation
@@ -141,6 +142,8 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-131
+- ftpclient::commandPWD implementation
+- FTPClient : Makes the ^M disappear
 - ftpclient::commandLIST implementation
 - common/FtpClient::readDataChannel reads the whole packet
 - A SEGFAULT on server when a LIST command is sent    FIXED

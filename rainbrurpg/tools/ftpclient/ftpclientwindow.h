@@ -84,6 +84,7 @@ namespace RainbruRPG{
       void showHelpPort();
       void showHelpPass();
       void showHelpPasv();
+      void showHelpPwd();
       void scrollDown();
 
       /** Required or Undefined references */
@@ -105,6 +106,7 @@ namespace RainbruRPG{
       /** The etxt field used to enter the host port */
       FXTextField* tfHostPort;
 
+      /** The FtpClient instance used to send FTP commands */
       FtpClient* ftpClient;
     }; 
   }
