@@ -192,20 +192,33 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
   */
 std::string RainbruRPG::Network::FtpClient::readDataChannel(){
   LOGI("readDataChannel called");
-  gchar buffer[128];
+  gchar buffer[1024];
   gsize bytesWritten=128;
   string s;
   s="";
 
   GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
 
-  GIOError err=gnet_io_channel_readn( ioChannel, buffer, 
-					128, &bytesWritten);
-    
-  s+=buffer;
-  LOGCATI(bytesWritten);
-  LOGCATS(" bytes read.");
-  LOGCAT();
+  while(true){
+
+    cout << "Calling gnet_io_channel_readn" << endl;
+    GIOError err=gnet_io_channel_readn( ioChannel, buffer, 
+					1024, &bytesWritten);
+    cout << "gnet_io_channel_readn called" << endl;
+  
+    LOGCATI(bytesWritten);
+    LOGCATS(" bytes read. GIOError =");
+    LOGCATI(err);
+    LOGCAT();
+
+    if (bytesWritten==0){
+      break;
+    }
+    else{
+      s+=buffer;
+
+    }
+  }
 
   LOGI("readDataChannel finished");
 

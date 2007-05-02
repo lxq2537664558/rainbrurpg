@@ -11,8 +11,6 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
    curldefaultwritefunction
 
 o [mouse] FTP client
-- common/FtpClient::readDataChannel reads the whole packet
-- ftpclient::commandLIST implementation
 - ftpclient::commandPWD implementation
 - ftpclient::commandBINARY implementation (TYPE I)
 - ftpclient::commandASCII implementation (TYPE A)
@@ -143,6 +141,8 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-131
+- ftpclient::commandLIST implementation
+- common/FtpClient::readDataChannel reads the whole packet
 - A SEGFAULT on server when a LIST command is sent    FIXED
 - FtpTransfer::waitForPassiveConnection implementation
 - fixing FTP server passive mode

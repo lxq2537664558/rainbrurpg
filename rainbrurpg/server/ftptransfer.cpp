@@ -291,8 +291,8 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
   // The socket::write returned value
   int rep;
 
-  QTcpSocket sock;
-  if (waitForConnection(&sock)){
+  QTcpSocket* sock;
+  if (waitForConnection(sock)){
     lsResult();
     emit(log("Sending LS result"));
 
@@ -300,22 +300,22 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
     // returned by waitForConnection() else, we should
     // use the TCP server.
     if (transferMode==FTM_ACTIVE){
-      rep=sock.write(packetData.toLatin1());
+      rep=sock->write(packetData.toLatin1());
     }
     else{
-      rep=server->nextPendingConnection()->write(packetData.toLatin1());
+      sock=server->nextPendingConnection();
+      sock->write(packetData.toLatin1());
     }
-
 
     if (rep==-1){
       LOGE("An error occured during LIST command");
     }
     LOGI("Waiting for writing bytes");
 
-    if (sock.waitForBytesWritten(3000)){
-      emit(log("Transfer channel closed"));
+    if (sock->waitForBytesWritten(3000)){
       emit(transferComplete());
-      sock.disconnectFromHost();
+      sock->disconnectFromHost();
+      emit(log("Transfer channel closed"));
       LOGI( "LIST command complete");
 
     }
