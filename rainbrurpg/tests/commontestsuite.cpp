@@ -30,6 +30,7 @@
 #include "curlaccountaddtest.h"
 #include "curlaccountconfirmmailtest.h"
 #include "curlaccountdeletetest.h"
+#include "curlaccounttoggleblacklisttest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -39,6 +40,9 @@
 #include <curlaccountadd.h>
 #include <curlaccountconfirmmail.h>
 #include <curlaccountdelete.h>
+#include <curlaccounttoggleblacklist.h>
+
+using namespace RainbruRPG::Network::Ident;
 
 /** The default constructor
   *
@@ -46,14 +50,14 @@
 CommonTestSuite::CommonTestSuite()
   :TestSuite("Common")
 {
-  addTest( AttributeModifierListTest<AttributeModifierList>::suite() );
-  addTest( ChartBaseTest<ChartBase>::suite() );
-  addTest( ChartSerieTest<ChartSerie>::suite() );
-  addTest( ClientConnectTest<ClientConnect>::suite() );
-  addTest( CurlAccountAddTest<CurlAccountAdd>::suite() );
-  addTest( CurlAccountConfirmMailTest<CurlAccountConfirmMail>::suite() );
-  addTest( CurlAccountDeleteTest<CurlAccountDelete>::suite() );
-
+  addTest(AttributeModifierListTest<AttributeModifierList>::suite() );
+  addTest(ChartBaseTest<ChartBase>::suite() );
+  addTest(ChartSerieTest<ChartSerie>::suite() );
+  addTest(ClientConnectTest<ClientConnect>::suite() );
+  addTest(CurlAccountAddTest<CurlAccountAdd>::suite() );
+  addTest(CurlAccountConfirmMailTest<CurlAccountConfirmMail>::suite() );
+  addTest(CurlAccountDeleteTest<CurlAccountDelete>::suite() );
+  addTest(CurlAccountToggleBlacklistTest<CurlAccountToggleBlacklist>::suite());
 }
 
 /** The destructor

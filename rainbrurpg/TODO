@@ -7,7 +7,6 @@ cp htmlMakefile.am RainbruRPG.html/Makefile.am
 
 * Unittest implementation
 - In this order
-   curlaccounttoggleblacklist
    curldefaultwritefunction
 
 o [mouse] FTP client
@@ -141,7 +140,10 @@ STRU - File
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-132
+
 * v 0.0.4-131
+- curlaccounttoggleblacklist unit test implementation
 - ftpclient::commandPWD implementation
 - FTPClient : Makes the ^M disappear
 - ftpclient::commandLIST implementation
