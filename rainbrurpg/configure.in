@@ -141,6 +141,7 @@ AC_CONFIG_FILES([Makefile			\
 	  tools/netflooder/Makefile		\
 	  tools/ftpclient/Makefile		\
 	  \
+ 	  RainbruRPG.html/Makefile	        \
 	  config/Makefile			\
 	  data/Makefile				\
 	  data/fox/Makefile			\
@@ -171,9 +172,6 @@ AC_CONFIG_FILES([Makefile			\
 	  terminalapi-1.0.pc			\
 	  RainbruRPG-common.pc])
 
-dnl Removed by make clean
-dnl	  RainbruRPG.html/Makefile	        \
-
 
 AC_OUTPUT
 
@@ -181,4 +179,12 @@ echo
 echo "#####################################"
 echo
 echo " You can generate a pdf manual by calling :"
-echo "   make pdf"
+echo "    make pdf"
+echo
+echo " To update the HTML documentation or if a Rainbru.HTML/Makefile.am"
+echo " is missing :"
+echo "    make html"
+echo "    cp htmlMakefile.am RainbruRPG.html/Makefile.am"
+echo "    autoconf&&automake&&./configure"
+echo
+echo "#####################################"

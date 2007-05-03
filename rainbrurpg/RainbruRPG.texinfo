@@ -131,10 +131,17 @@ can occur if you are behind a router/firewall/NAT/DSL box. In this case, the
 IP adress of the computer running the game server is hidden by the router. 
 
 You must use the port forwarding to provide access to your server from outside 
-your local network. If your IP adress is 192.168.x.x ou 10.x.x.x, you're 
+your local network. If your IP adress is 192.168.x.x or 10.x.x.x, you're 
 probably behind a router. Please see your router's documentation to know how
 setting a port forwarding.
 
+@cindex File transfer
+
+To provide a client update when necessary, the server uses FTP. The File 
+Transfer Protocol is based on TCP and uses 2 ports. The control channel is
+used to send the FTP commands. The data channel, where the files are sent,
+uses a second TCP port which is usually channel_port-1. You will need to use
+port forwarding for this 2 port if you are behind a firewall/router.
 
 @node Sample, Invoking RainbruRPG, Server, Top
 @chapter Sample Output

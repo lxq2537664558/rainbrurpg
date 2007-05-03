@@ -447,9 +447,16 @@ this case, the IP adress of the computer running the game server is
 hidden by the router.
 
    You must use the port forwarding to provide access to your server
-from outside your local network. If your IP adress is 192.168.x.x ou
+from outside your local network. If your IP adress is 192.168.x.x or
 10.x.x.x, you're probably behind a router. Please see your router's
 documentation to know how setting a port forwarding.
+
+   To provide a client update when necessary, the server uses FTP. The
+File Transfer Protocol is based on TCP and uses 2 ports. The control
+channel is used to send the FTP commands. The data channel, where the
+files are sent, uses a second TCP port which is usually channel_port-1.
+You will need to use port forwarding for this 2 port if you are behind
+a firewall/router.
 
 
 File: RainbruRPG.info,  Node: Sample,  Next: Invoking RainbruRPG,  Prev: Server,  Up: Top
@@ -525,6 +532,7 @@ Concept Index
 * Menu:
 
 * bugs:                                  Problems.             (line  6)
+* File transfer:                         Server.               (line 23)
 * getting help:                          Invoking RainbruRPG.  (line  6)
 * greetings:                             Overview.             (line  6)
 * help:                                  Invoking RainbruRPG.  (line  6)
@@ -550,9 +558,9 @@ Node: Instructions1540
 Node: Copying1880
 Node: Overview21066
 Node: Server21506
-Node: Sample22321
-Node: Invoking RainbruRPG22968
-Node: Problems23514
-Node: Concept Index24144
+Node: Sample22694
+Node: Invoking RainbruRPG23341
+Node: Problems23887
+Node: Concept Index24517
 
 End Tag Table

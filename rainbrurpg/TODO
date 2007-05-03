@@ -1,7 +1,14 @@
 TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
-cp htmlMakefile.am RainbruRPG.html/Makefile.am
+
+* HTML doxumentation generation
+   make html
+   cp htmlMakefile.am RainbruRPG/Makefile.am
+   autoconf
+   automake
+   ./configure --enable-all
+
 
 * delete oldXident
 
@@ -141,6 +148,7 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-132
+- Update texinfo file with the FTP port forwarding
 
 * v 0.0.4-131
 - curlaccounttoggleblacklist unit test implementation
