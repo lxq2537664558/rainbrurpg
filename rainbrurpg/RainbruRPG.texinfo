@@ -98,6 +98,17 @@ RainbruRPG-server : the game server
 RainbruRPG-editor : the game editor
 @end itemize
 
+It is generated from a texinfo source found in the root directory but is
+used in HTML form as a help center. To generate the HTML documentation and
+install it please type :
+@verbatim
+   make html
+   cp htmlMakefile.am RainbruRPG.html/Makefile.am
+   autoconf
+   automake
+   ./configure --enable-all
+@end verbatim
+
 @node Copying, Overview, Instructions, Top
 @chapter Copying
 @include gpl.texinfo

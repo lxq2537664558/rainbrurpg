@@ -51,6 +51,16 @@ programs :
 
    * RainbruRPG-editor : the game editor
 
+   It is generated from a texinfo source found in the root directory
+but is used in HTML form as a help center. To generate the HTML
+documentation and install it please type :
+
+   make html
+   cp htmlMakefile.am RainbruRPG.html/Makefile.am
+   autoconf
+   automake
+   ./configure --enable-all
+
 
 File: RainbruRPG.info,  Node: Copying,  Next: Overview,  Prev: Instructions,  Up: Top
 
@@ -555,12 +565,12 @@ Concept Index
 Tag Table:
 Node: Top861
 Node: Instructions1540
-Node: Copying1880
-Node: Overview21066
-Node: Server21506
-Node: Sample22694
-Node: Invoking RainbruRPG23341
-Node: Problems23887
-Node: Concept Index24517
+Node: Copying2173
+Node: Overview21359
+Node: Server21799
+Node: Sample22987
+Node: Invoking RainbruRPG23634
+Node: Problems24180
+Node: Concept Index24810
 
 End Tag Table

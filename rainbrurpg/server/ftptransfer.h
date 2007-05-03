@@ -93,6 +93,10 @@ namespace RainbruRPG{
         void startTransferFile(const QString&, qint64);
 	/** A signal emitted when we wait the transfer to starts */
         void waitTransferFile(const QString&);
+	/** A signal emitted when the server switch to active mode */
+	void switchToActiveMode();
+	/** A signal emitted when the server switch to passive mode */
+	void switchToPassiveMode();
 
       public slots:
 	void changeHost(const QString&, int);

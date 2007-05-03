@@ -75,6 +75,8 @@ namespace RainbruRPG{
 	void transferComplete();
         void startTransferFile(const QString&, qint64);
         void waitTransferFile(const QString&);
+	void switchToActiveMode();
+	void switchToPassiveMode();
 
       private slots:
 	void newConnection();

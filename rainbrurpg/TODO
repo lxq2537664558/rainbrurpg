@@ -2,23 +2,19 @@ TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
 
-* HTML doxumentation generation
-   make html
-   cp htmlMakefile.am RainbruRPG/Makefile.am
-   autoconf
-   automake
-   ./configure --enable-all
-
-
 * delete oldXident
-
-* Unittest implementation
+* Unittest implementation in common/
 - In this order
    curldefaultwritefunction
 
 o [mouse] FTP client
+- Server creation warning
+   [curlposteddata.cpp:161]      WW A key has no value
+   Must telling the key name
 - FtpServer error :
    [ftptransfer.cpp:386] EE Passive connection failed
+   Some debugging text
+- ftpclient::commandSYST implementation
 - ftpclient::commandBINARY implementation (TYPE I)
 - ftpclient::commandASCII implementation (TYPE A)
 - ftpclient::commandSTORE implementation
@@ -148,6 +144,10 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-132
+- FTP Server : PASV response tells the server actual mode
+- The instruction chapter of the texinfo manual has problems 
+   (OK with @verbatim)
+- texinfo based HTML documentation now in CVS repository
 - Update texinfo file with the FTP port forwarding
 
 * v 0.0.4-131

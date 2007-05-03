@@ -102,6 +102,12 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::openDataChannel(){
+  LOGI("Opening data channel :");
+  LOGCATS("Server adress : ");
+  LOGCATS(hostIp.c_str());
+  LOGCATS(" port : ");
+  LOGCATI(hostPort-1);
+  LOGCAT();
   dataSock=gnet_tcp_socket_connect(hostIp.c_str(), hostPort-1);
 
   if (dataSock==NULL){
@@ -137,7 +143,6 @@ bool RainbruRPG::Network::FtpClient::closeDataChannel(){
   */
 void RainbruRPG::Network::FtpClient::toggleTransferMode(){
   sendString("PASV\r\n");
-
 }
 
 /** Wait for a response in the control channel and return it
@@ -173,12 +178,15 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
 std::string RainbruRPG::Network::FtpClient::commandLIST(){
   std::string s;
 
+  LOGI("Sending LIST command");
   sendString("LIST\r\n");
+  LOGI("Waiting for first control response");
   s=waitControlResponse();
   s+="\n";
   if (openDataChannel()){
     s+=readDataChannel();
   }
+  LOGI("Waiting for second control response");
   s+=waitControlResponse();
 
   closeDataChannel();

@@ -31,7 +31,7 @@
   */
 RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port) 
   :QThread() {
-
+  LOGI("FtpTransfer created");
   transferMode=FTM_ACTIVE;
   transferType=FTT_ASCII;
 
@@ -40,7 +40,23 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   QDir::setCurrent(currentDirectory);
   descriptor=1;
   server=new QTcpServer();
-  server->listen( QHostAddress::Any, port );
+  bool succ=server->listen( QHostAddress::Any, port );
+  if (succ){
+    LOGCATS("Now listening in port ");
+    LOGCATI(port);
+    LOGCAT();
+  }
+  else{
+    LOGE("Cannot listen on the given port");
+    LOGCATS("Listening port ");
+    LOGCATI(port);
+    LOGCATS(" Error string ");
+    LOGCATS(server->errorString().toLatin1());
+
+    LOGCAT();
+
+  }
+
 
   //  connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
 
@@ -376,16 +392,25 @@ waitForActiveConnection(QTcpSocket* sock){
 bool RainbruRPG::Network::Ftp::FtpTransfer::
 waitForPassiveConnection(QTcpSocket* sock){
   LOGI("WaitForPassiveConnection called");
-  bool timeOut;
+  bool timeOut=1;
   bool success=server->waitForNewConnection(3000, &timeOut);
   if (success){
     LOGI("Passive connection happened");
     return true;
   }
   else{
-    LOGE("Passive connection failed");
+    if (timeOut){
+      LOGE("Passive connection timeout");
+      
+    }
+    else{
+      LOGE("Passive connection failed");
+    }
+    LOGCATS("Last server error : ");
+    LOGCATS(server->errorString().toLatin1());
+    LOGCAT();
+    return false;
   }
-  return false;
 }
 
 /** A PASV command received
@@ -405,9 +430,11 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandPASV(){
   QString s("Switching to ");
   if (transferMode==FTM_PASSIVE){
     s+="PASSIVE";
+    emit(switchToPassiveMode());
   }
   else{
     s+="ACTIVE";
+    emit(switchToActiveMode());
   }
   s+=" mode";
   emit(log(s));
@@ -568,7 +595,7 @@ commandSTOR(const QString& filename){
 	
       while(sock.state()==QAbstractSocket::ConnectedState&&(rep!=-1)){
 	LOGI("waitForReadyRead called");
-	sock.waitForReadyRead(30000);
+	sock.waitForReadyRead(3000);
 	LOGI("reading packet...");
 	QByteArray ba=sock.readAll();
 	LOGI("Packet read");

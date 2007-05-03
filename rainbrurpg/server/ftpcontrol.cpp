@@ -150,7 +150,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if (s.contains("PASV")){
 	  emit(log("PASV command received"));
 	  emit(commandPASV());
-	  tcpSocket->write("227 Using binary mode to transfer files.\r\n");
 
 	}
 	else if (s.contains("LIST")){
@@ -281,4 +280,20 @@ void RainbruRPG::Network::Ftp::FtpControl::waitTransferFile(const QString& fn){
 
   socket1->write(s.toLatin1());
   socket1->flush();
+}
+
+/** Send a message to the client telling the server is in active mode
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpControl::switchToActiveMode(){
+  socket1->write("227 Server now in Active mode.\r\n");
+
+}
+
+/** Send a message to the client telling the server is in passive mode
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpControl::switchToPassiveMode(){
+  socket1->write("227 Server now in Passive mode.\r\n");
+
 }
