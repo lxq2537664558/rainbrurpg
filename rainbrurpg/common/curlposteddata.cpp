@@ -158,7 +158,10 @@ std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
   for(iter = map.begin(); iter != map.end(); iter++){
 
     if (iter->second.length()==0){
-      LOGW("A key has no value");
+      LOGW("A key has no value : ");
+      LOGCATS("key name : ");
+      LOGCATS(iter->first);
+      LOGCAT();
     }
     else{
       if (first){

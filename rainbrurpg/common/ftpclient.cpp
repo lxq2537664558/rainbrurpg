@@ -82,12 +82,6 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
 
   GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(controlSock);
 
-  // Try to use a callback
-  /*  g_io_add_watch(ioChannel,  G_IO_IN,
-                                             GIOFunc func,
-                                             gpointer user_data);
-  */
-
   GIOError err=gnet_io_channel_writen( ioChannel, &(raw[0]), 
 				       s.size(), &bytesWritten);
 
@@ -187,6 +181,7 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
     s+=readDataChannel();
   }
   LOGI("Waiting for second control response");
+  s+="\n";
   s+=waitControlResponse();
 
   closeDataChannel();

@@ -8,12 +8,7 @@ export LD_LIBRARY_PATH=/usr/local/lib
    curldefaultwritefunction
 
 o [mouse] FTP client
-- Server creation warning
-   [curlposteddata.cpp:161]      WW A key has no value
-   Must telling the key name
-- FtpServer error :
-   [ftptransfer.cpp:386] EE Passive connection failed
-   Some debugging text
+- An error in the LIST result (the '226 Transfer complete.' text is buggy)
 - ftpclient::commandSYST implementation
 - ftpclient::commandBINARY implementation (TYPE I)
 - ftpclient::commandASCII implementation (TYPE A)
@@ -26,27 +21,11 @@ o [mouse] FTP Server
 - STOR still make an error log entry if the sent file is 0 bytes size
 - Create a treeviewItem for each transfer
 - Update the treeview item for each packet wrote or received
-- Ls is actually active, implement it passive
-   We can take a pair Ip/filename as a key for downloads
-Minimale
-Type - ASCII Non-print
-Mode - Flux
-STRUCTURE - Fichier, Enregistrement
-COMMANDES - USER, QUIT, PORT
-  TYPE, MODE, STRU, pour les valeurs par defaut
-  RETR, STOR
-  NOOP.
-
-Paramêtres par defaut
-TYPE - ASCII Non-print
-MODE - Stream
-STRU - File
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
 
 
 * GameServer
-- The serverlog has no windowTitle
 - Add the FTP control channel port in the ServerConfiguration
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
@@ -144,6 +123,21 @@ STRU - File
 * *******************************************************
 
 * v 0.0.4-132
+- A LIST command help text
+- FtpTransfer segFault on second LIST command (not the first time) FIXED
+- Using a NextCommand value in FtpTransfer    OK but segfault
+   When we receive a command (LIST, RETR...)
+   we set NextCommand to LIST (for example)
+   In the newConnectionSlot() we treat NextCommand.
+- FtpServer : Passive connection timeout [NOT FIXED but understood]
+   FTPClient saying [ftpclient.cpp:124]   II Data channel opened
+   FTPServer says   [ftptransfer.cpp:403] EE Passive connection
+     timeout
+   Error is in FTPTransfer : using newConnection() [slot] is the
+     solution
+- The serverlog has no windowTitle FIXED
+- FtpServer telling why a passive connection failed (mainly for timeout)
+- curlposteddata telling the key name if it has no value
 - FTP Server : PASV response tells the server actual mode
 - The instruction chapter of the texinfo manual has problems 
    (OK with @verbatim)

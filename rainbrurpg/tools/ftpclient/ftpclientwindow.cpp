@@ -179,6 +179,9 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       else if (str.contains("PWD")!=0){
 	showHelpPwd();
       }
+      else if (str.contains("LIST")!=0){
+	showHelpList();
+      }
       else{
 	onHelp(NULL,0,NULL);
 
@@ -278,6 +281,8 @@ onHelp(FXObject* o,FXSelector s,void* v){
 		  "Toggle the transfer mode (Active/Passive)");
   showHelpCommand("PWD",
 		  "Prints the server's working directory");
+  showHelpCommand("LIST",
+		  "Prints the content of the server's working directory");
 
   return 1;
 }
@@ -311,7 +316,7 @@ showHelpCommand(FXString title, FXString text){
 
   fxText->appendStyledText( title, FXText::STYLE_BOLD );
   fxText->appendText( text2 );
-
+  scrollDown();
 }
 
 /** Show the help text on the PORT command
@@ -386,5 +391,18 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpPwd(){
   help+= HELP_INDENT"the current working directory of the server.";
 
   showHelpCommand("PWD", help);
+
+}
+
+/** Show a help text on the LIST command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpList(){
+  FXString help;
+  help+=            "Print the current server's working directory content.\n";
+  help+= HELP_INDENT"It prints the file and directory list in a form\n";
+  help+= HELP_INDENT"similary to the ls unix command.\n";
+
+  showHelpCommand("LIST", help);
 
 }

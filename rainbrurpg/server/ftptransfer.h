@@ -49,6 +49,16 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
+      /** All command that need a Transfer Channel
+        *
+	*/
+      typedef enum tTransferCommand{
+	FTC_NONE,     // NOOP command
+	FTC_LIST,     // The command is a LIST command
+	FTC_RETR,     // The retrieve command
+	FTC_STOR,     // The STORE command
+      };
+
       /** An enumeration describing the FTP transfer mode
         *
 	* The default is FTM_PASSIVE.
@@ -113,6 +123,8 @@ namespace RainbruRPG{
 
       private:
 	void lsResult();
+	void writeBytes(QTcpSocket*);
+
 	QString fileSizeToString(qint64);
 	QString filePermissions(bool,bool,bool);
 
@@ -144,6 +156,8 @@ namespace RainbruRPG{
 	tTransferMode transferMode;
 	/** The current transfer type */
 	tTransferType transferType;
+	/** The command to execute on the next data channel opened */
+	tTransferCommand nextCommand;
       };
 
     }

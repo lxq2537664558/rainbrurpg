@@ -32,6 +32,7 @@
 RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port) 
   :QThread() {
   LOGI("FtpTransfer created");
+  nextCommand=FTC_NONE;
   transferMode=FTM_ACTIVE;
   transferType=FTT_ASCII;
 
@@ -58,7 +59,7 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   }
 
 
-  //  connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
+  connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
 }
 
@@ -73,28 +74,6 @@ RainbruRPG::Network::Ftp::FtpTransfer::~FtpTransfer(){
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::run (){
-}
-
-/** A new connection was requested
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
-  emit(log( "A new connection is requested on transfer channel" ));
-  LOGI("A new connection is requested on transfer channel" );
-
-  QTcpSocket *tcpSocket=server->nextPendingConnection();
-
-  descriptor=tcpSocket->socketDescriptor();
-  LOGCATS("Socket descriptor is ");
-  LOGCATI( descriptor );
-  LOGCAT();
-  
-  QString s="essai.txt\naze.lf\r\n";
-  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
-  socket1=tcpSocket;
-
-  tcpSocket->write(s.toLatin1());
-
 }
 
 /** Change the host configuration if a PORT command occured
@@ -169,7 +148,7 @@ error ( QAbstractSocket::SocketError socketError ){
 void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
   LOGI("LIST command result :");
   unsigned int childs=1;
-  packetData="";
+  packetData="[LS START]\n";
 
   QDir dir(currentDirectory );
   dir.setFilter(QDir::Dirs| QDir::Files| QDir::NoSymLinks);
@@ -240,8 +219,10 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
     // File name and EOL
     packetData+=" ";
     packetData+=fileInfo.fileName();
-    packetData+="\r\n";
+    packetData+="\n";
   }
+  packetData+="[LS END]";
+  LOGI("PacketData done. LIST result can be sent");
 }
 
 /** Get a human-readable string from a file size
@@ -300,44 +281,6 @@ filePermissions(bool r,bool w,bool x){
   return s;
 }
 
-/** Send the packet for the LS command
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
-  // The socket::write returned value
-  int rep;
-
-  QTcpSocket* sock;
-  if (waitForConnection(sock)){
-    lsResult();
-    emit(log("Sending LS result"));
-
-    // If we are in ACTIVE mode, we can use the socket
-    // returned by waitForConnection() else, we should
-    // use the TCP server.
-    if (transferMode==FTM_ACTIVE){
-      rep=sock->write(packetData.toLatin1());
-    }
-    else{
-      sock=server->nextPendingConnection();
-      sock->write(packetData.toLatin1());
-    }
-
-    if (rep==-1){
-      LOGE("An error occured during LIST command");
-    }
-    LOGI("Waiting for writing bytes");
-
-    if (sock->waitForBytesWritten(3000)){
-      emit(transferComplete());
-      sock->disconnectFromHost();
-      emit(log("Transfer channel closed"));
-      LOGI( "LIST command complete");
-
-    }
-  }
-}
-
 /** Wait for an active connection
   *
   * \param sock The socket used
@@ -392,9 +335,9 @@ waitForActiveConnection(QTcpSocket* sock){
 bool RainbruRPG::Network::Ftp::FtpTransfer::
 waitForPassiveConnection(QTcpSocket* sock){
   LOGI("WaitForPassiveConnection called");
-  bool timeOut=1;
+  /*  bool timeOut=1;
   bool success=server->waitForNewConnection(3000, &timeOut);
-  if (success){
+  if (success==true){
     LOGI("Passive connection happened");
     return true;
   }
@@ -409,6 +352,14 @@ waitForPassiveConnection(QTcpSocket* sock){
     LOGCATS("Last server error : ");
     LOGCATS(server->errorString().toLatin1());
     LOGCAT();
+    return false;
+  }
+
+  */
+  if (socket1!=NULL){
+    return true;
+  }
+  else{
     return false;
   }
 }
@@ -639,3 +590,83 @@ commandSTOR(const QString& filename){
   }
 }
 
+/** Send the packet for the LS command
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
+  // The socket::write returned value
+  int rep;
+
+  nextCommand=FTC_LIST;
+
+  QTcpSocket* sock;
+  if (waitForConnection(sock)){
+    lsResult();
+    emit(log("Sending LS result"));
+
+    // If we are in ACTIVE mode, we can use the socket
+    // returned by waitForConnection() else, the packetData content
+    // is write in the newConnection() function
+    if (transferMode==FTM_ACTIVE){
+      rep=sock->write(packetData.toLatin1());
+
+      if (rep==-1){
+	LOGE("An error occured during LIST command");
+      }
+
+      LOGI("Waiting for writing bytes");
+      
+      writeBytes(sock);
+      LOGI( "LIST command complete");
+    }
+  }
+}
+
+/** A new connection was requested
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
+  emit(log( "A new connection is requested on transfer channel" ));
+  LOGI("A new connection is requested on transfer channel" );
+
+  QTcpSocket *tcpSocket=server->nextPendingConnection();
+
+  descriptor=tcpSocket->socketDescriptor();
+  LOGCATS("Socket descriptor is ");
+  LOGCATI( descriptor );
+  LOGCAT();
+  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
+  tcpSocket=tcpSocket;
+
+  switch(nextCommand){
+  case FTC_NONE:
+    LOGW("New connection has no pending command...CLOSED");
+    break;
+  case FTC_LIST:
+    LOGI("This connection is for a LIST command");
+    lsResult();
+    emit(log("Sending LS result"));
+    tcpSocket->write(packetData.toLatin1());
+    writeBytes(tcpSocket);
+    LOGI( "LIST command complete");
+    break;
+
+  }
+
+}
+
+/** Waits for the queued bytes to be wrote and close the channel
+  *
+  * \param s The socket to flush and close
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::writeBytes(QTcpSocket* s){
+  if (s->waitForBytesWritten(3000)){
+    emit(transferComplete());
+    s->disconnectFromHost();
+    emit(log("Transfer channel closed"));
+  }
+  else{
+    LOGE("An error occured during waitForBytesWritten execution");
+  }
+}
