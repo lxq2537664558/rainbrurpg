@@ -1,0 +1,94 @@
+
+* v 0.0.4-130
+- CVS .cvsignore files maintenance
+- Help+command implementation (USER, PORT, PASS)
+- A help text (from menu item and HELP command)
+- FTPClient : Add a statusbar
+- GNet basic connection
+- A connect button callback wich set text widgets enabled
+- Text widgets are disabled
+- GNet added to the dependencies
+- Text widget for IP adress and server port
+- Connect button
+- tools/ftpclient skeleton
+- Implementation of the binary mode
+
+* v 0.0.4-129
+- STOR command implementation
+- RETR command implementation started
+- Doxygen documentation
+- FTP server : LIST command implementation
+- PORT command implementation (with a given port)
+- FtpControl send 502 Not implemented command
+- CurlAccountDelete unit test implementation
+
+* v 0.0.4-128
+- Doxygen documentation
+- GNU headers for FTP
+- FTP classes in RainbruRPG::Network::Ftp namespace
+   FtpServer         OK
+   FtpControl        OK
+   FtpTransfer       OK
+   TransferVisual    OK
+- Server uses FTPServer
+- FTP classes in server/
+- Doxygen documentation
+- A MDI Child for the Objects (list, add delete...) (ObjectList)
+- A manage->objects menu item
+- Database has StaticObject and DynamicObject tables
+- Server uses serverconfiguration values for database connection
+- xmlserverconf saves database settings
+- configdialog set changes in serverconfiguration
+- Server's config dialog initialized with serverconfiguration database values
+- xmlserverconf load database settings
+- config/server.xml contains database informations
+- Database connection values in the serverconfiguration.h/cpp
+- Setting up database connection in the options 
+- Database connection test OK
+- Try to create the DB with a sql script
+- ObjectMesh::getPosByName(std::string) implementation
+- PosorDialog implementation
+- An error when we dbl-click on an obect name (not an instance) FIXED
+
+* v 0.0.4-127
+- ChartSerie unit test implementation
+- ChartLine doesn't need unit tests
+- tests/common/chartbasetest.h Implementation
+- Add some function in ChartBase for unit test purpose :
+- Doxygen documentation
+- Open all ChartViewer after all tests computed
+- ChartViewer : Makes the close button close the dialog
+- A 'close' button in the chartviewer
+- floodpanel opens chartviewer with the FlooderTestBase
+   getImageFilename, getImageWidth, getImageHeight values
+- A ChartViewer dialog to view chart image
+- FlooderTestBase::getFilename, getImageWidth, getImageHeight
+   implementation
+- ftReliable setup correctly ChartLine
+- FlooderTestBase has a pure virtual int getTotalSteps() function
+- Showing progress during netflooder tests
+- ChartBase::setLeftCaption and setBottomCaption methods
+- ChartBase::setTitle and setFilename methods
+- ChartLine::drawLeftCaption take a long time (about 20 sec). Fix it
+- ftReliable build ChartSerie for reliable and non-reliable tests
+- ftReliable calls ChartLine::draw for bluit tests
+
+* v 0.0.4-126
+- ftReliable get the response time of the server
+- ftReliable sends a npFlooder0004 packet
+  Using EnetFlooderClient::sendPacketAndWaitResponse
+- int EnetFlooderClient::sendPacketAndWaitResponse() implementation
+- A Timer class based on glib2.0 added in common/
+- The server answers to the npFlooder0004 packet
+- delete documentation from CVS
+- Change the NetFlooder MainWindow title
+- Do the flooder execute selected tests
+- Initial CVS commit on sourceforge.net
+- a basic npFlooder0004 : a packet of 4 bytes (npId+responseId)
+- Each packet used by EnetFlooderClient must have a unique Id
+  to be sure the packet we received was a response.
+  It is the responseId implemented in NetPacketFlooderBase
+- The ALWAYS_USE_RELIABLE can be defined (in netpacketbase.h
+- Each NetPacket can be reliable or not
+- ScriptEditor : Disable the wordwrap
+- ScriptEditor : A QStatusBar showing the position of the cursor

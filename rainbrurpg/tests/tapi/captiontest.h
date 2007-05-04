@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - ?? ??? ???? : Starting implementation
+ *
+ */
+
 #ifndef CAPTION_TEST_H
 #define CAPTION_TEST_H
 

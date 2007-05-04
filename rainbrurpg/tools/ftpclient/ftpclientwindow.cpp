@@ -182,6 +182,9 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       else if (str.contains("LIST")!=0){
 	showHelpList();
       }
+      else if (str.contains("SYST")!=0){
+	showHelpSyst();
+      }
       else{
 	onHelp(NULL,0,NULL);
 
@@ -200,6 +203,10 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     }
     else if (str.contains("PWD")!=0){
       string s=ftpClient->commandPWD();
+      logMessage(s.c_str());
+    }
+    else if (str.contains("SYST")!=0){
+      string s=ftpClient->commandSYST();
       logMessage(s.c_str());
     }
     else{
@@ -283,6 +290,8 @@ onHelp(FXObject* o,FXSelector s,void* v){
 		  "Prints the server's working directory");
   showHelpCommand("LIST",
 		  "Prints the content of the server's working directory");
+  showHelpCommand("SYST",
+		  "Prints the host type");
 
   return 1;
 }
@@ -404,5 +413,18 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpList(){
   help+= HELP_INDENT"similary to the ls unix command.\n";
 
   showHelpCommand("LIST", help);
+
+}
+
+/** Show a help text on the SYST command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpSyst(){
+  FXString help;
+  help+=            "Print the host type.\n";
+  help+= HELP_INDENT"It is important in the game context because we.\n";
+  help+= HELP_INDENT"can test if we are connected to a real game server.\n";
+
+  showHelpCommand("SYST", help);
 
 }

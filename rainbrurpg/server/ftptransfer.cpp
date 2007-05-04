@@ -147,8 +147,8 @@ error ( QAbstractSocket::SocketError socketError ){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
   LOGI("LIST command result :");
+  packetData="";
   unsigned int childs=1;
-  packetData="[LS START]\n";
 
   QDir dir(currentDirectory );
   dir.setFilter(QDir::Dirs| QDir::Files| QDir::NoSymLinks);
@@ -221,8 +221,11 @@ void RainbruRPG::Network::Ftp::FtpTransfer::lsResult(){
     packetData+=fileInfo.fileName();
     packetData+="\n";
   }
-  packetData+="[LS END]";
   LOGI("PacketData done. LIST result can be sent");
+  int i=  packetData.size();
+  LOGCATS("PacketData lenght :");
+  LOGCATI(i);
+  LOGCAT();
 }
 
 /** Get a human-readable string from a file size

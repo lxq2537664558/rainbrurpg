@@ -193,9 +193,10 @@ commontestsuite.o commontestsuite.o: commontestsuite.cpp \
   common/curlaccountaddtest.h common/curlaccountconfirmmailtest.h \
   common/curlaccountdeletetest.h common/curlaccounttoggleblacklisttest.h \
   ../common/xmlaccountlist.h ../common/taccountlist.h \
-  ../common/chartbase.h /usr/include/gd.h /usr/include/gd_io.h \
-  /usr/include/gdfx.h /usr/include/gd.h /usr/include/gdfonts.h \
-  ../common/chartserie.h
+  common/curlfiletoxmltest.h ../common/curlfiletoxml.h \
+  common/curlgetfiletest.h ../common/chartbase.h /usr/include/gd.h \
+  /usr/include/gd_io.h /usr/include/gdfx.h /usr/include/gd.h \
+  /usr/include/gdfonts.h ../common/chartserie.h ../common/curlgetfile.h
 
 commontestsuite.h:
 
@@ -721,6 +722,12 @@ common/curlaccounttoggleblacklisttest.h:
 
 ../common/taccountlist.h:
 
+common/curlfiletoxmltest.h:
+
+../common/curlfiletoxml.h:
+
+common/curlgetfiletest.h:
+
 ../common/chartbase.h:
 
 /usr/include/gd.h:
@@ -734,3 +741,5 @@ common/curlaccounttoggleblacklisttest.h:
 /usr/include/gdfonts.h:
 
 ../common/chartserie.h:
+
+../common/curlgetfile.h:

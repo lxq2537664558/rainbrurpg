@@ -62,6 +62,7 @@ namespace RainbruRPG {
 
       std::string commandLIST();
       std::string commandPWD();
+      std::string commandSYST();
       std::string waitControlResponse();
 
     private:

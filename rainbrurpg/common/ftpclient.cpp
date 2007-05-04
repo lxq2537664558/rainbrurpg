@@ -181,7 +181,6 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
     s+=readDataChannel();
   }
   LOGI("Waiting for second control response");
-  s+="\n";
   s+=waitControlResponse();
 
   closeDataChannel();
@@ -210,16 +209,26 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
 					1024, &bytesWritten);
     cout << "gnet_io_channel_readn called" << endl;
   
+
     LOGCATI(bytesWritten);
     LOGCATS(" bytes read. GIOError =");
     LOGCATI(err);
     LOGCAT();
-
     if (bytesWritten==0){
       break;
     }
     else{
-      s+=buffer;
+      std::string s2(buffer);
+      // FIX a string lenght bug
+      //
+      // We had bytesWritten=676 and s2.size=725 or other
+      // It appears it comes with the gchar* to td::string conversion
+      // Truncates The string to have the good lenght one
+      s2=s2.substr(0, bytesWritten);
+      s+=s2;
+      LOGCATS("strlen return : ");
+      LOGCATI(s.size());
+      LOGCAT();
 
     }
   }
@@ -239,5 +248,16 @@ std::string RainbruRPG::Network::FtpClient::commandPWD(){
   std::string s=waitControlResponse();
 
   return s;
+}
 
+/** Sends a SYST command and returns server response
+  *
+  * \return The server type
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::commandSYST(){
+  sendString("SYST\r\n");
+  std::string s=waitControlResponse();
+
+  return s;
 }
