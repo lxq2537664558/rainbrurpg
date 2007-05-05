@@ -38,8 +38,9 @@
 #include <QDateTime>
 #include <QFile>
 
-
 #include <iostream>
+
+#include <ftpdef.h>
 
 #define MAX_READ_LENGTH 1024
 
@@ -49,37 +50,7 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
-      /** All command that need a Transfer Channel
-        *
-	*/
-      typedef enum tTransferCommand{
-	FTC_NONE,     // NOOP command
-	FTC_LIST,     // The command is a LIST command
-	FTC_RETR,     // The retrieve command
-	FTC_STOR,     // The STORE command
-      };
 
-      /** An enumeration describing the FTP transfer mode
-        *
-	* The default is FTM_PASSIVE.
-	*
-	*/
-      typedef enum tTransferMode{
-	FTM_ACTIVE,  //!< Active server mode
-	FTM_PASSIVE, //!< Passive server mode
-      };
-
-      /** An enumeration describing the FTP transfer type
-        *
-	* It defines howx a file is transfered.
-	*
-	* The default is FTT_ASCII.
-	*
-	*/
-      typedef enum tTransferType { 
-	FTT_BINARY, //!< The file is opened in binary mode
-	FTT_ASCII,  //!< The file is opened in ascii mode
-      };
 
       /** An implementation of the Transfer Channel using by the FTP protocol
         *

@@ -34,6 +34,8 @@
 #include <gnet.h>
 #include <glib.h>
 
+#include "ftpdef.h"
+
 using namespace std;
 
 namespace RainbruRPG {
@@ -64,6 +66,8 @@ namespace RainbruRPG {
       std::string commandPWD();
       std::string commandSYST();
       std::string waitControlResponse();
+      std::string commandBINARY();
+      std::string commandASCII();
 
     private:
       void sendString(const std::string&);

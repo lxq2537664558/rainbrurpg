@@ -261,3 +261,25 @@ std::string RainbruRPG::Network::FtpClient::commandSYST(){
 
   return s;
 }
+
+/** Switch the server to binary mode
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::commandBINARY(){
+  sendString("TYPE I\r\n");
+  std::string s=waitControlResponse();
+
+  return s;
+
+}
+
+/** Switch the server to ASCII mode
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::commandASCII(){
+  sendString("TYPE A\r\n");
+  std::string s=waitControlResponse();
+
+  return s;
+
+}

@@ -121,6 +121,9 @@ o [mouse] Unittest implementation in common/
 * *******************************************************
 
 * v 0.0.4-133
+- common/FtpClient's typedef in a ftpdef.h
+- Binary and Ascii commands sent to the server
+- Help for Binary and Ascii
 
 * v 0.0.4-132
 - curlgetfile unit test implementation

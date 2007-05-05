@@ -487,7 +487,7 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   /usr/include/qt4/QtSql/qsqlerror.h ftpserver.h \
   /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTextEdit \
   /usr/include/qt4/QtGui/QtGui /usr/include/qt4/QtGui/QTreeWidget \
-  ftpcontrol.h /usr/include/qt4/QtCore/QDataStream \
+  ../common/ftpdef.h ftpcontrol.h /usr/include/qt4/QtCore/QDataStream \
   /usr/include/qt4/QtNetwork/QTcpServer \
   /usr/include/qt4/QtNetwork/qtcpserver.h \
   /usr/include/qt4/QtNetwork/qabstractsocket.h \
@@ -1867,6 +1867,8 @@ ftpserver.h:
 /usr/include/qt4/QtGui/QtGui:
 
 /usr/include/qt4/QtGui/QTreeWidget:
+
+../common/ftpdef.h:
 
 ftpcontrol.h:
 

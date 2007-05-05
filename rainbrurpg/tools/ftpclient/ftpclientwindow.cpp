@@ -185,6 +185,12 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       else if (str.contains("SYST")!=0){
 	showHelpSyst();
       }
+      else if (str.contains("BINARY")!=0){
+	showHelpBinary();
+      }
+      else if (str.contains("ASCII")!=0){
+	showHelpAscii();
+      }
       else{
 	onHelp(NULL,0,NULL);
 
@@ -207,6 +213,14 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     }
     else if (str.contains("SYST")!=0){
       string s=ftpClient->commandSYST();
+      logMessage(s.c_str());
+    }
+    else if (str.contains("BINARY")!=0){
+      string s=ftpClient->commandBINARY();
+      logMessage(s.c_str());
+    }
+    else if (str.contains("ASCII")!=0){
+      string s=ftpClient->commandASCII();
       logMessage(s.c_str());
     }
     else{
@@ -292,6 +306,10 @@ onHelp(FXObject* o,FXSelector s,void* v){
 		  "Prints the content of the server's working directory");
   showHelpCommand("SYST",
 		  "Prints the host type");
+  showHelpCommand("BINARY",
+		  "The server send files in BINARY mode (TYPE I)");
+  showHelpCommand("ASCII",
+		  "The server send files in ASCII mode (TYPE A)");
 
   return 1;
 }
@@ -426,5 +444,29 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpSyst(){
   help+= HELP_INDENT"can test if we are connected to a real game server.\n";
 
   showHelpCommand("SYST", help);
+
+}
+
+/** Show a help text on the Binary command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpBinary(){
+  FXString help;
+  help+=            "Set the server in binary mode. The file send by the\n";
+  help+= HELP_INDENT"will now be in binary.\n";
+
+  showHelpCommand("BINARY", help);
+
+}
+
+/** Show a help text on the ascii command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpAscii(){
+  FXString help;
+  help+=            "Set the server in ascii mode. The file send by the\n";
+  help+= HELP_INDENT"will now be in ascii.\n";
+
+  showHelpCommand("ASCII", help);
 
 }

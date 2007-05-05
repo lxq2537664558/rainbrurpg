@@ -33,6 +33,8 @@
 #include <QtGui/QtGui>
 #include <QtGui/QTreeWidget>
 
+#include <ftpdef.h>
+
 
 #include "ftpcontrol.h"
 #include "ftptransfer.h"
