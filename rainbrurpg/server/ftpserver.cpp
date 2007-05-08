@@ -50,6 +50,19 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   tree->setHeaderLabels( sl );
   mainLayout->addWidget(tree);
 
+  // A try
+  QGridLayout* grid=new QGridLayout(this);
+  mainLayout->addLayout(grid);
+  QLabel* lab100=new QLabel("Filename", this);
+  grid->addWidget(lab100, 0, 0);
+  QProgressBar* pg1=new QProgressBar(this);
+  grid->addWidget(pg1, 1, 0);
+
+
+
+
+
+
 
   control=new FtpControl(50002);
   connect(control, SIGNAL(log(const QString&)), this, 

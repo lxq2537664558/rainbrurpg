@@ -13,7 +13,8 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- TransferVisual implementation
+- Trying to make a download widget in prog/cpp/qlist (DownloadList)
+- Try to add a ProgressBar in the downloads list
 - Create a treeviewItem for each transfer
 - Update the treeview item for each packet wrote or received
 - The control channel only accepts one client
@@ -118,8 +119,11 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-134
+
 * v 0.0.4-133
-- During a transfer, the GUI is blocked      FIXED
+- TransferVisual implementation
+- During a transfer, the GUI is blocked                    FIXED
 - The written file has a size of 0 bytes
    A readyRead slot write to the file (maybe the GUI will be unlock)
 - [ftptransfer.cpp:620] II Receiving file [empty filename] FIXED
