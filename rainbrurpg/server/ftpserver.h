@@ -64,8 +64,8 @@ namespace RainbruRPG{
 	FtpServer(quint16 port=50002);
 	~FtpServer();
 	
-	public slots:
-	  void log(const QString&);
+     public slots:
+       void log(const QString&);
 	void addTransfer(TransferVisual*);
 	
       private:

@@ -214,6 +214,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  QString l("Requesting file ");
 	  l+=h1;
 	  emit(log(l));
+	  tcpSocket->write("200 Data channel ready.\r\n");
 	  emit(commandSTOR(h1));
 	}
 	else if (s.contains("TYPE I")){

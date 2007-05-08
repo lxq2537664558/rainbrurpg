@@ -35,6 +35,7 @@ namespace RainbruRPG{
 
       /** A visual representation of a FTP transfer
         *
+	* It is used by FtpTransfer et FtpServer.
 	*
 	*/
       class TransferVisual{
@@ -48,6 +49,16 @@ namespace RainbruRPG{
 	void setFilename(const QString&, const QString&);
 	const QString& getFilename()const;
 	
+	void setCommingIn(bool);
+	void setRate(double);
+	void setFileSize(int);
+	void setDownloaded(int);
+
+	bool getCommingIn();
+	double getRate();
+	int getFileSize();
+	int getDownloaded();
+
       private:
 	/** The IP adress of the connected client */
 	QString ip;

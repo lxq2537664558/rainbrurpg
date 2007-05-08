@@ -292,7 +292,7 @@ std::string RainbruRPG::Network::FtpClient::commandASCII(){
 
 /** Send a STOR command with the given file
   *
-  * \param filename The absolute name of the file to send
+  * \param filename The absolute name of the file to send (containing the path)
   *
   * \return The server's response
   *
@@ -311,7 +311,26 @@ commandSTOR(const std::string& filename){
   // The FTP control command
   std::string s;
   s="STOR ";
-  s+=filename;
+
+  // We send only the filename
+  string::size_type pos = filename.rfind("/", filename.size());
+  if (pos == string::npos){
+    LOGI("The filename doesn't contain path");
+    s+=filename;
+  }
+  else{
+    LOGCATS("Position of the last slash : ");
+    LOGCATI(pos);
+    LOGCAT();
+    string::size_type len=filename.size()-pos;
+    std::string onlyFilename=filename.substr(pos+1, len);
+    LOGCATS("OnlyFilename='");
+    LOGCATS(onlyFilename.c_str());
+    LOGCATS("'");
+    LOGCAT();
+    s+=onlyFilename;
+  }
+
 
   if (!boost::filesystem::exists(filename)){
     LOGW("File does not exist");

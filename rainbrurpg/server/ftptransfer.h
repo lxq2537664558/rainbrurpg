@@ -91,6 +91,7 @@ namespace RainbruRPG{
       private slots:
 	void newConnection();
 	void error ( QAbstractSocket::SocketError socketError );
+	void readyRead();
 
       private:
 	void lsResult();
@@ -130,6 +131,11 @@ namespace RainbruRPG{
 	tTransferType transferType;
 	/** The command to execute on the next data channel opened */
 	tTransferCommand nextCommand;
+	/** The next command filename */
+	QString nextFilename;
+
+	/** The file used to save the current transfered file */
+	QFile* currentFile;
       };
 
     }

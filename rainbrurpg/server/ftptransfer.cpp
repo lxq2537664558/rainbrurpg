@@ -447,9 +447,7 @@ commandRETR(const QString& filename){
     om=QIODevice::ReadOnly|QIODevice::Text;
   }
 
-
   if(f.open(om)){
-    
     QTcpSocket sock;
     if (waitForConnection(&sock)){
       emit(startTransferFile(filename, f.size()));
@@ -551,14 +549,12 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   emit(log( "A new connection is requested on transfer channel" ));
   LOGI("A new connection is requested on transfer channel" );
 
-  QTcpSocket *tcpSocket=server->nextPendingConnection();
+  socket1=server->nextPendingConnection();
 
-  descriptor=tcpSocket->socketDescriptor();
+  descriptor=socket1->socketDescriptor();
   LOGCATS("Socket descriptor is ");
   LOGCATI( descriptor );
   LOGCAT();
-  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
-  tcpSocket=tcpSocket;
 
   switch(nextCommand){
   case FTC_NONE:
@@ -568,12 +564,13 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
     LOGI("This connection is for a LIST command");
     lsResult();
     emit(log("Sending LS result"));
-    tcpSocket->write(packetData.toLatin1());
-    writeBytes(tcpSocket);
+    socket1->write(packetData.toLatin1());
+    writeBytes(socket1);
     LOGI( "LIST command complete");
     break;
   case FTC_STOR:
     storeFile();
+    connect(socket1, SIGNAL(readyRead()), this, SLOT(readyRead()));
     break;
   case FTC_RETR:
     LOGI("RETR not yet implemented");
@@ -607,21 +604,32 @@ void RainbruRPG::Network::Ftp::FtpTransfer::writeBytes(QTcpSocket* s){
 void RainbruRPG::Network::Ftp::FtpTransfer::
 commandSTOR(const QString& filename){
   LOGI("Executing STOR command");
+  nextCommand=FTC_STOR;
+  nextFilename=filename;
+  QTcpSocket* sock;
+  waitForConnection(sock);
+}
+
+/** Store the file we received in data channel
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::storeFile(){
+  QString filename=nextFilename;
   QString s("Receiving file ");
   s+=filename;
+  LOGI(s.toLatin1());
   emit(log(s));
 
   nextCommand=FTC_STOR;
 
-
+  // Do the file already exist ?
   QDir a(currentDirectory);
   if (a.exists(filename)){
     LOGI("The file already exist");
     a.remove(filename);
   }
 
-  QFile f(a.filePath(filename));
-    
+  currentFile=new QFile(a.filePath(filename));
   QIODevice::OpenMode om;
 
   // We are in Binary mode
@@ -633,62 +641,32 @@ commandSTOR(const QString& filename){
     om=QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append;
   }
 
-  if(f.open(om)){
-      
-    QTcpSocket sock;
-    if (waitForConnection(&sock)){
-      emit(waitTransferFile(filename));
-      int rep=0;
-	
-      while(sock.state()==QAbstractSocket::ConnectedState&&(rep!=-1)){
-	LOGI("waitForReadyRead called");
-	sock.waitForReadyRead(3000);
-	LOGI("reading packet...");
-	QByteArray ba=sock.readAll();
-	LOGI("Packet read");
+  bool b=currentFile->open(om);
 
-	rep=f.write(ba);
-	if (rep==-1){
-	  LOGE("An error occured during STOR file writing");
-	  LOGCATS("ErrorString :");
-	  LOGCATS(f.errorString().toLatin1());
-	  break;
-	}
-	else{
-	  LOGCATS("Writing ");
-	  LOGCATI(rep);
-	  LOGCATS(" bytes");
-	  LOGCAT();
-	}
-      }
-      
-      // Transfer complete
-      emit(log("Transfer channel closed"));
-      emit(transferComplete());
-      sock.disconnectFromHost();
-      LOGI("Transfer complete");
-      f.close();
-      
-    }
-  }
-  else{
-    emit(log("An error occured during opening file :"));
-    QFile::FileError fe=f.error();
-    
-    QString feText;
-    if (fe==QFile::OpenError){
-      feText=("5 The file could not be opened.");
-    }
-    else{
-      feText.setNum(fe);
-    }
-    emit(log(feText));
-  }
 }
 
-/** Store the file we received in data channel
+/** A slot called when the socket can be read
   *
   */
-void storeFile(){
+void RainbruRPG::Network::Ftp::FtpTransfer::readyRead(){
+  LOGI("Reading packet");
 
+  switch(nextCommand){
+  case FTC_STOR:
+    QByteArray ba=socket1->readAll();
+    int rep=currentFile->write(ba);
+    if (rep==-1){
+      LOGE("An error occured during STOR file writing");
+      LOGCATS("ErrorString :");
+      LOGCATS(currentFile->errorString().toLatin1());
+      break;
+    }
+    else{
+      LOGCATS("Writing ");
+      LOGCATI(rep);
+      LOGCATS(" bytes");
+      LOGCAT();
+    }
+    break;
+  }
 }
