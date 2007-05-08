@@ -44,7 +44,7 @@ namespace RainbruRPG{
     /** The ftpClient main window
       *
       * It is a simple FTP client used to test the FTP client-side functions
-      * implementation.
+      * implementation. The \c PORT command is not implemented.
       *
       */
     class FtpClientWindow : public FX::FXMainWindow {
@@ -81,7 +81,6 @@ namespace RainbruRPG{
       void logMessage(FXString);
       void showHelpCommand(FXString, FXString);
       void showHelpUser();
-      void showHelpPort();
       void showHelpPass();
       void showHelpPasv();
       void showHelpPwd();
@@ -89,6 +88,8 @@ namespace RainbruRPG{
       void showHelpSyst();
       void showHelpBinary();
       void showHelpAscii();
+      void showHelpStore();
+      void showHelpRetrieve();
 
       void scrollDown();
 

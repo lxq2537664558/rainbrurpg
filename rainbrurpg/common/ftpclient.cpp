@@ -30,6 +30,8 @@
 RainbruRPG::Network::FtpClient::FtpClient(){
   controlSock=NULL;
   controlChannelConnected=false;
+  transferType=FTT_ASCII;
+
 }
 
 /** The destructor
@@ -264,22 +266,118 @@ std::string RainbruRPG::Network::FtpClient::commandSYST(){
 
 /** Switch the server to binary mode
   *
+  * \return The server's response
+  *
   */
 std::string RainbruRPG::Network::FtpClient::commandBINARY(){
   sendString("TYPE I\r\n");
   std::string s=waitControlResponse();
+  transferType=FTT_BINARY;
 
   return s;
-
 }
 
 /** Switch the server to ASCII mode
+  *
+  * \return The server's response
   *
   */
 std::string RainbruRPG::Network::FtpClient::commandASCII(){
   sendString("TYPE A\r\n");
   std::string s=waitControlResponse();
+  transferType=FTT_ASCII;
 
   return s;
+}
+
+/** Send a STOR command with the given file
+  *
+  * \param filename The absolute name of the file to send
+  *
+  * \return The server's response
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::
+commandSTOR(const std::string& filename){
+  char* buffer=(char*)malloc(1024*sizeof(char));
+  if (buffer==NULL){
+    LOGE("Cannot allocate buffer");
+    return "Cannot allocate buffer";
+  }
+
+  boost::filesystem::ifstream fs;
+  gsize bytesWritten;
+
+  // The FTP control command
+  std::string s;
+  s="STOR ";
+  s+=filename;
+
+  if (!boost::filesystem::exists(filename)){
+    LOGW("File does not exist");
+    return "File does not exist";
+  }
+  
+  // Open the file according to the transfer type
+  if (transferType==FTT_BINARY){
+    fs.open( filename, ios::in|ios::binary);
+  }
+  else{
+    fs.open( filename, ios::in);
+
+  }
+
+  // If the file is correctly opened
+  if (fs.is_open()){
+    sendString(s);
+    s+=waitControlResponse();
+
+    if (openDataChannel()){
+
+      // Sending file
+      while (! fs.eof() ){
+	fs.read(buffer, 1024);
+	streamsize bytesRead=fs.gcount();
+
+	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
+	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, &bytesWritten);
+
+
+
+	LOGCATS("Writing ");
+	LOGCATI(bytesRead);
+	LOGCATS(" bytes");
+	LOGCAT();
+
+      }
+      fs.close();
+
+    }
+    LOGI("Waiting for second control response");
+    s+=waitControlResponse();
+    
+    closeDataChannel();
+  }
+  else{
+    LOGE("An error occured during opening file");
+  }
+
+  // Memory deallocation
+  if (buffer!=NULL){
+    free(buffer);
+  }
+
+
+}
+
+/** Send a RETR command with the given file
+  *
+  * \param filename The name of the server's file
+  *
+  * \return The server's response
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::
+commandRETR(const std::string& filename){
 
 }

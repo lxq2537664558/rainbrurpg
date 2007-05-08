@@ -424,6 +424,8 @@ commandRETR(const QString& filename){
   s+=filename;
   emit(log(s));
 
+  nextCommand=FTC_RETR;
+
   const char* aze=filename.toLatin1();
   const char* aze2=QDir::currentPath().toLatin1();
   LOGCATS("Opening file '");
@@ -509,6 +511,94 @@ void RainbruRPG::Network::Ftp::FtpTransfer::switchToAsciiType(){
   transferType=FTT_ASCII;
 }
 
+
+/** Send the packet for the LS command
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
+  // The socket::write returned value
+  int rep;
+
+  nextCommand=FTC_LIST;
+
+  QTcpSocket* sock;
+  if (waitForConnection(sock)){
+    lsResult();
+    emit(log("Sending LS result"));
+
+    // If we are in ACTIVE mode, we can use the socket
+    // returned by waitForConnection() else, the packetData content
+    // is write in the newConnection() function
+    if (transferMode==FTM_ACTIVE){
+      rep=sock->write(packetData.toLatin1());
+
+      if (rep==-1){
+	LOGE("An error occured during LIST command");
+      }
+
+      LOGI("Waiting for writing bytes");
+      
+      writeBytes(sock);
+      LOGI( "LIST command complete");
+    }
+  }
+}
+
+/** A new connection was requested
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
+  emit(log( "A new connection is requested on transfer channel" ));
+  LOGI("A new connection is requested on transfer channel" );
+
+  QTcpSocket *tcpSocket=server->nextPendingConnection();
+
+  descriptor=tcpSocket->socketDescriptor();
+  LOGCATS("Socket descriptor is ");
+  LOGCATI( descriptor );
+  LOGCAT();
+  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
+  tcpSocket=tcpSocket;
+
+  switch(nextCommand){
+  case FTC_NONE:
+    LOGW("New connection has no pending command...CLOSED");
+    break;
+  case FTC_LIST:
+    LOGI("This connection is for a LIST command");
+    lsResult();
+    emit(log("Sending LS result"));
+    tcpSocket->write(packetData.toLatin1());
+    writeBytes(tcpSocket);
+    LOGI( "LIST command complete");
+    break;
+  case FTC_STOR:
+    storeFile();
+    break;
+  case FTC_RETR:
+    LOGI("RETR not yet implemented");
+    break;
+
+  }
+
+}
+
+/** Waits for the queued bytes to be wrote and close the channel
+  *
+  * \param s The socket to flush and close
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::writeBytes(QTcpSocket* s){
+  if (s->waitForBytesWritten(3000)){
+    emit(transferComplete());
+    s->disconnectFromHost();
+    emit(log("Transfer channel closed"));
+  }
+  else{
+    LOGE("An error occured during waitForBytesWritten execution");
+  }
+}
+
 /** A file is sent by the host
   *
   * \param filename The filename to create
@@ -520,6 +610,9 @@ commandSTOR(const QString& filename){
   QString s("Receiving file ");
   s+=filename;
   emit(log(s));
+
+  nextCommand=FTC_STOR;
+
 
   QDir a(currentDirectory);
   if (a.exists(filename)){
@@ -593,83 +686,9 @@ commandSTOR(const QString& filename){
   }
 }
 
-/** Send the packet for the LS command
+/** Store the file we received in data channel
   *
   */
-void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
-  // The socket::write returned value
-  int rep;
+void storeFile(){
 
-  nextCommand=FTC_LIST;
-
-  QTcpSocket* sock;
-  if (waitForConnection(sock)){
-    lsResult();
-    emit(log("Sending LS result"));
-
-    // If we are in ACTIVE mode, we can use the socket
-    // returned by waitForConnection() else, the packetData content
-    // is write in the newConnection() function
-    if (transferMode==FTM_ACTIVE){
-      rep=sock->write(packetData.toLatin1());
-
-      if (rep==-1){
-	LOGE("An error occured during LIST command");
-      }
-
-      LOGI("Waiting for writing bytes");
-      
-      writeBytes(sock);
-      LOGI( "LIST command complete");
-    }
-  }
-}
-
-/** A new connection was requested
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
-  emit(log( "A new connection is requested on transfer channel" ));
-  LOGI("A new connection is requested on transfer channel" );
-
-  QTcpSocket *tcpSocket=server->nextPendingConnection();
-
-  descriptor=tcpSocket->socketDescriptor();
-  LOGCATS("Socket descriptor is ");
-  LOGCATI( descriptor );
-  LOGCAT();
-  //  connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readSocket()));
-  tcpSocket=tcpSocket;
-
-  switch(nextCommand){
-  case FTC_NONE:
-    LOGW("New connection has no pending command...CLOSED");
-    break;
-  case FTC_LIST:
-    LOGI("This connection is for a LIST command");
-    lsResult();
-    emit(log("Sending LS result"));
-    tcpSocket->write(packetData.toLatin1());
-    writeBytes(tcpSocket);
-    LOGI( "LIST command complete");
-    break;
-
-  }
-
-}
-
-/** Waits for the queued bytes to be wrote and close the channel
-  *
-  * \param s The socket to flush and close
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::writeBytes(QTcpSocket* s){
-  if (s->waitForBytesWritten(3000)){
-    emit(transferComplete());
-    s->disconnectFromHost();
-    emit(log("Transfer channel closed"));
-  }
-  else{
-    LOGE("An error occured during waitForBytesWritten execution");
-  }
 }

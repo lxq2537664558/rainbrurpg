@@ -95,6 +95,7 @@ namespace RainbruRPG{
       private:
 	void lsResult();
 	void writeBytes(QTcpSocket*);
+	void storeFile();
 
 	QString fileSizeToString(qint64);
 	QString filePermissions(bool,bool,bool);

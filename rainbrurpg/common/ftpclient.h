@@ -30,11 +30,14 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include <gnet.h>
 #include <glib.h>
 
 #include "ftpdef.h"
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/fstream.hpp"
 
 using namespace std;
 
@@ -68,6 +71,8 @@ namespace RainbruRPG {
       std::string waitControlResponse();
       std::string commandBINARY();
       std::string commandASCII();
+      std::string commandSTOR(const std::string&);
+      std::string commandRETR(const std::string&);
 
     private:
       void sendString(const std::string&);
@@ -85,6 +90,10 @@ namespace RainbruRPG {
 
       /** Is the control channel connected ? */
       bool controlChannelConnected;
+
+      /** Are we in FTT_BINARY or FTT_ASCII ? */
+      tTransferType transferType;
+
     };
 
   }

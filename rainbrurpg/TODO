@@ -2,18 +2,18 @@ TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
 
-o [mouse] Unittest implementation in common/
+* Unittest implementation in common/
 - In this order
    curlinterface
    curlpersoheaderadd
 
 * FTP client
-- ftpclient::commandBINARY implementation (TYPE I)
-- ftpclient::commandASCII implementation (TYPE A)
-- ftpclient::commandSTORE implementation
+  [ftptransfer.cpp:646] WW New connection has no pending command...CLOSED
+
 - ftpclient::commandRETR implementation
 
-* FTP Server
+o [mouse] FTP Server
+- FtpTransfer::storeFile implementation
 - During a transfer, the GUI is blocked
 - The control channel only accepts one client
 - STOR still make an error log entry if the sent file is 0 bytes size
@@ -121,6 +121,12 @@ o [mouse] Unittest implementation in common/
 * *******************************************************
 
 * v 0.0.4-133
+- ftpclient::commandSTORE implementation
+- FtpClientWindow help text for STOR and RETR
+- FtpClientWindow : add STORE and RETR in the global help text
+- ftpclient::commandBINARY implementation (TYPE I)
+- ftpclient::commandASCII implementation (TYPE A)
+- Remove the PORT command from the FtpClient help (not used)
 - common/FtpClient's typedef in a ftpdef.h
 - Binary and Ascii commands sent to the server
 - Help for Binary and Ascii

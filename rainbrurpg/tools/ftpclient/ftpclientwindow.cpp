@@ -151,6 +151,8 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
   FXString str;
   str=(FX::FXchar*)v;
 
+  FXString filename=(FX::FXchar*)v;
+
   // If the entered text is not empty
   if (!str.empty()){
 
@@ -166,9 +168,6 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     if (str.contains("HELP")!=0){
       if (str.contains("USER")!=0){
 	showHelpUser();
-      }
-      else if (str.contains("PORT")!=0){
-	showHelpPort();
       }
       else if (str.contains("PASS")!=0){
 	showHelpPass();
@@ -190,6 +189,12 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       }
       else if (str.contains("ASCII")!=0){
 	showHelpAscii();
+      }
+      else if (str.contains("STOR")!=0){
+	showHelpStore();
+      }
+      else if (str.contains("RETR")!=0){
+	showHelpRetrieve();
       }
       else{
 	onHelp(NULL,0,NULL);
@@ -221,6 +226,21 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     }
     else if (str.contains("ASCII")!=0){
       string s=ftpClient->commandASCII();
+      logMessage(s.c_str());
+    }
+    else if (str.contains("STOR")!=0){
+      // because str is in UPPER case
+      // I get the no-upper string
+      int pos = str.find("STOR", 0);
+      filename.erase( pos, 5 );
+
+      LOGCATS("Filename :");
+      LOGCATS(filename.text());
+      LOGCAT();
+
+    std:string fn(filename.text());
+
+      string s=ftpClient->commandSTOR(fn);
       logMessage(s.c_str());
     }
     else{
@@ -292,24 +312,26 @@ onHelp(FXObject* o,FXSelector s,void* v){
   LOGI("Help text requested");
 
   fxText->appendText( "RainbruRPG FTPClient help :\n" );
-  showHelpCommand("USER <username>", "Use username to log to the server");
-  showHelpCommand("PASS <password>", "Enter user password");
-  showHelpCommand("PORT <IP adress> <port>", 
-		  "Change host and port used for data channel");
+  showHelpCommand("ASCII",
+		  "The server send files in ASCII mode (TYPE A)");
+  showHelpCommand("BINARY",
+		  "The server send files in BINARY mode (TYPE I)");
   showHelpCommand("HELP <command>", 
 		  "A more detailled description of a command");
+  showHelpCommand("LIST",
+		  "Prints the content of the server's working directory");
+  showHelpCommand("PASS <password>", "Enter user password");
   showHelpCommand("PASV",
 		  "Toggle the transfer mode (Active/Passive)");
   showHelpCommand("PWD",
 		  "Prints the server's working directory");
-  showHelpCommand("LIST",
-		  "Prints the content of the server's working directory");
+  showHelpCommand("RETR",
+		  "Get a file from the server");
+  showHelpCommand("STOR",
+		  "Send a file to the server");
   showHelpCommand("SYST",
 		  "Prints the host type");
-  showHelpCommand("BINARY",
-		  "The server send files in BINARY mode (TYPE I)");
-  showHelpCommand("ASCII",
-		  "The server send files in ASCII mode (TYPE A)");
+  showHelpCommand("USER <username>", "Use username to log to the server");
 
   return 1;
 }
@@ -344,24 +366,6 @@ showHelpCommand(FXString title, FXString text){
   fxText->appendStyledText( title, FXText::STYLE_BOLD );
   fxText->appendText( text2 );
   scrollDown();
-}
-
-/** Show the help text on the PORT command
-  *
-  */
-void RainbruRPG::Gui::FtpClientWindow::showHelpPort(){
-  FXString help;
-  help+=            "Change the port of the FTP data channel. This port will\n";
-  help+= HELP_INDENT"be used by the server to connect the data channel to\n";
-  help+= HELP_INDENT"when needed. This is a convenient command, not in native\n";
-  help+= HELP_INDENT"FTP format.\n";
-
-  help+= HELP_INDENT"The native format of the PORT command is: .\n";
-  help+= HELP_INDENT"PORT h1,h2,h3,h4,p1,p2. See FTC 0959 for further .\n";
-  help+= HELP_INDENT"informations.\n";
-
-  showHelpCommand("PORT <IP adress> <port>", help);
-
 }
 
 /** Show the help text on the PASS command
@@ -468,5 +472,30 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpAscii(){
   help+= HELP_INDENT"will now be in ascii.\n";
 
   showHelpCommand("ASCII", help);
+
+}
+
+/** Show a help text on the STOR command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpStore(){
+  FXString help;
+  help+=            "Send the file named filename to the server. The name\n";
+  help+= HELP_INDENT"should contain absolute path.\n";
+
+  showHelpCommand("STOR <filename>", help);
+
+}
+
+/** Show a help text on the RETR command
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::showHelpRetrieve(){
+  FXString help;
+  help+=            "Get the given file from the server. The filename\n";
+  help+= HELP_INDENT"should not contain path. Thefile will be saved in\n";
+  help+= HELP_INDENT"the user directory.\n";
+
+  showHelpCommand("RETR <filename>", help);
 
 }
