@@ -76,7 +76,7 @@ namespace RainbruRPG{
 	/** The data channel */
 	FtpTransfer* transfer;
 	/** The tree showing current downloads */
-	QTreeWidget* tree;
+	Q3ListView* tree;
       };
       
     }

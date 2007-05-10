@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 10 may 2007 : Now inherits from Q3ListViewItem
  * - 20 apr 2007 : Starting implementation
  */
 
@@ -28,6 +29,10 @@
 #define TRANSFER_VISUAL_H_
 
 #include <QString>
+#include <Qt3Support>
+#include <QPainter>
+#include <QGradient>
+#include <QBrush>
 
 namespace RainbruRPG{
   namespace Network{
@@ -35,12 +40,12 @@ namespace RainbruRPG{
 
       /** A visual representation of a FTP transfer
         *
-	* It is used by FtpTransfer et FtpServer.
+	* It is used by FtpTransfer and FtpServer in a Q3ListView.
 	*
 	*/
-      class TransferVisual{
+      class TransferVisual : public Q3ListViewItem{
       public:
-	TransferVisual();
+	TransferVisual(Q3ListView*);
 	~TransferVisual();
 
 	void setIp(const QString&);
@@ -48,6 +53,8 @@ namespace RainbruRPG{
 	
 	void setFilename(const QString&, const QString&);
 	const QString& getFilename()const;
+
+	virtual void paintCell(QPainter*, const QColorGroup & , int , int , int);
 	
 	void setCommingIn(bool);
 	void setRate(double);

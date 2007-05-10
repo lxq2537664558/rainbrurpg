@@ -24,11 +24,15 @@
 
 #include "transfervisual.h"
 
+#include "logger.h"
+
 /** The default constructor
   *
   */
-RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(){
+RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
+  :Q3ListViewItem(parent){
 
+  rate=2.78;
 }
 
 /** The destructor
@@ -155,4 +159,97 @@ int RainbruRPG::Network::Ftp::TransferVisual::getFileSize(){
   */
 int RainbruRPG::Network::Ftp::TransferVisual::getDownloaded(){
   return downloaded;
+}
+
+/** Paint a cell of the ViewItem
+  *
+  * \param painter The paint where we draw the item
+  * \param cg The color group we can use to draw
+  * \param column The index of the column to draw
+  * \param width The width of the cell
+  * \param align Not yet used
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+paintCell( QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align ){
+
+  QImage imIn(":/images/transferIn.png");
+  QImage imOut(":/images/transferOut.png");
+
+  if (isSelected()){
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(cg.color(QPalette::Highlight));
+    painter->drawRect(0, 0, width, height());
+  }
+
+  QLinearGradient linearGrad(QPointF(0, 0), QPointF(0, height()));
+  linearGrad.setColorAt(0,    QColor( 34,  80, 184));
+  linearGrad.setColorAt(0.25, QColor(150, 189, 231));
+  linearGrad.setColorAt(0.50, QColor( 88, 154, 227));
+  linearGrad.setColorAt(0.75, QColor(150, 189, 231));
+  linearGrad.setColorAt(1,    QColor(127, 205, 255));
+
+  QLinearGradient linearGrad2(QPointF(0, 0), QPointF(0, height()));
+  linearGrad2.setColorAt(0,    QColor(163, 163, 163));
+  linearGrad2.setColorAt(0.25, QColor(231, 231, 231));
+  linearGrad2.setColorAt(0.50, QColor(217, 217, 217));
+  linearGrad2.setColorAt(0.75, QColor(244, 244, 244));
+  linearGrad2.setColorAt(1,    QColor(248, 248, 248));
+
+  QPen pen(Qt::gray, 1); 
+
+  if (column==4){
+    // Drawing ProgressBar
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(QBrush(linearGrad));
+    painter->drawRect( 2, 2, width/2, height()-4 );
+    painter->setBrush(QBrush(linearGrad2));
+    painter->drawRect( width/2, 2, width/2-2, height()-4 );
+
+    painter->setPen(pen);
+    painter->setBrush(Qt::NoBrush);
+    painter->drawRect(0, 0, width-1, height()-1);
+
+    QFont f=painter->font();
+    f.setPointSize(f.pointSize()-1);
+
+    painter->setFont(f);
+    painter->setPen(Qt::black);
+    painter->drawText( 1, 1, width, height(), Qt::AlignCenter, "50%");
+  }
+  else{
+
+    painter->setPen(Qt::black);
+    QString s;
+    switch(column){
+    case 0:
+      s=ip;
+      painter->drawText( 0, 0, width, height(), Qt::AlignLeft, s);
+      break;
+    case 1:
+      s=filename;
+      painter->drawText( 0, 0, width, height(), Qt::AlignLeft, s);
+      break;
+    case 2:
+      if (commingIn){
+	int x=width/2-(imIn.width()/2);
+	painter->drawImage(x, 0, imIn);
+      }
+      else{
+	int x=width/2-(imOut.width()/2);
+	painter->drawImage(x, 0, imOut);
+      }
+      break;
+    case 3:
+      s=QString::number(rate, 'f', 2);;
+      s+=" kb/s";
+      painter->drawText( 0, 0, width, height(), Qt::AlignRight, s);
+      break;
+    }
+    
+    LOGCATS("height =");
+    LOGCATI(height());
+    LOGCAT();
+  }
 }

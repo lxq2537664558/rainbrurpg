@@ -44,23 +44,13 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   // Transfert widgets
   QLabel* lab2=new QLabel(tr("Transfert :"), this);
   mainLayout->addWidget(lab2);
-  tree=new QTreeWidget(this);
-  QStringList sl;
-  sl << "Ip" << "Filename" << "In/Out" << "Rate" << "Progress";
-  tree->setHeaderLabels( sl );
+  tree=new Q3ListView(this);
+  tree->addColumn("Ip");
+  tree->addColumn("Filename");
+  tree->addColumn("In/Out");
+  tree->addColumn("Rate");
+  tree->addColumn("Progress", 150);
   mainLayout->addWidget(tree);
-
-  // A try
-  QGridLayout* grid=new QGridLayout(this);
-  mainLayout->addLayout(grid);
-  QLabel* lab100=new QLabel("Filename", this);
-  grid->addWidget(lab100, 0, 0);
-  QProgressBar* pg1=new QProgressBar(this);
-  grid->addWidget(pg1, 1, 0);
-
-
-
-
 
 
 
@@ -115,10 +105,17 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
 	  control, SLOT(transferComplete()));
 
 
-  TransferVisual* tv=new TransferVisual();
+  TransferVisual* tv=new TransferVisual(tree);
   tv->setIp("123.23.12.123");
   tv->setFilename("essai.txt", "home/aze");
   addTransfer(tv);
+
+  TransferVisual* tv2=new TransferVisual(tree);
+  tv2->setIp("192.168.0.1");
+  tv2->setFilename("azezertar.gz", "home/aze");
+  tv2->setCommingIn(false);
+  addTransfer(tv2);
+
 }
 
 /** The destructor
@@ -147,8 +144,5 @@ void RainbruRPG::Network::Ftp::FtpServer::log(const QString&s){
   *
   */
 void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
-  QTreeWidgetItem *wi=new QTreeWidgetItem();
-  wi->setText(0,tv->getIp());
-  wi->setText(1,tv->getFilename());
-  tree->addTopLevelItem(wi);
+  tree->insertItem(tv);
 }

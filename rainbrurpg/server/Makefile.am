@@ -2,13 +2,15 @@
 bin_PROGRAMS = rainbrurpg-server
 
 rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql
+			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql \
+			-lQt3Support
 
-glib_cflags = $(shell pkg-config glib-2.0 --cflags) 
+glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
 
 INCLUDES = -I$(top_srcdir)/common \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
-           -I/usr/include/qt4/QtCore  $(glib_cflags)
+           -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
+	   $(glib_cflags)
 
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
 # Remember to include the name of the resource file with the .cpp extension.

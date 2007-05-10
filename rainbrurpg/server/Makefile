@@ -123,7 +123,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-05-03
+ISODATE = 2007-05-09
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -205,12 +205,14 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 rainbrurpg_server_LDADD = -lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql
+			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql \
+			-lQt3Support
 
-glib_cflags = $(shell pkg-config glib-2.0 --cflags) 
+glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
 INCLUDES = -I$(top_srcdir)/common \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
-           -I/usr/include/qt4/QtCore  $(glib_cflags)
+           -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
+	   $(glib_cflags)
 
 
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
