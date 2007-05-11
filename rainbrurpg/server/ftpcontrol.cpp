@@ -180,7 +180,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  int i=hex.toInt(&ok, 16);
 
 	  // Find the IP adress
-
 	  QString h1=list1.at(0);
 	  QString h2=h1.right(h1.length()-4);
 	  h2+=".";
@@ -203,6 +202,12 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
+
+
+	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
+				 h1, false));
+
+
 	  emit(log(l));
 	  emit(commandRETR(h1));
 	}
@@ -213,6 +218,10 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
+
+	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
+				 h1, true));
+
 	  emit(log(l));
 	  tcpSocket->write("200 Data channel ready.\r\n");
 	  emit(commandSTOR(h1));

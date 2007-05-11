@@ -5,15 +5,17 @@ stor /home/mouse/neededLibs.tar.gz
 
 * Unittest implementation in common/
 - In this order
-   curlinterface
    curlpersoheaderadd
-
+   curlpersomodifattrb.h  
+   curlposteddata.h     
+   curlserveradd.h       
+   curlserverdelete.h     
+   curlservermodifclients.h   
+   curlsubmitform.h
 * FTP client
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- A problem with TransferVisual images background when selected
-- Create a treeviewItem for each transfer
 - Update the treeview item for each packet wrote or received
 - The control channel only accepts one client
 - Implementation de USER <username>
@@ -118,6 +120,10 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-134
+- Create a treeviewItem for each transfer 
+- The ProgressBar represents (downloaded*100)/filesize
+- A problem with TransferVisual images background when selected
+Fixed with a transparent background color
 - TransferVisual uses the selected ColorGroup
 - TransferVisual uses images for transfer direction
 - server/images/transferIn.png and transferOut.png added to

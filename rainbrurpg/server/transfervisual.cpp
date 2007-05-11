@@ -110,6 +110,7 @@ void RainbruRPG::Network::Ftp::TransferVisual::setRate(double d){
   */
 void RainbruRPG::Network::Ftp::TransferVisual::setFileSize(int i){
   filesize=i;
+  computePercent();
 }
 
 /** Set the total downloaded bytes
@@ -119,6 +120,7 @@ void RainbruRPG::Network::Ftp::TransferVisual::setFileSize(int i){
   */
 void RainbruRPG::Network::Ftp::TransferVisual::setDownloaded(int i){
   downloaded=i;
+  computePercent();
 }
 
 /** Get the transfer sense
@@ -200,12 +202,17 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   QPen pen(Qt::gray, 1); 
 
   if (column==4){
+
+    int totalW=width-4;
+    int leftW=(int)(totalW*percent)/100;
+    int rightW=totalW-leftW;
+
     // Drawing ProgressBar
     painter->setPen(Qt::NoPen);
     painter->setBrush(QBrush(linearGrad));
-    painter->drawRect( 2, 2, width/2, height()-4 );
+    painter->drawRect( 2, 2, leftW, height()-4 );
     painter->setBrush(QBrush(linearGrad2));
-    painter->drawRect( width/2, 2, width/2-2, height()-4 );
+    painter->drawRect( leftW+2, 2, rightW, height()-4 );
 
     painter->setPen(pen);
     painter->setBrush(Qt::NoBrush);
@@ -216,7 +223,10 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
 
     painter->setFont(f);
     painter->setPen(Qt::black);
-    painter->drawText( 1, 1, width, height(), Qt::AlignCenter, "50%");
+
+    QString s=QString::number(percent, 'f', 2);
+    s+=" %";
+    painter->drawText( 0, 0, width, height(), Qt::AlignCenter, s );
   }
   else{
 
@@ -225,31 +235,39 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
     switch(column){
     case 0:
       s=ip;
-      painter->drawText( 0, 0, width, height(), Qt::AlignLeft, s);
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignLeft|Qt::AlignVCenter, s);
       break;
     case 1:
       s=filename;
-      painter->drawText( 0, 0, width, height(), Qt::AlignLeft, s);
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignLeft|Qt::AlignVCenter, s);
       break;
     case 2:
       if (commingIn){
 	int x=width/2-(imIn.width()/2);
-	painter->drawImage(x, 0, imIn);
+	int y=height()/2-(imIn.height()/2);
+	painter->drawImage(x, y, imIn);
       }
       else{
 	int x=width/2-(imOut.width()/2);
-	painter->drawImage(x, 0, imOut);
+	int y=height()/2-(imIn.height()/2);
+	painter->drawImage(x, y, imOut);
       }
       break;
     case 3:
-      s=QString::number(rate, 'f', 2);;
+      s=QString::number(rate, 'f', 2);
       s+=" kb/s";
-      painter->drawText( 0, 0, width, height(), Qt::AlignRight, s);
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, s);
       break;
     }
-    
-    LOGCATS("height =");
-    LOGCATI(height());
-    LOGCAT();
   }
+}
+
+/** Compute the downloaded bytes percent
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
+  percent=(float)(downloaded*100)/filesize;
 }

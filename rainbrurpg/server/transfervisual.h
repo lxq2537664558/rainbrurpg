@@ -54,7 +54,8 @@ namespace RainbruRPG{
 	void setFilename(const QString&, const QString&);
 	const QString& getFilename()const;
 
-	virtual void paintCell(QPainter*, const QColorGroup & , int , int , int);
+	virtual void paintCell(QPainter*, const QColorGroup & , int , 
+			       int , int);
 	
 	void setCommingIn(bool);
 	void setRate(double);
@@ -65,6 +66,8 @@ namespace RainbruRPG{
 	double getRate();
 	int getFileSize();
 	int getDownloaded();
+
+	void computePercent();
 
       private:
 	/** The IP adress of the connected client */
@@ -79,6 +82,8 @@ namespace RainbruRPG{
 	int filesize;
 	/** The bytes already downloaded */
 	int downloaded;
+	/** The percent of downloeded bytes */
+	float percent;
       };
 
     }

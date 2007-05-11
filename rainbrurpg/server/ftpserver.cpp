@@ -45,11 +45,11 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   QLabel* lab2=new QLabel(tr("Transfert :"), this);
   mainLayout->addWidget(lab2);
   tree=new Q3ListView(this);
-  tree->addColumn("Ip");
-  tree->addColumn("Filename");
+  tree->addColumn("Ip", 120);
+  tree->addColumn("Filename", 160);
   tree->addColumn("In/Out");
-  tree->addColumn("Rate");
-  tree->addColumn("Progress", 150);
+  tree->addColumn("Rate", 70);
+  tree->addColumn("Progress", 200);
   mainLayout->addWidget(tree);
 
 
@@ -104,17 +104,18 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   connect(transfer, SIGNAL(transferComplete()), 
 	  control, SLOT(transferComplete()));
 
+  // Transfer visual management
+ connect(control,SIGNAL(addTransferVisual(const QString&,const QString&,bool)),
+	  this, SLOT(addTransferVisual(const QString&, const QString&, bool)));
+
 
   TransferVisual* tv=new TransferVisual(tree);
-  tv->setIp("123.23.12.123");
+  tv->setIp("255.255.255.255");
   tv->setFilename("essai.txt", "home/aze");
+  tv->setFileSize(453200);
+  tv->setDownloaded(4388);
   addTransfer(tv);
 
-  TransferVisual* tv2=new TransferVisual(tree);
-  tv2->setIp("192.168.0.1");
-  tv2->setFilename("azezertar.gz", "home/aze");
-  tv2->setCommingIn(false);
-  addTransfer(tv2);
 
 }
 
@@ -145,4 +146,16 @@ void RainbruRPG::Network::Ftp::FtpServer::log(const QString&s){
   */
 void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
   tree->insertItem(tv);
+}
+
+
+void RainbruRPG::Network::Ftp::FtpServer::
+addTransferVisual(const QString& ip, const QString& filename, bool commingIn){
+
+  TransferVisual* tv2=new TransferVisual(tree);
+  tv2->setIp(ip);
+  tv2->setFilename(filename, "");
+  tv2->setCommingIn(commingIn);
+  addTransfer(tv2);
+
 }

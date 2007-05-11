@@ -32,9 +32,7 @@
 #include <QtGui/QTextEdit>
 #include <QtGui/QtGui>
 #include <QtGui/QTreeWidget>
-
 #include <ftpdef.h>
-
 
 #include "ftpcontrol.h"
 #include "ftptransfer.h"
@@ -66,8 +64,12 @@ namespace RainbruRPG{
 	
      public slots:
        void log(const QString&);
-	void addTransfer(TransferVisual*);
+       void addTransfer(TransferVisual*);
 	
+       void addTransferVisual(const QString& ip, const QString& filename, bool commingIn);
+
+
+
       private:
 	/** The widget used to log messages */
 	QTextEdit* textEdit;
