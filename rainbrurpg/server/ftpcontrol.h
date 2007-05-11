@@ -78,7 +78,7 @@ namespace RainbruRPG{
 	  * \param commingIn Is the file sent by the client ?
 	  *
 	  */
-	void addTransferVisual(const QString& ip, const QString& filename, bool commingIn);
+	void addTransferVisual(const QString& ip, const QString& filename, bool commingIn, int filesize);
 
       public slots:
 	void transferComplete();
@@ -105,6 +105,10 @@ namespace RainbruRPG{
 
 	/** Account list used in user log in verification */
 	xmlAccountList accountList;
+	/** The next file size in bytes */
+	int nextFilesize;
+	/** Next filename of the file to store */
+	QString nextStoredFile;
       };
     }
   }

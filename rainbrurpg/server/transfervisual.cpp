@@ -32,7 +32,11 @@
 RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
   :Q3ListViewItem(parent){
 
-  rate=2.78;
+  rate=0;
+  filesize=3000000;
+  downloaded=0;
+  percent=0;
+  filesize=0;
 }
 
 /** The destructor
@@ -71,6 +75,7 @@ void RainbruRPG::Network::Ftp::TransferVisual::setFilename(const QString& file, 
   this->filename=path;
   this->filename+="/";
   this->filename+=file;
+
 }
 
 /** Gets the absolute filename of the file
@@ -201,7 +206,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
 
   QPen pen(Qt::gray, 1); 
 
-  if (column==4){
+  if (column==5){
 
     int totalW=width-4;
     int leftW=(int)(totalW*percent)/100;
@@ -261,6 +266,10 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, s);
       break;
+    case 4:
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
+      break;
     }
   }
 }
@@ -270,4 +279,59 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   */
 void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
   percent=(float)(downloaded*100)/filesize;
+}
+
+/** Adds the given bytes to the downloaded total
+  *
+  * \param bytes The number of bytes to add
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::addBytes(int bytes){
+  downloaded+=bytes;
+  computePercent();
+  repaint();
+}
+
+/** The Q3ListViewItem::text function override
+  *
+  * \param column The column of the item
+  *
+  * \return The text of the column
+  *
+  */
+QString RainbruRPG::Network::Ftp::TransferVisual::text( int column )const{
+  switch(column){
+  case 0:
+    return ip;
+    break;
+  case 1:
+    return filename;
+    break;
+  default:
+    return "";
+    break;
+  }
+}
+
+QString RainbruRPG::Network::Ftp::TransferVisual::fileSizeToString(){
+  QString s;
+
+  float fs;
+
+  if (filesize>1000000){
+    fs=filesize/1000000;
+    s+=QString::number(fs, 'f', 2);
+    s+=" Mb";
+  }
+  else if (filesize>1000){
+    fs=filesize/1000;
+    s+=QString::number(fs, 'f', 2);
+    s+=" kb";
+  }
+  else{
+    s+=QString::number(filesize);
+    s+=" b";
+  }
+
+  return s;
 }

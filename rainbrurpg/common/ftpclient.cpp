@@ -23,6 +23,7 @@
 #include "ftpclient.h"
 
 #include "logger.h"
+#include "stringconv.h"
 
 /** The default constructor
   *
@@ -351,6 +352,14 @@ commandSTOR(const std::string& filename){
     sendString(s);
     s+=waitControlResponse();
 
+    // send file size
+    int i=boost::filesystem::file_size(filename);
+
+    std::string fileSize="FSIZE ";
+    fileSize+=StringConv::getSingleton().itos(i);
+    sendString(fileSize);
+    s+=waitControlResponse();
+
     if (openDataChannel()){
 
       // Sending file
@@ -361,16 +370,12 @@ commandSTOR(const std::string& filename){
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
 	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, &bytesWritten);
 
-
-
 	LOGCATS("Writing ");
 	LOGCATI(bytesRead);
 	LOGCATS(" bytes");
 	LOGCAT();
-
       }
       fs.close();
-
     }
     LOGI("Waiting for second control response");
     s+=waitControlResponse();

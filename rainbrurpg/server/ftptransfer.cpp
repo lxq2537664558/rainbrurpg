@@ -649,8 +649,6 @@ void RainbruRPG::Network::Ftp::FtpTransfer::storeFile(){
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::readyRead(){
-  LOGI("Reading packet");
-
   switch(nextCommand){
   case FTC_STOR:
     QByteArray ba=socket1->readAll();
@@ -659,13 +657,11 @@ void RainbruRPG::Network::Ftp::FtpTransfer::readyRead(){
       LOGE("An error occured during STOR file writing");
       LOGCATS("ErrorString :");
       LOGCATS(currentFile->errorString().toLatin1());
+      LOGCAT();
       break;
     }
     else{
-      LOGCATS("Writing ");
-      LOGCATI(rep);
-      LOGCATS(" bytes");
-      LOGCAT();
+      updateTransferVisual(socket1->peerAddress().toString(), rep);
     }
     break;
   }

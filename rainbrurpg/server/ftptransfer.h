@@ -78,7 +78,13 @@ namespace RainbruRPG{
 	void switchToActiveMode();
 	/** A signal emitted when the server switch to passive mode */
 	void switchToPassiveMode();
-
+	/** Update the TransferVisual
+	  *
+	  * \param ip The peer IP adress
+	  * \param bytes The number of bytes read or written
+	  *
+	  */
+	void updateTransferVisual(const QString& ip, int bytes);
       public slots:
 	void changeHost(const QString&, int);
 	void commandLIST();

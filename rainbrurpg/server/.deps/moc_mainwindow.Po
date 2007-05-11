@@ -688,7 +688,7 @@ moc_mainwindow.o moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
   /usr/include/qt4/Qt3Support/q3dockarea.h \
   /usr/include/qt4/Qt3Support/q3dockwindow.h \
   /usr/include/qt4/QtGui/QPainter /usr/include/qt4/QtGui/QGradient \
-  /usr/include/qt4/QtGui/QBrush
+  /usr/include/qt4/QtGui/QBrush /usr/include/qt4/QtCore/QFileInfo
 
 mainwindow.h:
 
@@ -2497,3 +2497,5 @@ transfervisual.h:
 /usr/include/qt4/QtGui/QGradient:
 
 /usr/include/qt4/QtGui/QBrush:
+
+/usr/include/qt4/QtCore/QFileInfo:

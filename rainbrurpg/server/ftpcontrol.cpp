@@ -37,6 +37,8 @@ RainbruRPG::Network::Ftp::FtpControl::FtpControl(quint16 port)
   currentDirectory="/home/mouse";
 
   descriptor=1;
+  nextFilesize=0;
+
   server=new QTcpServer();
 
 
@@ -205,7 +207,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 
 	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
-				 h1, false));
+				 h1, false, 0));
 
 
 	  emit(log(l));
@@ -218,13 +220,9 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
-
-	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
-				 h1, true));
-
+	  nextStoredFile=h1;
 	  emit(log(l));
-	  tcpSocket->write("200 Data channel ready.\r\n");
-	  emit(commandSTOR(h1));
+	  tcpSocket->write("200 waiting FSIZE command.\r\n");
 	}
 	else if (s.contains("TYPE I")){
 	  emit(switchToBinaryType());
@@ -233,6 +231,19 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if (s.contains("TYPE A")){
 	  emit(switchToAsciiType());
 	  tcpSocket->write("200 Type set to ASCII.\r\n");
+	}
+	else if(s.contains("FSIZE")){
+	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
+	  QString h1=list1.at(1);
+	  h1.chop(2);
+	  h1=h1.simplified();
+	  nextFilesize=h1.toInt();
+
+	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
+				 nextStoredFile, true, nextFilesize));
+
+	  tcpSocket->write("200 Data channel ready.\r\n");
+	  emit(commandSTOR(nextStoredFile));
 	}
 	else{
 	  //	std::string s20(s.toLatin1());

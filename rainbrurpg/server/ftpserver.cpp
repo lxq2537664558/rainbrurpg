@@ -49,6 +49,7 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   tree->addColumn("Filename", 160);
   tree->addColumn("In/Out");
   tree->addColumn("Rate", 70);
+  tree->addColumn("Size", 100);
   tree->addColumn("Progress", 200);
   mainLayout->addWidget(tree);
 
@@ -105,9 +106,11 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
 	  control, SLOT(transferComplete()));
 
   // Transfer visual management
- connect(control,SIGNAL(addTransferVisual(const QString&,const QString&,bool)),
-	  this, SLOT(addTransferVisual(const QString&, const QString&, bool)));
+ connect(control,SIGNAL(addTransferVisual(const QString&,const QString&,bool, int)),
+	  this, SLOT(addTransferVisual(const QString&, const QString&, bool, int)));
 
+ connect(transfer, SIGNAL(updateTransferVisual(const QString& , int)),
+	 this, SLOT(updateTransferVisual(const QString& , int)));
 
   TransferVisual* tv=new TransferVisual(tree);
   tv->setIp("255.255.255.255");
@@ -150,12 +153,28 @@ void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
 
 
 void RainbruRPG::Network::Ftp::FtpServer::
-addTransferVisual(const QString& ip, const QString& filename, bool commingIn){
+addTransferVisual(const QString& ip, const QString& filename, 
+		  bool commingIn, int filesize){
 
   TransferVisual* tv2=new TransferVisual(tree);
   tv2->setIp(ip);
   tv2->setFilename(filename, "");
+  tv2->setFileSize(filesize);
   tv2->setCommingIn(commingIn);
   addTransfer(tv2);
 
+}
+
+void RainbruRPG::Network::Ftp::FtpServer::
+updateTransferVisual(const QString& ip, int bytes){
+  Q3ListViewItem* it=tree->findItem(ip,0);
+  if(it==NULL){
+    LOGW("Cannot update TransferVisual");
+  }
+  else{
+    TransferVisual* tv=dynamic_cast<TransferVisual*>(it);
+    if (tv!=NULL){
+      tv->addBytes(bytes);
+    }
+  }
 }

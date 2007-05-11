@@ -33,6 +33,7 @@
 #include <QPainter>
 #include <QGradient>
 #include <QBrush>
+#include <QFileInfo>
 
 namespace RainbruRPG{
   namespace Network{
@@ -57,6 +58,8 @@ namespace RainbruRPG{
 	virtual void paintCell(QPainter*, const QColorGroup & , int , 
 			       int , int);
 	
+	virtual QString text ( int column )const;
+
 	void setCommingIn(bool);
 	void setRate(double);
 	void setFileSize(int);
@@ -69,7 +72,11 @@ namespace RainbruRPG{
 
 	void computePercent();
 
+	void addBytes(int);
+
       private:
+	QString fileSizeToString();
+
 	/** The IP adress of the connected client */
 	QString ip;
 	/** The filename of the file being transfered with its absolute path */
