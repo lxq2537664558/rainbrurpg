@@ -215,3 +215,14 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
   }
   //  debugKeyList();
 }
+
+/** Get the number of keys
+  *
+  * This function is mainly used by Unit Test. 
+  *
+  * \return The number of item in PostedDataKeyList
+  *
+  */
+int RainbruRPG::Network::Ident::CurlPostedData::keyCount(){
+  return list->size();
+}

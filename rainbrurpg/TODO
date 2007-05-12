@@ -5,17 +5,21 @@ stor /home/mouse/neededLibs.tar.gz
 
 * Unittest implementation in common/
 - In this order
-   curlpersoheaderadd
-   curlpersomodifattrb.h  
-   curlposteddata.h     
+   curlpersoheaderadd     need a curlpersoheaderdelete class
+   curlpersomodifattrb.h  need a curlpersoheaderdelete class
    curlserveradd.h       
    curlserverdelete.h     
    curlservermodifclients.h   
    curlsubmitform.h
+
 * FTP client
 - ftpclient::commandRETR implementation
 
-o [mouse] FTP Server
+o [mouse] UnitTest
+- curlserveradd.h       
+   Adds som get* for testing values
+
+* FTP Server
 - Update the TransferVisual item for each packet wrote or received
    key=Ip
 - The control channel only accepts one client
@@ -120,13 +124,18 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-135
+- curlposteddata UnitTest
+- Delete the test TransferVisual
+
 * v 0.0.4-134
+- Doxygen documentation
 - Must get the filesize after a STOR command
 - TransferVisual draw filesize
 - Create a treeviewItem for each transfer 
 - The ProgressBar represents (downloaded*100)/filesize
 - A problem with TransferVisual images background when selected
-Fixed with a transparent background color
+   Fixed with a transparent background color
 - TransferVisual uses the selected ColorGroup
 - TransferVisual uses images for transfer direction
 - server/images/transferIn.png and transferOut.png added to

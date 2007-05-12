@@ -112,14 +112,6 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
  connect(transfer, SIGNAL(updateTransferVisual(const QString& , int)),
 	 this, SLOT(updateTransferVisual(const QString& , int)));
 
-  TransferVisual* tv=new TransferVisual(tree);
-  tv->setIp("255.255.255.255");
-  tv->setFilename("essai.txt", "home/aze");
-  tv->setFileSize(453200);
-  tv->setDownloaded(4388);
-  addTransfer(tv);
-
-
 }
 
 /** The destructor
@@ -152,6 +144,17 @@ void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
 }
 
 
+/** Add a TransferVisual to the transfer list
+  *
+  * We need the filesize. If the file is sent to the server (STOR command)
+  * it is get from a FSIZE telnet command.
+  *
+  * \param ip The client IP adress
+  * \param filename The filename to transfer
+  * \param commingIn Is the file comming in ?
+  * \param filesize The size of the file
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpServer::
 addTransferVisual(const QString& ip, const QString& filename, 
 		  bool commingIn, int filesize){
@@ -165,6 +168,12 @@ addTransferVisual(const QString& ip, const QString& filename,
 
 }
 
+/** Update an already added TransferVisual
+  *
+  * \param ip The IP adress of the client
+  * \param bytes The bytes to add
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpServer::
 updateTransferVisual(const QString& ip, int bytes){
   Q3ListViewItem* it=tree->findItem(ip,0);

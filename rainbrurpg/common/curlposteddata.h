@@ -92,6 +92,7 @@ namespace RainbruRPG {
 
 	const char* getValue(const char*);
 	void debugKeyList();
+	int keyCount();
 
       private:
 	/** The map used to store the data to post

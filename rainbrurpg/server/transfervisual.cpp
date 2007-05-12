@@ -313,6 +313,11 @@ QString RainbruRPG::Network::Ftp::TransferVisual::text( int column )const{
   }
 }
 
+/** Get the filesize in text format
+  *
+  * \return A human-readable form of the filesize 
+  *
+  */
 QString RainbruRPG::Network::Ftp::TransferVisual::fileSizeToString(){
   QString s;
 

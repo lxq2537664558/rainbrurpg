@@ -70,12 +70,12 @@ namespace RainbruRPG{
 	void switchToBinaryType();
 	/** A signal emitted when ASCII transfer type is on */
 	void switchToAsciiType();
-
 	/** Add a transfer visual
 	  *
 	  * \param ip The ip of the connected client
 	  * \param filename The filename to transfer
 	  * \param commingIn Is the file sent by the client ?
+	  * \param filesize The received file's size 
 	  *
 	  */
 	void addTransferVisual(const QString& ip, const QString& filename, bool commingIn, int filesize);

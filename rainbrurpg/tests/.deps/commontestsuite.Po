@@ -194,9 +194,14 @@ commontestsuite.o commontestsuite.o: commontestsuite.cpp \
   common/curlaccountdeletetest.h common/curlaccounttoggleblacklisttest.h \
   ../common/xmlaccountlist.h ../common/taccountlist.h \
   common/curlfiletoxmltest.h ../common/curlfiletoxml.h \
-  common/curlgetfiletest.h ../common/chartbase.h /usr/include/gd.h \
+  common/curlgetfiletest.h common/curlposteddatatest.h \
+  ../terminalapi/caption.h /usr/include/slang.h \
+  common/curlserveraddtest.h ../common/chartbase.h /usr/include/gd.h \
   /usr/include/gd_io.h /usr/include/gdfx.h /usr/include/gd.h \
-  /usr/include/gdfonts.h ../common/chartserie.h ../common/curlgetfile.h
+  /usr/include/gdfonts.h ../common/chartserie.h ../common/curlgetfile.h \
+  ../common/curlposteddata.h ../common/curlserveradd.h \
+  ../common/globaluri.h ../common/curlsubmitform.h \
+  ../common/xmlserverlist.h ../common/logger.h ../common/tinyxml.h
 
 commontestsuite.h:
 
@@ -728,6 +733,14 @@ common/curlfiletoxmltest.h:
 
 common/curlgetfiletest.h:
 
+common/curlposteddatatest.h:
+
+../terminalapi/caption.h:
+
+/usr/include/slang.h:
+
+common/curlserveraddtest.h:
+
 ../common/chartbase.h:
 
 /usr/include/gd.h:
@@ -743,3 +756,17 @@ common/curlgetfiletest.h:
 ../common/chartserie.h:
 
 ../common/curlgetfile.h:
+
+../common/curlposteddata.h:
+
+../common/curlserveradd.h:
+
+../common/globaluri.h:
+
+../common/curlsubmitform.h:
+
+../common/xmlserverlist.h:
+
+../common/logger.h:
+
+../common/tinyxml.h:

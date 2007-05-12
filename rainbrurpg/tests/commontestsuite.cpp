@@ -33,6 +33,8 @@
 #include "curlaccounttoggleblacklisttest.h"
 #include "curlfiletoxmltest.h"
 #include "curlgetfiletest.h"
+#include "curlposteddatatest.h"
+#include "curlserveraddtest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -45,6 +47,8 @@
 #include <curlaccounttoggleblacklist.h>
 #include <curlfiletoxml.h>
 #include <curlgetfile.h>
+#include <curlposteddata.h>
+#include <curlserveradd.h>
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -64,6 +68,8 @@ CommonTestSuite::CommonTestSuite()
   addTest(CurlAccountToggleBlacklistTest<CurlAccountToggleBlacklist>::suite());
   addTest(CurlFileToXmlTest<CurlFileToXml>::suite());
   addTest(CurlGetFileTest<CurlGetFile>::suite());
+  addTest(CurlPostedDataTest<CurlPostedData>::suite());
+  addTest(CurlServerAddTest<CurlServerAdd>::suite());
 }
 
 /** The destructor
