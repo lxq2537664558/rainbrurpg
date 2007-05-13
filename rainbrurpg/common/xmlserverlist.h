@@ -50,7 +50,7 @@ namespace RainbruRPG{
 	const char* name;        //!< The name of the server
 	const char* description; //!< The description
 	const char* ipAdress;    //!< The ip adress
-	const char* port;        //!< The tcp port
+	const char* port;        //!< The UDP port
 	const char* techNote;    //!< The technical note
 	unsigned int maxClients; //!< Maximum allowed connection
 	unsigned int actClients; //!< Actual number of connected clients
@@ -72,9 +72,15 @@ namespace RainbruRPG{
 
       /** Read the XML file of the Servers list
         *
+	* A server list is maintained in the administration site. This list
+	* is used by the clients to get the IP adress and other informations
+	* about server contact them.
+	*
 	* It gets the server list from the administration site using a
 	* GlobalURI instance and uses the CurlFileToXml functions to retrieve
 	* the file.
+	*
+	* \sa CurlServerAdd, CurlServerDelete
 	*
 	*/
       class xmlServerList : public CurlFileToXml{

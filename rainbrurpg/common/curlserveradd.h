@@ -37,6 +37,9 @@ namespace RainbruRPG {
 
       /** Submits a add server to the administration site
         * 
+	* Each server that is started must be registered in the administation
+	* site. This class is used to add a server to the administration site.
+	*
 	* The posted keys are :
 	* - name : The name of the server
 	* - ip : The public IP adress of the server in the form x.x.x.x
@@ -48,6 +51,8 @@ namespace RainbruRPG {
 	* The timestamp posted key is automatically filled by the current
 	* data/time.
 	* 
+	* \sa xmlServerList, CurlServerDelete
+	*
 	*/
       class CurlServerAdd : public CurlSubmitForm{
       public:

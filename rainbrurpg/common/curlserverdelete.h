@@ -40,6 +40,8 @@ namespace RainbruRPG {
 	* The posted keys are :
 	* - name : The name of the server to delete
 	* 
+	* \sa xmlServerList, CurlServerAdd
+	*
 	*/
       class CurlServerDelete : public CurlSubmitForm{
       public:

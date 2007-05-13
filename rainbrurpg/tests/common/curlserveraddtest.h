@@ -75,6 +75,20 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     */
   CPPUNIT_TEST( testIPString );
 
+  /** Tests the Port adress
+    *
+    * \sa testPortChar
+    *
+    */
+  CPPUNIT_TEST( testPortChar );
+
+  /** Tests the Port adress
+    *
+    * \sa testPortString
+    *
+    */
+  CPPUNIT_TEST( testPortString );
+
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
 
@@ -160,8 +174,34 @@ public:
     this->m_csa->setIpAddress(serverIp);
     const char* ip=this->m_csa->getIpAddress();
     CPPUNIT_ASSERT( serverIp == ip  );
-
   }
+
+  /** Tests the port (const char* version)
+    *
+    * Set a new port and test if getPortAdress() return the same
+    * text.
+    *
+    */
+  void testPortChar(){
+    const char* serverPort="ServerName";
+    this->m_csa->setPort(serverPort);
+    const char* port=this->m_csa->getPort();
+    CPPUNIT_ASSERT( strcmp( serverPort, port )==0  );
+  }
+
+  /** Tests the port (std::string version)
+    *
+    * Set a new port and test if getPortAdress() return the same
+    * text.
+    *
+    */
+  void testPortString(){
+    std::string serverPort="ServerName";
+    this->m_csa->setPort(serverPort);
+    const char* port=this->m_csa->getPort();
+    CPPUNIT_ASSERT( serverPort == port );
+  }
+
 
 };
 
