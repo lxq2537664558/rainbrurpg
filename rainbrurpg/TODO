@@ -7,7 +7,7 @@ stor /home/mouse/neededLibs.tar.gz
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
    curlpersomodifattrb.h  need a curlpersoheaderdelete class
-   curlserveradd.h       
+   curlserveradd.h        Test set* as cont char* and std::string  
    curlserverdelete.h     
    curlservermodifclients.h   
    curlsubmitform.h
@@ -16,9 +16,7 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] UnitTest
-
-- curlserveradd.h       
-   Adds som get* for testing values
+- CurlServerAdd     
 
 * FTP Server
 - Update the TransferVisual item for each packet wrote or received
@@ -126,6 +124,8 @@ o [mouse] UnitTest
 * *******************************************************
 
 * v 0.0.4-135
+- CurlServerAdd       
+   Adds som get* for unit test
 - curlposteddata UnitTest
 - Delete the test TransferVisual
 

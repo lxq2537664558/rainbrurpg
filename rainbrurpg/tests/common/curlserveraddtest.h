@@ -49,10 +49,31 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
 
   /** Tests the setName function
     *
-    * \sa testName
+    * \sa testNameChar
     *
     */
   CPPUNIT_TEST( testNameChar );
+
+  /** Tests the setName function
+    *
+    * \sa testNameString
+    *
+    */
+  CPPUNIT_TEST( testNameString );
+
+  /** Tests the IP adress
+    *
+    * \sa testIPChar
+    *
+    */
+  CPPUNIT_TEST( testIPChar );
+
+  /** Tests the IP adress
+    *
+    * \sa testIPString
+    *
+    */
+  CPPUNIT_TEST( testIPString );
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -89,9 +110,57 @@ public:
   
   /** Tests the name (const char* version)
     *
+    * Set a new name and test if getName() return the same
+    * text.
+    *
     */
   void testNameChar(){ 
-//    CPPUNIT_ASSERT( nbKeys2==++nbKeys  );
+    const char* serverName="ServerName";
+    this->m_csa->setName(serverName);
+    const char* name=this->m_csa->getName();
+    CPPUNIT_ASSERT( strcmp( serverName,name)==0  );
+  }
+
+
+  /** Tests the name (std::string version)
+    *
+    * Set a new name and test if getName() return the same
+    * text.
+    *
+    */
+  void testNameString(){
+    std::string serverName="ServerName";
+    this->m_csa->setName(serverName);
+    const char* name=this->m_csa->getName();
+    CPPUNIT_ASSERT( serverName==name );
+
+  }
+
+  /** Tests the IP adress (const char* version)
+    *
+    * Set a new IP address and test if getIpAdress() return the same
+    * text.
+    *
+    */
+  void testIPChar(){
+    const char* serverIp="ServerName";
+    this->m_csa->setIpAddress(serverIp);
+    const char* ip=this->m_csa->getIpAddress();
+    CPPUNIT_ASSERT( strcmp( serverIp, ip )==0  );
+  }
+
+  /** Tests the IP adress (std::string version)
+    *
+    * Set a new IP address and test if getIpAdress() return the same
+    * text.
+    *
+    */
+  void testIPString(){
+    std::string serverIp="ServerName";
+    this->m_csa->setIpAddress(serverIp);
+    const char* ip=this->m_csa->getIpAddress();
+    CPPUNIT_ASSERT( serverIp == ip  );
+
   }
 
 };
