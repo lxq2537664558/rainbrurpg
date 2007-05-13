@@ -75,19 +75,61 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     */
   CPPUNIT_TEST( testIPString );
 
-  /** Tests the Port adress
+  /** Tests the Port address
     *
     * \sa testPortChar
     *
     */
   CPPUNIT_TEST( testPortChar );
 
-  /** Tests the Port adress
+  /** Tests the Port address
     *
     * \sa testPortString
     *
     */
   CPPUNIT_TEST( testPortString );
+
+  /** Tests the maxClients value
+    *
+    * \sa testMaxClientsChar
+    *
+    */
+  CPPUNIT_TEST( testMaxClientsChar );
+
+  /** Tests the maxClients value
+    *
+    * \sa testMaxClientsString
+    *
+    */
+  CPPUNIT_TEST(testMaxClientsString  );
+
+  /** Tests the description value
+    *
+    * \sa testDescriptionChar
+    *
+    */
+  CPPUNIT_TEST( testDescriptionChar );
+
+  /** Tests the description value
+    *
+    * \sa testDescriptionString
+    *
+    */
+  CPPUNIT_TEST(testDescriptionString  );
+
+  /** Tests the technical note value
+    *
+    * \sa testTechNoteChar
+    *
+    */
+  CPPUNIT_TEST( testTechNoteChar );
+
+  /** Tests the technical note value
+    *
+    * \sa testTechNoteString
+    *
+    */
+  CPPUNIT_TEST(testTechNoteString  );
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -202,6 +244,84 @@ public:
     CPPUNIT_ASSERT( serverPort == port );
   }
 
+
+  /** Tests the maxClients (const char* version)
+    *
+    * Set a new maxClients value and test if getMaxClients() return the same
+    * text.
+    *
+    */
+  void testMaxClientsChar(){
+    const char* maxClients="ServerName";
+    this->m_csa->setMaxClients(maxClients);
+    const char* mc=this->m_csa->getMaxClients();
+    CPPUNIT_ASSERT( strcmp( maxClients, mc )==0  );
+  }
+
+  /** Tests the maxClients (std::string version)
+    *
+    * Set a new maxClients value and test if setMaxClients() return the same
+    * text.
+    *
+    */
+  void testMaxClientsString(){
+    std::string maxClients="ServerName";
+    this->m_csa->setMaxClients(maxClients);
+    const char* mc=this->m_csa->getMaxClients();
+    CPPUNIT_ASSERT( maxClients==mc );
+  }
+
+  /** Tests the description (const char* version)
+    *
+    * Set a new description and test if getDescription() return the same
+    * text.
+    *
+    */
+  void testDescriptionChar(){
+    const char* description="ServerName";
+    this->m_csa->setDescription(description);
+    const char* desc=this->m_csa->getDescription();
+    CPPUNIT_ASSERT( strcmp( description, desc )==0  );
+  }
+
+  /** Tests the description (std::string version)
+    *
+    * Set a new description and test if getDescription() return the same
+    * text.
+    *
+    */
+  void testDescriptionString(){
+    std::string description="ServerName";
+    this->m_csa->setDescription(description);
+    const char* desc=this->m_csa->getDescription();
+    CPPUNIT_ASSERT( description==desc );
+  }
+
+  /** Tests the technical note value (const char* version)
+    *
+    * Set a new technical note and test if getTechNote() return the same
+    * text.
+    *
+    */
+  void testTechNoteChar(){
+    const char* tech="ServerName";
+    this->m_csa->setTechNote(tech);
+    const char* tn=this->m_csa->getTechNote();
+    CPPUNIT_ASSERT( strcmp( tech, tn )==0  );
+  }
+
+  /** Tests the technical note value (std::string version)
+    *
+    * Set a new technical note and test if getTechNote() return the same
+    * text.
+    *
+    */
+  void testTechNoteString(){
+    std::string tech="ServerName";
+    this->m_csa->setTechNote(tech);
+    const char* tn=this->m_csa->getTechNote();
+    CPPUNIT_ASSERT( tech==tn );
+  }
 
 };
 

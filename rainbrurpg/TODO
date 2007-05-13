@@ -16,7 +16,8 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] UnitTest
-- CurlServerAdd     
+- CurlServerAdd   
+   Tests initial values (should =="")
 
 * FTP Server
 - Update the TransferVisual item for each packet wrote or received
@@ -124,8 +125,7 @@ o [mouse] UnitTest
 * *******************************************************
 
 * v 0.0.4-135
-- CurlServerAdd       
-   Adds som get* for unit test
+- CurlServerAdd set/get unit test OK     
 - curlposteddata UnitTest
 - Delete the test TransferVisual
 
