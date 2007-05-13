@@ -279,3 +279,61 @@ setTechNote(const std::string& s){
   setCustomPost("techNote", s.c_str());
 
 }
+
+/** Get the server name
+  *
+  * \return The server name
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getName(){
+  return postedData.getValue("name");
+}
+
+/** Get the server IP adress
+  *
+  * \return The server IP adress
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getIpAddress(){
+  return postedData.getValue("ip");
+
+}
+
+/** Get the server port
+  *
+  * \return The server port
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getPort(){
+  return postedData.getValue("port");
+
+}
+
+/** Get the server maxClients
+  *
+  * \return The server maxClients
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getMaxClients(){
+  return postedData.getValue("maxClients");
+
+}
+
+/** Get the server port description
+  *
+  * \return The server description
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getDescription(){
+  return postedData.getValue("desc");
+
+}
+
+/** Get the server port technical note
+  *
+  * \return The server technical note
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getTechNote(){
+  return postedData.getValue("techNote");
+}

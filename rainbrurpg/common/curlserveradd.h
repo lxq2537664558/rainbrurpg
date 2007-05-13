@@ -68,6 +68,14 @@ namespace RainbruRPG {
 	void setDescription(const std::string&);
 	void setTechNote(const std::string&);
 
+	const char* getName();
+	const char* getIpAddress();
+	const char* getPort();
+	const char* getMaxClients();
+	const char* getDescription();
+	const char* getTechNote();
+
+
       protected:
 	virtual bool controlBefore();
 	virtual bool controlAfter();
