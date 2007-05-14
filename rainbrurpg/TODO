@@ -19,6 +19,13 @@ stor /home/mouse/neededLibs.tar.gz
 * FTP client
 - ftpclient::commandRETR implementation
 
+o [mouse] cvs add
+? server/.deps/moc_ftpdataconnection.Po
+? server/.deps/ftpdataconnection.Po
+? server/ftpdataconnection.h
+? server/ftpdataconnection.cpp
+
+
 o [mouse] FTP Server
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
