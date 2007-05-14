@@ -41,7 +41,9 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   QDir::setCurrent(currentDirectory);
   descriptor=1;
   server=new QTcpServer();
+  //  bool succ=server->listen( QHostAddress::Any, port );
   bool succ=server->listen( QHostAddress::Any, port );
+  succ=server->listen( QHostAddress::Any, port+1 );
   if (succ){
     LOGCATS("Now listening in port ");
     LOGCATI(port);

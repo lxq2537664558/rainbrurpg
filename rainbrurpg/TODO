@@ -12,16 +12,14 @@ stor /home/mouse/neededLibs.tar.gz
    curlservermodifclients.h   
    curlsubmitform.h
 
-* FTP client
-- ftpclient::commandRETR implementation
-
-o [mouse] UnitTest
+* UnitTest
 - CurlServerAdd   
    Tests initial values (should =="")
 
-* FTP Server
-- Update the TransferVisual item for each packet wrote or received
-   key=Ip
+* FTP client
+- ftpclient::commandRETR implementation
+
+o [mouse] FTP Server
 - The control channel only accepts one client
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
@@ -125,6 +123,8 @@ o [mouse] UnitTest
 * *******************************************************
 
 * v 0.0.4-135
+- Can the server listen more than one port NO
+- Update the TransferVisual item for each packet wrote or received
 - CurlServerAdd set/get unit test OK     
 - curlposteddata UnitTest
 - Delete the test TransferVisual

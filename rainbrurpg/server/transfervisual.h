@@ -90,7 +90,7 @@ namespace RainbruRPG{
 	/** The bytes already downloaded */
 	int downloaded;
 	/** The percent of downloeded bytes */
-	float percent;
+	double percent;
       };
 
     }

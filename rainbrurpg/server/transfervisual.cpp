@@ -278,7 +278,10 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   *
   */
 void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
-  percent=(float)(downloaded*100)/filesize;
+  double frac=(double)(100/filesize);
+  percent=(double)(downloaded*frac);
+  percent=(double)downloaded*100/filesize;
+
 }
 
 /** Adds the given bytes to the downloaded total

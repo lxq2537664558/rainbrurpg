@@ -368,12 +368,9 @@ commandSTOR(const std::string& filename){
 	streamsize bytesRead=fs.gcount();
 
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
-	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, &bytesWritten);
+	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, 
+					     &bytesWritten);
 
-	LOGCATS("Writing ");
-	LOGCATI(bytesRead);
-	LOGCATS(" bytes");
-	LOGCAT();
       }
       fs.close();
     }
