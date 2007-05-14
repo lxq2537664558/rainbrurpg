@@ -33,6 +33,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
 			    transfervisual.cpp		\
+			    ftpdataconnection.cpp	\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -46,7 +47,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_objectlist.cpp		\
 			    moc_ftpcontrol.cpp		\
 			    moc_ftptransfer.cpp		\
-			    moc_ftpserver.cpp
+			    moc_ftpserver.cpp	
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.

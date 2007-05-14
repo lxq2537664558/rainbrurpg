@@ -58,13 +58,14 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
 	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
-	transfervisual.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
-	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
-	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
-	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
-	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
-	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
-	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT)
+	transfervisual.$(OBJEXT) ftpdataconnection.$(OBJEXT) \
+	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
+	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
+	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
+	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
+	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
+	moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -236,6 +237,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
 			    transfervisual.cpp		\
+			    ftpdataconnection.cpp	\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -249,7 +251,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_objectlist.cpp		\
 			    moc_ftpcontrol.cpp		\
 			    moc_ftptransfer.cpp		\
-			    moc_ftpserver.cpp
+			    moc_ftpserver.cpp	
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -330,6 +332,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/configdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/enetserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpcontrol.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpdataconnection.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftptransfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/helpviewer.Po@am__quote@

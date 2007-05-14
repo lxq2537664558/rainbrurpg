@@ -36,11 +36,12 @@
 #include <QtNetwork/QTcpSocket>
 #include <QDir>
 #include <QDateTime>
-#include <QFile>
 
 #include <iostream>
-
+#include <list>
 #include <ftpdef.h>
+
+#include "ftpdataconnection.h"
 
 #define MAX_READ_LENGTH 1024
 
@@ -50,7 +51,7 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
-
+      typedef std::list<FtpDataConnection*> tConnectionList;
 
       /** An implementation of the Transfer Channel using by the FTP protocol
         *
@@ -140,8 +141,8 @@ namespace RainbruRPG{
 	/** The next command filename */
 	QString nextFilename;
 
-	/** The file used to save the current transfered file */
-	QFile* currentFile;
+	/** The connection list */
+	tConnectionList connectionList;
       };
 
     }

@@ -600,7 +600,7 @@ s,@GENERIC_LIBRARY_VERSION@,|#_!!_#|1:2:0,g
 s,@GENERIC_LIBRARY_NAME@,|#_!!_#|RainbruRPG,g
 s,@GENERIC_RELEASE@,|#_!!_#|0.3,g
 s,@GENERIC_VERSION@,|#_!!_#|0.3.0,g
-s,@ISODATE@,|#_!!_#|2007-05-09,g
+s,@ISODATE@,|#_!!_#|2007-05-14,g
 s,@build@,|#_!!_#|i686-pc-linux-gnu,g
 s,@build_cpu@,|#_!!_#|i686,g
 s,@build_vendor@,|#_!!_#|pc,g

@@ -58,13 +58,14 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
 	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
-	transfervisual.$(OBJEXT) moc_mainwindow.$(OBJEXT) \
-	moc_serverlog.$(OBJEXT) moc_logexportdialog.$(OBJEXT) \
-	moc_configdialog.$(OBJEXT) moc_technotedialog.$(OBJEXT) \
-	moc_helpviewer.$(OBJEXT) moc_clientlist.$(OBJEXT) \
-	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
-	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
-	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT)
+	transfervisual.$(OBJEXT) ftpdataconnection.$(OBJEXT) \
+	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
+	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
+	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
+	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
+	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
+	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
+	moc_ftpserver.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -123,7 +124,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-05-09
+ISODATE = 2007-05-14
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -236,6 +237,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    ftptransfer.cpp		\
 			    ftpserver.cpp		\
 			    transfervisual.cpp		\
+			    ftpdataconnection.cpp	\
 			    \
 			    moc_mainwindow.cpp       	\
                             moc_serverlog.cpp        	\
@@ -249,7 +251,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_objectlist.cpp		\
 			    moc_ftpcontrol.cpp		\
 			    moc_ftptransfer.cpp		\
-			    moc_ftpserver.cpp
+			    moc_ftpserver.cpp	
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -330,6 +332,7 @@ include ./$(DEPDIR)/clientlist.Po
 include ./$(DEPDIR)/configdialog.Po
 include ./$(DEPDIR)/enetserver.Po
 include ./$(DEPDIR)/ftpcontrol.Po
+include ./$(DEPDIR)/ftpdataconnection.Po
 include ./$(DEPDIR)/ftpserver.Po
 include ./$(DEPDIR)/ftptransfer.Po
 include ./$(DEPDIR)/helpviewer.Po
