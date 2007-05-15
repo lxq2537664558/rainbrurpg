@@ -27,6 +27,8 @@
   */
 RainbruRPG::Network::Ftp::FtpDataConnection::FtpDataConnection(){
   command=FTC_NONE;
+  transferType=FTT_ASCII;
+
   clientIp="";
   clientPort="";
 }
@@ -43,6 +45,9 @@ FtpDataConnection(const QString& ip, const QString& port, tTransferCommand c){
   command=c;
   clientIp=ip;
   clientPort=port;
+
+  transferVisual=NULL;
+  socket=NULL;
 }
 
 /** Destructor
@@ -69,4 +74,120 @@ isThisConnection(const QString& ip, const QString& port){
   else{
     return false;
   }
+}
+
+/** Set the transfer visual
+  *
+  * \param tv The TransferVisual to change
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+setTransferVisual(TransferVisual* tv){
+  transferVisual=tv;
+}
+
+/** Change the transfer command
+  *
+  * \param tc The command type
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+setCommand(tTransferCommand tc){
+  command=tc;
+}
+
+/** The readyWrite slot
+  *
+  * It is connected to the readyWrite() signal of the socket.
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::readyWrite(){
+
+}
+
+/** Change the filename
+  *
+  * \param s The new filename
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+setFilename(const QString& s){
+  this->filename=s;
+}
+
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+setTransferType(tTransferType tt){
+  this->transferType=tt;
+}
+
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+commandSTOR(const QString& fn){
+  this->filename=fn;
+  command=FTC_STOR;
+
+
+
+
+
+
+
+
+
+
+  command=FTC_STOR;
+
+  // Do the file already exist ?
+  QDir a(currentDirectory);
+  if (a.exists(filename)){
+    LOGI("The file already exist");
+    a.remove(filename);
+  }
+
+  currentFile=new QFile(a.filePath(filename));
+  QIODevice::OpenMode om;
+
+  // We are in Binary mode
+  if (transferType==FTT_BINARY){
+    om=QIODevice::WriteOnly|QIODevice::Append;
+  }
+  // We are in ASCII mode
+  else if (transferType==FTT_ASCII){
+    om=QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append;
+  }
+
+  bool b=currentFile->open(om);
+}
+
+/** The readyRead slot
+  *
+  * It is connected to the readyRead() signal of the socket.
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::readyRead(){
+  switch(command){
+  case FTC_STOR:
+    QByteArray ba=socket->readAll();
+    int rep=currentFile->write(ba);
+    if (rep==-1){
+      LOGE("An error occured during STOR file writing");
+      LOGCATS("ErrorString :");
+      LOGCATS(currentFile->errorString().toLatin1());
+      LOGCAT();
+      break;
+    }
+    else{
+      transferVisual->addBytes(rep);
+    }
+    break;
+  }
+}
+
+void RainbruRPG::Network::Ftp::FtpDataConnection::setSocket(QTcpSocket* s){
+  this->socket=s;
+  connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+}
+
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+setCurrentDirectory(const QString& s){
+  this->currentDirectory=s;
 }

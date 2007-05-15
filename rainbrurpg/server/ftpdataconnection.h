@@ -29,8 +29,10 @@
 
 #include <QObject>
 #include <QFile>
+#include <QtNetwork/QTcpSocket>
 
 #include <ftpdef.h>
+#include <logger.h>
 
 #include "transfervisual.h"
 
@@ -43,14 +45,30 @@ namespace RainbruRPG{
 	* 
 	*
 	*/
-      class FtpDataConnection{
+      class FtpDataConnection : public QObject{
+	Q_OBJECT
       public:
 	FtpDataConnection(const QString&, const QString&, tTransferCommand);
 	FtpDataConnection();
 	~FtpDataConnection();
 
 	bool isThisConnection(const QString&, const QString&);
+	void setTransferVisual(TransferVisual*);
+	void setCommand(tTransferCommand);
+	void setTransferType(tTransferType);
+	void setFilename(const QString&);
+	void setSocket(QTcpSocket*);
+	void setCurrentDirectory(const QString&);
+
+	void commandSTOR(const QString&);
+
+      private slots:
+	void readyRead();
+	void readyWrite();
+
       private:
+	/** The Transfer visual associated with this connection */
+	TransferVisual* transferVisual;
 	/** The connected client IP address */
 	QString clientIp;
 	/** The connected client port */
@@ -59,9 +77,15 @@ namespace RainbruRPG{
 	tTransferCommand command;
 	/** The file used to write/read the current transfered file */
 	QFile* currentFile;
-
+	/** The socket associated with this connection */
+	QTcpSocket* socket;
+	/** Set the filename of the file */
+	QString filename;
+	/** The current transfer type */
+	tTransferType transferType;
+	/** The current directory */
+	QString currentDirectory;
       };
-
     }
   }
 }

@@ -1,0 +1,3 @@
+#copy the htmlMakefile.am
+cp htmlMakefile.am  RainbruRPG.html/Makefile.am
+automake

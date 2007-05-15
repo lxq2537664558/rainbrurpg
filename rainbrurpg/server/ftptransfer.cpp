@@ -340,27 +340,7 @@ waitForActiveConnection(QTcpSocket* sock){
 bool RainbruRPG::Network::Ftp::FtpTransfer::
 waitForPassiveConnection(QTcpSocket* sock){
   LOGI("WaitForPassiveConnection called");
-  /*  bool timeOut=1;
-  bool success=server->waitForNewConnection(3000, &timeOut);
-  if (success==true){
-    LOGI("Passive connection happened");
-    return true;
-  }
-  else{
-    if (timeOut){
-      LOGE("Passive connection timeout");
-      
-    }
-    else{
-      LOGE("Passive connection failed");
-    }
-    LOGCATS("Last server error : ");
-    LOGCATS(server->errorString().toLatin1());
-    LOGCAT();
-    return false;
-  }
 
-  */
   if (socket1!=NULL){
     return true;
   }
@@ -550,8 +530,9 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
 void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   emit(log( "A new connection is requested on transfer channel" ));
   LOGI("A new connection is requested on transfer channel" );
-
+  FtpDataConnection* fdc;
   socket1=server->nextPendingConnection();
+  QString filename, s;
 
   descriptor=socket1->socketDescriptor();
   LOGCATS("Socket descriptor is ");
@@ -571,8 +552,16 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
     LOGI( "LIST command complete");
     break;
   case FTC_STOR:
-    storeFile();
-    connect(socket1, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    fdc=new FtpDataConnection();
+    connectionList.push_back(fdc);
+    fdc->setTransferType(transferType);
+    fdc->setCurrentDirectory(currentDirectory);
+    s="Receiving file ";
+    s+=nextFilename;
+    emit(log(s));
+
+    fdc->commandSTOR(nextFilename);
+    fdc->setSocket(socket1);
     break;
   case FTC_RETR:
     LOGI("RETR not yet implemented");
@@ -612,59 +601,9 @@ commandSTOR(const QString& filename){
   waitForConnection(sock);
 }
 
-/** Store the file we received in data channel
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::storeFile(){
-  QString filename=nextFilename;
-  QString s("Receiving file ");
-  s+=filename;
-  LOGI(s.toLatin1());
-  emit(log(s));
-
-  nextCommand=FTC_STOR;
-
-  // Do the file already exist ?
-  QDir a(currentDirectory);
-  if (a.exists(filename)){
-    LOGI("The file already exist");
-    a.remove(filename);
-  }
-
-  currentFile=new QFile(a.filePath(filename));
-  QIODevice::OpenMode om;
-
-  // We are in Binary mode
-  if (transferType==FTT_BINARY){
-    om=QIODevice::WriteOnly|QIODevice::Append;
-  }
-  // We are in ASCII mode
-  else if (transferType==FTT_ASCII){
-    om=QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append;
-  }
-
-  bool b=currentFile->open(om);
-
-}
-
 /** A slot called when the socket can be read
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::readyRead(){
-  switch(nextCommand){
-  case FTC_STOR:
-    QByteArray ba=socket1->readAll();
-    int rep=currentFile->write(ba);
-    if (rep==-1){
-      LOGE("An error occured during STOR file writing");
-      LOGCATS("ErrorString :");
-      LOGCATS(currentFile->errorString().toLatin1());
-      LOGCAT();
-      break;
-    }
-    else{
-      updateTransferVisual(socket1->peerAddress().toString(), rep);
-    }
-    break;
-  }
+
 }
