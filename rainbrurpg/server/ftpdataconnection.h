@@ -50,15 +50,17 @@ namespace RainbruRPG{
       public:
 	FtpDataConnection(const QString&, const QString&, tTransferCommand);
 	FtpDataConnection();
-	~FtpDataConnection();
+	virtual ~FtpDataConnection();
 
 	bool isThisConnection(const QString&, const QString&);
+	bool isThisConnection(const QString&);
 	void setTransferVisual(TransferVisual*);
 	void setCommand(tTransferCommand);
 	void setTransferType(tTransferType);
 	void setFilename(const QString&);
 	void setSocket(QTcpSocket*);
 	void setCurrentDirectory(const QString&);
+	void setIp(const QString&);
 
 	void commandSTOR(const QString&);
 

@@ -31,6 +31,9 @@ RainbruRPG::Network::Ftp::FtpDataConnection::FtpDataConnection(){
 
   clientIp="";
   clientPort="";
+
+  transferVisual=NULL;
+  socket=NULL;
 }
 
 /** Constructor
@@ -43,6 +46,8 @@ RainbruRPG::Network::Ftp::FtpDataConnection::FtpDataConnection(){
 RainbruRPG::Network::Ftp::FtpDataConnection::
 FtpDataConnection(const QString& ip, const QString& port, tTransferCommand c){
   command=c;
+  transferType=FTT_ASCII;
+
   clientIp=ip;
   clientPort=port;
 
@@ -115,25 +120,24 @@ setFilename(const QString& s){
   this->filename=s;
 }
 
+/** Change the transfer type
+  *
+  * \param tt The new transfer type
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpDataConnection::
 setTransferType(tTransferType tt){
   this->transferType=tt;
 }
 
+/** Execute a STOR command
+  *
+  * \param fn The filename
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpDataConnection::
 commandSTOR(const QString& fn){
   this->filename=fn;
-  command=FTC_STOR;
-
-
-
-
-
-
-
-
-
-
   command=FTC_STOR;
 
   // Do the file already exist ?
@@ -176,18 +180,59 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::readyRead(){
       break;
     }
     else{
-      transferVisual->addBytes(rep);
+      if (transferVisual==NULL){
+	LOGW("Cannot update transferVisual");
+      }
+      else{
+	transferVisual->addBytes(rep);
+      }
     }
     break;
   }
 }
 
+/** Set the socket
+  *
+  * \param s The socket
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpDataConnection::setSocket(QTcpSocket* s){
   this->socket=s;
   connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
+/** Change the current directory
+  *
+  * \param s The current directory value
+  *
+  */
 void RainbruRPG::Network::Ftp::FtpDataConnection::
 setCurrentDirectory(const QString& s){
   this->currentDirectory=s;
+}
+
+/** Is the connection the same
+  *
+  * \param ip The IP address to test
+  *
+  * \return \c true if IP are the same
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpDataConnection::
+isThisConnection(const QString& ip){
+  if (ip==clientIp){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+/** Change the client IP address
+  *
+  * \param ip The client IP address
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::setIp(const QString&ip){
+  this->clientIp=ip;
 }

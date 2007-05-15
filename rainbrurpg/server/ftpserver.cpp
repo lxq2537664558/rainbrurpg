@@ -106,8 +106,10 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
 	  control, SLOT(transferComplete()));
 
   // Transfer visual management
- connect(control,SIGNAL(addTransferVisual(const QString&,const QString&,bool, int)),
-	  this, SLOT(addTransferVisual(const QString&, const QString&, bool, int)));
+ connect(control,
+	 SIGNAL(addTransferVisual(const QString&,const QString&,bool, int)),
+	 this, 
+	 SLOT(addTransferVisual(const QString&, const QString&, bool, int)));
 
  connect(transfer, SIGNAL(updateTransferVisual(const QString& , int)),
 	 this, SLOT(updateTransferVisual(const QString& , int)));
@@ -165,6 +167,8 @@ addTransferVisual(const QString& ip, const QString& filename,
   tv2->setFileSize(filesize);
   tv2->setCommingIn(commingIn);
   addTransfer(tv2);
+
+  transfer->registerVisual(ip, tv2);
 
 }
 

@@ -20,6 +20,16 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
+- FtpTransfer::registerVisual implementation
+   connectionList size : 0
+  [ftptransfer.cpp:619] II registerVisual called
+  [ftptransfer.cpp:622] -- connectionList size : 0
+  [ftptransfer.cpp:599] II Executing STOR command
+  [ftptransfer.cpp:342] II WaitForPassiveConnection called
+  [ftptransfer.cpp:532] II A new connection is requested on transfer channel
+  [ftptransfer.cpp:540] -- Socket descriptor is 16
+  [ftptransfer.cpp:555] II FtpDataConnection creation
+
 - The newly created TransferVisual is registered in a FtpDataConnection
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl

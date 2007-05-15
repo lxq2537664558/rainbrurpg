@@ -65,7 +65,7 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
 	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
 	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
-	moc_ftpserver.$(OBJEXT)
+	moc_ftpserver.$(OBJEXT) moc_ftpdataconnection.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -251,7 +251,8 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    moc_objectlist.cpp		\
 			    moc_ftpcontrol.cpp		\
 			    moc_ftptransfer.cpp		\
-			    moc_ftpserver.cpp	
+			    moc_ftpserver.cpp		\
+			    moc_ftpdataconnection.cpp
 
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
@@ -343,6 +344,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_configdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_enetserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpcontrol.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpdataconnection.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftptransfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_helpviewer.Po@am__quote@

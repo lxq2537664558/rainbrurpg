@@ -65,7 +65,8 @@ namespace RainbruRPG{
 	~FtpTransfer();
 	
 	virtual void run ();
-	
+	void registerVisual(const QString&, TransferVisual*);
+
       signals:
 	/** A signal used to log messages */
 	void log(const QString&);
@@ -92,7 +93,6 @@ namespace RainbruRPG{
       private slots:
 	void newConnection();
 	void error ( QAbstractSocket::SocketError socketError );
-	void readyRead();
 
       private:
 	void lsResult();

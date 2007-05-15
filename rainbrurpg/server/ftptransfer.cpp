@@ -552,9 +552,11 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
     LOGI( "LIST command complete");
     break;
   case FTC_STOR:
+    LOGI("FtpDataConnection creation");
     fdc=new FtpDataConnection();
     connectionList.push_back(fdc);
     fdc->setTransferType(transferType);
+    fdc->setIp(socket1->peerAddress().toString());
     fdc->setCurrentDirectory(currentDirectory);
     s="Receiving file ";
     s+=nextFilename;
@@ -601,9 +603,30 @@ commandSTOR(const QString& filename){
   waitForConnection(sock);
 }
 
-/** A slot called when the socket can be read
+/** Set the TransferVisual to a FtpDataConnection
+  *
+  * The FtpDataConnection update the TransferVisual. It must
+  * contains a pointer to the right FtpDataConnection.
+  *
+  * \param ip The ip of the FtpDataConection
+  * \param tv The transfer visual object
   *
   */
-void RainbruRPG::Network::Ftp::FtpTransfer::readyRead(){
+void RainbruRPG::Network::Ftp::FtpTransfer::
+registerVisual(const QString& ip, TransferVisual* tv){
+  tConnectionList::const_iterator iter;
 
+  LOGI("registerVisual called");
+  LOGCATS("connectionList size : ");
+  LOGCATI(connectionList.size());
+  LOGCAT();
+
+  for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
+
+    if ((*iter)->isThisConnection(ip)){
+      LOGI("registerVisual successfully called");
+      (*iter)->setTransferVisual(tv);
+    }
+
+  }
 }
