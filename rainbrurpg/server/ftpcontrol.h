@@ -72,13 +72,16 @@ namespace RainbruRPG{
 	void switchToAsciiType();
 	/** Add a transfer visual
 	  *
-	  * \param ip The ip of the connected client
+	  * \param ip The IP address of the connected client
+	  * \param port The port of the connected client
 	  * \param filename The filename to transfer
 	  * \param commingIn Is the file sent by the client ?
 	  * \param filesize The received file's size 
 	  *
 	  */
-	void addTransferVisual(const QString& ip, const QString& filename, bool commingIn, int filesize);
+	void addTransferVisual(const QString& ip,const QString& port, 
+			       const QString& filename, bool commingIn, 
+			       int filesize);
 
       public slots:
 	void transferComplete();

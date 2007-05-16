@@ -50,6 +50,7 @@ namespace RainbruRPG{
 	~TransferVisual();
 
 	void setIp(const QString&);
+	void setPort(const QString&);
 	const QString& getIp()const;
 	
 	void setFilename(const QString&, const QString&);
@@ -79,6 +80,8 @@ namespace RainbruRPG{
 
 	/** The IP adress of the connected client */
 	QString ip;
+	/** The TCP port of the connected client */
+	QString port;
 	/** The filename of the file being transfered with its absolute path */
 	QString filename;
 	/** If it is not in, it is out */

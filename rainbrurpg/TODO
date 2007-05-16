@@ -20,16 +20,9 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- FtpTransfer::registerVisual implementation
-   connectionList size : 0
-  [ftptransfer.cpp:619] II registerVisual called
-  [ftptransfer.cpp:622] -- connectionList size : 0
-  [ftptransfer.cpp:599] II Executing STOR command
-  [ftptransfer.cpp:342] II WaitForPassiveConnection called
-  [ftptransfer.cpp:532] II A new connection is requested on transfer channel
-  [ftptransfer.cpp:540] -- Socket descriptor is 16
-  [ftptransfer.cpp:555] II FtpDataConnection creation
-
+- FtpDataConnection must be different from IP/port key
+   FtpDataConnection has the control port
+   FtpTransfer::newConnection has the data portÅ“
 - The newly created TransferVisual is registered in a FtpDataConnection
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
@@ -85,7 +78,7 @@ o [mouse] FTP Server
   [7 jours] Avatar
 	    - Chargement du mesh (je sais faire)
 	    - Creation de 2 cameras distinctes, une en vue subjective et
-	      une pour la troisième personne
+	      une pour la troisiÃ¨me personne
   [7 jours] Animation de l'avatar
 - Etape 3
   [7 jours] Integration d'un moteur physique
@@ -96,9 +89,9 @@ o [mouse] FTP Server
 
 * Fil rouge (Samedi et Dimanche)
 - Tests unitaires
-  Les tests unitaires sont à jour pour TerminalAPI. Tous les tests de
-  tApi font partis d'une seule et même TestSuite. 
-  Tous les TextFixture doivent être uniquement dans des .h car ce sont
+  Les tests unitaires sont Ã  jour pour TerminalAPI. Tous les tests de
+  tApi font partis d'une seule et mÃªme TestSuite. 
+  Tous les TextFixture doivent Ãªtre uniquement dans des .h car ce sont
   des templates. L'implementation des templates est interdite dans un
   fichier cpp.
 - documentation API
@@ -123,7 +116,7 @@ o [mouse] FTP Server
 	- Les messages des joueurs a l'admin
 	- Si l'admin rend temporairement impossible la connection, dans combien
 	  de temps le serveur sera de nouveau online. Rafraichissement de la
-	  durée à l'aide de xident.
+	  durÃ©e Ã  l'aide de xident.
 - Se renseigner sur Audiere
 
 
@@ -133,6 +126,9 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-135
+- FtpTransfer::registerVisual must have the clent control port
+- TransferVisual 1st column is IP/port
+- Creates the FtpDataConnection object in registerVisual()
 - FtpTransfer::newConnection creates a FtpDataConnection
 - A basic boostrap script that copy htmlMakefile
 - FtpDataConnection implementation

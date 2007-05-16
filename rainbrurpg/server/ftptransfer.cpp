@@ -524,55 +524,6 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
   }
 }
 
-/** A new connection was requested
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
-  emit(log( "A new connection is requested on transfer channel" ));
-  LOGI("A new connection is requested on transfer channel" );
-  FtpDataConnection* fdc;
-  socket1=server->nextPendingConnection();
-  QString filename, s;
-
-  descriptor=socket1->socketDescriptor();
-  LOGCATS("Socket descriptor is ");
-  LOGCATI( descriptor );
-  LOGCAT();
-
-  switch(nextCommand){
-  case FTC_NONE:
-    LOGW("New connection has no pending command...CLOSED");
-    break;
-  case FTC_LIST:
-    LOGI("This connection is for a LIST command");
-    lsResult();
-    emit(log("Sending LS result"));
-    socket1->write(packetData.toLatin1());
-    writeBytes(socket1);
-    LOGI( "LIST command complete");
-    break;
-  case FTC_STOR:
-    LOGI("FtpDataConnection creation");
-    fdc=new FtpDataConnection();
-    connectionList.push_back(fdc);
-    fdc->setTransferType(transferType);
-    fdc->setIp(socket1->peerAddress().toString());
-    fdc->setCurrentDirectory(currentDirectory);
-    s="Receiving file ";
-    s+=nextFilename;
-    emit(log(s));
-
-    fdc->commandSTOR(nextFilename);
-    fdc->setSocket(socket1);
-    break;
-  case FTC_RETR:
-    LOGI("RETR not yet implemented");
-    break;
-
-  }
-
-}
-
 /** Waits for the queued bytes to be wrote and close the channel
   *
   * \param s The socket to flush and close
@@ -609,24 +560,80 @@ commandSTOR(const QString& filename){
   * contains a pointer to the right FtpDataConnection.
   *
   * \param ip The ip of the FtpDataConection
+  * \param port The port of the FtpDataConection
   * \param tv The transfer visual object
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
-registerVisual(const QString& ip, TransferVisual* tv){
+registerVisual(const QString& ip, const QString& port, TransferVisual* tv){
   tConnectionList::const_iterator iter;
 
+  LOGI("FtpDataConnection creation");
+  FtpDataConnection* fdc=new FtpDataConnection();
+  connectionList.push_back(fdc);
+  fdc->setTransferType(transferType);
+  fdc->setIp(ip);
+  fdc->setPort(port);
+  fdc->setCurrentDirectory(currentDirectory);
+  fdc->setTransferVisual(tv);
+}
+
+/** A new connection was requested
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
+  emit(log( "A new connection is requested on transfer channel" ));
+  LOGI("A new connection is requested on transfer channel" );
+  socket1=server->nextPendingConnection();
+  QString filename, s;
+
+  descriptor=socket1->socketDescriptor();
+  LOGCATS("Socket descriptor is ");
+  LOGCATI( descriptor );
+  LOGCAT();
+
+  switch(nextCommand){
+  case FTC_NONE:
+    LOGW("New connection has no pending command...CLOSED");
+    break;
+  case FTC_LIST:
+    LOGI("This connection is for a LIST command");
+    lsResult();
+    emit(log("Sending LS result"));
+    socket1->write(packetData.toLatin1());
+    writeBytes(socket1);
+    LOGI( "LIST command complete");
+    break;
+  case FTC_STOR:
+    s="Receiving file ";
+    s+=nextFilename;
+    emit(log(s));
+    break;
+  case FTC_RETR:
+    LOGI("RETR not yet implemented");
+    break;
+  }
+
+  //Setting the socket to the FtpDataConnection
   LOGI("registerVisual called");
   LOGCATS("connectionList size : ");
   LOGCATI(connectionList.size());
   LOGCAT();
 
+  QString pport=QString::number(socket1->peerPort());
+
+
+  tConnectionList::const_iterator iter;
   for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
+    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport)){
+      LOGI("Socket correctly added to the FtpDataConnection");
+      (*iter)->setSocket(socket1);
 
-    if ((*iter)->isThisConnection(ip)){
-      LOGI("registerVisual successfully called");
-      (*iter)->setTransferVisual(tv);
+      // Setting the command
+      if (nextCommand==FTC_STOR){
+	(*iter)->commandSTOR(nextFilename);
+      }
+
     }
-
   }
 }

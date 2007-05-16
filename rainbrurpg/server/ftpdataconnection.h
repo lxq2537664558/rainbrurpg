@@ -61,6 +61,7 @@ namespace RainbruRPG{
 	void setSocket(QTcpSocket*);
 	void setCurrentDirectory(const QString&);
 	void setIp(const QString&);
+	void setPort(const QString&);
 
 	void commandSTOR(const QString&);
 

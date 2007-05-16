@@ -62,7 +62,7 @@ RainbruRPG::Network::Ftp::FtpDataConnection::~FtpDataConnection(){
 
 }
 
-/** Is the connection is the same
+/** Is the connection the same
   *
   * \param ip The IP address to test
   * \param port The port to test
@@ -72,6 +72,18 @@ RainbruRPG::Network::Ftp::FtpDataConnection::~FtpDataConnection(){
   */
 bool RainbruRPG::Network::Ftp::FtpDataConnection::
 isThisConnection(const QString& ip, const QString& port){
+
+  LOGI("isThisConnection(2string) called");
+  LOGCATS("  matched IP=");
+  LOGCATS(ip.toLatin1());
+  LOGCATS(" port=");
+  LOGCATS(port.toLatin1());
+  LOGCAT();
+  LOGCATS("  local IP=");
+  LOGCATS(clientIp.toLatin1());
+  LOGCATS(" port=");
+  LOGCATS(clientPort.toLatin1());
+  LOGCAT();
 
   if (ip==clientIp && port==clientPort){
     return true;
@@ -233,6 +245,15 @@ isThisConnection(const QString& ip){
   * \param ip The client IP address
   *
   */
-void RainbruRPG::Network::Ftp::FtpDataConnection::setIp(const QString&ip){
+void RainbruRPG::Network::Ftp::FtpDataConnection::setIp(const QString& ip){
   this->clientIp=ip;
+}
+
+/** Change the client port
+  *
+  * \param p The client port
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::setPort(const QString& p){
+  this->clientPort=p;
 }

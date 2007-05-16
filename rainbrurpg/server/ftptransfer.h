@@ -65,7 +65,7 @@ namespace RainbruRPG{
 	~FtpTransfer();
 	
 	virtual void run ();
-	void registerVisual(const QString&, TransferVisual*);
+	void registerVisual(const QString&, const QString&, TransferVisual*);
 
       signals:
 	/** A signal used to log messages */

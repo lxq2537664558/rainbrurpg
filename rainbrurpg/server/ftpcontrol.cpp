@@ -90,6 +90,8 @@ void RainbruRPG::Network::Ftp::FtpControl::newConnection(){
   */
 void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
   QTcpSocket *tcpSocket = socket1;
+  QString pport=QString::number(tcpSocket->peerPort());
+
   if (tcpSocket){
     int ba=tcpSocket->bytesAvailable();
     if (ba>0){
@@ -205,13 +207,11 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  QString l("Requesting file ");
 	  l+=h1;
 
-
-	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
-				 h1, false, 0));
-
-
 	  emit(log(l));
 	  emit(commandRETR(h1));
+	  emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
+				 h1, false, 0));
+
 	}
 	else if (s.contains("STOR")){
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
@@ -239,7 +239,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  h1=h1.simplified();
 	  nextFilesize=h1.toInt();
 
-	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), 
+	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), pport, 
 				 nextStoredFile, true, nextFilesize));
 
 	  tcpSocket->write("200 Data channel ready.\r\n");

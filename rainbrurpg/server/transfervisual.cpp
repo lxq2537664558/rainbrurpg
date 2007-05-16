@@ -37,6 +37,7 @@ RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
   downloaded=0;
   percent=0;
   filesize=0;
+  port="";
 }
 
 /** The destructor
@@ -240,6 +241,8 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
     switch(column){
     case 0:
       s=ip;
+      s+=":";
+      s+=port;
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignLeft|Qt::AlignVCenter, s);
       break;
@@ -342,4 +345,13 @@ QString RainbruRPG::Network::Ftp::TransferVisual::fileSizeToString(){
   }
 
   return s;
+}
+
+/** Set the port of the related client
+  *
+  * \param p The port
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::setPort(const QString& p){
+  this->port=p;
 }
