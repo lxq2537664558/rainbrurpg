@@ -34,6 +34,7 @@
 #include <QGradient>
 #include <QBrush>
 #include <QFileInfo>
+#include <QTime>
 
 namespace RainbruRPG{
   namespace Network{
@@ -55,6 +56,7 @@ namespace RainbruRPG{
 	
 	void setFilename(const QString&, const QString&);
 	const QString& getFilename()const;
+	const QString& getAbsoluteFilename()const;
 
 	virtual void paintCell(QPainter*, const QColorGroup & , int , 
 			       int , int);
@@ -72,6 +74,7 @@ namespace RainbruRPG{
 	int getDownloaded();
 
 	void computePercent();
+	void computeRate();
 
 	void addBytes(int);
 
@@ -84,6 +87,10 @@ namespace RainbruRPG{
 	QString port;
 	/** The filename of the file being transfered with its absolute path */
 	QString filename;
+	/** The filename of the file being transfered without its the path */
+	QString absoluteFilename;
+	/** The time that remains for the ransfer to be completed */
+	QString remainingTime;
 	/** If it is not in, it is out */
 	bool commingIn;
 	/** The transfer rate */
@@ -94,6 +101,9 @@ namespace RainbruRPG{
 	int downloaded;
 	/** The percent of downloeded bytes */
 	double percent;
+
+	/** A Time object used to compute the download rate */
+	QTime time;
       };
 
     }

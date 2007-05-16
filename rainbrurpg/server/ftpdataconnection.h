@@ -52,7 +52,7 @@ namespace RainbruRPG{
 	FtpDataConnection();
 	virtual ~FtpDataConnection();
 
-	bool isThisConnection(const QString&, const QString&);
+	bool isThisConnection(const QString&, const QString&, const QString&);
 	bool isThisConnection(const QString&);
 	void setTransferVisual(TransferVisual*);
 	void setCommand(tTransferCommand);
@@ -64,6 +64,8 @@ namespace RainbruRPG{
 	void setPort(const QString&);
 
 	void commandSTOR(const QString&);
+
+	void computeRate();
 
       private slots:
 	void readyRead();

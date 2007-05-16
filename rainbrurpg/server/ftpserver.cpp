@@ -48,8 +48,9 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   tree->addColumn("Ip:port", 120);
   tree->addColumn("Filename", 160);
   tree->addColumn("In/Out");
-  tree->addColumn("Rate", 70);
+  tree->addColumn("Rate", 80);
   tree->addColumn("Size", 100);
+  tree->addColumn("Rem.time", 120);
   tree->addColumn("Progress", 200);
   mainLayout->addWidget(tree);
 

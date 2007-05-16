@@ -573,7 +573,7 @@ registerVisual(const QString& ip, const QString& port, TransferVisual* tv){
   connectionList.push_back(fdc);
   fdc->setTransferType(transferType);
   fdc->setIp(ip);
-  fdc->setPort(port);
+  fdc->setFilename(tv->getAbsoluteFilename());
   fdc->setCurrentDirectory(currentDirectory);
   fdc->setTransferVisual(tv);
 }
@@ -622,10 +622,9 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
   QString pport=QString::number(socket1->peerPort());
 
-
   tConnectionList::const_iterator iter;
   for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
-    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport)){
+    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport, nextFilename)){
       LOGI("Socket correctly added to the FtpDataConnection");
       (*iter)->setSocket(socket1);
 

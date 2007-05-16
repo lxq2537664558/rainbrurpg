@@ -20,10 +20,13 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- FtpDataConnection must be different from IP/port key
-   FtpDataConnection has the control port
-   FtpTransfer::newConnection has the data portœ
-- The newly created TransferVisual is registered in a FtpDataConnection
+- transferVisual computes rate and remaining time only every one
+     seconds
+   In FtpTransfer, every second, a QTimer call computeRate on each
+   ftpTransferVisual 
+- Compute the remaining time
+- Can we lock nextCommand, nextFilename when we waiting data channel
+   connection ?
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
 
@@ -126,6 +129,11 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-135
+- transferVisual progress bar always update
+- Compute the download rate
+- FtpDataConnection must be different from IP/port key
+- The newly created TransferVisual is registered in a
+   FtpDataConnection
 - FtpTransfer::registerVisual must have the clent control port
 - TransferVisual 1st column is IP/port
 - Creates the FtpDataConnection object in registerVisual()

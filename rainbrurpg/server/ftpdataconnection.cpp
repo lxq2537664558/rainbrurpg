@@ -62,37 +62,6 @@ RainbruRPG::Network::Ftp::FtpDataConnection::~FtpDataConnection(){
 
 }
 
-/** Is the connection the same
-  *
-  * \param ip The IP address to test
-  * \param port The port to test
-  *
-  * \return \c true if IP/port are the same
-  *
-  */
-bool RainbruRPG::Network::Ftp::FtpDataConnection::
-isThisConnection(const QString& ip, const QString& port){
-
-  LOGI("isThisConnection(2string) called");
-  LOGCATS("  matched IP=");
-  LOGCATS(ip.toLatin1());
-  LOGCATS(" port=");
-  LOGCATS(port.toLatin1());
-  LOGCAT();
-  LOGCATS("  local IP=");
-  LOGCATS(clientIp.toLatin1());
-  LOGCATS(" port=");
-  LOGCATS(clientPort.toLatin1());
-  LOGCAT();
-
-  if (ip==clientIp && port==clientPort){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-
 /** Set the transfer visual
   *
   * \param tv The TransferVisual to change
@@ -257,3 +226,56 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::setIp(const QString& ip){
 void RainbruRPG::Network::Ftp::FtpDataConnection::setPort(const QString& p){
   this->clientPort=p;
 }
+
+/** Is the connection the same
+  *
+  * If clientPort is empty, the port given in parameter is set.
+  *
+  * \param ip The IP address to test
+  * \param port The port to test
+  *
+  * \return \c true if IP/port are the same
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpDataConnection::
+isThisConnection(const QString& ip, const QString& port, 
+		 const QString& filename){
+
+  LOGI("isThisConnection(2string) called");
+  LOGCATS("  matched IP=");
+  LOGCATS(ip.toLatin1());
+  LOGCATS(" port=");
+  LOGCATS(port.toLatin1());
+  LOGCATS(" filename=");
+  LOGCATS(filename.toLatin1());
+  LOGCAT();
+  LOGCATS("  local IP=");
+  LOGCATS(clientIp.toLatin1());
+  LOGCATS(" port=");
+  LOGCATS(clientPort.toLatin1());
+  LOGCATS(" filename=");
+  LOGCATS(this->filename.toLatin1());
+  LOGCAT();
+
+  if (ip==clientIp && this->filename==filename){
+    if (clientPort.isEmpty()){
+      LOGI("First call, setting port");
+      clientPort=port;
+      return true;
+    }
+    else{
+      if (clientPort==port){
+	LOGI("Already called, connection is the same");
+	return true;
+      }
+      else{
+	LOGI("Already called, connection is not the same");
+	return false;
+      }
+    }
+  }
+  else{
+    return false;
+  }
+}
+

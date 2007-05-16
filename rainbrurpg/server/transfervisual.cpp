@@ -23,7 +23,6 @@
 
 
 #include "transfervisual.h"
-
 #include "logger.h"
 
 /** The default constructor
@@ -38,6 +37,10 @@ RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
   percent=0;
   filesize=0;
   port="";
+  remainingTime="";
+
+  time.start();
+
 }
 
 /** The destructor
@@ -76,6 +79,8 @@ void RainbruRPG::Network::Ftp::TransferVisual::setFilename(const QString& file, 
   this->filename=path;
   this->filename+="/";
   this->filename+=file;
+
+  this->absoluteFilename=file;
 
 }
 
@@ -207,7 +212,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
 
   QPen pen(Qt::gray, 1); 
 
-  if (column==5){
+  if (column==6){
 
     int totalW=width-4;
     int leftW=(int)(totalW*percent)/100;
@@ -265,7 +270,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
       break;
     case 3:
       s=QString::number(rate, 'f', 2);
-      s+=" kb/s";
+      s+=" kB/s";
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, s);
       break;
@@ -273,7 +278,11 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
       break;
-    }
+    case 5:
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, remainingTime);
+      break;
+   }
   }
 }
 
@@ -295,7 +304,10 @@ void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
 void RainbruRPG::Network::Ftp::TransferVisual::addBytes(int bytes){
   downloaded+=bytes;
   computePercent();
+  computeRate();
+
   repaint();
+
 }
 
 /** The Q3ListViewItem::text function override
@@ -354,4 +366,37 @@ QString RainbruRPG::Network::Ftp::TransferVisual::fileSizeToString(){
   */
 void RainbruRPG::Network::Ftp::TransferVisual::setPort(const QString& p){
   this->port=p;
+}
+
+const QString& RainbruRPG::Network::Ftp::TransferVisual::
+getAbsoluteFilename()const{
+  return this->absoluteFilename;
+}
+
+void RainbruRPG::Network::Ftp::TransferVisual::computeRate(){
+  // rate computation
+  double d=downloaded/1024;
+  double d2=(double)time.elapsed()/1000;
+  rate=d/d2;
+
+  // remainingTime computation
+  int remainingBytes=filesize-downloaded;
+  double remainingK=remainingBytes/1024;
+  double seconds=remainingK/rate;
+
+  if (seconds<60){
+    remainingTime.setNum(seconds, 'f', 0);
+    remainingTime+=" s";
+  }
+  else{
+    int min=(int)seconds/60;
+    int remainSec=seconds-(min*60);
+    remainingTime.setNum(min);
+    remainingTime+=" min ";
+    QString s;
+    s.setNum(remainSec);
+    remainingTime+=s;
+    remainingTime+=" s";
+
+  }
 }
