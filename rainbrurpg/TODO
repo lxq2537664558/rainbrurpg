@@ -13,13 +13,14 @@ stor /home/mouse/neededLibs.tar.gz
    curlsubmitform.h
 
 * UnitTest
-- CurlServerAdd   
-   Tests initial values (should =="")
+- Test perform with curlserverdelete and virtualserver.h
 
 * FTP client
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
+- Why TransferVisual progress if infinity (div/0)
+- Fix the filename bug
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
 - Implementation de USER <username>
@@ -124,6 +125,7 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-136
+- CurlServerAdd UnitTest Tests initial values (should =="")
 
 * v 0.0.4-135
 - transferVisual computes rate and remaining time only every one

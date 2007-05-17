@@ -125,7 +125,8 @@ void RainbruRPG::Network::Ident::CurlInterface::setDefaultWriteFunction(){
 /** Returns the last server response
   *
   * The long returned by this function can be used with a HttpResponse
-  * instance to get an human-readable message.
+  * instance to get an human-readable message. If none server response
+  * was set, return -1.
   *
   * \sa HttpResponse
   *

@@ -131,6 +131,13 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     */
   CPPUNIT_TEST(testTechNoteString  );
 
+  /** Tests the initial values
+    *
+    * \sa testInitialValues
+    *
+    */
+  CPPUNIT_TEST(testInitialValues  );
+
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
 
@@ -323,6 +330,31 @@ public:
     CPPUNIT_ASSERT( tech==tn );
   }
 
+  /** Tests the initial values
+    *
+    * It should be ""
+    *
+    */
+  void testInitialValues(){
+    const char* name=this->m_csa->getName();
+    const char* ip=this->m_csa->getIpAddress();
+    const char* port=this->m_csa->getPort();
+    const char* maxClients=this->m_csa->getMaxClients();
+    const char* desc=this->m_csa->getDescription();
+    const char* techNote=this->m_csa->getTechNote();
+    long serverLong=this->m_csa->getServerResponse();
+    const char* errMsg=this->m_csa->getCustomErrorMessage();
+
+    CPPUNIT_ASSERT( strcmp(name, "")==0 );
+    CPPUNIT_ASSERT( strcmp(ip, "")==0 );
+    CPPUNIT_ASSERT( strcmp(port, "")==0 );
+    CPPUNIT_ASSERT( strcmp(maxClients, "")==0 );
+    CPPUNIT_ASSERT( strcmp(desc, "")==0 );
+    CPPUNIT_ASSERT( strcmp(techNote, "")==0 );
+    CPPUNIT_ASSERT( serverLong==-1 );
+    CPPUNIT_ASSERT( strcmp(errMsg, "")==0 );
+
+  }
 };
 
 
