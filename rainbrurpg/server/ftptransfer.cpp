@@ -60,6 +60,9 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
 
   }
 
+  timer=new QTimer();
+  connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+  timer->start(500);
 
   connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
@@ -634,5 +637,15 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
       }
 
     }
+  }
+}
+
+/** Updates periodically the FtpDataConnection::computeRate() function
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpTransfer::update(){
+  tConnectionList::const_iterator iter;
+  for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
+    (*iter)->computeRate();
   }
 }

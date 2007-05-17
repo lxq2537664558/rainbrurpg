@@ -304,10 +304,7 @@ void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
 void RainbruRPG::Network::Ftp::TransferVisual::addBytes(int bytes){
   downloaded+=bytes;
   computePercent();
-  computeRate();
-
   repaint();
-
 }
 
 /** The Q3ListViewItem::text function override
@@ -368,11 +365,21 @@ void RainbruRPG::Network::Ftp::TransferVisual::setPort(const QString& p){
   this->port=p;
 }
 
+/** Get the filename without the path
+  *
+  * \return Only the filename
+  *
+  */
 const QString& RainbruRPG::Network::Ftp::TransferVisual::
 getAbsoluteFilename()const{
   return this->absoluteFilename;
 }
 
+/** Computes the download rate and the remaining time
+  *
+  * This function is periodically called by FtpTransfer::update().
+  *
+  */
 void RainbruRPG::Network::Ftp::TransferVisual::computeRate(){
   // rate computation
   double d=downloaded/1024;
@@ -390,11 +397,11 @@ void RainbruRPG::Network::Ftp::TransferVisual::computeRate(){
   }
   else{
     int min=(int)seconds/60;
-    int remainSec=seconds-(min*60);
+    double remainSec=seconds-(min*60);
     remainingTime.setNum(min);
     remainingTime+=" min ";
     QString s;
-    s.setNum(remainSec);
+    s.setNum(remainSec, 'f', 0);
     remainingTime+=s;
     remainingTime+=" s";
 

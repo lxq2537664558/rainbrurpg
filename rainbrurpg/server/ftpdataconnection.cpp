@@ -229,12 +229,14 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::setPort(const QString& p){
 
 /** Is the connection the same
   *
-  * If clientPort is empty, the port given in parameter is set.
+  * This function is used to find a connection. If clientPort is empty, 
+  * the port given in parameter is set. 
   *
   * \param ip The IP address to test
   * \param port The port to test
+  * \param filename The file to transfer
   *
-  * \return \c true if IP/port are the same
+  * \return \c true if IP/port or IP/filename are the same
   *
   */
 bool RainbruRPG::Network::Ftp::FtpDataConnection::
@@ -279,3 +281,11 @@ isThisConnection(const QString& ip, const QString& port,
   }
 }
 
+/** Updates the rate and remaining time of the TransferVisual
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::computeRate(){
+  if (transferVisual){
+    transferVisual->computeRate();
+  }
+}

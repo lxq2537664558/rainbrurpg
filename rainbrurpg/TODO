@@ -20,11 +20,6 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- transferVisual computes rate and remaining time only every one
-     seconds
-   In FtpTransfer, every second, a QTimer call computeRate on each
-   ftpTransferVisual 
-- Compute the remaining time
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
 - Implementation de USER <username>
@@ -128,7 +123,12 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-136
+
 * v 0.0.4-135
+- transferVisual computes rate and remaining time only every one
+     seconds
+- Compute the remaining time
 - transferVisual progress bar always update
 - Compute the download rate
 - FtpDataConnection must be different from IP/port key

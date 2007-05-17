@@ -152,7 +152,8 @@ void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
   * We need the filesize. If the file is sent to the server (STOR command)
   * it is get from a FSIZE telnet command.
   *
-  * \param ip The client IP adress
+  * \param ip The client IP address
+  * \param port The client port
   * \param filename The filename to transfer
   * \param commingIn Is the file comming in ?
   * \param filesize The size of the file

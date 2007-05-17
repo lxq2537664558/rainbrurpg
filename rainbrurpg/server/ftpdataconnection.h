@@ -64,7 +64,6 @@ namespace RainbruRPG{
 	void setPort(const QString&);
 
 	void commandSTOR(const QString&);
-
 	void computeRate();
 
       private slots:

@@ -508,7 +508,8 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
   ../common/tidentreturn.h ../common/globaluri.h ftptransfer.h \
   /usr/include/qt4/QtCore/QDir /usr/include/qt4/QtCore/QDateTime \
-  ftpdataconnection.h /usr/include/qt4/QtCore/QFile transfervisual.h \
+  /usr/include/qt4/QtCore/QTimer ftpdataconnection.h \
+  /usr/include/qt4/QtCore/QFile transfervisual.h \
   /usr/include/qt4/QtCore/QString /usr/include/qt4/Qt3Support/Qt3Support \
   /usr/include/qt4/QtNetwork/QtNetwork /usr/include/qt4/QtNetwork/qhttp.h \
   /usr/include/qt4/QtNetwork/qnetworkinterface.h \
@@ -2119,6 +2120,8 @@ ftptransfer.h:
 /usr/include/qt4/QtCore/QDir:
 
 /usr/include/qt4/QtCore/QDateTime:
+
+/usr/include/qt4/QtCore/QTimer:
 
 ftpdataconnection.h:
 

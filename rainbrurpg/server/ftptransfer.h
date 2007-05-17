@@ -36,6 +36,7 @@
 #include <QtNetwork/QTcpSocket>
 #include <QDir>
 #include <QDateTime>
+#include <QTimer>
 
 #include <iostream>
 #include <list>
@@ -51,6 +52,12 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
+      /** A STL list of FtpDataConnection
+        *
+	* A list of connection is used by FtpTransfer to provide
+	* multiple transfers at the same time.
+	*
+	*/
       typedef std::list<FtpDataConnection*> tConnectionList;
 
       /** An implementation of the Transfer Channel using by the FTP protocol
@@ -93,6 +100,7 @@ namespace RainbruRPG{
       private slots:
 	void newConnection();
 	void error ( QAbstractSocket::SocketError socketError );
+	void update();
 
       private:
 	void lsResult();
@@ -136,6 +144,8 @@ namespace RainbruRPG{
 
 	/** The connection list */
 	tConnectionList connectionList;
+	/** A timer used to periodically update FtpDataConection */
+	QTimer* timer;
       };
 
     }
