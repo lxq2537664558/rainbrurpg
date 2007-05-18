@@ -31,9 +31,10 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 
-#include <caption.h>
-
+#include <curlserverdelete.h>
 #include <string>
+
+#include "virtualserver.h"
 
 using namespace std;
 
@@ -137,6 +138,13 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     *
     */
   CPPUNIT_TEST(testInitialValues  );
+
+  /** Adds a virtual server
+    *
+    * \sa testAddVirtual
+    *
+    */
+  CPPUNIT_TEST(testAddVirtual);
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -353,6 +361,31 @@ public:
     CPPUNIT_ASSERT( strcmp(techNote, "")==0 );
     CPPUNIT_ASSERT( serverLong==-1 );
     CPPUNIT_ASSERT( strcmp(errMsg, "")==0 );
+
+  }
+
+  /** Adds a virtual server 
+    *
+    * Use the local instance of CurlServerAdd to add the server defined
+    * in virtualserver.h then remove it with CurlServerDelete.
+    *
+    */
+  void testAddVirtual(){
+    this->m_csa->setName(SERVER_NAME);
+    this->m_csa->setIpAddress(SERVER_IP);
+    this->m_csa->setPort(SERVER_PORT);
+    this->m_csa->setMaxClients(SERVER_MAX_CLIENTS);
+    this->m_csa->setDescription(SERVER_DESC);
+    this->m_csa->setTechNote(SERVER_TECH_NOTE);
+
+    bool addServerSuccess=this->m_csa->perform();
+    CPPUNIT_ASSERT( addServerSuccess );
+
+    CurlServerDelete csd;
+    csd.setName(SERVER_NAME);
+    bool deleteServerSuccess=csd.perform();
+    CPPUNIT_ASSERT( deleteServerSuccess );
+
 
   }
 };

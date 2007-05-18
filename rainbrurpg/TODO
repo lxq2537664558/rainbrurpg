@@ -12,15 +12,12 @@ stor /home/mouse/neededLibs.tar.gz
    curlservermodifclients.h   
    curlsubmitform.h
 
-* UnitTest
-- Test perform with curlserverdelete and virtualserver.h
-
 * FTP client
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
 - Why TransferVisual progress if infinity (div/0)
-- Fix the filename bug
+- Fix the filename bug. The filename received by the server is troncated
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
 - Implementation de USER <username>
@@ -125,6 +122,7 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-136
+- Test CurlServerAdd::perform with curlserverdelete and virtualserver.h
 - CurlServerAdd UnitTest Tests initial values (should =="")
 
 * v 0.0.4-135
