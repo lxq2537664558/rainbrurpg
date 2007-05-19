@@ -47,7 +47,7 @@ namespace RainbruRPG{
       * implementation. The \c PORT command is not implemented.
       *
       */
-    class FtpClientWindow : public FX::FXMainWindow {
+    class FtpClientWindow : public FX::FXMainWindow, public sigc::trackable {
       FXDECLARE(FtpClientWindow)
 	
     public:
@@ -76,6 +76,8 @@ namespace RainbruRPG{
       long treatNewCommand(FXObject* ,FXSelector,void*);
       long onConnect(FXObject* ,FXSelector,void*);
       long onHelp(FXObject* ,FXSelector,void*);
+
+      void slotBytesWritten(int);
 
     private:
       void logMessage(FXString);

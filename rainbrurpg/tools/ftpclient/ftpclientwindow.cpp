@@ -49,6 +49,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
 
   ftpClient=new FtpClient();
 
+  ftpClient->sigBytesWritten.connect( sigc::mem_fun(this, 
+	     &RainbruRPG::Gui::FtpClientWindow::slotBytesWritten) );
+
   FXint opt= BUTTON_NORMAL|LAYOUT_FIX_WIDTH;
 
   // frame containing admin info and button
@@ -80,7 +83,7 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
 
   FXButton* btnConnect=new FXButton(frMatrix, "Connect" , NULL, this, ID_CONN);
 
-  // Command lines remenber
+  // Command lines remember
   fxText=new FXText(frame, this, ID_NYI, LAYOUT_FILL_X|LAYOUT_FILL_Y|FX::TEXT_READONLY);
   fxText->disable();
   fxText->setStyled(true);
@@ -275,14 +278,14 @@ onConnect(FXObject* o,FXSelector s,void* v){
     logMessage("Connection to FTP host successfull");
     std::string s=ftpClient->waitControlResponse();
     logMessage(s.c_str());
+    fxText->enable();
+    fxTextField->enable();
+
   }
   else{
     LOGE("Connection to FTP Host failed");
     logMessage("Connection to FTP Host failed");
   }
-
-  fxText->enable();
-  fxTextField->enable();
 
 }
 
@@ -376,11 +379,10 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpPass(){
   FXString help;
   help+=            "This command is used to send the user password.\n";
   help+= HELP_INDENT"It is often used just after a USER command and should\n";
-  help+= HELP_INDENT"not be used by the end-user. The password is not crypted.";
+  help+= HELP_INDENT"not be used by the end-user. The password is not\n";
+  help+= HELP_INDENT"crypted.";
 
   showHelpCommand("PASS <password>", help);
-
-
 }
 
 /** Always scroll the text ecit down
@@ -493,9 +495,16 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpStore(){
 void RainbruRPG::Gui::FtpClientWindow::showHelpRetrieve(){
   FXString help;
   help+=            "Get the given file from the server. The filename\n";
-  help+= HELP_INDENT"should not contain path. Thefile will be saved in\n";
+  help+= HELP_INDENT"should not contain path. The file will be saved in\n";
   help+= HELP_INDENT"the user directory.\n";
 
   showHelpCommand("RETR <filename>", help);
 
+}
+
+void RainbruRPG::Gui::FtpClientWindow::slotBytesWritten(int b){
+  //  LOGCATS("slotBytesWritten called :");
+  //  LOGCATI(b);
+  //  LOGCAT();
+  this->repaint();
 }

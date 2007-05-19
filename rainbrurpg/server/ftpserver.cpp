@@ -45,7 +45,7 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
   QLabel* lab2=new QLabel(tr("Transfert :"), this);
   mainLayout->addWidget(lab2);
   tree=new Q3ListView(this);
-  tree->addColumn("Ip:port", 120);
+  tree->addColumn("Ip:port", 150);
   tree->addColumn("Filename", 160);
   tree->addColumn("In/Out");
   tree->addColumn("Rate", 80);

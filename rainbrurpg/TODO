@@ -7,7 +7,6 @@ stor /home/mouse/neededLibs.tar.gz
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
    curlpersomodifattrb.h  need a curlpersoheaderdelete class
-   curlserveradd.h        Test set* as cont char* and std::string  
    curlserverdelete.h     
    curlservermodifclients.h   
    curlsubmitform.h
@@ -16,8 +15,13 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
+
+- common/ftpclient is in a different thread
+- Slit a pb with filename of STOR command
+- tool-ftpclient gui is blocked during transfer
+   FtpClient::commandSTOR contains a while(eof)
+- Close the data channel when transfer is finished
 - Why TransferVisual progress if infinity (div/0)
-- Fix the filename bug. The filename received by the server is troncated
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
 - Implementation de USER <username>
@@ -122,6 +126,14 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-136
+- Trying to update tool-ftpclient in
+   FtpClientWindow::slotBytesWritten()      Doesn't work
+- Connect - common/ftpclient::bytesRead(int) signal to a slot
+   in  tool-ftpclient
+- common/ftpclient bytesRead(int) bytesWritten(int) signals
+- TransferVisual draw \filename FIXED
+- Fix the filename bug. The filename received by the server is troncated
+   \r\n was missing
 - Test CurlServerAdd::perform with curlserverdelete and virtualserver.h
 - CurlServerAdd UnitTest Tests initial values (should =="")
 

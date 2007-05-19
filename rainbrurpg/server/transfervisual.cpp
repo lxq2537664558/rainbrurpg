@@ -213,7 +213,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   QPen pen(Qt::gray, 1); 
 
   if (column==6){
-
+    // Progress bar
     int totalW=width-4;
     int leftW=(int)(totalW*percent)/100;
     int rightW=totalW-leftW;
@@ -245,6 +245,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
     QString s;
     switch(column){
     case 0:
+      // IP/port
       s=ip;
       s+=":";
       s+=port;
@@ -252,11 +253,13 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
 			 Qt::AlignLeft|Qt::AlignVCenter, s);
       break;
     case 1:
-      s=filename;
+      // Filename
+      s=absoluteFilename;
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignLeft|Qt::AlignVCenter, s);
       break;
     case 2:
+      // Green or Red arrow
       if (commingIn){
 	int x=width/2-(imIn.width()/2);
 	int y=height()/2-(imIn.height()/2);
@@ -269,16 +272,19 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
       }
       break;
     case 3:
+      // Download rate
       s=QString::number(rate, 'f', 2);
       s+=" kB/s";
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, s);
       break;
     case 4:
+      // File size
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
       break;
     case 5:
+      // Remaining time
       painter->drawText( 0, 0, width, height(), 
 			 Qt::AlignRight|Qt::AlignVCenter, remainingTime);
       break;

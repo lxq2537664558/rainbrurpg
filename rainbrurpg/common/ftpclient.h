@@ -34,6 +34,7 @@
 
 #include <gnet.h>
 #include <glib.h>
+#include <sigc++/sigc++.h>
 
 #include "ftpdef.h"
 #include "boost/filesystem/operations.hpp"
@@ -57,6 +58,9 @@ namespace RainbruRPG {
       */
     class FtpClient{
     public:
+      /** Defines a signal returning void with an integer parameter */
+      typedef sigc::signal<void, int> tVoidIntSignal;
+
       FtpClient();
       ~FtpClient();
 
@@ -73,6 +77,21 @@ namespace RainbruRPG {
       std::string commandASCII();
       std::string commandSTOR(const std::string&);
       std::string commandRETR(const std::string&);
+
+      /** A signal emitted when bytes are read
+        *
+	* An integer parameter represents the number of bytes read.
+	*
+	*/
+      tVoidIntSignal sigBytesRead;
+
+      /** A signal emitted when bytes are written
+        *
+	* An integer parameter represents the number of bytes written.
+	*
+	*/
+      tVoidIntSignal sigBytesWritten;
+
 
     private:
       void sendString(const std::string&);

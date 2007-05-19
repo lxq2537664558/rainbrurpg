@@ -349,6 +349,7 @@ commandSTOR(const std::string& filename){
 
   // If the file is correctly opened
   if (fs.is_open()){
+    s+="\r\n";
     sendString(s);
     s+=waitControlResponse();
 
@@ -370,6 +371,8 @@ commandSTOR(const std::string& filename){
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
 	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, 
 					     &bytesWritten);
+	// Emit signal
+	sigBytesWritten.emit((int)bytesWritten);
 
       }
       fs.close();
@@ -387,8 +390,6 @@ commandSTOR(const std::string& filename){
   if (buffer!=NULL){
     free(buffer);
   }
-
-
 }
 
 /** Send a RETR command with the given file
