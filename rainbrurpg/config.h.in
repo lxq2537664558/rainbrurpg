@@ -38,6 +38,9 @@
    (-lboost_filesystem). */
 #undef HAVE_LIBBOOST_FILESYSTEM
 
+/* Define to 1 if you have the `boost_thread' library (-lboost_thread). */
+#undef HAVE_LIBBOOST_THREAD
+
 /* Define to 1 if you have the `CEGUIBase' library (-lCEGUIBase). */
 #undef HAVE_LIBCEGUIBASE
 

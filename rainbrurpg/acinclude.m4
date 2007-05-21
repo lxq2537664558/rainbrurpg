@@ -448,3 +448,18 @@ dnl     exit -1
 dnl   ])
 ])
 
+
+dnl Test the usability of the boost::thread library
+dnl
+RB_CHECK_BOOST_THREAD
+AC_DEFUN([RB_CHECK_BOOST_THREAD],
+[
+  AC_CHECK_LIB(boost_thread, main, [], [
+    echo "Error! You need to have boost::thread installed."
+    exit -1
+  ])
+  AC_CHECK_HEADER([boost/thread.hpp], [], [
+     echo "Error! Cannot find the boost::thread headers."
+     exit -1
+   ])
+])

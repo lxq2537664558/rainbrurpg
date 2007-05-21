@@ -91,6 +91,20 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   fxTextField=new FXTextField(frame, 20, this, ID_NEW_CMD, LAYOUT_FILL_X);
   fxTextField->disable();
 
+  // Showing transfer
+  FXMatrix* transMatrix=new FXMatrix(frame,4, LAYOUT_FILL_X|MATRIX_BY_COLUMNS);
+  FXLabel* labTrFn=new FXLabel(transMatrix, "Filename");
+  FXLabel* labTrIo=new FXLabel(transMatrix, "In/Out");
+  FXLabel* labTrFs=new FXLabel(transMatrix, "Filesize");
+  FXLabel* labTrPr=new FXLabel(transMatrix, "Progression", NULL,LAYOUT_FILL_X );
+
+  // Sample
+  FXLabel* lab101=new FXLabel(transMatrix, "/home/mouse/neededLibs.tar.gz");
+  FXLabel* lab102=new FXLabel(transMatrix, "In");
+  FXLabel* lab103=new FXLabel(transMatrix, "256 Mo");
+  FXProgressBar* labTrPb=new FXProgressBar(transMatrix, NULL, 0, PROGRESSBAR_NORMAL|LAYOUT_FILL_X|LAYOUT_FILL_Y);
+
+
   // The status bar
   FXStatusBar* sb=new FXStatusBar (frame, LAYOUT_FILL_X|
 				   STATUSBAR_WITH_DRAGCORNER);
@@ -503,8 +517,5 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpRetrieve(){
 }
 
 void RainbruRPG::Gui::FtpClientWindow::slotBytesWritten(int b){
-  //  LOGCATS("slotBytesWritten called :");
-  //  LOGCATI(b);
-  //  LOGCAT();
-  this->repaint();
+
 }

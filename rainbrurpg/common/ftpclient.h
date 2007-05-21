@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 21 may 2007 : Multi-thread implementation started
  * - 27 apr 2007 : Starting implementation
  *
  */
@@ -92,6 +93,7 @@ namespace RainbruRPG {
 	*/
       tVoidIntSignal sigBytesWritten;
 
+      void STOR_ThreadedFunction();
 
     private:
       void sendString(const std::string&);
@@ -112,9 +114,12 @@ namespace RainbruRPG {
 
       /** Are we in FTT_BINARY or FTT_ASCII ? */
       tTransferType transferType;
+      /** The name of the file to transfer */
+      std::string transferFilename;
 
+      /** The value returned in a thread */
+      std::string returnValue;
     };
-
   }
 }
 

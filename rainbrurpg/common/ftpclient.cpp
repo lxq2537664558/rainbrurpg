@@ -25,6 +25,10 @@
 #include "logger.h"
 #include "stringconv.h"
 
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <boost/thread/thread.hpp>
+
 /** The default constructor
   *
   */
@@ -32,7 +36,8 @@ RainbruRPG::Network::FtpClient::FtpClient(){
   controlSock=NULL;
   controlChannelConnected=false;
   transferType=FTT_ASCII;
-
+  transferFilename="";
+  returnValue="";
 }
 
 /** The destructor
@@ -300,10 +305,60 @@ std::string RainbruRPG::Network::FtpClient::commandASCII(){
   */
 std::string RainbruRPG::Network::FtpClient::
 commandSTOR(const std::string& filename){
+
+
+  // Is this file exist ?
+  if (!boost::filesystem::exists(filename)){
+    LOGW("File does not exist");
+    return "File does not exist";
+  }
+
+  // Setting the filename
+  transferFilename=filename;
+
+  // Creates a new thread and execute STOR command in
+  boost::function0<void> STOR_ThreadedFunction;
+  STOR_ThreadedFunction=boost::bind
+    (boost::mem_fn(&RainbruRPG::Network::FtpClient::STOR_ThreadedFunction),
+     this);
+  boost::thread aThread(STOR_ThreadedFunction);
+
+  return returnValue;
+}
+
+/** Send a RETR command with the given file
+  *
+  * \param filename The name of the server's file
+  *
+  * \return The server's response
+  *
+  */
+std::string RainbruRPG::Network::FtpClient::
+commandRETR(const std::string& filename){
+
+}
+
+/** The STOR threaded function
+  *
+  * This function is executed in a separated thread.
+  *
+  */
+void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
+  LOGI("In the thread");
+  LOGCATS("Val in threaded function hostIp=");
+  LOGCATS(hostIp.c_str());
+  LOGCATS(" filename='");
+  LOGCATS(transferFilename.c_str());
+  LOGCATS("'");
+  LOGCAT();
+
+  std::string filename=transferFilename;
+
+  // Creates the buffer used to write datas
   char* buffer=(char*)malloc(1024*sizeof(char));
   if (buffer==NULL){
     LOGE("Cannot allocate buffer");
-    return "Cannot allocate buffer";
+    returnValue= "Cannot allocate buffer";
   }
 
   boost::filesystem::ifstream fs;
@@ -332,19 +387,12 @@ commandSTOR(const std::string& filename){
     s+=onlyFilename;
   }
 
-
-  if (!boost::filesystem::exists(filename)){
-    LOGW("File does not exist");
-    return "File does not exist";
-  }
-  
   // Open the file according to the transfer type
   if (transferType==FTT_BINARY){
-    fs.open( filename, ios::in|ios::binary);
+    fs.open( transferFilename, ios::in|ios::binary);
   }
   else{
-    fs.open( filename, ios::in);
-
+    fs.open( transferFilename, ios::in);
   }
 
   // If the file is correctly opened
@@ -354,7 +402,7 @@ commandSTOR(const std::string& filename){
     s+=waitControlResponse();
 
     // send file size
-    int i=boost::filesystem::file_size(filename);
+    int i=boost::filesystem::file_size(transferFilename);
 
     std::string fileSize="FSIZE ";
     fileSize+=StringConv::getSingleton().itos(i);
@@ -373,13 +421,12 @@ commandSTOR(const std::string& filename){
 					     &bytesWritten);
 	// Emit signal
 	sigBytesWritten.emit((int)bytesWritten);
-
       }
+      LOGI("Returned from thread");
       fs.close();
     }
     LOGI("Waiting for second control response");
     s+=waitControlResponse();
-    
     closeDataChannel();
   }
   else{
@@ -390,16 +437,4 @@ commandSTOR(const std::string& filename){
   if (buffer!=NULL){
     free(buffer);
   }
-}
-
-/** Send a RETR command with the given file
-  *
-  * \param filename The name of the server's file
-  *
-  * \return The server's response
-  *
-  */
-std::string RainbruRPG::Network::FtpClient::
-commandRETR(const std::string& filename){
-
 }
