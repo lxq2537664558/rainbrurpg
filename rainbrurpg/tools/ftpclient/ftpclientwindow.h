@@ -116,6 +116,8 @@ namespace RainbruRPG{
 
       /** The FtpClient instance used to send FTP commands */
       FtpClient* ftpClient;
+      /** The progressbar of the current transfer */
+      FXProgressBar* labTrPb;
     }; 
   }
 }

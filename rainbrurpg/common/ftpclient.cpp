@@ -438,3 +438,15 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
     free(buffer);
   }
 }
+
+/** Get the file size
+  *
+  * The filename can contain the path.
+  *
+  * \param s The file name
+  *
+  */
+int RainbruRPG::Network::FtpClient::getFilesize(const std::string& s){
+  return boost::filesystem::file_size(s);
+}
+

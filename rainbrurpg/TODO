@@ -15,7 +15,11 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- Updating the Progressbar of the transfer
+- An error seems to blobk transfer
+   Xlib: unexpected async reply (sequence 0x469f5)!
+   Trying to update the GUI periodically. Then the signal only update
+   a class member.
+- A pb with filesize (client=256 Mo, server=272 Mo)
 - still a pb with filename of STOR command
 - Close the data channel when transfer is finished
 - Why TransferVisual progress if infinity (div/0)
@@ -123,6 +127,9 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-136
+- Doxygen documentation
+- Updating the Progressbar of the transfer
+- a common/ftpclient::getFilesize(filename)
 - Showing transfer in tool-ftpclient (in a FXMattrix)
 - tool-ftpclient gui is blocked during transfer (FIXED using a thread)
 - ftpclient STOR code in the threaded function 

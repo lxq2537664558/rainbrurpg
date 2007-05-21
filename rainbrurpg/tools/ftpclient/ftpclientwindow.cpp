@@ -102,8 +102,10 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   FXLabel* lab101=new FXLabel(transMatrix, "/home/mouse/neededLibs.tar.gz");
   FXLabel* lab102=new FXLabel(transMatrix, "In");
   FXLabel* lab103=new FXLabel(transMatrix, "256 Mo");
-  FXProgressBar* labTrPb=new FXProgressBar(transMatrix, NULL, 0, PROGRESSBAR_NORMAL|LAYOUT_FILL_X|LAYOUT_FILL_Y);
-
+  labTrPb=new FXProgressBar(transMatrix, NULL, 0, 
+			    PROGRESSBAR_NORMAL|PROGRESSBAR_PERCENTAGE|
+			    LAYOUT_FIX_WIDTH|LAYOUT_FILL_Y);
+  labTrPb->setWidth(250);
 
   // The status bar
   FXStatusBar* sb=new FXStatusBar (frame, LAYOUT_FILL_X|
@@ -123,6 +125,7 @@ RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
   delete tfHostPort;
 
   delete ftpClient;
+  delete labTrPb;
 }
 
 
@@ -255,7 +258,11 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       LOGCATS(filename.text());
       LOGCAT();
 
-    std:string fn(filename.text());
+      std::string fn(filename.text());
+
+      // Get filename
+      int filesize=ftpClient->getFilesize(fn);
+      labTrPb->setTotal(filesize);
 
       string s=ftpClient->commandSTOR(fn);
       logMessage(s.c_str());
@@ -516,6 +523,12 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpRetrieve(){
 
 }
 
+/** The slot connected to the FtpClient::sigBytesWritten signal
+  *
+  * This slot cannot update GUI because the FtpClient is executed in a 
+  * different thread 
+  *
+  */
 void RainbruRPG::Gui::FtpClientWindow::slotBytesWritten(int b){
-
+  labTrPb->increment(b);
 }

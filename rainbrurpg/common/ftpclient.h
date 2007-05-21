@@ -79,6 +79,8 @@ namespace RainbruRPG {
       std::string commandSTOR(const std::string&);
       std::string commandRETR(const std::string&);
 
+      int getFilesize(const std::string&);
+
       /** A signal emitted when bytes are read
         *
 	* An integer parameter represents the number of bytes read.
