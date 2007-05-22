@@ -180,6 +180,7 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::readyRead(){
 void RainbruRPG::Network::Ftp::FtpDataConnection::setSocket(QTcpSocket* s){
   this->socket=s;
   connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+  connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
 }
 
 /** Change the current directory
@@ -289,3 +290,11 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::computeRate(){
     transferVisual->computeRate();
   }
 }
+
+/** The data channel was disconnected
+  *
+  */ 
+void RainbruRPG::Network::Ftp::FtpDataConnection::disconnected(){
+  transferVisual->disconnected();
+}
+

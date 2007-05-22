@@ -1,8 +1,9 @@
 TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
-stor /home/mouse/neededLibs.tar.gz
-
+stor /home/mouse/neededLibs.tar.gz                      259 Mo
+stor /home/mouse/D2Patch_110.exe                         10 Mo 
+     
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -14,8 +15,12 @@ stor /home/mouse/neededLibs.tar.gz
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- FtpClient update file information when transfer is created
-   Filename, In/out, filesize
+- TransferVisual has a drawError(QPainter * painter,
+   const QColorGroup & cg, int column, int width, int align) function
+- TransferVisual has a drawInProgress(QPainter * painter, ...)
+- Implement a TransferVisual::state
+   TVS_PROGRESS, TVS_ERROR, TVS_FINISH
+- Server draw the transfer as terminated
 - Still a pb with filename of STOR command
 - Why TransferVisual progress if infinity (div/0)
 - Can we lock nextCommand, nextFilename when we waiting data channel
@@ -121,6 +126,8 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-137
+- FtpClient update file information when transfer is created
+   Filename, In/out, filesize
 - The FtpClient close the data channel when transfer is finished
 - UnitTests doxygen documentation
 - CurlServerDelete  Unittest implementation 

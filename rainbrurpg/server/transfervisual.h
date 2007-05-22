@@ -40,6 +40,16 @@ namespace RainbruRPG{
   namespace Network{
     namespace Ftp{
 
+      /** Defines the state of a TransferVisual
+        *
+	*/
+      typedef enum tTransferVisualState{
+	TVS_UNDEFINED,   //!< Undefined state
+	TVS_INPROGRESS,  //!< The download is in progress
+	TVS_ERROR,       //!< The data channel was closed 
+	TVS_SUCCESS      //!< The download is successful
+      };
+
       /** A visual representation of a FTP transfer
         *
 	* It is used by FtpTransfer and FtpServer in a Q3ListView.
@@ -60,6 +70,7 @@ namespace RainbruRPG{
 
 	virtual void paintCell(QPainter*, const QColorGroup & , int , 
 			       int , int);
+	void drawError(QPainter*, const QColorGroup & , int , int , int);
 	
 	virtual QString text ( int column )const;
 
@@ -77,6 +88,7 @@ namespace RainbruRPG{
 	void computeRate();
 
 	void addBytes(int);
+	void disconnected();
 
       private:
 	QString fileSizeToString();
@@ -87,7 +99,9 @@ namespace RainbruRPG{
 	QString port;
 	/** The filename of the file being transfered with its absolute path */
 	QString filename;
-	/** The filename of the file being transfered without its the path */
+	/** The filename of the file being transfered without 
+	  * its the path 
+	  */
 	QString absoluteFilename;
 	/** The time that remains for the ransfer to be completed */
 	QString remainingTime;
@@ -104,6 +118,9 @@ namespace RainbruRPG{
 
 	/** A Time object used to compute the download rate */
 	QTime time;
+
+	/** This visual state */
+	tTransferVisualState state;
       };
 
     }

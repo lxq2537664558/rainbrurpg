@@ -102,6 +102,7 @@ namespace RainbruRPG{
       void showHelpRetrieve();
 
       void scrollDown();
+      FXString filesizeToString(int);
 
       /** Required or Undefined references */
       FtpClientWindow(){};
@@ -129,6 +130,13 @@ namespace RainbruRPG{
 
       /** The total of already downloaded bytes */
       int downloadedBytes;
+
+      /** The label that contain the the transfered filename */
+      FXLabel* labTransName;
+      /** The label that contain the the transfer orientation */
+      FXLabel* labTransOrie;
+      /** The label that contain the the transfered file size */
+      FXLabel* labTransSize;
     }; 
   }
 }

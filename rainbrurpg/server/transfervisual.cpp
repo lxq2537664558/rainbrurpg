@@ -38,6 +38,7 @@ RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
   filesize=0;
   port="";
   remainingTime="";
+  state=TVS_UNDEFINED;
 
   time.start();
 
@@ -187,8 +188,12 @@ void RainbruRPG::Network::Ftp::TransferVisual::
 paintCell( QPainter * painter,const QColorGroup & cg, int column, 
 	   int width, int align ){
 
-  QImage imIn(":/images/transferIn.png");
-  QImage imOut(":/images/transferOut.png");
+  if (state==TVS_ERROR){
+    drawError(painter, cg, column, width, align);
+  }
+  else{
+    QImage imIn(":/images/transferIn.png");
+    QImage imOut(":/images/transferOut.png");
 
   if (isSelected()){
     painter->setPen(Qt::NoPen);
@@ -289,6 +294,7 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
 			 Qt::AlignRight|Qt::AlignVCenter, remainingTime);
       break;
    }
+  }
   }
 }
 
@@ -393,12 +399,12 @@ void RainbruRPG::Network::Ftp::TransferVisual::computeRate(){
   double d=downloaded/1024;
   double d2=(double)time.elapsed()/1000;
   rate=d/d2;
-
+  
   // remainingTime computation
   int remainingBytes=filesize-downloaded;
   double remainingK=remainingBytes/1024;
   double seconds=remainingK/rate;
-
+  
   if (seconds<60){
     remainingTime.setNum(seconds, 'f', 0);
     remainingTime+=" s";
@@ -412,6 +418,33 @@ void RainbruRPG::Network::Ftp::TransferVisual::computeRate(){
     s.setNum(remainSec, 'f', 0);
     remainingTime+=s;
     remainingTime+=" s";
-
   }
+}
+
+/** The data channel was disconnected
+  *
+  */ 
+void RainbruRPG::Network::Ftp::TransferVisual::disconnected(){
+  LOGI("Data channel disconnected");
+  if (downloaded==filesize){
+    remainingTime="OK";
+  }
+  else{
+    remainingTime="Error";
+    state=TVS_ERROR;
+  }
+
+}
+
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawError(QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align){
+
+  QString s="Error";
+
+  painter->setPen(Qt::black);
+  painter->drawText( 0, 0, width, height(), 
+		     Qt::AlignLeft|Qt::AlignVCenter, s);
+
+
 }

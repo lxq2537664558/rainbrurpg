@@ -69,6 +69,7 @@ namespace RainbruRPG{
       private slots:
 	void readyRead();
 	void readyWrite();
+	void disconnected();
 
       private:
 	/** The Transfer visual associated with this connection */

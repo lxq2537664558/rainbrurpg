@@ -105,9 +105,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   FXLabel* labTrPr=new FXLabel(transMatrix, "Progression", NULL,LAYOUT_FILL_X );
 
   // Sample
-  FXLabel* lab101=new FXLabel(transMatrix, "none");
-  FXLabel* lab102=new FXLabel(transMatrix, "");
-  FXLabel* lab103=new FXLabel(transMatrix, "");
+  labTransName=new FXLabel(transMatrix, "none");
+  labTransOrie=new FXLabel(transMatrix, "");
+  labTransSize=new FXLabel(transMatrix, "");
   labTrPb=new FXProgressBar(transMatrix, NULL, 0, 
 			    PROGRESSBAR_NORMAL|PROGRESSBAR_PERCENTAGE|
 			    LAYOUT_FIX_WIDTH|LAYOUT_FILL_Y);
@@ -135,6 +135,10 @@ RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
 
   delete ftpClient;
   delete labTrPb;
+
+  delete labTransName;
+  delete labTransOrie;
+  delete labTransSize;
 }
 
 
@@ -272,6 +276,11 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       // Get filename
       int filesize=ftpClient->getFilesize(fn);
       labTrPb->setTotal(filesize);
+
+      // Change transfer information
+      labTransName->setText(filename);
+      labTransOrie->setText("Out");
+      labTransSize->setText(filesizeToString(filesize));
 
       string s=ftpClient->commandSTOR(fn);
       logMessage(s.c_str());
@@ -564,4 +573,38 @@ onUpdateTransfer(FXObject* o,FXSelector s,void* v){
   labTrPb->setProgress(downloadedBytes);
   getApp()->addTimeout(this, ID_UPDT, UPDATE_INTERVAL, NULL);
   return 1;
+}
+
+/** Get a filesize in string
+  *
+  * \param filesize The filesize in bytes
+  *
+  * \return The string
+  *
+  */
+FXString RainbruRPG::Gui::FtpClientWindow::filesizeToString(int filesize){
+
+  FXString s;
+
+  float fs;
+
+  int mo=1024*1024;
+
+  if (filesize>mo){
+    fs=filesize/mo;
+    s+=FXStringVal(fs, 2, FALSE);
+    s+=" Mb";
+  }
+  else if (filesize>1024){
+    fs=filesize/1024;
+    s+=FXStringVal(fs, 2, FALSE);
+    s+=" kb";
+  }
+  else{
+    s+=FXStringVal(filesize, 10);
+    s+=" b";
+  }
+
+  return s;
+
 }
