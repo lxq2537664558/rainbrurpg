@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 may 2007 : States based implementation
  * - 10 may 2007 : Now inherits from Q3ListViewItem
  * - 20 apr 2007 : Starting implementation
  */
@@ -42,6 +43,10 @@ namespace RainbruRPG{
 
       /** Defines the state of a TransferVisual
         *
+	* To support completely different drawing for different transfer
+	* states, TransferVisual is based on states. The different states
+	* are defined here.
+	*
 	*/
       typedef enum tTransferVisualState{
 	TVS_UNDEFINED,   //!< Undefined state
@@ -90,11 +95,14 @@ namespace RainbruRPG{
 	void disconnected();
 
 	void setState(tTransferVisualState);
+	tTransferVisualState getState();
 
       private:
 	void drawError(QPainter*, const QColorGroup & , int , int , int);
 	void drawInProgress(QPainter*, const QColorGroup & , int , int , int);
 	void drawSuccess(QPainter*, const QColorGroup & , int , int , int);
+
+	void drawIpPort(QPainter*, int , int);
 
 	QString fileSizeToString();
 
