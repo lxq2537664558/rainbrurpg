@@ -34,6 +34,10 @@ FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_CONN, RainbruRPG::Gui::FtpClientWindow::onConnect),
 
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_HELP, RainbruRPG::Gui::FtpClientWindow::onHelp),
+
+  FXMAPFUNC(SEL_TIMEOUT, RainbruRPG::Gui::FtpClientWindow::ID_UPDT, RainbruRPG::Gui::FtpClientWindow::onUpdateTransfer),
+
+
 };
 
 FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARRAYNUMBER(FtpClientWindowMap));
@@ -45,12 +49,14 @@ FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARR
   *
   */
 RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
-   :FXMainWindow(a,"RainbruRPG FTP client",NULL,NULL,DECOR_ALL,0,0,550,600){
+   :FXMainWindow(a,"RainbruRPG FTP client",NULL,NULL,DECOR_ALL,0,0,600,600){
 
   ftpClient=new FtpClient();
 
   ftpClient->sigBytesWritten.connect( sigc::mem_fun(this, 
 	     &RainbruRPG::Gui::FtpClientWindow::slotBytesWritten) );
+
+  downloadedBytes=0;
 
   FXint opt= BUTTON_NORMAL|LAYOUT_FIX_WIDTH;
 
@@ -99,9 +105,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   FXLabel* labTrPr=new FXLabel(transMatrix, "Progression", NULL,LAYOUT_FILL_X );
 
   // Sample
-  FXLabel* lab101=new FXLabel(transMatrix, "/home/mouse/neededLibs.tar.gz");
-  FXLabel* lab102=new FXLabel(transMatrix, "In");
-  FXLabel* lab103=new FXLabel(transMatrix, "256 Mo");
+  FXLabel* lab101=new FXLabel(transMatrix, "none");
+  FXLabel* lab102=new FXLabel(transMatrix, "");
+  FXLabel* lab103=new FXLabel(transMatrix, "");
   labTrPb=new FXProgressBar(transMatrix, NULL, 0, 
 			    PROGRESSBAR_NORMAL|PROGRESSBAR_PERCENTAGE|
 			    LAYOUT_FIX_WIDTH|LAYOUT_FILL_Y);
@@ -110,6 +116,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   // The status bar
   FXStatusBar* sb=new FXStatusBar (frame, LAYOUT_FILL_X|
 				   STATUSBAR_WITH_DRAGCORNER);
+
+  getApp()->addTimeout(this, ID_UPDT, UPDATE_INTERVAL, NULL);
+
 }
 
 /** The default destructor
@@ -526,9 +535,33 @@ void RainbruRPG::Gui::FtpClientWindow::showHelpRetrieve(){
 /** The slot connected to the FtpClient::sigBytesWritten signal
   *
   * This slot cannot update GUI because the FtpClient is executed in a 
-  * different thread 
+  * different thread. See onUpdateTransfer() for more details.
   *
   */
 void RainbruRPG::Gui::FtpClientWindow::slotBytesWritten(int b){
-  labTrPb->increment(b);
+  downloadedBytes+=b;
+}
+
+/** The update button callback
+  *
+  * The sigc++ signal comming from FtpClient is connected to the 
+  * slotBytesWritten(). But as the FtpClient is executed in a separate
+  * thread, we can update the GUI (a <code>Xlib: unexpected async 
+  * reply</code> error occured).
+  *
+  * This callback is regularly called (the timeout is defined by the
+  * UPDATE_INTERVAL macro) to update the GUI.
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FtpClientWindow::
+onUpdateTransfer(FXObject* o,FXSelector s,void* v){
+  labTrPb->setProgress(downloadedBytes);
+  getApp()->addTimeout(this, ID_UPDT, UPDATE_INTERVAL, NULL);
+  return 1;
 }

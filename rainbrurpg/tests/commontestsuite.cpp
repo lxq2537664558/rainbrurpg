@@ -35,6 +35,7 @@
 #include "curlgetfiletest.h"
 #include "curlposteddatatest.h"
 #include "curlserveraddtest.h"
+#include "curlserverdeletetest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -49,6 +50,7 @@
 #include <curlgetfile.h>
 #include <curlposteddata.h>
 #include <curlserveradd.h>
+#include <curlserverdelete.h>
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -70,6 +72,7 @@ CommonTestSuite::CommonTestSuite()
   addTest(CurlGetFileTest<CurlGetFile>::suite());
   addTest(CurlPostedDataTest<CurlPostedData>::suite());
   addTest(CurlServerAddTest<CurlServerAdd>::suite());
+  addTest(CurlServerDeleteTest<CurlServerDelete>::suite());
 }
 
 /** The destructor

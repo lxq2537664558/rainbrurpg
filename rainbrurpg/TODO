@@ -7,19 +7,17 @@ stor /home/mouse/neededLibs.tar.gz
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
    curlpersomodifattrb.h  need a curlpersoheaderdelete class
-   curlserverdelete.h     
    curlservermodifclients.h   
    curlsubmitform.h
+
+o [mouse] Unittest implementation
+   curlserverdelete.h     
+
 
 * FTP client
 - ftpclient::commandRETR implementation
 
-o [mouse] FTP Server
-- An error seems to blobk transfer
-   Xlib: unexpected async reply (sequence 0x469f5)!
-   Trying to update the GUI periodically. Then the signal only update
-   a class member.
-- A pb with filesize (client=256 Mo, server=272 Mo)
+* FTP Server
 - still a pb with filename of STOR command
 - Close the data channel when transfer is finished
 - Why TransferVisual progress if infinity (div/0)
@@ -27,7 +25,6 @@ o [mouse] FTP Server
    connection ?
 - Implementation de USER <username>
   User list is taken from the AdminSite and store in ftpControl
-
 
 * GameServer
 - Add the FTP control channel port in the ServerConfiguration
@@ -125,6 +122,10 @@ o [mouse] FTP Server
 * *******************************************************
 * ***************** Changelog ***************************
 * *******************************************************
+
+* v 0.0.4-137
+- A pb with filesize : Server OK
+- An error seems to block transfer
 
 * v 0.0.4-136
 - Doxygen documentation

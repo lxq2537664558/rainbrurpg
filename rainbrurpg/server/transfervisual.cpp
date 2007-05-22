@@ -344,13 +344,15 @@ QString RainbruRPG::Network::Ftp::TransferVisual::fileSizeToString(){
 
   float fs;
 
-  if (filesize>1000000){
-    fs=filesize/1000000;
+  int mo=1024*1024;
+
+  if (filesize>mo){
+    fs=filesize/mo;
     s+=QString::number(fs, 'f', 2);
     s+=" Mb";
   }
-  else if (filesize>1000){
-    fs=filesize/1000;
+  else if (filesize>1024){
+    fs=filesize/1024;
     s+=QString::number(fs, 'f', 2);
     s+=" kb";
   }

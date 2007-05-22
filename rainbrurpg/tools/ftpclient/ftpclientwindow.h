@@ -34,7 +34,10 @@
 #include <logger.h>
 #include <ftpclient.h>
 
+/** A define macro used to indent the help messages */
 #define HELP_INDENT "            "
+/** The GUI update interval */
+#define UPDATE_INTERVAL 500
 
 using namespace RainbruRPG::Network;
 
@@ -46,6 +49,8 @@ namespace RainbruRPG{
       * It is a simple FTP client used to test the FTP client-side functions
       * implementation. The \c PORT command is not implemented.
       *
+      * \sa FtpClient
+      * 
       */
     class FtpClientWindow : public FX::FXMainWindow, public sigc::trackable {
       FXDECLARE(FtpClientWindow)
@@ -69,13 +74,16 @@ namespace RainbruRPG{
 	/** The connect button identifier */
 	ID_CONN,
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
-	ID_LAST
+        ID_LAST,
+	/** The progressbar update identifier */
+	ID_UPDT
       };
  
       long onNotYetImplemented(FXObject* ,FXSelector,void*);
       long treatNewCommand(FXObject* ,FXSelector,void*);
       long onConnect(FXObject* ,FXSelector,void*);
       long onHelp(FXObject* ,FXSelector,void*);
+      long onUpdateTransfer(FXObject* ,FXSelector,void*);
 
       void slotBytesWritten(int);
 
@@ -118,6 +126,9 @@ namespace RainbruRPG{
       FtpClient* ftpClient;
       /** The progressbar of the current transfer */
       FXProgressBar* labTrPb;
+
+      /** The total of already downloaded bytes */
+      int downloadedBytes;
     }; 
   }
 }
