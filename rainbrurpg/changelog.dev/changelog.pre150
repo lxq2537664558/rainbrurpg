@@ -1,3 +1,62 @@
+* v 0.0.4-135
+- transferVisual computes rate and remaining time only every one
+     seconds
+- Compute the remaining time
+- transferVisual progress bar always update
+- Compute the download rate
+- FtpDataConnection must be different from IP/port key
+- The newly created TransferVisual is registered in a
+   FtpDataConnection
+- FtpTransfer::registerVisual must have the clent control port
+- TransferVisual 1st column is IP/port
+- Creates the FtpDataConnection object in registerVisual()
+- FtpTransfer::newConnection creates a FtpDataConnection
+- A basic boostrap script that copy htmlMakefile
+- FtpDataConnection implementation
+- Can the server listen more than one port NO
+- Update the TransferVisual item for each packet wrote or received
+- CurlServerAdd set/get unit test OK     
+- curlposteddata UnitTest
+- Delete the test TransferVisual
+
+* v 0.0.4-134
+- Doxygen documentation
+- Must get the filesize after a STOR command
+- TransferVisual draw filesize
+- Create a treeviewItem for each transfer 
+- The ProgressBar represents (downloaded*100)/filesize
+- A problem with TransferVisual images background when selected
+   Fixed with a transparent background color
+- TransferVisual uses the selected ColorGroup
+- TransferVisual uses images for transfer direction
+- server/images/transferIn.png and transferOut.png added to
+   resources.qrc
+- Two images in server/images/transferIn.png and transferOut.png
+   height=20
+- The download list widget is a Q3ListViewItem
+- Try to add a ProgressBar in the downloads list
+- The download widget test can be implemented in TransferVisual
+- Trying to make a download widget in prog/cpp/qlist (DownloadList)  OK
+
+* v 0.0.4-133
+- TransferVisual implementation
+- During a transfer, the GUI is blocked                    FIXED
+- The written file has a size of 0 bytes
+   A readyRead slot write to the file (maybe the GUI will be unlock)
+- [ftptransfer.cpp:620] II Receiving file [empty filename] FIXED
+- FtpTransfer::storeFile implementation
+- FTPCLient must send only the filename (not the path)
+   FtpClient::commandSTOR() Strips the path name
+- ftpclient::commandSTORE implementation
+- FtpClientWindow help text for STOR and RETR
+- FtpClientWindow : add STORE and RETR in the global help text
+- ftpclient::commandBINARY implementation (TYPE I)
+- ftpclient::commandASCII implementation (TYPE A)
+- Remove the PORT command from the FtpClient help (not used)
+- common/FtpClient's typedef in a ftpdef.h
+- Binary and Ascii commands sent to the server
+- Help for Binary and Ascii
+
 * v 0.0.4-132
 - curlgetfile unit test implementation
 - oldXident deleted (745 SLOC)

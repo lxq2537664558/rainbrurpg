@@ -66,8 +66,11 @@ namespace RainbruRPG{
        void log(const QString&);
        void addTransfer(TransferVisual*);
 	
-       void addTransferVisual(const QString& ip,const QString& port, 
-			      const QString& filename, bool commingIn, int);
+       TransferVisual* addTransferVisual(const QString& ip, 
+					 const QString& port, 
+					 const QString& filename, 
+					 bool commingIn, int);
+
 	void updateTransferVisual(const QString& , int);
 
 

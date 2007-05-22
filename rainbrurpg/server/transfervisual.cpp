@@ -188,114 +188,19 @@ void RainbruRPG::Network::Ftp::TransferVisual::
 paintCell( QPainter * painter,const QColorGroup & cg, int column, 
 	   int width, int align ){
 
-  if (state==TVS_ERROR){
+  switch(state){
+  case TVS_ERROR:
     drawError(painter, cg, column, width, align);
-  }
-  else{
-    QImage imIn(":/images/transferIn.png");
-    QImage imOut(":/images/transferOut.png");
+    break;
 
-  if (isSelected()){
-    painter->setPen(Qt::NoPen);
-    painter->setBrush(cg.color(QPalette::Highlight));
-    painter->drawRect(0, 0, width, height());
-  }
-
-  QLinearGradient linearGrad(QPointF(0, 0), QPointF(0, height()));
-  linearGrad.setColorAt(0,    QColor( 34,  80, 184));
-  linearGrad.setColorAt(0.25, QColor(150, 189, 231));
-  linearGrad.setColorAt(0.50, QColor( 88, 154, 227));
-  linearGrad.setColorAt(0.75, QColor(150, 189, 231));
-  linearGrad.setColorAt(1,    QColor(127, 205, 255));
-
-  QLinearGradient linearGrad2(QPointF(0, 0), QPointF(0, height()));
-  linearGrad2.setColorAt(0,    QColor(163, 163, 163));
-  linearGrad2.setColorAt(0.25, QColor(231, 231, 231));
-  linearGrad2.setColorAt(0.50, QColor(217, 217, 217));
-  linearGrad2.setColorAt(0.75, QColor(244, 244, 244));
-  linearGrad2.setColorAt(1,    QColor(248, 248, 248));
-
-  QPen pen(Qt::gray, 1); 
-
-  if (column==6){
-    // Progress bar
-    int totalW=width-4;
-    int leftW=(int)(totalW*percent)/100;
-    int rightW=totalW-leftW;
-
-    // Drawing ProgressBar
-    painter->setPen(Qt::NoPen);
-    painter->setBrush(QBrush(linearGrad));
-    painter->drawRect( 2, 2, leftW, height()-4 );
-    painter->setBrush(QBrush(linearGrad2));
-    painter->drawRect( leftW+2, 2, rightW, height()-4 );
-
-    painter->setPen(pen);
-    painter->setBrush(Qt::NoBrush);
-    painter->drawRect(0, 0, width-1, height()-1);
-
-    QFont f=painter->font();
-    f.setPointSize(f.pointSize()-1);
-
-    painter->setFont(f);
-    painter->setPen(Qt::black);
-
-    QString s=QString::number(percent, 'f', 2);
-    s+=" %";
-    painter->drawText( 0, 0, width, height(), Qt::AlignCenter, s );
-  }
-  else{
-
-    painter->setPen(Qt::black);
-    QString s;
-    switch(column){
-    case 0:
-      // IP/port
-      s=ip;
-      s+=":";
-      s+=port;
-      painter->drawText( 0, 0, width, height(), 
-			 Qt::AlignLeft|Qt::AlignVCenter, s);
-      break;
-    case 1:
-      // Filename
-      s=absoluteFilename;
-      painter->drawText( 0, 0, width, height(), 
-			 Qt::AlignLeft|Qt::AlignVCenter, s);
-      break;
-    case 2:
-      // Green or Red arrow
-      if (commingIn){
-	int x=width/2-(imIn.width()/2);
-	int y=height()/2-(imIn.height()/2);
-	painter->drawImage(x, y, imIn);
-      }
-      else{
-	int x=width/2-(imOut.width()/2);
-	int y=height()/2-(imIn.height()/2);
-	painter->drawImage(x, y, imOut);
-      }
-      break;
-    case 3:
-      // Download rate
-      s=QString::number(rate, 'f', 2);
-      s+=" kB/s";
-      painter->drawText( 0, 0, width, height(), 
-			 Qt::AlignRight|Qt::AlignVCenter, s);
-      break;
-    case 4:
-      // File size
-      painter->drawText( 0, 0, width, height(), 
-			 Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
-      break;
-    case 5:
-      // Remaining time
-      painter->drawText( 0, 0, width, height(), 
-			 Qt::AlignRight|Qt::AlignVCenter, remainingTime);
-      break;
-   }
-  }
-  }
+  case TVS_INPROGRESS:
+    drawInProgress(painter, cg, column, width, align);
+    break;
+   
+  case TVS_SUCCESS:
+    drawSuccess(painter, cg, column, width, align);
+    break;
+  } 
 }
 
 /** Compute the downloaded bytes percent
@@ -447,4 +352,130 @@ drawError(QPainter * painter,const QColorGroup & cg, int column,
 		     Qt::AlignLeft|Qt::AlignVCenter, s);
 
 
+}
+
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawInProgress(QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align){
+    QImage imIn(":/images/transferIn.png");
+    QImage imOut(":/images/transferOut.png");
+
+  if (isSelected()){
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(cg.color(QPalette::Highlight));
+    painter->drawRect(0, 0, width, height());
+  }
+
+  QLinearGradient linearGrad(QPointF(0, 0), QPointF(0, height()));
+  linearGrad.setColorAt(0,    QColor( 34,  80, 184));
+  linearGrad.setColorAt(0.25, QColor(150, 189, 231));
+  linearGrad.setColorAt(0.50, QColor( 88, 154, 227));
+  linearGrad.setColorAt(0.75, QColor(150, 189, 231));
+  linearGrad.setColorAt(1,    QColor(127, 205, 255));
+
+  QLinearGradient linearGrad2(QPointF(0, 0), QPointF(0, height()));
+  linearGrad2.setColorAt(0,    QColor(163, 163, 163));
+  linearGrad2.setColorAt(0.25, QColor(231, 231, 231));
+  linearGrad2.setColorAt(0.50, QColor(217, 217, 217));
+  linearGrad2.setColorAt(0.75, QColor(244, 244, 244));
+  linearGrad2.setColorAt(1,    QColor(248, 248, 248));
+
+  QPen pen(Qt::gray, 1); 
+
+  if (column==6){
+    // Progress bar
+    int totalW=width-4;
+    int leftW=(int)(totalW*percent)/100;
+    int rightW=totalW-leftW;
+
+    // Drawing ProgressBar
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(QBrush(linearGrad));
+    painter->drawRect( 2, 2, leftW, height()-4 );
+    painter->setBrush(QBrush(linearGrad2));
+    painter->drawRect( leftW+2, 2, rightW, height()-4 );
+
+    painter->setPen(pen);
+    painter->setBrush(Qt::NoBrush);
+    painter->drawRect(0, 0, width-1, height()-1);
+
+    QFont f=painter->font();
+    f.setPointSize(f.pointSize()-1);
+
+    painter->setFont(f);
+    painter->setPen(Qt::black);
+
+    QString s=QString::number(percent, 'f', 2);
+    s+=" %";
+    painter->drawText( 0, 0, width, height(), Qt::AlignCenter, s );
+  }
+  else{
+
+    painter->setPen(Qt::black);
+    QString s;
+    switch(column){
+    case 0:
+      // IP/port
+      s=ip;
+      s+=":";
+      s+=port;
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignLeft|Qt::AlignVCenter, s);
+      break;
+    case 1:
+      // Filename
+      s=absoluteFilename;
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignLeft|Qt::AlignVCenter, s);
+      break;
+    case 2:
+      // Green or Red arrow
+      if (commingIn){
+	int x=width/2-(imIn.width()/2);
+	int y=height()/2-(imIn.height()/2);
+	painter->drawImage(x, y, imIn);
+      }
+      else{
+	int x=width/2-(imOut.width()/2);
+	int y=height()/2-(imIn.height()/2);
+	painter->drawImage(x, y, imOut);
+      }
+      break;
+    case 3:
+      // Download rate
+      s=QString::number(rate, 'f', 2);
+      s+=" kB/s";
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, s);
+      break;
+    case 4:
+      // File size
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
+      break;
+    case 5:
+      // Remaining time
+      painter->drawText( 0, 0, width, height(), 
+			 Qt::AlignRight|Qt::AlignVCenter, remainingTime);
+      break;
+   }
+  }
+}
+
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawSuccess(QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align){
+
+  QString s="Success";
+
+  painter->setPen(Qt::black);
+  painter->drawText( 0, 0, width, height(), 
+		     Qt::AlignLeft|Qt::AlignVCenter, s);
+
+
+}
+
+void RainbruRPG::Network::Ftp::TransferVisual::
+setState(tTransferVisualState s){
+  this->state=s;
 }

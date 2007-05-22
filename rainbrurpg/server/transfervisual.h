@@ -70,7 +70,6 @@ namespace RainbruRPG{
 
 	virtual void paintCell(QPainter*, const QColorGroup & , int , 
 			       int , int);
-	void drawError(QPainter*, const QColorGroup & , int , int , int);
 	
 	virtual QString text ( int column )const;
 
@@ -90,7 +89,13 @@ namespace RainbruRPG{
 	void addBytes(int);
 	void disconnected();
 
+	void setState(tTransferVisualState);
+
       private:
+	void drawError(QPainter*, const QColorGroup & , int , int , int);
+	void drawInProgress(QPainter*, const QColorGroup & , int , int , int);
+	void drawSuccess(QPainter*, const QColorGroup & , int , int , int);
+
 	QString fileSizeToString();
 
 	/** The IP adress of the connected client */

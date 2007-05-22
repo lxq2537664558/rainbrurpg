@@ -115,6 +115,18 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
  connect(transfer, SIGNAL(updateTransferVisual(const QString& , int)),
 	 this, SLOT(updateTransferVisual(const QString& , int)));
 
+ // A test
+ TransferVisual* tvExa01=addTransferVisual("127.0.0.1","50000","example1.txt", 
+					  false, 526500);
+ tvExa01->setState(TVS_ERROR);
+
+ TransferVisual* tvExa02=addTransferVisual("127.0.0.1","50001","example2.txt", 
+					  false, 8978755);
+ tvExa02->setState(TVS_INPROGRESS);
+
+ TransferVisual* tvExa03=addTransferVisual("127.0.0.1","50002","example3.txt", 
+					  true, 45622);
+ tvExa03->setState(TVS_SUCCESS);
 }
 
 /** The destructor
@@ -159,7 +171,8 @@ void RainbruRPG::Network::Ftp::FtpServer::addTransfer(TransferVisual* tv){
   * \param filesize The size of the file
   *
   */
-void RainbruRPG::Network::Ftp::FtpServer::
+RainbruRPG::Network::Ftp::TransferVisual* 
+RainbruRPG::Network::Ftp::FtpServer::
 addTransferVisual(const QString& ip,const QString& port, 
 		  const QString& filename, 
 		  bool commingIn, int filesize){
@@ -174,6 +187,7 @@ addTransferVisual(const QString& ip,const QString& port,
 
   transfer->registerVisual(ip, port, tv2);
 
+  return tv2;
 }
 
 /** Update an already added TransferVisual
