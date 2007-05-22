@@ -48,7 +48,26 @@ class CurlServerDeleteTest : public CPPUNIT_NS::TestFixture
   /// Start the test 
   CPPUNIT_TEST_SUITE( CurlServerDeleteTest );
 
+  /** Tests the initial values
+    *
+    * \sa testDefaultValue
+    *
+    */
+  CPPUNIT_TEST(testDefaultValue);
 
+  /** Tests the setName, const char* version 
+    *
+    * \sa testNameChar
+    *
+    */
+  CPPUNIT_TEST(testNameChar);
+
+  /** Tests the setName, std::string version 
+    *
+    * \sa testNameString
+    *
+    */
+  CPPUNIT_TEST(testNameString);
 
   /** Adds a virtual server
     *
@@ -64,7 +83,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_csa;
+  TESTEDCLASS	*m_csd;
   
 public:
   /** Return the number of test cases
@@ -80,16 +99,26 @@ public:
     *
     */
   void setUp(){ 
-    this->m_csa = new TESTEDCLASS; 
+    this->m_csd = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_csa; 
+    delete this->m_csd; 
   }
   
+  /** Tests the initial values
+    *
+    * The server name should be "".
+    *
+    */
+  void testDefaultValue(){
+    const char* serverName=this->m_csd->getName(); 
+    CPPUNIT_ASSERT( strcmp( serverName,"")==0  );
+  }
+
   /** Tests the name (const char* version)
     *
     * Set a new name and test if getName() return the same
@@ -98,9 +127,22 @@ public:
     */
   void testNameChar(){ 
     const char* serverName="ServerName";
-    this->m_csa->setName(serverName);
-    const char* name=this->m_csa->getName();
+    this->m_csd->setName(serverName);
+    const char* name=this->m_csd->getName();
     CPPUNIT_ASSERT( strcmp( serverName,name)==0  );
+  }
+
+  /** Tests the name (std::string version)
+    *
+    * Set a new name and test if getName() return the same
+    * text.
+    *
+    */
+  void testNameString(){
+    std::string serverName="ServerName";
+    this->m_csd->setName(serverName);
+    const char* name=this->m_csd->getName();
+    CPPUNIT_ASSERT( serverName==name );
   }
 
   /** Adds a virtual server 
@@ -110,22 +152,20 @@ public:
     *
     */
   void testAddVirtual(){
-    this->m_csa->setName(SERVER_NAME);
-    this->m_csa->setIpAddress(SERVER_IP);
-    this->m_csa->setPort(SERVER_PORT);
-    this->m_csa->setMaxClients(SERVER_MAX_CLIENTS);
-    this->m_csa->setDescription(SERVER_DESC);
-    this->m_csa->setTechNote(SERVER_TECH_NOTE);
+    CurlServerAdd csa;
+    csa.setName(SERVER_NAME);
+    csa.setIpAddress(SERVER_IP);
+    csa.setPort(SERVER_PORT);
+    csa.setMaxClients(SERVER_MAX_CLIENTS);
+    csa.setDescription(SERVER_DESC);
+    csa.setTechNote(SERVER_TECH_NOTE);
 
-    bool addServerSuccess=this->m_csa->perform();
+    bool addServerSuccess=csa.perform();
     CPPUNIT_ASSERT( addServerSuccess );
 
-    CurlServerDelete csd;
-    csd.setName(SERVER_NAME);
-    bool deleteServerSuccess=csd.perform();
+    this->m_csd->setName(SERVER_NAME);
+    bool deleteServerSuccess=this->m_csd->perform();
     CPPUNIT_ASSERT( deleteServerSuccess );
-
-
   }
 };
 

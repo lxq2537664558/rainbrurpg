@@ -51,6 +51,8 @@ namespace RainbruRPG {
 	void setName(const char*);
 	void setName(const std::string&);
 
+	const char* getName();
+
       protected:
 	virtual bool controlBefore();
 	virtual bool controlAfter();

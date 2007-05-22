@@ -129,15 +129,6 @@ bool RainbruRPG::Network::FtpClient::openDataChannel(){
 
 }
 
-/** Closes the data channel
-  *
-  *
-  *
-  */
-bool RainbruRPG::Network::FtpClient::closeDataChannel(){
-
-}
-
 /** Toggle the transfer mode between Active/Passive modes
   *
   *
@@ -242,7 +233,6 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
   }
 
   LOGI("readDataChannel finished");
-
   return s;
 }
 
@@ -448,5 +438,14 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
   */
 int RainbruRPG::Network::FtpClient::getFilesize(const std::string& s){
   return boost::filesystem::file_size(s);
+}
+
+/** Closes the data channel
+  *
+  * Deletes the GTcpSocket used as data channel.
+  *
+  */
+bool RainbruRPG::Network::FtpClient::closeDataChannel(){
+  gnet_tcp_socket_delete(dataSock);
 }
 

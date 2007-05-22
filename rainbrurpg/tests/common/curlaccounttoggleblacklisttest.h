@@ -143,6 +143,9 @@ public:
 
   }
 
+  /** Try to toggle the blacklist status of an account
+    *
+    */
   void testToggle(){
     CurlAccountToggleBlacklist catb;
     catb.setName(CLIENT_NAME);
@@ -151,6 +154,11 @@ public:
 
   }
 
+  /** Tests the blacklist status of the added client 
+    *
+    * Uses xmlAccountList to retrieve the blacklist status of the client
+    *
+    */
   void testFinalValue(){
     xmlAccountList xal;
     tAccountListItem *it=xal.getAccount(CLIENT_NAME);
@@ -158,6 +166,9 @@ public:
 
   }
 
+  /** Delete the added account
+    *
+    */
   void testDeleteAccount(){
     CurlAccountDelete cad;
     cad.setName(CLIENT_NAME);

@@ -10,16 +10,13 @@ stor /home/mouse/neededLibs.tar.gz
    curlservermodifclients.h   
    curlsubmitform.h
 
-o [mouse] Unittest implementation
-   curlserverdelete.h     
-
-
 * FTP client
 - ftpclient::commandRETR implementation
 
-* FTP Server
-- still a pb with filename of STOR command
-- Close the data channel when transfer is finished
+o [mouse] FTP Server
+- FtpClient update file information when transfer is created
+   Filename, In/out, filesize
+- Still a pb with filename of STOR command
 - Why TransferVisual progress if infinity (div/0)
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
@@ -124,6 +121,9 @@ o [mouse] Unittest implementation
 * *******************************************************
 
 * v 0.0.4-137
+- The FtpClient close the data channel when transfer is finished
+- UnitTests doxygen documentation
+- CurlServerDelete  Unittest implementation 
 - A pb with filesize : Server OK
 - An error seems to block transfer
 

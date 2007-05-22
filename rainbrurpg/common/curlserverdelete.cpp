@@ -103,3 +103,12 @@ bool RainbruRPG::Network::Ident::CurlServerDelete::controlAfter(){
   return ret;
 
 }
+
+/** Get the server name
+  *
+  * \return The name of the server
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerDelete::getName(){
+  return postedData.getValue("name");
+}
