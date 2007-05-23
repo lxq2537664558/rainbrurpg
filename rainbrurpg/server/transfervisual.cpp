@@ -32,13 +32,12 @@ RainbruRPG::Network::Ftp::TransferVisual::TransferVisual(Q3ListView* parent)
   :Q3ListViewItem(parent){
 
   rate=0;
-  filesize=3000000;
   downloaded=0;
   percent=0;
   filesize=0;
   port="";
   remainingTime="";
-  state=TVS_UNDEFINED;
+  state=TVS_INPROGRESS;
 
   time.start();
 
@@ -121,6 +120,11 @@ void RainbruRPG::Network::Ftp::TransferVisual::setRate(double d){
   *
   */
 void RainbruRPG::Network::Ftp::TransferVisual::setFileSize(int i){
+  LOGI("TransferVisual::setFileSize called");
+  LOGCATS("Filesize is now :");
+  LOGCATI(i);
+  LOGCAT();
+
   filesize=i;
   computePercent();
 }
@@ -200,6 +204,12 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   case TVS_SUCCESS:
     drawSuccess(painter, cg, column, width, align);
     break;
+
+  default:
+    QString s="TransferVisual State not set";
+    LOGW(s.toLatin1());
+    painter->drawText( 0, 0, width, height(), Qt::AlignCenter, s );
+
   } 
 }
 
@@ -207,10 +217,13 @@ paintCell( QPainter * painter,const QColorGroup & cg, int column,
   *
   */
 void RainbruRPG::Network::Ftp::TransferVisual::computePercent(){
-  double frac=(double)(100/filesize);
-  percent=(double)(downloaded*frac);
-  percent=(double)downloaded*100/filesize;
-
+  if(filesize==0){
+    percent=0;
+  }
+  else{
+    double frac=(double)(100/filesize);
+    percent=(double)downloaded*100/filesize;
+  }
 }
 
 /** Adds the given bytes to the downloaded total
@@ -333,10 +346,205 @@ void RainbruRPG::Network::Ftp::TransferVisual::disconnected(){
   LOGI("Data channel disconnected");
   if (downloaded==filesize){
     remainingTime="OK";
+    state=TVS_SUCCESS;
   }
   else{
     remainingTime="Error";
     state=TVS_ERROR;
+  }
+}
+
+/** Paint a cell of the ViewItem when in TVS_ERROR state
+  *
+  * \param painter The paint where we draw the item
+  * \param cg The color group we can use to draw
+  * \param column The index of the column to draw
+  * \param width The width of the cell
+  * \param align Not yet used
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawError(QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align){
+
+  if (isSelected()){
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(cg.color(QPalette::Highlight));
+    painter->drawRect(0, 0, width, height());
+  }
+
+  painter->setPen(Qt::red);
+  QString s;
+  switch(column){
+  case 0:
+    drawIpPort(painter, width, height());
+    break;
+
+  case 1:
+    // Filename
+    s=absoluteFilename;
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignLeft|Qt::AlignVCenter, s);
+    break;
+
+  case 2:
+    // Green or Red arrow
+    drawArrow(painter, width, height());
+    break;
+
+
+  case 3:
+    // Download rate
+    s="Finished";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignCenter, s);
+    break;
+  case 4:
+    // File size
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
+    break;
+  case 5:
+    // Remaining time
+    s="Finished";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignCenter, s);
+    break;
+
+  default:
+    s="Error";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignLeft|Qt::AlignVCenter, s);
+    break;
+  }
+}
+
+/** Paint a cell of the ViewItem when in TVS_SUCCESS state
+  *
+  * \param painter The paint where we draw the item
+  * \param cg The color group we can use to draw
+  * \param column The index of the column to draw
+  * \param width The width of the cell
+  * \param align Not yet used
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawSuccess(QPainter * painter,const QColorGroup & cg, int column, 
+	   int width, int align){
+
+  if (isSelected()){
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(cg.color(QPalette::Highlight));
+    painter->drawRect(0, 0, width, height());
+  }
+
+  painter->setPen(Qt::green);
+  QString s;
+
+  switch(column){
+  case 0:
+    drawIpPort(painter, width, height());
+    break;
+  case 1:
+    // Filename
+    s=absoluteFilename;
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignLeft|Qt::AlignVCenter, s);
+    break;
+
+  case 2:
+    drawArrow(painter, width, height());
+    break;
+
+  case 3:
+    // Download rate
+    s="Finished";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignCenter, s);
+    break;
+  case 4:
+    // File size
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignRight|Qt::AlignVCenter, fileSizeToString());
+    break;
+  case 5:
+    // Remaining time
+    s="Finished";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignCenter, s);
+    break;
+
+  default:
+    s="Success";
+    painter->drawText( 0, 0, width, height(), 
+		       Qt::AlignLeft|Qt::AlignVCenter, s);
+    break;
+  }
+
+}
+
+/** Change the actual state
+  *
+  * \param s The new state
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+setState(tTransferVisualState s){
+  this->state=s;
+}
+
+/** Get the actual state
+  *
+  * \return The actual state
+  *
+  */
+RainbruRPG::Network::Ftp::tTransferVisualState 
+RainbruRPG::Network::Ftp::TransferVisual::getState(){
+  return this->state;
+}
+
+
+/** Paint the IP/Port label
+  *
+  * The first column (index 0) always contains the \c IP:port text. This
+  * function does not modify the QPen or QBrush on the given QPainter.
+  * 
+  *
+  * \param painter The paint where we draw the item
+  * \param width The width of the cell in pixels
+  * \param height The height of the cell in pixels
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawIpPort(QPainter* painter, int width, int height){
+  // IP/port
+  QString s=ip;
+  s+=":";
+  s+=port;
+  painter->drawText( 0, 0, width, height, Qt::AlignLeft|Qt::AlignVCenter, s);
+}
+
+/** Paint the orientation label
+  *
+  * \param painter The paint where we draw the item
+  * \param width The width of the cell in pixels
+  * \param height The height of the cell in pixels
+  *
+  */
+void RainbruRPG::Network::Ftp::TransferVisual::
+drawArrow(QPainter* painter, int width, int height){
+  QImage imIn(":/images/transferIn.png");
+  QImage imOut(":/images/transferOut.png");
+
+  if (commingIn){
+    int x=width/2-(imIn.width()/2);
+    int y=height/2-(imIn.height()/2);
+    painter->drawImage(x, y, imIn);
+  }
+  else{
+    int x=width/2-(imOut.width()/2);
+    int y=height/2-(imIn.height()/2);
+    painter->drawImage(x, y, imOut);
   }
 
 }
@@ -353,8 +561,11 @@ void RainbruRPG::Network::Ftp::TransferVisual::disconnected(){
 void RainbruRPG::Network::Ftp::TransferVisual::
 drawInProgress(QPainter * painter,const QColorGroup & cg, int column, 
 	   int width, int align){
-    QImage imIn(":/images/transferIn.png");
-    QImage imOut(":/images/transferOut.png");
+
+  // controls
+  if (ip.isEmpty()){
+    LOGW("IP address is empty");
+  }
 
   if (isSelected()){
     painter->setPen(Qt::NoPen);
@@ -421,16 +632,7 @@ drawInProgress(QPainter * painter,const QColorGroup & cg, int column,
       break;
     case 2:
       // Green or Red arrow
-      if (commingIn){
-	int x=width/2-(imIn.width()/2);
-	int y=height()/2-(imIn.height()/2);
-	painter->drawImage(x, y, imIn);
-      }
-      else{
-	int x=width/2-(imOut.width()/2);
-	int y=height()/2-(imIn.height()/2);
-	painter->drawImage(x, y, imOut);
-      }
+      drawArrow(painter, width, height());
       break;
     case 3:
       // Download rate
@@ -451,136 +653,4 @@ drawInProgress(QPainter * painter,const QColorGroup & cg, int column,
       break;
    }
   }
-}
-
-/** Paint a cell of the ViewItem when in TVS_ERROR state
-  *
-  * \param painter The paint where we draw the item
-  * \param cg The color group we can use to draw
-  * \param column The index of the column to draw
-  * \param width The width of the cell
-  * \param align Not yet used
-  *
-  */
-void RainbruRPG::Network::Ftp::TransferVisual::
-drawError(QPainter * painter,const QColorGroup & cg, int column, 
-	   int width, int align){
-
-  if (isSelected()){
-    painter->setPen(Qt::NoPen);
-    painter->setBrush(cg.color(QPalette::Highlight));
-    painter->drawRect(0, 0, width, height());
-  }
-
-  painter->setPen(Qt::red);
-  QString s;
-  switch(column){
-  case 0:
-    drawIpPort(painter, width, height());
-    break;
-
-  case 1:
-    // Filename
-    s=absoluteFilename;
-    painter->drawText( 0, 0, width, height(), 
-		       Qt::AlignLeft|Qt::AlignVCenter, s);
-    break;
-
-  case 2:
-    // Download rate
-    break;
-
-  default:
-    s="Error";
-    painter->drawText( 0, 0, width, height(), 
-		       Qt::AlignLeft|Qt::AlignVCenter, s);
-    break;
-  }
-}
-
-/** Paint a cell of the ViewItem when in TVS_SUCCESS state
-  *
-  * \param painter The paint where we draw the item
-  * \param cg The color group we can use to draw
-  * \param column The index of the column to draw
-  * \param width The width of the cell
-  * \param align Not yet used
-  *
-  */
-void RainbruRPG::Network::Ftp::TransferVisual::
-drawSuccess(QPainter * painter,const QColorGroup & cg, int column, 
-	   int width, int align){
-
-  if (isSelected()){
-    painter->setPen(Qt::NoPen);
-    painter->setBrush(cg.color(QPalette::Highlight));
-    painter->drawRect(0, 0, width, height());
-  }
-
-  painter->setPen(Qt::green);
-  QString s;
-
-  switch(column){
-  case 0:
-    drawIpPort(painter, width, height());
-    break;
-  case 1:
-    // Filename
-    s=absoluteFilename;
-    painter->drawText( 0, 0, width, height(), 
-		       Qt::AlignLeft|Qt::AlignVCenter, s);
-    break;
-
-  case 2:
-    // Download rate
-    break;
-
-  default:
-    s="Success";
-    painter->drawText( 0, 0, width, height(), 
-		       Qt::AlignLeft|Qt::AlignVCenter, s);
-    break;
-  }
-
-}
-
-/** Change the actual state
-  *
-  * \param s The new state
-  *
-  */
-void RainbruRPG::Network::Ftp::TransferVisual::
-setState(tTransferVisualState s){
-  this->state=s;
-}
-
-/** Get the actual state
-  *
-  * \return The actual state
-  *
-  */
-RainbruRPG::Network::Ftp::tTransferVisualState 
-RainbruRPG::Network::Ftp::TransferVisual::getState(){
-  return this->state;
-}
-
-
-/** Paint the IP/Port label
-  *
-  * The first column (index 0) always contains the \c IP:port text. This
-  * function does not modify the QPen or QBrush on the given QPainter.
-  * 
-  *
-  * \param painter The paint where we draw the item
-  * \param width The width of the cell in pixels
-  * \param height The height of the cell in pixels
-  *
-  */
-void RainbruRPG::Network::Ftp::TransferVisual::
-drawIpPort(QPainter* painter, int width, int height){
-  // IP/port
-  QString s=ip;
-  s+=":";
-  s+=port;
-  painter->drawText( 0, 0, width, height, Qt::AlignLeft|Qt::AlignVCenter, s);
 }

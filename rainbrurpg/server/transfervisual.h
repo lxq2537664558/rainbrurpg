@@ -103,6 +103,7 @@ namespace RainbruRPG{
 	void drawSuccess(QPainter*, const QColorGroup & , int , int , int);
 
 	void drawIpPort(QPainter*, int , int);
+	void drawArrow(QPainter*, int , int);
 
 	QString fileSizeToString();
 

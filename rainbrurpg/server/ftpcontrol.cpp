@@ -209,8 +209,8 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 	  emit(log(l));
 	  emit(commandRETR(h1));
-	  emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
-				 h1, false, 0));
+	  //	  emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
+	  //		 h1, false, 0));
 
 	}
 	else if (s.contains("STOR")){
@@ -235,9 +235,15 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if(s.contains("FSIZE")){
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
-	  h1.chop(2);
+	  h1.chop(4);
 	  h1=h1.simplified();
+	  LOGCATS("FSIZE received textFilesize=");
+	  LOGCATS(h1.toLatin1());
 	  nextFilesize=h1.toInt();
+
+	  LOGCATS("nextFilesize=");
+	  LOGCATI(nextFilesize);
+	  LOGCAT();
 
 	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), pport, 
 				 nextStoredFile, true, nextFilesize));

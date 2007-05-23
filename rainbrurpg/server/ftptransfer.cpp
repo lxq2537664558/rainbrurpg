@@ -625,11 +625,14 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
   QString pport=QString::number(socket1->peerPort());
 
+  bool found=false;
+
   tConnectionList::const_iterator iter;
   for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
     if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport, nextFilename)){
       LOGI("Socket correctly added to the FtpDataConnection");
       (*iter)->setSocket(socket1);
+      found=true;
 
       // Setting the command
       if (nextCommand==FTC_STOR){
@@ -638,6 +641,12 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
     }
   }
+
+  // FtpDataConnection not found
+  if (!found){
+    LOGW("FtpDataConnection not found");
+  }
+
 }
 
 /** Updates periodically the FtpDataConnection::computeRate() function

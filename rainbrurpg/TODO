@@ -1,8 +1,8 @@
 TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
-stor /home/mouse/neededLibs.tar.gz                      259 Mo
-stor /home/mouse/D2Patch_110.exe                         10 Mo 
+stor /home/mouse/neededLibs.tar.gz
+stor /home/mouse/essaiTransfer.tgz
      
 * Unittest implementation in common/
 - In this order
@@ -15,8 +15,7 @@ stor /home/mouse/D2Patch_110.exe                         10 Mo
 - ftpclient::commandRETR implementation
 
 o [mouse] FTP Server
-- Correctly draw TransferVisual
-- Server draw the transfer as terminated
+- Compare FtpDataConnection with Filename
 - Still a pb with filename of STOR command
 - Why TransferVisual progress if infinity (div/0)
 - Can we lock nextCommand, nextFilename when we waiting data channel
@@ -25,6 +24,8 @@ o [mouse] FTP Server
   User list is taken from the AdminSite and store in ftpControl
 
 * GameServer
+- Open the server window in Maximize state
+- Open the FtpServer window at position 0,0
 - Add the FTP control channel port in the ServerConfiguration
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
@@ -122,6 +123,11 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-137
+- TransferVisual filesize is NULL                FIXED
+- Fix the TransferVisual percent infinite division bug
+- A TransferVisual::drawArrow() function
+- Correctly draw TransferVisual in all states
+- Server draw the transfer as terminated
 - TransferVisual has a drawInProgress(QPainter * painter, ...)
 - Implement a TransferVisual::state
    TVS_PROGRESS, TVS_ERROR, TVS_FINISH
