@@ -27,8 +27,8 @@
   * \param port The port used to connect to the Protocol Interpreter
   *
   */
-RainbruRPG::Network::Ftp::FtpServer::FtpServer(quint16 port)
-  : QWidget(){
+RainbruRPG::Network::Ftp::FtpServer::FtpServer(QWidget* parent, quint16 port)
+  : QWidget(parent){
 
   setWindowTitle("RainbruRPG FTP server");
   setMinimumWidth(550);

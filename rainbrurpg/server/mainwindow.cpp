@@ -57,7 +57,6 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   objectList=NULL;
   running=false;
   server=new ServerThread();
-  ftpServer=new FtpServer;
 
   // Registrering metatype (needed for signal/slot argumenst)
   qRegisterMetaType<ENetAddress>("ENetAddress");
@@ -65,6 +64,10 @@ MainServerWindow(const QString &fileName, QWidget *parent)
 
   workspace=new QWorkspace();
   setCentralWidget(workspace);
+
+  // FtpServer
+  ftpServer=new FtpServer(this);
+
 
   //Server Log
   serverLog=new ServerLog();
@@ -566,6 +569,7 @@ void RainbruRPG::Server::MainServerWindow::manageObjects(){
   */
 void RainbruRPG::Server::MainServerWindow::manageFtp(){
   workspace->addWindow(ftpServer);
+  ftpServer->move(0,0);
   ftpServer->show();
 
 }

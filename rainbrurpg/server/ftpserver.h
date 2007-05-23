@@ -59,7 +59,7 @@ namespace RainbruRPG{
       class FtpServer : public QWidget{
 	Q_OBJECT
 	  public:
-	FtpServer(quint16 port=50002);
+	FtpServer(QWidget* parent=0, quint16 port=50002);
 	~FtpServer();
 	
      public slots:

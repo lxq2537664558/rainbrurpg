@@ -42,6 +42,8 @@ int main(int argc, char *argv[]){
   QObject::connect( &app, SIGNAL( aboutToQuit() ), mainWin, 
 		    SLOT( exitRequested() ) );
 
+  mainWin->setWindowState( Qt::WindowMaximized );
+
   mainWin->show();
   LOGI("Mainwin::show() ended");
 
