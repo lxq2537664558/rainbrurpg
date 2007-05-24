@@ -415,8 +415,8 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
       LOGI("Returned from thread");
       fs.close();
     }
-    LOGI("Waiting for second control response");
-    s+=waitControlResponse();
+    //    LOGI("Waiting for second control response");
+    //    s+=waitControlResponse();
     closeDataChannel();
   }
   else{
@@ -446,6 +446,7 @@ int RainbruRPG::Network::FtpClient::getFilesize(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::closeDataChannel(){
+  LOGI("Closing data channel");
   gnet_tcp_socket_delete(dataSock);
 }
 

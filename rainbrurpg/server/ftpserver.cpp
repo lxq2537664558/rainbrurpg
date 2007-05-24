@@ -24,7 +24,8 @@
 
 /** The constructor
   *
-  * \param port The port used to connect to the Protocol Interpreter
+  * \param parent The parent widget
+  * \param port   The port used to connect to the Protocol Interpreter
   *
   */
 RainbruRPG::Network::Ftp::FtpServer::FtpServer(QWidget* parent, quint16 port)

@@ -235,11 +235,20 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	else if(s.contains("FSIZE")){
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
-	  h1.chop(4);
-	  h1=h1.simplified();
-	  LOGCATS("FSIZE received textFilesize=");
-	  LOGCATS(h1.toLatin1());
-	  nextFilesize=h1.toInt();
+
+	  int chopValue=2;
+	  bool convertSuccess=false;
+	  // To remove extra characters
+
+	  while(!convertSuccess){
+	    h1.chop(chopValue);
+	    h1=h1.simplified();
+	    LOGCATS("FSIZE received textFilesize=");
+	    LOGCATS(h1.toLatin1());
+	    nextFilesize=h1.toInt(&convertSuccess);
+	    chopValue=1;
+	  }
+
 
 	  LOGCATS("nextFilesize=");
 	  LOGCATI(nextFilesize);

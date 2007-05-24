@@ -260,7 +260,9 @@ isThisConnection(const QString& ip, const QString& port,
   LOGCATS(this->filename.toLatin1());
   LOGCAT();
 
-  if (ip==clientIp && this->filename==filename){
+  tTransferVisualState tvState=transferVisual->getState();
+
+  if (ip==clientIp && this->filename==filename && tvState==TVS_INPROGRESS){
     if (clientPort.isEmpty()){
       LOGI("First call, setting port");
       clientPort=port;

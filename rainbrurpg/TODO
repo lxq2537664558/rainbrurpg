@@ -4,6 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
      
+o [mouse] ************** Admin site modified ****************
+
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -14,8 +16,7 @@ stor /home/mouse/essaiTransfer.tgz
 * FTP client
 - ftpclient::commandRETR implementation
 
-o [mouse] FTP Server
-- Compare FtpDataConnection is state is IN_PROGRESS
+* FTP Server
 - Still a pb with filename of STOR command
 - Why TransferVisual progress if infinity (div/0)
 - Can we lock nextCommand, nextFilename when we waiting data channel
@@ -24,6 +25,7 @@ o [mouse] FTP Server
   User list is taken from the AdminSite and store in ftpControl
 
 * GameServer
+- Modify AddServer etc... for the FTP port
 - Add the FTP control channel port in the ServerConfiguration
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
@@ -35,6 +37,7 @@ o [mouse] FTP Server
   base et de ses tables. Il s'agit pour l'instant de faire une bdd
   minimale qui acceptera la modification des positions et orientation
   des objets par connection au serveur.
+
 
 * Editeur
 - PosorDialog initialization with the ObjectPos values
@@ -120,7 +123,14 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-138
+
 * v 0.0.4-137
+- Admin site doxygen documentation
+- FTP client close the connection when transfer is finish
+- Compare FtpDataConnection if state is IN_PROGRESS
+- Admin site now contains FTP port
+- Using Sha1 for admin site identification method
 - Open the server window in Maximize state
 - TransferVisual filesize is NULL                FIXED
 - Fix the TransferVisual percent infinite division bug
