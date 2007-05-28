@@ -20,6 +20,10 @@
  *
  */
 
+/* Modifications :
+ * - 28 may 2007 : Adding the 'ftp' key
+ *
+ */
 #ifndef CURL_SERVER_ADD_H
 #define CURL_SERVER_ADD_H
 
@@ -40,10 +44,13 @@ namespace RainbruRPG {
 	* Each server that is started must be registered in the administation
 	* site. This class is used to add a server to the administration site.
 	*
+	* \section posted_keys Posted keys
+	*
 	* The posted keys are :
 	* - name : The name of the server
 	* - ip : The public IP adress of the server in the form x.x.x.x
 	* - port : The UDP listening port
+	* - ftp  : The FTP control channel port
 	* - maxClients : The maximum number of clients allowed 
 	* - description : The description of the server
 	* - technote : a possibly empty technical note
@@ -51,6 +58,15 @@ namespace RainbruRPG {
 	* The timestamp posted key is automatically filled by the current
 	* data/time.
 	* 
+	* \section server_listening_ports Listening ports
+	*
+	* A server needs two ports. The UDP port is used to action-based 
+	* network packets. The FTP control channel port is a TCP port used
+	* by clients to store and retrieve files in the server. The FTP 
+	* data channel is always <code>contol_chanel-1</code>. If you are 
+	* behind a firewall, you must setup port forwarding for 
+	* control channel (TCP), data channel (TCP) and the UDP port.
+	*
 	* \sa xmlServerList, CurlServerDelete
 	*
 	*/
@@ -62,6 +78,7 @@ namespace RainbruRPG {
 	void setName(const char*);
 	void setIpAddress(const char*);
 	void setPort(const char*);
+	void setFtpPort(const char*);
 	void setMaxClients(const char*);
 	void setDescription(const char*);
 	void setTechNote(const char*);
@@ -69,13 +86,16 @@ namespace RainbruRPG {
 	void setName(const std::string&);
 	void setIpAddress(const std::string&);
 	void setPort(const std::string&);
+	void setFtpPort(const std::string&);
 	void setMaxClients(const std::string&);
 	void setDescription(const std::string&);
 	void setTechNote(const std::string&);
 
+
 	const char* getName();
 	const char* getIpAddress();
 	const char* getPort();
+	const char* getFtpPort();
 	const char* getMaxClients();
 	const char* getDescription();
 	const char* getTechNote();

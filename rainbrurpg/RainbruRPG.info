@@ -32,7 +32,6 @@ in-development Multiplayer Online Role-Playing Game.
 * Copying::                     The GNU General Public License
 * Overview::                    Preliminary information.
 * Server::                      How works the `RainbruRPG-server'
-* Sample::                      Sample output from `RainbruRPG'.
 * Invoking RainbruRPG::         How to run `RainbruRPG'.
 * Problems::                    Reporting bugs.
 * Concept Index::               Index of concepts.
@@ -439,7 +438,7 @@ GNU General Public License, users are free to share and change it.
    GNU `RainbruRPG' was written by Jérôme PASQUIER.
 
 
-File: RainbruRPG.info,  Node: Server,  Next: Sample,  Prev: Overview,  Up: Top
+File: RainbruRPG.info,  Node: Server,  Next: Invoking RainbruRPG,  Prev: Overview,  Up: Top
 
 4 Server
 ********
@@ -469,32 +468,9 @@ You will need to use port forwarding for this 2 port if you are behind
 a firewall/router.
 
 
-File: RainbruRPG.info,  Node: Sample,  Next: Invoking RainbruRPG,  Prev: Server,  Up: Top
+File: RainbruRPG.info,  Node: Invoking RainbruRPG,  Next: Problems,  Prev: Server,  Up: Top
 
-5 Sample Output
-***************
-
-Here are some realistic examples of running `RainbruRPG'.
-
-   This is the output of the command `RainbruRPG':
-
-     hello, world!
-
-   This is the output of the command `RainbruRPG --help':
-
-     Usage: RainbruRPG [OPTION...] [FILE...]
-     RainbruRPG is a in-development Multiplayer Online Role-Playing Game
-
-       -?, --help                 Give this help list
-           --usage                Give a short usage message
-       -V, --version              Print program version
-
-     Report bugs to <rainbru@free.fr>.
-
-
-File: RainbruRPG.info,  Node: Invoking RainbruRPG,  Next: Problems,  Prev: Sample,  Up: Top
-
-6 Invoking `RainbruRPG'
+5 Invoking `RainbruRPG'
 ***********************
 
 The format for running the `RainbruRPG' program is:
@@ -519,7 +495,7 @@ The format for running the `RainbruRPG' program is:
 
 File: RainbruRPG.info,  Node: Problems,  Next: Concept Index,  Prev: Invoking RainbruRPG,  Up: Top
 
-7 Reporting Bugs
+6 Reporting Bugs
 ****************
 
 If you find a bug in `RainbruRPG', please send electronic mail to
@@ -554,7 +530,6 @@ Concept Index
 * overview:                              Overview.             (line  6)
 * problems:                              Problems.             (line  6)
 * reading:                               Instructions.         (line  6)
-* sample <1>:                            Sample.               (line  6)
 * sample:                                Server.               (line  6)
 * tail recursion:                        Concept Index.        (line  6)
 * usage:                                 Invoking RainbruRPG.  (line  6)
@@ -564,13 +539,12 @@ Concept Index
 
 Tag Table:
 Node: Top861
-Node: Instructions1540
-Node: Copying2173
-Node: Overview21359
-Node: Server21799
-Node: Sample22987
-Node: Invoking RainbruRPG23634
-Node: Problems24180
-Node: Concept Index24810
+Node: Instructions1475
+Node: Copying2108
+Node: Overview21294
+Node: Server21734
+Node: Invoking RainbruRPG22935
+Node: Problems23481
+Node: Concept Index24111
 
 End Tag Table

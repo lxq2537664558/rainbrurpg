@@ -90,6 +90,20 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     */
   CPPUNIT_TEST( testPortString );
 
+  /** Tests the FTP control channel
+    *
+    * \sa testFtpChar
+    *
+    */
+  CPPUNIT_TEST( testFtpChar );
+
+  /** Tests the FTP control channel
+    *
+    * \sa testFtpString
+    *
+    */
+  CPPUNIT_TEST( testFtpString );
+
   /** Tests the maxClients value
     *
     * \sa testMaxClientsChar
@@ -347,6 +361,7 @@ public:
     const char* name=this->m_csa->getName();
     const char* ip=this->m_csa->getIpAddress();
     const char* port=this->m_csa->getPort();
+    const char* ftp=this->m_csa->getFtpPort();
     const char* maxClients=this->m_csa->getMaxClients();
     const char* desc=this->m_csa->getDescription();
     const char* techNote=this->m_csa->getTechNote();
@@ -356,6 +371,7 @@ public:
     CPPUNIT_ASSERT( strcmp(name, "")==0 );
     CPPUNIT_ASSERT( strcmp(ip, "")==0 );
     CPPUNIT_ASSERT( strcmp(port, "")==0 );
+    CPPUNIT_ASSERT( strcmp(ftp, "")==0 );
     CPPUNIT_ASSERT( strcmp(maxClients, "")==0 );
     CPPUNIT_ASSERT( strcmp(desc, "")==0 );
     CPPUNIT_ASSERT( strcmp(techNote, "")==0 );
@@ -385,9 +401,36 @@ public:
     csd.setName(SERVER_NAME);
     bool deleteServerSuccess=csd.perform();
     CPPUNIT_ASSERT( deleteServerSuccess );
+  }
 
+  /** Tests the Ftp control channel value (const char* version)
+    *
+    * Set a new Ftp control channel and test if getFtpPort() return the same
+    * text.
+    *
+    */
+  void testFtpChar(){
+    const char* ftp="ServerName";
+    this->m_csa->setFtpPort(ftp);
+    const char* ftp2=this->m_csa->getFtpPort();
+    CPPUNIT_ASSERT( strcmp( ftp, ftp2 )==0  );
 
   }
+
+  /** Tests the Ftp control channel value (std::string version)
+    *
+    * Set a new Ftp control channel and test if getFtpPort() return the same
+    * text.
+    *
+    */
+  void testFtpString(){
+    std::string ftp="ServerName";
+    this->m_csa->setFtpPort(ftp);
+    const char* ftp2=this->m_csa->getFtpPort();
+    CPPUNIT_ASSERT( ftp==ftp2 );
+
+  }
+
 };
 
 

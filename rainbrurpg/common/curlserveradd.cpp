@@ -37,6 +37,7 @@ RainbruRPG::Network::Ident::CurlServerAdd::CurlServerAdd()
   postedData.addKey("name");
   postedData.addKey("ip");
   postedData.addKey("port");
+  postedData.addKey("ftp");
   postedData.addKey("timestamp");
   postedData.addKey("maxClients");
   postedData.addKey("desc");
@@ -237,7 +238,7 @@ setIpAddress(const std::string& s){
 
 }
 
-/** Set the server port key value
+/** Set the server UDP port key value
   *
   * \param s The new value
   *
@@ -296,17 +297,15 @@ const char* RainbruRPG::Network::Ident::CurlServerAdd::getName(){
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getIpAddress(){
   return postedData.getValue("ip");
-
 }
 
-/** Get the server port
+/** Get the server UDP port
   *
   * \return The server port
   *
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getPort(){
   return postedData.getValue("port");
-
 }
 
 /** Get the server maxClients
@@ -316,24 +315,50 @@ const char* RainbruRPG::Network::Ident::CurlServerAdd::getPort(){
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getMaxClients(){
   return postedData.getValue("maxClients");
-
 }
 
-/** Get the server port description
+/** Get the server description
   *
   * \return The server description
   *
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getDescription(){
   return postedData.getValue("desc");
-
 }
 
-/** Get the server port technical note
+/** Get the server technical note
   *
   * \return The server technical note
   *
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getTechNote(){
   return postedData.getValue("techNote");
+}
+
+/** Change the FTP control channel port
+  *
+  * \param c The new key value
+  *
+  */
+void RainbruRPG::Network::Ident::CurlServerAdd::setFtpPort(const char* c){
+  postedData.setValue("ftp", c);
+}
+
+/** Change the FTP control channel port
+  *
+  * \param s The new key value
+  *
+  */
+void RainbruRPG::Network::Ident::CurlServerAdd::
+setFtpPort(const std::string& s){
+  postedData.setValue("ftp", s);
+}
+
+/** Get the server's FTP control channel port
+  *
+  * \return The server's FTP control channel port
+  *
+  */
+const char* RainbruRPG::Network::Ident::CurlServerAdd::getFtpPort(){
+  return postedData.getValue("ftp");
 }

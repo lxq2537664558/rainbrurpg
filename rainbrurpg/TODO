@@ -5,6 +5,7 @@ stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
      
 o [mouse] ************** Admin site modified ****************
+- Adding php code source of admin site in sourceforge in the admin branch
 
 * Unittest implementation in common/
 - In this order
@@ -18,9 +19,7 @@ Writing a simple unittest framework in programmation/php/unittest$
 - Why TestCase is not added to the TestSuite
 - A TestResult interface
 
-o [mouse] Server FTP port in meta-server
-- Add a 'ftp' key to CurlServerAdd
-- Modify §UnitTest for CurlServerAdd
+* Server FTP port in meta-server
 - Modify xmlServerList
 - Modify xIdent table and dialog
 - Modify ServerConfiguration
@@ -148,6 +147,9 @@ o [mouse] Server FTP port in meta-server
 * *******************************************************
 
 * v 0.0.4-138
+- Modify user manual for FTP port
+- Modify UnitTest for CurlServerAdd
+- Add a 'ftp' key to CurlServerAdd
 - TestSuite may contains some TestCase
 
 * v 0.0.4-137
