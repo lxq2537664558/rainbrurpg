@@ -13,12 +13,36 @@ o [mouse] ************** Admin site modified ****************
    curlservermodifclients.h   
    curlsubmitform.h
 
+* Unittest of admin site
+Writing a simple unittest framework in programmation/php/unittest$
+- Why TestCase is not added to the TestSuite
+- A TestResult interface
+
+o [mouse] Server FTP port in meta-server
+- Add a 'ftp' key to CurlServerAdd
+- Modify §UnitTest for CurlServerAdd
+- Modify xmlServerList
+- Modify xIdent table and dialog
+- Modify ServerConfiguration
+- Add a tabcontrol in Server configuration dialog
+- Some Server configuration dialog tabs (Identification/Network/Tech
+   note)
+
+* Editor identification
+   The identification is done by GPG keys
+- The server let manage a list of editors
+- The editor can contact a server to ask an aothorisazion
+- In the editor preferences we can choose a gpg key that will be use
+   for all connexions
+
 * FTP client
 - ftpclient::commandRETR implementation
 
 * FTP Server
+- A bug in percent computation
+   Not the same in server and client (+3% for the ftp-client) at the
+   second download
 - Still a pb with filename of STOR command
-- Why TransferVisual progress if infinity (div/0)
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
 - Implementation de USER <username>
@@ -124,6 +148,7 @@ o [mouse] ************** Admin site modified ****************
 * *******************************************************
 
 * v 0.0.4-138
+- TestSuite may contains some TestCase
 
 * v 0.0.4-137
 - Admin site doxygen documentation
