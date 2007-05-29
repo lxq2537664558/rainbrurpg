@@ -1,0 +1,4 @@
+/home/mouse/programmation/php/admin/unittest/test.php:10: Warning: Compound _TestTestSuite is not documented.
+/home/mouse/programmation/php/admin/unittest/testsuite.php:21: Warning: Member __run() (function) of class __TestSuite is not documented.
+/home/mouse/programmation/php/admin/unittest/testsuite.php:9: Warning: Member $testSuiteName (variable) of class __TestSuite is not documented.
+/home/mouse/programmation/php/admin/unittest/testsuite.php:11: Warning: parameters of member __TestSuite::__TestSuite are not (all) documented

@@ -1,0 +1,290 @@
+\section{Xml\-Interface Class Reference}
+\label{classXmlInterface}\index{XmlInterface@{XmlInterface}}
+Inheritance diagram for Xml\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9cm]{classXmlInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A xml interface to avoid complications when the php version is changed in website.
+
+Usage example : \$base1 = new \doxyref{Xml\-Interface}{p.}{classXmlInterface}; \$base1-$>$id\_\-requete; // Pas de \$ 
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Interface} (\$fn)
+\item 
+{\bf get\-Elements\-By\-Tag\-Name} (\$tagname)
+\item 
+{\bf get\-Child\-Text} (\$node, \$childtag)
+\item 
+{\bf add\-Element\-To\-Root} (\$node\-Name)
+\item 
+{\bf add\-Text\-Element\-To\-Element} (\$element, \$node\-Name, \$node\-Text)
+\item 
+{\bf save} ()
+\item 
+{\bf delete\-Element\-To\-Root} (\$node)
+\item 
+{\bf delete\-Element\-To\-Element} (\$node, \$child)
+\item 
+{\bf get\-Child\-Node} (\$node, \$childtag)
+\item 
+{\bf get\-Child\-Node\-List} (\$node, \$childtag)
+\item 
+{\bf add\-Element\-To\-Element} (\$parent\-Node, \$node\-Name)
+\item 
+{\bf move\-Up\-Node} (\$node)
+\item 
+{\bf move\-Down\-Node} (\$node)
+\item 
+{\bf get\-Node\-Attribute\-By\-Name} (\$node, \$attrb\-Name)
+\item 
+{\bf set\-Node\-Attribute} (\$node, \$attrb\-Name, \$attrb\-Val)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+{\bf \$filename} = \char`\"{}\char`\"{}
+\item 
+{\bf \$dom}
+\item 
+{\bf \$root}
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlInterface@{Xml\-Interface}!XmlInterface@{XmlInterface}}
+\index{XmlInterface@{XmlInterface}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::Xml\-Interface (\$ {\em fn})}\label{classXmlInterface_8833f2ccee290cb61284bbd46d350c75}
+
+
+Default constructor
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$fn}]The filename of the xmlfile \end{description}
+\end{Desc}
+\index{XmlInterface@{Xml\-Interface}!getElementsByTagName@{getElementsByTagName}}
+\index{getElementsByTagName@{getElementsByTagName}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::get\-Elements\-By\-Tag\-Name (\$ {\em tagname})}\label{classXmlInterface_3d9561570f0a794f15efc4dd2d91fcfe}
+
+
+Return a list of element by their tag name
+
+To have all the {\tt Player} xml elements, call get\-Elements\-By\-Tag\-Name('Player')
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$tagname}]The XML element name\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A list of element \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!getChildText@{getChildText}}
+\index{getChildText@{getChildText}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::get\-Child\-Text (\$ {\em node}, \$ {\em childtag})}\label{classXmlInterface_52b6b3ad7ed49e359997aae8f9d2cf28}
+
+
+Return the text of the child node or \char`\"{}\char`\"{} if not found
+
+To get the name of a Player (in a Name element). Call get\-Child\-Text(\$player\-Node, 'Name')
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The parent node \item[{\em \$childtag}]The xml tagname of the child\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The content of the child \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!addElementToRoot@{addElementToRoot}}
+\index{addElementToRoot@{addElementToRoot}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::add\-Element\-To\-Root (\$ {\em node\-Name})}\label{classXmlInterface_aeda6e0fff6fe1884184977b830146b5}
+
+
+Create and append a new child to root and return it
+
+If you call add\-Element\-To\-Root('Player'), you will have a {\tt PLayer} node directly under the root xml element.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node\-Name}]The tag name of the new element\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The new element \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!addTextElementToElement@{addTextElementToElement}}
+\index{addTextElementToElement@{addTextElementToElement}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::add\-Text\-Element\-To\-Element (\$ {\em element}, \$ {\em node\-Name}, \$ {\em node\-Text})}\label{classXmlInterface_e3b45b36308e6452550a22ad8d5c8669}
+
+
+Creates and append a new child and its text in a existing element
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$element}]The element in which we add the new one \item[{\em \$node\-Name}]The tagname of the new one \item[{\em \$node\-Text}]The text to add to the new element\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The newly created xml node \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!save@{save}}
+\index{save@{save}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::save ()}\label{classXmlInterface_73ec887d3c3b9fc61270c5ecc5eb059e}
+
+
+Save the current file \index{XmlInterface@{Xml\-Interface}!deleteElementToRoot@{deleteElementToRoot}}
+\index{deleteElementToRoot@{deleteElementToRoot}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::delete\-Element\-To\-Root (\$ {\em node})}\label{classXmlInterface_869012dcd4eb99654551b6f9d8bf8b80}
+
+
+Delete the child to root element
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The xml node to delete\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if the operation is successful otherwise {\tt false} \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!deleteElementToElement@{deleteElementToElement}}
+\index{deleteElementToElement@{deleteElementToElement}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::delete\-Element\-To\-Element (\$ {\em node}, \$ {\em child})}\label{classXmlInterface_4ab10ebb4174df2d663b71af370e9b1c}
+
+
+delete the named child to the element
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The xml node to delete its child \item[{\em \$child}]The xml node to delete\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if the operation is successful otherwise {\tt false} \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!getChildNode@{getChildNode}}
+\index{getChildNode@{getChildNode}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::get\-Child\-Node (\$ {\em node}, \$ {\em childtag})}\label{classXmlInterface_b54e75fa0c67df4c4ad04eba87cf71e8}
+
+
+Return the first child xml node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The parent XML node \item[{\em \$childtag}]The child tagname\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The child node \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!getChildNodeList@{getChildNodeList}}
+\index{getChildNodeList@{getChildNodeList}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::get\-Child\-Node\-List (\$ {\em node}, \$ {\em childtag})}\label{classXmlInterface_9e932920ffc172fa8133f3cb0c2b1e9c}
+
+
+Return a list of child xml node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The parent XML node \item[{\em \$childtag}]The child tagname\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The list of child node \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!addElementToElement@{addElementToElement}}
+\index{addElementToElement@{addElementToElement}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::add\-Element\-To\-Element (\$ {\em parent\-Node}, \$ {\em node\-Name})}\label{classXmlInterface_1e5f9fd0312b297d77544691a14a51a0}
+
+
+Creates and Add a xml Node to another xml\-Node
+
+The new node is created before adding it to the paent node.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$parent\-Node}]The node that will be the parent \item[{\em \$node\-Name}]The xml node to create and add to the \$parent\-Node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The newly created XML node \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!moveUpNode@{moveUpNode}}
+\index{moveUpNode@{moveUpNode}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::move\-Up\-Node (\$ {\em node})}\label{classXmlInterface_0fb0764006f0ff181c6aacec8b784bec}
+
+
+Move up a domxml node object
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]the domxml node to move up once\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if the operation is success, {\tt false} if the operation failed \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!moveDownNode@{moveDownNode}}
+\index{moveDownNode@{moveDownNode}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::move\-Down\-Node (\$ {\em node})}\label{classXmlInterface_b1ca361526dfbe21915d916b7290f140}
+
+
+Move up a domxml node object
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]the domxml node to move up once\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if the operation is success, {\tt false} if the operation failed \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!getNodeAttributeByName@{getNodeAttributeByName}}
+\index{getNodeAttributeByName@{getNodeAttributeByName}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::get\-Node\-Attribute\-By\-Name (\$ {\em node}, \$ {\em attrb\-Name})}\label{classXmlInterface_440efcd96cb0554c7ab2872c69205378}
+
+
+Returns the value of the given node's attribute from the attribute's name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The parent XML node \item[{\em \$attrb\-Name}]The attribute name\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The XML attribute \end{Desc}
+\index{XmlInterface@{Xml\-Interface}!setNodeAttribute@{setNodeAttribute}}
+\index{setNodeAttribute@{setNodeAttribute}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::set\-Node\-Attribute (\$ {\em node}, \$ {\em attrb\-Name}, \$ {\em attrb\-Val})}\label{classXmlInterface_71bcbd4900b890814846061fc602f5a3}
+
+
+Set a new attribute and its value to an existing node
+
+If the attribute does not exist, it is created.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$node}]The parent XML node \item[{\em \$attrb\-Name}]The attribute name \item[{\em \$attrb\-Val}]The attribute value \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{XmlInterface@{Xml\-Interface}!$filename@{\$filename}}
+\index{$filename@{\$filename}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::\$filename = \char`\"{}\char`\"{}}\label{classXmlInterface_cbc603e4954fe51456d2751441655d30}
+
+
+The name of the xml file \index{XmlInterface@{Xml\-Interface}!$dom@{\$dom}}
+\index{$dom@{\$dom}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::\$dom}\label{classXmlInterface_942412d4a80cc3b4f46296c4f38350e9}
+
+
+The xml document \index{XmlInterface@{Xml\-Interface}!$root@{\$root}}
+\index{$root@{\$root}!XmlInterface@{Xml\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Interface::\$root}\label{classXmlInterface_8dc2f6760dc11383306c0a8e6b489d1b}
+
+
+The xml root element 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlinterface.php\end{CompactItemize}

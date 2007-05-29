@@ -1,0 +1,190 @@
+\section{Xml\-Bonus\-File\-List\-Interface Class Reference}
+\label{classXmlBonusFileListInterface}\index{XmlBonusFileListInterface@{XmlBonusFileListInterface}}
+Inheritance diagram for Xml\-Bonus\-File\-List\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classXmlBonusFileListInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A class used to store the path to all Bonus\-File
+
+A Bonus\-File entry is defined by its name. This name should be unique. Its filename and a description are alse stored in this list.
+
+\begin{Desc}
+\item[See also:]\doxyref{Xml\-Bonus\-File\-Interface}{p.}{classXmlBonusFileInterface} \end{Desc}
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Bonus\-File\-List\-Interface} ()
+\item 
+{\bf get\-All\-Bonus\-File} ()
+\item 
+{\bf get\-Bonus\-File\-By\-Name} (\$name)
+\item 
+{\bf get\-Bonus\-File\-Name} (\$bonus\-File\-Node)
+\item 
+{\bf get\-Bonus\-File\-File\-Name} (\$bonus\-File\-Node)
+\item 
+{\bf get\-Bonus\-File\-Desc} (\$bonus\-File\-Node)
+\item 
+{\bf add\-Bonus\-File} (\$name, \$filename, \$desc)
+\item 
+{\bf delete\-Bonus\-File} (\$bonus\-File\-Node)
+\item 
+{\bf is\-Bonus\-File\-Exists} (\$name)
+\item 
+{\bf is\-Bonus\-File\-Name\-Exists} (\$filename)
+\item 
+{\bf modify\-Bonus\-File} (\$name, \$newfile, \$newdesc)
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!XmlBonusFileListInterface@{XmlBonusFileListInterface}}
+\index{XmlBonusFileListInterface@{XmlBonusFileListInterface}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::Xml\-Bonus\-File\-List\-Interface ()}\label{classXmlBonusFileListInterface_e716643f30c1a855f548cf2aeda7bce8}
+
+
+Creates a \doxyref{Xml\-Bonus\-File\-List\-Interface}{p.}{classXmlBonusFileListInterface} object \index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!getAllBonusFile@{getAllBonusFile}}
+\index{getAllBonusFile@{getAllBonusFile}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::get\-All\-Bonus\-File ()}\label{classXmlBonusFileListInterface_8547df3688c862075d8e2f85e583eaaf}
+
+
+Return an array of Bonus\-File XML nodes
+
+\begin{Desc}
+\item[Returns:]All the {\tt Bonus\-File} XML nodes \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!getBonusFileByName@{getBonusFileByName}}
+\index{getBonusFileByName@{getBonusFileByName}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::get\-Bonus\-File\-By\-Name (\$ {\em name})}\label{classXmlBonusFileListInterface_05170e86a1be864ff21f63b2560f3b16}
+
+
+Get a Bonus\-File by its name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the Bonus\-File you search\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The Bonus\-File XML node \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!getBonusFileName@{getBonusFileName}}
+\index{getBonusFileName@{getBonusFileName}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::get\-Bonus\-File\-Name (\$ {\em bonus\-File\-Node})}\label{classXmlBonusFileListInterface_4407aa72dbd290597a8595fcf85e8275}
+
+
+Get the name of a Bonus\-File xml node
+
+The good way to use this function is to get the player xml node first (by a call to get\-Player\-By\-Name) and call this with the returned player.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$bonus\-File\-Node}]The Bonus\-File XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The player name or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!getBonusFileFileName@{getBonusFileFileName}}
+\index{getBonusFileFileName@{getBonusFileFileName}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::get\-Bonus\-File\-File\-Name (\$ {\em bonus\-File\-Node})}\label{classXmlBonusFileListInterface_cda66602f4114281d1ebea8f13bc6454}
+
+
+Get the blacklist status of a player xml node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$bonus\-File\-Node}]The Bonus\-File XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The player blacklist status or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!getBonusFileDesc@{getBonusFileDesc}}
+\index{getBonusFileDesc@{getBonusFileDesc}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::get\-Bonus\-File\-Desc (\$ {\em bonus\-File\-Node})}\label{classXmlBonusFileListInterface_ebc0ff1a8340008ea0635c5158e5f7dd}
+
+
+Get the email adress of a player xml node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$bonus\-File\-Node}]The Bonus\-File XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The player email adress or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!addBonusFile@{addBonusFile}}
+\index{addBonusFile@{addBonusFile}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::add\-Bonus\-File (\$ {\em name}, \$ {\em filename}, \$ {\em desc})}\label{classXmlBonusFileListInterface_1b5948708237c2382b6683eff586094f}
+
+
+Add a player and save the document
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the Bonus\-File \item[{\em \$filename}]The filename of the Bonus\-File \item[{\em \$desc}]A description \end{description}
+\end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!deleteBonusFile@{deleteBonusFile}}
+\index{deleteBonusFile@{deleteBonusFile}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::delete\-Bonus\-File (\$ {\em bonus\-File\-Node})}\label{classXmlBonusFileListInterface_7558464d179bd0709db01e203b302cfc}
+
+
+Delete a Bonus\-File entry
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$bonus\-File\-Node}]The Bonus\-File XML node you want to remove from the list \end{description}
+\end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!isBonusFileExists@{isBonusFileExists}}
+\index{isBonusFileExists@{isBonusFileExists}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::is\-Bonus\-File\-Exists (\$ {\em name})}\label{classXmlBonusFileListInterface_8e4b87f1aa1d1af377734bb85fa920a3}
+
+
+Is this Bonus\-File is alerady in the list
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the Bonus\-File\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if this Bonus\-File name is in the list, otherwise {\tt false} \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!isBonusFileNameExists@{isBonusFileNameExists}}
+\index{isBonusFileNameExists@{isBonusFileNameExists}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::is\-Bonus\-File\-Name\-Exists (\$ {\em filename})}\label{classXmlBonusFileListInterface_5745bed39262a0f2ac9426efaaf9e9a7}
+
+
+Is this Bonus\-File filename already in use
+
+It is used to prevent the same Bonus\-File twice in the list.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$filename}]The filename to test\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if this Bonus\-File filename is in the list, otherwise {\tt false} \end{Desc}
+\index{XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}!modifyBonusFile@{modifyBonusFile}}
+\index{modifyBonusFile@{modifyBonusFile}!XmlBonusFileListInterface@{Xml\-Bonus\-File\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-List\-Interface::modify\-Bonus\-File (\$ {\em name}, \$ {\em newfile}, \$ {\em newdesc})}\label{classXmlBonusFileListInterface_d646d9c1263706deb75c305252d2265c}
+
+
+Modify a Bonus\-File entry
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The Bonus\-File name \item[{\em \$newfile}]The new filename \item[{\em \$newdesc}]The new description \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlbonusfilelistinterface.php\end{CompactItemize}

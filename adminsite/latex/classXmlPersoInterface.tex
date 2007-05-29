@@ -1,0 +1,165 @@
+\section{Xml\-Perso\-Interface Class Reference}
+\label{classXmlPersoInterface}\index{XmlPersoInterface@{XmlPersoInterface}}
+Inheritance diagram for Xml\-Perso\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classXmlPersoInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A class used with xml perso. 
+
+To speed-up the file access, the perso is saved in several files in the persos directory (where xxxxxxxx is the perso Id): persoxxxxxxxx.attrb.xml 
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Perso\-Interface} (\$perso\-Id, \$function)
+\item 
+{\bf get\-All\-Category} ()
+\item 
+{\bf get\-Category\-Name} (\$cat\-Node)
+\item 
+{\bf get\-Category\-By\-Name} (\$cat\-Name)
+\item 
+{\bf get\-All\-Attribute} (\$cat\-Node)
+\item 
+{\bf get\-Attribute\-Name} (\$attrb\-Node)
+\item 
+{\bf get\-Attribute\-By\-Name} (\$cat\-Node, \$attrb\-Name)
+\item 
+{\bf add\-Category} (\$cat\-Name)
+\item 
+{\bf modif\-Attribute} (\$cat\-Node, \$attrb\-Name, \$attrb\-Val)
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!XmlPersoInterface@{XmlPersoInterface}}
+\index{XmlPersoInterface@{XmlPersoInterface}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::Xml\-Perso\-Interface (\$ {\em perso\-Id}, \$ {\em function})}\label{classXmlPersoInterface_e00d0b4a7356a93effeba743032c88bf}
+
+
+Creates a \doxyref{Xml\-Player\-Interface}{p.}{classXmlPlayerInterface} object
+
+It creates the file if it does not exist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$perso\-Id}]The unique id of the perso : xxxxxxxx \item[{\em \$function}]Can be {\bf attrb} for attribute... \end{description}
+\end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getAllCategory@{getAllCategory}}
+\index{getAllCategory@{getAllCategory}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-All\-Category ()}\label{classXmlPersoInterface_4db59b791ceb49de0fa8e2ab9a907945}
+
+
+Get all category
+
+\begin{Desc}
+\item[Returns:]The Category node list \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getCategoryName@{getCategoryName}}
+\index{getCategoryName@{getCategoryName}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-Category\-Name (\$ {\em cat\-Node})}\label{classXmlPersoInterface_f0d7fc89daf9ee1c17928a32fc9a9a0a}
+
+
+Get a category name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Node}]The category XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The category name \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getCategoryByName@{getCategoryByName}}
+\index{getCategoryByName@{getCategoryByName}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-Category\-By\-Name (\$ {\em cat\-Name})}\label{classXmlPersoInterface_5d61551c6d3a82670b62d5d0fd44a500}
+
+
+Get a category by its name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Name}]The category name\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The category XML node \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getAllAttribute@{getAllAttribute}}
+\index{getAllAttribute@{getAllAttribute}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-All\-Attribute (\$ {\em cat\-Node})}\label{classXmlPersoInterface_40cec6e168a2e72d7073a8db2b5c7156}
+
+
+Get all perso attribute of a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Node}]The category XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The list of Attribute XML node \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getAttributeName@{getAttributeName}}
+\index{getAttributeName@{getAttributeName}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-Attribute\-Name (\$ {\em attrb\-Node})}\label{classXmlPersoInterface_eb85d279b80f7974c220194b452ae96b}
+
+
+Get the name of an attribute
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$attrb\-Node}]The attribute XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The name of the attribute \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!getAttributeByName@{getAttributeByName}}
+\index{getAttributeByName@{getAttributeByName}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::get\-Attribute\-By\-Name (\$ {\em cat\-Node}, \$ {\em attrb\-Name})}\label{classXmlPersoInterface_f94f51245e110c9149a5172deaff3acd}
+
+
+Get a perso attribute by its name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Node}]The category XML node \item[{\em \$attrb\-Name}]The name of the attribute you search\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The attribute XML node if found \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!addCategory@{addCategory}}
+\index{addCategory@{addCategory}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::add\-Category (\$ {\em cat\-Name})}\label{classXmlPersoInterface_effc3b35dd1343d3bcce81e93089a292}
+
+
+Create a new category and return it
+
+Creates a xml node named {\tt Category} with an {\tt name} attribute called \$cat\-Name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Name}]The content of the {\tt name} attribute of the category\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The new XML node \end{Desc}
+\index{XmlPersoInterface@{Xml\-Perso\-Interface}!modifAttribute@{modifAttribute}}
+\index{modifAttribute@{modifAttribute}!XmlPersoInterface@{Xml\-Perso\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Interface::modif\-Attribute (\$ {\em cat\-Node}, \$ {\em attrb\-Name}, \$ {\em attrb\-Val})}\label{classXmlPersoInterface_583cae73e1ece56acb42193a5c33c75a}
+
+
+Modify a perso attribute
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$cat\-Node}]The category xml node \item[{\em \$attrb\-Name}]The name of the attribute to modify \item[{\em \$attrb\-Val}]The value of the attribute \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlpersointerface.php\end{CompactItemize}
