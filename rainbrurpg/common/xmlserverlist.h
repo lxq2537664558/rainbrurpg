@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 29 may 2007 : Adding the 'ftp' key
+ *
+ */
+
 #ifndef XML_SERVER_LIST_H
 #define XML_SERVER_LIST_H
 
@@ -51,6 +56,7 @@ namespace RainbruRPG{
 	const char* description; //!< The description
 	const char* ipAdress;    //!< The ip adress
 	const char* port;        //!< The UDP port
+	const char* ftp;         //!< The FTP control channel port 
 	const char* techNote;    //!< The technical note
 	unsigned int maxClients; //!< Maximum allowed connection
 	unsigned int actClients; //!< Actual number of connected clients

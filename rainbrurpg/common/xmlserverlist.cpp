@@ -25,7 +25,6 @@
 
 /** The default constructor
   *
-  * It defines the document as \c ./temp/players.xml.
   */
 RainbruRPG::Network::Ident::xmlServerList::xmlServerList(){
   refresh();
@@ -53,7 +52,7 @@ RainbruRPG::Network::Ident::xmlServerList::~xmlServerList(){
   root=NULL;
 }
 
-/** Get the child(s text of the given child
+/** Get the child text of the given child
   *
   * \param child The parent of the wanted text
   * \param nodeName The node name of the text you want
@@ -111,6 +110,7 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
     it->description= getXMLTextFromName(child, "Desc");
     it->ipAdress= getXMLTextFromName(child, "Ip");
     it->port= getXMLTextFromName(child, "Port");
+    it->ftp= getXMLTextFromName(child, "Ftp");
     it->techNote= getXMLTextFromName(child, "TechNote");
     const char* mc=getXMLTextFromName(child, "MaxClients");
     const char* ac=getXMLTextFromName(child, "ActClients");

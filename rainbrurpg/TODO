@@ -5,7 +5,6 @@ stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
      
 o [mouse] ************** Admin site modified ****************
-- Adding php code source of admin site in sourceforge in the admin branch
 
 * Unittest implementation in common/
 - In this order
@@ -20,8 +19,7 @@ Writing a simple unittest framework in programmation/php/unittest$
 - A TestResult interface
 
 * Server FTP port in meta-server
-- Modify xmlServerList
-- Modify xIdent table and dialog
+- and dialog (addServer and edit)
 - Modify ServerConfiguration
 - Add a tabcontrol in Server configuration dialog
 - Some Server configuration dialog tabs (Identification/Network/Tech
@@ -147,6 +145,10 @@ Writing a simple unittest framework in programmation/php/unittest$
 * *******************************************************
 
 * v 0.0.4-138
+- Modify xIdent table (foxserverlist)
+- Modify xmlServerList
+- Add progr/php to the ./backup_prog script
+- Adding php code source of admin site in sourceforge in the adminsite branch
 - Modify user manual for FTP port
 - Modify UnitTest for CurlServerAdd
 - Add a 'ftp' key to CurlServerAdd

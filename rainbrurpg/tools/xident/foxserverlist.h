@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 29 may 2007 : Adding the 'ftp' column
+ *
+ */
+
 #ifndef FOX_SERVER_LIST_H
 #define FOX_SERVER_LIST_H
 

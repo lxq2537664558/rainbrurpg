@@ -60,6 +60,8 @@ documentation and install it please type :
    automake
    ./configure --enable-all
 
+   Or simply call the `./bootstrap' command.
+
 
 File: RainbruRPG.info,  Node: Copying,  Next: Overview,  Prev: Instructions,  Up: Top
 
@@ -540,11 +542,11 @@ Concept Index
 Tag Table:
 Node: Top861
 Node: Instructions1475
-Node: Copying2108
-Node: Overview21294
-Node: Server21734
-Node: Invoking RainbruRPG22935
-Node: Problems23481
-Node: Concept Index24111
+Node: Copying2154
+Node: Overview21340
+Node: Server21780
+Node: Invoking RainbruRPG22981
+Node: Problems23527
+Node: Concept Index24157
 
 End Tag Table
