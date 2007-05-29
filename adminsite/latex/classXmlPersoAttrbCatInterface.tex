@@ -1,0 +1,194 @@
+\section{Xml\-Perso\-Attrb\-Cat\-Interface Class Reference}
+\label{classXmlPersoAttrbCatInterface}\index{XmlPersoAttrbCatInterface@{XmlPersoAttrbCatInterface}}
+Inheritance diagram for Xml\-Perso\-Attrb\-Cat\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classXmlPersoAttrbCatInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A class used with xml perso attributes categories list 
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Perso\-Attrb\-Cat\-Interface} ()
+\item 
+{\bf get\-All\-Cat} ()
+\item 
+{\bf get\-Cat\-By\-Name} (\$name)
+\item 
+{\bf get\-Cat\-Name} (\$category\-Node)
+\item 
+{\bf get\-Cat\-Tab} (\$category\-Node)
+\item 
+{\bf get\-Cat\-Desc} (\$category\-Node)
+\item 
+{\bf add\-Cat} (\$name, \$desc, \$tab)
+\item 
+{\bf is\-Category\-Exists} (\$name)
+\item 
+{\bf delete\-Cat} (\$category\-Node)
+\item 
+{\bf modif\-Cat} (\$name, \$newdesc, \$newtab)
+\item 
+{\bf move\-Up\-Cat} (\$category\-Node)
+\item 
+{\bf move\-Down\-Cat} (\$category\-Node)
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!XmlPersoAttrbCatInterface@{XmlPersoAttrbCatInterface}}
+\index{XmlPersoAttrbCatInterface@{XmlPersoAttrbCatInterface}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::Xml\-Perso\-Attrb\-Cat\-Interface ()}\label{classXmlPersoAttrbCatInterface_7552a1ed7a232dceeee732f7a4068e2f}
+
+
+The default constructor \index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!getAllCat@{getAllCat}}
+\index{getAllCat@{getAllCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::get\-All\-Cat ()}\label{classXmlPersoAttrbCatInterface_77a5b1c08d0ae94b1cd92bc4ec36abae}
+
+
+Returns all category
+
+\begin{Desc}
+\item[Returns:]All Category XML node \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!getCatByName@{getCatByName}}
+\index{getCatByName@{getCatByName}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::get\-Cat\-By\-Name (\$ {\em name})}\label{classXmlPersoAttrbCatInterface_091754a135b14f24da18dbd226b70c87}
+
+
+Get a Category node by its name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the category you want\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The category XML node \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!getCatName@{getCatName}}
+\index{getCatName@{getCatName}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::get\-Cat\-Name (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_dc26dd60948b98fed10f25970bb8d7a0}
+
+
+Get the name of a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The Category XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The name of the given category \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!getCatTab@{getCatTab}}
+\index{getCatTab@{getCatTab}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::get\-Cat\-Tab (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_ebde1c21a80b0ee7a50e04b96771d007}
+
+
+Get the Tab value of a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The Category XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The Tab of the given category \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!getCatDesc@{getCatDesc}}
+\index{getCatDesc@{getCatDesc}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::get\-Cat\-Desc (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_a44eab3656a443d89ac748b05b2447e3}
+
+
+Get the description of a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The Category XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The description of the given category \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!addCat@{addCat}}
+\index{addCat@{addCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::add\-Cat (\$ {\em name}, \$ {\em desc}, \$ {\em tab})}\label{classXmlPersoAttrbCatInterface_d04f102004ab751b12319102abcaafb2}
+
+
+Add a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the category \item[{\em \$desc}]The description of the category \item[{\em \$tab}]The tab value \end{description}
+\end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!isCategoryExists@{isCategoryExists}}
+\index{isCategoryExists@{isCategoryExists}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::is\-Category\-Exists (\$ {\em name})}\label{classXmlPersoAttrbCatInterface_b52ff1aa1bd3e9452a59965e205859b2}
+
+
+Does the category exist ?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the category\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if the category was found, otherwise returns {\tt false} \end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!deleteCat@{deleteCat}}
+\index{deleteCat@{deleteCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::delete\-Cat (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_a2652885549922c862ad75f0fd686918}
+
+
+Deletes the given category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The category XML node \end{description}
+\end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!modifCat@{modifCat}}
+\index{modifCat@{modifCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::modif\-Cat (\$ {\em name}, \$ {\em newdesc}, \$ {\em newtab})}\label{classXmlPersoAttrbCatInterface_ed34908157fcc523b76c6824b770c3a6}
+
+
+Modify the description or the tab of a category
+
+We do not allow to change the name to keep relationship between categories
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The name of the category \item[{\em \$newdesc}]The new description \item[{\em \$newtab}]The new tab value \end{description}
+\end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!moveUpCat@{moveUpCat}}
+\index{moveUpCat@{moveUpCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::move\-Up\-Cat (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_908233b7081903cbf4e06f265c546f40}
+
+
+Moves up a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The category XML node \end{description}
+\end{Desc}
+\index{XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}!moveDownCat@{moveDownCat}}
+\index{moveDownCat@{moveDownCat}!XmlPersoAttrbCatInterface@{Xml\-Perso\-Attrb\-Cat\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-Attrb\-Cat\-Interface::move\-Down\-Cat (\$ {\em category\-Node})}\label{classXmlPersoAttrbCatInterface_d460ea461bce0c848e97a6e0d3b6c897}
+
+
+Moves down a category
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$category\-Node}]The category XML node \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlpersoattrbcatinterface.php\end{CompactItemize}

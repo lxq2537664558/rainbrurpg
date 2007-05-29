@@ -1,0 +1,49 @@
+\section{timestamp.php File Reference}
+\label{timestamp_8php}\index{timestamp.php@{timestamp.php}}
+
+
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\bf add\-Timestamp} (\$player\-Node, \$tag\-Caption, \$value)
+\item 
+{\bf get\-Timestamp} (\$player\-Node, \$tag\-Caption)
+\item 
+{\bf get\-Timestamp\-Date\-Str} (\$player\-Node, \$tag\-Caption)
+\item 
+{\bf get\-Timestamp\-Time\-Str} (\$player\-Node, \$tag\-Caption)
+\item 
+{\bf is\-Existing\-Timestamp} (\$player\-Node, \$tag\-Caption)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{timestamp.php@{timestamp.php}!addTimestamp@{addTimestamp}}
+\index{addTimestamp@{addTimestamp}!timestamp.php@{timestamp.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}add\-Timestamp (\$ {\em player\-Node}, \$ {\em tag\-Caption}, \$ {\em value})}\label{timestamp_8php_4fdb48fb26d5887f63ff008179e28a18}
+
+
+Add a timestamp to a domxml node
+
+You can have multiple timestamp on the same xml node if the \$tag\-Caption is different.
+
+\$player\-Node is the parent node of the timestamp \$tag\-Caption is the content of an attribute called tag \$value A time value(ex 1156804212) \index{timestamp.php@{timestamp.php}!getTimestamp@{getTimestamp}}
+\index{getTimestamp@{getTimestamp}!timestamp.php@{timestamp.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}get\-Timestamp (\$ {\em player\-Node}, \$ {\em tag\-Caption})}\label{timestamp_8php_63550e2a0fa42847c03e6366dab40cb6}
+
+
+Returns the value of a timestamp \index{timestamp.php@{timestamp.php}!getTimestampDateStr@{getTimestampDateStr}}
+\index{getTimestampDateStr@{getTimestampDateStr}!timestamp.php@{timestamp.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}get\-Timestamp\-Date\-Str (\$ {\em player\-Node}, \$ {\em tag\-Caption})}\label{timestamp_8php_aa6990a4d82fa2d129f072d2830c65b2}
+
+
+Returns the timestamp in the form : dd/mm/yyyy or '-' if the timestamp was not found \index{timestamp.php@{timestamp.php}!getTimestampTimeStr@{getTimestampTimeStr}}
+\index{getTimestampTimeStr@{getTimestampTimeStr}!timestamp.php@{timestamp.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}get\-Timestamp\-Time\-Str (\$ {\em player\-Node}, \$ {\em tag\-Caption})}\label{timestamp_8php_5c7a1f2c1f90fda431026a376c38aea3}
+
+
+Returns the timestamp in the form : hh:mm or '-' if the timestamp was not found \index{timestamp.php@{timestamp.php}!isExistingTimestamp@{isExistingTimestamp}}
+\index{isExistingTimestamp@{isExistingTimestamp}!timestamp.php@{timestamp.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}is\-Existing\-Timestamp (\$ {\em player\-Node}, \$ {\em tag\-Caption})}\label{timestamp_8php_9c483794897dcbdf2a693f2e0d8f5817}
+
+

@@ -1,0 +1,136 @@
+\section{modifbonusfilemodifier.php File Reference}
+\label{modifbonusfilemodifier_8php}\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+
+
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+{\bf \$acc} = include 'access.php'
+\item 
+{\bf \$choice} = trim(\$\_\-POST['choice'])
+\item 
+{\bf \$oldmod} = trim(\$\_\-POST['oldmod'])
+\item 
+{\bf \$mod} = trim(\$\_\-POST['mod'])
+\item 
+{\bf \$val} = trim(\$\_\-POST['val'])
+\item 
+{\bf \$bonus\-File} = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-By\-Name(\$name)
+\item 
+{\bf \$file} = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-File\-Name(\$bonus\-File)
+\item 
+{\bf \$xmlbonus} = new {\bf Xml\-Bonus\-File\-Interface}(\$file)
+\item 
+{\bf \$choice\-Node} = \$xmlbonus $\rightarrow$ get\-Choice\-By\-Name(\$choice)
+\item 
+{\bf \$name} = trim(\$\_\-GET['name'])
+\item 
+{\bf \$choice} = trim(\$\_\-GET['choice'])
+\item 
+{\bf \$mod} = trim(\$\_\-GET['mod'])
+\item 
+{\bf \$bonus\-File} = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-By\-Name(\$name)
+\item 
+{\bf \$file} = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-File\-Name(\$bonus\-File)
+\item 
+{\bf \$xmlbonus} = new {\bf Xml\-Bonus\-File\-Interface}(\$file)
+\item 
+{\bf \$choice\-Node} = \$xmlbonus $\rightarrow$ get\-Choice\-By\-Name(\$choice)
+\item 
+{\bf \$mod\-Node} = \$xmlbonus $\rightarrow$ get\-Mod\-By\-Name(\$choice\-Node, \$mod)
+\item 
+{\bf \$val} = \$xmlbonus $\rightarrow$ get\-Modifier\-Mod (\$mod\-Node)
+\end{CompactItemize}
+
+
+\subsection{Variable Documentation}
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$acc@{\$acc}}
+\index{$acc@{\$acc}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$acc = include 'access.php'}\label{modifbonusfilemodifier_8php_542926c588a05eb69553d79c83cf73da}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$bonusFile@{\$bonusFile}}
+\index{$bonusFile@{\$bonusFile}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$bonus\-File = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-By\-Name(\$name)}\label{modifbonusfilemodifier_8php_6031931b24e474b9c8829866a2fdc6f6}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$bonusFile@{\$bonusFile}}
+\index{$bonusFile@{\$bonusFile}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$bonus\-File = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-By\-Name(\$name)}\label{modifbonusfilemodifier_8php_6031931b24e474b9c8829866a2fdc6f6}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$choice@{\$choice}}
+\index{$choice@{\$choice}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$choice = trim(\$\_\-GET['choice'])}\label{modifbonusfilemodifier_8php_d36224c1951716894a12176873c66129}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$choice@{\$choice}}
+\index{$choice@{\$choice}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$choice = trim(\$\_\-POST['choice'])}\label{modifbonusfilemodifier_8php_d36224c1951716894a12176873c66129}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$choiceNode@{\$choiceNode}}
+\index{$choiceNode@{\$choiceNode}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$choice\-Node = \$xmlbonus $\rightarrow$ get\-Choice\-By\-Name(\$choice)}\label{modifbonusfilemodifier_8php_47822257bed55f286fdffb7af48155cc}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$choiceNode@{\$choiceNode}}
+\index{$choiceNode@{\$choiceNode}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$choice\-Node = \$xmlbonus $\rightarrow$ get\-Choice\-By\-Name(\$choice)}\label{modifbonusfilemodifier_8php_47822257bed55f286fdffb7af48155cc}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$file@{\$file}}
+\index{$file@{\$file}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$file = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-File\-Name(\$bonus\-File)}\label{modifbonusfilemodifier_8php_a1bfbd27060176201b271918dff57e8f}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$file@{\$file}}
+\index{$file@{\$file}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$file = \$xmlbonusfile $\rightarrow$ get\-Bonus\-File\-File\-Name(\$bonus\-File)}\label{modifbonusfilemodifier_8php_a1bfbd27060176201b271918dff57e8f}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$mod@{\$mod}}
+\index{$mod@{\$mod}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$mod = trim(\$\_\-GET['mod'])}\label{modifbonusfilemodifier_8php_54322f8babba5ad4bf1e1abb04aea591}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$mod@{\$mod}}
+\index{$mod@{\$mod}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$mod = trim(\$\_\-POST['mod'])}\label{modifbonusfilemodifier_8php_54322f8babba5ad4bf1e1abb04aea591}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$modNode@{\$modNode}}
+\index{$modNode@{\$modNode}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$mod\-Node = \$xmlbonus $\rightarrow$ get\-Mod\-By\-Name(\$choice\-Node, \$mod)}\label{modifbonusfilemodifier_8php_7869da9979ec8beec75a4aa3bf6c2f8a}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$name@{\$name}}
+\index{$name@{\$name}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$name = trim(\$\_\-GET['name'])}\label{modifbonusfilemodifier_8php_b2fc40d43824ea3e1ce5d86dee0d763b}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$oldmod@{\$oldmod}}
+\index{$oldmod@{\$oldmod}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$oldmod = trim(\$\_\-POST['oldmod'])}\label{modifbonusfilemodifier_8php_4cad74032c3b198f89cf4b455469d060}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$val@{\$val}}
+\index{$val@{\$val}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$val = \$xmlbonus $\rightarrow$ get\-Modifier\-Mod (\$mod\-Node)}\label{modifbonusfilemodifier_8php_ac81a74a7b30767af29bfd9a695636df}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$val@{\$val}}
+\index{$val@{\$val}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$val = trim(\$\_\-POST['val'])}\label{modifbonusfilemodifier_8php_ac81a74a7b30767af29bfd9a695636df}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$xmlbonus@{\$xmlbonus}}
+\index{$xmlbonus@{\$xmlbonus}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$xmlbonus = new {\bf Xml\-Bonus\-File\-Interface}(\$file)}\label{modifbonusfilemodifier_8php_66cabf2391f95b889df2bf0cbeb3e59c}
+
+
+\index{modifbonusfilemodifier.php@{modifbonusfilemodifier.php}!$xmlbonus@{\$xmlbonus}}
+\index{$xmlbonus@{\$xmlbonus}!modifbonusfilemodifier.php@{modifbonusfilemodifier.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$xmlbonus = new {\bf Xml\-Bonus\-File\-Interface}(\$file)}\label{modifbonusfilemodifier_8php_66cabf2391f95b889df2bf0cbeb3e59c}
+
+

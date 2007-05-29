@@ -1,0 +1,189 @@
+\section{Xml\-Perso\-List\-Interface Class Reference}
+\label{classXmlPersoListInterface}\index{XmlPersoListInterface@{XmlPersoListInterface}}
+Inheritance diagram for Xml\-Perso\-List\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classXmlPersoListInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A class used with xml persolist 
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Perso\-List\-Interface} ()
+\item 
+{\bf get\-Next\-ID} ()
+\item 
+{\bf get\-Next\-IDStr} ()
+\item 
+{\bf increase\-Id} ()
+\item 
+{\bf get\-All\-Players} ()
+\item 
+{\bf get\-Player\-Name} (\$player\-Node)
+\item 
+{\bf get\-All\-Persos} (\$player\-Node)
+\item 
+{\bf get\-Perso\-Id} (\$perso\-Node)
+\item 
+{\bf get\-Player\-By\-Name} (\$name)
+\item 
+{\bf get\-Perso\-By\-Id} (\$player\-Name, \$perso\-Id)
+\item 
+{\bf add\-Perso} (\$player\-Name, \$perso\-Id, \$Timestamp)
+\item 
+{\bf delete\-Perso} (\$player\-Name, \$perso\-Id)
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!XmlPersoListInterface@{XmlPersoListInterface}}
+\index{XmlPersoListInterface@{XmlPersoListInterface}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::Xml\-Perso\-List\-Interface ()}\label{classXmlPersoListInterface_137710d2d454ae5669c4cc91aecd283c}
+
+
+Creates a \doxyref{Xml\-Player\-Interface}{p.}{classXmlPlayerInterface} object \index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getNextID@{getNextID}}
+\index{getNextID@{getNextID}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Next\-ID ()}\label{classXmlPersoListInterface_940a61fb4eb71bdb90eb7f85571cea59}
+
+
+Get the next usable ID
+
+\begin{Desc}
+\item[Returns:]The value of the Next\-Id XML node \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getNextIDStr@{getNextIDStr}}
+\index{getNextIDStr@{getNextIDStr}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Next\-IDStr ()}\label{classXmlPersoListInterface_f817bb5afc91b230f62764d2b4c12dd9}
+
+
+Get the next ID in string format
+
+\begin{Desc}
+\item[Returns:]The value of the Next\-Id XML node \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!increaseId@{increaseId}}
+\index{increaseId@{increaseId}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::increase\-Id ()}\label{classXmlPersoListInterface_122fe492e441ed47ad754d79ad24d5cb}
+
+
+Increase the Next\-Id value by 1
+
+The document is not saved. \index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getAllPlayers@{getAllPlayers}}
+\index{getAllPlayers@{getAllPlayers}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-All\-Players ()}\label{classXmlPersoListInterface_5d5e596d925637dbf20cd0021a634a25}
+
+
+Return an array of player xml nodes
+
+\begin{Desc}
+\item[Returns:]The Player XML node list \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getPlayerName@{getPlayerName}}
+\index{getPlayerName@{getPlayerName}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Player\-Name (\$ {\em player\-Node})}\label{classXmlPersoListInterface_1976e094b8ad196256471a204f540f50}
+
+
+Get the name of a player xml node
+
+The good way to use this function is to get the player xml node first (by a call to get\-Player\-By\-Name) and call this with the returned player.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$player\-Node}]The Player XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The player name or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getAllPersos@{getAllPersos}}
+\index{getAllPersos@{getAllPersos}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-All\-Persos (\$ {\em player\-Node})}\label{classXmlPersoListInterface_4a81d53a18a3c4b3a3f577472318475e}
+
+
+Get the persos of a player xml node
+
+The good way to use this function is to get the player xml node first (by a call to get\-Player\-By\-Name) and call this with the returned player.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$player\-Node}]The Player XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The perso XML node list \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getPersoId@{getPersoId}}
+\index{getPersoId@{getPersoId}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Perso\-Id (\$ {\em perso\-Node})}\label{classXmlPersoListInterface_4dbe49179280b237bcd39fa1624173be}
+
+
+Get the ID of a perso xml node
+
+The good way to use this function is to get the perso xml node first (by a call to get\-Perso\-By\-Id) and call this with the returned player.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$perso\-Node}]The Perso XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The ID value \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getPlayerByName@{getPlayerByName}}
+\index{getPlayerByName@{getPlayerByName}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Player\-By\-Name (\$ {\em name})}\label{classXmlPersoListInterface_c86d0bcd9e3da5b1958bd9a0ac06ca5a}
+
+
+Get a player by its name
+
+You can test the existance of this player with {\tt if (\$player)}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$name}]The value of the name tag\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The player xml node or NULL if the player does not exist. \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!getPersoById@{getPersoById}}
+\index{getPersoById@{getPersoById}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::get\-Perso\-By\-Id (\$ {\em player\-Name}, \$ {\em perso\-Id})}\label{classXmlPersoListInterface_b850f31c60fcc1816b6eab6f94f14ff5}
+
+
+Get a Perso of a player by its ID
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$player\-Name}]The player name \item[{\em \$perso\-Id}]The perso ID\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The found perso XML node \end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!addPerso@{addPerso}}
+\index{addPerso@{addPerso}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::add\-Perso (\$ {\em player\-Name}, \$ {\em perso\-Id}, \$ {\em Timestamp})}\label{classXmlPersoListInterface_5e70d3f66e27f6bc229527877e660b51}
+
+
+Add a perso
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$player\-Name}]The player name \item[{\em \$perso\-Id}]The perso\-ID \item[{\em \$Timestamp}]The creation timestamp \end{description}
+\end{Desc}
+\index{XmlPersoListInterface@{Xml\-Perso\-List\-Interface}!deletePerso@{deletePerso}}
+\index{deletePerso@{deletePerso}!XmlPersoListInterface@{Xml\-Perso\-List\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Perso\-List\-Interface::delete\-Perso (\$ {\em player\-Name}, \$ {\em perso\-Id})}\label{classXmlPersoListInterface_086cb2f783be886775dc141268a13721}
+
+
+Delete a perso
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$player\-Name}]The player name \item[{\em \$perso\-Id}]The perso\-ID \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlpersolistinterface.php\end{CompactItemize}

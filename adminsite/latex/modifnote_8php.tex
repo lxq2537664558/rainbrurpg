@@ -1,0 +1,66 @@
+\section{modifnote.php File Reference}
+\label{modifnote_8php}\index{modifnote.php@{modifnote.php}}
+
+
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+{\bf \$acc} = include 'access.php'
+\item 
+{\bf \$timestamp} = trim(\$\_\-POST['timestamp'])
+\item 
+{\bf \$old\-Title} = trim(\$\_\-POST['old\-Title'])
+\item 
+{\bf \$note\-Title} = trim(\$\_\-POST['note\-Title'])
+\item 
+{\bf \$note\-Content} = trim(\$\_\-POST['note\-Content'])
+\item 
+{\bf \$xmlplayer} = new {\bf Xml\-Player\-Interface}()
+\item 
+content or creation timestamp$<$/p $>$$<$ formaction=\char`\"{}modifnote.php\char`\"{}method=\char`\"{}post\char`\"{}$>$$<$ divalign='center'$>$$<$?php \$pl\-Name=\$\_\-GET['player\-Name'];if(empty(\$pl\-Name))\{echo'$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}name\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}name\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$ px note\-Title$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}old\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$ player\-Name note\-Title$<$ TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20 $>$$<$/TEXTAREA $>$$<$ TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20 $>$ s$<$/TEXTAREA $>$$<$ p $>$ {\bf Now}
+\item 
+content or creation timestamp$<$/p $>$$<$ formaction=\char`\"{}modifnote.php\char`\"{}method=\char`\"{}post\char`\"{}$>$$<$ divalign='center'$>$$<$?php \$pl\-Name=\$\_\-GET['player\-Name'];if(empty(\$pl\-Name))\{echo'$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}name\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}name\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$ px note\-Title$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$$<$ td $>$$<$ inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}old\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td $>$ player\-Name note\-Title$<$ TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20 $>$$<$/TEXTAREA $>$$<$ TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20 $>$ s$<$/TEXTAREA $>$$<$ p $>$ the timestamp {\bf is}
+\end{CompactItemize}
+
+
+\subsection{Variable Documentation}
+\index{modifnote.php@{modifnote.php}!$acc@{\$acc}}
+\index{$acc@{\$acc}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$acc = include 'access.php'}\label{modifnote_8php_542926c588a05eb69553d79c83cf73da}
+
+
+\index{modifnote.php@{modifnote.php}!$noteContent@{\$noteContent}}
+\index{$noteContent@{\$noteContent}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$note\-Content = trim(\$\_\-POST['note\-Content'])}\label{modifnote_8php_b4094634f228430d5301362d5d1b776a}
+
+
+\index{modifnote.php@{modifnote.php}!$noteTitle@{\$noteTitle}}
+\index{$noteTitle@{\$noteTitle}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$note\-Title = trim(\$\_\-POST['note\-Title'])}\label{modifnote_8php_c6965e9dbfc55b79644595c3ecebdc3b}
+
+
+\index{modifnote.php@{modifnote.php}!$oldTitle@{\$oldTitle}}
+\index{$oldTitle@{\$oldTitle}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$old\-Title = trim(\$\_\-POST['old\-Title'])}\label{modifnote_8php_f24e642da7aba37dd0030c9d9e85498b}
+
+
+\index{modifnote.php@{modifnote.php}!$timestamp@{\$timestamp}}
+\index{$timestamp@{\$timestamp}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$timestamp = trim(\$\_\-POST['timestamp'])}\label{modifnote_8php_2b69de9676dd97c675cd4d9bcceb684c}
+
+
+\index{modifnote.php@{modifnote.php}!$xmlplayer@{\$xmlplayer}}
+\index{$xmlplayer@{\$xmlplayer}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\$xmlplayer = new {\bf Xml\-Player\-Interface}()}\label{modifnote_8php_84a5cd74f81647949339a8f179d5d7b1}
+
+
+\index{modifnote.php@{modifnote.php}!is@{is}}
+\index{is@{is}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}content or creation timestamp$<$/p$>$$<$formaction=\char`\"{}modifnote.php\char`\"{}method=\char`\"{}post\char`\"{}$>$$<$divalign='center'$>$$<$?php\$pl\-Name=\$\_\-GET['player\-Name'];if(empty(\$pl\-Name))\{echo'$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}name\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}name\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$ px note\-Title$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}old\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$ player\-Name note\-Title$<$TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20$>$$<$/TEXTAREA$>$$<$TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20$>$ s$<$/TEXTAREA$>$$<$p$>$ the timestamp is}\label{modifnote_8php_f5671694013f1fb1974c2584554091c7}
+
+
+\index{modifnote.php@{modifnote.php}!Now@{Now}}
+\index{Now@{Now}!modifnote.php@{modifnote.php}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}content or creation timestamp$<$/p$>$$<$formaction=\char`\"{}modifnote.php\char`\"{}method=\char`\"{}post\char`\"{}$>$$<$divalign='center'$>$$<$?php\$pl\-Name=\$\_\-GET['player\-Name'];if(empty(\$pl\-Name))\{echo'$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}name\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}name\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$ px note\-Title$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}text\char`\"{}name=\char`\"{}note\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$$<$td$>$$<$inputtype=\char`\"{}hidden\char`\"{}name=\char`\"{}old\-Title\char`\"{}value=\char`\"{}\%s\char`\"{}/$>$$<$/td$>$ player\-Name note\-Title$<$TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20$>$$<$/TEXTAREA$>$$<$TEXTAREANAME=\char`\"{}note\-Content\char`\"{}COLS=80ROWS=20$>$ s$<$/TEXTAREA$>$$<$p$>$ Now}\label{modifnote_8php_6c139a3a380c29c953facd4183e5991b}
+
+

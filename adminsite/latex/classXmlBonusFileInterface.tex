@@ -1,0 +1,289 @@
+\section{Xml\-Bonus\-File\-Interface Class Reference}
+\label{classXmlBonusFileInterface}\index{XmlBonusFileInterface@{XmlBonusFileInterface}}
+Inheritance diagram for Xml\-Bonus\-File\-Interface::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classXmlBonusFileInterface}
+\end{center}
+\end{figure}
+
+
+\subsection{Detailed Description}
+A class used to manage the content of a Bonus\-File
+
+A Bonus\-File contains several Choices. Each choice has a name and a description. A choice contains a list of Attribute\-Modifier that is a pair of Attribute/Modifier.
+
+\begin{Desc}
+\item[See also:]\doxyref{Xml\-Bonus\-File\-List\-Interface}{p.}{classXmlBonusFileListInterface} \end{Desc}
+
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Xml\-Bonus\-File\-Interface} (\$filename)
+\item 
+{\bf get\-All\-Choices} ()
+\item 
+{\bf get\-Choice\-Name} (\$choice\-Node)
+\item 
+{\bf get\-Choice\-Desc} (\$choice\-Node)
+\item 
+{\bf get\-Attributes\-Modifiers\-Root} (\$choice\-Node)
+\item 
+{\bf get\-Attributes\-Modifiers\-List} (\$choice\-Node)
+\item 
+{\bf get\-Modifier\-Attrb} (\$mod\-Node)
+\item 
+{\bf get\-Modifier\-Mod} (\$mod\-Node)
+\item 
+{\bf get\-Choice\-By\-Name} (\$choice)
+\item 
+{\bf get\-Mod\-By\-Name} (\$choice\-Node, \$mod)
+\item 
+{\bf delete\-Mod} (\$choice\-Node, \$mod\-Node)
+\item 
+{\bf add\-Mod} (\$choice\-Node, \$attrb, \$val)
+\item 
+{\bf is\-Mod\-Exists} (\$choice\-Node, \$attrb)
+\item 
+{\bf modif\-Mod} (\$choice\-Node, \$old\-Attrb, \$new\-Attrb, \$val)
+\item 
+{\bf add\-Choice} (\$choice\-Name, \$choice\-Desc)
+\item 
+{\bf delete\-Choice} (\$choice\-Name)
+\item 
+{\bf modif\-Choice} (\$old\-Choice\-Name, \$new\-Name, \$new\-Desc)
+\end{CompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!XmlBonusFileInterface@{XmlBonusFileInterface}}
+\index{XmlBonusFileInterface@{XmlBonusFileInterface}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::Xml\-Bonus\-File\-Interface (\$ {\em filename})}\label{classXmlBonusFileInterface_771d685eded15d6eb8adb8ba4de69292}
+
+
+Creates a \doxyref{Xml\-Bonus\-File\-List\-Interface}{p.}{classXmlBonusFileListInterface} object
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$filename}]The filename of the Bonus\-File \end{description}
+\end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getAllChoices@{getAllChoices}}
+\index{getAllChoices@{getAllChoices}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-All\-Choices ()}\label{classXmlBonusFileInterface_8546b8f2b52463217bb4ef448565e57b}
+
+
+Return an array of Choice xml nodes
+
+\begin{Desc}
+\item[Returns:]A list of Choice XML node \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getChoiceName@{getChoiceName}}
+\index{getChoiceName@{getChoiceName}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Choice\-Name (\$ {\em choice\-Node})}\label{classXmlBonusFileInterface_a1f84540c3048cd95de04f9a28d152e6}
+
+
+Get the name of a choice
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The name of the given choice \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getChoiceDesc@{getChoiceDesc}}
+\index{getChoiceDesc@{getChoiceDesc}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Choice\-Desc (\$ {\em choice\-Node})}\label{classXmlBonusFileInterface_0e9c9331c92ecb583b805aeed31d6ec9}
+
+
+Get the description of a choice
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The description of the given choice \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getAttributesModifiersRoot@{getAttributesModifiersRoot}}
+\index{getAttributesModifiersRoot@{getAttributesModifiersRoot}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Attributes\-Modifiers\-Root (\$ {\em choice\-Node})}\label{classXmlBonusFileInterface_ad3aad7b61953425a8fa2894fb38abdc}
+
+
+Get the XML element that is the root of the list of Attributes\-Modifier
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The Attributes\-Modifiers XML element (root of the list of Attributes\-Modifier) \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getAttributesModifiersList@{getAttributesModifiersList}}
+\index{getAttributesModifiersList@{getAttributesModifiersList}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Attributes\-Modifiers\-List (\$ {\em choice\-Node})}\label{classXmlBonusFileInterface_aa98a3a6a2cbbafdec2b21cd38b7fdac}
+
+
+Get a list of Attributes\-Modifiers from a choice XML node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A list of Attributes\-Modifiers nodes \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getModifierAttrb@{getModifierAttrb}}
+\index{getModifierAttrb@{getModifierAttrb}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Modifier\-Attrb (\$ {\em mod\-Node})}\label{classXmlBonusFileInterface_d6729260f623066f9ced6fd709fdc82f}
+
+
+Get the Attribute field of a Attributes\-Modifier node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$mod\-Node}]An Attributes\-Modifier XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The text of the Attrb field \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getModifierMod@{getModifierMod}}
+\index{getModifierMod@{getModifierMod}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Modifier\-Mod (\$ {\em mod\-Node})}\label{classXmlBonusFileInterface_6a17fd70a6d640c2381345d61ba28529}
+
+
+Get the Modifier field of a Attributes\-Modifier node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$mod\-Node}]An Attributes\-Modifier XML node\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The text of the Mod field \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getChoiceByName@{getChoiceByName}}
+\index{getChoiceByName@{getChoiceByName}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Choice\-By\-Name (\$ {\em choice})}\label{classXmlBonusFileInterface_d6bdc1735fab35175b49b79900f5a2f4}
+
+
+Get a Choice node by its name
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice}]The name of the choice you want\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The Choice XML node \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!getModByName@{getModByName}}
+\index{getModByName@{getModByName}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::get\-Mod\-By\-Name (\$ {\em choice\-Node}, \$ {\em mod})}\label{classXmlBonusFileInterface_e5fa7043c512db4faf53e42465081e95}
+
+
+Get a modifer by its name
+
+A choice contains a list of Attribute\-Modifier. As an Attribute\-Modifier contains a name and a modifier, this function return an Attribute\-Modifier by its name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node \item[{\em \$mod}]The name of the attribute to modify\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The Attribute\-Modifier XML node or {\tt null} if not found \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!deleteMod@{deleteMod}}
+\index{deleteMod@{deleteMod}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::delete\-Mod (\$ {\em choice\-Node}, \$ {\em mod\-Node})}\label{classXmlBonusFileInterface_6bc65ac1ae99ad6bd8417036bc777c24}
+
+
+Delete a modifier node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node \item[{\em \$mod\-Node}]The Attribute\-Modifier XML node to delete\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if successfull or {\tt false} if the operation is failed \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!addMod@{addMod}}
+\index{addMod@{addMod}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::add\-Mod (\$ {\em choice\-Node}, \$ {\em attrb}, \$ {\em val})}\label{classXmlBonusFileInterface_33fe0e3b43734d42a94faf489623a45f}
+
+
+Adds an Attribute\-Modifier
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node \item[{\em \$attrb}]The name of the attribute to modify \item[{\em \$val}]The value of the modifier (eg. +2, -4...) \end{description}
+\end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!isModExists@{isModExists}}
+\index{isModExists@{isModExists}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::is\-Mod\-Exists (\$ {\em choice\-Node}, \$ {\em attrb})}\label{classXmlBonusFileInterface_7a81c5433bed159da8f8b7fc71cf9bad}
+
+
+Is this Attribute\-Modifier already exist
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node \item[{\em \$attrb}]The Attribute\-Modifier name to test\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if this Attribute\-Modifier exists otherwise {\tt false} \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!modifMod@{modifMod}}
+\index{modifMod@{modifMod}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::modif\-Mod (\$ {\em choice\-Node}, \$ {\em old\-Attrb}, \$ {\em new\-Attrb}, \$ {\em val})}\label{classXmlBonusFileInterface_6997830bd12635d31dce5bce264cab4a}
+
+
+Modify an Attribute\-Modifier
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Node}]A Choice XML node \item[{\em \$old\-Attrb}]The Mod name you want to modify \item[{\em \$new\-Attrb}]The new Mod name \item[{\em \$val}]The new value\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\tt true} if successfull or {\tt false} if the operation is failed \end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!addChoice@{addChoice}}
+\index{addChoice@{addChoice}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::add\-Choice (\$ {\em choice\-Name}, \$ {\em choice\-Desc})}\label{classXmlBonusFileInterface_1dbe382897c4a60535a2f3e54d6d703c}
+
+
+Add a choice in the Bonus\-File
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Name}]The name of the new choice \item[{\em \$choice\-Desc}]The description of the new choice \end{description}
+\end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!deleteChoice@{deleteChoice}}
+\index{deleteChoice@{deleteChoice}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::delete\-Choice (\$ {\em choice\-Name})}\label{classXmlBonusFileInterface_dcf8c9b6415280316374fa8b13fce018}
+
+
+Delete a choice in the Bonus\-File
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$choice\-Name}]The name of the choice to remove \end{description}
+\end{Desc}
+\index{XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}!modifChoice@{modifChoice}}
+\index{modifChoice@{modifChoice}!XmlBonusFileInterface@{Xml\-Bonus\-File\-Interface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Bonus\-File\-Interface::modif\-Choice (\$ {\em old\-Choice\-Name}, \$ {\em new\-Name}, \$ {\em new\-Desc})}\label{classXmlBonusFileInterface_d0b610acb5e8bd315ebc74f232edba64}
+
+
+Modify a choice
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$old\-Choice\-Name}]The name of the choice to modify \item[{\em \$new\-Name}]The new name of the choice \item[{\em \$new\-Desc}]The new description \end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+xmlbonusfileinterface.php\end{CompactItemize}
