@@ -410,7 +410,8 @@ configdialog.o configdialog.o: configdialog.cpp ../common/logger.h \
   /usr/include/qt4/QtGui/qfontdatabase.h \
   /usr/include/qt4/QtGui/qtoolbar.h /usr/include/qt4/QtGui/qtoolbox.h \
   /usr/include/qt4/QtGui/qtabwidget.h /usr/include/qt4/QtGui/qsplitter.h \
-  /usr/include/qt4/QtGui/qdial.h serverconfiguration.h
+  /usr/include/qt4/QtGui/qdial.h serverconfiguration.h \
+  /usr/include/qt4/QtGui/QTabWidget
 
 ../common/logger.h:
 
@@ -1507,3 +1508,5 @@ configdialog.h:
 /usr/include/qt4/QtGui/qdial.h:
 
 serverconfiguration.h:
+
+/usr/include/qt4/QtGui/QTabWidget:

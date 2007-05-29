@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 29 may 2007 : Adding the 'ftp' column
+ *
+ */
+
 #ifndef XIDENT_ADD_SERVER_H
 #define XIDENT_ADD_SERVER_H
 
@@ -66,7 +71,6 @@ namespace RainbruRPG{
 	ID_LAST
       };
 
-
     private:
       /** Required or Undefined references */
       AddServer(){};
@@ -82,8 +86,10 @@ namespace RainbruRPG{
       FXTextField* tfServerName;
       /** The widget containing the server IP adress */
       FXTextField* tfServerIp;
-      /** The widget containing the server port */
+      /** The widget containing the server UDP port */
       FXTextField* tfServerPort;
+      /** The widget containing the server FTP port */
+      FXTextField* tfServerFtp;
       /** The widget containing the server maximum allowed client */
       FXTextField* tfServerCli;
       /** The widget containing the server description */

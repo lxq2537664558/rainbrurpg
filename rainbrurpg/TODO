@@ -4,8 +4,6 @@ export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
      
-o [mouse] ************** Admin site modified ****************
-
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -18,12 +16,8 @@ Writing a simple unittest framework in programmation/php/unittest$
 - Why TestCase is not added to the TestSuite
 - A TestResult interface
 
-* Server FTP port in meta-server
-- and dialog (addServer and edit)
-- Modify ServerConfiguration
-- Add a tabcontrol in Server configuration dialog
-- Some Server configuration dialog tabs (Identification/Network/Tech
-   note)
+o [mouse] Server FTP port in meta-server
+- Save and restore correctly ServerConfiguration (xmlServerConf)
 
 * Editor identification
    The identification is done by GPG keys
@@ -145,6 +139,11 @@ Writing a simple unittest framework in programmation/php/unittest$
 * *******************************************************
 
 * v 0.0.4-138
+- Modify ServerConfiguration
+- Add a tabcontrol in Server configuration dialog (ConfigDialog)
+- Some Server configuration dialog tabs (Identification/Network/Tech
+   note)
+- and dialog (addServer and edit)
 - Modify xIdent table (foxserverlist)
 - Modify xmlServerList
 - Add progr/php to the ./backup_prog script

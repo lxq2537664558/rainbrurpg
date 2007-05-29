@@ -56,8 +56,10 @@ RainbruRPG::Gui::AddServer::AddServer(FXApp *a)
   tfServerName=new FXTextField(frInfo, 20 );
   FXLabel* labServerIp     =new FXLabel(frInfo, "IP adress");
   tfServerIp  =new FXTextField(frInfo, 20 );
-  FXLabel* labServerPort   =new FXLabel(frInfo, "Listening port");
+  FXLabel* labServerPort   =new FXLabel(frInfo, "UDP port");
   tfServerPort=new FXTextField(frInfo, 20 );
+  FXLabel* labServerFtpPort   =new FXLabel(frInfo, "FTP port");
+  tfServerFtp=new FXTextField(frInfo, 20 );
   FXLabel* labServerCli    =new FXLabel(frInfo, "Maximum allowed clients");
   tfServerCli =new FXTextField(frInfo, 20 );
 
@@ -208,6 +210,7 @@ void RainbruRPG::Gui::AddServer::addServer(){
   std::string name(tfServerName->getText().text());
   std::string ip  (tfServerIp->getText().text());
   std::string port(tfServerPort->getText().text());
+  std::string ftp (tfServerFtp->getText().text());
   std::string cli (tfServerCli->getText().text());
   std::string desc(txtDesc->getText().text());
   std::string tech(txtTech->getText().text());
@@ -237,6 +240,7 @@ void RainbruRPG::Gui::AddServer::addServer(){
   csa.setName(name);
   csa.setIpAddress(ip);
   csa.setPort(port);
+  csa.setFtpPort(ftp);
   csa.setMaxClients(cli);
   csa.setDescription( desc);
   csa.setTechNote( tech);

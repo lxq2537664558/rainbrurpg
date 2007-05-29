@@ -21,9 +21,11 @@
  */
 
 /* Modifications :
+ * - 29 may 2007 : Adding the FTP control channel port
  * - 14 apr 2007 : Adding database connection options
  *
  */
+
 #ifndef SERVER_CONFIGURATION_H
 #define SERVER_CONFIGURATION_H
 
@@ -32,15 +34,34 @@
 namespace RainbruRPG{
   namespace Server{
 
-    /** The data needed for the configuration of the server
+    /** A class that represents the datas needed for the configuration 
+      * of the server
+      *
+      * \section serverconf_mode Client's Modes
       *
       * The server can accept only several types of connection. The 
       * playMode status is used by the players. The editMode is the mode
       * used to connect the editor and the floodMode is used by the 
       * netflooder.
       *
-      * The ConfigDialog is the GUI for modifying the values of
+      * \section serverconf_ports Listening ports
+      *
+      * A server uses several ports. A single UDP channel is used for 
+      * player actions. Two TCP ports are used for FTP transfers. The
+      * ftpPort field is the listening port for the control channel. The
+      * data channel is always \c ftpPort-1.
+      *
+      * \section serverconf_gui Configuration dialog
+      *
+      * ConfigDialog is the GUI for modifying the values of
       * an instance of this class.
+      *
+      * \section Save and restore
+      *
+      * The class used to save and restore the content of this class is
+      * xmlServerConf.
+      *
+      * \sa xmlServerList, CurlAddServer
       *
       */
     class ServerConfiguration{
@@ -77,6 +98,9 @@ namespace RainbruRPG{
       const std::string& getUserName()const;
       const std::string& getPassword()const;
 
+      void setFtpPort(int);
+      int getFtpPort() const;
+
     private:
       /** The name of the server */
       std::string name;
@@ -94,8 +118,10 @@ namespace RainbruRPG{
 
       /** The ip adress */
       std::string ipAdress;
-      /** The server's port  */
+      /** The server's UDP port  */
       int port;
+      /** The server's FTP control channel port  */
+      int ftpPort;
       /** The maximum number of clients allowed in this server */
       int maxClient;
 

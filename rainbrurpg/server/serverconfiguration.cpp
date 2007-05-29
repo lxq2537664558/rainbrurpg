@@ -34,6 +34,7 @@ RainbruRPG::Server::ServerConfiguration::ServerConfiguration(){
   editMode=false;
   floodMode=false;
   port=1234;
+  ftpPort=1236;
   maxClient=20;
 }
 
@@ -283,4 +284,26 @@ const std::string& RainbruRPG::Server::ServerConfiguration::
 getPassword()const{
   return dbPassword;
 
+}
+
+/** Change the FTP control channel port
+  *
+  * \param i The new port
+  *
+  * \sa ftpPort
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::setFtpPort(int i){
+  this->ftpPort=i;
+}
+
+/** Get the FTP control channel port
+  *
+  * \return The current listened port
+  *
+  * \sa ftpPort
+  *
+  */
+int RainbruRPG::Server::ServerConfiguration::getFtpPort() const{
+  return this->ftpPort;
 }

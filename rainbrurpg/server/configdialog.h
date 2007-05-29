@@ -20,6 +20,10 @@
  *
  */
 
+/* Modifications :
+ * - 29 may 2007 : Creation TabControl
+ *
+ */
 #ifndef CONFIG_DIALOG_H
 #define CONFIG_DIALOG_H
 
@@ -66,6 +70,8 @@ namespace RainbruRPG{
       QCheckBox* cbFlood;
       /** The server's port spin box*/
       QSpinBox* sbPort;
+      /** The server's FTP control channel port spin box*/
+      QSpinBox* sbFtpPort;
       /** The maximum client spin box*/
       QSpinBox* sbCli;
       /** Is there a text in technote */
@@ -89,6 +95,7 @@ namespace RainbruRPG{
       void editModeChanged(int);
       void floodModeChanged(int);
       void portChanged(int);
+      void ftpPortChanged(int);
       void maxClientChanged(int);
       void ipAddressChanged(const QString&);
 

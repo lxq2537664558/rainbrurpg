@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 30 may 2007 : Adding the FTP control channel port
+ *
+ */
+
 #ifndef XML_SERVER_CONFIGURATION_H
 #define XML_SERVER_CONFIGURATION_H
 
