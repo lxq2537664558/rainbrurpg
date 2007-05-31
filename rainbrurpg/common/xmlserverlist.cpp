@@ -114,8 +114,8 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
     it->techNote= getXMLTextFromName(child, "TechNote");
     const char* mc=getXMLTextFromName(child, "MaxClients");
     const char* ac=getXMLTextFromName(child, "ActClients");
-    it->maxClients=StringConv::getSingleton().ctoi(mc);
-    it->actClients=StringConv::getSingleton().ctoi(ac);
+    it->maxClients=StringConv::getSingleton().stoi(mc);
+    it->actClients=StringConv::getSingleton().stoi(ac);
 
     pl->push_back(it);
   }

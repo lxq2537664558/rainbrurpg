@@ -206,7 +206,7 @@ void RainbruRPG::Gui::WaitingPanel::runClient(){
 
 
   const char* ip=server->ipAdress;
-  int port=StringConv::getSingleton().ctoi(server->port);
+  int port=StringConv::getSingleton().stoi(server->port);
   prog->increment(1);
   LOGCATS("Running on server ");
   LOGCATS(ip);

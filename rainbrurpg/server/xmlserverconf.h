@@ -21,7 +21,7 @@
  */
 
 /* Modifications :
- * - 30 may 2007 : Adding the FTP control channel port
+ * - 31 may 2007 : Adding the FTP control channel port
  *
  */
 
@@ -65,13 +65,14 @@ namespace RainbruRPG{
       const char* getDbValue(const char*)const;
 
       int getPort();
+      int getFtpPort();
       int getMaxClient();
 
       void setServerName(const std::string&);
       void setDescription(const std::string&);
       void setTechNote(const std::string&);
       void setServerMode(bool, bool, bool);
-      void setServerOption(const std::string&, int, int );
+      void setServerOption(const std::string&, int, int, int );
 
       const std::string& getDbHostName()const;
       const std::string& getDbName()const;

@@ -360,6 +360,8 @@ bool RainbruRPG::Server::MainServerWindow::registerServer(){
   bool ret=true;
 
   std::string txtPort=StringConv::getSingleton().itos(serverConfig->getPort());
+  std::string txtFtp=StringConv::getSingleton()
+    .itos(serverConfig->getFtpPort());
   std::string txtMC=StringConv::getSingleton()
     .itos(serverConfig->getMaxClient());
 
@@ -367,6 +369,7 @@ bool RainbruRPG::Server::MainServerWindow::registerServer(){
   csa.setName(serverConfig->getName());
   csa.setIpAddress(serverConfig->getIpAdress());
   csa.setPort(txtPort);
+  csa.setFtpPort(txtFtp);
   csa.setMaxClients(txtMC);
   csa.setDescription(serverConfig->getDesc());
   csa.setTechNote(serverConfig->getTechNote());

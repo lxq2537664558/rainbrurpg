@@ -158,6 +158,7 @@ bool RainbruRPG::Server::xmlServerConf::load(ServerConfiguration* sc){
   sc->setEditMode(getEditMode());
   sc->setFloodMode(getFloodMode());
   sc->setPort(getPort());
+  sc->setFtpPort(getFtpPort());
   sc->setMaxClient(getMaxClient());
   sc->setIpAdress(getIpAdress());
   //database values
@@ -317,7 +318,7 @@ const char* RainbruRPG::Server::xmlServerConf::getOption(const char* opt){
   *
   */
 int RainbruRPG::Server::xmlServerConf::getPort(){
-  return StringConv::getSingleton().ctoi(getOption("port"));
+  return StringConv::getSingleton().stoi(getOption("port"));
 }
 
 /** Get the maxClient of the server from the xml file
@@ -326,7 +327,7 @@ int RainbruRPG::Server::xmlServerConf::getPort(){
   *
   */
 int RainbruRPG::Server::xmlServerConf::getMaxClient(){
-  return StringConv::getSingleton().ctoi(getOption("maxClient"));
+  return StringConv::getSingleton().stoi(getOption("maxClient"));
 }
 
 /** Save the ServerConfiguration in the TinyXml document
@@ -345,7 +346,8 @@ bool RainbruRPG::Server::xmlServerConf::save(ServerConfiguration* sc){
   setDescription(sc->getDesc());
   setTechNote(sc->getTechNote());
   setServerMode(sc->getPlayMode(), sc->getEditMode(), sc->getFloodMode());
-  setServerOption(sc->getIpAdress(), sc->getPort(), sc->getMaxClient());
+  setServerOption(sc->getIpAdress(), sc->getPort(), sc->getFtpPort(),
+		  sc->getMaxClient());
 
   // Database
   setDatabase(sc->getHostName(), sc->getDatabaseName(), 
@@ -438,18 +440,20 @@ setServerMode(bool play, bool edit, bool flood){
 
 /** Set the server options
   *
-  * \param ip The IP adress of the server
-  * \param port The port used by the server
+  * \param ip   The IP adress of the server
+  * \param port The UDP port used by the server
+  * \param ftp  The FTP control channel port used by the server
   * \param maxClients The maxClient option
   *
   */
 void RainbruRPG::Server::xmlServerConf::
-setServerOption(const std::string& ip, int port, int maxClients){
+setServerOption(const std::string& ip, int port, int ftp,int maxClients){
   TiXmlElement* childNode = root->FirstChild( "Options" )->ToElement();
   if (childNode){
     childNode->Clear();
     childNode->SetAttribute("ip", ip.c_str());
     childNode->SetAttribute("port", port);
+    childNode->SetAttribute("ftp", ftp);
     childNode->SetAttribute("maxClient", maxClients);
  }
 
@@ -545,4 +549,15 @@ setDatabase(const std::string& host,const std::string& dbName,
     childNode->SetAttribute("user", user.c_str());
     childNode->SetAttribute("pwd", pwd.c_str());
   }
+}
+
+/** Get the FTP control channel port
+  *
+  * \return The listening port for FTP control channel
+  *
+  */
+int RainbruRPG::Server::xmlServerConf::getFtpPort(){
+  std::string s;
+  s=getOption("ftp");
+  return StringConv::getSingleton().stoi(s);
 }

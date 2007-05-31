@@ -16,17 +16,15 @@ Writing a simple unittest framework in programmation/php/unittest$
 - Why TestCase is not added to the TestSuite
 - A TestResult interface
 
-o [mouse] Server FTP port in meta-server
-- Save and restore correctly ServerConfiguration (xmlServerConf)
-
 * Editor identification
    The identification is done by GPG keys
 - The server let manage a list of editors
-- The editor can contact a server to ask an aothorisazion
+- The editor can contact a server to ask an authorisazion
 - In the editor preferences we can choose a gpg key that will be use
    for all connexions
 
-* FTP client
+o [mouse] FTP client
+- Replace StringConv::ctoi by stoi
 - ftpclient::commandRETR implementation
 
 * FTP Server
@@ -139,6 +137,8 @@ o [mouse] Server FTP port in meta-server
 * *******************************************************
 
 * v 0.0.4-138
+- Ftp port correctly added to the administration site
+- Save and restore correctly ServerConfiguration (xmlServerConf)
 - Modify ServerConfiguration
 - Add a tabcontrol in Server configuration dialog (ConfigDialog)
 - Some Server configuration dialog tabs (Identification/Network/Tech

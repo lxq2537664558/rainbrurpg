@@ -112,7 +112,7 @@ int RainbruRPG::Options::OptionIntRangeAttribute::getMaxRange(){
   * \return always \c true
   */
 bool RainbruRPG::Options::OptionIntRangeAttribute::setValueStr(const char* c){
-  int i=StringConv::getSingleton().ctoi(c);
+  int i=StringConv::getSingleton().stoi(c);
 
   if (i>=minRange && i<=maxRange){
     this->value=i;

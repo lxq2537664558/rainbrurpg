@@ -43,7 +43,7 @@ RainbruRPG::Options::OptionIntAttribute::OptionIntAttribute(const char* n)
   * \return always return \c true
   */
 bool RainbruRPG::Options::OptionIntAttribute::setValueStr(const char* c){
-  this->value =StringConv::getSingleton().ctoi(c);
+  this->value =StringConv::getSingleton().stoi(c);
   return true;
 }
 

@@ -67,20 +67,32 @@ const char* RainbruRPG::Core::StringConv::itoc(int i){
 
 /** Converts a string into an integer
   *
+  * If the string is NULL (length==0), this function returns 0.
+  *
+  * \param s The string to convert
+  *
+  * \return The result in integer
   *
   */
-int RainbruRPG::Core::StringConv::ctoi(const char* c){
+int RainbruRPG::Core::StringConv::stoi(const std::string& s){
   int i;
 
-  istringstream iss;
-  iss.str(c);
-  iss >>i;
-  return i;
-
+  if (s.length()==0){
+    return 0;
+  }
+  else{
+    istringstream iss;
+    iss.str(s);
+    iss >>i;
+    return i;
+  }
 }
 
 /** Converts a float into an std::string
   *
+  * \param f The float to convert
+  *
+  * \return A string that contains the float
   *
   */
 std::string RainbruRPG::Core::StringConv::ftos(float f){
@@ -91,6 +103,9 @@ std::string RainbruRPG::Core::StringConv::ftos(float f){
 
 /** Converts a float into an const char*
   *
+  * \param f The float to convert
+  *
+  * \return A string that contains the float
   *
   */
 const char* RainbruRPG::Core::StringConv::ftoc(float f){

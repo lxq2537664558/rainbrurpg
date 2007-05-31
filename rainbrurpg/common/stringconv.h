@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- *
+ * - 31 may 2007 : Fix a bug in ctoi when receiving NULL string
+ *                 stoi replace ctoi
  * - 09 mar 2007 : Add the xmlStripNewLine and xmlToNewLine functions
  * - 01 nov 2006 : Starting implementation (I'm not sure)
  */
@@ -72,7 +73,7 @@ namespace RainbruRPG {
       std::string btos(bool);
       const char* btoc(bool);
 
-      int ctoi(const char*);
+      int stoi(const std::string&);
       bool ctob(const char*);
       float ctof(const char*);
 
