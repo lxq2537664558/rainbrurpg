@@ -11,8 +11,9 @@ stor /home/mouse/essaiTransfer.tgz
    curlservermodifclients.h   
    curlsubmitform.h
 
-* Unittest of admin site
-Writing a simple unittest framework in programmation/php/unittest$
+o [mouse] Unittest of admin site
+Writing a simple unittest framework in programmation/adminsite/unittest$
+http://127.0.0.1/rpg/admin/unittest/test.php
 - Why TestCase is not added to the TestSuite
 - A TestResult interface
 
@@ -23,7 +24,7 @@ Writing a simple unittest framework in programmation/php/unittest$
 - In the editor preferences we can choose a gpg key that will be use
    for all connexions
 
-o [mouse] FTP client
+* FTP client
 - Replace StringConv::ctoi by stoi
 - ftpclient::commandRETR implementation
 
@@ -136,13 +137,18 @@ o [mouse] FTP client
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-139
+- Add rpgConcepts to the backup_prog script
+- An Implementation section in rpgConcepts
+- A french latex article called rpgConcepts in prog/latex
+- Adminsite now in prog/adminsite (CVS checkout)
+
 * v 0.0.4-138
 - Ftp port correctly added to the administration site
 - Save and restore correctly ServerConfiguration (xmlServerConf)
 - Modify ServerConfiguration
 - Add a tabcontrol in Server configuration dialog (ConfigDialog)
-- Some Server configuration dialog tabs (Identification/Network/Tech
-   note)
+- Some Server configuration dialog tabs (Identification/Network/Tech note)
 - and dialog (addServer and edit)
 - Modify xIdent table (foxserverlist)
 - Modify xmlServerList
