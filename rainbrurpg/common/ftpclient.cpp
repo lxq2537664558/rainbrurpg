@@ -296,7 +296,6 @@ std::string RainbruRPG::Network::FtpClient::commandASCII(){
 std::string RainbruRPG::Network::FtpClient::
 commandSTOR(const std::string& filename){
 
-
   // Is this file exist ?
   if (!boost::filesystem::exists(filename)){
     LOGW("File does not exist");
@@ -326,6 +325,22 @@ commandSTOR(const std::string& filename){
 std::string RainbruRPG::Network::FtpClient::
 commandRETR(const std::string& filename){
 
+  // Is this file exist ?
+  if (boost::filesystem::exists(filename)){
+    LOGW("File already exist");
+  }
+
+  // Setting the filename
+  transferFilename=filename;
+
+  // Creates a new thread and execute STOR command in
+  boost::function0<void> RETR_ThreadedFunction;
+  RETR_ThreadedFunction=boost::bind
+    (boost::mem_fn(&RainbruRPG::Network::FtpClient::RETR_ThreadedFunction),
+     this);
+  boost::thread aThread(RETR_ThreadedFunction);
+
+  return returnValue;
 }
 
 /** The STOR threaded function
@@ -449,3 +464,102 @@ bool RainbruRPG::Network::FtpClient::closeDataChannel(){
   gnet_tcp_socket_delete(dataSock);
 }
 
+/** The RETR threaded function
+  *
+  * This function is executed in a separated thread.
+  *
+  */
+void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
+  LOGI("In the thread");
+  LOGCATS("Val in threaded function hostIp=");
+  LOGCATS(hostIp.c_str());
+  LOGCATS(" filename='");
+  LOGCATS(transferFilename.c_str());
+  LOGCATS("'");
+  LOGCAT();
+
+  std::string filename=transferFilename;
+
+  // Creates the buffer used to write datas
+  char* buffer=(char*)malloc(1024*sizeof(char));
+  if (buffer==NULL){
+    LOGE("Cannot allocate buffer");
+    returnValue= "Cannot allocate buffer";
+  }
+
+  boost::filesystem::ofstream fs;
+  gsize bytesRead;
+
+  // The FTP control command
+  std::string s;
+  s="STOR ";
+
+  // We send only the filename
+  string::size_type pos = filename.rfind("/", filename.size());
+  if (pos == string::npos){
+    LOGI("The filename doesn't contain path");
+    s+=filename;
+  }
+  else{
+    LOGCATS("Position of the last slash : ");
+    LOGCATI(pos);
+    LOGCAT();
+    string::size_type len=filename.size()-pos;
+    std::string onlyFilename=filename.substr(pos+1, len);
+    LOGCATS("OnlyFilename='");
+    LOGCATS(onlyFilename.c_str());
+    LOGCATS("'");
+    LOGCAT();
+    s+=onlyFilename;
+  }
+
+  // Open the file according to the transfer type
+  if (transferType==FTT_BINARY){
+    fs.open( transferFilename, ios::out|ios::binary);
+  }
+  else{
+    fs.open( transferFilename, ios::out);
+  }
+
+  // If the file is correctly opened
+  if (fs.is_open()){
+    s+="\r\n";
+    sendString(s);
+    s+=waitControlResponse();
+
+    // send file size
+    int i=boost::filesystem::file_size(transferFilename);
+
+    // Get the filesize
+    s+=waitControlResponse();
+
+    if (openDataChannel()){
+
+      // Sending file
+      while (! fs.eof() ){
+	// Read the incoming network packet
+	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
+	GIOError err=gnet_io_channel_readn (ioChannel, buffer, 1024, 
+					     &bytesRead);
+
+	// Store the received bytes in a file
+	fs.write(buffer, bytesRead );
+
+	// Emit signal
+	sigBytesWritten.emit((int)bytesRead);
+      }
+      LOGI("Returned from thread");
+      fs.close();
+    }
+    closeDataChannel();
+    sigTransferTerminated.emit();
+  }
+  else{
+    LOGE("An error occured during opening file");
+  }
+
+  // Memory deallocation
+  if (buffer!=NULL){
+    free(buffer);
+  }
+}

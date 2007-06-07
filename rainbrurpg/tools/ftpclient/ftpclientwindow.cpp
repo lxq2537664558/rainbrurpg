@@ -290,6 +290,25 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
       string s=ftpClient->commandSTOR(fn);
       logMessage(s.c_str());
     }
+    else if (str.contains("RETR")!=0){
+      // because str is in UPPER case
+      // I get the no-upper string
+      int pos = str.find("RETR", 0);
+      filename.erase( pos, 5 );
+
+      LOGCATS("Filename :");
+      LOGCATS(filename.text());
+      LOGCAT();
+
+      std::string fn(filename.text());
+
+      // Change transfer information
+      labTransName->setText(filename);
+      labTransOrie->setText("In");
+
+      string s=ftpClient->commandRETR(fn);
+      logMessage(s.c_str());
+    }
     else{
       logMessage("Unknown command");
 

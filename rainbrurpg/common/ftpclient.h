@@ -104,6 +104,7 @@ namespace RainbruRPG {
       tVoidSignal sigTransferTerminated;
 
       void STOR_ThreadedFunction();
+      void RETR_ThreadedFunction();
 
     private:
       void sendString(const std::string&);

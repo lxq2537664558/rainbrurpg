@@ -3,7 +3,8 @@ TODO
 export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
-     
+retr /home/mouse/servertest/neededLibs.tar.gz    
+
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -26,8 +27,7 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - In the editor preferences we can choose a gpg key that will be use
    for all connexions
 
-o [mouse] FTP client
-- UnitTest segfault 
+* UnitTest segfault 
 #0  0xb6810507 in free () from /lib/i686/cmov/libc.so.6
 #1  0xb69d1c01 in operator delete () from /usr/lib/libstdc++.so.6
 #2  0xb7e359a8 in CppUnit::Test::~Test () from /usr/lib/libcppunit-1.12.so.0
@@ -43,7 +43,12 @@ o [mouse] FTP client
    from /usr/lib/libcppunit-1.12.so.0
 #8  0x080506e1 in main () at main.cpp:57
 
-- ftpclient::commandRETR implementation
+
+o [mouse] ftpclient::commandRETR implementation
+- replace server's "200 waiting FSIZE command" by a message that give the
+   file size. (ftpcontrol.cpp:20)
+
+* FTP client
 - SHA1 hash sum computation
 
 * FTP Server
@@ -156,6 +161,9 @@ o [mouse] FTP client
 * *******************************************************
 
 * v 0.0.4-140
+- in common/ftpclient : std::string commandRETR
+     (const std::string& filename)
+- common/ftpclient : STOR_ThreadedFunction implementation
 
 * v 0.0.4-139
 - Showing in ftpclient that the transfer is ended
