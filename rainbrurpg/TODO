@@ -11,10 +11,12 @@ stor /home/mouse/essaiTransfer.tgz
    curlservermodifclients.h   
    curlsubmitform.h
 
-o [mouse] Unittest of admin site
+* Unittest of admin site
 Writing a simple unittest framework in programmation/adminsite/unittest$
 http://127.0.0.1/rpg/admin/unittest/test.php
 - Why TestCase is not added to the TestSuite
+   __TestSuite::__AddTestCase($tCase) failed to add a TestCase
+
 - A TestResult interface
 
 * Editor identification
@@ -24,9 +26,25 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - In the editor preferences we can choose a gpg key that will be use
    for all connexions
 
-* FTP client
-- Replace StringConv::ctoi by stoi
+o [mouse] FTP client
+- UnitTest segfault 
+#0  0xb6810507 in free () from /lib/i686/cmov/libc.so.6
+#1  0xb69d1c01 in operator delete () from /usr/lib/libstdc++.so.6
+#2  0xb7e359a8 in CppUnit::Test::~Test () from /usr/lib/libcppunit-1.12.so.0
+#3  0xb7e4227a in CppUnit::TestSuite::deleteContents ()
+   from /usr/lib/libcppunit-1.12.so.0
+#4  0xb7e42410 in CppUnit::TestSuite::~TestSuite ()
+   from /usr/lib/libcppunit-1.12.so.0
+#5  0xb7e41dbd in CppUnit::TestRunner::WrappingSuite::~WrappingSuite ()
+   from /usr/lib/libcppunit-1.12.so.0
+#6  0xb7e4173f in CppUnit::TestRunner::~TestRunner ()
+   from /usr/lib/libcppunit-1.12.so.0
+#7  0xb7e4514d in CppUnit::TextTestRunner::~TextTestRunner ()
+   from /usr/lib/libcppunit-1.12.so.0
+#8  0x080506e1 in main () at main.cpp:57
+
 - ftpclient::commandRETR implementation
+- SHA1 hash sum computation
 
 * FTP Server
 - A bug in percent computation
@@ -137,7 +155,16 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-140
+
 * v 0.0.4-139
+- Showing in ftpclient that the transfer is ended
+- common/ftpClient::transferTerminated signal
+- Server is PASSIVE by default
+  The server definition is in ftptransfer.cpp
+- PASV is deactivated
+- Replace StringConv::ctoi by stoi
+- adminsite/Makefile added
 - Add rpgConcepts to the backup_prog script
 - An Implementation section in rpgConcepts
 - A french latex article called rpgConcepts in prog/latex

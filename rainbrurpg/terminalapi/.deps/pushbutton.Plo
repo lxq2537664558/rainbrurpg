@@ -1,11 +1,12 @@
 pushbutton.lo .libs/pushbutton.o: pushbutton.cpp pushbutton.h \
   /usr/include/slang.h /usr/include/stdio.h /usr/include/features.h \
-  /usr/include/sys/cdefs.h /usr/include/gnu/stubs.h \
+  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
-  /usr/include/bits/types.h /usr/include/bits/wordsize.h \
-  /usr/include/bits/typesizes.h /usr/include/libio.h \
-  /usr/include/_G_config.h /usr/include/wchar.h /usr/include/bits/wchar.h \
-  /usr/include/gconv.h /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
+  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/include/bits/wchar.h /usr/include/gconv.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h \
@@ -36,10 +37,10 @@ pushbutton.lo .libs/pushbutton.o: pushbutton.cpp pushbutton.h \
   /usr/include/pthread.h /usr/include/sched.h /usr/include/time.h \
   /usr/include/bits/sched.h /usr/include/bits/time.h \
   /usr/include/signal.h /usr/include/bits/sigset.h \
-  /usr/include/bits/pthreadtypes.h /usr/include/bits/initspin.h \
-  /usr/include/bits/sigthread.h /usr/include/unistd.h \
-  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
-  /usr/include/bits/confname.h ../getopt.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/bits/setjmp.h \
+  /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+  /usr/include/bits/environments.h /usr/include/bits/confname.h \
+  ../getopt.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cctype \
   /usr/include/ctype.h /usr/include/endian.h /usr/include/bits/endian.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stringfwd.h \
@@ -116,7 +117,7 @@ pushbutton.lo .libs/pushbutton.o: pushbutton.cpp pushbutton.h \
   /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
   /usr/include/asm/sigcontext.h /usr/include/asm-i486/sigcontext.h \
   /usr/include/linux/compiler.h /usr/include/bits/sigstack.h \
-  /usr/include/sys/ucontext.h \
+  /usr/include/sys/ucontext.h /usr/include/bits/sigthread.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/list \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_list.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/list.tcc \
@@ -459,13 +460,15 @@ pushbutton.h:
 
 /usr/include/sys/cdefs.h:
 
+/usr/include/bits/wordsize.h:
+
 /usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
 
 /usr/include/bits/types.h:
-
-/usr/include/bits/wordsize.h:
 
 /usr/include/bits/typesizes.h:
 
@@ -567,9 +570,7 @@ pushbutton.h:
 
 /usr/include/bits/pthreadtypes.h:
 
-/usr/include/bits/initspin.h:
-
-/usr/include/bits/sigthread.h:
+/usr/include/bits/setjmp.h:
 
 /usr/include/unistd.h:
 
@@ -762,6 +763,8 @@ terminalapp.h:
 /usr/include/bits/sigstack.h:
 
 /usr/include/sys/ucontext.h:
+
+/usr/include/bits/sigthread.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/list:
 

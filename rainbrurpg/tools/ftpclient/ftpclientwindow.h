@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- *
+ * - 07 jun 2007 : A transferTerminated slot
+ * - 25 apr 2007 : Starting implementation
  * - 25 apr 2007 : Starting implementation
  */ 
 #ifndef NET_FLOODER_WINDOW_H
@@ -86,6 +87,7 @@ namespace RainbruRPG{
       long onUpdateTransfer(FXObject* ,FXSelector,void*);
 
       void slotBytesWritten(int);
+      void slotTransferTerminated();
 
     private:
       void logMessage(FXString);
@@ -131,12 +133,16 @@ namespace RainbruRPG{
       /** The total of already downloaded bytes */
       int downloadedBytes;
 
-      /** The label that contain the the transfered filename */
+      /** The label that contain the transfered filename */
       FXLabel* labTransName;
-      /** The label that contain the the transfer orientation */
+      /** The label that contain the transfer orientation */
       FXLabel* labTransOrie;
-      /** The label that contain the the transfered file size */
+      /** The label that contain the transfered file size */
       FXLabel* labTransSize;
+
+      /** Set it to true to reset transfer visual */
+      bool resetTransfer;
+
     }; 
   }
 }

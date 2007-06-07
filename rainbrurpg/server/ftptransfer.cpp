@@ -33,7 +33,7 @@ RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port)
   :QThread() {
   LOGI("FtpTransfer created");
   nextCommand=FTC_NONE;
-  transferMode=FTM_ACTIVE;
+  transferMode=FTM_PASSIVE;
   transferType=FTT_ASCII;
 
   this->port=port;
@@ -359,7 +359,7 @@ waitForPassiveConnection(QTcpSocket* sock){
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::commandPASV(){
-  if (transferMode==FTM_PASSIVE){
+  /*  if (transferMode==FTM_PASSIVE){
     transferMode=FTM_ACTIVE;
   }
   else{
@@ -376,6 +376,9 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandPASV(){
     emit(switchToActiveMode());
   }
   s+=" mode";
+  */
+  emit(switchToPassiveMode());
+  QString s("PASV command deactivated");
   emit(log(s));
 }
 

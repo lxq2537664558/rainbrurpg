@@ -54,9 +54,13 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   ftpClient=new FtpClient();
 
   ftpClient->sigBytesWritten.connect( sigc::mem_fun(this, 
-	     &RainbruRPG::Gui::FtpClientWindow::slotBytesWritten) );
+	     &RainbruRPG::Gui::FtpClientWindow::slotBytesWritten));
+
+  ftpClient->sigTransferTerminated.connect( sigc::mem_fun(this,
+	     &RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated));
 
   downloadedBytes=0;
+  resetTransfer=false;
 
   FXint opt= BUTTON_NORMAL|LAYOUT_FIX_WIDTH;
 
@@ -102,7 +106,8 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   FXLabel* labTrFn=new FXLabel(transMatrix, "Filename");
   FXLabel* labTrIo=new FXLabel(transMatrix, "In/Out");
   FXLabel* labTrFs=new FXLabel(transMatrix, "Filesize");
-  FXLabel* labTrPr=new FXLabel(transMatrix, "Progression", NULL,LAYOUT_FILL_X );
+  FXLabel* labTrPr=new FXLabel(transMatrix, "Progression", 
+			       NULL,LAYOUT_FILL_X );
 
   // Sample
   labTransName=new FXLabel(transMatrix, "none");
@@ -572,6 +577,13 @@ long RainbruRPG::Gui::FtpClientWindow::
 onUpdateTransfer(FXObject* o,FXSelector s,void* v){
   labTrPb->setProgress(downloadedBytes);
   getApp()->addTimeout(this, ID_UPDT, UPDATE_INTERVAL, NULL);
+
+  if (resetTransfer){
+    resetTransfer=false;
+    labTransName->setText("none");
+    labTransOrie->setText("");
+    labTransSize->setText("");
+  }
   return 1;
 }
 
@@ -585,9 +597,7 @@ onUpdateTransfer(FXObject* o,FXSelector s,void* v){
 FXString RainbruRPG::Gui::FtpClientWindow::filesizeToString(int filesize){
 
   FXString s;
-
   float fs;
-
   int mo=1024*1024;
 
   if (filesize>mo){
@@ -606,5 +616,15 @@ FXString RainbruRPG::Gui::FtpClientWindow::filesizeToString(int filesize){
   }
 
   return s;
+}
 
+/** A slot connected to the FtpClient::sigTransferTerminated signal
+  *
+  * This slot will be called when the current transfer will be
+  * terminated. It should reset the transfer visual.
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated(){
+  downloadedBytes=0;
+  resetTransfer=true;;
 }

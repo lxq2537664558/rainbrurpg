@@ -415,9 +415,8 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
       LOGI("Returned from thread");
       fs.close();
     }
-    //    LOGI("Waiting for second control response");
-    //    s+=waitControlResponse();
     closeDataChannel();
+    sigTransferTerminated.emit();
   }
   else{
     LOGE("An error occured during opening file");

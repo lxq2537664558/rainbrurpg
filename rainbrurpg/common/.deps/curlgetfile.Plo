@@ -1,12 +1,13 @@
 curlgetfile.lo .libs/curlgetfile.o: curlgetfile.cpp curlgetfile.h \
   /usr/include/curl/curl.h /usr/include/curl/curlver.h \
   /usr/include/stdio.h /usr/include/features.h /usr/include/sys/cdefs.h \
-  /usr/include/gnu/stubs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-32.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
-  /usr/include/bits/types.h /usr/include/bits/wordsize.h \
-  /usr/include/bits/typesizes.h /usr/include/libio.h \
-  /usr/include/_G_config.h /usr/include/wchar.h /usr/include/bits/wchar.h \
-  /usr/include/gconv.h /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
+  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/include/bits/wchar.h /usr/include/gconv.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h \
@@ -18,14 +19,14 @@ curlgetfile.lo .libs/curlgetfile.o: curlgetfile.cpp curlgetfile.h \
   /usr/include/bits/endian.h /usr/include/sys/select.h \
   /usr/include/bits/select.h /usr/include/bits/sigset.h \
   /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
-  /usr/include/bits/pthreadtypes.h /usr/include/bits/sched.h \
-  /usr/include/xlocale.h /usr/include/curl/easy.h \
-  /usr/include/curl/multi.h /usr/include/sys/socket.h \
-  /usr/include/sys/uio.h /usr/include/bits/uio.h \
-  /usr/include/bits/socket.h /usr/include/bits/sockaddr.h \
-  /usr/include/asm/socket.h /usr/include/asm-i486/socket.h \
-  /usr/include/asm/sockios.h /usr/include/asm-i486/sockios.h \
-  /usr/include/sys/time.h /usr/include/curl/curl.h curlinterface.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/xlocale.h \
+  /usr/include/curl/easy.h /usr/include/curl/multi.h \
+  /usr/include/sys/socket.h /usr/include/sys/uio.h \
+  /usr/include/bits/uio.h /usr/include/bits/socket.h \
+  /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
+  /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
+  /usr/include/asm-i486/sockios.h /usr/include/sys/time.h \
+  /usr/include/curl/curl.h curlinterface.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/sstream \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/istream \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/ios \
@@ -45,11 +46,10 @@ curlgetfile.lo .libs/curlgetfile.o: curlgetfile.cpp curlgetfile.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/c++io.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/i486-linux-gnu/bits/gthr-default.h \
-  /usr/include/pthread.h /usr/include/sched.h /usr/include/signal.h \
-  /usr/include/bits/initspin.h /usr/include/bits/sigthread.h \
-  /usr/include/unistd.h /usr/include/bits/posix_opt.h \
-  /usr/include/bits/environments.h /usr/include/bits/confname.h \
-  ../getopt.h \
+  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
+  /usr/include/signal.h /usr/include/bits/setjmp.h /usr/include/unistd.h \
+  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+  /usr/include/bits/confname.h ../getopt.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/cctype \
   /usr/include/ctype.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stringfwd.h \
@@ -142,13 +142,15 @@ curlgetfile.h:
 
 /usr/include/sys/cdefs.h:
 
+/usr/include/bits/wordsize.h:
+
 /usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
 
 /usr/include/bits/types.h:
-
-/usr/include/bits/wordsize.h:
 
 /usr/include/bits/typesizes.h:
 
@@ -205,8 +207,6 @@ curlgetfile.h:
 /usr/include/sys/sysmacros.h:
 
 /usr/include/bits/pthreadtypes.h:
-
-/usr/include/bits/sched.h:
 
 /usr/include/xlocale.h:
 
@@ -286,11 +286,11 @@ curlinterface.h:
 
 /usr/include/sched.h:
 
+/usr/include/bits/sched.h:
+
 /usr/include/signal.h:
 
-/usr/include/bits/initspin.h:
-
-/usr/include/bits/sigthread.h:
+/usr/include/bits/setjmp.h:
 
 /usr/include/unistd.h:
 

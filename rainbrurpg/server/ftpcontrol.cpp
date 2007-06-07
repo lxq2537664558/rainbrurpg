@@ -209,7 +209,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 	  emit(log(l));
 	  emit(commandRETR(h1));
-	  //	  emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
+	  // emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
 	  //		 h1, false, 0));
 
 	}
@@ -322,14 +322,14 @@ void RainbruRPG::Network::Ftp::FtpControl::waitTransferFile(const QString& fn){
   *
   */
 void RainbruRPG::Network::Ftp::FtpControl::switchToActiveMode(){
-  socket1->write("227 Server now in Active mode.\r\n");
-
+  //  socket1->write("227 Server now in Active mode.\r\n");
+  socket1->write("227 PASV command deactivated.\r\n");
 }
 
 /** Send a message to the client telling the server is in passive mode
   *
   */
 void RainbruRPG::Network::Ftp::FtpControl::switchToPassiveMode(){
-  socket1->write("227 Server now in Passive mode.\r\n");
-
+  //  socket1->write("227 Server now in Passive mode.\r\n");
+  socket1->write("227 PASV command deactivated.\r\n");
 }

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 07 jun 2007 : A transferTerminated signal
  * - 21 may 2007 : Multi-thread implementation started
  * - 27 apr 2007 : Starting implementation
  *
@@ -61,6 +62,8 @@ namespace RainbruRPG {
     public:
       /** Defines a signal returning void with an integer parameter */
       typedef sigc::signal<void, int> tVoidIntSignal;
+      /** Defines a signal returning void with none arguments */
+      typedef sigc::signal<void> tVoidSignal;
 
       FtpClient();
       ~FtpClient();
@@ -95,6 +98,11 @@ namespace RainbruRPG {
 	*/
       tVoidIntSignal sigBytesWritten;
 
+      /** A signal emitted when transfer is terminated
+        *
+	*/
+      tVoidSignal sigTransferTerminated;
+
       void STOR_ThreadedFunction();
 
     private:
@@ -121,6 +129,7 @@ namespace RainbruRPG {
 
       /** The value returned in a thread */
       std::string returnValue;
+
     };
   }
 }
