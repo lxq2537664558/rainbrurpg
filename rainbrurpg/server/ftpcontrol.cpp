@@ -24,7 +24,7 @@
 #include "ftpcontrol.h"
 
 #include <QStringList>
-
+#include <QFileInfo>
 
 /** The constructor
   *
@@ -207,10 +207,26 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  QString l("Requesting file ");
 	  l+=h1;
 
-	  emit(log(l));
-	  emit(commandRETR(h1));
-	  // emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
-	  //		 h1, false, 0));
+	  QFileInfo fi(h1);
+	  if (!fi.exists()){
+	    LOGW("RETR file does not exist");
+	  }
+	  else{
+	    int filesize=fi.size();
+	  
+	    QString s("FSIZE ");
+	    QString s2;
+	    s2.setNum(filesize);
+	    s+=s2;
+	    s+="\r\n";
+	    tcpSocket->write(s.toLatin1());
+	    
+	    emit(log(l));
+	    emit(commandRETR(h1));
+	    emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
+				   h1, false, 0));
+
+	  }
 
 	}
 	else if (s.contains("STOR")){

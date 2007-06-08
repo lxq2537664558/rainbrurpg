@@ -492,9 +492,10 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
   // The FTP control command
   std::string s;
-  s="STOR ";
+  s="RETR ";
 
   // We send only the filename
+  std::string onlyFilename;
   string::size_type pos = filename.rfind("/", filename.size());
   if (pos == string::npos){
     LOGI("The filename doesn't contain path");
@@ -505,7 +506,7 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
     LOGCATI(pos);
     LOGCAT();
     string::size_type len=filename.size()-pos;
-    std::string onlyFilename=filename.substr(pos+1, len);
+    onlyFilename=filename.substr(pos+1, len);
     LOGCATS("OnlyFilename='");
     LOGCATS(onlyFilename.c_str());
     LOGCATS("'");
@@ -515,10 +516,10 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
   // Open the file according to the transfer type
   if (transferType==FTT_BINARY){
-    fs.open( transferFilename, ios::out|ios::binary);
+    fs.open( onlyFilename, ios::out|ios::binary);
   }
   else{
-    fs.open( transferFilename, ios::out);
+    fs.open( onlyFilename, ios::out);
   }
 
   // If the file is correctly opened

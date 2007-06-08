@@ -45,8 +45,7 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 
 
 o [mouse] ftpclient::commandRETR implementation
-- replace server's "200 waiting FSIZE command" by a message that give the
-   file size. (ftpcontrol.cpp:20)
+- Set the server and client gui to correct file size
 
 * FTP client
 - SHA1 hash sum computation
@@ -161,6 +160,8 @@ o [mouse] ftpclient::commandRETR implementation
 * *******************************************************
 
 * v 0.0.4-140
+- replace server's "200 waiting FSIZE command" by a message that give the
+   file size. (ftpcontrol.cpp:20)
 - in common/ftpclient : std::string commandRETR
      (const std::string& filename)
 - common/ftpclient : STOR_ThreadedFunction implementation
