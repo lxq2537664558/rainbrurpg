@@ -3,7 +3,7 @@ TODO
 export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
-retr /home/mouse/servertest/neededLibs.tar.gz    
+retr /home/mouse/servertest/neededLibs.tar.gz
 
 * Unittest implementation in common/
 - In this order
@@ -45,7 +45,11 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 
 
 o [mouse] ftpclient::commandRETR implementation
-- Set the server and client gui to correct file size
+- Makes the progressbar progress (server)
+- Makes the progressbar progress (client)
+- The server closes the data channel when the file is eof
+   Does the client a segfault ?
+- The client know the transfer is terminated (IOChannel==NULL ???)
 
 * FTP client
 - SHA1 hash sum computation
@@ -160,6 +164,8 @@ o [mouse] ftpclient::commandRETR implementation
 * *******************************************************
 
 * v 0.0.4-140
+- Draw the RETR file size (client)
+- Draw the RETR file size (server)
 - replace server's "200 waiting FSIZE command" by a message that give the
    file size. (ftpcontrol.cpp:20)
 - in common/ftpclient : std::string commandRETR
@@ -178,66 +184,3 @@ o [mouse] ftpclient::commandRETR implementation
 - An Implementation section in rpgConcepts
 - A french latex article called rpgConcepts in prog/latex
 - Adminsite now in prog/adminsite (CVS checkout)
-
-* v 0.0.4-138
-- Ftp port correctly added to the administration site
-- Save and restore correctly ServerConfiguration (xmlServerConf)
-- Modify ServerConfiguration
-- Add a tabcontrol in Server configuration dialog (ConfigDialog)
-- Some Server configuration dialog tabs (Identification/Network/Tech note)
-- and dialog (addServer and edit)
-- Modify xIdent table (foxserverlist)
-- Modify xmlServerList
-- Add progr/php to the ./backup_prog script
-- Adding php code source of admin site in sourceforge in the adminsite branch
-- Modify user manual for FTP port
-- Modify UnitTest for CurlServerAdd
-- Add a 'ftp' key to CurlServerAdd
-- TestSuite may contains some TestCase
-
-* v 0.0.4-137
-- Admin site doxygen documentation
-- FTP client close the connection when transfer is finish
-- Compare FtpDataConnection if state is IN_PROGRESS
-- Admin site now contains FTP port
-- Using Sha1 for admin site identification method
-- Open the server window in Maximize state
-- TransferVisual filesize is NULL                FIXED
-- Fix the TransferVisual percent infinite division bug
-- A TransferVisual::drawArrow() function
-- Correctly draw TransferVisual in all states
-- Server draw the transfer as terminated
-- TransferVisual has a drawInProgress(QPainter * painter, ...)
-- Implement a TransferVisual::state
-   TVS_PROGRESS, TVS_ERROR, TVS_FINISH
-- TransferVisual has a drawError(QPainter * painter,
-   const QColorGroup & cg, int column, int width, int align) function
-- FtpClient update file information when transfer is created
-   Filename, In/out, filesize
-- The FtpClient close the data channel when transfer is finished
-- UnitTests doxygen documentation
-- CurlServerDelete  Unittest implementation 
-- A pb with filesize : Server OK
-- An error seems to block transfer
-
-* v 0.0.4-136
-- Doxygen documentation
-- Updating the Progressbar of the transfer
-- a common/ftpclient::getFilesize(filename)
-- Showing transfer in tool-ftpclient (in a FXMattrix)
-- tool-ftpclient gui is blocked during transfer (FIXED using a thread)
-- ftpclient STOR code in the threaded function 
-- Trying to access class member in ftpclient threaded function       OK
-- common/ftpclient::STOR creates a thread
-- ./configure tests boost::thread
-- Trying to update tool-ftpclient in
-   FtpClientWindow::slotBytesWritten()      Doesn't work
-- Connect - common/ftpclient::bytesRead(int) signal to a slot
-   in  tool-ftpclient
-- common/ftpclient bytesRead(int) bytesWritten(int) signals
-- TransferVisual draw \filename FIXED
-- Fix the filename bug. The filename received by the server is troncated
-   \r\n was missing
-- Test CurlServerAdd::perform with curlserverdelete and virtualserver.h
-- CurlServerAdd UnitTest Tests initial values (should =="")
-

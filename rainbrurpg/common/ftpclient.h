@@ -103,6 +103,14 @@ namespace RainbruRPG {
 	*/
       tVoidSignal sigTransferTerminated;
 
+      /** A signal emitted when a FSIZE command is received
+        *
+	* An integer parameter represents the file's size. This function
+	* is used when a RETR command is requested.
+	*
+	*/
+      tVoidIntSignal sigFileSizeReceived;
+
       void STOR_ThreadedFunction();
       void RETR_ThreadedFunction();
 

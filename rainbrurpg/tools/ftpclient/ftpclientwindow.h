@@ -88,6 +88,7 @@ namespace RainbruRPG{
 
       void slotBytesWritten(int);
       void slotTransferTerminated();
+      void slotFileSizeReceived(int);
 
     private:
       void logMessage(FXString);

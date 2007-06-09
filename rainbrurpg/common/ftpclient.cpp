@@ -157,10 +157,18 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
   // To remove ^M at the end of the string
   if (s.size()>2){
     s=s.substr(0, s.size()-2);
-    LOGCATS("Text found : '");
-    LOGCATS(s.c_str());
-    LOGCATS("'");
-    LOGCAT();
+
+    if (s.substr(0,5)=="FSIZE"){
+      s.erase(0, 6);
+      int fs=StringConv::getSingleton().stoi(s);
+      sigFileSizeReceived.emit((int)fs);
+    }
+    else{
+      LOGCATS("Text found : '");
+      LOGCATS(s.c_str());
+      LOGCATS("'");
+      LOGCAT();
+    }
   }
   return s;
 }

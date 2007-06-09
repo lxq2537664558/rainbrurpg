@@ -59,6 +59,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   ftpClient->sigTransferTerminated.connect( sigc::mem_fun(this,
 	     &RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated));
 
+  ftpClient->sigFileSizeReceived.connect( sigc::mem_fun(this,
+	     &RainbruRPG::Gui::FtpClientWindow::slotFileSizeReceived));
+
   downloadedBytes=0;
   resetTransfer=false;
 
@@ -646,4 +649,13 @@ FXString RainbruRPG::Gui::FtpClientWindow::filesizeToString(int filesize){
 void RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated(){
   downloadedBytes=0;
   resetTransfer=true;;
+}
+
+/** A slot connected to the FtpClient::sigFileSizeReceived signal
+  *
+  * \param i The filesize in bytes.
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::slotFileSizeReceived(int i){
+  labTransSize->setText(filesizeToString(i));
 }

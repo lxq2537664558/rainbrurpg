@@ -222,10 +222,10 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	    tcpSocket->write(s.toLatin1());
 	    
 	    emit(log(l));
-	    emit(commandRETR(h1));
 	    emit(addTransferVisual(tcpSocket->peerAddress().toString(),pport, 
-				   h1, false, 0));
+				   h1, false, filesize));
 
+	    emit(commandRETR(h1));
 	  }
 
 	}
