@@ -508,6 +508,7 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
   if (pos == string::npos){
     LOGI("The filename doesn't contain path");
     s+=filename;
+    onlyFilename=filename;
   }
   else{
     LOGCATS("Position of the last slash : ");
@@ -524,10 +525,10 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
   // Open the file according to the transfer type
   if (transferType==FTT_BINARY){
-    fs.open( onlyFilename, ios::out|ios::binary);
+    fs.open( onlyFilename, ios::out|ios::binary );
   }
   else{
-    fs.open( onlyFilename, ios::out);
+    fs.open( onlyFilename, ios::out );
   }
 
   // If the file is correctly opened

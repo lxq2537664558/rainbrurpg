@@ -3,7 +3,7 @@ TODO
 export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
-retr /home/mouse/servertest/neededLibs.tar.gz
+retr neededLibs.tar.gz
 
 * Unittest implementation in common/
 - In this order
@@ -45,6 +45,9 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 
 
 o [mouse] ftpclient::commandRETR implementation
+- FtpServer::commandRETR read file and send packets
+   FtpDataConnection::commandRETR
+   Must be threaded or based on a signal
 - Makes the progressbar progress (server)
 - Makes the progressbar progress (client)
 - The server closes the data channel when the file is eof
@@ -55,9 +58,6 @@ o [mouse] ftpclient::commandRETR implementation
 - SHA1 hash sum computation
 
 * FTP Server
-- A bug in percent computation
-   Not the same in server and client (+3% for the ftp-client) at the
-   second download
 - Still a pb with filename of STOR command
 - Can we lock nextCommand, nextFilename when we waiting data channel
    connection ?
@@ -65,8 +65,6 @@ o [mouse] ftpclient::commandRETR implementation
   User list is taken from the AdminSite and store in ftpControl
 
 * GameServer
-- Modify AddServer etc... for the FTP port
-- Add the FTP control channel port in the ServerConfiguration
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
 - Update the client number in statusbar
@@ -77,7 +75,6 @@ o [mouse] ftpclient::commandRETR implementation
   base et de ses tables. Il s'agit pour l'instant de faire une bdd
   minimale qui acceptera la modification des positions et orientation
   des objets par connection au serveur.
-
 
 * Editeur
 - PosorDialog initialization with the ObjectPos values
@@ -132,14 +129,8 @@ o [mouse] ftpclient::commandRETR implementation
   Tous les TextFixture doivent être uniquement dans des .h car ce sont
   des templates. L'implementation des templates est interdite dans un
   fichier cpp.
-- documentation API
-  Se balader dans la documentation Doxygen et voir si certaines classe
-  ou fonction ne sont pas sous-documentees ou peu claires.
 - test Valgrind
   Pour eviter les fuites memoires et autres.
-- Modification et traduction du changelog
-  Il doit convenir au format du TODO (avec emacs-goodies-el) et
-  etre en Anglais
 - manual pages : RainbruRPG.6 RainbruRPG-editor.6 RainbruRPG-server.6
 - texinfo maunal : RainbruRPG.texinfo
 
@@ -164,6 +155,14 @@ o [mouse] ftpclient::commandRETR implementation
 * *******************************************************
 
 * v 0.0.4-140
+- A FtpServer warning
+  [ftptransfer.cpp:649] WW FtpDataConnection not found
+   nextFilename is not correctly set
+- FtpTransfer::commandRETR : The filename is not correct 
+   [ftptransfer.cpp:423] -- Opening file '/home/mouse/servertest' in 
+   /home/mouse/servertest
+- Doxygen documentation improvement
+- common/ftpclient : RETR bug fixed when file does not exit
 - Draw the RETR file size (client)
 - Draw the RETR file size (server)
 - replace server's "200 waiting FSIZE command" by a message that give the

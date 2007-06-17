@@ -21,9 +21,9 @@
  */
 
 /* Modifications :
+ * - 17 jun 2007 : Documentation improvement
  * - 06 apr 2007 : Implementation
  */
-
 #ifndef NETWORK_PACKET_FLOODER_0004_H
 #define NETWORK_PACKET_FLOODER_0004_H
 
@@ -32,19 +32,28 @@
 namespace RainbruRPG{
   namespace Network{
 
-    /** defines the data of a npFlooder0004 packet
+    /** Defines the data of a npFlooder0004 packet
       *
-      * The client type is defines in the NetworkClientType enumeration.
+      * This basic data structure has a lenght of 4 bytes. It is used as
+      * data for npFlooder0004. The \c netflooder uses this packet for test 
+      * purpose.
+      *
+      * The union can be used to set values (by the abstraction structure)
+      * and to get the packet to be sent (by the enet_uint8 array).
       *
       * \sa npFlooder0004
       *
       */
     typedef union npFlooder0004Data{
-      /** The data abstraction structure */
+      /** The data abstraction structure
+        *
+	* This is the only way to modify the data content.
+	*
+	*/
       struct {
 	/** The paket identifier
 	  *
-	  * A guint16 id 2 bytes length.
+	  * A guint16 is 2 bytes length.
 	  *
 	  * \sa tNetPacketIdentifier
 	  *
@@ -57,15 +66,19 @@ namespace RainbruRPG{
 	  */
 	guint16 responseId; 
       };
-      /** The data to be sent  over the network */
+      /** The data to be sent over the network */
       enet_uint8 data[4];
     };
 
     /** A basic netflooder packet with a lenght of 4 bytes
       *
-      * Its packet identifier is NPI_FLOOD_0004.
+      * The identifier of this packet is \c NPI_FLOOD_0004 (see 
+      * tNetPacketIdentifier for more informations). This packet is used 
+      * by the \c netflooder tool for test purpose only. The \c netflooder
+      * send several packets of this type and wait for response from the 
+      * server. We can compute the response time and make test.
       *
-      * \sa tNetPacketIdentifier
+      * \sa tNetPacketIdentifier, Gui::NetFlooderWindow
       *
       */
     class npFlooder0004 : public NetPacketFlooderBase {
@@ -78,7 +91,6 @@ namespace RainbruRPG{
       virtual enet_uint8* getData();
       virtual size_t getDataLength();
       virtual void setData(enet_uint8*, size_t);
-
 
     private:
       /** The npFlooder0004 packet data */

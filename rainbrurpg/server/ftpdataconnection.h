@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 17 jun 2007 : commandRETR implementation
  * - 14 may 2007 : Starting implementation
  */
 
@@ -35,6 +36,9 @@
 #include <logger.h>
 
 #include "transfervisual.h"
+
+/// The max size of a packet to send
+#define MAX_BUFFER_SIZE 1024
 
 namespace RainbruRPG{
   namespace Network{
@@ -64,6 +68,7 @@ namespace RainbruRPG{
 	void setPort(const QString&);
 
 	void commandSTOR(const QString&);
+	void commandRETR(const QString&);
 	void computeRate();
 
       private slots:

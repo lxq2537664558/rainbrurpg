@@ -411,19 +411,19 @@ commandRETR(const QString& filename){
   QString s("Sending file ");
   s+=filename;
   emit(log(s));
-
+  LOGI(s.toLatin1());
   nextCommand=FTC_RETR;
 
-  const char* aze=filename.toLatin1();
-  const char* aze2=QDir::currentPath().toLatin1();
+  QString fullFileName=QDir::currentPath();
+  fullFileName+="/";
+  fullFileName+=filename;
+  nextFilename=filename;
+
   LOGCATS("Opening file '");
-  LOGCATS(aze);
-  LOGCATS("' in ");
-  LOGCATS(aze2);
+  LOGCATS(fullFileName.toLatin1());
   LOGCAT();
 
-  QDir a(currentDirectory);
-  QFile f(a.filePath(filename));
+  QFile f(fullFileName);
   QIODevice::OpenMode om;
 
   // We are in Binary mode
@@ -641,15 +641,23 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
       if (nextCommand==FTC_STOR){
 	(*iter)->commandSTOR(nextFilename);
       }
-
+      else if (nextCommand==FTC_RETR){
+	(*iter)->commandRETR(nextFilename);
+      }
     }
   }
 
   // FtpDataConnection not found
   if (!found){
     LOGW("FtpDataConnection not found");
+    LOGCATS("Address : ");
+    LOGCATS(socket1->peerAddress().toString().toLatin1());
+    LOGCATS(" pport : ");
+    LOGCATS(pport.toLatin1());
+    LOGCATS(" nextFilename : ");
+    LOGCATS(nextFilename.toLatin1());
+    LOGCAT();
   }
-
 }
 
 /** Updates periodically the FtpDataConnection::computeRate() function

@@ -48,7 +48,9 @@ namespace RainbruRPG{
     /** The ftpClient main window
       *
       * It is a simple FTP client used to test the FTP client-side functions
-      * implementation. The \c PORT command is not implemented.
+      * implementation. The \c PORT command is not implemented and the \c 
+      * PASV one (which should switch between passive and active mode) is 
+      * deactivated.
       *
       * \sa FtpClient
       * 

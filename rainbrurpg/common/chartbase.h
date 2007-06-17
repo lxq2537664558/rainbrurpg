@@ -21,12 +21,11 @@
  */
 
 /* Modifications :
+ * - 17 jun 2007 : Documentation improvement
  * - 31 mar 2007 : Make changes in the axis xaption behavior
  * - 26 mar 2007 : Now in rpg/common
  * - 23 mar 2007 : Starting implementation
- *
  */
-
 #ifndef _CHART_BASE_H_
 #define _CHART_BASE_H_
 
@@ -45,6 +44,7 @@
 
 #include "chartserie.h"
 
+/// Defines PI
 #define PI 3.1415916
 
 using namespace std;
@@ -52,7 +52,14 @@ using namespace std;
 namespace RainbruRPG {
   namespace Core{
 
-    /** A list of tChartSerie */
+    /** A list of tChartSerie 
+      *
+      * This list is used by ChartBase to store the ChartSerie it should
+      * draw.
+      *
+      * \sa ChartBase
+      *
+      */
     typedef list<ChartSerie*> tChartSerieList;
 
     /** The superclass of all program-generated chart
@@ -152,7 +159,7 @@ namespace RainbruRPG {
       /** The total image height in pixels */
       int imageHeight;
 
-      /**    The border width
+      /** The border width
         *
 	* A margin that surround all elements.    
 	*

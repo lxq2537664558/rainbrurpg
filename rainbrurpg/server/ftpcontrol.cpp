@@ -210,6 +210,9 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  QFileInfo fi(h1);
 	  if (!fi.exists()){
 	    LOGW("RETR file does not exist");
+	    LOGCATS("Filename : ");
+	    LOGCATS(h1);
+	    LOGCAT();
 	  }
 	  else{
 	    int filesize=fi.size();

@@ -300,3 +300,49 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::disconnected(){
   transferVisual->disconnected();
 }
 
+/** Execute a RETR command
+  *
+  * \param fn The filename
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::
+commandRETR(const QString& fn){
+
+  this->filename=fn;
+  command=FTC_RETR;
+
+  // Do the file already exist ?
+  QDir a(currentDirectory);
+  if (!a.exists(filename)){
+    LOGW("The file does not exist");
+  }
+
+  currentFile=new QFile(a.filePath(filename));
+  QIODevice::OpenMode om;
+
+  // We are in Binary mode
+  if (transferType==FTT_BINARY){
+    om=QIODevice::ReadOnly;
+  }
+  // We are in ASCII mode
+  else if (transferType==FTT_ASCII){
+    om=QIODevice::ReadOnly|QIODevice::Text;
+  }
+
+  bool b=currentFile->open(om);
+
+  if (!b){
+    LOGW("Cannot open RETR file");
+  }
+  else{
+    while (!currentFile->atEnd()){
+      // Creates the buffer used to write datas
+      char* buffer=(char*)malloc(MAX_BUFFER_SIZE*sizeof(char));
+
+      qint64 bytesRead=currentFile->read(buffer, MAX_BUFFER_SIZE);
+      qint64 re=socket->write(buffer, bytesRead);
+      transferVisual->addBytes(bytesRead);
+      socket->waitForBytesWritten( 2 );
+    }
+  }
+}
