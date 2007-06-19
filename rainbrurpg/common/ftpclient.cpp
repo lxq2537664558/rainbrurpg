@@ -131,7 +131,8 @@ bool RainbruRPG::Network::FtpClient::openDataChannel(){
 
 /** Toggle the transfer mode between Active/Passive modes
   *
-  *
+  * Simply send a PASV command on the control channel to toggle the
+  * server's transfer mode.
   *
   */
 void RainbruRPG::Network::FtpClient::toggleTransferMode(){
@@ -545,8 +546,10 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
     if (openDataChannel()){
 
+      GConn* connection=gnet_conn_new_socket(dataSock, NULL, NULL);
+
       // Sending file
-      while (! fs.eof() ){
+      while (gnet_conn_is_connected(connection)){
 	// Read the incoming network packet
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
 	GIOError err=gnet_io_channel_readn (ioChannel, buffer, 1024, 
@@ -558,6 +561,8 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 	// Emit signal
 	sigBytesWritten.emit((int)bytesRead);
       }
+
+      gnet_conn_delete(connection);
       LOGI("Returned from thread");
       fs.close();
     }

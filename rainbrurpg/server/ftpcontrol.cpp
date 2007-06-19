@@ -200,9 +200,10 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 	}
 	else if (s.contains("RETR")){
+	  read.replace(QString("\n"), QString(" "));
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
-	  h1.chop(2);
+	  //	  h1.chop(2);
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
@@ -233,6 +234,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 
 	}
 	else if (s.contains("STOR")){
+	  read.replace(QString("\n"), QString(" "));
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
 	  h1.chop(2);
@@ -280,10 +282,8 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  emit(commandSTOR(nextStoredFile));
 	}
 	else{
-	  //	std::string s20(s.toLatin1());
 	  cout << "New packet received (unknown command)"<< endl;
 	  cout << "  Packet lenght : " << ba << endl;
-	  //	cout << "  String lenght : " << s.size() << endl;
 	  cout << "  Contains : " << c << endl;
 	  tcpSocket->write("502 Command not implemented.\r\n");
 	  

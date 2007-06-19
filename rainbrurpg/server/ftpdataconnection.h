@@ -73,8 +73,8 @@ namespace RainbruRPG{
 
       private slots:
 	void readyRead();
-	void readyWrite();
 	void disconnected();
+	void bytesWritten(qint64);
 
       private:
 	/** The Transfer visual associated with this connection */
@@ -95,6 +95,7 @@ namespace RainbruRPG{
 	tTransferType transferType;
 	/** The current directory */
 	QString currentDirectory;
+	char* readBuffer;
       };
     }
   }

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 18 jun 2007 : Documentation improved
  * - 20 mar 2007 : starting implementation
  */
 
@@ -34,7 +35,12 @@ namespace RainbruRPG{
 
     /** The server answer to a client connection
       *
+      * This is the server's response sent to a client when it request
+      * a connection. The NCR_UNDEFINED should never happenenned in a
+      * normal way. It is only used in the constructor, to tell the
+      * response was never set by the user.
       *
+      * \sa npConnectionResponse, npConnectionResponseData
       *
       */
     typedef enum tServerConnectionResponse{
@@ -45,6 +51,12 @@ namespace RainbruRPG{
     };
 
     /** The data of the npConnectionResponse network packet
+      *
+      * This is the union defining the data send by a npConnectionResponse
+      * packet. The response is defined by the tServerConnectionResponse
+      * enumeration.
+      *
+      * \sa npConnectionResponse, tServerConnectionResponse
       *
       */
     typedef union npConnectionResponseData{
@@ -58,9 +70,10 @@ namespace RainbruRPG{
 	  *
 	  */
 	guint16 packetIdentifier;
-	/** The client type. 
+	/** The server's response sent to a client
 	  * 
-	  * \sa NetworkClientType
+	  * \sa tServerConnectionResponse, 
+	  *     npConnectionResponse::setResponse(tServerConnectionResponse)
 	  *
 	  */
 	guint16 response; 
@@ -71,6 +84,10 @@ namespace RainbruRPG{
 
     /** The connection response packet
       *
+      * A client is not automatically allowed. When it request a 
+      * connection, a client wait a response. The server send this
+      * packet as a connection response, setting the connection status
+      * with setResponse(tServerConnectionResponse).
       *
       * \sa npConnectionResponseData, tServerConnectionResponse
       *

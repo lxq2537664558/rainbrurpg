@@ -82,15 +82,6 @@ setCommand(tTransferCommand tc){
   command=tc;
 }
 
-/** The readyWrite slot
-  *
-  * It is connected to the readyWrite() signal of the socket.
-  *
-  */
-void RainbruRPG::Network::Ftp::FtpDataConnection::readyWrite(){
-
-}
-
 /** Change the filename
   *
   * \param s The new filename
@@ -180,6 +171,7 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::readyRead(){
 void RainbruRPG::Network::Ftp::FtpDataConnection::setSocket(QTcpSocket* s){
   this->socket=s;
   connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+
   connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
 }
 
@@ -297,7 +289,9 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::computeRate(){
   *
   */ 
 void RainbruRPG::Network::Ftp::FtpDataConnection::disconnected(){
-  transferVisual->disconnected();
+  if (transferVisual){
+    transferVisual->disconnected();
+  }
 }
 
 /** Execute a RETR command
@@ -335,14 +329,26 @@ commandRETR(const QString& fn){
     LOGW("Cannot open RETR file");
   }
   else{
-    while (!currentFile->atEnd()){
-      // Creates the buffer used to write datas
-      char* buffer=(char*)malloc(MAX_BUFFER_SIZE*sizeof(char));
+    // We write the first packet of data
+    // The following packets will be treated by bytesWritten
 
-      qint64 bytesRead=currentFile->read(buffer, MAX_BUFFER_SIZE);
-      qint64 re=socket->write(buffer, bytesRead);
-      transferVisual->addBytes(bytesRead);
-      socket->waitForBytesWritten( 2 );
-    }
+    // Creates the buffer used to write datas
+    readBuffer=(char*)malloc(MAX_BUFFER_SIZE*sizeof(char));
+
+    qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
+    qint64 re=socket->write(readBuffer, bytesRead);
+    connect(socket, SIGNAL(bytesWritten(qint64)), 
+	    this, SLOT(bytesWritten(qint64)));
+
   }
+}
+
+/** A slot connected to the bytesWritten signal of the socket
+  *
+  */
+void RainbruRPG::Network::Ftp::FtpDataConnection::bytesWritten(qint64 i){
+  transferVisual->addBytes(i);
+
+  qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
+  qint64 re=socket->write(readBuffer, bytesRead);
 }

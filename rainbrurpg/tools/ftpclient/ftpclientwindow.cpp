@@ -314,7 +314,6 @@ treatNewCommand(FXObject* o,FXSelector s,void* v){
     }
     else{
       logMessage("Unknown command");
-
     }
   }
 
@@ -658,4 +657,5 @@ void RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated(){
   */
 void RainbruRPG::Gui::FtpClientWindow::slotFileSizeReceived(int i){
   labTransSize->setText(filesizeToString(i));
+  labTrPb->setTotal(i);
 }

@@ -43,19 +43,9 @@ http://127.0.0.1/rpg/admin/unittest/test.php
    from /usr/lib/libcppunit-1.12.so.0
 #8  0x080506e1 in main () at main.cpp:57
 
-
-o [mouse] ftpclient::commandRETR implementation
-- FtpServer::commandRETR read file and send packets
-   FtpDataConnection::commandRETR
-   Must be threaded or based on a signal
-- Makes the progressbar progress (server)
-- Makes the progressbar progress (client)
-- The server closes the data channel when the file is eof
-   Does the client a segfault ?
-- The client know the transfer is terminated (IOChannel==NULL ???)
-
-* FTP client
-- SHA1 hash sum computation
+o [mouse] SHA1 hash sum computation
+- A command line program that uses common/hashfile 
+- A common/hashfile class that compute hashsum on a file
 
 * FTP Server
 - Still a pb with filename of STOR command
@@ -154,7 +144,18 @@ o [mouse] ftpclient::commandRETR implementation
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-141
+- The client know the transfer is terminated
+- The server closes the data channel when the file is eof
+   Does the client a segfault ?
+- Makes the progressbar progress (client)
+   FtpClient::RETR_ThreadedFunction
+
 * v 0.0.4-140
+- Makes the progressbar progress (server)
+- FtpServer::commandRETR read file and send packets
+   FtpDataConnection::commandRETR
+   Must be threaded or based on a signal (QIODevice::bytesWritten OK)
 - A FtpServer warning
   [ftptransfer.cpp:649] WW FtpDataConnection not found
    nextFilename is not correctly set
