@@ -340,6 +340,8 @@ commandRETR(const QString& fn){
     connect(socket, SIGNAL(bytesWritten(qint64)), 
 	    this, SLOT(bytesWritten(qint64)));
 
+  transferVisual->addBytes(bytesRead);
+
   }
 }
 
@@ -347,8 +349,13 @@ commandRETR(const QString& fn){
   *
   */
 void RainbruRPG::Network::Ftp::FtpDataConnection::bytesWritten(qint64 i){
-  transferVisual->addBytes(i);
 
   qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
   qint64 re=socket->write(readBuffer, bytesRead);
+
+  transferVisual->addBytes(bytesRead);
+
+  if (currentFile->atEnd()){
+    LOGW("File is EOF");
+  }
 }

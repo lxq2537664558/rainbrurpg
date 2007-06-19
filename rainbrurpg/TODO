@@ -4,6 +4,7 @@ export LD_LIBRARY_PATH=/usr/local/lib
 stor /home/mouse/neededLibs.tar.gz
 stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
+retr essaiTransfer.tgz
 
 * Unittest implementation in common/
 - In this order
@@ -43,16 +44,15 @@ http://127.0.0.1/rpg/admin/unittest/test.php
    from /usr/lib/libcppunit-1.12.so.0
 #8  0x080506e1 in main () at main.cpp:57
 
-o [mouse] SHA1 hash sum computation
+
+
+* SHA1 hash sum computation
 - A command line program that uses common/hashfile 
 - A common/hashfile class that compute hashsum on a file
 
-* FTP Server
+o [mouse] FTP Server
 - Still a pb with filename of STOR command
-- Can we lock nextCommand, nextFilename when we waiting data channel
-   connection ?
-- Implementation de USER <username>
-  User list is taken from the AdminSite and store in ftpControl
+- The RETR does not finish (it stop at 99.63%)
 
 * GameServer
 - The database must be connected even if the server is not started

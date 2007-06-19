@@ -203,7 +203,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  read.replace(QString("\n"), QString(" "));
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
-	  //	  h1.chop(2);
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
@@ -237,7 +236,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  read.replace(QString("\n"), QString(" "));
 	  QStringList list1 = read.split(" ", QString::SkipEmptyParts);
 	  QString h1=list1.at(1);
-	  h1.chop(2);
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
