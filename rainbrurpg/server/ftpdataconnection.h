@@ -97,6 +97,8 @@ namespace RainbruRPG{
 	QString currentDirectory;
 	/** The buffer used to read local files */
 	char* readBuffer;
+
+	qint64 debugBytes;
       };
     }
   }

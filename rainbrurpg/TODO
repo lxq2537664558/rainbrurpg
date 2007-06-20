@@ -50,8 +50,10 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- The RETR does not finish (it stop at 99.63%)
-   ftpdataconnection.cpp
+- Using GloblURI for filename
+   $PATH/uploaded
+   $PATH/uploaded
+
 
 * GameServer
 - The database must be connected even if the server is not started
@@ -144,6 +146,8 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-141
+- The RETR does not finish (it stop at 99.63%)
+   It is OK in BINARY mode
 - Still a pb with filename of STOR command    FIXED
 - The client know the transfer is terminated
 - The server closes the data channel when the file is eof

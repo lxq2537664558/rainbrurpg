@@ -333,12 +333,14 @@ commandRETR(const QString& fn){
     // The following packets will be treated in the bytesWritten slot
 
     // Creates the buffer used to write datas
+    debugBytes=0;
+
     readBuffer=(char*)malloc(MAX_BUFFER_SIZE*sizeof(char));
 
-    qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
-    qint64 re=socket->write(readBuffer, bytesRead);
     connect(socket, SIGNAL(bytesWritten(qint64)), 
 	    this, SLOT(bytesWritten(qint64)));
+    qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
+    qint64 re=socket->write(readBuffer, bytesRead);
 
   }
 }
@@ -352,16 +354,29 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::bytesWritten(qint64 i){
 
   transferVisual->addBytes(i);
 
+  debugBytes+=i;
+
   if (currentFile->bytesAvailable() < MAX_BUFFER_SIZE){
     QByteArray ba=currentFile->readAll();
     this->socket->write(ba);
   }
   else{
-    qint64 bytesRead=this->currentFile->read(readBuffer, MAX_BUFFER_SIZE);
-    qint64 re=this->socket->write(readBuffer, bytesRead);
+    //    qint64 bytesRead=this->currentFile->read(readBuffer, MAX_BUFFER_SIZE);
+    //    qint64 re=this->socket->write(readBuffer, bytesRead);
+    QByteArray ba=this->currentFile->read(MAX_BUFFER_SIZE);
+    this->socket->write(ba);
   }
 
   if (currentFile->atEnd()){
+    qint64 diff=this->currentFile->size()-debugBytes;
+    this->socket->flush();
     LOGW("File is EOF");
+    LOGCATS("Bytes written ");
+    LOGCATI(debugBytes);
+    LOGCATS(" size :");
+    LOGCATI(this->currentFile->size());
+    LOGCATS(" diff =");
+    LOGCATI(diff);
+    LOGCAT();
   }
 }
