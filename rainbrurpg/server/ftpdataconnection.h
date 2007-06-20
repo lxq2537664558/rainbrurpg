@@ -95,6 +95,7 @@ namespace RainbruRPG{
 	tTransferType transferType;
 	/** The current directory */
 	QString currentDirectory;
+	/** The buffer used to read local files */
 	char* readBuffer;
       };
     }

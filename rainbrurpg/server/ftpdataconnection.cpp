@@ -311,7 +311,7 @@ commandRETR(const QString& fn){
     LOGW("The file does not exist");
   }
 
-  currentFile=new QFile(a.filePath(filename));
+  this->currentFile=new QFile(a.filePath(filename));
   QIODevice::OpenMode om;
 
   // We are in Binary mode
@@ -323,14 +323,14 @@ commandRETR(const QString& fn){
     om=QIODevice::ReadOnly|QIODevice::Text;
   }
 
-  bool b=currentFile->open(om);
+  bool b=this->currentFile->open(om);
 
   if (!b){
     LOGW("Cannot open RETR file");
   }
   else{
     // We write the first packet of data
-    // The following packets will be treated by bytesWritten
+    // The following packets will be treated in the bytesWritten slot
 
     // Creates the buffer used to write datas
     readBuffer=(char*)malloc(MAX_BUFFER_SIZE*sizeof(char));
@@ -340,20 +340,26 @@ commandRETR(const QString& fn){
     connect(socket, SIGNAL(bytesWritten(qint64)), 
 	    this, SLOT(bytesWritten(qint64)));
 
-  transferVisual->addBytes(bytesRead);
-
   }
 }
 
 /** A slot connected to the bytesWritten signal of the socket
   *
+  * \param i The number of bytes written to the data channel
+  *
   */
 void RainbruRPG::Network::Ftp::FtpDataConnection::bytesWritten(qint64 i){
 
-  qint64 bytesRead=currentFile->read(readBuffer, MAX_BUFFER_SIZE);
-  qint64 re=socket->write(readBuffer, bytesRead);
+  transferVisual->addBytes(i);
 
-  transferVisual->addBytes(bytesRead);
+  if (currentFile->bytesAvailable() < MAX_BUFFER_SIZE){
+    QByteArray ba=currentFile->readAll();
+    this->socket->write(ba);
+  }
+  else{
+    qint64 bytesRead=this->currentFile->read(readBuffer, MAX_BUFFER_SIZE);
+    qint64 re=this->socket->write(readBuffer, bytesRead);
+  }
 
   if (currentFile->atEnd()){
     LOGW("File is EOF");

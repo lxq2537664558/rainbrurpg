@@ -45,14 +45,13 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 #8  0x080506e1 in main () at main.cpp:57
 
 
-
 * SHA1 hash sum computation
 - A command line program that uses common/hashfile 
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- Still a pb with filename of STOR command
 - The RETR does not finish (it stop at 99.63%)
+   ftpdataconnection.cpp
 
 * GameServer
 - The database must be connected even if the server is not started
@@ -66,7 +65,7 @@ o [mouse] FTP Server
   minimale qui acceptera la modification des positions et orientation
   des objets par connection au serveur.
 
-* Editeur
+* Editor
 - PosorDialog initialization with the ObjectPos values
   PosorDialog::setPosName must know the ObjectMesh name
 - Nettoyer OgreView 
@@ -145,6 +144,7 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-141
+- Still a pb with filename of STOR command    FIXED
 - The client know the transfer is terminated
 - The server closes the data channel when the file is eof
    Does the client a segfault ?
