@@ -549,6 +549,7 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
       GConn* connection=gnet_conn_new_socket(dataSock, NULL, NULL);
 
       // Sending file
+      LOGI("Entering WHILE loop");
       while (gnet_conn_is_connected(connection)){
 	// Read the incoming network packet
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
@@ -561,13 +562,14 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 	// Emit signal
 	sigBytesWritten.emit((int)bytesRead);
       }
+      LOGI("Exitting WHILE loop");
 
       gnet_conn_delete(connection);
       LOGI("Returned from thread");
       fs.close();
     }
-    closeDataChannel();
     sigTransferTerminated.emit();
+    LOGI("Transfer is terminated");
   }
   else{
     LOGE("An error occured during opening file");

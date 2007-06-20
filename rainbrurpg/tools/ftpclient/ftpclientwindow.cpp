@@ -126,7 +126,6 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
 				   STATUSBAR_WITH_DRAGCORNER);
 
   getApp()->addTimeout(this, ID_UPDT, UPDATE_INTERVAL, NULL);
-
 }
 
 /** The default destructor
@@ -158,7 +157,6 @@ RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
 void RainbruRPG::Gui::FtpClientWindow::create(){
    FXMainWindow::create();
    show(PLACEMENT_SCREEN);
-
 }
 
 /** The NotYetImplemented callback

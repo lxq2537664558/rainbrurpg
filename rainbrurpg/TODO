@@ -50,9 +50,11 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- Using GloblURI for filename
-   $PATH/uploaded
-   $PATH/uploaded
+- Client tells the transfer is finished
+   common/ftpclient.cpp:563
+- Using GlobalURI for filename
+   $HOME/uploaded
+   $HOME/uploaded
 
 
 * GameServer
@@ -146,6 +148,9 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-141
+- Server closes the transfer
+- Test the RETR transfer with a SHA hash sum program        OK
+- Test the STOR transfer with a SHA hash sum program        OK
 - The RETR does not finish (it stop at 99.63%)
    It is OK in BINARY mode
 - Still a pb with filename of STOR command    FIXED
