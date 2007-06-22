@@ -38,6 +38,8 @@ RainbruRPG::Network::FtpClient::FtpClient(){
   transferType=FTT_ASCII;
   transferFilename="";
   returnValue="";
+  nextFilesize=0;
+  totalBytesReceived=0;
 }
 
 /** The destructor
@@ -162,6 +164,7 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
     if (s.substr(0,5)=="FSIZE"){
       s.erase(0, 6);
       int fs=StringConv::getSingleton().stoi(s);
+      nextFilesize=fs;
       sigFileSizeReceived.emit((int)fs);
     }
     else{
@@ -538,9 +541,6 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
     sendString(s);
     s+=waitControlResponse();
 
-    // send file size
-    int i=boost::filesystem::file_size(transferFilename);
-
     // Get the filesize
     s+=waitControlResponse();
 
@@ -550,7 +550,8 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
       // Sending file
       LOGI("Entering WHILE loop");
-      while (gnet_conn_is_connected(connection)){
+      //      while (gnet_conn_is_connected(connection)==TRUE){
+      while (totalBytesReceived!=nextFilesize){
 	// Read the incoming network packet
 	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
 	GIOError err=gnet_io_channel_readn (ioChannel, buffer, 1024, 
@@ -558,10 +559,12 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 
 	// Store the received bytes in a file
 	fs.write(buffer, bytesRead );
+	totalBytesReceived+=bytesRead;
 
 	// Emit signal
 	sigBytesWritten.emit((int)bytesRead);
       }
+
       LOGI("Exitting WHILE loop");
 
       gnet_conn_delete(connection);

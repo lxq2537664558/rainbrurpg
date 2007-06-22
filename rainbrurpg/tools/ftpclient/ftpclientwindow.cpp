@@ -646,6 +646,7 @@ FXString RainbruRPG::Gui::FtpClientWindow::filesizeToString(int filesize){
 void RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated(){
   downloadedBytes=0;
   resetTransfer=true;;
+  logMessage("Transfer finished");
 }
 
 /** A slot connected to the FtpClient::sigFileSizeReceived signal

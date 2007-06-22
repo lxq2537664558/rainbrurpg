@@ -138,7 +138,10 @@ namespace RainbruRPG {
 
       /** The value returned in a thread */
       std::string returnValue;
-
+      /** The next filesize to get (RETR) */
+      int nextFilesize;
+      /** The total of received bytes */
+      int totalBytesReceived;
     };
   }
 }

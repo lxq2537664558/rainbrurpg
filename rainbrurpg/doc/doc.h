@@ -1,6 +1,11 @@
 // This header does not contain code
 // It is only documentation
 
+/* Modifications :
+ * - 21 jun 2007 : 
+ *
+ */
+
 /*
  *  Copyright 2006 Jerome PASQUIER
  * 
@@ -48,13 +53,26 @@
   * The project also uses Tinyxml as build-in c++ sources. So
   * you don't need to deal with it.
   *
-  * \subsection signals_slots_sec Signals/Slots mechanism
+  * \section signals_slots_sec Signals/Slots mechanism
   *
   * Some part of this projet use sigc++ for signal/slot mechanism. See
   * http://libsigc.sourceforge.net/libsigc2/docs/manual/html/index.html
   * for further informations.
   *
   * In Qt based applications, I use the Qt signal/slot implementation.
+  *
+  * \section FTP_sec FTP datafiles
+  *
+  * This section tells where to find datafiles. The FTP server will copy
+  * datafiles at this place :
+  *
+  * - From the editor to the server : The editor can send a file
+  *   from everywhere in your local filesystem. The server will
+  *   store the file in the \e uploaded directory.
+  *
+  * - From the server to a client : The server send files from the 
+  *   \e uploaded directory and the client retrieves it to a directory
+  *   called \e downloaded/serverName.
   *
   */
 

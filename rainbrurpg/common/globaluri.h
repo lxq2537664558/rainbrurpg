@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 21 jun 2007 : FTP related function added
+ *
+ */
+
 #ifndef GLOBAL_URI_H
 #define GLOBAL_URI_H
 
@@ -41,6 +46,8 @@ namespace RainbruRPG{
     /** A class to get the uri of a page, according to the website adress or
       * to get a directory
       *
+      * \section Web_sec Website related functions
+      *
       * If the macro WEBSITE_DEBUG is defined, we use a local website
       * (127.0.0.1), otherwise, we use the production website
       * (rainbru.free.fr). 
@@ -50,6 +57,8 @@ namespace RainbruRPG{
       * getXmlAdress(const char*) to get the adress of a xml files (used 
       * by CurlGetFileToXml).
       *
+      * \section Local_sec Local filesystem related functions
+      *
       * This class is also used to get a local file. getShareFile(std::string)
       * give the absolute name of a file in $PREFIX/share (i.e. 
       * /usr/local/share by default) and getUserDirFile(std::string) give
@@ -58,6 +67,7 @@ namespace RainbruRPG{
       * GlobalURI makes sure some files are in the $HOME/.RainbruRPG/ by 
       * copying it from $PREFIX/share/conf/ if it does not exists. All
       * this stuff is made by the homeSetup() method.
+      *
       *
       */
     class GlobalURI{
@@ -71,11 +81,15 @@ namespace RainbruRPG{
       std::string getUserDirFile(std::string) const;
       std::string getShareFile(std::string) const;
 
+      std::string getUploadFile(std::string) const;
+      std::string getDownloadFile(std::string) const;
+
+
     private:
       void installConfigFile(const std::string&);
       void homeSetup();
 
-      /** Tha base of a administration web site adress */
+      /** Tha base of a administration web site address */
       std::string adminSite;
       /** Where are the most xml files */
       std::string xmlSite;

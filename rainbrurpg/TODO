@@ -50,8 +50,6 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- Client tells the transfer is finished
-   common/ftpclient.cpp:563
 - Using GlobalURI for filename
    $HOME/uploaded
    $HOME/uploaded
@@ -148,6 +146,9 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-141
+- Searching how to get MAC address in a different project
+- Client tells the transfer is finished
+   common/ftpclient.cpp:563
 - Server closes the transfer
 - Test the RETR transfer with a SHA hash sum program        OK
 - Test the STOR transfer with a SHA hash sum program        OK
