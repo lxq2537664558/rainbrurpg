@@ -40,7 +40,7 @@ namespace RainbruRPG{
 
     /** The level of a server log
       *
-      * 
+      * This type is used with the ServerLog::addMessage() function.
       *
       */
     typedef enum {

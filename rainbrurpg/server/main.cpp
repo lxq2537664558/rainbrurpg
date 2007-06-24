@@ -25,6 +25,7 @@
 #include <logger.h>
 
 #include "mainwindow.h"
+#include "uniquename.h"
 
 using namespace RainbruRPG::Server;
 
@@ -48,5 +49,8 @@ int main(int argc, char *argv[]){
   LOGI("Mainwin::show() ended");
 
   LOGI("Entering Qt main loop");
+
+  std::string s=UniqueName::getUniqueName();
+
   return app.exec();
 }
