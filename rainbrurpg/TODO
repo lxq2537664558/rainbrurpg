@@ -50,6 +50,7 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
+- UniqueName implementation
 - Using GlobalURI for filename
    $HOME/uploaded
    $HOME/uploaded
