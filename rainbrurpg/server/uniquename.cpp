@@ -24,14 +24,43 @@
 
 #include <logger.h>
 
+/** Get the unique name of this server
+  *
+  * \return A std::string that contains the name or \c "" if not found
+  *
+  */
 std::string RainbruRPG::Server::UniqueName::getUniqueName(void){
-  getMacAddress();
+  std::string svr="svr";
+  std::string mac=getMacAddress("eth0");
+  svr+=mac;
+
+  if (mac==""){
+    LOGE("Cannot found mac address for eth0");
+    return "";
+  }
+  else{
+    LOGCATS("Server's unique name is ");
+    LOGCATS(svr.c_str());
+    LOGCAT();
+    return svr;
+  }
 }
 
-std::string RainbruRPG::Server::UniqueName::getMacAddress(void){
+/** Get the MAC address of a given network interface
+  *
+  * \param itName The network interface you want the MAC address for
+  *
+  * \return A std::string that contains the MAC address or \c "" if not found
+  *
+  */
+std::string RainbruRPG::Server::UniqueName::
+getMacAddress(const std::string& itName){
+
   int descSock;
   struct sockaddr_in *sa;
   struct ifreq devea;
+  char macBuffer[12];
+  bool found=false;
 
   LOGI("Searching eth0 network interface");
   struct if_nameindex *nameindex = if_nameindex();
@@ -45,39 +74,48 @@ std::string RainbruRPG::Server::UniqueName::getMacAddress(void){
     if(nameindex[i].if_name == NULL) break;
     // Copying card name in the devea structure
     strcpy(devea.ifr_name, nameindex[i++].if_name);
-    //Affichage de celui-ci
-    printf("%s\n", devea.ifr_name);
-    //on ouvre un socket pour chacune des cartes que l'on closera après
+    // We open a socket for each card
     descSock = socket(AF_INET, SOCK_DGRAM, 0);
     if (descSock < 0){
       perror("socket ");
-      //On relache le pointeur dynamiquement alloue par if_nameindex
+      // We can free() the pointer allocated by if_nameindex
       if_freenameindex(nameindex);
-      //      return errno;
     }
     
-    //Récupération de la MAC adresse
-    printf("\tMAC\t:\t");
-    if (ioctl(descSock,SIOCGIFHWADDR, &devea) < 0)
-      printf("ERROR\n");
-    else{
-      //Affichage de la mac adresse
-      printf("%2.2X%2.2X%2.2X%2.2X%2.2X%2.2X\n\n",
-	     (devea.ifr_hwaddr.sa_data[0]&0xFF),
-	     (devea.ifr_hwaddr.sa_data[1]&0xFF),
-	     (devea.ifr_hwaddr.sa_data[2]&0xFF),
-	     (devea.ifr_hwaddr.sa_data[3]&0xFF),
-	     (devea.ifr_hwaddr.sa_data[4]&0xFF),
-	     (devea.ifr_hwaddr.sa_data[5]&0xFF));
+    if (strcmp(devea.ifr_name, itName.c_str())==0){
+      // We get the MAC address
+      if (ioctl(descSock,SIOCGIFHWADDR, &devea) < 0){
+	LOGE("Cannot get the MAC address");
+      }
+      else{
+	// Wa set the MAC address in a buffer
+	sprintf(macBuffer, "%2.2X%2.2X%2.2X%2.2X%2.2X%2.2X",
+		(devea.ifr_hwaddr.sa_data[0]&0xFF),
+		(devea.ifr_hwaddr.sa_data[1]&0xFF),
+		(devea.ifr_hwaddr.sa_data[2]&0xFF),
+		(devea.ifr_hwaddr.sa_data[3]&0xFF),
+		(devea.ifr_hwaddr.sa_data[4]&0xFF),
+		(devea.ifr_hwaddr.sa_data[5]&0xFF));
+	found=true;
+      }
+      
+      // Close the socket
+      close(descSock);
     }
-    
-    //Ferme le socket pour passer au prochain
-    close(descSock);
   }
-  if(i == 0)//petit affichage pour le fun :D
-    printf("Aucune carte disponible !!!\n");
-  
+  if(i == 0){
+    LOGW("No network interface was found");
+  }
+
   //Relache le pointeur dynamiquement alloue par if_nameindex
   if_freenameindex(nameindex);
 
+  std::string ret(macBuffer);
+
+  if (found){	
+    return ret;
+  }
+  else{
+    return "";
+  }
 }

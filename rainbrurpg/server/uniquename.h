@@ -58,7 +58,7 @@ namespace RainbruRPG{
       static std::string getUniqueName(void);
 
     private:
-      static std::string getMacAddress(void);
+      static std::string getMacAddress(const std::string&);
 
 
     };

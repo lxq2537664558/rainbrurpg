@@ -39,7 +39,14 @@ int main(int argc, char *argv[]){
   LOGI("Starting RainbruRPG editor");
   QApplication app(argc, argv);
 
-  MainServerWindow* mainWin = new MainServerWindow("RainbruRPG server");
+  std::string s;
+  s="RainbruRPG server (";
+  s+=UniqueName::getUniqueName();
+  s+=")";
+
+  QString s2(s.c_str());
+
+  MainServerWindow* mainWin = new MainServerWindow(s2);
   QObject::connect( &app, SIGNAL( aboutToQuit() ), mainWin, 
 		    SLOT( exitRequested() ) );
 
@@ -50,7 +57,6 @@ int main(int argc, char *argv[]){
 
   LOGI("Entering Qt main loop");
 
-  std::string s=UniqueName::getUniqueName();
 
   return app.exec();
 }

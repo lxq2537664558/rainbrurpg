@@ -6,12 +6,6 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-
-
-
-
-
-
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -56,7 +50,6 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- UniqueName implementation
 - Using GlobalURI for filename
    $HOME/uploaded
    $HOME/uploaded
@@ -153,6 +146,7 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-141
+- UniqueName implementation
 - Searching how to get MAC address in a different project
 - Client tells the transfer is finished
    common/ftpclient.cpp:563
