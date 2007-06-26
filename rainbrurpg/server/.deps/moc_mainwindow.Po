@@ -414,12 +414,12 @@ moc_mainwindow.o moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/fstream.tcc \
   ../common/singleton.h ../common/curlsubmitform.h \
   /usr/include/curl/curl.h /usr/include/curl/curlver.h \
-  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/sys/socket.h /usr/include/sys/uio.h \
   /usr/include/bits/uio.h /usr/include/bits/socket.h \
   /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
   /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
   /usr/include/asm-i486/sockios.h /usr/include/sys/time.h \
+  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/curl/curl.h ../common/curlinterface.h \
   ../common/curlposteddata.h ../common/hashpassword.h ../common/sha1.h \
   ../common/xmlserverlist.h ../common/logger.h ../common/tinyxml.h \
@@ -1796,10 +1796,6 @@ mainwindow.h:
 
 /usr/include/curl/curlver.h:
 
-/usr/include/curl/easy.h:
-
-/usr/include/curl/multi.h:
-
 /usr/include/sys/socket.h:
 
 /usr/include/sys/uio.h:
@@ -1819,6 +1815,10 @@ mainwindow.h:
 /usr/include/asm-i486/sockios.h:
 
 /usr/include/sys/time.h:
+
+/usr/include/curl/easy.h:
+
+/usr/include/curl/multi.h:
 
 /usr/include/curl/curl.h:
 

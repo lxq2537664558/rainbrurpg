@@ -6,12 +6,16 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
+o [mouse] AdminSite was modified
+
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
    curlpersomodifattrb.h  need a curlpersoheaderdelete class
    curlservermodifclients.h   
    curlsubmitform.h
+- Modified files
+   curlserveradd
 
 * Unittest of admin site
 Writing a simple unittest framework in programmation/adminsite/unittest$
@@ -50,12 +54,27 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
+- common/curlserveradd uses uniquename and servertype
+- ServerConfiguration uses uniquename and servertype
+- ConfigDialog shows uniquename and uses servertype
+- doxygen documentation
+- ftpclient uses ServerList to choose the ftpserver
 - Using GlobalURI for filename
    $HOME/uploaded
-   $HOME/uploaded
-
+   $HOME/quarantine (quarantaine)
+   $HOME/downloaded/UniqueName
 
 * GameServer
+- Add uniqueName and type (époque) to ServerConf and configuration
+   dialog
+- Running 2 servers in the same PC is forbiden
+   A file running-server is created in the $HOME directory when the
+   server is running. When we exit the server application, we delete
+   this file. 
+   ServerLock::lock()
+   ServerLock::unlock()
+   ServerLock::isLock()
+
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
 - Update the client number in statusbar
@@ -113,7 +132,7 @@ o [mouse] FTP Server
   [4 jours] Interaction avec l'environement
 	    Le principe est connu et abondemment discute dans les forums
 
-* Fil rouge (Samedi et Dimanche)
+* Fil rouge
 - Tests unitaires
   Les tests unitaires sont à jour pour TerminalAPI. Tous les tests de
   tApi font partis d'une seule et même TestSuite. 
@@ -145,9 +164,15 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-142
+- adminsite doxygen documentation
+- Add UniqueName and Type to the adminsite : serverdetails.php
+- Add UniqueName and Type to the adminsite : serverlist.php
+- Add UniqueName and Type to the adminsite : addserver.php
+- Add UniqueName and Type to the adminsite : xmlserverinterface.php
+
 * v 0.0.4-141
 - UniqueName implementation
-- Searching how to get MAC address in a different project
 - Client tells the transfer is finished
    common/ftpclient.cpp:563
 - Server closes the transfer

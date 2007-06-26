@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 26 jun 2007 : Adding 'uniqueName' and 'type'
  * - 28 may 2007 : Adding the 'ftp' key
  *
  */
@@ -92,6 +93,8 @@ namespace RainbruRPG {
 	void setDescription(const std::string&);
 	void setTechNote(const std::string&);
 
+	void setUniqueName(const std::string&);
+	void setType(const std::string&);
 
 	const char* getName();
 	const char* getIpAddress();
@@ -101,6 +104,8 @@ namespace RainbruRPG {
 	const char* getDescription();
 	const char* getTechNote();
 
+	const std::string& getUniqueName();
+	const std::string& getType();
 
       protected:
 	virtual bool controlBefore();

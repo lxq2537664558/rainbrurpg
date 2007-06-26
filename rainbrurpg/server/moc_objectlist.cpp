@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'objectlist.h'
 **
-** Created: Mon Jun 18 17:12:49 2007
+** Created: Mon Jun 25 19:57:32 2007
 **      by: The Qt Meta Object Compiler version 59 (Qt 4.2.2)
 **
 ** WARNING! All changes made in this file will be lost!

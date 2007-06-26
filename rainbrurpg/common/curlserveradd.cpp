@@ -35,6 +35,8 @@ RainbruRPG::Network::Ident::CurlServerAdd::CurlServerAdd()
 
   // Setting the posted data key values
   postedData.addKey("name");
+  postedData.addKey("uniqueName");
+  postedData.addKey("type");
   postedData.addKey("ip");
   postedData.addKey("port");
   postedData.addKey("ftp");
@@ -361,4 +363,37 @@ setFtpPort(const std::string& s){
   */
 const char* RainbruRPG::Network::Ident::CurlServerAdd::getFtpPort(){
   return postedData.getValue("ftp");
+}
+
+/** Change the Unique Name of the server
+  *
+  * \param s The new key value
+  *
+  */
+void RainbruRPG::Network::Ident::CurlServerAdd::
+setUniqueName(const std::string& s){
+  postedData.setValue("uniqueName", s);
+}
+
+/** Change the Type of the server
+  *
+  * \param s The new key value
+  *
+  */
+void RainbruRPG::Network::Ident::CurlServerAdd::
+setType(const std::string& s){
+  postedData.setValue("type", s);
+}
+
+const std::string& RainbruRPG::Network::Ident::CurlServerAdd::
+getUniqueName(){
+  std::string s;
+  s=postedData.getValue("uniqueName");
+  return s;
+}
+
+const std::string& RainbruRPG::Network::Ident::CurlServerAdd::
+getType(){
+  std::string s(postedData.getValue("type"));
+  return s;
 }
