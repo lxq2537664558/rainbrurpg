@@ -1,6 +1,5 @@
 TODO 
 -----------------------------------
-* Doxygen
 * xmlpersoattrb.php cree la cayegorie si elle n'existe pas
 * Test global player
 	- Problème d'affichage des titres
@@ -9,7 +8,8 @@ TODO
 
 Changelog
 -----------------------------------
-- v0.0.2-95
+- v0.0.4-139
+* Doxygen
 
 - v0.0.1-87
 * modifpersoattrb.php prend en compte la categorie
