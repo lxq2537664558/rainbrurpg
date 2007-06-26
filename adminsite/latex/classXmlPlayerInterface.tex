@@ -1,6 +1,6 @@
-\section{Xml\-Player\-Interface Class Reference}
+\section{XmlPlayerInterface Class Reference}
 \label{classXmlPlayerInterface}\index{XmlPlayerInterface@{XmlPlayerInterface}}
-Inheritance diagram for Xml\-Player\-Interface::\begin{figure}[H]
+Inheritance diagram for XmlPlayerInterface::\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2cm]{classXmlPlayerInterface}
@@ -11,73 +11,73 @@ Inheritance diagram for Xml\-Player\-Interface::\begin{figure}[H]
 \subsection{Detailed Description}
 A class used with xml playerlist
 
-The php files that works on Player\-List (account) should use this interface. It works with the Players and their notes. 
+The php files that works on PlayerList (account) should use this interface. It works with the Players and their notes. 
 
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Xml\-Player\-Interface} ()
+{\bf XmlPlayerInterface} ()
 \item 
-{\bf get\-All\-Players} ()
+{\bf getAllPlayers} ()
 \item 
-{\bf get\-Player\-By\-Name} (\$name)
+{\bf getPlayerByName} (\$name)
 \item 
-{\bf get\-Player\-Name} (\$player)
+{\bf getPlayerName} (\$player)
 \item 
-{\bf get\-Player\-Black\-List} (\$player)
+{\bf getPlayerBlackList} (\$player)
 \item 
-{\bf get\-Player\-Mail} (\$player)
+{\bf getPlayerMail} (\$player)
 \item 
-{\bf get\-Player\-Password} (\$player)
+{\bf getPlayerPassword} (\$player)
 \item 
-{\bf add\-Player} (\$name, \$mail, \$pwd, \$timestamp)
+{\bf addPlayer} (\$name, \$mail, \$pwd, \$timestamp)
 \item 
-{\bf is\-Player\-Exists} (\$name)
+{\bf isPlayerExists} (\$name)
 \item 
-{\bf is\-Mail\-Exists} (\$mail)
+{\bf isMailExists} (\$mail)
 \item 
-{\bf delete\-Player} (\$player\-Node)
+{\bf deletePlayer} (\$playerNode)
 \item 
-{\bf toggle\-Black\-List} (\$player\-Node)
+{\bf toggleBlackList} (\$playerNode)
 \item 
-{\bf get\-Note\-List} (\$player\-Node)
+{\bf getNoteList} (\$playerNode)
 \item 
-{\bf get\-Note\-List\-Root} (\$player\-Node)
+{\bf getNoteListRoot} (\$playerNode)
 \item 
-{\bf get\-Note\-Title} (\$note\-Node)
+{\bf getNoteTitle} (\$noteNode)
 \item 
-{\bf get\-Note\-Content} (\$note\-Node)
+{\bf getNoteContent} (\$noteNode)
 \item 
-{\bf change\-Player\-Password} (\$player\-Node, \$new\-Password)
+{\bf changePlayerPassword} (\$playerNode, \$newPassword)
 \item 
-{\bf confirm\-Mail} (\$player\-Node, \$timestamp)
+{\bf confirmMail} (\$playerNode, \$timestamp)
 \item 
-{\bf is\-Note\-Exists} (\$name, \$title)
+{\bf isNoteExists} (\$name, \$title)
 \item 
-{\bf add\-Note} (\$node\-List\-Root, \$note\-Title, \$note\-Content, \$timestamp)
+{\bf addNote} (\$nodeListRoot, \$noteTitle, \$noteContent, \$timestamp)
 \item 
-{\bf get\-Note\-By\-Name} (\$player\-Node, \$title)
+{\bf getNoteByName} (\$playerNode, \$title)
 \item 
-{\bf delete\-Note} (\$player\-Node, \$note\-Title)
+{\bf deleteNote} (\$playerNode, \$noteTitle)
 \item 
-{\bf modif\-Note} (\$player\-Node, \$old\-Note\-Title, \$new\-Note\-Title, \$new\-Note\-Content, \$new\-Timestamp)
+{\bf modifNote} (\$playerNode, \$oldNoteTitle, \$newNoteTitle, \$newNoteContent, \$newTimestamp)
 \end{CompactItemize}
 
 
 \subsection{Member Function Documentation}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!XmlPlayerInterface@{XmlPlayerInterface}}
-\index{XmlPlayerInterface@{XmlPlayerInterface}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::Xml\-Player\-Interface ()}\label{classXmlPlayerInterface_77d55f3c05533f0fd0d02a785bfd2562}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!XmlPlayerInterface@{XmlPlayerInterface}}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::XmlPlayerInterface ()}\label{classXmlPlayerInterface_77d55f3c05533f0fd0d02a785bfd2562}
 
 
-Creates a \doxyref{Xml\-Player\-Interface}{p.}{classXmlPlayerInterface} object \index{XmlPlayerInterface@{Xml\-Player\-Interface}!getAllPlayers@{getAllPlayers}}
-\index{getAllPlayers@{getAllPlayers}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-All\-Players ()}\label{classXmlPlayerInterface_2c0d71b55adb4590c1e56533cd1c1934}
+Creates a \doxyref{XmlPlayerInterface}{p.}{classXmlPlayerInterface} object \index{XmlPlayerInterface@{XmlPlayerInterface}!getAllPlayers@{getAllPlayers}}
+\index{getAllPlayers@{getAllPlayers}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getAllPlayers ()}\label{classXmlPlayerInterface_2c0d71b55adb4590c1e56533cd1c1934}
 
 
-Return an array of player xml nodes \index{XmlPlayerInterface@{Xml\-Player\-Interface}!getPlayerByName@{getPlayerByName}}
-\index{getPlayerByName@{getPlayerByName}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Player\-By\-Name (\$ {\em name})}\label{classXmlPlayerInterface_db505954db498f0a1f61b4e5d2c1ceff}
+Return an array of player xml nodes \index{XmlPlayerInterface@{XmlPlayerInterface}!getPlayerByName@{getPlayerByName}}
+\index{getPlayerByName@{getPlayerByName}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getPlayerByName (\$ {\em name})}\label{classXmlPlayerInterface_db505954db498f0a1f61b4e5d2c1ceff}
 
 
 Get a player by its name
@@ -91,14 +91,14 @@ You can test the existance of this player with {\tt if (\$player)}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The player xml node or NULL if the player does not exist. \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getPlayerName@{getPlayerName}}
-\index{getPlayerName@{getPlayerName}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Player\-Name (\$ {\em player})}\label{classXmlPlayerInterface_0fc021cc6aba2f203feaebe73cf0ffc1}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getPlayerName@{getPlayerName}}
+\index{getPlayerName@{getPlayerName}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getPlayerName (\$ {\em player})}\label{classXmlPlayerInterface_0fc021cc6aba2f203feaebe73cf0ffc1}
 
 
 Get the name of a player xml node
 
-The good way to use this function is to get the player xml node first (by a call to get\-Player\-By\-Name) and call this with the returned player.
+The good way to use this function is to get the player xml node first (by a call to getPlayerByName) and call this with the returned player.
 
 \begin{Desc}
 \item[Parameters:]
@@ -107,9 +107,9 @@ The good way to use this function is to get the player xml node first (by a call
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The player name or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getPlayerBlackList@{getPlayerBlackList}}
-\index{getPlayerBlackList@{getPlayerBlackList}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Player\-Black\-List (\$ {\em player})}\label{classXmlPlayerInterface_616503f63648a258003ddb1388fd6efe}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getPlayerBlackList@{getPlayerBlackList}}
+\index{getPlayerBlackList@{getPlayerBlackList}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getPlayerBlackList (\$ {\em player})}\label{classXmlPlayerInterface_616503f63648a258003ddb1388fd6efe}
 
 
 Get the blacklist status of a player xml node
@@ -121,9 +121,9 @@ Get the blacklist status of a player xml node
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The player blacklist status or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getPlayerMail@{getPlayerMail}}
-\index{getPlayerMail@{getPlayerMail}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Player\-Mail (\$ {\em player})}\label{classXmlPlayerInterface_0be212340414c8ac9b2d1bb47516a287}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getPlayerMail@{getPlayerMail}}
+\index{getPlayerMail@{getPlayerMail}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getPlayerMail (\$ {\em player})}\label{classXmlPlayerInterface_0be212340414c8ac9b2d1bb47516a287}
 
 
 Get the email adress of a player xml node
@@ -135,9 +135,9 @@ Get the email adress of a player xml node
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The player email adress or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getPlayerPassword@{getPlayerPassword}}
-\index{getPlayerPassword@{getPlayerPassword}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Player\-Password (\$ {\em player})}\label{classXmlPlayerInterface_16269fc8e20753c9ebf0d86c64d968b3}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getPlayerPassword@{getPlayerPassword}}
+\index{getPlayerPassword@{getPlayerPassword}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getPlayerPassword (\$ {\em player})}\label{classXmlPlayerInterface_16269fc8e20753c9ebf0d86c64d968b3}
 
 
 Get the password of a player xml node
@@ -149,9 +149,9 @@ Get the password of a player xml node
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The player password or \char`\"{}\char`\"{} if the given player does not exist \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!addPlayer@{addPlayer}}
-\index{addPlayer@{addPlayer}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::add\-Player (\$ {\em name}, \$ {\em mail}, \$ {\em pwd}, \$ {\em timestamp})}\label{classXmlPlayerInterface_5b6d5b5aa98e0025ca5dea0a6f4c2d98}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!addPlayer@{addPlayer}}
+\index{addPlayer@{addPlayer}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::addPlayer (\$ {\em name}, \$ {\em mail}, \$ {\em pwd}, \$ {\em timestamp})}\label{classXmlPlayerInterface_5b6d5b5aa98e0025ca5dea0a6f4c2d98}
 
 
 Add a player and save the document
@@ -163,9 +163,9 @@ The Blacklist is set to 'No'.
 \begin{description}
 \item[{\em \$name}]The name of the new player \item[{\em \$mail}]The mail of the new player \item[{\em \$pwd}]The passwotd hashsum of the new player \item[{\em \$timestamp}]The creation timestamp of the new player \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!isPlayerExists@{isPlayerExists}}
-\index{isPlayerExists@{isPlayerExists}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::is\-Player\-Exists (\$ {\em name})}\label{classXmlPlayerInterface_1730e80159c0712e33526ed611b4bd25}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!isPlayerExists@{isPlayerExists}}
+\index{isPlayerExists@{isPlayerExists}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::isPlayerExists (\$ {\em name})}\label{classXmlPlayerInterface_1730e80159c0712e33526ed611b4bd25}
 
 
 Test if the player's name already exists
@@ -177,9 +177,9 @@ Test if the player's name already exists
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if the player already exists, false if it does not exist \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!isMailExists@{isMailExists}}
-\index{isMailExists@{isMailExists}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::is\-Mail\-Exists (\$ {\em mail})}\label{classXmlPlayerInterface_92ab76519834a298bf0793e7e4770b22}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!isMailExists@{isMailExists}}
+\index{isMailExists@{isMailExists}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::isMailExists (\$ {\em mail})}\label{classXmlPlayerInterface_92ab76519834a298bf0793e7e4770b22}
 
 
 Test if the player's email adress already in use
@@ -191,9 +191,9 @@ Test if the player's email adress already in use
 \end{Desc}
 \begin{Desc}
 \item[Returns:]true if the email adress already in use, false if it does not \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!deletePlayer@{deletePlayer}}
-\index{deletePlayer@{deletePlayer}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::delete\-Player (\$ {\em player\-Node})}\label{classXmlPlayerInterface_1ca87ad6169e182206786b2f1f6b0602}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!deletePlayer@{deletePlayer}}
+\index{deletePlayer@{deletePlayer}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::deletePlayer (\$ {\em playerNode})}\label{classXmlPlayerInterface_1ca87ad6169e182206786b2f1f6b0602}
 
 
 Delete the player named \$name
@@ -201,11 +201,11 @@ Delete the player named \$name
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]A player xml node \end{description}
+\item[{\em \$playerNode}]A player xml node \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!toggleBlackList@{toggleBlackList}}
-\index{toggleBlackList@{toggleBlackList}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::toggle\-Black\-List (\$ {\em player\-Node})}\label{classXmlPlayerInterface_23bb0a47924c125ac94bfc5cc6a9568b}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!toggleBlackList@{toggleBlackList}}
+\index{toggleBlackList@{toggleBlackList}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::toggleBlackList (\$ {\em playerNode})}\label{classXmlPlayerInterface_23bb0a47924c125ac94bfc5cc6a9568b}
 
 
 Toggle the blacklist status of the given player
@@ -213,11 +213,11 @@ Toggle the blacklist status of the given player
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]A player xml node \end{description}
+\item[{\em \$playerNode}]A player xml node \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getNoteList@{getNoteList}}
-\index{getNoteList@{getNoteList}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Note\-List (\$ {\em player\-Node})}\label{classXmlPlayerInterface_282218cb9c21a5373c6978a55eb77bbb}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getNoteList@{getNoteList}}
+\index{getNoteList@{getNoteList}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getNoteList (\$ {\em playerNode})}\label{classXmlPlayerInterface_282218cb9c21a5373c6978a55eb77bbb}
 
 
 Get a list of xml note node of a player node
@@ -225,27 +225,27 @@ Get a list of xml note node of a player node
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The Player XML node\end{description}
+\item[{\em \$playerNode}]The Player XML node\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]All notes of the given player \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getNoteListRoot@{getNoteListRoot}}
-\index{getNoteListRoot@{getNoteListRoot}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Note\-List\-Root (\$ {\em player\-Node})}\label{classXmlPlayerInterface_10abcca3a744bc4f9ee90c46bb5eda35}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getNoteListRoot@{getNoteListRoot}}
+\index{getNoteListRoot@{getNoteListRoot}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getNoteListRoot (\$ {\em playerNode})}\label{classXmlPlayerInterface_10abcca3a744bc4f9ee90c46bb5eda35}
 
 
-Get the first 'Note\-List' node
+Get the first 'NoteList' node
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The Player XML node\end{description}
+\item[{\em \$playerNode}]The Player XML node\end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The Note\-List XML element or null if not found \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getNoteTitle@{getNoteTitle}}
-\index{getNoteTitle@{getNoteTitle}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Note\-Title (\$ {\em note\-Node})}\label{classXmlPlayerInterface_2c4831c8f4462cf80f8b1a899b0b76c2}
+\item[Returns:]The NoteList XML element or null if not found \end{Desc}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getNoteTitle@{getNoteTitle}}
+\index{getNoteTitle@{getNoteTitle}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getNoteTitle (\$ {\em noteNode})}\label{classXmlPlayerInterface_2c4831c8f4462cf80f8b1a899b0b76c2}
 
 
 Get the title of a note
@@ -253,13 +253,13 @@ Get the title of a note
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$note\-Node}]The note XML node\end{description}
+\item[{\em \$noteNode}]The note XML node\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The note title \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getNoteContent@{getNoteContent}}
-\index{getNoteContent@{getNoteContent}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Note\-Content (\$ {\em note\-Node})}\label{classXmlPlayerInterface_855b81e0a2b66f7899837b9fe6cce3a7}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getNoteContent@{getNoteContent}}
+\index{getNoteContent@{getNoteContent}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getNoteContent (\$ {\em noteNode})}\label{classXmlPlayerInterface_855b81e0a2b66f7899837b9fe6cce3a7}
 
 
 Get the content of a note
@@ -267,13 +267,13 @@ Get the content of a note
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$note\-Node}]The note XML node\end{description}
+\item[{\em \$noteNode}]The note XML node\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The note content \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!changePlayerPassword@{changePlayerPassword}}
-\index{changePlayerPassword@{changePlayerPassword}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::change\-Player\-Password (\$ {\em player\-Node}, \$ {\em new\-Password})}\label{classXmlPlayerInterface_83e2e845fe25d9b8725f52c4e4dc3fa3}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!changePlayerPassword@{changePlayerPassword}}
+\index{changePlayerPassword@{changePlayerPassword}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::changePlayerPassword (\$ {\em playerNode}, \$ {\em newPassword})}\label{classXmlPlayerInterface_83e2e845fe25d9b8725f52c4e4dc3fa3}
 
 
 Change the password of the given player
@@ -281,11 +281,11 @@ Change the password of the given player
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The player XML node \item[{\em \$new\-Password}]The new password hashsum \end{description}
+\item[{\em \$playerNode}]The player XML node \item[{\em \$newPassword}]The new password hashsum \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!confirmMail@{confirmMail}}
-\index{confirmMail@{confirmMail}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::confirm\-Mail (\$ {\em player\-Node}, \$ {\em timestamp})}\label{classXmlPlayerInterface_f18fefaaeeccb1f80a3a18a0ee4ae2f2}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!confirmMail@{confirmMail}}
+\index{confirmMail@{confirmMail}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::confirmMail (\$ {\em playerNode}, \$ {\em timestamp})}\label{classXmlPlayerInterface_f18fefaaeeccb1f80a3a18a0ee4ae2f2}
 
 
 Confirm the mail of the given Player (Account)
@@ -293,11 +293,11 @@ Confirm the mail of the given Player (Account)
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The player XML node \item[{\em \$timestamp}]The confirmation timestamp \end{description}
+\item[{\em \$playerNode}]The player XML node \item[{\em \$timestamp}]The confirmation timestamp \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!isNoteExists@{isNoteExists}}
-\index{isNoteExists@{isNoteExists}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::is\-Note\-Exists (\$ {\em name}, \$ {\em title})}\label{classXmlPlayerInterface_5e8d65e46ae26ce399f7c7652b9a1791}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!isNoteExists@{isNoteExists}}
+\index{isNoteExists@{isNoteExists}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::isNoteExists (\$ {\em name}, \$ {\em title})}\label{classXmlPlayerInterface_5e8d65e46ae26ce399f7c7652b9a1791}
 
 
 A function to know if a player's note exists or not
@@ -307,9 +307,9 @@ A function to know if a player's note exists or not
 \begin{description}
 \item[{\em \$name}]the name of the player \item[{\em \$title}]the title of the note \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!addNote@{addNote}}
-\index{addNote@{addNote}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::add\-Note (\$ {\em node\-List\-Root}, \$ {\em note\-Title}, \$ {\em note\-Content}, \$ {\em timestamp})}\label{classXmlPlayerInterface_2ef961e40e929546aeda88148c1c708c}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!addNote@{addNote}}
+\index{addNote@{addNote}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::addNote (\$ {\em nodeListRoot}, \$ {\em noteTitle}, \$ {\em noteContent}, \$ {\em timestamp})}\label{classXmlPlayerInterface_2ef961e40e929546aeda88148c1c708c}
 
 
 Adds a note to a player
@@ -317,11 +317,11 @@ Adds a note to a player
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$node\-List\-Root}]The Note\-List XML node \item[{\em \$note\-Title}]The Node title \item[{\em \$note\-Content}]The content of the note \item[{\em \$timestamp}]The creation timestamp \end{description}
+\item[{\em \$nodeListRoot}]The NoteList XML node \item[{\em \$noteTitle}]The Node title \item[{\em \$noteContent}]The content of the note \item[{\em \$timestamp}]The creation timestamp \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!getNoteByName@{getNoteByName}}
-\index{getNoteByName@{getNoteByName}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::get\-Note\-By\-Name (\$ {\em player\-Node}, \$ {\em title})}\label{classXmlPlayerInterface_a2e2d8401fe3d4b9163e1c65343ae3ac}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!getNoteByName@{getNoteByName}}
+\index{getNoteByName@{getNoteByName}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::getNoteByName (\$ {\em playerNode}, \$ {\em title})}\label{classXmlPlayerInterface_a2e2d8401fe3d4b9163e1c65343ae3ac}
 
 
 Get a note of a given player by its name
@@ -329,13 +329,13 @@ Get a note of a given player by its name
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The player XML node \item[{\em \$title}]The note title\end{description}
+\item[{\em \$playerNode}]The player XML node \item[{\em \$title}]The note title\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The found note XML node or null if not found \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!deleteNote@{deleteNote}}
-\index{deleteNote@{deleteNote}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::delete\-Note (\$ {\em player\-Node}, \$ {\em note\-Title})}\label{classXmlPlayerInterface_cc291365d5327ab740c7802040594441}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!deleteNote@{deleteNote}}
+\index{deleteNote@{deleteNote}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::deleteNote (\$ {\em playerNode}, \$ {\em noteTitle})}\label{classXmlPlayerInterface_cc291365d5327ab740c7802040594441}
 
 
 Delete a note
@@ -343,11 +343,11 @@ Delete a note
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The player XML note \item[{\em \$note\-Title}]The title of the note to delete \end{description}
+\item[{\em \$playerNode}]The player XML note \item[{\em \$noteTitle}]The title of the note to delete \end{description}
 \end{Desc}
-\index{XmlPlayerInterface@{Xml\-Player\-Interface}!modifNote@{modifNote}}
-\index{modifNote@{modifNote}!XmlPlayerInterface@{Xml\-Player\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Player\-Interface::modif\-Note (\$ {\em player\-Node}, \$ {\em old\-Note\-Title}, \$ {\em new\-Note\-Title}, \$ {\em new\-Note\-Content}, \$ {\em new\-Timestamp})}\label{classXmlPlayerInterface_a59967714d14d0aef90f6729a16a31a7}
+\index{XmlPlayerInterface@{XmlPlayerInterface}!modifNote@{modifNote}}
+\index{modifNote@{modifNote}!XmlPlayerInterface@{XmlPlayerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlPlayerInterface::modifNote (\$ {\em playerNode}, \$ {\em oldNoteTitle}, \$ {\em newNoteTitle}, \$ {\em newNoteContent}, \$ {\em newTimestamp})}\label{classXmlPlayerInterface_a59967714d14d0aef90f6729a16a31a7}
 
 
 Modify a note
@@ -355,7 +355,7 @@ Modify a note
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$player\-Node}]The player XML node \item[{\em \$old\-Note\-Title}]The title of the note to modify \item[{\em \$new\-Note\-Title}]The new title \item[{\em \$new\-Note\-Content}]The new content \item[{\em \$new\-Timestamp}]The new creation timestamp \end{description}
+\item[{\em \$playerNode}]The player XML node \item[{\em \$oldNoteTitle}]The title of the note to modify \item[{\em \$newNoteTitle}]The new title \item[{\em \$newNoteContent}]The new content \item[{\em \$newTimestamp}]The new creation timestamp \end{description}
 \end{Desc}
 
 

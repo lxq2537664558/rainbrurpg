@@ -28,15 +28,28 @@ function showDetails1(){
     $svCreaDate= getTimestampDateStr($server, 'creation');
     $svCreaTime= getTimestampTimeStr($server, 'creation');
     
+    // Unique name
+    $svUName= $xmlserver->getServerUniqueName($server);
+
+    // Server type
+    $serverTypeNum=$xmlserver->getServerType($server);
+    $serverType=$serverTypeNum;
+    $serverType.="&nbsp;(";
+    $serverType.=$xmlserver->serverTypeToString($serverTypeNum);
+    $serverType.=")";
+
+
     // First box
     echo '<table width=100%><tr><td width=50%>';
     echo '<div class=name>';
     echo '<table width=100%><tr>';
     printf("<td>Name</td><td>%s</td>", $svName);
     echo '</tr><tr>';
-    printf("<td>Ip adress</td><td>%s</td>", $svIp);
+    printf("<td>Unique name</td><td>%s</td>", $svUName);
     echo '</tr><tr>';
-    printf("<td>UDP port</td><td>%s</td>", $svPort);
+    printf("<td>Type</td><td>%s</td>", $serverType);
+    echo '</tr><tr>';
+    printf("<td>Ip adress</td><td>%s</td>", $svIp);
     
     echo '</tr></table>';
     echo '</div>';
@@ -47,6 +60,8 @@ function showDetails1(){
     echo '<td width=50%>';
     echo '<div class=name>';
     echo '<table width=100%><tr>';
+    printf("<td>UDP port</td><td>%s</td>", $svPort);
+    echo '</tr><tr>';
     printf("<td>FTP port</td><td>%s</td>", $svFtp);
     echo '</tr><tr>';
     printf("<td>Creation</td><td>%s %s</td>", $svCreaDate, $svCreaTime);

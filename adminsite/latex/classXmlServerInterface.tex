@@ -1,6 +1,6 @@
-\section{Xml\-Server\-Interface Class Reference}
+\section{XmlServerInterface Class Reference}
 \label{classXmlServerInterface}\index{XmlServerInterface@{XmlServerInterface}}
-Inheritance diagram for Xml\-Server\-Interface::\begin{figure}[H]
+Inheritance diagram for XmlServerInterface::\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2cm]{classXmlServerInterface}
@@ -16,58 +16,64 @@ It is a XML interface for php files that manipulates server information.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Xml\-Server\-Interface} ()
+{\bf XmlServerInterface} ()
 \item 
-{\bf get\-All\-Servers} ()
+{\bf getAllServers} ()
 \item 
-{\bf get\-Server\-By\-Name} (\$name)
+{\bf getServerByName} (\$name)
 \item 
-{\bf get\-Server\-Name} (\$server\-Node)
+{\bf getServerName} (\$serverNode)
 \item 
-{\bf get\-Server\-Ip} (\$server\-Node)
+{\bf getServerIp} (\$serverNode)
 \item 
-{\bf get\-Server\-Port} (\$server\-Node)
+{\bf getServerPort} (\$serverNode)
 \item 
-{\bf get\-Server\-Ftp} (\$server\-Node)
+{\bf getServerFtp} (\$serverNode)
 \item 
-{\bf get\-Server\-Desc} (\$server\-Node)
+{\bf getServerDesc} (\$serverNode)
 \item 
-{\bf get\-Server\-Technote} (\$server\-Node)
+{\bf getServerTechnote} (\$serverNode)
 \item 
-{\bf get\-Server\-Max\-Clients} (\$server\-Node)
+{\bf getServerMaxClients} (\$serverNode)
 \item 
-{\bf get\-Server\-Act\-Clients} (\$server\-Node)
+{\bf getServerActClients} (\$serverNode)
 \item 
-{\bf change\-Server\-Act} (\$server\-Node, \$value)
+{\bf getServerType} (\$serverNode)
 \item 
-{\bf add\-Server} (\$name, \$ip, \$port, \$ftp, \$desc, \$technote, \$maxclients, \$time)
+{\bf getServerUniqueName} (\$serverNode)
 \item 
-{\bf is\-Server\-Exists} (\$name)
+{\bf changeServerAct} (\$serverNode, \$value)
 \item 
-{\bf delete\-Server} (\$server\-Node)
+{\bf addServer} (\$name, \$uniqueName, \$type, \$ip, \$port, \$ftp, \$desc, \$technote, \$maxclients, \$time)
+\item 
+{\bf isServerExists} (\$name)
+\item 
+{\bf deleteServer} (\$serverNode)
+\item 
+{\bf serverTypeToString} (\$type)
 \end{CompactItemize}
 
 
 \subsection{Member Function Documentation}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!XmlServerInterface@{XmlServerInterface}}
-\index{XmlServerInterface@{XmlServerInterface}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::Xml\-Server\-Interface ()}\label{classXmlServerInterface_358a987bcd85a644a40fed9dbc898799}
+\index{XmlServerInterface@{XmlServerInterface}!XmlServerInterface@{XmlServerInterface}}
+\index{XmlServerInterface@{XmlServerInterface}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::XmlServerInterface ()}\label{classXmlServerInterface_358a987bcd85a644a40fed9dbc898799}
 
 
-Creates a \doxyref{Xml\-Server\-Interface}{p.}{classXmlServerInterface} object
+Creates a \doxyref{XmlServerInterface}{p.}{classXmlServerInterface} object
 
-Define a \doxyref{Xml\-Interface}{p.}{classXmlInterface} for the ../servers.xml file. \index{XmlServerInterface@{Xml\-Server\-Interface}!getAllServers@{getAllServers}}
-\index{getAllServers@{getAllServers}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-All\-Servers ()}\label{classXmlServerInterface_1bb1594592df9e5dd584f1de33648189}
+Define a \doxyref{XmlInterface}{p.}{classXmlInterface} for the ../servers.xml file. \index{XmlServerInterface@{XmlServerInterface}!getAllServers@{getAllServers}}
+\index{getAllServers@{getAllServers}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getAllServers ()}\label{classXmlServerInterface_1bb1594592df9e5dd584f1de33648189}
 
 
 Return an array of server xml nodes
 
 \begin{Desc}
 \item[Returns:]All Server XML nodes. \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerByName@{getServerByName}}
-\index{getServerByName@{getServerByName}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-By\-Name (\$ {\em name})}\label{classXmlServerInterface_41ed6405d1b5d95b4878a617bb516d8e}
+\index{XmlServerInterface@{XmlServerInterface}!getServerByName@{getServerByName}}
+\index{getServerByName@{getServerByName}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerByName (\$ {\em name})}\label{classXmlServerInterface_41ed6405d1b5d95b4878a617bb516d8e}
 
 
 Get a server by its name
@@ -81,163 +87,201 @@ You can test the existance of this server with {\tt if (\$server)}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The server xml node or NULL if the player does not exist. \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerName@{getServerName}}
-\index{getServerName@{getServerName}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Name (\$ {\em server\-Node})}\label{classXmlServerInterface_ab897c2f629e285cfbb667308c214627}
+\index{XmlServerInterface@{XmlServerInterface}!getServerName@{getServerName}}
+\index{getServerName@{getServerName}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerName (\$ {\em serverNode})}\label{classXmlServerInterface_ab897c2f629e285cfbb667308c214627}
 
 
 Get the name of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The server name or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerIp@{getServerIp}}
-\index{getServerIp@{getServerIp}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Ip (\$ {\em server\-Node})}\label{classXmlServerInterface_33736969fd11aa9b91ddf75f706d967a}
+\index{XmlServerInterface@{XmlServerInterface}!getServerIp@{getServerIp}}
+\index{getServerIp@{getServerIp}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerIp (\$ {\em serverNode})}\label{classXmlServerInterface_33736969fd11aa9b91ddf75f706d967a}
 
 
 Get the IP address of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The server IP or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerPort@{getServerPort}}
-\index{getServerPort@{getServerPort}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Port (\$ {\em server\-Node})}\label{classXmlServerInterface_18d868547da0e1b0ecde0b84173fd98d}
+\index{XmlServerInterface@{XmlServerInterface}!getServerPort@{getServerPort}}
+\index{getServerPort@{getServerPort}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerPort (\$ {\em serverNode})}\label{classXmlServerInterface_18d868547da0e1b0ecde0b84173fd98d}
 
 
 Get the UDP port of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The server UDP port or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerFtp@{getServerFtp}}
-\index{getServerFtp@{getServerFtp}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Ftp (\$ {\em server\-Node})}\label{classXmlServerInterface_887e261d8d7e760e68f21dab07bd816d}
+\index{XmlServerInterface@{XmlServerInterface}!getServerFtp@{getServerFtp}}
+\index{getServerFtp@{getServerFtp}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerFtp (\$ {\em serverNode})}\label{classXmlServerInterface_887e261d8d7e760e68f21dab07bd816d}
 
 
 Get the FTP control channel port of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The server FTP control channel port or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerDesc@{getServerDesc}}
-\index{getServerDesc@{getServerDesc}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Desc (\$ {\em server\-Node})}\label{classXmlServerInterface_fae46c6ee71e59c84e8befacc5ffc0a0}
+\index{XmlServerInterface@{XmlServerInterface}!getServerDesc@{getServerDesc}}
+\index{getServerDesc@{getServerDesc}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerDesc (\$ {\em serverNode})}\label{classXmlServerInterface_fae46c6ee71e59c84e8befacc5ffc0a0}
 
 
 Get the description text of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]The description or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerTechnote@{getServerTechnote}}
-\index{getServerTechnote@{getServerTechnote}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Technote (\$ {\em server\-Node})}\label{classXmlServerInterface_fb37ad6fdd53dd8f4571a17b470603f5}
+\index{XmlServerInterface@{XmlServerInterface}!getServerTechnote@{getServerTechnote}}
+\index{getServerTechnote@{getServerTechnote}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerTechnote (\$ {\em serverNode})}\label{classXmlServerInterface_fb37ad6fdd53dd8f4571a17b470603f5}
 
 
 Get the technical note text of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The Tech\-Note or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerMaxClients@{getServerMaxClients}}
-\index{getServerMaxClients@{getServerMaxClients}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Max\-Clients (\$ {\em server\-Node})}\label{classXmlServerInterface_4199a162c5814ea5ac21d53cc1a441ae}
+\item[Returns:]The TechNote or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!getServerMaxClients@{getServerMaxClients}}
+\index{getServerMaxClients@{getServerMaxClients}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerMaxClients (\$ {\em serverNode})}\label{classXmlServerInterface_4199a162c5814ea5ac21d53cc1a441ae}
 
 
-Get the Max\-Clients text of a server XML node
+Get the MaxClients text of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The Max\-Clients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!getServerActClients@{getServerActClients}}
-\index{getServerActClients@{getServerActClients}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::get\-Server\-Act\-Clients (\$ {\em server\-Node})}\label{classXmlServerInterface_a775785efa9bd4e8e28b3a93dec8d00c}
+\item[Returns:]The MaxClients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!getServerActClients@{getServerActClients}}
+\index{getServerActClients@{getServerActClients}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerActClients (\$ {\em serverNode})}\label{classXmlServerInterface_a775785efa9bd4e8e28b3a93dec8d00c}
 
 
-Get the Act\-Clients value of a server XML node
+Get the ActClients value of a server XML node
 
-The good way to use this function is to get the server xml node first (by a call to get\-Server\-By\-Name) and call this with the returned server.
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node.\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The Act\-Clients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!changeServerAct@{changeServerAct}}
-\index{changeServerAct@{changeServerAct}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::change\-Server\-Act (\$ {\em server\-Node}, \$ {\em value})}\label{classXmlServerInterface_2fe1f5e674949fc3a1d3ff3462f55df5}
+\item[Returns:]The ActClients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!getServerType@{getServerType}}
+\index{getServerType@{getServerType}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerType (\$ {\em serverNode})}\label{classXmlServerInterface_7085b3adcd530e1f1197c8bc9b266887}
 
 
-Change the Act\-Clients value of a server XML node
+Get the type value of a server XML node
+
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
+
+The returned type is only a number. If you want a human-readable string representing this type, please use the \doxyref{serverTypeToString()}{p.}{classXmlServerInterface_2ad52db39684b635ef53de9f9d4a7150} function.
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]A server XML node. \item[{\em \$value}]The new value\end{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
 \end{Desc}
 \begin{Desc}
-\item[Returns:]The Act\-Clients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!addServer@{addServer}}
-\index{addServer@{addServer}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::add\-Server (\$ {\em name}, \$ {\em ip}, \$ {\em port}, \$ {\em ftp}, \$ {\em desc}, \$ {\em technote}, \$ {\em maxclients}, \$ {\em time})}\label{classXmlServerInterface_c75a33e230bcbebbf1880c88e4d051cf}
+\item[Returns:]The type value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!getServerUniqueName@{getServerUniqueName}}
+\index{getServerUniqueName@{getServerUniqueName}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::getServerUniqueName (\$ {\em serverNode})}\label{classXmlServerInterface_f03d0e0a3a3ec8e3bbb666d7c200aaf3}
+
+
+Get the Unique name value of a server XML node
+
+The good way to use this function is to get the server xml node first (by a call to getServerByName) and call this with the returned server.
+
+The unique name is based on the MAC address of the {\tt eth0} interface of your PC.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$serverNode}]A server XML node.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The type value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!changeServerAct@{changeServerAct}}
+\index{changeServerAct@{changeServerAct}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::changeServerAct (\$ {\em serverNode}, \$ {\em value})}\label{classXmlServerInterface_2fe1f5e674949fc3a1d3ff3462f55df5}
+
+
+Change the ActClients value of a server XML node
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$serverNode}]A server XML node. \item[{\em \$value}]The new value\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The ActClients value or \char`\"{}\char`\"{} if the given server does not exist \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!addServer@{addServer}}
+\index{addServer@{addServer}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::addServer (\$ {\em name}, \$ {\em uniqueName}, \$ {\em type}, \$ {\em ip}, \$ {\em port}, \$ {\em ftp}, \$ {\em desc}, \$ {\em technote}, \$ {\em maxclients}, \$ {\em time})}\label{classXmlServerInterface_8effc69352f245752c381aa235d29218}
 
 
 Add a new server
 
+The server's type is a number (1-4) that represent the type of the server.
+
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$name}]The Name of the server \item[{\em \$ip}]The IP address to contact this server \item[{\em \$port}]The UDP port \item[{\em \$ftp}]The FTP control channel port \item[{\em \$desc}]The description of the server \item[{\em \$technote}]The technical note \item[{\em \$maxclients}]The Maximum number of client accepted \item[{\em \$time}]The creation timestamp \end{description}
+\item[{\em \$name}]The Name of the server \item[{\em \$uniqueName}]The unique name of the server \item[{\em \$type}]The server's type \item[{\em \$ip}]The IP address to contact this server \item[{\em \$port}]The UDP port \item[{\em \$ftp}]The FTP control channel port \item[{\em \$desc}]The description of the server \item[{\em \$technote}]The technical note \item[{\em \$maxclients}]The Maximum number of client accepted \item[{\em \$time}]The creation timestamp \end{description}
 \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!isServerExists@{isServerExists}}
-\index{isServerExists@{isServerExists}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::is\-Server\-Exists (\$ {\em name})}\label{classXmlServerInterface_f21cdd2afc802bf6740d7b8b0312538a}
+\index{XmlServerInterface@{XmlServerInterface}!isServerExists@{isServerExists}}
+\index{isServerExists@{isServerExists}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::isServerExists (\$ {\em name})}\label{classXmlServerInterface_f21cdd2afc802bf6740d7b8b0312538a}
 
 
 Tells if the named server exist
@@ -249,9 +293,9 @@ Tells if the named server exist
 \end{Desc}
 \begin{Desc}
 \item[Returns:]false or true \end{Desc}
-\index{XmlServerInterface@{Xml\-Server\-Interface}!deleteServer@{deleteServer}}
-\index{deleteServer@{deleteServer}!XmlServerInterface@{Xml\-Server\-Interface}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Xml\-Server\-Interface::delete\-Server (\$ {\em server\-Node})}\label{classXmlServerInterface_43e63dd782fcc347d72237b84a8d83b5}
+\index{XmlServerInterface@{XmlServerInterface}!deleteServer@{deleteServer}}
+\index{deleteServer@{deleteServer}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::deleteServer (\$ {\em serverNode})}\label{classXmlServerInterface_43e63dd782fcc347d72237b84a8d83b5}
 
 
 Delete the given server XML node
@@ -259,8 +303,22 @@ Delete the given server XML node
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em \$server\-Node}]The XML node to delete \end{description}
+\item[{\em \$serverNode}]The XML node to delete \end{description}
 \end{Desc}
+\index{XmlServerInterface@{XmlServerInterface}!serverTypeToString@{serverTypeToString}}
+\index{serverTypeToString@{serverTypeToString}!XmlServerInterface@{XmlServerInterface}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}XmlServerInterface::serverTypeToString (\$ {\em type})}\label{classXmlServerInterface_2ad52db39684b635ef53de9f9d4a7150}
+
+
+Get a string that represent a server type
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$type}]The number you get from the \doxyref{getServerType()}{p.}{classXmlServerInterface_7085b3adcd530e1f1197c8bc9b266887} function\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a string that represents the given type or \char`\"{}\char`\"{} if not found \end{Desc}
 
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}

@@ -165,6 +165,41 @@ class XmlServerInterface extends XmlInterface{
     return parent::getChildText($serverNode, 'ActClients');
   }
 
+  /** Get the type value of a server XML node
+    *
+    * The good way to use this function is to get the server
+    * xml node first (by a call to getServerByName) and call
+    * this with the returned server.
+    *
+    * The returned type is only a number. If you want a human-readable
+    * string representing this type, please use the serverTypeToString()
+    * function.
+    *
+    * \param $serverNode A server XML node.
+    *
+    * \return The type value or "" if the given server does not exist
+    */
+  function getServerType($serverNode){
+    return parent::getChildText($serverNode, 'Type');
+  }
+
+  /** Get the Unique name value of a server XML node
+    *
+    * The good way to use this function is to get the server
+    * xml node first (by a call to getServerByName) and call
+    * this with the returned server.
+    *
+    * The unique name is based on the MAC address of the \c eth0 interface
+    * of your PC.
+    *
+    * \param $serverNode A server XML node.
+    *
+    * \return The type value or "" if the given server does not exist
+    */
+  function getServerUniqueName($serverNode){
+    return parent::getChildText($serverNode, 'UniqueName');
+  }
+
   /** Change the ActClients value of a server XML node
     *
     * \param $serverNode A server XML node.
@@ -184,7 +219,12 @@ class XmlServerInterface extends XmlInterface{
 
   /** Add a new server
     *
+    * The server's type is a number (1-4) that represent the type of the
+    * server.
+    *
     * \param $name       The Name of the server
+    * \param $uniqueName The unique name of the server
+    * \param $type       The server's type
     * \param $ip         The IP address to contact this server
     * \param $port       The UDP port
     * \param $ftp        The FTP control channel port
@@ -194,11 +234,13 @@ class XmlServerInterface extends XmlInterface{
     * \param $time       The creation timestamp
     *
     */
-  function addServer($name, $ip, $port, $ftp, $desc, $technote, 
-		     $maxclients, $time){
+  function addServer($name, $uniqueName, $type, $ip, $port, $ftp, $desc, 
+		     $technote, $maxclients, $time){
 
     $server=parent::addElementToRoot('Server');
     parent::addTextElementToElement($server, 'Name', $name );
+    parent::addTextElementToElement($server, 'UniqueName', $uniqueName );
+    parent::addTextElementToElement($server, 'Type', $type );
     parent::addTextElementToElement($server, 'Ip', $ip );
     parent::addTextElementToElement($server, 'Port', $port );
     parent::addTextElementToElement($server, 'Ftp', $ftp );
@@ -240,5 +282,41 @@ class XmlServerInterface extends XmlInterface{
       echo 'An error occured during deleting the server';
     }
   }
+
+
+  /** Get a string that represent a server type
+    *
+    * \param $type The number you get from the getServerType() function
+    *
+    * \return a string that represents the given type or "" if not found
+    *
+    */
+  function serverTypeToString($type){
+    $ret="";
+
+    switch($type){
+    case 1:
+      $ret="Fantasy";
+      break;
+
+    case 2:
+      $ret="Contemporary";
+      break;
+
+    case 3:
+      $ret="Futuristic";
+      break;
+
+    case 4:
+      $ret="Post-apocalyptic";
+      break;
+    }
+
+    return $ret;
+  }
+
+
+
+
 }
 ?>

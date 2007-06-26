@@ -17,15 +17,17 @@ class __TestSuite{
   function __TestSuite($name){
     $this->testSuiteName=$name;
     $this->testCaseList=array();
-    addTestSuite(&$this);
+    addTestSuite($this);
   }
 
   /** Add a test case
     *
+    * \param $tCase The TestCase to add
+    *
     */
   function __AddTestCase($tCase){
-    echo "TestSuite AddTestCase called<br>";
-    array_push($this->testCaseList,$tCase);
+    echo "TestSuite::AddTestCase called<br>";
+    $this->testCaseList[]=$tCase;
   }
 
   /** Runs the cases of this suite

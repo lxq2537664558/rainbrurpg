@@ -1,4 +1,26 @@
 <?php
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 $acc=include 'access.php';
 if ($acc){
 ?>
@@ -7,9 +29,10 @@ if ($acc){
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Ip</th>
-        <th>Port</th>
-        <th>Ftp</th>
+
+        <th>Unique name</th>
+        <th>Type</th>
+
         <th colspan='2'>Creation</th>
         <th>Clients</th>
         <th>Actions</th>
@@ -27,10 +50,14 @@ if ($acc){
     foreach ($ServerNodeList as $server){
       // Server
       $serverName=$xmlserver->getServerName($server);
+      $serverUniqueName=$xmlserver->getServerUniqueName($server);
+      $serverTypeNum=$xmlserver->getServerType($server);
+      $serverType=$serverTypeNum;
+      $serverType.="&nbsp;(";
+      $serverType.=$xmlserver->serverTypeToString($serverTypeNum);
+      $serverType.=")";
+
       $serverDesc=$xmlserver->getServerDesc($server);
-      $serverIp=$xmlserver->getServerIp($server);
-      $serverPort=$xmlserver->getServerPort($server);
-      $serverFtp=$xmlserver->getServerFtp($server);
       $serverMaxClients=$xmlserver->getServerMaxClients($server);
       $serverActClients=$xmlserver->getServerActClients($server);
 
@@ -44,17 +71,14 @@ if ($acc){
       printf("<td %s>%s</td>", 
 	     detailLinkServer($serverName), $serverName);
       
-      // Server's Ip
-      printf("<td align='center' %s>%s</td>", 
-	     detailLinkServer($serverName), $serverIp);
-      
-      // Server's Port
+       // Server's unique name
       printf("<td %s>%s</td>", 
-	     detailLinkServer($serverName), $serverPort);
+	     detailLinkServer($serverName), $serverUniqueName);
 
-      // Server's Ftp control channel port
+       // Server's type
       printf("<td %s>%s</td>", 
-	     detailLinkServer($serverName), $serverFtp);
+	     detailLinkServer($serverName), $serverType);
+
       
       // Timestamp creation
       printf("<td %s>%s</td>",  detailLinkServer($serverName), 

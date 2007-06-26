@@ -1,7 +1,30 @@
 <?php
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 $acc=include 'access.php';
 if ($acc){
 ?>
+
 
 <?php
   include "xmlinterface.php";
@@ -25,6 +48,10 @@ function addServer(){
   $timestamp = trim($_POST['timestamp']);
   $maxClients = trim($_POST['maxClients']);
  
+  // The unique name based on MAC address
+  $uniqueName= trim($_POST['uniqueName']);
+  // The type of the server
+  $type= trim($_POST['type']);
 
   $xmlserver= new XmlServerInterface();
 
@@ -53,8 +80,8 @@ function addServer(){
       echo 'The server is added';
 
 
-      $xmlserver->addServer($name, $ip, $port, $ftp, $desc, $techNote, 
-			    $maxClients,$timestamp );
+      $xmlserver->addServer($name, $uniqueName, $type, $ip, $port, $ftp, 
+			    $desc, $techNote, $maxClients,$timestamp );
       
       $xmlserver->save();
       
@@ -75,17 +102,40 @@ function addServer(){
   <body>
     <h1>Add a server</h1>
     <p>Here, you can add a server to play RainbruRPG. 
-   <p>The ActClient property (number of clients actually connected) is always
-   set to 0 (zero).</p>
 
-   <p>The FTP port refers to the FTP server control channel. The port use
-   for data channel is alwways control_channel-1.</p>
+   <p>The <b>ActClient</b> property (number of clients actually connected) 
+   is always set to 0 (zero).</p>
+
+   <p>The <b>FTP port</b> refers to the FTP server control channel. The 
+   port use for data channel is alwways control_channel-1.</p>
+
+   <p>The <b>unique name</b> is the identifier based on the MAC address of 
+   the <code>
+   eth0</code> network interface of your computer.</p>
+
+   <p>The <b>Type</b> defines the type of server :
+     <ol>
+	<li>Fantasy (Medieval fantastique)</li>
+	<li>Contemporary (Contemporain)</li>
+	<li>Futuristic (Futuriste)</li>
+	<li>Post-apocaliptic (post-apocalyptique)</li>
+     </ol>
+   </p>
+
     <form action="addserver.php" method="post">
 <div align='center'>
 <table  class="noborder" width="400px">
 <tr>
       <td>Name </td>
       <td><input type="text" name="name" /></td>
+</tr>
+<tr>
+      <td>Unique Name </td>
+      <td><input type="text" name="uniqueName" /></td>
+</tr>
+<tr>
+      <td>Type </td>
+      <td><input type="text" name="type" /></td>
 </tr>
 
 <tr>
