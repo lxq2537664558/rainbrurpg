@@ -24,6 +24,7 @@
 
 #include "configdialog.h"
 
+#include <uniquename.h>
 #include <QTabWidget>
 
 /** The server configuration dialog constructor
@@ -62,6 +63,17 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
     leName->setToolTip(tr("The server public name"));
     nameLayout->addWidget(nameLabel);
     nameLayout->addWidget(leName);
+
+    // The server's unique name
+    QHBoxLayout *uNameLayout=new QHBoxLayout();
+    page1vb1->addLayout(uNameLayout);
+    QLabel* uNameLabel=new QLabel(tr("Unique name"),page1);
+    QString uNameText(UniqueName::getUniqueName().c_str());
+    QLabel* uName=new QLabel(uNameText,page1);
+    uName->setAlignment(Qt::AlignLeft);
+    uNameLayout->addWidget(uNameLabel);
+    uNameLayout->addWidget(uName);
+
     // The server description
     QLabel* descLabel=new QLabel(tr("Server description :"),this);
     page1vb1->addWidget(descLabel);
@@ -70,6 +82,49 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
     page1vb1->addWidget(teDesc);
     // Adding tab
     tabWidget->addTab(page1, "Identification");
+
+    // The server's type
+    QLabel* typeLabel=new QLabel(tr("Server's type :"),this);
+    page1vb1->addWidget(typeLabel);
+    QHBoxLayout *typeLayout=new QHBoxLayout();
+    page1vb1->addLayout(typeLayout);
+    QButtonGroup* typeButtonsGroup=new QButtonGroup();
+    QGroupBox* typeButtons=new QGroupBox(tr("Type"));
+      typeLayout->addWidget(typeButtons);
+      QRadioButton* radio1=new QRadioButton(tr("Fantasy"), typeButtons);
+      QRadioButton* radio2=new QRadioButton(tr("Contemporary"), typeButtons);
+      QRadioButton* radio3=new QRadioButton(tr("Futuristic"), typeButtons);
+      QRadioButton* radio4=new QRadioButton(tr("Post-apocalyptic"), 
+					    typeButtons);
+
+      typeButtonsGroup->addButton(radio1);
+      typeButtonsGroup->addButton(radio2);
+      typeButtonsGroup->addButton(radio3);
+      typeButtonsGroup->addButton(radio4);
+
+      typeButtonsGroup->setId(radio1, 1);
+      typeButtonsGroup->setId(radio2, 2);
+      typeButtonsGroup->setId(radio3, 3);
+      typeButtonsGroup->setId(radio4, 4);
+
+
+      QVBoxLayout *vbox = new QVBoxLayout;
+        vbox->addWidget(radio1);
+        vbox->addWidget(radio2);
+        vbox->addWidget(radio3);
+        vbox->addWidget(radio4);
+        vbox->addStretch(1);
+        typeButtons->setLayout(vbox);
+
+    QGroupBox* typeDesc=new QGroupBox(tr("Description"));
+      typeLayout->addWidget(typeDesc);
+      labTypeDescription=new QLabel(tr("No type selected"));
+      labTypeDescription->setAlignment(Qt::AlignLeft|Qt::AlignTop);
+      labTypeDescription->setWordWrap(true);
+      QVBoxLayout *vbox2 = new QVBoxLayout;
+        vbox2->addWidget(labTypeDescription);
+        typeDesc->setLayout(vbox2);
+	typeDesc->setFixedWidth(250);
 
   // Second page
   QWidget* page2=new QWidget();
@@ -95,6 +150,7 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
       cbFlood=new QCheckBox(tr("Flooder"), this);
       cbFlood->setToolTip(tr("This server accepts netflooder connections"));
       vbModes->addWidget(cbFlood);
+      vbModes->addStretch(1);
 
       // Server's options
       QGridLayout *glOpts=new QGridLayout();
@@ -128,6 +184,7 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
       sbCli->setMaximum(0xFFFF);
       sbCli->setValue(DEFAULT_MAX_CLIENTS);
       glOpts->addWidget(sbCli, 3, 1);
+      glOpts->setRowStretch( 4, 1);
     // Adding tab
     tabWidget->addTab(page2, "Network");
 
@@ -161,6 +218,8 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
       leDbPwd=new QLineEdit("", this);
       leDbPwd->setEchoMode(QLineEdit::Password);
       dbOpts->addWidget(leDbPwd, 3, 1);
+
+      dbOpts->setRowStretch( 4, 1);
     // Adding tab
     tabWidget->addTab(page3, "Database");
 
@@ -194,6 +253,9 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
   connect(leIp, SIGNAL(textChanged(const QString&)), this, 
 	  SLOT(ipAddressChanged(const QString&)));
 
+  connect(typeButtonsGroup, SIGNAL(buttonClicked(int)), this, 
+	  SLOT(serverTypeChanged(int)));
+
   // database related connections
   connect(leDbHost, SIGNAL(textChanged(const QString&)), this, 
 	  SLOT(hostNameChanged(const QString&)));
@@ -221,6 +283,7 @@ RainbruRPG::Server::ConfigDialog::~ConfigDialog(){
   delete sbCli;
   delete showTechNote;
   delete leIp;
+  delete labTypeDescription;
 
   // Database line edit widgets
   delete leDbHost;
@@ -429,3 +492,44 @@ void RainbruRPG::Server::ConfigDialog::ftpPortChanged(int i){
 
 }
 
+/** The slot called when the server's type change
+  *
+  * It change the labTypeDescription QLabel content to show a short
+  * description of the selected type.
+  *
+  * \param i The new type index
+  *
+  */
+void RainbruRPG::Server::ConfigDialog::serverTypeChanged(int i){
+  LOGI("Server type changed");
+  LOGCATS("New type is ");
+  LOGCATI(i);
+  LOGCAT();
+
+  QString s;
+
+  switch (i){
+  case 1:
+    s="The game is situated at medieval time, in a world where the magic "
+      "is important.";
+    break;
+
+  case 2:
+    s="The game is played in our current time.";
+    break;
+
+  case 3:
+    s="The game is based on a distant era whith advanced technologies.";
+    break;
+
+  case 4:
+    s="The player is in a rebuilding world, recently devastated by an "
+      "apocalypse.";
+    break;
+
+  default:
+    s="No type selected";
+  }
+
+  labTypeDescription->setText(s);
+}

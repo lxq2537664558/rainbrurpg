@@ -123,12 +123,12 @@ curlservermodifclients.lo .libs/curlservermodifclients.o:  \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_bvector.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/vector.tcc \
   /usr/include/curl/curl.h /usr/include/curl/curlver.h \
-  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/sys/socket.h /usr/include/sys/uio.h \
   /usr/include/bits/uio.h /usr/include/bits/socket.h \
   /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
   /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
   /usr/include/asm-i486/sockios.h /usr/include/sys/time.h \
+  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/curl/curl.h curlinterface.h curlposteddata.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/map \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/bits/stl_tree.h \
@@ -446,10 +446,6 @@ curlsubmitform.h:
 
 /usr/include/curl/curlver.h:
 
-/usr/include/curl/easy.h:
-
-/usr/include/curl/multi.h:
-
 /usr/include/sys/socket.h:
 
 /usr/include/sys/uio.h:
@@ -469,6 +465,10 @@ curlsubmitform.h:
 /usr/include/asm-i486/sockios.h:
 
 /usr/include/sys/time.h:
+
+/usr/include/curl/easy.h:
+
+/usr/include/curl/multi.h:
 
 /usr/include/curl/curl.h:
 

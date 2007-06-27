@@ -307,3 +307,53 @@ void RainbruRPG::Server::ServerConfiguration::setFtpPort(int i){
 int RainbruRPG::Server::ServerConfiguration::getFtpPort() const{
   return this->ftpPort;
 }
+
+/** Change the server type
+  *
+  * Please see the ServerConfiguration::type member for a list of 
+  * available server type.
+  *
+  * \sa type
+  *
+  * \param t The type number
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::setType(int t){
+  this->type=t;
+}
+
+/** Get the type of this server
+  *
+  * Please see the ServerConfiguration::type member for a list of 
+  * available server type.
+  *
+  * \return An integer that represent the current server's type
+  *
+  */
+int RainbruRPG::Server::ServerConfiguration::getType(){
+  return this->type;
+}
+
+/** Change the unique name of this server
+  *
+  * \sa uniqueName (member), UniqueName (class), getUniqueName()
+  *
+  * \param un The new unique name
+  *
+  */
+void RainbruRPG::Server::ServerConfiguration::
+setUniqueName(const std::string& un){
+  this->uniqueName=un;
+}
+
+/** Get the unique name of this server
+  *
+  * \sa uniqueName (member), UniqueName (class), setUniqueName()
+  *
+  * \return The current unique name
+  *
+  */
+const std::string& RainbruRPG::Server::ServerConfiguration::
+getUniqueName()const{
+  return this->uniqueName;
+}

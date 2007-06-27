@@ -81,8 +81,24 @@ namespace RainbruRPG{
       std::string getUserDirFile(std::string) const;
       std::string getShareFile(std::string) const;
 
-      std::string getUploadFile(std::string) const;
-      std::string getDownloadFile(std::string) const;
+      /** Get the absolute filename of a file upload on the server
+        *
+	* \param s Only the file name
+	*
+	* \return The path and the filename
+	*
+	*/
+      std::string getUploadFile(std::string s) const;
+
+      /** Get the absolute filename of a file you download from a server
+        *
+	* \param s Only the file name
+	* \param sun The server Unique name
+	*
+	* \return The path and the filename
+	*
+	*/
+      std::string getDownloadFile(std::string s, std::string sun) const;
 
 
     private:

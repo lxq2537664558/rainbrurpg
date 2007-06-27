@@ -50,7 +50,7 @@ namespace RainbruRPG{
       * it. The unique name is used as directory name.
       *
       * The unique name start with \c svr and is followed by the MAC address
-      * of \c eth0 if this network interface is found.
+      * of \c eth0 if this network interface if found.
       *
       */
     class UniqueName{
@@ -59,7 +59,6 @@ namespace RainbruRPG{
 
     private:
       static std::string getMacAddress(const std::string&);
-
 
     };
 

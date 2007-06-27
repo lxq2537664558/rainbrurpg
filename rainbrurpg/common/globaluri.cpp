@@ -187,8 +187,7 @@ getShareFile(std::string file) const
   *
   */
 void RainbruRPG::Network::GlobalURI::
-installConfigFile(const std::string& filename)
-{
+installConfigFile(const std::string& filename){
   // The $PREFIX/share... filename
   std::string s=USER_INSTALL_PREFIX;
   s+="/share/RainbruRPG/config/";

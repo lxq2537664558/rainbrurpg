@@ -385,6 +385,11 @@ setType(const std::string& s){
   postedData.setValue("type", s);
 }
 
+/** Get the value of the \c uniqueName key
+  *
+  * \return The content of the \c uniqueName key
+  *
+  */
 const std::string& RainbruRPG::Network::Ident::CurlServerAdd::
 getUniqueName(){
   std::string s;
@@ -392,6 +397,11 @@ getUniqueName(){
   return s;
 }
 
+/** Get the value of the \c type key
+  *
+  * \return The content of the \c type key
+  *
+  */
 const std::string& RainbruRPG::Network::Ident::CurlServerAdd::
 getType(){
   std::string s(postedData.getValue("type"));

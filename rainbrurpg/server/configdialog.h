@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 27 jun 2007 : Adding UniqueName
  * - 29 may 2007 : Creation TabControl
  *
  */
@@ -87,6 +88,8 @@ namespace RainbruRPG{
       QLineEdit* leDbRole;
       /** The database password lineedit */
       QLineEdit* leDbPwd;
+      /** The label used to show the server's type description */
+      QLabel* labTypeDescription; 
 
     private slots:
       void descriptionChanged();
@@ -105,6 +108,7 @@ namespace RainbruRPG{
       void passwordChanged(const QString&);
 
       void controls();
+      void serverTypeChanged(int);
     };
   }
 }

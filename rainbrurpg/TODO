@@ -54,15 +54,15 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
+- xmlServerConf save and restore uniquename and servertype
+- ConfigDialog store uniquename/servertype in ServerConfiguration
+- ConfigDialog init uniquename/servertype values from ServerConfiguration
 - common/curlserveradd uses uniquename and servertype
-- ServerConfiguration uses uniquename and servertype
-- ConfigDialog shows uniquename and uses servertype
-- doxygen documentation
 - ftpclient uses ServerList to choose the ftpserver
 - Using GlobalURI for filename
    $HOME/uploaded
    $HOME/quarantine (quarantaine)
-   $HOME/downloaded/UniqueName
+   $HOME/downloaded/serverUniqueName
 
 * GameServer
 - Add uniqueName and type (époque) to ServerConf and configuration
@@ -165,58 +165,9 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-142
+- ServerConfiguration uses uniquename and servertype
+- doxygen documentation
+- ConfigDialog shows uniquename and uses servertype
 - adminsite doxygen documentation
-- Add UniqueName and Type to the adminsite : serverdetails.php
-- Add UniqueName and Type to the adminsite : serverlist.php
-- Add UniqueName and Type to the adminsite : addserver.php
-- Add UniqueName and Type to the adminsite : xmlserverinterface.php
+- Add UniqueName and Type to the adminsite
 
-* v 0.0.4-141
-- UniqueName implementation
-- Client tells the transfer is finished
-   common/ftpclient.cpp:563
-- Server closes the transfer
-- Test the RETR transfer with a SHA hash sum program        OK
-- Test the STOR transfer with a SHA hash sum program        OK
-- The RETR does not finish (it stop at 99.63%)
-   It is OK in BINARY mode
-- Still a pb with filename of STOR command    FIXED
-- The client know the transfer is terminated
-- The server closes the data channel when the file is eof
-   Does the client a segfault ?
-- Makes the progressbar progress (client)
-   FtpClient::RETR_ThreadedFunction
-
-* v 0.0.4-140
-- Makes the progressbar progress (server)
-- FtpServer::commandRETR read file and send packets
-   FtpDataConnection::commandRETR
-   Must be threaded or based on a signal (QIODevice::bytesWritten OK)
-- A FtpServer warning
-  [ftptransfer.cpp:649] WW FtpDataConnection not found
-   nextFilename is not correctly set
-- FtpTransfer::commandRETR : The filename is not correct 
-   [ftptransfer.cpp:423] -- Opening file '/home/mouse/servertest' in 
-   /home/mouse/servertest
-- Doxygen documentation improvement
-- common/ftpclient : RETR bug fixed when file does not exit
-- Draw the RETR file size (client)
-- Draw the RETR file size (server)
-- replace server's "200 waiting FSIZE command" by a message that give the
-   file size. (ftpcontrol.cpp:20)
-- in common/ftpclient : std::string commandRETR
-     (const std::string& filename)
-- common/ftpclient : STOR_ThreadedFunction implementation
-
-* v 0.0.4-139
-- Showing in ftpclient that the transfer is ended
-- common/ftpClient::transferTerminated signal
-- Server is PASSIVE by default
-  The server definition is in ftptransfer.cpp
-- PASV is deactivated
-- Replace StringConv::ctoi by stoi
-- adminsite/Makefile added
-- Add rpgConcepts to the backup_prog script
-- An Implementation section in rpgConcepts
-- A french latex article called rpgConcepts in prog/latex
-- Adminsite now in prog/adminsite (CVS checkout)

@@ -1,3 +1,52 @@
+* v 0.0.4-141
+- UniqueName class implementation
+- Client tells the transfer is finished
+   common/ftpclient.cpp:563
+- Server closes the transfer
+- Test the RETR transfer with a SHA hash sum program        OK
+- Test the STOR transfer with a SHA hash sum program        OK
+- The RETR does not finish (it stop at 99.63%)
+   It is OK in BINARY mode
+- Still a pb with filename of STOR command    FIXED
+- The client know the transfer is terminated
+- The server closes the data channel when the file is eof
+   Does the client a segfault ?
+- Makes the progressbar progress (client)
+   FtpClient::RETR_ThreadedFunction
+
+* v 0.0.4-140
+- Makes the progressbar progress (server)
+- FtpServer::commandRETR read file and send packets
+   FtpDataConnection::commandRETR
+   Must be threaded or based on a signal (QIODevice::bytesWritten OK)
+- A FtpServer warning
+  [ftptransfer.cpp:649] WW FtpDataConnection not found
+   nextFilename is not correctly set
+- FtpTransfer::commandRETR : The filename is not correct 
+   [ftptransfer.cpp:423] -- Opening file '/home/mouse/servertest' in 
+   /home/mouse/servertest
+- Doxygen documentation improvement
+- common/ftpclient : RETR bug fixed when file does not exit
+- Draw the RETR file size (client)
+- Draw the RETR file size (server)
+- replace server's "200 waiting FSIZE command" by a message that give the
+   file size. (ftpcontrol.cpp:20)
+- in common/ftpclient : std::string commandRETR
+     (const std::string& filename)
+- common/ftpclient : STOR_ThreadedFunction implementation
+
+* v 0.0.4-139
+- Showing in ftpclient that the transfer is ended
+- common/ftpClient::transferTerminated signal
+- Server is PASSIVE by default
+  The server definition is in ftptransfer.cpp
+- PASV is deactivated
+- Replace StringConv::ctoi by stoi
+- adminsite/Makefile added
+- Add rpgConcepts to the backup_prog script
+- An Implementation section in rpgConcepts
+- A french latex article called rpgConcepts in prog/latex
+- Adminsite now in prog/adminsite (CVS checkout)
 
 * v 0.0.4-138
 - Ftp port correctly added to the administration site

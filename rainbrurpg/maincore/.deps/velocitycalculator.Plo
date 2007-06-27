@@ -329,13 +329,13 @@ velocitycalculator.lo .libs/velocitycalculator.o: velocitycalculator.cpp \
   ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
   ../common/tnotelist.h ../common/xmltimestamp.h ../common/tidentreturn.h \
   ../common/logger.h ../common/curlfiletoxml.h /usr/include/curl/curl.h \
-  /usr/include/curl/curlver.h /usr/include/curl/easy.h \
-  /usr/include/curl/multi.h /usr/include/sys/socket.h \
+  /usr/include/curl/curlver.h /usr/include/sys/socket.h \
   /usr/include/sys/uio.h /usr/include/bits/uio.h \
   /usr/include/bits/socket.h /usr/include/bits/sockaddr.h \
   /usr/include/asm/socket.h /usr/include/asm-i486/socket.h \
   /usr/include/asm/sockios.h /usr/include/asm-i486/sockios.h \
-  /usr/include/sys/time.h /usr/include/curl/curl.h \
+  /usr/include/sys/time.h /usr/include/curl/easy.h \
+  /usr/include/curl/multi.h /usr/include/curl/curl.h \
   ../common/curlgetfile.h ../common/curlinterface.h \
   ../common/httpresponse.h ../common/globaluri.h ../common/hashpassword.h \
   ../common/sha1.h /usr/local/include/OIS/OISKeyboard.h \
@@ -1186,10 +1186,6 @@ gameengine.h:
 
 /usr/include/curl/curlver.h:
 
-/usr/include/curl/easy.h:
-
-/usr/include/curl/multi.h:
-
 /usr/include/sys/socket.h:
 
 /usr/include/sys/uio.h:
@@ -1209,6 +1205,10 @@ gameengine.h:
 /usr/include/asm-i486/sockios.h:
 
 /usr/include/sys/time.h:
+
+/usr/include/curl/easy.h:
+
+/usr/include/curl/multi.h:
 
 /usr/include/curl/curl.h:
 
