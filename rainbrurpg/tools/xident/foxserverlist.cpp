@@ -184,6 +184,9 @@ void RainbruRPG::Gui::FoxServerList::
 addServer(RainbruRPG::Network::Ident::tServerListItem* p){
   FXString s;
 
+  // Used to auto-numbered the insertion of new TableItem
+  unsigned int col=0;
+
   FXint num=table->getNumRows();
 
   // Adds a new row at the end of the table
@@ -198,23 +201,53 @@ addServer(RainbruRPG::Network::Ident::tServerListItem* p){
 
   // Sets the name
   FXTableItem* item=new FXTableItem(p->name);
-  table->setItem(num, 0, item);
+  table->setItem(num, col++, item);
 
-  // Sets the mail
-  FXTableItem* item2=new FXTableItem(p->ipAdress);
-  table->setItem(num, 1, item2);
+  // Sets the unique name
+  FXTableItem* itemUniqueName=new FXTableItem(p->uniqueName.c_str());
+  table->setItem(num, col++, itemUniqueName);
+
+  // Sets the type
+  int iType=p->type;
+  std::string itemTypeText;
+
+  switch (iType){
+  case 1:
+    itemTypeText="1 (Fantasy)";
+    break;
+  case 2:
+    itemTypeText="2 (Contemporary)";
+    break;
+  case 3:
+    itemTypeText="3 (Futuristic)";
+    break;
+  case 4:
+    itemTypeText="4 (Post-apocalyptic)";
+    break;
+  default:
+    itemTypeText="ERROR";
+    break;
+  }
+
+  FXTableItem* itemType=new FXTableItem(itemTypeText.c_str());
+  table->setItem(num, col++, itemType);
+
+  // Sets the IP address
+  std::string txtIp=p->ipAdress;
+  FXTableItem* item2=new FXTableItem(txtIp.c_str());
+  table->setItem(num, col++, item2);
 
   // Sets the UDP port
   FXTableItem* item3=new FXTableItem(p->port);
-  table->setItem(num, 2, item3);
+  table->setItem(num, col++, item3);
 
   // Sets the FTP port
   FXTableItem* item4=new FXTableItem(p->ftp);
-  table->setItem(num, 3, item4);
+  table->setItem(num, col++, item4);
 
   // Sets the creation date
   FXTableItem* item5=new FXTableItem(p->creation.c_str());
-  table->setItem(num, 4, item5);
+  table->setItem(num, col++, item5);
 
   // Sets the clients informations
   std::string cli="";
@@ -223,7 +256,7 @@ addServer(RainbruRPG::Network::Ident::tServerListItem* p){
   cli+= StringConv::getSingleton().itos(p->maxClients);
 
   FXTableItem* item6=new FXTableItem(cli.c_str());
-  table->setItem(num, 5, item6);
+  table->setItem(num, col++, item6);
 }
 
 /** The add server callback
@@ -281,13 +314,16 @@ void RainbruRPG::Gui::FoxServerList::refresh(){
   *
   */
 void RainbruRPG::Gui::FoxServerList::createTableHeader(){
-  table->insertColumns(0, 6);
-  table->getColumnHeader()->setItemText(0, "Name");
-  table->getColumnHeader()->setItemText(1, "Ip");
-  table->getColumnHeader()->setItemText(2, "Port");
-  table->getColumnHeader()->setItemText(3, "Ftp");
-  table->getColumnHeader()->setItemText(4, "Creation");
-  table->getColumnHeader()->setItemText(5, "Clients");
+  table->insertColumns(0, 8);
+  unsigned int i=0;
+  table->getColumnHeader()->setItemText(i++, "Name");
+  table->getColumnHeader()->setItemText(i++, "UniqueName");
+  table->getColumnHeader()->setItemText(i++, "type");
+  table->getColumnHeader()->setItemText(i++, "Ip");
+  table->getColumnHeader()->setItemText(i++, "Port");
+  table->getColumnHeader()->setItemText(i++, "Ftp");
+  table->getColumnHeader()->setItemText(i++, "Creation");
+  table->getColumnHeader()->setItemText(i++, "Clients");
   table->getRowHeader()->setWidth(40);
 }
 

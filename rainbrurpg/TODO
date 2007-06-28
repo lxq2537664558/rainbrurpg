@@ -54,10 +54,7 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - A common/hashfile class that compute hashsum on a file
 
 o [mouse] FTP Server
-- xmlServerConf save and restore uniquename and servertype
-- ConfigDialog store uniquename/servertype in ServerConfiguration
-- ConfigDialog init uniquename/servertype values from ServerConfiguration
-- common/curlserveradd uses uniquename and servertype
+- Update rpgConcepts to tell serverType is implemented
 - ftpclient uses ServerList to choose the ftpserver
 - Using GlobalURI for filename
    $HOME/uploaded
@@ -165,6 +162,13 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-142
+- Update xident addserver dialog
+- Update xident foxserverlist
+- server's MainWindow::registerServer uses uniquename and type
+- common/curlserveradd uses uniquename and servertype
+- ConfigDialog init servertype value from ServerConfiguration
+- ConfigDialog stores servertype in ServerConfiguration
+- xmlServerConf save and restore servertype
 - ServerConfiguration uses uniquename and servertype
 - doxygen documentation
 - ConfigDialog shows uniquename and uses servertype

@@ -22,10 +22,13 @@
 
 #include "serverconfiguration.h"
 
+#include <uniquename.h>
+
 /** The default constructor 
   *
   */
 RainbruRPG::Server::ServerConfiguration::ServerConfiguration(){
+  this->uniqueName=UniqueName::getUniqueName();
   name="Unnamed server";
   description="";
   techNote="";

@@ -50,9 +50,12 @@ namespace RainbruRPG {
 	*
 	* The posted keys are :
 	* - name : The name of the server
+	* - uniqueName : A name based on the MAC address of you 
+	*                network interface
 	* - ip : The public IP adress of the server in the form x.x.x.x
 	* - port : The UDP listening port
 	* - ftp  : The FTP control channel port
+	* - type : The server's type
 	* - maxClients : The maximum number of clients allowed 
 	* - description : The description of the server
 	* - technote : a possibly empty technical note

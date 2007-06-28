@@ -234,12 +234,12 @@ serverdesc.o serverdesc.o: serverdesc.cpp serverdesc.h \
   ../../common/tnotelist.h ../../common/xmltimestamp.h \
   ../../common/tinyxml.h ../../common/curlfiletoxml.h \
   /usr/include/curl/curl.h /usr/include/curl/curlver.h \
-  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/sys/socket.h /usr/include/sys/uio.h \
   /usr/include/bits/uio.h /usr/include/bits/socket.h \
   /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
   /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
   /usr/include/asm-i486/sockios.h /usr/include/sys/time.h \
+  /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/curl/curl.h ../../common/curlgetfile.h \
   ../../common/curlinterface.h \
   /usr/lib/gcc/i486-linux-gnu/4.1.2/../../../../include/c++/4.1.2/vector \
@@ -969,10 +969,6 @@ serverdesc.h:
 
 /usr/include/curl/curlver.h:
 
-/usr/include/curl/easy.h:
-
-/usr/include/curl/multi.h:
-
 /usr/include/sys/socket.h:
 
 /usr/include/sys/uio.h:
@@ -992,6 +988,10 @@ serverdesc.h:
 /usr/include/asm-i486/sockios.h:
 
 /usr/include/sys/time.h:
+
+/usr/include/curl/easy.h:
+
+/usr/include/curl/multi.h:
 
 /usr/include/curl/curl.h:
 

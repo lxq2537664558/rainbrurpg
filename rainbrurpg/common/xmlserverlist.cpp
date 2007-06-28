@@ -107,6 +107,7 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
     it->creation= xts.getCTimeS("creation", child);
 
     it->name= getXMLTextFromName(child, "Name");
+    it->uniqueName= getXMLTextFromName(child, "UniqueName");
     it->description= getXMLTextFromName(child, "Desc");
     it->ipAdress= getXMLTextFromName(child, "Ip");
     it->port= getXMLTextFromName(child, "Port");
@@ -114,8 +115,10 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
     it->techNote= getXMLTextFromName(child, "TechNote");
     const char* mc=getXMLTextFromName(child, "MaxClients");
     const char* ac=getXMLTextFromName(child, "ActClients");
+    const char* tc=getXMLTextFromName(child, "Type");
     it->maxClients=StringConv::getSingleton().stoi(mc);
     it->actClients=StringConv::getSingleton().stoi(ac);
+    it->type=StringConv::getSingleton().stoi(tc);
 
     pl->push_back(it);
   }

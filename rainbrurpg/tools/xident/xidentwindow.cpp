@@ -68,7 +68,7 @@ RainbruRPG::Gui::XIdentWindow::XIdentWindow(FXApp * a)
   new FXMenuCommand(toolmenu,"&Accounts\tCtl-A\t"
 		    "Creates, deletes and manages accounts.",
 		    NULL,this,ID_TOOL_ACCOUNT);
-  new FXMenuCommand(toolmenu,"&Servers\tCtl-A\t"
+  new FXMenuCommand(toolmenu,"&Servers\tCtl-S\t"
 		    "Creates, deletes and manages servers.",
 		    NULL,this,ID_TOOL_SERVER);
 

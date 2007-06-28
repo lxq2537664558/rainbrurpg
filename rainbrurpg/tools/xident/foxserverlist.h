@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
  * - 29 may 2007 : Adding the 'ftp' column
  *
  */

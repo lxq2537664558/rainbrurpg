@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
  * - 29 may 2007 : Adding the 'ftp' column
  *
  */
@@ -84,6 +85,8 @@ namespace RainbruRPG{
 
       /** The widget containing the server name */
       FXTextField* tfServerName;
+      /** The widget containing the server's unique name */
+      FXTextField* tfServerUniqueName;
       /** The widget containing the server IP adress */
       FXTextField* tfServerIp;
       /** The widget containing the server UDP port */
@@ -96,7 +99,8 @@ namespace RainbruRPG{
       FXText* txtDesc;
       /** The widget containing the server technical note */
       FXText* txtTech;
-
+      /** The combo box containint the possible server's types */
+      FXComboBox* cbServerType;
       /** An error string used for validation error
         *
 	* This string is fed up by the controls() function to send

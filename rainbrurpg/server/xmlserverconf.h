@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jun 2007 : Adding UniqueName and servertype
  * - 31 may 2007 : Adding the FTP control channel port
  *
  */
@@ -42,6 +43,10 @@ namespace RainbruRPG{
       * You must then call save(ServerConfiguration*) or 
       * load(ServerConfiguration*) according to the usage.
       *
+      * The server's UniqueName is a special case : it is not save in
+      * the xml file because it is created by UniqueName each time the 
+      * server start.
+      *
       */
     class xmlServerConf{
     public:
@@ -56,6 +61,7 @@ namespace RainbruRPG{
       const char* getServerDesc();
       const char* getTechNote();
       const char* getIpAdress();
+
       bool getMode(const char*);
       bool getPlayMode();
       bool getEditMode();
@@ -67,12 +73,13 @@ namespace RainbruRPG{
       int getPort();
       int getFtpPort();
       int getMaxClient();
+      int getType();
 
       void setServerName(const std::string&);
       void setDescription(const std::string&);
       void setTechNote(const std::string&);
       void setServerMode(bool, bool, bool);
-      void setServerOption(const std::string&, int, int, int );
+      void setServerOption(const std::string&, int, int, int, int );
 
       const std::string& getDbHostName()const;
       const std::string& getDbName()const;

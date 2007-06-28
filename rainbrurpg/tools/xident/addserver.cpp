@@ -54,12 +54,28 @@ RainbruRPG::Gui::AddServer::AddServer(FXApp *a)
   FXMatrix *frInfo = new FXMatrix(root, 2, MATRIX_BY_COLUMNS,LAYOUT_FILL_X);
   FXLabel* labServerName   =new FXLabel(frInfo, "Name");
   tfServerName=new FXTextField(frInfo, 20 );
+
+  FXLabel* labServerUniqueName   =new FXLabel(frInfo, "Unique Name");
+  tfServerUniqueName=new FXTextField(frInfo, 20 );
+
+  FXLabel* labServerType   =new FXLabel(frInfo, "Type");
+  cbServerType=new FXComboBox(frInfo, 20 );
+  cbServerType->setNumVisible(4);
+  cbServerType->appendItem( "1 - Fantasy");
+  cbServerType->appendItem( "2 - Contemporary");
+  cbServerType->appendItem( "3 - Futuristic");
+  cbServerType->appendItem( "4 - Post-apocalyptic");
+
+
   FXLabel* labServerIp     =new FXLabel(frInfo, "IP adress");
   tfServerIp  =new FXTextField(frInfo, 20 );
+
   FXLabel* labServerPort   =new FXLabel(frInfo, "UDP port");
   tfServerPort=new FXTextField(frInfo, 20 );
+
   FXLabel* labServerFtpPort   =new FXLabel(frInfo, "FTP port");
   tfServerFtp=new FXTextField(frInfo, 20 );
+
   FXLabel* labServerCli    =new FXLabel(frInfo, "Maximum allowed clients");
   tfServerCli =new FXTextField(frInfo, 20 );
 
@@ -96,6 +112,8 @@ RainbruRPG::Gui::AddServer::~AddServer(){
   delete tfServerCli;
   delete txtDesc;
   delete txtTech;
+  delete tfServerUniqueName;
+  delete cbServerType;
 }
 
 /** The FOX-Toolkit create method
@@ -208,6 +226,9 @@ bool RainbruRPG::Gui::AddServer::controls(){
   */
 void RainbruRPG::Gui::AddServer::addServer(){
   std::string name(tfServerName->getText().text());
+  std::string uniqueName(tfServerUniqueName->getText().text());
+  std::string type=StringConv::getSingleton()
+    .itos(cbServerType->getCurrentItem()+1);
   std::string ip  (tfServerIp->getText().text());
   std::string port(tfServerPort->getText().text());
   std::string ftp (tfServerFtp->getText().text());
@@ -238,6 +259,8 @@ void RainbruRPG::Gui::AddServer::addServer(){
 
   CurlServerAdd csa;
   csa.setName(name);
+  csa.setUniqueName(uniqueName);
+  csa.setType(type);
   csa.setIpAddress(ip);
   csa.setPort(port);
   csa.setFtpPort(ftp);

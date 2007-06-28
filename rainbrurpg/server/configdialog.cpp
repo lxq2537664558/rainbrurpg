@@ -24,7 +24,6 @@
 
 #include "configdialog.h"
 
-#include <uniquename.h>
 #include <QTabWidget>
 
 /** The server configuration dialog constructor
@@ -68,8 +67,7 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
     QHBoxLayout *uNameLayout=new QHBoxLayout();
     page1vb1->addLayout(uNameLayout);
     QLabel* uNameLabel=new QLabel(tr("Unique name"),page1);
-    QString uNameText(UniqueName::getUniqueName().c_str());
-    QLabel* uName=new QLabel(uNameText,page1);
+    uName=new QLabel("",page1);
     uName->setAlignment(Qt::AlignLeft);
     uNameLayout->addWidget(uNameLabel);
     uNameLayout->addWidget(uName);
@@ -86,9 +84,16 @@ ConfigDialog(ServerConfiguration* sc, QWidget* parent)
     // The server's type
     QLabel* typeLabel=new QLabel(tr("Server's type :"),this);
     page1vb1->addWidget(typeLabel);
+    QLabel* typeLabel2=new QLabel(
+	    tr("If some users are already playing in your server, you "
+	       "should not change the server's type because they could "
+	       "not play anymore."),this);
+
+    typeLabel2->setWordWrap(true);
+    page1vb1->addWidget(typeLabel2);
     QHBoxLayout *typeLayout=new QHBoxLayout();
     page1vb1->addLayout(typeLayout);
-    QButtonGroup* typeButtonsGroup=new QButtonGroup();
+    typeButtonsGroup=new QButtonGroup();
     QGroupBox* typeButtons=new QGroupBox(tr("Type"));
       typeLayout->addWidget(typeButtons);
       QRadioButton* radio1=new QRadioButton(tr("Fantasy"), typeButtons);
@@ -284,6 +289,8 @@ RainbruRPG::Server::ConfigDialog::~ConfigDialog(){
   delete showTechNote;
   delete leIp;
   delete labTypeDescription;
+  delete typeButtonsGroup;
+  delete uName;
 
   // Database line edit widgets
   delete leDbHost;
@@ -329,6 +336,15 @@ void RainbruRPG::Server::ConfigDialog::initValues(){
   leDbRole->setText(serverConfig->getUserName().c_str());
   leDbPwd->setText(serverConfig->getPassword().c_str());
 
+  // Server's type
+  int type=serverConfig->getType();
+  QAbstractButton* btn=typeButtonsGroup->button(type);
+  btn->setChecked(true);
+  // Calling the clicked slot to show the description at startup
+  serverTypeChanged(type);
+
+  // Unique name
+  uName->setText(serverConfig->getUniqueName().c_str());
 }
 /** A slot used when the server's description changed
   *
@@ -512,19 +528,23 @@ void RainbruRPG::Server::ConfigDialog::serverTypeChanged(int i){
   case 1:
     s="The game is situated at medieval time, in a world where the magic "
       "is important.";
+    serverConfig->setType(1);
     break;
 
   case 2:
     s="The game is played in our current time.";
+    serverConfig->setType(2);
     break;
 
   case 3:
     s="The game is based on a distant era whith advanced technologies.";
+    serverConfig->setType(3);
     break;
 
   case 4:
     s="The player is in a rebuilding world, recently devastated by an "
       "apocalypse.";
+    serverConfig->setType(4);
     break;
 
   default:

@@ -410,22 +410,7 @@ configdialog.o configdialog.o: configdialog.cpp ../common/logger.h \
   /usr/include/qt4/QtGui/qfontdatabase.h \
   /usr/include/qt4/QtGui/qtoolbar.h /usr/include/qt4/QtGui/qtoolbox.h \
   /usr/include/qt4/QtGui/qtabwidget.h /usr/include/qt4/QtGui/qsplitter.h \
-  /usr/include/qt4/QtGui/qdial.h serverconfiguration.h uniquename.h \
-  /usr/include/sys/ioctl.h /usr/include/bits/ioctls.h \
-  /usr/include/asm/ioctls.h /usr/include/asm-i486/ioctls.h \
-  /usr/include/asm/ioctl.h /usr/include/asm-i486/ioctl.h \
-  /usr/include/asm-generic/ioctl.h /usr/include/bits/ioctl-types.h \
-  /usr/include/sys/ttydefaults.h /usr/include/net/if.h \
-  /usr/include/sys/socket.h /usr/include/sys/uio.h \
-  /usr/include/bits/uio.h /usr/include/bits/socket.h \
-  /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
-  /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
-  /usr/include/asm-i486/sockios.h /usr/include/arpa/inet.h \
-  /usr/include/netinet/in.h /usr/include/bits/in.h \
-  /usr/include/bits/byteswap.h /usr/include/errno.h \
-  /usr/include/bits/errno.h /usr/include/linux/errno.h \
-  /usr/include/asm/errno.h /usr/include/asm-i486/errno.h \
-  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+  /usr/include/qt4/QtGui/qdial.h serverconfiguration.h \
   /usr/include/qt4/QtGui/QTabWidget
 
 ../common/logger.h:
@@ -1523,67 +1508,5 @@ configdialog.h:
 /usr/include/qt4/QtGui/qdial.h:
 
 serverconfiguration.h:
-
-uniquename.h:
-
-/usr/include/sys/ioctl.h:
-
-/usr/include/bits/ioctls.h:
-
-/usr/include/asm/ioctls.h:
-
-/usr/include/asm-i486/ioctls.h:
-
-/usr/include/asm/ioctl.h:
-
-/usr/include/asm-i486/ioctl.h:
-
-/usr/include/asm-generic/ioctl.h:
-
-/usr/include/bits/ioctl-types.h:
-
-/usr/include/sys/ttydefaults.h:
-
-/usr/include/net/if.h:
-
-/usr/include/sys/socket.h:
-
-/usr/include/sys/uio.h:
-
-/usr/include/bits/uio.h:
-
-/usr/include/bits/socket.h:
-
-/usr/include/bits/sockaddr.h:
-
-/usr/include/asm/socket.h:
-
-/usr/include/asm-i486/socket.h:
-
-/usr/include/asm/sockios.h:
-
-/usr/include/asm-i486/sockios.h:
-
-/usr/include/arpa/inet.h:
-
-/usr/include/netinet/in.h:
-
-/usr/include/bits/in.h:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/errno.h:
-
-/usr/include/bits/errno.h:
-
-/usr/include/linux/errno.h:
-
-/usr/include/asm/errno.h:
-
-/usr/include/asm-i486/errno.h:
-
-/usr/include/asm-generic/errno.h:
-
-/usr/include/asm-generic/errno-base.h:
 
 /usr/include/qt4/QtGui/QTabWidget:

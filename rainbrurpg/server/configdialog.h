@@ -90,6 +90,10 @@ namespace RainbruRPG{
       QLineEdit* leDbPwd;
       /** The label used to show the server's type description */
       QLabel* labTypeDescription; 
+      /** The buttonGroup that contains the type radio buttons */
+      QButtonGroup* typeButtonsGroup;
+      /** The QLabel that contains the unique name */
+      QLabel* uName;
 
     private slots:
       void descriptionChanged();

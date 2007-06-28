@@ -5,6 +5,6 @@
   </Description>
   <TechnicalNote>AZE</TechnicalNote>
   <Modes play="true" editor="false" flood="true" />
-  <Options ip="192.168.0.2" port="1235" ftp="2345" maxClient="25" />
+  <Options ip="192.168.0.2" port="1235" ftp="2345" maxClient="25" type="2"/>
   <Database hostname="hostName" dbname="dbName" user="userName" pwd="password"/>
 </ServerConfig>

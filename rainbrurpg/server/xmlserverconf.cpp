@@ -130,6 +130,11 @@ bool RainbruRPG::Server::xmlServerConf::load(ServerConfiguration* sc){
   LOGCATS("'");
   LOGCAT();
 
+  LOGCATS("  Type : '");
+  LOGCATI( getType());
+  LOGCATS("'");
+  LOGCAT();
+
   // Database debug
   LOGCATS("  dbHostName : '");
   LOGCATS( getDbHostName().c_str() );
@@ -153,6 +158,7 @@ bool RainbruRPG::Server::xmlServerConf::load(ServerConfiguration* sc){
 
   sc->setName(getServerName());
   sc->setDesc(getServerDesc());
+  sc->setType(getType());
   sc->setTechNote(getTechNote());
   sc->setPlayMode(getPlayMode());
   sc->setEditMode(getEditMode());
@@ -347,7 +353,7 @@ bool RainbruRPG::Server::xmlServerConf::save(ServerConfiguration* sc){
   setTechNote(sc->getTechNote());
   setServerMode(sc->getPlayMode(), sc->getEditMode(), sc->getFloodMode());
   setServerOption(sc->getIpAdress(), sc->getPort(), sc->getFtpPort(),
-		  sc->getMaxClient());
+		  sc->getMaxClient(), sc->getType());
 
   // Database
   setDatabase(sc->getHostName(), sc->getDatabaseName(), 
@@ -444,10 +450,12 @@ setServerMode(bool play, bool edit, bool flood){
   * \param port The UDP port used by the server
   * \param ftp  The FTP control channel port used by the server
   * \param maxClients The maxClient option
+  * \param type The server's type
   *
   */
 void RainbruRPG::Server::xmlServerConf::
-setServerOption(const std::string& ip, int port, int ftp,int maxClients){
+setServerOption(const std::string& ip, int port, int ftp,int maxClients, 
+		int type){
   TiXmlElement* childNode = root->FirstChild( "Options" )->ToElement();
   if (childNode){
     childNode->Clear();
@@ -455,8 +463,8 @@ setServerOption(const std::string& ip, int port, int ftp,int maxClients){
     childNode->SetAttribute("port", port);
     childNode->SetAttribute("ftp", ftp);
     childNode->SetAttribute("maxClient", maxClients);
- }
-
+    childNode->SetAttribute("type", type);
+  }
 }
 
 /** Get the IP adress
@@ -559,5 +567,16 @@ setDatabase(const std::string& host,const std::string& dbName,
 int RainbruRPG::Server::xmlServerConf::getFtpPort(){
   std::string s;
   s=getOption("ftp");
+  return StringConv::getSingleton().stoi(s);
+}
+
+/** Get the type of this server
+  *
+  * \param An integer that represent the type
+  *
+  */
+int RainbruRPG::Server::xmlServerConf::getType(){
+  std::string s;
+  s=getOption("type");
   return StringConv::getSingleton().stoi(s);
 }

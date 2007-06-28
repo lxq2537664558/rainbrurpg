@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jun 2007 : Adding the 'uniqueName' and 'type' keys
  * - 29 may 2007 : Adding the 'ftp' key
  *
  */
@@ -48,11 +49,15 @@ namespace RainbruRPG{
 
       /** A server structure like it appears in the servers.xml
         *
+	* This is the item of the tServerList. It contains all informations
+	* we can find on the adminsite about a server.
 	*
 	*/
       struct tServerListItem{
 	std::string creation;    //!< The date of creation
 	const char* name;        //!< The name of the server
+	std::string uniqueName;  //!< The unique name, based on MAC address
+	unsigned int type;       //!< The type (Fantasy, futuristic...)
 	const char* description; //!< The description
 	const char* ipAdress;    //!< The ip adress
 	const char* port;        //!< The UDP port
@@ -80,7 +85,7 @@ namespace RainbruRPG{
         *
 	* A server list is maintained in the administration site. This list
 	* is used by the clients to get the IP adress and other informations
-	* about server contact them.
+	* about server to contact them.
 	*
 	* It gets the server list from the administration site using a
 	* GlobalURI instance and uses the CurlFileToXml functions to retrieve

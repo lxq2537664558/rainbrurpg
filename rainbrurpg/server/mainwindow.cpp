@@ -364,6 +364,7 @@ bool RainbruRPG::Server::MainServerWindow::registerServer(){
     .itos(serverConfig->getFtpPort());
   std::string txtMC=StringConv::getSingleton()
     .itos(serverConfig->getMaxClient());
+  std::string txtType=StringConv::getSingleton().itos(serverConfig->getType());
 
   CurlServerAdd csa;
   csa.setName(serverConfig->getName());
@@ -373,6 +374,9 @@ bool RainbruRPG::Server::MainServerWindow::registerServer(){
   csa.setMaxClients(txtMC);
   csa.setDescription(serverConfig->getDesc());
   csa.setTechNote(serverConfig->getTechNote());
+
+  csa.setType(txtType);
+  csa.setUniqueName(serverConfig->getUniqueName());
 
   bool resp=csa.perform();
   if (!resp){
