@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 29 jun 2007 : Using xmlServerList
  * - 07 jun 2007 : A transferTerminated slot
  * - 25 apr 2007 : Starting implementation
  * - 25 apr 2007 : Starting implementation
@@ -34,6 +35,7 @@
 #include <gnet.h>
 #include <logger.h>
 #include <ftpclient.h>
+#include <xmlserverlist.h>
 
 /** A define macro used to indent the help messages */
 #define HELP_INDENT "            "
@@ -41,6 +43,7 @@
 #define UPDATE_INTERVAL 500
 
 using namespace RainbruRPG::Network;
+using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG{
   namespace Gui{
@@ -79,7 +82,9 @@ namespace RainbruRPG{
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
         ID_LAST,
 	/** The progressbar update identifier */
-	ID_UPDT
+	ID_UPDT,
+	/** The server combobox identifier */
+	ID_SERV
       };
  
       long onNotYetImplemented(FXObject* ,FXSelector,void*);
@@ -87,6 +92,7 @@ namespace RainbruRPG{
       long onConnect(FXObject* ,FXSelector,void*);
       long onHelp(FXObject* ,FXSelector,void*);
       long onUpdateTransfer(FXObject* ,FXSelector,void*);
+      long onServerChanged(FXObject* ,FXSelector,void*);
 
       void slotBytesWritten(int);
       void slotTransferTerminated();
@@ -123,10 +129,12 @@ namespace RainbruRPG{
       /** The command text field */
       FXTextField* fxTextField;
 
-      /** The etxt field used to enter the host IP adress */
+      /** The text field used to enter the host IP adress */
       FXTextField* tfHostIp;
-      /** The etxt field used to enter the host port */
+      /** The text field used to enter the host port */
       FXTextField* tfHostPort;
+      /** The text field used to enter the Unique name */
+      FXTextField* tfHostUName;
 
       /** The FtpClient instance used to send FTP commands */
       FtpClient* ftpClient;
@@ -145,7 +153,8 @@ namespace RainbruRPG{
 
       /** Set it to true to reset transfer visual */
       bool resetTransfer;
-
+      /** The global server list */
+      xmlServerList xmlServer;
     }; 
   }
 }

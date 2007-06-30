@@ -59,7 +59,7 @@ namespace RainbruRPG{
 	std::string uniqueName;  //!< The unique name, based on MAC address
 	unsigned int type;       //!< The type (Fantasy, futuristic...)
 	const char* description; //!< The description
-	const char* ipAdress;    //!< The ip adress
+	const char* ipAddress;   //!< The ip adress
 	const char* port;        //!< The UDP port
 	const char* ftp;         //!< The FTP control channel port 
 	const char* techNote;    //!< The technical note

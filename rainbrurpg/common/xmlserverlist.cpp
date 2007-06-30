@@ -109,7 +109,7 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
     it->name= getXMLTextFromName(child, "Name");
     it->uniqueName= getXMLTextFromName(child, "UniqueName");
     it->description= getXMLTextFromName(child, "Desc");
-    it->ipAdress= getXMLTextFromName(child, "Ip");
+    it->ipAddress= getXMLTextFromName(child, "Ip");
     it->port= getXMLTextFromName(child, "Port");
     it->ftp= getXMLTextFromName(child, "Ftp");
     it->techNote= getXMLTextFromName(child, "TechNote");

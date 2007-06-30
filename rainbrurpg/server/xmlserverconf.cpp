@@ -572,7 +572,7 @@ int RainbruRPG::Server::xmlServerConf::getFtpPort(){
 
 /** Get the type of this server
   *
-  * \param An integer that represent the type
+  * \return An integer that represent the type
   *
   */
 int RainbruRPG::Server::xmlServerConf::getType(){

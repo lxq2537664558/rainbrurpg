@@ -205,7 +205,7 @@ void RainbruRPG::Gui::WaitingPanel::runClient(){
      &RainbruRPG::Gui::WaitingPanel::slotConnectionUndefined));
 
 
-  const char* ip=server->ipAdress;
+  const char* ip=server->ipAddress;
   int port=StringConv::getSingleton().stoi(server->port);
   prog->increment(1);
   LOGCATS("Running on server ");

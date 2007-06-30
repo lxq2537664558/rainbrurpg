@@ -6,7 +6,7 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-o [mouse] AdminSite was modified
+o [mouse] NeededLibs was modified
 
 * Unittest implementation in common/
 - In this order
@@ -49,17 +49,24 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 #8  0x080506e1 in main () at main.cpp:57
 
 
-* SHA1 hash sum computation
-- A command line program that uses common/hashfile 
-- A common/hashfile class that compute hashsum on a file
-
 o [mouse] FTP Server
-- Update rpgConcepts to tell serverType is implemented
-- ftpclient uses ServerList to choose the ftpserver
+- Solve the pb with PLSM2 cvs
+- common/ftpclient uses uniqueName
 - Using GlobalURI for filename
    $HOME/uploaded
    $HOME/quarantine (quarantaine)
    $HOME/downloaded/serverUniqueName
+- Update rpgConcepts to tell serverType is implemented
+
+* server's Quarantine system design
+- A manage/quarantine menu opens a list of files put in quarantine
+- We have of preview of the files (QuarantineExplorer)
+- We can approve each files 
+
+
+* SHA1 hash sum computation
+- A command line program that uses common/hashfile 
+- A common/hashfile class that compute hashsum on a file
 
 * GameServer
 - Add uniqueName and type (époque) to ServerConf and configuration
@@ -161,7 +168,16 @@ o [mouse] FTP Server
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.4-143
+
 * v 0.0.4-142
+- Updating PLSM2
+   compilation error ('VisibleObjectsBoundsInfo' has not been
+   declared) update CANCELLED
+   This error is that this version of PLSM2 is for Eihort and not Dagon
+- Updating Ogre CVS (current version is 1.2.4)          OK
+- Change tServerListItem->ipAdress (ipAddress)
+- ftpclient uses ServerList to choose the ftpserver
 - Update xident addserver dialog
 - Update xident foxserverlist
 - server's MainWindow::registerServer uses uniquename and type

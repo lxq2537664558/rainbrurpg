@@ -37,6 +37,7 @@ FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
 
   FXMAPFUNC(SEL_TIMEOUT, RainbruRPG::Gui::FtpClientWindow::ID_UPDT, RainbruRPG::Gui::FtpClientWindow::onUpdateTransfer),
 
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_SERV, RainbruRPG::Gui::FtpClientWindow::onServerChanged),
 
 };
 
@@ -86,15 +87,38 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   // Matrix containing Admin info
   FXHorizontalFrame* frMatrix=new FXHorizontalFrame(frame, LAYOUT_FILL_X);
 
-  // Admin info
-  FXLabel* labIp=new FXLabel(frMatrix, "Server IP :");
-  tfHostIp=new FXTextField (frMatrix, 20 );
-  tfHostIp->setText("82.232.174.195");
-  FXLabel* labHostPort=new FXLabel(frMatrix, "port :");
-  tfHostPort=new FXTextField (frMatrix, 20 );
-  tfHostPort->setText("50002");
+  // Servers info
+  FXComboBox* cbServer=new FXComboBox(frMatrix, 40, this, ID_SERV, COMBOBOX_STATIC);
+  
+  tServerList* serverList=xmlServer.getServerList();
+  tServerList::const_iterator iter;
 
+  for (iter=serverList->begin(); iter != serverList->end(); iter++){
+    FXString serverName=(*iter)->name;
+    cbServer->appendItem(serverName);
+  }
+  cbServer->setNumVisible(serverList->size());
+
+  // The connect button
   FXButton* btnConnect=new FXButton(frMatrix, "Connect" , NULL, this, ID_CONN);
+
+  // IP, port and unique name Matrix
+  FXMatrix* ipuMatrix=new FXMatrix(frame, 2,  LAYOUT_FILL_X|MATRIX_BY_COLUMNS);
+
+  // server's IP
+  FXLabel* labHostIp=new FXLabel(ipuMatrix, "IP :");
+  tfHostIp=new FXTextField (ipuMatrix, 20 );
+  tfHostIp->setEditable(FALSE);
+
+  // server's port
+  FXLabel* labHostPort=new FXLabel(ipuMatrix, "port :");
+  tfHostPort=new FXTextField (ipuMatrix, 20 );
+  tfHostPort->setEditable(FALSE);
+
+  // server's unique name
+  FXLabel* labHostUName=new FXLabel(ipuMatrix, "Unique name :");
+  tfHostUName=new FXTextField (ipuMatrix, 20 );
+  tfHostUName->setEditable(FALSE);
 
   // Command lines remember
   fxText=new FXText(frame, this, ID_NYI, LAYOUT_FILL_X|LAYOUT_FILL_Y|FX::TEXT_READONLY);
@@ -139,6 +163,7 @@ RainbruRPG::Gui::FtpClientWindow::~FtpClientWindow(){
 
   delete tfHostIp;
   delete tfHostPort;
+  delete tfHostUName;
 
   delete ftpClient;
   delete labTrPb;
@@ -657,4 +682,31 @@ void RainbruRPG::Gui::FtpClientWindow::slotTransferTerminated(){
 void RainbruRPG::Gui::FtpClientWindow::slotFileSizeReceived(int i){
   labTransSize->setText(filesizeToString(i));
   labTrPb->setTotal(i);
+}
+
+/** The server combobox callback
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v The selected server's name
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FtpClientWindow::
+onServerChanged(FXObject* o,FXSelector s,void* v){
+
+  const char* serverName=(const char*)v;
+  LOGCATS("Server changed ");
+  LOGCATS(serverName);
+  LOGCAT();
+
+  tServerListItem* item=xmlServer.getServerByName(serverName);
+
+
+  tfHostIp->setText(item->ipAddress);
+  tfHostPort->setText(item->ftp);
+  tfHostUName->setText(item->uniqueName.c_str());
+
+  return 1;
 }

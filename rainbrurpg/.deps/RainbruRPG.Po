@@ -2,11 +2,11 @@ RainbruRPG.o RainbruRPG.o: RainbruRPG.cc /usr/include/stdio.h \
   /usr/include/features.h /usr/include/sys/cdefs.h \
   /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
   /usr/include/gnu/stubs-32.h \
-  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/stddef.h \
   /usr/include/bits/types.h /usr/include/bits/typesizes.h \
   /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
   /usr/include/bits/wchar.h /usr/include/gconv.h \
-  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/stdarg.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h /usr/include/sys/types.h /usr/include/time.h \
   /usr/include/endian.h /usr/include/bits/endian.h \
@@ -15,8 +15,8 @@ RainbruRPG.o RainbruRPG.o: RainbruRPG.cc /usr/include/stdio.h \
   /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h getopt.h \
   system.h config.h /usr/include/sys/stat.h /usr/include/bits/stat.h \
   /usr/include/sys/param.h \
-  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h \
-  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/syslimits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/limits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/syslimits.h \
   /usr/include/limits.h /usr/include/bits/posix1_lim.h \
   /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
   /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
@@ -46,7 +46,7 @@ RainbruRPG.o RainbruRPG.o: RainbruRPG.cc /usr/include/stdio.h \
 
 /usr/include/gnu/stubs-32.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/stddef.h:
 
 /usr/include/bits/types.h:
 
@@ -62,7 +62,7 @@ RainbruRPG.o RainbruRPG.o: RainbruRPG.cc /usr/include/stdio.h \
 
 /usr/include/gconv.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stdarg.h:
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/stdarg.h:
 
 /usr/include/bits/stdio_lim.h:
 
@@ -102,9 +102,9 @@ config.h:
 
 /usr/include/sys/param.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.1.2/include/limits.h:
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/limits.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.1.2/include/syslimits.h:
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/syslimits.h:
 
 /usr/include/limits.h:
 

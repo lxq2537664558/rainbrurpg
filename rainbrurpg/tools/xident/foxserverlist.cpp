@@ -233,7 +233,7 @@ addServer(RainbruRPG::Network::Ident::tServerListItem* p){
   table->setItem(num, col++, itemType);
 
   // Sets the IP address
-  std::string txtIp=p->ipAdress;
+  std::string txtIp=p->ipAddress;
   FXTableItem* item2=new FXTableItem(txtIp.c_str());
   table->setItem(num, col++, item2);
 
