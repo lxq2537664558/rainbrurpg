@@ -37,7 +37,9 @@ RainbruRPG::Network::Ident::xmlServerList::xmlServerList(){
   */
 bool RainbruRPG::Network::Ident::xmlServerList::refresh(){
   GlobalURI gu;
-  CurlFileToXml::setFilename(gu.getXmlAdress("servers.xml"));
+  std::string fn=gu.getXmlAdress("servers.xml");
+
+  CurlFileToXml::setFilename(fn.c_str());
   CurlFileToXml::perform();
   doc=CurlFileToXml::getXmlDocument();
 

@@ -43,7 +43,8 @@ bool RainbruRPG::Network::Ident::xmlBonusFileList::refresh(){
   GlobalURI gu;
 
   CurlFileToXml cgf;
-  cgf.setFilename(gu.getXmlAdress("bonusfilelist.xml"));
+  std::string fn=gu.getXmlAdress("bonusfilelist.xml");
+  cgf.setFilename(fn.c_str());
   bool success= cgf.perform();
 
   if (success){

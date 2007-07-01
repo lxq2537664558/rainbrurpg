@@ -43,10 +43,10 @@ bool RainbruRPG::Network::xmlPersoList::refresh(){
   bool ret;
 
   GlobalURI gu;
-  const char* filename=gu.getXmlAdress("persos.xml");
+  std::string filename=gu.getXmlAdress("persos.xml");
 
   CurlFileToXml cgf;
-  cgf.setFilename(filename);
+  cgf.setFilename(filename.c_str());
 
   bool success= cgf.perform();
 

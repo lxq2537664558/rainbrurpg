@@ -44,7 +44,8 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
   //  const char* filename=;
   //  const char* filename="http://127.0.0.1/rpg/persoattrb.xml";
   CurlFileToXml cgf;
-  cgf.setFilename(gu.getXmlAdress("persoattrb.xml"));
+  std::string fn=gu.getXmlAdress("persoattrb.xml");
+  cgf.setFilename(fn.c_str());
   bool success= cgf.perform();
 
   if (success){

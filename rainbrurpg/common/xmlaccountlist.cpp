@@ -41,10 +41,10 @@ bool RainbruRPG::Network::Ident::xmlAccountList::refresh(){
   bool ret;
 
   GlobalURI gu;
-  const char* filename=gu.getXmlAdress("players.xml");
+  std::string filename=gu.getXmlAdress("players.xml");
 
   CurlFileToXml cgf;
-  cgf.setFilename(filename);
+  cgf.setFilename(filename.c_str());
 
   bool success= cgf.perform();
 

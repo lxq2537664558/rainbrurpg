@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 30 jun 2007 : Add UniqueName
+ *                 std::string return type become const std::string&
  * - 07 jun 2007 : A transferTerminated signal
  * - 21 may 2007 : Multi-thread implementation started
  * - 27 apr 2007 : Starting implementation
@@ -57,6 +59,11 @@ namespace RainbruRPG {
       * connectToHost() with the control channel host port (L). The host
       * should listen in the data channel port L-1.
       *
+      * \warning Please read the connectToHost() documentation about the 
+      * unique name parameter before using this class.
+      *
+      * \sa \ref Server::UniqueName "UniqueName" (class)
+      *
       */
     class FtpClient{
     public:
@@ -68,7 +75,7 @@ namespace RainbruRPG {
       FtpClient();
       ~FtpClient();
 
-      bool connectToHost(const std::string&, int );
+      bool connectToHost(const std::string&, int, const std::string& uName="");
       bool openDataChannel();
       bool closeDataChannel();
       void toggleTransferMode();
@@ -80,7 +87,7 @@ namespace RainbruRPG {
       std::string commandBINARY();
       std::string commandASCII();
       std::string commandSTOR(const std::string&);
-      std::string commandRETR(const std::string&);
+      const std::string& commandRETR(const std::string&);
 
       int getFilesize(const std::string&);
 
@@ -142,6 +149,17 @@ namespace RainbruRPG {
       int nextFilesize;
       /** The total of received bytes */
       int totalBytesReceived;
+
+      /** The server's UniqueName used to retrieve files 
+        *
+	* The downloaded files could come from many different server and 
+	* the same filename can occur. The files coming from a given server
+	* are set in a single directory called <code> 
+	* $HOME/.RainbruRPG/download/$UNIQUE_NAME</code>. So we need 
+	* the server's unique name to create this directory name.
+	*
+	*/
+      std::string uniqueName;
     };
   }
 }

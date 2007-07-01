@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 01 jul 2007 : Switch to const std::string&
  * - 21 jun 2007 : FTP related function added
  *
  */
@@ -48,26 +49,37 @@ namespace RainbruRPG{
       *
       * \section Web_sec Website related functions
       *
-      * If the macro WEBSITE_DEBUG is defined, we use a local website
+      * If the macro \c WEBSITE_DEBUG is defined, we use a local website
       * (127.0.0.1), otherwise, we use the production website
       * (rainbru.free.fr). 
       *
-      * Use getAdminAdress(const char*) to get an administration php file
-      * mostly used by the CurlSubmitForm interface. Use 
-      * getXmlAdress(const char*) to get the adress of a xml files (used 
-      * by CurlGetFileToXml).
+      * Use getAdminAdress() to get an administration php file
+      * mostly used by the \ref RainbruRPG::Network::Ident::CurlSubmitForm 
+      * "CurlSubmitForm" interface. Use 
+      * getXmlAdress() to get the adress of a xml files (used 
+      * by \ref RainbruRPG::Network::Ident::CurlFileToXml 
+      * "CurlFileToXml").
       *
       * \section Local_sec Local filesystem related functions
       *
       * This class is also used to get a local file. getShareFile(std::string)
-      * give the absolute name of a file in $PREFIX/share (i.e. 
-      * /usr/local/share by default) and getUserDirFile(std::string) give
+      * give the absolute name of a file in <code>$PREFIX/share</code> (i.e. 
+      * <code>/usr/local/share</code> by default) and 
+      * getUserDirFile(std::string) give
       * a configuration file in the user's home directory.
       *
-      * GlobalURI makes sure some files are in the $HOME/.RainbruRPG/ by 
-      * copying it from $PREFIX/share/conf/ if it does not exists. All
-      * this stuff is made by the homeSetup() method.
+      * GlobalURI makes sure some files are in the 
+      * <code>$HOME/.RainbruRPG/</code> by 
+      * copying it from <code>$PREFIX/share/conf/</code> if it does not 
+      * exists. All this stuff is made by the homeSetup() method.
       *
+      * 
+      * \section server_approval_sec Server's approval
+      *
+      * When a file is uploaded to a server by an editor, the server's 
+      * administrator \b must approve the files before a client can 
+      * download them. The editor can use it but the client could fail
+      * to start playing on this world.
       *
       */
     class GlobalURI{
@@ -75,30 +87,15 @@ namespace RainbruRPG{
       GlobalURI();
       ~GlobalURI();
 
-      const char* getAdminAdress(const char*)const;
-      const char* getXmlAdress(const char*)const;
+      std::string getAdminAdress(const std::string&);
+      std::string getXmlAdress(const std::string&);
 
-      std::string getUserDirFile(std::string) const;
-      std::string getShareFile(std::string) const;
+      std::string getUserDirFile(const std::string&);
+      std::string getShareFile(const std::string&);
 
-      /** Get the absolute filename of a file upload on the server
-        *
-	* \param s Only the file name
-	*
-	* \return The path and the filename
-	*
-	*/
-      std::string getUploadFile(std::string s) const;
-
-      /** Get the absolute filename of a file you download from a server
-        *
-	* \param s Only the file name
-	* \param sun The server Unique name
-	*
-	* \return The path and the filename
-	*
-	*/
-      std::string getDownloadFile(std::string s, std::string sun) const;
+      std::string getUploadFile(const std::string&);
+      std::string getQuarantineFile(const std::string&);
+      std::string getDownloadFile(const std::string&, const std::string&);
 
 
     private:
@@ -109,7 +106,11 @@ namespace RainbruRPG{
       std::string adminSite;
       /** Where are the most xml files */
       std::string xmlSite;
-      /** The user HOME directory */
+      /** The user HOME directory 
+        *
+	* This directory is <code>$HOME/.RainbruRPG/</code>.
+	*
+	*/
       std::string userDir;
    };
   }

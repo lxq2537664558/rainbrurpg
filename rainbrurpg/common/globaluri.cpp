@@ -62,15 +62,15 @@ RainbruRPG::Network::GlobalURI::~GlobalURI(){
   * \return the complete URI of the given adress on the administration 
   *         website
   */
-const char* RainbruRPG::Network::GlobalURI::
-getAdminAdress(const char* file)const{
+std::string RainbruRPG::Network::GlobalURI::
+getAdminAdress(const std::string& file){
 
 
   ostringstream oss;
   oss << this->adminSite;
   oss << file;
 
-  return oss.str().c_str();
+  return oss.str();
 }
 
 /** Get an adress on the xml site
@@ -80,15 +80,14 @@ getAdminAdress(const char* file)const{
   * \return the complete URI of the given adress on the xml 
   *         website
   */
-const char* RainbruRPG::Network::GlobalURI::
-getXmlAdress(const char* file)const
-{
+std::string RainbruRPG::Network::GlobalURI::
+getXmlAdress(const std::string& file){
 
-  ostringstream oss;
-  oss << this->xmlSite;
-  oss << file;
+  std::string s;
+  s=this->xmlSite;
+  s+=file;
 
-  return oss.str().c_str();
+  return s;
 }
 
 /** Get a file in the user home/user/.RainbruRPG directory
@@ -98,8 +97,8 @@ getXmlAdress(const char* file)const
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getUserDirFile(std::string file) const
-{
+getUserDirFile(const std::string& file){
+
   LOGI("GlobalURI::getUserDirFile called");
   ostringstream oss;
   oss << this->userDir;
@@ -160,8 +159,7 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getShareFile(std::string file) const
-{
+getShareFile(const std::string& file){
   LOGI("GlobalURI::getShareFile called");
   // Copying necessary files
   std::string s=USER_INSTALL_PREFIX;
@@ -215,4 +213,58 @@ installConfigFile(const std::string& filename){
     msg2+=" found in user directory";
     LOGI(msg2.c_str());
   }
+}
+
+/** Get the absolute filename of a file upload on the server and approved
+  *
+  * \param s Only the file name
+  *
+  * \return The path and the filename
+  *
+  */
+std::string RainbruRPG::Network::GlobalURI::
+getUploadFile(const std::string& s){
+  std::string ret=userDir;
+  ret+="uploaded/";
+  ret+=s;
+  return ret;
+}
+
+/** Get the absolute filename of a file upload on the server but not yet 
+  * approved
+  *
+  * \param s Only the file name
+  *
+  * \return The path and the filename
+  *
+  */
+std::string RainbruRPG::Network::GlobalURI::
+getQuarantineFile(const std::string& s){
+  std::string ret=userDir;
+  ret+="quarantine/";
+  ret+=s;
+  return ret;
+}
+
+/** Get the absolute filename of a file you download from a server
+  *
+  * In the local filesystem of the client, we can download some files
+  * with the same filename from different servers. We need a unique directory
+  * for each server that is 
+  * <code>$HOME/.RainbruRPG/downloaded/$UNIQUE_NAME</code>.
+  *
+  * \param s Only the file name
+  * \param sun The server Unique name
+  *
+  * \return The path and the filename
+  *
+  */
+std::string RainbruRPG::Network::GlobalURI::
+getDownloadFile(const std::string& s, const std::string& sun){
+  std::string ret=userDir;
+  ret+="downloaded/";
+  ret+=sun;
+  ret+="/";
+  ret+=s;
+  return ret;
 }

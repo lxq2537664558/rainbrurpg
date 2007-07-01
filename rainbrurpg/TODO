@@ -50,7 +50,9 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 
 
 o [mouse] FTP Server
-- Solve the pb with PLSM2 cvs
+- Hunting local reference return
+   selectioncycle.cpp contains some
+- globalURI returns UniqueNameFile
 - common/ftpclient uses uniqueName
 - Using GlobalURI for filename
    $HOME/uploaded
@@ -169,6 +171,7 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-143
+- switching globalURI to std::string
 
 * v 0.0.4-142
 - Updating PLSM2

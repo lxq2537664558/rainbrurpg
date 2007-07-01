@@ -51,17 +51,32 @@ RainbruRPG::Network::FtpClient::~FtpClient(){
 
 /** Try to open a connection in the given host
   *
+  * Even if the thirs parameter (server's unique name) can be omitted, you
+  * \b must pass the UniqueName of the server you try to connect to. If
+  * you do not set it, the \c RETR commands will failed.
+  *
   * \param ip The ip adress of the host
   * \param port The port the host should listen
+  * \param uName The UniqueName of the server 
+  *
   *
   * \return \c true if the connection is successfull, \c false if an
   *         error occured
   *
+  * \sa \ref FtpClient::uniqueName "uniqueName" (member), 
+  *     \ref Server::UniqueName "UniqueName" (class)
+  *
   */
 bool RainbruRPG::Network::FtpClient::
-connectToHost(const std::string& ip, int port){
+connectToHost(const std::string& ip, int port, const std::string& uName){
   this->hostIp=ip;
   this->hostPort=port;
+  this->uniqueName=uName;
+
+  if (uName==""){
+    LOGE("The given server's UniqueName is empty. FtpClient cannot work properly.");
+  }
+
   controlSock=gnet_tcp_socket_connect(ip.c_str(), port);
 
   if (controlSock==NULL){
@@ -142,6 +157,9 @@ void RainbruRPG::Network::FtpClient::toggleTransferMode(){
 }
 
 /** Wait for a response in the control channel and return it
+  *
+  * \warning If this function return a <code>const std::string&</code>
+  * a segfault could occur.
   *
   * \return The server response
   *
@@ -334,7 +352,7 @@ commandSTOR(const std::string& filename){
   * \return The server's response
   *
   */
-std::string RainbruRPG::Network::FtpClient::
+const std::string& RainbruRPG::Network::FtpClient::
 commandRETR(const std::string& filename){
 
   // Is this file exist ?

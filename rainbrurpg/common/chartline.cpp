@@ -151,13 +151,13 @@ drawOneSerie(gdImagePtr im,ChartSerie* s, int c){
   double v=1;
 
   value=(s->getValue(0))-(s->getMinValue());
-  y=bottom-((graphHeight*value)/serieInterval);
+  y=(int)(bottom-((graphHeight*value)/serieInterval));
 
   // draw Loop
   for (int i=0; i<(s->size()); i++){
     v=s->getValue(i);
     value=v-(s->getMinValue());
-    y2=bottom-((graphHeight*value)/serieInterval);
+    y2=(int)(bottom-((graphHeight*value)/serieInterval));
     gdImageLine(im, x, y, x2, y2, c);  
     y=y2;
     x=x2;
@@ -266,8 +266,8 @@ void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
 
   LOGI("Searching for valueIndent");
   while (true){
-    int val1=bottom-((graphHeight*1)/serieInterval);
-    int val2=bottom-((graphHeight*(1+valueIndent))/serieInterval);
+    int val1=(int)(bottom-((graphHeight*1)/serieInterval));
+    int val2=(int)(bottom-((graphHeight*(1+valueIndent))/serieInterval));
     int val3=val1-val2;
 
     if (val3<minValueIndent){
@@ -294,9 +294,9 @@ void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
 
   LOGI("drawLeftCaption starting to draw");
 
-  for (int value=getSeriesMinValue(); value<getSeriesMaxValue()+1; value+=valueIndent){
+  for (int value=(int)getSeriesMinValue(); value<(int)getSeriesMaxValue()+1; value+=valueIndent){
     // Draws the indicators
-    int y=bottom-((graphHeight*value)/serieInterval);
+    int y=(int)(bottom-((graphHeight*value)/serieInterval));
     gdImageLine(im, left-indicWidth, y, left, y, black); 
 
     // Draws the captions

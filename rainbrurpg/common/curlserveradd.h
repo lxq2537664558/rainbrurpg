@@ -107,8 +107,8 @@ namespace RainbruRPG {
 	const char* getDescription();
 	const char* getTechNote();
 
-	const std::string& getUniqueName();
-	const std::string& getType();
+	std::string getUniqueName();
+	std::string getType();
 
       protected:
 	virtual bool controlBefore();
