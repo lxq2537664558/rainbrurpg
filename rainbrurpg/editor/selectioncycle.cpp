@@ -84,7 +84,7 @@ compare(Ogre::RaySceneQueryResult* r1,
   * \return The name of the Entity
   *
   */
-const Ogre::String& RainbruRPG::Editor::SelectionCycle::
+Ogre::String RainbruRPG::Editor::SelectionCycle::
 getNextEntity(Ogre::RaySceneQueryResult& rsqr){
 
   LOGI("SelectionCycle::getNextEntity called");
@@ -123,7 +123,7 @@ getNextEntity(Ogre::RaySceneQueryResult& rsqr){
   * \return The name of the first Entity found or "" if not found
   *
   */
-const Ogre::String& RainbruRPG::Editor::SelectionCycle::
+Ogre::String RainbruRPG::Editor::SelectionCycle::
 getFirstEntityName(Ogre::RaySceneQueryResult* query){
 
   LOGI("SelectionCycle::getFirstEntityName called");

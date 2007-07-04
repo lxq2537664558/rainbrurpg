@@ -506,7 +506,7 @@ getDbValue(const char* attrb)const{
   * \return The host name
   *
   */
-const std::string& RainbruRPG::Server::xmlServerConf::getDbHostName()const{
+std::string RainbruRPG::Server::xmlServerConf::getDbHostName(){
   return getDbValue("hostname");
 }
 
@@ -515,7 +515,7 @@ const std::string& RainbruRPG::Server::xmlServerConf::getDbHostName()const{
   * \return The database name
   *
   */
-const std::string& RainbruRPG::Server::xmlServerConf::getDbName()const{
+std::string RainbruRPG::Server::xmlServerConf::getDbName(){
   return getDbValue("dbname");
 }
 
@@ -524,7 +524,7 @@ const std::string& RainbruRPG::Server::xmlServerConf::getDbName()const{
   * \return The user name
   *
   */
-const std::string& RainbruRPG::Server::xmlServerConf::getDbUserName()const{
+std::string RainbruRPG::Server::xmlServerConf::getDbUserName(){
   return getDbValue("user");
 }
 
@@ -533,7 +533,7 @@ const std::string& RainbruRPG::Server::xmlServerConf::getDbUserName()const{
   * \return The password
   *
   */
-const std::string& RainbruRPG::Server::xmlServerConf::getDbUserPwd()const{
+std::string RainbruRPG::Server::xmlServerConf::getDbUserPwd(){
   return getDbValue("pwd");
 }
 

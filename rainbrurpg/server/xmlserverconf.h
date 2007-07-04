@@ -81,10 +81,10 @@ namespace RainbruRPG{
       void setServerMode(bool, bool, bool);
       void setServerOption(const std::string&, int, int, int, int );
 
-      const std::string& getDbHostName()const;
-      const std::string& getDbName()const;
-      const std::string& getDbUserName()const;
-      const std::string& getDbUserPwd()const;
+      std::string getDbHostName();
+      std::string getDbName();
+      std::string getDbUserName();
+      std::string getDbUserPwd();
 
       void setDatabase(const std::string&,const std::string&,
 		       const std::string&,const std::string&);

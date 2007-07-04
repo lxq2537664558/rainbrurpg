@@ -2,9 +2,16 @@
 == This is the user's Changelog
 == 
 == For a more detailled dev's changelog
-== go to the changelog directory
+== go to the changelog.dev directory
 ==
-	
+
+* v0.0.5
+- Switching to Ogre 1.2.5 (PLSM is also updated)
+- Server implements FTP protocol (RFC 0959)
+	This implementation is incompatible with official fTP client
+	but the common library contains a compatible client and the tools
+	contain anj ftp client executable.
+
 * v0.0.4 (97-???)
 - Server has a treeview of client connection
 - Server understand the first network packet (npIdentification)

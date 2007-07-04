@@ -8,6 +8,13 @@ retr essaiTransfer.tgz
 
 o [mouse] NeededLibs was modified
 
+o [mouse] Version
+- print the OIS version
+
+o [mouse] Ogre GLX platform
+- Make a paragraph on the doxygen mainpage on the GLX support
+- Closes bug #21
+
 * Unittest implementation in common/
 - In this order
    curlpersoheaderadd     need a curlpersoheaderdelete class
@@ -49,9 +56,7 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 #8  0x080506e1 in main () at main.cpp:57
 
 
-o [mouse] FTP Server
-- Hunting local reference return
-   selectioncycle.cpp contains some
+* FTP Server
 - globalURI returns UniqueNameFile
 - common/ftpclient uses uniqueName
 - Using GlobalURI for filename
@@ -71,6 +76,8 @@ o [mouse] FTP Server
 - A common/hashfile class that compute hashsum on a file
 
 * GameServer
+- The HelpViewer is called twice 
+   when we click the OK button it appears again
 - Add uniqueName and type (époque) to ServerConf and configuration
    dialog
 - Running 2 servers in the same PC is forbiden
@@ -171,6 +178,8 @@ o [mouse] FTP Server
 * *******************************************************
 
 * v 0.0.4-143
+- Switching to Ogre3D 1.2.5
+- Hunting local variable reference returned
 - switching globalURI to std::string
 
 * v 0.0.4-142
@@ -178,7 +187,7 @@ o [mouse] FTP Server
    compilation error ('VisibleObjectsBoundsInfo' has not been
    declared) update CANCELLED
    This error is that this version of PLSM2 is for Eihort and not Dagon
-- Updating Ogre CVS (current version is 1.2.4)          OK
+- Updating Ogre CVS (current version is 1.2.4, now 1.2.5)     OK
 - Change tServerListItem->ipAdress (ipAddress)
 - ftpclient uses ServerList to choose the ftpserver
 - Update xident addserver dialog

@@ -49,11 +49,11 @@ namespace RainbruRPG{
       SelectionCycle();
       ~SelectionCycle();
 
-      const Ogre::String& getNextEntity(Ogre::RaySceneQueryResult&);
+      Ogre::String getNextEntity(Ogre::RaySceneQueryResult&);
 
     private:
       bool compare(Ogre::RaySceneQueryResult*, Ogre::RaySceneQueryResult*);
-      const Ogre::String& getFirstEntityName(Ogre::RaySceneQueryResult*);
+      Ogre::String getFirstEntityName(Ogre::RaySceneQueryResult*);
 
       /** The last scene query
         *
