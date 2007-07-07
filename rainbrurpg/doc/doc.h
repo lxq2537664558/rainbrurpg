@@ -45,13 +45,24 @@
   * - \e b is the build number
   *
   * \section dep_sec Dependencies
+  * \subsection libraries_versions_subsec Libraries versions
   *
   * To build RainbruRPG you need this libraries :
   * - Fox toolkit v1.6 or 1.4
-  * - Ogre
+  * - Ogre v1.2(with GLX platform)
+  * - OIS (Object-oriented Input System) v1.0
   *
   * The project also uses Tinyxml as build-in c++ sources. So
   * you don't need to deal with it.
+  *
+  * \subsection ogre_platform_subsec Ogre Platform
+  *
+  * On GNU/Linux, Ogre3D can be used with multiple platforms (SDL, GTK, GLX).
+  * I personnally use the GLX one. The SDL platform makes the following
+  * issues happening as of Ogre v1.2.5 (<b>bug #21)</b>:
+  * - The client freezes the mouse.
+  * - The editor's ogre widget is opened on a separated window.
+  * - Some issues when moving the camera can happened.
   *
   * \section signals_slots_sec Signals/Slots mechanism
   *

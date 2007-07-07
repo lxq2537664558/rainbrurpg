@@ -129,6 +129,7 @@ version.lo .libs/version.o: version.cpp version.h \
   /usr/include/sys/stat.h /usr/include/bits/stat.h /usr/include/dlfcn.h \
   /usr/include/bits/dlfcn.h /usr/local/include/OGRE/OgreMemoryManager.h \
   /usr/local/include/CEGUI/CEGUIVersion.h /usr/include/fox-1.6/fxver.h \
+  /usr/local/include/OIS/OISPrereqs.h /usr/local/include/OIS/OISConfig.h \
   logger.h singleton.h ../config.h
 
 version.h:
@@ -522,6 +523,10 @@ version.h:
 /usr/local/include/CEGUI/CEGUIVersion.h:
 
 /usr/include/fox-1.6/fxver.h:
+
+/usr/local/include/OIS/OISPrereqs.h:
+
+/usr/local/include/OIS/OISConfig.h:
 
 logger.h:
 

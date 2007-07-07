@@ -20,9 +20,15 @@
  *
  */
 
+/* Modifications :
+ * - 05 jul 2007 : Log out the versions
+ *
+ */
+
 #include <QApplication>
 
 #include <logger.h>
+#include <version.h>
 
 #include "mainwindow.h"
 #include "uniquename.h"
@@ -39,6 +45,12 @@ int main(int argc, char *argv[]){
   LOGI("Starting RainbruRPG editor");
   QApplication app(argc, argv);
 
+  // Log out the versions
+  Version v;
+  v.setApplicationName("RainbruRPG Client");
+  v.logVersion();
+
+  // Set the UniqueName in main window title bar
   std::string s;
   s="RainbruRPG server (";
   s+=UniqueName::getUniqueName();

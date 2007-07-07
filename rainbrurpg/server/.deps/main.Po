@@ -122,22 +122,49 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/c++/4.1.3/bits/vector.tcc /usr/include/qt4/QtGui/qmatrix.h \
   /usr/include/qt4/QtGui/qpolygon.h /usr/include/qt4/QtGui/qregion.h \
   /usr/include/qt4/QtCore/qline.h /usr/include/qt4/QtGui/qwmatrix.h \
-  /usr/include/qt4/QtGui/qimage.h /usr/include/qt4/QtGui/qpixmap.h \
-  /usr/include/qt4/QtGui/qfont.h /usr/include/qt4/QtGui/qfontmetrics.h \
+  /usr/include/qt4/QtGui/qtransform.h \
+  /usr/include/qt4/QtGui/qpainterpath.h /usr/include/qt4/QtGui/qimage.h \
+  /usr/include/qt4/QtGui/qpixmap.h /usr/include/qt4/QtGui/qfont.h \
+  /usr/include/qt4/QtGui/qfontmetrics.h \
   /usr/include/qt4/QtGui/qfontinfo.h /usr/include/qt4/QtGui/qsizepolicy.h \
   /usr/include/qt4/QtGui/qkeysequence.h ../common/logger.h \
   /usr/include/c++/4.1.3/iostream /usr/include/c++/4.1.3/fstream \
   /usr/include/c++/4.1.3/i486-linux-gnu/bits/basic_file.h \
   /usr/include/c++/4.1.3/bits/fstream.tcc /usr/include/c++/4.1.3/sstream \
   /usr/include/c++/4.1.3/bits/sstream.tcc ../common/singleton.h \
-  mainwindow.h /usr/include/qt4/QtGui/QtGui \
-  /usr/include/qt4/QtCore/QtCore /usr/include/qt4/QtCore/qdatastream.h \
-  /usr/include/qt4/QtCore/qdebug.h /usr/include/qt4/QtCore/qhash.h \
-  /usr/include/qt4/QtCore/qmap.h /usr/include/c++/4.1.3/map \
+  ../common/version.h /usr/include/curl/curlver.h \
+  /usr/local/include/OGRE/OgrePrerequisites.h \
+  /usr/local/include/OGRE/OgrePlatform.h \
+  /usr/local/include/OGRE/OgreConfig.h ../config.h \
+  /usr/local/include/OGRE/OgreStdHeaders.h /usr/include/c++/4.1.3/cassert \
+  /usr/include/assert.h /usr/include/c++/4.1.3/cstdarg \
+  /usr/include/c++/4.1.3/cmath /usr/include/math.h \
+  /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+  /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+  /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+  /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
+  /usr/include/c++/4.1.3/bits/cmath.tcc /usr/include/c++/4.1.3/map \
   /usr/include/c++/4.1.3/bits/stl_tree.h \
   /usr/include/c++/4.1.3/bits/stl_map.h \
-  /usr/include/c++/4.1.3/bits/stl_multimap.h \
-  /usr/include/qt4/QtCore/qtextstream.h \
+  /usr/include/c++/4.1.3/bits/stl_multimap.h /usr/include/c++/4.1.3/set \
+  /usr/include/c++/4.1.3/bits/stl_set.h \
+  /usr/include/c++/4.1.3/bits/stl_multiset.h /usr/include/c++/4.1.3/deque \
+  /usr/include/c++/4.1.3/bits/stl_deque.h \
+  /usr/include/c++/4.1.3/bits/deque.tcc /usr/include/c++/4.1.3/queue \
+  /usr/include/c++/4.1.3/bits/stl_queue.h /usr/include/c++/4.1.3/bitset \
+  /usr/include/c++/4.1.3/ext/hash_map \
+  /usr/include/c++/4.1.3/ext/hashtable.h \
+  /usr/include/c++/4.1.3/ext/hash_fun.h \
+  /usr/include/c++/4.1.3/ext/hash_set /usr/include/c++/4.1.3/functional \
+  /usr/include/c++/4.1.3/iomanip /usr/include/sys/stat.h \
+  /usr/include/bits/stat.h /usr/include/dlfcn.h /usr/include/bits/dlfcn.h \
+  /usr/local/include/OGRE/OgreMemoryManager.h \
+  /usr/local/include/CEGUI/CEGUIVersion.h /usr/include/fox-1.6/fxver.h \
+  /usr/local/include/OIS/OISPrereqs.h /usr/local/include/OIS/OISConfig.h \
+  ../common/logger.h mainwindow.h /usr/include/qt4/QtGui/QtGui \
+  /usr/include/qt4/QtCore/QtCore /usr/include/qt4/QtCore/qdatastream.h \
+  /usr/include/qt4/QtCore/qdebug.h /usr/include/qt4/QtCore/qhash.h \
+  /usr/include/qt4/QtCore/qmap.h /usr/include/qt4/QtCore/qtextstream.h \
   /usr/include/qt4/QtCore/qtextcodec.h /usr/include/qt4/QtCore/qset.h \
   /usr/include/qt4/QtCore/qtextstream.h \
   /usr/include/qt4/QtCore/qtemporaryfile.h \
@@ -146,6 +173,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtCore/qdir.h /usr/include/qt4/QtCore/qfileinfo.h \
   /usr/include/qt4/QtCore/qiodevice.h /usr/include/qt4/QtCore/qprocess.h \
   /usr/include/qt4/QtCore/qresource.h /usr/include/qt4/QtCore/qlocale.h \
+  /usr/include/qt4/QtCore/qdiriterator.h \
   /usr/include/qt4/QtCore/qbuffer.h \
   /usr/include/qt4/QtCore/qfilesystemwatcher.h \
   /usr/include/qt4/QtCore/qdir.h /usr/include/qt4/QtCore/qurl.h \
@@ -166,6 +194,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtCore/qvarlengtharray.h \
   /usr/include/qt4/QtCore/qcontainerfwd.h \
   /usr/include/qt4/QtCore/qshareddata.h \
+  /usr/include/qt4/QtCore/qcryptographichash.h \
   /usr/include/qt4/QtCore/qiterator.h /usr/include/qt4/QtCore/qlocale.h \
   /usr/include/qt4/QtCore/qstack.h /usr/include/qt4/QtCore/qmap.h \
   /usr/include/qt4/QtCore/qset.h /usr/include/qt4/QtCore/qdatetime.h \
@@ -180,6 +209,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtCore/qlibraryinfo.h \
   /usr/include/qt4/QtCore/qendian.h /usr/include/qt4/QtCore/qfeatures.h \
   /usr/include/qt4/QtCore/qglobal.h /usr/include/qt4/QtCore/qnamespace.h \
+  /usr/include/qt4/QtCore/qnumeric.h \
   /usr/include/qt4/QtCore/qtranslator.h \
   /usr/include/qt4/QtCore/qvariant.h /usr/include/qt4/QtCore/qmimedata.h \
   /usr/include/qt4/QtCore/qeventloop.h \
@@ -198,8 +228,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtCore/qcoreevent.h \
   /usr/include/qt4/QtCore/qobjectdefs.h \
   /usr/include/qt4/QtCore/qpluginloader.h /usr/include/qt4/QtCore/quuid.h \
-  /usr/include/qt4/QtCore/qlibrary.h /usr/include/qt4/QtCore/QFlags \
-  /usr/include/qt4/QtCore/qplugin.h \
+  /usr/include/qt4/QtCore/qlibrary.h /usr/include/qt4/QtCore/qplugin.h \
   /usr/include/qt4/QtCore/qfactoryinterface.h \
   /usr/include/qt4/QtCore/qsemaphore.h \
   /usr/include/qt4/QtCore/qthreadstorage.h \
@@ -227,6 +256,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qtextcursor.h \
   /usr/include/qt4/QtGui/qsyntaxhighlighter.h \
   /usr/include/qt4/QtGui/qfont.h /usr/include/qt4/QtGui/qundogroup.h \
+  /usr/include/qt4/QtGui/qdesktopservices.h \
   /usr/include/qt4/QtGui/qundoview.h /usr/include/qt4/QtGui/qlistview.h \
   /usr/include/qt4/QtGui/qabstractitemview.h \
   /usr/include/qt4/QtGui/qabstractscrollarea.h \
@@ -242,9 +272,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qstyle.h /usr/include/qt4/QtGui/qtabbar.h \
   /usr/include/qt4/QtGui/qtabwidget.h \
   /usr/include/qt4/QtGui/qrubberband.h \
-  /usr/include/qt4/QtGui/qundostack.h \
-  /usr/include/qt4/QtGui/qdesktopservices.h \
-  /usr/include/qt4/QtGui/qcompleter.h \
+  /usr/include/qt4/QtGui/qcompleter.h /usr/include/qt4/QtGui/qundostack.h \
   /usr/include/qt4/QtGui/qsystemtrayicon.h \
   /usr/include/qt4/QtGui/qabstractpagesetupdialog.h \
   /usr/include/qt4/QtGui/qdialog.h /usr/include/qt4/QtGui/qcolordialog.h \
@@ -255,6 +283,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qfiledialog.h \
   /usr/include/qt4/QtGui/qprintdialog.h \
   /usr/include/qt4/QtGui/qabstractprintdialog.h \
+  /usr/include/qt4/QtGui/qwizard.h \
   /usr/include/qt4/QtGui/qpagesetupdialog.h \
   /usr/include/qt4/QtGui/qabstractpagesetupdialog.h \
   /usr/include/qt4/QtGui/qabstractprintdialog.h \
@@ -281,14 +310,18 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qpainterpath.h /usr/include/qt4/QtGui/qpainter.h \
   /usr/include/qt4/QtGui/qwmatrix.h /usr/include/qt4/QtGui/qpen.h \
   /usr/include/qt4/QtGui/qrgb.h /usr/include/qt4/QtGui/qprinter.h \
+  /usr/include/qt4/QtGui/qtransform.h \
   /usr/include/qt4/QtGui/qpaintengine.h \
   /usr/include/qt4/QtGui/qdrawutil.h /usr/include/qt4/QtGui/qregion.h \
   /usr/include/qt4/QtGui/qpaintdevice.h \
   /usr/include/qt4/QtGui/qitemselectionmodel.h \
   /usr/include/qt4/QtGui/qtreewidgetitemiterator.h \
   /usr/include/qt4/QtGui/qdatawidgetmapper.h \
+  /usr/include/qt4/QtGui/qfileiconprovider.h \
   /usr/include/qt4/QtGui/qstringlistmodel.h \
   /usr/include/qt4/QtGui/qlistwidget.h /usr/include/qt4/QtGui/qdirmodel.h \
+  /usr/include/qt4/QtGui/qfileiconprovider.h \
+  /usr/include/qt4/QtGui/qcolumnview.h \
   /usr/include/qt4/QtGui/qstandarditemmodel.h \
   /usr/include/qt4/QtGui/qsortfilterproxymodel.h \
   /usr/include/qt4/QtGui/qabstractproxymodel.h \
@@ -309,6 +342,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qaccessibleobject.h \
   /usr/include/qt4/QtGui/qaccessible.h \
   /usr/include/qt4/QtGui/qaccessibleobject.h \
+  /usr/include/qt4/QtGui/qaccessible2.h \
   /usr/include/qt4/QtGui/qaccessibleplugin.h \
   /usr/include/qt4/QtGui/qaccessible.h /usr/include/qt4/QtGui/qmime.h \
   /usr/include/qt4/QtGui/qclipboard.h /usr/include/qt4/QtGui/qwhatsthis.h \
@@ -340,16 +374,18 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qcommonstyle.h \
   /usr/include/qt4/QtGui/qcdestyle.h /usr/include/qt4/QtGui/qmotifstyle.h \
   /usr/include/qt4/QtGui/qplastiquestyle.h \
+  /usr/include/qt4/QtGui/qwindowsvistastyle.h \
+  /usr/include/qt4/QtGui/qwindowsxpstyle.h \
   /usr/include/qt4/QtGui/qstyle.h /usr/include/qt4/QtGui/qstylefactory.h \
   /usr/include/qt4/QtGui/qwindowsstyle.h \
   /usr/include/qt4/QtGui/qinputcontextplugin.h \
   /usr/include/qt4/QtGui/qinputcontextfactory.h \
   /usr/include/qt4/QtGui/qinputcontext.h \
   /usr/include/qt4/QtGui/qgraphicsitem.h \
-  /usr/include/qt4/QtGui/qpainterpath.h \
   /usr/include/qt4/QtGui/qgraphicsscene.h \
   /usr/include/qt4/QtGui/qgraphicsview.h \
   /usr/include/qt4/QtGui/qscrollarea.h \
+  /usr/include/qt4/QtGui/qgraphicsscene.h \
   /usr/include/qt4/QtGui/qgraphicssceneevent.h \
   /usr/include/qt4/QtGui/qgraphicsitemanimation.h \
   /usr/include/qt4/QtGui/qcheckbox.h \
@@ -358,8 +394,10 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qbuttongroup.h /usr/include/qt4/QtGui/qspinbox.h \
   /usr/include/qt4/QtGui/qlcdnumber.h /usr/include/qt4/QtCore/qbitarray.h \
   /usr/include/qt4/QtGui/qstackedwidget.h \
+  /usr/include/qt4/QtGui/qmdiarea.h \
   /usr/include/qt4/QtGui/qabstractspinbox.h \
   /usr/include/qt4/QtGui/qpushbutton.h \
+  /usr/include/qt4/QtGui/qmdisubwindow.h \
   /usr/include/qt4/QtGui/qsplashscreen.h \
   /usr/include/qt4/QtGui/qdatetimeedit.h \
   /usr/include/qt4/QtCore/qdatetime.h \
@@ -391,7 +429,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qtoolbar.h /usr/include/qt4/QtGui/qtoolbox.h \
   /usr/include/qt4/QtGui/qtabwidget.h /usr/include/qt4/QtGui/qsplitter.h \
   /usr/include/qt4/QtGui/qdial.h /usr/include/qt4/QtCore/QMetaType \
-  ../common/curlserveradd.h ../common/globaluri.h ../common/logger.h \
+  ../common/curlserveradd.h ../common/globaluri.h \
   ../common/curlsubmitform.h /usr/include/curl/curl.h \
   /usr/include/curl/curlver.h /usr/include/sys/socket.h \
   /usr/include/sys/uio.h /usr/include/bits/uio.h \
@@ -402,10 +440,9 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/curl/multi.h /usr/include/curl/curl.h \
   ../common/curlinterface.h ../common/curlposteddata.h \
   ../common/hashpassword.h ../common/sha1.h ../common/xmlserverlist.h \
-  ../common/tinyxml.h /usr/include/assert.h ../common/tinystr.h \
-  ../common/tnotelist.h ../common/xmltimestamp.h ../common/tinyxml.h \
-  ../common/curlfiletoxml.h ../common/curlgetfile.h \
-  ../common/httpresponse.h ../common/stringconv.h \
+  ../common/tinyxml.h ../common/tinystr.h ../common/tnotelist.h \
+  ../common/xmltimestamp.h ../common/tinyxml.h ../common/curlfiletoxml.h \
+  ../common/curlgetfile.h ../common/httpresponse.h ../common/stringconv.h \
   ../common/curlserverdelete.h ../common/stringconv.h \
   /usr/include/enet/enet.h /usr/include/enet/unix.h \
   /usr/include/netinet/in.h /usr/include/bits/in.h \
@@ -473,15 +510,11 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtNetwork/QTcpServer \
   /usr/include/qt4/QtNetwork/qtcpserver.h \
   /usr/include/qt4/QtNetwork/qabstractsocket.h \
+  /usr/include/qt4/QtCore/qdebug.h \
   /usr/include/qt4/QtNetwork/qhostaddress.h \
   /usr/include/qt4/QtNetwork/QTcpSocket \
   /usr/include/qt4/QtNetwork/qtcpsocket.h ../common/xmlaccountlist.h \
-  ../common/loadbmp.h /usr/include/math.h /usr/include/bits/huge_val.h \
-  /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
-  /usr/include/bits/inf.h /usr/include/bits/nan.h \
-  /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
-  /usr/include/bits/mathinline.h ../common/EasyBMP.h \
-  /usr/include/c++/4.1.3/cmath /usr/include/c++/4.1.3/bits/cmath.tcc \
+  ../common/loadbmp.h ../common/EasyBMP.h \
   ../common/EasyBMP_DataStructures.h ../common/EasyBMP_BMP.h \
   ../common/EasyBMP_VariousBMPutilities.h ../common/taccountlist.h \
   ../common/tidentreturn.h ../common/globaluri.h ftptransfer.h \
@@ -490,13 +523,24 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtCore/QFile transfervisual.h \
   /usr/include/qt4/QtCore/QString /usr/include/qt4/Qt3Support/Qt3Support \
   /usr/include/qt4/QtNetwork/QtNetwork /usr/include/qt4/QtNetwork/qhttp.h \
+  /usr/include/qt4/QtNetwork/qsslerror.h \
+  /usr/include/qt4/QtNetwork/qsslcertificate.h \
+  /usr/include/qt4/QtCore/qcryptographichash.h \
+  /usr/include/qt4/QtNetwork/qssl.h \
   /usr/include/qt4/QtNetwork/qnetworkinterface.h \
+  /usr/include/qt4/QtNetwork/qauthenticator.h \
   /usr/include/qt4/QtNetwork/qhostinfo.h \
   /usr/include/qt4/QtNetwork/qnetworkproxy.h \
   /usr/include/qt4/QtNetwork/qhostaddress.h \
-  /usr/include/qt4/QtNetwork/qftp.h /usr/include/qt4/QtNetwork/qurlinfo.h \
+  /usr/include/qt4/QtNetwork/qsslcipher.h \
+  /usr/include/qt4/QtNetwork/qsslkey.h /usr/include/qt4/QtNetwork/qftp.h \
+  /usr/include/qt4/QtNetwork/qurlinfo.h /usr/include/qt4/QtNetwork/qssl.h \
   /usr/include/qt4/QtNetwork/qabstractsocket.h \
+  /usr/include/qt4/QtNetwork/qsslcertificate.h \
   /usr/include/qt4/QtNetwork/qurlinfo.h \
+  /usr/include/qt4/QtNetwork/qsslsocket.h \
+  /usr/include/qt4/QtNetwork/qtcpsocket.h \
+  /usr/include/qt4/QtNetwork/qsslerror.h \
   /usr/include/qt4/QtNetwork/qudpsocket.h /usr/include/qt4/QtSql/QtSql \
   /usr/include/qt4/QtSql/qsqlindex.h /usr/include/qt4/QtSql/qsqlresult.h \
   /usr/include/qt4/QtSql/qsql.h /usr/include/qt4/QtSql/qsqldriverplugin.h \
@@ -1050,6 +1094,10 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
 
 /usr/include/qt4/QtGui/qwmatrix.h:
 
+/usr/include/qt4/QtGui/qtransform.h:
+
+/usr/include/qt4/QtGui/qpainterpath.h:
+
 /usr/include/qt4/QtGui/qimage.h:
 
 /usr/include/qt4/QtGui/qpixmap.h:
@@ -1080,6 +1128,106 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
 
 ../common/singleton.h:
 
+../common/version.h:
+
+/usr/include/curl/curlver.h:
+
+/usr/local/include/OGRE/OgrePrerequisites.h:
+
+/usr/local/include/OGRE/OgrePlatform.h:
+
+/usr/local/include/OGRE/OgreConfig.h:
+
+../config.h:
+
+/usr/local/include/OGRE/OgreStdHeaders.h:
+
+/usr/include/c++/4.1.3/cassert:
+
+/usr/include/assert.h:
+
+/usr/include/c++/4.1.3/cstdarg:
+
+/usr/include/c++/4.1.3/cmath:
+
+/usr/include/math.h:
+
+/usr/include/bits/huge_val.h:
+
+/usr/include/bits/huge_valf.h:
+
+/usr/include/bits/huge_vall.h:
+
+/usr/include/bits/inf.h:
+
+/usr/include/bits/nan.h:
+
+/usr/include/bits/mathdef.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
+
+/usr/include/c++/4.1.3/bits/cmath.tcc:
+
+/usr/include/c++/4.1.3/map:
+
+/usr/include/c++/4.1.3/bits/stl_tree.h:
+
+/usr/include/c++/4.1.3/bits/stl_map.h:
+
+/usr/include/c++/4.1.3/bits/stl_multimap.h:
+
+/usr/include/c++/4.1.3/set:
+
+/usr/include/c++/4.1.3/bits/stl_set.h:
+
+/usr/include/c++/4.1.3/bits/stl_multiset.h:
+
+/usr/include/c++/4.1.3/deque:
+
+/usr/include/c++/4.1.3/bits/stl_deque.h:
+
+/usr/include/c++/4.1.3/bits/deque.tcc:
+
+/usr/include/c++/4.1.3/queue:
+
+/usr/include/c++/4.1.3/bits/stl_queue.h:
+
+/usr/include/c++/4.1.3/bitset:
+
+/usr/include/c++/4.1.3/ext/hash_map:
+
+/usr/include/c++/4.1.3/ext/hashtable.h:
+
+/usr/include/c++/4.1.3/ext/hash_fun.h:
+
+/usr/include/c++/4.1.3/ext/hash_set:
+
+/usr/include/c++/4.1.3/functional:
+
+/usr/include/c++/4.1.3/iomanip:
+
+/usr/include/sys/stat.h:
+
+/usr/include/bits/stat.h:
+
+/usr/include/dlfcn.h:
+
+/usr/include/bits/dlfcn.h:
+
+/usr/local/include/OGRE/OgreMemoryManager.h:
+
+/usr/local/include/CEGUI/CEGUIVersion.h:
+
+/usr/include/fox-1.6/fxver.h:
+
+/usr/local/include/OIS/OISPrereqs.h:
+
+/usr/local/include/OIS/OISConfig.h:
+
+../common/logger.h:
+
 mainwindow.h:
 
 /usr/include/qt4/QtGui/QtGui:
@@ -1093,14 +1241,6 @@ mainwindow.h:
 /usr/include/qt4/QtCore/qhash.h:
 
 /usr/include/qt4/QtCore/qmap.h:
-
-/usr/include/c++/4.1.3/map:
-
-/usr/include/c++/4.1.3/bits/stl_tree.h:
-
-/usr/include/c++/4.1.3/bits/stl_map.h:
-
-/usr/include/c++/4.1.3/bits/stl_multimap.h:
 
 /usr/include/qt4/QtCore/qtextstream.h:
 
@@ -1129,6 +1269,8 @@ mainwindow.h:
 /usr/include/qt4/QtCore/qresource.h:
 
 /usr/include/qt4/QtCore/qlocale.h:
+
+/usr/include/qt4/QtCore/qdiriterator.h:
 
 /usr/include/qt4/QtCore/qbuffer.h:
 
@@ -1188,6 +1330,8 @@ mainwindow.h:
 
 /usr/include/qt4/QtCore/qshareddata.h:
 
+/usr/include/qt4/QtCore/qcryptographichash.h:
+
 /usr/include/qt4/QtCore/qiterator.h:
 
 /usr/include/qt4/QtCore/qlocale.h:
@@ -1232,6 +1376,8 @@ mainwindow.h:
 
 /usr/include/qt4/QtCore/qnamespace.h:
 
+/usr/include/qt4/QtCore/qnumeric.h:
+
 /usr/include/qt4/QtCore/qtranslator.h:
 
 /usr/include/qt4/QtCore/qvariant.h:
@@ -1275,8 +1421,6 @@ mainwindow.h:
 /usr/include/qt4/QtCore/quuid.h:
 
 /usr/include/qt4/QtCore/qlibrary.h:
-
-/usr/include/qt4/QtCore/QFlags:
 
 /usr/include/qt4/QtCore/qplugin.h:
 
@@ -1350,6 +1494,8 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qundogroup.h:
 
+/usr/include/qt4/QtGui/qdesktopservices.h:
+
 /usr/include/qt4/QtGui/qundoview.h:
 
 /usr/include/qt4/QtGui/qlistview.h:
@@ -1386,11 +1532,9 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qrubberband.h:
 
-/usr/include/qt4/QtGui/qundostack.h:
-
-/usr/include/qt4/QtGui/qdesktopservices.h:
-
 /usr/include/qt4/QtGui/qcompleter.h:
+
+/usr/include/qt4/QtGui/qundostack.h:
 
 /usr/include/qt4/QtGui/qsystemtrayicon.h:
 
@@ -1413,6 +1557,8 @@ mainwindow.h:
 /usr/include/qt4/QtGui/qprintdialog.h:
 
 /usr/include/qt4/QtGui/qabstractprintdialog.h:
+
+/usr/include/qt4/QtGui/qwizard.h:
 
 /usr/include/qt4/QtGui/qpagesetupdialog.h:
 
@@ -1490,6 +1636,8 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qprinter.h:
 
+/usr/include/qt4/QtGui/qtransform.h:
+
 /usr/include/qt4/QtGui/qpaintengine.h:
 
 /usr/include/qt4/QtGui/qdrawutil.h:
@@ -1504,11 +1652,17 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qdatawidgetmapper.h:
 
+/usr/include/qt4/QtGui/qfileiconprovider.h:
+
 /usr/include/qt4/QtGui/qstringlistmodel.h:
 
 /usr/include/qt4/QtGui/qlistwidget.h:
 
 /usr/include/qt4/QtGui/qdirmodel.h:
+
+/usr/include/qt4/QtGui/qfileiconprovider.h:
+
+/usr/include/qt4/QtGui/qcolumnview.h:
 
 /usr/include/qt4/QtGui/qstandarditemmodel.h:
 
@@ -1555,6 +1709,8 @@ mainwindow.h:
 /usr/include/qt4/QtGui/qaccessible.h:
 
 /usr/include/qt4/QtGui/qaccessibleobject.h:
+
+/usr/include/qt4/QtGui/qaccessible2.h:
 
 /usr/include/qt4/QtGui/qaccessibleplugin.h:
 
@@ -1642,6 +1798,10 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qplastiquestyle.h:
 
+/usr/include/qt4/QtGui/qwindowsvistastyle.h:
+
+/usr/include/qt4/QtGui/qwindowsxpstyle.h:
+
 /usr/include/qt4/QtGui/qstyle.h:
 
 /usr/include/qt4/QtGui/qstylefactory.h:
@@ -1656,13 +1816,13 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qgraphicsitem.h:
 
-/usr/include/qt4/QtGui/qpainterpath.h:
-
 /usr/include/qt4/QtGui/qgraphicsscene.h:
 
 /usr/include/qt4/QtGui/qgraphicsview.h:
 
 /usr/include/qt4/QtGui/qscrollarea.h:
+
+/usr/include/qt4/QtGui/qgraphicsscene.h:
 
 /usr/include/qt4/QtGui/qgraphicssceneevent.h:
 
@@ -1686,9 +1846,13 @@ mainwindow.h:
 
 /usr/include/qt4/QtGui/qstackedwidget.h:
 
+/usr/include/qt4/QtGui/qmdiarea.h:
+
 /usr/include/qt4/QtGui/qabstractspinbox.h:
 
 /usr/include/qt4/QtGui/qpushbutton.h:
+
+/usr/include/qt4/QtGui/qmdisubwindow.h:
 
 /usr/include/qt4/QtGui/qsplashscreen.h:
 
@@ -1780,8 +1944,6 @@ mainwindow.h:
 
 ../common/globaluri.h:
 
-../common/logger.h:
-
 ../common/curlsubmitform.h:
 
 /usr/include/curl/curl.h:
@@ -1825,8 +1987,6 @@ mainwindow.h:
 ../common/xmlserverlist.h:
 
 ../common/tinyxml.h:
-
-/usr/include/assert.h:
 
 ../common/tinystr.h:
 
@@ -2054,6 +2214,8 @@ ftpcontrol.h:
 
 /usr/include/qt4/QtNetwork/qabstractsocket.h:
 
+/usr/include/qt4/QtCore/qdebug.h:
+
 /usr/include/qt4/QtNetwork/qhostaddress.h:
 
 /usr/include/qt4/QtNetwork/QTcpSocket:
@@ -2064,29 +2226,7 @@ ftpcontrol.h:
 
 ../common/loadbmp.h:
 
-/usr/include/math.h:
-
-/usr/include/bits/huge_val.h:
-
-/usr/include/bits/huge_valf.h:
-
-/usr/include/bits/huge_vall.h:
-
-/usr/include/bits/inf.h:
-
-/usr/include/bits/nan.h:
-
-/usr/include/bits/mathdef.h:
-
-/usr/include/bits/mathcalls.h:
-
-/usr/include/bits/mathinline.h:
-
 ../common/EasyBMP.h:
-
-/usr/include/c++/4.1.3/cmath:
-
-/usr/include/c++/4.1.3/bits/cmath.tcc:
 
 ../common/EasyBMP_DataStructures.h:
 
@@ -2122,7 +2262,17 @@ transfervisual.h:
 
 /usr/include/qt4/QtNetwork/qhttp.h:
 
+/usr/include/qt4/QtNetwork/qsslerror.h:
+
+/usr/include/qt4/QtNetwork/qsslcertificate.h:
+
+/usr/include/qt4/QtCore/qcryptographichash.h:
+
+/usr/include/qt4/QtNetwork/qssl.h:
+
 /usr/include/qt4/QtNetwork/qnetworkinterface.h:
+
+/usr/include/qt4/QtNetwork/qauthenticator.h:
 
 /usr/include/qt4/QtNetwork/qhostinfo.h:
 
@@ -2130,13 +2280,27 @@ transfervisual.h:
 
 /usr/include/qt4/QtNetwork/qhostaddress.h:
 
+/usr/include/qt4/QtNetwork/qsslcipher.h:
+
+/usr/include/qt4/QtNetwork/qsslkey.h:
+
 /usr/include/qt4/QtNetwork/qftp.h:
 
 /usr/include/qt4/QtNetwork/qurlinfo.h:
 
+/usr/include/qt4/QtNetwork/qssl.h:
+
 /usr/include/qt4/QtNetwork/qabstractsocket.h:
 
+/usr/include/qt4/QtNetwork/qsslcertificate.h:
+
 /usr/include/qt4/QtNetwork/qurlinfo.h:
+
+/usr/include/qt4/QtNetwork/qsslsocket.h:
+
+/usr/include/qt4/QtNetwork/qtcpsocket.h:
+
+/usr/include/qt4/QtNetwork/qsslerror.h:
 
 /usr/include/qt4/QtNetwork/qudpsocket.h:
 

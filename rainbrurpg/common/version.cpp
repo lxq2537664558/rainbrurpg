@@ -61,14 +61,21 @@ void RainbruRPG::Core::Version::logVersion(){
        << FOX_MAJOR << "."
        << FOX_MINOR << "."
        << FOX_LEVEL << endl 
+       << " - CEGUI v"
+       << CEGUI_VERSION_MAJOR << "." << CEGUI_VERSION_MINOR 
+       << "." << CEGUI_VERSION_PATCH << endl
        << " - Ogre3D v"
        << OGRE_VERSION_MAJOR << "." << OGRE_VERSION_MINOR 
        << "." << OGRE_VERSION_PATCH << " (" 
        << OGRE_VERSION_NAME<< ")"<< endl 
-       << " - CEGUI v"
-       << CEGUI_VERSION_MAJOR << "." << CEGUI_VERSION_MINOR 
-       << "." << CEGUI_VERSION_PATCH << endl;
-  
+       << " - OIS v" 
+       << OIS_VERSION_MAJOR << "." << OIS_VERSION_MINOR
+       << "." << OIS_VERSION_PATCH << " (" 
+       << OIS_VERSION_NAME << ")" << endl
+       << " - CURL v"
+       << LIBCURL_VERSION << " (" <<  LIBCURL_TIMESTAMP
+       << ")" << endl;
+
   Logger::getSingleton().logMessage( ostr.str() );
 
 

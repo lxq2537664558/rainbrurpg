@@ -20,6 +20,12 @@
  *
  */
 
+/* Modifications :
+ * - 05 jul 2007 : Removing using namespace Ogre due to conflicts Ogre/Qt4
+ * - 04 jul 2007 : OIS version added
+ *
+ */ 
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -27,20 +33,29 @@
 #include <OGRE/OgrePrerequisites.h>
 #include <CEGUI/CEGUIVersion.h>
 #include <fox-1.6/fxver.h>
+#include <OIS/OISPrereqs.h>
 #include "logger.h"
 
 #ifndef VERSION_H
 #define VERSION_H
 
 using namespace std;
-using namespace Ogre;
+using namespace OIS;
+
+/* We cannot use the Ogre namespace this way
+ *
+ * If we declare globally the Ogre namespace, its uint typedef conflicts
+ * with the Qt4 uint one when building Editor and Server.
+ *
+ */
+//using namespace Ogre;
 using namespace RainbruRPG::Exception;
 
 namespace RainbruRPG{
   namespace Core{
 
     /** Draw a little message telling the version of the program 
-      * and the libraries it is linked with or it uses at runtime
+      * and the libraries it uses at runtime
       *
       * It also prints a GNU message.
       *

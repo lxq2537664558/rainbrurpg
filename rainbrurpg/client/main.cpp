@@ -124,19 +124,19 @@ int main(int argc, char **argv)
   // Initialize the pseudo-random number generator
   srand((unsigned)time(0)); 
 
+  // Log out the versions
+  Version v;
+  v.setApplicationName("RainbruRPG Client");
+  v.logVersion();
+
+
   // Setting up Ogre::Root
   GlobalURI gu;
   std::string plugFN=gu.getShareFile("config/plugins.cfg");
   std::string ogreFN=gu.getUserDirFile("ogre.cfg");
   new Ogre::Root(plugFN.c_str(), ogreFN.c_str(), "ogre.log");
 
-  // Log out the versions
-  Version v;
-  v.setApplicationName("RainbruRPG Client");
-  v.logVersion();
-  
-
-
+  // Shows the launcher 
   if (showLauncher(argc, argv)){
 
     GuiManager::getSingleton().init();

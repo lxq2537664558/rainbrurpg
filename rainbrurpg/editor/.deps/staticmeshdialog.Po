@@ -118,7 +118,8 @@ staticmeshdialog.o staticmeshdialog.o: staticmeshdialog.cpp \
   /usr/include/c++/4.1.3/bits/stl_bvector.h \
   /usr/include/c++/4.1.3/bits/vector.tcc /usr/include/qt4/QtGui/qmatrix.h \
   /usr/include/qt4/QtGui/qpolygon.h /usr/include/qt4/QtGui/qregion.h \
-  /usr/include/qt4/QtCore/qline.h /usr/include/qt4/QtGui/qimage.h \
+  /usr/include/qt4/QtCore/qline.h /usr/include/qt4/QtGui/qtransform.h \
+  /usr/include/qt4/QtGui/qpainterpath.h /usr/include/qt4/QtGui/qimage.h \
   /usr/include/qt4/QtGui/qpixmap.h /usr/include/qt4/QtGui/qfont.h \
   /usr/include/qt4/QtGui/qfontmetrics.h \
   /usr/include/qt4/QtGui/qfontinfo.h /usr/include/qt4/QtGui/qsizepolicy.h \
@@ -333,7 +334,8 @@ staticmeshdialog.o staticmeshdialog.o: staticmeshdialog.cpp \
   /usr/include/qt4/QtGui/qabstractitemdelegate.h \
   /usr/include/qt4/QtGui/qstyleoption.h \
   /usr/include/qt4/QtGui/qabstractspinbox.h \
-  /usr/include/qt4/QtGui/qvalidator.h /usr/include/qt4/QtGui/qslider.h \
+  /usr/include/qt4/QtGui/qvalidator.h /usr/include/qt4/QtCore/qlocale.h \
+  /usr/include/qt4/QtGui/qslider.h \
   /usr/include/qt4/QtGui/qabstractslider.h \
   /usr/include/qt4/QtGui/qstyle.h /usr/include/qt4/QtGui/qtabbar.h \
   /usr/include/qt4/QtGui/qtabwidget.h \
@@ -705,6 +707,10 @@ staticmeshdialog.h:
 /usr/include/qt4/QtGui/qregion.h:
 
 /usr/include/qt4/QtCore/qline.h:
+
+/usr/include/qt4/QtGui/qtransform.h:
+
+/usr/include/qt4/QtGui/qpainterpath.h:
 
 /usr/include/qt4/QtGui/qimage.h:
 
@@ -1225,6 +1231,8 @@ meshviewer.h:
 /usr/include/qt4/QtGui/qabstractspinbox.h:
 
 /usr/include/qt4/QtGui/qvalidator.h:
+
+/usr/include/qt4/QtCore/qlocale.h:
 
 /usr/include/qt4/QtGui/qslider.h:
 

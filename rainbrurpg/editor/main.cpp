@@ -22,6 +22,7 @@
 
 #include <QApplication>
 #include <OGRE/Ogre.h>
+#include <version.h>
 
 #include "mainwindow.h"
 
@@ -34,6 +35,11 @@ using namespace RainbruRPG::Editor;
   *
   */
 int main(int argc, char *argv[]){
+  // Log out the versions
+  Version v;
+  v.setApplicationName("RainbruRPG Client");
+  v.logVersion();
+
   LOGI("Starting RainbruRPG editor");
   QApplication app(argc, argv);
 
