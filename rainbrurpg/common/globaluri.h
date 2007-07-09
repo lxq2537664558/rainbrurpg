@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 09 jul 2007 : Tests if downloaded directory exists
  * - 01 jul 2007 : Switch to const std::string&
  * - 21 jun 2007 : FTP related function added
  *
@@ -29,17 +30,20 @@
 #ifndef GLOBAL_URI_H
 #define GLOBAL_URI_H
 
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/fstream.hpp"
+#include <stdlib.h>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <list>
-#include <stdlib.h>
 
 #include "logger.h"
 
 #define WEBSITE_DEBUG
 
 using namespace std;
+using namespace boost::filesystem;
 
 namespace RainbruRPG{
   namespace Network {
@@ -79,7 +83,8 @@ namespace RainbruRPG{
       * When a file is uploaded to a server by an editor, the server's 
       * administrator \b must approve the files before a client can 
       * download them. The editor can use it but the client could fail
-      * to start playing on this world.
+      * to start playing on this world. It is know as quarantine. A place
+      * where the files can be used before approval.
       *
       */
     class GlobalURI{

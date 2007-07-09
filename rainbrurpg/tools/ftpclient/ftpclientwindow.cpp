@@ -358,8 +358,10 @@ long RainbruRPG::Gui::FtpClientWindow::
 onConnect(FXObject* o,FXSelector s,void* v){
   FXString sIp=tfHostIp->getText();
   FXString sPort=tfHostPort->getText();
+  FXString sUName=tfHostUName->getText();
 
-  bool ret=ftpClient->connectToHost(sIp.text(), FXIntVal(sPort));
+  bool ret=ftpClient->connectToHost(sIp.text(), FXIntVal(sPort), 
+				    sUName.text());
 
   if (ret){
     LOGI("Connection to FTP host successfull");

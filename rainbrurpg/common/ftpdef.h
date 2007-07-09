@@ -69,6 +69,14 @@ namespace RainbruRPG {
       FTT_ASCII,  //!< The file is opened in ascii mode
     };
 
+    /** Defines the errors that can occur during a file transfer
+      *
+      */
+    typedef enum tTransferError {
+      FTE_OPEN_FILE_ERROR,         //!< Cannot create the requested file
+      FTE_OPEN_DATA_CHANNEL_ERROR, //!< Cannot open data channel
+    };
+
   }
 }
 

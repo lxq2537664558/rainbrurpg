@@ -8,11 +8,11 @@
 <body>
 <!-- This file is included by Doxygen from rpg/client/main.cpp -->
 
-   <table width=100% border="1" bgcolor="#00CC99" cellspacing ="0" 
+   <table width=100% border="1" cellspacing ="0" 
           cellpadding ="0">
 
      <!-- Header -->
-     <tr>
+     <tr bgcolor="#00CC99">
        <th width=30px>#</th>
        <th>Sys</th>
        <th>Description</th>
@@ -20,7 +20,7 @@
      </tr>
      <!-- Header's end -->
 
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList2" > <!-- Yellow #FFFFCC -->
        <td>21</td>
        <td>Lin/???</td>
        <td>Editor's OgreView is launched in a separated window.<br>
@@ -28,21 +28,21 @@
        <td>Building Ogre3D with the GLX platform sloses this. (Bug due
            to SDL platform).</td>
      </tr>
-     <tr bgcolor="#999999" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1-unsolved" > <!-- Yellow #FFFFCC -->
        <td>20</td>
        <td>Lin/???</td>
        <td>Client and Editor are broken with Ogre 1.2.5.</br>
            Cannot find codec for extension tga + SegFault</td>
        <td>-</td>
      </tr>
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr  class="bugList2"> <!-- Blue #CCFFFF -->
        <td>19</td>
        <td>Lin/???</td>
        <td>In the xIdent server list, the client's informations of
            two servers are swapped.</td>
        <td>No way to see it again </td>
      </tr>
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>18</td>
        <td>Lin/???</td>
        <td>The server HelpViewer has a little font rendering problem with
@@ -50,14 +50,14 @@
        <td>It is not a problem with my code.</br>
            I think about a X11 font problem</td>
      </tr>
-     <tr bgcolor="#999999" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2-unsolved" > <!-- Blue #CCFFFF -->
        <td>17</td>
        <td>Lin/???</td>
        <td>The xident ServerDesc and ServerTechNote does not show
        description and technical note multilined.</td>
        <td>-</td>
      </tr>
-     <tr bgcolor="#999999" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1-unsolved" > <!-- Yellow #FFFFCC -->
        <td>16</td>
        <td>Lin/???</td>
        <td>In the editor, when the StaticMeshDialog is open and the tooltip
@@ -65,7 +65,7 @@
 	   widget, it freezes the computer.</td>
        <td>-</td>
      </tr>
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>15</td>
        <td>Lin/???</td>
        <td>If the double-buffering is not available, the Irrlicht createdevice
@@ -73,7 +73,7 @@
       </td>
        <td>Switching to Ogre3D closes this.</td>
      </tr>
-     <tr bgcolor="#999999" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1-unsolved" > <!-- Yellow #FFFFCC -->
        <td>14</td>
        <td>Lin/???</td>
        <td>The TerminalApp shortcuts (ALT+?) are not accessible in a
@@ -82,7 +82,7 @@
       </td>
        <td>-</td>
      </tr>
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>13</td>
        <td>Lin/???</td>
        <td>Draw problems with the CORSIVA font in GameEsc menu.
@@ -90,7 +90,7 @@
        <td>I give up the corsiva font.</td>
      </tr>
      
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>12</td>
        <td>Win32</td>
        <td>A windows error message when we quit application. These error msg
@@ -100,7 +100,7 @@
 	   a new bug.</td>
      </tr>
   
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>11</td>
        <td>Linux/Win32</td>
        <td>If we use the console, we can't move the player, even if
@@ -110,7 +110,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>10</td>
        <td>Linux/Win32</td>
        <td>If we move the stats window in the Ingame menu to the
@@ -120,7 +120,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>9</td>
        <td>Linux/???</td>
        <td>If we close the stats window (wich draw FPS and
@@ -129,7 +129,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>8</td>
        <td>Linux/???</td>
        <td>The player have run and i can't stop it. I don't know how
@@ -138,7 +138,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>7</td>
        <td>Linux/Win32</td>
        <td>The billboard used in front of the player can be printed more
@@ -147,7 +147,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>6</td>
        <td>Linux/Win32</td>
        <td>Even if the Irrlicht camera is in Pause, when we resume
@@ -156,7 +156,7 @@
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>5</td>
        <td>Win32</td>
        <td>Segfault si on click sur le bouton Quit (GameEsc). Ferme
@@ -166,14 +166,14 @@
 	 (IrrlichrDevice->closeDevice())</td>
      </tr>
   
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>4</td>
        <td>Linux</td>
        <td>If we choose a Direct3D driver, SegFault.</td>
        <td>The switch to Ogre3D closes this.</td>
      </tr>
   
-     <tr bgcolor="#CCFFFF" > <!-- Blue #CCFFFF -->
+     <tr class="bugList2" > <!-- Blue #CCFFFF -->
        <td>3</td>
        <td>Linux/Win32</td>
        <td>The launcher isn't closed when we chose to play.
@@ -181,7 +181,7 @@
        <td>We must call Fl::flush() after delete the launcher.</td>
      </tr>
   
-     <tr bgcolor="#FFFFCC" > <!-- Yellow #FFFFCC -->
+     <tr class="bugList1" > <!-- Yellow #FFFFCC -->
        <td>2</td>
        <td>Linux/Win32</td>
        <td>When the launcher's Quit button is pressed, GameEngine is
@@ -191,7 +191,7 @@
            false. GameEngine::init() and GameEngine::run() test
            m_running to know if we must init and run or simply quit.</td>
      </tr>
-     <tr bgcolor="#CCFFFF"> <!-- Blue #CCFFFF -->
+     <tr class="bugList2"> <!-- Blue #CCFFFF -->
        <td>1</td>
        <td>Win32</td>
        <td>The option's editor provided by the Launcher can't be
@@ -207,5 +207,5 @@
 
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Wed Jul  4 19:19:55 CEST 2007 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Jul  7 22:15:26 CEST 2007 <!-- hhmts end -->
 </body> </html>

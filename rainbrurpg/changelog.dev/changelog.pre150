@@ -1,3 +1,21 @@
+* v 0.0.4-142
+- Updating PLSM2
+- Updating Ogre CVS (current version is 1.2.4, now 1.2.5)     OK
+- Change tServerListItem->ipAdress (ipAddress)
+- ftpclient uses ServerList to choose the ftpserver
+- Update xident addserver dialog
+- Update xident foxserverlist
+- server's MainWindow::registerServer uses uniquename and type
+- common/curlserveradd uses uniquename and servertype
+- ConfigDialog init servertype value from ServerConfiguration
+- ConfigDialog stores servertype in ServerConfiguration
+- xmlServerConf save and restore servertype
+- ServerConfiguration uses uniquename and servertype
+- doxygen documentation
+- ConfigDialog shows uniquename and uses servertype
+- adminsite doxygen documentation
+- Add UniqueName and Type to the adminsite
+
 * v 0.0.4-141
 - UniqueName class implementation
 - Client tells the transfer is finished

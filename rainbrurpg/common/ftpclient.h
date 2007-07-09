@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 08 jul 2007 : commandRETR uses GlobalURI::getDownloadedFile()
+ *                 A sigTransferError signal
  * - 30 jun 2007 : Add UniqueName
  *                 std::string return type become const std::string&
  * - 07 jun 2007 : A transferTerminated signal
@@ -41,6 +43,7 @@
 #include <sigc++/sigc++.h>
 
 #include "ftpdef.h"
+#include "globaluri.h"
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/fstream.hpp"
 
@@ -71,11 +74,13 @@ namespace RainbruRPG {
       typedef sigc::signal<void, int> tVoidIntSignal;
       /** Defines a signal returning void with none arguments */
       typedef sigc::signal<void> tVoidSignal;
+      /** Defines a signal returning void with a tTransferError parameter */
+      typedef sigc::signal<void, tTransferError> tVoidErrSignal;
 
       FtpClient();
       ~FtpClient();
 
-      bool connectToHost(const std::string&, int, const std::string& uName="");
+      bool connectToHost(const std::string&, int, const std::string&);
       bool openDataChannel();
       bool closeDataChannel();
       void toggleTransferMode();
@@ -117,6 +122,15 @@ namespace RainbruRPG {
 	*
 	*/
       tVoidIntSignal sigFileSizeReceived;
+
+      /** A signal emitted when an error occured
+        * 
+	* The errors are defined by the 
+	* \ref RainbruRPG::Network::tTransferError "tTransferError" 
+	* enum in ftpdef.h.
+	*
+	*/
+      tVoidErrSignal sigTransferError;
 
       void STOR_ThreadedFunction();
       void RETR_ThreadedFunction();

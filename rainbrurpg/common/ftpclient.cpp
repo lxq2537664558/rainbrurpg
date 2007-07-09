@@ -347,9 +347,15 @@ commandSTOR(const std::string& filename){
 
 /** Send a RETR command with the given file
   *
+  * This command should receive a filename without path. The file
+  * will be placed in the \c downloaded directory.
+  *
   * \param filename The name of the server's file
   *
   * \return The server's response
+  *
+  * \sa \ref RainbruRPG::Network::GlobalURI::getDownloadFile()
+  *     "GlobalURI::getDownloadFile()"
   *
   */
 const std::string& RainbruRPG::Network::FtpClient::
@@ -361,9 +367,10 @@ commandRETR(const std::string& filename){
   }
 
   // Setting the filename
-  transferFilename=filename;
+  GlobalURI gu;
+  transferFilename=gu.getDownloadFile(filename, uniqueName);
 
-  // Creates a new thread and execute STOR command in
+  // Creates a new thread and execute RETR command in
   boost::function0<void> RETR_ThreadedFunction;
   RETR_ThreadedFunction=boost::bind
     (boost::mem_fn(&RainbruRPG::Network::FtpClient::RETR_ThreadedFunction),
@@ -496,6 +503,8 @@ bool RainbruRPG::Network::FtpClient::closeDataChannel(){
 
 /** The RETR threaded function
   *
+  * Here, transferFilename contains the absolute filename of the file
+  * to create ($HOME/downloaded/<UniqueServerName>/$FILENAME).
   * This function is executed in a separated thread.
   *
   */
@@ -546,15 +555,32 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
   }
 
   // Open the file according to the transfer type
-  if (transferType==FTT_BINARY){
-    fs.open( onlyFilename, ios::out|ios::binary );
+  LOGI("Openening file for writing :");
+  LOGCATS("Filename : ");
+  LOGCATS(transferFilename.c_str());
+  LOGCAT();
+
+  try{
+    // Using a path object to avoid exception due to '.RainbruRPG'
+    // filesystem error (the dot is misunderstood)
+    boost::filesystem::path p(transferFilename, boost::filesystem::native);
+
+    if (transferType==FTT_BINARY){
+      fs.open( p, ios::out|ios::binary );
+    }
+    else{
+      fs.open( p, ios::out );
+    }
   }
-  else{
-    fs.open( onlyFilename, ios::out );
+  catch(const std::exception& e){
+    LOGE("An error occured during opening file : ");
+    LOGE(e.what());
+    sigTransferError.emit(FTE_OPEN_FILE_ERROR);
   }
 
   // If the file is correctly opened
   if (fs.is_open()){
+    LOGI("File is correctly opened");
     s+="\r\n";
     sendString(s);
     s+=waitControlResponse();
@@ -563,7 +589,7 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
     s+=waitControlResponse();
 
     if (openDataChannel()){
-
+      LOGI("Data channel is opened")
       GConn* connection=gnet_conn_new_socket(dataSock, NULL, NULL);
 
       // Sending file
@@ -589,11 +615,13 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
       LOGI("Returned from thread");
       fs.close();
     }
+    else{
+      LOGE("An error occured when opening data channel");
+      sigTransferError.emit(FTE_OPEN_DATA_CHANNEL_ERROR);
+
+    }
     sigTransferTerminated.emit();
     LOGI("Transfer is terminated");
-  }
-  else{
-    LOGE("An error occured during opening file");
   }
 
   // Memory deallocation

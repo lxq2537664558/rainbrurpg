@@ -6,10 +6,11 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-o [mouse] FTP Server
-- Calling FtpClient::connectToHost with the server's UniqueName parameter
-- FtpClient::commandRETR use getDownloadFile
+* FTP Server
+- FtTransfer::commandRETR use getUploadFile
+- FtpClient::commandSTOR should receive filename with path
 - FtTransfer::commandSTOR use getQuarantineFile
+
 - Update rpgConcepts to tell serverType is implemented
 
 * Server's quarantine
@@ -150,6 +151,14 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 * *******************************************************
 
 * v 0.0.4-144
+- GlobalURI::getUploadFile create directory if not exist
+- FtpClient send a sigTransferError(tTransferErrorType) signal if error
+- If unique directory doesn't exists, create it
+- Tests if the unique directory exists
+- Defines a tTransferError in ftpdef.h (FTE_FILE_OPEN_ERROR)
+- Using css classes for Buglist and Regression tests colors
+- FtpClient::connectToHost's UniqueName parameter hasn't default value
+- Tool/ftpclient call FtpClient::connectToHost with UniqueName parameter
 - globalURI returns DownloadedFile, UploadFile and quarantine
 
 * v 0.0.4-143
@@ -165,24 +174,4 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 - Hunting local variable reference returned
 - switching globalURI to std::string
 
-* v 0.0.4-142
-- Updating PLSM2
-   compilation error ('VisibleObjectsBoundsInfo' has not been
-   declared) update CANCELLED
-   This error is that this version of PLSM2 is for Eihort and not Dagon
-- Updating Ogre CVS (current version is 1.2.4, now 1.2.5)     OK
-- Change tServerListItem->ipAdress (ipAddress)
-- ftpclient uses ServerList to choose the ftpserver
-- Update xident addserver dialog
-- Update xident foxserverlist
-- server's MainWindow::registerServer uses uniquename and type
-- common/curlserveradd uses uniquename and servertype
-- ConfigDialog init servertype value from ServerConfiguration
-- ConfigDialog stores servertype in ServerConfiguration
-- xmlServerConf save and restore servertype
-- ServerConfiguration uses uniquename and servertype
-- doxygen documentation
-- ConfigDialog shows uniquename and uses servertype
-- adminsite doxygen documentation
-- Add UniqueName and Type to the adminsite
 

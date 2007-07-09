@@ -224,9 +224,26 @@ installConfigFile(const std::string& filename){
   */
 std::string RainbruRPG::Network::GlobalURI::
 getUploadFile(const std::string& s){
+  std::string dir;
   std::string ret=userDir;
   ret+="uploaded/";
+  dir=ret;
   ret+=s;
+
+  // Create the directory if not exist
+  boost::filesystem::path p(dir, boost::filesystem::native);
+  if(boost::filesystem::exists(p)){
+    if (boost::filesystem::is_directory(p)){
+      LOGI("uploaded/ directory exists");
+
+    }
+  }
+  else{
+    LOGW("uploaded/ directory does not exist, creating it");
+    // If the uploaded directory does not exist, create it
+    boost::filesystem::create_directory(p);
+  }
+
   return ret;
 }
 
@@ -251,7 +268,8 @@ getQuarantineFile(const std::string& s){
   * In the local filesystem of the client, we can download some files
   * with the same filename from different servers. We need a unique directory
   * for each server that is 
-  * <code>$HOME/.RainbruRPG/downloaded/$UNIQUE_NAME</code>.
+  * <code>$HOME/.RainbruRPG/downloaded/$UNIQUE_NAME</code>. If this directory
+  * does not exist, this function create it.
   *
   * \param s Only the file name
   * \param sun The server Unique name
@@ -261,10 +279,33 @@ getQuarantineFile(const std::string& s){
   */
 std::string RainbruRPG::Network::GlobalURI::
 getDownloadFile(const std::string& s, const std::string& sun){
+  std::string dir, dirWoSun;
   std::string ret=userDir;
   ret+="downloaded/";
+  dirWoSun=ret;
   ret+=sun;
+  dir=ret;
   ret+="/";
   ret+=s;
+
+  // Test if the unique directory exists
+  boost::filesystem::path p(dir, boost::filesystem::native);
+  boost::filesystem::path p2(dirWoSun, boost::filesystem::native);
+  if(boost::filesystem::exists(p)){
+    if (boost::filesystem::is_directory(p)){
+      LOGI("Downloaded/ directory exists");
+
+    }
+  }
+  else{
+    LOGW("Downloaded/ directory does not exist, creating it");
+    // If the downloaded directory does not exist, create it
+    if (!boost::filesystem::exists(p2)){
+      boost::filesystem::create_directory(p2);
+    }
+    // Crete the unique name server directory
+    boost::filesystem::create_directory(p);
+  }
+
   return ret;
 }

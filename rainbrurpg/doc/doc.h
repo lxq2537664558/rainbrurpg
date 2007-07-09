@@ -79,7 +79,8 @@
   *
   * - From the editor to the server : The editor can send a file
   *   from everywhere in your local filesystem. The server will
-  *   store the file in the \e uploaded directory.
+  *   store the file in the \e quarantine directory, waiting for server's
+  *   administrator to approve each file.
   *
   * - From the server to a client : The server send files from the 
   *   \e uploaded directory and the client retrieves it to a directory
