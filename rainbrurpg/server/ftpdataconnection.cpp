@@ -296,7 +296,7 @@ void RainbruRPG::Network::Ftp::FtpDataConnection::disconnected(){
 
 /** Execute a RETR command
   *
-  * \param fn The filename
+  * \param fn The filename without path
   *
   */
 void RainbruRPG::Network::Ftp::FtpDataConnection::
@@ -306,12 +306,21 @@ commandRETR(const QString& fn){
   command=FTC_RETR;
 
   // Do the file already exist ?
-  QDir a(currentDirectory);
+  /*  QDir a(currentDirectory);
   if (!a.exists(filename)){
     LOGW("The file does not exist");
+    LOGCATS("Filename is ");
+    LOGCATS(fn.toLatin1());
+    LOGCAT();
   }
+  */
 
-  this->currentFile=new QFile(a.filePath(filename));
+  // Get the file in upload
+  GlobalURI gu;
+  std::string strFn(fn.toLatin1());
+  std::string strFn2=gu.getUploadFile(strFn);
+  QString qsFn(strFn2.c_str());
+  this->currentFile=new QFile(qsFn);
   QIODevice::OpenMode om;
 
   // We are in Binary mode

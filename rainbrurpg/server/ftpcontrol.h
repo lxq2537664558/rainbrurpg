@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 10 jul 2007 : Using GlobalURI for RETR file info
  * - 18 apr 2007 : Starting implementation
  */
 
@@ -31,11 +32,14 @@
 #include <QDataStream>
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
-#include <iostream>
+
 #include <xmlaccountlist.h>
+#include <globaluri.h>
+#include <iostream>
 
 
 using namespace std;
+using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG{

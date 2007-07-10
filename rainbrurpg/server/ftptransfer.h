@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 09 jul 2007 : commandRETR use getUploadFile
+ *                 commandSTOR use getQuarantineFile
  * - 01 may 2007 : PASSIVE mode implementation
  * - 22 apr 2007 : LIST command imlementation
  * - 20 apr 2007 : Starting implementation
@@ -40,13 +42,16 @@
 
 #include <iostream>
 #include <list>
+
 #include <ftpdef.h>
+#include <globaluri.h>
 
 #include "ftpdataconnection.h"
 
 #define MAX_READ_LENGTH 1024
 
 using namespace std;
+using namespace RainbruRPG::Network;
 
 namespace RainbruRPG{
   namespace Network{
@@ -139,8 +144,10 @@ namespace RainbruRPG{
 	tTransferType transferType;
 	/** The command to execute on the next data channel opened */
 	tTransferCommand nextCommand;
-	/** The next command filename */
+	/** The next command filename with path*/
 	QString nextFilename;
+	/** The next command filename without path*/
+	QString nextOnlyFilename;
 
 	/** The connection list */
 	tConnectionList connectionList;

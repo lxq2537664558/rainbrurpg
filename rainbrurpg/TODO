@@ -6,15 +6,15 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-* FTP Server
-- FtTransfer::commandRETR use getUploadFile
-- FtpClient::commandSTOR should receive filename with path
-- FtTransfer::commandSTOR use getQuarantineFile
+* Website
+- Create a news for the the website for the 0.0.5 announce
 
-- Update rpgConcepts to tell serverType is implemented
+* FTP Server
+- FtTransfer::commandSTOR tests if the filename in quarantine or
+   upload is already used
 
 * Server's quarantine
-- A Manage/Quarantine menu (list of files in quarantine/ )
+- A Manage/Quarantine menu (list of files in quarantine/)
 - Quanrantine preview for known types
 - We can validate quanrantine files (copy it in upload/ directory)
 - We can see files dependencies (where they are used)
@@ -150,7 +150,14 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 * ***************** Changelog ***************************
 * *******************************************************
 
-* v 0.0.4-144
+* v 0.0.5-145
+
+* v 0.0.5-144
+- Update rpgConcepts to tell serverType is implemented
+- FtTransfer::commandSTOR use getQuarantineFile
+- GlobalURI::getQuarantineFile create directory if it does not exist
+- FtpClient::commandSTOR should receive filename with path
+- FtTransfer::commandRETR use getUploadFile
 - GlobalURI::getUploadFile create directory if not exist
 - FtpClient send a sigTransferError(tTransferErrorType) signal if error
 - If unique directory doesn't exists, create it

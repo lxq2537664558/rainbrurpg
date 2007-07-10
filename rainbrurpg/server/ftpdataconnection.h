@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 10 jul 2007 : commandRETR implementation uses GlobalURI
  * - 17 jun 2007 : commandRETR implementation
  * - 14 may 2007 : Starting implementation
  */
@@ -28,10 +29,11 @@
 #ifndef _FTP_DATA_CONNECTION_H_
 #define _FTP_DATA_CONNECTION_H_
 
+#include <QtNetwork/QTcpSocket>
 #include <QObject>
 #include <QFile>
-#include <QtNetwork/QTcpSocket>
 
+#include <globaluri.h>
 #include <ftpdef.h>
 #include <logger.h>
 
@@ -39,6 +41,8 @@
 
 /// The max size of a packet to send
 #define MAX_BUFFER_SIZE 1024
+
+using namespace RainbruRPG::Network;
 
 namespace RainbruRPG{
   namespace Network{

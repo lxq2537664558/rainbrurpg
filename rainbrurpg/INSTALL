@@ -243,3 +243,12 @@ issues happening as of Ogre v1.2.5 (<b>bug #21)</b>:
 - The client freezes the mouse.
 - The editor's ogre widget is opened on a separated window.
 - Some issues when moving the camera can happened.
+
+HTML documentation error
+========================
+
+If an error occured, telling you that a makefile is missing in the 
+RainbruRPG.html directory, try this.
+  make html
+  cp htmlMakefile.am RainbruRPG.html/Makefile.am
+  autoconf&&automake&&./configure

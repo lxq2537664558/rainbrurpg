@@ -51,7 +51,7 @@ namespace RainbruRPG{
 
       /** An BonusFile like it appears in the server-side XML file
         *
-	* This structur defines an entry in the tBonusFileList, which is 
+	* This structure defines an entry in the tBonusFileList, which is 
 	* used by the xmlBonusFileList class. I defines a BonusFile
 	* header, not its content.
 	* 

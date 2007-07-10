@@ -318,7 +318,8 @@ std::string RainbruRPG::Network::FtpClient::commandASCII(){
 
 /** Send a STOR command with the given file
   *
-  * \param filename The absolute name of the file to send (containing the path)
+  * \param filename The absolute name of the file to send 
+  * (containing the path).
   *
   * \return The server's response
   *
@@ -504,7 +505,9 @@ bool RainbruRPG::Network::FtpClient::closeDataChannel(){
 /** The RETR threaded function
   *
   * Here, transferFilename contains the absolute filename of the file
-  * to create ($HOME/downloaded/<UniqueServerName>/$FILENAME).
+  * to create (<code>$HOME/downloaded/$UNIQUE_SERVER_NAME/
+  * $FILENAME</code>).
+  *
   * This function is executed in a separated thread.
   *
   */

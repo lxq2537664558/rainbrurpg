@@ -118,7 +118,8 @@ posordialog.o posordialog.o: posordialog.cpp posordialog.h \
   /usr/include/c++/4.1.3/bits/stl_bvector.h \
   /usr/include/c++/4.1.3/bits/vector.tcc /usr/include/qt4/QtGui/qmatrix.h \
   /usr/include/qt4/QtGui/qpolygon.h /usr/include/qt4/QtGui/qregion.h \
-  /usr/include/qt4/QtCore/qline.h /usr/include/qt4/QtGui/qimage.h \
+  /usr/include/qt4/QtCore/qline.h /usr/include/qt4/QtGui/qtransform.h \
+  /usr/include/qt4/QtGui/qpainterpath.h /usr/include/qt4/QtGui/qimage.h \
   /usr/include/qt4/QtGui/qpixmap.h /usr/include/qt4/QtGui/qfont.h \
   /usr/include/qt4/QtGui/qfontmetrics.h \
   /usr/include/qt4/QtGui/qfontinfo.h /usr/include/qt4/QtGui/qsizepolicy.h \
@@ -128,8 +129,8 @@ posordialog.o posordialog.o: posordialog.cpp posordialog.h \
   /usr/include/qt4/QtGui/qframe.h /usr/include/qt4/QtGui/QDoubleSpinBox \
   /usr/include/qt4/QtGui/qspinbox.h \
   /usr/include/qt4/QtGui/qabstractspinbox.h \
-  /usr/include/qt4/QtGui/qvalidator.h ../common/objectpos.h \
-  ../common/xmlobjectlist.h ../common/logger.h \
+  /usr/include/qt4/QtGui/qvalidator.h /usr/include/qt4/QtCore/qlocale.h \
+  ../common/objectpos.h ../common/xmlobjectlist.h ../common/logger.h \
   /usr/include/c++/4.1.3/iostream /usr/include/c++/4.1.3/fstream \
   /usr/include/c++/4.1.3/i486-linux-gnu/bits/basic_file.h \
   /usr/include/c++/4.1.3/bits/fstream.tcc /usr/include/c++/4.1.3/sstream \
@@ -509,6 +510,10 @@ posordialog.h:
 
 /usr/include/qt4/QtCore/qline.h:
 
+/usr/include/qt4/QtGui/qtransform.h:
+
+/usr/include/qt4/QtGui/qpainterpath.h:
+
 /usr/include/qt4/QtGui/qimage.h:
 
 /usr/include/qt4/QtGui/qpixmap.h:
@@ -542,6 +547,8 @@ posordialog.h:
 /usr/include/qt4/QtGui/qabstractspinbox.h:
 
 /usr/include/qt4/QtGui/qvalidator.h:
+
+/usr/include/qt4/QtCore/qlocale.h:
 
 ../common/objectpos.h:
 

@@ -207,11 +207,16 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  QString l("Requesting file ");
 	  l+=h1;
 
-	  QFileInfo fi(h1);
+	  // Uses uploaded/ file
+	  GlobalURI gu;
+	  std::string strFilename(h1.toLatin1());
+	  std::string strUploadFile=gu.getUploadFile(strFilename);
+	  QString qstrH1(strUploadFile.c_str());
+	  QFileInfo fi(qstrH1);
 	  if (!fi.exists()){
 	    LOGW("RETR file does not exist");
 	    LOGCATS("Filename : ");
-	    LOGCATS(h1);
+	    LOGCATS(strUploadFile.c_str());
 	    LOGCAT();
 	  }
 	  else{

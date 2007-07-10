@@ -257,9 +257,28 @@ getUploadFile(const std::string& s){
   */
 std::string RainbruRPG::Network::GlobalURI::
 getQuarantineFile(const std::string& s){
+  LOGI("GlobalURI::getQuarantineFile called");
+  std::string dir;
   std::string ret=userDir;
   ret+="quarantine/";
+  dir=ret;
   ret+=s;
+
+
+  // Create the directory if not exist
+  boost::filesystem::path p(dir, boost::filesystem::native);
+  if(boost::filesystem::exists(p)){
+    if (boost::filesystem::is_directory(p)){
+      LOGI("quarantine/ directory exists");
+
+    }
+  }
+  else{
+    LOGW("quarantine/ directory does not exist, creating it");
+    // If the uploaded directory does not exist, create it
+    boost::filesystem::create_directory(p);
+  }
+
   return ret;
 }
 

@@ -402,7 +402,10 @@ waitForConnection(QTcpSocket* sock){
 
 /** A file is requested by the host
   *
-  * \param filename The filename
+  * This function is called when the client retirieve a file. The file
+  * is sent to the client from the \c uploaded directory.
+  *
+  * \param filename The filename without path
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
@@ -414,16 +417,18 @@ commandRETR(const QString& filename){
   LOGI(s.toLatin1());
   nextCommand=FTC_RETR;
 
-  QString fullFileName=QDir::currentPath();
-  fullFileName+="/";
-  fullFileName+=filename;
+  // Get the absolute filename
+  GlobalURI gu;
+  std::string stdFilename(filename.toLatin1());
+  std::string fullFileName=gu.getUploadFile(stdFilename);
   nextFilename=filename;
+  nextOnlyFilename=filename;
 
   LOGCATS("Opening file '");
-  LOGCATS(fullFileName.toLatin1());
+  LOGCATS(fullFileName.c_str());
   LOGCAT();
 
-  QFile f(fullFileName);
+  QFile f(fullFileName.c_str());
   QIODevice::OpenMode om;
 
   // We are in Binary mode
@@ -555,7 +560,13 @@ void RainbruRPG::Network::Ftp::FtpTransfer::
 commandSTOR(const QString& filename){
   LOGI("Executing STOR command");
   nextCommand=FTC_STOR;
-  nextFilename=filename;
+
+  std::string strFilename(filename.toLatin1());
+  GlobalURI gu;
+  std::string strNnextFilename=gu.getQuarantineFile(strFilename);
+  nextFilename=strNnextFilename.c_str();
+  nextOnlyFilename=filename;
+
   QTcpSocket* sock;
   waitForConnection(sock);
 }
@@ -612,7 +623,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
     break;
   case FTC_STOR:
     s="Receiving file ";
-    s+=nextFilename;
+    s+=nextOnlyFilename;
     emit(log(s));
     break;
   case FTC_RETR:
@@ -632,7 +643,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
   tConnectionList::const_iterator iter;
   for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
-    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport, nextFilename)){
+    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport, nextOnlyFilename)){
       LOGI("Socket correctly added to the FtpDataConnection");
       (*iter)->setSocket(socket1);
       found=true;
@@ -660,7 +671,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   }
 }
 
-/** Updates periodically the FtpDataConnection::computeRate() function
+/** Updates periodically the FtpDataConnection::computeRate() value
   *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::update(){
