@@ -244,9 +244,14 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  h1=h1.simplified();
 	  QString l("Requesting file ");
 	  l+=h1;
-	  nextStoredFile=h1;
-	  emit(log(l));
-	  tcpSocket->write("200 waiting FSIZE command.\r\n");
+	  if (!isFileExisting(h1)){
+	    nextStoredFile=h1;
+	    emit(log(l));
+	    tcpSocket->write("200 waiting FSIZE command.\r\n");
+	  }
+	  else{
+	    tcpSocket->write("553 File already exists on server.\r\n");
+	  }
 	}
 	else if (s.contains("TYPE I")){
 	  emit(switchToBinaryType());
@@ -354,4 +359,47 @@ void RainbruRPG::Network::Ftp::FtpControl::switchToActiveMode(){
 void RainbruRPG::Network::Ftp::FtpControl::switchToPassiveMode(){
   //  socket1->write("227 Server now in Passive mode.\r\n");
   socket1->write("227 PASV command deactivated.\r\n");
+}
+
+/** Is this file already exists on server
+  *
+  * The given filename is tested in the \c upload and the \c quarantine
+  * directories. It is used when receiving a STOR command from the client.
+  * As we cannot save 2 files with the same name, we cannot accept to store
+  * a file if its name is already in use.
+  *
+  * \param fn The filename to test (without path)
+  *
+  * \return \c true if a name called \e fn already exists in \c upload or 
+  *         \c quarantine
+  *
+  */
+bool RainbruRPG::Network::Ftp::FtpControl::isFileExisting(const QString& fn){
+  std::string strFn(fn.toLatin1());
+
+  GlobalURI gu;
+  std::string strUpload=gu.getUploadFile(strFn);
+  std::string strQuaran=gu.getQuarantineFile(strFn);
+
+  QString qsUpload(strUpload.c_str());
+  QString qsQuaran(strQuaran.c_str());
+
+  QFile fUpload(qsUpload);
+  QFile fQuaran(qsQuaran);
+
+  // Testing for upload/ directory
+  bool bUpload=fUpload.exists();
+
+  // Testing for quarantine/ directory
+  bool bQuaran=fQuaran.exists();
+
+  if (bUpload){
+    return true;
+  }
+  else if (bQuaran){
+    return true;
+  }
+  else{
+    return false;
+  }
 }

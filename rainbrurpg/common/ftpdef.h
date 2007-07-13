@@ -75,6 +75,8 @@ namespace RainbruRPG {
     typedef enum tTransferError {
       FTE_OPEN_FILE_ERROR,         //!< Cannot create the requested file
       FTE_OPEN_DATA_CHANNEL_ERROR, //!< Cannot open data channel
+      FTP_FILE_ALREADY_EXIST,      //!< The file the client try to store
+                                   //!< already exist on the server
     };
 
   }

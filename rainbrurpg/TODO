@@ -6,15 +6,11 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-* Website
-- Create a news for the the website for the 0.0.5 announce
-
-* FTP Server
-- FtTransfer::commandSTOR tests if the filename in quarantine or
-   upload is already used
-
-* Server's quarantine
-- A Manage/Quarantine menu (list of files in quarantine/)
+o [mouse] QuarantineList implementation
+- Try to add a toolbar
+- Approve, Delete, Preview are QAction added to the toolbar
+- Add a QListWidget with filename, size, mime-type
+- A context menu with Approve, Delete, Preview
 - Quanrantine preview for known types
 - We can validate quanrantine files (copy it in upload/ directory)
 - We can see files dependencies (where they are used)
@@ -28,14 +24,6 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
    curlserveradd
-
-* Unittest of admin site
-Writing a simple unittest framework in programmation/adminsite/unittest$
-http://127.0.0.1/rpg/admin/unittest/test.php
-- Why TestCase is not added to the TestSuite
-   __TestSuite::__AddTestCase($tCase) failed to add a TestCase
-
-- A TestResult interface
 
 * Editor identification
    The identification is done by GPG keys
@@ -151,6 +139,13 @@ http://127.0.0.1/rpg/admin/unittest/test.php
 * *******************************************************
 
 * v 0.0.5-145
+- A Manage/Quarantine menu (list of files in quarantine/)
+- The server accepts to transfer the same file twice       FIXED
+- tools-ftpclient get the sigTransferError and treat it
+- FtTransfer::commandSTOR tests if file already exist
+- FtpControl returns 553 if file exists
+- bool ftpcontrol::isFileExisting(const QString&) implementation
+- Create a news for the the website for the 0.0.5 announce
 
 * v 0.0.5-144
 - Update rpgConcepts to tell serverType is implemented

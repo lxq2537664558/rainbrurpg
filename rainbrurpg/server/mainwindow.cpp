@@ -55,10 +55,11 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   setWindowTitle(fileName);
   clientList=NULL;
   objectList=NULL;
+  quarantineList=NULL;
   running=false;
   server=new ServerThread();
 
-  // Registrering metatype (needed for signal/slot argumenst)
+  // Registrering metatype (needed for signal/slot arguments)
   qRegisterMetaType<ENetAddress>("ENetAddress");
   qRegisterMetaType<tReceivedPacket>("tReceivedPacket");
 
@@ -148,6 +149,10 @@ RainbruRPG::Server::MainServerWindow::~MainServerWindow(){
   if (objectList){
     delete objectList;
   }
+
+  if (quarantineList){
+    delete quarantineList;
+  }
 }
 
 /** Creates the Qt actions 
@@ -204,6 +209,11 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   ftpAct->setShortcut(tr("Ctrl+F"));
   ftpAct->setStatusTip(tr("Manages the FTP server"));
 
+  // The Manage/Quarantine Action
+  QAction* quaranAct = new QAction(tr("&Quarantine"), this);
+  quaranAct->setShortcut(tr("Ctrl+Q"));
+  quaranAct->setStatusTip(tr("Manages the files in quarantine"));
+
 
 
   // The Help/about action
@@ -231,6 +241,8 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   manageMenu->addAction(logAct);
   manageMenu->addAction(objAct);
   manageMenu->addAction(ftpAct);
+  manageMenu->addAction(quaranAct);
+
 
   QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
   helpMenu->addAction(aboutAct);
@@ -252,6 +264,7 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   connect(logAct, SIGNAL(triggered()), this, SLOT(showLog()));
   connect(objAct, SIGNAL(triggered()), this, SLOT(manageObjects()));
   connect(ftpAct, SIGNAL(triggered()), this, SLOT(manageFtp()));
+  connect(quaranAct, SIGNAL(triggered()), this, SLOT(manageQuarantine()));
 
   connect(stopAct, SIGNAL(triggered()), this, SLOT(stopServer()));
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
@@ -557,7 +570,7 @@ void RainbruRPG::Server::MainServerWindow::showLog(){
 
 }
 
-/** Showsthe object managing widget
+/** Shows the object managing widget
   *
   */
 void RainbruRPG::Server::MainServerWindow::manageObjects(){
@@ -571,7 +584,7 @@ void RainbruRPG::Server::MainServerWindow::manageObjects(){
   
 }
 
-/** Show the FTP server widget
+/** Shows the FTP server widget
   *
   */
 void RainbruRPG::Server::MainServerWindow::manageFtp(){
@@ -580,3 +593,17 @@ void RainbruRPG::Server::MainServerWindow::manageFtp(){
   ftpServer->show();
 
 }
+
+/** Shows the Quarantine file list widget
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
+  LOGI("manageObjects called");
+  if (!quarantineList){
+   quarantineList =new QuarantineList();
+  }
+  workspace->addWindow(quarantineList);
+  quarantineList->show();
+
+}
+

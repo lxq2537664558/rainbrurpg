@@ -63,6 +63,9 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   ftpClient->sigFileSizeReceived.connect( sigc::mem_fun(this,
 	     &RainbruRPG::Gui::FtpClientWindow::slotFileSizeReceived));
 
+  ftpClient->sigTransferError.connect( sigc::mem_fun(this,
+	     &RainbruRPG::Gui::FtpClientWindow::slotTransferError));
+
   downloadedBytes=0;
   resetTransfer=false;
 
@@ -711,4 +714,25 @@ onServerChanged(FXObject* o,FXSelector s,void* v){
   tfHostUName->setText(item->uniqueName.c_str());
 
   return 1;
+}
+
+/** A slot connected to the 
+  * \ref RainbruRPG::Network::FtpClient::sigTransferError 
+  * "FtpClient::sigTransferError" signal
+  *
+  * \param te The error type
+  *
+  */
+void RainbruRPG::Gui::FtpClientWindow::slotTransferError(tTransferError te){
+  switch(te){
+  case FTE_OPEN_FILE_ERROR:
+    logMessage("Cannot open local file");
+    break;
+  case FTE_OPEN_DATA_CHANNEL_ERROR:
+    logMessage("Cannot open data channel");
+    break;
+  case FTP_FILE_ALREADY_EXIST:
+    logMessage("A file with this name already exist in the server filesystem.");
+    break;
+  }
 }

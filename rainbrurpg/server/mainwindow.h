@@ -48,6 +48,7 @@
 #include "serverlog.h"
 #include "objectlist.h"
 #include "ftpserver.h"
+#include "quarantinelist.h"
 
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Network;
@@ -79,6 +80,7 @@ namespace RainbruRPG{
       void manageClients();
       void manageObjects();
       void manageFtp();
+      void manageQuarantine();
 
       void clientConnected(const ENetAddress&);
       void packetReceived(const tReceivedPacket&);  
@@ -123,6 +125,8 @@ namespace RainbruRPG{
       ObjectList* objectList;
       /** The FTP server used to transfer files */
       FtpServer* ftpServer;
+      /** The quarantine files list widget */
+      QuarantineList* quarantineList;
     };
   }
 }

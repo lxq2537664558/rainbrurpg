@@ -97,7 +97,8 @@ namespace RainbruRPG{
       private slots:
 	void newConnection();
 	void readSocket();
-	
+	bool isFileExisting(const QString&);
+
       private:
 	/** The port used to listen the control channel */
 	quint16 port;

@@ -442,39 +442,47 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
   if (fs.is_open()){
     s+="\r\n";
     sendString(s);
-    s+=waitControlResponse();
+    std::string storResponse=waitControlResponse();
+    s+=storResponse;
 
-    // send file size
-    int i=boost::filesystem::file_size(transferFilename);
-
-    std::string fileSize="FSIZE ";
-    fileSize+=StringConv::getSingleton().itos(i);
-    sendString(fileSize);
-    s+=waitControlResponse();
-
-    if (openDataChannel()){
-
-      // Sending file
-      while (! fs.eof() ){
-	fs.read(buffer, 1024);
-	streamsize bytesRead=fs.gcount();
-
-	GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
-	GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, 
-					     &bytesWritten);
-	// Emit signal
-	sigBytesWritten.emit((int)bytesWritten);
-      }
-      LOGI("Returned from thread");
-      fs.close();
+    // Is the STOR command accepted
+    std::string storResponse2=storResponse.substr(0,1);
+    if (storResponse2=="5"){
+      LOGW("The file already exists. Transfer is cancelled");
+      sigTransferError.emit(FTP_FILE_ALREADY_EXIST);
     }
-    closeDataChannel();
-    sigTransferTerminated.emit();
+    else if (storResponse2=="2"){
+      // send file size
+      int i=boost::filesystem::file_size(transferFilename);
+      
+      std::string fileSize="FSIZE ";
+      fileSize+=StringConv::getSingleton().itos(i);
+      sendString(fileSize);
+      s+=waitControlResponse();
+      
+      if (openDataChannel()){
+	
+	// Sending file
+	while (! fs.eof() ){
+	  fs.read(buffer, 1024);
+	  streamsize bytesRead=fs.gcount();
+	  
+	  GIOChannel* ioChannel=gnet_tcp_socket_get_io_channel(dataSock);
+	  GIOError err=gnet_io_channel_writen (ioChannel, buffer, bytesRead, 
+					       &bytesWritten);
+	  // Emit signal
+	  sigBytesWritten.emit((int)bytesWritten);
+	}
+	LOGI("Returned from thread");
+	fs.close();
+      }
+      closeDataChannel();
+      sigTransferTerminated.emit();
+    }
+    else{
+      LOGE("An error occured during opening file");
+    }
   }
-  else{
-    LOGE("An error occured during opening file");
-  }
-
   // Memory deallocation
   if (buffer!=NULL){
     free(buffer);

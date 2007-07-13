@@ -929,15 +929,15 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/Qt3Support/q3dockwindow.h \
   /usr/include/qt4/QtGui/QPainter /usr/include/qt4/QtGui/QGradient \
   /usr/include/qt4/QtGui/QBrush /usr/include/qt4/QtCore/QFileInfo \
-  uniquename.h /usr/include/sys/ioctl.h /usr/include/bits/ioctls.h \
-  /usr/include/asm/ioctls.h /usr/include/asm-i486/ioctls.h \
-  /usr/include/asm/ioctl.h /usr/include/asm-i486/ioctl.h \
-  /usr/include/asm-generic/ioctl.h /usr/include/bits/ioctl-types.h \
-  /usr/include/sys/ttydefaults.h /usr/include/net/if.h \
-  /usr/include/arpa/inet.h /usr/include/errno.h /usr/include/bits/errno.h \
-  /usr/include/linux/errno.h /usr/include/asm/errno.h \
-  /usr/include/asm-i486/errno.h /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h
+  quarantinelist.h uniquename.h /usr/include/sys/ioctl.h \
+  /usr/include/bits/ioctls.h /usr/include/asm/ioctls.h \
+  /usr/include/asm-i486/ioctls.h /usr/include/asm/ioctl.h \
+  /usr/include/asm-i486/ioctl.h /usr/include/asm-generic/ioctl.h \
+  /usr/include/bits/ioctl-types.h /usr/include/sys/ttydefaults.h \
+  /usr/include/net/if.h /usr/include/arpa/inet.h /usr/include/errno.h \
+  /usr/include/bits/errno.h /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h /usr/include/asm-i486/errno.h \
+  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h
 
 /usr/include/qt4/QtGui/QApplication:
 
@@ -3334,6 +3334,8 @@ transfervisual.h:
 /usr/include/qt4/QtGui/QBrush:
 
 /usr/include/qt4/QtCore/QFileInfo:
+
+quarantinelist.h:
 
 uniquename.h:
 

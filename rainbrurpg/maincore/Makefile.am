@@ -1,3 +1,5 @@
+# maincore is a library shared by editor and client
+
 lib_LTLIBRARIES = librainbrurpg-core.la
 
 librainbrurpg_core.adir=.

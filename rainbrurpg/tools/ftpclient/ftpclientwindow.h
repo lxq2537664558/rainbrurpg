@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 12 jul 2007 : Treat the tTransferError signal
  * - 29 jun 2007 : Using xmlServerList
  * - 07 jun 2007 : A transferTerminated slot
  * - 25 apr 2007 : Starting implementation
@@ -29,13 +30,14 @@
 #ifndef NET_FLOODER_WINDOW_H
 #define NET_FLOODER_WINDOW_H
 
-#include <fox-1.6/fx.h>
 #include <sigc++/sigc++.h>
+#include <fox-1.6/fx.h>
 
-#include <gnet.h>
-#include <logger.h>
-#include <ftpclient.h>
 #include <xmlserverlist.h>
+#include <ftpclient.h>
+#include <logger.h>
+#include <ftpdef.h>
+#include <gnet.h>
 
 /** A define macro used to indent the help messages */
 #define HELP_INDENT "            "
@@ -97,6 +99,7 @@ namespace RainbruRPG{
       void slotBytesWritten(int);
       void slotTransferTerminated();
       void slotFileSizeReceived(int);
+      void slotTransferError(tTransferError);
 
     private:
       void logMessage(FXString);
