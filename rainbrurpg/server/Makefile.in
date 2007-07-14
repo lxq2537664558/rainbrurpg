@@ -96,6 +96,8 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BUILD_LIB_DESIGN_FALSE = @BUILD_LIB_DESIGN_FALSE@
+BUILD_LIB_DESIGN_TRUE = @BUILD_LIB_DESIGN_TRUE@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -133,6 +135,7 @@ LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIB_COMMON_NAME = @LIB_COMMON_NAME@
 LIB_CORE_NAME = @LIB_CORE_NAME@
+LIB_DESIGN_NAME = @LIB_DESIGN_NAME@
 LIB_TERAPI_NAME = @LIB_TERAPI_NAME@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -208,11 +211,13 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 rainbrurpg_server_LDADD = -lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql \
+			-lrainbrurpg-design \
+			-L$(top_srcdir)/common/.libs \
+			-L$(top_srcdir)/design/.libs -lglib-2.0 -lQtSql \
 			-lQt3Support
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
-INCLUDES = -I$(top_srcdir)/common \
+INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
 	   $(glib_cflags)

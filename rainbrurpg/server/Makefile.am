@@ -2,12 +2,14 @@
 bin_PROGRAMS = rainbrurpg-server
 
 rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql \
+			-lrainbrurpg-design \
+			-L$(top_srcdir)/common/.libs \
+			-L$(top_srcdir)/design/.libs -lglib-2.0 -lQtSql \
 			-lQt3Support
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
 
-INCLUDES = -I$(top_srcdir)/common \
+INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
 	   $(glib_cflags)

@@ -11,6 +11,10 @@ SUBDIRS+= config data media mapdata
 # Bug ?
 # RainbruRPG.html
 
+if BUILD_LIB_DESIGN
+  SUBDIRS+=design
+endif
+
 if RB_OPTION_EDITOR_FLAGS
   SUBDIRS+=editor
 endif

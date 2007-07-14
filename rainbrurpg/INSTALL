@@ -252,3 +252,23 @@ RainbruRPG.html directory, try this.
   make html
   cp htmlMakefile.am RainbruRPG.html/Makefile.am
   autoconf&&automake&&./configure
+
+Dependencies
+============
+
+    When building client 
+    --------------------
+
+Building client is needed, so all these libraries are needed :
+- Ogre (GLX platform)
+- CEGUI
+- OIS
+- PLSM2
+
+    When building Editor or/and Server
+    ----------------------------------
+
+Building editor or/and server is optional (please see './configure --help').
+These libraries are needed ONLY if you want to build editor and server :
+- libmagic
+- Qt4 (core, gui, Qt3Support and network)

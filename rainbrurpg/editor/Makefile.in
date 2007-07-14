@@ -96,6 +96,8 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BUILD_LIB_DESIGN_FALSE = @BUILD_LIB_DESIGN_FALSE@
+BUILD_LIB_DESIGN_TRUE = @BUILD_LIB_DESIGN_TRUE@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -133,6 +135,7 @@ LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIB_COMMON_NAME = @LIB_COMMON_NAME@
 LIB_CORE_NAME = @LIB_CORE_NAME@
+LIB_DESIGN_NAME = @LIB_DESIGN_NAME@
 LIB_TERAPI_NAME = @LIB_TERAPI_NAME@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -207,12 +210,10 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-rainbrurpg_editor_LDADD = -lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core\
-			-L$(top_srcdir)/common/.libs \
-			-L$(top_srcdir)/maincore/.libs
-
+rainbrurpg_editor_LDADD = -lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core
 OGRE_CFLAGS = -I/usr/local/include/OGRE
 INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
+	   -I$(top_srcdir)/design/ \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore \
 	    $(OGRE_CFLAGS)
@@ -562,6 +563,10 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	pdf pdf-am ps ps-am tags uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
+			-lrainbrurpg-design \
+			-L$(top_srcdir)/common/.libs \
+			-L$(top_srcdir)/design/.libs \
+			-L$(top_srcdir)/maincore/.libs
 
 # This is to ensure the myapp.h file is distributed in your myapp-0.1.tar.gz
 # I also have a resources.qrc I need to include. The png is used in myapp.

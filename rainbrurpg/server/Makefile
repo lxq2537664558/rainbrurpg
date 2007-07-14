@@ -96,6 +96,8 @@ AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.9
 AWK = mawk
+BUILD_LIB_DESIGN_FALSE = #
+BUILD_LIB_DESIGN_TRUE = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -126,13 +128,14 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-13
+ISODATE = 2007-07-14
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_thread -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
+LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
+LIB_DESIGN_NAME = design
 LIB_TERAPI_NAME = terminalAPI
 LN_S = ln -s
 LTLIBOBJS = 
@@ -208,11 +211,13 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 rainbrurpg_server_LDADD = -lQtCore -lQtGui -lrainbrurpg-common \
-			-L$(top_srcdir)/common/.libs -lglib-2.0 -lQtSql \
+			-lrainbrurpg-design \
+			-L$(top_srcdir)/common/.libs \
+			-L$(top_srcdir)/design/.libs -lglib-2.0 -lQtSql \
 			-lQt3Support
 
 glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
-INCLUDES = -I$(top_srcdir)/common \
+INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
 	   $(glib_cflags)

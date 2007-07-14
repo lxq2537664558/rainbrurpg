@@ -301,7 +301,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile common/Makefile terminalapi/Makefile maincore/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
+config_files=" Makefile common/Makefile terminalapi/Makefile maincore/Makefile design/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
 config_headers=" config.h"
 config_commands=" depfiles"
 
@@ -440,6 +440,7 @@ do
     "common/Makefile") CONFIG_FILES="$CONFIG_FILES common/Makefile" ;;
     "terminalapi/Makefile") CONFIG_FILES="$CONFIG_FILES terminalapi/Makefile" ;;
     "maincore/Makefile") CONFIG_FILES="$CONFIG_FILES maincore/Makefile" ;;
+    "design/Makefile") CONFIG_FILES="$CONFIG_FILES design/Makefile" ;;
     "client/Makefile") CONFIG_FILES="$CONFIG_FILES client/Makefile" ;;
     "editor/Makefile") CONFIG_FILES="$CONFIG_FILES editor/Makefile" ;;
     "server/Makefile") CONFIG_FILES="$CONFIG_FILES server/Makefile" ;;
@@ -567,7 +568,7 @@ s,@DEFS@,|#_!!_#|-DHAVE_CONFIG_H,g
 s,@ECHO_C@,|#_!!_#|,g
 s,@ECHO_N@,|#_!!_#|-n,g
 s,@ECHO_T@,|#_!!_#|,g
-s,@LIBS@,|#_!!_#|-lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_thread -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain ,g
+s,@LIBS@,|#_!!_#|-lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain ,g
 s,@build_alias@,|#_!!_#|,g
 s,@host_alias@,|#_!!_#|,g
 s,@target_alias@,|#_!!_#|,g
@@ -595,12 +596,13 @@ s,@am__untar@,|#_!!_#|${AMTAR} xf -,g
 s,@LIB_COMMON_NAME@,|#_!!_#|common,g
 s,@LIB_TERAPI_NAME@,|#_!!_#|terminalAPI,g
 s,@LIB_CORE_NAME@,|#_!!_#|core,g
+s,@LIB_DESIGN_NAME@,|#_!!_#|design,g
 s,@GENERIC_API_VERSION@,|#_!!_#|1.0,g
 s,@GENERIC_LIBRARY_VERSION@,|#_!!_#|1:2:0,g
 s,@GENERIC_LIBRARY_NAME@,|#_!!_#|RainbruRPG,g
 s,@GENERIC_RELEASE@,|#_!!_#|0.3,g
 s,@GENERIC_VERSION@,|#_!!_#|0.3.0,g
-s,@ISODATE@,|#_!!_#|2007-07-13,g
+s,@ISODATE@,|#_!!_#|2007-07-14,g
 s,@build@,|#_!!_#|i686-pc-linux-gnu,g
 s,@build_cpu@,|#_!!_#|i686,g
 s,@build_vendor@,|#_!!_#|pc,g
@@ -630,10 +632,10 @@ s,@CXXFLAGS@,|#_!!_#|-g -O2,g
 s,@ac_ct_CXX@,|#_!!_#|g++,g
 s,@CXXDEPMODE@,|#_!!_#|depmode=gcc3,g
 s,@am__fastdepCXX_TRUE@,|#_!!_#|,g
-s,@am__fastdepCXX_FALSE@,|#_!!_#|#,g
 CEOF
 cat >"$tmp/subs-2.sed" <<\CEOF
 /@[a-zA-Z_][a-zA-Z_0-9]*@/!b end
+s,@am__fastdepCXX_FALSE@,|#_!!_#|#,g
 s,@GREP@,|#_!!_#|/bin/grep,g
 s,@EGREP@,|#_!!_#|/bin/grep -E,g
 s,@LN_S@,|#_!!_#|ln -s,g
@@ -648,6 +650,8 @@ s,@ac_ct_F77@,|#_!!_#|,g
 s,@LIBTOOL@,|#_!!_#|$(SHELL) $(top_builddir)/libtool,g
 s,@RB_OPTION_SERVER_FLAGS_TRUE@,|#_!!_#|#,g
 s,@RB_OPTION_SERVER_FLAGS_FALSE@,|#_!!_#|,g
+s,@BUILD_LIB_DESIGN_TRUE@,|#_!!_#|,g
+s,@BUILD_LIB_DESIGN_FALSE@,|#_!!_#|#,g
 s,@RB_OPTION_TESTS_FLAGS_TRUE@,|#_!!_#|#,g
 s,@RB_OPTION_TESTS_FLAGS_FALSE@,|#_!!_#|,g
 s,@RB_OPTION_EDITOR_FLAGS_TRUE@,|#_!!_#|#,g
@@ -938,27 +942,27 @@ s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBCEGUIOGRERENDERER\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBOIS\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBFOX_1_6\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBCURL\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBSLANG\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBBOOST_FILESYSTEM\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBBOOST_THREAD\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTCORE\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTGUI\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTNETWORK\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBENET\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBGLIB_2_0\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBSIGC_2_0\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBGD\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBGNET_2_0\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*BUILD_LIB_DESIGN\)[	 (].*,\1define\2  ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*BUILD_SERVER\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*BUILD_EDITOR\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBMAGIC\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTCORE\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTGUI\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQTNETWORK\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LIBQT3SUPPORT\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*STDC_HEADERS\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_UNISTD_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_SYS_PARAM_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_SYS_TIME_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_TIME_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_SYS_SYSMACROS_H\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_STRING_H\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_MEMORY_H\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_FCNTL_H\)[	 (].*,\1define\2 1 ,
-s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_DIRENT_H\)[	 (].*,\1define\2 1 ,
 CEOF
     sed -f "$tmp/defines.sed" $ac_file_inputs >"$tmp/out1"
     # First, check the format of the line:
@@ -967,6 +971,10 @@ CEOF
 /^[	 ]*#[	 ]*define[	 ][	 ]*[_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ][_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]*[(	 ]/b def
 b
 :def
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_STRING_H\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_MEMORY_H\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_FCNTL_H\)[	 (].*,\1define\2 1 ,
+s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_DIRENT_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_ALLOCA_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*HAVE_LOCALE_H\)[	 (].*,\1define\2 1 ,
 s,^\([	 #]*\)[^	 ]*\([	 ]*TIME_WITH_SYS_TIME\)[	 (].*,\1define\2 1 ,

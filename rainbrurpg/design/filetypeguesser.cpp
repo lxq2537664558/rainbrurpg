@@ -20,42 +20,43 @@
  *
  */
 
-/* Modifications :
- * - 13 jul 2007 : Starting implementation
- *
- */
+#include "filetypeguesser.h"
 
-#ifndef QUARANTINE_LIST_H
-#define QUARANTINE_LIST_H
+#include <logger.h>
 
-#include <QtGui>
+RainbruRPG::Core::FileTypeGuesser::FileTypeGuesser(){
 
-#include <filetypeguesser.h>
-#include <globaluri.h>
-#include <string>
-
-using namespace RainbruRPG::Network;
-
-namespace RainbruRPG{
-  namespace Gui{
-
-    /** Provide a list of files in quarantine
-      *
-      */
-    class QuarantineList : public QWidget {
-      Q_OBJECT
-
-    public:
-      QuarantineList(QWidget* parent=0);
-      virtual ~QuarantineList();
-
-    private:
-      QString fileSizeToString(qint64 filesize);     
-      void addFile(QFileInfo);
-
-      QTreeWidget* tree;
-    };
-  }
 }
 
-#endif // QUARANTINE_LIST_H
+RainbruRPG::Core::FileTypeGuesser::~FileTypeGuesser(){
+
+}
+
+std::string RainbruRPG::Core::FileTypeGuesser::
+getMimeType(const std::string& filename){
+
+  LOGI("FileTypeGuesser::getMimeType called");
+  LOGCATS("Filename=");
+  LOGCATS(filename.c_str());
+  LOGCAT();
+  magic_t t =magic_open(MAGIC_MIME);
+  magic_load(t, "/usr/share/file/magic");
+
+  const char* mime= magic_file( t, filename.c_str());
+  LOGCATS("Returned mime-type=");
+  LOGCATS(mime);
+  LOGCAT();
+
+  if (mime==NULL){
+    const char* err=magic_error(t);
+
+    LOGE(err);
+    magic_close( t );
+    return "Error";
+  }
+  else{
+    std::string ret(mime);
+    magic_close( t );
+    return ret;
+  }
+}

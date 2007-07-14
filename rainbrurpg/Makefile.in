@@ -41,11 +41,12 @@ bin_PROGRAMS = RainbruRPG2$(EXEEXT)
 
 # Bug ?
 # RainbruRPG.html
-@RB_OPTION_EDITOR_FLAGS_TRUE@am__append_1 = editor
-@RB_OPTION_SERVER_FLAGS_TRUE@am__append_2 = server
-@RB_OPTION_TOOLS_FLAGS_TRUE@am__append_3 = tools
-@RB_OPTION_TESTS_FLAGS_TRUE@am__append_4 = tests
-@RB_OPTION_ALL_FLAGS_TRUE@am__append_5 = editor server tools tests
+@BUILD_LIB_DESIGN_TRUE@am__append_1 = design
+@RB_OPTION_EDITOR_FLAGS_TRUE@am__append_2 = editor
+@RB_OPTION_SERVER_FLAGS_TRUE@am__append_3 = server
+@RB_OPTION_TOOLS_FLAGS_TRUE@am__append_4 = tools
+@RB_OPTION_TESTS_FLAGS_TRUE@am__append_5 = tests
+@RB_OPTION_ALL_FLAGS_TRUE@am__append_6 = editor server tools tests
 DIST_COMMON = README $(RainbruRPG_TEXINFOS) $(am__configure_deps) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/RainbruRPG-common.pc.in $(srcdir)/RainbruRPG.lsm.in \
@@ -126,7 +127,7 @@ DATA = $(pkgconfig_DATA)
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = common terminalapi maincore client config data media \
-	mapdata editor server tools tests
+	mapdata design editor server tools tests
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -148,6 +149,8 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BUILD_LIB_DESIGN_FALSE = @BUILD_LIB_DESIGN_FALSE@
+BUILD_LIB_DESIGN_TRUE = @BUILD_LIB_DESIGN_TRUE@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -185,6 +188,7 @@ LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIB_COMMON_NAME = @LIB_COMMON_NAME@
 LIB_CORE_NAME = @LIB_CORE_NAME@
+LIB_DESIGN_NAME = @LIB_DESIGN_NAME@
 LIB_TERAPI_NAME = @LIB_TERAPI_NAME@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -265,7 +269,7 @@ target_alias = @target_alias@
 # The data files
 SUBDIRS = common terminalapi maincore client config data media mapdata \
 	$(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) $(am__append_5)
+	$(am__append_4) $(am__append_5) $(am__append_6)
 RainbruRPG2dir = ..
 RainbruRPG2_SOURCES = RainbruRPG.cc RainbruRPG.6 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h
 pkgconfigdir = $(libdir)/pkgconfig

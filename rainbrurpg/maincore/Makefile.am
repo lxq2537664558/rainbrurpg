@@ -1,4 +1,5 @@
 # maincore is a library shared by editor and client
+# it is linked with Ogre
 
 lib_LTLIBRARIES = librainbrurpg-core.la
 

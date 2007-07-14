@@ -96,6 +96,12 @@ void RainbruRPG::Gui::QuarantineList::addFile(QFileInfo fi){
     it->setText(0,fi.fileName() );
     it->setText(1,fileSizeToString(fi.size()) );
    
+    // Get the mime-type
+    FileTypeGuesser ftg;
+    std::string stdFn(fi.absoluteFilePath().toLatin1());
+    std::string strMime=ftg.getMimeType(stdFn);
+    it->setText(2,strMime.c_str() );
+
     tree->addTopLevelItem( it );
   }
 }

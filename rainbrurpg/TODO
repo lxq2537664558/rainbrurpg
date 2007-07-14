@@ -7,9 +7,8 @@ retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
 o [mouse] QuarantineList implementation
-- Try to add a toolbar
-- Approve, Delete, Preview are QAction added to the toolbar
-- Add a QListWidget with filename, size, mime-type
+- FileDepsGuesser implementation
+- QuarantineList uses FileDepsGuesser for the 'usage' column
 - A context menu with Approve, Delete, Preview
 - Quanrantine preview for known types
 - We can validate quanrantine files (copy it in upload/ directory)
@@ -139,6 +138,13 @@ o [mouse] QuarantineList implementation
 * *******************************************************
 
 * v 0.0.5-145
+- QuarantineList uses FileTypeGuesser for the 'type' column
+- FileTypeGuesser implementation in design/
+- a design library for server and editor in design/ directory
+- conditional linking for editor and server
+- Try to add a toolbar
+- Approve, Delete, Preview are QAction added to the toolbar
+- Add a QListWidget with filename, size, mime-type
 - A Manage/Quarantine menu (list of files in quarantine/)
 - The server accepts to transfer the same file twice       FIXED
 - tools-ftpclient get the sigTransferError and treat it

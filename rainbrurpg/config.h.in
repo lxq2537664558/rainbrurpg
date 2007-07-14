@@ -1,7 +1,16 @@
 /* config.h.in.  Generated from configure.in by autoheader.  */
 
+/* Defines if the editor is built */
+#undef BUILD_EDITOR
+
+/* Is the design library built ? */
+#undef BUILD_LIB_DESIGN
+
 /* The build release number */
 #undef BUILD_RELEASE
+
+/* Defines if the server is built */
+#undef BUILD_SERVER
 
 /* Define to 1 if the `closedir' function returns void instead of `int'. */
 #undef CLOSEDIR_VOID
@@ -66,11 +75,17 @@
 /* Define to 1 if you have the `gnet-2.0' library (-lgnet-2.0). */
 #undef HAVE_LIBGNET_2_0
 
+/* Define to 1 if you have the `magic' library (-lmagic). */
+#undef HAVE_LIBMAGIC
+
 /* Define to 1 if you have the `OgreMain' library (-lOgreMain). */
 #undef HAVE_LIBOGREMAIN
 
 /* Define to 1 if you have the `OIS' library (-lOIS). */
 #undef HAVE_LIBOIS
+
+/* Define to 1 if you have the `Qt3Support' library (-lQt3Support). */
+#undef HAVE_LIBQT3SUPPORT
 
 /* Define to 1 if you have the `QtCore' library (-lQtCore). */
 #undef HAVE_LIBQTCORE
@@ -83,9 +98,6 @@
 
 /* Define to 1 if you have the `sigc-2.0' library (-lsigc-2.0). */
 #undef HAVE_LIBSIGC_2_0
-
-/* Define to 1 if you have the `slang' library (-lslang). */
-#undef HAVE_LIBSLANG
 
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H

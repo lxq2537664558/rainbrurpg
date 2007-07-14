@@ -212,6 +212,8 @@ AC_DEFUN([RB_OPTION_SERVER],
   case $build_server in
     yes)
       server=true
+      AC_DEFINE([BUILD_SERVER], [], [Defines if the server is built])
+      AC_DEFINE(BUILD_SERVER)
       AC_MSG_RESULT(yes)
       ;;
     *)
@@ -220,6 +222,8 @@ AC_DEFUN([RB_OPTION_SERVER],
       ;;
   esac
   AM_CONDITIONAL([RB_OPTION_SERVER_FLAGS], [test x$server = xtrue])
+  AC_DEFINE([BUILD_LIB_DESIGN], [], [Is the design library built ?])
+  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$server = xtrue])
 ])
 
 dnl Define the editor Option 
@@ -241,6 +245,8 @@ AC_DEFUN([RB_OPTION_EDITOR],
   case $build_editor in
     yes)
       editor=true
+      AC_DEFINE([BUILD_EDITOR], [], [Defines if the editor is built])
+      AC_DEFINE(BUILD_EDITOR)
       AC_MSG_RESULT(yes)
       ;;
     *)
@@ -249,6 +255,7 @@ AC_DEFUN([RB_OPTION_EDITOR],
       ;;
   esac
   AM_CONDITIONAL([RB_OPTION_EDITOR_FLAGS], [test x$editor = xtrue])
+  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$editor = xtrue])
 ])
 
 dnl Checks for the boost_filesystem lib ad headers
@@ -316,6 +323,8 @@ AC_DEFUN([RB_OPTION_ALL],
     yes)
       all=true
       AC_MSG_RESULT(yes)
+      AC_DEFINE(BUILD_SERVER)
+      AC_DEFINE(BUILD_EDITOR)
       ;;
     *)
       all=false
@@ -323,6 +332,7 @@ AC_DEFUN([RB_OPTION_ALL],
       ;;
   esac
   AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
+  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
 ])
 
 dnl Checks for the Qt4 lib ad headers (QtCore and QtGui needed)
@@ -331,17 +341,22 @@ dnl
 AC_DEFUN([RB_CHECK_QT4],
 [
   AC_CHECK_LIB(QtCore, main, [], [
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
+    echo "Error! You need to have Qt4 (Core) installed."
     exit -1
   ])
   AC_CHECK_LIB(QtGui, main, [], [
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
+    echo "Error! You need to have Qt4 (Gui) installed."
     exit -1
   ])
   AC_CHECK_LIB(QtNetwork, main, [], [
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
+    echo "Error! You need to have Qt4 (Network) installed."
     exit -1
   ])
+  AC_CHECK_LIB(Qt3Support, main, [], [
+    echo "Error! You need to have Qt4 (Qt3Support) installed."
+    exit -1
+  ])
+
 dnl  AC_CHECK_HEADER([qt4/Qt/qevent.h], [], [
 dnl    echo "Error! Cannot find Qt4 headers."
 dnl    exit -1
@@ -451,7 +466,6 @@ dnl   ])
 
 dnl Test the usability of the boost::thread library
 dnl
-RB_CHECK_BOOST_THREAD
 AC_DEFUN([RB_CHECK_BOOST_THREAD],
 [
   AC_CHECK_LIB(boost_thread, main, [], [
@@ -462,4 +476,66 @@ AC_DEFUN([RB_CHECK_BOOST_THREAD],
      echo "Error! Cannot find the boost::thread headers."
      exit -1
    ])
+])
+
+dnl Test the usability of the magic library
+dnl
+AC_DEFUN([RB_CHECK_MAGIC],
+[
+  AC_CHECK_LIB(magic, main, [], [
+    echo "Error! You need to have libmagic installed."
+    exit -1
+  ])
+  AC_CHECK_HEADER([magic.h], [], [
+     echo "Error! Cannot find the libmagic headers."
+     exit -1
+   ])
+])
+
+dnl The following RB_CHECK_DEFINED function is based on a macro 
+dnl taken from the web page : 
+dnl http://gnu.univ-paris.com/software/ac-archive/ax_check_define.html
+dnl
+dnl Many thanks to the original author
+
+AC_DEFUN([RB_CHECK_DEFINED],[
+AS_VAR_PUSHDEF([ac_var],[ac_cv_defined_$1])dnl
+AC_CACHE_CHECK([for $1 defined], ac_var,
+AC_TRY_COMPILE(,[
+  #ifdef $1
+  int ok;
+  #else
+  choke me
+  #endif
+],AS_VAR_SET(ac_var, yes),AS_VAR_SET(ac_var, no)))
+AS_IF([test AS_VAR_GET(ac_var) != "no"], [$2], [$3])dnl
+AS_VAR_POPDEF([ac_var])dnl
+])
+
+dnl RB_CONDITIONNAL_LINKING
+AC_DEFUN([RB_CONDITIONNAL_LINKING_LIB_MAGIC],
+[
+  # cheking libMagic if we build the server
+  RB_CHECK_DEFINED([BUILD_SERVER], [
+    echo "Server will be built, checking for libmagic, qt"
+    RB_CHECK_MAGIC
+    RB_CHECK_QT4
+  ], [  
+
+    echo "Server will NOT be built"
+
+    # cheking libMagic if we build the editor
+    RB_CHECK_DEFINED([BUILD_EDITOR], [
+      echo "Editor will be built, checking for libmagic, qt"
+      RB_CHECK_MAGIC
+      RB_CHECK_QT4
+      AC_DEFINE(BUILD_LIB_DESIGN)
+    ], [  
+      echo "Editor will NOT be built"
+    ])
+
+  ])
+
+
+
 ])

@@ -828,6 +828,7 @@ am__untar
 LIB_COMMON_NAME
 LIB_TERAPI_NAME
 LIB_CORE_NAME
+LIB_DESIGN_NAME
 GENERIC_API_VERSION
 GENERIC_LIBRARY_VERSION
 GENERIC_LIBRARY_NAME
@@ -878,6 +879,8 @@ ac_ct_F77
 LIBTOOL
 RB_OPTION_SERVER_FLAGS_TRUE
 RB_OPTION_SERVER_FLAGS_FALSE
+BUILD_LIB_DESIGN_TRUE
+BUILD_LIB_DESIGN_FALSE
 RB_OPTION_TESTS_FLAGS_TRUE
 RB_OPTION_TESTS_FLAGS_FALSE
 RB_OPTION_EDITOR_FLAGS_TRUE
@@ -2437,6 +2440,8 @@ LIB_COMMON_NAME=common
 LIB_TERAPI_NAME=terminalAPI
 
 LIB_CORE_NAME=core
+
+LIB_DESIGN_NAME=design
 
 
 #release versioning
@@ -5310,7 +5315,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5313 "configure"' > conftest.$ac_ext
+  echo '#line 5318 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7564,11 +7569,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7567: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7572: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7571: \$? = $ac_status" >&5
+   echo "$as_me:7576: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7832,11 +7837,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7835: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7840: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7839: \$? = $ac_status" >&5
+   echo "$as_me:7844: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7936,11 +7941,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7939: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7944: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7943: \$? = $ac_status" >&5
+   echo "$as_me:7948: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10233,7 +10238,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10236 "configure"
+#line 10241 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10333,7 +10338,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10336 "configure"
+#line 10341 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12669,11 +12674,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12672: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12677: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12676: \$? = $ac_status" >&5
+   echo "$as_me:12681: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -12773,11 +12778,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12776: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12781: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12780: \$? = $ac_status" >&5
+   echo "$as_me:12785: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14334,11 +14339,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14337: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14342: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14341: \$? = $ac_status" >&5
+   echo "$as_me:14346: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -14438,11 +14443,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14441: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14446: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14445: \$? = $ac_status" >&5
+   echo "$as_me:14450: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16625,11 +16630,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16628: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16633: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16632: \$? = $ac_status" >&5
+   echo "$as_me:16637: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -16893,11 +16898,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16896: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16901: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16900: \$? = $ac_status" >&5
+   echo "$as_me:16905: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -16997,11 +17002,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17000: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17005: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17004: \$? = $ac_status" >&5
+   echo "$as_me:17009: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -20863,214 +20868,6 @@ fi
 
 
 
-{ echo "$as_me:$LINENO: checking for main in -lslang" >&5
-echo $ECHO_N "checking for main in -lslang... $ECHO_C" >&6; }
-if test "${ac_cv_lib_slang_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lslang  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_slang_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_slang_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_slang_main" >&5
-echo "${ECHO_T}$ac_cv_lib_slang_main" >&6; }
-if test $ac_cv_lib_slang_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBSLANG 1
-_ACEOF
-
-  LIBS="-lslang $LIBS"
-
-else
-
-    echo "Error! You need to have SLang installed."
-    exit -1
-
-fi
-
-  if test "${ac_cv_header_slang_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for slang.h" >&5
-echo $ECHO_N "checking for slang.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_slang_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_slang_h" >&5
-echo "${ECHO_T}$ac_cv_header_slang_h" >&6; }
-else
-  # Is the header compilable?
-{ echo "$as_me:$LINENO: checking slang.h usability" >&5
-echo $ECHO_N "checking slang.h usability... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-#include <slang.h>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ac_header_compiler=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_header_compiler=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6; }
-
-# Is the header present?
-{ echo "$as_me:$LINENO: checking slang.h presence" >&5
-echo $ECHO_N "checking slang.h presence... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <slang.h>
-_ACEOF
-if { (ac_try="$ac_cpp conftest.$ac_ext"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null && {
-	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       }; then
-  ac_header_preproc=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-  ac_header_preproc=no
-fi
-
-rm -f conftest.err conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6; }
-
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
-  yes:no: )
-    { echo "$as_me:$LINENO: WARNING: slang.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: slang.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: slang.h: proceeding with the compiler's result" >&2;}
-    ac_header_preproc=yes
-    ;;
-  no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: slang.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: slang.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: slang.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: slang.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: slang.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: slang.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: slang.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: slang.h: in the future, the compiler will take precedence" >&2;}
-
-    ;;
-esac
-{ echo "$as_me:$LINENO: checking for slang.h" >&5
-echo $ECHO_N "checking for slang.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_slang_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_cv_header_slang_h=$ac_header_preproc
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_slang_h" >&5
-echo "${ECHO_T}$ac_cv_header_slang_h" >&6; }
-
-fi
-if test $ac_cv_header_slang_h = yes; then
-  :
-else
-
-    echo "Error! Cannot find the SLang headers."
-    exit -1
-
-fi
-
-
-
-
-
-
 { echo "$as_me:$LINENO: checking for main in -lboost_filesystem" >&5
 echo $ECHO_N "checking for main in -lboost_filesystem... $ECHO_C" >&6; }
 if test "${ac_cv_lib_boost_filesystem_main+set}" = set; then
@@ -21479,219 +21276,6 @@ else
 
      echo "Error! Cannot find the boost::thread headers."
      exit -1
-
-fi
-
-
-
-
-
-{ echo "$as_me:$LINENO: checking for main in -lQtCore" >&5
-echo $ECHO_N "checking for main in -lQtCore... $ECHO_C" >&6; }
-if test "${ac_cv_lib_QtCore_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lQtCore  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_QtCore_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_QtCore_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtCore_main" >&5
-echo "${ECHO_T}$ac_cv_lib_QtCore_main" >&6; }
-if test $ac_cv_lib_QtCore_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBQTCORE 1
-_ACEOF
-
-  LIBS="-lQtCore $LIBS"
-
-else
-
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
-    exit -1
-
-fi
-
-
-{ echo "$as_me:$LINENO: checking for main in -lQtGui" >&5
-echo $ECHO_N "checking for main in -lQtGui... $ECHO_C" >&6; }
-if test "${ac_cv_lib_QtGui_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lQtGui  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_QtGui_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_QtGui_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtGui_main" >&5
-echo "${ECHO_T}$ac_cv_lib_QtGui_main" >&6; }
-if test $ac_cv_lib_QtGui_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBQTGUI 1
-_ACEOF
-
-  LIBS="-lQtGui $LIBS"
-
-else
-
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
-    exit -1
-
-fi
-
-
-{ echo "$as_me:$LINENO: checking for main in -lQtNetwork" >&5
-echo $ECHO_N "checking for main in -lQtNetwork... $ECHO_C" >&6; }
-if test "${ac_cv_lib_QtNetwork_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lQtNetwork  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_QtNetwork_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_QtNetwork_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtNetwork_main" >&5
-echo "${ECHO_T}$ac_cv_lib_QtNetwork_main" >&6; }
-if test $ac_cv_lib_QtNetwork_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBQTNETWORK 1
-_ACEOF
-
-  LIBS="-lQtNetwork $LIBS"
-
-else
-
-    echo "Error! You need to have Qt4 (Core and Gui) installed."
-    exit -1
 
 fi
 
@@ -22346,6 +21930,15 @@ echo $ECHO_N "checking if we should build RainbruRPG-server... $ECHO_C" >&6; }
   case $build_server in
     yes)
       server=true
+
+cat >>confdefs.h <<\_ACEOF
+#define BUILD_SERVER
+_ACEOF
+
+      cat >>confdefs.h <<\_ACEOF
+#define BUILD_SERVER 1
+_ACEOF
+
       { echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6; }
       ;;
@@ -22363,6 +21956,21 @@ if test x$server = xtrue; then
 else
   RB_OPTION_SERVER_FLAGS_TRUE='#'
   RB_OPTION_SERVER_FLAGS_FALSE=
+fi
+
+
+cat >>confdefs.h <<\_ACEOF
+#define BUILD_LIB_DESIGN
+_ACEOF
+
+
+
+if test x$server = xtrue; then
+  BUILD_LIB_DESIGN_TRUE=
+  BUILD_LIB_DESIGN_FALSE='#'
+else
+  BUILD_LIB_DESIGN_TRUE='#'
+  BUILD_LIB_DESIGN_FALSE=
 fi
 
 
@@ -22416,6 +22024,15 @@ echo $ECHO_N "checking if we should build RainbruRPG-editor... $ECHO_C" >&6; }
   case $build_editor in
     yes)
       editor=true
+
+cat >>confdefs.h <<\_ACEOF
+#define BUILD_EDITOR
+_ACEOF
+
+      cat >>confdefs.h <<\_ACEOF
+#define BUILD_EDITOR 1
+_ACEOF
+
       { echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6; }
       ;;
@@ -22433,6 +22050,16 @@ if test x$editor = xtrue; then
 else
   RB_OPTION_EDITOR_FLAGS_TRUE='#'
   RB_OPTION_EDITOR_FLAGS_FALSE=
+fi
+
+
+
+if test x$editor = xtrue; then
+  BUILD_LIB_DESIGN_TRUE=
+  BUILD_LIB_DESIGN_FALSE='#'
+else
+  BUILD_LIB_DESIGN_TRUE='#'
+  BUILD_LIB_DESIGN_FALSE=
 fi
 
 
@@ -22488,6 +22115,14 @@ echo $ECHO_N "checking if we should build RainbruRPG-all... $ECHO_C" >&6; }
       all=true
       { echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6; }
+      cat >>confdefs.h <<\_ACEOF
+#define BUILD_SERVER 1
+_ACEOF
+
+      cat >>confdefs.h <<\_ACEOF
+#define BUILD_EDITOR 1
+_ACEOF
+
       ;;
     *)
       all=false
@@ -22504,6 +22139,1144 @@ else
   RB_OPTION_ALL_FLAGS_TRUE='#'
   RB_OPTION_ALL_FLAGS_FALSE=
 fi
+
+
+
+if test x$all = xtrue; then
+  BUILD_LIB_DESIGN_TRUE=
+  BUILD_LIB_DESIGN_FALSE='#'
+else
+  BUILD_LIB_DESIGN_TRUE='#'
+  BUILD_LIB_DESIGN_FALSE=
+fi
+
+
+
+
+  # cheking libMagic if we build the server
+
+{ echo "$as_me:$LINENO: checking for BUILD_SERVER defined" >&5
+echo $ECHO_N "checking for BUILD_SERVER defined... $ECHO_C" >&6; }
+if test "${ac_cv_defined_BUILD_SERVER+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  #ifdef BUILD_SERVER
+  int ok;
+  #else
+  choke me
+  #endif
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ac_cv_defined_BUILD_SERVER=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_defined_BUILD_SERVER=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_defined_BUILD_SERVER" >&5
+echo "${ECHO_T}$ac_cv_defined_BUILD_SERVER" >&6; }
+if test $ac_cv_defined_BUILD_SERVER != "no"; then
+
+    echo "Server will be built, checking for libmagic, qt"
+
+
+{ echo "$as_me:$LINENO: checking for main in -lmagic" >&5
+echo $ECHO_N "checking for main in -lmagic... $ECHO_C" >&6; }
+if test "${ac_cv_lib_magic_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lmagic  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_magic_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_magic_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_magic_main" >&5
+echo "${ECHO_T}$ac_cv_lib_magic_main" >&6; }
+if test $ac_cv_lib_magic_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBMAGIC 1
+_ACEOF
+
+  LIBS="-lmagic $LIBS"
+
+else
+
+    echo "Error! You need to have libmagic installed."
+    exit -1
+
+fi
+
+  if test "${ac_cv_header_magic_h+set}" = set; then
+  { echo "$as_me:$LINENO: checking for magic.h" >&5
+echo $ECHO_N "checking for magic.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_magic_h+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_header_magic_h" >&5
+echo "${ECHO_T}$ac_cv_header_magic_h" >&6; }
+else
+  # Is the header compilable?
+{ echo "$as_me:$LINENO: checking magic.h usability" >&5
+echo $ECHO_N "checking magic.h usability... $ECHO_C" >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+$ac_includes_default
+#include <magic.h>
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ac_header_compiler=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_header_compiler=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
+echo "${ECHO_T}$ac_header_compiler" >&6; }
+
+# Is the header present?
+{ echo "$as_me:$LINENO: checking magic.h presence" >&5
+echo $ECHO_N "checking magic.h presence... $ECHO_C" >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <magic.h>
+_ACEOF
+if { (ac_try="$ac_cpp conftest.$ac_ext"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } >/dev/null && {
+	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       }; then
+  ac_header_preproc=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+  ac_header_preproc=no
+fi
+
+rm -f conftest.err conftest.$ac_ext
+{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
+echo "${ECHO_T}$ac_header_preproc" >&6; }
+
+# So?  What about this header?
+case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
+  yes:no: )
+    { echo "$as_me:$LINENO: WARNING: magic.h: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: magic.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: proceeding with the compiler's result" >&5
+echo "$as_me: WARNING: magic.h: proceeding with the compiler's result" >&2;}
+    ac_header_preproc=yes
+    ;;
+  no:yes:* )
+    { echo "$as_me:$LINENO: WARNING: magic.h: present but cannot be compiled" >&5
+echo "$as_me: WARNING: magic.h: present but cannot be compiled" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h:     check for missing prerequisite headers?" >&5
+echo "$as_me: WARNING: magic.h:     check for missing prerequisite headers?" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: see the Autoconf documentation" >&5
+echo "$as_me: WARNING: magic.h: see the Autoconf documentation" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h:     section \"Present But Cannot Be Compiled\"" >&5
+echo "$as_me: WARNING: magic.h:     section \"Present But Cannot Be Compiled\"" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: proceeding with the preprocessor's result" >&5
+echo "$as_me: WARNING: magic.h: proceeding with the preprocessor's result" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: in the future, the compiler will take precedence" >&5
+echo "$as_me: WARNING: magic.h: in the future, the compiler will take precedence" >&2;}
+
+    ;;
+esac
+{ echo "$as_me:$LINENO: checking for magic.h" >&5
+echo $ECHO_N "checking for magic.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_magic_h+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_header_magic_h=$ac_header_preproc
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_header_magic_h" >&5
+echo "${ECHO_T}$ac_cv_header_magic_h" >&6; }
+
+fi
+if test $ac_cv_header_magic_h = yes; then
+  :
+else
+
+     echo "Error! Cannot find the libmagic headers."
+     exit -1
+
+fi
+
+
+
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtCore" >&5
+echo $ECHO_N "checking for main in -lQtCore... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtCore_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtCore  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtCore_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtCore_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtCore_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtCore_main" >&6; }
+if test $ac_cv_lib_QtCore_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTCORE 1
+_ACEOF
+
+  LIBS="-lQtCore $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Core) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtGui" >&5
+echo $ECHO_N "checking for main in -lQtGui... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtGui_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtGui  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtGui_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtGui_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtGui_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtGui_main" >&6; }
+if test $ac_cv_lib_QtGui_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTGUI 1
+_ACEOF
+
+  LIBS="-lQtGui $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Gui) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtNetwork" >&5
+echo $ECHO_N "checking for main in -lQtNetwork... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtNetwork_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtNetwork  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtNetwork_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtNetwork_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtNetwork_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtNetwork_main" >&6; }
+if test $ac_cv_lib_QtNetwork_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTNETWORK 1
+_ACEOF
+
+  LIBS="-lQtNetwork $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Network) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQt3Support" >&5
+echo $ECHO_N "checking for main in -lQt3Support... $ECHO_C" >&6; }
+if test "${ac_cv_lib_Qt3Support_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQt3Support  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_Qt3Support_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_Qt3Support_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_Qt3Support_main" >&5
+echo "${ECHO_T}$ac_cv_lib_Qt3Support_main" >&6; }
+if test $ac_cv_lib_Qt3Support_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQT3SUPPORT 1
+_ACEOF
+
+  LIBS="-lQt3Support $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Qt3Support) installed."
+    exit -1
+
+fi
+
+
+
+
+
+else
+
+
+    echo "Server will NOT be built"
+
+    # cheking libMagic if we build the editor
+
+{ echo "$as_me:$LINENO: checking for BUILD_EDITOR defined" >&5
+echo $ECHO_N "checking for BUILD_EDITOR defined... $ECHO_C" >&6; }
+if test "${ac_cv_defined_BUILD_EDITOR+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  #ifdef BUILD_EDITOR
+  int ok;
+  #else
+  choke me
+  #endif
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ac_cv_defined_BUILD_EDITOR=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_defined_BUILD_EDITOR=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_defined_BUILD_EDITOR" >&5
+echo "${ECHO_T}$ac_cv_defined_BUILD_EDITOR" >&6; }
+if test $ac_cv_defined_BUILD_EDITOR != "no"; then
+
+      echo "Editor will be built, checking for libmagic, qt"
+
+
+{ echo "$as_me:$LINENO: checking for main in -lmagic" >&5
+echo $ECHO_N "checking for main in -lmagic... $ECHO_C" >&6; }
+if test "${ac_cv_lib_magic_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lmagic  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_magic_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_magic_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_magic_main" >&5
+echo "${ECHO_T}$ac_cv_lib_magic_main" >&6; }
+if test $ac_cv_lib_magic_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBMAGIC 1
+_ACEOF
+
+  LIBS="-lmagic $LIBS"
+
+else
+
+    echo "Error! You need to have libmagic installed."
+    exit -1
+
+fi
+
+  if test "${ac_cv_header_magic_h+set}" = set; then
+  { echo "$as_me:$LINENO: checking for magic.h" >&5
+echo $ECHO_N "checking for magic.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_magic_h+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_header_magic_h" >&5
+echo "${ECHO_T}$ac_cv_header_magic_h" >&6; }
+else
+  # Is the header compilable?
+{ echo "$as_me:$LINENO: checking magic.h usability" >&5
+echo $ECHO_N "checking magic.h usability... $ECHO_C" >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+$ac_includes_default
+#include <magic.h>
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ac_header_compiler=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_header_compiler=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
+echo "${ECHO_T}$ac_header_compiler" >&6; }
+
+# Is the header present?
+{ echo "$as_me:$LINENO: checking magic.h presence" >&5
+echo $ECHO_N "checking magic.h presence... $ECHO_C" >&6; }
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <magic.h>
+_ACEOF
+if { (ac_try="$ac_cpp conftest.$ac_ext"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } >/dev/null && {
+	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       }; then
+  ac_header_preproc=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+  ac_header_preproc=no
+fi
+
+rm -f conftest.err conftest.$ac_ext
+{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
+echo "${ECHO_T}$ac_header_preproc" >&6; }
+
+# So?  What about this header?
+case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
+  yes:no: )
+    { echo "$as_me:$LINENO: WARNING: magic.h: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: magic.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: proceeding with the compiler's result" >&5
+echo "$as_me: WARNING: magic.h: proceeding with the compiler's result" >&2;}
+    ac_header_preproc=yes
+    ;;
+  no:yes:* )
+    { echo "$as_me:$LINENO: WARNING: magic.h: present but cannot be compiled" >&5
+echo "$as_me: WARNING: magic.h: present but cannot be compiled" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h:     check for missing prerequisite headers?" >&5
+echo "$as_me: WARNING: magic.h:     check for missing prerequisite headers?" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: see the Autoconf documentation" >&5
+echo "$as_me: WARNING: magic.h: see the Autoconf documentation" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h:     section \"Present But Cannot Be Compiled\"" >&5
+echo "$as_me: WARNING: magic.h:     section \"Present But Cannot Be Compiled\"" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: proceeding with the preprocessor's result" >&5
+echo "$as_me: WARNING: magic.h: proceeding with the preprocessor's result" >&2;}
+    { echo "$as_me:$LINENO: WARNING: magic.h: in the future, the compiler will take precedence" >&5
+echo "$as_me: WARNING: magic.h: in the future, the compiler will take precedence" >&2;}
+
+    ;;
+esac
+{ echo "$as_me:$LINENO: checking for magic.h" >&5
+echo $ECHO_N "checking for magic.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_magic_h+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_header_magic_h=$ac_header_preproc
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_header_magic_h" >&5
+echo "${ECHO_T}$ac_cv_header_magic_h" >&6; }
+
+fi
+if test $ac_cv_header_magic_h = yes; then
+  :
+else
+
+     echo "Error! Cannot find the libmagic headers."
+     exit -1
+
+fi
+
+
+
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtCore" >&5
+echo $ECHO_N "checking for main in -lQtCore... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtCore_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtCore  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtCore_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtCore_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtCore_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtCore_main" >&6; }
+if test $ac_cv_lib_QtCore_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTCORE 1
+_ACEOF
+
+  LIBS="-lQtCore $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Core) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtGui" >&5
+echo $ECHO_N "checking for main in -lQtGui... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtGui_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtGui  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtGui_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtGui_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtGui_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtGui_main" >&6; }
+if test $ac_cv_lib_QtGui_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTGUI 1
+_ACEOF
+
+  LIBS="-lQtGui $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Gui) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQtNetwork" >&5
+echo $ECHO_N "checking for main in -lQtNetwork... $ECHO_C" >&6; }
+if test "${ac_cv_lib_QtNetwork_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQtNetwork  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_QtNetwork_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_QtNetwork_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_QtNetwork_main" >&5
+echo "${ECHO_T}$ac_cv_lib_QtNetwork_main" >&6; }
+if test $ac_cv_lib_QtNetwork_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQTNETWORK 1
+_ACEOF
+
+  LIBS="-lQtNetwork $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Network) installed."
+    exit -1
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lQt3Support" >&5
+echo $ECHO_N "checking for main in -lQt3Support... $ECHO_C" >&6; }
+if test "${ac_cv_lib_Qt3Support_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lQt3Support  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_Qt3Support_main=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_cv_lib_Qt3Support_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_Qt3Support_main" >&5
+echo "${ECHO_T}$ac_cv_lib_Qt3Support_main" >&6; }
+if test $ac_cv_lib_Qt3Support_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBQT3SUPPORT 1
+_ACEOF
+
+  LIBS="-lQt3Support $LIBS"
+
+else
+
+    echo "Error! You need to have Qt4 (Qt3Support) installed."
+    exit -1
+
+fi
+
+
+
+
+      cat >>confdefs.h <<\_ACEOF
+#define BUILD_LIB_DESIGN 1
+_ACEOF
+
+
+else
+
+      echo "Editor will NOT be built"
+
+fi
+
+
+
+fi
+
+
 
 
 
@@ -24465,7 +25238,7 @@ echo "${ECHO_T}$ac_cv_func_mknod" >&6; }
 
 
 
-ac_config_files="$ac_config_files Makefile common/Makefile terminalapi/Makefile maincore/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
+ac_config_files="$ac_config_files Makefile common/Makefile terminalapi/Makefile maincore/Makefile design/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
 
 
 
@@ -24607,6 +25380,13 @@ echo "$as_me: error: conditional \"RB_OPTION_SERVER_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
+if test -z "${BUILD_LIB_DESIGN_TRUE}" && test -z "${BUILD_LIB_DESIGN_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
 if test -z "${RB_OPTION_TESTS_FLAGS_TRUE}" && test -z "${RB_OPTION_TESTS_FLAGS_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"RB_OPTION_TESTS_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
@@ -24621,6 +25401,13 @@ echo "$as_me: error: conditional \"RB_OPTION_EDITOR_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
+if test -z "${BUILD_LIB_DESIGN_TRUE}" && test -z "${BUILD_LIB_DESIGN_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
 if test -z "${RB_OPTION_TOOLS_FLAGS_TRUE}" && test -z "${RB_OPTION_TOOLS_FLAGS_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"RB_OPTION_TOOLS_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
@@ -24632,6 +25419,13 @@ if test -z "${RB_OPTION_ALL_FLAGS_TRUE}" && test -z "${RB_OPTION_ALL_FLAGS_FALSE
   { { echo "$as_me:$LINENO: error: conditional \"RB_OPTION_ALL_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"RB_OPTION_ALL_FLAGS\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${BUILD_LIB_DESIGN_TRUE}" && test -z "${BUILD_LIB_DESIGN_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"BUILD_LIB_DESIGN\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -25107,6 +25901,7 @@ do
     "common/Makefile") CONFIG_FILES="$CONFIG_FILES common/Makefile" ;;
     "terminalapi/Makefile") CONFIG_FILES="$CONFIG_FILES terminalapi/Makefile" ;;
     "maincore/Makefile") CONFIG_FILES="$CONFIG_FILES maincore/Makefile" ;;
+    "design/Makefile") CONFIG_FILES="$CONFIG_FILES design/Makefile" ;;
     "client/Makefile") CONFIG_FILES="$CONFIG_FILES client/Makefile" ;;
     "editor/Makefile") CONFIG_FILES="$CONFIG_FILES editor/Makefile" ;;
     "server/Makefile") CONFIG_FILES="$CONFIG_FILES server/Makefile" ;;
@@ -25267,6 +26062,7 @@ am__untar!$am__untar$ac_delim
 LIB_COMMON_NAME!$LIB_COMMON_NAME$ac_delim
 LIB_TERAPI_NAME!$LIB_TERAPI_NAME$ac_delim
 LIB_CORE_NAME!$LIB_CORE_NAME$ac_delim
+LIB_DESIGN_NAME!$LIB_DESIGN_NAME$ac_delim
 GENERIC_API_VERSION!$GENERIC_API_VERSION$ac_delim
 GENERIC_LIBRARY_VERSION!$GENERIC_LIBRARY_VERSION$ac_delim
 GENERIC_LIBRARY_NAME!$GENERIC_LIBRARY_NAME$ac_delim
@@ -25302,7 +26098,6 @@ CXXFLAGS!$CXXFLAGS$ac_delim
 ac_ct_CXX!$ac_ct_CXX$ac_delim
 CXXDEPMODE!$CXXDEPMODE$ac_delim
 am__fastdepCXX_TRUE!$am__fastdepCXX_TRUE$ac_delim
-am__fastdepCXX_FALSE!$am__fastdepCXX_FALSE$ac_delim
 _ACEOF
 
   if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 97; then
@@ -25344,6 +26139,7 @@ _ACEOF
 ac_delim='%!_!# '
 for ac_last_try in false false false false false :; do
   cat >conf$$subs.sed <<_ACEOF
+am__fastdepCXX_FALSE!$am__fastdepCXX_FALSE$ac_delim
 GREP!$GREP$ac_delim
 EGREP!$EGREP$ac_delim
 LN_S!$LN_S$ac_delim
@@ -25358,6 +26154,8 @@ ac_ct_F77!$ac_ct_F77$ac_delim
 LIBTOOL!$LIBTOOL$ac_delim
 RB_OPTION_SERVER_FLAGS_TRUE!$RB_OPTION_SERVER_FLAGS_TRUE$ac_delim
 RB_OPTION_SERVER_FLAGS_FALSE!$RB_OPTION_SERVER_FLAGS_FALSE$ac_delim
+BUILD_LIB_DESIGN_TRUE!$BUILD_LIB_DESIGN_TRUE$ac_delim
+BUILD_LIB_DESIGN_FALSE!$BUILD_LIB_DESIGN_FALSE$ac_delim
 RB_OPTION_TESTS_FLAGS_TRUE!$RB_OPTION_TESTS_FLAGS_TRUE$ac_delim
 RB_OPTION_TESTS_FLAGS_FALSE!$RB_OPTION_TESTS_FLAGS_FALSE$ac_delim
 RB_OPTION_EDITOR_FLAGS_TRUE!$RB_OPTION_EDITOR_FLAGS_TRUE$ac_delim
@@ -25371,7 +26169,7 @@ LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 25; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 28; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

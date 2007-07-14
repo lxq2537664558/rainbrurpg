@@ -30,6 +30,9 @@ AC_SUBST(LIB_TERAPI_NAME)
 dnl   RainbruRPG-core
 LIB_CORE_NAME=core
 AC_SUBST(LIB_CORE_NAME)
+dnl   RainbruRPG-design
+LIB_DESIGN_NAME=design
+AC_SUBST(LIB_DESIGN_NAME)
 
 #release versioning
 GENERIC_MAJOR_VERSION=0
@@ -87,10 +90,9 @@ RB_CHECK_PLSM2
 RB_CHECK_LIBOIS
 RB_CHECK_LIBFOX
 RB_CHECK_LIBCURL
-RB_CHECK_LIBSLANG
+dnl RB_CHECK_LIBSLANG Only used by terminalAPI
 RB_CHECK_BOOST_FS
 RB_CHECK_BOOST_THREAD
-RB_CHECK_QT4
 RB_CHECK_ENET
 RB_CHECK_GLIB
 RB_CHECK_LIBSIG
@@ -110,6 +112,8 @@ dnl #################################################################"""
 dnl #################################################################"""
 dnl #################################################################"""
 
+dnl Conditionnal library linking
+RB_CONDITIONNAL_LINKING_LIB_MAGIC
 
 dnl Checks for header files.
 AC_HEADER_STDC
@@ -132,6 +136,7 @@ AC_CONFIG_FILES([Makefile			\
           common/Makefile			\
           terminalapi/Makefile			\
 	  maincore/Makefile			\
+	  design/Makefile			\
 	  client/Makefile			\
 	  editor/Makefile			\
 	  server/Makefile			\

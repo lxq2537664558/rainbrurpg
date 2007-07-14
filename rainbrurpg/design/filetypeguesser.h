@@ -21,41 +21,35 @@
  */
 
 /* Modifications :
- * - 13 jul 2007 : Starting implementation
+ * - 14 jul 2007 : Starting implementation
  *
  */
 
-#ifndef QUARANTINE_LIST_H
-#define QUARANTINE_LIST_H
+#ifndef FILE_TYPE_GUESSER_H
+#define FILE_TYPE_GUESSER_H
 
-#include <QtGui>
-
-#include <filetypeguesser.h>
-#include <globaluri.h>
 #include <string>
 
-using namespace RainbruRPG::Network;
+#include <magic.h>
 
 namespace RainbruRPG{
-  namespace Gui{
+  namespace Core{
 
-    /** Provide a list of files in quarantine
+    /** A file that try to guess the type of a file with magic number
+      *
+      *
       *
       */
-    class QuarantineList : public QWidget {
-      Q_OBJECT
-
+    class FileTypeGuesser{
     public:
-      QuarantineList(QWidget* parent=0);
-      virtual ~QuarantineList();
+      FileTypeGuesser();
+      ~FileTypeGuesser();
 
-    private:
-      QString fileSizeToString(qint64 filesize);     
-      void addFile(QFileInfo);
-
-      QTreeWidget* tree;
+      std::string getMimeType(const std::string&); 
     };
+
   }
 }
 
-#endif // QUARANTINE_LIST_H
+
+#endif //FILE_TYPE_GUESSER_H

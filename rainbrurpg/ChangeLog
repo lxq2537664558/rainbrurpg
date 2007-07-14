@@ -5,12 +5,16 @@
 == go to the changelog.dev directory
 ==
 
+* v0.0.6
+- Conditional linking : If you do not build server or editor, the configure
+  will not test the presence of Qt4 and libmagic. The design library will
+  not be built if neither the server nor the editor is enabled.
+	
 * v0.0.5
 - Switching to Ogre 1.2.5 (PLSM is also updated)
-- Server implements FTP protocol (RFC 0959)
-	This implementation is not compatible with official fTP client
-	but the common library contains a compatible client and the tools
-	contain an ftp client executable.
+- Server implements FTP protocol (RFC 0959) : This implementation is not 
+  compatible with official fTP client but the common library contains a 
+  compatible client and the tools contain an ftp client executable.
 
 * v0.0.4 (97-???)
 - Server has a treeview of client connection

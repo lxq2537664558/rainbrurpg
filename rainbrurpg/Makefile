@@ -41,11 +41,12 @@ bin_PROGRAMS = RainbruRPG2$(EXEEXT)
 
 # Bug ?
 # RainbruRPG.html
-#am__append_1 = editor
-#am__append_2 = server
-#am__append_3 = tools
-#am__append_4 = tests
-am__append_5 = editor server tools tests
+am__append_1 = design
+#am__append_2 = editor
+#am__append_3 = server
+#am__append_4 = tools
+#am__append_5 = tests
+am__append_6 = editor server tools tests
 DIST_COMMON = README $(RainbruRPG_TEXINFOS) $(am__configure_deps) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/RainbruRPG-common.pc.in $(srcdir)/RainbruRPG.lsm.in \
@@ -126,7 +127,7 @@ DATA = $(pkgconfig_DATA)
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = common terminalapi maincore client config data media \
-	mapdata editor server tools tests
+	mapdata design editor server tools tests
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -148,6 +149,8 @@ AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.9
 AWK = mawk
+BUILD_LIB_DESIGN_FALSE = #
+BUILD_LIB_DESIGN_TRUE = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -178,13 +181,14 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-13
+ISODATE = 2007-07-14
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_thread -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
+LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
+LIB_DESIGN_NAME = design
 LIB_TERAPI_NAME = terminalAPI
 LN_S = ln -s
 LTLIBOBJS = 
@@ -265,7 +269,7 @@ target_alias =
 # The data files
 SUBDIRS = common terminalapi maincore client config data media mapdata \
 	$(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) $(am__append_5)
+	$(am__append_4) $(am__append_5) $(am__append_6)
 RainbruRPG2dir = ..
 RainbruRPG2_SOURCES = RainbruRPG.cc RainbruRPG.6 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h
 pkgconfigdir = $(libdir)/pkgconfig

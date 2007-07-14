@@ -96,6 +96,8 @@ AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.9
 AWK = mawk
+BUILD_LIB_DESIGN_FALSE = #
+BUILD_LIB_DESIGN_TRUE = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -126,13 +128,14 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-13
+ISODATE = 2007-07-14
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lQtNetwork -lQtGui -lQtCore -lboost_thread -lboost_filesystem -lslang -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
+LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
+LIB_DESIGN_NAME = design
 LIB_TERAPI_NAME = terminalAPI
 LN_S = ln -s
 LTLIBOBJS = 
@@ -207,12 +210,10 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
-rainbrurpg_editor_LDADD = -lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core\
-			-L$(top_srcdir)/common/.libs \
-			-L$(top_srcdir)/maincore/.libs
-
+rainbrurpg_editor_LDADD = -lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core
 OGRE_CFLAGS = -I/usr/local/include/OGRE
 INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
+	   -I$(top_srcdir)/design/ \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore \
 	    $(OGRE_CFLAGS)
@@ -562,6 +563,10 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	pdf pdf-am ps ps-am tags uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
+			-lrainbrurpg-design \
+			-L$(top_srcdir)/common/.libs \
+			-L$(top_srcdir)/design/.libs \
+			-L$(top_srcdir)/maincore/.libs
 
 # This is to ensure the myapp.h file is distributed in your myapp-0.1.tar.gz
 # I also have a resources.qrc I need to include. The png is used in myapp.
