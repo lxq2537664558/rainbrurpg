@@ -81,7 +81,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	netpacketbase.lo npidentification.lo enetbase.lo enetclient.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
 	chartline.lo npflooder0004.lo netpacketflooderbase.lo timer.lo \
-	ftpclient.lo
+	ftpclient.lo itemlistfile.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -153,7 +153,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-14
+ISODATE = 2007-07-16
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -304,7 +304,8 @@ h_sources = logger.h				\
 	  npflooder0004.h			\
 	  netpacketflooderbase.h		\
 	  timer.h				\
-	  ftpclient.h
+	  ftpclient.h				\
+	  itemlistfile.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -372,7 +373,8 @@ cc_sources = loadbmp.cpp				\
 	  npflooder0004.cpp			\
 	  netpacketflooderbase.cpp		\
 	  timer.cpp				\
-	  ftpclient.cpp
+	  ftpclient.cpp				\
+	  itemlistfile.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -479,6 +481,7 @@ include ./$(DEPDIR)/ftpclient.Plo
 include ./$(DEPDIR)/globaluri.Plo
 include ./$(DEPDIR)/hashpassword.Plo
 include ./$(DEPDIR)/httpresponse.Plo
+include ./$(DEPDIR)/itemlistfile.Plo
 include ./$(DEPDIR)/languagelistitem.Plo
 include ./$(DEPDIR)/loadbmp.Plo
 include ./$(DEPDIR)/logger.Plo

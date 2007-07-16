@@ -1,3 +1,32 @@
+* v 0.0.5-144
+- Update rpgConcepts to tell serverType is implemented
+- FtTransfer::commandSTOR use getQuarantineFile
+- GlobalURI::getQuarantineFile create directory if it does not exist
+- FtpClient::commandSTOR should receive filename with path
+- FtTransfer::commandRETR use getUploadFile
+- GlobalURI::getUploadFile create directory if not exist
+- FtpClient send a sigTransferError(tTransferErrorType) signal if error
+- If unique directory doesn't exists, create it
+- Tests if the unique directory exists
+- Defines a tTransferError in ftpdef.h (FTE_FILE_OPEN_ERROR)
+- Using css classes for Buglist and Regression tests colors
+- FtpClient::connectToHost's UniqueName parameter hasn't default value
+- Tool/ftpclient call FtpClient::connectToHost with UniqueName parameter
+- globalURI returns DownloadedFile, UploadFile and quarantine
+
+* v 0.0.4-143
+- Transfer neededLibs-0.0.4-143.tar.bz2 on FTP server
+- Make a neededLibs-0.0.4-143.tar.bz2
+- Write a README file in neededLibs to tell media/ and samples was deleted
+- Call 'make clean' for all neededLibs
+- Delete media and samples from neededLibs
+- Version is used by editor ans server
+- Make a paragraph on the doxygen mainpage on the GLX support
+- print OIS and CURL versions with common/version.h/cpp
+- Switching to Ogre3D 1.2.5
+- Hunting local variable reference returned
+- switching globalURI to std::string
+
 * v 0.0.4-142
 - Updating PLSM2
 - Updating Ogre CVS (current version is 1.2.4, now 1.2.5)     OK

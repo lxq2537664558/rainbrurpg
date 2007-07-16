@@ -57,6 +57,8 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   objectList=NULL;
   quarantineList=NULL;
   running=false;
+  quaranActFirstImage=true;
+
   server=new ServerThread();
 
   // Registrering metatype (needed for signal/slot arguments)
@@ -210,7 +212,8 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   ftpAct->setStatusTip(tr("Manages the FTP server"));
 
   // The Manage/Quarantine Action
-  QAction* quaranAct = new QAction(tr("&Quarantine"), this);
+  quaranAct = new QAction(QIcon(":/images/quarantine1.png"),
+				   tr("&Quarantine"), this);
   quaranAct->setShortcut(tr("Ctrl+Q"));
   quaranAct->setStatusTip(tr("Manages the files in quarantine"));
 
@@ -253,6 +256,9 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   QToolBar* toolBar=this->addToolBar("toolbar");
   toolBar->insertAction( 0, runAct );
   toolBar->insertAction( 0, stopAct );
+  toolBar->addSeparator();
+  toolBar->insertAction( 0, quaranAct );
+
 
   connect(confAct, SIGNAL(triggered()), this, SLOT(showConfigDialog()));
   connect(techAct, SIGNAL(triggered()), this, SLOT(showTechNoteDialog()));
@@ -268,6 +274,12 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
 
   connect(stopAct, SIGNAL(triggered()), this, SLOT(stopServer()));
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
+
+  QTimer *quarantineNotifierTimer = new QTimer(this);
+  connect(quarantineNotifierTimer, SIGNAL(timeout()), 
+	  this, SLOT(quarantineNotifier()));
+
+  quarantineNotifierTimer->start(700);
 
 }
 
@@ -607,3 +619,28 @@ void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
 
 }
 
+/** Visuallt notify the user that some files are waiting for approval
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::quarantineNotifier(){
+  GlobalURI gu;
+  std::string s(gu.getQuarantineFile(""));
+  QString qs(s.c_str());
+  QDir quarantDir(qs);
+  quarantDir.setFilter(QDir::Files);
+
+  if (quarantDir.count()>0){
+    QApplication::alert(this);
+    QApplication::beep();
+
+    if (quaranActFirstImage){
+      quaranAct->setIcon(QIcon(":/images/quarantine2.png"));
+      quaranActFirstImage=false;
+    }
+    else{
+      quaranAct->setIcon(QIcon(":/images/quarantine1.png"));
+      quaranActFirstImage=true;
+    }
+  }
+
+}

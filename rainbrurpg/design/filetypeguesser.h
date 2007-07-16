@@ -30,14 +30,51 @@
 
 #include <string>
 
+#include <itemlistfile.h>
 #include <magic.h>
+#include <globaluri.h>
+
+using namespace RainbruRPG::Network;
+using namespace RainbruRPG::Options;
 
 namespace RainbruRPG{
   namespace Core{
 
-    /** A file that try to guess the type of a file with magic number
+    /** Defines the status of a file in quarantine
       *
+      */
+    typedef enum{
+      QFS_ACCEPTED,   //!< The file is accepted (good extension and in 
+	              //!< accepted extension list)
+
+      QFS_REFUSED,    //!< The file is refused (good extension but in 
+	              //!< refused extension list)
+
+      QFS_WRONGEXT,   //!< The file is refused (bad extension)
+
+      QFS_TESTEDEXT,  //!< The extension is good but the file is neither
+	              //!< in accepted nor in refused list
+
+      QFS_UNKNOWN,    //!< This type of file
+    }tQuarantineFileStatus;
+
+    /** A file that try to guess the type of a file
       *
+      * \section magic_extension_sec "Magic numbers and file extension"
+      *
+      * This class used 
+      * <a href="http://en.wikipedia.org/wiki/Magic_number_%28programming%29">
+      * magic numbers</a> (provided by the libmagic library) to determine the 
+      * file type. To avoid security issues
+      * we also get the file extension and check if file type is logical
+      * with file extension.
+      *
+      * \section file_status_sec "File status"
+      *
+      * To tell the file status (ACCEPTED, REFUSED or UNSET), we work with 
+      * two files : \c file_extensions.accepted and \c file_extensions.refused.
+      * You can modify these files with a text editor to provides your
+      * own types.
       *
       */
     class FileTypeGuesser{
@@ -46,6 +83,19 @@ namespace RainbruRPG{
       ~FileTypeGuesser();
 
       std::string getMimeType(const std::string&); 
+      tQuarantineFileStatus getFileStatus(const std::string&);
+
+    private:
+      std::string getExtension(const std::string&); 
+      int testExtension(const std::string&);
+
+      /** The magic number database from libmagic */
+      magic_t magic;
+
+      /** The item list file for accepted extensions */
+      ItemListFile* ilfAccepted;
+      /** The item list file for refused extensions */
+      ItemListFile* ilfRefused;
     };
 
   }

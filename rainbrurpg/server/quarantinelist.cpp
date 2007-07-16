@@ -76,7 +76,7 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
 
   QFileInfoList list=dir.entryInfoList();
 
-  for (int i = 0; i < list.size(); ++i) {
+  for (int i = 0; i < list.size(); i++) {
     addFile(list.at(i));
   }
 }
@@ -88,7 +88,15 @@ RainbruRPG::Gui::QuarantineList::~QuarantineList(){
   delete tree;
 }
 
+/** Adds a file to the tree widget
+  *
+  * \param fi A QFileInfo object pointing the file to add
+  *
+  */
 void RainbruRPG::Gui::QuarantineList::addFile(QFileInfo fi){
+  QBrush red(QColor(250,0,0));
+  QBrush orange(QColor(0, 0, 240));
+  QBrush green(QColor(0,250,0));
 
   if (fi.isFile()){
     // adding it to the list
@@ -102,11 +110,57 @@ void RainbruRPG::Gui::QuarantineList::addFile(QFileInfo fi){
     std::string strMime=ftg.getMimeType(stdFn);
     it->setText(2,strMime.c_str() );
 
+    tQuarantineFileStatus status=ftg.getFileStatus(stdFn);
+    std::string strStatus;
+    switch(status){
+      case QFS_ACCEPTED:
+	strStatus="Accepted";
+	it->setForeground ( 0, green);
+	it->setForeground ( 1, green);
+	it->setForeground ( 2, green);
+	it->setForeground ( 3, green);
+	break;
+      case QFS_REFUSED:
+	strStatus="Refused";
+	it->setForeground ( 0, red);
+	it->setForeground ( 1, red);
+	it->setForeground ( 2, red);
+	it->setForeground ( 3, red);
+	break;
+      case QFS_UNKNOWN:
+	strStatus="Unknown";
+	it->setForeground ( 0, orange);
+	it->setForeground ( 1, orange);
+	it->setForeground ( 2, orange);
+	it->setForeground ( 3, orange);
+	break;
+      case QFS_WRONGEXT:
+	strStatus="Wrong extension";
+	it->setForeground ( 0, orange);
+	it->setForeground ( 1, orange);
+	it->setForeground ( 2, orange);
+	it->setForeground ( 3, orange);
+	break;
+      case QFS_TESTEDEXT:
+	strStatus="Tested but unlisted extension";
+	break;
+    default:
+	strStatus="ERROR";
+	it->setForeground ( 0, red);
+	it->setForeground ( 1, red);
+	it->setForeground ( 2, red);
+	it->setForeground ( 3, red);
+    }
+
+    it->setText(3,strStatus.c_str() );
+
     tree->addTopLevelItem( it );
   }
 }
 
 /** Get the filesize in text format
+  *
+  * \param filesize The file size in bytes
   *
   * \return A human-readable form of the filesize 
   *

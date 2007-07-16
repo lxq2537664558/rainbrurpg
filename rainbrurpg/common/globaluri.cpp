@@ -149,6 +149,8 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   installConfigFile("ogre.cfg");
   installConfigFile("objects.xml");
   installConfigFile("server.xml");
+  installConfigFile("file_extensions.accepted");
+  installConfigFile("file_extensions.refused");
 }
 
 /** Get the $PREFIX/share/RainbruRPG/??? file

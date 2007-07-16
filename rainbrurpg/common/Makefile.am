@@ -68,7 +68,8 @@ h_sources= logger.h				\
 	  npflooder0004.h			\
 	  netpacketflooderbase.h		\
 	  timer.h				\
-	  ftpclient.h
+	  ftpclient.h				\
+	  itemlistfile.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -137,7 +138,8 @@ cc_sources= loadbmp.cpp				\
 	  npflooder0004.cpp			\
 	  netpacketflooderbase.cpp		\
 	  timer.cpp				\
-	  ftpclient.cpp
+	  ftpclient.cpp				\
+	  itemlistfile.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

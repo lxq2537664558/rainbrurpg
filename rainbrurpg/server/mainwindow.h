@@ -81,6 +81,7 @@ namespace RainbruRPG{
       void manageObjects();
       void manageFtp();
       void manageQuarantine();
+      void quarantineNotifier();
 
       void clientConnected(const ENetAddress&);
       void packetReceived(const tReceivedPacket&);  
@@ -127,6 +128,11 @@ namespace RainbruRPG{
       FtpServer* ftpServer;
       /** The quarantine files list widget */
       QuarantineList* quarantineList;
+
+      /** The 'manage quarantine' action */
+      QAction* quaranAct;
+      /** A boolean used when animating quarantine's action images */
+      bool quaranActFirstImage;
     };
   }
 }

@@ -4,5 +4,7 @@
         <file>images/stop.png</file>
         <file>images/transferIn.png</file>
         <file>images/transferOut.png</file>
+        <file>images/quarantine1.png</file>
+        <file>images/quarantine2.png</file>
     </qresource>
 </RCC>

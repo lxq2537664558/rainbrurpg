@@ -21,48 +21,51 @@
  */
 
 /* Modifications :
- * - 13 jul 2007 : Starting implementation
+ * - 15 jul 2007 : Starting implementation
  *
  */
 
-#ifndef QUARANTINE_LIST_H
-#define QUARANTINE_LIST_H
+#ifndef ITEM_LIST_FILE_H
+#define ITEM_LIST_FILE_H
 
-#include <QtGui>
-
-#include <filetypeguesser.h>
-#include <globaluri.h>
+#include <list>
 #include <string>
+#include <fstream>
+#include <algorithm>
 
-using namespace RainbruRPG::Network;
+using namespace std;
 
 namespace RainbruRPG{
-  namespace Gui{
+  namespace Options{
 
-    /** Provide a list of files in quarantine
+    /** A simple STL list of C-style strings */
+    typedef std::list<std::string> tStringList;
+
+    /** A class that manage a file containing an item list
       *
-      * Files in quarantine are waiting for approval. When an editor send 
-      * a file to the server, it is place in a quarantine directory, where 
-      * the game client <b>will not</b> search for download. The server
-      * administrator need to approve each files before it can be downloaded
-      * by game client.
+      * If the first character of the line is #, the line is ignored 
+      * (commentary), if the line is empty, it is ignored.
       *
       */
-    class QuarantineList : public QWidget {
-      Q_OBJECT
-
+    class ItemListFile{
     public:
-      QuarantineList(QWidget* parent=0);
-      virtual ~QuarantineList();
+      ItemListFile(const std::string&);
+      ~ItemListFile();
+
+      const tStringList& getItemList(void);
+      void addItem(const std::string&);
+
+      bool exists(const std::string&);
 
     private:
-      QString fileSizeToString(qint64 filesize);     
-      void addFile(QFileInfo);
+      /** The string list created by this instance */
+      tStringList stringList;
+      /** The filename the constructor was called with */
+      std::string filename;
 
-      /** The main tree widget */
-      QTreeWidget* tree;
     };
+
   }
 }
 
-#endif // QUARANTINE_LIST_H
+#endif // ITEM_LIST_FILE_H

@@ -100,7 +100,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-14
+ISODATE = 2007-07-16
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -183,13 +183,15 @@ sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 datafilesdir = $(prefix)/share/RainbruRPG/config
-datafiles_DATA = options.xml		\
-		languages.xml		\
-		plugins.cfg		\
-		ogre.cfg		\
-		resources.cfg		\
-		objects.xml		\
-		server.xml
+datafiles_DATA = options.xml			\
+		languages.xml			\
+		plugins.cfg			\
+		ogre.cfg			\
+		resources.cfg			\
+		objects.xml			\
+		server.xml			\
+		file_extensions.accepted	\
+		file_extensions.refused
 
 all: all-am
 
