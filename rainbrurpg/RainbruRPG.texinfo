@@ -7,7 +7,7 @@
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.0.3-105
+@set VERSION 0.0.5-146
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
@@ -119,19 +119,19 @@ Or simply call the @command{./bootstrap} command.
 @cindex greetings
 @cindex overview
 
-The GNU @command{RainbruRPG} program produces a familiar, friendly greeting.
+The @command{RainbruRPG} program produces a familiar, friendly greeting.
 It allows nonprogrammers to use a classic computer science tool which
 would otherwise be unavailable to them.  Because it is protected by the
 GNU General Public License, users are free to share and change it.
 
-GNU @command{RainbruRPG} was written by Jérôme PASQUIER.
+@command{RainbruRPG} was written by Jérôme PASQUIER.
 
 @c The server documentation starts here
 @node Server, Invoking RainbruRPG, Overview, Top
 @chapter Server
 @cindex sample
 
-The GNU @command{RainbruRPG-server} program is used to create a public server.
+The @command{RainbruRPG-server} program is used to create a public server.
 Each client must be connected to a server to be able to play but a single
 server can accept multiple clients.
 
@@ -147,13 +147,26 @@ your local network. If your IP adress is 192.168.x.x or 10.x.x.x, you're
 probably behind a router. Please see your router's documentation to know how
 setting a port forwarding.
 
+@section File transfer
 @cindex File transfer
 
 To provide a client update when necessary, the server uses FTP. The File 
 Transfer Protocol is based on TCP and uses 2 ports. The control channel is
 used to send the FTP commands. The data channel, where the files are sent,
-uses a second TCP port which is usually channel_port-1. You will need to use
-port forwarding for this 2 port if you are behind a firewall/router.
+uses a second TCP port which is usually @command{channel_port-1}. You will 
+need to use port forwarding for this 2 port if you are behind a 
+firewall/router.
+
+@section Quarantine
+@cindex Quarantine
+
+Editors can store new files on server to provides their own textures, models,
+etc... Before users can use these new files, they are stored in a directory
+where they cannot be retrieved : the quarantine. The server need to approve
+each new files before it can be usable by the users.
+
+If new files are coming, a notification will appear in your operating
+system tray.
 
 @node Invoking RainbruRPG, Problems, Server, Top
 @chapter Invoking @command{RainbruRPG}

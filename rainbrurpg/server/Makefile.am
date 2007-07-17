@@ -26,7 +26,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverconfiguration.cpp	\
 			    technotedialog.cpp		\
 			    xmlserverconf.cpp		\
-			    helpviewer.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
@@ -44,7 +43,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
                             moc_logexportdialog.cpp	\
 			    moc_configdialog.cpp	\
 			    moc_technotedialog.cpp	\
-			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\

@@ -69,6 +69,7 @@ namespace RainbruRPG{
 
     public slots:
       void exitRequested();
+      void focusChanged(QWidget*, QWidget*);
 
     private slots:
       void showConfigDialog();
@@ -86,7 +87,10 @@ namespace RainbruRPG{
       void clientConnected(const ENetAddress&);
       void packetReceived(const tReceivedPacket&);  
 
-     private:
+      void systemTrayActivated(QSystemTrayIcon::ActivationReason);
+      void filesRemoved(int);
+
+    private:
       void setupActions();  
       bool registerServer();
       bool unregisterServer();
@@ -133,6 +137,20 @@ namespace RainbruRPG{
       QAction* quaranAct;
       /** A boolean used when animating quarantine's action images */
       bool quaranActFirstImage;
+      /** A global QDir pointing the quarantine directory to speed-up 
+        * quarantine notifier */
+      QDir* quarantDir;
+      /** If true, we have a notifier alert */
+      bool alert;
+      /** Number of quarantine files */
+      uint numQuarantFiles;
+      /** The first icon of the quarantine toolbar button */
+      QIcon quarantIco1;
+      /** The second icon of the quarantine toolbar button */
+      QIcon quarantIco2;
+
+      /** The system tray icon used for notification */
+      QSystemTrayIcon* systemTrayIcon;
     };
   }
 }

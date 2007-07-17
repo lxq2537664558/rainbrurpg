@@ -39,11 +39,17 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
 
   // The tool bar
   QToolBar* toolBar=new QToolBar(this);
-  toolBar->setToolButtonStyle(Qt::ToolButtonTextOnly);
+  //  toolBar->setToolButtonStyle(Qt::ToolButtonTextOnly);
 
-  QAction *previewAct=new QAction(tr("Preview"), toolBar);
-  QAction *approveAct=new QAction(tr("Approve"), toolBar);
-  QAction *deleteAct=new QAction(tr("Delete"), toolBar);
+  previewAct=new QAction(QIcon(":/images/preview.png"),
+			 tr("Preview"), toolBar);
+  approveAct=new QAction(QIcon(":/images/accept.png"),
+			 tr("Approve"), toolBar);
+  deleteAct=new QAction(QIcon(":/images/refuse.png"),
+			tr("Delete"), toolBar);
+  QAction* refreshAct=new QAction(tr("Refresh"), toolBar);
+
+  QAction* helpAct=new QAction(tr("Help"), toolBar);
 
   previewAct->setEnabled(false);
   approveAct->setEnabled(false);
@@ -52,33 +58,33 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
   toolBar->addAction(previewAct);
   toolBar->addAction(approveAct);
   toolBar->addAction(deleteAct);
+  toolBar->addSeparator();
+  toolBar->addAction(refreshAct);
+  toolBar->addSeparator();
+  toolBar->addAction(helpAct);
+
   vb1->addWidget(toolBar);
 
   // The list widget
   tree=new QTreeWidget();
   tree->setSortingEnabled(true);
+  tree->setSelectionMode(QAbstractItemView::ExtendedSelection);
   QStringList header;
   header << tr("Filename") << tr("Size") << tr("Usage") << tr("Type");
   tree->setColumnCount(4);
   tree->setHeaderLabels(header);
   vb1->addWidget(tree);
 
-  // Feeding table
-  GlobalURI gu;
-  std::string s(gu.getQuarantineFile(""));
-  QString qs(s.c_str());
-  QDir dir(qs);
-  int i=dir.count();
+  refresh();
 
-  LOGCATS("Files in directory : ");
-  LOGCATI(i);
-  LOGCAT();
 
-  QFileInfoList list=dir.entryInfoList();
+  connect(tree, SIGNAL(itemSelectionChanged()), this,
+	  SLOT(treeSelectionChanged()));
 
-  for (int i = 0; i < list.size(); i++) {
-    addFile(list.at(i));
-  }
+  connect(previewAct, SIGNAL(triggered()), this, SLOT(filePreview()));
+  connect(approveAct, SIGNAL(triggered()), this, SLOT(fileAccept()));
+  connect(deleteAct, SIGNAL(triggered()), this, SLOT(fileRefused()));
+
 }
 
 /** the default destructor
@@ -86,6 +92,10 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
   */
 RainbruRPG::Gui::QuarantineList::~QuarantineList(){
   delete tree;
+
+  delete previewAct;
+  delete approveAct;
+  delete deleteAct;
 }
 
 /** Adds a file to the tree widget
@@ -189,3 +199,152 @@ QString RainbruRPG::Gui::QuarantineList::fileSizeToString(qint64 filesize){
 
   return s;
 }
+
+/** Refresh the file list
+  *
+  * Feeds the table with the files in quarantine.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::refresh(){
+  tree->clear();
+  // Feeding table
+  GlobalURI gu;
+  std::string s(gu.getQuarantineFile(""));
+  QString qs(s.c_str());
+  QDir dir(qs);
+  int i=dir.count();
+
+  QFileInfoList list=dir.entryInfoList();
+
+  for (int i = 0; i < list.size(); i++) {
+    addFile(list.at(i));
+  }
+}
+
+/** The slot called when the tree's selection changed
+  *
+  * Here wa enabled or disable some actions.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::treeSelectionChanged(){
+  QList<QTreeWidgetItem*> list=tree->selectedItems();
+  int i=list.size();
+
+  if (i==0){
+    // disabled menus
+    previewAct->setEnabled(false);
+    approveAct->setEnabled(false);
+    deleteAct->setEnabled(false);
+  }
+  else if(i==1){
+    // enabled menus
+    previewAct->setEnabled(true);
+    approveAct->setEnabled(true);
+    deleteAct->setEnabled(true);
+  }
+  else{
+    // enabled all menus but preview
+    previewAct->setEnabled(false);
+    approveAct->setEnabled(true);
+    deleteAct->setEnabled(true);
+
+  }
+}
+
+/** Implements a context menu
+  *
+  * An implementation of a Qt protected function that provides a context
+  * menu.
+  *
+  * \param event The context menu event
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::
+contextMenuEvent(QContextMenuEvent* event){
+  QMenu menu(this);
+  menu.addAction(previewAct);
+  menu.addAction(approveAct);
+  menu.addAction(deleteAct);
+  menu.exec(event->globalPos());
+
+}
+
+/** The slot called when user run a preview in a file
+  *
+  * It is the only action that can be used only in one file.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::filePreview(){
+  LOGI("filePreview called");
+}
+
+/** The slot called when user accept some files
+  *
+  * Several files can be accepted in the same time. The selected files 
+  * are moved to the \c upload directory.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::fileAccept(){
+  LOGI("fileAccept called");
+
+
+   QList<QTreeWidgetItem*> list=tree->selectedItems();
+   GlobalURI gu;
+
+   while (!list.isEmpty()){
+     QString filename=list.first()->text(0);
+     std::string s(filename.toLatin1());
+     std::string oldPath=gu.getQuarantineFile(s);
+     std::string newPath=gu.getUploadFile(s);
+     QString qOldPath(oldPath.c_str());
+     QString qNewPath(newPath.c_str());
+     QFile f(qOldPath);
+     bool success=f.copy(qNewPath);
+
+     if (success){
+       bool success2=f.remove();
+
+       if (success2){
+	 delete list.takeFirst();
+	 emit(filesRemoved(1));
+       }
+       else{
+	 list.takeFirst();
+       }
+     }
+     else{
+       list.takeFirst();
+     }
+   }
+}
+
+/** The slot called when user refused some files
+  *
+  * Several files can be refused in the same time. The selected files
+  * are definitively removed from the hard drive.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::fileRefused(){
+   LOGI("fileRefused called");
+
+   QList<QTreeWidgetItem*> list=tree->selectedItems();
+   GlobalURI gu;
+
+   while (!list.isEmpty()){
+     QString filename=list.first()->text(0);
+     std::string s(filename.toLatin1());
+     std::string path=gu.getQuarantineFile(s);
+     QString qPath(path.c_str());
+     QFile f(qPath);
+     bool success=f.remove();
+
+     if (success){
+       delete list.takeFirst();
+       emit(filesRemoved(1));
+     }
+     else{
+       list.takeFirst();
+     }
+   }
+ }
+

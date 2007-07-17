@@ -20,6 +20,10 @@
  *
  */
 
+/* Modifications :
+ * - 18 jul 2007 : Moves to design/
+ *
+ */
 #ifndef SERVER_HELP_VIEWER_H
 #define SERVER_HELP_VIEWER_H
 

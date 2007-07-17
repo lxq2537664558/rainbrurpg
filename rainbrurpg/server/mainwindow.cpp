@@ -53,11 +53,19 @@ MainServerWindow(const QString &fileName, QWidget *parent)
 {
   LOGI("Creating MainWindow");
   setWindowTitle(fileName);
+
+  // Does not change the following name
+  // it is used in the notifier system
+  setAccessibleName("MainServerWindow");
+
   clientList=NULL;
   objectList=NULL;
   quarantineList=NULL;
-  running=false;
+  running   =false;
+  alert     =false;
   quaranActFirstImage=true;
+
+  numQuarantFiles=0;
 
   server=new ServerThread();
 
@@ -125,10 +133,27 @@ MainServerWindow(const QString &fileName, QWidget *parent)
     stopServer();
   }
 
+  // Manage notifier
+  GlobalURI globalURI;
+  std::string s(globalURI.getQuarantineFile(""));
+  QString qs(s.c_str());
+  quarantDir=new QDir(qs);
+  quarantDir->setFilter(QDir::Files);
+
+  quarantIco1=QIcon(":/images/quarantine1.png");
+  quarantIco2=QIcon(":/images/quarantine2.png");
+
+  // System tray icon
+  systemTrayIcon=new QSystemTrayIcon( quarantIco1, this );
+  systemTrayIcon->setVisible(true);
+
   connect(server, SIGNAL(clientConnected(const ENetAddress &)),
 	  this, SLOT(clientConnected(const ENetAddress &)));
   connect(server, SIGNAL(packetReceived(const tReceivedPacket&)),
 	  this, SLOT(packetReceived(const tReceivedPacket&)));
+
+  connect(systemTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+	  this,SLOT(systemTrayActivated(QSystemTrayIcon::ActivationReason)));
 
   LOGI("MainWindow created");
 }
@@ -143,6 +168,8 @@ RainbruRPG::Server::MainServerWindow::~MainServerWindow(){
   delete runAct;
   delete server;
   delete serverLog;
+  delete quarantDir;
+  delete systemTrayIcon;
 
   if (clientList){
     delete clientList;
@@ -212,8 +239,8 @@ void RainbruRPG::Server::MainServerWindow::setupActions(){
   ftpAct->setStatusTip(tr("Manages the FTP server"));
 
   // The Manage/Quarantine Action
-  quaranAct = new QAction(QIcon(":/images/quarantine1.png"),
-				   tr("&Quarantine"), this);
+  quaranAct = new QAction(tr("&Quarantine"), this);
+  quaranAct->setIcon(quarantIco2);
   quaranAct->setShortcut(tr("Ctrl+Q"));
   quaranAct->setStatusTip(tr("Manages the files in quarantine"));
 
@@ -613,34 +640,113 @@ void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
   LOGI("manageObjects called");
   if (!quarantineList){
    quarantineList =new QuarantineList();
+   connect(quarantineList, SIGNAL(filesRemoved(int)), this, 
+	   SLOT(filesRemoved(int)));
+
+
   }
   workspace->addWindow(quarantineList);
   quarantineList->show();
 
 }
 
-/** Visuallt notify the user that some files are waiting for approval
+/** Visualy notify the user that some files are waiting for approval
   *
   */
 void RainbruRPG::Server::MainServerWindow::quarantineNotifier(){
-  GlobalURI gu;
-  std::string s(gu.getQuarantineFile(""));
-  QString qs(s.c_str());
-  QDir quarantDir(qs);
-  quarantDir.setFilter(QDir::Files);
+  quarantDir->refresh();
+  uint i=quarantDir->count();
 
-  if (quarantDir.count()>0){
-    QApplication::alert(this);
-    QApplication::beep();
+  // If new files are arrived, alert
+  if (i!=numQuarantFiles ){ 
+    numQuarantFiles=i;
 
-    if (quaranActFirstImage){
-      quaranAct->setIcon(QIcon(":/images/quarantine2.png"));
-      quaranActFirstImage=false;
+    if (quarantineList&&quarantineList->isVisible()){
+      quarantineList->refresh();
     }
     else{
-      quaranAct->setIcon(QIcon(":/images/quarantine1.png"));
-      quaranActFirstImage=true;
+      alert=true;
+      QApplication::alert(this);
+      QApplication::beep();
+      systemTrayIcon->showMessage("RainbruRPG Server's quarantine",
+	"Some files in quarantine are waiting for approval. Please go to "
+	"the manage/quarantine menu of the server to approve or refuse it.",
+	QSystemTrayIcon::Warning);
     }
   }
 
+  // If an alert was declared
+  if (alert){
+    if (quaranActFirstImage){
+      quaranAct->setIcon(quarantIco2);
+      quaranActFirstImage=false;
+    }
+    else{
+      quaranAct->setIcon(quarantIco1);
+      quaranActFirstImage=true;
+    }
+  }
+}
+
+/** A slot called when focus changed
+  *
+  * \param old The widget that lost focus
+  * \param now The widget that have the focus
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::
+focusChanged(QWidget* old, QWidget* now){
+  if (quarantineList && quarantineList->isVisible()){
+    alert=false;
+
+    if (!quaranActFirstImage){
+      quaranAct->setIcon(quarantIco1);
+      quaranActFirstImage=true;
+    }
+  }
+  else{
+    statusBar()->showMessage(tr("Some files in quarantine are waiting "
+      "for approval."), 10000);
+
+  }
+}
+
+/** A slot called when the SystemTrayIcon is clicked
+  *
+  * \param reason The event type
+  *
+  * \todo make it work on all workspace
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::
+systemTrayActivated(QSystemTrayIcon::ActivationReason reason){
+  switch(reason){
+  case QSystemTrayIcon::Trigger:
+
+    if (alert){
+      LOGI("SystemTrayActivated called : showing main window");
+
+      this->showMinimized();
+      this->raise();
+      this->setVisible(true);
+      this->activateWindow();
+      this->showMaximized();
+      break;
+    }
+  }
+}
+
+/** A slot called when a file is removed from the QuarantineList
+  *
+  * It is important to count the removed files for the notification
+  * system.
+  *
+  * \param i The number of removed files
+  *
+  * \sa \ref RainbruRPG::Gui::QuarantineList::filesRemoved()
+  *          "QuarantineList::filesRemoved(int)"
+  *
+  */
+void RainbruRPG::Server::MainServerWindow::filesRemoved(int i){
+  numQuarantFiles-=i;
 }

@@ -432,12 +432,12 @@ File: RainbruRPG.info,  Node: Overview,  Next: Server,  Prev: Copying,  Up: Top
 3 Overview
 **********
 
-The GNU `RainbruRPG' program produces a familiar, friendly greeting.
-It allows nonprogrammers to use a classic computer science tool which
+The `RainbruRPG' program produces a familiar, friendly greeting.  It
+allows nonprogrammers to use a classic computer science tool which
 would otherwise be unavailable to them.  Because it is protected by the
 GNU General Public License, users are free to share and change it.
 
-   GNU `RainbruRPG' was written by Jérôme PASQUIER.
+   `RainbruRPG' was written by Jérôme PASQUIER.
 
 
 File: RainbruRPG.info,  Node: Server,  Next: Invoking RainbruRPG,  Prev: Overview,  Up: Top
@@ -445,7 +445,7 @@ File: RainbruRPG.info,  Node: Server,  Next: Invoking RainbruRPG,  Prev: Overvie
 4 Server
 ********
 
-The GNU `RainbruRPG-server' program is used to create a public server.
+The `RainbruRPG-server' program is used to create a public server.
 Each client must be connected to a server to be able to play but a
 single server can accept multiple clients.
 
@@ -462,12 +462,26 @@ from outside your local network. If your IP adress is 192.168.x.x or
 10.x.x.x, you're probably behind a router. Please see your router's
 documentation to know how setting a port forwarding.
 
-   To provide a client update when necessary, the server uses FTP. The
-File Transfer Protocol is based on TCP and uses 2 ports. The control
-channel is used to send the FTP commands. The data channel, where the
-files are sent, uses a second TCP port which is usually channel_port-1.
-You will need to use port forwarding for this 2 port if you are behind
-a firewall/router.
+4.2 File transfer
+=================
+
+To provide a client update when necessary, the server uses FTP. The File
+Transfer Protocol is based on TCP and uses 2 ports. The control channel
+is used to send the FTP commands. The data channel, where the files are
+sent, uses a second TCP port which is usually `channel_port-1'. You will
+need to use port forwarding for this 2 port if you are behind a
+firewall/router.
+
+4.3 Quarantine
+==============
+
+Editors can store new files on server to provides their own textures,
+models, etc... Before users can use these new files, they are stored in
+a directory where they cannot be retrieved : the quarantine. The server
+need to approve each new files before it can be usable by the users.
+
+   If new files are coming, a notification will appear in your operating
+system tray.
 
 
 File: RainbruRPG.info,  Node: Invoking RainbruRPG,  Next: Problems,  Prev: Server,  Up: Top
@@ -520,7 +534,7 @@ Concept Index
 * Menu:
 
 * bugs:                                  Problems.             (line  6)
-* File transfer:                         Server.               (line 23)
+* File transfer:                         Server.               (line 26)
 * getting help:                          Invoking RainbruRPG.  (line  6)
 * greetings:                             Overview.             (line  6)
 * help:                                  Invoking RainbruRPG.  (line  6)
@@ -531,6 +545,7 @@ Concept Index
 * options:                               Invoking RainbruRPG.  (line  6)
 * overview:                              Overview.             (line  6)
 * problems:                              Problems.             (line  6)
+* Quarantine:                            Server.               (line 36)
 * reading:                               Instructions.         (line  6)
 * sample:                                Server.               (line  6)
 * tail recursion:                        Concept Index.        (line  6)
@@ -544,9 +559,9 @@ Node: Top861
 Node: Instructions1475
 Node: Copying2154
 Node: Overview21340
-Node: Server21780
-Node: Invoking RainbruRPG22981
-Node: Problems23527
-Node: Concept Index24157
+Node: Server21773
+Node: Invoking RainbruRPG23408
+Node: Problems23954
+Node: Concept Index24584
 
 End Tag Table

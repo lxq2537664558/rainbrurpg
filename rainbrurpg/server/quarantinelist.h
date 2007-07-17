@@ -55,12 +55,45 @@ namespace RainbruRPG{
       QuarantineList(QWidget* parent=0);
       virtual ~QuarantineList();
 
+      void refresh();
+
+    signals:
+      /** A signal emitted when one or more files are removed from the list
+        *
+	* It is connected to the \ref
+	* RainbruRPG::Server::MainServerWindow::filesRemoved(int) 
+	* "MainServerWindow::filesRemoved(int)" slot. 
+	* The MainServerWindow notification will not make an alert if this
+	* signal is correctly emitted.
+	*
+	* \param i The number of removed files
+	*
+	*/
+      void filesRemoved(int i);
+
+    private slots:
+      void treeSelectionChanged();
+      void filePreview();
+      void fileAccept();
+      void fileRefused();
+
+    protected:
+
+      void contextMenuEvent(QContextMenuEvent*);
+
     private:
       QString fileSizeToString(qint64 filesize);     
       void addFile(QFileInfo);
 
       /** The main tree widget */
       QTreeWidget* tree;
+
+      /** The action for file preview */
+      QAction *previewAct;
+      /** The action for approve file */
+      QAction *approveAct;
+      /** The action for deleting file */
+      QAction *deleteAct;
     };
   }
 }

@@ -7,14 +7,11 @@ retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
 o [mouse] QuarantineList implementation
-- Update the list if a new file is added with FTP
-- A context menu with Approve, Delete, Preview
+- When clicking in the SystemTrayIcon, focus on server
 - Quanrantine preview for known types
-- We can validate quanrantine files (copy it in upload/ directory)
 - We can see files dependencies (where they are used)
-- We can delete quarantine files
-- Making a section in the quarantine system in the help
 - A help button that show help section on quarantine
+- Tha quarantine action in MainServerWindow has no icon
 
 * Unittest implementation in common/
 - In this order
@@ -138,11 +135,22 @@ o [mouse] QuarantineList implementation
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-147
+
 * v 0.0.5-146
+- HelpViewer in design/ (to be used by editor)
+- speed up the delete quarantine files function
+- A context menu with Approve, Delete, Preview
+- Making a section in the quarantine system in the help
+- We can validate quanrantine files (copy it in upload/ directory)
+- We can delete files in quarantine
+- QuarantineList toobar buttons are enabled when selection
+- Add a QSystemTrayIcon
+- Update the list if a new file is added in quarantine
 - Visual notification of new files
 - Compare extension with accepted/refused lists
-- exists (item)
-- uses std::string
+- ITemListFile::exists (item)
+- ITemListFile uses std::string
 - A struct is returned telling the state etc...
 - Test if the file extension is same that the mime-type
 - Try to call ITemListFile with a path as arg           OK

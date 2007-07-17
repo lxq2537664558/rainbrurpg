@@ -54,20 +54,19 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	mainwindow.$(OBJEXT) serverlog.$(OBJEXT) \
 	logexportdialog.$(OBJEXT) configdialog.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
-	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
-	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
+	xmlserverconf.$(OBJEXT) enetserver.$(OBJEXT) \
+	serverthread.$(OBJEXT) clientlist.$(OBJEXT) \
+	objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
 	transfervisual.$(OBJEXT) ftpdataconnection.$(OBJEXT) \
 	uniquename.$(OBJEXT) quarantinelist.$(OBJEXT) \
 	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
 	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
-	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
-	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
-	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
-	moc_ftpserver.$(OBJEXT) moc_ftpdataconnection.$(OBJEXT) \
-	moc_quarantinelist.$(OBJEXT)
+	moc_technotedialog.$(OBJEXT) moc_clientlist.$(OBJEXT) \
+	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
+	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
+	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT) \
+	moc_ftpdataconnection.$(OBJEXT) moc_quarantinelist.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -235,7 +234,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverconfiguration.cpp	\
 			    technotedialog.cpp		\
 			    xmlserverconf.cpp		\
-			    helpviewer.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
@@ -253,7 +251,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
                             moc_logexportdialog.cpp	\
 			    moc_configdialog.cpp	\
 			    moc_technotedialog.cpp	\
-			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\
@@ -346,7 +343,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpdataconnection.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftpserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ftptransfer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/helpviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logexportdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mainwindow.Po@am__quote@
@@ -357,7 +353,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpdataconnection.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftpserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_ftptransfer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_helpviewer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_logexportdialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_mainwindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/moc_objectlist.Po@am__quote@

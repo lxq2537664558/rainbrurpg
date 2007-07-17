@@ -54,20 +54,19 @@ am_rainbrurpg_server_OBJECTS = resources.$(OBJEXT) main.$(OBJEXT) \
 	mainwindow.$(OBJEXT) serverlog.$(OBJEXT) \
 	logexportdialog.$(OBJEXT) configdialog.$(OBJEXT) \
 	serverconfiguration.$(OBJEXT) technotedialog.$(OBJEXT) \
-	xmlserverconf.$(OBJEXT) helpviewer.$(OBJEXT) \
-	enetserver.$(OBJEXT) serverthread.$(OBJEXT) \
-	clientlist.$(OBJEXT) objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
+	xmlserverconf.$(OBJEXT) enetserver.$(OBJEXT) \
+	serverthread.$(OBJEXT) clientlist.$(OBJEXT) \
+	objectlist.$(OBJEXT) ftpcontrol.$(OBJEXT) \
 	ftptransfer.$(OBJEXT) ftpserver.$(OBJEXT) \
 	transfervisual.$(OBJEXT) ftpdataconnection.$(OBJEXT) \
 	uniquename.$(OBJEXT) quarantinelist.$(OBJEXT) \
 	moc_mainwindow.$(OBJEXT) moc_serverlog.$(OBJEXT) \
 	moc_logexportdialog.$(OBJEXT) moc_configdialog.$(OBJEXT) \
-	moc_technotedialog.$(OBJEXT) moc_helpviewer.$(OBJEXT) \
-	moc_clientlist.$(OBJEXT) moc_enetserver.$(OBJEXT) \
-	moc_serverthread.$(OBJEXT) moc_objectlist.$(OBJEXT) \
-	moc_ftpcontrol.$(OBJEXT) moc_ftptransfer.$(OBJEXT) \
-	moc_ftpserver.$(OBJEXT) moc_ftpdataconnection.$(OBJEXT) \
-	moc_quarantinelist.$(OBJEXT)
+	moc_technotedialog.$(OBJEXT) moc_clientlist.$(OBJEXT) \
+	moc_enetserver.$(OBJEXT) moc_serverthread.$(OBJEXT) \
+	moc_objectlist.$(OBJEXT) moc_ftpcontrol.$(OBJEXT) \
+	moc_ftptransfer.$(OBJEXT) moc_ftpserver.$(OBJEXT) \
+	moc_ftpdataconnection.$(OBJEXT) moc_quarantinelist.$(OBJEXT)
 rainbrurpg_server_OBJECTS = $(am_rainbrurpg_server_OBJECTS)
 rainbrurpg_server_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -128,7 +127,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-16
+ISODATE = 2007-07-17
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -235,7 +234,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    serverconfiguration.cpp	\
 			    technotedialog.cpp		\
 			    xmlserverconf.cpp		\
-			    helpviewer.cpp		\
 			    enetserver.cpp		\
 			    serverthread.cpp		\
 			    clientlist.cpp		\
@@ -253,7 +251,6 @@ rainbrurpg_server_SOURCES = resources.cpp		\
                             moc_logexportdialog.cpp	\
 			    moc_configdialog.cpp	\
 			    moc_technotedialog.cpp	\
-			    moc_helpviewer.cpp		\
 			    moc_clientlist.cpp		\
 			    moc_enetserver.cpp		\
 			    moc_serverthread.cpp	\
@@ -346,7 +343,6 @@ include ./$(DEPDIR)/ftpcontrol.Po
 include ./$(DEPDIR)/ftpdataconnection.Po
 include ./$(DEPDIR)/ftpserver.Po
 include ./$(DEPDIR)/ftptransfer.Po
-include ./$(DEPDIR)/helpviewer.Po
 include ./$(DEPDIR)/logexportdialog.Po
 include ./$(DEPDIR)/main.Po
 include ./$(DEPDIR)/mainwindow.Po
@@ -357,7 +353,6 @@ include ./$(DEPDIR)/moc_ftpcontrol.Po
 include ./$(DEPDIR)/moc_ftpdataconnection.Po
 include ./$(DEPDIR)/moc_ftpserver.Po
 include ./$(DEPDIR)/moc_ftptransfer.Po
-include ./$(DEPDIR)/moc_helpviewer.Po
 include ./$(DEPDIR)/moc_logexportdialog.Po
 include ./$(DEPDIR)/moc_mainwindow.Po
 include ./$(DEPDIR)/moc_objectlist.Po

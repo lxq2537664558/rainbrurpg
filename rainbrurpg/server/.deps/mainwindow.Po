@@ -909,7 +909,7 @@ mainwindow.o mainwindow.o: mainwindow.cpp mainwindow.h \
   /usr/include/qt4/QtGui/QPainter /usr/include/qt4/QtGui/QGradient \
   /usr/include/qt4/QtGui/QBrush /usr/include/qt4/QtCore/QFileInfo \
   quarantinelist.h ../design/filetypeguesser.h ../common/itemlistfile.h \
-  /usr/include/magic.h xmlserverconf.h helpviewer.h \
+  /usr/include/magic.h xmlserverconf.h ../design/helpviewer.h \
   ../common/npflooder0004.h ../common/netpacketflooderbase.h \
   ../common/netpacketbase.h /usr/include/qt4/QtGui/QTextEdit \
   /usr/include/qt4/QtGui/QDockWidget /usr/include/qt4/QtGui/QMenu \
@@ -3257,7 +3257,7 @@ quarantinelist.h:
 
 xmlserverconf.h:
 
-helpviewer.h:
+../design/helpviewer.h:
 
 ../common/npflooder0004.h:
 

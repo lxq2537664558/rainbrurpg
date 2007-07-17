@@ -29,6 +29,7 @@
 
 #include <logger.h>
 #include <version.h>
+#include <QWidget>
 
 #include "mainwindow.h"
 #include "uniquename.h"
@@ -59,9 +60,6 @@ int main(int argc, char *argv[]){
   QString s2(s.c_str());
 
   MainServerWindow* mainWin = new MainServerWindow(s2);
-  QObject::connect( &app, SIGNAL( aboutToQuit() ), mainWin, 
-		    SLOT( exitRequested() ) );
-
   mainWin->setWindowState( Qt::WindowMaximized );
 
   mainWin->show();
@@ -69,6 +67,11 @@ int main(int argc, char *argv[]){
 
   LOGI("Entering Qt main loop");
 
+  QObject::connect( &app, SIGNAL( aboutToQuit() ), mainWin, 
+		    SLOT( exitRequested() ) );
+
+  QObject::connect (&app, SIGNAL( focusChanged(QWidget* ,QWidget* )),
+	            mainWin, SLOT(focusChanged(QWidget* ,QWidget* )));
 
   return app.exec();
 }

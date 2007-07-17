@@ -161,10 +161,12 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/local/include/OGRE/OgreMemoryManager.h \
   /usr/local/include/CEGUI/CEGUIVersion.h /usr/include/fox-1.6/fxver.h \
   /usr/local/include/OIS/OISPrereqs.h /usr/local/include/OIS/OISConfig.h \
-  ../common/logger.h mainwindow.h /usr/include/qt4/QtGui/QtGui \
-  /usr/include/qt4/QtCore/QtCore /usr/include/qt4/QtCore/qdatastream.h \
-  /usr/include/qt4/QtCore/qdebug.h /usr/include/qt4/QtCore/qhash.h \
-  /usr/include/qt4/QtCore/qmap.h /usr/include/qt4/QtCore/qtextstream.h \
+  ../common/logger.h /usr/include/qt4/QtGui/QWidget \
+  /usr/include/qt4/QtGui/qwidget.h mainwindow.h \
+  /usr/include/qt4/QtGui/QtGui /usr/include/qt4/QtCore/QtCore \
+  /usr/include/qt4/QtCore/qdatastream.h /usr/include/qt4/QtCore/qdebug.h \
+  /usr/include/qt4/QtCore/qhash.h /usr/include/qt4/QtCore/qmap.h \
+  /usr/include/qt4/QtCore/qtextstream.h \
   /usr/include/qt4/QtCore/qtextcodec.h /usr/include/qt4/QtCore/qset.h \
   /usr/include/qt4/QtCore/qtextstream.h \
   /usr/include/qt4/QtCore/qtemporaryfile.h \
@@ -353,7 +355,7 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/qt4/QtGui/qboxlayout.h \
   /usr/include/qt4/QtGui/qgridlayout.h \
   /usr/include/qt4/QtGui/qlayoutitem.h /usr/include/qt4/QtGui/qshortcut.h \
-  /usr/include/qt4/QtGui/qsizepolicy.h /usr/include/qt4/QtGui/qwidget.h \
+  /usr/include/qt4/QtGui/qsizepolicy.h \
   /usr/include/qt4/QtGui/qsessionmanager.h \
   /usr/include/qt4/QtGui/qaction.h /usr/include/qt4/QtGui/qactiongroup.h \
   /usr/include/qt4/QtGui/qaction.h /usr/include/qt4/QtGui/qwindowdefs.h \
@@ -711,10 +713,9 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   technotedialog.h serverthread.h /usr/include/qt4/QtCore/QThread \
   enetserver.h /usr/include/qt4/QtCore/QObject ../common/enetbase.h \
   ../common/netpacketbase.h clientlist.h serverlog.h \
-  /usr/include/qt4/QtGui/QWidget /usr/include/qt4/QtGui/QTreeWidget \
-  /usr/include/qt4/QtCore/QTime /usr/include/qt4/QtGui/QColor \
-  /usr/include/qt4/QtCore/QTextStream objectlist.h \
-  /usr/include/qt4/QtSql/QSqlDatabase \
+  /usr/include/qt4/QtGui/QTreeWidget /usr/include/qt4/QtCore/QTime \
+  /usr/include/qt4/QtGui/QColor /usr/include/qt4/QtCore/QTextStream \
+  objectlist.h /usr/include/qt4/QtSql/QSqlDatabase \
   /usr/include/qt4/QtSql/qsqldatabase.h /usr/include/qt4/QtSql/qsql.h \
   /usr/include/qt4/QtSql/qsqlrecord.h /usr/include/qt4/QtSql/QSqlQuery \
   /usr/include/qt4/QtSql/qsqlquery.h \
@@ -1446,6 +1447,10 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
 
 ../common/logger.h:
 
+/usr/include/qt4/QtGui/QWidget:
+
+/usr/include/qt4/QtGui/qwidget.h:
+
 mainwindow.h:
 
 /usr/include/qt4/QtGui/QtGui:
@@ -1959,8 +1964,6 @@ mainwindow.h:
 /usr/include/qt4/QtGui/qshortcut.h:
 
 /usr/include/qt4/QtGui/qsizepolicy.h:
-
-/usr/include/qt4/QtGui/qwidget.h:
 
 /usr/include/qt4/QtGui/qsessionmanager.h:
 
@@ -2835,8 +2838,6 @@ enetserver.h:
 clientlist.h:
 
 serverlog.h:
-
-/usr/include/qt4/QtGui/QWidget:
 
 /usr/include/qt4/QtGui/QTreeWidget:
 
