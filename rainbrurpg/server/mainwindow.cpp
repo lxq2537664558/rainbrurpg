@@ -33,13 +33,9 @@
 #include <QMenu>
 #include <QWorkspace>
 
-
 // Database needs
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
-
-
-
 
 /** The default constructor
   *
@@ -147,8 +143,22 @@ MainServerWindow(const QString &fileName, QWidget *parent)
   systemTrayIcon=new QSystemTrayIcon( quarantIco1, this );
   systemTrayIcon->setVisible(true);
 
+  // Quarantine filelist
+  quarantineList =new QuarantineList();
+
+  connect(quarantineList, SIGNAL(filesRemoved(int)), this, 
+	  SLOT(filesRemoved(int)));
+
+  connect(ftpServer, SIGNAL(storeFile(const QString&)), 
+	  quarantineList, SLOT(storeFile(const QString&)));
+
+  connect(ftpServer, SIGNAL(transferComplete(const QString&)), 
+	  quarantineList, SLOT(transferComplete(const QString&)));
+
+
   connect(server, SIGNAL(clientConnected(const ENetAddress &)),
 	  this, SLOT(clientConnected(const ENetAddress &)));
+
   connect(server, SIGNAL(packetReceived(const tReceivedPacket&)),
 	  this, SLOT(packetReceived(const tReceivedPacket&)));
 
@@ -341,7 +351,7 @@ void RainbruRPG::Server::MainServerWindow::showTechNoteDialog(){
   *
   */
 void RainbruRPG::Server::MainServerWindow::showHelpDialog(){
-  ServerHelpViewer shv;
+  HelpViewer shv;
   shv.exec();
 }
 
@@ -635,19 +645,13 @@ void RainbruRPG::Server::MainServerWindow::manageFtp(){
 
 /** Shows the Quarantine file list widget
   *
+  * The QuarantineList instance is created in the MainServerWindow constructor
+  * (MainServerWindow::MainServerWindow).
+  *
   */
 void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
-  LOGI("manageObjects called");
-  if (!quarantineList){
-   quarantineList =new QuarantineList();
-   connect(quarantineList, SIGNAL(filesRemoved(int)), this, 
-	   SLOT(filesRemoved(int)));
-
-
-  }
   workspace->addWindow(quarantineList);
   quarantineList->show();
-
 }
 
 /** Visualy notify the user that some files are waiting for approval
@@ -661,7 +665,7 @@ void RainbruRPG::Server::MainServerWindow::quarantineNotifier(){
   if (i!=numQuarantFiles ){ 
     numQuarantFiles=i;
 
-    if (quarantineList&&quarantineList->isVisible()){
+    if (quarantineList){
       quarantineList->refresh();
     }
     else{

@@ -909,7 +909,8 @@ moc_mainwindow.o moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
   /usr/include/qt4/QtGui/QPainter /usr/include/qt4/QtGui/QGradient \
   /usr/include/qt4/QtGui/QBrush /usr/include/qt4/QtCore/QFileInfo \
   quarantinelist.h ../design/filetypeguesser.h ../common/itemlistfile.h \
-  /usr/include/magic.h
+  /usr/include/magic.h ../design/filepreview.h \
+  ../design/filetypeguesser.h ../design/helpviewer.h
 
 mainwindow.h:
 
@@ -3250,3 +3251,9 @@ quarantinelist.h:
 ../common/itemlistfile.h:
 
 /usr/include/magic.h:
+
+../design/filepreview.h:
+
+../design/filetypeguesser.h:
+
+../design/helpviewer.h:

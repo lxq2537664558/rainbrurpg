@@ -31,7 +31,6 @@
   */
 RainbruRPG::Network::Ftp::FtpTransfer::FtpTransfer(quint16 port) 
   :QThread() {
-  LOGI("FtpTransfer created");
   nextCommand=FTC_NONE;
   transferMode=FTM_PASSIVE;
   transferType=FTT_ASCII;
@@ -464,7 +463,7 @@ commandRETR(const QString& filename){
       
       // Transfer complete
       emit(log("Transfer channel closed"));
-      emit(transferComplete());
+      emit(transferComplete(filename));
       sock.disconnectFromHost();
       LOGI("Transfer complete");
       f.close();
@@ -542,7 +541,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::commandLIST(){
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::writeBytes(QTcpSocket* s){
   if (s->waitForBytesWritten(3000)){
-    emit(transferComplete());
+    emit(transferComplete(nextOnlyFilename));
     s->disconnectFromHost();
     emit(log("Transfer channel closed"));
   }
@@ -614,7 +613,6 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
     LOGW("New connection has no pending command...CLOSED");
     break;
   case FTC_LIST:
-    LOGI("This connection is for a LIST command");
     lsResult();
     emit(log("Sending LS result"));
     socket1->write(packetData.toLatin1());
@@ -624,6 +622,7 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
   case FTC_STOR:
     s="Receiving file ";
     s+=nextOnlyFilename;
+    emit(storeFile(nextOnlyFilename));
     emit(log(s));
     break;
   case FTC_RETR:
@@ -643,7 +642,9 @@ void RainbruRPG::Network::Ftp::FtpTransfer::newConnection(){
 
   tConnectionList::const_iterator iter;
   for (iter=connectionList.begin(); iter!=connectionList.end(); iter++){
-    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), pport, nextOnlyFilename)){
+    if ((*iter)->isThisConnection(socket1->peerAddress().toString(), 
+				  pport, nextOnlyFilename)){
+
       LOGI("Socket correctly added to the FtpDataConnection");
       (*iter)->setSocket(socket1);
       found=true;

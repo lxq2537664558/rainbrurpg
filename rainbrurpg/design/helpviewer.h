@@ -21,34 +21,76 @@
  */
 
 /* Modifications :
+ * - 19 jul 2007 : Creating the map to acess html anchors
  * - 18 jul 2007 : Moves to design/
  *
  */
 #ifndef SERVER_HELP_VIEWER_H
 #define SERVER_HELP_VIEWER_H
 
+#include <string>
 #include <QtGui>
+#include <list>
 
 namespace RainbruRPG{
-  namespace Server{
+  namespace Gui{
+
+    /** A structure that define a link to a documentation
+      *
+      * We search for a key. The file is the html file to link the key
+      * to and the anchor is a section.
+      *
+      */
+    typedef struct{
+      std::string key;    //!< The key we will search
+      std::string page;   //!< The html file
+      std::string anchor; //!< The html name anchor
+    }tHelpViewerMapItem;
+
+    /** A list of map item
+      *
+      */
+    typedef std::list<tHelpViewerMapItem*> tHelpViewerMap;
 
     /** A basic HTML viewer used to show the html format of the texinfo
       * manual
       *
+      * This class is implemented in the design/ library. It can be used 
+      * in the server and the editor.
+      *
       */
-    class ServerHelpViewer : public QDialog{
+    class HelpViewer : public QDialog{
       Q_OBJECT
     public:
-      ServerHelpViewer(QWidget* parent=0);
-      ~ServerHelpViewer();
+      HelpViewer(const std::string& key="", QWidget* parent=0);
+      ~HelpViewer();
+
     private:
+      void feedMap();
+      void addMapItem(const std::string&, const std::string&, 
+		      const std::string& );
+
+      std::string getUrlfromKey(const std::string&);
+      tHelpViewerMapItem* getItemfromKey(const std::string&);
+
       /** The home url
         *
-	* It is the index.html location, where the help start. If a home
-	* button is created, this URL will be linked to.
+	* It is the html file location, where the help start. It is defined 
+	* when the constructor is called. If the \c key string is empty, this
+	* is the index.html page, if a key is given, we search in the map
+	* for the page and anchor values.
+	*
+	* \sa HelpViewer::HelpViewer(), map
 	*
 	*/
       QUrl home;
+
+      /** The key driven map
+        *
+	* It defines a map of key/page/anchor to access html page easilier.
+	*
+	*/
+      tHelpViewerMap* map;
     };
   }
 }

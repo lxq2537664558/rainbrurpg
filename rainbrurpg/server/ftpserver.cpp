@@ -104,8 +104,11 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(QWidget* parent, quint16 port)
   connect(transfer, SIGNAL(waitTransferFile(const QString&)), 
 	  control, SLOT(waitTransferFile(const QString&)));
 
-  connect(transfer, SIGNAL(transferComplete()), 
-	  control, SLOT(transferComplete()));
+  connect(transfer, SIGNAL(transferComplete(const QString&)), 
+	  control, SLOT(transferComplete(const QString&)));
+
+  connect(transfer, SIGNAL(transferComplete(const QString&)), 
+	  this, SIGNAL(transferComplete(const QString&)));
 
   // Transfer visual management
  connect(control,
@@ -115,6 +118,10 @@ RainbruRPG::Network::Ftp::FtpServer::FtpServer(QWidget* parent, quint16 port)
 
  connect(transfer, SIGNAL(updateTransferVisual(const QString& , int)),
 	 this, SLOT(updateTransferVisual(const QString& , int)));
+
+ // QuarantineList signal
+ connect(transfer, SIGNAL(storeFile(const QString&)), this,
+	 SIGNAL(storeFile(const QString&)));
 
 }
 

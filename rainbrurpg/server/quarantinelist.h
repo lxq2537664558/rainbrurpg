@@ -31,9 +31,12 @@
 #include <QtGui>
 
 #include <filetypeguesser.h>
+#include <filepreview.h>
+#include <helpviewer.h>
 #include <globaluri.h>
 #include <string>
 
+using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Network;
 
 namespace RainbruRPG{
@@ -55,7 +58,6 @@ namespace RainbruRPG{
       QuarantineList(QWidget* parent=0);
       virtual ~QuarantineList();
 
-      void refresh();
 
     signals:
       /** A signal emitted when one or more files are removed from the list
@@ -71,11 +73,18 @@ namespace RainbruRPG{
 	*/
       void filesRemoved(int i);
 
+    public slots:
+      void storeFile(const QString&);
+      void transferComplete(const QString&);
+      void refresh(void);
+
     private slots:
-      void treeSelectionChanged();
-      void filePreview();
-      void fileAccept();
-      void fileRefused();
+      void treeSelectionChanged(void);
+      void treeDoubleClicked(QTreeWidgetItem*,int);
+      void filePreview(void);
+      void fileAccept(void);
+      void fileRefused(void);
+      void showHelp(void);
 
     protected:
 
@@ -94,6 +103,11 @@ namespace RainbruRPG{
       QAction *approveAct;
       /** The action for deleting file */
       QAction *deleteAct;
+
+      /** The files in this list are stored from a FTP client */
+      QStringList storedFiles;
+      /** A message to tell that at least one file is still in transfer */
+      QLabel* labStillInTransfer;
     };
   }
 }

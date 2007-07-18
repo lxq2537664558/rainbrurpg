@@ -62,6 +62,17 @@ namespace RainbruRPG{
 	FtpServer(QWidget* parent=0, quint16 port=50002);
 	~FtpServer();
 	
+
+      signals:
+	/** A signal sent to tell we start to store a file
+	  *
+	  * This signal comes from FtpTransfer and is sent to MainWindow.
+	  * It tells the user seeing QuanrantineList that the given filename
+	  * is not totally transfered.
+	  */
+	void storeFile(const QString&);
+	void transferComplete(const QString&);
+
      public slots:
        void log(const QString&);
        void addTransfer(TransferVisual*);

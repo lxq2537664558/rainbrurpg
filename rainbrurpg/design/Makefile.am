@@ -8,12 +8,15 @@ lib_LTLIBRARIES = librainbrurpg-design.la
 librainbrurpg_design.adir=.
 
 h_sources =filetypeguesser.h		\
-	   helpviewer.h
+	   helpviewer.h			\
+	   filepreview.h
 
 cc_sources=filetypeguesser.cpp		\
 	   helpviewer.cpp		\
+	   filepreview.cpp		\
 	   \
-	   moc_helpviewer.cpp
+	   moc_helpviewer.cpp		\
+	   moc_filepreview.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_DESIGN_NAME)
 library_include_HEADERS = $(h_sources)

@@ -6,12 +6,14 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-o [mouse] QuarantineList implementation
+o [mouse] Quanrantine preview for known types
+- Quanrantine preview for html 
+
+* QuarantineList implementation
+- We can see files dependencies (where they are used) in a dialog in design/
+- The quarantine action in MainServerWindow has no icon
 - When clicking in the SystemTrayIcon, focus on server
-- Quanrantine preview for known types
-- We can see files dependencies (where they are used)
-- A help button that show help section on quarantine
-- Tha quarantine action in MainServerWindow has no icon
+   searching for X11Info
 
 * Unittest implementation in common/
 - In this order
@@ -136,6 +138,14 @@ o [mouse] QuarantineList implementation
 * *******************************************************
 
 * v 0.0.5-147
+- Quanrantine preview for txt files
+- QuarantineList preview avec double-click
+- FilePreview for images
+- FilePreview implementation in design/
+- An advice text in QuarantineList that tells to click 'refresh'
+- Ftp give stored filename to QuarantineList to mark it as 'on DL'
+- A help button that shows help section on quarantine
+- A mapping structure in HelpViewer
 
 * v 0.0.5-146
 - HelpViewer in design/ (to be used by editor)

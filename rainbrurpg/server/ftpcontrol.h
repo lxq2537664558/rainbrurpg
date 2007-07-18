@@ -88,7 +88,7 @@ namespace RainbruRPG{
 			       int filesize);
 
       public slots:
-	void transferComplete();
+	void transferComplete(const QString&);
         void startTransferFile(const QString&, qint64);
         void waitTransferFile(const QString&);
 	void switchToActiveMode();

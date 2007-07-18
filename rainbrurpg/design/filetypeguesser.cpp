@@ -160,6 +160,10 @@ int RainbruRPG::Core::FileTypeGuesser::testExtension(const std::string& path){
     string::size_type pos =mime.find("text/plain", 0);
     return (pos!=string::npos) ? 1 : -1;
   }
+  else if (ext=="txt"){
+    string::size_type pos =mime.find("text/plain", 0);
+    return (pos!=string::npos) ? 1 : -1;
+  }
   else if (ext=="gif"){
     string::size_type pos =mime.find("image/gif", 0);
     return (pos!=string::npos) ? 1 : -1;

@@ -112,10 +112,6 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
       s=read.toUpper();
       s=s.trimmed();
 
-      qDebug ("Command received :");
-      qDebug (s.toLatin1());
-
-
       // The supposed first command
       if (s=="SYST"){
 	emit(log("SYST command received"));
@@ -272,16 +268,9 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 	  while(!convertSuccess){
 	    h1.chop(chopValue);
 	    h1=h1.simplified();
-	    LOGCATS("FSIZE received textFilesize=");
-	    LOGCATS(h1.toLatin1());
 	    nextFilesize=h1.toInt(&convertSuccess);
 	    chopValue=1;
 	  }
-
-
-	  LOGCATS("nextFilesize=");
-	  LOGCATI(nextFilesize);
-	  LOGCAT();
 
 	  emit(addTransferVisual(tcpSocket->peerAddress().toString(), pport, 
 				 nextStoredFile, true, nextFilesize));
@@ -304,7 +293,7 @@ void RainbruRPG::Network::Ftp::FtpControl::readSocket(){
 /** A slot called when a transfer is complete
   *
   */
-void RainbruRPG::Network::Ftp::FtpControl::transferComplete(){
+void RainbruRPG::Network::Ftp::FtpControl::transferComplete(const QString&){
   log("Transfer complete");
   socket1->write("226 Transfer complete.\r\n");
 }

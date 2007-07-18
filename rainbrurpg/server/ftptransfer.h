@@ -83,8 +83,14 @@ namespace RainbruRPG{
 	/** A signal used to log messages */
 	void log(const QString&);
 	/** A signal emited when the transfer is complete */
-	void transferComplete();
-	/** A signal emitted when a transfer starts */
+	void transferComplete(const QString&);
+	/** A signal emitted when a transfer starts 
+	  *
+	  * It is connected to FtpControl::startTransferFile() slot
+	  * simply to send an 150 message. ('Opening data connection 
+	  * for ...')
+	  *
+	  */
         void startTransferFile(const QString&, qint64);
 	/** A signal emitted when we wait the transfer to starts */
         void waitTransferFile(const QString&);
@@ -92,6 +98,14 @@ namespace RainbruRPG{
 	void switchToActiveMode();
 	/** A signal emitted when the server switch to passive mode */
 	void switchToPassiveMode();
+	/** A signal sent to tell we start to store a file
+	  *
+	  * This signal is passed to FtpServer then QuanrantineList. It
+	  * tells the user seeing QuanrantineList that the given filename
+	  * is not totally transfered.
+	  *
+	  */
+	void storeFile(const QString&);
 
       public slots:
 	void changeHost(const QString&, int);

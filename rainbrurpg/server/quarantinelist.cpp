@@ -65,6 +65,15 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
 
   vb1->addWidget(toolBar);
 
+  labStillInTransfer=new 
+    QLabel("At least one file is still in transfer, it's size and its type "
+	   "could be wrong. You can click the refresh button to update "
+	   "informations and look at FTP server (Ctrl+F) to see if the "
+	   "transfer is finished.");
+  labStillInTransfer->setVisible(false);
+  labStillInTransfer->setWordWrap(true);
+  vb1->addWidget(labStillInTransfer);
+
   // The list widget
   tree=new QTreeWidget();
   tree->setSortingEnabled(true);
@@ -81,9 +90,14 @@ RainbruRPG::Gui::QuarantineList::QuarantineList(QWidget* parent)
   connect(tree, SIGNAL(itemSelectionChanged()), this,
 	  SLOT(treeSelectionChanged()));
 
+  connect(tree, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+	  this, SLOT(treeDoubleClicked(QTreeWidgetItem*,int)));
+
   connect(previewAct, SIGNAL(triggered()), this, SLOT(filePreview()));
   connect(approveAct, SIGNAL(triggered()), this, SLOT(fileAccept()));
-  connect(deleteAct, SIGNAL(triggered()), this, SLOT(fileRefused()));
+  connect(deleteAct,  SIGNAL(triggered()), this, SLOT(fileRefused()));
+  connect(refreshAct, SIGNAL(triggered()), this, SLOT(refresh()));
+  connect(helpAct,    SIGNAL(triggered()), this, SLOT(showHelp()));
 
 }
 
@@ -96,6 +110,8 @@ RainbruRPG::Gui::QuarantineList::~QuarantineList(){
   delete previewAct;
   delete approveAct;
   delete deleteAct;
+
+  delete labStillInTransfer;
 }
 
 /** Adds a file to the tree widget
@@ -104,11 +120,37 @@ RainbruRPG::Gui::QuarantineList::~QuarantineList(){
   *
   */
 void RainbruRPG::Gui::QuarantineList::addFile(QFileInfo fi){
+  LOGI("Addfile called");
   QBrush red(QColor(250,0,0));
   QBrush orange(QColor(0, 0, 240));
   QBrush green(QColor(0,250,0));
 
+  bool fileInTransfer;
+
   if (fi.isFile()){
+
+    // Is this file is in storedFile list
+    QRegExp rexp(fi.fileName());
+    
+    if (storedFiles.indexOf(rexp)==-1){
+      LOGI("The file is NOT being stored");
+      LOGCATS("filename=");
+      LOGCATS(fi.fileName().toLatin1());
+      LOGCAT();
+
+      LOGCATS("storedFiles=");
+      LOGCATS(storedFiles.join(";").toLatin1());
+      LOGCAT();
+
+      fileInTransfer=false;
+    }
+    else{
+      LOGI("The file is being stored");
+      fileInTransfer=true;
+      labStillInTransfer->setVisible(true);
+
+    }
+
     // adding it to the list
     QTreeWidgetItem *it= new QTreeWidgetItem(tree);
     it->setText(0,fi.fileName() );
@@ -163,6 +205,10 @@ void RainbruRPG::Gui::QuarantineList::addFile(QFileInfo fi){
     }
 
     it->setText(3,strStatus.c_str() );
+
+    //    if (fileInTransfer){
+    //      it->setText(3,"Still in transfer...");
+    //    }
 
     tree->addTopLevelItem( it );
   }
@@ -269,15 +315,6 @@ contextMenuEvent(QContextMenuEvent* event){
 
 }
 
-/** The slot called when user run a preview in a file
-  *
-  * It is the only action that can be used only in one file.
-  *
-  */
-void RainbruRPG::Gui::QuarantineList::filePreview(){
-  LOGI("filePreview called");
-}
-
 /** The slot called when user accept some files
   *
   * Several files can be accepted in the same time. The selected files 
@@ -348,3 +385,81 @@ void RainbruRPG::Gui::QuarantineList::fileRefused(){
    }
  }
 
+/** Open the help dialog
+  *
+  * This slot is connected to the help action.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::showHelp(){
+  HelpViewer hv("Server-quarant", this);
+  hv.exec();
+
+}
+
+/** A slot called when a file is comming from FTP
+  *
+  * This slot is connected to signal in FtpTransfer telling a
+  * file is being stored.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::
+storeFile(const QString& filename){
+  LOGI("storeFile slot called");
+  LOGCATS("filename is ");
+  LOGCATS(filename.toLatin1());
+  LOGCAT();
+
+  storedFiles.append(filename);
+}
+
+void RainbruRPG::Gui::QuarantineList::
+transferComplete(const QString& filename){
+  LOGI("QuarantineList::transferComplete called");
+
+  if (!filename.isEmpty()){
+    LOGI("storeFile slot called");
+    LOGCATS("filename is ");
+    LOGCATS(filename.toLatin1());
+    LOGCAT();
+    int i=storedFiles.removeAll(filename);
+    
+    if (i==0){
+      LOGW("Cannot remove stored filename");
+    }
+  }
+  else{
+    LOGI("filename.isEmpty()==true");
+  }
+}
+
+/** The slot called when user run a preview in a file
+  *
+  * It is the only action that can be used only in one file.
+  *
+  */
+void RainbruRPG::Gui::QuarantineList::filePreview(){
+  LOGI("filePreview called");
+
+   QList<QTreeWidgetItem*> list=tree->selectedItems();
+   GlobalURI gu;
+
+   QString filename=list.first()->text(0);
+   std::string s(filename.toLatin1());
+   std::string strPath=gu.getQuarantineFile(s);
+   QString path(strPath.c_str());
+
+   FilePreview fp(path, this);
+   fp.exec();
+}
+
+void RainbruRPG::Gui::QuarantineList::
+treeDoubleClicked(QTreeWidgetItem* it, int column){
+   GlobalURI gu;
+   QString filename=it->text(0);
+   std::string s(filename.toLatin1());
+   std::string strPath=gu.getQuarantineFile(s);
+   QString path(strPath.c_str());
+
+   FilePreview fp(path, this);
+   fp.exec();
+}
