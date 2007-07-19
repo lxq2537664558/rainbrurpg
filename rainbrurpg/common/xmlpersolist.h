@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 02 mar 2007 : remove an #inchude "tplayerlist.h"
+ * - 19 jul 2007 : Implements a real perso list
+ * - 02 mar 2007 : remove an #include "tplayerlist.h"
  */
 
 #ifndef XML_PERSO_LIST_H
@@ -30,6 +31,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+
 #include "tinyxml.h"
 #include "loadbmp.h"
 
@@ -47,6 +49,28 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG{
   namespace Network {
 
+      typedef struct{
+	const char* persoId;  // The perso Id
+	const char* creation; // The perso creation timestamp
+      }tPersoSubListItem;
+
+      /** A STL list of tPersoSubListItem */
+      typedef std::list<tPersoSubListItem*> tPersoSubList;
+
+      /** A perso like it appears in the persos.xml file
+        *
+	* We keep the name of the player and a list of perso ID that
+	* this player own.
+	*
+	*/
+      typedef struct{
+	const char* name;         //<! The name of the account that 
+	                          //<! created these persos
+	tPersoSubList persoList;  //<! The list of persos' ID
+      }tPersoListItem;
+
+      /** A STL list of tPersoListItem */
+      typedef std::list<tPersoListItem*> tPersoList;
 
       /** Provides an interface to the website-side character list
         *
@@ -61,8 +85,13 @@ namespace RainbruRPG{
 	bool refresh();
 	const char* getNextId();
 
+	tPersoList* getPersoList();
+
+
       private:
 	void loadDocument(CurlFileToXml*);
+	void feedPersoList(TiXmlElement*, tPersoListItem*);
+
 
 	const char* getXMLTextFromName(TiXmlElement*, const char*);
 

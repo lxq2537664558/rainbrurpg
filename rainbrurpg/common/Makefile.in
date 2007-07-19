@@ -81,7 +81,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	netpacketbase.lo npidentification.lo enetbase.lo enetclient.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
 	chartline.lo npflooder0004.lo netpacketflooderbase.lo timer.lo \
-	ftpclient.lo itemlistfile.lo
+	ftpclient.lo itemlistfile.lo curlpersoheaderdelete.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -305,7 +305,8 @@ h_sources = logger.h				\
 	  netpacketflooderbase.h		\
 	  timer.h				\
 	  ftpclient.h				\
-	  itemlistfile.h
+	  itemlistfile.h			\
+	  curlpersoheaderdelete.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -374,7 +375,8 @@ cc_sources = loadbmp.cpp				\
 	  netpacketflooderbase.cpp		\
 	  timer.cpp				\
 	  ftpclient.cpp				\
-	  itemlistfile.cpp
+	  itemlistfile.cpp			\
+	  curlpersoheaderdelete.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -469,6 +471,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlgetfile.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlinterface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlpersoheaderadd.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlpersoheaderdelete.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlpersomodifattrb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlposteddata.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/curlserveradd.Plo@am__quote@

@@ -54,7 +54,8 @@ am_rainbrurpg_tools_xident_OBJECTS = main.$(OBJEXT) \
 	xidentwindow.$(OBJEXT) foxaccountlist.$(OBJEXT) \
 	foxserverlist.$(OBJEXT) addserver.$(OBJEXT) \
 	deleteserver.$(OBJEXT) modifyserver.$(OBJEXT) \
-	serverdesc.$(OBJEXT) servertechnote.$(OBJEXT)
+	serverdesc.$(OBJEXT) servertechnote.$(OBJEXT) \
+	foxpersolist.$(OBJEXT)
 rainbrurpg_tools_xident_OBJECTS =  \
 	$(am_rainbrurpg_tools_xident_OBJECTS)
 rainbrurpg_tools_xident_DEPENDENCIES =
@@ -116,7 +117,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-18
+ISODATE = 2007-07-19
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -208,7 +209,8 @@ rainbrurpg_tools_xident_SOURCES = main.cpp			\
 				  deleteserver.cpp		\
 				  modifyserver.cpp		\
 				  serverdesc.cpp		\
-				  servertechnote.cpp
+				  servertechnote.cpp		\
+				  foxpersolist.cpp
 
 all: all-am
 
@@ -284,6 +286,7 @@ distclean-compile:
 include ./$(DEPDIR)/addserver.Po
 include ./$(DEPDIR)/deleteserver.Po
 include ./$(DEPDIR)/foxaccountlist.Po
+include ./$(DEPDIR)/foxpersolist.Po
 include ./$(DEPDIR)/foxserverlist.Po
 include ./$(DEPDIR)/main.Po
 include ./$(DEPDIR)/modifyserver.Po

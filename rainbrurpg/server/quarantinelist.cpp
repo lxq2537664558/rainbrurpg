@@ -412,6 +412,13 @@ storeFile(const QString& filename){
   storedFiles.append(filename);
 }
 
+/** A slot called when a STOR file transfer is finished
+  *
+  * It does not work actuallt.
+  *
+  * \param filename The filename of the STOR file
+  *
+  */
 void RainbruRPG::Gui::QuarantineList::
 transferComplete(const QString& filename){
   LOGI("QuarantineList::transferComplete called");
@@ -452,6 +459,15 @@ void RainbruRPG::Gui::QuarantineList::filePreview(){
    fp.exec();
 }
 
+/** The TreeWidget was double clicked
+  *
+  * It opens the file preview.
+  *
+  * \param it The clicked item
+  *
+  * \param column An unused parameter
+  *
+  */
 void RainbruRPG::Gui::QuarantineList::
 treeDoubleClicked(QTreeWidgetItem* it, int column){
    GlobalURI gu;

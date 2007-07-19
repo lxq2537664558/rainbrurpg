@@ -69,9 +69,26 @@ namespace RainbruRPG{
 	  * This signal comes from FtpTransfer and is sent to MainWindow.
 	  * It tells the user seeing QuanrantineList that the given filename
 	  * is not totally transfered.
+	  *
+	  * \param filename The filename of the STOR file
+	  *
+	  * \sa transferComplete(const QString&);
+	  *
 	  */
-	void storeFile(const QString&);
-	void transferComplete(const QString&);
+	void storeFile(const QString& filename);
+	/** Should be used to tell QuarantineList that the transfer is finished
+	  *
+	  * When a STOR file transfer is finished, this signal is emitted 
+	  * to tell QuarantineListe that the transfer is finished.
+	  * It does not work for QuarantneList but is used in another
+	  * mechanisms.
+	  *
+	  * \param filename The filename of the STOR file
+	  *
+	  * \sa storeFile(const QString&);
+	  *
+	  */
+	void transferComplete(const QString& filename);
 
      public slots:
        void log(const QString&);

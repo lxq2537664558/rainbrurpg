@@ -55,6 +55,7 @@ FoxServerList(FXComposite *parent,FXuint opts)
   :FXPacker(parent, opts)
 {
   selServer="";
+  serverList=NULL;
 
   FXVerticalFrame *root = new FXVerticalFrame(this,
              LAYOUT_FILL_X|LAYOUT_FILL_Y);

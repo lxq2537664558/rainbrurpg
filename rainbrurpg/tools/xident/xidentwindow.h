@@ -20,10 +20,16 @@
  *
  */
 
+/* Modifications :
+ * - 19 jul 2007 : Adds a 'persolist' menu item
+ *
+ */
+
 #include <fox-1.6/fx.h>
 
 #include "foxaccountlist.h"
 #include "foxserverlist.h"
+#include "foxpersolist.h"
 
 namespace RainbruRPG{
   namespace Gui{
@@ -53,6 +59,8 @@ namespace RainbruRPG{
 	ID_TOOL_ACCOUNT,
 	/** The Identifier of the Tool/Account menu item */
 	ID_TOOL_SERVER,
+	/** The Identifier of the Tool/Persos menu item */
+	ID_TOOL_PERSOS,
 	/** Setting the new value to  FXMainWindow::ID_LAST*/
 	ID_LAST
       };
@@ -62,6 +70,7 @@ namespace RainbruRPG{
       long onHelpAbout(FXObject *,FXSelector,void*);
       long onManageAccount(FXObject *,FXSelector,void*);
       long onManageServer(FXObject *,FXSelector,void*);
+      long onManagePersos(FXObject *,FXSelector,void*);
    
     private:
       /** Required or Undefined references */
@@ -107,6 +116,15 @@ namespace RainbruRPG{
 	*
 	*/
       FXint panelServerId;
+      /** The Id if the Perso manager switcher's panel
+        *
+	* Contains the unique identifier of this panel. Its value is taken from
+	* switcherChildId during creation of the panel.
+	*
+	* \sa switcherChildId.
+	*
+	*/
+      FXint panelPersosId;
 
     protected:
       /** The file menu panel

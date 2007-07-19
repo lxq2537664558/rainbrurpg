@@ -33,6 +33,7 @@ FXDEFMAP(RainbruRPG::Gui::XIdentWindow) XIdentWindowMap[]={
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::XIdentWindow::ID_HELP_ABOUT, RainbruRPG::Gui::XIdentWindow::onHelpAbout),
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::XIdentWindow::ID_TOOL_ACCOUNT, RainbruRPG::Gui::XIdentWindow::onManageAccount),
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::XIdentWindow::ID_TOOL_SERVER, RainbruRPG::Gui::XIdentWindow::onManageServer),
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::XIdentWindow::ID_TOOL_PERSOS, RainbruRPG::Gui::XIdentWindow::onManagePersos),
 
 
 };
@@ -71,6 +72,9 @@ RainbruRPG::Gui::XIdentWindow::XIdentWindow(FXApp * a)
   new FXMenuCommand(toolmenu,"&Servers\tCtl-S\t"
 		    "Creates, deletes and manages servers.",
 		    NULL,this,ID_TOOL_SERVER);
+  new FXMenuCommand(toolmenu,"&Persos\tCtl-P\t"
+		    "Manages Persos.",
+		    NULL,this,ID_TOOL_PERSOS);
 
   helpmenu = new FXMenuPane(this);
   new FXMenuCommand(helpmenu,"About x&Ident\tCtl-I\t"
@@ -106,7 +110,8 @@ RainbruRPG::Gui::XIdentWindow::XIdentWindow(FXApp * a)
   panelAccountId=switcherChildId++;
   FoxServerList* fsl=new FoxServerList(switcher);
   panelServerId=switcherChildId++;
-
+  FoxPersoList* fpl=new FoxPersoList(switcher);
+  panelPersosId=switcherChildId++;
   // The status bar
   FXStatusBar* sb=new FXStatusBar (frame, LAYOUT_FILL_X|
 				   STATUSBAR_WITH_DRAGCORNER);
@@ -209,3 +214,20 @@ onManageServer(FXObject * o,FXSelector s,void* v){
 
 }
 
+/** The Manage/Persos menu callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::XIdentWindow::
+onManagePersos(FXObject* o,FXSelector s,void* v){
+  LOGI("onManagePersos called");
+  switcher->setCurrent(panelPersosId, true);
+  return 1;
+
+}

@@ -129,3 +129,51 @@ const char* RainbruRPG::Network::xmlPersoList::
 const char* RainbruRPG::Network::xmlPersoList::getNextId(){
     return getXMLTextFromName(root, "NextId");
 }
+
+RainbruRPG::Network::tPersoList* 
+RainbruRPG::Network::xmlPersoList::getPersoList(){
+
+  tPersoList* list=new tPersoList();
+
+  if (doc){
+    TiXmlHandle docHandle( doc );
+    TiXmlElement* child = docHandle.FirstChild( "PersoList" )
+      .FirstChild( "Player" ).Element();
+    
+    for( child; child; child=child->NextSiblingElement() ){
+
+      tPersoListItem* pli=new tPersoListItem();
+      pli->name=child->Attribute("name");
+
+      feedPersoList(child, pli);
+      list->push_back(pli);
+    }
+  }
+
+  return list;
+}
+
+/** Feed the persolist of the given tPersoListItem with the given TiXmlElement
+  * 
+  */
+void RainbruRPG::Network::xmlPersoList::
+feedPersoList(TiXmlElement* elem, tPersoListItem* it){
+  if (elem && it){
+    TiXmlHandle docHandle( elem );
+    TiXmlElement* child = docHandle.FirstChild( "Perso" ).Element();
+
+    for( child; child; child=child->NextSiblingElement() ){
+
+      tPersoSubListItem* subIt=new tPersoSubListItem();
+      subIt->persoId=getXMLTextFromName(child, "Id");
+
+
+      TiXmlHandle docHandle2( child );
+      TiXmlElement* child2 = docHandle2.FirstChild( "Timestamp" ).Element();
+
+      subIt->creation=child2->Attribute("creation");
+      it->persoList.push_back(subIt);
+
+    }
+  }
+}

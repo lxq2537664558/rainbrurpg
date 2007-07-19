@@ -6,23 +6,22 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-o [mouse] Quanrantine preview for known types
-- Quanrantine preview for html 
+o [mouse] Implementation of curlpersoheaderadd controls
+- Tester XmlPersoList avec xIdent
+- XmlPersoList::isIdInUse(const std::string&) 
 
-* QuarantineList implementation
-- We can see files dependencies (where they are used) in a dialog in design/
-- The quarantine action in MainServerWindow has no icon
-- When clicking in the SystemTrayIcon, focus on server
-   searching for X11Info
-
-* Unittest implementation in common/
+o [mouse] Unittest implementation in common/
+- curlpersoheaderaddtest add a virtual perso
 - In this order
-   curlpersoheaderadd     need a curlpersoheaderdelete class
-   curlpersomodifattrb.h  need a curlpersoheaderdelete class
+   curlpersoheaderadd
+   curlpersomodifattrb.h 
    curlservermodifclients.h   
    curlsubmitform.h
 - Modified files
-   curlserveradd
+
+* SHA1 hash sum computation
+- A command line program that uses common/hashfile 
+- A common/hashfile class that compute hashsum on a file
 
 * Editor identification
    The identification is done by GPG keys
@@ -30,10 +29,6 @@ o [mouse] Quanrantine preview for known types
 - The editor can contact a server to ask an authorisazion
 - In the editor preferences we can choose a gpg key that will be use
    for all connexions
-
-* SHA1 hash sum computation
-- A command line program that uses common/hashfile 
-- A common/hashfile class that compute hashsum on a file
 
 * GameServer
 - The HelpViewer is called twice 
@@ -137,7 +132,16 @@ o [mouse] Quanrantine preview for known types
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-148
+- XmlPersoList implements a persolist
+
 * v 0.0.5-147
+- curlpersoheaderadd set/get implementation
+- curlpersoheaderdelete implementation (deleteplayer.php) in common/
+- curlserveradd unittest modification: uniqueName and type added
+- doxygen documentation
+- Quanrantine preview for html 
+- Fix the Quanrantine help message bug 
 - Quanrantine preview for txt files
 - QuarantineList preview avec double-click
 - FilePreview for images
@@ -146,42 +150,5 @@ o [mouse] Quanrantine preview for known types
 - Ftp give stored filename to QuarantineList to mark it as 'on DL'
 - A help button that shows help section on quarantine
 - A mapping structure in HelpViewer
-
-* v 0.0.5-146
-- HelpViewer in design/ (to be used by editor)
-- speed up the delete quarantine files function
-- A context menu with Approve, Delete, Preview
-- Making a section in the quarantine system in the help
-- We can validate quanrantine files (copy it in upload/ directory)
-- We can delete files in quarantine
-- QuarantineList toobar buttons are enabled when selection
-- Add a QSystemTrayIcon
-- Update the list if a new file is added in quarantine
-- Visual notification of new files
-- Compare extension with accepted/refused lists
-- ITemListFile::exists (item)
-- ITemListFile uses std::string
-- A struct is returned telling the state etc...
-- Test if the file extension is same that the mime-type
-- Try to call ITemListFile with a path as arg           OK
-- Get the file extension
-- implements ItemListFile::addItem(const std::string&); (mode append)
-
-* v 0.0.5-145
-- implements ItemListFile::getItemList()
-- QuarantineList uses FileTypeGuesser for the 'type' column
-- FileTypeGuesser implementation in design/
-- a design library for server and editor in design/ directory
-- conditional linking for editor and server
-- Try to add a toolbar
-- Approve, Delete, Preview are QAction added to the toolbar
-- Add a QListWidget with filename, size, mime-type
-- A Manage/Quarantine menu (list of files in quarantine/)
-- The server accepts to transfer the same file twice       FIXED
-- tools-ftpclient get the sigTransferError and treat it
-- FtTransfer::commandSTOR tests if file already exist
-- FtpControl returns 553 if file exists
-- bool ftpcontrol::isFileExisting(const QString&) implementation
-- Create a news for the the website for the 0.0.5 announce
 
 

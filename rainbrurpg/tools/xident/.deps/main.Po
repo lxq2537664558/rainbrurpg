@@ -476,7 +476,8 @@ main.o main.o: main.cpp /usr/include/c++/4.1.3/iostream \
   /usr/include/boost/cstdint.hpp \
   /usr/include/boost/filesystem/fstream.hpp ../../common/taccountlist.h \
   foxserverlist.h ../../common/xmlserverlist.h ../../common/tinyxml.h \
-  ../../common/stringconv.h ../../common/stringconv.h
+  ../../common/stringconv.h ../../common/stringconv.h foxpersolist.h \
+  ../../common/xmlpersolist.h
 
 /usr/include/c++/4.1.3/iostream:
 
@@ -1803,3 +1804,7 @@ foxserverlist.h:
 ../../common/stringconv.h:
 
 ../../common/stringconv.h:
+
+foxpersolist.h:
+
+../../common/xmlpersolist.h:

@@ -50,7 +50,7 @@ namespace RainbruRPG{
       * - use the file extension.
       *
       * We use two dispatcher : mimeDispatcher() and extDispatcher(). If one
-      * discober a usable file type, it returns true and launch the 
+      * discover a usable file type, it returns true and launch the 
       * appropriate viewer widget.
       *
       */
@@ -66,11 +66,14 @@ namespace RainbruRPG{
     private:
       void imagePreview();
       void textPreview();
+      void htmlPreview();
       void showMessage(const QString&);
 
+      /** The filename in Qt format */
       QString filename;
+      /** The filename in STL format */
       std::string strFilename;
-
+      /** A help label, shown if the file cannot be previewed */
       QLabel* help;
     };
 

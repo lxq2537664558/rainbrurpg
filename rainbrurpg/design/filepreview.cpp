@@ -22,33 +22,40 @@
 
 #include "filepreview.h"
 
+/** Constructor
+  *
+  * \param filename The filename with absolute path
+  * \param parent The parent widget
+  *
+  */
 RainbruRPG::Gui::FilePreview::
 FilePreview(const QString& filename, QWidget* parent)
   :QDialog(parent){
 
   setWindowTitle("File preview");
-  setMinimumSize(400, 300);
+  help=NULL;
 
   QVBoxLayout* layout=new QVBoxLayout(this);
   this->setLayout(layout);
 
-  help=new QLabel(this);
-  help->setWordWrap(true);
-  layout->addWidget(help);
-
   this->filename=filename;
   std::string strFn(filename.toLatin1());
   strFilename=strFn;
-  /*
+
   if (!mimeDispatcher()){
     if(!extDispatcher()){
       showMessage(tr("This file cannot be previewed. Please "
 		     "use an external program."));
 
     }
+    else{
+      setMinimumSize(400, 300);
+    }
   }
-  */
-
+  else{
+    setMinimumSize(400, 300);
+  }
+ 
   // The dialog's button
   QHBoxLayout *buttonLayout=new QHBoxLayout();
   layout->addLayout(buttonLayout);
@@ -59,31 +66,58 @@ FilePreview(const QString& filename, QWidget* parent)
   connect(quit, SIGNAL(clicked()), this, SLOT(accept()));
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::Gui::FilePreview::~FilePreview(){
-  delete help;
+  if (help)
+    delete help;
 }
 
-
+/** Dispatch the mime-type and show preview for known ones
+  *
+  * Provides preview for \c image/*, \c text/plain, \c text/html.
+  *
+  * \return \c true if a preview is launched, \c false otherwise
+  *
+  */
 bool RainbruRPG::Gui::FilePreview::mimeDispatcher(){
 
   FileTypeGuesser ftg;
   std::string s=ftg.getMimeType(strFilename);
   QString qs(s.c_str());
 
-  if (s=="image/png"){
+  if (qs.contains("image/")){
     imagePreview();
     return true;
   }
   else if (qs.contains("text/plain")){
-      textPreview();
+    textPreview();
     return true;
+  }
+  else if (qs.contains("text/html")){
+    htmlPreview();
+    return true;
+  }
+  else{
+    return false;
   }
 }
 
+/** Dispatch the file extension and show preview for known ones
+  *
+  * Provides preview for none.
+  *
+  * \return \c true if a preview is launched, \c false otherwise
+  *
+  */
 bool RainbruRPG::Gui::FilePreview::extDispatcher(){
   return false;
 }
 
+/** Shows an image preview
+  *
+  */
 void RainbruRPG::Gui::FilePreview::imagePreview(){
   setWindowTitle("Image preview");
 
@@ -101,6 +135,9 @@ void RainbruRPG::Gui::FilePreview::imagePreview(){
   }
 }
 
+/** Shows a plain text preview
+  *
+  */
 void RainbruRPG::Gui::FilePreview::textPreview(){
   setWindowTitle("Plain text preview");
 
@@ -113,10 +150,33 @@ void RainbruRPG::Gui::FilePreview::textPreview(){
     file.close();
   }
   else{
+    showMessage(tr("Cannot read this file"));
 
   }
 }
 
+/** Shows a message instead a preview widget
+  *
+  */
 void RainbruRPG::Gui::FilePreview::showMessage(const QString& msg){
+  if (!help){
+    help=new QLabel( this);
+    help->setWordWrap(true);
+    layout()->addWidget(help);
+  }
+
   help->setText(msg);
+}
+
+/** Shows a HTML preview
+  *
+  */
+void RainbruRPG::Gui::FilePreview::htmlPreview(){
+  setWindowTitle("Html text preview");
+
+  QTextBrowser* text=new QTextBrowser(this);
+  text->setSource(QUrl(filename));
+  layout()->addWidget(text);  
+  setMinimumSize(800, 600);
+ 
 }

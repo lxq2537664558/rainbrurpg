@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 12 may 2007 : Starting implementation
+ * - 19 jul 2007 : uniqueName and type added
+ * - 12 may 2007 : Starting implementation
  *
  */
 
@@ -159,6 +160,21 @@ class CurlServerAddTest : public CPPUNIT_NS::TestFixture
     *
     */
   CPPUNIT_TEST(testAddVirtual);
+
+  /** Tests the server's UniqueName
+    *
+    * \sa testUniqueName
+    *
+    */
+  CPPUNIT_TEST(testUniqueName);
+
+  /** Tests the server's type
+    *
+    * \sa testType
+    *
+    */
+  CPPUNIT_TEST(testType);
+
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -368,6 +384,9 @@ public:
     long serverLong=this->m_csa->getServerResponse();
     const char* errMsg=this->m_csa->getCustomErrorMessage();
 
+    std::string uniqueName=this->m_csa->getUniqueName();
+      std::string type=this->m_csa->getType();
+
     CPPUNIT_ASSERT( strcmp(name, "")==0 );
     CPPUNIT_ASSERT( strcmp(ip, "")==0 );
     CPPUNIT_ASSERT( strcmp(port, "")==0 );
@@ -378,6 +397,8 @@ public:
     CPPUNIT_ASSERT( serverLong==-1 );
     CPPUNIT_ASSERT( strcmp(errMsg, "")==0 );
 
+    CPPUNIT_ASSERT( uniqueName=="" );
+    CPPUNIT_ASSERT( type=="" );
   }
 
   /** Adds a virtual server 
@@ -429,6 +450,32 @@ public:
     const char* ftp2=this->m_csa->getFtpPort();
     CPPUNIT_ASSERT( ftp==ftp2 );
 
+  }
+
+  /** Tests the UniqueName value
+    *
+    * Set a new UniqueName and test if getUniqueName() return the same
+    * text.
+    *
+    */
+  void testUniqueName(){
+    std::string un="ServerUniqueName";
+    this->m_csa->setUniqueName(un);
+    std::string un2=this->m_csa->getUniqueName();
+    CPPUNIT_ASSERT( un==un2 );
+  }
+
+  /** Tests the Type value
+    *
+    * Set a new Type and test if getType() return the same
+    * text.
+    *
+    */
+  void testType(){
+    std::string st="ServerType";
+    this->m_csa->setType(st);
+    std::string st2=this->m_csa->getType();
+    CPPUNIT_ASSERT( st==st2 );
   }
 
 };

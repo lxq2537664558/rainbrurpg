@@ -54,7 +54,8 @@ am_rainbrurpg_tools_xident_OBJECTS = main.$(OBJEXT) \
 	xidentwindow.$(OBJEXT) foxaccountlist.$(OBJEXT) \
 	foxserverlist.$(OBJEXT) addserver.$(OBJEXT) \
 	deleteserver.$(OBJEXT) modifyserver.$(OBJEXT) \
-	serverdesc.$(OBJEXT) servertechnote.$(OBJEXT)
+	serverdesc.$(OBJEXT) servertechnote.$(OBJEXT) \
+	foxpersolist.$(OBJEXT)
 rainbrurpg_tools_xident_OBJECTS =  \
 	$(am_rainbrurpg_tools_xident_OBJECTS)
 rainbrurpg_tools_xident_DEPENDENCIES =
@@ -208,7 +209,8 @@ rainbrurpg_tools_xident_SOURCES = main.cpp			\
 				  deleteserver.cpp		\
 				  modifyserver.cpp		\
 				  serverdesc.cpp		\
-				  servertechnote.cpp
+				  servertechnote.cpp		\
+				  foxpersolist.cpp
 
 all: all-am
 
@@ -284,6 +286,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/addserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/deleteserver.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/foxaccountlist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/foxpersolist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/foxserverlist.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/modifyserver.Po@am__quote@

@@ -392,10 +392,12 @@ commontestsuite.o commontestsuite.o: commontestsuite.cpp \
   ../common/globaluri.h ../common/curlsubmitform.h \
   ../common/xmlserverlist.h ../common/logger.h ../common/tinyxml.h \
   common/virtualserver.h common/curlserverdeletetest.h \
-  ../common/curlserveradd.h ../common/chartbase.h /usr/include/gd.h \
-  /usr/include/gd_io.h /usr/include/gdfx.h /usr/include/gd.h \
-  /usr/include/gdfonts.h ../common/chartserie.h ../common/curlgetfile.h \
-  ../common/curlposteddata.h
+  ../common/curlserveradd.h common/curlpersoheaderaddtest.h \
+  ../common/chartbase.h /usr/include/gd.h /usr/include/gd_io.h \
+  /usr/include/gdfx.h /usr/include/gd.h /usr/include/gdfonts.h \
+  ../common/chartserie.h ../common/curlgetfile.h \
+  ../common/curlposteddata.h ../common/curlpersoheaderadd.h \
+  ../common/xmlpersolist.h
 
 commontestsuite.h:
 
@@ -1419,6 +1421,8 @@ common/curlserverdeletetest.h:
 
 ../common/curlserveradd.h:
 
+common/curlpersoheaderaddtest.h:
+
 ../common/chartbase.h:
 
 /usr/include/gd.h:
@@ -1436,3 +1440,7 @@ common/curlserverdeletetest.h:
 ../common/curlgetfile.h:
 
 ../common/curlposteddata.h:
+
+../common/curlpersoheaderadd.h:
+
+../common/xmlpersolist.h:

@@ -69,7 +69,8 @@ h_sources= logger.h				\
 	  netpacketflooderbase.h		\
 	  timer.h				\
 	  ftpclient.h				\
-	  itemlistfile.h
+	  itemlistfile.h			\
+	  curlpersoheaderdelete.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -139,7 +140,8 @@ cc_sources= loadbmp.cpp				\
 	  netpacketflooderbase.cpp		\
 	  timer.cpp				\
 	  ftpclient.cpp				\
-	  itemlistfile.cpp
+	  itemlistfile.cpp			\
+	  curlpersoheaderdelete.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

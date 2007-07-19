@@ -1,3 +1,41 @@
+
+* v 0.0.5-146
+- HelpViewer in design/ (to be used by editor)
+- speed up the delete quarantine files function
+- A context menu with Approve, Delete, Preview
+- Making a section in the quarantine system in the help
+- We can validate quanrantine files (copy it in upload/ directory)
+- We can delete files in quarantine
+- QuarantineList toobar buttons are enabled when selection
+- Add a QSystemTrayIcon
+- Update the list if a new file is added in quarantine
+- Visual notification of new files
+- Compare extension with accepted/refused lists
+- ITemListFile::exists (item)
+- ITemListFile uses std::string
+- A struct is returned telling the state etc...
+- Test if the file extension is same that the mime-type
+- Try to call ITemListFile with a path as arg           OK
+- Get the file extension
+- implements ItemListFile::addItem(const std::string&); (mode append)
+
+* v 0.0.5-145
+- implements ItemListFile::getItemList()
+- QuarantineList uses FileTypeGuesser for the 'type' column
+- FileTypeGuesser implementation in design/
+- a design library for server and editor in design/ directory
+- conditional linking for editor and server
+- Try to add a toolbar
+- Approve, Delete, Preview are QAction added to the toolbar
+- Add a QListWidget with filename, size, mime-type
+- A Manage/Quarantine menu (list of files in quarantine/)
+- The server accepts to transfer the same file twice       FIXED
+- tools-ftpclient get the sigTransferError and treat it
+- FtTransfer::commandSTOR tests if file already exist
+- FtpControl returns 553 if file exists
+- bool ftpcontrol::isFileExisting(const QString&) implementation
+- Create a news for the the website for the 0.0.5 announce
+
 * v 0.0.5-144
 - Update rpgConcepts to tell serverType is implemented
 - FtTransfer::commandSTOR use getQuarantineFile

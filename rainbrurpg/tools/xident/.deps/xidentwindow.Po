@@ -455,8 +455,8 @@ xidentwindow.o xidentwindow.o: xidentwindow.cpp xidentwindow.h \
   /usr/include/boost/filesystem/fstream.hpp ../../common/taccountlist.h \
   foxserverlist.h ../../common/xmlserverlist.h ../../common/logger.h \
   ../../common/tinyxml.h ../../common/stringconv.h \
-  ../../common/stringconv.h ../../config.h \
-  /usr/include/fox-1.6/FXMessageBox.h
+  ../../common/stringconv.h foxpersolist.h ../../common/xmlpersolist.h \
+  ../../config.h /usr/include/fox-1.6/FXMessageBox.h
 
 xidentwindow.h:
 
@@ -1721,6 +1721,10 @@ foxserverlist.h:
 ../../common/stringconv.h:
 
 ../../common/stringconv.h:
+
+foxpersolist.h:
+
+../../common/xmlpersolist.h:
 
 ../../config.h:
 

@@ -24,8 +24,10 @@
  *
  */
 
-#ifndef CURL_PERSO_HEADER_ADD_H
-#define CURL_PERSO_HEADER_ADD_H
+#ifndef CURL_PERSO_HEADER_DELETE_H
+#define CURL_PERSO_HEADER_DELETE_H
+
+#include <string>
 
 #include "globaluri.h"
 #include "curlsubmitform.h"
@@ -36,15 +38,15 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Network {
 
-      /** Submits a add perso header to the administration site
+      /** Submits a delete perso header to the administration site
         * 
-	* It is used with CurlPersoModifAttrb by erCreatePerso to
-	* create the data of a newly created character (perso)
+	* It is used to delee a perso header.
+	*
 	*/
-      class CurlPersoHeaderAdd : public CurlSubmitForm{
+      class CurlPersoHeaderDelete : public CurlSubmitForm{
       public:
-	CurlPersoHeaderAdd();
-	~CurlPersoHeaderAdd();
+	CurlPersoHeaderDelete();
+	~CurlPersoHeaderDelete();
 
 	void               setName(const std::string&);
 	const std::string& getName(void);
@@ -63,4 +65,4 @@ namespace RainbruRPG {
   }
 }
 
-#endif // CURL_PERSO_HEADER_ADD_H
+#endif // CURL_PERSO_HEADER_DELETE_H

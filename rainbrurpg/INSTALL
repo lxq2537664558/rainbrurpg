@@ -253,6 +253,9 @@ RainbruRPG.html directory, try this.
   cp htmlMakefile.am RainbruRPG.html/Makefile.am
   autoconf&&automake&&./configure
 
+The makefile in RainbruRPG.html/ is deleted when the 'make clean' command
+is ran.
+
 Dependencies
 ============
 
