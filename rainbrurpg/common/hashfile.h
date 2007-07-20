@@ -21,50 +21,40 @@
  */
 
 /* Modifications :
- * - 02 mar 2007 : Disable a cout that make a line break in stdout
+ * - 20 jul 2007 : Starting implementation
  *
  */
 
-#ifndef HASH_PASSWORD_H
-#define HASH_PASSWORD_H
+#ifndef _HASH_FILE_H_
+#define _HASH_FILE_H_
 
 // For hash sum
 #include <unistd.h>
 #include <string>
+#include <fstream>
 #include <sstream>
 
 #include "logger.h"
 #include "sha1.h"
 
-using namespace RainbruRPG::Core;
 using namespace std;
 
-namespace RainbruRPG {
-  namespace Network {
-    namespace Ident {
+namespace RainbruRPG{
+  namespace Core{
 
 
-      /** Class used to compute password's hashsum 
-        *
-	* The SHA-1 algorythm used by this class has been implemented by 
-	* Paul E. Jones <paulej@arid.us>
-	*/
-        class HashPassword {
-        public:
-            HashPassword();
-            ~HashPassword();
+    class HashFile{
+    public:
+      HashFile();
 
-            std::string encryptString(const char *instr);
-            std::string decryptString(const char *instr);
+      std::string getHashSum(const std::string&);
 
-	    bool compare(const char*, const char*);
-        private:
-            std::string  getMessageDigest(unsigned *message_digest);
+    private:
+      std::string getMessageDigest(unsigned *message_digest);
 
-      };
-    }
+    };
+
   }
 }
 
-
-#endif //HASH_PASSWORD_H
+#endif // _HASH_FILE_H_

@@ -39,31 +39,29 @@ RainbruRPG::Network::Ident::HashPassword::~HashPassword(){
 
 /** Returns the parameter, encrypted by the SHA-1 alorythm
   *
-  * The SHA-1 algorythm has been implemented by 
-  * Paul E. Jones <paulej@arid.us>
-  *
   * \param instr The string to encrypt
   * \return the string passed in parameter, encrypted by the SHA-1
   *         algorythm
   */
 std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
 			 const char *instr){
-    string outstr="ERR";
+ 
+  char buffer[20];
 
-    SHA1 sha;
-    unsigned message_digest[5];
+  SHA1Context sha;
+  uint8_t Message_Digest[20];
 
-    sha.Reset();
-    sha << instr;
+  SHA1Reset(&sha);
+  SHA1Input( &sha, (const uint8_t*) instr, strlen(instr));
+  SHA1Result( &sha, Message_Digest);
 
-    if (!sha.Result(message_digest)){
-        cerr << "ERROR-- could not compute message digest" << endl;
-    }
-    else	{
-        outstr=getMessageDigest(message_digest);
-    }
 
-    return outstr;
+  for(int i = 0; i < 20 ; ++i)	{
+    sprintf(buffer,"%02X", Message_Digest[i]);
+  }
+
+  std::string out(buffer);
+  return out;
 }
 
 /** This functions is no longer in use

@@ -49,9 +49,14 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG{
   namespace Network {
 
+      /** A perso like it appears in the \c persos.xml file
+        *
+	* This structure is used in tPersoListItem.
+	*
+	*/
       typedef struct{
-	const char* persoId;  // The perso Id
-	const char* creation; // The perso creation timestamp
+	const char* persoId;  //!< The perso Id
+	const char* creation; //!< The perso creation timestamp
       }tPersoSubListItem;
 
       /** A STL list of tPersoSubListItem */
@@ -64,9 +69,9 @@ namespace RainbruRPG{
 	*
 	*/
       typedef struct{
-	const char* name;         //<! The name of the account that 
-	                          //<! created these persos
-	tPersoSubList persoList;  //<! The list of persos' ID
+	const char* name;         //!< The name of the account that 
+	                          //!< created these persos
+	tPersoSubList persoList;  //!< The list of persos' ID
       }tPersoListItem;
 
       /** A STL list of tPersoListItem */
@@ -86,7 +91,7 @@ namespace RainbruRPG{
 	const char* getNextId();
 
 	tPersoList* getPersoList();
-
+	tPersoListItem* getAccountByName(const std::string&);
 
       private:
 	void loadDocument(CurlFileToXml*);

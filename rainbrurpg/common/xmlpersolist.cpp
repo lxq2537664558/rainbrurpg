@@ -130,6 +130,11 @@ const char* RainbruRPG::Network::xmlPersoList::getNextId(){
     return getXMLTextFromName(root, "NextId");
 }
 
+/** Get the persoList
+  *
+  * \return A pointer to a list of account/perso
+  *
+  */
 RainbruRPG::Network::tPersoList* 
 RainbruRPG::Network::xmlPersoList::getPersoList(){
 
@@ -146,7 +151,13 @@ RainbruRPG::Network::xmlPersoList::getPersoList(){
       pli->name=child->Attribute("name");
 
       feedPersoList(child, pli);
-      list->push_back(pli);
+
+      // This test avoid a last list element with NULL name
+      // It is due to TinyXML (returns NULL is Attribute("name")
+      // not found)
+      if (pli->name!=NULL){
+	list->push_back(pli);
+      }
     }
   }
 
@@ -155,6 +166,9 @@ RainbruRPG::Network::xmlPersoList::getPersoList(){
 
 /** Feed the persolist of the given tPersoListItem with the given TiXmlElement
   * 
+  * \param elem The 'Player' xml node
+  * \param it   The account object to feed
+  *
   */
 void RainbruRPG::Network::xmlPersoList::
 feedPersoList(TiXmlElement* elem, tPersoListItem* it){
@@ -176,4 +190,28 @@ feedPersoList(TiXmlElement* elem, tPersoListItem* it){
 
     }
   }
+}
+
+/** Get an account by its name
+  *
+  * If you know the account name and you want all its perso, use this.
+  *
+  * \param name The name of the account you want a perso list for
+  *
+  * \return The tPersoListItem or \c NULL if not found
+  *
+  */
+RainbruRPG::Network::tPersoListItem* 
+RainbruRPG::Network::xmlPersoList::getAccountByName(const std::string& name){
+
+  tPersoList* pl=this->getPersoList();
+
+  tPersoList::const_iterator iter;
+  for (iter=pl->begin(); iter != pl->end(); iter++){
+    if (name==(*iter)->name){
+      return (*iter);
+    }
+  }
+
+  return NULL;
 }

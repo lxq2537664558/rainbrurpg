@@ -55,16 +55,22 @@ namespace RainbruRPG{
       enum{
 	/** Not Yet Implemented Identifier */
 	ID_NYI=FXPacker::ID_LAST,
+	/** The account list identifier */
+	ID_ACCOUNT,
       };
  
       long onNotYetImplemented(FXObject *,FXSelector,void*);
+      long onAccountSelected(FXObject *,FXSelector,void*);
 
     private:
       void feedAccountList(void);
 
+      /** The account list FOX widget */
       FXList* accountList;
+      /** The persos list FOX widget */
       FXList* persoList;
 
+      /** The perso list XML reader */
       xmlPersoList* xmlPerso;
     };
   }

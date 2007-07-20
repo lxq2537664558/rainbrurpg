@@ -6,11 +6,7 @@ stor /home/mouse/essaiTransfer.tgz
 retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
-o [mouse] Implementation of curlpersoheaderadd controls
-- Tester XmlPersoList avec xIdent
-- XmlPersoList::isIdInUse(const std::string&) 
-
-o [mouse] Unittest implementation in common/
+* Unittest implementation in common/
 - curlpersoheaderaddtest add a virtual perso
 - In this order
    curlpersoheaderadd
@@ -19,7 +15,9 @@ o [mouse] Unittest implementation in common/
    curlsubmitform.h
 - Modified files
 
-* SHA1 hash sum computation
+o [mouse] SHA1 hash sum computation
+- Trying to get a coorect std::string typed hashsum
+- tools/hashsum with -p <password> option uses hashpassword
 - A command line program that uses common/hashfile 
 - A common/hashfile class that compute hashsum on a file
 
@@ -33,7 +31,7 @@ o [mouse] Unittest implementation in common/
 * GameServer
 - The HelpViewer is called twice 
    when we click the OK button it appears again
-- Add uniqueName and type (époque) to ServerConf and configuration
+- Add uniqueName and type to ServerConf and configuration
    dialog
 - Running 2 servers in the same PC is forbiden
    A file running-server is created in the $HOME directory when the
@@ -133,6 +131,14 @@ o [mouse] Unittest implementation in common/
 * *******************************************************
 
 * v 0.0.5-148
+- HashPassword uses RFC3174 implementation
+- Replace SHA class by official RFC3174 implementation
+- FoxPersoList feed persoList when an account is selected
+- XmlPersoList::getAccountByName implementation
+- Get the name of the item from its index
+- Get the index of the clicked item
+- FoxPersoList callback on AccountList
+- Tester XmlPersoList avec xIdent
 - XmlPersoList implements a persolist
 
 * v 0.0.5-147

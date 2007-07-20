@@ -146,6 +146,7 @@ AC_CONFIG_FILES([Makefile			\
 	  tools/xident/Makefile			\
 	  tools/netflooder/Makefile		\
 	  tools/ftpclient/Makefile		\
+	  tools/hashsum/Makefile		\
 	  \
  	  RainbruRPG.html/Makefile	        \
 	  config/Makefile			\

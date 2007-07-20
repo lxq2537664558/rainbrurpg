@@ -1,1 +1,1 @@
-SUBDIRS= transmsg xident netflooder ftpclient
+SUBDIRS= transmsg xident netflooder ftpclient hashsum

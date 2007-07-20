@@ -29,6 +29,7 @@
 FXDEFMAP(RainbruRPG::Gui::FoxPersoList) FoxPersoListMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxPersoList::ID_NYI, RainbruRPG::Gui::FoxPersoList::onNotYetImplemented),
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxPersoList::ID_ACCOUNT, RainbruRPG::Gui::FoxPersoList::onAccountSelected),
 
 };
 
@@ -64,7 +65,7 @@ RainbruRPG::Gui::FoxPersoList::FoxPersoList(FXComposite *parent,FXuint opts)
   FXVerticalFrame *listFrame = new FXVerticalFrame(hframe,
              LAYOUT_FILL_X|LAYOUT_FILL_Y);
   FXLabel* labAdminName=new FXLabel(listFrame, "Accounts");
-  accountList=new FXList(listFrame, this, ID_NYI, listOpt);
+  accountList=new FXList(listFrame, this, ID_ACCOUNT, listOpt);
 
   // Frame containing the persos list
   FXVerticalFrame *listFrame2 = new FXVerticalFrame(hframe,
@@ -127,3 +128,50 @@ void RainbruRPG::Gui::FoxPersoList::feedAccountList(void){
     accountList->appendItem((*iter)->name);
   }
 }
+
+/** The account callback
+  *
+  * When an account is clicked, we show its perso in perso list.
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v The index of the clicked item (need a cast to int)
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FoxPersoList::
+onAccountSelected(FXObject* o,FXSelector s,void* v){
+  LOGI("onAccountSelected called");
+
+  FXint itemIndex=(int)v;
+  FXString itemText=accountList->getItemText(itemIndex);
+  std::string strItemText(itemText.text());
+  LOGCATS("Item index : ");
+  LOGCATI(itemIndex);
+  LOGCATS(" item text : ");
+  LOGCATS(strItemText.c_str());
+  LOGCAT();
+
+  // Get the perso list of the given account
+  tPersoListItem* pli=xmlPerso->getAccountByName(strItemText);
+  if (pli==NULL){
+    LOGW("Cannot get the tPersoListItem");
+  }
+  else{
+    LOGCATS("Perso number for account ");
+    LOGCATS(strItemText.c_str());
+    LOGCATS(" : ");
+    LOGCATI(pli->persoList.size());
+    LOGCAT();
+
+    persoList->clearItems();
+
+    tPersoSubList::const_iterator iter;
+    for (iter=pli->persoList.begin(); iter != pli->persoList.end(); iter++){
+      persoList->appendItem((*iter)->persoId);
+    }
+
+  }
+}
+
