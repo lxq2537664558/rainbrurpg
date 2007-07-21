@@ -14,6 +14,11 @@
  *
  */
 
+/* Modifications :
+ * - 21 jul 2007 : Documentation for doxygen
+ *                 Making functions static members of a class
+ *
+ */
 
 #ifndef _SHA1_H_
 #define _SHA1_H_
@@ -41,35 +46,46 @@ enum
 #endif
 #define SHA1HashSize 20
 
-/*
- *  This structure will hold context information for the SHA-1
- *  hashing operation
- */
+/**  This structure will hold context information for the SHA-1
+  *  hashing operation
+  */
 typedef struct SHA1Context
 {
-    uint32_t Intermediate_Hash[SHA1HashSize/4]; /* Message Digest  */
+  uint32_t Intermediate_Hash[SHA1HashSize/4]; //!< Message Digest/
 
-    uint32_t Length_Low;            /* Message length in bits      */
-    uint32_t Length_High;           /* Message length in bits      */
+  uint32_t Length_Low;            //!< Message length in bits
+  uint32_t Length_High;           //!< Message length in bits
 
-                               /* Index into message block array   */
-    int_least16_t Message_Block_Index;
-    uint8_t Message_Block[64];      /* 512-bit message blocks      */
+                               
+  int_least16_t Message_Block_Index;//!< Index into message block array
+  uint8_t Message_Block[64];      //!< 512-bit message blocks
 
-    int Computed;               /* Is the digest computed?         */
-    int Corrupted;             /* Is the message digest corrupted? */
+  int Computed;              //!< Is the digest computed?
+  int Corrupted;             //!< Is the message digest corrupted?
 } SHA1Context;
 
-/*
- *  Function Prototypes
- */
+/**
+  * This class implements the Secure Hashing Algorithm 1 as defined 
+  * in FIPS PUB 180-1 published April 17, 1995.
+  *
+  * Many of the variable names in this code, especially the
+  * single character names, were used because those were the names
+  * used in the publication.
+  *
+  */
+class Sha1{
+ public:
+  static int SHA1Reset(  SHA1Context *);
+  static int SHA1Input(  SHA1Context *,
+		  const uint8_t *,
+		  unsigned int);
+  static int SHA1Result( SHA1Context *,
+		  uint8_t Message_Digest[SHA1HashSize]);
 
-int SHA1Reset(  SHA1Context *);
-int SHA1Input(  SHA1Context *,
-                const uint8_t *,
-                unsigned int);
-int SHA1Result( SHA1Context *,
-                uint8_t Message_Digest[SHA1HashSize]);
+ private:
+  static void SHA1PadMessage(SHA1Context *);
+  static void SHA1ProcessMessageBlock(SHA1Context *);
 
+};
 #endif
 

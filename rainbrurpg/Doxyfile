@@ -511,8 +511,6 @@ EXCLUDE                = /home/mouse/programmation/rainbrurpg/include/ \
                          /home/mouse/programmation/rainbrurpg/common/EasyBMP.h \
                          /home/mouse/programmation/rainbrurpg/common/EasyBMP_DataStructures.h \
                          /home/mouse/programmation/rainbrurpg/common/EasyBMP_VariousBMPutilities.h \
-                         /home/mouse/programmation/rainbrurpg/common/sha1.h \
-                         /home/mouse/programmation/rainbrurpg/common/sha1.cpp \
                          /home/mouse/programmation/rainbrurpg/common/tinystr.cpp \
                          /home/mouse/programmation/rainbrurpg/common/tinystr.h \
                          /home/mouse/programmation/rainbrurpg/common/tinyxml.cpp \

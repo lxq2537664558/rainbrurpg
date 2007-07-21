@@ -6,6 +6,7 @@
 ==
 
 * v0.0.6
+- Server provide a tool to manage the quarantine :
 - Conditional linking : If you do not build server or editor, the configure
   will not test the presence of Qt4 and libmagic. The design library will
   not be built if neither the server nor the editor is enabled.
@@ -14,7 +15,7 @@
 - Switching to Ogre 1.2.5 (PLSM is also updated)
 - Server implements FTP protocol (RFC 0959) : This implementation is not 
   compatible with official fTP client but the common library contains a 
-  compatible client and the tools contain an ftp client executable.
+  compatible client and the tools directory  contains an ftp client executable.
 
 * v0.0.4 (97-???)
 - Server has a treeview of client connection

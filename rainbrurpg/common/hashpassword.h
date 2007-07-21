@@ -46,8 +46,6 @@ namespace RainbruRPG {
 
       /** Class used to compute password's hashsum 
         *
-	* The SHA-1 algorythm used by this class has been implemented by 
-	* Paul E. Jones <paulej@arid.us>
 	*/
         class HashPassword {
         public:

@@ -46,18 +46,18 @@ RainbruRPG::Network::Ident::HashPassword::~HashPassword(){
 std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
 			 const char *instr){
  
-  char buffer[20];
+  char buffer[40];
 
   SHA1Context sha;
   uint8_t Message_Digest[20];
 
-  SHA1Reset(&sha);
-  SHA1Input( &sha, (const uint8_t*) instr, strlen(instr));
-  SHA1Result( &sha, Message_Digest);
+  Sha1::SHA1Reset(&sha);
+  Sha1::SHA1Input( &sha, (const uint8_t*) instr, strlen(instr));
+  Sha1::SHA1Result( &sha, Message_Digest);
 
 
   for(int i = 0; i < 20 ; ++i)	{
-    sprintf(buffer,"%02X", Message_Digest[i]);
+    snprintf(buffer+i*2, 40, "%02X", Message_Digest[i]);
   }
 
   std::string out(buffer);

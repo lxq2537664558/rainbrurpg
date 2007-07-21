@@ -22,15 +22,34 @@
 
 #include "hashfile.h"
 
-//#include <boost/filesystem/fstream.hpp>
-
+/** The default constructor
+  *
+  */
 RainbruRPG::Core::HashFile::HashFile(){
+  fsize=0;
+  readBytes=0;
+  completePercent=0.0F;
+}
+
+/** Destructor
+  *
+  */
+RainbruRPG::Core::HashFile:: ~HashFile(){
 
 }
 
+/** Get the hashsum for the given file
+  *
+  * \param path The filename possibly with absolute path
+  *
+  * \return The file hash sum
+  *
+  */
 std::string RainbruRPG::Core::HashFile::getHashSum(const std::string& path){
 
-  std::ostringstream outstr;
+  int re;
+  this->fsize=getFileSize(path.c_str());
+
   ifstream file;
   file.open(path.c_str(), ios_base::in |ios_base::binary);
 
@@ -42,88 +61,56 @@ std::string RainbruRPG::Core::HashFile::getHashSum(const std::string& path){
     uint8_t Message_Digest[20];
     char* buffer=new char[1024];
 
-    SHA1Reset(&sha);
+    Sha1::SHA1Reset(&sha);
  
     while (!file.eof()){
       file.read(buffer,1024);
-      SHA1Input( &sha, (const uint8_t*) buffer, file.gcount());
-   }
+      re=file.gcount();
+      Sha1::SHA1Input( &sha, (const uint8_t*) buffer, re);
+      readBytes+=re;
+
+      computePercent();
+      progress.emit(fsize, readBytes, completePercent);
+    }
+
     file.close();
     delete[] buffer;
 
-    SHA1Result( &sha, Message_Digest);
+    Sha1::SHA1Result( &sha, Message_Digest);
 
     char out[40];
     for(int i = 0; i < 20 ; ++i)	{
-      printf("%02X", Message_Digest[i]);
-      snprintf (&out[i*2], 2, "%02X", Message_Digest[i]);
+      snprintf (out+i*2, 40, "%02X", Message_Digest[i]);
    }
-    printf("\n");
 
-
-
-    cout << out << endl;
-
-
+    std::string ret(out);
+    return ret;
   }
-
-  /*    outstr.flags ( ios::right | ios::basefield);
-    for(int i = 0; i < 20 ; ++i){
-    outstr.width(2);
-      outstr << (char)Message_Digest[i];
-    }
-  }
-  return outstr.str();
-
-  */
+  return "";
 }
 
-/** This functions is no longer in use
+/** Get the size of a file in bytes
   *
-  * \param message_digest A var used inernally by the encryptString function.
+  * \param sFileName The file name possibly with an absolute path
   *
-  * \return The encrypted password in a nice way
   */
-std::string RainbruRPG::Core::HashFile::
-getMessageDigest(unsigned *digest){
+int RainbruRPG::Core::HashFile::getFileSize(const char* sFileName){
+  std::ifstream f;
+  f.open(sFileName, std::ios_base::binary | std::ios_base::in);
+  if (!f.good() || f.eof() || !f.is_open()) { return 0; }
+  f.seekg(0, std::ios_base::beg);
+  std::ifstream::pos_type begin_pos = f.tellg();
+  f.seekg(0, std::ios_base::end);
+  return static_cast<int>(f.tellg() - begin_pos);
+}
 
-  /*    ios::fmtflags	flags;
+/** Compute the complete percent
+  *
+  * Computes the completePercent value. The formula I use is
+  * \f$\frac{(double)readBytes \times 100}{fsize}\f$
+  *
+  */
+void RainbruRPG::Core::HashFile::computePercent(){
+    completePercent=(double)readBytes*100/fsize;
 
-    ostringstream out;
-
-    flags = out.setf(ios::hex|ios::uppercase,ios::basefield);
-    out.setf(ios::uppercase);
-
-    for(int i = 0; i < 5 ; i++){
-        out << message_digest[i] << ' ';
-    }
-
-    //    cout << endl;
-
-    //    cout.setf(flags);
-
-    */
-
-  char* sha1Sum=new char[20];
-
-  for (int i = 0; i < 5; ++i) {
-    /* #if Q_BYTE_ORDER == Q_BIG_ENDIAN
-         sha1Sum[i * 4 + 3] = digest[i * 4 + 3];
-         sha1Sum[i * 4 + 2] = digest[i * 4 + 2];
-         sha1Sum[i * 4 + 1] = digest[i * 4 + 1];
-         sha1Sum[i * 4 + 0] = digest[i * 4 + 0];
-	 #else*/
-         sha1Sum[i * 4 + 0] = digest[i * 4 + 3];
-         sha1Sum[i * 4 + 1] = digest[i * 4 + 2];
-         sha1Sum[i * 4 + 2] = digest[i * 4 + 1];
-         sha1Sum[i * 4 + 3] = digest[i * 4 + 0];
-	 // #endif
-     }
-
-  std::string out(sha1Sum);
-
-     delete[] sha1Sum;
-
-
-    return out.c_str();
 }

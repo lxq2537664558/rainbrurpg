@@ -10,16 +10,10 @@ retr essaiTransfer.tgz
 - curlpersoheaderaddtest add a virtual perso
 - In this order
    curlpersoheaderadd
-   curlpersomodifattrb.h 
-   curlservermodifclients.h   
+   curlpersomodifattrb.h
+   curlservermodifclients.h
    curlsubmitform.h
 - Modified files
-
-o [mouse] SHA1 hash sum computation
-- Trying to get a coorect std::string typed hashsum
-- tools/hashsum with -p <password> option uses hashpassword
-- A command line program that uses common/hashfile 
-- A common/hashfile class that compute hashsum on a file
 
 * Editor identification
    The identification is done by GPG keys
@@ -130,9 +124,18 @@ o [mouse] SHA1 hash sum computation
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-149
+
 * v 0.0.5-148
+- tools-hashsum shows progression
+- Sends a signal for progression
+- tools/hashsum with -p <password> option uses hashpassword
+- doxygen documentation
+- Get a corect std::string typed hashsum
 - HashPassword uses RFC3174 implementation
 - Replace SHA class by official RFC3174 implementation
+- A command line program that uses common/hashfile 
+- A common/hashfile class that compute hashsum on a file
 - FoxPersoList feed persoList when an account is selected
 - XmlPersoList::getAccountByName implementation
 - Get the name of the item from its index

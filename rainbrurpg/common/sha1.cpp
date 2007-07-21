@@ -38,25 +38,16 @@
                 (((word) << (bits)) | ((word) >> (32-(bits))))
 
 /* Local Function Prototyptes */
-void SHA1PadMessage(SHA1Context *);
-void SHA1ProcessMessageBlock(SHA1Context *);
 
-/*
- *  SHA1Reset
- *
- *  Description:
- *      This function will initialize the SHA1Context in preparation
- *      for computing a new SHA1 message digest.
- *
- *  Parameters:
- *      context: [in/out]
- *          The context to reset.
- *
- *  Returns:
- *      sha Error Code.
- *
- */
-int SHA1Reset(SHA1Context *context)
+/** Initialize the SHA1Context in preparation for computing a new SHA1 
+  * message digest.
+  *
+  * \param context The context to reset.
+  *
+  * \return sha Error Code.
+  *
+  */
+int Sha1::SHA1Reset(SHA1Context *context)
 {
     if (!context)
     {
@@ -79,26 +70,19 @@ int SHA1Reset(SHA1Context *context)
     return shaSuccess;
 }
 
-/*
- *  SHA1Result
- *
- *  Description:
- *      This function will return the 160-bit message digest into the
- *      Message_Digest array  provided by the caller.
- *      NOTE: The first octet of hash is stored in the 0th element,
- *            the last octet of hash in the 19th element.
- *
- *  Parameters:
- *      context: [in/out]
- *          The context to use to calculate the SHA-1 hash.
- *      Message_Digest: [out]
- *          Where the digest is returned.
- *
- *  Returns:
- *      sha Error Code.
- *
- */
-int SHA1Result( SHA1Context *context,
+/** Returns the 160-bit message digest into the Message_Digest array 
+  * provided by the caller.
+  *
+  * \note The first octet of hash is stored in the 0th element, the last 
+  *       octet of hash in the 19th element.
+  *
+  * \param context The context to use to calculate the SHA-1 hash.
+  * \param Message_Digest Where the digest is returned.
+  *
+  * \return sha Error Code.
+  *
+  */
+int Sha1::SHA1Result( SHA1Context *context,
                 uint8_t Message_Digest[SHA1HashSize])
 {
     int i;
@@ -137,27 +121,20 @@ int SHA1Result( SHA1Context *context,
     return shaSuccess;
 }
 
-/*
- *  SHA1Input
- *
- *  Description:
- *      This function accepts an array of octets as the next portion
- *      of the message.
- *
- *  Parameters:
- *      context: [in/out]
- *          The SHA context to update
- *      message_array: [in]
- *          An array of characters representing the next portion of
- *          the message.
- *      length: [in]
- *          The length of the message in message_array
- *
- *  Returns:
- *      sha Error Code.
- *
- */
-int SHA1Input(    SHA1Context    *context,
+/** The function to set sha content
+  *
+  * This function accepts an array of octets as the next portion
+  * of the message.
+  *
+  * \param context       The SHA context to update
+  * \param message_array An array of characters representing the 
+  *                      next portion of the message.
+  * \param length        The length of the message in message_array
+  *
+  * \return sha Error Code.
+  *
+  */
+int Sha1::SHA1Input(    SHA1Context    *context,
                   const uint8_t  *message_array,
                   unsigned       length)
 {
@@ -208,28 +185,17 @@ int SHA1Input(    SHA1Context    *context,
     return shaSuccess;
 }
 
-/*
- *  SHA1ProcessMessageBlock
- *
- *  Description:
- *      This function will process the next 512 bits of the message
- *      stored in the Message_Block array.
- *
- *  Parameters:
- *      None.
- *
- *  Returns:
- *      Nothing.
- *
- *  Comments:
-
-*      Many of the variable names in this code, especially the
- *      single character names, were used because those were the
- *      names used in the publication.
- *
- *
- */
-void SHA1ProcessMessageBlock(SHA1Context *context)
+/** This function will process the next 512 bits of the message stored in 
+  * the Message_Block array.
+  *
+  * \note Many of the variable names in this code, especially the
+  *       single character names, were used because those were the
+  *       names used in the publication.
+  *
+  * \param context The SHA context to update
+  *
+  */
+void Sha1::SHA1ProcessMessageBlock(SHA1Context *context)
 {
     const uint32_t K[] =    {       /* Constants defined in SHA-1   */
                             0x5A827999,
@@ -317,31 +283,21 @@ void SHA1ProcessMessageBlock(SHA1Context *context)
 }
 
 
-/*
- *  SHA1PadMessage
- *
-
- *  Description:
- *      According to the standard, the message must be padded to an even
- *      512 bits.  The first padding bit must be a '1'.  The last 64
- *      bits represent the length of the original message.  All bits in
- *      between should be 0.  This function will pad the message
- *      according to those rules by filling the Message_Block array
- *      accordingly.  It will also call the ProcessMessageBlock function
- *      provided appropriately.  When it returns, it can be assumed that
- *      the message digest has been computed.
- *
- *  Parameters:
- *      context: [in/out]
- *          The context to pad
- *      ProcessMessageBlock: [in]
- *          The appropriate SHA*ProcessMessageBlock function
- *  Returns:
- *      Nothing.
- *
- */
-
-void SHA1PadMessage(SHA1Context *context)
+/** Pad the message digest to 512 bits
+  *
+  * According to the standard, the message must be padded to an even
+  * 512 bits.  The first padding bit must be a '1'.  The last 64
+  * bits represent the length of the original message.  All bits in
+  * between should be 0.  This function will pad the message
+  * according to those rules by filling the Message_Block array
+  * accordingly.  It will also call the ProcessMessageBlock function
+  * provided appropriately.  When it returns, it can be assumed that
+  * the message digest has been computed.
+  *
+  * \param context The context to pad
+  *
+  */
+void Sha1::SHA1PadMessage(SHA1Context *context)
 {
     /*
      *  Check to see if the current message block is too small to hold

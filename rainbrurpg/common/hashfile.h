@@ -30,9 +30,11 @@
 
 // For hash sum
 #include <unistd.h>
+
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <sigc++/sigc++.h>
 
 #include "logger.h"
 #include "sha1.h"
@@ -42,16 +44,36 @@ using namespace std;
 namespace RainbruRPG{
   namespace Core{
 
-
+    /** Computes the SHA-1 hashsum of a file
+      *
+      *
+      */
     class HashFile{
     public:
       HashFile();
+      virtual ~HashFile();
 
       std::string getHashSum(const std::string&);
+      /** The progression signal
+        *
+	* The returned value is void. The parameters are :
+	* - The filesize
+	* - The read bytes
+	* - The percentage completed
+	*
+	*/
+      sigc::signal<void, int, int, double> progress;
 
     private:
-      std::string getMessageDigest(unsigned *message_digest);
+      int getFileSize(const char*);
+      void computePercent();
 
+      /** The file size in bytes */
+      int fsize;
+      /** The number of already read bytes */
+      int readBytes;
+      /** The percent of completed work */
+      double completePercent;
     };
 
   }
