@@ -601,7 +601,12 @@ gameengine.lo .libs/gameengine.o: gameengine.cpp gameengine.h \
   /usr/local/include/CEGUI/CEGUIDefaultLogger.h gsmainmenu.h \
   /usr/local/include/CEGUI/CEGUIEventArgs.h \
   /usr/local/include/CEGUI/CEGUIEvent.h ../common/hashpassword.h \
-  gslocaltest.h gsgamebase.h guiframelistener.h \
+  gslocaltest.h gsgamebase.h gsconnection.h \
+  /usr/local/include/CEGUI/elements/CEGUIEditbox.h \
+  /usr/local/include/CEGUI/CEGUIBase.h \
+  /usr/local/include/CEGUI/CEGUIWindow.h \
+  /usr/local/include/CEGUI/elements/CEGUIEditboxProperties.h \
+  /usr/local/include/CEGUI/CEGUIProperty.h guiframelistener.h \
   /usr/local/include/OGRE/OgreNoMemoryMacros.h \
   /usr/local/include/OGRE/OgreCEGUIRenderer.h \
   /usr/local/include/OGRE/OgreCEGUIResourceProvider.h \
@@ -2069,6 +2074,18 @@ gsmainmenu.h:
 gslocaltest.h:
 
 gsgamebase.h:
+
+gsconnection.h:
+
+/usr/local/include/CEGUI/elements/CEGUIEditbox.h:
+
+/usr/local/include/CEGUI/CEGUIBase.h:
+
+/usr/local/include/CEGUI/CEGUIWindow.h:
+
+/usr/local/include/CEGUI/elements/CEGUIEditboxProperties.h:
+
+/usr/local/include/CEGUI/CEGUIProperty.h:
 
 guiframelistener.h:
 

@@ -28,11 +28,19 @@
 #include <logger.h>
 #include "gameengine.h"
 
-/** The default constructor
+/** The constructor
+  *
+  * The createMenu parameter should be \c true only one time as some
+  * Ogre objects name would be duplicated.
+  *
+  * \param createMenu Should we ceate the dynamic menu ?
+  *
+  * \sa gsMenuBase::createMenu (variable)
   *
   */
-RainbruRPG::Core::gsMenuBase::gsMenuBase(){
+RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu){
   LOGI("Constructing a  gsMenuBase");
+  this->createMenu=createMenu;
   velocity=NULL;
   stateType=GST_MENU;
   inputWrapper=new InputWrapper();
@@ -59,15 +67,19 @@ void RainbruRPG::Core::gsMenuBase::init(){
   mRoot=GameEngine::getSingleton().getOgreRoot();
   mSceneMgr=GameEngine::getSingleton().getOgreSceneMgr();
 
-  menuNode = mSceneMgr->getRootSceneNode()
-    ->createChildSceneNode("Menu");
 
-  translateTo(0.0);
+  if (this->createMenu){
+    menuNode = mSceneMgr->getRootSceneNode()
+      ->createChildSceneNode("Menu");
+    
+    translateTo(0.0);
+    
+    drawMenuBackground();
+    drawDynamicBackground();
+    drawBorder();
+    setCorners();
+  }
 
-  drawMenuBackground();
-  drawDynamicBackground();
-  drawBorder();
-  setCorners();
   isInit=true;
 }
 

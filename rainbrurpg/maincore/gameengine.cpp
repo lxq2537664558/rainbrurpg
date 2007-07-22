@@ -29,18 +29,14 @@
 #include <CEGUI/CEGUIDefaultLogger.h>
 
 #include "logger.h"
-//#include "console.h"
 #include "gamestate.h"
-/*#include "gsgame.h"
-#include "gsgameesc.h"
-#include "gsconnection.h"
-#include "gscreateaccount.h"
-#include "gschangepassword.h"
-#include "gsselectperso.h"
-#include "gscreateperso.h"
-*/
+
+
 #include "gsmainmenu.h"
 #include "gslocaltest.h"
+#include "gsconnection.h"
+
+
 #include "guimanager.h"
 #include "guiframelistener.h"
 #include "exampleframelistener.h"
@@ -63,13 +59,14 @@ bool RainbruRPG::Core::GameEngine::running() {
   * This method must be called once. It loads the options with a
   * XmlOptions class instance.
   *
-  * It only initialize Irrlicht engine. Each GameState initialize its
+  * It only initialize 3D engine. Each GameState initialize its
   * own parameters.
   */
 void RainbruRPG::Core::GameEngine::init(){
   userName="";
   userPwd="";
   mInputMgr=NULL;
+  actualState=ST_MAIN_MENU;
 
   initOgre();
   initCEGUI();
@@ -145,14 +142,18 @@ void RainbruRPG::Core::GameEngine::run() {
 void RainbruRPG::Core::GameEngine::initStates() {
   LOGI("Initializing Game states...");
 
-  GameState *gs1=new gsMainMenu();
-  gs1->init();
+  GameState *gs1=new gsLocalTest();
+  //gs1->init();
 
-  GameState *gs2=new gsLocalTest();
-  gs2->init();
+  GameState *gs2=new gsConnection();
+  //gs2->init();
+
+  GameState *gs3=new gsMainMenu();
+  //gs3->init();
 
   states.push_back(gs1);
   states.push_back(gs2);
+  states.push_back(gs3);
 
 }
 
@@ -169,6 +170,9 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
       break;
     case ST_LOCAL_TEST:
       LOGI("Switching to LocalTest...");
+      break;
+    case ST_MENU_CONNECT:
+      LOGI("Switching to ConnectMenu Game...");
       break;
     default:
       LOGW("Unknown game state received");
@@ -190,6 +194,8 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
       }
 
       actualState=t;
+      states[actualState]->init();
+
     }
   }
 }
@@ -724,6 +730,7 @@ bool RainbruRPG::Core::GameEngine::keyPressed(const OIS::KeyEvent& evt){
   OIS::KeyCode kc=evt.key;
   if (kc==OIS::KC_ESCAPE)
     this->quit();
+
   states[actualState]->keyPressed(evt);
 
   return true;

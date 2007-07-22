@@ -46,6 +46,7 @@ namespace RainbruRPG {
       */
     class gsMenuBase : public GameState{
     public:
+      gsMenuBase(bool);
       /** An empty default destructor needed to avoid compilation warnings */
       virtual ~gsMenuBase(){};
 
@@ -127,6 +128,8 @@ namespace RainbruRPG {
 
       /** The inputwrapper */
       InputWrapper* inputWrapper;
+      /** Should we create the dynamic menu */
+      bool createMenu;
     };
 
   }

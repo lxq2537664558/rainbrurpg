@@ -19,7 +19,9 @@ h_sources=gameengine.h			\
 	  exampleframelistener.h	\
 	  gsgamebase.h			\
 	  environmentsetup.h		\
-	  highlightlistener.h
+	  highlightlistener.h		\
+	  gsconnection.h		\
+	  tabnavigation.h
 
 cc_sources=gameengine.cpp		\
 	  gamestate.cpp			\
@@ -35,14 +37,16 @@ cc_sources=gameengine.cpp		\
 	  exampleframelistener.cpp	\
 	  gsgamebase.cpp		\
 	  environmentsetup.cpp		\
-	  highlightlistener.cpp
+	  highlightlistener.cpp		\
+	  gsconnection.cpp		\
+	  tabnavigation.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 # The necessary OGRE/CEGUI compilation-time flags
 #OGRE_CFLAGS=$(pkg-config --cflags OGRE CEGUI CEGUI-OGRE) #Does not work?
-OGRE_CFLAGS= -I/usr/local/include/OGRE
+OGRE_CFLAGS= -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
 
 INCLUDES = -I$(top_srcdir)/common $(OGRE_CFLAGS)
 librainbrurpg_core_la_SOURCES= $(h_sources) $(cc_sources)

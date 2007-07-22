@@ -31,7 +31,7 @@
   *
   */
 RainbruRPG::Core::gsMainMenu::gsMainMenu()
-                                 :gsMenuBase(){
+  :gsMenuBase(true){
 
   LOGI("Constructing a gsMainMenu");
   velocity=new vcConstant();
@@ -112,62 +112,6 @@ bool RainbruRPG::Core::gsMainMenu::
 onNetworkGameClicked(const CEGUI::EventArgs& evt){
   LOGI("NetworkGame button clicked");
 
-  GuiManager::getSingleton().beginGuiFadeOut();
-
-  // We must wait for the CEGUI fade end to prevent
-  // SEGFAULT in access to CEGUI windows (getAlpha())
-  while (GuiManager::getSingleton().isInGuiFadeOut()){
-    Ogre::Root::getSingleton().renderOneFrame();
-  }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
-  GuiManager::getSingleton().loadCEGUILayout("connection.layout");
-  GuiManager::getSingleton().debugChild("RainbruRPG/Connection");
-
-  GuiManager::getSingleton().beginGuiFadeIn();
-
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-
-  // Back button
-  CEGUI::Window* btnBack=root->getChild("Back");
-  if (btnBack){
-    btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent("Clicked", 
-      CEGUI::Event::Subscriber(&gsMainMenu::onBackToMainClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'Back' button");
-  }
-
-  // Get the Connection window
-  CEGUI::Window* connectWin=root->getChild("RainbruRPG/Connection");
-
- // Connect button
-  CEGUI::Window* btnConnect=connectWin->getChild("Connect");
-  if (btnConnect){
-    btnConnect->subscribeEvent("Clicked", 
-      CEGUI::Event::Subscriber(&gsMainMenu::onConnectClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'Back' button");
-  }
-
-
-  return true;
-}
-
-/** Returns to the main menu layout
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsMainMenu::
-onBackToMainClicked(const CEGUI::EventArgs& evt){
 
   GuiManager::getSingleton().beginGuiFadeOut();
 
@@ -176,13 +120,12 @@ onBackToMainClicked(const CEGUI::EventArgs& evt){
   while (GuiManager::getSingleton().isInGuiFadeOut()){
     Ogre::Root::getSingleton().renderOneFrame();
   }
-
+  GuiManager::getSingleton().detroyTitleOverlay();
   GuiManager::getSingleton().removeCurrentCEGUILayout();
+  GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
 
-  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
   GuiManager::getSingleton().beginGuiFadeIn();
 
-  setupMainMenu();
 
   return true;
 }
@@ -200,7 +143,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   LOGI("setupMainMenu called");
   // Subscribe event
   CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet()
-->getChild("RainbruRPG/MainMenu");;
+    ->getChild("RainbruRPG/MainMenu");;
 
   // Quit button
   CEGUI::Window* btnQuit=root->getChild("Quit");
@@ -239,36 +182,4 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
     LOGW("Cannot get the 'Network game' button");
   }
 
-}
-
-/** The callback of the Connect button
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsMainMenu::
-onConnectClicked(const CEGUI::EventArgs& evt){
-  LOGI("Connect button clicked");
-
-  // Get the strings
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-  CEGUI::Window* connectWin=root->getChild("RainbruRPG/Connection");
-  CEGUI::Window* name=connectWin->getChild("RainbruRPG/Connection/Name");
-  CEGUI::Window* pwd=connectWin->getChild("RainbruRPG/Connection/Pwd");
-  const char* cName=name->getText().c_str();
-  const char* cPwd=pwd->getText().c_str();
-  LOGCATS("Name :");
-  LOGCATS(cName);
-  LOGCATS("Pwd :");
-  LOGCATS(cPwd);
-  LOGCAT();
-
-  HashPassword hp;
-
-  std::string hashPwd=hp.encryptString(cPwd);
-  GameEngine::getSingleton().connectUser(cName, hashPwd.c_str());
-
-  return true;
 }

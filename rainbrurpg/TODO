@@ -15,6 +15,13 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
+o [mouse] Client 
+- Using TabNavigation in gsConnection
+- SEGFAULT when exiting the game
+- client uses EnvironmentSetup in libRainbruRPG-core.so
+  Waiting to be to the same rendering level with EnvironmentSetup
+  (Fog and Skydome)
+
 * Editor identification
    The identification is done by GPG keys
 - The server let manage a list of editors
@@ -72,12 +79,6 @@ retr essaiTransfer.tgz
    decrease) (ftSize)
 - Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
-* Client
-- SEGFAULT when exiting the game
-- client uses EnvironmentSetup in libRainbruRPG-core.so
-  Waiting to be to the same rendering level with EnvironmentSetup
-  (Fog and Skydome)
-
 * Objectifs Seb
 - Etape 2
   [7 jours] Avatar
@@ -93,16 +94,10 @@ retr essaiTransfer.tgz
 	    Le principe est connu et abondemment discute dans les forums
 
 * Fil rouge
-- Tests unitaires
-  Les tests unitaires sont à jour pour TerminalAPI. Tous les tests de
-  tApi font partis d'une seule et même TestSuite. 
-  Tous les TextFixture doivent être uniquement dans des .h car ce sont
-  des templates. L'implementation des templates est interdite dans un
-  fichier cpp.
 - test Valgrind
   Pour eviter les fuites memoires et autres.
 - manual pages : RainbruRPG.6 RainbruRPG-editor.6 RainbruRPG-server.6
-- texinfo maunal : RainbruRPG.texinfo
+- texinfo manual : RainbruRPG.texinfo
 
 * Divers
 - xmlPlayerList inherits CurlGetFile
@@ -125,6 +120,16 @@ retr essaiTransfer.tgz
 * *******************************************************
 
 * v 0.0.5-149
+- TabNavigation documentation
+- Adding TabNavigation
+- A bug with identification (hashsms not the same)    FIXED
+- connection's password TextEdit should hide user entry
+- TextEdit in connection layout should receive event keys.
+- Remove the title overlay when drawing gsconnection
+- ConnectMenu is not shown            FIXED
+- GUI isn't shown anymore             FIXED
+- connection.layout managed by a gsconnection class
+- connection.layout is back
 
 * v 0.0.5-148
 - tools-hashsum shows progression

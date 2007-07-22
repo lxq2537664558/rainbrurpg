@@ -84,9 +84,9 @@ namespace RainbruRPG {
       * state system. 
       */
     enum tStateType{
-      ST_MAIN_MENU           =0,  //!< The main menu state
-      ST_LOCAL_TEST          =1,  //!< The local test state
-
+      ST_LOCAL_TEST          =0x0000,  //!< The local test state
+      ST_MENU_CONNECT        =0x0001,  //!< The connection menu
+      ST_MAIN_MENU           =0x0002,  //!< The main menu state
     };
 
     /** The game engine

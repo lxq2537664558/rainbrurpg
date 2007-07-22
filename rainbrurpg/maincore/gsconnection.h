@@ -21,16 +21,20 @@
  */
 
 /* Modifications :
- * - 22 jul 2007 : Moving the connection menu to gsConnection
+ * - 22 jul 2007 : Starting implementation
  *
  */
 
-#ifndef GS_MAIN_MENU_H
-#define GS_MAIN_MENU_H
+#ifndef GS_CONNECTION_H
+#define GS_CONNECTION_H
 
 #include "gsmenubase.h"
+#include <CEGUI/CEGUISystem.h>
+#include <CEGUI/CEGUIRenderer.h>
+//#include <CEGUI/CEGUIForwardRefs.h>
 #include <CEGUI/CEGUIEventArgs.h>
 #include <CEGUI/CEGUIEvent.h>
+#include <CEGUI/elements/CEGUIEditbox.h>
 
 #include <hashpassword.h>
 
@@ -39,30 +43,38 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Core{
 
-    /** The main menu gamestate
+    /** The connection menu
       *
-      * The main menu is the first screen to appears when the game is 
-      * launched. It provides 3 buttons : 
-      * - Network game : you can play in a worldwide server
-      * - Local test : You play alone to test the rendering engine
-      * - Quit
+      * This is the first screen shown when the user choose the network
+      * game. It provides a typical user name/password identification.
+      * The CEGUI loaded is connection.layout (in data/gui/layout/ directory).
       *
       */
-    class gsMainMenu : public gsMenuBase{
+    class gsConnection : public gsMenuBase{
     public:
-      virtual ~gsMainMenu();
-      gsMainMenu();
+      virtual ~gsConnection();
+      gsConnection();
 
       virtual void init();
+
+      virtual bool keyPressed(const OIS::KeyEvent &);
+
 
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);
       bool onLocalTestClicked(const CEGUI::EventArgs&);
       bool onNetworkGameClicked(const CEGUI::EventArgs&);
+      bool onBackToMainClicked(const CEGUI::EventArgs&);
+      bool onConnectClicked(const CEGUI::EventArgs&);
 
-      void setupMainMenu();
+      void setupConnectionMenu();
+
+
+      CEGUI::Window* nameWidget;
+      CEGUI::Window* pwdWidget;
+
     };
   }
 }
 
-#endif // GS_MAIN_MENU_H
+#endif // GS_CONNECTION_H

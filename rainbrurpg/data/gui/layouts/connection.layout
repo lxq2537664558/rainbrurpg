@@ -8,19 +8,13 @@
         <Window Type="DefaultWindow" Name="RainbruRPG/Connection" >
             <Property Name="UnifiedMaxSize" Value="{{1,0},{2,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.029688,0},{0.031249,0},{0.968751,0},{0.979164,0}}" />
-            <Window Type="Vanilla/Button" Name="Quit" >
-                <Property Name="Font" Value="Commonwealth-10" />
-                <Property Name="Text" Value="Quit" />
-                <Property Name="Tooltip" Value="Quit the game" />
-                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-                <Property Name="UnifiedAreaRect" Value="{{0.720483,0},{0.895947,0},{0.962347,0},{0.963655,0}}" />
-            </Window>
-            <Window Type="TaharezLook/FrameWindow" Name="RainbruRPG/Connection/" >
+            <Window Type="TaharezLook/FrameWindow" Name="RainbruRPG/ConnectionWindow" >
                 <Property Name="Text" Value="Connection" />
                 <Property Name="TitlebarFont" Value="Commonwealth-10" />
                 <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                 <Property Name="TitlebarEnabled" Value="True" />
-                <Property Name="UnifiedAreaRect" Value="{{0.427733,0},{0.0637356,0},{0.996877,0},{0.575275,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{-0.0105259,0},{0.076539,0},{0.709474,0},{0.7,0}}" />
+                <Property Name="HorizontalAlignment" Value="Centre" />
                 <Window Type="TaharezLook/StaticText" Name="RainbruRPG/Connection//" >
                     <Property Name="Text" Value="User name :" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
@@ -32,16 +26,16 @@
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                     <Property Name="UnifiedAreaRect" Value="{{0.0755983,0},{0.422667,0},{0.383618,0},{0.549725,0}}" />
                 </Window>
-                <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection//2" >
+                <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Name" >
                     <Property Name="MaxTextLength" Value="1073741823" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                     <Property Name="UnifiedAreaRect" Value="{{0.412628,0},{0.190231,0},{0.928839,0},{0.330461,0}}" />
                 </Window>
-                <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection//21" >
+                <Window Type="TaharezLook/Editbox" Name="RainbruRPG/Connection/Pwd" >
                     <Property Name="Font" Value="Commonwealth-10" />
                     <Property Name="MaxTextLength" Value="1073741823" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-                    <Property Name="UnifiedAreaRect" Value="{{0.421672,0},{0.407081,0},{0.937883,0},{0.547311,0}}" />
+                    <Property Name="UnifiedAreaRect" Value="{{0.421672,0},{0.417193,0},{0.937883,0},{0.550562,0}}" />
                 </Window>
                 <Window Type="TaharezLook/Button" Name="RainbruRPG/Connection//3" >
                     <Property Name="Text" Value="Lost password" />
@@ -54,7 +48,7 @@
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                     <Property Name="UnifiedAreaRect" Value="{{0.0718081,0},{0.807787,0},{0.473136,0},{0.924596,0}}" />
                 </Window>
-                <Window Type="TaharezLook/Button" Name="RainbruRPG/Connection//32" >
+                <Window Type="TaharezLook/Button" Name="Connect" >
                     <Property Name="Font" Value="Commonwealth-10" />
                     <Property Name="Text" Value="Connect" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />

@@ -67,7 +67,8 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	velocitycalculator.lo vcconstant.lo gsmenubase.lo \
 	inputwrapper.lo inputmanager.lo gsmainmenu.lo gslocaltest.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
-	environmentsetup.lo highlightlistener.lo
+	environmentsetup.lo highlightlistener.lo gsconnection.lo \
+	tabnavigation.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -138,7 +139,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-21
+ISODATE = 2007-07-22
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -236,7 +237,9 @@ h_sources = gameengine.h			\
 	  exampleframelistener.h	\
 	  gsgamebase.h			\
 	  environmentsetup.h		\
-	  highlightlistener.h
+	  highlightlistener.h		\
+	  gsconnection.h		\
+	  tabnavigation.h
 
 cc_sources = gameengine.cpp		\
 	  gamestate.cpp			\
@@ -252,14 +255,16 @@ cc_sources = gameengine.cpp		\
 	  exampleframelistener.cpp	\
 	  gsgamebase.cpp		\
 	  environmentsetup.cpp		\
-	  highlightlistener.cpp
+	  highlightlistener.cpp		\
+	  gsconnection.cpp		\
+	  tabnavigation.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 # The necessary OGRE/CEGUI compilation-time flags
 #OGRE_CFLAGS=$(pkg-config --cflags OGRE CEGUI CEGUI-OGRE) #Does not work?
-OGRE_CFLAGS = -I/usr/local/include/OGRE
+OGRE_CFLAGS = -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
 INCLUDES = -I$(top_srcdir)/common $(OGRE_CFLAGS)
 librainbrurpg_core_la_SOURCES = $(h_sources) $(cc_sources)
 librainbrurpg_core_la_LIBADD = -lrainbrurpg-common
@@ -337,6 +342,7 @@ include ./$(DEPDIR)/environmentsetup.Plo
 include ./$(DEPDIR)/exampleframelistener.Plo
 include ./$(DEPDIR)/gameengine.Plo
 include ./$(DEPDIR)/gamestate.Plo
+include ./$(DEPDIR)/gsconnection.Plo
 include ./$(DEPDIR)/gsgamebase.Plo
 include ./$(DEPDIR)/gslocaltest.Plo
 include ./$(DEPDIR)/gsmainmenu.Plo
@@ -346,6 +352,7 @@ include ./$(DEPDIR)/guimanager.Plo
 include ./$(DEPDIR)/highlightlistener.Plo
 include ./$(DEPDIR)/inputmanager.Plo
 include ./$(DEPDIR)/inputwrapper.Plo
+include ./$(DEPDIR)/tabnavigation.Plo
 include ./$(DEPDIR)/vcconstant.Plo
 include ./$(DEPDIR)/velocitycalculator.Plo
 
