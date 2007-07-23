@@ -24,11 +24,18 @@
  * http://www.cegui.org.uk/wiki/index.php/Tab_Order
  */
 
+/* Modifications :
+ * - 22 jul 2007 : Initial import fro CEGUI wiki
+ *
+ */
+
 #ifndef _TabNavigation_h_
 #define _TabNavigation_h_
 
 #include <vector>
 #include "CEGUI.h"
+
+#include <logger.h>
 
 namespace RainbruRPG{
   namespace Core{
@@ -62,10 +69,10 @@ namespace RainbruRPG{
       bool _onActivated(const CEGUI::EventArgs& e);
       bool _onCharacterKey(const CEGUI::EventArgs& e);
       
-      /* Maintains the list of widgets that participate in the tab order */
+      /** Maintains the list of widgets that participate in the tab order */
       std::vector<CEGUI::String> _tabNavigation;
       
-      /* Maintains the last known widget to have the focus. */
+      /** Maintains the last known widget to have the focus. */
       std::vector<CEGUI::String>::iterator _lastKnownFocus;
     };
   }

@@ -351,17 +351,6 @@ void RainbruRPG::Core::gsMenuBase::frameEnded(const FrameEvent& evt){
 
 }
 
-/** The keyPressed OIS callback implementation
-  *
-  * \param evt The OIS event
-  *
-  * \return An OIS value
-  *
-  */
-bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
-  return true;
-}
-
 /** The keyReleased OIS callback implementation
   *
   * \param evt The OIS event
@@ -370,8 +359,36 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   *
   */
 bool RainbruRPG::Core::gsMenuBase::keyReleased(const OIS::KeyEvent& evt){
-  return true;
+  OIS::KeyCode kc=evt.key;
+  unsigned int text=evt.text;
+  bool masked=false;
 
+  // Special cases
+  CEGUI::Key::Scan scanCode;
+
+  if (kc==OIS::KC_DELETE){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Delete);
+  }
+  else if (kc==OIS::KC_BACK){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Backspace);
+  }
+  else if (kc==OIS::KC_LEFT){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::ArrowLeft);
+  }
+  else if (kc==OIS::KC_RIGHT){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::ArrowRight);
+  }
+  else if (kc==OIS::KC_TAB){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Tab);
+  }
+  else if (kc==OIS::KC_LSHIFT){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::LeftShift);
+  } 
+  else if (kc==OIS::KC_RSHIFT){
+    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::RightShift);
+  }
+
+  return true;
 }
 
 /** The mouseMoved OIS callback implementation
@@ -421,6 +438,62 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
 
   CEGUI::System::getSingleton().injectMouseButtonUp(
     inputWrapper->OISButtontoCEGUI(id));
+
+  return true;
+}
+
+/** The keyPressed OIS callback implementation
+  *
+  * \param evt The OIS event
+  *
+  * \return An OIS value
+  *
+  */
+bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
+  OIS::KeyCode kc=evt.key;
+  unsigned int text=evt.text;
+
+  CEGUI::Window* guiSheet=CEGUI::System::getSingleton().getGUISheet();
+  CEGUI::Window* activeChild=guiSheet->getActiveChild();
+
+  // Special cases
+  CEGUI::Key::Scan scanCode;
+
+  if (kc==OIS::KC_DELETE){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Delete);
+  }
+  else if (kc==OIS::KC_BACK){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Backspace);
+  }
+  else if (kc==OIS::KC_LEFT){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowLeft);
+  }
+  else if (kc==OIS::KC_RIGHT){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowRight);
+  }
+  else if (kc==OIS::KC_TAB){
+    CEGUI::System::getSingleton().injectChar(9);
+  }
+  else if (kc==OIS::KC_LSHIFT){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::LeftShift);
+  } 
+  else if (kc==OIS::KC_RSHIFT){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::RightShift);
+  }
+  else if (kc==OIS::KC_RETURN || kc==OIS::KC_NUMPADENTER){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Return);
+
+    if (activeChild){
+      CEGUI::String    eventName("Clicked");
+      CEGUI::EventArgs eventArgs;
+      CEGUI::String    eventNS("");
+
+      activeChild->fireEvent(eventName, eventArgs, eventNS);
+    }
+  }
+  else{
+    CEGUI::System::getSingleton().injectChar((CEGUI::utf32)text);
+  }
 
   return true;
 }

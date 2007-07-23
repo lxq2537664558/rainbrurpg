@@ -28,13 +28,13 @@
 
 #include "tabnavigation.h"
 
-
 /* These provide a visual focus cue when the scheme does not provide one
  *	 for every widget, such as TaharezLook's PushButton */
 #define HACKED_FOCUS_GAIN(window) CEGUI::WindowManager::getSingleton().getWindow(window)->setAlpha(1.0f)
-#define HACKED_FOCUS_LOSS(window) CEGUI::WindowManager::getSingleton().getWindow(window)->setAlpha(0.8f)
+#define HACKED_FOCUS_LOSS(window) CEGUI::WindowManager::getSingleton().getWindow(window)->setAlpha(0.7f)
 
-/* You can deactivate these hacked focus functions by defining the macro as a comment:
+/* You can deactivate these hacked focus functions by defining the
+ * macro as a comment:
 #define HACKED_FOCUS_GAIN(window) //
 #define HACKED_FOCUS_LOSS(window) //
  */
@@ -44,6 +44,8 @@
   *
   * Used to trap Tab and Shift+Tab keys and relay them to the 
   * list of tab navigation. 
+  *
+  * \param window The name of the window to add
   *
   */
 void RainbruRPG::Core::TabNavigation::setParent(const CEGUI::String& window){
@@ -57,9 +59,11 @@ void RainbruRPG::Core::TabNavigation::setParent(const CEGUI::String& window){
        CEGUI::Event::Subscriber(&TabNavigation::_onParentActivated, this));
 }
 
-/** Adds a TabControl widget.
+/** Adds a widget to the list of tab navigation.
   *
-  * Its tab buttons will be added to the list of tab navigation. 
+  * The order in which they are added corresponds to the tab order. 
+  *
+  * \param window The name of the window to add
   *
   */
 void RainbruRPG::Core::TabNavigation::addWidget(const CEGUI::String& window){
@@ -80,9 +84,11 @@ void RainbruRPG::Core::TabNavigation::addWidget(const CEGUI::String& window){
   _lastKnownFocus = _tabNavigation.begin(); 
 }
 
-/** Adds a widget to the list of tab navigation.
+/** Adds a TabControl widget.
   *
-  * The order in which they are added corresponds to the tab order. 
+  * Its tab buttons will be added to the list of tab navigation. 
+  *
+  * \param tabControl A pointer to the Tab Control to add
   *
   */
 void RainbruRPG::Core::TabNavigation::
@@ -101,9 +107,13 @@ addWidget(const CEGUI::TabControl* tabControl){
 
 /** Ensures that the last known focused widget regains input. 
   *
+  * \param e The event
+  *
   */
 bool RainbruRPG::Core::TabNavigation::
 _onParentActivated(const CEGUI::EventArgs& e){
+
+  LOGI("_onParentActivated called");
   // Parent is being activated, activate the widget with the last known focus
   if(_tabNavigation.size() && _lastKnownFocus != _tabNavigation.end()){
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -119,8 +129,11 @@ _onParentActivated(const CEGUI::EventArgs& e){
   * This will ensure that the next tab key navigation will start from
   * the relevant widget. 
   *
+  * \param e The event
+  *
   */
 bool RainbruRPG::Core::TabNavigation::_onActivated(const CEGUI::EventArgs& e){
+  LOGI("_onActivated called");
   // A focus widget has been activated without tabbing (could be a mouse click)
   CEGUI::String currentlyFocused = 
     static_cast<const CEGUI::WindowEventArgs&>(e).window->getName();
@@ -152,10 +165,13 @@ bool RainbruRPG::Core::TabNavigation::_onActivated(const CEGUI::EventArgs& e){
 /** Traps the Tab and Shift+Tab key and activates the next or previous 
   * widget accordingly. 
   *
+  * \param e The event
+  *
   */
 bool RainbruRPG::Core::TabNavigation::
 _onCharacterKey(const CEGUI::EventArgs& e){
 
+  LOGI("_onCharacterKey called");
   // Handle Tab (next) and Shift+Tab (previous) widget navigation
   assert(_tabNavigation.size() && "Don't simply call setParent(), also call addWidget()");
   // Tab or Shift+Tab

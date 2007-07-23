@@ -438,8 +438,8 @@ deleteserver.o deleteserver.o: deleteserver.cpp deleteserver.h \
   /usr/include/curl/curlver.h /usr/include/sys/socket.h \
   /usr/include/sys/uio.h /usr/include/bits/uio.h \
   /usr/include/bits/socket.h /usr/include/bits/sockaddr.h \
-  /usr/include/asm/socket.h /usr/include/asm-i486/socket.h \
-  /usr/include/asm/sockios.h /usr/include/asm-i486/sockios.h \
+  /usr/include/asm/socket.h /usr/include/asm-i386/socket.h \
+  /usr/include/asm/sockios.h /usr/include/asm-i386/sockios.h \
   /usr/include/sys/time.h /usr/include/curl/easy.h \
   /usr/include/curl/multi.h /usr/include/curl/curl.h \
   ../../common/curlinterface.h ../../common/curlposteddata.h \
@@ -1647,11 +1647,11 @@ deleteserver.h:
 
 /usr/include/asm/socket.h:
 
-/usr/include/asm-i486/socket.h:
+/usr/include/asm-i386/socket.h:
 
 /usr/include/asm/sockios.h:
 
-/usr/include/asm-i486/sockios.h:
+/usr/include/asm-i386/sockios.h:
 
 /usr/include/sys/time.h:
 

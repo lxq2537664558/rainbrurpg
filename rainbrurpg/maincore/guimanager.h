@@ -42,7 +42,9 @@ namespace RainbruRPG {
 
     /** The Gui Manager used by the client
       *
-      * This singleton class is used to create GUI forms.
+      * This singleton class is used to create GUI forms, manage CEGUI
+      * layouts and Ogre overlays. It is also responsible of the GUI
+      * fading effect you can see in client's menus.
       *
       */
     class GuiManager : public RainbruRPG::Core::Singleton<GuiManager>{

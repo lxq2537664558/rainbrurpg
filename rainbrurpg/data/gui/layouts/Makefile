@@ -100,7 +100,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-22
+ISODATE = 2007-07-23
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -184,7 +184,8 @@ sysconfdir = ${prefix}/etc
 target_alias = 
 datafilesdir = $(prefix)/share/RainbruRPG/data/gui/layouts/
 datafiles_DATA = mainmenu.layout			\
-		connection.layout
+		connection.layout		\
+		dialogsystem.layout
 
 all: all-am
 

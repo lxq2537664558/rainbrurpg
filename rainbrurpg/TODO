@@ -7,7 +7,7 @@ retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
 * Unittest implementation in common/
-- curlpersoheaderaddtest add a virtual perso
+- curlpersoheaderaddtest hide until we call doOpen
 - In this order
    curlpersoheaderadd
    curlpersomodifattrb.h
@@ -16,7 +16,8 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- Using TabNavigation in gsConnection
+- Makes the SimpleDialog class work
+- GuiManager::showMessage(...);
 - SEGFAULT when exiting the game
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
@@ -119,50 +120,24 @@ o [mouse] Client
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-150
+
 * v 0.0.5-149
+- SimpleDialog become a real class
+- DialogSystem become a part of this project
+- Doxygen documentation
+- The enter key when a button has focus fire event
+- injectKeys implementated for TabNavigation in gsmenubase
+- Using TabNavigation in gsConnection
 - TabNavigation documentation
 - Adding TabNavigation
 - A bug with identification (hashsms not the same)    FIXED
 - connection's password TextEdit should hide user entry
 - TextEdit in connection layout should receive event keys.
 - Remove the title overlay when drawing gsconnection
-- ConnectMenu is not shown            FIXED
-- GUI isn't shown anymore             FIXED
+- ConnectMenu is not shown                            FIXED
+- GUI isn't shown anymore                             FIXED
 - connection.layout managed by a gsconnection class
 - connection.layout is back
-
-* v 0.0.5-148
-- tools-hashsum shows progression
-- Sends a signal for progression
-- tools/hashsum with -p <password> option uses hashpassword
-- doxygen documentation
-- Get a corect std::string typed hashsum
-- HashPassword uses RFC3174 implementation
-- Replace SHA class by official RFC3174 implementation
-- A command line program that uses common/hashfile 
-- A common/hashfile class that compute hashsum on a file
-- FoxPersoList feed persoList when an account is selected
-- XmlPersoList::getAccountByName implementation
-- Get the name of the item from its index
-- Get the index of the clicked item
-- FoxPersoList callback on AccountList
-- Tester XmlPersoList avec xIdent
-- XmlPersoList implements a persolist
-
-* v 0.0.5-147
-- curlpersoheaderadd set/get implementation
-- curlpersoheaderdelete implementation (deleteplayer.php) in common/
-- curlserveradd unittest modification: uniqueName and type added
-- doxygen documentation
-- Quanrantine preview for html 
-- Fix the Quanrantine help message bug 
-- Quanrantine preview for txt files
-- QuarantineList preview avec double-click
-- FilePreview for images
-- FilePreview implementation in design/
-- An advice text in QuarantineList that tells to click 'refresh'
-- Ftp give stored filename to QuarantineList to mark it as 'on DL'
-- A help button that shows help section on quarantine
-- A mapping structure in HelpViewer
 
 

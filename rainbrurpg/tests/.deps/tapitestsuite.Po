@@ -157,10 +157,9 @@ tapitestsuite.o tapitestsuite.o: tapitestsuite.cpp tapitestsuite.h \
   ../terminalapi/scrollingpanel.h ../terminalapi/terminalapp.h \
   /usr/include/bits/signum.h /usr/include/bits/siginfo.h \
   /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
-  /usr/include/asm/sigcontext.h /usr/include/asm-i486/sigcontext.h \
-  /usr/include/linux/compiler.h /usr/include/bits/sigstack.h \
-  /usr/include/sys/ucontext.h /usr/include/bits/sigthread.h \
-  /usr/include/boost/algorithm/string.hpp \
+  /usr/include/asm/sigcontext.h /usr/include/asm-i386/sigcontext.h \
+  /usr/include/bits/sigstack.h /usr/include/sys/ucontext.h \
+  /usr/include/bits/sigthread.h /usr/include/boost/algorithm/string.hpp \
   /usr/include/boost/algorithm/string/std_containers_traits.hpp \
   /usr/include/boost/config.hpp /usr/include/boost/config/user.hpp \
   /usr/include/boost/config/select_compiler_config.hpp \
@@ -976,9 +975,7 @@ tapi/terminalapptest.h:
 
 /usr/include/asm/sigcontext.h:
 
-/usr/include/asm-i486/sigcontext.h:
-
-/usr/include/linux/compiler.h:
+/usr/include/asm-i386/sigcontext.h:
 
 /usr/include/bits/sigstack.h:
 

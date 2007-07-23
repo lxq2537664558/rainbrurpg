@@ -653,8 +653,8 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/sys/socket.h /usr/include/sys/uio.h \
   /usr/include/bits/uio.h /usr/include/bits/socket.h \
   /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
-  /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
-  /usr/include/asm-i486/sockios.h /usr/include/sys/time.h \
+  /usr/include/asm-i386/socket.h /usr/include/asm/sockios.h \
+  /usr/include/asm-i386/sockios.h /usr/include/sys/time.h \
   /usr/include/curl/easy.h /usr/include/curl/multi.h \
   /usr/include/curl/curl.h ../common/curlinterface.h \
   ../common/curlposteddata.h ../common/hashpassword.h ../common/sha1.h \
@@ -934,13 +934,13 @@ main.o main.o: main.cpp /usr/include/qt4/QtGui/QApplication \
   /usr/include/magic.h ../design/filepreview.h \
   ../design/filetypeguesser.h ../design/helpviewer.h uniquename.h \
   /usr/include/sys/ioctl.h /usr/include/bits/ioctls.h \
-  /usr/include/asm/ioctls.h /usr/include/asm-i486/ioctls.h \
-  /usr/include/asm/ioctl.h /usr/include/asm-i486/ioctl.h \
+  /usr/include/asm/ioctls.h /usr/include/asm-i386/ioctls.h \
+  /usr/include/asm/ioctl.h /usr/include/asm-i386/ioctl.h \
   /usr/include/asm-generic/ioctl.h /usr/include/bits/ioctl-types.h \
   /usr/include/sys/ttydefaults.h /usr/include/net/if.h \
   /usr/include/arpa/inet.h /usr/include/errno.h /usr/include/bits/errno.h \
   /usr/include/linux/errno.h /usr/include/asm/errno.h \
-  /usr/include/asm-i486/errno.h /usr/include/asm-generic/errno.h \
+  /usr/include/asm-i386/errno.h /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/errno-base.h
 
 /usr/include/qt4/QtGui/QApplication:
@@ -2645,11 +2645,11 @@ mainwindow.h:
 
 /usr/include/asm/socket.h:
 
-/usr/include/asm-i486/socket.h:
+/usr/include/asm-i386/socket.h:
 
 /usr/include/asm/sockios.h:
 
-/usr/include/asm-i486/sockios.h:
+/usr/include/asm-i386/sockios.h:
 
 /usr/include/sys/time.h:
 
@@ -3361,11 +3361,11 @@ uniquename.h:
 
 /usr/include/asm/ioctls.h:
 
-/usr/include/asm-i486/ioctls.h:
+/usr/include/asm-i386/ioctls.h:
 
 /usr/include/asm/ioctl.h:
 
-/usr/include/asm-i486/ioctl.h:
+/usr/include/asm-i386/ioctl.h:
 
 /usr/include/asm-generic/ioctl.h:
 
@@ -3385,7 +3385,7 @@ uniquename.h:
 
 /usr/include/asm/errno.h:
 
-/usr/include/asm-i486/errno.h:
+/usr/include/asm-i386/errno.h:
 
 /usr/include/asm-generic/errno.h:
 

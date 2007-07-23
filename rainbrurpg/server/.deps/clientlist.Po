@@ -401,8 +401,8 @@ clientlist.o clientlist.o: clientlist.cpp clientlist.h \
   /usr/include/sys/socket.h /usr/include/sys/uio.h \
   /usr/include/bits/uio.h /usr/include/bits/socket.h \
   /usr/include/bits/sockaddr.h /usr/include/asm/socket.h \
-  /usr/include/asm-i486/socket.h /usr/include/asm/sockios.h \
-  /usr/include/asm-i486/sockios.h /usr/include/bits/in.h \
+  /usr/include/asm-i386/socket.h /usr/include/asm/sockios.h \
+  /usr/include/asm-i386/sockios.h /usr/include/bits/in.h \
   /usr/include/bits/byteswap.h /usr/include/enet/types.h \
   /usr/include/enet/protocol.h /usr/include/enet/list.h \
   /usr/include/enet/callbacks.h ../common/stringconv.h \
@@ -1577,11 +1577,11 @@ clientlist.h:
 
 /usr/include/asm/socket.h:
 
-/usr/include/asm-i486/socket.h:
+/usr/include/asm-i386/socket.h:
 
 /usr/include/asm/sockios.h:
 
-/usr/include/asm-i486/sockios.h:
+/usr/include/asm-i386/sockios.h:
 
 /usr/include/bits/in.h:
 

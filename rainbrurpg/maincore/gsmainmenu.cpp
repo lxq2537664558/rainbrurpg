@@ -182,4 +182,9 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
     LOGW("Cannot get the 'Network game' button");
   }
 
+  // Registering TabNavigation
+  tabNav.setParent("RainbruRPG/MainMenu");
+  tabNav.addWidget("NetGame");
+  tabNav.addWidget("LocalTest");
+  tabNav.addWidget("Quit");
 }

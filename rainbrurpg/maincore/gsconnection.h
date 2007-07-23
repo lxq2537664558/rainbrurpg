@@ -28,15 +28,18 @@
 #ifndef GS_CONNECTION_H
 #define GS_CONNECTION_H
 
-#include "gsmenubase.h"
 #include <CEGUI/CEGUISystem.h>
 #include <CEGUI/CEGUIRenderer.h>
-//#include <CEGUI/CEGUIForwardRefs.h>
 #include <CEGUI/CEGUIEventArgs.h>
 #include <CEGUI/CEGUIEvent.h>
 #include <CEGUI/elements/CEGUIEditbox.h>
 
 #include <hashpassword.h>
+
+#include "gsmenubase.h"
+#include "tabnavigation.h"
+#include "simpledialog.h"
+
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -57,9 +60,6 @@ namespace RainbruRPG {
 
       virtual void init();
 
-      virtual bool keyPressed(const OIS::KeyEvent &);
-
-
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);
       bool onLocalTestClicked(const CEGUI::EventArgs&);
@@ -69,9 +69,15 @@ namespace RainbruRPG {
 
       void setupConnectionMenu();
 
-
+      /** The TextEdit where we enter the account name */
       CEGUI::Window* nameWidget;
+      /** The TextEdit where we enter the account password */
       CEGUI::Window* pwdWidget;
+
+      /** Provides the Tab/Shift+Tab widget navigation */
+      TabNavigation tabNav;
+
+      SimpleDialog simpleDialog;
 
     };
   }

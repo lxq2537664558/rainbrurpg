@@ -12,12 +12,12 @@ terminalapp.lo .libs/terminalapp.o: terminalapp.cpp terminalapp.h \
   /usr/include/bits/sigset.h /usr/include/bits/signum.h \
   /usr/include/time.h /usr/include/bits/siginfo.h \
   /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
-  /usr/include/asm/sigcontext.h /usr/include/asm-i486/sigcontext.h \
-  /usr/include/linux/compiler.h /usr/include/bits/sigstack.h \
-  /usr/include/sys/ucontext.h /usr/include/bits/pthreadtypes.h \
-  /usr/include/bits/sigthread.h /usr/include/stdlib.h \
-  /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
-  /usr/include/endian.h /usr/include/bits/endian.h /usr/include/xlocale.h \
+  /usr/include/asm/sigcontext.h /usr/include/asm-i386/sigcontext.h \
+  /usr/include/bits/sigstack.h /usr/include/sys/ucontext.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/bits/sigthread.h \
+  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/xlocale.h \
   /usr/include/sys/types.h /usr/include/sys/select.h \
   /usr/include/bits/select.h /usr/include/bits/time.h \
   /usr/include/sys/sysmacros.h /usr/include/alloca.h /usr/include/slang.h \
@@ -480,9 +480,7 @@ terminalapp.h:
 
 /usr/include/asm/sigcontext.h:
 
-/usr/include/asm-i486/sigcontext.h:
-
-/usr/include/linux/compiler.h:
+/usr/include/asm-i386/sigcontext.h:
 
 /usr/include/bits/sigstack.h:
 

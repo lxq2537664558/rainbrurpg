@@ -1,3 +1,36 @@
+* v 0.0.5-148
+- tools-hashsum shows progression
+- Sends a signal for progression
+- tools/hashsum with -p <password> option uses hashpassword
+- doxygen documentation
+- Get a corect std::string typed hashsum
+- HashPassword uses RFC3174 implementation
+- Replace SHA class by official RFC3174 implementation
+- A command line program that uses common/hashfile 
+- A common/hashfile class that compute hashsum on a file
+- FoxPersoList feed persoList when an account is selected
+- XmlPersoList::getAccountByName implementation
+- Get the name of the item from its index
+- Get the index of the clicked item
+- FoxPersoList callback on AccountList
+- Tester XmlPersoList avec xIdent
+- XmlPersoList implements a persolist
+
+* v 0.0.5-147
+- curlpersoheaderadd set/get implementation
+- curlpersoheaderdelete implementation (deleteplayer.php) in common/
+- curlserveradd unittest modification: uniqueName and type added
+- doxygen documentation
+- Quanrantine preview for html 
+- Fix the Quanrantine help message bug 
+- Quanrantine preview for txt files
+- QuarantineList preview avec double-click
+- FilePreview for images
+- FilePreview implementation in design/
+- An advice text in QuarantineList that tells to click 'refresh'
+- Ftp give stored filename to QuarantineList to mark it as 'on DL'
+- A help button that shows help section on quarantine
+- A mapping structure in HelpViewer
 
 * v 0.0.5-146
 - HelpViewer in design/ (to be used by editor)

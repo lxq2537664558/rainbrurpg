@@ -68,7 +68,7 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	inputwrapper.lo inputmanager.lo gsmainmenu.lo gslocaltest.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
 	environmentsetup.lo highlightlistener.lo gsconnection.lo \
-	tabnavigation.lo
+	tabnavigation.lo dialogsystem.lo simpledialog.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -239,7 +239,9 @@ h_sources = gameengine.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  gsconnection.h		\
-	  tabnavigation.h
+	  tabnavigation.h		\
+	  dialogsystem.h		\
+	  simpledialog.h
 
 cc_sources = gameengine.cpp		\
 	  gamestate.cpp			\
@@ -257,7 +259,9 @@ cc_sources = gameengine.cpp		\
 	  environmentsetup.cpp		\
 	  highlightlistener.cpp		\
 	  gsconnection.cpp		\
-	  tabnavigation.cpp
+	  tabnavigation.cpp		\
+	  dialogsystem.cpp		\
+	  simpledialog.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
@@ -338,6 +342,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogsystem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/environmentsetup.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exampleframelistener.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gameengine.Plo@am__quote@
@@ -352,6 +357,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/highlightlistener.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/inputmanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/inputwrapper.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simpledialog.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tabnavigation.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vcconstant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/velocitycalculator.Plo@am__quote@

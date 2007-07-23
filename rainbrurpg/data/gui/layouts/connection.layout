@@ -37,16 +37,16 @@
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                     <Property Name="UnifiedAreaRect" Value="{{0.421672,0},{0.417193,0},{0.937883,0},{0.550562,0}}" />
                 </Window>
-                <Window Type="TaharezLook/Button" Name="RainbruRPG/Connection//3" >
+                <Window Type="TaharezLook/Button" Name="LostPassword" >
                     <Property Name="Text" Value="Lost password" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                     <Property Name="UnifiedAreaRect" Value="{{0.555244,0},{0.800752,0},{0.953558,0},{0.917561,0}}" />
                 </Window>
-                <Window Type="TaharezLook/Button" Name="RainbruRPG/Connection//31" >
+                <Window Type="TaharezLook/Button" Name="CreateAccount" >
                     <Property Name="Font" Value="Commonwealth-10" />
                     <Property Name="Text" Value="Create account" />
                     <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-                    <Property Name="UnifiedAreaRect" Value="{{0.0718081,0},{0.807787,0},{0.473136,0},{0.924596,0}}" />
+                    <Property Name="UnifiedAreaRect" Value="{{0.071808,0},{0.807787,0},{0.473136,0},{0.924596,0}}" />
                 </Window>
                 <Window Type="TaharezLook/Button" Name="Connect" >
                     <Property Name="Font" Value="Commonwealth-10" />

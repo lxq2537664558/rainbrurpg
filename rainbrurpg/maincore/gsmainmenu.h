@@ -28,11 +28,13 @@
 #ifndef GS_MAIN_MENU_H
 #define GS_MAIN_MENU_H
 
-#include "gsmenubase.h"
 #include <CEGUI/CEGUIEventArgs.h>
 #include <CEGUI/CEGUIEvent.h>
 
 #include <hashpassword.h>
+
+#include "gsmenubase.h"
+#include "tabnavigation.h"
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -61,6 +63,10 @@ namespace RainbruRPG {
       bool onNetworkGameClicked(const CEGUI::EventArgs&);
 
       void setupMainMenu();
+
+      /** Provides the Tab/Shift+Tab widget navigation */
+      TabNavigation tabNav;
+
     };
   }
 }

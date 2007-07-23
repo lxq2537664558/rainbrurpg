@@ -23,7 +23,6 @@
 #include "gsconnection.h"
 #include "vcconstant.h"
 #include "guimanager.h"
-#include "tabnavigation.h"
 
 /** The default constructor
   *
@@ -236,10 +235,22 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   }
 
   // Registering TabNavigation
-  TabNavigation* tabNav=new TabNavigation();
-  tabNav->setParent("RainbruRPG/ConnectionWindow");
-  tabNav->addWidget("RainbruRPG/Connection/Name");
-  tabNav->addWidget("RainbruRPG/Connection/Pwd");
+  tabNav.setParent("RainbruRPG/Connection");
+  tabNav.addWidget("RainbruRPG/Connection/Name");
+  tabNav.addWidget("RainbruRPG/Connection/Pwd");
+  tabNav.addWidget("Connect");
+  tabNav.addWidget("CreateAccount");
+  tabNav.addWidget("LostPassword");
+  tabNav.addWidget("Back");
+
+  // Initialise the dialog
+  CEGUI::Window* guiLayout = CEGUI::WindowManager::getSingleton()
+    .loadWindowLayout("dialogsystem.layout");
+  //  GuiManager::getSingleton().loadCEGUILayout("dialogsystem.layout");
+
+  root->addChildWindow(guiLayout);  
+  simpleDialog.initWindow("RainbruRPG/Connection");
+  
 }
 
 /** The callback of the Connect button
@@ -278,38 +289,8 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   LOGCAT();
   GameEngine::getSingleton().connectUser(cName, hashPwd.c_str());
 
-  return true;
-}
-
-bool RainbruRPG::Core::gsConnection::keyPressed(const OIS::KeyEvent & evt){
-  OIS::KeyCode kc=evt.key;
-  unsigned int text=evt.text;
-  bool masked=false;
-
-  // Special cases
-  CEGUI::Key::Scan scanCode;
-
-  if (kc==OIS::KC_DELETE){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Delete);
-  }
-  else if (kc==OIS::KC_BACK){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Backspace);
-  }
-  else if (kc==OIS::KC_LEFT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowLeft);
-  }
-  else if (kc==OIS::KC_RIGHT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowRight);
-  }
-  else if (kc==OIS::KC_TAB){
-    // Do nothing
-  }
-  else if (kc==OIS::KC_LSHIFT || kc==OIS::KC_RSHIFT){
-    // Do nothing
-  } 
-  else{
-    CEGUI::System::getSingleton().injectChar((CEGUI::utf32)text);
-  }
+  simpleDialog.setMessage("This function is not yet implemented.");
+  simpleDialog.doOpen();
 
   return true;
 }
