@@ -716,7 +716,8 @@ guimanager.lo .libs/guimanager.o: guimanager.cpp guimanager.h \
   /usr/local/include/OGRE/OgreInput.h \
   /usr/local/include/OGRE/OgrePlatformManager.h \
   /usr/local/include/OGRE/OgreTimer.h inputwrapper.h \
-  /usr/local/include/CEGUI/CEGUIInputEvent.h inputmanager.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h tabnavigation.h \
+  /usr/local/include/CEGUI/CEGUI.h inputmanager.h \
   /usr/local/include/OIS/OISJoyStick.h \
   /usr/local/include/OIS/OISInputManager.h \
   /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
@@ -2386,6 +2387,10 @@ velocitycalculator.h:
 inputwrapper.h:
 
 /usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
 
 inputmanager.h:
 

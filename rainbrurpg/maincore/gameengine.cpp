@@ -28,14 +28,13 @@
 #include <OGRE/OgreSceneManagerEnumerator.h>
 #include <CEGUI/CEGUIDefaultLogger.h>
 
-#include "logger.h"
+#include <logger.h>
 #include "gamestate.h"
-
 
 #include "gsmainmenu.h"
 #include "gslocaltest.h"
 #include "gsconnection.h"
-
+#include "gscreateaccount.h"
 
 #include "guimanager.h"
 #include "guiframelistener.h"
@@ -143,17 +142,14 @@ void RainbruRPG::Core::GameEngine::initStates() {
   LOGI("Initializing Game states...");
 
   GameState *gs1=new gsLocalTest();
-  //gs1->init();
-
   GameState *gs2=new gsConnection();
-  //gs2->init();
-
   GameState *gs3=new gsMainMenu();
-  //gs3->init();
+  GameState *gs4=new gsCreateAccount();
 
   states.push_back(gs1);
   states.push_back(gs2);
   states.push_back(gs3);
+  states.push_back(gs4);
 
 }
 
@@ -173,6 +169,9 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
       break;
     case ST_MENU_CONNECT:
       LOGI("Switching to ConnectMenu Game...");
+      break;
+    case ST_CREATE_ACCOUNT:
+      LOGI("Switching to CreateMenu...");
       break;
     default:
       LOGW("Unknown game state received");

@@ -21,57 +21,52 @@
  */
 
 /* Modifications :
- * - 22 jul 2007 : Moving the connection menu to gsConnection
+ * - 25 jul 2007 : Starting implementation
  *
  */
 
-#ifndef GS_MAIN_MENU_H
-#define GS_MAIN_MENU_H
+#ifndef GS_CREATE_ACCOUNT_H
+#define GS_CREATE_ACCOUNT_H
 
-#include <CEGUI/CEGUIEventArgs.h>
-#include <CEGUI/CEGUIEvent.h>
+#include <CEGUI/CEGUI.h>
 
 #include <hashpassword.h>
 
-#include "gsmenubase.h"
 #include "tabnavigation.h"
+#include "gsmenubase.h"
+#include "vcconstant.h"
+#include "guimanager.h"
 
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG {
   namespace Core{
 
-    /** The main menu gamestate
+    /** The game state provided to submit an account creation
       *
-      * The main menu is the first screen to appears when the game is 
-      * launched. It provides 3 buttons : 
-      * - Network game : you can play in a worldwide server
-      * - Local test : You play alone to test the rendering engine
-      * - Quit
+      *
       *
       */
-    class gsMainMenu : public gsMenuBase{
+    class gsCreateAccount : public gsMenuBase{
     public:
-      virtual ~gsMainMenu();
-      gsMainMenu();
+      gsCreateAccount();
+      virtual ~gsCreateAccount();
 
       virtual void init();
       virtual void resume();
 
-      virtual void setupTabOrder();
+       virtual void setupTabOrder();
 
-    private:
-      bool onQuitClicked(const CEGUI::EventArgs&);
-      bool onLocalTestClicked(const CEGUI::EventArgs&);
-      bool onNetworkGameClicked(const CEGUI::EventArgs&);
-
-      void setupMainMenu();
+   private:
+      bool onBackClicked(const CEGUI::EventArgs&);
+      void setupCreateAccountMenu();
 
       /** Provides the Tab/Shift+Tab widget navigation */
       TabNavigation tabNav;
+
 
     };
   }
 }
 
-#endif // GS_MAIN_MENU_H
+#endif // GS_CREATE_ACCOUNT_H

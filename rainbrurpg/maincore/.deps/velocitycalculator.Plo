@@ -717,7 +717,8 @@ velocitycalculator.lo .libs/velocitycalculator.o: velocitycalculator.cpp \
   /usr/local/include/CEGUI/elements/CEGUIScrolledItemListBase.h \
   /usr/local/include/CEGUI/elements/CEGUIItemListboxProperties.h \
   /usr/local/include/OIS/OISPrereqs.h gsmenubase.h inputwrapper.h \
-  /usr/local/include/CEGUI/CEGUIInputEvent.h inputmanager.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h tabnavigation.h \
+  /usr/local/include/CEGUI/CEGUI.h inputmanager.h \
   /usr/local/include/OIS/OISJoyStick.h \
   /usr/local/include/OIS/OISInputManager.h \
   /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
@@ -2386,6 +2387,10 @@ gsmenubase.h:
 inputwrapper.h:
 
 /usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
 
 inputmanager.h:
 

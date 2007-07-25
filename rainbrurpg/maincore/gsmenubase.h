@@ -32,6 +32,7 @@
 #include "gamestate.h"
 #include "velocitycalculator.h"
 #include "inputwrapper.h"
+#include "tabnavigation.h"
 
 using namespace Ogre;
 
@@ -70,6 +71,26 @@ namespace RainbruRPG {
       virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
  
+      /** Implements the focux tab order
+        *
+	* You \b must reimplement this to setup the tabOrder. example :
+	* <pre>
+	*   tabNav.setParent("RainbruRPG/Connection");
+	*   tabNav.addWidget("RainbruRPG/Connection/Name");
+	*   tabNav.addWidget("RainbruRPG/Connection/Pwd");
+	*   tabNav.addWidget("Connect");
+	*   tabNav.addWidget("CreateAccount");
+	*   tabNav.addWidget("LostPassword");
+	*   tabNav.addWidget("Back");
+	* </pre>
+	*
+	* This function should be called in the init() function \b after 
+	* the CEGUI layout was loaded and in the resume() function.
+	*
+	* \sa \ref gsMenuBase::tabNav "tabNav"
+	*
+	*/
+      virtual void setupTabOrder()=0;
 
     protected:
       gsMenuBase();
@@ -128,6 +149,9 @@ namespace RainbruRPG {
       InputWrapper* inputWrapper;
       /** Should we create the dynamic menu */
       bool createMenu;
+
+      /** Provides the Tab/Shift+Tab widget navigation */
+      TabNavigation tabNav;
     };
 
   }

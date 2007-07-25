@@ -460,8 +460,9 @@ gsmenubase.lo .libs/gsmenubase.o: gsmenubase.cpp \
   /usr/local/include/OGRE/OgreInput.h \
   /usr/local/include/OGRE/OgrePlatformManager.h \
   /usr/local/include/OGRE/OgreTimer.h inputwrapper.h \
-  /usr/local/include/CEGUI/CEGUIInputEvent.h gameengine.h \
-  ../common/singleton.h ../common/stringconv.h ../common/clientconnect.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h tabnavigation.h \
+  /usr/local/include/CEGUI/CEGUI.h gameengine.h ../common/singleton.h \
+  ../common/stringconv.h ../common/clientconnect.h \
   ../common/xmlaccountlist.h ../common/tinyxml.h ../common/tinystr.h \
   ../common/loadbmp.h ../common/EasyBMP.h \
   ../common/EasyBMP_DataStructures.h ../common/EasyBMP_BMP.h \
@@ -1805,6 +1806,10 @@ velocitycalculator.h:
 inputwrapper.h:
 
 /usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
 
 gameengine.h:
 

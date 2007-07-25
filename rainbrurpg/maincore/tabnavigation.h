@@ -64,6 +64,8 @@ namespace RainbruRPG{
       void addWidget(const CEGUI::TabControl* tabControl);
       void addWidget(const CEGUI::String& window);
       
+      void clear();
+
     private:
       bool _onParentActivated(const CEGUI::EventArgs& e);
       bool _onActivated(const CEGUI::EventArgs& e);

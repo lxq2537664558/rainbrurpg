@@ -23,7 +23,8 @@ h_sources=gameengine.h			\
 	  gsconnection.h		\
 	  tabnavigation.h		\
 	  dialogsystem.h		\
-	  messagebox.h
+	  messagebox.h			\
+	  gscreateaccount.h
 
 cc_sources=gameengine.cpp		\
 	  gamestate.cpp			\
@@ -43,7 +44,8 @@ cc_sources=gameengine.cpp		\
 	  gsconnection.cpp		\
 	  tabnavigation.cpp		\
 	  dialogsystem.cpp		\
-	  messagebox.cpp
+	  messagebox.cpp		\
+	  gscreateaccount.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)

@@ -1,3 +1,21 @@
+* v 0.0.5-149
+- SimpleDialog become a real class
+- DialogSystem become a part of this project
+- Doxygen documentation
+- The enter key when a button has focus fire event
+- injectKeys implementated for TabNavigation in gsmenubase
+- Using TabNavigation in gsConnection
+- TabNavigation documentation
+- Adding TabNavigation
+- A bug with identification (hashsms not the same)    FIXED
+- connection's password TextEdit should hide user entry
+- TextEdit in connection layout should receive event keys.
+- Remove the title overlay when drawing gsconnection
+- ConnectMenu is not shown                            FIXED
+- GUI isn't shown anymore                             FIXED
+- connection.layout managed by a gsconnection class
+- connection.layout is back
+
 * v 0.0.5-148
 - tools-hashsum shows progression
 - Sends a signal for progression

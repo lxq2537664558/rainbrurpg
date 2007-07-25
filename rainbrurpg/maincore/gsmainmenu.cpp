@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -63,6 +63,8 @@ void RainbruRPG::Core::gsMainMenu::init(){
 
 
   setupMainMenu();
+  setupTabOrder();
+
   LOGI("gsMainMenu initialization complete");
 
 }
@@ -183,11 +185,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
     LOGW("Cannot get the 'Network game' button");
   }
 
-  // Registering TabNavigation
-  tabNav.setParent("RainbruRPG/MainMenu");
-  tabNav.addWidget("NetGame");
-  tabNav.addWidget("LocalTest");
-  tabNav.addWidget("Quit");
+
 }
 
 void RainbruRPG::Core::gsMainMenu::resume(){
@@ -197,5 +195,14 @@ void RainbruRPG::Core::gsMainMenu::resume(){
   setupMainMenu();
   // Initialise the dialog parent
   this->rootWindowName="RainbruRPG/Connection";
+  setupTabOrder();
 }
 
+void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
+  // Registering TabNavigation
+  tabNav.clear();
+  tabNav.setParent("RainbruRPG/MainMenu");
+  tabNav.addWidget("NetGame");
+  tabNav.addWidget("LocalTest");
+  tabNav.addWidget("Quit");
+}

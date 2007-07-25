@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -37,7 +37,8 @@
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
-#include "tabnavigation.h"
+#include "vcconstant.h"
+#include "guimanager.h"
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -59,10 +60,11 @@ namespace RainbruRPG {
       virtual void init();
       virtual void resume();
 
+      virtual void setupTabOrder();
+
+
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);
-      bool onLocalTestClicked(const CEGUI::EventArgs&);
-      bool onNetworkGameClicked(const CEGUI::EventArgs&);
       bool onBackToMainClicked(const CEGUI::EventArgs&);
       bool onConnectClicked(const CEGUI::EventArgs&);
 
@@ -76,8 +78,6 @@ namespace RainbruRPG {
       /** The TextEdit where we enter the account password */
       CEGUI::Window* pwdWidget;
 
-      /** Provides the Tab/Shift+Tab widget navigation */
-      TabNavigation tabNav;
 
 
     };

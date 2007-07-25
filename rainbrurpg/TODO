@@ -16,8 +16,7 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- Doxygen documentation
-- gsCreateAccount implementation
+- gsCreateAccount submit button
 - gsServerList implementation
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
@@ -121,7 +120,14 @@ o [mouse] Client
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-151
+- gsMenuBase::setupTabOrder(and subclasses) implementation
+- tabNavigation::reset()
+
 * v 0.0.5-150
+- gsCreateAccount tab navigation
+- gsCreateAccount implementation
+- Doxygen documentation
 - SEGFAULT due to messageBox when changing Gamestate       FIXED
 - gsConnection button implementation
 - An error in gsConneciotn button 'Back'
@@ -129,29 +135,11 @@ o [mouse] Client
 - DialogSystem in RainbruRPG::Gui namespace
 - MessageBox in RainbruRPG::Gui namespace
 - SimpleDialog become MessageBox
-- Doxygen Documentation
 - GuiManager::showMessage(...);
 - Makes the SimpleDialog class work
 - SEGFAULT when exiting the game                           FIXED
 - SimpleDialog : OK click closes it
 - SimpleDialog title implementation
 
-* v 0.0.5-149
-- SimpleDialog become a real class
-- DialogSystem become a part of this project
-- Doxygen documentation
-- The enter key when a button has focus fire event
-- injectKeys implementated for TabNavigation in gsmenubase
-- Using TabNavigation in gsConnection
-- TabNavigation documentation
-- Adding TabNavigation
-- A bug with identification (hashsms not the same)    FIXED
-- connection's password TextEdit should hide user entry
-- TextEdit in connection layout should receive event keys.
-- Remove the title overlay when drawing gsconnection
-- ConnectMenu is not shown                            FIXED
-- GUI isn't shown anymore                             FIXED
-- connection.layout managed by a gsconnection class
-- connection.layout is back
 
 

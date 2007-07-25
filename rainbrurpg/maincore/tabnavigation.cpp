@@ -247,3 +247,13 @@ _onCharacterKey(const CEGUI::EventArgs& e){
   }
   return false;
 }
+
+/** Clears the widget list
+  *
+  * This fucntion is used to reinitialize a already in use TabNavigation.
+  *
+  */
+void RainbruRPG::Core::TabNavigation::clear(){
+  _tabNavigation.clear();;
+  _lastKnownFocus=_tabNavigation.begin();
+}

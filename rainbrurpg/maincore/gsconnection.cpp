@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -47,7 +47,6 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
   }
 }
 
-
 /** Initialize the game state
   *
   * This function may not call GuiManager::beginGuiFadeIn as it is called
@@ -62,8 +61,8 @@ void RainbruRPG::Core::gsConnection::init(){
   this->rootWindowName="RainbruRPG/Connection";
 
   setupConnectionMenu();
+  setupTabOrder();
   LOGI("gsConnection initialization complete");
-
 }
 
 /** The Quit CEGUI button callback
@@ -79,85 +78,6 @@ onQuitClicked(const CEGUI::EventArgs& evt){
   LOGI("Quit button clicked");
   GameEngine::getSingleton().quit();
   // Event handled
-  return true;
-}
-
-/** The Local Test CEGUI button callback
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsConnection::
-onLocalTestClicked(const CEGUI::EventArgs& evt){
-
-  LOGI("LocalTest button clicked");
-  //  GameEngine::getSingleton().enterLocalTest();
-  GameEngine::getSingleton().changeState(ST_LOCAL_TEST);
-
-  // Event handled
-  return true;
-}
-
-/** The Network Game CEGUI button callback
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsConnection::
-onNetworkGameClicked(const CEGUI::EventArgs& evt){
-  LOGI("NetworkGame button clicked");
-
-  GuiManager::getSingleton().beginGuiFadeOut();
-
-  // We must wait for the CEGUI fade end to prevent
-  // SEGFAULT in access to CEGUI windows (getAlpha())
-  while (GuiManager::getSingleton().isInGuiFadeOut()){
-    Ogre::Root::getSingleton().renderOneFrame();
-  }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
-  GuiManager::getSingleton().loadCEGUILayout("connection.layout");
-  GuiManager::getSingleton().debugChild("RainbruRPG/Connection");
-
-  GuiManager::getSingleton().beginGuiFadeIn();
-
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-
-  // Root window
-  CEGUI::Window* rainbruConnection=root->getChild("RainbruRPG/Connection");
-  // Back button
-  CEGUI::Window* btnBack=rainbruConnection->getChild("Back");
-  if (btnBack){
-    btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent("Clicked", 
-      CEGUI::Event::Subscriber(&gsConnection::onBackToMainClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'Back' button");
-  }
-
-  // Get the Connection window
-  CEGUI::Window* connectWin=rainbruConnection
-    ->getChild("RainbruRPG/ConnectionWindow");
-
- // Connect button
-  CEGUI::Window* btnConnect=connectWin->getChild("Connect");
-  if (btnConnect){
-    btnConnect->subscribeEvent("Clicked", 
-      CEGUI::Event::Subscriber(&gsConnection::onConnectClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'Connect' button");
-  }
-
-
   return true;
 }
 
@@ -254,15 +174,6 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
     LOGW("Cannot get the 'LostPassword' button");
   }
 
-  // Registering TabNavigation
-  tabNav.setParent("RainbruRPG/Connection");
-  tabNav.addWidget("RainbruRPG/Connection/Name");
-  tabNav.addWidget("RainbruRPG/Connection/Pwd");
-  tabNav.addWidget("Connect");
-  tabNav.addWidget("CreateAccount");
-  tabNav.addWidget("LostPassword");
-  tabNav.addWidget("Back");
-  
 }
 
 /** The callback of the Connect button
@@ -315,6 +226,8 @@ void RainbruRPG::Core::gsConnection::resume(){
 
   // Initialise the dialog parent
   this->rootWindowName="RainbruRPG/Connection";
+
+  setupTabOrder();
 }
 
 /** The callback of the 'create account' button
@@ -327,6 +240,20 @@ void RainbruRPG::Core::gsConnection::resume(){
 bool RainbruRPG::Core::gsConnection::
 onCreateAccountClicked(const CEGUI::EventArgs& evt){
   LOGI("onCreateAccountClicked called");
+
+  GuiManager::getSingleton().beginGuiFadeOut();
+
+  // We must wait for the CEGUI fade end to prevent
+  // SEGFAULT in access to CEGUI windows (getAlpha())
+  while (GuiManager::getSingleton().isInGuiFadeOut()){
+    Ogre::Root::getSingleton().renderOneFrame();
+  }
+
+  GuiManager::getSingleton().removeCurrentCEGUILayout();
+
+  GameEngine::getSingleton().changeState(ST_CREATE_ACCOUNT);
+  GuiManager::getSingleton().beginGuiFadeIn();
+
   return true;
 }
 
@@ -346,4 +273,16 @@ onLostPasswordClicked(const CEGUI::EventArgs& evt){
     "This function isn't yet implemented. Please contact me "
     "(rainbru@free.fr)", "RainbruRPG/Connection");
   return true;
+}
+
+void RainbruRPG::Core::gsConnection::setupTabOrder(){
+  // Registering TabNavigation
+  tabNav.clear();
+  tabNav.setParent("RainbruRPG/Connection");
+  tabNav.addWidget("RainbruRPG/Connection/Name");
+  tabNav.addWidget("RainbruRPG/Connection/Pwd");
+  tabNav.addWidget("Connect");
+  tabNav.addWidget("CreateAccount");
+  tabNav.addWidget("LostPassword");
+  tabNav.addWidget("Back");
 }

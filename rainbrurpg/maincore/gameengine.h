@@ -87,6 +87,7 @@ namespace RainbruRPG {
       ST_LOCAL_TEST          =0x0000,  //!< The local test state
       ST_MENU_CONNECT        =0x0001,  //!< The connection menu
       ST_MAIN_MENU           =0x0002,  //!< The main menu state
+      ST_CREATE_ACCOUNT      =0x0003,  //!< The create account state
     };
 
     /** The game engine
