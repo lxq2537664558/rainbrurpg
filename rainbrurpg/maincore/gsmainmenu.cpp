@@ -120,6 +120,7 @@ onNetworkGameClicked(const CEGUI::EventArgs& evt){
   while (GuiManager::getSingleton().isInGuiFadeOut()){
     Ogre::Root::getSingleton().renderOneFrame();
   }
+
   GuiManager::getSingleton().detroyTitleOverlay();
   GuiManager::getSingleton().removeCurrentCEGUILayout();
   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
@@ -188,3 +189,13 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   tabNav.addWidget("LocalTest");
   tabNav.addWidget("Quit");
 }
+
+void RainbruRPG::Core::gsMainMenu::resume(){
+  Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
+  // GuiManager::getSingleton().createTitleOverlay(rw);
+  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
+  setupMainMenu();
+  // Initialise the dialog parent
+  this->rootWindowName="RainbruRPG/Connection";
+}
+

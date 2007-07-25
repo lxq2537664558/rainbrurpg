@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -94,7 +94,7 @@ void RainbruRPG::Core::GameEngine::play() {
   */
 void RainbruRPG::Core::GameEngine::quit() {
   LOGI("Exiting GameEngine ...");
-  delete mInputMgr;
+  mInputMgr->removeAllListeners();
   m_running = false; 
 }
 
@@ -193,8 +193,19 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
 	}
       }
 
+      // Pause the actual state
+      states[actualState]->pause();
+
+      // Change the state
       actualState=t;
-      states[actualState]->init();
+      // Init the new state or resume it if it
+      // was already initialized
+      if (states[actualState]->wasInit()){
+	states[actualState]->resume();
+      }
+      else{
+	states[actualState]->init();
+      }
 
     }
   }
@@ -209,6 +220,7 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
 void RainbruRPG::Core::GameEngine::cleanup(){
   LOGI("Cleaning up GameEngine...");
   m_running=false;
+  delete mInputMgr;
 /*
   this->cleanStates();
   this->cleanIrrgui();
@@ -250,7 +262,8 @@ void RainbruRPG::Core::GameEngine::hideConsole(){
 /** Test if the given User can be connected
   *
   * The values are entered by the user in the gsConnection gamestate.
-  * There are send to a ClientConnect instance to test connection rights.
+  * There are send to a \ref RainbruRPG::Network::Ident::ClientConnect
+  * "ClientConnect" instance to test connection rights.
   *
   * \param user The userName
   * \param pwd The password hashsum of the given user
@@ -290,7 +303,10 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
 
   if (ret!=CCR_SUCCESS){
     LOGW("The login of this user failed");
-    //    guiEnv->addMessageBox (L"Connection failed", errMsg.c_str());
+    GuiManager::getSingleton()
+      .showMessageBox("Connection failed", errMsg, 
+		      states[actualState]->getRootWindowName());
+
     return false;
 
   }
@@ -343,8 +359,25 @@ void RainbruRPG::Core::GameEngine::setRender(const char* rName){
   }
 }
 
-/** Inits the Ogre rendering engine
+/** Get the Ogre render window
   *
+  * The render window is created in the initOgre() function. If you
+  * want a valid pointer, call this function after the initialization
+  * of Ogre.
+  *
+  * \return The Ogre render window
+  *
+  */
+Ogre::RenderWindow* RainbruRPG::Core::GameEngine::getRenderWindow(){
+  return this->mWindow;
+}
+
+/** Inits the Ogre3D rendering engine
+  *
+  * The first step is to try a configuration restore. Then it create
+  * the Ogre render window. The last step is to call chooseSceneManager(),
+  * createCamera(), createViewports(). The last step is to create the 
+  * Ogre overlay (debug and title).
   *
   */
 void RainbruRPG::Core::GameEngine::initOgre(){

@@ -38,8 +38,6 @@
 
 #include "gsmenubase.h"
 #include "tabnavigation.h"
-#include "simpledialog.h"
-
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -59,6 +57,7 @@ namespace RainbruRPG {
       gsConnection();
 
       virtual void init();
+      virtual void resume();
 
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);
@@ -66,6 +65,9 @@ namespace RainbruRPG {
       bool onNetworkGameClicked(const CEGUI::EventArgs&);
       bool onBackToMainClicked(const CEGUI::EventArgs&);
       bool onConnectClicked(const CEGUI::EventArgs&);
+
+      bool onCreateAccountClicked(const CEGUI::EventArgs&);
+      bool onLostPasswordClicked(const CEGUI::EventArgs&);
 
       void setupConnectionMenu();
 
@@ -77,7 +79,6 @@ namespace RainbruRPG {
       /** Provides the Tab/Shift+Tab widget navigation */
       TabNavigation tabNav;
 
-      SimpleDialog simpleDialog;
 
     };
   }

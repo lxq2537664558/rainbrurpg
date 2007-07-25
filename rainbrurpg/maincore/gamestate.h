@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -20,15 +20,22 @@
  *
  */
 
+/* Modifications :
+ * - 25 jul 2007 : rootWindowName added
+ *
+ */
+
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
 #include <OGRE/OgreFrameListener.h>
-#include <logger.h>
+#include <CEGUI/CEGUI.h>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
+
+#include <logger.h>
 
 using namespace Ogre;
 
@@ -39,28 +46,40 @@ namespace RainbruRPG {
       *
       * When we change the actual state, some states need extra initialization.
       * The GameEngine can test its field to know from which state to which 
-      * state we change. 
+      * state we are about to change. 
       *
       */
     typedef enum tGameStateType{
       GST_MENU, //!< The GameState is a menu
-      GST_GAME  //!< The GameState is game (with a map...)
+      GST_GAME  //!< The GameState is game (with a map, a moving camera...)
     };
 
     /** Base abstract class of all the GameStates
+      *
+      * A game should provides different states (menus, game, introduction).
+      * All the game states \b must inherits this base class. All these
+      * game states are managed by the GameEngine class.
       *
       * We must override all this pure virtual functions in each
       * subclass. init() and cleanup() are the constructor and
       * destructor of a game state. the pause() and resume() provides
       * the temporally paused implementation of the state. The frameStarted()
       * and frameEnded() function are used by The GuiFrameListener
+      *
+      * Another important value all subclasses should want to set is
+      * \ref GameState::rootWindowName "rootWindowName". If you need 
+      * to create modal dialogs, it \b must
+      * be set.
+      *
+      * \sa GameEngine
+      *
       */
     class GameState {
     public:
-      /**A default destructor */
       virtual ~GameState();
 
       tGameStateType getStateType();
+      const CEGUI::String& getRootWindowName();
 
       /** The constructor of GameState 
         * 
@@ -73,7 +92,12 @@ namespace RainbruRPG {
       
       /** Temporally stop the state */
       virtual void pause() = 0;
-      /** Rerun after a pause() call */
+      /** Rerun after a pause() call or a state change
+        *
+	* It is used to reload a removed layout when recovering a
+	* previous changed state and re-register the events.
+	*
+        */
       virtual void resume() = 0;
 
       /** Draw one frame */     
@@ -92,14 +116,13 @@ namespace RainbruRPG {
       /** The OIS mouse moved implementation */
       virtual bool mouseMoved(const OIS::MouseEvent&) = 0;
       /** The OIS mouse pressed implementation */
-      virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID) = 0;
+      virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID)=0;
       /** The OIS mouse released implementation */
-      virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID) = 0;
+      virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID)=0;
 
 
       bool wasInit();
     protected:
-      /**A forbiden constructor */
       GameState();
 
       /** Tells if the gamestate was initialized */
@@ -107,7 +130,15 @@ namespace RainbruRPG {
 
       /** The common input wrapper */
       tGameStateType stateType;
-    };
+
+      /** This is the CEGUI root window name 
+        *
+	* It is used by GameEngine when it need to show a modal message
+	* box.
+	*
+	*/
+      CEGUI::String rootWindowName;
+   };
   }
 }
 

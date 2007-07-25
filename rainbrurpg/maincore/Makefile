@@ -68,7 +68,7 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	inputwrapper.lo inputmanager.lo gsmainmenu.lo gslocaltest.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
 	environmentsetup.lo highlightlistener.lo gsconnection.lo \
-	tabnavigation.lo dialogsystem.lo simpledialog.lo
+	tabnavigation.lo dialogsystem.lo messagebox.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -139,7 +139,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-23
+ISODATE = 2007-07-24
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -241,7 +241,7 @@ h_sources = gameengine.h			\
 	  gsconnection.h		\
 	  tabnavigation.h		\
 	  dialogsystem.h		\
-	  simpledialog.h
+	  messagebox.h
 
 cc_sources = gameengine.cpp		\
 	  gamestate.cpp			\
@@ -261,7 +261,7 @@ cc_sources = gameengine.cpp		\
 	  gsconnection.cpp		\
 	  tabnavigation.cpp		\
 	  dialogsystem.cpp		\
-	  simpledialog.cpp
+	  messagebox.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
@@ -357,7 +357,7 @@ include ./$(DEPDIR)/guimanager.Plo
 include ./$(DEPDIR)/highlightlistener.Plo
 include ./$(DEPDIR)/inputmanager.Plo
 include ./$(DEPDIR)/inputwrapper.Plo
-include ./$(DEPDIR)/simpledialog.Plo
+include ./$(DEPDIR)/messagebox.Plo
 include ./$(DEPDIR)/tabnavigation.Plo
 include ./$(DEPDIR)/vcconstant.Plo
 include ./$(DEPDIR)/velocitycalculator.Plo

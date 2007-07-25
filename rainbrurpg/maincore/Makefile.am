@@ -23,7 +23,7 @@ h_sources=gameengine.h			\
 	  gsconnection.h		\
 	  tabnavigation.h		\
 	  dialogsystem.h		\
-	  simpledialog.h
+	  messagebox.h
 
 cc_sources=gameengine.cpp		\
 	  gamestate.cpp			\
@@ -43,7 +43,7 @@ cc_sources=gameengine.cpp		\
 	  gsconnection.cpp		\
 	  tabnavigation.cpp		\
 	  dialogsystem.cpp		\
-	  simpledialog.cpp
+	  messagebox.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)

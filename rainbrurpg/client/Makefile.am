@@ -7,7 +7,7 @@ rainbrurpg_SOURCES=launcher.cpp		\
 		    main.cpp	 		\
 		    languageselector.cpp
 
-OGRE_CFLAGS= -I/usr/local/include/OGRE
+OGRE_CFLAGS= -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
 
 INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/maincore $(OGRE_CFLAGS)
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -131,6 +131,8 @@ namespace RainbruRPG {
       void showConsole();
       void hideConsole();
 
+      RenderWindow* getRenderWindow();
+
       void cleanStates();
 
       bool connectUser(const char* , const char* );
@@ -225,10 +227,18 @@ namespace RainbruRPG {
       /** The root CEGUI window */
       CEGUI::Window* mEditorGuiSheet;
 
-
-      /** The userName the user entered */
+      /** The userName the user entered 
+        *
+	* This value is set only if the connection is accepted.
+	*
+	*/
       const char* userName;
-      /** The passord hashsum */
+
+      /** The passord hashsum 
+        *
+	* This value is set only if the connection is accepted.
+	*
+        */
       const char* userPwd;
 
     };

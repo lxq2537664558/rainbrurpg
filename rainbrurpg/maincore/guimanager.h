@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 24 jul 2007 : showMessageBox implementaion
+ *
+ */
+
 #ifndef GUI_MANAGER_H
 #define GUI_MANAGER_H
 
@@ -33,6 +38,7 @@
 #include "gameengine.h"
 #include "velocitycalculator.h"
 #include "vcconstant.h"
+#include "messagebox.h"
 
 using namespace std;
 using namespace RainbruRPG::Core;
@@ -45,6 +51,9 @@ namespace RainbruRPG {
       * This singleton class is used to create GUI forms, manage CEGUI
       * layouts and Ogre overlays. It is also responsible of the GUI
       * fading effect you can see in client's menus.
+      *
+      * The showMessageBox() provides a simple CEGUI message box with a single 
+      * OK button .
       *
       */
     class GuiManager : public RainbruRPG::Core::Singleton<GuiManager>{
@@ -75,6 +84,10 @@ namespace RainbruRPG {
 
       Ogre::RenderWindow* getRenderWindow();
       void debugChild(const char*);
+
+      void showMessageBox(const CEGUI::String&, const CEGUI::String&, 
+			  const CEGUI::String& parent=""); 
+      void hideMessageBox(bool);
 
     private:
       void debugWindow(CEGUI::Window*);
@@ -114,8 +127,30 @@ namespace RainbruRPG {
       /** The opacity of the GUI */
       float guiOpacity;
 
-      /** The title overlay */
+      /** The title overlay 
+        *
+	* This Ogre overlay, shown in the first menu of the game client,
+	* shows the game name and version number. It is shown only the first
+	* time the gsMainMenu is drawn.
+	*
+	* \sa createTitleOverlay(), detroyTitleOverlay().
+	*
+	*/
       Ogre::Overlay* mTitleOverlay;
+
+      /** The layout used by DialogSystem 
+        *
+	* This CEGUI window is not destroyed each time a dialog is closed. 
+	* It is loaded the first time showMessageBox() is called then 
+	* DialogSystem::doClose hide and deactivate it. This pointer is set
+	* to \c NULL by the hideMessageBox() function, each time we change
+	* the current gamestate.
+	*
+	* \sa hideMessageBox(), DialogSystem::doClose(), 
+	*     removeCurrentCEGUILayout()
+	*
+	*/
+      CEGUI::Window* dialogSystemLayout;
     };
   }
 }

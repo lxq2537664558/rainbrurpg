@@ -16,9 +16,10 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- Makes the SimpleDialog class work
-- GuiManager::showMessage(...);
-- SEGFAULT when exiting the game
+- Doxygen documentation
+- gsCreateAccount implementation
+- gsServerList implementation
+- gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
@@ -121,6 +122,19 @@ o [mouse] Client
 * *******************************************************
 
 * v 0.0.5-150
+- SEGFAULT due to messageBox when changing Gamestate       FIXED
+- gsConnection button implementation
+- An error in gsConneciotn button 'Back'
+- MessageBox for the connection response
+- DialogSystem in RainbruRPG::Gui namespace
+- MessageBox in RainbruRPG::Gui namespace
+- SimpleDialog become MessageBox
+- Doxygen Documentation
+- GuiManager::showMessage(...);
+- Makes the SimpleDialog class work
+- SEGFAULT when exiting the game                           FIXED
+- SimpleDialog : OK click closes it
+- SimpleDialog title implementation
 
 * v 0.0.5-149
 - SimpleDialog become a real class

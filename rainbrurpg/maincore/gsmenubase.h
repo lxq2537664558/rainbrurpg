@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -77,8 +77,6 @@ namespace RainbruRPG {
       void drawBorder();
       void drawMenuBackground();
       void drawDynamicBackground();
-
-      void drawStaticImage();
 
       void setCorners();
       float getTranslationLenght(float, float);

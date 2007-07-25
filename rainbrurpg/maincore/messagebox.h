@@ -34,26 +34,44 @@
 
 #include "dialogsystem.h"
 
-/** A dialog based on DialogSystem
-  *
-  */
-class SimpleDialog : public DialogSystem{
- public:
-  SimpleDialog();
-  void initWindow(const CEGUI::String& parent="");
+namespace RainbruRPG{
+  namespace Gui{
 
-  void setMessage(const CEGUI::String&);
-  const CEGUI::String& getMessage(void);
+    /** A dialog based on DialogSystem
+      *
+      * You should not use this class directly, please use the 
+      * GuiManager::showMessageBox function instead.
+      *
+      * \note Do not create an instance of this class in the header 
+      *       file. Create it when you need one. This block other 
+      *       window's focus.
+      *
+      */
+    class MessageBox : public DialogSystem{
+    public:
+      MessageBox();
+      void initWindow(const CEGUI::String& parent="");
+      
+      void setMessage(const CEGUI::String&);
+      void setTitle(const CEGUI::String&);
 
- protected:
-  bool doLoad();
-  bool doSave();
-
- private:
-  /** The messagebox message */
-  CEGUI::String message;
-  /** The data content */
-  CEGUI::String dataString;
-};
+      const CEGUI::String& getMessage(void);
+      const CEGUI::String& getTitle(void);
+      
+    protected:
+      bool doLoad();
+      bool doSave();
+      
+    private:
+      /** The messagebox message */
+      CEGUI::String message;
+      /** The messagebox title content */
+      CEGUI::String title;
+           
+      /** The data content */
+      CEGUI::String dataString;
+    };
+  }
+}
 
 #endif // _DIALOG_SYSTEM_H_

@@ -578,30 +578,8 @@ gameengine.lo .libs/gameengine.o: gameengine.cpp gameengine.h \
   /usr/local/include/OGRE/OgreRoot.h \
   /usr/local/include/OGRE/OgreMouseEvent.h \
   /usr/local/include/OGRE/OgreInputEvent.h gamestate.h \
-  /usr/local/include/OGRE/OgreFrameListener.h ../common/logger.h \
-  /usr/local/include/OIS/OISPrereqs.h guimanager.h \
-  /usr/local/include/OGRE/OgreKeyEvent.h \
-  /usr/local/include/OGRE/OgreEventListeners.h \
-  /usr/local/include/OGRE/OgreMouseEvent.h \
-  /usr/local/include/OGRE/OgreStringConverter.h \
-  /usr/local/include/OGRE/OgreException.h velocitycalculator.h \
-  /usr/local/include/OGRE/OgreInputEvent.h \
-  /usr/local/include/OGRE/OgreEventQueue.h \
-  /usr/local/include/OGRE/OgreEventTarget.h \
-  /usr/local/include/OGRE/OgreInput.h \
-  /usr/local/include/OGRE/OgrePlatformManager.h \
-  /usr/local/include/OGRE/OgreTimer.h vcconstant.h gsmenubase.h \
-  inputwrapper.h /usr/local/include/CEGUI/CEGUIInputEvent.h \
-  inputmanager.h /usr/local/include/OIS/OISJoyStick.h \
-  /usr/local/include/OIS/OISInputManager.h \
-  /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
-  /usr/local/include/OGRE/OgreRenderSystem.h \
-  /usr/local/include/OGRE/OgreIteratorWrappers.h \
-  /usr/local/include/OGRE/OgreSceneManagerEnumerator.h \
-  /usr/local/include/CEGUI/CEGUIDefaultLogger.h gsmainmenu.h \
-  /usr/local/include/CEGUI/CEGUIEventArgs.h \
-  /usr/local/include/CEGUI/CEGUIEvent.h ../common/hashpassword.h \
-  tabnavigation.h /usr/local/include/CEGUI/CEGUI.h \
+  /usr/local/include/OGRE/OgreFrameListener.h \
+  /usr/local/include/CEGUI/CEGUI.h \
   /usr/local/include/CEGUI/CEGUIExceptions.h \
   /usr/local/include/CEGUI/CEGUITexture.h \
   /usr/local/include/CEGUI/CEGUIImageset.h \
@@ -723,9 +701,32 @@ gameengine.lo .libs/gameengine.o: gameengine.cpp gameengine.h \
   /usr/local/include/CEGUI/elements/CEGUIItemListbox.h \
   /usr/local/include/CEGUI/elements/CEGUIScrolledItemListBase.h \
   /usr/local/include/CEGUI/elements/CEGUIItemListboxProperties.h \
-  gslocaltest.h gsgamebase.h gsconnection.h \
-  /usr/local/include/CEGUI/elements/CEGUIEditbox.h simpledialog.h \
-  dialogsystem.h guiframelistener.h \
+  /usr/local/include/OIS/OISPrereqs.h ../common/logger.h guimanager.h \
+  /usr/local/include/OGRE/OgreKeyEvent.h \
+  /usr/local/include/OGRE/OgreEventListeners.h \
+  /usr/local/include/OGRE/OgreMouseEvent.h \
+  /usr/local/include/OGRE/OgreStringConverter.h \
+  /usr/local/include/OGRE/OgreException.h velocitycalculator.h \
+  /usr/local/include/OGRE/OgreInputEvent.h \
+  /usr/local/include/OGRE/OgreEventQueue.h \
+  /usr/local/include/OGRE/OgreEventTarget.h \
+  /usr/local/include/OGRE/OgreInput.h \
+  /usr/local/include/OGRE/OgrePlatformManager.h \
+  /usr/local/include/OGRE/OgreTimer.h vcconstant.h messagebox.h \
+  dialogsystem.h gsmenubase.h inputwrapper.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h inputmanager.h \
+  /usr/local/include/OIS/OISJoyStick.h \
+  /usr/local/include/OIS/OISInputManager.h \
+  /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
+  /usr/local/include/OGRE/OgreRenderSystem.h \
+  /usr/local/include/OGRE/OgreIteratorWrappers.h \
+  /usr/local/include/OGRE/OgreSceneManagerEnumerator.h \
+  /usr/local/include/CEGUI/CEGUIDefaultLogger.h gsmainmenu.h \
+  /usr/local/include/CEGUI/CEGUIEventArgs.h \
+  /usr/local/include/CEGUI/CEGUIEvent.h ../common/hashpassword.h \
+  tabnavigation.h /usr/local/include/CEGUI/CEGUI.h gslocaltest.h \
+  gsgamebase.h gsconnection.h \
+  /usr/local/include/CEGUI/elements/CEGUIEditbox.h guiframelistener.h \
   /usr/local/include/OGRE/OgreNoMemoryMacros.h \
   /usr/local/include/OGRE/OgreCEGUIRenderer.h \
   /usr/local/include/OGRE/OgreCEGUIResourceProvider.h \
@@ -2126,72 +2127,6 @@ gamestate.h:
 
 /usr/local/include/OGRE/OgreFrameListener.h:
 
-../common/logger.h:
-
-/usr/local/include/OIS/OISPrereqs.h:
-
-guimanager.h:
-
-/usr/local/include/OGRE/OgreKeyEvent.h:
-
-/usr/local/include/OGRE/OgreEventListeners.h:
-
-/usr/local/include/OGRE/OgreMouseEvent.h:
-
-/usr/local/include/OGRE/OgreStringConverter.h:
-
-/usr/local/include/OGRE/OgreException.h:
-
-velocitycalculator.h:
-
-/usr/local/include/OGRE/OgreInputEvent.h:
-
-/usr/local/include/OGRE/OgreEventQueue.h:
-
-/usr/local/include/OGRE/OgreEventTarget.h:
-
-/usr/local/include/OGRE/OgreInput.h:
-
-/usr/local/include/OGRE/OgrePlatformManager.h:
-
-/usr/local/include/OGRE/OgreTimer.h:
-
-vcconstant.h:
-
-gsmenubase.h:
-
-inputwrapper.h:
-
-/usr/local/include/CEGUI/CEGUIInputEvent.h:
-
-inputmanager.h:
-
-/usr/local/include/OIS/OISJoyStick.h:
-
-/usr/local/include/OIS/OISInputManager.h:
-
-/usr/local/include/OGRE/OgreRenderWindow.h:
-
-../common/globaluri.h:
-
-/usr/local/include/OGRE/OgreRenderSystem.h:
-
-/usr/local/include/OGRE/OgreIteratorWrappers.h:
-
-/usr/local/include/OGRE/OgreSceneManagerEnumerator.h:
-
-/usr/local/include/CEGUI/CEGUIDefaultLogger.h:
-
-gsmainmenu.h:
-
-/usr/local/include/CEGUI/CEGUIEventArgs.h:
-
-/usr/local/include/CEGUI/CEGUIEvent.h:
-
-../common/hashpassword.h:
-
-tabnavigation.h:
-
 /usr/local/include/CEGUI/CEGUI.h:
 
 /usr/local/include/CEGUI/CEGUIExceptions.h:
@@ -2436,6 +2371,78 @@ tabnavigation.h:
 
 /usr/local/include/CEGUI/elements/CEGUIItemListboxProperties.h:
 
+/usr/local/include/OIS/OISPrereqs.h:
+
+../common/logger.h:
+
+guimanager.h:
+
+/usr/local/include/OGRE/OgreKeyEvent.h:
+
+/usr/local/include/OGRE/OgreEventListeners.h:
+
+/usr/local/include/OGRE/OgreMouseEvent.h:
+
+/usr/local/include/OGRE/OgreStringConverter.h:
+
+/usr/local/include/OGRE/OgreException.h:
+
+velocitycalculator.h:
+
+/usr/local/include/OGRE/OgreInputEvent.h:
+
+/usr/local/include/OGRE/OgreEventQueue.h:
+
+/usr/local/include/OGRE/OgreEventTarget.h:
+
+/usr/local/include/OGRE/OgreInput.h:
+
+/usr/local/include/OGRE/OgrePlatformManager.h:
+
+/usr/local/include/OGRE/OgreTimer.h:
+
+vcconstant.h:
+
+messagebox.h:
+
+dialogsystem.h:
+
+gsmenubase.h:
+
+inputwrapper.h:
+
+/usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+inputmanager.h:
+
+/usr/local/include/OIS/OISJoyStick.h:
+
+/usr/local/include/OIS/OISInputManager.h:
+
+/usr/local/include/OGRE/OgreRenderWindow.h:
+
+../common/globaluri.h:
+
+/usr/local/include/OGRE/OgreRenderSystem.h:
+
+/usr/local/include/OGRE/OgreIteratorWrappers.h:
+
+/usr/local/include/OGRE/OgreSceneManagerEnumerator.h:
+
+/usr/local/include/CEGUI/CEGUIDefaultLogger.h:
+
+gsmainmenu.h:
+
+/usr/local/include/CEGUI/CEGUIEventArgs.h:
+
+/usr/local/include/CEGUI/CEGUIEvent.h:
+
+../common/hashpassword.h:
+
+tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
+
 gslocaltest.h:
 
 gsgamebase.h:
@@ -2443,10 +2450,6 @@ gsgamebase.h:
 gsconnection.h:
 
 /usr/local/include/CEGUI/elements/CEGUIEditbox.h:
-
-simpledialog.h:
-
-dialogsystem.h:
 
 guiframelistener.h:
 

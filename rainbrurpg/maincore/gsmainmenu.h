@@ -56,6 +56,7 @@ namespace RainbruRPG {
       gsMainMenu();
 
       virtual void init();
+      virtual void resume();
 
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);

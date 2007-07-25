@@ -102,9 +102,11 @@ void RainbruRPG::Core::gsMenuBase::pause(){
 
 }
 
-/** Resumes the gamestate
+/** Rerun after a pause() call or a state change
   *
-  * It restarts after a pause call.
+  * It is used to reload a removed layout when recovering a
+  * previous changed state and re-register the events.
+  *
   */
 void RainbruRPG::Core::gsMenuBase::resume(){
 
@@ -124,7 +126,8 @@ void RainbruRPG::Core::gsMenuBase::drawBorder(){
   LOGI("Draw border");
 
   // Create background material
-  MaterialPtr material = MaterialManager::getSingleton().create("Border", "General");
+  MaterialPtr material = MaterialManager::getSingleton()
+    .create("Border", "General");
 
   material->getTechnique(0)->getPass(0)->createTextureUnitState("border.jpg");
   material->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
@@ -184,8 +187,12 @@ void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
   LOGI("Draw DynamicBackground");
 
   // Create background material
-  MaterialPtr material = MaterialManager::getSingleton().create("DynamicBackground", "General");
-  material->getTechnique(0)->getPass(0)->createTextureUnitState("dynamicmenu.jpg");
+  MaterialPtr material = MaterialManager::getSingleton()
+    .create("DynamicBackground", "General");
+
+  material->getTechnique(0)->getPass(0)
+    ->createTextureUnitState("dynamicmenu.jpg");
+
   material->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
   material->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
   material->getTechnique(0)->getPass(0)->setLightingEnabled(false);
@@ -202,15 +209,6 @@ void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
   // Attach background to the scene
   SceneNode* node = menuNode->createChildSceneNode("DynamicBackground");
   node->attachObject(dynaRect);
-}
-
-/** Draws a static image
-  *
-  * \todo To remove
-  *
-  */
-void RainbruRPG::Core::gsMenuBase::drawStaticImage(){
-      
 }
 
 /** Makes the menu transition

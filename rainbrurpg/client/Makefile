@@ -112,7 +112,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-23
+ISODATE = 2007-07-24
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -200,7 +200,7 @@ rainbrurpg_SOURCES = launcher.cpp		\
 		    main.cpp	 		\
 		    languageselector.cpp
 
-OGRE_CFLAGS = -I/usr/local/include/OGRE
+OGRE_CFLAGS = -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
 INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/maincore $(OGRE_CFLAGS)
 rainbrurpg_LDADD = -lrainbrurpg-common -lrainbrurpg-core
 rainbrurpg_LDFLAGS = -L$(top_srcdir)/common/.libs -L$(top_srcdir)/maincore/.libs

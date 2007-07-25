@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -26,10 +26,13 @@
 
 #include <logger.h>
 #include <iostream>
+#include <exception>
 #include <CEGUI/CEGUIExceptions.h>
+
 /** The constructor of the singleton
   *
   * This method must be called before using GuiManager
+  *
   */
 void RainbruRPG::Gui::GuiManager::init(){
   LOGI("Initializing GuiManager...");
@@ -39,6 +42,7 @@ void RainbruRPG::Gui::GuiManager::init(){
   inGuiFadeIn=false;
   inGuiFadeOut=false;
   velocity=new vcConstant();
+  dialogSystemLayout=NULL;
 }
 
 /** The destructor of the singleton
@@ -83,7 +87,12 @@ createNumDebugWindow(Ogre::RenderWindow* win){
 
 /** Create a GUI overlay wich shows the name and the version of the game
   *
+  * The \c win parameter cannot be \c NULL. You can get this with the
+  * \ref  RainbruRPG::Core::GameEngine::getRenderWindow "getRenderWindow"
+  * function.
+  *
   * \param win The Ogre window that receive the overlay
+  *
   */
 void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
   this->win=win;
@@ -91,8 +100,7 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
 
   mTitleOverlay=NULL;
 
-  mTitleOverlay =OverlayManager::getSingleton().
-    getByName("RainbruRPG/Title");
+  mTitleOverlay =OverlayManager::getSingleton().getByName("RainbruRPG/Title");
 
   if (mTitleOverlay){
     mTitleOverlay->show();
@@ -248,7 +256,12 @@ unsigned int RainbruRPG::Gui::GuiManager::getTransitionTime(){
   *
   */
 void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
-  GameEngine::getSingleton().getCEGUISystem()->getGUISheet()->setAlpha(f);
+  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
+    ->getGUISheet();
+
+  if (guiSheet!=NULL){
+    guiSheet->setAlpha(f);
+  }
 }
 
 /** Called when the gui fadeIn must begin
@@ -298,8 +311,14 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   */
 void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
   float t;
-  t=GameEngine::getSingleton().getCEGUISystem()->getGUISheet()->getAlpha();
-  setGuiTransparency(t+f);
+
+  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
+    ->getGUISheet();
+
+  if (guiSheet!=NULL){
+    t=guiSheet->getAlpha();
+    setGuiTransparency(t+f);
+  }
 }
 
 /** Called when the GUI fade out may begin
@@ -316,11 +335,17 @@ void RainbruRPG::Gui::GuiManager::beginGuiFadeOut(){
 
 /** Destroys all the current CEGUI windows
   *
+  * This function calls hideMessageBox() to set the GuiManager::
+  * dialogSystemLayout pointer to \c NULL.
+  *
+  * \sa hideMessageBox(), dialogSystemLayout
+  *
   */
 void RainbruRPG::Gui::GuiManager::removeCurrentCEGUILayout(){
   LOGI("Removing current CEGUI layout");
 
   CEGUI::WindowManager::getSingleton().destroyAllWindows();
+  GuiManager::getSingleton().hideMessageBox(true);
 
 }
 
@@ -338,7 +363,12 @@ bool RainbruRPG::Gui::GuiManager::isInGuiFadeOut(){
   */
 void RainbruRPG::Gui::GuiManager::detroyTitleOverlay(){
   LOGI("Destroying title overlay");
-  Ogre::OverlayManager::getSingleton().destroy(mTitleOverlay);
+  try{
+    Ogre::OverlayManager::getSingleton().destroy(mTitleOverlay);
+  }
+  catch(Ogre::Exception e){
+    LOGW("Cannot destroy title overlay");
+  }
 }
 
 /** Debug some values for the given CEGUI window
@@ -399,4 +429,64 @@ void RainbruRPG::Gui::GuiManager::debugChild(const char* name){
     ->getGUISheet()->getChild(name);
 
   debugWindow(win);
+}
+
+/** Shows a CEGUI message box with a single OK button
+  *
+  * Uses SimpleDialog
+  *
+  * \param title   The messageBox title
+  * \param message The messageBox message text. This text will be word wrapped
+  *                and justify.
+  * \param parent  The parent name. If this string is empty (""), the message
+  *                box will be non-modal, if a CEGUI Window's name is given,
+  *                the dialog will be modal.
+  *
+  */
+void RainbruRPG::Gui::GuiManager::
+showMessageBox(const CEGUI::String& title, const CEGUI::String& message, 
+	       const CEGUI::String& parent)
+
+{
+
+  // Init dialog
+  if (dialogSystemLayout==NULL){
+    this->dialogSystemLayout = CEGUI::WindowManager::getSingleton()
+      .loadWindowLayout("dialogsystem.layout");
+
+    LOGW("dialogSystemLayout pointer is NULL");
+  }
+
+  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
+  if (root && dialogSystemLayout){
+    root->addChildWindow("DialogSystemRoot");
+
+    MessageBox* simpleDialog=new MessageBox();
+    simpleDialog->initWindow(parent);
+    simpleDialog->setTitle(title);
+    simpleDialog->setMessage(message);
+    simpleDialog->doOpen();
+  }
+  else{
+    LOGE("Cannot show message box (CEGUI guiSheet==NULL)");
+  }
+
+}
+
+/** Set the dialogSystemLayout to NULL
+  * 
+  * As the DialogSystem::doClose() does not destroy the dialog and the
+  * showMessageBox try to reload the CEGUI layout only if 
+  * GuiManager::dialogSystemLayout
+  * is \c NULL, the removeCurrentCEGUILayout() call this function. As the 
+  * removeCurrentCEGUILayout() is called when we change gamestate, the
+  * \c dialogsystem.layout file is reloaded for each gamestate change.
+  *
+  * \param destroy An unused parameter
+  *
+  * \sa dialogSystemLayout, showMessageBox(), removeCurrentCEGUILayout.
+  *
+  */
+void RainbruRPG::Gui::GuiManager::hideMessageBox(bool destroy){
+  dialogSystemLayout=NULL;
 }

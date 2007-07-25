@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -22,14 +22,24 @@
 
 #include "gamestate.h"
 
+/** A default protected constructor 
+  *
+  * This constructor is defined protected as this class shoiuld not
+  * be created directly. Use subclasses
+  *
+  */ 
 RainbruRPG::Core::GameState::GameState(){
   LOGI("Initializing game state super-class");
   isInit=false;
-
+  rootWindowName="";
 }
 
+/** A destructor 
+  *
+  */ 
 RainbruRPG::Core::GameState::~GameState(){
 }
+
 /** Return true if the init function was call
   *
   */
@@ -44,4 +54,19 @@ bool RainbruRPG::Core::GameState::wasInit(){
   */
 tGameStateType RainbruRPG::Core::GameState::getStateType(){
   return this->stateType;
+}
+
+/** Return the name of the CEGUI root window
+  *
+  * This value is important if you attempt to create messageBoxes.
+  * The GameEngine should need the root window name to create
+  * modal dialogs.
+  *
+  * \return the rootWindow name
+  *
+  * \sa rootWindowName
+  *
+  */
+const CEGUI::String& RainbruRPG::Core::GameState::getRootWindowName(){
+  return this->rootWindowName;
 }

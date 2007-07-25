@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -32,7 +32,7 @@
   * The dialog is not modal by default.
   *
   */
-DialogSystem::DialogSystem(){
+RainbruRPG::Gui::DialogSystem::DialogSystem(){
   m_modal  = false;
 }
 
@@ -43,7 +43,7 @@ DialogSystem::DialogSystem(){
   * \return \c true if the data was modified, otherwise \c false.
   *
   */
-bool DialogSystem::isModified(){
+bool RainbruRPG::Gui::DialogSystem::isModified(){
   assert(!m_apply.empty() && "The isModified() function requires "
 	 "that you specify an \"Apply\" button");
   return !CEGUI::WindowManager::getSingleton().getWindow(m_apply)->isDisabled();
@@ -53,10 +53,10 @@ bool DialogSystem::isModified(){
   *
   * Set the window enable and visible.
   *
-  * \return The ersult of the doLoad function call
+  * \return The result of the doLoad function call
   *
   */
-bool DialogSystem::doOpen(){
+bool RainbruRPG::Gui::DialogSystem::doOpen(){
   // Open the window
   assert(!m_window.empty() && "You have forgotten to call initialise()");
   if(m_modal){
@@ -82,7 +82,7 @@ bool DialogSystem::doOpen(){
   * \return Always \c true
   *
   */
-bool DialogSystem::doLoad(){
+bool RainbruRPG::Gui::DialogSystem::doLoad(){
   // Disable the apply button since there are no modifications
   if(!m_apply.empty())
     CEGUI::WindowManager::getSingleton().getWindow(m_apply)->setEnabled(false);
@@ -96,7 +96,7 @@ bool DialogSystem::doLoad(){
   * \return Always \c true
   *
   */
-bool DialogSystem::doSave(){
+bool RainbruRPG::Gui::DialogSystem::doSave(){
   // Disable the apply button since there are no modifications
   if(!m_apply.empty())
     CEGUI::WindowManager::getSingleton().getWindow(m_apply)->setEnabled(false);
@@ -106,12 +106,13 @@ bool DialogSystem::doSave(){
 
 /** Closes the window
   *
-  * If the window is modal, its parent is enabled.
+  * If the window is modal, its parent is enabled. The dialog is hidden
+  * but not destroyed.
   *
   * \return Always \c true
   *
   */
-bool DialogSystem::doClose(){
+bool RainbruRPG::Gui::DialogSystem::doClose(){
   // Close the window
   assert(!m_window.empty() && "You have forgotten to call initialise()");
   
@@ -120,9 +121,11 @@ bool DialogSystem::doClose(){
     assert(!m_parent.empty() && "The value of m_modal or m_parent "
 	   "has become corrupted");
     CEGUI::WindowManager::getSingleton().getWindow(m_parent)->setEnabled(true);
+    CEGUI::WindowManager::getSingleton().getWindow(m_parent)->activate();
   }
 
   CEGUI::WindowManager::getSingleton().getWindow(m_window)->setVisible(false);
+
   return true;
 }
 
@@ -130,20 +133,35 @@ bool DialogSystem::doClose(){
   *
   * Specifying a parent makes this window modal
   *
+  * \note If the parent name is empty, an focus problem could occur :
+  *       When you close the dialog, the other window should not 
+  *       recover their focus. Or the message is not deactivated at 
+  *       startup.
+  *
   * \param window  The window to set visible
   * \param visible Is \c window become visible ?
   * \param parent  The parent Window for a modal dialog or nothing for a
   *                normal one
   *
   */
-void DialogSystem::initialise(const CEGUI::String& window, bool visible, 
-			      const CEGUI::String& parent){
+void RainbruRPG::Gui::DialogSystem::
+initialise(const CEGUI::String& window, bool visible, 
+	   const CEGUI::String& parent){
 
   // Specifying a parent makes this window modal
   m_window = window;
   CEGUI::WindowManager::getSingleton().getWindow(m_window)->setVisible(visible);
   m_parent = parent;
   m_modal  = !m_parent.empty();
+
+  if (m_parent.empty()){
+    LOGW("Calling DialogSystem::initialise without a valid parent name could "
+	 "cause a focus problem to occur when closing the dialog.");
+  }
+
+  if(!visible && !m_parent.empty())
+    CEGUI::WindowManager::getSingleton().getWindow(m_window)->deactivate();
+
 }
 
 /** Subscribe an event
@@ -153,7 +171,7 @@ void DialogSystem::initialise(const CEGUI::String& window, bool visible,
   * \param action      The dialog action
   *
   */
-void DialogSystem::bindEvent(const CEGUI::String& widget, 
+void RainbruRPG::Gui::DialogSystem::bindEvent(const CEGUI::String& widget, 
 			     const CEGUI::String& widgetEvent, 
 			     tDialogSystemEvents action){
 
@@ -194,10 +212,12 @@ void DialogSystem::bindEvent(const CEGUI::String& widget,
 
 /** The open event
   *
+  * \param e The event argument (not yet used)
+  *
   * \return always \c true
   *
   */
-bool DialogSystem::onOpen(const CEGUI::EventArgs& e){
+bool RainbruRPG::Gui::DialogSystem::onOpen(const CEGUI::EventArgs& e){
   // Open the window
   return doOpen();
 }
@@ -211,8 +231,8 @@ bool DialogSystem::onOpen(const CEGUI::EventArgs& e){
   * \return always \c true
   *
   */
-bool DialogSystem::onOk(const CEGUI::EventArgs& e){
-  return doSave() && doClose();
+bool RainbruRPG::Gui::DialogSystem::onOk(const CEGUI::EventArgs& e){
+  return doClose();
 }
 
 /** The 'cancel' button was pressed
@@ -224,7 +244,7 @@ bool DialogSystem::onOk(const CEGUI::EventArgs& e){
   * \return always \c true
   *
   */
-bool DialogSystem::onCancel(const CEGUI::EventArgs& e){
+bool RainbruRPG::Gui::DialogSystem::onCancel(const CEGUI::EventArgs& e){
   return doClose();
 }
 
@@ -240,7 +260,7 @@ bool DialogSystem::onCancel(const CEGUI::EventArgs& e){
   * \return always \c true
   *
   */
-bool DialogSystem::onEscape(const CEGUI::EventArgs& e){
+bool RainbruRPG::Gui::DialogSystem::onEscape(const CEGUI::EventArgs& e){
   const CEGUI::KeyEventArgs& keyArgs = 
     static_cast<const CEGUI::KeyEventArgs&>(e);
 
@@ -260,7 +280,7 @@ bool DialogSystem::onEscape(const CEGUI::EventArgs& e){
   * \return always \c true
   *
   */
-bool DialogSystem::onApply(const CEGUI::EventArgs& e){
+bool RainbruRPG::Gui::DialogSystem::onApply(const CEGUI::EventArgs& e){
   return doSave();
 }
 
@@ -273,7 +293,7 @@ bool DialogSystem::onApply(const CEGUI::EventArgs& e){
   * \return always \c true
   *
   */
-bool DialogSystem::onModified(const CEGUI::EventArgs& e){
+bool RainbruRPG::Gui::DialogSystem::onModified(const CEGUI::EventArgs& e){
   CEGUI::WindowManager::getSingleton().getWindow(m_apply)->setEnabled(true);
   return true;
 }

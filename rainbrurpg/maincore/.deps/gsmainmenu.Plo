@@ -300,22 +300,9 @@ gsmainmenu.lo .libs/gsmainmenu.o: gsmainmenu.cpp gsmainmenu.h \
   /usr/local/include/OIS/OISInterface.h \
   /usr/local/include/OIS/OISEvents.h /usr/local/include/OIS/OISMouse.h \
   gamestate.h /usr/local/include/OGRE/OgreFrameListener.h \
-  ../common/logger.h velocitycalculator.h /usr/local/include/OGRE/Ogre.h \
-  /usr/local/include/OGRE/OgreKeyEvent.h \
-  /usr/local/include/OGRE/OgreInputEvent.h \
-  /usr/local/include/OGRE/OgreInputEvent.h \
-  /usr/local/include/OGRE/OgreEventQueue.h \
-  /usr/local/include/OGRE/OgreEventListeners.h \
-  /usr/local/include/OGRE/OgreMouseEvent.h \
-  /usr/local/include/OGRE/OgreEventTarget.h \
-  /usr/local/include/OGRE/OgreInput.h \
-  /usr/local/include/OGRE/OgrePlatformManager.h \
-  /usr/local/include/OGRE/OgreTimer.h inputwrapper.h \
-  /usr/local/include/CEGUI/CEGUIInputEvent.h \
-  /usr/local/include/CEGUI/CEGUIEventArgs.h \
-  /usr/local/include/CEGUI/CEGUIVector.h \
-  /usr/local/include/CEGUI/CEGUISize.h tabnavigation.h \
   /usr/local/include/CEGUI/CEGUI.h /usr/local/include/CEGUI/CEGUIRect.h \
+  /usr/local/include/CEGUI/CEGUIVector.h \
+  /usr/local/include/CEGUI/CEGUISize.h \
   /usr/local/include/CEGUI/CEGUIExceptions.h \
   /usr/local/include/CEGUI/CEGUITexture.h \
   /usr/local/include/CEGUI/CEGUIRenderer.h \
@@ -332,6 +319,7 @@ gsmainmenu.lo .libs/gsmainmenu.o: gsmainmenu.cpp gsmainmenu.h \
   /usr/local/include/CEGUI/CEGUILogger.h \
   /usr/local/include/CEGUI/CEGUIMouseCursor.h \
   /usr/local/include/CEGUI/CEGUIInputEvent.h \
+  /usr/local/include/CEGUI/CEGUIEventArgs.h \
   /usr/local/include/CEGUI/CEGUIUDim.h \
   /usr/local/include/CEGUI/CEGUIFont.h \
   /usr/local/include/CEGUI/CEGUIPropertySet.h \
@@ -461,8 +449,20 @@ gsmainmenu.lo .libs/gsmainmenu.o: gsmainmenu.cpp gsmainmenu.h \
   /usr/local/include/CEGUI/elements/CEGUIItemListbox.h \
   /usr/local/include/CEGUI/elements/CEGUIScrolledItemListBase.h \
   /usr/local/include/CEGUI/elements/CEGUIItemListboxProperties.h \
-  vcconstant.h guimanager.h ../common/singleton.h \
-  /usr/local/include/OGRE/OgreStringConverter.h \
+  ../common/logger.h velocitycalculator.h /usr/local/include/OGRE/Ogre.h \
+  /usr/local/include/OGRE/OgreKeyEvent.h \
+  /usr/local/include/OGRE/OgreInputEvent.h \
+  /usr/local/include/OGRE/OgreInputEvent.h \
+  /usr/local/include/OGRE/OgreEventQueue.h \
+  /usr/local/include/OGRE/OgreEventListeners.h \
+  /usr/local/include/OGRE/OgreMouseEvent.h \
+  /usr/local/include/OGRE/OgreEventTarget.h \
+  /usr/local/include/OGRE/OgreInput.h \
+  /usr/local/include/OGRE/OgrePlatformManager.h \
+  /usr/local/include/OGRE/OgreTimer.h inputwrapper.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h tabnavigation.h \
+  /usr/local/include/CEGUI/CEGUI.h vcconstant.h guimanager.h \
+  ../common/singleton.h /usr/local/include/OGRE/OgreStringConverter.h \
   /usr/local/include/OGRE/OgreException.h gameengine.h \
   ../common/stringconv.h ../common/clientconnect.h \
   ../common/xmlaccountlist.h ../common/tinyxml.h ../common/tinystr.h \
@@ -719,7 +719,8 @@ gsmainmenu.lo .libs/gsmainmenu.o: gsmainmenu.cpp gsmainmenu.h \
   /usr/local/include/OGRE/OgreMouseEvent.h inputmanager.h \
   /usr/local/include/OIS/OISJoyStick.h \
   /usr/local/include/OIS/OISInputManager.h \
-  /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h
+  /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
+  messagebox.h dialogsystem.h
 
 gsmainmenu.h:
 
@@ -1487,47 +1488,13 @@ gamestate.h:
 
 /usr/local/include/OGRE/OgreFrameListener.h:
 
-../common/logger.h:
+/usr/local/include/CEGUI/CEGUI.h:
 
-velocitycalculator.h:
-
-/usr/local/include/OGRE/Ogre.h:
-
-/usr/local/include/OGRE/OgreKeyEvent.h:
-
-/usr/local/include/OGRE/OgreInputEvent.h:
-
-/usr/local/include/OGRE/OgreInputEvent.h:
-
-/usr/local/include/OGRE/OgreEventQueue.h:
-
-/usr/local/include/OGRE/OgreEventListeners.h:
-
-/usr/local/include/OGRE/OgreMouseEvent.h:
-
-/usr/local/include/OGRE/OgreEventTarget.h:
-
-/usr/local/include/OGRE/OgreInput.h:
-
-/usr/local/include/OGRE/OgrePlatformManager.h:
-
-/usr/local/include/OGRE/OgreTimer.h:
-
-inputwrapper.h:
-
-/usr/local/include/CEGUI/CEGUIInputEvent.h:
-
-/usr/local/include/CEGUI/CEGUIEventArgs.h:
+/usr/local/include/CEGUI/CEGUIRect.h:
 
 /usr/local/include/CEGUI/CEGUIVector.h:
 
 /usr/local/include/CEGUI/CEGUISize.h:
-
-tabnavigation.h:
-
-/usr/local/include/CEGUI/CEGUI.h:
-
-/usr/local/include/CEGUI/CEGUIRect.h:
 
 /usr/local/include/CEGUI/CEGUIExceptions.h:
 
@@ -1560,6 +1527,8 @@ tabnavigation.h:
 /usr/local/include/CEGUI/CEGUIMouseCursor.h:
 
 /usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+/usr/local/include/CEGUI/CEGUIEventArgs.h:
 
 /usr/local/include/CEGUI/CEGUIUDim.h:
 
@@ -1818,6 +1787,40 @@ tabnavigation.h:
 /usr/local/include/CEGUI/elements/CEGUIScrolledItemListBase.h:
 
 /usr/local/include/CEGUI/elements/CEGUIItemListboxProperties.h:
+
+../common/logger.h:
+
+velocitycalculator.h:
+
+/usr/local/include/OGRE/Ogre.h:
+
+/usr/local/include/OGRE/OgreKeyEvent.h:
+
+/usr/local/include/OGRE/OgreInputEvent.h:
+
+/usr/local/include/OGRE/OgreInputEvent.h:
+
+/usr/local/include/OGRE/OgreEventQueue.h:
+
+/usr/local/include/OGRE/OgreEventListeners.h:
+
+/usr/local/include/OGRE/OgreMouseEvent.h:
+
+/usr/local/include/OGRE/OgreEventTarget.h:
+
+/usr/local/include/OGRE/OgreInput.h:
+
+/usr/local/include/OGRE/OgrePlatformManager.h:
+
+/usr/local/include/OGRE/OgreTimer.h:
+
+inputwrapper.h:
+
+/usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
 
 vcconstant.h:
 
@@ -2408,3 +2411,7 @@ inputmanager.h:
 /usr/local/include/OGRE/OgreRenderWindow.h:
 
 ../common/globaluri.h:
+
+messagebox.h:
+
+dialogsystem.h:

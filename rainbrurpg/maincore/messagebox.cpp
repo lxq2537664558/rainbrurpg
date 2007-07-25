@@ -24,10 +24,16 @@
  * http://www.cegui.org.uk/wiki/index.php/DialogSystem
  */
 
-#include "simpledialog.h"
+#include "messagebox.h"
 
-SimpleDialog::SimpleDialog(){
-  message="";
+/** The default constructor
+  *
+  * Actually, this initialize only message and title with empty strings.
+  *
+  */
+RainbruRPG::Gui::MessageBox::MessageBox(){
+  message ="";
+  title   ="";
 }
 
 /** Initialize the dialog
@@ -38,7 +44,7 @@ SimpleDialog::SimpleDialog(){
   * \param parent The parent Window's name
   *
   */
-void SimpleDialog::initWindow(const CEGUI::String& parent){
+void RainbruRPG::Gui::MessageBox::initWindow(const CEGUI::String& parent){
   // Initialise the dialog
   using namespace CEGUI;
   WindowManager& winMgr = WindowManager::getSingleton();
@@ -46,18 +52,9 @@ void SimpleDialog::initWindow(const CEGUI::String& parent){
   // Initialise the windowing system
   DialogSystem::initialise("dlgMessageBox", false, parent);
 
-  /*    
   // Subscribe to widget events
-  DialogSystem::bindEvent( "SimpleDialog_btnOk",		
+  DialogSystem::bindEvent( "dlgMessageBox_btnOk",		
 			   PushButton::EventClicked, DSE_OK);
-  DialogSystem::bindEvent( "SimpleDialog_btnCancel",	
-			   PushButton::EventClicked, DSE_CANCEL);
-  DialogSystem::bindEvent( "SimpleDialog_btnApply",	
-			   PushButton::EventClicked, DSE_APPLY);
-  
-  // These events trigger a 'modified' event, activating the 'apply' button
-  DialogSystem::bindEvent( "SimpleDialog_edtValue",	
-			   Editbox::EventTextChanged,	DSE_MODIFIED);
   
   // Subscribe to window events
   // Pressing the 'X' button will behave as a cancel
@@ -65,35 +62,76 @@ void SimpleDialog::initWindow(const CEGUI::String& parent){
     DialogSystem::bindEvent( parent, FrameWindow::EventCloseClicked,DSE_CANCEL);
     DialogSystem::bindEvent( parent, FrameWindow::EventKeyDown, DSE_ESCAPE);
   }
-  */
 
 }
 
 /** Handle the load action by placing data into widgets
   *
   */
-bool SimpleDialog::doLoad(){
-  CEGUI::WindowManager::getSingleton().getWindow("SimpleDialog_edtValue")
+bool RainbruRPG::Gui::MessageBox::doLoad(){
+  /*  CEGUI::WindowManager::getSingleton().getWindow("MessageBox_edtValue")
     ->setText(dataString);
-
+  */
   return DialogSystem::doLoad(); 
 }
 
 /** Handle the save action by moving widget data into variables
   *
   */
-bool SimpleDialog::doSave(){
-  dataString = CEGUI::WindowManager::getSingleton()
-    .getWindow("SimpleDialog_edtValue")->getText();
-
+bool RainbruRPG::Gui::MessageBox::doSave(){
+  /*  dataString = CEGUI::WindowManager::getSingleton()
+    .getWindow("MessageBox_edtValue")->getText();
+  */
   return DialogSystem::doSave(); 
 }
 
-void SimpleDialog::setMessage(const CEGUI::String& mess){
+/** Changes the message of the dialog
+  * 
+  * This should be called before showing the dialog.
+  *
+  * \param mess The new message text
+  *
+  * \sa getMessage()
+  *
+  */
+void RainbruRPG::Gui::MessageBox::setMessage(const CEGUI::String& mess){
   this->message=mess;
   CEGUI::WindowManager::getSingleton().getWindow("MessageText")->setText(mess);
 }
 
-const CEGUI::String& SimpleDialog::getMessage(void){
+/** Get the message of the dialog
+  *
+  * \return The value of the MessageBox::message class member
+  *
+  * \sa setMessage(const CEGUI::String&)
+  *
+  */ 
+const CEGUI::String& RainbruRPG::Gui::MessageBox::getMessage(void){
   return this->message;
+}
+
+/** Changes the title of the dialog
+  * 
+  * This should be called before showing the dialog.
+  *
+  * \param title The new title's text
+  *
+  * \sa getTitle()
+  *
+  */
+void RainbruRPG::Gui::MessageBox::setTitle(const CEGUI::String& title){
+  this->title=title;
+  CEGUI::WindowManager::getSingleton().getWindow("dlgMessageBox")
+    ->setText(title);
+}
+
+/** Get the title of the dialog
+  *
+  * \return The value of the MessageBox::title class member
+  *
+  * \sa setTitle(const CEGUI::String&)
+  *
+  */ 
+const CEGUI::String& RainbruRPG::Gui::MessageBox::getTitle(void){
+  return this->title;
 }

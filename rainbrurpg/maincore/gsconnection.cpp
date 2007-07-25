@@ -57,9 +57,9 @@ void RainbruRPG::Core::gsConnection::init(){
   LOGI("Initialising gsConnection");
   gsMenuBase::init();
   GuiManager::getSingleton().loadCEGUILayout("connection.layout");
-  // Do notGuiManager::beginGuiFadeIn
-  //  GuiManager::getSingleton().beginGuiFadeIn();
 
+  // Initialise the dialog parent
+  this->rootWindowName="RainbruRPG/Connection";
 
   setupConnectionMenu();
   LOGI("gsConnection initialization complete");
@@ -181,10 +181,8 @@ onBackToMainClicked(const CEGUI::EventArgs& evt){
 
   GuiManager::getSingleton().removeCurrentCEGUILayout();
 
-  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
+  GameEngine::getSingleton().changeState(ST_MAIN_MENU);
   GuiManager::getSingleton().beginGuiFadeIn();
-
-  setupConnectionMenu();
 
   return true;
 }
@@ -234,6 +232,28 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
     LOGW("Cannot get the 'Connect' button");
   }
 
+  // CreateAccount
+  CEGUI::Window* btnCreateAccount=connectWin->getChild("CreateAccount");
+  if (btnConnect){
+    btnCreateAccount->subscribeEvent("Clicked", 
+      CEGUI::Event::Subscriber(&gsConnection::onCreateAccountClicked,this));
+
+  }
+  else{
+    LOGW("Cannot get the 'CreateAccount' button");
+  }
+
+  // LostPassword
+  CEGUI::Window* btnLostPassword=connectWin->getChild("LostPassword");
+  if (btnConnect){
+    btnLostPassword->subscribeEvent("Clicked", 
+      CEGUI::Event::Subscriber(&gsConnection::onLostPasswordClicked,this));
+
+  }
+  else{
+    LOGW("Cannot get the 'LostPassword' button");
+  }
+
   // Registering TabNavigation
   tabNav.setParent("RainbruRPG/Connection");
   tabNav.addWidget("RainbruRPG/Connection/Name");
@@ -242,14 +262,6 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   tabNav.addWidget("CreateAccount");
   tabNav.addWidget("LostPassword");
   tabNav.addWidget("Back");
-
-  // Initialise the dialog
-  CEGUI::Window* guiLayout = CEGUI::WindowManager::getSingleton()
-    .loadWindowLayout("dialogsystem.layout");
-  //  GuiManager::getSingleton().loadCEGUILayout("dialogsystem.layout");
-
-  root->addChildWindow(guiLayout);  
-  simpleDialog.initWindow("RainbruRPG/Connection");
   
 }
 
@@ -289,8 +301,49 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   LOGCAT();
   GameEngine::getSingleton().connectUser(cName, hashPwd.c_str());
 
-  simpleDialog.setMessage("This function is not yet implemented.");
-  simpleDialog.doOpen();
+  return true;
+}
 
+/** Resume the state after a call or changestate call
+  *
+  */
+void RainbruRPG::Core::gsConnection::resume(){
+  Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
+  // GuiManager::getSingleton().createTitleOverlay(rw);
+  GuiManager::getSingleton().loadCEGUILayout("connection.layout");
+  setupConnectionMenu();
+
+  // Initialise the dialog parent
+  this->rootWindowName="RainbruRPG/Connection";
+}
+
+/** The callback of the 'create account' button
+  *
+  * \param evt The CEGUI event
+  *
+  * \return Always \c true
+  *
+  */
+bool RainbruRPG::Core::gsConnection::
+onCreateAccountClicked(const CEGUI::EventArgs& evt){
+  LOGI("onCreateAccountClicked called");
+  return true;
+}
+
+/** The callback of the 'lost password' button
+  *
+  * \param evt The CEGUI event
+  *
+  * \return Always \c true
+  *
+  */
+bool RainbruRPG::Core::gsConnection::
+onLostPasswordClicked(const CEGUI::EventArgs& evt){
+  LOGI("onLostPasswordClicked called");
+
+  GuiManager::getSingleton()
+    .showMessageBox("Lost Password", 
+    "This function isn't yet implemented. Please contact me "
+    "(rainbru@free.fr)", "RainbruRPG/Connection");
   return true;
 }
