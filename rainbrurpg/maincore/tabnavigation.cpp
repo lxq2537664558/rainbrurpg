@@ -113,7 +113,6 @@ addWidget(const CEGUI::TabControl* tabControl){
 bool RainbruRPG::Core::TabNavigation::
 _onParentActivated(const CEGUI::EventArgs& e){
 
-  LOGI("_onParentActivated called");
   // Parent is being activated, activate the widget with the last known focus
   if(_tabNavigation.size() && _lastKnownFocus != _tabNavigation.end()){
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -133,7 +132,7 @@ _onParentActivated(const CEGUI::EventArgs& e){
   *
   */
 bool RainbruRPG::Core::TabNavigation::_onActivated(const CEGUI::EventArgs& e){
-  LOGI("_onActivated called");
+
   // A focus widget has been activated without tabbing (could be a mouse click)
   CEGUI::String currentlyFocused = 
     static_cast<const CEGUI::WindowEventArgs&>(e).window->getName();
@@ -171,7 +170,6 @@ bool RainbruRPG::Core::TabNavigation::_onActivated(const CEGUI::EventArgs& e){
 bool RainbruRPG::Core::TabNavigation::
 _onCharacterKey(const CEGUI::EventArgs& e){
 
-  LOGI("_onCharacterKey called");
   // Handle Tab (next) and Shift+Tab (previous) widget navigation
   assert(_tabNavigation.size() && "Don't simply call setParent(), also call addWidget()");
   // Tab or Shift+Tab

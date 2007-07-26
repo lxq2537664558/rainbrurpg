@@ -43,6 +43,7 @@ void RainbruRPG::Gui::GuiManager::init(){
   inGuiFadeOut=false;
   velocity=new vcConstant();
   dialogSystemLayout=NULL;
+  mTitleOverlay=NULL;
 }
 
 /** The destructor of the singleton
@@ -57,6 +58,10 @@ void RainbruRPG::Gui::GuiManager::cleanup(){
     delete velocity;
 
   velocity=NULL;
+
+  if (mTitleOverlay){
+    detroyTitleOverlay();
+  }
 
 }
 
@@ -363,11 +368,16 @@ bool RainbruRPG::Gui::GuiManager::isInGuiFadeOut(){
   */
 void RainbruRPG::Gui::GuiManager::detroyTitleOverlay(){
   LOGI("Destroying title overlay");
-  try{
-    Ogre::OverlayManager::getSingleton().destroy(mTitleOverlay);
-  }
-  catch(Ogre::Exception e){
-    LOGW("Cannot destroy title overlay");
+
+  if (mTitleOverlay){
+    try{
+      Ogre::OverlayManager::getSingleton().destroy(mTitleOverlay);
+      mTitleOverlay==NULL;
+    }
+    catch(Ogre::Exception e){
+      LOGW("Cannot destroy title overlay");
+    }
+    LOGI("Title overlay not found, already destroyed?");
   }
 }
 
@@ -433,7 +443,18 @@ void RainbruRPG::Gui::GuiManager::debugChild(const char* name){
 
 /** Shows a CEGUI message box with a single OK button
   *
-  * Uses SimpleDialog
+  * Uses SimpleDialog to show a message with a title. 
+  *
+  * If you want a widget to get the focus after the message box is closed, 
+  * you should activate this widget then show the message box. Please try
+  * the following code :
+  * <pre>
+  * widget->activate();
+  * GuiManager::getSingleton().showMessageBox("Title", "Message","parent");
+  * </pre>
+  * 
+  * The message box will remain the focused widget when it is opened and
+  * give the focus to \c widget when it is closed.
   *
   * \param title   The messageBox title
   * \param message The messageBox message text. This text will be word wrapped

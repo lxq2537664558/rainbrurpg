@@ -41,6 +41,13 @@ RainbruRPG::Core::vcConstant::vcConstant()
   * a boolean by reference as parameter for \c b because it may be modified.
   * It will be set to \c false if the translation is ended.
   *
+  * First, we get \c curentTime and \c timeEllapsed 
+  * (by the formula \f$curentTime-lastFrameTimeLine\f$).
+  * Then, we calcultate the returned translation value :
+  * \f$getLenghtByTime(curentTime)-getLenghtByTime(lastFrameTimeLine)\f$.
+  *
+  * \sa getLenghtByTime(), lastFrameTimeLine.
+  *
   * \param b The boolean that will be set to \c false if the 
   *          transation is ended
   *
@@ -74,6 +81,11 @@ float RainbruRPG::Core::vcConstant::getNextFrame(bool& b){
   *
   * This function is called by getNextFrame(bool&). It returns the lenght
   * the translation may made for the given time elapsed. 
+  *
+  * The returned value is : 
+  * \f$\frac{(translationLenght*d)}{transitionTime}\f$.
+  *
+  * \sa transitionTime, translationLenght.
   *
   * \param d the time of a frame
   *

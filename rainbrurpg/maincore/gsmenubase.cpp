@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -454,6 +454,9 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   CEGUI::Window* guiSheet=CEGUI::System::getSingleton().getGUISheet();
   CEGUI::Window* activeChild=guiSheet->getActiveChild();
 
+  std::string str=GameEngine::getSingleton().getInputManager()->getKeyboard()
+    ->getAsString(evt.key);
+
   // Special cases
   CEGUI::Key::Scan scanCode;
 
@@ -489,10 +492,34 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
       activeChild->fireEvent(eventName, eventArgs, eventNS);
     }
   }
-  else{
-    CEGUI::System::getSingleton().injectChar((CEGUI::utf32)text);
+  else if (kc==OIS::KC_HOME){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Home);
   }
+  else if (kc==OIS::KC_END){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::End);
+  }
+  else{
+    /*    cout << "=== Debugging OIS" << endl
+	 << "  text=" << text << endl
+	 << "  str =" << str << endl;
+    */
 
+    /*
+     * Here a hack to provide [Alt Gr+key] as for the 'at' @ sign.
+     * The first time AltGr+something is called, str=="ISO_Level3_Shift"
+     * other times, str==previous char (i.e. 'at') but text==0
+     *
+     */
+    if(str=="ISO_Level3_Shift" && text==0){
+      // Nothing to do (AltGr only, the first time)
+    }
+    else if(text==0){
+      // Nothing to do (AltGr only, other times)
+    }
+    else{
+      CEGUI::System::getSingleton().injectChar((CEGUI::utf32)text);
+    }
+  }
   return true;
 }
 

@@ -20,6 +20,11 @@
  *
  */
 
+/** Modifications :
+  * - 26 jul 2007 : Including formulas in documentation
+  *
+  */
+
 #ifndef VELOCITY_CALCULATOR_CONSTANT_H
 #define VELOCITY_CALCULATOR_CONSTANT_H
 

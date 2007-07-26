@@ -734,6 +734,7 @@ fromMenuToGame(GameState* from, GameState* to){
   mCamera->lookAt(Vector3(0,0,0));
 
   createViewports();
+
   GuiManager::getSingleton().detroyTitleOverlay();
 
   ColourValue fadeColour( 0.9, 0.9, 0.9 );
@@ -859,3 +860,6 @@ Camera* RainbruRPG::Core::GameEngine::getCamera(){
   return mCamera;
 }
 
+InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
+  return mInputMgr;
+}

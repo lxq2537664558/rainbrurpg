@@ -155,6 +155,7 @@ namespace RainbruRPG {
       virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 
+      InputManager* getInputManager();
 
     private:
       /** Unimplemented copy constructors 

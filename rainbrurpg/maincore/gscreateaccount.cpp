@@ -22,6 +22,7 @@
 
 #include "gscreateaccount.h"
 
+#include <curlaccountadd.h>
 #include <logger.h>
 
 /** The default constructor
@@ -108,17 +109,28 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
 
   // Root window
-  CEGUI::Window* rainbruConnection=root->getChild("RainbruRPG/CreateAccount");
+  CEGUI::Window* wca=root->getChild("RainbruRPG/CreateAccount");
+
   // Back button
-  CEGUI::Window* btnBack=rainbruConnection->getChild("RainbruRPG/CreateAccountWin/Back");
-  if (btnBack){
+  try{
+    CEGUI::Window* btnBack=wca->getChild("RainbruRPG/CreateAccountWin/Back");
     btnBack->setFont("Iconified-20");
     btnBack->subscribeEvent("Clicked", 
       CEGUI::Event::Subscriber(&gsCreateAccount::onBackClicked,this));
-
   }
-  else{
-    LOGW("Cannot get the 'Back' button");
+  catch(const CEGUI::Exception& e){
+    LOGW("Cannot get the 'RainbruRPG/CreateAccountWin/Back' button");
+  }
+
+  // The submit button
+  try{
+    CEGUI::Window* win=wca->getChild("RainbruRPG/CreateAccountWin");
+    CEGUI::Window* btnSbm=win->getChild("RainbruRPG/CreateAccount/Submit");
+    btnSbm->subscribeEvent("Clicked", 
+      CEGUI::Event::Subscriber(&gsCreateAccount::onSubmitClicked,this));
+  }
+  catch(const CEGUI::Exception& e){
+    LOGW("Cannot get the 'RainbruRPG/CreateAccount/Submit' button");
   }
 
 }
@@ -133,4 +145,90 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   tabNav.addWidget("RainbruRPG/CreateAccount/EMail");
   tabNav.addWidget("RainbruRPG/CreateAccount/Submit");
   tabNav.addWidget("RainbruRPG/CreateAccountWin/Back");
+}
+
+bool RainbruRPG::Core::gsCreateAccount::
+onSubmitClicked(const CEGUI::EventArgs& evt){
+  LOGI("Submit button clicked");
+  CEGUI::String name, pwd, repPwd, mail, mess, nextFocus;
+
+  CEGUI::String err01="Account creation error";
+  CEGUI::String parent="RainbruRPG/CreateAccountWin";
+
+  try{
+    // Get the window
+    CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
+    CEGUI::Window* wca=root->getChild("RainbruRPG/CreateAccount");
+    CEGUI::Window* win=wca->getChild("RainbruRPG/CreateAccountWin");
+
+    name=win->getChild("RainbruRPG/CreateAccount/Name")->getText();
+    pwd=win->getChild("RainbruRPG/CreateAccount/Pwd")->getText();
+    repPwd=win->getChild("RainbruRPG/CreateAccount/RepPwd")->getText();
+    mail=win->getChild("RainbruRPG/CreateAccount/EMail")->getText();
+
+    if (pwd!=repPwd){
+      win->getChild("RainbruRPG/CreateAccount/RepPwd")->activate();
+      GuiManager::getSingleton().showMessageBox(err01, 
+        "Please correctly repeat the password",parent);
+    }
+    else{
+      CurlAccountAdd caa;
+      caa.setName(name.c_str());
+      caa.setPassword(pwd.c_str());
+      caa.setMail(mail.c_str());
+ 
+      bool success=caa.perform();
+
+      if (success){
+	GuiManager::getSingleton().showMessageBox("Account succefully created", 
+          "The account was correctly added. Before you are able to use "
+          "it, you must activate it.\n\nPlease wait the activation "
+          "mail.",parent);
+      }
+      else{
+	tCurlAccountAddReturn ret=caa.getResponse();
+
+	switch (ret){
+	case CAA_EXISTS :
+	  nextFocus="RainbruRPG/CreateAccount/Name";
+	  mess="This account name is already used. Please choose another "
+	    "identifier.";
+	  break;
+	case CAA_EMPTY_NAME:
+	  nextFocus="RainbruRPG/CreateAccount/Name";
+	  mess="Cannot create an account with empty name.";
+	  break;
+	case CAA_EMPTY_PWD:
+	  nextFocus="RainbruRPG/CreateAccount/Pwd";
+	  mess="Cannot create an account with empty password.";
+	  break;
+	case CAA_EMPTY_MAIL:
+	  nextFocus="RainbruRPG/CreateAccount/EMail";
+	  mess="Cannot create an account with empty mail address.";
+	  break;
+	case CAA_MAIL_INUSE:
+	  nextFocus="RainbruRPG/CreateAccount/EMail";
+	  mess="This mail is already used for another account. You can "
+	    "only create one account for each different mail address.";
+	  break;
+	case CAA_MAIL_SIGN_AT:
+	  nextFocus="RainbruRPG/CreateAccount/EMail";
+	  mess="The mail address should contain a '@' sign.";
+	  break;
+	case CAA_MAIL_SIGN_DOT:
+	  nextFocus="RainbruRPG/CreateAccount/EMail";
+	  mess="The mail address should contain a '.' sign.";
+	  break;
+	}
+
+	win->getChild(nextFocus)->activate();
+	GuiManager::getSingleton().showMessageBox(err01, mess, parent);
+
+      }
+
+    }
+  }
+  catch(const CEGUI::Exception& e){
+    LOGE("Cannot get some widgets");
+  }
 }

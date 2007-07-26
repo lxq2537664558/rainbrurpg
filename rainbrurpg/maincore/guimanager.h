@@ -52,8 +52,56 @@ namespace RainbruRPG {
       * layouts and Ogre overlays. It is also responsible of the GUI
       * fading effect you can see in client's menus.
       *
+      * \section ogre_overlays_sec Ogre overlays 
+      *
+      * Ogre3D provides the overlay management facility. Overlays are
+      * simple GUI element that not provide user interaction. This class 
+      * manages two overlays :
+      * - mTitleOverlay : the overlay showing the title and game version.
+      *   It is shown with createTitleOverlay() and destroyed with 
+      *   detroyTitleOverlay().
+      * - The numeric debug window : this one has not a private class member.
+      *   it is create by createNumDebugWindow() and can not be destroy
+      *   individually.
+      *
+      * \section cegui_layout_sec CEGUI layouts
+      *
+      * CEGUI is the library I use for advanced GUI (providing keyboard
+      * and mouse interaction). Every GUI definition is stored in layout
+      * files. You can find these layout in the \c data/gui/layout 
+      * directory. The gsMenuBase subclasses use CEGUI layout.
+      *
+      * There is two member functions that hold CEGUI layout : 
+      * loadCEGUILayout() that load and draw the named layout and 
+      * removeCurrentCEGUILayout() that removed from the screen and the memory
+      * the actual guiSheet (root window).
+      *
+      * \section gui_fading_sec Gui fading
+      *
+      * Between two menu, a transition effect is based on GUI fading (aka
+      * alpha channel). The setGuiTransparency(float), beginGuiFadeIn() and
+      * beginGuiFadeOut() are interresting. To use this effect you should use
+      * the following code :
+      * \code
+      *   GuiManager::getSingleton().beginGuiFadeOut();
+      *
+      *   // We must wait for the CEGUI fade end to prevent
+      *   // SEGFAULT in access to CEGUI windows (getAlpha())
+      *   while (GuiManager::getSingleton().isInGuiFadeOut()){
+      *     Ogre::Root::getSingleton().renderOneFrame();
+      *   }
+      *
+      *   GuiManager::getSingleton().detroyTitleOverlay();
+      *   GuiManager::getSingleton().removeCurrentCEGUILayout();
+      *   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
+      *
+      *   GuiManager::getSingleton().beginGuiFadeIn();      
+      * \endcode
+      *
+      * \section mess_box_sec Message boxes
+      *
       * The showMessageBox() provides a simple CEGUI message box with a single 
-      * OK button .
+      * OK button . For the hideMessageBox(), please see its own documentation.
       *
       */
     class GuiManager : public RainbruRPG::Core::Singleton<GuiManager>{
@@ -132,6 +180,11 @@ namespace RainbruRPG {
 	* This Ogre overlay, shown in the first menu of the game client,
 	* shows the game name and version number. It is shown only the first
 	* time the gsMainMenu is drawn.
+	*
+	* This value is used to know if the overlay exist. detroyTitleOverlay()
+	* set it to \c NULL when it is destroyed. The other times 
+	* detroyTitleOverlay() is called, if \c mTitleOverlay==NULL, we
+	* donot try to destroy it.
 	*
 	* \sa createTitleOverlay(), detroyTitleOverlay().
 	*

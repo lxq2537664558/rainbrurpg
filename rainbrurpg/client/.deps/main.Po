@@ -719,7 +719,8 @@ main.o main.o: main.cpp /usr/include/c++/4.1.3/iostream \
   /usr/local/include/OGRE/OgreTimer.h ../maincore/vcconstant.h \
   ../maincore/messagebox.h ../maincore/dialogsystem.h \
   ../maincore/gsmenubase.h ../maincore/inputwrapper.h \
-  /usr/local/include/CEGUI/CEGUIInputEvent.h ../maincore/inputmanager.h \
+  /usr/local/include/CEGUI/CEGUIInputEvent.h ../maincore/tabnavigation.h \
+  /usr/local/include/CEGUI/CEGUI.h ../maincore/inputmanager.h \
   /usr/local/include/OIS/OISJoyStick.h \
   /usr/local/include/OIS/OISInputManager.h \
   /usr/local/include/OGRE/OgreRenderWindow.h ../common/globaluri.h \
@@ -2516,6 +2517,10 @@ main.o main.o: main.cpp /usr/include/c++/4.1.3/iostream \
 ../maincore/inputwrapper.h:
 
 /usr/local/include/CEGUI/CEGUIInputEvent.h:
+
+../maincore/tabnavigation.h:
+
+/usr/local/include/CEGUI/CEGUI.h:
 
 ../maincore/inputmanager.h:
 

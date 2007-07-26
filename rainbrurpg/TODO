@@ -16,7 +16,10 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- gsCreateAccount submit button
+- The localtest doesn't found title overlay if we come from the
+  netgame menu (it doesn't exist anymore)
+- gsconnect : test if username is empty
+- Quarantine alert misfunction
 - gsServerList implementation
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
@@ -121,6 +124,11 @@ o [mouse] Client
 * *******************************************************
 
 * v 0.0.5-151
+- Using Alt+key more than one time doesn't work
+- Manage Home and End keys in edit box
+- Enter mail address wuth Alt key is a char                 FIXED
+- gsCreateAccount submit button
+- Including formulas in vcConstant documentation
 - gsMenuBase::setupTabOrder(and subclasses) implementation
 - tabNavigation::reset()
 
@@ -128,7 +136,7 @@ o [mouse] Client
 - gsCreateAccount tab navigation
 - gsCreateAccount implementation
 - Doxygen documentation
-- SEGFAULT due to messageBox when changing Gamestate       FIXED
+- SEGFAULT due to messageBox when changing Gamestate        FIXED
 - gsConnection button implementation
 - An error in gsConneciotn button 'Back'
 - MessageBox for the connection response
@@ -137,7 +145,7 @@ o [mouse] Client
 - SimpleDialog become MessageBox
 - GuiManager::showMessage(...);
 - Makes the SimpleDialog class work
-- SEGFAULT when exiting the game                           FIXED
+- SEGFAULT when exiting the game                            FIXED
 - SimpleDialog : OK click closes it
 - SimpleDialog title implementation
 

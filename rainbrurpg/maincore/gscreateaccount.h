@@ -31,6 +31,7 @@
 #include <CEGUI/CEGUI.h>
 
 #include <hashpassword.h>
+#include <curlaccountadd.h>
 
 #include "tabnavigation.h"
 #include "gsmenubase.h"
@@ -59,6 +60,8 @@ namespace RainbruRPG {
 
    private:
       bool onBackClicked(const CEGUI::EventArgs&);
+      bool onSubmitClicked(const CEGUI::EventArgs&);
+
       void setupCreateAccountMenu();
 
       /** Provides the Tab/Shift+Tab widget navigation */
