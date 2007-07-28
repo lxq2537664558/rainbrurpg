@@ -123,7 +123,7 @@ onNetworkGameClicked(const CEGUI::EventArgs& evt){
     Ogre::Root::getSingleton().renderOneFrame();
   }
 
-  GuiManager::getSingleton().detroyTitleOverlay();
+  GuiManager::getSingleton().destroyTitleOverlay();
   GuiManager::getSingleton().removeCurrentCEGUILayout();
   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
 
@@ -152,7 +152,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   CEGUI::Window* btnQuit=root->getChild("Quit");
   if (btnQuit){
     //    btnQuit->setFont("Iconified-20");
-    btnQuit->subscribeEvent("Clicked", 
+    btnQuit->subscribeEvent(CEGUI::Window::EventMouseClick, 
 	     CEGUI::Event::Subscriber(&gsMainMenu::onQuitClicked,this));
 
   }
@@ -165,7 +165,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   CEGUI::Window* btnLocalTest=root->getChild("LocalTest");
   if (btnLocalTest){
     //    btnLocalTest->setFont("Iconified-20");
-    btnLocalTest->subscribeEvent("Clicked", 
+    btnLocalTest->subscribeEvent(CEGUI::Window::EventMouseClick, 
 	     CEGUI::Event::Subscriber(&gsMainMenu::onLocalTestClicked,
 				      this));
   }
@@ -177,7 +177,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   CEGUI::Window* btnNetGame=root->getChild("NetGame");
   if (btnNetGame){
     //    btnNetGame->setFont("Iconified-20");
-    btnNetGame->subscribeEvent("Clicked", 
+    btnNetGame->subscribeEvent(CEGUI::Window::EventMouseClick, 
 	     CEGUI::Event::Subscriber(&gsMainMenu::onNetworkGameClicked,
 				      this));
   }

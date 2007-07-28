@@ -64,10 +64,6 @@ namespace RainbruRPG {
 
       void setupCreateAccountMenu();
 
-      /** Provides the Tab/Shift+Tab widget navigation */
-      TabNavigation tabNav;
-
-
     };
   }
 }

@@ -7,7 +7,7 @@ retr neededLibs.tar.gz
 retr essaiTransfer.tgz
 
 * Unittest implementation in common/
-- curlpersoheaderaddtest hide until we call doOpen
+- curlpersoheaderaddtest
 - In this order
    curlpersoheaderadd
    curlpersomodifattrb.h
@@ -16,11 +16,8 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- The localtest doesn't found title overlay if we come from the
-  netgame menu (it doesn't exist anymore)
-- gsconnect : test if username is empty
+- ServerList : up and down arrows to select one
 - Quarantine alert misfunction
-- gsServerList implementation
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
@@ -36,8 +33,6 @@ o [mouse] Client
 * GameServer
 - The HelpViewer is called twice 
    when we click the OK button it appears again
-- Add uniqueName and type to ServerConf and configuration
-   dialog
 - Running 2 servers in the same PC is forbiden
    A file running-server is created in the $HOME directory when the
    server is running. When we exit the server application, we delete
@@ -124,6 +119,14 @@ o [mouse] Client
 * *******************************************************
 
 * v 0.0.5-151
+- gsServerList tabOrder implementation
+- gsServerList buttons implementation
+- Feed gsServerList
+- gsServerList implementation
+- The localtest doesn't found title overlay if we come from the
+  netgame menu (it doesn't exist anymore)
+- GuiManager::detroyTitleOverlay renamed GuiManager::destroyTitleOverlay
+- gsconnect : test if username is empty
 - Using Alt+key more than one time doesn't work
 - Manage Home and End keys in edit box
 - Enter mail address wuth Alt key is a char                 FIXED

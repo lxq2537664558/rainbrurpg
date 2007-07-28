@@ -10,6 +10,8 @@
 
 /** An input manager for OIS to be used with Ogre3D
   *
+  * 
+  *
   */
 class InputManager : public OIS::KeyListener, OIS::MouseListener, 
 		     OIS::JoyStickListener {

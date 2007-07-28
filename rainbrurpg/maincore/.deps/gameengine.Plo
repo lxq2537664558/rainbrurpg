@@ -728,7 +728,8 @@ gameengine.lo .libs/gameengine.o: gameengine.cpp gameengine.h \
   gslocaltest.h gsgamebase.h gsconnection.h \
   /usr/local/include/CEGUI/elements/CEGUIEditbox.h gscreateaccount.h \
   ../common/curlaccountadd.h ../common/curlsubmitform.h \
-  ../common/curlposteddata.h guiframelistener.h \
+  ../common/curlposteddata.h gsserverlist.h ../common/xmlserverlist.h \
+  ../common/tinyxml.h ../common/stringconv.h guiframelistener.h \
   /usr/local/include/OGRE/OgreNoMemoryMacros.h \
   /usr/local/include/OGRE/OgreCEGUIRenderer.h \
   /usr/local/include/OGRE/OgreCEGUIResourceProvider.h \
@@ -2460,6 +2461,14 @@ gscreateaccount.h:
 ../common/curlsubmitform.h:
 
 ../common/curlposteddata.h:
+
+gsserverlist.h:
+
+../common/xmlserverlist.h:
+
+../common/tinyxml.h:
+
+../common/stringconv.h:
 
 guiframelistener.h:
 

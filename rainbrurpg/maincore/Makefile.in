@@ -69,7 +69,7 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
 	environmentsetup.lo highlightlistener.lo gsconnection.lo \
 	tabnavigation.lo dialogsystem.lo messagebox.lo \
-	gscreateaccount.lo
+	gscreateaccount.lo gsserverlist.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -243,7 +243,8 @@ h_sources = gameengine.h			\
 	  tabnavigation.h		\
 	  dialogsystem.h		\
 	  messagebox.h			\
-	  gscreateaccount.h
+	  gscreateaccount.h		\
+	  gsserverlist.h
 
 cc_sources = gameengine.cpp		\
 	  gamestate.cpp			\
@@ -264,7 +265,8 @@ cc_sources = gameengine.cpp		\
 	  tabnavigation.cpp		\
 	  dialogsystem.cpp		\
 	  messagebox.cpp		\
-	  gscreateaccount.cpp
+	  gscreateaccount.cpp		\
+	  gsserverlist.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
@@ -356,6 +358,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gslocaltest.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gsmainmenu.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gsmenubase.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gsserverlist.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/guiframelistener.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/guimanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/highlightlistener.Plo@am__quote@

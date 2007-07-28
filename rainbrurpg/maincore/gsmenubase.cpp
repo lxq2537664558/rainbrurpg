@@ -472,7 +472,13 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   else if (kc==OIS::KC_RIGHT){
     CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowRight);
   }
-  else if (kc==OIS::KC_TAB){
+  else if (kc==OIS::KC_UP){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowUp);
+  }
+  else if (kc==OIS::KC_DOWN){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowDown);
+  }
+   else if (kc==OIS::KC_TAB){
     CEGUI::System::getSingleton().injectChar(9);
   }
   else if (kc==OIS::KC_LSHIFT){
@@ -485,7 +491,7 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
     CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Return);
 
     if (activeChild){
-      CEGUI::String    eventName("Clicked");
+      CEGUI::String    eventName(CEGUI::Window::EventMouseClick);
       CEGUI::EventArgs eventArgs;
       CEGUI::String    eventNS("");
 

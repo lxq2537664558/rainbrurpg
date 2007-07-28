@@ -71,10 +71,11 @@ namespace RainbruRPG {
       virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
  
-      /** Implements the focux tab order
+      /** \brief Implements the focus tab order
         *
-	* You \b must reimplement this to setup the tabOrder. example :
+	* You \b must override this to setup the tabOrder. example :
 	* <pre>
+	*   tabNav.clear();
 	*   tabNav.setParent("RainbruRPG/Connection");
 	*   tabNav.addWidget("RainbruRPG/Connection/Name");
 	*   tabNav.addWidget("RainbruRPG/Connection/Pwd");
@@ -87,7 +88,7 @@ namespace RainbruRPG {
 	* This function should be called in the init() function \b after 
 	* the CEGUI layout was loaded and in the resume() function.
 	*
-	* \sa \ref gsMenuBase::tabNav "tabNav"
+	* \sa \ref RainbruRPG::Core::gsMenuBase::tabNav "tabNav"
 	*
 	*/
       virtual void setupTabOrder()=0;
@@ -150,7 +151,12 @@ namespace RainbruRPG {
       /** Should we create the dynamic menu */
       bool createMenu;
 
-      /** Provides the Tab/Shift+Tab widget navigation */
+      /** Provides the Tab/Shift+Tab widget navigation 
+        *
+	* This is used for implementation of the tab order (see 
+	* setupTabOrder()).
+	*
+        */
       TabNavigation tabNav;
     };
 

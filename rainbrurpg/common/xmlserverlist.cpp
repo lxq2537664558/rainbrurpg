@@ -25,6 +25,9 @@
 
 /** The default constructor
   *
+  * After a call to this, the class is ready to use, you can
+  * call getServerList().
+  *
   */
 RainbruRPG::Network::Ident::xmlServerList::xmlServerList(){
   refresh();

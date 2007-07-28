@@ -113,7 +113,7 @@ namespace RainbruRPG {
 
       void createNumDebugWindow(Ogre::RenderWindow*);
       void createTitleOverlay(Ogre::RenderWindow*);
-      void detroyTitleOverlay();
+      void destroyTitleOverlay();
 
       void showFPS();
       void loadCEGUILayout(const char*);

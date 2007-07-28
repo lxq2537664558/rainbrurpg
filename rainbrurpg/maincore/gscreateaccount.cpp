@@ -115,7 +115,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   try{
     CEGUI::Window* btnBack=wca->getChild("RainbruRPG/CreateAccountWin/Back");
     btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent("Clicked", 
+    btnBack->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsCreateAccount::onBackClicked,this));
   }
   catch(const CEGUI::Exception& e){
@@ -126,7 +126,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   try{
     CEGUI::Window* win=wca->getChild("RainbruRPG/CreateAccountWin");
     CEGUI::Window* btnSbm=win->getChild("RainbruRPG/CreateAccount/Submit");
-    btnSbm->subscribeEvent("Clicked", 
+    btnSbm->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsCreateAccount::onSubmitClicked,this));
   }
   catch(const CEGUI::Exception& e){
@@ -135,6 +135,14 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
 
 }
 
+/** Setup the tabulation order 
+  *
+  * Clears the current tabNav instance, set its parent and
+  * adds the widgets that will have focus.
+  *
+  * \sa tabNav, TabNavigation, gsMainMenu::setupTabOrder().
+  *
+  */
 void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   // Registering TabNavigation
   tabNav.clear();
@@ -147,6 +155,16 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   tabNav.addWidget("RainbruRPG/CreateAccountWin/Back");
 }
 
+/** The Suibmit button callback
+  *
+  * Clicked by the user when he entered all required informations, it
+  * submit the account creation to the admin site.
+  *
+  * \param evt The CEGUI event 
+  *
+  * \return Always \c true
+  *
+  */
 bool RainbruRPG::Core::gsCreateAccount::
 onSubmitClicked(const CEGUI::EventArgs& evt){
   LOGI("Submit button clicked");
@@ -231,4 +249,6 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
   catch(const CEGUI::Exception& e){
     LOGE("Cannot get some widgets");
   }
+
+  return true;
 }

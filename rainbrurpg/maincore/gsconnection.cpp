@@ -124,7 +124,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   CEGUI::Window* btnBack=rainbruConnection->getChild("Back");
   if (btnBack){
     btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent("Clicked", 
+    btnBack->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsConnection::onBackToMainClicked,this));
 
   }
@@ -144,7 +144,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
  // Connect button
   CEGUI::Window* btnConnect=connectWin->getChild("Connect");
   if (btnConnect){
-    btnConnect->subscribeEvent("Clicked", 
+    btnConnect->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsConnection::onConnectClicked,this));
 
   }
@@ -155,7 +155,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   // CreateAccount
   CEGUI::Window* btnCreateAccount=connectWin->getChild("CreateAccount");
   if (btnConnect){
-    btnCreateAccount->subscribeEvent("Clicked", 
+    btnCreateAccount->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsConnection::onCreateAccountClicked,this));
 
   }
@@ -166,7 +166,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   // LostPassword
   CEGUI::Window* btnLostPassword=connectWin->getChild("LostPassword");
   if (btnConnect){
-    btnLostPassword->subscribeEvent("Clicked", 
+    btnLostPassword->subscribeEvent(CEGUI::Window::EventMouseClick, 
       CEGUI::Event::Subscriber(&gsConnection::onLostPasswordClicked,this));
 
   }
@@ -192,26 +192,43 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   CEGUI::Window* connect=root->getChild("RainbruRPG/Connection");
   CEGUI::Window* connectWin=connect->getChild("RainbruRPG/ConnectionWindow");
   nameWidget=connectWin->getChild("RainbruRPG/Connection/Name");
-  pwdWidget=connectWin->getChild("RainbruRPG/Connection/Pwd");
-  const char* cName=nameWidget->getText().c_str();
-  const char* cPwd=(const char*)pwdWidget->getText().c_str();
-  CEGUI::String strPwd=pwdWidget->getText();
 
-  // Get a valid const char*
-  CEGUI::String::const_iterator iter;
-  for (iter=strPwd.begin(); iter!=strPwd.end(); iter++){
-    cout << hex << (*iter) << endl;
+  if (nameWidget->getText().empty()){
+    GuiManager::getSingleton()
+      .showMessageBox("Empty account name", 
+		      "Please enter a user name.", "RainbruRPG/Connection");
   }
+  else{
+    pwdWidget=connectWin->getChild("RainbruRPG/Connection/Pwd");
+    const char* cName=nameWidget->getText().c_str();
+    const char* cPwd=(const char*)pwdWidget->getText().c_str();
+    CEGUI::String strPwd=pwdWidget->getText();
+    
+    HashPassword hp;
+    std::string hashPwd=hp.encryptString(cPwd);
+    LOGCATS("Name :");
+    LOGCATS(cName);
+    LOGCATS(" Pwd :");
+    LOGCATS(cPwd);
+    LOGCAT();
 
-  HashPassword hp;
-  std::string hashPwd=hp.encryptString(cPwd);
-  LOGCATS("Name :");
-  LOGCATS(cName);
-  LOGCATS(" Pwd :");
-  LOGCATS(cPwd);
-  LOGCAT();
-  GameEngine::getSingleton().connectUser(cName, hashPwd.c_str());
+    // connection successfull
+    if (GameEngine::getSingleton().connectUser(cName, hashPwd.c_str())){
+      GuiManager::getSingleton().beginGuiFadeOut();
 
+      // We must wait for the CEGUI fade end to prevent
+      // SEGFAULT in access to CEGUI windows (getAlpha())
+      while (GuiManager::getSingleton().isInGuiFadeOut()){
+	Ogre::Root::getSingleton().renderOneFrame();
+      }
+      
+      GuiManager::getSingleton().removeCurrentCEGUILayout();
+      
+      GameEngine::getSingleton().changeState(ST_SERVER_LIST);
+      GuiManager::getSingleton().beginGuiFadeIn();
+    }
+
+  }
   return true;
 }
 
@@ -270,8 +287,8 @@ onLostPasswordClicked(const CEGUI::EventArgs& evt){
 
   GuiManager::getSingleton()
     .showMessageBox("Lost Password", 
-    "This function isn't yet implemented. Please contact me "
-    "(rainbru@free.fr)", "RainbruRPG/Connection");
+    "This function isn't yet implemented. Please contact me directly"
+    " (rainbru@free.fr)", "RainbruRPG/Connection");
   return true;
 }
 

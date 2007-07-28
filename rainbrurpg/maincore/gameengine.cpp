@@ -35,6 +35,7 @@
 #include "gslocaltest.h"
 #include "gsconnection.h"
 #include "gscreateaccount.h"
+#include "gsserverlist.h"
 
 #include "guimanager.h"
 #include "guiframelistener.h"
@@ -145,11 +146,13 @@ void RainbruRPG::Core::GameEngine::initStates() {
   GameState *gs2=new gsConnection();
   GameState *gs3=new gsMainMenu();
   GameState *gs4=new gsCreateAccount();
+  GameState *gs5=new gsServerList();
 
   states.push_back(gs1);
   states.push_back(gs2);
   states.push_back(gs3);
   states.push_back(gs4);
+  states.push_back(gs5);
 
 }
 
@@ -173,9 +176,13 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
     case ST_CREATE_ACCOUNT:
       LOGI("Switching to CreateMenu...");
       break;
+    case ST_SERVER_LIST:
+      LOGI("Switching to ServerList...");
+      break;
     default:
       LOGW("Unknown game state received");
     }
+
 
     if ((unsigned int)t>states.size()){
       LOGE("An error will occured : we are calling a non-inexisting "
@@ -511,9 +518,12 @@ void RainbruRPG::Core::GameEngine::createViewports(){
   }
 }
 
-/** Setup the ressources needed from the file ../config/resources.cfg
+/** Setup the needed ressources from a local file
   *
-  * It goes through the sections of the ressource file and adds it
+  * Using \ref RainbruRPG::Network::GlobalURI "GlobalURI", 
+  * we get the \c config/resources.cfg file
+  * in the share directory. Then, it goes through the sections 
+  * of the ressource file and adds it
   * to the Ogre ResourceGroupManager.
   *
   */
@@ -735,7 +745,7 @@ fromMenuToGame(GameState* from, GameState* to){
 
   createViewports();
 
-  GuiManager::getSingleton().detroyTitleOverlay();
+  GuiManager::getSingleton().destroyTitleOverlay();
 
   ColourValue fadeColour( 0.9, 0.9, 0.9 );
   //mSceneMgr->setFog( FOG_LINEAR, fadeColour, 0.0, 350, 515 );
@@ -860,6 +870,15 @@ Camera* RainbruRPG::Core::GameEngine::getCamera(){
   return mCamera;
 }
 
+/** Get the OIS input manager
+  *
+  * Use this if you need a direct access to the currently used
+  * InputManager instance. Even if InputManager is a singleton,
+  * this function can be usefull.
+  *
+  * \sa mInputMgr, InputManager
+  *
+  */
 InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
   return mInputMgr;
 }

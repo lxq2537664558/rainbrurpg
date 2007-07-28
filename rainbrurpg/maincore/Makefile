@@ -69,7 +69,7 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
 	environmentsetup.lo highlightlistener.lo gsconnection.lo \
 	tabnavigation.lo dialogsystem.lo messagebox.lo \
-	gscreateaccount.lo
+	gscreateaccount.lo gsserverlist.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -140,7 +140,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-26
+ISODATE = 2007-07-27
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
@@ -243,7 +243,8 @@ h_sources = gameengine.h			\
 	  tabnavigation.h		\
 	  dialogsystem.h		\
 	  messagebox.h			\
-	  gscreateaccount.h
+	  gscreateaccount.h		\
+	  gsserverlist.h
 
 cc_sources = gameengine.cpp		\
 	  gamestate.cpp			\
@@ -264,7 +265,8 @@ cc_sources = gameengine.cpp		\
 	  tabnavigation.cpp		\
 	  dialogsystem.cpp		\
 	  messagebox.cpp		\
-	  gscreateaccount.cpp
+	  gscreateaccount.cpp		\
+	  gsserverlist.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
@@ -356,6 +358,7 @@ include ./$(DEPDIR)/gsgamebase.Plo
 include ./$(DEPDIR)/gslocaltest.Plo
 include ./$(DEPDIR)/gsmainmenu.Plo
 include ./$(DEPDIR)/gsmenubase.Plo
+include ./$(DEPDIR)/gsserverlist.Plo
 include ./$(DEPDIR)/guiframelistener.Plo
 include ./$(DEPDIR)/guimanager.Plo
 include ./$(DEPDIR)/highlightlistener.Plo

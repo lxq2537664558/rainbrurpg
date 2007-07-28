@@ -88,6 +88,7 @@ namespace RainbruRPG {
       ST_MENU_CONNECT        =0x0001,  //!< The connection menu
       ST_MAIN_MENU           =0x0002,  //!< The main menu state
       ST_CREATE_ACCOUNT      =0x0003,  //!< The create account state
+      ST_SERVER_LIST         =0x0004,  //!< The server list menu state
     };
 
     /** The game engine

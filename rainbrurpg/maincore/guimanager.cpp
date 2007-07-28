@@ -60,7 +60,7 @@ void RainbruRPG::Gui::GuiManager::cleanup(){
   velocity=NULL;
 
   if (mTitleOverlay){
-    detroyTitleOverlay();
+    destroyTitleOverlay();
   }
 
 }
@@ -366,7 +366,7 @@ bool RainbruRPG::Gui::GuiManager::isInGuiFadeOut(){
 /** Destroys the title overlay
   *
   */
-void RainbruRPG::Gui::GuiManager::detroyTitleOverlay(){
+void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
   LOGI("Destroying title overlay");
 
   if (mTitleOverlay){
