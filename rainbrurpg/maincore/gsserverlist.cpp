@@ -342,6 +342,21 @@ void RainbruRPG::Core::gsServerList::setupTabOrder(){
   tabNav.addWidget("RainbruRPG/ServerList/Back");
 }
 
+/** The ServerList key listener
+  *
+  * This function is called when a key is pressed in the 
+  * serverlist. It provide the keyboard-based selection of a server.
+  *
+  * The down and up key moves the selection by one item. The Return or 
+  * Enter key will call onConnectClicked().
+  *
+  * This function is possible cause of gsMenuBase::keyPressed() which is
+  * the keyboard mapping beetwen OIS and CEGUI for all gsMenuBase based
+  * subclasses.
+  *
+  * \param evt The CEGUI event 
+  *
+  */
 bool RainbruRPG::Core::gsServerList::
 onListKeyDown(const CEGUI::EventArgs& e){
   CEGUI::KeyEventArgs evt=static_cast<const CEGUI::KeyEventArgs&>(e);
@@ -349,8 +364,99 @@ onListKeyDown(const CEGUI::EventArgs& e){
   
   if (sc==CEGUI::Key::ArrowDown){
     LOGI("ArrowDown pressed in serverlist");
+    selectNext();
+
   }
   else if(sc==CEGUI::Key::ArrowUp){
     LOGI("ArrowDown pressed in serverlist");
+    selectPrevious();
+  }
+  else if (sc==CEGUI::Key::Return){
+    // If a row is selected
+    if (getSelectedRow()!=-1){
+      CEGUI::EventArgs ea;
+      onConnectClicked(ea);
+    }
   }
 }
+
+int RainbruRPG::Core::gsServerList::getSelectedRow(){
+  CEGUI::ListboxItem * it=serverList->getFirstSelectedItem();
+  if (it){
+    // There is already a selected item
+    for (int i=0; i<serverList->getRowCount(); i++){
+      if (serverList->isItemSelected(CEGUI::MCLGridRef(i, 0))){
+	return i;
+      }
+    }
+  }
+  else{
+    // No item was selected
+    return -1;
+  }
+
+}
+
+void RainbruRPG::Core::gsServerList::
+setRowSelectState(int row, bool state, tRowSelectionDirection dir){
+  LOGCATS("ROW=");
+  LOGCATI(row);
+  LOGCATS(" getRowCount()=");
+  LOGCATI(serverList->getRowCount());
+  LOGCAT();
+  if (row<serverList->getRowCount()){
+    serverList->setItemSelectState(CEGUI::MCLGridRef(row, 0), state);
+    serverList->setItemSelectState(CEGUI::MCLGridRef(row, 1), state);
+    serverList->setItemSelectState(CEGUI::MCLGridRef(row, 2), state);
+
+    // Set the vertial scrollbar scrolling
+    CEGUI::ListboxItem * item=serverList->getFirstSelectedItem();
+    // Get an item height
+    float itemHeight=item->getPixelSize().d_height;
+    // Get the list heiht
+    float listHeight=serverList->getPixelSize().d_height;
+    float listMiddle=(listHeight/2)-itemHeight;
+
+    LOGCATS("itemHeight=");
+    LOGCATF(itemHeight);
+    LOGCATS(" listHeight=");
+    LOGCATF(listHeight);
+    LOGCATS(" row*itemHeith=");
+    LOGCATF(row*itemHeight);
+    LOGCATS(" listMiddle=");
+    LOGCATF(listMiddle);
+    LOGCAT();
+
+    CEGUI::Scrollbar* vsb=serverList->getVertScrollbar();
+    float sp=vsb->getScrollPosition();
+
+    float relItemTop=(row*itemHeight)-sp;
+
+    if (dir==RSD_UP){
+      if (relItemTop<listMiddle-itemHeight){
+	vsb->setScrollPosition(sp-itemHeight);
+      }
+    }
+    else{
+      if (relItemTop>listMiddle){
+	vsb->setScrollPosition(sp+itemHeight);
+      }
+    }
+  }
+}
+
+void RainbruRPG::Core::gsServerList::selectNext(){
+  int row=getSelectedRow();
+  LOGCATS("getSelectedRow()=");
+  LOGCATI(row);
+  LOGCAT();
+  row+=1;
+  setRowSelectState(row, true, RSD_DOWN);
+}
+
+void RainbruRPG::Core::gsServerList::selectPrevious(){
+  int row=getSelectedRow();
+  setRowSelectState(--row, true, RSD_UP);
+
+}
+

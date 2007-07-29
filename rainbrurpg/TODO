@@ -16,7 +16,6 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
-- ServerList : up and down arrows to select one
 - Quarantine alert misfunction
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
@@ -118,7 +117,11 @@ o [mouse] Client
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-152
+
 * v 0.0.5-151
+- ServerList : key moving manage scrollbar
+- ServerList : up and down arrows to select one
 - gsServerList tabOrder implementation
 - gsServerList buttons implementation
 - Feed gsServerList

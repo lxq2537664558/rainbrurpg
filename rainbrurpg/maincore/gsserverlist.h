@@ -41,6 +41,14 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Core{
 
+    /** Defines the direction of a row selection change
+      *
+      */
+    typedef enum{
+      RSD_UP,
+      RSD_DOWN
+    }tRowSelectionDirection;
+
     /** The server list menu
       *
       * If the account connection is accepted, this list appears. Here you
@@ -68,6 +76,11 @@ namespace RainbruRPG {
     private:
       void setupServerList();
       void feedList();
+
+      void selectNext();
+      void selectPrevious();
+      int getSelectedRow();
+      void setRowSelectState(int, bool, tRowSelectionDirection);
 
       /** The server list widget
         *
