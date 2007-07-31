@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 30 jul 2007 : The quanrantine doesn't work anymore    FIXED
  * - 31 may 2007 : Ftp port added when registering server
  * - 22 mar 2007 : ServerLog is not a dock window anymore (A single MDI child)
  * - 16 mar 2007 : Client connection packets received and sent
@@ -58,6 +59,16 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG{
   namespace Server{
     /** The RainbruRPG server main window
+      *
+      * This class manage the RainbruRPG server. 
+      *
+      * \section MainServerWindow_quarantine_sec Quarantine
+      *
+      * The quarantine manager is provided by the QuarantineList but
+      * this class implements a notification system : a Qt timer
+      * regularly call quarantineNotifier() which refresh quarantDir, 
+      * a QDir object that controls if new files are added between two
+      * refresh. If at least one file is new, alert is set to \c true.
       *
       */
     class MainServerWindow : public QMainWindow{

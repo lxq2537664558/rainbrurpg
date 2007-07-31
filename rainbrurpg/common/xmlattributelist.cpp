@@ -43,13 +43,12 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
   GlobalURI gu;
   //  const char* filename=;
   //  const char* filename="http://127.0.0.1/rpg/persoattrb.xml";
-  CurlFileToXml cgf;
-  std::string fn=gu.getXmlAdress("persoattrb.xml");
-  cgf.setFilename(fn.c_str());
-  bool success= cgf.perform();
+  filename=gu.getXmlAdress("persoattrb.xml");
+
+  bool success= CurlFileToXml::perform();
 
   if (success){
-    if (loadDocument(&cgf)){
+    if (loadDocument(this)){
       ret=true;
     }
     else{
@@ -58,7 +57,7 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
     }
   }
   else{
-    long resp=cgf.getServerResponse();
+    long resp=CurlFileToXml::getServerResponse();
     LOGE("An error occured while getting xmlAttrbibuteList");
     cout << "Last server response : " << resp << endl;
     correctlyLoaded=false;
@@ -142,33 +141,6 @@ RainbruRPG::Network::Ident::tAttributeList* RainbruRPG::Network::Ident::
     return NULL;
   }
 }
-
-/** Get the text of the child element of a node
-  *
-  * \param child The XML node we search the text in
-  * \param nodeName The name of the node we search the text of
-  *
-  * \return The text of the node if found or an empty string if not
-  *
-  */
-const char* RainbruRPG::Network::Ident::xmlAttributeList::
-                getXMLTextFromName(TiXmlElement*child, const char* nodeName){
-
-  TiXmlText* textNode;
-
-  TiXmlNode* node=child->FirstChild(nodeName);
-  if (node && node->FirstChild()){
-    textNode=node->FirstChild()->ToText();
-    if (textNode)
-      return  textNode->Value();
-    
-    else  // !textNode
-      return  "";
-  }
-  else    // !node
-    return  "";
-}
-
 
 /** Get an attribute by name or \c NULL if not found
   *

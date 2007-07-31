@@ -1,3 +1,4 @@
 #copy the htmlMakefile.am
+mkdir RainbruRPG.html/
 cp htmlMakefile.am  RainbruRPG.html/Makefile.am
 automake

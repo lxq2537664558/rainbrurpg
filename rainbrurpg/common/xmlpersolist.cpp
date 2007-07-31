@@ -43,19 +43,16 @@ bool RainbruRPG::Network::xmlPersoList::refresh(){
   bool ret;
 
   GlobalURI gu;
-  std::string filename=gu.getXmlAdress("persos.xml");
+  filename=gu.getXmlAdress("persos.xml");
 
-  CurlFileToXml cgf;
-  cgf.setFilename(filename.c_str());
-
-  bool success= cgf.perform();
+  bool success= CurlFileToXml::perform();
 
   if (success){
-    loadDocument(&cgf);
+    loadDocument(this);
     ret=true;
   }
   else{
-    long resp=cgf.getServerResponse();
+    long resp=CurlFileToXml::getServerResponse();
     LOGW("An error occured while getting xmlPersoList");
     cout << "Last server response : " << resp << endl;
     correctlyLoaded=false;
@@ -93,33 +90,6 @@ void RainbruRPG::Network::xmlPersoList::loadDocument(
     correctlyLoaded=false;
     LOGW("An error occured while getting xmlPlayerList");
   }
-}
-
-/** Returns the text element from the \c child and the given node
-  * name.
-  *
-  * \param child The xml element where we must search the node.
-  * \param nodeName The node's name we must find in \c child.
-  *
-  * \return The text store in the \c child's node defined by \c
-  * nodeName. Returns an empty string ("") if none child was found.
-  */  
-const char* RainbruRPG::Network::xmlPersoList::
-                getXMLTextFromName(TiXmlElement*child, const char* nodeName){
-
-  TiXmlText* textNode;
-
-  TiXmlNode* node=child->FirstChild(nodeName);
-  if (node && node->FirstChild()){
-    textNode=node->FirstChild()->ToText();
-    if (textNode)
-      return  textNode->Value();
-    
-    else  // !textNode
-      return  "";
-  }
-  else    // !node
-    return  "";
 }
 
 /** returns the next persoId

@@ -22,6 +22,21 @@
 
 #include "curlgetfile.h"
 
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/fstream.hpp"
+
+/** The destructor
+  *
+  * Here is deleted the \c curlget.xml file.
+  *
+  */
+RainbruRPG::Network::Ident::CurlGetFile::~CurlGetFile(){
+  // Remove curlget.xml
+  boost::filesystem::path path("curlget.xml");
+  boost::filesystem::remove(path);
+
+}
+
 /** Perform the given operation
   *
   * It simply call writeToFile()
@@ -61,6 +76,10 @@ bool RainbruRPG::Network::Ident::CurlGetFile::controlAfter (){
 bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   bool ret=false;
 
+  // Remove curlget.xml
+  boost::filesystem::path path("curlget.xml");
+  boost::filesystem::remove(path);
+
   LOGI("Performing CurlGetFile writeToFile action, filename :");
   LOGCATS( this->filename.c_str() );
   LOGCAT();
@@ -75,7 +94,8 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   // Curl URL setting
   LOGI("==> Setting the licurl URL");
   std::string s=filename;
-  // Penser au 0 terminal	       
+
+  // Think about the \0 terminating string	       
   int len = s.length() + 1;
   std::vector<char> raw(len);
   const char* str = s.c_str();

@@ -74,7 +74,7 @@ namespace RainbruRPG{
 	*
 	* It uses TinyXML to deal with the file.
 	*/
-      class xmlAccountList{
+      class xmlAccountList : public CurlFileToXml{
       public:
 	xmlAccountList();
 	~xmlAccountList();
@@ -92,8 +92,6 @@ namespace RainbruRPG{
 	bool isValidMail(const char*);
 
 	void loadDocument(CurlFileToXml*);
-
-	const char* getXMLTextFromName(TiXmlElement*, const char*);
 
 	/** The global xml document pointer */
 	TiXmlDocument *doc;

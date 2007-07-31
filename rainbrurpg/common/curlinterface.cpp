@@ -77,23 +77,6 @@ bool RainbruRPG::Network::Ident::CurlInterface::cleanup(){
   return true;
 }
 
-/** Change the current filename 
-  *
-  * \param s the new filename
-  */
-void RainbruRPG::Network::Ident::CurlInterface::setFilename(const char* s){
-  this->filename=s;
-}
-
-/** Gets the current filename
-  *
-  * \return The filename value
-  */
-const char* RainbruRPG::Network::Ident::CurlInterface::getFilename(){
-  return this->filename.c_str();
-}
-
-
 /** Set the write function to the curl CURLOPT_WRITEFUNCTION option
   *
   *
@@ -109,7 +92,10 @@ void RainbruRPG::Network::Ident::CurlInterface::setWriteFunction(void* f){
     LOGW("Cannot set a WriteFunction, the handle is undefined");
 }
 
-/** Install the default write function : writeData
+/** Install the default write function 
+  *
+  * The default write function is\ref RainbruRPG::Network::Ident::writeData()
+  * "writeData()"
   *
   */
 void RainbruRPG::Network::Ident::CurlInterface::setDefaultWriteFunction(){

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  *
  *  This file is part of RainbruRPG.
  *
@@ -17,6 +17,11 @@
  *  along with RainbruRPG; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  *  02110-1301  USA
+ *
+ */
+
+/* Modifications :
+ * - 29 jul 2007 : getXMLTextFromName is now implemented here
  *
  */
 
@@ -49,8 +54,11 @@ namespace RainbruRPG {
       protected:
 	virtual bool controlBefore ();
 	virtual bool controlAfter ();
+
 	bool fileToxml();
-      private:
+ 	const char* getXMLTextFromName(TiXmlElement*, const char*);
+
+     private:
 	/** The TinyXML document instance */
 	TiXmlDocument *doc;
       };

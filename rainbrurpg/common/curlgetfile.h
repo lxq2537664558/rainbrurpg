@@ -21,6 +21,7 @@
  */
 
 /* Modification :
+ * - 31 jul 2007 : Remove curlget.xml
  * - 02 mar 2007 : Using LOGCAT() instead of cout
  *
  */
@@ -47,6 +48,7 @@ namespace RainbruRPG {
 	*/
       class CurlGetFile : public CurlInterface{
       public:
+	virtual ~CurlGetFile();
 	virtual bool perform();
 
       protected:

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  *
  *  This file is part of RainbruRPG.
  *
@@ -88,7 +88,8 @@ TiXmlDocument* RainbruRPG::Network::Ident::CurlFileToXml::getXmlDocument(){
 
 /** Get the XML file and send it to a TinyXML document
   *
-  * It uses writeToFile to store the server file in a curlget.xml local
+  * It uses \ref RainbruRPG::Network::Ident::CurlGetFile::writeToFile() 
+  * "writeToFile" to store the server file in a curlget.xml local
   * file and open it with TinyXML
   *
   * \return \c true if the document was correctly loaded
@@ -109,4 +110,31 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
     LOGW("The writeToFile operation failed");
     return false;
   }
+}
+
+/** Returns the text element from the \c child and the given node
+  * name.
+  *
+  * \param child The xml element where we must search the node.
+  * \param nodeName The node's name we must find in \c child.
+  *
+  * \return The text store in the \c child's node defined by \c
+  * nodeName. Returns an empty string ("") if none child was found.
+  */  
+const char* RainbruRPG::Network::Ident::CurlFileToXml::
+getXMLTextFromName(TiXmlElement*child, const char* nodeName){
+
+  TiXmlText* textNode;
+
+  TiXmlNode* node=child->FirstChild(nodeName);
+  if (node && node->FirstChild()){
+    textNode=node->FirstChild()->ToText();
+    if (textNode)
+      return  textNode->Value();
+    
+    else  // !textNode
+      return  "";
+  }
+  else    // !node
+    return  "";
 }

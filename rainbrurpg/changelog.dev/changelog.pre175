@@ -1,0 +1,19 @@
+
+* v 0.0.5-151
+- ServerList : key moving manage scrollbar
+- ServerList : up and down arrows to select one
+- gsServerList tabOrder implementation
+- gsServerList buttons implementation
+- Feed gsServerList
+- gsServerList implementation
+- The localtest doesn't found title overlay if we come from the
+  netgame menu (it doesn't exist anymore)
+- GuiManager::detroyTitleOverlay renamed GuiManager::destroyTitleOverlay
+- gsconnect : test if username is empty
+- Using Alt+key more than one time doesn't work
+- Manage Home and End keys in edit box
+- Enter mail address wuth Alt key is a char                 FIXED
+- gsCreateAccount submit button
+- Including formulas in vcConstant documentation
+- gsMenuBase::setupTabOrder(and subclasses) implementation
+- tabNavigation::reset()

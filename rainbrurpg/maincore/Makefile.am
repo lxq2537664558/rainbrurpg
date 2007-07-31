@@ -21,11 +21,12 @@ h_sources=gameengine.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  gsconnection.h		\
-	  tabnavigation.h		\
+	  keyboardnavigation.h		\
 	  dialogsystem.h		\
 	  messagebox.h			\
 	  gscreateaccount.h		\
-	  gsserverlist.h
+	  gsserverlist.h		\
+	  gsupdatedatafiles.h
 
 cc_sources=gameengine.cpp		\
 	  gamestate.cpp			\
@@ -43,11 +44,12 @@ cc_sources=gameengine.cpp		\
 	  environmentsetup.cpp		\
 	  highlightlistener.cpp		\
 	  gsconnection.cpp		\
-	  tabnavigation.cpp		\
+	  keyboardnavigation.cpp	\
 	  dialogsystem.cpp		\
 	  messagebox.cpp		\
 	  gscreateaccount.cpp		\
-	  gsserverlist.cpp
+	  gsserverlist.cpp		\
+	  gsupdatedatafiles.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 31 jul 2007 : Ogre3D log partially deactivate
  * - 24 jul 2007 : showMessageBox implementaion
  *
  */

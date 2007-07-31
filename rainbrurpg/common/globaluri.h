@@ -40,7 +40,9 @@
 
 #include "logger.h"
 
-#define WEBSITE_DEBUG
+#ifdef RAINBRU_RPG_DEBUG
+#  define WEBSITE_DEBUG
+#endif
 
 using namespace std;
 using namespace boost::filesystem;

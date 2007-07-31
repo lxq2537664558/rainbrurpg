@@ -47,12 +47,6 @@ class CurlGetFileTest : public CPPUNIT_NS::TestFixture
   /// Start the test 
   CPPUNIT_TEST_SUITE( CurlGetFileTest );
 
-  /** Tests the filename
-    *
-    * \sa testFilename
-    *
-    */
-  CPPUNIT_TEST( testFilename );
 
   /** Tests the default server response
     *
@@ -101,20 +95,6 @@ public:
     delete this->m_caption; 
   }
   
-  /** Tests the filename
-    *
-    * It simply set a new text and test if the 
-    * string given by getFilename() is the same.
-    *
-    */
-  void testFilename(){ 
-    const char* t="filename";
-    this->m_caption->setFilename(t);
-    const char* ret=this->m_caption->getFilename();
-    int cmp=strcmp(ret, t);
-    CPPUNIT_ASSERT( cmp==0 );
-  }
-
   /** Tests the default server response
     *
     * It should be -1.

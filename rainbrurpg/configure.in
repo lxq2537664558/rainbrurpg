@@ -8,7 +8,7 @@ AM_CONFIG_HEADER(config.h)
 AC_SUBST(VERSION)
 
 AC_DEFINE([BUILD_RELEASE], [], [The build release number])
-AC_DEFINE_UNQUOTED(BUILD_RELEASE, "151")
+AC_DEFINE_UNQUOTED(BUILD_RELEASE, "152")
 
 
 
@@ -114,6 +114,8 @@ dnl #################################################################"""
 
 dnl Conditionnal library linking
 RB_CONDITIONNAL_LINKING_LIB_MAGIC
+
+RB_OPTION_DEBUG
 
 dnl Checks for header files.
 AC_HEADER_STDC

@@ -210,6 +210,8 @@ onConnectClicked(const CEGUI::EventArgs& evt){
     LOGCATS(cName);
     LOGCATS(" Pwd :");
     LOGCATS(cPwd);
+    LOGCATS(" HS :");
+    LOGCATS(hashPwd.c_str());
     LOGCAT();
 
     // connection successfull

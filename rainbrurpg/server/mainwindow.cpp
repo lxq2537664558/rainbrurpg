@@ -656,27 +656,40 @@ void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
 
 /** Visualy notify the user that some files are waiting for approval
   *
+  * It first refreshes the \ref MainServerWindow::quarantDir 
+  * "quarantDir" QDir object. If new files
+  * are detected (by comparing \c quarantDir->count() and 
+  * \ref MainServerWindow::numQuarantFiles "numQuarantFiles"
+  * it launch a visual (SystemTrayIcon) and audio (beep()) alert. 
+  * quarantine is also refreshed if it exist.
+  *
+  * \note This is a slot, regularly called by a Qt timer.
+  *
   */
 void RainbruRPG::Server::MainServerWindow::quarantineNotifier(){
+  LOGI("quarantineNotifier called");
   quarantDir->refresh();
   uint i=quarantDir->count();
 
   // If new files are arrived, alert
   if (i!=numQuarantFiles ){ 
+    LOGI("A new file arrived");
     numQuarantFiles=i;
 
     if (quarantineList){
       quarantineList->refresh();
+
+      if (!quarantineList->isVisible()){
+	alert=true;
+      }
     }
-    else{
-      alert=true;
-      QApplication::alert(this);
-      QApplication::beep();
-      systemTrayIcon->showMessage("RainbruRPG Server's quarantine",
+
+    QApplication::alert(this);
+    QApplication::beep();
+    systemTrayIcon->showMessage("RainbruRPG Server's quarantine",
 	"Some files in quarantine are waiting for approval. Please go to "
 	"the manage/quarantine menu of the server to approve or refuse it.",
 	QSystemTrayIcon::Warning);
-    }
   }
 
   // If an alert was declared
@@ -716,6 +729,10 @@ focusChanged(QWidget* old, QWidget* now){
 }
 
 /** A slot called when the SystemTrayIcon is clicked
+  *
+  * It intends to show this window if the SystemTrayIcon is mouse-clicked.
+  * But, at least on Gnome, it appears that it work only if we are on
+  * the same workspace (aka virtual desktop).
   *
   * \param reason The event type
   *

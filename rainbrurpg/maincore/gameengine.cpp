@@ -26,6 +26,8 @@
 #include <OGRE/OgreRenderSystem.h>
 #include <OGRE/OgreIteratorWrappers.h>
 #include <OGRE/OgreSceneManagerEnumerator.h>
+#include <OGRE/OgreLogManager.h>
+
 #include <CEGUI/CEGUIDefaultLogger.h>
 
 #include <logger.h>
@@ -390,6 +392,17 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   if (!Ogre::Root::getSingleton().restoreConfig())
     LOGE("The Ogre configuration cannot be restored");
 
+  bool  	defaultLog = true;
+  bool  	debuggerOutput = false;
+  bool  	suppressFileOutput = false;
+  Ogre::Log* log=Ogre::LogManager::getSingleton()
+    .createLog("Ogre.log", defaultLog, debuggerOutput, suppressFileOutput);
+
+  Ogre::LogManager::getSingleton().setDefaultLog(log);
+
+  log->setLogDetail(Ogre::LL_BOREME);
+
+
   // True for autocreate window
   Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
 
@@ -400,8 +413,19 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   std::string dataPath=gu.getShareFile("data");
   Ogre::Root::getSingleton().addResourceLocation(dataPath, "FileSystem");
 
+
+#ifdef RAINBRU_RPG_DEBUG
+  bool fullscreen=false;
+  int winWidth=640;
+  int winHeight=480;
+#else
+  bool fullscreen=true;
+  int winWidth=1024;
+  int winHeight=768;
+#endif // RAINBRU_RPG_DEBUG
+
   mWindow=Ogre::Root::getSingleton().getRenderSystem()
-    ->createRenderWindow("RainbruRPG2", 640, 480, false);
+    ->createRenderWindow("RainbruRPG2", winWidth, winHeight, fullscreen);
   
   initOIS();
 
@@ -424,8 +448,10 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   // Set default mipmap level (NB some APIs ignore this)
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-
+#ifdef RAINBRU_RPG_DEBUG
   GuiManager::getSingleton().createNumDebugWindow(mWindow);
+#endif
+
   GuiManager::getSingleton().createTitleOverlay(mWindow);
   
 }

@@ -41,13 +41,6 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Core{
 
-    /** Defines the direction of a row selection change
-      *
-      */
-    typedef enum{
-      RSD_UP,
-      RSD_DOWN
-    }tRowSelectionDirection;
 
     /** The server list menu
       *
@@ -71,16 +64,10 @@ namespace RainbruRPG {
 
       bool onListSelectionChange(const CEGUI::EventArgs&);
       bool onListDoubleClick(const CEGUI::EventArgs&);
-      bool onListKeyDown(const CEGUI::EventArgs&);
 
     private:
       void setupServerList();
       void feedList();
-
-      void selectNext();
-      void selectPrevious();
-      int getSelectedRow();
-      void setRowSelectState(int, bool, tRowSelectionDirection);
 
       /** The server list widget
         *

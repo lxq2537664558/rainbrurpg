@@ -46,6 +46,12 @@ namespace RainbruRPG{
 
     /** Computes the SHA-1 hashsum of a file
       *
+      * This class is used to compute the hashsum of a file. It is mainly
+      * used during the datafiles update process. The SHA-1 algorythm
+      * is provided by the Sha1 class.
+      *
+      * \sa \ref Rainbru::Network::Ident::HashPassword "HashPassword" to
+      *     compute the hashsum of a password.
       *
       */
     class HashFile{

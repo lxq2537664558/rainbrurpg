@@ -6,7 +6,7 @@ rainbrurpg_tools_hashsum_LDADD=-lrainbrurpg-common
 glib_cflags = $(shell pkg-config sigc++-2.0 --cflags) 
 
 
-INCLUDES = -I$(top_srcdir)/common $(glib_cflags)
+INCLUDES = -I$(top_srcdir)/common $(glib_cflags) -I/usr/local/include/CEGUI
 
 rainbrurpg_tools_hashsum_SOURCES = main.cpp
 

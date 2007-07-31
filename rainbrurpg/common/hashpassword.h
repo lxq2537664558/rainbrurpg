@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 31 jul 2007 : Remove decryptString() (function)
  * - 02 mar 2007 : Disable a cout that make a line break in stdout
  *
  */
@@ -46,20 +47,23 @@ namespace RainbruRPG {
 
       /** Class used to compute password's hashsum 
         *
+	* This class is used to compute hashsum of a password using
+	* the SHA-1 algorythm implemented in the Sha1 class.
+	*
+	* \sa \ref RainbruRPG::Core::HashFile "HashFile" to compute the
+	*     hashsum of a file.
+	*
 	*/
         class HashPassword {
         public:
-            HashPassword();
-            ~HashPassword();
-
-            std::string encryptString(const char *instr);
-            std::string decryptString(const char *instr);
-
-	    bool compare(const char*, const char*);
-        private:
-            std::string  getMessageDigest(unsigned *message_digest);
-
-      };
+	  HashPassword();
+	  ~HashPassword();
+	  
+	  std::string encryptString(const char *instr);
+	  
+	  bool compare(const char*, const char*);
+	  
+	};
     }
   }
 }

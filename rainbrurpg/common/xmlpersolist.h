@@ -82,7 +82,7 @@ namespace RainbruRPG{
 	* It uses CurlFileToXml to et the character list and tinyxml to
 	* reading it.
 	*/
-      class xmlPersoList{
+      class xmlPersoList: public CurlFileToXml{
       public:
 	xmlPersoList();
 	~xmlPersoList();
@@ -97,8 +97,6 @@ namespace RainbruRPG{
 	void loadDocument(CurlFileToXml*);
 	void feedPersoList(TiXmlElement*, tPersoListItem*);
 
-
-	const char* getXMLTextFromName(TiXmlElement*, const char*);
 
 	/** The global xml document pointer */
 	TiXmlDocument *doc;

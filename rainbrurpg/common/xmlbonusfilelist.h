@@ -83,7 +83,7 @@ namespace RainbruRPG{
 	* It uses TinyXML to deal with the xml file.
 	*
 	*/
-      class xmlBonusFileList{
+      class xmlBonusFileList: public CurlFileToXml{
       public:
 	xmlBonusFileList();
 	~xmlBonusFileList();
@@ -94,8 +94,6 @@ namespace RainbruRPG{
 
       private:
 	bool loadDocument(CurlFileToXml*);
-
-	const char* getXMLTextFromName(TiXmlElement*, const char*);
 
 	/** The global xml document pointer */
 	TiXmlDocument *doc;

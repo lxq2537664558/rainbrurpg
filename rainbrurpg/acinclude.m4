@@ -535,7 +535,35 @@ AC_DEFUN([RB_CONDITIONNAL_LINKING_LIB_MAGIC],
     ])
 
   ])
+])
 
+dnl Defines the DEBUG option
+dnl
+dnl Provides the --enable-debug to enable local administration site
+dnl and information logging
+dnl
+AC_DEFUN([RB_OPTION_DEBUG],
+[
+  AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],
+    [Build the package with local admin-site authentification and
+       informative logging informations. Should be for developpers only.
+       (default=no)]),
+    [build_debug=$enableval], 
+    [build_debug=no])
 
+  AC_MSG_CHECKING([if we should define DEBUG])
 
+  case $build_debug in
+    yes)
+      AC_MSG_RESULT(yes)
+      AC_DEFINE([RAINBRU_RPG_DEBUG], [], [Activate local website 
+                 administration and intensive informative logging 
+                 informations])
+      ;;
+    *)
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+#  AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
+#  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
 ])

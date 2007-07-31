@@ -32,9 +32,11 @@
 #include "gamestate.h"
 #include "velocitycalculator.h"
 #include "inputwrapper.h"
-#include "tabnavigation.h"
+#include "keyboardnavigation.h"
 
 using namespace Ogre;
+
+using namespace RainbruRPG::Gui;
 
 namespace RainbruRPG {
   namespace Core{
@@ -73,22 +75,13 @@ namespace RainbruRPG {
  
       /** \brief Implements the focus tab order
         *
-	* You \b must override this to setup the tabOrder. example :
-	* <pre>
-	*   tabNav.clear();
-	*   tabNav.setParent("RainbruRPG/Connection");
-	*   tabNav.addWidget("RainbruRPG/Connection/Name");
-	*   tabNav.addWidget("RainbruRPG/Connection/Pwd");
-	*   tabNav.addWidget("Connect");
-	*   tabNav.addWidget("CreateAccount");
-	*   tabNav.addWidget("LostPassword");
-	*   tabNav.addWidget("Back");
-	* </pre>
+	* You \b must override this to setup the tabOrder.
 	*
 	* This function should be called in the init() function \b after 
 	* the CEGUI layout was loaded and in the resume() function.
 	*
-	* \sa \ref RainbruRPG::Core::gsMenuBase::tabNav "tabNav"
+	* \sa \ref RainbruRPG::Core::gsMenuBase::tabNav "tabNav",
+	*     KeyboardNavigation.
 	*
 	*/
       virtual void setupTabOrder()=0;
@@ -157,7 +150,7 @@ namespace RainbruRPG {
 	* setupTabOrder()).
 	*
         */
-      TabNavigation tabNav;
+      KeyboardNavigation tabNav;
     };
 
   }

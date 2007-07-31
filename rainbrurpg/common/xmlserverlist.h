@@ -106,8 +106,6 @@ namespace RainbruRPG{
 	bool refresh();
 
       private:
-	const char* getXMLTextFromName(TiXmlElement*, const char*);
-
 	/** The global xml document pointer */
 	TiXmlDocument *doc;
 	/** A global pointer to the \c ServerList xml node */

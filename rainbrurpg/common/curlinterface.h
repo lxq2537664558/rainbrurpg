@@ -22,10 +22,11 @@
 
 /* 
  * Modifications :
- * - 03 mar 2007 Some functions become protected :
- *                 setDefaultWriteFunction, setWrittenData, setWriteFunction
+ * - 29 jul 2007 : setFilename and getFilename removed
+ * - 03 mar 2007 : Some functions become protected :
+ *                   setDefaultWriteFunction, setWrittenData, setWriteFunction
  *	           
- * - 25 feb 2007 Documentation updates
+ * - 25 feb 2007 : Documentation updates
  *
  */
 
@@ -75,9 +76,6 @@ namespace RainbruRPG {
 	  *
 	  */
 	virtual bool perform()=0;
-
-	const char* getFilename();
-	void setFilename(const char* );
 
 
 	long getServerResponse();

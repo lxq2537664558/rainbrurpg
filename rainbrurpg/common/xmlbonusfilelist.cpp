@@ -43,9 +43,8 @@ bool RainbruRPG::Network::Ident::xmlBonusFileList::refresh(){
   GlobalURI gu;
 
   CurlFileToXml cgf;
-  std::string fn=gu.getXmlAdress("bonusfilelist.xml");
-  cgf.setFilename(fn.c_str());
-  bool success= cgf.perform();
+  filename=gu.getXmlAdress("bonusfilelist.xml");
+  bool success= CurlFileToXml::perform();
 
   if (success){
     if (loadDocument(&cgf)){
@@ -57,7 +56,7 @@ bool RainbruRPG::Network::Ident::xmlBonusFileList::refresh(){
     }
   }
   else{
-    long resp=cgf.getServerResponse();
+    long resp=CurlFileToXml::getServerResponse();
     LOGE("An error occured while getting xmlBonusFile");
     cout << "Last server response : " << resp << endl;
     correctlyLoaded=false;
@@ -139,31 +138,4 @@ xmlBonusFileList::getBonusFileList(){
   }
 
 }
-
-/** Get the text of the child element of a node
-  *
-  * \param child The XML node we search the text in
-  * \param nodeName The name of the node we search the text of
-  *
-  * \return The text of the node if found or an empty string if not
-  *
-  */
-const char* RainbruRPG::Network::Ident::xmlBonusFileList::
-                getXMLTextFromName(TiXmlElement*child, const char* nodeName){
-
-  TiXmlText* textNode;
-
-  TiXmlNode* node=child->FirstChild(nodeName);
-  if (node && node->FirstChild()){
-    textNode=node->FirstChild()->ToText();
-    if (textNode)
-      return  textNode->Value();
-    
-    else  // !textNode
-      return  "";
-  }
-  else    // !node
-    return  "";
-}
-
 

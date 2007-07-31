@@ -6796,9 +6796,30 @@ m4trace:acinclude.m4:516: -1- AC_DEFUN([RB_CONDITIONNAL_LINKING_LIB_MAGIC], [
     ])
 
   ])
+])
+m4trace:acinclude.m4:545: -1- AC_DEFUN([RB_OPTION_DEBUG], [
+  AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],
+    [Build the package with local admin-site authentification and
+       informative logging informations. Should be for developpers only.
+       (default=no)]),
+    [build_debug=$enableval], 
+    [build_debug=no])
 
+  AC_MSG_CHECKING([if we should define DEBUG])
 
-
+  case $build_debug in
+    yes)
+      AC_MSG_RESULT(yes)
+      AC_DEFINE([RAINBRU_RPG_DEBUG], [], [Activate local website 
+                 administration and intensive informative logging 
+                 informations])
+      ;;
+    *)
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+#  AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
+#  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
 ])
 m4trace:configure.in:3: -1- m4_pattern_forbid([^_?A[CHUM]_])
 m4trace:configure.in:3: -1- m4_pattern_forbid([_AC_])
@@ -9648,31 +9669,37 @@ m4trace:configure.in:116: -1- m4_pattern_allow([^HAVE_LIBQTGUI$])
 m4trace:configure.in:116: -1- m4_pattern_allow([^HAVE_LIBQTNETWORK$])
 m4trace:configure.in:116: -1- m4_pattern_allow([^HAVE_LIBQT3SUPPORT$])
 m4trace:configure.in:116: -1- m4_pattern_allow([^BUILD_LIB_DESIGN$])
-m4trace:configure.in:119: -1- m4_pattern_allow([^STDC_HEADERS$])
-m4trace:configure.in:122: -1- jm_CHECK_TYPE_STRUCT_UTIMBUF
-m4trace:configure.in:122: -1- m4_pattern_allow([^TIME_WITH_SYS_TIME$])
-m4trace:configure.in:122: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
+m4trace:configure.in:118: -1- RB_OPTION_DEBUG
+m4trace:configure.in:118: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
+You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
+acinclude.m4:545: RB_OPTION_DEBUG is expanded from...
+configure.in:118: the top level])
+m4trace:configure.in:118: -1- m4_pattern_allow([^RAINBRU_RPG_DEBUG$])
+m4trace:configure.in:121: -1- m4_pattern_allow([^STDC_HEADERS$])
+m4trace:configure.in:124: -1- jm_CHECK_TYPE_STRUCT_UTIMBUF
+m4trace:configure.in:124: -1- m4_pattern_allow([^TIME_WITH_SYS_TIME$])
+m4trace:configure.in:124: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
 You should run autoupdate.], [../../lib/autoconf/general.m4:2367: AC_TRY_COMPILE is expanded from...
 ../../lib/m4sugar/m4sh.m4:516: AS_IF is expanded from...
 ../../lib/autoconf/general.m4:1898: AC_CACHE_VAL is expanded from...
 ../../lib/autoconf/general.m4:1911: AC_CACHE_CHECK is expanded from...
 acinclude.m4:9: jm_CHECK_TYPE_STRUCT_UTIMBUF is expanded from...
-configure.in:122: the top level])
-m4trace:configure.in:122: -1- m4_pattern_allow([^HAVE_STRUCT_UTIMBUF$])
-m4trace:configure.in:123: -1- m4_pattern_allow([^MAJOR_IN_MKDEV$])
-m4trace:configure.in:123: -1- m4_pattern_allow([^MAJOR_IN_SYSMACROS$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^HAVE_ALLOCA_H$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^HAVE_ALLOCA$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^ALLOCA$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^C_ALLOCA$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^CRAY_STACKSEG_END$])
-m4trace:configure.in:124: -1- m4_pattern_allow([^STACK_DIRECTION$])
-m4trace:configure.in:125: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
-m4trace:configure.in:126: -1- m4_pattern_allow([^HAVE_STRUCT_STAT_ST_BLOCKS$])
-m4trace:configure.in:126: -1- m4_pattern_allow([^HAVE_ST_BLOCKS$])
-m4trace:configure.in:126: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.in:127: -1- m4_pattern_allow([^CLOSEDIR_VOID$])
-m4trace:configure.in:183: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.in:183: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.in:183: -1- _AC_AM_CONFIG_HEADER_HOOK([$ac_file])
-m4trace:configure.in:183: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+configure.in:124: the top level])
+m4trace:configure.in:124: -1- m4_pattern_allow([^HAVE_STRUCT_UTIMBUF$])
+m4trace:configure.in:125: -1- m4_pattern_allow([^MAJOR_IN_MKDEV$])
+m4trace:configure.in:125: -1- m4_pattern_allow([^MAJOR_IN_SYSMACROS$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^HAVE_ALLOCA_H$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^HAVE_ALLOCA$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^ALLOCA$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^C_ALLOCA$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^CRAY_STACKSEG_END$])
+m4trace:configure.in:126: -1- m4_pattern_allow([^STACK_DIRECTION$])
+m4trace:configure.in:127: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
+m4trace:configure.in:128: -1- m4_pattern_allow([^HAVE_STRUCT_STAT_ST_BLOCKS$])
+m4trace:configure.in:128: -1- m4_pattern_allow([^HAVE_ST_BLOCKS$])
+m4trace:configure.in:128: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.in:129: -1- m4_pattern_allow([^CLOSEDIR_VOID$])
+m4trace:configure.in:185: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.in:185: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.in:185: -1- _AC_AM_CONFIG_HEADER_HOOK([$ac_file])
+m4trace:configure.in:185: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

@@ -40,9 +40,8 @@ RainbruRPG::Network::Ident::xmlServerList::xmlServerList(){
   */
 bool RainbruRPG::Network::Ident::xmlServerList::refresh(){
   GlobalURI gu;
-  std::string fn=gu.getXmlAdress("servers.xml");
+  filename=gu.getXmlAdress("servers.xml");
 
-  CurlFileToXml::setFilename(fn.c_str());
   CurlFileToXml::perform();
   doc=CurlFileToXml::getXmlDocument();
 
@@ -55,34 +54,6 @@ bool RainbruRPG::Network::Ident::xmlServerList::refresh(){
 RainbruRPG::Network::Ident::xmlServerList::~xmlServerList(){
   doc=NULL;
   root=NULL;
-}
-
-/** Get the child text of the given child
-  *
-  * \param child The parent of the wanted text
-  * \param nodeName The node name of the text you want
-  *
-  * \return The text of the named child's node of child
-  *
-  */
-const char* RainbruRPG::Network::Ident::xmlServerList::getXMLTextFromName (
-					       TiXmlElement* child, 
-					       const char* nodeName){
-
-  TiXmlText* textNode;
-
-  TiXmlNode* node=child->FirstChild(nodeName);
-  if (node && node->FirstChild()){
-    textNode=node->FirstChild()->ToText();
-    if (textNode)
-      return  textNode->Value();
-    
-    else  // !textNode
-      return  "";
-  }
-  else    // !node
-    return  "";
-
 }
 
 /** Get the list of servers

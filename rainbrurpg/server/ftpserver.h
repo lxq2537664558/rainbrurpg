@@ -53,7 +53,7 @@ namespace RainbruRPG{
 	*
 	* Is you're running GNU/Linux, the shell command  
 	* <code>netstat -tulpn</code> can be usefull. It tells you which 
-	* port are listened be the server.
+	* port are listened by the server.
 	* 
 	*/
       class FtpServer : public QWidget{

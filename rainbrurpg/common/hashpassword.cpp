@@ -39,6 +39,8 @@ RainbruRPG::Network::Ident::HashPassword::~HashPassword(){
 
 /** Returns the parameter, encrypted by the SHA-1 alorythm
   *
+  * The SHA-1 computation is provided by the Sha1 class.
+  *
   * \param instr The string to encrypt
   * \return the string passed in parameter, encrypted by the SHA-1
   *         algorythm
@@ -51,8 +53,20 @@ std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
   SHA1Context sha;
   uint8_t Message_Digest[20];
 
+  /* FIX a bug
+   *
+   * If I pass as third parameter of SHA1Input strlen(), it makes
+   * hashsum from CEGUI String and const char* differents. I think
+   * it is due to a different \0 terminating character.
+   *
+   * Sending strlen-1 fix this bug and makes compatible tools-hashsum -p
+   * with password passed in the gsconnection game state.
+   *
+   */
+  size_t len=strlen(instr)-1;
+
   Sha1::SHA1Reset(&sha);
-  Sha1::SHA1Input( &sha, (const uint8_t*) instr, strlen(instr));
+  Sha1::SHA1Input( &sha, (const uint8_t*) instr, len);
   Sha1::SHA1Result( &sha, Message_Digest);
 
 
@@ -64,48 +78,9 @@ std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
   return out;
 }
 
-/** This functions is no longer in use
-  *
-  * \param instr Not yet implemented
-  *
-  * \return Not yet implemented
-  */
-std::string RainbruRPG::Network::Ident::HashPassword::decryptString(
-                          const char *instr){
-    string outstr;
-    // Nothing here
-    LOGW("This function is not implemented");
-
-    return outstr;
-}
-
-/** This functions is no longer in use
-  *
-  * \param message_digest A var used inernally by the encryptString function.
-  *
-  * \return The encrypted password in a nice way
-  */
-std::string RainbruRPG::Network::Ident::HashPassword::
-                    getMessageDigest(unsigned *message_digest){
-    ios::fmtflags	flags;
-
-    ostringstream out;
-
-    flags = out.setf(ios::hex|ios::uppercase,ios::basefield);
-    out.setf(ios::uppercase);
-
-    for(int i = 0; i < 5 ; i++){
-        out << message_digest[i] << ' ';
-    }
-
-    //    cout << endl;
-
-    //    cout.setf(flags);
-    return out.str();
-}
-
 /** Compare two hashsums
   *
+  * I need to compare char by char.
   * It is due to null-terminal char not handled by strcmp.
   *
   * \param p1 The first hashsum
@@ -118,9 +93,6 @@ bool RainbruRPG::Network::Ident::HashPassword::compare(const char* p1,
 
   bool ret=true;
   char c1, c2;
-
-  LOGI(p1);
-  LOGI(p2);
 
   string s1(p1);
   string s2(p2);

@@ -33,7 +33,6 @@
 #include <hashpassword.h>
 #include <curlaccountadd.h>
 
-#include "tabnavigation.h"
 #include "gsmenubase.h"
 #include "vcconstant.h"
 #include "guimanager.h"
@@ -45,7 +44,8 @@ namespace RainbruRPG {
 
     /** The game state provided to submit an account creation
       *
-      *
+      * This class show a creen (CEGUI layout) used to submit
+      * an account creation to the administration site.
       *
       */
     class gsCreateAccount : public gsMenuBase{

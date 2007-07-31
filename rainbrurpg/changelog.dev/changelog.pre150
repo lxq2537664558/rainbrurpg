@@ -1,3 +1,20 @@
+* v 0.0.5-150
+- gsCreateAccount tab navigation
+- gsCreateAccount implementation
+- Doxygen documentation
+- SEGFAULT due to messageBox when changing Gamestate        FIXED
+- gsConnection button implementation
+- An error in gsConneciotn button 'Back'
+- MessageBox for the connection response
+- DialogSystem in RainbruRPG::Gui namespace
+- MessageBox in RainbruRPG::Gui namespace
+- SimpleDialog become MessageBox
+- GuiManager::showMessage(...);
+- Makes the SimpleDialog class work
+- SEGFAULT when exiting the game                            FIXED
+- SimpleDialog : OK click closes it
+- SimpleDialog title implementation
+
 * v 0.0.5-149
 - SimpleDialog become a real class
 - DialogSystem become a part of this project

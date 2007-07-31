@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef TEST_H
-#define TEST_H
+#ifndef _LOGGER_H
+#define _LOGGER_H
 
 #include <iostream>
 #include <fstream>
@@ -29,6 +29,7 @@
 #include <sstream>
 
 #include "singleton.h"
+#include "config.h"
 
 /** A macro used to fixe a \c __LINE__ bug
   *
@@ -49,8 +50,11 @@
   *
   * \param STRING the information message
   */
-#define LOGI(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),1,STRING );
-
+#ifdef RAINBRU_RPG_DEBUG
+#  define LOGI(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),1,STRING );
+#else
+#  define LOGI(STRING) //
+#endif
 /** A Warning macro for Logger
   *
   * The \c #define's based macro \c LOGW provides a warning log.
@@ -152,12 +156,13 @@ namespace RainbruRPG{
       *
       * The code corresponding to this log would be :
       *
-      * <pre>LOGI("Receiving an object");
-      *LOGCATS("Object name '");
-      *LOGCATS(Object.name);
-      *LOGCATS("'");
-      *LOGCAT();
-      *</pre>
+      * \code
+      * LOGI("Receiving an object");
+      * LOGCATS("Object name '");
+      * LOGCATS(Object.name);
+      * LOGCATS("'");
+      * LOGCAT();
+      * \endcode
       *
       * Differents data types can be used : \c LOGCATS for const char*, 
       * \c LOGCATI for integer and \c LOGCATF to log float values.
@@ -175,7 +180,7 @@ namespace RainbruRPG{
       * errors message or the errors and warning message. The log messages 
       * are by default send to the stdout and a file called RainbruRPG.log.
       *
-      * \warning I have desactivated std::cout calls in WIN32 with preprocessor
+      * \warning I have deactivated std::cout calls in WIN32 with preprocessor
       * directives. It seems that using std::cout in a GUI application causes
       * Segfaults.
       *
@@ -255,5 +260,5 @@ namespace RainbruRPG{
     };
   }
 }
-#endif// TEST_H
+#endif// _LOGGER_H
 

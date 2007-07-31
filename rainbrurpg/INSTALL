@@ -12,6 +12,9 @@ Basic Installation
 
 These are generic installation instructions.
 
+   The `boostrap' shell script will prepare some files needed by
+the `configure' script. Always launch it after a `make clean' call.
+
    The `configure' shell script attempts to guess correct values for
 various system-dependent variables used during compilation.  It uses
 those values to create a `Makefile' in each directory of the package.
@@ -42,6 +45,7 @@ a newer version of `autoconf'.
 The simplest way to compile this package is:
 
   1. `cd' to the directory containing the package's source code and type
+     `bootstrap'. When it is ended please run the script called 
      `./configure' to configure the package for your system.  If you're
      using `csh' on an old version of System V, you might need to type
      `sh ./configure' instead to prevent `csh' from trying to execute
@@ -275,3 +279,9 @@ Building editor or/and server is optional (please see './configure --help').
 These libraries are needed ONLY if you want to build editor and server :
 - libmagic
 - Qt4 (core, gui, Qt3Support and network)
+
+Removing debugging symbols
+==========================
+
+If you have performance issues, running 'make install-strip' after
+the 'make&&make install' sequence could speed up execution.

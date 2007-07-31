@@ -478,7 +478,19 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   else if (kc==OIS::KC_DOWN){
     CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowDown);
   }
-   else if (kc==OIS::KC_TAB){
+  else if (kc==OIS::KC_PGUP){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::PageUp);
+  }
+  else if (kc==OIS::KC_PGDOWN){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::PageDown);
+  }   
+  else if (kc==OIS::KC_HOME){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Home);
+  }
+  else if (kc==OIS::KC_END){
+    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::End);
+  }   
+  else if (kc==OIS::KC_TAB){
     CEGUI::System::getSingleton().injectChar(9);
   }
   else if (kc==OIS::KC_LSHIFT){

@@ -226,7 +226,10 @@ void RainbruRPG::Exception::Logger::logCat(const char* file, const char* line){
   o += line ;
   o += "]\t-- ";
   o += oss.str() ;
+
+#ifdef RAINBRU_RPG_DEBUG
   out(o.c_str());
+#endif
 
   this->logCatFree();
 }

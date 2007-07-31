@@ -134,6 +134,8 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
   *
   */
 void RainbruRPG::Gui::GuiManager::showFPS(){
+#ifdef RAINBRU_RPG_DEBUG
+
   static String currFps = "Current FPS: ";
   static String avgFps = "Average FPS: ";
   static String bestFps = "Best FPS: ";
@@ -182,7 +184,7 @@ void RainbruRPG::Gui::GuiManager::showFPS(){
     {
       LOGE("Cannot update numeriocDebugWindow");
     }
-
+#endif
 }
 
 /** Loads a CEGUI layout and shows it
@@ -390,6 +392,7 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
   *
   */
 void RainbruRPG::Gui::GuiManager::debugWindow(CEGUI::Window* win){
+#ifdef RAINBRU_RPG_DEBUG
   if (!win){
     LOGW("Cannot debug NULL window");
   }
@@ -429,6 +432,8 @@ void RainbruRPG::Gui::GuiManager::debugWindow(CEGUI::Window* win){
     LOGCATS(" child(s)");
     LOGCAT();
   }
+#endif // RAINBRU_RPG_DEBUG
+
 }
 
 /** Debug the named child
