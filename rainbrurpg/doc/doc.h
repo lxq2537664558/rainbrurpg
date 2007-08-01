@@ -47,13 +47,13 @@
   * \section dep_sec Dependencies
   * \subsection libraries_versions_subsec Libraries versions
   *
-  * To build RainbruRPG you need this libraries :
+  * To build RainbruRPG you need these libraries :
   * - Fox toolkit v1.6 or 1.4
   * - Ogre v1.2(with GLX platform)
   * - OIS (Object-oriented Input System) v1.0
   *
-  * The project also uses Tinyxml as build-in c++ sources. So
-  * you don't need to deal with it.
+  * The project also uses Tinyxml (zlib license) and EasyBMP (modified
+  * BSD license) as build-in c++ sources. So you don't need to deal with it.
   *
   * \subsection ogre_platform_subsec Ogre Platform
   *

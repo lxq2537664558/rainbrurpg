@@ -39,6 +39,7 @@
 #include <list>
 
 #include "logger.h"
+#include "config.h"
 
 #ifdef RAINBRU_RPG_DEBUG
 #  define WEBSITE_DEBUG

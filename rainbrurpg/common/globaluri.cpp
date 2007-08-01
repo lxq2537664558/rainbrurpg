@@ -21,7 +21,6 @@
  */
 
 #include "globaluri.h"
-#include "config.h"
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 
@@ -94,6 +93,7 @@ getXmlAdress(const std::string& file){
   *
   * Calling getUserDirFile(essai.txt) gives /home/user/.RainbruRPG/essai.txt
   *
+  * \param file The filename without path
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
@@ -183,7 +183,10 @@ getShareFile(const std::string& file){
 
 /** Test a file and install it if it doesn't
   *
-  * From $PREFIX/share/config to $HOME/.RainbruRPG/config
+  * Copy the given filename from $PREFIX/share/config to 
+  * $HOME/.RainbruRPG/config
+  *
+  * \param filename The name of the file to install
   *
   */
 void RainbruRPG::Network::GlobalURI::
@@ -293,7 +296,7 @@ getQuarantineFile(const std::string& s){
   * does not exist, this function create it.
   *
   * \param s Only the file name
-  * \param sun The server Unique name
+  * \param sun The server unique name
   *
   * \return The path and the filename
   *

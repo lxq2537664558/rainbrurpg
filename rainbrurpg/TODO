@@ -16,6 +16,7 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Client 
+- MessageBox can be closed with Enter/Return key
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
@@ -29,7 +30,6 @@ o [mouse] Client
    for all connexions
 
 * GameServer
-- A segfault : I don't kow how to reproduce it (is this Bug#22)
 - The HelpViewer is called twice 
    when we click the OK button it appears again
 - Running 2 servers in the same PC is forbiden
@@ -116,6 +116,8 @@ o [mouse] Client
 * *******************************************************
 
 * v 0.0.5-153
+- Cleaning IttClient/
+- TinyXML and EasyBMP licenses are compatible with GPLv3
 - Fix the tools-hashsum pb                         FIXED
 
 * v 0.0.5-152
