@@ -93,7 +93,17 @@ class XmlPlayerInterface extends XmlInterface{
     return parent::getChildText($player, 'Pwd');
   }
 
-  /** Add a player and save the document
+  /** Get the Id used to confirm the mail address
+    *
+    * \param $player The player XML node
+    *
+    * \return The player password or "" if the given player does not exist
+    */
+  function getPlayerConfirmId($player){
+    return parent::getChildText($player, 'ConfirmId');
+  }
+
+   /** Add a player and save the document
     *
     * The Blacklist is set to 'No'.
     *
@@ -103,12 +113,13 @@ class XmlPlayerInterface extends XmlInterface{
     * \param $timestamp The creation timestamp of the new player
     *
     */
-  function addPlayer($name, $mail, $pwd, $timestamp){
+  function addPlayer($name, $mail, $pwd, $timestamp, $confirmId){
     $player=parent::addElementToRoot('Player');
     parent::addTextElementToElement($player, 'Name', $name );
     parent::addTextElementToElement($player, 'Black', 'No' );
     parent::addTextElementToElement($player, 'Mail', $mail );
     parent::addTextElementToElement($player, 'Pwd', $pwd );
+    parent::addTextElementToElement($player, 'ConfirmId', $confirmId );
 
     addTimestamp($player, 'creation', $timestamp);
 
@@ -268,9 +279,15 @@ class XmlPlayerInterface extends XmlInterface{
     * \param $timestamp The confirmation timestamp
     *
     */
-  function confirmMail($playerNode, $timestamp){
+  function confirmMail($playerNode, $timestamp, $confirmId){
     if (!isExistingTimestamp($playerNode,'confirm')){
-      addTimestamp($playerNode, 'confirm', $timestamp);
+      if ($confirmId==$this->getPlayerConfirmId($playerNode)){
+	addTimestamp($playerNode, 'confirm', $timestamp);
+	return true;
+      }
+      else{
+	return false;
+      }
     }
   }
 

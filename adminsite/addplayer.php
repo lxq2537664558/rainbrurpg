@@ -67,11 +67,61 @@ function formaddplayer(){
     else{
       echo 'The player is added';
 
-      $xmlplayer->addPlayer($name, $mail, $pwd, $timestamp);
+      $confirmId=md5(uniqid(mt_rand()));
+      $xmlplayer->addPlayer($name, $mail, $pwd, $timestamp, $confirmId);
+
+
+      // Send a confirmation mail
+      $confirmLink ="http://rainbru.free.fr/rpg/admin/mailconfirm.php?name=";
+      $confirmLink.=$name."&id=".$confirmId;
+      sendConfirmationMail($name, $mail, $confirmLink);
 
     }
   }
 }
+
+ function sendConfirmationMail($name, $mail, $confirmLink){
+   //-----------------------------------------------
+   //DECLARE LES VARIABLES
+   //-----------------------------------------------
+   $sujet='Account verification';
+   $destinataire=$mail;
+   $email_expediteur='rainbru@free.fr';
+   $email_reply='rainbru@free.fr';
+     
+   $message ='
+     <html>
+       <head>
+         <title>RainbruRPG account registration</title>
+       </head>
+       <body>
+         Hi '.$name.','.'<br>
+         <br>
+         You have requested an account creation for RainbruRPG, thanks. 
+         Please go to the following web page to confirm that this 
+         mail address is valid.<br>
+         <a href="'.$confirmLink.'">'.$confirmLink.'</a><br>
+         <br>
+         If you haven'."'".'t requested anything, please contact me :<br>
+         <a href="mailto:'.$email_reply.'">'.$email_reply.'</a><br>
+       </body>
+     </html>';
+
+   $headers ='From: "RainbruRPG admin"<'.$email_expediteur.'>'."\n";
+   $headers .='Reply-To: '.$email_reply."\n";
+   $headers .='Content-Type: text/html; charset="iso-8859-1"'."\n";
+   $headers .='Content-Transfer-Encoding: 8bit';
+   
+
+   if(mail($destinataire,$sujet,$message,$headers)){
+     echo '<br>The mail was correctly sent';
+   }
+   else{
+     echo '<br>An error occured. The message was not sent.';
+   } 
+
+}
+
 
 ?>
 
