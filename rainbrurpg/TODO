@@ -15,7 +15,11 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
-o [mouse] Client 
+o [mouse] Adminsite : automatic EMail validation
+- Removing data/3d/ content
+- Test the whole account creation process   doesn't work
+
+* Client 
 - MessageBox can be closed with Enter/Return key
 - gsUpdateDataFiles implementation
 - client uses EnvironmentSetup in libRainbruRPG-core.so
@@ -116,6 +120,8 @@ o [mouse] Client
 * *******************************************************
 
 * v 0.0.5-153
+- mailconfirm.php uses mail id for confirmation
+- addplayer.php send a confirmation mail (need sendmail)
 - Cleaning IttClient/
 - TinyXML and EasyBMP licenses are compatible with GPLv3
 - Fix the tools-hashsum pb                         FIXED

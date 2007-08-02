@@ -96,13 +96,19 @@ TiXmlDocument* RainbruRPG::Network::Ident::CurlFileToXml::getXmlDocument(){
   *
   */
 bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
-  if (writeToFile()){
+  if (CurlGetFile::writeToFile()){
     doc=new TiXmlDocument( "curlget.xml" );
     if(doc->LoadFile()){
       return true;
     }
     else{
-      LOGW("An error occured while loading curlget.xml");
+      std::string err;
+      err ="An error occured while loading curlget.xml for file '";
+      err+=this->filename;
+      err+="'. Error desc from TinyXML is : '";
+      err+=doc->ErrorDesc();
+      err+="'";
+      LOGW(err.c_str());
       return false;
     }
   }

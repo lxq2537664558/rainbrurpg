@@ -93,8 +93,6 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   handle=curl_easy_init();
   setDefaultWriteFunction();
 
-
-
   // Curl URL setting
   LOGI("==> Setting the licurl URL");
   std::string s2=filename;

@@ -49,7 +49,7 @@ namespace RainbruRPG {
       */
     class gsMenuBase : public GameState{
     public:
-      gsMenuBase(bool);
+      gsMenuBase(bool createMenu);
       /** An empty default destructor needed to avoid compilation warnings */
       virtual ~gsMenuBase(){};
 
@@ -87,7 +87,12 @@ namespace RainbruRPG {
       virtual void setupTabOrder()=0;
 
     protected:
-      gsMenuBase();
+      /** An empty default constructor 
+        *
+	* It is protected to borbid its use.
+	*
+	*/
+      gsMenuBase(){};
 
       void drawBorder();
       void drawMenuBackground();

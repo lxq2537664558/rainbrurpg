@@ -1,27 +1,58 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ *
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 #include "loadbmp.h"
 
-/** The default constructor */
+#include "globaluri.h"
+
+/** The default constructor 
+  *
+  */
 RainbruRPG::Core::LoadBMP::LoadBMP(){
-  input= "data/3d/mzearth.bmp";
+
+  RainbruRPG::Network::GlobalURI gu;
+  std::string a=gu.getShareFile("data/main.bmp");
+
+  input= const_cast<char*>(a.c_str());
   output="steg.txt";
 
 }
 
-/** The default destructor */
+/** The default destructor 
+  *
+  */
 RainbruRPG::Core::LoadBMP::~LoadBMP(){
-  input= 0;
-  output=0;
+  input= NULL;
+  output=NULL;
 
 }
 
-/* Decode the unbeded text and set it in the output file.
- *
- */
-/** Decode the BMP buffer */
+/** Decode the embedded text and set it in the output file.
+  *
+  * The code will be in a1 when this fucntion return.
+  *
+  */
 void RainbruRPG::Core::LoadBMP::decode(){
   char temp1[100];
-  char temp2[100];
-  char temp3[100];
 
   // open the bmp file
   BMP Image;
@@ -29,7 +60,7 @@ void RainbruRPG::Core::LoadBMP::decode(){
   
   // prep the output stream
   
-  fstream OutputText( output , ios::out );
+  std::fstream OutputText( output , ios::out );
   int k = 1;
   int MaxCharacters = Image.TellWidth() * Image.TellHeight();
   
@@ -39,83 +70,62 @@ void RainbruRPG::Core::LoadBMP::decode(){
   bool Stop = false;
   int BlankCount = 0;
   
-  while( 2*k <= MaxCharacters && !Stop )
-  {
-   unsigned int CharacterInt = (unsigned int) (Image(i,j)->Red % 3)*243 
-                             + (unsigned int) (Image(i,j)->Green % 3)*81
-			     + (unsigned int) (Image(i,j)->Blue % 3)*27;
+  while( 2*k <= MaxCharacters && !Stop ){
+    unsigned int CharacterInt = (unsigned int) (Image(i,j)->Red % 3)*243 
+      + (unsigned int) (Image(i,j)->Green % 3)*81
+      + (unsigned int) (Image(i,j)->Blue % 3)*27;
    			     
 			     
-   i++;
-   if( i >= Image.TellWidth() )
-   { i = 0; j++; }		
+    i++;
+    if( i >= Image.TellWidth() ){ 
+      i = 0; 
+      j++; 
+    }		
    
-   CharacterInt += (unsigned int) (Image(i,j)->Red % 3)*9
-                 + (unsigned int) (Image(i,j)->Green % 3)*3
-      	         + (unsigned int) (Image(i,j)->Blue % 3);
+    CharacterInt += (unsigned int) (Image(i,j)->Red % 3)*9
+      + (unsigned int) (Image(i,j)->Green % 3)*3
+      + (unsigned int) (Image(i,j)->Blue % 3);
 			     
-   i++;
-   if( i >= Image.TellWidth() )
-   { i = 0; j++; }		 
+    i++;
+    if( i >= Image.TellWidth() ){ 
+      i = 0; 
+      j++; 
+    }		 
  			     
-   char Character = (char) CharacterInt;  
-   
-   if( CharacterInt != 0 )
-   {
-    OutputText.put( Character );
-   }
-   else
-   {
-    Stop = true; 
-   }
+    char Character = (char) CharacterInt;  
+    
+    if( CharacterInt != 0 ){
+      OutputText.put( Character );
+    }
+    else{
+      Stop = true; 
+    }
      
-   k++;  
+    k++;  
   }
 
   OutputText.close(); 
 
 
   // Get all the lines
-  fstream InputText( output , ios::in );
+  std::fstream InputText( output , ios::in );
 
   InputText.getline(temp1, 100);
-  InputText.getline(temp2, 100);
-  InputText.getline(temp3, 100);
 
   InputText.close();
 
   // Set the temp? value in stl string a?
   a1=temp1;
-  a2=temp2;
-  a3=temp3;
 
   // remove the temp file
   remove( output );
 }
 
-/** Get a dummy test string
+/** Return the phrasepass for getting xml files from admin website
   *
-  * \return A dummy string
+  * \return The user:password string
   *
   */
 const char* RainbruRPG::Core::LoadBMP::get1(){
   return a1.c_str();
-}
-
-/** Get a dummy test string
-  *
-  * \return A dummy string
-  *
-  */
-const char* RainbruRPG::Core::LoadBMP::get2(){
-  return a2.c_str();
-}
-
-/** Get a dummy test string
-  *
-  * \return A dummy string
-  *
-  */
-const char* RainbruRPG::Core::LoadBMP::get3(){
-  return a3.c_str();
 }

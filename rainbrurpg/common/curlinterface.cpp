@@ -50,8 +50,9 @@ bool RainbruRPG::Network::Ident::CurlInterface::init(){
   LOGI("Initializing the libcurl interface");
   handle=curl_easy_init();
 
-  if (handle)
+  if (handle){
     return true;
+  }
   else{
 
     LOGE("An error occured during the libcurl iitialization");

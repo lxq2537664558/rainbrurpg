@@ -41,12 +41,12 @@ bin_PROGRAMS = RainbruRPG2$(EXEEXT)
 
 # Bug ?
 # RainbruRPG.html
-am__append_1 = design
+#am__append_1 = design
 #am__append_2 = editor
 #am__append_3 = server
 #am__append_4 = tools
 #am__append_5 = tests
-am__append_6 = editor server tools tests
+#am__append_6 = editor server tools tests
 DIST_COMMON = README $(RainbruRPG_TEXINFOS) $(am__configure_deps) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/RainbruRPG-common.pc.in $(srcdir)/RainbruRPG.lsm.in \
@@ -149,8 +149,8 @@ AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.9
 AWK = mawk
-BUILD_LIB_DESIGN_FALSE = #
-BUILD_LIB_DESIGN_TRUE = 
+BUILD_LIB_DESIGN_FALSE = 
+BUILD_LIB_DESIGN_TRUE = #
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -181,10 +181,10 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-ISODATE = 2007-07-31
+ISODATE = 2007-08-02
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
+LIBS = -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lcurl -lFOX-1.6 -lOIS -lCEGUIOgreRenderer -lCEGUIBase -lOgreMain 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
@@ -202,8 +202,8 @@ PACKAGE_TARNAME =
 PACKAGE_VERSION = 
 PATH_SEPARATOR = :
 RANLIB = ranlib
-RB_OPTION_ALL_FLAGS_FALSE = #
-RB_OPTION_ALL_FLAGS_TRUE = 
+RB_OPTION_ALL_FLAGS_FALSE = 
+RB_OPTION_ALL_FLAGS_TRUE = #
 RB_OPTION_EDITOR_FLAGS_FALSE = 
 RB_OPTION_EDITOR_FLAGS_TRUE = #
 RB_OPTION_SERVER_FLAGS_FALSE = 

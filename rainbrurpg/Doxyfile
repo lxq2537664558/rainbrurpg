@@ -506,21 +506,24 @@ RECURSIVE              = YES
 # excluded from the INPUT source files. This way you can easily exclude a 
 # subdirectory from a directory tree whose root is specified with the INPUT tag.
 
-EXCLUDE                = /home/mouse/programmation/rainbrurpg/include/ \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.h \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_DataStructures.h \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_VariousBMPutilities.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinystr.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinystr.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxml.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxml.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxmlerror.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxmlparser.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_BMP.h \
-                         /home/mouse/programmation/rainbrurpg/IrrClient/ \
-                         /home/mouse/programmation/rainbrurpg/client/oldLauncher/ \
-                         /home/mouse/programmation/rainbrurpg/tests/
+EXCLUDE = /home/mouse/programmation/rainbrurpg/include/ \
+          /home/mouse/programmation/rainbrurpg/common/EasyBMP.cpp \
+          /home/mouse/programmation/rainbrurpg/common/EasyBMP.h \
+          /home/mouse/programmation/rainbrurpg/common/EasyBMP_DataStructures.h \
+    /home/mouse/programmation/rainbrurpg/common/EasyBMP_VariousBMPutilities.h \
+          /home/mouse/programmation/rainbrurpg/common/tinystr.cpp \
+          /home/mouse/programmation/rainbrurpg/common/tinystr.h \
+          /home/mouse/programmation/rainbrurpg/common/tinyxml.cpp \
+          /home/mouse/programmation/rainbrurpg/common/tinyxml.h \
+          /home/mouse/programmation/rainbrurpg/common/tinyxmlerror.cpp \
+          /home/mouse/programmation/rainbrurpg/common/tinyxmlparser.cpp \
+          /home/mouse/programmation/rainbrurpg/common/EasyBMP_BMP.h \
+          /home/mouse/programmation/rainbrurpg/IrrClient/ \
+          /home/mouse/programmation/rainbrurpg/client/oldLauncher/ \
+	  /home/mouse/programmation/rainbrurpg/tests/                 \
+          /home/mouse/programmation/rainbrurpg/common/loadbmp.h       \
+          /home/mouse/programmation/rainbrurpg/common/loadbmp.cpp   
+
 
 # The EXCLUDE_SYMLINKS tag can be used select whether or not files or 
 # directories that are symbolic links (a Unix filesystem feature) are excluded 

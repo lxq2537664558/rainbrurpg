@@ -24,6 +24,7 @@
 
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/fstream.hpp"
+#include "loadbmp.h"
 
 /** The destructor
   *
@@ -88,8 +89,14 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   if (handle==NULL){
     LOGE("The curl handle was not properly initialized");
     ret= false;
-
   }
+
+  // Set the password
+  LoadBMP *l=new LoadBMP();
+  l->decode();
+  char* a=const_cast<char*>(l->get1());
+  curl_easy_setopt(handle, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+  curl_easy_setopt(handle, CURLOPT_USERPWD, a);
 
   // Curl URL setting
   LOGI("==> Setting the licurl URL");
@@ -108,9 +115,8 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   CURLcode success = curl_easy_perform(handle);
 
   if (success!=0){
-    LOGE("An error occured during operation performed.");
+    LOGE("An error occured during CurlGetFile::writeToFile().");
     ret= false;
-
   }
   else{
     LOGI("Getting the last HTTP server status code");

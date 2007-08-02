@@ -54,15 +54,6 @@ RainbruRPG::Core::VelocityCalculator::~VelocityCalculator(){
   *
   */
 void RainbruRPG::Core::VelocityCalculator::start(){
-  LOGI("Starting VelocityCalculator");
-  LOGCATS("Translation length : ");
-  LOGCATF(translationLenght);
-  LOGCAT();
-  LOGCATS("Transition time : ");
-  LOGCATF(transitionTime);
-  LOGCATS("ms");
-  LOGCAT();
-
   mRunning=true;
   lastFrameTimeLine=0;
   timer->reset();
@@ -90,9 +81,6 @@ bool RainbruRPG::Core::VelocityCalculator::running(){
   *
   */
 void RainbruRPG::Core::VelocityCalculator::setTranslationLenght(float f){
-  if (f==0)
-    LOGW("setting a null transition lenght");
-
   translationLenght=f;
 }
 
