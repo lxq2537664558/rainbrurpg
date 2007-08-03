@@ -22,6 +22,7 @@
 
 /* 
  * Modifications :
+ * - 03 aug 2007 : removing default write function
  * - 29 jul 2007 : setFilename and getFilename removed
  * - 03 mar 2007 : Some functions become protected :
  *                   setDefaultWriteFunction, setWrittenData, setWriteFunction
@@ -45,8 +46,6 @@ using namespace std;
 namespace RainbruRPG {
   namespace Network {
     namespace Ident {
-
-
 
       /** A super class for all libcurl-based interface.
         *
@@ -86,7 +85,6 @@ namespace RainbruRPG {
 	virtual bool cleanup();
 
 	void setWriteFunction(void*);
-	void setDefaultWriteFunction();
 	void setCustomErrorMessage(const char*);
 	/** An unused function 
 	  *

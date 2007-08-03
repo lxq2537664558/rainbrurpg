@@ -21,6 +21,7 @@
  */
 
 /* Modification :
+ * - 03 aug 2007 : downloadComplete implementation
  * - 31 jul 2007 : Remove curlget.xml
  * - 02 mar 2007 : Using LOGCAT() instead of cout
  *
@@ -55,6 +56,7 @@ namespace RainbruRPG {
 	virtual bool controlBefore ();
 	virtual bool controlAfter ();
 	bool writeToFile();
+
       };
     }
   }

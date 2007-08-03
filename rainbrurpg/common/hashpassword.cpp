@@ -107,5 +107,11 @@ bool RainbruRPG::Network::Ident::HashPassword::compare(const char* p1,
 
   }
 
+  if (!ret){
+    LOGW("Debugging HashPassword::compare :");
+    LOGW(p1);
+    LOGW(p2);
+  }
+
   return ret;
 }

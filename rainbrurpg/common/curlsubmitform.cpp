@@ -91,7 +91,6 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   string s=postedData.getComputedData();
 
   handle=curl_easy_init();
-  setDefaultWriteFunction();
 
   // Curl URL setting
   LOGI("==> Setting the licurl URL");
@@ -104,10 +103,6 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   std::copy(str2, str2 + len2, raw2.begin());
 
   curl_easy_setopt(handle, CURLOPT_URL, &(raw2[0]));
-
-
-
-
 
   // Using a vector to convert string to char*
   int len = s.length() + 1; // null terminators, rah rah rah

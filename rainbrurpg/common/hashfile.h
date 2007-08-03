@@ -50,7 +50,7 @@ namespace RainbruRPG{
       * used during the datafiles update process. The SHA-1 algorythm
       * is provided by the Sha1 class.
       *
-      * \sa \ref Rainbru::Network::Ident::HashPassword "HashPassword" to
+      * \sa \ref RainbruRPG::Network::Ident::HashPassword "HashPassword" to
       *     compute the hashsum of a password.
       *
       */

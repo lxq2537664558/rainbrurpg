@@ -34,11 +34,11 @@ RainbruRPG::Network::GlobalURI::GlobalURI(){
 
 #ifdef WEBSITE_DEBUG
   adminSite="http://127.0.0.1/rpg/admin/";
-  xmlSite="http://127.0.0.1/rpg/";
+  xmlSite="http://127.0.0.1/rpg/metadata/";
   LOGW("Using the local website (127.0.0.1)");
 #else //WEBSITE_DEBUG
   adminSite="http://rainbru.free.fr/rpg/admin/";
-  xmlSite="http://rainbru.free.fr/rpg/";
+  xmlSite="http://rainbru.free.fr/rpg/metadata/";
   LOGI("Using the real website");
 #endif //WEBSITE_DEBUG
 

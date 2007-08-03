@@ -35,7 +35,6 @@ RainbruRPG::Network::Ident::CurlGetFile::~CurlGetFile(){
   // Remove curlget.xml
   boost::filesystem::path path("curlget.xml");
   boost::filesystem::remove(path);
-
 }
 
 /** Perform the given operation
@@ -46,6 +45,7 @@ RainbruRPG::Network::Ident::CurlGetFile::~CurlGetFile(){
   *
   */
 bool RainbruRPG::Network::Ident::CurlGetFile::perform(){
+  curl_easy_setopt(handle, CURLOPT_WRITEDATA, this);
   return writeToFile();
 }
 
@@ -111,9 +111,20 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
 
   curl_easy_setopt(handle, CURLOPT_URL, &(raw[0]));
 
-  setDefaultWriteFunction();
-  CURLcode success = curl_easy_perform(handle);
 
+  // Writing in a FILE structure using the built-in
+  // cUrl write function
+  FILE* f;
+  if ((f = fopen("curlget.xml", "w")) == NULL){
+    LOGE("Error opening the FILE pointer");
+  }
+  else{
+    curl_easy_setopt(handle, CURLOPT_WRITEDATA, f);
+  }
+  CURLcode success = curl_easy_perform(handle);
+  fclose(f);
+
+  // Error handling
   if (success!=0){
     LOGE("An error occured during CurlGetFile::writeToFile().");
     ret= false;

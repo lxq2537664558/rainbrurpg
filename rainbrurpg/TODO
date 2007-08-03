@@ -15,9 +15,12 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
-o [mouse] Adminsite : automatic EMail validation
-- Removing data/3d/ content
-- Test the whole account creation process   doesn't work
+o [mouse] libCurl
+- changeServerAct.php does not works anymore
+
+* Adminsite : automatic EMail validation
+- The account is created only if the mail was correctly sent
+- CurlAccountAdd::controlAfter tests if the account was correctly created
 
 * Client 
 - MessageBox can be closed with Enter/Return key
@@ -120,6 +123,13 @@ o [mouse] Adminsite : automatic EMail validation
 * *******************************************************
 
 * v 0.0.5-153
+- removing CurlProgressFunction
+- removing defaultwritefunction.h
+- CurlGetFile now use default Curl write function
+- Doxygen documentation
+- Test the whole account creation process          OK
+- Adminsite : directory structure modified
+- Removing data/3d/ content
 - mailconfirm.php uses mail id for confirmation
 - addplayer.php send a confirmation mail (need sendmail)
 - Cleaning IttClient/

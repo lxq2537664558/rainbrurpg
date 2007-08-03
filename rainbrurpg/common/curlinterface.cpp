@@ -21,7 +21,6 @@
  */
 
 #include "curlinterface.h"
-#include "curldefaultwritefunction.h"
 
 /** The default constructor
   *
@@ -91,22 +90,6 @@ void RainbruRPG::Network::Ident::CurlInterface::setWriteFunction(void* f){
     curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, f);
   else
     LOGW("Cannot set a WriteFunction, the handle is undefined");
-}
-
-/** Install the default write function 
-  *
-  * The default write function is\ref RainbruRPG::Network::Ident::writeData()
-  * "writeData()"
-  *
-  */
-void RainbruRPG::Network::Ident::CurlInterface::setDefaultWriteFunction(){
-  LOGI("Setting the default WriteFunction");
-
-  if (handle)
-    curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, writeData);
-  else
-    LOGW("Cannot set a the default WriteFunction, the handle is undefined");
-
 }
 
 /** Returns the last server response

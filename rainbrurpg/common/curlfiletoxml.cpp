@@ -97,6 +97,7 @@ TiXmlDocument* RainbruRPG::Network::Ident::CurlFileToXml::getXmlDocument(){
   */
 bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
   if (CurlGetFile::writeToFile()){
+
     doc=new TiXmlDocument( "curlget.xml" );
     if(doc->LoadFile()){
       return true;
@@ -108,7 +109,23 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
       err+="'. Error desc from TinyXML is : '";
       err+=doc->ErrorDesc();
       err+="'";
-      LOGW(err.c_str());
+      LOGE(err.c_str());
+
+
+      cout << "==================" << endl;
+      cout << "CurlFileToXml::fileToxml : debugging curlget.xml :" << endl;
+      fstream f("curlget.xml");
+      std::string s;
+
+      while (!f.eof()){
+	f >> s;
+	cout <<"  "<< s << endl;
+      }
+
+      cout << "CurlFileToXml::fileToxml : curlget.xml debug finished" << endl;
+      cout << "==================" << endl;
+      f.close();
+
       return false;
     }
   }

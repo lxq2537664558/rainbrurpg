@@ -201,21 +201,10 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   else{
     pwdWidget=connectWin->getChild("RainbruRPG/Connection/Pwd");
     const char* cName=nameWidget->getText().c_str();
-    const char* cPwd=(const char*)pwdWidget->getText().c_str();
-    CEGUI::String strPwd=pwdWidget->getText();
+    const char* cPwd=pwdWidget->getText().c_str();
     
-    HashPassword hp;
-    std::string hashPwd=hp.encryptString(cPwd);
-    LOGCATS("Name :");
-    LOGCATS(cName);
-    LOGCATS(" Pwd :");
-    LOGCATS(cPwd);
-    LOGCATS(" HS :");
-    LOGCATS(hashPwd.c_str());
-    LOGCAT();
-
     // connection successfull
-    if (GameEngine::getSingleton().connectUser(cName, hashPwd.c_str())){
+    if (GameEngine::getSingleton().connectUser(cName, cPwd)){
       GuiManager::getSingleton().beginGuiFadeOut();
 
       // We must wait for the CEGUI fade end to prevent
