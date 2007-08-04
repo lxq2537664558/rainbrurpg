@@ -12,7 +12,7 @@ class XmlPersoListInterface extends XmlInterface{
     *
     */
   function XmlPersoListInterface(){
-    parent::XmlInterface("../persos.xml");
+    parent::XmlInterface("persos.xml");
   }
 
   /** Get the next usable ID

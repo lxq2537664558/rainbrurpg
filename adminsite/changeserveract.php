@@ -31,7 +31,7 @@ function changeAct(){
     // Last test before adding server
     if ($err){
       echo $errPhrase=$errPhrase;
-      echo('<font text="red"><p>The server can not be added.</p></font>');
+      echo('<font text="red"><p>The server can not be modified.</p></font>');
     }
     else{
 
@@ -55,7 +55,7 @@ function changeAct(){
 function isServerExists($name){
   $ret=false;
 
-  $filename='../servers.xml';
+  $filename='../metadata/servers.xml';
 
   if (file_exists($filename)) {
     if(!$dom = domxml_open_file($filename)) {

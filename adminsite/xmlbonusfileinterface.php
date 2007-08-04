@@ -18,7 +18,7 @@ class XmlBonusFileInterface extends XmlInterface{
     *
     */
   function XmlBonusFileInterface($filename){
-    parent::XmlInterface("../".$filename);
+    parent::XmlInterface($filename);
   }
 
   /** Return an array of Choice xml nodes

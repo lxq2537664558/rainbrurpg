@@ -14,7 +14,7 @@ class XmlPlayerInterface extends XmlInterface{
     *
     */
   function XmlPlayerInterface(){
-    parent::XmlInterface("../players.xml");
+    parent::XmlInterface("players.xml");
   }
 
   /** Return an array of player xml nodes

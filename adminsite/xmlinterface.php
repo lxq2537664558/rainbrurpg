@@ -46,18 +46,21 @@ class XmlInterface{
 
   /** Default constructor
     *
-    * \param $fn The filename of the xmlfile
+    * The file will be automatically searched in the right directory. You
+    * should only give the filename without slash.
+    *
+    * \param $fn The filename of the xmlfile (without path)
     */
   function XmlInterface($fn){
-    $this->filename=$fn;
+    $this->filename='../metadata/'.$fn;
 
-    if (!file_exists($fn)) {
-      echo '<b>File does not exists : '.$fn."</b>";
+    if (!file_exists($this->filename)) {
+      echo '<b>File does not exists : '.$this->filename."</b>";
     }
     else{
       // Loads document
-      if(!$this->dom = domxml_open_file($fn)) {
-	echo "<b>Failed to load xml document : ".$fn."</b>";
+      if(!$this->dom = domxml_open_file($this->filename)) {
+	echo "<b>Failed to load xml document : ".$this->filename."</b>";
 	exit;
       }
       else{

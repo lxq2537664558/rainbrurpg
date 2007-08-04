@@ -11,7 +11,7 @@ class XmlAttrbInterface extends XmlInterface{
     *
     */
   function XmlAttrbInterface(){
-    parent::XmlInterface("../persoattrb.xml");
+    parent::XmlInterface("persoattrb.xml");
   }
 
   /** Return an array of server xml nodes

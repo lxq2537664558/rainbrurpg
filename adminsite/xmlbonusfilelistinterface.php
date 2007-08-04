@@ -16,7 +16,7 @@ class XmlBonusFileListInterface extends XmlInterface{
     *
     */
   function XmlBonusFileListInterface(){
-    parent::XmlInterface("../bonusfilelist.xml");
+    parent::XmlInterface("bonusfilelist.xml");
   }
 
   /** Return an array of BonusFile XML nodes

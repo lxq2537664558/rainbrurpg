@@ -17,7 +17,7 @@ class XmlServerInterface extends XmlInterface{
     *
     */
   function XmlServerInterface(){
-    parent::XmlInterface("../servers.xml");
+    parent::XmlInterface("servers.xml");
   }
 
   /** Return an array of server xml nodes

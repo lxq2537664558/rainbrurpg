@@ -18,7 +18,7 @@ class XmlPersoInterface extends XmlInterface{
     * \param $function Can be <b>attrb</b> for attribute...
     */
   function XmlPersoInterface($persoId, $function){
-    $PersoFilename="../persos/perso".$persoId.".".$function.".xml";
+    $PersoFilename="persos/perso".$persoId.".".$function.".xml";
 
     // If the file exists
     if (!file_exists($PersoFilename)){

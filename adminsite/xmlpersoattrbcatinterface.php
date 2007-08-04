@@ -10,7 +10,7 @@ class XmlPersoAttrbCatInterface extends XmlInterface{
     *
     */
   function XmlPersoAttrbCatInterface(){
-    parent::XmlInterface("../persoattrbcat.xml");
+    parent::XmlInterface("persoattrbcat.xml");
   }
 
   /** Returns all category
