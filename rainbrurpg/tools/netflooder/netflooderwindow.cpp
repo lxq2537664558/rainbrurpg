@@ -242,7 +242,7 @@ long RainbruRPG::Gui::NetFlooderWindow::
 onShowWaitingPanel(FXObject *o,FXSelector s,void* v){
   LOGI("onShowWaitingPanel called");
   switcher->setCurrent(panelWaitingId, false);
-  wp->setServer((tServerListItem*)v);
+  wp->setServer((ServerListItem*)v);
   return 1;
 }
 

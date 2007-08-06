@@ -205,14 +205,9 @@ void RainbruRPG::Gui::WaitingPanel::runClient(){
      &RainbruRPG::Gui::WaitingPanel::slotConnectionUndefined));
 
 
-  const char* ip=server->ipAddress;
-  int port=StringConv::getSingleton().stoi(server->port);
+  const char* ip=server->getIpAddress().c_str();
+  int port=server->getUdpPort();
   prog->increment(1);
-  LOGCATS("Running on server ");
-  LOGCATS(ip);
-  LOGCATS(":");
-  LOGCATI(port);
-  LOGCAT();
 
   // Step 2
   int waitingTime=200;
@@ -259,7 +254,7 @@ onRunClient(FXObject *o,FXSelector s,void* v){
   * \param it The server to the connect the netflooder to
   *
   */
-void RainbruRPG::Gui::WaitingPanel::setServer(tServerListItem* it){
+void RainbruRPG::Gui::WaitingPanel::setServer(ServerListItem* it){
   server=it;
 }
 

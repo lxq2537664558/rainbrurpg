@@ -38,6 +38,7 @@
 #include "tnotelist.h"
 #include "xmltimestamp.h"
 #include "curlfiletoxml.h"
+#include "serverlistitem.h"
 #include "stringconv.h"
 
 using namespace std;
@@ -47,32 +48,12 @@ namespace RainbruRPG{
   namespace Network {
     namespace Ident {
 
-      /** A server structure like it appears in the servers.xml
-        *
-	* This is the item of the tServerList. It contains all informations
-	* we can find on the adminsite about a server.
-	*
-	*/
-      struct tServerListItem{
-	std::string creation;    //!< The date of creation
-	const char* name;        //!< The name of the server
-	std::string uniqueName;  //!< The unique name, based on MAC address
-	unsigned int type;       //!< The type (Fantasy, futuristic...)
-	const char* description; //!< The description
-	const char* ipAddress;   //!< The ip adress
-	const char* port;        //!< The UDP port
-	const char* ftp;         //!< The FTP control channel port 
-	const char* techNote;    //!< The technical note
-	unsigned int maxClients; //!< Maximum allowed connection
-	unsigned int actClients; //!< Actual number of connected clients
-      };
-
-      /** A stl list of tServerListItem
+      /** A stl list of ServerListItem
         *
 	*/
-      typedef std::list<tServerListItem*> tServerList;
+      typedef std::list<ServerListItem*> tServerList;
 
-      /** The return of the AddServer function */
+      /** The return of the xmlServerList::AddServer() function */
       enum tAddServerReturn{
 	ASR_CREATED,           //<! The server is successfully created
 	ASR_INVALID_NAME,      //<! The name is not correct
@@ -102,7 +83,7 @@ namespace RainbruRPG{
 	tServerList* getServerList();
 	bool isServerExisting(const char*);
 
-	tServerListItem* getServerByName(const char*);
+	ServerListItem* getServerByName(const char*);
 	bool refresh();
 
       private:

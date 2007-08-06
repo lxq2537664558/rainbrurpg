@@ -408,6 +408,7 @@ public:
     *
     */
   void testAddVirtual(){
+
     this->m_csa->setName(SERVER_NAME);
     this->m_csa->setIpAddress(SERVER_IP);
     this->m_csa->setPort(SERVER_PORT);

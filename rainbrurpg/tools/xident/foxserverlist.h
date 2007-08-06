@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 04 aug 2007 : Now using ServerListItem
  * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
  * - 29 may 2007 : Adding the 'ftp' column
  *
@@ -30,8 +31,11 @@
 #define FOX_SERVER_LIST_H
 
 #include <fox-1.6/fx.h>
-#include <xmlserverlist.h>
+
 #include <string>
+
+#include <serverlistitem.h>
+#include <xmlserverlist.h>
 #include <stringconv.h>
 
 using namespace std;
@@ -88,7 +92,7 @@ namespace RainbruRPG{
     private:
       void feedTable();
       void setServerNumber(unsigned int);
-      void addServer(RainbruRPG::Network::Ident::tServerListItem*);
+      void addServer(RainbruRPG::Network::Ident::ServerListItem*);
       void createTableHeader();
       FXString getSelectedServerName();
       void refresh();

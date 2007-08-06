@@ -25,7 +25,7 @@
 
 #include "gameengine.h"
 #include <logger.h>
-//#include "guimanager.h"
+#include "guimanager.h"
 #include <version.h>
 //#include <cstdlib> 
 #include <ctime> 
@@ -35,7 +35,7 @@
 #include "vcconstant.h"
 #include "globaluri.h"
 
-/** To avoid a double definition og PI
+/** To avoid a double definition of PI
   *
   * Fox and Ogre both defines PI (fxdefs.h and OgreMath.h)
   *

@@ -22,6 +22,9 @@
 
 #include "curlaccountconfirmmail.h"
 
+#include "xmlaccountlist.h"
+#include "globaluri.h"
+
 /** The default constructor
   *
   */
@@ -35,6 +38,9 @@ RainbruRPG::Network::Ident::CurlAccountConfirmMail::CurlAccountConfirmMail()
   // Setting the posted data key values
   postedData.addKey("name");
   postedData.addKey("confirmation");
+
+  // Confirmation Id sent in the account creation confirmation mail
+  postedData.addKey("id");
 }
 
 /** The destructor
@@ -48,13 +54,33 @@ RainbruRPG::Network::Ident::CurlAccountConfirmMail::~CurlAccountConfirmMail(){
 
 /** Change the name of the account to be mail-confirmed
   *
+  * This automatically set the confirmId used in confirmation mail.
+  *
   * \param c The account's name
   *
   */
 void RainbruRPG::Network::Ident::CurlAccountConfirmMail::
-setName(const char* c){
-  this->setPostedData("name", c);
+setName(const std::string& c){
+  this->setPostedData("name", c.c_str());
 
+  // Get the confirmId value
+  RainbruRPG::Gui::tAccountListItem* it=xml->getAccount(c.c_str());
+  if (it){
+    std::string val=it->validationId;
+    this->setPostedData("id", val.c_str());
+    std::string s;
+    s ="validationId for account ";
+    s+=c;
+    s+=" is ";
+    s+=val;
+    LOGI(s.c_str());
+  }
+  else{
+    std::string err="Cannot get the account with the name '";
+    err+=c;
+    err+="'";
+    LOGE(err.c_str());
+  }
 }
 
 /** The controlBefore implementation
@@ -78,9 +104,39 @@ bool RainbruRPG::Network::Ident::CurlAccountConfirmMail::controlBefore(){
   *
   */
 bool RainbruRPG::Network::Ident::CurlAccountConfirmMail::controlAfter(){
-  return true;
+  bool ret=true;
 
-}
+  const char* accountName=this->getName();
+
+  LOGCATS("accountName='");
+  LOGCATS(accountName);
+  LOGCATS("'");
+  LOGCAT();
+
+  // Testing if the mail address was confirmed
+  xml->refresh();
+  RainbruRPG::Gui::tAccountListItem* it=xml->getAccount(accountName);
+  if (it){
+    std::string conf(it->confirm);
+
+    LOGCATS("Confirm='");
+    LOGCATS(conf.c_str());
+    LOGCATS("'");
+    LOGCAT();
+
+    // If tAccountListItem.confirm is empty, the mail was not confirmed
+    if (conf.size()==0){
+      ret=false;
+      LOGE("CurlAccountConfirmMail::controlAfter : confirm timestamp is empty");
+    }
+  }
+  else{
+    ret=false;
+    LOGE("CurlAccountConfirmMail::controlAfter : account not found");
+
+  }
+
+  return ret;}
 
 /** Get the name 
   *

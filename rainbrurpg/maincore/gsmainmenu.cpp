@@ -22,6 +22,7 @@
 
 #include "gsmainmenu.h"
 
+#include "keyboardnavigation.h"
 #include "vcconstant.h"
 #include "guimanager.h"
 
@@ -200,9 +201,9 @@ void RainbruRPG::Core::gsMainMenu::resume(){
 
 void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   // Registering TabNavigation
-  tabNav.clear();
-  tabNav.setParent("RainbruRPG/MainMenu");
-  tabNav.addWidget("NetGame");
-  tabNav.addWidget("LocalTest");
-  tabNav.addWidget("Quit");
+  tabNav->clear();
+  tabNav->setParent("RainbruRPG/MainMenu");
+  tabNav->addWidget("NetGame");
+  tabNav->addWidget("LocalTest");
+  tabNav->addWidget("Quit");
 }

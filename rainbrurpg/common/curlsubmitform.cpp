@@ -92,6 +92,17 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
 
   handle=curl_easy_init();
 
+  // Writing in a FILE structure using the built-in
+  // cUrl write function (Only for submitted form's
+  // not write to stdout)
+  FILE* f;
+  if ((f = fopen("curlget.xml", "w")) == NULL){
+    LOGE("Error opening the FILE pointer");
+  }
+  else{
+    curl_easy_setopt(handle, CURLOPT_WRITEDATA, f);
+  }
+
   // Curl URL setting
   LOGI("==> Setting the licurl URL");
   std::string s2=filename;
@@ -134,9 +145,9 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
     LOGI("The form was successfully submited");
     ret=true;
   }
-  else
+  else{
     LOGW("An error occured during submitForm");
- 
+  }
 
 
   // Get the last response code
@@ -151,10 +162,12 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   if (a==0){
     LOGI("Setting server response successfull");
   }
-  else
+  else{
     LOGW("Cannot get the server response");
+  }
 
   curl_easy_cleanup( handle );
+  fclose(f);
 
   return ret;
 }
@@ -170,7 +183,6 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
 void RainbruRPG::Network::Ident::CurlSubmitForm::setPostedData(
 		           const char* key, const char* value){
 
-  LOGI("Adding a Data to post");
   postedData.setValue(key, value);
 }
 
@@ -219,8 +231,6 @@ void RainbruRPG::Network::Ident::CurlSubmitForm::setPostedPwd(
   */
 void RainbruRPG::Network::Ident::CurlSubmitForm::
 setCustomPost(const char* key, const char* value){
-
   postedData.addKey( key );
   postedData.setValue(key, value);
-
 }

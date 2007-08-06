@@ -54,20 +54,18 @@
 #include <OGRE/OgreMouseEvent.h>
 #include <OgreSceneManagerEnumerator.h>
 
-//#include "guimanager.h"
-
-//#include "xmloptions.h"
-
-#include "gamestate.h"
-#include "guimanager.h"
-#include "gsmenubase.h"
-#include "inputmanager.h"
-#include "globaluri.h"
-
-
 // Forward declaration
+namespace RainbruRPG {
+  namespace Core{
+    class GameState;
+    class InputManager;
+  }
+  namespace Network{
+    class GlobalURI;
+  }
+}
+// End of forward declaration
 
-// class GameState;
 using namespace std;
 using namespace Ogre;
 

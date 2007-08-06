@@ -21,6 +21,7 @@
  */
 
 /** Modifications :
+  * - 06 aug 2007 : Fix a bug
   * - 15 mar 2007 : Implementation
   *
   */
@@ -64,9 +65,6 @@ class CurlAccountConfirmMailTest : public CPPUNIT_NS::TestFixture
 
   /// Register the testDefaultName function
   CPPUNIT_TEST( testDefaultName );
-  /// Register the testSettedName function
-  CPPUNIT_TEST( testSettedName );
-
 
   /// Register the testAddAccount function
   CPPUNIT_TEST( testAddAccount );
@@ -194,17 +192,6 @@ public:
   void testDefaultName(){
     const char* name=this->m_testedClass->getName();
     CPPUNIT_ASSERT( strcmp(name, "")==0);
-
-  }
-
-  /** Test the value of the name key after we have set it
-    *
-    */
-  void testSettedName(){
-    const char* n="Name";
-    this->m_testedClass->setName(n);
-    const char* name=this->m_testedClass->getName();
-    CPPUNIT_ASSERT( strcmp(name, n)==0);
 
   }
 

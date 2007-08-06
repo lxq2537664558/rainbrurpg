@@ -1,11 +1,33 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 #include "inputmanager.h"
 
-InputManager *InputManager::mInputManager;
+RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
 
 /** The default constructor
   *
   */
-InputManager::InputManager( void ) :
+RainbruRPG::Core::InputManager::InputManager( void ) :
     mMouse( 0 ),
     mKeyboard( 0 ),
     mInputSystem( 0 ) {
@@ -14,7 +36,7 @@ InputManager::InputManager( void ) :
 /** The default destructor
   *
   */
-InputManager::~InputManager( void ) {
+RainbruRPG::Core::InputManager::~InputManager( void ) {
     if( mInputSystem ) {
         if( mMouse ) {
             mInputSystem->destroyInputObject( mMouse );
@@ -51,7 +73,7 @@ InputManager::~InputManager( void ) {
   * \param renderWindow The associated render window
   *
   */
-void InputManager::initialise( Ogre::RenderWindow *renderWindow ) {
+void RainbruRPG::Core::InputManager::initialise( Ogre::RenderWindow *renderWindow ) {
     if( !mInputSystem ) {
         // Setup basic variables
         OIS::ParamList paramList;    
@@ -115,7 +137,7 @@ void InputManager::initialise( Ogre::RenderWindow *renderWindow ) {
   * This must be called every frame
   *
   */
-void InputManager::capture( void ) {
+void RainbruRPG::Core::InputManager::capture( void ) {
     // Need to capture / update each device every frame
     if( mMouse ) {
         mMouse->capture();
@@ -140,7 +162,7 @@ void InputManager::capture( void ) {
   * \param instanceName The name of the instance
   *
   */
-void InputManager::addKeyListener( OIS::KeyListener *keyListener, const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::addKeyListener( OIS::KeyListener *keyListener, const std::string& instanceName ) {
     if( mKeyboard ) {
         // Check for duplicate items
         itKeyListener = mKeyListeners.find( instanceName );
@@ -159,7 +181,7 @@ void InputManager::addKeyListener( OIS::KeyListener *keyListener, const std::str
   * \param instanceName The name of the instance
   *
   */
-void InputManager::addMouseListener( OIS::MouseListener *mouseListener, const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::addMouseListener( OIS::MouseListener *mouseListener, const std::string& instanceName ) {
     if( mMouse ) {
         // Check for duplicate items
         itMouseListener = mMouseListeners.find( instanceName );
@@ -178,7 +200,7 @@ void InputManager::addMouseListener( OIS::MouseListener *mouseListener, const st
   * \param instanceName The name of the instance
   *
   */
-void InputManager::addJoystickListener( OIS::JoyStickListener *joystickListener, const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::addJoystickListener( OIS::JoyStickListener *joystickListener, const std::string& instanceName ) {
     if( mJoysticks.size() > 0 ) {
         // Check for duplicate items
         itJoystickListener = mJoystickListeners.find( instanceName );
@@ -196,7 +218,7 @@ void InputManager::addJoystickListener( OIS::JoyStickListener *joystickListener,
   * \param instanceName The name of the instance to remove
   *
   */
-void InputManager::removeKeyListener( const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::removeKeyListener( const std::string& instanceName ) {
     // Check if item exists
     itKeyListener = mKeyListeners.find( instanceName );
     if( itKeyListener != mKeyListeners.end() ) {
@@ -212,7 +234,7 @@ void InputManager::removeKeyListener( const std::string& instanceName ) {
   * \param instanceName The name of the instance to remove
   *
   */
-void InputManager::removeMouseListener( const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::removeMouseListener( const std::string& instanceName ) {
     // Check if item exists
     itMouseListener = mMouseListeners.find( instanceName );
     if( itMouseListener != mMouseListeners.end() ) {
@@ -228,7 +250,7 @@ void InputManager::removeMouseListener( const std::string& instanceName ) {
   * \param instanceName The name of the instance to remove
   *
   */
-void InputManager::removeJoystickListener( const std::string& instanceName ) {
+void RainbruRPG::Core::InputManager::removeJoystickListener( const std::string& instanceName ) {
     // Check if item exists
     itJoystickListener = mJoystickListeners.find( instanceName );
     if( itJoystickListener != mJoystickListeners.end() ) {
@@ -244,7 +266,7 @@ void InputManager::removeJoystickListener( const std::string& instanceName ) {
   * \param keyListener The key listener to remove
   *
   */
-void InputManager::removeKeyListener( OIS::KeyListener *keyListener ) {
+void RainbruRPG::Core::InputManager::removeKeyListener( OIS::KeyListener *keyListener ) {
     itKeyListener    = mKeyListeners.begin();
     itKeyListenerEnd = mKeyListeners.end();
     for(; itKeyListener != itKeyListenerEnd; ++itKeyListener ) {
@@ -260,7 +282,7 @@ void InputManager::removeKeyListener( OIS::KeyListener *keyListener ) {
   * \param mouseListener The mouse listener to remove
   *
   */
-void InputManager::removeMouseListener( OIS::MouseListener *mouseListener ) {
+void RainbruRPG::Core::InputManager::removeMouseListener( OIS::MouseListener *mouseListener ) {
     itMouseListener    = mMouseListeners.begin();
     itMouseListenerEnd = mMouseListeners.end();
     for(; itMouseListener != itMouseListenerEnd; ++itMouseListener ) {
@@ -276,7 +298,7 @@ void InputManager::removeMouseListener( OIS::MouseListener *mouseListener ) {
   * \param joystickListener The joystick listener to remove
   *
   */
-void InputManager::removeJoystickListener( OIS::JoyStickListener *joystickListener ) {
+void RainbruRPG::Core::InputManager::removeJoystickListener( OIS::JoyStickListener *joystickListener ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -290,7 +312,7 @@ void InputManager::removeJoystickListener( OIS::JoyStickListener *joystickListen
 /** Removes all key, mouse and joystick listener
   *
   */
-void InputManager::removeAllListeners( void ) {
+void RainbruRPG::Core::InputManager::removeAllListeners( void ) {
     mKeyListeners.clear();
     mMouseListeners.clear();
     mJoystickListeners.clear();
@@ -299,21 +321,21 @@ void InputManager::removeAllListeners( void ) {
 /** Remove all key listener
   *
   */
-void InputManager::removeAllKeyListeners( void ) {
+void RainbruRPG::Core::InputManager::removeAllKeyListeners( void ) {
     mKeyListeners.clear();
 }
 
 /** Remove all mouse listener
   *
   */
-void InputManager::removeAllMouseListeners( void ) {
+void RainbruRPG::Core::InputManager::removeAllMouseListeners( void ) {
     mMouseListeners.clear();
 }
 
 /** Remove all joystick listener
   *
   */
-void InputManager::removeAllJoystickListeners( void ) {
+void RainbruRPG::Core::InputManager::removeAllJoystickListeners( void ) {
     mJoystickListeners.clear();
 }
 
@@ -323,7 +345,7 @@ void InputManager::removeAllJoystickListeners( void ) {
   * \param height The height of the window
   *
   */
-void InputManager::setWindowExtents( int width, int height ) {
+void RainbruRPG::Core::InputManager::setWindowExtents( int width, int height ) {
   // Set mouse region (if window resizes, we should alter this to 
   // reflect as well)
   const OIS::MouseState &mouseState = mMouse->getMouseState();
@@ -336,7 +358,7 @@ void InputManager::setWindowExtents( int width, int height ) {
   * \return The mouse
   *
   */
-OIS::Mouse* InputManager::getMouse( void ) {
+OIS::Mouse* RainbruRPG::Core::InputManager::getMouse( void ) {
     return mMouse;
 }
 
@@ -345,7 +367,7 @@ OIS::Mouse* InputManager::getMouse( void ) {
   * \return The keyboard
   *
   */
-OIS::Keyboard* InputManager::getKeyboard( void ) {
+OIS::Keyboard* RainbruRPG::Core::InputManager::getKeyboard( void ) {
     return mKeyboard;
 }
 
@@ -356,7 +378,7 @@ OIS::Keyboard* InputManager::getKeyboard( void ) {
   * \return The joystick
   *
   */
-OIS::JoyStick* InputManager::getJoystick( unsigned int index ) {
+OIS::JoyStick* RainbruRPG::Core::InputManager::getJoystick( unsigned int index ) {
     // Make sure it's a valid index
     if( index < mJoysticks.size() ) {
         return mJoysticks[ index ];
@@ -370,7 +392,7 @@ OIS::JoyStick* InputManager::getJoystick( unsigned int index ) {
   * \return The number of joystick
   *
   */
-int InputManager::getNumOfJoysticks( void ) {
+int RainbruRPG::Core::InputManager::getNumOfJoysticks( void ) {
     // Cast to keep compiler happy ^^
     return (int) mJoysticks.size();
 }
@@ -382,7 +404,7 @@ int InputManager::getNumOfJoysticks( void ) {
   * \return Always true
   *
   */
-bool InputManager::keyPressed( const OIS::KeyEvent &e ) {
+bool RainbruRPG::Core::InputManager::keyPressed( const OIS::KeyEvent &e ) {
     itKeyListener    = mKeyListeners.begin();
     itKeyListenerEnd = mKeyListeners.end();
     for(; itKeyListener != itKeyListenerEnd; ++itKeyListener ) {
@@ -399,7 +421,7 @@ bool InputManager::keyPressed( const OIS::KeyEvent &e ) {
   * \return Always true
   *
   */
-bool InputManager::keyReleased( const OIS::KeyEvent &e ) {
+bool RainbruRPG::Core::InputManager::keyReleased( const OIS::KeyEvent &e ) {
     itKeyListener    = mKeyListeners.begin();
     itKeyListenerEnd = mKeyListeners.end();
     for(; itKeyListener != itKeyListenerEnd; ++itKeyListener ) {
@@ -416,7 +438,7 @@ bool InputManager::keyReleased( const OIS::KeyEvent &e ) {
   * \return Always true
   *
   */
-bool InputManager::mouseMoved( const OIS::MouseEvent &e ) {
+bool RainbruRPG::Core::InputManager::mouseMoved( const OIS::MouseEvent &e ) {
     itMouseListener    = mMouseListeners.begin();
     itMouseListenerEnd = mMouseListeners.end();
     for(; itMouseListener != itMouseListenerEnd; ++itMouseListener ) {
@@ -434,7 +456,7 @@ bool InputManager::mouseMoved( const OIS::MouseEvent &e ) {
   * \return Always true
   *
   */
-bool InputManager::mousePressed( const OIS::MouseEvent &e, OIS::MouseButtonID id ) {
+bool RainbruRPG::Core::InputManager::mousePressed( const OIS::MouseEvent &e, OIS::MouseButtonID id ) {
     itMouseListener    = mMouseListeners.begin();
     itMouseListenerEnd = mMouseListeners.end();
     for(; itMouseListener != itMouseListenerEnd; ++itMouseListener ) {
@@ -452,7 +474,7 @@ bool InputManager::mousePressed( const OIS::MouseEvent &e, OIS::MouseButtonID id
   * \return Always true
   *
   */
-bool InputManager::mouseReleased( const OIS::MouseEvent &e, OIS::MouseButtonID id ) {
+bool RainbruRPG::Core::InputManager::mouseReleased( const OIS::MouseEvent &e, OIS::MouseButtonID id ) {
     itMouseListener    = mMouseListeners.begin();
     itMouseListenerEnd = mMouseListeners.end();
     for(; itMouseListener != itMouseListenerEnd; ++itMouseListener ) {
@@ -470,7 +492,7 @@ bool InputManager::mouseReleased( const OIS::MouseEvent &e, OIS::MouseButtonID i
   * \return Always true
   *
   */
-bool InputManager::povMoved( const OIS::JoyStickEvent &e, int pov ) {
+bool RainbruRPG::Core::InputManager::povMoved( const OIS::JoyStickEvent &e, int pov ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -488,7 +510,7 @@ bool InputManager::povMoved( const OIS::JoyStickEvent &e, int pov ) {
   * \return Always true
   *
   */
-bool InputManager::axisMoved( const OIS::JoyStickEvent &e, int axis ) {
+bool RainbruRPG::Core::InputManager::axisMoved( const OIS::JoyStickEvent &e, int axis ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -506,7 +528,7 @@ bool InputManager::axisMoved( const OIS::JoyStickEvent &e, int axis ) {
   * \return Always true
   *
   */
-bool InputManager::sliderMoved( const OIS::JoyStickEvent &e, int sliderID ) {
+bool RainbruRPG::Core::InputManager::sliderMoved( const OIS::JoyStickEvent &e, int sliderID ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -524,7 +546,7 @@ bool InputManager::sliderMoved( const OIS::JoyStickEvent &e, int sliderID ) {
   * \return Always true
   *
   */
-bool InputManager::buttonPressed( const OIS::JoyStickEvent &e, int button ) {
+bool RainbruRPG::Core::InputManager::buttonPressed( const OIS::JoyStickEvent &e, int button ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -542,7 +564,7 @@ bool InputManager::buttonPressed( const OIS::JoyStickEvent &e, int button ) {
   * \return Always true
   *
   */
-bool InputManager::buttonReleased( const OIS::JoyStickEvent &e, int button ) {
+bool RainbruRPG::Core::InputManager::buttonReleased( const OIS::JoyStickEvent &e, int button ) {
     itJoystickListener    = mJoystickListeners.begin();
     itJoystickListenerEnd = mJoystickListeners.end();
     for(; itJoystickListener != itJoystickListenerEnd; ++itJoystickListener ) {
@@ -557,7 +579,7 @@ bool InputManager::buttonReleased( const OIS::JoyStickEvent &e, int button ) {
   * \return A pointer to this instance
   *
   */
-InputManager* InputManager::getSingletonPtr( void ) {
+RainbruRPG::Core::InputManager* RainbruRPG::Core::InputManager::getSingletonPtr( void ) {
     if( !mInputManager ) {
         mInputManager = new InputManager();
     }

@@ -20,13 +20,23 @@
  *
  */
 
-#include <OgreSceneNode.h>
 
 #include "gsmenubase.h"
-#include <iostream>
 
+#include <iostream>
+#include <OgreSceneNode.h>
 #include <logger.h>
+
+#include <OIS/OISPrereqs.h>
+#include <OIS/OISKeyboard.h>
+#include <OIS/OISMouse.h>
+
+#include "velocitycalculator.h"
+#include "keyboardnavigation.h"
+#include "inputmanager.h"
+#include "inputwrapper.h"
 #include "gameengine.h"
+#include "guimanager.h"
 
 /** The constructor
   *
@@ -44,6 +54,7 @@ RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu){
   velocity=NULL;
   stateType=GST_MENU;
   inputWrapper=new InputWrapper();
+  tabNav=new KeyboardNavigation();
 }
 
 /** The initialization of the GameState
@@ -66,7 +77,6 @@ void RainbruRPG::Core::gsMenuBase::init(){
 
   mRoot=GameEngine::getSingleton().getOgreRoot();
   mSceneMgr=GameEngine::getSingleton().getOgreSceneMgr();
-
 
   if (this->createMenu){
     menuNode = mSceneMgr->getRootSceneNode()
@@ -93,6 +103,10 @@ void RainbruRPG::Core::gsMenuBase::cleanup(){
   }
 
   delete inputWrapper;
+  delete tabNav;
+
+  inputWrapper=NULL;
+  tabNav=NULL;
 }
 
 /** Pauses the gamestate

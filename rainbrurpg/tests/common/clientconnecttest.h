@@ -201,7 +201,7 @@ public:
     * by the addAccount() method. We can then test the 
     * connection to this account with an incorrect password.
     *
-    * After etsting the mail confirmation lack, we can confirm the 
+    * After testing the mail confirmation lack, we can confirm the 
     * mail with the CurlAccountConfirmMail class.
     * 
     */
@@ -228,11 +228,16 @@ public:
 
     tClientConnectReturn ret=this->m_testedClass
       ->connect(CLIENT_NAME, CLIENT_WRONG_PWD);
-    CPPUNIT_ASSERT( ret==CCR_WRONG_PWD );
 
     if (ret!=CCR_WRONG_PWD){
-      cout << "return is :"<< returnToString(ret) << endl;
+      std::string msg= "return is :";
+      msg+= returnToString(ret);
+      msg+=", should be CCR_WRONG_PWD";
+      LOGE(msg.c_str());
+
     }
+
+    CPPUNIT_ASSERT( ret==CCR_WRONG_PWD );
 
     // We set this account on blacklist
     CurlAccountToggleBlacklist catb;

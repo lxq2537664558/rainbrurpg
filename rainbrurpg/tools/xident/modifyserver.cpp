@@ -52,9 +52,9 @@ RainbruRPG::Gui::ModifyServer::ModifyServer(FXApp *a, FXString serverName)
 
   // Get the server's client informations
   xmlServerList xsl;
-  tServerListItem* sli=xsl.getServerByName(name.c_str());
-  unsigned int maxCli=sli->maxClients;
-  unsigned int actCli=sli->actClients;
+  ServerListItem* sli=xsl.getServerByName(name.c_str());
+  unsigned int maxCli=sli->getMaxClients();
+  unsigned int actCli=sli->getActClients();
 
   // The root frame
   FXVerticalFrame *root =new FXVerticalFrame(this,LAYOUT_FILL_X|LAYOUT_FILL_Y);
@@ -62,10 +62,7 @@ RainbruRPG::Gui::ModifyServer::ModifyServer(FXApp *a, FXString serverName)
   std::string lab1="Here you can change the number of connected\n"
     "clients of the selected server.\n"
     "The server has actually ";
-  lab1+=StringConv::getSingleton().itoc(sli->actClients);
-  lab1+="/";
-  lab1+=StringConv::getSingleton().itoc(sli->maxClients);
-  lab1+=" clients.";
+  lab1+=sli->getOccupationStr();
 
 
   FXLabel* labHelp=new FXLabel(root, lab1.c_str(), 0, 

@@ -2430,7 +2430,7 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 cat >>confdefs.h <<_ACEOF
-#define BUILD_RELEASE "152"
+#define BUILD_RELEASE "154"
 _ACEOF
 
 

@@ -22,6 +22,10 @@
 
 #include "curlaccountadd.h"
 
+#include "xmlaccountlist.h"
+#include "hashpassword.h"
+#include "globaluri.h"
+
 /** The default contructor
   *
   */
@@ -154,53 +158,58 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlAfter(){
   const char* mail=postedData.getValue("mail");
 
   tAccountListItem *it=xml->getAccount(name);
-  const char* itname= it->name;
-  const char* itpwd= it->password;
-  const char* itmail= it->mail;
-
-  // control Name
-  if ((strlen(name)==0)||(strlen(itname)==0)){
-    LOGW("One of the name is empty, controlAfter failed");
-    ret=false;
-
+  if (it){
+    const char* itname= it->name;
+    const char* itpwd= it->password;
+    const char* itmail= it->mail;
+    
+    // control Name
+    if ((strlen(name)==0)||(strlen(itname)==0)){
+      LOGW("One of the name is empty, controlAfter failed");
+      ret=false;
+      
+    }
+    else{
+      if (strcmp(name, itname)==0){
+	LOGI("The name is the same");
+      }
+      else{
+	LOGW("The name is not the same");
+	ret=false;
+	response=CAA_UNKNOWN;
+      }
+      
+      // control Password
+      
+      HashPassword hp;
+      bool retpwd=hp.compare(pwd, itpwd);
+      if (retpwd){
+	LOGI("The password is the same");
+      }
+      else{
+	LOGW("The password is not the same");
+	LOGW(pwd);
+	LOGW(itpwd);
+	
+	ret=false;
+	response=CAA_UNKNOWN;
+      }
+      
+      // control Mail
+      if (strcmp(mail, itmail)==0){
+	LOGI("The mail adress is the same");
+      }
+      else{
+	LOGW("The mail adress is not the same");
+	ret=false;
+	response=CAA_UNKNOWN;
+      }
+    }
   }
   else{
-    if (strcmp(name, itname)==0){
-      LOGI("The name is the same");
-    }
-    else{
-      LOGW("The name is not the same");
-      ret=false;
-      response=CAA_UNKNOWN;
-    }
-
-  // control Password
-
-    HashPassword hp;
-    bool retpwd=hp.compare(pwd, itpwd);
-    if (retpwd){
-      LOGI("The password is the same");
-    }
-    else{
-      LOGW("The password is not the same");
-      LOGW(pwd);
-      LOGW(itpwd);
-      
-      ret=false;
-      response=CAA_UNKNOWN;
-    }
-
-    // control Mail
-    if (strcmp(mail, itmail)==0){
-      LOGI("The mail adress is the same");
-    }
-    else{
-      LOGW("The mail adress is not the same");
-      ret=false;
-      response=CAA_UNKNOWN;
-    }
+    // it==NULL, an error occured
+    ret=false;
   }
-
 
   return ret;
 }

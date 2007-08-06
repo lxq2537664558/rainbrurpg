@@ -21,7 +21,6 @@
  */
 
 /* Modifications :
- *
  * - 06 mar 2007 : Adds tCurlAccountAddReturn enumeration
  * - 02 mar 2007 : Renamed CurlAccountAdd (was CurlPlayerAdd)
  * - 02 mar 2007 : Adds some accessors( setName, setPassword, setMail)
@@ -31,12 +30,19 @@
 #ifndef CURL_ACCOUNT_ADD_H
 #define CURL_ACCOUNT_ADD_H
 
-#include "globaluri.h"
 #include "curlsubmitform.h"
-#include "xmlaccountlist.h"
-#include "hashpassword.h"
 
 using namespace RainbruRPG::Network;
+
+// Forward declarations
+namespace RainbruRPG {
+  namespace Network {
+    namespace Ident {
+      class xmlAccountList;
+    }
+  }
+}
+// End of forward declarations
 
 namespace RainbruRPG {
   namespace Network {

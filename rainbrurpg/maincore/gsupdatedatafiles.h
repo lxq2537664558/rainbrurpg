@@ -1,6 +1,6 @@
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
- *
+ * 
  *  This file is part of RainbruRPG.
  *
  *  RainbruRPG is free software; you can redistribute it and/or modify
@@ -21,56 +21,34 @@
  */
 
 /* Modifications :
- * - 29 jul 2007 : getXMLTextFromName is now implemented here
+ * - 30 jul 2007 : Starting implementation
  *
  */
 
-#ifndef CURL_FILE_TO_XML
-#define CURL_FILE_TO_XML
+#ifndef _GS_UPDATE_DATAFILES_H_
+#define _GS_UPDATE_DATAFILES_H_
 
+#include <CEGUI/CEGUI.h>
 
-#include <curl/curl.h>
-
-#include "curlgetfile.h"
-
-// Forward declarations
-class TiXmlDocument;
-class TiXmlElement;
-// End of forward declarations
+#include "gsmenubase.h"
+#include "vcconstant.h"
+#include "guimanager.h"
 
 namespace RainbruRPG {
-  namespace Network {
-    namespace Ident {
+  namespace Core{
 
-
-      /** A class used to get a file and passed it on TinyXml 
-        * Document
-	*
-	*/
-      class CurlFileToXml : public CurlGetFile{
-      public:
-	CurlFileToXml();
-	~CurlFileToXml();
-
-	virtual bool perform();
-	TiXmlDocument* getXmlDocument();
-
-      protected:
-	virtual bool controlBefore ();
-	virtual bool controlAfter ();
-
-	bool fileToxml();
- 	const char* getXMLTextFromName(TiXmlElement*, const char*);
-
-     private:
-	/** The TinyXML document instance */
-	TiXmlDocument *doc;
-      };
-    }
+    /** A game state used to show client update progression
+      *
+      *
+      *
+      */
+    class gsUpdateDatafiles : public gsMenuBase{
+    public:
+      gsUpdateDatafiles();
+      virtual ~gsUpdateDatafiles();
+    };
   }
 }
 
-
-
-#endif //CURL_FILE_TO_XML
+#endif // _GS_UPDATE_DATAFILES_H_
 

@@ -75,8 +75,6 @@ namespace RainbruRPG {
 	CurlSubmitForm();
 	virtual bool perform();
 
-
-
       protected:
 	const char* getComputedData();
 

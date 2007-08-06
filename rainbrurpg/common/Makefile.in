@@ -82,7 +82,7 @@ am__objects_2 = loadbmp.lo tinystr.lo tinyxml.lo tinyxmlerror.lo \
 	npconnectionresponse.lo chartbase.lo chartserie.lo \
 	chartline.lo npflooder0004.lo netpacketflooderbase.lo timer.lo \
 	ftpclient.lo itemlistfile.lo curlpersoheaderdelete.lo \
-	hashfile.lo
+	hashfile.lo serverlistitem.lo
 am_librainbrurpg_common_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_common_la_OBJECTS =  \
 	$(am_librainbrurpg_common_la_OBJECTS)
@@ -308,7 +308,8 @@ h_sources = logger.h				\
 	  ftpclient.h				\
 	  itemlistfile.h			\
 	  curlpersoheaderdelete.h		\
-	  hashfile.h
+	  hashfile.h				\
+	  serverlistitem.h
 
 cc_sources = loadbmp.cpp				\
 	  tinystr.cpp				\
@@ -379,7 +380,8 @@ cc_sources = loadbmp.cpp				\
 	  ftpclient.cpp				\
 	  itemlistfile.cpp			\
 	  curlpersoheaderdelete.cpp		\
-	  hashfile.cpp
+	  hashfile.cpp				\
+	  serverlistitem.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -511,6 +513,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/optionpanel.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/optionstringattribute.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/serverlistitem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sha1.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stringconv.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/timer.Plo@am__quote@

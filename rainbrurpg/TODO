@@ -15,10 +15,8 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
-o [mouse] libCurl
-- changeServerAct.php does not works anymore
-
-* Adminsite : automatic EMail validation
+o [mouse] Maintenance
+- EasyBMP uses logger
 - The account is created only if the mail was correctly sent
 - CurlAccountAdd::controlAfter tests if the account was correctly created
 
@@ -122,19 +120,31 @@ o [mouse] libCurl
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-154
+- Using forward declarations for some classes
+- InputManager in a namespace RainbruRPG::Core
+- Removing XML output for Unitest
+- UnitTest fails because we can't confirm mail               FIXED
+- CurlAccountConfirmMail send ConfirmId
+
 * v 0.0.5-153
+- Doxygen documentation
+- tools uses ServerListItem class
+- Setting servers number in gsServerrList
+- gsServerList uses ServerListItem class
+- Create a ServerListItem class to replace tServerListItem
+- changeServerAct.php servers.xml link broken                FIXED
 - removing CurlProgressFunction
 - removing defaultwritefunction.h
 - CurlGetFile now use default Curl write function
-- Doxygen documentation
-- Test the whole account creation process          OK
+- Test the whole account creation process                    OK
 - Adminsite : directory structure modified
 - Removing data/3d/ content
 - mailconfirm.php uses mail id for confirmation
 - addplayer.php send a confirmation mail (need sendmail)
 - Cleaning IttClient/
 - TinyXML and EasyBMP licenses are compatible with GPLv3
-- Fix the tools-hashsum pb                         FIXED
+- Fix the tools-hashsum pb                                   FIXED
 
 * v 0.0.5-152
 - Doxygen documentation
@@ -156,6 +166,3 @@ o [mouse] libCurl
 - xml?????::getXMLTextFromName are several times implemented
 - Many xml?????list should become subclasses of CurlFileToXml
 - Doxygen documentation
-
-
-

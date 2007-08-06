@@ -113,10 +113,11 @@ RainbruRPG::Gui::tAccountList* RainbruRPG::Network::Ident::
       
       tAccountListItem *it=new tAccountListItem();
       
-      it->name= getXMLTextFromName(child, "Name");
-      it->password= getXMLTextFromName(child, "Pwd");
-      it->mail= getXMLTextFromName(child, "Mail");
-    
+      it->name=         getXMLTextFromName(child, "Name");
+      it->password=     getXMLTextFromName(child, "Pwd");
+      it->mail=         getXMLTextFromName(child, "Mail");
+      it->validationId= getXMLTextFromName(child, "ConfirmId");
+
       // Get the creation timestamp
       xmlTimestamp xts;
       it->creation= xts.getCTimeS("creation", child);
@@ -124,6 +125,13 @@ RainbruRPG::Gui::tAccountList* RainbruRPG::Network::Ident::
       // Get the confirmation timestamp
       it->confirm= xts.getCTimeS("confirm", child);
       
+      LOGCATS("Account : name='");
+      LOGCATS(it->name);
+      LOGCATS("' confirm='");
+      LOGCATS(it->confirm.c_str());
+      LOGCATS("'");
+      LOGCAT();
+
       const char* bl=getXMLTextFromName(child, "Black");
       if (strcmp( bl, "Yes")==0)
 	it->blacklist=true;

@@ -22,6 +22,10 @@
 
 #include "curlaccountdelete.h"
 
+#include "globaluri.h"
+#include "hashpassword.h"
+#include "xmlaccountlist.h"
+
 /** The default constructor 
   *
   */

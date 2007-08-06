@@ -97,7 +97,7 @@ RainbruRPG::Gui::FtpClientWindow::FtpClientWindow(FXApp * a)
   tServerList::const_iterator iter;
 
   for (iter=serverList->begin(); iter != serverList->end(); iter++){
-    FXString serverName=(*iter)->name;
+    FXString serverName=(*iter)->getName().c_str();
     cbServer->appendItem(serverName);
   }
   cbServer->setNumVisible(serverList->size());
@@ -706,12 +706,12 @@ onServerChanged(FXObject* o,FXSelector s,void* v){
   LOGCATS(serverName);
   LOGCAT();
 
-  tServerListItem* item=xmlServer.getServerByName(serverName);
+  ServerListItem* item=xmlServer.getServerByName(serverName);
 
 
-  tfHostIp->setText(item->ipAddress);
-  tfHostPort->setText(item->ftp);
-  tfHostUName->setText(item->uniqueName.c_str());
+  tfHostIp->setText(item->getIpAddress().c_str());
+  tfHostPort->setText(item->getFtpPortStr().c_str());
+  tfHostUName->setText(item->getUniqueName().c_str());
 
   return 1;
 }

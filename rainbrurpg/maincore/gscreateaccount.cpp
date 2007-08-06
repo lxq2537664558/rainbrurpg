@@ -25,6 +25,8 @@
 #include <curlaccountadd.h>
 #include <logger.h>
 
+#include "keyboardnavigation.h"
+
 /** The default constructor
   *
   */
@@ -145,14 +147,14 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   */
 void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   // Registering TabNavigation
-  tabNav.clear();
-  tabNav.setParent("RainbruRPG/CreateAccount");
-  tabNav.addWidget("RainbruRPG/CreateAccount/Name");
-  tabNav.addWidget("RainbruRPG/CreateAccount/Pwd");
-  tabNav.addWidget("RainbruRPG/CreateAccount/RepPwd");
-  tabNav.addWidget("RainbruRPG/CreateAccount/EMail");
-  tabNav.addWidget("RainbruRPG/CreateAccount/Submit");
-  tabNav.addWidget("RainbruRPG/CreateAccountWin/Back");
+  tabNav->clear();
+  tabNav->setParent("RainbruRPG/CreateAccount");
+  tabNav->addWidget("RainbruRPG/CreateAccount/Name");
+  tabNav->addWidget("RainbruRPG/CreateAccount/Pwd");
+  tabNav->addWidget("RainbruRPG/CreateAccount/RepPwd");
+  tabNav->addWidget("RainbruRPG/CreateAccount/EMail");
+  tabNav->addWidget("RainbruRPG/CreateAccount/Submit");
+  tabNav->addWidget("RainbruRPG/CreateAccountWin/Back");
 }
 
 /** The Suibmit button callback

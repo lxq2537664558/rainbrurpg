@@ -182,7 +182,7 @@ void RainbruRPG::Gui::FoxServerList::setServerNumber(unsigned int i){
   *
   */
 void RainbruRPG::Gui::FoxServerList::
-addServer(RainbruRPG::Network::Ident::tServerListItem* p){
+addServer(RainbruRPG::Network::Ident::ServerListItem* p){
   FXString s;
 
   // Used to auto-numbered the insertion of new TableItem
@@ -201,62 +201,35 @@ addServer(RainbruRPG::Network::Ident::tServerListItem* p){
   table->getRowHeader()->setItemJustify(num, FXHeaderItem::RIGHT);
 
   // Sets the name
-  FXTableItem* item=new FXTableItem(p->name);
+  FXTableItem* item=new FXTableItem(p->getName().c_str());
   table->setItem(num, col++, item);
 
   // Sets the unique name
-  FXTableItem* itemUniqueName=new FXTableItem(p->uniqueName.c_str());
+  FXTableItem* itemUniqueName=new FXTableItem(p->getUniqueName().c_str());
   table->setItem(num, col++, itemUniqueName);
 
   // Sets the type
-  int iType=p->type;
-  std::string itemTypeText;
-
-  switch (iType){
-  case 1:
-    itemTypeText="1 (Fantasy)";
-    break;
-  case 2:
-    itemTypeText="2 (Contemporary)";
-    break;
-  case 3:
-    itemTypeText="3 (Futuristic)";
-    break;
-  case 4:
-    itemTypeText="4 (Post-apocalyptic)";
-    break;
-  default:
-    itemTypeText="ERROR";
-    break;
-  }
-
-  FXTableItem* itemType=new FXTableItem(itemTypeText.c_str());
+  FXTableItem* itemType=new FXTableItem(p->getTypeStr().c_str());
   table->setItem(num, col++, itemType);
 
   // Sets the IP address
-  std::string txtIp=p->ipAddress;
-  FXTableItem* item2=new FXTableItem(txtIp.c_str());
+  FXTableItem* item2=new FXTableItem(p->getIpAddress().c_str());
   table->setItem(num, col++, item2);
 
   // Sets the UDP port
-  FXTableItem* item3=new FXTableItem(p->port);
+  FXTableItem* item3=new FXTableItem(p->getUdpPortStr().c_str());
   table->setItem(num, col++, item3);
 
   // Sets the FTP port
-  FXTableItem* item4=new FXTableItem(p->ftp);
+  FXTableItem* item4=new FXTableItem(p->getFtpPortStr().c_str());
   table->setItem(num, col++, item4);
 
   // Sets the creation date
-  FXTableItem* item5=new FXTableItem(p->creation.c_str());
+  FXTableItem* item5=new FXTableItem(p->getCreationDate().c_str());
   table->setItem(num, col++, item5);
 
   // Sets the clients informations
-  std::string cli="";
-  cli= StringConv::getSingleton().itos(p->actClients);
-  cli+="/" ;
-  cli+= StringConv::getSingleton().itos(p->maxClients);
-
-  FXTableItem* item6=new FXTableItem(cli.c_str());
+  FXTableItem* item6=new FXTableItem(p->getOccupationStr().c_str());
   table->setItem(num, col++, item6);
 }
 

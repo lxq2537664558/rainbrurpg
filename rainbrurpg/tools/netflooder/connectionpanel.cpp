@@ -158,7 +158,7 @@ void RainbruRPG::Gui::ConnectionPanel::feedTable(){
   *
   */
 void RainbruRPG::Gui::ConnectionPanel::
-addServer(RainbruRPG::Network::Ident::tServerListItem* p){
+addServer(RainbruRPG::Network::Ident::ServerListItem* p){
   FXString s;
 
   FXint num=table->getNumRows();
@@ -174,12 +174,14 @@ addServer(RainbruRPG::Network::Ident::tServerListItem* p){
   table->getRowHeader()->setItemJustify(num, FXHeaderItem::RIGHT);
 
   // Sets the name
-  FXTableItem* item=new FXTableItem(p->name);
+  FXTableItem* item=new FXTableItem(p->getName().c_str());
   table->setItem(num, 0, item);
   item->setJustify(FXTableItem::LEFT);
 
   // Sets the derscription
-  std::string d=StringConv::getSingleton().xmlStripNewLine(p->description);
+  std::string d=StringConv::getSingleton()
+    .xmlStripNewLine(p->getDescription());
+
   FXTableItem* item2=new FXTableItem(d.c_str());
   table->setItem(num, 1, item2);
   item2->setJustify(FXTableItem::LEFT);
@@ -291,14 +293,14 @@ long RainbruRPG::Gui::ConnectionPanel::
 onConnectClicked(FXObject *o,FXSelector s,void* v){
   LOGI("Connect button clicked");
   std::string name(selServer.text());
-  tServerListItem *server=serverList->getServerByName (name.c_str());
+  ServerListItem *server=serverList->getServerByName (name.c_str());
 
   if (!server){
     LOGW("Cannot get server informations");
   }
   else{
 
-    std::string techNote(server->techNote);
+    std::string techNote(server->getTechNote());
     bool empty=(techNote.size()==0);
     if (empty){
       LOGI("Server technote is empty");
@@ -333,7 +335,7 @@ onConnectClicked(FXObject *o,FXSelector s,void* v){
   *
   */
 void RainbruRPG::Gui::ConnectionPanel::
-changeToWaitingPanel(tServerListItem* s){
+changeToWaitingPanel(ServerListItem* s){
 
   LOGI("Sending ID_SHOW_WAITING_PANEL signal");
 

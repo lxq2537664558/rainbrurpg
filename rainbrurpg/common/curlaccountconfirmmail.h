@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 06 aug 2007 : ConfirmId added
  * - 15 mar 2007 : Added a getName function for unittest         
  *
  */
@@ -28,9 +29,20 @@
 #ifndef CURL_ACCOUNT_CONFIRM_MAIL_H
 #define CURL_ACCOUNT_CONFIRM_MAIL_H
 
-#include "globaluri.h"
 #include "curlsubmitform.h"
-#include "xmlaccountlist.h"
+
+// Forward declarations
+namespace RainbruRPG {
+  namespace Network {
+
+    class GlobalURI;
+
+    namespace Ident {
+      class xmlAccountList;
+    }
+  }
+}
+// End of forward declarations
 
 using namespace RainbruRPG::Network;
 
@@ -40,7 +52,10 @@ namespace RainbruRPG {
 
       /** Confirm the mail address of an account
         *
-	*
+	* Since the mail confirmation was changed, we need a
+	* confirmId to be able to validate a mail address. You
+	* don't have to deal with it. It is automatically taken
+	* from xmlAccountList within the setName() function.
 	*
 	*/
       class CurlAccountConfirmMail : public CurlSubmitForm{
@@ -48,7 +63,7 @@ namespace RainbruRPG {
 	CurlAccountConfirmMail();
 	~CurlAccountConfirmMail();
 
-	void setName(const char*);
+	void setName(const std::string&);
 	const char* getName();
 
       protected:

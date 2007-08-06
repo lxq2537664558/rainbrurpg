@@ -30,11 +30,22 @@
 #include <OIS/OISMouse.h>
 
 #include "gamestate.h"
-#include "velocitycalculator.h"
-#include "inputwrapper.h"
-#include "keyboardnavigation.h"
 
 using namespace Ogre;
+
+// Forward declarations
+namespace RainbruRPG {
+  namespace Core{
+    class InputManager;
+    class InputWrapper;
+    class VelocityCalculator;
+  }
+  namespace Gui{
+    class GuiManager;
+    class KeyboardNavigation;
+  }
+}
+// End of forward declarations
 
 using namespace RainbruRPG::Gui;
 
@@ -155,9 +166,8 @@ namespace RainbruRPG {
 	* setupTabOrder()).
 	*
         */
-      KeyboardNavigation tabNav;
+      KeyboardNavigation* tabNav;
     };
-
   }
 }
 

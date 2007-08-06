@@ -95,6 +95,13 @@ namespace RainbruRPG {
 	*
 	*/
       CEGUI::Window* btnConnect;
+
+      /** A StaticText CEGUI widget that shows the number of server in list
+        *
+	* Its text is changed in feedList().
+	*
+	*/
+      CEGUI::Window* nbServer;
     };
   }
 }

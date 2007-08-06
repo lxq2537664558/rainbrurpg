@@ -30,9 +30,10 @@
 
 #include <fox-1.6/fx.h>
 
+#include <serverlistitem.h>
 #include <xmlserverlist.h>
-#include <string>
 #include <stringconv.h>
+#include <string>
 
 using namespace std;
 using namespace RainbruRPG::Core;
@@ -82,9 +83,9 @@ namespace RainbruRPG{
       long onTableSelectionChange(FXObject *,FXSelector,void*);
 
     private:
-      void changeToWaitingPanel(tServerListItem*);
+      void changeToWaitingPanel(ServerListItem*);
       void createTableHeader();
-      void addServer(RainbruRPG::Network::Ident::tServerListItem*);
+      void addServer(RainbruRPG::Network::Ident::ServerListItem*);
       void feedTable();
       FXString getSelectedServerName();
 

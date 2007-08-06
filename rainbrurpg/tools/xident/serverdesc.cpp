@@ -131,8 +131,8 @@ FXString RainbruRPG::Gui::ServerDesc::getServerDesc(FXString name){
   n=StringConv::getSingleton().xmlToNewLine(name.text());
 
   xmlServerList xsl;
-  tServerListItem* sli=xsl.getServerByName(n.c_str());
-  FXString ret(sli->description);
+  ServerListItem* sli=xsl.getServerByName(n.c_str());
+  FXString ret(sli->getDescription().c_str());
 
   return ret;
 }

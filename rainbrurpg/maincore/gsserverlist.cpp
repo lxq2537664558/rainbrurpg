@@ -24,6 +24,8 @@
 
 #include <stringconv.h>
 
+#include "keyboardnavigation.h"
+
 /** The default constructor
   *
   * Creates a vcConstant velocity calculator and initialize
@@ -37,6 +39,8 @@ RainbruRPG::Core::gsServerList::gsServerList()
   :gsMenuBase(false){
 
   serverList=NULL;
+  nbServer=NULL;
+
   LOGI("Constructing a gsServerList");
   velocity=new vcConstant();
   translateTo(0.0f);
@@ -57,7 +61,9 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
     delete velocity;
     velocity=NULL;
   }
+
   serverList=NULL;
+  nbServer=NULL;
 
   delete xml;
   xml=NULL;
@@ -116,8 +122,9 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   // Root window
   CEGUI::Window* mainWindow=root->getChild("RainbruRPG/ServerList/");
 
-  // Get the server ListBox
+  // Get the server ListBox and nbServer button
   CEGUI::Window* slWindow=mainWindow->getChild("RainbruRPG/ServerList/List");
+  nbServer=mainWindow->getChild("RainbruRPG/ServerList/nbServers");
 
   serverList=static_cast<CEGUI::MultiColumnList*>(slWindow);
   serverList->setSelectionMode(CEGUI::MultiColumnList::RowSingle);
@@ -174,48 +181,33 @@ void RainbruRPG::Core::gsServerList::feedList(){
   tServerList* lst=xml->getServerList();
   tServerList::const_iterator iter;
 
+  // Server number
+  if (nbServer){
+    CEGUI::String nbServerStr(StringConv::getSingleton().itos(lst->size()));
+    CEGUI::String txt="Servers : ";
+    txt+=nbServerStr;
+    nbServer->setText(txt);
+  }
+  else{
+    LOGE("Cannot get a valid nbServer window");
+  }
+
+  // Feed the list
   for (iter=lst->begin(); iter != lst->end(); iter++){
     CEGUI::uint newRow=serverList->addRow();
 
     // name
-    const char* name=(*iter)->name;
+    std::string name=(*iter)->getName();
     serverList->setItem(new CEGUI::ListboxTextItem(name), 0, newRow);
 
     // type
-    unsigned int type=(*iter)->type;
-    CEGUI::String itemTypeText;
-
-    switch (type){
-    case 1:
-      itemTypeText="1 (Fantasy)";
-      break;
-    case 2:
-      itemTypeText="2 (Contemporary)";
-      break;
-    case 3:
-      itemTypeText="3 (Futuristic)";
-      break;
-    case 4:
-      itemTypeText="4 (Post-apocalyptic)";
-      break;
-    default:
-      itemTypeText="ERROR";
-      break;
-    }
+    CEGUI::String itemTypeText((*iter)->getTypeStr());
     serverList->setItem(new CEGUI::ListboxTextItem(itemTypeText), 1, newRow);
 
     // Occupation
-    const char* actC=StringConv::getSingleton().itoc((*iter)->actClients);
-    const char* maxC=StringConv::getSingleton().itoc((*iter)->maxClients);
-
-    CEGUI::String occ;
-    occ+=actC;
-    occ+="/";
-    occ+=maxC;
+    CEGUI::String occ((*iter)->getOccupationStr());
     serverList->setItem(new CEGUI::ListboxTextItem(occ), 2, newRow);
-
   }
- 
 }
 
 /** The Back button callback
@@ -256,9 +248,9 @@ bool RainbruRPG::Core::gsServerList::
 onRefreshClicked(const CEGUI::EventArgs& evt){
   LOGI("onRefreshClicked");
 
+  serverList->resetList();
   xml->refresh();
   btnConnect->setVisible(false);
-  serverList->resetList();
   feedList();
 
   return true;
@@ -331,12 +323,12 @@ onListDoubleClick(const CEGUI::EventArgs& evt){
   */
 void RainbruRPG::Core::gsServerList::setupTabOrder(){
   // Registering TabNavigation
-  tabNav.clear();
-  tabNav.setParent("RainbruRPG/ServerList/");
-  tabNav.addMultiColumnList("RainbruRPG/ServerList/List", 
+  tabNav->clear();
+  tabNav->setParent("RainbruRPG/ServerList/");
+  tabNav->addMultiColumnList("RainbruRPG/ServerList/List", 
 	   CEGUI::Event::Subscriber(&gsServerList::onConnectClicked,this));
-  tabNav.addWidget("RainbruRPG/ServerList/Refresh");
-  tabNav.addWidget("RainbruRPG/ServerList/Connect");
-  tabNav.addWidget("RainbruRPG/ServerList/Back");
+  tabNav->addWidget("RainbruRPG/ServerList/Refresh");
+  tabNav->addWidget("RainbruRPG/ServerList/Connect");
+  tabNav->addWidget("RainbruRPG/ServerList/Back");
 }
 

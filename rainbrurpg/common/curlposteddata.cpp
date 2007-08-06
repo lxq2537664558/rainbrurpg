@@ -66,7 +66,8 @@ void RainbruRPG::Network::Ident::CurlPostedData::debugKeyList(){
   LOGI("Debugging CurlPostedData key list");
   for(PostedDataKeyList::iterator iter = list->begin();
       iter != list->end(); iter++){
-    std::cout<<(*iter)<<endl;
+    LOGCATS((*iter));
+    LOGCAT();
   }
 }
 
@@ -117,8 +118,9 @@ const char* RainbruRPG::Network::Ident::CurlPostedData::getValue(
     }
   }
   if (!found){
-    string err="This key cannot be found ";
+    string err="In CurlPostedData::getValue() : this key cannot be found : '";
     err.append(key);
+    err.append("'");
     LOGW(err.c_str());
     ret= "";
   }
@@ -138,7 +140,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
 
   string snew(val);
   LOGI("Setting the value of a key (std::string form)");
-  setValue(key, snew.data());
+  setValue(key, snew.c_str());
 }
 
 /** Get the computed dta to post

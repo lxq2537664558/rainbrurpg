@@ -76,25 +76,21 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
 
   for( child; child; child=child->NextSiblingElement() ){
 
-    tServerListItem *it=new tServerListItem();
+    ServerListItem *it=new ServerListItem();
 
     // Get the creation timestamp
     xmlTimestamp xts;
-    it->creation= xts.getCTimeS("creation", child);
-
-    it->name= getXMLTextFromName(child, "Name");
-    it->uniqueName= getXMLTextFromName(child, "UniqueName");
-    it->description= getXMLTextFromName(child, "Desc");
-    it->ipAddress= getXMLTextFromName(child, "Ip");
-    it->port= getXMLTextFromName(child, "Port");
-    it->ftp= getXMLTextFromName(child, "Ftp");
-    it->techNote= getXMLTextFromName(child, "TechNote");
-    const char* mc=getXMLTextFromName(child, "MaxClients");
-    const char* ac=getXMLTextFromName(child, "ActClients");
-    const char* tc=getXMLTextFromName(child, "Type");
-    it->maxClients=StringConv::getSingleton().stoi(mc);
-    it->actClients=StringConv::getSingleton().stoi(ac);
-    it->type=StringConv::getSingleton().stoi(tc);
+    it->setCreationDate(xts.getCTimeS("creation", child));
+    it->setName(getXMLTextFromName(child, "Name"));
+    it->setUniqueName(getXMLTextFromName(child, "UniqueName"));
+    it->setDescription(getXMLTextFromName(child, "Desc"));
+    it->setIpAddress(getXMLTextFromName(child, "Ip"));
+    it->setUdpPort(getXMLTextFromName(child, "Port"));
+    it->setFtpPort(getXMLTextFromName(child, "Ftp"));
+    it->setTechNote(getXMLTextFromName(child, "TechNote"));
+    it->setMaxClients(getXMLTextFromName(child, "MaxClients"));
+    it->setActClients(getXMLTextFromName(child, "ActClients"));
+    it->setType(getXMLTextFromName(child, "Type"));
 
     pl->push_back(it);
   }
@@ -113,10 +109,12 @@ bool RainbruRPG::Network::Ident::xmlServerList::isServerExisting(
   tServerList::const_iterator iter;
 
   tServerList* pl=this->getServerList();
-  
+  std::string sName;  
+
   if (pl){
     for (iter=pl->begin(); iter != pl->end(); iter++){
-      if (strcmp(n, (*iter)->name )==0){
+      sName=(*iter)->getName();
+      if (sName==n){
 	return true;
       }
     }
@@ -132,22 +130,23 @@ bool RainbruRPG::Network::Ident::xmlServerList::isServerExisting(
   * \return The server or NULL if not found
   *
   */
-RainbruRPG::Network::Ident::tServerListItem* 
+RainbruRPG::Network::Ident::ServerListItem* 
 RainbruRPG::Network::Ident::xmlServerList::
 getServerByName(const char* n){
   bool found=false;
 
   tServerList::const_iterator iter;
   tServerList* pl=this->getServerList();
+  std::string sName;  
   
   if (pl){
     for (iter=pl->begin(); iter != pl->end(); iter++){
-
+      sName=(*iter)->getName();
+ 
       // We have the good server
-      if (strcmp(n, (*iter)->name )==0){
+      if (sName==n){
 	found=true;
 	return (*iter);
-
       }
     }
   }

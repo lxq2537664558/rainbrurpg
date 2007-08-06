@@ -30,11 +30,12 @@
 
 #include <fox-1.6/fx.h>
 
-#include <xmlserverlist.h>
-#include <string>
-#include <stringconv.h>
 #include <npidentification.h>
+#include <serverlistitem.h>
 #include <sigc++/sigc++.h>
+#include <xmlserverlist.h>
+#include <stringconv.h>
+#include <string>
 
 #include "enetflooderclient.h"
 
@@ -82,7 +83,7 @@ namespace RainbruRPG{
       long onNotYetImplemented(FXObject *,FXSelector,void*);
       long onRunClient(FXObject *,FXSelector,void*);
       void runClient();
-      void setServer(tServerListItem*);
+      void setServer(ServerListItem*);
 
       /** A signal sent if the connection is refused by the selected server*/
       tVoidSignal sigConnectionRefused;
@@ -127,7 +128,7 @@ namespace RainbruRPG{
       /** The server to connect to
         *
 	*/
-      tServerListItem* server;
+      ServerListItem* server;
       /** The progress bar */
       FXProgressBar* prog;
     }; 

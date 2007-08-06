@@ -20,6 +20,7 @@
  *
  */
 
+#include "keyboardnavigation.h"
 #include "gsconnection.h"
 #include "vcconstant.h"
 #include "guimanager.h"
@@ -285,12 +286,12 @@ onLostPasswordClicked(const CEGUI::EventArgs& evt){
 
 void RainbruRPG::Core::gsConnection::setupTabOrder(){
   // Registering TabNavigation
-  tabNav.clear();
-  tabNav.setParent("RainbruRPG/Connection");
-  tabNav.addWidget("RainbruRPG/Connection/Name");
-  tabNav.addWidget("RainbruRPG/Connection/Pwd");
-  tabNav.addWidget("Connect");
-  tabNav.addWidget("CreateAccount");
-  tabNav.addWidget("LostPassword");
-  tabNav.addWidget("Back");
+  tabNav->clear();
+  tabNav->setParent("RainbruRPG/Connection");
+  tabNav->addWidget("RainbruRPG/Connection/Name");
+  tabNav->addWidget("RainbruRPG/Connection/Pwd");
+  tabNav->addWidget("Connect");
+  tabNav->addWidget("CreateAccount");
+  tabNav->addWidget("LostPassword");
+  tabNav->addWidget("Back");
 }

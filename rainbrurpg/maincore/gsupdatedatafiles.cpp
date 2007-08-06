@@ -1,6 +1,6 @@
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
- *
+ * 
  *  This file is part of RainbruRPG.
  *
  *  RainbruRPG is free software; you can redistribute it and/or modify
@@ -20,46 +20,20 @@
  *
  */
 
-/* Modification :
- * - 03 aug 2007 : downloadComplete implementation
- * - 31 jul 2007 : Remove curlget.xml
- * - 02 mar 2007 : Using LOGCAT() instead of cout
- *
- */
+#include "gsupdatedatafiles.h"
 
-#ifndef CURL_GET_FILE
-#define CURL_GET_FILE
+/** The default constructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::gsUpdateDatafiles()
+  :gsMenuBase(){
 
 
-#include <curl/curl.h>
-
-#define DO_NOT_INCLUDE_WRITE_DATA
-
-#include "curlinterface.h"
-
-namespace RainbruRPG {
-  namespace Network {
-    namespace Ident {
-
-
-      /** A class used to get a file with CURL library
-        *
-	*
-	*/
-      class CurlGetFile : public CurlInterface{
-      public:
-	virtual ~CurlGetFile();
-	virtual bool perform();
-
-      protected:
-	virtual bool controlBefore ();
-	virtual bool controlAfter ();
-	bool writeToFile();
-
-      };
-    }
-  }
 }
 
+/** The destructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::~gsUpdateDatafiles(){
 
-#endif // CURL_GET_FILE
+}

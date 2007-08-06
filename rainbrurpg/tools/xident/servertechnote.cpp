@@ -127,8 +127,8 @@ onOkClicked(FXObject * o,FXSelector s,void* v){
 FXString RainbruRPG::Gui::ServerTechNote::getServerTechNote(FXString name){
   std::string n(name.text());
   xmlServerList xsl;
-  tServerListItem* sli=xsl.getServerByName(n.c_str());
-  FXString ret(sli->techNote);
+  ServerListItem* sli=xsl.getServerByName(n.c_str());
+  FXString ret(sli->getTechNote().c_str());
 
   return ret;
 }

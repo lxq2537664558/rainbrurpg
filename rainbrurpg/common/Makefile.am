@@ -71,7 +71,8 @@ h_sources= logger.h				\
 	  ftpclient.h				\
 	  itemlistfile.h			\
 	  curlpersoheaderdelete.h		\
-	  hashfile.h
+	  hashfile.h				\
+	  serverlistitem.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -143,7 +144,8 @@ cc_sources= loadbmp.cpp				\
 	  ftpclient.cpp				\
 	  itemlistfile.cpp			\
 	  curlpersoheaderdelete.cpp		\
-	  hashfile.cpp
+	  hashfile.cpp				\
+	  serverlistitem.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

@@ -25,6 +25,7 @@
 
 #include <fox-1.6/fx.h>
 
+#include "serverlistitem.h"
 #include "xmlserverlist.h"
 
 using namespace RainbruRPG::Network::Ident;

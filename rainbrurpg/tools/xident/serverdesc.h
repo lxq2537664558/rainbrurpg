@@ -24,6 +24,8 @@
 #define XIDENT_SERVER_DESC_DIALOG_H
 
 #include <fox-1.6/fx.h>
+
+#include <serverlistitem.h>
 #include <stringconv.h>
 
 #include "xmlserverlist.h"

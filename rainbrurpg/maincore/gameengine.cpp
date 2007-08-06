@@ -44,9 +44,10 @@
 #include "exampleframelistener.h"
 #include "xmlobjectlist.h"
 #include "globaluri.h"
+#include "inputmanager.h"
+#include "globaluri.h"
 
 using namespace RainbruRPG::Events;
-
 
 /** A function used to know if the GameEngine is running.
   * 

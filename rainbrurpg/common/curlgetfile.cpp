@@ -25,6 +25,7 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/fstream.hpp"
 #include "loadbmp.h"
+#include "httpresponse.h"
 
 /** The destructor
   *

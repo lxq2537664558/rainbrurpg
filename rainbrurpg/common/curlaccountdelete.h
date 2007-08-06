@@ -29,12 +29,23 @@
 #ifndef CURL_ACCOUNT_DELETE_H
 #define CURL_ACCOUNT_DELETE_H
 
-#include "globaluri.h"
 #include "curlsubmitform.h"
-#include "xmlaccountlist.h"
-#include "hashpassword.h"
 
 using namespace RainbruRPG::Network;
+
+// Forward declarations
+namespace RainbruRPG {
+  namespace Network {
+
+    class GlobalURI;
+
+    namespace Ident {
+      class HashPassword;
+      class xmlAccountList;
+    }
+  }
+}
+// End of forward declarations
 
 namespace RainbruRPG {
   namespace Network {

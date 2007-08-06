@@ -30,6 +30,12 @@ namespace RainbruRPG{
 
       /** An account like it appears in the server-side XML file
         *
+	* The validationId value is sent in the mail you
+	* received when you create an account. This Id is used
+	* in the confirmation form.
+	*
+	* The EMail is not validated if confirm is empty.
+	*
 	*/
       struct tAccountListItem {
 	const char* name;     //!< The connection name of the player
@@ -39,6 +45,7 @@ namespace RainbruRPG{
 	const char* mail;     //!< The mail adress of the player
 	std::string confirm;  //!< The date of confirmation of the
 			      //   mail adress
+        std::string validationId; //!< The ID used in validation mail
       };
 
       /** A stl list of tPlayerListItem

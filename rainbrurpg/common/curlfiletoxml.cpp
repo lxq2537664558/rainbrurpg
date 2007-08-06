@@ -22,6 +22,8 @@
 
 #include "curlfiletoxml.h"
 
+#include "tinyxml.h"
+
 /** The default constructor
   *
   */
@@ -110,21 +112,6 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
       err+=doc->ErrorDesc();
       err+="'";
       LOGE(err.c_str());
-
-
-      cout << "==================" << endl;
-      cout << "CurlFileToXml::fileToxml : debugging curlget.xml :" << endl;
-      fstream f("curlget.xml");
-      std::string s;
-
-      while (!f.eof()){
-	f >> s;
-	cout <<"  "<< s << endl;
-      }
-
-      cout << "CurlFileToXml::fileToxml : curlget.xml debug finished" << endl;
-      cout << "==================" << endl;
-      f.close();
 
       return false;
     }
