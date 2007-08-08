@@ -21,11 +21,7 @@
  */
 
 /* Modifications :
- *
- *
- *
- *
- *
+ * - 08 aug 2007 : AddAcount button managed
  *
  */
 
@@ -33,9 +29,20 @@
 #define FOX_ACCOUNT_LIST_H
 
 #include <fox-1.6/fx.h>
-#include <xmlaccountlist.h>
 #include <string>
-#include <taccountlist.h>
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace Gui{
+    struct tAccountListItem;
+  }
+  namespace Network{
+    namespace Ident{
+      class xmlAccountList;
+    }
+  }
+}
+// End forward declarations
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -59,11 +66,16 @@ namespace RainbruRPG{
 	*/
       enum{
 	/** Not Yet Implemented Identifier */
-	ID_NYI,
+	ID_NYI=FXPacker::ID_LAST,
+	/** The add account button FOX identifier */
+	ID_BTN_ADD,
+ 	/** Setting the new value to  FXMainWindow::ID_LAST*/
+	ID_LAST
       };
  
       long onNotYetImplemented(FXObject *,FXSelector,void*);
-    
+      long onAddAccountClicked(FXObject *,FXSelector,void*);
+
     private:
       /** The account list */
       xmlAccountList* accountList;

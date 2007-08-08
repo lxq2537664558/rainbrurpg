@@ -90,12 +90,6 @@ RainbruRPG::Gui::XIdentWindow::XIdentWindow(FXApp * a)
   // Matric containing Admin info
   FXHorizontalFrame* frMatrix=new FXHorizontalFrame(frame, LAYOUT_FILL_X);
 
-  // Admin info
-  FXLabel* labAdminName=new FXLabel(frMatrix, "Admin :");
-  FXTextField* tfAdminName=new FXTextField (frMatrix, 20 );
-  FXLabel* labAdminPwd=new FXLabel(frMatrix, "Password :");
-  FXTextField* tfAdminPwd=new FXTextField (frMatrix, 20 );
-
   // The FXSwitcher
   switcher=new FXSwitcher(frame,LAYOUT_FILL_X|LAYOUT_FILL_Y);
   // The Label panel

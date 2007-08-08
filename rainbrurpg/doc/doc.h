@@ -52,8 +52,10 @@
   * - Ogre v1.2(with GLX platform)
   * - OIS (Object-oriented Input System) v1.0
   *
-  * The project also uses Tinyxml (zlib license) and EasyBMP (modified
-  * BSD license) as build-in c++ sources. So you don't need to deal with it.
+  * The project also uses <a href="http://www.grinninglizard.com/tinyxml/">
+  * Tinyxml</a> (zlib license) and <a href="http://easybmp.sourceforge.net/">
+  * EasyBMP</a> (modified BSD license) as build-in c++ sources. 
+  * So you don't need to deal with it.
   *
   * \subsection ogre_platform_subsec Ogre Platform
   *

@@ -21,12 +21,16 @@
  */
 
 #include "foxaccountlist.h"
+
+#include <xmlaccountlist.h>
+#include <taccountlist.h>
 #include <logger.h>
 
 FXDEFMAP(RainbruRPG::Gui::FoxAccountList) FoxAccountListMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxAccountList::ID_NYI, RainbruRPG::Gui::FoxAccountList::onNotYetImplemented),
 
+  FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxAccountList::ID_BTN_ADD, RainbruRPG::Gui::FoxAccountList::onAddAccountClicked),
 
 };
 
@@ -44,6 +48,8 @@ RainbruRPG::Gui::FoxAccountList::
 FoxAccountList(FXComposite *parent,FXuint opts)
   :FXPacker(parent, opts)
 {
+
+
   accountList=new xmlAccountList();
 
   FXVerticalFrame *root = new FXVerticalFrame(this,
@@ -77,13 +83,13 @@ FoxAccountList(FXComposite *parent,FXuint opts)
   // Buttons in the right
   FXVerticalFrame *btnFrame = new FXVerticalFrame(hframe);
   FXuint btnOpts= LAYOUT_FILL_X|BUTTON_NORMAL;
-  FXButton* btn1=new FXButton( btnFrame, "Add", NULL, NULL, 0, btnOpts);
-  FXButton* btn2=new FXButton( btnFrame, "Delete", NULL, NULL, 0, btnOpts);
-  FXButton* btn3=new FXButton( btnFrame, "Toggle blacklist", NULL, NULL, 0, 
+  FXButton* btn1=new FXButton( btnFrame, "Add", NULL,this,ID_BTN_ADD, btnOpts);
+  FXButton* btn2=new FXButton( btnFrame, "Delete",NULL,this,ID_NYI, btnOpts);
+  FXButton* btn3=new FXButton( btnFrame, "Toggle blacklist", NULL,this,ID_NYI, 
 			       btnOpts);
-  FXButton* btn4=new FXButton( btnFrame, "Change password", NULL, NULL, 0, 
+  FXButton* btn4=new FXButton( btnFrame, "Change password", NULL,this,ID_NYI, 
 			       btnOpts);
-  FXButton* btn5=new FXButton( btnFrame, "Edit", NULL, NULL, 0, btnOpts);
+  FXButton* btn5=new FXButton( btnFrame, "Edit", NULL,this,ID_NYI, btnOpts);
 
   // Initialize the panel
   this->feedTable();
@@ -95,6 +101,7 @@ FoxAccountList(FXComposite *parent,FXuint opts)
  */
 RainbruRPG::Gui::FoxAccountList::~FoxAccountList(){
   delete accountList;
+  accountList=NULL;
 }
 
 /** The FOX-Toolkit create method
@@ -207,5 +214,22 @@ addAccount(RainbruRPG::Gui::tAccountListItem* p){
   // Sets the confirmation date
   FXTableItem* item5=new FXTableItem(p->confirm.c_str());
   table->setItem(num, 4, item5);
+
+}
+
+/** The Add account button callback
+  *
+  *
+  * \param o A parameter used for FOX callbacks
+  * \param s A parameter used for FOX callbacks
+  * \param v A parameter used for FOX callbacks
+  *
+  * \return Always 1
+  *
+  */
+long RainbruRPG::Gui::FoxAccountList::
+onAddAccountClicked(FXObject* o,FXSelector s,void* v){
+  LOGW("onAddAccountClicked called");
+
 
 }

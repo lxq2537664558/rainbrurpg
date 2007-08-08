@@ -30,11 +30,11 @@
 #define TRANSFER_VISUAL_H_
 
 #include <QString>
-#include <Qt3Support>
 #include <QPainter>
 #include <QGradient>
 #include <QBrush>
 #include <QFileInfo>
+#include <Qt3Support>
 #include <QTime>
 
 namespace RainbruRPG{

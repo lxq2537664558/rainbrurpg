@@ -16,7 +16,6 @@ retr essaiTransfer.tgz
 - Modified files
 
 o [mouse] Maintenance
-- EasyBMP uses logger
 - The account is created only if the mail was correctly sent
 - CurlAccountAdd::controlAfter tests if the account was correctly created
 
@@ -121,6 +120,9 @@ o [mouse] Maintenance
 * *******************************************************
 
 * v 0.0.5-154
+- EasyBMP uses logger
+- XIdent need a user/pwd
+- decent documentation for FtpServer
 - Using forward declarations for some classes
 - InputManager in a namespace RainbruRPG::Core
 - Removing XML output for Unitest

@@ -32,11 +32,20 @@
 #include <QtGui/QTextEdit>
 #include <QtGui/QtGui>
 #include <QtGui/QTreeWidget>
+#include <Qt3Support>
 #include <ftpdef.h>
 
-#include "ftpcontrol.h"
-#include "ftptransfer.h"
-#include "transfervisual.h"
+// Forward declarations
+namespace RainbruRPG{
+  namespace Network{
+    namespace Ftp{
+      class FtpControl;
+      class FtpTransfer;
+      class TransferVisual;
+    }
+  }
+}
+// End of forward declarations
 
 using namespace std;
 
@@ -46,14 +55,48 @@ namespace RainbruRPG{
 
       /** An implementation of a threaded FTP server based on FTC0959
         *
-	* It is a widget implementing the FTP protocol. It internally uses
-	* two QThreads : FtpControl and FtpTransfer.
+	* \section ftpserver_design_sec Design
 	*
+	* The FTP (File Transfer Protocole) is specified in the 
+	* <a href=http://tools.ietf.org/html/rfc959>RFC959 memo</a>. 
+	* Thee following wikipedia article can be usefull : 
+	* <a href=http://en.wikipedia.org/wiki/File_Transfer_Protocol> 
+	* http://en.wikipedia.org/wiki/File_Transfer_Protocol</a>. This
+	* protocol allow a client, connected to as server, to do file
+	* manipulation (upload files to the server, download from the server
+	* and so on...). This class implements the server part, if you
+	* need the client, try the FtpClient class.
+	*
+	* \section ftpserver_implementation_sec Implementation
+	*
+	* It is a QT widget visually implementing the FTP protocol. 
+	* It internally uses two QThreads : FtpControl and FtpTransfer. 
 	* The default listening port for the control channel is 50002.
 	*
-	* Is you're running GNU/Linux, the shell command  
-	* <code>netstat -tulpn</code> can be usefull. It tells you which 
-	* port are listened by the server.
+	* Visually, there's a log (
+	* \ref RainbruRPG::Network::Ftp::FtpServer::textEdit "textEdit") 
+	* and a listView (
+	* \ref RainbruRPG::Network::Ftp::FtpServer::tree "tree"). The 
+	* listView is filled with TransferVisual widgets.
+	*
+	* Is you're running 
+	* GNU/Linux, the shell command <code>netstat -tulpn</code> 
+	* can be usefull. It tells you which port are listened by 
+	* the server.
+	*
+	* \section ftpserver_compatibility_sec Compatibility
+	*
+	* It is
+	* based on RFC959 but not fully compatible. For security issues,
+	* some command was deactivated :
+	* - \c PORT : You cannot change the transfer channel port.
+	* - \c PASV : Unlike the specification, this server is always
+	*             in passive mode (the client must create the 
+	*             connection).
+	* - directory functions : you cannot change current directory.
+	*             It always use the \c quarantine/ one. 
+	*
+	* 
 	* 
 	*/
       class FtpServer : public QWidget{
@@ -106,11 +149,15 @@ namespace RainbruRPG{
       private:
 	/** The widget used to log messages */
 	QTextEdit* textEdit;
-	/** The control channel */
+	/** The control channel implementation*/
 	FtpControl* control;
-	/** The data channel */
+	/** The data channel implementation*/
 	FtpTransfer* transfer;
-	/** The tree showing current downloads */
+	/** The tree showing current downloads 
+	  *
+	  * It shows a list of TransferVisual widgets.
+	  *
+	  */
 	Q3ListView* tree;
       };
       

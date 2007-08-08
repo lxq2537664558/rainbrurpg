@@ -24,6 +24,7 @@
 #define T_PLAYER_LIST_H
 
 #include <string>
+#include <list>
 
 namespace RainbruRPG{
     namespace Gui{
@@ -48,8 +49,11 @@ namespace RainbruRPG{
         std::string validationId; //!< The ID used in validation mail
       };
 
-      /** A stl list of tPlayerListItem
+      /** A STL list of tPlayerListItem
         *
+	* This list is used to create an account list. You can
+	* retrieve one by using xmlAccountList.
+	*
 	*/
       typedef std::list<tAccountListItem*> tAccountList;
 

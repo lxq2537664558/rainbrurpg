@@ -64,6 +64,9 @@ namespace RainbruRPG{
 
       /** Read the XML file of the Servers list
         *
+	* If the xml file is modified (server added or removed) do
+	* not forget to call the refresh() function.
+	*
 	* A server list is maintained in the administration site. This list
 	* is used by the clients to get the IP adress and other informations
 	* about server to contact them.

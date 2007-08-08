@@ -22,6 +22,10 @@
 
 #include "ftpserver.h"
 
+#include "ftpcontrol.h"
+#include "ftptransfer.h"
+#include "transfervisual.h"
+
 /** The constructor
   *
   * \param parent The parent widget

@@ -64,6 +64,9 @@ namespace RainbruRPG{
 
       /** Read the XML file of the Account list
         *
+	* If the xml file is modified (account added or removed) do
+	* not forget to call the refresh() function.
+	*
 	* It provides a blacklist : each player can be placed in this
 	* list to tell he can not play anymore. It can be an ultime
 	* sanction when I saw the player can't stand the game's rules.

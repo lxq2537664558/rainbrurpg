@@ -14,4 +14,5 @@ rainbrurpg_tools_xident_SOURCES = main.cpp			\
 				  modifyserver.cpp		\
 				  serverdesc.cpp		\
 				  servertechnote.cpp		\
-				  foxpersolist.cpp
+				  foxpersolist.cpp		\
+				  addaccount.cpp
