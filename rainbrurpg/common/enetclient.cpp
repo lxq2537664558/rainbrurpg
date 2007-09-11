@@ -46,7 +46,16 @@ RainbruRPG::Network::EnetClient::EnetClient(){
   *
   */
 RainbruRPG::Network::EnetClient::~EnetClient(){
-  enet_peer_disconnect(peer, 0);
+  /* Modified for cross-compilation
+   *
+   * The statement enet_peer_disconnect(peer, 0) failed with the following
+   * error :enet.h:408: error: too many arguments to function 
+   * `void enet_peer_disconnect(ENetPeer*)'.
+   *
+   * Removing the 0 seems to fix this.
+   *
+   */
+  enet_peer_disconnect(peer);
   enet_host_destroy(client);
 
   delete address;

@@ -35,7 +35,10 @@
 
 using namespace std;
 
-typedef char BYTE;
+#ifndef WIN32
+  // Cause redefined symbol when cross-compiling to Win32 
+  typedef char BYTE;
+#endif
 
 namespace RainbruRPG {
   namespace Core{

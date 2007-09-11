@@ -43,46 +43,8 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define to 1 if you have the `boost_filesystem' library
-   (-lboost_filesystem). */
-#undef HAVE_LIBBOOST_FILESYSTEM
-
-/* Define to 1 if you have the `boost_thread' library (-lboost_thread). */
-#undef HAVE_LIBBOOST_THREAD
-
-/* Define to 1 if you have the `CEGUIBase' library (-lCEGUIBase). */
-#undef HAVE_LIBCEGUIBASE
-
-/* Define to 1 if you have the `CEGUIOgreRenderer' library
-   (-lCEGUIOgreRenderer). */
-#undef HAVE_LIBCEGUIOGRERENDERER
-
-/* Define to 1 if you have the `curl' library (-lcurl). */
-#undef HAVE_LIBCURL
-
-/* Define to 1 if you have the `enet' library (-lenet). */
-#undef HAVE_LIBENET
-
-/* Define to 1 if you have the `FOX-1.6' library (-lFOX-1.6). */
-#undef HAVE_LIBFOX_1_6
-
-/* Define to 1 if you have the `gd' library (-lgd). */
-#undef HAVE_LIBGD
-
-/* Define to 1 if you have the `glib-2.0' library (-lglib-2.0). */
-#undef HAVE_LIBGLIB_2_0
-
-/* Define to 1 if you have the `gnet-2.0' library (-lgnet-2.0). */
-#undef HAVE_LIBGNET_2_0
-
 /* Define to 1 if you have the `magic' library (-lmagic). */
 #undef HAVE_LIBMAGIC
-
-/* Define to 1 if you have the `OgreMain' library (-lOgreMain). */
-#undef HAVE_LIBOGREMAIN
-
-/* Define to 1 if you have the `OIS' library (-lOIS). */
-#undef HAVE_LIBOIS
 
 /* Define to 1 if you have the `Qt3Support' library (-lQt3Support). */
 #undef HAVE_LIBQT3SUPPORT
@@ -95,9 +57,6 @@
 
 /* Define to 1 if you have the `QtNetwork' library (-lQtNetwork). */
 #undef HAVE_LIBQTNETWORK
-
-/* Define to 1 if you have the `sigc-2.0' library (-lsigc-2.0). */
-#undef HAVE_LIBSIGC_2_0
 
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H

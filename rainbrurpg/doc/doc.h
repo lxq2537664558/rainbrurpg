@@ -1,13 +1,8 @@
 // This header does not contain code
 // It is only documentation
 
-/* Modifications :
- * - 21 jun 2007 : 
- *
- */
-
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2007 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -43,6 +38,10 @@
   * - \e y represents the minor version
   * - \e z is the revision
   * - \e b is the build number
+  *
+  * Until 1.0.0, the game will not be playable or will be unstable. Then, 
+  * the stability will be improved until it is fully usable. When 1.y.z is
+  * stable, we will plan 2.0.0.
   *
   * \section dep_sec Dependencies
   * \subsection libraries_versions_subsec Libraries versions

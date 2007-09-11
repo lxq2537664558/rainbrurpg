@@ -1,4 +1,12 @@
 #copy the htmlMakefile.am
 mkdir RainbruRPG.html/
 cp htmlMakefile.am  RainbruRPG.html/Makefile.am
+
+# setting up compilation for GNU/Linux
+cp configure.in.linux configure.in
+cp Makefile.in.linux Makefile.in
+cp common/Makefile.in.linux common/Makefile.in
+
+
 automake
+autoconf

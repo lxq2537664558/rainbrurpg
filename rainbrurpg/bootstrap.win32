@@ -1,0 +1,15 @@
+#copy the htmlMakefile.am
+mkdir RainbruRPG.html/
+cp htmlMakefile.am  RainbruRPG.html/Makefile.am
+
+# setting up compilation for GNU/Linux
+cp configure.in.win32 configure.in
+cp Makefile.am.win32 Makefile.am
+cp common/Makefile.am.win32 common/Makefile.am
+
+
+automake
+autoconf
+
+echo "Please type : "
+echo "./configure --host=i586-mingw32msvc --prefix=/usr/cross"

@@ -29,9 +29,9 @@
 #ifndef _CHART_BASE_H_
 #define _CHART_BASE_H_
 
-/* Bring in gd library functions */
-#include <gd.h>
-#include <gdfonts.h>
+/* Bring in gd library functions (modified for cross-compilation) */
+#include <gd/gd.h>
+#include <gd/gdfonts.h>
  
 //#include <gdfonts.h >
 

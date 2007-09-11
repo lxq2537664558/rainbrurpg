@@ -40,6 +40,7 @@
 
 #include <gnet.h>
 #include <glib.h>
+
 #include <sigc++/sigc++.h>
 
 #include "ftpdef.h"

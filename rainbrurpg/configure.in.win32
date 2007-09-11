@@ -165,3 +165,4 @@ echo "Warning :"
 echo
 echo "You're about to build a win32 version of RainbruRPG"
 echo "Only the client will be build. It must be run from this directory."
+echo

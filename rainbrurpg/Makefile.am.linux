@@ -3,7 +3,7 @@
 bin_PROGRAMS=RainbruRPG2
 
 # The sources
-SUBDIRS = common maincore client
+SUBDIRS = common terminalapi maincore client
 
 # The data files
 SUBDIRS+= config data media mapdata

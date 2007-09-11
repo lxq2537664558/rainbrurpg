@@ -15,7 +15,13 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
-o [mouse] Maintenance
+o [mouse] Xident
+- AddAccount dialog
+
+* Server startup
+- Tells :"[main.cpp:46] II Starting RainbruRPG editor"
+
+* Maintenance
 - The account is created only if the mail was correctly sent
 - CurlAccountAdd::controlAfter tests if the account was correctly created
 
@@ -119,7 +125,19 @@ o [mouse] Maintenance
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-156
+- GNU/Linux and mingw versions are the same
+  We choose the compilation with bootstrap/bootstrap.win32
+- cross compilation dependencies found or self-compiled
+
+* v 0.0.5-155
+- Sourceforge homepage improvement
+- Sourceforge homepage articles
+- Ruby on rails test
+
 * v 0.0.5-154
+- comleteBackup
+- New homepage for sourceforge.net
 - EasyBMP uses logger
 - XIdent need a user/pwd
 - decent documentation for FtpServer
