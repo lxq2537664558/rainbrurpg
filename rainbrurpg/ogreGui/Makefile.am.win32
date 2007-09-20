@@ -1,0 +1,32 @@
+INCLUDES = 	-I/usr/cross/include				\
+		-L/usr/cross/lib				\
+		-I/usr/cross/include/glib-2.0			\
+		-I/usr/cross/include/sigc++-2.0/		\
+		-I/usr/cross/include/gnet/
+
+
+CROSS_COMPIL_LIBS = -L/usr/cross/lib			\
+		    -L/usr/i586-mingw32msvc/lib/
+		    
+lib_LIBRARIES = librainbrurpg-common.a
+
+librainbrurpg_common.adir=$(libdir)
+
+h_sources=  betagui.h bggui.h
+cc_sources= betagui.cpp bggui.cpp
+
+LD_USER_FLAGS = $(SHARED_FLAG) -version-info		\
+				$(GENERIC_LIBRARY_VERSION) -Wl,--rpath \
+				-Wl,$(DESTDIR)$(libdir)    		\
+				$(CROSS_COMPIL_LIBS)
+
+
+library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
+library_include_HEADERS = $(h_sources)
+
+librainbrurpg_common_a_INCLUDES = -I$(top_srcdir) $(LD_USER_FLAGS)
+ 
+librainbrurpg_common_a_SOURCES= $(h_sources) $(cc_sources)
+
+LDADD= -L/usr/cross/lib -lFOX.dll -lglib-2.0.dll
+
