@@ -72,7 +72,8 @@ namespace RainbruRPG {
       /** A first list attribute test */
       OptionListAttribute *lst;
       /** A second list attribute test */
-      OptionListAttribute *lst2;
+      //OptionListAttribute* lst3;
+      
     };
   }
 }

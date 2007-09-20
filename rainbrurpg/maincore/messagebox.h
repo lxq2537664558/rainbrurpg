@@ -25,6 +25,7 @@
  */
 
 /* Modifications :
+ * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
  * - 23 jul 2007 : Initial import fro CEGUI wiki
  *
  */
@@ -42,14 +43,17 @@ namespace RainbruRPG{
       * You should not use this class directly, please use the 
       * GuiManager::showMessageBox function instead.
       *
+      * \note Renamed RbMessageBox because of cross-compilation name
+      *       conflict
+      *
       * \note Do not create an instance of this class in the header 
       *       file. Create it when you need one. This block other 
       *       window's focus.
       *
       */
-    class MessageBox : public DialogSystem{
+    class RbMessageBox : public DialogSystem{
     public:
-      MessageBox();
+      RbMessageBox();
       void initWindow(const CEGUI::String& parent="");
       
       void setMessage(const CEGUI::String&);

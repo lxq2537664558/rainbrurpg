@@ -4,8 +4,11 @@ cp htmlMakefile.am  RainbruRPG.html/Makefile.am
 
 # setting up compilation for GNU/Linux
 cp configure.in.linux configure.in
-cp Makefile.in.linux Makefile.in
-cp common/Makefile.in.linux common/Makefile.in
+cp Makefile.am.linux Makefile.am
+cp common/Makefile.am.linux common/Makefile.am
+cp maincore/Makefile.am.linux maincore/Makefile.am
+cp ogreGui/Makefile.am.linux ogreGui/Makefile.am
+cp client/Makefile.am.linux client/Makefile.am
 
 
 automake

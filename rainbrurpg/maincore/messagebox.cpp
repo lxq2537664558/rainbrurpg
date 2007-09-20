@@ -31,7 +31,7 @@
   * Actually, this initialize only message and title with empty strings.
   *
   */
-RainbruRPG::Gui::MessageBox::MessageBox(){
+RainbruRPG::Gui::RbMessageBox::RbMessageBox(){
   message ="";
   title   ="";
 }
@@ -44,16 +44,16 @@ RainbruRPG::Gui::MessageBox::MessageBox(){
   * \param parent The parent Window's name
   *
   */
-void RainbruRPG::Gui::MessageBox::initWindow(const CEGUI::String& parent){
+void RainbruRPG::Gui::RbMessageBox::initWindow(const CEGUI::String& parent){
   // Initialise the dialog
   using namespace CEGUI;
   WindowManager& winMgr = WindowManager::getSingleton();
   
   // Initialise the windowing system
-  DialogSystem::initialise("dlgMessageBox", false, parent);
+  DialogSystem::initialise("dlgRbMessageBox", false, parent);
 
   // Subscribe to widget events
-  DialogSystem::bindEvent( "dlgMessageBox_btnOk",		
+  DialogSystem::bindEvent( "dlgRbMessageBox_btnOk",		
 			   PushButton::EventClicked, DSE_OK);
   
   // Subscribe to window events
@@ -68,8 +68,8 @@ void RainbruRPG::Gui::MessageBox::initWindow(const CEGUI::String& parent){
 /** Handle the load action by placing data into widgets
   *
   */
-bool RainbruRPG::Gui::MessageBox::doLoad(){
-  /*  CEGUI::WindowManager::getSingleton().getWindow("MessageBox_edtValue")
+bool RainbruRPG::Gui::RbMessageBox::doLoad(){
+  /*  CEGUI::WindowManager::getSingleton().getWindow("RbMessageBox_edtValue")
     ->setText(dataString);
   */
   return DialogSystem::doLoad(); 
@@ -78,9 +78,9 @@ bool RainbruRPG::Gui::MessageBox::doLoad(){
 /** Handle the save action by moving widget data into variables
   *
   */
-bool RainbruRPG::Gui::MessageBox::doSave(){
+bool RainbruRPG::Gui::RbMessageBox::doSave(){
   /*  dataString = CEGUI::WindowManager::getSingleton()
-    .getWindow("MessageBox_edtValue")->getText();
+    .getWindow("RbMessageBox_edtValue")->getText();
   */
   return DialogSystem::doSave(); 
 }
@@ -94,19 +94,19 @@ bool RainbruRPG::Gui::MessageBox::doSave(){
   * \sa getMessage()
   *
   */
-void RainbruRPG::Gui::MessageBox::setMessage(const CEGUI::String& mess){
+void RainbruRPG::Gui::RbMessageBox::setMessage(const CEGUI::String& mess){
   this->message=mess;
   CEGUI::WindowManager::getSingleton().getWindow("MessageText")->setText(mess);
 }
 
 /** Get the message of the dialog
   *
-  * \return The value of the MessageBox::message class member
+  * \return The value of the RbMessageBox::message class member
   *
   * \sa setMessage(const CEGUI::String&)
   *
   */ 
-const CEGUI::String& RainbruRPG::Gui::MessageBox::getMessage(void){
+const CEGUI::String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
   return this->message;
 }
 
@@ -119,19 +119,19 @@ const CEGUI::String& RainbruRPG::Gui::MessageBox::getMessage(void){
   * \sa getTitle()
   *
   */
-void RainbruRPG::Gui::MessageBox::setTitle(const CEGUI::String& title){
+void RainbruRPG::Gui::RbMessageBox::setTitle(const CEGUI::String& title){
   this->title=title;
-  CEGUI::WindowManager::getSingleton().getWindow("dlgMessageBox")
+  CEGUI::WindowManager::getSingleton().getWindow("dlgRbMessageBox")
     ->setText(title);
 }
 
 /** Get the title of the dialog
   *
-  * \return The value of the MessageBox::title class member
+  * \return The value of the RbMessageBox::title class member
   *
   * \sa setTitle(const CEGUI::String&)
   *
   */ 
-const CEGUI::String& RainbruRPG::Gui::MessageBox::getTitle(void){
+const CEGUI::String& RainbruRPG::Gui::RbMessageBox::getTitle(void){
   return this->title;
 }

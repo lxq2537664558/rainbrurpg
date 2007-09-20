@@ -120,6 +120,7 @@ LIBTOOL = @LIBTOOL@
 LIB_COMMON_NAME = @LIB_COMMON_NAME@
 LIB_CORE_NAME = @LIB_CORE_NAME@
 LIB_DESIGN_NAME = @LIB_DESIGN_NAME@
+LIB_OGREGUI_NAME = @LIB_OGREGUI_NAME@
 LIB_TERAPI_NAME = @LIB_TERAPI_NAME@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -201,8 +202,12 @@ rainbrurpg_SOURCES = launcher.cpp		\
 		    languageselector.cpp
 
 OGRE_CFLAGS = -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/maincore $(OGRE_CFLAGS)
-rainbrurpg_LDADD = -lrainbrurpg-common -lrainbrurpg-core
+INCLUDES = -I$(top_srcdir)/common      \
+	   -I$(top_srcdir)/maincore    \
+	   -I$(top_srcdir)/ogreGui     \
+	   -I$(top_srcdir)/ogreGui $(OGRE_CFLAGS)
+
+rainbrurpg_LDADD = -lrainbrurpg-common -lrainbrurpg-core -lrainbrurpg-ogregui
 rainbrurpg_LDFLAGS = -L$(top_srcdir)/common/.libs -L$(top_srcdir)/maincore/.libs
 all: all-am
 

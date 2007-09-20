@@ -30,8 +30,8 @@
 #define CHART_LINE_H
 
 /* Bring in gd library functions (modified for cross-compilation) */
-#include <gd/gd.h>
-#include <gd/gdfonts.h>
+#include <gd.h>
+#include <gdfonts.h>
 #include <sstream>
 
 #include <chartbase.h>

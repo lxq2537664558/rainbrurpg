@@ -45,7 +45,7 @@ namespace RainbruRPG {
 
     public:
       OptionIntAttribute(const char*);
-      /** An empty default constructor */
+      /** An empty default destructor */
       ~OptionIntAttribute(){};
 
       virtual void update();

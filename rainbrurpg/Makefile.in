@@ -126,8 +126,8 @@ pkgconfigDATA_INSTALL = $(INSTALL_DATA)
 DATA = $(pkgconfig_DATA)
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = common maincore client config data media mapdata design \
-	editor server tools tests
+DIST_SUBDIRS = common terminalapi maincore ogreGui client config data \
+	media mapdata design editor server tools tests
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -189,6 +189,7 @@ LIBTOOL = @LIBTOOL@
 LIB_COMMON_NAME = @LIB_COMMON_NAME@
 LIB_CORE_NAME = @LIB_CORE_NAME@
 LIB_DESIGN_NAME = @LIB_DESIGN_NAME@
+LIB_OGREGUI_NAME = @LIB_OGREGUI_NAME@
 LIB_TERAPI_NAME = @LIB_TERAPI_NAME@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -267,8 +268,8 @@ target_alias = @target_alias@
 # The sources
 
 # The data files
-SUBDIRS = common maincore client config data media mapdata \
-	$(am__append_1) $(am__append_2) $(am__append_3) \
+SUBDIRS = common terminalapi maincore ogreGui client config data media \
+	mapdata $(am__append_1) $(am__append_2) $(am__append_3) \
 	$(am__append_4) $(am__append_5) $(am__append_6)
 RainbruRPG2dir = ..
 RainbruRPG2_SOURCES = RainbruRPG.cc RainbruRPG.6 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h

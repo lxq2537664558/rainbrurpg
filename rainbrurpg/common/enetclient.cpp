@@ -55,7 +55,7 @@ RainbruRPG::Network::EnetClient::~EnetClient(){
    * Removing the 0 seems to fix this.
    *
    */
-  enet_peer_disconnect(peer);
+  enet_peer_disconnect(peer, 0);
   enet_host_destroy(client);
 
   delete address;

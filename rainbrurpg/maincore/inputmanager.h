@@ -35,7 +35,9 @@ namespace RainbruRPG {
 
     /** An input manager for OIS to be used with Ogre3D
       *
-      * 
+      * \warning Do not forget to call capture() for each frame. If
+      * you do not call the capture function, no listener will be 
+      * able to get events.
       *
       */
     class InputManager : public OIS::KeyListener, OIS::MouseListener, 

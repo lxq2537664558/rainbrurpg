@@ -72,14 +72,14 @@ void RainbruRPG::Options::Options::createAttributes(){
 
 
   //Shadows
-	lst2=new OptionListAttribute("Shadows");
+	/*	lst2=new OptionListAttribute("Shadows");
 	boo->setToolTip("Sets the shadows calculation method");
 	lst2->add("none");
  	lst2->add("Stencil additive");
  	lst2->add("Stencil modulative");
  	lst2->add("Texture modulative");
      btn1->add(lst2);
-
+	*/
 
     opGraphics->add(btn1);
   OptionManager::getSingleton().add(opGraphics);
@@ -97,6 +97,6 @@ void RainbruRPG::Options::Options::setDefaultValues(){
   st1->setValueStr("DefaultValue");
   boo->setValueStr("true");
   lst->setValueStr("800x600");
-  lst2->setValueStr("none");
+  // lst2->setValueStr("none");
 
 }

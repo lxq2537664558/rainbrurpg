@@ -6,8 +6,11 @@ cp htmlMakefile.am  RainbruRPG.html/Makefile.am
 cp configure.in.win32 configure.in
 cp Makefile.am.win32 Makefile.am
 cp common/Makefile.am.win32 common/Makefile.am
+cp maincore/Makefile.am.win32 maincore/Makefile.am
+cp ogreGui/Makefile.am.win32 ogreGui/Makefile.am
+cp client/Makefile.am.win32 client/Makefile.am
 
-
+aclocal
 automake
 autoconf
 

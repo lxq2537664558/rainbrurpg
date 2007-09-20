@@ -21,18 +21,26 @@ dnl directories
 GENERIC_LIBRARY_NAME=RainbruRPG
 
 dnl Defines the name of the libraries include directories
+
 dnl   RainbruRPG-common
 LIB_COMMON_NAME=common
 AC_SUBST(LIB_COMMON_NAME)
+
 dnl   RainbruRPG-terminalAPI
 LIB_TERAPI_NAME=terminalAPI
 AC_SUBST(LIB_TERAPI_NAME)
+
 dnl   RainbruRPG-core
 LIB_CORE_NAME=core
 AC_SUBST(LIB_CORE_NAME)
+
 dnl   RainbruRPG-design
 LIB_DESIGN_NAME=design
 AC_SUBST(LIB_DESIGN_NAME)
+
+dnl   RainbruRPG-ogreGui
+LIB_OGREGUI_NAME=ogreGui
+AC_SUBST(LIB_OGREGUI_NAME)
 
 #release versioning
 GENERIC_MAJOR_VERSION=0
@@ -138,6 +146,7 @@ AC_CONFIG_FILES([Makefile			\
           common/Makefile			\
           terminalapi/Makefile			\
 	  maincore/Makefile			\
+	  ogreGui/Makefile			\
 	  design/Makefile			\
 	  client/Makefile			\
 	  editor/Makefile			\

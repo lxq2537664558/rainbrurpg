@@ -50,7 +50,7 @@ namespace RainbruRPG {
     public:
       OptionListAttribute(const char*);
       /** An empty default constructor */
-      ~OptionListAttribute(){};
+      virtual ~OptionListAttribute(){};
 
       virtual bool setValueStr(const char*);
       virtual const char* getValueStr() const;

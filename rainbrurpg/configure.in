@@ -21,18 +21,26 @@ dnl directories
 GENERIC_LIBRARY_NAME=RainbruRPG
 
 dnl Defines the name of the libraries include directories
+
 dnl   RainbruRPG-common
 LIB_COMMON_NAME=common
 AC_SUBST(LIB_COMMON_NAME)
+
 dnl   RainbruRPG-terminalAPI
 LIB_TERAPI_NAME=terminalAPI
 AC_SUBST(LIB_TERAPI_NAME)
+
 dnl   RainbruRPG-core
 LIB_CORE_NAME=core
 AC_SUBST(LIB_CORE_NAME)
+
 dnl   RainbruRPG-design
 LIB_DESIGN_NAME=design
 AC_SUBST(LIB_DESIGN_NAME)
+
+dnl   RainbruRPG-ogreGui
+LIB_OGREGUI_NAME=ogreGui
+AC_SUBST(LIB_OGREGUI_NAME)
 
 #release versioning
 GENERIC_MAJOR_VERSION=0
@@ -83,21 +91,21 @@ AM_SANITY_CHECK
 AC_LANG_CPLUSPLUS
 
 dnl Checks for libraries and headers
-#RB_CHECK_OGREMAIN
-#RB_CHECK_CEGUIBASE
-#RB_CHECK_CEGUIOGRE
-#RB_CHECK_PLSM2
-#RB_CHECK_LIBOIS
-#RB_CHECK_LIBFOX
-#RB_CHECK_LIBCURL
+RB_CHECK_OGREMAIN
+RB_CHECK_CEGUIBASE
+RB_CHECK_CEGUIOGRE
+RB_CHECK_PLSM2
+RB_CHECK_LIBOIS
+RB_CHECK_LIBFOX
+RB_CHECK_LIBCURL
 dnl RB_CHECK_LIBSLANG Only used by terminalAPI
-#RB_CHECK_BOOST_FS
-#RB_CHECK_BOOST_THREAD
-#RB_CHECK_ENET
-#RB_CHECK_GLIB
-#RB_CHECK_LIBSIG
-#RB_CHECK_LIBGD
-#RB_CHECK_LIBGNET
+RB_CHECK_BOOST_FS
+RB_CHECK_BOOST_THREAD
+RB_CHECK_ENET
+RB_CHECK_GLIB
+RB_CHECK_LIBSIG
+RB_CHECK_LIBGD
+RB_CHECK_LIBGNET
 
 dnl #################################################################"""
 dnl #################################################################"""
@@ -136,10 +144,48 @@ dnl Checks for library functions.
 
 AC_CONFIG_FILES([Makefile			\
           common/Makefile			\
+          terminalapi/Makefile			\
 	  maincore/Makefile			\
+	  ogreGui/Makefile			\
+	  design/Makefile			\
 	  client/Makefile			\
+	  editor/Makefile			\
+	  server/Makefile			\
+	  tests/Makefile			\
+	  tools/Makefile			\
+	  tools/transmsg/Makefile		\
+	  tools/xident/Makefile			\
+	  tools/netflooder/Makefile		\
+	  tools/ftpclient/Makefile		\
+	  tools/hashsum/Makefile		\
 	  \
  	  RainbruRPG.html/Makefile	        \
+	  config/Makefile			\
+	  data/Makefile				\
+	  data/fox/Makefile			\
+	  data/gui/Makefile			\
+	  data/gui/XMLRefSchema/Makefile	\
+	  data/gui/schemes/Makefile		\
+	  data/gui/imagesets/Makefile		\
+	  data/gui/looknfeel/Makefile		\
+	  data/gui/fonts/Makefile		\
+	  data/gui/layouts/Makefile		\
+	  data/gui/overlays/Makefile		\
+	  \
+	  media/Makefile			\
+	  media/packs/Makefile			\
+	  media/materials/Makefile		\
+	  media/materials/scripts/Makefile	\
+	  media/materials/textures/Makefile	\
+	  \
+	  mapdata/Makefile			\
+	  mapdata/terrains/Makefile		\
+	  mapdata/terrains/hf129_3/Makefile	\
+	  mapdata/materials/Makefile		\
+	  mapdata/materials/textures/Makefile	\
+	  mapdata/materials/scripts/Makefile	\
+	  mapdata/models/Makefile		\
+	  \
 	  RainbruRPG.lsm RainbruRPG.spec	\
 	  terminalapi-1.0.pc			\
 	  RainbruRPG-common.pc])
@@ -160,8 +206,3 @@ echo "    cp htmlMakefile.am RainbruRPG.html/Makefile.am"
 echo "    autoconf&&automake&&./configure"
 echo
 echo "#####################################"
-echo
-echo "Warning :"
-echo
-echo "You're about to build a win32 version of RainbruRPG"
-echo "Only the client will be build. It must be run from this directory."

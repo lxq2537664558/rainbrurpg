@@ -34,6 +34,10 @@ dnl   RainbruRPG-design
 LIB_DESIGN_NAME=design
 AC_SUBST(LIB_DESIGN_NAME)
 
+dnl   RainbruRPG-ogreGui
+LIB_OGREGUI_NAME=ogreGui
+AC_SUBST(LIB_OGREGUI_NAME)
+
 #release versioning
 GENERIC_MAJOR_VERSION=0
 GENERIC_MINOR_VERSION=3
@@ -77,7 +81,8 @@ AC_PROG_CC
 AC_PROG_CXX
 
 AC_DISABLE_STATIC
-AM_PROG_LIBTOOL
+#AM_PROG_LIBTOOL
+AC_PROG_RANLIB
 AM_SANITY_CHECK
 
 AC_LANG_CPLUSPLUS
@@ -137,6 +142,7 @@ dnl Checks for library functions.
 AC_CONFIG_FILES([Makefile			\
           common/Makefile			\
 	  maincore/Makefile			\
+	  ogreGui/Makefile			\
 	  client/Makefile			\
 	  \
  	  RainbruRPG.html/Makefile	        \

@@ -1,10 +1,10 @@
 TODO
 
 export LD_LIBRARY_PATH=/usr/local/lib
-stor /home/mouse/neededLibs.tar.gz
-stor /home/mouse/essaiTransfer.tgz
-retr neededLibs.tar.gz
-retr essaiTransfer.tgz
+
+* OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
+homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
+- rainbrurpg-ogregui library
 
 * Unittest implementation in common/
 - curlpersoheaderaddtest
@@ -15,7 +15,10 @@ retr essaiTransfer.tgz
    curlsubmitform.h
 - Modified files
 
-o [mouse] Xident
+* cross-compilation to win32
+- fix the config.h warnings (PACKAGE redefined...)
+
+* Xident
 - AddAccount dialog
 
 * Server startup
@@ -126,6 +129,12 @@ o [mouse] Xident
 * *******************************************************
 
 * v 0.0.5-156
+- BetaGUI code in the ogreGui/ directory and to the cvs repository
+- OgreGui namespace documentation
+- common/ dll successfully cross compiled
+- client cross compilation's -lOgreMain error fixed
+- MesageBox renamed RbMessageBox
+- lib rainbrurpg-common cross-compiled
 - GNU/Linux and mingw versions are the same
   We choose the compilation with bootstrap/bootstrap.win32
 - cross compilation dependencies found or self-compiled

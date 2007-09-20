@@ -26,6 +26,7 @@
 #include "gameengine.h"
 #include <logger.h>
 #include "guimanager.h"
+
 #include <version.h>
 //#include <cstdlib> 
 #include <ctime> 
@@ -106,7 +107,7 @@ bool showLauncher(int argc, char **argv){
 #  include "windows.h"
 
 #  ifdef WIN_GUI_APPLICATION
-INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
+INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT ){
 
   // We must fake the argc and argv variables
   // to prevent FXApp::init() call, but
@@ -117,10 +118,10 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 
 #  endif
 #else
-int main(int argc, char **argv)
+int main(int argc, char **argv){
 #endif
 
-{
+
   // Initialize the pseudo-random number generator
   srand((unsigned)time(0)); 
 

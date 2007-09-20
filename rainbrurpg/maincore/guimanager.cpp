@@ -487,7 +487,7 @@ showMessageBox(const CEGUI::String& title, const CEGUI::String& message,
   if (root && dialogSystemLayout){
     root->addChildWindow("DialogSystemRoot");
 
-    MessageBox* simpleDialog=new MessageBox();
+    RbMessageBox* simpleDialog=new RbMessageBox();
     simpleDialog->initWindow(parent);
     simpleDialog->setTitle(title);
     simpleDialog->setMessage(message);

@@ -464,3 +464,11 @@
   * Defines the objects and the ObjectFactory
   *
   */
+
+/** \namespace RainbruRPG::OgreGui
+  *
+  * Ogre Gui Toolkit is a toolkit providing a graphical user interface over
+  * Ogre3D. It is based on BetaGui 
+  * (http://www.ogre3d.org/wiki/index.php/BetaGUI)
+  *
+  */
