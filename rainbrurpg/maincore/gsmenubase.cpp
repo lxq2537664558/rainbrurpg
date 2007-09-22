@@ -53,6 +53,8 @@ RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu){
   this->createMenu=createMenu;
   velocity=NULL;
   stateType=GST_MENU;
+  isMouseButtonPressed=false;
+
   inputWrapper=new InputWrapper();
   tabNav=new KeyboardNavigation();
 }
@@ -411,12 +413,22 @@ bool RainbruRPG::Core::gsMenuBase::keyReleased(const OIS::KeyEvent& evt){
   *
   */
 bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
+  // CEGUI
   int x=evt.state.X.rel;
   int y=evt.state.Y.rel;
   float deltaX=x*inputWrapper->getMouseMenuSensibility();
   float deltaY=y*inputWrapper->getMouseMenuSensibility();
 
   CEGUI::System::getSingleton().injectMouseMove(deltaX, deltaY);
+
+
+  // OgreGUI
+  mouseX=evt.state.X.abs;
+  mouseY=evt.state.Y.abs;
+
+  GameEngine::getSingleton().getOgreGui()
+    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+
   return true;
 }
 
@@ -434,6 +446,13 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   CEGUI::System::getSingleton().injectMouseButtonDown(
     inputWrapper->OISButtontoCEGUI(id));
 
+
+  isMouseButtonPressed=true;
+  mouseX=evt.state.X.abs;
+  mouseY=evt.state.Y.abs;
+
+  GameEngine::getSingleton().getOgreGui()->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+
   return true;
 }
 
@@ -447,9 +466,16 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   */
 bool RainbruRPG::Core::gsMenuBase::
 mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
-
+  // CEGUI
   CEGUI::System::getSingleton().injectMouseButtonUp(
     inputWrapper->OISButtontoCEGUI(id));
+
+  isMouseButtonPressed=false;
+  mouseX=evt.state.X.abs;
+  mouseY=evt.state.Y.abs;
+
+  // OgreGUI
+  GameEngine::getSingleton().getOgreGui()->injectMouse(mouseX, mouseY, isMouseButtonPressed);
 
   return true;
 }
@@ -462,6 +488,15 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   *
   */
 bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
+  // OIS
+  /* It is a very basic keyboard handler. It does not
+   * provide backspace nor over special keys handling.
+   *
+   */
+  char c=(char)evt.text;
+  GameEngine::getSingleton().getOgreGui()->injectKey(&c, mouseX, mouseY);
+
+  // CEGUI
   OIS::KeyCode kc=evt.key;
   unsigned int text=evt.text;
 

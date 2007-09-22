@@ -69,10 +69,12 @@ void RainbruRPG::Core::GameEngine::init(){
   userName="";
   userPwd="";
   mInputMgr=NULL;
+  mOgreGUI=NULL;
   actualState=ST_MAIN_MENU;
 
   initOgre();
   initCEGUI();
+  initOgreGui();
   initStates();
 }
 
@@ -908,4 +910,32 @@ Camera* RainbruRPG::Core::GameEngine::getCamera(){
   */
 InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
   return mInputMgr;
+}
+
+/** Initializes the OgreGUI system
+  *
+  * This function is called from the init() one. It must set the 
+  * OgreGUI system in InputManager.
+  *
+  */
+void RainbruRPG::Core::GameEngine::initOgreGui(){
+  mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
+}
+
+/** Return the current OgreGUI instance
+  *
+  * This function is mainly used by gsMenuBase to inject mouse
+  * and keyboard event in the OgreGUI system.
+  *
+  * This function logs an error if mOgreGUI is NULL (could cause a segfault).
+  *
+  * \return The currently used OgreGui instance
+  *
+  */
+BetaGUI::GUI* RainbruRPG::Core::GameEngine::getOgreGui(){
+  if (!mOgreGUI){
+    LOGE("Returning a NULL OgreGUI instance");
+  }
+
+  return mOgreGUI;
 }

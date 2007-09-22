@@ -37,7 +37,7 @@ using namespace RainbruRPG::Editor;
 int main(int argc, char *argv[]){
   // Log out the versions
   Version v;
-  v.setApplicationName("RainbruRPG Client");
+  v.setApplicationName("RainbruRPG Editor");
   v.logVersion();
 
   LOGI("Starting RainbruRPG editor");

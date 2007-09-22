@@ -4,7 +4,8 @@ SUBDIRS = XMLRefSchema 			\
 	  looknfeel 			\
 	  fonts 			\
 	  layouts			\
-	  overlays
+	  overlays			\
+	  ogreGui
 
 
 #datafilesdir = $(prefix)/share/RainbruRPG/data

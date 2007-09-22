@@ -43,12 +43,12 @@ using namespace RainbruRPG::Server;
   *
   */
 int main(int argc, char *argv[]){
-  LOGI("Starting RainbruRPG editor");
+  LOGI("Starting RainbruRPG server");
   QApplication app(argc, argv);
 
   // Log out the versions
   Version v;
-  v.setApplicationName("RainbruRPG Client");
+  v.setApplicationName("RainbruRPG Server");
   v.logVersion();
 
   // Set the UniqueName in main window title bar

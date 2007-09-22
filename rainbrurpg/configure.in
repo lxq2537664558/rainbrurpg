@@ -171,6 +171,7 @@ AC_CONFIG_FILES([Makefile			\
 	  data/gui/fonts/Makefile		\
 	  data/gui/layouts/Makefile		\
 	  data/gui/overlays/Makefile		\
+	  data/gui/ogreGui/Makefile		\
 	  \
 	  media/Makefile			\
 	  media/packs/Makefile			\

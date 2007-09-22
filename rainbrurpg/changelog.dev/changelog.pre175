@@ -1,3 +1,59 @@
+* v 0.0.5-155
+- Sourceforge homepage improvement
+- Sourceforge homepage articles
+- Ruby on rails test
+
+* v 0.0.5-154
+- comleteBackup
+- New homepage for sourceforge.net
+- EasyBMP uses logger
+- XIdent need a user/pwd
+- decent documentation for FtpServer
+- Using forward declarations for some classes
+- InputManager in a namespace RainbruRPG::Core
+- Removing XML output for Unitest
+- UnitTest fails because we can't confirm mail               FIXED
+- CurlAccountConfirmMail send ConfirmId
+
+* v 0.0.5-153
+- Doxygen documentation
+- tools uses ServerListItem class
+- Setting servers number in gsServerrList
+- gsServerList uses ServerListItem class
+- Create a ServerListItem class to replace tServerListItem
+- changeServerAct.php servers.xml link broken                FIXED
+- removing CurlProgressFunction
+- removing defaultwritefunction.h
+- CurlGetFile now use default Curl write function
+- Test the whole account creation process                    OK
+- Adminsite : directory structure modified
+- Removing data/3d/ content
+- mailconfirm.php uses mail id for confirmation
+- addplayer.php send a confirmation mail (need sendmail)
+- Cleaning IttClient/
+- TinyXML and EasyBMP licenses are compatible with GPLv3
+- Fix the tools-hashsum pb                                   FIXED
+
+* v 0.0.5-152
+- Doxygen documentation
+- Remove curlget.xml in CurlGetFile destructor
+- DEGUB option deactivate the GuiManager::debugWindow
+- ./configure DEBUG option should disable debug window
+- ./configure DEBUG option disable LOGI and local website
+- Quarantine alert misfunction
+- A segfault in MultiColumnList    FIXED (please see
+   KeyboardNavigation::onListKeyDown() implementation for details)
+- TabNavigation PageUp, PageDown implementation
+- TabNavigation Home and End implementation
+- TabNavigation become KeyboardNavigation
+- TabNavigation documentation
+- The TabNavigation list enter event name is in a #define
+- TabNavigation::addMultiColumnList(std::string) manage the key
+   selection
+- Remove curlInterface setFilename and getFilename
+- xml?????::getXMLTextFromName are several times implemented
+- Many xml?????list should become subclasses of CurlFileToXml
+- Doxygen documentation
 
 * v 0.0.5-151
 - ServerList : key moving manage scrollbar

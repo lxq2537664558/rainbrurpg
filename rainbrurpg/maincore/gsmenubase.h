@@ -30,6 +30,7 @@
 #include <OIS/OISMouse.h>
 
 #include "gamestate.h"
+#include "bggui.h"
 
 using namespace Ogre;
 
@@ -167,6 +168,13 @@ namespace RainbruRPG {
 	*
         */
       KeyboardNavigation* tabNav;
+
+      /** Is a mouse button currently pressed */
+      bool isMouseButtonPressed;
+      /** Keeping mouse position for OgreGUI key injection */
+      int mouseX;
+      /** Keeping mouse position for OgreGUI key injection */
+      int mouseY;
     };
   }
 }

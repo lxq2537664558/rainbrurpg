@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 21 sep 2007 : Uses OgreGUI
+ *
+ */
+
 #ifndef GAME_ENGINE
 #define GAME_ENGINE
 
@@ -53,6 +58,9 @@
 #include <OGRE/OgreRoot.h>
 #include <OGRE/OgreMouseEvent.h>
 #include <OgreSceneManagerEnumerator.h>
+
+// OgreGUI headers
+#include "bggui.h"
 
 // Forward declaration
 namespace RainbruRPG {
@@ -126,6 +134,7 @@ namespace RainbruRPG {
       void initStates();
       void initOgre();
       void initCEGUI();
+      void initOgreGui();
       void initOIS();
 
       void showConsole();
@@ -155,7 +164,8 @@ namespace RainbruRPG {
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 
       InputManager* getInputManager();
-
+      BetaGUI::GUI* getOgreGui();
+ 
     private:
       /** Unimplemented copy constructors 
         *
@@ -227,6 +237,9 @@ namespace RainbruRPG {
       CEGUI::System* mGUISystem;
       /** The root CEGUI window */
       CEGUI::Window* mEditorGuiSheet;
+
+      /** The OgreGUI manager instance */
+      BetaGUI::GUI* mOgreGUI;
 
       /** The userName the user entered 
         *

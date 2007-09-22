@@ -20,6 +20,12 @@
  *
  */
 
+
+/* Modifications :
+ *
+ */
+
+
 #ifndef InputManager_H
 #define InputManager_H
 
@@ -74,6 +80,7 @@ namespace RainbruRPG {
       int getNumOfJoysticks( void );
       
       static InputManager* getSingletonPtr( void );
+
     private:
       InputManager( void );
       /** A forbidden constructor */

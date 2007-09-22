@@ -37,6 +37,8 @@ RainbruRPG::Core::gsMainMenu::gsMainMenu()
   LOGI("Constructing a gsMainMenu");
   velocity=new vcConstant();
   translateTo(0.0f);
+
+  window=NULL;
 }
 
 /** The default destructor
@@ -58,7 +60,7 @@ RainbruRPG::Core::gsMainMenu::~gsMainMenu(){
 void RainbruRPG::Core::gsMainMenu::init(){
   LOGI("Initialising gsMainMenu");
   gsMenuBase::init();
-  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
+  //  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
   // Do notGuiManager::beginGuiFadeIn
   //  GuiManager::getSingleton().beginGuiFadeIn();
 
@@ -143,7 +145,7 @@ onNetworkGameClicked(const CEGUI::EventArgs& evt){
   * is loaded in the init() and onBackToMainClicked() functions.
   *
   */
-void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
+void RainbruRPG::Core::gsMainMenu::oldSetupMainMenu(){
   LOGI("setupMainMenu called");
   // Subscribe event
   CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet()
@@ -196,14 +198,60 @@ void RainbruRPG::Core::gsMainMenu::resume(){
   setupMainMenu();
   // Initialise the dialog parent
   this->rootWindowName="RainbruRPG/Connection";
+
+  if (window)
+    window->show();
+
   setupTabOrder();
 }
 
 void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   // Registering TabNavigation
-  tabNav->clear();
+  /*  tabNav->clear();
   tabNav->setParent("RainbruRPG/MainMenu");
   tabNav->addWidget("NetGame");
   tabNav->addWidget("LocalTest");
   tabNav->addWidget("Quit");
+  */
+}
+
+void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+
+  mGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
+
+  window = mGUI->
+    createWindow(Vector4(100,100,600,300),"bgui.window", 
+		 BetaGUI::RESIZE_AND_MOVE, "Main menu");
+
+  btnLocalTest = window->createButton(Vector4(108,50,104,24), "bgui.button", 
+			 "Local test", BetaGUI::Callback::Callback(this));
+
+  btnExit = window->createButton(Vector4(108,80,104,24), "bgui.button", 
+         "Exit", BetaGUI::Callback::Callback(this));
+
+}
+
+/** The BetaGui button callback implementation
+  *
+  * \param b The button that was pressed
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
+  if (b==btnLocalTest){
+    //  GameEngine::getSingleton().enterLocalTest();
+    GameEngine::getSingleton().changeState(ST_LOCAL_TEST);
+  }
+  else if (b==btnExit){
+    LOGI("Quit button clicked");
+    GameEngine::getSingleton().quit();
+  }
+  else{
+    LOGW("gsMainMenu::onButtonPress called");
+  }
+}
+
+void RainbruRPG::Core::gsMainMenu::pause(){
+  if (window)
+    window->hide();
 }

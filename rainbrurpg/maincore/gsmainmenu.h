@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 20 set 2007 : Uses BetaGUI
  * - 22 jul 2007 : Moving the connection menu to gsConnection
  *
  */
@@ -34,6 +35,7 @@
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
+#include "betagui.h"
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -49,23 +51,31 @@ namespace RainbruRPG {
       * - Quit
       *
       */
-    class gsMainMenu : public gsMenuBase{
+    class gsMainMenu : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
       virtual ~gsMainMenu();
       gsMainMenu();
 
       virtual void init();
       virtual void resume();
+      virtual void pause();
 
       virtual void setupTabOrder();
+      void onButtonPress(BetaGUI::Button*);
 
     private:
       bool onQuitClicked(const CEGUI::EventArgs&);
       bool onLocalTestClicked(const CEGUI::EventArgs&);
       bool onNetworkGameClicked(const CEGUI::EventArgs&);
 
+      void oldSetupMainMenu();
       void setupMainMenu();
 
+      /** The local test button, kept for testing it */
+      BetaGUI::Button* btnLocalTest;
+      /** The Exit button, kept for testing it */
+      BetaGUI::Button* btnExit;
+      BetaGUI::Window* window;
     };
   }
 }
