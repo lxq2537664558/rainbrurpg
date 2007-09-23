@@ -29,9 +29,6 @@
 #ifndef GS_MAIN_MENU_H
 #define GS_MAIN_MENU_H
 
-#include <CEGUI/CEGUIEventArgs.h>
-#include <CEGUI/CEGUIEvent.h>
-
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
@@ -64,13 +61,12 @@ namespace RainbruRPG {
       void onButtonPress(BetaGUI::Button*);
 
     private:
-      bool onQuitClicked(const CEGUI::EventArgs&);
-      bool onLocalTestClicked(const CEGUI::EventArgs&);
-      bool onNetworkGameClicked(const CEGUI::EventArgs&);
+      bool onNetworkGameClicked();
 
-      void oldSetupMainMenu();
       void setupMainMenu();
 
+      /** The network game button, kept for testing it */
+      BetaGUI::Button* btnNetworkGame;
       /** The local test button, kept for testing it */
       BetaGUI::Button* btnLocalTest;
       /** The Exit button, kept for testing it */

@@ -919,7 +919,9 @@ InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
   *
   */
 void RainbruRPG::Core::GameEngine::initOgreGui(){
-  mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
+  // mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
+  mOgreGUI = new BetaGUI::GUI("BlueHighway",20);
+
 }
 
 /** Return the current OgreGUI instance

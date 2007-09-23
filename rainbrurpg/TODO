@@ -4,7 +4,6 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- Hide window in gsMainMenu pause
 - remove gsMainMenu dependencies to CEGUI
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
@@ -130,7 +129,11 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-157
+
 * v 0.0.5-156
+- Logo and menu of homepage now centered
+- Hide window in gsMainMenu pause
 - gsMainMenu handles betaGui events (for buttons)
 - gsMainMenu uses betaGUI
 - Adds OgreGui datafiles in data/gui/ogreGui

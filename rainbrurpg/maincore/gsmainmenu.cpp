@@ -26,6 +26,8 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
+#include <OgreViewport.h>
+
 /** The default constructor
   *
   * Constructs a new velocity and begin a translation to 0.0f.
@@ -72,49 +74,15 @@ void RainbruRPG::Core::gsMainMenu::init(){
 
 }
 
-/** The Quit CEGUI button callback
+/** The Network Game function
   *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsMainMenu::
-onQuitClicked(const CEGUI::EventArgs& evt){
-
-  LOGI("Quit button clicked");
-  GameEngine::getSingleton().quit();
-  // Event handled
-  return true;
-}
-
-/** The Local Test CEGUI button callback
-  *
-  * \param evt The CEGUI event
+  * Is is called when the `network game` button is clicked.
   *
   * \return Always \c true
   *
   */
 bool RainbruRPG::Core::gsMainMenu::
-onLocalTestClicked(const CEGUI::EventArgs& evt){
-
-  LOGI("LocalTest button clicked");
-  //  GameEngine::getSingleton().enterLocalTest();
-  GameEngine::getSingleton().changeState(ST_LOCAL_TEST);
-
-  // Event handled
-  return true;
-}
-
-/** The Network Game CEGUI button callback
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsMainMenu::
-onNetworkGameClicked(const CEGUI::EventArgs& evt){
+onNetworkGameClicked(){
   LOGI("NetworkGame button clicked");
 
 
@@ -134,61 +102,6 @@ onNetworkGameClicked(const CEGUI::EventArgs& evt){
 
 
   return true;
-}
-
-/** Setup the main menu buttons
-  *
-  * This method does not call GuiManager::beginGuiFadeIn because in the
-  * init function, it must not be called. The fade in is started when the
-  * menu border transition is ended. however, onBackToMainClicked must
-  * manually call GuiManager::beginGuiFadeIn. So, the mainmenu CEGUI layout
-  * is loaded in the init() and onBackToMainClicked() functions.
-  *
-  */
-void RainbruRPG::Core::gsMainMenu::oldSetupMainMenu(){
-  LOGI("setupMainMenu called");
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet()
-    ->getChild("RainbruRPG/MainMenu");;
-
-  // Quit button
-  CEGUI::Window* btnQuit=root->getChild("Quit");
-  if (btnQuit){
-    //    btnQuit->setFont("Iconified-20");
-    btnQuit->subscribeEvent(CEGUI::Window::EventMouseClick, 
-	     CEGUI::Event::Subscriber(&gsMainMenu::onQuitClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'Quit' button");
-  }
-
-
-  // Local test
-  CEGUI::Window* btnLocalTest=root->getChild("LocalTest");
-  if (btnLocalTest){
-    //    btnLocalTest->setFont("Iconified-20");
-    btnLocalTest->subscribeEvent(CEGUI::Window::EventMouseClick, 
-	     CEGUI::Event::Subscriber(&gsMainMenu::onLocalTestClicked,
-				      this));
-  }
-  else{
-    LOGW("Cannot get the 'Quit' button");
-  }
-
-  // Network game
-  CEGUI::Window* btnNetGame=root->getChild("NetGame");
-  if (btnNetGame){
-    //    btnNetGame->setFont("Iconified-20");
-    btnNetGame->subscribeEvent(CEGUI::Window::EventMouseClick, 
-	     CEGUI::Event::Subscriber(&gsMainMenu::onNetworkGameClicked,
-				      this));
-  }
-  else{
-    LOGW("Cannot get the 'Network game' button");
-  }
-
-
 }
 
 void RainbruRPG::Core::gsMainMenu::resume(){
@@ -220,14 +133,22 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
   mGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
+
+  // Cnter the window
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+
   window = mGUI->
-    createWindow(Vector4(100,100,600,300),"bgui.window", 
+    createWindow(Vector4((w/2)-100,300,200,150),"bgui.window", 
 		 BetaGUI::RESIZE_AND_MOVE, "Main menu");
 
-  btnLocalTest = window->createButton(Vector4(108,50,104,24), "bgui.button", 
+  btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 
+                      "Network game", BetaGUI::Callback::Callback(this));
+
+  btnLocalTest = window->createButton(Vector4(20,70,160,24), "bgui.button", 
 			 "Local test", BetaGUI::Callback::Callback(this));
 
-  btnExit = window->createButton(Vector4(108,80,104,24), "bgui.button", 
+  btnExit = window->createButton(Vector4(20,100,160,24), "bgui.button", 
          "Exit", BetaGUI::Callback::Callback(this));
 
 }
@@ -245,6 +166,9 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
   else if (b==btnExit){
     LOGI("Quit button clicked");
     GameEngine::getSingleton().quit();
+  }
+  else if (b==btnNetworkGame){
+    onNetworkGameClicked();
   }
   else{
     LOGW("gsMainMenu::onButtonPress called");
