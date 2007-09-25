@@ -32,7 +32,9 @@
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
-#include "betagui.h"
+#include "bgbutton.h"
+#include "bgwindow.h"
+#include "bglistener.h"
 
 using namespace RainbruRPG::Network::Ident;
 

@@ -60,7 +60,8 @@ libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
-am__objects_2 = betagui.lo bggui.lo
+am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
+	bgwindow.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -220,8 +221,19 @@ target_alias = @target_alias@
 #lib_LTLIBRARIES = librainbrurpg-ogregui.la
 lib_LTLIBRARIES = librainbrurpg-ogregui.la
 librainbrurpg_ogregui.adir = $(libdir)
-h_sources = betagui.h bggui.h
-cc_sources = betagui.cpp  bggui.cpp
+h_sources = bgbutton.h			\
+	   bgcallback.h			\
+	   bggui.h			\
+	   bglistener.h			\
+	   bgtextinput.h		\
+	   bgwindow.h
+
+cc_sources = bgbutton.cpp		\
+	    bgcallback.cpp		\
+	    bggui.cpp			\
+	    bgtextinput.cpp		\
+	    bgwindow.cpp
+
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)
 librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir) 
@@ -300,8 +312,11 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/betagui.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgbutton.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgcallback.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bggui.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgtextinput.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgwindow.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

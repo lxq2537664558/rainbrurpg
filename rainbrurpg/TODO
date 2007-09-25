@@ -4,7 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- remove gsMainMenu dependencies to CEGUI
+
+- Doxygen documentation
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
@@ -130,9 +131,13 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-157
+- BetaGUI::Callback in .h/.cpp
+- BetaGUI::Window in .h/.cpp
+- BetaGUI::GUI in .h/.cpp
 
 * v 0.0.5-156
 - Logo and menu of homepage now centered
+- remove gsMainMenu dependencies to CEGUI
 - Hide window in gsMainMenu pause
 - gsMainMenu handles betaGui events (for buttons)
 - gsMainMenu uses betaGUI

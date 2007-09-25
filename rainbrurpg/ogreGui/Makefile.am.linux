@@ -3,11 +3,19 @@ lib_LTLIBRARIES = librainbrurpg-ogregui.la
 
 librainbrurpg_ogregui.adir=$(libdir)
 
-h_sources= betagui.h bggui.h
+h_sources= bgbutton.h			\
+	   bgcallback.h			\
+	   bggui.h			\
+	   bglistener.h			\
+	   bgtextinput.h		\
+	   bgwindow.h
 
 
-cc_sources= betagui.cpp  bggui.cpp
-
+cc_sources= bgbutton.cpp		\
+	    bgcallback.cpp		\
+	    bggui.cpp			\
+	    bgtextinput.cpp		\
+	    bgwindow.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)
