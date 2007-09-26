@@ -26,27 +26,20 @@ namespace BetaGUI {
 
 class TextInput{
  public:
-  TextInput(Vector4 Dimensions, String Material, String Value, unsigned int length, BetaGUI::Window *parent);
-  ~TextInput(){}
+  TextInput(Vector4, String, String, unsigned int, BetaGUI::Window*);
+  ~TextInput();
 
-  String getValue(){
-    return value;
-  }
+  String getValue(void);
+  void setValue(Ogre::String);
 
-  void setValue(String v){
-    mCP->setCaption(value=v);
-  }
+  bool in(unsigned int, unsigned int, unsigned int, unsigned int);
 
-  bool in(unsigned int mx,unsigned int my,unsigned int px,unsigned int py){
-    return(!(mx>=x+px&&my>=y+py))||(!(mx<=x+px+w&&my<=y+py+h));
-  }
+  unsigned int getLength(void);
 
-  unsigned int getLength(void){ return this->length; };
-
-  OverlayContainer* getContentOverlay(void){ return mCP; };
-  OverlayContainer* getFrameOverlay(void){ return mO; };
-  String getMmn(void){ return this->mmn; };
-  String getMma(void){ return this->mma; };
+  OverlayContainer* getContentOverlay(void);
+  OverlayContainer* getFrameOverlay(void);
+  String getNormalMaterialName(void);
+  String getActiveMaterialName(void);
 
  protected: 
 
@@ -62,10 +55,47 @@ class TextInput{
     */
   OverlayContainer* mCP;
 
+  /** The material name used to draw the text input (normal state)
+    *
+    */
   String mmn;
 
-  String mma,value;
-  unsigned int x,y,w,h,length;
+  /** The material name used to draw the text input when active
+    *
+    * It is usually mmn+".active"
+    *
+    */
+  String mma;
+
+  /** The current contained text
+    *
+    */
+  String value;
+  
+  /** The X position of this widget
+    *
+    */
+  unsigned int x;
+
+  /** The Y position of this widget
+    *
+    */
+  unsigned int y;
+
+  /** The width position of this widget
+    *
+    */
+  unsigned int w;
+
+  /** The height position of this widget
+    *
+    */
+  unsigned int h;
+
+  /** The max length of text that can be entered
+    *
+    */
+  unsigned int length;
 
 };
  

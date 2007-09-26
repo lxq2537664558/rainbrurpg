@@ -208,7 +208,10 @@ INCLUDES = -I$(top_srcdir)/common      \
 	   -I$(top_srcdir)/ogreGui $(OGRE_CFLAGS)
 
 rainbrurpg_LDADD = -lrainbrurpg-common -lrainbrurpg-core -lrainbrurpg-ogregui
-rainbrurpg_LDFLAGS = -L$(top_srcdir)/common/.libs -L$(top_srcdir)/maincore/.libs
+rainbrurpg_LDFLAGS = -L$(top_srcdir)/common/.libs		\
+		    -L$(top_srcdir)/maincore/.libs		\
+		    -L$(top_srcdir)/ogreGui/.libs
+
 all: all-am
 
 .SUFFIXES:

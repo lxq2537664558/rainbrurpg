@@ -16,4 +16,6 @@ INCLUDES = -I$(top_srcdir)/common      \
 
 rainbrurpg_LDADD=-lrainbrurpg-common -lrainbrurpg-core -lrainbrurpg-ogregui
 
-rainbrurpg_LDFLAGS=-L$(top_srcdir)/common/.libs -L$(top_srcdir)/maincore/.libs
+rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/.libs		\
+		    -L$(top_srcdir)/maincore/.libs		\
+		    -L$(top_srcdir)/ogreGui/.libs

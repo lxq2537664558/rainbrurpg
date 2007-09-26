@@ -128,18 +128,24 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   */
 }
 
+/** Setup the screen
+  *
+  * It uses OgreGUI to creates the main menu screen.
+  *
+  */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
 
   mGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
 
-  // Cnter the window
+  // Center the window
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
   unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
 
   window = mGUI->
-    createWindow(Vector4((w/2)-100,300,200,150),"bgui.window", 
+    createWindow(Vector4((w/2)-100,(h/2)-75,200,150),"bgui.window", 
 		 BetaGUI::RESIZE_AND_MOVE, "Main menu");
 
   btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 

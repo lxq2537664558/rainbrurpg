@@ -28,34 +28,40 @@ using namespace std;
 namespace BetaGUI {
   class Window;
 
+  /** The windiow type enumeration
+    *
+    * You pass one of this values when you call 
+    * GUI::createWindow().
+    *
+    */
   enum wt{
-    NONE=0,
-    MOVE=1,
-    RESIZE=2,
-    RESIZE_AND_MOVE=3
+    NONE=0,            //!< The window cannot be resized or moved
+    MOVE=1,            //!< The window can be moved 
+    RESIZE=2,          //!< The window can be resized
+    RESIZE_AND_MOVE=3  //!< The window can be resized and removed
   };
 
   class GUI{
   public:
-    GUI(String font, unsigned int fontSize);
+    GUI(String, unsigned int);
     ~GUI();	
 
-    bool injectMouse(unsigned int x, unsigned int y, bool LMB);
-    bool injectKey(String key, unsigned int x, unsigned int y);
-    void injectBackspace(unsigned int x, unsigned int y);
+    bool injectMouse(unsigned int, unsigned int, bool);
+    bool injectKey(String, unsigned int, unsigned int);
+    void injectBackspace(unsigned int, unsigned int);
 
     Window* createWindow(Vector4,String,wt,String c="");
     void destroyWindow(Window *w);
     
     OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
-    OverlayContainer* createMousePointer(Vector2 size,String material);
+    OverlayContainer* createMousePointer(Vector2,String);
 
-    unsigned int getUniqueId(void){return bc++;};
-    unsigned int getWindowUniqueId(void){return wc++;};
-    unsigned int getStaticTextUniqueId(void){return tc++;};
-    unsigned int getFontSize(void){ return mFontSize; };
+    unsigned int getUniqueId(void);
+    unsigned int getWindowUniqueId(void);
+    unsigned int getStaticTextUniqueId(void);
+    unsigned int getFontSize(void);
 
-    Overlay* getRootOverlay(void);
+    Ogre::Overlay* getRootOverlay(void);
 
   protected:
     /** The next Id to create unique names
@@ -78,11 +84,37 @@ namespace BetaGUI {
       *
       */
     unsigned int tc;
+
+    /** The overlay that contains all others widget (root)
+      *
+      * 
+      *
+      */
     Overlay* mO;
+
+    /** A vector of windows 
+      *
+      */
     vector<Window*> WN;
+
+    /** A window that will be deleted
+      *
+      */
     Window *mXW;
+
+    /** The overlay used to draw the mouse cursor
+      *
+      */
     OverlayContainer* mMP;
+
+    /** The font name used to draw text
+      *
+      */
     String mFont;
+
+    /** The global font size
+      *
+      */
     unsigned int mFontSize;
   };
 }

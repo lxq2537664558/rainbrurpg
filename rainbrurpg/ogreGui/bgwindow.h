@@ -26,43 +26,54 @@ using namespace Ogre;
 
 namespace BetaGUI {
 
+  /** A BetaGUI window
+    *
+    */
   class Window{
   public:
-    Window(Vector4 Dimensions, String Material, wt type, String caption, GUI *gui);
+    Window( Vector4, String, wt, String, GUI* );
     ~Window();
 
-    BetaGUI::Button* createButton(Vector4 Dimensions, String Material, String Text, Callback callback);
-    BetaGUI::TextInput* createTextInput(Vector4 Dimensions, String Material, String Value, unsigned int length);
-    void createStaticText(Vector4 Dimensions, String Text);
-    void hide(){
-      mO->hide();
-    }
+    BetaGUI::Button* createButton(Vector4, String, String, Callback);
+    BetaGUI::TextInput* createTextInput(Vector4, String, String, unsigned int);
+    void createStaticText(Vector4, String);
 
-    void show(){
-      mO->show();
-    }
+    void hide();
+    void show();
+    bool isVisible();
 
-    bool isVisible(){
-      return mO->isVisible();
-    }
+    bool check(unsigned int, unsigned int, bool); 
+    bool checkKey(String, unsigned int, unsigned int);
 
-    bool check(unsigned int x, unsigned int y, bool LMB); 
-    bool checkKey(String key, unsigned int x, unsigned int y);
-
-
-
-    GUI* getGUI(){ return mGUI; };
-    void setOverLayContainer(OverlayContainer* oc){mO=oc;};
-    OverlayContainer* getOverLayContainer(){ return mO;; };
+    GUI* getGUI();
+    void setOverLayContainer(OverlayContainer* oc);
+    OverlayContainer* getOverLayContainer();
 
   protected:
 
+    /** A TextInput widget */
     TextInput* mATI;
-    Button *mRZ,*mAB,*mTB;
-    unsigned int x,y,w,h;
+    /** Defines a button */
+    Button* mRZ;
+    /** Defines a button */
+    Button* mAB;
+    /** Defines a button */
+    Button* mTB;
+    /** The X position of the window */
+    unsigned int x;
+    /** The Y position of the window */
+    unsigned int y;
+    /** The width of the window */
+    unsigned int w;
+    /** The height of the window */
+    unsigned int h;
+    /** The GUI object used to draw this window */
     GUI* mGUI;
+    /** The overlay container drawing this widget */
     OverlayContainer* mO;
+    /** A vector of Buttons */
     vector<BetaGUI::Button*>mB;
+    /** A vector of TextInput */
     vector<BetaGUI::TextInput*>mT;
   };
 

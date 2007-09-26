@@ -14,8 +14,20 @@
 
 namespace BetaGUI {
 
+  /** A basic Listener
+    *
+    * You must subclass this to create a listener for BetaGUI.
+    *
+    */
   class BetaGUIListener{
   public:
+    /** The button pressed listener
+      *
+      * You \b must reimplement this to handle button press event.
+      *
+      * \param ref The button that fire this event
+      *
+      */
     virtual void onButtonPress(Button *ref) = 0;
   };
 

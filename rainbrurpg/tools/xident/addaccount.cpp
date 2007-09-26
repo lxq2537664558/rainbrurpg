@@ -33,12 +33,20 @@ FXDEFMAP(RainbruRPG::Gui::AddAccount) AddAccountMap[]={
 
 FXIMPLEMENT(RainbruRPG::Gui::AddAccount,FXDialogBox,AddAccountMap,ARRAYNUMBER(AddAccountMap));
 
-RainbruRPG::Gui::AddAccount::AddAccount(FXApp *)
+/** The constructor
+  *
+  * \param a The base FOX application
+  *
+  */
+RainbruRPG::Gui::AddAccount::AddAccount(FXApp *a)
   :FXDialogBox{
 
 
 }
 
+/** Destructor
+  *
+  */
 RainbruRPG::Gui::AddAccount::~AddAccount(){
 
 }
@@ -64,6 +72,6 @@ void RainbruRPG::Gui::AddAccount::create(){
   *
   */
 long RainbruRPG::Gui::AddAccount::
-onNotYetImplemented(FXObject *,FXSelector,void*){
-
+onNotYetImplemented(FXObject* o,FXSelector s,void* v){
+  return 1;
 }

@@ -73,6 +73,7 @@ namespace RainbruRPG {
       BetaGUI::Button* btnLocalTest;
       /** The Exit button, kept for testing it */
       BetaGUI::Button* btnExit;
+      /** The Button where the buttons are aded */
       BetaGUI::Window* window;
     };
   }

@@ -12,6 +12,15 @@
 #include "bglistener.h"
 #include <OGRE/OgreStringConverter.h>
 
+/** The constructor
+  *
+  * \param D The dimensions of the window to create as a Ogre vector
+  * \param M The name of the Ogre material to apply to the new window
+  * \param t The window's type
+  * \param C The caption of the window
+  * \param G The GUI object used to create window
+  *
+  */
 BetaGUI::Window::Window(Vector4 D,String M, wt t,String C, GUI *G)
   :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),mATI(0),mAB(0){
 
@@ -30,6 +39,9 @@ BetaGUI::Window::Window(Vector4 D,String M, wt t,String C, GUI *G)
   }
 }
 
+/** The destructor
+  *
+  */
 BetaGUI::Window::~Window(){
   for(unsigned int i=0;i<mB.size();i++)
     delete mB[i];
@@ -40,12 +52,28 @@ BetaGUI::Window::~Window(){
   mGUI->getRootOverlay()->remove2D(mO);
 }
 
+/** Creates a button inside this window
+  *
+  * \param D The dimension of the button to create
+  * \param M The Ogre material to use within the button
+  * \param T The text of the button
+  * \param C The callback of the button
+  *
+  */
 BetaGUI::Button* BetaGUI::Window::createButton(Vector4 D,String M,String T,Callback C){
   Button *x=new Button(D,M,T,C,this);
   mB.push_back(x);
   return x;
 }
 
+/** Create a TextInput control inside this window
+  *
+  * \param D The dimension of the text input to create
+  * \param M The material to use 
+  * \param V The value of the text input
+  * \param L The lenght of the text input
+  *
+  */
 BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String M,String V,unsigned int L){
 
   TextInput *x=new TextInput(D,M,V,L,this);
@@ -53,6 +81,12 @@ BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String M,String V
   return x;
 }
 
+/** Creates a static text inside this window
+  *
+  * \param D The dimension of the text input to create
+  * \param T The text to draw with the static text
+  *
+  */
 void BetaGUI::Window::createStaticText(Vector4 D,String T){
   OverlayContainer* x=mGUI->createOverlay(mO->getName()+StringConverter::toString(mGUI->getStaticTextUniqueId()),Vector2(D.x,D.y),Vector2(D.z,D.w),"", T,false);
   
@@ -60,6 +94,15 @@ void BetaGUI::Window::createStaticText(Vector4 D,String T){
   x->show();
 }
 
+/** Handle a key pressed
+  *
+  * \param k The key pressed
+  * \param px The mouse X position
+  * \param py The mouse Y position
+  *
+  * \return \c true if the event is handles or \c false otherwise
+  *
+  */
 bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   if(mATI==0)
     return false;
@@ -84,7 +127,15 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   return true;
 }
 
-
+/** Handle a mouse clicked event
+  *
+  * \param px The X position of the mouse
+  * \param py The X position of the mouse
+  * \param LMB The left mouse button status
+  *
+  * \return \c true if the event is handles or \c false otherwise
+  *
+  */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   if(!mO->isVisible())
     return false;
@@ -114,7 +165,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       return true;
     
     if(mATI){
-      mATI->getFrameOverlay()->setMaterialName(mATI->getMmn());
+      mATI->getFrameOverlay()->setMaterialName(mATI->getNormalMaterialName());
       mATI=0;
     }
     
@@ -158,12 +209,62 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       continue;
     
     mATI=mT[i];
-    mATI->getContentOverlay()->setMaterialName(mATI->getMma());
+    mATI->getContentOverlay()->setMaterialName(mATI->getActiveMaterialName());
     return true;
   }
   if(mATI){
-    mATI->getContentOverlay()->setMaterialName(mATI->getMmn());
+    mATI->getContentOverlay()->setMaterialName(mATI->getNormalMaterialName());
     mATI=0;
   }
   return true;
+}
+
+/** Hide this window
+  *
+  */
+void BetaGUI::Window::hide(){
+  mO->hide();
+}
+
+/** Set this window visible
+  *
+  */
+void BetaGUI::Window::show(){
+  mO->show();
+}
+
+/** Is ths window visible ?
+  *
+  * \return \c true if this window is visible otherwise return \c false
+  *
+  */
+bool BetaGUI::Window::isVisible(){
+  return mO->isVisible();
+}
+
+/** Get the GUI object this window use
+  *
+  * \return Thze current GUI object
+  *
+  */
+BetaGUI::GUI* BetaGUI::Window::getGUI(){
+  return mGUI; 
+}
+
+/** Returns the root overlay container
+  *
+  * \param oc The new OverlayContainer that replace mO.
+  *
+  */
+void BetaGUI::Window::setOverLayContainer(OverlayContainer* oc){
+  mO=oc;
+}
+
+/** Returns the root overlay container
+  *
+  * \return The overlay container
+  *
+  */
+OverlayContainer* BetaGUI::Window::getOverLayContainer(){ 
+  return mO;; 
 }

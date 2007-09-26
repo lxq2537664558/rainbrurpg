@@ -13,21 +13,41 @@
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreStringConverter.h>
 
+/** The GUI constructor
+  *
+  * \param font     The global font name
+  * \param fontSize The global fontsize
+  *
+  */
 BetaGUI::GUI::GUI(String font, unsigned int fontSize)
   :mXW(0), mMP(0),mFont(font),mFontSize(fontSize),wc(0),bc(0),tc(0){
   mO=OverlayManager::getSingleton().create("BetaGUI");
   mO->show();
 }
 
+/** The destructor
+  *
+  */
 BetaGUI::GUI::~GUI(){
   for(unsigned int i=0;i < WN.size();i++)
     delete WN[i];WN.clear();
 }
 
+/** Inject the backspace key pressed event
+  *
+  * \param x The X position of the mouse when you press the key
+  * \param y The Y position of the mouse when you press the key
+  *
+  */
 void BetaGUI::GUI::injectBackspace(unsigned int x, unsigned int y){
   injectKey("!b",x,y);
 }
 
+/** Mark the given window as `will be deleted`
+  *
+  * \param w The window to be deleted
+  *
+  */
 void BetaGUI::GUI::destroyWindow(Window *w){
   mXW=w;
 }
@@ -90,8 +110,16 @@ OverlayContainer* BetaGUI::GUI::createOverlay(String N,Vector2 P,Vector2 D,Strin
   return e;
 }
 
+/** Create a mouse pointer
+  *
+  * \param d The size in pixels of the mouse pointer
+  * \param m The name of the Ogre material used to draw it
+  *
+  * \return The overlay now containing the mouse pointer
+  *
+  */
 OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
-  Overlay* o=OverlayManager::getSingleton().create("BetaGUI.MP");
+  Overlay* o=OverlayManager::getSingleton().create("BetaGUI.MousePointer");
   o->setZOrder(649);
   mMP=createOverlay("bg.mp",Vector2(0,0),d,m,"", false);
   
@@ -101,9 +129,63 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   return mMP;
 }
 
+/** Creates a ew window
+  *
+  * Creates a new window and push back it in the windows vector.
+  *
+  * \param D The dimensions of the new window
+  * \param M The Ogre material used with this window
+  * \param T The window type
+  * \param C The window caption
+  *
+  */
 BetaGUI::Window* BetaGUI::GUI::createWindow(Vector4 D,String M, wt T,String C){
   BetaGUI::Window* w=new Window(D,M,T,C,this);
   WN.push_back(w);
   return w;
 }
 
+/** Get the next uniqueId used by button
+  *
+  * \return A auto-incremental identifier used when creating a button
+  *
+  */
+unsigned int BetaGUI::GUI::getUniqueId(void){
+  return bc++;
+}
+
+/** Get the next uniqueId used by window
+  *
+  * \return A auto-incremental identifier used when creating a window
+  *
+  */
+unsigned int BetaGUI::GUI::getWindowUniqueId(void){
+  return wc++;
+}
+
+/** Get the next uniqueId used by StaticText
+  *
+  * \return A auto-incremental identifier used when creating a staticText
+  *
+  */
+unsigned int BetaGUI::GUI::getStaticTextUniqueId(void){
+  return tc++;
+}
+
+/** Get the global fontsize
+  *
+  * \return The fontsize used by default
+  *
+  */
+unsigned int BetaGUI::GUI::getFontSize(void){ 
+  return mFontSize; 
+}
+
+/** Get the parent of all windows
+  *
+  * \return The root overlay
+  *
+  */
+Ogre::Overlay* BetaGUI::GUI::getRootOverlay(void){ 
+  return mO; 
+}
