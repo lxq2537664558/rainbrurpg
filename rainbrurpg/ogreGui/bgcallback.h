@@ -16,6 +16,7 @@
 #ifndef _BETAGUI_CALLBACK_H_
 #define _BETAGUI_CALLBACK_H_
 
+#include "object.h"
 
 namespace BetaGUI {
 
@@ -24,29 +25,32 @@ namespace BetaGUI {
   class Button;
   // end of forward declaration
 
-  class Callback{
+  /** Defines a callback that can be use with BetaGUI
+    *
+    */
+  class Callback : public RainbruRPG::OgreGui::Object{
   public:
-    Callback(){
-      type=0;
-    }
-    
-    Callback(void(*functionPointer)(Button *ref)){
-      type=1;
-      fp=functionPointer;
-    }
-    
-    Callback(BetaGUIListener *L){
-      type=2;
-      LS=L;
-    }
-    
-    void setType(unsigned char t){ this->type=t; };
-    unsigned char getType(void){ return this->type; };
+    Callback();
+    Callback(void(*functionPointer)(Button *ref));
+    Callback(BetaGUIListener *L);
 
+    void setType(unsigned char t);
+    unsigned char getType(void);
+
+    /** A function pointer 
+      *
+      */
     void(*fp)(Button *r);
+
+    /** A listener used or not for this callback
+      *
+      */
     BetaGUIListener *LS;
 
   protected:
+    /** The type of callback
+      *
+      */
     unsigned char type;
   };
 

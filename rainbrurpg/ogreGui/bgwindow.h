@@ -18,6 +18,8 @@
 
 #include <OGRE/OgreVector4.h>
 
+#include "widget.h" 
+
 #include "bggui.h"         // For enum wt
 #include "bgbutton.h"
 #include "bgtextinput.h"
@@ -29,7 +31,7 @@ namespace BetaGUI {
   /** A BetaGUI window
     *
     */
-  class Window{
+  class Window : public RainbruRPG::OgreGui::Widget{
   public:
     Window( Vector4, String, wt, String, GUI* );
     ~Window();

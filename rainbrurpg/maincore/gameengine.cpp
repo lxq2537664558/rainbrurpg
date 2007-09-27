@@ -47,7 +47,10 @@
 #include "inputmanager.h"
 #include "globaluri.h"
 
+#include "skinmanager.h"
+
 using namespace RainbruRPG::Events;
+using namespace RainbruRPG::OgreGui;
 
 /** A function used to know if the GameEngine is running.
   * 
@@ -920,6 +923,8 @@ InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
   */
 void RainbruRPG::Core::GameEngine::initOgreGui(){
   // mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
+  SkinManager::getSingleton().init();
+
   mOgreGUI = new BetaGUI::GUI("BlueHighway",20);
 
 }

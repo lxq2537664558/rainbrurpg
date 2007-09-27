@@ -8,21 +8,29 @@ h_sources= bgbutton.h			\
 	   bggui.h			\
 	   bglistener.h			\
 	   bgtextinput.h		\
-	   bgwindow.h
+	   bgwindow.h			\
+	   object.h			\
+	   skin.h			\
+	   skinmanager.h		\
+	   widget.h
 
 
 cc_sources= bgbutton.cpp		\
 	    bgcallback.cpp		\
 	    bggui.cpp			\
 	    bgtextinput.cpp		\
-	    bgwindow.cpp
+	    bgwindow.cpp		\
+	    object.cpp			\
+	    skin.cpp			\
+	    skinmanager.cpp		\
+	    widget.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)
 
-librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir) 
+librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
-INCLUDES = 
+INCLUDES = -I$(top_srcdir)/common
 
 #lib_LTLIBRARIES= libexamplelib-1.0.la
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)

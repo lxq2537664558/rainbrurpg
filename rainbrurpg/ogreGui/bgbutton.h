@@ -13,6 +13,8 @@
 #include <OGRE/OgreVector4.h>
 #include <OGRE/OgreOverlayContainer.h>
 
+#include "widget.h" 
+
 #include "bgcallback.h"
 #include "bgwindow.h"
 
@@ -20,47 +22,50 @@ using namespace Ogre;
 
 namespace BetaGUI {
 
-class Button{
- public:
-  Button(Vector4 Dimensions, String Material, String Text, Callback callback, Window *parent);
-  ~Button(){
-    mO->getParent()->removeChild(mO->getName());
-    mCP->getParent()->removeChild(mCP->getName());
-  }
-  
-  void activate(bool a){
-    if(!a&&mmn!=""){
-      mO->setMaterialName(mmn);
-    }
+  /** The PushButton implementation
+    * 
+    */
+  class Button : public RainbruRPG::OgreGui::Widget{
+  public:
+    Button(Vector4, String, String, Callback, Window *parent);
+    ~Button();
+    
+    void activate(bool);
+    bool in( unsigned int, unsigned int, unsigned int, unsigned int );
+    Callback getCallback(void);
+    
+    unsigned int getWidth();
+    unsigned int getHeight();
+    unsigned int getX();
+    unsigned int getY();
+    
+    void setWidth(unsigned int ui);
+    void setHeight(unsigned int ui);
+    void setX(unsigned int ui);
+    void setY(unsigned int ui);
+    
+    OverlayContainer* getOverlayContainer(void);
 
-    if(a&&mma!=""){
-      mO->setMaterialName(mma);
-    }
-  }
-
-  bool in(unsigned int mx,unsigned int my,unsigned int px,unsigned int py){
-    return(!(mx>=x+px&&my>=y+py))||(!(mx<=x+px+w&&my<=y+py+h));
-  }
-
-  Callback getCallback(void){ return callback; };
-
-  unsigned int getWidth(){ return w; };
-  unsigned int getHeight(){ return h; };
-  unsigned int getX(){ return x; };
-  unsigned int getY(){ return y; };
-
-  void setWidth(unsigned int ui){ w=ui; };
-  void setHeight(unsigned int ui){ h=ui; };
-  void setX(unsigned int ui){ x=ui; };
-  void setY(unsigned int ui){ y=ui; };
-
-  OverlayContainer* getOverlayContainer(void){ return mO; };
-  String mmn,mma;
-
- protected:
-  OverlayContainer* mO,*mCP;
-  Callback callback;
-  unsigned int x,y,w,h;
+    /** The Ogre material name of the normal state */
+    String mmn;
+    /** The Ogre material name of the active state */
+    String mma;
+    
+  protected:
+    /** The root overlay */
+    OverlayContainer* mO;
+    /** The button's text overlay */
+    OverlayContainer* mCP;
+    /** The callback of this button */
+    Callback callback;
+    /** The X position */
+    unsigned int x;
+    /** The Y position */
+    unsigned int y;
+    /** The width of this button */
+    unsigned int w;
+    /** The height of this button */
+    unsigned int h;
 };
 
 }

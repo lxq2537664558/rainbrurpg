@@ -52,6 +52,15 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   mXW=w;
 }
 
+/** Inject a mouse move with or without mouse button clicked
+  *
+  * \param x   The X position of the mouse
+  * \param y   The Y position of the mouse
+  * \param LMB Is the left mouse button clicked
+  *
+  * \return \c true if this event is used, otherwise \c false
+  *
+  */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
   if(mMP)mMP->setPosition(x,y);
   
@@ -74,15 +83,49 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
   return false;
 }
 
+/** Inject the given key at the given position into the system
+  *
+  * The arguments are passed to all windows by calling Window::checkKey().
+  *
+  * \param key The injected key
+  * \param x   The X position of the mouse
+  * \param y   The Y position of the mouse
+  *
+  * \return \c true if the injected key is used, otherwise, returns \c false
+  *
+  */
 bool BetaGUI::GUI::injectKey(String key, unsigned int x,unsigned int y){
   for(unsigned int i=0;i<WN.size();i++){
     if(WN[i]->checkKey(key,x,y)){
       return true;
     }
-  }return false;
+  }
+  return false;
 }
 
-OverlayContainer* BetaGUI::GUI::createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
+/** Create an overlay and returns it
+  *
+  * It guesses the overlay type from the C content. If the string is empty,
+  * it creates a Panel, otherwise, it creates a TextArea.
+  *
+  * If A is \c true, the newly created overlay will be automatically
+  * added to the current GUI root overlay and will be shown. So, if A
+  * is \c false, the overlay will not be visible.
+  *
+  * \param N The instance name of the new overlay
+  * \param P The position of the new overlay
+  * \param D The dimensions of the new overlay
+  * \param M The material name of the new overlay
+  * \param C the content string of the overlay.
+  * \param A Should we add it to the GUI root overlay ?
+  *
+  * \return The newly created Ogre overlay
+  *
+  */
+OverlayContainer* BetaGUI::GUI::
+createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
+
+  // Choose the type of overlay
   String t="Panel";
   if (C!="")
     t="TextArea";

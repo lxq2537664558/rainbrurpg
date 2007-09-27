@@ -6,9 +6,10 @@
 ==
 
 * v0.0.6
+- CEGUI is give up. Using BetaGUI based GUI instead
 - Server provide a tool to manage the quarantine :
 - Conditional linking : If you do not build server or editor, the configure
-  will not test the presence of Qt4 and libmagic. The design library will
+  script will not test the presence of Qt4 and libmagic. The design library will
   not be built if neither the server nor the editor is enabled.
 	
 * v0.0.5

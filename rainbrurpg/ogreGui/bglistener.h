@@ -10,6 +10,8 @@
 #ifndef _BETAGUI_LISTENER_H_
 #define _BETAGUI_LISTENER_H_
 
+#include "object.h"
+
 #include "bgbutton.h"
 
 namespace BetaGUI {
@@ -19,7 +21,7 @@ namespace BetaGUI {
     * You must subclass this to create a listener for BetaGUI.
     *
     */
-  class BetaGUIListener{
+  class BetaGUIListener : public RainbruRPG::OgreGui::Object{
   public:
     /** The button pressed listener
       *

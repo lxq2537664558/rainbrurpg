@@ -13,7 +13,7 @@
 #include <OGRE/OgreVector4.h>
 #include <OGRE/OgreOverlayContainer.h>
 
-
+#include "widget.h" 
 
 using namespace Ogre;
 
@@ -24,7 +24,7 @@ namespace BetaGUI {
   // End of Forward declaration
 
 
-class TextInput{
+class TextInput : public RainbruRPG::OgreGui::Widget{
  public:
   TextInput(Vector4, String, String, unsigned int, BetaGUI::Window*);
   ~TextInput();
