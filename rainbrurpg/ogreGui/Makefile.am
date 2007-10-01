@@ -12,6 +12,8 @@ h_sources= bgbutton.h			\
 	   object.h			\
 	   skin.h			\
 	   skinmanager.h		\
+	   skinoverlay.h		\
+	   sobetagui.h			\
 	   widget.h
 
 
@@ -23,6 +25,8 @@ cc_sources= bgbutton.cpp		\
 	    object.cpp			\
 	    skin.cpp			\
 	    skinmanager.cpp		\
+	    skinoverlay.cpp		\
+	    sobetagui.cpp		\
 	    widget.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)

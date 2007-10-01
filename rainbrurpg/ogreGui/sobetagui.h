@@ -20,40 +20,39 @@
  *
  */
 
-#include "skin.h"
+/* Modifications :
+ * - 27 sep 2007 : starting implementation
+ *         
+ */
 
-#include <logger.h>
+#ifndef _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
+#define _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
 
-/** Create a skin with a name
-  *
-  * \param n The name of the skin
-  *
-  */
-RainbruRPG::OgreGui::Skin::Skin(std::string n)
-  :name(n){
+#include "skinoverlay.h"
 
-  std::string s;
-  s="Creating skin `";
-  s+=this->name;
-  s+="`";
-  LOGI(s.c_str());
+#include <OGRE/OgreVector4.h>
 
+using namespace Ogre;
+
+namespace RainbruRPG{
+  namespace OgreGui{
+
+    /** A skin based on SkinOverlay, drawing like BetaGUI does
+      *
+      */
+    class soBetaGui : public SkinOverlay{
+    public:
+      soBetaGui();
+
+      virtual void createWindow(Ogre::String name, Ogre::Vector4 dim,
+				Ogre::String caption, BetaGUI::GUI*);
+
+    private:
+      /** The window's material name */
+      Ogre::String mnWindow;
+
+    };
+
+  }
 }
-
-/** Get the name of the skin
-  *
-  * \return The skin's name in std::string format
-  *
-  */
-std::string RainbruRPG::OgreGui::Skin::getName(void){
-  return this->name;
-}
-
-/** Change the skin name
-  *
-  * \param s The new skin's name
-  *
-  */
-void RainbruRPG::OgreGui::Skin::setName(std::string s){
-  this->name=s;
-}
+#endif //_OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_

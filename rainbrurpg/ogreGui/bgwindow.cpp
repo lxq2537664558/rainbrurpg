@@ -10,22 +10,43 @@
 #include "bgwindow.h"
 
 #include "bglistener.h"
+#include "skinmanager.h"
+#include "skinoverlay.h"
+
 #include <OGRE/OgreStringConverter.h>
+
+using namespace RainbruRPG::OgreGui;
 
 /** The constructor
   *
-  * \param D The dimensions of the window to create as a Ogre vector
-  * \param M The name of the Ogre material to apply to the new window
-  * \param t The window's type
-  * \param C The caption of the window
-  * \param G The GUI object used to create window
+  * \param D       The dimensions of the window to create as a Ogre vector
+  * \param M       The name of the Ogre material to apply to the new window
+  * \param t       The window's type
+  * \param caption The caption of the window
+  * \param G       The GUI object used to create window
   *
   */
-BetaGUI::Window::Window(Vector4 D,String M, wt t,String C, GUI *G)
+BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption, 
+			GUI *G)
   :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),mATI(0),mAB(0){
 
-  mO=G->createOverlay("BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId()),Vector2(D.x,D.y),Vector2(D.z,D.w),M); 
+
+  rootOverlay=NULL;
+
+  String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
+
+  //  rootOverlay=G->createOverlay(name, Vector2(D.x,D.y),Vector2(D.z,D.w),M); 
   
+  // Create the window
+  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  sk->createWindow(name, D, caption, G);
+
+  // Get the corresponding overlay if based on SkinOverlay
+  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
+  if (sko){
+    rootOverlay=sko->getOverlayByName(name);
+  }
+
   if(t>=2){
     Callback c;
     c.setType(4);
@@ -35,7 +56,7 @@ BetaGUI::Window::Window(Vector4 D,String M, wt t,String C, GUI *G)
   if(t==1||t==3){
     Callback c;
     c.setType(3);
-    mTB=createButton(Vector4(0,0,D.z,22),M+".titlebar",C,c);
+    mTB=createButton(Vector4(0,0,D.z,22),M+".titlebar",caption,c);
   }
 }
 
@@ -49,7 +70,7 @@ BetaGUI::Window::~Window(){
   for(unsigned int i=0;i<mT.size();i++)
     delete mT[i];
   
-  mGUI->getRootOverlay()->remove2D(mO);
+  mGUI->getRootOverlay()->remove2D(rootOverlay);
 }
 
 /** Creates a button inside this window
@@ -88,9 +109,9 @@ BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String M,String V
   *
   */
 void BetaGUI::Window::createStaticText(Vector4 D,String T){
-  OverlayContainer* x=mGUI->createOverlay(mO->getName()+StringConverter::toString(mGUI->getStaticTextUniqueId()),Vector2(D.x,D.y),Vector2(D.z,D.w),"", T,false);
+  OverlayContainer* x=mGUI->createOverlay(rootOverlay->getName()+StringConverter::toString(mGUI->getStaticTextUniqueId()),Vector2(D.x,D.y),Vector2(D.z,D.w),"", T,false);
   
-  mO->addChild(x);
+  rootOverlay->addChild(x);
   x->show();
 }
 
@@ -107,7 +128,7 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   if(mATI==0)
     return false;
   
-  if(!mO->isVisible())
+  if(!rootOverlay->isVisible())
     return false;
   
   if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h))
@@ -137,7 +158,7 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
-  if(!mO->isVisible())
+  if(!rootOverlay->isVisible())
     return false;
   
   if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h)){
@@ -182,11 +203,11 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       return true;
       
     case 3:
-      mO->setPosition(x=px-(mAB->getWidth()/2),y=py-(mAB->getHeight()/2));
+      rootOverlay->setPosition(x=px-(mAB->getWidth()/2),y=py-(mAB->getHeight()/2));
       return true;
       
     case 4:
-      mO->setDimensions(w=px-x+8,h=py-y+8);
+      rootOverlay->setDimensions(w=px-x+8,h=py-y+8);
       mRZ->setX(w-16);
       mRZ->setY(h-16);
       mRZ->getOverlayContainer()->setPosition(mRZ->getX(),mRZ->getY());
@@ -223,14 +244,14 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   *
   */
 void BetaGUI::Window::hide(){
-  mO->hide();
+  rootOverlay->hide();
 }
 
 /** Set this window visible
   *
   */
 void BetaGUI::Window::show(){
-  mO->show();
+  rootOverlay->show();
 }
 
 /** Is ths window visible ?
@@ -239,7 +260,7 @@ void BetaGUI::Window::show(){
   *
   */
 bool BetaGUI::Window::isVisible(){
-  return mO->isVisible();
+  return rootOverlay->isVisible();
 }
 
 /** Get the GUI object this window use
@@ -253,11 +274,11 @@ BetaGUI::GUI* BetaGUI::Window::getGUI(){
 
 /** Returns the root overlay container
   *
-  * \param oc The new OverlayContainer that replace mO.
+  * \param oc The new OverlayContainer that replace rootOverlay.
   *
   */
 void BetaGUI::Window::setOverLayContainer(OverlayContainer* oc){
-  mO=oc;
+  rootOverlay=oc;
 }
 
 /** Returns the root overlay container
@@ -266,5 +287,5 @@ void BetaGUI::Window::setOverLayContainer(OverlayContainer* oc){
   *
   */
 OverlayContainer* BetaGUI::Window::getOverLayContainer(){ 
-  return mO;; 
+  return rootOverlay;; 
 }

@@ -4,9 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-
-- OgreGUI object used by Callback Listener and Widget
-- SkinOverlay and soBetaGUI skins implementation
+- SkinOverlay::createOverlay function use by soBetaGui::createWindow
+- OgreGUI's Button delegates drawing to Skin
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
@@ -132,6 +131,12 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-157
+- OgreGUI's window delegates drawing to Skin
+- bggui.h::wt become OgreGuiWindowType (prefix is OWT)
+- doxygen Documentation
+- skin name implementation
+- SkinOverlay and soBetaGUI skins implementation
+- OgreGUI's Object used by Callback Listener and Widget
 - GameEngine initialise skinManager
 - Skin base class
 - A singleton class ogreGui/SkinManager

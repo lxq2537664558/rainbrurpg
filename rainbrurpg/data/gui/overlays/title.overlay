@@ -11,20 +11,25 @@ RainbruRPG/Title
 		top 5
 		width 280
 		height 105
-//		material RainbruRPG/Title/PanelBackGround
-		material Core/StatsBlockCenter
-		tiling 0 8 1
+// v0.0.5		material Core/StatsBlockCenter
+		material RainbruRPG/Title/PanelBackGround
 
-        	border_size 10 10 10 10
-        	border_material Core/StatsBlockBorder
-        	border_topleft_uv     0.0000 1.0000 0.0039 0.9961
-	    	border_top_uv         0.0039 1.0000 0.9961 0.9961
-	    	border_topright_uv    0.9961 1.0000 1.0000 0.9961
-	    	border_left_uv        0.0000 0.9961 0.0039 0.0039
-	    	border_right_uv       0.9961 0.9961 1.0000 0.0039
-	    	border_bottomleft_uv  0.0000 0.0039 0.0039 0.0000
-        	border_bottom_uv      0.0039 0.0039 0.9961 0.0000
-	    	border_bottomright_uv 0.9961 0.0039 1.0000 0.0000
+// v0.0.5		tiling 0 8 1
+		tiling 0 2 1
+
+// v0.0.5	       	border_size 10 10 10 10
+	       	border_size 20 20 20 20
+// v0.0.5        	border_material Core/StatsBlockBorder
+
+   		border_material RainbruRPG/Title/PanelBorder
+        	border_topleft_uv     0.0000 0.0000 0.05859375 0.2500
+	    	border_top_uv         0.0625 0.0000 0.9375 0.2500
+	    	border_topright_uv    0.94140625 0.0000 1.0000 0.2500
+	    	border_left_uv        0.0000 0.2500 0.2500 0.5000
+	    	border_right_uv       0.5000 0.2500 0.7500 0.5000
+	    	border_bottomleft_uv  0.0000 0.50 0.05859375 0.75
+        	border_bottom_uv      0.0625 0.50 0.9375 0.75
+	    	border_bottomright_uv 0.94140625 0.50 1.0000 0.75
 
 		container Panel(RainbruRPG/Title/BreakPanel)
 		{

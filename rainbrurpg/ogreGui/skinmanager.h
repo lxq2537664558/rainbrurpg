@@ -44,17 +44,33 @@ namespace RainbruRPG{
       * This must be a skin in the SkinManager::skins member.
       * The default skin is defined in the SkinManager class.
       *
+      * If a bad mapping warning occurs, please see the 
+      * \ref RainbruRPG::OgreGui::SkinManager::init() "SkinManager::init()"
+      * function. The mapping controls are here.
+      *
+      * OSI_DEFAULT is a special value, mapped with SkinManager::defaultSkin
+      * value in the SkinManager::getSkin() function.
+      *
+      * \sa SkinManager::init(), SkinManager::defaultSkin
+      *
       */
     enum OgreGuiSkinID{
-      OSI_BETAGUI=0,
-      OSI_DEFAULT=0xff,   //!< The default skin
+      OSI_BETAGUI=0,      //!< The BeraGUI based skin
+      OSI_DEFAULT=0xff,   //!< A virtual default skin
     };
 
     using namespace Core;
 
     /** The OgreGUI skins manager
       *
-      * This Singleton handles the skins of OgreGUI.
+      * This Singleton handles the skins of OgreGUI. It manages a
+      * STL vector of Skin objects (called \ref SkinManager::skins "skins") 
+      * and a default skin reference (\ref SkinManager::defaultSkin
+      * "defaultSkin").
+      *
+      * The skin vector can be accessed with a correct skin identifier
+      * (\ref RainbruRPG::OgreGui::OgreGuiSkinID "OgreGuiSkinID"
+      * enumeration).
       *
       */
     class SkinManager : public Singleton<SkinManager>{
@@ -64,10 +80,25 @@ namespace RainbruRPG{
       RainbruRPG::OgreGui::Skin* getSkin(RainbruRPG::OgreGui::OgreGuiSkinID);
 
     private:
-      /** A vector of skins */
+      /** A vector of skins 
+        * 
+	* The OgreGuiSkinID enumeration values must goes with the index
+	* placement defined in the init function().
+	*
+	* \sa init()
+	*
+	*/
       vector<RainbruRPG::OgreGui::Skin*> skins;
-      /** The default skin */
-      unsigned int defaultSkin;
+
+      /** The default skin 
+        *
+        * This integer is used as index of the skins vector to get the default
+	* Skin instance.
+	* 
+	* \sa init()
+	*
+        */
+      OgreGuiSkinID defaultSkin;
     };
   }
 }

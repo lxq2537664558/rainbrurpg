@@ -146,8 +146,8 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
   window = mGUI->
     createWindow(Vector4((w/2)-100,(h/2)-75,200,150),"bgui.window", 
-		 BetaGUI::RESIZE_AND_MOVE, "Main menu");
-
+		 BetaGUI::OWT_RESIZE_AND_MOVE, "Main menu");
+  /*
   btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 
                       "Network game", BetaGUI::Callback::Callback(this));
 
@@ -156,7 +156,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
   btnExit = window->createButton(Vector4(20,100,160,24), "bgui.button", 
          "Exit", BetaGUI::Callback::Callback(this));
-
+  */
 }
 
 /** The BetaGui button callback implementation

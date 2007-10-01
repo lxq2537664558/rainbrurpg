@@ -22,7 +22,9 @@
 
 #include "skinmanager.h"
 
-#include "logger.h"
+#include "sobetagui.h"
+
+#include <logger.h>
 
 /** Initialize the manager
   *
@@ -32,6 +34,13 @@
 void RainbruRPG::OgreGui::SkinManager::init(){
   LOGI("Initialising SkinManager");
   defaultSkin=OSI_BETAGUI;
+
+  Skin* sbg=new soBetaGui();
+  skins.push_back(sbg);
+  // Contol sbg correct index
+  if (skins.size()!=OSI_BETAGUI+1){
+    LOGW("OSI_BETAGUI index is incorrect : bad skin mapping");
+  }
 }
 
 /** Get a skin by its Identifier
@@ -41,6 +50,15 @@ void RainbruRPG::OgreGui::SkinManager::init(){
   */
 RainbruRPG::OgreGui::Skin* RainbruRPG::OgreGui::SkinManager::
 getSkin(RainbruRPG::OgreGui::OgreGuiSkinID s){
+
+  LOGI("Getting skin :");
+  LOGCATS("  skin number : ");
+  LOGCATI(s);
+  LOGCAT();
+
+  if (s==OSI_DEFAULT){
+    s=defaultSkin;
+  }
 
 #ifdef DEBUG
   if (skins[s]==NULL){

@@ -447,28 +447,15 @@
   *
   */
 
-/** \namespace RainbruRPG::Server::CommunicationLayer
-  *
-  * Defines the server part which makes and send packets over network.
-  *
-  */
-
-/** \namespace RainbruRPG::Server::SimulationLogic
-  *
-  * Manages the objects events.
-  *
-  */
-
-/** \namespace RainbruRPG::Server::ObjectStore
-  *
-  * Defines the objects and the ObjectFactory
-  *
-  */
-
 /** \namespace RainbruRPG::OgreGui
   *
-  * Ogre Gui Toolkit is a toolkit providing a graphical user interface over
+  * OgreGuiToolkit is a toolkit providing a graphical user interface over
   * Ogre3D. It is based on BetaGui 
   * (http://www.ogre3d.org/wiki/index.php/BetaGUI)
   *
+  * An important class is \ref RainbruRPG::OgreGui::SkinManager "SkinManager"
+  * which manages a vector of \ref RainbruRPG::OgreGui::Skin "Skin" objects.
+  *
+  * This namespace works with BetaGUI, the historical betaGUI namespace.
+  * 
   */

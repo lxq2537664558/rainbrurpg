@@ -45,7 +45,15 @@ namespace RainbruRPG{
       Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT);    
       ~Widget();
 
-    private:
+      OgreGuiSkinID getSkinId(void);
+
+    protected:
+      /** The skin identifier of this widget
+        *
+	* This identifier is a mapping with a vector managed by
+	* SkinManager.
+	*
+	*/
       OgreGuiSkinID skinId;
     };
   }

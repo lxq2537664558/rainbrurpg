@@ -20,40 +20,34 @@
  *
  */
 
+/* Modifications :
+ * - 27 sep 2007 : starting implementation
+ *         
+ */
+
+#ifndef _OGRE_GUI_SKIN_OVERLAY_H_
+#define _OGRE_GUI_SKIN_OVERLAY_H_
+
 #include "skin.h"
 
-#include <logger.h>
+#include <string>
+#include <OGRE/OgreOverlayContainer.h>
 
-/** Create a skin with a name
-  *
-  * \param n The name of the skin
-  *
-  */
-RainbruRPG::OgreGui::Skin::Skin(std::string n)
-  :name(n){
 
-  std::string s;
-  s="Creating skin `";
-  s+=this->name;
-  s+="`";
-  LOGI(s.c_str());
+namespace RainbruRPG{
+  namespace OgreGui{
 
+    /** A skin base-class on Ogre::Overlay
+      *
+      */
+    class SkinOverlay: public Skin{
+    public:
+      SkinOverlay(std::string n="unamedSkinOverlay");
+
+      Ogre::OverlayContainer* getOverlayByName(Ogre::String);
+    };
+
+  }
 }
 
-/** Get the name of the skin
-  *
-  * \return The skin's name in std::string format
-  *
-  */
-std::string RainbruRPG::OgreGui::Skin::getName(void){
-  return this->name;
-}
-
-/** Change the skin name
-  *
-  * \param s The new skin's name
-  *
-  */
-void RainbruRPG::OgreGui::Skin::setName(std::string s){
-  this->name=s;
-}
+#endif // _OGRE_GUI_SKIN_OVERLAY_H_

@@ -34,13 +34,20 @@ namespace BetaGUI {
     * GUI::createWindow().
     *
     */
-  enum wt{
-    NONE=0,            //!< The window cannot be resized or moved
-    MOVE=1,            //!< The window can be moved 
-    RESIZE=2,          //!< The window can be resized
-    RESIZE_AND_MOVE=3  //!< The window can be resized and removed
+  enum OgreGuiWindowType{
+    OWT_NONE=0,            //!< The window cannot be resized or moved
+    OWT_MOVE=1,            //!< The window can be moved 
+    OWT_RESIZE=2,          //!< The window can be resized
+    OWT_RESIZE_AND_MOVE=3  //!< The window can be resized and removed
   };
 
+  /** The GUI system object
+    *
+    * This class is part of BetaGUI. It provides the ability to inject
+    * input events (mouse and keys) and manage unique identifiers to
+    * get unique widget names.
+    *
+    */
   class GUI{
   public:
     GUI(String, unsigned int);
@@ -50,7 +57,7 @@ namespace BetaGUI {
     bool injectKey(String, unsigned int, unsigned int);
     void injectBackspace(unsigned int, unsigned int);
 
-    Window* createWindow(Vector4,String,wt,String c="");
+    Window* createWindow(Vector4,String,OgreGuiWindowType,String c="");
     void destroyWindow(Window *w);
     
     OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);

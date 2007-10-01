@@ -29,6 +29,9 @@
 #define _OGRE_GUI_SKIN_H_
 
 #include <string>
+#include <OGRE/OgrePrerequisites.h> // For Ogre::String
+
+#include "bggui.h"
 
 using namespace std;
 
@@ -38,15 +41,32 @@ namespace RainbruRPG{
     /** The base class of all skins
       *
       * It defines some pure virtual functions that must be reimplemented.
+      * These function should \b create the graphical representation
+      * of a widget, not draw it. There is not an update per frame. 
       *
       */
     class Skin{
+    public:
+      Skin(std::string n="defaultSkinName");
+
       std::string getName(void);
       void setName(std::string);
 
-      virtual void drawWindow(unsigned int x, unsigned int y,
-			      unsigned int w, unsigned int h);
-
+      /** Create a window
+        *
+	* Please see the sub-class documentation for implementation
+	* details.
+	*
+	* \param name    The internal name of the window
+	* \param dim     The window's dimension in pixels in a 
+	*                Ogre::Vector4 object
+	* \param caption The title bar caption
+	* \param bg      The BetaGUI::GUI object 
+	*
+	*/
+      virtual void createWindow(Ogre::String name, Ogre::Vector4 dim, 
+				Ogre::String caption, BetaGUI::GUI* bg)=0;
+      
     private:
       /** The name of the skin */
       std::string name;

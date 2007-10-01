@@ -176,14 +176,15 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   *
   * Creates a new window and push back it in the windows vector.
   *
-  * \param D The dimensions of the new window
-  * \param M The Ogre material used with this window
-  * \param T The window type
-  * \param C The window caption
+  * \param D    The dimensions of the new window
+  * \param M    The Ogre material used with this window
+  * \param type The window type
+  * \param C    The window caption
   *
   */
-BetaGUI::Window* BetaGUI::GUI::createWindow(Vector4 D,String M, wt T,String C){
-  BetaGUI::Window* w=new Window(D,M,T,C,this);
+BetaGUI::Window* BetaGUI::GUI::
+createWindow(Vector4 D, String M, OgreGuiWindowType type, String C){
+  BetaGUI::Window* w=new Window(D,M,type,C,this);
   WN.push_back(w);
   return w;
 }

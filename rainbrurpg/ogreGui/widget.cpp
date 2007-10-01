@@ -22,6 +22,11 @@
 
 #include "widget.h"
 
+/** A constructor passing the skin identifier
+  *
+  * \param sid The SkinIdentifier
+  *
+  */
 RainbruRPG::OgreGui::Widget::
 Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid)
   :skinId(sid){
@@ -30,6 +35,20 @@ Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid)
 
 }    
 
+/** Destructor
+  *
+  */
 RainbruRPG::OgreGui::Widget::~Widget(){
 
+}
+
+/** Get the skin identifier of this widget
+  *
+  * \return The current skin identifier
+  *
+  */
+RainbruRPG::OgreGui::OgreGuiSkinID 
+RainbruRPG::OgreGui::Widget::getSkinId(void){
+
+  return this->skinId;
 }

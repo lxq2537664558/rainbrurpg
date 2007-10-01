@@ -33,7 +33,7 @@ namespace BetaGUI {
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, String, wt, String, GUI* );
+    Window( Vector4, String, OgreGuiWindowType, String, GUI* );
     ~Window();
 
     BetaGUI::Button* createButton(Vector4, String, String, Callback);
@@ -72,7 +72,7 @@ namespace BetaGUI {
     /** The GUI object used to draw this window */
     GUI* mGUI;
     /** The overlay container drawing this widget */
-    OverlayContainer* mO;
+    OverlayContainer* rootOverlay;
     /** A vector of Buttons */
     vector<BetaGUI::Button*>mB;
     /** A vector of TextInput */

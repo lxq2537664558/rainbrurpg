@@ -20,40 +20,37 @@
  *
  */
 
-#include "skin.h"
+#include "skinoverlay.h"
 
-#include <logger.h>
+#include <OGRE/OgreOverlayManager.h>
 
-/** Create a skin with a name
+/** Create a named skin based on Ogre::Overlay
   *
-  * \param n The name of the skin
+  * \param n The name of the new skin
   *
   */
-RainbruRPG::OgreGui::Skin::Skin(std::string n)
-  :name(n){
-
-  std::string s;
-  s="Creating skin `";
-  s+=this->name;
-  s+="`";
-  LOGI(s.c_str());
+RainbruRPG::OgreGui::SkinOverlay::SkinOverlay(std::string n) 
+  :Skin(n){
 
 }
 
-/** Get the name of the skin
+/** Get an Ogre Overlay by its name
   *
-  * \return The skin's name in std::string format
+  * This function is usefull to get an overlay after it was created. By 
+  * example, if you need it to create a child. Please note that this
+  * function does not control the pointer validity, so the returned 
+  * one can be NULL.
+  *
+  * \param s The Ogre name of an overlay
+  *
+  * \return The Ogre overlay 
   *
   */
-std::string RainbruRPG::OgreGui::Skin::getName(void){
-  return this->name;
-}
+Ogre::OverlayContainer* RainbruRPG::OgreGui::SkinOverlay::
+getOverlayByName(Ogre::String s){
 
-/** Change the skin name
-  *
-  * \param s The new skin's name
-  *
-  */
-void RainbruRPG::OgreGui::Skin::setName(std::string s){
-  this->name=s;
+  Ogre::OverlayElement* oe=Ogre::OverlayManager::getSingleton()
+    .getOverlayElement(s);
+
+  return static_cast<Ogre::OverlayContainer*>(oe);
 }
