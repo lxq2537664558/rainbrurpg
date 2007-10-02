@@ -7,10 +7,10 @@ RainbruRPG/Title
 		metrics_mode pixels
 		vert_align top
 		horz_align center
-		left -140 
+		left -150 
 		top 5
-		width 280
-		height 105
+		width 320
+		height 135
 // v0.0.5		material Core/StatsBlockCenter
 		material RainbruRPG/Title/PanelBackGround
 
@@ -22,20 +22,20 @@ RainbruRPG/Title
 // v0.0.5        	border_material Core/StatsBlockBorder
 
    		border_material RainbruRPG/Title/PanelBorder
-        	border_topleft_uv     0.0000 0.0000 0.05859375 0.2500
-	    	border_top_uv         0.0625 0.0000 0.9375 0.2500
-	    	border_topright_uv    0.94140625 0.0000 1.0000 0.2500
-	    	border_left_uv        0.0000 0.2500 0.2500 0.5000
-	    	border_right_uv       0.5000 0.2500 0.7500 0.5000
-	    	border_bottomleft_uv  0.0000 0.50 0.05859375 0.75
-        	border_bottom_uv      0.0625 0.50 0.9375 0.75
-	    	border_bottomright_uv 0.94140625 0.50 1.0000 0.75
+        	border_topleft_uv     0.0000 0.0000 0.05859375 0.125
+	    	border_top_uv         0.0625 0.0000 0.9375 0.125
+	    	border_topright_uv    0.94140625 0.0000 1.0000 0.125
+	    	border_left_uv        0.0000 0.125 0.062 0.938
+	    	border_right_uv       0.938 0.125 1.0000 0.938
+	    	border_bottomleft_uv  0.0000 0.891 0.05859375 1.0
+        	border_bottom_uv      0.0625 0.891 0.9375 1.0
+	    	border_bottomright_uv 0.94140625 0.891 1.0000 1.0
 
 		container Panel(RainbruRPG/Title/BreakPanel)
 		{
 			metrics_mode pixels
-			left 15 
-			top 48
+			left 33 
+			top 58
 			width 250
 			height 3
 			material Core/StatsBreak
@@ -44,8 +44,8 @@ RainbruRPG/Title
 		element TextArea(RainbruRPG/Title/Rain)
 		{
 			metrics_mode pixels
-			left 60
-			top 15
+			left 80
+			top 25
 			width 90
 			height 50
 			font_name BlueHighway
@@ -57,8 +57,8 @@ RainbruRPG/Title
 		element TextArea(RainbruRPG/Title/BackTo)
 		{
 			metrics_mode pixels
-			left 65
-			top 55
+			left 85
+			top 65
 			width 90
 			height 30
 			font_name BlueHighway
@@ -70,8 +70,8 @@ RainbruRPG/Title
 		element TextArea(RainbruRPG/Title/Version)
 		{
 			metrics_mode pixels
-			left 105
-			top 80
+			left 125
+			top 90
 			width 90
 			height 30
 			font_name BlueHighway

@@ -4,5 +4,6 @@ datafiles_DATA= GLX_icon.png		\
 		border.jpg            	\
 		dynamicmenu.jpg        	\
 		staticmenu.jpg  	\
-		main.bmp       
+		main.bmp    		\
+		menu.material 
 

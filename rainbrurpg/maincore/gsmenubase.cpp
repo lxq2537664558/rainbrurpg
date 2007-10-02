@@ -84,7 +84,7 @@ void RainbruRPG::Core::gsMenuBase::init(){
     menuNode = mSceneMgr->getRootSceneNode()
       ->createChildSceneNode("Menu");
     
-    translateTo(0.0);
+    translateTo(0.5);
     
     drawMenuBackground();
     drawDynamicBackground();
@@ -141,29 +141,16 @@ void RainbruRPG::Core::gsMenuBase::run(){
 void RainbruRPG::Core::gsMenuBase::drawBorder(){
   LOGI("Draw border");
 
-  // Create background material
-  MaterialPtr material = MaterialManager::getSingleton()
-    .create("Border", "General");
+  bordRect=static_cast<OverlayContainer*>
+    (OverlayManager::getSingleton().createOverlayElement("Panel", "Dynamic_Border"));
+  
+  bordRect->setMetricsMode(GMM_RELATIVE);
+  bordRect->setDimensions(0.05,1.0);
+  bordRect->setPosition(yBorder-0.025, 0.0);
+  bordRect->setMaterialName("RainbruRPG.menu.border");
 
-  material->getTechnique(0)->getPass(0)->createTextureUnitState("border.jpg");
-  material->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-  material->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
-  material->getTechnique(0)->getPass(0)->setLightingEnabled(false);
-  material->getTechnique(0)->getPass(0)->getTextureUnitState(0)
-    ->setTextureScale(1.0f, 0.25f);
-  
-  // Create background rectangle covering the whole screen
-  bordRect = new Rectangle2D(true);
-  //rect->setCorners(-1.0, 1.0, 1.0, -1.0);
-  bordRect->setCorners(yBorder-0.05f, 1.0, yBorder+0.05f, -1.0);
-  bordRect->setMaterial("Border");
-  
-  bordRect->setBoundingBox(AxisAlignedBox(-100000.0*Vector3::UNIT_SCALE, 
-				      100000.0*Vector3::UNIT_SCALE));
-  
-  // Attach background to the scene
-  SceneNode* node = menuNode->createChildSceneNode("Border");
-  node->attachObject(bordRect);
+  OverlayManager::getSingleton().getByName("BetaGUI")->add2D(bordRect);
+  bordRect->show();
 }
 
 /** Draw the right panel background
@@ -172,28 +159,17 @@ void RainbruRPG::Core::gsMenuBase::drawBorder(){
 void RainbruRPG::Core::gsMenuBase::drawMenuBackground(){
   LOGI("Draw MenuBackground");
 
-  // Create background material
-  MaterialPtr material = MaterialManager::getSingleton()
-    .create("StaticBackground", "General");
-
-  material->getTechnique(0)->getPass(0)
-    ->createTextureUnitState("staticmenu.jpg");
-
-  material->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-  material->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
-  material->getTechnique(0)->getPass(0)->setLightingEnabled(false);
-  material->getTechnique(0)->getPass(0)->getTextureUnitState(0)
-    ->setTextureScale(uMappingScreenSize, vMappingScreenSize);
+   menuRect=static_cast<OverlayContainer*>
+    (OverlayManager::getSingleton().createOverlayElement("Panel", 
+							 "Static_Menu"));
   
-  menuRect = new Rectangle2D(true);
-  menuRect->setMaterial("StaticBackground");
+  menuRect->setMetricsMode(GMM_RELATIVE);
+  menuRect->setDimensions(1.0,1.0);
+  menuRect->setPosition(yBorder, 0.0);
+  menuRect->setMaterialName("RainbruRPG.menu.static");
 
-  menuRect->setBoundingBox(AxisAlignedBox(-100000.0*Vector3::UNIT_SCALE, 
-				      100000.0*Vector3::UNIT_SCALE));
- 
-  // Attach background to the scene
-  SceneNode* node = menuNode->createChildSceneNode("StaticBackground");
-  node->attachObject(menuRect);
+  OverlayManager::getSingleton().getByName("BetaGUI")->add2D(menuRect);
+  menuRect->show();
 }
 
 /** Draw the left panel background
@@ -202,29 +178,17 @@ void RainbruRPG::Core::gsMenuBase::drawMenuBackground(){
 void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
   LOGI("Draw DynamicBackground");
 
-  // Create background material
-  MaterialPtr material = MaterialManager::getSingleton()
-    .create("DynamicBackground", "General");
+  dynaRect=static_cast<OverlayContainer*>
+    (OverlayManager::getSingleton().createOverlayElement("Panel", 
+							 "Dynamic_Menu"));
+  
+  dynaRect->setMetricsMode(GMM_RELATIVE);
+  dynaRect->setDimensions(1.0,1.0);
+  dynaRect->setPosition(yBorder, 0.0);
+  dynaRect->setMaterialName("RainbruRPG.menu.dynamic");
 
-  material->getTechnique(0)->getPass(0)
-    ->createTextureUnitState("dynamicmenu.jpg");
-
-  material->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-  material->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
-  material->getTechnique(0)->getPass(0)->setLightingEnabled(false);
-  material->getTechnique(0)->getPass(0)->getTextureUnitState(0)
-    ->setTextureScale(uMappingScreenSize, vMappingScreenSize);
-  
-  // Create background rectangle covering the whole screen
-  dynaRect = new Rectangle2D(true);
-  dynaRect->setMaterial("DynamicBackground");
-  
-  dynaRect->setBoundingBox(AxisAlignedBox(-100000.0*Vector3::UNIT_SCALE, 
-				      100000.0*Vector3::UNIT_SCALE));
-  
-  // Attach background to the scene
-  SceneNode* node = menuNode->createChildSceneNode("DynamicBackground");
-  node->attachObject(dynaRect);
+  OverlayManager::getSingleton().getByName("BetaGUI")->add2D(dynaRect);
+  dynaRect->show();
 }
 
 /** Makes the menu transition
@@ -260,9 +224,9 @@ void RainbruRPG::Core::gsMenuBase::transition(){
   *
   */
 void RainbruRPG::Core::gsMenuBase::setCorners(){
-  bordRect->setCorners(yBorder-0.05f, 1.0, yBorder+0.05f, -1.0);
-  dynaRect->setCorners(yBorder-2.10f, 1.0, yBorder-0.05f, -1.0);
-  menuRect->setCorners(yBorder+0.05f, 1.0, yBorder+2.05f, -1.0);
+  bordRect->setPosition(yBorder-0.025f, 0.0);
+  menuRect->setPosition(yBorder+0.025f, 0.0);
+  dynaRect->setPosition(yBorder-1.025f, 0.0);
 
 }
 

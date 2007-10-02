@@ -120,11 +120,11 @@ namespace RainbruRPG {
       /** The menu scene node */
       SceneNode* menuNode;
       /** The object used to rendering the menu border */
-      Rectangle2D* bordRect;
+      OverlayContainer* bordRect;
       /** The object used to rendering the right menu */
-      Rectangle2D* menuRect;
+      OverlayContainer* menuRect;
       /** The object used to rendering the left menu */
-      Rectangle2D* dynaRect;
+      OverlayContainer* dynaRect;
 
       /** The position of the border */
       double yBorder;

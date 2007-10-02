@@ -130,7 +130,10 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-158
+
 * v 0.0.5-157
+- static, dynamic menu and border drawn again
 - OgreGUI's window delegates drawing to Skin
 - bggui.h::wt become OgreGuiWindowType (prefix is OWT)
 - doxygen Documentation
