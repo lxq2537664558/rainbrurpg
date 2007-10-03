@@ -131,6 +131,9 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-158
+- Trying title border in fullscreen : OK
+- title overlay border
+- gsMenuBase dynamic menu comes back
 
 * v 0.0.5-157
 - static, dynamic menu and border drawn again

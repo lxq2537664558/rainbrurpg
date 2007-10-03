@@ -7,7 +7,7 @@ RainbruRPG/Title
 		metrics_mode pixels
 		vert_align top
 		horz_align center
-		left -150 
+		left -160 
 		top 5
 		width 320
 		height 135
@@ -25,8 +25,8 @@ RainbruRPG/Title
         	border_topleft_uv     0.0000 0.0000 0.05859375 0.125
 	    	border_top_uv         0.0625 0.0000 0.9375 0.125
 	    	border_topright_uv    0.94140625 0.0000 1.0000 0.125
-	    	border_left_uv        0.0000 0.125 0.062 0.938
-	    	border_right_uv       0.938 0.125 1.0000 0.938
+	    	border_left_uv        0.0000 0.125 0.062 0.891
+	    	border_right_uv       0.938 0.125 1.0000 0.891
 	    	border_bottomleft_uv  0.0000 0.891 0.05859375 1.0
         	border_bottom_uv      0.0625 0.891 0.9375 1.0
 	    	border_bottomright_uv 0.94140625 0.891 1.0000 1.0
@@ -64,8 +64,8 @@ RainbruRPG/Title
 			font_name BlueHighway
 			char_height 19
 			caption Back to Morroweed
-			colour_top 0.5 0.7 0.5
-			colour_bottom 0.1 0.3 0.1
+			colour_top 1.0 1.0 0.8
+			colour_bottom 0.6 0.6 0.6
 		}
 		element TextArea(RainbruRPG/Title/Version)
 		{
@@ -77,8 +77,8 @@ RainbruRPG/Title
 			font_name BlueHighway
 			char_height 14
 			caption v0.0.2
-			colour_top 0.5 0.7 0.5
-			colour_bottom 0.3 0.5 0.3
+			colour_top 1.0 1.0 1.0
+			colour_bottom 1.0 1.0 0.6
 		}
 	}
 
