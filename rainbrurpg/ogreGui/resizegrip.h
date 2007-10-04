@@ -21,40 +21,35 @@
  */
 
 /* Modifications :
- * - 27 sep 2007 : starting implementation
+ * - 03 oct 2007 : starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
-#define _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
+#ifndef _OGRE_GUI_RESIZE_GRIP_H_
+#define _OGRE_GUI_RESIZE_GRIP_H_
 
-#include "skinoverlay.h"
+#include "bgbutton.h"
+#include "bgcallback.h"
 
-#include <OGRE/OgreVector4.h>
-
-using namespace Ogre;
+using namespace BetaGUI;
 
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A skin based on SkinOverlay, drawing like BetaGUI does
+    /** A ResizeGrip window
+      *
+      * This widget is used to resize windows. 
       *
       */
-    class soBetaGui : public SkinOverlay{
+    class ResizeGrip : public BetaGUI::Button{
     public:
-      soBetaGui();
+      ResizeGrip(Vector4, String, Callback, Window*);
+      ~ResizeGrip();
 
-      virtual void createWindow(Ogre::String name, Ogre::Vector4 dim,
-				Ogre::String caption, BetaGUI::GUI*);
-      virtual void createResizeGrip(Ogre::String,Ogre::Vector4,BetaGUI::GUI*);
-
-    private:
-      /** The window's material name */
-      Ogre::String mnWindow;
-      /** The resizeGrip material name*/
-      Ogre::String mnResizeGrip;
     };
 
   }
 }
-#endif //_OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
+
+#endif // _OGRE_GUI_RESIZE_GRIP_H_
+

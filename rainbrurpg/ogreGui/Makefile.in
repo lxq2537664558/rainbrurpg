@@ -61,8 +61,8 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
-	bgwindow.lo object.lo skin.lo skinmanager.lo skinoverlay.lo \
-	sobetagui.lo widget.lo
+	bgwindow.lo object.lo resizegrip.lo skin.lo skinmanager.lo \
+	skinoverlay.lo sobetagui.lo titlebar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -229,10 +229,12 @@ h_sources = bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   object.h			\
+	   resizegrip.h			\
 	   skin.h			\
 	   skinmanager.h		\
 	   skinoverlay.h		\
 	   sobetagui.h			\
+	   titlebar.h			\
 	   widget.h
 
 cc_sources = bgbutton.cpp		\
@@ -241,10 +243,12 @@ cc_sources = bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    object.cpp			\
+	    resizegrip.cpp		\
 	    skin.cpp			\
 	    skinmanager.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
+	    titlebar.cpp		\
 	    widget.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
@@ -331,10 +335,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgtextinput.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgwindow.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resizegrip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skinmanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skinoverlay.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sobetagui.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/titlebar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Plo@am__quote@
 
 .cpp.o:

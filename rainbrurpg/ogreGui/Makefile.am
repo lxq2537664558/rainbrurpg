@@ -10,10 +10,12 @@ h_sources= bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   object.h			\
+	   resizegrip.h			\
 	   skin.h			\
 	   skinmanager.h		\
 	   skinoverlay.h		\
 	   sobetagui.h			\
+	   titlebar.h			\
 	   widget.h
 
 
@@ -23,10 +25,12 @@ cc_sources= bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    object.cpp			\
+	    resizegrip.cpp		\
 	    skin.cpp			\
 	    skinmanager.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
+	    titlebar.cpp		\
 	    widget.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)

@@ -12,6 +12,8 @@
 #include "bglistener.h"
 #include "skinmanager.h"
 #include "skinoverlay.h"
+#include "resizegrip.h"
+#include "titlebar.h"
 
 #include <OGRE/OgreStringConverter.h>
 
@@ -48,15 +50,19 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
   }
 
   if(t>=2){
+    // Create a resize grip
     Callback c;
     c.setType(4);
-    mRZ=createButton(Vector4(D.z-16,D.w-16,16,16),M+".resize","",c);
+    mRZ=new ResizeGrip(Vector4(D.z-16,D.w-16,16,16),M+".resize",c, this);
+    mB.push_back(mRZ);
   }
   
   if(t==1||t==3){
+    // Create a title bar
     Callback c;
     c.setType(3);
-    mTB=createButton(Vector4(0,0,D.z,22),M+".titlebar",caption,c);
+    mTB=new TitleBar(Vector4(0,0,D.z,22),M+".titlebar",caption,c, this);
+    mB.push_back(mTB);
   }
 }
 

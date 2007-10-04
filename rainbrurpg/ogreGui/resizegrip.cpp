@@ -20,37 +20,26 @@
  *
  */
 
-/* Modifications :
- * - 27 sep 2007 : starting implementation
- *         
- */
+#include "resizegrip.h"
 
-#ifndef _OGRE_GUI_SKIN_OVERLAY_H_
-#define _OGRE_GUI_SKIN_OVERLAY_H_
+/** The constructor
+  *
+  * \param dim          The dimensions 
+  * \param materialName The material name
+  * \param callback     The callback of the button
+  * \param parent       The parent window
+  *
+  */RainbruRPG::OgreGui::ResizeGrip::
+ResizeGrip(Vector4 dim, String materialName, Callback callback, Window* parent)
+  :Button(dim, materialName, "", callback, parent)
 
-#include "skin.h"
+{
 
-#include <string>
-#include <OGRE/OgreOverlayContainer.h>
-
-
-namespace RainbruRPG{
-  namespace OgreGui{
-
-    /** A skin base-class on Ogre::Overlay
-      *
-      */
-    class SkinOverlay: public Skin{
-    public:
-      SkinOverlay(std::string n="unamedSkinOverlay");
-
-      Ogre::OverlayContainer* getOverlayByName(Ogre::String);
-
-      void createOverlay(Ogre::String name, Ogre::Vector4 dimension,
-			 Ogre::String materialName, Overlay* parent);
-    };
-
-  }
 }
 
-#endif // _OGRE_GUI_SKIN_OVERLAY_H_
+/** The destructor
+  *
+  */
+RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
+
+}

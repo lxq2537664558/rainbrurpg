@@ -22,8 +22,11 @@ using namespace Ogre;
 
 namespace BetaGUI {
 
-  /** The PushButton implementation
+  /** The Button implementation
     * 
+    * This is the base class of all widgets using Callback. For example
+    * TitleBar use a callback to move its parent window.
+    *
     */
   class Button : public RainbruRPG::OgreGui::Widget{
   public:

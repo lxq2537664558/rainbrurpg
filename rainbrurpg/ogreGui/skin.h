@@ -66,7 +66,17 @@ namespace RainbruRPG{
 	*/
       virtual void createWindow(Ogre::String name, Ogre::Vector4 dim, 
 				Ogre::String caption, BetaGUI::GUI* bg)=0;
-      
+      /** Graphically create a ResizeGrip widget
+        *
+	* \param name    The internal name of the ResizeGrip (must be unique)
+	* \param dim     The widget's dimension in pixels in a 
+	*                Ogre::Vector4 object
+	* \param bg      The BetaGUI::GUI object 
+	*
+	*/
+     virtual void createResizeGrip(Ogre::String name, Ogre::Vector4 dim, 
+				    BetaGUI::GUI* bg)=0;
+
     private:
       /** The name of the skin */
       std::string name;

@@ -4,7 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- SkinOverlay::createOverlay function use by soBetaGui::createWindow
+- doxygen documentation
+- ResizeGrip and TitleBar use Skin to draw themselves
 - OgreGUI's Button delegates drawing to Skin
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
@@ -131,6 +132,9 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-158
+- TitleBar widget overriding Button
+- A resizeGrip widget overringing button
+- SkinOverlay::createOverlay function used by soBetaGui::createWindow
 - Trying title border in fullscreen : OK
 - title overlay border
 - gsMenuBase dynamic menu comes back

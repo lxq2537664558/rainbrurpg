@@ -34,6 +34,7 @@
 RainbruRPG::OgreGui::soBetaGui::soBetaGui() 
 : SkinOverlay("soBetaGUI"){
   mnWindow="bgui.window";
+  mnResizeGrip="bgui.window.resize";
 }
 
 /** Create a window using the BetaGUI skin
@@ -53,17 +54,21 @@ void RainbruRPG::OgreGui::soBetaGui::
 createWindow(Ogre::String name, Ogre::Vector4 dim, 
 	     Ogre::String caption, BetaGUI::GUI* bg){
 
-  OverlayContainer* e=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", name));
-  
-  e->setMetricsMode(GMM_PIXELS);
-  e->setDimensions(dim.x,dim.y);
-  e->setPosition(dim.x,dim.y);
-  e->setMaterialName(mnWindow);
+  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 
-  //bggui->add
-  bg->getRootOverlay()->add2D(e);
+}
 
-  e->show();
+/** Graphically create a ResizeGrip widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param bg      The BetaGUI::GUI object 
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+createResizeGrip(Ogre::String name, Ogre::Vector4 dim, 
+		 BetaGUI::GUI* bg){
+
+
 
 }

@@ -54,3 +54,32 @@ getOverlayByName(Ogre::String s){
 
   return static_cast<Ogre::OverlayContainer*>(oe);
 }
+
+/** Create a generic overlay
+  *
+  * This method should be called by all SkinOverlay's subclasses.
+  *
+  * \param name         The overlay name (must be unique)
+  * \param dim          The overlay dimensions
+  * \param materialName The overlay material name
+  * \param parent       The overlay parent
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+createOverlay(Ogre::String name, Ogre::Vector4 dim,
+	      Ogre::String materialName, Overlay* parent){
+
+  OverlayContainer* e=static_cast<OverlayContainer*>
+    (OverlayManager::getSingleton().createOverlayElement("Panel", name));
+  
+  e->setMetricsMode(GMM_PIXELS);
+  e->setDimensions(dim.x,dim.y);
+  e->setPosition(dim.x,dim.y);
+  e->setMaterialName(materialName);
+
+  //bggui->add
+  parent->add2D(e);
+
+  e->show();
+
+}
