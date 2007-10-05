@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 04 oct 2007 : Now using skin for graphiwal creation
  * - 03 oct 2007 : starting implementation
  *         
  */
@@ -43,7 +44,7 @@ namespace RainbruRPG{
       */
     class ResizeGrip : public BetaGUI::Button{
     public:
-      ResizeGrip(Vector4, String, Callback, Window*);
+      ResizeGrip(Vector4, Callback, GUI *, Window*);
       ~ResizeGrip();
 
     };

@@ -61,8 +61,9 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
-	bgwindow.lo object.lo resizegrip.lo skin.lo skinmanager.lo \
-	skinoverlay.lo sobetagui.lo titlebar.lo widget.lo
+	bgwindow.lo object.lo pushbutton.lo resizegrip.lo skin.lo \
+	skinmanager.lo skinoverlay.lo sobetagui.lo titlebar.lo \
+	widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -229,6 +230,7 @@ h_sources = bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   object.h			\
+	   pushbutton.h			\
 	   resizegrip.h			\
 	   skin.h			\
 	   skinmanager.h		\
@@ -243,6 +245,7 @@ cc_sources = bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    object.cpp			\
+	    pushbutton.cpp		\
 	    resizegrip.cpp		\
 	    skin.cpp			\
 	    skinmanager.cpp		\
@@ -335,6 +338,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgtextinput.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgwindow.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pushbutton.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resizegrip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skinmanager.Plo@am__quote@

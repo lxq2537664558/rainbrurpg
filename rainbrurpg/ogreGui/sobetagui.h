@@ -44,15 +44,17 @@ namespace RainbruRPG{
     public:
       soBetaGui();
 
-      virtual void createWindow(Ogre::String name, Ogre::Vector4 dim,
-				Ogre::String caption, BetaGUI::GUI*);
-      virtual void createResizeGrip(Ogre::String,Ogre::Vector4,BetaGUI::GUI*);
+      virtual void createWindow(String, Vector4, String ,BetaGUI::GUI*);
+      virtual void createResizeGrip(String,Vector4,Window*);
+      virtual void createTitleBar(String,Vector4,Window*);
 
     private:
       /** The window's material name */
       Ogre::String mnWindow;
       /** The resizeGrip material name*/
       Ogre::String mnResizeGrip;
+      /** The TitleBar material name*/
+      Ogre::String mnTitleBar;
     };
 
   }

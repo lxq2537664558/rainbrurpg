@@ -10,6 +10,7 @@ h_sources= bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   object.h			\
+	   pushbutton.h			\
 	   resizegrip.h			\
 	   skin.h			\
 	   skinmanager.h		\
@@ -25,6 +26,7 @@ cc_sources= bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    object.cpp			\
+	    pushbutton.cpp		\
 	    resizegrip.cpp		\
 	    skin.cpp			\
 	    skinmanager.cpp		\

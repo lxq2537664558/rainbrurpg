@@ -33,11 +33,17 @@
 #include <string>
 #include <OGRE/OgreOverlayContainer.h>
 
+using namespace Ogre;
 
 namespace RainbruRPG{
   namespace OgreGui{
 
     /** A skin base-class on Ogre::Overlay
+      *
+      * There is two createOverlay() functions depending wich is the
+      * parent's type bacause Ogre::Overlay and Ogre::OverlayContainer 
+      * cannot be casted. Internally, both use createOverlayImpl to 
+      * graphically create the Overlay.
       *
       */
     class SkinOverlay: public Skin{
@@ -46,8 +52,12 @@ namespace RainbruRPG{
 
       Ogre::OverlayContainer* getOverlayByName(Ogre::String);
 
-      void createOverlay(Ogre::String name, Ogre::Vector4 dimension,
-			 Ogre::String materialName, Overlay* parent);
+      void createOverlay(String, Vector4,String, Overlay*);
+      void createOverlay(String, Vector4, String, OverlayContainer*);
+
+    private:
+      OverlayContainer* createOverlayImpl(String, Vector4, String);
+
     };
 
   }

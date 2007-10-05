@@ -53,7 +53,8 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
     // Create a resize grip
     Callback c;
     c.setType(4);
-    mRZ=new ResizeGrip(Vector4(D.z-16,D.w-16,16,16),M+".resize",c, this);
+    Vector4 resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
+    mRZ=new ResizeGrip(resizeGripDim, c, G, this);
     mB.push_back(mRZ);
   }
   
@@ -61,7 +62,7 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
     // Create a title bar
     Callback c;
     c.setType(3);
-    mTB=new TitleBar(Vector4(0,0,D.z,22),M+".titlebar",caption,c, this);
+    mTB=new TitleBar(Vector4(0,0,D.z,22),caption,c, G, this);
     mB.push_back(mTB);
   }
 }

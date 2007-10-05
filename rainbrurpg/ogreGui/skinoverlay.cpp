@@ -57,29 +57,72 @@ getOverlayByName(Ogre::String s){
 
 /** Create a generic overlay
   *
-  * This method should be called by all SkinOverlay's subclasses.
+  * This method should be called by all SkinOverlay's subclasses if
+  * the parent is an Ogre::Overlay. It internally use createOverlayImpl
+  * to create the Overlay.
+  *
+  * \sa createOverlay(String, Vector4, String, OverlayContainer*)
   *
   * \param name         The overlay name (must be unique)
   * \param dim          The overlay dimensions
   * \param materialName The overlay material name
-  * \param parent       The overlay parent
+  * \param parent       The parent overlay
   *
   */
 void RainbruRPG::OgreGui::SkinOverlay::
-createOverlay(Ogre::String name, Ogre::Vector4 dim,
-	      Ogre::String materialName, Overlay* parent){
+createOverlay(String name, Vector4 dim,String materialName, Overlay* parent){
 
+  OverlayContainer* e=createOverlayImpl(name, dim, materialName);
+  parent->add2D(e);
+  e->show();
+}
+
+/** Create a generic overlay
+  *
+  * This method should be called by all SkinOverlay's subclasses if
+  * the parent is an Ogre::OverlayContainer. It internally use createOverlayImpl
+  * to create the Overlay.
+  *
+  * \sa createOverlay(String, Vector4, String, Overlay*) 
+  *
+  * \param name         The overlay name (must be unique)
+  * \param dim          The overlay dimensions
+  * \param materialName The overlay material name
+  * \param parent       The parent overlay
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+createOverlay(String name, Vector4 dim,String materialName, 
+	      OverlayContainer* parent)
+{
+
+  OverlayContainer* e=createOverlayImpl(name, dim, materialName);
+  parent->addChild(e);
+  e->show();
+}
+
+/** Graphically creates an overly
+  *
+  * This fucntion is used by createOverlay(...) method to avoid
+  * repeated code.
+  *
+  * \sa createOverlay(String, Vector4, String, Overlay*),
+  *     createOverlay(String, Vector4, String, OverlayContainer*)
+  *
+  * \param name         The overlay name (must be unique)
+  * \param dim          The overlay dimensions
+  * \param materialName The overlay material name
+  *
+  */
+Ogre::OverlayContainer* RainbruRPG::OgreGui::SkinOverlay::
+createOverlayImpl(String name, Vector4 dim, String materialName){
   OverlayContainer* e=static_cast<OverlayContainer*>
     (OverlayManager::getSingleton().createOverlayElement("Panel", name));
   
   e->setMetricsMode(GMM_PIXELS);
-  e->setDimensions(dim.x,dim.y);
+  e->setDimensions(dim.z,dim.w);
   e->setPosition(dim.x,dim.y);
   e->setMaterialName(materialName);
 
-  //bggui->add
-  parent->add2D(e);
-
-  e->show();
-
+  return e;
 }

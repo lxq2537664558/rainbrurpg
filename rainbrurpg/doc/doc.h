@@ -28,7 +28,7 @@
   *
   * \section intro_sec Introduction
   *
-  * RainbruRPG is a 3D Role Playing Game project. It uses FOX toolkit,
+  * %RainbruRPG is a 3D Role Playing Game project. It uses FOX toolkit,
   * Ogre/CEGUI and Tinyxml.
   *
   * \section sec_versions Versions
@@ -147,14 +147,6 @@
   * In order to reduce the executable file's size, some sources are
   * compiled and linked as a lib : rainbrurpg-commons
   *
-  * This sources must be compiled in :
-  * - logger.cpp
-  * - options.cpp
-  * - tinyxml/tinystr.cpp
-  * - tinyxml/tinyxml.cpp
-  * - tinyxml/tinyxmlerror.cpp
-  * - tinyxml/tinyxmlparser.cpp
-  *
   * \section udef_screenshot Undefined reference on sources with deps
   *
   * This compilation and linkage of the lib failed if I include on it
@@ -165,17 +157,38 @@
 /** \page reg_test Regression test
   *
   * The line count is 
-  * generated using David A. Wheeler's 'SLOCCount'.
+  * generated using David A Wheeler's 'SLOCCount'.
   *
   * The Mem column is the amount of memory used by the application on
   * Win32 system with the OpenGL renderer. Sys is set to OK if the
   * application can be compiles, linked and run on the given OS.
   *
-  * The column called cc represents the Console's Count command result
+  * The column called \e cc represents the Console's Count command result
   *
-  * The column called ut represents the number of unit test (made with CppUnit)
+  * The column called \e ut represents the number of unit test (made 
+  * with CppUnit)
+  *
+  * The column called \e ref is the number of pages of the Doxygen 
+  * documentation in pdf format. (not computed before build 157)
   *
   * \htmlinclude regTest.html
+  */
+
+/** \page reg_test_pre150 Regression test (pre150)
+  *
+  * The line count is 
+  * generated using David A Wheeler's 'SLOCCount'.
+  *
+  * The Mem column is the amount of memory used by the application on
+  * Win32 system with the OpenGL renderer. Sys is set to OK if the
+  * application can be compiles, linked and run on the given OS.
+  *
+  * The column called \e cc represents the Console's Count command result
+  *
+  * The column called \e ut represents the number of unit test 
+  * (made with CppUnit)
+  *
+  * \htmlinclude regTest.pre150.html
   */
 
 /** \page bug_list Bug list

@@ -22,18 +22,33 @@
 
 #include "resizegrip.h"
 
+#include "skinoverlay.h"
+#include <OGRE/OgreStringConverter.h>
+
 /** The constructor
   *
   * \param dim          The dimensions 
-  * \param materialName The material name
   * \param callback     The callback of the button
+  * \param G            The GUI object
   * \param parent       The parent window
   *
-  */RainbruRPG::OgreGui::ResizeGrip::
-ResizeGrip(Vector4 dim, String materialName, Callback callback, Window* parent)
-  :Button(dim, materialName, "", callback, parent)
+  */
+RainbruRPG::OgreGui::ResizeGrip::
+ResizeGrip(Vector4 dim, Callback callback, GUI *G,Window* parent)
+  :Button(dim, "", "", callback, parent)
 
 {
+  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
+    +StringConverter::toString(G->getUniqueId());
+
+  sk->createResizeGrip(uniqueName, dim, parent);
+
+  // Get the corresponding overlay if based on SkinOverlay
+  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
+  if (sko){
+    mO=sko->getOverlayByName(uniqueName);
+  }
 
 }
 

@@ -33,7 +33,17 @@
 
 #include "bggui.h"
 
+
+// Forward declarations
+
+namespace BetaGUI{
+  class Window;
+}
+// End of forward declarations
+
 using namespace std;
+using namespace Ogre;
+using namespace BetaGUI;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -64,18 +74,27 @@ namespace RainbruRPG{
 	* \param bg      The BetaGUI::GUI object 
 	*
 	*/
-      virtual void createWindow(Ogre::String name, Ogre::Vector4 dim, 
-				Ogre::String caption, BetaGUI::GUI* bg)=0;
+      virtual void createWindow(String name, Vector4 dim, String caption, 
+				GUI* bg)=0;
       /** Graphically create a ResizeGrip widget
         *
 	* \param name    The internal name of the ResizeGrip (must be unique)
 	* \param dim     The widget's dimension in pixels in a 
 	*                Ogre::Vector4 object
-	* \param bg      The BetaGUI::GUI object 
+	* \param parent  The parent window
 	*
 	*/
-     virtual void createResizeGrip(Ogre::String name, Ogre::Vector4 dim, 
-				    BetaGUI::GUI* bg)=0;
+     virtual void createResizeGrip(String name, Vector4 dim, Window* parent)=0;
+
+      /** Graphically create a TitleBar widget
+        *
+	* \param name    The internal name of the ResizeGrip (must be unique)
+	* \param dim     The widget's dimension in pixels in a 
+	*                Ogre::Vector4 object
+	* \param parent  The parent window
+	*
+	*/
+     virtual void createTitleBar(String name, Vector4 dim, Window* parent)=0;
 
     private:
       /** The name of the skin */

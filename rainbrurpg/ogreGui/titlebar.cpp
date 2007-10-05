@@ -22,22 +22,34 @@
 
 #include "titlebar.h"
 
+#include "skinoverlay.h"
+#include <OGRE/OgreStringConverter.h>
+
+
 /** The constructor
   *
   * \param dim          The dimensions 
-  * \param materialName The material name
   * \param caption      The text of the button
   * \param callback     The callback of the button
   * \param parent       The parent window
   *
   */
 RainbruRPG::OgreGui::TitleBar::
-TitleBar(Vector4 dim, String materialName, String caption,
-	 Callback callback, Window* parent)
-  :Button(dim, materialName, caption, callback, parent)
-
+TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, Window* parent)
+  :Button(dim, "", caption, callback, parent)
 {
 
+  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
+    +StringConverter::toString(G->getUniqueId());
+
+  sk->createTitleBar(uniqueName, dim, parent);
+
+  // Get the corresponding overlay if based on SkinOverlay
+  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
+  if (sko){
+    mO=sko->getOverlayByName(uniqueName);
+  }
 }
 
 /** The destructor

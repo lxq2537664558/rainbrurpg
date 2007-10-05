@@ -22,6 +22,9 @@
 
 #include "sobetagui.h"
 
+#include <logger.h>
+#include "bgwindow.h"
+
 #include <OGRE/OgreVector2.h>
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreOverlayContainer.h>
@@ -35,6 +38,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
 : SkinOverlay("soBetaGUI"){
   mnWindow="bgui.window";
   mnResizeGrip="bgui.window.resize";
+  mnTitleBar="bgui.window.titlebar";
 }
 
 /** Create a window using the BetaGUI skin
@@ -51,8 +55,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createWindow(Ogre::String name, Ogre::Vector4 dim, 
-	     Ogre::String caption, BetaGUI::GUI* bg){
+createWindow(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
 
   this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 
@@ -62,13 +65,28 @@ createWindow(Ogre::String name, Ogre::Vector4 dim,
   *
   * \param name    The internal name of the ResizeGrip (must be unique)
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param bg      The BetaGUI::GUI object 
+  * \param win     The parent window
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createResizeGrip(Ogre::String name, Ogre::Vector4 dim, 
-		 BetaGUI::GUI* bg){
+createResizeGrip(String name, Vector4 dim, Window* win ){
 
+  LOGI("Creating a ResizeGrip widget");
+  this->createOverlay(name, dim, mnResizeGrip, win->getOverLayContainer());
 
+}
+
+/** Graphically create a TitleBar widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param win     The parent window
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+createTitleBar(String name, Vector4 dim, Window* win ){
+
+  LOGI("Creating a ResizeGrip widget");
+  this->createOverlay(name, dim, mnTitleBar, win->getOverLayContainer());
 
 }

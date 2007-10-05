@@ -21,13 +21,12 @@
  */
 
 /* Modifications :
- * - 05 oct 2007 : Now using skin for graphiwal creation
- * - 03 oct 2007 : starting implementation
+ * - 05 oct 2007 : starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_TITLE_BAR_H_
-#define _OGRE_GUI_TITLE_BAR_H_
+#ifndef _OGRE_GUI_PUSH_BUTTON_H_
+#define _OGRE_GUI_PUSH_BUTTON_H_
 
 #include "bgbutton.h"
 #include "bgcallback.h"
@@ -37,21 +36,19 @@ using namespace BetaGUI;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A widget drawing a Window's title bar
+    /** A widget drawing a push button
       *
-      * It is based on Button to be able to use that callback
-      * for moving the window.
+      * It is based on Button to be able to use a callback.
       *
       */
-    class TitleBar : public BetaGUI::Button{
+    class PushButton : public BetaGUI::Button{
     public:
-      TitleBar(Vector4, String, Callback, GUI*, Window*);
-      ~TitleBar();
+      PushButton(Vector4, String, Callback, GUI*, Window*);
+      ~PushButton();
 
     };
 
   }
 }
 
-#endif // _OGRE_GUI_TITLE_BAR_H_
-
+#endif // _OGRE_GUI_PUSH_BUTTON_H_

@@ -113,7 +113,8 @@ EXCLUDE = /home/mouse/programmation/rainbrurpg/include/ \
         /home/mouse/programmation/rainbrurpg/common/loadbmp.h \
         /home/mouse/programmation/rainbrurpg/common/loadbmp.cpp
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = moc_*
+EXCLUDE_PATTERNS       = moc_* \
+		         *~
 EXCLUDE_SYMBOLS        = 
 EXAMPLE_PATH           = /home/mouse/programmation/rainbrurpg/doc/
 EXAMPLE_PATTERNS       = 
@@ -169,10 +170,16 @@ LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
 COMPACT_LATEX          = NO
 PAPER_TYPE             = a4wide
-EXTRA_PACKAGES         = 
+
+# Extra LaTeX packages
+#
+# These packages are used to avoid LaTeX encoding related errors.
+#
+EXTRA_PACKAGES         = ucs		\
+		         inputenc
 LATEX_HEADER           = 
-PDF_HYPERLINKS         = NO
-USE_PDFLATEX           = NO
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
 LATEX_BATCHMODE        = NO
 LATEX_HIDE_INDICES     = NO
 #---------------------------------------------------------------------------
