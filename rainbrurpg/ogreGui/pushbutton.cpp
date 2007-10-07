@@ -22,12 +22,26 @@
 
 #include "pushbutton.h"
 
+#include "skinoverlay.h"
+
+#include <OGRE/OgreStringConverter.h>
+
 RainbruRPG::OgreGui::PushButton::
 PushButton(Vector4 dim, String caption, Callback c, GUI* G, Window* parent)
   : BetaGUI::Button(dim, "", caption, c, parent)
 {
 
+  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
+    +StringConverter::toString(G->getUniqueId());
 
+  sk->createPushButton(uniqueName, dim, parent);
+
+  // Get the corresponding overlay if based on SkinOverlay
+  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
+  if (sko){
+    mO=sko->getOverlayByName(uniqueName);
+  }
 }
 
 RainbruRPG::OgreGui::PushButton::~PushButton(){

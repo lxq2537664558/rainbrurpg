@@ -39,6 +39,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   mnWindow="bgui.window";
   mnResizeGrip="bgui.window.resize";
   mnTitleBar="bgui.window.titlebar";
+  mnPushButton="bgui.button";
 }
 
 /** Create a window using the BetaGUI skin
@@ -85,8 +86,18 @@ createResizeGrip(String name, Vector4 dim, Window* win ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 createTitleBar(String name, Vector4 dim, Window* win ){
-
-  LOGI("Creating a ResizeGrip widget");
   this->createOverlay(name, dim, mnTitleBar, win->getOverLayContainer());
+}
 
+/** Graphically create a PushButton widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param win     The parent window
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+createPushButton(String name, Vector4 dim, Window* win ){
+  LOGI("Creating a PushButton widget");
+  this->createOverlay(name, dim, mnPushButton, win->getOverLayContainer());
 }

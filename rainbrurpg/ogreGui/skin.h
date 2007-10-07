@@ -96,6 +96,16 @@ namespace RainbruRPG{
 	*/
      virtual void createTitleBar(String name, Vector4 dim, Window* parent)=0;
 
+      /** Graphically create a PushButton widget
+        *
+	* \param name    The internal name of the ResizeGrip (must be unique)
+	* \param dim     The widget's dimension in pixels in a 
+	*                Ogre::Vector4 object
+	* \param parent  The parent window
+	*
+	*/
+     virtual void createPushButton(String name, Vector4 dim, Window* parent)=0;
+
     private:
       /** The name of the skin */
       std::string name;

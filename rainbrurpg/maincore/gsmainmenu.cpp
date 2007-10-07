@@ -26,7 +26,12 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
+#include "bgcallback.h"
+#include "pushbutton.h"
+
 #include <OgreViewport.h>
+
+using namespace RainbruRPG::OgreGui;
 
 /** The default constructor
   *
@@ -147,6 +152,12 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   window = mGUI->
     createWindow(Vector4((w/2)-100,(h/2)-75,200,150),"bgui.window", 
 		 BetaGUI::OWT_RESIZE_AND_MOVE, "Main menu");
+
+
+  // Creates a test button
+  Callback testC(this);
+  Vector4 pb1Dim(10,25,100,24);
+  PushButton* pb1=new PushButton(pb1Dim, "Test", testC, mGUI, window);
   /*
   btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 
                       "Network game", BetaGUI::Callback::Callback(this));

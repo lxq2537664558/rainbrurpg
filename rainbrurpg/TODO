@@ -4,8 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- A PushButton class subclassing Button
-- OgreGUI's Button delegates drawing to Skin
+- GiveUp Button graphical functions
+- MouseOver doesn't work anymore
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
@@ -131,12 +131,13 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-158
+- OgreGUI's Button delegates drawing to Skin
+- A PushButton class subclassing Button
 - TitleBar use Skin to draw itself
 - ResizeGrip use Skin to draw itself
 - Fix the refman inputenc error (OK if using pdflatex)
 - Add Doxygen documentation's pdf page number to the regTests (793)
 - regText from build 0  to build 149 in a separate documentation page
-- doxygen documentation
 - TitleBar widget overriding Button
 - A resizeGrip widget overringing button
 - SkinOverlay::createOverlay function used by soBetaGui::createWindow
