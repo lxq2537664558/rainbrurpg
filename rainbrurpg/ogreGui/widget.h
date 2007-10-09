@@ -47,6 +47,9 @@ namespace RainbruRPG{
 
       OgreGuiSkinID getSkinId(void);
 
+      void setName(Ogre::String);
+      Ogre::String getName(void);
+
     protected:
       /** The skin identifier of this widget
         *
@@ -55,6 +58,12 @@ namespace RainbruRPG{
 	*
 	*/
       OgreGuiSkinID skinId;
+      /** The name of the widget
+        *
+	* This name is used as an unique identifier
+	*
+	*/
+      Ogre::String name;
     };
   }
 }

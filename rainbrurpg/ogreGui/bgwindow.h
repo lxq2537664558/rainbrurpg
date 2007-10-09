@@ -30,6 +30,10 @@ namespace BetaGUI {
 
   /** A BetaGUI window
     *
+    * To get a mouse over when the mouse move over a Button, you
+    * \b must use the addWidget(BetaGUI::Button*) method to add it 
+    * to the window's internal nutton list.
+    *
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
@@ -50,6 +54,9 @@ namespace BetaGUI {
     GUI* getGUI();
     void setOverLayContainer(OverlayContainer* oc);
     OverlayContainer* getOverLayContainer();
+
+    void addWidget(BetaGUI::Button*);
+    void addWidget(BetaGUI::TextInput*);
 
   protected:
 
@@ -74,9 +81,9 @@ namespace BetaGUI {
     /** The overlay container drawing this widget */
     OverlayContainer* rootOverlay;
     /** A vector of Buttons */
-    vector<BetaGUI::Button*>mB;
+    vector<BetaGUI::Button*> buttonList;
     /** A vector of TextInput */
-    vector<BetaGUI::TextInput*>mT;
+    vector<BetaGUI::TextInput*> textInputList;
   };
 
 

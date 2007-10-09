@@ -4,12 +4,14 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- GiveUp Button graphical functions
-- MouseOver doesn't work anymore
+- Implement correctly TextInput
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
+
+* Unittest failed in production mode (no --enable-debug)
+- HTTP response 401 "Unauthorized"
 
 * Unittest implementation of common/
 - curlpersoheaderaddtest
@@ -129,8 +131,17 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 * ***************** Changelog ***************************
 * *******************************************************
+* v 0.0.5-159
 
 * v 0.0.5-158
+- MouseOver doesn't work anymore on PushButton
+- Remove Ogre::material references in Button
+- MouseOver work on ResizeGrip
+- Button and TitleBar : Using real caption instead of dummy text
+- changelog.pre100 gzipped
+- Skin draws Button's and TitleBar's caption
+- GiveUp Button graphical functions
+- No more left black border in dynamic menu
 - OgreGUI's Button delegates drawing to Skin
 - A PushButton class subclassing Button
 - TitleBar use Skin to draw itself

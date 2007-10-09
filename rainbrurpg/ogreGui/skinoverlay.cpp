@@ -22,7 +22,13 @@
 
 #include "skinoverlay.h"
 
+#include "bgbutton.h"
+
+#include <logger.h>
+
 #include <OGRE/OgreOverlayManager.h>
+#include <OGRE/OgreMaterialManager.h>
+#include <OGRE/OgreStringConverter.h>
 
 /** Create a named skin based on Ogre::Overlay
   *
@@ -101,7 +107,7 @@ createOverlay(String name, Vector4 dim,String materialName,
   e->show();
 }
 
-/** Graphically creates an overly
+/** Graphically creates an overlay
   *
   * This fucntion is used by createOverlay(...) method to avoid
   * repeated code.
@@ -125,4 +131,93 @@ createOverlayImpl(String name, Vector4 dim, String materialName){
   e->setMaterialName(materialName);
 
   return e;
+}
+
+/** Graphically creates a text
+  *
+  * \param name     The overlay name (must be unique)
+  * \param dim      The overlay dimensions
+  * \param caption  The text to draw
+  * \param fontName The Ogre font name
+  * \param fontSize The Font size
+  * \param parent   The parent container
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+createCaption(String name, Vector4 dim, String caption, 
+	      String fontName, unsigned int fontSize, 
+	      OverlayContainer* parent ){
+
+  OverlayContainer* e=static_cast<OverlayContainer*>
+    (OverlayManager::getSingleton().createOverlayElement("TextArea", name));
+  
+  e->setMetricsMode(GMM_PIXELS);
+  e->setDimensions(dim.z,dim.w);
+  e->setPosition(dim.x,dim.y);
+
+  e->setCaption(caption);
+  e->setParameter("font_name",fontName);
+  e->setParameter("char_height",StringConverter::toString(fontSize));
+
+  parent->addChild(e);
+  e->show();
+}
+
+/** Handles the mouse over event on a button
+  *
+  * Buttons can are in two modes : normal and activate. The activate
+  * mode is for mouse over event.
+  *
+  * \param button The button that is changed
+  * \param active Is the button active (on mouse over), if \c false
+  *               it is in normal mode.
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+activateButton(Button* button, bool active){
+
+  String s;
+  /*  s="activateButton ";
+  s+=button->getName();
+  LOGI(s.c_str());
+  */
+
+  Ogre::OverlayContainer* buttonOverlay= getOverlayByName(button->getName());
+
+
+  if (buttonOverlay){
+    String materialName=buttonOverlay->getMaterialName();
+
+    if (active){
+      ResourcePtr ma=MaterialManager::getSingleton()
+	.getByName(materialName+".active");
+
+      if(!ma.isNull()){
+	buttonOverlay->setMaterialName(materialName+".active");
+      }
+#ifdef RAINBRU_RPG_DEBUG
+      else{
+	// Cannot get the .active material
+	s="Cannot get material `";
+	s+=materialName;
+	s+=".active";
+	s+="`";
+	LOGW(s.c_str());
+      }
+#endif
+
+    }
+    else{ // deactivate
+      // if materialName contains ".active"
+      if (materialName.find(".active")!=string::npos){
+	// We trucate materialName to remove ".active"
+	materialName.resize(materialName.size()-7);
+	buttonOverlay->setMaterialName(materialName);
+      }
+    }
+  }
+  else{
+    LOGW("Cannot get button's overlay");
+  }
+
 }

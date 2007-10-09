@@ -183,8 +183,8 @@ void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
 							 "Dynamic_Menu"));
   
   dynaRect->setMetricsMode(GMM_RELATIVE);
-  dynaRect->setDimensions(1.0,1.0);
-  dynaRect->setPosition(yBorder, 0.0);
+  dynaRect->setDimensions(1.2,1.0);
+  dynaRect->setPosition(yBorder-0.2, 0.0);
   dynaRect->setMaterialName("RainbruRPG.menu.dynamic");
 
   OverlayManager::getSingleton().getByName("BetaGUI")->add2D(dynaRect);
@@ -226,7 +226,8 @@ void RainbruRPG::Core::gsMenuBase::transition(){
 void RainbruRPG::Core::gsMenuBase::setCorners(){
   bordRect->setPosition(yBorder-0.025f, 0.0);
   menuRect->setPosition(yBorder+0.025f, 0.0);
-  dynaRect->setPosition(yBorder-1.025f, 0.0);
+  // Adding 0.2f to x to avoid a left black border
+  dynaRect->setPosition(yBorder-1.225f, 0.0);
 
 }
 

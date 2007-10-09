@@ -45,6 +45,11 @@ namespace RainbruRPG{
       * cannot be casted. Internally, both use createOverlayImpl to 
       * graphically create the Overlay.
       *
+      * For the buttons to get a mouse over effect, the materials names
+      * must be \e basename and <em>basename.active</em>. The 
+      * <em>.active</em> is mandatory and must be the last characters of
+      * the material name.
+      *
       */
     class SkinOverlay: public Skin{
     public:
@@ -54,6 +59,19 @@ namespace RainbruRPG{
 
       void createOverlay(String, Vector4,String, Overlay*);
       void createOverlay(String, Vector4, String, OverlayContainer*);
+
+      void createCaption(String, Vector4, String, String, 
+			 unsigned int, OverlayContainer*);
+
+      virtual void activateButton(Button*, bool);
+
+    protected:
+      /** The resizeGrip material name*/
+      Ogre::String mnResizeGrip;
+      /** The TitleBar material name*/
+      Ogre::String mnTitleBar;
+      /** The PushButton material name*/
+      Ogre::String mnPushButton;
 
     private:
       OverlayContainer* createOverlayImpl(String, Vector4, String);

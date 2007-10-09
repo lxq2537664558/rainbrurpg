@@ -55,7 +55,7 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
     c.setType(4);
     Vector4 resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
     mRZ=new ResizeGrip(resizeGripDim, c, G, this);
-    mB.push_back(mRZ);
+    buttonList.push_back(mRZ);
   }
   
   if(t==1||t==3){
@@ -63,7 +63,7 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(3);
     mTB=new TitleBar(Vector4(0,0,D.z,22),caption,c, G, this);
-    mB.push_back(mTB);
+    buttonList.push_back(mTB);
   }
 }
 
@@ -71,11 +71,11 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
   *
   */
 BetaGUI::Window::~Window(){
-  for(unsigned int i=0;i<mB.size();i++)
-    delete mB[i];
+  for(unsigned int i=0;i<buttonList.size();i++)
+    delete buttonList[i];
 
-  for(unsigned int i=0;i<mT.size();i++)
-    delete mT[i];
+  for(unsigned int i=0;i<textInputList.size();i++)
+    delete textInputList[i];
   
   mGUI->getRootOverlay()->remove2D(rootOverlay);
 }
@@ -90,7 +90,7 @@ BetaGUI::Window::~Window(){
   */
 BetaGUI::Button* BetaGUI::Window::createButton(Vector4 D,String M,String T,Callback C){
   Button *x=new Button(D,M,T,C,this);
-  mB.push_back(x);
+  buttonList.push_back(x);
   return x;
 }
 
@@ -105,7 +105,7 @@ BetaGUI::Button* BetaGUI::Window::createButton(Vector4 D,String M,String T,Callb
 BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String M,String V,unsigned int L){
 
   TextInput *x=new TextInput(D,M,V,L,this);
-  mT.push_back(x);
+  textInputList.push_back(x);
   return x;
 }
 
@@ -155,13 +155,13 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   return true;
 }
 
-/** Handle a mouse clicked event
+/** Handle a mouse event
   *
   * \param px The X position of the mouse
   * \param py The X position of the mouse
   * \param LMB The left mouse button status
   *
-  * \return \c true if the event is handles or \c false otherwise
+  * \return \c true if the event is handled or \c false otherwise
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
@@ -179,15 +179,15 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
     mAB->activate(false);
   }
   
-  for(unsigned int i=0;i<mB.size();i++){
-    if (mB[i]->in(px,py,x,y))
+  for(unsigned int i=0;i<buttonList.size();i++){
+    if (buttonList[i]->in(px,py,x,y))
       continue;
     
     if(mAB){
       mAB->activate(false);
     }
     
-    mAB=mB[i];
+    mAB=buttonList[i];
     mAB->activate(true);
     if(!LMB)
       return true;
@@ -232,11 +232,11 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   if (!LMB)
     return true;
   
-  for(unsigned int i=0;i<mT.size();i++){
-    if(mT[i]->in(px,py,x,y))
+  for(unsigned int i=0;i<textInputList.size();i++){
+    if(textInputList[i]->in(px,py,x,y))
       continue;
     
-    mATI=mT[i];
+    mATI=textInputList[i];
     mATI->getContentOverlay()->setMaterialName(mATI->getActiveMaterialName());
     return true;
   }
@@ -295,4 +295,22 @@ void BetaGUI::Window::setOverLayContainer(OverlayContainer* oc){
   */
 OverlayContainer* BetaGUI::Window::getOverLayContainer(){ 
   return rootOverlay;; 
+}
+
+/** Adds a Button in the button list
+  *
+  * \param btn The button to add
+  *
+  */
+void BetaGUI::Window::addWidget(BetaGUI::Button* btn){
+  buttonList.push_back(btn);
+}
+
+/** Adds a TextInout widget in the button list
+  *
+  * \param btn The text input to add
+  *
+  */
+void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
+  textInputList.push_back(ti);
 }

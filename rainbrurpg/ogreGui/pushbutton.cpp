@@ -26,6 +26,15 @@
 
 #include <OGRE/OgreStringConverter.h>
 
+/** The constructor
+  *
+  * \param dim          The dimensions 
+  * \param caption      The text of the button
+  * \param c            The callback of the button
+  * \param G            The GUI object
+  * \param parent       The parent window
+  *
+  */
 RainbruRPG::OgreGui::PushButton::
 PushButton(Vector4 dim, String caption, Callback c, GUI* G, Window* parent)
   : BetaGUI::Button(dim, "", caption, c, parent)
@@ -35,7 +44,9 @@ PushButton(Vector4 dim, String caption, Callback c, GUI* G, Window* parent)
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
 
-  sk->createPushButton(uniqueName, dim, parent);
+  this->setName(uniqueName);
+
+  sk->createPushButton(uniqueName, dim, caption, parent);
 
   // Get the corresponding overlay if based on SkinOverlay
   SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
@@ -44,6 +55,9 @@ PushButton(Vector4 dim, String caption, Callback c, GUI* G, Window* parent)
   }
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::OgreGui::PushButton::~PushButton(){
 
 }

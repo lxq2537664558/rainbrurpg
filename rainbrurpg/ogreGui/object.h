@@ -31,6 +31,9 @@
 namespace RainbruRPG{
   namespace OgreGui{
 
+    /** The base class of all OgreGui and BetaGUI widgets
+      *
+      */
     class Object{
 
     };

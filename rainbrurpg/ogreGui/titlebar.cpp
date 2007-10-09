@@ -31,6 +31,7 @@
   * \param dim          The dimensions 
   * \param caption      The text of the button
   * \param callback     The callback of the button
+  * \param G            The GUI object
   * \param parent       The parent window
   *
   */
@@ -42,8 +43,9 @@ TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, Window* parent)
   Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
+  this->setName(uniqueName);
 
-  sk->createTitleBar(uniqueName, dim, parent);
+  sk->createTitleBar(uniqueName, dim, caption, parent);
 
   // Get the corresponding overlay if based on SkinOverlay
   SkinOverlay* sko=static_cast<SkinOverlay*>(sk);

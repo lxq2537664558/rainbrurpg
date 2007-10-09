@@ -31,8 +31,6 @@ RainbruRPG::OgreGui::Widget::
 Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid)
   :skinId(sid){
 
-
-
 }    
 
 /** Destructor
@@ -51,4 +49,22 @@ RainbruRPG::OgreGui::OgreGuiSkinID
 RainbruRPG::OgreGui::Widget::getSkinId(void){
 
   return this->skinId;
+}
+
+/** Change this widget's name
+  *
+  * \param s The new widget's name
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setName(Ogre::String s){
+  this->name=s;
+}
+
+/** Get the name of the widget
+  *
+  * \return The widget's name
+  *
+  */
+Ogre::String RainbruRPG::OgreGui::Widget::getName(void){
+  return this->name;
 }

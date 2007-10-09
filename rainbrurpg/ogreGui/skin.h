@@ -35,9 +35,9 @@
 
 
 // Forward declarations
-
 namespace BetaGUI{
   class Window;
+  class Button;
 }
 // End of forward declarations
 
@@ -91,20 +91,34 @@ namespace RainbruRPG{
 	* \param name    The internal name of the ResizeGrip (must be unique)
 	* \param dim     The widget's dimension in pixels in a 
 	*                Ogre::Vector4 object
+	* \param caption The rendered text
 	* \param parent  The parent window
 	*
 	*/
-     virtual void createTitleBar(String name, Vector4 dim, Window* parent)=0;
+     virtual void createTitleBar(String name, Vector4 dim, String caption,Window* parent)=0;
 
       /** Graphically create a PushButton widget
         *
 	* \param name    The internal name of the ResizeGrip (must be unique)
 	* \param dim     The widget's dimension in pixels in a 
 	*                Ogre::Vector4 object
+	* \param caption The rendered text
 	* \param parent  The parent window
 	*
 	*/
-     virtual void createPushButton(String name, Vector4 dim, Window* parent)=0;
+     virtual void createPushButton(String name, Vector4 dim, String caption, Window* parent)=0;
+
+     /** Handles the mouse over event on a button
+       *
+       * Buttons can are in two modes : normal and activate. The activate
+       * mode is for mouse over event.
+       *
+       * \param button The button that is changed
+       * \param active Is the button active (on mouse over), if \c false
+       *               it is in normal mode.
+       *
+       */
+     virtual void activateButton(Button* button, bool active)=0;
 
     private:
       /** The name of the skin */

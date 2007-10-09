@@ -41,6 +41,7 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G,Window* parent)
   Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
+  this->setName(uniqueName);
 
   sk->createResizeGrip(uniqueName, dim, parent);
 

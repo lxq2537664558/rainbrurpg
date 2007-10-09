@@ -51,11 +51,6 @@ void RainbruRPG::OgreGui::SkinManager::init(){
 RainbruRPG::OgreGui::Skin* RainbruRPG::OgreGui::SkinManager::
 getSkin(RainbruRPG::OgreGui::OgreGuiSkinID s){
 
-  LOGI("Getting skin :");
-  LOGCATS("  skin number : ");
-  LOGCATI(s);
-  LOGCAT();
-
   if (s==OSI_DEFAULT){
     s=defaultSkin;
   }

@@ -17,8 +17,11 @@
 
 #include "bgcallback.h"
 #include "bgwindow.h"
+#include "skinmanager.h"
+
 
 using namespace Ogre;
+using namespace RainbruRPG::OgreGui;
 
 namespace BetaGUI {
 
@@ -26,6 +29,10 @@ namespace BetaGUI {
     * 
     * This is the base class of all widgets using Callback. For example
     * TitleBar use a callback to move its parent window.
+    *
+    * After you have created a Button, do not forget to add it to its
+    * parent windiw by calling addWidget(BetaGUI::Button*). If you forget it, 
+    * mouse over effect will not apply yo this button.
     *
     */
   class Button : public RainbruRPG::OgreGui::Widget{
@@ -49,11 +56,6 @@ namespace BetaGUI {
     
     OverlayContainer* getOverlayContainer(void);
 
-    /** The Ogre material name of the normal state */
-    String mmn;
-    /** The Ogre material name of the active state */
-    String mma;
-    
   protected:
     /** The root overlay */
     OverlayContainer* mO;

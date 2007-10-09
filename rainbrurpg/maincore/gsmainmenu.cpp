@@ -158,6 +158,12 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   Callback testC(this);
   Vector4 pb1Dim(10,25,100,24);
   PushButton* pb1=new PushButton(pb1Dim, "Test", testC, mGUI, window);
+  window->addWidget(pb1);
+
+  Vector4 tiDim(10,55,200,24);
+  TextInput* ti=new TextInput(tiDim, "", "Initial value", 10, window);
+  window->addWidget(ti);
+
   /*
   btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 
                       "Network game", BetaGUI::Callback::Callback(this));

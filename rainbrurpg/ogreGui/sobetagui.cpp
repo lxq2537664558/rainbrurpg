@@ -30,7 +30,7 @@
 #include <OGRE/OgreOverlayContainer.h>
 
 /** Default constructor
-  *
+  *			   
   * It simply creates a SkinOverlay called \e soBetaGUI
   *
   */
@@ -40,6 +40,11 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   mnResizeGrip="bgui.window.resize";
   mnTitleBar="bgui.window.titlebar";
   mnPushButton="bgui.button";
+
+  fnTitleBar="BlueHighway";
+  fsTitleBar=20;	       
+  fnPushButton="BlueHighway";
+  fsPushButton=10;
 }
 
 /** Create a window using the BetaGUI skin
@@ -81,23 +86,41 @@ createResizeGrip(String name, Vector4 dim, Window* win ){
   *
   * \param name    The internal name of the ResizeGrip (must be unique)
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
   * \param win     The parent window
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createTitleBar(String name, Vector4 dim, Window* win ){
+createTitleBar(String name, Vector4 dim, String caption, Window* win ){
   this->createOverlay(name, dim, mnTitleBar, win->getOverLayContainer());
+
+  // vertically center the caption
+  unsigned int dev=((dim.w-fsTitleBar)/2)+1;
+  dim.x+=dev;
+  dim.y+=dev;
+
+  this->createCaption(name+"c", dim, caption, 
+	      fnTitleBar, fsTitleBar,win->getOverLayContainer());
 }
 
 /** Graphically create a PushButton widget
   *
   * \param name    The internal name of the ResizeGrip (must be unique)
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
   * \param win     The parent window
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createPushButton(String name, Vector4 dim, Window* win ){
+createPushButton(String name, Vector4 dim, String caption, Window* win ){
   LOGI("Creating a PushButton widget");
   this->createOverlay(name, dim, mnPushButton, win->getOverLayContainer());
+
+  // vertically center the caption
+  unsigned int dev=((dim.w-fsPushButton)/2)+2;
+  dim.x+=dev;
+  dim.y+=dev;
+
+  this->createCaption(name+"c", dim, caption, 
+	      fnPushButton, fsPushButton,win->getOverLayContainer());
 }

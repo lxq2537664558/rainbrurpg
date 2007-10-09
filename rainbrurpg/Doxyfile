@@ -173,7 +173,7 @@ PAPER_TYPE             = a4wide
 
 # Extra LaTeX packages
 #
-# These packages are used to avoid LaTeX encoding related errors.
+# These packages are used to avoid LaTeX encoding-related errors.
 #
 EXTRA_PACKAGES         = ucs		\
 		         inputenc
