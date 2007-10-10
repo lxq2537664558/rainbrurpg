@@ -99,7 +99,7 @@ namespace RainbruRPG{
 
       /** Graphically create a PushButton widget
         *
-	* \param name    The internal name of the ResizeGrip (must be unique)
+	* \param name    The internal name of the push button (must be unique)
 	* \param dim     The widget's dimension in pixels in a 
 	*                Ogre::Vector4 object
 	* \param caption The rendered text
@@ -107,6 +107,17 @@ namespace RainbruRPG{
 	*
 	*/
      virtual void createPushButton(String name, Vector4 dim, String caption, Window* parent)=0;
+
+      /** Graphically create a TextInput widget
+        *
+	* \param name    The internal name of the widget (must be unique)
+	* \param dim     The widget's dimension in pixels in a 
+	*                Ogre::Vector4 object
+	* \param caption The rendered text
+	* \param parent  The parent window
+	*
+	*/
+     virtual void createTextInput(String name, Vector4 dim, String caption, Window* parent)=0;
 
      /** Handles the mouse over event on a button
        *

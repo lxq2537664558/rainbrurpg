@@ -60,8 +60,8 @@ namespace BetaGUI {
 
   protected:
 
-    /** A TextInput widget */
-    TextInput* mATI;
+    /** The currently active TextInput widget */
+    TextInput* activeTextInput;
     /** Defines a button */
     Button* mRZ;
     /** Defines a button */

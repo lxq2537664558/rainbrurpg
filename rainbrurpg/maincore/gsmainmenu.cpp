@@ -160,8 +160,8 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   PushButton* pb1=new PushButton(pb1Dim, "Test", testC, mGUI, window);
   window->addWidget(pb1);
 
-  Vector4 tiDim(10,55,200,24);
-  TextInput* ti=new TextInput(tiDim, "", "Initial value", 10, window);
+  Vector4 tiDim(10,55,180,24);
+  TextInput* ti=new TextInput(tiDim, "bgui.textinput", "Initial value", 20, window);
   window->addWidget(ti);
 
   /*

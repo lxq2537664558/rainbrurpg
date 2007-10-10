@@ -10,35 +10,41 @@
 #include "bgtextinput.h"
 
 #include "bgwindow.h"
+#include "skinoverlay.h"
 
 #include <OGRE/OgreStringConverter.h>
 #include <OGRE/OgreMaterialManager.h>
 
 /** The text input constructor
   *
-  * \param D The dimensions as an Ogre vector
-  * \param M The Ogre material used to draw text input
-  * \param V The initial value
-  * \param L The length
-  * \param P The parent Window
+  * \param dim     The dimensions as an Ogre vector
+  * \param M       The Ogre material used to draw text input
+  * \param caption The initial value
+  * \param L       The length
+  * \param parent  The parent Window
   *
   */
 BetaGUI::TextInput::
-TextInput(Vector4 D,String M,String V,unsigned int L,Window *P)
-  :x(D.x),y(D.y),w(D.z),h(D.w),value(V),mmn(M),mma(M),length(L){
+TextInput(Vector4 dim,String M,String caption,unsigned int L,Window *parent)
+  :x(dim.x),y(dim.y),w(dim.z),h(dim.w),value(caption),mmn(M),mma(M),length(L){
   
-  ResourcePtr ma=Ogre::MaterialManager::getSingleton().getByName(mmn+".active");
+  mma=M+".active";
 
-  if(!ma.isNull())
-    mma+=".active";
+  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
+    +StringConverter::toString(parent->getGUI()->getUniqueId());
 
-  mO=P->getGUI()->createOverlay(P->getOverLayContainer()->getName()+"t"+StringConverter::toString(P->getGUI()->getUniqueId()) ,Vector2(x,y),Vector2(w,h),M,"",false);
-  mCP=P->getGUI()->createOverlay(mO->getName()+"c",Vector2(4,(h-P->getGUI()->getFontSize())/2),Vector2(w,h),"",V,false);
-  
-  P->getOverLayContainer()->addChild(mO);
-  mO->show();
-  mO->addChild(mCP);
-  mCP->show();
+  this->setName(uniqueName);
+
+  sk->createTextInput(uniqueName, dim, caption, parent);
+
+  // Get the corresponding overlay if based on SkinOverlay
+  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
+  if (sko){
+    mO=sko->getOverlayByName(uniqueName);
+    mCP=sko->getOverlayByName(uniqueName+"c");
+  }
+
 }
 
 /** An empty destructor
@@ -55,7 +61,7 @@ BetaGUI::TextInput::~TextInput(){
   *
   */
 Ogre::String BetaGUI::TextInput::getValue(){
-  return value;
+  return this->value;
 }
 
 /** Change the current content
@@ -64,7 +70,8 @@ Ogre::String BetaGUI::TextInput::getValue(){
   *
   */
 void BetaGUI::TextInput::setValue(Ogre::String v){
-  mCP->setCaption(value=v);
+  this->value=v;
+  mCP->setCaption(v);
 }
 
 /** Is a square in this widget

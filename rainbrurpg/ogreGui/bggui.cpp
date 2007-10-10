@@ -29,8 +29,11 @@ BetaGUI::GUI::GUI(String font, unsigned int fontSize)
   *
   */
 BetaGUI::GUI::~GUI(){
-  for(unsigned int i=0;i < WN.size();i++)
-    delete WN[i];WN.clear();
+  for(unsigned int i=0;i < WN.size();i++){
+    delete WN[i];
+  }
+
+  WN.clear();
 }
 
 /** Inject the backspace key pressed event

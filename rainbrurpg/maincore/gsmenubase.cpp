@@ -453,105 +453,21 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   *
   */
 bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
-  // OIS
+  // OgreGUI
   /* It is a very basic keyboard handler. It does not
    * provide backspace nor over special keys handling.
    *
    */
-  char c=(char)evt.text;
-  GameEngine::getSingleton().getOgreGui()->injectKey(&c, mouseX, mouseY);
-
-  // CEGUI
-  OIS::KeyCode kc=evt.key;
-  unsigned int text=evt.text;
-
-  CEGUI::Window* guiSheet=CEGUI::System::getSingleton().getGUISheet();
-  CEGUI::Window* activeChild=guiSheet->getActiveChild();
-
-  std::string str=GameEngine::getSingleton().getInputManager()->getKeyboard()
-    ->getAsString(evt.key);
-
-  // Special cases
-  CEGUI::Key::Scan scanCode;
-
-  if (kc==OIS::KC_DELETE){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Delete);
-  }
-  else if (kc==OIS::KC_BACK){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Backspace);
-  }
-  else if (kc==OIS::KC_LEFT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowLeft);
-  }
-  else if (kc==OIS::KC_RIGHT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowRight);
-  }
-  else if (kc==OIS::KC_UP){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowUp);
-  }
-  else if (kc==OIS::KC_DOWN){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::ArrowDown);
-  }
-  else if (kc==OIS::KC_PGUP){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::PageUp);
-  }
-  else if (kc==OIS::KC_PGDOWN){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::PageDown);
-  }   
-  else if (kc==OIS::KC_HOME){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Home);
-  }
-  else if (kc==OIS::KC_END){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::End);
-  }   
-  else if (kc==OIS::KC_TAB){
-    CEGUI::System::getSingleton().injectChar(9);
-  }
-  else if (kc==OIS::KC_LSHIFT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::LeftShift);
-  } 
-  else if (kc==OIS::KC_RSHIFT){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::RightShift);
-  }
-  else if (kc==OIS::KC_RETURN || kc==OIS::KC_NUMPADENTER){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Return);
-
-    if (activeChild){
-      CEGUI::String    eventName(CEGUI::Window::EventMouseClick);
-      CEGUI::EventArgs eventArgs;
-      CEGUI::String    eventNS("");
-
-      activeChild->fireEvent(eventName, eventArgs, eventNS);
-    }
-  }
-  else if (kc==OIS::KC_HOME){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::Home);
-  }
-  else if (kc==OIS::KC_END){
-    CEGUI::System::getSingleton().injectKeyDown(CEGUI::Key::End);
+  if (evt.key == OIS::KC_BACK){
+    GameEngine::getSingleton().getOgreGui()->injectBackspace(mouseX, mouseY);
   }
   else{
-    /*    cout << "=== Debugging OIS" << endl
-	 << "  text=" << text << endl
-	 << "  str =" << str << endl;
-    */
-
-    /*
-     * Here a hack to provide [Alt Gr+key] as for the 'at' @ sign.
-     * The first time AltGr+something is called, str=="ISO_Level3_Shift"
-     * other times, str==previous char (i.e. 'at') but text==0
-     *
-     */
-    if(str=="ISO_Level3_Shift" && text==0){
-      // Nothing to do (AltGr only, the first time)
-    }
-    else if(text==0){
-      // Nothing to do (AltGr only, other times)
-    }
-    else{
-      CEGUI::System::getSingleton().injectChar((CEGUI::utf32)text);
-    }
+    char c=(char)evt.text;
+  Ogre:String s="";
+    s+=c;
+    GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
   }
+
   return true;
 }
 

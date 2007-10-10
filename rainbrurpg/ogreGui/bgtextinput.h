@@ -15,91 +15,93 @@
 
 #include "widget.h" 
 
+// Forward declaration
+namespace BetaGUI {
+  class Window;
+}
+// End of Forward declaration
+
 using namespace Ogre;
 
 namespace BetaGUI {
 
-  // Forward declaration
-  class Window;
-  // End of Forward declaration
-
-
-class TextInput : public RainbruRPG::OgreGui::Widget{
- public:
-  TextInput(Vector4, String, String, unsigned int, BetaGUI::Window*);
-  ~TextInput();
-
-  String getValue(void);
-  void setValue(Ogre::String);
-
-  bool in(unsigned int, unsigned int, unsigned int, unsigned int);
-
-  unsigned int getLength(void);
-
-  OverlayContainer* getContentOverlay(void);
-  OverlayContainer* getFrameOverlay(void);
-  String getNormalMaterialName(void);
-  String getActiveMaterialName(void);
+  /** A widget providing a single line text input
+    *
+    */
+  class TextInput : public RainbruRPG::OgreGui::Widget{
+  public:
+    TextInput(Vector4, String, String, unsigned int, BetaGUI::Window*);
+    ~TextInput();
+    
+    String getValue(void);
+    void setValue(Ogre::String);
+    
+    bool in(unsigned int, unsigned int, unsigned int, unsigned int);
+    
+    unsigned int getLength(void);
+  
+    OverlayContainer* getContentOverlay(void);
+    OverlayContainer* getFrameOverlay(void);
+    String getNormalMaterialName(void);
+    String getActiveMaterialName(void);
 
  protected: 
+    
+    /** The overlay used to draw the frame
+      *
+      *
+      */
+    OverlayContainer* mO;
+    
+    /** The overlay used to draw content
+      *
+      *
+      */
+    OverlayContainer* mCP;
+    
+    /** The material name used to draw the text input (normal state)
+      *
+      */
+    String mmn;
+    
+    /** The material name used to draw the text input when active
+      *
+      * It is usually mmn+".active"
+      *
+      */
+    String mma;
 
-  /** The overlay used to draw the frame
-    *
-    *
-    */
-  OverlayContainer* mO;
-
-  /** The overlay used to draw content
-    *
-    *
-    */
-  OverlayContainer* mCP;
-
-  /** The material name used to draw the text input (normal state)
-    *
-    */
-  String mmn;
-
-  /** The material name used to draw the text input when active
-    *
-    * It is usually mmn+".active"
-    *
-    */
-  String mma;
-
-  /** The current contained text
-    *
-    */
-  String value;
-  
-  /** The X position of this widget
-    *
-    */
-  unsigned int x;
-
-  /** The Y position of this widget
-    *
-    */
-  unsigned int y;
-
-  /** The width position of this widget
-    *
-    */
-  unsigned int w;
-
-  /** The height position of this widget
-    *
-    */
-  unsigned int h;
-
-  /** The max length of text that can be entered
-    *
-    */
-  unsigned int length;
-
-};
- 
-
+    /** The current contained text
+      *
+      */
+    String value;
+    
+    /** The X position of this widget
+      *
+      */
+    unsigned int x;
+    
+    /** The Y position of this widget
+      *
+      */
+    unsigned int y;
+    
+    /** The width position of this widget
+      *
+      */
+    unsigned int w;
+    
+    /** The height position of this widget
+      *
+      */
+    unsigned int h;
+    
+    /** The max length of text that can be entered
+      *
+      */
+    unsigned int length;
+    
+  };
 }
 
 #endif // _BETAGUI_TEXT_INPUT_H_

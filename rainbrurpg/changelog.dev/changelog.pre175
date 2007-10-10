@@ -1,3 +1,39 @@
+* v 0.0.5-157
+- static, dynamic menu and border drawn again
+- OgreGUI's window delegates drawing to Skin
+- bggui.h::wt become OgreGuiWindowType (prefix is OWT)
+- doxygen Documentation
+- skin name implementation
+- SkinOverlay and soBetaGUI skins implementation
+- OgreGUI's Object used by Callback Listener and Widget
+- GameEngine initialise skinManager
+- Skin base class
+- A singleton class ogreGui/SkinManager
+- Doxygen documentation
+- BetaGUI::Callback in .h/.cpp
+- BetaGUI::Window in .h/.cpp
+- BetaGUI::GUI in .h/.cpp
+
+* v 0.0.5-156
+- Logo and menu of homepage now centered
+- remove gsMainMenu dependencies to CEGUI
+- Hide window in gsMainMenu pause
+- gsMainMenu handles betaGui events (for buttons)
+- gsMainMenu uses betaGUI
+- Adds OgreGui datafiles in data/gui/ogreGui
+- gsmenubase injects keyboard input to OgreGUI
+- gsmenubase injects mouse input to OgreGUI
+- rainbrurpg-ogregui library for BetaGUI
+- BetaGUI code in the ogreGui/ directory and to the cvs repository
+- OgreGui namespace documentation
+- common/ dll successfully cross compiled
+- client cross compilation's -lOgreMain error fixed
+- MesageBox renamed RbMessageBox
+- lib rainbrurpg-common cross-compiled
+- GNU/Linux and mingw versions are the same
+  We choose the compilation with bootstrap/bootstrap.win32
+- cross compilation dependencies found or self-compiled
+
 * v 0.0.5-155
 - Sourceforge homepage improvement
 - Sourceforge homepage articles

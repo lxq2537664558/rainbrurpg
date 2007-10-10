@@ -48,10 +48,14 @@ namespace RainbruRPG{
       virtual void createResizeGrip(String, Vector4, Window*);
       virtual void createTitleBar(String, Vector4, String, Window*);
       virtual void createPushButton(String, Vector4, String, Window*);
+      virtual void createTextInput(String name, Vector4 dim, String caption, Window* parent);
 
     private:
+      // ============= MATERIALS VALUES =================
       /** The window's material name */
       Ogre::String mnWindow;
+      /** The text input's material name */
+      Ogre::String mnTextInput;
 
 
       // ============= FONTS VALUES =================
@@ -60,10 +64,15 @@ namespace RainbruRPG{
       /** The font size used to draw the titlebar */
       unsigned int fsTitleBar;
 
-      /** The font name used to draw the titlebar */
+      /** The font name used to draw the PushButton */
       Ogre::String fnPushButton;
-      /** The font size used to draw the titlebar */
+      /** The font size used to draw the PushButton */
       unsigned int fsPushButton;
+
+      /** The font name used to draw the TextInput */
+      Ogre::String fnTextInput;
+      /** The font size used to draw the TextInput */
+      unsigned int fsTextInput;
     };
 
   }

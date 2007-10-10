@@ -45,6 +45,10 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   fsTitleBar=20;	       
   fnPushButton="BlueHighway";
   fsPushButton=10;
+
+  mnTextInput="bgui.textinput";
+  fnTextInput="BlueHighway";
+  fsTextInput=12;
 }
 
 /** Create a window using the BetaGUI skin
@@ -123,4 +127,29 @@ createPushButton(String name, Vector4 dim, String caption, Window* win ){
 
   this->createCaption(name+"c", dim, caption, 
 	      fnPushButton, fsPushButton,win->getOverLayContainer());
+}
+
+/** Graphically create a TextInput widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param win     The parent window
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+createTextInput(String name, Vector4 dim, String caption, Window* parent){
+
+  this->createOverlay(name, dim, mnTextInput, parent->getOverLayContainer());
+
+  // vertically center the caption
+  unsigned int dev=((dim.w-fsPushButton)/2)+2;
+  dim.x+=dev;
+  dim.y+=dev;
+
+  this->createCaption(name+"c", dim, caption, 
+	      fnTextInput, fsTextInput, parent->getOverLayContainer());
+
+
+
 }

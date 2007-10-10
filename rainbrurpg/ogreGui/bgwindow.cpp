@@ -15,6 +15,8 @@
 #include "resizegrip.h"
 #include "titlebar.h"
 
+#include <logger.h>
+
 #include <OGRE/OgreStringConverter.h>
 
 using namespace RainbruRPG::OgreGui;
@@ -30,7 +32,7 @@ using namespace RainbruRPG::OgreGui;
   */
 BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption, 
 			GUI *G)
-  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),mATI(0),mAB(0){
+  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),activeTextInput(0),mAB(0){
 
 
   rootOverlay=NULL;
@@ -122,36 +124,54 @@ void BetaGUI::Window::createStaticText(Vector4 D,String T){
   x->show();
 }
 
-/** Handle a key pressed
+/** Handle a key pressed event
   *
   * \param k The key pressed
   * \param px The mouse X position
   * \param py The mouse Y position
   *
-  * \return \c true if the event is handles or \c false otherwise
+  * \return \c true if the event is handled or \c false otherwise
   *
   */
 bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
-  if(mATI==0)
+  LOGE("activeTextInput debug D");
+
+  String message="Debugging Window::checkKey : ";
+
+  if(activeTextInput==0){
+    message+="activeTextInput==0. ";
+    LOGW(message.c_str());
     return false;
-  
-  if(!rootOverlay->isVisible())
+  }
+
+  if(!rootOverlay->isVisible()){
+    message+="rootOverlay is not visible. ";
+  LOGW(message.c_str());
     return false;
-  
-  if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h))
-    return false;
-  
+  }
+
+  if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h)){
+    message+="Mouse pointer is not on the widget. ";
+   LOGW(message.c_str());
+   return false;
+  }
+
   if(k=="!b"){
-    mATI->setValue(mATI->getValue().substr(0,mATI->getValue().length()-1));
+    Ogre::String val=activeTextInput->getValue();
+    Ogre::String truncated=val.substr(0,val.length()-1);
+    activeTextInput->setValue(truncated);
+    LOGI("Entering backspace");
     return true;
   }
   
-  if(mATI->getValue().length() >= mATI->getLength())
+  if(activeTextInput->getValue().length() >= activeTextInput->getLength()){
+    LOGI("Adding a char but lenght is small");
     return true;
-  
+  }
 
-  mATI->setValue(mATI->getValue()+k);
-  mATI->getContentOverlay()->setCaption(mATI->getValue());
+  // TextInput::setValue automatically update the contentOverlay text
+  activeTextInput->setValue(activeTextInput->getValue()+k);
+
   return true;
 }
 
@@ -192,9 +212,9 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
     if(!LMB)
       return true;
     
-    if(mATI){
-      mATI->getFrameOverlay()->setMaterialName(mATI->getNormalMaterialName());
-      mATI=0;
+    if(activeTextInput){
+      activeTextInput->getFrameOverlay()->setMaterialName(activeTextInput->getNormalMaterialName());
+      activeTextInput=0;
     }
     
     switch(mAB->getCallback().getType()){
@@ -236,13 +256,19 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
     if(textInputList[i]->in(px,py,x,y))
       continue;
     
-    mATI=textInputList[i];
-    mATI->getContentOverlay()->setMaterialName(mATI->getActiveMaterialName());
+
+    /* The current indexed textInputList element is under the mouse
+     * activeTextInput is set as a pointer to it.
+     * And we change is material to graphically mark it as active.
+     */
+    activeTextInput=textInputList[i];
+    activeTextInput->getFrameOverlay()->setMaterialName(activeTextInput->getActiveMaterialName());
     return true;
   }
-  if(mATI){
-    mATI->getContentOverlay()->setMaterialName(mATI->getNormalMaterialName());
-    mATI=0;
+
+  if(activeTextInput){
+    LOGE("activeTextInput debug B");
+    activeTextInput->getContentOverlay()->setMaterialName(activeTextInput->getNormalMaterialName());
   }
   return true;
 }
