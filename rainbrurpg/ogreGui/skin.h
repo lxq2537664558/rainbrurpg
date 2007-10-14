@@ -131,6 +131,22 @@ namespace RainbruRPG{
        */
      virtual void activateButton(Button* button, bool active)=0;
 
+     /** Set the transparency of an overlay
+       *
+       * \param name The Ogre name of the overlay
+       * \param f    The alpha value
+       *
+       */
+     virtual void setTransparency(String name, float f)=0;
+
+     /** Set the transparency of a caption
+       *
+       * \param name The Ogre name of the caption overlay
+       * \param f    The alpha value
+       *
+       */
+     virtual void setCaptionTransparency(String name, float f)=0;
+
     private:
       /** The name of the skin */
       std::string name;

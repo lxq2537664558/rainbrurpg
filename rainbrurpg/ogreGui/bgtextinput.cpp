@@ -18,18 +18,18 @@
 /** The text input constructor
   *
   * \param dim     The dimensions as an Ogre vector
-  * \param M       The Ogre material used to draw text input
   * \param caption The initial value
   * \param L       The length
   * \param parent  The parent Window
   *
   */
 BetaGUI::TextInput::
-TextInput(Vector4 dim,String M,String caption,unsigned int L,Window *parent)
-  :x(dim.x),y(dim.y),w(dim.z),h(dim.w),value(caption),mmn(M),mma(M),length(L){
+TextInput(Vector4 dim,String caption,unsigned int L,Window *parent)
+  :x(dim.x),y(dim.y),w(dim.z),h(dim.w),value(caption),
+   normalMaterialName(""),
+   activeMaterialName(""),
+   length(L){
   
-  mma=M+".active";
-
   Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
@@ -41,8 +41,12 @@ TextInput(Vector4 dim,String M,String caption,unsigned int L,Window *parent)
   // Get the corresponding overlay if based on SkinOverlay
   SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
   if (sko){
-    mO=sko->getOverlayByName(uniqueName);
-    mCP=sko->getOverlayByName(uniqueName+"c");
+    frameOverlay=sko->getOverlayByName(uniqueName);
+    contentOverlay=sko->getOverlayByName(uniqueName+"c");
+
+    // Get the materials names
+    normalMaterialName=frameOverlay->getMaterialName();
+    activeMaterialName=normalMaterialName+".active";
   }
 
 }
@@ -71,7 +75,7 @@ Ogre::String BetaGUI::TextInput::getValue(){
   */
 void BetaGUI::TextInput::setValue(Ogre::String v){
   this->value=v;
-  mCP->setCaption(v);
+  contentOverlay->setCaption(v);
 }
 
 /** Is a square in this widget
@@ -104,7 +108,7 @@ unsigned int BetaGUI::TextInput::getLength(void){
   *
   */
 Ogre::OverlayContainer* BetaGUI::TextInput::getContentOverlay(void){ 
-  return mCP; 
+  return contentOverlay; 
 }
 
 /** Return the overlay drawing the widget
@@ -113,7 +117,7 @@ Ogre::OverlayContainer* BetaGUI::TextInput::getContentOverlay(void){
   *
   */
 Ogre::OverlayContainer* BetaGUI::TextInput::getFrameOverlay(void){ 
-  return mO; 
+  return frameOverlay; 
 }
 
 /** Get the name of the material used in normal mode
@@ -122,7 +126,7 @@ Ogre::OverlayContainer* BetaGUI::TextInput::getFrameOverlay(void){
   *
   */
 Ogre::String BetaGUI::TextInput::getNormalMaterialName(void){ 
-  return this->mmn; 
+  return this->normalMaterialName; 
 }
 
 /** Get the name of the material used in active mode
@@ -131,5 +135,13 @@ Ogre::String BetaGUI::TextInput::getNormalMaterialName(void){
   *
   */
 Ogre::String BetaGUI::TextInput::getActiveMaterialName(void){ 
-  return this->mma; 
+  return this->activeMaterialName; 
+}
+
+void BetaGUI::TextInput::setTransparency(float f){
+  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+
+  s->setTransparency(name, f);
+  s->setCaptionTransparency(name+"c", f);
+
 }

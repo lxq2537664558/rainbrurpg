@@ -15,25 +15,22 @@
 
 /** The GUI constructor
   *
-  * \param font     The global font name
-  * \param fontSize The global fontsize
-  *
   */
-BetaGUI::GUI::GUI(String font, unsigned int fontSize)
-  :mXW(0), mMP(0),mFont(font),mFontSize(fontSize),wc(0),bc(0),tc(0){
-  mO=OverlayManager::getSingleton().create("BetaGUI");
-  mO->show();
+BetaGUI::GUI::GUI()
+  :mXW(0), mouseCursorOverlay(0),wc(0),bc(0),tc(0){
+  rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
+  rootOverlay->show();
 }
 
 /** The destructor
   *
   */
 BetaGUI::GUI::~GUI(){
-  for(unsigned int i=0;i < WN.size();i++){
-    delete WN[i];
+  for(unsigned int i=0;i < windowList.size();i++){
+    delete windowList[i];
   }
 
-  WN.clear();
+  windowList.clear();
 }
 
 /** Inject the backspace key pressed event
@@ -65,21 +62,21 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   *
   */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
-  if(mMP)mMP->setPosition(x,y);
+  if(mouseCursorOverlay)mouseCursorOverlay->setPosition(x,y);
   
   if(mXW){
-    for(vector<Window*>::iterator i=WN.begin();i!=WN.end();i++){
+    for(vector<Window*>::iterator i=windowList.begin();i!=windowList.end();i++){
       if(mXW==(*i)){
 	delete mXW;
-	WN.erase(i);
+	windowList.erase(i);
 	mXW=0;
 	return false;
       }
     }
   }
   
-  for(unsigned int i=0;i<WN.size();i++){
-    if(WN[i]->check(x,y,LMB)){
+  for(unsigned int i=0;i<windowList.size();i++){
+    if(windowList[i]->check(x,y,LMB)){
       return true;
     }
   }
@@ -98,8 +95,8 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
   *
   */
 bool BetaGUI::GUI::injectKey(String key, unsigned int x,unsigned int y){
-  for(unsigned int i=0;i<WN.size();i++){
-    if(WN[i]->checkKey(key,x,y)){
+  for(unsigned int i=0;i<windowList.size();i++){
+    if(windowList[i]->checkKey(key,x,y)){
       return true;
     }
   }
@@ -145,12 +142,12 @@ createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
 
   if (C!=""){
     e->setCaption(C);
-    e->setParameter("font_name",mFont);
-    e->setParameter("char_height",StringConverter::toString(mFontSize));
+    //    e->setParameter("font_name",mFont);
+    //   e->setParameter("char_height",StringConverter::toString(mFontSize));
   }
 
   if(A){
-    mO->add2D(e);
+    rootOverlay->add2D(e);
     e->show();
   }
   return e;
@@ -167,12 +164,12 @@ createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
 OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   Overlay* o=OverlayManager::getSingleton().create("BetaGUI.MousePointer");
   o->setZOrder(649);
-  mMP=createOverlay("bg.mp",Vector2(0,0),d,m,"", false);
+  mouseCursorOverlay=createOverlay("bg.mp",Vector2(0,0),d,m,"", false);
   
-  o->add2D(mMP);
+  o->add2D(mouseCursorOverlay);
   o->show();
-  mMP->show();
-  return mMP;
+  mouseCursorOverlay->show();
+  return mouseCursorOverlay;
 }
 
 /** Creates a ew window
@@ -188,7 +185,7 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
 BetaGUI::Window* BetaGUI::GUI::
 createWindow(Vector4 D, String M, OgreGuiWindowType type, String C){
   BetaGUI::Window* w=new Window(D,M,type,C,this);
-  WN.push_back(w);
+  windowList.push_back(w);
   return w;
 }
 
@@ -219,20 +216,36 @@ unsigned int BetaGUI::GUI::getStaticTextUniqueId(void){
   return tc++;
 }
 
-/** Get the global fontsize
-  *
-  * \return The fontsize used by default
-  *
-  */
-unsigned int BetaGUI::GUI::getFontSize(void){ 
-  return mFontSize; 
-}
-
 /** Get the parent of all windows
   *
   * \return The root overlay
   *
   */
 Ogre::Overlay* BetaGUI::GUI::getRootOverlay(void){ 
-  return mO; 
+  return rootOverlay; 
+}
+
+/** Set the GUI transparensy for all windows
+  *
+  * \param f The alpha value (from 0.0f to 1.0f)
+  *
+  * \sa guiTransparency, getGuiTransparency()
+  *
+  */
+void BetaGUI::GUI::setGuiTransparency(float f){
+  this->guiTransparency=f;
+  for(unsigned int i=0;i<windowList.size();i++){
+    windowList[i]->setTransparency(f);
+  }
+}
+
+/** Get the current GUI transparency
+  *
+  * \return The GUI transparency value (from 0.0f to 1.0f)
+  *
+  * \sa guiTransparency, setGuiTransparency()
+  *
+  */
+float BetaGUI::GUI::getGuiTransparency(void){
+  return this->guiTransparency;
 }

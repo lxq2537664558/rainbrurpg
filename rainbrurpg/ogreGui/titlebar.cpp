@@ -23,6 +23,9 @@
 #include "titlebar.h"
 
 #include "skinoverlay.h"
+
+#include <logger.h>
+
 #include <OGRE/OgreStringConverter.h>
 
 

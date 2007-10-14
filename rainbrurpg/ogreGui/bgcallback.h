@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 10 oct 2007 : Callback's type in an enumeration
  * - 24 sep 2007 : This was the original BetaGUI code. 
  *                 Betajaen's headers added
  *
@@ -25,6 +26,17 @@ namespace BetaGUI {
   class Button;
   // end of forward declaration
 
+  /** An enumeration defining the type of a Callback
+    *
+    */
+  typedef enum OgreGUICallbackType{
+    OCT_NULL = 0x00,  //<! A null callback
+    OCT_FUNC = 0x01,  //<! A callback based on function pointer
+    OCT_LIST = 0x02,  //<! A callback based on a BetaGUIListener
+    OCT_WIN_MOVE = 0x03, //<! The callback is used to move a Window
+    OCT_WIN_RESIZE = 0x04, //<! The callback is used to resize a Window
+  };
+
   /** Defines a callback that can be use with BetaGUI
     *
     */
@@ -34,8 +46,8 @@ namespace BetaGUI {
     Callback(void(*functionPointer)(Button *ref));
     Callback(BetaGUIListener *L);
 
-    void setType(unsigned char t);
-    unsigned char getType(void);
+    void setType(BetaGUI::OgreGUICallbackType t);
+    BetaGUI::OgreGUICallbackType getType(void);
 
     /** A function pointer 
       *
@@ -51,7 +63,7 @@ namespace BetaGUI {
     /** The type of callback
       *
       */
-    unsigned char type;
+    OgreGUICallbackType type;
   };
 
 }

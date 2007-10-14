@@ -925,7 +925,7 @@ void RainbruRPG::Core::GameEngine::initOgreGui(){
   // mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
   SkinManager::getSingleton().init();
 
-  mOgreGUI = new BetaGUI::GUI("BlueHighway",20);
+  mOgreGUI = new BetaGUI::GUI();
 
 }
 

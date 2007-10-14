@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 10 oct 2007 : No more font or fontSize references
  * - 24 sep 2007 : Some implementation moved from betagui.cpp
  * - 20 sep 2007 : This was the original BetaGUI code. 
  *                 Betajaen's headers added
@@ -50,7 +51,7 @@ namespace BetaGUI {
     */
   class GUI{
   public:
-    GUI(String, unsigned int);
+    GUI();
     ~GUI();	
 
     bool injectMouse(unsigned int, unsigned int, bool);
@@ -60,17 +61,28 @@ namespace BetaGUI {
     Window* createWindow(Vector4,String,OgreGuiWindowType,String c="");
     void destroyWindow(Window *w);
     
-    OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
+        OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
     OverlayContainer* createMousePointer(Vector2,String);
 
     unsigned int getUniqueId(void);
     unsigned int getWindowUniqueId(void);
     unsigned int getStaticTextUniqueId(void);
-    unsigned int getFontSize(void);
 
     Ogre::Overlay* getRootOverlay(void);
+    void setGuiTransparency(float);
+    float getGuiTransparency(void);
 
   protected:
+    /** The current GUI transparency value
+      *
+      * This value is kept to be returned by the getGuiTransparency() 
+      * function.
+      *
+      * \sa setGuiTransparency(), getGuiTransparency().
+      *
+      */
+    float guiTransparency;
+
     /** The next Id to create unique names
       *
       * When creating Overlay or other Ogre objects, we need unique names
@@ -97,12 +109,12 @@ namespace BetaGUI {
       * 
       *
       */
-    Overlay* mO;
+    Overlay* rootOverlay;
 
     /** A vector of windows 
       *
       */
-    vector<Window*> WN;
+    vector<Window*> windowList;
 
     /** A window that will be deleted
       *
@@ -112,17 +124,13 @@ namespace BetaGUI {
     /** The overlay used to draw the mouse cursor
       *
       */
-    OverlayContainer* mMP;
+    OverlayContainer* mouseCursorOverlay;
 
     /** The font name used to draw text
       *
       */
-    String mFont;
+    //    String mFont;
 
-    /** The global font size
-      *
-      */
-    unsigned int mFontSize;
   };
 }
 

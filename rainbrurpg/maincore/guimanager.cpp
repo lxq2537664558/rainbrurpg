@@ -263,12 +263,15 @@ unsigned int RainbruRPG::Gui::GuiManager::getTransitionTime(){
   *
   */
 void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
-  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
+  /*  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
     ->getGUISheet();
 
   if (guiSheet!=NULL){
     guiSheet->setAlpha(f);
   }
+  */
+
+  GameEngine::getSingleton().getOgreGui()->setGuiTransparency(f);
 }
 
 /** Called when the gui fadeIn must begin
@@ -317,15 +320,18 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   *
   */
 void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
-  float t;
+  float t=GameEngine::getSingleton().getOgreGui()->getGuiTransparency();
+  GameEngine::getSingleton().getOgreGui()->setGuiTransparency(t+f);
 
-  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
+  /*  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
     ->getGUISheet();
 
   if (guiSheet!=NULL){
     t=guiSheet->getAlpha();
     setGuiTransparency(t+f);
   }
+
+  */
 }
 
 /** Called when the GUI fade out may begin

@@ -29,6 +29,9 @@
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreMaterialManager.h>
 #include <OGRE/OgreStringConverter.h>
+#include <OGRE/OgreTechnique.h>
+#include <OGRE/OgreTextureUnitState.h>
+#include <OGRE/OgreTextAreaOverlayElement.h>
 
 /** Create a named skin based on Ogre::Overlay
   *
@@ -177,11 +180,6 @@ void RainbruRPG::OgreGui::SkinOverlay::
 activateButton(Button* button, bool active){
 
   String s;
-  /*  s="activateButton ";
-  s+=button->getName();
-  LOGI(s.c_str());
-  */
-
   Ogre::OverlayContainer* buttonOverlay= getOverlayByName(button->getName());
 
 
@@ -195,16 +193,6 @@ activateButton(Button* button, bool active){
       if(!ma.isNull()){
 	buttonOverlay->setMaterialName(materialName+".active");
       }
-#ifdef RAINBRU_RPG_DEBUG
-      else{
-	// Cannot get the .active material
-	s="Cannot get material `";
-	s+=materialName;
-	s+=".active";
-	s+="`";
-	LOGW(s.c_str());
-      }
-#endif
 
     }
     else{ // deactivate
@@ -217,7 +205,51 @@ activateButton(Button* button, bool active){
     }
   }
   else{
-    LOGW("Cannot get button's overlay");
+    /** This line was removed because of performances reasons */
+    //    LOGW("Cannot get button's overlay");
   }
 
+}
+
+/** Set the transparency of an overlay
+  *
+  * \param name The Ogre name of the overlay
+  * \param f    The alpha value
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+setTransparency(String name, float f){
+
+  float op=f;
+ 
+  Ogre::OverlayElement* oc=getOverlayByName(name);
+  Technique * tec=oc->getTechnique();
+
+  if (tec){
+    Ogre::TextureUnitState* tus=tec->getPass(0)->getTextureUnitState(0);
+    tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
+			   op, op, 1.0);
+
+  }
+}
+
+/** Set the transparency of a caption
+  *
+  * \param name The Ogre name of the caption overlay
+  * \param f    The alpha value
+  *
+  */
+void RainbruRPG::OgreGui::SkinOverlay::
+setCaptionTransparency(String name, float f){
+
+  float op=f;
+ 
+  Ogre::OverlayElement* oc=getOverlayByName(name);
+
+  Ogre::TextAreaOverlayElement* toe=static_cast<Ogre::TextAreaOverlayElement*>(oc);
+  if (toe){
+    ColourValue cv(toe->getColour());
+    cv.a=op;
+    toe->setColour(cv);
+  }
 }

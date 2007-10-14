@@ -13,14 +13,14 @@
   *
   */
 BetaGUI::Callback::Callback(){
-  type=0;
+  type=OCT_NULL;
 }
 
 /** A constructor based on a function pointer
   *
   */
 BetaGUI::Callback::Callback(void(*functionPointer)(Button *ref)){
-  type=1;
+  type=OCT_FUNC;
   fp=functionPointer;
 }
     
@@ -28,7 +28,7 @@ BetaGUI::Callback::Callback(void(*functionPointer)(Button *ref)){
   *
   */
 BetaGUI::Callback::Callback(BetaGUIListener *L){
-  type=2;
+  type=OCT_LIST;
   LS=L;
 }
 
@@ -37,7 +37,7 @@ BetaGUI::Callback::Callback(BetaGUIListener *L){
   * \param t The new type
   *
   */
-void BetaGUI::Callback::setType(unsigned char t){ 
+void BetaGUI::Callback::setType(BetaGUI::OgreGUICallbackType t){ 
   this->type=t; 
 }
 
@@ -46,6 +46,6 @@ void BetaGUI::Callback::setType(unsigned char t){
   * \return The type
   *
   */
-unsigned char BetaGUI::Callback::getType(void){ 
+BetaGUI::OgreGUICallbackType BetaGUI::Callback::getType(void){ 
   return this->type; 
 }

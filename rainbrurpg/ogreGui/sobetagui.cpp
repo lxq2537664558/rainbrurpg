@@ -29,6 +29,7 @@
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreOverlayContainer.h>
 
+
 /** Default constructor
   *			   
   * It simply creates a SkinOverlay called \e soBetaGUI
@@ -68,7 +69,7 @@ void RainbruRPG::OgreGui::soBetaGui::
 createWindow(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
 
   this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
-
+  setTransparency(name, 0.0);
 }
 
 /** Graphically create a ResizeGrip widget
@@ -83,7 +84,7 @@ createResizeGrip(String name, Vector4 dim, Window* win ){
 
   LOGI("Creating a ResizeGrip widget");
   this->createOverlay(name, dim, mnResizeGrip, win->getOverLayContainer());
-
+  setTransparency(name, 0.0);
 }
 
 /** Graphically create a TitleBar widget
@@ -105,6 +106,8 @@ createTitleBar(String name, Vector4 dim, String caption, Window* win ){
 
   this->createCaption(name+"c", dim, caption, 
 	      fnTitleBar, fsTitleBar,win->getOverLayContainer());
+  setTransparency(name, 0.0);
+  setCaptionTransparency(name+"c", 0.0);
 }
 
 /** Graphically create a PushButton widget
@@ -127,6 +130,10 @@ createPushButton(String name, Vector4 dim, String caption, Window* win ){
 
   this->createCaption(name+"c", dim, caption, 
 	      fnPushButton, fsPushButton,win->getOverLayContainer());
+
+  setTransparency(name, 0.0);
+  setCaptionTransparency(name+"c", 0.0);
+
 }
 
 /** Graphically create a TextInput widget
@@ -134,7 +141,7 @@ createPushButton(String name, Vector4 dim, String caption, Window* win ){
   * \param name    The internal name of the ResizeGrip (must be unique)
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
-  * \param win     The parent window
+  * \param parent  The parent window
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
@@ -150,6 +157,6 @@ createTextInput(String name, Vector4 dim, String caption, Window* parent){
   this->createCaption(name+"c", dim, caption, 
 	      fnTextInput, fsTextInput, parent->getOverLayContainer());
 
-
-
+  setTransparency(name, 0.0);
+  setCaptionTransparency(name+"c", 0.0);
 }

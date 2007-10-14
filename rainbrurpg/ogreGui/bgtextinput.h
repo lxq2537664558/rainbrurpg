@@ -30,7 +30,7 @@ namespace BetaGUI {
     */
   class TextInput : public RainbruRPG::OgreGui::Widget{
   public:
-    TextInput(Vector4, String, String, unsigned int, BetaGUI::Window*);
+    TextInput(Vector4, String, unsigned int, BetaGUI::Window*);
     ~TextInput();
     
     String getValue(void);
@@ -45,31 +45,34 @@ namespace BetaGUI {
     String getNormalMaterialName(void);
     String getActiveMaterialName(void);
 
+    virtual void setTransparency(float);
+
+
  protected: 
     
     /** The overlay used to draw the frame
       *
       *
       */
-    OverlayContainer* mO;
+    OverlayContainer* frameOverlay;
     
     /** The overlay used to draw content
       *
       *
       */
-    OverlayContainer* mCP;
+    OverlayContainer* contentOverlay;
     
     /** The material name used to draw the text input (normal state)
       *
       */
-    String mmn;
+    String normalMaterialName;
     
     /** The material name used to draw the text input when active
       *
       * It is usually mmn+".active"
       *
       */
-    String mma;
+    String activeMaterialName;
 
     /** The current contained text
       *

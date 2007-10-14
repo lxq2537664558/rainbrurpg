@@ -20,7 +20,7 @@
 
 #include "widget.h" 
 
-#include "bggui.h"         // For enum wt
+#include "bggui.h"         // For enum OgreGUIWindowType
 #include "bgbutton.h"
 #include "bgtextinput.h"
 
@@ -41,7 +41,7 @@ namespace BetaGUI {
     ~Window();
 
     BetaGUI::Button* createButton(Vector4, String, String, Callback);
-    BetaGUI::TextInput* createTextInput(Vector4, String, String, unsigned int);
+    BetaGUI::TextInput* createTextInput(Vector4, String, unsigned int);
     void createStaticText(Vector4, String);
 
     void hide();
@@ -57,6 +57,8 @@ namespace BetaGUI {
 
     void addWidget(BetaGUI::Button*);
     void addWidget(BetaGUI::TextInput*);
+
+    void setTransparency(float);
 
   protected:
 

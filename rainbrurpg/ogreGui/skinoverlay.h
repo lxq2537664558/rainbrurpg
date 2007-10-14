@@ -64,6 +64,8 @@ namespace RainbruRPG{
 			 unsigned int, OverlayContainer*);
 
       virtual void activateButton(Button*, bool);
+      virtual void setTransparency(String name, float f);
+      virtual void setCaptionTransparency(String name, float f);
 
     protected:
       /** The resizeGrip material name*/

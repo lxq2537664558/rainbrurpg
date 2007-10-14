@@ -447,25 +447,42 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
 
 /** The keyPressed OIS callback implementation
   *
+  * It injects the pressed key to the OgreGUI::GUI object.
+  *
   * \param evt The OIS event
   *
   * \return An OIS value
   *
   */
 bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
-  // OgreGUI
-  /* It is a very basic keyboard handler. It does not
-   * provide backspace nor over special keys handling.
-   *
-   */
+  // Injecting BackSpace as a special char
   if (evt.key == OIS::KC_BACK){
     GameEngine::getSingleton().getOgreGui()->injectBackspace(mouseX, mouseY);
   }
+  /* The next specials cases (Left shift and Right Shift) are
+   * mandatory. Injecting this in OgreGUI::GUI seems to break
+   * the next injected characters. No more entries can be 
+   * injected if a SHIFT modifier is sent.
+   *
+   */
+  else if (evt.key == OIS::KC_LSHIFT){
+    LOGI("Left shift clicked");
+  }
+  else if (evt.key == OIS::KC_RSHIFT){
+    LOGI("Right shift clicked");
+  }
   else{
     char c=(char)evt.text;
-  Ogre:String s="";
+    Ogre::String s="";
     s+=c;
-    GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
+
+    if (s.size()!=0){
+      LOGCATS("Injecting a char : `");
+      LOGCATS(s.c_str());
+      LOGCATS("`");
+      LOGCAT();
+      GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
+    }
   }
 
   return true;

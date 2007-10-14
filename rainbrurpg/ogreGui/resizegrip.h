@@ -47,6 +47,9 @@ namespace RainbruRPG{
       ResizeGrip(Vector4, Callback, GUI *, Window*);
       ~ResizeGrip();
 
+      virtual void setTransparency(float f);
+
+
     };
 
   }

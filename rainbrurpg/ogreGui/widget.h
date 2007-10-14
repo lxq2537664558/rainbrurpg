@@ -50,6 +50,8 @@ namespace RainbruRPG{
       void setName(Ogre::String);
       Ogre::String getName(void);
 
+      virtual void setTransparency(float);
+
     protected:
       /** The skin identifier of this widget
         *

@@ -39,11 +39,10 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
 
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
-  //  rootOverlay=G->createOverlay(name, Vector2(D.x,D.y),Vector2(D.z,D.w),M); 
-  
   // Create the window
   Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
   sk->createWindow(name, D, caption, G);
+  this->setName(name);
 
   // Get the corresponding overlay if based on SkinOverlay
   SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
@@ -54,7 +53,7 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
   if(t>=2){
     // Create a resize grip
     Callback c;
-    c.setType(4);
+    c.setType(OCT_WIN_RESIZE);
     Vector4 resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
     mRZ=new ResizeGrip(resizeGripDim, c, G, this);
     buttonList.push_back(mRZ);
@@ -63,7 +62,7 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
   if(t==1||t==3){
     // Create a title bar
     Callback c;
-    c.setType(3);
+    c.setType(OCT_WIN_MOVE);
     mTB=new TitleBar(Vector4(0,0,D.z,22),caption,c, G, this);
     buttonList.push_back(mTB);
   }
@@ -99,14 +98,13 @@ BetaGUI::Button* BetaGUI::Window::createButton(Vector4 D,String M,String T,Callb
 /** Create a TextInput control inside this window
   *
   * \param D The dimension of the text input to create
-  * \param M The material to use 
   * \param V The value of the text input
   * \param L The lenght of the text input
   *
   */
-BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String M,String V,unsigned int L){
+BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String V,unsigned int L){
 
-  TextInput *x=new TextInput(D,M,V,L,this);
+  TextInput *x=new TextInput(D,V,L,this);
   textInputList.push_back(x);
   return x;
 }
@@ -134,39 +132,33 @@ void BetaGUI::Window::createStaticText(Vector4 D,String T){
   *
   */
 bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
-  LOGE("activeTextInput debug D");
 
-  String message="Debugging Window::checkKey : ";
-
+  // If no TextInput is active
   if(activeTextInput==0){
-    message+="activeTextInput==0. ";
-    LOGW(message.c_str());
     return false;
   }
 
+  // If this window is not visible
   if(!rootOverlay->isVisible()){
-    message+="rootOverlay is not visible. ";
-  LOGW(message.c_str());
     return false;
   }
 
+  // If the mouse pointer is not in the TextInput
   if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h)){
-    message+="Mouse pointer is not on the widget. ";
-   LOGW(message.c_str());
-   return false;
+    return false;
   }
 
+  // Handles the backspace char
   if(k=="!b"){
     Ogre::String val=activeTextInput->getValue();
     Ogre::String truncated=val.substr(0,val.length()-1);
     activeTextInput->setValue(truncated);
-    LOGI("Entering backspace");
-    return true;
+     return true;
   }
   
+  // If the lenght limit of the textInput is reached, we do nothing
   if(activeTextInput->getValue().length() >= activeTextInput->getLength()){
-    LOGI("Adding a char but lenght is small");
-    return true;
+     return true;
   }
 
   // TextInput::setValue automatically update the contentOverlay text
@@ -262,13 +254,15 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
      * And we change is material to graphically mark it as active.
      */
     activeTextInput=textInputList[i];
-    activeTextInput->getFrameOverlay()->setMaterialName(activeTextInput->getActiveMaterialName());
+    activeTextInput->getFrameOverlay()
+      ->setMaterialName(activeTextInput->getActiveMaterialName());
     return true;
   }
 
   if(activeTextInput){
     LOGE("activeTextInput debug B");
-    activeTextInput->getContentOverlay()->setMaterialName(activeTextInput->getNormalMaterialName());
+    activeTextInput->getContentOverlay()
+      ->setMaterialName(activeTextInput->getNormalMaterialName());
   }
   return true;
 }
@@ -334,9 +328,31 @@ void BetaGUI::Window::addWidget(BetaGUI::Button* btn){
 
 /** Adds a TextInout widget in the button list
   *
-  * \param btn The text input to add
+  * \param ti The text input to add
   *
   */
 void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
   textInputList.push_back(ti);
+}
+
+/** Recursively set the transparency of this window
+  *
+  * Call setTransparency on this window and all its children
+  *
+  * \param f The alpha value (from 0.0f to 1.0f)
+  *
+  * \sa buttonList, textInputList
+  *
+  */
+void BetaGUI::Window::setTransparency(float f){
+  for(unsigned int i=0;i<buttonList.size();i++){
+    buttonList[i]->setTransparency(f);
+  }
+  
+  for(unsigned int i=0;i<textInputList.size();i++){
+    textInputList[i]->setTransparency(f);
+  }
+
+  SkinManager::getSingleton().getSkin(this->skinId)
+    ->setTransparency(name, f);
 }

@@ -9,6 +9,8 @@
 
 #include "bgbutton.h"
 
+#include <logger.h>
+
 #include <OGRE/OgreMaterialManager.h>
 #include <OGRE/OgreStringConverter.h>
 
@@ -154,4 +156,17 @@ void BetaGUI::Button::setY(unsigned int ui){
   */
 Ogre::OverlayContainer* BetaGUI::Button::getOverlayContainer(void){ 
   return mO; 
+}
+
+
+void BetaGUI::Button::setTransparency(float f){
+  LOGI("Changing transpenrency of a Button");
+  LOGCATS("Button name is ");
+  LOGCATS(name.c_str());
+  LOGCAT();
+  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+
+  s->setTransparency(name, f);
+  s->setCaptionTransparency(name+"c", f);
+
 }

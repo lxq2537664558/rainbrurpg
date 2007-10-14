@@ -4,6 +4,13 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
+- Widget are only based on Ogre::Overlay
+  For performance issues due to Ogre::String identifier
+   I must give up skin.h and keep only skinOverlay based skin
+  The skinOverlay function that get a String identifier will now
+   use a OgreOverlay parameter
+  Widget will manage their OverlayContainer pointers
+  Worst FPS with String ID are 94-99
 - gsConnection uses betaGUI
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
@@ -130,7 +137,20 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 * ***************** Changelog ***************************
 * *******************************************************
+
 * v 0.0.5-159
+- Doxygen documentation 
+  Applied to the GUI transparency
+- GUI fading includes caption
+  Skin::setCaptionTransparency handles caption's alpha
+  Skin::satTransparency handles standard overlays's one
+- Overlay's caption fading
+  OK by setting a color with Alpha channel to Ogre::TextAreaOverlayElement
+- Ogre::Overlay fading ok but caption's bug
+- BetaGUI::GUI clean up
+- Callback type become an enumeration
+- TextInput constructor doesn't need a material name anymore
+- Using Shift (to upper- case) in a TextInout doesn't work   FIXED
 - Textinput text entry comes back
 - Implement correctly TextInput's caption
 

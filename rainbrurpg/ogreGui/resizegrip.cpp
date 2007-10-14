@@ -21,8 +21,10 @@
  */
 
 #include "resizegrip.h"
-
 #include "skinoverlay.h"
+
+#include <logger.h>
+
 #include <OGRE/OgreStringConverter.h>
 
 /** The constructor
@@ -57,5 +59,18 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G,Window* parent)
   *
   */
 RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
+
+}
+
+// special case of button (no caption overlay)
+void RainbruRPG::OgreGui::ResizeGrip::setTransparency(float f){
+  LOGI("Changing transpenrency of a ResizeGrip");
+  LOGCATS("Button name is ");
+  LOGCATS(name.c_str());
+  LOGCAT();
+  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+
+  s->setTransparency(name, f);
+  //  s->setCaptionTransparency(name+"c", f);
 
 }
