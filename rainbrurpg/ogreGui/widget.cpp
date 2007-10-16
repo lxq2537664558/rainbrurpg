@@ -22,8 +22,6 @@
 
 #include "widget.h"
 
-#include "skin.h"
-
 /** A constructor passing the skin identifier
   *
   * \param sid The SkinIdentifier
@@ -69,17 +67,4 @@ void RainbruRPG::OgreGui::Widget::setName(Ogre::String s){
   */
 Ogre::String RainbruRPG::OgreGui::Widget::getName(void){
   return this->name;
-}
-
-/** The base transparency (i.e. alpha) change method
-  *
-  * This method can be reimplemented in some subclasses, for example
-  * for widget with caption.
-  *
-  * \param f The new alpha value
-  *
-  */
-void RainbruRPG::OgreGui::Widget::setTransparency(float f){
-  SkinManager::getSingleton().getSkin(this->skinId)
-    ->setTransparency(name, f);
 }

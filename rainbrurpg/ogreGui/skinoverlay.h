@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 15 oct 2007 : Skin class removed
  * - 27 sep 2007 : starting implementation
  *         
  */
@@ -28,12 +29,19 @@
 #ifndef _OGRE_GUI_SKIN_OVERLAY_H_
 #define _OGRE_GUI_SKIN_OVERLAY_H_
 
-#include "skin.h"
-
 #include <string>
 #include <OGRE/OgreOverlayContainer.h>
 
+// Forward declarations
+namespace BetaGUI{
+  class Button;
+  class GUI;
+  class Window;
+}
+// End of forward declarations
+
 using namespace Ogre;
+using namespace BetaGUI;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -51,7 +59,7 @@ namespace RainbruRPG{
       * the material name.
       *
       */
-    class SkinOverlay: public Skin{
+    class SkinOverlay{
     public:
       SkinOverlay(std::string n="unamedSkinOverlay");
 
@@ -63,9 +71,68 @@ namespace RainbruRPG{
       void createCaption(String, Vector4, String, String, 
 			 unsigned int, OverlayContainer*);
 
-      virtual void activateButton(Button*, bool);
-      virtual void setTransparency(String name, float f);
-      virtual void setCaptionTransparency(String name, float f);
+      virtual void setTransparency(Ogre::OverlayElement*, float f);
+      virtual void setCaptionTransparency(Ogre::OverlayElement*, float f);
+
+     /** Create a window
+        *
+        * Please see the sub-class documentation for implementation
+        * details.
+        *
+        * \param name    The internal name of the window
+        * \param dim     The window's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param caption The title bar caption
+        * \param bg      The BetaGUI::GUI object 
+        *
+        */
+      virtual void createWindow(String name, Vector4 dim, String caption, 
+                                GUI* bg)=0;
+      /** Graphically create a ResizeGrip widget
+        *
+        * \param name    The internal name of the ResizeGrip (must be unique)
+        * \param dim     The widget's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param parent  The parent window
+        *
+        */
+     virtual void createResizeGrip(String name, Vector4 dim, Window* parent)=0;
+
+      /** Graphically create a TitleBar widget
+        *
+        * \param name    The internal name of the ResizeGrip (must be unique)
+        * \param dim     The widget's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param caption The rendered text
+        * \param parent  The parent window
+        *
+        */
+     virtual void createTitleBar(String name, Vector4 dim, String caption,Window* parent)=0;
+
+      /** Graphically create a PushButton widget
+        *
+        * \param name    The internal name of the push button (must be unique)
+        * \param dim     The widget's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param caption The rendered text
+        * \param parent  The parent window
+        *
+        */
+     virtual void createPushButton(String name, Vector4 dim, String caption, Window* parent)=0;
+
+      /** Graphically create a TextInput widget
+        *
+        * \param name    The internal name of the widget (must be unique)
+        * \param dim     The widget's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param caption The rendered text
+        * \param parent  The parent window
+        *
+        */
+     virtual void createTextInput(String name, Vector4 dim, String caption, Window* parent)=0;
+
+     virtual void activateButton(Button* button, bool active);
+
 
     protected:
       /** The resizeGrip material name*/

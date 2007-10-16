@@ -48,6 +48,10 @@ namespace RainbruRPG{
       TitleBar(Vector4, String, Callback, GUI*, Window*);
       ~TitleBar();
 
+      virtual void setTransparency(float);
+
+      void setWidth(unsigned int);
+
     };
 
   }

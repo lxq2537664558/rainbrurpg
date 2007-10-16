@@ -33,10 +33,15 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG{
   namespace Gui{
 
-    /** The xident description server dialog
+    /** The xident technical note dialog
       *
-      * It is used by the xIdent tool to show the description of a server.
-      * The description is read-only.
+      * This is a FOX dialog used to show the server's technical note in the
+      * xIdent tool. The
+      * technical note text field is read only and can be null. The design
+      * of this dialog is very similar to the ServerDesc one.
+      *
+      * \sa ServerDesc
+      *
       */
     class ServerTechNote : public FXDialogBox{
       FXDECLARE(ServerTechNote)

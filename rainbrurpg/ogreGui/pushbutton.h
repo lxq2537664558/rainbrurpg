@@ -46,6 +46,7 @@ namespace RainbruRPG{
       PushButton(Vector4, String, Callback, GUI*, Window*);
       ~PushButton();
 
+      virtual void setTransparency(float);
     };
 
   }

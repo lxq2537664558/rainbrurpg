@@ -17,7 +17,11 @@
   *
   */
 BetaGUI::GUI::GUI()
-  :mXW(0), mouseCursorOverlay(0),wc(0),bc(0),tc(0){
+  :mXW(0), mouseCursorOverlay(0),
+   resizedWindow(NULL),
+   movedWindow(NULL),
+   wc(0),bc(0),tc(0){
+
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
 }
@@ -62,25 +66,40 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   *
   */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
-  if(mouseCursorOverlay)mouseCursorOverlay->setPosition(x,y);
+
+  if(mouseCursorOverlay){
+    mouseCursorOverlay->setPosition(x,y);
+  }
+
+  if (resizedWindow&&LMB){
+    resizedWindow->resize(x, y);
+    return true;
+  }
+  else if(movedWindow&&LMB){
+    movedWindow->move(x, y);
+  }
+  else{
+    resizedWindow=NULL;
+    movedWindow=NULL;
   
-  if(mXW){
-    for(vector<Window*>::iterator i=windowList.begin();i!=windowList.end();i++){
-      if(mXW==(*i)){
-	delete mXW;
-	windowList.erase(i);
-	mXW=0;
-	return false;
+    if(mXW){
+      for(vector<Window*>::iterator i=windowList.begin();i!=windowList.end();i++){
+	if(mXW==(*i)){
+	  delete mXW;
+	  windowList.erase(i);
+	  mXW=0;
+	  return false;
+	}
       }
     }
-  }
-  
-  for(unsigned int i=0;i<windowList.size();i++){
-    if(windowList[i]->check(x,y,LMB)){
-      return true;
+    
+    for(unsigned int i=0;i<windowList.size();i++){
+      if(windowList[i]->check(x,y,LMB)){
+	return true;
+      }
     }
+    return false;
   }
-  return false;
 }
 
 /** Inject the given key at the given position into the system
@@ -142,8 +161,6 @@ createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
 
   if (C!=""){
     e->setCaption(C);
-    //    e->setParameter("font_name",mFont);
-    //   e->setParameter("char_height",StringConverter::toString(mFontSize));
   }
 
   if(A){
@@ -248,4 +265,26 @@ void BetaGUI::GUI::setGuiTransparency(float f){
   */
 float BetaGUI::GUI::getGuiTransparency(void){
   return this->guiTransparency;
+}
+
+/** Change the currently resized Window
+  *
+  * \param w The window to be resized
+  *
+  * \sa resizedWindow (member), injectMouse().
+  *
+  */
+void BetaGUI::GUI::setResizedWindow(Window* w){
+  this->resizedWindow=w;
+}
+
+/** Change the currently moved Window
+  *
+  * \param w The window to be moved
+  *
+  * \sa movedWindow (member), injectMouse().
+  *
+  */
+void BetaGUI::GUI::setMovedWindow(Window* w){
+  this->movedWindow=w;
 }

@@ -31,6 +31,7 @@ BetaGUI::Button::Button(Vector4 D, String M, String T, Callback C, Window* P)
 		 h(D.w){
 
   callback=C;
+
 }
 
 /** The destructor
@@ -151,6 +152,10 @@ void BetaGUI::Button::setY(unsigned int ui){
 
 /** Get the root overlay
   *
+  * We can't set the caption transparency here as ResizeGrip doesn't
+  * have a caption overlay. The caption transpareny \b must be set
+  * in subclasses that uses caption.
+  *
   * \return The Ogre overlay drawing this button
   *
   */
@@ -164,9 +169,8 @@ void BetaGUI::Button::setTransparency(float f){
   LOGCATS("Button name is ");
   LOGCATS(name.c_str());
   LOGCAT();
-  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
 
-  s->setTransparency(name, f);
-  s->setCaptionTransparency(name+"c", f);
+  s->setTransparency(mO, f);
 
 }

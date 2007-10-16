@@ -29,7 +29,7 @@
 #define _OGRE_GUI_SKIN_MANAGER_H_
 
 #include "singleton.h"
-#include "skin.h"
+#include "skinoverlay.h"
 
 #include <vector>
 
@@ -77,7 +77,7 @@ namespace RainbruRPG{
     public:
 
       void init();
-      RainbruRPG::OgreGui::Skin* getSkin(RainbruRPG::OgreGui::OgreGuiSkinID);
+      RainbruRPG::OgreGui::SkinOverlay* getSkin(RainbruRPG::OgreGui::OgreGuiSkinID);
 
     private:
       /** A vector of skins 
@@ -88,7 +88,7 @@ namespace RainbruRPG{
 	* \sa init()
 	*
 	*/
-      vector<RainbruRPG::OgreGui::Skin*> skins;
+      vector<RainbruRPG::OgreGui::SkinOverlay*> skins;
 
       /** The default skin 
         *

@@ -24,7 +24,16 @@
 #include "bgbutton.h"
 #include "bgtextinput.h"
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class TitleBar;
+  }
+}
+// End of forward declarations
+
 using namespace Ogre;
+using namespace RainbruRPG::OgreGui;
 
 namespace BetaGUI {
 
@@ -58,7 +67,11 @@ namespace BetaGUI {
     void addWidget(BetaGUI::Button*);
     void addWidget(BetaGUI::TextInput*);
 
-    void setTransparency(float);
+   void setTransparency(float);
+   void setMinimalSize(unsigned int, unsigned int);
+
+   void resize(unsigned int, unsigned int);
+   void move(unsigned int, unsigned int);
 
   protected:
 
@@ -69,15 +82,39 @@ namespace BetaGUI {
     /** Defines a button */
     Button* mAB;
     /** Defines a button */
-    Button* mTB;
-    /** The X position of the window */
-    unsigned int x;
-    /** The Y position of the window */
-    unsigned int y;
-    /** The width of the window */
-    unsigned int w;
-    /** The height of the window */
-    unsigned int h;
+    TitleBar* mTB;
+    /** The X position of the window 
+      *
+      * This value is signed to allow negative values. If not, when we
+      * move Window and the value should be negative, it get an 
+      * extremly high positive value.
+      *
+      */
+    int x;
+    /** The Y position of the window  
+      *
+      * This value is signed to allow negative values. If not, when we
+      * move Window and the value should be negative, it get an 
+      * extremly high positive value.
+      *
+      */
+    int y;
+    /** The width of the window  
+      *
+      * This value is signed to allow negative values. If not, when we
+      * move Window and the value should be negative, it get an 
+      * extremly high positive value.
+      *
+      */
+    int w;
+    /** The height of the window  
+      *
+      * This value is signed to allow negative values. If not, when we
+      * move Window and the value should be negative, it get an 
+      * extremly high positive value.
+      *
+      */
+    int h;
     /** The GUI object used to draw this window */
     GUI* mGUI;
     /** The overlay container drawing this widget */
@@ -86,6 +123,41 @@ namespace BetaGUI {
     vector<BetaGUI::Button*> buttonList;
     /** A vector of TextInput */
     vector<BetaGUI::TextInput*> textInputList;
+    /** Kept the devX when moving the window 
+      *
+      * We keep here the distance between the window position and the mouse
+      * position to move the window according to this value.
+      *
+      * \sa \ref BetaGUI::Window::move "move()",
+      *     \ref BetaGUI::Window::check "check()"
+      *
+      */
+    unsigned int movingDevX;
+    /** Kept the devY when moving the window 
+      *
+      * We keep here the distance between the window position and the mouse
+      * position to move the window according to this value.
+      *
+      */
+    unsigned int movingDevY;
+
+    /** The minimal width of this window
+      *
+      * This window should never be smaller than this value. This value
+      * is by dafault the constructor's width parameter.
+      *
+      */
+    unsigned int minimalWidth;
+
+    /** The minimal height of this window
+      *
+      * This window should never be smaller than this value. This value
+      * is by dafault the constructor's width parameter.
+      *
+      */
+    unsigned int minimalHeight;
+
+
   };
 
 

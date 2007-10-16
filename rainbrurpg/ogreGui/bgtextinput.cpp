@@ -30,7 +30,7 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent)
    activeMaterialName(""),
    length(L){
   
-  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
 
@@ -38,11 +38,9 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent)
 
   sk->createTextInput(uniqueName, dim, caption, parent);
 
-  // Get the corresponding overlay if based on SkinOverlay
-  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
-  if (sko){
-    frameOverlay=sko->getOverlayByName(uniqueName);
-    contentOverlay=sko->getOverlayByName(uniqueName+"c");
+  if (sk){
+    frameOverlay=sk->getOverlayByName(uniqueName);
+    contentOverlay=sk->getOverlayByName(uniqueName+"c");
 
     // Get the materials names
     normalMaterialName=frameOverlay->getMaterialName();
@@ -139,9 +137,9 @@ Ogre::String BetaGUI::TextInput::getActiveMaterialName(void){
 }
 
 void BetaGUI::TextInput::setTransparency(float f){
-  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
 
-  s->setTransparency(name, f);
-  s->setCaptionTransparency(name+"c", f);
+  s->setTransparency(frameOverlay, f);
+  s->setCaptionTransparency(contentOverlay, f);
 
 }

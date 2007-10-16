@@ -40,7 +40,11 @@ namespace RainbruRPG{
     /** The xident description server dialog
       *
       * It is used by the xIdent tool to show the description of a server.
-      * The description is read-only.
+      * The description is read-only. The design of this dialog is very 
+      * similar to the ServerTechNote one.
+      *
+      * \sa ServerTechNote
+      *
       */
     class ServerDesc : public FXDialogBox{
       FXDECLARE(ServerDesc)

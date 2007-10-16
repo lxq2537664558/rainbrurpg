@@ -24,6 +24,8 @@
 
 /** The identified constructor
   *
+  * It initialize the data pointer with the \c new operator.
+  *
   * \param r The response identifier
   *
   */
@@ -37,6 +39,8 @@ RainbruRPG::Network::npFlooder0004::npFlooder0004(guint16 r)
 
 /** The destructor     
   *
+  * It deallocates the data pointer with the delete operator.
+  *
   */
 RainbruRPG::Network::npFlooder0004::~npFlooder0004(){
   delete data;
@@ -44,7 +48,8 @@ RainbruRPG::Network::npFlooder0004::~npFlooder0004(){
 
 /** Prepare the packet to be sent over the network
   *
-  * It initialize the data values with the local private fields.
+  * It initialize the data values with the local private fields and
+  * set up data to be sent over network.
   *
   */
 void RainbruRPG::Network::npFlooder0004::netSerialize(){
@@ -55,7 +60,7 @@ void RainbruRPG::Network::npFlooder0004::netSerialize(){
 /** Get the values from a packet comming from the network
   *
   * It initialize the local private fields with the
-  * data.
+  * data to translate from network data to local structure.
   *
   */
 void RainbruRPG::Network::npFlooder0004::netDeserialize(){
@@ -88,6 +93,8 @@ size_t RainbruRPG::Network::npFlooder0004::getDataLength(){
 }
 
 /** Set the data from the ENetPacket
+  *
+  * Using \c memcpy, this set the \c d content in the local data member.
   *
   * \param d The ENet data of the packet
   * \param len The packet length in byte

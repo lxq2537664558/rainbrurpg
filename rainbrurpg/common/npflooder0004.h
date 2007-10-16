@@ -78,7 +78,7 @@ namespace RainbruRPG{
       * send several packets of this type and wait for response from the 
       * server. We can compute the response time and make test.
       *
-      * \sa tNetPacketIdentifier, Gui::NetFlooderWindow
+      * \sa tNetPacketIdentifier, Gui::NetFlooderWindow, npFlooder0004Data
       *
       */
     class npFlooder0004 : public NetPacketFlooderBase {

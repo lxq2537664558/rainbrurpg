@@ -50,7 +50,13 @@ namespace RainbruRPG{
       void setName(Ogre::String);
       Ogre::String getName(void);
 
-      virtual void setTransparency(float);
+      /** A pure virtual function used to set the transparency of the widget
+        *
+	* \param f A float number between 0.0f (fully transparent) and 
+	*          1.0f (opaque).
+	*
+	*/
+      virtual void setTransparency(float f)=0;
 
     protected:
       /** The skin identifier of this widget
@@ -66,6 +72,9 @@ namespace RainbruRPG{
 	*
 	*/
       Ogre::String name;
+
+      /** The overlay used to draw all widgets */
+      Ogre::OverlayContainer* frameOverlay;
     };
   }
 }

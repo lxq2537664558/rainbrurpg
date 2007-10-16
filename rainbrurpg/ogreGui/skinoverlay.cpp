@@ -38,8 +38,7 @@
   * \param n The name of the new skin
   *
   */
-RainbruRPG::OgreGui::SkinOverlay::SkinOverlay(std::string n) 
-  :Skin(n){
+RainbruRPG::OgreGui::SkinOverlay::SkinOverlay(std::string n){
 
 }
 
@@ -115,6 +114,8 @@ createOverlay(String name, Vector4 dim,String materialName,
   * This fucntion is used by createOverlay(...) method to avoid
   * repeated code.
   *
+  * This overlay is fully transparent using setTransparency().
+  *
   * \sa createOverlay(String, Vector4, String, Overlay*),
   *     createOverlay(String, Vector4, String, OverlayContainer*)
   *
@@ -133,10 +134,14 @@ createOverlayImpl(String name, Vector4 dim, String materialName){
   e->setPosition(dim.x,dim.y);
   e->setMaterialName(materialName);
 
+  setTransparency(e, 0.0);
+
   return e;
 }
 
 /** Graphically creates a text
+  *
+  * This overlay is fully transparent using setCaptionTransparency().
   *
   * \param name     The overlay name (must be unique)
   * \param dim      The overlay dimensions
@@ -161,6 +166,8 @@ createCaption(String name, Vector4 dim, String caption,
   e->setCaption(caption);
   e->setParameter("font_name",fontName);
   e->setParameter("char_height",StringConverter::toString(fontSize));
+
+  setCaptionTransparency(e, 0.0);
 
   parent->addChild(e);
   e->show();
@@ -213,17 +220,16 @@ activateButton(Button* button, bool active){
 
 /** Set the transparency of an overlay
   *
-  * \param name The Ogre name of the overlay
+  * \param elem The Ogre overlay
   * \param f    The alpha value
   *
   */
 void RainbruRPG::OgreGui::SkinOverlay::
-setTransparency(String name, float f){
+setTransparency(Ogre::OverlayElement* elem, float f){
 
   float op=f;
  
-  Ogre::OverlayElement* oc=getOverlayByName(name);
-  Technique * tec=oc->getTechnique();
+  Technique * tec=elem->getTechnique();
 
   if (tec){
     Ogre::TextureUnitState* tus=tec->getPass(0)->getTextureUnitState(0);
@@ -235,21 +241,18 @@ setTransparency(String name, float f){
 
 /** Set the transparency of a caption
   *
-  * \param name The Ogre name of the caption overlay
+  * \param elem The Ogre overlay
   * \param f    The alpha value
   *
   */
 void RainbruRPG::OgreGui::SkinOverlay::
-setCaptionTransparency(String name, float f){
+setCaptionTransparency(Ogre::OverlayElement* elem, float f){
 
-  float op=f;
- 
-  Ogre::OverlayElement* oc=getOverlayByName(name);
 
-  Ogre::TextAreaOverlayElement* toe=static_cast<Ogre::TextAreaOverlayElement*>(oc);
+  Ogre::TextAreaOverlayElement* toe=static_cast<Ogre::TextAreaOverlayElement*>(elem);
   if (toe){
     ColourValue cv(toe->getColour());
-    cv.a=op;
+    cv.a=f;
     toe->setColour(cv);
   }
 }

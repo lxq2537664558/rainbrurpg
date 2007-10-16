@@ -40,18 +40,13 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G,Window* parent)
   :Button(dim, "", "", callback, parent)
 
 {
-  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
   this->setName(uniqueName);
 
   sk->createResizeGrip(uniqueName, dim, parent);
-
-  // Get the corresponding overlay if based on SkinOverlay
-  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
-  if (sko){
-    mO=sko->getOverlayByName(uniqueName);
-  }
+  mO=sk->getOverlayByName(uniqueName);
 
 }
 
@@ -68,9 +63,8 @@ void RainbruRPG::OgreGui::ResizeGrip::setTransparency(float f){
   LOGCATS("Button name is ");
   LOGCATS(name.c_str());
   LOGCAT();
-  Skin* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
 
-  s->setTransparency(name, f);
-  //  s->setCaptionTransparency(name+"c", f);
+  s->setTransparency(mO, f);
 
 }

@@ -38,6 +38,9 @@ FXIMPLEMENT(RainbruRPG::Gui::ServerDesc,FXDialogBox,ServerDescMap,ARRAYNUMBER(Se
 
 /** The server description dialog constructor
   *
+  * Creates the dialog itself. The server description is retrieved by
+  * the getServerDesc() function.
+  *
   * \param a The FXApplication the dialog will be used with
   * \param serverName The name of server, you want the description from
   *
@@ -76,6 +79,9 @@ RainbruRPG::Gui::ServerDesc::~ServerDesc(){
 }
 
 /** The FOXToolkit create method
+  *
+  * Call the FOX create() method on the dialog base class (FXDialogBox)
+  * then call show with the \c PLACEMENT_SCREEN parameter.
   *
   */
 void RainbruRPG::Gui::ServerDesc::create(){

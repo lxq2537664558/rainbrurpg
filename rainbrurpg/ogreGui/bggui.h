@@ -48,6 +48,13 @@ namespace BetaGUI {
     * input events (mouse and keys) and manage unique identifiers to
     * get unique widget names.
     *
+    * The window's resize mechanism was heavilly modified from BetaGUI. It
+    * was a bug when the mouse movements were too fast. Now, the currently
+    * resized window is set in the local pointer \ref
+    * GUI::resizedWindow "resizedWindow".
+    *
+    * \sa \ref GUI::resizedWindow "resizedWindow".
+    *
     */
   class GUI{
   public:
@@ -71,6 +78,9 @@ namespace BetaGUI {
     Ogre::Overlay* getRootOverlay(void);
     void setGuiTransparency(float);
     float getGuiTransparency(void);
+
+    void setResizedWindow(Window*);
+    void setMovedWindow(Window*);
 
   protected:
     /** The current GUI transparency value
@@ -126,11 +136,27 @@ namespace BetaGUI {
       */
     OverlayContainer* mouseCursorOverlay;
 
-    /** The font name used to draw text
+    /** A pointer to the currently resized window
+      *
+      * This pointer is \c NULL by default. Its value change when a
+      * ResizeGrip is pointed. It is used in the injectMouse() function
+      * implementation. Please see it for further details.
+      *
+      * \sa setResizedWindow(), injectMouse().
       *
       */
-    //    String mFont;
+    Window* resizedWindow;
 
+    /** A pointer to the currently moved window
+      *
+      * This pointer is \c NULL by default. Its value change when a
+      * TitleBar is pointed. It is used in the injectMouse() function
+      * implementation. Please see it for further details.
+      *
+      * \sa setMovedWindow(), injectMouse().
+      *
+      */
+    Window* movedWindow;
   };
 }
 

@@ -36,7 +36,11 @@ FXIMPLEMENT(RainbruRPG::Gui::ServerTechNote,FXDialogBox,ServerTechNoteMap,ARRAYN
 
 /** The server technical note dialog constructor
   *
-  * \param a The FXApplication the dialog will be used with
+  * It creates the GUI dialog based on FOX toolkit and show the 
+  * server's technical note retrieved by the getServerTechNote() function.
+  * The server is identified by its name.
+  *
+  * \param a          The FXApplication the dialog will be used with
   * \param serverName The name of server, you want the technote from
   *
   */
@@ -74,6 +78,9 @@ RainbruRPG::Gui::ServerTechNote::~ServerTechNote(){
 
 /** The FOXToolkit create method
   *
+  * Call the FOX create() method on the dialog base class (FXDialogBox)
+  * then call show with the \c PLACEMENT_SCREEN parameter.
+  *
   */
 void RainbruRPG::Gui::ServerTechNote::create(){
   FXDialogBox::create();
@@ -98,7 +105,8 @@ onNotYetImplemented(FXObject * o,FXSelector s,void* v){
 
 /** The OK button callback
   *
-  * Simply closes the dialog.
+  * Simply closes the dialog by sending the FXDialogBox::ID_ACCEPT to
+  * the base FXDialogBox.
   *
   * \param o A parameter used for FOX callbacks
   * \param s A parameter used for FOX callbacks

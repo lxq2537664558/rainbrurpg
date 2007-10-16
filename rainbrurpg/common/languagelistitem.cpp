@@ -25,6 +25,9 @@
 
 /** The default constructor
   *
+  * It initializes all local value at 0 or an empty string. defaultLanguage
+  * and currentLanguage are set to \c false.
+  *
   */
 RainbruRPG::Options::LanguageListItem::LanguageListItem(){
   languageCode="";
@@ -38,6 +41,11 @@ RainbruRPG::Options::LanguageListItem::LanguageListItem(){
 }
 
 /** The copy constructor
+  *
+  * Set the local variables values as the LanguageListItem passed as 
+  * parameter.
+  *
+  * \param l The item to get initial values from.
   *
   */
 RainbruRPG::Options::LanguageListItem::

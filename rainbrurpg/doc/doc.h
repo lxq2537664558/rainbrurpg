@@ -467,7 +467,8 @@
   * (http://www.ogre3d.org/wiki/index.php/BetaGUI)
   *
   * An important class is \ref RainbruRPG::OgreGui::SkinManager "SkinManager"
-  * which manages a vector of \ref RainbruRPG::OgreGui::Skin "Skin" objects.
+  * which manages a vector of \ref RainbruRPG::OgreGui::SkinOverlay 
+  * "SkinOverlay" objects.
   *
   * This namespace works with BetaGUI, the historical betaGUI namespace.
   * 

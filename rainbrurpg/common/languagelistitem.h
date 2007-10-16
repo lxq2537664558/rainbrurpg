@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 14 oct 2007 : Documentation update
+ *
+ */
+
 #ifndef LANGUAGE_LIST_ITEM_H
 #define LANGUAGE_LIST_ITEM_H
 
@@ -30,10 +35,37 @@ using namespace RainbruRPG::Core;
 namespace RainbruRPG{
   namespace Options{
 
-    /** A class defining a language
+    /** A class defining a language.
       *
-      * It represents a Language/Country pair.
-      * The language configuration file is config/languages.xml
+      * It represents a Language/Country pair, used in tLanguageList.
+      * These values is shown in \ref RainbruRPG::Gui::LanguageSelector
+      * "LanguageSelector" to provides a language selection for the user.
+      *
+      * \sa tLanguageList, \ref RainbruRPG::Gui::LanguageSelector
+      * "LanguageSelector".
+      *
+      * \section LanguageListItem_design_sec Design
+      *
+      * Typically, a language (i.e. english) can be spoke in many countries
+      * with some local particularities (U.S. vs England). Wich explains
+      * why a language is defined by a Language/Country pair. This class
+      * provides this pair. 
+      * 
+      * Each language is identified by a 2-letters code and a description 
+      * text. Each country is also identified by a code and a description.
+      * The difference is that language code is only lower case and country 
+      * code is only upper case. So, you can identify a Language/Country pair
+      * by a single text identifier where country code is separated from
+      * the language code by a underscore : \c en_US.
+      *
+      * This class provide a completion percent to provide to the user
+      * the ability to view if its prefered language translation is
+      * ended or in-progress.
+      *
+      * \section LanguageListItem_files_sec Configuration files
+      *
+      * The language configuration file is <em>config/languages.xml</em> and
+      * the xmlLanguage class is responsible of its loading.
       *
       */
     class LanguageListItem{
@@ -69,7 +101,7 @@ namespace RainbruRPG{
     private:
       /** The code of the language
         *
-	* It is a 2 character code in lower case.
+	* It is a 2 characters code in lower case.
 	*
 	*/
       const char* languageCode;
@@ -95,13 +127,13 @@ namespace RainbruRPG{
       float completePerCent;
       /** Is it the default language ?
         *
-	* It is set by xmlLanguage
+	* It is set by xmlLanguage.
 	*
 	*/
       bool defaultLanguage;
       /** Is it the current language ?
         *
-	* It is set by xmlLanguage
+	* It is set by xmlLanguage.
 	*
 	*/
       bool currentLanguage;

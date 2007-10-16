@@ -35,7 +35,7 @@ void RainbruRPG::OgreGui::SkinManager::init(){
   LOGI("Initialising SkinManager");
   defaultSkin=OSI_BETAGUI;
 
-  Skin* sbg=new soBetaGui();
+  SkinOverlay* sbg=new soBetaGui();
   skins.push_back(sbg);
   // Contol sbg correct index
   if (skins.size()!=OSI_BETAGUI+1){
@@ -48,7 +48,7 @@ void RainbruRPG::OgreGui::SkinManager::init(){
   * \param s The identifier of the skin you want
   *
   */
-RainbruRPG::OgreGui::Skin* RainbruRPG::OgreGui::SkinManager::
+RainbruRPG::OgreGui::SkinOverlay* RainbruRPG::OgreGui::SkinManager::
 getSkin(RainbruRPG::OgreGui::OgreGuiSkinID s){
 
   if (s==OSI_DEFAULT){

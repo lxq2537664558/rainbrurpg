@@ -1,4 +1,3 @@
-#lib_LTLIBRARIES = librainbrurpg-ogregui.la
 lib_LTLIBRARIES = librainbrurpg-ogregui.la
 
 librainbrurpg_ogregui.adir=$(libdir)
@@ -12,7 +11,6 @@ h_sources= bgbutton.h			\
 	   object.h			\
 	   pushbutton.h			\
 	   resizegrip.h			\
-	   skin.h			\
 	   skinmanager.h		\
 	   skinoverlay.h		\
 	   sobetagui.h			\
@@ -28,7 +26,6 @@ cc_sources= bgbutton.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    resizegrip.cpp		\
-	    skin.cpp			\
 	    skinmanager.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
@@ -40,9 +37,10 @@ library_include_HEADERS = $(h_sources)
 
 librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
-INCLUDES = -I$(top_srcdir)/common
+INCLUDES = -I$(top_srcdir)/common	\
+	   -I$(top_srcdir)/maincore	\
+	   -I/usr/local/include/OGRE 
 
-#lib_LTLIBRARIES= libexamplelib-1.0.la
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
 librainbrurpg_ogregui_la_LIBADD= 

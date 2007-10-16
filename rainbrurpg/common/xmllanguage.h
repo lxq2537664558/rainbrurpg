@@ -32,7 +32,7 @@
 namespace RainbruRPG{
   namespace Options{
 
-    /** A STL list of manguage
+    /** A STL list of language
       *
       */
     typedef std::list<LanguageListItem*> tLanguageList;

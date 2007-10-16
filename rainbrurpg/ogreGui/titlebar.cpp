@@ -43,18 +43,15 @@ TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, Window* parent)
   :Button(dim, "", caption, callback, parent)
 {
 
-  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
   this->setName(uniqueName);
 
   sk->createTitleBar(uniqueName, dim, caption, parent);
+  mO=sk->getOverlayByName(uniqueName);
+  mCP=sk->getOverlayByName(uniqueName+"c");
 
-  // Get the corresponding overlay if based on SkinOverlay
-  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
-  if (sko){
-    mO=sko->getOverlayByName(uniqueName);
-  }
 }
 
 /** The destructor
@@ -62,4 +59,16 @@ TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, Window* parent)
   */
 RainbruRPG::OgreGui::TitleBar::~TitleBar(){
 
+}
+
+void RainbruRPG::OgreGui::TitleBar::setTransparency(float f){
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  s->setTransparency(mO, f);
+  s->setCaptionTransparency(mCP, f);
+}
+
+void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
+  w=ui;
+  mO->setWidth(ui);
+  mCP->setWidth(ui);
 }

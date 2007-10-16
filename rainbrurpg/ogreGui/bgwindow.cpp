@@ -16,12 +16,18 @@
 #include "titlebar.h"
 
 #include <logger.h>
+#include <gameengine.h>
 
 #include <OGRE/OgreStringConverter.h>
 
+using namespace RainbruRPG::Core;
 using namespace RainbruRPG::OgreGui;
 
 /** The constructor
+  *
+  * The minimal allowed size when window is resized is by default the
+  * initials dimensions. Please use setMinimalSize() to set this values
+  * manually.
   *
   * \param D       The dimensions of the window to create as a Ogre vector
   * \param M       The name of the Ogre material to apply to the new window
@@ -32,7 +38,12 @@ using namespace RainbruRPG::OgreGui;
   */
 BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption, 
 			GUI *G)
-  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),activeTextInput(0),mAB(0){
+  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),activeTextInput(0),
+   movingDevX(0),
+   movingDevY(0),
+   minimalWidth(D.z),
+   minimalHeight(D.w),
+   mAB(0){
 
 
   rootOverlay=NULL;
@@ -40,15 +51,11 @@ BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption,
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
   // Create the window
-  Skin* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
   sk->createWindow(name, D, caption, G);
   this->setName(name);
 
-  // Get the corresponding overlay if based on SkinOverlay
-  SkinOverlay* sko=static_cast<SkinOverlay*>(sk);
-  if (sko){
-    rootOverlay=sko->getOverlayByName(name);
-  }
+  rootOverlay=sk->getOverlayByName(name);
 
   if(t>=2){
     // Create a resize grip
@@ -221,15 +228,16 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       mAB->getCallback().LS->onButtonPress(mAB);
       return true;
       
-    case 3:
-      rootOverlay->setPosition(x=px-(mAB->getWidth()/2),y=py-(mAB->getHeight()/2));
+    case 3: // We start moving the Window
+      GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
+      movingDevX=px-x;
+      movingDevY=py-y;
+      this->move(px, py);
       return true;
       
-    case 4:
-      rootOverlay->setDimensions(w=px-x+8,h=py-y+8);
-      mRZ->setX(w-16);
-      mRZ->setY(h-16);
-      mRZ->getOverlayContainer()->setPosition(mRZ->getX(),mRZ->getY());
+    case 4: // We start resizing this window
+      GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
+      this->resize(px, py);
       
       if(mTB){
 
@@ -354,5 +362,73 @@ void BetaGUI::Window::setTransparency(float f){
   }
 
   SkinManager::getSingleton().getSkin(this->skinId)
-    ->setTransparency(name, f);
+    ->setTransparency(rootOverlay, f);
+}
+
+/** Resize this window
+  *
+  * This resizes the window, moves its resizeGrip and resize its TitleBar.
+  *
+  * \param px The mouse pointer position in pixels
+  * \param py The mouse pointer position in pixels
+  *
+  */
+void BetaGUI::Window::resize(unsigned int px, unsigned int py){
+  // Compute new width
+  if (px<(x+minimalWidth)){
+    w=minimalWidth;
+  }
+  else{
+    w=px-x+8;
+  }
+
+  // Compute new height
+  if (py<(y+minimalHeight)){ 
+    h=minimalHeight;
+  }
+  else{
+    h=py-y+8;
+  }
+
+  // Resize the root overlay
+  rootOverlay->setDimensions(w,h);
+
+  // Moves the ResizeGrip
+  mRZ->setX(w-16);
+  mRZ->setY(h-16);
+  mRZ->getOverlayContainer()->setPosition(mRZ->getX(),mRZ->getY());
+
+  // Resize the title bar
+  mTB->setWidth(w );
+}
+
+/** Move this window
+  *
+  * This moves the window according to the movingDevX and movingDevY values.
+  *
+  * \param px The mouse pointer position in pixels
+  * \param py The mouse pointer position in pixels
+  *
+  * \sa movingDevX, movingDevX.
+  *
+  */
+void BetaGUI::Window::move(unsigned int px, unsigned int py){
+  x=px-movingDevX;
+
+  y=py-movingDevY;
+
+  rootOverlay->setPosition(x,y);
+}
+
+/** Change the minimal allowed size of this window
+  *
+  * \param mw The minimal width in pixels
+  * \param mh The minimal height in pixels
+  *
+  * \sa minimalWidth, minimalHeight.
+  *
+  */
+void BetaGUI::Window::setMinimalSize(unsigned int mw, unsigned int mh){
+  minimalWidth=mw;
+  minimalHeight=mh;
 }
