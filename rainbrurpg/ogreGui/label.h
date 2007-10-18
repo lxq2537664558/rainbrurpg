@@ -1,6 +1,6 @@
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
- * 
+ *
  *  This file is part of RainbruRPG.
  *
  *  RainbruRPG is free software; you can redistribute it and/or modify
@@ -21,52 +21,31 @@
  */
 
 /* Modifications :
- * - 08 aug 2007 : Starting implementation
- *
+ * - 17 oct 2007 : starting implementation
+ *         
  */
 
-#ifndef XIDENT_ADD_ACCOUNT_H
-#define XIDENT_ADD_ACCOUNT_H
+#ifndef _OGRE_GUI_LABEL_H_
+#define _OGRE_GUI_LABEL_H_
 
-#include <fox-1.6/fx.h>
-#include <curlserveradd.h>
-#include <httpresponse.h>
+#include <OGRE/OgreVector4.h>
+#include <OGRE/OgreOverlayContainer.h>
 
-using namespace FX;
-using namespace RainbruRPG::Network;
-using namespace RainbruRPG::Network::Ident;
+#include "widget.h" 
 
 namespace RainbruRPG{
-  namespace Gui{
-
-    /** The xident add account dialog
+  namespace OgreGui{
+    /** A simple widget drawing caption 
       *
-      * It is used by the xIdent tool to add an account using
-      * curlAccountAdd.
+      * This does not provide a frame or background.
       *
       */
-    class AddAccount : public FXDialogBox{
-      FXDECLARE(AddAccount)
+    class Label : public Widget{
     public:
-      AddAccount();
-      ~AddAccount();
-
-      virtual void create();
-
-      long onNotYetImplemented(FXObject *,FXSelector,void*);
-
-      /** The enumeration defining the Fox selectors, used in event 
-        * mechanism
-	*/
-      enum{
-	/** Not Yet Implemented Identifier */
-	ID_NYI=FXDialogBox::ID_LAST,
-	/** Setting the new value to  FXDialogBox::ID_LAST */
-	ID_LAST
-      };
+      Label(Vector4, String, BetaGUI::Window*);
 
     };
   }
 }
 
-#endif // XIDENT_ADD_ACCOUNT_H
+#endif // _OGRE_GUI_LABEL_H_

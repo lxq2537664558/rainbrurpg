@@ -8,6 +8,7 @@ h_sources= bgbutton.h			\
 	   bglistener.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
+	   label.h			\
 	   object.h			\
 	   pushbutton.h			\
 	   resizegrip.h			\
@@ -23,6 +24,7 @@ cc_sources= bgbutton.cpp		\
 	    bggui.cpp			\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
+	    label.h			\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    resizegrip.cpp		\

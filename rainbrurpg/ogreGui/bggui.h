@@ -82,6 +82,8 @@ namespace BetaGUI {
     void setResizedWindow(Window*);
     void setMovedWindow(Window*);
 
+    void addWindow(Window*);
+
   protected:
     /** The current GUI transparency value
       *

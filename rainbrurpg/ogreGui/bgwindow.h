@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
  * - 24 sep 2007 : This was the original BetaGUI code. 
  *                 Betajaen's headers added
  *
@@ -46,7 +47,7 @@ namespace BetaGUI {
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, String, OgreGuiWindowType, String, GUI* );
+    Window( Vector4, OgreGuiWindowType, String, GUI* );
     ~Window();
 
     BetaGUI::Button* createButton(Vector4, String, String, Callback);

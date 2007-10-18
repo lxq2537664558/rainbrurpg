@@ -30,13 +30,12 @@ using namespace RainbruRPG::OgreGui;
   * manually.
   *
   * \param D       The dimensions of the window to create as a Ogre vector
-  * \param M       The name of the Ogre material to apply to the new window
   * \param t       The window's type
   * \param caption The caption of the window
   * \param G       The GUI object used to create window
   *
   */
-BetaGUI::Window::Window(Vector4 D,String M, OgreGuiWindowType t,String caption, 
+BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
 			GUI *G)
   :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),activeTextInput(0),
    movingDevX(0),

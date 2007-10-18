@@ -25,6 +25,10 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
+#include <bgwindow.h>
+#include <bgtextinput.h>
+#include <pushbutton.h>
+
 /** The default constructor
   *
   * Constructs a new velocity and begin a translation to 0.0f.
@@ -35,7 +39,7 @@ RainbruRPG::Core::gsConnection::gsConnection()
 
   LOGI("Constructing a gsConnection");
   velocity=new vcConstant();
-  translateTo(0.0f);
+  //  translateTo(0.0f);
 }
 
 /** The default destructor
@@ -56,11 +60,8 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
 void RainbruRPG::Core::gsConnection::init(){
   LOGI("Initialising gsConnection");
   gsMenuBase::init();
-  GuiManager::getSingleton().loadCEGUILayout("connection.layout");
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/Connection";
-
+  yBorder=0.5f;
+  translateTo(0.0f);
   setupConnectionMenu();
   setupTabOrder();
   LOGI("gsConnection initialization complete");
@@ -114,67 +115,35 @@ onBackToMainClicked(const CEGUI::EventArgs& evt){
   *
   */
 void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
-  LOGI("setupConnectionMenu called");
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
 
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
+  // Center the window in the right background
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
 
-  // Root window
-  CEGUI::Window* rainbruConnection=root->getChild("RainbruRPG/Connection");
-  // Back button
-  CEGUI::Window* btnBack=rainbruConnection->getChild("Back");
-  if (btnBack){
-    btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsConnection::onBackToMainClicked,this));
+  // The width of the window in pixels
+  unsigned int winWidth=300;
+  // The height of the window in pixels
+  unsigned int winHeight=150;
 
-  }
-  else{
-    LOGW("Cannot get the 'Back' button");
-  }
+  // Te position of the window
+  unsigned int winY=(h/2)-(winHeight/2);
+  unsigned int winX=(w/2)+(w/4-(winWidth/2));
+  winX+=(int)(double)w*0.025;     // The border
 
-  // Get the Connection window
-  CEGUI::Window* connectWin=rainbruConnection
-    ->getChild("RainbruRPG/ConnectionWindow");
-  nameWidget=connectWin->getChild("RainbruRPG/Connection/Name");
-  pwdWidget=connectWin->getChild("RainbruRPG/Connection/Pwd");
+  Window* window = new Window(Vector4(winX,winY,winWidth,winHeight),
+		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
 
-  CEGUI::Editbox* eb=static_cast<CEGUI::Editbox*>(pwdWidget);
-  eb->setTextMasked(true);
+  Vector4 tiDim(10,55,180,24);
+  TextInput* ti=new TextInput(tiDim, "", 20, window);
 
- // Connect button
-  CEGUI::Window* btnConnect=connectWin->getChild("Connect");
-  if (btnConnect){
-    btnConnect->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsConnection::onConnectClicked,this));
 
-  }
-  else{
-    LOGW("Cannot get the 'Connect' button");
-  }
+  btnConnect = new PushButton(Vector4(20,40,160,24),
+				 "Network game", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnConnect);
 
-  // CreateAccount
-  CEGUI::Window* btnCreateAccount=connectWin->getChild("CreateAccount");
-  if (btnConnect){
-    btnCreateAccount->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsConnection::onCreateAccountClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'CreateAccount' button");
-  }
-
-  // LostPassword
-  CEGUI::Window* btnLostPassword=connectWin->getChild("LostPassword");
-  if (btnConnect){
-    btnLostPassword->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsConnection::onLostPasswordClicked,this));
-
-  }
-  else{
-    LOGW("Cannot get the 'LostPassword' button");
-  }
-
+  mGUI->addWindow(window);
 }
 
 /** The callback of the Connect button
@@ -286,7 +255,7 @@ onLostPasswordClicked(const CEGUI::EventArgs& evt){
 
 void RainbruRPG::Core::gsConnection::setupTabOrder(){
   // Registering TabNavigation
-  tabNav->clear();
+  /*  tabNav->clear();
   tabNav->setParent("RainbruRPG/Connection");
   tabNav->addWidget("RainbruRPG/Connection/Name");
   tabNav->addWidget("RainbruRPG/Connection/Pwd");
@@ -294,4 +263,9 @@ void RainbruRPG::Core::gsConnection::setupTabOrder(){
   tabNav->addWidget("CreateAccount");
   tabNav->addWidget("LostPassword");
   tabNav->addWidget("Back");
+  */
+}
+
+void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn){
+
 }

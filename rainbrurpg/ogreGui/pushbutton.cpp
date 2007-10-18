@@ -31,18 +31,17 @@
   * \param dim          The dimensions 
   * \param caption      The text of the button
   * \param c            The callback of the button
-  * \param G            The GUI object
   * \param parent       The parent window
   *
   */
 RainbruRPG::OgreGui::PushButton::
-PushButton(Vector4 dim, String caption, Callback c, GUI* G, Window* parent)
+PushButton(Vector4 dim, String caption, Callback c, Window* parent)
   : BetaGUI::Button(dim, "", caption, c, parent)
 {
 
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
-    +StringConverter::toString(G->getUniqueId());
+    +StringConverter::toString(parent->getGUI()->getUniqueId());
 
   this->setName(uniqueName);
 

@@ -38,8 +38,8 @@ FXIMPLEMENT(RainbruRPG::Gui::AddAccount,FXDialogBox,AddAccountMap,ARRAYNUMBER(Ad
   * \param a The base FOX application
   *
   */
-RainbruRPG::Gui::AddAccount::AddAccount(FXApp *a)
-  :FXDialogBox{
+RainbruRPG::Gui::AddAccount::AddAccount()
+  :FXDialogBox(){
 
 
 }
@@ -57,7 +57,7 @@ RainbruRPG::Gui::AddAccount::~AddAccount(){
   *
   */
 void RainbruRPG::Gui::AddAccount::create(){
-  FXPacker::create();
+  FXDialogBox::create();
   this->show();
 }
 

@@ -211,7 +211,15 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-rainbrurpg_editor_LDADD = -lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core
+rainbrurpg_editor_LDADD = -lQtCore -lQtGui 		\
+			-lrainbrurpg-common 		\
+			-lrainbrurpg-core		\
+			-lrainbrurpg-ogregui		\
+			-lrainbrurpg-design 		\
+			-L$(top_srcdir)/common/.libs 	\
+			-L$(top_srcdir)/design/.libs 	\
+			-L$(top_srcdir)/maincore/.libs
+
 OGRE_CFLAGS = -I/usr/local/include/OGRE
 INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
 	   -I$(top_srcdir)/design/ \
@@ -564,10 +572,6 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	pdf pdf-am ps ps-am tags uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
-			-lrainbrurpg-design \
-			-L$(top_srcdir)/common/.libs \
-			-L$(top_srcdir)/design/.libs \
-			-L$(top_srcdir)/maincore/.libs
 
 # This is to ensure the myapp.h file is distributed in your myapp-0.1.tar.gz
 # I also have a resources.qrc I need to include. The png is used in myapp.

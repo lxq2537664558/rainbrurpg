@@ -1,3 +1,27 @@
+
+* v 0.0.5-158
+- MouseOver doesn't work anymore on PushButton
+- Remove Ogre::material references in Button
+- MouseOver work on ResizeGrip
+- Button and TitleBar : Using real caption instead of dummy text
+- changelog.pre100 gzipped
+- Skin draws Button's and TitleBar's caption
+- GiveUp Button graphical functions
+- No more left black border in dynamic menu
+- OgreGUI's Button delegates drawing to Skin
+- A PushButton class subclassing Button
+- TitleBar use Skin to draw itself
+- ResizeGrip use Skin to draw itself
+- Fix the refman inputenc error (OK if using pdflatex)
+- Add Doxygen documentation's pdf page number to the regTests (793)
+- regText from build 0  to build 149 in a separate documentation page
+- TitleBar widget overriding Button
+- A resizeGrip widget overringing button
+- SkinOverlay::createOverlay function used by soBetaGui::createWindow
+- Trying title border in fullscreen : OK
+- title overlay border
+- gsMenuBase dynamic menu comes back
+
 * v 0.0.5-157
 - static, dynamic menu and border drawn again
 - OgreGUI's window delegates drawing to Skin

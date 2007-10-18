@@ -39,8 +39,18 @@
 #include "gsmenubase.h"
 #include "vcconstant.h"
 #include "guimanager.h"
+#include "bglistener.h"
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class PushButton;
+  }
+}
+// End of forward declarations
 
 using namespace RainbruRPG::Network::Ident;
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG {
   namespace Core{
@@ -49,10 +59,9 @@ namespace RainbruRPG {
       *
       * This is the first screen shown when the user choose the network
       * game. It provides a typical user name/password identification.
-      * The CEGUI loaded is connection.layout (in data/gui/layout/ directory).
       *
       */
-    class gsConnection : public gsMenuBase{
+    class gsConnection : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
       virtual ~gsConnection();
       gsConnection();
@@ -61,6 +70,7 @@ namespace RainbruRPG {
       virtual void resume();
 
       virtual void setupTabOrder();
+      virtual void onButtonPress(BetaGUI::Button*);
 
 
     private:
@@ -78,6 +88,9 @@ namespace RainbruRPG {
       /** The TextEdit where we enter the account password */
       CEGUI::Window* pwdWidget;
 
+      PushButton* btnConnect;
+      PushButton* btnCreateAccount;
+      PushButton* btnLostPwd;
 
 
     };

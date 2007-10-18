@@ -59,10 +59,6 @@ RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
 
 // special case of button (no caption overlay)
 void RainbruRPG::OgreGui::ResizeGrip::setTransparency(float f){
-  LOGI("Changing transpenrency of a ResizeGrip");
-  LOGCATS("Button name is ");
-  LOGCATS(name.c_str());
-  LOGCAT();
   SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
 
   s->setTransparency(mO, f);

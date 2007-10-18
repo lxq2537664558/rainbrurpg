@@ -48,7 +48,12 @@
   * \sa gsMenuBase::createMenu (variable)
   *
   */
-RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu){
+RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu):
+  bordRect(NULL),
+  menuRect(NULL),
+  dynaRect(NULL)
+{
+
   LOGI("Constructing a  gsMenuBase");
   this->createMenu=createMenu;
   velocity=NULL;
@@ -84,11 +89,11 @@ void RainbruRPG::Core::gsMenuBase::init(){
     menuNode = mSceneMgr->getRootSceneNode()
       ->createChildSceneNode("Menu");
     
-    translateTo(0.5);
     
     drawMenuBackground();
     drawDynamicBackground();
     drawBorder();
+    translateTo(0.5);
     setCorners();
   }
 
@@ -249,6 +254,24 @@ void RainbruRPG::Core::gsMenuBase::translateTo(float f){
   }
   else{
     LOGW("Cannot start VelocityCalculator, pointer is NULL");
+  }
+
+  if (bordRect&&menuRect&&dynaRect){
+    LOGI("translation pointers OK");
+  }
+  else{
+    try{
+      bordRect=static_cast<OverlayContainer*>
+	(OverlayManager::getSingleton().getOverlayElement("Dynamic_Border"));
+      menuRect=static_cast<OverlayContainer*>
+	(OverlayManager::getSingleton().getOverlayElement("Static_Menu"));
+      dynaRect=static_cast<OverlayContainer*>
+	(OverlayManager::getSingleton().getOverlayElement("Dynamic_Menu"));
+
+    }
+    catch(...){
+      LOGE("One or more translation pointers is NULL");
+    }
   }
 
 }
@@ -416,7 +439,8 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   mouseX=evt.state.X.abs;
   mouseY=evt.state.Y.abs;
 
-  GameEngine::getSingleton().getOgreGui()->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+  GameEngine::getSingleton().getOgreGui()
+    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
 
   return true;
 }

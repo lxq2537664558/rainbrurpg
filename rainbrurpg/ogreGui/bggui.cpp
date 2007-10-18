@@ -189,21 +189,8 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   return mouseCursorOverlay;
 }
 
-/** Creates a ew window
-  *
-  * Creates a new window and push back it in the windows vector.
-  *
-  * \param D    The dimensions of the new window
-  * \param M    The Ogre material used with this window
-  * \param type The window type
-  * \param C    The window caption
-  *
-  */
-BetaGUI::Window* BetaGUI::GUI::
-createWindow(Vector4 D, String M, OgreGuiWindowType type, String C){
-  BetaGUI::Window* w=new Window(D,M,type,C,this);
+void BetaGUI::GUI::addWindow(Window* w){
   windowList.push_back(w);
-  return w;
 }
 
 /** Get the next uniqueId used by button

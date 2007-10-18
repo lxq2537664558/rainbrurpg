@@ -43,7 +43,7 @@ RainbruRPG::Core::gsMainMenu::gsMainMenu()
 
   LOGI("Constructing a gsMainMenu");
   velocity=new vcConstant();
-  translateTo(0.0f);
+  //  translateTo(0.0f);
 
   window=NULL;
 }
@@ -99,8 +99,8 @@ onNetworkGameClicked(){
     Ogre::Root::getSingleton().renderOneFrame();
   }
 
-  GuiManager::getSingleton().destroyTitleOverlay();
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
+  //  GuiManager::getSingleton().destroyTitleOverlay();
+  //  GuiManager::getSingleton().removeCurrentCEGUILayout();
   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
 
   GuiManager::getSingleton().beginGuiFadeIn();
@@ -143,19 +143,40 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
   mGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
-
-  // Center the window
+  // Center the window in the right background
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
   unsigned int w=mRenderWindow->getWidth();
   unsigned int h=mRenderWindow->getHeight();
 
-  window = mGUI->
-    createWindow(Vector4((w/2)-100,(h/2)-75,200,150),"bgui.window", 
-		 BetaGUI::OWT_RESIZE_AND_MOVE, "Main menu");
+  // The width of the window in pixels
+  unsigned int winWidth=200;
+  // The height of the window in pixels
+  unsigned int winHeight=150;
 
+  // Te position of the window
+  unsigned int winY=(h/2)-(winHeight/2);
+  unsigned int winX=(w/2)+(w/4-(winWidth/2));
+  winX+=(int)(double)w*0.025;     // The border
+
+  window = new Window(Vector4(winX,winY,winWidth,winHeight),
+		      BetaGUI::OWT_RESIZE_AND_MOVE, "Main menu", mGUI);
+  mGUI->addWindow(window);
+
+
+  btnNetworkGame= new PushButton(Vector4(20,40,160,24),
+				 "Network game", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnNetworkGame);
+
+  btnLocalTest = new PushButton(Vector4(20,70,160,24), 
+			 "Local test", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnLocalTest);
+
+  btnExit = new PushButton(Vector4(20,100,160,24), 
+         "Exit", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnExit);
 
   // Creates a test button
-  Callback testC(this);
+  /* Callback testC(this);
   Vector4 pb1Dim(10,25,100,24);
   PushButton* pb1=new PushButton(pb1Dim, "Test", testC, mGUI, window);
   window->addWidget(pb1);
@@ -163,17 +184,8 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   Vector4 tiDim(10,55,180,24);
   TextInput* ti=new TextInput(tiDim, "Test input :)", 20, window);
   window->addWidget(ti);
-
-  /*
-  btnNetworkGame= window->createButton(Vector4(20,40,160,24), "bgui.button", 
-                      "Network game", BetaGUI::Callback::Callback(this));
-
-  btnLocalTest = window->createButton(Vector4(20,70,160,24), "bgui.button", 
-			 "Local test", BetaGUI::Callback::Callback(this));
-
-  btnExit = window->createButton(Vector4(20,100,160,24), "bgui.button", 
-         "Exit", BetaGUI::Callback::Callback(this));
   */
+
 }
 
 /** The BetaGui button callback implementation
@@ -183,7 +195,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   */
 void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
   if (b==btnLocalTest){
-    //  GameEngine::getSingleton().enterLocalTest();
+    translateTo(3.0);
     GameEngine::getSingleton().changeState(ST_LOCAL_TEST);
   }
   else if (b==btnExit){

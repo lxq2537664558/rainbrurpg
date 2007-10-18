@@ -1,6 +1,6 @@
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
- * 
+ *
  *  This file is part of RainbruRPG.
  *
  *  RainbruRPG is free software; you can redistribute it and/or modify
@@ -20,37 +20,9 @@
  *
  */
 
-/* Modifications :
- * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
- * - 05 oct 2007 : starting implementation
- *         
- */
+#include "label.h"
 
-#ifndef _OGRE_GUI_PUSH_BUTTON_H_
-#define _OGRE_GUI_PUSH_BUTTON_H_
+RainbruRPG::OgreGui::Label::Label(Vector4 dim, String caption, 
+				  BetaGUI::Window* parent){
 
-#include "bgbutton.h"
-#include "bgcallback.h"
-
-using namespace BetaGUI;
-
-namespace RainbruRPG{
-  namespace OgreGui{
-
-    /** A widget drawing a push button
-      *
-      * It is based on Button to be able to use a callback.
-      *
-      */
-    class PushButton : public BetaGUI::Button{
-    public:
-      PushButton(Vector4, String, Callback, Window*);
-      ~PushButton();
-
-      virtual void setTransparency(float);
-    };
-
-  }
 }
-
-#endif // _OGRE_GUI_PUSH_BUTTON_H_

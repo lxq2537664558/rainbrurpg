@@ -60,7 +60,7 @@ namespace RainbruRPG {
       virtual void pause();
 
       virtual void setupTabOrder();
-      void onButtonPress(BetaGUI::Button*);
+      virtual void onButtonPress(BetaGUI::Button*);
 
     private:
       bool onNetworkGameClicked();

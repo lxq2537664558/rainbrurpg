@@ -1,10 +1,13 @@
 # The final program is called "myapp"
 bin_PROGRAMS = rainbrurpg-editor
 
-rainbrurpg_editor_LDADD=-lQtCore -lQtGui -lrainbrurpg-common -lrainbrurpg-core
-			-lrainbrurpg-design \
-			-L$(top_srcdir)/common/.libs \
-			-L$(top_srcdir)/design/.libs \
+rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\
+			-lrainbrurpg-common 		\
+			-lrainbrurpg-core		\
+			-lrainbrurpg-ogregui		\
+			-lrainbrurpg-design 		\
+			-L$(top_srcdir)/common/.libs 	\
+			-L$(top_srcdir)/design/.libs 	\
 			-L$(top_srcdir)/maincore/.libs
 
 OGRE_CFLAGS= -I/usr/local/include/OGRE
