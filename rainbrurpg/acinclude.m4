@@ -76,44 +76,19 @@ dnl the OgreMain library.
 dnl It is used by configure.in
 AC_DEFUN([RB_CHECK_OGREMAIN],
 [
-  AC_CHECK_LIB(OgreMain, main, [], [
-    echo "Error! You need to have Ogre 1.4 installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([OGRE/OgreLog.h], [], [
-    echo "Error! Cannot find the Ogre 1.4 headers."
-    exit -1
-  ])
-])
+  PKG_CHECK_MODULES(OGRE, [OGRE >= 1.2.0])
+  AC_SUBST(OGRE_PLUGINDIR, [$($PKG_CONFIG --variable=plugindir OGRE)])
 
-dnl Checks for libCEGUIBase and one of its headers
-dnl
-dnl
-dnl
-dnl
-AC_DEFUN([RB_CHECK_CEGUIBASE],
-[
-  AC_CHECK_LIB(CEGUIBase, main, [], [
-    echo "Error! You need to have CEGUI 0.5 installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([CEGUI/CEGUIBase.h], [], [
-    echo "Error! Cannot find the CEGUI 0.5 headers."
-    exit -1
-  ])
-])
+  PKG_CHECK_MODULES(CEGUI, [CEGUI >= 0.5.0])
+  AC_SUBST(CEGUI_OGRE_CFLAGS, [$($PKG_CONFIG --cflags CEGUI-OGRE)])
+  AC_SUBST(CEGUI_OGRE_LIBS, [$($PKG_CONFIG --libs CEGUI-OGRE)])
 
-dnl Checks for libCEGUIOgreRenderer
-dnl
-dnl I do not test any header for this library as it is a plugin.
-dnl I do not use any header from this lib.
-dnl
-AC_DEFUN([RB_CHECK_CEGUIOGRE],
-[
-  AC_CHECK_LIB(CEGUIOgreRenderer, main, [], [
-    echo "Error! You need to have CEGUIOgreRendere installed."
-    exit -1
-  ])
+  # Devil
+  AC_CHECK_LIB(IL, main, [], [])
+  AC_CHECK_LIB(ILU, main, [], [])
+  AC_CHECK_LIB(ILUT, main, [], [])
+  AC_CHECK_LIB(jpeg, main, [], [])
+
 ])
 
 dnl Checks for libOIS and one of its header
@@ -121,14 +96,7 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBOIS],
 [
-  AC_CHECK_LIB(OIS, main, [], [
-    echo "Error! You need to have OIS 1.0 installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([OIS/OISEvents.h], [], [
-    echo "Error! Cannot find the OIS 1.0 headers."
-    exit -1
-  ])
+  PKG_CHECK_MODULES(OIS, [OIS >= 0.1])	
 ])
 
 dnl Checks for the FOX-toolkit and one of its header
@@ -151,14 +119,17 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBCURL],
 [
-  AC_CHECK_LIB(curl, main, [], [
-    echo "Error! You need to have libcurl installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([curl/curl.h], [], [
-    echo "Error! Cannot find the libcurl headers."
-    exit -1
-  ])
+dnl  AC_CHECK_LIB(curl, main, [], [
+dnl    echo "Error! You need to have libcurl installed."
+dnl    exit -1
+dnl  ])
+dnl  AC_CHECK_HEADER([curl/curl.h], [], [
+dnl    echo "Error! Cannot find the libcurl headers."
+dnl    exit -1
+dnl  ])
+  PKG_CHECK_MODULES(libcurl, [libcurl >= 7.17])	
+
+
 ])
 
 dnl Checks for the SLang lib and one of its header
@@ -183,14 +154,17 @@ dnl We don't need to check headers as it is a dlopened library but
 dnl it is not a lib* called file so we use AC_CHECK_FILE, first in /usr/lib
 dnl then, if not found, in /usr/local/lib
 dnl
+dnl If PLSM2 is not found, it does not exit, it complains about the error
+dnl but does not exit.
+dnl
 AC_DEFUN([RB_CHECK_PLSM2],
 [
-  AC_CHECK_FILE(/usr/lib/OGRE/Plugin_PagingLandScape2.so, [], [
-    AC_CHECK_FILE(/usr/local/lib/OGRE/Plugin_PagingLandScape2.so, [], [
-      echo "Error! You need to have the PagingLandScape2 Ogre plugin."
-      exit -1
-    ])
-  ])
+dnl  AC_CHECK_FILE(/usr/lib/OGRE/Plugin_PagingLandScape2.so, [], [
+dnl    AC_CHECK_FILE(/usr/local/lib/OGRE/Plugin_PagingLandScape2.so, [], [
+dnl      echo "Error! You need to have the PagingLandScape2 Ogre plugin."
+dnl      exit -1
+dnl    ])
+dnl  ])
 ])
 
 dnl Define the server Option 

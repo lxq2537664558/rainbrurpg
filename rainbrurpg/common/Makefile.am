@@ -1,4 +1,3 @@
-#lib_LTLIBRARIES = librainbrurpg-common.la
 lib_LTLIBRARIES = librainbrurpg-common.la
 
 librainbrurpg_common.adir=$(libdir)
@@ -152,11 +151,22 @@ library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
 
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
-INCLUDES = -Ifox-1.6  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0  --cflags) 
-#lib_LTLIBRARIES= libexamplelib-1.0.la
+
+INCLUDES= -Ifox-1.6  		 \
+	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0  --cflags) 
+
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
+
 # Adds the FOX-Toolkit libs
-fox_config=$(shell fox-config --libs) $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 --libs)
+fox_config=$(shell fox-config --libs)		\
+  $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 --libs)
+
 librainbrurpg_common_la_LIBADD= $(fox config) 
-librainbrurpg_common_la_LDFLAGS= $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -Wl,--rpath -Wl,$(DESTDIR)$(libdir)
+
+librainbrurpg_common_la_LDFLAGS=      	        \
+  $(SHARED_FLAG)				\
+  -version-info					\
+  $(GENERIC_LIBRARY_VERSION)			\
+  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
+  $(libcurl_LIBS)
 

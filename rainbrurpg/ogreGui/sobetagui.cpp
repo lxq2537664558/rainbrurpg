@@ -48,8 +48,9 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   fsPushButton=10;
 
   mnTextInput="bgui.textinput";
-  fnTextInput="BlueHighway";
-  fsTextInput=12;
+
+  fnCaption="BlueHighway";
+  fsCaption=12;
 }
 
 /** Create a window using the BetaGUI skin
@@ -144,11 +145,23 @@ createTextInput(String name, Vector4 dim, String caption, Window* parent){
   this->createOverlay(name, dim, mnTextInput, parent->getOverLayContainer());
 
   // vertically center the caption
-  unsigned int dev=((dim.w-fsPushButton)/2)+2;
+  unsigned int dev=((dim.w-fsCaption)/2)+2;
   dim.x+=dev;
   dim.y+=dev;
 
   this->createCaption(name+"c", dim, caption, 
-	      fnTextInput, fsTextInput, parent->getOverLayContainer());
+	      fnCaption, fsCaption, parent->getOverLayContainer());
+
+}
+
+void RainbruRPG::OgreGui::soBetaGui::
+createLabel(String name, Vector4 dim, String caption, Window* parent){
+  // vertically center the caption
+  unsigned int dev=((dim.w-fsCaption)/2)+2;
+  dim.x+=dev;
+  dim.y+=dev;
+
+  this->createCaption(name, dim, caption, 
+	      fnCaption, fsCaption, parent->getOverLayContainer());
 
 }

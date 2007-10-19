@@ -1,15 +1,17 @@
 TODO
 
-export LD_LIBRARY_PATH=/usr/local/lib
-
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 - gsConnection uses betaGUI
+- Moving Window bug :
+  When we click the 'Network Game" button of gsMainMenu
+  we go to the gsConnection state and the Connection window
+  is moving without left mouse button is clicked.
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
-* Is FOX using registry under win32 OSes ?
+* Is FOX using registry under win32 ?
 - Testing how FOX deals with the win32 registry
   Maybe testing it under wine
 
@@ -136,6 +138,12 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-160
+- Try to use PKG_CHECK_MODULES in configure
+  Do not assume anymore libraries are in /usr/local/lib
+- soBetaGUI : fnTextInput and fsTextInput replaced by fnCaption and
+  fsCaption to be used by TextInput::caption and Label
+- A Label widget for static text caption
+  It does not provide a frame or background. Only text.
 - gsMainMenu uses betaGUI
 - editor/Makefile.am updated to be linked with ogreGUI
 

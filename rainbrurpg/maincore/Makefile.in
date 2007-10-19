@@ -112,6 +112,10 @@ BUILD_LIB_DESIGN_FALSE = @BUILD_LIB_DESIGN_FALSE@
 BUILD_LIB_DESIGN_TRUE = @BUILD_LIB_DESIGN_TRUE@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
+CEGUI_CFLAGS = @CEGUI_CFLAGS@
+CEGUI_LIBS = @CEGUI_LIBS@
+CEGUI_OGRE_CFLAGS = @CEGUI_OGRE_CFLAGS@
+CEGUI_OGRE_LIBS = @CEGUI_OGRE_LIBS@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
@@ -154,6 +158,11 @@ LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 OBJEXT = @OBJEXT@
+OGRE_CFLAGS = @OGRE_CFLAGS@
+OGRE_LIBS = @OGRE_LIBS@
+OGRE_PLUGINDIR = @OGRE_PLUGINDIR@
+OIS_CFLAGS = @OIS_CFLAGS@
+OIS_LIBS = @OIS_LIBS@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -161,6 +170,7 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
 RANLIB = @RANLIB@
 RB_OPTION_ALL_FLAGS_FALSE = @RB_OPTION_ALL_FLAGS_FALSE@
 RB_OPTION_ALL_FLAGS_TRUE = @RB_OPTION_ALL_FLAGS_TRUE@
@@ -208,6 +218,8 @@ htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
+libcurl_CFLAGS = @libcurl_CFLAGS@
+libcurl_LIBS = @libcurl_LIBS@
 libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
@@ -273,14 +285,23 @@ cc_sources = gameengine.cpp		\
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
+INCLUDES = -I$(top_srcdir)/common			\
+	  -I$(top_srcdir)/ogreGui			\
+	  $(OGRE_CFLAGS)				\
+	  $(CEGUI_CFLAGS)				\
+	  $(OIS_CFLAGS)
 
-# The necessary OGRE/CEGUI compilation-time flags
-#OGRE_CFLAGS=$(pkg-config --cflags OGRE CEGUI CEGUI-OGRE) #Does not work?
-OGRE_CFLAGS = -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/ogreGui $(OGRE_CFLAGS)
 librainbrurpg_core_la_SOURCES = $(h_sources) $(cc_sources)
 librainbrurpg_core_la_LIBADD = -lrainbrurpg-common
-librainbrurpg_core_la_LDFLAGS = $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -L$(top_srcdir)/common/.libs -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 
+librainbrurpg_core_la_LDFLAGS = \
+  $(SHARED_FLAG) -version-info 		       \
+  $(GENERIC_LIBRARY_VERSION)   		       \
+  -L$(top_srcdir)/common/.libs 		       \
+  -Wl,--rpath		       		       \
+  -Wl,$(top_srcdir)/common/.libs	       \
+  $(CEGUI_OGRE_LIBS)			       \
+  $(OIS_LIBS)
+
 all: all-am
 
 .SUFFIXES:

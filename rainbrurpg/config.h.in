@@ -50,16 +50,6 @@
 /* Define to 1 if you have the `boost_thread' library (-lboost_thread). */
 #undef HAVE_LIBBOOST_THREAD
 
-/* Define to 1 if you have the `CEGUIBase' library (-lCEGUIBase). */
-#undef HAVE_LIBCEGUIBASE
-
-/* Define to 1 if you have the `CEGUIOgreRenderer' library
-   (-lCEGUIOgreRenderer). */
-#undef HAVE_LIBCEGUIOGRERENDERER
-
-/* Define to 1 if you have the `curl' library (-lcurl). */
-#undef HAVE_LIBCURL
-
 /* Define to 1 if you have the `enet' library (-lenet). */
 #undef HAVE_LIBENET
 
@@ -75,14 +65,20 @@
 /* Define to 1 if you have the `gnet-2.0' library (-lgnet-2.0). */
 #undef HAVE_LIBGNET_2_0
 
+/* Define to 1 if you have the `IL' library (-lIL). */
+#undef HAVE_LIBIL
+
+/* Define to 1 if you have the `ILU' library (-lILU). */
+#undef HAVE_LIBILU
+
+/* Define to 1 if you have the `ILUT' library (-lILUT). */
+#undef HAVE_LIBILUT
+
+/* Define to 1 if you have the `jpeg' library (-ljpeg). */
+#undef HAVE_LIBJPEG
+
 /* Define to 1 if you have the `magic' library (-lmagic). */
 #undef HAVE_LIBMAGIC
-
-/* Define to 1 if you have the `OgreMain' library (-lOgreMain). */
-#undef HAVE_LIBOGREMAIN
-
-/* Define to 1 if you have the `OIS' library (-lOIS). */
-#undef HAVE_LIBOIS
 
 /* Define to 1 if you have the `Qt3Support' library (-lQt3Support). */
 #undef HAVE_LIBQT3SUPPORT

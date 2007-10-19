@@ -43,7 +43,17 @@ namespace RainbruRPG{
     class Label : public Widget{
     public:
       Label(Vector4, String, BetaGUI::Window*);
+      ~Label();
 
+      virtual void setTransparency(float);
+
+    private:
+    
+      /** The overlay used to draw the text
+        *
+	*
+	*/
+      OverlayContainer* contentOverlay;
     };
   }
 }

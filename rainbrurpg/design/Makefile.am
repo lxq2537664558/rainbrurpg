@@ -33,9 +33,17 @@ moc_%.cpp: %.h
 	moc $< -o $@
 
 librainbrurpg_design_la_SOURCES= $(h_sources) $(cc_sources)
-librainbrurpg_design_la_LIBADD= -lrainbrurpg-common -lQtCore -lQtGui 
+librainbrurpg_design_la_LIBADD= -lrainbrurpg-common		\
+				-lQtCore 			\
+				-lQtGui 			\
 				-lQt3Support
-librainbrurpg_design_la_LDFLAGS= $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -L$(top_srcdir)/common/.libs -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 
+
+librainbrurpg_design_la_LDFLAGS= \
+  $(SHARED_FLAG) 		 		\
+  -version-info $(GENERIC_LIBRARY_VERSION) 	\
+  -L$(top_srcdir)/common/.libs 			\
+  -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 
+
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
 CLEANFILES = $(filter moc_%.cpp,$(librainbrurpg_design_la_SOURCES=)) resources.cpp

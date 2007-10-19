@@ -28,6 +28,7 @@
 #include <bgwindow.h>
 #include <bgtextinput.h>
 #include <pushbutton.h>
+#include <label.h>
 
 /** The default constructor
   *
@@ -125,9 +126,9 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   // The width of the window in pixels
   unsigned int winWidth=300;
   // The height of the window in pixels
-  unsigned int winHeight=150;
+  unsigned int winHeight=180;
 
-  // Te position of the window
+  // The position of the window
   unsigned int winY=(h/2)-(winHeight/2);
   unsigned int winX=(w/2)+(w/4-(winWidth/2));
   winX+=(int)(double)w*0.025;     // The border
@@ -135,13 +136,35 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   Window* window = new Window(Vector4(winX,winY,winWidth,winHeight),
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
 
-  Vector4 tiDim(10,55,180,24);
-  TextInput* ti=new TextInput(tiDim, "", 20, window);
+  Vector4 laDim(10,40,80,24);
+  Label* labUserName=new Label(laDim, "User name", window);
+  window->addWidget(labUserName);
 
+  Vector4 tiDim(100,40,180,24);
+  TextInput* tiUserName=new TextInput(tiDim, "", 20, window);
+  window->addWidget(tiUserName);
 
-  btnConnect = new PushButton(Vector4(20,40,160,24),
-				 "Network game", BetaGUI::Callback::Callback(this), window);
+  Vector4 laDim2(10,70,80,24);
+  Label* labPassword=new Label(laDim2, "Password", window);
+  window->addWidget(labPassword);
+
+  Vector4 tiDim2(100,70,180,24);
+  TextInput* tiPassword=new TextInput(tiDim2, "", 20, window);
+  window->addWidget(tiPassword);
+
+  // Buttons
+  btnConnect = new PushButton(Vector4(70,100,160,24),
+       "Network game", BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnConnect);
+  
+  btnCreateAccount = new PushButton(Vector4(10,130,135,24),
+       "Create account", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnCreateAccount);
+
+  btnLostPwd = new PushButton(Vector4(winWidth-145,130,135,24),
+       "Lost password", BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnLostPwd);
+
 
   mGUI->addWindow(window);
 }

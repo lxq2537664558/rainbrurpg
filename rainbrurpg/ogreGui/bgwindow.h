@@ -67,6 +67,7 @@ namespace BetaGUI {
 
     void addWidget(BetaGUI::Button*);
     void addWidget(BetaGUI::TextInput*);
+    void addWidget(Widget*);
 
    void setTransparency(float);
    void setMinimalSize(unsigned int, unsigned int);
@@ -124,6 +125,12 @@ namespace BetaGUI {
     vector<BetaGUI::Button*> buttonList;
     /** A vector of TextInput */
     vector<BetaGUI::TextInput*> textInputList;
+    /** A vector of Widget 
+      *
+      * Used for transparency for Widgets that are not Button or TextInput.
+      *
+      */
+    vector<Widget*> widgetList;
     /** Kept the devX when moving the window 
       *
       * We keep here the distance between the window position and the mouse

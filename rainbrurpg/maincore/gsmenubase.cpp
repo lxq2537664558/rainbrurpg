@@ -501,10 +501,6 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
     s+=c;
 
     if (s.size()!=0){
-      LOGCATS("Injecting a char : `");
-      LOGCATS(s.c_str());
-      LOGCATS("`");
-      LOGCAT();
       GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
     }
   }

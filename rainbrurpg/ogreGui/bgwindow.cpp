@@ -84,6 +84,9 @@ BetaGUI::Window::~Window(){
   for(unsigned int i=0;i<textInputList.size();i++)
     delete textInputList[i];
   
+  for(unsigned int i=0;i<widgetList.size();i++)
+    delete widgetList[i];
+  
   mGUI->getRootOverlay()->remove2D(rootOverlay);
 }
 
@@ -360,6 +363,10 @@ void BetaGUI::Window::setTransparency(float f){
     textInputList[i]->setTransparency(f);
   }
 
+  for(unsigned int i=0;i<widgetList.size();i++){
+    widgetList[i]->setTransparency(f);
+  }
+
   SkinManager::getSingleton().getSkin(this->skinId)
     ->setTransparency(rootOverlay, f);
 }
@@ -430,4 +437,8 @@ void BetaGUI::Window::move(unsigned int px, unsigned int py){
 void BetaGUI::Window::setMinimalSize(unsigned int mw, unsigned int mh){
   minimalWidth=mw;
   minimalHeight=mh;
+}
+
+void BetaGUI::Window::addWidget(Widget* w){
+  widgetList.push_back(w);
 }

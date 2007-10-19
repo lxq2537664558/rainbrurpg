@@ -53,14 +53,24 @@ cc_sources=gameengine.cpp		\
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
-
 library_include_HEADERS = $(h_sources)
 
-# The necessary OGRE/CEGUI compilation-time flags
-#OGRE_CFLAGS=$(pkg-config --cflags OGRE CEGUI CEGUI-OGRE) #Does not work?
-OGRE_CFLAGS= -I/usr/local/include/OGRE -I/usr/local/include/CEGUI
+INCLUDES= -I$(top_srcdir)/common			\
+	  -I$(top_srcdir)/ogreGui			\
+	  $(OGRE_CFLAGS)				\
+	  $(CEGUI_CFLAGS)				\
+	  $(OIS_CFLAGS)
 
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/ogreGui $(OGRE_CFLAGS)
 librainbrurpg_core_la_SOURCES= $(h_sources) $(cc_sources)
+
 librainbrurpg_core_la_LIBADD= -lrainbrurpg-common
-librainbrurpg_core_la_LDFLAGS= $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -L$(top_srcdir)/common/.libs -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 
+
+librainbrurpg_core_la_LDFLAGS= 		       \
+  $(SHARED_FLAG) -version-info 		       \
+  $(GENERIC_LIBRARY_VERSION)   		       \
+  -L$(top_srcdir)/common/.libs 		       \
+  -Wl,--rpath		       		       \
+  -Wl,$(top_srcdir)/common/.libs	       \
+  $(CEGUI_OGRE_LIBS)			       \
+  $(OIS_LIBS)
+

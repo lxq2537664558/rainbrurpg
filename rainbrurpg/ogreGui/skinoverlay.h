@@ -131,7 +131,10 @@ namespace RainbruRPG{
         */
      virtual void createTextInput(String name, Vector4 dim, String caption, Window* parent)=0;
 
+     virtual void createLabel(String, Vector4, String, Window*)=0;
+
      virtual void activateButton(Button* button, bool active);
+
 
 
     protected:

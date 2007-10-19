@@ -878,6 +878,18 @@ F77
 FFLAGS
 ac_ct_F77
 LIBTOOL
+PKG_CONFIG
+OGRE_CFLAGS
+OGRE_LIBS
+OGRE_PLUGINDIR
+CEGUI_CFLAGS
+CEGUI_LIBS
+CEGUI_OGRE_CFLAGS
+CEGUI_OGRE_LIBS
+OIS_CFLAGS
+OIS_LIBS
+libcurl_CFLAGS
+libcurl_LIBS
 RB_OPTION_SERVER_FLAGS_TRUE
 RB_OPTION_SERVER_FLAGS_FALSE
 BUILD_LIB_DESIGN_TRUE
@@ -908,7 +920,16 @@ CCC
 CPP
 CXXCPP
 F77
-FFLAGS'
+FFLAGS
+PKG_CONFIG
+OGRE_CFLAGS
+OGRE_LIBS
+CEGUI_CFLAGS
+CEGUI_LIBS
+OIS_CFLAGS
+OIS_LIBS
+libcurl_CFLAGS
+libcurl_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1535,6 +1556,18 @@ Some influential environment variables:
   CXXCPP      C++ preprocessor
   F77         Fortran 77 compiler command
   FFLAGS      Fortran 77 compiler flags
+  PKG_CONFIG  path to pkg-config utility
+  OGRE_CFLAGS C compiler flags for OGRE, overriding pkg-config
+  OGRE_LIBS   linker flags for OGRE, overriding pkg-config
+  CEGUI_CFLAGS
+              C compiler flags for CEGUI, overriding pkg-config
+  CEGUI_LIBS  linker flags for CEGUI, overriding pkg-config
+  OIS_CFLAGS  C compiler flags for OIS, overriding pkg-config
+  OIS_LIBS    linker flags for OIS, overriding pkg-config
+  libcurl_CFLAGS
+              C compiler flags for libcurl, overriding pkg-config
+  libcurl_LIBS
+              linker flags for libcurl, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -2431,7 +2464,7 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 cat >>confdefs.h <<_ACEOF
-#define BUILD_RELEASE "157"
+#define BUILD_RELEASE "160"
 _ACEOF
 
 
@@ -5327,7 +5360,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5330 "configure"' > conftest.$ac_ext
+  echo '#line 5363 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7581,11 +7614,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7584: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7617: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7588: \$? = $ac_status" >&5
+   echo "$as_me:7621: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7849,11 +7882,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7852: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7885: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7856: \$? = $ac_status" >&5
+   echo "$as_me:7889: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -7953,11 +7986,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7956: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7989: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7960: \$? = $ac_status" >&5
+   echo "$as_me:7993: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10250,7 +10283,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10253 "configure"
+#line 10286 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10350,7 +10383,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10353 "configure"
+#line 10386 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12686,11 +12719,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12689: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12722: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12693: \$? = $ac_status" >&5
+   echo "$as_me:12726: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -12790,11 +12823,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12793: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12826: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12797: \$? = $ac_status" >&5
+   echo "$as_me:12830: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14351,11 +14384,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14354: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14387: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14358: \$? = $ac_status" >&5
+   echo "$as_me:14391: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -14455,11 +14488,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14458: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14491: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14462: \$? = $ac_status" >&5
+   echo "$as_me:14495: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16642,11 +16675,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16645: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16678: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16649: \$? = $ac_status" >&5
+   echo "$as_me:16682: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -16910,11 +16943,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16913: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16946: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16917: \$? = $ac_status" >&5
+   echo "$as_me:16950: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17014,11 +17047,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17017: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17050: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17021: \$? = $ac_status" >&5
+   echo "$as_me:17054: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -19720,552 +19753,364 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
 
-
-{ echo "$as_me:$LINENO: checking for main in -lOgreMain" >&5
-echo $ECHO_N "checking for main in -lOgreMain... $ECHO_C" >&6; }
-if test "${ac_cv_lib_OgreMain_main+set}" = set; then
+if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
+	if test -n "$ac_tool_prefix"; then
+  # Extract the first word of "${ac_tool_prefix}pkg-config", so it can be a program name with args.
+set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
+{ echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lOgreMain  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+IFS=$as_save_IFS
 
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
+  ;;
 esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+if test -n "$PKG_CONFIG"; then
+  { echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6; }
+else
+  { echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+fi
+
+
+fi
+if test -z "$ac_cv_path_PKG_CONFIG"; then
+  ac_pt_PKG_CONFIG=$PKG_CONFIG
+  # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+{ echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
+if test "${ac_cv_path_ac_pt_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $ac_pt_PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_ac_pt_PKG_CONFIG="$ac_pt_PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+    ac_cv_path_ac_pt_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+ac_pt_PKG_CONFIG=$ac_cv_path_ac_pt_PKG_CONFIG
+if test -n "$ac_pt_PKG_CONFIG"; then
+  { echo "$as_me:$LINENO: result: $ac_pt_PKG_CONFIG" >&5
+echo "${ECHO_T}$ac_pt_PKG_CONFIG" >&6; }
+else
+  { echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+fi
+
+  if test "x$ac_pt_PKG_CONFIG" = x; then
+    PKG_CONFIG=""
+  else
+    case $cross_compiling:$ac_tool_warned in
+yes:)
+{ echo "$as_me:$LINENO: WARNING: In the future, Autoconf will not detect cross-tools
+whose name does not start with the host triplet.  If you think this
+configuration is useful to you, please write to autoconf@gnu.org." >&5
+echo "$as_me: WARNING: In the future, Autoconf will not detect cross-tools
+whose name does not start with the host triplet.  If you think this
+configuration is useful to you, please write to autoconf@gnu.org." >&2;}
+ac_tool_warned=yes ;;
+esac
+    PKG_CONFIG=$ac_pt_PKG_CONFIG
+  fi
+else
+  PKG_CONFIG="$ac_cv_path_PKG_CONFIG"
+fi
+
+fi
+if test -n "$PKG_CONFIG"; then
+	_pkg_min_version=0.9.0
+	{ echo "$as_me:$LINENO: checking pkg-config is at least version $_pkg_min_version" >&5
+echo $ECHO_N "checking pkg-config is at least version $_pkg_min_version... $ECHO_C" >&6; }
+	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
+		{ echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	else
+		{ echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+		PKG_CONFIG=""
+	fi
+
+fi
+
+
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for OGRE" >&5
+echo $ECHO_N "checking for OGRE... $ECHO_C" >&6; }
+
+if test -n "$PKG_CONFIG"; then
+    if test -n "$OGRE_CFLAGS"; then
+        pkg_cv_OGRE_CFLAGS="$OGRE_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"OGRE >= 1.2.0\"") >&5
+  ($PKG_CONFIG --exists --print-errors "OGRE >= 1.2.0") 2>&5
   ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_OgreMain_main=yes
+  (exit $ac_status); }; then
+  pkg_cv_OGRE_CFLAGS=`$PKG_CONFIG --cflags "OGRE >= 1.2.0" 2>/dev/null`
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_OgreMain_main=no
+  pkg_failed=yes
 fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_OgreMain_main" >&5
-echo "${ECHO_T}$ac_cv_lib_OgreMain_main" >&6; }
-if test $ac_cv_lib_OgreMain_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBOGREMAIN 1
-_ACEOF
-
-  LIBS="-lOgreMain $LIBS"
-
+    fi
 else
-
-    echo "Error! You need to have Ogre 1.4 installed."
-    exit -1
-
+	pkg_failed=untried
 fi
-
-  if test "${ac_cv_header_OGRE_OgreLog_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for OGRE/OgreLog.h" >&5
-echo $ECHO_N "checking for OGRE/OgreLog.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_OGRE_OgreLog_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_OGRE_OgreLog_h" >&5
-echo "${ECHO_T}$ac_cv_header_OGRE_OgreLog_h" >&6; }
-else
-  # Is the header compilable?
-{ echo "$as_me:$LINENO: checking OGRE/OgreLog.h usability" >&5
-echo $ECHO_N "checking OGRE/OgreLog.h usability... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-#include <OGRE/OgreLog.h>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_compile") 2>conftest.er1
+if test -n "$PKG_CONFIG"; then
+    if test -n "$OGRE_LIBS"; then
+        pkg_cv_OGRE_LIBS="$OGRE_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"OGRE >= 1.2.0\"") >&5
+  ($PKG_CONFIG --exists --print-errors "OGRE >= 1.2.0") 2>&5
   ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ac_header_compiler=yes
+  (exit $ac_status); }; then
+  pkg_cv_OGRE_LIBS=`$PKG_CONFIG --libs "OGRE >= 1.2.0" 2>/dev/null`
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_header_compiler=no
+  pkg_failed=yes
 fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6; }
-
-# Is the header present?
-{ echo "$as_me:$LINENO: checking OGRE/OgreLog.h presence" >&5
-echo $ECHO_N "checking OGRE/OgreLog.h presence... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <OGRE/OgreLog.h>
-_ACEOF
-if { (ac_try="$ac_cpp conftest.$ac_ext"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null && {
-	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       }; then
-  ac_header_preproc=yes
+    fi
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-  ac_header_preproc=no
+	pkg_failed=untried
 fi
 
-rm -f conftest.err conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6; }
 
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
-  yes:no: )
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: proceeding with the compiler's result" >&2;}
-    ac_header_preproc=yes
-    ;;
-  no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OGRE/OgreLog.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: OGRE/OgreLog.h: in the future, the compiler will take precedence" >&2;}
 
-    ;;
-esac
-{ echo "$as_me:$LINENO: checking for OGRE/OgreLog.h" >&5
-echo $ECHO_N "checking for OGRE/OgreLog.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_OGRE_OgreLog_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
 else
-  ac_cv_header_OGRE_OgreLog_h=$ac_header_preproc
+        _pkg_short_errors_supported=no
 fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_OGRE_OgreLog_h" >&5
-echo "${ECHO_T}$ac_cv_header_OGRE_OgreLog_h" >&6; }
+        if test $_pkg_short_errors_supported = yes; then
+	        OGRE_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "OGRE >= 1.2.0"`
+        else
+	        OGRE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "OGRE >= 1.2.0"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$OGRE_PKG_ERRORS" >&5
 
-fi
-if test $ac_cv_header_OGRE_OgreLog_h = yes; then
-  :
-else
+	{ { echo "$as_me:$LINENO: error: Package requirements (OGRE >= 1.2.0) were not met:
 
-    echo "Error! Cannot find the Ogre 1.4 headers."
-    exit -1
+$OGRE_PKG_ERRORS
 
-fi
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
 
+Alternatively, you may set the environment variables OGRE_CFLAGS
+and OGRE_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+echo "$as_me: error: Package requirements (OGRE >= 1.2.0) were not met:
 
+$OGRE_PKG_ERRORS
 
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
 
-
-{ echo "$as_me:$LINENO: checking for main in -lCEGUIBase" >&5
-echo $ECHO_N "checking for main in -lCEGUIBase... $ECHO_C" >&6; }
-if test "${ac_cv_lib_CEGUIBase_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lCEGUIBase  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_CEGUIBase_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_CEGUIBase_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_CEGUIBase_main" >&5
-echo "${ECHO_T}$ac_cv_lib_CEGUIBase_main" >&6; }
-if test $ac_cv_lib_CEGUIBase_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBCEGUIBASE 1
-_ACEOF
-
-  LIBS="-lCEGUIBase $LIBS"
-
-else
-
-    echo "Error! You need to have CEGUI 0.5 installed."
-    exit -1
-
-fi
-
-  if test "${ac_cv_header_CEGUI_CEGUIBase_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for CEGUI/CEGUIBase.h" >&5
-echo $ECHO_N "checking for CEGUI/CEGUIBase.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_CEGUI_CEGUIBase_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_CEGUI_CEGUIBase_h" >&5
-echo "${ECHO_T}$ac_cv_header_CEGUI_CEGUIBase_h" >&6; }
-else
-  # Is the header compilable?
-{ echo "$as_me:$LINENO: checking CEGUI/CEGUIBase.h usability" >&5
-echo $ECHO_N "checking CEGUI/CEGUIBase.h usability... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-#include <CEGUI/CEGUIBase.h>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ac_header_compiler=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_header_compiler=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6; }
-
-# Is the header present?
-{ echo "$as_me:$LINENO: checking CEGUI/CEGUIBase.h presence" >&5
-echo $ECHO_N "checking CEGUI/CEGUIBase.h presence... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <CEGUI/CEGUIBase.h>
-_ACEOF
-if { (ac_try="$ac_cpp conftest.$ac_ext"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null && {
-	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       }; then
-  ac_header_preproc=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-  ac_header_preproc=no
-fi
-
-rm -f conftest.err conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6; }
-
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
-  yes:no: )
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: proceeding with the compiler's result" >&2;}
-    ac_header_preproc=yes
-    ;;
-  no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: CEGUI/CEGUIBase.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: CEGUI/CEGUIBase.h: in the future, the compiler will take precedence" >&2;}
-
-    ;;
-esac
-{ echo "$as_me:$LINENO: checking for CEGUI/CEGUIBase.h" >&5
-echo $ECHO_N "checking for CEGUI/CEGUIBase.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_CEGUI_CEGUIBase_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_cv_header_CEGUI_CEGUIBase_h=$ac_header_preproc
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_CEGUI_CEGUIBase_h" >&5
-echo "${ECHO_T}$ac_cv_header_CEGUI_CEGUIBase_h" >&6; }
-
-fi
-if test $ac_cv_header_CEGUI_CEGUIBase_h = yes; then
-  :
-else
-
-    echo "Error! Cannot find the CEGUI 0.5 headers."
-    exit -1
-
-fi
-
-
-
-
-
-{ echo "$as_me:$LINENO: checking for main in -lCEGUIOgreRenderer" >&5
-echo $ECHO_N "checking for main in -lCEGUIOgreRenderer... $ECHO_C" >&6; }
-if test "${ac_cv_lib_CEGUIOgreRenderer_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lCEGUIOgreRenderer  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_CEGUIOgreRenderer_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_CEGUIOgreRenderer_main=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_CEGUIOgreRenderer_main" >&5
-echo "${ECHO_T}$ac_cv_lib_CEGUIOgreRenderer_main" >&6; }
-if test $ac_cv_lib_CEGUIOgreRenderer_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBCEGUIOGRERENDERER 1
-_ACEOF
-
-  LIBS="-lCEGUIOgreRenderer $LIBS"
-
-else
-
-    echo "Error! You need to have CEGUIOgreRendere installed."
-    exit -1
-
-fi
-
-
-
-  { echo "$as_me:$LINENO: checking for /usr/lib/OGRE/Plugin_PagingLandScape2.so" >&5
-echo $ECHO_N "checking for /usr/lib/OGRE/Plugin_PagingLandScape2.so... $ECHO_C" >&6; }
-if test "${ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  test "$cross_compiling" = yes &&
-  { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
-echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
+Alternatively, you may set the environment variables OGRE_CFLAGS
+and OGRE_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
    { (exit 1); exit 1; }; }
-if test -r "/usr/lib/OGRE/Plugin_PagingLandScape2.so"; then
-  ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so=yes
-else
-  ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so=no
-fi
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so" >&5
-echo "${ECHO_T}$ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so" >&6; }
-if test $ac_cv_file__usr_lib_OGRE_Plugin_PagingLandScape2_so = yes; then
-  :
-else
+elif test $pkg_failed = untried; then
+	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
 
-    { echo "$as_me:$LINENO: checking for /usr/local/lib/OGRE/Plugin_PagingLandScape2.so" >&5
-echo $ECHO_N "checking for /usr/local/lib/OGRE/Plugin_PagingLandScape2.so... $ECHO_C" >&6; }
-if test "${ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  test "$cross_compiling" = yes &&
-  { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
-echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
+Alternatively, you may set the environment variables OGRE_CFLAGS
+and OGRE_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables OGRE_CFLAGS
+and OGRE_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
    { (exit 1); exit 1; }; }
-if test -r "/usr/local/lib/OGRE/Plugin_PagingLandScape2.so"; then
-  ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so=yes
 else
-  ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so=no
+	OGRE_CFLAGS=$pkg_cv_OGRE_CFLAGS
+	OGRE_LIBS=$pkg_cv_OGRE_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	:
 fi
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so" >&5
-echo "${ECHO_T}$ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so" >&6; }
-if test $ac_cv_file__usr_local_lib_OGRE_Plugin_PagingLandScape2_so = yes; then
-  :
+  OGRE_PLUGINDIR=$($PKG_CONFIG --variable=plugindir OGRE)
+
+
+
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for CEGUI" >&5
+echo $ECHO_N "checking for CEGUI... $ECHO_C" >&6; }
+
+if test -n "$PKG_CONFIG"; then
+    if test -n "$CEGUI_CFLAGS"; then
+        pkg_cv_CEGUI_CFLAGS="$CEGUI_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"CEGUI >= 0.5.0\"") >&5
+  ($PKG_CONFIG --exists --print-errors "CEGUI >= 0.5.0") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_CEGUI_CFLAGS=`$PKG_CONFIG --cflags "CEGUI >= 0.5.0" 2>/dev/null`
 else
-
-      echo "Error! You need to have the PagingLandScape2 Ogre plugin."
-      exit -1
-
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+if test -n "$PKG_CONFIG"; then
+    if test -n "$CEGUI_LIBS"; then
+        pkg_cv_CEGUI_LIBS="$CEGUI_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"CEGUI >= 0.5.0\"") >&5
+  ($PKG_CONFIG --exists --print-errors "CEGUI >= 0.5.0") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_CEGUI_LIBS=`$PKG_CONFIG --libs "CEGUI >= 0.5.0" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
 fi
 
 
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
 fi
+        if test $_pkg_short_errors_supported = yes; then
+	        CEGUI_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "CEGUI >= 0.5.0"`
+        else
+	        CEGUI_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "CEGUI >= 0.5.0"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$CEGUI_PKG_ERRORS" >&5
+
+	{ { echo "$as_me:$LINENO: error: Package requirements (CEGUI >= 0.5.0) were not met:
+
+$CEGUI_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables CEGUI_CFLAGS
+and CEGUI_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+echo "$as_me: error: Package requirements (CEGUI >= 0.5.0) were not met:
+
+$CEGUI_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables CEGUI_CFLAGS
+and CEGUI_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
+   { (exit 1); exit 1; }; }
+elif test $pkg_failed = untried; then
+	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables CEGUI_CFLAGS
+and CEGUI_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables CEGUI_CFLAGS
+and CEGUI_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
+   { (exit 1); exit 1; }; }
+else
+	CEGUI_CFLAGS=$pkg_cv_CEGUI_CFLAGS
+	CEGUI_LIBS=$pkg_cv_CEGUI_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	:
+fi
+  CEGUI_OGRE_CFLAGS=$($PKG_CONFIG --cflags CEGUI-OGRE)
+
+  CEGUI_OGRE_LIBS=$($PKG_CONFIG --libs CEGUI-OGRE)
 
 
+  # Devil
 
-
-{ echo "$as_me:$LINENO: checking for main in -lOIS" >&5
-echo $ECHO_N "checking for main in -lOIS... $ECHO_C" >&6; }
-if test "${ac_cv_lib_OIS_main+set}" = set; then
+{ echo "$as_me:$LINENO: checking for main in -lIL" >&5
+echo $ECHO_N "checking for main in -lIL... $ECHO_C" >&6; }
+if test "${ac_cv_lib_IL_main+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
   ac_check_lib_save_LIBS=$LIBS
-LIBS="-lOIS  $LIBS"
+LIBS="-lIL  $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
 /* confdefs.h.  */
 _ACEOF
@@ -20300,63 +20145,61 @@ eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
 	 test ! -s conftest.err
        } && test -s conftest$ac_exeext &&
        $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_OIS_main=yes
+  ac_cv_lib_IL_main=yes
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-	ac_cv_lib_OIS_main=no
+	ac_cv_lib_IL_main=no
 fi
 
 rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
       conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_OIS_main" >&5
-echo "${ECHO_T}$ac_cv_lib_OIS_main" >&6; }
-if test $ac_cv_lib_OIS_main = yes; then
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_IL_main" >&5
+echo "${ECHO_T}$ac_cv_lib_IL_main" >&6; }
+if test $ac_cv_lib_IL_main = yes; then
   cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBOIS 1
+#define HAVE_LIBIL 1
 _ACEOF
 
-  LIBS="-lOIS $LIBS"
-
-else
-
-    echo "Error! You need to have OIS 1.0 installed."
-    exit -1
+  LIBS="-lIL $LIBS"
 
 fi
 
-  if test "${ac_cv_header_OIS_OISEvents_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for OIS/OISEvents.h" >&5
-echo $ECHO_N "checking for OIS/OISEvents.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_OIS_OISEvents_h+set}" = set; then
+
+{ echo "$as_me:$LINENO: checking for main in -lILU" >&5
+echo $ECHO_N "checking for main in -lILU... $ECHO_C" >&6; }
+if test "${ac_cv_lib_ILU_main+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_OIS_OISEvents_h" >&5
-echo "${ECHO_T}$ac_cv_header_OIS_OISEvents_h" >&6; }
 else
-  # Is the header compilable?
-{ echo "$as_me:$LINENO: checking OIS/OISEvents.h usability" >&5
-echo $ECHO_N "checking OIS/OISEvents.h usability... $ECHO_C" >&6; }
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lILU  $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
 /* confdefs.h.  */
 _ACEOF
 cat confdefs.h >>conftest.$ac_ext
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
-$ac_includes_default
-#include <OIS/OISEvents.h>
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
 _ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
 case "(($ac_try" in
   *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
   *) ac_try_echo=$ac_try;;
 esac
 eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_compile") 2>conftest.er1
+  (eval "$ac_link") 2>conftest.er1
   ac_status=$?
   grep -v '^ *+' conftest.er1 >conftest.err
   rm -f conftest.er1
@@ -20365,103 +20208,277 @@ eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
   (exit $ac_status); } && {
 	 test -z "$ac_cxx_werror_flag" ||
 	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ac_header_compiler=yes
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_ILU_main=yes
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-	ac_header_compiler=no
+	ac_cv_lib_ILU_main=no
 fi
 
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6; }
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_ILU_main" >&5
+echo "${ECHO_T}$ac_cv_lib_ILU_main" >&6; }
+if test $ac_cv_lib_ILU_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBILU 1
+_ACEOF
 
-# Is the header present?
-{ echo "$as_me:$LINENO: checking OIS/OISEvents.h presence" >&5
-echo $ECHO_N "checking OIS/OISEvents.h presence... $ECHO_C" >&6; }
+  LIBS="-lILU $LIBS"
+
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -lILUT" >&5
+echo $ECHO_N "checking for main in -lILUT... $ECHO_C" >&6; }
+if test "${ac_cv_lib_ILUT_main+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lILUT  $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
 /* confdefs.h.  */
 _ACEOF
 cat confdefs.h >>conftest.$ac_ext
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
-#include <OIS/OISEvents.h>
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
 _ACEOF
-if { (ac_try="$ac_cpp conftest.$ac_ext"
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
 case "(($ac_try" in
   *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
   *) ac_try_echo=$ac_try;;
 esac
 eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
+  (eval "$ac_link") 2>conftest.er1
   ac_status=$?
   grep -v '^ *+' conftest.er1 >conftest.err
   rm -f conftest.er1
   cat conftest.err >&5
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null && {
-	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
 	 test ! -s conftest.err
-       }; then
-  ac_header_preproc=yes
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_ILUT_main=yes
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-  ac_header_preproc=no
+	ac_cv_lib_ILUT_main=no
 fi
 
-rm -f conftest.err conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6; }
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_ILUT_main" >&5
+echo "${ECHO_T}$ac_cv_lib_ILUT_main" >&6; }
+if test $ac_cv_lib_ILUT_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBILUT 1
+_ACEOF
 
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
-  yes:no: )
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: proceeding with the compiler's result" >&2;}
-    ac_header_preproc=yes
-    ;;
-  no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: OIS/OISEvents.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: OIS/OISEvents.h: in the future, the compiler will take precedence" >&2;}
+  LIBS="-lILUT $LIBS"
 
-    ;;
-esac
-{ echo "$as_me:$LINENO: checking for OIS/OISEvents.h" >&5
-echo $ECHO_N "checking for OIS/OISEvents.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_OIS_OISEvents_h+set}" = set; then
+fi
+
+
+{ echo "$as_me:$LINENO: checking for main in -ljpeg" >&5
+echo $ECHO_N "checking for main in -ljpeg... $ECHO_C" >&6; }
+if test "${ac_cv_lib_jpeg_main+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_cv_header_OIS_OISEvents_h=$ac_header_preproc
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_OIS_OISEvents_h" >&5
-echo "${ECHO_T}$ac_cv_header_OIS_OISEvents_h" >&6; }
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-ljpeg  $LIBS"
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
 
-fi
-if test $ac_cv_header_OIS_OISEvents_h = yes; then
-  :
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_cxx_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  ac_cv_lib_jpeg_main=yes
 else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
 
-    echo "Error! Cannot find the OIS 1.0 headers."
-    exit -1
+	ac_cv_lib_jpeg_main=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_lib_jpeg_main" >&5
+echo "${ECHO_T}$ac_cv_lib_jpeg_main" >&6; }
+if test $ac_cv_lib_jpeg_main = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBJPEG 1
+_ACEOF
+
+  LIBS="-ljpeg $LIBS"
 
 fi
 
+
+
+
+
+
+
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for OIS" >&5
+echo $ECHO_N "checking for OIS... $ECHO_C" >&6; }
+
+if test -n "$PKG_CONFIG"; then
+    if test -n "$OIS_CFLAGS"; then
+        pkg_cv_OIS_CFLAGS="$OIS_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"OIS >= 0.1\"") >&5
+  ($PKG_CONFIG --exists --print-errors "OIS >= 0.1") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_OIS_CFLAGS=`$PKG_CONFIG --cflags "OIS >= 0.1" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+if test -n "$PKG_CONFIG"; then
+    if test -n "$OIS_LIBS"; then
+        pkg_cv_OIS_LIBS="$OIS_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"OIS >= 0.1\"") >&5
+  ($PKG_CONFIG --exists --print-errors "OIS >= 0.1") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_OIS_LIBS=`$PKG_CONFIG --libs "OIS >= 0.1" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        OIS_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "OIS >= 0.1"`
+        else
+	        OIS_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "OIS >= 0.1"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$OIS_PKG_ERRORS" >&5
+
+	{ { echo "$as_me:$LINENO: error: Package requirements (OIS >= 0.1) were not met:
+
+$OIS_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables OIS_CFLAGS
+and OIS_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+echo "$as_me: error: Package requirements (OIS >= 0.1) were not met:
+
+$OIS_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables OIS_CFLAGS
+and OIS_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
+   { (exit 1); exit 1; }; }
+elif test $pkg_failed = untried; then
+	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables OIS_CFLAGS
+and OIS_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables OIS_CFLAGS
+and OIS_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
+   { (exit 1); exit 1; }; }
+else
+	OIS_CFLAGS=$pkg_cv_OIS_CFLAGS
+	OIS_LIBS=$pkg_cv_OIS_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	:
+fi
 
 
 
@@ -20673,207 +20690,115 @@ fi
 
 
 
-{ echo "$as_me:$LINENO: checking for main in -lcurl" >&5
-echo $ECHO_N "checking for main in -lcurl... $ECHO_C" >&6; }
-if test "${ac_cv_lib_curl_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lcurl  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for libcurl" >&5
+echo $ECHO_N "checking for libcurl... $ECHO_C" >&6; }
 
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_link") 2>conftest.er1
+if test -n "$PKG_CONFIG"; then
+    if test -n "$libcurl_CFLAGS"; then
+        pkg_cv_libcurl_CFLAGS="$libcurl_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libcurl >= 7.17\"") >&5
+  ($PKG_CONFIG --exists --print-errors "libcurl >= 7.17") 2>&5
   ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext &&
-       $as_test_x conftest$ac_exeext; then
-  ac_cv_lib_curl_main=yes
+  (exit $ac_status); }; then
+  pkg_cv_libcurl_CFLAGS=`$PKG_CONFIG --cflags "libcurl >= 7.17" 2>/dev/null`
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_curl_main=no
+  pkg_failed=yes
 fi
-
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_lib_curl_main" >&5
-echo "${ECHO_T}$ac_cv_lib_curl_main" >&6; }
-if test $ac_cv_lib_curl_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBCURL 1
-_ACEOF
-
-  LIBS="-lcurl $LIBS"
-
+    fi
 else
-
-    echo "Error! You need to have libcurl installed."
-    exit -1
-
+	pkg_failed=untried
 fi
-
-  if test "${ac_cv_header_curl_curl_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for curl/curl.h" >&5
-echo $ECHO_N "checking for curl/curl.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_curl_curl_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_curl_curl_h" >&5
-echo "${ECHO_T}$ac_cv_header_curl_curl_h" >&6; }
-else
-  # Is the header compilable?
-{ echo "$as_me:$LINENO: checking curl/curl.h usability" >&5
-echo $ECHO_N "checking curl/curl.h usability... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-#include <curl/curl.h>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_compile") 2>conftest.er1
+if test -n "$PKG_CONFIG"; then
+    if test -n "$libcurl_LIBS"; then
+        pkg_cv_libcurl_LIBS="$libcurl_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libcurl >= 7.17\"") >&5
+  ($PKG_CONFIG --exists --print-errors "libcurl >= 7.17") 2>&5
   ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ac_header_compiler=yes
+  (exit $ac_status); }; then
+  pkg_cv_libcurl_LIBS=`$PKG_CONFIG --libs "libcurl >= 7.17" 2>/dev/null`
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_header_compiler=no
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
 fi
 
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6; }
 
-# Is the header present?
-{ echo "$as_me:$LINENO: checking curl/curl.h presence" >&5
-echo $ECHO_N "checking curl/curl.h presence... $ECHO_C" >&6; }
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <curl/curl.h>
-_ACEOF
-if { (ac_try="$ac_cpp conftest.$ac_ext"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
-  (eval "$ac_cpp conftest.$ac_ext") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null && {
-	 test -z "$ac_cxx_preproc_warn_flag$ac_cxx_werror_flag" ||
-	 test ! -s conftest.err
-       }; then
-  ac_header_preproc=yes
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
 else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-  ac_header_preproc=no
+        _pkg_short_errors_supported=no
 fi
+        if test $_pkg_short_errors_supported = yes; then
+	        libcurl_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libcurl >= 7.17"`
+        else
+	        libcurl_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libcurl >= 7.17"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$libcurl_PKG_ERRORS" >&5
 
-rm -f conftest.err conftest.$ac_ext
-{ echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6; }
+	{ { echo "$as_me:$LINENO: error: Package requirements (libcurl >= 7.17) were not met:
 
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
-  yes:no: )
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: curl/curl.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: curl/curl.h: proceeding with the compiler's result" >&2;}
-    ac_header_preproc=yes
-    ;;
-  no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: curl/curl.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: curl/curl.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: curl/curl.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: curl/curl.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: curl/curl.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: curl/curl.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: curl/curl.h: in the future, the compiler will take precedence" >&2;}
+$libcurl_PKG_ERRORS
 
-    ;;
-esac
-{ echo "$as_me:$LINENO: checking for curl/curl.h" >&5
-echo $ECHO_N "checking for curl/curl.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_curl_curl_h+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables libcurl_CFLAGS
+and libcurl_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+echo "$as_me: error: Package requirements (libcurl >= 7.17) were not met:
+
+$libcurl_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables libcurl_CFLAGS
+and libcurl_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
+   { (exit 1); exit 1; }; }
+elif test $pkg_failed = untried; then
+	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables libcurl_CFLAGS
+and libcurl_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables libcurl_CFLAGS
+and libcurl_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
+   { (exit 1); exit 1; }; }
 else
-  ac_cv_header_curl_curl_h=$ac_header_preproc
-fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_curl_curl_h" >&5
-echo "${ECHO_T}$ac_cv_header_curl_curl_h" >&6; }
-
-fi
-if test $ac_cv_header_curl_curl_h = yes; then
-  :
-else
-
-    echo "Error! Cannot find the libcurl headers."
-    exit -1
-
+	libcurl_CFLAGS=$pkg_cv_libcurl_CFLAGS
+	libcurl_LIBS=$pkg_cv_libcurl_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	:
 fi
 
 
@@ -26196,6 +26121,18 @@ F77!$F77$ac_delim
 FFLAGS!$FFLAGS$ac_delim
 ac_ct_F77!$ac_ct_F77$ac_delim
 LIBTOOL!$LIBTOOL$ac_delim
+PKG_CONFIG!$PKG_CONFIG$ac_delim
+OGRE_CFLAGS!$OGRE_CFLAGS$ac_delim
+OGRE_LIBS!$OGRE_LIBS$ac_delim
+OGRE_PLUGINDIR!$OGRE_PLUGINDIR$ac_delim
+CEGUI_CFLAGS!$CEGUI_CFLAGS$ac_delim
+CEGUI_LIBS!$CEGUI_LIBS$ac_delim
+CEGUI_OGRE_CFLAGS!$CEGUI_OGRE_CFLAGS$ac_delim
+CEGUI_OGRE_LIBS!$CEGUI_OGRE_LIBS$ac_delim
+OIS_CFLAGS!$OIS_CFLAGS$ac_delim
+OIS_LIBS!$OIS_LIBS$ac_delim
+libcurl_CFLAGS!$libcurl_CFLAGS$ac_delim
+libcurl_LIBS!$libcurl_LIBS$ac_delim
 RB_OPTION_SERVER_FLAGS_TRUE!$RB_OPTION_SERVER_FLAGS_TRUE$ac_delim
 RB_OPTION_SERVER_FLAGS_FALSE!$RB_OPTION_SERVER_FLAGS_FALSE$ac_delim
 BUILD_LIB_DESIGN_TRUE!$BUILD_LIB_DESIGN_TRUE$ac_delim
@@ -26213,7 +26150,7 @@ LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 29; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 41; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

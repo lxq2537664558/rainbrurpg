@@ -22,7 +22,31 @@
 
 #include "label.h"
 
+#include "bgwindow.h"
+
+#include <OGRE/OgreStringConverter.h>
+#include <OGRE/OgreOverlayManager.h>
+
 RainbruRPG::OgreGui::Label::Label(Vector4 dim, String caption, 
 				  BetaGUI::Window* parent){
 
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
+    +StringConverter::toString(parent->getGUI()->getUniqueId());
+
+  this->setName(uniqueName);
+
+  sk->createLabel(uniqueName, dim, caption, parent);
+  this->contentOverlay=sk->getOverlayByName(uniqueName);
+  
+}
+
+RainbruRPG::OgreGui::Label::~Label(){
+  OverlayManager::getSingleton().destroy(name);
+}
+
+void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+
+  s->setCaptionTransparency(contentOverlay, alpha);
 }

@@ -126,6 +126,10 @@ BUILD_LIB_DESIGN_FALSE = @BUILD_LIB_DESIGN_FALSE@
 BUILD_LIB_DESIGN_TRUE = @BUILD_LIB_DESIGN_TRUE@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
+CEGUI_CFLAGS = @CEGUI_CFLAGS@
+CEGUI_LIBS = @CEGUI_LIBS@
+CEGUI_OGRE_CFLAGS = @CEGUI_OGRE_CFLAGS@
+CEGUI_OGRE_LIBS = @CEGUI_OGRE_LIBS@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
@@ -168,6 +172,11 @@ LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 OBJEXT = @OBJEXT@
+OGRE_CFLAGS = @OGRE_CFLAGS@
+OGRE_LIBS = @OGRE_LIBS@
+OGRE_PLUGINDIR = @OGRE_PLUGINDIR@
+OIS_CFLAGS = @OIS_CFLAGS@
+OIS_LIBS = @OIS_LIBS@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -175,6 +184,7 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
 RANLIB = @RANLIB@
 RB_OPTION_ALL_FLAGS_FALSE = @RB_OPTION_ALL_FLAGS_FALSE@
 RB_OPTION_ALL_FLAGS_TRUE = @RB_OPTION_ALL_FLAGS_TRUE@
@@ -222,6 +232,8 @@ htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
+libcurl_CFLAGS = @libcurl_CFLAGS@
+libcurl_LIBS = @libcurl_LIBS@
 libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
@@ -237,8 +249,6 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-
-#lib_LTLIBRARIES = librainbrurpg-common.la
 lib_LTLIBRARIES = librainbrurpg-common.la
 librainbrurpg_common.adir = $(libdir)
 h_sources = logger.h				\
@@ -387,13 +397,23 @@ cc_sources = loadbmp.cpp				\
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
-INCLUDES = -Ifox-1.6  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0  --cflags) 
-#lib_LTLIBRARIES= libexamplelib-1.0.la
+INCLUDES = -Ifox-1.6  		 \
+	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0  --cflags) 
+
 librainbrurpg_common_la_SOURCES = $(h_sources) $(cc_sources)
+
 # Adds the FOX-Toolkit libs
-fox_config = $(shell fox-config --libs) $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 --libs)
+fox_config = $(shell fox-config --libs)		\
+  $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 --libs)
+
 librainbrurpg_common_la_LIBADD = $(fox config) 
-librainbrurpg_common_la_LDFLAGS = $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -Wl,--rpath -Wl,$(DESTDIR)$(libdir)
+librainbrurpg_common_la_LDFLAGS = \
+  $(SHARED_FLAG)				\
+  -version-info					\
+  $(GENERIC_LIBRARY_VERSION)			\
+  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
+  $(libcurl_LIBS)
+
 all: all-am
 
 .SUFFIXES:

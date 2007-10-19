@@ -24,7 +24,7 @@ cc_sources= bgbutton.cpp		\
 	    bggui.cpp			\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
-	    label.h			\
+	    label.cpp			\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    resizegrip.cpp		\
