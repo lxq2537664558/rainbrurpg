@@ -84,9 +84,6 @@ AC_DEFUN([RB_CHECK_OGREMAIN],
   AC_SUBST(CEGUI_OGRE_LIBS, [$($PKG_CONFIG --libs CEGUI-OGRE)])
 
   # Devil
-  AC_CHECK_LIB(IL, main, [], [])
-  AC_CHECK_LIB(ILU, main, [], [])
-  AC_CHECK_LIB(ILUT, main, [], [])
   AC_CHECK_LIB(jpeg, main, [], [])
 
 ])

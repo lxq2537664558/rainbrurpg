@@ -62,7 +62,7 @@ void RainbruRPG::Core::gsConnection::init(){
   LOGI("Initialising gsConnection");
   gsMenuBase::init();
   yBorder=0.5f;
-  translateTo(0.0f);
+  translateTo(0.4f);
   setupConnectionMenu();
   setupTabOrder();
   LOGI("gsConnection initialization complete");

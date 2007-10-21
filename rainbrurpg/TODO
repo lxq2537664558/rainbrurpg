@@ -99,20 +99,6 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
    decrease) (ftSize)
 - Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
-* Objectifs Seb
-- Etape 2
-  [7 jours] Avatar
-	    - Chargement du mesh (je sais faire)
-	    - Creation de 2 cameras distinctes, une en vue subjective et
-	      une pour la troisième personne
-  [7 jours] Animation de l'avatar
-- Etape 3
-  [7 jours] Integration d'un moteur physique
-           - ODE : http://www.ode.org GNU LGPL in debian repository
-              http://www.ogre3d.org/wiki/index.php/OgreODE
-  [4 jours] Interaction avec l'environement
-	    Le principe est connu et abondemment discute dans les forums
-
 * Fil rouge
 - test Valgrind
   Pour eviter les fuites memoires et autres.
@@ -138,6 +124,11 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-160
+- are -lIL -lILU -lILUT mandatory in aclocal ? NO
+  To fix the JPG texture bug, use -ljpeg
+- JPG texture bug fixed
+  Adding libjpeg to the client seems to fix it. Trying to remove
+  -lIL -lILU -lILUT.
 - Try to use PKG_CHECK_MODULES in configure
   Do not assume anymore libraries are in /usr/local/lib
 - soBetaGUI : fnTextInput and fsTextInput replaced by fnCaption and
@@ -152,7 +143,7 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
   value of unsigned int width and height.
 - Window moving using devX and devY to prevent the move of the window
   only from the middle of its width
-- Fix the mocing Window bug  
+- Fix the moving Window bug  
 - Find the resize bug and use a flag
   The mouse event are sent to the GUI object so, the flag must be in
   GUI. We get a resizedWindow field in GUI which is NULL if no window

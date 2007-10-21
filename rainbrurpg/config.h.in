@@ -65,15 +65,6 @@
 /* Define to 1 if you have the `gnet-2.0' library (-lgnet-2.0). */
 #undef HAVE_LIBGNET_2_0
 
-/* Define to 1 if you have the `IL' library (-lIL). */
-#undef HAVE_LIBIL
-
-/* Define to 1 if you have the `ILU' library (-lILU). */
-#undef HAVE_LIBILU
-
-/* Define to 1 if you have the `ILUT' library (-lILUT). */
-#undef HAVE_LIBILUT
-
 /* Define to 1 if you have the `jpeg' library (-ljpeg). */
 #undef HAVE_LIBJPEG
 
