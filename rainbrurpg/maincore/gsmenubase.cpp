@@ -51,14 +51,14 @@
 RainbruRPG::Core::gsMenuBase::gsMenuBase(bool createMenu):
   bordRect(NULL),
   menuRect(NULL),
-  dynaRect(NULL)
+  dynaRect(NULL),
+  velocity(NULL),
+  isMouseButtonPressed(false)
 {
 
   LOGI("Constructing a  gsMenuBase");
   this->createMenu=createMenu;
   velocity=NULL;
-  stateType=GST_MENU;
-  isMouseButtonPressed=false;
 
   inputWrapper=new InputWrapper();
   tabNav=new KeyboardNavigation();
@@ -77,6 +77,7 @@ void RainbruRPG::Core::gsMenuBase::init(){
   initFrameCount=0;
 
   inTransition=false;
+  isMouseButtonPressed=false;
 
   // if yBorder=0.0f, u=1.0, v=0.7
   uMappingScreenSize=0.5f;
@@ -130,7 +131,7 @@ void RainbruRPG::Core::gsMenuBase::pause(){
   *
   */
 void RainbruRPG::Core::gsMenuBase::resume(){
-
+  isMouseButtonPressed=false;
 }
 
 /** Runs the gamestate
@@ -200,6 +201,18 @@ void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
   *
   */
 void RainbruRPG::Core::gsMenuBase::transition(){
+  /* v 0.0.5-160 : Here is a bugfix in mouseButton handling
+   *
+   *   When we click the 'Network Game" button of gsMainMenu
+   * we go to the gsConnection state and the Connection window
+   * is moving without left mouse button is clicked.
+   *
+   * It appears that isMouseButtonPressed was true. The following
+   * line is a hack, assuming that isMouseButtonPressed is true here.
+   *
+   */
+  isMouseButtonPressed=false;
+
   if (inTransition){
     if (velocity){
       // Engine initialization
@@ -214,6 +227,8 @@ void RainbruRPG::Core::gsMenuBase::transition(){
       // If the transition is ended
       if (!inTransition){
 	LOGI("Transition ended");
+	//	isMouseButtonPressed=false;
+
 	yBorder=yBorderTo;
 	GuiManager::getSingleton().beginGuiFadeIn();
       }
@@ -455,6 +470,7 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   */
 bool RainbruRPG::Core::gsMenuBase::
 mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
+  LOGI("Mouse released");
   // CEGUI
   CEGUI::System::getSingleton().injectMouseButtonUp(
     inputWrapper->OISButtontoCEGUI(id));
@@ -464,7 +480,8 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   mouseY=evt.state.Y.abs;
 
   // OgreGUI
-  GameEngine::getSingleton().getOgreGui()->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+  GameEngine::getSingleton().getOgreGui()
+    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
 
   return true;
 }

@@ -29,14 +29,17 @@
 /** The default constructor
   *
   */
-RainbruRPG::Options::xmlLanguage::xmlLanguage(){
-  LOGI("xmlLanguage creation");
+RainbruRPG::Options::xmlLanguage::xmlLanguage()
+  :doc(NULL), 
+   root(NULL), 
+   lastUsed(""),
+   defaultLang("")
+{
 
-  lastUsed="";
+  LOGI("xmlLanguage creation");
 
   Network::GlobalURI gu;
   this->filename=gu.getUserDirFile("languages.xml");
-  doc=NULL;
   refresh();
 
   languageList=new tLanguageList();
@@ -90,6 +93,12 @@ RainbruRPG::Options::xmlLanguage::~xmlLanguage(){
   languageList->clear();
   delete languageList;
   languageList=NULL;
+
+  //  delete doc;
+  doc->~TiXmlDocument();
+  doc=NULL;
+
+  root=NULL;
 }
 
 /** Get a pointer to the loaded language list
@@ -142,10 +151,12 @@ void RainbruRPG::Options::xmlLanguage::loadLastUsed(){
     else{
       lastUsed="";
     }
+
   }
   else{
     lastUsed="";
   }
+
 }
 
 /** Loads the default node
@@ -159,7 +170,10 @@ void RainbruRPG::Options::xmlLanguage::loadDefault(){
     if (lu){
       defaultLang=lu->GetText();
     }
+
   }
+
+
 }
 
 /** Get all the language nodes and call TreatOneLanguage for each one
@@ -172,10 +186,12 @@ void RainbruRPG::Options::xmlLanguage::treatAllLanguages(){
     for( child; child; child=child->NextSiblingElement() ){
       treatOneLanguage(child);
     }
+
   }
   else{
     LOGW("Empty snapshot list");
   }
+
 }
 
 /** Creates and feeds a LanguageListItem for a single language node
@@ -211,6 +227,7 @@ treatLanguageCountries(TiXmlElement* e, const LanguageListItem& it){
     for( child; child; child=child->NextSiblingElement() ){
       treatCountry(child, it);
     }
+
   }
   else{
     LOGW("Empty snapshot list");

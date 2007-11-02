@@ -15,6 +15,7 @@ h_sources= bgbutton.h			\
 	   skinmanager.h		\
 	   skinoverlay.h		\
 	   sobetagui.h			\
+	   sonavigation.h		\
 	   titlebar.h			\
 	   widget.h
 
@@ -31,6 +32,7 @@ cc_sources= bgbutton.cpp		\
 	    skinmanager.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
+	    sonavigation.cpp		\
 	    titlebar.cpp		\
 	    widget.cpp
 

@@ -37,15 +37,16 @@ using namespace RainbruRPG::OgreGui;
   */
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
 			GUI *G)
-  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),activeTextInput(0),
+  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),
+   activeTextInput(NULL),
    movingDevX(0),
    movingDevY(0),
    minimalWidth(D.z),
    minimalHeight(D.w),
-   mAB(0){
+   mAB(NULL),
+   rootOverlay(NULL)
+{
 
-
-  rootOverlay=NULL;
 
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
@@ -281,7 +282,9 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   *
   */
 void BetaGUI::Window::hide(){
+  LOGI("Hiding  a window");
   rootOverlay->hide();
+  mGUI->deactivateWindow(this);
 }
 
 /** Set this window visible

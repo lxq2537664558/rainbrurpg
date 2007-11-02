@@ -56,6 +56,7 @@ namespace RainbruRPG{
       */
     enum OgreGuiSkinID{
       OSI_BETAGUI=0,      //!< The BeraGUI based skin
+      OSI_NAVIGATION,     //!< The navigation skin
       OSI_DEFAULT=0xff,   //!< A virtual default skin
     };
 
@@ -71,6 +72,8 @@ namespace RainbruRPG{
       * The skin vector can be accessed with a correct skin identifier
       * (\ref RainbruRPG::OgreGui::OgreGuiSkinID "OgreGuiSkinID"
       * enumeration).
+      *
+      * This singleton \b must be initialized or it may cause SEGFAULT.
       *
       */
     class SkinManager : public Singleton<SkinManager>{

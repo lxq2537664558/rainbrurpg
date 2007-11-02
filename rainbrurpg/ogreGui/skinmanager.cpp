@@ -23,6 +23,7 @@
 #include "skinmanager.h"
 
 #include "sobetagui.h"
+#include "sonavigation.h"
 
 #include <logger.h>
 
@@ -37,10 +38,21 @@ void RainbruRPG::OgreGui::SkinManager::init(){
 
   SkinOverlay* sbg=new soBetaGui();
   skins.push_back(sbg);
+
+  SkinOverlay* sn=new soNavigation();
+  skins.push_back(sn);
+
+
   // Contol sbg correct index
-  if (skins.size()!=OSI_BETAGUI+1){
+  if (skins.size()!=OSI_BETAGUI+2){
     LOGW("OSI_BETAGUI index is incorrect : bad skin mapping");
   }
+
+  // Contol sn correct index
+  if (skins.size()!=OSI_NAVIGATION+1){
+    LOGW("OSI_BETAGUI index is incorrect : bad skin mapping");
+  }
+
 }
 
 /** Get a skin by its Identifier

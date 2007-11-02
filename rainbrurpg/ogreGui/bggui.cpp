@@ -9,6 +9,7 @@
 #include "bggui.h"
 
 #include "bgwindow.h"
+#include <logger.h>
 
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreStringConverter.h>
@@ -67,15 +68,19 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
 
+  if (LMB){
+    LOGW("Mouse boutton is down!");
+  }
+
   if(mouseCursorOverlay){
     mouseCursorOverlay->setPosition(x,y);
   }
 
-  if (resizedWindow&&LMB){
+  if ((resizedWindow!=NULL)&&LMB){
     resizedWindow->resize(x, y);
     return true;
   }
-  else if(movedWindow&&LMB){
+  else if((movedWindow!=NULL)&&LMB){
     movedWindow->move(x, y);
   }
   else{
@@ -274,4 +279,10 @@ void BetaGUI::GUI::setResizedWindow(Window* w){
   */
 void BetaGUI::GUI::setMovedWindow(Window* w){
   this->movedWindow=w;
+}
+
+void BetaGUI::GUI::deactivateWindow(Window* win){
+  LOGI("Deactivate window");
+  this->resizedWindow=NULL;
+  this->movedWindow=NULL;
 }

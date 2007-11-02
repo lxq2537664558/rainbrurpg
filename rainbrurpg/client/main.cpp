@@ -78,7 +78,7 @@ bool showLauncher(int argc, char **argv){
   // The true should cause a segfault if omitted
   application.init(argc,argv, true);
   
-  new Launcher(&application);
+  Launcher* launcher=new Launcher(&application);
   
   application.create();
 
@@ -95,6 +95,9 @@ bool showLauncher(int argc, char **argv){
     // The 'Quit' button was clicked : stopping execution
     execRet=false;
   }
+
+  delete launcher;
+  launcher=NULL;
 
   return execRet;
 }
@@ -135,7 +138,7 @@ int main(int argc, char **argv){
   GlobalURI gu;
   std::string plugFN=gu.getShareFile("config/plugins.cfg");
   std::string ogreFN=gu.getUserDirFile("ogre.cfg");
-  new Ogre::Root(plugFN.c_str(), ogreFN.c_str(), "ogre.log");
+  Ogre::Root* root=new Ogre::Root(plugFN.c_str(), ogreFN.c_str(), "ogre.log");
 
   // Shows the launcher 
   if (showLauncher(argc, argv)){
@@ -153,7 +156,13 @@ int main(int argc, char **argv){
     GameEngine::getSingleton().cleanup();
 
   }
+
+  delete root;
+  root=NULL;
+
   return 0;
+
+
 }
 
 

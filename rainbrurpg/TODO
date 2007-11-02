@@ -3,10 +3,6 @@ TODO
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 - gsConnection uses betaGUI
-- Moving Window bug :
-  When we click the 'Network Game" button of gsMainMenu
-  we go to the gsConnection state and the Connection window
-  is moving without left mouse button is clicked.
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -43,6 +39,7 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 - client uses EnvironmentSetup in libRainbruRPG-core.so
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
+- Client's debug console uses the readline library
 
 * Editor identification
    The identification is done by GPG keys
@@ -65,8 +62,8 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 - The database must be connected even if the server is not started
   To look for objects without connecting the server
 - Update the client number in statusbar
-- Un dialog pour l'exportation du log (LogExportDialog)
-  Choisir le nom de fichier d'exportation du log
+- A dialog to export the program log (LogExportDialog)
+  Chose the filename of the export
 - Modele Conceptuel de Donnees pour la base de donnees
   Dans le repertoire rpg/sql se trouve le script de creation de la
   base et de ses tables. Il s'agit pour l'instant de faire une bdd
@@ -76,10 +73,8 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * Editor
 - PosorDialog initialization with the ObjectPos values
   PosorDialog::setPosName must know the ObjectMesh name
-- Nettoyer OgreView 
-  Supprimer les fonctions inutiles et les variables globales qui ne
-  sont pas de moi. Ca evitera peut etre une implementation de 1400
-  lignes.
+- OgreView cleanup
+  Give up unused functions ans global variables 
 - SelectionCycle teste si le nom d'Entity retourne contient Outline
 	- Cela evitera un Segfault
   [ogreview.cpp:1178]           -- Selected object name : Arbre1_1Outline
@@ -124,6 +119,15 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-160
+- soNavigation implementation
+- Images nav.button and nav.button.active created
+- Moving Window bug :
+  When we click the 'Network Game" button of gsMainMenu
+  we go to the gsConnection state and the Connection window
+  is moving without left mouse button is clicked.
+    FIXED : please see gsMenuBase::transition() implementation for
+  further details.
+- Some memory leaks fixed (with valgring)
 - are -lIL -lILU -lILUT mandatory in aclocal ? NO
   To fix the JPG texture bug, use -ljpeg
 - JPG texture bug fixed

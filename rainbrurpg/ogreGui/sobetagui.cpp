@@ -21,9 +21,10 @@
  */
 
 #include "sobetagui.h"
+#include "bgwindow.h"
+
 
 #include <logger.h>
-#include "bgwindow.h"
 
 #include <OGRE/OgreVector2.h>
 #include <OGRE/OgreOverlayManager.h>

@@ -167,6 +167,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 
 
   mGUI->addWindow(window);
+
 }
 
 /** The callback of the Connect button
@@ -220,6 +221,8 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   *
   */
 void RainbruRPG::Core::gsConnection::resume(){
+  gsMenuBase::resume();
+
   Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
   // GuiManager::getSingleton().createTitleOverlay(rw);
   GuiManager::getSingleton().loadCEGUILayout("connection.layout");

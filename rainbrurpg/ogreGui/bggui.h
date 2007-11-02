@@ -53,6 +53,10 @@ namespace BetaGUI {
     * resized window is set in the local pointer \ref
     * GUI::resizedWindow "resizedWindow".
     *
+    * \note The initial alpha value of all widgets is 0.0f. This means that
+    *       there are fully transparent. To be able to see your graphical
+    *       user interface, you \b must call setGuiTransparency().
+    *
     * \sa \ref GUI::resizedWindow "resizedWindow".
     *
     */
@@ -68,7 +72,7 @@ namespace BetaGUI {
     Window* createWindow(Vector4,String,OgreGuiWindowType,String c="");
     void destroyWindow(Window *w);
     
-        OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
+    OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
     OverlayContainer* createMousePointer(Vector2,String);
 
     unsigned int getUniqueId(void);
@@ -83,6 +87,7 @@ namespace BetaGUI {
     void setMovedWindow(Window*);
 
     void addWindow(Window*);
+    void deactivateWindow(Window*);
 
   protected:
     /** The current GUI transparency value
