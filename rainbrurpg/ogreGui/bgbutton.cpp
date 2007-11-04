@@ -24,12 +24,15 @@
   * \param P The parent window
   *
   */
-BetaGUI::Button::Button(Vector4 D, String M, String T, Callback C, Window* P)
-                :x(D.x),
-		 y(D.y),
-		 w(D.z),
-		 h(D.w){
-
+BetaGUI::Button::Button(Vector4 D, String M, String T, Callback C, Window* P,
+			RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  Widget(sid),
+  x(D.x),
+  y(D.y),
+  w(D.z),
+  h(D.w)
+{
+  
   callback=C;
 
 }

@@ -25,6 +25,8 @@
 #include "config.h"
 
 #include <logger.h>
+#include <stringconv.h>
+
 #include <iostream>
 #include <exception>
 #include <CEGUI/CEGUIExceptions.h>
@@ -36,14 +38,15 @@
   */
 void RainbruRPG::Gui::GuiManager::init(){
   LOGI("Initializing GuiManager...");
-  this->transitionTime=600;
+  transitionTime=600;
   guiFadeInTime=1000;
   guiOpacity=0.7f;
   inGuiFadeIn=false;
   inGuiFadeOut=false;
-  velocity=new vcConstant();
   dialogSystemLayout=NULL;
   mTitleOverlay=NULL;
+  velocity=new vcConstant();
+
 }
 
 /** The destructor of the singleton
@@ -67,11 +70,12 @@ void RainbruRPG::Gui::GuiManager::cleanup(){
 
 /** Create a GUI overlay wich shows fps and primitives count
   *
-  * The window shows the minimum, maximum ans actual number of fps
-  * (frame per second) and drawn primitives
+  * The window shows the minimum, maximum and actual number of fps
+  * (frame per second) and drawn primitives.
   *
   *
   * \param win The Ogre window that receive the debug window
+  *
   */
 void RainbruRPG::Gui::GuiManager::
 createNumDebugWindow(Ogre::RenderWindow* win){
@@ -83,11 +87,12 @@ createNumDebugWindow(Ogre::RenderWindow* win){
   mPanelOverlay =OverlayManager::getSingleton().
     getByName("RainbruRPG/NumericDebug");
 
-  if (mPanelOverlay)
+  if (mPanelOverlay){
     mPanelOverlay->show();
-  else
+  }
+  else{
     LOGE("Cannot load RainbruRPG/NumericDebug");
-
+  }
 }
 
 /** Create a GUI overlay wich shows the name and the version of the game
@@ -128,8 +133,8 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
 
 /** Actualize the window created with createNumDebugWindow()
   *
-  * The values are taken from the Irrlicht Driver getFPS() and
-  * getPrimitiveCountDrawn() functions. We also manage the minimum and
+  * The values are taken from the Ogre RenderWindow. 
+  * We also manage the minimum and
   * maximum values of fps and primitives.
   *
   */
@@ -210,7 +215,7 @@ void RainbruRPG::Gui::GuiManager::loadCEGUILayout(const char* layoutName){
   }
 
   GameEngine::getSingleton().getCEGUISystem()->setGUISheet(mEditorGuiSheet);
-  setGuiTransparency(0.0f);
+  //  setGuiTransparency(0.0f);
 
   LOGI("Debugging CEGUI GUISheet");
   CEGUI::Window* deb=GameEngine::getSingleton().getCEGUISystem()
@@ -263,13 +268,14 @@ unsigned int RainbruRPG::Gui::GuiManager::getTransitionTime(){
   *
   */
 void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
-  /*  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
-    ->getGUISheet();
 
-  if (guiSheet!=NULL){
-    guiSheet->setAlpha(f);
+  if (f>guiOpacity){
+    LOGW("GuiManager::setGuiTransparency > guiOpacity");
   }
-  */
+
+  if (f>=0.7f){
+    LOGW("GuiManager::setGuiTransparency : f>=0.7f");
+  }
 
   GameEngine::getSingleton().getOgreGui()->setGuiTransparency(f);
 }
@@ -280,6 +286,13 @@ void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
 void RainbruRPG::Gui::GuiManager::beginGuiFadeIn(){
   LOGI("Gui fadeIn is beginning");
   inGuiFadeIn=true;
+  inGuiFadeOut=false;
+
+  LOGCATS("FadeOut lenght : ");
+  LOGCATF(guiOpacity);
+  LOGCAT();
+
+  velocity->reset();
   velocity->setTranslationLenght(guiOpacity);
   velocity->setTransitionTime(guiFadeInTime);
   velocity->start();
@@ -295,7 +308,7 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
     increaseGuiTransparency(velocity->getNextFrame(inGuiFadeIn));
     if (!inGuiFadeIn){
       LOGI("FadeIn ended");
-      LOGCATS("gui opacity set to :");
+      LOGCATS("gui opacity set to : ");
       LOGCATF(guiOpacity);
       LOGCAT();
       setGuiTransparency(guiOpacity);
@@ -306,7 +319,7 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
     increaseGuiTransparency(velocity->getNextFrame(inGuiFadeOut));
     if (!inGuiFadeOut){
       LOGI("FadeOut ended");
-      LOGCATS("gui opacity set to :");
+      LOGCATS("gui opacity set to : ");
       LOGCATF(guiOpacity);
       LOGCAT();
       setGuiTransparency(0.0f);
@@ -321,17 +334,14 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   */
 void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
   float t=GameEngine::getSingleton().getOgreGui()->getGuiTransparency();
-  GameEngine::getSingleton().getOgreGui()->setGuiTransparency(t+f);
-
-  /*  CEGUI::Window* guiSheet=GameEngine::getSingleton().getCEGUISystem()
-    ->getGUISheet();
-
-  if (guiSheet!=NULL){
-    t=guiSheet->getAlpha();
-    setGuiTransparency(t+f);
+  float newT=t+f;
+  
+  if (newT>0.7f){
+    newT=0.7f;
   }
 
-  */
+  GameEngine::getSingleton().getOgreGui()->setGuiTransparency(newT);
+
 }
 
 /** Called when the GUI fade out may begin
@@ -339,8 +349,14 @@ void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
   */
 void RainbruRPG::Gui::GuiManager::beginGuiFadeOut(){
   LOGI("Gui fadeOut is beginning");
+  inGuiFadeIn=false;
   inGuiFadeOut=true;
 
+  LOGCATS("FadeOut lenght : ");
+  LOGCATF(0.0f-guiOpacity);
+  LOGCAT();
+
+  velocity->reset();
   velocity->setTranslationLenght(0.0f-guiOpacity);
   velocity->setTransitionTime(guiFadeInTime);
   velocity->start();

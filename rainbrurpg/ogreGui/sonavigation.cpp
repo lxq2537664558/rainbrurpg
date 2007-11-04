@@ -37,6 +37,7 @@
 RainbruRPG::OgreGui::soNavigation::soNavigation() : 
   SkinOverlay("soNavigation")
 {
+  mnWindow="nav.window";
   mnPushButton="nav.button";
   fnPushButton="BlueHighway";
   fsPushButton=16;
@@ -45,7 +46,7 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
 void RainbruRPG::OgreGui::soNavigation::
 createWindow(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
 
-  this->createOverlay(name, dim, "", bg->getRootOverlay());
+  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 }
 
 void RainbruRPG::OgreGui::soNavigation::

@@ -53,6 +53,8 @@ namespace RainbruRPG{
       virtual void createLabel(String, Vector4, String, Window*);
 
     private:
+      /** The material name used to draw windows */
+      Ogre::String mnWindow;
         /** The font name used to draw the PushButton */
       Ogre::String fnPushButton;
       /** The font size used to draw the PushButton */

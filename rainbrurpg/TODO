@@ -2,7 +2,14 @@ TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- gsConnection uses betaGUI
+- Moving Window bug :
+  o When we click the 'Network Game" button of gsMainMenu
+  we go to the gsConnection state and the Connection window
+  is moving without left mouse button is clicked.
+  o FIXED : please see gsMenuBase::transition() implementation for
+  further details.
+  o When we go back from gsConnection to gsMainMenu, the bug happens again
+  -> Trying to use isMouseBouttonPressed as static member
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -119,14 +126,22 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-160
+- Transparency transition bug
+  o When going from gsConnection to gsMainMenu, gsConnection is fade
+  in and then reappears
+  o The transparency is correctly set in gsMainMenu
+  o GUI::setGuiTransparency receive >0.7f values
+  o GuiManager::increaseGuiTransparency send bad values (>0.7f)
+  o guimanager.cpp:338 A hack that fixes this bug
+- gsConnection uses betaGUI
+- gsMenuBase menu overlays now create on their own overlay
+  They was added to the BetaGUI overlay, but for a ZOrder issue 
+  (gsConnection's Back button was hidden by numDebugWindow) I create
+  their own one.
+ 
+- Window::alwaysTransparent() implementation
 - soNavigation implementation
 - Images nav.button and nav.button.active created
-- Moving Window bug :
-  When we click the 'Network Game" button of gsMainMenu
-  we go to the gsConnection state and the Connection window
-  is moving without left mouse button is clicked.
-    FIXED : please see gsMenuBase::transition() implementation for
-  further details.
 - Some memory leaks fixed (with valgring)
 - are -lIL -lILU -lILUT mandatory in aclocal ? NO
   To fix the JPG texture bug, use -ljpeg

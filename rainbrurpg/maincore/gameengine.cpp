@@ -926,6 +926,7 @@ void RainbruRPG::Core::GameEngine::initOgreGui(){
   SkinManager::getSingleton().init();
 
   mOgreGUI = new BetaGUI::GUI();
+  mOgreGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
 }
 

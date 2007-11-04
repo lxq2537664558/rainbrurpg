@@ -63,23 +63,24 @@ namespace RainbruRPG {
       */
     class gsConnection : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
-      virtual ~gsConnection();
       gsConnection();
+      virtual ~gsConnection();
 
       virtual void init();
       virtual void resume();
+      virtual void pause();
 
       virtual void setupTabOrder();
       virtual void onButtonPress(BetaGUI::Button*);
 
 
     private:
-      bool onQuitClicked(const CEGUI::EventArgs&);
-      bool onBackToMainClicked(const CEGUI::EventArgs&);
-      bool onConnectClicked(const CEGUI::EventArgs&);
+      void onBackClicked(void);
+      bool onQuitClicked();
+      bool onConnectClicked();
 
-      bool onCreateAccountClicked(const CEGUI::EventArgs&);
-      bool onLostPasswordClicked(const CEGUI::EventArgs&);
+      bool onCreateAccountClicked();
+      bool onLostPasswordClicked();
 
       void setupConnectionMenu();
 
@@ -91,8 +92,13 @@ namespace RainbruRPG {
       PushButton* btnConnect;
       PushButton* btnCreateAccount;
       PushButton* btnLostPwd;
+      /** The Back navigation button */
+      PushButton* btnBack; 
 
-
+      /** The main OgreGUI window */
+      Window* window;
+      /** The OgreGUI window containing the Back button */
+      Window* winBack;
     };
   }
 }

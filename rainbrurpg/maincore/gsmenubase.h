@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 02 nov 2007 : Menu overlays are now shown in their own overlay
+ *                 (not the BetaGUI one)
+ */
+
 #ifndef GS_MAIN_MENU_BASE_H
 #define GS_MAIN_MENU_BASE_H
 
@@ -99,6 +104,9 @@ namespace RainbruRPG {
       virtual void setupTabOrder()=0;
 
     protected:
+      /** Is a mouse button currently pressed */
+      static bool isMouseButtonPressed;
+
       /** An empty default constructor 
         *
 	* It is protected to borbid its use.
@@ -169,13 +177,13 @@ namespace RainbruRPG {
         */
       KeyboardNavigation* tabNav;
 
-      /** Is a mouse button currently pressed */
-      bool isMouseButtonPressed;
       /** Keeping mouse position for OgreGUI key injection */
       int mouseX;
       /** Keeping mouse position for OgreGUI key injection */
       int mouseY;
     };
+
+
   }
 }
 

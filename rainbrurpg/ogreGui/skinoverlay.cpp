@@ -132,9 +132,13 @@ createOverlayImpl(String name, Vector4 dim, String materialName){
   e->setMetricsMode(GMM_PIXELS);
   e->setDimensions(dim.z,dim.w);
   e->setPosition(dim.x,dim.y);
-  e->setMaterialName(materialName);
 
-  setTransparency(e, 0.0);
+  // If material name is empty, no material is applied
+  if (!materialName.empty()){
+    e->setMaterialName(materialName);
+    setTransparency(e, 0.0);
+  }
+
 
   return e;
 }

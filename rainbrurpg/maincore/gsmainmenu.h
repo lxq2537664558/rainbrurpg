@@ -52,8 +52,8 @@ namespace RainbruRPG {
       */
     class gsMainMenu : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
-      virtual ~gsMainMenu();
       gsMainMenu();
+      virtual ~gsMainMenu();
 
       virtual void init();
       virtual void resume();
@@ -64,7 +64,6 @@ namespace RainbruRPG {
 
     private:
       bool onNetworkGameClicked();
-
       void setupMainMenu();
 
       /** The network game button, kept for testing it */

@@ -1,7 +1,7 @@
 // Ogre overlay scripts
 RainbruRPG/NumericDebug
 {
-	zorder 500
+	zorder 250
 	// Stats block
 	container BorderPanel(RainbruRPG/NumericDebug/StatPanel)
 	{

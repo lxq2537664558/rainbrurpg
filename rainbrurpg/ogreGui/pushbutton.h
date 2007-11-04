@@ -44,7 +44,8 @@ namespace RainbruRPG{
       */
     class PushButton : public BetaGUI::Button{
     public:
-      PushButton(Vector4, String, Callback, Window*);
+      PushButton(Vector4, String, Callback, Window*, 
+		 OgreGuiSkinID sid=OSI_DEFAULT);
       ~PushButton();
 
       virtual void setTransparency(float);

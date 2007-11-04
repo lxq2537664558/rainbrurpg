@@ -63,7 +63,7 @@ RainbruRPG/Title
 			height 30
 			font_name BlueHighway
 			char_height 19
-			caption Back to Morroweed
+			caption <UNDEFINED EPISODE NAME>
 			colour_top 1.0 1.0 0.8
 			colour_bottom 0.6 0.6 0.6
 		}

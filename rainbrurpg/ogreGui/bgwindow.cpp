@@ -36,15 +36,18 @@ using namespace RainbruRPG::OgreGui;
   *
   */
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
-			GUI *G)
-  :x(D.x),y(D.y),w(D.z),h(D.w),mGUI(G),mTB(0),mRZ(0),
-   activeTextInput(NULL),
-   movingDevX(0),
-   movingDevY(0),
-   minimalWidth(D.z),
-   minimalHeight(D.w),
-   mAB(NULL),
-   rootOverlay(NULL)
+			GUI *G, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  Widget(sid),
+  x(D.x),y(D.y),w(D.z),h(D.w),
+  mGUI(G),mTB(0),mRZ(0),
+  activeTextInput(NULL),
+  movingDevX(0),
+  movingDevY(0),
+  minimalWidth(D.z),
+  minimalHeight(D.w),
+  mAB(NULL),
+  rootOverlay(NULL),
+  alwaysTransparent(false)
 {
 
 
@@ -56,6 +59,10 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   this->setName(name);
 
   rootOverlay=sk->getOverlayByName(name);
+  /*  if (rootOverlay){
+    LOGW("Cannot get root overlay of Window. A segfault may occur");
+  }
+  */
 
   if(t>=2){
     // Create a resize grip
@@ -370,6 +377,10 @@ void BetaGUI::Window::setTransparency(float f){
     widgetList[i]->setTransparency(f);
   }
 
+  // If alwaysTransparent is true, this window will,ever be shown
+  if (alwaysTransparent)
+    f=0.0f;
+
   SkinManager::getSingleton().getSkin(this->skinId)
     ->setTransparency(rootOverlay, f);
 }
@@ -444,4 +455,15 @@ void BetaGUI::Window::setMinimalSize(unsigned int mw, unsigned int mh){
 
 void BetaGUI::Window::addWidget(Widget* w){
   widgetList.push_back(w);
+}
+
+/** Change the alwaysTransparent satus of this window
+  *
+  * \param b The new alwaysTransparent status
+  *
+  * \sa \ref BetaGUI::Window::setAlwaysTransparent "alwaysTransparent" (member)
+  *
+  */
+void BetaGUI::Window::setAlwaysTransparent(bool b){
+  alwaysTransparent=b;
 }

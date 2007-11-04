@@ -261,7 +261,7 @@ void RainbruRPG::Exception::Logger::logCatInt(int i){
   * \sa oss, logCat()
   */
 void RainbruRPG::Exception::Logger::logCatFloat(float f){
-  oss << f;
+  oss << f << "f";
 }
 
 /** Adds a bool to the concatenation stringstream

@@ -1,0 +1,55 @@
+material nav.window
+{
+	technique
+	{
+		pass
+		{
+			scene_blend alpha_blend
+			depth_write off
+      
+			texture_unit
+			{
+			  colour_op_ex source1 src_manual src_current 1 0 0
+        		  alpha_op_ex source1 src_manual src_current 0.5
+      			}
+		}
+	}
+}
+
+material nav.button
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture nav.button.png
+			}
+		}
+	}
+}
+
+material nav.button.active
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture nav.button.active.png
+			}
+		}
+	}
+}

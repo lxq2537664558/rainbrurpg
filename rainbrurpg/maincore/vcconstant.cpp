@@ -100,5 +100,6 @@ float RainbruRPG::Core::vcConstant::getLenghtByTime(double d){
     LOGW("transitionLenght=0");
   }
 
-  return (translationLenght*d)/(transitionTime);
+  float dev=(translationLenght*d)/(transitionTime);
+  return dev;
 }

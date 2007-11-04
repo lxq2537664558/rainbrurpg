@@ -67,16 +67,11 @@ RainbruRPG::Core::gsMainMenu::~gsMainMenu(){
 void RainbruRPG::Core::gsMainMenu::init(){
   LOGI("Initialising gsMainMenu");
   gsMenuBase::init();
-  //  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
-  // Do notGuiManager::beginGuiFadeIn
-  //  GuiManager::getSingleton().beginGuiFadeIn();
-
 
   setupMainMenu();
   setupTabOrder();
 
   LOGI("gsMainMenu initialization complete");
-
 }
 
 /** The Network Game function
@@ -99,10 +94,7 @@ onNetworkGameClicked(){
     Ogre::Root::getSingleton().renderOneFrame();
   }
 
-  //  GuiManager::getSingleton().destroyTitleOverlay();
-  //  GuiManager::getSingleton().removeCurrentCEGUILayout();
   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
-
   GuiManager::getSingleton().beginGuiFadeIn();
 
 
@@ -110,9 +102,7 @@ onNetworkGameClicked(){
 }
 
 void RainbruRPG::Core::gsMainMenu::resume(){
-  Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
-  // GuiManager::getSingleton().createTitleOverlay(rw);
-  GuiManager::getSingleton().loadCEGUILayout("mainmenu.layout");
+
   setupMainMenu();
   // Initialise the dialog parent
   this->rootWindowName="RainbruRPG/Connection";
@@ -121,6 +111,9 @@ void RainbruRPG::Core::gsMainMenu::resume(){
     window->show();
 
   setupTabOrder();
+
+  //isMouseButtonPressed=false;
+  LOGI("gsMainMenu::resume() called");
 }
 
 void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
@@ -141,7 +134,6 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
 
-  mGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
   // Center the window in the right background
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
@@ -175,17 +167,6 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
          "Exit", BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnExit);
 
-  // Creates a test button
-  /* Callback testC(this);
-  Vector4 pb1Dim(10,25,100,24);
-  PushButton* pb1=new PushButton(pb1Dim, "Test", testC, mGUI, window);
-  window->addWidget(pb1);
-
-  Vector4 tiDim(10,55,180,24);
-  TextInput* ti=new TextInput(tiDim, "Test input :)", 20, window);
-  window->addWidget(ti);
-  */
-
 }
 
 /** The BetaGui button callback implementation
@@ -194,6 +175,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   *
   */
 void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
+
   if (b==btnLocalTest){
     translateTo(3.0);
     GameEngine::getSingleton().changeState(ST_LOCAL_TEST);

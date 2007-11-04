@@ -47,7 +47,8 @@ namespace BetaGUI {
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, OgreGuiWindowType, String, GUI* );
+    Window( Vector4, OgreGuiWindowType, String, GUI*,
+	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     ~Window();
 
     BetaGUI::Button* createButton(Vector4, String, String, Callback);
@@ -74,6 +75,8 @@ namespace BetaGUI {
 
    void resize(unsigned int, unsigned int);
    void move(unsigned int, unsigned int);
+
+   void setAlwaysTransparent(bool);
 
   protected:
 
@@ -164,8 +167,8 @@ namespace BetaGUI {
       *
       */
     unsigned int minimalHeight;
-
-
+    /** If true, the window will always be fully transparent */
+    bool alwaysTransparent;
   };
 
 

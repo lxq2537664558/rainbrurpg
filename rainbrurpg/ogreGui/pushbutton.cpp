@@ -35,8 +35,9 @@
   *
   */
 RainbruRPG::OgreGui::PushButton::
-PushButton(Vector4 dim, String caption, Callback c, Window* parent)
-  : BetaGUI::Button(dim, "", caption, c, parent)
+PushButton(Vector4 dim, String caption, Callback c, Window* parent, 
+	   OgreGuiSkinID sid): 
+  BetaGUI::Button(dim, "", caption, c, parent, sid)
 {
 
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);

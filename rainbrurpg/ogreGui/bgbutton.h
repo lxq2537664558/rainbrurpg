@@ -37,7 +37,8 @@ namespace BetaGUI {
     */
   class Button : public RainbruRPG::OgreGui::Widget{
   public:
-    Button(Vector4, String, String, Callback, Window *parent);
+    Button(Vector4, String, String, Callback, Window *parent,
+	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT);
     ~Button();
     
     void activate(bool);

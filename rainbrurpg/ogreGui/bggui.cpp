@@ -9,6 +9,7 @@
 #include "bggui.h"
 
 #include "bgwindow.h"
+
 #include <logger.h>
 
 #include <OGRE/OgreOverlayManager.h>
@@ -17,14 +18,20 @@
 /** The GUI constructor
   *
   */
-BetaGUI::GUI::GUI()
-  :mXW(0), mouseCursorOverlay(0),
-   resizedWindow(NULL),
-   movedWindow(NULL),
-   wc(0),bc(0),tc(0){
+BetaGUI::GUI::GUI():
+  mXW(0), 
+  mouseCursorOverlay(0),
+  resizedWindow(NULL),
+  movedWindow(NULL),
+  wc(0),
+  bc(0),
+  tc(0)
+{
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
+  rootOverlay->setZOrder(550);
+
 }
 
 /** The destructor
@@ -67,10 +74,6 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   *
   */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
-
-  if (LMB){
-    LOGW("Mouse boutton is down!");
-  }
 
   if(mouseCursorOverlay){
     mouseCursorOverlay->setPosition(x,y);
@@ -242,6 +245,7 @@ Ogre::Overlay* BetaGUI::GUI::getRootOverlay(void){
   *
   */
 void BetaGUI::GUI::setGuiTransparency(float f){
+
   this->guiTransparency=f;
   for(unsigned int i=0;i<windowList.size();i++){
     windowList[i]->setTransparency(f);

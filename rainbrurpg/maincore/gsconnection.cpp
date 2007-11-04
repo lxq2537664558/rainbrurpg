@@ -35,8 +35,15 @@
   * Constructs a new velocity and begin a translation to 0.0f.
   *
   */
-RainbruRPG::Core::gsConnection::gsConnection()
-  :gsMenuBase(false){
+RainbruRPG::Core::gsConnection::gsConnection():
+  gsMenuBase(false),
+  btnBack(NULL),
+  btnConnect(NULL),
+  btnCreateAccount(NULL),
+  btnLostPwd(NULL),
+  window(NULL),
+  winBack(NULL)
+{
 
   LOGI("Constructing a gsConnection");
   velocity=new vcConstant();
@@ -51,6 +58,18 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
     delete velocity;
     velocity=NULL;
   }
+
+  delete btnBack;
+  btnBack=NULL;
+
+  delete btnConnect;
+  btnConnect=NULL;
+
+  delete btnCreateAccount;
+  btnCreateAccount=NULL;
+
+  delete btnLostPwd;
+  btnLostPwd=NULL;
 }
 
 /** Initialize the game state
@@ -76,37 +95,11 @@ void RainbruRPG::Core::gsConnection::init(){
   *
   */
 bool RainbruRPG::Core::gsConnection::
-onQuitClicked(const CEGUI::EventArgs& evt){
+onQuitClicked(){
 
   LOGI("Quit button clicked");
   GameEngine::getSingleton().quit();
   // Event handled
-  return true;
-}
-
-/** Returns to the main menu layout
-  *
-  * \param evt The CEGUI event
-  *
-  * \return Always \c true
-  *
-  */
-bool RainbruRPG::Core::gsConnection::
-onBackToMainClicked(const CEGUI::EventArgs& evt){
-
-  GuiManager::getSingleton().beginGuiFadeOut();
-
-  // We must wait for the CEGUI fade end to prevent
-  // SEGFAULT in access to CEGUI windows (getAlpha())
-  while (GuiManager::getSingleton().isInGuiFadeOut()){
-    Ogre::Root::getSingleton().renderOneFrame();
-  }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
-
-  GameEngine::getSingleton().changeState(ST_MAIN_MENU);
-  GuiManager::getSingleton().beginGuiFadeIn();
-
   return true;
 }
 
@@ -130,10 +123,11 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 
   // The position of the window
   unsigned int winY=(h/2)-(winHeight/2);
-  unsigned int winX=(w/2)+(w/4-(winWidth/2));
+  unsigned int winX=((w/2)-40)+(w/4-(winWidth/2));
   winX+=(int)(double)w*0.025;     // The border
 
-  Window* window = new Window(Vector4(winX,winY,winWidth,winHeight),
+  // The connection window
+  window = new Window(Vector4(winX,winY,winWidth,winHeight),
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
 
   Vector4 laDim(10,40,80,24);
@@ -164,9 +158,21 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   btnLostPwd = new PushButton(Vector4(winWidth-145,130,135,24),
        "Lost password", BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnLostPwd);
-
-
   mGUI->addWindow(window);
+
+
+
+  // The Back button window
+  winBack = new Window(Vector4(20,h-50 ,120,53),
+			       BetaGUI::OWT_NONE, "Connection", mGUI,
+			       OSI_NAVIGATION);
+  winBack->setAlwaysTransparent(true);
+
+  btnBack = new PushButton(Vector4(10,10,100,33),
+       "Back", BetaGUI::Callback::Callback(this), winBack, OSI_NAVIGATION);
+  winBack->addWidget(btnBack);
+  mGUI->addWindow(winBack);
+
 
 }
 
@@ -178,7 +184,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   *
   */
 bool RainbruRPG::Core::gsConnection::
-onConnectClicked(const CEGUI::EventArgs& evt){
+onConnectClicked(){
   LOGI("Connect button clicked");
 
   // Get the strings
@@ -221,16 +227,7 @@ onConnectClicked(const CEGUI::EventArgs& evt){
   *
   */
 void RainbruRPG::Core::gsConnection::resume(){
-  gsMenuBase::resume();
-
-  Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
-  // GuiManager::getSingleton().createTitleOverlay(rw);
-  GuiManager::getSingleton().loadCEGUILayout("connection.layout");
   setupConnectionMenu();
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/Connection";
-
   setupTabOrder();
 }
 
@@ -242,7 +239,7 @@ void RainbruRPG::Core::gsConnection::resume(){
   *
   */
 bool RainbruRPG::Core::gsConnection::
-onCreateAccountClicked(const CEGUI::EventArgs& evt){
+onCreateAccountClicked(){
   LOGI("onCreateAccountClicked called");
 
   GuiManager::getSingleton().beginGuiFadeOut();
@@ -268,8 +265,8 @@ onCreateAccountClicked(const CEGUI::EventArgs& evt){
   * \return Always \c true
   *
   */
-bool RainbruRPG::Core::gsConnection::
-onLostPasswordClicked(const CEGUI::EventArgs& evt){
+bool RainbruRPG::Core::gsConnection::onLostPasswordClicked(){
+
   LOGI("onLostPasswordClicked called");
 
   GuiManager::getSingleton()
@@ -293,5 +290,53 @@ void RainbruRPG::Core::gsConnection::setupTabOrder(){
 }
 
 void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn){
+ 
+  if (btn==btnBack){
+    onBackClicked();
+  }
+  else if (btn==btnConnect){
+    onConnectClicked();
+  }
+  else if (btn==btnCreateAccount){
+    onCreateAccountClicked();
+  }
+  else if (btn==btnLostPwd){
+    onLostPasswordClicked();
+  }
+
+}
+
+
+void RainbruRPG::Core::gsConnection::pause(){
+  LOGI("gsConnection::pause() called");
+
+  if (window){
+    window->hide();
+  }
+
+  if (winBack){
+    winBack->hide();
+  }
+
+  if (window==NULL || winBack==NULL){
+    LOGW("Cannot get main or back windows");
+  }
+}
+
+void RainbruRPG::Core::gsConnection::onBackClicked(void){
+    LOGI("Back button clicked");
+
+    translateTo(0.5f);
+
+    GuiManager::getSingleton().beginGuiFadeOut();
+
+    // We must wait for the CEGUI fade end to prevent
+    // SEGFAULT in access to CEGUI windows (getAlpha())
+    while (GuiManager::getSingleton().isInGuiFadeOut()){
+      Ogre::Root::getSingleton().renderOneFrame();
+    }
+
+    GameEngine::getSingleton().changeState(ST_MAIN_MENU);
+    GuiManager::getSingleton().beginGuiFadeIn();
 
 }
