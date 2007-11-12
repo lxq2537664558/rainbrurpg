@@ -21,16 +21,24 @@
   * \param caption The initial value
   * \param L       The length
   * \param parent  The parent Window
+  * \param sid     The skin used to draw this widget
   *
   */
 BetaGUI::TextInput::
-TextInput(Vector4 dim,String caption,unsigned int L,Window *parent)
-  :x(dim.x),y(dim.y),w(dim.z),h(dim.w),value(caption),
-   normalMaterialName(""),
-   activeMaterialName(""),
-   length(L){
+TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
+			RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  Widget(parent, sid),
+  x(dim.x),
+  y(dim.y),
+  w(dim.z),
+  h(dim.w),
+  value(caption),
+  normalMaterialName(""),
+  activeMaterialName(""),
+  length(L)
+{
   
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
 
@@ -136,8 +144,13 @@ Ogre::String BetaGUI::TextInput::getActiveMaterialName(void){
   return this->activeMaterialName; 
 }
 
+/** Changes the transparency
+  *
+  * \param f The new alpha value
+  *
+  */
 void BetaGUI::TextInput::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
 
   s->setTransparency(frameOverlay, f);
   s->setCaptionTransparency(contentOverlay, f);

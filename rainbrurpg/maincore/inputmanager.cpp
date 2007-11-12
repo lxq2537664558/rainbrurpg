@@ -22,6 +22,9 @@
 
 #include "inputmanager.h"
 
+#include <logger.h>
+
+
 RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
 
 /** The default constructor
@@ -182,6 +185,9 @@ void RainbruRPG::Core::InputManager::addKeyListener( OIS::KeyListener *keyListen
   *
   */
 void RainbruRPG::Core::InputManager::addMouseListener( OIS::MouseListener *mouseListener, const std::string& instanceName ) {
+
+  LOGI("Adding a mouse listener");
+
     if( mMouse ) {
         // Check for duplicate items
         itMouseListener = mMouseListeners.find( instanceName );
@@ -235,14 +241,17 @@ void RainbruRPG::Core::InputManager::removeKeyListener( const std::string& insta
   *
   */
 void RainbruRPG::Core::InputManager::removeMouseListener( const std::string& instanceName ) {
-    // Check if item exists
-    itMouseListener = mMouseListeners.find( instanceName );
-    if( itMouseListener != mMouseListeners.end() ) {
-        mMouseListeners.erase( itMouseListener );
-    }
-    else {
-        // Doesn't Exist
-    }
+
+  LOGI("Removing MouseListener");
+  // Check if item exists
+  itMouseListener = mMouseListeners.find( instanceName );
+  if( itMouseListener != mMouseListeners.end() ) {
+    mMouseListeners.erase( itMouseListener );
+  }
+  else {
+    // Doesn't Exist
+    LOGW("MouseListener not found");
+  }
 }
 
 /** Removes a joystick listener

@@ -104,8 +104,6 @@ namespace RainbruRPG {
       virtual void setupTabOrder()=0;
 
     protected:
-      /** Is a mouse button currently pressed */
-      static bool isMouseButtonPressed;
 
       /** An empty default constructor 
         *

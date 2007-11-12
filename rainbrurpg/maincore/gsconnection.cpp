@@ -47,7 +47,6 @@ RainbruRPG::Core::gsConnection::gsConnection():
 
   LOGI("Constructing a gsConnection");
   velocity=new vcConstant();
-  //  translateTo(0.0f);
 }
 
 /** The default destructor
@@ -76,6 +75,7 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
   *
   * This function may not call GuiManager::beginGuiFadeIn as it is called
   * at the end of the menu border transition.
+  *
   */
 void RainbruRPG::Core::gsConnection::init(){
   LOGI("Initialising gsConnection");
@@ -88,8 +88,6 @@ void RainbruRPG::Core::gsConnection::init(){
 }
 
 /** The Quit CEGUI button callback
-  *
-  * \param evt The CEGUI event
   *
   * \return Always \c true
   *
@@ -104,8 +102,6 @@ onQuitClicked(){
 }
 
 /** Setup the connection menu buttons
-  *
-  * Subscribe events for the connection layout.
   *
   */
 void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
@@ -148,7 +144,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 
   // Buttons
   btnConnect = new PushButton(Vector4(70,100,160,24),
-       "Network game", BetaGUI::Callback::Callback(this), window);
+      "Network game", BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnConnect);
   
   btnCreateAccount = new PushButton(Vector4(10,130,135,24),
@@ -160,8 +156,6 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   window->addWidget(btnLostPwd);
   mGUI->addWindow(window);
 
-
-
   // The Back button window
   winBack = new Window(Vector4(20,h-50 ,120,53),
 			       BetaGUI::OWT_NONE, "Connection", mGUI,
@@ -169,16 +163,12 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   winBack->setAlwaysTransparent(true);
 
   btnBack = new PushButton(Vector4(10,10,100,33),
-       "Back", BetaGUI::Callback::Callback(this), winBack, OSI_NAVIGATION);
+			   "Back", BetaGUI::Callback::Callback(this), winBack);
   winBack->addWidget(btnBack);
   mGUI->addWindow(winBack);
-
-
 }
 
 /** The callback of the Connect button
-  *
-  * \param evt The CEGUI event
   *
   * \return Always \c true
   *
@@ -233,8 +223,6 @@ void RainbruRPG::Core::gsConnection::resume(){
 
 /** The callback of the 'create account' button
   *
-  * \param evt The CEGUI event
-  *
   * \return Always \c true
   *
   */
@@ -260,8 +248,6 @@ onCreateAccountClicked(){
 
 /** The callback of the 'lost password' button
   *
-  * \param evt The CEGUI event
-  *
   * \return Always \c true
   *
   */
@@ -276,6 +262,9 @@ bool RainbruRPG::Core::gsConnection::onLostPasswordClicked(){
   return true;
 }
 
+/** Setup the tab order for this game state
+  *
+  */
 void RainbruRPG::Core::gsConnection::setupTabOrder(){
   // Registering TabNavigation
   /*  tabNav->clear();
@@ -289,6 +278,11 @@ void RainbruRPG::Core::gsConnection::setupTabOrder(){
   */
 }
 
+/** The general OgreGUI buttons callback
+  * 
+  * \param btn The button that send the event
+  *
+  */
 void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn){
  
   if (btn==btnBack){
@@ -306,7 +300,9 @@ void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn){
 
 }
 
-
+/** Pause the execution of this GameState
+  *
+  */
 void RainbruRPG::Core::gsConnection::pause(){
   LOGI("gsConnection::pause() called");
 
@@ -323,6 +319,11 @@ void RainbruRPG::Core::gsConnection::pause(){
   }
 }
 
+/** The back button implementation
+  *
+  * Makes the GameEngine changes to ST_MAIN_MENU, the gsMainMenu game state.
+  *
+  */
 void RainbruRPG::Core::gsConnection::onBackClicked(void){
     LOGI("Back button clicked");
 

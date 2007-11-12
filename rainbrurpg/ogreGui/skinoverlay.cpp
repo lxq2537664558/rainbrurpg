@@ -216,7 +216,7 @@ activateButton(Button* button, bool active){
     }
   }
   else{
-    /** This line was removed because of performances reasons */
+    /* This line was removed because of performances reasons */
     //    LOGW("Cannot get button's overlay");
   }
 

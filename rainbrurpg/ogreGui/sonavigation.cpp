@@ -43,24 +43,71 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   fsPushButton=16;
 }
 
+/** Create a window using the BetaGUI skin
+  *
+  * It creates an overlay with a material named mnWindow.
+  *
+  * The name parameter must be application unique. It is the 
+  * name of the Ogre overlay we create.
+  *
+  * \warning This skin will not draw Window widget. Their are only used
+  *          to add PushButton widgets for navigation purpose.
+  *
+  * \param name    The internal name of the window
+  * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The title bar caption
+  * \param bg      The BetaGUI::GUI object 
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
 createWindow(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
 
   this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 }
 
+/** Graphically create a ResizeGrip widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a ResizeGrip.
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param win     The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
-createResizeGrip(String, Vector4, Window*){
+createResizeGrip(String name, Vector4 dim, Window* win){
   LOGW("soNavigation cannot create ResizeGrip");
 
 }
 
+/** Graphically create a TitleBar widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a TitleBar.
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param win     The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
-createTitleBar(String, Vector4, String, Window*){
+createTitleBar(String name, Vector4 dim, String caption, Window* win){
   LOGW("soNavigation cannot create TitleBar");
 
 }
 
+/** Graphically create a PushButton widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param win     The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
 createPushButton(String name, Vector4 dim, String caption, Window* win){
   LOGI("Creating a PushButton widget");
@@ -75,14 +122,38 @@ createPushButton(String name, Vector4 dim, String caption, Window* win){
 	      fnPushButton, fsPushButton,win->getOverLayContainer());
 }
 
+/** Graphically create a TextInput widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a TextInput.
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
-createTextInput(String, Vector4, String, Window*){
+createTextInput(String name, Vector4 dim, String caption, Window* parent){
   LOGW("soNavigation cannot create TextInput");
 
 }
 
+/** Graphically create a Label widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a Label.
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
-createLabel(String, Vector4, String, Window*){
+createLabel(String name, Vector4 dim, String caption, Window* parent){
   LOGW("soNavigation cannot create Label");
 
 }

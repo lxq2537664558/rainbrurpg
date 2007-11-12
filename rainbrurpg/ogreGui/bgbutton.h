@@ -17,7 +17,7 @@
 
 #include "bgcallback.h"
 #include "bgwindow.h"
-#include "skinmanager.h"
+#include "skinmanager.h" // For OgreGuiSkinID
 
 
 using namespace Ogre;
@@ -37,8 +37,8 @@ namespace BetaGUI {
     */
   class Button : public RainbruRPG::OgreGui::Widget{
   public:
-    Button(Vector4, String, String, Callback, Window *parent,
-	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT);
+    Button(Vector4, String, String, Callback, Widget *parent,
+	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
     ~Button();
     
     void activate(bool);

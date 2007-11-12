@@ -17,20 +17,22 @@
 
 /** The constructor
   *
-  * \param D The dimensions 
-  * \param M The material name
-  * \param T The text of the button
-  * \param C The callback of the button
-  * \param P The parent window
+  * \param dim    The dimensions 
+  * \param M      The material name
+  * \param T      The text of the button
+  * \param C      The callback of the button
+  * \param parent The parent window
+  * \param sid    The Skin identifier 
   *
   */
-BetaGUI::Button::Button(Vector4 D, String M, String T, Callback C, Window* P,
-			RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(sid),
-  x(D.x),
-  y(D.y),
-  w(D.z),
-  h(D.w)
+BetaGUI::Button::
+Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
+       RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  Widget(parent, sid),
+  x(dim.x),
+  y(dim.y),
+  w(dim.z),
+  h(dim.w)
 {
   
   callback=C;
@@ -52,7 +54,7 @@ BetaGUI::Button::~Button(){
   *
   */
 void BetaGUI::Button::activate(bool a){
-  SkinManager::getSingleton().getSkin(this->getSkinId())
+  SkinManager::getSingleton().getSkin(this)
     ->activateButton(this,a);
 }
 
@@ -166,13 +168,17 @@ Ogre::OverlayContainer* BetaGUI::Button::getOverlayContainer(void){
   return mO; 
 }
 
-
+/** Changes the transparency
+  *
+  * \param f The new alpha value
+  *
+  */
 void BetaGUI::Button::setTransparency(float f){
   LOGI("Changing transpenrency of a Button");
   LOGCATS("Button name is ");
   LOGCATS(name.c_str());
   LOGCAT();
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
 
   s->setTransparency(mO, f);
 

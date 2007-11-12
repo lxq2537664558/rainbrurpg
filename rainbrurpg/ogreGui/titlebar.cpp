@@ -36,14 +36,17 @@
   * \param callback     The callback of the button
   * \param G            The GUI object
   * \param parent       The parent window
+  * \param sid          The skin ID (inherited by default)
   *
   */
 RainbruRPG::OgreGui::TitleBar::
-TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, Window* parent)
-  :Button(dim, "", caption, callback, parent)
+TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, 
+	 Window* parent, OgreGuiSkinID sid):
+  Button(dim, "", caption, callback, parent, sid)
 {
 
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
   this->setName(uniqueName);
@@ -61,12 +64,22 @@ RainbruRPG::OgreGui::TitleBar::~TitleBar(){
 
 }
 
+/** Changes the transparency
+  *
+  * \param f The new alpha value
+  *
+  */
 void RainbruRPG::OgreGui::TitleBar::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
   s->setTransparency(mO, f);
   s->setCaptionTransparency(mCP, f);
 }
 
+/** Changes the width 
+  *
+  * \param ui The new width
+  *
+  */
 void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
   w=ui;
   mO->setWidth(ui);

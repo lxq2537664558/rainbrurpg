@@ -155,6 +155,14 @@ createTextInput(String name, Vector4 dim, String caption, Window* parent){
 
 }
 
+/** Graphically create a Label widget
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soBetaGui::
 createLabel(String name, Vector4 dim, String caption, Window* parent){
   // vertically center the caption

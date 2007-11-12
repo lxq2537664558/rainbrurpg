@@ -38,9 +38,6 @@
 #include "gameengine.h"
 #include "guimanager.h"
 
-// Static members initialisation
-bool RainbruRPG::Core::gsMenuBase::isMouseButtonPressed=false;
-// End of static members initialisation
 
 /** The constructor
   *
@@ -204,18 +201,6 @@ void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
   *
   */
 void RainbruRPG::Core::gsMenuBase::transition(){
-  /* v 0.0.5-160 : Here is a bugfix in mouseButton handling
-   *
-   *   When we click the 'Network Game" button of gsMainMenu
-   * we go to the gsConnection state and the Connection window
-   * is moving without left mouse button is clicked.
-   *
-   * It appears that isMouseButtonPressed was true. The following
-   * line is a hack, assuming that isMouseButtonPressed is true here.
-   *
-   */
-  isMouseButtonPressed=false;
-
   if (inTransition){
     if (velocity){
       // Engine initialization
@@ -431,7 +416,7 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
   mouseY=evt.state.Y.abs;
 
   GameEngine::getSingleton().getOgreGui()
-    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+    ->injectMouse(mouseX, mouseY);
 
   return true;
 }
@@ -450,13 +435,16 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   CEGUI::System::getSingleton().injectMouseButtonDown(
     inputWrapper->OISButtontoCEGUI(id));
 
+  GameEngine::getSingleton().getOgreGui()
+    ->injectMouseButtonPressed("gsMenuBase::mousePressed");
 
-  isMouseButtonPressed=true;
+  // OgreGUI
   mouseX=evt.state.X.abs;
   mouseY=evt.state.Y.abs;
 
   GameEngine::getSingleton().getOgreGui()
-    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+    ->injectMouse(mouseX, mouseY);
+
 
   return true;
 }
@@ -475,13 +463,9 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   CEGUI::System::getSingleton().injectMouseButtonUp(
     inputWrapper->OISButtontoCEGUI(id));
 
-  isMouseButtonPressed=false;
-  mouseX=evt.state.X.abs;
-  mouseY=evt.state.Y.abs;
-
   // OgreGUI
   GameEngine::getSingleton().getOgreGui()
-    ->injectMouse(mouseX, mouseY, isMouseButtonPressed);
+    ->injectMouseButtonReleased();
 
   return true;
 }

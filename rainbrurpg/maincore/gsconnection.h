@@ -89,8 +89,11 @@ namespace RainbruRPG {
       /** The TextEdit where we enter the account password */
       CEGUI::Window* pwdWidget;
 
+      /** The connect button */
       PushButton* btnConnect;
+      /** The create acount button */
       PushButton* btnCreateAccount;
+      /** The lost password button */
       PushButton* btnLostPwd;
       /** The Back navigation button */
       PushButton* btnBack; 

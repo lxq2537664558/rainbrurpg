@@ -39,6 +39,10 @@ namespace RainbruRPG{
 
     /** A skin based on SkinOverlay, drawing navigation buttons
       *
+      * This skin can only create PushButton. The other widgets 
+      * aren't not supported. Only the window widget can be usefull
+      * as it is a container for PushButton.
+      *
       */
     class soNavigation : public SkinOverlay{
 
@@ -55,7 +59,7 @@ namespace RainbruRPG{
     private:
       /** The material name used to draw windows */
       Ogre::String mnWindow;
-        /** The font name used to draw the PushButton */
+      /** The font name used to draw the PushButton */
       Ogre::String fnPushButton;
       /** The font size used to draw the PushButton */
       unsigned int fsPushButton;

@@ -15,6 +15,11 @@
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreStringConverter.h>
 
+// Static members initialisation
+bool BetaGUI::GUI::isMouseButtonPressed=false;
+// End of static members initialisation
+
+
 /** The GUI constructor
   *
   */
@@ -64,26 +69,28 @@ void BetaGUI::GUI::destroyWindow(Window *w){
   mXW=w;
 }
 
-/** Inject a mouse move with or without mouse button clicked
+/** Inject a mouse move event
   *
   * \param x   The X position of the mouse
   * \param y   The Y position of the mouse
-  * \param LMB Is the left mouse button clicked
   *
   * \return \c true if this event is used, otherwise \c false
   *
   */
-bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y,bool LMB){
+bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
 
+  bool LMB=isMouseButtonPressed;
+
+  // Moves the mouse cursor
   if(mouseCursorOverlay){
     mouseCursorOverlay->setPosition(x,y);
   }
 
-  if ((resizedWindow!=NULL)&&LMB){
+  if ((resizedWindow!=NULL)&&(LMB==true)){
     resizedWindow->resize(x, y);
     return true;
   }
-  else if((movedWindow!=NULL)&&LMB){
+  else if((movedWindow!=NULL)&&(LMB==true)){
     movedWindow->move(x, y);
   }
   else{
@@ -197,6 +204,13 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   return mouseCursorOverlay;
 }
 
+/** Adds a window to the GUI system
+  *
+  * \param w The window to add
+  *
+  * \sa windowList (member)
+  *
+  */
 void BetaGUI::GUI::addWindow(Window* w){
   windowList.push_back(w);
 }
@@ -285,8 +299,40 @@ void BetaGUI::GUI::setMovedWindow(Window* w){
   this->movedWindow=w;
 }
 
+/** Makes sure no window is resized or moved
+  *
+  * \param win The window to be deactivated
+  *
+  */
 void BetaGUI::GUI::deactivateWindow(Window* win){
   LOGI("Deactivate window");
   this->resizedWindow=NULL;
   this->movedWindow=NULL;
 }
+
+/** Inject a mouse button pressed event
+  *
+  * \param from The name of the function that call this (for debug purpose)
+  *
+  * \sa isMouseButtonPressed (member)
+  *
+  */
+void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
+  isMouseButtonPressed=true;
+
+  std::string s="===injectMouseButtonReleased called from : `";
+  s+=from;
+  s+="' ===";
+  LOGW(s.c_str());
+}
+
+/** Inject a mouse button released event
+  *
+  * \sa isMouseButtonPressed (member)
+  *
+  */
+void BetaGUI::GUI::injectMouseButtonReleased(){
+  isMouseButtonPressed=false;
+  LOGW("GUI::injectMouseButtonReleased called");
+}
+

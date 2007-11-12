@@ -27,10 +27,21 @@
 #include <OGRE/OgreStringConverter.h>
 #include <OGRE/OgreOverlayManager.h>
 
-RainbruRPG::OgreGui::Label::Label(Vector4 dim, String caption, 
-				  BetaGUI::Window* parent){
+/** The Label constructor
+  *
+  * \param dim     The dimensions as an Ogre Vector4
+  * \param caption The caption of the label
+  * \param parent  The parent widget
+  * \param sid     The skin ID (inherited by default)
+  *
+  */
+RainbruRPG::OgreGui::Label::
+Label(Vector4 dim, String caption, BetaGUI::Window* parent,
+      RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  Widget(parent, sid)
+{
 
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
 
@@ -41,12 +52,20 @@ RainbruRPG::OgreGui::Label::Label(Vector4 dim, String caption,
   
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::OgreGui::Label::~Label(){
   OverlayManager::getSingleton().destroy(name);
 }
 
+/** Change the transparency of this label
+  *
+  * \param alpha The new transparency (between 0.0f and 1.0f)
+  *
+  */
 void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
 
   s->setCaptionTransparency(contentOverlay, alpha);
 }

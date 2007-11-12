@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 08 nov 2007 : OSI_PARENT added
  * - 27 sep 2007 : starting implementation
  *         
  */
@@ -33,8 +34,18 @@
 
 #include <vector>
 
+#include "config.h" // For RAINBRU_RPG_DEBUG macro
+
 using namespace std;
 using namespace RainbruRPG::Core;
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Widget;
+  }
+}
+// End of forward declarations
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -55,12 +66,11 @@ namespace RainbruRPG{
       *
       */
     enum OgreGuiSkinID{
-      OSI_BETAGUI=0,      //!< The BeraGUI based skin
-      OSI_NAVIGATION,     //!< The navigation skin
-      OSI_DEFAULT=0xff,   //!< A virtual default skin
+      OSI_BETAGUI     =0,      //!< The BeraGUI based skin
+      OSI_NAVIGATION,          //!< The navigation skin
+      OSI_PARENT      =0xfe,   //!< An inherited from parent value
+      OSI_DEFAULT     =0xff,   //!< A virtual default skin
     };
-
-    using namespace Core;
 
     /** The OgreGUI skins manager
       *
@@ -76,11 +86,12 @@ namespace RainbruRPG{
       * This singleton \b must be initialized or it may cause SEGFAULT.
       *
       */
-    class SkinManager : public Singleton<SkinManager>{
+    class SkinManager : public RainbruRPG::Core::Singleton<SkinManager>{
+      // Keep Singleton fully scoped to avoid conflict declaration
     public:
 
       void init();
-      RainbruRPG::OgreGui::SkinOverlay* getSkin(RainbruRPG::OgreGui::OgreGuiSkinID);
+      RainbruRPG::OgreGui::SkinOverlay* getSkin(Widget*);
 
     private:
       /** A vector of skins 

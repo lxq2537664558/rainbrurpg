@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 08 nov 2007 : isInGuiFadeIn() added
  * - 31 jul 2007 : Ogre3D log partially deactivate
  * - 24 jul 2007 : showMessageBox implementaion
  *
@@ -128,6 +129,7 @@ namespace RainbruRPG {
       void beginGuiFadeOut();
 
       bool isInGuiFadeOut();
+      bool isInGuiFadeIn();
 
       void guiFade();
 

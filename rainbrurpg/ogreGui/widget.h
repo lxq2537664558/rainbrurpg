@@ -21,6 +21,9 @@
  */
 
 /* Modifications :
+ * - 09 nov 2007 : parent and getParent() added
+ *                 Defaut value of OgreGuiSkinID in constructor is 
+ *                   now OSI_PARENT
  * - 26 sep 2007 : starting implementation
  *         
  */
@@ -42,13 +45,15 @@ namespace RainbruRPG{
       */
     class Widget : public Object{
     public:
-      Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT);    
+      Widget(Widget*, RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);    
       ~Widget();
 
       OgreGuiSkinID getSkinId(void);
 
       void setName(Ogre::String);
       Ogre::String getName(void);
+
+      Widget* getParent();
 
       /** A pure virtual function used to set the transparency of the widget
         *
@@ -59,16 +64,29 @@ namespace RainbruRPG{
       virtual void setTransparency(float f)=0;
 
     protected:
+      /** The parent of this widget
+        *
+	* Mainly used in the inherited skin mecanism.
+	*
+	* \sa getParent()
+	*
+	*/
+      Widget* parent;
+
       /** The skin identifier of this widget
         *
 	* This identifier is a mapping with a vector managed by
 	* SkinManager.
+	*
+	* \sa getSkinId()
 	*
 	*/
       OgreGuiSkinID skinId;
       /** The name of the widget
         *
 	* This name is used as an unique identifier
+	*
+	* \sa getName(), setName()
 	*
 	*/
       Ogre::String name;

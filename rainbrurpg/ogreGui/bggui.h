@@ -65,11 +65,13 @@ namespace BetaGUI {
     GUI();
     ~GUI();	
 
-    bool injectMouse(unsigned int, unsigned int, bool);
+    bool injectMouse(unsigned int, unsigned int);
     bool injectKey(String, unsigned int, unsigned int);
     void injectBackspace(unsigned int, unsigned int);
 
-    Window* createWindow(Vector4,String,OgreGuiWindowType,String c="");
+    void injectMouseButtonPressed(const std::string&);
+    void injectMouseButtonReleased();
+
     void destroyWindow(Window *w);
     
     OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
@@ -90,6 +92,10 @@ namespace BetaGUI {
     void deactivateWindow(Window*);
 
   protected:
+    /** Is a mouse button currently pressed */
+    static bool isMouseButtonPressed;
+
+
     /** The current GUI transparency value
       *
       * This value is kept to be returned by the getGuiTransparency() 

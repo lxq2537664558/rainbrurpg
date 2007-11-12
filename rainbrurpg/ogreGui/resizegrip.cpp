@@ -33,14 +33,16 @@
   * \param callback     The callback of the button
   * \param G            The GUI object
   * \param parent       The parent window
+  * \param sid          The skin ID (inherited by default)
   *
   */
 RainbruRPG::OgreGui::ResizeGrip::
-ResizeGrip(Vector4 dim, Callback callback, GUI *G,Window* parent)
-  :Button(dim, "", "", callback, parent)
-
+ResizeGrip(Vector4 dim, Callback callback, GUI *G, Window* parent,
+	   OgreGuiSkinID sid):
+  Button(dim, "", "", callback, parent, sid)
 {
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(G->getUniqueId());
   this->setName(uniqueName);
@@ -59,7 +61,7 @@ RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
 
 // special case of button (no caption overlay)
 void RainbruRPG::OgreGui::ResizeGrip::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
 
   s->setTransparency(mO, f);
 

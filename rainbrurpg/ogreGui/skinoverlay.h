@@ -118,7 +118,8 @@ namespace RainbruRPG{
         * \param parent  The parent window
         *
         */
-     virtual void createPushButton(String name, Vector4 dim, String caption, Window* parent)=0;
+     virtual void createPushButton(String name, Vector4 dim, String caption, 
+				   Window* parent)=0;
 
       /** Graphically create a TextInput widget
         *
@@ -129,9 +130,20 @@ namespace RainbruRPG{
         * \param parent  The parent window
         *
         */
-     virtual void createTextInput(String name, Vector4 dim, String caption, Window* parent)=0;
+     virtual void createTextInput(String name, Vector4 dim, String caption, 
+				  Window* parent)=0;
 
-     virtual void createLabel(String, Vector4, String, Window*)=0;
+     /** Graphically create a Label widget
+       *
+       * \param name    The internal name of the ResizeGrip (must be unique)
+       * \param dim     The widget's dimension in pixels in a 
+       *                Ogre::Vector4 object
+       * \param caption The rendered text
+       * \param parent  The parent window
+       *
+       */
+     virtual void createLabel(String name, Vector4 dim, String caption, 
+			      Window* parent)=0;
 
      virtual void activateButton(Button* button, bool active);
 

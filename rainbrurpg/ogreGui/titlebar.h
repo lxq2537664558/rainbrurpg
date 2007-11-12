@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 09 nov 2007 : Handling OgreSkinID in constructor
  * - 05 oct 2007 : Now using skin for graphiwal creation
  * - 03 oct 2007 : starting implementation
  *         
@@ -31,8 +32,10 @@
 
 #include "bgbutton.h"
 #include "bgcallback.h"
+#include "skinmanager.h" // For OgreGuiSkinID
 
 using namespace BetaGUI;
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -45,7 +48,9 @@ namespace RainbruRPG{
       */
     class TitleBar : public BetaGUI::Button{
     public:
-      TitleBar(Vector4, String, Callback, GUI*, Window*);
+      TitleBar(Vector4, String, Callback, GUI*, Window*, 
+	       OgreGuiSkinID sid=OSI_PARENT);
+
       ~TitleBar();
 
       virtual void setTransparency(float);

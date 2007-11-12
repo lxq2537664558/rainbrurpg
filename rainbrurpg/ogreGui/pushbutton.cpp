@@ -32,6 +32,7 @@
   * \param caption      The text of the button
   * \param c            The callback of the button
   * \param parent       The parent window
+  * \param sid          The ID of the skin
   *
   */
 RainbruRPG::OgreGui::PushButton::
@@ -40,7 +41,7 @@ PushButton(Vector4 dim, String caption, Callback c, Window* parent,
   BetaGUI::Button(dim, "", caption, c, parent, sid)
 {
 
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
 
@@ -59,8 +60,13 @@ RainbruRPG::OgreGui::PushButton::~PushButton(){
 
 }
 
+/** Changes the transparency if this button
+  *
+  * \param f The new alpha value
+  *
+  */
 void RainbruRPG::OgreGui::PushButton::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
   s->setTransparency(mO, f);
   s->setCaptionTransparency(mCP, f);
 }

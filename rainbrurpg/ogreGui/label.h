@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 09 nov 2007 : Handling OgreSkinID in constructor
  * - 17 oct 2007 : starting implementation
  *         
  */
@@ -32,6 +33,9 @@
 #include <OGRE/OgreOverlayContainer.h>
 
 #include "widget.h" 
+#include "skinmanager.h" // For OgreGuiSkinID
+
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -42,7 +46,8 @@ namespace RainbruRPG{
       */
     class Label : public Widget{
     public:
-      Label(Vector4, String, BetaGUI::Window*);
+      Label(Vector4, String, BetaGUI::Window*,
+	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
       ~Label();
 
       virtual void setTransparency(float);

@@ -33,11 +33,12 @@ using namespace RainbruRPG::OgreGui;
   * \param t       The window's type
   * \param caption The caption of the window
   * \param G       The GUI object used to create window
+  * \param sid     The Skin used to draw this window
   *
   */
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
 			GUI *G, RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(sid),
+  Widget(NULL, sid), // Warning, parent is now NULL
   x(D.x),y(D.y),w(D.z),h(D.w),
   mGUI(G),mTB(0),mRZ(0),
   activeTextInput(NULL),
@@ -54,7 +55,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
   // Create the window
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this->skinId);
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   sk->createWindow(name, D, caption, G);
   this->setName(name);
 
@@ -222,7 +223,9 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       return true;
     
     if(activeTextInput){
-      activeTextInput->getFrameOverlay()->setMaterialName(activeTextInput->getNormalMaterialName());
+      activeTextInput->getFrameOverlay()
+	->setMaterialName(activeTextInput->getNormalMaterialName());
+
       activeTextInput=0;
     }
     
@@ -381,8 +384,7 @@ void BetaGUI::Window::setTransparency(float f){
   if (alwaysTransparent)
     f=0.0f;
 
-  SkinManager::getSingleton().getSkin(this->skinId)
-    ->setTransparency(rootOverlay, f);
+  SkinManager::getSingleton().getSkin(this)->setTransparency(rootOverlay, f);
 }
 
 /** Resize this window
@@ -453,11 +455,16 @@ void BetaGUI::Window::setMinimalSize(unsigned int mw, unsigned int mh){
   minimalHeight=mh;
 }
 
+/** Add a widget to this window
+  *
+  * \sa widgetList (member)
+  *
+  */
 void BetaGUI::Window::addWidget(Widget* w){
   widgetList.push_back(w);
 }
 
-/** Change the alwaysTransparent satus of this window
+/** Change the alwaysTransparent status of this window
   *
   * \param b The new alwaysTransparent status
   *

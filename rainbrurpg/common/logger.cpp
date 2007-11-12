@@ -101,13 +101,7 @@ void RainbruRPG::Exception::Logger::logAssert( const char* file,
   char* c;
   bool l=false;
 
-
-  if (b){
-    c="II";
-    if (logLevel==LL_INFO)
-      l=true;
-  }
-  else{
+  if (!b){
     c="EE";
     l=true;
   }

@@ -22,6 +22,7 @@
 
 #include "skinmanager.h"
 
+#include "widget.h"
 #include "sobetagui.h"
 #include "sonavigation.h"
 
@@ -55,19 +56,33 @@ void RainbruRPG::OgreGui::SkinManager::init(){
 
 }
 
-/** Get a skin by its Identifier
+/** Get the skin of a widget
   *
-  * \param s The identifier of the skin you want
+  * This function handles two advanced features :
+  * - The default skin if w->getSkinId() is OSI_DEFAULT;
+  * - The inherited skin identifier value if w->getSkinId() is
+  *   OSI_PARENT;
+  *
+  * In the case of OSI_PARENT, this function will be called recursively.
+  *
+  * \param w The widget
   *
   */
 RainbruRPG::OgreGui::SkinOverlay* RainbruRPG::OgreGui::SkinManager::
-getSkin(RainbruRPG::OgreGui::OgreGuiSkinID s){
+getSkin(Widget* w){
+
+  OgreGuiSkinID s= w->getSkinId();
 
   if (s==OSI_DEFAULT){
     s=defaultSkin;
   }
 
-#ifdef DEBUG
+  if (s==OSI_PARENT){
+    Widget* parent=w->getParent();
+    return getSkin(parent);
+  }
+
+#ifdef RAINBRU_RPG_DEBUG
   if (skins[s]==NULL){
     LOGW("The requested skin is NULL")
   }

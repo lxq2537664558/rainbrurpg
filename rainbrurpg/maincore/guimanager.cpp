@@ -336,6 +336,13 @@ void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
   float t=GameEngine::getSingleton().getOgreGui()->getGuiTransparency();
   float newT=t+f;
   
+  /* v 0.0.5-160 : Gui transparency bugfix
+   *
+   * It seems that the value of newT can be superior to 0.7f, resulting
+   * a graphical bug : The window does completely opaque and goes to 0.7f of
+   * alpha blanding. The following statement fix it.
+   *
+   */
   if (newT>0.7f){
     newT=0.7f;
   }
@@ -537,4 +544,16 @@ showMessageBox(const CEGUI::String& title, const CEGUI::String& message,
   */
 void RainbruRPG::Gui::GuiManager::hideMessageBox(bool destroy){
   dialogSystemLayout=NULL;
+}
+
+/** Is a GUI dade in in progress
+  *
+  * \return \c true if a GUI fade in is in progress, otherwise \c false
+  *
+  * \sa inGuiFadeIn (member)
+  *
+  */
+bool RainbruRPG::Gui::GuiManager::isInGuiFadeIn(){
+  return inGuiFadeIn;
+
 }

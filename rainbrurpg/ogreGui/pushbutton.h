@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 04 nov 2007 : Can apply a OgreGuiSkinID in constructor
  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
  * - 05 oct 2007 : starting implementation
  *         
@@ -45,7 +46,7 @@ namespace RainbruRPG{
     class PushButton : public BetaGUI::Button{
     public:
       PushButton(Vector4, String, Callback, Window*, 
-		 OgreGuiSkinID sid=OSI_DEFAULT);
+		 OgreGuiSkinID sid=OSI_PARENT);
       ~PushButton();
 
       virtual void setTransparency(float);

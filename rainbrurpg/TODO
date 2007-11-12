@@ -2,14 +2,6 @@ TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- Moving Window bug :
-  o When we click the 'Network Game" button of gsMainMenu
-  we go to the gsConnection state and the Connection window
-  is moving without left mouse button is clicked.
-  o FIXED : please see gsMenuBase::transition() implementation for
-  further details.
-  o When we go back from gsConnection to gsMainMenu, the bug happens again
-  -> Trying to use isMouseBouttonPressed as static member
 - gsCreateAccount uses betaGUI
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -126,6 +118,27 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-160
+- Doxygen documentation
+  o Fix undocumented members (mainly soNavigation)
+  o Error when generating Doxygen documentation in PNG image format
+  Switching to jpg images fix it
+- New SkinId : OSI_PARENT for inherited skin identifier
+  All widgets now inherits their SkinId from their parent
+  but this can be changed from a constructor parameter
+- Mouse button comes again :(
+   FIXED in GameEngine::mousePressed()
+- gsMainMenu buttons bug
+  o buttons don't get mouse click event
+  gsMenuBase::mousePressed must call BGGUI::injectMouse
+- Moving Window bug :
+  o When we click the 'Network Game" button of gsMainMenu
+  we go to the gsConnection state and the Connection window
+  is moving without left mouse button is clicked.
+  o FIXED : please see gsMenuBase::transition() implementation for
+  further details.
+  o When we go back from gsConnection to gsMainMenu, the bug happens again
+  -> Trying to use isMouseBouttonPressed as static member
+  -> isMouseBouttonPressed now in BetaGUI::GUI
 - Transparency transition bug
   o When going from gsConnection to gsMainMenu, gsConnection is fade
   in and then reappears
@@ -138,7 +151,6 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
   They was added to the BetaGUI overlay, but for a ZOrder issue 
   (gsConnection's Back button was hidden by numDebugWindow) I create
   their own one.
- 
 - Window::alwaysTransparent() implementation
 - soNavigation implementation
 - Images nav.button and nav.button.active created

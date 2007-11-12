@@ -22,15 +22,29 @@
 
 #include "widget.h"
 
+#include <logger.h>
+#include "bgwindow.h"
+
+
 /** A constructor passing the skin identifier
   *
   * \param sid The SkinIdentifier
+  * \param P   The parent widget
   *
   */
 RainbruRPG::OgreGui::Widget::
-Widget(RainbruRPG::OgreGui::OgreGuiSkinID sid)
-  :skinId(sid){
+Widget(Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+  skinId(sid),
+  parent(P),
+  frameOverlay(NULL)
+{
 
+  // Doesn't test the parent pointer for Window as a Window
+  // has always NULL parent
+  Window* win=dynamic_cast<Window*>(this);
+  if (win!=NULL){
+    LOGA(parent, "Widget's parent is NULL");
+  }
 }    
 
 /** Destructor
@@ -67,4 +81,13 @@ void RainbruRPG::OgreGui::Widget::setName(Ogre::String s){
   */
 Ogre::String RainbruRPG::OgreGui::Widget::getName(void){
   return this->name;
+}
+
+/** Get the widget's parent
+  *
+  * \return The parent widget
+  *
+  */
+RainbruRPG::OgreGui::Widget* RainbruRPG::OgreGui::Widget::getParent(){
+  return this->parent;
 }

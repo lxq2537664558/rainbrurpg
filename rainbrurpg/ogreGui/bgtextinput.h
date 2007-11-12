@@ -7,6 +7,11 @@
  *
  */
 
+/* Modifications :
+ * - 09 nov 2007 : Handling OgreSkinID in constructor
+ *
+ */
+
 #ifndef _BETAGUI_TEXT_INPUT_H_
 #define _BETAGUI_TEXT_INPUT_H_
 
@@ -14,6 +19,7 @@
 #include <OGRE/OgreOverlayContainer.h>
 
 #include "widget.h" 
+#include "skinmanager.h" // For OgreGuiSkinID
 
 // Forward declaration
 namespace BetaGUI {
@@ -22,6 +28,7 @@ namespace BetaGUI {
 // End of Forward declaration
 
 using namespace Ogre;
+using namespace RainbruRPG::OgreGui;
 
 namespace BetaGUI {
 
@@ -30,7 +37,9 @@ namespace BetaGUI {
     */
   class TextInput : public RainbruRPG::OgreGui::Widget{
   public:
-    TextInput(Vector4, String, unsigned int, BetaGUI::Window*);
+    TextInput(Vector4, String, unsigned int, BetaGUI::Window*,
+	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
+
     ~TextInput();
     
     String getValue(void);

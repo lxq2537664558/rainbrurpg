@@ -207,7 +207,7 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
 	}
       }
 
-      // Pause the actual state
+       // Pause the actual state
       states[actualState]->pause();
 
       // Change the state
@@ -846,7 +846,20 @@ bool RainbruRPG::Core::GameEngine::mouseMoved(const OIS::MouseEvent& evt){
   */
 bool RainbruRPG::Core::GameEngine::
 mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
-  states[actualState]->mousePressed(evt, id);
+
+  /* v 0.0.5-160 : Mouse button bug fix
+   *
+   * It appears that this function is automatically called 
+   * by InputManager/OIS each time we change from one 
+   * GameSate to another. As the Gui fade in comes after
+   * this bug, we use to test if the mouse pressed event
+   * should be handled.
+   *
+   */
+  if (!GuiManager::getSingleton().isInGuiFadeIn()){
+    LOGW("Calling mousePressed");
+    states[actualState]->mousePressed(evt, id);
+  }
   return true;
 
 }
