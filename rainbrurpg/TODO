@@ -117,6 +117,8 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-161
+
 * v 0.0.5-160
 - Doxygen documentation
   o Fix undocumented members (mainly soNavigation)

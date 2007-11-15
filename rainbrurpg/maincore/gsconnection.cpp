@@ -219,6 +219,8 @@ onConnectClicked(){
 void RainbruRPG::Core::gsConnection::resume(){
   setupConnectionMenu();
   setupTabOrder();
+  yBorder=0.5f;
+  translateTo(0.4f);
 }
 
 /** The callback of the 'create account' button
