@@ -67,6 +67,6 @@ tGameStateType RainbruRPG::Core::GameState::getStateType(){
   * \sa rootWindowName
   *
   */
-const CEGUI::String& RainbruRPG::Core::GameState::getRootWindowName(){
+const Ogre::String& RainbruRPG::Core::GameState::getRootWindowName(){
   return this->rootWindowName;
 }

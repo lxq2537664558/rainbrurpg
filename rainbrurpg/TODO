@@ -118,6 +118,26 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-161
+- GuiManager::showMessageBox doesn't need anymore a parent parameter
+- Doxygen documentation : fix undocumented members
+- Dialog handles its border transparency
+- OgreGUI dialog has its own border
+- Makes the dialog prioritary on mouse click
+  o Using a push_front instead of push_back in BGGui::windowList
+- Minor Skin bug fixed
+- MessageBox::setMessage() implementation
+- MessageBox::setTitle() implementation
+- Makes OgreGUI dialog centered
+- SkinOverlay::createBorderWindow renamed SkinOverlay::createDialog
+- OgreGUI dialog uses its own Ogre::Overlay (zorder difference)
+- Removes DialogSystem from repository
+- Avoid maincore::MessageBox inheritage of DialogSystem
+- soBetaGui::createBorderWindow implementation
+- Skin::createBorderWindow declaration
+- Window constructor
+  A bool saying if it is a framed window or not
+- gsConnection::onConnectClicked uses OgreGUI
+  Name and password values are now taken from the OgreGUI widgets
 
 * v 0.0.5-160
 - Doxygen documentation

@@ -43,7 +43,6 @@ void RainbruRPG::Gui::GuiManager::init(){
   guiOpacity=0.7f;
   inGuiFadeIn=false;
   inGuiFadeOut=false;
-  dialogSystemLayout=NULL;
   mTitleOverlay=NULL;
   velocity=new vcConstant();
 
@@ -493,38 +492,17 @@ void RainbruRPG::Gui::GuiManager::debugChild(const char* name){
   * \param title   The messageBox title
   * \param message The messageBox message text. This text will be word wrapped
   *                and justify.
-  * \param parent  The parent name. If this string is empty (""), the message
-  *                box will be non-modal, if a CEGUI Window's name is given,
-  *                the dialog will be modal.
   *
   */
 void RainbruRPG::Gui::GuiManager::
-showMessageBox(const CEGUI::String& title, const CEGUI::String& message, 
-	       const CEGUI::String& parent)
+showMessageBox(const String& title, const String& message){
 
-{
+  RbMessageBox* simpleDialog=new RbMessageBox();
+  simpleDialog->initWindow();
+  simpleDialog->setTitle(title);
+  simpleDialog->setMessage(message);
+  simpleDialog->show();
 
-  // Init dialog
-  if (dialogSystemLayout==NULL){
-    this->dialogSystemLayout = CEGUI::WindowManager::getSingleton()
-      .loadWindowLayout("dialogsystem.layout");
-
-    LOGW("dialogSystemLayout pointer is NULL");
-  }
-
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-  if (root && dialogSystemLayout){
-    root->addChildWindow("DialogSystemRoot");
-
-    RbMessageBox* simpleDialog=new RbMessageBox();
-    simpleDialog->initWindow(parent);
-    simpleDialog->setTitle(title);
-    simpleDialog->setMessage(message);
-    simpleDialog->doOpen();
-  }
-  else{
-    LOGE("Cannot show message box (CEGUI guiSheet==NULL)");
-  }
 
 }
 
@@ -543,7 +521,6 @@ showMessageBox(const CEGUI::String& title, const CEGUI::String& message,
   *
   */
 void RainbruRPG::Gui::GuiManager::hideMessageBox(bool destroy){
-  dialogSystemLayout=NULL;
 }
 
 /** Is a GUI dade in in progress

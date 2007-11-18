@@ -45,6 +45,7 @@ namespace RainbruRPG{
       soBetaGui();
 
       virtual void createWindow(String, Vector4, String ,BetaGUI::GUI*);
+      virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
       virtual void createResizeGrip(String, Vector4, Window*);
       virtual void createTitleBar(String, Vector4, String, Window*);
       virtual void createPushButton(String, Vector4, String, Window*);
@@ -57,6 +58,8 @@ namespace RainbruRPG{
       Ogre::String mnWindow;
       /** The text input's material name */
       Ogre::String mnTextInput;
+      /** The dialog border material name */
+      Ogre::String mnDialogBorder;
 
 
       // ============= FONTS VALUES =================
@@ -74,6 +77,7 @@ namespace RainbruRPG{
       Ogre::String fnCaption;
       /** The font size used to draw captions */
       unsigned int fsCaption;
+
     };
 
   }

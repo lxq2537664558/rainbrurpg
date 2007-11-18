@@ -145,7 +145,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   // The height of the window in pixels
   unsigned int winHeight=150;
 
-  // Te position of the window
+  // The position of the window
   unsigned int winY=(h/2)-(winHeight/2);
   unsigned int winX=(w/2)+(w/4-(winWidth/2));
   winX+=(int)(double)w*0.025;     // The border

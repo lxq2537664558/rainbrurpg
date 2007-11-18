@@ -183,3 +183,12 @@ void BetaGUI::Button::setTransparency(float f){
   s->setTransparency(mO, f);
 
 }
+
+/** Changes the caption of this label
+  *
+  * \param caption The new caption as an Ogre string
+  * 
+  */
+void BetaGUI::Button::setCaption(const String& caption){
+  mCP->setCaption(caption);
+}

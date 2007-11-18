@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 16 nov 2007 : setTitle(String) implementation
  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
  * - 24 sep 2007 : This was the original BetaGUI code. 
  *                 Betajaen's headers added
@@ -42,12 +43,12 @@ namespace BetaGUI {
     *
     * To get a mouse over when the mouse move over a Button, you
     * \b must use the addWidget(BetaGUI::Button*) method to add it 
-    * to the window's internal nutton list.
+    * to the window's internal button list.
     *
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, OgreGuiWindowType, String, GUI*,
+    Window( Vector4, OgreGuiWindowType, String, GUI*, bool border=false,
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     ~Window();
 
@@ -78,8 +79,9 @@ namespace BetaGUI {
 
    void setAlwaysTransparent(bool);
 
-  protected:
+   void setTitle(const String&);
 
+  protected:
     /** The currently active TextInput widget */
     TextInput* activeTextInput;
     /** Defines a button */
@@ -169,6 +171,10 @@ namespace BetaGUI {
     unsigned int minimalHeight;
     /** If true, the window will always be fully transparent */
     bool alwaysTransparent;
+    /** Is it a border window */
+    bool hasBorder;
+    /** The pointer to the border text for transparency operation */
+    Ogre::TextureUnitState* borderTus;
   };
 
 

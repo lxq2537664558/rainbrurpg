@@ -69,3 +69,12 @@ void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
 
   s->setCaptionTransparency(contentOverlay, alpha);
 }
+
+/** Changes the caption of this button
+  *
+  * \param s The new caption as an Ogre string
+  * 
+  */
+void RainbruRPG::OgreGui::Label::setCaption(const String& s){
+  this->contentOverlay->setCaption(s);
+}

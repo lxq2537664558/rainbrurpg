@@ -168,3 +168,21 @@ material bgui.textinput.active
 		}
 	}
 }
+
+material bgui.dialog.border
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend alpha_blend
+			depth_check off
+
+			texture_unit
+			{
+				texture bgui.dialog.border.png
+			}
+		}
+	}
+}

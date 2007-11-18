@@ -79,7 +79,7 @@ namespace RainbruRPG {
       virtual ~GameState();
 
       tGameStateType getStateType();
-      const CEGUI::String& getRootWindowName();
+      const Ogre::String& getRootWindowName();
 
       /** The constructor of GameState 
         * 
@@ -137,7 +137,7 @@ namespace RainbruRPG {
 	* box.
 	*
 	*/
-      CEGUI::String rootWindowName;
+      Ogre::String rootWindowName;
    };
   }
 }

@@ -170,10 +170,10 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
 bool RainbruRPG::Core::gsCreateAccount::
 onSubmitClicked(const CEGUI::EventArgs& evt){
   LOGI("Submit button clicked");
-  CEGUI::String name, pwd, repPwd, mail, mess, nextFocus;
+  CEGUI::String name, pwd, repPwd, mail, nextFocus;
 
-  CEGUI::String err01="Account creation error";
-  CEGUI::String parent="RainbruRPG/CreateAccountWin";
+  String mess;
+  String err01="Account creation error";
 
   try{
     // Get the window
@@ -189,7 +189,7 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
     if (pwd!=repPwd){
       win->getChild("RainbruRPG/CreateAccount/RepPwd")->activate();
       GuiManager::getSingleton().showMessageBox(err01, 
-        "Please correctly repeat the password",parent);
+        "Please correctly repeat the password");
     }
     else{
       CurlAccountAdd caa;
@@ -203,7 +203,7 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
 	GuiManager::getSingleton().showMessageBox("Account succefully created", 
           "The account was correctly added. Before you are able to use "
           "it, you must activate it.\n\nPlease wait the activation "
-          "mail.",parent);
+          "mail.");
       }
       else{
 	tCurlAccountAddReturn ret=caa.getResponse();
@@ -242,7 +242,7 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
 	}
 
 	win->getChild(nextFocus)->activate();
-	GuiManager::getSingleton().showMessageBox(err01, mess, parent);
+	GuiManager::getSingleton().showMessageBox(err01, mess);
 
       }
 

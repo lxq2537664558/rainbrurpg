@@ -50,6 +50,7 @@ namespace RainbruRPG{
       soNavigation();
 
       virtual void createWindow(String, Vector4, String ,BetaGUI::GUI*);
+      virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
       virtual void createResizeGrip(String, Vector4, Window*);
       virtual void createTitleBar(String, Vector4, String, Window*);
       virtual void createPushButton(String, Vector4, String, Window*);

@@ -260,3 +260,16 @@ setCaptionTransparency(Ogre::OverlayElement* elem, float f){
     toe->setColour(cv);
   }
 }
+
+/** Get the dialog border size
+  *
+  * This function is used by the \ref BetaGUI::Window "Window" 
+  * constructor to place and resize
+  * TitleBar and ResizeGrip according to the border size.
+  *
+  * \return The border size in pixels
+  *
+  */
+unsigned int RainbruRPG::OgreGui::SkinOverlay::getDialogBorderSize(void){
+  return this->dialogBorderSize;
+}

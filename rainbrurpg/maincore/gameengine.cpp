@@ -318,8 +318,7 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
   if (ret!=CCR_SUCCESS){
     LOGW("The login of this user failed");
     GuiManager::getSingleton()
-      .showMessageBox("Connection failed", errMsg, 
-		      states[actualState]->getRootWindowName());
+      .showMessageBox("Connection failed", errMsg);
 
     return false;
 

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 17 nov 2007 : GuiManager::showMessageBox doesn't need anymore a parent
  * - 08 nov 2007 : isInGuiFadeIn() added
  * - 31 jul 2007 : Ogre3D log partially deactivate
  * - 24 jul 2007 : showMessageBox implementaion
@@ -136,8 +137,7 @@ namespace RainbruRPG {
       Ogre::RenderWindow* getRenderWindow();
       void debugChild(const char*);
 
-      void showMessageBox(const CEGUI::String&, const CEGUI::String&, 
-			  const CEGUI::String& parent=""); 
+      void showMessageBox(const String&, const String&); 
       void hideMessageBox(bool);
 
     private:
@@ -194,19 +194,6 @@ namespace RainbruRPG {
 	*/
       Ogre::Overlay* mTitleOverlay;
 
-      /** The layout used by DialogSystem 
-        *
-	* This CEGUI window is not destroyed each time a dialog is closed. 
-	* It is loaded the first time showMessageBox() is called then 
-	* DialogSystem::doClose hide and deactivate it. This pointer is set
-	* to \c NULL by the hideMessageBox() function, each time we change
-	* the current gamestate.
-	*
-	* \sa hideMessageBox(), DialogSystem::doClose(), 
-	*     removeCurrentCEGUILayout()
-	*
-	*/
-      CEGUI::Window* dialogSystemLayout;
     };
   }
 }

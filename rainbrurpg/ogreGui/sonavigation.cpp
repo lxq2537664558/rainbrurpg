@@ -43,7 +43,7 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   fsPushButton=16;
 }
 
-/** Create a window using the BetaGUI skin
+/** Create a window using the navigation skin
   *
   * It creates an overlay with a material named mnWindow.
   *
@@ -64,6 +64,23 @@ createWindow(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
 
   this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 }
+
+/** Create a window using the navigation skin
+  *
+  * For soNavigation, this borderWindow is not different than the normal one.
+  *
+  * \param name    The internal name of the window
+  * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
+  * \param caption The title bar caption
+  * \param bg      The BetaGUI::GUI object 
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+createDialog(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
+
+  this->createOverlay(name, dim, mnWindow, bg->getDialogOverlay());
+}
+
 
 /** Graphically create a ResizeGrip widget
   *

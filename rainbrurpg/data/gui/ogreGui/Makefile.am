@@ -3,6 +3,7 @@ datafiles_DATA= bgui.button.active.png     	\
 		bgui.textinput.png          	\
 		Commonv2c.ttf			\
 		bgui.button.png            	\
+		bgui.dialog.border.png		\
 		bgui.window.png                	\
 		bgui.material              	\
 		bgui.window.resize.active.png   \

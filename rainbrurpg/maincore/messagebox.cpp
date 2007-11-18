@@ -26,63 +26,60 @@
 
 #include "messagebox.h"
 
+#include "gameengine.h"
+
+#include <ogreGui/pushbutton.h>
+#include <ogreGui/bgcallback.h>
+#include <ogreGui/bgwindow.h>
+#include <ogreGui/bggui.h>
+#include <ogreGui/label.h>
+
+#include <OGRE/OgreVector4.h>
+
 /** The default constructor
   *
   * Actually, this initialize only message and title with empty strings.
   *
   */
-RainbruRPG::Gui::RbMessageBox::RbMessageBox(){
-  message ="";
-  title   ="";
+RainbruRPG::Gui::RbMessageBox::RbMessageBox():
+  message(""),
+  title(""),
+  width(300),
+  height(100),
+  mWin(NULL),
+  caption(NULL)
+{
+
 }
 
 /** Initialize the dialog
   *
-  * If parent is empty, the window will be non-modal. If parent contains
-  * a correct window name (already loaded), this dialog will be modal.
-  *
-  * \param parent The parent Window's name
-  *
   */
-void RainbruRPG::Gui::RbMessageBox::initWindow(const CEGUI::String& parent){
+void RainbruRPG::Gui::RbMessageBox::initWindow(){
+  // Center the dialog
+  unsigned int rwWidth, rwHeight, posX, posY;
+  rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
+  rwHeight=GameEngine::getSingleton().getRenderWindow()->getHeight();
+
+  posX=(rwWidth/2)-(width/2);
+  posY=(rwHeight/2)-(height/2);
+
   // Initialise the dialog
-  using namespace CEGUI;
-  WindowManager& winMgr = WindowManager::getSingleton();
-  
-  // Initialise the windowing system
-  DialogSystem::initialise("dlgRbMessageBox", false, parent);
+  Vector4 winDim=Vector4(posX, posY, width, height);
+  BetaGUI::GUI* gui=GameEngine::getSingleton().getOgreGui();
+  title="Unset";
+  mWin=new Window(winDim, OWT_MOVE, title, gui, true, OSI_BETAGUI);
+  gui->addDialog(mWin);
 
-  // Subscribe to widget events
-  DialogSystem::bindEvent( "dlgRbMessageBox_btnOk",		
-			   PushButton::EventClicked, DSE_OK);
-  
-  // Subscribe to window events
-  // Pressing the 'X' button will behave as a cancel
-  if (!parent.empty()){
-    DialogSystem::bindEvent( parent, FrameWindow::EventCloseClicked,DSE_CANCEL);
-    DialogSystem::bindEvent( parent, FrameWindow::EventKeyDown, DSE_ESCAPE);
-  }
+  Vector4 labDim=Vector4(2, 24, width-20, 30);
+  caption=new Label( labDim, "Unset", mWin );
+  mWin->addWidget(caption);
 
-}
+  Vector4 btnDim=Vector4( (width/2)-50, height-30, 100, 24 );
+  PushButton* btnOk=new PushButton (btnDim, "OK", Callback(this), mWin);
+  mWin->addWidget(btnOk);
 
-/** Handle the load action by placing data into widgets
-  *
-  */
-bool RainbruRPG::Gui::RbMessageBox::doLoad(){
-  /*  CEGUI::WindowManager::getSingleton().getWindow("RbMessageBox_edtValue")
-    ->setText(dataString);
-  */
-  return DialogSystem::doLoad(); 
-}
 
-/** Handle the save action by moving widget data into variables
-  *
-  */
-bool RainbruRPG::Gui::RbMessageBox::doSave(){
-  /*  dataString = CEGUI::WindowManager::getSingleton()
-    .getWindow("RbMessageBox_edtValue")->getText();
-  */
-  return DialogSystem::doSave(); 
 }
 
 /** Changes the message of the dialog
@@ -94,9 +91,9 @@ bool RainbruRPG::Gui::RbMessageBox::doSave(){
   * \sa getMessage()
   *
   */
-void RainbruRPG::Gui::RbMessageBox::setMessage(const CEGUI::String& mess){
+void RainbruRPG::Gui::RbMessageBox::setMessage(const String& mess){
   this->message=mess;
-  CEGUI::WindowManager::getSingleton().getWindow("MessageText")->setText(mess);
+  caption->setCaption(mess);
 }
 
 /** Get the message of the dialog
@@ -106,7 +103,7 @@ void RainbruRPG::Gui::RbMessageBox::setMessage(const CEGUI::String& mess){
   * \sa setMessage(const CEGUI::String&)
   *
   */ 
-const CEGUI::String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
+const String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
   return this->message;
 }
 
@@ -114,15 +111,14 @@ const CEGUI::String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
   * 
   * This should be called before showing the dialog.
   *
-  * \param title The new title's text
+  * \param t The new title's text
   *
   * \sa getTitle()
   *
   */
-void RainbruRPG::Gui::RbMessageBox::setTitle(const CEGUI::String& title){
-  this->title=title;
-  CEGUI::WindowManager::getSingleton().getWindow("dlgRbMessageBox")
-    ->setText(title);
+void RainbruRPG::Gui::RbMessageBox::setTitle(const String& t){
+  this->title=t;
+  mWin->setTitle(t);
 }
 
 /** Get the title of the dialog
@@ -132,6 +128,30 @@ void RainbruRPG::Gui::RbMessageBox::setTitle(const CEGUI::String& title){
   * \sa setTitle(const CEGUI::String&)
   *
   */ 
-const CEGUI::String& RainbruRPG::Gui::RbMessageBox::getTitle(void){
+const String& RainbruRPG::Gui::RbMessageBox::getTitle(void){
   return this->title;
+}
+
+/** Shows this message box
+  *
+  */
+void RainbruRPG::Gui::RbMessageBox::show(void){
+  mWin->setTransparency(0.7f);
+  mWin->show();
+}
+
+/** Hides this message box
+  *
+  */
+void RainbruRPG::Gui::RbMessageBox::hide(void){
+  mWin->hide();
+}
+
+/** The callback od OgreGUI buttons
+  *
+  * \param ref The button that fires the event
+  *
+  */
+void RainbruRPG::Gui::RbMessageBox::onButtonPress(Button *ref){
+  this->hide();
 }

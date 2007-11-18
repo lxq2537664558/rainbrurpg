@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 15 nov 2007 : createBorderWindow implementation
  * - 15 oct 2007 : Skin class removed
  * - 27 sep 2007 : starting implementation
  *         
@@ -88,6 +89,20 @@ namespace RainbruRPG{
         */
       virtual void createWindow(String name, Vector4 dim, String caption, 
                                 GUI* bg)=0;
+     /** Create a window with a border
+        *
+        * Please see the sub-class documentation for implementation
+        * details.
+        *
+        * \param name    The internal name of the window
+        * \param dim     The window's dimension in pixels in a 
+        *                Ogre::Vector4 object
+        * \param caption The title bar caption
+        * \param bg      The BetaGUI::GUI object 
+        *
+        */
+      virtual void createDialog(String name, Vector4 dim, String caption, 
+                                GUI* bg)=0;
       /** Graphically create a ResizeGrip widget
         *
         * \param name    The internal name of the ResizeGrip (must be unique)
@@ -147,7 +162,7 @@ namespace RainbruRPG{
 
      virtual void activateButton(Button* button, bool active);
 
-
+     virtual unsigned int getDialogBorderSize(void);
 
     protected:
       /** The resizeGrip material name*/
@@ -156,6 +171,13 @@ namespace RainbruRPG{
       Ogre::String mnTitleBar;
       /** The PushButton material name*/
       Ogre::String mnPushButton;
+
+      /** Defines the border size of a dilaog
+        *
+	* Some widget are automatically placed from this value.
+	*
+	*/
+      unsigned int dialogBorderSize;
 
     private:
       OverlayContainer* createOverlayImpl(String, Vector4, String);

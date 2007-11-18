@@ -35,7 +35,11 @@ BetaGUI::GUI::GUI():
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
-  rootOverlay->setZOrder(550);
+  rootOverlay->setZOrder(500);
+
+  dialogOverlay=OverlayManager::getSingleton().create("BetaGUI.Dialog");
+  dialogOverlay->show();
+  dialogOverlay->setZOrder(550);
 
 }
 
@@ -43,10 +47,6 @@ BetaGUI::GUI::GUI():
   *
   */
 BetaGUI::GUI::~GUI(){
-  for(unsigned int i=0;i < windowList.size();i++){
-    delete windowList[i];
-  }
-
   windowList.clear();
 }
 
@@ -98,18 +98,20 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
     movedWindow=NULL;
   
     if(mXW){
-      for(vector<Window*>::iterator i=windowList.begin();i!=windowList.end();i++){
-	if(mXW==(*i)){
+      // Do not use the typedef WindowListIterator as it is a const_iterator
+      // and we need a non-const one to use windowList.erase(iter).
+      for(list<Window*>::iterator iter=windowList.begin();iter!=windowList.end();iter++){
+	if(mXW==(*iter)){
 	  delete mXW;
-	  windowList.erase(i);
+	  windowList.erase(iter);
 	  mXW=0;
 	  return false;
 	}
       }
     }
     
-    for(unsigned int i=0;i<windowList.size();i++){
-      if(windowList[i]->check(x,y,LMB)){
+    for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
+      if((*iter)->check(x,y,LMB)){
 	return true;
       }
     }
@@ -129,8 +131,9 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
   *
   */
 bool BetaGUI::GUI::injectKey(String key, unsigned int x,unsigned int y){
-  for(unsigned int i=0;i<windowList.size();i++){
-    if(windowList[i]->checkKey(key,x,y)){
+  //  for(unsigned int i=0;i<windowList.size();i++){
+  for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
+    if((*iter)->checkKey(key,x,y)){
       return true;
     }
   }
@@ -261,8 +264,9 @@ Ogre::Overlay* BetaGUI::GUI::getRootOverlay(void){
 void BetaGUI::GUI::setGuiTransparency(float f){
 
   this->guiTransparency=f;
-  for(unsigned int i=0;i<windowList.size();i++){
-    windowList[i]->setTransparency(f);
+  //  for(unsigned int i=0;i<windowList.size();i++){
+  for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
+    (*iter)->setTransparency(f);
   }
 }
 
@@ -336,3 +340,25 @@ void BetaGUI::GUI::injectMouseButtonReleased(){
   LOGW("GUI::injectMouseButtonReleased called");
 }
 
+/** Get the dialog overlay
+  *
+  * Used only for Dialog because it is aboce the windows one.
+  *
+  * \return The Ogre overlay, parent of all dialogs
+  *
+  */
+Ogre::Overlay* BetaGUI::GUI::getDialogOverlay(void){
+  return this->dialogOverlay;
+}
+
+/** Add a dialog 
+  *
+  * It is different as addWindow() as this use push_front to get
+  * the dialog mouse event prioritary.
+  *
+  * \param win The dialog to add
+  *
+  */
+void BetaGUI::GUI::addDialog(Window* win){
+  windowList.push_front(win);
+}

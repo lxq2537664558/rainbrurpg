@@ -28,12 +28,6 @@
 #ifndef GS_CONNECTION_H
 #define GS_CONNECTION_H
 
-#include <CEGUI/CEGUISystem.h>
-#include <CEGUI/CEGUIRenderer.h>
-#include <CEGUI/CEGUIEventArgs.h>
-#include <CEGUI/CEGUIEvent.h>
-#include <CEGUI/elements/CEGUIEditbox.h>
-
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
@@ -84,11 +78,6 @@ namespace RainbruRPG {
 
       void setupConnectionMenu();
 
-      /** The TextEdit where we enter the account name */
-      CEGUI::Window* nameWidget;
-      /** The TextEdit where we enter the account password */
-      CEGUI::Window* pwdWidget;
-
       /** The connect button */
       PushButton* btnConnect;
       /** The create acount button */
@@ -102,6 +91,10 @@ namespace RainbruRPG {
       Window* window;
       /** The OgreGUI window containing the Back button */
       Window* winBack;
+      /** The widget where the user name is entered */
+      TextInput* tiUserName;
+      /** The widget where the password is entered */
+      TextInput* tiPassword;
     };
   }
 }

@@ -59,6 +59,8 @@ namespace BetaGUI {
 
     virtual void setTransparency(float);
 
+    virtual void setCaption(const String&);
+
   protected:
     /** The root overlay */
     OverlayContainer* mO;

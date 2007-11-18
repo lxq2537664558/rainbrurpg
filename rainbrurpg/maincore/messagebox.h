@@ -20,11 +20,8 @@
  *
  */
 
-/* This code was found in the official CEGUI wiki :
- * http://www.cegui.org.uk/wiki/index.php/DialogSystem
- */
-
 /* Modifications :
+ * - 16 nov 2007 : No more based on DialogSystem (removed)
  * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
  * - 23 jul 2007 : Initial import fro CEGUI wiki
  *
@@ -33,12 +30,30 @@
 #ifndef _DIALOG_SYSTEM_H_
 #define _DIALOG_SYSTEM_H_
 
-#include "dialogsystem.h"
+#include <OgrePrerequisites.h> // For Ogre::String
+
+#include <ogreGui/bglistener.h>
+
+// Forward declarations
+namespace BetaGUI {
+  class Window;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Label;
+    class PushButton;
+  }
+}
+// End of forward declarations
+
+using namespace Ogre;
+using namespace BetaGUI;
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace Gui{
 
-    /** A dialog based on DialogSystem
+    /** A dialog based on OgreGUI
       *
       * You should not use this class directly, please use the 
       * GuiManager::showMessageBox function instead.
@@ -51,29 +66,40 @@ namespace RainbruRPG{
       *       window's focus.
       *
       */
-    class RbMessageBox : public DialogSystem{
+    class RbMessageBox : public BetaGUIListener{
     public:
       RbMessageBox();
-      void initWindow(const CEGUI::String& parent="");
+      void initWindow();
       
-      void setMessage(const CEGUI::String&);
-      void setTitle(const CEGUI::String&);
+      void setMessage(const String&);
+      void setTitle(const String&);
 
-      const CEGUI::String& getMessage(void);
-      const CEGUI::String& getTitle(void);
+      const String& getMessage(void);
+      const String& getTitle(void);
       
-    protected:
-      bool doLoad();
-      bool doSave();
-      
+      void show(void);
+      void hide(void);
+
+      virtual void onButtonPress(Button *ref);
+
     private:
       /** The messagebox message */
-      CEGUI::String message;
+      String message;
       /** The messagebox title content */
-      CEGUI::String title;
+      String title;
            
       /** The data content */
-      CEGUI::String dataString;
+      String dataString;
+
+      /** The OgreGUI window shown by this dialog */
+      Window* mWin;
+      /** The label of this dialog */
+      Label* caption;
+
+      /** The width of this dialog in pixels */
+      unsigned int width;
+      /** The height of this dialog in pixels */
+      unsigned int height;
     };
   }
 }

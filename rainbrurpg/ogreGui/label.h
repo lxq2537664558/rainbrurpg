@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 16 nov 2007 : setCaption(String) implementation
  * - 09 nov 2007 : Handling OgreSkinID in constructor
  * - 17 oct 2007 : starting implementation
  *         
@@ -51,6 +52,8 @@ namespace RainbruRPG{
       ~Label();
 
       virtual void setTransparency(float);
+
+      void setCaption(const String&);
 
     private:
     

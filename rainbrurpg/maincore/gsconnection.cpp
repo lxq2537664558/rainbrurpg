@@ -42,7 +42,9 @@ RainbruRPG::Core::gsConnection::gsConnection():
   btnCreateAccount(NULL),
   btnLostPwd(NULL),
   window(NULL),
-  winBack(NULL)
+  winBack(NULL),
+  tiUserName(NULL),
+  tiPassword(NULL)
 {
 
   LOGI("Constructing a gsConnection");
@@ -69,6 +71,18 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
 
   delete btnLostPwd;
   btnLostPwd=NULL;
+
+  delete tiUserName;
+  tiUserName=NULL;
+
+  delete tiPassword;
+  tiPassword=NULL;
+
+  delete window;
+  window=NULL;
+
+  delete winBack;
+  winBack=NULL;
 }
 
 /** Initialize the game state
@@ -131,7 +145,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   window->addWidget(labUserName);
 
   Vector4 tiDim(100,40,180,24);
-  TextInput* tiUserName=new TextInput(tiDim, "", 20, window);
+  tiUserName=new TextInput(tiDim, "", 20, window);
   window->addWidget(tiUserName);
 
   Vector4 laDim2(10,70,80,24);
@@ -139,7 +153,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   window->addWidget(labPassword);
 
   Vector4 tiDim2(100,70,180,24);
-  TextInput* tiPassword=new TextInput(tiDim2, "", 20, window);
+  tiPassword=new TextInput(tiDim2, "", 20, window);
   window->addWidget(tiPassword);
 
   // Buttons
@@ -156,10 +170,10 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   window->addWidget(btnLostPwd);
   mGUI->addWindow(window);
 
-  // The Back button window
+  // The Back button window (false= no border)
   winBack = new Window(Vector4(20,h-50 ,120,53),
-			       BetaGUI::OWT_NONE, "Connection", mGUI,
-			       OSI_NAVIGATION);
+		       BetaGUI::OWT_NONE, "Connection", mGUI, false,
+		       OSI_NAVIGATION);
   winBack->setAlwaysTransparent(true);
 
   btnBack = new PushButton(Vector4(10,10,100,33),
@@ -178,20 +192,16 @@ onConnectClicked(){
   LOGI("Connect button clicked");
 
   // Get the strings
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-  CEGUI::Window* connect=root->getChild("RainbruRPG/Connection");
-  CEGUI::Window* connectWin=connect->getChild("RainbruRPG/ConnectionWindow");
-  nameWidget=connectWin->getChild("RainbruRPG/Connection/Name");
+  Ogre::String name=tiUserName->getValue();
 
-  if (nameWidget->getText().empty()){
+  if (name.empty()){
     GuiManager::getSingleton()
       .showMessageBox("Empty account name", 
-		      "Please enter a user name.", "RainbruRPG/Connection");
+		      "Please enter a user name.");
   }
   else{
-    pwdWidget=connectWin->getChild("RainbruRPG/Connection/Pwd");
-    const char* cName=nameWidget->getText().c_str();
-    const char* cPwd=pwdWidget->getText().c_str();
+    const char* cName=name.c_str();
+    const char* cPwd=tiPassword->getValue().c_str();
     
     // connection successfull
     if (GameEngine::getSingleton().connectUser(cName, cPwd)){
@@ -259,8 +269,8 @@ bool RainbruRPG::Core::gsConnection::onLostPasswordClicked(){
 
   GuiManager::getSingleton()
     .showMessageBox("Lost Password", 
-    "This function isn't yet implemented. Please contact me directly"
-    " (rainbru@free.fr)", "RainbruRPG/Connection");
+    "This function isn't yet implemented. Please contact me\n"
+    "directly (rainbru@free.fr)");
   return true;
 }
 

@@ -8,6 +8,8 @@
  */
 
 /* Modifications :
+ * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
+ * - 16 nov 2007 : dialogOverlay implementation
  * - 10 oct 2007 : No more font or fontSize references
  * - 24 sep 2007 : Some implementation moved from betagui.cpp
  * - 20 sep 2007 : This was the original BetaGUI code. 
@@ -21,6 +23,7 @@
 #include <OGRE/OgreVector2.h>
 
 #include <vector>
+#include <list>
 
 using namespace Ogre;
 using namespace std;
@@ -61,6 +64,7 @@ namespace BetaGUI {
     *
     */
   class GUI{
+
   public:
     GUI();
     ~GUI();	
@@ -82,6 +86,8 @@ namespace BetaGUI {
     unsigned int getStaticTextUniqueId(void);
 
     Ogre::Overlay* getRootOverlay(void);
+    Ogre::Overlay* getDialogOverlay(void);
+
     void setGuiTransparency(float);
     float getGuiTransparency(void);
 
@@ -89,9 +95,13 @@ namespace BetaGUI {
     void setMovedWindow(Window*);
 
     void addWindow(Window*);
+    void addDialog(Window*);
     void deactivateWindow(Window*);
 
   protected:
+    /** A const iterator over windowList */
+    typedef list<Window*>::const_iterator WindowListIterator;
+
     /** Is a mouse button currently pressed */
     static bool isMouseButtonPressed;
 
@@ -127,17 +137,20 @@ namespace BetaGUI {
       */
     unsigned int tc;
 
-    /** The overlay that contains all others widget (root)
+    /** The overlay that contains all others widget (root) */
+    Overlay* rootOverlay;
+
+    /** The overlay that contains dialogs
       *
-      * 
+      * Must be different as rootOverlay as the zorder are different.
       *
       */
-    Overlay* rootOverlay;
+    Overlay* dialogOverlay;
 
     /** A vector of windows 
       *
       */
-    vector<Window*> windowList;
+    list<Window*> windowList;
 
     /** A window that will be deleted
       *

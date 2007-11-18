@@ -19,6 +19,9 @@
 #include <gameengine.h>
 
 #include <OGRE/OgreStringConverter.h>
+#include <OGRE/OgreBorderPanelOverlayElement.h>
+#include <OGRE/OgreMaterial.h>
+#include <OGRE/OgreMaterialManager.h>
 
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::OgreGui;
@@ -33,11 +36,13 @@ using namespace RainbruRPG::OgreGui;
   * \param t       The window's type
   * \param caption The caption of the window
   * \param G       The GUI object used to create window
+  * \param border  Is this a border window ?
   * \param sid     The Skin used to draw this window
   *
   */
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
-			GUI *G, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+			GUI *G, bool border,
+			RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(NULL, sid), // Warning, parent is now NULL
   x(D.x),y(D.y),w(D.z),h(D.w),
   mGUI(G),mTB(0),mRZ(0),
@@ -48,7 +53,9 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   minimalHeight(D.w),
   mAB(NULL),
   rootOverlay(NULL),
-  alwaysTransparent(false)
+  borderTus(NULL),
+  alwaysTransparent(false),
+  hasBorder(border)
 {
 
 
@@ -56,20 +63,47 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
 
   // Create the window
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  sk->createWindow(name, D, caption, G);
+  Vector4 resizeGripDim, titlebarDim;
+  if (hasBorder){
+    // Get the dialog border size
+    unsigned int dbs=sk->getDialogBorderSize();
+    sk->createDialog(name, D, caption, G);
+    resizeGripDim=Vector4(D.z-(16+dbs),D.w-(16+dbs),16,16);
+    titlebarDim=Vector4(dbs,dbs,D.z-(dbs*2),22);
+  }
+  else{
+    sk->createWindow(name, D, caption, G);
+    resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
+    titlebarDim=Vector4(0,0,D.z,22);
+ }
+  
   this->setName(name);
 
   rootOverlay=sk->getOverlayByName(name);
-  /*  if (rootOverlay){
-    LOGW("Cannot get root overlay of Window. A segfault may occur");
+
+  // Get border technique
+  if (hasBorder){
+
+    BorderPanelOverlayElement* bpoe=static_cast<BorderPanelOverlayElement*>
+      (rootOverlay);
+
+    if (bpoe){
+      String borderMn=bpoe->getBorderMaterialName();
+      MaterialPtr matPtr=static_cast<MaterialPtr>
+	(MaterialManager::getSingleton().getByName(borderMn));
+      Technique * tec=matPtr->getTechnique(0);
+      borderTus=tec->getPass(0)->getTextureUnitState(0);
+      // Set the border fully transparent
+      borderTus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
+				   0.0, 0.0, 1.0);
+    }
   }
-  */
+
 
   if(t>=2){
     // Create a resize grip
     Callback c;
     c.setType(OCT_WIN_RESIZE);
-    Vector4 resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
     mRZ=new ResizeGrip(resizeGripDim, c, G, this);
     buttonList.push_back(mRZ);
   }
@@ -78,7 +112,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     // Create a title bar
     Callback c;
     c.setType(OCT_WIN_MOVE);
-    mTB=new TitleBar(Vector4(0,0,D.z,22),caption,c, G, this);
+    mTB=new TitleBar(titlebarDim,caption,c, G, this);
     buttonList.push_back(mTB);
   }
 }
@@ -385,6 +419,12 @@ void BetaGUI::Window::setTransparency(float f){
     f=0.0f;
 
   SkinManager::getSingleton().getSkin(this)->setTransparency(rootOverlay, f);
+
+  // Dialog border transarency
+  if (hasBorder&&borderTus){
+    borderTus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
+				 f, f, 1.0);
+  }
 }
 
 /** Resize this window
@@ -473,4 +513,13 @@ void BetaGUI::Window::addWidget(Widget* w){
   */
 void BetaGUI::Window::setAlwaysTransparent(bool b){
   alwaysTransparent=b;
+}
+
+/** Change the title of this window
+  *
+  * \param title The new title
+  *
+  */
+void BetaGUI::Window::setTitle(const String& title){
+  mTB->setCaption(title);
 }
