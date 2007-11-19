@@ -131,7 +131,6 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
   *
   */
 bool BetaGUI::GUI::injectKey(String key, unsigned int x,unsigned int y){
-  //  for(unsigned int i=0;i<windowList.size();i++){
   for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
     if((*iter)->checkKey(key,x,y)){
       return true;

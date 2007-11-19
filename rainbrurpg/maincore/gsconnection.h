@@ -43,8 +43,8 @@ namespace RainbruRPG{
 }
 // End of forward declarations
 
-using namespace RainbruRPG::Network::Ident;
 using namespace RainbruRPG::OgreGui;
+using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG {
   namespace Core{
@@ -66,7 +66,6 @@ namespace RainbruRPG {
 
       virtual void setupTabOrder();
       virtual void onButtonPress(BetaGUI::Button*);
-
 
     private:
       void onBackClicked(void);

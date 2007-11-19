@@ -2,7 +2,7 @@ TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- gsCreateAccount uses betaGUI
+- TextInput::setMasked(true) implementation
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -117,7 +117,12 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-162
+
 * v 0.0.5-161
+- gsCreateAccount buttons implementation
+- gsCreateAccount uses betaGUI
+- At sign bug fixed
 - GuiManager::showMessageBox doesn't need anymore a parent parameter
 - Doxygen documentation : fix undocumented members
 - Dialog handles its border transparency

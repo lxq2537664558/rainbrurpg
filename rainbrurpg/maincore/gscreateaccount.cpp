@@ -27,11 +27,31 @@
 
 #include "keyboardnavigation.h"
 
+#include "ogreGui/bgwindow.h"
+#include "ogreGui/bgbutton.h"
+#include "ogreGui/pushbutton.h"
+#include "ogreGui/label.h"
+#include "ogreGui/bgtextinput.h"
+
 /** The default constructor
   *
   */
-RainbruRPG::Core::gsCreateAccount::gsCreateAccount()
-  :gsMenuBase(false){
+RainbruRPG::Core::gsCreateAccount::gsCreateAccount():
+  gsMenuBase(false),
+  window(NULL),
+  winBack(NULL),
+  btnBack(NULL),
+  btnSubmit(NULL),
+  labName(NULL),
+  labPwd1(NULL),
+  labPwd2(NULL),
+  labMail(NULL),
+  labHelp(NULL),
+  tiName(NULL),
+  tiPwd1(NULL),
+  tiPwd2(NULL),
+  tiMail(NULL)
+{
 
   velocity=new vcConstant();
   translateTo(0.0f);
@@ -45,6 +65,31 @@ RainbruRPG::Core::gsCreateAccount::~gsCreateAccount(){
     delete velocity;
     velocity=NULL;
   }
+
+  delete window;
+  window=NULL;
+
+  delete winBack;
+  winBack=NULL;
+
+  delete btnBack;
+  btnBack=NULL;
+
+  delete btnSubmit;
+  btnSubmit=NULL,
+
+  // Label widget
+  delete labName;  labName=NULL;
+  delete labPwd1;  labPwd1=NULL;
+  delete labPwd2;  labPwd2=NULL;
+  delete labMail;  labMail=NULL;
+  delete labHelp;  labHelp=NULL;
+
+  // Text input widgets
+  delete tiName;   tiName=NULL;
+  delete tiPwd1;   tiPwd1=NULL;
+  delete tiPwd2;   tiPwd2=NULL;
+  delete tiMail;   tiMail=NULL;
 }
 
 /** Initialize the game state
@@ -52,10 +97,7 @@ RainbruRPG::Core::gsCreateAccount::~gsCreateAccount(){
   */
 void RainbruRPG::Core::gsCreateAccount::init(){
   gsMenuBase::init();
-  GuiManager::getSingleton().loadCEGUILayout("createAccount.layout");
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/CreateAccount";
+  yBorder=0.5f;
 
   setupCreateAccountMenu();
   setupTabOrder();
@@ -65,26 +107,17 @@ void RainbruRPG::Core::gsCreateAccount::init(){
   *
   */
 void RainbruRPG::Core::gsCreateAccount::resume(){
-  Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
-  // GuiManager::getSingleton().createTitleOverlay(rw);
-  GuiManager::getSingleton().loadCEGUILayout("createAccount.layout");
   setupCreateAccountMenu();
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/CreateAccount";
   setupTabOrder();
+  yBorder=0.5f;
+
 }
 
 
 /** The 'back' button callback
   *
-  * \param evt The CEGUI event arguments
-  *
-  * \return Always \c true
-  *
   */
-bool RainbruRPG::Core::gsCreateAccount::
-onBackClicked(const CEGUI::EventArgs& evt){
+void RainbruRPG::Core::gsCreateAccount::onBackClicked(void){
 
   GuiManager::getSingleton().beginGuiFadeOut();
 
@@ -94,46 +127,99 @@ onBackClicked(const CEGUI::EventArgs& evt){
     Ogre::Root::getSingleton().renderOneFrame();
   }
 
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
-
   GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
   GuiManager::getSingleton().beginGuiFadeIn();
-
-
-  return true;
 }
 
-/** Setup the callbacks
+/** Setup the screen
   *
   */
 void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
 
-  // Root window
-  CEGUI::Window* wca=root->getChild("RainbruRPG/CreateAccount");
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
 
-  // Back button
-  try{
-    CEGUI::Window* btnBack=wca->getChild("RainbruRPG/CreateAccountWin/Back");
-    btnBack->setFont("Iconified-20");
-    btnBack->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsCreateAccount::onBackClicked,this));
-  }
-  catch(const CEGUI::Exception& e){
-    LOGW("Cannot get the 'RainbruRPG/CreateAccountWin/Back' button");
-  }
+  // Center the window in the right background
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
 
-  // The submit button
-  try{
-    CEGUI::Window* win=wca->getChild("RainbruRPG/CreateAccountWin");
-    CEGUI::Window* btnSbm=win->getChild("RainbruRPG/CreateAccount/Submit");
-    btnSbm->subscribeEvent(CEGUI::Window::EventMouseClick, 
-      CEGUI::Event::Subscriber(&gsCreateAccount::onSubmitClicked,this));
-  }
-  catch(const CEGUI::Exception& e){
-    LOGW("Cannot get the 'RainbruRPG/CreateAccount/Submit' button");
-  }
+  // The width of the window in pixels
+  unsigned int winWidth=300;
+  // The height of the window in pixels
+  unsigned int winHeight=210;
+
+  // The position of the window
+  unsigned int winY=(h/2)-(winHeight/2);
+  unsigned int winX=((w/2)-40)+(w/4-(winWidth/2));
+  winX+=(int)(double)w*0.025;     // The border
+
+  // The create account  window
+  window = new Window(Vector4(winX,winY,winWidth,winHeight),
+		      BetaGUI::OWT_RESIZE_AND_MOVE, "Create account", mGUI);
+
+  String mess="Please enter these required informations. The account\n"
+    "will not be activated since you receive a mail.";
+
+  // The incremented position of widget
+  unsigned int posY=20;
+  // Y position of right widget
+  unsigned int rightX=100;
+
+  Vector4 labHelpDim(10,posY,winWidth-20,24);
+  labHelp=new Label(labHelpDim, mess, window);
+  window->addWidget(labHelp);
+
+  posY+=35;
+  Vector4 labNameDim(10,posY,rightX-10,24);
+  labName=new Label(labNameDim, "Account name", window);
+  window->addWidget(labName);
+  Vector4 tiNameDim(rightX,posY,winWidth-rightX-20,24);
+  tiName=new TextInput(tiNameDim, "", 20, window);
+  window->addWidget(tiName);
+
+  posY+=30;
+  Vector4 labPwd1Dim(10,posY,rightX-10,24);
+  labPwd1=new Label(labPwd1Dim, "Password", window);
+  window->addWidget(labPwd1);
+  Vector4 tiPwd1Dim(rightX,posY,winWidth-rightX-20,24);
+  tiPwd1=new TextInput(tiPwd1Dim, "", 20, window);
+  window->addWidget(tiPwd1);
+
+  posY+=30;
+  Vector4 labPwd2Dim(10,posY,rightX-10,24);
+  labPwd2=new Label(labPwd2Dim, "Repeat password", window);
+  window->addWidget(labPwd2);
+  Vector4 tiPwd2Dim(rightX,posY,winWidth-rightX-20,24);
+  tiPwd2=new TextInput(tiPwd2Dim, "", 20, window);
+  window->addWidget(tiPwd2);
+
+  posY+=30;
+  Vector4 labMailDim(10,posY,rightX-10,24);
+  labMail=new Label(labMailDim, "Email", window);
+  window->addWidget(labMail);
+  Vector4 tiMailDim(rightX,posY,winWidth-rightX-20,24);
+  tiMail=new TextInput(tiMailDim, "", 40, window);
+  window->addWidget(tiMail);
+
+  posY+=30;
+  unsigned int btnSubmitWidth=100;
+  Vector4 btnSubmitDim((winWidth/2)-(btnSubmitWidth/2),posY,btnSubmitWidth,24);
+  btnSubmit= new PushButton(btnSubmitDim, "Submit", 
+			    BetaGUI::Callback::Callback(this), window);
+  window->addWidget(btnSubmit);
+  mGUI->addWindow(window);
+
+
+  // The Back button window (false= no border)
+  winBack = new Window(Vector4(20,h-50 ,120,53),
+		       BetaGUI::OWT_NONE, "Connection", mGUI, false,
+		       OSI_NAVIGATION);
+  winBack->setAlwaysTransparent(true);
+
+  btnBack = new PushButton(Vector4(10,10,100,33),
+			   "Back", BetaGUI::Callback::Callback(this), winBack);
+  winBack->addWidget(btnBack);
+  mGUI->addWindow(winBack);
 
 }
 
@@ -147,7 +233,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   */
 void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   // Registering TabNavigation
-  tabNav->clear();
+  /*  tabNav->clear();
   tabNav->setParent("RainbruRPG/CreateAccount");
   tabNav->addWidget("RainbruRPG/CreateAccount/Name");
   tabNav->addWidget("RainbruRPG/CreateAccount/Pwd");
@@ -155,6 +241,7 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   tabNav->addWidget("RainbruRPG/CreateAccount/EMail");
   tabNav->addWidget("RainbruRPG/CreateAccount/Submit");
   tabNav->addWidget("RainbruRPG/CreateAccountWin/Back");
+  */
 }
 
 /** The Suibmit button callback
@@ -167,27 +254,25 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   * \return Always \c true
   *
   */
-bool RainbruRPG::Core::gsCreateAccount::
-onSubmitClicked(const CEGUI::EventArgs& evt){
+void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
+
   LOGI("Submit button clicked");
-  CEGUI::String name, pwd, repPwd, mail, nextFocus;
+  String name, pwd, repPwd, mail;
 
   String mess;
   String err01="Account creation error";
 
   try{
-    // Get the window
-    CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-    CEGUI::Window* wca=root->getChild("RainbruRPG/CreateAccount");
-    CEGUI::Window* win=wca->getChild("RainbruRPG/CreateAccountWin");
+    name   =tiName->getValue();
+    pwd    =tiPwd1->getValue();
+    repPwd =tiPwd2->getValue();
+    mail   =tiMail->getValue();
 
-    name=win->getChild("RainbruRPG/CreateAccount/Name")->getText();
-    pwd=win->getChild("RainbruRPG/CreateAccount/Pwd")->getText();
-    repPwd=win->getChild("RainbruRPG/CreateAccount/RepPwd")->getText();
-    mail=win->getChild("RainbruRPG/CreateAccount/EMail")->getText();
-
-    if (pwd!=repPwd){
-      win->getChild("RainbruRPG/CreateAccount/RepPwd")->activate();
+    if (name.empty() || pwd.empty()){
+      GuiManager::getSingleton().showMessageBox(err01, 
+        "Please enter a name and a paddword.");
+    }
+    else if (pwd!=repPwd){
       GuiManager::getSingleton().showMessageBox(err01, 
         "Please correctly repeat the password");
     }
@@ -200,7 +285,8 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
       bool success=caa.perform();
 
       if (success){
-	GuiManager::getSingleton().showMessageBox("Account succefully created", 
+	GuiManager::getSingleton().showMessageBox("Account successfully "
+						  "created", 
           "The account was correctly added. Before you are able to use "
           "it, you must activate it.\n\nPlease wait the activation "
           "mail.");
@@ -210,38 +296,30 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
 
 	switch (ret){
 	case CAA_EXISTS :
-	  nextFocus="RainbruRPG/CreateAccount/Name";
 	  mess="This account name is already used. Please choose another "
 	    "identifier.";
 	  break;
 	case CAA_EMPTY_NAME:
-	  nextFocus="RainbruRPG/CreateAccount/Name";
 	  mess="Cannot create an account with empty name.";
 	  break;
 	case CAA_EMPTY_PWD:
-	  nextFocus="RainbruRPG/CreateAccount/Pwd";
 	  mess="Cannot create an account with empty password.";
 	  break;
 	case CAA_EMPTY_MAIL:
-	  nextFocus="RainbruRPG/CreateAccount/EMail";
 	  mess="Cannot create an account with empty mail address.";
 	  break;
 	case CAA_MAIL_INUSE:
-	  nextFocus="RainbruRPG/CreateAccount/EMail";
-	  mess="This mail is already used for another account. You can "
-	    "only create one account for each different mail address.";
+	  mess="This mail is already used for another account. You can\n"
+	       "only create one account for each different mail address.";
 	  break;
 	case CAA_MAIL_SIGN_AT:
-	  nextFocus="RainbruRPG/CreateAccount/EMail";
 	  mess="The mail address should contain a '@' sign.";
 	  break;
 	case CAA_MAIL_SIGN_DOT:
-	  nextFocus="RainbruRPG/CreateAccount/EMail";
 	  mess="The mail address should contain a '.' sign.";
 	  break;
 	}
 
-	win->getChild(nextFocus)->activate();
 	GuiManager::getSingleton().showMessageBox(err01, mess);
 
       }
@@ -251,6 +329,38 @@ onSubmitClicked(const CEGUI::EventArgs& evt){
   catch(const CEGUI::Exception& e){
     LOGE("Cannot get some widgets");
   }
+}
 
-  return true;
+/** The OgreGUI buttons callback
+  *
+  * \param btn The button that fire the event
+  *
+  */
+void RainbruRPG::Core::gsCreateAccount::onButtonPress(BetaGUI::Button* btn){
+  if (btn==btnSubmit){
+    onSubmitClicked();
+  }
+  else if (btn==btnBack){
+    onBackClicked();
+  }
+}
+
+/** Pause the execution of this GameState
+  *
+  */
+void RainbruRPG::Core::gsCreateAccount::pause(){
+  LOGI("RainbruRPG::Core::gsCreateAccount::pause called");
+  if (window){
+    window->hide();
+  }
+  else{
+    LOGW("Cannot get window pointer");
+  }
+
+  if (winBack){
+    winBack->hide();
+  }
+  else{
+    LOGW("Cannot get winBack pointer");
+  }
 }

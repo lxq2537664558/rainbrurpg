@@ -207,7 +207,11 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
     activeTextInput->setValue(truncated);
      return true;
   }
-  
+  else if (k=="@"){
+    LOGI("At sign called");
+  }  
+
+
   // If the lenght limit of the textInput is reached, we do nothing
   if(activeTextInput->getValue().length() >= activeTextInput->getLength()){
      return true;
@@ -415,8 +419,9 @@ void BetaGUI::Window::setTransparency(float f){
   }
 
   // If alwaysTransparent is true, this window will,ever be shown
-  if (alwaysTransparent)
+  if (alwaysTransparent){
     f=0.0f;
+  }
 
   SkinManager::getSingleton().getSkin(this)->setTransparency(rootOverlay, f);
 

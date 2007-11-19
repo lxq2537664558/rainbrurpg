@@ -45,6 +45,11 @@ namespace BetaGUI {
     * \b must use the addWidget(BetaGUI::Button*) method to add it 
     * to the window's internal button list.
     *
+    * \note If you see your window but the titlebar and widgets are not
+    *       visible, please make sure that you have called 
+    *       \ref BetaGUI::GUI::addWindow() "GUI::addWindow()" to add
+    *       your window to the GUI system.
+    *
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:

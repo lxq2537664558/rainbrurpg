@@ -229,7 +229,7 @@ onConnectClicked(){
 void RainbruRPG::Core::gsConnection::resume(){
   setupConnectionMenu();
   setupTabOrder();
-  yBorder=0.5f;
+  //yBorder=0.5f;
   translateTo(0.4f);
 }
 
@@ -249,8 +249,6 @@ onCreateAccountClicked(){
   while (GuiManager::getSingleton().isInGuiFadeOut()){
     Ogre::Root::getSingleton().renderOneFrame();
   }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
 
   GameEngine::getSingleton().changeState(ST_CREATE_ACCOUNT);
   GuiManager::getSingleton().beginGuiFadeIn();
@@ -338,9 +336,9 @@ void RainbruRPG::Core::gsConnection::pause(){
   */
 void RainbruRPG::Core::gsConnection::onBackClicked(void){
     LOGI("Back button clicked");
-
     translateTo(0.5f);
 
+ 
     GuiManager::getSingleton().beginGuiFadeOut();
 
     // We must wait for the CEGUI fade end to prevent

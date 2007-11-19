@@ -496,13 +496,36 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   else if (evt.key == OIS::KC_RSHIFT){
     LOGI("Right shift clicked");
   }
+  else if (evt.key == OIS::KC_LMENU){
+    LOGI("Left Alt clicked");
+  }
+  else if (evt.key == OIS::KC_RMENU){
+    LOGI("Right Alt clicked");
+  }
+  else if ((evt.key == 0) && (evt.text==0)){
+    LOGI("evt.key == 0 && evt.text=0");
+  }
   else{
-    char c=(char)evt.text;
-    Ogre::String s="";
-    s+=c;
+  char c=(char)evt.text;
 
-    if (s.size()!=0){
+    if (c==0x40){
+      LOGI("<At> sign clicked");
+
+      Ogre::String s="@";
       GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
+    }
+    else {
+      LOGCATS("Another key pressed : text=");
+      LOGCATI(c);
+      LOGCATS(" key=");
+      LOGCATI(evt.key);
+      LOGCAT();
+      Ogre::String s="";
+      s+=c;
+      
+      if (s.size()!=0){
+	GameEngine::getSingleton().getOgreGui()->injectKey(s, mouseX, mouseY);
+      }
     }
   }
 

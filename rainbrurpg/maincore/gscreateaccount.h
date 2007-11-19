@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 18 nov 2007 : Using OgreGUI
  * - 25 jul 2007 : Starting implementation
  *
  */
@@ -28,15 +29,30 @@
 #ifndef GS_CREATE_ACCOUNT_H
 #define GS_CREATE_ACCOUNT_H
 
-#include <CEGUI/CEGUI.h>
-
 #include <hashpassword.h>
 #include <curlaccountadd.h>
 
 #include "gsmenubase.h"
 #include "vcconstant.h"
 #include "guimanager.h"
+#include "bglistener.h"
 
+// Forward declarations
+namespace BetaGUI{
+  class Window;
+  class Button;
+  class TextInput;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Label;
+    class PushButton;
+  }
+}
+// End of forward declarations
+
+using namespace BetaGUI;
+using namespace RainbruRPG::OgreGui;
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG {
@@ -48,21 +64,52 @@ namespace RainbruRPG {
       * an account creation to the administration site.
       *
       */
-    class gsCreateAccount : public gsMenuBase{
+    class gsCreateAccount : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
-      gsCreateAccount();
-      virtual ~gsCreateAccount();
+      gsCreateAccount(void);
+      virtual ~gsCreateAccount(void);
 
-      virtual void init();
-      virtual void resume();
+      virtual void init(void);
+      virtual void resume(void);
+      virtual void pause(void);
 
-       virtual void setupTabOrder();
+      virtual void setupTabOrder(void);
+      virtual void onButtonPress(BetaGUI::Button*);
 
    private:
-      bool onBackClicked(const CEGUI::EventArgs&);
-      bool onSubmitClicked(const CEGUI::EventArgs&);
+      void onBackClicked(void);
+      void onSubmitClicked(void);
 
-      void setupCreateAccountMenu();
+      void setupCreateAccountMenu(void);
+
+      /** The create account window */
+      Window* window;
+      /** The back button window */
+      Window* winBack;
+      /** The back button */
+      PushButton* btnBack;
+      /** The submit button */
+      PushButton* btnSubmit;
+
+      /** The help label */
+      Label* labHelp;
+      /** The name label */
+      Label* labName;
+      /** The password first entry label */
+      Label* labPwd1;
+      /** The password second entry label */
+      Label* labPwd2;
+      /** The email address label */
+      Label* labMail;
+
+      /** The name text input */
+      TextInput* tiName;
+      /** The password first entry text input */
+      TextInput* tiPwd1;
+      /** The password second entry text input */
+      TextInput* tiPwd2;
+      /** The email address text input */
+      TextInput* tiMail;
 
     };
   }
