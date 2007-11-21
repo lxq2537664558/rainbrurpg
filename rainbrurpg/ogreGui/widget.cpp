@@ -70,7 +70,7 @@ RainbruRPG::OgreGui::Widget::getSkinId(void){
   * \param s The new widget's name
   *
   */
-void RainbruRPG::OgreGui::Widget::setName(Ogre::String s){
+void RainbruRPG::OgreGui::Widget::setName(const Ogre::String& s){
   this->name=s;
 }
 
@@ -79,7 +79,7 @@ void RainbruRPG::OgreGui::Widget::setName(Ogre::String s){
   * \return The widget's name
   *
   */
-Ogre::String RainbruRPG::OgreGui::Widget::getName(void){
+const Ogre::String& RainbruRPG::OgreGui::Widget::getName(void){
   return this->name;
 }
 

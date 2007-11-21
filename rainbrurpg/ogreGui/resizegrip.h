@@ -48,7 +48,7 @@ namespace RainbruRPG{
     class ResizeGrip : public BetaGUI::Button{
     public:
       ResizeGrip(Vector4, Callback,GUI *,Window*,OgreGuiSkinID sid=OSI_PARENT);
-      ~ResizeGrip();
+      virtual ~ResizeGrip();
 
       virtual void setTransparency(float f);
 

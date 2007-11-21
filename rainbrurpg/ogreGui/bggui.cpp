@@ -24,13 +24,12 @@ bool BetaGUI::GUI::isMouseButtonPressed=false;
   *
   */
 BetaGUI::GUI::GUI():
-  mXW(0), 
-  mouseCursorOverlay(0),
+  mouseCursorOverlay(NULL),
   resizedWindow(NULL),
   movedWindow(NULL),
-  wc(0),
-  bc(0),
-  tc(0)
+  wc(NULL),
+  bc(NULL),
+  tc(NULL)
 {
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
@@ -62,11 +61,22 @@ void BetaGUI::GUI::injectBackspace(unsigned int x, unsigned int y){
 
 /** Mark the given window as `will be deleted`
   *
+  * This is automatically called by the Window destructor.
+  *
   * \param w The window to be deleted
   *
   */
-void BetaGUI::GUI::destroyWindow(Window *w){
-  mXW=w;
+void BetaGUI::GUI::destroyWindow(const Ogre::String& name){
+  // Do not use the WindowListIterator typedef as it is a const_iterator
+  // and we need a non-const one to use windowList.erase(iter).
+  list<Window*>::iterator iter;
+  for(iter=windowList.begin();iter!=windowList.end();iter++){
+    if((*iter)->getName()==name){
+      windowList.erase(iter);
+      // Going out of this function
+      return;
+    }
+  }
 }
 
 /** Inject a mouse move event
@@ -97,19 +107,6 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
     resizedWindow=NULL;
     movedWindow=NULL;
   
-    if(mXW){
-      // Do not use the typedef WindowListIterator as it is a const_iterator
-      // and we need a non-const one to use windowList.erase(iter).
-      for(list<Window*>::iterator iter=windowList.begin();iter!=windowList.end();iter++){
-	if(mXW==(*iter)){
-	  delete mXW;
-	  windowList.erase(iter);
-	  mXW=0;
-	  return false;
-	}
-      }
-    }
-    
     for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
       if((*iter)->check(x,y,LMB)){
 	return true;
@@ -215,6 +212,11 @@ OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
   */
 void BetaGUI::GUI::addWindow(Window* w){
   windowList.push_back(w);
+
+  LOGCATS("GUI::addWindow called (");
+  LOGCATI(windowList.size());
+  LOGCATS(" registered)");
+  LOGCAT();
 }
 
 /** Get the next uniqueId used by button

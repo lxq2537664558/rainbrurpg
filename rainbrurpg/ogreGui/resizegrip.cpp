@@ -54,9 +54,14 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G, Window* parent,
 
 /** The destructor
   *
+  * The \link BetaGUI::Button::~Button() Button destructor \endlink is override 
+  * because resize grip does not use mCP, and when we try to access 
+  * \c mCP->getParent(), a segmentation fault occurs.
+  *
   */
 RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
-
+  mO->getParent()->removeChild(mO->getName());
+  mO=NULL;
 }
 
 // special case of button (no caption overlay)

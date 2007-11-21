@@ -179,8 +179,8 @@ createCaption(String name, Vector4 dim, String caption,
 
 /** Handles the mouse over event on a button
   *
-  * Buttons can are in two modes : normal and activate. The activate
-  * mode is for mouse over event.
+  * Buttons can be in two modes : normal and activate. The activate
+  * mode is for mouseover event.
   *
   * \param button The button that is changed
   * \param active Is the button active (on mouse over), if \c false

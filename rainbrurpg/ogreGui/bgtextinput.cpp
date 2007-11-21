@@ -35,7 +35,8 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
   value(caption),
   normalMaterialName(""),
   activeMaterialName(""),
-  length(L)
+  length(L),
+  masked(false)
 {
   
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
@@ -70,7 +71,7 @@ BetaGUI::TextInput::~TextInput(){
   * \return The text the user entered
   *
   */
-Ogre::String BetaGUI::TextInput::getValue(){
+const Ogre::String& BetaGUI::TextInput::getValue(){
   return this->value;
 }
 
@@ -79,9 +80,18 @@ Ogre::String BetaGUI::TextInput::getValue(){
   * \param v The new text this text input contains
   *
   */
-void BetaGUI::TextInput::setValue(Ogre::String v){
+void BetaGUI::TextInput::setValue(const Ogre::String& v){
   this->value=v;
-  contentOverlay->setCaption(v);
+  if (masked){
+    String mask;
+    for (size_t i=0; i<value.size(); i++){
+      mask+="*";
+    }
+    contentOverlay->setCaption(mask);
+  }
+  else{
+    contentOverlay->setCaption(v);
+  }
 }
 
 /** Is a square in this widget
@@ -131,7 +141,7 @@ Ogre::OverlayContainer* BetaGUI::TextInput::getFrameOverlay(void){
   * \return The normal mode material name
   *
   */
-Ogre::String BetaGUI::TextInput::getNormalMaterialName(void){ 
+const Ogre::String& BetaGUI::TextInput::getNormalMaterialName(void){ 
   return this->normalMaterialName; 
 }
 
@@ -140,7 +150,7 @@ Ogre::String BetaGUI::TextInput::getNormalMaterialName(void){
   * \return The active mode material name
   *
   */
-Ogre::String BetaGUI::TextInput::getActiveMaterialName(void){ 
+const Ogre::String& BetaGUI::TextInput::getActiveMaterialName(void){ 
   return this->activeMaterialName; 
 }
 
@@ -156,3 +166,26 @@ void BetaGUI::TextInput::setTransparency(float f){
   s->setCaptionTransparency(contentOverlay, f);
 
 }
+
+/** Is this TextInput show masked input
+  *
+  * \param b The masked value
+  *
+  * \sa \ref BetaGUI::TextInput::masked "TextInput::masked"
+  *
+  */
+void BetaGUI::TextInput::setMasked(bool b){
+  this->masked=b;
+}
+
+/** Is this TextInput show masked input
+  *
+  * \return The masked value
+  *
+  * \sa \ref BetaGUI::TextInput::masked "TextInput::masked"
+  *
+  */
+bool BetaGUI::TextInput::isMasked(void){
+  return this->masked;
+}
+

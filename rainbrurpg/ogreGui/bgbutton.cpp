@@ -32,7 +32,9 @@ Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
   x(dim.x),
   y(dim.y),
   w(dim.z),
-  h(dim.w)
+  h(dim.w),
+  mO(NULL),
+  mCP(NULL)
 {
   
   callback=C;
@@ -41,13 +43,28 @@ Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
 
 /** The destructor
   *
+  * This will remove \ref mO "mO" and \ref mCP "mCP" overlays using the 
+  * removeChild() ogre function. This can be overriden to avoid segmentation
+  * fault if one of these overlay is not used (see \link 
+  * RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip() ResizeGrip destructor
+  * \endlink ).
+  *
   */
 BetaGUI::Button::~Button(){
-  mO->getParent()->removeChild(mO->getName());
-  mCP->getParent()->removeChild(mCP->getName());
+  if (mO){
+    mO->getParent()->removeChild(mO->getName());
+  }
+
+  if (mCP){
+    mCP->getParent()->removeChild(mCP->getName());
+  }
 }
  
 /** Change the state of this button
+  *
+  * It graphically change the state of this button by calling \link
+  * RainbruRPG::OgreGui::SkinOverlay::activateButton()
+  * SkinOverlay::activateButton() \endlink .
   *
   * \param a \c true to make this button active, \c false to make
   *        it go to normal state.

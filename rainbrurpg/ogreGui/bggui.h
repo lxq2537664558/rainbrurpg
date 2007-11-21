@@ -76,7 +76,7 @@ namespace BetaGUI {
     void injectMouseButtonPressed(const std::string&);
     void injectMouseButtonReleased();
 
-    void destroyWindow(Window *w);
+    void destroyWindow(const Ogre::String&);
     
     OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
     OverlayContainer* createMousePointer(Vector2,String);
@@ -151,11 +151,6 @@ namespace BetaGUI {
       *
       */
     list<Window*> windowList;
-
-    /** A window that will be deleted
-      *
-      */
-    Window *mXW;
 
     /** The overlay used to draw the mouse cursor
       *

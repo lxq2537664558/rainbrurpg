@@ -1,3 +1,114 @@
+* v 0.0.5-160
+- Doxygen documentation
+  o Fix undocumented members (mainly soNavigation)
+  o Error when generating Doxygen documentation in PNG image format
+  Switching to jpg images fix it
+- New SkinId : OSI_PARENT for inherited skin identifier
+  All widgets now inherits their SkinId from their parent
+  but this can be changed from a constructor parameter
+- Mouse button comes again :(
+   FIXED in GameEngine::mousePressed()
+- gsMainMenu buttons bug
+  o buttons don't get mouse click event
+  gsMenuBase::mousePressed must call BGGUI::injectMouse
+- Moving Window bug :
+  o When we click the 'Network Game" button of gsMainMenu
+  we go to the gsConnection state and the Connection window
+  is moving without left mouse button is clicked.
+  o FIXED : please see gsMenuBase::transition() implementation for
+  further details.
+  o When we go back from gsConnection to gsMainMenu, the bug happens again
+  -> Trying to use isMouseBouttonPressed as static member
+  -> isMouseBouttonPressed now in BetaGUI::GUI
+- Transparency transition bug
+  o When going from gsConnection to gsMainMenu, gsConnection is fade
+  in and then reappears
+  o The transparency is correctly set in gsMainMenu
+  o GUI::setGuiTransparency receive >0.7f values
+  o GuiManager::increaseGuiTransparency send bad values (>0.7f)
+  o guimanager.cpp:338 A hack that fixes this bug
+- gsConnection uses betaGUI
+- gsMenuBase menu overlays now create on their own overlay
+  They was added to the BetaGUI overlay, but for a ZOrder issue 
+  (gsConnection's Back button was hidden by numDebugWindow) I create
+  their own one.
+- Window::alwaysTransparent() implementation
+- soNavigation implementation
+- Images nav.button and nav.button.active created
+- Some memory leaks fixed (with valgring)
+- are -lIL -lILU -lILUT mandatory in aclocal ? NO
+  To fix the JPG texture bug, use -ljpeg
+- JPG texture bug fixed
+  Adding libjpeg to the client seems to fix it. Trying to remove
+  -lIL -lILU -lILUT.
+- Try to use PKG_CHECK_MODULES in configure
+  Do not assume anymore libraries are in /usr/local/lib
+- soBetaGUI : fnTextInput and fsTextInput replaced by fnCaption and
+  fsCaption to be used by TextInput::caption and Label
+- A Label widget for static text caption
+  It does not provide a frame or background. Only text.
+- gsMainMenu uses betaGUI
+- editor/Makefile.am updated to be linked with ogreGUI
+
+* v 0.0.5-159
+- Window::minimalSize implementation. To prevent extreme high
+  value of unsigned int width and height.
+- Window moving using devX and devY to prevent the move of the window
+  only from the middle of its width
+- Fix the moving Window bug  
+- Find the resize bug and use a flag
+  The mouse event are sent to the GUI object so, the flag must be in
+  GUI. We get a resizedWindow field in GUI which is NULL if no window
+  is moving. Otherwise, it is a pointer to the mocing window.
+- OgreGUI now depends on MainCore (Ogre)
+- Doxygen documentation update due to skin update
+  Widget, SkinOverlay, doc.h due to a Skin reference
+  refman.pdf = 1251 pages
+- Widget are now only based on Ogre::Overlay
+  For performance issues due to Ogre::String identifier
+   I must give up skin.h and keep only skinOverlay based skin
+  The skinOverlay function that get a String identifier will now
+   use a OgreOverlay parameter
+  Widget will manage their OverlayContainer pointers
+  Worst FPS with String ID are 94-99
+- SkinOverlay::setCaptionTransparency get a OverlayContainer parameter
+  In the Button subclasses we *must* reimplement setTransparency
+  because of ResizeGrip that do not have a caption.
+- SkinOverlay::setTransparency get a OverlayContainer parameter
+- The Skin class doesn't exist anymore
+  To switch to overlay-based skins, the Skin class is gave up.
+- Homepage new about the skin implementation
+  Title : Switching to overlay-based skins
+  Content : Because of a lack of performance, I must change the
+   OgreGUI skin design. Skins wer implemented with the idea we could 
+   use anoter graphical ojects than Ogre overlays and it was a bad idea.
+   [br]
+   [br]I will modify this design to base the skins implementation only 
+   on Ogre overlays. This should increase performance by using overlay 
+   pointers instead os String identifier.
+   [br]
+   [br]This will delay the next public release but this design error 
+   should be fastly fixed.
+- Doxygen documentation 
+  After : refman.pdf = 1259 pages
+  common/LanguageListItem improved
+  npFlooder0004 improved
+  Applied to the GUI transparency
+  tools/xident/ServerDesc documentation improved
+  tools/xident/ServerTechNote documentation improved
+  Before : refman.pdf = 1257 pages
+- GUI fading includes caption
+  Skin::setCaptionTransparency handles caption's alpha
+  Skin::satTransparency handles standard overlays's one
+- Overlay's caption fading
+  OK by setting a color with Alpha channel to Ogre::TextAreaOverlayElement
+- Ogre::Overlay fading ok but caption's bug
+- BetaGUI::GUI clean up
+- Callback type become an enumeration
+- TextInput constructor doesn't need a material name anymore
+- Using Shift (to upper- case) in a TextInout doesn't work   FIXED
+- Textinput text entry comes back
+- Implement correctly TextInput's caption
 
 * v 0.0.5-158
 - MouseOver doesn't work anymore on PushButton

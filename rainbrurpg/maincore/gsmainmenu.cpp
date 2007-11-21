@@ -193,6 +193,9 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
 }
 
 void RainbruRPG::Core::gsMainMenu::pause(){
-  if (window)
+  if (window){
     window->hide();
+    delete window;
+    window=NULL;
+  }
 }

@@ -93,13 +93,6 @@ float RainbruRPG::Core::vcConstant::getNextFrame(bool& b){
   *
   */
 float RainbruRPG::Core::vcConstant::getLenghtByTime(double d){
-  if (transitionTime==0){
-    LOGW("transitionTime=0");
-  }
-  else if (translationLenght==0){
-    LOGW("transitionLenght=0");
-  }
-
   float dev=(translationLenght*d)/(transitionTime);
   return dev;
 }

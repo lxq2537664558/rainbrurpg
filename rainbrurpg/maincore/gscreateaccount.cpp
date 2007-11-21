@@ -183,6 +183,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   window->addWidget(labPwd1);
   Vector4 tiPwd1Dim(rightX,posY,winWidth-rightX-20,24);
   tiPwd1=new TextInput(tiPwd1Dim, "", 20, window);
+  tiPwd1->setMasked(true);
   window->addWidget(tiPwd1);
 
   posY+=30;
@@ -191,6 +192,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   window->addWidget(labPwd2);
   Vector4 tiPwd2Dim(rightX,posY,winWidth-rightX-20,24);
   tiPwd2=new TextInput(tiPwd2Dim, "", 20, window);
+  tiPwd2->setMasked(true);
   window->addWidget(tiPwd2);
 
   posY+=30;
@@ -248,8 +250,6 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   *
   * Clicked by the user when he entered all required informations, it
   * submit the account creation to the admin site.
-  *
-  * \param evt The CEGUI event 
   *
   * \return Always \c true
   *
@@ -352,6 +352,8 @@ void RainbruRPG::Core::gsCreateAccount::pause(){
   LOGI("RainbruRPG::Core::gsCreateAccount::pause called");
   if (window){
     window->hide();
+    delete window;
+    window=NULL;
   }
   else{
     LOGW("Cannot get window pointer");
@@ -359,6 +361,8 @@ void RainbruRPG::Core::gsCreateAccount::pause(){
 
   if (winBack){
     winBack->hide();
+    delete winBack;
+    winBack=NULL;
   }
   else{
     LOGW("Cannot get winBack pointer");

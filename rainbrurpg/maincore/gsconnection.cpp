@@ -30,6 +30,10 @@
 #include <pushbutton.h>
 #include <label.h>
 
+
+#include <OGRE/OgrePrerequisites.h> // for Ogre::String
+
+
 /** The default constructor
   *
   * Constructs a new velocity and begin a translation to 0.0f.
@@ -154,6 +158,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 
   Vector4 tiDim2(100,70,180,24);
   tiPassword=new TextInput(tiDim2, "", 20, window);
+  tiPassword->setMasked(true);
   window->addWidget(tiPassword);
 
   // Buttons
@@ -318,10 +323,14 @@ void RainbruRPG::Core::gsConnection::pause(){
 
   if (window){
     window->hide();
+    delete window;
+    window=NULL;
   }
 
   if (winBack){
     winBack->hide();
+    delete winBack;
+    winBack=NULL;
   }
 
   if (window==NULL || winBack==NULL){

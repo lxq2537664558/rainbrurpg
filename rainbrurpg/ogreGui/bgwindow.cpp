@@ -75,7 +75,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     sk->createWindow(name, D, caption, G);
     resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
     titlebarDim=Vector4(0,0,D.z,22);
- }
+  }
   
   this->setName(name);
 
@@ -121,16 +121,23 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   *
   */
 BetaGUI::Window::~Window(){
+  LOGI("Window destructor called");
+  mGUI->destroyWindow(this->getName());
+
+  LOGI("Cleaning buttonList");
   for(unsigned int i=0;i<buttonList.size();i++)
     delete buttonList[i];
 
+  LOGI("Cleaning textInputList");
   for(unsigned int i=0;i<textInputList.size();i++)
     delete textInputList[i];
   
+  LOGI("Cleaning widgetList");
   for(unsigned int i=0;i<widgetList.size();i++)
     delete widgetList[i];
   
   mGUI->getRootOverlay()->remove2D(rootOverlay);
+
 }
 
 /** Creates a button inside this window
@@ -332,7 +339,6 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
 void BetaGUI::Window::hide(){
   LOGI("Hiding  a window");
   rootOverlay->hide();
-  mGUI->deactivateWindow(this);
 }
 
 /** Set this window visible

@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 20 nov 2007 : setMasked(bool) implementation
  * - 09 nov 2007 : Handling OgreSkinID in constructor
  *
  */
@@ -34,6 +35,9 @@ namespace BetaGUI {
 
   /** A widget providing a single line text input
     *
+    * To provide password masked input, you can call 
+    * \ref BetaGUI::TextInput::setMasked() "setMasked(true)".
+    *
     */
   class TextInput : public RainbruRPG::OgreGui::Widget{
   public:
@@ -42,8 +46,8 @@ namespace BetaGUI {
 
     ~TextInput();
     
-    String getValue(void);
-    void setValue(Ogre::String);
+    const String& getValue(void);
+    void setValue(const Ogre::String&);
     
     bool in(unsigned int, unsigned int, unsigned int, unsigned int);
     
@@ -51,11 +55,14 @@ namespace BetaGUI {
   
     OverlayContainer* getContentOverlay(void);
     OverlayContainer* getFrameOverlay(void);
-    String getNormalMaterialName(void);
-    String getActiveMaterialName(void);
+
+    const String& getNormalMaterialName(void);
+    const String& getActiveMaterialName(void);
 
     virtual void setTransparency(float);
 
+    void setMasked(bool);
+    bool isMasked(void);
 
  protected: 
     
@@ -112,7 +119,13 @@ namespace BetaGUI {
       *
       */
     unsigned int length;
-    
+
+    /** If true, the content will be masked
+      *
+      * Useful for password. By default \c false.
+      *
+      */
+    bool masked;
   };
 }
 

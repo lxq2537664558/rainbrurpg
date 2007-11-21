@@ -41,6 +41,11 @@ namespace BetaGUI {
 
   /** A BetaGUI window
     *
+    * You must call \ref BetaGUI::GUI::addWindow() "GUI::addWindow"
+    * to get it to work. But you don't need to call 
+    * \ref BetaGUI::GUI::destroyWindow() "GUI::destroyWindow" as
+    * this method is automatically called by ~Window().
+    *
     * To get a mouse over when the mouse move over a Button, you
     * \b must use the addWidget(BetaGUI::Button*) method to add it 
     * to the window's internal button list.
@@ -55,7 +60,7 @@ namespace BetaGUI {
   public:
     Window( Vector4, OgreGuiWindowType, String, GUI*, bool border=false,
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
-    ~Window();
+    virtual ~Window();
 
     BetaGUI::Button* createButton(Vector4, String, String, Callback);
     BetaGUI::TextInput* createTextInput(Vector4, String, unsigned int);
@@ -76,15 +81,15 @@ namespace BetaGUI {
     void addWidget(BetaGUI::TextInput*);
     void addWidget(Widget*);
 
-   void setTransparency(float);
-   void setMinimalSize(unsigned int, unsigned int);
+    void setTransparency(float);
+    void setMinimalSize(unsigned int, unsigned int);
 
-   void resize(unsigned int, unsigned int);
-   void move(unsigned int, unsigned int);
+    void resize(unsigned int, unsigned int);
+    void move(unsigned int, unsigned int);
 
-   void setAlwaysTransparent(bool);
+    void setAlwaysTransparent(bool);
 
-   void setTitle(const String&);
+    void setTitle(const String&);
 
   protected:
     /** The currently active TextInput widget */
