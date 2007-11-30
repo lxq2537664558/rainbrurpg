@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 21 nov 2007 : Adding widget mouse support in event handling loop
  * - 16 nov 2007 : setTitle(String) implementation
  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
  * - 24 sep 2007 : This was the original BetaGUI code. 
@@ -100,38 +101,6 @@ namespace BetaGUI {
     Button* mAB;
     /** Defines a button */
     TitleBar* mTB;
-    /** The X position of the window 
-      *
-      * This value is signed to allow negative values. If not, when we
-      * move Window and the value should be negative, it get an 
-      * extremly high positive value.
-      *
-      */
-    int x;
-    /** The Y position of the window  
-      *
-      * This value is signed to allow negative values. If not, when we
-      * move Window and the value should be negative, it get an 
-      * extremly high positive value.
-      *
-      */
-    int y;
-    /** The width of the window  
-      *
-      * This value is signed to allow negative values. If not, when we
-      * move Window and the value should be negative, it get an 
-      * extremly high positive value.
-      *
-      */
-    int w;
-    /** The height of the window  
-      *
-      * This value is signed to allow negative values. If not, when we
-      * move Window and the value should be negative, it get an 
-      * extremly high positive value.
-      *
-      */
-    int h;
     /** The GUI object used to draw this window */
     GUI* mGUI;
     /** The overlay container drawing this widget */

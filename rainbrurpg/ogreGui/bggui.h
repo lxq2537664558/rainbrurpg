@@ -25,12 +25,27 @@
 #include <vector>
 #include <list>
 
-using namespace Ogre;
-using namespace std;
-
-
+// Forward declarations
+namespace Ogre{
+  class RenderSystem;
+  class SceneManager;
+  class Viewport;
+}
 namespace BetaGUI {
   class Window;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
+}
+// End of forward declarations
+
+using namespace Ogre;
+using namespace std;
+using namespace RainbruRPG::OgreGui;
+
+namespace BetaGUI {
 
   /** The windiow type enumeration
     *
@@ -66,7 +81,7 @@ namespace BetaGUI {
   class GUI{
 
   public:
-    GUI();
+    GUI(RenderSystem*, SceneManager*, Viewport*);
     ~GUI();	
 
     bool injectMouse(unsigned int, unsigned int);
@@ -97,6 +112,8 @@ namespace BetaGUI {
     void addWindow(Window*);
     void addDialog(Window*);
     void deactivateWindow(Window*);
+
+    void draw();
 
   protected:
     /** A const iterator over windowList */
@@ -178,6 +195,11 @@ namespace BetaGUI {
       *
       */
     Window* movedWindow;
+
+    /** The object used to draw quads
+      *
+      */
+    QuadRenderer* mQuadRenderer;
   };
 }
 

@@ -227,3 +227,42 @@ createDialog(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
   e->show();
 }
 
+/** Creates a vertical scrollbar
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param parent  The parent window
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
+
+  LOGI("Creating a VerticalScrollbar");
+  OverlayContainer* oc =parent->getOverLayContainer();
+
+  int bodyMidHeight=dim.w-(14*4);
+
+  dim.w=14;
+  this->createOverlay(name+"ta", dim, "bgui.vscrollbar.toparrow", oc);
+
+  dim.y+=14;
+  this->createOverlay(name+"bt", dim, "bgui.vscrollbar.bodytop", oc);
+
+  dim.y+=14;
+  dim.w=bodyMidHeight;
+  this->createOverlay(name+"bm", dim, "bgui.vscrollbar.bodymid", oc);
+
+  dim.y+=bodyMidHeight;
+  dim.w=14;
+  this->createOverlay(name+"bb", dim, "bgui.vscrollbar.bodybot", oc);
+
+  dim.y+=14;
+  this->createOverlay(name+"ba", dim, "bgui.vscrollbar.botarrow", oc);
+
+
+  // Creates the cursor
+  dim.y-=(14*2)+bodyMidHeight;
+  this->createOverlay(name+"c", dim, "bgui.vscrollbar.cursor", oc);
+
+
+}

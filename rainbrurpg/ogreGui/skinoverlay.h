@@ -160,6 +160,17 @@ namespace RainbruRPG{
      virtual void createLabel(String name, Vector4 dim, String caption, 
 			      Window* parent)=0;
 
+     /** Creates a vertical scrollbar
+       *
+       * \param name    The internal name of the ResizeGrip (must be unique)
+       * \param dim     The widget's dimension in pixels in a 
+       *                Ogre::Vector4 object
+       * \param parent  The parent window
+       *
+       */
+     virtual void createVerticalScrollbar( const String& name, Vector4 dim, 
+					   Window* parent)=0;
+
      virtual void activateButton(Button* button, bool active);
 
      virtual unsigned int getDialogBorderSize(void);

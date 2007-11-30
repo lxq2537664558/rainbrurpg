@@ -71,6 +71,9 @@ namespace RainbruRPG {
   namespace Network{
     class GlobalURI;
   }
+  namespace OgreGui{
+    class OgreGuiRenderQueueListener;
+  }
 }
 // End of forward declaration
 
@@ -78,6 +81,7 @@ using namespace std;
 using namespace Ogre;
 
 //using namespace RainbruRPG::Events;
+using namespace RainbruRPG::OgreGui;
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
 
@@ -254,6 +258,9 @@ namespace RainbruRPG {
 	*
         */
       const char* userPwd;
+
+      /** The render queue listener that draw the GUI */
+      OgreGuiRenderQueueListener* mRenderQueueListener;
 
     };
   }

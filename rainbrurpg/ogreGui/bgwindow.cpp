@@ -43,8 +43,7 @@ using namespace RainbruRPG::OgreGui;
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
 			GUI *G, bool border,
 			RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(NULL, sid), // Warning, parent is now NULL
-  x(D.x),y(D.y),w(D.z),h(D.w),
+  Widget(D, NULL, sid), // Warning, parent is now NULL
   mGUI(G),mTB(0),mRZ(0),
   activeTextInput(NULL),
   movingDevX(0),
@@ -203,7 +202,7 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   }
 
   // If the mouse pointer is not in the TextInput
-  if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h)){
+  if(!(px>=x&&py>=y)||!(px<=x+width&&py<=y+height)){
     return false;
   }
 
@@ -232,6 +231,11 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
 
 /** Handle a mouse event
   *
+  * The mouse event handling loop. For more information on mouse event 
+  * handling from Widget, please see the \link 
+  * RainbruRPG::OgreGui::Widget::injectMouse() Widget::injectMouse() \endlink
+  * function.
+  *
   * \param px The X position of the mouse
   * \param py The X position of the mouse
   * \param LMB The left mouse button status
@@ -243,7 +247,16 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   if(!rootOverlay->isVisible())
     return false;
   
-  if(!(px>=x&&py>=y)||!(px<=x+w&&py<=y+h)){
+  // Handles the widget mouse events
+  for(unsigned int i=0;i<widgetList.size();i++){
+    // If a widget handles the event, we stop the event handling loop
+    if (widgetList[i]->injectMouse(px-this->x,py-this->y,LMB)){
+      return true;
+    }
+  }
+
+
+  if(!(px>=x&&py>=y)||!(px<=x+width&&py<=y+height)){
     if(mAB){
       mAB->activate(false);
     }
@@ -299,7 +312,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       
       if(mTB){
 
-	mTB->setWidth(w);
+	mTB->setWidth(width);
 	mTB->getOverlayContainer()->setWidth(mTB->getWidth());
       }
       
@@ -449,30 +462,30 @@ void BetaGUI::Window::setTransparency(float f){
 void BetaGUI::Window::resize(unsigned int px, unsigned int py){
   // Compute new width
   if (px<(x+minimalWidth)){
-    w=minimalWidth;
+    width=minimalWidth;
   }
   else{
-    w=px-x+8;
+    width=px-x+8;
   }
 
   // Compute new height
   if (py<(y+minimalHeight)){ 
-    h=minimalHeight;
+    height=minimalHeight;
   }
   else{
-    h=py-y+8;
+    height=py-y+8;
   }
 
   // Resize the root overlay
-  rootOverlay->setDimensions(w,h);
+  rootOverlay->setDimensions(width, height);
 
   // Moves the ResizeGrip
-  mRZ->setX(w-16);
-  mRZ->setY(h-16);
+  mRZ->setX(width-16);
+  mRZ->setY(height-16);
   mRZ->getOverlayContainer()->setPosition(mRZ->getX(),mRZ->getY());
 
   // Resize the title bar
-  mTB->setWidth(w );
+  mTB->setWidth( width );
 }
 
 /** Move this window

@@ -56,6 +56,7 @@ namespace RainbruRPG{
       virtual void createPushButton(String, Vector4, String, Window*);
       virtual void createTextInput(String, Vector4, String, Window*);
       virtual void createLabel(String, Vector4, String, Window*);
+      virtual void createVerticalScrollbar(const String&, Vector4, Window*);
 
     private:
       /** The material name used to draw windows */

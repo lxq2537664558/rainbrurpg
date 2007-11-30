@@ -27,11 +27,7 @@
 BetaGUI::TextInput::
 TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
 			RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(parent, sid),
-  x(dim.x),
-  y(dim.y),
-  w(dim.z),
-  h(dim.w),
+  Widget(dim, parent, sid),
   value(caption),
   normalMaterialName(""),
   activeMaterialName(""),
@@ -106,7 +102,7 @@ void BetaGUI::TextInput::setValue(const Ogre::String& v){
   *
   */
 bool BetaGUI::TextInput::in(unsigned int mx,unsigned int my,unsigned int px,unsigned int py){
-  return(!(mx>=x+px&&my>=y+py))||(!(mx<=x+px+w&&my<=y+py+h));
+  return(!(mx>=x+px&&my>=y+py))||(!(mx<=x+px+width&&my<=y+py+height));
 }
 
 /** Get the amount of text accepted by this text input

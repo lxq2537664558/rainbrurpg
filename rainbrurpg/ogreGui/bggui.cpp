@@ -9,11 +9,14 @@
 #include "bggui.h"
 
 #include "bgwindow.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
 #include <OGRE/OgreOverlayManager.h>
 #include <OGRE/OgreStringConverter.h>
+
+
 
 // Static members initialisation
 bool BetaGUI::GUI::isMouseButtonPressed=false;
@@ -23,13 +26,14 @@ bool BetaGUI::GUI::isMouseButtonPressed=false;
 /** The GUI constructor
   *
   */
-BetaGUI::GUI::GUI():
+BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
   mouseCursorOverlay(NULL),
   resizedWindow(NULL),
   movedWindow(NULL),
   wc(NULL),
   bc(NULL),
-  tc(NULL)
+  tc(NULL),
+  mQuadRenderer(NULL)
 {
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
@@ -40,6 +44,8 @@ BetaGUI::GUI::GUI():
   dialogOverlay->show();
   dialogOverlay->setZOrder(550);
 
+  mQuadRenderer=new QuadRenderer(rs, sm, vp);
+
 }
 
 /** The destructor
@@ -47,6 +53,9 @@ BetaGUI::GUI::GUI():
   */
 BetaGUI::GUI::~GUI(){
   windowList.clear();
+
+  delete mQuadRenderer;
+  mQuadRenderer=NULL;
 }
 
 /** Inject the backspace key pressed event
@@ -59,11 +68,11 @@ void BetaGUI::GUI::injectBackspace(unsigned int x, unsigned int y){
   injectKey("!b",x,y);
 }
 
-/** Mark the given window as `will be deleted`
+/** Remove the given window from the windowList
   *
   * This is automatically called by the Window destructor.
   *
-  * \param w The window to be deleted
+  * \param name The name of the window to be deleted
   *
   */
 void BetaGUI::GUI::destroyWindow(const Ogre::String& name){
@@ -324,11 +333,6 @@ void BetaGUI::GUI::deactivateWindow(Window* win){
   */
 void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
   isMouseButtonPressed=true;
-
-  std::string s="===injectMouseButtonReleased called from : `";
-  s+=from;
-  s+="' ===";
-  LOGW(s.c_str());
 }
 
 /** Inject a mouse button released event
@@ -338,7 +342,6 @@ void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
   */
 void BetaGUI::GUI::injectMouseButtonReleased(){
   isMouseButtonPressed=false;
-  LOGW("GUI::injectMouseButtonReleased called");
 }
 
 /** Get the dialog overlay
@@ -349,6 +352,7 @@ void BetaGUI::GUI::injectMouseButtonReleased(){
   *
   */
 Ogre::Overlay* BetaGUI::GUI::getDialogOverlay(void){
+  LOGA(this->dialogOverlay, "dialogOverlay is NULL");
   return this->dialogOverlay;
 }
 
@@ -362,4 +366,25 @@ Ogre::Overlay* BetaGUI::GUI::getDialogOverlay(void){
   */
 void BetaGUI::GUI::addDialog(Window* win){
   windowList.push_front(win);
+}
+
+/** Draw the GUI
+  * 
+  * This is called for each frame by 
+  * \ref RainbruRPG::OgreGui::OgreGuiRenderQueueListener 
+  * "OgreGuiRenderQueueListener".
+  *
+  */
+void BetaGUI::GUI::draw(){
+  LOGI("Drawing GUI");
+
+  mQuadRenderer->begin();
+
+  list<Window*>::iterator iter;
+  for(iter=windowList.begin();iter!=windowList.end();iter++){
+     
+    // Each Window should call reset() itself
+    (*iter)->draw(mQuadRenderer);
+  }
+  mQuadRenderer->end();
 }

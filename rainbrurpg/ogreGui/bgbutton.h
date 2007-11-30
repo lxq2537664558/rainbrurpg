@@ -45,16 +45,6 @@ namespace BetaGUI {
     bool in( unsigned int, unsigned int, unsigned int, unsigned int );
     Callback getCallback(void);
     
-    unsigned int getWidth();
-    unsigned int getHeight();
-    unsigned int getX();
-    unsigned int getY();
-    
-    void setWidth(unsigned int ui);
-    void setHeight(unsigned int ui);
-    void setX(unsigned int ui);
-    void setY(unsigned int ui);
-    
     OverlayContainer* getOverlayContainer(void);
 
     virtual void setTransparency(float);
@@ -68,14 +58,6 @@ namespace BetaGUI {
     OverlayContainer* mCP;
     /** The callback of this button */
     Callback callback;
-    /** The X position */
-    unsigned int x;
-    /** The Y position */
-    unsigned int y;
-    /** The width of this button */
-    unsigned int w;
-    /** The height of this button */
-    unsigned int h;
 };
 
 }

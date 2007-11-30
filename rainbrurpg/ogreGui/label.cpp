@@ -38,7 +38,7 @@
 RainbruRPG::OgreGui::Label::
 Label(Vector4 dim, String caption, BetaGUI::Window* parent,
       RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(parent, sid)
+  Widget(dim, parent, sid)
 {
 
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);

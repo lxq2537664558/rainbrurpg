@@ -1,7 +1,7 @@
 // Ogre overlay scripts
 RainbruRPG/Title
 {
-	zorder 500
+	zorder 200
 	container BorderPanel(RainbruRPG/Title/Panel)
 	{
 		metrics_mode pixels

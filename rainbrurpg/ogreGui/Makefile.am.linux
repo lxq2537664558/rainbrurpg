@@ -11,7 +11,11 @@ h_sources= bgbutton.h			\
 	   label.h			\
 	   object.h			\
 	   pushbutton.h			\
+	   quadrenderer.h		\
+	   renderqueuelistener.h 	\
 	   resizegrip.h			\
+	   scrollbar.h			\
+	   scrollpane.h			\
 	   skinmanager.h		\
 	   skinoverlay.h		\
 	   sobetagui.h			\
@@ -28,7 +32,11 @@ cc_sources= bgbutton.cpp		\
 	    label.cpp			\
 	    object.cpp			\
 	    pushbutton.cpp		\
+	    quadrenderer.cpp		\
+	    renderqueuelistener.cpp 	\
 	    resizegrip.cpp		\
+	    scrollbar.cpp		\
+	    scrollpane.cpp		\
 	    skinmanager.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
@@ -43,10 +51,15 @@ librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
 INCLUDES = -I$(top_srcdir)/common	\
 	   -I$(top_srcdir)/maincore	\
-	   -I/usr/local/include/OGRE 
+	   -I/usr/local/include/OGRE 	\
+	   $(shell pkg-config sigc++-2.0 --cflags) 
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
 librainbrurpg_ogregui_la_LIBADD= 
-librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -Wl,--rpath -Wl,$(DESTDIR)$(libdir)
+librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)	\
+				  -version-info  	\
+				  $(GENERIC_LIBRARY_VERSION)		\
+				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
+				  $(shell pkg-config sigc++-2.0 --libs)
 

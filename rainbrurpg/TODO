@@ -117,6 +117,16 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-162
+- OgreGuiRenderQueueListener registered to GameEngine's SceneManager
+- QuadRenderer now here
+- Position and size only in widget
+- OgreGUI now linked with sigc++
+- Scrollbar::moveCursorToValue(void) implementation
+- Scrollbar::getValueFromCursor(void) implementation
+- Scrollbar max ans steps implementation
+- Scrollbar widget implementation
+- Adding Widget mouse support to Window's event handling loop
+- Widget::injectMouse implementation
 - Window destructor
   o As ResizeGrip does not need a caption, it does not use the 
     Button::mCP. The pointer is NULL and the Button::~Button

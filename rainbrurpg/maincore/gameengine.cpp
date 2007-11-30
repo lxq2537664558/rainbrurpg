@@ -48,9 +48,9 @@
 #include "globaluri.h"
 
 #include "skinmanager.h"
+#include "renderqueuelistener.h"
 
 using namespace RainbruRPG::Events;
-using namespace RainbruRPG::OgreGui;
 
 /** A function used to know if the GameEngine is running.
   * 
@@ -235,6 +235,10 @@ void RainbruRPG::Core::GameEngine::cleanup(){
   LOGI("Cleaning up GameEngine...");
   m_running=false;
   delete mInputMgr;
+
+  mSceneMgr->removeRenderQueueListener(mRenderQueueListener);
+  delete mRenderQueueListener;
+  mRenderQueueListener=NULL;
 /*
   this->cleanStates();
   this->cleanIrrgui();
@@ -856,7 +860,6 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
    *
    */
   if (!GuiManager::getSingleton().isInGuiFadeIn()){
-    LOGW("Calling mousePressed");
     states[actualState]->mousePressed(evt, id);
   }
   return true;
@@ -937,9 +940,14 @@ void RainbruRPG::Core::GameEngine::initOgreGui(){
   // mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
   SkinManager::getSingleton().init();
 
-  mOgreGUI = new BetaGUI::GUI();
+
+
+  mOgreGUI = new BetaGUI::GUI(mRoot->getRenderSystem(),
+			      mSceneMgr, mSceneMgr->getCurrentViewport());
   mOgreGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
+  mRenderQueueListener=new OgreGuiRenderQueueListener(mOgreGUI);
+  mSceneMgr->addRenderQueueListener(mRenderQueueListener);
 }
 
 /** Return the current OgreGUI instance

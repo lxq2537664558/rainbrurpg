@@ -111,10 +111,11 @@ namespace RainbruRPG{
     /** Choose the logs that must be logged
       *
       * The level of each log will be tested with the value of logLevel.
-      * if les log's level is greater or equal than logLevel, we log
+      * if the log's level is greater or equal than logLevel, we log
       * it. If the  log's level is less than logLevel, we don't print it.
       *
-     * \sa Logger::setLogLevel
+      * \sa Logger::setLogLevel
+      *
       */
     enum tLogLevel{
       LL_INFO=1, //!< The information log level
@@ -185,7 +186,7 @@ namespace RainbruRPG{
       * Segfaults.
       *
       */
-    class Logger: public Singleton<Logger>{
+    class Logger: public RainbruRPG::Core::Singleton<Logger>{
     public:
       Logger();
 

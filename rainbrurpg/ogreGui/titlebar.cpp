@@ -81,7 +81,7 @@ void RainbruRPG::OgreGui::TitleBar::setTransparency(float f){
   *
   */
 void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
-  w=ui;
+  width=ui;
   mO->setWidth(ui);
   mCP->setWidth(ui);
 }

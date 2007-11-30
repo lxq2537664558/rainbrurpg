@@ -95,26 +95,6 @@ namespace BetaGUI {
       */
     String value;
     
-    /** The X position of this widget
-      *
-      */
-    unsigned int x;
-    
-    /** The Y position of this widget
-      *
-      */
-    unsigned int y;
-    
-    /** The width position of this widget
-      *
-      */
-    unsigned int w;
-    
-    /** The height position of this widget
-      *
-      */
-    unsigned int h;
-    
     /** The max length of text that can be entered
       *
       */

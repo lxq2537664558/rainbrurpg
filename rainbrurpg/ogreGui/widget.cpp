@@ -28,15 +28,20 @@
 
 /** A constructor passing the skin identifier
   *
+  * \param dim The dimensions of the widget in pixels
   * \param sid The SkinIdentifier
   * \param P   The parent widget
   *
   */
 RainbruRPG::OgreGui::Widget::
-Widget(Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   skinId(sid),
   parent(P),
-  frameOverlay(NULL)
+  frameOverlay(NULL),
+  x(dim.x),
+  y(dim.y),
+  width(dim.z),
+  height(dim.w)
 {
 
   // Doesn't test the parent pointer for Window as a Window
@@ -90,4 +95,113 @@ const Ogre::String& RainbruRPG::OgreGui::Widget::getName(void){
   */
 RainbruRPG::OgreGui::Widget* RainbruRPG::OgreGui::Widget::getParent(){
   return this->parent;
+}
+
+/** Handle a mouse event
+  *
+  * If you create a new widget, you may override this function if your
+  * widget handles mouse events and return \c true to stop the event handling
+  * loop.
+  *
+  * The position of the mouse is render window wide.
+  *
+  * \param x               The position of the mouse pointer in pixels
+  * \param y               The position of the mouse pointer in pixels
+  * \param leftMouseButton The mouse left button state ( \c true if pressed
+  *                        \c false if released)
+  *
+  * \return \c true if the event is handled, \c false if not.
+  *
+  */
+bool RainbruRPG::OgreGui::Widget::
+injectMouse(unsigned int x, unsigned int y, bool leftMouseButton){
+  return false;
+}
+
+/** Change the X position of the widget
+  *
+  * \param i The new X position in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::x x \endlink (member)
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setX(int i){
+  this->x=i;
+}
+
+/** Change the Y position of the widget
+  *
+  * \param i The new Y position in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::y y \endlink (member)
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setY(int i){
+  this->y=i;
+}
+
+/** Change the width of the widget
+  *
+  * \param i The new width in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::width width \endlink (member)
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setWidth(int i){
+  this->width=i;
+}
+
+/** Change the height of the widget
+  *
+  * \param i The new height in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::height height \endlink (member)
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setHeight(int i){
+  this->height=i;
+}
+
+/** Get the X position of this widget
+  *
+  * \return The X position in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::x x \endlink (member)
+  *
+  */
+int RainbruRPG::OgreGui::Widget::getX(void){
+  return this->x;
+}
+
+/** Get the Y position of this widget
+  *
+  * \return The Y position in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::y y \endlink (member)
+  *
+  */
+int RainbruRPG::OgreGui::Widget::getY(void){
+  return this->y;
+}
+
+/** Get the width of this widget
+  *
+  * \return The width in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::width width \endlink (member)
+  *
+  */
+int RainbruRPG::OgreGui::Widget::getWidth(void){
+  return this->width;
+}
+
+/** Get the height of this widget
+  *
+  * \return The height in pixels
+  *
+  * \sa \link RainbruRPG::OgreGui::Widget::height height \endlink (member)
+  *
+  */
+int RainbruRPG::OgreGui::Widget::getHeight(void){
+  return this->height;
 }

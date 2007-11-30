@@ -175,3 +175,20 @@ createLabel(String name, Vector4 dim, String caption, Window* parent){
 
 }
 
+/** Creates a vertical scrollbar
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a VerticalScrollbar.
+  *
+  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
+  * \param parent  The parent window
+  *
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+createVerticalScrollbar(const String& name, Vector4 dim, Window* parent){
+  LOGW("soNavigation cannot create VerticalScrollbar");
+
+}
