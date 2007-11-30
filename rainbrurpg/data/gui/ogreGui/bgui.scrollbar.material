@@ -1,0 +1,169 @@
+material bgui.vscrollbar.bodybot
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.bodybot.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.botarrow
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.botarrow.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.bodymid
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.bodymid.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.cursor
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.cursor.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.bodytop
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.bodytop.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.toparrow
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.toparrow.png
+			}
+		}
+	}
+}
+
+material bgui.vscrollbar.botarrow.active
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.botarrow.active.png
+			}
+		}
+	}
+}
+material bgui.vscrollbar.toparrow.active
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.toparrow.active.png
+			}
+		}
+	}
+}
+material bgui.vscrollbar.cursor.active
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient 1 1 1
+			diffuse 1 1 1
+			specular 1 1 1 30
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture bgui.vscrollbar.cursor.active.png
+			}
+		}
+	}
+}
+  
