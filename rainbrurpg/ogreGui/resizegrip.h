@@ -50,8 +50,7 @@ namespace RainbruRPG{
       ResizeGrip(Vector4, Callback,GUI *,Window*,OgreGuiSkinID sid=OSI_PARENT);
       virtual ~ResizeGrip();
 
-      virtual void setTransparency(float f);
-
+      virtual void draw(QuadRenderer*);
 
     };
 

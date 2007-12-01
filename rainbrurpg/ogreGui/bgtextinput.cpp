@@ -11,6 +11,7 @@
 
 #include "bgwindow.h"
 #include "skinoverlay.h"
+#include "quadrenderer.h"
 
 #include <OGRE/OgreStringConverter.h>
 #include <OGRE/OgreMaterialManager.h>
@@ -185,3 +186,6 @@ bool BetaGUI::TextInput::isMasked(void){
   return this->masked;
 }
 
+void BetaGUI::TextInput::draw(QuadRenderer*){
+
+}

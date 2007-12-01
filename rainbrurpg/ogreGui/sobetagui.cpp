@@ -21,8 +21,9 @@
  */
 
 #include "sobetagui.h"
-#include "bgwindow.h"
 
+#include "bgwindow.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
@@ -71,23 +72,38 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createWindow(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
-
-  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
+drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
+  // Draw the window background
+  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  qr->setMaterialName(mnWindow);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->draw();
+  qr->reset();
 }
 
 /** Graphically create a ResizeGrip widget
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The quad renderer used to draw the image
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param win     The parent window
+  * \param active  Is this resizegrip active ?
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createResizeGrip(String name, Vector4 dim, Window* win ){
+drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
+  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  if (active){
+    qr->setMaterialName(mnResizeGrip+".active");
+  }
+  else{
+    qr->setMaterialName(mnResizeGrip);
 
-  LOGI("Creating a ResizeGrip widget");
-  this->createOverlay(name, dim, mnResizeGrip, win->getOverLayContainer());
+  }
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->draw();
+  qr->reset();
+
 }
 
 /** Graphically create a TitleBar widget
@@ -120,17 +136,18 @@ createTitleBar(String name, Vector4 dim, String caption, Window* win ){
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createPushButton(String name, Vector4 dim, String caption, Window* win ){
-  LOGI("Creating a PushButton widget");
-  this->createOverlay(name, dim, mnPushButton, win->getOverLayContainer());
+drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win ){
 
-  // vertically center the caption
-  unsigned int dev=((dim.w-fsPushButton)/2)+2;
-  dim.x+=dev;
-  dim.y+=dev;
 
-  this->createCaption(name+"c", dim, caption, 
-	      fnPushButton, fsPushButton,win->getOverLayContainer());
+  qr->setCorners(dim.x+win->getX(), dim.y+win->getY(), dim.x+dim.z+win->getX(), dim.y+dim.w+win->getY());
+  qr->setMaterialName(mnWindow);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->draw();
+  qr->reset();
+
+
+  //  this->createCaption(name+"c", dim, caption, 
+  //	      fnPushButton, fsPushButton,win->getOverLayContainer());
 
 
 }

@@ -165,6 +165,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   // Y position of right widget
   unsigned int rightX=100;
 
+  /*
   Vector4 labHelpDim(10,posY,winWidth-20,24);
   labHelp=new Label(labHelpDim, mess, window);
   window->addWidget(labHelp);
@@ -202,7 +203,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   Vector4 tiMailDim(rightX,posY,winWidth-rightX-20,24);
   tiMail=new TextInput(tiMailDim, "", 40, window);
   window->addWidget(tiMail);
-
+  */
   posY+=30;
   unsigned int btnSubmitWidth=100;
   Vector4 btnSubmitDim((winWidth/2)-(btnSubmitWidth/2),posY,btnSubmitWidth,24);

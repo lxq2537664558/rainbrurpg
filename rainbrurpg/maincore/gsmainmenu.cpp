@@ -195,13 +195,14 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
     ->setTextureScroll(0.2, 0.2);
   */
 
-  Vector4 sbDim(300-16,30,14,300-60);
+  /*  Vector4 sbDim(300-16,30,14,300-60);
   ScrollBar* sb=new ScrollBar(sbDim, testWin, OST_VERTICAL);
   testWin->addWidget(sb);
   sb->setMax(500);
   sb->setSteps(20,50);
   ScrollPane* sp=new ScrollPane(sbDim, testWin);
   testWin->addWidget(sp);
+  */
 
   // End of tests
   // ***************************************************

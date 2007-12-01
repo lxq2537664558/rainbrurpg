@@ -21,7 +21,9 @@
  */
 
 #include "sonavigation.h"
+
 #include "bgwindow.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
@@ -60,9 +62,9 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-createWindow(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
+drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
 
-  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
+  //  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 }
 
 /** Create a window using the navigation skin
@@ -94,7 +96,7 @@ createDialog(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-createResizeGrip(String name, Vector4 dim, Window* win){
+drawResizeGrip(QuadRenderer*, Vector4 dim, bool){
   LOGW("soNavigation cannot create ResizeGrip");
 
 }
@@ -126,17 +128,7 @@ createTitleBar(String name, Vector4 dim, String caption, Window* win){
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-createPushButton(String name, Vector4 dim, String caption, Window* win){
-  LOGI("Creating a PushButton widget");
-  this->createOverlay(name, dim, mnPushButton, win->getOverLayContainer());
-
-  // vertically center the caption
-  unsigned int dev=((dim.w-fsPushButton)/2)+2;
-  dim.x+=dev;
-  dim.y+=dev;
-
-  this->createCaption(name+"c", dim, caption, 
-	      fnPushButton, fsPushButton,win->getOverLayContainer());
+drawPushButton(QuadRenderer*, Vector4 dim, String caption, Window* win){
 }
 
 /** Graphically create a TextInput widget

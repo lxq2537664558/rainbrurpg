@@ -73,13 +73,7 @@ namespace RainbruRPG{
 
       Widget* getParent();
 
-      /** A pure virtual function used to set the transparency of the widget
-        *
-	* \param f A float number between 0.0f (fully transparent) and 
-	*          1.0f (opaque).
-	*
-	*/
-      virtual void setTransparency(float f)=0;
+      virtual void setTransparency(float f);
 
       virtual bool injectMouse(unsigned int, unsigned int, bool);
 
@@ -98,7 +92,7 @@ namespace RainbruRPG{
 	* \param qr The QuadRenderer used to draw the widget
 	*
 	*/
-      void draw(QuadRenderer* qr)=0;
+      virtual void draw(QuadRenderer* qr)=0;
 
     protected:
       /** The parent of this widget
@@ -143,7 +137,10 @@ namespace RainbruRPG{
       
       /** The height position of this widget */
       int height;
-    
+
+      /** The transparency of this widget */
+      double alpha;
+
     };
   }
 }

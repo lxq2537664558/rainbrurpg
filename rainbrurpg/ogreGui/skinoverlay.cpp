@@ -23,6 +23,7 @@
 #include "skinoverlay.h"
 
 #include "bgbutton.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 

@@ -73,6 +73,7 @@ void RainbruRPG::Core::GameEngine::init(){
   userPwd="";
   mInputMgr=NULL;
   mOgreGUI=NULL;
+  mSceneMgr=NULL;
   actualState=ST_MAIN_MENU;
 
   initOgre();
@@ -505,7 +506,8 @@ void RainbruRPG::Core::GameEngine::initCEGUI(){
 /** Get the PagingLandScape2 scene manager
   *
   *
-  */void RainbruRPG::Core::GameEngine::chooseSceneManager(){
+  */
+void RainbruRPG::Core::GameEngine::chooseSceneManager(){
   LOGI("chooseSceneManager");
   // Get the SceneManager, in this case a generic one
   mSceneMgr = Ogre::Root::getSingleton().
@@ -942,7 +944,7 @@ void RainbruRPG::Core::GameEngine::initOgreGui(){
 
 
 
-  mOgreGUI = new BetaGUI::GUI(mRoot->getRenderSystem(),
+  mOgreGUI = new BetaGUI::GUI(Root::getSingleton().getRenderSystem(),
 			      mSceneMgr, mSceneMgr->getCurrentViewport());
   mOgreGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 

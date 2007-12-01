@@ -43,10 +43,7 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mMaterialName()
 {
 
-  winWidth=mViewport->getActualWidth();
-  winHeight=mViewport->getActualHeight();
 
-  cout << "Viewport size= " << winWidth << "x" << winHeight << endl;
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
   setupHardwareBuffer();
@@ -246,6 +243,10 @@ void RainbruRPG::OgreGui::QuadRenderer::draw(){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::begin(){
+  mViewport=mSceneManager->getCurrentViewport();
+  winWidth=mViewport->getActualWidth();
+  winHeight=mViewport->getActualHeight();
+
   mRenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setProjectionMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setViewMatrix( Ogre::Matrix4::IDENTITY );

@@ -42,15 +42,15 @@ PushButton(Vector4 dim, String caption, Callback c, Window* parent,
 {
 
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
+  /*  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
 
   this->setName(uniqueName);
 
-  sk->createPushButton(uniqueName, dim, caption, parent);
+  //  sk->createPushButton(uniqueName, dim, caption, parent);
   mO=sk->getOverlayByName(uniqueName);
   mCP=sk->getOverlayByName(uniqueName+"c");
-
+  */
 }
 
 /** The destructor
@@ -67,6 +67,11 @@ RainbruRPG::OgreGui::PushButton::~PushButton(){
   */
 void RainbruRPG::OgreGui::PushButton::setTransparency(float f){
   SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-  s->setTransparency(mO, f);
+  /*  s->setTransparency(mO, f);
   s->setCaptionTransparency(mCP, f);
+  */
+}
+
+void RainbruRPG::OgreGui::PushButton::draw(QuadRenderer* qr){
+
 }

@@ -31,6 +31,7 @@
 namespace RainbruRPG{
   namespace OgreGui{
     class TitleBar;
+    class QuadRenderer;
   }
 }
 // End of forward declarations
@@ -63,7 +64,6 @@ namespace BetaGUI {
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
-    BetaGUI::Button* createButton(Vector4, String, String, Callback);
     BetaGUI::TextInput* createTextInput(Vector4, String, unsigned int);
     void createStaticText(Vector4, String);
 
@@ -82,7 +82,6 @@ namespace BetaGUI {
     void addWidget(BetaGUI::TextInput*);
     void addWidget(Widget*);
 
-    void setTransparency(float);
     void setMinimalSize(unsigned int, unsigned int);
 
     void resize(unsigned int, unsigned int);
@@ -91,6 +90,8 @@ namespace BetaGUI {
     void setAlwaysTransparent(bool);
 
     void setTitle(const String&);
+
+    virtual void draw(QuadRenderer*);
 
   protected:
     /** The currently active TextInput widget */

@@ -376,8 +376,6 @@ void BetaGUI::GUI::addDialog(Window* win){
   *
   */
 void BetaGUI::GUI::draw(){
-  LOGI("Drawing GUI");
-
   mQuadRenderer->begin();
 
   list<Window*>::iterator iter;

@@ -85,3 +85,7 @@ void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
   mO->setWidth(ui);
   mCP->setWidth(ui);
 }
+
+void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer*){
+
+}

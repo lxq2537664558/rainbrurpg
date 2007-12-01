@@ -41,7 +41,8 @@ Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   x(dim.x),
   y(dim.y),
   width(dim.z),
-  height(dim.w)
+  height(dim.w),
+  alpha(0.0f)
 {
 
   // Doesn't test the parent pointer for Window as a Window
@@ -204,4 +205,14 @@ int RainbruRPG::OgreGui::Widget::getWidth(void){
   */
 int RainbruRPG::OgreGui::Widget::getHeight(void){
   return this->height;
+}
+
+/** A pure virtual function used to set the transparency of the widget
+  *
+  * \param f A float number between 0.0f (fully transparent) and 
+  *          1.0f (opaque).
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setTransparency(float f){
+  alpha=f;
 }

@@ -50,7 +50,8 @@ namespace RainbruRPG{
       ~PushButton();
 
       virtual void setTransparency(float);
-    };
+      virtual void draw(QuadRenderer*);
+   };
 
   }
 }

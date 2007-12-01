@@ -144,7 +144,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   window = new Window(Vector4(winX,winY,winWidth,winHeight),
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
 
-  Vector4 laDim(10,40,80,24);
+  /*  Vector4 laDim(10,40,80,24);
   Label* labUserName=new Label(laDim, "User name", window);
   window->addWidget(labUserName);
 
@@ -160,7 +160,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   tiPassword=new TextInput(tiDim2, "", 20, window);
   tiPassword->setMasked(true);
   window->addWidget(tiPassword);
-
+  */
   // Buttons
   btnConnect = new PushButton(Vector4(70,100,160,24),
       "Network game", BetaGUI::Callback::Callback(this), window);

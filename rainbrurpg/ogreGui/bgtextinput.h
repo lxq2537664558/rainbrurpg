@@ -26,6 +26,11 @@
 namespace BetaGUI {
   class Window;
 }
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
+}
 // End of Forward declaration
 
 using namespace Ogre;
@@ -63,6 +68,8 @@ namespace BetaGUI {
 
     void setMasked(bool);
     bool isMasked(void);
+
+    virtual void draw(QuadRenderer*);
 
  protected: 
     

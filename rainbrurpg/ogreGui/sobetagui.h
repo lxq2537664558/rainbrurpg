@@ -32,6 +32,16 @@
 
 #include <OGRE/OgreVector4.h>
 
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
+}
+// End of forward declarations
+
+
 using namespace Ogre;
 
 namespace RainbruRPG{
@@ -44,11 +54,12 @@ namespace RainbruRPG{
     public:
       soBetaGui();
 
-      virtual void createWindow(String, Vector4, String ,BetaGUI::GUI*);
+      virtual void drawWindow(QuadRenderer*, Vector4, String);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*);
+      virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
+
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
-      virtual void createResizeGrip(String, Vector4, Window*);
       virtual void createTitleBar(String, Vector4, String, Window*);
-      virtual void createPushButton(String, Vector4, String, Window*);
       virtual void createTextInput(String, Vector4, String, Window*);
       virtual void createLabel(String, Vector4, String, Window*);
       virtual void createVerticalScrollbar( const String&, Vector4, Window* );

@@ -14,6 +14,7 @@
 #include "skinoverlay.h"
 #include "resizegrip.h"
 #include "titlebar.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 #include <gameengine.h>
@@ -71,34 +72,10 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     titlebarDim=Vector4(dbs,dbs,D.z-(dbs*2),22);
   }
   else{
-    sk->createWindow(name, D, caption, G);
     resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
     titlebarDim=Vector4(0,0,D.z,22);
   }
-  
-  this->setName(name);
-
-  rootOverlay=sk->getOverlayByName(name);
-
-  // Get border technique
-  if (hasBorder){
-
-    BorderPanelOverlayElement* bpoe=static_cast<BorderPanelOverlayElement*>
-      (rootOverlay);
-
-    if (bpoe){
-      String borderMn=bpoe->getBorderMaterialName();
-      MaterialPtr matPtr=static_cast<MaterialPtr>
-	(MaterialManager::getSingleton().getByName(borderMn));
-      Technique * tec=matPtr->getTechnique(0);
-      borderTus=tec->getPass(0)->getTextureUnitState(0);
-      // Set the border fully transparent
-      borderTus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
-				   0.0, 0.0, 1.0);
-    }
-  }
-
-
+ 
   if(t>=2){
     // Create a resize grip
     Callback c;
@@ -111,8 +88,8 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     // Create a title bar
     Callback c;
     c.setType(OCT_WIN_MOVE);
-    mTB=new TitleBar(titlebarDim,caption,c, G, this);
-    buttonList.push_back(mTB);
+    //    mTB=new TitleBar(titlebarDim,caption,c, G, this);
+    //    buttonList.push_back(mTB);
   }
 }
 
@@ -137,20 +114,6 @@ BetaGUI::Window::~Window(){
   
   mGUI->getRootOverlay()->remove2D(rootOverlay);
 
-}
-
-/** Creates a button inside this window
-  *
-  * \param D The dimension of the button to create
-  * \param M The Ogre material to use within the button
-  * \param T The text of the button
-  * \param C The callback of the button
-  *
-  */
-BetaGUI::Button* BetaGUI::Window::createButton(Vector4 D,String M,String T,Callback C){
-  Button *x=new Button(D,M,T,C,this);
-  buttonList.push_back(x);
-  return x;
 }
 
 /** Create a TextInput control inside this window
@@ -197,10 +160,10 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   }
 
   // If this window is not visible
-  if(!rootOverlay->isVisible()){
+  /*  if(!rootOverlay->isVisible()){
     return false;
   }
-
+  */
   // If the mouse pointer is not in the TextInput
   if(!(px>=x&&py>=y)||!(px<=x+width&&py<=y+height)){
     return false;
@@ -244,8 +207,8 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
-  if(!rootOverlay->isVisible())
-    return false;
+  //  if(!rootOverlay->isVisible())
+  //    return false;
   
   // Handles the widget mouse events
   for(unsigned int i=0;i<widgetList.size();i++){
@@ -415,41 +378,6 @@ void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
   textInputList.push_back(ti);
 }
 
-/** Recursively set the transparency of this window
-  *
-  * Call setTransparency on this window and all its children
-  *
-  * \param f The alpha value (from 0.0f to 1.0f)
-  *
-  * \sa buttonList, textInputList
-  *
-  */
-void BetaGUI::Window::setTransparency(float f){
-  for(unsigned int i=0;i<buttonList.size();i++){
-    buttonList[i]->setTransparency(f);
-  }
-  
-  for(unsigned int i=0;i<textInputList.size();i++){
-    textInputList[i]->setTransparency(f);
-  }
-
-  for(unsigned int i=0;i<widgetList.size();i++){
-    widgetList[i]->setTransparency(f);
-  }
-
-  // If alwaysTransparent is true, this window will,ever be shown
-  if (alwaysTransparent){
-    f=0.0f;
-  }
-
-  SkinManager::getSingleton().getSkin(this)->setTransparency(rootOverlay, f);
-
-  // Dialog border transarency
-  if (hasBorder&&borderTus){
-    borderTus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
-				 f, f, 1.0);
-  }
-}
 
 /** Resize this window
   *
@@ -546,4 +474,15 @@ void BetaGUI::Window::setAlwaysTransparent(bool b){
   */
 void BetaGUI::Window::setTitle(const String& title){
   mTB->setCaption(title);
+}
+
+void BetaGUI::Window::draw(QuadRenderer* qr){
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+  Vector4 dim(x, y, width, height);
+  qr->setAlpha( this->alpha );
+  sk->drawWindow(qr, dim, "Caption");
+
+  for(unsigned int i=0;i<buttonList.size();i++)
+    buttonList[i]->draw(qr);
+
 }

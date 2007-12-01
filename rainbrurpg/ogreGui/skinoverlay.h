@@ -39,6 +39,11 @@ namespace BetaGUI{
   class GUI;
   class Window;
 }
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
+}
 // End of forward declarations
 
 using namespace Ogre;
@@ -87,8 +92,7 @@ namespace RainbruRPG{
         * \param bg      The BetaGUI::GUI object 
         *
         */
-      virtual void createWindow(String name, Vector4 dim, String caption, 
-                                GUI* bg)=0;
+      virtual void drawWindow(QuadRenderer*, Vector4 dim, String caption)=0;
      /** Create a window with a border
         *
         * Please see the sub-class documentation for implementation
@@ -111,7 +115,7 @@ namespace RainbruRPG{
         * \param parent  The parent window
         *
         */
-     virtual void createResizeGrip(String name, Vector4 dim, Window* parent)=0;
+     virtual void drawResizeGrip(QuadRenderer*, Vector4 dim, bool active)=0;
 
       /** Graphically create a TitleBar widget
         *
@@ -133,7 +137,7 @@ namespace RainbruRPG{
         * \param parent  The parent window
         *
         */
-     virtual void createPushButton(String name, Vector4 dim, String caption, 
+     virtual void drawPushButton(QuadRenderer*,Vector4 dim, String caption, 
 				   Window* parent)=0;
 
       /** Graphically create a TextInput widget
