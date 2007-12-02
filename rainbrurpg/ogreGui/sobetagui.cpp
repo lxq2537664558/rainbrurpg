@@ -65,10 +65,9 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   * The name parameter must be application unique. It is the 
   * name of the Ogre overlay we create.
   *
-  * \param name    The internal name of the window
+  * \param qr      The QuaRdRenderer used to draw
   * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
   * \param caption The title bar caption
-  * \param bg      The BetaGUI::GUI object 
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
@@ -93,17 +92,17 @@ void RainbruRPG::OgreGui::soBetaGui::
 drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+
   if (active){
     qr->setMaterialName(mnResizeGrip+".active");
   }
   else{
     qr->setMaterialName(mnResizeGrip);
-
   }
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->draw();
   qr->reset();
-
 }
 
 /** Graphically create a TitleBar widget
@@ -115,21 +114,25 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-createTitleBar(String name, Vector4 dim, String caption, Window* win ){
-  this->createOverlay(name, dim, mnTitleBar, win->getOverLayContainer());
+drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
+  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
 
-  // vertically center the caption
-  unsigned int dev=((dim.w-fsTitleBar)/2)+1;
-  dim.x+=dev;
-  dim.y+=dev;
+  if (active){
+    qr->setMaterialName(mnTitleBar+".active");
+  }
+  else{
+    qr->setMaterialName(mnTitleBar);
+  }
 
-  this->createCaption(name+"c", dim, caption, 
-	      fnTitleBar, fsTitleBar,win->getOverLayContainer());
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->draw();
+  qr->reset();
 }
 
 /** Graphically create a PushButton widget
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
   * \param win     The parent window

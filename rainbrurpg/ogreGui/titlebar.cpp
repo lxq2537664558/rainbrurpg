@@ -23,6 +23,7 @@
 #include "titlebar.h"
 
 #include "skinoverlay.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
@@ -47,14 +48,6 @@ TitleBar(Vector4 dim, String caption, Callback callback, GUI* G,
 
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
 
-  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
-    +StringConverter::toString(G->getUniqueId());
-  this->setName(uniqueName);
-
-  sk->createTitleBar(uniqueName, dim, caption, parent);
-  mO=sk->getOverlayByName(uniqueName);
-  mCP=sk->getOverlayByName(uniqueName+"c");
-
 }
 
 /** The destructor
@@ -64,17 +57,6 @@ RainbruRPG::OgreGui::TitleBar::~TitleBar(){
 
 }
 
-/** Changes the transparency
-  *
-  * \param f The new alpha value
-  *
-  */
-void RainbruRPG::OgreGui::TitleBar::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-  s->setTransparency(mO, f);
-  s->setCaptionTransparency(mCP, f);
-}
-
 /** Changes the width 
   *
   * \param ui The new width
@@ -82,10 +64,20 @@ void RainbruRPG::OgreGui::TitleBar::setTransparency(float f){
   */
 void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
   width=ui;
-  mO->setWidth(ui);
-  mCP->setWidth(ui);
+
 }
 
-void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer*){
+/** Draws the titlebar
+  *
+  * \param qr The QuadRenderer used to draw the titlebar
+  *
+  */
+void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer* qr){
+  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+  int px=this->parent->getX()+x;
+  int py=this->parent->getY()+y;
 
+  Vector4 dim(px, py, width, height);
+  qr->setAlpha( this->alpha );
+  sk->drawTitleBar(qr, dim, "Caption", this->active);
 }

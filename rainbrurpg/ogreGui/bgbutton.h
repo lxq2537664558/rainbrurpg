@@ -45,19 +45,13 @@ namespace BetaGUI {
     bool in( unsigned int, unsigned int, unsigned int, unsigned int );
     Callback getCallback(void);
     
-    OverlayContainer* getOverlayContainer(void);
-
-    virtual void setTransparency(float);
-
     virtual void setCaption(const String&);
 
   protected:
-    /** The root overlay */
-    OverlayContainer* mO;
-    /** The button's text overlay */
-    OverlayContainer* mCP;
     /** The callback of this button */
     Callback callback;
+    /** Is this button active ? */
+    bool active;
 };
 
 }

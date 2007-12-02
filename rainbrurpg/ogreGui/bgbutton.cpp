@@ -29,8 +29,7 @@ BetaGUI::Button::
 Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
        RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid),
-  mO(NULL),
-  mCP(NULL)
+  active(false)
 {
   
   callback=C;
@@ -39,21 +38,8 @@ Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
 
 /** The destructor
   *
-  * This will remove \ref mO "mO" and \ref mCP "mCP" overlays using the 
-  * removeChild() ogre function. This can be overriden to avoid segmentation
-  * fault if one of these overlay is not used (see \link 
-  * RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip() ResizeGrip destructor
-  * \endlink ).
-  *
   */
 BetaGUI::Button::~Button(){
-  if (mO){
-    mO->getParent()->removeChild(mO->getName());
-  }
-
-  if (mCP){
-    mCP->getParent()->removeChild(mCP->getName());
-  }
 }
  
 /** Change the state of this button
@@ -67,8 +53,7 @@ BetaGUI::Button::~Button(){
   *
   */
 void BetaGUI::Button::activate(bool a){
-  SkinManager::getSingleton().getSkin(this)
-    ->activateButton(this,a);
+  active=a;
 }
 
 /** Is a square in this widget
@@ -96,40 +81,10 @@ BetaGUI::Callback BetaGUI::Button::getCallback(void){
   return callback; 
 }
 
-/** Get the root overlay
-  *
-  * We can't set the caption transparency here as ResizeGrip doesn't
-  * have a caption overlay. The caption transpareny \b must be set
-  * in subclasses that uses caption.
-  *
-  * \return The Ogre overlay drawing this button
-  *
-  */
-Ogre::OverlayContainer* BetaGUI::Button::getOverlayContainer(void){ 
-  return mO; 
-}
-
-/** Changes the transparency
-  *
-  * \param f The new alpha value
-  *
-  */
-void BetaGUI::Button::setTransparency(float f){
-  LOGI("Changing transpenrency of a Button");
-  LOGCATS("Button name is ");
-  LOGCATS(name.c_str());
-  LOGCAT();
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-
-  s->setTransparency(mO, f);
-
-}
-
 /** Changes the caption of this label
   *
   * \param caption The new caption as an Ogre string
   * 
   */
 void BetaGUI::Button::setCaption(const String& caption){
-  mCP->setCaption(caption);
 }

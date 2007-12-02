@@ -64,9 +64,6 @@ namespace BetaGUI {
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
-    BetaGUI::TextInput* createTextInput(Vector4, String, unsigned int);
-    void createStaticText(Vector4, String);
-
     void hide();
     void show();
     bool isVisible();
@@ -87,6 +84,7 @@ namespace BetaGUI {
     void resize(unsigned int, unsigned int);
     void move(unsigned int, unsigned int);
 
+    virtual void setTransparency(float f);
     void setAlwaysTransparent(bool);
 
     void setTitle(const String&);

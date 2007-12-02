@@ -22,6 +22,8 @@
 
 #include "quadrenderer.h"
 
+#include "logger.h"
+
 /** The renderer constructor
   *
   * \param rs  The render system where you want to draw GUI elements 
@@ -203,11 +205,15 @@ void RainbruRPG::OgreGui::QuadRenderer::draw(){
   feedVectors(&vert, &uvs, &cols);
 
   if (mMaterialName.empty()){
-    cout << "Cannot get material name, texture will be blank" << endl;
+    LOGW("Cannot get material name, texture will be blank");
   }
   else{
     mMaterial = Ogre::MaterialManager::getSingleton( )
       .load( mMaterialName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
+
+    String s="Cannot get material named '"+mMaterialName+"'";
+
+    LOGA(mMaterial.get(), s.c_str());
 
     Ogre::TextureUnitState* tus=mMaterial
       ->getTechnique( 0 )->getPass( 0 )->getTextureUnitState(0);
@@ -216,8 +222,6 @@ void RainbruRPG::OgreGui::QuadRenderer::draw(){
     tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
 			   alphaValue, alphaValue, 1.0);
     
-    // Try to handle wine
-    //  tus->setDesiredFormat(PF_B8G8R8);
     tus->setTextureFiltering(Ogre::FO_LINEAR, Ogre::FO_LINEAR, Ogre::FO_NONE );
  
     mSceneManager->_setPass( mMaterial->getTechnique( 0 )->getPass( 0 ) );
@@ -274,7 +278,6 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   */
 void RainbruRPG::OgreGui::QuadRenderer::end(){
   mRenderSystem->setScissorTest( false );
-
 }
 
 /** Set the scissor rectangle
@@ -364,4 +367,10 @@ void RainbruRPG::OgreGui::QuadRenderer::setMaterialName(const String& mn){
 void RainbruRPG::OgreGui::QuadRenderer::reset(){
   mMaterialName="";
   useScissor=false;
+  mRenderSystem->_setViewport( mViewport );
+  mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
+
+  vert.clear();
+  uvs.clear();
+  cols.clear();
 }

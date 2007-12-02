@@ -29,8 +29,8 @@ using namespace RainbruRPG::OgreGui;
 
 /** The constructor
   *
-  * The minimal allowed size when window is resized is by default the
-  * initials dimensions. Please use setMinimalSize() to set this values
+  * The minimal allowed size when window is resized is by default 50x50.
+  * Please use setMinimalSize() to set this values
   * manually.
   *
   * \param D       The dimensions of the window to create as a Ogre vector
@@ -49,8 +49,8 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   activeTextInput(NULL),
   movingDevX(0),
   movingDevY(0),
-  minimalWidth(D.z),
-  minimalHeight(D.w),
+  minimalWidth(50),
+  minimalHeight(50),
   mAB(NULL),
   rootOverlay(NULL),
   borderTus(NULL),
@@ -88,8 +88,8 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     // Create a title bar
     Callback c;
     c.setType(OCT_WIN_MOVE);
-    //    mTB=new TitleBar(titlebarDim,caption,c, G, this);
-    //    buttonList.push_back(mTB);
+    mTB=new TitleBar(titlebarDim,caption,c, G, this);
+    buttonList.push_back(mTB);
   }
 }
 
@@ -114,33 +114,6 @@ BetaGUI::Window::~Window(){
   
   mGUI->getRootOverlay()->remove2D(rootOverlay);
 
-}
-
-/** Create a TextInput control inside this window
-  *
-  * \param D The dimension of the text input to create
-  * \param V The value of the text input
-  * \param L The lenght of the text input
-  *
-  */
-BetaGUI::TextInput* BetaGUI::Window::createTextInput(Vector4 D,String V,unsigned int L){
-
-  TextInput *x=new TextInput(D,V,L,this);
-  textInputList.push_back(x);
-  return x;
-}
-
-/** Creates a static text inside this window
-  *
-  * \param D The dimension of the text input to create
-  * \param T The text to draw with the static text
-  *
-  */
-void BetaGUI::Window::createStaticText(Vector4 D,String T){
-  OverlayContainer* x=mGUI->createOverlay(rootOverlay->getName()+StringConverter::toString(mGUI->getStaticTextUniqueId()),Vector2(D.x,D.y),Vector2(D.z,D.w),"", T,false);
-  
-  rootOverlay->addChild(x);
-  x->show();
 }
 
 /** Handle a key pressed event
@@ -274,9 +247,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       this->resize(px, py);
       
       if(mTB){
-
 	mTB->setWidth(width);
-	mTB->getOverlayContainer()->setWidth(mTB->getWidth());
       }
       
       return true;
@@ -404,13 +375,9 @@ void BetaGUI::Window::resize(unsigned int px, unsigned int py){
     height=py-y+8;
   }
 
-  // Resize the root overlay
-  rootOverlay->setDimensions(width, height);
-
   // Moves the ResizeGrip
   mRZ->setX(width-16);
   mRZ->setY(height-16);
-  mRZ->getOverlayContainer()->setPosition(mRZ->getX(),mRZ->getY());
 
   // Resize the title bar
   mTB->setWidth( width );
@@ -428,10 +395,7 @@ void BetaGUI::Window::resize(unsigned int px, unsigned int py){
   */
 void BetaGUI::Window::move(unsigned int px, unsigned int py){
   x=px-movingDevX;
-
   y=py-movingDevY;
-
-  rootOverlay->setPosition(x,y);
 }
 
 /** Change the minimal allowed size of this window
@@ -476,13 +440,31 @@ void BetaGUI::Window::setTitle(const String& title){
   mTB->setCaption(title);
 }
 
+/** Draws the resize grip
+  *
+  * \param qr The QuadRenderer used to draw it
+  *
+  */
 void BetaGUI::Window::draw(QuadRenderer* qr){
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Vector4 dim(x, y, width, height);
   qr->setAlpha( this->alpha );
   sk->drawWindow(qr, dim, "Caption");
 
-  for(unsigned int i=0;i<buttonList.size();i++)
+  for(unsigned int i=0;i<buttonList.size();i++){
     buttonList[i]->draw(qr);
+  }
+}
 
+/** Change the transparency of the window and all its childs
+  *
+  * \param f The new alpha value
+  *
+  */
+void BetaGUI::Window::setTransparency(float f){
+  this->alpha=f;
+
+  for(unsigned int i=0;i<buttonList.size();i++){
+    buttonList[i]->setTransparency(f);
+  }
 }

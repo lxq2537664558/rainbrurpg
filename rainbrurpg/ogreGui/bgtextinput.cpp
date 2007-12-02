@@ -186,6 +186,11 @@ bool BetaGUI::TextInput::isMasked(void){
   return this->masked;
 }
 
-void BetaGUI::TextInput::draw(QuadRenderer*){
+/** Draws the resize grip
+  *
+  * \param qr The QuadRenderer used to draw it
+  *
+  */
+void BetaGUI::TextInput::draw(QuadRenderer* qr){
 
 }

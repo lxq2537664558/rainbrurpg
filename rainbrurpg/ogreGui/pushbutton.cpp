@@ -60,18 +60,11 @@ RainbruRPG::OgreGui::PushButton::~PushButton(){
 
 }
 
-/** Changes the transparency if this button
+/** Draws the resize grip
   *
-  * \param f The new alpha value
+  * \param qr The QuadRenderer used to draw it
   *
   */
-void RainbruRPG::OgreGui::PushButton::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-  /*  s->setTransparency(mO, f);
-  s->setCaptionTransparency(mCP, f);
-  */
-}
-
 void RainbruRPG::OgreGui::PushButton::draw(QuadRenderer* qr){
 
 }

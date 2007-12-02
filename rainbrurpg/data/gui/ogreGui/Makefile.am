@@ -13,6 +13,7 @@ datafiles_DATA= bgui.button.active.png     		\
 		sample.fontdef      			\
 		bgui.textinput.active.png       	\
 		bgui.window.titlebar.png		\
+		bgui.window.titlebar.active.png		\
 		\
 		bgui.vscrollbar.bodybot.png		\
 		bgui.vscrollbar.botarrow.png 		\

@@ -2,7 +2,6 @@ TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- ResizeGrip drawn by QuadRenderer
 - TitleBar drawn by QuadRenderer
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -119,6 +118,8 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-162
+- active ResizeGrip drawn 
+- ResizeGrip drawn by QuadRenderer
 - Window drawn by QuadRenderer
 - OgreGuiRenderQueueListener registered to GameEngine's SceneManager
 - QuadRenderer now here

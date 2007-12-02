@@ -49,7 +49,6 @@ namespace RainbruRPG{
 		 OgreGuiSkinID sid=OSI_PARENT);
       ~PushButton();
 
-      virtual void setTransparency(float);
       virtual void draw(QuadRenderer*);
    };
 

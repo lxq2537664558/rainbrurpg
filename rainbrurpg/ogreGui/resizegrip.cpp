@@ -58,9 +58,17 @@ RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
  
 }
 
+/** Draws the resize grip
+  *
+  * \param qr The QuadRenderer used to draw it
+  *
+  */
 void RainbruRPG::OgreGui::ResizeGrip::draw(QuadRenderer* qr){
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  Vector4 dim(x, y, width, height);
+  int px=this->parent->getX()+x;
+  int py=this->parent->getY()+y;
+
+  Vector4 dim(px, py, width, height);
   qr->setAlpha( this->alpha );
-  sk->drawResizeGrip(qr, dim, false);
+  sk->drawResizeGrip(qr, dim, this->active);
 }

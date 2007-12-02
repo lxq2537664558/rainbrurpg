@@ -57,9 +57,9 @@ namespace RainbruRPG{
       virtual void drawWindow(QuadRenderer*, Vector4, String);
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
+      virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
-      virtual void createTitleBar(String, Vector4, String, Window*);
       virtual void createTextInput(String, Vector4, String, Window*);
       virtual void createLabel(String, Vector4, String, Window*);
       virtual void createVerticalScrollbar( const String&, Vector4, Window* );

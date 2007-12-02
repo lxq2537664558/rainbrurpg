@@ -53,8 +53,6 @@ namespace RainbruRPG{
 
       ~TitleBar();
 
-      virtual void setTransparency(float);
-
       void setWidth(unsigned int);
       virtual void draw(QuadRenderer*);
 

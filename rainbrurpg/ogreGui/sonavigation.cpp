@@ -45,7 +45,7 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   fsPushButton=16;
 }
 
-/** Create a window using the navigation skin
+/** Draws a window using the navigation skin
   *
   * It creates an overlay with a material named mnWindow.
   *
@@ -55,10 +55,9 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   * \warning This skin will not draw Window widget. Their are only used
   *          to add PushButton widgets for navigation purpose.
   *
-  * \param name    The internal name of the window
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
   * \param caption The title bar caption
-  * \param bg      The BetaGUI::GUI object 
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
@@ -84,19 +83,19 @@ createDialog(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
 }
 
 
-/** Graphically create a ResizeGrip widget
+/** Draws a ResizeGrip widget
   *
   * \warning This widget is not supported by this skin. Nothing will
   *          be displayed if you use this skin in a window containing
   *          a ResizeGrip.
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param win     The parent window
+  * \param active  Is this resize grip active
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawResizeGrip(QuadRenderer*, Vector4 dim, bool){
+drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active){
   LOGW("soNavigation cannot create ResizeGrip");
 
 }
@@ -114,21 +113,21 @@ drawResizeGrip(QuadRenderer*, Vector4 dim, bool){
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-createTitleBar(String name, Vector4 dim, String caption, Window* win){
+drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active){
   LOGW("soNavigation cannot create TitleBar");
 
 }
 
 /** Graphically create a PushButton widget
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
   * \param win     The parent window
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawPushButton(QuadRenderer*, Vector4 dim, String caption, Window* win){
+drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win){
 }
 
 /** Graphically create a TextInput widget

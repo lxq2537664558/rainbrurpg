@@ -85,14 +85,13 @@ namespace RainbruRPG{
         * Please see the sub-class documentation for implementation
         * details.
         *
-        * \param name    The internal name of the window
+        * \param qr      The QuadRenderer used to draw
         * \param dim     The window's dimension in pixels in a 
         *                Ogre::Vector4 object
         * \param caption The title bar caption
-        * \param bg      The BetaGUI::GUI object 
         *
         */
-      virtual void drawWindow(QuadRenderer*, Vector4 dim, String caption)=0;
+      virtual void drawWindow(QuadRenderer*qr, Vector4 dim, String caption)=0;
      /** Create a window with a border
         *
         * Please see the sub-class documentation for implementation
@@ -109,35 +108,36 @@ namespace RainbruRPG{
                                 GUI* bg)=0;
       /** Graphically create a ResizeGrip widget
         *
-        * \param name    The internal name of the ResizeGrip (must be unique)
+	* \param qr      The QuadRenderer used to draw
         * \param dim     The widget's dimension in pixels in a 
         *                Ogre::Vector4 object
-        * \param parent  The parent window
+        * \param active  Is this ersize grip is active ?
         *
         */
-     virtual void drawResizeGrip(QuadRenderer*, Vector4 dim, bool active)=0;
+     virtual void drawResizeGrip(QuadRenderer*qr, Vector4 dim, bool active)=0;
 
       /** Graphically create a TitleBar widget
         *
-        * \param name    The internal name of the ResizeGrip (must be unique)
+        * \param qr      The QuadRenderer used to draw
         * \param dim     The widget's dimension in pixels in a 
         *                Ogre::Vector4 object
         * \param caption The rendered text
-        * \param parent  The parent window
+        * \param active  Is this titlebar active
         *
         */
-     virtual void createTitleBar(String name, Vector4 dim, String caption,Window* parent)=0;
+     virtual void drawTitleBar(QuadRenderer* qr, Vector4 dim, 
+			       String caption, bool active)=0;
 
       /** Graphically create a PushButton widget
         *
-        * \param name    The internal name of the push button (must be unique)
+	* \param qr      The QuadRenderer used to draw
         * \param dim     The widget's dimension in pixels in a 
         *                Ogre::Vector4 object
         * \param caption The rendered text
         * \param parent  The parent window
         *
         */
-     virtual void drawPushButton(QuadRenderer*,Vector4 dim, String caption, 
+     virtual void drawPushButton(QuadRenderer*qr,Vector4 dim, String caption, 
 				   Window* parent)=0;
 
       /** Graphically create a TextInput widget
