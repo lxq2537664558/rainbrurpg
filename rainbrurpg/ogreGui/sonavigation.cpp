@@ -106,10 +106,10 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active){
   *          be displayed if you use this skin in a window containing
   *          a TitleBar.
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
-  * \param win     The parent window
+  * \param active  Is this title bar active ?
   *
   */
 void RainbruRPG::OgreGui::soNavigation::

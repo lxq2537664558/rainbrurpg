@@ -24,6 +24,8 @@
 
 #include "bgwindow.h"
 #include "quadrenderer.h"
+#include "fontmanager.h"
+#include "font.h"
 
 #include <logger.h>
 
@@ -56,6 +58,8 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   fsCaption=12;
 
   dialogBorderSize=1;
+
+  Font* f1=FontManager::getSingleton().getFont("Commonv2c.ttf", 48);
 }
 
 /** Create a window using the BetaGUI skin
@@ -76,6 +80,12 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
   qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
   qr->setMaterialName(mnWindow);
+
+  Font* f1=FontManager::getSingleton().getFont("Commonv2c.ttf", 48);
+  MaterialPtr m1=MaterialManager::getSingleton().getByName(mnWindow);
+  TextureUnitState* tus=m1->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+  tus->setTextureName("testFont");
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->draw();
   qr->reset();
@@ -107,10 +117,10 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
 
 /** Graphically create a TitleBar widget
   *
-  * \param name    The internal name of the ResizeGrip (must be unique)
+  * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
-  * \param win     The parent window
+  * \param active  Is this title ar active ?
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::

@@ -2,7 +2,6 @@ TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
 homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
-- TitleBar drawn by QuadRenderer
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -117,7 +116,14 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-163
+- OgreGUI/FontManager::copyGlyph implementation
+- OgreGUI/FontManager::renderGlyphs implementation
+- OgreGUI/FontManager::loadFont implementation
+
 * v 0.0.5-162
+- Glyph base implementation
+- TitleBar drawn by QuadRenderer
 - active ResizeGrip drawn 
 - ResizeGrip drawn by QuadRenderer
 - Window drawn by QuadRenderer
