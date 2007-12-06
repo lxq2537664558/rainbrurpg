@@ -22,16 +22,28 @@
 
 #include "font.h"
 
+#define GLYPH_V_SPACE 2
+
+/** The font constructor
+  *
+  * \param name The font name
+  * \param size The pixel size
+  *
+  */
 RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
   mName(name),
   mSize(size),
   mTexture(NULL),
-  mMaxGlyphHeight(0),
-  mMaxBearingY(0)
+  mMaxGlyphHeight(size+GLYPH_V_SPACE),
+  mMaxBearingY(0),
+  mTextureName("")
 {
 
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::OgreGui::Font::~Font(){
 
 }
@@ -70,4 +82,12 @@ void RainbruRPG::OgreGui::Font::setMaxBearingY(int val){
 
 TexturePtr RainbruRPG::OgreGui::Font::getTexture(){
   return mTexture;
+}
+
+void RainbruRPG::OgreGui::Font::setTextureName(const String& tn){
+  mTextureName=tn;
+}
+
+const String& RainbruRPG::OgreGui::Font::getTextureName(void)const{
+  return mTextureName;
 }

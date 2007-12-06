@@ -117,6 +117,10 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-163
+- Define DEBUG_FONT_TEXTURE 1 and DEBUG_FONT_NAME in FontManager to
+  test in soBetaGui if we should test the given font texture.
+  o The etsted texture will be set to the window background for test 
+    purpose
 - OgreGUI/FontManager::copyGlyph implementation
 - OgreGUI/FontManager::renderGlyphs implementation
 - OgreGUI/FontManager::loadFont implementation

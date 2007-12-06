@@ -65,15 +65,23 @@ namespace RainbruRPG{
       int getMaxBearingY(void);
       void setMaxBearingY(int);
 
+      void setTextureName(const String&);
+      const String& getTextureName(void)const;
+
     private:
       /** The font name */
       Ogre::String mName;
       /** The font size */
       unsigned int mSize;
+      /** A pointer to the font's texture */
       TexturePtr mTexture;
+      /** The maximum height of a glyph */
       size_t mMaxGlyphHeight;
+      /** A STL map iof glyphs */
       GlyphMap mGlyphMap;
       int mMaxBearingY;
+      /** The texture name */
+      Ogre::String mTextureName;
     };
   }
 }

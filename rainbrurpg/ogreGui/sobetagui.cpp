@@ -69,6 +69,10 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
   * The name parameter must be application unique. It is the 
   * name of the Ogre overlay we create.
   *
+  * \note Here is the implementation of the font texture debugger. Please
+  *       see the \c DEBUG_FONT_TEXTURE_QUAD and \c DEBUG_FONT_TTF_NAME
+  *       macros in fontmanager.h for further informations.
+  *
   * \param qr      The QuaRdRenderer used to draw
   * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
   * \param caption The title bar caption
@@ -81,10 +85,20 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
   qr->setMaterialName(mnWindow);
 
-  Font* f1=FontManager::getSingleton().getFont("Commonv2c.ttf", 48);
+#ifndef DEBUG_FONT_TEXTURE_QUAD
+  LOGW("Cannot get DEBUG_FONT_TEXTURE_QUAD value");
+#endif
+
+#ifndef DEBUG_FONT_TTF_NAME
+  LOGW("Cannot get DEBUG_FONT_TEXTURE_NAME value");
+#endif
+
+#if (DEBUG_FONT_TEXTURE_QUAD==true)
+  Font* f1=FontManager::getSingleton().getFont(DEBUG_FONT_TTF_NAME, 48);
   MaterialPtr m1=MaterialManager::getSingleton().getByName(mnWindow);
   TextureUnitState* tus=m1->getTechnique(0)->getPass(0)->getTextureUnitState(0);
-  tus->setTextureName("testFont");
+  tus->setTextureName(f1->getTextureName());
+#endif
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->draw();

@@ -38,6 +38,21 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+/** Should we debug the font texture
+  *
+  * If \c true, we will apply the texture called \c DEBUG_FONT_TEXTURE_NAME
+  * to the window background. See soBetaGui::drawWindow for test 
+  * implementation.
+  *
+  */
+#define DEBUG_FONT_TEXTURE_QUAD true
+/** The name of the font's texture
+  *
+  * See soBetaGui::drawWindow for test implementation.
+  *
+  */
+#define DEBUG_FONT_TTF_NAME "Commonv2c.ttf"
+
 using namespace std;
 using namespace RainbruRPG;
 
@@ -45,11 +60,13 @@ namespace RainbruRPG{
   namespace OgreGui{
 
     typedef std::list<Font*> tFontList;
-    typedef std::vector<const char*> tGlyphList;
+    typedef std::vector<unsigned long> tGlyphList;
 
     /** A singleton that manage Font objects
       * 
+      * \section FontManager_utf8_charmap UTF-8 charmap
       *
+      * \htmlinclude utf8_charmap.html
       *
       */
     class FontManager : public RainbruRPG::Core::Singleton<FontManager>{
@@ -61,9 +78,9 @@ namespace RainbruRPG{
       OgreGui::Font* getFont(const String&, unsigned int);
 
     private:
-      void renderGlyphs( Font*, FT_Face, Ogre::uint32*, unsigned int);
-      void copyGlyph( FT_Bitmap*, Ogre::uint32*, int );
-
+      void renderGlyphs( Font*, FT_Face, int*, unsigned int);
+      void copyGlyph( FT_Bitmap*, int*, int );
+      void feedGlyphList(unsigned long, unsigned long);
 
       /** The list of fonts */
       tFontList mFontList;

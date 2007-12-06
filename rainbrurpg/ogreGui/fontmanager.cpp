@@ -23,6 +23,7 @@
 #include "fontmanager.h"
 
 #include <logger.h>
+#include <stringconv.h>
 
 #include <OgreResourceGroupManager.h>
 #include <OgreTextureManager.h>
@@ -32,16 +33,16 @@
 
 #define GLYPH_PAD_SPACE 2
 
-/** The destructor
+using namespace RainbruRPG::Core;
+
+/** The constructor
+  *
+  * Feeds the glyph list according to the current charmap.
   *
   */
 RainbruRPG::OgreGui::FontManager::FontManager(){
-  mGlyphList.push_back("a");
-  mGlyphList.push_back("b");
-  mGlyphList.push_back("c");
-  mGlyphList.push_back("d");
-  mGlyphList.push_back("e");
-  mGlyphList.push_back("f");
+  feedGlyphList(0x20, 0x7F);
+
 }
 
 /** The destructor 
@@ -97,6 +98,7 @@ loadFont(const String& name, unsigned int size){
   FT_Face face;
   FT_Error err;
 
+  // Initialize FreeType library
   err= FT_Init_FreeType(&lib);
   LOGA(err==0, "Unable to initialize FreeType");
   if (err){
@@ -114,18 +116,23 @@ loadFont(const String& name, unsigned int size){
 
   err=FT_Set_Char_Size( face, 0, size * 64, 96, 96 );
   LOGA(err==0, "Unable to set font size");
+
+  err=FT_Select_Charmap( face,FT_ENCODING_UNICODE);
   
   // Get the size of the texture
   int texWidth=512;
   int texHeight=512;
 
+  Ogre::String textureName="testFont";
+  newFont->setTextureName(textureName);
+
   // Create and initialize the texture
   TexturePtr texture=TextureManager::getSingleton()
-    .createManual("testFont", "OgreGui.FonrManager", TEX_TYPE_2D,
+    .createManual(textureName, "OgreGui.FonrManager", TEX_TYPE_2D,
 		  texWidth, texHeight, 32, 5, PF_A8R8G8B8 );
 
   // Clear texture and render glyphs
-  Ogre::uint32* buffer=(Ogre::uint32*)texture->getBuffer()
+  int* buffer=(int*)texture->getBuffer()
     ->lock(HardwareBuffer::HBL_DISCARD );
 
   memset( buffer, 0, texWidth * texHeight * 4 ); // 4 bytes int ??
@@ -153,9 +160,10 @@ loadFont(const String& name, unsigned int size){
   *
   */
 void RainbruRPG::OgreGui::FontManager::
-renderGlyphs( Font* vFont, FT_Face vFace, Ogre::uint32* vBuffer, 
+renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer, 
 	      unsigned int vTexSize){
   
+  FT_Error err;
   GlyphMap glyphs = vFont->getGlyphMap( );
   
   FT_GlyphSlot slot = vFace->glyph;
@@ -173,8 +181,25 @@ renderGlyphs( Font* vFont, FT_Face vFace, Ogre::uint32* vBuffer,
   for ( x = 0; x < count; x++ )	{
 
     FT_ULong charCode=(FT_ULong)mGlyphList[x];
-    if ( FT_Load_Char( vFace, charCode, FT_LOAD_RENDER ) )
+    FT_UInt glyph_index = FT_Get_Char_Index( vFace, charCode );
+    if (glyph_index==0){
+      string warn;
+      warn= "Undefined character code for charcode ";
+      warn+=StringConv::getSingleton().itos(charCode);
+      LOGW(warn.c_str());
+    }
+
+    /*   if ( FT_Load_Char( vFace, charCode, FT_LOAD_RENDER ) )
       continue;
+    */
+    err=FT_Load_Glyph( vFace, /* handle to face object */  
+		       glyph_index, /* glyph index */  
+		       FT_LOAD_RENDER );
+    if (err!=0){
+      LOGCATS("FT error code while loading glyph :");
+      LOGCATI(err);
+      LOGCAT();
+    }
 
     width = slot->bitmap.width + GLYPH_PAD_SPACE;
     
@@ -182,11 +207,11 @@ renderGlyphs( Font* vFont, FT_Face vFace, Ogre::uint32* vBuffer,
     if ( ( cur_x + width ) >= vTexSize )
       {
 	cur_x = 0;
-	cur_y += vFont->getMaxGlyphHeight( );
+	cur_y += vFont->getMaxGlyphHeight();
       }
     
     // calculate offset into buffer for this glyph
-    Ogre::uint32* dest_buffer = vBuffer + ( cur_y * vTexSize ) + cur_x;
+    int* dest_buffer = vBuffer + ( cur_y * vTexSize ) + cur_x;
     copyGlyph( &slot->bitmap, dest_buffer, vTexSize );
     
     // Setup the glyph data
@@ -221,19 +246,37 @@ renderGlyphs( Font* vFont, FT_Face vFace, Ogre::uint32* vBuffer,
   *
   */
 void RainbruRPG::OgreGui::FontManager::
-copyGlyph( FT_Bitmap* vBitmap, Ogre::uint32* vBuffer, int vWidth ){
+copyGlyph( FT_Bitmap* vBitmap, int* vBuffer, int vWidth ){
   int i;
+  char val;
+
   for ( i = 0; i < vBitmap->rows; i++ ){
     int j;
     for ( j = 0; j < vBitmap->width; j++ ){
-      Ogre::uint8* bytebuff = (Ogre::uint8*)( &vBuffer[j] );
+      // char for int8 typedef
+      char* bytebuff = (char*)( &vBuffer[j] );
+      val= (int)vBitmap->buffer[ (i * vBitmap->pitch) + j ];
 
+#if (DEBUG_FONT_TEXTURE_QUAD==true)
+      *bytebuff++ = val;
+      *bytebuff++ = val;
+      *bytebuff++ = val;
+      *bytebuff++ = val;
+#else
       *bytebuff++ = 0xFF;
       *bytebuff++ = 0xFF;
       *bytebuff++ = 0xFF;
-      *bytebuff = vBitmap->buffer[ (i * vBitmap->pitch) + j ];
+      *bytebuff = val;
+#endif
     }
 
     vBuffer += vWidth;
+  }
+}
+
+void RainbruRPG::OgreGui::FontManager::
+feedGlyphList(unsigned long from, unsigned long to){
+  for (unsigned long i=from; i<to; i++){
+    mGlyphList.push_back(i);
   }
 }
