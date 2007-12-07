@@ -30,6 +30,7 @@
 
 #include <OgrePrerequisites.h>
 #include <OgreTexture.h>
+#include <OgreMaterial.h>
 
 #include "glyph.h"
 
@@ -68,6 +69,9 @@ namespace RainbruRPG{
       void setTextureName(const String&);
       const String& getTextureName(void)const;
 
+      MaterialPtr getMaterial();
+
+
     private:
       /** The font name */
       Ogre::String mName;
@@ -82,6 +86,8 @@ namespace RainbruRPG{
       int mMaxBearingY;
       /** The texture name */
       Ogre::String mTextureName;
+
+      MaterialPtr material;
     };
   }
 }

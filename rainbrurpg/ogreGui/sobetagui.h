@@ -37,6 +37,7 @@
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
+    class Font;
   }
 }
 // End of forward declarations
@@ -75,11 +76,6 @@ namespace RainbruRPG{
 
 
       // ============= FONTS VALUES =================
-      /** The font name used to draw the titlebar */
-      Ogre::String fnTitleBar;
-      /** The font size used to draw the titlebar */
-      unsigned int fsTitleBar;
-
       /** The font name used to draw the PushButton */
       Ogre::String fnPushButton;
       /** The font size used to draw the PushButton */
@@ -90,6 +86,7 @@ namespace RainbruRPG{
       /** The font size used to draw captions */
       unsigned int fsCaption;
 
+      Font* titleFont;
     };
 
   }

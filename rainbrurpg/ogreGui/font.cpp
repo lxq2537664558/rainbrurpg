@@ -22,6 +22,10 @@
 
 #include "font.h"
 
+#include "stringconv.h"
+
+#include <OgreMaterialManager.h>
+
 #define GLYPH_V_SPACE 2
 
 /** The font constructor
@@ -38,6 +42,12 @@ RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
   mMaxBearingY(0),
   mTextureName("")
 {
+
+  String sizeName=StringConv::getSingleton().itos(size);
+  String matName= name+sizeName;
+
+  material=MaterialManager::getSingleton().create(matName, "FontGroup");
+
 
 }
 
@@ -90,4 +100,8 @@ void RainbruRPG::OgreGui::Font::setTextureName(const String& tn){
 
 const String& RainbruRPG::OgreGui::Font::getTextureName(void)const{
   return mTextureName;
+}
+
+MaterialPtr RainbruRPG::OgreGui::Font::getMaterial(){
+  return material;
 }

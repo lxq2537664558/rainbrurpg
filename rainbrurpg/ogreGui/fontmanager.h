@@ -45,7 +45,7 @@
   * implementation.
   *
   */
-#define DEBUG_FONT_TEXTURE_QUAD true
+#define DEBUG_FONT_TEXTURE_QUAD false
 /** The name of the font's texture
   *
   * See soBetaGui::drawWindow for test implementation.

@@ -23,6 +23,7 @@
 #include "quadrenderer.h"
 
 #include "logger.h"
+#include "font.h"
 
 /** The renderer constructor
   *
@@ -129,7 +130,7 @@ feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs,
 /** Draw a text rectangle
   *
   */
-void RainbruRPG::OgreGui::QuadRenderer::drawRectangle(){
+void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
   // Lock buffer
   GuiVertex* data = (GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
 
@@ -200,8 +201,10 @@ void RainbruRPG::OgreGui::QuadRenderer::setUvMap(double u1, double v1, double u2
 /** Fire the drawing of the quad
   *
   */
-void RainbruRPG::OgreGui::QuadRenderer::draw(){
+void RainbruRPG::OgreGui::QuadRenderer::
+drawRectangle(const Ogre::Rectangle& corners){
 
+  setCorners(corners.left, corners.top, corners.right, corners.bottom);
   feedVectors(&vert, &uvs, &cols);
 
   if (mMaterialName.empty()){
@@ -237,7 +240,7 @@ void RainbruRPG::OgreGui::QuadRenderer::draw(){
   }
 
 
-  drawRectangle();
+  drawQuad();
 }
 
 /** Begin the rendering
@@ -373,4 +376,40 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(){
   vert.clear();
   uvs.clear();
   cols.clear();
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::
+drawText(Font* font, const string& text, const Rectangle& rect){
+
+  Ogre::TextureUnitState* tus=font->getMaterial()
+    ->getTechnique( 0 )->getPass( 0 )->getTextureUnitState(0);
+
+  tus->setTextureName(font->getTextureName());
+  mSceneManager->_setPass(font->getMaterial()->getTechnique(0)->getPass(0));
+
+  beginGlyphs();
+  /*
+  vFont->renderAligned( (*this), vText, mColor, vRect, true, vHorzAlign, vVertAlign, vWrap );
+  */
+  endGlyphs( );
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
+  if ( mBatchPointer == 0 ){
+    mBatchPointer = (GuiVertex*)mBuffer
+      ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+    mBatchCount = 0;
+  }
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::endGlyphs(void){
+  if ( mBatchPointer != 0 ){
+    mBuffer->unlock( );
+
+    if ( mBatchCount > 0 )
+      renderGlyphs( );
+
+    mBatchPointer = 0;
+    mBatchCount = 0;
+  }
 }

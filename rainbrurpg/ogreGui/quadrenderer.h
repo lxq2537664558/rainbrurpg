@@ -41,6 +41,14 @@
 using namespace std;
 using namespace Ogre;
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Font;
+  }
+}
+// End of forward declarations
+
 namespace RainbruRPG {
   namespace OgreGui {
 
@@ -61,9 +69,9 @@ namespace RainbruRPG {
      *
      * To use it : 
      * -# start with a call to begin();
-     * -# then, call setCorners(),
-     * setUvMap(), setScissorRectangle() and other parametters settings;
-     * -# call draw(); 
+     * -# then, call setUvMap(), setScissorRectangle() 
+     *    and other parametters settings;
+     * -# call drawRectangle(); 
      * -# Call end() when you finished to draw the frame.
      *
      * Repeat the second and third steps (parameters settings) for other quads
@@ -86,24 +94,31 @@ namespace RainbruRPG {
       ~QuadRenderer();
       
       void begin();
-      void draw();
       void end();
       void reset();
       
-      void setCorners(int, int, int, int);
       void setUvMap(double, double, double, double);
       void setScissorRectangle(int, int, int, int);
       
       void setAlpha(float);
       void setMaterialName(const String&);
       
+      void drawRectangle(const Ogre::Rectangle&);
+      void drawText(Font*, const string&, const Rectangle&);
+
     private:
       void setupHardwareBuffer();
+      void setCorners(int, int, int, int);
       void feedVectors(vector<Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
-      void drawRectangle();
+      void drawQuad();
       void createTexture();
+
       double xPixelToNative(int);
       double yPixelToNative(int);
+
+      void beginGlyphs(void);
+      void endGlyphs(void);
+
     
       /** The current Ogre scene manager
         *
@@ -200,6 +215,9 @@ namespace RainbruRPG {
       
       /** The current material name */ 
       String mMaterialName;
+
+      GuiVertex* mBatchPointer;
+      size_t mBatchCount;
     };
   }
 }

@@ -1,7 +1,7 @@
 TODO
 
-o [mouse] OgreGuiToolkit : GUI over Ogre3D based on BetaGUI
-homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
+o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
+- QuadRenderer::drawText() implementation
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -117,6 +117,8 @@ homepage : http://www.ogre3d.org/wiki/index.php/BetaGUI
 * *******************************************************
 
 * v 0.0.5-163
+- QuadRenderer::drawRectangle() implementation
+- Skins use drawRectangle instead of draw
 - Define DEBUG_FONT_TEXTURE 1 and DEBUG_FONT_NAME in FontManager to
   test in soBetaGui if we should test the given font texture.
   o The etsted texture will be set to the window background for test 

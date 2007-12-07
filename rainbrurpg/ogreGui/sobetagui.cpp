@@ -39,16 +39,16 @@
   * It simply creates a SkinOverlay called \e soBetaGUI
   *
   */
-RainbruRPG::OgreGui::soBetaGui::soBetaGui() 
-: SkinOverlay("soBetaGUI"){
+RainbruRPG::OgreGui::soBetaGui::soBetaGui(): 
+  SkinOverlay("soBetaGUI"),
+  titleFont(NULL)
+{
   mnWindow="bgui.window";
-  mnResizeGrip="bgui.window.resize";
   mnTitleBar="bgui.window.titlebar";
+  mnResizeGrip="bgui.window.resize";
   mnPushButton="bgui.button";
   mnDialogBorder="bgui.dialog.border";
 
-  fnTitleBar="BlueHighway";
-  fsTitleBar=20;	       
   fnPushButton="BlueHighway";
   fsPushButton=10;
 
@@ -59,7 +59,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
 
   dialogBorderSize=1;
 
-  Font* f1=FontManager::getSingleton().getFont("Commonv2c.ttf", 48);
+  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
 }
 
 /** Create a window using the BetaGUI skin
@@ -81,7 +81,12 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui()
 void RainbruRPG::OgreGui::soBetaGui::
 drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
   // Draw the window background
-  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  Rectangle corners;
+  corners.left=dim.x;
+  corners.top =dim.y;
+  corners.right=dim.x+dim.z;
+  corners.bottom=dim.y+dim.w;
+
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
   qr->setMaterialName(mnWindow);
 
@@ -101,7 +106,7 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
 #endif
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  qr->draw();
+  qr->drawRectangle(corners);
   qr->reset();
 }
 
@@ -114,7 +119,13 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
-  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  Rectangle corners;
+  corners.left=dim.x;
+  corners.top =dim.y;
+  corners.right=dim.x+dim.z;
+  corners.bottom=dim.y+dim.w;
+
+
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
 
   if (active){
@@ -125,7 +136,7 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   }
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  qr->draw();
+  qr->drawRectangle(corners);
   qr->reset();
 }
 
@@ -139,7 +150,12 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
-  qr->setCorners(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  Rectangle corners;
+  corners.left=dim.x;
+  corners.top =dim.y;
+  corners.right=dim.x+dim.z;
+  corners.bottom=dim.y+dim.w;
+
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
 
   if (active){
@@ -150,7 +166,10 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   }
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  qr->draw();
+  qr->drawRectangle(corners);
+
+  qr->drawText(titleFont, "TitleBar", corners);
+
   qr->reset();
 }
 
@@ -164,12 +183,17 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win ){
+  Rectangle corners;
+
+  corners.left  = dim.x+win->getX();
+  corners.top   = dim.y+win->getY();
+  corners.right = dim.x+dim.z+win->getX();
+  corners.bottom= dim.y+dim.w+win->getY();
 
 
-  qr->setCorners(dim.x+win->getX(), dim.y+win->getY(), dim.x+dim.z+win->getX(), dim.y+dim.w+win->getY());
   qr->setMaterialName(mnWindow);
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  qr->draw();
+  qr->drawRectangle(corners);
   qr->reset();
 
 
@@ -307,6 +331,4 @@ createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
   // Creates the cursor
   dim.y-=(14*2)+bodyMidHeight;
   this->createOverlay(name+"c", dim, "bgui.vscrollbar.cursor", oc);
-
-
 }
