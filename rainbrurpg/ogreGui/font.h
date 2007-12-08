@@ -28,15 +28,29 @@
 #ifndef _OGRE_GUI_OGRE_FONT_H_
 #define _OGRE_GUI_OGRE_FONT_H_
 
+#include <string>
+
 #include <OgrePrerequisites.h>
-#include <OgreTexture.h>
+#include <OgreColourValue.h>
+#include <OgreRectangle.h>
 #include <OgreMaterial.h>
+#include <OgreTexture.h>
 
 #include "glyph.h"
+#include "lineinfo.h"
 
 using namespace Ogre;
 using namespace RainbruRPG::OgreGui;
 
+// Forward declarations
+namespace RainbruRPG {
+  namespace OgreGui {
+    class QuadRenderer;
+  }
+}
+//End of forward declarations
+
+typedef std::vector<LineInfo> LineInfoList;
 typedef std::map<size_t, Glyph> GlyphMap;
 
 namespace RainbruRPG{
@@ -70,7 +84,8 @@ namespace RainbruRPG{
       const String& getTextureName(void)const;
 
       MaterialPtr getMaterial();
-
+      void renderAligned( QuadRenderer*, const std::string&, 
+			  const ColourValue&, const Rectangle& );
 
     private:
       /** The font name */
@@ -83,11 +98,20 @@ namespace RainbruRPG{
       size_t mMaxGlyphHeight;
       /** A STL map iof glyphs */
       GlyphMap mGlyphMap;
+      /** \todo documentation ?? */
       int mMaxBearingY;
       /** The texture name */
       Ogre::String mTextureName;
-
+      /** A material created in constructor to allow the use
+        * of Ogre::Renderer::_setPass().
+	*
+	* \todo When switching to Ogre 1.4, using Ogre::Renderer::_setTexture()
+	*       instead of Ogre::Renderer::_setPass().
+	*
+	*/
       MaterialPtr material;
+
+      LineInfoList mLineList;
     };
   }
 }

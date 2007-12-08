@@ -274,6 +274,12 @@ copyGlyph( FT_Bitmap* vBitmap, int* vBuffer, int vWidth ){
   }
 }
 
+/** Feed the glyph list with the given range of characters
+  *
+  * \param from The first character of the range
+  * \param to   The last character of the range
+  *
+  */
 void RainbruRPG::OgreGui::FontManager::
 feedGlyphList(unsigned long from, unsigned long to){
   for (unsigned long i=from; i<to; i++){

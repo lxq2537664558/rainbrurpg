@@ -43,7 +43,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mViewport(vp),
   useScissor(false),
   alphaValue(ALPHA),
-  mMaterialName()
+  mMaterialName(),
+  mColor(DEFAULT_COL)
 {
 
 
@@ -378,6 +379,13 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(){
   cols.clear();
 }
 
+/** Draw a text
+  *
+  * \param font The font used to draw the text
+  * \param text The text to draw
+  * \param rect The rectangle where to draw the text
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::
 drawText(Font* font, const string& text, const Rectangle& rect){
 
@@ -388,12 +396,15 @@ drawText(Font* font, const string& text, const Rectangle& rect){
   mSceneManager->_setPass(font->getMaterial()->getTechnique(0)->getPass(0));
 
   beginGlyphs();
-  /*
-  vFont->renderAligned( (*this), vText, mColor, vRect, true, vHorzAlign, vVertAlign, vWrap );
-  */
+  
+  font->renderAligned( (*this), text, mColor, rect );
+  
   endGlyphs( );
 }
 
+/** Begin to draw text
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
   if ( mBatchPointer == 0 ){
     mBatchPointer = (GuiVertex*)mBuffer
@@ -402,6 +413,9 @@ void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
   }
 }
 
+/** End to draw text
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::endGlyphs(void){
   if ( mBatchPointer != 0 ){
     mBuffer->unlock( );

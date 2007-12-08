@@ -59,7 +59,18 @@ using namespace RainbruRPG;
 namespace RainbruRPG{
   namespace OgreGui{
 
+    /** A stl list of font pointer
+      *
+      * Used in FontManager.
+      *
+      */
     typedef std::list<Font*> tFontList;
+
+    /** Avector of character code
+      *
+      * Used in FontManager.
+      *
+      */
     typedef std::vector<unsigned long> tGlyphList;
 
     /** A singleton that manage Font objects
@@ -86,7 +97,6 @@ namespace RainbruRPG{
       tFontList mFontList;
       /** The glyph to draw */
       tGlyphList mGlyphList;
-
 
     };
   }

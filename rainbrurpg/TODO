@@ -1,6 +1,9 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
+- Font::processText implementation
+- Font::renderAligned(LineInfoList) implementation
+- QuadRenderer::renderGlyph implementation
 - QuadRenderer::drawText() implementation
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -14,12 +17,12 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 
 * Unittest implementation of common/
 - curlpersoheaderaddtest
-- In this order
+- In this order :
    curlpersoheaderadd
    curlpersomodifattrb.h
    curlservermodifclients.h
    curlsubmitform.h
-- Modified files
+- Modified files :
 
 * cross-compilation to win32
 - fix the config.h warnings (PACKAGE redefined...)
@@ -117,6 +120,7 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-163
+- LineInfo become a class
 - QuadRenderer::drawRectangle() implementation
 - Skins use drawRectangle instead of draw
 - Define DEBUG_FONT_TEXTURE 1 and DEBUG_FONT_NAME in FontManager to

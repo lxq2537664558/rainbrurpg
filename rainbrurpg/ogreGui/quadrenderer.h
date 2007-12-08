@@ -216,8 +216,14 @@ namespace RainbruRPG {
       /** The current material name */ 
       String mMaterialName;
 
+      /** Used when drawing text */
       GuiVertex* mBatchPointer;
+
+      /** Used when drawing text */
       size_t mBatchCount;
+
+      /** The current drawing color */
+      ColourValue mColor;
     };
   }
 }

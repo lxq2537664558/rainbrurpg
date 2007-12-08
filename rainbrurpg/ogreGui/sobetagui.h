@@ -86,6 +86,7 @@ namespace RainbruRPG{
       /** The font size used to draw captions */
       unsigned int fsCaption;
 
+      /** The font used in window's titlebar */
       Font* titleFont;
     };
 

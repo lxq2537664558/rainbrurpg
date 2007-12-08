@@ -12,6 +12,7 @@ h_sources= bgbutton.h			\
 	   fontmanager.h		\
 	   glyph.h			\
 	   label.h			\
+	   lineinfo.h			\
 	   object.h			\
 	   pushbutton.h			\
 	   quadrenderer.h		\
@@ -36,6 +37,7 @@ cc_sources= bgbutton.cpp		\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
 	    label.cpp			\
+	    lineinfo.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\
