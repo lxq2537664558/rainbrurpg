@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -31,9 +31,9 @@
 #include <sstream>
 #include <curl/curlver.h>
 #include <OGRE/OgrePrerequisites.h>
-#include <CEGUI/CEGUIVersion.h>
 #include <fox-1.6/fxver.h>
 #include <OIS/OISPrereqs.h>
+
 #include "logger.h"
 
 #ifndef VERSION_H

@@ -16,7 +16,7 @@ INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
 	   -I$(top_srcdir)/design/ \
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore \
-	    $(OGRE_CFLAGS)
+	    $(shell pkg-config OGRE --cflags) 
 
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
 # Remember to include the name of the resource file with the .cpp extension.
@@ -54,12 +54,6 @@ nodist_rainbrurpg_editor_SOURCES = moc_mainwindow.cpp       \
 			   moc_highlighter.cpp      \
 			   moc_luahighlighter.cpp   \
 			   moc_scripteditor.cpp
-
-# This is to ensure the myapp.h file is distributed in your myapp-0.1.tar.gz
-# I also have a resources.qrc I need to include. The png is used in myapp.
-#EXTRA_DIST = \
-#	$(nodist_myapp_SOURCES:moc_%.cpp=%.h) \
-#	resources.qrc myapp.png
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h

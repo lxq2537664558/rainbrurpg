@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -25,21 +25,6 @@
 
 #include <logger.h>
 
-//mem probs without this next one
-#include <OgreNoMemoryMacros.h>
-#include <CEGUI/CEGUIImageset.h>
-#include <CEGUI/CEGUISystem.h>
-#include <CEGUI/CEGUILogger.h>
-#include <CEGUI/CEGUISchemeManager.h>
-#include <CEGUI/CEGUIWindowManager.h>
-#include <CEGUI/CEGUIFontManager.h>
-#include <CEGUI/CEGUIWindow.h>
-//#include <CEGUI/elements/CEGUIPushButton.h>
-
-#include "OgreCEGUIRenderer.h"
-#include "OgreCEGUIResourceProvider.h"
-//regular mem handler
-#include <OgreMemoryMacros.h> 
 #include "exampleframelistener.h"
 
 #include "guimanager.h"
@@ -57,19 +42,10 @@ namespace RainbruRPG{
       *
       */
     class GuiFrameListener : public ExampleFrameListener, 
-                             public MouseMotionListener, 
                              public MouseListener{
-      
-    private:
-      /** The CEGUI renderer */
-      CEGUI::Renderer* mGUIRenderer;
-      /** A flag saying if we have requested the shutdown of the engine */
-      bool mShutdownRequested;
 
     public:
-      // NB using buffered input
-      GuiFrameListener(RenderWindow* win, Camera* cam, 
-		       CEGUI::Renderer* renderer);
+      GuiFrameListener(RenderWindow* win, Camera* cam);
        
 
       void setCamera(Camera*);
@@ -81,20 +57,47 @@ namespace RainbruRPG{
       virtual bool frameStarted(const FrameEvent& evt);
       virtual bool frameEnded(const FrameEvent& evt);
 
-      void mouseMoved (MouseEvent *e);
-      void mouseDragged (MouseEvent *e);
-      void mousePressed (MouseEvent *e);
-      void mouseReleased (MouseEvent *e);
+      bool mouseMoved (const MouseEvent& e);
+      bool mouseDragged(const MouseEvent& e);
+      bool mousePressed(const MouseEvent& e);
+      bool mouseReleased(const MouseEvent& e);
+
+      /** A unimplemented function
+        *
+	* \param e The event
+	* \param btn The button identifier
+	*
+	* \return nothing
+	*
+	*/
+      virtual bool mousePressed(const OIS::MouseEvent& e, 
+				OIS::MouseButtonID btn){};
+      /** A unimplemented function
+        *
+	* \param e The event
+	* \param btn The button identifier
+	*
+	* \return nothing
+	*
+	*/
+      virtual bool mouseReleased(const OIS::MouseEvent& e, 
+				 OIS::MouseButtonID btn){};
+
       /** An empty mouse clicked event listener */
       void mouseClicked(MouseEvent* e) {}
       /** An empty mouse entered event listener */
       void mouseEntered(MouseEvent* e) {}
       /** An empty mouse exited event listener */
       void mouseExited(MouseEvent* e) {}
-      void keyPressed(KeyEvent* e);
-      void keyReleased(KeyEvent* e);
-      void keyClicked(KeyEvent* e);
 
+      bool keyPressed(const KeyEvent& e);
+      bool keyReleased(const KeyEvent& e);
+      bool keyClicked(const KeyEvent& e);
+      
+    private:
+      /** A flag saying if we have requested the shutdown of the engine */
+      bool mShutdownRequested;
+      float mMoveScale;
     };
 
   }

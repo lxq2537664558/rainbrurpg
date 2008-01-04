@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -35,7 +35,6 @@
 #define _TabNavigation_h_
 
 #include <vector>
-#include "CEGUI.h"
 
 #include <logger.h>
 
@@ -130,47 +129,14 @@ namespace RainbruRPG{
       */
     class KeyboardNavigation{
     public:
-      void setParent(const CEGUI::String& window);
+      /*      void setParent(const CEGUI::String& window);
       void addWidget(const CEGUI::TabControl* tabControl);
       void addWidget(const CEGUI::String& window);
       void addMultiColumnList(const CEGUI::String&, 
 			      const CEGUI::SubscriberSlot& );
-      
+      */
       void clear();
 
-    private:
-      bool _onParentActivated(const CEGUI::EventArgs& e);
-      bool _onActivated(const CEGUI::EventArgs& e);
-      bool _onCharacterKey(const CEGUI::EventArgs& e);
-
-      // MultiColumnList keyboard navigation handle
-      bool onListKeyDown(const CEGUI::EventArgs&);
-      void selectNext(CEGUI::MultiColumnList*);
-      void selectPrevious(CEGUI::MultiColumnList*);
-      int getSelectedRow(CEGUI::MultiColumnList*);
-      void setRowSelectState(CEGUI::MultiColumnList*, int, bool, 
-			     tRowSelectionDirection);
-
-      void selectNextPage(CEGUI::MultiColumnList*);
-      void selectPreviousPage(CEGUI::MultiColumnList*);
-
-      /** Maintains the list of widgets that participate in the tab order */
-      std::vector<CEGUI::String> _tabNavigation;
-      
-      /** Maintains the last known widget to have the focus. */
-      std::vector<CEGUI::String>::iterator _lastKnownFocus;
-
-      /** The parent window name
-        *
-	* This value is set with the setParent() function. It is very 
-	* important when using a MultiColumnList widget as the 
-	* onListKeyDown() function need to get a pointer to the 
-	* active MultiColumnList. 
-	*
-	* \sa setParent(), onListKeyDown(), addMultiColumnList().
-	*
-	*/
-      CEGUI::String parentName;
     };
   }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -38,9 +38,6 @@
 RainbruRPG::Core::gsServerList::gsServerList()
   :gsMenuBase(false){
 
-  serverList=NULL;
-  nbServer=NULL;
-
   LOGI("Constructing a gsServerList");
   velocity=new vcConstant();
   translateTo(0.0f);
@@ -62,9 +59,6 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
     velocity=NULL;
   }
 
-  serverList=NULL;
-  nbServer=NULL;
-
   delete xml;
   xml=NULL;
 }
@@ -78,10 +72,6 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
 void RainbruRPG::Core::gsServerList::init(){
   LOGI("Initialising gsServerList");
   gsMenuBase::init();
-  GuiManager::getSingleton().loadCEGUILayout("serverList.layout");
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/ServerList";
 
   setupServerList();
   setupTabOrder();
@@ -96,12 +86,6 @@ void RainbruRPG::Core::gsServerList::init(){
   */
 void RainbruRPG::Core::gsServerList::resume(){
   Ogre::RenderWindow* rw=GameEngine::getSingleton().getRenderWindow();
-  // GuiManager::getSingleton().createTitleOverlay(rw);
-  GuiManager::getSingleton().loadCEGUILayout("serverList.layout");
-  setupServerList();
-
-  // Initialise the dialog parent
-  this->rootWindowName="RainbruRPG/Connection";
 
   setupTabOrder();
 }
@@ -116,54 +100,8 @@ void RainbruRPG::Core::gsServerList::resume(){
   */
 void RainbruRPG::Core::gsServerList::setupServerList(){
 
-  // Subscribe event
-  CEGUI::Window* root=CEGUI::System::getSingleton().getGUISheet();
-
-  // Root window
-  CEGUI::Window* mainWindow=root->getChild("RainbruRPG/ServerList/");
-
-  // Get the server ListBox and nbServer button
-  CEGUI::Window* slWindow=mainWindow->getChild("RainbruRPG/ServerList/List");
-  nbServer=mainWindow->getChild("RainbruRPG/ServerList/nbServers");
-
-  serverList=static_cast<CEGUI::MultiColumnList*>(slWindow);
-  serverList->setSelectionMode(CEGUI::MultiColumnList::RowSingle);
-  //  serverList->setSelectionBrushImage("TaharezLook", 
-  //			       "MultiListSelectionBrush");
-
-  serverList->setUserSortControlEnabled(true);
-
-  // Creates column for serverList
-  serverList->addColumn("Name", 0, CEGUI::UDim(0.40F, 0.0F));
-  serverList->addColumn("Type", 1, CEGUI::UDim(0.25F, 0.0F));
-  serverList->addColumn("Occupation", 2, CEGUI::UDim(0.25F, 0.0F));
-
   // Feed the list
   feedList();
-
-  // Getting buttons
-  CEGUI::Window* btnBack=root->getChild("RainbruRPG/ServerList/Back");
-
-  CEGUI::Window* btnRefresh=mainWindow
-    ->getChild("RainbruRPG/ServerList/Refresh");
-  btnConnect=mainWindow->getChild("RainbruRPG/ServerList/Connect");
-  btnConnect->setVisible(false);
-
-  // Registering callbacks
-  btnBack->subscribeEvent(CEGUI::Window::EventMouseClick, 
-    CEGUI::Event::Subscriber(&gsServerList::onBackClicked,this));
-
-  btnRefresh->subscribeEvent(CEGUI::Window::EventMouseClick, 
-    CEGUI::Event::Subscriber(&gsServerList::onRefreshClicked,this));
-
-  btnConnect->subscribeEvent(CEGUI::Window::EventMouseClick, 
-    CEGUI::Event::Subscriber(&gsServerList::onConnectClicked,this));
-
-  serverList->subscribeEvent(CEGUI::MultiColumnList::EventSelectionChanged, 
-    CEGUI::Event::Subscriber(&gsServerList::onListSelectionChange,this));
-
-  serverList->subscribeEvent(CEGUI::Window::EventMouseDoubleClick, 
-    CEGUI::Event::Subscriber(&gsServerList::onListDoubleClick,this));
 
 }
 
@@ -177,7 +115,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   *
   */
 void RainbruRPG::Core::gsServerList::feedList(){
-
+  /*
   tServerList* lst=xml->getServerList();
   tServerList::const_iterator iter;
 
@@ -208,107 +146,7 @@ void RainbruRPG::Core::gsServerList::feedList(){
     CEGUI::String occ((*iter)->getOccupationStr());
     serverList->setItem(new CEGUI::ListboxTextItem(occ), 2, newRow);
   }
-}
-
-/** The Back button callback
-  *
-  * Exit from this menu to the connection menu (gsConnection).
-  *
-  * \param evt The CEGUI event 
-  *
   */
-bool RainbruRPG::Core::gsServerList::
-onBackClicked(const CEGUI::EventArgs& evt){
-  LOGI("onBackClicked");
-
-  GuiManager::getSingleton().beginGuiFadeOut();
-
-  // We must wait for the CEGUI fade end to prevent
-  // SEGFAULT in access to CEGUI windows (getAlpha())
-  while (GuiManager::getSingleton().isInGuiFadeOut()){
-    Ogre::Root::getSingleton().renderOneFrame();
-  }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
-
-  GameEngine::getSingleton().changeState(ST_MENU_CONNECT);
-  GuiManager::getSingleton().beginGuiFadeIn();
-
-  return true;
-}
-
-/** The Refresh button callback
-  *
-  * Refresh the server list by reloading it.
-  *
-  * \param evt The CEGUI event 
-  *
-  */
-bool RainbruRPG::Core::gsServerList::
-onRefreshClicked(const CEGUI::EventArgs& evt){
-  LOGI("onRefreshClicked");
-
-  serverList->resetList();
-  xml->refresh();
-  btnConnect->setVisible(false);
-  feedList();
-
-  return true;
-}
-
-/** The Connect button callback
-  *
-  * Connect the client to the currently selected server
-  *
-  * \param evt The CEGUI event 
-  *
-  */
-bool RainbruRPG::Core::gsServerList::
-onConnectClicked(const CEGUI::EventArgs& evt){
-  LOGI("onConnectClicked");
-  return true;
-}
-
-/** The ServerList selection button callback
-  *
-  * This function is called when the selection has changed.
-  *
-  * \param evt The CEGUI event 
-  *
-  */
-bool RainbruRPG::Core::gsServerList::
-onListSelectionChange(const CEGUI::EventArgs& evt){
-  LOGI("onListSelectionChange");
-  CEGUI::ListboxItem * it=serverList->getFirstSelectedItem();
-
-  if (it){
-    btnConnect->setVisible(true);
-  }
-  else{
-    btnConnect->setVisible(false);
-  }
-
-  // Visually mark as selected all selected item (ie. the whole row)
-  while (it){
-    it->setSelected(true);
-    it->setSelectionBrushImage( "TaharezLook", "MultiListSelectionBrush");
-    it=serverList->getNextSelected(it);
-  }
-
-  return true;
-}
-
-/** The ServerList was double-clicked
-  *
-  * This function is called when the list was double-clicked.
-  *
-  * \param evt The CEGUI event 
-  *
-  */
-bool RainbruRPG::Core::gsServerList::
-onListDoubleClick(const CEGUI::EventArgs& evt){
-  LOGI("onListDoubleClick");
-
 }
 
 /** Setup the tabulation order 
@@ -323,12 +161,13 @@ onListDoubleClick(const CEGUI::EventArgs& evt){
   */
 void RainbruRPG::Core::gsServerList::setupTabOrder(){
   // Registering TabNavigation
-  tabNav->clear();
+  /*  tabNav->clear();
   tabNav->setParent("RainbruRPG/ServerList/");
-  tabNav->addMultiColumnList("RainbruRPG/ServerList/List", 
-	   CEGUI::Event::Subscriber(&gsServerList::onConnectClicked,this));
+  //  tabNav->addMultiColumnList("RainbruRPG/ServerList/List", 
+  //	   CEGUI::Event::Subscriber(&gsServerList::onConnectClicked,this));
   tabNav->addWidget("RainbruRPG/ServerList/Refresh");
   tabNav->addWidget("RainbruRPG/ServerList/Connect");
   tabNav->addWidget("RainbruRPG/ServerList/Back");
+  */
 }
 

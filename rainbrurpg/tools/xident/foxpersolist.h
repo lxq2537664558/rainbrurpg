@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -39,7 +39,9 @@ using namespace RainbruRPG::Network;
 namespace RainbruRPG{
   namespace Gui{
 
-
+    /** The perso list compound for xIdent
+      *
+      */
     class FoxPersoList : public FX::FXPacker {
       FXDECLARE(FoxPersoList)
     public:

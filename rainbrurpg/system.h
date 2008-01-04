@@ -153,6 +153,9 @@ off_t lseek ();
 /* Some systems (even some that do have <utime.h>) don't declare this
    structure anywhere.  */
 #ifndef HAVE_STRUCT_UTIMBUF
+/** Defines access and modification times for a file
+  *
+  */
 struct utimbuf
 {
   long actime;   //!< Access time

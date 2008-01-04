@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -59,7 +59,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 
   dialogBorderSize=1;
 
-  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
+  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 18);
 }
 
 /** Create a window using the BetaGUI skin
@@ -99,10 +99,9 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
 #endif
 
 #if (DEBUG_FONT_TEXTURE_QUAD==true)
-  Font* f1=FontManager::getSingleton().getFont(DEBUG_FONT_TTF_NAME, 48);
   MaterialPtr m1=MaterialManager::getSingleton().getByName(mnWindow);
   TextureUnitState* tus=m1->getTechnique(0)->getPass(0)->getTextureUnitState(0);
-  tus->setTextureName(f1->getTextureName());
+  tus->setTextureName(titleFont->getTextureName());
 #endif
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
@@ -168,6 +167,7 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
 
+  qr->setColor(ColourValue(1.0, 1.0, 1.0, 1.0));
   qr->drawText(titleFont, "TitleBar", corners);
 
   qr->reset();

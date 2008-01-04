@@ -54,7 +54,7 @@ am_rainbrurpg_OBJECTS = launcher.$(OBJEXT) launcheroptions.$(OBJEXT) \
 	main.$(OBJEXT) languageselector.$(OBJEXT)
 rainbrurpg_OBJECTS = $(am_rainbrurpg_OBJECTS)
 am__DEPENDENCIES_1 =
-rainbrurpg_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+rainbrurpg_DEPENDENCIES = $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -87,8 +87,6 @@ CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CEGUI_CFLAGS = @CEGUI_CFLAGS@
 CEGUI_LIBS = @CEGUI_LIBS@
-CEGUI_OGRE_CFLAGS = @CEGUI_OGRE_CFLAGS@
-CEGUI_OGRE_LIBS = @CEGUI_OGRE_LIBS@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
@@ -155,6 +153,7 @@ RB_OPTION_TESTS_FLAGS_FALSE = @RB_OPTION_TESTS_FLAGS_FALSE@
 RB_OPTION_TESTS_FLAGS_TRUE = @RB_OPTION_TESTS_FLAGS_TRUE@
 RB_OPTION_TOOLS_FLAGS_FALSE = @RB_OPTION_TOOLS_FLAGS_FALSE@
 RB_OPTION_TOOLS_FLAGS_TRUE = @RB_OPTION_TOOLS_FLAGS_TRUE@
+SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -217,20 +216,17 @@ rainbrurpg_SOURCES = launcher.cpp			\
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
 	   -I$(top_srcdir)/ogreGui			\
-	   $(OGRE_CFLAGS)				\
-	   $(CEGUI_CFLAGS)
+	   $(OGRE_CFLAGS)
 
 rainbrurpg_LDADD = -lrainbrurpg-common			\
 		  -lrainbrurpg-core 			\
 		  -lrainbrurpg-ogregui			\
-		  $(OGRE_LIBS)				\
-		  $(CEGUI_LIBS)
+		  $(OGRE_LIBS)
 
 rainbrurpg_LDFLAGS = -L$(top_srcdir)/common/.libs		\
 		    -L$(top_srcdir)/maincore/.libs		\
 		    -L$(top_srcdir)/ogreGui/.libs		\
-  		    $(CEGUI_OGRE_LIBS)	       			\
-		    $(libcurl_LIBS)
+ 		    $(libcurl_LIBS)
 
 all: all-am
 

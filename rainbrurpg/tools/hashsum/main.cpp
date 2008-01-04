@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -31,12 +31,10 @@
 
 #include <hashfile.h>
 #include <hashpassword.h>
-#include <CEGUI/CEGUI.h>
 
 #include <sigc++/sigc++.h>
 
 using namespace std;
-using namespace CEGUI;
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::Network::Ident;
 
@@ -77,7 +75,7 @@ int main(int argc, char** argv){
     cout << hf.getHashSum(s)<< endl;
   }
   else if(strcmp(argv[1], "-p")==0){
-    CEGUI::String s(argv[2]);
+    std::string s(argv[2]);
     cout << "Computing hashsum for string '" << s << "'"
 	 << " using HashPassword" <<  endl;
     HashPassword hp;
@@ -117,9 +115,7 @@ void oneTest(HashPassword* hp, const char* pwd){
        << hp->encryptString((const char*)pwd)<< endl;
   cout << "Through std::string   :"
        << hp->encryptString(std::string(pwd).c_str())<< endl;
-  cout << "Through CEGUI::string :"
-       << hp->encryptString(String(pwd).c_str())<< endl;
-
+ 
 }
 
 

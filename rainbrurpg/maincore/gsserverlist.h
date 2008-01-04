@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -27,8 +27,6 @@
 
 #ifndef GS_SERVER_LIST_H
 #define GS_SERVER_LIST_H
-
-#include <CEGUI/CEGUI.h>
 
 #include <xmlserverlist.h>
 
@@ -58,26 +56,11 @@ namespace RainbruRPG {
 
       virtual void setupTabOrder();
 
-      bool onBackClicked(const CEGUI::EventArgs&);
-      bool onRefreshClicked(const CEGUI::EventArgs&);
-      bool onConnectClicked(const CEGUI::EventArgs&);
-
-      bool onListSelectionChange(const CEGUI::EventArgs&);
-      bool onListDoubleClick(const CEGUI::EventArgs&);
-
-    private:
+     private:
       void setupServerList();
       void feedList();
 
-      /** The server list widget
-        *
-	* It is initialized in the setupServerList() function.
-        *
-	* \sa setupServerList().
-	*
-        */
-      CEGUI::MultiColumnList* serverList;
-      /** Load and manage the server list 
+       /** Load and manage the server list 
         *
 	* It is used to feed the serverList widget in the feedList()
 	* function. It is initialized 
@@ -88,20 +71,6 @@ namespace RainbruRPG {
         */
       xmlServerList* xml;
 
-      /** The connect button
-        *
-	* It is kept as a class member to be hide and show acording to
-	* the serverlist selection.
-	*
-	*/
-      CEGUI::Window* btnConnect;
-
-      /** A StaticText CEGUI widget that shows the number of server in list
-        *
-	* Its text is changed in feedList().
-	*
-	*/
-      CEGUI::Window* nbServer;
     };
   }
 }

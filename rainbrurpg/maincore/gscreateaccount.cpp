@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -263,72 +263,67 @@ void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
   String mess;
   String err01="Account creation error";
 
-  try{
-    name   =tiName->getValue();
-    pwd    =tiPwd1->getValue();
-    repPwd =tiPwd2->getValue();
-    mail   =tiMail->getValue();
 
-    if (name.empty() || pwd.empty()){
-      GuiManager::getSingleton().showMessageBox(err01, 
-        "Please enter a name and a paddword.");
-    }
-    else if (pwd!=repPwd){
-      GuiManager::getSingleton().showMessageBox(err01, 
+  name   =tiName->getValue();
+  pwd    =tiPwd1->getValue();
+  repPwd =tiPwd2->getValue();
+  mail   =tiMail->getValue();
+
+  if (name.empty() || pwd.empty()){
+    GuiManager::getSingleton().showMessageBox(err01, 
+      "Please enter a name and a paddword.");
+  }
+  else if (pwd!=repPwd){
+    GuiManager::getSingleton().showMessageBox(err01, 
         "Please correctly repeat the password");
+  }
+  else{
+    CurlAccountAdd caa;
+    caa.setName(name.c_str());
+    caa.setPassword(pwd.c_str());
+    caa.setMail(mail.c_str());
+    
+    bool success=caa.perform();
+    
+    if (success){
+      GuiManager::getSingleton().showMessageBox("Account successfully "
+						"created", 
+						"The account was correctly added. Before you are able to use "
+						"it, you must activate it.\n\nPlease wait the activation "
+						"mail.");
     }
     else{
-      CurlAccountAdd caa;
-      caa.setName(name.c_str());
-      caa.setPassword(pwd.c_str());
-      caa.setMail(mail.c_str());
- 
-      bool success=caa.perform();
-
-      if (success){
-	GuiManager::getSingleton().showMessageBox("Account successfully "
-						  "created", 
-          "The account was correctly added. Before you are able to use "
-          "it, you must activate it.\n\nPlease wait the activation "
-          "mail.");
+      tCurlAccountAddReturn ret=caa.getResponse();
+      
+      switch (ret){
+      case CAA_EXISTS :
+	mess="This account name is already used. Please choose another "
+	  "identifier.";
+	break;
+      case CAA_EMPTY_NAME:
+	mess="Cannot create an account with empty name.";
+	break;
+      case CAA_EMPTY_PWD:
+	mess="Cannot create an account with empty password.";
+	  break;
+      case CAA_EMPTY_MAIL:
+	mess="Cannot create an account with empty mail address.";
+	break;
+      case CAA_MAIL_INUSE:
+	mess="This mail is already used for another account. You can\n"
+	     "only create one account for each different mail address.";
+	break;
+      case CAA_MAIL_SIGN_AT:
+	mess="The mail address should contain a '@' sign.";
+	break;
+      case CAA_MAIL_SIGN_DOT:
+	mess="The mail address should contain a '.' sign.";
+	break;
       }
-      else{
-	tCurlAccountAddReturn ret=caa.getResponse();
-
-	switch (ret){
-	case CAA_EXISTS :
-	  mess="This account name is already used. Please choose another "
-	    "identifier.";
-	  break;
-	case CAA_EMPTY_NAME:
-	  mess="Cannot create an account with empty name.";
-	  break;
-	case CAA_EMPTY_PWD:
-	  mess="Cannot create an account with empty password.";
-	  break;
-	case CAA_EMPTY_MAIL:
-	  mess="Cannot create an account with empty mail address.";
-	  break;
-	case CAA_MAIL_INUSE:
-	  mess="This mail is already used for another account. You can\n"
-	       "only create one account for each different mail address.";
-	  break;
-	case CAA_MAIL_SIGN_AT:
-	  mess="The mail address should contain a '@' sign.";
-	  break;
-	case CAA_MAIL_SIGN_DOT:
-	  mess="The mail address should contain a '.' sign.";
-	  break;
-	}
-
-	GuiManager::getSingleton().showMessageBox(err01, mess);
-
-      }
-
+      GuiManager::getSingleton().showMessageBox(err01, mess);
+      
     }
-  }
-  catch(const CEGUI::Exception& e){
-    LOGE("Cannot get some widgets");
+    
   }
 }
 

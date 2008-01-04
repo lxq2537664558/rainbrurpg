@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -23,19 +23,12 @@
 #ifndef VELOCITY_CALCULATOR_H
 #define VELOCITY_CALCULATOR_H
 
-#include <OGRE/Ogre.h>
+#include <Ogre.h>
 //forward declaration
 class EventTarget;
 class Cursor;
-#include <OGRE/OgreKeyEvent.h>
-#include <OGRE/OgreInputEvent.h>
-#include <OGRE/OgreEventQueue.h>
-#include <OGRE/OgreEventListeners.h>
-#include <OGRE/OgreEventTarget.h>
-#include <OGRE/OgreInput.h>
-#include <OGRE/OgrePlatformManager.h>
 
-#include <OGRE/OgreTimer.h>
+#include <OgreTimer.h>
 
 namespace RainbruRPG{
   namespace Core{

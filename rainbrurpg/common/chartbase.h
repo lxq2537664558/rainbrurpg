@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -58,6 +58,8 @@ namespace RainbruRPG {
       * draw.
       *
       * \sa ChartBase
+      *
+      * \todo warning: deprecated conversion from string constant to 'char*'
       *
       */
     typedef list<ChartSerie*> tChartSerieList;

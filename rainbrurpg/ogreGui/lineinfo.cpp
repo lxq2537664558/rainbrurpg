@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -22,6 +22,12 @@
 
 #include "lineinfo.h"
 
+/** Constructor
+  *
+  * \param vText  The text
+  * \param vWidth The width
+  *
+  */
 RainbruRPG::OgreGui::LineInfo::
 LineInfo( const std::string& vText, float vWidth):
   text(vText),
@@ -29,8 +35,30 @@ LineInfo( const std::string& vText, float vWidth):
 {
 
 }
+
+/** Default constructor
+  *
+  */
 RainbruRPG::OgreGui::LineInfo::LineInfo():
   width(0.0f)
 {
 
+}
+
+/** Get the width of this line of text
+  *
+  * \return The width
+  *
+  */
+float RainbruRPG::OgreGui::LineInfo::getWidth() const{
+  return width;
+}
+
+/** Get the content of this line of text
+  *
+  * \return The text
+  *
+  */
+const std::string& RainbruRPG::OgreGui::LineInfo::getText()const{
+  return text;
 }

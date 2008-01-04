@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -61,9 +61,6 @@ void RainbruRPG::Core::Version::logVersion(){
        << FOX_MAJOR << "."
        << FOX_MINOR << "."
        << FOX_LEVEL << endl 
-       << " - CEGUI v"
-       << CEGUI_VERSION_MAJOR << "." << CEGUI_VERSION_MINOR 
-       << "." << CEGUI_VERSION_PATCH << endl
        << " - Ogre3D v"
        << OGRE_VERSION_MAJOR << "." << OGRE_VERSION_MINOR 
        << "." << OGRE_VERSION_PATCH << " (" 

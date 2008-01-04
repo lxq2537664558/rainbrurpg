@@ -76,12 +76,12 @@ dnl the OgreMain library.
 dnl It is used by configure.in
 AC_DEFUN([RB_CHECK_OGREMAIN],
 [
-  PKG_CHECK_MODULES(OGRE, [OGRE >= 1.2.0])
+  PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4.0])
   AC_SUBST(OGRE_PLUGINDIR, [$($PKG_CONFIG --variable=plugindir OGRE)])
 
   PKG_CHECK_MODULES(CEGUI, [CEGUI >= 0.5.0])
-  AC_SUBST(CEGUI_OGRE_CFLAGS, [$($PKG_CONFIG --cflags CEGUI-OGRE)])
-  AC_SUBST(CEGUI_OGRE_LIBS, [$($PKG_CONFIG --libs CEGUI-OGRE)])
+#  AC_SUBST(CEGUI_OGRE_CFLAGS, [$($PKG_CONFIG --cflags CEGUI-OGRE)])
+#  AC_SUBST(CEGUI_OGRE_LIBS, [$($PKG_CONFIG --libs CEGUI-OGRE)])
 
   # Devil
   AC_CHECK_LIB(jpeg, main, [], [])

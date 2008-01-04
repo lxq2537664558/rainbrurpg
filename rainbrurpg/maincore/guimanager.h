@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -32,11 +32,9 @@
 #define GUI_MANAGER_H
 
 #include <singleton.h>
-#include <OGRE/Ogre.h>
-#include <OGRE/OgreKeyEvent.h>
-#include <OGRE/OgreEventListeners.h>
-#include <OGRE/OgreStringConverter.h>
-#include <OGRE/OgreException.h>
+#include <Ogre.h>
+#include <OgreStringConverter.h>
+#include <OgreException.h>
 
 #include "gameengine.h"
 #include "velocitycalculator.h"
@@ -119,8 +117,6 @@ namespace RainbruRPG {
       void destroyTitleOverlay();
 
       void showFPS();
-      void loadCEGUILayout(const char*);
-      void removeCurrentCEGUILayout();
 
       void setTransitionTime(unsigned int);
       unsigned int getTransitionTime();
@@ -135,14 +131,11 @@ namespace RainbruRPG {
       void guiFade();
 
       Ogre::RenderWindow* getRenderWindow();
-      void debugChild(const char*);
 
       void showMessageBox(const String&, const String&); 
       void hideMessageBox(bool);
 
     private:
-      void debugWindow(CEGUI::Window*);
-
       /** Unimplemented copy constructors 
         *
 	* In a singleton the use of this method must be forbidden.

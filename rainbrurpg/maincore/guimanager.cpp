@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -29,7 +29,6 @@
 
 #include <iostream>
 #include <exception>
-#include <CEGUI/CEGUIExceptions.h>
 
 /** The constructor of the singleton
   *
@@ -38,7 +37,7 @@
   */
 void RainbruRPG::Gui::GuiManager::init(){
   LOGI("Initializing GuiManager...");
-  transitionTime=600;
+  transitionTime=1200;
   guiFadeInTime=1000;
   guiOpacity=0.7f;
   inGuiFadeIn=false;
@@ -65,33 +64,6 @@ void RainbruRPG::Gui::GuiManager::cleanup(){
     destroyTitleOverlay();
   }
 
-}
-
-/** Create a GUI overlay wich shows fps and primitives count
-  *
-  * The window shows the minimum, maximum and actual number of fps
-  * (frame per second) and drawn primitives.
-  *
-  *
-  * \param win The Ogre window that receive the debug window
-  *
-  */
-void RainbruRPG::Gui::GuiManager::
-createNumDebugWindow(Ogre::RenderWindow* win){
-  this->win=win;
-  LOGI("Creating Numeric Debug Window...");
-
-  Ogre::Overlay* mPanelOverlay=NULL;
-
-  mPanelOverlay =OverlayManager::getSingleton().
-    getByName("RainbruRPG/NumericDebug");
-
-  if (mPanelOverlay){
-    mPanelOverlay->show();
-  }
-  else{
-    LOGE("Cannot load RainbruRPG/NumericDebug");
-  }
 }
 
 /** Create a GUI overlay wich shows the name and the version of the game
@@ -191,43 +163,6 @@ void RainbruRPG::Gui::GuiManager::showFPS(){
 #endif
 }
 
-/** Loads a CEGUI layout and shows it
-  *
-  * Typically, the file may be in the \c /rpg/data/gui/layout directory.
-  * The extension of the file is layout.
-  *
-  * \param layoutName The name of the layout file to load
-  *
-  */
-void RainbruRPG::Gui::GuiManager::loadCEGUILayout(const char* layoutName){
-  LOGI("Loading a CEGUI layout");
-  LOGCATS("Layout name :'");
-  LOGCATS(layoutName);
-  LOGCATS("'");
-  LOGCAT();
-
-  CEGUI::Window* mEditorGuiSheet = CEGUI::WindowManager::getSingleton().
-    loadWindowLayout((CEGUI::utf8*)layoutName);
-
-  if (!mEditorGuiSheet){
-    LOGW("Failed to load the CEGUI layout");
-  }
-
-  GameEngine::getSingleton().getCEGUISystem()->setGUISheet(mEditorGuiSheet);
-  //  setGuiTransparency(0.0f);
-
-  LOGI("Debugging CEGUI GUISheet");
-  CEGUI::Window* deb=GameEngine::getSingleton().getCEGUISystem()
-    ->getGUISheet();
-
-  debugWindow(deb);
-
-  if (deb->getChildCount()>0){
-    LOGI("Debugging active child");
-    debugWindow(deb->getActiveChild());
-  }
-}
-
 /** Returns the Ogre render window
   *
   * \return The Ogre render window
@@ -283,13 +218,8 @@ void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
   *
   */
 void RainbruRPG::Gui::GuiManager::beginGuiFadeIn(){
-  LOGI("Gui fadeIn is beginning");
   inGuiFadeIn=true;
   inGuiFadeOut=false;
-
-  LOGCATS("FadeOut lenght : ");
-  LOGCATF(guiOpacity);
-  LOGCAT();
 
   velocity->reset();
   velocity->setTranslationLenght(guiOpacity);
@@ -306,10 +236,6 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   if (inGuiFadeIn){
     increaseGuiTransparency(velocity->getNextFrame(inGuiFadeIn));
     if (!inGuiFadeIn){
-      LOGI("FadeIn ended");
-      LOGCATS("gui opacity set to : ");
-      LOGCATF(guiOpacity);
-      LOGCAT();
       setGuiTransparency(guiOpacity);
     }
   }
@@ -317,10 +243,6 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   else if (inGuiFadeOut){
     increaseGuiTransparency(velocity->getNextFrame(inGuiFadeOut));
     if (!inGuiFadeOut){
-      LOGI("FadeOut ended");
-      LOGCATS("gui opacity set to : ");
-      LOGCATF(guiOpacity);
-      LOGCAT();
       setGuiTransparency(0.0f);
     }
   }
@@ -368,22 +290,6 @@ void RainbruRPG::Gui::GuiManager::beginGuiFadeOut(){
   velocity->start();
 }
 
-/** Destroys all the current CEGUI windows
-  *
-  * This function calls hideMessageBox() to set the GuiManager::
-  * dialogSystemLayout pointer to \c NULL.
-  *
-  * \sa hideMessageBox(), dialogSystemLayout
-  *
-  */
-void RainbruRPG::Gui::GuiManager::removeCurrentCEGUILayout(){
-  LOGI("Removing current CEGUI layout");
-
-  CEGUI::WindowManager::getSingleton().destroyAllWindows();
-  GuiManager::getSingleton().hideMessageBox(true);
-
-}
-
 /** Are we in GUI fade out?
   *
   * \return \c true if we are currently in GUI fade out transition
@@ -409,69 +315,6 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
     }
     LOGI("Title overlay not found, already destroyed?");
   }
-}
-
-/** Debug some values for the given CEGUI window
-  *
-  * It uses the RainbruRPG logger to log the values of this
-  * window.
-  *
-  * \param win The window to debug
-  *
-  */
-void RainbruRPG::Gui::GuiManager::debugWindow(CEGUI::Window* win){
-#ifdef RAINBRU_RPG_DEBUG
-  if (!win){
-    LOGW("Cannot debug NULL window");
-  }
-  else{
-    LOGCATS("GUISheet name :'");
-    LOGCATS(win->getName().c_str());
-    LOGCATS("'");
-    LOGCAT();
-    
-    LOGCATS("GUISheet type :'");
-    LOGCATS(win->getType().c_str());
-    LOGCATS("'");
-    LOGCAT();
-    
-    LOGCATS("GUISheet text :'");
-    LOGCATS(win->getText().c_str());
-    LOGCATS("'");
-    LOGCAT();
-    
-    LOGCATS("Is visible ? :'");
-    LOGCATB(win->isVisible());
-    LOGCATS("'");
-    LOGCAT();
-    
-    LOGCATS("Is disabled ? :'");
-    LOGCATB(win->isDisabled());
-    LOGCATS("'");
-    LOGCAT();
-
-    LOGCATS("Is active ? :'");
-    LOGCATB(win->isActive());
-    LOGCATS("'");
-    LOGCAT();
-    
-    LOGCATS("Contains ");
-    LOGCATI(win->getChildCount());
-    LOGCATS(" child(s)");
-    LOGCAT();
-  }
-#endif // RAINBRU_RPG_DEBUG
-
-}
-
-/** Debug the named child
-  *
-  */
-void RainbruRPG::Gui::GuiManager::debugChild(const char* name){
-  CEGUI::Window* win=GameEngine::getSingleton().getCEGUISystem()
-    ->getGUISheet()->getChild(name);
-
-  debugWindow(win);
 }
 
 /** Shows a CEGUI message box with a single OK button
@@ -533,4 +376,31 @@ void RainbruRPG::Gui::GuiManager::hideMessageBox(bool destroy){
 bool RainbruRPG::Gui::GuiManager::isInGuiFadeIn(){
   return inGuiFadeIn;
 
+}
+
+/** Create a GUI overlay wich shows fps and primitives count
+  *
+  * The window shows the minimum, maximum and actual number of fps
+  * (frame per second) and drawn primitives.
+  *
+  *
+  * \param win The Ogre window that receive the debug window
+  *
+  */
+void RainbruRPG::Gui::GuiManager::
+createNumDebugWindow(Ogre::RenderWindow* win){
+  this->win=win;
+  LOGI("Creating Numeric Debug Window...");
+  
+  Ogre::Overlay* mPanelOverlay=NULL;
+  
+  mPanelOverlay =OverlayManager::getSingleton().
+    getByName("RainbruRPG/NumericDebug");
+  
+  if (mPanelOverlay){
+    mPanelOverlay->show();
+  }
+  else{
+    LOGE("Cannot load RainbruRPG/NumericDebug");
+  }
 }

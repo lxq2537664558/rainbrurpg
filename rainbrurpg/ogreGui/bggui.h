@@ -62,6 +62,8 @@ namespace BetaGUI {
 
   /** The GUI system object
     *
+    * \section GUI_BetaGUI BetaGUI::GUI
+    *
     * This class is part of BetaGUI. It provides the ability to inject
     * input events (mouse and keys) and manage unique identifiers to
     * get unique widget names.
@@ -70,6 +72,13 @@ namespace BetaGUI {
     * was a bug when the mouse movements were too fast. Now, the currently
     * resized window is set in the local pointer \ref
     * GUI::resizedWindow "resizedWindow".
+    *
+    * \section GUI_addWindow Adding a Window
+    *
+    * There is two ways to add a window : addWindow(Window*) and
+    * void addWindowBeforeOverlays(Window*). The first one will create
+    * windows that will be drawn after Ogre overlays. the second one will
+    * be masked by overlays
     *
     * \note The initial alpha value of all widgets is 0.0f. This means that
     *       there are fully transparent. To be able to see your graphical
@@ -110,10 +119,13 @@ namespace BetaGUI {
     void setMovedWindow(Window*);
 
     void addWindow(Window*);
+    void addWindowBeforeOverlays(Window*);
+
     void addDialog(Window*);
     void deactivateWindow(Window*);
 
     void draw();
+    void drawBeforeOverlay();
 
   protected:
     /** A const iterator over windowList */
@@ -164,10 +176,13 @@ namespace BetaGUI {
       */
     Overlay* dialogOverlay;
 
-    /** A vector of windows 
+    /** A vector of windows  drawn after Ogre overlays
       *
       */
     list<Window*> windowList;
+
+    /** A list of window that will be drawn before Ogre overlays */
+    list<Window*> windowBeforeOverlayList;
 
     /** The overlay used to draw the mouse cursor
       *

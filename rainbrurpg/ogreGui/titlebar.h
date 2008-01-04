@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -53,11 +53,10 @@ namespace RainbruRPG{
 
       ~TitleBar();
 
-      void setWidth(unsigned int);
+      void setWidth(unsigned int ui);
       virtual void draw(QuadRenderer*);
 
     };
-
   }
 }
 

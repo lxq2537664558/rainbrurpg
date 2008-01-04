@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -28,8 +28,7 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-#include <OGRE/OgreFrameListener.h>
-#include <CEGUI/CEGUI.h>
+#include <OgreFrameListener.h>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>

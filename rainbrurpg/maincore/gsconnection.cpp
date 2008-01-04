@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -31,7 +31,7 @@
 #include <label.h>
 
 
-#include <OGRE/OgrePrerequisites.h> // for Ogre::String
+#include <OgrePrerequisites.h> // for Ogre::String
 
 
 /** The default constructor
@@ -217,8 +217,6 @@ onConnectClicked(){
       while (GuiManager::getSingleton().isInGuiFadeOut()){
 	Ogre::Root::getSingleton().renderOneFrame();
       }
-      
-      GuiManager::getSingleton().removeCurrentCEGUILayout();
       
       GameEngine::getSingleton().changeState(ST_SERVER_LIST);
       GuiManager::getSingleton().beginGuiFadeIn();

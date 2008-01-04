@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -27,21 +27,19 @@
   *
   * \param win The Ogre render window
   * \param cam The Ogre camera
-  * \param renderer The CEGUI renderer
   *
   */
 RainbruRPG::Events::GuiFrameListener::
-GuiFrameListener(RenderWindow* win, Camera* cam, CEGUI::Renderer* renderer)
-                               :ExampleFrameListener(win, cam, true, true){
-  mGUIRenderer=renderer;
-  mShutdownRequested=false;
-
+GuiFrameListener(RenderWindow* win, Camera* cam):
+  ExampleFrameListener(win, cam, true, true),
+  mShutdownRequested(false),
+  mMoveScale(1.1f)
+{
   LOGI("Constructing GuiFrameListener");
-  mEventProcessor->addMouseMotionListener(this);
+  /*  mEventProcessor->addMouseMotionListener(this);
   mEventProcessor->addMouseListener(this);
   mEventProcessor->addKeyListener(this);
-
-  mMoveScale = 1.1f;
+  */
 }
 
 /** Set the renderer to be shutdown
@@ -97,11 +95,9 @@ bool RainbruRPG::Events::GuiFrameListener::frameEnded(const FrameEvent& evt){
   * \param e The Ogre mouse event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::mouseMoved (MouseEvent *e){
-  CEGUI::System::getSingleton().injectMouseMove(
-	         e->getRelX() * mGUIRenderer->getWidth(), 
-		 e->getRelY() * mGUIRenderer->getHeight());
-  e->consume();
+bool RainbruRPG::Events::GuiFrameListener::mouseMoved(const MouseEvent& e){
+  LOGI("Mouse moved");
+  //  e.consume();
 }
 
 /** The mouseDragged listener implementation
@@ -109,7 +105,7 @@ void RainbruRPG::Events::GuiFrameListener::mouseMoved (MouseEvent *e){
   * \param e The Ogre mouse event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::mouseDragged(MouseEvent *e){ 
+bool RainbruRPG::Events::GuiFrameListener::mouseDragged(const MouseEvent& e){ 
   mouseMoved(e);
 }
 
@@ -118,12 +114,8 @@ void RainbruRPG::Events::GuiFrameListener::mouseDragged(MouseEvent *e){
   * \param e The Ogre mouse event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::mousePressed(MouseEvent *e){
-  CEGUI::System::getSingleton().injectMouseButtonDown(
-		 GameEngine::getSingleton().
-		 convertOgreButtonToCegui(e->getButtonID()));
-
-  e->consume();
+bool RainbruRPG::Events::GuiFrameListener::mousePressed(const MouseEvent& e){
+  //  e.consume();
 }
 
 /** The mouseReleased listener implementation
@@ -131,11 +123,8 @@ void RainbruRPG::Events::GuiFrameListener::mousePressed(MouseEvent *e){
   * \param e The Ogre mouse event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::mouseReleased(MouseEvent *e){
-  CEGUI::System::getSingleton().injectMouseButtonUp(
-		 GameEngine::getSingleton().
-		 convertOgreButtonToCegui(e->getButtonID()));
-  e->consume();
+bool RainbruRPG::Events::GuiFrameListener::mouseReleased(const MouseEvent& e){
+  //  e.consume();
 }
 
 /** The keyPressed listener implementation
@@ -143,25 +132,22 @@ void RainbruRPG::Events::GuiFrameListener::mouseReleased(MouseEvent *e){
   * \param e The Ogre key event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::keyPressed(KeyEvent* e){
-  if(e->getKey() == KC_ESCAPE){
+bool RainbruRPG::Events::GuiFrameListener::keyPressed(const KeyEvent& e){
+  if(e.key == KC_ESCAPE){
     mShutdownRequested = true;
-    e->consume();
-    return;
+    //   e.consume();
+    return true;
   }
   /* Move camera forward by keypress. */
-  if (e->getKey() == KC_UP ||e->getKey() == KC_Z ){
+  if (e.key == KC_UP ||e.key == KC_Z ){
     mTranslateVector.z = -mMoveScale;
   }
   /* Move camera backward by keypress. */
-  if (mInputDevice->isKeyDown(KC_DOWN) || mInputDevice->isKeyDown(KC_S)){
+  /*  if (mInputDevice->isKeyDown(KC_DOWN) || mInputDevice->isKeyDown(KC_S)){
     mTranslateVector.z = mMoveScale;
   }
-
- 
-  CEGUI::System::getSingleton().injectKeyDown(e->getKey());
-  CEGUI::System::getSingleton().injectChar(e->getKeyChar());
-  e->consume();
+  */
+  //  e.consume();
 }
 
 /** The keyReleased listener implementation
@@ -169,12 +155,10 @@ void RainbruRPG::Events::GuiFrameListener::keyPressed(KeyEvent* e){
   * \param e The Ogre key event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::keyReleased(KeyEvent* e){
-    mTranslateVector.z = 0.0f;
+bool RainbruRPG::Events::GuiFrameListener::keyReleased(const KeyEvent& e){
+  mTranslateVector.z = 0.0f;
 
-
-  CEGUI::System::getSingleton().injectKeyUp(e->getKey());
-  e->consume();
+   //  e.consume();
 }
 
 /** The keyClicked listener implementation
@@ -182,9 +166,9 @@ void RainbruRPG::Events::GuiFrameListener::keyReleased(KeyEvent* e){
   * \param e The Ogre key event
   *
   */
-void RainbruRPG::Events::GuiFrameListener::keyClicked(KeyEvent* e){
+bool RainbruRPG::Events::GuiFrameListener::keyClicked(const KeyEvent& e){
   // Do nothing
-  e->consume();
+  //  e.consume();
 }
 
 /** Change the current camera

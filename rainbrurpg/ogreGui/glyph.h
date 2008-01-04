@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -39,11 +39,30 @@ namespace RainbruRPG{
     class Glyph{
     public:
       Glyph();
-      Glyph(Ogre::Rectangle, float, float, float);
-
+      Glyph(const Ogre::Rectangle&, float, float, float);
       ~Glyph();
 
-    private:
+      Glyph(const Glyph&);
+      Glyph& operator=(const Glyph&);
+
+      float getSpace(void)const;
+      const Ogre::Rectangle& getGeometry(void)const;
+
+      float getHeight(void)const;
+      float getWidth(void)const;
+
+      float getOffsetX(void)const;
+      float getOffsetY(void)const;
+
+      float getTop(void)const;
+      float getLeft(void)const;
+      float getRight(void)const;
+      float getBottom(void)const;
+
+      void setCharCode(long int);
+      long int getCharCode(void)const;
+
+     private:
       /** A rectangle storing geometry informations */
       Ogre::Rectangle mRect;
       /** The X offset */
@@ -52,6 +71,9 @@ namespace RainbruRPG{
       float mOffsetY;
       /** The spae beetween two glyph */
       float mSpace;
+
+      /** The charcode this glyph represents */
+      long int charcode;
     };
 
   }

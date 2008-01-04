@@ -454,6 +454,10 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
   for(unsigned int i=0;i<buttonList.size();i++){
     buttonList[i]->draw(qr);
   }
+
+  for (unsigned int i=0;i<widgetList.size();i++){
+    widgetList[i]->draw(qr);
+  }
 }
 
 /** Change the transparency of the window and all its childs

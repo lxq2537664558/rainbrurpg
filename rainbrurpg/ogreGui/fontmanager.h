@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -45,7 +45,7 @@
   * implementation.
   *
   */
-#define DEBUG_FONT_TEXTURE_QUAD false
+#define DEBUG_FONT_TEXTURE_QUAD true
 /** The name of the font's texture
   *
   * See soBetaGui::drawWindow for test implementation.
@@ -88,15 +88,26 @@ namespace RainbruRPG{
       OgreGui::Font* loadFont(const String&, unsigned int);
       OgreGui::Font* getFont(const String&, unsigned int);
 
-    private:
+    protected:
       void renderGlyphs( Font*, FT_Face, int*, unsigned int);
       void copyGlyph( FT_Bitmap*, int*, int );
       void feedGlyphList(unsigned long, unsigned long);
+      String getUniqueTextureName();
 
+    private:
       /** The list of fonts */
       tFontList mFontList;
       /** The glyph to draw */
       tGlyphList mGlyphList;
+      /** The id of the next texture
+        *
+	* It is used in
+	* \link RainbruRPG::OgreGui::FontManager::getUniqueTextureName
+	* "FontManager::getUniqueTextureName()" \endlink 
+	* to create unique texture names.
+	*
+	*/
+      size_t textureId;
 
     };
   }

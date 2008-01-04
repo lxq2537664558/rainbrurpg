@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -37,6 +37,7 @@
 // Forward declarations
 namespace BetaGUI {
   class Window;
+  class Button;
 }
 namespace RainbruRPG{
   namespace OgreGui{
@@ -80,7 +81,7 @@ namespace RainbruRPG{
       void show(void);
       void hide(void);
 
-      virtual void onButtonPress(Button *ref);
+      virtual void onButtonPress(BetaGUI::Button* ref);
 
     private:
       /** The messagebox message */

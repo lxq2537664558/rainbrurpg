@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -22,6 +22,7 @@
 
 #include "font.h"
 
+#include "logger.h"
 #include "stringconv.h"
 #include "quadrenderer.h"
 
@@ -41,15 +42,19 @@ RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
   mTexture(NULL),
   mMaxGlyphHeight(size+GLYPH_V_SPACE),
   mMaxBearingY(0),
-  mTextureName("")
+  mTextureName(""),
+  mPass(NULL)
 {
 
   String sizeName=StringConv::getSingleton().itos(size);
   String matName= name+sizeName;
 
   material=MaterialManager::getSingleton().create(matName, "FontGroup");
+  Technique*        tech=material->createTechnique();
 
-
+  mPass =tech->createPass();
+  mPass->setName(matName+".pass");
+  TextureUnitState* tus =mPass->createTextureUnitState();
 }
 
 /** The destructor
@@ -84,6 +89,8 @@ const String& RainbruRPG::OgreGui::Font::getName(void)const{
   */
 void RainbruRPG::OgreGui::Font::setTexture(TexturePtr t){
   mTexture=t;
+
+  mPass->getTextureUnitState(0)->setTextureName(t->getName());
 }
 
 /** Get the glyph map
@@ -91,7 +98,7 @@ void RainbruRPG::OgreGui::Font::setTexture(TexturePtr t){
   * \return a reference to the current glyph map
   *
   */
-GlyphMap& RainbruRPG::OgreGui::Font::getGlyphMap(void){
+const GlyphMap& RainbruRPG::OgreGui::Font::getGlyphMap(void)const{
   return mGlyphMap;
 }
 
@@ -161,11 +168,369 @@ MaterialPtr RainbruRPG::OgreGui::Font::getMaterial(){
   return material;
 }
 
+/** Is the given char is a delimiter
+  *
+  * \param c The character to test
+  *
+  * \return \c bool if the given char is a delimiter
+  *
+  */
+bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
+  return ( ( c == ' ' ) || ( c == '\n' ) );
+}
+
+/** Render a text
+  *
+  * \param qr    The quad renderer use to draw
+  * \param text  The text to draw
+  * \param color The color used to draw the text
+  * \param rect  The rectangle where the text is drawn
+  *
+  */
 void RainbruRPG::OgreGui::Font::
 renderAligned( QuadRenderer* qr, const std::string& text, 
 	       const ColourValue& color, const Rectangle& rect ){
+
   // Process the text block into lines
   mLineList.resize( 0 );
-  processText( text, rect.right-rect.left, mLineList );
+
+  float textWidth=rect.right-rect.left;
+  processText( text, textWidth, mLineList );
   renderAligned( qr, mLineList, color, rect );
+}
+
+/** Feed the LineInfoList for the given text
+  *
+  * \param vText  The text to draw
+  * \param vWidth The allowed width
+  * \param vOut   The LineInfoList to feed
+  *
+  */
+void RainbruRPG::OgreGui::Font::
+processText( const std::string& vText, float vWidth, LineInfoList& vOut)const{
+
+  // WordWrap not yet implemented
+  bool vWrap=true;
+
+  // Get the total size of the text
+  unsigned int count = (unsigned int)vText.size( );
+
+  // Stores pixel width of line and word
+  float lineWidth = 0.0f;
+  float wordWidth = 0.0f;
+
+  // Stores current word
+  std::string word;
+
+  // Stores the current line
+  std::string line;
+
+  unsigned int x;
+  for ( x = 0; x < count; x++ ){
+    char c = vText[x];
+
+    // Add the new character to the current word
+    Glyph* gl=getGlyph(c);
+    wordWidth += gl->getSpace();
+    word += c;
+
+    bool delim=isDelim(c);
+    if ( delim || ( x == ( count-1 ) ) ){
+      // Is this line too long to fit?
+      if ( vWrap && ( lineWidth + wordWidth > vWidth ) ){
+	// Save current line
+	vOut.push_back( LineInfo( line, lineWidth ) );
+
+	// Reset line width
+	lineWidth = 0.0f;
+	line = "";
+      }
+      if ( c == '\n' ){
+	// Save current line
+	vOut.push_back( LineInfo( line + word, lineWidth + wordWidth ) );
+
+	// Reset line width
+	lineWidth = 0.0f;
+	wordWidth = 0.0f;
+
+	line = "";
+	word = "";
+      }
+      else{
+	lineWidth += wordWidth;
+	line += word;
+
+	wordWidth = 0.0f;
+	word = "";
+      }
+    }
+  }
+  
+  // Push any remaining text onto list
+  vOut.push_back( LineInfo( line + word, lineWidth + wordWidth ) );
+}
+
+/** Get a glyph from the glyph map
+  *
+  * \param vChar the charcode
+  *
+  * \return The glyph if found
+  *
+  */
+Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
+  bool found=false;
+
+  /*  GlyphMap::const_iterator it = mGlyphMap.find( vChar );
+  if ( it == mGlyphMap.end( ) ){
+    return (*mGlyphMap.find( 0 )).second;
+  }
+  */
+
+  GlyphMap::const_iterator it;
+  for (it=mGlyphMap.begin(); it!=mGlyphMap.end(); it++){
+    size_t i=(size_t)(*it).first;
+
+    if (i==vChar){
+      found=true;
+      return (*it).second;
+    }
+   }
+
+  if (!found){
+
+    string s;
+    s="Font::getGlyph not found for charcode ";
+    s+=StringConv::getSingleton().itos(vChar);
+    LOGE(s.c_str());
+
+    LOGCATS("mGlyphMap.size=");
+    LOGCATI(mGlyphMap.size());
+    LOGCAT();
+
+    it=mGlyphMap.begin();
+    return (*it).second;
+  }
+
+}
+
+/** Render a text
+  *
+  * \param qr              The QuadµRenderer used to draw
+  * \param vLineList       The LineInfoList used to cache
+  * \param vColor          The color to renderer 
+  * \param vRect           The rectangle wherer to draw the text
+  * \param vSelection      Should we draw a selection
+  * \param vSelectionStart The selection start
+  * \param vSelectionEnd   The selection end
+  *
+  */
+void RainbruRPG::OgreGui::Font::
+renderAligned(QuadRenderer* qr, LineInfoList& vLineList, 
+	      const ColourValue& vColor, const Rectangle& vRect,
+	      bool vSelection, int vSelectionStart, int vSelectionEnd){
+
+
+  qr->disableScissor(); // For test only
+
+  VerticalAlignType vVertAlign;
+  HorizontalAlignType vHorzAlign;
+
+  // Get the total height of the text (If we need it)
+  float textHeight = 0.0f;
+  if ( vVertAlign != VAT_TOP )
+    textHeight = (float)(mLineList.size( ) * getMaxGlyphHeight( ));
+
+  float currentY = 0.0f;
+  size_t charIndex = 0;
+
+  // Get screen space clip region and Brush position
+  Ogre::Rectangle clip = qr->getClipRegion();
+  Ogre::Vector2 pos;
+
+  // Go through each character
+  LineInfoList::const_iterator it;
+  for ( it = vLineList.begin( ); it != vLineList.end( ); it++ ){
+    const LineInfo& line = (*it);
+
+    // Get the rendering position
+    Ogre::Vector2 npos = calculatePos( vRect, line.getWidth(), textHeight, 
+				       vHorzAlign, vVertAlign );
+    npos.y += currentY;
+
+    // See if this line actually needs to be rendered
+    //    if ( !clip.isZero( ) ){
+    if ( ( npos.y + getMaxGlyphHeight( ) + pos.y ) < clip.top ){
+      currentY += getMaxGlyphHeight( );
+      charIndex += line.getText().size( );
+
+      continue;
+    }
+    else if ( (npos.y + pos.y) > clip.bottom )
+      return;
+    //    }
+
+    int start = vSelectionStart - charIndex;
+    int end = vSelectionEnd - charIndex;
+    
+    // Render the line of text
+    render( qr, line.getText(), vColor, npos, vSelection, start, end ); 
+
+    // Reset the current line
+    currentY += getMaxGlyphHeight( );
+    charIndex += line.getText().size( );
+  }
+
+}
+
+/** Calcultate a position 
+  *
+  * \param vRect      The rectangle
+  * \param vWidth     The width of the glyph
+  * \param vHeight    The height of the glyph
+  * \param vHorzAlign The horizontal alignment flag
+  * \param vVertAlign The vertical alignment flag
+  *
+  * \return A Ogre Vector2 containing the position
+  *
+  */
+Ogre::Vector2 RainbruRPG::OgreGui::Font::
+calculatePos( const Ogre::Rectangle& vRect, float vWidth, float vHeight, 
+	      HorizontalAlignType vHorzAlign, VerticalAlignType vVertAlign){
+
+  float rwidth = vRect.right - vRect.left;
+  float rheight = vRect.bottom - vRect.top;
+
+  float posx;
+  float posy;
+
+  // Adjust for horizontal alignment
+  switch ( vHorzAlign ){
+  case HAT_LEFT:
+    posx = vRect.left;
+    break;
+
+  case HAT_RIGHT:
+    posx = vRect.right - vWidth;
+    break;
+
+  case HAT_CENTER:
+    posx  = (vRect.left + ( rwidth / 2 )) - ( vWidth / 2 );
+    break;
+  }
+  
+  // Adjust for vertical alignment
+  switch ( vVertAlign ){
+  case VAT_TOP:
+    posy = vRect.top;
+    break;
+
+  case VAT_BOTTOM:
+    posy = vRect.bottom - vHeight;
+    break;
+
+  case VAT_CENTER:
+    posy  = (vRect.top + ( rheight / 2 )) - ( vHeight / 2 );
+    break;
+  }
+
+  return Ogre::Vector2( posx, posy );
+}
+
+/** Render a text
+  *
+  * \param qr              The quad renderer used to draw
+  * \param vText           The rendered text
+  * \param vColor          The color of rendering
+  * \param vPos            The position of rendering
+  * \param vSelection      Is a selection should be drawn
+  * \param vSelectionStart The start selection char
+  * \param vSelectionEnd   The end selection char
+  *
+  */
+void RainbruRPG::OgreGui::Font::
+render( QuadRenderer* qr, const string& vText, const ColourValue& vColor, 
+	const Vector2& vPos, bool vSelection, int vSelectionStart, 
+	int vSelectionEnd ) const{
+
+  int count = vText.size();
+
+  float currentX = vPos.x;
+  float currentY = vPos.y;
+
+  Vector2 tsize (mTexture->getWidth(), mTexture->getHeight());
+  Ogre::Rectangle r;
+
+  int x;
+  for ( x = 0; x < count; x++ ){
+    Glyph* g = getGlyph( vText[x] );
+    r.top=currentY;
+    r.left=currentX;
+
+
+    if ( vSelection == false ){
+      r.bottom=r.top+g->getHeight();
+      r.right=r.left+g->getWidth();
+
+      r= translateRectangle(r, g->getOffsetX(),g->getOffsetY() + mMaxBearingY );
+
+      Rectangle uvr = g->getGeometry();
+
+      uvr.left /= tsize.x;
+      uvr.right /= tsize.x;
+      uvr.top /= tsize.y;
+      uvr.bottom /= tsize.y;
+
+
+
+      qr->addGlyph( r, uvr );
+    }
+    else{
+      //      r.setPosition( r.left, r.top );
+      r.right=r.left+g->getSpace();
+      r.bottom=r.top+mMaxGlyphHeight;
+
+      if ( (x >= vSelectionStart) && (x < vSelectionEnd) )
+	qr->addGlyph(r, Rectangle());
+    }
+
+    currentX += g->getSpace();
+  }
+}
+
+/** Translate a rectangle
+  *
+  * \param r The rectangle to translate
+  * \param x The X translation value
+  * \param y The Y translation value
+  *
+  * \return The translated rectangle
+  *
+  */
+const Rectangle& RainbruRPG::OgreGui::Font::
+translateRectangle(Rectangle& r, float x, float y)const{
+  r.top=r.top+y;
+  r.bottom=r.bottom+y;
+  r.left=r.left+x;
+  r.right=r.right+x;
+  return r;
+}
+
+/** Get the current pass
+  *
+  * \return The current pass
+  *
+  */
+Pass* RainbruRPG::OgreGui::Font::getPass(void){
+  LOGA(mPass, "Returning a NULL Pass pointer");
+  return mPass;
+}
+
+/** Add a glyph to this font's map
+  *
+  * \param index The index in the map
+  * \param g     The glyph to add
+  *
+  */
+void RainbruRPG::OgreGui::Font::addGlyph(size_t index, Glyph* g){
+  mGlyphMap[index]=g;
 }

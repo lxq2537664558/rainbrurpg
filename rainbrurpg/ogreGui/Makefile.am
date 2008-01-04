@@ -24,6 +24,7 @@ h_sources= bgbutton.h			\
 	   skinoverlay.h		\
 	   sobetagui.h			\
 	   sonavigation.h		\
+	   staticimage.h		\
 	   titlebar.h			\
 	   widget.h
 
@@ -49,6 +50,7 @@ cc_sources= bgbutton.cpp		\
 	    skinoverlay.cpp		\
 	    sobetagui.cpp		\
 	    sonavigation.cpp		\
+	    staticimage.cpp		\
 	    titlebar.cpp		\
 	    widget.cpp
 
@@ -59,8 +61,7 @@ librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
-	   -I/usr/local/include/OGRE			\
-	   $(shell pkg-config sigc++-2.0 --cflags)	\
+	   $(shell pkg-config sigc++-2.0 OGRE --cflags)	\
 	   $(shell freetype-config --cflags)
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
@@ -70,6 +71,6 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)	\
 				  -version-info  	\
 				  $(GENERIC_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
-				  $(shell pkg-config sigc++-2.0 --libs)	\
+			  $(shell pkg-config sigc++-2.0 OGRE--libs)	\
 				  $(shell freetype-config --libs)
 

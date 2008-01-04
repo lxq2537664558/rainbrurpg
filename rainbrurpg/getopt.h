@@ -59,7 +59,8 @@ extern int opterr;
 extern int optopt;
 
 #ifndef __need_getopt
-/* Describe the long-named options requested by the application.
+  /** Describe the long-named options requested by the application.
+
    The LONG_OPTIONS argument to getopt_long or getopt_long_only is a vector
    of `struct option' terminated by an element containing a name which is
    zero.
@@ -79,7 +80,6 @@ extern int optopt;
    value (the equivalent single-letter option character, if there is
    one).  For long options that have a zero `flag' field, `getopt'
    returns the contents of the `val' field.  */
-
 struct option
 {
 # if defined __STDC__ && __STDC__

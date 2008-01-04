@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -30,6 +30,7 @@
 #include <OgreDataStream.h>
 #include <OgreHardwarePixelBuffer.h>
 #include <OgreRectangle.h>
+#include <OgreStringConverter.h>
 
 #define GLYPH_PAD_SPACE 2
 
@@ -40,7 +41,9 @@ using namespace RainbruRPG::Core;
   * Feeds the glyph list according to the current charmap.
   *
   */
-RainbruRPG::OgreGui::FontManager::FontManager(){
+RainbruRPG::OgreGui::FontManager::FontManager():
+  textureId(0)
+{
   feedGlyphList(0x20, 0x7F);
 
 }
@@ -123,8 +126,7 @@ loadFont(const String& name, unsigned int size){
   int texWidth=512;
   int texHeight=512;
 
-  Ogre::String textureName="testFont";
-  newFont->setTextureName(textureName);
+  Ogre::String textureName=getUniqueTextureName();
 
   // Create and initialize the texture
   TexturePtr texture=TextureManager::getSingleton()
@@ -139,6 +141,9 @@ loadFont(const String& name, unsigned int size){
   renderGlyphs( newFont, face, buffer, texWidth );
 
   texture->getBuffer()->unlock( );
+
+  newFont->setTextureName(textureName);
+
 
   // Store texture in font
   newFont->setTexture( texture );
@@ -164,12 +169,10 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
 	      unsigned int vTexSize){
   
   FT_Error err;
-  GlyphMap glyphs = vFont->getGlyphMap( );
-  
   FT_GlyphSlot slot = vFace->glyph;
 
   int count = (int)mGlyphList.size( );
-  int width;
+  int width =0;
 
   int cur_x = 0;
   int cur_y = 0;
@@ -202,7 +205,13 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
     }
 
     width = slot->bitmap.width + GLYPH_PAD_SPACE;
-    
+    if (width==GLYPH_PAD_SPACE){
+      string warn;
+      warn= "Glyph width is NULL for charcode ";
+      warn+=StringConv::getSingleton().itos(charCode);
+      LOGW(warn.c_str());
+    }
+
     // see if we need to wrap to next row
     if ( ( cur_x + width ) >= vTexSize )
       {
@@ -221,21 +230,31 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
     rect.right = (float)( cur_x + width - GLYPH_PAD_SPACE );
     rect.bottom = (float)(cur_y+vFont->getMaxGlyphHeight()-GLYPH_PAD_SPACE);
     
+    LOGCATS("Glyph charcode=");
+    LOGCATI(charCode);
+    LOGCATS(" left=");
+    LOGCATF(rect.left);
+    LOGCATS(" right=");
+    LOGCATF(rect.right);
+    LOGCAT();
+
     float offsetX = (float)( slot->metrics.horiBearingX >> 6 );
     float offsetY = -(float)( slot->metrics.horiBearingY >> 6 );
     
     size_t index=(size_t)mGlyphList[x];
-    glyphs[index]=Glyph(rect,(float)(slot->advance.x>>6),offsetX,offsetY);
-    
+
+    // Adding the glyph
+    Glyph* newGlyph=new Glyph(rect,(float)(slot->advance.x>>6),offsetX,offsetY);
+    newGlyph->setCharCode(charCode);
+    vFont->addGlyph(index, newGlyph);
+
     cur_x += width;
     
     // Check and update maximum bearingY value
     if ( ( slot->metrics.horiBearingY >> 6 ) > maxBearingY )
       maxBearingY = ( slot->metrics.horiBearingY >> 6 );
   }
-  
   vFont->setMaxBearingY( maxBearingY );
-  
 }
 
 /** Copy a FreeType gliph to a buffer
@@ -268,6 +287,7 @@ copyGlyph( FT_Bitmap* vBitmap, int* vBuffer, int vWidth ){
       *bytebuff++ = 0xFF;
       *bytebuff = val;
 #endif
+      
     }
 
     vBuffer += vWidth;
@@ -285,4 +305,18 @@ feedGlyphList(unsigned long from, unsigned long to){
   for (unsigned long i=from; i<to; i++){
     mGlyphList.push_back(i);
   }
+}
+
+/** Get a unique texture name
+  *
+  * \return A unique texture name based on \c OgreGUI.Font. and a 
+  *         unique integer Id.
+  *
+  * \sa textureId
+  *
+  */
+String RainbruRPG::OgreGui::FontManager::getUniqueTextureName(){
+  String s="OgreGUI.Font."+Ogre::StringConverter::toString(textureId++);
+
+  return s;
 }

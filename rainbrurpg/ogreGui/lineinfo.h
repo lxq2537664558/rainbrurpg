@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -43,8 +43,13 @@ namespace RainbruRPG{
       LineInfo( const std::string& vText, float vWidth);
       LineInfo();
 
+      float getWidth() const;
+      const std::string& getText()const;
+
     private:
+      /** The text contained in this line */
       std::string text;
+      /** The width of this line of text */
       float width;
 
     };

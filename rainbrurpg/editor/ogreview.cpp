@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -40,16 +40,17 @@ using namespace Ogre;
   * \param parent The parent widget
   *
   */
-OgreView::OgreView(QWidget* parent) : QWidget(parent){
+OgreView::OgreView(QWidget* parent) : 
+  QWidget(parent),
+  mRenderWindow(NULL),
+  mainEntAnim(NULL),
+  mainSubEnt(NULL),
+  mSceneMgr(NULL),
+  mainNode(NULL),
+  mainEnt(NULL),
+  mVp(NULL)
+{
   LOGI("Creating OgreView");
-  mRenderWindow = NULL;
-  mSceneMgr = NULL;
-  mVp = NULL;
-  mainEnt = NULL;
-  mainNode = NULL;
-  mainSubEnt = NULL;
-  mainEntAnim = NULL;
-  
   mouseLeftPressed = false;
   mouseRightPressed = false;
   mouseMiddleBtn = false;
@@ -84,7 +85,7 @@ OgreView::OgreView(QWidget* parent) : QWidget(parent){
   setAcceptDrops(true);
   setupResources();
   // Creates a timer to get interval between mouse press/release events
-  mouseTimer=Ogre::PlatformManager::getSingleton().createTimer();
+  mouseTimer=new Timer();
   LOGI("OgreView created");
   msClickTime=200;
 }
@@ -93,26 +94,27 @@ OgreView::OgreView(QWidget* parent) : QWidget(parent){
   *
   */
 OgreView::~OgreView(){
-  Ogre::PlatformManager::getSingleton().destroyTimer(mouseTimer);
+  delete mouseTimer;
+  mouseTimer=NULL;
 
   delete selectionCycle;
   selectionCycle=NULL;
 
   if(mRenderWindow != NULL){
     delete mRenderWindow;
-    mRenderWindow = 0;
+    mRenderWindow = NULL;
   }
   if(mSceneMgr != NULL){
     delete mSceneMgr;
-    mSceneMgr = 0;
+    mSceneMgr = NULL;
   }
   if(mVp != NULL){
     delete mVp;
-    mVp = 0;
+    mVp = NULL;
   }
   if(mRoot != NULL){
     delete mRoot;
-    mRoot = 0;
+    mRoot = NULL;
   }
 }
 
@@ -129,7 +131,8 @@ void OgreView::setupResources(){
   mRoot = new Ogre::Root(plugFN.c_str(), ogreFN.c_str(), "ogre.log");
 
   mLogListener = new myLogListener();
-  LogManager::getSingleton().addListener(mLogListener);
+  Log* defaultLog=LogManager::getSingleton().getDefaultLog();
+  defaultLog->addListener(mLogListener);
   
   std::string resCfg=gu.getShareFile("config/resources.cfg");
 

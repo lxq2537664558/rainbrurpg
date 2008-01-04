@@ -10,19 +10,16 @@ rainbrurpg_SOURCES= launcher.cpp			\
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
 	   -I$(top_srcdir)/ogreGui			\
-	   $(OGRE_CFLAGS)				\
-	   $(CEGUI_CFLAGS)
+	   $(OGRE_CFLAGS)
 
 rainbrurpg_LDADD= -lrainbrurpg-common			\
 		  -lrainbrurpg-core 			\
 		  -lrainbrurpg-ogregui			\
-		  $(OGRE_LIBS)				\
-		  $(CEGUI_LIBS)
+		  $(OGRE_LIBS)
 
 rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/.libs		\
 		    -L$(top_srcdir)/maincore/.libs		\
 		    -L$(top_srcdir)/ogreGui/.libs		\
-  		    $(CEGUI_OGRE_LIBS)	       			\
-		    $(libcurl_LIBS)
+ 		    $(libcurl_LIBS)
 
 

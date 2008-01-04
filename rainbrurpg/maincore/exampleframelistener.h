@@ -36,27 +36,22 @@ D:        Step right
 #define __ExampleFrameListener_H__
 
 #include <Ogre.h>
-class Cursor;
-class InputEvent;
-#include <OgreEventTarget.h>
-#include <OgreKeyEvent.h>
-#include <OgreInputEvent.h>
-#include <OgreEventQueue.h>
-#include <OgreEventListeners.h>
-#include <OgreEventTarget.h>
-#include <OgreInput.h>
-#include <OgreEventDispatcher.h>
-#include <OgreEventProcessor.h>
-#include <OgrePlatformManager.h>
 
+#include <OIS.h>
 
 #include <logger.h>
 
 using namespace Ogre;
+using namespace OIS;
 
 namespace RainbruRPG{
   namespace Core{
 
+    /**
+      *
+      * \todo remove EventProcessor, InputReader
+      *
+      */
     class ExampleFrameListener: public FrameListener, public KeyListener{
 
     public:
@@ -91,9 +86,9 @@ namespace RainbruRPG{
       
     protected:
       /** The Ogre Event processor */
-      EventProcessor* mEventProcessor;
+      //    EventProcessor* mEventProcessor;
       /** The input device */
-      InputReader* mInputDevice;
+      //      InputReader* mInputDevice;
       /** The Ogre camera */
       Camera* mCamera;
       /** The translation vector */

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 02 jan 2008 : Dynamic menu conditionnal compilation
+ * - 18 nov 2007 : Now using OgreGui::StaticImage for menu background
  * - 02 nov 2007 : Menu overlays are now shown in their own overlay
  *                 (not the BetaGUI one)
  */
@@ -37,6 +39,14 @@
 #include "gamestate.h"
 #include "bggui.h"
 
+/** Uncomment it to get a dynamic menu background
+  *
+  * It was deactivated due to a lack of performance but should
+  * be tested again.
+  *
+  */
+//#define USE_DYNAMIC_MENU
+
 using namespace Ogre;
 
 // Forward declarations
@@ -50,10 +60,19 @@ namespace RainbruRPG {
     class GuiManager;
     class KeyboardNavigation;
   }
+  namespace OgreGui{
+    class StaticImage;
+  }
+}
+namespace BetaGUI{
+  class Window;
 }
 // End of forward declarations
 
+using namespace Ogre;
+using namespace BetaGUI;
 using namespace RainbruRPG::Gui;
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG {
   namespace Core{
@@ -62,6 +81,11 @@ namespace RainbruRPG {
       *
       * A menu contains a moveable border with two panels. Typically,
       * the right panel contains CEGUI elements.
+      *
+      * \note Since v0.0.5-164, the dynamic menu feature was deactivated.
+      *       It is done with a conditionnal compilation found in 
+      *       \c gsmenubase.h. Please see sources for more information on
+      *       dynamic background test.
       *
       */
     class gsMenuBase : public GameState{
@@ -112,11 +136,12 @@ namespace RainbruRPG {
 	*/
       gsMenuBase(){};
 
-      void drawBorder();
-      void drawMenuBackground();
-      void drawDynamicBackground();
+      void createMenuWindow(void);
+      void createBorder(void);
+      void createMenuBackground(void);
+      void createDynamicBackground(void);
+      void createStaticMenu(void);
 
-      void setCorners();
       float getTranslationLenght(float, float);
 
       /** A shortcut to the Ogre::Root object */
@@ -125,12 +150,6 @@ namespace RainbruRPG {
       SceneManager* mSceneMgr;
       /** The menu scene node */
       SceneNode* menuNode;
-      /** The object used to rendering the menu border */
-      OverlayContainer* bordRect;
-      /** The object used to rendering the right menu */
-      OverlayContainer* menuRect;
-      /** The object used to rendering the left menu */
-      OverlayContainer* dynaRect;
 
       /** The position of the border */
       double yBorder;
@@ -179,6 +198,23 @@ namespace RainbruRPG {
       int mouseX;
       /** Keeping mouse position for OgreGUI key injection */
       int mouseY;
+
+      /** Contains all menu background widget */
+      Window* menuWindow;
+
+
+#ifdef USE_DYNAMIC_MENU
+      /** The right part of the dynamic menu */
+      StaticImage* siRight;
+      /** The left part of the dynamic menu */
+      StaticImage* siLeft;
+      /** The border of the dynamic menu */
+      StaticImage* siBorder;
+#else
+      /** The static menu */
+      StaticImage* staticMenu;
+#endif // USE_DYNAMIC_MENU
+
     };
 
 

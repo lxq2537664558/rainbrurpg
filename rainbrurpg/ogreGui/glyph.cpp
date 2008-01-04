@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -22,6 +22,8 @@
 
 #include "glyph.h"
 
+#include "logger.h"
+
 /** The constructor
   *
   * \param vRect    The geometry of the glyph
@@ -31,20 +33,35 @@
   *
   */
 RainbruRPG::OgreGui::Glyph::
-Glyph(Ogre::Rectangle vRect, float vOffsetX, float vOffsetY, float vSpace):
-  mRect(vRect),
+Glyph(const Ogre::Rectangle& vRect,float vOffsetX,float vOffsetY, float vSpace):
   mOffsetX(vOffsetX),
   mOffsetY(vOffsetY),
-  mSpace(vSpace)
+  mSpace(vSpace),
+  charcode(0)
 {
+  mRect.top=vRect.top;
+  mRect.left=vRect.left;
+  mRect.right=vRect.right;
+  mRect.bottom=vRect.bottom;
 
+  if (vRect.bottom-vRect.top==0){
+    LOGW("Constructing a glyph with NULL height");
+  }
 }
 
 /** The default constructor
   *
   */
-RainbruRPG::OgreGui::Glyph::Glyph(){
-
+RainbruRPG::OgreGui::Glyph::Glyph():
+  mOffsetX(0),
+  mOffsetY(0),
+  mSpace(0),
+  charcode(0)
+{
+  mRect.top=0.0f;
+  mRect.left=0.0f;
+  mRect.right=0.0f;
+  mRect.bottom=0.0f;
 }
 
 /** The destructor 
@@ -52,4 +69,155 @@ RainbruRPG::OgreGui::Glyph::Glyph(){
   */
 RainbruRPG::OgreGui::Glyph::~Glyph(){
 
+}
+
+/** Get the space of this glyph
+  *
+  * \return The space
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getSpace(void)const{
+  return mSpace;
+}
+
+/** Get the geometry rectangle
+  *
+  * \return The rectangle containing this glyph
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::Glyph::getGeometry()const{
+  return mRect;
+}
+
+/** Get the height of this glyph
+  *
+  * \return The height of this glyph
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getHeight(void)const{
+  float height=mRect.bottom-mRect.top;
+  return height;
+}
+
+/** Get the width of this glyph
+  *
+  * \return The width of this glyph
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getWidth(void)const{
+  float width=mRect.right-mRect.left;
+  return width;
+}
+
+/** Get the X offset of this glyph
+  *
+  * \return The X offset of this glyph
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getOffsetX()const{
+  return mOffsetX;
+}
+
+/** Get the Y offset of this glyph
+  *
+  * \return The Y offset of this glyph
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getOffsetY()const{
+ return mOffsetY;
+}
+
+/** Get the top value
+  *
+  * \return The top geometry of this glyph.
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getTop(void)const{
+  return mRect.top;
+}
+
+/** Get the left value
+  *
+  * \return The left geometry of this glyph.
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getLeft(void)const{
+  return mRect.left;
+}
+
+/** Get the right value
+  *
+  * \return The right geometry of this glyph.
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getRight(void)const{
+  return mRect.right;
+}
+
+/** Get the bottom value
+  *
+  * \return The bottom geometry of this glyph.
+  *
+  */
+float RainbruRPG::OgreGui::Glyph::getBottom(void)const{
+  return mRect.bottom;
+}
+
+/** The copy constructor
+  *
+  * \param g The Glyph to copy. 
+  *
+  */
+RainbruRPG::OgreGui::Glyph::Glyph(const Glyph& g){
+  mRect.top=g.getTop();
+  mRect.bottom=g.getBottom();
+  mRect.left=g.getLeft();
+  mRect.right=g.getRight();
+
+  mOffsetX =g.getOffsetX();
+  mOffsetY =g.getOffsetY();
+  mSpace   =g.getSpace();
+
+  charcode=g.getCharCode();
+}
+
+/** The assignment operator
+  *
+  * \param g The Glyph to assign
+  *
+  * \return This glyph
+  *
+  */
+RainbruRPG::OgreGui::Glyph& 
+RainbruRPG::OgreGui::Glyph::operator=(const RainbruRPG::OgreGui::Glyph& g){
+  mRect.top=g.getTop();
+  mRect.bottom=g.getBottom();
+  mRect.left=g.getLeft();
+  mRect.right=g.getRight();
+
+  mOffsetX =g.getOffsetX();
+  mOffsetY =g.getOffsetY();
+  mSpace   =g.getSpace();
+  
+  charcode=g.getCharCode();
+
+  return *this;
+}
+
+/** Set this glyph's charcode
+  *
+  * \param cc The charcode
+  *
+  */
+void RainbruRPG::OgreGui::Glyph::setCharCode(long int cc){
+  charcode=cc;
+}
+
+/** Get this glyph's charcode
+  *
+  * \return The charcode
+  *
+  */
+long int RainbruRPG::OgreGui::Glyph::getCharCode(void)const{
+  return charcode;
 }

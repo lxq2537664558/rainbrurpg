@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -27,8 +27,6 @@
 
 #ifndef _GS_UPDATE_DATAFILES_H_
 #define _GS_UPDATE_DATAFILES_H_
-
-#include <CEGUI/CEGUI.h>
 
 #include "gsmenubase.h"
 #include "vcconstant.h"

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -21,7 +21,7 @@
  */
 
 /* Modifications :
- * - 12 may 2007 : Starting implementation
+ * - 12 may 2007 : Starting implementation
  *
  */
 

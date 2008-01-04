@@ -1,3 +1,25 @@
+/*
+ *  Copyright 2006-2008 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 #include "exampleframelistener.h"
 
 #include <iostream>
@@ -21,17 +43,18 @@ ExampleFrameListener( RenderWindow* win, Camera* cam,
       mInputTypeSwitchingOn = mUseBufferedInputKeys || mUseBufferedInputMouse;
 
       if (mInputTypeSwitchingOn){
-		mEventProcessor = new EventProcessor();
+	/*		mEventProcessor = new EventProcessor();
 	mEventProcessor = EventProcessor::getSingletonPtr();
 	mEventProcessor->initialise(win);
 	mEventProcessor->startProcessingEvents();
 	mEventProcessor->addKeyListener(this);
 	mInputDevice = mEventProcessor->getInputReader();
+	*/
       }
       else{
   
-	mInputDevice = PlatformManager::getSingleton().createInputReader();
-	mInputDevice->initialise(win,true, true);
+	//	mInputDevice = PlatformManager::getSingleton().createInputReader();
+	//	mInputDevice->initialise(win,true, true);
 	  }
 
       mCamera = cam;
@@ -51,10 +74,10 @@ ExampleFrameListener( RenderWindow* win, Camera* cam,
   */
 RainbruRPG::Core::ExampleFrameListener::~ExampleFrameListener(){
   if (mInputTypeSwitchingOn){
-    delete mEventProcessor;
+    //    delete mEventProcessor;
   }
   else{
-    PlatformManager::getSingleton().destroyInputReader( mInputDevice );
+    //   PlatformManager::getSingleton().destroyInputReader( mInputDevice );
   }
 }
 
@@ -66,7 +89,7 @@ RainbruRPG::Core::ExampleFrameListener::~ExampleFrameListener(){
   */
 bool RainbruRPG::Core::ExampleFrameListener::
 processUnbufferedKeyInput(const FrameEvent& evt){
-  if (mInputDevice->isKeyDown(KC_A)){
+  /*  if (mInputDevice->isKeyDown(KC_A)){
     // Move camera left
     mTranslateVector.x = -mMoveScale;
   }
@@ -76,12 +99,12 @@ processUnbufferedKeyInput(const FrameEvent& evt){
     mTranslateVector.x = mMoveScale;
   }
   
-  /* Move camera forward by keypress. */
+  // Move camera forward by keypress. 
   if (mInputDevice->isKeyDown(KC_UP) || mInputDevice->isKeyDown(KC_W) ){
     mTranslateVector.z = -mMoveScale;
   }
   
-  /* Move camera backward by keypress. */
+  // Move camera backward by keypress.
   if (mInputDevice->isKeyDown(KC_DOWN) || mInputDevice->isKeyDown(KC_S)){
     mTranslateVector.z = mMoveScale;
   }
@@ -171,21 +194,15 @@ processUnbufferedKeyInput(const FrameEvent& evt){
   if (mInputDevice->isKeyDown(KC_P) && mTimeUntilNextToggle <= 0){
     displayCameraDetails = !displayCameraDetails;
     mTimeUntilNextToggle = 0.5;
-    /*    if (!displayCameraDetails)
-      mWindow->setDebugText("");
-    */
+
   }
   
   if (displayCameraDetails){
     // Print camera details
-    /*   mWindow->setDebugText("P: " + StringConverter::
-			  toString(mCamera->getDerivedPosition()) 
-			  + " " + 
-			  "O: " + StringConverter::toString(mCamera->
-			            getDerivedOrientation()));
-    */
+ 
   }
   
+*/
   // Return true to continue rendering
   return true;
 }
@@ -205,7 +222,7 @@ processUnbufferedMouseInput(const FrameEvent& evt){
   /* If the second mouse button is pressed, then the mouse 
      movement results in 
      sliding the camera, otherwise we rotate. */
-  if( mInputDevice->getMouseButton( 1 ) ){
+  /*  if( mInputDevice->getMouseButton( 1 ) ){
     mTranslateVector.x += mInputDevice->getMouseRelativeX() * 0.13;
     mTranslateVector.y -= mInputDevice->getMouseRelativeY() * 0.13;
   }
@@ -213,6 +230,7 @@ processUnbufferedMouseInput(const FrameEvent& evt){
     mRotX = Degree(-mInputDevice->getMouseRelativeX() * 0.13);
     mRotY = Degree(-mInputDevice->getMouseRelativeY() * 0.13);
   }
+  */
   return true;
 }
 
@@ -240,7 +258,7 @@ frameStarted(const FrameEvent& evt){
     return false;
       
   //  if (!mInputTypeSwitchingOn){
-  mInputDevice->capture();
+  //  mInputDevice->capture();
     //  }
 
   if ( !mUseBufferedInputMouse || !mUseBufferedInputKeys){
@@ -287,8 +305,9 @@ frameStarted(const FrameEvent& evt){
   */
 void RainbruRPG::Core::ExampleFrameListener::switchMouseMode(){
   mUseBufferedInputMouse = !mUseBufferedInputMouse;
-  mInputDevice->setBufferedInput(mUseBufferedInputKeys, 
+  /*  mInputDevice->setBufferedInput(mUseBufferedInputKeys, 
 				 mUseBufferedInputMouse);
+  */
 }
 
 /** Switch the buffered/unbeffered key input mode
@@ -296,8 +315,9 @@ void RainbruRPG::Core::ExampleFrameListener::switchMouseMode(){
   */
 void RainbruRPG::Core::ExampleFrameListener::switchKeyMode(){
   mUseBufferedInputKeys = !mUseBufferedInputKeys;
-  mInputDevice->setBufferedInput(mUseBufferedInputKeys, 
+  /*  mInputDevice->setBufferedInput(mUseBufferedInputKeys, 
 				 mUseBufferedInputMouse);
+  */
 }
 
 /** Treat the key clicked event
@@ -306,10 +326,10 @@ void RainbruRPG::Core::ExampleFrameListener::switchKeyMode(){
   *
   */
 void RainbruRPG::Core::ExampleFrameListener::keyClicked(KeyEvent* e){
-  if (e->getKeyChar() == 'm'){
+  if (e->text == 'm'){
     switchMouseMode();
   }
-  else if (e->getKeyChar() == 'k'){
+  else if (e->text == 'k'){
     switchKeyMode();
   }
 }

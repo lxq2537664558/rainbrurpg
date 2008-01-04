@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -23,12 +23,10 @@
 #include "gameengine.h"
 
 #include <iostream>
-#include <OGRE/OgreRenderSystem.h>
-#include <OGRE/OgreIteratorWrappers.h>
-#include <OGRE/OgreSceneManagerEnumerator.h>
-#include <OGRE/OgreLogManager.h>
-
-#include <CEGUI/CEGUIDefaultLogger.h>
+#include <OgreRenderSystem.h>
+#include <OgreIteratorWrappers.h>
+#include <OgreSceneManagerEnumerator.h>
+#include <OgreLogManager.h>
 
 #include <logger.h>
 #include "gamestate.h"
@@ -77,7 +75,6 @@ void RainbruRPG::Core::GameEngine::init(){
   actualState=ST_MAIN_MENU;
 
   initOgre();
-  initCEGUI();
   initOgreGui();
   initStates();
 }
@@ -119,7 +116,7 @@ void RainbruRPG::Core::GameEngine::run() {
 
      LOGI("Setting the GuiFrameListener");
     
-    mFrameListener= new GuiFrameListener(mWindow, mCamera, mGUIRenderer);
+    mFrameListener= new GuiFrameListener(mWindow, mCamera);
     Ogre::Root::getSingleton().addFrameListener(mFrameListener);
     
     
@@ -466,43 +463,6 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   
 }
 
-/** Init CEGUI
-  *
-  *
-  *
-  */
-void RainbruRPG::Core::GameEngine::initCEGUI(){
-  // Set up GUI system
-  LOGI("Initializing CEGUI");
-
-  // true for rendering CEGUI last, with false, CEGUI windows are not
-  // over OGRE overlays (they are hidden)
-  mGUIRenderer = new CEGUI::OgreCEGUIRenderer(mWindow, 
-					      Ogre::RENDER_QUEUE_OVERLAY, 
-					      true, 3000, mSceneMgr);
-
-  mGUISystem = new CEGUI::System(mGUIRenderer, NULL, NULL, 
-				 NULL, "", (CEGUI::utf8*)"cegui.log");
-
-  CEGUI::SchemeManager::getSingleton().
-    loadScheme((CEGUI::utf8*)"TaharezLook.scheme");
-  CEGUI::SchemeManager::getSingleton().
-    loadScheme((CEGUI::utf8*)"VanillaSkin.scheme");
-  mGUISystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", 
-				    (CEGUI::utf8*)"MouseArrow");
-  
-  // load in a font.  The first font loaded automatically becomes 
-  //the default font.
-  CEGUI::FontManager::getSingleton()
-    .createFont((CEGUI::utf8*)"fkp-16.font");
-  CEGUI::FontManager::getSingleton()
-    .createFont((CEGUI::utf8*)"iconified-20.font");
-
-  CEGUI::MouseCursor::getSingleton().setImage("TaharezLook", 
-					      "MouseMoveCursor");
-     
-}
-
 /** Get the PagingLandScape2 scene manager
   *
   *
@@ -605,37 +565,6 @@ void RainbruRPG::Core::GameEngine::setupResources(){
 
   LOGI("All resources correctly setup");
 
-}
-
-/** Converts a mouse button event from Ogre to Cegui
-  *
-  * \param buttonID The Ogre button identifier
-  *
-  * \return The mouse button given as parameter in the CEGUI format
-  */
-CEGUI::MouseButton RainbruRPG::Core::GameEngine::
-convertOgreButtonToCegui(int buttonID){
-   switch (buttonID)   {
-   case MouseEvent::BUTTON0_MASK:
-       return CEGUI::LeftButton;
-   case MouseEvent::BUTTON1_MASK:
-       return CEGUI::RightButton;
-   case MouseEvent::BUTTON2_MASK:
-       return CEGUI::MiddleButton;
-   case MouseEvent::BUTTON3_MASK:
-       return CEGUI::X1Button;
-   default:
-       return CEGUI::LeftButton;
-   }
-}
-
-/** Get the CEGUI System object
-  *
-  * \return The CEGUI System Object
-  *
-  */
-CEGUI::System* RainbruRPG::Core::GameEngine::getCEGUISystem(){
-  return mGUISystem;
 }
 
 /** Get the Ogre Root object
@@ -748,8 +677,6 @@ fromMenuToGame(GameState* from, GameState* to){
   while (GuiManager::getSingleton().isInGuiFadeOut()){
     Ogre::Root::getSingleton().renderOneFrame();
   }
-
-  GuiManager::getSingleton().removeCurrentCEGUILayout();
 
   LOGI("Clearing Scene");
   mSceneMgr->clearScene();
@@ -889,7 +816,7 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   *
   */
 void RainbruRPG::Core::GameEngine::initOIS(){
-  mInputMgr=InputManager::getSingletonPtr();
+  mInputMgr=RainbruRPG::Core::InputManager::getSingletonPtr();
   mInputMgr->initialise(mWindow);
   mInputMgr->addKeyListener(this, "GameEngine");
   mInputMgr->addMouseListener(this, "GameEngine");
@@ -928,7 +855,8 @@ Camera* RainbruRPG::Core::GameEngine::getCamera(){
   * \sa mInputMgr, InputManager
   *
   */
-InputManager* RainbruRPG::Core::GameEngine::getInputManager(){
+RainbruRPG::Core::InputManager* 
+RainbruRPG::Core::GameEngine::getInputManager(){
   return mInputMgr;
 }
 

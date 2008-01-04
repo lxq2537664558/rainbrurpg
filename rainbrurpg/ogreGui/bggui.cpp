@@ -53,6 +53,7 @@ BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
   */
 BetaGUI::GUI::~GUI(){
   windowList.clear();
+  windowBeforeOverlayList.clear();
 
   delete mQuadRenderer;
   mQuadRenderer=NULL;
@@ -385,4 +386,30 @@ void BetaGUI::GUI::draw(){
     (*iter)->draw(mQuadRenderer);
   }
   mQuadRenderer->end();
+}
+
+/** Draw the windowlist to be drawn before Ogre overlay
+  *
+  */
+void BetaGUI::GUI::drawBeforeOverlay(){
+  mQuadRenderer->begin();
+
+  list<Window*>::iterator iter;
+  for(iter=windowBeforeOverlayList.begin();
+      iter!=windowBeforeOverlayList.end();iter++){
+     
+    // Each Window should call reset() itself
+    (*iter)->draw(mQuadRenderer);
+  }
+  mQuadRenderer->end();
+}
+
+/** Add a window drawn before Ogre overlays
+  *
+  * \param w The window to add
+  *
+  */
+void BetaGUI::GUI::addWindowBeforeOverlays(Window* w){
+  windowBeforeOverlayList.push_back(w);
+
 }

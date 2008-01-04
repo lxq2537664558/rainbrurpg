@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -62,7 +62,7 @@ RainbruRPG::Exception::Logger::Logger(){
 void RainbruRPG::Exception::Logger::log( const char* file, 
 					 const char* line, int id, 
 					 const char* msg){
-  char* c;
+  const char* c;
 
   if (id>=logLevel){
     switch(id){
@@ -86,9 +86,7 @@ void RainbruRPG::Exception::Logger::log( const char* file,
 
 /** The assertion main method
   *
-  * It will print your message with the Information loglevel if the
-  * condition is true, otherwise your message will be printed with the
-  * Error log level.
+  * It will print your message with the Error Error log level.
   *
   * \param file The filename from where the call to this method happened
   * \param line The line from where the call to this method happened
@@ -98,7 +96,7 @@ void RainbruRPG::Exception::Logger::log( const char* file,
 void RainbruRPG::Exception::Logger::logAssert( const char* file, 
 					       const char* line, 
 					       bool b, const char* msg){
-  char* c;
+  const char* c;
   bool l=false;
 
   if (!b){

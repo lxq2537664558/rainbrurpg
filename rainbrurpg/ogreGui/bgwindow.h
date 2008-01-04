@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
  * - 21 nov 2007 : Adding widget mouse support in event handling loop
  * - 16 nov 2007 : setTitle(String) implementation
  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters

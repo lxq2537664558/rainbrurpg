@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -71,7 +71,6 @@ float RainbruRPG::Core::vcConstant::getNextFrame(bool& b){
     // Set the transition to be ended if transitiontime exeeced
     if (curentTime>=transitionTime){
       b=false;
-      LOGI("Transition ended");
     }
     return trans;
   }

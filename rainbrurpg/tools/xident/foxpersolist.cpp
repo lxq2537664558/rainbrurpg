@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -41,7 +41,7 @@ FXIMPLEMENT(RainbruRPG::Gui::FoxPersoList,FXPacker,FoxPersoListMap,ARRAYNUMBER(F
   * The parent must not be NULL
   *
   * \param parent The parent composite
-  * \param opts The FOX construction parameter
+  * \param opts   The FOX construction parameter
   *
   */
 RainbruRPG::Gui::FoxPersoList::FoxPersoList(FXComposite *parent,FXuint opts)

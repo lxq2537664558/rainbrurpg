@@ -1,10 +1,11 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Font::processText implementation
-- Font::renderAligned(LineInfoList) implementation
-- QuadRenderer::renderGlyph implementation
-- QuadRenderer::drawText() implementation
+- Setting correct texture to glyph quads in QuadRenderer::drawTex()
+- Debugging QuadRenderer::addGlyph vRect parameter
+   o vRect is construct in Font::render()
+- Debugging Glyph uvMap
+   o QuadRenderer::addGlyph
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -119,7 +120,82 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-164
+- Homepage news :
+Title :Switched to Ogre 1.4
+Content :[cite]RainbruRPG[/cite] switched from Ogre 1.2 to Ogre 1.4 and CEGUI was definitely give up. Consequently, [cite]RainbruRPG[/cite] building on GNU/Linux platform is easier because Ogre 1.4 is in the official Debian repository.[br]
+[br]
+OgreGui is not yet done but a new release will follow its implementation.[br]
+[br]
+Note : I recently fixed a bug in the artcles section of this site that heavily compromize copy/paste operations on code blocks.[br]
+[br]
+Links :
+[href a="http://packages.debian.org/fr/sid/libogre14"]libOgre14 in the debian repository[/href]
+- Making mouse work again
+   InputManager get a bad window handle
+- Dynamic menu deactivated (conditionnal compilation)
+- StaticImage::setPosition(x,y);
+- Drawing menu background and border (gsMenuBase)
+   o Using StaticImage widget for OgreGui::StaticImage
+- OgreGui::StaticImage widget implementation
+- gsMenuBase::drawMenu??? now called createMenu...
+- Switching to Ogre 1.4
+   o Using libOgre found in the Debian Etch repository
+   o Many modifications are needed
+   o Removing CEGUI dependencies
+- Font texturing debug mode fixed
+- Computing page number of documentation for regText.html
+- Doxygen documentation
+
 * v 0.0.5-163
+- Implement Font::addGlyph(index, Glyph*);
+- Font::getGlyphMap return a constant
+- Font destructor clears glyphMap
+- Font::getGlyph debug
+   o mGlyphMap.size()==0
+- Glyp::getWidth()/getHeight() return 0
+   o Adding charcode to glyph to debug it
+- Debugging QuadRenderer::getFinalRect
+     called from buildVertices()
+       called from addGlyph()
+         called from Font::render()
+   o Using xPixelToNative and yPixelToNative
+   o vIn seems to be spurious
+
+   o Testing if Glyp::getWidth()/getHeight() do not return 0
+   o Glyphs created from FontManager::renderGlyphs ()
+- Drawing a test caption for TitleBar
+   o Stack : 
+   QuadRenderer::drawText()        called
+   Font::renderAligned             textWidth         OK
+   Font::processText               LineInfoList.size OK
+                                   vText.size        OK
+   Font::renderAligned(LineInfo)   
+   Font::Render                    vText.size        OK
+   QuadRenderer::getFinalRect      vOut must be fixed
+- QuadRenderer::drawText() implementation
+- QuadRenderer::renderGlyph() implementation
+- QuadRenderer::addGlyph() implementation
+- Font::render() implementation
+- common/rainbrudef implements GCC visibility
+- Homepage news :
+   Title: Changing OgreGUI renderer
+   Content: I'm changing the OgreGUI renderer from Ogre overlays to
+   custom texturized quads. Due to scrollpane implementation, I need 
+   scissor handle and Ogre overlays do not provide this feature.
+
+   The new renderer will be based on the Right Brain Games UI, a GPLed 
+   library used in the Antilia project.
+
+   This renderer will also support Unicode providing the ability, for 
+   further releases, of translation through GNU getText.
+
+   Links :
+   Right Brain Games UI
+   GNU gettext
+   Unicode
+- Font::renderAligned(LineInfoList) implementation
+- Font::processText implementation
 - LineInfo become a class
 - QuadRenderer::drawRectangle() implementation
 - Skins use drawRectangle instead of draw
@@ -130,55 +206,4 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - OgreGUI/FontManager::copyGlyph implementation
 - OgreGUI/FontManager::renderGlyphs implementation
 - OgreGUI/FontManager::loadFont implementation
-
-* v 0.0.5-162
-- Glyph base implementation
-- TitleBar drawn by QuadRenderer
-- active ResizeGrip drawn 
-- ResizeGrip drawn by QuadRenderer
-- Window drawn by QuadRenderer
-- OgreGuiRenderQueueListener registered to GameEngine's SceneManager
-- QuadRenderer now here
-- Position and size only in widget
-- OgreGUI now linked with sigc++
-- Scrollbar::moveCursorToValue(void) implementation
-- Scrollbar::getValueFromCursor(void) implementation
-- Scrollbar max ans steps implementation
-- Scrollbar widget implementation
-- Adding Widget mouse support to Window's event handling loop
-- Widget::injectMouse implementation
-- Window destructor
-  o As ResizeGrip does not need a caption, it does not use the 
-    Button::mCP. The pointer is NULL and the Button::~Button
-    destructor, trying to call mCP->getParent() made a segmentation 
-    fault.                         FIXED
-- Button destructor is virtual and ResizeGrip destructor is
-   implemented to avoid a segfault in accessing mCP->getParent()
-- Testing number of registered window in GUI::addWindow()
-- TextInput::setMasked(true) implementation
-
-* v 0.0.5-161
-- gsCreateAccount buttons implementation
-- gsCreateAccount uses betaGUI
-- At sign bug fixed
-- GuiManager::showMessageBox doesn't need anymore a parent parameter
-- Doxygen documentation : fix undocumented members
-- Dialog handles its border transparency
-- OgreGUI dialog has its own border
-- Makes the dialog prioritary on mouse click
-  o Using a push_front instead of push_back in BGGui::windowList
-- Minor Skin bug fixed
-- MessageBox::setMessage() implementation
-- MessageBox::setTitle() implementation
-- Makes OgreGUI dialog centered
-- SkinOverlay::createBorderWindow renamed SkinOverlay::createDialog
-- OgreGUI dialog uses its own Ogre::Overlay (zorder difference)
-- Removes DialogSystem from repository
-- Avoid maincore::MessageBox inheritage of DialogSystem
-- soBetaGui::createBorderWindow implementation
-- Skin::createBorderWindow declaration
-- Window constructor
-  A bool saying if it is a framed window or not
-- gsConnection::onConnectClicked uses OgreGUI
-  Name and password values are now taken from the OgreGUI widgets
 

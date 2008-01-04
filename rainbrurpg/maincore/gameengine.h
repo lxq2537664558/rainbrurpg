@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -37,26 +37,9 @@
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-//mem probs without this next one
-#include <OGRE/OgreNoMemoryMacros.h>
-#include <CEGUI/CEGUIImageset.h>
-#include <CEGUI/CEGUISystem.h>
-#include <CEGUI/CEGUILogger.h>
-#include <CEGUI/CEGUISchemeManager.h>
-#include <CEGUI/CEGUIWindowManager.h>
-#include <CEGUI/CEGUIFontManager.h>
-#include <CEGUI/CEGUIWindow.h>
-//#include <CEGUI/elements/CEGUIPushButton.h>
-
-#include <OGRE/OgreCEGUIRenderer.h>
-#include <OGRE/OgreCEGUIResourceProvider.h>
-//regular mem handler
-#include <OGRE/OgreMemoryMacros.h> 
-
 // OGRE headers
-#include <OGRE/Ogre.h>
-#include <OGRE/OgreRoot.h>
-#include <OGRE/OgreMouseEvent.h>
+#include <Ogre.h>
+#include <OgreRoot.h>
 #include <OgreSceneManagerEnumerator.h>
 
 // OgreGUI headers
@@ -137,7 +120,6 @@ namespace RainbruRPG {
 
       void initStates();
       void initOgre();
-      void initCEGUI();
       void initOgreGui();
       void initOIS();
 
@@ -157,9 +139,6 @@ namespace RainbruRPG {
       Root *getOgreRoot();
       SceneManager* getOgreSceneMgr();
       Camera* getCamera();
-      CEGUI::System* getCEGUISystem();
-      CEGUI::MouseButton convertOgreButtonToCegui(int buttonID);
-
 
       virtual bool keyPressed(const OIS::KeyEvent&);
       virtual bool keyReleased(const OIS::KeyEvent&);
@@ -167,7 +146,7 @@ namespace RainbruRPG {
       virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 
-      InputManager* getInputManager();
+      RainbruRPG::Core::InputManager* getInputManager();
       BetaGUI::GUI* getOgreGui();
  
     private:
@@ -233,14 +212,7 @@ namespace RainbruRPG {
       FrameListener* mFrameListener;
 
       /** The input manager making OIS easy to use */
-      InputManager* mInputMgr;
-
-      /** The CEGUI renderer */
-      CEGUI::OgreCEGUIRenderer* mGUIRenderer;
-      /** The CEGUI System object */
-      CEGUI::System* mGUISystem;
-      /** The root CEGUI window */
-      CEGUI::Window* mEditorGuiSheet;
+      RainbruRPG::Core::InputManager* mInputMgr;
 
       /** The OgreGUI manager instance */
       BetaGUI::GUI* mOgreGUI;

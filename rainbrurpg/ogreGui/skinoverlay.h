@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -175,7 +175,7 @@ namespace RainbruRPG{
      virtual void createVerticalScrollbar( const String& name, Vector4 dim, 
 					   Window* parent)=0;
 
-     virtual void activateButton(Button* button, bool active);
+     virtual void activateButton(BetaGUI::Button* button, bool active);
 
      virtual unsigned int getDialogBorderSize(void);
 

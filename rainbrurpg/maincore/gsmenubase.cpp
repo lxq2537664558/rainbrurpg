@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -30,6 +30,10 @@
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
+#include <OgreVector4.h>
+
+#include <bgwindow.h>
+#include <staticimage.h>
 
 #include "velocitycalculator.h"
 #include "keyboardnavigation.h"
@@ -37,6 +41,7 @@
 #include "inputwrapper.h"
 #include "gameengine.h"
 #include "guimanager.h"
+#include "bggui.h"
 
 
 /** The constructor
@@ -50,12 +55,19 @@
   *
   */
 RainbruRPG::Core::gsMenuBase::gsMenuBase(bool cm):
-  bordRect(NULL),
-  menuRect(NULL),
-  dynaRect(NULL),
   velocity(NULL),
-  createMenu(cm)
+  createMenu(cm),
+  menuWindow(NULL)
 {
+
+#ifdef USE_DYNAMIC_MENU
+  siRight=NULL;
+  siLeft=NULL;
+  siBorder=NULL;
+#else
+  staticMenu=NULL;
+#endif // USE_DYNAMIC_MENU
+
 
   LOGI("Constructing a  gsMenuBase");
   inputWrapper=new InputWrapper();
@@ -84,19 +96,16 @@ void RainbruRPG::Core::gsMenuBase::init(){
   mSceneMgr=GameEngine::getSingleton().getOgreSceneMgr();
 
   if (this->createMenu){
-    menuNode = mSceneMgr->getRootSceneNode()
-      ->createChildSceneNode("Menu");
-    
-    // The overlay that contains dynamic menu elements
-    Overlay* rootOverlay=OverlayManager::getSingleton().create("MenuOverlay");
-    rootOverlay->setZOrder(10);
-    rootOverlay->show();
+#ifdef USE_DYNAMIC_MENU
+    createMenuWindow();
+    createMenuBackground();
+    createDynamicBackground();
+    createBorder();
+#else
+    createStaticMenu();
+#endif // USE_DYNAMIC_MENU
 
-    drawMenuBackground();
-    drawDynamicBackground();
-    drawBorder();
     translateTo(0.5);
-    setCorners();
   }
 
   isInit=true;
@@ -141,66 +150,92 @@ void RainbruRPG::Core::gsMenuBase::run(){
 
 }
 
-/** Draws the border
+/** Cerates the OgreGui window used to draw dynamic menu widget
+  *
+  * This must be called before calling createBorder(), createMenuBackground()
+  * or createDynamicBackground().
   *
   */
-void RainbruRPG::Core::gsMenuBase::drawBorder(){
-  LOGI("Draw border");
+void RainbruRPG::Core::gsMenuBase::createMenuWindow(void){
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
 
-  bordRect=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", "Dynamic_Border"));
-  
-  bordRect->setMetricsMode(GMM_RELATIVE);
-  bordRect->setDimensions(0.05,1.0);
-  bordRect->setPosition(yBorder-0.025, 0.0);
-  bordRect->setMaterialName("RainbruRPG.menu.border");
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
 
-  OverlayManager::getSingleton().getByName("MenuOverlay")->add2D(bordRect);
-  bordRect->show();
+  Ogre::Vector4 v(0, 0, w,h);
+
+  menuWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
+				   "Dynamic menu", mGUI, false, OSI_NAVIGATION);
+
+  mGUI->addWindowBeforeOverlays(menuWindow);
 }
+
 
 /** Draw the right panel background
   *
   */
-void RainbruRPG::Core::gsMenuBase::drawMenuBackground(){
-  LOGI("Draw MenuBackground");
+void RainbruRPG::Core::gsMenuBase::createMenuBackground(){
+  LOGI("Creating MenuBackground");
 
-   menuRect=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", 
-							 "Static_Menu"));
-  
-  menuRect->setMetricsMode(GMM_RELATIVE);
-  menuRect->setDimensions(1.0,1.0);
-  menuRect->setPosition(yBorder, 0.0);
-  menuRect->setMaterialName("RainbruRPG.menu.static");
+#ifdef USE_DYNAMIC_MENU
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
 
-  OverlayManager::getSingleton().getByName("MenuOverlay")->add2D(menuRect);
-  menuRect->show();
+  Ogre::Vector4 d(0, 0, w/2,h);
+  siRight=new StaticImage(d, menuWindow);
+  siRight->setTextureName("staticmenu.png");
+  menuWindow->addWidget(siRight);
+#endif // USE_DYNAMIC_MENU
+
 }
 
+/** Draws the border
+  *
+  */
+void RainbruRPG::Core::gsMenuBase::createBorder(){
+  LOGI("Creating border");
+
+#ifdef USE_DYNAMIC_MENU
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
+  
+  Ogre::Vector4 d(w/2-20, 0, 40,h);
+  siBorder=new StaticImage(d, menuWindow);
+  siBorder->setTextureName("border.png");
+  menuWindow->addWidget(siBorder);
+#endif // USE_DYNAMIC_MENU
+  
+}
 /** Draw the left panel background
   *
   */
-void RainbruRPG::Core::gsMenuBase::drawDynamicBackground(){
-  LOGI("Draw DynamicBackground");
+void RainbruRPG::Core::gsMenuBase::createDynamicBackground(){
+  LOGI("Creating DynamicBackground");
 
-  dynaRect=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", 
-							 "Dynamic_Menu"));
+#ifdef USE_DYNAMIC_MENU
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
+
+  Ogre::Vector4 d(w/2, 0, w/2 ,h);
+  siLeft=new StaticImage(d, menuWindow);
+  siLeft->setTextureName("dynamicmenu.png");
+  menuWindow->addWidget(siLeft);
+#endif // USE_DYNAMIC_MENU
   
-  dynaRect->setMetricsMode(GMM_RELATIVE);
-  dynaRect->setDimensions(1.2,1.0);
-  dynaRect->setPosition(yBorder-0.2, 0.0);
-  dynaRect->setMaterialName("RainbruRPG.menu.dynamic");
-
-  OverlayManager::getSingleton().getByName("MenuOverlay")->add2D(dynaRect);
-  dynaRect->show();
 }
 
 /** Makes the menu transition
   *
   */
 void RainbruRPG::Core::gsMenuBase::transition(){
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
+
   if (inTransition){
     if (velocity){
       // Engine initialization
@@ -209,12 +244,20 @@ void RainbruRPG::Core::gsMenuBase::transition(){
 	velocity->reset();
       }
       else{
-	yBorder-=  velocity->getNextFrame(inTransition);
+	yBorder-=velocity->getNextFrame(inTransition);
+
+	float newYBorder=yBorder+1.0f;
+	int xPos=(int)newYBorder*(w/2);
+
+#ifdef USE_DYNAMIC_MENU
+	siBorder->setPosition(xPos, 0);
+	siRight->setPosition(xPos, 0);
+	siLeft->setPosition(xPos-w/2, 0);
+#endif // USE_DYNAMIC_MENU
       }
 
       // If the transition is ended
       if (!inTransition){
-	LOGI("Transition ended");
 	yBorder=yBorderTo;
 	GuiManager::getSingleton().beginGuiFadeIn();
       }
@@ -222,22 +265,10 @@ void RainbruRPG::Core::gsMenuBase::transition(){
     else{
       LOGW("Cannot get translation value, VelocityCalculator pointer is NULL");
     }
-    setCorners();
   }
 }
 
-/** Moves the border and the menus by moving their corners
-  *
-  */
-void RainbruRPG::Core::gsMenuBase::setCorners(){
-  bordRect->setPosition(yBorder-0.025f, 0.0);
-  menuRect->setPosition(yBorder+0.025f, 0.0);
-  // Adding 0.2f to x to avoid a left black border
-  dynaRect->setPosition(yBorder-1.225f, 0.0);
-
-}
-
-/** Sets the the menu to translate to the given position
+/** Sets the menu to translate to the given position
   *
   * \param f The position in the screen the translation go to.
   *
@@ -255,24 +286,6 @@ void RainbruRPG::Core::gsMenuBase::translateTo(float f){
   }
   else{
     LOGW("Cannot start VelocityCalculator, pointer is NULL");
-  }
-
-  if (bordRect&&menuRect&&dynaRect){
-    LOGI("translation pointers OK");
-  }
-  else{
-    try{
-      bordRect=static_cast<OverlayContainer*>
-	(OverlayManager::getSingleton().getOverlayElement("Dynamic_Border"));
-      menuRect=static_cast<OverlayContainer*>
-	(OverlayManager::getSingleton().getOverlayElement("Static_Menu"));
-      dynaRect=static_cast<OverlayContainer*>
-	(OverlayManager::getSingleton().getOverlayElement("Dynamic_Menu"));
-
-    }
-    catch(...){
-      LOGE("One or more translation pointers is NULL");
-    }
   }
 
 }
@@ -316,14 +329,6 @@ float RainbruRPG::Core::gsMenuBase::getTranslationLenght(float from,
   else{
     LOGW("getTranslationLenght's case not implemented");
   }
-  LOGI("getTranslationLenght debug :");
-  LOGCATS("From :");
-  LOGCATF(from);
-  LOGCATS(" To :");
-  LOGCATF(to);
-  LOGCATS(" ret= ");
-  LOGCATF(ret);
-  LOGCAT();
 
   return ret;
 }
@@ -337,10 +342,8 @@ float RainbruRPG::Core::gsMenuBase::getTranslationLenght(float from,
   */
 void RainbruRPG::Core::gsMenuBase::frameStarted(const FrameEvent& evt){
 
-
   if (isInTransition())
     transition();
-
 }
 
 /** Overrides the GameState::frameEnded() function
@@ -366,31 +369,6 @@ bool RainbruRPG::Core::gsMenuBase::keyReleased(const OIS::KeyEvent& evt){
   unsigned int text=evt.text;
   bool masked=false;
 
-  // Special cases
-  CEGUI::Key::Scan scanCode;
-
-  if (kc==OIS::KC_DELETE){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Delete);
-  }
-  else if (kc==OIS::KC_BACK){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Backspace);
-  }
-  else if (kc==OIS::KC_LEFT){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::ArrowLeft);
-  }
-  else if (kc==OIS::KC_RIGHT){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::ArrowRight);
-  }
-  else if (kc==OIS::KC_TAB){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::Tab);
-  }
-  else if (kc==OIS::KC_LSHIFT){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::LeftShift);
-  } 
-  else if (kc==OIS::KC_RSHIFT){
-    CEGUI::System::getSingleton().injectKeyUp(CEGUI::Key::RightShift);
-  }
-
   return true;
 }
 
@@ -407,9 +385,6 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
   int y=evt.state.Y.rel;
   float deltaX=x*inputWrapper->getMouseMenuSensibility();
   float deltaY=y*inputWrapper->getMouseMenuSensibility();
-
-  CEGUI::System::getSingleton().injectMouseMove(deltaX, deltaY);
-
 
   // OgreGUI
   mouseX=evt.state.X.abs;
@@ -431,9 +406,6 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
   */
 bool RainbruRPG::Core::gsMenuBase::
 mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
-
-  CEGUI::System::getSingleton().injectMouseButtonDown(
-    inputWrapper->OISButtontoCEGUI(id));
 
   GameEngine::getSingleton().getOgreGui()
     ->injectMouseButtonPressed("gsMenuBase::mousePressed");
@@ -459,10 +431,6 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   */
 bool RainbruRPG::Core::gsMenuBase::
 mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
-  // CEGUI
-  CEGUI::System::getSingleton().injectMouseButtonUp(
-    inputWrapper->OISButtontoCEGUI(id));
-
   // OgreGUI
   GameEngine::getSingleton().getOgreGui()
     ->injectMouseButtonReleased();
@@ -532,3 +500,27 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   return true;
 }
 
+/** Creates the static menu
+  * 
+  * Create a static background image.
+  *
+  */
+void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+
+  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
+  unsigned int w=mRenderWindow->getWidth();
+  unsigned int h=mRenderWindow->getHeight();
+
+  Ogre::Vector4 v(0, 0, w,h);
+
+  menuWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
+				   "Static menu", mGUI, false, OSI_NAVIGATION);
+
+  mGUI->addWindowBeforeOverlays(menuWindow);
+
+  Ogre::Vector4 d(0, 0, w,h);
+  StaticImage* staticMenu =new StaticImage(d, menuWindow);
+  staticMenu->setTextureName("staticmenu.png");
+  menuWindow->addWidget(staticMenu);
+}

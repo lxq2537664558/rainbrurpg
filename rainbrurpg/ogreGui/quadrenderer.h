@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -23,13 +23,21 @@
 #ifndef _QHUAD_RENDERER_H_
 #define _QHUAD_RENDERER_H_
 
+#include "rainbrudef.h"
+
 #include <vector>
 #include <iostream>
 
 #include <Ogre.h>
+#include <OgreTexture.h>
 #include <OgreRenderOperation.h>
 #include <OgreDefaultHardwareBufferManager.h>
 
+/** The maximum number of vertices
+  *
+  * It is VERTEX_COUNT/6 to know the quad limit.
+  *
+  */
 #define VERTEX_COUNT 3072
 /** The Z-order of quad */
 #define Z_VALUE      0.0f
@@ -62,33 +70,33 @@ namespace RainbruRPG {
     };
     
     /** A test class drawing Ogre primitive
-     *
-     * This class is used to draw primitives with scissor support. It was
-     * originally implemented when searching ScrollPane implementation. There
-     * should be only one Quad object by GUI.
-     *
-     * To use it : 
-     * -# start with a call to begin();
-     * -# then, call setUvMap(), setScissorRectangle() 
-     *    and other parametters settings;
-     * -# call drawRectangle(); 
-     * -# Call end() when you finished to draw the frame.
-     *
-     * Repeat the second and third steps (parameters settings) for other quads
-     * you have to draw. 
-     * The drawing must be called for each frame.
-     *
-     * The setCorners() function set the top-left and bottom-right corners
-     * but you may want to set width and height of the quad. You can use 
-     * setSize() for this but you should not use setPosition() after that.
-     * Please first call setPosition() then call setSize().
-     *
-     * \note The implementation of this class is based on the <B>Right Brain 
-     * Games GUI</B>. Please see http://www.rightbraingames.com/tech.php for 
-     * more informations.
-     *
-     */
-    class QuadRenderer{
+      *
+      * This class is used to draw primitives with scissor support. It was
+      * originally implemented when searching ScrollPane implementation. There
+      * should be only one Quad object by GUI.
+      *
+      * To use it : 
+      * -# start with a call to begin();
+      * -# then, call setUvMap(), setScissorRectangle() 
+      *    and other parametters settings;
+      * -# call drawRectangle(); 
+      * -# Call end() when you finished to draw the frame.
+      *
+      * Repeat the second and third steps (parameters settings) for other quads
+      * you have to draw. 
+      * The drawing must be called for each frame.
+      *
+      * The setCorners() function set the top-left and bottom-right corners
+      * but you may want to set width and height of the quad. You can use 
+      * setSize() for this but you should not use setPosition() after that.
+      * Please first call setPosition() then call setSize().
+      *
+      * \note The implementation of this class is based on the <B>Right Brain 
+      * Games GUI</B>. Please see http://www.rightbraingames.com/tech.php for 
+      * more informations.
+      *
+      */
+    class RAINBRU_EXPORT QuadRenderer{
     public:
       QuadRenderer( RenderSystem*, SceneManager*, Viewport*);
       ~QuadRenderer();
@@ -99,6 +107,7 @@ namespace RainbruRPG {
       
       void setUvMap(double, double, double, double);
       void setScissorRectangle(int, int, int, int);
+      const Rectangle& getClipRegion(void)const;
       
       void setAlpha(float);
       void setMaterialName(const String&);
@@ -106,20 +115,35 @@ namespace RainbruRPG {
       void drawRectangle(const Ogre::Rectangle&);
       void drawText(Font*, const string&, const Rectangle&);
 
-    private:
+      void addGlyph( const Rectangle&,const Rectangle&,bool vUVRelative=true);
+      void disableScissor(void);
+
+      void setColor(const ColourValue&);
+      void setTexturePtr(TexturePtr);
+
+    protected:
       void setupHardwareBuffer();
       void setCorners(int, int, int, int);
       void feedVectors(vector<Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
-      void drawQuad();
-      void createTexture();
+      void drawQuad(void);
+      void createTexture(void);
 
-      double xPixelToNative(int);
-      double yPixelToNative(int);
+      double xPixelToNative(int)const;
+      double yPixelToNative(int)const;
 
       void beginGlyphs(void);
       void endGlyphs(void);
 
-    
+      void buildUV(const Rectangle&, Vector2*) const;
+      void buildVertices(const Rectangle&, Vector3*) const;
+      void getFinalRect( const Rectangle&, Rectangle&) const;
+
+      const Rectangle& translateRectangle(Rectangle&, float, float)const;
+      void renderGlyphs(void);
+
+      void debugRectangle(const string&, const Rectangle&)const;
+
+    private:
       /** The current Ogre scene manager
         *
 	* Used to called the \c _setpass() function.
@@ -179,11 +203,11 @@ namespace RainbruRPG {
 	*/
       Rectangle scissorRect;
     
-      /// A vector of vertexes
+      /** A vector of vertexes */
       vector<Vector3> vert;
-      /// A vector of UV mapping
+      /** A vector of UV mapping */
       vector<Vector2> uvs;
-      /// A vector of color;
+      /** A vector of color; */
       vector<ColourValue> cols;
     
       /** The viewport width in pixels
@@ -224,6 +248,35 @@ namespace RainbruRPG {
 
       /** The current drawing color */
       ColourValue mColor;
+
+      /** A pointer to the current texture */
+      TexturePtr mTexture;
+
+      /** The width of the current target */
+      float mTargetWidth;
+      /** The height of the current target */
+      float mTargetHeight;
+
+      /** The current target */
+      TexturePtr mTarget;
+
+      /** The X offset */
+      float mTexelOffsetX;
+      /** The Y offset */
+      float mTexelOffsetY;
+
+      /** The texture to draw
+        *
+	* If this pointer is NULL, we do not use texture, otherwise, we 
+	* call \c OgreRenderSystem->_setTexture() to use it. It is set
+	* to NULL is the constructor of 
+	* \link RainbruRPG::OgreGui::QuadRenderer "QuadRenderer" \endlink 
+	* and the 
+	* \link RainbruRPG::OgreGui::QuadRenderer::reset() 
+	* "QuadRenderer::reset()" \endlink  function.
+	*
+	*/
+      TexturePtr usedTexture;
     };
   }
 }

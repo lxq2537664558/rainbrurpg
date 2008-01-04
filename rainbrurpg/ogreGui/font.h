@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -50,15 +50,37 @@ namespace RainbruRPG {
 }
 //End of forward declarations
 
+/** A vector of LineInfo use to chaching rendering */
 typedef std::vector<LineInfo> LineInfoList;
-typedef std::map<size_t, Glyph> GlyphMap;
+/** A stl map of glyths */
+typedef std::map<size_t, Glyph*> GlyphMap;
+
+/** The vertical alignment of a text
+  *
+  */
+typedef enum VerticalAlignType{
+  VAT_TOP,    //!< The text is vertically aligned to the top
+  VAT_BOTTOM, //!< The text is vertically aligned to the bottom
+  VAT_CENTER  //!< The text is vertically centered
+};
+
+/** The horizontal alignment of a text
+  *
+  */
+typedef enum HorizontalAlignType{
+  HAT_LEFT,   // The text is horizontaly aligned to the left
+  HAT_RIGHT,  // The text is horizontaly aligned to the right
+  HAT_CENTER  // The text is horizontaly centered
+};
+
 
 namespace RainbruRPG{
   namespace OgreGui{
 
     /** A font used with QuadRenderer
       * 
-      *
+      * \todo Font alignement handle
+      * \todo Font WordWrap handle
       *
       */
     class Font{
@@ -72,7 +94,7 @@ namespace RainbruRPG{
       void setTexture(TexturePtr);
       TexturePtr getTexture();
 
-      GlyphMap& getGlyphMap(void);
+      const GlyphMap& getGlyphMap(void)const;
 
       size_t getMaxGlyphHeight(void);
       void setMaxGlyphHeight(size_t);
@@ -83,9 +105,31 @@ namespace RainbruRPG{
       void setTextureName(const String&);
       const String& getTextureName(void)const;
 
-      MaterialPtr getMaterial();
+      MaterialPtr getMaterial(void);
+      Pass* getPass(void);
+
       void renderAligned( QuadRenderer*, const std::string&, 
 			  const ColourValue&, const Rectangle& );
+
+      void addGlyph(size_t, Glyph*);
+
+    protected:
+      void renderAligned(QuadRenderer*, LineInfoList&, 
+			 const ColourValue&, const Rectangle&,
+			 bool vSelection = false, int vSelectionStart = -1, 
+			 int vSelectionEnd = -1);
+
+      void processText( const std::string&, float, LineInfoList&)const;
+      Glyph* getGlyph(size_t) const;
+      bool isDelim( char ) const;
+
+      Ogre::Vector2 calculatePos( const Ogre::Rectangle&, float, 
+		  float, HorizontalAlignType, VerticalAlignType);
+
+      void render( QuadRenderer*, const string&, const ColourValue&, 
+		   const Vector2& vPos, bool, int, int ) const;
+
+      const Rectangle& translateRectangle(Rectangle&, float, float)const;
 
     private:
       /** The font name */
@@ -111,7 +155,11 @@ namespace RainbruRPG{
 	*/
       MaterialPtr material;
 
+      /** A list of LineInfo use to chaching rendering */
       LineInfoList mLineList;
+
+      /** The pass used to draw this font */
+      Pass* mPass;
     };
   }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -48,10 +48,17 @@ RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
 
 /** The QueueStarted listener 
   *
+  * \param vQueueGroupId The render queue group currently drawn
+  * \param vInvocation, vRepeatThisInvocation not used parameters
+  *
   */
 void RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
-renderQueueStarted (uint8, const String&, bool&){
+renderQueueStarted (uint8 vQueueGroupId, const String& vInvocation, 
+		    bool& vRepeatThisInvocation){
 
+  if ( vQueueGroupId == mQueue ){
+    gm->drawBeforeOverlay();
+  }
 }
 
 /** The QueueEnded listener
@@ -65,6 +72,7 @@ renderQueueStarted (uint8, const String&, bool&){
 void RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
 renderQueueEnded( uint8 vQueueGroupId, const String& vInvocation, 
 		  bool& vRepeatThisInvocation){
+
 
   if ( vQueueGroupId == mQueue ){
     gm->draw();

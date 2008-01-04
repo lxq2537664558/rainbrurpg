@@ -1,3 +1,54 @@
+* v 0.0.5-162
+- Glyph base implementation
+- TitleBar drawn by QuadRenderer
+- active ResizeGrip drawn 
+- ResizeGrip drawn by QuadRenderer
+- Window drawn by QuadRenderer
+- OgreGuiRenderQueueListener registered to GameEngine's SceneManager
+- QuadRenderer now here
+- Position and size only in widget
+- OgreGUI now linked with sigc++
+- Scrollbar::moveCursorToValue(void) implementation
+- Scrollbar::getValueFromCursor(void) implementation
+- Scrollbar max ans steps implementation
+- Scrollbar widget implementation
+- Adding Widget mouse support to Window's event handling loop
+- Widget::injectMouse implementation
+- Window destructor
+  o As ResizeGrip does not need a caption, it does not use the 
+    Button::mCP. The pointer is NULL and the Button::~Button
+    destructor, trying to call mCP->getParent() made a segmentation 
+    fault.                         FIXED
+- Button destructor is virtual and ResizeGrip destructor is
+   implemented to avoid a segfault in accessing mCP->getParent()
+- Testing number of registered window in GUI::addWindow()
+- TextInput::setMasked(true) implementation
+
+* v 0.0.5-161
+- gsCreateAccount buttons implementation
+- gsCreateAccount uses betaGUI
+- At sign bug fixed
+- GuiManager::showMessageBox doesn't need anymore a parent parameter
+- Doxygen documentation : fix undocumented members
+- Dialog handles its border transparency
+- OgreGUI dialog has its own border
+- Makes the dialog prioritary on mouse click
+  o Using a push_front instead of push_back in BGGui::windowList
+- Minor Skin bug fixed
+- MessageBox::setMessage() implementation
+- MessageBox::setTitle() implementation
+- Makes OgreGUI dialog centered
+- SkinOverlay::createBorderWindow renamed SkinOverlay::createDialog
+- OgreGUI dialog uses its own Ogre::Overlay (zorder difference)
+- Removes DialogSystem from repository
+- Avoid maincore::MessageBox inheritage of DialogSystem
+- soBetaGui::createBorderWindow implementation
+- Skin::createBorderWindow declaration
+- Window constructor
+  A bool saying if it is a framed window or not
+- gsConnection::onConnectClicked uses OgreGUI
+  Name and password values are now taken from the OgreGUI widgets
+
 * v 0.0.5-160
 - Doxygen documentation
   o Fix undocumented members (mainly soNavigation)

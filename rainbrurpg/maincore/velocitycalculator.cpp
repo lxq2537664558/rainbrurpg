@@ -34,7 +34,8 @@
 RainbruRPG::Core::VelocityCalculator::VelocityCalculator(){
   LOGI("Creating VelocityCalculator");
   mRunning=false;
-  timer= Ogre::PlatformManager::getSingleton().createTimer();
+  //  timer= Ogre::PlatformManager::getSingleton().createTimer();
+  timer= new Timer();
 
   this->setTransitionTime(GuiManager::getSingleton().getTransitionTime());
   translationLenght=0;
@@ -46,7 +47,9 @@ RainbruRPG::Core::VelocityCalculator::VelocityCalculator(){
   *
   */
 RainbruRPG::Core::VelocityCalculator::~VelocityCalculator(){
-  Ogre::PlatformManager::getSingleton().destroyTimer(timer);
+  //  Ogre::PlatformManager::getSingleton().destroyTimer(timer);
+
+  delete timer;
   timer=NULL;
 }
 
