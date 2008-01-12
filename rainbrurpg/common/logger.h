@@ -31,12 +31,12 @@
 #include "singleton.h"
 #include "config.h"
 
-/** A macro used to fixe a \c __LINE__ bug
+/** A macro used to fix a \c __LINE__ bug
   *
   */
 #define STRINGIFY(x) #x
 
-/** A macro used to fixe a \c __LINE__ bug
+/** A macro used to fix a \c __LINE__ bug
   *
   */
 #define TOSTRING(x) STRINGIFY(x)

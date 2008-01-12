@@ -28,6 +28,8 @@
 
 #include <OgreMaterialManager.h>
 
+#include <dumpogreobject.h>
+
 #define GLYPH_V_SPACE 2
 
 /** The font constructor
@@ -181,6 +183,9 @@ bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
 
 /** Render a text
   *
+  * The rect parameter are top, bottom, left right coordonates in pixels
+  * values.
+  *
   * \param qr    The quad renderer use to draw
   * \param text  The text to draw
   * \param color The color used to draw the text
@@ -189,13 +194,13 @@ bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
   */
 void RainbruRPG::OgreGui::Font::
 renderAligned( QuadRenderer* qr, const std::string& text, 
-	       const ColourValue& color, const Rectangle& rect ){
+	       const ColourValue& color, const Rectangle& rect, bool wordwrap){
 
   // Process the text block into lines
   mLineList.resize( 0 );
 
   float textWidth=rect.right-rect.left;
-  processText( text, textWidth, mLineList );
+  processText( text, textWidth, mLineList, wordwrap );
   renderAligned( qr, mLineList, color, rect );
 }
 
@@ -207,10 +212,8 @@ renderAligned( QuadRenderer* qr, const std::string& text,
   *
   */
 void RainbruRPG::OgreGui::Font::
-processText( const std::string& vText, float vWidth, LineInfoList& vOut)const{
-
-  // WordWrap not yet implemented
-  bool vWrap=true;
+processText( const std::string& vText, float vWidth, 
+	     LineInfoList& vOut, bool vWrap)const{
 
   // Get the total size of the text
   unsigned int count = (unsigned int)vText.size( );
@@ -315,6 +318,9 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
 
 /** Render a text
   *
+  * The vRect parameter are top, bottom, left right coordonates in pixels
+  * values.
+  *
   * \param qr              The QuadµRenderer used to draw
   * \param vLineList       The LineInfoList used to cache
   * \param vColor          The color to renderer 
@@ -330,10 +336,10 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
 	      bool vSelection, int vSelectionStart, int vSelectionEnd){
 
 
-  qr->disableScissor(); // For test only
+  //  qr->disableScissor(); // For test only
 
-  VerticalAlignType vVertAlign;
-  HorizontalAlignType vHorzAlign;
+  VerticalAlignType vVertAlign=VAT_TOP;
+  HorizontalAlignType vHorzAlign=HAT_LEFT;
 
   // Get the total height of the text (If we need it)
   float textHeight = 0.0f;
@@ -348,8 +354,9 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
   Ogre::Vector2 pos;
 
   // Go through each character
-  LineInfoList::const_iterator it;
-  for ( it = vLineList.begin( ); it != vLineList.end( ); it++ ){
+  LineInfoList::const_iterator it=it = vLineList.begin( );
+
+  for ( it = vLineList.begin(); it != vLineList.end( ); it++ ){
     const LineInfo& line = (*it);
 
     // Get the rendering position
@@ -460,32 +467,26 @@ render( QuadRenderer* qr, const string& vText, const ColourValue& vColor,
   Vector2 tsize (mTexture->getWidth(), mTexture->getHeight());
   Ogre::Rectangle r;
 
-  int x;
+  int x=0;
+
   for ( x = 0; x < count; x++ ){
     Glyph* g = getGlyph( vText[x] );
-    r.top=currentY;
+    r.top=currentY+g->getOffsetY()+g->getHeight();
     r.left=currentX;
-
 
     if ( vSelection == false ){
       r.bottom=r.top+g->getHeight();
       r.right=r.left+g->getWidth();
 
-      r= translateRectangle(r, g->getOffsetX(),g->getOffsetY() + mMaxBearingY );
-
       Rectangle uvr = g->getGeometry();
-
       uvr.left /= tsize.x;
       uvr.right /= tsize.x;
       uvr.top /= tsize.y;
       uvr.bottom /= tsize.y;
-
-
-
-      qr->addGlyph( r, uvr );
+      
+      qr->addGlyph( r, uvr, true );
     }
     else{
-      //      r.setPosition( r.left, r.top );
       r.right=r.left+g->getSpace();
       r.bottom=r.top+mMaxGlyphHeight;
 

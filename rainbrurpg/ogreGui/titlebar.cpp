@@ -79,5 +79,5 @@ void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer* qr){
 
   Vector4 dim(px, py, width, height);
   qr->setAlpha( this->alpha );
-  sk->drawTitleBar(qr, dim, "Caption", this->active);
+  sk->drawTitleBar(qr, dim, mCaption, this->active);
 }

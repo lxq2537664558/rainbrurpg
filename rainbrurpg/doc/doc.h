@@ -462,14 +462,26 @@
 
 /** \namespace RainbruRPG::OgreGui
   *
+  * \brief A graphical user interface over Ogre3D based on BetaGui.
+  *
+  * \section ogreGui_intro_sec Introduction
+  *
   * OgreGuiToolkit is a toolkit providing a graphical user interface over
   * Ogre3D. It is based on BetaGui 
-  * (http://www.ogre3d.org/wiki/index.php/BetaGUI)
+  * (http://www.ogre3d.org/wiki/index.php/BetaGUI). For this reason, some
+  * classes are in the BetaGUI namespace.
+  *
+  * \section ogreGui_skinmanager_sec Skin manager
   *
   * An important class is \ref RainbruRPG::OgreGui::SkinManager "SkinManager"
   * which manages a vector of \ref RainbruRPG::OgreGui::SkinOverlay 
   * "SkinOverlay" objects.
   *
-  * This namespace works with BetaGUI, the historical betaGUI namespace.
+  * \section ogreGui_fontdebug_sec Debugging font
   * 
+  * In the \c ogreGui/fontmanager.h file, a preprocessor macro called 
+  * \c DEBUG_FONT_TEXTURE_QUAD is defined. If this macro is defined as 
+  * \c true, the font called \c DEBUG_FONT_TTF_NAME will be applied
+  * as ogre window background.
+  *
   */

@@ -52,6 +52,8 @@ namespace BetaGUI {
     Callback callback;
     /** Is this button active ? */
     bool active;
+    /** The caption of this button */
+    std::string mCaption;
 };
 
 }

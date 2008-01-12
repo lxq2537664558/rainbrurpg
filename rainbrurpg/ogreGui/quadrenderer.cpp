@@ -25,11 +25,13 @@
 #include "logger.h"
 #include "font.h"
 
+#include <dumpogreobject.h>
+
 /** The renderer constructor
   *
   * \param rs  The render system where you want to draw GUI elements 
   * \param mgr The scene manager where you want to draw GUI elements
-  * \param vp  The viawport system where you want to draw GUI elements
+  * \param vp  The viewport system where you want to draw GUI elements
   *
   * \sa \ref mRenderSystem "mRenderSystem" (member), 
   *     \ref mSceneManager "mSceneManager" (member), 
@@ -58,6 +60,9 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   setupHardwareBuffer();
   createTexture();
 
+  mFlipY = ( mRenderSystem->getName( ) != "OpenGL Rendering Subsystem" );
+
+
 }
 
 /** The destructor
@@ -72,6 +77,13 @@ RainbruRPG::OgreGui::QuadRenderer::~QuadRenderer(){
 
 
 /** Setup the hardware vertex buffer
+  *
+  * The hardware vertex buffer is used to pass vertices and UV mapping
+  * informations to the graphic card. The RenderOperation structure is
+  * used with Ogre render system to send low level primitive drawing 
+  * sequences.
+  *
+  * \sa mBuffer (member), mRenderOp (member)
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::setupHardwareBuffer(){
@@ -106,10 +118,18 @@ void RainbruRPG::OgreGui::QuadRenderer::setupHardwareBuffer(){
 
 /** Feed vectors
   *
+  * This function feeds the given vertices vector (vert) with finalRect 
+  * values and the given UV mapping vector (uvs) with uvRect values.
+  *
+  * \note When feeding vertices vector, the Z value is always set to
+  *       the Z_VALUE preprocessor value found in the quadrenderer.h
+  *       source file.
+  *
+  * \sa finalRect (member), uvRect(member).
+  *
   * \param vert The vertices vector
   * \param uvs  The uv mapping vector
   * \param cols The colours vector
-  *
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
@@ -133,7 +153,9 @@ feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs,
 }
 
 
-/** Draw a text rectangle
+/** Draw a quad
+  *
+  * This use mRenderSystem to draw the current mRenderOp.
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
@@ -402,24 +424,58 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
 
 /** Draw a text
   *
-  * \param font The font used to draw the text
-  * \param text The text to draw
-  * \param rect The rectangle where to draw the text
+  * The rect parameter are top, bottom, left right coordonates in pixels
+  * values.
+  *
+  * The wordwrap parameter was added to correctly draw titlebar caption when
+  * window is resized.
+  *
+  * \param font     The font used to draw the text
+  * \param text     The text to draw
+  * \param rect     The rectangle where to draw the text
+  * \param wordwrap Is the text auto word wraped ?
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-drawText(Font* font, const string& text, const Rectangle& rect){
-  Pass* p=font->getPass();
-  //  p->getTextureUnitState(0)->setTextureName(font->getTextureName());
+drawText(Font* font, const ColourValue& vColor, const string& text, 
+	 const Rectangle& rect, bool wordwrap){
 
+  // For tests only
+  //  this->disableScissor();
+
+  Pass* p=font->getPass();
+
+  // Set text color
+  p->getTextureUnitState(0)
+    ->setColourOperationEx(LBX_MODULATE, LBS_TEXTURE, LBS_MANUAL, 
+			   ColourValue::White, vColor,  0.0);
+  
+  // Set the text alpha value
+  // The following make a bug
+  /*  p->getTextureUnitState(0)->setAlphaOperation(LBX_BLEND_MANUAL, 
+					       LBS_TEXTURE, LBS_MANUAL,
+					       alphaValue, alphaValue, 1.0);
+  */
+  p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE, 
+					       LBS_TEXTURE, LBS_MANUAL,
+					       alphaValue, alphaValue, 
+					       0.0f);
+ 
   begin();
   beginGlyphs();
   
   mSceneManager->_setPass(p);
 
-  font->renderAligned( this, text, mColor, rect );
+  font->renderAligned( this, text, vColor, rect, wordwrap );
   
   endGlyphs( );
+  // Set default colour operation
+  p->getTextureUnitState(0)->setColourOperation(LBO_MODULATE);
+  // set default alpha operation
+  p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE);
+  mSceneManager->_setPass(p);
+
+
 }
 
 /** Begin to draw text
@@ -430,6 +486,7 @@ void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
   mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
   				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
 
+
   if ( mBatchPointer == NULL ){
     mBatchPointer = (GuiVertex*)mBuffer
       ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
@@ -438,6 +495,10 @@ void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
 }
 
 /** End to draw text
+  *
+  * This function should be called when the text drawing is finished.
+  * It unlocks the hardware buffer (mBuffer) if necessary and call
+  * the renderGlyphs() function only if mBatchCount is greater than 0.
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::endGlyphs(void){
@@ -466,6 +527,12 @@ const Rectangle& RainbruRPG::OgreGui::QuadRenderer::getClipRegion(void)const{
 
 /** Add a glyph to the current buffer
   *
+  * This function writes \c vRect and \c vUV to the buffer (called
+  * mBuffer) before calling the renderGlyphs() function.
+  *
+  * \note This function use C style malloc since v0.0.5-164. Please see
+  *       implementation for more details.
+  *
   * \param vRect       The geometry rectangle
   * \param vUV         The UV mapping
   * \param vUVRelative Is UV mapping in relative coordonate ?
@@ -474,13 +541,18 @@ const Rectangle& RainbruRPG::OgreGui::QuadRenderer::getClipRegion(void)const{
 void RainbruRPG::OgreGui::QuadRenderer::
 addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
 
-  // Setup the vertex and uv coordinates for the quad
-  Vector3 verts[6];
+  /* Setup the vertex and uv coordinates for the quad
+   *
+   * Since v0.0.5-164, I use malloc instead of C array (square brackets)
+   * and it seems to avoid a segfault. These pointers are freed at the 
+   * end of this function.
+   *
+   */
+  Vector3* verts=static_cast<Vector3*>(malloc(sizeof(Vector3)*6));
+  Vector2* uv   =static_cast<Vector2*>(malloc(sizeof(Vector2)*6));
+
   buildVertices( vRect, verts );
 
-
-
-  Vector2 uv[6];
   if ( mTexture.get() && (vUVRelative == false) ){
 
     // Translate absolute coordinates to relative
@@ -498,17 +570,6 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     buildUV( vUV, uv );
 
   }
-
-  // Test =======================================================
-  Rectangle r;
-  r.top = 0.0f;
-  r.left = 0.0f;
-  r.bottom = 1.0f;
-  r.right = 1.0f;
-  buildUV( r, uv );
-
-  //  debugRectangle("addGlyph() uvMapping", vUV);
-  // Test =======================================================
 
   // Write the quad to the buffer
   int x;
@@ -535,7 +596,7 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     }
    
     // Render whats in the buffer
-    renderGlyphs( );
+    renderGlyphs();
 
     // Re-lock buffer
     mBatchPointer=(GuiVertex*)mBuffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
@@ -543,6 +604,9 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     // Reset glyph count
     mBatchCount = 0;
   }
+
+  free(verts);
+  free(uv);
 }
 
 /** Feed a UV mapping array
@@ -573,9 +637,6 @@ buildVertices( const Rectangle& vIn, Vector3* vOut ) const{
   // Calculate final screen rectangle
   Rectangle finalRect;
   getFinalRect( vIn, finalRect );
-
-  //  debugRectangle("QuadRenderer::addGlyph", finalRect);
-
 
   // Setup the coordinates for the quad
   vOut[0] = Vector3( finalRect.left, finalRect.bottom, 0.0f );
@@ -614,8 +675,6 @@ translateRectangle(Rectangle& r, float x, float y)const{
 void RainbruRPG::OgreGui::QuadRenderer::
 getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
 
-  bool mFlipY=false;
-
   // Flip Y coordinates if necessary
   if ( (mTarget.isNull()) && (mFlipY == false)){
     vOut.left = (int)(vIn.left);
@@ -634,61 +693,22 @@ getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
   vOut=translateRectangle(vOut, mTexelOffsetX, mTexelOffsetY );
 
   // Convert quad co-ordinates for a -1 to 1 co-ordinate system.
-  vOut.left /= ( mTargetWidth * 0.5f );
-  vOut.right /= ( mTargetWidth * 0.5f );
-
-  vOut.top /= ( mTargetHeight * 0.5f );
-  vOut.bottom /= ( mTargetHeight * 0.5f );
-
-  //  debugRectangle("getFinalRect::vIn", vIn);
-
-  // A test ================================
-  /*  LOGCATS("mTexelOffsetX=");
-  LOGCATI(mTexelOffsetX);
-  LOGCAT();
-  */
   vOut.top=yPixelToNative(vIn.top);
   vOut.left=xPixelToNative(vIn.left);
   vOut.right=xPixelToNative(vIn.right);
   vOut.bottom=yPixelToNative(vIn.bottom);
-
-  vOut=translateRectangle(vOut, 1.0, 0.0 );
-  // A test ================================
-
-
- 
-  //  vOut=translateRectangle(vOut, mTexelOffsetX, mTexelOffsetY );
-
-  //  debugRectangle("getFinalRect::vOut", vOut);
-
 }
-
-/** Debug the given rectangle
-  *
-  * \param s The debugging text
-  * \param r The rectangle to debug
-  *
-  */
-void RainbruRPG::OgreGui::QuadRenderer::
-debugRectangle(const string& s, const Rectangle& r)const{
-  LOGCATS(s.c_str());
-  LOGCATS(" top=");
-  LOGCATF(r.top);
-  LOGCATS(" left=");
-  LOGCATF(r.left);
-  LOGCATS(" bottom=");
-  LOGCATF(r.bottom);
-  LOGCATS(" right=");
-  LOGCATF(r.right);
-  LOGCAT();
-}
-
 
 /** Render the current Ogre RenderOperation
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
-  // Render!
+  //  tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
+  //			 alphaValue, alphaValue, 1.0);
+
+  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
+  				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
+
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
 }
@@ -698,6 +718,7 @@ void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
   */
 void RainbruRPG::OgreGui::QuadRenderer::disableScissor(void){
   useScissor=false;
+  mRenderSystem->setScissorTest(false);
 }
 
 /** Set the color value used for each vertex

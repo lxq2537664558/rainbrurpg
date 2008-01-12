@@ -24,20 +24,24 @@
 
 #include "logger.h"
 
+#include <dumpogreobject.h>
+
 /** The constructor
   *
   * \param vRect    The geometry of the glyph
   * \param vOffsetX The X offset
   * \param vOffsetY The Y offset
   * \param vSpace   The spacing
+  * \param cc       The charcode assigned to this glyph
   *
   */
 RainbruRPG::OgreGui::Glyph::
-Glyph(const Ogre::Rectangle& vRect,float vOffsetX,float vOffsetY, float vSpace):
+Glyph(const Ogre::Rectangle& vRect,float vOffsetX,float vOffsetY, 
+      float vSpace, long int cc):
   mOffsetX(vOffsetX),
   mOffsetY(vOffsetY),
   mSpace(vSpace),
-  charcode(0)
+  charcode(cc)
 {
   mRect.top=vRect.top;
   mRect.left=vRect.left;
@@ -46,6 +50,12 @@ Glyph(const Ogre::Rectangle& vRect,float vOffsetX,float vOffsetY, float vSpace):
 
   if (vRect.bottom-vRect.top==0){
     LOGW("Constructing a glyph with NULL height");
+  }
+
+  if (vOffsetY!=0){
+    LOGCATS("vOffsetY=");
+    LOGCATI(vOffsetY);
+    LOGCAT();
   }
 }
 

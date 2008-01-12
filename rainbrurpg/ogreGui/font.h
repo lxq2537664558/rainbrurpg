@@ -109,7 +109,7 @@ namespace RainbruRPG{
       Pass* getPass(void);
 
       void renderAligned( QuadRenderer*, const std::string&, 
-			  const ColourValue&, const Rectangle& );
+			  const ColourValue&, const Rectangle&, bool );
 
       void addGlyph(size_t, Glyph*);
 
@@ -119,7 +119,7 @@ namespace RainbruRPG{
 			 bool vSelection = false, int vSelectionStart = -1, 
 			 int vSelectionEnd = -1);
 
-      void processText( const std::string&, float, LineInfoList&)const;
+      void processText( const std::string&, float, LineInfoList&, bool)const;
       Glyph* getGlyph(size_t) const;
       bool isDelim( char ) const;
 

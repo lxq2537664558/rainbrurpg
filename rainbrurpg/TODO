@@ -1,11 +1,6 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Setting correct texture to glyph quads in QuadRenderer::drawTex()
-- Debugging QuadRenderer::addGlyph vRect parameter
-   o vRect is construct in Font::render()
-- Debugging Glyph uvMap
-   o QuadRenderer::addGlyph
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -120,7 +115,51 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-165
+- (8) Fix an alpha bug in text rendering (shadows below text)
+   FIXED using LBX_MODULATE instead of LBX_BLEND_MANUAL
+- Setting global GUI alpha to QuadRenderer::drawText
+- Setting color to QuadRenderer::drawText
+- QuadRenderer::drawText take a bool wordwrap argument
+- Text rendering uses alpha blending
+- Fix vertical alignment of text
+- Setting correct texture to glyph quads
+   Testing in Font::render()
+   FontManager::copyGlyph hacked
+   Testing glyph construction fontmanager
+- Debugging Glyph uvMap
+   o QuadRenderer::addGlyph
+
 * v 0.0.5-164
+- Text is written from right to left
+   Glyph's space is <0
+   o Testing in FontManager::renderGlyphs
+- Fix the placement bug of the first letter
+   o Font::render, vPos is correct
+   o QuadRenderer::addGlyph, vRect is correct
+   o Debugging QuadRenderer::getFinalRect OK
+- QuadRenderer correctly handles mFlipY
+- TitleBar caption are too far on the right/bottom 
+   HACKED in Font::render
+- QuadRenderer::addGlyph segfault FIXED
+#0  0xb7e2bc1e in RainbruRPG::OgreGui::QuadRenderer::addGlyph (this=0x8b0cac8, 
+    vRect=@0xbff3ba1c, vUV=@0xbff3ba0c, vUVRelative=true)
+    at /usr/include/OGRE/OgreVector3.h:123
+#1  0xb7e22968 in RainbruRPG::OgreGui::Font::render (this=0x9587558, 
+    qr=0x8b0cac8, vText=@0x92873f0, vColor=@0x8b0cb70, vPos=@0xbff3ba94, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:492
+#2  0xb7e22ad8 in RainbruRPG::OgreGui::Font::renderAligned (this=0x9587558, 
+    qr=0x8b0cac8, vLineList=@0x958759c, vColor=@0x8b0cb70, vRect=@0xbff3bb6c, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:384
+- TitleBar::caption doesn't follow its parent    
+   FIXED :  setting default value to vVertAlign and vHorzAlign in
+     Font::renderAligned
+   Font::renderAligned debug rectangle
+   Testing coords in soBetaGui::drawTitleBar() no changes
+- removing existing debugRectangle function
+- maincore/dumpogreobject.h/.cpp to debug Ogre objects
+   test in soBetaGui::drawTitleBar
+- GNU headers updated for 2008
 - Homepage news :
 Title :Switched to Ogre 1.4
 Content :[cite]RainbruRPG[/cite] switched from Ogre 1.2 to Ogre 1.4 and CEGUI was definitely give up. Consequently, [cite]RainbruRPG[/cite] building on GNU/Linux platform is easier because Ogre 1.4 is in the official Debian repository.[br]

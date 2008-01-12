@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 10 jan 2008 : Charcode directly assigned in constructor
  * - 03 dec 2007 : starting implementation
  *         
  */
@@ -39,7 +40,7 @@ namespace RainbruRPG{
     class Glyph{
     public:
       Glyph();
-      Glyph(const Ogre::Rectangle&, float, float, float);
+      Glyph(const Ogre::Rectangle&, float, float, float, long int);
       ~Glyph();
 
       Glyph(const Glyph&);

@@ -179,7 +179,6 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
 
   int maxBearingY = 0;
   
-  
   int x;
   for ( x = 0; x < count; x++ )	{
 
@@ -230,22 +229,13 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
     rect.right = (float)( cur_x + width - GLYPH_PAD_SPACE );
     rect.bottom = (float)(cur_y+vFont->getMaxGlyphHeight()-GLYPH_PAD_SPACE);
     
-    LOGCATS("Glyph charcode=");
-    LOGCATI(charCode);
-    LOGCATS(" left=");
-    LOGCATF(rect.left);
-    LOGCATS(" right=");
-    LOGCATF(rect.right);
-    LOGCAT();
-
     float offsetX = (float)( slot->metrics.horiBearingX >> 6 );
     float offsetY = -(float)( slot->metrics.horiBearingY >> 6 );
     
     size_t index=(size_t)mGlyphList[x];
 
     // Adding the glyph
-    Glyph* newGlyph=new Glyph(rect,(float)(slot->advance.x>>6),offsetX,offsetY);
-    newGlyph->setCharCode(charCode);
+    Glyph* newGlyph=new Glyph(rect,offsetX,offsetY, width, charCode);
     vFont->addGlyph(index, newGlyph);
 
     cur_x += width;
@@ -285,7 +275,7 @@ copyGlyph( FT_Bitmap* vBitmap, int* vBuffer, int vWidth ){
       *bytebuff++ = 0xFF;
       *bytebuff++ = 0xFF;
       *bytebuff++ = 0xFF;
-      *bytebuff = val;
+      *bytebuff++ = val;
 #endif
       
     }

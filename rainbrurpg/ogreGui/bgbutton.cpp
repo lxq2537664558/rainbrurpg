@@ -29,6 +29,7 @@ BetaGUI::Button::
 Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
        RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid),
+  mCaption(T.c_str()),
   active(false)
 {
   
@@ -81,10 +82,12 @@ BetaGUI::Callback BetaGUI::Button::getCallback(void){
   return callback; 
 }
 
-/** Changes the caption of this label
+/** Changes the caption of this button
   *
   * \param caption The new caption as an Ogre string
   * 
   */
-void BetaGUI::Button::setCaption(const String& caption){
+void BetaGUI::Button::setCaption(const String& vCaption){
+  const char* cc=vCaption.c_str();
+  this->mCaption=cc;
 }

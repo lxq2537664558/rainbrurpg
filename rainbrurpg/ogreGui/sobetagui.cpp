@@ -34,6 +34,8 @@
 #include <OGRE/OgreOverlayContainer.h>
 #include <OGRE/OgreBorderPanelOverlayElement.h>
 
+#include <dumpogreobject.h>
+
 /** Default constructor
   *			   
   * It simply creates a SkinOverlay called \e soBetaGUI
@@ -59,7 +61,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 
   dialogBorderSize=1;
 
-  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 18);
+  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
 }
 
 /** Create a window using the BetaGUI skin
@@ -141,10 +143,14 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
 
 /** Graphically create a TitleBar widget
   *
+  * dim's x and y member are the top left corner position, dim.z is the
+  * width and dim.w is the height. The parent position is already added
+  * to the top left corner position.
+  *
   * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
-  * \param active  Is this title ar active ?
+  * \param active  Is this title is active ?
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
@@ -167,8 +173,9 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
 
-  qr->setColor(ColourValue(1.0, 1.0, 1.0, 1.0));
-  qr->drawText(titleFont, "TitleBar", corners);
+  // false = no wordwrap
+  ColourValue cv(8.0f, 0.2f, 0.4f);
+  qr->drawText(titleFont, cv, caption, corners, false);
 
   qr->reset();
 }

@@ -20,6 +20,10 @@
  *
  */
 
+/* Modifications :
+ * - 11 jan 2008 : drawText() take a wordwrap parameter
+ *
+ */
 #ifndef _QHUAD_RENDERER_H_
 #define _QHUAD_RENDERER_H_
 
@@ -42,7 +46,7 @@
 /** The Z-order of quad */
 #define Z_VALUE      0.0f
 /** The default color */
-#define DEFAULT_COL  ColourValue(1.0f,1.0f,1.0f)
+#define DEFAULT_COL  ColourValue(1.0f, 1.0f, 1.0f)
 /** The initialization alpha */
 #define ALPHA        0.0f
 
@@ -113,7 +117,8 @@ namespace RainbruRPG {
       void setMaterialName(const String&);
       
       void drawRectangle(const Ogre::Rectangle&);
-      void drawText(Font*, const string&, const Rectangle&);
+      void drawText(Font*, const ColourValue& ,const string&, 
+		    const Rectangle&, bool wordwrap=true);
 
       void addGlyph( const Rectangle&,const Rectangle&,bool vUVRelative=true);
       void disableScissor(void);
@@ -140,8 +145,6 @@ namespace RainbruRPG {
 
       const Rectangle& translateRectangle(Rectangle&, float, float)const;
       void renderGlyphs(void);
-
-      void debugRectangle(const string&, const Rectangle&)const;
 
     private:
       /** The current Ogre scene manager
@@ -277,6 +280,13 @@ namespace RainbruRPG {
 	*
 	*/
       TexturePtr usedTexture;
+
+      /** Do we need to flip Y coordonates of rendered quads
+        * 
+	* Flipping Y coordonates are needed in DirectX subsystems.
+	*
+	*/
+      bool mFlipY;
     };
   }
 }
