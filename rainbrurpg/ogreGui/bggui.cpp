@@ -12,9 +12,10 @@
 #include "quadrenderer.h"
 
 #include <logger.h>
+#include <mousepointer.h>
 
-#include <OGRE/OgreOverlayManager.h>
-#include <OGRE/OgreStringConverter.h>
+#include <OgreOverlayManager.h>
+#include <OgreStringConverter.h>
 
 
 
@@ -25,27 +26,33 @@ bool BetaGUI::GUI::isMouseButtonPressed=false;
 
 /** The GUI constructor
   *
+  * The requested parameters are used to create an instance of QuadRenderer.
+  *
+  * \param rs The Ogre RenderSystem
+  * \param sm The Ogre SceneManager
+  * \param vp The Ogre Viewport
+  *
   */
 BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
-  mouseCursorOverlay(NULL),
   resizedWindow(NULL),
   movedWindow(NULL),
   wc(NULL),
   bc(NULL),
   tc(NULL),
-  mQuadRenderer(NULL)
+  mQuadRenderer(NULL),
+  mousePointer(NULL)
 {
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
   rootOverlay->setZOrder(500);
-
+  
   dialogOverlay=OverlayManager::getSingleton().create("BetaGUI.Dialog");
   dialogOverlay->show();
   dialogOverlay->setZOrder(550);
 
   mQuadRenderer=new QuadRenderer(rs, sm, vp);
-
+  mousePointer=new MousePointer();
 }
 
 /** The destructor
@@ -57,6 +64,9 @@ BetaGUI::GUI::~GUI(){
 
   delete mQuadRenderer;
   mQuadRenderer=NULL;
+
+  delete mousePointer;
+  mousePointer=NULL;
 }
 
 /** Inject the backspace key pressed event
@@ -102,8 +112,8 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
   bool LMB=isMouseButtonPressed;
 
   // Moves the mouse cursor
-  if(mouseCursorOverlay){
-    mouseCursorOverlay->setPosition(x,y);
+  if (mousePointer){
+    mousePointer->setPosition(x,y);
   }
 
   if ((resizedWindow!=NULL)&&(LMB==true)){
@@ -192,25 +202,6 @@ createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
     e->show();
   }
   return e;
-}
-
-/** Create a mouse pointer
-  *
-  * \param d The size in pixels of the mouse pointer
-  * \param m The name of the Ogre material used to draw it
-  *
-  * \return The overlay now containing the mouse pointer
-  *
-  */
-OverlayContainer* BetaGUI::GUI::createMousePointer(Vector2 d, String m){
-  Overlay* o=OverlayManager::getSingleton().create("BetaGUI.MousePointer");
-  o->setZOrder(649);
-  mouseCursorOverlay=createOverlay("bg.mp",Vector2(0,0),d,m,"", false);
-  
-  o->add2D(mouseCursorOverlay);
-  o->show();
-  mouseCursorOverlay->show();
-  return mouseCursorOverlay;
 }
 
 /** Adds a window to the GUI system
@@ -381,7 +372,6 @@ void BetaGUI::GUI::draw(){
 
   list<Window*>::iterator iter;
   for(iter=windowList.begin();iter!=windowList.end();iter++){
-     
     // Each Window should call reset() itself
     (*iter)->draw(mQuadRenderer);
   }
@@ -411,5 +401,14 @@ void BetaGUI::GUI::drawBeforeOverlay(){
   */
 void BetaGUI::GUI::addWindowBeforeOverlays(Window* w){
   windowBeforeOverlayList.push_back(w);
+}
 
+/** Draw the mouse cursor quad 
+  *
+  * This function is called for each frame by the
+  * OgreGuiRenderQueueListener::renderQueueEnded() function.
+  *
+  */
+void BetaGUI::GUI::drawMouseCursor(){
+  mousePointer->draw(mQuadRenderer);
 }

@@ -62,10 +62,11 @@ librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	bgwindow.lo font.lo fontmanager.lo glyph.lo label.lo \
-	lineinfo.lo object.lo pushbutton.lo quadrenderer.lo \
-	renderqueuelistener.lo resizegrip.lo scrollbar.lo \
-	scrollpane.lo skinmanager.lo skinoverlay.lo sobetagui.lo \
-	sonavigation.lo staticimage.lo titlebar.lo widget.lo
+	lineinfo.lo mousepointer.lo object.lo pushbutton.lo \
+	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
+	scrollbar.lo scrollpane.lo skinmanager.lo skinoverlay.lo \
+	sobetagui.lo sonavigation.lo staticimage.lo titlebar.lo \
+	widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -245,6 +246,7 @@ h_sources = bgbutton.h			\
 	   glyph.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   mousepointer.h		\
 	   object.h			\
 	   pushbutton.h			\
 	   quadrenderer.h		\
@@ -270,6 +272,7 @@ cc_sources = bgbutton.cpp		\
 	    glyph.cpp			\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    mousepointer.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\
@@ -381,6 +384,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glyph.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pushbutton.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quadrenderer.Plo@am__quote@

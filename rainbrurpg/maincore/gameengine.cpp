@@ -874,7 +874,6 @@ void RainbruRPG::Core::GameEngine::initOgreGui(){
 
   mOgreGUI = new BetaGUI::GUI(Root::getSingleton().getRenderSystem(),
 			      mSceneMgr, mSceneMgr->getCurrentViewport());
-  mOgreGUI->createMousePointer(Vector2(32, 32), "bgui.pointer");
 
   mRenderQueueListener=new OgreGuiRenderQueueListener(mOgreGUI);
   mSceneMgr->addRenderQueueListener(mRenderQueueListener);

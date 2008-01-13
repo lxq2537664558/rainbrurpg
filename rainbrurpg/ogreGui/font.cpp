@@ -186,10 +186,11 @@ bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
   * The rect parameter are top, bottom, left right coordonates in pixels
   * values.
   *
-  * \param qr    The quad renderer use to draw
-  * \param text  The text to draw
-  * \param color The color used to draw the text
-  * \param rect  The rectangle where the text is drawn
+  * \param qr       The quad renderer use to draw
+  * \param text     The text to draw
+  * \param color    The color used to draw the text
+  * \param rect     The rectangle where the text is drawn
+  * \param wordwrap The word wrap parameter
   *
   */
 void RainbruRPG::OgreGui::Font::
@@ -209,6 +210,7 @@ renderAligned( QuadRenderer* qr, const std::string& text,
   * \param vText  The text to draw
   * \param vWidth The allowed width
   * \param vOut   The LineInfoList to feed
+  * \param vWrap  The word wrap parameter
   *
   */
 void RainbruRPG::OgreGui::Font::

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 12 jan 2008 : BlendMode implementation
  * - 11 jan 2008 : drawText() take a wordwrap parameter
  *
  */
@@ -63,6 +64,21 @@ namespace RainbruRPG{
 
 namespace RainbruRPG {
   namespace OgreGui {
+
+    /** Enumerates the alpha blending modes
+      *
+      * You should use one of these modes when you call
+      * \link QuadRenderer::setBlendMode() QuadRenderer::setBlendMode()
+      * \endlink.
+      *
+      */
+    typedef enum tQuadRendererBlendMode{
+      QBM_NONE,         //!< No alpha blending
+      QBM_MODULATE,     //!< Blend both source and destination color
+      QBM_DISCARDALPHA, //!< Do not use source alpha channel
+      QBM_INVERT,       //!< Invert the source alpha channel
+      QBM_ALPHA,        //!< Use source alpha channel
+    };
 
     /** A structure defining a vertex when sent to hardware bufer
       *  
@@ -111,6 +127,7 @@ namespace RainbruRPG {
       
       void setUvMap(double, double, double, double);
       void setScissorRectangle(int, int, int, int);
+      void setScissorRectangle(const Rectangle&);
       const Rectangle& getClipRegion(void)const;
       
       void setAlpha(float);
@@ -125,6 +142,8 @@ namespace RainbruRPG {
 
       void setColor(const ColourValue&);
       void setTexturePtr(TexturePtr);
+
+      void setBlendMode(tQuadRendererBlendMode);
 
     protected:
       void setupHardwareBuffer();

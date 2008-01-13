@@ -96,7 +96,6 @@ bool RainbruRPG::Events::GuiFrameListener::frameEnded(const FrameEvent& evt){
   *
   */
 bool RainbruRPG::Events::GuiFrameListener::mouseMoved(const MouseEvent& e){
-  LOGI("Mouse moved");
   //  e.consume();
 }
 

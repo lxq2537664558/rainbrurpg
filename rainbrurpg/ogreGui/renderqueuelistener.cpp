@@ -76,5 +76,6 @@ renderQueueEnded( uint8 vQueueGroupId, const String& vInvocation,
 
   if ( vQueueGroupId == mQueue ){
     gm->draw();
+    gm->drawMouseCursor();
   }
 }

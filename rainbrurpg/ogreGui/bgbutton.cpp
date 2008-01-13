@@ -84,10 +84,9 @@ BetaGUI::Callback BetaGUI::Button::getCallback(void){
 
 /** Changes the caption of this button
   *
-  * \param caption The new caption as an Ogre string
+  * \param vCaption The new caption as an Ogre string
   * 
   */
 void BetaGUI::Button::setCaption(const String& vCaption){
-  const char* cc=vCaption.c_str();
-  this->mCaption=cc;
+  this->mCaption=vCaption.c_str();
 }

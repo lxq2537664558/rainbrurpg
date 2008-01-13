@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
  * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
  * - 16 nov 2007 : dialogOverlay implementation
  * - 10 oct 2007 : No more font or fontSize references
@@ -19,8 +20,9 @@
 #ifndef _BETA_GUI_GUI_H_
 #define _BETA_GUI_GUI_H_
 
-#include <OGRE/OgreOverlay.h>
-#include <OGRE/OgreVector2.h>
+#include <OgreOverlay.h>
+#include <OgreVector2.h>
+#include <OgreTexture.h>
 
 #include <vector>
 #include <list>
@@ -37,6 +39,7 @@ namespace BetaGUI {
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
+    class MousePointer;
   }
 }
 // End of forward declarations
@@ -102,9 +105,8 @@ namespace BetaGUI {
 
     void destroyWindow(const Ogre::String&);
     
-    OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",String="",bool a=true);
-    OverlayContainer* createMousePointer(Vector2,String);
-
+    OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",
+				    String="",bool a=true);
     unsigned int getUniqueId(void);
     unsigned int getWindowUniqueId(void);
     unsigned int getStaticTextUniqueId(void);
@@ -126,6 +128,7 @@ namespace BetaGUI {
 
     void draw();
     void drawBeforeOverlay();
+    void drawMouseCursor();
 
   protected:
     /** A const iterator over windowList */
@@ -184,11 +187,6 @@ namespace BetaGUI {
     /** A list of window that will be drawn before Ogre overlays */
     list<Window*> windowBeforeOverlayList;
 
-    /** The overlay used to draw the mouse cursor
-      *
-      */
-    OverlayContainer* mouseCursorOverlay;
-
     /** A pointer to the currently resized window
       *
       * This pointer is \c NULL by default. Its value change when a
@@ -215,6 +213,9 @@ namespace BetaGUI {
       *
       */
     QuadRenderer* mQuadRenderer;
+    
+    /** The mouse pointer */
+    MousePointer* mousePointer;
   };
 }
 

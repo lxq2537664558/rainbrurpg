@@ -261,7 +261,7 @@ drawRectangle(const Ogre::Rectangle& corners){
 
     // Set the Alpha blending
     tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
-			   alphaValue, alphaValue, 1.0);
+    			   alphaValue, alphaValue, 1.0);
     
     tus->setTextureFiltering(Ogre::FO_LINEAR, Ogre::FO_LINEAR, Ogre::FO_NONE );
  
@@ -431,6 +431,7 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   * window is resized.
   *
   * \param font     The font used to draw the text
+  * \param vColor   The foreground color of the text
   * \param text     The text to draw
   * \param rect     The rectangle where to draw the text
   * \param wordwrap Is the text auto word wraped ?
@@ -451,11 +452,6 @@ drawText(Font* font, const ColourValue& vColor, const string& text,
 			   ColourValue::White, vColor,  0.0);
   
   // Set the text alpha value
-  // The following make a bug
-  /*  p->getTextureUnitState(0)->setAlphaOperation(LBX_BLEND_MANUAL, 
-					       LBS_TEXTURE, LBS_MANUAL,
-					       alphaValue, alphaValue, 1.0);
-  */
   p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE, 
 					       LBS_TEXTURE, LBS_MANUAL,
 					       alphaValue, alphaValue, 
@@ -470,12 +466,11 @@ drawText(Font* font, const ColourValue& vColor, const string& text,
   
   endGlyphs( );
   // Set default colour operation
-  p->getTextureUnitState(0)->setColourOperation(LBO_MODULATE);
+  p->getTextureUnitState(0)->setColourOperation(LBO_ALPHA_BLEND);
+
   // set default alpha operation
   p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE);
   mSceneManager->_setPass(p);
-
-
 }
 
 /** Begin to draw text
@@ -645,7 +640,7 @@ buildVertices( const Rectangle& vIn, Vector3* vOut ) const{
   vOut[3] = Vector3( finalRect.right, finalRect.bottom, 0.0f );
   vOut[4] = Vector3( finalRect.right, finalRect.top, 0.0f );
   vOut[5] = Vector3( finalRect.left, finalRect.top, 0.0f );
-  
+ 
 }
 
 /** Translate a rectangle
@@ -737,4 +732,57 @@ void RainbruRPG::OgreGui::QuadRenderer::setColor(const ColourValue& cv){
   */
 void RainbruRPG::OgreGui::QuadRenderer::setTexturePtr(TexturePtr tex){
   usedTexture=tex;
+}
+
+/** Set the scissor rectangle
+  *
+  * Set the scissor to the given rectangle.
+  *
+  * \param vRect A rectangle represented by two points : top/left and
+  *              bottom/right.
+  * 
+  */ 
+void RainbruRPG::OgreGui::QuadRenderer::
+setScissorRectangle(const Rectangle& vRect){
+  setScissorRectangle(vRect.left, vRect.top, 
+		      vRect.right, vRect.bottom);
+
+}
+
+/** Change the blending mode
+  *
+  * Please see the \link 
+  * RainbruRPG::OgreGui::tQuadRendererBlendMode
+  * tQuadRendererBlendMode \endlink documentation for details on blending
+  * mode.
+  *
+  * \param vMode The new blending mode
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+setBlendMode(tQuadRendererBlendMode vMode){
+
+  switch ( vMode ){
+  case QBM_NONE:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    break;
+
+  case QBM_MODULATE:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ZERO,Ogre::SBF_SOURCE_COLOUR );
+    break;
+
+  case QBM_DISCARDALPHA:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    break;
+
+  case QBM_INVERT:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE_MINUS_DEST_COLOUR, 
+				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    break;
+
+  case QBM_ALPHA:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
+				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    break;
+  }
 }

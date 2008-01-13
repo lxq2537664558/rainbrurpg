@@ -116,7 +116,17 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-165
-- (8) Fix an alpha bug in text rendering (shadows below text)
+- (16) Mouse pointer is more grey than white
+- Makes the mouse cursor always in foreground
+   It passes under windows
+   Mouse cursor is an ogre overlay
+- Removing GUI/mouseCursorOverlay
+- GUI/drawMouseCursor uses QuadRenderer::setTexturePtr to draw it
+- QuadRenderer handles BlendMode
+- MousePointer class implementation
+- Launching mouse cursor drawing in ogreGui/renderqueuelistener.cpp
+- GUI/createMouseCursor() load the cursor texture
+- Fix an alpha bug in text rendering (shadows below text)
    FIXED using LBX_MODULATE instead of LBX_BLEND_MANUAL
 - Setting global GUI alpha to QuadRenderer::drawText
 - Setting color to QuadRenderer::drawText

@@ -13,6 +13,7 @@ h_sources= bgbutton.h			\
 	   glyph.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   mousepointer.h		\
 	   object.h			\
 	   pushbutton.h			\
 	   quadrenderer.h		\
@@ -39,6 +40,7 @@ cc_sources= bgbutton.cpp		\
 	    glyph.cpp			\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    mousepointer.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\
