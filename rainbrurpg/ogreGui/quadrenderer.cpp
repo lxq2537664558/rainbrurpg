@@ -23,7 +23,6 @@
 #include "quadrenderer.h"
 
 #include "logger.h"
-#include "font.h"
 
 #include <dumpogreobject.h>
 
@@ -45,7 +44,6 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mViewport(vp),
   useScissor(false),
   alphaValue(ALPHA),
-  mMaterialName(),
   mColor(DEFAULT_COL),
   mTexture(NULL),
   mTargetWidth(0.0f),
@@ -61,7 +59,6 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   createTexture();
 
   mFlipY = ( mRenderSystem->getName( ) != "OpenGL Rendering Subsystem" );
-
 
 }
 
@@ -163,9 +160,9 @@ void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
   GuiVertex* data = (GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
 
   for ( size_t x = 0; x < 6; x++ ){
-    data[x].pos = vert[x];
-    data[x].color = DEFAULT_COL;
-    data[x].uv = uvs[x];
+    data[x].setPosition(vert[x]);
+    data[x].setColor(DEFAULT_COL);
+    data[x].setUvMapping(uvs[x]);
   }
 
   // Unlock buffer
@@ -247,28 +244,7 @@ drawRectangle(const Ogre::Rectangle& corners){
 
   setCorners(corners.left, corners.top, corners.right, corners.bottom);
   feedVectors(&vert, &uvs, &cols);
-
-  if (!mMaterialName.empty()){
-    mMaterial = Ogre::MaterialManager::getSingleton( )
-      .load( mMaterialName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
-
-    String s="Cannot get material named '"+mMaterialName+"'";
-
-    LOGA(mMaterial.get(), s.c_str());
-
-    Ogre::TextureUnitState* tus=mMaterial
-      ->getTechnique( 0 )->getPass( 0 )->getTextureUnitState(0);
-
-    // Set the Alpha blending
-    tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
-    			   alphaValue, alphaValue, 1.0);
-    
-    tus->setTextureFiltering(Ogre::FO_LINEAR, Ogre::FO_LINEAR, Ogre::FO_NONE );
- 
-    mSceneManager->_setPass( mMaterial->getTechnique( 0 )->getPass( 0 ) );
-
-  }
-
+  
   if (!usedTexture.isNull()){
     mRenderSystem->_setTexture(0, true, usedTexture);
   }
@@ -302,9 +278,6 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
 
 
   // Set the alpha blending active
-  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-  				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
-
   mRenderSystem->_setTextureUnitFiltering( 0, Ogre::FO_LINEAR, Ogre::FO_LINEAR, 
 					   Ogre::FO_NONE );
 
@@ -355,6 +328,7 @@ double RainbruRPG::OgreGui::QuadRenderer::xPixelToNative(int i)const{
   double d=(double)i;
   d/=(winWidth/2);
   d-=1.0f;
+
   return d;
 }
 
@@ -394,23 +368,12 @@ void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
   alphaValue=a;
 }
 
-/** Change the material name
-  *
-  * \param mn The material name
-  *
-  */
-void RainbruRPG::OgreGui::QuadRenderer::setMaterialName(const String& mn){
-  mMaterialName=mn;
-
-}
-
 /** Reset the renderer
   *
-  * Should be called etween two draw().
+  * Should be called between two draw().
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::reset(void){
-  mMaterialName="";
   useScissor=false;
   mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
@@ -419,7 +382,7 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   uvs.clear();
   cols.clear();
 
-  usedTexture.setNull();
+
 }
 
 /** Draw a text
@@ -430,47 +393,52 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   * The wordwrap parameter was added to correctly draw titlebar caption when
   * window is resized.
   *
-  * \param font     The font used to draw the text
-  * \param vColor   The foreground color of the text
-  * \param text     The text to draw
-  * \param rect     The rectangle where to draw the text
-  * \param wordwrap Is the text auto word wraped ?
+  * \param font       The font used to draw the text
+  * \param vColor     The foreground color of the text
+  * \param text       The text to draw
+  * \param rect       The rectangle where to draw the text
+  * \param wordwrap   Is the text auto word wraped ?
+  * \param vVertAlign The vertical alignment flag
+  * \param vHorzAlign The horizontal alignment flag
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 drawText(Font* font, const ColourValue& vColor, const string& text, 
-	 const Rectangle& rect, bool wordwrap){
-
-  // For tests only
-  //  this->disableScissor();
+	 const Rectangle& rect, bool wordwrap, VerticalAlignType vVertAlign, 
+	 HorizontalAlignType vHorzAlign){
 
   Pass* p=font->getPass();
 
   // Set text color
   p->getTextureUnitState(0)
     ->setColourOperationEx(LBX_MODULATE, LBS_TEXTURE, LBS_MANUAL, 
-			   ColourValue::White, vColor,  0.0);
-  
-  // Set the text alpha value
+ 			   ColourValue::White, vColor,  0.0);
+ // Set the text alpha value
   p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE, 
 					       LBS_TEXTURE, LBS_MANUAL,
-					       alphaValue, alphaValue, 
-					       0.0f);
- 
-  begin();
+					       alphaValue, alphaValue,0.0f);
+ //  begin();
   beginGlyphs();
   
   mSceneManager->_setPass(p);
 
-  font->renderAligned( this, text, vColor, rect, wordwrap );
-  
-  endGlyphs( );
-  // Set default colour operation
-  p->getTextureUnitState(0)->setColourOperation(LBO_ALPHA_BLEND);
+  font->renderAligned( this, text, vColor, rect, wordwrap, vVertAlign,
+		       vHorzAlign );
 
-  // set default alpha operation
-  p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE);
+  endGlyphs( );
+  
+
+  // Restore default value to get a global alpha effect
+  /** This line avoid a whole screen colored in red */
+  p->getTextureUnitState(0)
+    ->setColourOperationEx(LBX_MODULATE, LBS_TEXTURE, LBS_MANUAL, 
+			   ColourValue::White, ColourValue::White, 0.0);
   mSceneManager->_setPass(p);
+  
+  /** restore global alpha effect */
+  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
+				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
+
 }
 
 /** Begin to draw text
@@ -479,12 +447,17 @@ drawText(Font* font, const ColourValue& vColor, const string& text,
 void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
   // Set the alpha blending active
   mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-  				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
+				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
 
 
   if ( mBatchPointer == NULL ){
-    mBatchPointer = (GuiVertex*)mBuffer
-      ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+    try{
+      mBatchPointer = (GuiVertex*)mBuffer
+	->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+    }
+    catch(...){
+      LOGE("Cannot lock HardwareBuffer for mBatchPointer");
+    }
     mBatchCount = 0;
   }
 }
@@ -536,17 +509,10 @@ const Rectangle& RainbruRPG::OgreGui::QuadRenderer::getClipRegion(void)const{
 void RainbruRPG::OgreGui::QuadRenderer::
 addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
 
-  /* Setup the vertex and uv coordinates for the quad
-   *
-   * Since v0.0.5-164, I use malloc instead of C array (square brackets)
-   * and it seems to avoid a segfault. These pointers are freed at the 
-   * end of this function.
-   *
-   */
-  Vector3* verts=static_cast<Vector3*>(malloc(sizeof(Vector3)*6));
-  Vector2* uv   =static_cast<Vector2*>(malloc(sizeof(Vector2)*6));
+  vector<OgreGui::Vector3> verts;
+  vector<Vector2> uv;
 
-  buildVertices( vRect, verts );
+  buildVertices( vRect, &verts );
 
   if ( mTexture.get() && (vUVRelative == false) ){
 
@@ -559,19 +525,39 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     r.left = vUV.left / size.x;
     r.right = vUV.right / size.x;
 
-    buildUV( r, uv );
+    buildUV( r, &uv );
   }
   else{
-    buildUV( vUV, uv );
+    buildUV( vUV, &uv );
 
   }
 
   // Write the quad to the buffer
   int x;
+  LOGA(mBatchPointer, "BatchPointer invalid. Program should abort");
+
+  /* Tests if Hardware buffer is locked
+   *
+   * At this point, if the HardwareVertexBuffer is not locked, a Segfault
+   * occurs. We test it a last times.
+   *
+   */
+  if (!mBuffer->isLocked()){
+    try{
+      mBatchPointer = (GuiVertex*)mBuffer
+	->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+    }
+    catch(...){
+      LOGE("Cannot lock HardwareBuffer for mBatchPointer");
+    }
+  }
+  LOGA(mBuffer->isLocked(), 
+       "HardwareVertexBuffer not locked.  Program should abort");
+
   for ( x = 0; x < 6; x++ ){
-    mBatchPointer[x].pos = verts[x];
-    mBatchPointer[x].color = mColor;
-    mBatchPointer[x].uv = uv[x];
+    mBatchPointer[x].setPosition(verts[x]);
+    mBatchPointer[x].setColor(mColor);
+    mBatchPointer[x].setUvMapping(uv[x]);
   }
 
   // Advance glyph pointer
@@ -600,8 +586,8 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     mBatchCount = 0;
   }
 
-  free(verts);
-  free(uv);
+  verts.clear();
+  uv.clear();
 }
 
 /** Feed a UV mapping array
@@ -611,14 +597,14 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-buildUV( const Rectangle& vIn, Vector2* vOut ) const{
+buildUV( const Rectangle& vIn, vector<Vector2>* vOut ) const{
   // Setup the UV coordinates for the rectangle
-  vOut[0] = Vector2( vIn.left, vIn.bottom );
-  vOut[1] = Vector2( vIn.right, vIn.bottom );
-  vOut[2] = Vector2( vIn.left, vIn.top );
-  vOut[3] = Vector2( vIn.right, vIn.bottom );
-  vOut[4] = Vector2( vIn.right, vIn.top );
-  vOut[5] = Vector2( vIn.left, vIn.top );
+  vOut->push_back(Vector2( vIn.left, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.right, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.left, vIn.top ));
+  vOut->push_back(Vector2( vIn.right, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.right, vIn.top ));
+  vOut->push_back(Vector2( vIn.left, vIn.top ));
 }
 
 /** Feed a vertices mapping array
@@ -628,18 +614,18 @@ buildUV( const Rectangle& vIn, Vector2* vOut ) const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-buildVertices( const Rectangle& vIn, Vector3* vOut ) const{
+buildVertices( const Rectangle& vIn, vector<OgreGui::Vector3>* vOut ) const{
   // Calculate final screen rectangle
   Rectangle finalRect;
   getFinalRect( vIn, finalRect );
 
   // Setup the coordinates for the quad
-  vOut[0] = Vector3( finalRect.left, finalRect.bottom, 0.0f );
-  vOut[1] = Vector3( finalRect.right, finalRect.bottom, 0.0f );
-  vOut[2] = Vector3( finalRect.left, finalRect.top, 0.0f );
-  vOut[3] = Vector3( finalRect.right, finalRect.bottom, 0.0f );
-  vOut[4] = Vector3( finalRect.right, finalRect.top, 0.0f );
-  vOut[5] = Vector3( finalRect.left, finalRect.top, 0.0f );
+  vOut->push_back(Vector3( finalRect.left, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.left, finalRect.top, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.top, 0.0f ));
+  vOut->push_back(Vector3( finalRect.left, finalRect.top, 0.0f ));
  
 }
 
@@ -702,7 +688,7 @@ void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
   //			 alphaValue, alphaValue, 1.0);
 
   mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-  				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
+				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
 
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
@@ -762,27 +748,53 @@ setScissorRectangle(const Rectangle& vRect){
 void RainbruRPG::OgreGui::QuadRenderer::
 setBlendMode(tQuadRendererBlendMode vMode){
 
+    Ogre::LayerBlendModeEx defaultLBM;
+    defaultLBM.blendType=LBT_ALPHA;
+    defaultLBM.operation=LBX_MODULATE;
+    defaultLBM.source1=LBS_TEXTURE;
+    defaultLBM.source2=LBS_CURRENT;
+    defaultLBM.alphaArg1=alphaValue;
+    defaultLBM.alphaArg2=alphaValue;
+    defaultLBM.factor=alphaValue;
+ 
+
   switch ( vMode ){
   case QBM_NONE:
     mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
     break;
 
   case QBM_MODULATE:
     mRenderSystem->_setSceneBlending( Ogre::SBF_ZERO,Ogre::SBF_SOURCE_COLOUR );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
     break;
 
   case QBM_DISCARDALPHA:
     mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
     break;
 
   case QBM_INVERT:
     mRenderSystem->_setSceneBlending( Ogre::SBF_ONE_MINUS_DEST_COLOUR, 
 				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
     break;
 
   case QBM_ALPHA:
     mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
 				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
     break;
+
+  case QBM_GLOBAL:
+    Ogre::LayerBlendModeEx ex;
+    ex.blendType=LBT_ALPHA;
+    ex.operation=LBX_MODULATE;
+    ex.source1=LBS_CURRENT;
+    ex.source2=LBS_MANUAL;
+    ex.alphaArg1=alphaValue;
+    ex.alphaArg2=alphaValue;
+    ex.factor=alphaValue;
+    mRenderSystem->_setTextureBlendMode(0, ex);
   }
 }

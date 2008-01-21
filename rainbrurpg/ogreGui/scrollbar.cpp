@@ -162,21 +162,22 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
   else{
     // The mouse button is pressed, are we moving cursor ?
     if (movingCursor){
-      cursorPos=mouseY-y-cursorDev;
+      cursorPos=mouseY-corners.top-cursorDev;
 
       if (cursorPos< 14)  cursorPos=14;
-      else if (cursorPos> height-28)cursorPos=height-28;
+      else if (cursorPos> getHeight()-28)cursorPos=getHeight()-28;
 
-      cursor->setPosition(x, y+cursorPos);
+      cursor->setPosition(corners.left, corners.top+cursorPos);
       getValueFromCursor();
       changeCursorValue(mValue);
    }
   }
 
-  // The mouse is inside the scrollbar
-  if (mouseX>x && mouseY>y && mouseX<x+width && mouseY< y+height){
+  // If the mouse is inside the scrollbar
+  if (mouseX>corners.left && mouseY>corners.top && mouseX<corners.right 
+      && mouseY< corners.bottom){
     // Handling top arrow
-    if (mouseY<y+14){
+    if (mouseY<corners.top+14){
       if (!movingCursor){
 	setTopArrowActive(true);
 	if (leftMouseButton){
@@ -188,7 +189,7 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
       }
     }
     // Handling the bottom arrow
-    else if (mouseY>y+height-14){
+    else if (mouseY>corners.bottom-14){
       if (!movingCursor){
  	setBottomArrowActive(true);
 	if (leftMouseButton){
@@ -200,26 +201,26 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
       }
     }
     // Handling the cursor
-    else if (mouseY>y+cursorPos && mouseY<y+cursorPos+14){
+    else if (mouseY>corners.top+cursorPos && mouseY<corners.top+cursorPos+14){
       setCursorActive(true);
       setTopArrowActive(false);
       setBottomArrowActive(false);
       if (leftMouseButton){
 	if (!movingCursor){
-	  cursorDev=mouseY-(y+cursorPos);
+	  cursorDev=mouseY-(corners.top+cursorPos);
 	  movingCursor=true;
 	}
       }
     }
     else{
       if (leftMouseButton){
-	if (mouseY<y+cursorPos){
+	if (mouseY<corners.top+cursorPos){
 	  mValue-=mBigStep;
 	  if (mValue<0) mValue=0;
 	  moveCursorToValue();
 	  changeCursorValue(mValue);
 	}
-	else if(mouseY>y+cursorPos+14){
+	else if(mouseY>corners.top+cursorPos+14){
 	  mValue+=mBigStep;
 	  if (mValue>mMaxValue) mValue=mMaxValue;
 	  moveCursorToValue();
@@ -289,10 +290,10 @@ void RainbruRPG::OgreGui::ScrollBar::setSteps(int arrow, int big){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::moveCursorToValue(void){
-  int max=height-28-14;
+  int max=getHeight() - 28 - 14;
   int pos=(max*mValue)/mMaxValue;
   cursorPos=pos+14;
-  cursor->setPosition(x, y+cursorPos);
+  cursor->setPosition(corners.left, corners.top + cursorPos);
 }
 
 /** Get the value from the cursor position
@@ -300,7 +301,7 @@ void RainbruRPG::OgreGui::ScrollBar::moveCursorToValue(void){
   */
 void RainbruRPG::OgreGui::ScrollBar::getValueFromCursor(void){
   int pos=cursorPos-14;
-  int max=height-28-14;
+  int max=getHeight() - 28 - 14;
 
   mValue=(pos*mMaxValue)/max;
 }

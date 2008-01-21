@@ -24,6 +24,7 @@
 
 #include "bgwindow.h"
 #include "quadrenderer.h"
+#include "fontmanager.h"
 
 #include <logger.h>
 
@@ -39,10 +40,20 @@
 RainbruRPG::OgreGui::soNavigation::soNavigation() : 
   SkinOverlay("soNavigation")
 {
-  mnWindow="nav.window";
-  mnPushButton="nav.button";
+  /*  mnPushButton="nav.button";
   fnPushButton="BlueHighway";
   fsPushButton=16;
+  */
+  buttonFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 14);
+
+  mPushButtonTexture=TextureManager::getSingleton()
+    .load("nav.button.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mPushButtonActiveTexture=TextureManager::getSingleton()
+    .load("nav.button.active.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
 }
 
 /** Draws a window using the navigation skin
@@ -56,12 +67,12 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
   *          to add PushButton widgets for navigation purpose.
   *
   * \param qr      The QuadRenderer used to draw
-  * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
+  * \param corners The window's dimension in pixels in a Ogre::Rectangle object
   * \param caption The title bar caption
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
+drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
 
   //  this->createOverlay(name, dim, mnWindow, bg->getRootOverlay());
 }
@@ -79,7 +90,7 @@ drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
 void RainbruRPG::OgreGui::soNavigation::
 createDialog(String name, Vector4 dim, String caption,BetaGUI::GUI* bg){
 
-  this->createOverlay(name, dim, mnWindow, bg->getDialogOverlay());
+  //  this->createOverlay(name, dim, mnWindow, bg->getDialogOverlay());
 }
 
 
@@ -124,10 +135,35 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active){
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
   * \param win     The parent window
+  * \param active  Is the mouse over this push button ?
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win){
+drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, 
+	       Window* win, bool active){
+  Rectangle corners;
+  corners.left  = dim.x+win->getLeft();
+  corners.top   = dim.y+win->getTop();
+  corners.right = dim.x+dim.z+win->getLeft();
+  corners.bottom= dim.y+dim.w+win->getTop();
+
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->setScissorRectangle(corners);
+
+  if (active){
+    qr->setTexturePtr(mPushButtonActiveTexture);
+  }
+  else{
+    qr->setTexturePtr(mPushButtonTexture);
+  }
+
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(corners);
+
+  // false = no wordwrap
+  ColourValue cv(4.0f, 0.2f, 0.8f);
+  qr->drawText(buttonFont, cv, caption, corners, false, VAT_CENTER, HAT_CENTER);
+  qr->reset();
 }
 
 /** Graphically create a TextInput widget

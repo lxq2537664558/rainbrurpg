@@ -21,43 +21,46 @@
  */
 
 /* Modifications :
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- * - 05 oct 2007 : Now using skin for graphiwal creation
- * - 03 oct 2007 : starting implementation
- *         
+ * - 16 jan 2008 : Starting imlementation
+ *
  */
 
-#ifndef _OGRE_GUI_TITLE_BAR_H_
-#define _OGRE_GUI_TITLE_BAR_H_
+#ifndef _OGRE_GUI_VECTOR3_H_
+#define _OGRE_GUI_VECTOR3_H_
 
-#include "bgbutton.h"
-#include "bgcallback.h"
-#include "skinmanager.h" // For OgreGuiSkinID
+namespace RainbruRPG {
+  namespace OgreGui {
 
-using namespace BetaGUI;
-using namespace RainbruRPG::OgreGui;
-
-namespace RainbruRPG{
-  namespace OgreGui{
-
-    /** A widget drawing a Window's title bar
+    /** A class implementing a 3-dimensional vector
       *
-      * It is based on Button to be able to use its callback
-      * for moving the window.
+      * \note This class was implemented when trying to fix a segfault 
+      *       due to Ogre's Vector3.
       *
       */
-    class TitleBar : public BetaGUI::Button{
+    class Vector3{
     public:
-      TitleBar(Vector4, String, Callback, GUI*, Window*, 
-	       OgreGuiSkinID sid=OSI_PARENT);
+      Vector3();
+      Vector3(float, float, float);
 
-      ~TitleBar();
+      Vector3& operator = ( const Vector3& );
 
-      virtual void draw(QuadRenderer*);
+      void setX(float);
+      void setY(float);
+      void setZ(float);
 
+      float getX(void) const;
+      float getY(void) const;
+      float getZ(void) const;
+
+    private:
+      /** The X coordonate */
+      float x;
+      /** The Y coordonate */
+      float y;
+      /** The Z coordonate */
+      float z;
     };
+
   }
 }
-
-#endif // _OGRE_GUI_TITLE_BAR_H_
-
+#endif // _OGRE_GUI_VECTOR3_H_

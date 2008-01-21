@@ -31,7 +31,8 @@
 #define _OGRE_GUI_SKIN_OVERLAY_H_
 
 #include <string>
-#include <OGRE/OgreOverlayContainer.h>
+#include <OgreOverlayContainer.h>
+#include <OgreRectangle.h>
 
 // Forward declarations
 namespace BetaGUI{
@@ -86,12 +87,13 @@ namespace RainbruRPG{
         * details.
         *
         * \param qr      The QuadRenderer used to draw
-        * \param dim     The window's dimension in pixels in a 
-        *                Ogre::Vector4 object
+        * \param corners The window's dimension in pixels in a 
+        *                Ogre::Rectangle object
         * \param caption The title bar caption
         *
         */
-      virtual void drawWindow(QuadRenderer*qr, Vector4 dim, String caption)=0;
+      virtual void drawWindow(QuadRenderer*qr, Rectangle corners, 
+			      String caption)=0;
      /** Create a window with a border
         *
         * Please see the sub-class documentation for implementation
@@ -135,10 +137,11 @@ namespace RainbruRPG{
         *                Ogre::Vector4 object
         * \param caption The rendered text
         * \param parent  The parent window
+	* \param active  Is the mouse over this push button ?
         *
         */
      virtual void drawPushButton(QuadRenderer*qr,Vector4 dim, String caption, 
-				   Window* parent)=0;
+				   Window* parent, bool active)=0;
 
       /** Graphically create a TextInput widget
         *

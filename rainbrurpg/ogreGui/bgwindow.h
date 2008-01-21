@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
  * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
  * - 21 nov 2007 : Adding widget mouse support in event handling loop
  * - 16 nov 2007 : setTitle(String) implementation
@@ -73,8 +74,6 @@ namespace BetaGUI {
     bool checkKey(String, unsigned int, unsigned int);
 
     GUI* getGUI();
-    void setOverLayContainer(OverlayContainer* oc);
-    OverlayContainer* getOverLayContainer();
 
     void addWidget(BetaGUI::Button*);
     void addWidget(BetaGUI::TextInput*);
@@ -82,29 +81,29 @@ namespace BetaGUI {
 
     void setMinimalSize(unsigned int, unsigned int);
 
-    void resize(unsigned int, unsigned int);
-    void move(unsigned int, unsigned int);
+    virtual void resize(int px, int py);
+    virtual void move(int, int);
 
     virtual void setTransparency(float f);
     void setAlwaysTransparent(bool);
 
     void setTitle(const String&);
+    const String& getTitle(void);
 
     virtual void draw(QuadRenderer*);
+    void deactivate(void);
 
   protected:
     /** The currently active TextInput widget */
     TextInput* activeTextInput;
-    /** Defines a button */
-    Button* mRZ;
+    /** The resize grip */
+    Button* mResizeGrip;
     /** Defines a button */
     Button* mAB;
     /** Defines a button */
-    TitleBar* mTB;
+    TitleBar* mTitleBar;
     /** The GUI object used to draw this window */
     GUI* mGUI;
-    /** The overlay container drawing this widget */
-    OverlayContainer* rootOverlay;
     /** A vector of Buttons */
     vector<BetaGUI::Button*> buttonList;
     /** A vector of TextInput */
@@ -154,12 +153,11 @@ namespace BetaGUI {
     bool hasBorder;
     /** The pointer to the border text for transparency operation */
     Ogre::TextureUnitState* borderTus;
+    /** The window's title */
+    String mCaption;
+    /** Is this window visible ? */
+    bool visible;
   };
-
-
 }
-
-
-
 
 #endif // _BETA_GUI_WINDOW_

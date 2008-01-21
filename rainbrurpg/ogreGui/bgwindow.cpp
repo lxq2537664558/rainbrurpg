@@ -15,14 +15,15 @@
 #include "resizegrip.h"
 #include "titlebar.h"
 #include "quadrenderer.h"
+#include "mousepointer.h"
 
 #include <logger.h>
 #include <gameengine.h>
 
-#include <OGRE/OgreStringConverter.h>
-#include <OGRE/OgreBorderPanelOverlayElement.h>
-#include <OGRE/OgreMaterial.h>
-#include <OGRE/OgreMaterialManager.h>
+#include <OgreStringConverter.h>
+#include <OgreBorderPanelOverlayElement.h>
+#include <OgreMaterial.h>
+#include <OgreMaterialManager.h>
 
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::OgreGui;
@@ -45,17 +46,18 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
 			GUI *G, bool border,
 			RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(D, NULL, sid), // Warning, parent is now NULL
-  mGUI(G),mTB(0),mRZ(0),
+  mGUI(G),mTitleBar(0),mResizeGrip(0),
   activeTextInput(NULL),
   movingDevX(0),
   movingDevY(0),
   minimalWidth(50),
   minimalHeight(50),
   mAB(NULL),
-  rootOverlay(NULL),
   borderTus(NULL),
   alwaysTransparent(false),
-  hasBorder(border)
+  hasBorder(border),
+  mCaption(caption),
+  visible(true)
 {
 
 
@@ -80,16 +82,16 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     // Create a resize grip
     Callback c;
     c.setType(OCT_WIN_RESIZE);
-    mRZ=new ResizeGrip(resizeGripDim, c, G, this);
-    buttonList.push_back(mRZ);
+    mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
+    buttonList.push_back(mResizeGrip);
   }
   
   if(t==1||t==3){
     // Create a title bar
     Callback c;
     c.setType(OCT_WIN_MOVE);
-    mTB=new TitleBar(titlebarDim,caption,c, G, this);
-    buttonList.push_back(mTB);
+    mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
+    buttonList.push_back(mTitleBar);
   }
 }
 
@@ -112,8 +114,7 @@ BetaGUI::Window::~Window(){
   for(unsigned int i=0;i<widgetList.size();i++)
     delete widgetList[i];
   
-  mGUI->getRootOverlay()->remove2D(rootOverlay);
-
+  mTitleBar=NULL;
 }
 
 /** Handle a key pressed event
@@ -126,19 +127,14 @@ BetaGUI::Window::~Window(){
   *
   */
 bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
-
   // If no TextInput is active
   if(activeTextInput==0){
     return false;
   }
 
-  // If this window is not visible
-  /*  if(!rootOverlay->isVisible()){
-    return false;
-  }
-  */
   // If the mouse pointer is not in the TextInput
-  if(!(px>=x&&py>=y)||!(px<=x+width&&py<=y+height)){
+  if(!(px>=corners.left&&py>=corners.top)||
+     !(px<=corners.right&&py<=corners.bottom)){
     return false;
   }
 
@@ -180,19 +176,44 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
-  //  if(!rootOverlay->isVisible())
-  //    return false;
   
+  bool inTitleBar=false;
+  // Handle mouse move cursor
+  if (mTitleBar){
+    if (!mTitleBar->in(px, py, corners.left, corners.top)){
+      mGUI->getMousePointer()->setState(MPS_MOVE);
+      inTitleBar=true;
+   }
+    else{
+      mGUI->getMousePointer()->setState(MPS_ARROW);
+    }
+  }
+
+  /* Handle mouse resize cursor 
+   *
+   * Do not set again MPS_ARROW if we are in TitleBar.
+   *
+   */
+  if (mResizeGrip && !inTitleBar){
+    if (!mResizeGrip->in(px, py, corners.left, corners.top)){
+      mGUI->getMousePointer()->setState(MPS_RESIZE);
+    }
+    else{
+      mGUI->getMousePointer()->setState(MPS_ARROW);
+     }
+  }
+
   // Handles the widget mouse events
   for(unsigned int i=0;i<widgetList.size();i++){
     // If a widget handles the event, we stop the event handling loop
-    if (widgetList[i]->injectMouse(px-this->x,py-this->y,LMB)){
+    if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
       return true;
     }
   }
 
 
-  if(!(px>=x&&py>=y)||!(px<=x+width&&py<=y+height)){
+  if(!(px>=corners.left&&py>=corners.top)
+     ||!(px<=corners.right&&py<=corners.bottom)){
     if(mAB){
       mAB->activate(false);
     }
@@ -204,7 +225,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   }
   
   for(unsigned int i=0;i<buttonList.size();i++){
-    if (buttonList[i]->in(px,py,x,y))
+    if (buttonList[i]->in(px, py, corners.left, corners.top))
       continue;
     
     if(mAB){
@@ -237,8 +258,8 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       
     case 3: // We start moving the Window
       GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
-      movingDevX=px-x;
-      movingDevY=py-y;
+      movingDevX=px-corners.left;
+      movingDevY=py-corners.top;
       this->move(px, py);
       return true;
       
@@ -246,8 +267,8 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
       this->resize(px, py);
       
-      if(mTB){
-	mTB->setWidth(width);
+      if(mTitleBar){
+	mTitleBar->setWidth(getWidth());
       }
       
       return true;
@@ -258,7 +279,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
     return true;
   
   for(unsigned int i=0;i<textInputList.size();i++){
-    if(textInputList[i]->in(px,py,x,y))
+    if(textInputList[i]->in( px, py, corners.left, corners.top))
       continue;
     
 
@@ -277,6 +298,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
     activeTextInput->getContentOverlay()
       ->setMaterialName(activeTextInput->getNormalMaterialName());
   }
+
   return true;
 }
 
@@ -284,15 +306,14 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   *
   */
 void BetaGUI::Window::hide(){
-  LOGI("Hiding  a window");
-  rootOverlay->hide();
+  visible=false;
 }
 
 /** Set this window visible
   *
   */
 void BetaGUI::Window::show(){
-  rootOverlay->show();
+  visible=true;
 }
 
 /** Is ths window visible ?
@@ -301,7 +322,7 @@ void BetaGUI::Window::show(){
   *
   */
 bool BetaGUI::Window::isVisible(){
-  return rootOverlay->isVisible();
+  return this->visible;
 }
 
 /** Get the GUI object this window use
@@ -311,24 +332,6 @@ bool BetaGUI::Window::isVisible(){
   */
 BetaGUI::GUI* BetaGUI::Window::getGUI(){
   return mGUI; 
-}
-
-/** Returns the root overlay container
-  *
-  * \param oc The new OverlayContainer that replace rootOverlay.
-  *
-  */
-void BetaGUI::Window::setOverLayContainer(OverlayContainer* oc){
-  rootOverlay=oc;
-}
-
-/** Returns the root overlay container
-  *
-  * \return The overlay container
-  *
-  */
-OverlayContainer* BetaGUI::Window::getOverLayContainer(){ 
-  return rootOverlay;; 
 }
 
 /** Adds a Button in the button list
@@ -347,55 +350,6 @@ void BetaGUI::Window::addWidget(BetaGUI::Button* btn){
   */
 void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
   textInputList.push_back(ti);
-}
-
-
-/** Resize this window
-  *
-  * This resizes the window, moves its resizeGrip and resize its TitleBar.
-  *
-  * \param px The mouse pointer position in pixels
-  * \param py The mouse pointer position in pixels
-  *
-  */
-void BetaGUI::Window::resize(unsigned int px, unsigned int py){
-  // Compute new width
-  if (px<(x+minimalWidth)){
-    width=minimalWidth;
-  }
-  else{
-    width=px-x+8;
-  }
-
-  // Compute new height
-  if (py<(y+minimalHeight)){ 
-    height=minimalHeight;
-  }
-  else{
-    height=py-y+8;
-  }
-
-  // Moves the ResizeGrip
-  mRZ->setX(width-16);
-  mRZ->setY(height-16);
-
-  // Resize the title bar
-  mTB->setWidth( width );
-}
-
-/** Move this window
-  *
-  * This moves the window according to the movingDevX and movingDevY values.
-  *
-  * \param px The mouse pointer position in pixels
-  * \param py The mouse pointer position in pixels
-  *
-  * \sa movingDevX, movingDevX.
-  *
-  */
-void BetaGUI::Window::move(unsigned int px, unsigned int py){
-  x=px-movingDevX;
-  y=py-movingDevY;
 }
 
 /** Change the minimal allowed size of this window
@@ -437,26 +391,31 @@ void BetaGUI::Window::setAlwaysTransparent(bool b){
   *
   */
 void BetaGUI::Window::setTitle(const String& title){
-  mTB->setCaption(title);
+  if (mTitleBar){
+    mTitleBar->setCaption(title);
+  }
+
+  mCaption=title;
 }
 
-/** Draws the resize grip
+/** Draws the window
   *
   * \param qr The QuadRenderer used to draw it
   *
   */
 void BetaGUI::Window::draw(QuadRenderer* qr){
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  Vector4 dim(x, y, width, height);
-  qr->setAlpha( this->alpha );
-  sk->drawWindow(qr, dim, "Caption");
-
-  for(unsigned int i=0;i<buttonList.size();i++){
-    buttonList[i]->draw(qr);
-  }
-
-  for (unsigned int i=0;i<widgetList.size();i++){
-    widgetList[i]->draw(qr);
+  if (visible){
+    SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+    qr->setAlpha( this->alpha );
+    sk->drawWindow(qr, corners, "Caption");
+    
+    for(unsigned int i=0;i<buttonList.size();i++){
+      buttonList[i]->draw(qr);
+    }
+    
+    for (unsigned int i=0;i<widgetList.size();i++){
+      widgetList[i]->draw(qr);
+    }
   }
 }
 
@@ -471,4 +430,80 @@ void BetaGUI::Window::setTransparency(float f){
   for(unsigned int i=0;i<buttonList.size();i++){
     buttonList[i]->setTransparency(f);
   }
+}
+
+/** Return the title of this window
+  *
+  * \return The title as an Ogre string
+  *
+  */
+const String& BetaGUI::Window::getTitle(void){
+  return mCaption;
+}
+
+/** Set this window inactive
+  *
+  * The titlebar and the resizegrip are now inactive.
+  *
+  */
+void BetaGUI::Window::deactivate(void){
+  if (mTitleBar){
+    mTitleBar->activate(false);
+  }
+  if (mResizeGrip){
+    mResizeGrip->activate(false);
+  }
+}
+
+/** Resize this widget
+  *
+  * This resizes the widget, moves its resizeGrip and resize its TitleBar.
+  *
+  * \param px The mouse pointer position in pixels
+  * \param py The mouse pointer position in pixels
+  *
+  */
+void BetaGUI::Window::resize(int px, int py){
+  int height, width;
+
+  // Compute new width
+  if (px-corners.left<minimalWidth){
+    width=minimalWidth;
+  }
+  else{
+    width=px-corners.left+8;
+  }
+
+  // Compute new height
+  if (py-corners.top<minimalHeight){ 
+    height=minimalHeight;
+  }
+  else{
+    height=py-corners.top+8;
+  }
+
+  // Moves the ResizeGrip
+  mResizeGrip->move( width-16, height-16 );
+
+
+  // Resize the title bar
+  mTitleBar->setWidth( width );
+
+  setWidth(width);
+  setHeight(height);
+}
+
+void BetaGUI::Window::move(int px, int py){
+  int width  = corners.right - corners.left;
+  int height = corners.bottom - corners.top;
+
+  corners.left =px - movingDevX;
+  corners.top  =py - movingDevY;
+
+  // Negatiev position is forbiden
+  if (corners.left<0) corners.left=0;
+  if (corners.top<0)  corners.top=0;
+
+  corners.right=corners.left+width;
+  corners.bottom=corners.top+height;
 }

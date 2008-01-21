@@ -191,18 +191,21 @@ bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
   * \param color    The color used to draw the text
   * \param rect     The rectangle where the text is drawn
   * \param wordwrap The word wrap parameter
+  * \param vVertAlign The vertical alignment flag
+  * \param vHorzAlign The horizontal alignment flag
   *
   */
 void RainbruRPG::OgreGui::Font::
 renderAligned( QuadRenderer* qr, const std::string& text, 
-	       const ColourValue& color, const Rectangle& rect, bool wordwrap){
+	       const ColourValue& color, const Rectangle& rect, bool wordwrap,
+	       VerticalAlignType vVertAlign, HorizontalAlignType vHorzAlign){
 
   // Process the text block into lines
   mLineList.resize( 0 );
 
   float textWidth=rect.right-rect.left;
   processText( text, textWidth, mLineList, wordwrap );
-  renderAligned( qr, mLineList, color, rect );
+  renderAligned( qr, mLineList, color, rect, vVertAlign, vHorzAlign );
 }
 
 /** Feed the LineInfoList for the given text
@@ -327,6 +330,8 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
   * \param vLineList       The LineInfoList used to cache
   * \param vColor          The color to renderer 
   * \param vRect           The rectangle wherer to draw the text
+  * \param vVertAlign The vertical alignment flag
+  * \param vHorzAlign The horizontal alignment flag
   * \param vSelection      Should we draw a selection
   * \param vSelectionStart The selection start
   * \param vSelectionEnd   The selection end
@@ -335,13 +340,9 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
 void RainbruRPG::OgreGui::Font::
 renderAligned(QuadRenderer* qr, LineInfoList& vLineList, 
 	      const ColourValue& vColor, const Rectangle& vRect,
-	      bool vSelection, int vSelectionStart, int vSelectionEnd){
+	      VerticalAlignType vVertAlign, HorizontalAlignType vHorzAlign,
+	      bool vSelection, int vSelectionStart, int vSelectionEnd ){
 
-
-  //  qr->disableScissor(); // For test only
-
-  VerticalAlignType vVertAlign=VAT_TOP;
-  HorizontalAlignType vHorzAlign=HAT_LEFT;
 
   // Get the total height of the text (If we need it)
   float textHeight = 0.0f;

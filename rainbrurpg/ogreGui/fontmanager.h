@@ -38,22 +38,6 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-/** Should we debug the font texture
-  *
-  * If \c true, we will apply the texture called \c DEBUG_FONT_TEXTURE_NAME
-  * to the window background. See soBetaGui::drawWindow for test 
-  * implementation.
-  *
-  */
-#define DEBUG_FONT_TEXTURE_QUAD false
-
-/** The name of the font's texture
-  *
-  * See soBetaGui::drawWindow for test implementation.
-  *
-  */
-#define DEBUG_FONT_TTF_NAME "Commonv2c.ttf"
-
 using namespace std;
 using namespace RainbruRPG;
 

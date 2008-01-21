@@ -21,14 +21,19 @@
  */
 
 /* Modifications :
+ * - 14 jan 2008 : setMaterialName() function removed
  * - 12 jan 2008 : BlendMode implementation
  * - 11 jan 2008 : drawText() take a wordwrap parameter
  *
  */
+
 #ifndef _QHUAD_RENDERER_H_
 #define _QHUAD_RENDERER_H_
 
 #include "rainbrudef.h"
+#include "font.h" // For text alignment enumerations
+#include "vector3.h"
+#include "guivertex.h"
 
 #include <vector>
 #include <iostream>
@@ -54,14 +59,6 @@
 using namespace std;
 using namespace Ogre;
 
-// Forward declarations
-namespace RainbruRPG{
-  namespace OgreGui{
-    class Font;
-  }
-}
-// End of forward declarations
-
 namespace RainbruRPG {
   namespace OgreGui {
 
@@ -78,17 +75,9 @@ namespace RainbruRPG {
       QBM_DISCARDALPHA, //!< Do not use source alpha channel
       QBM_INVERT,       //!< Invert the source alpha channel
       QBM_ALPHA,        //!< Use source alpha channel
+      QBM_GLOBAL,       //!< Use global alpha value
     };
-
-    /** A structure defining a vertex when sent to hardware bufer
-      *  
-      */
-    struct GuiVertex{
-      Vector3 pos;        //!< The position of the vertex
-      ColourValue color;  //!< The vertex color
-      Vector2 uv;         //!< The vertex uv mapping
-    };
-    
+   
     /** A test class drawing Ogre primitive
       *
       * This class is used to draw primitives with scissor support. It was
@@ -131,11 +120,12 @@ namespace RainbruRPG {
       const Rectangle& getClipRegion(void)const;
       
       void setAlpha(float);
-      void setMaterialName(const String&);
-      
+
       void drawRectangle(const Ogre::Rectangle&);
       void drawText(Font*, const ColourValue& ,const string&, 
-		    const Rectangle&, bool wordwrap=true);
+		    const Rectangle&, bool wordwrap=true, 
+		    VerticalAlignType vVertAlign=VAT_TOP, 
+		    HorizontalAlignType vHorzAlign=HAT_LEFT);
 
       void addGlyph( const Rectangle&,const Rectangle&,bool vUVRelative=true);
       void disableScissor(void);
@@ -158,8 +148,8 @@ namespace RainbruRPG {
       void beginGlyphs(void);
       void endGlyphs(void);
 
-      void buildUV(const Rectangle&, Vector2*) const;
-      void buildVertices(const Rectangle&, Vector3*) const;
+      void buildUV(const Rectangle&, vector<Vector2>*) const;
+      void buildVertices(const Rectangle&, vector<OgreGui::Vector3>*) const;
       void getFinalRect( const Rectangle&, Rectangle&) const;
 
       const Rectangle& translateRectangle(Rectangle&, float, float)const;
@@ -258,9 +248,6 @@ namespace RainbruRPG {
       
       /** The texture alpha value */
       float alphaValue;
-      
-      /** The current material name */ 
-      String mMaterialName;
 
       /** Used when drawing text */
       GuiVertex* mBatchPointer;
@@ -306,6 +293,7 @@ namespace RainbruRPG {
 	*
 	*/
       bool mFlipY;
+
     };
   }
 }

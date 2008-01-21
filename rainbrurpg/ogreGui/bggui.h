@@ -130,9 +130,16 @@ namespace BetaGUI {
     void drawBeforeOverlay();
     void drawMouseCursor();
 
+    MousePointer* getMousePointer(void);
+
   protected:
+    void moveWindowToForeGround(Window*);
+    void deactivateAllOtherWindow(Window*);
+
     /** A const iterator over windowList */
     typedef list<Window*>::const_iterator WindowListIterator;
+    /** An iterator used to cross the list from end to begin */
+    typedef list<Window*>::reverse_iterator WindowListReverseIterator;
 
     /** Is a mouse button currently pressed */
     static bool isMouseButtonPressed;

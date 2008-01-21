@@ -40,7 +40,7 @@ Label(Vector4 dim, String caption, BetaGUI::Window* parent,
       RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid)
 {
-
+  /*
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
@@ -49,7 +49,7 @@ Label(Vector4 dim, String caption, BetaGUI::Window* parent,
 
   sk->createLabel(uniqueName, dim, caption, parent);
   this->contentOverlay=sk->getOverlayByName(uniqueName);
-  
+  */
 }
 
 /** The destructor

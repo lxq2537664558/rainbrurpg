@@ -35,6 +35,15 @@
 
 using namespace BetaGUI;
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class SkinOverlay;
+  }
+}
+// End of forward declarations
+
+
 namespace RainbruRPG{
   namespace OgreGui{
 
@@ -50,8 +59,11 @@ namespace RainbruRPG{
       ~PushButton();
 
       virtual void draw(QuadRenderer*);
-   };
 
+    private:
+      /** A reference to the current skin used to speed up drawing */
+      SkinOverlay* mSkin;
+   };
   }
 }
 

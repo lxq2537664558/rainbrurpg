@@ -38,12 +38,12 @@ Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   skinId(sid),
   parent(P),
   frameOverlay(NULL),
-  x(dim.x),
-  y(dim.y),
-  width(dim.z),
-  height(dim.w),
   alpha(0.0f)
 {
+  corners.left   = dim.x;
+  corners.top    = dim.y;
+  corners.right  = dim.x+dim.z;
+  corners.bottom = dim.y+dim.w;
 
   // Doesn't test the parent pointer for Window as a Window
   // has always NULL parent
@@ -123,88 +123,88 @@ injectMouse(unsigned int x, unsigned int y, bool leftMouseButton){
   *
   * \param i The new X position in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::x x \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-void RainbruRPG::OgreGui::Widget::setX(int i){
-  this->x=i;
+void RainbruRPG::OgreGui::Widget::setLeft(int i){
+  corners.left=i;
 }
 
 /** Change the Y position of the widget
   *
   * \param i The new Y position in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::y y \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-void RainbruRPG::OgreGui::Widget::setY(int i){
-  this->y=i;
+void RainbruRPG::OgreGui::Widget::setTop(int i){
+  corners.top=i;
 }
 
 /** Change the width of the widget
   *
   * \param i The new width in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::width width \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
 void RainbruRPG::OgreGui::Widget::setWidth(int i){
-  this->width=i;
+  corners.right=corners.left+i;
 }
 
 /** Change the height of the widget
   *
   * \param i The new height in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::height height \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
 void RainbruRPG::OgreGui::Widget::setHeight(int i){
-  this->height=i;
+  corners.bottom=corners.top+i;
 }
 
 /** Get the X position of this widget
   *
   * \return The X position in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::x x \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-int RainbruRPG::OgreGui::Widget::getX(void){
-  return this->x;
+int RainbruRPG::OgreGui::Widget::getLeft(void) const{
+  return corners.left;
 }
 
 /** Get the Y position of this widget
   *
   * \return The Y position in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::y y \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-int RainbruRPG::OgreGui::Widget::getY(void){
-  return this->y;
+int RainbruRPG::OgreGui::Widget::getTop(void) const{
+  return corners.top;
 }
 
 /** Get the width of this widget
   *
   * \return The width in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::width width \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-int RainbruRPG::OgreGui::Widget::getWidth(void){
-  return this->width;
+int RainbruRPG::OgreGui::Widget::getWidth(void) const{
+  return corners.right-corners.left;
 }
 
 /** Get the height of this widget
   *
   * \return The height in pixels
   *
-  * \sa \link RainbruRPG::OgreGui::Widget::height height \endlink (member)
+  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
   *
   */
-int RainbruRPG::OgreGui::Widget::getHeight(void){
-  return this->height;
+int RainbruRPG::OgreGui::Widget::getHeight(void) const{
+  return corners.bottom-corners.top;
 }
 
 /** A pure virtual function used to set the transparency of the widget
@@ -215,4 +215,53 @@ int RainbruRPG::OgreGui::Widget::getHeight(void){
   */
 void RainbruRPG::OgreGui::Widget::setTransparency(float f){
   alpha=f;
+}
+
+/** Get the corners of this widget
+  *
+  * \return A Ogre Rectangle that contains top/left and bottom/right
+  *         corners in pixels.
+  *
+  */
+const Rectangle& RainbruRPG::OgreGui::Widget::getCorners(void) const{
+  return corners;
+}
+
+/** Resize this widget
+  *
+  * This resizes the widget, moves its resizeGrip and resize its TitleBar.
+  *
+  * \param px The mouse pointer position in pixels
+  * \param py The mouse pointer position in pixels
+  *
+  */
+void RainbruRPG::OgreGui::Widget::resize(int px, int py){
+  int height, width;
+  width=px-corners.left;
+  height=py-corners.top;
+}
+
+/** Move this window
+  *
+  * This moves the window according to the movingDevX and movingDevY values.
+  *
+  * \param px The mouse pointer position in pixels
+  * \param py The mouse pointer position in pixels
+  *
+  * \sa movingDevX, movingDevX.
+  *
+  */
+void RainbruRPG::OgreGui::Widget::move(int px, int py){
+  int width  = corners.right - corners.left;
+  int height = corners.bottom - corners.top;
+
+  corners.left=px;
+  corners.top=py;
+
+  // Negatiev position is forbiden
+  if (corners.left<0) corners.left=0;
+  if (corners.top<0)  corners.top=0;
+
+  corners.right=corners.left+width;
+  corners.bottom=corners.top+height;
 }

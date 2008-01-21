@@ -109,13 +109,15 @@ namespace RainbruRPG{
       Pass* getPass(void);
 
       void renderAligned( QuadRenderer*, const std::string&, 
-			  const ColourValue&, const Rectangle&, bool );
+			  const ColourValue&, const Rectangle&, bool,
+			  VerticalAlignType, HorizontalAlignType);
 
       void addGlyph(size_t, Glyph*);
 
     protected:
       void renderAligned(QuadRenderer*, LineInfoList&, 
 			 const ColourValue&, const Rectangle&,
+			 VerticalAlignType, HorizontalAlignType,
 			 bool vSelection = false, int vSelectionStart = -1, 
 			 int vSelectionEnd = -1);
 

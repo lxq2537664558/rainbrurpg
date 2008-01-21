@@ -57,16 +57,6 @@ RainbruRPG::OgreGui::TitleBar::~TitleBar(){
 
 }
 
-/** Changes the width 
-  *
-  * \param ui The new width
-  *
-  */
-void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
-  width=ui;
-
-}
-
 /** Draws the titlebar
   *
   * \param qr The QuadRenderer used to draw the titlebar
@@ -74,10 +64,10 @@ void RainbruRPG::OgreGui::TitleBar::setWidth(unsigned int ui){
   */
 void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer* qr){
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  int px=this->parent->getX()+x;
-  int py=this->parent->getY()+y;
+  int px=this->parent->getLeft()+getLeft();
+  int py=this->parent->getTop()+getTop();
 
-  Vector4 dim(px, py, width, height);
+  Vector4 dim(px, py, getWidth(), getHeight());
   qr->setAlpha( this->alpha );
   sk->drawTitleBar(qr, dim, mCaption, this->active);
 }

@@ -86,7 +86,8 @@ void RainbruRPG::Exception::Logger::log( const char* file,
 
 /** The assertion main method
   *
-  * It will print your message with the Error Error log level.
+  * It will print your message with the Error log level if \em condition
+  * is false.
   *
   * \param file The filename from where the call to this method happened
   * \param line The line from where the call to this method happened

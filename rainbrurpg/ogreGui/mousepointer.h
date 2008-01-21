@@ -71,11 +71,20 @@ namespace RainbruRPG{
 
       void setPosition(unsigned int, unsigned int);
 
+      void setState(tMousePointerState);
+      tMousePointerState getState(void) const;
+
     private:
       /** The current mouse state */
       tMousePointerState mState;
+
       /** The texture used to draw pointer */ 
-      TexturePtr mTexture;
+      TexturePtr mNormalTexture;
+      /** The texture used to draw pointer */ 
+      TexturePtr mMoveTexture;
+      /** The texture used to draw pointer */ 
+      TexturePtr mResizeTexture;
+
       /** The width of the pointer texture in pixels */
       unsigned int pointerWidth;
       /** The height of the pointer texture in pixels */
@@ -85,9 +94,9 @@ namespace RainbruRPG{
       /** The Y position of the screen center */
       unsigned int screenCenterY;
       /** The current position of the mouse pointer in pixels */
-      unsigned int mousePosX;
+      int mousePosX;
       /** The current position of the mouse pointer in pixels */
-      unsigned int mousePosY;
+      int mousePosY;
     };
 
   }

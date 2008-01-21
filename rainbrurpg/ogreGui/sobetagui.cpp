@@ -43,12 +43,9 @@
   */
 RainbruRPG::OgreGui::soBetaGui::soBetaGui(): 
   SkinOverlay("soBetaGUI"),
-  titleFont(NULL)
+  titleFont(NULL),
+  buttonFont(NULL)
 {
-  mnWindow="bgui.window";
-  mnTitleBar="bgui.window.titlebar";
-  mnResizeGrip="bgui.window.resize";
-  mnPushButton="bgui.button";
   mnDialogBorder="bgui.dialog.border";
 
   fnPushButton="BlueHighway";
@@ -62,11 +59,68 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   dialogBorderSize=1;
 
   titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
+  buttonFont=FontManager::getSingleton().getFont("Iconiv2.ttf", 12);
+
+  // Initialize textures
+  mWindowTexture=TextureManager::getSingleton()
+    .load("bgui.window.png",ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mTitleBarTexture=TextureManager::getSingleton()
+    .load("bgui.window.titlebar.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mTitleBarActiveTexture=TextureManager::getSingleton()
+    .load("bgui.window.titlebar.active.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mResizeGripTexture=TextureManager::getSingleton()
+    .load("bgui.window.resize.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mResizeGripActiveTexture=TextureManager::getSingleton()
+    .load("bgui.window.resize.active.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+
+  mPushButtonTexture=TextureManager::getSingleton()
+    .load("bgui.button.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mPushButtonActiveTexture=TextureManager::getSingleton()
+    .load("bgui.button.active.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+}
+
+/** The destructor
+  *
+  */
+RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
+  TextureManager::getSingleton().unload("bgui.window.png");
+  mWindowTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.window.titlebar.png");
+  mTitleBarTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.window.titlebar.active.png");
+  mTitleBarActiveTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.window.resize.png");
+  mResizeGripTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.window.resize.active.png");
+  mResizeGripActiveTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.button.png");
+  mPushButtonTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.button.active.png");
+  mPushButtonActiveTexture.setNull();
+
 }
 
 /** Create a window using the BetaGUI skin
-  *
-  * It creates an overlay with a material named mnWindow.
   *
   * The name parameter must be application unique. It is the 
   * name of the Ogre overlay we create.
@@ -81,31 +135,11 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawWindow(QuadRenderer* qr, Vector4 dim, String caption){
+drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
   // Draw the window background
-  Rectangle corners;
-  corners.left=dim.x;
-  corners.top =dim.y;
-  corners.right=dim.x+dim.z;
-  corners.bottom=dim.y+dim.w;
-
-  qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
-  qr->setMaterialName(mnWindow);
-
-#ifndef DEBUG_FONT_TEXTURE_QUAD
-  LOGW("Cannot get DEBUG_FONT_TEXTURE_QUAD value");
-#endif
-
-#ifndef DEBUG_FONT_TTF_NAME
-  LOGW("Cannot get DEBUG_FONT_TEXTURE_NAME value");
-#endif
-
-#if (DEBUG_FONT_TEXTURE_QUAD==true)
-  MaterialPtr m1=MaterialManager::getSingleton().getByName(mnWindow);
-  TextureUnitState* tus=m1->getTechnique(0)->getPass(0)->getTextureUnitState(0);
-  tus->setTextureName(titleFont->getTextureName());
-#endif
-
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->setScissorRectangle(corners);
+  qr->setTexturePtr(mWindowTexture);
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
   qr->reset();
@@ -127,15 +161,16 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   corners.bottom=dim.y+dim.w;
 
 
+  qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
 
   if (active){
-    qr->setMaterialName(mnResizeGrip+".active");
+    qr->setTexturePtr(mResizeGripActiveTexture);
   }
   else{
-    qr->setMaterialName(mnResizeGrip);
+    qr->setTexturePtr(mResizeGripTexture);
   }
-
+  
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
   qr->reset();
@@ -161,21 +196,23 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   corners.right=dim.x+dim.z;
   corners.bottom=dim.y+dim.w;
 
+  qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
 
   if (active){
-    qr->setMaterialName(mnTitleBar+".active");
+    qr->setTexturePtr(mTitleBarActiveTexture);
   }
   else{
-    qr->setMaterialName(mnTitleBar);
+    qr->setTexturePtr(mTitleBarTexture);
   }
-
+  
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
 
   // false = no wordwrap
   ColourValue cv(8.0f, 0.2f, 0.4f);
-  qr->drawText(titleFont, cv, caption, corners, false);
+  corners.left+=5;
+  qr->drawText(titleFont, cv, caption, corners, false, VAT_CENTER, HAT_LEFT);
 
   qr->reset();
 }
@@ -186,28 +223,38 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
   * \param caption The rendered text
   * \param win     The parent window
+  * \param active  Is the mouse over this push button ?
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win ){
+drawPushButton(QuadRenderer* qr, Vector4 dim, 
+	       String caption, Window* win, bool active ){
+
   Rectangle corners;
+  corners.left  = dim.x+win->getLeft();
+  corners.top   = dim.y+win->getTop();
+  corners.right = dim.x+dim.z+win->getLeft();
+  corners.bottom= dim.y+dim.w+win->getTop();
 
-  corners.left  = dim.x+win->getX();
-  corners.top   = dim.y+win->getY();
-  corners.right = dim.x+dim.z+win->getX();
-  corners.bottom= dim.y+dim.w+win->getY();
+  Rectangle scissor=win->getCorners();
 
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->setScissorRectangle(scissor);
 
-  qr->setMaterialName(mnWindow);
+  if (active){
+    qr->setTexturePtr(mPushButtonActiveTexture);
+  }
+  else{
+    qr->setTexturePtr(mPushButtonTexture);
+  }
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
+
+  // false = no wordwrap
+  ColourValue cv(4.0f, 0.2f, 0.8f);
+  qr->drawText(buttonFont, cv, caption, corners, false, VAT_CENTER, HAT_CENTER);
   qr->reset();
-
-
-  //  this->createCaption(name+"c", dim, caption, 
-  //	      fnPushButton, fsPushButton,win->getOverLayContainer());
-
-
 }
 
 /** Graphically create a TextInput widget
@@ -220,7 +267,7 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, Window* win ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 createTextInput(String name, Vector4 dim, String caption, Window* parent){
-
+  /*
   this->createOverlay(name, dim, mnTextInput, parent->getOverLayContainer());
 
   // vertically center the caption
@@ -230,7 +277,7 @@ createTextInput(String name, Vector4 dim, String caption, Window* parent){
 
   this->createCaption(name+"c", dim, caption, 
 	      fnCaption, fsCaption, parent->getOverLayContainer());
-
+  */
 }
 
 /** Graphically create a Label widget
@@ -243,6 +290,7 @@ createTextInput(String name, Vector4 dim, String caption, Window* parent){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 createLabel(String name, Vector4 dim, String caption, Window* parent){
+  /*
   // vertically center the caption
   unsigned int dev=((dim.w-fsCaption)/2)+2;
   dim.x+=dev;
@@ -251,6 +299,7 @@ createLabel(String name, Vector4 dim, String caption, Window* parent){
   this->createCaption(name, dim, caption, 
 	      fnCaption, fsCaption, parent->getOverLayContainer());
 
+  */
 }
 
 /** Create a window with a border
@@ -290,13 +339,13 @@ createDialog(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
   e->setBottomRightBorderUV (0.9961, 0.0039, 1.0000, 0.0000);
 
   // If material name is empty, no material is applied
-  String materialName=mnWindow;
+  /*  String materialName=mnWindow;
 
   if (!materialName.empty()){
     e->setMaterialName(materialName);
     setTransparency(e, 0.0);
   }
-
+  */
   // Add it and show it
   bg->getDialogOverlay()->add2D(e);
   e->show();
@@ -312,6 +361,7 @@ createDialog(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
 void RainbruRPG::OgreGui::soBetaGui::
 createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
 
+  /*
   LOGI("Creating a VerticalScrollbar");
   OverlayContainer* oc =parent->getOverLayContainer();
 
@@ -338,4 +388,6 @@ createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
   // Creates the cursor
   dim.y-=(14*2)+bodyMidHeight;
   this->createOverlay(name+"c", dim, "bgui.vscrollbar.cursor", oc);
+
+  */
 }

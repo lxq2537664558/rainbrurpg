@@ -35,7 +35,7 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
   length(L),
   masked(false)
 {
-  
+  /*  
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
     +StringConverter::toString(parent->getGUI()->getUniqueId());
@@ -52,7 +52,7 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
     normalMaterialName=frameOverlay->getMaterialName();
     activeMaterialName=normalMaterialName+".active";
   }
-
+  */
 }
 
 /** An empty destructor
@@ -91,7 +91,7 @@ void BetaGUI::TextInput::setValue(const Ogre::String& v){
   }
 }
 
-/** Is a square in this widget
+/** Is a point in this widget
   *
   * \param mx The X position of the mouse
   * \param my The Y position of the mouse
@@ -103,7 +103,8 @@ void BetaGUI::TextInput::setValue(const Ogre::String& v){
   *
   */
 bool BetaGUI::TextInput::in(unsigned int mx,unsigned int my,unsigned int px,unsigned int py){
-  return(!(mx>=x+px&&my>=y+py))||(!(mx<=x+px+width&&my<=y+py+height));
+  return(!(mx>=corners.left+px&&my>=corners.top+py))||
+    (!(mx<=corners.right+px&&my<=corners.bottom+py));
 }
 
 /** Get the amount of text accepted by this text input

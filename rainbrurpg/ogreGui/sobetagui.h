@@ -30,7 +30,8 @@
 
 #include "skinoverlay.h"
 
-#include <OGRE/OgreVector4.h>
+#include <OgreVector4.h>
+#include <OgreTexture.h>
 
 
 // Forward declarations
@@ -54,9 +55,10 @@ namespace RainbruRPG{
     class soBetaGui : public SkinOverlay{
     public:
       soBetaGui();
+      ~soBetaGui();
 
-      virtual void drawWindow(QuadRenderer*, Vector4, String);
-      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*);
+      virtual void drawWindow(QuadRenderer*, Rectangle, String);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
 
@@ -67,8 +69,6 @@ namespace RainbruRPG{
 
     private:
       // ============= MATERIALS VALUES =================
-      /** The window's material name */
-      Ogre::String mnWindow;
       /** The text input's material name */
       Ogre::String mnTextInput;
       /** The dialog border material name */
@@ -88,6 +88,27 @@ namespace RainbruRPG{
 
       /** The font used in window's titlebar */
       Font* titleFont;
+      /** The font used in PushButtons */
+      Font* buttonFont;
+
+      /** The texture of the window background */
+      TexturePtr mWindowTexture;
+
+      /** The texture of the titlebar background */
+      TexturePtr mTitleBarTexture;
+      /** The texture of the active titlebar background */
+      TexturePtr mTitleBarActiveTexture;
+
+      /** The texture of the resizegrip background */
+      TexturePtr mResizeGripTexture;
+      /** The texture of the active resizegrip background */
+      TexturePtr mResizeGripActiveTexture;
+
+      /** The texture of the push button background */
+      TexturePtr mPushButtonTexture;
+      /** The texture of the active push button background */
+      TexturePtr mPushButtonActiveTexture;
+
     };
 
   }

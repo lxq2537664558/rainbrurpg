@@ -9,6 +9,8 @@ datafiles_DATA= bgui.button.active.png     		\
 		bgui.window.resize.active.png   	\
 		old_bgui.window.png      		\
 		bgui.pointer.png                	\
+		bgui.pointer.move.png                	\
+		bgui.pointer.resize.png                	\
 		bgui.window.resize.png          	\
 		sample.fontdef      			\
 		bgui.textinput.active.png       	\

@@ -11,6 +11,7 @@ h_sources= bgbutton.h			\
 	   font.h			\
 	   fontmanager.h		\
 	   glyph.h			\
+	   guivertex.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
@@ -27,6 +28,7 @@ h_sources= bgbutton.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
 	   titlebar.h			\
+	   vector3.h			\
 	   widget.h
 
 
@@ -38,6 +40,7 @@ cc_sources= bgbutton.cpp		\
 	    font.cpp			\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
+	    guivertex.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
@@ -54,6 +57,7 @@ cc_sources= bgbutton.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\
 	    titlebar.cpp		\
+	    vector3.cpp			\
 	    widget.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)

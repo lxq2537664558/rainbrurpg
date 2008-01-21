@@ -1,6 +1,7 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
+- A bug when moving window (movingDevX and movingDevY are spurious)
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
 
@@ -115,8 +116,42 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-166
+- (18) Widget move and resize implementation   
+   Already implemented in Window
+- skin::drawpushbutton uses corner
+- widget's corners implementation
+- MouseCursor disappear if coordonates < 0  FIXED
+- MouseCursor handles moving window
+- Trying text rendering with 2 TextureUnitState FAILED
+- Draw again the text without cub in window alpha
+   o Testing in QuadRenderer::drawText()
+- Fix the Window global alpha bug OK
+- When switching to network game (SEGFAULT) FIXED
+- Trying to solve a segfault
+   A lot of work for making it work. It is due to mBatchPointer which
+   should lock the HarwareVertexBuffer but in QuadRenderer::addGlyph, 
+   sometimes HarwareVertexBuffer is not locked.
+- GuiVertex class implementation
+- Vector3 implementation
+- Deleting Window::rootOverlay
+- QuadRenderer::drawText() take alignment parameters
+   Font::renderAligned() LineInfoList take aligment parameters
+- Drawing PushButton
+- SkinOverlay::drawPushButton() now take a bool active argument
+- Remove QuadRenderer::setMaterialName()
+   o Uniquely use QuadRenderer::setTexturePtr
+- In QuadRenderer::addGlyph(), setting an assertion on the verts
+   pointer
+
 * v 0.0.5-165
-- (16) Mouse pointer is more grey than white
+- Window posision cannot be negative
+- We should deactivate all window's titlebar but the first when one is
+   activated
+- GUI should handles mouse injection from foreground to background
+   windows using reverse iterator (rbegin() and rend())
+- Makes the window in foreground if selected
+- Mouse pointer is more grey than white
 - Makes the mouse cursor always in foreground
    It passes under windows
    Mouse cursor is an ogre overlay

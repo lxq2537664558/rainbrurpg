@@ -44,6 +44,7 @@ namespace RainbruRPG{
 using namespace Ogre;
 using namespace RainbruRPG::OgreGui;
 
+#include "quadrenderer.h"
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -51,7 +52,7 @@ namespace RainbruRPG{
     /** Draws a single image
       *
       * This widget does not use any Skin. It directly use QuadRenderer
-      * to draw an Ogre texture.
+      * to draw an Ogre texture. It has its own blend mode.
       *
       * \note This widget was created for gsMenuBase dybamic background menu.
       *
@@ -69,12 +70,18 @@ namespace RainbruRPG{
       void setPosition(int, int);
       void resize(int, int);
 
+      void setAlphaMode(tQuadRendererBlendMode);
+      tQuadRendererBlendMode getAlphaMode(void) const;
+
     private:
       /** The name of the texture to draw */
       std::string textureName;
 
       /** The Ogre texture used to draw the image */
       TexturePtr texture;
+
+      /** The blend mode use by this image */
+      tQuadRendererBlendMode alphaMode;
     };
 
   }

@@ -41,7 +41,7 @@ namespace BetaGUI {
 	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
     virtual ~Button();
     
-    void activate(bool);
+    virtual void activate(bool);
     bool in( unsigned int, unsigned int, unsigned int, unsigned int );
     Callback getCallback(void);
     

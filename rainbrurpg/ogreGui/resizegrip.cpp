@@ -65,10 +65,10 @@ RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
   */
 void RainbruRPG::OgreGui::ResizeGrip::draw(QuadRenderer* qr){
   SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  int px=this->parent->getX()+x;
-  int py=this->parent->getY()+y;
+  int px=this->parent->getLeft()+corners.left;
+  int py=this->parent->getTop()+corners.top;
 
-  Vector4 dim(px, py, width, height);
+  Vector4 dim(px, py, getWidth(), getHeight());
   qr->setAlpha( this->alpha );
   sk->drawResizeGrip(qr, dim, this->active);
 }

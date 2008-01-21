@@ -38,26 +38,19 @@
 RainbruRPG::OgreGui::PushButton::
 PushButton(Vector4 dim, String caption, Callback c, Window* parent, 
 	   OgreGuiSkinID sid): 
-  BetaGUI::Button(dim, "", caption, c, parent, sid)
+  BetaGUI::Button(dim, "", caption, c, parent, sid),
+  mSkin(NULL)
 {
 
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  /*  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"b"
-    +StringConverter::toString(parent->getGUI()->getUniqueId());
+  mSkin=SkinManager::getSingleton().getSkin(this);
 
-  this->setName(uniqueName);
-
-  //  sk->createPushButton(uniqueName, dim, caption, parent);
-  mO=sk->getOverlayByName(uniqueName);
-  mCP=sk->getOverlayByName(uniqueName+"c");
-  */
 }
 
 /** The destructor
   *
   */
 RainbruRPG::OgreGui::PushButton::~PushButton(){
-
+  mSkin=NULL;
 }
 
 /** Draws the resize grip
@@ -66,5 +59,8 @@ RainbruRPG::OgreGui::PushButton::~PushButton(){
   *
   */
 void RainbruRPG::OgreGui::PushButton::draw(QuadRenderer* qr){
+  Vector4 dim(corners.left, corners.top, getWidth(), getHeight());
+  Window* parent=static_cast<Window*>(this->parent);
 
+  mSkin->drawPushButton(qr, dim, mCaption, parent, active);
 }

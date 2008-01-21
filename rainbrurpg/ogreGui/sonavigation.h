@@ -30,11 +30,13 @@
 
 #include "skinoverlay.h"
 
-#include <OGRE/OgreVector4.h>
+#include <OgreVector4.h>
+#include <OgreTexture.h>
 
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
+    class Font;
     class QuadRenderer;
   }
 }
@@ -58,8 +60,8 @@ namespace RainbruRPG{
     public:
       soNavigation();
 
-      virtual void drawWindow(QuadRenderer*,Vector4, String);
-      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*);
+      virtual void drawWindow(QuadRenderer*,Rectangle, String);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
 
@@ -69,13 +71,14 @@ namespace RainbruRPG{
       virtual void createVerticalScrollbar(const String&, Vector4, Window*);
 
     private:
-      /** The material name used to draw windows */
-      Ogre::String mnWindow;
-      /** The font name used to draw the PushButton */
-      Ogre::String fnPushButton;
-      /** The font size used to draw the PushButton */
-      unsigned int fsPushButton;
-  };
+      /** The font used in PushButtons */
+      OgreGui::Font* buttonFont;
+
+      /** The texture of the push button background */
+      TexturePtr mPushButtonTexture;
+      /** The texture of the active push button background */
+      TexturePtr mPushButtonActiveTexture;
+    };
   }
 }
 #endif // _OGRE_GUI_SKIN_OVERLAY_NAVIGATION_H_

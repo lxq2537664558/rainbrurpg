@@ -51,12 +51,6 @@ Glyph(const Ogre::Rectangle& vRect,float vOffsetX,float vOffsetY,
   if (vRect.bottom-vRect.top==0){
     LOGW("Constructing a glyph with NULL height");
   }
-
-  if (vOffsetY!=0){
-    LOGCATS("vOffsetY=");
-    LOGCATI(vOffsetY);
-    LOGCAT();
-  }
 }
 
 /** The default constructor

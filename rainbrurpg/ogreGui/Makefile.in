@@ -61,12 +61,12 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
-	bgwindow.lo font.lo fontmanager.lo glyph.lo label.lo \
-	lineinfo.lo mousepointer.lo object.lo pushbutton.lo \
+	bgwindow.lo font.lo fontmanager.lo glyph.lo guivertex.lo \
+	label.lo lineinfo.lo mousepointer.lo object.lo pushbutton.lo \
 	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
 	scrollbar.lo scrollpane.lo skinmanager.lo skinoverlay.lo \
 	sobetagui.lo sonavigation.lo staticimage.lo titlebar.lo \
-	widget.lo
+	vector3.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -244,6 +244,7 @@ h_sources = bgbutton.h			\
 	   font.h			\
 	   fontmanager.h		\
 	   glyph.h			\
+	   guivertex.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
@@ -260,6 +261,7 @@ h_sources = bgbutton.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
 	   titlebar.h			\
+	   vector3.h			\
 	   widget.h
 
 cc_sources = bgbutton.cpp		\
@@ -270,6 +272,7 @@ cc_sources = bgbutton.cpp		\
 	    font.cpp			\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
+	    guivertex.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
@@ -286,6 +289,7 @@ cc_sources = bgbutton.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\
 	    titlebar.cpp		\
+	    vector3.cpp			\
 	    widget.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
@@ -382,6 +386,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fontmanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glyph.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/guivertex.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
@@ -398,6 +403,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sonavigation.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/staticimage.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/titlebar.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vector3.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Plo@am__quote@
 
 .cpp.o:

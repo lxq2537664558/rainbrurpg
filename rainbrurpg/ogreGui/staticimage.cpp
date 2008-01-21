@@ -38,7 +38,8 @@
 RainbruRPG::OgreGui::StaticImage::
 StaticImage(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   Widget(dim, parent, sid),
-  texture(NULL)
+  texture(NULL),
+  alphaMode(QBM_NONE)
 {
 
 }
@@ -56,15 +57,11 @@ RainbruRPG::OgreGui::StaticImage::~StaticImage(){
   *
   */
 void RainbruRPG::OgreGui::StaticImage::draw(QuadRenderer* qr){
+  qr->setBlendMode(alphaMode);
   qr->setTexturePtr(texture);
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  Ogre::Rectangle r;
-  r.top=y;
-  r.left=x;
-  r.right=x+width;
-  r.bottom=y+height;
   qr->setAlpha(1.0f);
-  qr->drawRectangle(r);
+  qr->drawRectangle(corners);
   qr->reset();
 }
 
@@ -98,21 +95,46 @@ getTextureName(void)const{
 
 /** Moves the object
   *
-  * \param vX, vY The new position
+  * \param vX, vY The new position in pixels
   *
   */
 void RainbruRPG::OgreGui::StaticImage::setPosition(int vX, int vY){
-  this->x=vX;
-  this->y=vY;
+  // e must remain height and width
+  int width=getWidth();
+  int height=getHeight();
+
+  corners.left=vX;
+  corners.top =vY;
+  corners.right=vX+width;
+  corners.bottom=vY+height;
+
 }
 
 /** Resize the object
   *
-  * \param vW, vH The new position
+  * \param vW, vH The new sizes in pixels
   *
   */
 void RainbruRPG::OgreGui::StaticImage::resize(int vW, int vH){
-  this->width=vW;
-  this->height=vH;
+  corners.right=corners.left+vW;
+  corners.bottom=corners.top+vH;
+}
 
+/** Set the alpha mode of this image
+  *
+  * \param bm The new blend mode
+  *
+  */
+void RainbruRPG::OgreGui::StaticImage::setAlphaMode(tQuadRendererBlendMode bm){
+  alphaMode=bm;
+}
+
+/** Get the alpha mode of this image
+  *
+  * \return The blend mode
+  *
+  */
+tQuadRendererBlendMode RainbruRPG::OgreGui::StaticImage::
+getAlphaMode(void) const{
+  return alphaMode;
 }

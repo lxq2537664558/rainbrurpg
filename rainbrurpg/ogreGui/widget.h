@@ -21,6 +21,9 @@
  */
 
 /* Modifications :
+ * - 19 jan 2008 : getCorners implementation
+ *                 getX, getY renamed getTop, getLeft
+ *                 get* qualified const
  * - 21 nov 2007 : Adding injectMouse() function
  * - 09 nov 2007 : parent and getParent() added
  *                 Defaut value of OgreGuiSkinID in constructor is 
@@ -36,6 +39,7 @@
 #include "object.h"
 
 #include <OgreVector4.h>
+#include <OgreRectangle.h>
 
 // Forward declaration
 namespace RainbruRPG{
@@ -77,15 +81,21 @@ namespace RainbruRPG{
 
       virtual bool injectMouse(unsigned int, unsigned int, bool);
 
-      void setX(int);
-      void setY(int);
+      void setLeft(int);
+      void setTop(int);
       void setWidth(int);
       void setHeight(int);
 
-      int getX(void);
-      int getY(void);
-      int getWidth(void);
-      int getHeight(void);
+      int getLeft(void) const;
+      int getTop(void) const;
+      int getWidth(void) const;
+      int getHeight(void) const;
+
+      virtual void resize(int, int);
+      virtual void move(int, int);
+
+
+      const Rectangle& getCorners(void) const;
 
       /** Draws the widget
         *
@@ -126,21 +136,11 @@ namespace RainbruRPG{
       /** The overlay used to draw all widgets */
       Ogre::OverlayContainer* frameOverlay;
 
-      /** The X position of this widget */
-      int x;
-      
-      /** The Y position of this widget */
-      int y;
-      
-      /** The width position of this widget */
-      int width;
-      
-      /** The height position of this widget */
-      int height;
-
       /** The transparency of this widget */
       double alpha;
 
+      /** The corners of this widget (in pixels) */
+      Rectangle corners;
     };
   }
 }

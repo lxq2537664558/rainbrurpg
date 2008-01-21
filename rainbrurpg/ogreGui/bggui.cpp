@@ -126,9 +126,14 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
   else{
     resizedWindow=NULL;
     movedWindow=NULL;
-  
-    for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
+
+    WindowListReverseIterator iter;
+    for( iter=windowList.rbegin(); iter!=windowList.rend(); iter++){
       if((*iter)->check(x,y,LMB)){
+	deactivateAllOtherWindow((*iter));
+	if (LMB){
+	  moveWindowToForeGround((*iter));
+	}
 	return true;
       }
     }
@@ -411,4 +416,50 @@ void BetaGUI::GUI::addWindowBeforeOverlays(Window* w){
   */
 void BetaGUI::GUI::drawMouseCursor(){
   mousePointer->draw(mQuadRenderer);
+}
+
+/** Move a window to the foreground
+  *
+  * This function is used by injectMouse() when a window is selected. The
+  * window will be on top level.
+  *
+  */
+void BetaGUI::GUI::moveWindowToForeGround(Window* w){
+  // Get the actual first window
+  WindowListIterator iter=windowList.end();
+
+  // If the window isn't the first of the list
+  if ((*iter)!=w){
+    // Remove the window then prepend it
+    windowList.remove(w);
+    windowList.push_back(w);
+  }
+}
+
+/** Deactivate all other windows but the one passed in parameter
+  *
+  * This function is used from the injectMouse() one to prevent
+  * two active titlebar to be drawn.
+  *
+  * \param win The window that must stay active
+  *
+  */
+void BetaGUI::GUI::deactivateAllOtherWindow(Window* win){
+  WindowListIterator iter;
+  for(iter=windowList.begin();iter!=windowList.end();iter++){
+    if ((*iter)!=win){
+      (*iter)->deactivate();
+    }
+  }
+}
+
+/** Get the current mouse pointer
+  *
+  * Mainly used to change its state during resize or moving window.
+  *
+  * \return The mouse pointer
+  *
+  */
+MousePointer* BetaGUI::GUI::getMousePointer(void){
+  return mousePointer;
 }
