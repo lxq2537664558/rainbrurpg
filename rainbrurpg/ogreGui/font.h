@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 24 jan 2007 : Removing Pass related statements due to new etxt renderer
  * - 03 dec 2007 : starting implementation
  *         
  */
@@ -33,7 +34,6 @@
 #include <OgrePrerequisites.h>
 #include <OgreColourValue.h>
 #include <OgreRectangle.h>
-#include <OgreMaterial.h>
 #include <OgreTexture.h>
 
 #include "glyph.h"
@@ -50,32 +50,32 @@ namespace RainbruRPG {
 }
 //End of forward declarations
 
-/** A vector of LineInfo use to chaching rendering */
-typedef std::vector<LineInfo> LineInfoList;
-/** A stl map of glyths */
-typedef std::map<size_t, Glyph*> GlyphMap;
-
-/** The vertical alignment of a text
-  *
-  */
-typedef enum VerticalAlignType{
-  VAT_TOP,    //!< The text is vertically aligned to the top
-  VAT_BOTTOM, //!< The text is vertically aligned to the bottom
-  VAT_CENTER  //!< The text is vertically centered
-};
-
-/** The horizontal alignment of a text
-  *
-  */
-typedef enum HorizontalAlignType{
-  HAT_LEFT,   // The text is horizontaly aligned to the left
-  HAT_RIGHT,  // The text is horizontaly aligned to the right
-  HAT_CENTER  // The text is horizontaly centered
-};
-
 
 namespace RainbruRPG{
   namespace OgreGui{
+
+    /** A vector of LineInfo use to chaching rendering */
+    typedef std::vector<LineInfo> LineInfoList;
+    /** A stl map of glyths */
+    typedef std::map<size_t, Glyph*> GlyphMap;
+
+    /** The vertical alignment of a text
+      *
+      */
+    typedef enum VerticalAlignType{
+      VAT_TOP,    //!< The text is vertically aligned to the top
+      VAT_BOTTOM, //!< The text is vertically aligned to the bottom
+      VAT_CENTER  //!< The text is vertically centered
+    };
+
+    /** The horizontal alignment of a text
+      *
+      */
+    typedef enum HorizontalAlignType{
+      HAT_LEFT,   // The text is horizontaly aligned to the left
+      HAT_RIGHT,  // The text is horizontaly aligned to the right
+      HAT_CENTER  // The text is horizontaly centered
+    };
 
     /** A font used with QuadRenderer
       * 
@@ -105,9 +105,6 @@ namespace RainbruRPG{
       void setTextureName(const String&);
       const String& getTextureName(void)const;
 
-      MaterialPtr getMaterial(void);
-      Pass* getPass(void);
-
       void renderAligned( QuadRenderer*, const std::string&, 
 			  const ColourValue&, const Rectangle&, bool,
 			  VerticalAlignType, HorizontalAlignType);
@@ -136,32 +133,27 @@ namespace RainbruRPG{
     private:
       /** The font name */
       Ogre::String mName;
+
       /** The font size */
       unsigned int mSize;
+
       /** A pointer to the font's texture */
       TexturePtr mTexture;
+
       /** The maximum height of a glyph */
       size_t mMaxGlyphHeight;
+
       /** A STL map iof glyphs */
       GlyphMap mGlyphMap;
+
       /** \todo documentation ?? */
       int mMaxBearingY;
+
       /** The texture name */
       Ogre::String mTextureName;
-      /** A material created in constructor to allow the use
-        * of Ogre::Renderer::_setPass().
-	*
-	* \todo When switching to Ogre 1.4, using Ogre::Renderer::_setTexture()
-	*       instead of Ogre::Renderer::_setPass().
-	*
-	*/
-      MaterialPtr material;
 
       /** A list of LineInfo use to chaching rendering */
       LineInfoList mLineList;
-
-      /** The pass used to draw this font */
-      Pass* mPass;
     };
   }
 }

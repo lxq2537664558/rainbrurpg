@@ -166,42 +166,6 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption,
   qr->reset();
 }
 
-/** Graphically create a TextInput widget
-  *
-  * \warning This widget is not supported by this skin. Nothing will
-  *          be displayed if you use this skin in a window containing
-  *          a TextInput.
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param caption The rendered text
-  * \param parent  The parent window
-  *
-  */
-void RainbruRPG::OgreGui::soNavigation::
-createTextInput(String name, Vector4 dim, String caption, Window* parent){
-  LOGW("soNavigation cannot create TextInput");
-
-}
-
-/** Graphically create a Label widget
-  *
-  * \warning This widget is not supported by this skin. Nothing will
-  *          be displayed if you use this skin in a window containing
-  *          a Label.
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param caption The rendered text
-  * \param parent  The parent window
-  *
-  */
-void RainbruRPG::OgreGui::soNavigation::
-createLabel(String name, Vector4 dim, String caption, Window* parent){
-  LOGW("soNavigation cannot create Label");
-
-}
-
 /** Creates a vertical scrollbar
   *
   * \warning This widget is not supported by this skin. Nothing will
@@ -217,5 +181,43 @@ createLabel(String name, Vector4 dim, String caption, Window* parent){
 void RainbruRPG::OgreGui::soNavigation::
 createVerticalScrollbar(const String& name, Vector4 dim, Window* parent){
   LOGW("soNavigation cannot create VerticalScrollbar");
+
+}
+
+/** Draws a Label widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a Label.
+  *
+  * \param qr       The QuadRenderer used to draw
+  * \param dim      The widget's dimension in pixels in a 
+  *                 Ogre::Rectangle object
+  * \param caption  The rendered text
+  * \param parent   The parent window
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawLabel(QuadRenderer* qr, Rectangle dim, String caption, Window* parent){
+  LOGW("soNavigation cannot create Label");
+
+}
+
+/** Graphically create a TextInput widget
+  *
+  * \param qr       The QuadRenderer used to draw
+  * \param dim      The widget's dimension in pixels in a 
+  *                 Ogre::Rectangle object
+  * \param caption  The rendered text
+  * \param win      The parent window
+  * \param active   Is the mouse over this push button ?
+  * \param selStart The selection start
+  * \param selEnd   The selection end
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawTextInput(QuadRenderer* qr, Ogre::Rectangle dim, String caption, 
+	      Window* win, bool active, int selStart, int selEnd){
+  LOGW("soNavigation cannot create TextInput");
 
 }

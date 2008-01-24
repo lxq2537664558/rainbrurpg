@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 21 jan 2008 : Removing Overlay and Material related var and functions
  * - 20 nov 2007 : setMasked(bool) implementation
  * - 09 nov 2007 : Handling OgreSkinID in constructor
  *
@@ -29,6 +30,7 @@ namespace BetaGUI {
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
+    class SkinOverlay;
   }
 }
 // End of Forward declaration
@@ -57,12 +59,6 @@ namespace BetaGUI {
     bool in(unsigned int, unsigned int, unsigned int, unsigned int);
     
     unsigned int getLength(void);
-  
-    OverlayContainer* getContentOverlay(void);
-    OverlayContainer* getFrameOverlay(void);
-
-    const String& getNormalMaterialName(void);
-    const String& getActiveMaterialName(void);
 
     virtual void setTransparency(float);
 
@@ -71,37 +67,20 @@ namespace BetaGUI {
 
     virtual void draw(QuadRenderer*);
 
+    void activate(void);
+    void deactivate(void);
+
  protected: 
-    
-    /** The overlay used to draw the frame
-      *
-      *
-      */
-    OverlayContainer* frameOverlay;
-    
-    /** The overlay used to draw content
-      *
-      *
-      */
-    OverlayContainer* contentOverlay;
-    
-    /** The material name used to draw the text input (normal state)
-      *
-      */
-    String normalMaterialName;
-    
-    /** The material name used to draw the text input when active
-      *
-      * It is usually mmn+".active"
-      *
-      */
-    String activeMaterialName;
+    void computeMaskedValue(void);    
 
     /** The current contained text
       *
       */
     String value;
     
+    /** The masked value */
+    String maskedValue;
+
     /** The max length of text that can be entered
       *
       */
@@ -113,6 +92,19 @@ namespace BetaGUI {
       *
       */
     bool masked;
+
+    /** Is this text input active
+      *
+      * An active text input has the keyboard focus and can be written.
+      *
+      */
+    bool active;
+
+    /** The current skin */
+    SkinOverlay* mSkin;
+
+    /** This label parent */
+    Window* mParentWindow;
   };
 }
 

@@ -366,6 +366,8 @@ double RainbruRPG::OgreGui::QuadRenderer::yPixelToNative(int i)const{
   */
 void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
   alphaValue=a;
+  mColor.a=alphaValue;
+
 }
 
 /** Reset the renderer
@@ -407,48 +409,24 @@ drawText(Font* font, const ColourValue& vColor, const string& text,
 	 const Rectangle& rect, bool wordwrap, VerticalAlignType vVertAlign, 
 	 HorizontalAlignType vHorzAlign){
 
-  Pass* p=font->getPass();
-
-  // Set text color
-  p->getTextureUnitState(0)
-    ->setColourOperationEx(LBX_MODULATE, LBS_TEXTURE, LBS_MANUAL, 
- 			   ColourValue::White, vColor,  0.0);
- // Set the text alpha value
-  p->getTextureUnitState(0)->setAlphaOperation(LBX_MODULATE, 
-					       LBS_TEXTURE, LBS_MANUAL,
-					       alphaValue, alphaValue,0.0f);
- //  begin();
   beginGlyphs();
-  
-  mSceneManager->_setPass(p);
+
+  mRenderSystem->_setTexture(0, true, font->getTexture());
+  setColor(vColor);
+
 
   font->renderAligned( this, text, vColor, rect, wordwrap, vVertAlign,
 		       vHorzAlign );
 
   endGlyphs( );
   
-
-  // Restore default value to get a global alpha effect
-  /** This line avoid a whole screen colored in red */
-  p->getTextureUnitState(0)
-    ->setColourOperationEx(LBX_MODULATE, LBS_TEXTURE, LBS_MANUAL, 
-			   ColourValue::White, ColourValue::White, 0.0);
-  mSceneManager->_setPass(p);
-  
-  /** restore global alpha effect */
-  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
-
 }
 
 /** Begin to draw text
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
-  // Set the alpha blending active
-  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
-
+  setBlendMode(QBM_ALPHA);
 
   if ( mBatchPointer == NULL ){
     try{
@@ -704,11 +682,19 @@ void RainbruRPG::OgreGui::QuadRenderer::disableScissor(void){
 
 /** Set the color value used for each vertex
   *
+  * The global transparency value will always be apllied to
+  * the resulting color
+  * 
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::mColor "mColor" (member),
+  *     \ref RainbruRPG::OgreGui::QuadRenderer::alphaValue "alphaValue" 
+  *     (member)
+  *
   * \param cv A Ogre color value object
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::setColor(const ColourValue& cv){
   mColor=cv;
+  mColor.a=alphaValue;
 }
 
 /** Change the current texture pointer
@@ -748,14 +734,14 @@ setScissorRectangle(const Rectangle& vRect){
 void RainbruRPG::OgreGui::QuadRenderer::
 setBlendMode(tQuadRendererBlendMode vMode){
 
-    Ogre::LayerBlendModeEx defaultLBM;
-    defaultLBM.blendType=LBT_ALPHA;
-    defaultLBM.operation=LBX_MODULATE;
-    defaultLBM.source1=LBS_TEXTURE;
-    defaultLBM.source2=LBS_CURRENT;
-    defaultLBM.alphaArg1=alphaValue;
-    defaultLBM.alphaArg2=alphaValue;
-    defaultLBM.factor=alphaValue;
+  Ogre::LayerBlendModeEx defaultLBM;
+  defaultLBM.blendType=LBT_ALPHA;
+  defaultLBM.operation=LBX_MODULATE;
+  defaultLBM.source1=LBS_TEXTURE;
+  defaultLBM.source2=LBS_CURRENT;
+  defaultLBM.alphaArg1=alphaValue;
+  defaultLBM.alphaArg2=alphaValue;
+  defaultLBM.factor=alphaValue;
  
 
   switch ( vMode ){

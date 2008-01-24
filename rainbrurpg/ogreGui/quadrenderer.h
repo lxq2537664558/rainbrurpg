@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 24 jan 2008 : New text renderer implementation using _setTexture()
+ *                 instead of _setPass()
  * - 14 jan 2008 : setMaterialName() function removed
  * - 12 jan 2008 : BlendMode implementation
  * - 11 jan 2008 : drawText() take a wordwrap parameter

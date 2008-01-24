@@ -77,7 +77,7 @@ void RainbruRPG::Core::Version::logVersion(){
 
 
 
-  m="Copyright (C) 2006 Jerome PASQUIER";
+  m="Copyright (C) 2006-2008 Jerome PASQUIER";
   Logger::getSingleton().logMessage(m.c_str());
   
   m="RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,";

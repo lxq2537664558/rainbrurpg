@@ -61,6 +61,12 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
   buttonFont=FontManager::getSingleton().getFont("Iconiv2.ttf", 12);
 
+  labelColor=ColourValue(1.0f, 1.0f, 1.0f);
+  labelFont = FontManager::getSingleton().getFont("Iconiv2.ttf", 10);
+
+  textInputColor=ColourValue(1.0f, 1.0f, 1.0f, 1.0f);
+  textInputFont = FontManager::getSingleton().getFont("Iconiv2.ttf", 10);
+
   // Initialize textures
   mWindowTexture=TextureManager::getSingleton()
     .load("bgui.window.png",ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
@@ -91,6 +97,14 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
     .load("bgui.button.active.png",
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+  mTextInputTexture=TextureManager::getSingleton()
+    .load("bgui.textinput.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mTextInputActiveTexture=TextureManager::getSingleton()
+   .load("bgui.textinput.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
 }
 
 /** The destructor
@@ -118,6 +132,14 @@ RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
   TextureManager::getSingleton().unload("bgui.button.active.png");
   mPushButtonActiveTexture.setNull();
 
+  TextureManager::getSingleton().unload("bgui.textinput.png");
+  mTextInputTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.textinput.active.png");
+  mTextInputActiveTexture.setNull();
+
+  textInputFont=NULL;
+
 }
 
 /** Create a window using the BetaGUI skin
@@ -130,7 +152,7 @@ RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
   *       macros in fontmanager.h for further informations.
   *
   * \param qr      The QuaRdRenderer used to draw
-  * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
+  * \param corners The window's dimension in pixels in a Ogre::Rectangle object
   * \param caption The title bar caption
   *
   */
@@ -159,7 +181,6 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   corners.top =dim.y;
   corners.right=dim.x+dim.z;
   corners.bottom=dim.y+dim.w;
-
 
   qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
@@ -257,51 +278,6 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
   qr->reset();
 }
 
-/** Graphically create a TextInput widget
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param caption The rendered text
-  * \param parent  The parent window
-  *
-  */
-void RainbruRPG::OgreGui::soBetaGui::
-createTextInput(String name, Vector4 dim, String caption, Window* parent){
-  /*
-  this->createOverlay(name, dim, mnTextInput, parent->getOverLayContainer());
-
-  // vertically center the caption
-  unsigned int dev=((dim.w-fsCaption)/2)+2;
-  dim.x+=dev;
-  dim.y+=dev;
-
-  this->createCaption(name+"c", dim, caption, 
-	      fnCaption, fsCaption, parent->getOverLayContainer());
-  */
-}
-
-/** Graphically create a Label widget
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param caption The rendered text
-  * \param parent  The parent window
-  *
-  */
-void RainbruRPG::OgreGui::soBetaGui::
-createLabel(String name, Vector4 dim, String caption, Window* parent){
-  /*
-  // vertically center the caption
-  unsigned int dev=((dim.w-fsCaption)/2)+2;
-  dim.x+=dev;
-  dim.y+=dev;
-
-  this->createCaption(name, dim, caption, 
-	      fnCaption, fsCaption, parent->getOverLayContainer());
-
-  */
-}
-
 /** Create a window with a border
   *
   * It creates an overlay with a material named mnWindow.
@@ -390,4 +366,66 @@ createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
   this->createOverlay(name+"c", dim, "bgui.vscrollbar.cursor", oc);
 
   */
+}
+
+void RainbruRPG::OgreGui::soBetaGui::
+drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
+	  Window* parent){
+
+  corners.left  += parent->getLeft();
+  corners.top   += parent->getTop();
+  corners.right += parent->getLeft();
+  corners.bottom+= parent->getTop();
+
+  qr->drawText(labelFont, labelColor, caption, corners, false, 
+	       VAT_TOP, HAT_LEFT);
+  qr->reset();
+}
+
+/** Draws a TextInput widget
+  *
+  * \warning This widget is not supported by this skin. Nothing will
+  *          be displayed if you use this skin in a window containing
+  *          a TextInput.
+  *
+  * \param qr       The QuadRenderer used to draw
+  * \param corners  The widget's dimension in pixels in a 
+  *                 Ogre::Rectangle object
+  * \param caption  The rendered text
+  * \param win      The parent window
+  * \param vActive  Is the mouse over this push button ?
+  * \param selStart The selection start
+  * \param selEnd   The selection end
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+drawTextInput(QuadRenderer* qr, Rectangle corners, String caption,  
+	      Window* win, bool vActive, int selStart, int selEnd){
+
+  corners.left  += win->getLeft();
+  corners.top   += win->getTop();
+  corners.right += win->getLeft();
+  corners.bottom+= win->getTop();
+
+  Rectangle scissor=win->getCorners();
+
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->setScissorRectangle(scissor);
+
+  if (vActive){
+    qr->setTexturePtr(mTextInputActiveTexture);
+  }
+  else{
+    qr->setTexturePtr(mTextInputTexture);
+  }
+
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(corners);
+
+  // Draw text
+  corners.left  += 4;
+  qr->drawText(textInputFont, textInputColor, caption, corners, false, 
+	       VAT_CENTER, HAT_LEFT);
+
+  qr->reset();
 }

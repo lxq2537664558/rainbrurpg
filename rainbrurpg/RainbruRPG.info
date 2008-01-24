@@ -1,10 +1,10 @@
-This is RainbruRPG.info, produced by makeinfo version 4.8 from
+This is RainbruRPG.info, produced by makeinfo version 4.11 from
 RainbruRPG.texinfo.
 
-   `RainbruRPG' is an in-development 3D Multiplayer Online Role-Playing
+`RainbruRPG' is an in-development 3D Multiplayer Online Role-Playing
 Game
 
-   Copyright (C) 2007 Jerome PASQUIER
+   Copyright (C) 2006-2008 Jerome PASQUIER
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -555,13 +555,13 @@ Concept Index
 
 
 Tag Table:
-Node: Top861
-Node: Instructions1475
-Node: Copying2154
-Node: Overview21340
-Node: Server21773
-Node: Invoking RainbruRPG23408
-Node: Problems23954
-Node: Concept Index24584
+Node: Top864
+Node: Instructions1478
+Node: Copying2157
+Node: Overview21343
+Node: Server21776
+Node: Invoking RainbruRPG23411
+Node: Problems23957
+Node: Concept Index24587
 
 End Tag Table

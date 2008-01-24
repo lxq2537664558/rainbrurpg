@@ -94,43 +94,73 @@ namespace BetaGUI {
     void deactivate(void);
 
   protected:
-    /** The currently active TextInput widget */
-    TextInput* activeTextInput;
-    /** The resize grip */
-    Button* mResizeGrip;
-    /** Defines a button */
-    Button* mAB;
-    /** Defines a button */
-    TitleBar* mTitleBar;
-    /** The GUI object used to draw this window */
-    GUI* mGUI;
+    void deactivateAllOtherTextInput(BetaGUI::TextInput*);
+
+    /** A constant iterator for TextInput lit */
+    typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;
+
+    /** A constant iterator for Button lit */
+    typedef vector<BetaGUI::Button*>::const_iterator ButtonListIterator;
+
+    /** A constant iterator for TextInput lit */
+    typedef vector<Widget*>::const_iterator WidgetListIterator;
+
     /** A vector of Buttons */
     vector<BetaGUI::Button*> buttonList;
+
     /** A vector of TextInput */
     vector<BetaGUI::TextInput*> textInputList;
+
     /** A vector of Widget 
       *
       * Used for transparency for Widgets that are not Button or TextInput.
       *
       */
     vector<Widget*> widgetList;
-    /** Kept the devX when moving the window 
+
+    /** The currently active TextInput widget */
+    TextInput* activeTextInput;
+
+    /** The resize grip */
+    Button* mResizeGrip;
+
+    /** The currently active Button widget 
+      *
+      * \note This can contain special Button as 
+      *       \ref BetaGUI::Window::mTitleBar "mTitleBar"
+      *       or \ref BetaGUI::Window::mResizeGrip "mResizeGrip".
+      *       It is why it's aButton and not a PushButton.
+      *
+      */
+    Button* activeButton;
+
+    /** Defines a button */
+    TitleBar* mTitleBar;
+
+    /** The GUI object used to draw this window */
+    GUI* mGUI;
+    /** Kept the devX when moving or resizing the window 
       *
       * We keep here the distance between the window position and the mouse
       * position to move the window according to this value.
       *
       * \sa \ref BetaGUI::Window::move "move()",
+      *     \ref BetaGUI::Window::resize "resize()"
       *     \ref BetaGUI::Window::check "check()"
       *
       */
-    unsigned int movingDevX;
-    /** Kept the devY when moving the window 
+    int movingDevX;
+    /** Kept the devY when moving or resizing the window 
       *
       * We keep here the distance between the window position and the mouse
       * position to move the window according to this value.
       *
+      * \sa \ref BetaGUI::Window::move "move()",
+      *     \ref BetaGUI::Window::resize "resize()"
+      *     \ref BetaGUI::Window::check "check()"
+      *
       */
-    unsigned int movingDevY;
+    int movingDevY;
 
     /** The minimal width of this window
       *

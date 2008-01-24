@@ -1,3 +1,151 @@
+
+* v 0.0.5-165
+- Window posision cannot be negative
+- We should deactivate all window's titlebar but the first when one is
+   activated
+- GUI should handles mouse injection from foreground to background
+   windows using reverse iterator (rbegin() and rend())
+- Makes the window in foreground if selected
+- Mouse pointer is more grey than white
+- Makes the mouse cursor always in foreground
+   It passes under windows
+   Mouse cursor is an ogre overlay
+- Removing GUI/mouseCursorOverlay
+- GUI/drawMouseCursor uses QuadRenderer::setTexturePtr to draw it
+- QuadRenderer handles BlendMode
+- MousePointer class implementation
+- Launching mouse cursor drawing in ogreGui/renderqueuelistener.cpp
+- GUI/createMouseCursor() load the cursor texture
+- Fix an alpha bug in text rendering (shadows below text)
+   FIXED using LBX_MODULATE instead of LBX_BLEND_MANUAL
+- Setting global GUI alpha to QuadRenderer::drawText
+- Setting color to QuadRenderer::drawText
+- QuadRenderer::drawText take a bool wordwrap argument
+- Text rendering uses alpha blending
+- Fix vertical alignment of text
+- Setting correct texture to glyph quads
+   Testing in Font::render()
+   FontManager::copyGlyph hacked
+   Testing glyph construction fontmanager
+- Debugging Glyph uvMap
+   o QuadRenderer::addGlyph
+
+* v 0.0.5-164
+- Text is written from right to left
+   Glyph's space is <0
+   o Testing in FontManager::renderGlyphs
+- Fix the placement bug of the first letter
+   o Font::render, vPos is correct
+   o QuadRenderer::addGlyph, vRect is correct
+   o Debugging QuadRenderer::getFinalRect OK
+- QuadRenderer correctly handles mFlipY
+- TitleBar caption are too far on the right/bottom 
+   HACKED in Font::render
+- QuadRenderer::addGlyph segfault FIXED
+#0  0xb7e2bc1e in RainbruRPG::OgreGui::QuadRenderer::addGlyph (this=0x8b0cac8, 
+    vRect=@0xbff3ba1c, vUV=@0xbff3ba0c, vUVRelative=true)
+    at /usr/include/OGRE/OgreVector3.h:123
+#1  0xb7e22968 in RainbruRPG::OgreGui::Font::render (this=0x9587558, 
+    qr=0x8b0cac8, vText=@0x92873f0, vColor=@0x8b0cb70, vPos=@0xbff3ba94, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:492
+#2  0xb7e22ad8 in RainbruRPG::OgreGui::Font::renderAligned (this=0x9587558, 
+    qr=0x8b0cac8, vLineList=@0x958759c, vColor=@0x8b0cb70, vRect=@0xbff3bb6c, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:384
+- TitleBar::caption doesn't follow its parent    
+   FIXED :  setting default value to vVertAlign and vHorzAlign in
+     Font::renderAligned
+   Font::renderAligned debug rectangle
+   Testing coords in soBetaGui::drawTitleBar() no changes
+- removing existing debugRectangle function
+- maincore/dumpogreobject.h/.cpp to debug Ogre objects
+   test in soBetaGui::drawTitleBar
+- GNU headers updated for 2008
+- Homepage news :
+Title :Switched to Ogre 1.4
+Content :[cite]RainbruRPG[/cite] switched from Ogre 1.2 to Ogre 1.4 and CEGUI was definitely give up. Consequently, [cite]RainbruRPG[/cite] building on GNU/Linux platform is easier because Ogre 1.4 is in the official Debian repository.[br]
+[br]
+OgreGui is not yet done but a new release will follow its implementation.[br]
+[br]
+Note : I recently fixed a bug in the artcles section of this site that heavily compromize copy/paste operations on code blocks.[br]
+[br]
+Links :
+[href a="http://packages.debian.org/fr/sid/libogre14"]libOgre14 in the debian repository[/href]
+- Making mouse work again
+   InputManager get a bad window handle
+- Dynamic menu deactivated (conditionnal compilation)
+- StaticImage::setPosition(x,y);
+- Drawing menu background and border (gsMenuBase)
+   o Using StaticImage widget for OgreGui::StaticImage
+- OgreGui::StaticImage widget implementation
+- gsMenuBase::drawMenu??? now called createMenu...
+- Switching to Ogre 1.4
+   o Using libOgre found in the Debian Etch repository
+   o Many modifications are needed
+   o Removing CEGUI dependencies
+- Font texturing debug mode fixed
+- Computing page number of documentation for regText.html
+- Doxygen documentation
+
+* v 0.0.5-163
+- Implement Font::addGlyph(index, Glyph*);
+- Font::getGlyphMap return a constant
+- Font destructor clears glyphMap
+- Font::getGlyph debug
+   o mGlyphMap.size()==0
+- Glyp::getWidth()/getHeight() return 0
+   o Adding charcode to glyph to debug it
+- Debugging QuadRenderer::getFinalRect
+     called from buildVertices()
+       called from addGlyph()
+         called from Font::render()
+   o Using xPixelToNative and yPixelToNative
+   o vIn seems to be spurious
+
+   o Testing if Glyp::getWidth()/getHeight() do not return 0
+   o Glyphs created from FontManager::renderGlyphs ()
+- Drawing a test caption for TitleBar
+   o Stack : 
+   QuadRenderer::drawText()        called
+   Font::renderAligned             textWidth         OK
+   Font::processText               LineInfoList.size OK
+                                   vText.size        OK
+   Font::renderAligned(LineInfo)   
+   Font::Render                    vText.size        OK
+   QuadRenderer::getFinalRect      vOut must be fixed
+- QuadRenderer::drawText() implementation
+- QuadRenderer::renderGlyph() implementation
+- QuadRenderer::addGlyph() implementation
+- Font::render() implementation
+- common/rainbrudef implements GCC visibility
+- Homepage news :
+   Title: Changing OgreGUI renderer
+   Content: I'm changing the OgreGUI renderer from Ogre overlays to
+   custom texturized quads. Due to scrollpane implementation, I need 
+   scissor handle and Ogre overlays do not provide this feature.
+
+   The new renderer will be based on the Right Brain Games UI, a GPLed 
+   library used in the Antilia project.
+
+   This renderer will also support Unicode providing the ability, for 
+   further releases, of translation through GNU getText.
+
+   Links :
+   Right Brain Games UI
+   GNU gettext
+   Unicode
+- Font::renderAligned(LineInfoList) implementation
+- Font::processText implementation
+- LineInfo become a class
+- QuadRenderer::drawRectangle() implementation
+- Skins use drawRectangle instead of draw
+- Define DEBUG_FONT_TEXTURE 1 and DEBUG_FONT_NAME in FontManager to
+  test in soBetaGui if we should test the given font texture.
+  o The etsted texture will be set to the window background for test 
+    purpose
+- OgreGUI/FontManager::copyGlyph implementation
+- OgreGUI/FontManager::renderGlyphs implementation
+- OgreGUI/FontManager::loadFont implementation
+
 * v 0.0.5-162
 - Glyph base implementation
 - TitleBar drawn by QuadRenderer

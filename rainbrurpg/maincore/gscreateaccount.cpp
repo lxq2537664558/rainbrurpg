@@ -154,7 +154,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   winX+=(int)(double)w*0.025;     // The border
 
   // The create account  window
-  window = new Window(Vector4(winX,winY,winWidth,winHeight),
+  window = new BetaGUI::Window(Vector4(winX,winY,winWidth,winHeight),
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Create account", mGUI);
 
   String mess="Please enter these required informations. The account\n"
@@ -214,7 +214,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
 
 
   // The Back button window (false= no border)
-  winBack = new Window(Vector4(20,h-50 ,120,53),
+  winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
 		       BetaGUI::OWT_NONE, "Connection", mGUI, false,
 		       OSI_NAVIGATION);
   winBack->setAlwaysTransparent(true);

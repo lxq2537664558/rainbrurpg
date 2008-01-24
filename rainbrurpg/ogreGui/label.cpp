@@ -23,9 +23,13 @@
 #include "label.h"
 
 #include "bgwindow.h"
+#include "quadrenderer.h"
 
-#include <OGRE/OgreStringConverter.h>
-#include <OGRE/OgreOverlayManager.h>
+#include <logger.h>
+
+
+#include <OgreStringConverter.h>
+#include <OgreOverlayManager.h>
 
 /** The Label constructor
   *
@@ -38,25 +42,22 @@
 RainbruRPG::OgreGui::Label::
 Label(Vector4 dim, String caption, BetaGUI::Window* parent,
       RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(dim, parent, sid)
+  Widget(dim, parent, sid),
+  mCaption(caption),
+  mAplha(0.0f),
+  mSkin(NULL)
 {
-  /*
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
-    +StringConverter::toString(parent->getGUI()->getUniqueId());
+  mSkin = SkinManager::getSingleton().getSkin(this);
+  mParentWindow = parent;
 
-  this->setName(uniqueName);
-
-  sk->createLabel(uniqueName, dim, caption, parent);
-  this->contentOverlay=sk->getOverlayByName(uniqueName);
-  */
 }
 
 /** The destructor
   *
   */
 RainbruRPG::OgreGui::Label::~Label(){
-  OverlayManager::getSingleton().destroy(name);
+  mSkin=NULL;
+  mParentWindow=NULL;
 }
 
 /** Change the transparency of this label
@@ -65,9 +66,7 @@ RainbruRPG::OgreGui::Label::~Label(){
   *
   */
 void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-
-  s->setCaptionTransparency(contentOverlay, alpha);
+  mAplha=alpha;
 }
 
 /** Changes the caption of this button
@@ -76,5 +75,9 @@ void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
   * 
   */
 void RainbruRPG::OgreGui::Label::setCaption(const String& s){
-  this->contentOverlay->setCaption(s);
+  mCaption=s;
+}
+
+void RainbruRPG::OgreGui::Label::draw(QuadRenderer* qr){
+  mSkin->drawLabel(qr, corners, mCaption, mParentWindow);
 }

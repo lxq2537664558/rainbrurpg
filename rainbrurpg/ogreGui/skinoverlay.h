@@ -81,7 +81,7 @@ namespace RainbruRPG{
       virtual void setTransparency(Ogre::OverlayElement*, float f);
       virtual void setCaptionTransparency(Ogre::OverlayElement*, float f);
 
-     /** Create a window
+      /** Create a window
         *
         * Please see the sub-class documentation for implementation
         * details.
@@ -140,34 +140,40 @@ namespace RainbruRPG{
 	* \param active  Is the mouse over this push button ?
         *
         */
-     virtual void drawPushButton(QuadRenderer*qr,Vector4 dim, String caption, 
+     virtual void drawPushButton(QuadRenderer*qr, Vector4 dim, String caption, 
 				   Window* parent, bool active)=0;
 
-      /** Graphically create a TextInput widget
-        *
-        * \param name    The internal name of the widget (must be unique)
-        * \param dim     The widget's dimension in pixels in a 
-        *                Ogre::Vector4 object
-        * \param caption The rendered text
-        * \param parent  The parent window
-        *
-        */
-     virtual void createTextInput(String name, Vector4 dim, String caption, 
-				  Window* parent)=0;
 
+     /** Graphically create a TextInput widget
+       *
+       * \param qr       The QuadRenderer used to draw
+       * \param dim      The widget's dimension in pixels in a 
+       *                 Ogre::Rectangle object
+       * \param caption  The rendered text
+       * \param win      The parent window
+       * \param active   Is the mouse over this push button ?
+       * \param selStart The selection start
+       * \param selEnd   The selection end
+       *
+       */
+     virtual void drawTextInput(QuadRenderer*qr, Rectangle dim, String caption, 
+				Window* win, bool active, int selStart = -1,
+				int selEnd = -1)=0;
+
+ 
      /** Graphically create a Label widget
        *
-       * \param name    The internal name of the ResizeGrip (must be unique)
+       * \param qr       The QuadRenderer used to draw
        * \param dim     The widget's dimension in pixels in a 
        *                Ogre::Vector4 object
        * \param caption The rendered text
        * \param parent  The parent window
        *
        */
-     virtual void createLabel(String name, Vector4 dim, String caption, 
-			      Window* parent)=0;
+     virtual void drawLabel(QuadRenderer*qr, Rectangle dim, String caption, 
+			    Window* parent)=0;
 
-     /** Creates a vertical scrollbar
+    /** Creates a vertical scrollbar
        *
        * \param name    The internal name of the ResizeGrip (must be unique)
        * \param dim     The widget's dimension in pixels in a 

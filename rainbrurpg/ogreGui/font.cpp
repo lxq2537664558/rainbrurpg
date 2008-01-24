@@ -26,8 +26,6 @@
 #include "stringconv.h"
 #include "quadrenderer.h"
 
-#include <OgreMaterialManager.h>
-
 #include <dumpogreobject.h>
 
 #define GLYPH_V_SPACE 2
@@ -44,19 +42,11 @@ RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
   mTexture(NULL),
   mMaxGlyphHeight(size+GLYPH_V_SPACE),
   mMaxBearingY(0),
-  mTextureName(""),
-  mPass(NULL)
+  mTextureName("")
 {
 
   String sizeName=StringConv::getSingleton().itos(size);
   String matName= name+sizeName;
-
-  material=MaterialManager::getSingleton().create(matName, "FontGroup");
-  Technique*        tech=material->createTechnique();
-
-  mPass =tech->createPass();
-  mPass->setName(matName+".pass");
-  TextureUnitState* tus =mPass->createTextureUnitState();
 }
 
 /** The destructor
@@ -91,8 +81,6 @@ const String& RainbruRPG::OgreGui::Font::getName(void)const{
   */
 void RainbruRPG::OgreGui::Font::setTexture(TexturePtr t){
   mTexture=t;
-
-  mPass->getTextureUnitState(0)->setTextureName(t->getName());
 }
 
 /** Get the glyph map
@@ -159,15 +147,6 @@ void RainbruRPG::OgreGui::Font::setTextureName(const String& tn){
   */
 const String& RainbruRPG::OgreGui::Font::getTextureName(void)const{
   return mTextureName;
-}
-
-/** Get the material pointer
-  *
-  * \return The current material pointer
-  *
-  */
-MaterialPtr RainbruRPG::OgreGui::Font::getMaterial(){
-  return material;
 }
 
 /** Is the given char is a delimiter
@@ -517,16 +496,6 @@ translateRectangle(Rectangle& r, float x, float y)const{
   r.left=r.left+x;
   r.right=r.right+x;
   return r;
-}
-
-/** Get the current pass
-  *
-  * \return The current pass
-  *
-  */
-Pass* RainbruRPG::OgreGui::Font::getPass(void){
-  LOGA(mPass, "Returning a NULL Pass pointer");
-  return mPass;
 }
 
 /** Add a glyph to this font's map

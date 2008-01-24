@@ -68,7 +68,7 @@ void RainbruRPG::Gui::RbMessageBox::initWindow(){
   Vector4 winDim=Vector4(posX, posY, width, height);
   BetaGUI::GUI* gui=GameEngine::getSingleton().getOgreGui();
   title="Unset";
-  mWin=new Window(winDim, OWT_MOVE, title, gui, true, OSI_BETAGUI);
+  mWin=new BetaGUI::Window(winDim, OWT_MOVE, title, gui, true, OSI_BETAGUI);
   gui->addDialog(mWin);
 
   /*  Vector4 labDim=Vector4(2, 24, width-20, 30);

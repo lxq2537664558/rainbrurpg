@@ -52,7 +52,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   movingDevY(0),
   minimalWidth(50),
   minimalHeight(50),
-  mAB(NULL),
+  activeButton(NULL),
   borderTus(NULL),
   alwaysTransparent(false),
   hasBorder(border),
@@ -214,46 +214,44 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
 
   if(!(px>=corners.left&&py>=corners.top)
      ||!(px<=corners.right&&py<=corners.bottom)){
-    if(mAB){
-      mAB->activate(false);
+    if(activeButton){
+      activeButton->activate(false);
     }
     return false;
   }
   
-  if(mAB){
-    mAB->activate(false);
+  if(activeButton){
+    activeButton->activate(false);
   }
   
   for(unsigned int i=0;i<buttonList.size();i++){
     if (buttonList[i]->in(px, py, corners.left, corners.top))
       continue;
     
-    if(mAB){
-      mAB->activate(false);
+    if(activeButton){
+      activeButton->activate(false);
     }
     
-    mAB=buttonList[i];
-    mAB->activate(true);
+    activeButton=buttonList[i];
+    activeButton->activate(true);
     if(!LMB)
       return true;
     
     if(activeTextInput){
-      activeTextInput->getFrameOverlay()
-	->setMaterialName(activeTextInput->getNormalMaterialName());
-
-      activeTextInput=0;
+      activeTextInput->deactivate();
+      activeTextInput=NULL;
     }
     
-    switch(mAB->getCallback().getType()){
+    switch(activeButton->getCallback().getType()){
     default: 
       return true;
       
     case 1:
-      mAB->getCallback().fp(mAB);
+      activeButton->getCallback().fp(activeButton);
       return true;
       
     case 2:
-      mAB->getCallback().LS->onButtonPress(mAB);
+      activeButton->getCallback().LS->onButtonPress(activeButton);
       return true;
       
     case 3: // We start moving the Window
@@ -265,6 +263,8 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
       
     case 4: // We start resizing this window
       GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
+      movingDevX=corners.right-px;
+      movingDevY=corners.bottom-py;
       this->resize(px, py);
       
       if(mTitleBar){
@@ -285,18 +285,20 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
 
     /* The current indexed textInputList element is under the mouse
      * activeTextInput is set as a pointer to it.
-     * And we change is material to graphically mark it as active.
+     * And we change its texture to graphically mark it as active.
+     *
+     * We also call the deactivateAllOtherTextInput to get only one
+     * TextInput activated.
+     *
      */
     activeTextInput=textInputList[i];
-    activeTextInput->getFrameOverlay()
-      ->setMaterialName(activeTextInput->getActiveMaterialName());
+    activeTextInput->activate();
+    deactivateAllOtherTextInput(activeTextInput);
     return true;
   }
 
   if(activeTextInput){
-    LOGE("activeTextInput debug B");
-    activeTextInput->getContentOverlay()
-      ->setMaterialName(activeTextInput->getNormalMaterialName());
+    activeTextInput->deactivate();
   }
 
   return true;
@@ -416,6 +418,10 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
     for (unsigned int i=0;i<widgetList.size();i++){
       widgetList[i]->draw(qr);
     }
+
+    for (unsigned int i=0;i<textInputList.size();i++){
+      textInputList[i]->draw(qr);
+    }
   }
 }
 
@@ -468,18 +474,18 @@ void BetaGUI::Window::resize(int px, int py){
 
   // Compute new width
   if (px-corners.left<minimalWidth){
-    width=minimalWidth;
+    width= minimalWidth;
   }
   else{
-    width=px-corners.left+8;
+    width= px - corners.left + movingDevX;
   }
 
   // Compute new height
   if (py-corners.top<minimalHeight){ 
-    height=minimalHeight;
+    height= minimalHeight;
   }
   else{
-    height=py-corners.top+8;
+    height= py - corners.top + movingDevY;
   }
 
   // Moves the ResizeGrip
@@ -506,4 +512,26 @@ void BetaGUI::Window::move(int px, int py){
 
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
+}
+
+/** Deactivate all TextInput but one
+  *
+  * This function is called from the \ref BetaGUI::Window::check() "check()"
+  * one after activating th under-mouse TextInput (and setting 
+  * \ref BetaGUI::Window::activeTextInput "activeTextInput").
+  *
+  * \sa \ref BetaGUI::Window::check() "check()",
+  *     \ref BetaGUI::Window::activeTextInput "activeTextInput"(member)
+  *
+  * \param ti The activate TextInput
+  *
+  */
+void BetaGUI::Window::deactivateAllOtherTextInput(BetaGUI::TextInput* ti){
+  TextInputListIterator iter;
+
+  for(iter=textInputList.begin();iter!=textInputList.end();iter++){
+    if ((*iter)!=ti){
+      (*iter)->deactivate();
+    }
+  }
 }

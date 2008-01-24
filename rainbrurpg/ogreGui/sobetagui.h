@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 jan 2008 : drawTextInput implementation using QuadRenderer
  * - 27 sep 2007 : starting implementation
  *         
  */
@@ -61,10 +62,13 @@ namespace RainbruRPG{
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
+      virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
+			     String caption, Window* parent);
+      virtual void drawTextInput(QuadRenderer*, Rectangle , String , Window*, 
+				 bool active, int selStart = -1,
+				 int selEnd = -1);
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
-      virtual void createTextInput(String, Vector4, String, Window*);
-      virtual void createLabel(String, Vector4, String, Window*);
       virtual void createVerticalScrollbar( const String&, Vector4, Window* );
 
     private:
@@ -91,6 +95,17 @@ namespace RainbruRPG{
       /** The font used in PushButtons */
       Font* buttonFont;
 
+      /** The color of the label text */
+      ColourValue labelColor;
+      /** The font used in Label */
+      Font* labelFont;
+
+       /** The color of the text input text */
+      ColourValue textInputColor;
+      /** The font used in text input */
+      Font* textInputFont;
+      
+
       /** The texture of the window background */
       TexturePtr mWindowTexture;
 
@@ -108,6 +123,11 @@ namespace RainbruRPG{
       TexturePtr mPushButtonTexture;
       /** The texture of the active push button background */
       TexturePtr mPushButtonActiveTexture;
+
+      /** The texture used to draw TextInput */
+      TexturePtr mTextInputTexture;
+      /** The texture used to draw active TextInput */
+      TexturePtr mTextInputActiveTexture;
 
     };
 

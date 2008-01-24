@@ -13,8 +13,12 @@
 #include "skinoverlay.h"
 #include "quadrenderer.h"
 
-#include <OGRE/OgreStringConverter.h>
-#include <OGRE/OgreMaterialManager.h>
+#include <logger.h>
+
+#include <OgreStringConverter.h>
+#include <OgreMaterialManager.h>
+
+#include <sstream>
 
 /** The text input constructor
   *
@@ -30,36 +34,21 @@ TextInput(Vector4 dim,String caption,unsigned int L,Window *parent,
 			RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid),
   value(caption),
-  normalMaterialName(""),
-  activeMaterialName(""),
   length(L),
-  masked(false)
+  masked(false),
+  active(false)
 {
-  /*  
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
-  Ogre::String uniqueName=parent->getOverLayContainer()->getName()+"t"
-    +StringConverter::toString(parent->getGUI()->getUniqueId());
+  mSkin = SkinManager::getSingleton().getSkin(this);
+  mParentWindow = parent;
 
-  this->setName(uniqueName);
-
-  sk->createTextInput(uniqueName, dim, caption, parent);
-
-  if (sk){
-    frameOverlay=sk->getOverlayByName(uniqueName);
-    contentOverlay=sk->getOverlayByName(uniqueName+"c");
-
-    // Get the materials names
-    normalMaterialName=frameOverlay->getMaterialName();
-    activeMaterialName=normalMaterialName+".active";
-  }
-  */
 }
 
-/** An empty destructor
+/** The destructor
   *
   */
 BetaGUI::TextInput::~TextInput(){
-
+  mSkin=NULL;
+  mParentWindow=NULL;
 }
 
 
@@ -79,15 +68,9 @@ const Ogre::String& BetaGUI::TextInput::getValue(){
   */
 void BetaGUI::TextInput::setValue(const Ogre::String& v){
   this->value=v;
+
   if (masked){
-    String mask;
-    for (size_t i=0; i<value.size(); i++){
-      mask+="*";
-    }
-    contentOverlay->setCaption(mask);
-  }
-  else{
-    contentOverlay->setCaption(v);
+    computeMaskedValue();
   }
 }
 
@@ -116,42 +99,6 @@ unsigned int BetaGUI::TextInput::getLength(void){
   return this->length; 
 }
 
-/** Return the overlay containing the content of the text input
-  *
-  * \return The OverlayContainer that draws the content
-  *
-  */
-Ogre::OverlayContainer* BetaGUI::TextInput::getContentOverlay(void){ 
-  return contentOverlay; 
-}
-
-/** Return the overlay drawing the widget
-  *
-  * \return The OverlayContainer that draws the control
-  *
-  */
-Ogre::OverlayContainer* BetaGUI::TextInput::getFrameOverlay(void){ 
-  return frameOverlay; 
-}
-
-/** Get the name of the material used in normal mode
-  *
-  * \return The normal mode material name
-  *
-  */
-const Ogre::String& BetaGUI::TextInput::getNormalMaterialName(void){ 
-  return this->normalMaterialName; 
-}
-
-/** Get the name of the material used in active mode
-  *
-  * \return The active mode material name
-  *
-  */
-const Ogre::String& BetaGUI::TextInput::getActiveMaterialName(void){ 
-  return this->activeMaterialName; 
-}
-
 /** Changes the transparency
   *
   * \param f The new alpha value
@@ -159,9 +106,6 @@ const Ogre::String& BetaGUI::TextInput::getActiveMaterialName(void){
   */
 void BetaGUI::TextInput::setTransparency(float f){
   SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
-
-  s->setTransparency(frameOverlay, f);
-  s->setCaptionTransparency(contentOverlay, f);
 
 }
 
@@ -174,6 +118,10 @@ void BetaGUI::TextInput::setTransparency(float f){
   */
 void BetaGUI::TextInput::setMasked(bool b){
   this->masked=b;
+
+  if (b){
+    computeMaskedValue();
+  }
 }
 
 /** Is this TextInput show masked input
@@ -193,5 +141,58 @@ bool BetaGUI::TextInput::isMasked(void){
   *
   */
 void BetaGUI::TextInput::draw(QuadRenderer* qr){
+  if (masked)
+    mSkin->drawTextInput(qr, corners, maskedValue, mParentWindow, active);
+  else
+    mSkin->drawTextInput(qr, corners, value, mParentWindow, active);
 
+}
+
+/** Set this text input active
+  *
+  * \sa \ref BetaGUI::TextInput::active "active" (member)
+  *
+  */
+void BetaGUI::TextInput::activate(void){
+  active=true;
+}
+
+/** Set this text input inactive
+  *
+  * \sa \ref BetaGUI::TextInput::active "active" (member)
+  *
+  */
+void BetaGUI::TextInput::deactivate(void){
+  active=false;
+}
+
+/** Make a masked value containing only masked characters
+  *
+  * It makes \ref BetaGUI::TextInput::maskedValue "maskedValue"
+  * the same size as \ref BetaGUI::TextInput::value "value".
+  *
+  * \todo This function uses a ostringstream. Using stl::fill_n
+  *       should be more efficient. See 
+  *       http://www.cplusplus.com/reference/algorithm/fill_n.html
+  *       for more informations.
+  *
+  */
+void BetaGUI::TextInput::computeMaskedValue(void){
+  LOGI("computeMaskedValue called");
+  size_t len = value.length();
+  LOGCATS("value.length() returns ");
+  LOGCATI(len);
+  LOGCAT();
+
+  maskedValue.clear();
+
+  std::ostringstream oss;
+  for (int i=0; i<len; i++){
+    oss << "*";
+  }
+  maskedValue=oss.str();
+
+  LOGCATS("maskedValue.length() returns ");
+  LOGCATI(maskedValue.length());
+  LOGCAT();
 }

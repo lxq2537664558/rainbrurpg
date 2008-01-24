@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 21 jan 2008 : Removing Overlay references
  * - 16 nov 2007 : setCaption(String) implementation
  * - 09 nov 2007 : Handling OgreSkinID in constructor
  * - 17 oct 2007 : starting implementation
@@ -30,11 +31,23 @@
 #ifndef _OGRE_GUI_LABEL_H_
 #define _OGRE_GUI_LABEL_H_
 
-#include <OGRE/OgreVector4.h>
-#include <OGRE/OgreOverlayContainer.h>
+#include <OgreVector4.h>
+#include <OgreOverlayContainer.h>
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
+
+// Forward declaration
+namespace BetaGUI {
+  class Window;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+    class SkinOverlay;
+  }
+}
+// End of Forward declaration
 
 using namespace RainbruRPG::OgreGui;
 
@@ -55,13 +68,20 @@ namespace RainbruRPG{
 
       void setCaption(const String&);
 
+      virtual void draw(QuadRenderer* qr);
+
     private:
-    
-      /** The overlay used to draw the text
-        *
-	*
-	*/
-      OverlayContainer* contentOverlay;
+      /** The caption ofthe label */
+      String mCaption;
+
+      /** Tha alpha value*/
+      float mAplha;
+
+      /** The current skin */
+      SkinOverlay* mSkin;
+
+      /** This label parent */
+      Window* mParentWindow;
     };
   }
 }

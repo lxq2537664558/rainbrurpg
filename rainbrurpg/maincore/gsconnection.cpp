@@ -141,10 +141,10 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   winX+=(int)(double)w*0.025;     // The border
 
   // The connection window
-  window = new Window(Vector4(winX,winY,winWidth,winHeight),
+  window = new BetaGUI::Window(Vector4(winX,winY,winWidth,winHeight),
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
 
-  /*  Vector4 laDim(10,40,80,24);
+  Vector4 laDim(10,40,80,24);
   Label* labUserName=new Label(laDim, "User name", window);
   window->addWidget(labUserName);
 
@@ -160,7 +160,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   tiPassword=new TextInput(tiDim2, "", 20, window);
   tiPassword->setMasked(true);
   window->addWidget(tiPassword);
-  */
+  
   // Buttons
   btnConnect = new PushButton(Vector4(70,100,160,24),
       "Network game", BetaGUI::Callback::Callback(this), window);
@@ -176,7 +176,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
   mGUI->addWindow(window);
 
   // The Back button window (false= no border)
-  winBack = new Window(Vector4(20,h-50 ,120,53),
+  winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
 		       BetaGUI::OWT_NONE, "Connection", mGUI, false,
 		       OSI_NAVIGATION);
   winBack->setAlwaysTransparent(true);

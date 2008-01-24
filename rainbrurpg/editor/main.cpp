@@ -20,6 +20,11 @@
  *
  */
 
+/* Modifications :
+ * - 24 jan 2008 : Handles help and version command-line options
+ *
+ */
+
 #include <QApplication>
 #include <OGRE/Ogre.h>
 #include <version.h>
@@ -28,17 +33,26 @@
 
 using namespace RainbruRPG::Editor;
 
+
+
+// Forward declarations
+void handleCommandLineOptions(int argc, char **argv);
+void showHelp(void);
+void showVersion(void);
+// End of forward declarations
+
+
+
+
 /** The Editor main function
   *
   * \param argc The command line arguments number
-  * \param argv The command line arguments vector
+  * \param argv The command line arguments array
   *
   */
 int main(int argc, char *argv[]){
-  // Log out the versions
-  Version v;
-  v.setApplicationName("RainbruRPG Editor");
-  v.logVersion();
+  handleCommandLineOptions(argc, argv);
+  showVersion();
 
   LOGI("Starting RainbruRPG editor");
   QApplication app(argc, argv);
@@ -60,4 +74,54 @@ int main(int argc, char *argv[]){
 
   LOGI("Entering Qt main loop");
   return app.exec();
+}
+
+/** Print the usage message in stdout
+  *
+  * The common GNU usage is to use -h and --help command-line
+  * options to show the usage message (a list of available command-line
+  * options) and quit the program. This function print the usage
+  * message to the standard output (using std::cout).
+  *
+  */
+void showHelp(void){
+  cout << "usage: rainbrurpg-editor [-h] [-V]" << endl
+       << "-h, --help\t\t" <<  "show this usage message." << endl
+       << "-V, --Version\t\t"<<"show version." << endl;
+  
+}
+
+/** Handles the command line options
+  *
+  * \param argc The number of command line arguments
+  * \param argv The command line arguments array
+  *
+  */
+void handleCommandLineOptions(int argc, char **argv){
+
+  // Handles command-line options
+  for (unsigned int i=0; i<argc; i++){
+    if (strcmp(argv[i], "-h")==0 || strcmp(argv[i], "--help")==0){
+      showHelp();
+      exit(0);
+    }
+    if (strcmp(argv[i], "-V")==0 || strcmp(argv[i], "--version")==0){
+      showVersion();
+      exit(0);
+    }
+  }
+}
+
+/** Shows the version numbers 
+  *
+  * This function uses a \ref RainbruRPG::Core::Version "Version"
+  * object to log out the version numbers. It is called from 
+  * both handleCommandLineOptions() and main() functions.
+  *
+  */
+void showVersion(void){
+  // Log out the versions
+  Version v;
+  v.setApplicationName("RainbruRPG Editor");
+  v.logVersion();
 }

@@ -31,9 +31,11 @@ RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
   *
   */
 RainbruRPG::Core::InputManager::InputManager( void ) :
-    mMouse( 0 ),
-    mKeyboard( 0 ),
-    mInputSystem( 0 ) {
+    mMouse( NULL ),
+    mKeyboard( NULL ),
+    mInputSystem( NULL ) 
+{
+
 }
 
 /** The default destructor
@@ -78,6 +80,11 @@ RainbruRPG::Core::InputManager::~InputManager( void ) {
   */
 void RainbruRPG::Core::InputManager::
 initialise( Ogre::RenderWindow *renderWindow ) {
+
+  mMouse       = NULL;
+  mKeyboard    = NULL;
+  mInputSystem = NULL;
+
 
   if( !mInputSystem ) {
     // Setup basic variables
@@ -149,17 +156,28 @@ initialise( Ogre::RenderWindow *renderWindow ) {
 
 /** Captures the mouse, keyboard and joystick events
   *
-  * This must be called every frame.
+  * This must be called every frame. So it is called from
+  * \ref RainbruRPG::Core::GameEngine::frameStarted "GameEngine::frameStarted".
+  *
+  * \note v0.0.5-167 : Some LOGA() calls was added to assert on
+  *       \ref RainbruRPG::Core::InputManager::mMouse "mMouse" and 
+  *       \ref RainbruRPG::Core::InputManager::mKeyboard "mKeyboard"
+  *       to avoid a SEGFAULT. Please see v0.0.5-167 changelog for
+  *       complete trace output.
   *
   */
 void RainbruRPG::Core::InputManager::capture( void ) {
     // Need to capture / update each device every frame
     if( mMouse ) {
-        mMouse->capture();
+      LOGA( mMouse, "RainbruRPG::Core::InputManager::mMouse is NULL. "
+	    "Program should crash.");
+      mMouse->capture();
     }
 
     if( mKeyboard ) {
-        mKeyboard->capture();
+      LOGA( mKeyboard, "RainbruRPG::Core::InputManager::mKeyboard is NULL. "
+	    "Program should crash.");
+      mKeyboard->capture();
     }
 
     if( mJoysticks.size() > 0 ) {
