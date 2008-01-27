@@ -38,6 +38,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class Font;
     class QuadRenderer;
+    class TextSettings;
   }
 }
 // End of forward declarations
@@ -59,6 +60,7 @@ namespace RainbruRPG{
 
     public:
       soNavigation();
+      virtual ~soNavigation();
 
       virtual void drawWindow(QuadRenderer*,Rectangle, String);
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
@@ -75,7 +77,7 @@ namespace RainbruRPG{
 
     private:
       /** The font used in PushButtons */
-      OgreGui::Font* buttonFont;
+      TextSettings* tsPushButton;
 
       /** The texture of the push button background */
       TexturePtr mPushButtonTexture;

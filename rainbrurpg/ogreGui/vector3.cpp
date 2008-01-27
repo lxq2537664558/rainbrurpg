@@ -56,6 +56,12 @@ RainbruRPG::OgreGui::Vector3::Vector3(float rX, float rY, float rZ):
 RainbruRPG::OgreGui::Vector3& 
 RainbruRPG::OgreGui::Vector3::
 operator= ( const RainbruRPG::OgreGui::Vector3& vVect){
+  /* Testing the vVect integrity
+   *
+   * See the complete trace of this SEGFAULT in v0.0.5-168's changelog.
+   *
+   */
+  LOGA(&vVect, "Vector3::operator= parameter is NULL. Program should crash.");
   x=vVect.getX();
   y=vVect.getY();
   z=vVect.getZ();

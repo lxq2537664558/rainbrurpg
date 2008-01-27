@@ -25,12 +25,13 @@
 #include "bgwindow.h"
 #include "quadrenderer.h"
 #include "fontmanager.h"
+#include "textsettings.h"
 
 #include <logger.h>
 
-#include <OGRE/OgreVector2.h>
-#include <OGRE/OgreOverlayManager.h>
-#include <OGRE/OgreOverlayContainer.h>
+#include <OgreVector2.h>
+#include <OgreOverlayManager.h>
+#include <OgreOverlayContainer.h>
 
 /** Default constructor
   *			   
@@ -38,13 +39,12 @@
   *
   */
 RainbruRPG::OgreGui::soNavigation::soNavigation() : 
-  SkinOverlay("soNavigation")
+  SkinOverlay("soNavigation"),
+  tsPushButton(NULL)
 {
-  /*  mnPushButton="nav.button";
-  fnPushButton="BlueHighway";
-  fsPushButton=16;
-  */
-  buttonFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 14);
+  tsPushButton=new TextSettings("Commonv2c.ttf", 14, 1.0f, 0.2f, 0.8f);
+  tsPushButton->setVerticalAlignment( VAT_CENTER );
+  tsPushButton->setHorizontalAlignment( HAT_CENTER );
 
   mPushButtonTexture=TextureManager::getSingleton()
     .load("nav.button.png",
@@ -55,6 +55,15 @@ RainbruRPG::OgreGui::soNavigation::soNavigation() :
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 }
+
+/** Destructor
+  *
+  */
+RainbruRPG::OgreGui::soNavigation::~soNavigation(){
+  delete tsPushButton;
+  tsPushButton=NULL;
+}
+
 
 /** Draws a window using the navigation skin
   *
@@ -160,9 +169,7 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption,
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
 
-  // false = no wordwrap
-  ColourValue cv(4.0f, 0.2f, 0.8f);
-  qr->drawText(buttonFont, cv, caption, corners, false, VAT_CENTER, HAT_CENTER);
+  qr->drawText(tsPushButton, caption, corners, false);
   qr->reset();
 }
 

@@ -65,8 +65,8 @@ am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	label.lo lineinfo.lo mousepointer.lo object.lo pushbutton.lo \
 	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
 	scrollbar.lo scrollpane.lo skinmanager.lo skinoverlay.lo \
-	sobetagui.lo sonavigation.lo staticimage.lo titlebar.lo \
-	vector3.lo widget.lo
+	sobetagui.lo sonavigation.lo staticimage.lo textsettings.lo \
+	titlebar.lo vector3.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -260,6 +260,7 @@ h_sources = bgbutton.h			\
 	   sobetagui.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
+	   textsettings.h		\
 	   titlebar.h			\
 	   vector3.h			\
 	   widget.h
@@ -288,6 +289,7 @@ cc_sources = bgbutton.cpp		\
 	    sobetagui.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\
+	    textsettings.cpp		\
 	    titlebar.cpp		\
 	    vector3.cpp			\
 	    widget.cpp
@@ -402,6 +404,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sobetagui.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sonavigation.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/staticimage.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/textsettings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/titlebar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vector3.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Plo@am__quote@

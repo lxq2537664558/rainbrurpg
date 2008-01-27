@@ -26,13 +26,14 @@
 #include "quadrenderer.h"
 #include "fontmanager.h"
 #include "font.h"
+#include "textsettings.h"
 
 #include <logger.h>
 
-#include <OGRE/OgreVector2.h>
-#include <OGRE/OgreOverlayManager.h>
-#include <OGRE/OgreOverlayContainer.h>
-#include <OGRE/OgreBorderPanelOverlayElement.h>
+#include <OgreVector2.h>
+#include <OgreOverlayManager.h>
+#include <OgreOverlayContainer.h>
+#include <OgreBorderPanelOverlayElement.h>
 
 #include <dumpogreobject.h>
 
@@ -43,29 +44,25 @@
   */
 RainbruRPG::OgreGui::soBetaGui::soBetaGui(): 
   SkinOverlay("soBetaGUI"),
-  titleFont(NULL),
-  buttonFont(NULL)
+  tsTitleBar(NULL),
+  tsPushButton(NULL),
+  tsLabel(NULL),
+  tsTextInput(NULL)
 {
+
+  tsTitleBar=new TextSettings( "Commonv2c.ttf", 16, 1.0f, 0.2f, 0.4f );
+  tsTitleBar->setVerticalAlignment( VAT_CENTER );
+
+  tsPushButton=new TextSettings( "Iconiv2.ttf", 12, 1.0f, 0.2f, 0.8f );
+  tsPushButton->setVerticalAlignment( VAT_CENTER );
+
+
+  tsLabel=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
+  tsTextInput=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
+
+
   mnDialogBorder="bgui.dialog.border";
-
-  fnPushButton="BlueHighway";
-  fsPushButton=10;
-
   mnTextInput="bgui.textinput";
-
-  fnCaption="BlueHighway";
-  fsCaption=12;
-
-  dialogBorderSize=1;
-
-  titleFont=FontManager::getSingleton().getFont("Commonv2c.ttf", 16);
-  buttonFont=FontManager::getSingleton().getFont("Iconiv2.ttf", 12);
-
-  labelColor=ColourValue(1.0f, 1.0f, 1.0f);
-  labelFont = FontManager::getSingleton().getFont("Iconiv2.ttf", 10);
-
-  textInputColor=ColourValue(1.0f, 1.0f, 1.0f, 1.0f);
-  textInputFont = FontManager::getSingleton().getFont("Iconiv2.ttf", 10);
 
   // Initialize textures
   mWindowTexture=TextureManager::getSingleton()
@@ -111,6 +108,19 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   *
   */
 RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
+
+  delete tsTitleBar;
+  tsTitleBar=NULL;
+
+  delete tsPushButton;
+  tsPushButton=NULL;
+
+  delete tsLabel;
+  tsLabel=NULL;
+
+  delete tsTextInput;
+  tsTextInput=NULL;
+
   TextureManager::getSingleton().unload("bgui.window.png");
   mWindowTexture.setNull();
 
@@ -137,8 +147,6 @@ RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
 
   TextureManager::getSingleton().unload("bgui.textinput.active.png");
   mTextInputActiveTexture.setNull();
-
-  textInputFont=NULL;
 
 }
 
@@ -231,10 +239,8 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   qr->drawRectangle(corners);
 
   // false = no wordwrap
-  ColourValue cv(8.0f, 0.2f, 0.4f);
   corners.left+=5;
-  qr->drawText(titleFont, cv, caption, corners, false, VAT_CENTER, HAT_LEFT);
-
+  qr->drawText( tsTitleBar, caption, corners, false );
   qr->reset();
 }
 
@@ -273,8 +279,7 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
   qr->drawRectangle(corners);
 
   // false = no wordwrap
-  ColourValue cv(4.0f, 0.2f, 0.8f);
-  qr->drawText(buttonFont, cv, caption, corners, false, VAT_CENTER, HAT_CENTER);
+  qr->drawText(tsPushButton, caption, corners, false);
   qr->reset();
 }
 
@@ -377,8 +382,7 @@ drawLabel(QuadRenderer* qr, Rectangle corners, String caption,
   corners.right += parent->getLeft();
   corners.bottom+= parent->getTop();
 
-  qr->drawText(labelFont, labelColor, caption, corners, false, 
-	       VAT_TOP, HAT_LEFT);
+  qr->drawText(tsLabel, caption, corners, false);
   qr->reset();
 }
 
@@ -424,8 +428,6 @@ drawTextInput(QuadRenderer* qr, Rectangle corners, String caption,
 
   // Draw text
   corners.left  += 4;
-  qr->drawText(textInputFont, textInputColor, caption, corners, false, 
-	       VAT_CENTER, HAT_LEFT);
-
+  qr->drawText(tsTextInput, caption, corners, false);
   qr->reset();
 }

@@ -22,6 +22,8 @@
 
 #include "guivertex.h"
 
+#include <logger.h>
+
 /** Default constructor
   *
   */
@@ -67,6 +69,13 @@ const Vector2& RainbruRPG::OgreGui::GuiVertex::getUvMapping(void) const{
   *
   */
 void RainbruRPG::OgreGui::GuiVertex::setPosition(const OgreGui::Vector3& vPos){
+  /* Testing the vVect integrity
+   *
+   * See the complete trace of this SEGFAULT in v0.0.5-168's changelog.
+   *
+   */
+  LOGA(&vPos, "GuiVertex::setPosition parameter is NULL. "
+       "Program should crash.");
   pos=vPos;
 }
 

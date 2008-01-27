@@ -23,6 +23,7 @@
 #include "quadrenderer.h"
 
 #include "logger.h"
+#include "textsettings.h"
 
 #include <dumpogreobject.h>
 
@@ -51,7 +52,9 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mTarget(NULL),
   mTexelOffsetX(0.0f),
   mTexelOffsetY(0.0f),
-  usedTexture(NULL)
+  usedTexture(NULL),
+  mBuffer(NULL),
+  mBatchPointer(NULL)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -67,9 +70,10 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   */
 RainbruRPG::OgreGui::QuadRenderer::~QuadRenderer(){
   // We do not delete objects, just set pointers to 0
-  mSceneManager=NULL;
-  mRenderSystem=NULL;
-  mViewport=NULL;
+  mSceneManager = NULL;
+  mRenderSystem = NULL;
+  mViewport     = NULL;
+  mBatchPointer = NULL;
 }
 
 
@@ -157,7 +161,9 @@ feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs,
   */
 void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
   // Lock buffer
-  GuiVertex* data = (GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
+  GuiVertex* data = NULL;
+  data=(GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
+  checkHardwareBuffer(data);
 
   for ( size_t x = 0; x < 6; x++ ){
     data[x].setPosition(vert[x]);
@@ -383,8 +389,9 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   vert.clear();
   uvs.clear();
   cols.clear();
-
-
+  
+  mBatchPointer=NULL;
+  mBatchCount=0;
 }
 
 /** Draw a text
@@ -395,29 +402,19 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   * The wordwrap parameter was added to correctly draw titlebar caption when
   * window is resized.
   *
-  * \param font       The font used to draw the text
-  * \param vColor     The foreground color of the text
+  * \param vSettings  The text setting
   * \param text       The text to draw
   * \param rect       The rectangle where to draw the text
   * \param wordwrap   Is the text auto word wraped ?
-  * \param vVertAlign The vertical alignment flag
-  * \param vHorzAlign The horizontal alignment flag
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-drawText(Font* font, const ColourValue& vColor, const string& text, 
-	 const Rectangle& rect, bool wordwrap, VerticalAlignType vVertAlign, 
-	 HorizontalAlignType vHorzAlign){
+drawText(TextSettings* vSettings, const string& text, const Rectangle& rect, 
+	 bool wordwrap){
 
   beginGlyphs();
-
-  mRenderSystem->_setTexture(0, true, font->getTexture());
-  setColor(vColor);
-
-
-  font->renderAligned( this, text, vColor, rect, wordwrap, vVertAlign,
-		       vHorzAlign );
-
+  //  mRenderSystem->_setTexture(0, true, vSettings->getFont()->getTexture());
+  vSettings->renderAligned( this, text, rect, wordwrap);
   endGlyphs( );
   
 }
@@ -427,11 +424,11 @@ drawText(Font* font, const ColourValue& vColor, const string& text,
   */
 void RainbruRPG::OgreGui::QuadRenderer::beginGlyphs(void){
   setBlendMode(QBM_ALPHA);
-
   if ( mBatchPointer == NULL ){
     try{
       mBatchPointer = (GuiVertex*)mBuffer
 	->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+      checkHardwareBuffer(mBatchPointer);
     }
     catch(...){
       LOGE("Cannot lock HardwareBuffer for mBatchPointer");
@@ -457,7 +454,7 @@ void RainbruRPG::OgreGui::QuadRenderer::endGlyphs(void){
     if ( mBatchCount > 0 )
       renderGlyphs( );
 
-    mBatchPointer = 0;
+    mBatchPointer = NULL;
     mBatchCount = 0;
   }
 }
@@ -511,28 +508,9 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
   }
 
   // Write the quad to the buffer
-  int x;
-  LOGA(mBatchPointer, "BatchPointer invalid. Program should abort");
+  checkHardwareBuffer(mBatchPointer);
 
-  /* Tests if Hardware buffer is locked
-   *
-   * At this point, if the HardwareVertexBuffer is not locked, a Segfault
-   * occurs. We test it a last times.
-   *
-   */
-  if (!mBuffer->isLocked()){
-    try{
-      mBatchPointer = (GuiVertex*)mBuffer
-	->lock( Ogre::HardwareBuffer::HBL_DISCARD );
-    }
-    catch(...){
-      LOGE("Cannot lock HardwareBuffer for mBatchPointer");
-    }
-  }
-  LOGA(mBuffer->isLocked(), 
-       "HardwareVertexBuffer not locked.  Program should abort");
-
-  for ( x = 0; x < 6; x++ ){
+  for ( int x = 0; x < 6; x++ ){
     mBatchPointer[x].setPosition(verts[x]);
     mBatchPointer[x].setColor(mColor);
     mBatchPointer[x].setUvMapping(uv[x]);
@@ -559,7 +537,8 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
 
     // Re-lock buffer
     mBatchPointer=(GuiVertex*)mBuffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-	
+    checkHardwareBuffer(mBatchPointer);
+
     // Reset glyph count
     mBatchCount = 0;
   }
@@ -662,12 +641,7 @@ getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
-  //  tus->setAlphaOperation(LBX_BLEND_MANUAL, LBS_MANUAL, LBS_MANUAL, 
-  //			 alphaValue, alphaValue, 1.0);
-
-  mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
-				    Ogre::SBF_ONE_MINUS_SOURCE_ALPHA  );
-
+  setBlendMode(QBM_ALPHA);
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
 }
@@ -704,6 +678,7 @@ void RainbruRPG::OgreGui::QuadRenderer::setColor(const ColourValue& cv){
   */
 void RainbruRPG::OgreGui::QuadRenderer::setTexturePtr(TexturePtr tex){
   usedTexture=tex;
+  mRenderSystem->_setTexture( 0, true, tex );
 }
 
 /** Set the scissor rectangle
@@ -783,4 +758,87 @@ setBlendMode(tQuadRendererBlendMode vMode){
     ex.factor=alphaValue;
     mRenderSystem->_setTextureBlendMode(0, ex);
   }
+}
+
+/** Check the hardware buffer to prevent segfault
+  *
+  * This function should be called before using hardware buffer and
+  * after you lock it. It control if it is currently locked and
+  * try to relock it if not.
+  *
+  * As we have several pointer using hardware buffer, we can test each one
+  * by passing them as parameter
+  *
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::mBuffer "mBuffer" (member).
+  *
+  * \param ptr The HardwareVertexBuffer pointer to test
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::checkHardwareBuffer(GuiVertex* ptr){
+  /* Tests if Hardware buffer is locked
+   *
+   * At this point, if the HardwareVertexBuffer is not locked, a Segfault
+   * occurs. We test it a last time.
+   *
+   */
+  if (!mBuffer->isLocked()){
+    ptr = (GuiVertex*)mBuffer->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+  }
+
+  LOGA(mBuffer->isLocked(), "HardwareVertexBuffer not locked. "
+       "Program should abort.");
+
+  LOGA(ptr, "HardwareVertexBuffer pointer is NULL. Program should abort.");
+
+}
+
+/** Draw a rectangle filled with the given color
+  *
+  * \param vRect  The rectangle to draw
+  * \param vColor The color to fill the rectangle with
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
+
+  Rectangle uv;
+  uv.top    = 0.0f;
+  uv.left   = 0.0f;
+  uv.bottom = 1.0f;
+  uv.right  = 1.0f;
+  usedTexture.setNull();
+
+  setColor( vColor );
+
+  setCorners( vRect.left, vRect.top, vRect.right, vRect.bottom );
+  feedVectors( &vert, &uvs, &cols );
+  
+  mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
+  				 vRect.right, vRect.bottom );
+
+  // drawQuad
+  if (mBuffer->isLocked()){
+    mBuffer->unlock();
+  }
+  GuiVertex* data = (GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
+  checkHardwareBuffer(data);
+
+  LOGA(&vert, "vert invalid.");
+
+  for ( size_t x = 0; x < 6; x++ ){
+    data[x].setPosition(vert[x]);
+    data[x].setColor(mColor);
+    data[x].setUvMapping(uvs[x]);
+  }
+
+  // Unlock buffer
+  mBuffer->unlock();
+
+  // Render!
+  mRenderOp.vertexData->vertexCount = 6;
+
+  mRenderSystem->_setTexture(0, true, mTexture );
+
+  mRenderSystem->_render( mRenderOp );
+
 }

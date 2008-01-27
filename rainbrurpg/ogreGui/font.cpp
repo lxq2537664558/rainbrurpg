@@ -322,7 +322,6 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
 	      VerticalAlignType vVertAlign, HorizontalAlignType vHorzAlign,
 	      bool vSelection, int vSelectionStart, int vSelectionEnd ){
 
-
   // Get the total height of the text (If we need it)
   float textHeight = 0.0f;
   if ( vVertAlign != VAT_TOP )

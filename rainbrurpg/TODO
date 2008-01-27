@@ -1,9 +1,6 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- QuadRenderer::checkHardwareBuffer to test HardwareBuffer
-- TextSettings font implementation
-   A class that encapsulate Font, size, color(s)
 - Multicolor font
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -120,6 +117,53 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-168
+- (12) Text background drawn using mColor
+- Text background color uses global alpha
+   Must set quadrenderer blend mode to QBM_ALPHA
+- Check that QuadRenderer's HardwareVertexBuffer pointers are set to NULL
+   It could makes the assertions failed if not.
+- QuadRenderer::drawFilledRectangle
+- TextSettings implements color setting and background color
+- QuadRenderer text drawn again (Fix a bug)
+- soBetaGui uses TextSettings
+- TextSetting renderAligned() implementation
+- QuadRenderer::drawText uses TextSettings
+- TextSettings implementation
+   A class that encapsulate Font, size, color(s), alignment
+- Segfault : Setting a LOGA in Vector3.cpp
+#0  0xb7dca898 in RainbruRPG::OgreGui::Vector3::operator= (this=0x74686769, 
+    vVect=@0x83a68e8) at vector3.cpp:59
+#1  0xb7db3b64 in RainbruRPG::OgreGui::GuiVertex::setPosition (
+    this=0x74686769, vPos=@0x83a68e8) at guivertex.cpp:70
+#2  0xb7dba0dc in RainbruRPG::OgreGui::QuadRenderer::addGlyph (this=0x8f7d6e0, 
+    vRect=@0xbfb3dde0, vUV=@0xbfb3ddd0, vUVRelative=true)
+    at quadrenderer.cpp:518
+#3  0xb7dae8e9 in RainbruRPG::OgreGui::Font::render (this=0x846d688, 
+    qr=0x8f7d6e0, vText=@0x83adc90, vColor=@0xbfb3df64, vPos=@0xbfb3de64, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:469
+#4  0xb7daea6e in RainbruRPG::OgreGui::Font::renderAligned (this=0x846d688, 
+    qr=0x8f7d6e0, vLineList=@0x846d6c0, vColor=@0xbfb3df64, vRect=@0xbfb3df74, 
+    vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT, vSelection=false, 
+    vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:365
+#5  0xb7daf98a in RainbruRPG::OgreGui::Font::renderAligned (this=0x846d688, 
+    qr=0x8f7d6e0, text=@0xbfb3e004, color=@0xbfb3df64, rect=@0xbfb3df74, 
+    wordwrap=false, vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT) at font.cpp:187
+#6  0xb7db9c5f in RainbruRPG::OgreGui::QuadRenderer::drawText (this=0x8f7d6e0, 
+    font=0x846d688, vColor=@0xbfb3df64, text=@0xbfb3e004, rect=@0xbfb3df74, 
+    wordwrap=<value optimized out>, 
+    vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT) at quadrenderer.cpp:420
+#7  0xb7dc0b46 in RainbruRPG::OgreGui::soBetaGui::drawTitleBar (
+    this=0x8ebdb00, qr=0x8f7d6e0, dim=@0xbfb3dff4, caption=@0xbfb3e004, 
+    active=false) at sobetagui.cpp:236
+#8  0xb7dca416 in RainbruRPG::OgreGui::TitleBar::draw (this=0x9817a50, 
+    qr=0x8f7d6e0) at titlebar.cpp:72
+#9  0xb7daaf77 in BetaGUI::Window::draw (this=0x9807978, qr=0x8f7d6e0)
+    at bgwindow.cpp:415
+#10 0xb7da58a7 in BetaGUI::GUI::draw (this=0x97201a8) at bggui.cpp:381
+- QuadRenderer::checkHardwareBuffer to test HardwareBuffer
 
 * v 0.0.5-167
 - Font::getPass (and related stuff) removed

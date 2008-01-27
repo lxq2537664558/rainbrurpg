@@ -40,6 +40,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
     class Font;
+    class TextSettings;
   }
 }
 // End of forward declarations
@@ -56,7 +57,7 @@ namespace RainbruRPG{
     class soBetaGui : public SkinOverlay{
     public:
       soBetaGui();
-      ~soBetaGui();
+      virtual ~soBetaGui();
 
       virtual void drawWindow(QuadRenderer*, Rectangle, String);
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
@@ -80,31 +81,17 @@ namespace RainbruRPG{
 
 
       // ============= FONTS VALUES =================
-      /** The font name used to draw the PushButton */
-      Ogre::String fnPushButton;
-      /** The font size used to draw the PushButton */
-      unsigned int fsPushButton;
+      /** The text setting for drawing title bar caption */
+      TextSettings* tsTitleBar;
 
-      /** The font name used to draw captions */
-      Ogre::String fnCaption;
-      /** The font size used to draw captions */
-      unsigned int fsCaption;
+      /** The text setting for drawing push button caption */
+      TextSettings* tsPushButton;
 
-      /** The font used in window's titlebar */
-      Font* titleFont;
-      /** The font used in PushButtons */
-      Font* buttonFont;
+      /** The text setting for drawing label caption */
+      TextSettings* tsLabel;
 
-      /** The color of the label text */
-      ColourValue labelColor;
-      /** The font used in Label */
-      Font* labelFont;
-
-       /** The color of the text input text */
-      ColourValue textInputColor;
-      /** The font used in text input */
-      Font* textInputFont;
-      
+      /** The text setting for drawing rext input content */
+      TextSettings* tsTextInput;
 
       /** The texture of the window background */
       TexturePtr mWindowTexture;

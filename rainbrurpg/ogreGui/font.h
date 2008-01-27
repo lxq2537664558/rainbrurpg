@@ -31,7 +31,7 @@
 
 #include <string>
 
-#include <OgrePrerequisites.h>
+//#include <OgrePrerequisites.h>
 #include <OgreColourValue.h>
 #include <OgreRectangle.h>
 #include <OgreTexture.h>

@@ -27,6 +27,7 @@ h_sources= bgbutton.h			\
 	   sobetagui.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
+	   textsettings.h		\
 	   titlebar.h			\
 	   vector3.h			\
 	   widget.h
@@ -56,6 +57,7 @@ cc_sources= bgbutton.cpp		\
 	    sobetagui.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\
+	    textsettings.cpp		\
 	    titlebar.cpp		\
 	    vector3.cpp			\
 	    widget.cpp

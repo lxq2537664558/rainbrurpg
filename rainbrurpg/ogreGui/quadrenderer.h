@@ -45,6 +45,15 @@
 #include <OgreRenderOperation.h>
 #include <OgreDefaultHardwareBufferManager.h>
 
+// Forward declarations
+namespace RainbruRPG {
+  namespace OgreGui {
+    class TextSettings;
+  }
+}
+// End of forward declarations
+
+
 /** The maximum number of vertices
   *
   * It is VERTEX_COUNT/6 to know the quad limit.
@@ -80,7 +89,7 @@ namespace RainbruRPG {
       QBM_GLOBAL,       //!< Use global alpha value
     };
    
-    /** A test class drawing Ogre primitive
+    /** A class drawing Ogre primitive
       *
       * This class is used to draw primitives with scissor support. It was
       * originally implemented when searching ScrollPane implementation. There
@@ -124,10 +133,10 @@ namespace RainbruRPG {
       void setAlpha(float);
 
       void drawRectangle(const Ogre::Rectangle&);
-      void drawText(Font*, const ColourValue& ,const string&, 
-		    const Rectangle&, bool wordwrap=true, 
-		    VerticalAlignType vVertAlign=VAT_TOP, 
-		    HorizontalAlignType vHorzAlign=HAT_LEFT);
+      void drawText(TextSettings* ,const string&, const Rectangle&, 
+		    bool wordwrap=true);
+
+      void drawFilledRectangle( const Rectangle&, const ColourValue& );
 
       void addGlyph( const Rectangle&,const Rectangle&,bool vUVRelative=true);
       void disableScissor(void);
@@ -138,7 +147,9 @@ namespace RainbruRPG {
       void setBlendMode(tQuadRendererBlendMode);
 
     protected:
-      void setupHardwareBuffer();
+      void setupHardwareBuffer(void);
+      void checkHardwareBuffer(GuiVertex*);
+
       void setCorners(int, int, int, int);
       void feedVectors(vector<Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
       void drawQuad(void);
