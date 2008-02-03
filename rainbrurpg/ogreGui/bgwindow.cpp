@@ -99,8 +99,12 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   *
   */
 BetaGUI::Window::~Window(){
+  
+  mTitleBar=NULL;
+  mResizeGrip=NULL;
+
   LOGI("Window destructor called");
-  mGUI->destroyWindow(this->getName());
+  mGUI->removeWindow(this);
 
   LOGI("Cleaning buttonList");
   for(unsigned int i=0;i<buttonList.size();i++)
@@ -113,8 +117,6 @@ BetaGUI::Window::~Window(){
   LOGI("Cleaning widgetList");
   for(unsigned int i=0;i<widgetList.size();i++)
     delete widgetList[i];
-  
-  mTitleBar=NULL;
 }
 
 /** Handle a key pressed event
@@ -132,7 +134,7 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
     return false;
   }
 
-  // If the mouse pointer is not in the TextInput
+  // If the mouse pointer is not in the Window
   if(!(px>=corners.left&&py>=corners.top)||
      !(px<=corners.right&&py<=corners.bottom)){
     return false;
@@ -157,149 +159,6 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
 
   // TextInput::setValue automatically update the contentOverlay text
   activeTextInput->setValue(activeTextInput->getValue()+k);
-
-  return true;
-}
-
-/** Handle a mouse event
-  *
-  * The mouse event handling loop. For more information on mouse event 
-  * handling from Widget, please see the \link 
-  * RainbruRPG::OgreGui::Widget::injectMouse() Widget::injectMouse() \endlink
-  * function.
-  *
-  * \param px The X position of the mouse
-  * \param py The X position of the mouse
-  * \param LMB The left mouse button status
-  *
-  * \return \c true if the event is handled or \c false otherwise
-  *
-  */
-bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
-  
-  bool inTitleBar=false;
-  // Handle mouse move cursor
-  if (mTitleBar){
-    if (!mTitleBar->in(px, py, corners.left, corners.top)){
-      mGUI->getMousePointer()->setState(MPS_MOVE);
-      inTitleBar=true;
-   }
-    else{
-      mGUI->getMousePointer()->setState(MPS_ARROW);
-    }
-  }
-
-  /* Handle mouse resize cursor 
-   *
-   * Do not set again MPS_ARROW if we are in TitleBar.
-   *
-   */
-  if (mResizeGrip && !inTitleBar){
-    if (!mResizeGrip->in(px, py, corners.left, corners.top)){
-      mGUI->getMousePointer()->setState(MPS_RESIZE);
-    }
-    else{
-      mGUI->getMousePointer()->setState(MPS_ARROW);
-     }
-  }
-
-  // Handles the widget mouse events
-  for(unsigned int i=0;i<widgetList.size();i++){
-    // If a widget handles the event, we stop the event handling loop
-    if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
-      return true;
-    }
-  }
-
-
-  if(!(px>=corners.left&&py>=corners.top)
-     ||!(px<=corners.right&&py<=corners.bottom)){
-    if(activeButton){
-      activeButton->activate(false);
-    }
-    return false;
-  }
-  
-  if(activeButton){
-    activeButton->activate(false);
-  }
-  
-  for(unsigned int i=0;i<buttonList.size();i++){
-    if (buttonList[i]->in(px, py, corners.left, corners.top))
-      continue;
-    
-    if(activeButton){
-      activeButton->activate(false);
-    }
-    
-    activeButton=buttonList[i];
-    activeButton->activate(true);
-    if(!LMB)
-      return true;
-    
-    if(activeTextInput){
-      activeTextInput->deactivate();
-      activeTextInput=NULL;
-    }
-    
-    switch(activeButton->getCallback().getType()){
-    default: 
-      return true;
-      
-    case 1:
-      activeButton->getCallback().fp(activeButton);
-      return true;
-      
-    case 2:
-      activeButton->getCallback().LS->onButtonPress(activeButton);
-      return true;
-      
-    case 3: // We start moving the Window
-      GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
-      movingDevX=px-corners.left;
-      movingDevY=py-corners.top;
-      this->move(px, py);
-      return true;
-      
-    case 4: // We start resizing this window
-      GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
-      movingDevX=corners.right-px;
-      movingDevY=corners.bottom-py;
-      this->resize(px, py);
-      
-      if(mTitleBar){
-	mTitleBar->setWidth(getWidth());
-      }
-      
-      return true;
-    }
-  }
-  
-  if (!LMB)
-    return true;
-  
-  for(unsigned int i=0;i<textInputList.size();i++){
-    if(textInputList[i]->in( px, py, corners.left, corners.top))
-      continue;
-    
-
-    /* The current indexed textInputList element is under the mouse
-     * activeTextInput is set as a pointer to it.
-     * And we change its texture to graphically mark it as active.
-     *
-     * We also call the deactivateAllOtherTextInput to get only one
-     * TextInput activated.
-     *
-     */
-    activeTextInput=textInputList[i];
-    activeTextInput->activate();
-    deactivateAllOtherTextInput(activeTextInput);
-    return true;
-  }
-
-  if(activeTextInput){
-    activeTextInput->deactivate();
-  }
 
   return true;
 }
@@ -534,4 +393,237 @@ void BetaGUI::Window::deactivateAllOtherTextInput(BetaGUI::TextInput* ti){
       (*iter)->deactivate();
     }
   }
+}
+
+/** Is the given position over a TextInput
+  * 
+  * This function is used by the \ref BetaGUI::Window::check() "check"
+  * function to know if we need to set a text edit mouse cursor.
+  *
+  * \param px, py The mouse position
+  *
+  */
+bool BetaGUI::Window::isMouseOverTextInput(unsigned int px, unsigned int py){
+  TextInputListIterator iter;
+
+  for(iter=textInputList.begin();iter!=textInputList.end();iter++){
+    if (!(*iter)->in(px, py, corners.left, corners.top)){
+	return true;
+    }
+  }
+
+  return false;
+}
+
+/** Handle the MouseMove cursor
+  *
+  * \param px, py          The mouse position
+  * \param leftMouseButton The mouse left button state
+  *
+  * \return \true if the event is handled
+  *
+  */
+bool BetaGUI::Window::
+handleMouseMoveCursor(unsigned int px, unsigned int py, bool leftMouseButton){
+  // Handle mouse move cursor
+  if (mTitleBar){
+    if (!mTitleBar->in(px, py, corners.left, corners.top)){
+      mGUI->getMousePointer()->setState(MPS_MOVE);
+      return true;
+    }
+    else{
+      mGUI->getMousePointer()->setState(MPS_ARROW);
+      return false;
+    }
+  }
+
+}
+
+/** Handle the MouseResize cursor
+  *
+  * \param px, py          The mouse position
+  * \param leftMouseButton The mouse left button state
+  * \param inTitleBar      Are we in TitleBar
+  *
+  * \return \true if the event is handled
+  *
+  */
+bool BetaGUI::Window::
+handleMouseResizeCursor(unsigned int px, unsigned int py, bool leftMouseButton,
+			bool inTitleBar){
+  /* Handle mouse resize cursor 
+   *
+   * Do not set again MPS_ARROW if we are in TitleBar.
+   *
+   */
+  if (mResizeGrip && !inTitleBar){
+    if (!mResizeGrip->in(px, py, corners.left, corners.top)){
+      mGUI->getMousePointer()->setState(MPS_RESIZE);
+      return true;
+    }
+    else{
+      mGUI->getMousePointer()->setState(MPS_ARROW);
+      return false;
+     }
+  }
+
+}
+
+/** Handle the MouseText cursor
+  *
+  * \param px, py          The mouse position
+  * \param leftMouseButton The mouse left button state
+  *
+  * \return \true if the event is handled
+  *
+  */
+bool BetaGUI::Window::
+handleMouseTextCursor(unsigned int px, unsigned int py, bool leftMouseButton){
+  
+  if (isMouseOverTextInput( px, py )){
+    mGUI->getMousePointer()->setState(MPS_TEXT);
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+/** Handle the MouseEvent for others widgets
+  *
+  * \param px, py          The mouse position
+  * \param leftMouseButton The mouse left button state
+  *
+  * \return \true if the event is handled
+  *
+  */
+bool BetaGUI::Window::
+handleWidgetMouseEvents(unsigned int px, unsigned int py, bool leftMouseButton){
+  // Handles the widget mouse events
+  for(unsigned int i=0;i<widgetList.size();i++){
+    // If a widget handles the event, we stop the event handling loop
+    if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
+      return true;
+    }
+  }
+}
+
+/** Handle a mouse event
+  *
+  * The mouse event handling loop. For more information on mouse event 
+  * handling from Widget, please see the \link 
+  * RainbruRPG::OgreGui::Widget::injectMouse() Widget::injectMouse() \endlink
+  * function.
+  *
+  * \param px The X position of the mouse
+  * \param py The X position of the mouse
+  * \param LMB The left mouse button status
+  *
+  * \return \c true if the event is handled or \c false otherwise
+  *
+  */
+bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
+
+
+  bool inTitleBar=handleMouseMoveCursor(px,py,LMB);
+
+  // If we are in titlebar but the mouse button is up, all is done
+  if (inTitleBar && !LMB) return true;
+
+  if (handleMouseResizeCursor(px, py, LMB, inTitleBar)) return true;
+  if (handleMouseTextCursor(px, py, LMB)) return true;
+  if (handleWidgetMouseEvents(px, py, LMB)) return true;
+
+
+  // deactivate button if not in window
+  if(!(px>=corners.left&&py>=corners.top)
+     ||!(px<=corners.right&&py<=corners.bottom)){
+    if(activeButton){
+      activeButton->activate(false);
+    }
+    return false;
+  }
+  
+  if(activeButton){
+    activeButton->activate(false);
+  }
+  
+  // handle button events
+  for(unsigned int i=0;i<buttonList.size();i++){
+    if (buttonList[i]->in(px, py, corners.left, corners.top))
+      continue;
+    
+    if(activeButton){
+      activeButton->activate(false);
+    }
+    
+    activeButton=buttonList[i];
+    activeButton->activate(true);
+    if(!LMB)
+      return true;
+    
+    if(activeTextInput){
+      activeTextInput->deactivate();
+      activeTextInput=NULL;
+    }
+    
+    switch(activeButton->getCallback().getType()){
+    default: 
+      return true;
+      
+    case 1:
+      activeButton->getCallback().fp(activeButton);
+      return true;
+      
+    case 2:
+      activeButton->getCallback().LS->onButtonPress(activeButton);
+      return true;
+      
+    case 3: // We start moving the Window
+      GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
+      movingDevX=px-corners.left;
+      movingDevY=py-corners.top;
+      this->move(px, py);
+      return true;
+      
+    case 4: // We start resizing this window
+      GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
+      movingDevX=corners.right-px;
+      movingDevY=corners.bottom-py;
+      this->resize(px, py);
+      
+      if(mTitleBar){
+	mTitleBar->setWidth(getWidth());
+      }
+      
+      return true;
+    }
+  }
+ 
+  if (!LMB)
+    return true;
+  
+  for(unsigned int i=0;i<textInputList.size();i++){
+    if(textInputList[i]->in( px, py, corners.left, corners.top))
+      continue;
+    
+    /* The current indexed textInputList element is under the mouse
+     * activeTextInput is set as a pointer to it.
+     * And we change its texture to graphically mark it as active.
+     *
+     * We also call the deactivateAllOtherTextInput to get only one
+     * TextInput activated.
+     *
+     */
+    activeTextInput=textInputList[i];
+    activeTextInput->activate();
+    deactivateAllOtherTextInput(activeTextInput);
+    return true;
+  }
+
+  if(activeTextInput){
+    activeTextInput->deactivate();
+  }
+
+  return true;
 }

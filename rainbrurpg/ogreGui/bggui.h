@@ -103,7 +103,7 @@ namespace BetaGUI {
     void injectMouseButtonPressed(const std::string&);
     void injectMouseButtonReleased();
 
-    void destroyWindow(const Ogre::String&);
+    void removeWindow(Window*);
     
     OverlayContainer* createOverlay(String,Vector2,Vector2,String m="",
 				    String="",bool a=true);

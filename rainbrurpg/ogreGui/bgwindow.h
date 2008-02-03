@@ -47,7 +47,7 @@ namespace BetaGUI {
     *
     * You must call \ref BetaGUI::GUI::addWindow() "GUI::addWindow"
     * to get it to work. But you don't need to call 
-    * \ref BetaGUI::GUI::destroyWindow() "GUI::destroyWindow" as
+    * \ref BetaGUI::GUI::removeWindow() "GUI::removeWindow" as
     * this method is automatically called by ~Window().
     *
     * To get a mouse over when the mouse move over a Button, you
@@ -93,8 +93,16 @@ namespace BetaGUI {
     virtual void draw(QuadRenderer*);
     void deactivate(void);
 
+
   protected:
     void deactivateAllOtherTextInput(BetaGUI::TextInput*);
+    bool isMouseOverTextInput(unsigned int, unsigned int);
+
+    bool handleMouseMoveCursor(unsigned int, unsigned int, bool); 
+    bool handleMouseResizeCursor(unsigned int, unsigned int, bool, bool); 
+    bool handleMouseTextCursor(unsigned int, unsigned int, bool); 
+
+    bool handleWidgetMouseEvents(unsigned int, unsigned int, bool);
 
     /** A constant iterator for TextInput lit */
     typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;

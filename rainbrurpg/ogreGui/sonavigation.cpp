@@ -228,3 +228,15 @@ drawTextInput(QuadRenderer* qr, Ogre::Rectangle dim, String caption,
   LOGW("soNavigation cannot create TextInput");
 
 }
+
+/** Draw a vertical scrollbar
+  * 
+  * \param qr The QuadRenderer used to draw
+  * \param vs The scrollbar to draw
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawVerticalScrollbar( QuadRenderer* qr, VScrollBar* vs ){
+  LOGW("soNavigation cannot create VerticalScrollbar");
+
+}

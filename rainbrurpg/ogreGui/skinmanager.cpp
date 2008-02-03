@@ -72,6 +72,7 @@ RainbruRPG::OgreGui::SkinOverlay* RainbruRPG::OgreGui::SkinManager::
 getSkin(Widget* w){
 
   OgreGuiSkinID s= w->getSkinId();
+  LOGA( s>=0, "Negative SkinId. Program should crash.");
 
   if (s==OSI_DEFAULT){
     s=defaultSkin;
@@ -82,11 +83,7 @@ getSkin(Widget* w){
     return getSkin(parent);
   }
 
-#ifdef RAINBRU_RPG_DEBUG
-  if (skins[s]==NULL){
-    LOGW("The requested skin is NULL")
-  }
-#endif // DEBUG
+  LOGA( skins[s], "The requested skin is NULL. Program should crash.");
 
   return skins[s];
 }

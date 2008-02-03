@@ -83,15 +83,15 @@ void BetaGUI::GUI::injectBackspace(unsigned int x, unsigned int y){
   *
   * This is automatically called by the Window destructor.
   *
-  * \param name The name of the window to be deleted
+  * \param win A pointer to the window to be deleted
   *
   */
-void BetaGUI::GUI::destroyWindow(const Ogre::String& name){
+void BetaGUI::GUI::removeWindow(Window* win){
   // Do not use the WindowListIterator typedef as it is a const_iterator
   // and we need a non-const one to use windowList.erase(iter).
   list<Window*>::iterator iter;
   for(iter=windowList.begin();iter!=windowList.end();iter++){
-    if((*iter)->getName()==name){
+    if((*iter)==win){
       windowList.erase(iter);
       // Going out of this function
       return;
@@ -271,9 +271,16 @@ Ogre::Overlay* BetaGUI::GUI::getRootOverlay(void){
 void BetaGUI::GUI::setGuiTransparency(float f){
 
   this->guiTransparency=f;
-  //  for(unsigned int i=0;i<windowList.size();i++){
-  for(WindowListIterator iter=windowList.begin();iter!=windowList.end();iter++){
-    (*iter)->setTransparency(f);
+  if (windowList.size()>0){
+    WindowListIterator iter;
+    for(iter=windowList.begin(); iter!=windowList.end(); iter++){
+      LOGA((*iter), "Setting transparency to NULL window. "
+	   "Program should crash.");
+      (*iter)->setTransparency(f);
+    }
+  }
+  else{
+    LOGW("windowList.size=0");
   }
 }
 
@@ -375,11 +382,14 @@ void BetaGUI::GUI::addDialog(Window* win){
 void BetaGUI::GUI::draw(){
   mQuadRenderer->begin();
 
-  list<Window*>::iterator iter;
-  for(iter=windowList.begin();iter!=windowList.end();iter++){
-    // Each Window should call reset() itself
-    (*iter)->draw(mQuadRenderer);
+  if (windowList.size()>0){
+    list<Window*>::iterator iter;
+    for(iter=windowList.begin();iter!=windowList.end();iter++){
+      // Each Window should call reset() itself
+      (*iter)->draw(mQuadRenderer);
+    }
   }
+
   mQuadRenderer->end();
 }
 

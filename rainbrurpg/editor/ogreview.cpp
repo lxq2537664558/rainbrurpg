@@ -189,6 +189,15 @@ void OgreView::setupView(){
 
 #else
 	params["externalWindowHandle"] = Ogre::StringConverter::toString((size_t)(HWND)winId());
+
+	LOGCATS("Handle=");
+	LOGCATI((unsigned long)xInfo.display());
+	LOGCATS(":");
+	LOGCATI((unsigned int)xInfo.screen());
+	LOGCATS(":");
+	LOGCATI((unsigned long)q_parent->winId());
+	LOGCAT();
+
 #endif
 
     mRenderWindow = mRoot->createRenderWindow("View", width(), height(), true, &params);

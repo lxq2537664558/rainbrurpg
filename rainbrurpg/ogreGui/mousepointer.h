@@ -50,9 +50,10 @@ namespace RainbruRPG{
       *
       */
     typedef enum tMousePointerState{
-      MPS_ARROW,  //!< The normal state
-      MPS_RESIZE, //!< We're resizing a window
-      MPS_MOVE,   //!< We're moving a window
+      MPS_ARROW  =0,  //!< The normal state
+      MPS_RESIZE,     //!< We're resizing a window
+      MPS_MOVE,       //!< We're moving a window
+      MPS_TEXT,       //!< We're about to edit text
     };
 
     /** Draws and handles the OgreGui mouse pointer
@@ -84,6 +85,8 @@ namespace RainbruRPG{
       TexturePtr mMoveTexture;
       /** The texture used to draw pointer */ 
       TexturePtr mResizeTexture;
+      /** The texture used to draw pointer */ 
+      TexturePtr mTextTexture;
 
       /** The width of the pointer texture in pixels */
       unsigned int pointerWidth;

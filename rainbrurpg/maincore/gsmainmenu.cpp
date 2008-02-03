@@ -28,7 +28,7 @@
 
 #include "bgcallback.h"
 #include "pushbutton.h"
-#include "scrollbar.h"
+#include "vscrollbar.h"
 #include "scrollpane.h"
 
 #include <OgreViewport.h>
@@ -169,36 +169,12 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 		      BetaGUI::OWT_RESIZE_AND_MOVE, "Test window", mGUI);
   mGUI->addWindow(testWin);
 
-  /*
-  // First overlay of the scrollPane
-  OverlayContainer* oc1=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", "test01"));
-  testWin->getOverLayContainer()->addChild(oc1);
-  oc1->setMetricsMode(GMM_PIXELS);
-  oc1->setDimensions(200, 200);
-  oc1->setPosition(10, 10);
-
-  Matrix4 m4;
-  m4.makeTrans(0.2, 0, 0);
-
-  // Child overlay of the scrollPane
-  OverlayContainer* oc2=static_cast<OverlayContainer*>
-    (OverlayManager::getSingleton().createOverlayElement("Panel", "test02"));
-  oc2->setMetricsMode(GMM_PIXELS);
-  oc2->setDimensions(512, 512);
-  oc2->setPosition(0, 0);
-  oc2->setMaterialName("bgui.test");
-  oc1->addChild(oc2);
-  oc2->getMaterial()->getTechnique(0)->getPass(0)->getTextureUnitState(0)
-    ->setTextureScroll(0.2, 0.2);
-  */
-
-  /*  Vector4 sbDim(300-16,30,14,300-60);
-  ScrollBar* sb=new ScrollBar(sbDim, testWin, OST_VERTICAL);
+  Vector4 sbDim(300-16,30,14,300-60);
+  ScrollBar* sb=new VScrollBar(sbDim, testWin, OSI_BETAGUI);
   testWin->addWidget(sb);
   sb->setMax(500);
   sb->setSteps(20,50);
-  ScrollPane* sp=new ScrollPane(sbDim, testWin);
+  /*  ScrollPane* sp=new ScrollPane(sbDim, testWin);
   testWin->addWidget(sp);
   */
 

@@ -39,6 +39,7 @@ namespace RainbruRPG{
     class Font;
     class QuadRenderer;
     class TextSettings;
+    class VScrollBar;
   }
 }
 // End of forward declarations
@@ -74,6 +75,7 @@ namespace RainbruRPG{
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
       virtual void createVerticalScrollbar(const String&, Vector4, Window*);
+      virtual void drawVerticalScrollbar( QuadRenderer*, VScrollBar* );
 
     private:
       /** The font used in PushButtons */

@@ -43,6 +43,7 @@ namespace BetaGUI{
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
+    class VScrollBar;
   }
 }
 // End of forward declarations
@@ -69,17 +70,6 @@ namespace RainbruRPG{
     class SkinOverlay{
     public:
       SkinOverlay(std::string n="unamedSkinOverlay");
-
-      Ogre::OverlayContainer* getOverlayByName(Ogre::String);
-
-      void createOverlay(String, Vector4,String, Overlay*);
-      void createOverlay(String, Vector4, String, OverlayContainer*);
-
-      void createCaption(String, Vector4, String, String, 
-			 unsigned int, OverlayContainer*);
-
-      virtual void setTransparency(Ogre::OverlayElement*, float f);
-      virtual void setCaptionTransparency(Ogre::OverlayElement*, float f);
 
       /** Create a window
         *
@@ -173,7 +163,7 @@ namespace RainbruRPG{
      virtual void drawLabel(QuadRenderer*qr, Rectangle dim, String caption, 
 			    Window* parent)=0;
 
-    /** Creates a vertical scrollbar
+     /** Creates a vertical scrollbar
        *
        * \param name    The internal name of the ResizeGrip (must be unique)
        * \param dim     The widget's dimension in pixels in a 
@@ -184,7 +174,14 @@ namespace RainbruRPG{
      virtual void createVerticalScrollbar( const String& name, Vector4 dim, 
 					   Window* parent)=0;
 
-     virtual void activateButton(BetaGUI::Button* button, bool active);
+
+     /** Draw a vertical scrollbar
+       *  
+       * \param qr The QuadRenderer used to draw
+       * \param sb The scrollbar to draw
+       *
+       */
+     virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* sb )=0;
 
      virtual unsigned int getDialogBorderSize(void);
 

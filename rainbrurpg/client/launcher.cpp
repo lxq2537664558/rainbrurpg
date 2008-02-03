@@ -184,7 +184,7 @@ FX::FXImage* RainbruRPG::Gui::Launcher::loadImage(const char* filename){
 
 /** The signal receiver for the Options button
   *
-  * It creates a LauncherOptions instance, asks theOptionManager to load
+  * It creates a LauncherOptions instance, asks the OptionManager to load
   * the first snapshot found and execute the LauncherOptions dialog.
   *
   * \param o A parameter used for FOX callbacks

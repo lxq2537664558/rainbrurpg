@@ -1,13 +1,12 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Multicolor font
+- Window cannot be moved or resized
+- Implementation of VScrollBar
+   Using SkinOverlay::drawVerticalScrollBar();
+- HScrollBar implementation
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
-
-* Is FOX using registry under win32 ?
-- Testing how FOX deals with the win32 registry
-  Maybe testing it under wine
 
 * Unittest failed in production mode (no --enable-debug)
 - HTTP response 401 "Unauthorized"
@@ -116,8 +115,20 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-169
+
 * v 0.0.5-168
-- (12) Text background drawn using mColor
+- Removing SkinOverlay::setTransparency() and setCaptionTransparency()
+- Removing SkinOverlay::createOverlay() and createCaption()  	
+- Removing SkinOverlay::getOverlayByName( Ogre::String s )   	
+- ScrollBar become a superClass
+- SEGFAULT when coming back from gsConnection to gsMainMenu
+   Many of SEGFAULT fixed during window removal
+- data/gui/ogreGui/test.* removed
+- A mouse over cursor for text edit
+   Window::isMouseOverTextInput()
+- Centered text drawn again
+- Text background drawn using mColor
 - Text background color uses global alpha
    Must set quadrenderer blend mode to QBM_ALPHA
 - Check that QuadRenderer's HardwareVertexBuffer pointers are set to NULL

@@ -66,7 +66,7 @@ am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
 	scrollbar.lo scrollpane.lo skinmanager.lo skinoverlay.lo \
 	sobetagui.lo sonavigation.lo staticimage.lo textsettings.lo \
-	titlebar.lo vector3.lo widget.lo
+	titlebar.lo vector3.lo vscrollbar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -263,6 +263,7 @@ h_sources = bgbutton.h			\
 	   textsettings.h		\
 	   titlebar.h			\
 	   vector3.h			\
+	   vscrollbar.h			\
 	   widget.h
 
 cc_sources = bgbutton.cpp		\
@@ -292,6 +293,7 @@ cc_sources = bgbutton.cpp		\
 	    textsettings.cpp		\
 	    titlebar.cpp		\
 	    vector3.cpp			\
+	    vscrollbar.cpp		\
 	    widget.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
@@ -407,6 +409,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/textsettings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/titlebar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vector3.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vscrollbar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Plo@am__quote@
 
 .cpp.o:

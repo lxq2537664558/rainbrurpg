@@ -11,6 +11,7 @@ datafiles_DATA= bgui.button.active.png     		\
 		bgui.pointer.png                	\
 		bgui.pointer.move.png                	\
 		bgui.pointer.resize.png                	\
+		bgui.pointer.text.png          		\
 		bgui.window.resize.png          	\
 		sample.fontdef      			\
 		bgui.textinput.active.png       	\
@@ -30,6 +31,4 @@ datafiles_DATA= bgui.button.active.png     		\
 		\
 		nav.material				\
 		nav.button.png				\
-		nav.button.active.png			\
-		\
-		test.png test.material
+		nav.button.active.png

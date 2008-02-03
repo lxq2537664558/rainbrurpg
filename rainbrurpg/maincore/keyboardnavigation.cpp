@@ -28,14 +28,6 @@
 
 #include "keyboardnavigation.h"
 
-/** Specifies the parent or container.
-  *
-  * Used to trap Tab and Shift+Tab keys and relay them to the 
-  * list of tab navigation. 
-  *
-  * \param window The name of the window to add
-  *
-  */
 /*void RainbruRPG::Gui::KeyboardNavigation::setParent(const CEGUI::String& window){
 
   parentName=window;
@@ -51,13 +43,6 @@
        CEGUI::Event::Subscriber(&KeyboardNavigation::_onParentActivated, this));
 }
 */
-/** Adds a widget to the list of tab navigation.
-  *
-  * The order in which they are added corresponds to the tab order. 
-  *
-  * \param window The name of the window to add
-  *
-  */
 /*void RainbruRPG::Gui::KeyboardNavigation::addWidget(const CEGUI::String& window){
   // Add a widget to the list of widget navigation
   CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -78,13 +63,6 @@
   _lastKnownFocus = _tabNavigation.begin(); 
 }
 */
-/** Adds a TabControl widget.
-  *
-  * Its tab buttons will be added to the list of tab navigation. 
-  *
-  * \param tabControl A pointer to the Tab Control to add
-  *
-  */
 /*void RainbruRPG::Gui::KeyboardNavigation::
 addWidget(const CEGUI::TabControl* tabControl){
 

@@ -26,53 +26,26 @@
 
 #include <logger.h>
 
-#include <OGRE/OgreStringConverter.h>
+#include <OgreStringConverter.h>
 
 /** The scrollbar constructor
   *
   * \param dim    The dimensions of the scrollbar in pixels
   * \param parent The parent of the scrollbar
-  * \param type   The type of scrollbar
   * \param sid    The skin identifier
   *
   */
 RainbruRPG::OgreGui::ScrollBar::
-ScrollBar(Vector4 dim, Window* parent, OgreGuiScrollbarType type, 
-	  OgreGuiSkinID sid):
+ScrollBar(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   Widget(dim, parent, sid),
-  mType(type),
   mMaxValue(100),
   cursorPos(14), // Set to the top arrow width
   mArrowStep(5),
   mBigStep(20),
   cursorDev(0),
   mValue(0),
-  movingCursor(false),
-  sk(NULL),
-  topArrow(NULL),
-  bodyTop(NULL),
-  bodyMid(NULL),
-  bodyBot(NULL),
-  botArrow(NULL),
-  cursor(NULL)
+  movingCursor(false)
 {
-  String uniqueName="BetaGUI.sb"+StringConverter::toString(parent->getGUI()
-						     ->getUniqueId());
-
-  // Create the window
-  sk=SkinManager::getSingleton().getSkin(this);
-  sk->createVerticalScrollbar( uniqueName, dim, parent );
-
-  topArrow=sk->getOverlayByName(uniqueName+"ta");
-  bodyTop =sk->getOverlayByName(uniqueName+"bt");
-  bodyMid =sk->getOverlayByName(uniqueName+"bm");
-  bodyBot =sk->getOverlayByName(uniqueName+"bb");
-  botArrow=sk->getOverlayByName(uniqueName+"ba");
-  cursor=sk->getOverlayByName(uniqueName+"c");
-
-  mnCursor      =cursor->getMaterialName();
-  mnTopArrow    =topArrow->getMaterialName();
-  mnBottomArrow =botArrow->getMaterialName();
 
 }
 
@@ -90,12 +63,7 @@ RainbruRPG::OgreGui::ScrollBar::~ScrollBar(){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setTransparency(float f){
-  sk->setTransparency(topArrow, f);
-  sk->setTransparency(bodyTop, f);
-  sk->setTransparency(bodyMid, f);
-  sk->setTransparency(bodyBot, f);
-  sk->setTransparency(botArrow, f);
-  sk->setTransparency(cursor, f);
+
 }
 
 /** Change the state of the scrollbar cursor
@@ -104,12 +72,7 @@ void RainbruRPG::OgreGui::ScrollBar::setTransparency(float f){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setCursorActive(bool active){
-  if (active){
-    cursor->setMaterialName(mnCursor+".active");
-  }
-  else{
-    cursor->setMaterialName(mnCursor);
-  }
+
 }
 
 /** Change the state of the scrollbar top arrow
@@ -118,12 +81,7 @@ void RainbruRPG::OgreGui::ScrollBar::setCursorActive(bool active){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setTopArrowActive(bool active){
-  if (active){
-    topArrow->setMaterialName(mnTopArrow+".active");
-  }
-  else{
-    topArrow->setMaterialName(mnTopArrow);
-  }
+
 }
 
 /** Change the state of the scrollbar bottom arrow
@@ -132,115 +90,7 @@ void RainbruRPG::OgreGui::ScrollBar::setTopArrowActive(bool active){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setBottomArrowActive(bool active){
-  if (active){
-    botArrow->setMaterialName(mnBottomArrow+".active");
-  }
-  else{
-    botArrow->setMaterialName(mnBottomArrow);
-  }
-}
 
-/** Inject a mouse event
-  *
-  * \param mouseX          The mouse position
-  * \param mouseY          The mouse position
-  * \param leftMouseButton \c true if the mouse boutton is pressed
-  *
-  * \return \c true if the mouse event is handled, otherwise return \c false
-  *
-  */
-bool RainbruRPG::OgreGui::ScrollBar::
-injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
-
-  // y, x, h and w are the position and size of scrollbar from parent window
-
-  // If mouse button is released, we do not move the cursor
-  if (!leftMouseButton){
-    movingCursor=false;
-    cursorDev=0;
-  }
-  else{
-    // The mouse button is pressed, are we moving cursor ?
-    if (movingCursor){
-      cursorPos=mouseY-corners.top-cursorDev;
-
-      if (cursorPos< 14)  cursorPos=14;
-      else if (cursorPos> getHeight()-28)cursorPos=getHeight()-28;
-
-      cursor->setPosition(corners.left, corners.top+cursorPos);
-      getValueFromCursor();
-      changeCursorValue(mValue);
-   }
-  }
-
-  // If the mouse is inside the scrollbar
-  if (mouseX>corners.left && mouseY>corners.top && mouseX<corners.right 
-      && mouseY< corners.bottom){
-    // Handling top arrow
-    if (mouseY<corners.top+14){
-      if (!movingCursor){
-	setTopArrowActive(true);
-	if (leftMouseButton){
-	  mValue-=mArrowStep;
-	  if (mValue<0) mValue=0;
-	  moveCursorToValue();
-	  changeCursorValue(mValue);
-	}
-      }
-    }
-    // Handling the bottom arrow
-    else if (mouseY>corners.bottom-14){
-      if (!movingCursor){
- 	setBottomArrowActive(true);
-	if (leftMouseButton){
-	  mValue+=mArrowStep;
-	  if (mValue>mMaxValue) mValue=mMaxValue;
-	  moveCursorToValue();
-	  changeCursorValue(mValue);
-	}
-      }
-    }
-    // Handling the cursor
-    else if (mouseY>corners.top+cursorPos && mouseY<corners.top+cursorPos+14){
-      setCursorActive(true);
-      setTopArrowActive(false);
-      setBottomArrowActive(false);
-      if (leftMouseButton){
-	if (!movingCursor){
-	  cursorDev=mouseY-(corners.top+cursorPos);
-	  movingCursor=true;
-	}
-      }
-    }
-    else{
-      if (leftMouseButton){
-	if (mouseY<corners.top+cursorPos){
-	  mValue-=mBigStep;
-	  if (mValue<0) mValue=0;
-	  moveCursorToValue();
-	  changeCursorValue(mValue);
-	}
-	else if(mouseY>corners.top+cursorPos+14){
-	  mValue+=mBigStep;
-	  if (mValue>mMaxValue) mValue=mMaxValue;
-	  moveCursorToValue();
-	  changeCursorValue(mValue);
-	}
-      }
-
-      setCursorActive(false);
-      setTopArrowActive(false);
-      setBottomArrowActive(false);
-    }
-    
-    return true;
-  }
-  else{
-    setCursorActive(false);
-    setTopArrowActive(false);
-    setBottomArrowActive(false);
-    return false;
-  }
 }
 
 /** Set the max value
@@ -293,7 +143,6 @@ void RainbruRPG::OgreGui::ScrollBar::moveCursorToValue(void){
   int max=getHeight() - 28 - 14;
   int pos=(max*mValue)/mMaxValue;
   cursorPos=pos+14;
-  cursor->setPosition(corners.left, corners.top + cursorPos);
 }
 
 /** Get the value from the cursor position

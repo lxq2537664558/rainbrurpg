@@ -30,6 +30,7 @@ h_sources= bgbutton.h			\
 	   textsettings.h		\
 	   titlebar.h			\
 	   vector3.h			\
+	   vscrollbar.h			\
 	   widget.h
 
 
@@ -60,6 +61,7 @@ cc_sources= bgbutton.cpp		\
 	    textsettings.cpp		\
 	    titlebar.cpp		\
 	    vector3.cpp			\
+	    vscrollbar.cpp		\
 	    widget.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)

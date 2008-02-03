@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jan 2008 : Become a virtual class
  * - 21 nov 2007 : starting implementation
  *         
  */
@@ -28,11 +29,12 @@
 #ifndef _OGRE_GUI_SCROLLBAR_H_
 #define _OGRE_GUI_SCROLLBAR_H_
 
-#include <OGRE/OgreVector4.h>
-#include <OGRE/OgreOverlayContainer.h>
-#include <OGRE/OgreOverlayContainer.h>
+#include <OgreVector4.h>
+#include <OgreOverlayContainer.h>
+#include <OgreOverlayContainer.h>
 
 #include "widget.h"
+#include "skinmanager.h"
 
 #include <sigc++/sigc++.h>
 
@@ -54,18 +56,7 @@ using namespace BetaGUI;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** Defines the type of a scrollbar
-      *
-      * Please see the \link RainbruRPG::OgreGui::ScrollBar Scrollbar \endlink 
-      * class for more details on how to use it.
-      *
-      */
-    enum OgreGuiScrollbarType{
-      OST_HORIZONTAL, //<! An hhorizontal scrollbar
-      OST_VERTICAL    //<! A vertical scrollbar
-    };
-
-    /** A scrollbar widget for OgreGui
+    /** A scrollbar base for  OgreGui
       *
       * A scrollbar handles a selection of an integer beetween 0 and 
       * \link RainbruRPG::OgreGui::ScrollBar::mMaxValue mMaxValue \endlink.
@@ -81,16 +72,18 @@ namespace RainbruRPG{
       * The last two ways are customisable by calling setSteps(int, int). This
       * change the incrementation value of these.
       *
+      * \note This abstract cannot be used, please create VScrollBar or 
+      *       HScrollBar.
+      *
       */
     class ScrollBar : public Widget{
     public:
-      ScrollBar(Vector4, Window*, OgreGuiScrollbarType, 
-		OgreGuiSkinID sid=OSI_PARENT);
+      ScrollBar(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);
 
       virtual ~ScrollBar();
 
       void setTransparency(float);
-      virtual bool injectMouse(unsigned int, unsigned int, bool);
+      virtual bool injectMouse(unsigned int, unsigned int, bool)=0;
 
       void setCursorActive(bool);
       void setTopArrowActive(bool);
@@ -106,26 +99,10 @@ namespace RainbruRPG{
       /** The sigc++ signal emitted when the value change */
       sigc::signal<void, int> sigValueChanged;
 
-    private:
+      virtual void draw(QuadRenderer* qr)=0;
+
+    protected:
       void changeCursorValue(int);
-
-      /** The type of scrollbar (vertical or horizontal) */
-      OgreGuiScrollbarType mType;
-      /** The overlay that contains the top arrow */
-      OverlayContainer* topArrow;
-      /** The overlay that contains the top part of the body */
-      OverlayContainer* bodyTop;
-      /** The overlay that contains the middle part of the body */
-      OverlayContainer* bodyMid;
-       /** The overlay that contains the bottom part of the body */
-      OverlayContainer* bodyBot;
-      /** The overlay that contains the bottom arrow */
-      OverlayContainer* botArrow;
-      /** The overlay that contains the cursor */
-      OverlayContainer* cursor;
-
-      /** A pointer to this widget's skin */
-      SkinOverlay* sk;
 
       /** The cursor's Y position 
         *
@@ -139,13 +116,6 @@ namespace RainbruRPG{
       unsigned int cursorDev;
       /** Are we moving the cursor by holding the left mouse button pressed */
       bool movingCursor;
-
-      /** The scrollbar cursor material name */
-      String mnCursor;
-      /** The scrollbar top arrow material name */
-      String mnTopArrow;
-      /** The scrollbar bottom arrow material name */
-      String mnBottomArrow;
 
       /** The max value of the scrollbar 
         *

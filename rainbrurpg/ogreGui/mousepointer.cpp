@@ -67,6 +67,9 @@ RainbruRPG::OgreGui::MousePointer::MousePointer():
     .load("bgui.pointer.resize.png",
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+  mTextTexture=TextureManager::getSingleton()
+    .load("bgui.pointer.text.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 }
 
 /** The destructor
@@ -81,6 +84,9 @@ RainbruRPG::OgreGui::MousePointer::~MousePointer(){
 
   TextureManager::getSingleton().unload("bgui.pointer.resize.png");
   mResizeTexture.setNull();
+
+  TextureManager::getSingleton().unload("bgui.pointer.text.png");
+  mTextTexture.setNull();
 }
 
 /** Draws the mouse pointer
@@ -110,6 +116,10 @@ void RainbruRPG::OgreGui::MousePointer::draw(QuadRenderer* qr){
 
   case MPS_RESIZE:
     qr->setTexturePtr(mResizeTexture);
+    break;
+
+  case MPS_TEXT:
+    qr->setTexturePtr(mTextTexture);
     break;
   }
 

@@ -41,6 +41,7 @@ namespace RainbruRPG{
     class QuadRenderer;
     class Font;
     class TextSettings;
+    class VScrollBar;
   }
 }
 // End of forward declarations
@@ -68,6 +69,9 @@ namespace RainbruRPG{
       virtual void drawTextInput(QuadRenderer*, Rectangle , String , Window*, 
 				 bool active, int selStart = -1,
 				 int selEnd = -1);
+
+      virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* );
+
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
       virtual void createVerticalScrollbar( const String&, Vector4, Window* );
@@ -115,6 +119,11 @@ namespace RainbruRPG{
       TexturePtr mTextInputTexture;
       /** The texture used to draw active TextInput */
       TexturePtr mTextInputActiveTexture;
+      /** The texture used to draw the top arrow of the vertical scrollbar 
+        * in normal mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarTopArrow;
 
     };
 

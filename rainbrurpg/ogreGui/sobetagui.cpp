@@ -27,6 +27,7 @@
 #include "fontmanager.h"
 #include "font.h"
 #include "textsettings.h"
+#include "vscrollbar.h"
 
 #include <logger.h>
 
@@ -55,6 +56,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 
   tsPushButton=new TextSettings( "Iconiv2.ttf", 12, 1.0f, 0.2f, 0.8f );
   tsPushButton->setVerticalAlignment( VAT_CENTER );
+  tsPushButton->setHorizontalAlignment( HAT_CENTER );
 
 
   tsLabel=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
@@ -98,9 +100,17 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
     .load("bgui.textinput.png",
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
- mTextInputActiveTexture=TextureManager::getSingleton()
-   .load("bgui.textinput.active.png",
+  mTextInputActiveTexture=TextureManager::getSingleton()
+    .load("bgui.textinput.active.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+ // ScrollBar
+mVerticalScrollBarTopArrow=TextureManager::getSingleton()
+  .load("bgui.vscrollbar.toparrow.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
 
 }
 
@@ -430,4 +440,25 @@ drawTextInput(QuadRenderer* qr, Rectangle corners, String caption,
   corners.left  += 4;
   qr->drawText(tsTextInput, caption, corners, false);
   qr->reset();
+}
+
+/** Draw a vertical scrollbar
+  * 
+  * \param qr The QuadRenderer used to draw
+  * \param vs The scrollbar to draw
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+drawVerticalScrollbar(QuadRenderer* qr, VScrollBar* vs ){
+
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->setScissorRectangle(vs->getTopArrowCorners());
+  //qr->disableScissor();
+
+  qr->setTexturePtr(mVerticalScrollBarTopArrow);
+  
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getTopArrowCorners());
+  qr->reset();
+
 }
