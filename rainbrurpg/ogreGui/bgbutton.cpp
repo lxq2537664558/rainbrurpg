@@ -45,10 +45,6 @@ BetaGUI::Button::~Button(){
  
 /** Change the state of this button
   *
-  * It graphically change the state of this button by calling \link
-  * RainbruRPG::OgreGui::SkinOverlay::activateButton()
-  * SkinOverlay::activateButton() \endlink .
-  *
   * \param a \c true to make this button active, \c false to make
   *        it go to normal state.
   *
@@ -57,7 +53,7 @@ void BetaGUI::Button::activate(bool a){
   active=a;
 }
 
-/** Is a square in this widget
+/** Is a point in this widget
   *
   * \param mx The X position of the mouse
   * \param my The Y position of the mouse
@@ -70,8 +66,8 @@ void BetaGUI::Button::activate(bool a){
   */
 bool BetaGUI::Button::
 in(unsigned int mx,unsigned int my, unsigned int px,unsigned int py){
-  return(!(mx>=corners.left+px&&my>=corners.top+py))||
-    (!(mx<=corners.right+px&&my<=corners.bottom+py));
+  return((mx>=corners.left+px)&&(my>=corners.top+py)&&
+	 (mx<=corners.right+px)&&(my<=corners.bottom+py));
 }
 
 /** Return this button's callback

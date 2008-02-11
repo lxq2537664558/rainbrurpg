@@ -4,6 +4,17 @@ datafiles_DATA= bgui.button.active.png     		\
 		Commonv2c.ttf				\
 		bgui.button.png            		\
 		bgui.dialog.border.png			\
+		\
+		bgui.hscrollbar.bodyleft.png            \
+		bgui.hscrollbar.bodymid.png             \
+		bgui.hscrollbar.bodyright.png           \
+		bgui.hscrollbar.cursor.active.png       \
+		bgui.hscrollbar.cursor.png              \
+		bgui.hscrollbar.leftarrow.active.png    \
+		bgui.hscrollbar.leftarrow.png           \
+		bgui.hscrollbar.rightarrow.active.png   \
+		bgui.hscrollbar.rightarrow.png   
+		\
 		bgui.window.png                		\
 		bgui.material              		\
 		bgui.window.resize.active.png   	\
@@ -12,6 +23,13 @@ datafiles_DATA= bgui.button.active.png     		\
 		bgui.pointer.move.png                	\
 		bgui.pointer.resize.png                	\
 		bgui.pointer.text.png          		\
+		\
+		bgui.pointer.vscrollbar.bstep.down.png	\
+		bgui.pointer.vscrollbar.bstep.up.png  	\
+		bgui.pointer.vscrollbar.cursor.png   	\
+		bgui.pointer.vscrollbar.sstep.down.png 	\
+		bgui.pointer.vscrollbar.sstep.up.png 	\
+		\
 		bgui.window.resize.png          	\
 		sample.fontdef      			\
 		bgui.textinput.active.png       	\

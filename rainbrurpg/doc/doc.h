@@ -474,8 +474,8 @@
   * \section ogreGui_skinmanager_sec Skin manager
   *
   * An important class is \ref RainbruRPG::OgreGui::SkinManager "SkinManager"
-  * which manages a vector of \ref RainbruRPG::OgreGui::SkinOverlay 
-  * "SkinOverlay" objects.
+  * which manages a vector of \ref RainbruRPG::OgreGui::Skin 
+  * "Skin" objects.
   *
   * \section ogreGui_fontdebug_sec Debugging font
   * 

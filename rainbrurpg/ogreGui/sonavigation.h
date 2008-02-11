@@ -25,10 +25,10 @@
  *         
  */
 
-#ifndef _OGRE_GUI_SKIN_OVERLAY_NAVIGATION_H_
-#define _OGRE_GUI_SKIN_OVERLAY_NAVIGATION_H_
+#ifndef _OGRE_GUI_SKIN_NAVIGATION_H_
+#define _OGRE_GUI_SKIN_NAVIGATION_H_
 
-#include "skinoverlay.h"
+#include "skin.h"
 
 #include <OgreVector4.h>
 #include <OgreTexture.h>
@@ -57,7 +57,7 @@ namespace RainbruRPG{
       * as it is a container for PushButton.
       *
       */
-    class soNavigation : public SkinOverlay{
+    class soNavigation : public Skin{
 
     public:
       soNavigation();
@@ -88,4 +88,4 @@ namespace RainbruRPG{
     };
   }
 }
-#endif // _OGRE_GUI_SKIN_OVERLAY_NAVIGATION_H_
+#endif // _OGRE_GUI_SKIN_NAVIGATION_H_

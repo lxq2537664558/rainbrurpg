@@ -34,6 +34,15 @@
 #include "bgcallback.h"
 #include "skinmanager.h" // For OgreGuiSkinID
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Skin;
+  }
+}
+// End of forward declarations
+
+
 using namespace BetaGUI;
 using namespace RainbruRPG::OgreGui;
 
@@ -47,11 +56,14 @@ namespace RainbruRPG{
       */
     class ResizeGrip : public BetaGUI::Button{
     public:
-      ResizeGrip(Vector4, Callback,GUI *,Window*,OgreGuiSkinID sid=OSI_PARENT);
+      ResizeGrip(Vector4, Callback,GUI *,Widget*,OgreGuiSkinID sid=OSI_PARENT);
       virtual ~ResizeGrip();
 
       virtual void draw(QuadRenderer*);
 
+    private:
+      /** The current Skin, used to speed-up drawing */
+      Skin* mSkin;
     };
 
   }

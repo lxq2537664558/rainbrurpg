@@ -34,6 +34,16 @@
 #include "bgcallback.h"
 #include "skinmanager.h" // For OgreGuiSkinID
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Skin;
+    class Widget;
+  }
+}
+// End of forward declarations
+
+
 using namespace BetaGUI;
 using namespace RainbruRPG::OgreGui;
 
@@ -48,12 +58,21 @@ namespace RainbruRPG{
       */
     class TitleBar : public BetaGUI::Button{
     public:
-      TitleBar(Vector4, String, Callback, GUI*, Window*, 
+      TitleBar(Vector4, String, Callback, GUI*, Widget*, 
 	       OgreGuiSkinID sid=OSI_PARENT);
 
       ~TitleBar();
 
       virtual void draw(QuadRenderer*);
+
+    private:
+      /** The current used Skin
+        *
+	* We keep a pointer to the current Skin to speed up drawing, as
+	* we do not have to get it for every frame.
+	*
+	*/
+      Skin* mSkin;
 
     };
   }

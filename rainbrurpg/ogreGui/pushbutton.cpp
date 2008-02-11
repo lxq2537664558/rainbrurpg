@@ -22,7 +22,8 @@
 
 #include "pushbutton.h"
 
-#include "skinoverlay.h"
+#include "skin.h"
+#include "bgwindow.h"
 
 #include <OGRE/OgreStringConverter.h>
 
@@ -39,10 +40,12 @@ RainbruRPG::OgreGui::PushButton::
 PushButton(Vector4 dim, String caption, Callback c, Window* parent, 
 	   OgreGuiSkinID sid): 
   BetaGUI::Button(dim, "", caption, c, parent, sid),
-  mSkin(NULL)
+  mSkin(NULL),
+  winParent(NULL)
 {
 
   mSkin=SkinManager::getSingleton().getSkin(this);
+  winParent=dynamic_cast<Window*>(this->parent);
 
 }
 
@@ -51,6 +54,7 @@ PushButton(Vector4 dim, String caption, Callback c, Window* parent,
   */
 RainbruRPG::OgreGui::PushButton::~PushButton(){
   mSkin=NULL;
+  winParent=NULL;
 }
 
 /** Draws the resize grip
@@ -60,7 +64,6 @@ RainbruRPG::OgreGui::PushButton::~PushButton(){
   */
 void RainbruRPG::OgreGui::PushButton::draw(QuadRenderer* qr){
   Vector4 dim(corners.left, corners.top, getWidth(), getHeight());
-  Window* parent=static_cast<Window*>(this->parent);
 
-  mSkin->drawPushButton(qr, dim, mCaption, parent, active);
+  mSkin->drawPushButton(qr, dim, mCaption, winParent, active);
 }

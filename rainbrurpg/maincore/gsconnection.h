@@ -36,6 +36,9 @@
 #include "bglistener.h"
 
 // Forward declarations
+namespace BetaGUI {
+  class TextInput;
+}
 namespace RainbruRPG{
   namespace OgreGui{
     class PushButton;

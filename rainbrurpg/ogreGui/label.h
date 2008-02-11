@@ -44,7 +44,7 @@ namespace BetaGUI {
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
-    class SkinOverlay;
+    class Skin;
   }
 }
 // End of Forward declaration
@@ -78,7 +78,7 @@ namespace RainbruRPG{
       float mAplha;
 
       /** The current skin */
-      SkinOverlay* mSkin;
+      Skin* mSkin;
 
       /** This label parent */
       Window* mParentWindow;

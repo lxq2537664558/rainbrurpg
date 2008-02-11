@@ -10,13 +10,12 @@
 #ifndef _BETAGUI_BUTTON_H_
 #define _BETAGUI_BUTTON_H_
 
-#include <OGRE/OgreVector4.h>
-#include <OGRE/OgreOverlayContainer.h>
+#include <OgreVector4.h>
+#include <OgreOverlayContainer.h>
 
 #include "widget.h" 
 
 #include "bgcallback.h"
-#include "bgwindow.h"
 #include "skinmanager.h" // For OgreGuiSkinID
 
 

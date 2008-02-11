@@ -1,6 +1,6 @@
 /*
  *  Copyright 2006-2008 Jerome PASQUIER
- * 
+ *
  *  This file is part of RainbruRPG.
  *
  *  RainbruRPG is free software; you can redistribute it and/or modify
@@ -21,56 +21,56 @@
  */
 
 /* Modifications :
- * - 04 nov 2007 : Can apply a OgreGuiSkinID in constructor
- * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
- * - 05 oct 2007 : starting implementation
+ * - 07 feb 2008 : Starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_PUSH_BUTTON_H_
-#define _OGRE_GUI_PUSH_BUTTON_H_
+#ifndef _OGRE_GUI_HORIZONTAL_SCROLLBAR_H_
+#define _OGRE_GUI_HORIZONTAL_SCROLLBAR_H_
 
-#include "bgbutton.h"
-#include "bgcallback.h"
-
-using namespace BetaGUI;
+#include "scrollbar.h"
+#include "skinmanager.h" // For OgreGuiSkinID
 
 // Forward declarations
+namespace BetaGUI {
+  class Window;
+}
 namespace RainbruRPG{
   namespace OgreGui{
     class Skin;
   }
 }
-namespace BetaGUI{
-  class Window;
-}
 // End of forward declarations
-
+using namespace Ogre;
 using namespace BetaGUI;
 
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A widget drawing a push button
+    /** An horizontal scrollbar widget
       *
-      * It is based on Button to be able to use a callback.
+      * It is a \ref RainbruRPG::OgreGui::ScrollBar "ScrollBar" 
+      * specialization for vertical orientation.
       *
       */
-    class PushButton : public BetaGUI::Button{
+    class HScrollBar : public ScrollBar{
     public:
-      PushButton(Vector4, String, Callback, Window*, 
-		 OgreGuiSkinID sid=OSI_PARENT);
-      ~PushButton();
+      HScrollBar(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);
+      ~HScrollBar();
 
-      virtual void draw(QuadRenderer*);
+    protected:
+      void makeCorners(void);
 
     private:
-      /** A reference to the current skin used to speed up drawing */
-      Skin* mSkin;
-      /** The parent window */
-      Window* winParent;
-   };
+      /** The GUI object used to change mouse state */
+      GUI* mGUI;
+
+      /** A pointer to this widget's skin */
+      Skin* sk;
+
+
+    };
   }
 }
 
-#endif // _OGRE_GUI_PUSH_BUTTON_H_
+#endif // _OGRE_GUI_HORIZONTAL_SCROLLBAR_H_

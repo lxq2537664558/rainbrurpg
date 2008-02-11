@@ -22,12 +22,13 @@
 
 #include "titlebar.h"
 
-#include "skinoverlay.h"
+#include "skin.h"
 #include "quadrenderer.h"
+#include "widget.h"
 
 #include <logger.h>
 
-#include <OGRE/OgreStringConverter.h>
+#include <OgreStringConverter.h>
 
 
 /** The constructor
@@ -42,11 +43,11 @@
   */
 RainbruRPG::OgreGui::TitleBar::
 TitleBar(Vector4 dim, String caption, Callback callback, GUI* G, 
-	 Window* parent, OgreGuiSkinID sid):
+	 Widget* parent, OgreGuiSkinID sid):
   Button(dim, "", caption, callback, parent, sid)
 {
 
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+  mSkin=SkinManager::getSingleton().getSkin(this);
 
 }
 
@@ -63,11 +64,10 @@ RainbruRPG::OgreGui::TitleBar::~TitleBar(){
   *
   */
 void RainbruRPG::OgreGui::TitleBar::draw(QuadRenderer* qr){
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   int px=this->parent->getLeft()+getLeft();
   int py=this->parent->getTop()+getTop();
 
   Vector4 dim(px, py, getWidth(), getHeight());
   qr->setAlpha( this->alpha );
-  sk->drawTitleBar(qr, dim, mCaption, this->active);
+  mSkin->drawTitleBar(qr, dim, mCaption, this->active);
 }

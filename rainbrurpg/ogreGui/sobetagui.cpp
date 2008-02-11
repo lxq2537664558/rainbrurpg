@@ -44,7 +44,7 @@
   *
   */
 RainbruRPG::OgreGui::soBetaGui::soBetaGui(): 
-  SkinOverlay("soBetaGUI"),
+  Skin("soBetaGUI"),
   tsTitleBar(NULL),
   tsPushButton(NULL),
   tsLabel(NULL),
@@ -105,12 +105,42 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 
- // ScrollBar
-mVerticalScrollBarTopArrow=TextureManager::getSingleton()
-  .load("bgui.vscrollbar.toparrow.png",
+  // ScrollBar
+  mVerticalScrollBarTopArrow=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.toparrow.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  
+  mVerticalScrollBarBottomArrow=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.botarrow.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  
+  mVerticalScrollBarBodyTop=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.bodytop.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mVerticalScrollBarBodyBot=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.bodybot.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  
+  mVerticalScrollBarBodyMid=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.bodymid.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  
+  mVerticalScrollBarCursor=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.cursor.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+  mVerticalScrollBarTopArrowActive=TextureManager::getSingleton()
+    .load("bgui.vscrollbar.toparrow.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+ mVerticalScrollBarBotArrowActive=TextureManager::getSingleton()
+   .load("bgui.vscrollbar.botarrow.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mVerticalScrollBarCursorActive=TextureManager::getSingleton()
+   .load("bgui.vscrollbar.cursor.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 }
 
@@ -453,12 +483,57 @@ drawVerticalScrollbar(QuadRenderer* qr, VScrollBar* vs ){
 
   qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(vs->getTopArrowCorners());
-  //qr->disableScissor();
 
-  qr->setTexturePtr(mVerticalScrollBarTopArrow);
-  
+  if ( vs->isTopArrowActive() )
+    qr->setTexturePtr(mVerticalScrollBarTopArrowActive);
+  else
+    qr->setTexturePtr(mVerticalScrollBarTopArrow);
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(vs->getTopArrowCorners());
+  qr->reset();
+
+  qr->setScissorRectangle(vs->getBottomArrowCorners());
+
+  if ( vs->isBottomArrowActive() )
+    qr->setTexturePtr(mVerticalScrollBarBotArrowActive);
+  else
+    qr->setTexturePtr(mVerticalScrollBarBottomArrow);
+
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getBottomArrowCorners());
+  qr->reset();
+
+  qr->setScissorRectangle(vs->getBodyTopCorners());
+  qr->setTexturePtr(mVerticalScrollBarBodyTop);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getBodyTopCorners());
+  qr->reset();
+
+
+  qr->setScissorRectangle(vs->getBodyBotCorners());
+  qr->setTexturePtr(mVerticalScrollBarBodyBot);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getBodyBotCorners());
+  qr->reset();
+
+
+  qr->setScissorRectangle(vs->getBodyMidCorners());
+  qr->setTexturePtr(mVerticalScrollBarBodyMid);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getBodyMidCorners());
+  qr->reset();
+
+
+  qr->setScissorRectangle(vs->getCursorCorners());
+  
+  if ( vs->isCursorActive() )
+    qr->setTexturePtr(mVerticalScrollBarCursorActive);
+  else
+    qr->setTexturePtr(mVerticalScrollBarCursor);
+  
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(vs->getCursorCorners());
   qr->reset();
 
 }

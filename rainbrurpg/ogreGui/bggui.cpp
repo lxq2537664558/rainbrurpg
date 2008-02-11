@@ -116,14 +116,15 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
     mousePointer->setPosition(x,y);
   }
 
-  if ((resizedWindow!=NULL)&&(LMB==true)){
+  if (resizedWindow && LMB){
     resizedWindow->resize(x, y);
     return true;
   }
-  else if((movedWindow!=NULL)&&(LMB==true)){
+  else if(movedWindow && LMB){
     movedWindow->move(x, y);
   }
   else{
+    
     resizedWindow=NULL;
     movedWindow=NULL;
 

@@ -26,10 +26,10 @@
  *         
  */
 
-#ifndef _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
-#define _OGRE_GUI_SKIN_OVERLAY_BETA_GUI_H_
+#ifndef _OGRE_GUI_SKIN_BETA_GUI_H_
+#define _OGRE_GUI_SKIN_BETA_GUI_H_
 
-#include "skinoverlay.h"
+#include "skin.h"
 
 #include <OgreVector4.h>
 #include <OgreTexture.h>
@@ -55,7 +55,7 @@ namespace RainbruRPG{
     /** A skin based on SkinOverlay, drawing like BetaGUI does
       *
       */
-    class soBetaGui : public SkinOverlay{
+    class soBetaGui : public Skin{
     public:
       soBetaGui();
       virtual ~soBetaGui();
@@ -119,12 +119,60 @@ namespace RainbruRPG{
       TexturePtr mTextInputTexture;
       /** The texture used to draw active TextInput */
       TexturePtr mTextInputActiveTexture;
+
       /** The texture used to draw the top arrow of the vertical scrollbar 
         * in normal mode.
 	*
 	*/
       TexturePtr mVerticalScrollBarTopArrow;
 
+      /** The texture used to draw the bottom arrow of the vertical scrollbar 
+        * in normal mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarBottomArrow;
+
+      /** The texture used to draw the top of the body of the vertical 
+        * scrollbar 
+	*
+	*/
+      TexturePtr mVerticalScrollBarBodyTop;
+
+      /** The texture used to draw the middle of the body of the vertical 
+        * scrollbar 
+	*
+	*/
+      TexturePtr mVerticalScrollBarBodyMid;
+
+      /** The texture used to draw the bottom of the body of the vertical 
+        * scrollbar 
+	*
+	*/
+      TexturePtr mVerticalScrollBarBodyBot;
+
+      /** The texture used to draw the cursor of the vertical 
+        * scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarCursor;
+
+      /** The texture used to draw the top arrow of the vertical scrollbar 
+        * in active mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarTopArrowActive;
+
+      /** The texture used to draw the bottom arrow of the vertical scrollbar 
+        * in active mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarBotArrowActive;
+
+      /** The texture used to draw the cursor of the vertical 
+        * scrollbar in active mode.
+	*
+	*/
+      TexturePtr mVerticalScrollBarCursorActive;
     };
 
   }

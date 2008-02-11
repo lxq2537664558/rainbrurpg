@@ -37,10 +37,10 @@ void RainbruRPG::OgreGui::SkinManager::init(){
   LOGI("Initialising SkinManager");
   defaultSkin=OSI_BETAGUI;
 
-  SkinOverlay* sbg=new soBetaGui();
+  Skin* sbg=new soBetaGui();
   skins.push_back(sbg);
 
-  SkinOverlay* sn=new soNavigation();
+  Skin* sn=new soNavigation();
   skins.push_back(sn);
 
 
@@ -68,7 +68,7 @@ void RainbruRPG::OgreGui::SkinManager::init(){
   * \param w The widget
   *
   */
-RainbruRPG::OgreGui::SkinOverlay* RainbruRPG::OgreGui::SkinManager::
+RainbruRPG::OgreGui::Skin* RainbruRPG::OgreGui::SkinManager::
 getSkin(Widget* w){
 
   OgreGuiSkinID s= w->getSkinId();

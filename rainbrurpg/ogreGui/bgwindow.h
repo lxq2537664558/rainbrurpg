@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 07 feb 2008 : Some function are now inline
  * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
  * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
  * - 21 nov 2007 : Adding widget mouse support in event handling loop
@@ -21,19 +22,22 @@
 #ifndef _BETA_GUI_WINDOW_
 #define _BETA_GUI_WINDOW_
 
-#include <OGRE/OgreVector4.h>
+#include <OgreVector4.h>
 
 #include "widget.h" 
 
 #include "bggui.h"         // For enum OgreGUIWindowType
-#include "bgbutton.h"
 #include "bgtextinput.h"
+#include "resizegrip.h"
+#include "bgbutton.h"
+#include "titlebar.h"
+#include "mousepointer.h"
 
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
-    class TitleBar;
     class QuadRenderer;
+    class Skin;
   }
 }
 // End of forward declarations
@@ -93,17 +97,131 @@ namespace BetaGUI {
     virtual void draw(QuadRenderer*);
     void deactivate(void);
 
+    virtual bool in(unsigned int, unsigned int, unsigned int, unsigned int);
 
   protected:
     void deactivateAllOtherTextInput(BetaGUI::TextInput*);
-    bool isMouseOverTextInput(unsigned int, unsigned int);
 
-    bool handleMouseMoveCursor(unsigned int, unsigned int, bool); 
-    bool handleMouseResizeCursor(unsigned int, unsigned int, bool, bool); 
-    bool handleMouseTextCursor(unsigned int, unsigned int, bool); 
+    /** Is the given position over a TextInput
+      *  
+      * This function is used by the \ref BetaGUI::Window::check() "check"
+      * function to know if we need to set a text edit mouse cursor.
+      *
+      * \param px, py The mouse position
+      *
+      */
+    inline bool isMouseOverTextInput(unsigned int px, unsigned int py){
+      TextInputListIterator iter;
 
-    bool handleWidgetMouseEvents(unsigned int, unsigned int, bool);
+      for(iter=textInputList.begin();iter!=textInputList.end();iter++){
+	if (!(*iter)->in(px, py, corners.left, corners.top)){
+	  return true;
+	}
+      }
 
+      return false;
+    };
+
+
+
+    /** Handle the MouseMove cursor
+      *
+      * \param px, py          The mouse position
+      * \param leftMouseButton The mouse left button state
+      *
+      * \return \c true if the event is handled
+      *
+      */
+    inline bool handleMouseMoveCursor(unsigned int px, unsigned int py, bool leftMouseButton){
+      // Handle mouse move cursor
+      if (mTitleBar){
+	if (mTitleBar->in(px, py, corners.left, corners.top)){
+	  mGUI->getMousePointer()->setState(MPS_MOVE);
+	  mTitleBar->activate(true);
+	  return true;
+	}
+	else{
+	  mGUI->getMousePointer()->setState(MPS_ARROW);
+	  mTitleBar->activate(false);
+	  return false;
+	}
+      }
+      
+    };
+
+
+    /** Handle the MouseResize cursor
+      *
+      * \param px, py          The mouse position
+      * \param leftMouseButton The mouse left button state
+      * \param inTitleBar      Are we in TitleBar
+      *
+      * \return \c true if the event is handled
+      *
+      */
+    inline bool handleMouseResizeCursor(unsigned int px, unsigned int py, 
+					bool leftMouseButton,
+					bool inTitleBar){
+      /* Handle mouse resize cursor 
+       *
+       * Do not set again MPS_ARROW if we are in TitleBar.
+       *
+       */
+      if (mResizeGrip && !inTitleBar){
+	if (mResizeGrip->in(px, py, corners.left, corners.top)){
+	  mGUI->getMousePointer()->setState(MPS_RESIZE);
+	  this->mResizeGrip->activate(true);
+	  return true;
+	}
+	else{
+	  mGUI->getMousePointer()->setState(MPS_ARROW);
+	  this->mResizeGrip->activate(false);
+	  return false;
+	}
+      }
+      
+    } 
+
+    /** Handle the MouseText cursor
+      *
+      * \param px, py          The mouse position
+      * \param leftMouseButton The mouse left button state
+      *
+      * \return \c true if the event is handled
+      *
+      */
+    inline bool handleMouseTextCursor(unsigned int px, unsigned int py, 
+				      bool leftMouseButton){
+  
+      if (isMouseOverTextInput( px, py )){
+	mGUI->getMousePointer()->setState(MPS_TEXT);
+	return true;
+      }
+      else{
+	return false;
+      }
+    }
+
+
+    /** Handle the MouseEvent for others widgets
+      *
+      * \param px, py          The mouse position
+      * \param LMB             The mouse left button state
+      *
+      * \return \c true if the event is handled
+      *
+      */
+    inline bool handleWidgetMouseEvents(unsigned int px, unsigned int py, 
+					bool LMB){
+      // Handles the widget mouse events
+      for(unsigned int i=0;i<widgetList.size();i++){
+	// If a widget handles the event, we stop the event handling loop
+	if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
+	  return true;
+	}
+      }
+    }
+ 
     /** A constant iterator for TextInput lit */
     typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;
 
@@ -130,7 +248,7 @@ namespace BetaGUI {
     TextInput* activeTextInput;
 
     /** The resize grip */
-    Button* mResizeGrip;
+    BetaGUI::Button* mResizeGrip;
 
     /** The currently active Button widget 
       *
@@ -140,7 +258,7 @@ namespace BetaGUI {
       *       It is why it's aButton and not a PushButton.
       *
       */
-    Button* activeButton;
+    BetaGUI::Button* activeButton;
 
     /** Defines a button */
     TitleBar* mTitleBar;
@@ -195,6 +313,8 @@ namespace BetaGUI {
     String mCaption;
     /** Is this window visible ? */
     bool visible;
+    /** The current skin */
+    Skin* mSkin;
   };
 }
 

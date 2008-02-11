@@ -86,8 +86,27 @@ namespace RainbruRPG{
       void setWidth(int);
       void setHeight(int);
 
-      int getLeft(void) const;
-      int getTop(void) const;
+
+      /** Get the X position of this widget
+        *
+	* \return The X position in pixels
+	*
+	* \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink 
+	*           (member)
+	*
+	*/
+      inline int getLeft(void) const { return corners.left; };
+
+      /** Get the Y position of this widget
+        *
+	* \return The Y position in pixels
+	*
+	* \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink 
+	*           (member)
+	*
+	*/
+      inline int getTop(void) const { return corners.top; };
+
       int getWidth(void) const;
       int getHeight(void) const;
 
@@ -95,7 +114,13 @@ namespace RainbruRPG{
       virtual void move(int, int);
 
 
-      const Rectangle& getCorners(void) const;
+      /** Get the corners of this widget
+        *
+	* \return A Ogre Rectangle that contains top/left and bottom/right
+	*         corners in pixels.
+	*
+	*/
+      inline const Rectangle& getCorners(void) const{  return corners; };
 
       /** Draws the widget
         *
@@ -103,6 +128,8 @@ namespace RainbruRPG{
 	*
 	*/
       virtual void draw(QuadRenderer* qr)=0;
+
+      void setGeometryDirty(void);
 
     protected:
       /** The parent of this widget
@@ -141,6 +168,22 @@ namespace RainbruRPG{
 
       /** The corners of this widget (in pixels) */
       Rectangle corners;
+
+      /** Used to tell widget to re-compute its geometry
+        *
+	* Some widget pre-compute their geometry to speed-up drawing.
+	* A moved window should tell all its child their geometry is dirty.
+	* If this flag is \c true, the widget will re-compute its geometry
+	* before drawing.
+	*
+	* \note Setting this to \c true for a widget that compute its 
+	*       geometry on the flight (for each frame) will do nothing.
+	*
+	* \sa \ref RainbruRPG::OgreGui::Widget::setGeometryDirty
+	*     "setGeometryDirty()"
+	*
+	*/
+      bool geometryDirty;
     };
   }
 }

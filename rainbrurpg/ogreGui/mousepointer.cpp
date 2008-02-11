@@ -70,6 +70,29 @@ RainbruRPG::OgreGui::MousePointer::MousePointer():
   mTextTexture=TextureManager::getSingleton()
     .load("bgui.pointer.text.png",
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  // VScrollBar cursors
+  mVscCursor=TextureManager::getSingleton()
+    .load("bgui.pointer.vscrollbar.cursor.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mVscSstepDown=TextureManager::getSingleton()
+    .load("bgui.pointer.vscrollbar.sstep.down.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mVscBstepDown=TextureManager::getSingleton()
+    .load("bgui.pointer.vscrollbar.bstep.down.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mVscSstepUp=TextureManager::getSingleton()
+    .load("bgui.pointer.vscrollbar.sstep.up.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mVscBstepUp=TextureManager::getSingleton()
+    .load("bgui.pointer.vscrollbar.bstep.up.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
 }
 
 /** The destructor
@@ -121,6 +144,27 @@ void RainbruRPG::OgreGui::MousePointer::draw(QuadRenderer* qr){
   case MPS_TEXT:
     qr->setTexturePtr(mTextTexture);
     break;
+
+  case MPS_VSB_CURSOR:
+    qr->setTexturePtr(mVscCursor);
+    break;
+
+  case MPS_VSB_SSTEP_DOWN:
+    qr->setTexturePtr(mVscSstepDown);
+    break;
+
+  case MPS_VSB_BSTEP_DOWN:
+    qr->setTexturePtr(mVscBstepDown);
+   break;
+
+  case MPS_VSB_SSTEP_UP:
+    qr->setTexturePtr(mVscSstepUp);
+    break;
+
+  case MPS_VSB_BSTEP_UP:
+    qr->setTexturePtr(mVscBstepUp);
+   break;
+
   }
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);

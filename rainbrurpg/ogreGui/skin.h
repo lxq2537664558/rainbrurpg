@@ -21,22 +21,24 @@
  */
 
 /* Modifications :
+ * - 04 feb 2007 : Class renamed from SkinOverlay to Skin
  * - 15 nov 2007 : createBorderWindow implementation
  * - 15 oct 2007 : Skin class removed
  * - 27 sep 2007 : starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_SKIN_OVERLAY_H_
-#define _OGRE_GUI_SKIN_OVERLAY_H_
+#ifndef _OGRE_GUI_SKIN_H_
+#define _OGRE_GUI_SKIN_H_
 
 #include <string>
 #include <OgreOverlayContainer.h>
 #include <OgreRectangle.h>
 
+//#include "bgbutton.h"
+
 // Forward declarations
 namespace BetaGUI{
-  class Button;
   class GUI;
   class Window;
 }
@@ -54,22 +56,16 @@ using namespace BetaGUI;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A skin base-class on Ogre::Overlay
+    /** A skin base-class
       *
-      * There is two createOverlay() functions depending wich is the
-      * parent's type bacause Ogre::Overlay and Ogre::OverlayContainer 
-      * cannot be casted. Internally, both use createOverlayImpl to 
-      * graphically create the Overlay.
-      *
-      * For the buttons to get a mouse over effect, the materials names
-      * must be \e basename and <em>basename.active</em>. The 
-      * <em>.active</em> is mandatory and must be the last characters of
-      * the material name.
+      * \note For historical reasons, this class was formerly called
+      *       SkinOverlay. Its child derived classes are called so* (i.e.
+      *       soBetaGui, soNavigation).
       *
       */
-    class SkinOverlay{
+    class Skin{
     public:
-      SkinOverlay(std::string n="unamedSkinOverlay");
+      Skin(std::string n="unamedSkinOverlay");
 
       /** Create a window
         *
@@ -200,12 +196,9 @@ namespace RainbruRPG{
 	*/
       unsigned int dialogBorderSize;
 
-    private:
-      OverlayContainer* createOverlayImpl(String, Vector4, String);
-
     };
 
   }
 }
 
-#endif // _OGRE_GUI_SKIN_OVERLAY_H_
+#endif // _OGRE_GUI_SKIN_H_

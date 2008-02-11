@@ -44,7 +44,7 @@ namespace BetaGUI {
 }
 namespace RainbruRPG{
   namespace OgreGui{
-    class SkinOverlay;
+    class Skin;
   }
 }
 // End of forward declarations
@@ -84,10 +84,6 @@ namespace RainbruRPG{
 
       void setTransparency(float);
       virtual bool injectMouse(unsigned int, unsigned int, bool)=0;
-
-      void setCursorActive(bool);
-      void setTopArrowActive(bool);
-      void setBottomArrowActive(bool);
 
       void setMax(int);
       int getMax(void);

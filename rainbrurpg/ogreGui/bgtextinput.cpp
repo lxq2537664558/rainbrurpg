@@ -10,7 +10,7 @@
 #include "bgtextinput.h"
 
 #include "bgwindow.h"
-#include "skinoverlay.h"
+#include "skin.h"
 #include "quadrenderer.h"
 
 #include <logger.h>
@@ -105,7 +105,6 @@ unsigned int BetaGUI::TextInput::getLength(void){
   *
   */
 void BetaGUI::TextInput::setTransparency(float f){
-  SkinOverlay* s=SkinManager::getSingleton().getSkin(this);
 
 }
 

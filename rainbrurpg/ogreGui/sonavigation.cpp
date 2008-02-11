@@ -39,7 +39,7 @@
   *
   */
 RainbruRPG::OgreGui::soNavigation::soNavigation() : 
-  SkinOverlay("soNavigation"),
+  Skin("soNavigation"),
   tsPushButton(NULL)
 {
   tsPushButton=new TextSettings("Commonv2c.ttf", 14, 1.0f, 0.2f, 0.8f);

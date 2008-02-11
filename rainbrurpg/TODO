@@ -1,9 +1,7 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Window cannot be moved or resized
-- Implementation of VScrollBar
-   Using SkinOverlay::drawVerticalScrollBar();
+- Documentation update (many undocumented members)
 - HScrollBar implementation
 - BetaGUI MulticolumnList implementation
 - gsServerList uses BetaGUI (with BetaGUI MulticolumnList)
@@ -116,6 +114,20 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-169
+- (14) Some Window functions become inline
+- VScrollBar changes mouse pointer
+- MousePointer handles VScrollBar images
+- Making images for mouse cursor over VScrollBar
+- VScrollBar work 
+- Fix a bug in the ScrollBar parent handling
+- SkinOverlay renamed Skin
+- Fix some Doxygen warning
+- Trying window's event handles declared inline OK
+- SEGFAULT when whanging gamestate
+- A mouse click on a window set it active and in foreground FIXED
+- Window cannot be moved
+- Some bugfixes when resizing a window
+- Window handle callback using OgreGUICallbackType enumeration values
 
 * v 0.0.5-168
 - Removing SkinOverlay::setTransparency() and setCaptionTransparency()

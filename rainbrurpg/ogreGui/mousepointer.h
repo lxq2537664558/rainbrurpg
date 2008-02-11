@@ -50,16 +50,21 @@ namespace RainbruRPG{
       *
       */
     typedef enum tMousePointerState{
-      MPS_ARROW  =0,  //!< The normal state
-      MPS_RESIZE,     //!< We're resizing a window
-      MPS_MOVE,       //!< We're moving a window
-      MPS_TEXT,       //!< We're about to edit text
+      MPS_ARROW  =0,      //!< The normal state
+      MPS_RESIZE,         //!< We're resizing a window
+      MPS_MOVE,           //!< We're moving a window
+      MPS_TEXT,           //!< We're about to edit text
+      MPS_VSB_CURSOR,     //!< We're over a VScrollBar cursor
+      MPS_VSB_SSTEP_DOWN, //!< We're over VScrollBar down small step
+      MPS_VSB_BSTEP_DOWN, //!< We're over VScrollBar down big step
+      MPS_VSB_SSTEP_UP,   //!< We're over VScrollBar down small step
+      MPS_VSB_BSTEP_UP,   //!< We're over VScrollBar down big step
     };
 
     /** Draws and handles the OgreGui mouse pointer
       *
-      * This class handles the mouse poiner position and the draw function
-      * is called for each frame.
+      * This class handles the mouse poiner positionand state. The draw 
+      * function is called for each frame. 
       *
       *
       */
@@ -79,14 +84,42 @@ namespace RainbruRPG{
       /** The current mouse state */
       tMousePointerState mState;
 
-      /** The texture used to draw pointer */ 
+      /** The texture used to draw normal pointer */ 
       TexturePtr mNormalTexture;
-      /** The texture used to draw pointer */ 
+      /** The texture used to draw window move pointer */ 
       TexturePtr mMoveTexture;
-      /** The texture used to draw pointer */ 
+      /** The texture used to draw window resize pointer */ 
       TexturePtr mResizeTexture;
-      /** The texture used to draw pointer */ 
+      /** The texture used to draw text edit pointer */ 
       TexturePtr mTextTexture;
+
+      /** The texture used to draw the Vertical ScrollBar cursor pointer */ 
+      TexturePtr mVscCursor;
+
+      /** The texture used to draw the Vertical ScrollBar small step down
+        * pointer
+	*
+	*/ 
+      TexturePtr mVscSstepDown;
+
+      /** The texture used to draw the Vertical ScrollBar big step down
+        * pointer
+	*
+	*/ 
+      TexturePtr mVscBstepDown;
+
+      /** The texture used to draw the Vertical ScrollBar small step up
+        * pointer
+	*
+	*/ 
+      TexturePtr mVscSstepUp;
+
+      /** The texture used to draw the Vertical ScrollBar big step up
+        * pointer
+	*
+	*/ 
+      TexturePtr mVscBstepUp;
+
 
       /** The width of the pointer texture in pixels */
       unsigned int pointerWidth;

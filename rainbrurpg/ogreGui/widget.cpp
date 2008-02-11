@@ -38,7 +38,8 @@ Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   skinId(sid),
   parent(P),
   frameOverlay(NULL),
-  alpha(0.0f)
+  alpha(0.0f),
+  geometryDirty(false)
 {
   corners.left   = dim.x;
   corners.top    = dim.y;
@@ -163,28 +164,6 @@ void RainbruRPG::OgreGui::Widget::setHeight(int i){
   corners.bottom=corners.top+i;
 }
 
-/** Get the X position of this widget
-  *
-  * \return The X position in pixels
-  *
-  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
-  *
-  */
-int RainbruRPG::OgreGui::Widget::getLeft(void) const{
-  return corners.left;
-}
-
-/** Get the Y position of this widget
-  *
-  * \return The Y position in pixels
-  *
-  * \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink (member)
-  *
-  */
-int RainbruRPG::OgreGui::Widget::getTop(void) const{
-  return corners.top;
-}
-
 /** Get the width of this widget
   *
   * \return The width in pixels
@@ -215,16 +194,6 @@ int RainbruRPG::OgreGui::Widget::getHeight(void) const{
   */
 void RainbruRPG::OgreGui::Widget::setTransparency(float f){
   alpha=f;
-}
-
-/** Get the corners of this widget
-  *
-  * \return A Ogre Rectangle that contains top/left and bottom/right
-  *         corners in pixels.
-  *
-  */
-const Rectangle& RainbruRPG::OgreGui::Widget::getCorners(void) const{
-  return corners;
 }
 
 /** Resize this widget
@@ -264,4 +233,16 @@ void RainbruRPG::OgreGui::Widget::move(int px, int py){
 
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
+}
+
+/** Set this widget's geometry dirty
+  *
+  * \sa \ref RainbruRPG::OgreGui::Widget::geometryDirty "geometryDirty" 
+  *     (member).
+  *
+  */
+void RainbruRPG::OgreGui::Widget::setGeometryDirty(void){
+
+  geometryDirty=true;
+
 }

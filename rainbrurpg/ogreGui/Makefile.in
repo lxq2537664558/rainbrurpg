@@ -62,11 +62,11 @@ librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	bgwindow.lo font.lo fontmanager.lo glyph.lo guivertex.lo \
-	label.lo lineinfo.lo mousepointer.lo object.lo pushbutton.lo \
-	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
-	scrollbar.lo scrollpane.lo skinmanager.lo skinoverlay.lo \
-	sobetagui.lo sonavigation.lo staticimage.lo textsettings.lo \
-	titlebar.lo vector3.lo vscrollbar.lo widget.lo
+	hscrollbar.lo label.lo lineinfo.lo mousepointer.lo object.lo \
+	pushbutton.lo quadrenderer.lo renderqueuelistener.lo \
+	resizegrip.lo scrollbar.lo scrollpane.lo skinmanager.lo \
+	skin.lo sobetagui.lo sonavigation.lo staticimage.lo \
+	textsettings.lo titlebar.lo vector3.lo vscrollbar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -245,6 +245,7 @@ h_sources = bgbutton.h			\
 	   fontmanager.h		\
 	   glyph.h			\
 	   guivertex.h			\
+	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
@@ -256,7 +257,7 @@ h_sources = bgbutton.h			\
 	   scrollbar.h			\
 	   scrollpane.h			\
 	   skinmanager.h		\
-	   skinoverlay.h		\
+	   skin.h			\
 	   sobetagui.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
@@ -275,6 +276,7 @@ cc_sources = bgbutton.cpp		\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
 	    guivertex.cpp		\
+	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
@@ -286,7 +288,7 @@ cc_sources = bgbutton.cpp		\
 	    scrollbar.cpp		\
 	    scrollpane.cpp		\
 	    skinmanager.cpp		\
-	    skinoverlay.cpp		\
+	    skin.cpp			\
 	    sobetagui.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\
@@ -391,6 +393,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fontmanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glyph.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/guivertex.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hscrollbar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
@@ -401,8 +404,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/resizegrip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scrollbar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scrollpane.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skinmanager.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/skinoverlay.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sobetagui.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sonavigation.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/staticimage.Plo@am__quote@

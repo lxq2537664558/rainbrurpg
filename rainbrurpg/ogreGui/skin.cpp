@@ -20,26 +20,26 @@
  *
  */
 
-#include "skinoverlay.h"
+#include "skin.h"
 
 #include "bgbutton.h"
 #include "quadrenderer.h"
 
 #include <logger.h>
 
-#include <OGRE/OgreOverlayManager.h>
-#include <OGRE/OgreMaterialManager.h>
-#include <OGRE/OgreStringConverter.h>
-#include <OGRE/OgreTechnique.h>
-#include <OGRE/OgreTextureUnitState.h>
-#include <OGRE/OgreTextAreaOverlayElement.h>
+#include <OgreOverlayManager.h>
+#include <OgreMaterialManager.h>
+#include <OgreStringConverter.h>
+#include <OgreTechnique.h>
+#include <OgreTextureUnitState.h>
+#include <OgreTextAreaOverlayElement.h>
 
 /** Create a named skin based on Ogre::Overlay
   *
   * \param n The name of the new skin
   *
   */
-RainbruRPG::OgreGui::SkinOverlay::SkinOverlay(std::string n){
+RainbruRPG::OgreGui::Skin::Skin(std::string n){
 
 }
 
@@ -52,6 +52,6 @@ RainbruRPG::OgreGui::SkinOverlay::SkinOverlay(std::string n){
   * \return The border size in pixels
   *
   */
-unsigned int RainbruRPG::OgreGui::SkinOverlay::getDialogBorderSize(void){
+unsigned int RainbruRPG::OgreGui::Skin::getDialogBorderSize(void){
   return this->dialogBorderSize;
 }

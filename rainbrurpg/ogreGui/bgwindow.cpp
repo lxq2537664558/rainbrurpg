@@ -11,11 +11,8 @@
 
 #include "bglistener.h"
 #include "skinmanager.h"
-#include "skinoverlay.h"
-#include "resizegrip.h"
-#include "titlebar.h"
+#include "skin.h"
 #include "quadrenderer.h"
-#include "mousepointer.h"
 
 #include <logger.h>
 #include <gameengine.h>
@@ -26,7 +23,6 @@
 #include <OgreMaterialManager.h>
 
 using namespace RainbruRPG::Core;
-using namespace RainbruRPG::OgreGui;
 
 /** The constructor
   *
@@ -46,7 +42,9 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
 			GUI *G, bool border,
 			RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(D, NULL, sid), // Warning, parent is now NULL
-  mGUI(G),mTitleBar(0),mResizeGrip(0),
+  mGUI(G),
+  mTitleBar(NULL),
+  mResizeGrip(NULL),
   activeTextInput(NULL),
   movingDevX(0),
   movingDevY(0),
@@ -64,12 +62,12 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
   // Create the window
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
+  mSkin = SkinManager::getSingleton().getSkin(this);
   Vector4 resizeGripDim, titlebarDim;
   if (hasBorder){
     // Get the dialog border size
-    unsigned int dbs=sk->getDialogBorderSize();
-    sk->createDialog(name, D, caption, G);
+    unsigned int dbs=mSkin->getDialogBorderSize();
+    mSkin->createDialog(name, D, caption, G);
     resizeGripDim=Vector4(D.z-(16+dbs),D.w-(16+dbs),16,16);
     titlebarDim=Vector4(dbs,dbs,D.z-(dbs*2),22);
   }
@@ -78,19 +76,19 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     titlebarDim=Vector4(0,0,D.z,22);
   }
  
-  if(t>=2){
+  if(t==OWT_RESIZE || t==OWT_RESIZE_AND_MOVE){
     // Create a resize grip
     Callback c;
     c.setType(OCT_WIN_RESIZE);
-    mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
+    this->mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
     buttonList.push_back(mResizeGrip);
   }
   
-  if(t==1||t==3){
+  if(t==OWT_MOVE || t==OWT_RESIZE_AND_MOVE){
     // Create a title bar
     Callback c;
     c.setType(OCT_WIN_MOVE);
-    mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
+    this->mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
     buttonList.push_back(mTitleBar);
   }
 }
@@ -99,9 +97,6 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   *
   */
 BetaGUI::Window::~Window(){
-  
-  mTitleBar=NULL;
-  mResizeGrip=NULL;
 
   LOGI("Window destructor called");
   mGUI->removeWindow(this);
@@ -117,6 +112,7 @@ BetaGUI::Window::~Window(){
   LOGI("Cleaning widgetList");
   for(unsigned int i=0;i<widgetList.size();i++)
     delete widgetList[i];
+
 }
 
 /** Handle a key pressed event
@@ -150,7 +146,6 @@ bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
   else if (k=="@"){
     LOGI("At sign called");
   }  
-
 
   // If the lenght limit of the textInput is reached, we do nothing
   if(activeTextInput->getValue().length() >= activeTextInput->getLength()){
@@ -266,9 +261,8 @@ void BetaGUI::Window::setTitle(const String& title){
   */
 void BetaGUI::Window::draw(QuadRenderer* qr){
   if (visible){
-    SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
     qr->setAlpha( this->alpha );
-    sk->drawWindow(qr, corners, "Caption");
+    mSkin->drawWindow(qr, corners, "Caption");
     
     for(unsigned int i=0;i<buttonList.size();i++){
       buttonList[i]->draw(qr);
@@ -281,6 +275,7 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
     for (unsigned int i=0;i<textInputList.size();i++){
       textInputList[i]->draw(qr);
     }
+      
   }
 }
 
@@ -371,6 +366,11 @@ void BetaGUI::Window::move(int px, int py){
 
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
+
+  for(unsigned int i=0;i<widgetList.size();i++){
+    widgetList[i]->setGeometryDirty();
+  }
+
 }
 
 /** Deactivate all TextInput but one
@@ -395,117 +395,21 @@ void BetaGUI::Window::deactivateAllOtherTextInput(BetaGUI::TextInput* ti){
   }
 }
 
-/** Is the given position over a TextInput
-  * 
-  * This function is used by the \ref BetaGUI::Window::check() "check"
-  * function to know if we need to set a text edit mouse cursor.
+/** Is a point in this widget
   *
-  * \param px, py The mouse position
+  * \param mx The X position of the mouse
+  * \param my The Y position of the mouse
+  * \param px Not used here
+  * \param py Not used here
   *
-  */
-bool BetaGUI::Window::isMouseOverTextInput(unsigned int px, unsigned int py){
-  TextInputListIterator iter;
-
-  for(iter=textInputList.begin();iter!=textInputList.end();iter++){
-    if (!(*iter)->in(px, py, corners.left, corners.top)){
-	return true;
-    }
-  }
-
-  return false;
-}
-
-/** Handle the MouseMove cursor
-  *
-  * \param px, py          The mouse position
-  * \param leftMouseButton The mouse left button state
-  *
-  * \return \true if the event is handled
+  * \return \c true if the given values are inside the widget, \c false
+  *         otherwise
   *
   */
 bool BetaGUI::Window::
-handleMouseMoveCursor(unsigned int px, unsigned int py, bool leftMouseButton){
-  // Handle mouse move cursor
-  if (mTitleBar){
-    if (!mTitleBar->in(px, py, corners.left, corners.top)){
-      mGUI->getMousePointer()->setState(MPS_MOVE);
-      return true;
-    }
-    else{
-      mGUI->getMousePointer()->setState(MPS_ARROW);
-      return false;
-    }
-  }
-
-}
-
-/** Handle the MouseResize cursor
-  *
-  * \param px, py          The mouse position
-  * \param leftMouseButton The mouse left button state
-  * \param inTitleBar      Are we in TitleBar
-  *
-  * \return \true if the event is handled
-  *
-  */
-bool BetaGUI::Window::
-handleMouseResizeCursor(unsigned int px, unsigned int py, bool leftMouseButton,
-			bool inTitleBar){
-  /* Handle mouse resize cursor 
-   *
-   * Do not set again MPS_ARROW if we are in TitleBar.
-   *
-   */
-  if (mResizeGrip && !inTitleBar){
-    if (!mResizeGrip->in(px, py, corners.left, corners.top)){
-      mGUI->getMousePointer()->setState(MPS_RESIZE);
-      return true;
-    }
-    else{
-      mGUI->getMousePointer()->setState(MPS_ARROW);
-      return false;
-     }
-  }
-
-}
-
-/** Handle the MouseText cursor
-  *
-  * \param px, py          The mouse position
-  * \param leftMouseButton The mouse left button state
-  *
-  * \return \true if the event is handled
-  *
-  */
-bool BetaGUI::Window::
-handleMouseTextCursor(unsigned int px, unsigned int py, bool leftMouseButton){
-  
-  if (isMouseOverTextInput( px, py )){
-    mGUI->getMousePointer()->setState(MPS_TEXT);
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-
-/** Handle the MouseEvent for others widgets
-  *
-  * \param px, py          The mouse position
-  * \param leftMouseButton The mouse left button state
-  *
-  * \return \true if the event is handled
-  *
-  */
-bool BetaGUI::Window::
-handleWidgetMouseEvents(unsigned int px, unsigned int py, bool leftMouseButton){
-  // Handles the widget mouse events
-  for(unsigned int i=0;i<widgetList.size();i++){
-    // If a widget handles the event, we stop the event handling loop
-    if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
-      return true;
-    }
-  }
+in(unsigned int mx, unsigned int my, unsigned int px, unsigned int py){
+  return (mx>=corners.left&&mx<=corners.right) && 
+    (my>=corners.top&&my<=corners.bottom);
 }
 
 /** Handle a mouse event
@@ -523,80 +427,80 @@ handleWidgetMouseEvents(unsigned int px, unsigned int py, bool leftMouseButton){
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
+  bool inWindow=in(px, py, 0, 0);
+  if (mResizeGrip) mResizeGrip->activate(false);
 
+  // If we are outside window, we don't handle events
+  if (!inWindow){
+    if(activeButton) activeButton->activate(false);
+    mGUI->getMousePointer()->setState(MPS_ARROW);
+    if (mTitleBar) mTitleBar->activate(false);
+    return false;
+  }
 
   bool inTitleBar=handleMouseMoveCursor(px,py,LMB);
 
   // If we are in titlebar but the mouse button is up, all is done
-  if (inTitleBar && !LMB) return true;
+  if (inTitleBar&&!LMB) return true;
 
-  if (handleMouseResizeCursor(px, py, LMB, inTitleBar)) return true;
-  if (handleMouseTextCursor(px, py, LMB)) return true;
-  if (handleWidgetMouseEvents(px, py, LMB)) return true;
+  handleMouseResizeCursor(px, py, LMB, inTitleBar);
+  handleMouseTextCursor(px, py, LMB);
+  handleWidgetMouseEvents(px, py, LMB);
 
-
-  // deactivate button if not in window
-  if(!(px>=corners.left&&py>=corners.top)
-     ||!(px<=corners.right&&py<=corners.bottom)){
-    if(activeButton){
-      activeButton->activate(false);
-    }
-    return false;
-  }
-  
   if(activeButton){
     activeButton->activate(false);
+    activeButton=NULL;
   }
-  
+     
+  if(activeTextInput){
+    activeTextInput->deactivate();
+    activeTextInput=NULL;
+  }
+ 
   // handle button events
   for(unsigned int i=0;i<buttonList.size();i++){
-    if (buttonList[i]->in(px, py, corners.left, corners.top))
-      continue;
-    
-    if(activeButton){
-      activeButton->activate(false);
-    }
-    
-    activeButton=buttonList[i];
-    activeButton->activate(true);
-    if(!LMB)
-      return true;
-    
-    if(activeTextInput){
-      activeTextInput->deactivate();
-      activeTextInput=NULL;
-    }
-    
-    switch(activeButton->getCallback().getType()){
-    default: 
-      return true;
-      
-    case 1:
-      activeButton->getCallback().fp(activeButton);
-      return true;
-      
-    case 2:
-      activeButton->getCallback().LS->onButtonPress(activeButton);
-      return true;
-      
-    case 3: // We start moving the Window
-      GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
-      movingDevX=px-corners.left;
-      movingDevY=py-corners.top;
-      this->move(px, py);
-      return true;
-      
-    case 4: // We start resizing this window
-      GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
-      movingDevX=corners.right-px;
-      movingDevY=corners.bottom-py;
-      this->resize(px, py);
-      
-      if(mTitleBar){
-	mTitleBar->setWidth(getWidth());
+    if (buttonList[i]->in(px, py, corners.left, corners.top)){
+
+      activeButton=buttonList[i];
+      activeButton->activate(true);
+
+      if(!LMB)
+	return true;
+ 
+      switch(activeButton->getCallback().getType()){
+      default: 
+	return true;
+	
+      case OCT_FUNC:
+	activeButton->getCallback().fp(activeButton);
+	return true;
+	break;      
+	
+      case OCT_LIST:
+	activeButton->getCallback().LS->onButtonPress(activeButton);
+	return true;
+	break;
+	
+      case OCT_WIN_MOVE:
+	GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
+	movingDevX=px-corners.left;
+	movingDevY=py-corners.top;
+	this->move(px, py);
+	return true;
+	break;
+	
+      case OCT_WIN_RESIZE:
+	GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
+	movingDevX=corners.right-px;
+	movingDevY=corners.bottom-py;
+	this->resize(px, py);
+	
+	if(mTitleBar){
+	  mTitleBar->setWidth(getWidth());
+	}
+	return true;     
+	break;
       }
-      
-      return true;
     }
   }
  

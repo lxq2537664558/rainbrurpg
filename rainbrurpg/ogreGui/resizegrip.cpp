@@ -22,12 +22,12 @@
 
 #include "resizegrip.h"
 
-#include "skinoverlay.h"
+#include "skin.h"
 #include "quadrenderer.h"
 
 #include <logger.h>
 
-#include <OGRE/OgreStringConverter.h>
+#include <OgreStringConverter.h>
 
 /** The constructor
   *
@@ -39,11 +39,13 @@
   *
   */
 RainbruRPG::OgreGui::ResizeGrip::
-ResizeGrip(Vector4 dim, Callback callback, GUI *G, Window* parent,
+ResizeGrip(Vector4 dim, Callback callback, GUI *G, Widget* parent,
 	   OgreGuiSkinID sid):
-  Button(dim, "", "", callback, parent, sid)
+  Button(dim, "", "", callback, parent, sid),
+  mSkin(NULL)
 {
 
+  mSkin=SkinManager::getSingleton().getSkin(this);
 
 }
 
@@ -55,7 +57,7 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G, Window* parent,
   *
   */
 RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
- 
+  mSkin=NULL;
 }
 
 /** Draws the resize grip
@@ -64,11 +66,10 @@ RainbruRPG::OgreGui::ResizeGrip::~ResizeGrip(){
   *
   */
 void RainbruRPG::OgreGui::ResizeGrip::draw(QuadRenderer* qr){
-  SkinOverlay* sk=SkinManager::getSingleton().getSkin(this);
   int px=this->parent->getLeft()+corners.left;
   int py=this->parent->getTop()+corners.top;
 
   Vector4 dim(px, py, getWidth(), getHeight());
   qr->setAlpha( this->alpha );
-  sk->drawResizeGrip(qr, dim, this->active);
+  mSkin->drawResizeGrip(qr, dim, this->active);
 }

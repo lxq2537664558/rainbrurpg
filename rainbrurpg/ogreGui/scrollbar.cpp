@@ -22,7 +22,7 @@
 
 #include "scrollbar.h"
 #include "bgwindow.h"
-#include "skinoverlay.h"
+#include "skin.h"
 
 #include <logger.h>
 
@@ -63,33 +63,6 @@ RainbruRPG::OgreGui::ScrollBar::~ScrollBar(){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setTransparency(float f){
-
-}
-
-/** Change the state of the scrollbar cursor
-  *
-  * \param active Should I use active or normal material ?
-  *
-  */
-void RainbruRPG::OgreGui::ScrollBar::setCursorActive(bool active){
-
-}
-
-/** Change the state of the scrollbar top arrow
-  *
-  * \param active Should I use active or normal material ?
-  *
-  */
-void RainbruRPG::OgreGui::ScrollBar::setTopArrowActive(bool active){
-
-}
-
-/** Change the state of the scrollbar bottom arrow
-  *
-  * \param active Should I use active or normal material ?
-  *
-  */
-void RainbruRPG::OgreGui::ScrollBar::setBottomArrowActive(bool active){
 
 }
 

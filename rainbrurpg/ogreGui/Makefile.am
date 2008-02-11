@@ -12,6 +12,7 @@ h_sources= bgbutton.h			\
 	   fontmanager.h		\
 	   glyph.h			\
 	   guivertex.h			\
+	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
@@ -23,7 +24,7 @@ h_sources= bgbutton.h			\
 	   scrollbar.h			\
 	   scrollpane.h			\
 	   skinmanager.h		\
-	   skinoverlay.h		\
+	   skin.h			\
 	   sobetagui.h			\
 	   sonavigation.h		\
 	   staticimage.h		\
@@ -43,6 +44,7 @@ cc_sources= bgbutton.cpp		\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
 	    guivertex.cpp		\
+	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
@@ -54,7 +56,7 @@ cc_sources= bgbutton.cpp		\
 	    scrollbar.cpp		\
 	    scrollpane.cpp		\
 	    skinmanager.cpp		\
-	    skinoverlay.cpp		\
+	    skin.cpp			\
 	    sobetagui.cpp		\
 	    sonavigation.cpp		\
 	    staticimage.cpp		\

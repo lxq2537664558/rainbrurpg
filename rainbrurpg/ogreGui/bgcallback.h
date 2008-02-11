@@ -30,11 +30,11 @@ namespace BetaGUI {
     *
     */
   typedef enum OgreGUICallbackType{
-    OCT_NULL = 0x00,  //<! A null callback
-    OCT_FUNC = 0x01,  //<! A callback based on function pointer
-    OCT_LIST = 0x02,  //<! A callback based on a BetaGUIListener
-    OCT_WIN_MOVE = 0x03, //<! The callback is used to move a Window
-    OCT_WIN_RESIZE = 0x04, //<! The callback is used to resize a Window
+    OCT_NULL       = 0,  //<! A null callback
+    OCT_FUNC,            //<! A callback based on function pointer
+    OCT_LIST,            //<! A callback based on a BetaGUIListener
+    OCT_WIN_MOVE,        //<! The callback is used to move a Window
+    OCT_WIN_RESIZE,      //<! The callback is used to resize a Window
   };
 
   /** Defines a callback that can be use with BetaGUI
