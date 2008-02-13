@@ -23,6 +23,7 @@
 #include "scrollpane.h"
 
 #include "bgwindow.h"
+#include "quadrenderer.h"
 
 #include <OgreOverlayManager.h>
 #include <OgreException.h>
@@ -55,4 +56,24 @@ RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
   */
 void RainbruRPG::OgreGui::ScrollPane::setTransparency(float f){
 
+}
+
+/** Sraws the Scrollpane content
+  *
+  * The Scrollpane ability to draw only visible widgets is done using
+  * the scissor rectangle. Please see \ref 
+  * RainbruRPG::OgreGui::QuadRenderer::useParentScissor "useParentScissor"
+  * for more informations.
+  *
+  */
+void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
+
+  qr->setScissorRectangle(corners);
+  qr->setUseParentScissor(true);
+
+  for (unsigned int i=0;i<widgetList.size();i++){
+    widgetList[i]->draw(qr);
+  }
+
+  qr->setUseParentScissor(false);
 }

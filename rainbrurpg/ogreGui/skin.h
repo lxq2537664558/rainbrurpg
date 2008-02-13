@@ -46,6 +46,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
     class VScrollBar;
+    class HScrollBar;
   }
 }
 // End of forward declarations
@@ -159,16 +160,6 @@ namespace RainbruRPG{
      virtual void drawLabel(QuadRenderer*qr, Rectangle dim, String caption, 
 			    Window* parent)=0;
 
-     /** Creates a vertical scrollbar
-       *
-       * \param name    The internal name of the ResizeGrip (must be unique)
-       * \param dim     The widget's dimension in pixels in a 
-       *                Ogre::Vector4 object
-       * \param parent  The parent window
-       *
-       */
-     virtual void createVerticalScrollbar( const String& name, Vector4 dim, 
-					   Window* parent)=0;
 
 
      /** Draw a vertical scrollbar
@@ -178,6 +169,14 @@ namespace RainbruRPG{
        *
        */
      virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* sb )=0;
+
+     /** Draws a horizontal scrollbar
+       *
+       * \param qr The QuadRenderer object
+       * \param hs The scroll bar to draw
+       *
+       */
+     virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs )=0;
 
      virtual unsigned int getDialogBorderSize(void);
 

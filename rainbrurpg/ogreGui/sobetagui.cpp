@@ -28,6 +28,7 @@
 #include "font.h"
 #include "textsettings.h"
 #include "vscrollbar.h"
+#include "hscrollbar.h"
 
 #include <logger.h>
 
@@ -142,6 +143,31 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
    .load("bgui.vscrollbar.cursor.active.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
+ // Horizontal scrollbar
+ mHorizontalScrollBarLeftArrow=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.leftarrow.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mHorizontalScrollBarRightArrow=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.rightarrow.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mHorizontalScrollBarBodyLeft=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.bodyleft.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mHorizontalScrollBarBodyMid=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.bodymid.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mHorizontalScrollBarBodyRight=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.bodyright.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+ mHorizontalScrollBarCursor=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.cursor.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
 }
 
 /** The destructor
@@ -187,6 +213,8 @@ RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
 
   TextureManager::getSingleton().unload("bgui.textinput.active.png");
   mTextInputActiveTexture.setNull();
+
+
 
 }
 
@@ -372,47 +400,6 @@ createDialog(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
   e->show();
 }
 
-/** Creates a vertical scrollbar
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param parent  The parent window
-  *
-  */
-void RainbruRPG::OgreGui::soBetaGui::
-createVerticalScrollbar( const String& name, Vector4 dim, Window* parent){
-
-  /*
-  LOGI("Creating a VerticalScrollbar");
-  OverlayContainer* oc =parent->getOverLayContainer();
-
-  int bodyMidHeight=dim.w-(14*4);
-
-  dim.w=14;
-  this->createOverlay(name+"ta", dim, "bgui.vscrollbar.toparrow", oc);
-
-  dim.y+=14;
-  this->createOverlay(name+"bt", dim, "bgui.vscrollbar.bodytop", oc);
-
-  dim.y+=14;
-  dim.w=bodyMidHeight;
-  this->createOverlay(name+"bm", dim, "bgui.vscrollbar.bodymid", oc);
-
-  dim.y+=bodyMidHeight;
-  dim.w=14;
-  this->createOverlay(name+"bb", dim, "bgui.vscrollbar.bodybot", oc);
-
-  dim.y+=14;
-  this->createOverlay(name+"ba", dim, "bgui.vscrollbar.botarrow", oc);
-
-
-  // Creates the cursor
-  dim.y-=(14*2)+bodyMidHeight;
-  this->createOverlay(name+"c", dim, "bgui.vscrollbar.cursor", oc);
-
-  */
-}
-
 void RainbruRPG::OgreGui::soBetaGui::
 drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
 	  Window* parent){
@@ -534,6 +521,61 @@ drawVerticalScrollbar(QuadRenderer* qr, VScrollBar* vs ){
   
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(vs->getCursorCorners());
+  qr->reset();
+
+}
+
+/** Draws a horizontal scrollbar
+  *
+  * \param qr The QuadRenderer object
+  * \param hs The scroll bar to draw
+  *
+  */
+void RainbruRPG::OgreGui::soBetaGui::
+drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
+
+  qr->setBlendMode(QBM_GLOBAL);
+
+  // Left arrow
+  qr->setScissorRectangle(hs->getLeftArrowCorners());
+  qr->setTexturePtr(mHorizontalScrollBarLeftArrow);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getLeftArrowCorners());
+  qr->reset();
+
+  // Right arrow
+  qr->setScissorRectangle(hs->getRightArrowCorners());
+  qr->setTexturePtr(mHorizontalScrollBarRightArrow);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getRightArrowCorners());
+  qr->reset();
+
+  // Left body
+  qr->setScissorRectangle(hs->getBodyLeftCorners());
+  qr->setTexturePtr(mHorizontalScrollBarBodyLeft);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getBodyLeftCorners());
+  qr->reset();
+
+  // Middle body
+  qr->setScissorRectangle(hs->getBodyMidCorners());
+  qr->setTexturePtr(mHorizontalScrollBarBodyMid);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getBodyMidCorners());
+  qr->reset();
+
+  // Right body
+  qr->setScissorRectangle(hs->getBodyRightCorners());
+  qr->setTexturePtr(mHorizontalScrollBarBodyRight);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getBodyRightCorners());
+  qr->reset();
+
+  // Cursor
+  qr->setScissorRectangle(hs->getCursorCorners());
+  qr->setTexturePtr(mHorizontalScrollBarCursor);
+  qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->drawRectangle(hs->getCursorCorners());
   qr->reset();
 
 }

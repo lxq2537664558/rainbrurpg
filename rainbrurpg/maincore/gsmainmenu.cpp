@@ -29,6 +29,7 @@
 #include "bgcallback.h"
 #include "pushbutton.h"
 #include "vscrollbar.h"
+#include "hscrollbar.h"
 #include "scrollpane.h"
 
 #include <OgreViewport.h>
@@ -170,10 +171,17 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   mGUI->addWindow(testWin);
 
   Vector4 sbDim(300-16,30,14,300-60);
-  ScrollBar* sb=new VScrollBar(sbDim, testWin, OSI_BETAGUI);
+  ScrollBar* sb=new VScrollBar(sbDim, testWin);//, OSI_BETAGUI);
   testWin->addWidget(sb);
   sb->setMax(500);
   sb->setSteps(20,50);
+
+  Vector4 sbDim2(2 ,300-16,300-16,14);
+  ScrollBar* sb2=new HScrollBar(sbDim2, testWin);
+  testWin->addWidget(sb2);
+  sb->setMax(500);
+  sb->setSteps(20,50);
+
   /*  ScrollPane* sp=new ScrollPane(sbDim, testWin);
   testWin->addWidget(sp);
   */

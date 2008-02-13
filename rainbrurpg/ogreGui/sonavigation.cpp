@@ -173,24 +173,6 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption,
   qr->reset();
 }
 
-/** Creates a vertical scrollbar
-  *
-  * \warning This widget is not supported by this skin. Nothing will
-  *          be displayed if you use this skin in a window containing
-  *          a VerticalScrollbar.
-  *
-  * \param name    The internal name of the ResizeGrip (must be unique)
-  * \param dim     The widget's dimension in pixels in a Ogre::Vector4 object
-  * \param parent  The parent window
-  *
-  *
-  */
-void RainbruRPG::OgreGui::soNavigation::
-createVerticalScrollbar(const String& name, Vector4 dim, Window* parent){
-  LOGW("soNavigation cannot create VerticalScrollbar");
-
-}
-
 /** Draws a Label widget
   *
   * \warning This widget is not supported by this skin. Nothing will
@@ -237,6 +219,20 @@ drawTextInput(QuadRenderer* qr, Ogre::Rectangle dim, String caption,
   */
 void RainbruRPG::OgreGui::soNavigation::
 drawVerticalScrollbar( QuadRenderer* qr, VScrollBar* vs ){
-  LOGW("soNavigation cannot create VerticalScrollbar");
+  LOGW("soNavigation cannot draw VerticalScrollbar");
+
+}
+
+/** Draws nothing
+  *
+  * The navigation skin does not provide horizontal scroll bar.
+  *
+  * \param qr The QuadRenderer object
+  * \param hs The scroll bar to draw
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawHorizontalScrollbar(QuadRenderer* qr, HScrollBar* hs ){
+  LOGW("soNavigation cannot draw HorizontalScrollbar");
 
 }

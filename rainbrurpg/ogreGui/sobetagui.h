@@ -42,6 +42,7 @@ namespace RainbruRPG{
     class Font;
     class TextSettings;
     class VScrollBar;
+    class HScrollBar;
   }
 }
 // End of forward declarations
@@ -71,10 +72,10 @@ namespace RainbruRPG{
 				 int selEnd = -1);
 
       virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* );
+      virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* );
 
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
-      virtual void createVerticalScrollbar( const String&, Vector4, Window* );
 
     private:
       // ============= MATERIALS VALUES =================
@@ -173,6 +174,45 @@ namespace RainbruRPG{
 	*
 	*/
       TexturePtr mVerticalScrollBarCursorActive;
+
+      // ====== Horizontal scroll bar =========
+      /** The texture used to draw the left arrow of the horizontal 
+        * scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarLeftArrow;
+
+      /** The texture used to draw the right arrow of the horizontal 
+        * scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarRightArrow;
+
+      /** The texture used to draw the left side of the body of the horizontal 
+        * scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarBodyLeft;
+
+      /** The texture used to draw the middle side of the body of the 
+        * horizontal scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarBodyMid;
+
+      /** The texture used to draw the right side of the body of the 
+        * horizontal scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarBodyRight;
+
+      /** The texture used to draw the cursor of the 
+        * horizontal scrollbar in normal mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarCursor;
+
+      
     };
 
   }

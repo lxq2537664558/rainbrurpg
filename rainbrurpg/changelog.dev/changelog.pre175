@@ -1,4 +1,144 @@
 
+* v 0.0.5-168
+- Removing SkinOverlay::setTransparency() and setCaptionTransparency()
+- Removing SkinOverlay::createOverlay() and createCaption()  	
+- Removing SkinOverlay::getOverlayByName( Ogre::String s )   	
+- ScrollBar become a superClass
+- SEGFAULT when coming back from gsConnection to gsMainMenu
+   Many of SEGFAULT fixed during window removal
+- data/gui/ogreGui/test.* removed
+- A mouse over cursor for text edit
+   Window::isMouseOverTextInput()
+- Centered text drawn again
+- Text background drawn using mColor
+- Text background color uses global alpha
+   Must set quadrenderer blend mode to QBM_ALPHA
+- Check that QuadRenderer's HardwareVertexBuffer pointers are set to NULL
+   It could makes the assertions failed if not.
+- QuadRenderer::drawFilledRectangle
+- TextSettings implements color setting and background color
+- QuadRenderer text drawn again (Fix a bug)
+- soBetaGui uses TextSettings
+- TextSetting renderAligned() implementation
+- QuadRenderer::drawText uses TextSettings
+- TextSettings implementation
+   A class that encapsulate Font, size, color(s), alignment
+- Segfault : Setting a LOGA in Vector3.cpp
+#0  0xb7dca898 in RainbruRPG::OgreGui::Vector3::operator= (this=0x74686769, 
+    vVect=@0x83a68e8) at vector3.cpp:59
+#1  0xb7db3b64 in RainbruRPG::OgreGui::GuiVertex::setPosition (
+    this=0x74686769, vPos=@0x83a68e8) at guivertex.cpp:70
+#2  0xb7dba0dc in RainbruRPG::OgreGui::QuadRenderer::addGlyph (this=0x8f7d6e0, 
+    vRect=@0xbfb3dde0, vUV=@0xbfb3ddd0, vUVRelative=true)
+    at quadrenderer.cpp:518
+#3  0xb7dae8e9 in RainbruRPG::OgreGui::Font::render (this=0x846d688, 
+    qr=0x8f7d6e0, vText=@0x83adc90, vColor=@0xbfb3df64, vPos=@0xbfb3de64, 
+    vSelection=false, vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:469
+#4  0xb7daea6e in RainbruRPG::OgreGui::Font::renderAligned (this=0x846d688, 
+    qr=0x8f7d6e0, vLineList=@0x846d6c0, vColor=@0xbfb3df64, vRect=@0xbfb3df74, 
+    vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT, vSelection=false, 
+    vSelectionStart=-1, vSelectionEnd=-1) at font.cpp:365
+#5  0xb7daf98a in RainbruRPG::OgreGui::Font::renderAligned (this=0x846d688, 
+    qr=0x8f7d6e0, text=@0xbfb3e004, color=@0xbfb3df64, rect=@0xbfb3df74, 
+    wordwrap=false, vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT) at font.cpp:187
+#6  0xb7db9c5f in RainbruRPG::OgreGui::QuadRenderer::drawText (this=0x8f7d6e0, 
+    font=0x846d688, vColor=@0xbfb3df64, text=@0xbfb3e004, rect=@0xbfb3df74, 
+    wordwrap=<value optimized out>, 
+    vVertAlign=RainbruRPG::OgreGui::VAT_CENTER, 
+    vHorzAlign=RainbruRPG::OgreGui::HAT_LEFT) at quadrenderer.cpp:420
+#7  0xb7dc0b46 in RainbruRPG::OgreGui::soBetaGui::drawTitleBar (
+    this=0x8ebdb00, qr=0x8f7d6e0, dim=@0xbfb3dff4, caption=@0xbfb3e004, 
+    active=false) at sobetagui.cpp:236
+#8  0xb7dca416 in RainbruRPG::OgreGui::TitleBar::draw (this=0x9817a50, 
+    qr=0x8f7d6e0) at titlebar.cpp:72
+#9  0xb7daaf77 in BetaGUI::Window::draw (this=0x9807978, qr=0x8f7d6e0)
+    at bgwindow.cpp:415
+#10 0xb7da58a7 in BetaGUI::GUI::draw (this=0x97201a8) at bggui.cpp:381
+- QuadRenderer::checkHardwareBuffer to test HardwareBuffer
+
+* v 0.0.5-167
+- Font::getPass (and related stuff) removed
+- Removing old text renderer 
+- quadrenderer.h uses conditionnal compilation 
+   if TEXT_RENDERING_USES_SET_TEXTURE is defined, we use a new text
+   renderer using RendererSystem::_setTexture and vertices color
+- Segfault in InputManager::capture(). Setting assert
+0xb73fbe12 in std::_Rb_tree_increment () from /usr/lib/libstdc++.so.6
+(gdb) bt
+#0  0xb73fbe12 in std::_Rb_tree_increment () from /usr/lib/libstdc++.so.6
+#1  0xb7dcd572 in RainbruRPG::Core::InputManager::keyPressed (this=0x80bb1a0, 
+    e=@0xbfd58ad4) at /usr/include/c++/4.2/bits/stl_tree.h:183
+#2  0xb6eff286 in OIS::LinuxKeyboard::_injectKeyDown (this=0x80bb230, 
+    key=65307, text=27) at ./linux/LinuxKeyboard.cpp:341
+#3  0xb6eff3bf in OIS::LinuxKeyboard::capture (this=0x80bb230)
+    at ./linux/LinuxKeyboard.cpp:272
+#4  0xb7dcd128 in RainbruRPG::Core::InputManager::capture (this=0x80bb1a0)
+    at inputmanager.cpp:162
+#5  0xb7dbf939 in RainbruRPG::Core::GameEngine::frameStarted (this=0x8059b20, 
+    evt=@0xbfd58c44) at gameengine.cpp:835
+#6  0xb7dd3ca5 in RainbruRPG::Events::GuiFrameListener::frameStarted (
+    this=0x95a92a0, evt=@0xbfd58c44) at guiframelistener.cpp:63
+#7  0xb7bd09f5 in Ogre::Root::_fireFrameStarted (this=0x8060608, 
+    evt=@0xbfd58c44) at OgreRoot.cpp:625
+#8  0xb7bd1057 in Ogre::Root::_fireFrameStarted (this=0x8060608)
+    at OgreRoot.cpp:672
+#9  0xb7bd1092 in Ogre::Root::renderOneFrame (this=0x8060608)
+    at OgreRoot.cpp:748
+#10 0xb7bd1121 in Ogre::Root::startRendering (this=0x8060608)
+    at OgreRoot.cpp:741
+#11 0xb7dc07ac in RainbruRPG::Core::GameEngine::run (this=0x8059b20)
+    at gameengine.cpp:126
+#12 0x08054879 in main (argc=1, argv=0xbfd58e14) at main.cpp:154
+- editor, server and client main.cpp uses forward declarations
+- server handles -h, --help, -V, --version command line options :
+- editor handles -h, --help, -V, --version command line options :
+- client handles -h, --help, -V, --version command line options :
+- RainbruRPG manpage update
+- Masked Textinput implementation
+- Rename Window::mAB 
+- Activating a textinput deactivate others
+   void Window::deactivateAllOtherWindow(BetaGUI::TextInput*) implementation
+- TextInput drawn again using QuadRenderer
+- bool TextInput::active, activate() and deactivate() implementation
+- Removing TextInput Overlays and materials related var and fucntions
+- Label drawn again using QuadRenderer
+- SkinOverlay::drawLabel virtual function defined
+- Making move cursor more coherent with arrow one
+- Making resize cursor more coherent with arrow one
+- Resizing window uses movingDevX and movingDevY
+
+* v 0.0.5-166
+- Doxygen documentation updated
+- A bug when moving window (movingDevX and movingDevY are spurious)
+- Widget move and resize implementation   
+   Already implemented in Window
+- skin::drawpushbutton uses corner
+- widget's corners implementation
+- MouseCursor disappear if coordonates < 0  FIXED
+- MouseCursor handles moving window
+- Trying text rendering with 2 TextureUnitState FAILED
+- Draw again the text without cub in window alpha
+   o Testing in QuadRenderer::drawText()
+- Fix the Window global alpha bug OK
+- When switching to network game (SEGFAULT) FIXED
+- Trying to solve a segfault
+   A lot of work for making it work. It is due to mBatchPointer which
+   should lock the HarwareVertexBuffer but in QuadRenderer::addGlyph, 
+   sometimes HarwareVertexBuffer is not locked.
+- GuiVertex class implementation
+- Vector3 implementation
+- Deleting Window::rootOverlay
+- QuadRenderer::drawText() take alignment parameters
+   Font::renderAligned() LineInfoList take aligment parameters
+- Drawing PushButton
+- SkinOverlay::drawPushButton() now take a bool active argument
+- Remove QuadRenderer::setMaterialName()
+   o Uniquely use QuadRenderer::setTexturePtr
+- In QuadRenderer::addGlyph(), setting an assertion on the verts
+   pointer
+
 * v 0.0.5-165
 - Window posision cannot be negative
 - We should deactivate all window's titlebar but the first when one is

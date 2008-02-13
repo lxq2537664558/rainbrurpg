@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 12 feb 2008 : using QuadRenderer::useParentScissor
  * - 23 nov 2007 : starting implementation
  *         
  */
@@ -36,6 +37,11 @@
 // Forward declarations
 namespace BetaGUI{
   class Window;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
 }
 // End of forward declarations
 
@@ -56,6 +62,9 @@ namespace RainbruRPG{
       virtual ~ScrollPane();
 
       virtual void setTransparency(float);
+
+      virtual void draw(QuadRenderer*);
+
 
     private:
       /** A vector of Widget 

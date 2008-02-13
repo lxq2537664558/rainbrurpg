@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 12 feb 2008 : useParentScissor implementation and documentation
  * - 24 jan 2008 : New text renderer implementation using _setTexture()
  *                 instead of _setPass()
  * - 14 jan 2008 : setMaterialName() function removed
@@ -145,6 +146,9 @@ namespace RainbruRPG {
       void setTexturePtr(TexturePtr);
 
       void setBlendMode(tQuadRendererBlendMode);
+
+      void setUseParentScissor(bool);
+      bool getUseParentScissor(void);
 
     protected:
       void setupHardwareBuffer(void);
@@ -292,10 +296,10 @@ namespace RainbruRPG {
 	* If this pointer is NULL, we do not use texture, otherwise, we 
 	* call \c OgreRenderSystem->_setTexture() to use it. It is set
 	* to NULL is the constructor of 
-	* \link RainbruRPG::OgreGui::QuadRenderer "QuadRenderer" \endlink 
+	* \ref RainbruRPG::OgreGui::QuadRenderer "QuadRenderer" 
 	* and the 
-	* \link RainbruRPG::OgreGui::QuadRenderer::reset() 
-	* "QuadRenderer::reset()" \endlink  function.
+	* \ref RainbruRPG::OgreGui::QuadRenderer::reset() 
+	* "QuadRenderer::reset()" function.
 	*
 	*/
       TexturePtr usedTexture;
@@ -306,6 +310,17 @@ namespace RainbruRPG {
 	*
 	*/
       bool mFlipY;
+
+      /** Are we using a container handling its own scissor
+        *
+	* If \c true, the calls of \ref 
+	* RainbruRPG::OgreGui::QuadRenderer::setScissorRectangle() 
+	* "setScissorRectangle()" do nothing. It is used
+	* in \ref RainbruRPG::OgreGui::ScrollPane::draw() 
+	* "ScrollPane::draw()" implementation.
+	*
+	*/
+      bool useParentScissor;
 
     };
   }

@@ -37,6 +37,7 @@ namespace BetaGUI {
 }
 namespace RainbruRPG{
   namespace OgreGui{
+    class QuadRenderer;
     class Skin;
   }
 }
@@ -58,6 +59,18 @@ namespace RainbruRPG{
       HScrollBar(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);
       ~HScrollBar();
 
+      virtual bool injectMouse(unsigned int, unsigned int, bool);
+      virtual void draw(RainbruRPG::OgreGui::QuadRenderer*);
+
+      const Rectangle& getLeftArrowCorners(void);
+      const Rectangle& getRightArrowCorners(void);
+
+      const Rectangle& getBodyLeftCorners(void);
+      const Rectangle& getBodyMidCorners(void);
+      const Rectangle& getBodyRightCorners(void);
+
+      const Rectangle& getCursorCorners(void);
+
     protected:
       void makeCorners(void);
 
@@ -68,7 +81,20 @@ namespace RainbruRPG{
       /** A pointer to this widget's skin */
       Skin* sk;
 
+      /** The rectangle designing left arrow geometry */
+      Rectangle rLeftArrow;
+      /** The rectangle designing right arrow geometry */
+      Rectangle rRightArrow;
 
+      /** The geometry of the left part of the body */
+      Rectangle rBodyLeft;
+      /** The geometry of the middle part of the body */
+      Rectangle rBodyMid;
+      /** The geometry of the right part of the body */
+      Rectangle rBodyRight;
+
+      /** The geometry of the cursor */
+      Rectangle rCursor;
     };
   }
 }

@@ -54,7 +54,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mTexelOffsetY(0.0f),
   usedTexture(NULL),
   mBuffer(NULL),
-  mBatchPointer(NULL)
+  mBatchPointer(NULL),
+  useParentScissor(false)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -309,14 +310,19 @@ void RainbruRPG::OgreGui::QuadRenderer::end(){
   * \param x1, y1, x2, y2 The rectangle coordonates in pixels relative from the
   *                       top left corner of the render window
   *
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::useParentScissor 
+  *     "useParentScissor"
+  *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 setScissorRectangle(int x1, int y1, int x2, int y2){
-  scissorRect.left  =x1;
-  scissorRect.top   =y1;
-  scissorRect.right =x2;
-  scissorRect.bottom=y2;
-  useScissor=true;
+  if (!useParentScissor){
+    scissorRect.left  =x1;
+    scissorRect.top   =y1;
+    scissorRect.right =x2;
+    scissorRect.bottom=y2;
+    useScissor=true;
+  }
 }
 
 /** Get native coordonate from a pixel value
@@ -841,4 +847,28 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
 
   mRenderSystem->_render( mRenderOp );
 
+}
+
+/** Set the parent scissor 
+  *
+  * \param b The new useParentScissor value
+  *
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::useParentScissor 
+  *     "useParentScissor"
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::setUseParentScissor(bool b){
+  useParentScissor=b;
+}
+
+/** Get the parent scissor 
+  *
+  * \return The useParentScissor value
+  *
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::useParentScissor 
+  *     "useParentScissor"
+  *
+  */
+bool RainbruRPG::OgreGui::QuadRenderer::getUseParentScissor(void){
+  return useParentScissor;
 }
