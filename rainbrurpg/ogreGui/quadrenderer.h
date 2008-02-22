@@ -132,6 +132,7 @@ namespace RainbruRPG {
       const Rectangle& getClipRegion(void)const;
       
       void setAlpha(float);
+      float getAlpha(void);
 
       void drawRectangle(const Ogre::Rectangle&);
       void drawText(TextSettings* ,const string&, const Rectangle&, 

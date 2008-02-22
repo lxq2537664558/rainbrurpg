@@ -39,7 +39,8 @@ Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   parent(P),
   frameOverlay(NULL),
   alpha(0.0f),
-  geometryDirty(false)
+  geometryDirty(false),
+  visible(true)
 {
   corners.left   = dim.x;
   corners.top    = dim.y;
@@ -245,4 +246,31 @@ void RainbruRPG::OgreGui::Widget::setGeometryDirty(void){
 
   geometryDirty=true;
 
+}
+
+/** Hide this window
+  *
+  */
+void RainbruRPG::OgreGui::Widget::hide(){
+  visible=false;
+}
+
+/** Set this window visible
+  *
+  */
+void RainbruRPG::OgreGui::Widget::show(){
+  visible=true;
+}
+
+/** Is ths window visible ?
+  *
+  * \return \c true if this window is visible otherwise return \c false
+  *
+  */
+bool RainbruRPG::OgreGui::Widget::isVisible(){
+  return this->visible;
+}
+
+void RainbruRPG::OgreGui::Widget::setVisible(bool b){
+  visible=b;
 }

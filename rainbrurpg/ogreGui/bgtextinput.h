@@ -55,6 +55,7 @@ namespace BetaGUI {
     
     const String& getValue(void);
     void setValue(const Ogre::String&);
+    int getIntValue(void);
     
     bool in(unsigned int, unsigned int, unsigned int, unsigned int);
     

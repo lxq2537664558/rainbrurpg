@@ -538,3 +538,35 @@ AC_DEFUN([RB_OPTION_DEBUG],
 #  AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
 #  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
 ])
+
+dnl Define the server Option 
+dnl
+dnl Provides the --enable-server option of the configure script
+dnl By default, the server is disabled
+dnl
+AC_DEFUN([RB_OPTION_SCROLLPANE_TEST],
+[
+  AC_ARG_ENABLE(scrollp-test, AC_HELP_STRING([--enable-scrollp-test],
+    [Build a scrollpane test window in the main menu game state. It is only
+    a developper option, used during scrollpane implementation.
+       (default=no)]),
+    [build_server=$enableval], 
+    [build_server=no])
+
+  AC_MSG_CHECKING([if we should build scrollpane test window])
+
+  case $build_server in
+    yes)
+      scrollpane_test=true
+      AC_DEFINE([RB_SCROLLPANE_TEST], [], [Defines if the scrollpane 
+      test window is built])
+      AC_DEFINE(RB_SCROLLPANE_TEST)
+      AC_MSG_RESULT(yes)
+      ;;
+    *)
+      scrollpane_test=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+  AM_CONDITIONAL([RB_SCROLLPANE_TEST], [test x$scrollpane_test = xtrue])
+])

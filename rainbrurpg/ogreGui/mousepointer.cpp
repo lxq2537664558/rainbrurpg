@@ -93,6 +93,23 @@ RainbruRPG::OgreGui::MousePointer::MousePointer():
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 
+  mHscCursor=TextureManager::getSingleton()
+    .load("bgui.pointer.hscrollbar.cursor.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  mHscSstepLeft=TextureManager::getSingleton()
+    .load("bgui.pointer.hscrollbar.sstep.left.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  mHscSstepRight=TextureManager::getSingleton()
+    .load("bgui.pointer.hscrollbar.sstep.right.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  mHscBstepLeft=TextureManager::getSingleton()
+    .load("bgui.pointer.hscrollbar.bstep.left.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  mHscBstepRight=TextureManager::getSingleton()
+    .load("bgui.pointer.hscrollbar.bstep.right.png",
+	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
 }
 
 /** The destructor
@@ -165,6 +182,26 @@ void RainbruRPG::OgreGui::MousePointer::draw(QuadRenderer* qr){
     qr->setTexturePtr(mVscBstepUp);
    break;
 
+  case MPS_HSB_CURSOR:
+    qr->setTexturePtr(mHscCursor);
+   break;
+
+  case MPS_HSB_SSTEP_LEFT:
+    qr->setTexturePtr(mHscSstepLeft);
+   break;
+
+  case MPS_HSB_BSTEP_LEFT:
+    qr->setTexturePtr(mHscBstepLeft);
+   break;
+
+  case MPS_HSB_SSTEP_RIGHT:
+    qr->setTexturePtr(mHscSstepRight);
+   break;
+
+  case MPS_HSB_BSTEP_RIGHT:
+    qr->setTexturePtr(mHscBstepRight);
+   break;
+
   }
 
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
@@ -187,6 +224,9 @@ setPosition(unsigned int x, unsigned int y){
   *
   * \param s The new state
   *
+  * \sa \ref RainbruRPG::OgreGui::MousePointer::getState() "getState()",
+  *     \ref RainbruRPG::OgreGui::tMousePointerState "tMousePointerState"
+  *
   */
 void RainbruRPG::OgreGui::MousePointer::setState(tMousePointerState s){
   mState=s;
@@ -195,6 +235,9 @@ void RainbruRPG::OgreGui::MousePointer::setState(tMousePointerState s){
 /** Get the state of this mouse pointer
   *
   * \return The mouse state
+  *
+  * \sa \ref RainbruRPG::OgreGui::MousePointer::setState() "setState()",
+  *     \ref RainbruRPG::OgreGui::tMousePointerState "tMousePointerState"
   *
   */
 tMousePointerState RainbruRPG::OgreGui::MousePointer::getState(void) const{

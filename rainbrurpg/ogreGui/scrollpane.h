@@ -29,10 +29,9 @@
 #ifndef _OGRE_GUI_SCROLLPANE_H_
 #define _OGRE_GUI_SCROLLPANE_H_
 
-#include "widget.h"
+#include "container.h"
 
 #include <skinmanager.h> // For OgreGuiSkinID
-#include <logger.h>
 
 // Forward declarations
 namespace BetaGUI{
@@ -41,6 +40,8 @@ namespace BetaGUI{
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
+    class VScrollBar;
+    class HScrollBar;
   }
 }
 // End of forward declarations
@@ -51,28 +52,59 @@ using namespace BetaGUI;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A container that handle the clipping of child widgets
-      *
-      *
+    /** The ScrollPane policy of scrollbar drawing 
       *
       */
-    class ScrollPane : public Widget {
+    typedef enum{
+      SBP_NEVER = 0, //!< Never draw scrollbars
+      SBP_ALWAYS,    //!< Always draw scrollbars
+      SBP_IF_NEEDED  //!< Draw scrollbars only if needed
+    }tScrollBarPolicy;
+
+    /** A container that handle the clipping of child widgets and scrollbars
+      *
+      * Both horizontal and vertical scrollbar are drawn only if needed by
+      * default.
+      *
+      * \note A scropane test window is created if the \c configure script
+      *       is called with the \c --enable-scrollp-test option.
+      *
+      */
+    class ScrollPane : public Container {
     public:
       ScrollPane(Vector4, Window*,OgreGuiSkinID sid=OSI_PARENT);
       virtual ~ScrollPane();
 
-      virtual void setTransparency(float);
-
       virtual void draw(QuadRenderer*);
 
+      void setHorizontalScrollbarPolicy(tScrollBarPolicy);
+      void setVerticalScrollbarPolicy(tScrollBarPolicy);
+
+      tScrollBarPolicy getHorizontalScrollbarPolicy(void);
+      tScrollBarPolicy getVerticalScrollbarPolicy(void);
+
+      int getMaxChildRight(void);
+      int getMaxChildBottom(void);
+
+      bool isHorizontalScrollbarNeeded(void);
+      bool isVerticalScrollbarNeeded(void);
+
+      void setScrollBarsVisbleStatus();
 
     private:
-      /** A vector of Widget 
-        *
-	* Used for transparency for Widgets that are not Button or TextInput.
-	*
-	*/
-      vector<Widget*> widgetList;
+
+      /** The vertical scrollbar */
+      VScrollBar* mVScrollBar;
+
+      /** The horizontal scrollbar */
+      HScrollBar* mHScrollBar;
+
+      /** The vertical scrollbar policy */
+      tScrollBarPolicy mVScrollBarPolicy;
+
+      /** The horizontal scrollbar policy */
+      tScrollBarPolicy mHScrollBarPolicy;
+
     };
 
   }

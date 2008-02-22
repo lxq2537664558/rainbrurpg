@@ -75,7 +75,9 @@ void RainbruRPG::OgreGui::VScrollBar::draw(QuadRenderer* qr){
     geometryDirty=false;
   }
 
-  sk->drawVerticalScrollbar( qr, this );
+  if (visible){
+    sk->drawVerticalScrollbar( qr, this );
+  }
 }
 
 /** Handles mouse events
@@ -346,16 +348,21 @@ bool RainbruRPG::OgreGui::VScrollBar::isCursorActive(void){
   return activeCursor;
 }
 
-/** Is the given point inside this ScrollBar
-  *
-  * \param mx, my The point (mouse) position
-  *
-  * \return \c true if in the Widget, otherwise, returns false.
+/** Graphically move the cursor to the current value
   *
   */
-bool RainbruRPG::OgreGui::VScrollBar::in(unsigned int mx, unsigned int my){
-  return (mx >= corners.left  && 
-	  my >= corners.top   && 
-	  mx <= corners.right && 
-	  my <= corners.bottom);
+void RainbruRPG::OgreGui::VScrollBar::moveCursorToValue(void){
+  int max=getHeight() - 28 - 14;
+  int pos=(max*mValue)/mMaxValue;
+  cursorPos=pos+14;
+}
+
+/** Get the value from the cursor position
+  *
+  */
+void RainbruRPG::OgreGui::VScrollBar::getValueFromCursor(void){
+  int pos=cursorPos-14;
+  int max=getHeight() - 28 - 14;
+
+  mValue=(pos*mMaxValue)/max;
 }

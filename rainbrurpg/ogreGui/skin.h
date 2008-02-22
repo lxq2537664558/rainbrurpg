@@ -180,6 +180,8 @@ namespace RainbruRPG{
 
      virtual unsigned int getDialogBorderSize(void);
 
+     int getTitleBarHeight(void);
+
     protected:
       /** The resizeGrip material name*/
       Ogre::String mnResizeGrip;
@@ -194,6 +196,8 @@ namespace RainbruRPG{
 	*
 	*/
       unsigned int dialogBorderSize;
+      /** The TitleBar heigh in pixels */
+      int mTitleBarHeight;
 
     };
 

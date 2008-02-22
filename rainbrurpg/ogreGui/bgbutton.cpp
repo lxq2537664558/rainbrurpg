@@ -66,8 +66,8 @@ void BetaGUI::Button::activate(bool a){
   */
 bool BetaGUI::Button::
 in(unsigned int mx,unsigned int my, unsigned int px,unsigned int py){
-  return((mx>=corners.left+px)&&(my>=corners.top+py)&&
-	 (mx<=corners.right+px)&&(my<=corners.bottom+py));
+  return((mx >= corners.left  + px && my >= corners.top    + py) &&
+	 (mx <= corners.right + px && my <= corners.bottom + py));
 }
 
 /** Return this button's callback

@@ -256,7 +256,7 @@ drawRectangle(const Ogre::Rectangle& corners){
     mRenderSystem->_setTexture(0, true, usedTexture);
   }
 
-  if (useScissor){
+  if (useScissor || useParentScissor){
       mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
 				     scissorRect.right, scissorRect.bottom );
   }
@@ -871,4 +871,13 @@ void RainbruRPG::OgreGui::QuadRenderer::setUseParentScissor(bool b){
   */
 bool RainbruRPG::OgreGui::QuadRenderer::getUseParentScissor(void){
   return useParentScissor;
+}
+
+/** Get the current alpha value
+  *
+  * \return The transparency value
+  *
+  */
+float RainbruRPG::OgreGui::QuadRenderer::getAlpha(void){
+  return alphaValue;
 }

@@ -13,7 +13,7 @@ datafiles_DATA= bgui.button.active.png     		\
 		bgui.hscrollbar.leftarrow.active.png    \
 		bgui.hscrollbar.leftarrow.png           \
 		bgui.hscrollbar.rightarrow.active.png   \
-		bgui.hscrollbar.rightarrow.png   
+		bgui.hscrollbar.rightarrow.png   	\
 		\
 		bgui.window.png                		\
 		bgui.material              		\
@@ -23,6 +23,12 @@ datafiles_DATA= bgui.button.active.png     		\
 		bgui.pointer.move.png                	\
 		bgui.pointer.resize.png                	\
 		bgui.pointer.text.png          		\
+		\
+		bgui.pointer.hscrollbar.bstep.left.png 	\
+		bgui.pointer.hscrollbar.bstep.right.png \
+		bgui.pointer.hscrollbar.cursor.png     	\
+		bgui.pointer.hscrollbar.sstep.left.png 	\
+		bgui.pointer.hscrollbar.sstep.right.png \
 		\
 		bgui.pointer.vscrollbar.bstep.down.png	\
 		bgui.pointer.vscrollbar.bstep.up.png  	\

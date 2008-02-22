@@ -212,7 +212,24 @@ namespace RainbruRPG{
 	*/
       TexturePtr mHorizontalScrollBarCursor;
 
-      
+      /** The texture used to draw the left arrow of the horizontal 
+        * scrollbar in active mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarLeftArrowActive;
+
+      /** The texture used to draw the right arrow of the horizontal 
+        * scrollbar in active mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarRightArrowActive;
+
+      /** The texture used to draw the cursor of the 
+        * horizontal scrollbar in active mode.
+	*
+	*/
+      TexturePtr mHorizontalScrollBarCursorActive;
+    
     };
 
   }

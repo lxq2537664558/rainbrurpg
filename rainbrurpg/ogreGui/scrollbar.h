@@ -89,13 +89,12 @@ namespace RainbruRPG{
       int getMax(void);
       void setSteps(int, int);
 
-      void moveCursorToValue(void);
-      void getValueFromCursor(void);
-
       /** The sigc++ signal emitted when the value change */
       sigc::signal<void, int> sigValueChanged;
 
       virtual void draw(QuadRenderer* qr)=0;
+
+      bool in(unsigned int, unsigned int);
 
     protected:
       void changeCursorValue(int);

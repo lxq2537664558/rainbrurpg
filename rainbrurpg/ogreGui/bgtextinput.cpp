@@ -14,6 +14,7 @@
 #include "quadrenderer.h"
 
 #include <logger.h>
+#include <stringconv.h>
 
 #include <OgreStringConverter.h>
 #include <OgreMaterialManager.h>
@@ -194,4 +195,15 @@ void BetaGUI::TextInput::computeMaskedValue(void){
   LOGCATS("maskedValue.length() returns ");
   LOGCATI(maskedValue.length());
   LOGCAT();
+}
+
+/** Get the current content as an integer
+  *
+  * \sa \ref RainbruRPG::Core::StringConv::stoi() "StringConv::stoi()"
+  *
+  * \return The integer content of the TextInput
+  *
+  */
+int BetaGUI::TextInput::getIntValue(void){
+  return RainbruRPG::Core::StringConv::getSingleton().stoi(value.c_str());
 }

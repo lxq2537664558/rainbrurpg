@@ -48,6 +48,9 @@ namespace RainbruRPG{
 
     /** The state of mouse pointer
       *
+      * \sa \ref RainbruRPG::OgreGui::MousePointer::setState() 
+      *     "MousePointer::setState()"
+      *
       */
     typedef enum tMousePointerState{
       MPS_ARROW  =0,      //!< The normal state
@@ -57,15 +60,25 @@ namespace RainbruRPG{
       MPS_VSB_CURSOR,     //!< We're over a VScrollBar cursor
       MPS_VSB_SSTEP_DOWN, //!< We're over VScrollBar down small step
       MPS_VSB_BSTEP_DOWN, //!< We're over VScrollBar down big step
-      MPS_VSB_SSTEP_UP,   //!< We're over VScrollBar down small step
-      MPS_VSB_BSTEP_UP,   //!< We're over VScrollBar down big step
+      MPS_VSB_SSTEP_UP,   //!< We're over VScrollBar up small step
+      MPS_VSB_BSTEP_UP,   //!< We're over VScrollBar up big step
+      MPS_HSB_CURSOR,     //!< We're over a HScrollBar cursor
+      MPS_HSB_SSTEP_LEFT, //!< We're over HScrollBar left small step
+      MPS_HSB_BSTEP_LEFT, //!< We're over HScrollBar left big step
+      MPS_HSB_SSTEP_RIGHT,//!< We're over HScrollBar right small step
+      MPS_HSB_BSTEP_RIGHT,//!< We're over HScrollBar right big step
     };
 
     /** Draws and handles the OgreGui mouse pointer
       *
-      * This class handles the mouse poiner positionand state. The draw 
+      * This class handles the mouse poiner position and state. The draw 
       * function is called for each frame. 
       *
+      * You can change the mouse pointer (when mouse is over a titlebar or
+      * an active widget) by calling 
+      * \ref RainbruRPG::OgreGui::MousePointer::setState() "setState()". 
+      * Please see \ref RainbruRPG::OgreGui::tMousePointerState 
+      * "tMousePointerState" for available states.
       *
       */
     class MousePointer{
@@ -133,6 +146,30 @@ namespace RainbruRPG{
       int mousePosX;
       /** The current position of the mouse pointer in pixels */
       int mousePosY;
+
+      /** The texture used to draw the horizontal ScrollBar cursor pointer */
+      TexturePtr mHscCursor;
+      /** The texture used to draw the horizontal ScrollBar small step left 
+        * pointer
+	*
+	*/
+      TexturePtr mHscSstepLeft;
+      /** The texture used to draw the horizontal ScrollBar small step right 
+        * pointer
+	*
+	*/
+      TexturePtr mHscSstepRight;
+      /** The texture used to draw the horizontal ScrollBar big step left 
+        * pointer
+	*
+	*/
+      TexturePtr mHscBstepLeft;
+      /** The texture used to draw the horizontal ScrollBar big step right 
+        * pointer
+	*
+	*/
+      TexturePtr mHscBstepRight;
+
     };
 
   }

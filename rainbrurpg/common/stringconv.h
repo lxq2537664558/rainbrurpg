@@ -46,8 +46,8 @@ namespace RainbruRPG {
     /** A singleton to convert string format
       *
       * Be carefull, some functions of this class must be freed by a
-      * call to freeTte. Please see the detail of a function before
-      * using it.
+      * call to \ref StringConv::freeTte() "freeTte()". Please see the 
+      * detail of a function before using it.
       *
       * On Win32, the mbsrtowcs function needs to be linked with the
       * msvcr60, msvcr library.
@@ -83,8 +83,7 @@ namespace RainbruRPG {
       std::string xmlToNewLine(std::string);
 
     private:
-      /** Unimplemented copy constructors
-      int ctoi(const char*);
+      /** Forbidden copy constructors
         *
 	* In a singleton the use of this method must be forbidden.
 	*
@@ -92,7 +91,7 @@ namespace RainbruRPG {
 	*/
       StringConv(const StringConv& obj);
 
-      /** Unimplemented assignment
+      /** Forbidden assignment
         *
 	* In a singleton the use of this method must be forbidden.
 	* \param obj A StringConv

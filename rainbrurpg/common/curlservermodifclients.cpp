@@ -76,12 +76,16 @@ setName(const std::string& s){
 
 /** Sets the actually connected client number
   *
+  * If the given client number is negative, it will be set to 0.
   * StringConv is used to convert the integer agrument.
   *
   * \param i The client number
   *
   */
 void RainbruRPG::Network::Ident::CurlServerModifClients::setActClients(int i){
+
+  if (i<0) i=0;
+
   std::string s=StringConv::getSingleton().itos(i);
   postedData.setValue("actClients", s);
 }

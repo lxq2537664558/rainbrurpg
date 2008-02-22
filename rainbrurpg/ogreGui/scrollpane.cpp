@@ -24,11 +24,19 @@
 
 #include "bgwindow.h"
 #include "quadrenderer.h"
+#include "widget.h"
+#include "hscrollbar.h"
+#include "vscrollbar.h"
 
 #include <OgreOverlayManager.h>
 #include <OgreException.h>
+#include <logger.h>
+
+#include <algorithm>
 
 /** The constructor
+  *
+  * Both horizontal and vertical scrollbar are drawn only if needed by default.
   *
   * \param dim    The dimensions of the scrollpane
   * \param parent The parent
@@ -37,8 +45,18 @@
   */
 RainbruRPG::OgreGui::ScrollPane::
 ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):  
-  Widget(dim, parent, sid)
+  Container(dim, parent, sid),
+  mVScrollBarPolicy(SBP_IF_NEEDED),
+  mHScrollBarPolicy(SBP_IF_NEEDED)
 {
+
+  Vector4 sbDim(dim.z-16,30,14,dim.w-60);
+  mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
+  this->addWidget(mVScrollBar);
+
+  Vector4 sbDim2(2 ,dim.w-16,dim.z-16,14);
+  mHScrollBar=new HScrollBar(sbDim2, parent);
+  this->addWidget(mHScrollBar);
 
 }
 
@@ -46,19 +64,15 @@ ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):
   *
   */
 RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
+  delete mVScrollBar;
+  mVScrollBar=NULL;
+
+  delete mHScrollBar;
+  mHScrollBar=NULL;
 
 }
 
-/** Change the transparency of this scrollpane
-  *
-  * \param f The new transparency
-  *
-  */
-void RainbruRPG::OgreGui::ScrollPane::setTransparency(float f){
-
-}
-
-/** Sraws the Scrollpane content
+/** Draws the Scrollpane content
   *
   * The Scrollpane ability to draw only visible widgets is done using
   * the scissor rectangle. Please see \ref 
@@ -67,13 +81,164 @@ void RainbruRPG::OgreGui::ScrollPane::setTransparency(float f){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
-
   qr->setScissorRectangle(corners);
   qr->setUseParentScissor(true);
+  Container::draw(qr);
+  qr->setUseParentScissor(false);
+}
 
-  for (unsigned int i=0;i<widgetList.size();i++){
-    widgetList[i]->draw(qr);
+/** Changes the horizontal Scrollbar policy
+  *
+  * \param p The new policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbarPolicy()
+  *     "getHorizontalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+void RainbruRPG::OgreGui::ScrollPane::
+setHorizontalScrollbarPolicy(tScrollBarPolicy p){
+  mHScrollBarPolicy=p;
+}
+
+/** Changes the vertical Scrollbar policy
+  *
+  * \param p The new policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbarPolicy()
+  *     "getVerticalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+void RainbruRPG::OgreGui::ScrollPane::
+setVerticalScrollbarPolicy(tScrollBarPolicy p){
+  mVScrollBarPolicy=p;
+}
+
+/** Get the horizontal Scrollbar policy
+  *
+  * \return The current policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::setHorizontalScrollbarPolicy()
+  *     "setHorizontalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+tScrollBarPolicy RainbruRPG::OgreGui::ScrollPane::
+getHorizontalScrollbarPolicy(void){
+  return mHScrollBarPolicy;
+}
+
+/** Get the vertical Scrollbar policy
+  *
+  * \return The current policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::setVerticalScrollbarPolicy()
+  *     "setVerticalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+tScrollBarPolicy RainbruRPG::OgreGui::ScrollPane::
+getVerticalScrollbarPolicy(void){
+  return mVScrollBarPolicy;
+}
+
+/** Get the max right position of childs widget
+  *
+  * \return The max right position
+  *
+  */
+int RainbruRPG::OgreGui::ScrollPane::getMaxChildRight(void){
+  int maxRight=0;
+  unsigned int i;
+
+  for ( i=0; i<widgetList.size(); i++){
+    maxRight=max( maxRight, widgetList[i]->getRight() );
   }
 
-  qr->setUseParentScissor(false);
+  for ( i=0; i<textInputList.size(); i++){
+    maxRight=max( maxRight, textInputList[i]->getRight() );
+  }
+
+  for ( i=0; i<buttonList.size(); i++){
+    maxRight=max( maxRight, buttonList[i]->getRight() );
+  }
+
+  return maxRight;
+}
+
+/** Get the max bottom position of childs widget
+  *
+  * \return The max bottom position
+  *
+  */
+int RainbruRPG::OgreGui::ScrollPane::getMaxChildBottom(void){
+  int maxBottom=0;
+  unsigned int i;
+
+  for ( i=0; i<widgetList.size(); i++){
+    maxBottom = max( maxBottom, widgetList[i]->getBottom() );
+  }
+
+  for ( i=0; i<textInputList.size(); i++){
+    maxBottom = max( maxBottom, textInputList[i]->getBottom() );
+  }
+
+  for ( i=0; i<buttonList.size(); i++){
+    maxBottom = max( maxBottom, buttonList[i]->getBottom() );
+  }
+
+  return maxBottom;
+}
+
+bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
+  switch (mHScrollBarPolicy){
+  case SBP_NEVER:
+    return false;
+    break;
+
+  case SBP_ALWAYS:
+    return false;
+    break;
+
+  case SBP_IF_NEEDED:
+    return (getMaxChildRight()>corners.right);
+    break;
+  }
+}
+
+bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
+  switch (mVScrollBarPolicy){
+  case SBP_NEVER:
+    return false;
+    break;
+
+  case SBP_ALWAYS:
+    return false;
+    break;
+
+  case SBP_IF_NEEDED:
+    return (getMaxChildBottom()>corners.bottom);
+    break;
+  }
+}
+
+void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
+  if (isHorizontalScrollbarNeeded()){
+    mHScrollBar->setVisible(true);
+  }
+  else{
+    mHScrollBar->setVisible(false);
+  }
+
+  if (isVerticalScrollbarNeeded()){
+    mVScrollBar->setVisible(true);
+  }
+  else{
+    mVScrollBar->setVisible(false);
+  }
 }

@@ -27,6 +27,7 @@
 #include "widget.h" 
 
 #include "bggui.h"         // For enum OgreGUIWindowType
+#include "scrollpane.h"    // For tScrollBarPolicy
 #include "bgtextinput.h"
 #include "resizegrip.h"
 #include "bgbutton.h"
@@ -38,6 +39,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
     class Skin;
+    class ScrollPane;
   }
 }
 // End of forward declarations
@@ -70,18 +72,10 @@ namespace BetaGUI {
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
-    void hide();
-    void show();
-    bool isVisible();
-
     bool check(unsigned int, unsigned int, bool); 
     bool checkKey(String, unsigned int, unsigned int);
 
     GUI* getGUI();
-
-    void addWidget(BetaGUI::Button*);
-    void addWidget(BetaGUI::TextInput*);
-    void addWidget(Widget*);
 
     void setMinimalSize(unsigned int, unsigned int);
 
@@ -99,31 +93,20 @@ namespace BetaGUI {
 
     virtual bool in(unsigned int, unsigned int, unsigned int, unsigned int);
 
+    void addWidget(Widget*);
+    void addWidget(Button*);
+    void addWidget(BetaGUI::TextInput*);
+
+    void setHorizontalScrollbarPolicy(tScrollBarPolicy);
+    void setVerticalScrollbarPolicy(tScrollBarPolicy);
+
+    tScrollBarPolicy getHorizontalScrollbarPolicy(void);
+    tScrollBarPolicy getVerticalScrollbarPolicy(void);
+
+    void debugScrollPane(void);
+
+
   protected:
-    void deactivateAllOtherTextInput(BetaGUI::TextInput*);
-
-    /** Is the given position over a TextInput
-      *  
-      * This function is used by the \ref BetaGUI::Window::check() "check"
-      * function to know if we need to set a text edit mouse cursor.
-      *
-      * \param px, py The mouse position
-      *
-      */
-    inline bool isMouseOverTextInput(unsigned int px, unsigned int py){
-      TextInputListIterator iter;
-
-      for(iter=textInputList.begin();iter!=textInputList.end();iter++){
-	if (!(*iter)->in(px, py, corners.left, corners.top)){
-	  return true;
-	}
-      }
-
-      return false;
-    };
-
-
-
     /** Handle the MouseMove cursor
       *
       * \param px, py          The mouse position
@@ -132,7 +115,8 @@ namespace BetaGUI {
       * \return \c true if the event is handled
       *
       */
-    inline bool handleMouseMoveCursor(unsigned int px, unsigned int py, bool leftMouseButton){
+    inline bool handleMouseMoveCursor(unsigned int px, unsigned int py, 
+				      bool leftMouseButton){
       // Handle mouse move cursor
       if (mTitleBar){
 	if (mTitleBar->in(px, py, corners.left, corners.top)){
@@ -146,9 +130,7 @@ namespace BetaGUI {
 	  return false;
 	}
       }
-      
     };
-
 
     /** Handle the MouseResize cursor
       *
@@ -162,11 +144,8 @@ namespace BetaGUI {
     inline bool handleMouseResizeCursor(unsigned int px, unsigned int py, 
 					bool leftMouseButton,
 					bool inTitleBar){
-      /* Handle mouse resize cursor 
-       *
-       * Do not set again MPS_ARROW if we are in TitleBar.
-       *
-       */
+      // Handle mouse resize cursor 
+      // Do not set again MPS_ARROW if we are in TitleBar.
       if (mResizeGrip && !inTitleBar){
 	if (mResizeGrip->in(px, py, corners.left, corners.top)){
 	  mGUI->getMousePointer()->setState(MPS_RESIZE);
@@ -179,114 +158,16 @@ namespace BetaGUI {
 	  return false;
 	}
       }
-      
     } 
-
-    /** Handle the MouseText cursor
-      *
-      * \param px, py          The mouse position
-      * \param leftMouseButton The mouse left button state
-      *
-      * \return \c true if the event is handled
-      *
-      */
-    inline bool handleMouseTextCursor(unsigned int px, unsigned int py, 
-				      bool leftMouseButton){
-  
-      if (isMouseOverTextInput( px, py )){
-	mGUI->getMousePointer()->setState(MPS_TEXT);
-	return true;
-      }
-      else{
-	return false;
-      }
-    }
-
-
-    /** Handle the MouseEvent for others widgets
-      *
-      * \param px, py          The mouse position
-      * \param LMB             The mouse left button state
-      *
-      * \return \c true if the event is handled
-      *
-      */
-    inline bool handleWidgetMouseEvents(unsigned int px, unsigned int py, 
-					bool LMB){
-      // Handles the widget mouse events
-      for(unsigned int i=0;i<widgetList.size();i++){
-	// If a widget handles the event, we stop the event handling loop
-	if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
-	  return true;
-	}
-      }
-    }
- 
-    /** A constant iterator for TextInput lit */
-    typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;
-
-    /** A constant iterator for Button lit */
-    typedef vector<BetaGUI::Button*>::const_iterator ButtonListIterator;
-
-    /** A constant iterator for TextInput lit */
-    typedef vector<Widget*>::const_iterator WidgetListIterator;
-
-    /** A vector of Buttons */
-    vector<BetaGUI::Button*> buttonList;
-
-    /** A vector of TextInput */
-    vector<BetaGUI::TextInput*> textInputList;
-
-    /** A vector of Widget 
-      *
-      * Used for transparency for Widgets that are not Button or TextInput.
-      *
-      */
-    vector<Widget*> widgetList;
-
-    /** The currently active TextInput widget */
-    TextInput* activeTextInput;
 
     /** The resize grip */
     BetaGUI::Button* mResizeGrip;
-
-    /** The currently active Button widget 
-      *
-      * \note This can contain special Button as 
-      *       \ref BetaGUI::Window::mTitleBar "mTitleBar"
-      *       or \ref BetaGUI::Window::mResizeGrip "mResizeGrip".
-      *       It is why it's aButton and not a PushButton.
-      *
-      */
-    BetaGUI::Button* activeButton;
 
     /** Defines a button */
     TitleBar* mTitleBar;
 
     /** The GUI object used to draw this window */
     GUI* mGUI;
-    /** Kept the devX when moving or resizing the window 
-      *
-      * We keep here the distance between the window position and the mouse
-      * position to move the window according to this value.
-      *
-      * \sa \ref BetaGUI::Window::move "move()",
-      *     \ref BetaGUI::Window::resize "resize()"
-      *     \ref BetaGUI::Window::check "check()"
-      *
-      */
-    int movingDevX;
-    /** Kept the devY when moving or resizing the window 
-      *
-      * We keep here the distance between the window position and the mouse
-      * position to move the window according to this value.
-      *
-      * \sa \ref BetaGUI::Window::move "move()",
-      *     \ref BetaGUI::Window::resize "resize()"
-      *     \ref BetaGUI::Window::check "check()"
-      *
-      */
-    int movingDevY;
 
     /** The minimal width of this window
       *
@@ -303,18 +184,24 @@ namespace BetaGUI {
       *
       */
     unsigned int minimalHeight;
+
     /** If true, the window will always be fully transparent */
     bool alwaysTransparent;
+
     /** Is it a border window */
     bool hasBorder;
+
     /** The pointer to the border text for transparency operation */
     Ogre::TextureUnitState* borderTus;
+
     /** The window's title */
     String mCaption;
-    /** Is this window visible ? */
-    bool visible;
+
     /** The current skin */
     Skin* mSkin;
+
+    /** The scroll pane */
+    ScrollPane* mScrollPane;
   };
 }
 

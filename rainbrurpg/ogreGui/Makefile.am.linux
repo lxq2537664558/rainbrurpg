@@ -8,6 +8,7 @@ h_sources= bgbutton.h			\
 	   bglistener.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
+	   container.h			\
 	   font.h			\
 	   fontmanager.h		\
 	   glyph.h			\
@@ -40,6 +41,7 @@ cc_sources= bgbutton.cpp		\
 	    bggui.cpp			\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
+	    container.cpp		\
 	    font.cpp			\
 	    fontmanager.cpp		\
 	    glyph.cpp			\

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 feb 2008 : visible now part of widget (instead of Window)
  * - 19 jan 2008 : getCorners implementation
  *                 getX, getY renamed getTop, getLeft
  *                 get* qualified const
@@ -68,7 +69,7 @@ namespace RainbruRPG{
     class Widget : public Object{
     public:
       Widget(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);    
-      ~Widget();
+      virtual ~Widget();
 
       OgreGuiSkinID getSkinId(void);
 
@@ -86,6 +87,10 @@ namespace RainbruRPG{
       void setWidth(int);
       void setHeight(int);
 
+      void hide();
+      void show();
+      bool isVisible();
+      void setVisible(bool);
 
       /** Get the X position of this widget
         *
@@ -106,6 +111,9 @@ namespace RainbruRPG{
 	*
 	*/
       inline int getTop(void) const { return corners.top; };
+
+      inline int getRight(void) const { return corners.right; };
+      inline int getBottom(void) const { return corners.bottom; };
 
       int getWidth(void) const;
       int getHeight(void) const;
@@ -184,6 +192,11 @@ namespace RainbruRPG{
 	*
 	*/
       bool geometryDirty;
+
+      /** Is this widget visible ? */
+      bool visible;
+
+
     };
   }
 }

@@ -45,24 +45,20 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   mGUI(G),
   mTitleBar(NULL),
   mResizeGrip(NULL),
-  activeTextInput(NULL),
-  movingDevX(0),
-  movingDevY(0),
   minimalWidth(50),
   minimalHeight(50),
-  activeButton(NULL),
   borderTus(NULL),
   alwaysTransparent(false),
   hasBorder(border),
-  mCaption(caption),
-  visible(true)
+  mCaption(caption)
 {
-
+  mSkin = SkinManager::getSingleton().getSkin(this);
+  mScrollPane=new ScrollPane(D, this, sid);
+  mScrollPane->setGUI(mGUI);
 
   String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
   // Create the window
-  mSkin = SkinManager::getSingleton().getSkin(this);
   Vector4 resizeGripDim, titlebarDim;
   if (hasBorder){
     // Get the dialog border size
@@ -81,7 +77,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_RESIZE);
     this->mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
-    buttonList.push_back(mResizeGrip);
+    mScrollPane->addWidget(mResizeGrip);
   }
   
   if(t==OWT_MOVE || t==OWT_RESIZE_AND_MOVE){
@@ -89,8 +85,16 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_MOVE);
     this->mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
-    buttonList.push_back(mTitleBar);
+    mScrollPane->addWidget(mTitleBar);
+
+    // Adding titlebar height to scroll pane top position
+    /*    int spTop = mScrollPane->getTop();
+    spTop    += mSkin->getTitleBarHeight();
+    mScrollPane->setTop(spTop);
+    */
   }
+
+  mScrollPane->setScrollBarsVisbleStatus();
 }
 
 /** The destructor
@@ -101,17 +105,8 @@ BetaGUI::Window::~Window(){
   LOGI("Window destructor called");
   mGUI->removeWindow(this);
 
-  LOGI("Cleaning buttonList");
-  for(unsigned int i=0;i<buttonList.size();i++)
-    delete buttonList[i];
-
-  LOGI("Cleaning textInputList");
-  for(unsigned int i=0;i<textInputList.size();i++)
-    delete textInputList[i];
-  
-  LOGI("Cleaning widgetList");
-  for(unsigned int i=0;i<widgetList.size();i++)
-    delete widgetList[i];
+  delete mScrollPane;
+  mScrollPane=NULL;
 
 }
 
@@ -125,60 +120,8 @@ BetaGUI::Window::~Window(){
   *
   */
 bool BetaGUI::Window::checkKey(String k, unsigned int px, unsigned int py){
-  // If no TextInput is active
-  if(activeTextInput==0){
-    return false;
-  }
+  return mScrollPane->handleKeyEvent( k, px, py);
 
-  // If the mouse pointer is not in the Window
-  if(!(px>=corners.left&&py>=corners.top)||
-     !(px<=corners.right&&py<=corners.bottom)){
-    return false;
-  }
-
-  // Handles the backspace char
-  if(k=="!b"){
-    Ogre::String val=activeTextInput->getValue();
-    Ogre::String truncated=val.substr(0,val.length()-1);
-    activeTextInput->setValue(truncated);
-     return true;
-  }
-  else if (k=="@"){
-    LOGI("At sign called");
-  }  
-
-  // If the lenght limit of the textInput is reached, we do nothing
-  if(activeTextInput->getValue().length() >= activeTextInput->getLength()){
-     return true;
-  }
-
-  // TextInput::setValue automatically update the contentOverlay text
-  activeTextInput->setValue(activeTextInput->getValue()+k);
-
-  return true;
-}
-
-/** Hide this window
-  *
-  */
-void BetaGUI::Window::hide(){
-  visible=false;
-}
-
-/** Set this window visible
-  *
-  */
-void BetaGUI::Window::show(){
-  visible=true;
-}
-
-/** Is ths window visible ?
-  *
-  * \return \c true if this window is visible otherwise return \c false
-  *
-  */
-bool BetaGUI::Window::isVisible(){
-  return this->visible;
 }
 
 /** Get the GUI object this window use
@@ -188,24 +131,6 @@ bool BetaGUI::Window::isVisible(){
   */
 BetaGUI::GUI* BetaGUI::Window::getGUI(){
   return mGUI; 
-}
-
-/** Adds a Button in the button list
-  *
-  * \param btn The button to add
-  *
-  */
-void BetaGUI::Window::addWidget(BetaGUI::Button* btn){
-  buttonList.push_back(btn);
-}
-
-/** Adds a TextInout widget in the button list
-  *
-  * \param ti The text input to add
-  *
-  */
-void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
-  textInputList.push_back(ti);
 }
 
 /** Change the minimal allowed size of this window
@@ -219,15 +144,6 @@ void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
 void BetaGUI::Window::setMinimalSize(unsigned int mw, unsigned int mh){
   minimalWidth=mw;
   minimalHeight=mh;
-}
-
-/** Add a widget to this window
-  *
-  * \sa widgetList (member)
-  *
-  */
-void BetaGUI::Window::addWidget(Widget* w){
-  widgetList.push_back(w);
 }
 
 /** Change the alwaysTransparent status of this window
@@ -263,19 +179,7 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
   if (visible){
     qr->setAlpha( this->alpha );
     mSkin->drawWindow(qr, corners, "Caption");
-    
-    for(unsigned int i=0;i<buttonList.size();i++){
-      buttonList[i]->draw(qr);
-    }
-    
-    for (unsigned int i=0;i<widgetList.size();i++){
-      widgetList[i]->draw(qr);
-    }
-
-    for (unsigned int i=0;i<textInputList.size();i++){
-      textInputList[i]->draw(qr);
-    }
-      
+    mScrollPane->draw( qr );
   }
 }
 
@@ -286,10 +190,7 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
   */
 void BetaGUI::Window::setTransparency(float f){
   this->alpha=f;
-
-  for(unsigned int i=0;i<buttonList.size();i++){
-    buttonList[i]->setTransparency(f);
-  }
+  mScrollPane->setTransparency(f);
 }
 
 /** Return the title of this window
@@ -325,13 +226,15 @@ void BetaGUI::Window::deactivate(void){
   */
 void BetaGUI::Window::resize(int px, int py){
   int height, width;
+  int devX, devY;
+  mScrollPane->getMovingDev(devX, devY);
 
   // Compute new width
   if (px-corners.left<minimalWidth){
     width= minimalWidth;
   }
   else{
-    width= px - corners.left + movingDevX;
+    width= px - corners.left + devX;
   }
 
   // Compute new height
@@ -339,7 +242,7 @@ void BetaGUI::Window::resize(int px, int py){
     height= minimalHeight;
   }
   else{
-    height= py - corners.top + movingDevY;
+    height= py - corners.top + devY;
   }
 
   // Moves the ResizeGrip
@@ -351,14 +254,22 @@ void BetaGUI::Window::resize(int px, int py){
 
   setWidth(width);
   setHeight(height);
+  mScrollPane->setWidth( width );
+  mScrollPane->setHeight( height );
+
+  mScrollPane->setScrollBarsVisbleStatus();
+
 }
 
 void BetaGUI::Window::move(int px, int py){
+  int devX, devY;
+  mScrollPane->getMovingDev(devX, devY);
+
   int width  = corners.right - corners.left;
   int height = corners.bottom - corners.top;
 
-  corners.left =px - movingDevX;
-  corners.top  =py - movingDevY;
+  corners.left =px-devX;
+  corners.top  =py-devY;
 
   // Negatiev position is forbiden
   if (corners.left<0) corners.left=0;
@@ -367,32 +278,10 @@ void BetaGUI::Window::move(int px, int py){
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
 
-  for(unsigned int i=0;i<widgetList.size();i++){
-    widgetList[i]->setGeometryDirty();
-  }
 
-}
 
-/** Deactivate all TextInput but one
-  *
-  * This function is called from the \ref BetaGUI::Window::check() "check()"
-  * one after activating th under-mouse TextInput (and setting 
-  * \ref BetaGUI::Window::activeTextInput "activeTextInput").
-  *
-  * \sa \ref BetaGUI::Window::check() "check()",
-  *     \ref BetaGUI::Window::activeTextInput "activeTextInput"(member)
-  *
-  * \param ti The activate TextInput
-  *
-  */
-void BetaGUI::Window::deactivateAllOtherTextInput(BetaGUI::TextInput* ti){
-  TextInputListIterator iter;
 
-  for(iter=textInputList.begin();iter!=textInputList.end();iter++){
-    if ((*iter)!=ti){
-      (*iter)->deactivate();
-    }
-  }
+  mScrollPane->setGeometryDirty();
 }
 
 /** Is a point in this widget
@@ -428,106 +317,125 @@ in(unsigned int mx, unsigned int my, unsigned int px, unsigned int py){
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   bool inWindow=in(px, py, 0, 0);
-  if (mResizeGrip) mResizeGrip->activate(false);
 
-  // If we are outside window, we don't handle events
+  // If we are outside window
   if (!inWindow){
-    if(activeButton) activeButton->activate(false);
     mGUI->getMousePointer()->setState(MPS_ARROW);
     if (mTitleBar) mTitleBar->activate(false);
-    return false;
   }
 
+  if (mResizeGrip) mResizeGrip->activate(false);
+
   bool inTitleBar=handleMouseMoveCursor(px,py,LMB);
+  handleMouseResizeCursor(px, py, LMB, inTitleBar);
 
   // If we are in titlebar but the mouse button is up, all is done
   if (inTitleBar&&!LMB) return true;
-
-  handleMouseResizeCursor(px, py, LMB, inTitleBar);
-  handleMouseTextCursor(px, py, LMB);
-  handleWidgetMouseEvents(px, py, LMB);
-
-  if(activeButton){
-    activeButton->activate(false);
-    activeButton=NULL;
-  }
-     
-  if(activeTextInput){
-    activeTextInput->deactivate();
-    activeTextInput=NULL;
-  }
  
-  // handle button events
-  for(unsigned int i=0;i<buttonList.size();i++){
-    if (buttonList[i]->in(px, py, corners.left, corners.top)){
+  return mScrollPane->handleChildsEvent( px, py, 
+					 LMB, this );
+}
 
-      activeButton=buttonList[i];
-      activeButton->activate(true);
+/** Add a widget to this window
+  *
+  * It is simply a call to 
+  * \ref RainbruRPG::OgreGui::ScrollPane::addWidget(Widget*)
+  * "ScrollPane::addWidget(Widget*)".
+  *
+  * \param w The widget to add
+  *
+  */
+void BetaGUI::Window::addWidget(Widget* w){
+  mScrollPane->addWidget(w);
+}
 
-      if(!LMB)
-	return true;
- 
-      switch(activeButton->getCallback().getType()){
-      default: 
-	return true;
-	
-      case OCT_FUNC:
-	activeButton->getCallback().fp(activeButton);
-	return true;
-	break;      
-	
-      case OCT_LIST:
-	activeButton->getCallback().LS->onButtonPress(activeButton);
-	return true;
-	break;
-	
-      case OCT_WIN_MOVE:
-	GameEngine::getSingleton().getOgreGui()->setMovedWindow(this);
-	movingDevX=px-corners.left;
-	movingDevY=py-corners.top;
-	this->move(px, py);
-	return true;
-	break;
-	
-      case OCT_WIN_RESIZE:
-	GameEngine::getSingleton().getOgreGui()->setResizedWindow(this);
-	movingDevX=corners.right-px;
-	movingDevY=corners.bottom-py;
-	this->resize(px, py);
-	
-	if(mTitleBar){
-	  mTitleBar->setWidth(getWidth());
-	}
-	return true;     
-	break;
-      }
-    }
-  }
- 
-  if (!LMB)
-    return true;
-  
-  for(unsigned int i=0;i<textInputList.size();i++){
-    if(textInputList[i]->in( px, py, corners.left, corners.top))
-      continue;
-    
-    /* The current indexed textInputList element is under the mouse
-     * activeTextInput is set as a pointer to it.
-     * And we change its texture to graphically mark it as active.
-     *
-     * We also call the deactivateAllOtherTextInput to get only one
-     * TextInput activated.
-     *
-     */
-    activeTextInput=textInputList[i];
-    activeTextInput->activate();
-    deactivateAllOtherTextInput(activeTextInput);
-    return true;
-  }
+/** Add a widget to this window
+  *
+  * It is simply a call to 
+  * \ref RainbruRPG::OgreGui::ScrollPane::addWidget(Button*)
+  * "ScrollPane::addWidget(Button*)".
+  *
+  * \param btn The widget to add
+  *
+  */
+void BetaGUI::Window::addWidget(Button* btn){
+  mScrollPane->addWidget(btn);
+}
 
-  if(activeTextInput){
-    activeTextInput->deactivate();
-  }
+/** Add a widget to this window
+  *
+  * It is simply a call to 
+  * \ref RainbruRPG::OgreGui::ScrollPane::addWidget(TextInput*)
+  * "ScrollPane::addWidget(TextInput*)".
+  *
+  * \param ti The widget to add
+  *
+  */
+void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
+  mScrollPane->addWidget(ti);
+}
 
-  return true;
+/** Change the scrollbar policy
+  *
+  * \param p The new scrollpane policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::setHorizontalScrollbarPolicy()
+  *     "setHorizontalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+void BetaGUI::Window::setHorizontalScrollbarPolicy(tScrollBarPolicy p){
+  mScrollPane->setHorizontalScrollbarPolicy(p);
+}
+
+/** Change the scrollbar policy
+  *
+  * \param p The new scrollpane policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::setVerticalScrollbarPolicy()
+  *     "setVerticalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+void BetaGUI::Window::setVerticalScrollbarPolicy(tScrollBarPolicy p){
+  mScrollPane->setVerticalScrollbarPolicy(p);
+}
+
+/** Get the scrollbar policy
+  *
+  * \return p The scrollpane policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbarPolicy()
+  *     "getHorizontalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+tScrollBarPolicy BetaGUI::Window::getHorizontalScrollbarPolicy(void){
+  return mScrollPane->getHorizontalScrollbarPolicy();
+}
+
+/** Get the scrollbar policy
+  *
+  * \return p The scrollpane policy
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbarPolicy()
+  *     "getVerticalScrollbarPolicy()", 
+  *     \ref RainbruRPG::OgreGui::tScrollBarPolicy 
+  *     "tScrollBarPolicy"
+  *
+  */
+tScrollBarPolicy BetaGUI::Window::getVerticalScrollbarPolicy(void){
+  return mScrollPane->getVerticalScrollbarPolicy();
+}
+
+
+void BetaGUI::Window::debugScrollPane(void){
+  LOGCATS("maxChildRight=");
+  LOGCATI(mScrollPane->getMaxChildRight());
+  LOGCATS(" maxChildBottom=");
+  LOGCATI(mScrollPane->getMaxChildBottom());
+  LOGCAT();
 }

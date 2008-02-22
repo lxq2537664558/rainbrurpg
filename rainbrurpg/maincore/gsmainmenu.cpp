@@ -31,6 +31,7 @@
 #include "vscrollbar.h"
 #include "hscrollbar.h"
 #include "scrollpane.h"
+#include "label.h"
 
 #include <OgreViewport.h>
 
@@ -157,44 +158,26 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
 
   btnNetworkGame= new PushButton(Vector4(20,40,160,24),
-				 "Network game", BetaGUI::Callback::Callback(this), window);
+				 "Network game", 
+				 BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnNetworkGame);
 
   btnLocalTest = new PushButton(Vector4(20,70,160,24), 
-			 "Local test", BetaGUI::Callback::Callback(this), window);
-
-  // ***************************************************
-  // ***************************************************
-  // Only for tests
-  Window* testWin=new Window(Vector4(10, 10, 300, 300),
-		      BetaGUI::OWT_RESIZE_AND_MOVE, "Test window", mGUI);
-  mGUI->addWindow(testWin);
-
-  Vector4 sbDim(300-16,30,14,300-60);
-  ScrollBar* sb=new VScrollBar(sbDim, testWin);//, OSI_BETAGUI);
-  testWin->addWidget(sb);
-  sb->setMax(500);
-  sb->setSteps(20,50);
-
-  Vector4 sbDim2(2 ,300-16,300-16,14);
-  ScrollBar* sb2=new HScrollBar(sbDim2, testWin);
-  testWin->addWidget(sb2);
-  sb->setMax(500);
-  sb->setSteps(20,50);
-
-  /*  ScrollPane* sp=new ScrollPane(sbDim, testWin);
-  testWin->addWidget(sp);
-  */
-
-  // End of tests
-  // ***************************************************
-  // ***************************************************
+				"Local test", BetaGUI::Callback::Callback(this),
+				window);
 
   window->addWidget(btnLocalTest);
 
   btnExit = new PushButton(Vector4(20,100,160,24), 
          "Exit", BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnExit);
+
+ // ***************************************************
+  // ***************************************************
+#ifdef RB_SCROLLPANE_TEST
+  createScrollPaneTestWindow();
+#endif // RB_SCROLLPANE_TEST
+
 
 }
 
@@ -216,9 +199,15 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
   else if (b==btnNetworkGame){
     onNetworkGameClicked();
   }
+#ifdef RB_SCROLLPANE_TEST
+  else if (b==btnAddLabel){
+    onAddLabel();
+  }
+#endif // RB_SCROLLPANE_TEST
   else{
     LOGW("gsMainMenu::onButtonPress called");
   }
+
 }
 
 void RainbruRPG::Core::gsMainMenu::pause(){
@@ -228,3 +217,68 @@ void RainbruRPG::Core::gsMainMenu::pause(){
     window=NULL;
   }
 }
+
+#ifdef RB_SCROLLPANE_TEST
+/** Create a window to test scrollpane
+  *
+  * \note This function is built only if the \c RB_SCROLLPANE_TEST is
+  *       define using the \c configure script. Please see 
+  *       \ref RainbruRPG::Core::gsMainMenu "gsMainMenu"
+  *       for more information.
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::createScrollPaneTestWindow(void){
+  // Only built if the RB_SCROLLPANE_TEST macro is defined
+
+
+  // ScrollPane test window
+  LOGI("Creating ScrollPaneTestWindow");
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+  ScrollPaneTestWin =new Window(Vector4(10, 10, 300, 300),
+		      BetaGUI::OWT_RESIZE_AND_MOVE, "Scrollpane test", mGUI);
+  mGUI->addWindow(ScrollPaneTestWin);
+
+  // Control window
+  Window* ctrlWin=new Window(Vector4(10, 310, 300, 90),
+			     BetaGUI::OWT_RESIZE_AND_MOVE, 
+			     "Control window", mGUI);
+  mGUI->addWindow(ctrlWin);
+
+  Vector4 labPosDim(10,30,50,20);
+  Label* labPos=new Label(labPosDim, "Label position", ctrlWin);
+  ctrlWin->addWidget(labPos);
+
+  Vector4 tiXPosDim(120,30,50,20);
+  tiXPos=new TextInput(tiXPosDim, "", 5, ctrlWin);
+  ctrlWin->addWidget(tiXPos);
+
+  Vector4 tiYPosDim(180,30,50,20);
+  tiYPos=new TextInput(tiYPosDim, "", 5, ctrlWin);
+  ctrlWin->addWidget(tiYPos);
+
+  btnAddLabel = new PushButton(Vector4(80,60,160,24),
+				 "Add label", 
+			 BetaGUI::Callback::Callback(this), ctrlWin);
+  ctrlWin->addWidget(btnAddLabel);
+}
+
+/** Adds a label to the ScrollPane test window
+  *
+  * \note This function is built only if the \c RB_SCROLLPANE_TEST is
+  *       define using the \c configure script. Please see 
+  *       \ref RainbruRPG::Core::gsMainMenu "gsMainMenu"
+  *       for more information.
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::onAddLabel(void){
+  // Only built if the RB_SCROLLPANE_TEST macro is defined
+  int x=tiXPos->getIntValue();
+  int y=tiYPos->getIntValue();
+
+  Vector4 labPosDim(x,y,50,20);
+  Label* newLab=new Label(labPosDim, "New label", ScrollPaneTestWin);
+  ScrollPaneTestWin->addWidget(newLab);
+  ScrollPaneTestWin->debugScrollPane();
+}
+
+#endif // RB_SCROLLPANE_TEST

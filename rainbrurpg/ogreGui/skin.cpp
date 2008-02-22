@@ -34,12 +34,14 @@
 #include <OgreTextureUnitState.h>
 #include <OgreTextAreaOverlayElement.h>
 
-/** Create a named skin based on Ogre::Overlay
+/** Create a named skin 
   *
   * \param n The name of the new skin
   *
   */
-RainbruRPG::OgreGui::Skin::Skin(std::string n){
+RainbruRPG::OgreGui::Skin::Skin(std::string n):
+  mTitleBarHeight(0)
+{
 
 }
 
@@ -54,4 +56,13 @@ RainbruRPG::OgreGui::Skin::Skin(std::string n){
   */
 unsigned int RainbruRPG::OgreGui::Skin::getDialogBorderSize(void){
   return this->dialogBorderSize;
+}
+
+/** Get the TitleBar's height in pixels
+  *
+  * \return The height of the TitleBar in pixels
+  *
+  */
+int RainbruRPG::OgreGui::Skin::getTitleBarHeight(void){
+  return mTitleBarHeight;
 }

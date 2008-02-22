@@ -186,6 +186,9 @@
    informations */
 #undef RAINBRU_RPG_DEBUG
 
+/* Defines if the scrollpane test window is built */
+#undef RB_SCROLLPANE_TEST
+
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be
    automatically deduced at runtime.

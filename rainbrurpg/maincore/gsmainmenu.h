@@ -36,6 +36,16 @@
 #include "bgwindow.h"
 #include "bglistener.h"
 
+#include "config.h"
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class PushButton;
+  }
+}
+// End of forward declarations
+
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG {
@@ -48,6 +58,9 @@ namespace RainbruRPG {
       * - Network game : you can play in a worldwide server
       * - Local test : You play alone to test the rendering engine
       * - Quit
+      *
+      * \note A scropane test window is created if the \c configure script
+      *       is called with the \c --enable-scrollp-test option.
       *
       */
     class gsMainMenu : public gsMenuBase, public BetaGUI::BetaGUIListener{
@@ -62,9 +75,24 @@ namespace RainbruRPG {
       virtual void setupTabOrder();
       virtual void onButtonPress(BetaGUI::Button*);
 
+    protected:
+#ifdef RB_SCROLLPANE_TEST
+      void createScrollPaneTestWindow(void);
+      void onAddLabel(void);
+
+      /** The add label button, used in ScrollPane test window */
+      PushButton* btnAddLabel;
+      /** The widget containing the X position of the new label */
+      TextInput* tiXPos;
+      /** The widget containing the Y position of the new label */
+      TextInput* tiYPos;
+      /** The window to test ScrollPane */
+      Window* ScrollPaneTestWin;
+#endif // RB_SCROLLPANE_TEST
+
     private:
-      bool onNetworkGameClicked();
-      void setupMainMenu();
+      bool onNetworkGameClicked(void);
+      void setupMainMenu(void);
 
       /** The network game button, kept for testing it */
       BetaGUI::Button* btnNetworkGame;

@@ -51,7 +51,7 @@ namespace RainbruRPG{
     /** An horizontal scrollbar widget
       *
       * It is a \ref RainbruRPG::OgreGui::ScrollBar "ScrollBar" 
-      * specialization for vertical orientation.
+      * specialization for horizontal orientation.
       *
       */
     class HScrollBar : public ScrollBar{
@@ -71,6 +71,18 @@ namespace RainbruRPG{
 
       const Rectangle& getCursorCorners(void);
 
+      void setLeftArrowActive(bool);
+      void setRightArrowActive(bool);
+      void setCursorActive(bool);
+
+      bool isLeftArrowActive(void);
+      bool isRightArrowActive(void);
+      bool isCursorActive(void);
+
+      void getValueFromCursor(void);
+      void moveCursorToValue(void);
+
+
     protected:
       void makeCorners(void);
 
@@ -83,18 +95,32 @@ namespace RainbruRPG{
 
       /** The rectangle designing left arrow geometry */
       Rectangle rLeftArrow;
+
       /** The rectangle designing right arrow geometry */
       Rectangle rRightArrow;
 
       /** The geometry of the left part of the body */
       Rectangle rBodyLeft;
+
       /** The geometry of the middle part of the body */
       Rectangle rBodyMid;
+
       /** The geometry of the right part of the body */
       Rectangle rBodyRight;
 
       /** The geometry of the cursor */
       Rectangle rCursor;
+
+      /** Is the left arrow active */
+      bool bLeftArrowActive;
+
+      /** Is the right arrow active */
+      bool bRightArrowActive;
+
+      /** Is the cursor arrow active */
+      bool bCursorActive;
+
+
     };
   }
 }

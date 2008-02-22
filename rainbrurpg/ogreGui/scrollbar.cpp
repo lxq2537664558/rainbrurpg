@@ -109,23 +109,19 @@ void RainbruRPG::OgreGui::ScrollBar::setSteps(int arrow, int big){
   mBigStep=big;
 }
 
-/** Graphically move the cursor to the current value
+
+/** Is the given point inside this ScrollBar
+  *
+  * \param mx, my The point (mouse) position
+  *
+  * \return \c true if in the Widget, otherwise, returns false.
   *
   */
-void RainbruRPG::OgreGui::ScrollBar::moveCursorToValue(void){
-  int max=getHeight() - 28 - 14;
-  int pos=(max*mValue)/mMaxValue;
-  cursorPos=pos+14;
-}
-
-/** Get the value from the cursor position
-  *
-  */
-void RainbruRPG::OgreGui::ScrollBar::getValueFromCursor(void){
-  int pos=cursorPos-14;
-  int max=getHeight() - 28 - 14;
-
-  mValue=(pos*mMaxValue)/max;
+bool RainbruRPG::OgreGui::ScrollBar::in(unsigned int mx, unsigned int my){
+  return (mx >= corners.left  && 
+	  my >= corners.top   && 
+	  mx <= corners.right && 
+	  my <= corners.bottom);
 }
 
 /** Emit a sigc++ signal with the new cursor value

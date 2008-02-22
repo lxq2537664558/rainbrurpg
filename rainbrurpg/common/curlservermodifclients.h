@@ -46,6 +46,8 @@ namespace RainbruRPG {
 	* - name : The name of the server
 	* - actClients : The actual number of client connected
 	* 
+	* \note If you set a negative client number, it will be 0.
+	*
 	*/
       class CurlServerModifClients : public CurlSubmitForm{
       public:

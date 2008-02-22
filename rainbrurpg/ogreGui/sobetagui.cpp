@@ -51,6 +51,8 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   tsLabel(NULL),
   tsTextInput(NULL)
 {
+  // Define here as it is a field of Skin
+  mTitleBarHeight=22;
 
   tsTitleBar=new TextSettings( "Commonv2c.ttf", 16, 1.0f, 0.2f, 0.4f );
   tsTitleBar->setVerticalAlignment( VAT_CENTER );
@@ -166,6 +168,20 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 
  mHorizontalScrollBarCursor=TextureManager::getSingleton()
    .load("bgui.hscrollbar.cursor.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+
+
+mHorizontalScrollBarLeftArrowActive=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.leftarrow.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mHorizontalScrollBarRightArrowActive=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.rightarrow.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mHorizontalScrollBarCursorActive=TextureManager::getSingleton()
+   .load("bgui.hscrollbar.cursor.active.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 }
@@ -535,17 +551,28 @@ void RainbruRPG::OgreGui::soBetaGui::
 drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
   qr->setBlendMode(QBM_GLOBAL);
-
+  
   // Left arrow
   qr->setScissorRectangle(hs->getLeftArrowCorners());
-  qr->setTexturePtr(mHorizontalScrollBarLeftArrow);
+  if (hs->isLeftArrowActive()){
+    qr->setTexturePtr(mHorizontalScrollBarLeftArrowActive);
+  }
+  else{
+    qr->setTexturePtr(mHorizontalScrollBarLeftArrow);
+  }
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(hs->getLeftArrowCorners());
   qr->reset();
 
   // Right arrow
   qr->setScissorRectangle(hs->getRightArrowCorners());
-  qr->setTexturePtr(mHorizontalScrollBarRightArrow);
+  if (hs->isRightArrowActive()){
+    qr->setTexturePtr(mHorizontalScrollBarRightArrowActive);
+  }
+  else{
+    qr->setTexturePtr(mHorizontalScrollBarRightArrow);
+  }
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(hs->getRightArrowCorners());
   qr->reset();
@@ -573,7 +600,14 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
   // Cursor
   qr->setScissorRectangle(hs->getCursorCorners());
-  qr->setTexturePtr(mHorizontalScrollBarCursor);
+
+  if (hs->isCursorActive()){
+    qr->setTexturePtr(mHorizontalScrollBarCursorActive);
+  }
+  else{
+    qr->setTexturePtr(mHorizontalScrollBarCursor);
+  }
+
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(hs->getCursorCorners());
   qr->reset();

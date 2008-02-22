@@ -79,7 +79,8 @@ namespace RainbruRPG{
 
       const Rectangle& getCursorCorners(void);
 
-      bool in(unsigned int, unsigned int);
+      void moveCursorToValue(void);
+      void getValueFromCursor(void);
 
     protected:
       void makeCorners(void);

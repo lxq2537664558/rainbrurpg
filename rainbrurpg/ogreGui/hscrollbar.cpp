@@ -39,7 +39,10 @@ RainbruRPG::OgreGui::HScrollBar::
 HScrollBar(Vector4 dim, Widget* win, OgreGuiSkinID sid):
   ScrollBar(dim, win, sid),
   sk(NULL),
-  mGUI(NULL)
+  mGUI(NULL),
+  bLeftArrowActive(false),
+  bRightArrowActive(false),
+  bCursorActive(false)
 {
 
   sk=SkinManager::getSingleton().getSkin(this);
@@ -149,9 +152,9 @@ void RainbruRPG::OgreGui::HScrollBar::makeCorners(void){
   rBodyMid.bottom = corners.bottom + parent->getTop();
 
   rCursor.left   = corners.left+parent->getLeft()+cursorPos;
-  rCursor.right  = corners.right+parent->getLeft()+cursorPos+14;
+  rCursor.right  = corners.left+parent->getLeft()+cursorPos+14;
   rCursor.top    = corners.top+parent->getTop();
-  rCursor.bottom = corners.top+parent->getTop();
+  rCursor.bottom = corners.bottom+parent->getTop();
 
 }
 
@@ -191,7 +194,7 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
     if (mouseX<corners.left + 14){
       if (!movingCursor){
 	setLeftArrowActive(true);
-	mGUI->getMousePointer()->setState(MPS_VSB_SSTEP_UP);
+	mGUI->getMousePointer()->setState(MPS_HSB_SSTEP_LEFT);
 	if (leftMouseButton){
 	  mValue-=mArrowStep;
 	  if (mValue<0) mValue=0;
@@ -207,7 +210,7 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
     else if (mouseX>corners.right - 14){
       if (!movingCursor){
  	setRightArrowActive(true);
-	mGUI->getMousePointer()->setState(MPS_VSB_SSTEP_DOWN);
+	mGUI->getMousePointer()->setState(MPS_HSB_SSTEP_RIGHT);
 	if (leftMouseButton){
 	  mValue+=mArrowStep;
 	  if (mValue>mMaxValue) mValue=mMaxValue;
@@ -221,12 +224,12 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
     else if (mouseX>=corners.left + cursorPos && 
 	     mouseX<=corners.left + cursorPos + 14){
       setCursorActive(true);
-      mGUI->getMousePointer()->setState(MPS_VSB_CURSOR);
+      mGUI->getMousePointer()->setState(MPS_HSB_CURSOR);
       setLeftArrowActive(false);
       setRightArrowActive(false);
       if (leftMouseButton){
 	if (!movingCursor){
-	  cursorDev=mouseY-(corners.top+cursorPos);
+	  cursorDev=mouseX-(corners.left+cursorPos);
 	  movingCursor=true;
 	}
       }
@@ -246,36 +249,34 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
 	  if (mValue>mMaxValue) mValue=mMaxValue;
 	  moveCursorToValue();
 	  makeCorners();
-	  mGUI->getMousePointer()->setState(MPS_VSB_BSTEP_DOWN);
+	  mGUI->getMousePointer()->setState(MPS_HSB_BSTEP_RIGHT);
 	  changeCursorValue(mValue);
 	}
       }
       else{
 	if (mouseX<corners.left+cursorPos){
-	  mGUI->getMousePointer()->setState(MPS_VSB_BSTEP_UP);
+	  mGUI->getMousePointer()->setState(MPS_HSB_BSTEP_LEFT);
 	}
 	else if (mouseX>corners.left+cursorPos+14){
-	  mGUI->getMousePointer()->setState(MPS_VSB_BSTEP_DOWN);
+	  mGUI->getMousePointer()->setState(MPS_HSB_BSTEP_RIGHT);
 	}
       }
 
       setCursorActive(false);
-      setTopArrowActive(false);
-      setBottomArrowActive(false);
+      setLeftArrowActive(false);
+      setRightArrowActive(false);
     }
     
     return true;
   }
   else{
     setCursorActive(false);
-    setTopArrowActive(false);
-    setBottomArrowActive(false);
+    setLeftArrowActive(false);
+    setRightArrowActive(false);
     return false;
   }
 
 }
-
-
 
 /** Draw the scrollbar using the given renderer
   *
@@ -288,6 +289,114 @@ void RainbruRPG::OgreGui::HScrollBar::draw(QuadRenderer* qr){
     geometryDirty=false;
   }
 
-  sk->drawHorizontalScrollbar( qr, this );
+  if (visible){
+    sk->drawHorizontalScrollbar( qr, this );
+  }
+}
 
+/** Change the left arrow status
+  *
+  * \param b The new value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::isLeftArrowActive()
+  *     "isLeftArrowActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bLeftArrowActive 
+  *     "bLeftArrowActive" (member)
+  *
+  */
+void RainbruRPG::OgreGui::HScrollBar::setLeftArrowActive(bool b){
+  bLeftArrowActive = b;
+}
+
+/** Change the right arrow status
+  *
+  * \param b The new value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::isRightArrowActive()
+  *     "isRightArrowActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bRightArrowActive 
+  *     "bRightArrowActive" (member)
+  *
+  */
+void RainbruRPG::OgreGui::HScrollBar::setRightArrowActive(bool b){
+  bRightArrowActive = b;
+}
+
+/** Change the cursor status
+  *
+  * \param b The new value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::isCursorActive()
+  *     "isCursorActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bCursorActive 
+  *     "bCursorActive" (member)
+  *
+  */
+void RainbruRPG::OgreGui::HScrollBar::setCursorActive(bool b){
+  bCursorActive = b;
+}
+
+/** Get the left arrow status
+  *
+  * \return The status value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::setLeftArrowActive()
+  *     "setLeftArrowActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bLeftArrowActive 
+  *     "bLeftArrowActive" (member)
+  *
+  */
+bool RainbruRPG::OgreGui::HScrollBar::isLeftArrowActive(void){
+  return bLeftArrowActive;
+}
+
+/** Get the right arrow status
+  *
+  * \return The status value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::setRightArrowActive()
+  *     "setRightArrowActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bRightArrowActive 
+  *     "bRightArrowActive" (member)
+  *
+  */
+bool RainbruRPG::OgreGui::HScrollBar::isRightArrowActive(void){
+  return bRightArrowActive;
+}
+
+/** Get the cursor status
+  *
+  * \return The status value
+  *
+  * \sa \ref RainbruRPG::OgreGui::HScrollBar::setCursorActive()
+  *     "setCursorActive()",
+  *     \ref RainbruRPG::OgreGui::HScrollBar::bCursorActive 
+  *     "bCursorActive" (member)
+  *
+  */
+bool RainbruRPG::OgreGui::HScrollBar::isCursorActive(void){
+  return bCursorActive;
+}
+
+/** Get the value from the cursor position
+  *
+  * Change the value of mValue according to cursorPos.
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollBar::mValue "mValue" (member),
+  *     \ref RainbruRPG::OgreGui::ScrollBar::cursorPos "cursorPos" (member)
+  *
+  */
+void RainbruRPG::OgreGui::HScrollBar::getValueFromCursor(void){
+  int pos=cursorPos-14;
+  int max=getWidth() - 28 - 14;
+  mValue=(pos*mMaxValue)/max;
+}
+
+/** Graphically move the cursor to the current value
+  *
+  */
+void RainbruRPG::OgreGui::HScrollBar::moveCursorToValue(void){
+  int max=getWidth() - 28 - 14;
+  int pos=(max*mValue)/mMaxValue;
+  cursorPos=pos+14;
 }
