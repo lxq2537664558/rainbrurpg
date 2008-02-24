@@ -130,6 +130,7 @@ injectMouse(unsigned int x, unsigned int y, bool leftMouseButton){
   */
 void RainbruRPG::OgreGui::Widget::setLeft(int i){
   corners.left=i;
+  geometryDirty=true;
 }
 
 /** Change the Y position of the widget
@@ -141,6 +142,7 @@ void RainbruRPG::OgreGui::Widget::setLeft(int i){
   */
 void RainbruRPG::OgreGui::Widget::setTop(int i){
   corners.top=i;
+  geometryDirty=true;
 }
 
 /** Change the width of the widget
@@ -152,6 +154,7 @@ void RainbruRPG::OgreGui::Widget::setTop(int i){
   */
 void RainbruRPG::OgreGui::Widget::setWidth(int i){
   corners.right=corners.left+i;
+  geometryDirty=true;
 }
 
 /** Change the height of the widget
@@ -163,6 +166,7 @@ void RainbruRPG::OgreGui::Widget::setWidth(int i){
   */
 void RainbruRPG::OgreGui::Widget::setHeight(int i){
   corners.bottom=corners.top+i;
+  geometryDirty=true;
 }
 
 /** Get the width of this widget
@@ -209,6 +213,7 @@ void RainbruRPG::OgreGui::Widget::resize(int px, int py){
   int height, width;
   width=px-corners.left;
   height=py-corners.top;
+  geometryDirty=true;
 }
 
 /** Move this window
@@ -234,6 +239,7 @@ void RainbruRPG::OgreGui::Widget::move(int px, int py){
 
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
+  geometryDirty=true;
 }
 
 /** Set this widget's geometry dirty

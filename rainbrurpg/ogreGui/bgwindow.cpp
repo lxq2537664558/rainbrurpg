@@ -77,7 +77,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_RESIZE);
     this->mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
-    mScrollPane->addWidget(mResizeGrip);
+    //    mScrollPane->addWidget(mResizeGrip);
   }
   
   if(t==OWT_MOVE || t==OWT_RESIZE_AND_MOVE){
@@ -85,7 +85,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_MOVE);
     this->mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
-    mScrollPane->addWidget(mTitleBar);
+    //    mScrollPane->addWidget(mTitleBar);
 
     // Adding titlebar height to scroll pane top position
     /*    int spTop = mScrollPane->getTop();
@@ -176,9 +176,15 @@ void BetaGUI::Window::setTitle(const String& title){
   *
   */
 void BetaGUI::Window::draw(QuadRenderer* qr){
+  LOGI("Window::draw called");
   if (visible){
     qr->setAlpha( this->alpha );
     mSkin->drawWindow(qr, corners, "Caption");
+
+    // These widgets do not move with scrollpane
+    if (mResizeGrip) mResizeGrip->draw(qr);
+    if (mTitleBar)   mTitleBar->draw(qr);
+    qr->reset();
     mScrollPane->draw( qr );
   }
 }
@@ -278,9 +284,6 @@ void BetaGUI::Window::move(int px, int py){
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
 
-
-
-
   mScrollPane->setGeometryDirty();
 }
 
@@ -347,6 +350,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   */
 void BetaGUI::Window::addWidget(Widget* w){
   mScrollPane->addWidget(w);
+  mScrollPane->setScrollBarsVisbleStatus();
 }
 
 /** Add a widget to this window
@@ -360,6 +364,7 @@ void BetaGUI::Window::addWidget(Widget* w){
   */
 void BetaGUI::Window::addWidget(Button* btn){
   mScrollPane->addWidget(btn);
+  mScrollPane->setScrollBarsVisbleStatus();
 }
 
 /** Add a widget to this window
@@ -373,6 +378,7 @@ void BetaGUI::Window::addWidget(Button* btn){
   */
 void BetaGUI::Window::addWidget(BetaGUI::TextInput* ti){
   mScrollPane->addWidget(ti);
+  mScrollPane->setScrollBarsVisbleStatus();
 }
 
 /** Change the scrollbar policy

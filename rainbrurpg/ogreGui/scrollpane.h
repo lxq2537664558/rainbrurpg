@@ -91,6 +91,12 @@ namespace RainbruRPG{
 
       void setScrollBarsVisbleStatus();
 
+      virtual void setWidth(int);
+      virtual void setHeight(int);
+
+      void horizontalScrollBarValueChange(int);
+      void verticalScrollBarValueChange(int);
+
     private:
 
       /** The vertical scrollbar */
@@ -104,6 +110,9 @@ namespace RainbruRPG{
 
       /** The horizontal scrollbar policy */
       tScrollBarPolicy mHScrollBarPolicy;
+
+      int xDrawingDev;
+      int yDrawingDev;
 
     };
 

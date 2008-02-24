@@ -200,6 +200,7 @@ namespace RainbruRPG{
 	*
 	*/
       int movingDevY;
+
     };
   }
 }

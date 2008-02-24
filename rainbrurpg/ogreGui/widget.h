@@ -82,15 +82,15 @@ namespace RainbruRPG{
 
       virtual bool injectMouse(unsigned int, unsigned int, bool);
 
-      void setLeft(int);
-      void setTop(int);
-      void setWidth(int);
-      void setHeight(int);
+      virtual void setLeft(int);
+      virtual void setTop(int);
+      virtual void setWidth(int);
+      virtual void setHeight(int);
 
-      void hide();
-      void show();
-      bool isVisible();
-      void setVisible(bool);
+      virtual void hide();
+      virtual void show();
+      virtual bool isVisible();
+      virtual void setVisible(bool);
 
       /** Get the X position of this widget
         *

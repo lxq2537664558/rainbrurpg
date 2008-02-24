@@ -1,29 +1,34 @@
-20:23:44: Creating resource group General
-20:23:44: Creating resource group Internal
-20:23:44: Creating resource group Autodetect
-20:23:44: Registering ResourceManager for type Material
-20:23:44: Registering ResourceManager for type Mesh
-20:23:44: Registering ResourceManager for type Skeleton
-20:23:44: MovableObjectFactory for type 'ParticleSystem' registered.
-20:23:44: Loading library libOgrePlatform.so
-20:23:44: OverlayElementFactory for type Panel registered.
-20:23:44: OverlayElementFactory for type BorderPanel registered.
-20:23:44: OverlayElementFactory for type TextArea registered.
-20:23:44: Registering ResourceManager for type Font
-20:23:44: ArchiveFactory for archive type FileSystem registered.
-20:23:44: ArchiveFactory for archive type Zip registered.
-20:23:44: DevIL version: Developer's Image Library (DevIL) 1.6.7 May  9 2006
-20:23:44: DevIL image formats: bmp dib cut dcx dds gif hdr ico cur jpg jpe jpeg lif mdl mng jng pcx pic pix png pbm pgm pnm ppm psd pdd psp pxr sgi bw rgb rgba tga vda icb vst tif tiff wal xpm raw 
-20:23:44: Registering ResourceManager for type HighLevelGpuProgram
-20:23:44: Registering ResourceManager for type Compositor
-20:23:44: MovableObjectFactory for type 'Entity' registered.
-20:23:44: MovableObjectFactory for type 'Light' registered.
-20:23:44: MovableObjectFactory for type 'BillboardSet' registered.
-20:23:44: MovableObjectFactory for type 'ManualObject' registered.
-20:23:44: MovableObjectFactory for type 'BillboardChain' registered.
-20:23:44: MovableObjectFactory for type 'RibbonTrail' registered.
-20:23:44: Loading library /usr/local/lib/OGRE/RenderSystem_GL
-20:23:44: OpenGL Rendering Subsystem created.
-20:23:44: Loading library /usr/local/lib/OGRE/Plugin_PagingLandScape2
-20:23:44: *-*-* OGRE Initialising
-20:23:44: *-*-* Version 1.2.5 (Dagon)
+17:53:51: Creating resource group General
+17:53:51: Creating resource group Internal
+17:53:51: Creating resource group Autodetect
+17:53:51: SceneManagerFactory for type 'DefaultSceneManager' registered.
+17:53:51: Registering ResourceManager for type Material
+17:53:51: Registering ResourceManager for type Mesh
+17:53:51: Registering ResourceManager for type Skeleton
+17:53:51: MovableObjectFactory for type 'ParticleSystem' registered.
+17:53:51: OverlayElementFactory for type Panel registered.
+17:53:51: OverlayElementFactory for type BorderPanel registered.
+17:53:51: OverlayElementFactory for type TextArea registered.
+17:53:51: Registering ResourceManager for type Font
+17:53:51: ArchiveFactory for archive type FileSystem registered.
+17:53:51: ArchiveFactory for archive type Zip registered.
+17:53:51: FreeImage version: 3.9.3
+17:53:51: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+17:53:51: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi
+17:53:51: DDS codec registering
+17:53:51: Registering ResourceManager for type HighLevelGpuProgram
+17:53:51: Registering ResourceManager for type Compositor
+17:53:51: MovableObjectFactory for type 'Entity' registered.
+17:53:51: MovableObjectFactory for type 'Light' registered.
+17:53:51: MovableObjectFactory for type 'BillboardSet' registered.
+17:53:51: MovableObjectFactory for type 'ManualObject' registered.
+17:53:51: MovableObjectFactory for type 'BillboardChain' registered.
+17:53:51: MovableObjectFactory for type 'RibbonTrail' registered.
+17:53:51: Loading library /usr/lib/OGRE/RenderSystem_GL.so
+17:53:51: Installing plugin: GL RenderSystem
+17:53:51: OpenGL Rendering Subsystem created.
+17:53:51: Plugin successfully installed
+17:53:51: Loading library /usr/lib/OGRE/Plugin_PagingLandScape2.so
+17:53:51: SceneManagerFactory for type 'PagingLandScapeSceneManager' registered.
+17:53:51: *-*-* OGRE Initialising
+17:53:51: *-*-* Version 1.4.3 (Eihort)

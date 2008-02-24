@@ -70,12 +70,12 @@ RainbruRPG::OgreGui::VScrollBar::~VScrollBar(){
   *
   */
 void RainbruRPG::OgreGui::VScrollBar::draw(QuadRenderer* qr){
-  if (geometryDirty){
-    makeCorners();
-    geometryDirty=false;
-  }
-
   if (visible){
+    if (geometryDirty){
+      makeCorners();
+      geometryDirty=false;
+    }
+
     sk->drawVerticalScrollbar( qr, this );
   }
 }
@@ -89,6 +89,9 @@ void RainbruRPG::OgreGui::VScrollBar::draw(QuadRenderer* qr){
   */
 bool RainbruRPG::OgreGui::VScrollBar::
 injectMouse( unsigned int mouseX, unsigned int mouseY, bool leftMouseButton ){
+  if (!visible){
+    return false;
+  }
 
   // If mouse button is released, we do not move the cursor
   if (!leftMouseButton){

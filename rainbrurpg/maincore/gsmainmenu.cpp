@@ -275,8 +275,10 @@ void RainbruRPG::Core::gsMainMenu::onAddLabel(void){
   int x=tiXPos->getIntValue();
   int y=tiYPos->getIntValue();
 
-  Vector4 labPosDim(x,y,50,20);
-  Label* newLab=new Label(labPosDim, "New label", ScrollPaneTestWin);
+  Vector4 labPosDim(x,y,100,30);
+  PushButton* newLab=new PushButton(labPosDim, "New label", 
+				    BetaGUI::Callback::Callback(this),
+				    ScrollPaneTestWin);
   ScrollPaneTestWin->addWidget(newLab);
   ScrollPaneTestWin->debugScrollPane();
 }

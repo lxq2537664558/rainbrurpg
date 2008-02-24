@@ -55,7 +55,10 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   usedTexture(NULL),
   mBuffer(NULL),
   mBatchPointer(NULL),
-  useParentScissor(false)
+  useParentScissor(false),
+  usingDrawingDev(false),
+  xDrawingDev(0),
+  yDrawingDev(0)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -222,6 +225,13 @@ void RainbruRPG::OgreGui::QuadRenderer::createTexture(){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 setCorners(int x1, int y1, int x2, int y2){
+  if (usingDrawingDev){
+    x1+=xDrawingDev;
+    y1+=yDrawingDev;
+    x2+=xDrawingDev;
+    y2+=yDrawingDev;
+  }
+
   finalRect.left  =xPixelToNative(x1);
   finalRect.right =xPixelToNative(x2);
   // The following flip the image
@@ -880,4 +890,16 @@ bool RainbruRPG::OgreGui::QuadRenderer::getUseParentScissor(void){
   */
 float RainbruRPG::OgreGui::QuadRenderer::getAlpha(void){
   return alphaValue;
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::setDrawingDev(int x, int y){
+  usingDrawingDev=true;
+  xDrawingDev=x;
+  yDrawingDev=y;
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::disableDrawingDev(void){
+  usingDrawingDev=false;
+  xDrawingDev=0;
+  yDrawingDev=0;
 }

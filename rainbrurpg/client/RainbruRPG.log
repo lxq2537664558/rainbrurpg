@@ -1,19 +1,18 @@
 
 
-RainbruRPG Client v0.0.5-154 using :
+RainbruRPG Client v0.0.5-163 using :
  - FOX-Toolkit v1.6.25
- - CEGUI v0.5.0
- - Ogre3D v1.2.5 (Dagon)
+ - Ogre3D v1.4.3 (Eihort)
  - OIS v1.0.0 (Nitro)
- - CURL v7.16.4 (Tue Jul 10 20:15:47 UTC 2007)
+ - CURL v7.18.0 (Mon Jan 28 17:28:54 UTC 2008)
 
-Copyright (C) 2006 Jerome PASQUIER
+Copyright (C) 2006-2008 Jerome PASQUIER
 RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,
 and you are welcome to redistribute it under certain conditions.
 See the GNU General Public License for more details.
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -34,7 +33,7 @@ See the GNU General Public License for more details.
   [optionlistattribute.cpp:50]	-- Attribute value :800x600
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -48,7 +47,7 @@ See the GNU General Public License for more details.
   [xmloptions.cpp:58]	II xmlOptions refresh function called
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -60,10 +59,10 @@ See the GNU General Public License for more details.
   [globaluri.cpp:102]	II GlobalURI::getUserDirFile called
   [globaluri.cpp:110]	-- returned value is '/home/mouse/.RainbruRPG/options.xml'
   [xmloptions.cpp:58]	II xmlOptions refresh function called
-  [xmllanguage.cpp:33]	II xmlLanguage creation
+  [xmllanguage.cpp:39]	II xmlLanguage creation
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -74,26 +73,26 @@ See the GNU General Public License for more details.
   [globaluri.cpp:219]	II file_extensions.refused found in user directory
   [globaluri.cpp:102]	II GlobalURI::getUserDirFile called
   [globaluri.cpp:110]	-- returned value is '/home/mouse/.RainbruRPG/languages.xml'
-  [xmllanguage.cpp:123]	II Loading language list
-  [xmllanguage.cpp:51]	-- Last used language found : 'None'
-  [xmllanguage.cpp:56]	-- Default language found : 'en_US'
-  [xmllanguage.cpp:198]	-- code='fr' text='Français'
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='FR' text='France' percent='90'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='CH' text='Suisse' percent='3'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='BE' text='Belgique' percent='25'%
-  [xmllanguage.cpp:198]	-- code='en' text='English'
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='US' text='USA' percent='0'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='EN' text='England' percent='0'%
-  [xmllanguage.cpp:62]	-- List size : 5
-  [xmllanguage.cpp:33]	II xmlLanguage creation
+  [xmllanguage.cpp:132]	II Loading language list
+  [xmllanguage.cpp:54]	-- Last used language found : 'None'
+  [xmllanguage.cpp:59]	-- Default language found : 'en_US'
+  [xmllanguage.cpp:214]	-- code='fr' text='Français'
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='FR' text='France' percent='90f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='CH' text='Suisse' percent='3f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='BE' text='Belgique' percent='25f'%
+  [xmllanguage.cpp:214]	-- code='en' text='English'
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='US' text='USA' percent='0f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='EN' text='England' percent='0f'%
+  [xmllanguage.cpp:65]	-- List size : 5
+  [xmllanguage.cpp:39]	II xmlLanguage creation
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -104,22 +103,22 @@ See the GNU General Public License for more details.
   [globaluri.cpp:219]	II file_extensions.refused found in user directory
   [globaluri.cpp:102]	II GlobalURI::getUserDirFile called
   [globaluri.cpp:110]	-- returned value is '/home/mouse/.RainbruRPG/languages.xml'
-  [xmllanguage.cpp:123]	II Loading language list
-  [xmllanguage.cpp:51]	-- Last used language found : 'None'
-  [xmllanguage.cpp:56]	-- Default language found : 'en_US'
-  [xmllanguage.cpp:198]	-- code='fr' text='Français'
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='FR' text='France' percent='90'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='CH' text='Suisse' percent='3'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='BE' text='Belgique' percent='25'%
-  [xmllanguage.cpp:198]	-- code='en' text='English'
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='US' text='USA' percent='0'%
-  [xmllanguage.cpp:243]	II Treating a country
-  [xmllanguage.cpp:251]	-- code='EN' text='England' percent='0'%
-  [xmllanguage.cpp:62]	-- List size : 5
+  [xmllanguage.cpp:132]	II Loading language list
+  [xmllanguage.cpp:54]	-- Last used language found : 'None'
+  [xmllanguage.cpp:59]	-- Default language found : 'en_US'
+  [xmllanguage.cpp:214]	-- code='fr' text='Français'
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='FR' text='France' percent='90f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='CH' text='Suisse' percent='3f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='BE' text='Belgique' percent='25f'%
+  [xmllanguage.cpp:214]	-- code='en' text='English'
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='US' text='USA' percent='0f'%
+  [xmllanguage.cpp:260]	II Treating a country
+  [xmllanguage.cpp:268]	-- code='EN' text='England' percent='0f'%
+  [xmllanguage.cpp:65]	-- List size : 5
   [languageselector.cpp:160]	-- Item : Français (France) 90% 
   [languageselector.cpp:160]	-- Item : Français (Suisse) 3% 
   [languageselector.cpp:160]	-- Item : Français (Belgique) 25% 
@@ -128,7 +127,7 @@ See the GNU General Public License for more details.
   [languageselector.cpp:191]	II Cancel button clicked
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -140,12 +139,12 @@ See the GNU General Public License for more details.
   [globaluri.cpp:102]	II GlobalURI::getUserDirFile called
   [globaluri.cpp:110]	-- returned value is '/home/mouse/.RainbruRPG/options.xml'
   [xmloptions.cpp:58]	II xmlOptions refresh function called
-  [guimanager.cpp:38]	II Initializing GuiManager...
+  [guimanager.cpp:39]	II Initializing GuiManager...
   [velocitycalculator.cpp:35]	II Creating VelocityCalculator
   [vcconstant.cpp:34]	II Creation vcConstant
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -156,10 +155,11 @@ See the GNU General Public License for more details.
   [globaluri.cpp:219]	II file_extensions.refused found in user directory
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data'
-  [gameengine.cpp:563]	II Setting up Resources
+  [inputmanager.cpp:219]	II Adding a mouse listener
+  [gameengine.cpp:528]	II Setting up Resources
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -172,122 +172,111 @@ See the GNU General Public License for more details.
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/config/resources.cfg'
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/./'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/./
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/./
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/config/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/config/
-  [globaluri.cpp:165]	II GlobalURI::getShareFile called
-  [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/config/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/media/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/media/materials/scripts'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/materials/scripts
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/materials/scripts
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/media/materials/textures'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/materials/textures
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/media/materials/textures
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/XMLRefSchema/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/XMLRefSchema/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/XMLRefSchema/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/schemes/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/schemes/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/schemes/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/imagesets/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/imagesets/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/imagesets/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/looknfeel/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/looknfeel/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/looknfeel/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/fonts/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/fonts/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/fonts/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/overlays/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/overlays/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/overlays/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/layouts/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/layouts/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/layouts/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/data/gui/ogreGui/'
-  [gameengine.cpp:594]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/ogreGui/
+  [gameengine.cpp:559]	-- secName :General typeName :FileSystem archName :/usr/local/share/RainbruRPG/data/gui/ogreGui/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/media/packs/OgreCore.zip'
-  [gameengine.cpp:594]	-- secName :General typeName :Zip archName :/usr/local/share/RainbruRPG/media/packs/OgreCore.zip
+  [gameengine.cpp:559]	-- secName :General typeName :Zip archName :/usr/local/share/RainbruRPG/media/packs/OgreCore.zip
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/terrains'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/terrains
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/terrains
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/materials/textures'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials/textures
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials/textures
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/materials'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/materials/scripts'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials/scripts
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/materials/scripts
   [globaluri.cpp:165]	II GlobalURI::getShareFile called
   [globaluri.cpp:174]	-- Returned value : '/usr/local/share/RainbruRPG/mapdata/models'
-  [gameengine.cpp:594]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/models
-  [gameengine.cpp:601]	II All resources correctly setup
-  [gameengine.cpp:690]	II Loading all resources
-  [gameengine.cpp:713]	-- Loading resource group : Autodetect
-  [gameengine.cpp:713]	-- Loading resource group : General
-  [gameengine.cpp:713]	-- Loading resource group : Internal
-  [gameengine.cpp:713]	-- Loading resource group : PLSM2
-  [gameengine.cpp:701]	II All resources loaded
-  [gameengine.cpp:669]	II Logging available scene manager
-  [gameengine.cpp:679]	-- DefaultSceneManager
-  [gameengine.cpp:679]	-- PagingLandScapeSceneManager
-  [gameengine.cpp:506]	II chooseSceneManager
-  [gameengine.cpp:520]	II createCamera
-  [gameengine.cpp:537]	II createViewports
-  [guimanager.cpp:79]	II Creating Numeric Debug Window...
-  [guimanager.cpp:104]	II Creating Title overlay...
-  [gameengine.cpp:472]	II Initializing CEGUI
-  [skinmanager.cpp:35]	II Initialising SkinManager
-  [skin.cpp:39]	II Creating skin `soBetaGUI`
-  [gameengine.cpp:151]	II Initializing Game states...
+  [gameengine.cpp:559]	-- secName :PLSM2 typeName :FileSystem archName :/usr/local/share/RainbruRPG/mapdata/models
+  [gameengine.cpp:566]	II All resources correctly setup
+  [gameengine.cpp:624]	II Loading all resources
+  [gameengine.cpp:647]	-- Loading resource group : Autodetect
+  [gameengine.cpp:647]	-- Loading resource group : General
+  [gameengine.cpp:647]	-- Loading resource group : Internal
+  [gameengine.cpp:647]	-- Loading resource group : PLSM2
+  [gameengine.cpp:635]	II All resources loaded
+  [gameengine.cpp:603]	II Logging available scene manager
+  [gameengine.cpp:613]	-- DefaultSceneManager
+  [gameengine.cpp:613]	-- PagingLandScapeSceneManager
+  [gameengine.cpp:471]	II chooseSceneManager
+  [gameengine.cpp:485]	II createCamera
+  [gameengine.cpp:502]	II createViewports
+  [guimanager.cpp:393]	II Creating Numeric Debug Window...
+  [guimanager.cpp:80]	II Creating Title overlay...
+  [skinmanager.cpp:37]	II Initialising SkinManager
+  [fontmanager.cpp:211]	WW Glyph width is NULL for charcode 32
+  [fontmanager.cpp:211]	WW Glyph width is NULL for charcode 32
+  [fontmanager.cpp:211]	WW Glyph width is NULL for charcode 32
+  [fontmanager.cpp:211]	WW Glyph width is NULL for charcode 32
+  [gameengine.cpp:149]	II Initializing Game states...
   [gamestate.cpp:32]	II Initializing game state super-class
   [gsgamebase.cpp:33]	II Constructing a gsGameBase
   [gamestate.cpp:32]	II Initializing game state super-class
-  [gsmenubase.cpp:52]	II Constructing a  gsMenuBase
-  [gsconnection.cpp:36]	II Constructing a gsConnection
+  [gsmenubase.cpp:72]	II Constructing a  gsMenuBase
+  [gsconnection.cpp:54]	II Constructing a gsConnection
   [velocitycalculator.cpp:35]	II Creating VelocityCalculator
   [vcconstant.cpp:34]	II Creation vcConstant
-  [gsmenubase.cpp:275]	II Setting gsMenuBase translation
-  [gsmenubase.cpp:330]	II getTranslationLenght debug :
-  [gsmenubase.cpp:337]	-- From :inf To :0 ret= inf
   [gamestate.cpp:32]	II Initializing game state super-class
-  [gsmenubase.cpp:52]	II Constructing a  gsMenuBase
-  [gsmainmenu.cpp:39]	II Constructing a gsMainMenu
+  [gsmenubase.cpp:72]	II Constructing a  gsMenuBase
+  [gsmainmenu.cpp:48]	II Constructing a gsMainMenu
   [velocitycalculator.cpp:35]	II Creating VelocityCalculator
   [vcconstant.cpp:34]	II Creation vcConstant
-  [gsmenubase.cpp:275]	II Setting gsMenuBase translation
-  [gsmenubase.cpp:330]	II getTranslationLenght debug :
-  [gsmenubase.cpp:337]	-- From :0 To :0 ret= 0
   [gamestate.cpp:32]	II Initializing game state super-class
-  [gsmenubase.cpp:52]	II Constructing a  gsMenuBase
+  [gsmenubase.cpp:72]	II Constructing a  gsMenuBase
   [velocitycalculator.cpp:35]	II Creating VelocityCalculator
   [vcconstant.cpp:34]	II Creation vcConstant
-  [gsmenubase.cpp:275]	II Setting gsMenuBase translation
-  [gsmenubase.cpp:330]	II getTranslationLenght debug :
-  [gsmenubase.cpp:337]	-- From :0 To :0 ret= 0
+  [gsmenubase.cpp:277]	II Setting gsMenuBase translation
   [gamestate.cpp:32]	II Initializing game state super-class
-  [gsmenubase.cpp:52]	II Constructing a  gsMenuBase
-  [gsserverlist.cpp:44]	II Constructing a gsServerList
+  [gsmenubase.cpp:72]	II Constructing a  gsMenuBase
+  [gsserverlist.cpp:41]	II Constructing a gsServerList
   [velocitycalculator.cpp:35]	II Creating VelocityCalculator
   [vcconstant.cpp:34]	II Creation vcConstant
-  [gsmenubase.cpp:275]	II Setting gsMenuBase translation
-  [gsmenubase.cpp:330]	II getTranslationLenght debug :
-  [gsmenubase.cpp:337]	-- From :0 To :0 ret= 0
+  [gsmenubase.cpp:277]	II Setting gsMenuBase translation
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -300,7 +289,7 @@ See the GNU General Public License for more details.
   [curlgetfile.cpp:87]	-- http://127.0.0.1/rpg/metadata/servers.xml
   [globaluri.cpp:38]	WW Using the local website (127.0.0.1)
   [globaluri.cpp:127]	-- Setting user's HOME directory to'/home/mouse/.RainbruRPG/'
-  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG'
+  [globaluri.cpp:135]	-- Boost path returns '/home/mouse/.RainbruRPG/'
   [globaluri.cpp:139]	II Home directory alerady exists
   [globaluri.cpp:219]	II options.xml found in user directory
   [globaluri.cpp:219]	II languages.xml found in user directory
@@ -315,25 +304,15 @@ See the GNU General Public License for more details.
   [curlgetfile.cpp:134]	II Getting the last HTTP server status code
   [curlgetfile.cpp:141]	II The CurlGetInfo was successfull
   [curlgetfile.cpp:145]	II HTTP server returns SUCCESS.
-  [gameengine.cpp:176]	II Switching to MainMenu Game...
-  [gsmainmenu.cpp:63]	II Initialising gsMainMenu
-  [gsmenubase.cpp:66]	II Initialising gsMenuBase
-  [gsmenubase.cpp:275]	II Setting gsMenuBase translation
-  [gsmenubase.cpp:330]	II getTranslationLenght debug :
-  [gsmenubase.cpp:337]	-- From :1.1 To :0 ret= 1.1
-  [gsmenubase.cpp:173]	II Draw MenuBackground
-  [gsmenubase.cpp:203]	II Draw DynamicBackground
-  [gsmenubase.cpp:142]	II Draw border
-  [skinmanager.cpp:54]	II Getting skin :
-  [skinmanager.cpp:57]	--   skin number : 255
-  [gsmainmenu.cpp:73]	II gsMainMenu initialization complete
-  [gameengine.cpp:119]	II Setting the GuiFrameListener
-  [guiframelistener.cpp:39]	II Constructing GuiFrameListener
-  [gameengine.cpp:127]	II starting rendering
-  [vcconstant.cpp:74]	II Transition ended
-  [gsmenubase.cpp:247]	II Transition ended
-  [guimanager.cpp:278]	II Gui fadeIn is beginning
-  [vcconstant.cpp:74]	II Transition ended
-  [guimanager.cpp:294]	II FadeIn ended
-  [guimanager.cpp:297]	-- gui opacity set to :0.7
-  [gameengine.cpp:104]	II Exiting GameEngine ...
+  [gameengine.cpp:174]	II Switching to MainMenu Game...
+  [gsmainmenu.cpp:72]	II Initialising gsMainMenu
+  [gsmenubase.cpp:81]	II Initialising gsMenuBase
+  [gsmenubase.cpp:277]	II Setting gsMenuBase translation
+  [bggui.cpp:226]	-- GUI::addWindow called (1 registered)
+  [gsmainmenu.cpp:235]	II Creating ScrollPaneTestWindow
+  [bggui.cpp:226]	-- GUI::addWindow called (2 registered)
+  [bggui.cpp:226]	-- GUI::addWindow called (3 registered)
+  [gsmainmenu.cpp:78]	II gsMainMenu initialization complete
+  [gameengine.cpp:117]	II Setting the GuiFrameListener
+  [guiframelistener.cpp:38]	II Constructing GuiFrameListener
+  [gameengine.cpp:125]	II starting rendering

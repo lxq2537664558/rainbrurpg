@@ -122,7 +122,7 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getCursorCorners(void){
 /** Compute geometry of VScrollBar
   *
   * It is not automatically made for each frame, we use geometryDirty
-  * to know id the parent has moved.
+  * to know if the parent has moved.
   *
   */
 void RainbruRPG::OgreGui::HScrollBar::makeCorners(void){
@@ -167,6 +167,9 @@ void RainbruRPG::OgreGui::HScrollBar::makeCorners(void){
   */
 bool RainbruRPG::OgreGui::HScrollBar::
 injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
+  if (!visible){
+    return false;
+  }
 
   // If mouse button is released, we do not move the cursor
   if (!leftMouseButton){
@@ -284,12 +287,12 @@ injectMouse(unsigned int mouseX, unsigned int mouseY, bool leftMouseButton){
   *
   */
 void RainbruRPG::OgreGui::HScrollBar::draw(QuadRenderer* qr){
-  if (geometryDirty){
-    makeCorners();
-    geometryDirty=false;
-  }
-
   if (visible){
+    if (geometryDirty){
+      makeCorners();
+      geometryDirty=false;
+    }
+
     sk->drawHorizontalScrollbar( qr, this );
   }
 }

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 23 frb 2008 : DrawingDev implementation
  * - 12 feb 2008 : useParentScissor implementation and documentation
  * - 24 jan 2008 : New text renderer implementation using _setTexture()
  *                 instead of _setPass()
@@ -150,6 +151,9 @@ namespace RainbruRPG {
 
       void setUseParentScissor(bool);
       bool getUseParentScissor(void);
+
+      void setDrawingDev(int, int);
+      void disableDrawingDev(void);
 
     protected:
       void setupHardwareBuffer(void);
@@ -322,6 +326,10 @@ namespace RainbruRPG {
 	*
 	*/
       bool useParentScissor;
+
+      bool usingDrawingDev;
+      int xDrawingDev;
+      int yDrawingDev;
 
     };
   }

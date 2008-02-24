@@ -34,6 +34,9 @@
 
 #include <algorithm>
 
+// The Y position of the vertical scrollbar
+#define VSB_YPOS 24
+
 /** The constructor
   *
   * Both horizontal and vertical scrollbar are drawn only if needed by default.
@@ -47,16 +50,25 @@ RainbruRPG::OgreGui::ScrollPane::
 ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):  
   Container(dim, parent, sid),
   mVScrollBarPolicy(SBP_IF_NEEDED),
-  mHScrollBarPolicy(SBP_IF_NEEDED)
+  mHScrollBarPolicy(SBP_IF_NEEDED),
+  xDrawingDev(0),
+  yDrawingDev(0)
 {
 
-  Vector4 sbDim(dim.z-16,30,14,dim.w-60);
+  Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
   mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
-  this->addWidget(mVScrollBar);
+  //  this->addWidget(mVScrollBar);
 
-  Vector4 sbDim2(2 ,dim.w-16,dim.z-16,14);
+  Vector4 sbDim2( 2, dim.w-16, dim.z-20, 14 );
   mHScrollBar=new HScrollBar(sbDim2, parent);
-  this->addWidget(mHScrollBar);
+  //  this->addWidget(mHScrollBar);
+
+  // Signals connection
+  mHScrollBar->sigValueChanged.connect( sigc::mem_fun(this,
+     &RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange));
+
+  mVScrollBar->sigValueChanged.connect( sigc::mem_fun(this,
+     &RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange));
 
 }
 
@@ -83,7 +95,14 @@ RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
 void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
   qr->setScissorRectangle(corners);
   qr->setUseParentScissor(true);
+
+  // This widgets do not move (QuadRenderer::DrawingDev)
+  mVScrollBar->draw(qr);
+  mHScrollBar->draw(qr);
+
+  qr->setDrawingDev(xDrawingDev, yDrawingDev);
   Container::draw(qr);
+  qr->disableDrawingDev();
   qr->setUseParentScissor(false);
 }
 
@@ -202,11 +221,12 @@ bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
     break;
 
   case SBP_ALWAYS:
-    return false;
+    return true;
     break;
 
   case SBP_IF_NEEDED:
-    return (getMaxChildRight()>corners.right);
+    int maxRight=getMaxChildRight()+parent->getLeft();
+    return (maxRight>corners.right);
     break;
   }
 }
@@ -218,11 +238,12 @@ bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
     break;
 
   case SBP_ALWAYS:
-    return false;
+    return true;
     break;
 
   case SBP_IF_NEEDED:
-    return (getMaxChildBottom()>corners.bottom);
+    int maxBottom=getMaxChildBottom()+parent->getTop();
+    return (maxBottom>corners.bottom);
     break;
   }
 }
@@ -241,4 +262,26 @@ void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
   else{
     mVScrollBar->setVisible(false);
   }
+}
+
+void RainbruRPG::OgreGui::ScrollPane::setWidth(int i){
+  corners.right=corners.left+i;
+
+  mVScrollBar->move(i-16, VSB_YPOS);
+  mHScrollBar->setWidth(i-20);
+}
+
+void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
+  corners.bottom=corners.top+i;
+
+  mHScrollBar->move(2, i-16);
+  mVScrollBar->setHeight( i-(VSB_YPOS + 18));
+}
+
+void RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange(int i){
+  xDrawingDev=i;
+}
+
+void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
+  yDrawingDev=i;
 }

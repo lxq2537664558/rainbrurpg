@@ -115,7 +115,6 @@ void RainbruRPG::OgreGui::Container::setGUI(BetaGUI::GUI*g){
   *
   */
 void RainbruRPG::OgreGui::Container::draw( QuadRenderer* qr ){
-    
   for (unsigned int i=0;i<widgetList.size();i++){
     widgetList[i]->draw(qr);
   }
@@ -126,9 +125,9 @@ void RainbruRPG::OgreGui::Container::draw( QuadRenderer* qr ){
 
   // ResizeGrip is added first and we want it to be drawn in foreground
   vector<BetaGUI::Button*>::reverse_iterator rit;
-  for ( rit=buttonList.rbegin() ; rit < buttonList.rend(); ++rit )
+  for ( rit=buttonList.rbegin() ; rit < buttonList.rend(); ++rit ){
     (*rit)->draw(qr);
-  
+  }
 }
 
 /** Set the transparency value
