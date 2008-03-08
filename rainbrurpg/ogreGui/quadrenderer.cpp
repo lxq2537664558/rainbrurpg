@@ -394,7 +394,15 @@ void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
 
 /** Reset the renderer
   *
-  * Should be called between two draw().
+  * In this function, the scissor rectangle is reseted (
+  * \ref RainbruRPG::OgreGui::QuadRenderer::useScissor "useScissor"
+  * set to false), as the used vectors 
+  * (\ref RainbruRPG::OgreGui::QuadRenderer::vert "vert",
+  * \ref RainbruRPG::OgreGui::QuadRenderer::uvs "uvs",
+  * \ref RainbruRPG::OgreGui::QuadRenderer::cols "cols").
+  * 
+  *
+  * \note Should be called between two draw().
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::reset(void){
@@ -892,14 +900,60 @@ float RainbruRPG::OgreGui::QuadRenderer::getAlpha(void){
   return alphaValue;
 }
 
+/** Make a deviation on all drawn elements
+  *
+  * This function is used by ScrollPane to move around all its child widgets.
+  * 
+  * \param x, y The deviation values in pixels
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::setDrawingDev(int x, int y){
   usingDrawingDev=true;
   xDrawingDev=x;
   yDrawingDev=y;
 }
 
+/** Disable the drawing deviation
+  *
+  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::setDrawingDev "setDrawingDev"
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::disableDrawingDev(void){
   usingDrawingDev=false;
   xDrawingDev=0;
   yDrawingDev=0;
+}
+
+/** Debug this QuadRenderer
+  *
+  * \param from The name of the fonction calling this (for backtrace 
+  *             informations)
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
+  // Intro
+  std::string s="QuadRenderer::debug() called from ";
+  s+=from;
+  LOGI(s.c_str());
+
+  // DrawingDev
+  LOGCATS("usingDrawingDev : ");
+  LOGCATB(usingDrawingDev);
+  LOGCAT();
+  
+   // DrawingDev
+  LOGCATS("using scrissor rectangle : ");
+  LOGCATB(useScissor);
+  LOGCAT();
+ 
+   // ParentScissor
+  LOGCATS("using parent scrissor : ");
+  LOGCATB(useParentScissor);
+  LOGCAT();
+ 
+  // alpha
+  LOGCATS("Alpha value :");
+  LOGCATF(alphaValue);
+  LOGCAT();
+
 }

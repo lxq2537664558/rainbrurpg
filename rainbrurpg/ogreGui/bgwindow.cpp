@@ -176,7 +176,6 @@ void BetaGUI::Window::setTitle(const String& title){
   *
   */
 void BetaGUI::Window::draw(QuadRenderer* qr){
-  LOGI("Window::draw called");
   if (visible){
     qr->setAlpha( this->alpha );
     mSkin->drawWindow(qr, corners, "Caption");
@@ -184,7 +183,6 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
     // These widgets do not move with scrollpane
     if (mResizeGrip) mResizeGrip->draw(qr);
     if (mTitleBar)   mTitleBar->draw(qr);
-    qr->reset();
     mScrollPane->draw( qr );
   }
 }
@@ -196,6 +194,8 @@ void BetaGUI::Window::draw(QuadRenderer* qr){
   */
 void BetaGUI::Window::setTransparency(float f){
   this->alpha=f;
+  if (mResizeGrip) mResizeGrip->setTransparency(f);
+  if (mTitleBar)   mTitleBar->setTransparency(f);
   mScrollPane->setTransparency(f);
 }
 
@@ -335,6 +335,17 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   // If we are in titlebar but the mouse button is up, all is done
   if (inTitleBar&&!LMB) return true;
  
+  if (mTitleBar){
+    mScrollPane->handleButtonEvent(px, py, corners.left, corners.top,
+				   LMB, this, mTitleBar );
+  }
+
+  if (mResizeGrip){
+    mScrollPane->handleButtonEvent(px, py, corners.left, corners.top,
+				   LMB, this, mResizeGrip );
+
+  }
+
   return mScrollPane->handleChildsEvent( px, py, 
 					 LMB, this );
 }
@@ -438,6 +449,9 @@ tScrollBarPolicy BetaGUI::Window::getVerticalScrollbarPolicy(void){
 }
 
 
+/** Debug the scrollpane using \ref RainbruRPG::Exception::Logger
+  *
+  */
 void BetaGUI::Window::debugScrollPane(void){
   LOGCATS("maxChildRight=");
   LOGCATI(mScrollPane->getMaxChildRight());

@@ -89,7 +89,16 @@ namespace RainbruRPG{
       int getMax(void);
       void setSteps(int, int);
 
-      /** The sigc++ signal emitted when the value change */
+      /** The sigc++ signal emitted when the value change 
+        *
+	* This signal should be connected to a sigc++ slot to
+	* be able to use the scrollbar. 
+	*
+	* \param an integer that give the scrollbar value
+	*
+	* \return nothing
+	*
+        */
       sigc::signal<void, int> sigValueChanged;
 
       virtual void draw(QuadRenderer* qr)=0;

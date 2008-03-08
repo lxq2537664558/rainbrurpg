@@ -110,6 +110,10 @@ changeHost(const QString& host,int port){
 
 /** A slot called is an error occured in the current socket
   *
+  * Prionts a message according to the given error instance.
+  *
+  * \param socketError the error that occured in the socket
+  *
   */
 void RainbruRPG::Network::Ftp::FtpTransfer::
 error ( QAbstractSocket::SocketError socketError ){

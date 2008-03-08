@@ -18,6 +18,8 @@ BetaGUI::Callback::Callback(){
 
 /** A constructor based on a function pointer
   *
+  * \param functionPointer The function pointer to base this callback on.
+  *
   */
 BetaGUI::Callback::Callback(void(*functionPointer)(Button *ref)){
   type=OCT_FUNC;
@@ -25,6 +27,8 @@ BetaGUI::Callback::Callback(void(*functionPointer)(Button *ref)){
 }
     
 /** A constructor based on a listener
+  *
+  * \param L The listener to base this callback on.
   *
   */
 BetaGUI::Callback::Callback(BetaGUIListener *L){

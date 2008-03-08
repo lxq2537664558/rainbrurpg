@@ -212,47 +212,9 @@ handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win ){
 
   // handle button events
   for(unsigned int i=0;i<buttonList.size();i++){
-    if (buttonList[i]->in(px, py, corners.left, corners.top)){
+    return handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
+			      buttonList[i] );
 
-      activeButton=buttonList[i];
-      activeButton->activate(true);
-
-      if(!LMB)
-	return true;
- 
-      switch(activeButton->getCallback().getType()){
-      default: 
-	return true;
-	
-      case OCT_FUNC:
-	activeButton->getCallback().fp(activeButton);
-	return true;
-	break;      
-	
-      case OCT_LIST:
-	activeButton->getCallback().LS->onButtonPress(activeButton);
-	return true;
-	break;
-	
-      case OCT_WIN_MOVE:
-	GameEngine::getSingleton().getOgreGui()->setMovedWindow(win);
-	movingDevX=px-corners.left;
-	movingDevY=py-corners.top;
-	win->move(px, py);
-	makeCorners();
-	return true;
-	break;
-	
-      case OCT_WIN_RESIZE:
-	GameEngine::getSingleton().getOgreGui()->setResizedWindow(win);
-	movingDevX=corners.right-px;
-	movingDevY=corners.bottom-py;
-	win->resize(px, py);
-	makeCorners();
-	return true;     
-	break;
-      }
-    }
   }
 
  
@@ -362,4 +324,61 @@ void RainbruRPG::OgreGui::Container::makeCorners(void){
   corners.right=parent->getLeft() + parent->getWidth();
   corners.bottom=parent->getTop() + parent->getHeight();
 
+}
+
+/** Handles events for a single button
+  *
+  * \param mx, my The mouse position
+  * \param px, py The parent position
+  * \param LMB    Is the left mouse button pressed ?
+  * \param win    The window
+  * \param btn    The button to handle
+  *
+  */
+bool RainbruRPG::OgreGui::Container::
+handleButtonEvent(unsigned int mx, unsigned int my,
+		  unsigned int px, unsigned int py,
+		  bool LMB, Window* win, Button* btn){
+
+    if (btn->in(mx, my, px, py)){
+
+      activeButton=btn;
+      activeButton->activate(true);
+
+      if(!LMB)
+	return true;
+ 
+      switch(activeButton->getCallback().getType()){
+      default: 
+	return true;
+	
+      case OCT_FUNC:
+	activeButton->getCallback().fp(activeButton);
+	return true;
+	break;      
+	
+      case OCT_LIST:
+	activeButton->getCallback().LS->onButtonPress(activeButton);
+	return true;
+	break;
+	
+      case OCT_WIN_MOVE:
+	GameEngine::getSingleton().getOgreGui()->setMovedWindow(win);
+	movingDevX=mx-corners.left;
+	movingDevY=my-corners.top;
+	win->move(mx, my);
+	makeCorners();
+	return true;
+	break;
+	
+      case OCT_WIN_RESIZE:
+	GameEngine::getSingleton().getOgreGui()->setResizedWindow(win);
+	movingDevX=corners.right-mx;
+	movingDevY=corners.bottom-my;
+	win->resize(mx, my);
+	makeCorners();
+	return true;     
+	break;
+      }
+    }
 }

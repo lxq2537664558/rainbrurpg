@@ -1,9 +1,6 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Nothing is drawn if ResizeGrip not added to the ScrollPane
-- TitleBar, ResizeGrip drawn by Window
-- ScrollBars drawn by ScrollPane
 - SEGFAULT when coming back from gsConnection to gsMainMenu
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -115,7 +112,18 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-171
-- (7) QuadRenderer drawingDev implementation
+- (14) ScrollBars drawn by ScrollPane
+- Documentation update (many undocumented members)
+- CurlInterface::setWrittenData() function removed (unused)
+- ResizeGrip event handled by Window
+   Container::handleButtonEvent() imlementation
+   Window uses mScrollPane::handleButtonEvent(mResizeGrip);
+- TitleBar, ResizeGrip drawn by Window
+- Nothing is drawn if ResizeGrip not added to the ScrollPane
+   Window::setTransparency did not set alpha for ResizeGrip and titlebar
+- QuadRenderer::debug() implementation
+   Used to find a bug in ResizeGrip
+- QuadRenderer drawingDev implementation
 - Connection ScrollPane's scrollbar signals to slots
 - Testing Scrollbar when policy is Always/Never
 - Recompute scrollbar visibility when widget is added

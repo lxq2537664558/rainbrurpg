@@ -214,6 +214,11 @@ int RainbruRPG::OgreGui::ScrollPane::getMaxChildBottom(void){
   return maxBottom;
 }
 
+/** Tells if the horizontal scrollbar is needed according to its policy
+  * 
+  * \return \c true if we need to draw horizontal scrollbar
+  *
+  */
 bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
   switch (mHScrollBarPolicy){
   case SBP_NEVER:
@@ -231,6 +236,11 @@ bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
   }
 }
 
+/** Tells if the vertical scrollbar is needed according to its policy
+  * 
+  * \return \c true if we need to draw vertical scrollbar
+  *
+  */
 bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
   switch (mVScrollBarPolicy){
   case SBP_NEVER:
@@ -248,6 +258,17 @@ bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
   }
 }
 
+/** Set the scrollbars visible or hidden according to policies
+  *
+  * It sets the scrollbars (\ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar
+  * "mHScrollBar" and \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar
+  * "mVScrollBar") visible or hidden according to their policies using 
+  * \ref RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded 
+  * "isVerticalScrollbarNeeded()" and 
+  * \ref RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded 
+  * "isHorizontalScrollbarNeeded".
+  *
+  */
 void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
   if (isHorizontalScrollbarNeeded()){
     mHScrollBar->setVisible(true);
@@ -264,6 +285,16 @@ void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
   }
 }
 
+/** Change the width of this scrollpane
+  *
+  * This function is reimplemented because it must move 
+  * \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar "mVScrollBar"
+  * and resize \ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar 
+  * "mHScrollBar".
+  *
+  * \param i The new width in pixels
+  *
+  */
 void RainbruRPG::OgreGui::ScrollPane::setWidth(int i){
   corners.right=corners.left+i;
 
@@ -271,6 +302,16 @@ void RainbruRPG::OgreGui::ScrollPane::setWidth(int i){
   mHScrollBar->setWidth(i-20);
 }
 
+/** Change the width of this scrollpane
+  *
+  * This function is reimplemented because it must resize 
+  * \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar "mVScrollBar"
+  * and move \ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar 
+  * "mHScrollBar".
+  *
+  * \param i The new height in pixels
+  *
+  */
 void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   corners.bottom=corners.top+i;
 
@@ -278,10 +319,30 @@ void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   mVScrollBar->setHeight( i-(VSB_YPOS + 18));
 }
 
+/** The horizontal scrollbar slot
+  * 
+  * This sig-c++ slot is connected to the 
+  * \ref RainbruRPG::OgreGui::ScrollBar::sigValueChanged "sigValueChanged"
+  * signal of \ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar 
+  * "mHScrollBar".
+  *
+  * \param i The new scrollbar value
+  *
+  */
 void RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange(int i){
   xDrawingDev=i;
 }
 
+/** The vertical scrollbar slot
+  * 
+  * This sig-c++ slot is connected to the 
+  * \ref RainbruRPG::OgreGui::ScrollBar::sigValueChanged "sigValueChanged"
+  * signal of \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar 
+  * "mVScrollBar".
+  *
+  * \param i The new scrollbar value
+  *
+  */
 void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
   yDrawingDev=i;
 }

@@ -26,6 +26,11 @@
 
 /** The default constructor
   *
+  * \param renderWindow The Ogre render window
+  * \param sceneMgrName The Ogre scene manager name
+  * \param cameraName   The Ogre camera name
+  *
+  *
   */
 RainbruRPG::Core::EnvironmentSetup::
 EnvironmentSetup( Ogre::RenderWindow* renderWindow, 

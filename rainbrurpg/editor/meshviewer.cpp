@@ -32,6 +32,8 @@ using namespace Ogre;
 
 /** The default constructor
   *
+  * \param parent The parent Widget
+  *
   */
 RainbruRPG::Editor::MeshViewer::MeshViewer(QWidget* parent)
   :QWidget(parent){

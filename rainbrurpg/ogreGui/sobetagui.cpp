@@ -275,7 +275,7 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   corners.bottom=dim.y+dim.w;
 
   qr->setBlendMode(QBM_GLOBAL);
-  qr->setScissorRectangle(dim.x, dim.y, dim.x+dim.z, dim.y+dim.w);
+  qr->setScissorRectangle(corners);
 
   if (active){
     qr->setTexturePtr(mResizeGripActiveTexture);

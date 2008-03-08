@@ -277,6 +277,11 @@ bool RainbruRPG::OgreGui::Widget::isVisible(){
   return this->visible;
 }
 
+/** Change the visibility state of this widget
+  *
+  * \param b The new value
+  *
+  */
 void RainbruRPG::OgreGui::Widget::setVisible(bool b){
   visible=b;
 }

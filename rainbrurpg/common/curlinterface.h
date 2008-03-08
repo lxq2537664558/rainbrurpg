@@ -86,11 +86,6 @@ namespace RainbruRPG {
 
 	void setWriteFunction(void*);
 	void setCustomErrorMessage(const char*);
-	/** An unused function 
-	  *
-	  * \param c Unknown
-	  */
-	static void setWrittenData( char* c);
 
 	/** Makes sure the action can be perform
 	  *

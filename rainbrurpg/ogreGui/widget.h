@@ -112,7 +112,24 @@ namespace RainbruRPG{
 	*/
       inline int getTop(void) const { return corners.top; };
 
+      /** Get the right point of this widget
+        *
+	* \return The position in pixels
+	*
+	* \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink 
+	*           (member)
+	*
+	*/
       inline int getRight(void) const { return corners.right; };
+
+      /** Get the bottom point of this widget
+        *
+	* \return The position in pixels
+	*
+	* \sa \link RainbruRPG::OgreGui::Widget::corners corners \endlink 
+	*           (member)
+	*
+	*/
       inline int getBottom(void) const { return corners.bottom; };
 
       int getWidth(void) const;

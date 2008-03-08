@@ -113,6 +113,17 @@ namespace RainbruRPG {
       * setSize() for this but you should not use setPosition() after that.
       * Please first call setPosition() then call setSize().
       *
+      * \section sec_QuadRenderer_DrawingDev The DrawingDev feature
+      *
+      * The DrawingDev functions control the ability to move all quads and 
+      * text we draw around X and Y axis. This is used by the ScrollPane widget
+      * when it moves all its childs according to the scrollbars values. 
+      * The DrawingDev feature is then deactivated using the 
+      * disableDrawingDev() function.
+      *
+      * Please see the ScrollPane::draw() implementation for more details 
+      * and an usage example.
+      *
       * \note The implementation of this class is based on the <B>Right Brain 
       * Games GUI</B>. Please see http://www.rightbraingames.com/tech.php for 
       * more informations.
@@ -154,6 +165,8 @@ namespace RainbruRPG {
 
       void setDrawingDev(int, int);
       void disableDrawingDev(void);
+
+      void debug(const std::string&);
 
     protected:
       void setupHardwareBuffer(void);
@@ -327,8 +340,11 @@ namespace RainbruRPG {
 	*/
       bool useParentScissor;
 
+      /** Tells if we are using the DrawingDev feature */
       bool usingDrawingDev;
+      /** The DrawingDev value for the X axis */
       int xDrawingDev;
+      /** The DrawingDev value for the Y axis */
       int yDrawingDev;
 
     };
