@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 11 mar 2008 : Adds some function for unit tests implementation
  * - 08 jul 2007 : commandRETR uses GlobalURI::getDownloadedFile()
  *                 A sigTransferError signal
  * - 30 jun 2007 : Add UniqueName
@@ -97,6 +98,13 @@ namespace RainbruRPG {
 
       int getFilesize(const std::string&);
 
+      bool isControlChannelConnected(void);
+      bool isDataChannelConnected(void);
+      const std::string& getHostIp(void) const;
+      const std::string& getHostUniqueName(void) const;
+      int getHostPort(void) const;
+      tTransferType getTransferType(void);
+
       /** A signal emitted when bytes are read
         *
 	* An integer parameter represents the number of bytes read.
@@ -152,6 +160,8 @@ namespace RainbruRPG {
 
       /** Is the control channel connected ? */
       bool controlChannelConnected;
+      /** Is the data channel connected ? */
+      bool dataChannelConnected;
 
       /** Are we in FTT_BINARY or FTT_ASCII ? */
       tTransferType transferType;

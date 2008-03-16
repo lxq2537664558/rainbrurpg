@@ -75,7 +75,9 @@ namespace RainbruRPG{
 	* GlobalURI instance and uses the CurlFileToXml functions to retrieve
 	* the file.
 	*
-	* \sa CurlServerAdd, CurlServerDelete
+	* \sa CurlServerAdd, CurlServerDelete, 
+	*     \ref RainbruRPG::Network::Ident::CurlServerModifClients
+	*     "CurlServerModifClients"
 	*
 	*/
       class xmlServerList : public CurlFileToXml{

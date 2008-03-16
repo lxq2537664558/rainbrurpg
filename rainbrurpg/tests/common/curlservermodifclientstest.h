@@ -49,11 +49,39 @@ class CurlServerModifClientsTest : public CPPUNIT_NS::TestFixture{
   /// Start the test 
   CPPUNIT_TEST_SUITE( CurlServerModifClientsTest );
 
+  /** Tests creation of a virtual server
+    *
+    * \sa createVirtualServer
+    *
+    */
   CPPUNIT_TEST( createVirtualServer );
+
+  /** Tests the initial client number
+    *
+    * \sa testInitialClientCount
+    *
+    */
   CPPUNIT_TEST( testInitialClientCount );
+
+  /** Tests the client number after adding a client
+    *
+    * \sa testNewClientCount
+    *
+    */
   CPPUNIT_TEST( testNewClientCount );
+
+  /** Tests a negative client number
+    *
+    * \sa testNegativeClientCount
+    *
+    */
   CPPUNIT_TEST( testNegativeClientCount );
 
+  /** Deletes the virtual server
+    *
+    * \sa deleteVirtualServer
+    *
+    */
   CPPUNIT_TEST( deleteVirtualServer );
 
   /// The CppUnit test end macro
@@ -151,8 +179,7 @@ public:
 
   /** Set a negative client number and test if it is 0
     *
-    * \sa \ref RainbruRPG::Network::Ident::CurlServerModifClients::setActClients
-    *     "CurlServerModifClients::setActClients"
+    * \sa CurlServerModifClients::setActClients
     *
     */
   void testNegativeClientCount(){
@@ -167,8 +194,6 @@ public:
     CPPUNIT_ASSERT( sli!=NULL );
 
     unsigned int actClient=sli->getActClients();
-    cout << "actClient=" << actClient << endl;
-
     CPPUNIT_ASSERT( actClient==0 );
 
   }

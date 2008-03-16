@@ -38,6 +38,8 @@
 #include "curlserverdeletetest.h"
 #include "curlpersoheaderaddtest.h"
 #include "curlservermodifclientstest.h"
+#include "ftpclienttest.h"
+#include "globaluritest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -55,6 +57,8 @@
 #include <curlserverdelete.h>
 #include <curlpersoheaderadd.h>
 #include <curlservermodifclients.h>
+#include <ftpclient.h>
+#include <globaluri.h>
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -79,6 +83,8 @@ CommonTestSuite::CommonTestSuite()
   addTest(CurlServerDeleteTest<CurlServerDelete>::suite());
   addTest(CurlPersoHeaderAddTest<CurlPersoHeaderAdd>::suite());
   addTest(CurlServerModifClientsTest<CurlServerModifClients>::suite());
+  addTest(FtpClientTest<FtpClient>::suite());
+  addTest(GlobalUriTest<GlobalURI>::suite());
 }
 
 /** The destructor

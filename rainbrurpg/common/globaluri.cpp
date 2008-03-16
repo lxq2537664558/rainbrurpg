@@ -42,7 +42,12 @@ RainbruRPG::Network::GlobalURI::GlobalURI(){
   LOGI("Using the real website");
 #endif //WEBSITE_DEBUG
 
+  shareDir = USER_INSTALL_PREFIX;
+  shareDir+="/share/RainbruRPG/";
+
   homeSetup();
+
+  uploadDir=userDir+"uploaded/";
 
 }
 
@@ -62,7 +67,7 @@ RainbruRPG::Network::GlobalURI::~GlobalURI(){
   *         website
   */
 std::string RainbruRPG::Network::GlobalURI::
-getAdminAdress(const std::string& file){
+getAdminAdress(const std::string& file)const{
 
 
   ostringstream oss;
@@ -80,7 +85,7 @@ getAdminAdress(const std::string& file){
   *         website
   */
 std::string RainbruRPG::Network::GlobalURI::
-getXmlAdress(const std::string& file){
+getXmlAdress(const std::string& file)const{
 
   std::string s;
   s=this->xmlSite;
@@ -97,7 +102,7 @@ getXmlAdress(const std::string& file){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getUserDirFile(const std::string& file){
+getUserDirFile(const std::string& file)const{
 
   LOGI("GlobalURI::getUserDirFile called");
   ostringstream oss;
@@ -161,17 +166,11 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getShareFile(const std::string& file){
+getShareFile(const std::string& file)const{
   LOGI("GlobalURI::getShareFile called");
   // Copying necessary files
-  std::string s=USER_INSTALL_PREFIX;
-  s+="/share/RainbruRPG/";
+  std::string s=shareDir;
   s+=file;
-
-  LOGCATS("Returned value : '");
-  LOGCATS(s.c_str());
-  LOGCATS("'");
-  LOGCAT();
 
   boost::filesystem::path test( s,boost::filesystem::native);
   if (!boost::filesystem::exists(test)){
@@ -228,22 +227,12 @@ installConfigFile(const std::string& filename){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getUploadFile(const std::string& s){
-  std::string dir;
-  std::string ret=userDir;
-  ret+="uploaded/";
-  dir=ret;
-  ret+=s;
+getUploadFile(const std::string& s)const{
+  std::string ret=uploadDir+s;
 
   // Create the directory if not exist
-  boost::filesystem::path p(dir, boost::filesystem::native);
-  if(boost::filesystem::exists(p)){
-    if (boost::filesystem::is_directory(p)){
-      LOGI("uploaded/ directory exists");
-
-    }
-  }
-  else{
+  boost::filesystem::path p(uploadDir, boost::filesystem::native);
+  if(!boost::filesystem::exists(p)){
     LOGW("uploaded/ directory does not exist, creating it");
     // If the uploaded directory does not exist, create it
     boost::filesystem::create_directory(p);
@@ -261,7 +250,7 @@ getUploadFile(const std::string& s){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getQuarantineFile(const std::string& s){
+getQuarantineFile(const std::string& s)const{
   LOGI("GlobalURI::getQuarantineFile called");
   std::string dir;
   std::string ret=userDir;
@@ -302,7 +291,7 @@ getQuarantineFile(const std::string& s){
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getDownloadFile(const std::string& s, const std::string& sun){
+getDownloadFile(const std::string& s, const std::string& sun)const{
   std::string dir, dirWoSun;
   std::string ret=userDir;
   ret+="downloaded/";
@@ -332,4 +321,40 @@ getDownloadFile(const std::string& s, const std::string& sun){
   }
 
   return ret;
+}
+
+/** Get the current user RainbruRPG directory
+  *
+  * Should be the user directory plus \c /.RainbruRPG/
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getUserDir(void)const{
+  return this->userDir;
+}
+
+/** Get the Admin website URL base
+  *
+  * This value can change according to the WEBSITE_DEBUG macro.
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getAdminSite(void)const{
+  return this->adminSite;
+}
+
+/** Get the XML files URL base
+  *
+  * This value can change according to the WEBSITE_DEBUG macro.
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getXmlSite(void)const{
+  return this->xmlSite;
+}
+
+/** Get the shared files directory
+  *
+  * This is \c $USER_INSTALL_PREFIX$/share/RainbruRPG/.
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getShareDir(void)const{
+  return shareDir;
 }

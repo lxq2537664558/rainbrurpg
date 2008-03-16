@@ -20,9 +20,29 @@
  *
  */
 
+/** \mainpage RainbruRPG unit tests documentation
+  *
+  * \section intro_sec Introduction
+  *
+  * This is the documentation of the unit tests of RainbruRPG. It is 
+  * independant from the RainbruRPG documentation, so no link can be made
+  * to the main documentation. If a class name appears with no link, please
+  * search it in th main code doxumentation.
+  *
+  * \section gui_sec Result GUI
+  *
+  * The unit tests results can either be shown in Qt3 or std out. Please see
+  * in the main.cpp file the TEXT_OUTPUT preprocessor macro. You also may
+  * want to modify the Makefile.am file as it links wih qt libraries.
+  *
+  * The only difference is that Qt version of the test provides the RainbruRPG
+  * logger out in std out.
+  *
+  */
+
 // If this macro is defined, we use a Text output
 // otherwise, a terminal output is used
-#define TEXT_OUTPUT
+//#define TEXT_OUTPUT
 
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestSuite.h>
@@ -34,6 +54,7 @@
 
 // Forward declaration
 void initRPGSuite(CPPUNIT_NS::TestSuite* r);
+// End of forward declaration
 
 
 #ifdef TEXT_OUTPUT
@@ -58,14 +79,9 @@ int main(int argc, char* argv[]){
 }
 
 #else
-#  include <cppunit/ui/qt/TestRunner.h>
+#  include <QtTestRunner.h>
 #  include <qapplication.h>
 /** The main function of the UnitTest (Qt version)
-  *
-  * This seems to work only with Qt3. The other RainbruRPG-related programs
-  * use Qt4 so be carefull.
-  *
-  * It causes segfault when trying to compile with Qt4.
   *
   */
 int main(int argc, char* argv[]){
@@ -86,7 +102,7 @@ int main(int argc, char* argv[]){
 /** Initialize all the test
   *
   * It initialises a TestSuite for each tested namespace or lib :
-  * - Terminal
+  * - TerminalAPI
   * - Common
   */
 void initRPGSuite(CPPUNIT_NS::TestSuite* r){

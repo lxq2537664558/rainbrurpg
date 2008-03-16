@@ -32,14 +32,20 @@
 /** The default constructor
   *
   */
-RainbruRPG::Network::FtpClient::FtpClient(){
-  controlSock=NULL;
-  controlChannelConnected=false;
-  transferType=FTT_ASCII;
-  transferFilename="";
-  returnValue="";
-  nextFilesize=0;
-  totalBytesReceived=0;
+RainbruRPG::Network::FtpClient::FtpClient():
+  hostIp(""),
+  hostPort(0),
+  controlSock(NULL),
+  controlChannelConnected(false),
+  dataChannelConnected(false),
+  transferType(FTT_ASCII),
+  transferFilename(""),
+  returnValue(""),
+  nextFilesize(0),
+  totalBytesReceived(0),
+  uniqueName("")
+{
+
 }
 
 /** The destructor
@@ -51,9 +57,15 @@ RainbruRPG::Network::FtpClient::~FtpClient(){
 
 /** Try to open a connection in the given host
   *
-  * Even if the thirs parameter (server's unique name) can be omitted, you
+  * Even if the third parameter (server's unique name) can be omitted, you
   * \b must pass the UniqueName of the server you try to connect to. If
   * you do not set it, the \c RETR commands will failed.
+  *
+  * It opens the control channel if successfull. Please see 
+  * \ref RainbruRPG::Network::FtpClient::controlChannelConnected
+  * "controlChannelConnected" (member) and 
+  * \ref RainbruRPG::Network::FtpClient::isControlChannelConnected
+  * "isControlChannelConnected()" and 
   *
   * \param ip The ip adress of the host
   * \param port The port the host should listen
@@ -74,7 +86,8 @@ connectToHost(const std::string& ip, int port, const std::string& uName){
   this->uniqueName=uName;
 
   if (uName==""){
-    LOGE("The given server's UniqueName is empty. FtpClient cannot work properly.");
+    LOGE("The given server's UniqueName is empty. FtpClient cannot work "
+	 "properly.");
   }
 
   controlSock=gnet_tcp_socket_connect(ip.c_str(), port);
@@ -141,6 +154,7 @@ bool RainbruRPG::Network::FtpClient::openDataChannel(){
   }
   else{
     LOGI("Data channel opened");
+    dataChannelConnected=true;
     return true;
   }
 
@@ -508,6 +522,7 @@ int RainbruRPG::Network::FtpClient::getFilesize(const std::string& s){
 bool RainbruRPG::Network::FtpClient::closeDataChannel(){
   LOGI("Closing data channel");
   gnet_tcp_socket_delete(dataSock);
+  dataChannelConnected=false;
 }
 
 /** The RETR threaded function
@@ -639,4 +654,81 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
   if (buffer!=NULL){
     free(buffer);
   }
+}
+
+/** Is this client connected to a server ?
+  *
+  * The control channel is connected using the 
+  * \ref RainbruRPG::Network::FtpClient::connectToHost "connectToHost()"
+  * function. If this function was never called, this function by default
+  * returns \c false.
+  *
+  * \return The control channel state
+  *
+  */
+bool RainbruRPG::Network::FtpClient::isControlChannelConnected(void){
+  return controlChannelConnected;
+}
+
+/** Is the data channel connected ?
+  *
+  * \return The data channel state
+  *
+  */
+bool RainbruRPG::Network::FtpClient::isDataChannelConnected(void){
+  return dataChannelConnected;
+}
+
+/** Get the current server IP
+  *
+  * Returns an empty string by default. This value change when calling
+  * \ref RainbruRPG::Network::FtpClient::connectToHost() "connectToHost()",
+  * even if the connection failed.
+  *
+  * \return The server's IP in a STL string format
+  *
+  */
+const std::string& RainbruRPG::Network::FtpClient::getHostIp(void)const{
+  return hostIp;
+}
+
+/** Get the current server's unique name
+  *
+  * Returns an empty string by default. This value change when calling
+  * \ref RainbruRPG::Network::FtpClient::connectToHost() "connectToHost()",
+  * even if the connection failed.
+  *
+  * \note This value only returns the parameter given to the call of
+  *       \ref RainbruRPG::Network::FtpClient::connectToHost() "connectToHost()"
+  *       It cannot retrieve server name from the FTP server you try to connect.
+  *       We can't guess this value.
+  *
+  * \return The server's unique name in a STL string format
+  *
+  */
+const std::string& RainbruRPG::Network::FtpClient::getHostUniqueName(void)const{
+  return uniqueName;
+}
+
+/** Get the current server port
+  *
+  * Returns 0 by default. This value change when calling
+  * \ref RainbruRPG::Network::FtpClient::connectToHost() "connectToHost()",
+  * even if the connection failed.
+  *
+  * \return The server's port
+  *
+  */
+int RainbruRPG::Network::FtpClient::getHostPort(void)const{
+  return hostPort;
+}
+
+/** Get the current transfer type
+  *
+  * Should, by default, return \c FTT_ASCII.
+  *
+  */
+RainbruRPG::Network::tTransferType 
+RainbruRPG::Network::FtpClient::getTransferType(void){
+  return transferType;
 }

@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 15 mar 2008 : Adding dome function for unit test
+ *                 Passing existing function const
  * - 09 jul 2007 : Tests if downloaded directory exists
  * - 01 jul 2007 : Switch to const std::string&
  * - 21 jun 2007 : FTP related function added
@@ -95,22 +97,28 @@ namespace RainbruRPG{
       GlobalURI();
       ~GlobalURI();
 
-      std::string getAdminAdress(const std::string&);
-      std::string getXmlAdress(const std::string&);
+      const std::string& getUserDir(void)const;
+      const std::string& getAdminSite(void)const;
+      const std::string& getXmlSite(void)const;
+      const std::string& getShareDir(void)const;
 
-      std::string getUserDirFile(const std::string&);
-      std::string getShareFile(const std::string&);
+      std::string getAdminAdress(const std::string&)const;
+      std::string getXmlAdress(const std::string&)const;
 
-      std::string getUploadFile(const std::string&);
-      std::string getQuarantineFile(const std::string&);
-      std::string getDownloadFile(const std::string&, const std::string&);
+      std::string getUserDirFile(const std::string&)const;
+      std::string getShareFile(const std::string&)const;
+
+      std::string getUploadFile(const std::string&)const;
+      std::string getQuarantineFile(const std::string&)const;
+      std::string getDownloadFile(const std::string&, 
+					 const std::string&)const;
 
 
     private:
       void installConfigFile(const std::string&);
       void homeSetup();
 
-      /** Tha base of a administration web site address */
+      /** The base of a administration web site address */
       std::string adminSite;
       /** Where are the most xml files */
       std::string xmlSite;
@@ -120,6 +128,12 @@ namespace RainbruRPG{
 	*
 	*/
       std::string userDir;
+      /** The \c /usr/share based RainbruRGP directory */
+      std::string shareDir;
+
+      /** The directory of uploaded files */
+      std::string uploadDir;
+      
    };
   }
 }

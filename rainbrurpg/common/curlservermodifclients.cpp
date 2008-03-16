@@ -77,7 +77,8 @@ setName(const std::string& s){
 /** Sets the actually connected client number
   *
   * If the given client number is negative, it will be set to 0.
-  * StringConv is used to convert the integer agrument.
+  * \ref RainbruRPG::Core::StringConv "StringConv" is used to convert 
+  * the integer agrument into an std::string.
   *
   * \param i The client number
   *

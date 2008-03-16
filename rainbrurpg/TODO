@@ -8,14 +8,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * Unittest failed in production mode (no --enable-debug)
 - HTTP response 401 "Unauthorized"
 
-* Unittest implementation of common/
-- curlpersoheaderaddtest
-- In this order :
-   curlpersomodifattrb.h
-   curlservermodifclients.h
-   curlsubmitform.h
-- Modified files :
-
 * cross-compilation to win32
 - fix the config.h warnings (PACKAGE redefined...)
 
@@ -112,7 +104,20 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-171
-- (14) ScrollBars drawn by ScrollPane
+- (18) Homepage news
+[Title]ScrollPane implementation in progress
+[Content]The ScrollPane widget is about to be implemented even if some 
+modifications are needed in the event handling os ScrollBars and
+Window's TitleBar and ResizeGrip. The first tests prove that the use 
+of scissor rectangle to chop off the primitives drawn by QuadRenderer 
+to the ScrollPane content was a good idea.[br]
+[br]
+At the same time, I carry on the implementation of unit tests, actually 
+on the common/ library (FtpClient and GlobalURI classes).
+- Unit test works in Qt3 version (not only test version)
+- common/ftpclient unit test implementation
+- Add some functions to common/ftpclient for unit tests implementation
+- ScrollBars drawn by ScrollPane
 - Documentation update (many undocumented members)
 - CurlInterface::setWrittenData() function removed (unused)
 - ResizeGrip event handled by Window
@@ -128,7 +133,7 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - Testing Scrollbar when policy is Always/Never
 - Recompute scrollbar visibility when widget is added
 - Move and Resize scrollbar when Window is resized
-  Using ScrollPane::setWidet and Height
+  Using ScrollPane::setWidget and Height
 - Widget set* and move, resize makes geometry dirty
 - Handle ScrollBars event only if visible
 

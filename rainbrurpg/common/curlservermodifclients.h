@@ -37,15 +37,20 @@ namespace RainbruRPG {
   namespace Network {
     namespace Ident {
 
-      /** Submits a change server's actClients to the administration site
+      /** Change the current connected clients number
         * 
-	* It is used when a new client connection is accepted or when
-	* a client leave the server.
+	* When a new client connection is accepted or when
+	* a client leave the server, the server uses this class to submit
+	* a actual client number change to the administration site.
 	*
 	* The posted keys are :
 	* - name : The name of the server
 	* - actClients : The actual number of client connected
 	* 
+	* This class is only used to modify the actual connected client 
+	* number, to get this information please see 
+	* \ref RainbruRPG::Network::Ident::xmlServerList "xmlServerList"
+	*
 	* \note If you set a negative client number, it will be 0.
 	*
 	*/
