@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 15 mar 2008 : Adding dome function for unit test
+ * - 17 mar 2008 : InstalledFileList implementation
+ * - 15 mar 2008 : Adding some functions for unit test
  *                 Passing existing function const
  * - 09 jul 2007 : Tests if downloaded directory exists
  * - 01 jul 2007 : Switch to const std::string&
@@ -52,6 +53,41 @@ using namespace boost::filesystem;
 
 namespace RainbruRPG{
   namespace Network {
+
+    /** An installed configuration file
+      *
+      * Defines an item contained in the installed configuration file
+      * list as returned by the
+      * \ref RainbruRPG::Network::GlobalURI::getInstallConfigFilesList
+      * "getInstallConfigFilesList" function.
+      *
+      * \note <var>needCreation</var> tells if this file was created in
+      *       the last call of \ref RainbruRPG::Network::GlobalURI::homeSetup
+      *       "homeSetup()"
+      *
+      * \note <var>exists</var> should always be \c true because its value
+      *       is defined after creating file if needed.
+      *
+      * \sa \ref RainbruRPG::Network::tInstalledConfigFilesList
+      *     "tInstalledConfigFilesList"
+      *
+      */
+    typedef struct tInstalledConfigFilesListItem{
+      std::string filename;         //!< The filename without path
+      std::string absoluteFileName; //!< The absolute filename (contains path)
+      bool needCreation;            //!< Did this file need to be created ?
+      bool exists;                  //!< Last exist test
+    };
+
+    /** A simple STL list of tInstalledConfigFilesListItem pointers 
+      *
+      * Defines the installed configuration file
+      * list as returned by the
+      * \ref RainbruRPG::Network::GlobalURI::getInstallConfigFilesList
+      * "getInstallConfigFilesList()" function.
+      *
+      */
+    typedef list<tInstalledConfigFilesListItem*> tInstalledConfigFilesList;
 
     /** A class to get the uri of a page, according to the website adress or
       * to get a directory
@@ -91,6 +127,17 @@ namespace RainbruRPG{
       * to start playing on this world. It is know as quarantine. A place
       * where the files can be used before approval.
       *
+      * \section installed_config_files_list_sec Installed configuration 
+      * files list
+      *
+      * This feature was originally implemented for unit tests purpose. The
+      * homeSetup() function uses installConfigFile() to copy a file from
+      * the \c $PREFIX$/share/ directory to the 
+      * <code>$HOME$/.RainbruRPG/config/</code>
+      * and a list of these files is created. The getConfigFilesCount() is
+      * an internal count, used to test file list size. The 
+      * getInstallConfigFilesList() function returns this list.
+      *
       */
     class GlobalURI{
     public:
@@ -101,6 +148,8 @@ namespace RainbruRPG{
       const std::string& getAdminSite(void)const;
       const std::string& getXmlSite(void)const;
       const std::string& getShareDir(void)const;
+      const std::string& getUploadDir(void)const;
+      const std::string& getQuarantineDir(void)const;
 
       std::string getAdminAdress(const std::string&)const;
       std::string getXmlAdress(const std::string&)const;
@@ -110,9 +159,11 @@ namespace RainbruRPG{
 
       std::string getUploadFile(const std::string&)const;
       std::string getQuarantineFile(const std::string&)const;
-      std::string getDownloadFile(const std::string&, 
-					 const std::string&)const;
+      std::string getDownloadFile(const std::string&, const std::string&, 
+				  bool createIfMissing=true)const;
 
+      unsigned int getConfigFilesCount(void);
+      const tInstalledConfigFilesList& getInstallConfigFilesList(void)const;
 
     private:
       void installConfigFile(const std::string&);
@@ -134,6 +185,14 @@ namespace RainbruRPG{
       /** The directory of uploaded files */
       std::string uploadDir;
       
+      /** The directory of files in quarantine */
+      std::string quarantineDir;
+      
+      /** Internal count of installed configuration files  */
+      unsigned int mConfigFilesCount;
+      
+      /** The list of installed configuration files */
+      tInstalledConfigFilesList mInstalledFileList;
    };
   }
 }

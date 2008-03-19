@@ -30,7 +30,8 @@
   * WEBSITE_DEBUG macro.
   *
   */
-RainbruRPG::Network::GlobalURI::GlobalURI(){
+RainbruRPG::Network::GlobalURI::GlobalURI():
+  mConfigFilesCount(0){
 
 #ifdef WEBSITE_DEBUG
   adminSite="http://127.0.0.1/rpg/admin/";
@@ -47,8 +48,8 @@ RainbruRPG::Network::GlobalURI::GlobalURI(){
 
   homeSetup();
 
-  uploadDir=userDir+"uploaded/";
-
+  uploadDir     = userDir + "uploaded/";
+  quarantineDir = userDir + "quarantine/";
 }
 
 /** The default destructor
@@ -56,7 +57,7 @@ RainbruRPG::Network::GlobalURI::GlobalURI(){
   *
   */
 RainbruRPG::Network::GlobalURI::~GlobalURI(){
-
+  mInstalledFileList.clear();
 }
 
 /** Get an adress on the administration site
@@ -180,7 +181,7 @@ getShareFile(const std::string& file)const{
   return s;
 }
 
-/** Test a file and install it if it doesn't
+/** Test if a file exists and install it if it doesn't
   *
   * Copy the given filename from $PREFIX/share/config to 
   * $HOME/.RainbruRPG/config
@@ -190,6 +191,12 @@ getShareFile(const std::string& file)const{
   */
 void RainbruRPG::Network::GlobalURI::
 installConfigFile(const std::string& filename){
+  // Increment internal configuration files count
+  mConfigFilesCount++;
+
+  tInstalledConfigFilesListItem* it=new tInstalledConfigFilesListItem();
+  it->filename = filename;
+
   // The $PREFIX/share... filename
   std::string s=USER_INSTALL_PREFIX;
   s+="/share/RainbruRPG/config/";
@@ -198,6 +205,7 @@ installConfigFile(const std::string& filename){
   // The $PREFIX/.RainbruRPG... filename
   std::string s2=userDir;
   s2+=filename;
+  it->absoluteFileName = s2;
 
   // The boost path
   boost::filesystem::path optionXmlPath( s, 
@@ -205,18 +213,33 @@ installConfigFile(const std::string& filename){
   boost::filesystem::path userOptionXmlPath( s2, 
 	boost::filesystem::native);
 
+  // Need to be installed
   if (!boost::filesystem::exists(userOptionXmlPath)){
     std::string msg=filename;
     msg+=" not found, copying it from $PREFIX/share";
     LOGW(msg.c_str());
 
     boost::filesystem::copy_file(optionXmlPath, userOptionXmlPath);
+    it->needCreation=true;
   }
   else{
     std::string msg2=filename;
     msg2+=" found in user directory";
     LOGI(msg2.c_str());
+    it->needCreation=false;
   }
+
+  // Exists ?
+  if (boost::filesystem::exists(userOptionXmlPath)){
+    it->exists=true;
+  }
+  else{
+    it->exists=false;
+  }
+
+  // Adding to list
+  mInstalledFileList.push_back(it);
+
 }
 
 /** Get the absolute filename of a file upload on the server and approved
@@ -252,22 +275,11 @@ getUploadFile(const std::string& s)const{
 std::string RainbruRPG::Network::GlobalURI::
 getQuarantineFile(const std::string& s)const{
   LOGI("GlobalURI::getQuarantineFile called");
-  std::string dir;
-  std::string ret=userDir;
-  ret+="quarantine/";
-  dir=ret;
-  ret+=s;
-
+  std::string ret=quarantineDir+s;
 
   // Create the directory if not exist
-  boost::filesystem::path p(dir, boost::filesystem::native);
-  if(boost::filesystem::exists(p)){
-    if (boost::filesystem::is_directory(p)){
-      LOGI("quarantine/ directory exists");
-
-    }
-  }
-  else{
+  boost::filesystem::path p(quarantineDir, boost::filesystem::native);
+  if(!boost::filesystem::exists(p)){
     LOGW("quarantine/ directory does not exist, creating it");
     // If the uploaded directory does not exist, create it
     boost::filesystem::create_directory(p);
@@ -284,14 +296,21 @@ getQuarantineFile(const std::string& s)const{
   * <code>$HOME/.RainbruRPG/downloaded/$UNIQUE_NAME</code>. If this directory
   * does not exist, this function create it.
   *
-  * \param s Only the file name
-  * \param sun The server unique name
+  * \note If the directory doesn't exist, it is created only if  
+  *       <var>createIfMissing</var> is \c true (it's default value). 
+  *       This feature should only be used in unit tests.
+  *
+  * \param s               Only the file name
+  * \param sun             The server unique name
+  * \param createIfMissing Create the unique name directory only if \c true
   *
   * \return The path and the filename
   *
   */
 std::string RainbruRPG::Network::GlobalURI::
-getDownloadFile(const std::string& s, const std::string& sun)const{
+getDownloadFile(const std::string& s, const std::string& sun, 
+		bool createIfMissing)const{
+
   std::string dir, dirWoSun;
   std::string ret=userDir;
   ret+="downloaded/";
@@ -311,13 +330,19 @@ getDownloadFile(const std::string& s, const std::string& sun)const{
     }
   }
   else{
-    LOGW("Downloaded/ directory does not exist, creating it");
     // If the downloaded directory does not exist, create it
     if (!boost::filesystem::exists(p2)){
-      boost::filesystem::create_directory(p2);
+	boost::filesystem::create_directory(p2);
+	LOGW("Downloaded/ directory does not exist, creating it");
     }
-    // Crete the unique name server directory
+  }
+
+  if (createIfMissing){
+    // Create the unique name server directory
     boost::filesystem::create_directory(p);
+  }
+  else{
+    LOGW("Missing unique directory not created (createIfMissing=false)");
   }
 
   return ret;
@@ -357,4 +382,48 @@ const std::string& RainbruRPG::Network::GlobalURI::getXmlSite(void)const{
   */
 const std::string& RainbruRPG::Network::GlobalURI::getShareDir(void)const{
   return shareDir;
+}
+
+/** Get the upload files directory
+  *
+  * This is \c $userDir$/uploaded/"
+  *
+  * \sa \ref RainbruRPG::Network::GlobalURI::userDir "userDir"
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getUploadDir(void)const{
+  return uploadDir;
+}
+
+/** Get the quarantine directory 
+  *
+  * This is \c $userDir$/quarantine/"
+  *
+  * \sa \ref RainbruRPG::Network::GlobalURI::userDir "userDir"
+  *
+  */
+const std::string& RainbruRPG::Network::GlobalURI::getQuarantineDir(void)const{
+  return quarantineDir;
+}
+
+/** Get the value of the internal configuration files count
+  *
+  * This function is mainly used for unit test to see if the 
+  * getInstallConfigFilesList() list size is correct.
+  *
+  * \return The number of installed config file
+  *
+  */
+unsigned int RainbruRPG::Network::GlobalURI::getConfigFilesCount(void){
+  return this->mConfigFilesCount;
+}
+
+/** Get the list of installed config files
+  *
+  * \return The list as constant
+  *
+  */
+const RainbruRPG::Network::tInstalledConfigFilesList& 
+RainbruRPG::Network::GlobalURI::getInstallConfigFilesList(void)const{
+  return this->mInstalledFileList;
 }

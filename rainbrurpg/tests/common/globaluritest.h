@@ -66,12 +66,54 @@ class GlobalUriTest : public CPPUNIT_NS::TestFixture{
     */
   CPPUNIT_TEST( testUserFile );
 
-  /** Tests the share dir function
+  /** Tests the share directory function
     *
     * \sa testShareFile
     *
     */
   CPPUNIT_TEST( testShareFile );
+
+  /** Tests the upload directory function
+    *
+    * \sa testUploadFile
+    *
+    */
+  CPPUNIT_TEST( testUploadFile );
+
+  /** Tests the quarantine directory function
+    *
+    * \sa testQuarantineFile
+    *
+    */
+  CPPUNIT_TEST( testQuarantineFile );
+
+  /** Tests the downloaded files function
+    *
+    * \sa testDownloadedFile
+    *
+    */
+  CPPUNIT_TEST( testDownloadedFile );
+
+  /** Tests the config file list size
+    *
+    * \sa testConfigFileListSize
+    *
+    */
+  CPPUNIT_TEST( testConfigFileListSize );
+
+  /** Tests the config file list filename
+    *
+    * \sa testConfigFileFilename
+    *
+    */
+  CPPUNIT_TEST( testConfigFileFilename );
+
+  /** Tests if config file exist
+    *
+    * \sa testAllConfigFilesExist
+    *
+    */
+  CPPUNIT_TEST( testAllConfigFilesExist );
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -81,10 +123,12 @@ protected:
     *
     */
   void initValues(void){
-    userDir   = m_instance->getUserDir();
-    adminSite = m_instance->getAdminSite();
-    xmlSite   = m_instance->getXmlSite();
-    shareDir  = m_instance->getShareDir();
+    userDir       = m_instance->getUserDir();
+    adminSite     = m_instance->getAdminSite();
+    xmlSite       = m_instance->getXmlSite();
+    shareDir      = m_instance->getShareDir();
+    uploadDir     = m_instance->getUploadDir();
+    quarantineDir = m_instance->getQuarantineDir();
   }
 
   /** An instance of the tested class   */
@@ -102,6 +146,10 @@ protected:
   std::string xmlSite;
   /** Shared files directory name */
   std::string shareDir;
+  /** Uploaded files directory name */
+  std::string uploadDir;
+  /** Quarantine files directory name */
+  std::string quarantineDir;
 
 public:
   /** Return the number of test cases
@@ -169,6 +217,95 @@ public:
     std::string result=shareDir + filename;
     std::string rep=this->m_instance->getShareFile(filename);
     CPPUNIT_ASSERT( rep==result);
+  }
+
+  /** Tests the getUploadFile() function
+    *
+    */
+  void testUploadFile(void){
+    initValues();
+    std::string filename = "aaa.bbb";
+    std::string result=uploadDir + filename;
+    std::string rep=this->m_instance->getUploadFile(filename);
+    CPPUNIT_ASSERT( rep==result);
+
+  }
+
+  /** Tests the getQuarantineFile() function
+    *
+    */
+  void testQuarantineFile(void){
+    initValues();
+    std::string filename = "aaa.bbb";
+    std::string result=quarantineDir + filename;
+    std::string rep=this->m_instance->getQuarantineFile(filename);
+    CPPUNIT_ASSERT( rep==result);
+
+  }
+  /** Tests the getDownloadFile() function
+    *
+    */
+  void testDownloadedFile(void){
+    std::string userDir    = this->m_instance->getUserDir();
+    std::string uniqueName = "uuuuuuuuuuuu";
+    std::string filename   = "aaa.bbb";
+
+    std::string result = userDir + "downloaded/" + uniqueName + "/" + filename;
+
+    std::string rep=this->m_instance
+      ->getDownloadFile( filename, uniqueName, false );
+
+    std::string msg="rep="+rep+"; result="+result+";";
+
+    CPPUNIT_ASSERT( rep==result);
+
+  }
+
+  /** Test if the size of config file list is correct
+    *
+    */
+  void testConfigFileListSize(void){
+    unsigned int size1 = this->m_instance->getConfigFilesCount();
+    tInstalledConfigFilesList lst = this->m_instance
+      ->getInstallConfigFilesList();
+
+    CPPUNIT_ASSERT( size1==lst.size());
+  }
+
+  /** Test if filename and absolute filename are correct
+    *
+    */
+  void testConfigFileFilename(void){
+    std::string fn;
+    userDir = m_instance->getUserDir();
+    tInstalledConfigFilesList::const_iterator iter;
+    tInstalledConfigFilesList lst = this->m_instance
+      ->getInstallConfigFilesList();
+    
+    for (iter=lst.begin(); iter!=lst.end(); iter++){
+      fn = userDir + (*iter)->filename;
+      CPPUNIT_ASSERT( (*iter)->absoluteFileName == fn );
+    }
+  }
+
+  /** Test if all config files exist
+    *
+    */
+  void testAllConfigFilesExist(void){
+    bool allExist = true;
+
+    tInstalledConfigFilesList::const_iterator iter;
+    tInstalledConfigFilesList lst = this->m_instance
+      ->getInstallConfigFilesList();
+
+    for (iter=lst.begin(); iter!=lst.end(); iter++){
+      if (!(*iter)->exists){
+	allExist = false;
+      }
+    }
+
+    CPPUNIT_ASSERT( allExist );
+
   }
 
 };

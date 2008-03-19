@@ -103,8 +103,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-172
+
 * v 0.0.5-171
-- (18) Homepage news
+- GlobalURI unit test imlemented
+- Homepage news
 [Title]ScrollPane implementation in progress
 [Content]The ScrollPane widget is about to be implemented even if some 
 modifications are needed in the event handling os ScrollBars and
@@ -137,64 +140,3 @@ on the common/ library (FtpClient and GlobalURI classes).
 - Widget set* and move, resize makes geometry dirty
 - Handle ScrollBars event only if visible
 
-* v 0.0.5-170
-- Scrollbars now created in ScrollPane
-- Moving Window visible member to widget
-  To be used to hide ScrollBars
-- ScrollPane::setScrollBarsVisbleStatus() implementation
-- ScrollPane::is*ScrollbarNeeded() implemented
-- ScrollPane::getMaxChildRight() and getMaxChildBottom() implemented
-- Skin::getTitlebarHeight implementation
-   used to compute Window::contentCorner
-- TestWindow for Scrollpane
-   X, Y  text inputs and add label button
-- TextInput::getIntValue() implementation
-- Making a enable-scrollpane-test option for configure
-- Fix the Window's button bug
-   Buttons are not in buttonList
-- Window's resizeGrip is drawn below widgets
-   Using reverse iterator
-- Fixing QuadRenderer parent scissor bug
-   Buttons drawns outside window when resizing it
-   Window resize doesn't resize scrollopane
-- Fixing window resizing bugs
-- Fixing window moving bug
-   Scissor rectangle seems to be not recompute
-- Window's content drawn again
-   widget's alpha was always 0 because settransparency() was overriden
-   in ScrollPane with blank implementation (not using Container's 
-   implementation)
-- ScrollPane::draw() implementation
-- Container implementation
-   handles the child widgets events
-- ScrollBarPolicy implementation
-- ScrollPane contains 2 scrollbars   
-- ScrollPane::addWidget implementation
-- Homepage news :
-   [title]Scrollbars implemented
-   [content]Both horizontal and vertical scrollbars have been
-   implemented. Next steps are ScrollPane, MultiColumnList and finally
-   the server list game state. When all these widgets will be done, I
-   will make a new release.
-
-* v 0.0.5-169
-- CurlServerModifClients unit test implementation
-- Active HScrollBar handling
-- HScrollBar::injectMouse() implementation
-- ScrollPane uses QuadRenderer::setUseParentScissor()
-- HScrollBat normal state drawn
-- Documentation update (many undocumented members)
-- Some Window functions become inline
-- VScrollBar changes mouse pointer
-- MousePointer handles VScrollBar images
-- Making images for mouse cursor over VScrollBar
-- VScrollBar work 
-- Fix a bug in the ScrollBar parent handling
-- SkinOverlay renamed Skin
-- Fix some Doxygen warning
-- Trying window's event handles declared inline OK
-- SEGFAULT when whanging gamestate
-- A mouse click on a window set it active and in foreground FIXED
-- Window cannot be moved
-- Some bugfixes when resizing a window
-- Window handle callback using OgreGUICallbackType enumeration values
