@@ -72,8 +72,8 @@ namespace RainbruRPG{
       * The last two ways are customisable by calling setSteps(int, int). This
       * change the incrementation value of these.
       *
-      * \note This abstract cannot be used, please create VScrollBar or 
-      *       HScrollBar.
+      * \note This abstract class cannot be instancied, please create 
+      *       VScrollBar or HScrollBar instances.
       *
       */
     class ScrollBar : public Widget{

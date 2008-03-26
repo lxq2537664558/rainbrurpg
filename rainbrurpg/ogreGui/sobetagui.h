@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 25 mar 2008 : drawMultiColumnList implementation
  * - 22 jan 2008 : drawTextInput implementation using QuadRenderer
  * - 27 sep 2007 : starting implementation
  *         
@@ -43,6 +44,7 @@ namespace RainbruRPG{
     class TextSettings;
     class VScrollBar;
     class HScrollBar;
+    class MultiColumnList;
   }
 }
 // End of forward declarations
@@ -73,6 +75,7 @@ namespace RainbruRPG{
 
       virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* );
       virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* );
+      virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl );
 
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);

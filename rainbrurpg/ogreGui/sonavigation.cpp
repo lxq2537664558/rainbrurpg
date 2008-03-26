@@ -236,3 +236,8 @@ drawHorizontalScrollbar(QuadRenderer* qr, HScrollBar* hs ){
   LOGW("soNavigation cannot draw HorizontalScrollbar");
 
 }
+
+void RainbruRPG::OgreGui::soNavigation::
+drawMultiColumnList(QuadRenderer*, MultiColumnList* ){
+  LOGW("soNavigation cannot draw MultiColumnList");
+}

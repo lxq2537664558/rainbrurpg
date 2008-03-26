@@ -17,6 +17,7 @@ h_sources= bgbutton.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
+	   multicolumnlist.h		\
 	   object.h			\
 	   pushbutton.h			\
 	   quadrenderer.h		\
@@ -50,6 +51,7 @@ cc_sources= bgbutton.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
+	    multicolumnlist.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\

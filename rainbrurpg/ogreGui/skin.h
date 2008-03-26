@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 04 feb 2007 : Class renamed from SkinOverlay to Skin
+ * - 25 mar 2008 : drawMultiColumnList implementation
+ * - 04 feb 2008 : Class renamed from SkinOverlay to Skin
  * - 15 nov 2007 : createBorderWindow implementation
  * - 15 oct 2007 : Skin class removed
  * - 27 sep 2007 : starting implementation
@@ -47,6 +48,7 @@ namespace RainbruRPG{
     class QuadRenderer;
     class VScrollBar;
     class HScrollBar;
+    class MultiColumnList;
   }
 }
 // End of forward declarations
@@ -177,6 +179,8 @@ namespace RainbruRPG{
        *
        */
      virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs )=0;
+
+     virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl )=0;
 
      virtual unsigned int getDialogBorderSize(void);
 

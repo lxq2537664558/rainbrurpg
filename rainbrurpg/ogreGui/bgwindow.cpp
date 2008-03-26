@@ -330,21 +330,32 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   if (mResizeGrip) mResizeGrip->activate(false);
 
   bool inTitleBar=handleMouseMoveCursor(px,py,LMB);
-  handleMouseResizeCursor(px, py, LMB, inTitleBar);
 
   // If we are in titlebar but the mouse button is up, all is done
   if (inTitleBar&&!LMB) return true;
  
   if (mTitleBar){
-    mScrollPane->handleButtonEvent(px, py, corners.left, corners.top,
-				   LMB, this, mTitleBar );
-  }
+    bool btnEvent = mScrollPane
+      ->handleButtonEvent(px, py, corners.left, corners.top,
+			  LMB, this, mTitleBar );
+    
+     if (btnEvent) return true;
+ }
+
+  // Handle resizegrip
+  bool resize=handleMouseResizeCursor(px, py, LMB, inTitleBar);
 
   if (mResizeGrip){
-    mScrollPane->handleButtonEvent(px, py, corners.left, corners.top,
-				   LMB, this, mResizeGrip );
+    bool btnEvent = mScrollPane
+      ->handleButtonEvent(px, py, corners.left, corners.top,
+			  LMB, this, mResizeGrip );
+
+    if (btnEvent) return true;
 
   }
+
+  bool scEvent=mScrollPane->handleScrollBarsEvent(px, py, LMB, this);
+  if (scEvent) return true;
 
   return mScrollPane->handleChildsEvent( px, py, 
 					 LMB, this );

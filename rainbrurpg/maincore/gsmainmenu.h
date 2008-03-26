@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 20 set 2007 : Uses BetaGUI
+ * - 24 mar 2008 : MultiColumnList test window implementation
+ * - 20 sep 2007 : Uses BetaGUI
  * - 22 jul 2007 : Moving the connection menu to gsConnection
  *
  */
@@ -59,8 +60,13 @@ namespace RainbruRPG {
       * - Local test : You play alone to test the rendering engine
       * - Quit
       *
-      * \note A scropane test window is created if the \c configure script
+      * \section gsMainMenu_configure_sec Configure script options
+      *
+      * \note A ScrollPane test window is created if the \c configure script
       *       is called with the \c --enable-scrollp-test option.
+      *
+      * \note A MultiColumnList test window is created if the \c configure 
+      *       script is called with the \c --enable-mcl-test option.
       *
       */
     class gsMainMenu : public gsMenuBase, public BetaGUI::BetaGUIListener{
@@ -88,7 +94,16 @@ namespace RainbruRPG {
       TextInput* tiYPos;
       /** The window to test ScrollPane */
       Window* ScrollPaneTestWin;
+      /** The control window to test ScrollPane */
+      Window* ctrlWin;
 #endif // RB_SCROLLPANE_TEST
+
+#ifdef RB_MULTICOLUMNLIST_TEST
+      void createMultiColumnListTestWindow(void);
+
+      /** The window used to test MultiColumnList widget */
+      Window* MultiColumnListWin;
+#endif // RB_MULTICOLUMNLIST_TEST
 
     private:
       bool onNetworkGameClicked(void);

@@ -137,6 +137,15 @@ void RainbruRPG::OgreGui::Container::draw( QuadRenderer* qr ){
   */
 void RainbruRPG::OgreGui::Container::setTransparency(float f){
   this->alpha=f;
+
+  for (unsigned int i=0;i<widgetList.size();i++){
+    widgetList[i]->setTransparency(f);
+  }
+
+  for (unsigned int i=0;i<textInputList.size();i++){
+    textInputList[i]->setTransparency(f);
+  }
+
   for(unsigned int i=0;i<buttonList.size();i++){
     buttonList[i]->setTransparency(f);
   }
@@ -146,6 +155,13 @@ void RainbruRPG::OgreGui::Container::setGeometryDirty(void){
   makeCorners();
   for(unsigned int i=0;i<widgetList.size();i++){
     widgetList[i]->setGeometryDirty();
+  }
+  for (unsigned int i=0;i<textInputList.size();i++){
+    textInputList[i]->setGeometryDirty();
+  }
+
+  for(unsigned int i=0;i<buttonList.size();i++){
+    buttonList[i]->setGeometryDirty();
   }
 }
 
@@ -212,8 +228,9 @@ handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win ){
 
   // handle button events
   for(unsigned int i=0;i<buttonList.size();i++){
-    return handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
-			      buttonList[i] );
+    bool btn= handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
+				 buttonList[i] );
+    if (btn) return true;
 
   }
 

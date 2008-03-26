@@ -186,6 +186,9 @@
    informations */
 #undef RAINBRU_RPG_DEBUG
 
+/* Defines if the MultiColumnList test window is built */
+#undef RB_MULTICOLUMNLIST_TEST
+
 /* Defines if the scrollpane test window is built */
 #undef RB_SCROLLPANE_TEST
 

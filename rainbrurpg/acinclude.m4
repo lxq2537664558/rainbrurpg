@@ -539,10 +539,9 @@ AC_DEFUN([RB_OPTION_DEBUG],
 #  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
 ])
 
-dnl Define the server Option 
+dnl Define the scrollpane test option
 dnl
-dnl Provides the --enable-server option of the configure script
-dnl By default, the server is disabled
+dnl Provides the --enable-scrollp-test option of the configure script
 dnl
 AC_DEFUN([RB_OPTION_SCROLLPANE_TEST],
 [
@@ -550,12 +549,12 @@ AC_DEFUN([RB_OPTION_SCROLLPANE_TEST],
     [Build a scrollpane test window in the main menu game state. It is only
     a developper option, used during scrollpane implementation.
        (default=no)]),
-    [build_server=$enableval], 
-    [build_server=no])
+    [scrollp_test=$enableval], 
+    [scrollp_test=no])
 
   AC_MSG_CHECKING([if we should build scrollpane test window])
 
-  case $build_server in
+  case $scrollp_test in
     yes)
       scrollpane_test=true
       AC_DEFINE([RB_SCROLLPANE_TEST], [], [Defines if the scrollpane 
@@ -569,4 +568,35 @@ AC_DEFUN([RB_OPTION_SCROLLPANE_TEST],
       ;;
   esac
   AM_CONDITIONAL([RB_SCROLLPANE_TEST], [test x$scrollpane_test = xtrue])
+])
+
+dnl Define the MultiColumnList test option
+dnl
+dnl Provides the --enable-mcl-test option of the configure script
+dnl
+AC_DEFUN([RB_OPTION_MCL_TEST],
+[
+  AC_ARG_ENABLE(mcl-test, AC_HELP_STRING([--enable-mcl-test],
+    [Build a MultiColumnList test window in the main menu game state. It is only
+    a developper option, used during MultiColumnList implementation.
+       (default=no)]),
+    [mcl_test=$enableval], 
+    [mcl_test=no])
+
+  AC_MSG_CHECKING([if we should build MultiColumnList test window])
+
+  case $mcl_test in
+    yes)
+      _mcl_test=true
+      AC_DEFINE([RB_MULTICOLUMNLIST_TEST], [], [Defines if the  MultiColumnList
+      test window is built])
+      AC_DEFINE(RB_MULTICOLUMNLIST_TEST)
+      AC_MSG_RESULT(yes)
+      ;;
+    *)
+      _mcl_test=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+  AM_CONDITIONAL([RB_MULTICOLUMNLIST_TEST], [test x$_mcl_test = xtrue])
 ])

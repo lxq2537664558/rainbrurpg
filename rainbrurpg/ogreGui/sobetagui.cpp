@@ -613,3 +613,12 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
   qr->reset();
 
 }
+
+void RainbruRPG::OgreGui::soBetaGui::
+drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
+  LOGI("soBetaGui::drawMultiColumnList");
+  qr->setBlendMode(QBM_GLOBAL);
+  qr->drawLine(10, 40, 120, 150, Ogre::ColourValue( 1.0f, 0.0f, 0.0f, 1.0f ));
+  qr->reset();
+  
+}

@@ -21,21 +21,17 @@
  */
 
 /* Modifications :
- * - 21 jan 2008 : Removing Overlay references
- * - 16 nov 2007 : setCaption(String) implementation
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- * - 17 oct 2007 : starting implementation
+ * - 24 mar 2008 : Starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_LABEL_H_
-#define _OGRE_GUI_LABEL_H_
-
-#include <OgreVector4.h>
-#include <OgreOverlayContainer.h>
+#ifndef _OGRE_GUI_MULTI_COLUMN_LIST_H_
+#define _OGRE_GUI_MULTI_COLUMN_LIST_H_
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
+
+#include <OgreVector4.h>
 
 // Forward declaration
 namespace BetaGUI {
@@ -53,34 +49,22 @@ using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace OgreGui{
-    /** A simple widget drawing caption 
-      *
-      * This does not provide a frame or background.
+    /** A multi columns list widget
       *
       */
-    class Label : public Widget{
+    class MultiColumnList : public Widget{
     public:
-      Label(Vector4, String, BetaGUI::Window*,
-	   RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
-      ~Label();
+      MultiColumnList(Vector4, BetaGUI::Window*, 
+		      RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
 
-      virtual void setTransparency(float);
-
-      void setCaption(const String&);
-
-      virtual void draw(QuadRenderer* qr);
-
+      virtual void draw(QuadRenderer*);
+ 
     private:
-      /** The caption ofthe label */
-      String mCaption;
-
-      /** The current skin */
+      /** Keeping current skin instance*/
       Skin* mSkin;
 
-      /** This label parent */
-      Window* mParentWindow;
     };
   }
 }
 
-#endif // _OGRE_GUI_LABEL_H_
+#endif // _OGRE_GUI_MULTI_COLUMN_LIST_H_

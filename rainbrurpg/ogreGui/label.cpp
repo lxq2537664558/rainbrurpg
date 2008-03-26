@@ -44,7 +44,6 @@ Label(Vector4 dim, String caption, BetaGUI::Window* parent,
       RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid),
   mCaption(caption),
-  mAplha(0.0f),
   mSkin(NULL)
 {
   mSkin = SkinManager::getSingleton().getSkin(this);
@@ -65,8 +64,8 @@ RainbruRPG::OgreGui::Label::~Label(){
   * \param alpha The new transparency (between 0.0f and 1.0f)
   *
   */
-void RainbruRPG::OgreGui::Label::setTransparency(float alpha){
-  mAplha=alpha;
+void RainbruRPG::OgreGui::Label::setTransparency(float vAlpha){
+  alpha=vAlpha;
 }
 
 /** Changes the caption of this button
@@ -79,5 +78,6 @@ void RainbruRPG::OgreGui::Label::setCaption(const String& s){
 }
 
 void RainbruRPG::OgreGui::Label::draw(QuadRenderer* qr){
+  qr->setAlpha(alpha);
   mSkin->drawLabel(qr, corners, mCaption, mParentWindow);
 }

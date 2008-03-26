@@ -1,7 +1,7 @@
-TODO
+TogODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- SEGFAULT when coming back from gsConnection to gsMainMenu
+- Skin::drawMultiColumnList implementation
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
@@ -79,12 +79,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
    decrease) (ftSize)
 - Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
-* Fil rouge
-- test Valgrind
-  Pour eviter les fuites memoires et autres.
-- manual pages : RainbruRPG.6 RainbruRPG-editor.6 RainbruRPG-server.6
-- texinfo manual : RainbruRPG.texinfo
-
 * Divers
 - modifpersoattrb.php ne teste pas si les champs sont vides, 
   Resultat les champs sont mis a vide.
@@ -104,6 +98,17 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-172
+- (10) MultiColumnList skeleton implementation
+- A new .configure script option that makes a MultiColumnList test window
+- The bootstrap script now test if RainbruRPG.html/ and 
+  RainbruRPG.html/Makefile.am exist
+- ScrollPane test window is now hidden/shown when changing menu
+- ScrollPane handles its childs event itself to handle drawingDev
+- Bugfix : Label was hidden when scrollbars both hidden (Scissor bug)
+- Bugfix : alpha was declared both in Widget and Label
+- QuadRenderer handles drawingDev when drawing text
+- ScrollPane handles ScrollBars events handling
+- Fix a bug in the ResiGrip arrow handling
 
 * v 0.0.5-171
 - GlobalURI unit test imlemented

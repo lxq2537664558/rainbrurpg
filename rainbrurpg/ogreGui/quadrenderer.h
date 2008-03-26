@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 23 frb 2008 : DrawingDev implementation
+ * - 25 mar 2008 : drawLine() implementation
+ * - 23 feb 2008 : DrawingDev implementation
  * - 12 feb 2008 : useParentScissor implementation and documentation
  * - 24 jan 2008 : New text renderer implementation using _setTexture()
  *                 instead of _setPass()
@@ -168,6 +169,8 @@ namespace RainbruRPG {
 
       void debug(const std::string&);
 
+      void drawLine( int, int, int, int, const ColourValue& );
+
     protected:
       void setupHardwareBuffer(void);
       void checkHardwareBuffer(GuiVertex*);
@@ -189,6 +192,8 @@ namespace RainbruRPG {
 
       const Rectangle& translateRectangle(Rectangle&, float, float)const;
       void renderGlyphs(void);
+
+      void getFinalPoint(const Vector3&, Vector3&) const;
 
     private:
       /** The current Ogre scene manager

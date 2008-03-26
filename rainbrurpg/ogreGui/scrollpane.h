@@ -102,6 +102,8 @@ namespace RainbruRPG{
       void horizontalScrollBarValueChange(int);
       void verticalScrollBarValueChange(int);
 
+      bool handleScrollBarsEvent(unsigned int, unsigned int, bool, Window*); 
+      bool handleChildsEvent(unsigned int , unsigned int , bool , Window* ); 
     private:
 
       /** The vertical scrollbar */

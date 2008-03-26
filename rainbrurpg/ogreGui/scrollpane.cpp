@@ -93,6 +93,12 @@ RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
+  /* v0.0.5-172 : This line fix a bug : The label wasn't drawn until scrollbars
+   * was shown. The scissor rectangle was in used when ScrollBar wasn't needed
+   *
+   */
+  qr->disableScissor();
+
   qr->setScissorRectangle(corners);
   qr->setUseParentScissor(true);
 
@@ -345,4 +351,95 @@ void RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange(int i){
   */
 void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
   yDrawingDev=i;
+}
+
+bool RainbruRPG::OgreGui::ScrollPane::
+handleScrollBarsEvent(unsigned int px, unsigned int py, bool LMB, Window* P){
+  unsigned int x=px-P->getLeft();
+  unsigned int y=py-P->getTop();
+
+  bool hEvent=mHScrollBar->injectMouse( x, y, LMB );
+  if (hEvent) return true;
+
+  return mVScrollBar->injectMouse( x, y, LMB );
+}
+
+/** Handle mouse events of childs
+  *
+  * \note This function is reimplemented to handle the xDrawingDev
+  *       and yDrawingDev values.
+  *
+  * \param px, py The mouse pointer position
+  * \param LMB    Is the left mouse button pressed ?
+  * \param win    The window from where the event if fired
+  *
+  * \return \c true if the event is used.
+  *
+  */
+bool RainbruRPG::OgreGui::ScrollPane::
+handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win){
+
+  bool inWindow=win->in(px, py, 0, 0);
+
+  // Handles drawing dev
+  px+=xDrawingDev;
+  py+=yDrawingDev;
+
+  // If we are outside window, we don't handle events
+  if (!inWindow){
+    if(activeButton) activeButton->activate(false);
+    mGUI->getMousePointer()->setState(MPS_ARROW);
+    return false;
+  }
+  
+
+  handleMouseTextCursor(px, py, LMB);
+  handleWidgetMouseEvents(px, py, LMB);
+
+
+  if(activeButton){
+    activeButton->activate(false);
+    activeButton=NULL;
+  }
+     
+  if(activeTextInput){
+    activeTextInput->deactivate();
+    activeTextInput=NULL;
+  }
+
+  // handle button events
+  for(unsigned int i=0;i<buttonList.size();i++){
+    bool btn= handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
+				 buttonList[i] );
+    if (btn) return true;
+
+  }
+
+ 
+  if (!LMB)
+    return true;
+  
+  for(unsigned int i=0;i<textInputList.size();i++){
+    if(textInputList[i]->in( px, py, corners.left, corners.top))
+      continue;
+    
+    /* The current indexed textInputList element is under the mouse
+     * activeTextInput is set as a pointer to it.
+     * And we change its texture to graphically mark it as active.
+     *
+     * We also call the deactivateAllOtherTextInput to get only one
+     * TextInput activated.
+     *
+     */
+    activeTextInput=textInputList[i];
+    activeTextInput->activate();
+    deactivateAllOtherTextInput(activeTextInput);
+    return true;
+  }
+
+  if(activeTextInput){
+    activeTextInput->deactivate();
+  }
+
+  return true;
 }

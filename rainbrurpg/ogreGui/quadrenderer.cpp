@@ -26,6 +26,7 @@
 #include "textsettings.h"
 
 #include <dumpogreobject.h>
+#include <sstream>
 
 /** The renderer constructor
   *
@@ -226,10 +227,10 @@ void RainbruRPG::OgreGui::QuadRenderer::createTexture(){
 void RainbruRPG::OgreGui::QuadRenderer::
 setCorners(int x1, int y1, int x2, int y2){
   if (usingDrawingDev){
-    x1+=xDrawingDev;
-    y1+=yDrawingDev;
-    x2+=xDrawingDev;
-    y2+=yDrawingDev;
+    x1-=xDrawingDev;
+    y1-=yDrawingDev;
+    x2-=xDrawingDev;
+    y2-=yDrawingDev;
   }
 
   finalRect.left  =xPixelToNative(x1);
@@ -437,7 +438,6 @@ drawText(TextSettings* vSettings, const string& text, const Rectangle& rect,
 	 bool wordwrap){
 
   beginGlyphs();
-  //  mRenderSystem->_setTexture(0, true, vSettings->getFont()->getTexture());
   vSettings->renderAligned( this, text, rect, wordwrap);
   endGlyphs( );
   
@@ -596,9 +596,19 @@ buildUV( const Rectangle& vIn, vector<Vector2>* vOut ) const{
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 buildVertices( const Rectangle& vIn, vector<OgreGui::Vector3>* vOut ) const{
+
+  Rectangle devRect=vIn;
+  if (usingDrawingDev){
+    devRect.left   -= xDrawingDev;
+    devRect.top    -= yDrawingDev;
+    devRect.right  -= xDrawingDev;
+    devRect.bottom -= yDrawingDev;
+  }
+
   // Calculate final screen rectangle
   Rectangle finalRect;
-  getFinalRect( vIn, finalRect );
+  getFinalRect( devRect, finalRect );
+
 
   // Setup the coordinates for the quad
   vOut->push_back(Vector3( finalRect.left, finalRect.bottom, 0.0f ));
@@ -932,28 +942,71 @@ void RainbruRPG::OgreGui::QuadRenderer::disableDrawingDev(void){
   */
 void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
   // Intro
-  std::string s="QuadRenderer::debug() called from ";
-  s+=from;
-  LOGI(s.c_str());
+  ostringstream s;
+  s << "QuadRenderer::debug() called from " << from << endl;
 
   // DrawingDev
-  LOGCATS("usingDrawingDev : ");
-  LOGCATB(usingDrawingDev);
-  LOGCAT();
+  s << "usingDrawingDev : " << usingDrawingDev << endl;
   
    // DrawingDev
-  LOGCATS("using scrissor rectangle : ");
-  LOGCATB(useScissor);
-  LOGCAT();
+  s << "using scrissor rectangle : " << useScissor << endl;
  
    // ParentScissor
-  LOGCATS("using parent scrissor : ");
-  LOGCATB(useParentScissor);
-  LOGCAT();
+  s << "using parent scrissor : " << useParentScissor << endl;
  
   // alpha
-  LOGCATS("Alpha value :");
-  LOGCATF(alphaValue);
-  LOGCAT();
+  s << "Alpha value :" << alphaValue << endl;
 
+  LOGI(s.str().c_str());
+
+}
+
+void RainbruRPG::OgreGui::QuadRenderer::
+getFinalPoint(const Vector3& vIn, Vector3& vOut) const{
+  vOut.setX( xPixelToNative( vIn.getX() ) );
+  vOut.setY( yPixelToNative( vIn.getY() ) );
+  vOut.setZ( Z_VALUE );
+}
+
+
+void RainbruRPG::OgreGui::QuadRenderer::
+drawLine( int x1, int y1, int x2, int y2, const ColourValue& vColor ){
+
+  mColor = vColor;
+  /*  mColor.r = vColor.r;
+  mColor.g = vColor.g;
+  mColor.b = vColor.b;
+  */
+  mColor.a = alphaValue;
+  
+  Vector3 pointA_in( x1, y1, Z_VALUE );
+  Vector3 pointB_in( x2, y2, Z_VALUE );
+  Vector3 pointA, pointB;
+
+  getFinalPoint( pointA_in, pointA );
+  getFinalPoint( pointB_in, pointB );
+
+  // Lock buffer
+  GuiVertex* data = (GuiVertex*)mBuffer
+    ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+
+  // Write line
+  data[0].setPosition( pointA );
+  data[0].setColor( mColor );
+  data[0].setUvMapping(Vector2());
+  
+  data[1].setPosition( pointB );
+  data[1].setColor( mColor );
+  data[1].setUvMapping(Vector2());
+	
+  // All done
+  mBuffer->unlock( );
+
+  // Render
+  mRenderOp.vertexData->vertexCount = 2;
+  mRenderOp.operationType = Ogre::RenderOperation::OT_LINE_LIST;
+  mRenderSystem->_render( mRenderOp );
+
+  // Reset operation type
+  mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
 }

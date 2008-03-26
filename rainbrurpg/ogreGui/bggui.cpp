@@ -407,6 +407,7 @@ void BetaGUI::GUI::drawBeforeOverlay(){
     // Each Window should call reset() itself
     (*iter)->draw(mQuadRenderer);
   }
+  
   mQuadRenderer->end();
 }
 

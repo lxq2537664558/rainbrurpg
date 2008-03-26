@@ -1,6 +1,18 @@
-#copy the htmlMakefile.am
-mkdir RainbruRPG.html/
-cp htmlMakefile.am  RainbruRPG.html/Makefile.am
+#!/bin/bash
+
+# Creates the RainbruRPG.html/ directory if needed
+if [ ! -d RainbruRPG.html ]; then
+   mkdir RainbruRPG.html/
+else
+   echo "RainbruRPG.html/ doesn't need to be created"	
+fi
+
+# Copy the htmlMakefile.am if needed
+if [  ! -e RainbruRPG.html/Makefile.am ]; then
+   cp htmlMakefile.am  RainbruRPG.html/Makefile.am
+else
+   echo "RainbruRPG.html/Makefile.am doesn't need to be copied"	
+fi
 
 # setting up compilation for GNU/Linux
 cp configure.in.linux configure.in

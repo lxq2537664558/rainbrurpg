@@ -63,9 +63,9 @@ am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	bgwindow.lo container.lo font.lo fontmanager.lo glyph.lo \
 	guivertex.lo hscrollbar.lo label.lo lineinfo.lo \
-	mousepointer.lo object.lo pushbutton.lo quadrenderer.lo \
-	renderqueuelistener.lo resizegrip.lo scrollbar.lo \
-	scrollpane.lo skinmanager.lo skin.lo sobetagui.lo \
+	mousepointer.lo multicolumnlist.lo object.lo pushbutton.lo \
+	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
+	scrollbar.lo scrollpane.lo skinmanager.lo skin.lo sobetagui.lo \
 	sonavigation.lo staticimage.lo textsettings.lo titlebar.lo \
 	vector3.lo vscrollbar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
@@ -172,6 +172,8 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 RANLIB = @RANLIB@
+RB_MULTICOLUMNLIST_TEST_FALSE = @RB_MULTICOLUMNLIST_TEST_FALSE@
+RB_MULTICOLUMNLIST_TEST_TRUE = @RB_MULTICOLUMNLIST_TEST_TRUE@
 RB_OPTION_ALL_FLAGS_FALSE = @RB_OPTION_ALL_FLAGS_FALSE@
 RB_OPTION_ALL_FLAGS_TRUE = @RB_OPTION_ALL_FLAGS_TRUE@
 RB_OPTION_EDITOR_FLAGS_FALSE = @RB_OPTION_EDITOR_FLAGS_FALSE@
@@ -255,6 +257,7 @@ h_sources = bgbutton.h			\
 	   label.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
+	   multicolumnlist.h		\
 	   object.h			\
 	   pushbutton.h			\
 	   quadrenderer.h		\
@@ -287,6 +290,7 @@ cc_sources = bgbutton.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
+	    multicolumnlist.cpp		\
 	    object.cpp			\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\
@@ -405,6 +409,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlist.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pushbutton.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quadrenderer.Plo@am__quote@

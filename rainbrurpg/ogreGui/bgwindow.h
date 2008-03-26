@@ -146,16 +146,21 @@ namespace BetaGUI {
 					bool inTitleBar){
       // Handle mouse resize cursor 
       // Do not set again MPS_ARROW if we are in TitleBar.
-      if (mResizeGrip && !inTitleBar){
-	if (mResizeGrip->in(px, py, corners.left, corners.top)){
-	  mGUI->getMousePointer()->setState(MPS_RESIZE);
-	  this->mResizeGrip->activate(true);
-	  return true;
-	}
-	else{
-	  mGUI->getMousePointer()->setState(MPS_ARROW);
-	  this->mResizeGrip->activate(false);
-	  return false;
+      if (inTitleBar){
+	return false;
+      }
+      else{
+	if (mResizeGrip){
+	  if (mResizeGrip->in(px, py, corners.left, corners.top)){
+	    mGUI->getMousePointer()->setState(MPS_RESIZE);
+	    this->mResizeGrip->activate(true);
+	    return true;
+	  }
+	  else{
+	    mGUI->getMousePointer()->setState(MPS_ARROW);
+	    this->mResizeGrip->activate(false);
+	    return false;
+	  }
 	}
       }
     } 

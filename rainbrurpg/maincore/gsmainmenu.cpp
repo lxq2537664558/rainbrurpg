@@ -31,6 +31,7 @@
 #include "vscrollbar.h"
 #include "hscrollbar.h"
 #include "scrollpane.h"
+#include "multicolumnlist.h"
 #include "label.h"
 
 #include <OgreViewport.h>
@@ -42,14 +43,22 @@ using namespace RainbruRPG::OgreGui;
   * Constructs a new velocity and begin a translation to 0.0f.
   *
   */
-RainbruRPG::Core::gsMainMenu::gsMainMenu()
-  :gsMenuBase(true){
+RainbruRPG::Core::gsMainMenu::gsMainMenu():
+  gsMenuBase(true),
+  window(NULL)
+#ifdef RB_SCROLLPANE_TEST
+  ,ScrollPaneTestWin(NULL)
+  ,ctrlWin(NULL)
+#endif // RB_SCROLLPANE_TEST
+#ifdef RB_MULTICOLUMNLIST_TEST
+  ,MultiColumnListWin(NULL)
+#endif // RB_MULTICOLUMNLIST_TEST
+{
 
   LOGI("Constructing a gsMainMenu");
   velocity=new vcConstant();
   //  translateTo(0.0f);
 
-  window=NULL;
 }
 
 /** The default destructor
@@ -178,6 +187,9 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
   createScrollPaneTestWindow();
 #endif // RB_SCROLLPANE_TEST
 
+#ifdef RB_MULTICOLUMNLIST_TEST
+  createMultiColumnListTestWindow();
+#endif // RB_MULTICOLUMNLIST_TEST
 
 }
 
@@ -216,6 +228,12 @@ void RainbruRPG::Core::gsMainMenu::pause(){
     delete window;
     window=NULL;
   }
+
+#ifdef RB_SCROLLPANE_TEST
+  if (ScrollPaneTestWin) ScrollPaneTestWin->hide();
+  if (ctrlWin) ctrlWin->hide();
+#endif // RB_SCROLLPANE_TEST
+
 }
 
 #ifdef RB_SCROLLPANE_TEST
@@ -234,37 +252,48 @@ void RainbruRPG::Core::gsMainMenu::createScrollPaneTestWindow(void){
   // ScrollPane test window
   LOGI("Creating ScrollPaneTestWindow");
   BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
-  ScrollPaneTestWin =new Window(Vector4(10, 10, 300, 300),
-		      BetaGUI::OWT_RESIZE_AND_MOVE, "Scrollpane test", mGUI);
-  mGUI->addWindow(ScrollPaneTestWin);
+  if (!ScrollPaneTestWin){
+    ScrollPaneTestWin =new Window(Vector4(10, 10, 300, 300),
+				  BetaGUI::OWT_RESIZE_AND_MOVE, 
+				  "Scrollpane test", mGUI);
+    mGUI->addWindow(ScrollPaneTestWin);
+  }
+  else{
+    ScrollPaneTestWin->show();
+  }
 
-  // Control window
-  Window* ctrlWin=new Window(Vector4(10, 310, 300, 90),
-			     BetaGUI::OWT_RESIZE_AND_MOVE, 
-			     "Control window", mGUI);
-  mGUI->addWindow(ctrlWin);
+  if (!ctrlWin){
+    // Control window
+    ctrlWin=new Window(Vector4(10, 310, 300, 90),
+		       BetaGUI::OWT_RESIZE_AND_MOVE, 
+		       "Control window", mGUI);
+    mGUI->addWindow(ctrlWin);
 
-  Vector4 labPosDim(10,30,50,20);
-  Label* labPos=new Label(labPosDim, "Label position", ctrlWin);
-  ctrlWin->addWidget(labPos);
-
-  Vector4 tiXPosDim(120,30,50,20);
-  tiXPos=new TextInput(tiXPosDim, "", 5, ctrlWin);
-  ctrlWin->addWidget(tiXPos);
-
-  Vector4 tiYPosDim(180,30,50,20);
-  tiYPos=new TextInput(tiYPosDim, "", 5, ctrlWin);
-  ctrlWin->addWidget(tiYPos);
-
-  btnAddLabel = new PushButton(Vector4(80,60,160,24),
+    Vector4 labPosDim(10,30,50,20);
+    Label* labPos=new Label(labPosDim, "Label position", ctrlWin);
+    ctrlWin->addWidget(labPos);
+    
+    Vector4 tiXPosDim(120,30,50,20);
+    tiXPos=new TextInput(tiXPosDim, "", 5, ctrlWin);
+    ctrlWin->addWidget(tiXPos);
+    
+    Vector4 tiYPosDim(180,30,50,20);
+    tiYPos=new TextInput(tiYPosDim, "", 5, ctrlWin);
+    ctrlWin->addWidget(tiYPos);
+    
+    btnAddLabel = new PushButton(Vector4(80,60,160,24),
 				 "Add label", 
-			 BetaGUI::Callback::Callback(this), ctrlWin);
-  ctrlWin->addWidget(btnAddLabel);
+				 BetaGUI::Callback::Callback(this), ctrlWin);
+    ctrlWin->addWidget(btnAddLabel);
+  }
+  else{
+    ctrlWin->show();
+  }
 }
 
 /** Adds a label to the ScrollPane test window
   *
-  * \note This function is built only if the \c RB_SCROLLPANE_TEST is
+  * \note This function is built only if the \c RB_SCROLLPANE_TEST macro is
   *       define using the \c configure script. Please see 
   *       \ref RainbruRPG::Core::gsMainMenu "gsMainMenu"
   *       for more information.
@@ -284,3 +313,35 @@ void RainbruRPG::Core::gsMainMenu::onAddLabel(void){
 }
 
 #endif // RB_SCROLLPANE_TEST
+
+#ifdef RB_MULTICOLUMNLIST_TEST
+/** Adds a label to the ScrollPane test window
+  *
+  * \note This function is built only if the \c  RB_MULTICOLUMNLIST_TEST
+  *       macro is define using the \c configure script. Please see 
+  *       \ref RainbruRPG::Core::gsMainMenu "gsMainMenu"
+  *       for more information.
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
+  // Only built if the RB_MULTICOLUMNLIST_TEST macro is defined
+  // ScrollPane test window
+  LOGI("Creating MultiColumnListTestWindow");
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+  if (!MultiColumnListWin){
+    MultiColumnListWin =new Window(Vector4(10, 10, 340, 370),
+				  BetaGUI::OWT_RESIZE_AND_MOVE, 
+				  "MultiColumnList test", mGUI);
+    mGUI->addWindow(MultiColumnListWin);
+
+    Vector4 labPosDim(10,30,50,20);
+    MultiColumnList* mcl=new MultiColumnList(labPosDim, MultiColumnListWin);
+    MultiColumnListWin->addWidget(mcl);
+
+  }
+  else{
+    MultiColumnListWin->show();
+  }
+
+}
+#endif // RB_MULTICOLUMNLIST_TEST
