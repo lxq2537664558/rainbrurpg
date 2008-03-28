@@ -61,7 +61,7 @@ RainbruRPG::OgreGui::Label::~Label(){
 
 /** Change the transparency of this label
   *
-  * \param alpha The new transparency (between 0.0f and 1.0f)
+  * \param vAlpha The new transparency (between 0.0f and 1.0f)
   *
   */
 void RainbruRPG::OgreGui::Label::setTransparency(float vAlpha){

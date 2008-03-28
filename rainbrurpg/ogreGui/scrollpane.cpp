@@ -353,6 +353,15 @@ void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
   yDrawingDev=i;
 }
 
+/** Handles the scrollbars events
+  *
+  * \param px, py The mouse position in pixels
+  * \param LMB    The mouse bitton state
+  * \param P      The parent window
+  *
+  * \return \c true if the event is used
+  *
+  */
 bool RainbruRPG::OgreGui::ScrollPane::
 handleScrollBarsEvent(unsigned int px, unsigned int py, bool LMB, Window* P){
   unsigned int x=px-P->getLeft();

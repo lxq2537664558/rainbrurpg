@@ -97,8 +97,29 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-173
+
 * v 0.0.5-172
-- (10) MultiColumnList skeleton implementation
+- Documentation update
+- MultiColumnListItem implementation
+-  Drawing MultiColumnList header caption
+- MultiColumnListColumn implementation
+- QuadRenderer::getFinalPoint handles DrawingDev
+  It is used when drawing lines.
+- QuadRenderer::drawRectangleLines() implementation
+- HomePage news :
+  [Title]Implementing MultiColumnList
+  [Content]As the ScrollPane widget implementation is finished, I'm
+  now working on the MultiColumnList's one. This complex widget will 
+  certainly takes me several weeks but it is the last step before the 
+  implementation of the server list game state which is the goal of 
+  the 0.0.6 release.
+- QuadRenderer::addLines() implementation
+  With needed functions (beginLines() and endLines())
+- QuadRenderer::drawLine() color bug fixed
+  QuadRenderer::reset() now set the default texture. It was the
+  drawLine() color bug reason.
+- MultiColumnList skeleton implementation
 - A new .configure script option that makes a MultiColumnList test window
 - The bootstrap script now test if RainbruRPG.html/ and 
   RainbruRPG.html/Makefile.am exist

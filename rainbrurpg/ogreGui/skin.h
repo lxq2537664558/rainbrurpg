@@ -180,6 +180,12 @@ namespace RainbruRPG{
        */
      virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs )=0;
 
+     /** Draws a MultiColumnList
+       *
+       * \param qr  The QuadRenderer used to draw
+       * \param mcl The MultiColumnList to draw
+       *
+       */
      virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl )=0;
 
      virtual unsigned int getDialogBorderSize(void);

@@ -237,7 +237,15 @@ drawHorizontalScrollbar(QuadRenderer* qr, HScrollBar* hs ){
 
 }
 
+/** Draws nothing
+  *
+  * The navigation skin does not provide MultiColumnList.
+  *
+  * \param qr  The QuadRenderer object
+  * \param mcl The MultiColumnList to draw
+  *
+  */
 void RainbruRPG::OgreGui::soNavigation::
-drawMultiColumnList(QuadRenderer*, MultiColumnList* ){
+drawMultiColumnList(QuadRenderer* qr, MultiColumnList* mcl){
   LOGW("soNavigation cannot draw MultiColumnList");
 }

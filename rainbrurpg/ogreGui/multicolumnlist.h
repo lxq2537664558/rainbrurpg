@@ -32,6 +32,9 @@
 #include "skinmanager.h" // For OgreGuiSkinID
 
 #include <OgreVector4.h>
+#include <string>
+#include <vector>
+#include <list>
 
 // Forward declaration
 namespace BetaGUI {
@@ -41,6 +44,8 @@ namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
     class Skin;
+    class MultiColumnListColumn;
+    class MultiColumnListItem;
   }
 }
 // End of Forward declaration
@@ -49,6 +54,13 @@ using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace OgreGui{
+
+    /** The list of column */
+    typedef std::vector<MultiColumnListColumn*> tMultiColumnListColumnList;
+
+    /** The list of item */
+    typedef std::list<MultiColumnListItem*> tMultiColumnListItemList;
+
     /** A multi columns list widget
       *
       */
@@ -57,12 +69,32 @@ namespace RainbruRPG{
       MultiColumnList(Vector4, BetaGUI::Window*, 
 		      RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
 
+      void addColumn( const std::string&, int );
+      void addItem( MultiColumnListItem* );
+
       virtual void draw(QuadRenderer*);
  
+      const tMultiColumnListColumnList& getColumnList(void);
+      const tMultiColumnListItemList& getItemList(void);
+      const Ogre::Rectangle& getAbsoluteCorners(void);
+
+      int getHeaderHeight(void)const;
+
+    protected:
+      void makeCorners(void);
+
     private:
       /** Keeping current skin instance*/
       Skin* mSkin;
+      /** The height of the header in pixels */
+      int mHeaderHeight;
 
+      /** The absolute corners (from the screen start) */
+      Ogre::Rectangle mAbsCorners;
+      /** The column list */
+      tMultiColumnListColumnList mColumnList;
+      /** The item list */
+      tMultiColumnListItemList mItemList;
     };
   }
 }

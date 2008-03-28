@@ -402,6 +402,8 @@ void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
   * \ref RainbruRPG::OgreGui::QuadRenderer::uvs "uvs",
   * \ref RainbruRPG::OgreGui::QuadRenderer::cols "cols").
   * 
+  * Since v0.0.5-172, mTexture is set as current texture to avoid
+  * heavy bugs in color when drawing lines.
   *
   * \note Should be called between two draw().
   *
@@ -410,6 +412,7 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   useScissor=false;
   mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
+  mRenderSystem->_setTexture(0, true, mTexture );
 
   vert.clear();
   uvs.clear();
@@ -528,7 +531,6 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
   }
   else{
     buildUV( vUV, &uv );
-
   }
 
   // Write the quad to the buffer
@@ -875,6 +877,7 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
 
   mRenderSystem->_render( mRenderOp );
 
+  disableScissor();
 }
 
 /** Set the parent scissor 
@@ -944,41 +947,50 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
   // Intro
   ostringstream s;
   s << "QuadRenderer::debug() called from " << from << endl;
-
-  // DrawingDev
   s << "usingDrawingDev : " << usingDrawingDev << endl;
-  
-   // DrawingDev
   s << "using scrissor rectangle : " << useScissor << endl;
- 
-   // ParentScissor
   s << "using parent scrissor : " << useParentScissor << endl;
- 
-  // alpha
   s << "Alpha value :" << alphaValue << endl;
 
   LOGI(s.str().c_str());
 
 }
 
+/** Get a point in native coordonate from pixels values
+  *
+  * \param vIn  The pixels vector
+  * \param vOut The native coordonate vector
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::
 getFinalPoint(const Vector3& vIn, Vector3& vOut) const{
-  vOut.setX( xPixelToNative( vIn.getX() ) );
-  vOut.setY( yPixelToNative( vIn.getY() ) );
-  vOut.setZ( Z_VALUE );
+
+  if (usingDrawingDev){
+    vOut.setX( xPixelToNative( vIn.getX() - xDrawingDev ) );
+    vOut.setY( yPixelToNative( vIn.getY() - yDrawingDev ) );
+  }
+  else{
+    vOut.setX( xPixelToNative( vIn.getX() ) );
+    vOut.setY( yPixelToNative( vIn.getY() ) );
+  }
+  vOut.setZ( vIn.getZ() );
 }
 
-
+/** Draws a single line
+  *
+  * \param x1, y1 First point coordonates in pixels
+  * \param x2, y2 Second point in pixels
+  * \param vColor The line color
+  *
+  */
 void RainbruRPG::OgreGui::QuadRenderer::
 drawLine( int x1, int y1, int x2, int y2, const ColourValue& vColor ){
+  setBlendMode(QBM_GLOBAL);
+  mRenderSystem->_setTexture(0, true, mTexture );
 
   mColor = vColor;
-  /*  mColor.r = vColor.r;
-  mColor.g = vColor.g;
-  mColor.b = vColor.b;
-  */
-  mColor.a = alphaValue;
-  
+  mColor.a=alphaValue;
+
   Vector3 pointA_in( x1, y1, Z_VALUE );
   Vector3 pointB_in( x2, y2, Z_VALUE );
   Vector3 pointA, pointB;
@@ -1005,8 +1017,130 @@ drawLine( int x1, int y1, int x2, int y2, const ColourValue& vColor ){
   // Render
   mRenderOp.vertexData->vertexCount = 2;
   mRenderOp.operationType = Ogre::RenderOperation::OT_LINE_LIST;
+
   mRenderSystem->_render( mRenderOp );
 
   // Reset operation type
   mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+}
+
+/** Start to draw several lines
+  *
+  * You must call this function before using addLine(). Please be sure
+  * to call endLines() after.
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::beginLines(void){
+  if ( mBatchPointer == 0 ){
+    mBatchPointer = (GuiVertex*)mBuffer
+      ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+    mBatchCount = 0;
+  }
+}
+
+/** Add a line to be drawn
+  *
+  * The added line will be drawn when endLines() will be called. Please
+  * be sure to call beginLines() before using this function.
+  *
+  * \param x1, y1 First point coordonates in pixels
+  * \param x2, y2 Second point in pixels
+  * \param vColor The line color
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+addLine( int x1, int y1, int x2, int y2, const ColourValue& vColor){
+  // Map points to screen space
+  Vector3 pointA_in( x1, y1, Z_VALUE );
+  Vector3 pointB_in( x2, y2, Z_VALUE );
+  Vector3 pointA, pointB;
+
+  getFinalPoint( pointA_in, pointA );
+  getFinalPoint( pointB_in, pointB );
+
+  mColor = vColor;
+  mColor.a=alphaValue;
+
+  // Write line
+  mBatchPointer[0].setPosition( pointA );
+  mBatchPointer[0].setColor( mColor );
+  mBatchPointer[0].setUvMapping(Vector2());
+  
+  mBatchPointer[1].setPosition( pointB );
+  mBatchPointer[1].setColor( mColor );
+  mBatchPointer[1].setUvMapping(Vector2());
+
+
+  // Advance glyph pointer
+  mBatchPointer += 2;
+
+  // Increase glyph count
+  mBatchCount += 1;
+
+  // See if we're over the limit...
+  if ( mBatchCount >= (VERTEX_COUNT/2) ){
+    // First unlock the buffer
+    mBuffer->unlock( );
+
+    // Render whats in the buffer
+    renderLines( );
+
+    // Re-lock buffer
+    mBatchPointer = (GuiVertex*)mBuffer
+      ->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+	
+    // Reset glyph count
+    mBatchCount = 0;
+  }
+}
+
+/** Finally draw several lines
+  *
+  * After a call to beginLines() and some addLine() calls, use
+  * this function to finally render the added lines.
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::endLines(void){
+  if ( mBatchPointer != 0 ){
+    mBuffer->unlock( );
+
+    if ( mBatchCount > 0 )
+      renderLines( );
+
+    mBatchPointer = 0;
+    mBatchCount = 0;
+  }
+}
+
+/** Render some lines
+  *
+  * Used by endLines() to fire the rendering operation.
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::renderLines(void){
+
+  // Render!
+  mRenderOp.vertexData->vertexCount = mBatchCount * 2;
+  mRenderOp.operationType = Ogre::RenderOperation::OT_LINE_LIST;
+  mRenderSystem->_render( mRenderOp );
+
+  // Reset operation type
+  mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+}
+
+/** Draw a rectangle
+  *
+  * \param vRect  The rectangle to draw
+  * \param vColor The lines color
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+drawRectangleLines( const Rectangle& vRect, const ColourValue& vColor ){
+
+  beginLines( );
+  addLine( vRect.left, vRect.top , vRect.right,  vRect.top,  vColor );
+  addLine( vRect.left, vRect.top , vRect.left, vRect.bottom, vColor );
+  addLine( vRect.left, vRect.bottom, vRect.right,  vRect.bottom, vColor );
+  addLine( vRect.right,  vRect.top , vRect.right,  vRect.bottom, vColor );
+  endLines( );
 }

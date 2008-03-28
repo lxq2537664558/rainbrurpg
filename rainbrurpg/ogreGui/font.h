@@ -72,9 +72,9 @@ namespace RainbruRPG{
       *
       */
     typedef enum HorizontalAlignType{
-      HAT_LEFT,   // The text is horizontaly aligned to the left
-      HAT_RIGHT,  // The text is horizontaly aligned to the right
-      HAT_CENTER  // The text is horizontaly centered
+      HAT_LEFT,   //!< The text is horizontaly aligned to the left
+      HAT_RIGHT,  //!< The text is horizontaly aligned to the right
+      HAT_CENTER  //!< The text is horizontaly centered
     };
 
     /** A font used with QuadRenderer

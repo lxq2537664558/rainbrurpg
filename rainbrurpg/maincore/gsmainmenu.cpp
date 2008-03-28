@@ -32,6 +32,7 @@
 #include "hscrollbar.h"
 #include "scrollpane.h"
 #include "multicolumnlist.h"
+#include "multicolumnlistitem.h"
 #include "label.h"
 
 #include <OgreViewport.h>
@@ -334,10 +335,26 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
 				  "MultiColumnList test", mGUI);
     mGUI->addWindow(MultiColumnListWin);
 
-    Vector4 labPosDim(10,30,50,20);
+    Vector4 labPosDim(10,30,320,330);
     MultiColumnList* mcl=new MultiColumnList(labPosDim, MultiColumnListWin);
     MultiColumnListWin->addWidget(mcl);
 
+    mcl->addColumn( "Col1", 60 );
+    mcl->addColumn( "Column2", 100 );
+    mcl->addColumn( "Column3", 140 );
+
+    // Adding item 1
+    MultiColumnListItem* it1=new MultiColumnListItem();
+    it1->setText(0, "IT1ST1");
+    it1->setText(1, "IT1ST2");
+    it1->setText(2, "IT1ST3");
+    mcl->addItem(it1);
+
+    MultiColumnListItem* it2=new MultiColumnListItem();
+    it2->setText(0, "Khean");
+    it2->setText(1, "Carine");
+    it2->setText(2, "Jerome");
+    mcl->addItem(it2);
   }
   else{
     MultiColumnListWin->show();

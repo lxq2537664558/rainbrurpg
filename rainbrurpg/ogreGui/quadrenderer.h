@@ -171,6 +171,12 @@ namespace RainbruRPG {
 
       void drawLine( int, int, int, int, const ColourValue& );
 
+      void beginLines(void);
+      void addLine( int, int, int, int, const ColourValue& );
+      void endLines(void);
+
+      void drawRectangleLines( const Rectangle&, const ColourValue& );
+
     protected:
       void setupHardwareBuffer(void);
       void checkHardwareBuffer(GuiVertex*);
@@ -194,6 +200,8 @@ namespace RainbruRPG {
       void renderGlyphs(void);
 
       void getFinalPoint(const Vector3&, Vector3&) const;
+
+      void renderLines(void);
 
     private:
       /** The current Ogre scene manager

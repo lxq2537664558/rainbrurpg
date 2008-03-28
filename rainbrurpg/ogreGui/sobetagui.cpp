@@ -29,6 +29,9 @@
 #include "textsettings.h"
 #include "vscrollbar.h"
 #include "hscrollbar.h"
+#include "multicolumnlist.h"
+#include "multicolumnlistcolumn.h"
+#include "multicolumnlistitem.h"
 
 #include <logger.h>
 
@@ -614,11 +617,102 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
 }
 
+/** Draws a MultiColumnList
+  *
+  * \param qr  The QuadRenderer used to draw
+  * \param mcl The MultiColumnList to draw
+  *
+  */
 void RainbruRPG::OgreGui::soBetaGui::
 drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
-  LOGI("soBetaGui::drawMultiColumnList");
-  qr->setBlendMode(QBM_GLOBAL);
-  qr->drawLine(10, 40, 120, 150, Ogre::ColourValue( 1.0f, 0.0f, 0.0f, 1.0f ));
-  qr->reset();
+  // Text setting for column header
+  TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
+						    10, 1.0f, 1.0f, 1.0f );
+
+  tsMclColumnHeader->setHorizontalAlignment(HAT_CENTER);
+  tsMclColumnHeader->setVerticalAlignment(VAT_CENTER);
+
+  // Drawing list rectangle
+  Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
+  Ogre::Rectangle r=mcl->getAbsoluteCorners();
+  qr->drawRectangleLines(r,c);
   
+  //Header bottom line
+  int hbl = r.top+mcl->getHeaderHeight();
+  qr->drawLine( r.left, hbl, r.right, hbl, c ); 
+
+  // Drawing columns header
+  tMultiColumnListColumnList colList=mcl->getColumnList();
+  tMultiColumnListColumnList::const_iterator iter;
+  
+  int x=r.left;
+  int y1=r.top;
+  int y2=r.bottom;
+
+  Ogre::Rectangle columnCaption(r);
+  Ogre::Rectangle headerBG;
+  Ogre::ColourValue headerBGColor( 0.4f, 0.4f, 0.8f );
+# define HEADER_BG_SPACE 2
+  columnCaption.bottom=columnCaption.top + mcl->getHeaderHeight();
+  headerBG.top    = columnCaption.top    + HEADER_BG_SPACE;
+  headerBG.bottom = columnCaption.bottom - HEADER_BG_SPACE;
+
+  for(iter = colList.begin();iter != colList.end(); iter++){
+    // Header background andcaption
+    columnCaption.left  = x;
+    columnCaption.right = x + (*iter)->getWidth();
+    headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
+    headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
+    qr->drawFilledRectangle( headerBG, headerBGColor );
+    qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
+
+    // Left line
+    x+=(*iter)->getWidth();
+    qr->drawLine( x, y1, x, y2, c );
+    
+    //    qr->reset();
+  }
+  
+  // drawing items
+  tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
+
+  tMultiColumnListItemList itemList=mcl->getItemList();
+  tMultiColumnListItemList::const_iterator ili;
+  tMclItemList mil;
+  tMclItemList::const_iterator mii;
+  Ogre::Rectangle itemRect(r);
+  itemRect.left=r.left+5;
+  itemRect.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
+  itemRect.bottom=itemRect.top+20;
+  itemRect.right=itemRect.left+colList[0]->getWidth();
+
+  int colId=0;
+
+  for (ili = itemList.begin(); ili != itemList.end(); ili++){
+    mil=(*ili)->getItemList();
+
+
+    for (mii=mil.begin(); mii != mil.end(); mii++){
+      if ((*mii)->isText){
+	qr->drawText(tsMclColumnHeader, (*mii)->text, itemRect, true);
+	itemRect.left+=colList[colId]->getWidth();
+	if (colId+1 < colList.size()){
+	  itemRect.right=itemRect.left + colList[colId+1]->getWidth();
+	}
+	else{
+	  itemRect.right = columnCaption.right;
+	}
+	colId++;
+      }
+    }
+    colId=0;
+    itemRect.left=r.left+5;
+    itemRect.right=itemRect.left+colList[0]->getWidth();
+    itemRect.top+=20;
+    itemRect.bottom=itemRect.top+20;
+   
+
+  }
+
+  qr->reset();
 }
