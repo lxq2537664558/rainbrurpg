@@ -59,7 +59,7 @@ namespace RainbruRPG{
     typedef std::vector<MultiColumnListColumn*> tMultiColumnListColumnList;
 
     /** The list of item */
-    typedef std::list<MultiColumnListItem*> tMultiColumnListItemList;
+    typedef std::vector<MultiColumnListItem*> tMultiColumnListItemList;
 
     /** A multi columns list widget
       *
@@ -80,6 +80,10 @@ namespace RainbruRPG{
 
       int getHeaderHeight(void)const;
 
+      virtual bool injectMouse(	unsigned int, unsigned int, bool );
+
+      int getLastColumnRight(void)const;
+
     protected:
       void makeCorners(void);
 
@@ -95,6 +99,16 @@ namespace RainbruRPG{
       tMultiColumnListColumnList mColumnList;
       /** The item list */
       tMultiColumnListItemList mItemList;
+      MultiColumnListColumn* selectedColumn;
+      MultiColumnListItem* mouseOveredItem;
+      MultiColumnListItem* selectedItem;
+      /** The last column X position
+        *
+	* This value is used To draw item mouse over rectangle. To
+	* speed up drawing, it is pre-computed in makeCorners().
+	*
+	*/
+      int mLastColumnRight;
     };
   }
 }

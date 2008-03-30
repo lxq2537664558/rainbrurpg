@@ -31,19 +31,25 @@
 #include <string>
 #include <vector>
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace Core{
+    class VelocityCalculator;
+  }
+  namespace OgreGui{
+    class MultiColumnListCell;
+  }
+}
+// End of forward declarations
+
 using namespace std;
+using namespace RainbruRPG::Core;
 
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A cell of a MultiColumnListItem*/
-    typedef struct {
-      bool isText;      //!< Is this cell contain a text
-      std::string text; //!< The text of this cell
-    }tMclItem;
-
     /** A list of cell */
-    typedef vector<tMclItem*> tMclItemList;
+    typedef vector<MultiColumnListCell*> tMultiColumnListCellList;
 
     /** An item of the MultiColumnList
       *
@@ -55,14 +61,35 @@ namespace RainbruRPG{
 
       ~MultiColumnListItem();
 
-      const tMclItemList& getItemList(void);
+      const tMultiColumnListCellList& getCellList(void);
 
       void setText( int, const std::string& );
 
+      void setMouseOver(bool);
+      void setSelected(bool);
+
+      bool isMouseOver(void)const;
+      bool isSelected(void)const;
+
+      std::string str(void)const;
+
+      float getMouseOverAlpha(void);
+
+      bool inTransition(void)const;
+
     private:
       /** The list of cell */
-      tMclItemList mList;
-      
+      tMultiColumnListCellList mList;
+      /** Is mouse over this item ? */
+      bool mouseOver;
+      /** Is this item selected ? */
+      bool mSelected;
+      /** The velocity calculator used to make a mouse over fade out effect */
+      VelocityCalculator* mVelocityCalculator;
+      /** Are we in mouse over fade out effect */
+      bool mInTransition;
+      /** The alpha value used in mouse over fade out effect */ */
+      float mAlpha;
     };
 
   }

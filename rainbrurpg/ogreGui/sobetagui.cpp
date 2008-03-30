@@ -32,6 +32,7 @@
 #include "multicolumnlist.h"
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
+#include "multicolumnlistcell.h"
 
 #include <logger.h>
 
@@ -652,6 +653,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   Ogre::Rectangle columnCaption(r);
   Ogre::Rectangle headerBG;
   Ogre::ColourValue headerBGColor( 0.4f, 0.4f, 0.8f );
+  Ogre::ColourValue headerBGColorS( 0.6f, 0.6f, 0.9f );
 # define HEADER_BG_SPACE 2
   columnCaption.bottom=columnCaption.top + mcl->getHeaderHeight();
   headerBG.top    = columnCaption.top    + HEADER_BG_SPACE;
@@ -663,14 +665,19 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     columnCaption.right = x + (*iter)->getWidth();
     headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
     headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
-    qr->drawFilledRectangle( headerBG, headerBGColor );
+    if ((*iter)->isSelected()){
+      qr->drawFilledRectangle( headerBG, headerBGColorS );
+    }
+    else{
+      qr->drawFilledRectangle( headerBG, headerBGColor );
+    }
     qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
 
     // Left line
     x+=(*iter)->getWidth();
     qr->drawLine( x, y1, x, y2, c );
     
-    //    qr->reset();
+    qr->reset();
   }
   
   // drawing items
@@ -678,23 +685,52 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 
   tMultiColumnListItemList itemList=mcl->getItemList();
   tMultiColumnListItemList::const_iterator ili;
-  tMclItemList mil;
-  tMclItemList::const_iterator mii;
+
+  tMultiColumnListCellList mil;
+  tMultiColumnListCellList::const_iterator mii;
+  Ogre::ColourValue itemBGColor( 0.4f, 0.8f, 0.4f );
+  Ogre::ColourValue selItemBGColor( 0.8f, 0.4f, 0.4f );
+
   Ogre::Rectangle itemRect(r);
   itemRect.left=r.left+5;
   itemRect.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
   itemRect.bottom=itemRect.top+20;
   itemRect.right=itemRect.left+colList[0]->getWidth();
 
+  Ogre::Rectangle itemBG(r);
+  itemBG.left=r.left+5;
+  itemBG.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
+  itemBG.bottom=itemBG.top+20;
+  itemBG.right=mcl->getLastColumnRight()-5;
+
   int colId=0;
-
+  // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
-    mil=(*ili)->getItemList();
+    
+    if ((*ili)->isSelected()){
+      qr->drawFilledRectangle( itemBG, selItemBGColor );
+    }
+    else if ((*ili)->isMouseOver()){
+      qr->drawFilledRectangle( itemBG, itemBGColor );
+    }
+    else if ((*ili)->inTransition()){
+      // Using item's alpha
+      float currentAlpha=qr->getAlpha();
+      float itemAlpha=(*ili)->getMouseOverAlpha();
+      /*      LOGCATS("itemAlpha=");
+      LOGCATF(itemAlpha);
+      LOGCAT();
+      */
+      qr->setAlpha(itemAlpha);
+      qr->drawFilledRectangle( itemBG, itemBGColor );
+      qr->setAlpha(currentAlpha);
+    }
 
-
+    // Drawing cells
+    mil=(*ili)->getCellList();
     for (mii=mil.begin(); mii != mil.end(); mii++){
-      if ((*mii)->isText){
-	qr->drawText(tsMclColumnHeader, (*mii)->text, itemRect, true);
+      if ((*mii)->isText()){
+	qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
 	itemRect.left+=colList[colId]->getWidth();
 	if (colId+1 < colList.size()){
 	  itemRect.right=itemRect.left + colList[colId+1]->getWidth();
@@ -710,6 +746,8 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     itemRect.right=itemRect.left+colList[0]->getWidth();
     itemRect.top+=20;
     itemRect.bottom=itemRect.top+20;
+    itemBG.top+=20;
+    itemBG.bottom=itemBG.top+20;
    
 
   }

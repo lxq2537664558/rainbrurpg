@@ -355,6 +355,18 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
     it2->setText(1, "Carine");
     it2->setText(2, "Jerome");
     mcl->addItem(it2);
+
+    MultiColumnListItem* it3=new MultiColumnListItem();
+    it3->setText(0, "AAA");
+    it3->setText(1, "Carine");
+    it3->setText(2, "Jerome");
+    mcl->addItem(it3);
+
+    MultiColumnListItem* it4=new MultiColumnListItem();
+    it4->setText(0, "BBB");
+    it4->setText(1, "Carine");
+    it4->setText(2, "Jerome");
+    mcl->addItem(it4);
   }
   else{
     MultiColumnListWin->show();

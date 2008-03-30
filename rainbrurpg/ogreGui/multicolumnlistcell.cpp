@@ -20,40 +20,28 @@
  *
  */
 
-/* Modifications :
- * - 27 mar 2008 : Starting implementation
- *         
- */
+#include "multicolumnlistcell.h"
 
-#ifndef _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
-#define _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
+/** The text cell constructor
+  *
+  */
+RainbruRPG::OgreGui::MultiColumnListCell::
+MultiColumnListCell(const string& vCaption):
+  mType(MCT_TEXT),
+  mCaption(vCaption)
+{
 
-#include <string>
-
-namespace RainbruRPG{
-  namespace OgreGui{
-    /** A column in the MultiColumnList widget
-      *
-      */
-    class MultiColumnListColumn{
-    public:
-      MultiColumnListColumn(const std::string&, int);
-
-      const std::string& getCaption(void)const;
-      int getWidth(void)const;
-
-      void setSelected(bool);
-      bool isSelected(void)const;
-
-    private:
-      /** The caption of the column */
-      std::string mCaption;
-      /** The width of the column in pixels */
-      int mWidth;
-
-      bool mSelected;
-    };
-  }
 }
 
-#endif // _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
+RainbruRPG::OgreGui::MultiColumnListCell::~MultiColumnListCell(void){
+
+}
+
+const RainbruRPG::OgreGui::tMultiColumnListCellType& 
+RainbruRPG::OgreGui::MultiColumnListCell::getType(void)const{
+  return mType;
+}
+
+const string& RainbruRPG::OgreGui::MultiColumnListCell::getText(void)const{
+  return mCaption;
+}

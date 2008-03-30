@@ -31,7 +31,8 @@
 RainbruRPG::OgreGui::MultiColumnListColumn::
 MultiColumnListColumn(const std::string& vCaption, int vWidth):
   mCaption(vCaption),
-  mWidth(vWidth)
+  mWidth(vWidth),
+  mSelected(false)
 {
 
 }
@@ -53,4 +54,12 @@ getCaption(void)const{
   */
 int RainbruRPG::OgreGui::MultiColumnListColumn::getWidth(void)const{
   return mWidth;
+}
+
+void RainbruRPG::OgreGui::MultiColumnListColumn::setSelected(bool b){
+  mSelected=b;
+}
+
+bool RainbruRPG::OgreGui::MultiColumnListColumn::isSelected(void)const{
+  return mSelected;
 }

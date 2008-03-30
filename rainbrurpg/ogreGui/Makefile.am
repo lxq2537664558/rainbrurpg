@@ -18,6 +18,7 @@ h_sources= bgbutton.h			\
 	   lineinfo.h			\
 	   mousepointer.h		\
 	   multicolumnlist.h		\
+	   multicolumnlistcell.h	\
 	   multicolumnlistcolumn.h	\
 	   multicolumnlistitem.h	\
 	   object.h			\
@@ -54,6 +55,7 @@ cc_sources= bgbutton.cpp		\
 	    lineinfo.cpp		\
 	    mousepointer.cpp		\
 	    multicolumnlist.cpp		\
+	    multicolumnlistcell.cpp	\
 	    multicolumnlistcolumn.cpp	\
 	    multicolumnlistitem.cpp	\
 	    object.cpp			\

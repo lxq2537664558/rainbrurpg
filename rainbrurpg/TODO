@@ -1,7 +1,6 @@
 TogODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Skin::drawMultiColumnList implementation
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
@@ -98,6 +97,14 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-173
+- (8) Fix a bug in the QuadRenderer::drawFilledRectangle() function
+- Item's mouse over stop at the last column right
+- MultiColumnList::getLastColumnRight() implementation
+- DeMouseOver item if mouseOver on column
+- DeMouseOver column if mouseOver on item
+- MouseOver handling on column item
+- MouseOver handling on column header
+- MultiColumnListCell implementation
 
 * v 0.0.5-172
 - Documentation update

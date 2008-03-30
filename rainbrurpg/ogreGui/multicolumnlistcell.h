@@ -21,39 +21,41 @@
  */
 
 /* Modifications :
- * - 27 mar 2008 : Starting implementation
+ * - 28 mar 2008 : Starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
-#define _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
+#ifndef _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_
+#define _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_
 
 #include <string>
 
+using namespace std;
+
 namespace RainbruRPG{
   namespace OgreGui{
-    /** A column in the MultiColumnList widget
-      *
-      */
-    class MultiColumnListColumn{
+
+    typedef enum{
+      MCT_TEXT //!< The cell contains only text
+    }tMultiColumnListCellType;
+
+    class MultiColumnListCell{
     public:
-      MultiColumnListColumn(const std::string&, int);
+      MultiColumnListCell(const string&);
+      ~MultiColumnListCell(void);
 
-      const std::string& getCaption(void)const;
-      int getWidth(void)const;
+      const tMultiColumnListCellType& getType(void)const;
+      const string& getText(void)const;
 
-      void setSelected(bool);
-      bool isSelected(void)const;
+      inline bool isText(void){ 
+	return (mType==MCT_TEXT); 
+      };
 
     private:
-      /** The caption of the column */
-      std::string mCaption;
-      /** The width of the column in pixels */
-      int mWidth;
-
-      bool mSelected;
+      tMultiColumnListCellType mType;
+      string mCaption;
     };
+
   }
 }
-
-#endif // _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
+#endif // _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_

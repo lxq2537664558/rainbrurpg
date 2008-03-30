@@ -874,10 +874,17 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
   mRenderOp.vertexData->vertexCount = 6;
 
   mRenderSystem->_setTexture(0, true, mTexture );
-
   mRenderSystem->_render( mRenderOp );
 
   disableScissor();
+
+  // Reset renderer
+  vert.clear();
+  uvs.clear();
+  cols.clear();
+  
+  mBatchPointer=NULL;
+  mBatchCount=0;
 }
 
 /** Set the parent scissor 
