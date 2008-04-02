@@ -59,7 +59,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   useParentScissor(false),
   usingDrawingDev(false),
   xDrawingDev(0),
-  yDrawingDev(0)
+  yDrawingDev(0),
+  mAlphaNoGhost(0.0f)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -172,7 +173,7 @@ void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
 
   for ( size_t x = 0; x < 6; x++ ){
     data[x].setPosition(vert[x]);
-    data[x].setColor(DEFAULT_COL);
+    data[x].setColor(mColor);
     data[x].setUvMapping(uvs[x]);
   }
 
@@ -259,7 +260,7 @@ setUvMap(double u1, double v1, double u2, double v2){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 drawRectangle(const Ogre::Rectangle& corners){
-
+  setColor(ColourValue(1.0f, 1.0f, 1.0f));
   setCorners(corners.left, corners.top, corners.right, corners.bottom);
   feedVectors(&vert, &uvs, &cols);
   
@@ -1150,4 +1151,24 @@ drawRectangleLines( const Rectangle& vRect, const ColourValue& vColor ){
   addLine( vRect.left, vRect.bottom, vRect.right,  vRect.bottom, vColor );
   addLine( vRect.right,  vRect.top , vRect.right,  vRect.bottom, vColor );
   endLines( );
+}
+
+/** Enable the ghost
+  *
+  * GHOST_ALPHA_VALUE value is retrieved from alphaValue and mAlphaNoGhost 
+  * keep its last value.
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::enableGhost(void){
+  mAlphaNoGhost=alphaValue;
+  alphaValue-=GHOST_ALPHA_VALUE;
+}
+
+/** Disable the ghost
+  *
+  * The alphaValue member takes back its value from mAlphaNoGhost.
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::disableGhost(void){
+  alphaValue=mAlphaNoGhost;
 }

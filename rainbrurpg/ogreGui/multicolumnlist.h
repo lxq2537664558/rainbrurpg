@@ -30,11 +30,14 @@
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
+#include "mouseevent.h"
 
 #include <OgreVector4.h>
+#include <OgreRectangle.h>
 #include <string>
 #include <vector>
 #include <list>
+#include <algorithm> // for sort
 
 // Forward declaration
 namespace BetaGUI {
@@ -54,6 +57,18 @@ using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
   namespace OgreGui{
+
+    // Global functions declaration
+    bool compMclItemAsc( MultiColumnListItem*, MultiColumnListItem* );
+    bool compMclItemDesc( MultiColumnListItem*, MultiColumnListItem* );
+    // End of global functions declaration
+
+
+    typedef enum{
+      MCS_NONE       =0,  //!< Not sorted
+      MCS_ASCENDANT,      // Column is sorted in ascendant order
+      MCS_DESCENDANT,     // Column is sorted in ascendant order
+    }tMultiColumnListColumnSortPolicy;
 
     /** The list of column */
     typedef std::vector<MultiColumnListColumn*> tMultiColumnListColumnList;
@@ -80,12 +95,22 @@ namespace RainbruRPG{
 
       int getHeaderHeight(void)const;
 
-      virtual bool injectMouse(	unsigned int, unsigned int, bool );
+      virtual bool injectMouse(	unsigned int, unsigned int, const MouseEvent& );
 
       int getLastColumnRight(void)const;
+      int getMovedColumnIndex(void)const;
+
+      void setSort(int, tMultiColumnListColumnSortPolicy);
+
+      static int mCurrentSortedColumn;
 
     protected:
       void makeCorners(void);
+
+      bool injectMouse(	unsigned int, unsigned int, const MouseEvent&, 
+			tMultiColumnListItemList );
+
+      void handleToolTip(unsigned int, unsigned int);
 
     private:
       /** Keeping current skin instance*/
@@ -99,8 +124,13 @@ namespace RainbruRPG{
       tMultiColumnListColumnList mColumnList;
       /** The item list */
       tMultiColumnListItemList mItemList;
+      /** The item list (sorted) */
+      tMultiColumnListItemList mSortedItemList;
+      /** Keep the mouse-overed column */
       MultiColumnListColumn* selectedColumn;
+      /** Keep themouse-overed item */
       MultiColumnListItem* mouseOveredItem;
+      /** Keep the currently selected item */
       MultiColumnListItem* selectedItem;
       /** The last column X position
         *
@@ -109,6 +139,19 @@ namespace RainbruRPG{
 	*
 	*/
       int mLastColumnRight;
+
+      /** The current sort policy */
+      tMultiColumnListColumnSortPolicy mCurrentSortPolicy;
+
+      /** The tool tip pext */
+      std::string mToolTipText;
+
+      /** Should we draw tool tip */
+      bool mDrawToolTip;
+      /* The tool tip dimensions */
+      Ogre::Rectangle mToolTipDim;
+      /** The column we are moving */
+      int mMovingColumn;
     };
   }
 }

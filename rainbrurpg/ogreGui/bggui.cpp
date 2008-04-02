@@ -18,12 +18,6 @@
 #include <OgreStringConverter.h>
 
 
-
-// Static members initialisation
-bool BetaGUI::GUI::isMouseButtonPressed=false;
-// End of static members initialisation
-
-
 /** The GUI constructor
   *
   * The requested parameters are used to create an instance of QuadRenderer.
@@ -40,7 +34,9 @@ BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
   bc(NULL),
   tc(NULL),
   mQuadRenderer(NULL),
-  mousePointer(NULL)
+  mousePointer(NULL),
+  mMouseX(0),
+  mMouseY(0)
 {
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
@@ -109,7 +105,11 @@ void BetaGUI::GUI::removeWindow(Window* win){
   */
 bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
 
-  bool LMB=isMouseButtonPressed;
+  mMouseEvent.mouseMove(x, y);
+  bool LMB=mMouseEvent.isLeftMouseButtonPressed();
+
+  mMouseX=x;
+  mMouseY=y;
 
   // Moves the mouse cursor
   if (mousePointer){
@@ -128,19 +128,26 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
     resizedWindow=NULL;
     movedWindow=NULL;
 
-    WindowListReverseIterator iter;
-    for( iter=windowList.rbegin(); iter!=windowList.rend(); iter++){
-      if((*iter)->check(x,y,LMB)){
-	deactivateAllOtherWindow((*iter));
-	if (LMB){
-	  moveWindowToForeGround((*iter));
-	}
-	return true;
-      }
-    }
-    return false;
+    return handleWindowsEvents();
+
+
   }
 }
+
+bool BetaGUI::GUI::handleWindowsEvents(void){
+  WindowListReverseIterator iter;
+  for( iter=windowList.rbegin(); iter!=windowList.rend(); iter++){
+    if((*iter)->check( mMouseX, mMouseY, mMouseEvent )){
+      deactivateAllOtherWindow((*iter));
+      if (mMouseEvent.isLeftMouseButtonPressed()){
+	moveWindowToForeGround((*iter));
+      }
+      return true;
+    }
+  }
+  return false;
+}
+
 
 /** Inject the given key at the given position into the system
   *
@@ -337,7 +344,8 @@ void BetaGUI::GUI::deactivateWindow(Window* win){
   *
   */
 void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
-  isMouseButtonPressed=true;
+  mMouseEvent.setLeftMouseButtonPressed(true);
+  handleWindowsEvents();
 }
 
 /** Inject a mouse button released event
@@ -346,7 +354,8 @@ void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
   *
   */
 void BetaGUI::GUI::injectMouseButtonReleased(){
-  isMouseButtonPressed=false;
+  mMouseEvent.setLeftMouseButtonPressed(false);
+  handleWindowsEvents();
 }
 
 /** Get the dialog overlay

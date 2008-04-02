@@ -193,16 +193,18 @@ deactivateAllOtherTextInput(BetaGUI::TextInput* ti){
 /** Handle mouse events of childs
   *
   * \param px, py The mouse pointer position
-  * \param LMB    Is the left mouse button pressed ?
+  * \param event  The mouse event
   * \param win    The window from where the event if fired
   *
   * \return \c true if the event is used.
   *
   */
 bool RainbruRPG::OgreGui::Container::
-handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win ){
+handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event, 
+		  Window* win ){
 
   bool inWindow=win->in(px, py, 0, 0);
+  bool LMB = event.isLeftMouseButtonPressed();
 
   // If we are outside window, we don't handle events
   if (!inWindow){
@@ -213,7 +215,7 @@ handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win ){
   
 
   handleMouseTextCursor(px, py, LMB);
-  handleWidgetMouseEvents(px, py, LMB);
+  handleWidgetMouseEvents(px, py, event);
 
 
   if(activeButton){

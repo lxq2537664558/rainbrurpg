@@ -30,6 +30,7 @@
 #define _OGRE_GUI_SCROLLPANE_H_
 
 #include "container.h"
+#include "mouseevent.h"
 
 #include <skinmanager.h> // For OgreGuiSkinID
 
@@ -103,7 +104,8 @@ namespace RainbruRPG{
       void verticalScrollBarValueChange(int);
 
       bool handleScrollBarsEvent(unsigned int, unsigned int, bool, Window*); 
-      bool handleChildsEvent(unsigned int , unsigned int , bool , Window* ); 
+      bool handleChildsEvent(unsigned int , unsigned int , const MouseEvent&, 
+			     Window* ); 
     private:
 
       /** The vertical scrollbar */

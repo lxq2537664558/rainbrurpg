@@ -29,9 +29,11 @@
 #define _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
 
 #include <string>
+#include "multicolumnlist.h"
 
 namespace RainbruRPG{
   namespace OgreGui{
+
     /** A column in the MultiColumnList widget
       *
       */
@@ -45,15 +47,35 @@ namespace RainbruRPG{
       void setSelected(bool);
       bool isSelected(void)const;
 
+      tMultiColumnListColumnSortPolicy getSortPolicy(void) const;
+      void resetSort(void);
+
+      void toggleSort(void);
+      void setParentIndex(MultiColumnList*, int);
+
     private:
       /** The caption of the column */
       std::string mCaption;
       /** The width of the column in pixels */
       int mWidth;
-
+      /** Is this column header selected (mouse-overed) */
       bool mSelected;
+      /** The sort policy of this column */
+      tMultiColumnListColumnSortPolicy mSortPolicy;
+      /** The column's parent
+        *
+	* Must be set by a call to setParentIndex() to enable sort ability.
+	*
+	*/
+      MultiColumnList* mParent;
+      /** This column index from its parent
+        *
+	* The index of this column within its parent columnlist.
+	*
+	*/
+      int mIndex;
     };
   }
 }
 
-#endif // _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
+#endif // _OGRE_GUI_MULI_COLUMN_LIST_COLUMN_H_

@@ -379,16 +379,18 @@ handleScrollBarsEvent(unsigned int px, unsigned int py, bool LMB, Window* P){
   *       and yDrawingDev values.
   *
   * \param px, py The mouse pointer position
-  * \param LMB    Is the left mouse button pressed ?
+  * \param event  The mouse event
   * \param win    The window from where the event if fired
   *
   * \return \c true if the event is used.
   *
   */
 bool RainbruRPG::OgreGui::ScrollPane::
-handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win){
+handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event, 
+		  Window* win){
 
   bool inWindow=win->in(px, py, 0, 0);
+  bool LMB=event.isLeftMouseButtonPressed();
 
   // Handles drawing dev
   px+=xDrawingDev;
@@ -403,7 +405,7 @@ handleChildsEvent(unsigned int px, unsigned int py, bool LMB, Window* win){
   
 
   handleMouseTextCursor(px, py, LMB);
-  handleWidgetMouseEvents(px, py, LMB);
+  handleWidgetMouseEvents(px, py, event);
 
 
   if(activeButton){

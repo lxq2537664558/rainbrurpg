@@ -21,6 +21,9 @@
  */
 
 #include "multicolumnlistcolumn.h"
+#include "multicolumnlist.h"
+
+#include <logger.h>
 
 /** The constructor
   *
@@ -32,7 +35,10 @@ RainbruRPG::OgreGui::MultiColumnListColumn::
 MultiColumnListColumn(const std::string& vCaption, int vWidth):
   mCaption(vCaption),
   mWidth(vWidth),
-  mSelected(false)
+  mSelected(false),
+  mSortPolicy(MCS_NONE),
+  mParent(NULL),
+  mIndex(-1)
 {
 
 }
@@ -56,10 +62,85 @@ int RainbruRPG::OgreGui::MultiColumnListColumn::getWidth(void)const{
   return mWidth;
 }
 
+/** Set if the mouse is over this column's header
+  *
+  * \param b The new value
+  *
+  */
 void RainbruRPG::OgreGui::MultiColumnListColumn::setSelected(bool b){
   mSelected=b;
 }
 
+/** Tells if the mouse is over this column
+  *
+  * \return \c true if the mouse is over this column's header
+  *
+  */
 bool RainbruRPG::OgreGui::MultiColumnListColumn::isSelected(void)const{
   return mSelected;
+}
+
+/** Togle the sort policy
+  *
+  * The sort policy will cycle through :
+  * - MCS_NONE;
+  * - MCS_ASCENDANT;
+  * - MCS_DESCENDANT
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::toggleSort(void){
+  switch (mSortPolicy){
+  case MCS_NONE:
+    mSortPolicy=MCS_ASCENDANT;
+    break;
+  case MCS_ASCENDANT:
+    mSortPolicy=MCS_DESCENDANT;
+    break;
+  case MCS_DESCENDANT:
+    mSortPolicy=MCS_NONE;
+    break;
+  };
+
+  LOGA(mParent, "Column's parent is NULL. Cannot apply sort");
+  LOGA(mIndex!=-1, "Column's index is -1. Cannot apply sort");
+
+  if (mParent){
+    mParent->setSort(mIndex, mSortPolicy);
+  }
+}
+
+/** Set the parent and the index for this column
+  *
+  * This function is called by MultiColumnList to register itself as parent
+  * and tell this column its index in column list. It is used when applying
+  * sort in toggleSort() to apply change to the list by calling 
+  * MultiColumnList::setSort().
+  *
+  * \param vParent The parent to apply sorting change to
+  * \param vIndex  The index of this column in the parent's column list
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::
+setParentIndex(MultiColumnList* vParent, int vIndex){
+  mParent = vParent;
+  mIndex  = vIndex;
+}
+
+/** Get the sort policy
+  *
+  * \return The value of mSortPolicy
+  *
+  */
+tMultiColumnListColumnSortPolicy RainbruRPG::OgreGui::MultiColumnListColumn::
+getSortPolicy(void) const{
+  return mSortPolicy;
+}
+
+/** Set the sort policy to none
+  * 
+  *
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::resetSort(void){
+  mSortPolicy=MCS_NONE;
 }

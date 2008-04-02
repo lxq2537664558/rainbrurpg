@@ -108,16 +108,15 @@ RainbruRPG::OgreGui::Widget* RainbruRPG::OgreGui::Widget::getParent(){
   *
   * The position of the mouse is render window wide.
   *
-  * \param x               The position of the mouse pointer in pixels
-  * \param y               The position of the mouse pointer in pixels
-  * \param leftMouseButton The mouse left button state ( \c true if pressed
-  *                        \c false if released)
+  * \param x     The position of the mouse pointer in pixels
+  * \param y     The position of the mouse pointer in pixels
+  * \param event The mouse event
   *
   * \return \c true if the event is handled, \c false if not.
   *
   */
 bool RainbruRPG::OgreGui::Widget::
-injectMouse(unsigned int x, unsigned int y, bool leftMouseButton){
+injectMouse(unsigned int x, unsigned int y, const MouseEvent& event){
   return false;
 }
 

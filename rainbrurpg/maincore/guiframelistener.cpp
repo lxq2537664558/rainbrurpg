@@ -95,7 +95,7 @@ bool RainbruRPG::Events::GuiFrameListener::frameEnded(const FrameEvent& evt){
   * \param e The Ogre mouse event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::mouseMoved(const MouseEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::mouseMoved(const OIS::MouseEvent& e){
   //  e.consume();
 }
 
@@ -104,7 +104,8 @@ bool RainbruRPG::Events::GuiFrameListener::mouseMoved(const MouseEvent& e){
   * \param e The Ogre mouse event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::mouseDragged(const MouseEvent& e){ 
+bool RainbruRPG::Events::GuiFrameListener::
+mouseDragged(const OIS::MouseEvent& e){ 
   mouseMoved(e);
 }
 
@@ -113,7 +114,8 @@ bool RainbruRPG::Events::GuiFrameListener::mouseDragged(const MouseEvent& e){
   * \param e The Ogre mouse event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::mousePressed(const MouseEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::
+mousePressed(const OIS::MouseEvent& e){
   //  e.consume();
 }
 
@@ -122,7 +124,8 @@ bool RainbruRPG::Events::GuiFrameListener::mousePressed(const MouseEvent& e){
   * \param e The Ogre mouse event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::mouseReleased(const MouseEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::
+mouseReleased(const OIS::MouseEvent& e){
   //  e.consume();
 }
 

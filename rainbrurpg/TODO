@@ -1,4 +1,4 @@
-TogODO
+TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - MulticolumnList implementation
@@ -97,7 +97,21 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-173
-- (8) Fix a bug in the QuadRenderer::drawFilledRectangle() function
+- (17) ToolTip on columnheader to explain how to move column
+- Skin drawToolTip() implementation
+- MultiColumnList's selection work in ordered list
+- MultiColumnList sort OK
+- Column sort indicators correctly drawn
+- Handle event that sort column
+- (Fix a bug in QuadRenderer with QBM_ALPHA blend mode
+  Even if QBM_ALPHA is chosen, global GUI alpha value is now used.
+  It was a bug when drawing MultiColumnList colunm sort indicator
+  which is a alpha channel PNG image : no way to get alpha channel
+  of image and global alpha transition because DEFAULT_COL was used
+  in drawRectangle() vertexes color parameter. Now I use mColor.
+- MouseEvent is used in MultiColumnList event handling
+- MouseEvent implementation
+- Fix a bug in the QuadRenderer::drawFilledRectangle() function
 - Item's mouse over stop at the last column right
 - MultiColumnList::getLastColumnRight() implementation
 - DeMouseOver item if mouseOver on column

@@ -132,7 +132,7 @@ bool RainbruRPG::OgreGui::MultiColumnListItem::isSelected(void)const{
 
 /** Get a string representation od thif item
   *
-  * \retuen A string that contains all columns text
+  * \return A string that contains all columns text
   *
   */
 std::string RainbruRPG::OgreGui::MultiColumnListItem::str(void)const{
@@ -170,4 +170,16 @@ float RainbruRPG::OgreGui::MultiColumnListItem::getMouseOverAlpha(void){
   */
 bool RainbruRPG::OgreGui::MultiColumnListItem::inTransition(void)const{
   return mInTransition;
+}
+
+/** Get the text of the given column
+  *
+  * \param vColumn The column index
+  *
+  * \return The column content as string
+  *
+  */
+const std::string& RainbruRPG::OgreGui::MultiColumnListItem::
+getString(int vColumn){
+  return mList[vColumn]->getText();
 }

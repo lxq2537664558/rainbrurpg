@@ -57,10 +57,10 @@ namespace RainbruRPG{
       virtual bool frameStarted(const FrameEvent& evt);
       virtual bool frameEnded(const FrameEvent& evt);
 
-      bool mouseMoved (const MouseEvent& e);
-      bool mouseDragged(const MouseEvent& e);
-      bool mousePressed(const MouseEvent& e);
-      bool mouseReleased(const MouseEvent& e);
+      bool mouseMoved (const OIS::MouseEvent& e);
+      bool mouseDragged(const OIS::MouseEvent& e);
+      bool mousePressed(const OIS::MouseEvent& e);
+      bool mouseReleased(const OIS::MouseEvent& e);
 
       /** A unimplemented function
         *
@@ -84,11 +84,11 @@ namespace RainbruRPG{
 				 OIS::MouseButtonID btn){};
 
       /** An empty mouse clicked event listener */
-      void mouseClicked(MouseEvent* e) {}
+      void mouseClicked(OIS::MouseEvent* e) {}
       /** An empty mouse entered event listener */
-      void mouseEntered(MouseEvent* e) {}
+      void mouseEntered(OIS::MouseEvent* e) {}
       /** An empty mouse exited event listener */
-      void mouseExited(MouseEvent* e) {}
+      void mouseExited(OIS::MouseEvent* e) {}
 
       bool keyPressed(const KeyEvent& e);
       bool keyReleased(const KeyEvent& e);

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 01 apr 2008 : ghost handling implementation
  * - 25 mar 2008 : drawLine() implementation
  * - 23 feb 2008 : DrawingDev implementation
  * - 12 feb 2008 : useParentScissor implementation and documentation
@@ -69,6 +70,8 @@ namespace RainbruRPG {
 #define DEFAULT_COL  ColourValue(1.0f, 1.0f, 1.0f)
 /** The initialization alpha */
 #define ALPHA        0.0f
+/** The value we retrieve to alpha value if ghost is enabled */
+#define GHOST_ALPHA_VALUE 0.2f
 
 using namespace std;
 using namespace Ogre;
@@ -125,6 +128,13 @@ namespace RainbruRPG {
       * Please see the ScrollPane::draw() implementation for more details 
       * and an usage example.
       *
+      * \section sec_QuadRenderer_Ghost the Ghost function
+      *
+      * To draw a ghost effect (more alpha on a part of the GUI), two
+      * functions are used : enableGhost() and disableGhost(). Please see 
+      * the MultiColumnList drawing function in soBetaGui : when a column
+      * is moved, it is ghosted.
+      *
       * \note The implementation of this class is based on the <B>Right Brain 
       * Games GUI</B>. Please see http://www.rightbraingames.com/tech.php for 
       * more informations.
@@ -176,6 +186,9 @@ namespace RainbruRPG {
       void endLines(void);
 
       void drawRectangleLines( const Rectangle&, const ColourValue& );
+
+      void enableGhost(void);
+      void disableGhost(void);
 
     protected:
       void setupHardwareBuffer(void);
@@ -359,6 +372,14 @@ namespace RainbruRPG {
       int xDrawingDev;
       /** The DrawingDev value for the Y axis */
       int yDrawingDev;
+      /** The alpha value if no ghost were applied
+        *
+	* The ghost value is directly applied to alphaValue. To keep its
+	* original value, mAlphaNoGhost is set to alphaValue's value before
+	* applying ghost value.
+	*
+	*/
+      float mAlphaNoGhost;
 
     };
   }

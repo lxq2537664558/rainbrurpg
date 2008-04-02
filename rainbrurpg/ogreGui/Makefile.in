@@ -62,7 +62,7 @@ librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	bgwindow.lo container.lo font.lo fontmanager.lo glyph.lo \
-	guivertex.lo hscrollbar.lo label.lo lineinfo.lo \
+	guivertex.lo hscrollbar.lo label.lo lineinfo.lo mouseevent.lo \
 	mousepointer.lo multicolumnlist.lo multicolumnlistcell.lo \
 	multicolumnlistcolumn.lo multicolumnlistitem.lo object.lo \
 	pushbutton.lo quadrenderer.lo renderqueuelistener.lo \
@@ -257,6 +257,7 @@ h_sources = bgbutton.h			\
 	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   mouseevent.h			\
 	   mousepointer.h		\
 	   multicolumnlist.h		\
 	   multicolumnlistcell.h	\
@@ -293,6 +294,7 @@ cc_sources = bgbutton.cpp		\
 	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    mouseevent.cpp		\
 	    mousepointer.cpp		\
 	    multicolumnlist.cpp		\
 	    multicolumnlistcell.cpp	\
@@ -415,6 +417,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hscrollbar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mouseevent.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlist.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlistcell.Plo@am__quote@

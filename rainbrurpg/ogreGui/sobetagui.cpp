@@ -176,7 +176,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
 
 
 
-mHorizontalScrollBarLeftArrowActive=TextureManager::getSingleton()
+ mHorizontalScrollBarLeftArrowActive=TextureManager::getSingleton()
    .load("bgui.hscrollbar.leftarrow.active.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
@@ -186,6 +186,19 @@ mHorizontalScrollBarLeftArrowActive=TextureManager::getSingleton()
 
   mHorizontalScrollBarCursorActive=TextureManager::getSingleton()
    .load("bgui.hscrollbar.cursor.active.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  // MultiColumnList
+  mMclColumnNoSort=TextureManager::getSingleton()
+   .load("mcl.nosort.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mMclColumnAscSort=TextureManager::getSingleton()
+   .load("mcl.ascsort.png",
+	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  mMclColumnDescSort=TextureManager::getSingleton()
+   .load("mcl.descsort.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 }
@@ -618,6 +631,37 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
 }
 
+void RainbruRPG::OgreGui::soBetaGui::
+drawToolTip(QuadRenderer* qr, Rectangle dim, String text){
+  Ogre::ColourValue BGColor( 0.2f, 0.2f, 0.4f );
+  Ogre::ColourValue shadowColor( 0.2f, 0.2f, 0.2f );
+  Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
+  TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
+						    10, 1.0f, 1.0f, 1.0f );
+
+
+  // Draw shadow
+  Rectangle shadow;
+  int shadowDev = 6;
+  shadow.left   = dim.left   + shadowDev;
+  shadow.top    = dim.top    + shadowDev;
+  shadow.right  = dim.right  + shadowDev;
+  shadow.bottom = dim.bottom + shadowDev;
+  qr->drawFilledRectangle( shadow, shadowColor);
+
+  // Draw tool tip
+  qr->drawFilledRectangle( dim,  BGColor);
+  qr->drawRectangleLines(dim,c);
+
+  int margin=5;
+  dim.left   += margin;
+  dim.top    += margin;
+  dim.right  -= margin;
+  dim.bottom -= margin;
+  qr->drawText(tsMclColumnHeader, text, dim, true);
+
+}
+
 /** Draws a MultiColumnList
   *
   * \param qr  The QuadRenderer used to draw
@@ -629,9 +673,10 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   // Text setting for column header
   TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
 						    10, 1.0f, 1.0f, 1.0f );
-
   tsMclColumnHeader->setHorizontalAlignment(HAT_CENTER);
   tsMclColumnHeader->setVerticalAlignment(VAT_CENTER);
+
+  int movingColumn=mcl->getMovedColumnIndex();
 
   // Drawing list rectangle
   Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
@@ -651,7 +696,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   int y2=r.bottom;
 
   Ogre::Rectangle columnCaption(r);
-  Ogre::Rectangle headerBG;
+  Ogre::Rectangle headerBG, sortSignRect;
   Ogre::ColourValue headerBGColor( 0.4f, 0.4f, 0.8f );
   Ogre::ColourValue headerBGColorS( 0.6f, 0.6f, 0.9f );
 # define HEADER_BG_SPACE 2
@@ -659,12 +704,30 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   headerBG.top    = columnCaption.top    + HEADER_BG_SPACE;
   headerBG.bottom = columnCaption.bottom - HEADER_BG_SPACE;
 
+  int xSortSign=((columnCaption.bottom-columnCaption.top)/2)-7;
+
+  sortSignRect.top    = headerBG.top+xSortSign;
+  sortSignRect.bottom = sortSignRect.top+12;
+
+  unsigned int colIndex=0;
+
   for(iter = colList.begin();iter != colList.end(); iter++){
     // Header background andcaption
     columnCaption.left  = x;
     columnCaption.right = x + (*iter)->getWidth();
     headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
     headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
+
+    sortSignRect.left  = headerBG.right - 14;
+    sortSignRect.right = sortSignRect.left + 12;
+    
+    columnCaption.right-=16; // Remove sortSignRect size
+
+    if (colIndex == movingColumn-1){
+      qr->enableGhost();
+    }
+
+
     if ((*iter)->isSelected()){
       qr->drawFilledRectangle( headerBG, headerBGColorS );
     }
@@ -673,11 +736,33 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     }
     qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
 
+    // Drawing sort sign
+    qr->setBlendMode(QBM_ALPHA);
+    switch((*iter)->getSortPolicy()){
+    case MCS_NONE:
+      qr->setTexturePtr(mMclColumnNoSort);
+      break;
+    case MCS_ASCENDANT:
+      qr->setTexturePtr(mMclColumnAscSort);
+      break;
+    case MCS_DESCENDANT:
+      qr->setTexturePtr(mMclColumnDescSort);
+      break;
+    }
+    qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+    qr->drawRectangle(sortSignRect);
+
+
     // Left line
     x+=(*iter)->getWidth();
     qr->drawLine( x, y1, x, y2, c );
+
+    if (colIndex == movingColumn-1){
+      qr->disableGhost();
+    }
     
     qr->reset();
+    colIndex++;
   }
   
   // drawing items
@@ -717,10 +802,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       // Using item's alpha
       float currentAlpha=qr->getAlpha();
       float itemAlpha=(*ili)->getMouseOverAlpha();
-      /*      LOGCATS("itemAlpha=");
-      LOGCATF(itemAlpha);
-      LOGCAT();
-      */
+
       qr->setAlpha(itemAlpha);
       qr->drawFilledRectangle( itemBG, itemBGColor );
       qr->setAlpha(currentAlpha);
@@ -730,6 +812,11 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     mil=(*ili)->getCellList();
     for (mii=mil.begin(); mii != mil.end(); mii++){
       if ((*mii)->isText()){
+
+	if (colId==movingColumn){
+	  qr->enableGhost();
+	}
+
 	qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
 	itemRect.left+=colList[colId]->getWidth();
 	if (colId+1 < colList.size()){
@@ -738,6 +825,11 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 	else{
 	  itemRect.right = columnCaption.right;
 	}
+
+	if (colId==movingColumn){
+	  qr->disableGhost();
+	}
+
 	colId++;
       }
     }

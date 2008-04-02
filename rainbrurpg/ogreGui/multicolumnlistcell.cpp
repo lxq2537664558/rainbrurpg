@@ -33,15 +33,28 @@ MultiColumnListCell(const string& vCaption):
 
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::OgreGui::MultiColumnListCell::~MultiColumnListCell(void){
 
 }
 
+/** Get the type of this cell
+  *
+  * \return The type
+  *
+  */
 const RainbruRPG::OgreGui::tMultiColumnListCellType& 
 RainbruRPG::OgreGui::MultiColumnListCell::getType(void)const{
   return mType;
 }
 
+/** Get the text of this cell
+  *
+  * \return The text as a STL string
+  *
+  */
 const string& RainbruRPG::OgreGui::MultiColumnListCell::getText(void)const{
   return mCaption;
 }

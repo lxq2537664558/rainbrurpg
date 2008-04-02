@@ -32,6 +32,7 @@
 #include "bggui.h"         // For enum OgreGUIWindowType
 #include "bgtextinput.h"
 #include "mousepointer.h"
+#include "mouseevent.h"
 
 
 #include <OgreVector4.h>
@@ -75,7 +76,8 @@ namespace RainbruRPG{
 
       void deactivateAllOtherTextInput(BetaGUI::TextInput*);
 
-      bool handleChildsEvent(unsigned int, unsigned int, bool, Window*);
+      bool handleChildsEvent(unsigned int, unsigned int, const MouseEvent&, 
+			     Window*);
       bool handleKeyEvent(String, unsigned int, unsigned int);
       bool handleButtonEvent(unsigned int, unsigned int,
 			     unsigned int, unsigned int,
@@ -126,17 +128,17 @@ namespace RainbruRPG{
       /** Handle the MouseEvent for others widgets
         *
 	* \param px, py          The mouse position
-	* \param LMB             The mouse left button state
+	* \param event           The mouse event
 	*
 	* \return \c true if the event is handled
 	*
 	*/
       inline bool handleWidgetMouseEvents(unsigned int px, unsigned int py, 
-					  bool LMB){
+					  const MouseEvent& event){
       // Handles the widget mouse events
 	for(unsigned int i=0;i<widgetList.size();i++){
 	  // If a widget handles the event, we stop the event handling loop
-	  if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,LMB)){
+	  if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,event)){
 	    return true;
 	  }
 	}

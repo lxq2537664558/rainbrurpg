@@ -30,6 +30,7 @@
 
 #include <string>
 #include <vector>
+#include "multicolumnlist.h" // for tMultiColumnListColumnSortPolicy
 
 // Forward declarations
 namespace RainbruRPG{
@@ -77,6 +78,8 @@ namespace RainbruRPG{
 
       bool inTransition(void)const;
 
+      const std::string& getString(int);
+
     private:
       /** The list of cell */
       tMultiColumnListCellList mList;
@@ -88,8 +91,9 @@ namespace RainbruRPG{
       VelocityCalculator* mVelocityCalculator;
       /** Are we in mouse over fade out effect */
       bool mInTransition;
-      /** The alpha value used in mouse over fade out effect */ */
+      /** The alpha value used in mouse over fade out effect */
       float mAlpha;
+      
     };
 
   }

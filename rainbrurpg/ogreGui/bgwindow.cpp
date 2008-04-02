@@ -318,8 +318,10 @@ in(unsigned int mx, unsigned int my, unsigned int px, unsigned int py){
   * \return \c true if the event is handled or \c false otherwise
   *
   */
-bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
+bool BetaGUI::Window::check(unsigned int px, unsigned int py, 
+			    const MouseEvent& event){
   bool inWindow=in(px, py, 0, 0);
+  bool LMB=event.isLeftMouseButtonPressed();
 
   // If we are outside window
   if (!inWindow){
@@ -358,7 +360,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py, bool LMB){
   if (scEvent) return true;
 
   return mScrollPane->handleChildsEvent( px, py, 
-					 LMB, this );
+					 event, this );
 }
 
 /** Add a widget to this window

@@ -55,4 +55,8 @@ datafiles_DATA= bgui.button.active.png     		\
 		\
 		nav.material				\
 		nav.button.png				\
-		nav.button.active.png
+		nav.button.active.png			\
+		\
+		mcl.ascsort.png				\
+		mcl.descsort.png			\
+		mcl.nosort.png

@@ -38,6 +38,7 @@
 
 #include "skinmanager.h"
 #include "object.h"
+#include "mouseevent.h"
 
 #include <OgreVector4.h>
 #include <OgreRectangle.h>
@@ -80,7 +81,7 @@ namespace RainbruRPG{
 
       virtual void setTransparency(float f);
 
-      virtual bool injectMouse(unsigned int, unsigned int, bool);
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
 
       virtual void setLeft(int);
       virtual void setTop(int);

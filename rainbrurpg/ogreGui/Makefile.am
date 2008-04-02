@@ -16,6 +16,7 @@ h_sources= bgbutton.h			\
 	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   mouseevent.h			\	
 	   mousepointer.h		\
 	   multicolumnlist.h		\
 	   multicolumnlistcell.h	\
@@ -53,6 +54,7 @@ cc_sources= bgbutton.cpp		\
 	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    mouseevent.cpp		\
 	    mousepointer.cpp		\
 	    multicolumnlist.cpp		\
 	    multicolumnlistcell.cpp	\

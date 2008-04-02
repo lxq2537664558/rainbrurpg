@@ -35,10 +35,16 @@ using namespace std;
 namespace RainbruRPG{
   namespace OgreGui{
 
+    /** The type of a MultiColumnListCell
+      *
+      */
     typedef enum{
       MCT_TEXT //!< The cell contains only text
     }tMultiColumnListCellType;
 
+    /** A cell of a MultiVolumnList
+      *
+      */
     class MultiColumnListCell{
     public:
       MultiColumnListCell(const string&);
@@ -47,12 +53,19 @@ namespace RainbruRPG{
       const tMultiColumnListCellType& getType(void)const;
       const string& getText(void)const;
 
+      /** Is this cell a text one
+        *
+	* \return \c true if \c mType==MCT_TEXT
+	*
+	*/
       inline bool isText(void){ 
 	return (mType==MCT_TEXT); 
       };
 
     private:
+      /** The cell's type */
       tMultiColumnListCellType mType;
+      /** The cell caption*/
       string mCaption;
     };
 

@@ -83,6 +83,8 @@ namespace RainbruRPG{
       virtual ~ScrollBar();
 
       void setTransparency(float);
+
+      /** Inject a mouse event */
       virtual bool injectMouse(unsigned int, unsigned int, bool)=0;
 
       void setMax(int);

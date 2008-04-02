@@ -152,7 +152,7 @@ namespace RainbruRPG{
  
      /** Graphically create a Label widget
        *
-       * \param qr       The QuadRenderer used to draw
+       * \param qr      The QuadRenderer used to draw
        * \param dim     The widget's dimension in pixels in a 
        *                Ogre::Vector4 object
        * \param caption The rendered text
@@ -162,7 +162,15 @@ namespace RainbruRPG{
      virtual void drawLabel(QuadRenderer*qr, Rectangle dim, String caption, 
 			    Window* parent)=0;
 
-
+     /** Draw a tool tip
+       *
+       * \param qr      The QuadRenderer used to draw
+       * \param dim     The tool tip's dimension in pixels in a 
+       *                Ogre::Vector4 object
+       * \param caption The rendered text
+       *
+       */
+     virtual void drawToolTip(QuadRenderer*qr, Rectangle dim, String caption)=0;
 
      /** Draw a vertical scrollbar
        *  

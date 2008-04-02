@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 01 apr 2008 : Windows event is now handle when mouse button state changed
  * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
  * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
  * - 16 nov 2007 : dialogOverlay implementation
@@ -26,6 +27,8 @@
 
 #include <vector>
 #include <list>
+
+#include "mouseevent.h"
 
 // Forward declarations
 namespace Ogre{
@@ -136,14 +139,12 @@ namespace BetaGUI {
     void moveWindowToForeGround(Window*);
     void deactivateAllOtherWindow(Window*);
 
+    bool handleWindowsEvents(void);
+
     /** A const iterator over windowList */
     typedef list<Window*>::const_iterator WindowListIterator;
     /** An iterator used to cross the list from end to begin */
     typedef list<Window*>::reverse_iterator WindowListReverseIterator;
-
-    /** Is a mouse button currently pressed */
-    static bool isMouseButtonPressed;
-
 
     /** The current GUI transparency value
       *
@@ -223,6 +224,12 @@ namespace BetaGUI {
     
     /** The mouse pointer */
     MousePointer* mousePointer;
+
+    RainbruRPG::OgreGui::MouseEvent mMouseEvent;
+
+    unsigned int mMouseX;
+    unsigned int mMouseY;
+
   };
 }
 

@@ -33,6 +33,7 @@
 #include "bgbutton.h"
 #include "titlebar.h"
 #include "mousepointer.h"
+#include "mouseevent.h"
 
 // Forward declarations
 namespace RainbruRPG{
@@ -72,7 +73,7 @@ namespace BetaGUI {
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
-    bool check(unsigned int, unsigned int, bool); 
+    bool check(unsigned int, unsigned int, const MouseEvent&); 
     bool checkKey(String, unsigned int, unsigned int);
 
     GUI* getGUI();
