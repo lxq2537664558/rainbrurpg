@@ -43,6 +43,7 @@ namespace RainbruRPG{
     class QuadRenderer;
     class VScrollBar;
     class HScrollBar;
+    class DrawingDevSettings;
   }
 }
 // End of forward declarations
@@ -69,8 +70,8 @@ namespace RainbruRPG{
       *
       * The scrollpane ability to move all childs widget with scrollbars
       * is done by using the 
-      * \ref  RainbruRPG::OgreGui::QuadRenderer::setDrawingDev
-      * "setDrawingDev()" function.
+      * \ref  RainbruRPG::OgreGui::DrawingDevSettings "DrawingDevSettings"
+      * class.
       *
       * \note A scropane test window is created if the \c configure script
       *       is called with the \c --enable-scrollp-test option.
@@ -120,23 +121,10 @@ namespace RainbruRPG{
       /** The horizontal scrollbar policy */
       tScrollBarPolicy mHScrollBarPolicy;
 
-
       /** The drawing deviation used to move all chids widgets
         *
-	* \sa \ref RainbruRPG::OgreGui::QuadRenderer::setDrawingDev
-	*     "setDrawingDev()"
-	*
-	*/
-      int xDrawingDev;
-
-      /** The drawing deviation used to move all chids widgets
-        *
-	* \sa \ref RainbruRPG::OgreGui::QuadRenderer::setDrawingDev
-	*     "setDrawingDev()"
-	*
-	*/
-      int yDrawingDev;
-
+	*/     
+      DrawingDevSettings* mDrawingDev;
     };
 
   }

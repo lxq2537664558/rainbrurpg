@@ -109,11 +109,22 @@ bool RainbruRPG::OgreGui::MouseEvent::isLeftButtonLongClick(void)const{
   return mLongClick;
 }
 
+/** Tells if a left button click occured
+  *
+  * \return \c true if a click occured on the left mouse button
+  *
+  */
 bool RainbruRPG::OgreGui::MouseEvent::isLeftButtonClick(void)const{
   return mLeftClick;
 }
 
-void RainbruRPG::OgreGui::MouseEvent::mouseMove(unsigned int, unsigned int){
+/** Handles a mouse move event
+  *
+  * \param px, py Mouse position
+  *
+  */
+void RainbruRPG::OgreGui::MouseEvent::
+mouseMove(unsigned int px, unsigned int py){
   if (!mLeftMouseButtonPressed){
     mLongClick=false;
     mLeftClick=false;

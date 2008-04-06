@@ -27,6 +27,7 @@
 #include "widget.h"
 #include "hscrollbar.h"
 #include "vscrollbar.h"
+#include "drawingdevsettings.h"
 
 #include <OgreOverlayManager.h>
 #include <OgreException.h>
@@ -51,8 +52,7 @@ ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):
   Container(dim, parent, sid),
   mVScrollBarPolicy(SBP_IF_NEEDED),
   mHScrollBarPolicy(SBP_IF_NEEDED),
-  xDrawingDev(0),
-  yDrawingDev(0)
+  mDrawingDev(NULL)
 {
 
   Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
@@ -70,6 +70,11 @@ ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):
   mVScrollBar->sigValueChanged.connect( sigc::mem_fun(this,
      &RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange));
 
+  std::string s = "ScrollPane of the '";
+  s += parent->getTitle();
+  s += "' window";
+  mDrawingDev = new DrawingDevSettings(s);
+
 }
 
 /** The destructor
@@ -81,6 +86,9 @@ RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
 
   delete mHScrollBar;
   mHScrollBar=NULL;
+
+  delete mDrawingDev;
+  mDrawingDev=NULL;
 
 }
 
@@ -106,9 +114,9 @@ void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
   mVScrollBar->draw(qr);
   mHScrollBar->draw(qr);
 
-  qr->setDrawingDev(xDrawingDev, yDrawingDev);
+  qr->addDrawingDev( mDrawingDev );
   Container::draw(qr);
-  qr->disableDrawingDev();
+  qr->removeDrawingDev( mDrawingDev );
   qr->setUseParentScissor(false);
 }
 
@@ -336,7 +344,7 @@ void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange(int i){
-  xDrawingDev=i;
+  mDrawingDev->setDevX( i );
 }
 
 /** The vertical scrollbar slot
@@ -350,7 +358,7 @@ void RainbruRPG::OgreGui::ScrollPane::horizontalScrollBarValueChange(int i){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
-  yDrawingDev=i;
+  mDrawingDev->setDevY( i );
 }
 
 /** Handles the scrollbars events
@@ -393,8 +401,8 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
   bool LMB=event.isLeftMouseButtonPressed();
 
   // Handles drawing dev
-  px+=xDrawingDev;
-  py+=yDrawingDev;
+  px += mDrawingDev->getDevX();
+  py += mDrawingDev->getDevY();
 
   // If we are outside window, we don't handle events
   if (!inWindow){

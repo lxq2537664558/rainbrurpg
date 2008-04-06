@@ -1,6 +1,7 @@
 TODO
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
+- Revoir versionning librairies
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
@@ -96,8 +97,28 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-174
+- (13) configure.in now define library version for OgreGUI and Common
+- ScrollPane use DrawingDevSettings
+- QuadRenderer now using DrawingDevList
+- DrawingDevList implementation
+- DrawingDevSettings implementation
+- soBetaGui::drawToolTip save and restore parent scissor rectangle
+  settings to fox a bug
+- QuadRenderer::renderGlyphs now set the scissorRectangle if needed
+  It fixes a bug in the multicolumnlist header renderering 
+- MultiColumnListColumn::setMinimumWidth() implementation
+- MultiColumnList column can be resized
+- Better column move handling that avoid clipping when between two column
+- User can move MultiColumnList's columns
+- Do not change movingColumn when moving over another column
+- Column's ghost is correct
+
 * v 0.0.5-173
-- (17) ToolTip on columnheader to explain how to move column
+- ToolTip::hide() bug fixed
+- FontManager space fixed
+- ToolTip is now a class
+- ToolTip on columnheader to explain how to move column
 - Skin drawToolTip() implementation
 - MultiColumnList's selection work in ordered list
 - MultiColumnList sort OK

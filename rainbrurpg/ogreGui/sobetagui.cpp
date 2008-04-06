@@ -33,6 +33,7 @@
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcell.h"
+#include "tooltip.h"
 
 #include <logger.h>
 
@@ -631,14 +632,29 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
 }
 
+/** Draws a ToolTip
+  *
+  * For drawing a tooltip, parent scissor must be deactivate temporarily
+  * to avoid the tool tip box to be chopped.
+  *
+  * \param qr   The QuadRenderer object
+  * \param tt   The ToolTip to draw
+  *
+  */
 void RainbruRPG::OgreGui::soBetaGui::
-drawToolTip(QuadRenderer* qr, Rectangle dim, String text){
+drawToolTip(QuadRenderer* qr, ToolTip* tt){
+  Rectangle dim(tt->getCorners());
+  String text=tt->getText();
+
   Ogre::ColourValue BGColor( 0.2f, 0.2f, 0.4f );
   Ogre::ColourValue shadowColor( 0.2f, 0.2f, 0.2f );
   Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
   TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
 						    10, 1.0f, 1.0f, 1.0f );
 
+  // Get parent scissor rectangle settings and disable it
+  Ogre::Rectangle sr=qr->getClipRegion();
+  qr->setUseParentScissor(false);
 
   // Draw shadow
   Rectangle shadow;
@@ -659,6 +675,10 @@ drawToolTip(QuadRenderer* qr, Rectangle dim, String text){
   dim.right  -= margin;
   dim.bottom -= margin;
   qr->drawText(tsMclColumnHeader, text, dim, true);
+
+  // Re-set the parent scissor rectangle settings
+  qr->setScissorRectangle(sr);
+  qr->setUseParentScissor(true);
 
 }
 
@@ -681,6 +701,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   // Drawing list rectangle
   Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
   Ogre::Rectangle r=mcl->getAbsoluteCorners();
+
   qr->drawRectangleLines(r,c);
   
   //Header bottom line
@@ -723,7 +744,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     
     columnCaption.right-=16; // Remove sortSignRect size
 
-    if (colIndex == movingColumn-1){
+    if (colIndex == movingColumn){
       qr->enableGhost();
     }
 
@@ -753,11 +774,15 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     qr->drawRectangle(sortSignRect);
 
 
+    if (colIndex == movingColumn-1){
+      qr->enableGhost();
+    }
+    
     // Left line
     x+=(*iter)->getWidth();
     qr->drawLine( x, y1, x, y2, c );
 
-    if (colIndex == movingColumn-1){
+    if (colIndex == movingColumn || colIndex == movingColumn-1){
       qr->disableGhost();
     }
     
@@ -800,10 +825,8 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     }
     else if ((*ili)->inTransition()){
       // Using item's alpha
-      float currentAlpha=qr->getAlpha();
       float itemAlpha=(*ili)->getMouseOverAlpha();
-
-      qr->setAlpha(itemAlpha);
+      float currentAlpha = qr->setTempAlpha(itemAlpha);
       qr->drawFilledRectangle( itemBG, itemBGColor );
       qr->setAlpha(currentAlpha);
     }
@@ -840,8 +863,6 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     itemRect.bottom=itemRect.top+20;
     itemBG.top+=20;
     itemBG.bottom=itemBG.top+20;
-   
-
   }
 
   qr->reset();

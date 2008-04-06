@@ -225,9 +225,11 @@ namespace BetaGUI {
     /** The mouse pointer */
     MousePointer* mousePointer;
 
+    /** The mouse event object, sent when firing event */
     RainbruRPG::OgreGui::MouseEvent mMouseEvent;
-
+    /** The mouse X position */
     unsigned int mMouseX;
+    /** The mouse Y position */
     unsigned int mMouseY;
 
   };

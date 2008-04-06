@@ -35,6 +35,7 @@ RainbruRPG::OgreGui::MultiColumnListColumn::
 MultiColumnListColumn(const std::string& vCaption, int vWidth):
   mCaption(vCaption),
   mWidth(vWidth),
+  mMinimumWidth(vWidth),
   mSelected(false),
   mSortPolicy(MCS_NONE),
   mParent(NULL),
@@ -143,4 +144,28 @@ getSortPolicy(void) const{
   */
 void RainbruRPG::OgreGui::MultiColumnListColumn::resetSort(void){
   mSortPolicy=MCS_NONE;
+}
+
+/** Changes the width of this column
+  *
+  * \param vWidth The new width value
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::resize(int vWidth){
+  if (vWidth > mMinimumWidth){
+    mWidth = vWidth;
+  }
+  else{
+    mWidth = mMinimumWidth;
+  }
+}
+
+/** Set the minimum width
+  *
+  * \param vMinWidth The minimum width in pixels
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::
+setMinimumWidth(int vMinWidth){
+  mMinimumWidth = vMinWidth;
 }

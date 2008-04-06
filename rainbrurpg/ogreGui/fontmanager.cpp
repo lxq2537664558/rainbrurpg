@@ -205,6 +205,9 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
 
     width = slot->bitmap.width + GLYPH_PAD_SPACE;
     if (width==GLYPH_PAD_SPACE){
+      if (charCode == 32){
+	width = GLYPH_PAD_SPACE + (vFont->getSize() / 2);
+      }
       string warn;
       warn= "Glyph width is NULL for charcode ";
       warn+=StringConv::getSingleton().itos(charCode);
@@ -212,11 +215,10 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
     }
 
     // see if we need to wrap to next row
-    if ( ( cur_x + width ) >= vTexSize )
-      {
-	cur_x = 0;
-	cur_y += vFont->getMaxGlyphHeight();
-      }
+    if ( ( cur_x + width ) >= vTexSize ){
+      cur_x = 0;
+      cur_y += vFont->getMaxGlyphHeight();
+    }
     
     // calculate offset into buffer for this glyph
     int* dest_buffer = vBuffer + ( cur_y * vTexSize ) + cur_x;

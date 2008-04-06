@@ -44,6 +44,8 @@ namespace RainbruRPG{
       const std::string& getCaption(void)const;
       int getWidth(void)const;
 
+      void setMinimumWidth(int);
+
       void setSelected(bool);
       bool isSelected(void)const;
 
@@ -53,11 +55,16 @@ namespace RainbruRPG{
       void toggleSort(void);
       void setParentIndex(MultiColumnList*, int);
 
+      void resize(int);
+
     private:
       /** The caption of the column */
       std::string mCaption;
       /** The width of the column in pixels */
       int mWidth;
+      /** The minimum allowed width in pixels */
+      int mMinimumWidth;
+
       /** Is this column header selected (mouse-overed) */
       bool mSelected;
       /** The sort policy of this column */

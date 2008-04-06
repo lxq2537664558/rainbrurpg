@@ -183,3 +183,18 @@ const std::string& RainbruRPG::OgreGui::MultiColumnListItem::
 getString(int vColumn){
   return mList[vColumn]->getText();
 }
+
+/** Swap two cell by their column index
+  *
+  * This function is used when user moves a column.
+  *
+  * \param vCol1, vCol2 The indexes of the column to swap
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListItem::
+swapColumns( int vCol1, int vCol2 ){
+  MultiColumnListCell* item=mList[vCol2];
+  mList[vCol2]=mList[vCol1];
+  mList[vCol1]=item;
+  item=NULL;
+}

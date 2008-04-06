@@ -24,6 +24,7 @@
 
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
+#include "tooltip.h"
 
 #include <logger.h>
 #include <quadrenderer.h>
@@ -86,12 +87,35 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* parent,
   selectedItem(NULL),
   mLastColumnRight(0),
   mCurrentSortPolicy(MCS_NONE),
-  mToolTipText("Long time click to move column"),
-  mDrawToolTip(false),
-  mMovingColumn(-1)
+  mMovingColumn(-1),
+  mToolTip(NULL),
+  mMouseXDev(0),
+  mResizedColumnIndex(-1),
+  mResiedColumnRightPos(0),
+  mVScrollBar(NULL),
+  mHScrollBar(NULL)
 {
   mSkin = SkinManager::getSingleton().getSkin(this);
+  mToolTip=new ToolTip(Vector4(0, 0, 200, 50), 
+		       "Long time click to move column. Right button for "
+		       "contextual menu.",
+		       parent, sid);
   makeCorners();
+}
+
+/** The destructor
+  *
+  */
+RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
+  if (mVScrollBar){
+    delete mVScrollBar;
+    mVScrollBar=NULL;
+  }
+
+  if (mHScrollBar){
+    delete mHScrollBar;
+    mHScrollBar=NULL;
+  }
 }
 
 /** Draws the widget
@@ -108,9 +132,9 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
     
     mSkin->drawMultiColumnList( qr, this );
 
-    if (mDrawToolTip){
-      mSkin->drawToolTip( qr, mToolTipDim, mToolTipText );
-    }
+
+    mToolTip->draw( qr );
+
   }
 }
 
@@ -119,8 +143,10 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
   * \param vCaption The caption of this column
   * \param vWidth   The width in pixels
   *
+  * \return The newly created column
+  *
   */
-void RainbruRPG::OgreGui::MultiColumnList::
+MultiColumnListColumn* RainbruRPG::OgreGui::MultiColumnList::
 addColumn( const std::string& vCaption, int vWidth ){
   
   MultiColumnListColumn* col=new MultiColumnListColumn(vCaption, vWidth);
@@ -128,6 +154,8 @@ addColumn( const std::string& vCaption, int vWidth ){
   col->setParentIndex(this, mColumnList.size());
   mColumnList.push_back(col);
   makeCorners();
+
+  return col;
 }
 
 /** Get the list of column
@@ -229,6 +257,14 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event){
   }
 }
 
+/** Set the sort of this list
+  * 
+  * With one call, we can set the column index and the policy we must apply.
+  *
+  * \param vIndex  The index of the column
+  * \param vPolicy The sort policy
+  *
+  */
 void RainbruRPG::OgreGui::MultiColumnList::
 setSort(int vIndex, tMultiColumnListColumnSortPolicy vPolicy){
   if (mCurrentSortedColumn != -1 && mCurrentSortedColumn!=vIndex){
@@ -246,27 +282,47 @@ setSort(int vIndex, tMultiColumnListColumnSortPolicy vPolicy){
   }
 }
 
+/** Move and show the tooltip
+  *
+  * \param px, py The mouse position
+  *
+  */
 void RainbruRPG::OgreGui::MultiColumnList::
 handleToolTip(unsigned int px, unsigned int py){
-  px += 25;
-  py += 30;
-
-  mToolTipDim.left   = px;
-  mToolTipDim.top    = py;
-  mToolTipDim.right  = px+150;
-  mToolTipDim.bottom = py+40;
-  mDrawToolTip = true;
+  mToolTip->move( px + 25, py + 30 );
+  mToolTip->show();
+  
 }
 
-// return -1 if no column is moving
+/** Get the index of the column we are moving 
+  *
+  * \return -1 if no column is moving
+  *
+  */
 int RainbruRPG::OgreGui::MultiColumnList::getMovedColumnIndex(void)const{
   return mMovingColumn;
 }
 
-
+/** Handles mouse events on the given item list
+  *
+  * This function is used in sorted or unsorted item list according to
+  * the mCurrentSortPolicy value.
+  *
+  * \param px, py    The mouse position
+  * \param event     The mouse event
+  * \param vItemList The item list we handle events for
+  *
+  * \return \c true if the event is used
+  *
+  */
 bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
+
+  // Move the ToolTip, even outside the Widget if it is in transition
+  if ( mToolTip->inTransition() )
+    mToolTip->move( px + 25, py + 30 );
+
 
   bool LMB=event.isLeftMouseButtonPressed();
 
@@ -275,15 +331,48 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 
   unsigned int colIndex=0;
 
+  // Resizing column
+  if (mResizedColumnIndex!=-1){
+    if (!LMB){
+      mResizedColumnIndex=-1;
+      mMouseXDev=0;
+    }
+    else{
+      mColumnList[mResizedColumnIndex]
+	->resize((px - mResiedColumnRightPos) + mMouseXDev);
+      return true;
+    }
+  }
+
+  // Handling column headers events
   if (px > corners.left && px < corners.right ){
     if (py > corners.top && py < corners.top + mHeaderHeight ){
       colLeft=corners.left;
 
       for (colIter=mColumnList.begin(); colIter!=mColumnList.end(); colIter++){
 	colRight=colLeft+(*colIter)->getWidth();
-	if (px > colLeft && px < colRight ){
-	  // We are in column header
-	  (*colIter)->setSelected(true);
+	// Resizing column
+	if ( (px > colRight - COLUMN_RESIZE_SENSITIVITY) &&
+	     (px < colRight + COLUMN_RESIZE_SENSITIVITY)){
+	  if (LMB){
+	    if (mResizedColumnIndex==-1 && mMovingColumn==-1){
+	      mResizedColumnIndex=colIndex;
+	      mMouseXDev = colRight - px;
+	      mResiedColumnRightPos = colLeft;
+	      return true;
+	    }
+	  }
+	  else{
+	    mResizedColumnIndex=-1;
+	  }
+	}
+	else if ((px > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
+	    px < colRight - COLUMN_RESIZE_SENSITIVITY ){
+	  // We are in column header, select it only if no column are moving
+	  if (mMovingColumn == -1){
+	    (*colIter)->setSelected(true);
+	  }
+
 	  if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
 	  if (selectedColumn && selectedColumn!=(*colIter) ){
 	    selectedColumn->setSelected(false);
@@ -291,19 +380,22 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	  selectedColumn=(*colIter);
 
 	  if (event.isLeftButtonClick()){
-	    LOGI("isLeftButtonClick=true");
+	    mToolTip->hide();
 	    selectedColumn->toggleSort();
 	  }
 	  else if (event.isLeftButtonLongClick()){
 	    // Moving column
-	    LOGCATS("Moving column ");
-	    LOGCATI(colIndex);
-	    LOGCAT();
-	    mDrawToolTip=false;
-	    mMovingColumn=colIndex;
+	    mToolTip->hide();
+	    // Moving column only if no column is moving
+	    if (mMovingColumn == -1){
+	      mMovingColumn=colIndex;
+	    }
+
+	    handleMovingColumn(px, py, colLeft, colRight, colIndex);
 	  }
 	  else if (!LMB){
 	    handleToolTip(px, py);
+	    mMovingColumn=-1;
 	  }
 	  return true;
 	}
@@ -313,7 +405,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 
     }
     else{
-      mDrawToolTip=false;
+      mToolTip->hide();
       // An item should be selected
       int a=py - (corners.top + mHeaderHeight);
       int itemIdx=(int)a/20;
@@ -348,7 +440,60 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 
   if (selectedColumn) selectedColumn->setSelected(false);
   if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
+  mToolTip->hide();
+  //  mMovingColumn=-1;
   return false;
-
-
 }
+
+/** Handling of the moving column
+  *
+  * Here, we know that a column is moving (mouse left button
+  * long clik) and we check if we need a column swap.
+  *
+  * \param vPx, vPy  The mouse position
+  * \param vColLeft  The left position of the moving column
+  * \param vColRight The right position of the moving column
+  * \param vColIndex The index of the moving column
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::
+handleMovingColumn(int vPx, int vPy, int vColLeft, int vColRight, 
+		   int vColIndex){
+
+  // Limit clipping when moving a little column to a large one
+  if (mMovingColumn < mColumnList.size()-1){
+    int leftColDiff = mColumnList[mMovingColumn+1]->getWidth() - 
+      mColumnList[mMovingColumn]->getWidth();
+    if (leftColDiff>0){
+      vColLeft += (leftColDiff/2);
+    }
+  }
+  if (mMovingColumn > 1){
+    int RightColDiff = mColumnList[mMovingColumn-1]->getWidth() - 
+      mColumnList[mMovingColumn]->getWidth();
+    if (RightColDiff>0){
+      vColRight -= (RightColDiff/2);
+    }
+  }
+
+  // Moving the column
+  if ((vPx > vColLeft &&  vColIndex > mMovingColumn) ||
+      (vPx < vColRight && vColIndex < mMovingColumn)){
+
+    // Swapping column
+    MultiColumnListColumn* item=mColumnList[vColIndex];
+    mColumnList[vColIndex]=mColumnList[mMovingColumn];
+    mColumnList[mMovingColumn]=item;
+
+    // Swapping item's column
+    tMultiColumnListItemList::iterator iter;
+    for (iter=mItemList.begin(); iter!=mItemList.end(); iter++){
+      (*iter)->swapColumns( mMovingColumn, vColIndex );
+    }
+
+    // The moving column doesn't change
+    mMovingColumn=vColIndex;
+
+  }
+}
+

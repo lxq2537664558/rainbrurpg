@@ -59,6 +59,7 @@ namespace RainbruRPG{
       bool mLeftMouseButtonPressed;
       /** Is the left button pressed for a long time*/
       bool mLongClick;
+      /** Is the left button clicked */
       bool mLeftClick;
       /** The click start time */
       unsigned long mClickStartTime;

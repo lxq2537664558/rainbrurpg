@@ -168,7 +168,7 @@ librainbrurpg_common_la_LIBADD= $(fox config)
 librainbrurpg_common_la_LDFLAGS=      	        \
   $(SHARED_FLAG)				\
   -version-info					\
-  $(GENERIC_LIBRARY_VERSION)			\
+  $(COMMON_LIBRARY_VERSION)			\
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
   $(libcurl_LIBS)
 

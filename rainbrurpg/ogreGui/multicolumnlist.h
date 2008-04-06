@@ -39,6 +39,9 @@
 #include <list>
 #include <algorithm> // for sort
 
+/// The sensitivity in pixels
+#define COLUMN_RESIZE_SENSITIVITY 4
+
 // Forward declaration
 namespace BetaGUI {
   class Window;
@@ -49,6 +52,9 @@ namespace RainbruRPG{
     class Skin;
     class MultiColumnListColumn;
     class MultiColumnListItem;
+    class ToolTip;
+    class VScrollBar;
+    class HScrollBar;
   }
 }
 // End of Forward declaration
@@ -64,6 +70,11 @@ namespace RainbruRPG{
     // End of global functions declaration
 
 
+    /** An enumeration defining the sort policy
+      *
+      *
+      *
+      */
     typedef enum{
       MCS_NONE       =0,  //!< Not sorted
       MCS_ASCENDANT,      // Column is sorted in ascendant order
@@ -84,7 +95,9 @@ namespace RainbruRPG{
       MultiColumnList(Vector4, BetaGUI::Window*, 
 		      RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_PARENT);
 
-      void addColumn( const std::string&, int );
+      ~MultiColumnList(void);
+
+      MultiColumnListColumn* addColumn( const std::string&, int );
       void addItem( MultiColumnListItem* );
 
       virtual void draw(QuadRenderer*);
@@ -102,6 +115,12 @@ namespace RainbruRPG{
 
       void setSort(int, tMultiColumnListColumnSortPolicy);
 
+      /** The current column we apply sort to
+        *
+	* This variable is static cause we use it in compMclItemAsc()
+	* and compMclItemDesc() global functions. 
+	*
+	*/
       static int mCurrentSortedColumn;
 
     protected:
@@ -111,6 +130,7 @@ namespace RainbruRPG{
 			tMultiColumnListItemList );
 
       void handleToolTip(unsigned int, unsigned int);
+      void handleMovingColumn(int, int, int, int, int);
 
     private:
       /** Keeping current skin instance*/
@@ -143,15 +163,22 @@ namespace RainbruRPG{
       /** The current sort policy */
       tMultiColumnListColumnSortPolicy mCurrentSortPolicy;
 
-      /** The tool tip pext */
-      std::string mToolTipText;
-
-      /** Should we draw tool tip */
-      bool mDrawToolTip;
-      /* The tool tip dimensions */
-      Ogre::Rectangle mToolTipDim;
       /** The column we are moving */
       int mMovingColumn;
+      /** A tool tip used to show a help text on how to move column */
+      ToolTip* mToolTip;
+
+      /** Mouse X dev when resizing column */
+      int mMouseXDev;
+      /** The Index of the column we are resizing */
+      int mResizedColumnIndex;
+      /** The right position of the column we are resizing */
+      int mResiedColumnRightPos;
+
+      /** The vertical scrollbar */
+      VScrollBar* mVScrollBar;
+      /** The horizontal scrollbar */
+      HScrollBar* mHScrollBar;
     };
   }
 }

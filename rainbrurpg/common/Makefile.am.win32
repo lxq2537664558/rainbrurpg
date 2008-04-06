@@ -157,7 +157,7 @@ cc_sources= loadbmp.cpp				\
 	  serverlistitem.cpp
 
 LD_USER_FLAGS = $(SHARED_FLAG) -version-info		\
-				$(GENERIC_LIBRARY_VERSION) -Wl,--rpath \
+				$(COMMON_LIBRARY_VERSION) -Wl,--rpath \
 				-Wl,$(DESTDIR)$(libdir)    		\
 				$(CROSS_COMPIL_LIBS)
 

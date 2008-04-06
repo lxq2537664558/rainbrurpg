@@ -80,6 +80,8 @@ namespace RainbruRPG{
 
       const std::string& getString(int);
 
+      void swapColumns( int, int );
+
     private:
       /** The list of cell */
       tMultiColumnListCellList mList;

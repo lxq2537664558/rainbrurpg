@@ -16,7 +16,7 @@ h_sources=  betagui.h bggui.h
 cc_sources= betagui.cpp bggui.cpp
 
 LD_USER_FLAGS = $(SHARED_FLAG) -version-info		\
-				$(GENERIC_LIBRARY_VERSION) -Wl,--rpath \
+				$(OGREGUI_LIBRARY_VERSION) -Wl,--rpath \
 				-Wl,$(DESTDIR)$(libdir)    		\
 				$(CROSS_COMPIL_LIBS)
 

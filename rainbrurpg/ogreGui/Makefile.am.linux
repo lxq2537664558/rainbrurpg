@@ -9,6 +9,8 @@ h_sources= bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   container.h			\
+	   drawingdevlist.h		\
+	   drawingdevsettings.h		\
 	   font.h			\
 	   fontmanager.h		\
 	   glyph.h			\
@@ -16,7 +18,7 @@ h_sources= bgbutton.h			\
 	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
-	   mouseevent.h			\	
+	   mouseevent.h			\
 	   mousepointer.h		\
 	   multicolumnlist.h		\
 	   multicolumnlistcell.h	\
@@ -36,6 +38,7 @@ h_sources= bgbutton.h			\
 	   staticimage.h		\
 	   textsettings.h		\
 	   titlebar.h			\
+	   tooltip.h			\
 	   vector3.h			\
 	   vscrollbar.h			\
 	   widget.h
@@ -47,6 +50,8 @@ cc_sources= bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    container.cpp		\
+	    drawingdevlist.cpp		\
+	    drawingdevsettings.cpp	\
 	    font.cpp			\
 	    fontmanager.cpp		\
 	    glyph.cpp			\
@@ -74,6 +79,7 @@ cc_sources= bgbutton.cpp		\
 	    staticimage.cpp		\
 	    textsettings.cpp		\
 	    titlebar.cpp		\
+	    tooltip.cpp			\
 	    vector3.cpp			\
 	    vscrollbar.cpp		\
 	    widget.cpp
@@ -93,7 +99,7 @@ librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 librainbrurpg_ogregui_la_LIBADD= 
 librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)	\
 				  -version-info  	\
-				  $(GENERIC_LIBRARY_VERSION)		\
+				  $(OGREGUI_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
 			  $(shell pkg-config sigc++-2.0 OGRE--libs)	\
 				  $(shell freetype-config --libs)

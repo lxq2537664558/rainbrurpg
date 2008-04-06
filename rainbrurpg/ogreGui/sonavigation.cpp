@@ -255,12 +255,11 @@ drawMultiColumnList(QuadRenderer* qr, MultiColumnList* mcl){
   * The navigation skin does not provide ToolTip.
   *
   * \param qr   The QuadRenderer object
-  * \param dim  The MultiColumnList to draw
-  * \param text The text 
+  * \param tt   The ToolTip to draw
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawToolTip(QuadRenderer* qr, Rectangle dim, String text){
+drawToolTip(QuadRenderer* qr, ToolTip* tt){
   LOGW("soNavigation cannot draw ToolTip");
 
 }

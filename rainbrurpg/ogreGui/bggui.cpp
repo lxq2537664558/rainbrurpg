@@ -134,6 +134,9 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
   }
 }
 
+/** Fire event on all windows
+  *
+  */
 bool BetaGUI::GUI::handleWindowsEvents(void){
   WindowListReverseIterator iter;
   for( iter=windowList.rbegin(); iter!=windowList.rend(); iter++){

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 05 apr 2008 : Now uses DrawingDevList
  * - 01 apr 2008 : ghost handling implementation
  * - 25 mar 2008 : drawLine() implementation
  * - 23 feb 2008 : DrawingDev implementation
@@ -40,6 +41,7 @@
 #include "font.h" // For text alignment enumerations
 #include "vector3.h"
 #include "guivertex.h"
+#include "drawingdevlist.h"
 
 #include <vector>
 #include <iostream>
@@ -53,6 +55,7 @@
 namespace RainbruRPG {
   namespace OgreGui {
     class TextSettings;
+    class DrawingDevSettings;
   }
 }
 // End of forward declarations
@@ -119,11 +122,11 @@ namespace RainbruRPG {
       *
       * \section sec_QuadRenderer_DrawingDev The DrawingDev feature
       *
-      * The DrawingDev functions control the ability to move all quads and 
+      * The DrawingDev feature control the ability to move all quads and 
       * text we draw around X and Y axis. This is used by the ScrollPane widget
       * when it moves all its childs according to the scrollbars values. 
-      * The DrawingDev feature is then deactivated using the 
-      * disableDrawingDev() function.
+      * Please see the DrawingDevSettings for more infos. You add
+      * it with the addDrawingDev() and remove it with removeDrawingDev().
       *
       * Please see the ScrollPane::draw() implementation for more details 
       * and an usage example.
@@ -174,9 +177,6 @@ namespace RainbruRPG {
       void setUseParentScissor(bool);
       bool getUseParentScissor(void);
 
-      void setDrawingDev(int, int);
-      void disableDrawingDev(void);
-
       void debug(const std::string&);
 
       void drawLine( int, int, int, int, const ColourValue& );
@@ -189,6 +189,12 @@ namespace RainbruRPG {
 
       void enableGhost(void);
       void disableGhost(void);
+
+      float setTempAlpha(float);
+
+      void addDrawingDev(DrawingDevSettings*);
+      void removeDrawingDev(DrawingDevSettings*);
+
 
     protected:
       void setupHardwareBuffer(void);
@@ -366,12 +372,6 @@ namespace RainbruRPG {
 	*/
       bool useParentScissor;
 
-      /** Tells if we are using the DrawingDev feature */
-      bool usingDrawingDev;
-      /** The DrawingDev value for the X axis */
-      int xDrawingDev;
-      /** The DrawingDev value for the Y axis */
-      int yDrawingDev;
       /** The alpha value if no ghost were applied
         *
 	* The ghost value is directly applied to alphaValue. To keep its
@@ -380,6 +380,9 @@ namespace RainbruRPG {
 	*
 	*/
       float mAlphaNoGhost;
+
+      /** The list of drawing dev */
+      DrawingDevList* mDrawingDevList;
 
     };
   }

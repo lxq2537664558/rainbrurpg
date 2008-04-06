@@ -49,6 +49,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class MultiColumnList;
+    class ToolTip;
   }
 }
 // End of forward declarations
@@ -164,13 +165,11 @@ namespace RainbruRPG{
 
      /** Draw a tool tip
        *
-       * \param qr      The QuadRenderer used to draw
-       * \param dim     The tool tip's dimension in pixels in a 
-       *                Ogre::Vector4 object
-       * \param caption The rendered text
+       * \param qr The QuadRenderer used to draw
+       * \param tt The ToolTip
        *
        */
-     virtual void drawToolTip(QuadRenderer*qr, Rectangle dim, String caption)=0;
+     virtual void drawToolTip(QuadRenderer*qr, ToolTip* tt)=0;
 
      /** Draw a vertical scrollbar
        *  

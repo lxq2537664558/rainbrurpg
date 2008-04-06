@@ -311,9 +311,9 @@ in(unsigned int mx, unsigned int my, unsigned int px, unsigned int py){
   * RainbruRPG::OgreGui::Widget::injectMouse() Widget::injectMouse() \endlink
   * function.
   *
-  * \param px The X position of the mouse
-  * \param py The X position of the mouse
-  * \param LMB The left mouse button status
+  * \param px    The X position of the mouse
+  * \param py    The X position of the mouse
+  * \param event The mouse event
   *
   * \return \c true if the event is handled or \c false otherwise
   *

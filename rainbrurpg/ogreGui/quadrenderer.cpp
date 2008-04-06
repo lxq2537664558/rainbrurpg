@@ -57,10 +57,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mBuffer(NULL),
   mBatchPointer(NULL),
   useParentScissor(false),
-  usingDrawingDev(false),
-  xDrawingDev(0),
-  yDrawingDev(0),
-  mAlphaNoGhost(0.0f)
+  mAlphaNoGhost(0.0f),
+  mDrawingDevList(NULL)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -68,7 +66,7 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   createTexture();
 
   mFlipY = ( mRenderSystem->getName( ) != "OpenGL Rendering Subsystem" );
-
+  mDrawingDevList=new DrawingDevList();
 }
 
 /** The destructor
@@ -80,6 +78,11 @@ RainbruRPG::OgreGui::QuadRenderer::~QuadRenderer(){
   mRenderSystem = NULL;
   mViewport     = NULL;
   mBatchPointer = NULL;
+
+  if (mDrawingDevList){
+    delete mDrawingDevList;
+  }
+  mDrawingDevList=NULL;
 }
 
 
@@ -227,11 +230,11 @@ void RainbruRPG::OgreGui::QuadRenderer::createTexture(){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 setCorners(int x1, int y1, int x2, int y2){
-  if (usingDrawingDev){
-    x1-=xDrawingDev;
-    y1-=yDrawingDev;
-    x2-=xDrawingDev;
-    y2-=yDrawingDev;
+  if (!mDrawingDevList->empty()){
+    x1 -= mDrawingDevList->getDevXSum();
+    y1 -= mDrawingDevList->getDevYSum();
+    x2 -= mDrawingDevList->getDevXSum();
+    y2 -= mDrawingDevList->getDevYSum();
   }
 
   finalRect.left  =xPixelToNative(x1);
@@ -534,9 +537,9 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
     buildUV( vUV, &uv );
   }
 
-  // Write the quad to the buffer
   checkHardwareBuffer(mBatchPointer);
 
+  // Write the quad to the buffer
   for ( int x = 0; x < 6; x++ ){
     mBatchPointer[x].setPosition(verts[x]);
     mBatchPointer[x].setColor(mColor);
@@ -601,11 +604,11 @@ void RainbruRPG::OgreGui::QuadRenderer::
 buildVertices( const Rectangle& vIn, vector<OgreGui::Vector3>* vOut ) const{
 
   Rectangle devRect=vIn;
-  if (usingDrawingDev){
-    devRect.left   -= xDrawingDev;
-    devRect.top    -= yDrawingDev;
-    devRect.right  -= xDrawingDev;
-    devRect.bottom -= yDrawingDev;
+  if (!mDrawingDevList->empty()){
+    devRect.left   -= mDrawingDevList->getDevXSum();
+    devRect.top    -= mDrawingDevList->getDevYSum();
+    devRect.right  -= mDrawingDevList->getDevXSum();
+    devRect.bottom -= mDrawingDevList->getDevYSum();
   }
 
   // Calculate final screen rectangle
@@ -678,6 +681,15 @@ getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
+
+  if (useScissor || useParentScissor){
+      mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				     scissorRect.right, scissorRect.bottom );
+  }
+  else{
+    mRenderSystem->setScissorTest(false);
+  }
+
   setBlendMode(QBM_ALPHA);
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
@@ -850,9 +862,9 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
   setCorners( vRect.left, vRect.top, vRect.right, vRect.bottom );
   feedVectors( &vert, &uvs, &cols );
   
-  mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
+  /*  mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
   				 vRect.right, vRect.bottom );
-
+  */
   // drawQuad
   if (mBuffer->isLocked()){
     mBuffer->unlock();
@@ -921,49 +933,6 @@ float RainbruRPG::OgreGui::QuadRenderer::getAlpha(void){
   return alphaValue;
 }
 
-/** Make a deviation on all drawn elements
-  *
-  * This function is used by ScrollPane to move around all its child widgets.
-  * 
-  * \param x, y The deviation values in pixels
-  *
-  */
-void RainbruRPG::OgreGui::QuadRenderer::setDrawingDev(int x, int y){
-  usingDrawingDev=true;
-  xDrawingDev=x;
-  yDrawingDev=y;
-}
-
-/** Disable the drawing deviation
-  *
-  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::setDrawingDev "setDrawingDev"
-  *
-  */
-void RainbruRPG::OgreGui::QuadRenderer::disableDrawingDev(void){
-  usingDrawingDev=false;
-  xDrawingDev=0;
-  yDrawingDev=0;
-}
-
-/** Debug this QuadRenderer
-  *
-  * \param from The name of the fonction calling this (for backtrace 
-  *             informations)
-  *
-  */
-void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
-  // Intro
-  ostringstream s;
-  s << "QuadRenderer::debug() called from " << from << endl;
-  s << "usingDrawingDev : " << usingDrawingDev << endl;
-  s << "using scrissor rectangle : " << useScissor << endl;
-  s << "using parent scrissor : " << useParentScissor << endl;
-  s << "Alpha value :" << alphaValue << endl;
-
-  LOGI(s.str().c_str());
-
-}
-
 /** Get a point in native coordonate from pixels values
   *
   * \param vIn  The pixels vector
@@ -973,9 +942,9 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
 void RainbruRPG::OgreGui::QuadRenderer::
 getFinalPoint(const Vector3& vIn, Vector3& vOut) const{
 
-  if (usingDrawingDev){
-    vOut.setX( xPixelToNative( vIn.getX() - xDrawingDev ) );
-    vOut.setY( yPixelToNative( vIn.getY() - yDrawingDev ) );
+  if (!mDrawingDevList->empty()){
+    vOut.setX( xPixelToNative( vIn.getX() - mDrawingDevList->getDevXSum() ) );
+    vOut.setY( yPixelToNative( vIn.getY() - mDrawingDevList->getDevYSum() ) );
   }
   else{
     vOut.setX( xPixelToNative( vIn.getX() ) );
@@ -1172,3 +1141,71 @@ void RainbruRPG::OgreGui::QuadRenderer::enableGhost(void){
 void RainbruRPG::OgreGui::QuadRenderer::disableGhost(void){
   alphaValue=mAlphaNoGhost;
 }
+
+/** Set a temporary alpha value
+  *
+  * The alpha value that result will never be up to alphaValue. The
+  * current aloha value is returned to be set back later.
+  *
+  * \param vAlpha The temporary alpha value
+  * 
+  * \return The alpha value before the temporary one is applied
+  *
+  */
+float RainbruRPG::OgreGui::QuadRenderer::setTempAlpha(float vAlpha){
+  float ret=alphaValue;
+  
+  if (vAlpha<alphaValue){
+    alphaValue = vAlpha;
+  }
+  
+  return ret;
+}
+
+/** Debug this QuadRenderer
+  *
+  * \param from The name of the fonction calling this (for backtrace 
+  *             informations)
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
+  // Intro
+  ostringstream s;
+  s << "QuadRenderer::debug() called from " << from << endl;
+  s << mDrawingDevList->toString() << endl;
+  s << "using scrissor rectangle : " << useScissor << endl;
+  s << "using parent scrissor : " << useParentScissor << endl;
+  s << "Scissor rectangle :" << endl
+    << "  .left   = " << scissorRect.left   << endl
+    << "  .top    = " << scissorRect.top    << endl
+    << "  .right  = " << scissorRect.right  << endl
+    << "  .bottom = " << scissorRect.bottom << endl;
+  
+  s << "Alpha value :" << alphaValue << endl;
+
+  LOGI(s.str().c_str());
+
+}
+
+/** Adds a DrawingDevSettings to the mDrawingDevList list
+  *
+  * \param vDev the DrawingDevSettings to add
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+addDrawingDev(DrawingDevSettings* vDev){
+  mDrawingDevList->addSettings(vDev);
+}
+
+/** Removes a DrawingDevSettings to the mDrawingDevList list
+  *
+  * \param vDev the DrawingDevSettings to remove
+  *
+  */
+void RainbruRPG::OgreGui::QuadRenderer::
+removeDrawingDev(DrawingDevSettings* vDev){
+  mDrawingDevList->removeSettings(vDev);
+
+}
+
+
