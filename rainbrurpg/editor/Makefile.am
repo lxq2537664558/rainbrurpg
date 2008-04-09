@@ -8,12 +8,15 @@ rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\
 			-lrainbrurpg-design 		\
 			-L$(top_srcdir)/common/.libs 	\
 			-L$(top_srcdir)/design/.libs 	\
-			-L$(top_srcdir)/maincore/.libs
+			-L$(top_srcdir)/maincore/.libs	\
+			-L$(top_srcdir)/ogreGui/.libs
 
 OGRE_CFLAGS= -I/usr/local/include/OGRE
 
-INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
-	   -I$(top_srcdir)/design/ \
+INCLUDES = -I$(top_srcdir)/common/ 			\
+	   -I$(top_srcdir)/maincore/ 			\
+	   -I$(top_srcdir)/design/ 			\
+	   -I$(top_srcdir)/ogreGui/			\
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore \
 	    $(shell pkg-config OGRE --cflags) 
@@ -57,7 +60,7 @@ nodist_rainbrurpg_editor_SOURCES = moc_mainwindow.cpp       \
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
-	moc $< -o $@
+	moc-qt4 $< -o $@
 
 # Adjust this line according to your resources.qrc
 resources.cpp : resources.qrc #octave-gui.png

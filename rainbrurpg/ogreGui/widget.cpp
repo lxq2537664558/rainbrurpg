@@ -215,14 +215,12 @@ void RainbruRPG::OgreGui::Widget::resize(int px, int py){
   geometryDirty=true;
 }
 
-/** Move this window
+/** Move this widget
   *
-  * This moves the window according to the movingDevX and movingDevY values.
+  * This moves the widget and set the geometryDirty flag to \c true.
   *
-  * \param px The mouse pointer position in pixels
-  * \param py The mouse pointer position in pixels
-  *
-  * \sa movingDevX, movingDevX.
+  * \param px The new left position
+  * \param py The new top position
   *
   */
 void RainbruRPG::OgreGui::Widget::move(int px, int py){
@@ -232,7 +230,7 @@ void RainbruRPG::OgreGui::Widget::move(int px, int py){
   corners.left=px;
   corners.top=py;
 
-  // Negatiev position is forbiden
+  // Negative position is forbiden
   if (corners.left<0) corners.left=0;
   if (corners.top<0)  corners.top=0;
 
@@ -253,21 +251,21 @@ void RainbruRPG::OgreGui::Widget::setGeometryDirty(void){
 
 }
 
-/** Hide this window
+/** Hide this widget
   *
   */
 void RainbruRPG::OgreGui::Widget::hide(){
   visible=false;
 }
 
-/** Set this window visible
+/** Set this widget visible
   *
   */
 void RainbruRPG::OgreGui::Widget::show(){
   visible=true;
 }
 
-/** Is ths window visible ?
+/** Is ths widget visible ?
   *
   * \return \c true if this window is visible otherwise return \c false
   *

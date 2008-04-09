@@ -5,20 +5,22 @@
 == go to the changelog.dev directory
 ==
 
-* v0.0.6
-- CEGUI is give up. Using BetaGUI based GUI instead
-- Server provide a tool to manage the quarantine :
+* v0.0.6 (144-???)
+- OgreGui replacing CEGUI 
+  Many widgets implemented with custom primitives rendering engine
+- Switching to Ogre 1.4.3 (Eihort) (PLSM is also updated)
+- Server provide a tool to manage the quarantine
 - Conditional linking : If you do not build server or editor, the configure
   script will not test the presence of Qt4 and libmagic. The design library will
   not be built if neither the server nor the editor is enabled.
 	
-* v0.0.5
+* v0.0.5 (117-143)
 - Switching to Ogre 1.2.5 (PLSM is also updated)
 - Server implements FTP protocol (RFC 0959) : This implementation is not 
   compatible with official fTP client but the common library contains a 
   compatible client and the tools directory  contains an ftp client executable.
 
-* v0.0.4 (97-???)
+* v0.0.4 (95-116)
 - Server has a treeview of client connection
 - Server understand the first network packet (npIdentification)
 - xIdent server panel complete	
@@ -28,15 +30,15 @@
   An object can be selected
 - Starting implementation of the Server based on Qt 4/MySql 5/enet
 
-* v0.0.3 (89-96)
+* v0.0.3 (88-94)
 - An option editor can be opened from the Launcher
 - Many menu and gamestates improvement
 
-* v0.0.2 (76-88)
+* v0.0.2 (75-87)
 - The client is now builds with Ogre 1.2/CEGUI 0.5 (no more Irrlicht)
 - Launcher depends on Fox-Toolfit 1.6 (no more FLTK)
 
-* v0.0.1 (0-75)
+* v0.0.1 (0-74)
 - A basic client builds with Irrlicht/CEGUI
 - A in-game debugging console
 - A FLTK launcher to choose graphic renderer

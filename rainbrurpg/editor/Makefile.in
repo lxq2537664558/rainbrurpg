@@ -104,6 +104,7 @@ CEGUI_CFLAGS = @CEGUI_CFLAGS@
 CEGUI_LIBS = @CEGUI_LIBS@
 CFLAGS = @CFLAGS@
 COMMON_LIBRARY_VERSION = @COMMON_LIBRARY_VERSION@
+CORE_LIBRARY_VERSION = @CORE_LIBRARY_VERSION@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -113,6 +114,7 @@ CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DESIGN_LIBRARY_VERSION = @DESIGN_LIBRARY_VERSION@
 DSYMUTIL = @DSYMUTIL@
 ECHO = @ECHO@
 ECHO_C = @ECHO_C@
@@ -124,7 +126,6 @@ F77 = @F77@
 FFLAGS = @FFLAGS@
 GENERIC_API_VERSION = @GENERIC_API_VERSION@
 GENERIC_LIBRARY_NAME = @GENERIC_LIBRARY_NAME@
-GENERIC_LIBRARY_VERSION = @GENERIC_LIBRARY_VERSION@
 GENERIC_RELEASE = @GENERIC_RELEASE@
 GENERIC_VERSION = @GENERIC_VERSION@
 GREP = @GREP@
@@ -180,6 +181,7 @@ SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TAPI_LIBRARY_VERSION = @TAPI_LIBRARY_VERSION@
 VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
@@ -237,10 +239,13 @@ rainbrurpg_editor_LDADD = -lQtCore -lQtGui 		\
 			-lrainbrurpg-design 		\
 			-L$(top_srcdir)/common/.libs 	\
 			-L$(top_srcdir)/design/.libs 	\
-			-L$(top_srcdir)/maincore/.libs
+			-L$(top_srcdir)/maincore/.libs	\
+			-L$(top_srcdir)/ogreGui/.libs
 
-INCLUDES = -I$(top_srcdir)/common/ -I$(top_srcdir)/maincore/ \
-	   -I$(top_srcdir)/design/ \
+INCLUDES = -I$(top_srcdir)/common/ 			\
+	   -I$(top_srcdir)/maincore/ 			\
+	   -I$(top_srcdir)/design/ 			\
+	   -I$(top_srcdir)/ogreGui/			\
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
            -I/usr/include/qt4/QtCore \
 	    $(shell pkg-config OGRE --cflags) 
@@ -593,7 +598,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
-	moc $< -o $@
+	moc-qt4 $< -o $@
 
 # Adjust this line according to your resources.qrc
 resources.cpp : resources.qrc #octave-gui.png

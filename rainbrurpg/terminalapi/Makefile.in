@@ -113,6 +113,7 @@ CEGUI_CFLAGS = @CEGUI_CFLAGS@
 CEGUI_LIBS = @CEGUI_LIBS@
 CFLAGS = @CFLAGS@
 COMMON_LIBRARY_VERSION = @COMMON_LIBRARY_VERSION@
+CORE_LIBRARY_VERSION = @CORE_LIBRARY_VERSION@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -122,6 +123,7 @@ CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DESIGN_LIBRARY_VERSION = @DESIGN_LIBRARY_VERSION@
 DSYMUTIL = @DSYMUTIL@
 ECHO = @ECHO@
 ECHO_C = @ECHO_C@
@@ -133,7 +135,6 @@ F77 = @F77@
 FFLAGS = @FFLAGS@
 GENERIC_API_VERSION = @GENERIC_API_VERSION@
 GENERIC_LIBRARY_NAME = @GENERIC_LIBRARY_NAME@
-GENERIC_LIBRARY_VERSION = @GENERIC_LIBRARY_VERSION@
 GENERIC_RELEASE = @GENERIC_RELEASE@
 GENERIC_VERSION = @GENERIC_VERSION@
 GREP = @GREP@
@@ -189,6 +190,7 @@ SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TAPI_LIBRARY_VERSION = @TAPI_LIBRARY_VERSION@
 VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
@@ -290,7 +292,12 @@ library_include_HEADERS = $(h_sources)
 INCLUDES = -I$(top_srcdir)/common
 librainbrurpg_terminalapi_la_SOURCES = $(h_sources) $(cc_sources)
 librainbrurpg_terminalapi_la_LIBADD = -lslang -lrainbrurpg-common
-librainbrurpg_terminalapi_la_LDFLAGS = $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -L$(top_srcdir)/common/.libs -Wl,--rpath -Wl,$(top_srcdir)/common/.libs
+librainbrurpg_terminalapi_la_LDFLAGS = \
+	$(SHARED_FLAG) 					\
+	-version-info $(TAPI_LIBRARY_VERSION) 		\
+	-L$(top_srcdir)/common/.libs -Wl,--rpath 	\
+	-Wl,$(top_srcdir)/common/.libs
+
 all: all-am
 
 .SUFFIXES:

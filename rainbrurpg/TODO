@@ -1,7 +1,8 @@
 TODO
 
+* Libraries versionning in doc/libVersionning.html
+
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- Revoir versionning librairies
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
@@ -97,8 +98,21 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-175
+
 * v 0.0.5-174
-- (13) configure.in now define library version for OgreGUI and Common
+- Doxygen documentation update (some undocumented functions)
+- MultiColumnList's ScrollBars are shown only if needed
+- MultiColumnList contains ScrollBars
+- New Doxygen related page for libraries versionning
+- Fix an error in tools/transmsg linking
+  Adding -L$(top_srcdir)/common/.libs flag in *_LDADD
+  The same error occurs and is fixed in xIdent, netFlooder, ftpClient,
+  hashsum and unit tests
+- Bugfix : editor cannot find libOgreGui (L, l and I options
+  added to Makefile.am
+- Using moc-qt4 instead of moc for Qt based libraries
+- configure.in now define library version for OgreGUI and Common
 - ScrollPane use DrawingDevSettings
 - QuadRenderer now using DrawingDevList
 - DrawingDevList implementation

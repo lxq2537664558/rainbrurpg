@@ -53,7 +53,13 @@ RainbruRPG::Core::gsMainMenu::gsMainMenu():
   ,ctrlWin(NULL)
 #endif // RB_SCROLLPANE_TEST
 #ifdef RB_MULTICOLUMNLIST_TEST
+  ,mcl(NULL)
   ,MultiColumnListWin(NULL)
+  ,MultiColumnListCtrlWin(NULL)
+  ,btnAddMclItem(NULL)
+  ,tiMclCol1(NULL)
+  ,tiMclCol2(NULL)
+  ,tiMclCol3(NULL)
 #endif // RB_MULTICOLUMNLIST_TEST
 {
 
@@ -71,6 +77,19 @@ RainbruRPG::Core::gsMainMenu::~gsMainMenu(){
     delete velocity;
     velocity=NULL;
   }
+#ifdef RB_SCROLLPANE_TEST
+  delete ScrollPaneTestWin;
+  delete ctrlWin;
+#endif // RB_SCROLLPANE_TEST
+#ifdef RB_MULTICOLUMNLIST_TEST
+  delete mcl;
+  delete MultiColumnListWin;
+  delete MultiColumnListCtrlWin;
+  delete btnAddMclItem;
+  delete tiMclCol1;
+  delete tiMclCol2;
+  delete tiMclCol3;
+#endif // RB_MULTICOLUMNLIST_TEST
 }
 
 
@@ -218,6 +237,11 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
     onAddLabel();
   }
 #endif // RB_SCROLLPANE_TEST
+#ifdef RB_MULTICOLUMNLIST_TEST
+  else if ( b==btnAddMclItem ){
+    onAddItem();
+  }
+#endif // RB_MULTICOLUMNLIST_TEST
   else{
     LOGW("gsMainMenu::onButtonPress called");
   }
@@ -336,8 +360,8 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
 				  "MultiColumnList test", mGUI);
     mGUI->addWindow(MultiColumnListWin);
 
-    Vector4 labPosDim(10,30,320,330);
-    MultiColumnList* mcl=new MultiColumnList(labPosDim, MultiColumnListWin);
+    Vector4 mclPosDim(10,30,320,330);
+    mcl=new MultiColumnList(mclPosDim, MultiColumnListWin);
     MultiColumnListWin->addWidget(mcl);
 
     mcl->addColumn( "Col1", 60 );
@@ -345,33 +369,99 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
     mcl->addColumn( "Column3", 140 );
 
     // Adding item 1
-    MultiColumnListItem* it1=new MultiColumnListItem();
-    it1->setText(0, "IT1ST1");
-    it1->setText(1, "IT1ST2");
-    it1->setText(2, "IT1ST3");
-    mcl->addItem(it1);
+    addItem("IT1ST1", "IT1ST2", "IT1ST3");
+    addItem("Khean", "Carine", "Jerome");
+    addItem("AAA", "Carine", "Jerome");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
+    addItem("qsd", "sdf", "dfg");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
+    addItem("qsd", "sdf", "dfg");
+    addItem("AAA", "Carine", "Jerome");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
+    addItem("qsd", "sdf", "dfg");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
 
-    MultiColumnListItem* it2=new MultiColumnListItem();
-    it2->setText(0, "Khean");
-    it2->setText(1, "Carine");
-    it2->setText(2, "Jerome");
-    mcl->addItem(it2);
+    // Control window
+    MultiColumnListCtrlWin=new Window(Vector4(200, 385, 420, 90),
+		       BetaGUI::OWT_RESIZE_AND_MOVE, 
+		       "MCLTest control window", mGUI);
+    mGUI->addWindow(MultiColumnListCtrlWin);
 
-    MultiColumnListItem* it3=new MultiColumnListItem();
-    it3->setText(0, "AAA");
-    it3->setText(1, "Carine");
-    it3->setText(2, "Jerome");
-    mcl->addItem(it3);
-
-    MultiColumnListItem* it4=new MultiColumnListItem();
-    it4->setText(0, "BBB");
-    it4->setText(1, "Carine");
-    it4->setText(2, "Jerome");
-    mcl->addItem(it4);
+    Vector4 labPosDim(12,30,50,20);
+    Label* labPos=new Label(labPosDim,"Item content", MultiColumnListCtrlWin);
+    MultiColumnListCtrlWin->addWidget(labPos);
+    
+    Vector4 tiXPosDim(120,30,90,20);
+    tiMclCol1 = new TextInput(tiXPosDim, "", 5, MultiColumnListCtrlWin);
+    MultiColumnListCtrlWin->addWidget(tiMclCol1);
+    
+    Vector4 tiYPosDim(220,30,90,20);
+    tiMclCol2 = new TextInput(tiYPosDim, "", 5, MultiColumnListCtrlWin);
+    MultiColumnListCtrlWin->addWidget(tiMclCol2);
+ 
+    Vector4 tiCol3PosDim(320,30,90,20);
+    tiMclCol3 = new TextInput(tiCol3PosDim, "", 5, MultiColumnListCtrlWin);
+    MultiColumnListCtrlWin->addWidget(tiMclCol3);
+   
+    btnAddMclItem = new PushButton(Vector4(130, 55, 160, 24),
+				 "Add Item", 
+				 BetaGUI::Callback::Callback(this), 
+				 MultiColumnListCtrlWin);
+    MultiColumnListCtrlWin->addWidget(btnAddMclItem);
   }
   else{
     MultiColumnListWin->show();
   }
+}
+
+/** Add an item in the MultiColumnList used for test
+  *
+  * \note This function is build only if RB_MULTICOLUMNLIST_TEST is defined.
+  *
+  * \param s1, s2, s3 The columns captions
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::
+addItem(const string& s1, const string& s2, const string& s3){
+  MultiColumnListItem* item=new MultiColumnListItem();
+  item->setText(0, s1);
+  item->setText(1, s2);
+  item->setText(2, s3);
+  mcl->addItem(item);
+}
+
+/** The Add item button caption
+  *
+  * \note This function is build only if RB_MULTICOLUMNLIST_TEST is defined.
+  *
+  */
+void RainbruRPG::Core::gsMainMenu::onAddItem(void){
+  String col1, col2, col3;
+  col1 = tiMclCol1->getValue();
+  col2 = tiMclCol2->getValue();
+  col3 = tiMclCol3->getValue();
+
+  bool e1, e2, e3;
+  e1 = col1.empty();
+  e2 = col2.empty();
+  e3 = col3.empty();
+
+  if (!e1 && !e2 && !e3){
+    addItem( col1, col2, col3 );
+    tiMclCol1->setValue("");
+    tiMclCol2->setValue("");
+    tiMclCol3->setValue("");
+  }
+  else{
+    LOGW("At least one column is empty. Item is not added");
+  }
+
 
 }
+
+
 #endif // RB_MULTICOLUMNLIST_TEST

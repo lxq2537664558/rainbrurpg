@@ -1,7 +1,8 @@
 # The final program is called "myapp"
 bin_PROGRAMS = rainbrurpg-tools-hashsum
 
-rainbrurpg_tools_hashsum_LDADD=-lrainbrurpg-common
+rainbrurpg_tools_hashsum_LDADD = -lrainbrurpg-common			\
+				 -L$(top_srcdir)/common/.libs 
 
 glib_cflags = $(shell pkg-config sigc++-2.0 --cflags) 
 

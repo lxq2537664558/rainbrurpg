@@ -92,6 +92,7 @@ CEGUI_CFLAGS = @CEGUI_CFLAGS@
 CEGUI_LIBS = @CEGUI_LIBS@
 CFLAGS = @CFLAGS@
 COMMON_LIBRARY_VERSION = @COMMON_LIBRARY_VERSION@
+CORE_LIBRARY_VERSION = @CORE_LIBRARY_VERSION@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -101,6 +102,7 @@ CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DESIGN_LIBRARY_VERSION = @DESIGN_LIBRARY_VERSION@
 DSYMUTIL = @DSYMUTIL@
 ECHO = @ECHO@
 ECHO_C = @ECHO_C@
@@ -112,7 +114,6 @@ F77 = @F77@
 FFLAGS = @FFLAGS@
 GENERIC_API_VERSION = @GENERIC_API_VERSION@
 GENERIC_LIBRARY_NAME = @GENERIC_LIBRARY_NAME@
-GENERIC_LIBRARY_VERSION = @GENERIC_LIBRARY_VERSION@
 GENERIC_RELEASE = @GENERIC_RELEASE@
 GENERIC_VERSION = @GENERIC_VERSION@
 GREP = @GREP@
@@ -168,6 +169,7 @@ SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TAPI_LIBRARY_VERSION = @TAPI_LIBRARY_VERSION@
 VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
@@ -220,7 +222,11 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
 #add_libs = $(shell pkg-config --libs glib-2.0 sigc++-2.0)
-rainbrurpg_tools_netflooder_LDADD = -lrainbrurpg-common -lglib-2.0 -lsigc-2.0
+rainbrurpg_tools_netflooder_LDADD = -lrainbrurpg-common 	\
+				    -lglib-2.0 			\
+				    -lsigc-2.0			\
+				    -L$(top_srcdir)/common/.libs 
+
 glib_cflags = $(shell pkg-config glib-2.0 sigc++-2.0 --cflags) 
 INCLUDES = -I$(top_srcdir)/common $(glib_cflags)
 rainbrurpg_tools_netflooder_SOURCES = main.cpp			\

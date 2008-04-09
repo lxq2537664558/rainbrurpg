@@ -67,7 +67,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
-	moc $< -o $@
+	moc-qt4 $< -o $@
 
 # Adjust this line according to your resources.qrc
 resources.cpp : resources.qrc #octave-gui.png

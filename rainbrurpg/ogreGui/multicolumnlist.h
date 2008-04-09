@@ -115,6 +115,12 @@ namespace RainbruRPG{
 
       void setSort(int, tMultiColumnListColumnSortPolicy);
 
+      void horizontalScrollBarValueChange(int);
+      void verticalScrollBarValueChange(int);
+
+      bool isHorizontalScrollbarNeeded(void);
+      bool isVerticalScrollbarNeeded(void);
+
       /** The current column we apply sort to
         *
 	* This variable is static cause we use it in compMclItemAsc()
@@ -125,12 +131,14 @@ namespace RainbruRPG{
 
     protected:
       void makeCorners(void);
+      void computeLastColumnRight();
 
       bool injectMouse(	unsigned int, unsigned int, const MouseEvent&, 
 			tMultiColumnListItemList );
 
       void handleToolTip(unsigned int, unsigned int);
       void handleMovingColumn(int, int, int, int, int);
+      void handleScrollBarsVisibility(void);
 
     private:
       /** Keeping current skin instance*/

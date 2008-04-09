@@ -25,11 +25,15 @@
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
 #include "tooltip.h"
+#include "hscrollbar.h"
+#include "vscrollbar.h"
 
 #include <logger.h>
 #include <quadrenderer.h>
 
 #include <OgreColourValue.h>
+
+#define VSB_YPOS 2
 
 // Static data member initialization
 int RainbruRPG::OgreGui::MultiColumnList::mCurrentSortedColumn = -1;
@@ -72,14 +76,14 @@ compMclItemDesc( MultiColumnListItem*it1, MultiColumnListItem* it2){
 /** Constructor
   *
   * \param dim    The dimensions in pixels
-  * \param parent The parent window
+  * \param vParent The parent window
   * \param sid    The skin 
   *
   */
 RainbruRPG::OgreGui::MultiColumnList::
-MultiColumnList(Vector4 dim, BetaGUI::Window* parent, 
+MultiColumnList(Vector4 dim, BetaGUI::Window* vParent, 
 		RainbruRPG::OgreGui::OgreGuiSkinID sid):
-  Widget(dim, (Widget*)parent, sid),
+  Widget(dim, (Widget*)vParent, sid),
   mHeaderHeight(20),
   mAbsCorners(),
   selectedColumn(NULL),
@@ -99,7 +103,24 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* parent,
   mToolTip=new ToolTip(Vector4(0, 0, 200, 50), 
 		       "Long time click to move column. Right button for "
 		       "contextual menu.",
-		       parent, sid);
+		       vParent, sid);
+
+  Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
+  mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
+  //  this->addWidget(mVScrollBar);
+
+  Vector4 sbDim2( 2, dim.w-16, dim.z-20, 14 );
+  mHScrollBar=new HScrollBar(sbDim2, parent);
+  //  this->addWidget(mHScrollBar);
+
+  // Signals connection
+  mHScrollBar->sigValueChanged.connect( sigc::mem_fun(this,
+     &RainbruRPG::OgreGui::MultiColumnList::horizontalScrollBarValueChange));
+
+  mVScrollBar->sigValueChanged.connect( sigc::mem_fun(this,
+     &RainbruRPG::OgreGui::MultiColumnList::verticalScrollBarValueChange));
+
+
   makeCorners();
 }
 
@@ -134,7 +155,8 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
 
 
     mToolTip->draw( qr );
-
+    mVScrollBar->draw( qr );
+    mHScrollBar->draw( qr );
   }
 }
 
@@ -154,7 +176,6 @@ addColumn( const std::string& vCaption, int vWidth ){
   col->setParentIndex(this, mColumnList.size());
   mColumnList.push_back(col);
   makeCorners();
-
   return col;
 }
 
@@ -166,24 +187,6 @@ addColumn( const std::string& vCaption, int vWidth ){
 const tMultiColumnListColumnList& RainbruRPG::OgreGui::MultiColumnList::
 getColumnList(void){
   return mColumnList;
-}
-
-/** Pre-compute corners 
-  *
-  *
-  */
-void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
-  mAbsCorners.top    = corners.top + parent->getTop();
-  mAbsCorners.left   = corners.left + parent->getLeft();
-  mAbsCorners.bottom = corners.bottom + parent->getTop();
-  mAbsCorners.right  = corners.right + parent->getLeft();
-  
-  // compute mLastColumnRight
-  mLastColumnRight=mAbsCorners.left;
-  tMultiColumnListColumnList::const_iterator iter;
-  for (iter=mColumnList.begin(); iter!=mColumnList.end(); iter++){
-    mLastColumnRight+=(*iter)->getWidth();
-  }
 }
 
 /** Get the absolute corners
@@ -228,6 +231,7 @@ getItemList(void){
 void RainbruRPG::OgreGui::MultiColumnList::addItem( MultiColumnListItem* it ){
   mItemList.push_back( it );
   mSortedItemList.push_back( it );
+  handleScrollBarsVisibility();
 }
 
 /** Get the right position of the last column
@@ -340,6 +344,9 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
     else{
       mColumnList[mResizedColumnIndex]
 	->resize((px - mResiedColumnRightPos) + mMouseXDev);
+      computeLastColumnRight();
+      handleScrollBarsVisibility();
+      makeCorners(); // To recompute VScrollBar's height
       return true;
     }
   }
@@ -497,3 +504,117 @@ handleMovingColumn(int vPx, int vPy, int vColLeft, int vColRight,
   }
 }
 
+/** The horizontal value slot
+  *
+  * This function is connected to the scrollbar value changed signal.
+  *
+  * \param vValue The new scrollbar value
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::
+horizontalScrollBarValueChange(int vValue){
+
+}
+
+/** The vertical value slot
+  *
+  * This function is connected to the scrollbar value changed signal.
+  *
+  * \param vValue The new scrollbar value
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::
+verticalScrollBarValueChange(int vValue){
+  
+
+}
+
+/** Is the horizontal scrollbar needed
+  *
+  * \return \c true if we need to draw horizontal scrollbar
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnList::isHorizontalScrollbarNeeded(void){
+  if (mLastColumnRight > (corners.right - corners.left)){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+/** Is the vertical scrollbar needed
+  *
+  * \return \c true if we need to draw vertical scrollbar
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnList::isVerticalScrollbarNeeded(void){
+  unsigned int itemHeight;
+  itemHeight = mHeaderHeight;
+  itemHeight += (mItemList.size() * 20);
+  
+  if (itemHeight > (corners.bottom - corners.top)){
+    return true;
+  }
+  else{
+    return false;
+  }
+  
+}
+
+/** Changes the scrollbars visibility according to our needs
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::handleScrollBarsVisibility(void){
+  mHScrollBar->setVisible(isHorizontalScrollbarNeeded());
+  mVScrollBar->setVisible(isVerticalScrollbarNeeded());
+}
+
+/** Compute the absolute right position of the last column
+  *
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::computeLastColumnRight(){
+  mLastColumnRight=mAbsCorners.left;
+  tMultiColumnListColumnList::const_iterator iter;
+  for (iter=mColumnList.begin(); iter!=mColumnList.end(); iter++){
+    mLastColumnRight+=(*iter)->getWidth();
+  }
+}
+
+/** Pre-compute corners and other positions 
+  *
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
+  mAbsCorners.top    = corners.top + parent->getTop();
+  mAbsCorners.left   = corners.left + parent->getLeft();
+  mAbsCorners.bottom = corners.bottom + parent->getTop();
+  mAbsCorners.right  = corners.right + parent->getLeft();
+  
+  // compute mLastColumnRight
+  computeLastColumnRight();
+
+  // Set scrollbar visible (or not)
+  handleScrollBarsVisibility();
+
+  // Moves scrollbars
+  mVScrollBar->move( corners.right - 16, corners.top 
+		     + mHeaderHeight +2 );
+  mHScrollBar->move( corners.left + 2, corners.bottom - 16 );
+
+  // Resize scrollbars
+  unsigned int vScrollHeight = (corners.bottom - corners.top) 
+    - mHeaderHeight - 4;
+  if (mHScrollBar->isVisible()){
+    vScrollHeight -= mHScrollBar->getHeight();
+  }
+  mVScrollBar->setHeight( vScrollHeight );  
+
+  unsigned int hScrollWidth = (corners.right - corners.left) -4;
+  if (mVScrollBar->isVisible()){
+    hScrollWidth -= mVScrollBar->getWidth();
+  }
+  mHScrollBar->setWidth( hScrollWidth );  
+
+}

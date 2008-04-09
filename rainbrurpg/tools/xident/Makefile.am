@@ -1,7 +1,8 @@
 # The final program is called "myapp"
 bin_PROGRAMS = rainbrurpg-tools-xident
 
-rainbrurpg_tools_xident_LDADD=-lrainbrurpg-common
+rainbrurpg_tools_xident_LDADD = -lrainbrurpg-common		\
+				-L$(top_srcdir)/common/.libs 
 
 INCLUDES = -I$(top_srcdir)/common
 

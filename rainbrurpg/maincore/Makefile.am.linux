@@ -66,7 +66,7 @@ librainbrurpg_core_la_LIBADD= -lrainbrurpg-common
 
 librainbrurpg_core_la_LDFLAGS= 		       \
   $(SHARED_FLAG) -version-info 		       \
-  $(GENERIC_LIBRARY_VERSION)   		       \
+  $(CORE_LIBRARY_VERSION)   		       \
   -L$(top_srcdir)/common/.libs 		       \
   -Wl,--rpath		       		       \
   -Wl,$(top_srcdir)/common/.libs	       \

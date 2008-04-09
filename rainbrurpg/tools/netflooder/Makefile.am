@@ -3,7 +3,11 @@ bin_PROGRAMS = rainbrurpg-tools-netflooder
 
 #add_libs = $(shell pkg-config --libs glib-2.0 sigc++-2.0)
 
-rainbrurpg_tools_netflooder_LDADD = -lrainbrurpg-common -lglib-2.0 -lsigc-2.0
+rainbrurpg_tools_netflooder_LDADD = -lrainbrurpg-common 	\
+				    -lglib-2.0 			\
+				    -lsigc-2.0			\
+				    -L$(top_srcdir)/common/.libs 
+
 
 
 glib_cflags = $(shell pkg-config glib-2.0 sigc++-2.0 --cflags) 

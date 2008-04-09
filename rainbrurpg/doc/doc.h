@@ -2,7 +2,7 @@
 // It is only documentation
 
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -114,7 +114,7 @@
   */
 
 /** \page site_side Website side files
-  *Rpg-v0.0.0-70.t
+  *
   * All the files describes below are website side. These are
   * tranfered with the FTP (File Transfer Protocol). When we must
   * modify one of these files, a \c filename.lock is created.
@@ -140,18 +140,6 @@
   * more  than opne \c snapshot childs. A snapshot is a graphic
   * configuration wich can be save and restore with the Launcher.
   *
-  */
-
-/** \page rpg_libs RPGLibs
-  *
-  * In order to reduce the executable file's size, some sources are
-  * compiled and linked as a lib : rainbrurpg-commons
-  *
-  * \section udef_screenshot Undefined reference on sources with deps
-  *
-  * This compilation and linkage of the lib failed if I include on it
-  * some sources : screenshotmanager, launcher... This files need a
-  * dependance to another lib (fltk or irrlicht).
   */
 
 /** \page reg_test Regression test
@@ -189,6 +177,38 @@
   * (made with CppUnit)
   *
   * \htmlinclude regTest.pre150.html
+  */
+
+
+/** \page leb_versionning Libraries versionning
+  *
+  * The code is often build and compiled in a library, it avoid redondant
+  * code and share it between client, server and over executables.
+  *
+  * To be able to link client only with dedicated versions of libraries, I
+  * use the libtool versionning system (please see 
+  * http://www.nondot.org/sabre/Mirrored/libtool-2.1a/libtool_6.html).
+  *
+  * Here are a set of rules to help you update your library version information:
+  *
+  * -# Start with version information of `0:0:0' for each libtool library.
+  * -# Update the version information only immediately before a public 
+  *    release of your software. More frequent updates are unnecessary, 
+  *    and only guarantee that the current interface number gets larger 
+  *    faster.
+  * -# If the library source code has changed at all since the last update, 
+  *    then increment revision (`c:r:a' becomes `c:r+1:a').
+  * -# If any interfaces have been added, removed, or changed since the 
+  *    last update, increment current, and set revision to 0.
+  * -# If any interfaces have been added since the last public release, 
+  *    then increment age.
+  * -# If any interfaces have been removed since the last public release, 
+  *    then set age to 0. 
+  *
+  * \note The libraries versionning was note managed before <em>RainbruRPG</em>
+  *       version 0.0.5-174.
+  *
+  * \htmlinclude libVersionning.html
   */
 
 /** \page bug_list Bug list
@@ -485,3 +505,4 @@
   * as ogre window background.
   *
   */
+

@@ -100,9 +100,23 @@ namespace RainbruRPG {
 
 #ifdef RB_MULTICOLUMNLIST_TEST
       void createMultiColumnListTestWindow(void);
+      void onAddItem(void);
+      void addItem(const string&, const string&, const string&);
 
+      /** The MultiColumnList widget */
+      MultiColumnList* mcl;
       /** The window used to test MultiColumnList widget */
       Window* MultiColumnListWin;
+      /** The control window used to test MultiColumnList widget */
+      Window* MultiColumnListCtrlWin;
+      /** The button that adds a label in the MultiColumnList <idget */
+      PushButton* btnAddMclItem;
+      /** The test to add in MultiColumnList first column */
+      TextInput* tiMclCol1;
+      /** The test to add in MultiColumnList second column */
+      TextInput* tiMclCol2;
+      /** The test to add in MultiColumnList third column */
+      TextInput* tiMclCol3;
 #endif // RB_MULTICOLUMNLIST_TEST
 
     private:

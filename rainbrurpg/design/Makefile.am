@@ -31,7 +31,7 @@ INCLUDES = -I$(top_srcdir)/common 		\
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
-	moc $< -o $@
+	moc-qt4 $< -o $@
 
 librainbrurpg_design_la_SOURCES= $(h_sources) $(cc_sources)
 librainbrurpg_design_la_LIBADD= -lrainbrurpg-common		\
@@ -41,7 +41,7 @@ librainbrurpg_design_la_LIBADD= -lrainbrurpg-common		\
 
 librainbrurpg_design_la_LDFLAGS= \
   $(SHARED_FLAG) 		 		\
-  -version-info $(GENERIC_LIBRARY_VERSION) 	\
+  -version-info $(DESIGN_LIBRARY_VERSION) 	\
   -L$(top_srcdir)/common/.libs 			\
   -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 	\
   $(shell pkg-config OGRE --libs)

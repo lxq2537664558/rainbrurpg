@@ -53,4 +53,8 @@ INCLUDES = -I$(top_srcdir)/common
 
 librainbrurpg_terminalapi_la_SOURCES= $(h_sources) $(cc_sources)
 librainbrurpg_terminalapi_la_LIBADD= -lslang -lrainbrurpg-common
-librainbrurpg_terminalapi_la_LDFLAGS= $(SHARED_FLAG) -version-info $(GENERIC_LIBRARY_VERSION) -L$(top_srcdir)/common/.libs -Wl,--rpath -Wl,$(top_srcdir)/common/.libs
+librainbrurpg_terminalapi_la_LDFLAGS= 			\
+	$(SHARED_FLAG) 					\
+	-version-info $(TAPI_LIBRARY_VERSION) 		\
+	-L$(top_srcdir)/common/.libs -Wl,--rpath 	\
+	-Wl,$(top_srcdir)/common/.libs
