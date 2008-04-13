@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 10 apr 2008 : Focused widget handling
  * - 01 apr 2008 : Windows event is now handle when mouse button state changed
  * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
  * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
@@ -43,6 +44,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
     class MousePointer;
+    class Widget;
   }
 }
 // End of forward declarations
@@ -85,6 +87,13 @@ namespace BetaGUI {
     * void addWindowBeforeOverlays(Window*). The first one will create
     * windows that will be drawn after Ogre overlays. the second one will
     * be masked by overlays
+    *
+    * \section GUI_focusedWidget Focused widget
+    *
+    * To avoid parasite between two widget when left mouse button is down,
+    * a focused widget is used. A focused widget is the only one that
+    * can handle event when not NULL. Use setFocusedWidget() and
+    * disableFocusedidget() to use this feature.
     *
     * \note The initial alpha value of all widgets is 0.0f. This means that
     *       there are fully transparent. To be able to see your graphical
@@ -134,6 +143,10 @@ namespace BetaGUI {
     void drawMouseCursor();
 
     MousePointer* getMousePointer(void);
+
+    void setFocusedWidget(Widget*);
+    Widget* getFocusedWidget(void)const;
+    void disableFocusedWidget(void);
 
   protected:
     void moveWindowToForeGround(Window*);
@@ -231,6 +244,8 @@ namespace BetaGUI {
     unsigned int mMouseX;
     /** The mouse Y position */
     unsigned int mMouseY;
+    /** The widget that currently has the focus */
+    Widget* mFocusedWidget;
 
   };
 }

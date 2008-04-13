@@ -663,9 +663,11 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   shadow.top    = dim.top    + shadowDev;
   shadow.right  = dim.right  + shadowDev;
   shadow.bottom = dim.bottom + shadowDev;
+  qr->setScissorRectangle( shadow );
   qr->drawFilledRectangle( shadow, shadowColor);
 
   // Draw tool tip
+  qr->setScissorRectangle( dim );
   qr->drawFilledRectangle( dim,  BGColor);
   qr->drawRectangleLines(dim,c);
 
@@ -675,6 +677,7 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   dim.right  -= margin;
   dim.bottom -= margin;
   qr->drawText(tsMclColumnHeader, text, dim, true);
+  qr->disableScissor();
 
   // Re-set the parent scissor rectangle settings
   qr->setScissorRectangle(sr);

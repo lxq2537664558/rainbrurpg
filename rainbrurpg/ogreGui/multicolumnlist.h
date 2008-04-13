@@ -45,6 +45,7 @@
 // Forward declaration
 namespace BetaGUI {
   class Window;
+  class GUI;
 }
 namespace RainbruRPG{
   namespace OgreGui{
@@ -187,6 +188,8 @@ namespace RainbruRPG{
       VScrollBar* mVScrollBar;
       /** The horizontal scrollbar */
       HScrollBar* mHScrollBar;
+      /** GUI used to register focused widget */
+      GUI* mGui;
     };
   }
 }

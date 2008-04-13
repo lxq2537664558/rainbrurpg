@@ -32,7 +32,7 @@ Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
   mCaption(T.c_str()),
   active(false)
 {
-  
+  setName("Button");
   callback=C;
 
 }

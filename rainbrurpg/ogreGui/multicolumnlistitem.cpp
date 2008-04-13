@@ -198,3 +198,14 @@ swapColumns( int vCol1, int vCol2 ){
   mList[vCol1]=item;
   item=NULL;
 }
+
+void RainbruRPG::OgreGui::MultiColumnListItem::toggleSelection(void){
+
+  LOGCATS("toggleSelection was ");
+  LOGCATB(mSelected);
+  mSelected=!mSelected;
+
+  LOGCATS(" is ");
+  LOGCATB(mSelected);
+  LOGCAT();
+}

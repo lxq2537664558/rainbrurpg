@@ -10,6 +10,7 @@
 
 #include "bgwindow.h"
 #include "quadrenderer.h"
+#include "widget.h"
 
 #include <logger.h>
 #include <mousepointer.h>
@@ -36,7 +37,8 @@ BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
   mQuadRenderer(NULL),
   mousePointer(NULL),
   mMouseX(0),
-  mMouseY(0)
+  mMouseY(0),
+  mFocusedWidget(NULL)
 {
 
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
@@ -128,8 +130,36 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
     resizedWindow=NULL;
     movedWindow=NULL;
 
-    return handleWindowsEvents();
+    /* Handle focused widget events
+     *
+     * Focused widget has highter priority and other widgets event are
+     * handled only if focused widget doesn't use the mouse event (injectMouse
+     * returns false).
+     *
+     */
+    if (mFocusedWidget!=NULL){
+      
+      string s = "FocusedWidget's parent is NULL. Widget's name is `";
+      s += mFocusedWidget->getName();
+      s += "'.";
+      LOGA(mFocusedWidget->getParent(), s.c_str());
 
+      int parentX = mFocusedWidget->getParent()->getLeft();
+      int parentY = mFocusedWidget->getParent()->getTop();
+
+      bool eventUsed = mFocusedWidget->injectMouse( x-parentX, y-parentY, 
+						    mMouseEvent);
+
+      /*      if (!eventUsed){
+	mFocusedWidget=NULL;
+	LOGI("mFocusedWidget is now NULL");
+	return handleWindowsEvents();
+      }
+      */
+    }
+    else{
+      return handleWindowsEvents();
+    }
 
   }
 }
@@ -486,4 +516,37 @@ void BetaGUI::GUI::deactivateAllOtherWindow(Window* win){
   */
 MousePointer* BetaGUI::GUI::getMousePointer(void){
   return mousePointer;
+}
+
+/** Set the current focused widget
+  *
+  * If you may set a NULL focused widget, onsider using the
+  * disableFocusedidget() function.
+  *
+  * \param vWidget The new focused widget
+  *
+  */
+void BetaGUI::GUI::setFocusedWidget(Widget* vWidget){
+  LOGA(vWidget, "Focused widget set to NULL. Consider using "
+       "disableFocusedidget() function instead.");
+  mFocusedWidget=vWidget;
+}
+
+/** Get the currently focused widget
+  *
+  * \warning This function may return a NULL pointer if no widget
+  *          is focused.
+  *
+  * \return The mFocusedWidget value
+  *
+  */
+Widget* BetaGUI::GUI::getFocusedWidget(void)const{
+  return mFocusedWidget;
+}
+
+/** Disable the focused widget
+  *
+  */
+void BetaGUI::GUI::disableFocusedWidget(void){
+  mFocusedWidget=NULL;
 }

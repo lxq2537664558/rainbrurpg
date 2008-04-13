@@ -902,6 +902,8 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
 
 /** Set the parent scissor 
   *
+  * \note If \i b is \c false, the scissor is automatically disabled.
+  *
   * \param b The new useParentScissor value
   *
   * \sa \ref RainbruRPG::OgreGui::QuadRenderer::useParentScissor 
@@ -910,6 +912,10 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
   */
 void RainbruRPG::OgreGui::QuadRenderer::setUseParentScissor(bool b){
   useParentScissor=b;
+
+  if (!b){
+    disableScissor();
+  }
 }
 
 /** Get the parent scissor 

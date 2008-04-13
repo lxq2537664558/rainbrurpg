@@ -44,7 +44,7 @@ ResizeGrip(Vector4 dim, Callback callback, GUI *G, Widget* parent,
   Button(dim, "", "", callback, parent, sid),
   mSkin(NULL)
 {
-
+  setName("ResizeGrip");
   mSkin=SkinManager::getSingleton().getSkin(this);
 
 }

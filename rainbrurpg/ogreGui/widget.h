@@ -75,7 +75,7 @@ namespace RainbruRPG{
       OgreGuiSkinID getSkinId(void);
 
       void setName(const Ogre::String&);
-      const Ogre::String& getName(void);
+      virtual const Ogre::String& getName(void);
 
       Widget* getParent();
 

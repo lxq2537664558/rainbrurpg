@@ -54,7 +54,7 @@ ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):
   mHScrollBarPolicy(SBP_IF_NEEDED),
   mDrawingDev(NULL)
 {
-
+  setName("ScrollPane");
   Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
   mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
   //  this->addWidget(mVScrollBar);
@@ -371,14 +371,15 @@ void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
   *
   */
 bool RainbruRPG::OgreGui::ScrollPane::
-handleScrollBarsEvent(unsigned int px, unsigned int py, bool LMB, Window* P){
+handleScrollBarsEvent(unsigned int px, unsigned int py,  
+		      const MouseEvent& event, Window* P){
   unsigned int x=px-P->getLeft();
   unsigned int y=py-P->getTop();
 
-  bool hEvent=mHScrollBar->injectMouse( x, y, LMB );
+  bool hEvent=mHScrollBar->injectMouse( x, y, event );
   if (hEvent) return true;
 
-  return mVScrollBar->injectMouse( x, y, LMB );
+  return mVScrollBar->injectMouse( x, y, event );
 }
 
 /** Handle mouse events of childs

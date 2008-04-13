@@ -46,7 +46,7 @@ ScrollBar(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   mValue(0),
   movingCursor(false)
 {
-
+  setName("ScrollBar");
 }
 
 

@@ -42,6 +42,7 @@ ToolTip(Vector4 vDim, String vCaption, BetaGUI::Window* vParent,
   mText(vCaption),
   mTransition(false)
 {
+  setName("ToolTip");
   mSkin = SkinManager::getSingleton().getSkin(this);
   visible=false;
 

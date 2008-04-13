@@ -82,6 +82,8 @@ namespace RainbruRPG{
 
       void swapColumns( int, int );
 
+      void toggleSelection(void);
+
     private:
       /** The list of cell */
       tMultiColumnListCellList mList;

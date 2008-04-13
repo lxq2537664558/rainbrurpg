@@ -43,7 +43,7 @@ PushButton(Vector4 dim, String caption, Callback c, Window* parent,
   mSkin(NULL),
   winParent(NULL)
 {
-
+  setName("PushButton");
   mSkin=SkinManager::getSingleton().getSkin(this);
   winParent=dynamic_cast<Window*>(this->parent);
 

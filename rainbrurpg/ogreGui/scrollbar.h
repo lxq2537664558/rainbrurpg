@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 11 apr 2008 : Using MouseEvent for event handling
  * - 28 jan 2008 : Become a virtual class
  * - 21 nov 2007 : starting implementation
  *         
@@ -35,6 +36,7 @@
 
 #include "widget.h"
 #include "skinmanager.h"
+#include "mouseevent.h"
 
 #include <sigc++/sigc++.h>
 
@@ -85,7 +87,7 @@ namespace RainbruRPG{
       void setTransparency(float);
 
       /** Inject a mouse event */
-      virtual bool injectMouse(unsigned int, unsigned int, bool)=0;
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&)=0;
 
       void setMax(int);
       int getMax(void);

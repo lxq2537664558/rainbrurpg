@@ -24,9 +24,11 @@
 
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
+#include "gameengine.h"
 #include "tooltip.h"
 #include "hscrollbar.h"
 #include "vscrollbar.h"
+#include "bggui.h"
 
 #include <logger.h>
 #include <quadrenderer.h>
@@ -97,13 +99,19 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
   mResizedColumnIndex(-1),
   mResiedColumnRightPos(0),
   mVScrollBar(NULL),
-  mHScrollBar(NULL)
+  mHScrollBar(NULL),
+  mGui(NULL)
 {
   mSkin = SkinManager::getSingleton().getSkin(this);
+  mGui = GameEngine::getSingleton().getOgreGui();
+  LOGA( mGui, "GUI pointer is NULL, program should crash (segfault).");
+
   mToolTip=new ToolTip(Vector4(0, 0, 200, 50), 
 		       "Long time click to move column. Right button for "
 		       "contextual menu.",
 		       vParent, sid);
+
+  setName("MultiColumnList");
 
   Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
   mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
@@ -330,18 +338,11 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 
   bool LMB=event.isLeftMouseButtonPressed();
 
-  tMultiColumnListColumnList::iterator colIter;
-  int colLeft, colRight;
-
-  unsigned int colIndex=0;
 
   // Resizing column
   if (mResizedColumnIndex!=-1){
-    if (!LMB){
-      mResizedColumnIndex=-1;
-      mMouseXDev=0;
-    }
-    else{
+    if (event.isLeftMouseButtonPressed()){
+      mGui->setFocusedWidget(this);
       mColumnList[mResizedColumnIndex]
 	->resize((px - mResiedColumnRightPos) + mMouseXDev);
       computeLastColumnRight();
@@ -349,9 +350,20 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
       makeCorners(); // To recompute VScrollBar's height
       return true;
     }
+    else{
+      LOGI("aze");
+      mResizedColumnIndex=-1;
+      mMouseXDev=0;
+      mGui->disableFocusedWidget();
+      return true;
+    }
   }
 
   // Handling column headers events
+  tMultiColumnListColumnList::iterator colIter;
+  int colLeft, colRight;
+
+  unsigned int colIndex=0;
   if (px > corners.left && px < corners.right ){
     if (py > corners.top && py < corners.top + mHeaderHeight ){
       colLeft=corners.left;
@@ -363,6 +375,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     (px < colRight + COLUMN_RESIZE_SENSITIVITY)){
 	  if (LMB){
 	    if (mResizedColumnIndex==-1 && mMovingColumn==-1){
+	      mGui->setFocusedWidget(this);
 	      mResizedColumnIndex=colIndex;
 	      mMouseXDev = colRight - px;
 	      mResiedColumnRightPos = colLeft;
@@ -371,6 +384,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	  }
 	  else{
 	    mResizedColumnIndex=-1;
+	    return false;
 	  }
 	}
 	else if ((px > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
@@ -396,6 +410,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	    // Moving column only if no column is moving
 	    if (mMovingColumn == -1){
 	      mMovingColumn=colIndex;
+	      mGui->setFocusedWidget(this);
 	    }
 
 	    handleMovingColumn(px, py, colLeft, colRight, colIndex);
@@ -403,6 +418,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	  else if (!LMB){
 	    handleToolTip(px, py);
 	    mMovingColumn=-1;
+	    mGui->disableFocusedWidget();
 	  }
 	  return true;
 	}
@@ -418,13 +434,15 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
       int itemIdx=(int)a/20;
 
       if ( itemIdx < vItemList.size() ){
-	if (LMB){
+	if (event.isLeftButtonClick()){
 	  // Select item
-	  if (selectedItem) selectedItem->setSelected(false);
+	  if (selectedItem && selectedItem!=vItemList[itemIdx]){ 
+	    selectedItem->setSelected(false);
+	  }
 	  selectedItem=vItemList[itemIdx];
-	  selectedItem->setSelected(true);
+	  selectedItem->toggleSelection();
 	  // de-mouseover item
-	  if (mouseOveredItem == selectedItem){
+	  if (mouseOveredItem == selectedItem && selectedItem->isSelected()){
 	    mouseOveredItem->setMouseOver(false);
 	    mouseOveredItem=NULL;
 	  }

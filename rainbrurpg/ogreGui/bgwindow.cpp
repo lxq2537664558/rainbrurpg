@@ -52,11 +52,11 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   hasBorder(border),
   mCaption(caption)
 {
+  setName("Window");
+
   mSkin = SkinManager::getSingleton().getSkin(this);
   mScrollPane=new ScrollPane(D, this, sid);
   mScrollPane->setGUI(mGUI);
-
-  String name="BetaGUI.w"+StringConverter::toString(G->getWindowUniqueId());
 
   // Create the window
   Vector4 resizeGripDim, titlebarDim;
@@ -356,7 +356,7 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py,
 
   }
 
-  bool scEvent=mScrollPane->handleScrollBarsEvent(px, py, LMB, this);
+  bool scEvent=mScrollPane->handleScrollBarsEvent(px, py, event, this);
   if (scEvent) return true;
 
   return mScrollPane->handleChildsEvent( px, py, 

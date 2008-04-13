@@ -46,6 +46,7 @@ Label(Vector4 dim, String caption, BetaGUI::Window* parent,
   mCaption(caption),
   mSkin(NULL)
 {
+  setName("Label");
   mSkin = SkinManager::getSingleton().getSkin(this);
   mParentWindow = parent;
 

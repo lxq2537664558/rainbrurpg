@@ -41,7 +41,7 @@ StaticImage(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   texture(NULL),
   alphaMode(QBM_NONE)
 {
-
+  setName("StaticImage");
 }
 
 /** The destructor

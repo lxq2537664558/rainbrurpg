@@ -40,7 +40,8 @@ Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   frameOverlay(NULL),
   alpha(0.0f),
   geometryDirty(false),
-  visible(true)
+  visible(true),
+  name("Widget")
 {
   corners.left   = dim.x;
   corners.top    = dim.y;

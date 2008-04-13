@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 12 apr 2008 : events handling now uses MouseEvent
  * - 12 feb 2008 : using QuadRenderer::useParentScissor
  * - 23 nov 2007 : starting implementation
  *         
@@ -104,7 +105,8 @@ namespace RainbruRPG{
       void horizontalScrollBarValueChange(int);
       void verticalScrollBarValueChange(int);
 
-      bool handleScrollBarsEvent(unsigned int, unsigned int, bool, Window*); 
+      bool handleScrollBarsEvent(unsigned int, unsigned int, 
+				 const MouseEvent&, Window*); 
       bool handleChildsEvent(unsigned int , unsigned int , const MouseEvent&, 
 			     Window* ); 
     private:

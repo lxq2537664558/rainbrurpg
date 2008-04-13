@@ -46,7 +46,7 @@ Container(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   movingDevX(0),
   movingDevY(0)
 {
-
+  setName("Container");
 
 
 }

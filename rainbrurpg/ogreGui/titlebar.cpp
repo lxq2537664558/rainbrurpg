@@ -46,7 +46,7 @@ TitleBar(Vector4 dim, String caption, Callback callback, GUI* G,
 	 Widget* parent, OgreGuiSkinID sid):
   Button(dim, "", caption, callback, parent, sid)
 {
-
+  setName("TitleBar");
   mSkin=SkinManager::getSingleton().getSkin(this);
 
 }

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 11 apr 2008 : Using GUI::focusWidget
  * - 07 feb 2008 : Starting implementation
  *         
  */
@@ -30,10 +31,12 @@
 
 #include "scrollbar.h"
 #include "skinmanager.h" // For OgreGuiSkinID
+#include "mouseevent.h"
 
 // Forward declarations
 namespace BetaGUI {
   class Window;
+  class GUI;
 }
 namespace RainbruRPG{
   namespace OgreGui{
@@ -59,7 +62,7 @@ namespace RainbruRPG{
       HScrollBar(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);
       ~HScrollBar();
 
-      virtual bool injectMouse(unsigned int, unsigned int, bool);
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
       virtual void draw(RainbruRPG::OgreGui::QuadRenderer*);
 
       const Rectangle& getLeftArrowCorners(void);
@@ -119,8 +122,6 @@ namespace RainbruRPG{
 
       /** Is the cursor arrow active */
       bool bCursorActive;
-
-
     };
   }
 }

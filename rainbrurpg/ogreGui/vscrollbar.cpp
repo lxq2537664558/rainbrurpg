@@ -44,7 +44,7 @@ VScrollBar(Vector4 dim, Widget* win, OgreGuiSkinID sid):
   sk(NULL),
   mGUI(NULL)
 {
-
+  setName("VScrollBar");
   sk=SkinManager::getSingleton().getSkin(this);
   makeCorners();
 
@@ -88,7 +88,11 @@ void RainbruRPG::OgreGui::VScrollBar::draw(QuadRenderer* qr){
   *
   */
 bool RainbruRPG::OgreGui::VScrollBar::
-injectMouse( unsigned int mouseX, unsigned int mouseY, bool leftMouseButton ){
+injectMouse( unsigned int mouseX, unsigned int mouseY, const MouseEvent& event){
+
+  bool leftMouseButton=event.isLeftMouseButtonPressed();
+
+
   if (!visible){
     return false;
   }
@@ -97,6 +101,8 @@ injectMouse( unsigned int mouseX, unsigned int mouseY, bool leftMouseButton ){
   if (!leftMouseButton){
     movingCursor=false;
     cursorDev=0;
+    mGUI->disableFocusedWidget();
+
   }
   else{
     // The mouse button is pressed, are we moving cursor ?
@@ -156,6 +162,7 @@ injectMouse( unsigned int mouseX, unsigned int mouseY, bool leftMouseButton ){
 	if (!movingCursor){
 	  cursorDev=mouseY-(corners.top+cursorPos);
 	  movingCursor=true;
+	  mGUI->setFocusedWidget(this);
 	}
       }
     }

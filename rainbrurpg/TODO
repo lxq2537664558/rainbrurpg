@@ -1,6 +1,5 @@
 TODO
-
-* Libraries versionning in doc/libVersionning.html
+-> Libraries versionning in doc/libVersionning.html
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - MulticolumnList implementation
@@ -99,6 +98,16 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-175
+- (7) Fix a bug with a ToolTip's shadow
+- ScrollBars usu GUI::focusedWidget
+- Correctly setting some Widgets name
+- ScrollBar injectMouse uses MouseEvent
+- Click again on a selected MultiColumnList's item deselect it
+- MultiColumnList column resizing use GUI::setFocusedWidget()
+  But a bug occurs : when resizing a column,
+  MultiColumnList::injectMouse sometimes returns false
+  Fixed using GUI::disableFocusedWidget() 
+- GUI::setFocusedWidget() implementation
 
 * v 0.0.5-174
 - Doxygen documentation update (some undocumented functions)

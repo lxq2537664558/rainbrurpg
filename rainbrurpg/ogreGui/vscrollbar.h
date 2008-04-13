@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 11 apr 2008 : Using MouseEvent for event handling
  * - 04 feb 2008 : Drawn again using QuadRenderer
  * - 28 jan 2008 : starting implementation
  *         
@@ -31,6 +32,7 @@
 
 #include "scrollbar.h"
 #include "skinmanager.h" // For OgreGuiSkinID
+#include "mouseevent.h"
 
 // Forward declarations
 namespace BetaGUI {
@@ -60,7 +62,7 @@ namespace RainbruRPG{
       ~VScrollBar();
 
       virtual void draw(QuadRenderer* qr);
-      virtual bool injectMouse(unsigned int, unsigned int, bool);
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
 
       void setTopArrowActive(bool);
       void setBottomArrowActive(bool);
