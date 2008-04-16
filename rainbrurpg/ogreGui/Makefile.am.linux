@@ -25,6 +25,8 @@ h_sources= bgbutton.h			\
 	   multicolumnlistcolumn.h	\
 	   multicolumnlistitem.h	\
 	   object.h			\
+	   popupmenu.h			\
+	   popupmenuitem.h		\
 	   pushbutton.h			\
 	   quadrenderer.h		\
 	   renderqueuelistener.h 	\
@@ -66,6 +68,8 @@ cc_sources= bgbutton.cpp		\
 	    multicolumnlistcolumn.cpp	\
 	    multicolumnlistitem.cpp	\
 	    object.cpp			\
+	    popupmenu.cpp		\
+	    popupmenuitem.cpp		\
 	    pushbutton.cpp		\
 	    quadrenderer.cpp		\
 	    renderqueuelistener.cpp 	\

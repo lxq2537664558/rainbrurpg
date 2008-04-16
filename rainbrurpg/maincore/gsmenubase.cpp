@@ -407,8 +407,14 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
 bool RainbruRPG::Core::gsMenuBase::
 mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
 
-  GameEngine::getSingleton().getOgreGui()
-    ->injectMouseButtonPressed("gsMenuBase::mousePressed");
+  if (evt.state.buttonDown(OIS::MB_Left)){
+    GameEngine::getSingleton().getOgreGui()
+      ->injectMouseButtonPressed("gsMenuBase::mousePressed");
+  }
+  else if (evt.state.buttonDown(OIS::MB_Right)){
+    GameEngine::getSingleton().getOgreGui()
+      ->injectRightMouseButtonPressed("gsMenuBase::mousePressed");
+  }
 
   // OgreGUI
   mouseX=evt.state.X.abs;

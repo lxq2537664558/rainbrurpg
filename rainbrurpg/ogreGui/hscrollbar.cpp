@@ -160,9 +160,9 @@ void RainbruRPG::OgreGui::HScrollBar::makeCorners(void){
 
 /** Handles mouse events
   *
-  * \param mouseX          The X position in pixels
-  * \param mouseY          The Y position in pixels
-  * \param leftMouseButton Is the Mouse left button pressed ?
+  * \param mouseX The X position in pixels
+  * \param mouseY The Y position in pixels
+  * \param event  The mouse event
   *
   */
 bool RainbruRPG::OgreGui::HScrollBar::

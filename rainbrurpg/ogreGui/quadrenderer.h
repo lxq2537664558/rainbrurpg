@@ -131,12 +131,33 @@ namespace RainbruRPG {
       * Please see the ScrollPane::draw() implementation for more details 
       * and an usage example.
       *
-      * \section sec_QuadRenderer_Ghost the Ghost function
+      * \section sec_QuadRenderer_Ghost The Ghost function
       *
       * To draw a ghost effect (more alpha on a part of the GUI), two
       * functions are used : enableGhost() and disableGhost(). Please see 
       * the MultiColumnList drawing function in soBetaGui : when a column
       * is moved, it is ghosted.
+      *
+      * \section sec_ParentScissor The parent scissor
+      *
+      * QuadRenderer has the ability to understand scissor rectangle settings 
+      * for childs widgets only if it is not in a parent using it. The parent
+      * widget may use the setUseParentScissor() function to tell Quadrenderer
+      * that childs widget (drawn after the parent) cannot override
+      * scissor rectangle settings. It is mainly use in ScrollPane and
+      * MultiColumnList widgets but some others widget need to deactivate it
+      * temporally (ToolTip may not be chop off by the scissor rectangle 
+      * when over the MultiColumnList header). Here is the code to
+      * override parent scissor settings for widgets mike ToolTip :
+      * <pre>
+      * // Saves current parent scissor settings (qr is a QuadRenderer pointer)
+      * Ogre::Rectangle sr=qr->getClipRegion();
+      * qr->setUseParentScissor(false);
+      * ... // Your drawing stuff here
+      * // Restores the parent scissor settings
+      * qr->setScissorRectangle(sr);
+      * qr->setUseParentScissor(true);
+      * </pre>
       *
       * \note The implementation of this class is based on the <B>Right Brain 
       * Games GUI</B>. Please see http://www.rightbraingames.com/tech.php for 

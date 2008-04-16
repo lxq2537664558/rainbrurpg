@@ -82,9 +82,9 @@ void RainbruRPG::OgreGui::VScrollBar::draw(QuadRenderer* qr){
 
 /** Handles mouse events
   *
-  * \param mouseX          The X position in pixels
-  * \param mouseY          The Y position in pixels
-  * \param leftMouseButton Is the Mouse left button pressed ?
+  * \param mouseX The X position in pixels
+  * \param mouseY The Y position in pixels
+  * \param event  The mouse event object
   *
   */
 bool RainbruRPG::OgreGui::VScrollBar::

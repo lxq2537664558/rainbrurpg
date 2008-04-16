@@ -862,9 +862,13 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
   setCorners( vRect.left, vRect.top, vRect.right, vRect.bottom );
   feedVectors( &vert, &uvs, &cols );
   
-  /*  mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
-  				 vRect.right, vRect.bottom );
-  */
+  // If scissor not yet used, setting it to filled rectangle
+  // else, we let scissor or parent scissor configured
+  if (!useParentScissor && !useScissor){
+    mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
+				   vRect.right, vRect.bottom );
+  }
+  
   // drawQuad
   if (mBuffer->isLocked()){
     mBuffer->unlock();
@@ -902,7 +906,7 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
 
 /** Set the parent scissor 
   *
-  * \note If \i b is \c false, the scissor is automatically disabled.
+  * \note If \e b is \c false, the scissor is automatically disabled.
   *
   * \param b The new useParentScissor value
   *

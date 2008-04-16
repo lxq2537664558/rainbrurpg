@@ -714,6 +714,13 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   // Drawing columns header
   tMultiColumnListColumnList colList=mcl->getColumnList();
   tMultiColumnListColumnList::const_iterator iter;
+
+  Ogre::Rectangle sr=qr->getClipRegion();
+  qr->setUseParentScissor(false);
+
+  qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
+  qr->setUseParentScissor(true);
+  qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
   
   int x=r.left;
   int y1=r.top;
@@ -736,7 +743,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   unsigned int colIndex=0;
 
   for(iter = colList.begin();iter != colList.end(); iter++){
-    // Header background andcaption
+    // Header background and caption
     columnCaption.left  = x;
     columnCaption.right = x + (*iter)->getWidth();
     headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
@@ -793,7 +800,16 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     colIndex++;
   }
   
+  qr->removeDrawingDev(mcl->getHeaderDrawingDevSettings());
+
+
   // drawing items
+  // Saves current parent scissor settings
+  qr->setUseParentScissor(false);
+  qr->addDrawingDev(mcl->getDrawingDevSettings());
+
+  qr->setScissorRectangle(mcl->getItemsScissorRectangle());
+  qr->setUseParentScissor(true);
   tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
 
   tMultiColumnListItemList itemList=mcl->getItemList();
@@ -868,5 +884,10 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     itemBG.bottom=itemBG.top+20;
   }
 
+  qr->setUseParentScissor(false);
+  // Restore parent scissor
+  qr->setScissorRectangle(sr);
+  qr->setUseParentScissor(true);  
+  qr->removeDrawingDev(mcl->getDrawingDevSettings());
   qr->reset();
 }

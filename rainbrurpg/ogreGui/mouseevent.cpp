@@ -29,6 +29,7 @@
   */
 RainbruRPG::OgreGui::MouseEvent::MouseEvent():
   mLeftMouseButtonPressed(false),
+  mRightMouseButtonPressed(false),
   mLongClick(false),
   mLeftClick(false),
   mClickStartTime(0),
@@ -137,4 +138,22 @@ mouseMove(unsigned int px, unsigned int py){
       mLongClick=true;
     }
   }
+}
+
+/** Set the right button state
+  *
+  * \param vPressed The new value
+  *
+  */
+void RainbruRPG::OgreGui::MouseEvent::setRightMouseButtonPressed(bool vPressed){
+  mRightMouseButtonPressed = vPressed;
+}
+
+/** Is the right button clicked
+  *
+  * \return The right button state
+  *
+  */
+bool RainbruRPG::OgreGui::MouseEvent::isRightMouseButtonPressed(void)const{
+  return mRightMouseButtonPressed;
 }

@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 14 apr 2008 : Now using scissor rectangle
+ *                 Using DrawingDevSettings
  * - 24 mar 2008 : Starting implementation
  *         
  */
@@ -56,6 +58,7 @@ namespace RainbruRPG{
     class ToolTip;
     class VScrollBar;
     class HScrollBar;
+    class DrawingDevSettings;
   }
 }
 // End of Forward declaration
@@ -73,7 +76,9 @@ namespace RainbruRPG{
 
     /** An enumeration defining the sort policy
       *
-      *
+      * Only one column can be sorted at the same time. MulticolumnList's 
+      * mCurrentSortPolicy keep the sort policy of 
+      * MultiColumnList::mCurrentSortedColumn, the sorted column's index.
       *
       */
     typedef enum{
@@ -90,6 +95,19 @@ namespace RainbruRPG{
 
     /** A multi columns list widget
       *
+      * \section mcl_multiScissor Multiples scissor rectangles
+      *
+      * This widget uses two scissor rectangles to be drawn : 
+      * \ref mItemsScissorRectangle "mItemsScissorRectangle" to drawn items
+      * list and \ref mHeadersScissorRectangle "mHeadersScissorRectangle"
+      * to draw the column headers.
+      *
+      * \section mcl_multiDrawingDev Multiples drawingDev
+      *
+      * This widget uses two DrawingDevSettings objects : \ref mDrawingDev
+      * "mDrawingDev", used to draw items and \ref mXDrawingDev 
+      * "mXDrawingDev", used when drawing column headers.
+      *
       */
     class MultiColumnList : public Widget{
     public:
@@ -105,7 +123,10 @@ namespace RainbruRPG{
  
       const tMultiColumnListColumnList& getColumnList(void);
       const tMultiColumnListItemList& getItemList(void);
+
       const Ogre::Rectangle& getAbsoluteCorners(void);
+      const Ogre::Rectangle& getItemsScissorRectangle(void)const;
+      const Ogre::Rectangle& getHeadersScissorRectangle(void)const;
 
       int getHeaderHeight(void)const;
 
@@ -121,6 +142,9 @@ namespace RainbruRPG{
 
       bool isHorizontalScrollbarNeeded(void);
       bool isVerticalScrollbarNeeded(void);
+
+      DrawingDevSettings* getDrawingDevSettings(void);
+      DrawingDevSettings* getHeaderDrawingDevSettings(void);
 
       /** The current column we apply sort to
         *
@@ -140,7 +164,8 @@ namespace RainbruRPG{
       void handleToolTip(unsigned int, unsigned int);
       void handleMovingColumn(int, int, int, int, int);
       void handleScrollBarsVisibility(void);
-
+      bool handleScrollBarsEvent(unsigned int,unsigned int,const MouseEvent&,
+				 Widget*);
     private:
       /** Keeping current skin instance*/
       Skin* mSkin;
@@ -149,6 +174,11 @@ namespace RainbruRPG{
 
       /** The absolute corners (from the screen start) */
       Ogre::Rectangle mAbsCorners;
+      /** The scissor rectangle used to draw items */
+      Ogre::Rectangle mItemsScissorRectangle;
+      /** The scissor rectangle used to draw headers */
+      Ogre::Rectangle mHeadersScissorRectangle;
+
       /** The column list */
       tMultiColumnListColumnList mColumnList;
       /** The item list */
@@ -190,6 +220,10 @@ namespace RainbruRPG{
       HScrollBar* mHScrollBar;
       /** GUI used to register focused widget */
       GUI* mGui;
+      /** The items drawing dev settings */
+      DrawingDevSettings* mDrawingDev;
+      /** The column header drawing dev settings */
+      DrawingDevSettings* mXDrawingDev;
     };
   }
 }

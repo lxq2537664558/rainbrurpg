@@ -388,6 +388,7 @@ void BetaGUI::GUI::injectMouseButtonPressed(const std::string& from){
   */
 void BetaGUI::GUI::injectMouseButtonReleased(){
   mMouseEvent.setLeftMouseButtonPressed(false);
+  mMouseEvent.setRightMouseButtonPressed(false);
   handleWindowsEvents();
 }
 
@@ -550,3 +551,8 @@ Widget* BetaGUI::GUI::getFocusedWidget(void)const{
 void BetaGUI::GUI::disableFocusedWidget(void){
   mFocusedWidget=NULL;
 }
+
+void BetaGUI::GUI::injectRightMouseButtonPressed(const std::string& str){
+  mMouseEvent.setRightMouseButtonPressed(true);
+}
+

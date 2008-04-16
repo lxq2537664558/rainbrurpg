@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 15 apr 2008 : Right mouse button pressed implementation
  * - 10 apr 2008 : Focused widget handling
  * - 01 apr 2008 : Windows event is now handle when mouse button state changed
  * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
@@ -114,6 +115,7 @@ namespace BetaGUI {
 
     void injectMouseButtonPressed(const std::string&);
     void injectMouseButtonReleased();
+    void injectRightMouseButtonPressed(const std::string&);
 
     void removeWindow(Window*);
     

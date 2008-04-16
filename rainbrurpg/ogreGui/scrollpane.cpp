@@ -364,7 +364,7 @@ void RainbruRPG::OgreGui::ScrollPane::verticalScrollBarValueChange(int i){
 /** Handles the scrollbars events
   *
   * \param px, py The mouse position in pixels
-  * \param LMB    The mouse bitton state
+  * \param event  The mouse event 
   * \param P      The parent window
   *
   * \return \c true if the event is used
@@ -408,6 +408,7 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
   // If we are outside window, we don't handle events
   if (!inWindow){
     if(activeButton) activeButton->activate(false);
+    if(activeTextInput) activeTextInput->deactivate();
     mGUI->getMousePointer()->setState(MPS_ARROW);
     return false;
   }
@@ -422,11 +423,11 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
     activeButton=NULL;
   }
      
-  if(activeTextInput){
+  /*  if(activeTextInput){
     activeTextInput->deactivate();
     activeTextInput=NULL;
   }
-
+  */
   // handle button events
   for(unsigned int i=0;i<buttonList.size();i++){
     bool btn= handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
@@ -435,31 +436,32 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
 
   }
 
- 
-  if (!LMB)
-    return true;
-  
-  for(unsigned int i=0;i<textInputList.size();i++){
-    if(textInputList[i]->in( px, py, corners.left, corners.top))
-      continue;
+  if (event.isLeftButtonClick()){
+    for(unsigned int i=0;i<textInputList.size();i++){
+      if(textInputList[i]->in( px, py, corners.left, corners.top))
+	continue;
+      LOGI("Selecting TextInput");
     
-    /* The current indexed textInputList element is under the mouse
-     * activeTextInput is set as a pointer to it.
-     * And we change its texture to graphically mark it as active.
-     *
-     * We also call the deactivateAllOtherTextInput to get only one
-     * TextInput activated.
-     *
-     */
-    activeTextInput=textInputList[i];
-    activeTextInput->activate();
-    deactivateAllOtherTextInput(activeTextInput);
-    return true;
+      /* The current indexed textInputList element is under the mouse
+       * activeTextInput is set as a pointer to it.
+       * And we change its texture to graphically mark it as active.
+       *
+       * We also call the deactivateAllOtherTextInput to get only one
+       * TextInput activated.
+       *
+       */
+      activeTextInput=textInputList[i];
+      activeTextInput->activate();
+      deactivateAllOtherTextInput(activeTextInput);
+      return true;
+    }
   }
 
-  if(activeTextInput){
-    activeTextInput->deactivate();
+  // We click anywhere in the window but not on a widget
+  if (event.isLeftButtonClick()){
+    if(activeTextInput) activeTextInput->deactivate();
   }
+
 
   return true;
 }

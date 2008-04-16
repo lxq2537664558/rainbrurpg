@@ -213,7 +213,6 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
     return false;
   }
   
-
   handleMouseTextCursor(px, py, LMB);
   handleWidgetMouseEvents(px, py, event);
 
@@ -233,35 +232,36 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
     bool btn= handleButtonEvent( px, py, corners.left, corners.top, LMB, win, 
 				 buttonList[i] );
     if (btn) return true;
-
-  }
-
- 
-  if (!LMB)
-    return true;
-  
-  for(unsigned int i=0;i<textInputList.size();i++){
-    if(textInputList[i]->in( px, py, corners.left, corners.top))
-      continue;
     
-    /* The current indexed textInputList element is under the mouse
-     * activeTextInput is set as a pointer to it.
-     * And we change its texture to graphically mark it as active.
-     *
-     * We also call the deactivateAllOtherTextInput to get only one
-     * TextInput activated.
-     *
-     */
-    activeTextInput=textInputList[i];
-    activeTextInput->activate();
-    deactivateAllOtherTextInput(activeTextInput);
-    return true;
+  }
+  
+  if (event.isLeftButtonClick()){
+    for(unsigned int i=0;i<textInputList.size();i++){
+      if(textInputList[i]->in( px, py, corners.left, corners.top))
+	continue;
+      
+      /* The current indexed textInputList element is under the mouse
+       * activeTextInput is set as a pointer to it.
+       * And we change its texture to graphically mark it as active.
+       *
+       * We also call the deactivateAllOtherTextInput to get only one
+       * TextInput activated.
+       *
+       */
+      activeTextInput=textInputList[i];
+      activeTextInput->activate();
+      deactivateAllOtherTextInput(activeTextInput);
+      return true;
+    }
   }
 
   if(activeTextInput){
     activeTextInput->deactivate();
   }
-
+ 
+  if (!LMB)
+    return true;
+  
   return true;
 
 }
@@ -400,4 +400,64 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	break;
       }
     }
+}
+
+/** Is the given position over a TextInput
+  *  
+  * This function is used by the \ref BetaGUI::Window::check() "check"
+  * function to know if we need to set a text edit mouse cursor.
+  *
+  * \param px, py The mouse position
+  *
+  */
+bool RainbruRPG::OgreGui::Container::
+isMouseOverTextInput(unsigned int px, unsigned int py){
+  TextInputListIterator iter;
+  for(iter=textInputList.begin();iter!=textInputList.end();iter++){
+    if (!(*iter)->in(px, py, corners.left, corners.top)){
+      return true;
+    }
+  }
+  return false;
+};
+
+/** Handle the MouseText cursor
+  *
+  * \param px, py          The mouse position
+  * \param leftMouseButton The mouse left button state
+  *
+  * \return \c true if the event is handled
+  *
+  */
+bool RainbruRPG::OgreGui::Container::
+handleMouseTextCursor(unsigned int px, unsigned int py, 
+		      bool leftMouseButton){
+	
+  if (isMouseOverTextInput( px, py )){
+    mGUI->getMousePointer()->setState(MPS_TEXT);
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+/** Handle the MouseEvent for others widgets
+  *
+  * \param px, py          The mouse position
+  * \param event           The mouse event
+  *
+  * \return \c true if the event is handled
+  *
+  */
+bool RainbruRPG::OgreGui::Container::
+handleWidgetMouseEvents(unsigned int px, unsigned int py, 
+			const MouseEvent& event){
+  // Handles the widget mouse events
+  for(unsigned int i=0;i<widgetList.size();i++){
+    // If a widget handles the event, we stop the event handling loop
+    if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,event)){
+      return true;
+    }
+  }
 }

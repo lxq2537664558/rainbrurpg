@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 15 apr 2008 : Right button handling
  * - 30 mar 2008 : starting implementation
  *         
  */
@@ -48,15 +49,20 @@ namespace RainbruRPG{
       ~MouseEvent();
 
       void setLeftMouseButtonPressed(bool);
+      void setRightMouseButtonPressed(bool);
       void mouseMove(unsigned int, unsigned int);
 
       bool isLeftMouseButtonPressed(void)const;
       bool isLeftButtonLongClick(void)const;
       bool isLeftButtonClick(void)const;
     
+      bool isRightMouseButtonPressed(void)const;
+
     private:
       /** Is the left mouse button clicked */
       bool mLeftMouseButtonPressed;
+      /** Is the right mouse button clicked */
+      bool mRightMouseButtonPressed;
       /** Is the left button pressed for a long time*/
       bool mLongClick;
       /** Is the left button clicked */

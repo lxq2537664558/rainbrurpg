@@ -199,13 +199,12 @@ swapColumns( int vCol1, int vCol2 ){
   item=NULL;
 }
 
+/** Toggles the selection of this item
+  *
+  * If mSelected was \c true, it becomes \c false, if it was \c false, it
+  * become \c true.
+  *
+  */
 void RainbruRPG::OgreGui::MultiColumnListItem::toggleSelection(void){
-
-  LOGCATS("toggleSelection was ");
-  LOGCATB(mSelected);
   mSelected=!mSelected;
-
-  LOGCATS(" is ");
-  LOGCATB(mSelected);
-  LOGCAT();
 }

@@ -98,7 +98,17 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-175
-- (7) Fix a bug with a ToolTip's shadow
+- (16) Right mouse button handling
+- PopupMenuItem implementation
+- PopupMenu class implementation
+- Bugfix in the QuadRenderer::drawFilledRectangle() function
+  ScissorRectangle was set even if a parent scissor was used
+- MultiColumnList's now using 2 parentScissor and 2 DrawingDev
+- MultiColumnList's header drawingDev
+- MultiColumnList's DrawingDev with scrollbars works
+- MultiColumnList parentScissor implementation
+- Fix a bug in the TextInput activation (now uses MouseEvent)
+- Fix a bug with a ToolTip's shadow
 - ScrollBars usu GUI::focusedWidget
 - Correctly setting some Widgets name
 - ScrollBar injectMouse uses MouseEvent

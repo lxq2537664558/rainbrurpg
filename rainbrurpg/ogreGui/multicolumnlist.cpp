@@ -29,6 +29,8 @@
 #include "hscrollbar.h"
 #include "vscrollbar.h"
 #include "bggui.h"
+#include "bgwindow.h"
+#include "drawingdevsettings.h"
 
 #include <logger.h>
 #include <quadrenderer.h>
@@ -110,6 +112,9 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 		       "Long time click to move column. Right button for "
 		       "contextual menu.",
 		       vParent, sid);
+
+  mDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
+  mXDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
 
   setName("MultiColumnList");
 
@@ -267,6 +272,8 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event){
   else{
     injectMouse( px, py, event, mSortedItemList );
   }
+
+  handleScrollBarsEvent( px, py, event, parent);
 }
 
 /** Set the sort of this list
@@ -531,7 +538,8 @@ handleMovingColumn(int vPx, int vPy, int vColLeft, int vColRight,
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 horizontalScrollBarValueChange(int vValue){
-
+  mDrawingDev->setDevX( vValue );
+  mXDrawingDev->setDevX( vValue );
 }
 
 /** The vertical value slot
@@ -543,8 +551,7 @@ horizontalScrollBarValueChange(int vValue){
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 verticalScrollBarValueChange(int vValue){
-  
-
+    mDrawingDev->setDevY( vValue );
 }
 
 /** Is the horizontal scrollbar needed
@@ -635,4 +642,72 @@ void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
   }
   mHScrollBar->setWidth( hScrollWidth );  
 
+  // Computing scissor rectangles
+  mItemsScissorRectangle=mAbsCorners;
+  mItemsScissorRectangle.bottom-=2;
+  mItemsScissorRectangle.top+=mHeaderHeight;
+
+  mHeadersScissorRectangle=mAbsCorners;
+  mHeadersScissorRectangle.top+=2;
+  mHeadersScissorRectangle.bottom = mAbsCorners.top + mHeaderHeight - 2;
+
 }
+
+/** Get the scissor rectangle used when drawing items 
+  *
+  * \return The clip region used to draw items
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::MultiColumnList::
+getItemsScissorRectangle(void)const{
+  return mItemsScissorRectangle;
+}
+
+/** Get the drawing dev settings for items
+  *
+  * \return Drawing dev settings object pointer
+  *
+  */
+DrawingDevSettings* RainbruRPG::OgreGui::MultiColumnList::
+getDrawingDevSettings(void){
+  return mDrawingDev;
+}
+
+/** Handles the scrollbars events
+  *
+  * \param px, py  The mouse pointer position
+  * \param event   The mouse event object
+  * \param vParent The MultiColumnList's parent
+  *
+  * \return \c true if the event is used, otherwise returns \c false
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnList::
+handleScrollBarsEvent(unsigned int px, unsigned int py,  
+		      const MouseEvent& event, Widget* vParent){
+  bool hEvent=mHScrollBar->injectMouse( px, py, event );
+  if (hEvent) return true;
+
+  return mVScrollBar->injectMouse( px, py, event );
+}
+
+/** Get the drawing dev settings for headers
+  *
+  * \return Drawing dev settings object pointer
+  *
+  */
+DrawingDevSettings* RainbruRPG::OgreGui::MultiColumnList::
+getHeaderDrawingDevSettings(void){
+  return mXDrawingDev;
+}
+
+/** Get the scissor rectangle used when drawing column headers 
+  *
+  * \return The clip region used to headers
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::MultiColumnList::
+getHeadersScissorRectangle(void)const{
+  return mHeadersScissorRectangle;
+}
+

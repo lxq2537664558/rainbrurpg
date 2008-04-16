@@ -87,62 +87,10 @@ namespace RainbruRPG{
 
       void makeCorners(void);
 
-      /** Is the given position over a TextInput
-        *  
-	* This function is used by the \ref BetaGUI::Window::check() "check"
-	* function to know if we need to set a text edit mouse cursor.
-	*
-	* \param px, py The mouse position
-	*
-	*/
-      inline bool isMouseOverTextInput(unsigned int px, unsigned int py){
-	TextInputListIterator iter;
-	for(iter=textInputList.begin();iter!=textInputList.end();iter++){
-	  if (!(*iter)->in(px, py, corners.left, corners.top)){
-	    return true;
-	  }
-	}
-	return false;
-      };
+      bool isMouseOverTextInput(unsigned int, unsigned int );
+      bool handleMouseTextCursor(unsigned int , unsigned int ,  bool );
 
-      /** Handle the MouseText cursor
-        *
-	* \param px, py          The mouse position
-	* \param leftMouseButton The mouse left button state
-	*
-	* \return \c true if the event is handled
-	*
-	*/
-      inline bool handleMouseTextCursor(unsigned int px, unsigned int py, 
-					bool leftMouseButton){
-	
-	if (isMouseOverTextInput( px, py )){
-	  mGUI->getMousePointer()->setState(MPS_TEXT);
-	  return true;
-	}
-	else{
-	  return false;
-	}
-      }
-
-      /** Handle the MouseEvent for others widgets
-        *
-	* \param px, py          The mouse position
-	* \param event           The mouse event
-	*
-	* \return \c true if the event is handled
-	*
-	*/
-      inline bool handleWidgetMouseEvents(unsigned int px, unsigned int py, 
-					  const MouseEvent& event){
-      // Handles the widget mouse events
-	for(unsigned int i=0;i<widgetList.size();i++){
-	  // If a widget handles the event, we stop the event handling loop
-	  if (widgetList[i]->injectMouse(px-corners.left,py-corners.top,event)){
-	    return true;
-	  }
-	}
-      }
+      bool handleWidgetMouseEvents(unsigned int,unsigned int,const MouseEvent&);
 
       /** A constant iterator for TextInput lit */
       typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;
