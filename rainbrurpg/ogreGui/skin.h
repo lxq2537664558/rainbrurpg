@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 17 apr 2008 : drawPopupMenu implementation
  * - 25 mar 2008 : drawMultiColumnList implementation
  * - 04 feb 2008 : Class renamed from SkinOverlay to Skin
  * - 15 nov 2007 : createBorderWindow implementation
@@ -49,6 +50,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class MultiColumnList;
+    class PopupMenu;
     class ToolTip;
   }
 }
@@ -194,6 +196,14 @@ namespace RainbruRPG{
        *
        */
      virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl )=0;
+
+     /** Draws a popup menu widget
+       *
+       * \param qr The QuadRenderer used to draw
+       * \param pm The PopupMenu to be drawn
+       *
+       */
+     virtual void drawPopupMenu(QuadRenderer*qr, PopupMenu* pm)=0;
 
      virtual unsigned int getDialogBorderSize(void);
 

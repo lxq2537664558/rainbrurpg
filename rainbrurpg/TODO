@@ -97,8 +97,14 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-176
+
 * v 0.0.5-175
-- (16) Right mouse button handling
+- Multicolumnlist now contains a PopuMenu item
+- Skin (and subclasses) drawPopupMenu() function implementation
+- PopupMenu::makeCorners implementation
+- pmiTitle implementation
+- Right mouse button handling
 - PopupMenuItem implementation
 - PopupMenu class implementation
 - Bugfix in the QuadRenderer::drawFilledRectangle() function

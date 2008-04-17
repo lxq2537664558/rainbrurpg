@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 17 apr 2008 : PopupMenu integration
  * - 14 apr 2008 : Now using scissor rectangle
  *                 Using DrawingDevSettings
  * - 24 mar 2008 : Starting implementation
@@ -59,6 +60,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class DrawingDevSettings;
+    class PopupMenu;
   }
 }
 // End of Forward declaration
@@ -224,6 +226,8 @@ namespace RainbruRPG{
       DrawingDevSettings* mDrawingDev;
       /** The column header drawing dev settings */
       DrawingDevSettings* mXDrawingDev;
+      /** The popup menu used to show and hide columns */
+      PopupMenu* mPopupMenu;
     };
   }
 }

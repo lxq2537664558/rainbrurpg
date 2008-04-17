@@ -28,6 +28,14 @@
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_H_
 
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class QuadRenderer;
+  }
+}
+// End of forward declarations
+
 namespace RainbruRPG{
   namespace OgreGui{
 
@@ -42,13 +50,23 @@ namespace RainbruRPG{
       void setHeight(unsigned int);
       unsigned int getHeight(void)const;
 
+      void setEnabled(bool);
+      bool getEnabled(void)const;
+
       /** Draw this item
         *
-	* \note The drawingdev feature of the given QuadRenderer should
-	*       be set to the top left corner of this menu
+	* \param qr The QuadRenderer pointer used to draw
 	*
 	*/
-      void draw( QuadRenderer* qr)=0;
+      virtual void draw( QuadRenderer* qr)=0;
+
+    protected:
+      /** Is this item enabled
+        *
+	* A diabled item can be grayed and canot get mouse event.
+	*
+	*/
+      bool mEnabled;
 
     private:
       /** The height of the item in pixels */

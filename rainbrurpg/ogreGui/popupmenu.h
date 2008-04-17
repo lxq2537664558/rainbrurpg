@@ -55,6 +55,7 @@ using namespace RainbruRPG::OgreGui;
 namespace RainbruRPG{
   namespace OgreGui{
 
+    /** A list of items for the PopupMenu class */
     typedef list<PopupMenuItem*> tPopupMenuItemList;
 
     /** A popup menu
@@ -72,6 +73,11 @@ namespace RainbruRPG{
       const Ogre::String& getCaption(void)const;
       unsigned int getWidth(void)const;
 
+      virtual void draw(QuadRenderer*);
+
+    protected:
+      void makeCorners(void);
+
     private:
       /** The current skin */
       Skin* mSkin;
@@ -82,7 +88,10 @@ namespace RainbruRPG{
 
       /** The list of items */
       tPopupMenuItemList mItemList;
-      
+
+       /** The absolute corners (from the screen start) */
+      Ogre::Rectangle mAbsCorners;
+     
     };
   }
 }

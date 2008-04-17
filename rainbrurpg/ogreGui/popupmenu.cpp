@@ -24,6 +24,8 @@
 
 #include "bgwindow.h"
 
+#include <logger.h>
+
 /** The constructor
   *
   * \param vDim     The dimension of the menu in pixels
@@ -40,7 +42,9 @@ PopupMenu(Vector4 vDim, String vCaption, Widget* vParent,
   mCaption(vCaption),
   mWidth(100)
 {
-  
+  mSkin = SkinManager::getSingleton().getSkin(this);
+
+  makeCorners();
 }
 
 /** The destructor
@@ -86,4 +90,32 @@ const Ogre::String& RainbruRPG::OgreGui::PopupMenu::getCaption(void)const{
   */
 unsigned int RainbruRPG::OgreGui::PopupMenu::getWidth(void)const{
   return mWidth;
+}
+
+/** Pre-computation of geometry
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::makeCorners(void){
+  LOGI("PopupMenu::makeCorners called");
+  mAbsCorners.top    = corners.top + parent->getTop();
+  mAbsCorners.left   = corners.left + parent->getLeft();
+  mAbsCorners.bottom = corners.bottom + parent->getTop();
+  mAbsCorners.right  = corners.right + parent->getLeft();
+ 
+}
+
+/** Draw this menu
+  *
+  * \param qr The QuadRenderer object pointer used to draw
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::draw(QuadRenderer* qr){
+  if (visible){
+    if (geometryDirty){
+      makeCorners();
+      geometryDirty=false;
+    }
+    
+    mSkin->drawPopupMenu( qr, this );
+  }
 }

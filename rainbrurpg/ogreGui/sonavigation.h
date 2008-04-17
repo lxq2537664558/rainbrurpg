@@ -42,6 +42,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class MultiColumnList;
+    class PopupMenu;
     class ToolTip;
   }
 }
@@ -81,6 +82,7 @@ namespace RainbruRPG{
       virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* );
       virtual void drawMultiColumnList(QuadRenderer*, MultiColumnList* );
       virtual void drawToolTip(QuadRenderer*, ToolTip* );
+      virtual void drawPopupMenu(QuadRenderer*, PopupMenu*);
 
     private:
       /** The font used in PushButtons */

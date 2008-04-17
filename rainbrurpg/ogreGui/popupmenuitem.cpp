@@ -26,6 +26,7 @@
   *
   */
 RainbruRPG::OgreGui::PopupMenuItem::PopupMenuItem():
+  mEnabled(false),
   mHeight(20)
 {
 
@@ -54,4 +55,22 @@ void RainbruRPG::OgreGui::PopupMenuItem::setHeight(unsigned int vHeight){
   */
 unsigned int RainbruRPG::OgreGui::PopupMenuItem::getHeight(void)const{
   return mHeight;
+}
+
+/** Set the enable value
+  *
+  * \param vEnabled The new mEnabled value
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenuItem::setEnabled(bool vEnabled){
+  mEnabled = vEnabled;
+}
+
+/** Get the enable value
+  *
+  * \return The mEnabled value
+  *
+  */
+bool RainbruRPG::OgreGui::PopupMenuItem::getEnabled(void)const{
+  return mEnabled;
 }

@@ -552,6 +552,11 @@ void BetaGUI::GUI::disableFocusedWidget(void){
   mFocusedWidget=NULL;
 }
 
+/** Inject a right button pressed event
+  *
+  * \param str A string used for debug purpose
+  *
+  */
 void BetaGUI::GUI::injectRightMouseButtonPressed(const std::string& str){
   mMouseEvent.setRightMouseButtonPressed(true);
 }

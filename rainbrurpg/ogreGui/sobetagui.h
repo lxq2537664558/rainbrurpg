@@ -45,6 +45,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class MultiColumnList;
+    class PopupMenu;
     class ToolTip;
   }
 }
@@ -78,6 +79,7 @@ namespace RainbruRPG{
       virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* );
       virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl );
       virtual void drawToolTip(QuadRenderer*, ToolTip* );
+      virtual void drawPopupMenu(QuadRenderer*, PopupMenu*);
 
 
       virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);

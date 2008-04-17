@@ -66,9 +66,9 @@ am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	guivertex.lo hscrollbar.lo label.lo lineinfo.lo mouseevent.lo \
 	mousepointer.lo multicolumnlist.lo multicolumnlistcell.lo \
 	multicolumnlistcolumn.lo multicolumnlistitem.lo object.lo \
-	popupmenu.lo popupmenuitem.lo pushbutton.lo quadrenderer.lo \
-	renderqueuelistener.lo resizegrip.lo scrollbar.lo \
-	scrollpane.lo skinmanager.lo skin.lo sobetagui.lo \
+	pmititle.lo popupmenu.lo popupmenuitem.lo pushbutton.lo \
+	quadrenderer.lo renderqueuelistener.lo resizegrip.lo \
+	scrollbar.lo scrollpane.lo skinmanager.lo skin.lo sobetagui.lo \
 	sonavigation.lo staticimage.lo textsettings.lo titlebar.lo \
 	tooltip.lo vector3.lo vscrollbar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
@@ -272,6 +272,7 @@ h_sources = bgbutton.h			\
 	   multicolumnlistcolumn.h	\
 	   multicolumnlistitem.h	\
 	   object.h			\
+	   pmititle.h			\
 	   popupmenu.h			\
 	   popupmenuitem.h		\
 	   pushbutton.h			\
@@ -314,6 +315,7 @@ cc_sources = bgbutton.cpp		\
 	    multicolumnlistcolumn.cpp	\
 	    multicolumnlistitem.cpp	\
 	    object.cpp			\
+	    pmititle.cpp		\
 	    popupmenu.cpp		\
 	    popupmenuitem.cpp		\
 	    pushbutton.cpp		\
@@ -442,6 +444,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlistcolumn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlistitem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/object.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pmititle.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/popupmenu.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/popupmenuitem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pushbutton.Plo@am__quote@

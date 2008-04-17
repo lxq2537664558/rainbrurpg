@@ -261,5 +261,17 @@ drawMultiColumnList(QuadRenderer* qr, MultiColumnList* mcl){
 void RainbruRPG::OgreGui::soNavigation::
 drawToolTip(QuadRenderer* qr, ToolTip* tt){
   LOGW("soNavigation cannot draw ToolTip");
+}
 
+/** Draws nothing
+  *
+  * The navigation skin does not provide PopupMenu.
+  *
+  * \param qr The QuadRenderer object
+  * \param pm The ToolTip to draw
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
+  LOGW("soNavigation cannot draw PopupMenu");
 }

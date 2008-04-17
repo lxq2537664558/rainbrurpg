@@ -891,3 +891,9 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   qr->removeDrawingDev(mcl->getDrawingDevSettings());
   qr->reset();
 }
+
+void RainbruRPG::OgreGui::soBetaGui::
+drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
+  LOGI("Drawing PopupMenu");
+}
+

@@ -30,6 +30,7 @@
 #include "vscrollbar.h"
 #include "bggui.h"
 #include "bgwindow.h"
+#include "popupmenu.h"
 #include "drawingdevsettings.h"
 
 #include <logger.h>
@@ -102,7 +103,8 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
   mResiedColumnRightPos(0),
   mVScrollBar(NULL),
   mHScrollBar(NULL),
-  mGui(NULL)
+  mGui(NULL),
+  mPopupMenu(NULL)
 {
   mSkin = SkinManager::getSingleton().getSkin(this);
   mGui = GameEngine::getSingleton().getOgreGui();
@@ -115,6 +117,8 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 
   mDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
   mXDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
+  mPopupMenu = new PopupMenu(Vector4(0, 0, 200, 50),"Columns", this);
+  mPopupMenu->hide();
 
   setName("MultiColumnList");
 
@@ -150,6 +154,21 @@ RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
     delete mHScrollBar;
     mHScrollBar=NULL;
   }
+
+  if (mDrawingDev){
+    delete mDrawingDev;
+    mDrawingDev=NULL;
+  }
+
+  if (mXDrawingDev){
+    delete mXDrawingDev;
+    mXDrawingDev=NULL;
+  }
+
+  if (mPopupMenu){
+    delete mPopupMenu;
+    mPopupMenu=NULL;
+  }
 }
 
 /** Draws the widget
@@ -170,6 +189,7 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
     mToolTip->draw( qr );
     mVScrollBar->draw( qr );
     mHScrollBar->draw( qr );
+    mPopupMenu->draw( qr );
   }
 }
 
@@ -337,6 +357,13 @@ int RainbruRPG::OgreGui::MultiColumnList::getMovedColumnIndex(void)const{
 bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
+
+  if (event.isRightMouseButtonPressed()){
+    LOGI("Showing PopupMenu");
+    mPopupMenu->move( px, py );
+    mPopupMenu->show();
+
+  }
 
   // Move the ToolTip, even outside the Widget if it is in transition
   if ( mToolTip->inTransition() )
