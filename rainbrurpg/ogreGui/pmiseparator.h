@@ -21,17 +21,15 @@
  */
 
 /* Modifications :
- * - 16 apr 2008 : starting implementation
+ * - 19 apr 2008 : starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
-#define _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
+#ifndef _OGRE_GUI_POPUP_MENU_ITEM_SEPARATOR_H_
+#define _OGRE_GUI_POPUP_MENU_ITEM_SEPARATOR_H_
+
 
 #include "popupmenuitem.h"
-
-#include <OgreString.h>
-
 
 // Forward declarations
 namespace RainbruRPG{
@@ -44,32 +42,17 @@ namespace RainbruRPG{
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A title item for PopupMenu widget
-      *
-      * You do not need to create a title item in normal use. It is 
-      * automatically created by PopupMenu when its constructor is called
-      * with a non-null caption.
+    /** A separator for PopupMenu widget
       *
       */
-    class pmiTitle : public PopupMenuItem{
+    class pmiSeparator : public PopupMenuItem{
     public:
-      pmiTitle(const Ogre::String&);
-      virtual ~pmiTitle();
+      pmiSeparator();
+      virtual ~pmiSeparator();
 
-      virtual void draw( QuadRenderer* qr);
+      virtual void draw( QuadRenderer* );
 
-      void setCaption(const Ogre::String&);
-      const Ogre::String& getCaption(void)const;
-
-    private:
-      /** The caption of the title*/
-      Ogre::String mCaption;
     };
-
   }
 }
-
-
-
-
-#endif // _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
+#endif // _OGRE_GUI_POPUP_MENU_ITEM_SEPARATOR_H_

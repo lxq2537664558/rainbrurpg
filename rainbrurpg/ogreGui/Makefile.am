@@ -25,6 +25,8 @@ h_sources= bgbutton.h			\
 	   multicolumnlistcolumn.h	\
 	   multicolumnlistitem.h	\
 	   object.h			\
+	   pmicheckbox.h		\
+	   pmiseparator.h		\
 	   pmititle.h			\
 	   popupmenu.h			\
 	   popupmenuitem.h		\
@@ -69,6 +71,8 @@ cc_sources= bgbutton.cpp		\
 	    multicolumnlistcolumn.cpp	\
 	    multicolumnlistitem.cpp	\
 	    object.cpp			\
+	    pmicheckbox.cpp		\
+	    pmiseparator.cpp		\
 	    pmititle.cpp		\
 	    popupmenu.cpp		\
 	    popupmenuitem.cpp		\

@@ -23,6 +23,10 @@
 #include "popupmenu.h"
 
 #include "bgwindow.h"
+#include "popupmenuitem.h"
+#include "pmititle.h"
+#include "pmiseparator.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
@@ -39,10 +43,13 @@ PopupMenu(Vector4 vDim, String vCaption, Widget* vParent,
 	  RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget( vDim, vParent, sid ),
   mSkin(NULL),
-  mCaption(vCaption),
-  mWidth(100)
+  mWidth(150),
+  mTitle(NULL),
+  mSeparator(NULL)
 {
-  mSkin = SkinManager::getSingleton().getSkin(this);
+  mSkin  = SkinManager::getSingleton().getSkin(this);
+
+  setCaption( vCaption );
 
   makeCorners();
 }
@@ -53,7 +60,14 @@ PopupMenu(Vector4 vDim, String vCaption, Widget* vParent,
   *
   */
 RainbruRPG::OgreGui::PopupMenu::~PopupMenu(){
-  mSkin=NULL;
+  mSkin = NULL;
+
+  if (mTitle){
+    delete mTitle;
+    mTitle = NULL;
+    delete mSeparator;
+    mSeparator = NULL;
+  }
 }
 
 /** Change the caption of this menu
@@ -63,6 +77,18 @@ RainbruRPG::OgreGui::PopupMenu::~PopupMenu(){
   */
 void RainbruRPG::OgreGui::PopupMenu::setCaption( const Ogre::String& vCaption){
   mCaption = vCaption;
+  if ( vCaption != "" ){
+    if (mTitle == NULL){
+      mTitle = new pmiTitle(vCaption);
+      mItemList.push_back( mTitle );
+      mSeparator = new pmiSeparator();
+      mItemList.push_back( mSeparator );
+      
+    }
+    else{
+      mTitle->setCaption(vCaption);
+    }
+  }
 }
 
 /** Change the width of this menu
@@ -99,8 +125,22 @@ void RainbruRPG::OgreGui::PopupMenu::makeCorners(void){
   LOGI("PopupMenu::makeCorners called");
   mAbsCorners.top    = corners.top + parent->getTop();
   mAbsCorners.left   = corners.left + parent->getLeft();
-  mAbsCorners.bottom = corners.bottom + parent->getTop();
-  mAbsCorners.right  = corners.right + parent->getLeft();
+  mAbsCorners.right  = corners.left + parent->getLeft() + mWidth;
+
+  unsigned int currentX = mAbsCorners.left;
+  unsigned int currentY = mAbsCorners.top;
+ 
+  tPopupMenuItemList::iterator iter;
+  for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+    (*iter)->computeAbsCorners( currentX, currentY, mWidth );
+    currentY += (*iter)->getHeight();
+  }
+
+  if (currentY == mAbsCorners.top)
+    currentY += 20;
+
+  corners.bottom = currentY - parent->getTop();
+  mAbsCorners.bottom = currentY;
  
 }
 
@@ -115,7 +155,55 @@ void RainbruRPG::OgreGui::PopupMenu::draw(QuadRenderer* qr){
       makeCorners();
       geometryDirty=false;
     }
-    
+
+    // Get parent scissor rectangle settings and disable it
+    Ogre::Rectangle sr=qr->getClipRegion();
+    qr->setUseParentScissor(false);
+
+    // Render!    
     mSkin->drawPopupMenu( qr, this );
+
+    tPopupMenuItemList::iterator iter;
+    for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+      (*iter)->draw(qr);
+    }
+
+    // Re-set the parent scissor rectangle settings
+    qr->setScissorRectangle(sr);
+    qr->setUseParentScissor(true);
+
   }
 }
+
+/** Get the absolute corners
+  *
+  * \return The geometry corners from the screen top/left corner
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::PopupMenu::getAbsCorners(void)const{
+  return mAbsCorners;
+}
+
+/** Add an item to this menu
+  *
+  * \param vItem The item to be added to the end of the menu
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::addItem(PopupMenuItem* vItem){
+  mItemList.push_back(vItem);
+}
+
+bool RainbruRPG::OgreGui::PopupMenu::
+injectMouse(unsigned int px, unsigned int py, const MouseEvent& vEvent){
+  LOGI("PopupMenu::injectMouse called");
+
+  tPopupMenuItemList::iterator iter;
+  for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+    if ((*iter)->injectMouse( px, py, vEvent )){
+      return true;
+    }
+  }
+
+  return false;
+}
+

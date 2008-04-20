@@ -1,0 +1,26 @@
+* v 0.0.5-175
+- Multicolumnlist now contains a PopuMenu item
+- Skin (and subclasses) drawPopupMenu() function implementation
+- PopupMenu::makeCorners implementation
+- pmiTitle implementation
+- Right mouse button handling
+- PopupMenuItem implementation
+- PopupMenu class implementation
+- Bugfix in the QuadRenderer::drawFilledRectangle() function
+  ScissorRectangle was set even if a parent scissor was used
+- MultiColumnList's now using 2 parentScissor and 2 DrawingDev
+- MultiColumnList's header drawingDev
+- MultiColumnList's DrawingDev with scrollbars works
+- MultiColumnList parentScissor implementation
+- Fix a bug in the TextInput activation (now uses MouseEvent)
+- Fix a bug with a ToolTip's shadow
+- ScrollBars usu GUI::focusedWidget
+- Correctly setting some Widgets name
+- ScrollBar injectMouse uses MouseEvent
+- Click again on a selected MultiColumnList's item deselect it
+- MultiColumnList column resizing use GUI::setFocusedWidget()
+  But a bug occurs : when resizing a column,
+  MultiColumnList::injectMouse sometimes returns false
+  Fixed using GUI::disableFocusedWidget() 
+- GUI::setFocusedWidget() implementation
+

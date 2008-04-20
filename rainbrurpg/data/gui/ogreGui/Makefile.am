@@ -59,4 +59,7 @@ datafiles_DATA= bgui.button.active.png     		\
 		\
 		mcl.ascsort.png				\
 		mcl.descsort.png			\
-		mcl.nosort.png
+		mcl.nosort.png				\
+		\
+		bgui.check.off.png			\
+		bgui.check.on.png

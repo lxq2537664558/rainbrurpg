@@ -74,3 +74,43 @@ void RainbruRPG::OgreGui::PopupMenuItem::setEnabled(bool vEnabled){
 bool RainbruRPG::OgreGui::PopupMenuItem::getEnabled(void)const{
   return mEnabled;
 }
+
+/** Get the absolute corners rectangle
+  *
+  * \return The rectangle containing the item
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::PopupMenuItem::
+getAbsCorners(void)const{
+  return mAbsCorners;
+}
+
+/** Compute the corners rectangle
+  *
+  * This function is automatically called by PopupMenu when it moves. It
+  * compute the corners rectangles of this item. 
+  *
+  * \param vAbsX, vAbsY The position of the widget from the screen 
+  *                     top/left point
+  *
+  * \param vWidth The width of the parent popup menu
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenuItem::
+computeAbsCorners(unsigned int vAbsX, unsigned int vAbsY, unsigned int vWidth){
+  mAbsCorners.left   = vAbsX;
+  mAbsCorners.top    = vAbsY;
+  mAbsCorners.right  = vAbsX + vWidth;
+  mAbsCorners.bottom = vAbsY + mHeight;
+
+  mImageCorners = mAbsCorners;
+  mImageCorners.left += 5;
+  mImageCorners.right = mImageCorners.left + 12;
+  mImageCorners.top += 4;
+  mImageCorners.bottom -= 4;
+
+
+  mTextCorners = mAbsCorners;
+  mTextCorners.left += 22;
+
+}

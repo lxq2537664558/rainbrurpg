@@ -34,6 +34,7 @@
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
+#include "mouseevent.h"
 
 // Forward declaration
 namespace BetaGUI {
@@ -44,6 +45,8 @@ namespace RainbruRPG{
     class QuadRenderer;
     class Skin;
     class PopupMenuItem;
+    class pmiTitle;
+    class pmiSeparator;
   }
 }
 // End of Forward declaration
@@ -60,6 +63,9 @@ namespace RainbruRPG{
 
     /** A popup menu
       *
+      * A widget used to show contextual menus, with a title item only
+      * if you provide a non-null string to the constructor.
+      *
       */
     class PopupMenu : public Widget{
     public:
@@ -75,6 +81,12 @@ namespace RainbruRPG{
 
       virtual void draw(QuadRenderer*);
 
+      const Ogre::Rectangle& getAbsCorners(void)const;
+
+      void addItem(PopupMenuItem*);
+
+      bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
+
     protected:
       void makeCorners(void);
 
@@ -89,9 +101,12 @@ namespace RainbruRPG{
       /** The list of items */
       tPopupMenuItemList mItemList;
 
-       /** The absolute corners (from the screen start) */
+      /** The absolute corners (from the screen start) */
       Ogre::Rectangle mAbsCorners;
-     
+      /** The title of this popup menu */
+      pmiTitle* mTitle;
+      /** The separator under the title */
+      pmiSeparator* mSeparator;
     };
   }
 }

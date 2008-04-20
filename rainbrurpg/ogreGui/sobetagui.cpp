@@ -33,6 +33,7 @@
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcell.h"
+#include "popupmenu.h"
 #include "tooltip.h"
 
 #include <logger.h>
@@ -788,9 +789,11 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       qr->enableGhost();
     }
     
-    // Left line
+    // Drawing left line : we need to disable the scissor rectangle
     x+=(*iter)->getWidth();
+    qr->setUseParentScissor(false);
     qr->drawLine( x, y1, x, y2, c );
+    qr->setUseParentScissor(true);
 
     if (colIndex == movingColumn || colIndex == movingColumn-1){
       qr->disableGhost();
@@ -894,6 +897,28 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 
 void RainbruRPG::OgreGui::soBetaGui::
 drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
-  LOGI("Drawing PopupMenu");
+  Rectangle dim(pm->getAbsCorners());
+
+  Ogre::ColourValue BGColor( 0.3f, 0.3f, 0.3f );
+  Ogre::ColourValue shadowColor( 0.2f, 0.2f, 0.2f );
+  Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
+  TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
+						    10, 1.0f, 1.0f, 1.0f );
+
+  // Draw shadow
+  Rectangle shadow;
+  int shadowDev = 6;
+  shadow.left   = dim.left   + shadowDev;
+  shadow.top    = dim.top    + shadowDev;
+  shadow.right  = dim.right  + shadowDev;
+  shadow.bottom = dim.bottom + shadowDev;
+  qr->setScissorRectangle( shadow );
+  qr->drawFilledRectangle( shadow, shadowColor);
+
+  // Draw tool tip
+  qr->setScissorRectangle( dim );
+  qr->drawFilledRectangle( dim,  BGColor);
+  qr->drawRectangleLines(dim,c);
+
 }
 

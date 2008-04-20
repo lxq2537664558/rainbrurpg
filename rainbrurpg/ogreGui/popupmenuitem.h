@@ -28,6 +28,9 @@
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_H_
 
+#include "mouseevent.h"
+#include <OgreRectangle.h>
+
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
@@ -40,6 +43,14 @@ namespace RainbruRPG{
   namespace OgreGui{
 
     /** Base class for all menu items
+      *
+      * \section PopupMenuItem_height Height and corners
+      *
+      * All subclasses of PopupMenuItem must call setHeight() in its 
+      * constructor. It sets mHeight value tat is used by the 
+      * computeAbsCorners() function to auto compute corners when the parent 
+      * PopupMenu is moved. In the draw() function, corners are usable and
+      * up to date.
       *
       */
     class PopupMenuItem{
@@ -59,6 +70,22 @@ namespace RainbruRPG{
 	*
 	*/
       virtual void draw( QuadRenderer* qr)=0;
+      
+      /** Handle a mouse event
+        *
+	* \param px, py The mouse position
+	* \param event  The mouse event
+	*
+	* \return \c true if the event is used (we stop the event chain),
+	*         \c false if you do not use the event.
+	*
+	*/
+      virtual bool injectMouse(unsigned int px, unsigned int py, 
+			       const MouseEvent& event)=0;
+
+      const Ogre::Rectangle& getAbsCorners(void)const;
+
+      void computeAbsCorners(unsigned int, unsigned int, unsigned int);
 
     protected:
       /** Is this item enabled
@@ -68,9 +95,17 @@ namespace RainbruRPG{
 	*/
       bool mEnabled;
 
+      /** The absolute corners (from the screen start) of the entire item*/
+      Ogre::Rectangle mAbsCorners;
+      /** The corners where we draw the menu item's image */
+      Ogre::Rectangle mImageCorners;
+      /** The corners where we draw the menu item's text */
+      Ogre::Rectangle mTextCorners;
+
     private:
       /** The height of the item in pixels */
       unsigned int mHeight;
+
     };
 
   }

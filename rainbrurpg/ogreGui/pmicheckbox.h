@@ -21,17 +21,17 @@
  */
 
 /* Modifications :
- * - 16 apr 2008 : starting implementation
+ * - 18 apr 2008 : starting implementation
  *         
  */
 
-#ifndef _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
-#define _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
+#ifndef _OGRE_GUI_POPUP_MENU_ITEM_CHECKBOX_H_
+#define _OGRE_GUI_POPUP_MENU_ITEM_CHECKBOX_H_
 
 #include "popupmenuitem.h"
+#include "mouseevent.h"
 
-#include <OgreString.h>
-
+#include <OgreTexture.h>
 
 // Forward declarations
 namespace RainbruRPG{
@@ -41,35 +41,39 @@ namespace RainbruRPG{
 }
 // End of forward declarations
 
+using namespace Ogre;
+
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A title item for PopupMenu widget
-      *
-      * You do not need to create a title item in normal use. It is 
-      * automatically created by PopupMenu when its constructor is called
-      * with a non-null caption.
+    /** A popup menu item that contains a CheckBox
       *
       */
-    class pmiTitle : public PopupMenuItem{
+    class pmiCheckBox : public PopupMenuItem{
     public:
-      pmiTitle(const Ogre::String&);
-      virtual ~pmiTitle();
+      pmiCheckBox(const Ogre::String&);
+      virtual ~pmiCheckBox();
 
       virtual void draw( QuadRenderer* qr);
 
       void setCaption(const Ogre::String&);
       const Ogre::String& getCaption(void)const;
+      virtual bool injectMouse(unsigned int, unsigned int,const MouseEvent& );
 
     private:
-      /** The caption of the title*/
+      /** This item's caption */
       Ogre::String mCaption;
+      /** Is this item checked */
+      bool mCheck;
+      /** The texture used to draw checked item */
+      static TexturePtr mTxtOn;
+      /** The texture used to draw unchecked item */
+      static TexturePtr mTxtOff;
+
     };
 
   }
 }
 
 
-
-
-#endif // _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
+#endif // _OGRE_GUI_POPUP_MENU_ITEM_CHECKBOX_H_

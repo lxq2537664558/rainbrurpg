@@ -32,6 +32,7 @@
 #include "bgwindow.h"
 #include "popupmenu.h"
 #include "drawingdevsettings.h"
+#include "pmicheckbox.h"
 
 #include <logger.h>
 #include <quadrenderer.h>
@@ -117,7 +118,7 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 
   mDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
   mXDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
-  mPopupMenu = new PopupMenu(Vector4(0, 0, 200, 50),"Columns", this);
+  mPopupMenu = new PopupMenu(Vector4(0, 0, 200, 50),"Columns menu", vParent);
   mPopupMenu->hide();
 
   setName("MultiColumnList");
@@ -204,8 +205,12 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
 MultiColumnListColumn* RainbruRPG::OgreGui::MultiColumnList::
 addColumn( const std::string& vCaption, int vWidth ){
   
-  MultiColumnListColumn* col=new MultiColumnListColumn(vCaption, vWidth);
+  // Adding to popup menu
+  pmiCheckBox* it=new pmiCheckBox(vCaption);
+  mPopupMenu->addItem( it );
+
   // Registering column index and parent
+  MultiColumnListColumn* col=new MultiColumnListColumn(vCaption, vWidth);
   col->setParentIndex(this, mColumnList.size());
   mColumnList.push_back(col);
   makeCorners();
@@ -358,9 +363,24 @@ bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
 
+  if (mPopupMenu->isVisible()){
+    if (mPopupMenu->injectMouse(px, py, event)){
+      return true;
+    }
+    else if (event.isLeftMouseButtonPressed()||
+	     event.isRightMouseButtonPressed()){
+	mPopupMenu->hide();
+	return true;
+    }
+    else{
+      if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
+      return true;
+    }
+  }
+
   if (event.isRightMouseButtonPressed()){
     LOGI("Showing PopupMenu");
-    mPopupMenu->move( px, py );
+    mPopupMenu->move( px, py);
     mPopupMenu->show();
 
   }
