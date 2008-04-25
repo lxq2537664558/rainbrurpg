@@ -1,6 +1,13 @@
 TODO
 -> Libraries versionning in doc/libVersionning.html
 
+o [mouse] Error when committing cvs
+cvs commit: Up-to-date check failed for `TODO'
+cvs [commit aborted]: correct above errors first!
+cvs commit: saving log message in /tmp/cvs0KBSI8
+
+Switching to v0.0.5-177
+
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -97,7 +104,20 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-177
+
 * v 0.0.5-176
+<<<<<<< TODO
+- PopupMenu drop down effect implemented
+- PopupMenuItem mouse over effect implemented
+- Hidden column handled when resizing and reordering columns
+- MultiColumnList::mLastColumnRight handles hidden columns
+- Columns can be shown/hidden
+- pmiCheckBox's signal and Column's slot connected
+- pmiCheckBox sigValuerChange signal  implementation
+- pmiCheckBox toggleCheck works
+- PopupMenu::injectMouse() implementation
+=======
 - (17) Hidden column handled when resizing and reordering columns
 - MultiColumnList::mLastColumnRight handles hidden columns
 - Columns can be shown/hidden
@@ -105,6 +125,7 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - pmiCheckBox sigValuerChange signal  implementation
 - pmiCheckBox toggleCheck works
 - PopupMenu::injectMouse() implementation
+>>>>>>> 1.182
 - PopupMenu can be hidden
 - PopupMenu injectMouse implementation
 - pmiSeparator is drawn and add to PopupMenu under pmiTitle

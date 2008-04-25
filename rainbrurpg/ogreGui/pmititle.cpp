@@ -89,3 +89,7 @@ const Ogre::String& RainbruRPG::OgreGui::pmiTitle::getCaption(void)const{
   return mCaption;
 }
 
+bool RainbruRPG::OgreGui::pmiTitle::
+injectMouse(unsigned int, unsigned int, const MouseEvent&){
+  return false;
+}

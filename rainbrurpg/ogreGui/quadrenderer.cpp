@@ -868,6 +868,11 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
     mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
 				   vRect.right, vRect.bottom );
   }
+  else{
+    mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				   scissorRect.right, scissorRect.bottom );
+
+  }
   
   // drawQuad
   if (mBuffer->isLocked()){
@@ -1105,6 +1110,13 @@ void RainbruRPG::OgreGui::QuadRenderer::endLines(void){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::renderLines(void){
+
+  if (useScissor || useParentScissor){
+    mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				   scissorRect.right, scissorRect.bottom );
+
+  }
+
 
   // Render!
   mRenderOp.vertexData->vertexCount = mBatchCount * 2;

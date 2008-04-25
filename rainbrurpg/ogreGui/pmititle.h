@@ -29,6 +29,7 @@
 #define _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
 
 #include "popupmenuitem.h"
+#include "mouseevent.h"
 
 #include <OgreString.h>
 
@@ -57,6 +58,7 @@ namespace RainbruRPG{
       virtual ~pmiTitle();
 
       virtual void draw( QuadRenderer* qr);
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
 
       void setCaption(const Ogre::String&);
       const Ogre::String& getCaption(void)const;

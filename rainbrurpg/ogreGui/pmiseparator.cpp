@@ -36,8 +36,6 @@ RainbruRPG::OgreGui::pmiSeparator::~pmiSeparator(){
 }
 
 void RainbruRPG::OgreGui::pmiSeparator::draw( QuadRenderer* qr){
-  LOGI("Drawing pmiSeparator");
-
   qr->setScissorRectangle(mAbsCorners);
   qr->drawLine (mAbsCorners.left,  mAbsCorners.top, 
 		mAbsCorners.right, mAbsCorners.top, 
@@ -50,4 +48,9 @@ void RainbruRPG::OgreGui::pmiSeparator::draw( QuadRenderer* qr){
   
   qr->reset();
   
+}
+
+bool RainbruRPG::OgreGui::pmiSeparator::
+injectMouse(unsigned int, unsigned int, const MouseEvent&){
+  return false;
 }

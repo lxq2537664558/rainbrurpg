@@ -29,6 +29,7 @@
 #include "quadrenderer.h"
 
 #include <logger.h>
+#include <vcconstant.h>
 
 /** The constructor
   *
@@ -45,9 +46,16 @@ PopupMenu(Vector4 vDim, String vCaption, Widget* vParent,
   mSkin(NULL),
   mWidth(150),
   mTitle(NULL),
-  mSeparator(NULL)
+  mSeparator(NULL),
+  mVelocityCalculator(NULL),
+  mDropDown(false),
+  mDropDownHeight(0)
 {
   mSkin  = SkinManager::getSingleton().getSkin(this);
+
+  mVelocityCalculator = new vcConstant();
+  mVelocityCalculator->setTranslationLenght(0.7);
+  mVelocityCalculator->setTransitionTime(150);
 
   setCaption( vCaption );
 
@@ -67,6 +75,11 @@ RainbruRPG::OgreGui::PopupMenu::~PopupMenu(){
     mTitle = NULL;
     delete mSeparator;
     mSeparator = NULL;
+  }
+
+  if (mVelocityCalculator){
+    delete mVelocityCalculator;
+    mVelocityCalculator = NULL;
   }
 }
 
@@ -122,7 +135,6 @@ unsigned int RainbruRPG::OgreGui::PopupMenu::getWidth(void)const{
   *
   */
 void RainbruRPG::OgreGui::PopupMenu::makeCorners(void){
-  LOGI("PopupMenu::makeCorners called");
   mAbsCorners.top    = corners.top + parent->getTop();
   mAbsCorners.left   = corners.left + parent->getLeft();
   mAbsCorners.right  = corners.left + parent->getLeft() + mWidth;
@@ -130,10 +142,15 @@ void RainbruRPG::OgreGui::PopupMenu::makeCorners(void){
   unsigned int currentX = mAbsCorners.left;
   unsigned int currentY = mAbsCorners.top;
  
+  unsigned int cX = corners.left;
+  unsigned int cY = corners.top;
+
   tPopupMenuItemList::iterator iter;
   for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+    (*iter)->computeCorners( cX, cY, mWidth );
     (*iter)->computeAbsCorners( currentX, currentY, mWidth );
     currentY += (*iter)->getHeight();
+    cY       += (*iter)->getHeight();
   }
 
   if (currentY == mAbsCorners.top)
@@ -150,28 +167,51 @@ void RainbruRPG::OgreGui::PopupMenu::makeCorners(void){
   *
   */
 void RainbruRPG::OgreGui::PopupMenu::draw(QuadRenderer* qr){
-  if (visible){
+  if (visible || (!visible && mDropDown)){
     if (geometryDirty){
       makeCorners();
       geometryDirty=false;
     }
 
-    // Get parent scissor rectangle settings and disable it
-    Ogre::Rectangle sr=qr->getClipRegion();
-    qr->setUseParentScissor(false);
+    Ogre::Rectangle newScissor = mAbsCorners;
 
-    // Render!    
-    mSkin->drawPopupMenu( qr, this );
-
-    tPopupMenuItemList::iterator iter;
-    for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
-      (*iter)->draw(qr);
+    if (mDropDown){
+      bool stop=true;
+      mDropDownHeight += mVelocityCalculator->getNextFrame(stop);
+      newScissor.bottom = newScissor.top + mDropDownHeight;
+      if (stop==false){
+	mVelocityCalculator->reset();
+	mDropDown=false;
+      }
     }
 
-    // Re-set the parent scissor rectangle settings
-    qr->setScissorRectangle(sr);
-    qr->setUseParentScissor(true);
+    if (mDropDownHeight > 0){
 
+      // Adding shadow dev
+      newScissor.right += 6;
+      newScissor.bottom += 6;
+
+
+      // Get parent scissor rectangle settings and disable it
+      Ogre::Rectangle sr=qr->getClipRegion();
+      qr->setUseParentScissor(false);
+      
+      qr->setScissorRectangle(newScissor);
+      qr->setUseParentScissor(true);
+
+      // Render!    
+      mSkin->drawPopupMenu( qr, this );
+
+      tPopupMenuItemList::iterator iter;
+      for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+	(*iter)->drawMouseOver(qr);
+	(*iter)->draw(qr);
+      }
+
+      // Re-set the parent scissor rectangle settings
+      qr->setScissorRectangle(sr);
+      qr->setUseParentScissor(true);
+    } // If mDropDownHeight > 0
   }
 }
 
@@ -193,17 +233,91 @@ void RainbruRPG::OgreGui::PopupMenu::addItem(PopupMenuItem* vItem){
   mItemList.push_back(vItem);
 }
 
+/** Handles the mouse event
+  *
+  * \param px, py mouse position relative from the widnow top/left corner
+  * \param vEvent The mouse event object
+  *
+  */
 bool RainbruRPG::OgreGui::PopupMenu::
 injectMouse(unsigned int px, unsigned int py, const MouseEvent& vEvent){
-  LOGI("PopupMenu::injectMouse called");
-
   tPopupMenuItemList::iterator iter;
   for (iter = mItemList.begin(); iter != mItemList.end(); iter++){
+    (*iter)->handleMouseOver( px, py );
     if ((*iter)->injectMouse( px, py, vEvent )){
       return true;
     }
   }
-
   return false;
 }
 
+/** Is the given point in the menu
+  *
+  * \param px, py mouse position relative from the widnow top/left corner
+  *
+  */
+bool RainbruRPG::OgreGui::PopupMenu::in(unsigned int px, unsigned int py)const{
+  if (px > corners.left && px < corners.right){
+    if (py > corners.top && py < corners.bottom){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  else{
+    return false;
+  }
+}
+
+/** Hides this popup meu
+  *
+  * \note This function overrides the Widget's one to implement the PopupMenu
+  *       drop down effect.
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::hide(){
+  // 6 id the shadow height
+  int height = mAbsCorners.bottom - mAbsCorners.top + 6;
+  mDropDown = true;
+  mVelocityCalculator->setTranslationLenght(-height);
+  mVelocityCalculator->start();
+  visible = false;
+  mDropDownHeight = height;
+}
+
+/** Shows this popup meu
+  *
+  * \note This function overrides the Widget's one to implement the PopupMenu
+  *       drop down effect.
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::show(){
+  // 6 id the shadow height
+  int height = mAbsCorners.bottom - mAbsCorners.top + 6;
+  mDropDown = true;
+  mVelocityCalculator->setTranslationLenght(height);
+  mVelocityCalculator->start();
+  visible = true;
+  mDropDownHeight = 0;
+}
+
+/** Set the visibility status of this popup menu
+  *
+  * \note This function overrides the Widget's one to implement the PopupMenu
+  *       drop down effect.
+  *
+  * \param vVisible The new visible status
+  *
+  */
+void RainbruRPG::OgreGui::PopupMenu::setVisible(bool vVisible){
+  if (visible != vVisible){
+    visible = vVisible;
+    if (visible){
+      show();
+    }
+    else{
+      hide();
+    }
+  }
+}

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 apr 2008 : Mouse over effect implementation
  * - 15 apr 2008 : starting implementation
  *         
  */
@@ -33,11 +34,16 @@
 
 // Forward declarations
 namespace RainbruRPG{
+  namespace Core{
+    class VelocityCalculator;
+  }
   namespace OgreGui{
     class QuadRenderer;
   }
 }
 // End of forward declarations
+
+using namespace RainbruRPG::Core;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -51,6 +57,12 @@ namespace RainbruRPG{
       * computeAbsCorners() function to auto compute corners when the parent 
       * PopupMenu is moved. In the draw() function, corners are usable and
       * up to date.
+      *
+      * \section PopupMenuItem_mouseOver Mouse over effect
+      *
+      * A mouse over graphical effect is provided by this class. It doesn't
+      * need to be implemented in subsclasses. If the subclass is enabled
+      * (using setEnabled()), The mouse over effect will be shown.
       *
       */
     class PopupMenuItem{
@@ -84,17 +96,28 @@ namespace RainbruRPG{
 			       const MouseEvent& event)=0;
 
       const Ogre::Rectangle& getAbsCorners(void)const;
+      bool isEnabled(void)const;
+
 
       void computeAbsCorners(unsigned int, unsigned int, unsigned int);
+      void computeCorners(unsigned int, unsigned int, unsigned int);
+
+      bool in(unsigned int, unsigned int)const;
+      float getMouseOverAlpha(void);
+      bool inTransition(void)const;
+      void handleMouseOver(unsigned int, unsigned int);
+
+      void drawMouseOver(QuadRenderer*);
 
     protected:
       /** Is this item enabled
         *
-	* A diabled item can be grayed and canot get mouse event.
+	* A disabled item can be grayed and cannot get mouse event.
 	*
 	*/
       bool mEnabled;
-
+      /** Geometry corner relative to the window position */
+      Ogre::Rectangle mCorners;
       /** The absolute corners (from the screen start) of the entire item*/
       Ogre::Rectangle mAbsCorners;
       /** The corners where we draw the menu item's image */
@@ -105,7 +128,12 @@ namespace RainbruRPG{
     private:
       /** The height of the item in pixels */
       unsigned int mHeight;
-
+      /** The velocity calculator used to draw mouse over effect*/
+      VelocityCalculator* mVelocityCalculator;
+      /** The alpha of the mouse over effect */
+      float mMouseOverAlpha;
+      /** Are we in mouse over effect */
+      bool mInTransition;
     };
 
   }

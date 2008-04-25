@@ -213,6 +213,12 @@ addColumn( const std::string& vCaption, int vWidth ){
   MultiColumnListColumn* col=new MultiColumnListColumn(vCaption, vWidth);
   col->setParentIndex(this, mColumnList.size());
   mColumnList.push_back(col);
+
+  // Connection popup menu item's signal to column's slot
+  it->sigValueChanged.connect( sigc::mem_fun(col, 
+      &RainbruRPG::OgreGui::MultiColumnListColumn::setVisible ));
+
+
   makeCorners();
   return col;
 }
@@ -363,26 +369,37 @@ bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
 
+
+  // Handle popupmenu
   if (mPopupMenu->isVisible()){
     if (mPopupMenu->injectMouse(px, py, event)){
       return true;
     }
     else if (event.isLeftMouseButtonPressed()||
 	     event.isRightMouseButtonPressed()){
+      if (!mPopupMenu->in(px, py)){
 	mPopupMenu->hide();
 	return true;
+      }
     }
     else{
       if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
       return true;
     }
   }
-
   if (event.isRightMouseButtonPressed()){
     LOGI("Showing PopupMenu");
     mPopupMenu->move( px, py);
     mPopupMenu->show();
+  }
 
+  // Disabling movingcolumn if no left button down
+  if (!event.isLeftMouseButtonPressed()){
+    if (mMovingColumn != -1){
+      LOGI("mMovingColumn is now -1");
+      mMovingColumn = -1;
+    }
+    
   }
 
   // Move the ToolTip, even outside the Widget if it is in transition
@@ -423,60 +440,62 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
       colLeft=corners.left;
 
       for (colIter=mColumnList.begin(); colIter!=mColumnList.end(); colIter++){
-	colRight=colLeft+(*colIter)->getWidth();
-	// Resizing column
-	if ( (px > colRight - COLUMN_RESIZE_SENSITIVITY) &&
-	     (px < colRight + COLUMN_RESIZE_SENSITIVITY)){
-	  if (LMB){
-	    if (mResizedColumnIndex==-1 && mMovingColumn==-1){
-	      mGui->setFocusedWidget(this);
-	      mResizedColumnIndex=colIndex;
-	      mMouseXDev = colRight - px;
-	      mResiedColumnRightPos = colLeft;
-	      return true;
+	if ((*colIter)->isVisible()){
+	  colRight=colLeft+(*colIter)->getWidth();
+	  // Resizing column
+	  if ( (px > colRight - COLUMN_RESIZE_SENSITIVITY) &&
+	       (px < colRight + COLUMN_RESIZE_SENSITIVITY)){
+	    if (LMB){
+	      if (mResizedColumnIndex==-1 && mMovingColumn==-1){
+		mGui->setFocusedWidget(this);
+		mResizedColumnIndex=colIndex;
+		mMouseXDev = colRight - px;
+		mResiedColumnRightPos = colLeft;
+		return true;
+	      }
+	    }
+	    else{
+	      mResizedColumnIndex=-1;
+	      return false;
 	    }
 	  }
-	  else{
-	    mResizedColumnIndex=-1;
-	    return false;
-	  }
-	}
-	else if ((px > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
-	    px < colRight - COLUMN_RESIZE_SENSITIVITY ){
-	  // We are in column header, select it only if no column are moving
-	  if (mMovingColumn == -1){
-	    (*colIter)->setSelected(true);
-	  }
-
-	  if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
-	  if (selectedColumn && selectedColumn!=(*colIter) ){
-	    selectedColumn->setSelected(false);
-	  }
-	  selectedColumn=(*colIter);
-
-	  if (event.isLeftButtonClick()){
-	    mToolTip->hide();
-	    selectedColumn->toggleSort();
-	  }
-	  else if (event.isLeftButtonLongClick()){
-	    // Moving column
-	    mToolTip->hide();
-	    // Moving column only if no column is moving
+	  else if ((px > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
+		   px < colRight - COLUMN_RESIZE_SENSITIVITY ){
+	    // We are in column header, select it only if no column are moving
 	    if (mMovingColumn == -1){
-	      mMovingColumn=colIndex;
-	      mGui->setFocusedWidget(this);
+	      (*colIter)->setSelected(true);
 	    }
-
-	    handleMovingColumn(px, py, colLeft, colRight, colIndex);
+	    
+	    if (mouseOveredItem )  mouseOveredItem->setMouseOver(false);
+	    if (selectedColumn && selectedColumn!=(*colIter) ){
+	      selectedColumn->setSelected(false);
+	    }
+	    selectedColumn=(*colIter);
+	    
+	    if (event.isLeftButtonClick()){
+	      mToolTip->hide();
+	      selectedColumn->toggleSort();
+	    }
+	    else if (event.isLeftButtonLongClick()){
+	      // Moving column
+	      mToolTip->hide();
+	      // Moving column only if no column is moving
+	      if (mMovingColumn == -1){
+		mMovingColumn=colIndex;
+		mGui->setFocusedWidget(this);
+	      }
+	      
+	      handleMovingColumn(px, py, colLeft, colRight, colIndex);
+	    }
+	    else if (!LMB){
+	      handleToolTip(px, py);
+	      mMovingColumn=-1;
+	      mGui->disableFocusedWidget();
+	    }
+	    return true;
 	  }
-	  else if (!LMB){
-	    handleToolTip(px, py);
-	    mMovingColumn=-1;
-	    mGui->disableFocusedWidget();
-	  }
-	  return true;
-	}
-	colLeft=colRight;
+	  colLeft=colRight;
+	} // Is column visible?
 	colIndex++;
       }
 
@@ -650,7 +669,9 @@ void RainbruRPG::OgreGui::MultiColumnList::computeLastColumnRight(){
   mLastColumnRight=mAbsCorners.left;
   tMultiColumnListColumnList::const_iterator iter;
   for (iter=mColumnList.begin(); iter!=mColumnList.end(); iter++){
-    mLastColumnRight+=(*iter)->getWidth();
+    if ((*iter)->isVisible()){
+      mLastColumnRight+=(*iter)->getWidth();
+    }
   }
 }
 

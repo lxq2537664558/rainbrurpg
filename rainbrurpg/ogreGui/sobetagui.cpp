@@ -744,62 +744,65 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   unsigned int colIndex=0;
 
   for(iter = colList.begin();iter != colList.end(); iter++){
-    // Header background and caption
-    columnCaption.left  = x;
-    columnCaption.right = x + (*iter)->getWidth();
-    headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
-    headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
+    if ((*iter)->isVisible()){
+      // Header background and caption
+      columnCaption.left  = x;
+      columnCaption.right = x + (*iter)->getWidth();
+      headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
+      headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
+      
+      sortSignRect.left  = headerBG.right - 14;
+      sortSignRect.right = sortSignRect.left + 12;
+      
+      columnCaption.right-=16; // Remove sortSignRect size
+      
+      if (colIndex == movingColumn){
+	qr->enableGhost();
+      }
+      
+      
+      if ((*iter)->isSelected()){
+	qr->drawFilledRectangle( headerBG, headerBGColorS );
+      }
+      else{
+	qr->drawFilledRectangle( headerBG, headerBGColor );
+      }
+      qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
+      
+      // Drawing sort sign
+      qr->setBlendMode(QBM_ALPHA);
+      switch((*iter)->getSortPolicy()){
+      case MCS_NONE:
+	qr->setTexturePtr(mMclColumnNoSort);
+	break;
+      case MCS_ASCENDANT:
+	qr->setTexturePtr(mMclColumnAscSort);
+	break;
+      case MCS_DESCENDANT:
+	qr->setTexturePtr(mMclColumnDescSort);
+	break;
+      }
+      qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+      qr->drawRectangle(sortSignRect);
+      
+      
+      if (colIndex == movingColumn-1){
+	qr->enableGhost();
+      }
+      
+      // Drawing left line : we need to disable the scissor rectangle
+      x+=(*iter)->getWidth();
+      qr->setUseParentScissor(false);
+      qr->drawLine( x, y1, x, y2, c );
+      qr->setUseParentScissor(true);
+      
+      if (colIndex == movingColumn || colIndex == movingColumn-1){
+	qr->disableGhost();
+      }
+      
+      qr->reset();
+    } // is column is visible
 
-    sortSignRect.left  = headerBG.right - 14;
-    sortSignRect.right = sortSignRect.left + 12;
-    
-    columnCaption.right-=16; // Remove sortSignRect size
-
-    if (colIndex == movingColumn){
-      qr->enableGhost();
-    }
-
-
-    if ((*iter)->isSelected()){
-      qr->drawFilledRectangle( headerBG, headerBGColorS );
-    }
-    else{
-      qr->drawFilledRectangle( headerBG, headerBGColor );
-    }
-    qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
-
-    // Drawing sort sign
-    qr->setBlendMode(QBM_ALPHA);
-    switch((*iter)->getSortPolicy()){
-    case MCS_NONE:
-      qr->setTexturePtr(mMclColumnNoSort);
-      break;
-    case MCS_ASCENDANT:
-      qr->setTexturePtr(mMclColumnAscSort);
-      break;
-    case MCS_DESCENDANT:
-      qr->setTexturePtr(mMclColumnDescSort);
-      break;
-    }
-    qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-    qr->drawRectangle(sortSignRect);
-
-
-    if (colIndex == movingColumn-1){
-      qr->enableGhost();
-    }
-    
-    // Drawing left line : we need to disable the scissor rectangle
-    x+=(*iter)->getWidth();
-    qr->setUseParentScissor(false);
-    qr->drawLine( x, y1, x, y2, c );
-    qr->setUseParentScissor(true);
-
-    if (colIndex == movingColumn || colIndex == movingColumn-1){
-      qr->disableGhost();
-    }
-    
-    qr->reset();
     colIndex++;
   }
   
@@ -856,28 +859,30 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
     // Drawing cells
     mil=(*ili)->getCellList();
     for (mii=mil.begin(); mii != mil.end(); mii++){
-      if ((*mii)->isText()){
-
-	if (colId==movingColumn){
-	  qr->enableGhost();
-	}
-
-	qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
-	itemRect.left+=colList[colId]->getWidth();
-	if (colId+1 < colList.size()){
-	  itemRect.right=itemRect.left + colList[colId+1]->getWidth();
-	}
-	else{
-	  itemRect.right = columnCaption.right;
-	}
-
-	if (colId==movingColumn){
-	  qr->disableGhost();
-	}
-
-	colId++;
-      }
-    }
+      if (colList[colId]->isVisible()){
+	if ((*mii)->isText()){
+	  
+	  if (colId==movingColumn){
+	    qr->enableGhost();
+	  }
+	  
+	  qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
+	  itemRect.left+=colList[colId]->getWidth();
+	  if (colId+1 < colList.size()){
+	    itemRect.right=itemRect.left + colList[colId+1]->getWidth();
+	  }
+	  else{
+	    itemRect.right = columnCaption.right;
+	  }
+	  
+	  if (colId==movingColumn){
+	    qr->disableGhost();
+	  }
+	  
+	} // if cell is text
+      } // If column is visible
+      colId++;
+    } // For each cell in multicolumn list item
     colId=0;
     itemRect.left=r.left+5;
     itemRect.right=itemRect.left+colList[0]->getWidth();
@@ -915,7 +920,6 @@ drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
   qr->setScissorRectangle( shadow );
   qr->drawFilledRectangle( shadow, shadowColor);
 
-  // Draw tool tip
   qr->setScissorRectangle( dim );
   qr->drawFilledRectangle( dim,  BGColor);
   qr->drawRectangleLines(dim,c);

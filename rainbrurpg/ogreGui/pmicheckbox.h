@@ -32,6 +32,7 @@
 #include "mouseevent.h"
 
 #include <OgreTexture.h>
+#include <sigc++/sigc++.h>
 
 // Forward declarations
 namespace RainbruRPG{
@@ -51,6 +52,9 @@ namespace RainbruRPG{
       */
     class pmiCheckBox : public PopupMenuItem{
     public:
+      /** Defines a signal returning void with an integer parameter */
+      typedef sigc::signal<void, int> tVoidIntSignal;
+
       pmiCheckBox(const Ogre::String&);
       virtual ~pmiCheckBox();
 
@@ -59,6 +63,14 @@ namespace RainbruRPG{
       void setCaption(const Ogre::String&);
       const Ogre::String& getCaption(void)const;
       virtual bool injectMouse(unsigned int, unsigned int,const MouseEvent& );
+
+      void toggleCheck(void);
+      /** A signal emitted when the check value changed
+        *
+	* The \c int parameter is the new value of mCheck;
+	*
+	*/
+      tVoidIntSignal sigValueChanged;
 
     private:
       /** This item's caption */

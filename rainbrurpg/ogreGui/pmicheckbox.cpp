@@ -40,8 +40,10 @@ TexturePtr RainbruRPG::OgreGui::pmiCheckBox::mTxtOff = TexturePtr();
   */
 RainbruRPG::OgreGui::pmiCheckBox::pmiCheckBox(const Ogre::String& vCaption):
   PopupMenuItem(),
-  mCaption(vCaption)
+  mCaption(vCaption),
+  mCheck(true)
 {
+  setEnabled(true);
   mTxtOn = TextureManager::getSingleton()
     .load("bgui.check.on.png",
 	  ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
@@ -103,7 +105,38 @@ const Ogre::String& RainbruRPG::OgreGui::pmiCheckBox::getCaption(void)const{
   return mCaption;
 }
 
+/** Toggle The check member value
+  *
+  * This toggles the mCheck value and emit the sigValueChanged signal with
+  * the new value.
+  *
+  */
+void RainbruRPG::OgreGui::pmiCheckBox::toggleCheck(void){
+  LOGI("pmiCheckBox::toggleCheck called");
+  mCheck = !mCheck;
+  sigValueChanged.emit(mCheck);
+}
+
+/** Injects a mouse event
+  *
+  * \param px, py The mouse position
+  * \param event  The mouse event object
+  *
+  * \return \c true if the event is used, otherwise returns \c false
+  *
+  */
 bool RainbruRPG::OgreGui::pmiCheckBox::
 injectMouse(unsigned int px, unsigned int py, const MouseEvent& event){
-
+  if (event.isLeftButtonClick()){
+    if (in(px, py)){
+      toggleCheck();
+      
+    }
+    else{
+      return false;
+    }
+  }
+  else{
+    return false;
+  }
 }

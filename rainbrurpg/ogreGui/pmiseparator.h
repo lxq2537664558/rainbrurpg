@@ -30,6 +30,7 @@
 
 
 #include "popupmenuitem.h"
+#include "mouseevent.h"
 
 // Forward declarations
 namespace RainbruRPG{
@@ -51,6 +52,7 @@ namespace RainbruRPG{
       virtual ~pmiSeparator();
 
       virtual void draw( QuadRenderer* );
+      virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
 
     };
   }

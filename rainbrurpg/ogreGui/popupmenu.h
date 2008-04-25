@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 24 apr 2008 : Drop down effect implementation
  * - 15 apr 2008 : starting implementation
  *         
  */
@@ -41,6 +42,9 @@ namespace BetaGUI {
   class Window;
 }
 namespace RainbruRPG{
+  namespace Core{
+    class VelocityCalculator;
+  }
   namespace OgreGui{
     class QuadRenderer;
     class Skin;
@@ -87,6 +91,12 @@ namespace RainbruRPG{
 
       bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
 
+      bool in(unsigned int, unsigned int)const;
+
+      virtual void hide();
+      virtual void show();
+      virtual void setVisible(bool);
+
     protected:
       void makeCorners(void);
 
@@ -107,6 +117,12 @@ namespace RainbruRPG{
       pmiTitle* mTitle;
       /** The separator under the title */
       pmiSeparator* mSeparator;
+      /** The velocity calculator used for drop down effect */
+      VelocityCalculator* mVelocityCalculator;
+      /** Is this popup menu in drop down effect */
+      bool mDropDown;
+      /** The actual height of the menu (including drop down effect) */
+      int mDropDownHeight;
     };
   }
 }

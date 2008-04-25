@@ -39,7 +39,8 @@ MultiColumnListColumn(const std::string& vCaption, int vWidth):
   mSelected(false),
   mSortPolicy(MCS_NONE),
   mParent(NULL),
-  mIndex(-1)
+  mIndex(-1),
+  mVisible(true)
 {
 
 }
@@ -168,4 +169,31 @@ void RainbruRPG::OgreGui::MultiColumnListColumn::resize(int vWidth){
 void RainbruRPG::OgreGui::MultiColumnListColumn::
 setMinimumWidth(int vMinWidth){
   mMinimumWidth = vMinWidth;
+}
+
+/** Change the visibility of this column
+  *
+  * This function set mParent's geometry dirty.
+  *
+  * \param vVisible The new value of mVisible
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListColumn::setVisible( bool vVisible ){
+  mVisible = vVisible;
+  if (mParent){
+    /* Setting MultiColumnList geometry dirty to recompute
+     * MultiColumnList::mLastColumnRight value.
+     *
+     */
+    mParent->setGeometryDirty();
+  }
+}
+
+/** Is this column visible
+  *
+  * \return The value of mVisible
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnListColumn::isVisible(void)const{
+  return mVisible;
 }

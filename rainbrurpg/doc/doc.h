@@ -69,7 +69,8 @@
   *
   * Some part of this projet use sigc++ for signal/slot mechanism. See
   * http://libsigc.sourceforge.net/libsigc2/docs/manual/html/index.html
-  * for further informations.
+  * for further informations. Please see the RainbruRPG::Network::FtpClient
+  * class for more informations.
   *
   * In Qt based applications, I use the Qt signal/slot implementation.
   *

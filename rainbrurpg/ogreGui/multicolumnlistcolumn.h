@@ -57,6 +57,9 @@ namespace RainbruRPG{
 
       void resize(int);
 
+      void setVisible(bool);
+      bool isVisible(void)const;
+
     private:
       /** The caption of the column */
       std::string mCaption;
@@ -81,6 +84,8 @@ namespace RainbruRPG{
 	*
 	*/
       int mIndex;
+      /** Is this column visible ? */
+      bool mVisible;
     };
   }
 }
