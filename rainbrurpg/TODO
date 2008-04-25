@@ -1,13 +1,6 @@
 TODO
 -> Libraries versionning in doc/libVersionning.html
 
-o [mouse] Error when committing cvs
-cvs commit: Up-to-date check failed for `TODO'
-cvs [commit aborted]: correct above errors first!
-cvs commit: saving log message in /tmp/cvs0KBSI8
-
-Switching to v0.0.5-177
-
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
