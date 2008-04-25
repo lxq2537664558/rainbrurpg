@@ -100,7 +100,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * v 0.0.5-177
 
 * v 0.0.5-176
-<<<<<<< TODO
 - PopupMenu drop down effect implemented
 - PopupMenuItem mouse over effect implemented
 - Hidden column handled when resizing and reordering columns
@@ -110,15 +109,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - pmiCheckBox sigValuerChange signal  implementation
 - pmiCheckBox toggleCheck works
 - PopupMenu::injectMouse() implementation
-=======
-- (17) Hidden column handled when resizing and reordering columns
-- MultiColumnList::mLastColumnRight handles hidden columns
-- Columns can be shown/hidden
-- pmiCheckBox's signal and Column's slot connected
-- pmiCheckBox sigValuerChange signal  implementation
-- pmiCheckBox toggleCheck works
-- PopupMenu::injectMouse() implementation
->>>>>>> 1.182
 - PopupMenu can be hidden
 - PopupMenu injectMouse implementation
 - pmiSeparator is drawn and add to PopupMenu under pmiTitle
