@@ -177,6 +177,10 @@ void BetaGUI::Window::setTitle(const String& title){
   */
 void BetaGUI::Window::draw(QuadRenderer* qr){
   if (visible){
+    if (geometryDirty){
+      makeCorners();
+    }
+
     qr->setAlpha( this->alpha );
     mSkin->drawWindow(qr, corners, "Caption");
 
@@ -264,6 +268,7 @@ void BetaGUI::Window::resize(int px, int py){
   mScrollPane->setHeight( height );
 
   mScrollPane->setScrollBarsVisbleStatus();
+  mScrollPane->setGeometryDirty();
 
 }
 
@@ -285,6 +290,7 @@ void BetaGUI::Window::move(int px, int py){
   corners.bottom=corners.top+height;
 
   mScrollPane->setGeometryDirty();
+  setGeometryDirty();
 }
 
 /** Is a point in this widget
@@ -471,4 +477,32 @@ void BetaGUI::Window::debugScrollPane(void){
   LOGCATS(" maxChildBottom=");
   LOGCATI(mScrollPane->getMaxChildBottom());
   LOGCAT();
+}
+
+/** Is the vertical scrollbar needed ?
+  *
+  * \return The scrollbar visibility status
+  *
+  */
+bool BetaGUI::Window::isVerticalScrollbarVisible(void)const{
+  return mScrollPane->isVerticalScrollbarNeeded();
+}
+
+/** Is the horizontal scrollbar needed ?
+  *
+  * \return The scrollbar visibility status
+  *
+  */
+bool BetaGUI::Window::isHorizontalScrollbarVisible(void)const{
+  return mScrollPane->isHorizontalScrollbarNeeded();
+}
+
+/** The corners computation function
+  *
+  * Actually does nothing.
+  *
+  */
+void BetaGUI::Window::makeCorners(void){
+
+  geometryDirty = false;
 }

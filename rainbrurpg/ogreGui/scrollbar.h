@@ -109,6 +109,8 @@ namespace RainbruRPG{
 
       bool in(unsigned int, unsigned int);
 
+      int getValue(void)const;
+
     protected:
       void changeCursorValue(int);
 

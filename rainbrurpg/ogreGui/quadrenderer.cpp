@@ -864,13 +864,13 @@ drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
   
   // If scissor not yet used, setting it to filled rectangle
   // else, we let scissor or parent scissor configured
-  if (!useParentScissor && !useScissor){
-    mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
-				   vRect.right, vRect.bottom );
-  }
-  else{
+  if (useParentScissor || useScissor){
     mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
 				   scissorRect.right, scissorRect.bottom );
+  }
+  else{
+    mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
+				   vRect.right, vRect.bottom );
 
   }
   
@@ -979,6 +979,16 @@ void RainbruRPG::OgreGui::QuadRenderer::
 drawLine( int x1, int y1, int x2, int y2, const ColourValue& vColor ){
   setBlendMode(QBM_GLOBAL);
   mRenderSystem->_setTexture(0, true, mTexture );
+
+  if (useScissor || useParentScissor){
+    mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				   scissorRect.right, scissorRect.bottom );
+
+  }
+  else{
+    mRenderSystem->setScissorTest( false);
+  }
+
 
   mColor = vColor;
   mColor.a=alphaValue;
@@ -1115,6 +1125,9 @@ void RainbruRPG::OgreGui::QuadRenderer::renderLines(void){
     mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
 				   scissorRect.right, scissorRect.bottom );
 
+  }
+  else{
+    mRenderSystem->setScissorTest( false);
   }
 
 

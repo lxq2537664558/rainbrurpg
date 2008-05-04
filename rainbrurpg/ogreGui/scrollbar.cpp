@@ -75,7 +75,6 @@ void RainbruRPG::OgreGui::ScrollBar::setTransparency(float f){
   *
   */
 void RainbruRPG::OgreGui::ScrollBar::setMax(int ui){
-  LOGA(ui>0, "mMaxValue out of bounds")
   mMaxValue=ui;
 }
 
@@ -132,3 +131,8 @@ bool RainbruRPG::OgreGui::ScrollBar::in(unsigned int mx, unsigned int my){
 void RainbruRPG::OgreGui::ScrollBar::changeCursorValue(int i){
   sigValueChanged.emit(i);
 }
+
+int RainbruRPG::OgreGui::ScrollBar::getValue(void)const{
+  return this->mValue;
+}
+

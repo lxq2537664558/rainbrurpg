@@ -98,6 +98,15 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-177
+- (8) MCL Headers event handling with scrollbar value added
+- MCL Items event handling with scrollbar value added
+- MCL scrollbars value computed
+- bugfix in the MCL item drawing due to an error in the
+  ItemScissorRectangle computation
+- MultiColumnList's left lines correctly drawn
+- MultiColumnList column header and items scissor rectangle bug fix
+- MultiColumnList now need mParentWindow member
+- Resizing window now set the ScrollPane geometry dirty flag to true
 
 * v 0.0.5-176
 - PopupMenu drop down effect implemented

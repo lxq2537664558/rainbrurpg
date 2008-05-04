@@ -156,6 +156,8 @@ namespace RainbruRPG{
 	*/
       static int mCurrentSortedColumn;
 
+      Window* getWindowParent(void);
+
     protected:
       void makeCorners(void);
       void computeLastColumnRight();
@@ -228,6 +230,13 @@ namespace RainbruRPG{
       DrawingDevSettings* mXDrawingDev;
       /** The popup menu used to show and hide columns */
       PopupMenu* mPopupMenu;
+      /** The parent window of this list
+        *
+	* It is needed to get the scrollbar visibility status, to compute
+	* scissor rectangles in makeCorners().
+	*
+	*/
+      Window* mParentWindow;
     };
   }
 }

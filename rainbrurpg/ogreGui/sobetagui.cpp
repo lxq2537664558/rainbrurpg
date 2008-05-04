@@ -721,6 +721,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 
   qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
   qr->setUseParentScissor(true);
+
   qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
   
   int x=r.left;
@@ -793,7 +794,9 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       // Drawing left line : we need to disable the scissor rectangle
       x+=(*iter)->getWidth();
       qr->setUseParentScissor(false);
-      qr->drawLine( x, y1, x, y2, c );
+      Rectangle parentWindowAbsCorners = mcl->getWindowParent()->getCorners();
+      qr->setScissorRectangle(parentWindowAbsCorners);
+      qr->drawLine( x-1, y1, x-1, y2, c );
       qr->setUseParentScissor(true);
       
       if (colIndex == movingColumn || colIndex == movingColumn-1){

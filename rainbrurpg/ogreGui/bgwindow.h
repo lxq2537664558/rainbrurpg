@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 01 may 2008 : implementation of accessors for scrollbars visibility
  * - 07 feb 2008 : Some function are now inline
  * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
  * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
@@ -106,8 +107,12 @@ namespace BetaGUI {
 
     void debugScrollPane(void);
 
+    bool isVerticalScrollbarVisible(void)const;
+    bool isHorizontalScrollbarVisible(void)const;
 
   protected:
+    void makeCorners(void);
+
     /** Handle the MouseMove cursor
       *
       * \param px, py          The mouse position

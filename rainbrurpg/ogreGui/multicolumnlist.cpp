@@ -105,8 +105,10 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
   mVScrollBar(NULL),
   mHScrollBar(NULL),
   mGui(NULL),
-  mPopupMenu(NULL)
+  mPopupMenu(NULL),
+  mParentWindow(NULL)
 {
+  mParentWindow = vParent;
   mSkin = SkinManager::getSingleton().getSkin(this);
   mGui = GameEngine::getSingleton().getOgreGui();
   LOGA( mGui, "GUI pointer is NULL, program should crash (segfault).");
@@ -275,6 +277,7 @@ getItemList(void){
 void RainbruRPG::OgreGui::MultiColumnList::addItem( MultiColumnListItem* it ){
   mItemList.push_back( it );
   mSortedItemList.push_back( it );
+  makeCorners();
   handleScrollBarsVisibility();
 }
 
@@ -297,6 +300,7 @@ int RainbruRPG::OgreGui::MultiColumnList::getLastColumnRight(void)const{
   */
 bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event){
+
   if (mCurrentSortPolicy == MCS_NONE){
     injectMouse( px, py, event, mItemList );
   }
@@ -369,6 +373,10 @@ bool RainbruRPG::OgreGui::MultiColumnList::
 injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
 
+  // Compute the position of mouse for moved objects (items)
+  int devMouseY = py + mVScrollBar->getValue();
+  int devMouseX = px - mHScrollBar->getValue();
+
 
   // Handle popupmenu
   if (mPopupMenu->isVisible()){
@@ -422,7 +430,6 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
       return true;
     }
     else{
-      LOGI("aze");
       mResizedColumnIndex=-1;
       mMouseXDev=0;
       mGui->disableFocusedWidget();
@@ -435,7 +442,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
   int colLeft, colRight;
 
   unsigned int colIndex=0;
-  if (px > corners.left && px < corners.right ){
+  if (devMouseX > corners.left && devMouseX < corners.right ){
     if (py > corners.top && py < corners.top + mHeaderHeight ){
       colLeft=corners.left;
 
@@ -443,8 +450,8 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	if ((*colIter)->isVisible()){
 	  colRight=colLeft+(*colIter)->getWidth();
 	  // Resizing column
-	  if ( (px > colRight - COLUMN_RESIZE_SENSITIVITY) &&
-	       (px < colRight + COLUMN_RESIZE_SENSITIVITY)){
+	  if ( (devMouseX > colRight - COLUMN_RESIZE_SENSITIVITY) &&
+	       (devMouseX < colRight + COLUMN_RESIZE_SENSITIVITY)){
 	    if (LMB){
 	      if (mResizedColumnIndex==-1 && mMovingColumn==-1){
 		mGui->setFocusedWidget(this);
@@ -459,8 +466,8 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	      return false;
 	    }
 	  }
-	  else if ((px > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
-		   px < colRight - COLUMN_RESIZE_SENSITIVITY ){
+	  else if ((devMouseX > colLeft + COLUMN_RESIZE_SENSITIVITY) && 
+		   devMouseX < colRight - COLUMN_RESIZE_SENSITIVITY ){
 	    // We are in column header, select it only if no column are moving
 	    if (mMovingColumn == -1){
 	      (*colIter)->setSelected(true);
@@ -485,7 +492,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 		mGui->setFocusedWidget(this);
 	      }
 	      
-	      handleMovingColumn(px, py, colLeft, colRight, colIndex);
+	      handleMovingColumn(devMouseX, py, colLeft, colRight, colIndex);
 	    }
 	    else if (!LMB){
 	      handleToolTip(px, py);
@@ -503,7 +510,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
     else{
       mToolTip->hide();
       // An item should be selected
-      int a=py - (corners.top + mHeaderHeight);
+      int a=devMouseY - (corners.top + mHeaderHeight);
       int itemIdx=(int)a/20;
 
       if ( itemIdx < vItemList.size() ){
@@ -604,8 +611,8 @@ handleMovingColumn(int vPx, int vPy, int vColLeft, int vColRight,
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 horizontalScrollBarValueChange(int vValue){
-  mDrawingDev->setDevX( vValue );
-  mXDrawingDev->setDevX( vValue );
+  mDrawingDev->setDevX( -vValue );
+  mXDrawingDev->setDevX( -vValue );
 }
 
 /** The vertical value slot
@@ -711,6 +718,12 @@ void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
   mHScrollBar->setWidth( hScrollWidth );  
 
   // Computing scissor rectangles
+  int windowAbsRight= parent->getLeft() + parent->getWidth();
+
+  if (mParentWindow->isVerticalScrollbarVisible()){
+    windowAbsRight -= 14;
+  }
+
   mItemsScissorRectangle=mAbsCorners;
   mItemsScissorRectangle.bottom-=2;
   mItemsScissorRectangle.top+=mHeaderHeight;
@@ -719,6 +732,20 @@ void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
   mHeadersScissorRectangle.top+=2;
   mHeadersScissorRectangle.bottom = mAbsCorners.top + mHeaderHeight - 2;
 
+  if (windowAbsRight < mAbsCorners.right){
+    mItemsScissorRectangle.right = windowAbsRight;
+    mHeadersScissorRectangle.right = windowAbsRight;
+  }
+
+  // Compute scrollbars values
+  int hSbValue = getWidth() - mLastColumnRight;
+  mHScrollBar -> setMax( hSbValue );
+
+  unsigned int itemHeight;
+  itemHeight = mHeaderHeight;
+  itemHeight += (mItemList.size() * 20);
+  int vSbValue = getWidth() - itemHeight;
+  mVScrollBar -> setMax( -vSbValue );
 }
 
 /** Get the scissor rectangle used when drawing items 
@@ -777,5 +804,14 @@ getHeaderDrawingDevSettings(void){
 const Ogre::Rectangle& RainbruRPG::OgreGui::MultiColumnList::
 getHeadersScissorRectangle(void)const{
   return mHeadersScissorRectangle;
+}
+
+/** Get the parent of this list as a parent
+  *
+  * \return The parent window
+  *
+  */
+Window* RainbruRPG::OgreGui::MultiColumnList::getWindowParent(void){
+  return mParentWindow;
 }
 
