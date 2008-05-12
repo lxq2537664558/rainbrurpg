@@ -286,16 +286,20 @@ bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
 void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
   if (isHorizontalScrollbarNeeded()){
     mHScrollBar->setVisible(true);
+    mHScrollBar->setMax(getMaxChildRight() - getWidth() + 5);
   }
   else{
     mHScrollBar->setVisible(false);
+    mHScrollBar->setValue(0);
   }
 
   if (isVerticalScrollbarNeeded()){
     mVScrollBar->setVisible(true);
+    mVScrollBar->setMax(getMaxChildBottom() - getHeight() + 5);
   }
   else{
     mVScrollBar->setVisible(false);
+    mVScrollBar->setValue(0);
   }
 }
 

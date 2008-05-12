@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 08 may 2008 : setValue() implementation
  * - 11 apr 2008 : Using MouseEvent for event handling
  * - 28 jan 2008 : Become a virtual class
  * - 21 nov 2007 : starting implementation
@@ -74,6 +75,10 @@ namespace RainbruRPG{
       * The last two ways are customisable by calling setSteps(int, int). This
       * change the incrementation value of these.
       *
+      * ScrollBar's value can also be changed manually by programmer by 
+      * calling setValue(). This function will also emit signal as if
+      * value was changed by the user.
+      *
       * \note This abstract class cannot be instancied, please create 
       *       VScrollBar or HScrollBar instances.
       *
@@ -88,6 +93,7 @@ namespace RainbruRPG{
 
       /** Inject a mouse event */
       virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&)=0;
+      virtual void setValue(int);
 
       void setMax(int);
       int getMax(void);

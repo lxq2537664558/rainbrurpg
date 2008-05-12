@@ -64,6 +64,7 @@ namespace RainbruRPG{
 
       virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
       virtual void draw(RainbruRPG::OgreGui::QuadRenderer*);
+      virtual void setValue(int);
 
       const Rectangle& getLeftArrowCorners(void);
       const Rectangle& getRightArrowCorners(void);

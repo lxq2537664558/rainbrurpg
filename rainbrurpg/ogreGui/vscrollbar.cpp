@@ -362,9 +362,17 @@ bool RainbruRPG::OgreGui::VScrollBar::isCursorActive(void){
   *
   */
 void RainbruRPG::OgreGui::VScrollBar::moveCursorToValue(void){
+  int pos; // The cursor position in pixels
   int max=getHeight() - 28 - 14;
-  int pos=(max*mValue)/mMaxValue;
+  
+  if (mMaxValue!=0){
+    pos=(max*mValue)/mMaxValue;
+  }
+  else{
+    pos=0;
+  }
   cursorPos=pos+14;
+
 }
 
 /** Get the value from the cursor position
@@ -375,4 +383,10 @@ void RainbruRPG::OgreGui::VScrollBar::getValueFromCursor(void){
   int max=getHeight() - 28 - 14;
 
   mValue=(pos*mMaxValue)/max;
+}
+
+void RainbruRPG::OgreGui::VScrollBar::setValue(int vValue){
+  this->mValue = vValue;
+  changeCursorValue(vValue);
+  moveCursorToValue();
 }

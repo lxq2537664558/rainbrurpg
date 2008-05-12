@@ -662,10 +662,21 @@ bool RainbruRPG::OgreGui::MultiColumnList::isVerticalScrollbarNeeded(void){
 
 /** Changes the scrollbars visibility according to our needs
   *
+  * In this function, ScrollBars value are set to 0 if they are hidden.
+  *
   */
 void RainbruRPG::OgreGui::MultiColumnList::handleScrollBarsVisibility(void){
   mHScrollBar->setVisible(isHorizontalScrollbarNeeded());
   mVScrollBar->setVisible(isVerticalScrollbarNeeded());
+
+  if (!mHScrollBar->isVisible()){
+    mHScrollBar->setValue(0);
+  }
+
+  if (!mVScrollBar->isVisible()){
+    mVScrollBar->setValue(0);
+  }
+
 }
 
 /** Compute the absolute right position of the last column

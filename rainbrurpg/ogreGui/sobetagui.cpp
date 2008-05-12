@@ -35,6 +35,7 @@
 #include "multicolumnlistcell.h"
 #include "popupmenu.h"
 #include "tooltip.h"
+#include "drawingdevsettings.h"
 
 #include <logger.h>
 
@@ -694,6 +695,9 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
+  // Using the parent to limit scissor rectangle of item captions
+  Widget* mclParent = mcl->getParent();
+  
   // Text setting for column header
   TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
 						    10, 1.0f, 1.0f, 1.0f );
@@ -707,6 +711,8 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   Ogre::Rectangle r=mcl->getAbsoluteCorners();
 
   qr->drawRectangleLines(r,c);
+
+  int maxMclRight = r.right; // Used to test left line visibility
   
   //Header bottom line
   int hbl = r.top+mcl->getHeaderHeight();
@@ -717,10 +723,6 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   tMultiColumnListColumnList::const_iterator iter;
 
   Ogre::Rectangle sr=qr->getClipRegion();
-  qr->setUseParentScissor(false);
-
-  qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
-  qr->setUseParentScissor(true);
 
   qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
   
@@ -746,6 +748,10 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 
   for(iter = colList.begin();iter != colList.end(); iter++){
     if ((*iter)->isVisible()){
+      qr->setUseParentScissor(false);
+      qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
+      qr->setUseParentScissor(true);
+
       // Header background and caption
       columnCaption.left  = x;
       columnCaption.right = x + (*iter)->getWidth();
@@ -768,7 +774,10 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       else{
 	qr->drawFilledRectangle( headerBG, headerBGColor );
       }
-      qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), columnCaption, true);
+      
+      // Drawing header caption
+      qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), 
+		   columnCaption, true);
       
       // Drawing sort sign
       qr->setBlendMode(QBM_ALPHA);
@@ -796,7 +805,10 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       qr->setUseParentScissor(false);
       Rectangle parentWindowAbsCorners = mcl->getWindowParent()->getCorners();
       qr->setScissorRectangle(parentWindowAbsCorners);
-      qr->drawLine( x-1, y1, x-1, y2, c );
+      // Avoid left line to get more to the right to the mcl right corners
+      if ( x < maxMclRight ){
+	qr->drawLine( x, y1, x, y2, c );
+      }
       qr->setUseParentScissor(true);
       
       if (colIndex == movingColumn || colIndex == movingColumn-1){
@@ -814,11 +826,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 
   // drawing items
   // Saves current parent scissor settings
-  qr->setUseParentScissor(false);
   qr->addDrawingDev(mcl->getDrawingDevSettings());
-
-  qr->setScissorRectangle(mcl->getItemsScissorRectangle());
-  qr->setUseParentScissor(true);
   tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
 
   tMultiColumnListItemList itemList=mcl->getItemList();
@@ -841,10 +849,16 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   itemBG.bottom=itemBG.top+20;
   itemBG.right=mcl->getLastColumnRight()-5;
 
+  Ogre::Rectangle itemScissorRect(r);
+
   int colId=0;
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
     
+    qr->setUseParentScissor(false);
+    qr->setScissorRectangle(mcl->getItemsScissorRectangle());
+    qr->setUseParentScissor(true);
+
     if ((*ili)->isSelected()){
       qr->drawFilledRectangle( itemBG, selItemBGColor );
     }
@@ -859,7 +873,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
       qr->setAlpha(currentAlpha);
     }
 
-    // Drawing cells
+    // Drawing cells (we are using parent scissor)
     mil=(*ili)->getCellList();
     for (mii=mil.begin(); mii != mil.end(); mii++){
       if (colList[colId]->isVisible()){
@@ -869,15 +883,34 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 	    qr->enableGhost();
 	  }
 	  
+	  // Limit item scissor to MCL parent right 
+	  if (itemScissorRect.right > mclParent->getRight() ){
+	    itemScissorRect.right = mclParent->getRight();
+	  }
+
+	  // Apply the same limit to the bottom
+	  if (itemScissorRect.bottom > mclParent->getBottom() ){
+	    itemScissorRect.bottom = mclParent->getBottom();
+	  }
+
+	  // Setting scissor rectangle to avoid item caption to exeed
+	  // left line X position
+	  qr->setUseParentScissor(false);
+	  qr->setScissorRectangle(itemScissorRect);
+	  qr->setUseParentScissor(true);
+	  
 	  qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
 	  itemRect.left+=colList[colId]->getWidth();
 	  if (colId+1 < colList.size()){
 	    itemRect.right=itemRect.left + colList[colId+1]->getWidth();
 	  }
 	  else{
-	    itemRect.right = columnCaption.right;
+	    itemRect.right = columnCaption.right -2;
 	  }
 	  
+	  itemScissorRect.right = itemRect.right - 5 
+	    - qr->getDrawingDevXSum();
+
 	  if (colId==movingColumn){
 	    qr->disableGhost();
 	  }
@@ -903,6 +936,12 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   qr->reset();
 }
 
+/** Draw the given popup menu
+  *
+  * \param qr The QuadRenderer used to draw
+  * \param pm The popup menu to be drawn
+  *
+  */
 void RainbruRPG::OgreGui::soBetaGui::
 drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
   Rectangle dim(pm->getAbsCorners());

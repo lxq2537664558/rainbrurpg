@@ -89,7 +89,14 @@ const Ogre::String& RainbruRPG::OgreGui::pmiTitle::getCaption(void)const{
   return mCaption;
 }
 
+/** Handles mouse events
+  *
+  * \param x, y, e Unused events
+  *
+  * \return Almays return \c false
+  *
+  */
 bool RainbruRPG::OgreGui::pmiTitle::
-injectMouse(unsigned int, unsigned int, const MouseEvent&){
+injectMouse(unsigned int x, unsigned int y, const MouseEvent& e){
   return false;
 }

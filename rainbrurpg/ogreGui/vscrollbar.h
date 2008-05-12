@@ -63,6 +63,7 @@ namespace RainbruRPG{
 
       virtual void draw(QuadRenderer* qr);
       virtual bool injectMouse(unsigned int, unsigned int, const MouseEvent&);
+      virtual void setValue(int);
 
       void setTopArrowActive(bool);
       void setBottomArrowActive(bool);

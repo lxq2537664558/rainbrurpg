@@ -25,16 +25,27 @@
 #include "quadrenderer.h"
 #include <logger.h>
 
+/** The default constructor
+  *
+  */
 RainbruRPG::OgreGui::pmiSeparator::pmiSeparator():
   PopupMenuItem()
 {
   setHeight(3);
 }
 
+/** The destructor
+  *
+  */
 RainbruRPG::OgreGui::pmiSeparator::~pmiSeparator(){
 
 }
 
+/** Draw a popupmenu separator
+  *
+  * \param qr The QuadRenderer used to draw
+  *
+  */
 void RainbruRPG::OgreGui::pmiSeparator::draw( QuadRenderer* qr){
   qr->setScissorRectangle(mAbsCorners);
   qr->drawLine (mAbsCorners.left,  mAbsCorners.top, 
@@ -50,7 +61,14 @@ void RainbruRPG::OgreGui::pmiSeparator::draw( QuadRenderer* qr){
   
 }
 
+/** Handles mouse events
+  *
+  * \param x, y, e Unused events
+  *
+  * \return Almays return \c false
+  *
+  */
 bool RainbruRPG::OgreGui::pmiSeparator::
-injectMouse(unsigned int, unsigned int, const MouseEvent&){
+injectMouse(unsigned int x, unsigned int y, const MouseEvent& e){
   return false;
 }

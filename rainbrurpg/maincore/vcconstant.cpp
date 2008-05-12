@@ -31,8 +31,6 @@
 RainbruRPG::Core::vcConstant::vcConstant()
                              :VelocityCalculator(){
 
-  LOGI("Creation vcConstant");
-
 }
 
 /** Get the next frame

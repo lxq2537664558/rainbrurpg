@@ -132,7 +132,29 @@ void RainbruRPG::OgreGui::ScrollBar::changeCursorValue(int i){
   sigValueChanged.emit(i);
 }
 
+/** Get the current value of this scrollbar
+  *
+  * \return The value as an integer
+  *
+  */
 int RainbruRPG::OgreGui::ScrollBar::getValue(void)const{
   return this->mValue;
 }
 
+/** Manually changes the scrollbar value
+  *
+  * This fuinction was originally implemented to provide a way to
+  * reset a scrollbar, for example when hidding it when a Window widget
+  * become taller than its scrollpane content.
+  *
+  * \note When cally this function manually, the changeCursorValue() signal
+  *       is emitted, modifying Graphically User Interface according
+  *       to this scrollbar's new value.
+  *
+  * \param vValue The new value
+  *
+  */
+void RainbruRPG::OgreGui::ScrollBar::setValue(int vValue){
+  this->mValue = vValue;
+  changeCursorValue(vValue);
+}

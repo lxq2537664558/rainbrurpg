@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 08 may 2008 : getDrawingDev?Sum implementation (2 functions)
  * - 05 apr 2008 : Now uses DrawingDevList
  * - 01 apr 2008 : ghost handling implementation
  * - 25 mar 2008 : drawLine() implementation
@@ -128,6 +129,10 @@ namespace RainbruRPG {
       * Please see the DrawingDevSettings for more infos. You add
       * it with the addDrawingDev() and remove it with removeDrawingDev().
       *
+      * You can also get local DrawindDevList values directly from QuadRenderer
+      * by using getDrawingDevXSum() and getDrawingDevYSum() functions. There
+      * are simply wrapper to mDrawingDevList functions call.
+      *
       * Please see the ScrollPane::draw() implementation for more details 
       * and an usage example.
       *
@@ -216,6 +221,8 @@ namespace RainbruRPG {
       void addDrawingDev(DrawingDevSettings*);
       void removeDrawingDev(DrawingDevSettings*);
 
+      int getDrawingDevXSum(void)const;
+      int getDrawingDevYSum(void)const;
 
     protected:
       void setupHardwareBuffer(void);

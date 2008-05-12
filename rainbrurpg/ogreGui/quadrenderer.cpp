@@ -1243,4 +1243,21 @@ removeDrawingDev(DrawingDevSettings* vDev){
 
 }
 
+/** Get the value of the X drawing dev
+  *
+  * \return The X sum of mDrawingDevList object
+  *
+  */
+int RainbruRPG::OgreGui::QuadRenderer::getDrawingDevXSum(void)const{
+  return mDrawingDevList->getDevXSum();
+}
+
+/** Get the value of the Y drawing dev
+  *
+  * \return The Y sum of mDrawingDevList object
+  *
+  */
+int RainbruRPG::OgreGui::QuadRenderer::getDrawingDevYSum(void)const{
+  return mDrawingDevList->getDevYSum();
+}
 
