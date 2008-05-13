@@ -36,11 +36,12 @@
 
 /** Create a named skin 
   *
-  * \param n The name of the new skin
+  * \param vName The name of the new skin
   *
   */
-RainbruRPG::OgreGui::Skin::Skin(std::string n):
-  mTitleBarHeight(0)
+RainbruRPG::OgreGui::Skin::Skin(const std::string& vName):
+  mTitleBarHeight(0),
+  mName(vName)
 {
 
 }
@@ -65,4 +66,174 @@ unsigned int RainbruRPG::OgreGui::Skin::getDialogBorderSize(void){
   */
 int RainbruRPG::OgreGui::Skin::getTitleBarHeight(void){
   return mTitleBarHeight;
+}
+
+/** Log a message for an unimplemented function
+  *
+  * \param vFunctionName unimplemented function's name
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+logUnimplementedFunction(const std::string& vFunctionName){
+  std::string l;
+  l += vFunctionName;
+  l += " function unimplemented for skin ";
+  l += mName;
+  LOGW(l.c_str());
+}
+
+
+/** Create a window
+  *
+  * Please see the sub-class documentation for implementation
+  * details.
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param corners The window's dimension in pixels in a 
+  *                Ogre::Rectangle object
+  * \param caption The title bar caption
+  *
+  */
+void RainbruRPG::OgreGui::Skin::drawWindow(QuadRenderer*qr, Rectangle corners, 
+					   String caption){
+  logUnimplementedFunction("drawWindow");
+}
+
+/** Graphically create a ResizeGrip widget
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param dim     The widget's dimension in pixels in a 
+  *                Ogre::Vector4 object
+  * \param active  Is this ersize grip is active ?
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawResizeGrip(QuadRenderer*qr, Vector4 dim, bool active){
+  logUnimplementedFunction("drawResizeGrip");
+
+}
+
+/** Graphically create a TitleBar widget
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param dim     The widget's dimension in pixels in a 
+  *                Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param active  Is this titlebar active
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active){
+  logUnimplementedFunction("drawTitleBar");
+
+}
+
+/** Graphically create a PushButton widget
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param dim     The widget's dimension in pixels in a 
+  *                Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  * \param active  Is the mouse over this push button ?
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawPushButton(QuadRenderer*qr, Vector4 dim, String caption, 
+	       Window* parent, bool active){
+  logUnimplementedFunction("drawPushButton");
+
+}
+
+/** Graphically create a TextInput widget
+  *
+  * \param qr       The QuadRenderer used to draw
+  * \param dim      The widget's dimension in pixels in a 
+  *                 Ogre::Rectangle object
+  * \param caption  The rendered text
+  * \param win      The parent window
+  * \param active   Is the mouse over this push button ?
+  * \param selStart The selection start
+  * \param selEnd   The selection end
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawTextInput(QuadRenderer* qr, Rectangle dim, String caption, Window* win, 
+	      bool active, int selStart, int selEnd){
+  logUnimplementedFunction("drawTextInput");
+
+}
+
+/** Graphically create a Label widget
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param dim     The widget's dimension in pixels in a 
+  *                Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawLabel(QuadRenderer*qr, Rectangle dim, String caption, Window* parent){
+  logUnimplementedFunction("drawLabel");
+
+}
+
+/** Draw a tool tip
+  *
+  * \param qr The QuadRenderer used to draw
+  * \param tt The ToolTip
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawToolTip(QuadRenderer*qr, ToolTip* tt){
+  logUnimplementedFunction("drawToolTip");
+
+}
+
+/** Draw a vertical scrollbar
+  *  
+  * \param qr The QuadRenderer used to draw
+  * \param sb The scrollbar to draw
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* sb ){
+  logUnimplementedFunction("drawVerticalScrollbar");
+
+}
+
+/** Draws a horizontal scrollbar
+  *
+  * \param qr The QuadRenderer object
+  * \param hs The scroll bar to draw
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
+  logUnimplementedFunction("drawHorizontalScrollbar");
+}
+
+/** Draws a MultiColumnList
+  *
+  * \param qr  The QuadRenderer used to draw
+  * \param mcl The MultiColumnList to draw
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
+  logUnimplementedFunction("drawMultiColumnList");
+
+}
+
+/** Draws a popup menu widget
+  *
+  * \param qr The QuadRenderer used to draw
+  * \param pm The PopupMenu to be drawn
+  *
+  */
+void RainbruRPG::OgreGui::Skin::
+drawPopupMenu(QuadRenderer*qr, PopupMenu* pm){
+  logUnimplementedFunction("drawPopupMenu");
+
 }

@@ -123,8 +123,13 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-178
+
 * v 0.0.5-177
-- (16) MCL Items scissor limited to Window right and bottom
+- soNavigation cleaned (formerly pure virtual functions removed
+- All Skin::draw* are not anymore pure virtual function (no =0)
+- Window do not call anymore Skin::createDialog()
+- MCL Items scissor limited to Window right and bottom
 - Fix a bug in the item selection rectangle scissor rectangle
 - Avoid an arithmetic exception in ScrollBars's moveCursorToValue()
 - When hidding a ScrollBar in MML or Window, setting its value to 0

@@ -71,10 +71,10 @@ void RainbruRPG::Gui::RbMessageBox::initWindow(){
   mWin=new BetaGUI::Window(winDim, OWT_MOVE, title, gui, true, OSI_BETAGUI);
   gui->addDialog(mWin);
 
-  /*  Vector4 labDim=Vector4(2, 24, width-20, 30);
+  Vector4 labDim=Vector4(2, 24, width-20, 30);
   caption=new Label( labDim, "Unset", mWin );
   mWin->addWidget(caption);
-  */
+  
   Vector4 btnDim=Vector4( (width/2)-50, height-30, 100, 24 );
   PushButton* btnOk=new PushButton (btnDim, "OK", Callback(this), mWin);
   mWin->addWidget(btnOk);

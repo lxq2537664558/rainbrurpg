@@ -63,7 +63,6 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   if (hasBorder){
     // Get the dialog border size
     unsigned int dbs=mSkin->getDialogBorderSize();
-    mSkin->createDialog(name, D, caption, G);
     resizeGripDim=Vector4(D.z-(16+dbs),D.w-(16+dbs),16,16);
     titlebarDim=Vector4(dbs,dbs,D.z-(dbs*2),22);
   }
