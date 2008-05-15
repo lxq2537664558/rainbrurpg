@@ -64,8 +64,8 @@ namespace BetaGUI {
     */
   enum OgreGuiWindowType{
     OWT_NONE=0,            //!< The window cannot be resized or moved
-    OWT_MOVE=1,            //!< The window can be moved 
-    OWT_RESIZE=2,          //!< The window can be resized
+    OWT_MOVE=1,            //!< The window can be moved but not resized
+    OWT_RESIZE=2,          //!< The window can be resized but not moved
     OWT_RESIZE_AND_MOVE=3  //!< The window can be resized and removed
   };
 

@@ -28,11 +28,11 @@
 
 #include "gameengine.h"
 
-#include <ogreGui/pushbutton.h>
-#include <ogreGui/bgcallback.h>
-#include <ogreGui/bgwindow.h>
-#include <ogreGui/bggui.h>
-#include <ogreGui/label.h>
+#include "pushbutton.h"
+#include "bgcallback.h"
+#include "dialog.h"
+#include "bggui.h"
+#include "label.h"
 
 #include <OGRE/OgreVector4.h>
 
@@ -68,7 +68,7 @@ void RainbruRPG::Gui::RbMessageBox::initWindow(){
   Vector4 winDim=Vector4(posX, posY, width, height);
   BetaGUI::GUI* gui=GameEngine::getSingleton().getOgreGui();
   title="Unset";
-  mWin=new BetaGUI::Window(winDim, OWT_MOVE, title, gui, true, OSI_BETAGUI);
+  mWin=new Dialog(winDim, title, gui, OSI_BETAGUI);
   gui->addDialog(mWin);
 
   Vector4 labDim=Vector4(2, 24, width-20, 30);

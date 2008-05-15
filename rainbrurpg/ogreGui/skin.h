@@ -53,6 +53,7 @@ namespace RainbruRPG{
     class MultiColumnList;
     class PopupMenu;
     class ToolTip;
+    class Dialog;
   }
 }
 // End of forward declarations
@@ -86,8 +87,9 @@ namespace RainbruRPG{
       virtual void drawHorizontalScrollbar(QuadRenderer*, HScrollBar* );
       virtual void drawMultiColumnList(QuadRenderer*, MultiColumnList* );
       virtual void drawPopupMenu(QuadRenderer*, PopupMenu* );
+      virtual void drawDialog(QuadRenderer*, Dialog* );
 
-     virtual unsigned int getDialogBorderSize(void);
+      virtual unsigned int getDialogBorderSize(void);
 
      int getTitleBarHeight(void);
 

@@ -61,17 +61,18 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_ogregui_la_DEPENDENCIES =
 am__objects_1 =
 am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
-	bgwindow.lo container.lo drawingdevlist.lo \
+	bgwindow.lo container.lo dialog.lo drawingdevlist.lo \
 	drawingdevsettings.lo font.lo fontmanager.lo glyph.lo \
-	guivertex.lo hscrollbar.lo label.lo lineinfo.lo mouseevent.lo \
-	mousepointer.lo multicolumnlist.lo multicolumnlistcell.lo \
-	multicolumnlistcolumn.lo multicolumnlistitem.lo object.lo \
-	pmicheckbox.lo pmiseparator.lo pmititle.lo popupmenu.lo \
-	popupmenuitem.lo pushbutton.lo quadrenderer.lo \
-	renderqueuelistener.lo resizegrip.lo scrollbar.lo \
-	scrollpane.lo skinmanager.lo skin.lo sobetagui.lo \
-	sonavigation.lo staticimage.lo textsettings.lo titlebar.lo \
-	tooltip.lo vector3.lo vscrollbar.lo widget.lo
+	guivertex.lo hscrollbar.lo label.lo lineinfo.lo messagebox.lo \
+	mouseevent.lo mousepointer.lo multicolumnlist.lo \
+	multicolumnlistcell.lo multicolumnlistcolumn.lo \
+	multicolumnlistitem.lo object.lo pmicheckbox.lo \
+	pmiseparator.lo pmititle.lo popupmenu.lo popupmenuitem.lo \
+	pushbutton.lo quadrenderer.lo renderqueuelistener.lo \
+	resizegrip.lo scrollbar.lo scrollpane.lo skinmanager.lo \
+	skin.lo sobetagui.lo sonavigation.lo staticimage.lo \
+	textsettings.lo titlebar.lo tooltip.lo vector3.lo \
+	vscrollbar.lo widget.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -257,6 +258,7 @@ h_sources = bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   container.h			\
+	   dialog.h			\
 	   drawingdevlist.h		\
 	   drawingdevsettings.h		\
 	   font.h			\
@@ -266,6 +268,7 @@ h_sources = bgbutton.h			\
 	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   messagebox.h			\
 	   mouseevent.h			\
 	   mousepointer.h		\
 	   multicolumnlist.h		\
@@ -302,6 +305,7 @@ cc_sources = bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    container.cpp		\
+	    dialog.cpp			\
 	    drawingdevlist.cpp		\
 	    drawingdevsettings.cpp	\
 	    font.cpp			\
@@ -311,6 +315,7 @@ cc_sources = bgbutton.cpp		\
 	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    messagebox.cpp		\
 	    mouseevent.cpp		\
 	    mousepointer.cpp		\
 	    multicolumnlist.cpp		\
@@ -433,6 +438,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgtextinput.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bgwindow.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialog.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/drawingdevlist.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/drawingdevsettings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Plo@am__quote@
@@ -442,6 +448,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hscrollbar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/label.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lineinfo.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/messagebox.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mouseevent.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mousepointer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multicolumnlist.Plo@am__quote@

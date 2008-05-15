@@ -1,3 +1,46 @@
+* v 0.0.5-177
+- soNavigation cleaned (formerly pure virtual functions removed
+- All Skin::draw* are not anymore pure virtual function (no =0)
+- Window do not call anymore Skin::createDialog()
+- MCL Items scissor limited to Window right and bottom
+- Fix a bug in the item selection rectangle scissor rectangle
+- Avoid an arithmetic exception in ScrollBars's moveCursorToValue()
+- When hidding a ScrollBar in MML or Window, setting its value to 0
+- MCL item scissor rectangle now take care of QuadRenderer's drawing dev
+- MCL item have their own scissor rectangle (cut to the left line)
+- MCL items left line wasn't cut by scissor rectangle : fixed
+- MCL headers wasn't cut by scissor rectangle : fixed
+- MCL Headers event handling with scrollbar value added
+- MCL Items event handling with scrollbar value added
+- MCL scrollbars value computed
+- bugfix in the MCL item drawing due to an error in the ItemScissorRectangle 
+  computation
+- MultiColumnList's left lines correctly drawn
+- MultiColumnList column header and items scissor rectangle bug fix
+- MultiColumnList now need mParentWindow member
+- Resizing window now set the ScrollPane geometry dirty flag to true
+
+* v 0.0.5-176
+- PopupMenu drop down effect implemented
+- PopupMenuItem mouse over effect implemented
+- Hidden column handled when resizing and reordering columns
+- MultiColumnList::mLastColumnRight handles hidden columns
+- Columns can be shown/hidden
+- pmiCheckBox's signal and Column's slot connected
+- pmiCheckBox sigValuerChange signal  implementation
+- pmiCheckBox toggleCheck works
+- PopupMenu::injectMouse() implementation
+- PopupMenu can be hidden
+- PopupMenu injectMouse implementation
+- pmiSeparator is drawn and add to PopupMenu under pmiTitle
+- pmiSeparator class implementation
+- pmiCheckBox::draw() implementation
+- pmiCheckBox implementation
+- Fixed the multicolumnlist column left line bug
+- pmiTitle drawn
+- PopupMenu::makeCorners also compute items absolute corners
+- PopupMenu background drawn
+
 * v 0.0.5-175
 - Multicolumnlist now contains a PopuMenu item
 - Skin (and subclasses) drawPopupMenu() function implementation

@@ -9,6 +9,7 @@ h_sources= bgbutton.h			\
 	   bgtextinput.h		\
 	   bgwindow.h			\
 	   container.h			\
+	   dialog.h			\
 	   drawingdevlist.h		\
 	   drawingdevsettings.h		\
 	   font.h			\
@@ -18,6 +19,7 @@ h_sources= bgbutton.h			\
 	   hscrollbar.h			\
 	   label.h			\
 	   lineinfo.h			\
+	   messagebox.h			\
 	   mouseevent.h			\
 	   mousepointer.h		\
 	   multicolumnlist.h		\
@@ -55,6 +57,7 @@ cc_sources= bgbutton.cpp		\
 	    bgtextinput.cpp		\
 	    bgwindow.cpp		\
 	    container.cpp		\
+	    dialog.cpp			\
 	    drawingdevlist.cpp		\
 	    drawingdevsettings.cpp	\
 	    font.cpp			\
@@ -64,6 +67,7 @@ cc_sources= bgbutton.cpp		\
 	    hscrollbar.cpp		\
 	    label.cpp			\
 	    lineinfo.cpp		\
+	    messagebox.cpp		\
 	    mouseevent.cpp		\
 	    mousepointer.cpp		\
 	    multicolumnlist.cpp		\

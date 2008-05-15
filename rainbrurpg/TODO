@@ -5,32 +5,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
-* When trying to enter a name/pwd and click NetworkGame
-#0  0xb746744d in std::string::assign () from /usr/lib/libstdc++.so.6
-#1  0xb7ddf607 in RainbruRPG::OgreGui::Label::setCaption (this=0x0, 
-    s=@0xbfbf4cfc) at /usr/include/c++/4.2/bits/basic_string.h:491
-#2  0xb7e55f7e in RainbruRPG::Gui::RbMessageBox::setMessage (this=0x98be3b0, 
-    mess=@0xbfbf4cfc) at messagebox.cpp:96
-#3  0xb7e3dfc6 in RainbruRPG::Gui::GuiManager::showMessageBox (this=0x8059b98, 
-    title=@0xbfbf4d00, message=@0xbfbf4cfc) at guimanager.cpp:346
-#4  0xb7e39362 in RainbruRPG::Core::GameEngine::connectUser (this=0x8059b00, 
-    user=0x83b521c "aaa", pwd=0x8ce8424 "aaa") at gameengine.cpp:323
-#5  0xb7e5550a in RainbruRPG::Core::gsConnection::onConnectClicked (
-    this=0x982da48) at gsconnection.cpp:212
-#6  0xb7e558e2 in RainbruRPG::Core::gsConnection::onButtonPress (
-    this=0x98bc36c, btn=0x30) at gsconnection.cpp:305
-#7  0xb7dd5c87 in RainbruRPG::OgreGui::Container::handleButtonEvent (
-    this=0x9839190, mx=48, my=265, px=306, py=150, LMB=true, win=0x98cb150, 
-    btn=0x844fb18) at container.cpp:380
-#8  0xb7df8560 in RainbruRPG::OgreGui::ScrollPane::handleChildsEvent (
-    this=0x9839190, px=451, py=265, event=@0x90487e0, win=0x98cb150)
-    at scrollpane.cpp:438
-#9  0xb7dd35c9 in BetaGUI::Window::check (this=0x98cb150, px=451, py=265, 
-    event=@0x90487e0) at bgwindow.cpp:369
-#10 0xb7dce1ab in BetaGUI::GUI::handleWindowsEvents (this=0x90487a8)
-    at bggui.cpp:173
-
-
 * Unittest failed in production mode (no --enable-debug)
 - HTTP response 401 "Unauthorized"
 
@@ -124,47 +98,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-178
-
-* v 0.0.5-177
-- soNavigation cleaned (formerly pure virtual functions removed
-- All Skin::draw* are not anymore pure virtual function (no =0)
-- Window do not call anymore Skin::createDialog()
-- MCL Items scissor limited to Window right and bottom
-- Fix a bug in the item selection rectangle scissor rectangle
-- Avoid an arithmetic exception in ScrollBars's moveCursorToValue()
-- When hidding a ScrollBar in MML or Window, setting its value to 0
-- MCL item scissor rectangle now take care of QuadRenderer's drawing dev
-- MCL item have their own scissor rectangle (cut to the left line)
-- MCL items left line wasn't cut by scissor rectangle : fixed
-- MCL headers wasn't cut by scissor rectangle : fixed
-- MCL Headers event handling with scrollbar value added
-- MCL Items event handling with scrollbar value added
-- MCL scrollbars value computed
-- bugfix in the MCL item drawing due to an error in the ItemScissorRectangle 
-  computation
-- MultiColumnList's left lines correctly drawn
-- MultiColumnList column header and items scissor rectangle bug fix
-- MultiColumnList now need mParentWindow member
-- Resizing window now set the ScrollPane geometry dirty flag to true
-
-* v 0.0.5-176
-- PopupMenu drop down effect implemented
-- PopupMenuItem mouse over effect implemented
-- Hidden column handled when resizing and reordering columns
-- MultiColumnList::mLastColumnRight handles hidden columns
-- Columns can be shown/hidden
-- pmiCheckBox's signal and Column's slot connected
-- pmiCheckBox sigValuerChange signal  implementation
-- pmiCheckBox toggleCheck works
-- PopupMenu::injectMouse() implementation
-- PopupMenu can be hidden
-- PopupMenu injectMouse implementation
-- pmiSeparator is drawn and add to PopupMenu under pmiTitle
-- pmiSeparator class implementation
-- pmiCheckBox::draw() implementation
-- pmiCheckBox implementation
-- Fixed the multicolumnlist column left line bug
-- pmiTitle drawn
-- PopupMenu::makeCorners also compute items absolute corners
-- PopupMenu background drawn
+- (7) MessageBox moves from maincore/ to ogregui/
+- soBetaGui::drawDialog() implementation
+- By default, a Dialog cannot be resized
+- Segfault fixed when showung a MessageBox using Dialog
+- MessageBox uses a Dialog object instead of a Window
+- Window doesn't have a border anymore (please use Dialog instead)
+- Dialog class base implementation
 

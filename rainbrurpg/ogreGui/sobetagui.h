@@ -80,9 +80,7 @@ namespace RainbruRPG{
       virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl );
       virtual void drawToolTip(QuadRenderer*, ToolTip* );
       virtual void drawPopupMenu(QuadRenderer*, PopupMenu*);
-
-
-      virtual void createDialog(String, Vector4, String ,BetaGUI::GUI*);
+      virtual void drawDialog(QuadRenderer*, Dialog* );
 
     private:
       // ============= MATERIALS VALUES =================

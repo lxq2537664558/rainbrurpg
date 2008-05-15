@@ -34,22 +34,18 @@ using namespace RainbruRPG::Core;
   * \param t       The window's type
   * \param caption The caption of the window
   * \param G       The GUI object used to create window
-  * \param border  Is this a border window ?
   * \param sid     The Skin used to draw this window
   *
   */
 BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
-			GUI *G, bool border,
-			RainbruRPG::OgreGui::OgreGuiSkinID sid):
+			GUI *G, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(D, NULL, sid), // Warning, parent is now NULL
   mGUI(G),
   mTitleBar(NULL),
   mResizeGrip(NULL),
   minimalWidth(50),
   minimalHeight(50),
-  borderTus(NULL),
   alwaysTransparent(false),
-  hasBorder(border),
   mCaption(caption)
 {
   setName("Window");
@@ -60,16 +56,8 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
 
   // Create the window
   Vector4 resizeGripDim, titlebarDim;
-  if (hasBorder){
-    // Get the dialog border size
-    unsigned int dbs=mSkin->getDialogBorderSize();
-    resizeGripDim=Vector4(D.z-(16+dbs),D.w-(16+dbs),16,16);
-    titlebarDim=Vector4(dbs,dbs,D.z-(dbs*2),22);
-  }
-  else{
-    resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
-    titlebarDim=Vector4(0,0,D.z,22);
-  }
+  resizeGripDim=Vector4(D.z-16,D.w-16,16,16);
+  titlebarDim=Vector4(0,0,D.z,22);
  
   if(t==OWT_RESIZE || t==OWT_RESIZE_AND_MOVE){
     // Create a resize grip

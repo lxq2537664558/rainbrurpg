@@ -166,7 +166,7 @@ void RainbruRPG::Core::gsMenuBase::createMenuWindow(void){
   Ogre::Vector4 v(0, 0, w,h);
 
   menuWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
-				   "Dynamic menu", mGUI, false, OSI_NAVIGATION);
+				   "Dynamic menu", mGUI, OSI_NAVIGATION);
 
   mGUI->addWindowBeforeOverlays(menuWindow);
 }
@@ -521,7 +521,7 @@ void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
   Ogre::Vector4 v(0, 0, w,h);
 
   menuWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
-				   "Static menu", mGUI, false, OSI_NAVIGATION);
+				   "Static menu", mGUI, OSI_NAVIGATION);
 
   mGUI->addWindowBeforeOverlays(menuWindow);
 

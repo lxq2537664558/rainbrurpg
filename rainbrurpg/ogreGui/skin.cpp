@@ -232,8 +232,18 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   * \param pm The PopupMenu to be drawn
   *
   */
-void RainbruRPG::OgreGui::Skin::
-drawPopupMenu(QuadRenderer*qr, PopupMenu* pm){
+void RainbruRPG::OgreGui::Skin::drawPopupMenu(QuadRenderer*qr, PopupMenu* pm){
   logUnimplementedFunction("drawPopupMenu");
+
+}
+
+/** Draws a Dialog widget
+  *
+  * \param vQr     The QuadRenderer used to draw
+  * \param vDialog The PopupMenu to be drawn
+  *
+  */
+void RainbruRPG::OgreGui::Skin::drawDialog(QuadRenderer* vQr, Dialog* vDialog){
+  logUnimplementedFunction("drawDialog");
 
 }

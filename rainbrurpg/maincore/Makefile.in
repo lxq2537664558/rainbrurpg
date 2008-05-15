@@ -68,8 +68,8 @@ am__objects_2 = gameengine.lo gamestate.lo guimanager.lo \
 	inputwrapper.lo inputmanager.lo gsmainmenu.lo gslocaltest.lo \
 	guiframelistener.lo exampleframelistener.lo gsgamebase.lo \
 	environmentsetup.lo highlightlistener.lo gsconnection.lo \
-	keyboardnavigation.lo messagebox.lo gscreateaccount.lo \
-	gsserverlist.lo gsupdatedatafiles.lo
+	keyboardnavigation.lo gscreateaccount.lo gsserverlist.lo \
+	gsupdatedatafiles.lo
 am_librainbrurpg_core_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_core_la_OBJECTS = $(am_librainbrurpg_core_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -263,7 +263,6 @@ h_sources = gameengine.h			\
 	  highlightlistener.h		\
 	  gsconnection.h		\
 	  keyboardnavigation.h		\
-	  messagebox.h			\
 	  gscreateaccount.h		\
 	  gsserverlist.h		\
 	  gsupdatedatafiles.h
@@ -285,7 +284,6 @@ cc_sources = gameengine.cpp		\
 	  highlightlistener.cpp		\
 	  gsconnection.cpp		\
 	  keyboardnavigation.cpp	\
-	  messagebox.cpp		\
 	  gscreateaccount.cpp		\
 	  gsserverlist.cpp		\
 	  gsupdatedatafiles.cpp
@@ -398,7 +396,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/inputmanager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/inputwrapper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/keyboardnavigation.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/messagebox.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vcconstant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/velocitycalculator.Plo@am__quote@
 

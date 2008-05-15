@@ -35,6 +35,7 @@
 #include "multicolumnlistcell.h"
 #include "popupmenu.h"
 #include "tooltip.h"
+#include "dialog.h"
 #include "drawingdevsettings.h"
 
 #include <logger.h>
@@ -387,54 +388,6 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
   qr->reset();
 }
 
-/** Create a window with a border
-  *
-  * It creates an overlay with a material named mnWindow.
-  *
-  * The name parameter must be application unique. It is the 
-  * name of the Ogre overlay we create.
-  *
-  * \param name    The internal name of the window
-  * \param dim     The window's dimension in pixels in a Ogre::Vector4 object
-  * \param caption The title bar caption
-  * \param bg      The BetaGUI::GUI object 
-  *
-  */
-void RainbruRPG::OgreGui::soBetaGui::
-createDialog(String name, Vector4 dim, String caption, BetaGUI::GUI* bg){
-  LOGI("createBorderWindow called");
-
-  BorderPanelOverlayElement* e=static_cast<BorderPanelOverlayElement*>
-    (OverlayManager::getSingleton().createOverlayElement("BorderPanel", name));
-  
-  e->setMetricsMode(GMM_PIXELS);
-  e->setDimensions(dim.z,dim.w);
-  e->setPosition(dim.x,dim.y);
-
-  // Border
-  e->setBorderSize(dialogBorderSize);
-  e->setBorderMaterialName(mnDialogBorder);
-  e->setLeftBorderUV        (0.0000, 0.9961, 0.0039, 0.0039);
-  e->setRightBorderUV       (0.9961, 0.9961, 1.0000, 0.0039);
-  e->setTopBorderUV         (0.0039, 1.0000, 0.9961, 0.9961);
-  e->setBottomBorderUV      (0.0039, 0.0039, 0.9961, 0.0000);
-  e->setTopLeftBorderUV     (0.0000, 1.0000, 0.0039, 0.9961);
-  e->setTopRightBorderUV    (0.9961, 1.0000, 1.0000, 0.9961);
-  e->setBottomLeftBorderUV  (0.0000, 0.0039, 0.0039, 0.0000);
-  e->setBottomRightBorderUV (0.9961, 0.0039, 1.0000, 0.0000);
-
-  // If material name is empty, no material is applied
-  /*  String materialName=mnWindow;
-
-  if (!materialName.empty()){
-    e->setMaterialName(materialName);
-    setTransparency(e, 0.0);
-  }
-  */
-  // Add it and show it
-  bg->getDialogOverlay()->add2D(e);
-  e->show();
-}
 
 void RainbruRPG::OgreGui::soBetaGui::
 drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
@@ -967,4 +920,21 @@ drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
   qr->drawRectangleLines(dim,c);
 
 }
+
+void RainbruRPG::OgreGui::soBetaGui::
+drawDialog(QuadRenderer* vQr, Dialog* vDialog){
+  // Draw the window background
+  Ogre::Rectangle corners= vDialog->getCorners();
+  vQr->setBlendMode(QBM_GLOBAL);
+  vQr->setScissorRectangle(corners);
+  vQr->setTexturePtr(mWindowTexture);
+  vQr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  vQr->drawRectangle(corners);
+  vQr->reset();
+
+  Ogre::ColourValue c( 0.9f, 0.2f, 0.2f );
+  vQr->drawRectangleLines(corners ,c);
+
+}
+
 

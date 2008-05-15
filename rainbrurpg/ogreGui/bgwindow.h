@@ -8,6 +8,7 @@
  */
 
 /* Modifications :
+ * - 14 may 2008 : No more border possibility, please use Dialog instead
  * - 01 may 2008 : implementation of accessors for scrollbars visibility
  * - 07 feb 2008 : Some function are now inline
  * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
@@ -70,7 +71,7 @@ namespace BetaGUI {
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, OgreGuiWindowType, String, GUI*, bool border=false,
+    Window( Vector4, OgreGuiWindowType, String, GUI*, 
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
@@ -198,12 +199,6 @@ namespace BetaGUI {
 
     /** If true, the window will always be fully transparent */
     bool alwaysTransparent;
-
-    /** Is it a border window */
-    bool hasBorder;
-
-    /** The pointer to the border text for transparency operation */
-    Ogre::TextureUnitState* borderTus;
 
     /** The window's title */
     String mCaption;

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 14 may 2008 : Now based ob OgreGui;;Dialog
  * - 16 nov 2007 : No more based on DialogSystem (removed)
  * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
  * - 23 jul 2007 : Initial import fro CEGUI wiki
@@ -32,7 +33,7 @@
 
 #include <OgrePrerequisites.h> // For Ogre::String
 
-#include <ogreGui/bglistener.h>
+#include "bglistener.h"
 
 // Forward declarations
 namespace BetaGUI {

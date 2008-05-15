@@ -22,7 +22,6 @@ h_sources=gameengine.h			\
 	  highlightlistener.h		\
 	  gsconnection.h		\
 	  keyboardnavigation.h		\
-	  messagebox.h			\
 	  gscreateaccount.h		\
 	  gsserverlist.h		\
 	  gsupdatedatafiles.h
@@ -44,7 +43,6 @@ cc_sources=gameengine.cpp		\
 	  highlightlistener.cpp		\
 	  gsconnection.cpp		\
 	  keyboardnavigation.cpp	\
-	  messagebox.cpp		\
 	  gscreateaccount.cpp		\
 	  gsserverlist.cpp		\
 	  gsupdatedatafiles.cpp

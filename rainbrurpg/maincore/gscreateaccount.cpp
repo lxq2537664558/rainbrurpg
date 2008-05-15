@@ -215,8 +215,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
 
   // The Back button window (false= no border)
   winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
-		       BetaGUI::OWT_NONE, "Connection", mGUI, false,
-		       OSI_NAVIGATION);
+		       BetaGUI::OWT_NONE, "Connection", mGUI, OSI_NAVIGATION);
   winBack->setAlwaysTransparent(true);
 
   btnBack = new PushButton(Vector4(10,10,100,33),
