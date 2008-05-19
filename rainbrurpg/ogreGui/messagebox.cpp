@@ -41,7 +41,7 @@
   * Actually, this initialize only message and title with empty strings.
   *
   */
-RainbruRPG::Gui::RbMessageBox::RbMessageBox():
+RainbruRPG::OgreGui::RbMessageBox::RbMessageBox():
   message(""),
   title(""),
   width(300),
@@ -55,7 +55,7 @@ RainbruRPG::Gui::RbMessageBox::RbMessageBox():
 /** Initialize the dialog
   *
   */
-void RainbruRPG::Gui::RbMessageBox::initWindow(){
+void RainbruRPG::OgreGui::RbMessageBox::initWindow(){
   // Center the dialog
   unsigned int rwWidth, rwHeight, posX, posY;
   rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
@@ -91,7 +91,7 @@ void RainbruRPG::Gui::RbMessageBox::initWindow(){
   * \sa getMessage()
   *
   */
-void RainbruRPG::Gui::RbMessageBox::setMessage(const String& mess){
+void RainbruRPG::OgreGui::RbMessageBox::setMessage(const String& mess){
   this->message=mess;
   caption->setCaption(mess);
 }
@@ -103,7 +103,7 @@ void RainbruRPG::Gui::RbMessageBox::setMessage(const String& mess){
   * \sa setMessage(const CEGUI::String&)
   *
   */ 
-const String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
+const String& RainbruRPG::OgreGui::RbMessageBox::getMessage(void){
   return this->message;
 }
 
@@ -116,7 +116,7 @@ const String& RainbruRPG::Gui::RbMessageBox::getMessage(void){
   * \sa getTitle()
   *
   */
-void RainbruRPG::Gui::RbMessageBox::setTitle(const String& t){
+void RainbruRPG::OgreGui::RbMessageBox::setTitle(const String& t){
   this->title=t;
   mWin->setTitle(t);
 }
@@ -128,14 +128,14 @@ void RainbruRPG::Gui::RbMessageBox::setTitle(const String& t){
   * \sa setTitle(const CEGUI::String&)
   *
   */ 
-const String& RainbruRPG::Gui::RbMessageBox::getTitle(void){
+const String& RainbruRPG::OgreGui::RbMessageBox::getTitle(void){
   return this->title;
 }
 
 /** Shows this message box
   *
   */
-void RainbruRPG::Gui::RbMessageBox::show(void){
+void RainbruRPG::OgreGui::RbMessageBox::show(void){
   mWin->setTransparency(0.7f);
   mWin->show();
 }
@@ -143,7 +143,7 @@ void RainbruRPG::Gui::RbMessageBox::show(void){
 /** Hides this message box
   *
   */
-void RainbruRPG::Gui::RbMessageBox::hide(void){
+void RainbruRPG::OgreGui::RbMessageBox::hide(void){
   mWin->hide();
 }
 
@@ -152,6 +152,6 @@ void RainbruRPG::Gui::RbMessageBox::hide(void){
   * \param ref The button that fires the event
   *
   */
-void RainbruRPG::Gui::RbMessageBox::onButtonPress(Button *ref){
+void RainbruRPG::OgreGui::RbMessageBox::onButtonPress(Button *ref){
   this->hide();
 }

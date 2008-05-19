@@ -58,17 +58,20 @@ INCLUDES= -I$(top_srcdir)/common			\
 	  $(OIS_CFLAGS)					\
 	  $(shell pkg-config sigc++-2.0 --cflags) 
 
-librainbrurpg_core_la_SOURCES= $(h_sources) $(cc_sources)
+librainbrurpg_core_la_SOURCES= $(h_sources)		\
+			       $(cc_sources)
 
-librainbrurpg_core_la_LIBADD= -lrainbrurpg-common
+librainbrurpg_core_la_LIBADD= -lrainbrurpg-common	\
+			      -lrainbrurpg-ogregui	\
+			      -lOgreMain
 
-librainbrurpg_core_la_LDFLAGS= 		       \
-  $(SHARED_FLAG) -version-info 		       \
-  $(CORE_LIBRARY_VERSION)   		       \
-  -L$(top_srcdir)/common/.libs 		       \
-  -Wl,--rpath		       		       \
-  -Wl,$(top_srcdir)/common/.libs	       \
-  $(CEGUI_OGRE_LIBS)			       \
-  $(OIS_LIBS)				       \
+librainbrurpg_core_la_LDFLAGS=				\
+  $(SHARED_FLAG) -version-info 		       		\
+  $(CORE_LIBRARY_VERSION)   		       		\
+  -L$(top_srcdir)/common/.libs 		       		\
+  -Wl,--rpath		       		       		\
+  -Wl,$(top_srcdir)/common/.libs	       		\
+  $(CEGUI_OGRE_LIBS)			       		\
+  $(OIS_LIBS)				       		\
   $(shell pkg-config sigc++-2.0 --libs)
 

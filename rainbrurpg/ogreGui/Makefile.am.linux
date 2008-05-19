@@ -110,9 +110,12 @@ INCLUDES = -I$(top_srcdir)/common			\
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
-librainbrurpg_ogregui_la_LIBADD= 
-librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)	\
-				  -version-info  	\
+librainbrurpg_ogregui_la_LIBADD= -lrainbrurpg-common			\
+				 -lrainbrurpg-core			\
+				 -lOgreMain
+
+librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
+				  -version-info  			\
 				  $(OGREGUI_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
 			  $(shell pkg-config sigc++-2.0 OGRE--libs)	\

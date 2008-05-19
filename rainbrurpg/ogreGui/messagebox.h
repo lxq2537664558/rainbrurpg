@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 14 may 2008 : Now based ob OgreGui;;Dialog
+ * - 14 may 2008 : Now based ob OgreGui::Dialog
+ *                 Moves from maincore/ to ogregui/
  * - 16 nov 2007 : No more based on DialogSystem (removed)
  * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
  * - 23 jul 2007 : Initial import fro CEGUI wiki
@@ -53,7 +54,7 @@ using namespace BetaGUI;
 using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
-  namespace Gui{
+  namespace OgreGui{
 
     /** A dialog based on OgreGUI
       *

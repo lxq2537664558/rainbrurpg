@@ -27,7 +27,6 @@
 /** The dialog constructor
   *
   * \param vDim     The dimensions
-  * \param vType    The window type
   * \param vCaption The dialog caption
   * \param vGui     The GUI object
   * \param sid      The Skin 

@@ -98,7 +98,9 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-178
-- (7) MessageBox moves from maincore/ to ogregui/
+- (9) Fix some errors in Makefiles (LIBADD omitted)
+- MessageBox moves from GUI namespace to OgreGui
+- MessageBox moves from maincore/ to ogregui/
 - soBetaGui::drawDialog() implementation
 - By default, a Dialog cannot be resized
 - Segfault fixed when showung a MessageBox using Dialog
