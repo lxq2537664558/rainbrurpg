@@ -790,6 +790,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   Ogre::ColourValue itemBGColor( 0.4f, 0.8f, 0.4f );
   Ogre::ColourValue selItemBGColor( 0.8f, 0.4f, 0.4f );
 
+
   Ogre::Rectangle itemRect(r);
   itemRect.left=r.left+5;
   itemRect.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
@@ -802,16 +803,19 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
   itemBG.bottom=itemBG.top+20;
   itemBG.right=mcl->getLastColumnRight()-5;
 
+  // The header bottom corners, used to avoid item drawing over the headers
+  int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
   Ogre::Rectangle itemScissorRect(r);
+  if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
 
   int colId=0;
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
     
     qr->setUseParentScissor(false);
-    qr->setScissorRectangle(mcl->getItemsScissorRectangle());
+    qr->setScissorRectangle(itemScissorRect);
     qr->setUseParentScissor(true);
-
+    
     if ((*ili)->isSelected()){
       qr->drawFilledRectangle( itemBG, selItemBGColor );
     }
@@ -845,7 +849,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
 	  if (itemScissorRect.bottom > mclParent->getBottom() ){
 	    itemScissorRect.bottom = mclParent->getBottom();
 	  }
-
+	  
 	  // Setting scissor rectangle to avoid item caption to exeed
 	  // left line X position
 	  qr->setUseParentScissor(false);

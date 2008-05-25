@@ -2,7 +2,6 @@ TODO
 -> Libraries versionning in doc/libVersionning.html
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
-- MulticolumnList implementation
 - gsServerList uses OgreGUI (with MulticolumnList)
 
 * Unittest failed in production mode (no --enable-debug)
@@ -98,7 +97,16 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-178
-- (9) Fix some errors in Makefiles (LIBADD omitted)
+- (18) Fix a bug in MCL : items drawn over header
+- Server's occupation, type and description added to geServerlist
+- gsServerList::setupServerList implementation
+- CEGUI references removed in gsServerList
+- maincore/gsMenuBase::rootWindowName removed (used with CEGUI)
+- Bugfix in the Vertical scrollbar visibility of MultiColumnList
+- RbMessageBox destructor implementation
+- GUI::moveWindowToForeGround() is now public
+- RainbruRPG2 binary removed
+- Fix some errors in Makefiles (LIBADD omitted)
 - MessageBox moves from GUI namespace to OgreGui
 - MessageBox moves from maincore/ to ogregui/
 - soBetaGui::drawDialog() implementation

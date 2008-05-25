@@ -624,7 +624,7 @@ horizontalScrollBarValueChange(int vValue){
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 verticalScrollBarValueChange(int vValue){
-    mDrawingDev->setDevY( vValue );
+    mDrawingDev->setDevY( -vValue );
 }
 
 /** Is the horizontal scrollbar needed
@@ -633,7 +633,8 @@ verticalScrollBarValueChange(int vValue){
   *
   */
 bool RainbruRPG::OgreGui::MultiColumnList::isHorizontalScrollbarNeeded(void){
-  if (mLastColumnRight > (corners.right - corners.left)){
+  int mItemWidth = mLastColumnRight - mAbsCorners.left;
+  if (mItemWidth > getWidth()){
     return true;
   }
   else{

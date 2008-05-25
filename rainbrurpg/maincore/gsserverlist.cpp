@@ -23,6 +23,12 @@
 #include "gsserverlist.h"
 
 #include <stringconv.h>
+#include <logger.h>
+
+#include <label.h>
+#include <bgwindow.h>
+#include <multicolumnlist.h>
+#include <multicolumnlistitem.h>
 
 #include "keyboardnavigation.h"
 
@@ -35,8 +41,12 @@
   * \sa velocity, xml.
   * 
   */
-RainbruRPG::Core::gsServerList::gsServerList()
-  :gsMenuBase(false){
+RainbruRPG::Core::gsServerList::gsServerList():
+  gsMenuBase(false),
+  mWin(NULL),
+  mMcl(NULL),
+  mNumServer(NULL)
+{
 
   LOGI("Constructing a gsServerList");
   velocity=new vcConstant();
@@ -61,12 +71,18 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
 
   delete xml;
   xml=NULL;
+
+  delete mWin;
+  mWin=NULL;
+
+  delete mMcl;
+  mMcl=NULL;
+
+  delete mNumServer;
+  mNumServer=NULL;
 }
 
 /** Initialize this game state
-  *
-  * Loads the \c serverList.layout CEGUI layout then call setupServerList()
-  * and setupTabOrder().
   *
   */
 void RainbruRPG::Core::gsServerList::init(){
@@ -90,15 +106,37 @@ void RainbruRPG::Core::gsServerList::resume(){
   setupTabOrder();
 }
 
-/** Setup the event callback for the CEGUI layout
-  *
-  * It initialize the pointer of the class member serverList. All the 
-  * CEGUI button callbacks are also defined here.
+/** Setup the list content
   *
   * \sa serverList
   *
   */
 void RainbruRPG::Core::gsServerList::setupServerList(){
+
+  // Create the list
+  unsigned int width = 600;
+  unsigned int rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
+  unsigned int posX=(rwWidth/2)-(width/2);
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+  mWin =new Window(Vector4(posX, 10, width, 400), BetaGUI::OWT_RESIZE_AND_MOVE, 
+		   "Server list", mGUI);
+  mGUI->addWindow(mWin);
+
+  Vector4 mclPosDim(10,30,width - 20,330);
+  mMcl=new MultiColumnList(mclPosDim, mWin);
+  mWin->addWidget(mMcl);
+
+  // Adding columns
+  mMcl->addColumn( "#", 30 );
+  mMcl->addColumn( "Name", 150 );
+  mMcl->addColumn( "Occ", 50 );
+  mMcl->addColumn( "Type", 100 );
+  mMcl->addColumn( "Description", 200 );
+
+  Vector4 mNumServerDim(10, 370, 20, 100);
+  mNumServer=new Label (mNumServerDim, "??? servers found", mWin);
+  mWin->addWidget(mNumServer);
+
 
   // Feed the list
   feedList();
@@ -115,38 +153,31 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   *
   */
 void RainbruRPG::Core::gsServerList::feedList(){
-  /*
+  unsigned int itemId=1;
   tServerList* lst=xml->getServerList();
   tServerList::const_iterator iter;
-
-  // Server number
-  if (nbServer){
-    CEGUI::String nbServerStr(StringConv::getSingleton().itos(lst->size()));
-    CEGUI::String txt="Servers : ";
-    txt+=nbServerStr;
-    nbServer->setText(txt);
-  }
-  else{
-    LOGE("Cannot get a valid nbServer window");
-  }
+  MultiColumnListItem* item;
 
   // Feed the list
   for (iter=lst->begin(); iter != lst->end(); iter++){
-    CEGUI::uint newRow=serverList->addRow();
+    item=new MultiColumnListItem();
+    item->setText(0, StringConv::getSingleton().itos(itemId));
+    item->setText(1, (*iter)->getName());
+    item->setText(2, (*iter)->getOccupationStr());
+    item->setText(3, (*iter)->getTypeStr());
+    item->setText(4, (*iter)->getDescription());
 
-    // name
-    std::string name=(*iter)->getName();
-    serverList->setItem(new CEGUI::ListboxTextItem(name), 0, newRow);
-
-    // type
-    CEGUI::String itemTypeText((*iter)->getTypeStr());
-    serverList->setItem(new CEGUI::ListboxTextItem(itemTypeText), 1, newRow);
-
-    // Occupation
-    CEGUI::String occ((*iter)->getOccupationStr());
-    serverList->setItem(new CEGUI::ListboxTextItem(occ), 2, newRow);
+    mMcl->addItem(item);
+    itemId++;
   }
-  */
+
+  LOGCATI(mMcl->getItemList().size());
+  LOGCATS(" items in the MultiColumnList");
+  LOGCAT();
+
+  String numS=StringConv::getSingleton().itos(lst->size());
+  numS += " servers found";
+  mNumServer->setCaption(numS);
 }
 
 /** Setup the tabulation order 

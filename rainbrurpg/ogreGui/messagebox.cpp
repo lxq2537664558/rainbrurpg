@@ -47,9 +47,16 @@ RainbruRPG::OgreGui::RbMessageBox::RbMessageBox():
   width(300),
   height(100),
   mWin(NULL),
-  caption(NULL)
+  caption(NULL),
+  btnOk(NULL)
 {
 
+}
+
+RainbruRPG::OgreGui::RbMessageBox::~RbMessageBox(){
+  if (mWin != NULL){
+    GameEngine::getSingleton().getOgreGui()->removeWindow(mWin);
+  }
 }
 
 /** Initialize the dialog
@@ -76,7 +83,7 @@ void RainbruRPG::OgreGui::RbMessageBox::initWindow(){
   mWin->addWidget(caption);
   
   Vector4 btnDim=Vector4( (width/2)-50, height-30, 100, 24 );
-  PushButton* btnOk=new PushButton (btnDim, "OK", Callback(this), mWin);
+  btnOk=new PushButton (btnDim, "OK", Callback(this), mWin);
   mWin->addWidget(btnOk);
 
 
@@ -136,8 +143,11 @@ const String& RainbruRPG::OgreGui::RbMessageBox::getTitle(void){
   *
   */
 void RainbruRPG::OgreGui::RbMessageBox::show(void){
-  mWin->setTransparency(0.7f);
+  mWin->setTransparency(0.9f);
   mWin->show();
+  GameEngine::getSingleton().getOgreGui()->moveWindowToForeGround(mWin);
+  // Dilaog become modal
+  //  GameEngine::getSingleton().getOgreGui()->setFocusedWidget(btnOk);
 }
 
 /** Hides this message box
@@ -145,6 +155,8 @@ void RainbruRPG::OgreGui::RbMessageBox::show(void){
   */
 void RainbruRPG::OgreGui::RbMessageBox::hide(void){
   mWin->hide();
+  //  GameEngine::getSingleton().getOgreGui()->disableFocusedWidget();
+  GameEngine::getSingleton().getOgreGui()->removeWindow(mWin);
 }
 
 /** The callback od OgreGUI buttons

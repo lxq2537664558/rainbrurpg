@@ -72,6 +72,8 @@ namespace RainbruRPG{
     class RbMessageBox : public BetaGUIListener{
     public:
       RbMessageBox();
+      virtual ~RbMessageBox();
+
       void initWindow();
       
       void setMessage(const String&);
@@ -103,6 +105,14 @@ namespace RainbruRPG{
       unsigned int width;
       /** The height of this dialog in pixels */
       unsigned int height;
+
+      /** The OK button
+        *
+	* This button is declared member to be used as focusedWidget
+	* in the future.
+	*
+	*/
+      PushButton* btnOk;
     };
   }
 }

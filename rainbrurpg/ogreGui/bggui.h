@@ -149,9 +149,9 @@ namespace BetaGUI {
     void setFocusedWidget(Widget*);
     Widget* getFocusedWidget(void)const;
     void disableFocusedWidget(void);
+    void moveWindowToForeGround(Window*);
 
   protected:
-    void moveWindowToForeGround(Window*);
     void deactivateAllOtherWindow(Window*);
 
     bool handleWindowsEvents(void);
@@ -246,7 +246,13 @@ namespace BetaGUI {
     unsigned int mMouseX;
     /** The mouse Y position */
     unsigned int mMouseY;
-    /** The widget that currently has the focus */
+    /** The widget that currently has the focus 
+      *
+      * Focused widget has highter priority and other widgets event are
+      * handled only if focused widget doesn't use the mouse event 
+      * (injectMouse returns false).
+      *
+      */
     Widget* mFocusedWidget;
 
   };

@@ -195,10 +195,14 @@ namespace RainbruRPG{
       MultiColumnListItem* mouseOveredItem;
       /** Keep the currently selected item */
       MultiColumnListItem* selectedItem;
-      /** The last column X position
+      /** The last column X position from the screen left
         *
 	* This value is used To draw item mouse over rectangle. To
 	* speed up drawing, it is pre-computed in makeCorners().
+	*
+	* This value is absolute, you will need to substract Window's 
+	* \c mAbsCorners.left to get the last column value from the window 
+	* position.
 	*
 	*/
       int mLastColumnRight;

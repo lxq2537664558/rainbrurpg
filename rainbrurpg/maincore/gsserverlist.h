@@ -34,6 +34,20 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
+// Forward declarations
+namespace BetaGUI{
+    class Window;
+}
+namespace RainbruRPG{
+  namespace OgreGui{
+    class MultiColumnList;
+    class PushButton;
+    class Label;
+  }
+}
+// End of forward declarations
+
+using namespace BetaGUI;
 using namespace RainbruRPG::Network::Ident;
 
 namespace RainbruRPG {
@@ -71,6 +85,13 @@ namespace RainbruRPG {
         */
       xmlServerList* xml;
 
+      /** The Wndow containing the server list */
+      Window* mWin;
+
+      /** The widget used to draw server list */
+      MultiColumnList* mMcl;
+      /** The label used to show the number of server found */
+      Label* mNumServer;
     };
   }
 }

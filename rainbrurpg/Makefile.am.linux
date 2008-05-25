@@ -1,6 +1,5 @@
 # To make the HTML version of the texinfo help
-# You need trhe texinfo package
-bin_PROGRAMS=RainbruRPG2
+# You need the texinfo package
 
 # The sources
 SUBDIRS = common terminalapi maincore ogreGui client
@@ -34,10 +33,6 @@ endif
 if RB_OPTION_ALL_FLAGS
   SUBDIRS+=editor server tools tests
 endif 
-
-RainbruRPG2dir=..
-
-RainbruRPG2_SOURCES=RainbruRPG.cc RainbruRPG.6 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc

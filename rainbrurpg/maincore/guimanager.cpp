@@ -319,7 +319,7 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
 
 /** Shows a CEGUI message box with a single OK button
   *
-  * Uses SimpleDialog to show a message with a title. 
+  * Uses RbMessageBox to show a message with a title. 
   *
   * If you want a widget to get the focus after the message box is closed, 
   * you should activate this widget then show the message box. Please try

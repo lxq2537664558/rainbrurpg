@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 22 may 2008 : rootWindowName removed (CEGUI not used anymore)
  * - 25 jul 2007 : rootWindowName added
  *
  */
@@ -65,11 +66,6 @@ namespace RainbruRPG {
       * the temporally paused implementation of the state. The frameStarted()
       * and frameEnded() function are used by The GuiFrameListener
       *
-      * Another important value all subclasses should want to set is
-      * \ref GameState::rootWindowName "rootWindowName". If you need 
-      * to create modal dialogs, it \b must
-      * be set.
-      *
       * \sa GameEngine
       *
       */
@@ -78,7 +74,6 @@ namespace RainbruRPG {
       virtual ~GameState();
 
       tGameStateType getStateType();
-      const Ogre::String& getRootWindowName();
 
       /** The constructor of GameState 
         * 
@@ -130,13 +125,6 @@ namespace RainbruRPG {
       /** The common input wrapper */
       tGameStateType stateType;
 
-      /** This is the CEGUI root window name 
-        *
-	* It is used by GameEngine when it need to show a modal message
-	* box.
-	*
-	*/
-      Ogre::String rootWindowName;
    };
   }
 }

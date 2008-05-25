@@ -31,7 +31,6 @@
 RainbruRPG::Core::GameState::GameState(){
   LOGI("Initializing game state super-class");
   isInit=false;
-  rootWindowName="";
 }
 
 /** A destructor 
@@ -54,19 +53,4 @@ bool RainbruRPG::Core::GameState::wasInit(){
   */
 tGameStateType RainbruRPG::Core::GameState::getStateType(){
   return this->stateType;
-}
-
-/** Return the name of the CEGUI root window
-  *
-  * This value is important if you attempt to create messageBoxes.
-  * The GameEngine should need the root window name to create
-  * modal dialogs.
-  *
-  * \return the rootWindow name
-  *
-  * \sa rootWindowName
-  *
-  */
-const Ogre::String& RainbruRPG::Core::GameState::getRootWindowName(){
-  return this->rootWindowName;
 }
