@@ -45,6 +45,7 @@ namespace RainbruRPG{
     class VScrollBar;
     class HScrollBar;
     class MultiColumnList;
+    class wdMultiColumnList;
     class PopupMenu;
     class ToolTip;
   }
@@ -77,7 +78,7 @@ namespace RainbruRPG{
 
       virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* );
       virtual void drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* );
-      virtual void drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl );
+      virtual void drawMultiColumnList(QuadRenderer*, MultiColumnList*, bool );
       virtual void drawToolTip(QuadRenderer*, ToolTip* );
       virtual void drawPopupMenu(QuadRenderer*, PopupMenu*);
       virtual void drawDialog(QuadRenderer*, Dialog* );
@@ -235,21 +236,8 @@ namespace RainbruRPG{
 	*/
       TexturePtr mHorizontalScrollBarCursorActive;
 
-      /** The texture used to draw the MultiColumnList column indicator
-        * when no sort was selected
-	*/
-      TexturePtr mMclColumnNoSort;
-
-       /** The texture used to draw the MultiColumnList column indicator
-        * when ascendant sort was selected
-	*/
-      TexturePtr mMclColumnAscSort;
-
-      /** The texture used to draw the MultiColumnList column indicator
-        * when descendant sort was selected
-	*/
-      TexturePtr mMclColumnDescSort;
-   
+      /** The drawer used for MultiColumnList */
+      wdMultiColumnList* mMultiColumnListDrawer;
     };
 
   }

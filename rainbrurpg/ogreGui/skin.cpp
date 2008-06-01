@@ -216,12 +216,14 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
 
 /** Draws a MultiColumnList
   *
-  * \param qr  The QuadRenderer used to draw
-  * \param mcl The MultiColumnList to draw
+  * \param qr          The QuadRenderer used to draw
+  * \param mcl         The MultiColumnList to draw
+  * \param geoWasDirty Was the widget's geometryDirty flag on before this draw?
+  *                    (The widget moved or is resized).
   *
   */
 void RainbruRPG::OgreGui::Skin::
-drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
+drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl, bool geoWasDirty ){
   logUnimplementedFunction("drawMultiColumnList");
 
 }

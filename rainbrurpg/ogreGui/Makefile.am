@@ -48,7 +48,9 @@ h_sources= bgbutton.h			\
 	   tooltip.h			\
 	   vector3.h			\
 	   vscrollbar.h			\
-	   widget.h
+	   widget.h			\
+	   widgetdrawer.h		\
+	   wdmulticolumnlist.h
 
 
 cc_sources= bgbutton.cpp		\
@@ -96,7 +98,9 @@ cc_sources= bgbutton.cpp		\
 	    tooltip.cpp			\
 	    vector3.cpp			\
 	    vscrollbar.cpp		\
-	    widget.cpp
+	    widget.cpp			\
+	    widgetdrawer.cpp		\
+	    wdmulticolumnlist.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)

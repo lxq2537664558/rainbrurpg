@@ -180,13 +180,15 @@ RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
   *
   */
 void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
+  bool geometryWasDirty=false;
   if (visible){
     if (geometryDirty){
+      geometryWasDirty=true;
       makeCorners();
       geometryDirty=false;
     }
     
-    mSkin->drawMultiColumnList( qr, this );
+    mSkin->drawMultiColumnList( qr, this, geometryWasDirty );
 
 
     mToolTip->draw( qr );

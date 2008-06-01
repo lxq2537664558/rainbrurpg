@@ -37,6 +37,7 @@
 #include "tooltip.h"
 #include "dialog.h"
 #include "drawingdevsettings.h"
+#include "wdmulticolumnlist.h"
 
 #include <logger.h>
 
@@ -57,7 +58,8 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   tsTitleBar(NULL),
   tsPushButton(NULL),
   tsLabel(NULL),
-  tsTextInput(NULL)
+  tsTextInput(NULL),
+  mMultiColumnListDrawer(NULL)
 {
   // Define here as it is a field of Skin
   mTitleBarHeight=22;
@@ -73,6 +75,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   tsLabel=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
   tsTextInput=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
 
+  mMultiColumnListDrawer= new wdMultiColumnList();
 
   mnDialogBorder="bgui.dialog.border";
   mnTextInput="bgui.textinput";
@@ -192,18 +195,6 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
    .load("bgui.hscrollbar.cursor.active.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
-  // MultiColumnList
-  mMclColumnNoSort=TextureManager::getSingleton()
-   .load("mcl.nosort.png",
-	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-
-  mMclColumnAscSort=TextureManager::getSingleton()
-   .load("mcl.ascsort.png",
-	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-
-  mMclColumnDescSort=TextureManager::getSingleton()
-   .load("mcl.descsort.png",
-	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
 }
 
@@ -211,6 +202,9 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   *
   */
 RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
+
+  delete mMultiColumnListDrawer;
+  mMultiColumnListDrawer=NULL;
 
   delete tsTitleBar;
   tsTitleBar=NULL;
@@ -642,255 +636,18 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
 
 /** Draws a MultiColumnList
   *
-  * \param qr  The QuadRenderer used to draw
-  * \param mcl The MultiColumnList to draw
+  * \param qr          The QuadRenderer used to draw
+  * \param mcl         The MultiColumnList to draw
+  * \param geoWasDirty Was the widget's geometryDirty flag on before this draw
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl ){
-  // Using the parent to limit scissor rectangle of item captions
-  Widget* mclParent = mcl->getParent();
-  
-  // Text setting for column header
-  TextSettings* tsMclColumnHeader=new TextSettings( "Iconiv2.ttf", 
-						    10, 1.0f, 1.0f, 1.0f );
-  tsMclColumnHeader->setHorizontalAlignment(HAT_CENTER);
-  tsMclColumnHeader->setVerticalAlignment(VAT_CENTER);
-
-  int movingColumn=mcl->getMovedColumnIndex();
-
-  // Drawing list rectangle
-  Ogre::ColourValue c( 0.7f, 0.7f, 0.7f );
-  Ogre::Rectangle r=mcl->getAbsoluteCorners();
-
-  qr->drawRectangleLines(r,c);
-
-  int maxMclRight = r.right; // Used to test left line visibility
-  
-  //Header bottom line
-  int hbl = r.top+mcl->getHeaderHeight();
-  qr->drawLine( r.left, hbl, r.right, hbl, c ); 
-
-  // Drawing columns header
-  tMultiColumnListColumnList colList=mcl->getColumnList();
-  tMultiColumnListColumnList::const_iterator iter;
-
-  Ogre::Rectangle sr=qr->getClipRegion();
-
-  qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
-  
-  int x=r.left;
-  int y1=r.top;
-  int y2=r.bottom;
-
-  Ogre::Rectangle columnCaption(r);
-  Ogre::Rectangle headerBG, sortSignRect;
-  Ogre::ColourValue headerBGColor( 0.4f, 0.4f, 0.8f );
-  Ogre::ColourValue headerBGColorS( 0.6f, 0.6f, 0.9f );
-# define HEADER_BG_SPACE 2
-  columnCaption.bottom=columnCaption.top + mcl->getHeaderHeight();
-  headerBG.top    = columnCaption.top    + HEADER_BG_SPACE;
-  headerBG.bottom = columnCaption.bottom - HEADER_BG_SPACE;
-
-  int xSortSign=((columnCaption.bottom-columnCaption.top)/2)-7;
-
-  sortSignRect.top    = headerBG.top+xSortSign;
-  sortSignRect.bottom = sortSignRect.top+12;
-
-  unsigned int colIndex=0;
-
-  for(iter = colList.begin();iter != colList.end(); iter++){
-    if ((*iter)->isVisible()){
-      qr->setUseParentScissor(false);
-      qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
-      qr->setUseParentScissor(true);
-
-      // Header background and caption
-      columnCaption.left  = x;
-      columnCaption.right = x + (*iter)->getWidth();
-      headerBG.left   = columnCaption.left   + HEADER_BG_SPACE;
-      headerBG.right  = columnCaption.right  - HEADER_BG_SPACE;
-      
-      sortSignRect.left  = headerBG.right - 14;
-      sortSignRect.right = sortSignRect.left + 12;
-      
-      columnCaption.right-=16; // Remove sortSignRect size
-      
-      if (colIndex == movingColumn){
-	qr->enableGhost();
-      }
-      
-      
-      if ((*iter)->isSelected()){
-	qr->drawFilledRectangle( headerBG, headerBGColorS );
-      }
-      else{
-	qr->drawFilledRectangle( headerBG, headerBGColor );
-      }
-      
-      // Drawing header caption
-      qr->drawText(tsMclColumnHeader, (*iter)->getCaption(), 
-		   columnCaption, true);
-      
-      // Drawing sort sign
-      qr->setBlendMode(QBM_ALPHA);
-      switch((*iter)->getSortPolicy()){
-      case MCS_NONE:
-	qr->setTexturePtr(mMclColumnNoSort);
-	break;
-      case MCS_ASCENDANT:
-	qr->setTexturePtr(mMclColumnAscSort);
-	break;
-      case MCS_DESCENDANT:
-	qr->setTexturePtr(mMclColumnDescSort);
-	break;
-      }
-      qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-      qr->drawRectangle(sortSignRect);
-      
-      
-      if (colIndex == movingColumn-1){
-	qr->enableGhost();
-      }
-      
-      // Drawing left line : we need to disable the scissor rectangle
-      x+=(*iter)->getWidth();
-      qr->setUseParentScissor(false);
-      Rectangle parentWindowAbsCorners = mcl->getWindowParent()->getCorners();
-      qr->setScissorRectangle(parentWindowAbsCorners);
-      // Avoid left line to get more to the right to the mcl right corners
-      if ( x < maxMclRight ){
-	qr->drawLine( x, y1, x, y2, c );
-      }
-      qr->setUseParentScissor(true);
-      
-      if (colIndex == movingColumn || colIndex == movingColumn-1){
-	qr->disableGhost();
-      }
-      
-      qr->reset();
-    } // is column is visible
-
-    colIndex++;
+drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl, bool geoWasDirty ){
+  if (geoWasDirty){
+    mMultiColumnListDrawer->preDrawingComputation( mcl );
   }
-  
-  qr->removeDrawingDev(mcl->getHeaderDrawingDevSettings());
+  mMultiColumnListDrawer->draw(qr, mcl);
 
-
-  // drawing items
-  // Saves current parent scissor settings
-  qr->addDrawingDev(mcl->getDrawingDevSettings());
-  tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
-
-  tMultiColumnListItemList itemList=mcl->getItemList();
-  tMultiColumnListItemList::const_iterator ili;
-
-  tMultiColumnListCellList mil;
-  tMultiColumnListCellList::const_iterator mii;
-  Ogre::ColourValue itemBGColor( 0.4f, 0.8f, 0.4f );
-  Ogre::ColourValue selItemBGColor( 0.8f, 0.4f, 0.4f );
-
-
-  Ogre::Rectangle itemRect(r);
-  itemRect.left=r.left+5;
-  itemRect.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
-  itemRect.bottom=itemRect.top+20;
-  itemRect.right=itemRect.left+colList[0]->getWidth();
-
-  Ogre::Rectangle itemBG(r);
-  itemBG.left=r.left+5;
-  itemBG.top=columnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
-  itemBG.bottom=itemBG.top+20;
-  itemBG.right=mcl->getLastColumnRight()-5;
-
-  // The header bottom corners, used to avoid item drawing over the headers
-  int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
-  Ogre::Rectangle itemScissorRect(r);
-  if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
-
-  int colId=0;
-  // Drawing items
-  for (ili = itemList.begin(); ili != itemList.end(); ili++){
-    
-    qr->setUseParentScissor(false);
-    qr->setScissorRectangle(itemScissorRect);
-    qr->setUseParentScissor(true);
-    
-    if ((*ili)->isSelected()){
-      qr->drawFilledRectangle( itemBG, selItemBGColor );
-    }
-    else if ((*ili)->isMouseOver()){
-      qr->drawFilledRectangle( itemBG, itemBGColor );
-    }
-    else if ((*ili)->inTransition()){
-      // Using item's alpha
-      float itemAlpha=(*ili)->getMouseOverAlpha();
-      float currentAlpha = qr->setTempAlpha(itemAlpha);
-      qr->drawFilledRectangle( itemBG, itemBGColor );
-      qr->setAlpha(currentAlpha);
-    }
-
-    // Drawing cells (we are using parent scissor)
-    mil=(*ili)->getCellList();
-    for (mii=mil.begin(); mii != mil.end(); mii++){
-      if (colList[colId]->isVisible()){
-	if ((*mii)->isText()){
-	  
-	  if (colId==movingColumn){
-	    qr->enableGhost();
-	  }
-	  
-	  // Limit item scissor to MCL parent right 
-	  if (itemScissorRect.right > mclParent->getRight() ){
-	    itemScissorRect.right = mclParent->getRight();
-	  }
-
-	  // Apply the same limit to the bottom
-	  if (itemScissorRect.bottom > mclParent->getBottom() ){
-	    itemScissorRect.bottom = mclParent->getBottom();
-	  }
-	  
-	  // Setting scissor rectangle to avoid item caption to exeed
-	  // left line X position
-	  qr->setUseParentScissor(false);
-	  qr->setScissorRectangle(itemScissorRect);
-	  qr->setUseParentScissor(true);
-	  
-	  qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
-	  itemRect.left+=colList[colId]->getWidth();
-	  if (colId+1 < colList.size()){
-	    itemRect.right=itemRect.left + colList[colId+1]->getWidth();
-	  }
-	  else{
-	    itemRect.right = columnCaption.right -2;
-	  }
-	  
-	  itemScissorRect.right = itemRect.right - 5 
-	    - qr->getDrawingDevXSum();
-
-	  if (colId==movingColumn){
-	    qr->disableGhost();
-	  }
-	  
-	} // if cell is text
-      } // If column is visible
-      colId++;
-    } // For each cell in multicolumn list item
-    colId=0;
-    itemRect.left=r.left+5;
-    itemRect.right=itemRect.left+colList[0]->getWidth();
-    itemRect.top+=20;
-    itemRect.bottom=itemRect.top+20;
-    itemBG.top+=20;
-    itemBG.bottom=itemBG.top+20;
-  }
-
-  qr->setUseParentScissor(false);
-  // Restore parent scissor
-  qr->setScissorRectangle(sr);
-  qr->setUseParentScissor(true);  
-  qr->removeDrawingDev(mcl->getDrawingDevSettings());
-  qr->reset();
 }
 
 /** Draw the given popup menu

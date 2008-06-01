@@ -96,8 +96,20 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-179
+- (8) wdMultiColumnList::drawAllHeaders implementation
+- wdMultiColumnList::drawOneHeader implementation
+- wdMultiColumnList::drawBorder implementation
+- wdMultiColumnList initialization implementation
+- wdMultiColumnList::preDrawingComputation handling in soBetaGui
+- skin argument for MultiColumnList's geometryDirty Status
+- wdMultiVolumnList::draw() implementation
+- soBetaGUI uses wdMultiVolumnList
+
 * v 0.0.5-178
-- (18) Fix a bug in MCL : items drawn over header
+- wdMultiColumnList base implementation
+- WidgtDrawer implementation
+- Fix a bug in MCL : items drawn over header
 - Server's occupation, type and description added to geServerlist
 - gsServerList::setupServerList implementation
 - CEGUI references removed in gsServerList

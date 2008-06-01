@@ -72,7 +72,7 @@ am__objects_2 = bgbutton.lo bgcallback.lo bggui.lo bgtextinput.lo \
 	resizegrip.lo scrollbar.lo scrollpane.lo skinmanager.lo \
 	skin.lo sobetagui.lo sonavigation.lo staticimage.lo \
 	textsettings.lo titlebar.lo tooltip.lo vector3.lo \
-	vscrollbar.lo widget.lo
+	vscrollbar.lo widget.lo widgetdrawer.lo wdmulticolumnlist.lo
 am_librainbrurpg_ogregui_la_OBJECTS = $(am__objects_1) \
 	$(am__objects_2)
 librainbrurpg_ogregui_la_OBJECTS =  \
@@ -297,7 +297,9 @@ h_sources = bgbutton.h			\
 	   tooltip.h			\
 	   vector3.h			\
 	   vscrollbar.h			\
-	   widget.h
+	   widget.h			\
+	   widgetdrawer.h		\
+	   wdmulticolumnlist.h
 
 cc_sources = bgbutton.cpp		\
 	    bgcallback.cpp		\
@@ -344,7 +346,9 @@ cc_sources = bgbutton.cpp		\
 	    tooltip.cpp			\
 	    vector3.cpp			\
 	    vscrollbar.cpp		\
-	    widget.cpp
+	    widget.cpp			\
+	    widgetdrawer.cpp		\
+	    wdmulticolumnlist.cpp
 
 library_includedir = $(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)
@@ -480,7 +484,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tooltip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vector3.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vscrollbar.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wdmulticolumnlist.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widgetdrawer.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \

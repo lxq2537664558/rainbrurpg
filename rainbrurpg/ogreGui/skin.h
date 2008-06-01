@@ -85,7 +85,7 @@ namespace RainbruRPG{
       virtual void drawToolTip(QuadRenderer*, ToolTip*);
       virtual void drawVerticalScrollbar(QuadRenderer*, VScrollBar* );
       virtual void drawHorizontalScrollbar(QuadRenderer*, HScrollBar* );
-      virtual void drawMultiColumnList(QuadRenderer*, MultiColumnList* );
+      virtual void drawMultiColumnList(QuadRenderer*, MultiColumnList*, bool );
       virtual void drawPopupMenu(QuadRenderer*, PopupMenu* );
       virtual void drawDialog(QuadRenderer*, Dialog* );
 
