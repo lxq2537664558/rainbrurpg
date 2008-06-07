@@ -158,6 +158,8 @@ namespace RainbruRPG{
 
       Window* getWindowParent(void);
 
+      const std::string& getDebugName(void)const;
+
     protected:
       void makeCorners(void);
       void computeLastColumnRight();
@@ -241,6 +243,13 @@ namespace RainbruRPG{
 	*
 	*/
       Window* mParentWindow;
+      /** The name used when debugging 
+        *
+	* Please see \ref MultiColumnListDebugSettings to know how to debug
+	* this widget.
+	*
+	*/
+      std::string mDebugName;
     };
   }
 }

@@ -21,7 +21,8 @@
  */
 
 /* Modifications :
- * - 26 may 2006 : starting implementation
+ * - 07 jun 2008 : Using MultiColumnListDebugSettings
+ * - 26 may 2008 : starting implementation
  *         
  */
 
@@ -29,7 +30,9 @@
 #define _OGRE_GUI_WIDGET_DRAWER_MULTI_COLUMN_LIST_H_
 
 #include "widgetdrawer.h"
+#include "multicolumnlist.h" // for tMultiColumnListColumnList
 
+#include <string>
 #include <OgreTexture.h>
 #include <OgreColourValue.h>
 #include <OgreRectangle.h>
@@ -45,10 +48,13 @@ namespace BetaGUI{
 namespace RainbruRPG{
   namespace OgreGui{
     class QuadRenderer;
-    class MultiColumnList;
     class Widget;
     class TextSettings;
+    class MultiColumnList;
     class MultiColumnListColumn;
+    class MultiColumnListCell;
+    class MultiColumnListItem;
+    class MultiColumnListDebugSettings;
   }
 }
 // End of forward declarations
@@ -69,13 +75,22 @@ namespace RainbruRPG{
 
       void preDrawingComputation(MultiColumnList*);
       void draw(QuadRenderer*, MultiColumnList*);
+      void reset();
 
     protected:
       void init(MultiColumnList*);
 
       void drawBorder(QuadRenderer*);
+
       void drawAllHeaders(QuadRenderer*, MultiColumnList*, int);
       void drawOneHeader(QuadRenderer*, MultiColumnListColumn*, int);
+
+      void drawOneItemCell(QuadRenderer*,MultiColumnListCell*,const Rectangle&);
+      void drawOneItem(QuadRenderer*,MultiColumnListItem*,const Rectangle&,
+		       const tMultiColumnListColumnList&, int, 
+		       bool vDebug = false);
+
+      void drawAllItems(QuadRenderer*,MultiColumnList*, int);
 
     private:
       /** The texture used to draw the MultiColumnList column indicator
@@ -102,6 +117,9 @@ namespace RainbruRPG{
       /** The text setting used to draw column header */
       TextSettings* tsMclColumnHeader;
 
+      /** The text setting used to draw text cells */
+      TextSettings* tsMclTextCell;
+
       /** The MultiColumnList absolute corners */
       Ogre::Rectangle mMclAbsCorners;
 
@@ -116,6 +134,15 @@ namespace RainbruRPG{
       
       /**  Used to test left line visibility */
       int maxMclRight;
+
+      /** The item mouse over color */
+      Ogre::ColourValue itemBGColor;
+
+      /** The selected item color */
+      Ogre::ColourValue selItemBGColor;
+
+      /** The debugging settings */
+      MultiColumnListDebugSettings* mDebugSettings;
     };
 
   }

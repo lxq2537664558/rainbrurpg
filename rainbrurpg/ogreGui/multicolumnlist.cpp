@@ -106,7 +106,8 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
   mHScrollBar(NULL),
   mGui(NULL),
   mPopupMenu(NULL),
-  mParentWindow(NULL)
+  mParentWindow(NULL),
+  mDebugName("NotYetSet")
 {
   mParentWindow = vParent;
   mSkin = SkinManager::getSingleton().getSkin(this);
@@ -829,3 +830,12 @@ Window* RainbruRPG::OgreGui::MultiColumnList::getWindowParent(void){
   return mParentWindow;
 }
 
+/** Get the debug name of this widget
+  *
+  * \return The name used to debug MultiColumnList
+  *
+  */
+const std::string& RainbruRPG::OgreGui::MultiColumnList::
+getDebugName(void)const{
+  return mDebugName;
+}

@@ -647,7 +647,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl, bool geoWasDirty ){
     mMultiColumnListDrawer->preDrawingComputation( mcl );
   }
   mMultiColumnListDrawer->draw(qr, mcl);
-
+  mMultiColumnListDrawer->reset();
 }
 
 /** Draw the given popup menu

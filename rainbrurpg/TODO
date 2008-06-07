@@ -97,7 +97,13 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-179
-- (8) wdMultiColumnList::drawAllHeaders implementation
+- (14) MultiColumnListDebugSettings implementation
+- Bugfix : MCL VScrollbar was using scissor of headers
+- wdMultiColumnList::reset implemented and used
+- wdMultiColumnList first draw handled
+- wdMultiColumnList::drawAllItems implementation
+- wdMultiColumnList::drawOneItemCell implementation
+- wdMultiColumnList::drawAllHeaders implementation
 - wdMultiColumnList::drawOneHeader implementation
 - wdMultiColumnList::drawBorder implementation
 - wdMultiColumnList initialization implementation

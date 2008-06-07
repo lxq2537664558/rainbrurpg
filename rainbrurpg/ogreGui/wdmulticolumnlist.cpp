@@ -23,9 +23,10 @@
 #include "wdmulticolumnlist.h"
 
 #include "multicolumnlist.h"
-#include "multicolumnlistcolumn.h"
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcell.h"
+#include "multicolumnlistcolumn.h"
+#include "multicolumnlistdebugsettings.h"
 
 #include "quadrenderer.h"
 #include "textsettings.h"
@@ -42,14 +43,23 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mWidgetParent(NULL),
   wasInit(false),
   tsMclColumnHeader(NULL),
-  mMclBorderColor(0.7f, 0.7f, 0.7f)
+  tsMclTextCell(NULL),
+  mMclBorderColor(0.7f, 0.7f, 0.7f),
+  itemBGColor( 0.4f, 0.8f, 0.4f ),
+  selItemBGColor( 0.8f, 0.4f, 0.4f ),
+  mDebugSettings(NULL)
 {
+  // Debug settings
+  mDebugSettings =  new MultiColumnListDebugSettings("WidgetName");
 
+  // Text settings
   tsMclColumnHeader=new TextSettings( "Iconiv2.ttf",  10, 1.0f, 1.0f, 1.0f );
+  tsMclTextCell=new TextSettings( "Iconiv2.ttf",  10, 1.0f, 1.0f, 1.0f );
+
   tsMclColumnHeader->setHorizontalAlignment(HAT_CENTER);
   tsMclColumnHeader->setVerticalAlignment(VAT_CENTER);
 
-
+  // Texture settings
   mMclColumnNoSort=TextureManager::getSingleton()
    .load("mcl.nosort.png",
 	 ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
@@ -68,8 +78,14 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   *
   */
 RainbruRPG::OgreGui::wdMultiColumnList::~wdMultiColumnList(){
+  delete mDebugSettings;
+  mDebugSettings = NULL;
+
   delete tsMclColumnHeader;
   tsMclColumnHeader = NULL;
+
+  delete tsMclTextCell;
+  tsMclTextCell = NULL;
 }
 
 /** Initializes the members depending on MultiColumnList
@@ -86,145 +102,66 @@ void RainbruRPG::OgreGui::wdMultiColumnList::init(MultiColumnList* mcl){
   wasInit = true;
 }
 
-
-/** Draw the givenh MultiColumnList
-  *
-  * \param qr  The QuadRenderer used to draw
-  * \param mcl The MultiColumnList to draw
+/** Draw a cell of an item
+  * 
+  * \param qr    The QuadRenderer used to draw
+  * \param vCell The Cell to be drawn
+  * \param vRect The rectangle where we must draw the cell
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
-draw(QuadRenderer* qr, MultiColumnList* mcl){
+drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
+		const Rectangle& vRect){
 
-  // Test initialization and init if needed
-  if (!wasInit) init(mcl);
-  LOGA(mWidgetParent, "MultiColumnList parent poiner is NULL");
-
-  // Get event driven values (cannot be got with preDrawingComputation)
-  int movingColumn=mcl->getMovedColumnIndex();
-
-  // Draws multicolumnlist
-  drawBorder(qr);
-  drawAllHeaders(qr, mcl, movingColumn);
+  if (vCell->isText()){
+    qr->drawText(tsMclTextCell, vCell->getText(), vRect, true);
+  }
+}
 
 
-  // drawing items
-  // Saves current parent scissor settings
+/** Draws all the headers
+  *
+  * \param qr            The QuadRenderer used to draw
+  * \param mcl           The MultiColumnList to draw
+  * \param vMovingColumn The index of the column we are moving
+  *
+  */
+void RainbruRPG::OgreGui::wdMultiColumnList::
+drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
+  // Drawing columns header
   tMultiColumnListColumnList colList=mcl->getColumnList();
+  tMultiColumnListColumnList::const_iterator iter;
+
   Ogre::Rectangle sr=qr->getClipRegion();
 
-  qr->addDrawingDev(mcl->getDrawingDevSettings());
-  tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
+  qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
+  
+  int x=mMclAbsCorners.left;
+  unsigned int colIndex=0;
 
-  tMultiColumnListItemList itemList=mcl->getItemList();
-  tMultiColumnListItemList::const_iterator ili;
+  for(iter = colList.begin();iter != colList.end(); iter++){
+    if ((*iter)->isVisible()){
+      qr->setUseParentScissor(false);
+      qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
+      qr->setUseParentScissor(true);
 
-  tMultiColumnListCellList mil;
-  tMultiColumnListCellList::const_iterator mii;
-  Ogre::ColourValue itemBGColor( 0.4f, 0.8f, 0.4f );
-  Ogre::ColourValue selItemBGColor( 0.8f, 0.4f, 0.4f );
+      if (colIndex == vMovingColumn){
+	qr->enableGhost();
+      }
+  
+      drawOneHeader(qr, (*iter), x);
+
+      if (colIndex == vMovingColumn || colIndex == vMovingColumn-1){
+	qr->disableGhost();
+      }
 
 
-  Ogre::Rectangle itemRect(mMclAbsCorners);
-  itemRect.left=mMclAbsCorners.left+5;
-  itemRect.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
-  itemRect.bottom=itemRect.top+20;
-  itemRect.right=itemRect.left+colList[0]->getWidth();
-
-  Ogre::Rectangle itemBG(mMclAbsCorners);
-  itemBG.left=mMclAbsCorners.left+5;
-  itemBG.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
-  itemBG.bottom=itemBG.top+20;
-  itemBG.right=mcl->getLastColumnRight()-5;
-
-  // The header bottom corners, used to avoid item drawing over the headers
-  int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
-  Ogre::Rectangle itemScissorRect(mMclAbsCorners);
-  if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
-
-  int colId=0;
-  // Drawing items
-  for (ili = itemList.begin(); ili != itemList.end(); ili++){
-    
-    qr->setUseParentScissor(false);
-    qr->setScissorRectangle(itemScissorRect);
-    qr->setUseParentScissor(true);
-    
-    if ((*ili)->isSelected()){
-      qr->drawFilledRectangle( itemBG, selItemBGColor );
-    }
-    else if ((*ili)->isMouseOver()){
-      qr->drawFilledRectangle( itemBG, itemBGColor );
-    }
-    else if ((*ili)->inTransition()){
-      // Using item's alpha
-      float itemAlpha=(*ili)->getMouseOverAlpha();
-      float currentAlpha = qr->setTempAlpha(itemAlpha);
-      qr->drawFilledRectangle( itemBG, itemBGColor );
-      qr->setAlpha(currentAlpha);
-    }
-
-    // Drawing cells (we are using parent scissor)
-    mil=(*ili)->getCellList();
-    for (mii=mil.begin(); mii != mil.end(); mii++){
-      if (colList[colId]->isVisible()){
-	if ((*mii)->isText()){
-	  
-	  if (colId==movingColumn){
-	    qr->enableGhost();
-	  }
-	  
-	  // Limit item scissor to MCL parent right 
-	  if (itemScissorRect.right > mWidgetParent->getRight() ){
-	    itemScissorRect.right = mWidgetParent->getRight();
-	  }
-
-	  // Apply the same limit to the bottom
-	  if (itemScissorRect.bottom > mWidgetParent->getBottom() ){
-	    itemScissorRect.bottom = mWidgetParent->getBottom();
-	  }
-	  
-	  // Setting scissor rectangle to avoid item caption to exeed
-	  // left line X position
-	  qr->setUseParentScissor(false);
-	  qr->setScissorRectangle(itemScissorRect);
-	  qr->setUseParentScissor(true);
-	  
-	  qr->drawText(tsMclColumnHeader, (*mii)->getText(), itemRect, true);
-	  itemRect.left+=colList[colId]->getWidth();
-	  if (colId+1 < colList.size()){
-	    itemRect.right=itemRect.left + colList[colId+1]->getWidth();
-	  }
-	  else{
-	    itemRect.right = mColumnCaption.right -2;
-	  }
-	  
-	  itemScissorRect.right = itemRect.right - 5 
-	    - qr->getDrawingDevXSum();
-
-	  if (colId==movingColumn){
-	    qr->disableGhost();
-	  }
-	  
-	} // if cell is text
-      } // If column is visible
-      colId++;
-    } // For each cell in multicolumn list item
-    colId=0;
-    itemRect.left=mMclAbsCorners.left+5;
-    itemRect.right=itemRect.left+colList[0]->getWidth();
-    itemRect.top+=20;
-    itemRect.bottom=itemRect.top+20;
-    itemBG.top+=20;
-    itemBG.bottom=itemBG.top+20;
+     } // is column is visible
+    x += (*iter)->getWidth();
+    colIndex++;
   }
-
-  qr->setUseParentScissor(false);
-  // Restore parent scissor
-  qr->setScissorRectangle(sr);
-  qr->setUseParentScissor(true);  
-  qr->removeDrawingDev(mcl->getDrawingDevSettings());
-  qr->reset();
+  
+  qr->removeDrawingDev(mcl->getHeaderDrawingDevSettings());
 
 }
 
@@ -240,7 +177,6 @@ draw(QuadRenderer* qr, MultiColumnList* mcl){
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
 preDrawingComputation(MultiColumnList* mcl){
-  LOGI("wdMultiColumnList::preDrawingComputation called");
   mMclAbsCorners = mcl->getAbsoluteCorners();
   mMclHeaderBottomLine = mMclAbsCorners.top+mcl->getHeaderHeight();
 
@@ -336,7 +272,7 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   qr->setUseParentScissor(false);
   //  Rectangle parentWindowAbsCorners = mcl->getWindowParent()->getCorners();
   //  qr->setScissorRectangle(parentWindowAbsCorners);
-  // Avoid left line to get more to the right to the mcl right corners
+  //  Avoid left line to get more to the right to the mcl right corners
   if ( xLeft < mMclAbsCorners.right ){
     qr->drawLine( xLeft, y1, xLeft, y2, mMclBorderColor );
   }
@@ -347,49 +283,175 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
 
 }
 
-/** Draws all the headers
+/** Draw one item in the list
   *
-  * \param qr            The QuadRenderer used to draw
-  * \param mcl           The MultiColumnList to draw
-  * \param vMovingColumn The index of the column we are moving
+  * \param qr            The QuadRenderer object used to draw
+  * \param vItem         The item to be drawn
+  * \param vRect         The rectangle where the item is drawn
+  * \param vColList      The MultiColumnList's column list
+  * \param vMovingColumn The column we are currently moving
+  * \param vDebug        Should we debug this drawing ?
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
-drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
-  // Drawing columns header
-  tMultiColumnListColumnList colList=mcl->getColumnList();
-  tMultiColumnListColumnList::const_iterator iter;
+drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
+	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
+	    bool vDebug){
 
-  Ogre::Rectangle sr=qr->getClipRegion();
+  mDebugSettings->debugItem( qr, NULL, vItem );
 
-  qr->addDrawingDev(mcl->getHeaderDrawingDevSettings());
-  
-  int x=mMclAbsCorners.left;
-  unsigned int colIndex=0;
+  int colId=0;
+  tMultiColumnListCellList mil=vItem->getCellList();
+  tMultiColumnListCellList::const_iterator mii;
 
-  for(iter = colList.begin();iter != colList.end(); iter++){
-    if ((*iter)->isVisible()){
-      qr->setUseParentScissor(false);
-      qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
-      qr->setUseParentScissor(true);
+  Rectangle itemRect(vRect);
 
-      if (colIndex == vMovingColumn){
-	qr->enableGhost();
-      }
-  
-      drawOneHeader(qr, (*iter), x);
-
-      if (colIndex == vMovingColumn || colIndex == vMovingColumn-1){
-	qr->disableGhost();
-      }
-
-
-     } // is column is visible
-    x += (*iter)->getWidth();
-    colIndex++;
+  if (vItem->isSelected()){
+    qr->drawFilledRectangle( vRect, selItemBGColor );
+  }
+  else if (vItem->isMouseOver()){
+    qr->drawFilledRectangle( vRect, itemBGColor );
+  }
+  else if (vItem->inTransition()){
+    // Using item's alpha
+    float itemAlpha=vItem->getMouseOverAlpha();
+    float currentAlpha = qr->setTempAlpha(itemAlpha);
+    qr->drawFilledRectangle( vRect, itemBGColor );
+    qr->setAlpha(currentAlpha);
   }
   
-  qr->removeDrawingDev(mcl->getHeaderDrawingDevSettings());
+  // Drawing cells (we are using parent scissor)
+  for (mii=mil.begin(); mii != mil.end(); mii++){
+    if (vColList[colId]->isVisible()){
+      if (colId == vMovingColumn){
+	qr->enableGhost();
+      }
+      
+      drawOneItemCell(qr, (*mii), itemRect  );
+      
+      itemRect.left+=vColList[colId]->getWidth();
+      if (colId+1 < vColList.size()){
+	itemRect.right=itemRect.left + vColList[colId+1]->getWidth();
+      }
+      else{
+	itemRect.right = mColumnCaption.right -2;
+      }
+      
+      
+      if (colId == vMovingColumn){
+	qr->disableGhost();
+      }
+      
+    } // If column is visible
+    colId++;
+  } // For each cell in multicolumn list item
+  
+}
+
+/** Draw the givenh MultiColumnList
+  *
+  * \param qr  The QuadRenderer used to draw
+  * \param mcl The MultiColumnList to draw
+  *
+  */
+void RainbruRPG::OgreGui::wdMultiColumnList::
+draw(QuadRenderer* qr, MultiColumnList* mcl){
+
+
+  // Test initialization and init if needed
+  // Call preDrawingComputation cause it is first drawing
+  if (!wasInit){
+    init(mcl);
+    preDrawingComputation( mcl );
+  }
+
+  LOGA(mWidgetParent, "MultiColumnList parent poiner is NULL");
+
+  // Get event driven values (cannot be got with preDrawingComputation)
+  int movingColumn=mcl->getMovedColumnIndex();
+
+  // Draws multicolumnlist
+  drawBorder(qr);
+  drawAllHeaders(qr, mcl, movingColumn);
+  drawAllItems(qr, mcl, movingColumn);
+
+  // Set the scissor rectangle as the parent window corners
+  // It is used because, as the next widgets drawn are the ScrollBars
+  // (please see MultiColumnList::draw() implementation), they will
+  // be cut off be the parent scissor setting (the Window corners)
+  qr->setUseParentScissor(false);
+  qr->setScissorRectangle(mWidgetParent->getCorners());
+  qr->setUseParentScissor(true);  
 
 }
 
+/** Draws all items
+  *
+  * \param qr            The QuadRenderer ued to draw
+  * \param mcl           The MultiColumnList
+  * \param vMovingColumn The column currently moving
+  *
+  */
+void RainbruRPG::OgreGui::wdMultiColumnList::
+drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
+  // drawing items
+  // Saves current parent scissor settings
+  tMultiColumnListColumnList colList=mcl->getColumnList();
+  Ogre::Rectangle sr=qr->getClipRegion();
+
+  qr->addDrawingDev(mcl->getDrawingDevSettings());
+  tsMclColumnHeader->setHorizontalAlignment(HAT_LEFT);
+
+  tMultiColumnListItemList itemList=mcl->getItemList();
+  tMultiColumnListItemList::const_iterator ili;
+
+  Ogre::Rectangle itemRect(mMclAbsCorners);
+  itemRect.left=mMclAbsCorners.left+5;
+  itemRect.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
+  itemRect.bottom=itemRect.top+20;
+  itemRect.right=itemRect.left+colList[0]->getWidth();
+
+  Ogre::Rectangle itemBG(mMclAbsCorners);
+  itemBG.left=mMclAbsCorners.left+5;
+  itemBG.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
+  itemBG.bottom=itemBG.top+20;
+  itemBG.right=mcl->getLastColumnRight()-5;
+
+  // The header bottom corners, used to avoid item drawing over the headers
+  int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
+  Ogre::Rectangle itemScissorRect(mMclAbsCorners);
+  if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
+
+  // Drawing items
+  for (ili = itemList.begin(); ili != itemList.end(); ili++){
+    
+    qr->setUseParentScissor(false);
+    qr->setScissorRectangle(itemScissorRect);
+    qr->setUseParentScissor(true);
+    
+    drawOneItem(qr, (*ili), itemBG, colList, vMovingColumn );
+
+    itemRect.left=mMclAbsCorners.left+5;
+    itemRect.right=itemRect.left+colList[0]->getWidth();
+    itemRect.top+=20;
+    itemRect.bottom=itemRect.top+20;
+    itemBG.top+=20;
+    itemBG.bottom=itemBG.top+20;
+  }
+
+  qr->setUseParentScissor(false);
+  // Restore parent scissor
+  qr->setScissorRectangle(sr);
+  qr->setUseParentScissor(true);  
+  qr->removeDrawingDev(mcl->getDrawingDevSettings());
+}
+
+/** Reset this drawer
+  *
+  * If you call this, preDrawingComputation() will be call next time draw()
+  * is called.
+  *
+  */
+void RainbruRPG::OgreGui::wdMultiColumnList::reset(){
+  wasInit=false;
+}
