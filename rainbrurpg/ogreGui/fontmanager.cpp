@@ -52,7 +52,8 @@ RainbruRPG::OgreGui::FontManager::FontManager():
   *
   */
 RainbruRPG::OgreGui::FontManager::~FontManager(){
-
+  mGlyphList.clear();
+  mFontList.clear();
 }
 
 /** Get a font

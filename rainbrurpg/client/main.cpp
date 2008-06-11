@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 09 jun 2008 : Fix a SEGFAULT due to deleting Ogre Root object
  * - 24 jan 2008 : Handles help and version command-line options
  *
  */
@@ -120,8 +121,11 @@ int main(int argc, char **argv){
 
   }
 
-  delete root;
-  root=NULL;
+  root->shutdown();
+
+  // Removed due to a SEGFAULT in Ogre::SharedPtr :(
+   //delete root;
+  //  root=NULL;
 
   return 0;
 }

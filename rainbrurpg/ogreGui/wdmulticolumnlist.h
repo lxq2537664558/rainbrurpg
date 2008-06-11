@@ -143,6 +143,13 @@ namespace RainbruRPG{
 
       /** The debugging settings */
       MultiColumnListDebugSettings* mDebugSettings;
+
+      /** The currently drawn widget
+        *
+	* This member is sent to \ref mDebugSettings.
+	*
+	*/
+      MultiColumnList* mCurrentMcl;
     };
 
   }

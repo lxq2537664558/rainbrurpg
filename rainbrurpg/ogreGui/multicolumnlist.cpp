@@ -839,3 +839,13 @@ const std::string& RainbruRPG::OgreGui::MultiColumnList::
 getDebugName(void)const{
   return mDebugName;
 }
+
+/** Set the debug name of this widget
+  *
+  * \param vDebugName The name used to debug MultiColumnList
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::
+setDebugName(const std::string& vDebugName){
+  mDebugName = vDebugName;
+}

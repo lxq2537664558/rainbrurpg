@@ -362,6 +362,7 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
 
     Vector4 mclPosDim(10,30,320,330);
     mcl=new MultiColumnList(mclPosDim, MultiColumnListWin);
+    mcl->setDebugName("MCL.MCLTestWindow");
     MultiColumnListWin->addWidget(mcl);
 
     mcl->addColumn( "Col1", 60 );

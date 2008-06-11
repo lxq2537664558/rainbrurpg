@@ -47,10 +47,11 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mMclBorderColor(0.7f, 0.7f, 0.7f),
   itemBGColor( 0.4f, 0.8f, 0.4f ),
   selItemBGColor( 0.8f, 0.4f, 0.4f ),
-  mDebugSettings(NULL)
+  mDebugSettings(NULL),
+  mCurrentMcl(NULL)
 {
   // Debug settings
-  mDebugSettings =  new MultiColumnListDebugSettings("WidgetName");
+  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 4, 3);
 
   // Text settings
   tsMclColumnHeader=new TextSettings( "Iconiv2.ttf",  10, 1.0f, 1.0f, 1.0f );
@@ -86,6 +87,8 @@ RainbruRPG::OgreGui::wdMultiColumnList::~wdMultiColumnList(){
 
   delete tsMclTextCell;
   tsMclTextCell = NULL;
+
+  mCurrentMcl = NULL;
 }
 
 /** Initializes the members depending on MultiColumnList
@@ -112,6 +115,9 @@ void RainbruRPG::OgreGui::wdMultiColumnList::init(MultiColumnList* mcl){
 void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
 		const Rectangle& vRect){
+
+  mDebugSettings->debugCell( qr, mCurrentMcl, vCell );
+
 
   if (vCell->isText()){
     qr->drawText(tsMclTextCell, vCell->getText(), vRect, true);
@@ -298,7 +304,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
 	    bool vDebug){
 
-  mDebugSettings->debugItem( qr, NULL, vItem );
+  mDebugSettings->debugItem( qr, mCurrentMcl, vItem );
 
   int colId=0;
   tMultiColumnListCellList mil=vItem->getCellList();
@@ -357,6 +363,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 void RainbruRPG::OgreGui::wdMultiColumnList::
 draw(QuadRenderer* qr, MultiColumnList* mcl){
 
+  mCurrentMcl = mcl;
 
   // Test initialization and init if needed
   // Call preDrawingComputation cause it is first drawing
@@ -382,6 +389,8 @@ draw(QuadRenderer* qr, MultiColumnList* mcl){
   qr->setUseParentScissor(false);
   qr->setScissorRectangle(mWidgetParent->getCorners());
   qr->setUseParentScissor(true);  
+
+  mDebugSettings->reset();
 
 }
 

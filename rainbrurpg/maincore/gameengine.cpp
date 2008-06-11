@@ -237,6 +237,9 @@ void RainbruRPG::Core::GameEngine::cleanup(){
   mSceneMgr->removeRenderQueueListener(mRenderQueueListener);
   delete mRenderQueueListener;
   mRenderQueueListener=NULL;
+
+  SkinManager::getSingleton().cleanup();
+
 /*
   this->cleanStates();
   this->cleanIrrgui();
@@ -244,6 +247,8 @@ void RainbruRPG::Core::GameEngine::cleanup(){
   delete erc;
   erc=NULL;
 */
+
+  LOGI("GameEngine cleaned");
 }
 
 /** delete all states and receivers in vectors

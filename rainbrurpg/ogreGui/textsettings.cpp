@@ -113,13 +113,13 @@ TextSettings(const Ogre::String& fontName, unsigned int pointSize,
 
 /** Destructor
   *
-  * Deletes the current font.
+  * It does not deletes the current font. This work will be done by 
+  * FontManager.
   *
   * \sa \ref RainbruRPG::OgreGui::TextSettings::mFont "mFont" (member).
   *
   */
 RainbruRPG::OgreGui::TextSettings::~TextSettings(){
-  delete mFont;
   mFont=NULL;
 }
 

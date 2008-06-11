@@ -158,6 +158,7 @@ namespace RainbruRPG{
 
       Window* getWindowParent(void);
 
+      void setDebugName(const std::string&);
       const std::string& getDebugName(void)const;
 
     protected:

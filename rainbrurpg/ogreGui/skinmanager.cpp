@@ -56,6 +56,24 @@ void RainbruRPG::OgreGui::SkinManager::init(){
 
 }
 
+/** Shut down the skin manager
+  *
+  * It is important to call this as it clear the skin vector (destroying
+  * contanied skins).
+  *
+  */
+void RainbruRPG::OgreGui::SkinManager::cleanup(){
+  LOGI("SkinManager::cleanup called");
+
+  // Calling destructor of all skins
+  for (int i=0; i<skins.size(); i++){
+    delete skins[i];
+  }
+
+  skins.clear();
+}
+
+
 /** Get the skin of a widget
   *
   * This function handles two advanced features :

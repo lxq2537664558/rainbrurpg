@@ -97,7 +97,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-179
-- (14) MultiColumnListDebugSettings implementation
+- (18) wdMultiColumnList can debug only one cell
+- wdMultiColumnList can debug only one item
+- Skin destructor now called (fixes an ugly bug)
+- Fix a SEGFAULT due to deleting Ogre Root object
+- MultiColumnListDebugSettings implementation
 - Bugfix : MCL VScrollbar was using scissor of headers
 - wdMultiColumnList::reset implemented and used
 - wdMultiColumnList first draw handled

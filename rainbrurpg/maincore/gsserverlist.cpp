@@ -124,6 +124,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
 
   Vector4 mclPosDim(10,30,width - 20,330);
   mMcl=new MultiColumnList(mclPosDim, mWin);
+  mMcl->setDebugName("MCL.ServerList");
   mWin->addWidget(mMcl);
 
   // Adding columns

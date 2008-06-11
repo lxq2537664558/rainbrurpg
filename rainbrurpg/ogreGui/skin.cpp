@@ -46,6 +46,13 @@ RainbruRPG::OgreGui::Skin::Skin(const std::string& vName):
 
 }
 
+/** The destructor
+  *
+  */
+RainbruRPG::OgreGui::Skin::~Skin(){
+
+}
+
 /** Get the dialog border size
   *
   * This function is used by the \ref BetaGUI::Window "Window" 

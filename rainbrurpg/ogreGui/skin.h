@@ -74,6 +74,7 @@ namespace RainbruRPG{
     class Skin{
     public:
       Skin(const std::string& n="unamedSkinOverlay");
+      virtual ~Skin();
 
       virtual void drawWindow(QuadRenderer*, Rectangle, String );
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool );

@@ -35,6 +35,7 @@ namespace RainbruRPG{
     class QuadRenderer;
     class MultiColumnList;
     class MultiColumnListItem;
+    class MultiColumnListCell;
   }
 }
 // End of forward declarations
@@ -44,7 +45,7 @@ namespace RainbruRPG{
 
     /** Debug settings for MultiColumnList
       *
-      * This class is used by wdMultiColumnList to know how to debug
+      * This class is used by \ref wdMultiColumnList to know how to debug
       * the MultiColumnList drawing pass.
       *
       */
@@ -52,9 +53,15 @@ namespace RainbruRPG{
     public:
       MultiColumnListDebugSettings();
       MultiColumnListDebugSettings(const std::string&);
+      MultiColumnListDebugSettings(const std::string&, int);
+      MultiColumnListDebugSettings(const std::string&, int, int);
+
       ~MultiColumnListDebugSettings();
 
+      void reset(void);
+
       void debugItem(QuadRenderer*, MultiColumnList*, MultiColumnListItem*);
+      void debugCell(QuadRenderer*, MultiColumnList*, MultiColumnListCell*);
 
     private:
       /** Should we debug ? */
@@ -69,7 +76,7 @@ namespace RainbruRPG{
 
       /** The number of item to be debugged
         *
-	* If -1, all items will be debugged
+	* If -1, all items will be debugged. The first item of the list is 1.
 	*
 	*/
       int mItemNum;
@@ -85,6 +92,23 @@ namespace RainbruRPG{
       bool mLogout;
       /** Should we draw scissor rectangle */
       bool mDrawScissor;
+      /** Set to \c true if at least one log was out*/
+      bool mUsefull;
+
+      /**  The current item we are drawing
+        *
+	* This number is set to 0 in reset().
+	*
+	*/
+      int mCurrentItem;
+
+      /**  The current cell we are drawing
+        *
+	* This number is set to 0 in reset().
+	*
+	*/
+      int mCurrentCell;
+
     };
   }
 }

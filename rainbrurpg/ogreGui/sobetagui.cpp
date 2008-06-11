@@ -203,6 +203,8 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   */
 RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
 
+  LOGI("soBetaGui destructor called");
+
   delete mMultiColumnListDrawer;
   mMultiColumnListDrawer=NULL;
 

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 09 jun 2008 : cleanup implementation
  * - 08 nov 2007 : OSI_PARENT added
  * - 27 sep 2007 : starting implementation
  *         
@@ -91,6 +92,8 @@ namespace RainbruRPG{
     public:
 
       void init();
+      void cleanup();
+
       RainbruRPG::OgreGui::Skin* getSkin(Widget*);
 
     private:
