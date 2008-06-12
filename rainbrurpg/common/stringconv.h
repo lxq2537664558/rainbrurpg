@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 11 jun 2008 : itobin implementation
  * - 31 may 2007 : Fix a bug in ctoi when receiving NULL string
  *                 stoi replace ctoi
  * - 09 mar 2007 : Add the xmlStripNewLine and xmlToNewLine functions
@@ -66,6 +67,8 @@ namespace RainbruRPG {
       // integer to...
       std::string itos(int);
       const char* itoc(int);
+
+      std::string itobin(int, int);
 
       std::string ftos(float);
       const char* ftoc(float);

@@ -22,6 +22,7 @@
 
 #include "stringconv.h"
 
+#include <bitset>
 #include <wchar.h>
 #include <logger.h>
 
@@ -216,4 +217,34 @@ std::string RainbruRPG::Core::StringConv::xmlToNewLine(std::string s){
   } while (i!=-1);
 
   return s;
+}
+
+/** Convert an integer into a string representing its hexadecimal value
+  *
+  * \param vInt  The integer to stringify
+  * \param vBase How many characters in the binary string.
+  *              Should be 2, 4 or 8
+  *
+  */
+std::string RainbruRPG::Core::StringConv::
+itobin(int vInt, int vBase){
+  string out;
+ 
+  switch (vBase){
+  case 1:
+    out += bitset<1>(vInt).to_string();
+    break;
+  case 2:
+    out += bitset<2>(vInt).to_string();
+    break;
+  case 4:
+    out += bitset<4>(vInt).to_string();
+    break;
+  case 8:
+    out += bitset<8>(vInt).to_string();
+    break;
+  default:
+    LOGW("StringConv::itobin base parameter unrecognized");
+  }
+  return out;
 }

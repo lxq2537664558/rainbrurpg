@@ -29,6 +29,10 @@
 #define _MULTI_COLUMN_LIST_DEBUG_SETTINGS_H_
 
 #include <string>
+#include <sstream>
+
+#include <stringconv.h> // For itobin()
+
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
@@ -40,13 +44,59 @@ namespace RainbruRPG{
 }
 // End of forward declarations
 
+/** Defines the default logging value */
+#define DEFAULT_DEBUG_FLAG_VALUE 0xFF
+
+using namespace std;
+using namespace RainbruRPG::Core; // For StringConv
+
 namespace RainbruRPG{
   namespace OgreGui{
+
+    /** The union defining what should be logged
+      *
+      * It is used by \ref MultiColumnListDebugSettings to know
+      * what should be logged. You can change these settings bt calling
+      * the functions  \ref 
+      * MultiColumnListDebugSettings::setDebugFlags(unsigned int) or
+      * \ref MultiColumnListDebugSettings::setDebugFlags(const  tMultiColumnListDebugFlags &).
+      *
+      * Examples hexadecimal values for \ref direct_access :
+      * - \c 0x0 will log nothing;
+      * - \c 0x1 will log only localization informations;
+      * - \c 0xF will log anything.
+      *
+      * The default log flags value is defined as a preprocessor macro
+      * in the multicolumnlistdebugsettings.h file.
+      *
+      * \note Is you modify it, be sure the anonymous structure and 
+      *       \ref direct_access have the same allocation size. The size
+      *       should also be a multiple of 8.
+      *
+      */
+    typedef union{
+      /** The anonymouse structure use for floag access
+        *
+	* You can access all of this flags manually.
+	*
+	*/
+      struct{
+	unsigned localize:1;    //!< Log item and cell number
+	unsigned content :1;    //!< Log item or cell content
+	unsigned unused:6;      //!< Unused member, used to pack structure size
+      };
+      /** The union member used for direct hexadecimal access */
+      unsigned direct_access:8;
+    }tMultiColumnListDebugFlags;
+    
 
     /** Debug settings for MultiColumnList
       *
       * This class is used by \ref wdMultiColumnList to know how to debug
       * the MultiColumnList drawing pass.
+      *
+      * To know what should be logged, you should see \ref 
+      * tMultiColumnListDebugFlags.
       *
       */
     class MultiColumnListDebugSettings{
@@ -62,6 +112,13 @@ namespace RainbruRPG{
 
       void debugItem(QuadRenderer*, MultiColumnList*, MultiColumnListItem*);
       void debugCell(QuadRenderer*, MultiColumnList*, MultiColumnListCell*);
+
+      void setDebugFlags(unsigned int);
+      void setDebugFlags(const tMultiColumnListDebugFlags&);
+      
+    protected:
+      std::string makeDebugString(MultiColumnList*, MultiColumnListItem*);
+      std::string makeDebugString(MultiColumnList*, MultiColumnListCell*);
 
     private:
       /** Should we debug ? */
@@ -108,6 +165,9 @@ namespace RainbruRPG{
 	*
 	*/
       int mCurrentCell;
+
+      /** The debug flags used to know what should be logged	*/
+      tMultiColumnListDebugFlags mFlags;
 
     };
   }

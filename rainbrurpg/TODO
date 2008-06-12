@@ -96,8 +96,12 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-180
+
 * v 0.0.5-179
-- (18) wdMultiColumnList can debug only one cell
+- MultiColumnListDebugSettings::makeDebugString implementation
+- StringConv::itobin implementation
+- wdMultiColumnList can debug only one cell
 - wdMultiColumnList can debug only one item
 - Skin destructor now called (fixes an ugly bug)
 - Fix a SEGFAULT due to deleting Ogre Root object
