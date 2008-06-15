@@ -1,3 +1,25 @@
+* v 0.0.5-178
+- wdMultiColumnList base implementation
+- WidgtDrawer implementation
+- Fix a bug in MCL : items drawn over header
+- Server's occupation, type and description added to geServerlist
+- gsServerList::setupServerList implementation
+- CEGUI references removed in gsServerList
+- maincore/gsMenuBase::rootWindowName removed (used with CEGUI)
+- Bugfix in the Vertical scrollbar visibility of MultiColumnList
+- RbMessageBox destructor implementation
+- GUI::moveWindowToForeGround() is now public
+- RainbruRPG2 binary removed
+- Fix some errors in Makefiles (LIBADD omitted)
+- MessageBox moves from GUI namespace to OgreGui
+- MessageBox moves from maincore/ to ogregui/
+- soBetaGui::drawDialog() implementation
+- By default, a Dialog cannot be resized
+- Segfault fixed when showung a MessageBox using Dialog
+- MessageBox uses a Dialog object instead of a Window
+- Window doesn't have a border anymore (please use Dialog instead)
+- Dialog class base implementation
+
 * v 0.0.5-177
 - soNavigation cleaned (formerly pure virtual functions removed
 - All Skin::draw* are not anymore pure virtual function (no =0)

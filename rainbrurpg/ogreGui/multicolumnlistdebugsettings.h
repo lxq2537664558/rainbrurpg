@@ -33,6 +33,9 @@
 
 #include <stringconv.h> // For itobin()
 
+#include <OgreRectangle.h>
+#include <OgreColourValue.h>
+
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
@@ -47,7 +50,10 @@ namespace RainbruRPG{
 /** Defines the default logging value */
 #define DEFAULT_DEBUG_FLAG_VALUE 0xFF
 
+#define DEFAULT_DRAWING_RECT_COLOR 1.0f, 1.0f, 1.0f
+
 using namespace std;
+using namespace Ogre;
 using namespace RainbruRPG::Core; // For StringConv
 
 namespace RainbruRPG{
@@ -75,15 +81,20 @@ namespace RainbruRPG{
       *
       */
     typedef union{
-      /** The anonymouse structure use for floag access
+      /** The anonymouse structure used for individual flag access
         *
 	* You can access all of this flags manually.
 	*
 	*/
       struct{
-	unsigned localize:1;    //!< Log item and cell number
-	unsigned content :1;    //!< Log item or cell content
-	unsigned unused:6;      //!< Unused member, used to pack structure size
+	unsigned localize        :1;  //!< Log item and cell number
+	unsigned content         :1;  //!< Log item or cell content
+	/** The rectangle where we draw is text logged */
+	unsigned drawingRect_log :1; 
+	/** The rectangle where we draw is graphically drawn */
+	unsigned drawingRect_draw:1; 
+	/** Unused member, used to pack structure size */
+	unsigned unused          :4; 
       };
       /** The union member used for direct hexadecimal access */
       unsigned direct_access:8;
@@ -110,15 +121,21 @@ namespace RainbruRPG{
 
       void reset(void);
 
-      void debugItem(QuadRenderer*, MultiColumnList*, MultiColumnListItem*);
-      void debugCell(QuadRenderer*, MultiColumnList*, MultiColumnListCell*);
+      void debugItem(QuadRenderer*, MultiColumnList*, MultiColumnListItem*,
+		     const Rectangle&);
+      void debugCell(QuadRenderer*, MultiColumnList*, MultiColumnListCell*,
+		     const Rectangle&);
 
       void setDebugFlags(unsigned int);
       void setDebugFlags(const tMultiColumnListDebugFlags&);
       
     protected:
-      std::string makeDebugString(MultiColumnList*, MultiColumnListItem*);
-      std::string makeDebugString(MultiColumnList*, MultiColumnListCell*);
+      void init(void);
+
+      std::string makeDebugString(MultiColumnList*, MultiColumnListItem*,
+				  const Rectangle&);
+      std::string makeDebugString(MultiColumnList*, MultiColumnListCell*,
+				  const Rectangle&);
 
     private:
       /** Should we debug ? */
@@ -168,7 +185,10 @@ namespace RainbruRPG{
 
       /** The debug flags used to know what should be logged	*/
       tMultiColumnListDebugFlags mFlags;
-
+      /** The color used to draw the debugging of drawing rectangle for items*/
+      ColourValue mDrawingRectangleColor;
+      /** The color used to draw the debugging of drawing rectangle for items*/
+      ColourValue mCellDrawingRectangleColor;
     };
   }
 }

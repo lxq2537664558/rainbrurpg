@@ -25,6 +25,7 @@
 #include "multicolumnlist.h"
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcell.h"
+#include "quadrenderer.h"
 
 #include <logger.h>
 
@@ -45,7 +46,8 @@ MultiColumnListDebugSettings():
   mCurrentItem(0),
   mCurrentCell(0)
 {
-  mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
+  init();
+
 }
 
 /** The named constructor
@@ -66,7 +68,7 @@ MultiColumnListDebugSettings(const std::string& vWidgetName):
   mUsefull(false),
   mCurrentItem(0)
 {
-  mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
+  init();
 }
 
 /** The named constructor (with item number)
@@ -88,7 +90,7 @@ MultiColumnListDebugSettings(const std::string& vWidgetName, int vItemNum):
   mUsefull(false),
   mCurrentItem(0)
 {
-  mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
+  init();
 }
 
 /** The named constructor (with item and cell number)
@@ -112,7 +114,7 @@ MultiColumnListDebugSettings(const std::string& vWidgetName,
   mUsefull(false),
   mCurrentItem(0)
 {
-  mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
+  init();
 }
 
 
@@ -128,6 +130,13 @@ RainbruRPG::OgreGui::MultiColumnListDebugSettings::
     LOGW("MultiColumnListDebugSettings was unused. Please check widget name");
   }
 }
+
+void RainbruRPG::OgreGui::MultiColumnListDebugSettings::init(void){
+  mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
+  mDrawingRectangleColor = ColourValue(DEFAULT_DRAWING_RECT_COLOR);
+  mCellDrawingRectangleColor = ColourValue(0.5, 0.5, 0.8);
+}
+
 
 /** Reset this debug settings
   *
@@ -146,13 +155,15 @@ void RainbruRPG::OgreGui::MultiColumnListDebugSettings::reset(void){
   * \note You must call this function \b before drawing cell because
   *       \ref mCurrentCell is set to 0.
   *
-  * \param vQr   The QuadRenderer used to draw
-  * \param vMcl  The MultiColumnList
-  * \param vItem The Item
+  * \param vQr          The QuadRenderer used to draw
+  * \param vMcl         The MultiColumnList
+  * \param vItem        The Item
+  * \param vDrawingRect The rectangle where the item is drawn
   *
   */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
-debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem){
+debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
+	  const Rectangle& vDrawingRect){
 
   mCurrentCell=0;
   mCurrentItem++;
@@ -164,7 +175,11 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem){
     if (mWidgetName.empty() || mWidgetName == WidgetName){
       if ((mItemNum == -1 || mItemNum == mCurrentItem) && mColumnNum==-1){
 	mUsefull=true;
-	LOGI(makeDebugString(vMcl, vItem).c_str());
+	LOGI(makeDebugString(vMcl, vItem, vDrawingRect).c_str());
+
+	if (mFlags.drawingRect_draw){
+	  vQr->drawFilledRectangle(vDrawingRect, mDrawingRectangleColor);
+	}
       }
     }
   }
@@ -175,13 +190,14 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem){
   * This function must be called each time a cell is drawn. According to 
   * the debug settings, this class will debug or not.
   *
-  * \param vQr   The QuadRenderer used to draw
-  * \param vMcl  The MultiColumnList
-  * \param vCell The cell
+  * \param vQr          The QuadRenderer used to draw
+  * \param vMcl         The MultiColumnList
+  * \param vCell        The cell
   *
   */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
-debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell){
+debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell,
+	  const Rectangle& vDrawingRect){
   mCurrentCell++;
   LOGA(vMcl, "MultiColumnList pointer is NULL. Program should crash.");
 
@@ -191,7 +207,11 @@ debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell){
       if (mItemNum == -1 || mItemNum == mCurrentItem){
 	if (mColumnNum == -1 || mColumnNum == mCurrentCell){
 	  mUsefull=true;
-	  LOGI(makeDebugString(vMcl, vCell).c_str());
+	  LOGI(makeDebugString(vMcl, vCell, vDrawingRect).c_str());
+
+	  if (mFlags.drawingRect_draw){
+	    vQr->drawFilledRectangle(vDrawingRect, mCellDrawingRectangleColor);
+	  }
 
 	}
       }
@@ -235,14 +255,16 @@ setDebugFlags(const tMultiColumnListDebugFlags& vFlags){
   * This function makes the debug string for the \ref debugItem() function
   * according to the \ref mFlags values.
   *
-  * \param vMcl  The MultiColumnList owner of the item to debug
-  * \param vItem The item to debug
+  * \param vMcl         The MultiColumnList owner of the item to debug
+  * \param vItem        The item to debug
+  * \param vDrawingRect The rectangle where the item is dran
   *
   * \return A string provided to debug the given item drawing pass
   *
   */
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
-makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem){
+makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem, 
+		const Rectangle& vDrawingRect){
   ostringstream out("debugItem called : ");
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
@@ -267,7 +289,21 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem){
 
     out << endl;
   }
- 
+
+  if (mFlags.drawingRect_log){
+    out << "drawing rectangle " ;
+    if (mFlags.drawingRect_draw){
+      out << "(filled with " << mDrawingRectangleColor << ") ";
+    }
+    else{
+      out << "(not drawn) ";
+    }
+    out << ":";
+    out << "(" << vDrawingRect.left << ":" << vDrawingRect.top << ")";
+    out << "(" << vDrawingRect.right << ":" << vDrawingRect.bottom << ")";
+    out << endl;
+  }
+
   return out.str();
 }
 
@@ -283,7 +319,8 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem){
   *
   */
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
-makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell){
+makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
+	  const Rectangle& vDrawingRect){
   ostringstream out("debugCell called : ");
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
@@ -299,5 +336,19 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell){
     out << "content : " << vCell->getText() << endl;
   }
  
+  if (mFlags.drawingRect_log){
+    out << "drawing rectangle " ;
+    if (mFlags.drawingRect_draw){
+      out << "(filled with " << mDrawingRectangleColor << ") ";
+    }
+    else{
+      out << "(not drawn) ";
+    }
+    out << ":";
+    out << "(" << vDrawingRect.left << ":" << vDrawingRect.top << ")";
+    out << "(" << vDrawingRect.right << ":" << vDrawingRect.bottom << ")";
+    out << endl;
+  }
+
   return out.str();
 }

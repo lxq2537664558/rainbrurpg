@@ -51,7 +51,8 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mCurrentMcl(NULL)
 {
   // Debug settings
-  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 4);
+  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 17, 4);
+  //  mDebugSettings->setDebugFlags(0x07);
 
   // Text settings
   tsMclColumnHeader=new TextSettings( "Iconiv2.ttf",  10, 1.0f, 1.0f, 1.0f );
@@ -116,7 +117,7 @@ void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
 		const Rectangle& vRect){
 
-  mDebugSettings->debugCell( qr, mCurrentMcl, vCell );
+  mDebugSettings->debugCell( qr, mCurrentMcl, vCell, vRect );
 
 
   if (vCell->isText()){
@@ -304,7 +305,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
 	    bool vDebug){
 
-  mDebugSettings->debugItem( qr, mCurrentMcl, vItem );
+  mDebugSettings->debugItem( qr, mCurrentMcl, vItem, vRect );
 
   int colId=0;
   tMultiColumnListCellList mil=vItem->getCellList();
