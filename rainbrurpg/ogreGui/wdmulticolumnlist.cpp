@@ -51,8 +51,9 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mCurrentMcl(NULL)
 {
   // Debug settings
-  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 17, 4);
-  //  mDebugSettings->setDebugFlags(0x07);
+  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 17, 1);
+  mDebugSettings->setDebugFlags(0x00);
+  mDebugSettings->disable();
 
   // Text settings
   tsMclColumnHeader=new TextSettings( "Iconiv2.ttf",  10, 1.0f, 1.0f, 1.0f );

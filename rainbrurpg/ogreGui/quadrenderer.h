@@ -136,6 +136,18 @@ namespace RainbruRPG {
       * Please see the ScrollPane::draw() implementation for more details 
       * and an usage example.
       *
+      * You can temporarily disable DrawingDev setting with this code :
+      * <pre>
+      * DrawingDevSettings* dds=new DrawingDevSettings("Temp");
+      * int xSum = vQr->getDrawingDevXSum();
+      * int ySum = vQr->getDrawingDevYSum();
+      * dds->move( -xSum, -ySum ); 
+      * // Do your stuff here, DrawingDev is disabled
+      * vQr->removeDrawingDev( dds );
+      * </pre>
+      *
+      * \note The DrawingDev feature does not affect scissor rectangle.
+      *
       * \section sec_QuadRenderer_Ghost The Ghost function
       *
       * To draw a ghost effect (more alpha on a part of the GUI), two

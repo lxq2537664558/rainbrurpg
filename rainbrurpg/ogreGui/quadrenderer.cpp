@@ -681,7 +681,7 @@ getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
-
+  
   if (useScissor || useParentScissor){
       mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
 				     scissorRect.right, scissorRect.bottom );
@@ -689,7 +689,7 @@ void RainbruRPG::OgreGui::QuadRenderer::renderGlyphs(void){
   else{
     mRenderSystem->setScissorTest(false);
   }
-
+  
   setBlendMode(QBM_ALPHA);
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
@@ -925,6 +925,7 @@ void RainbruRPG::OgreGui::QuadRenderer::setUseParentScissor(bool b){
   if (!b){
     disableScissor();
   }
+  
 }
 
 /** Get the parent scissor 

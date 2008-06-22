@@ -49,9 +49,16 @@ namespace RainbruRPG{
 
     /** defines the data of a npIdentification packet
       *
-      * The client type is defines in the NetworkClientType enumeration.
+      * The client type is defines in the \ref tNetworkClientType enumeration.
+      * This union is used for 
       *
-      * \sa npIdentification, NetworkClientType
+      * - individual access in the anonymouse structure defining the 
+      *   \ref npIdentificationData::packetIdentifier "packetIdentifier" and 
+      *   the \ref npIdentificationData::clientType "clientType" members
+      *
+      * - direct access on the \c data memory to be sent over the network.
+      *
+      * \sa \ref npIdentification, \ref tNetworkClientType
       *
       */
     typedef union npIdentificationData{
@@ -59,15 +66,15 @@ namespace RainbruRPG{
       struct {
 	/** The paket identifier
 	  *
-	  * A guint16 id 2 bytes length.
+	  * A guint16 is 2 bytes length.
 	  *
-	  * \sa tNetPacketIdentifier
+	  * \sa \ref tNetPacketIdentifier
 	  *
 	  */
 	guint16 packetIdentifier;
 	/** The client type. 
 	  * 
-	  * \sa NetworkClientType
+	  * \sa \ref tNetworkClientType
 	  *
 	  */
 	guint16 clientType; 
@@ -78,8 +85,12 @@ namespace RainbruRPG{
 
     /** The identification packet
       *
+      * This packet is used by a network client to tell the server its type.
+      * There are several types, a game client, an editor or a flooder 
+      * (a tool). These differents client types are defined in the 
+      * \ref tNetworkClientType enumeration.
       *
-      * \sa npIdentificationData, NetworkClientType
+      * \sa \ref npIdentificationData, \ref tNetworkClientType
       *
       */
     class npIdentification : public NetPacketBase{
@@ -101,9 +112,19 @@ namespace RainbruRPG{
       const char* clientTypeToString(tNetworkClientType);
 
     private:
-      /** The network packet data */
+      /** The network packet data 
+        *
+	* It is the data, sent when connecting to a server.
+	*
+	*/
       npIdentificationData* data;
-      /** The client type */
+      /** The client type 
+        *
+	* The client type set to the npIdentification object. Its value
+	* is set to \ref data in the \ref netSerialize() function and it takes
+	* its value from \ref data by a call to \ref netDeserialize().
+	*
+	*/
       tNetworkClientType clientType;
 
     };

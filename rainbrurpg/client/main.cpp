@@ -21,6 +21,8 @@
  */
 
 /* Modifications :
+ * - 17 jun 2008 : Adding a quiet option
+ *                 Now using std::string
  * - 09 jun 2008 : Fix a SEGFAULT due to deleting Ogre Root object
  * - 24 jan 2008 : Handles help and version command-line options
  *
@@ -36,6 +38,7 @@
 //#include <cstdlib> 
 #include <ctime> 
 #include <iostream>
+#include <string>
 
 #include "options.h"
 #include "vcconstant.h"
@@ -57,6 +60,7 @@ using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Options;
 using namespace RainbruRPG::Network;
 using namespace FX;
+using namespace std;
 
 
 /** Comment it if you compile under WIN32 in a
@@ -73,7 +77,7 @@ void showVersion(void);
 // End of forward declarations
 
 
-
+// Handling win32 graphical main fonction
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 #  define WIN32_LEAN_AND_MEAN
 
@@ -193,26 +197,45 @@ bool showLauncher(int argc, char **argv){
   */
 void showHelp(void){
   cout << "usage: rainbrurpg [-h] [-V]" << endl
-       << "-h, --help\t\t" <<  "show this usage message." << endl
-       << "-V, --Version\t\t"<<"show version." << endl;
+       << "-?, -h, --help\t\t" << "show this usage message." << endl
+       << "-V, --version\t\t"  << "show version." << endl
+       << "-q, --quiet\t\t"    << "disabled std-out messages logging." << endl;
 }
  
 /** Handles the command line options
+  *
+  * It is a basic ang ugly command line options handling. Mostly
+  * using \c std::string conversion and \c operator==.
   *
   * \param argc The number of command line arguments
   * \param argv The command line arguments array
   *
   */
 void handleCommandLineOptions(int argc, char **argv){
-   // Handles command-line options
-   for (unsigned int i=0; i<argc; i++){
-     if (strcmp(argv[i], "-h")==0 || strcmp(argv[i], "--help")==0){
+
+  string opt;
+  // Start at 1 to prevent a 'Unknown option rainbrurpg' bug
+  for (unsigned int i=1; i<argc; i++){
+     opt=argv[i];
+     if (opt == "-?" || opt == "-h" ||opt == "--help"){
+
        showHelp();
-       exit(0);
+       exit(EXIT_SUCCESS);
      }
-     if (strcmp(argv[i], "-V")==0 || strcmp(argv[i], "--version")==0){
+     else if (opt == "-V" || opt == "--version"){
        showVersion();
-       exit(0);
+       exit(EXIT_SUCCESS);
+     }
+     // Quiet option, no log in std::out
+     else if (opt == "-q" || opt == "--quiet"){
+       RainbruRPG::Exception::Logger::getSingleton().setLogType(LOG_FILE);
+       // Do not quit the game
+     }
+     // Unknown options
+     else{
+       cout << "Unknown option " << opt << endl
+	    << "Please run with --help option for usage." << endl;
+       exit(EXIT_FAILURE);
      }
    }
    

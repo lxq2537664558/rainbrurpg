@@ -32,9 +32,12 @@
 #include <version.h>
 #include <QWidget>
 
+#include <string>
+
 #include "mainwindow.h"
 #include "uniquename.h"
 
+using namespace std;
 using namespace RainbruRPG::Server;
 
 

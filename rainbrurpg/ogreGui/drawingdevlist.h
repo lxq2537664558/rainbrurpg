@@ -50,7 +50,8 @@ namespace RainbruRPG{
     /** A list of DrawingDevSettings used by QuadRenderer
       * 
       * QuadRenderer cannot use simple STL list of DrawingDevSettings because
-      * we must precompute X and Y sums to speed up drawing process.
+      * we must precompute X and Y sums to speed up drawing process. This
+      * job is done by the \ref computeValues() fonction.
       *
       */
     class DrawingDevList{

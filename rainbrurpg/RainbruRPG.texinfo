@@ -7,7 +7,7 @@
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.0.5-167
+@set VERSION 0.0.5-180
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
@@ -187,13 +187,15 @@ RainbruRPG @var{option} @dots{}
 
 @c Formatting copied from the Texinfo 4.0 manual.
 @table @code
+@item --quiet
+@itemx -q
+Disables all logging messages on stdout. The messages will only be sent in the
+RainbruRPG.log file, in the @command{RainbruRPG} execution directory.
+
 @item --help
 @itemx -?
 Print an informative help message describing the options and then exit
 successfully.
-
-@item --usage
-Briefly list the options.
 
 @item --version
 @itemx -V

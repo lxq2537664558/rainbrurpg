@@ -22,6 +22,7 @@
 
 #include "multicolumnlistdebugsettings.h"
 
+#include "drawingdevsettings.h"
 #include "multicolumnlist.h"
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcell.h"
@@ -131,10 +132,17 @@ RainbruRPG::OgreGui::MultiColumnListDebugSettings::
   }
 }
 
+/** Initializes some class members shared by all constructors
+  *
+  * All the class members initialized here take the same value for all 
+  * constructors.
+  *
+  */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::init(void){
   mFlags.direct_access = DEFAULT_DEBUG_FLAG_VALUE;
   mDrawingRectangleColor = ColourValue(DEFAULT_DRAWING_RECT_COLOR);
   mCellDrawingRectangleColor = ColourValue(0.5, 0.5, 0.8);
+  mScissorRectangleColor = ColourValue(1.0, 0.0, 0.0);
 }
 
 
@@ -175,11 +183,16 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
     if (mWidgetName.empty() || mWidgetName == WidgetName){
       if ((mItemNum == -1 || mItemNum == mCurrentItem) && mColumnNum==-1){
 	mUsefull=true;
-	LOGI(makeDebugString(vMcl, vItem, vDrawingRect).c_str());
+	std::string debugString = makeDebugString(vMcl, vItem, vDrawingRect);
+	if (mFlags.scissorRect_log){
+	  debugString += makeScissorDebugString( vQr );
+	}
+	LOGI(debugString.c_str());
 
 	if (mFlags.drawingRect_draw){
 	  vQr->drawFilledRectangle(vDrawingRect, mDrawingRectangleColor);
 	}
+	drawScissorRectangle( vQr );
       }
     }
   }
@@ -193,6 +206,7 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
   * \param vQr          The QuadRenderer used to draw
   * \param vMcl         The MultiColumnList
   * \param vCell        The cell
+  * \param vDrawingRect The rectangle where the cell is dran
   *
   */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
@@ -207,12 +221,16 @@ debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell,
       if (mItemNum == -1 || mItemNum == mCurrentItem){
 	if (mColumnNum == -1 || mColumnNum == mCurrentCell){
 	  mUsefull=true;
-	  LOGI(makeDebugString(vMcl, vCell, vDrawingRect).c_str());
+	  std::string debugString = makeDebugString(vMcl, vCell, vDrawingRect);
+	  if (mFlags.scissorRect_log){
+	    debugString += makeScissorDebugString( vQr );
+	  }
+	  LOGI(debugString.c_str());
 
 	  if (mFlags.drawingRect_draw){
 	    vQr->drawFilledRectangle(vDrawingRect, mCellDrawingRectangleColor);
 	  }
-
+	  drawScissorRectangle( vQr );
 	}
       }
     }
@@ -312,8 +330,9 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem,
   * This function makes the debug string for the \ref debugCell() function
   * according to the \ref mFlags values.
   *
-  * \param vMcl  The MultiColumnList owner of the item to debug
-  * \param vCell The cell to debug
+  * \param vMcl         The MultiColumnList owner of the item to debug
+  * \param vCell        The cell to debug
+  * \param vDrawingRect The rectangle where the cell is dran
   *
   * \return A string provided to debug the given cell drawing pass
   *
@@ -321,6 +340,7 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem,
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
 	  const Rectangle& vDrawingRect){
+
   ostringstream out("debugCell called : ");
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
@@ -351,4 +371,109 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
   }
 
   return out.str();
+}
+
+/** Make a debug string for the given QuadRenderer
+  *
+  * \param vQr The QuadRenderer to debug
+  *
+  * \return A debug string
+  *
+  */
+std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
+makeScissorDebugString(QuadRenderer* vQr){
+  Rectangle clip=vQr->getClipRegion();
+  ostringstream out("Debugging Scissor : ");
+  out << endl
+      << "Using parent siscor : " << vQr->getUseParentScissor() << endl
+      << "Current scissor :"
+      << " top=" << clip.top
+      << " left=" << clip.left
+      << " bottom=" << clip.bottom
+      << " right=" << clip.right
+      << endl;
+    
+  return out.str();
+}
+
+/** Draw the scissor rectangle if needed
+  *
+  * It first test the \ref tMultiColumnListDebugFlags::scissorRect_draw
+  * to know if scissor must be drawn. If the flag is on, we draw
+  * the given QuadRenderer's scissor rectangle.
+  *
+  * This function is used both by \ref debugItem() and \ref debugCell() and
+  * was implemented to avoid redundant code.
+  *
+  * This function is a good example on how temporarily disable 
+  * QuadRenderer's DrawingDev.
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
+drawScissorRectangle(QuadRenderer* vQr){
+  if (mFlags.scissorRect_draw){
+
+    DrawingDevSettings* dds=new DrawingDevSettings("Temp");
+    int xSum = vQr->getDrawingDevXSum();
+    int ySum = vQr->getDrawingDevYSum();
+    dds->move( -xSum, -ySum ); 
+
+    vQr->addDrawingDev( dds );
+    Rectangle scissor = vQr->getClipRegion();
+    // To see right and bottom lines
+    scissor.right--;
+    scissor.bottom--;
+    vQr->drawRectangleLines(scissor, mScissorRectangleColor);
+
+    vQr->removeDrawingDev( dds );
+  }
+
+}
+
+/** Disable debug of MultiColumnList
+  *
+  * It simply set \ref mEnabled to \c false.
+  *
+  * \sa \ref enable(), \ref setEnable(bool), \ref isEnabled()
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListDebugSettings::disable(void){
+  mEnabled = false;
+}
+
+/** Enables debug of MultiColumnList
+  *
+  * It simply set \ref mEnabled to \c true.
+  *
+  * \sa \ref disable(), \ref setEnable(bool), \ref isEnabled()
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListDebugSettings::enable(void){
+  mEnabled = true;
+}
+
+/** Directly set the enable value
+  *
+  * It simply set the \ref mEnabled value.
+  *
+  * \param vEnable The new value
+  *
+  * \sa \ref enable(), \ref disable(), \ref isEnabled()
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnListDebugSettings::setEnable(bool vEnable){
+  mEnabled = vEnable;
+}
+
+/** Is the debugging enabled
+  *
+  * It simply return the \ref mEnabled value.
+  *
+  * \return The current value
+  *
+  * \sa \ref enable(), \ref disable(), \ref setEnable()
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnListDebugSettings::isEnabled(void){
+  return mEnabled;
 }

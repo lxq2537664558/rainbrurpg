@@ -39,6 +39,7 @@
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
+    class DrawingDevSettings;
     class QuadRenderer;
     class MultiColumnList;
     class MultiColumnListItem;
@@ -50,6 +51,7 @@ namespace RainbruRPG{
 /** Defines the default logging value */
 #define DEFAULT_DEBUG_FLAG_VALUE 0xFF
 
+/** The color used to graphically debug the drawing rectangle */
 #define DEFAULT_DRAWING_RECT_COLOR 1.0f, 1.0f, 1.0f
 
 using namespace std;
@@ -89,12 +91,22 @@ namespace RainbruRPG{
       struct{
 	unsigned localize        :1;  //!< Log item and cell number
 	unsigned content         :1;  //!< Log item or cell content
-	/** The rectangle where we draw is text logged */
+	/** The rectangle where we draw is text-logged */
 	unsigned drawingRect_log :1; 
-	/** The rectangle where we draw is graphically drawn */
+	/** The rectangle where we draw is graphically drawn 
+	  *
+	  * The color used to draw it is defined by a macro called
+	  * DEFAULT_DRAWING_RECT_COLOR
+	  * in the multicolumnlistdebugsettings.h. 
+	  *
+	  */
 	unsigned drawingRect_draw:1; 
+	/** The QuadRenderer's scissor rectangle is text-logged */
+	unsigned scissorRect_log:1;
+	/** The QuadRenderer's scissor rectangle is draw */
+	unsigned scissorRect_draw:1;
 	/** Unused member, used to pack structure size */
-	unsigned unused          :4; 
+	unsigned unused          :2; 
       };
       /** The union member used for direct hexadecimal access */
       unsigned direct_access:8;
@@ -129,6 +141,11 @@ namespace RainbruRPG{
       void setDebugFlags(unsigned int);
       void setDebugFlags(const tMultiColumnListDebugFlags&);
       
+      void disable(void);
+      void enable(void);
+      void setEnable(bool);
+      bool isEnabled(void);
+
     protected:
       void init(void);
 
@@ -136,6 +153,9 @@ namespace RainbruRPG{
 				  const Rectangle&);
       std::string makeDebugString(MultiColumnList*, MultiColumnListCell*,
 				  const Rectangle&);
+
+      std::string makeScissorDebugString(QuadRenderer*);
+      void drawScissorRectangle(QuadRenderer*);
 
     private:
       /** Should we debug ? */
@@ -189,6 +209,13 @@ namespace RainbruRPG{
       ColourValue mDrawingRectangleColor;
       /** The color used to draw the debugging of drawing rectangle for items*/
       ColourValue mCellDrawingRectangleColor;
+      /** The color used to draw the QuadRenderer's scissor rectangle
+        *
+	* This color will be used to draw the outline of the scissor rectangle
+	* if the \ref tMultiColumnListDebugFlags::scissorRect_draw flag is on.
+	*
+	*/
+      ColourValue mScissorRectangleColor;
     };
   }
 }

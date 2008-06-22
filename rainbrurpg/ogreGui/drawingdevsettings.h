@@ -37,6 +37,12 @@ namespace RainbruRPG{
 
     /** A class used in QuadRenderer through a DrawingDevList
       *
+      * This object is used in QuadRenderer to shift all drawing. You can
+      * add several DrawingDevSettings in the \ref DrawingDevList of the
+      * QuadRenderer.
+      *
+      * \sa \ref QuadRenderer, \ref DrawingDevList
+      *
       */
     class DrawingDevSettings{
     public:

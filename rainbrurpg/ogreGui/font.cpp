@@ -345,17 +345,29 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
 				       vHorzAlign, vVertAlign );
     npos.y += currentY;
 
-    // See if this line actually needs to be rendered
-    //    if ( !clip.isZero( ) ){
+    /* See if this line actually needs to be rendered
+     *
+     * v0.0.5-180 :
+     * The following test is very important :
+     *   if ( ( npos.y + getMaxGlyphHeight( ) + pos.y ) < clip.top )
+     *
+     * It is guilty in the 16+ bug of the MultiColumnList (The items
+     * starting at index 17 are not drawn). But if I remove it, there is
+     * a little black square clipping in the screen.
+     *
+     * The following test was removed :
+     *   if ( !clip.isZero( ) ){
+     *
+     */
     if ( ( npos.y + getMaxGlyphHeight( ) + pos.y ) < clip.top ){
       currentY += getMaxGlyphHeight( );
       charIndex += line.getText().size( );
 
       continue;
     }
-    else if ( (npos.y + pos.y) > clip.bottom )
+    else if ( (npos.y + pos.y) > clip.bottom ){
       return;
-    //    }
+    }
 
     int start = vSelectionStart - charIndex;
     int end = vSelectionEnd - charIndex;

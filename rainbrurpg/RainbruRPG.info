@@ -495,13 +495,16 @@ The format for running the `RainbruRPG' program is:
 
    `RainbruRPG' supports the following options:
 
+`--quiet'
+`-q'
+     Disables all logging messages on stdout. The messages will only be
+     sent in the RainbruRPG.log file, in the `RainbruRPG' execution
+     directory.
+
 `--help'
 `-?'
      Print an informative help message describing the options and then
      exit successfully.
-
-`--usage'
-     Briefly list the options.
 
 `--version'
 `-V'
@@ -561,7 +564,7 @@ Node: Copying2157
 Node: Overview21343
 Node: Server21776
 Node: Invoking RainbruRPG23411
-Node: Problems23957
-Node: Concept Index24587
+Node: Problems24087
+Node: Concept Index24717
 
 End Tag Table
