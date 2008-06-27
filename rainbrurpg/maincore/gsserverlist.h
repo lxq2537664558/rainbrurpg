@@ -33,6 +33,7 @@
 #include "gsmenubase.h"
 #include "vcconstant.h"
 #include "guimanager.h"
+#include "bglistener.h"
 
 // Forward declarations
 namespace BetaGUI{
@@ -60,7 +61,7 @@ namespace RainbruRPG {
       * can select a server and connect your client to it.
       *
       */
-    class gsServerList : public gsMenuBase{
+    class gsServerList : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
       gsServerList();
       virtual ~gsServerList();
@@ -69,6 +70,7 @@ namespace RainbruRPG {
       virtual void resume();
 
       virtual void setupTabOrder();
+      virtual void onButtonPress(BetaGUI::Button*);
 
      private:
       void setupServerList();
@@ -92,6 +94,11 @@ namespace RainbruRPG {
       MultiColumnList* mMcl;
       /** The label used to show the number of server found */
       Label* mNumServer;
+
+      PushButton* btnRefresh;
+      PushButton* btnPlay;
+      PushButton* btnMoreInfos;
+      
     };
   }
 }

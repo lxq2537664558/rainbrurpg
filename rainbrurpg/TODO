@@ -97,7 +97,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-180
-- (11) Clipping and 16+ bug fixed (font.cpp:250)
+- (15) PuishButton enable/disable implementation
+- (14) gsServerList boutons added
+- MultiColumnList items event bugfix (using abs())
+- QuadRenderer documentation improved
+- Clipping and 16+ bug fixed (font.cpp:250)
 - Bugfix : item 16+ was not drawn
 - Removing DrawingDev when drawing scissor rectangle
 - Fix a bug that cutoff right and bottom lines of scissor drawing

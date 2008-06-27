@@ -27,6 +27,7 @@
 
 #include <label.h>
 #include <bgwindow.h>
+#include <pushbutton.h>
 #include <multicolumnlist.h>
 #include <multicolumnlistitem.h>
 
@@ -45,7 +46,10 @@ RainbruRPG::Core::gsServerList::gsServerList():
   gsMenuBase(false),
   mWin(NULL),
   mMcl(NULL),
-  mNumServer(NULL)
+  mNumServer(NULL),
+  btnRefresh(NULL),
+  btnPlay(NULL),
+  btnMoreInfos(NULL)
 {
 
   LOGI("Constructing a gsServerList");
@@ -80,6 +84,14 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
 
   delete mNumServer;
   mNumServer=NULL;
+
+  // deleting buttons
+  delete btnRefresh;
+  delete btnPlay;
+  delete btnMoreInfos;
+  btnRefresh = NULL;
+  btnPlay = NULL;
+  btnMoreInfos = NULL;
 }
 
 /** Initialize this game state
@@ -122,7 +134,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
 		   "Server list", mGUI);
   mGUI->addWindow(mWin);
 
-  Vector4 mclPosDim(10,30,width - 20,330);
+  Vector4 mclPosDim(10,30,width - 30,320);
   mMcl=new MultiColumnList(mclPosDim, mWin);
   mMcl->setDebugName("MCL.ServerList");
   mWin->addWidget(mMcl);
@@ -134,12 +146,30 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   mMcl->addColumn( "Type", 100 );
   mMcl->addColumn( "Description", 200 );
 
-  Vector4 mNumServerDim(10, 370, 20, 100);
+  // Numbers of found servers
+  Vector4 mNumServerDim(10, 362, 20, 20);
   mNumServer=new Label (mNumServerDim, "??? servers found", mWin);
   mWin->addWidget(mNumServer);
 
+  // Boutons
+  btnRefresh= new PushButton(Vector4(200,360,100,24),
+				 "Refresh", 
+				 BetaGUI::Callback::Callback(this), mWin);
+  mWin->addWidget(btnRefresh);
+  
+  btnPlay = new PushButton(Vector4(320,360,100,24),
+				 "Play", 
+				 BetaGUI::Callback::Callback(this), mWin);
+  btnPlay->disable();
+  mWin->addWidget(btnPlay);
 
-  // Feed the list
+  btnMoreInfos= new PushButton(Vector4(440,360,140,24),
+				 "More infos", 
+				 BetaGUI::Callback::Callback(this), mWin);
+  mWin->addWidget(btnMoreInfos);
+
+
+
   feedList();
 
 }
@@ -203,3 +233,6 @@ void RainbruRPG::Core::gsServerList::setupTabOrder(){
   */
 }
 
+void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button*){
+
+}

@@ -39,6 +39,9 @@
 
 #include <OgreColourValue.h>
 
+#include <cstdlib> // for abs() function
+
+
 #define VSB_YPOS 2
 
 // Static data member initialization
@@ -380,9 +383,8 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	     tMultiColumnListItemList vItemList ){
 
   // Compute the position of mouse for moved objects (items)
-  int devMouseY = py + mVScrollBar->getValue();
+  int devMouseY = py + abs(mVScrollBar->getValue());
   int devMouseX = px - mHScrollBar->getValue();
-
 
   // Handle popupmenu
   if (mPopupMenu->isVisible()){

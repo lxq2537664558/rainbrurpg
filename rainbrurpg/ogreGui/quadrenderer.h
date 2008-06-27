@@ -150,10 +150,14 @@ namespace RainbruRPG {
       *
       * \section sec_QuadRenderer_Ghost The Ghost function
       *
-      * To draw a ghost effect (more alpha on a part of the GUI), two
-      * functions are used : enableGhost() and disableGhost(). Please see 
-      * the MultiColumnList drawing function in soBetaGui : when a column
-      * is moved, it is ghosted.
+      * The ghost feature is used to draw a part of the GUI a more 
+      * transparent than all other. To draw a ghost effect two
+      * functions are used : \ref enableGhost() and \ref disableGhost(). 
+      * Please see the MultiColumnList drawing function in soBetaGui : 
+      * when a column is moved, the ghost feature is used.
+      *
+      * The ghost effect takes the value defined by the GHOST_ALPHA_VALUE
+      * preprocessor macro you can find in the \ref quadrenderer.h source file.
       *
       * \section sec_ParentScissor The parent scissor
       *
