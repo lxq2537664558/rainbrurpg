@@ -51,9 +51,16 @@ RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
 
 /** The destructor
   *
+  * \bug This should destroy \ref RainbruRPG::OgreGui::Font::mTexture "mTexture"
+  *      is used, but I can't.
+  *
   */
 RainbruRPG::OgreGui::Font::~Font(){
-
+  /*  if (!mTexture.isNull()){
+    TextureManager::getSingleton()
+      .remove((Ogre::ResourcePtr)mTexture);
+  }
+  */
 }
 
 /** Get the point size of this font
@@ -337,6 +344,15 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
   // Go through each character
   LineInfoList::const_iterator it=it = vLineList.begin( );
 
+  /* Get the DrawingDevSettings value for Y and add it to scissor rectangle.
+   *
+   * Fix the 16+ bug.
+   *
+   */
+  int dDevY = qr->getDrawingDevYSum();
+  clip.top += dDevY;
+  clip.bottom += dDevY;
+
   for ( it = vLineList.begin(); it != vLineList.end( ); it++ ){
     const LineInfo& line = (*it);
 
@@ -358,17 +374,18 @@ renderAligned(QuadRenderer* qr, LineInfoList& vLineList,
      * The following test was removed :
      *   if ( !clip.isZero( ) ){
      *
+     * The bug is fixed by adding Y drawingDev sum to clip.top and 
+     * clip.bottom. Please see the code before this for statement.
+     *
      */
     if ( ( npos.y + getMaxGlyphHeight( ) + pos.y ) < clip.top ){
       currentY += getMaxGlyphHeight( );
       charIndex += line.getText().size( );
-
       continue;
     }
     else if ( (npos.y + pos.y) > clip.bottom ){
       return;
     }
-
     int start = vSelectionStart - charIndex;
     int end = vSelectionEnd - charIndex;
     

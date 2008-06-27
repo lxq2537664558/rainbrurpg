@@ -173,6 +173,7 @@ RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
     delete mPopupMenu;
     mPopupMenu=NULL;
   }
+
 }
 
 /** Draws the widget
@@ -182,6 +183,7 @@ RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
   */
 void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
   bool geometryWasDirty=false;
+
   if (visible){
     if (geometryDirty){
       geometryWasDirty=true;
@@ -196,6 +198,7 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
     mVScrollBar->draw( qr );
     mHScrollBar->draw( qr );
     mPopupMenu->draw( qr );
+
   }
 }
 

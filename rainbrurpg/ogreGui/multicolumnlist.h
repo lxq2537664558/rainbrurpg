@@ -251,6 +251,7 @@ namespace RainbruRPG{
 	*
 	*/
       std::string mDebugName;
+
     };
   }
 }

@@ -122,7 +122,8 @@ drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
 
 
   if (vCell->isText()){
-    qr->drawText(tsMclTextCell, vCell->getText(), vRect, true);
+    // The false is to deactivate wordwrap
+    qr->drawText(tsMclTextCell, vCell->getText(), vRect, false);
   }
 }
 
