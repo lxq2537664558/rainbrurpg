@@ -359,7 +359,7 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 		  unsigned int px, unsigned int py,
 		  bool LMB, Window* win, Button* btn){
 
-    if (btn->in(mx, my, px, py)){
+  if (btn->in(mx, my, px, py) && btn->isEnable()){
 
       activeButton=btn;
       activeButton->activate(true);

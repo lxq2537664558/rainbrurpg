@@ -79,7 +79,7 @@ namespace RainbruRPG{
       virtual void drawWindow(QuadRenderer*, Rectangle, String );
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool );
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
-      virtual void drawPushButton(QuadRenderer*,Vector4,String,Window*,bool);
+      virtual void drawPushButton(QuadRenderer*,Vector4,String,Window*,bool,bool);
       virtual void drawTextInput(QuadRenderer*, Rectangle, String, Window*, 
 				 bool, int selStart = -1, int selEnd = -1);
       virtual void drawLabel(QuadRenderer*, Rectangle, String, Window* );

@@ -21,7 +21,6 @@
  */
 
 /* Modifications :
- * - 27 jun 2008 : enable/disable implementation
  * - 04 nov 2007 : Can apply a OgreGuiSkinID in constructor
  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
  * - 05 oct 2007 : starting implementation
@@ -65,13 +64,7 @@ namespace RainbruRPG{
       ~PushButton();
 
       virtual void draw(QuadRenderer*);
-      virtual bool injectMouse (unsigned int, unsigned int, const MouseEvent &);
 
-      void enable(void);
-      void disable(void);
-      
-      void setEnable(bool);
-      bool isEnable(void);
 
     private:
       /** A reference to the current skin used to speed up drawing */
@@ -79,7 +72,6 @@ namespace RainbruRPG{
       /** The parent window */
       Window* winParent;
 
-      bool mEnable;
    };
   }
 }

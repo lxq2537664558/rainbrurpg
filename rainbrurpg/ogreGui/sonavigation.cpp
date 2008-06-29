@@ -87,11 +87,12 @@ drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
   * \param caption The rendered text
   * \param win     The parent window
   * \param active  Is the mouse over this push button ?
+  * \param enable  Is the button enabled ?
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
 drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, 
-	       Window* win, bool active){
+	       Window* win, bool active, bool enable){
   Rectangle corners;
   corners.left  = dim.x+win->getLeft();
   corners.top   = dim.y+win->getTop();

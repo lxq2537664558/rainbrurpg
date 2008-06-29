@@ -67,7 +67,7 @@ namespace RainbruRPG{
       virtual ~soBetaGui();
 
       virtual void drawWindow(QuadRenderer*, Rectangle, String);
-      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool, bool);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
       virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
@@ -95,8 +95,11 @@ namespace RainbruRPG{
       /** The text setting for drawing title bar caption */
       TextSettings* tsTitleBar;
 
-      /** The text setting for drawing push button caption */
+      /** The text setting for drawing push button caption when enable */
       TextSettings* tsPushButton;
+
+      /** The text setting for drawing push button caption when disable */
+      TextSettings* tsDisabledPushButton;
 
       /** The text setting for drawing label caption */
       TextSettings* tsLabel;

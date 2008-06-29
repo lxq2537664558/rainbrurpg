@@ -30,6 +30,7 @@
 #include <pushbutton.h>
 #include <multicolumnlist.h>
 #include <multicolumnlistitem.h>
+#include <sigc++/sigc++.h>
 
 #include "keyboardnavigation.h"
 
@@ -136,6 +137,8 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
 
   Vector4 mclPosDim(10,30,width - 30,320);
   mMcl=new MultiColumnList(mclPosDim, mWin);
+  mMcl->sigSelectionChanged.
+    connect( sigc::mem_fun(this, &RainbruRPG::Core::gsServerList::slotSelectionChanged) );
   mMcl->setDebugName("MCL.ServerList");
   mWin->addWidget(mMcl);
 
@@ -166,6 +169,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   btnMoreInfos= new PushButton(Vector4(440,360,140,24),
 				 "More infos", 
 				 BetaGUI::Callback::Callback(this), mWin);
+  btnMoreInfos->disable();
   mWin->addWidget(btnMoreInfos);
 
 
@@ -233,6 +237,74 @@ void RainbruRPG::Core::gsServerList::setupTabOrder(){
   */
 }
 
-void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button*){
+/** A button was pressed in this game state
+  *
+  * \param vButton The button to be pressed
+  *
+  */
+void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button* vButton){
+  std::string msg;
+  bool log=true;
 
+  if (vButton == btnRefresh){
+    log = false;
+    refreshList();
+  }
+  else if (vButton == btnPlay){
+    msg = "Play";
+  }
+  else if (vButton == btnMoreInfos){
+    msg = "MoreInfos";
+  }
+
+  if (log){
+    msg += " button pressed";
+    LOGI(msg.c_str());
+  }
+}
+
+/** The server list's selection changed
+  *
+  * This slot is used to enable and disable \ref btnPlay and 
+  * \ref btnMoreInfos buttons according to the selection content. This slot
+  * must be connected to the 
+  * \ref OgreGui::MultiColumnList::sigSelectionChanged 
+  * "MultiColumnList::sigSelectionChanged" signal.
+  *
+  */
+void RainbruRPG::Core::gsServerList::slotSelectionChanged(void){
+  LOGI("slotSelectionChanged called");
+
+  bool sel = mMcl->isOneItemSelected();
+  btnPlay->setEnable( sel );
+  btnMoreInfos->setEnable( sel );
+}
+
+/** Refresh the server list
+  *
+  * Reresh the content of the server list by caling 
+  * \ref RainbruRPG::Network::Ident::xmlServerList::refresh()
+  * "xmlServerList::refresh()".
+  *
+  */
+void RainbruRPG::Core::gsServerList::refreshList(void){
+  LOGI("gsServerList::refreshList called");
+
+  // Disable all buttons
+  btnRefresh->disable();
+  btnPlay->disable();
+  btnMoreInfos->disable();
+
+  // Clear the list
+  mMcl->clear();
+  
+  // Refresh xml
+  xml->refresh();
+
+  // Feed the list
+  feedList();
+
+  // Enable refresh button
+  btnRefresh->enable();
+  
 }

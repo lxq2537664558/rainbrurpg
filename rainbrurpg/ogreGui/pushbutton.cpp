@@ -26,6 +26,7 @@
 #include "bgwindow.h"
 #include "quadrenderer.h"
 
+#include <logger.h>
 #include <OGRE/OgreStringConverter.h>
 
 /** The constructor
@@ -42,8 +43,7 @@ PushButton(Vector4 dim, String caption, Callback c, Window* parent,
 	   OgreGuiSkinID sid): 
   BetaGUI::Button(dim, "", caption, c, parent, sid),
   mSkin(NULL),
-  winParent(NULL),
-  mEnable(true)
+  winParent(NULL)
 {
   setName("PushButton");
   mSkin=SkinManager::getSingleton().getSkin(this);
@@ -69,29 +69,7 @@ void RainbruRPG::OgreGui::PushButton::draw(QuadRenderer* qr){
 
   if (!mEnable) qr->enableGhost();
 
-  mSkin->drawPushButton(qr, dim, mCaption, winParent, active);
+  mSkin->drawPushButton(qr, dim, mCaption, winParent, active, mEnable);
   if (!mEnable) qr->disableGhost();
 }
 
-void RainbruRPG::OgreGui::PushButton::enable(void){
-  mEnable = true;
-}
-
-void RainbruRPG::OgreGui::PushButton::disable(void){
-  mEnable = false;
-}
-      
-void RainbruRPG::OgreGui::PushButton::setEnable(bool vEnable ){
-  mEnable = vEnable;
-}
-
-bool RainbruRPG::OgreGui::PushButton::isEnable(void){
-  return mEnable;
-}
-
-bool RainbruRPG::OgreGui::PushButton::
-injectMouse (unsigned int px, unsigned int py, const MouseEvent & vEvent){
-  if (mEnable){
-    BetaGUI::Button::injectMouse( px, py, vEvent );
-  }
-}

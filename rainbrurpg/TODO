@@ -96,9 +96,16 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-181
+
 * v 0.0.5-180
-- (15) PuishButton enable/disable implementation
-- (14) gsServerList boutons added
+- gsServerList refresh list implementation
+- gsServerList buttons enable/disable according to MCL selection
+- MultiColumnList::sigSelectionChange() added
+- A disabled button caption is drawn grayed
+- enable/disable in Button instead of PushButton
+- PushButton enable/disable implementation
+- gsServerList boutons added
 - MultiColumnList items event bugfix (using abs())
 - QuadRenderer documentation improved
 - Clipping and 16+ bug fixed (font.cpp:250)

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 27 jun 2008 : PushButtons added
  * - 27 jul 2007 : Starting implementation
  *
  */
@@ -71,8 +72,12 @@ namespace RainbruRPG {
 
       virtual void setupTabOrder();
       virtual void onButtonPress(BetaGUI::Button*);
+      void slotSelectionChanged(void);
 
-     private:
+    protected:
+      void refreshList(void);
+
+    private:
       void setupServerList();
       void feedList();
 
@@ -95,8 +100,11 @@ namespace RainbruRPG {
       /** The label used to show the number of server found */
       Label* mNumServer;
 
+      /** The refresh button */
       PushButton* btnRefresh;
+      /** The play button */
       PushButton* btnPlay;
+      /** The 'more infos' button */
       PushButton* btnMoreInfos;
       
     };

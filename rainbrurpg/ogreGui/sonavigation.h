@@ -68,7 +68,7 @@ namespace RainbruRPG{
       virtual ~soNavigation();
 
       virtual void drawWindow(QuadRenderer*,Rectangle, String);
-      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool, bool);
 
     private:
       /** The font used in PushButtons */

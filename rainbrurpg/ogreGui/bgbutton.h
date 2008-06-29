@@ -7,6 +7,11 @@
  *
  */
 
+/* Modifications :
+ * - 27 jun 2008 : enable/disable implementation
+ *
+ */
+
 #ifndef _BETAGUI_BUTTON_H_
 #define _BETAGUI_BUTTON_H_
 
@@ -31,7 +36,16 @@ namespace BetaGUI {
     *
     * After you have created a Button, do not forget to add it to its
     * parent windiw by calling addWidget(BetaGUI::Button*). If you forget it, 
-    * mouse over effect will not apply yo this button.
+    * mouse over effect will not apply to this button.
+    *
+    * The enable/disable state allow you to temporary avoid mouse event on a
+    * button, however it will be drawn. A PushButton is drawn disabled using
+    * the QuadRenderer ghost feature. It is different from activate(), that 
+    * draw the mouse over effect.
+    *
+    * \note Events of buttons are handled in 
+    *       \ref RainbruRPG::OgreGui::Container::handleButtonEvent()
+    *       "Container::handleButtonEvent()"
     *
     */
   class Button : public RainbruRPG::OgreGui::Widget{
@@ -46,14 +60,35 @@ namespace BetaGUI {
     
     virtual void setCaption(const String&);
 
+    void enable(void);
+    void disable(void);
+      
+    void setEnable(bool);
+    bool isEnable(void);
+
   protected:
     /** The callback of this button */
     Callback callback;
-    /** Is this button active ? */
+    /** Is this button active ? 
+      *
+      * The active state shows that the mouse is over the button.
+      *
+      * \sa \ref mEnable
+      *
+      */
     bool active;
     /** The caption of this button */
     std::string mCaption;
-};
+
+    /** Is this buttton enable
+      *
+      * A disabled button cannot receive mouse event.
+      *
+      * \sa \ref active
+      *
+      */
+    bool mEnable;
+  };
 
 }
 

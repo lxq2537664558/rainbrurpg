@@ -17,6 +17,8 @@
 
 /** The constructor
   *
+  * By default, a button is not active and enabled.
+  *
   * \param dim    The dimensions 
   * \param M      The material name
   * \param T      The text of the button
@@ -30,7 +32,8 @@ Button(Vector4 dim, String M, String T, Callback C, Widget* parent,
        RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(dim, parent, sid),
   mCaption(T.c_str()),
-  active(false)
+  active(false),
+  mEnable(true)
 {
   setName("Button");
   callback=C;
@@ -86,4 +89,40 @@ BetaGUI::Callback BetaGUI::Button::getCallback(void){
   */
 void BetaGUI::Button::setCaption(const String& vCaption){
   this->mCaption=vCaption.c_str();
+}
+
+/** Set this button enable
+  *
+  * Set the value of \ref mEnable to \c true.
+  *
+  */
+void BetaGUI::Button::enable(void){
+  mEnable = true;
+}
+
+/** Disable this button
+  *
+  * Set the value of \ref mEnable to \c false.
+  *
+  */
+void BetaGUI::Button::disable(void){
+  mEnable = false;
+}
+
+/** Change the enable state of this button
+  *      
+  * \param vEnable the new value.
+  *
+  */
+void BetaGUI::Button::setEnable(bool vEnable ){
+  mEnable = vEnable;
+}
+
+/** Is this button enable ?
+  *
+  * \return The value of \ref mEnable.
+  *
+  */
+bool BetaGUI::Button::isEnable(void){
+  return mEnable;
 }

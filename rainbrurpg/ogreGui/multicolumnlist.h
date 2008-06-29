@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 28 jun 2008 : sigSelectionChanged implementation
  * - 17 apr 2008 : PopupMenu integration
  * - 14 apr 2008 : Now using scissor rectangle
  *                 Using DrawingDevSettings
@@ -40,6 +41,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <sigc++/sigc++.h>
 #include <algorithm> // for sort
 
 /// The sensitivity in pixels
@@ -148,6 +150,25 @@ namespace RainbruRPG{
       DrawingDevSettings* getDrawingDevSettings(void);
       DrawingDevSettings* getHeaderDrawingDevSettings(void);
 
+      Window* getWindowParent(void);
+
+      void setDebugName(const std::string&);
+      const std::string& getDebugName(void)const;
+
+      bool isOneItemSelected(void);
+
+      void clear();
+
+      /** The list selection changed
+        *
+	* This sigc++ signal is emiiied when an item is selected or 
+	* deselected. It is used to enable/disabled 
+	* \ref RainbruRPG::Core::gsServerList "gsServerlist" buttons 
+	* according to the selection status.
+	*
+	*/
+      sigc::signal<void> sigSelectionChanged;
+
       /** The current column we apply sort to
         *
 	* This variable is static cause we use it in compMclItemAsc()
@@ -155,11 +176,6 @@ namespace RainbruRPG{
 	*
 	*/
       static int mCurrentSortedColumn;
-
-      Window* getWindowParent(void);
-
-      void setDebugName(const std::string&);
-      const std::string& getDebugName(void)const;
 
     protected:
       void makeCorners(void);

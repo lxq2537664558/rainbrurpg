@@ -57,6 +57,7 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   Skin("soBetaGUI"),
   tsTitleBar(NULL),
   tsPushButton(NULL),
+  tsDisabledPushButton(NULL),
   tsLabel(NULL),
   tsTextInput(NULL),
   mMultiColumnListDrawer(NULL)
@@ -71,6 +72,9 @@ RainbruRPG::OgreGui::soBetaGui::soBetaGui():
   tsPushButton->setVerticalAlignment( VAT_CENTER );
   tsPushButton->setHorizontalAlignment( HAT_CENTER );
 
+  tsDisabledPushButton=new TextSettings( "Iconiv2.ttf", 12, 0.7f, 0.7f, 0.7f );
+  tsDisabledPushButton->setVerticalAlignment( VAT_CENTER );
+  tsDisabledPushButton->setHorizontalAlignment( HAT_CENTER );
 
   tsLabel=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
   tsTextInput=new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
@@ -352,11 +356,12 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
   * \param caption The rendered text
   * \param win     The parent window
   * \param active  Is the mouse over this push button ?
+  * \param enable  Is the button enabled ?
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawPushButton(QuadRenderer* qr, Vector4 dim, 
-	       String caption, Window* win, bool active ){
+	       String caption, Window* win, bool active, bool enable ){
 
   Rectangle corners;
   corners.left  = dim.x+win->getLeft();
@@ -380,7 +385,12 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
   qr->drawRectangle(corners);
 
   // false = no wordwrap
-  qr->drawText(tsPushButton, caption, corners, false);
+  if (enable){
+    qr->drawText(tsPushButton, caption, corners, false);
+  }
+  else{
+    qr->drawText(tsDisabledPushButton, caption, corners, false);
+  }
   qr->reset();
 }
 

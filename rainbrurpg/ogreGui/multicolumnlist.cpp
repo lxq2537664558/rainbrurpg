@@ -529,6 +529,13 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
 	  }
 	  selectedItem=vItemList[itemIdx];
 	  selectedItem->toggleSelection();
+
+	  // To get isOneItemSelected() return false if item is deselected
+	  if (!selectedItem->isSelected())
+	    selectedItem = NULL;
+
+	  sigSelectionChanged.emit();
+
 	  // de-mouseover item
 	  if (mouseOveredItem == selectedItem && selectedItem->isSelected()){
 	    mouseOveredItem->setMouseOver(false);
@@ -853,4 +860,33 @@ getDebugName(void)const{
 void RainbruRPG::OgreGui::MultiColumnList::
 setDebugName(const std::string& vDebugName){
   mDebugName = vDebugName;
+}
+
+/** Is one item selected ?
+  *
+  * \return \c true if at least one item is selected, otherwise returns 
+  *         \c false.
+  *
+  */
+bool RainbruRPG::OgreGui::MultiColumnList::isOneItemSelected(void){
+  if (selectedItem){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+/** Clears the list
+  *
+  * It removes selection and all items from the list. It does not
+  * removes column.
+  *
+  */
+void RainbruRPG::OgreGui::MultiColumnList::clear(){
+  selectedItem = NULL;
+  mouseOveredItem = NULL;
+
+  mItemList.clear();
+  mSortedItemList.clear();
 }

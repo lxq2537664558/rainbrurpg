@@ -143,11 +143,12 @@ drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active){
   * \param caption The rendered text
   * \param parent  The parent window
   * \param active  Is the mouse over this push button ?
+  * \param enable  Is the button enabled ?
   *
   */
 void RainbruRPG::OgreGui::Skin::
 drawPushButton(QuadRenderer*qr, Vector4 dim, String caption, 
-	       Window* parent, bool active){
+	       Window* parent, bool active, bool enable){
   logUnimplementedFunction("drawPushButton");
 
 }
