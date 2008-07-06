@@ -55,6 +55,10 @@ ScrollPane(Vector4 dim, Window* parent,OgreGuiSkinID sid):
   mDrawingDev(NULL)
 {
   setName("ScrollPane");
+
+  // Base cnte nt corner
+  mContentRectangle=parent->getCorners();
+
   Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
   mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
   //  this->addWidget(mVScrollBar);
@@ -107,12 +111,13 @@ void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
    */
   qr->disableScissor();
 
-  qr->setScissorRectangle(corners);
-  qr->setUseParentScissor(true);
-
-  // This widgets do not move (QuadRenderer::DrawingDev)
+  // This widgets do not move (QuadRenderer::DrawingDev comes after them)
   mVScrollBar->draw(qr);
   mHScrollBar->draw(qr);
+
+  qr->setScissorRectangle(mContentRectangle);
+  qr->setUseParentScissor(true);
+
 
   qr->addDrawingDev( mDrawingDev );
   Container::draw(qr);
@@ -337,6 +342,30 @@ void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   mVScrollBar->setHeight( i-(VSB_YPOS + 18));
 }
 
+/** Change the width of this scrollpane
+  *
+  * This function is reimplemented because it must 
+  * move \ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar 
+  * "mHScrollBar" and \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar 
+  * "mVScrollBar".
+  *
+  * \param vX The new left position
+  * \param vY The new top position
+  *
+  */
+void RainbruRPG::OgreGui::ScrollPane::move(int vX, int vY){
+  LOGI("ScrollPane::move called");
+  int temp_width = getWidth();
+  int temp_height= getHeight();
+
+  corners.top  = vY;
+  corners.left = vX;
+
+  setWidth(temp_width);
+  setHeight(temp_height);
+}
+
+
 /** The horizontal scrollbar slot
   * 
   * This sig-c++ slot is connected to the 
@@ -468,4 +497,40 @@ handleChildsEvent(unsigned int px, unsigned int py, const MouseEvent& event,
 
 
   return true;
+}
+
+/** Change the content geometry
+  *
+  * This function is used by subclasses to change the content geometry, 
+  * by example to handle the height of a TitleBar.
+  *
+  * \param vRect The new geometry
+  *
+  * \sa \ref ScrollPane::mContentRectangle "mContentRectangle" (member)
+  *
+  */
+void RainbruRPG::OgreGui::ScrollPane::
+setContentRectangle(const Ogre::Rectangle& vRect){
+  mContentRectangle = vRect;
+
+  // Computing content scissor rectangle
+  if (mVScrollBar->isVisible()){
+    mContentRectangle.right -= mVScrollBar->getWidth();
+  }
+  if (mHScrollBar->isVisible()){
+    mContentRectangle.bottom -= mHScrollBar->getHeight();
+  }
+
+}
+
+/** Get the content rectangle
+  *
+  * \return The rectangle containing the childs widgets
+  *
+  * \sa \ref ScrollPane::mContentRectangle "mContentRectangle" (member)
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::ScrollPane::
+getContentRectangle(void){
+  return mContentRectangle;
 }

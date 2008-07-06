@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 01 jul 2008 : mContentRectangle added
  * - 12 apr 2008 : events handling now uses MouseEvent
  * - 12 feb 2008 : using QuadRenderer::useParentScissor
  * - 23 nov 2007 : starting implementation
@@ -34,6 +35,7 @@
 #include "mouseevent.h"
 
 #include <skinmanager.h> // For OgreGuiSkinID
+#include <OgreRectangle.h> 
 
 // Forward declarations
 namespace BetaGUI{
@@ -66,6 +68,8 @@ namespace RainbruRPG{
 
     /** A container that handle the clipping of child widgets and scrollbars
       *
+      * \section sec_scrollpane_intro Introduction
+      *
       * Both horizontal and vertical scrollbar are drawn only if needed by
       * default.
       *
@@ -74,7 +78,18 @@ namespace RainbruRPG{
       * \ref  RainbruRPG::OgreGui::DrawingDevSettings "DrawingDevSettings"
       * class.
       *
-      * \note A scropane test window is created if the \c configure script
+      * \section sec_scrollpane_contentRect Content rectangle
+      *
+      * The content rectangle, where childs widgets are draw must be 
+      * modifiable, for example to handle the title bar height of a window.
+      * It is used to set the scissor rectangle to avoid childs widgets to
+      * override the titlebar. This feature is supported through the
+      * \ref ScrollPane::mContentRectangle "mContentRectangle" member
+      * and the \ref ScrollPane::setContentRectangle() "setContentRectangle()"
+      * and \ref ScrollPane::getContentRectangle() "getContentRectangle()"
+      * functions.
+      *
+      * \note A scrollpane test window is created if the \c configure script
       *       is called with the \c --enable-scrollp-test option.
       *
       */
@@ -101,6 +116,7 @@ namespace RainbruRPG{
 
       virtual void setWidth(int);
       virtual void setHeight(int);
+      virtual void move(int, int);
 
       void horizontalScrollBarValueChange(int);
       void verticalScrollBarValueChange(int);
@@ -109,6 +125,10 @@ namespace RainbruRPG{
 				 const MouseEvent&, Window*); 
       bool handleChildsEvent(unsigned int , unsigned int , const MouseEvent&, 
 			     Window* ); 
+
+      void setContentRectangle(const Ogre::Rectangle&);
+      const Ogre::Rectangle& getContentRectangle(void);
+
     private:
 
       /** The vertical scrollbar */
@@ -127,6 +147,21 @@ namespace RainbruRPG{
         *
 	*/     
       DrawingDevSettings* mDrawingDev;
+
+      /** The content scissor rectangle
+        *
+	* This must be set by subclasses to the content rectangle : The
+	* place where the childs widgets can be drawn. The
+	* scrollbars are outside handle by \ref ScrollPane. 
+	* The usage is to set it to the content
+	* geometry (by example Window will remove the title bar height)
+	* and call ScrollPane::draw().
+	*
+	* \sa \ref BetaGUI::Window::makeCorners "Window::makeCorners" for
+	*     implementation example
+	*
+	*/
+      Ogre::Rectangle mContentRectangle;
     };
 
   }

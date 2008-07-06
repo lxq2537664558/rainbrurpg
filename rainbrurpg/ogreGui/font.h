@@ -62,20 +62,20 @@ namespace RainbruRPG{
     /** The vertical alignment of a text
       *
       */
-    typedef enum VerticalAlignType{
+    typedef enum {
       VAT_TOP,    //!< The text is vertically aligned to the top
       VAT_BOTTOM, //!< The text is vertically aligned to the bottom
       VAT_CENTER  //!< The text is vertically centered
-    };
+    }VerticalAlignType;
 
     /** The horizontal alignment of a text
       *
       */
-    typedef enum HorizontalAlignType{
+    typedef enum{
       HAT_LEFT,   //!< The text is horizontaly aligned to the left
       HAT_RIGHT,  //!< The text is horizontaly aligned to the right
       HAT_CENTER  //!< The text is horizontaly centered
-    };
+    }HorizontalAlignType;
 
     /** A font used with QuadRenderer
       * 

@@ -383,8 +383,8 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	
       case OCT_WIN_MOVE:
 	GameEngine::getSingleton().getOgreGui()->setMovedWindow(win);
-	movingDevX=mx-corners.left;
-	movingDevY=my-corners.top;
+	movingDevX = mx - corners.left;
+	movingDevY = my - corners.top;
 	win->move(mx, my);
 	makeCorners();
 	return true;
@@ -392,8 +392,30 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	
       case OCT_WIN_RESIZE:
 	GameEngine::getSingleton().getOgreGui()->setResizedWindow(win);
-	movingDevX=corners.right-mx;
-	movingDevY=corners.bottom-my;
+	movingDevX = corners.right  - mx;
+	movingDevY = corners.bottom - my;
+
+	/* v 0.0.5-181 : Fix the resize window bug
+	 *
+	 * The bug : When resizing a window, all goes right. But if you
+	 * move it then resize it, movingDevX and movingDevY keep their
+	 * high values from the previous OCT_WIN_MOVE computation.
+	 *
+	 * This if statement fix the bug.
+	 *
+	 */
+	if (movingDevX > 16 || movingDevY > 16){
+	  makeCorners();
+	  movingDevX = corners.right  - mx;
+	  movingDevY = corners.bottom - my;
+	}
+
+	LOGCATS("Setting Moving dev to ");
+	LOGCATI(movingDevX);
+	LOGCATS("x");
+	LOGCATI(movingDevY);
+	LOGCATS(" (OCT_WIN_RESIZE)");
+	LOGCAT();
 	win->resize(mx, my);
 	makeCorners();
 	return true;     
@@ -460,4 +482,16 @@ handleWidgetMouseEvents(unsigned int px, unsigned int py,
       return true;
     }
   }
+}
+
+/** Reset the moving deviation values
+  *
+  * Used in \ref BetaGUI::Window::check "Window::check" when event 
+  * (moving or resizing) stopped.
+  *
+  */
+void RainbruRPG::OgreGui::Container::resetMovingDev(){
+  LOGI("Container::resetMovingDev called");
+  movingDevX = 0;
+  movingDevY = 0;
 }

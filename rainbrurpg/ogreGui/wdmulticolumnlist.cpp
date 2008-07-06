@@ -160,7 +160,19 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   
       drawOneHeader(qr, (*iter), x);
 
-      if (colIndex == vMovingColumn || colIndex == vMovingColumn-1){
+      /* v0.0.5-181 : Moving volumn bug
+       *
+       * The bug was that the column header after the moved one and the 
+       * items (all) text was not drawn when moving column.
+       *
+       * The following IF statement was :
+       * if (colIndex == vMovingColumn || colIndex == vMovingColumn-1)
+       *
+       * If we remove the last part of the statement, the bug disappears :
+       * if (colIndex == vMovingColumn)
+       *
+       */
+      if (colIndex == vMovingColumn){
 	qr->disableGhost();
       }
 

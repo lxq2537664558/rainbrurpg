@@ -1,3 +1,25 @@
+* v 0.0.5-179
+- MultiColumnListDebugSettings::makeDebugString implementation
+- StringConv::itobin implementation
+- wdMultiColumnList can debug only one cell
+- wdMultiColumnList can debug only one item
+- Skin destructor now called (fixes an ugly bug)
+- Fix a SEGFAULT due to deleting Ogre Root object
+- MultiColumnListDebugSettings implementation
+- Bugfix : MCL VScrollbar was using scissor of headers
+- wdMultiColumnList::reset implemented and used
+- wdMultiColumnList first draw handled
+- wdMultiColumnList::drawAllItems implementation
+- wdMultiColumnList::drawOneItemCell implementation
+- wdMultiColumnList::drawAllHeaders implementation
+- wdMultiColumnList::drawOneHeader implementation
+- wdMultiColumnList::drawBorder implementation
+- wdMultiColumnList initialization implementation
+- wdMultiColumnList::preDrawingComputation handling in soBetaGui
+- skin argument for MultiColumnList's geometryDirty Status
+- wdMultiVolumnList::draw() implementation
+- soBetaGUI uses wdMultiVolumnList
+
 * v 0.0.5-178
 - wdMultiColumnList base implementation
 - WidgtDrawer implementation

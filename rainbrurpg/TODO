@@ -97,6 +97,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-181
+- (5) Fix the resizing window bug (Container::handleButtonEvent())
+- Bugfix : when moving a window, ScrollBars wasn't move
+- Window's title bar removed from content scissor
+- The content scissor of a window now handle ScrollBars visibility
+- Fix a moving column bug : see wdMultiColumnList::drawAllHeaders()
 
 * v 0.0.5-180
 - gsServerList refresh list implementation
@@ -119,26 +124,3 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - Adding --quiet (-q) command-line option (man and info updated)
 - Cell drawing rectangle logged and drawn for debugging
 - Item drawing rectangle logged and drawn for debugging
-
-* v 0.0.5-179
-- MultiColumnListDebugSettings::makeDebugString implementation
-- StringConv::itobin implementation
-- wdMultiColumnList can debug only one cell
-- wdMultiColumnList can debug only one item
-- Skin destructor now called (fixes an ugly bug)
-- Fix a SEGFAULT due to deleting Ogre Root object
-- MultiColumnListDebugSettings implementation
-- Bugfix : MCL VScrollbar was using scissor of headers
-- wdMultiColumnList::reset implemented and used
-- wdMultiColumnList first draw handled
-- wdMultiColumnList::drawAllItems implementation
-- wdMultiColumnList::drawOneItemCell implementation
-- wdMultiColumnList::drawAllHeaders implementation
-- wdMultiColumnList::drawOneHeader implementation
-- wdMultiColumnList::drawBorder implementation
-- wdMultiColumnList initialization implementation
-- wdMultiColumnList::preDrawingComputation handling in soBetaGui
-- skin argument for MultiColumnList's geometryDirty Status
-- wdMultiVolumnList::draw() implementation
-- soBetaGUI uses wdMultiVolumnList
-

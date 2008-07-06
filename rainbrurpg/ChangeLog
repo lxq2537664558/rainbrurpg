@@ -6,6 +6,7 @@
 ==
 
 * v0.0.6 (144-???)
+- Server list using OgreGui
 - OgreGui replacing CEGUI 
   Many widgets implemented with custom primitives rendering engine
 - Switching to Ogre 1.4.3 (Eihort) (PLSM is also updated)

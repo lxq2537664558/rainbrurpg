@@ -73,6 +73,7 @@ namespace RainbruRPG{
       virtual void setGeometryDirty(void);
 
       virtual void getMovingDev(int&, int&);
+      virtual void resetMovingDev();
 
       void deactivateAllOtherTextInput(BetaGUI::TextInput*);
 

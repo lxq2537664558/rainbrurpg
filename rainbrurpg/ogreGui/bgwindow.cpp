@@ -64,7 +64,6 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_RESIZE);
     this->mResizeGrip=new ResizeGrip(resizeGripDim, c, G, this);
-    //    mScrollPane->addWidget(mResizeGrip);
   }
   
   if(t==OWT_MOVE || t==OWT_RESIZE_AND_MOVE){
@@ -72,15 +71,9 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
     Callback c;
     c.setType(OCT_WIN_MOVE);
     this->mTitleBar=new TitleBar(titlebarDim,caption,c, G, this);
-    //    mScrollPane->addWidget(mTitleBar);
-
-    // Adding titlebar height to scroll pane top position
-    /*    int spTop = mScrollPane->getTop();
-    spTop    += mSkin->getTitleBarHeight();
-    mScrollPane->setTop(spTop);
-    */
   }
 
+  makeCorners();
   mScrollPane->setScrollBarsVisbleStatus();
 }
 
@@ -222,37 +215,43 @@ void BetaGUI::Window::deactivate(void){
   *
   */
 void BetaGUI::Window::resize(int px, int py){
-  int height, width;
+  int new_height, new_width;
   int devX, devY;
+  int old_width = getWidth();
+  int old_height= getHeight();
+
   mScrollPane->getMovingDev(devX, devY);
+  // Now devX and devY contains position of mouse cursor relative
+  // to Window (or Container) top left corner.
 
   // Compute new width
   if (px-corners.left<minimalWidth){
-    width= minimalWidth;
+    new_width= minimalWidth;
   }
   else{
-    width= px - corners.left + devX;
+    new_width=  (px - getLeft()) + devX;
   }
 
   // Compute new height
   if (py-corners.top<minimalHeight){ 
-    height= minimalHeight;
+    new_height= minimalHeight;
   }
   else{
-    height= py - corners.top + devY;
+    new_height=  (py - getTop()) + devY;
   }
 
   // Moves the ResizeGrip
-  mResizeGrip->move( width-16, height-16 );
+  mResizeGrip->move( new_width - 16, new_height - 16 );
 
 
   // Resize the title bar
-  mTitleBar->setWidth( width );
+  mTitleBar->setWidth( new_width );
 
-  setWidth(width);
-  setHeight(height);
-  mScrollPane->setWidth( width );
-  mScrollPane->setHeight( height );
+  setWidth( new_width );
+  setHeight (new_height );
+
+  mScrollPane->setWidth( new_width );
+  mScrollPane->setHeight( new_height );
 
   mScrollPane->setScrollBarsVisbleStatus();
   mScrollPane->setGeometryDirty();
@@ -262,6 +261,12 @@ void BetaGUI::Window::resize(int px, int py){
 void BetaGUI::Window::move(int px, int py){
   int devX, devY;
   mScrollPane->getMovingDev(devX, devY);
+  LOGCATS("devX=");
+  LOGCATI(devX);
+  LOGCATS(" devY=");
+  LOGCATI(devY);
+  LOGCAT();
+
 
   int width  = corners.right - corners.left;
   int height = corners.bottom - corners.top;
@@ -269,14 +274,14 @@ void BetaGUI::Window::move(int px, int py){
   corners.left =px-devX;
   corners.top  =py-devY;
 
-  // Negatiev position is forbiden
+  // Negative position is forbiden
   if (corners.left<0) corners.left=0;
   if (corners.top<0)  corners.top=0;
 
   corners.right=corners.left+width;
   corners.bottom=corners.top+height;
 
-  mScrollPane->setGeometryDirty();
+  mScrollPane->move( px, py );
   setGeometryDirty();
 }
 
@@ -334,7 +339,13 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py,
       ->handleButtonEvent(px, py, corners.left, corners.top,
 			  LMB, this, mTitleBar );
     
-     if (btnEvent) return true;
+    if (btnEvent){
+      return true;
+    }
+    else{
+      mScrollPane->resetMovingDev();
+    }
+    
  }
 
   // Handle resizegrip
@@ -345,7 +356,9 @@ bool BetaGUI::Window::check(unsigned int px, unsigned int py,
       ->handleButtonEvent(px, py, corners.left, corners.top,
 			  LMB, this, mResizeGrip );
 
-    if (btnEvent) return true;
+    if (btnEvent){
+      return true;
+    }
 
   }
 
@@ -486,10 +499,23 @@ bool BetaGUI::Window::isHorizontalScrollbarVisible(void)const{
 
 /** The corners computation function
   *
-  * Actually does nothing.
+  * This function set the 
+  * \ref RainbruRPG::OgreGui::ScrollPane::mContentRectangle
+  * "ScrollPane::mContentRectangle" value, used to specify the rectangle
+  * where ScrollPane's childs widgets are drawn.
   *
   */
 void BetaGUI::Window::makeCorners(void){
 
   geometryDirty = false;
+
+  if (mTitleBar && mTitleBar->isVisible()){
+    Ogre::Rectangle contentRectangle(corners);
+    contentRectangle.top += mTitleBar->getHeight();
+    mScrollPane->setContentRectangle(contentRectangle);
+  }
+  else{
+    mScrollPane->setContentRectangle(corners);
+  }
+
 }
