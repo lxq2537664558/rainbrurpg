@@ -30,7 +30,7 @@
 #include <QColor>
 #include <QString>
 
-#include <OGRE/Ogre.h>
+#include <ogreimport.h>
 #if (OGRE_PLATFORM  == OGRE_PLATFORM_WIN32)
 #include <windows.h>
 #endif

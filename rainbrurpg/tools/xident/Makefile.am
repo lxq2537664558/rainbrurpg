@@ -1,4 +1,4 @@
-# The final program is called "myapp"
+# The final program is called "rainbrurpg-tools-xident"
 bin_PROGRAMS = rainbrurpg-tools-xident
 
 rainbrurpg_tools_xident_LDADD = -lrainbrurpg-common		\

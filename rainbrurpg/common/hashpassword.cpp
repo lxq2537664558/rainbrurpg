@@ -23,6 +23,7 @@
 #include "hashpassword.h"
 
 #include <iostream>
+#include <cstring> // For strlen()
 
 /** The default constructor 
   *

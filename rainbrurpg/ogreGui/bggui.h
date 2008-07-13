@@ -23,9 +23,7 @@
 #ifndef _BETA_GUI_GUI_H_
 #define _BETA_GUI_GUI_H_
 
-#include <OgreOverlay.h>
-#include <OgreVector2.h>
-#include <OgreTexture.h>
+#include <ogreimport.h>
 
 #include <vector>
 #include <list>

@@ -35,7 +35,7 @@
 #include <OIS/OISJoyStick.h>
 #include <OIS/OISInputManager.h>
 
-#include <OGRE/OgreRenderWindow.h>
+#include <ogreimport.h>
 
 namespace RainbruRPG {
   namespace Core{

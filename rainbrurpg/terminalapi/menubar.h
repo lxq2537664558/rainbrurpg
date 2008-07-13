@@ -33,6 +33,7 @@ namespace RainbruRPG{
     /** A STL list of Menu
       *
       * It is used internally by a MenuBar to stores its Menu.
+      *
       */
     typedef std::list<Menu*> tMenuList;
 

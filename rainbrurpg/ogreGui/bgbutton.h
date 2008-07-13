@@ -15,8 +15,7 @@
 #ifndef _BETAGUI_BUTTON_H_
 #define _BETAGUI_BUTTON_H_
 
-#include <OgreVector4.h>
-#include <OgreOverlayContainer.h>
+#include <ogreimport.h>
 
 #include "widget.h" 
 

@@ -41,7 +41,7 @@ RainbruRPG::Terminal::ListBox::ListBox(){
   *
   * \param c the caption of the label
   */
-RainbruRPG::Terminal::ListBox::ListBox( const char* c ){
+RainbruRPG::Terminal::ListBox::ListBox( const std::string& c ){
   this->caption=c;
   this->setX( 0 );
   this->setY( 0 );
@@ -59,7 +59,7 @@ RainbruRPG::Terminal::ListBox::ListBox( const char* c ){
   * \param x the x coordonate of the label
   * \param y the y coordonate of the label
   */
-RainbruRPG::Terminal::ListBox::ListBox( const char* c, int x, int y ){
+RainbruRPG::Terminal::ListBox::ListBox( const std::string& c, int x, int y ){
   this->caption=c;
   this->setX( x );
   this->setY( y );
@@ -79,7 +79,7 @@ RainbruRPG::Terminal::ListBox::~ListBox(){
   *
   * \param c the new caption of the label
   */
-void RainbruRPG::Terminal::ListBox::setText( const char* c ){
+void RainbruRPG::Terminal::ListBox::setText( const std::string& c ){
   this->caption=c;
 }
 
@@ -88,7 +88,7 @@ void RainbruRPG::Terminal::ListBox::setText( const char* c ){
   * \return the caption of the label
   *
   */
-const char* RainbruRPG::Terminal::ListBox::getText(){
+const std::string& RainbruRPG::Terminal::ListBox::getText()const{
   return this->caption;
 }
 
@@ -121,7 +121,7 @@ void RainbruRPG::Terminal::ListBox::draw( int x, int y ){
   *
   * \param c the caption of the item to add.
   */
-void RainbruRPG::Terminal::ListBox::addItem(const char* c){
+void RainbruRPG::Terminal::ListBox::addItem(const std::string& c){
   ListBoxItem *item=new ListBoxItem(c);
 
   itemList.push_back( item );
@@ -147,17 +147,19 @@ void RainbruRPG::Terminal::ListBox::drawItems(int x, int y){
       SLsmg_set_color (1);
       // All the line in reverse video
       for (int j=1; j<width-1; j++)
-	SLsmg_printf( " " );
+	// cast to char* to avoid deprecating conversion warning
+	SLsmg_printf( (char*)" " );
 
       SLsmg_gotorc ( y, x );
     }
     else
       SLsmg_set_color (0);
 
+    // cast to char* to avoid deprecating conversion warning
     if ( (*iter)->isChecked() )
-      SLsmg_printf( "[X] %s", (*iter)->getCaption() );
+      SLsmg_printf( (char*)"[X] %s", (*iter)->getCaption().c_str() );
     else
-      SLsmg_printf( "[ ] %s", (*iter)->getCaption() );
+      SLsmg_printf( (char*)"[ ] %s", (*iter)->getCaption().c_str() );
 
     y++;
     ind++;
@@ -194,7 +196,8 @@ void RainbruRPG::Terminal::ListBox::drawTheCaption( int x, int y){
   SLsmg_write_char( SLSMG_RTEE_CHAR );
   SLsmg_set_char_set (0);
 
-  SLsmg_printf( " %s ", caption );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)" %s ", caption.c_str() );
   SLsmg_set_char_set (1);
   SLsmg_write_char( SLSMG_LTEE_CHAR );
   SLsmg_set_char_set (0);

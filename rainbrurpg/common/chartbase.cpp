@@ -184,14 +184,22 @@ drawTrueType(const std::string& text, int x,
 int y, gdImagePtr im, int c, int fontSize){
 
   int rect[8];
-  char* fontName="ttf-lucida/LucidaSansRegular.ttf";
 
+  // Font name
+  string strFontName="ttf-lucida/LucidaSansRegular.ttf";
+  int strFontName_len = strFontName.length() + 1;
+  std::vector<char> strFontName_raw(strFontName_len);
+  const char* strFontName_str = strFontName.c_str();
+  std::copy(strFontName_str, strFontName_str + strFontName_len, 
+	    strFontName_raw.begin());
+
+  //Text to draw
   int len = text.length() + 1;
   std::vector<char> raw(len);
   const char* str = text.c_str();
   std::copy(str, str + len, raw.begin());
 
-  gdImageStringFT(im, &rect[0], c, fontName, 
+  gdImageStringFT(im, &rect[0], c, &(strFontName_raw[0]), 
 		  fontSize, 0, x, y,&(raw[0]));
 
 
@@ -210,15 +218,23 @@ int y, gdImagePtr im, int c, int fontSize){
   */
 int RainbruRPG::Core::ChartBase::getTextWidth(const std::string& text, int fontSize){
   int rect[8];
-  char* fontName="ttf-lucida/LucidaSansRegular.ttf";
 
+  // Font name
+  string strFontName="ttf-lucida/LucidaSansRegular.ttf";
+  int strFontName_len = strFontName.length() + 1;
+  std::vector<char> strFontName_raw(strFontName_len);
+  const char* strFontName_str = strFontName.c_str();
+  std::copy(strFontName_str, strFontName_str + strFontName_len, 
+	    strFontName_raw.begin());
+
+  // Text to draw
   int len = text.length() + 1;
   std::vector<char> raw(len);
   const char* str = text.c_str();
   std::copy(str, str + len, raw.begin());
 
   // Only get the rect array filled with correct values
-  gdImageStringFT(NULL, &rect[0], 0, fontName, 
+  gdImageStringFT(NULL, &rect[0], 0, &(strFontName_raw[0]), 
 		  fontSize, 0, 0, 0,&(raw[0]));
 
   int textWidth=rect[2]-rect[0];
@@ -239,7 +255,14 @@ int RainbruRPG::Core::ChartBase::getTextWidth(const std::string& text, int fontS
   */
 int RainbruRPG::Core::ChartBase::getTextHeight(const std::string& text, int fontSize){
   int rect[8];
-  char* fontName="ttf-lucida/LucidaSansRegular.ttf";
+
+  // Font name
+  string strFontName="ttf-lucida/LucidaSansRegular.ttf";
+  int strFontName_len = strFontName.length() + 1;
+  std::vector<char> strFontName_raw(strFontName_len);
+  const char* strFontName_str = strFontName.c_str();
+  std::copy(strFontName_str, strFontName_str + strFontName_len, 
+	    strFontName_raw.begin());
 
   int len = text.length() + 1;
   std::vector<char> raw(len);
@@ -247,7 +270,7 @@ int RainbruRPG::Core::ChartBase::getTextHeight(const std::string& text, int font
   std::copy(str, str + len, raw.begin());
 
   // Only get the rect array filled with correct values
-  gdImageStringFT(NULL, &rect[0], 0, fontName, 
+  gdImageStringFT(NULL, &rect[0], 0, &(strFontName_raw[0]), 
 		  fontSize, 0, 0, 0,&(raw[0]));
 
   int textHeight=rect[3]-rect[5];
@@ -271,14 +294,20 @@ void RainbruRPG::Core::ChartBase::drawTrueTypeUp(const std::string& text, int x,
 			       int y, gdImagePtr im, int c, int fontSize){
 
   int rect[8];
-  char* fontName="ttf-lucida/LucidaSansRegular.ttf";
+  // Font name
+  string strFontName="ttf-lucida/LucidaSansRegular.ttf";
+  int strFontName_len = strFontName.length() + 1;
+  std::vector<char> strFontName_raw(strFontName_len);
+  const char* strFontName_str = strFontName.c_str();
+  std::copy(strFontName_str, strFontName_str + strFontName_len, 
+	    strFontName_raw.begin());
 
   int len = text.length() + 1;
   std::vector<char> raw(len);
   const char* str = text.c_str();
   std::copy(str, str + len, raw.begin());
 
-  gdImageStringFT(im, &rect[0], c, fontName, 
+  gdImageStringFT(im, &rect[0], c, &(strFontName_raw[0]), 
 		  fontSize, PI/2, x, y,&(raw[0]));
 
 }

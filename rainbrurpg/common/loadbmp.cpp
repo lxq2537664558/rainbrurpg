@@ -42,7 +42,6 @@ RainbruRPG::Core::LoadBMP::LoadBMP(){
   */
 RainbruRPG::Core::LoadBMP::~LoadBMP(){
   input= NULL;
-  output=NULL;
 
 }
 
@@ -60,7 +59,7 @@ void RainbruRPG::Core::LoadBMP::decode(){
   
   // prep the output stream
   
-  std::fstream OutputText( output , ios::out );
+  std::fstream OutputText( output.c_str() , ios::out );
   int k = 1;
   int MaxCharacters = Image.TellWidth() * Image.TellHeight();
   
@@ -108,7 +107,7 @@ void RainbruRPG::Core::LoadBMP::decode(){
 
 
   // Get all the lines
-  std::fstream InputText( output , ios::in );
+  std::fstream InputText( output.c_str() , ios::in );
 
   InputText.getline(temp1, 100);
 

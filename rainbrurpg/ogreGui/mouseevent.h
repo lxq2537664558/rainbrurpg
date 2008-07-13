@@ -29,7 +29,7 @@
 #ifndef _OGRE_GUI_MOUSE_EVENT_H_
 #define _OGRE_GUI_MOUSE_EVENT_H_
 
-#include <OgreTimer.h>
+#include <ogreimport.h>
 
 #define LONG_CLICK_DURATION 200
 

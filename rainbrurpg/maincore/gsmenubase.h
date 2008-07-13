@@ -30,7 +30,7 @@
 #ifndef GS_MAIN_MENU_BASE_H
 #define GS_MAIN_MENU_BASE_H
 
-#include "OGRE/Ogre.h"
+#include <ogreimport.h>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>

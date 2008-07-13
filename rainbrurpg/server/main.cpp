@@ -27,10 +27,13 @@
  */
 
 #include <QApplication>
+#include <QWidget>
 
 #include <logger.h>
+
+#define INCLUDE_VERSION_WITHOUT_OGRE
 #include <version.h>
-#include <QWidget>
+
 
 #include <string>
 

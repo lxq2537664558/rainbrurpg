@@ -21,6 +21,7 @@
  */
 
 #include "curlinterface.h"
+#include <cstring> // For strlen()
 
 /** The default constructor
   *

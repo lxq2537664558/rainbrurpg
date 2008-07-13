@@ -43,12 +43,12 @@ namespace RainbruRPG{
       * \sa npConnectionResponse, npConnectionResponseData
       *
       */
-    typedef enum tServerConnectionResponse{
+    typedef enum{
       NCR_UNDEFINED    =0x01, //<! The response is undefined
       NCR_ACCEPTED     =0x02, //<! The connection is accepted
       NCR_REFUSED      =0x03, //<! The connection is refused
 
-    };
+    }tServerConnectionResponse;
 
     /** The data of the npConnectionResponse network packet
       *
@@ -59,7 +59,7 @@ namespace RainbruRPG{
       * \sa npConnectionResponse, tServerConnectionResponse
       *
       */
-    typedef union npConnectionResponseData{
+    typedef union{
       /** The data abstraction structure */
       struct {
 	/** The paket identifier
@@ -80,7 +80,7 @@ namespace RainbruRPG{
       };
       /** The data to be sent  over the network */
       enet_uint8 data[4];
-    };
+    }npConnectionResponseData;
 
     /** The connection response packet
       *

@@ -16,9 +16,6 @@
 #include <logger.h>
 #include <stringconv.h>
 
-#include <OgreStringConverter.h>
-#include <OgreMaterialManager.h>
-
 #include <sstream>
 
 /** The text input constructor

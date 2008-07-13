@@ -35,8 +35,8 @@
 #define _OGRE_GUI_SKIN_H_
 
 #include <string>
-#include <OgreOverlayContainer.h>
-#include <OgreRectangle.h>
+
+#include <ogreimport.h>
 
 //#include "bgbutton.h"
 

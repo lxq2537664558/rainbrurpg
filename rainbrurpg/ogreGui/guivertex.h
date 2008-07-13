@@ -28,8 +28,7 @@
 #ifndef _OGRE_GUI_GUI_VERTEX_H_
 #define _OGRE_GUI_GUI_VERTEX_H_
 
-#include <OgreColourValue.h>
-#include <OgreVector2.h>
+#include <ogreimport.h>
 
 #include "vector3.h"
 

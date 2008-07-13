@@ -43,7 +43,7 @@ RainbruRPG::Terminal::LineEdit::LineEdit(){
   *
   * \param c the caption of the label
   */
-RainbruRPG::Terminal::LineEdit::LineEdit( const char* c ){
+RainbruRPG::Terminal::LineEdit::LineEdit( const string& c ){
   this->text=c;
   this->setX( 0 );
   this->setY( 0 );
@@ -60,7 +60,7 @@ RainbruRPG::Terminal::LineEdit::LineEdit( const char* c ){
   * \param x the x coordonate of the label
   * \param y the y coordonate of the label
   */
-RainbruRPG::Terminal::LineEdit::LineEdit( const char* c, int x, int y ){
+RainbruRPG::Terminal::LineEdit::LineEdit( const string& c, int x, int y ){
   this->text=c;
   this->setX( x );
   this->setY( y );
@@ -79,7 +79,7 @@ RainbruRPG::Terminal::LineEdit::~LineEdit(){
   *
   * \param c the new caption of the label
   */
-void RainbruRPG::Terminal::LineEdit::setText( const char* c ){
+void RainbruRPG::Terminal::LineEdit::setText( const string& c ){
   this->text=c;
 }
 
@@ -88,8 +88,8 @@ void RainbruRPG::Terminal::LineEdit::setText( const char* c ){
   * \return the caption of the label
   *
   */
-const char* RainbruRPG::Terminal::LineEdit::getText(){
-  return this->text.c_str();
+const string& RainbruRPG::Terminal::LineEdit::getText()const{
+  return this->text;
 }
 
 void RainbruRPG::Terminal::LineEdit::draw( int x, int y ){
@@ -108,13 +108,15 @@ void RainbruRPG::Terminal::LineEdit::draw( int x, int y ){
 
   for (int i=1; i<width; i++){
     SLsmg_gotorc (yw, xw+tempX);
-    SLsmg_printf( "_" );
+    // cast to char* to avoid deprecating conversion warning
+    SLsmg_printf( (char*)"_" );
 
     tempX++;
   }
 
   SLsmg_gotorc (yw, xw);
-  SLsmg_printf( "%s", this->text.c_str() );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)"%s", this->text.c_str() );
 
   SLsmg_set_color (0);
   //  SLsmg_gotorc ((y+this->y)-1, ((x+this->x)-2)+cursorPosition);

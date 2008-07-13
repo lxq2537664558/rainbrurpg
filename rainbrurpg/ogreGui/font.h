@@ -31,10 +31,7 @@
 
 #include <string>
 
-//#include <OgrePrerequisites.h>
-#include <OgreColourValue.h>
-#include <OgreRectangle.h>
-#include <OgreTexture.h>
+#include <ogreimport.h>
 
 #include "glyph.h"
 #include "lineinfo.h"

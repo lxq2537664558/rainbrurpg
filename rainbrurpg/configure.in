@@ -122,9 +122,12 @@ RB_OPTION_SERVER
 RB_OPTION_TESTS
 RB_OPTION_EDITOR
 RB_OPTION_TOOLS
+RB_OPTION_EXAMPLES
 RB_OPTION_ALL
 RB_OPTION_SCROLLPANE_TEST
 RB_OPTION_MCL_TEST
+RB_OPTION_OGRE_DEPREC_WARN
+
 dnl #################################################################"""
 dnl #################################################################"""
 dnl #################################################################"""
@@ -167,6 +170,8 @@ AC_CONFIG_FILES([Makefile			\
 	  tools/netflooder/Makefile		\
 	  tools/ftpclient/Makefile		\
 	  tools/hashsum/Makefile		\
+	  examples/Makefile			\
+	  examples/tapi/Makefile		\
 	  \
  	  RainbruRPG.html/Makefile	        \
 	  config/Makefile			\

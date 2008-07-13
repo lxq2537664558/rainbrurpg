@@ -905,12 +905,16 @@ RB_OPTION_EDITOR_FLAGS_TRUE
 RB_OPTION_EDITOR_FLAGS_FALSE
 RB_OPTION_TOOLS_FLAGS_TRUE
 RB_OPTION_TOOLS_FLAGS_FALSE
+RB_OPTION_EXAMPLES_FLAGS_TRUE
+RB_OPTION_EXAMPLES_FLAGS_FALSE
 RB_OPTION_ALL_FLAGS_TRUE
 RB_OPTION_ALL_FLAGS_FALSE
 RB_SCROLLPANE_TEST_TRUE
 RB_SCROLLPANE_TEST_FALSE
 RB_MULTICOLUMNLIST_TEST_TRUE
 RB_MULTICOLUMNLIST_TEST_FALSE
+RB_DISABLE_OGRE_DEPREC_WARN_TRUE
+RB_DISABLE_OGRE_DEPREC_WARN_FALSE
 ALLOCA
 LIBOBJS
 LTLIBOBJS'
@@ -1535,6 +1539,9 @@ Optional Features:
   --enable-tools          Build the RainbruRPG tools. It is recommended only
                           for package maintainers and curious users
                           (default=no)
+  --enable-examples       Build the RainbruRPG examples. It is recommended
+                          only for package maintainers and curious users
+                          (default=no)
   --enable-all            Build the whole package. It is a convenience option
                           that build the client, the server, the editor and
                           the tools. (default=no)
@@ -1544,6 +1551,9 @@ Optional Features:
   --enable-mcl-test       Build a MultiColumnList test window in the main menu
                           game state. It is only a developper option, used
                           during MultiColumnList implementation. (default=no)
+  --enable-Wno-stddep-ogre
+                          Disables deprecated warnings of std headers due to
+                          Ogre includes. (default=no)
   --enable-debug          Build the package with local admin-site
                           authentification and informative logging
                           informations. Should be for developpers only.
@@ -5396,7 +5406,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5399 "configure"' > conftest.$ac_ext
+  echo '#line 5409 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7976,11 +7986,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7979: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7989: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7983: \$? = $ac_status" >&5
+   echo "$as_me:7993: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8266,11 +8276,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8269: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8279: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:8273: \$? = $ac_status" >&5
+   echo "$as_me:8283: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8370,11 +8380,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8373: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8383: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8377: \$? = $ac_status" >&5
+   echo "$as_me:8387: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10747,7 +10757,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10750 "configure"
+#line 10760 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10847,7 +10857,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10850 "configure"
+#line 10860 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13248,11 +13258,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13251: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13261: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:13255: \$? = $ac_status" >&5
+   echo "$as_me:13265: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -13352,11 +13362,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13355: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13365: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13359: \$? = $ac_status" >&5
+   echo "$as_me:13369: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14950,11 +14960,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14953: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14963: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14957: \$? = $ac_status" >&5
+   echo "$as_me:14967: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -15054,11 +15064,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:15057: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:15067: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:15061: \$? = $ac_status" >&5
+   echo "$as_me:15071: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -17274,11 +17284,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17277: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17287: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17281: \$? = $ac_status" >&5
+   echo "$as_me:17291: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17564,11 +17574,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17567: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17577: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17571: \$? = $ac_status" >&5
+   echo "$as_me:17581: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17668,11 +17678,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17671: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17681: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17675: \$? = $ac_status" >&5
+   echo "$as_me:17685: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -22499,6 +22509,41 @@ fi
 
 
 
+  # Check whether --enable-tools was given.
+if test "${enable_tools+set}" = set; then
+  enableval=$enable_tools; build_examples=$enableval
+else
+  build_examples=no
+fi
+
+
+  { echo "$as_me:$LINENO: checking if we should build RainbruRPG-examples" >&5
+echo $ECHO_N "checking if we should build RainbruRPG-examples... $ECHO_C" >&6; }
+
+  case $build_examples in
+    yes)
+      examples=true
+      { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+      ;;
+    *)
+      examples=false
+      { echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+      ;;
+  esac
+
+
+if test x$examples = xtrue; then
+  RB_OPTION_EXAMPLES_FLAGS_TRUE=
+  RB_OPTION_EXAMPLES_FLAGS_FALSE='#'
+else
+  RB_OPTION_EXAMPLES_FLAGS_TRUE='#'
+  RB_OPTION_EXAMPLES_FLAGS_FALSE=
+fi
+
+
+
   # Check whether --enable-all was given.
 if test "${enable_all+set}" = set; then
   enableval=$enable_all; build_all=$enableval
@@ -22637,6 +22682,51 @@ else
   RB_MULTICOLUMNLIST_TEST_TRUE='#'
   RB_MULTICOLUMNLIST_TEST_FALSE=
 fi
+
+
+
+  # Check whether --enable-Wno-stddep-ogre was given.
+if test "${enable_Wno_stddep_ogre+set}" = set; then
+  enableval=$enable_Wno_stddep_ogre; ogre_no_deprec=$enableval
+else
+  ogre_no_deprec=no
+fi
+
+
+  { echo "$as_me:$LINENO: checking if we should disable std deprecated warnings due to Ogre" >&5
+echo $ECHO_N "checking if we should disable std deprecated warnings due to Ogre... $ECHO_C" >&6; }
+
+  case $ogre_no_deprec in
+    yes)
+      _ogre_no_deprec=true
+
+cat >>confdefs.h <<\_ACEOF
+#define RB_DISABLE_OGRE_DEPREC_WARN
+_ACEOF
+
+      cat >>confdefs.h <<\_ACEOF
+#define RB_DISABLE_OGRE_DEPREC_WARN 1
+_ACEOF
+
+      { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+      ;;
+    *)
+      _ogre_no_deprec=false
+      { echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+      ;;
+  esac
+
+
+if test x$_ogre_no_deprec = xtrue; then
+  RB_DISABLE_OGRE_DEPREC_WARN_TRUE=
+  RB_DISABLE_OGRE_DEPREC_WARN_FALSE='#'
+else
+  RB_DISABLE_OGRE_DEPREC_WARN_TRUE='#'
+  RB_DISABLE_OGRE_DEPREC_WARN_FALSE=
+fi
+
 
 
 
@@ -25754,7 +25844,7 @@ echo "${ECHO_T}$ac_cv_func_mknod" >&6; }
 
 
 
-ac_config_files="$ac_config_files Makefile common/Makefile terminalapi/Makefile maincore/Makefile ogreGui/Makefile design/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile tools/hashsum/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
+ac_config_files="$ac_config_files Makefile common/Makefile terminalapi/Makefile maincore/Makefile ogreGui/Makefile design/Makefile client/Makefile editor/Makefile server/Makefile tests/Makefile tools/Makefile tools/transmsg/Makefile tools/xident/Makefile tools/netflooder/Makefile tools/ftpclient/Makefile tools/hashsum/Makefile examples/Makefile examples/tapi/Makefile RainbruRPG.html/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc"
 
 
 
@@ -25931,6 +26021,13 @@ echo "$as_me: error: conditional \"RB_OPTION_TOOLS_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
+if test -z "${RB_OPTION_EXAMPLES_FLAGS_TRUE}" && test -z "${RB_OPTION_EXAMPLES_FLAGS_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"RB_OPTION_EXAMPLES_FLAGS\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"RB_OPTION_EXAMPLES_FLAGS\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
 if test -z "${RB_OPTION_ALL_FLAGS_TRUE}" && test -z "${RB_OPTION_ALL_FLAGS_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"RB_OPTION_ALL_FLAGS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
@@ -25956,6 +26053,13 @@ if test -z "${RB_MULTICOLUMNLIST_TEST_TRUE}" && test -z "${RB_MULTICOLUMNLIST_TE
   { { echo "$as_me:$LINENO: error: conditional \"RB_MULTICOLUMNLIST_TEST\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"RB_MULTICOLUMNLIST_TEST\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${RB_DISABLE_OGRE_DEPREC_WARN_TRUE}" && test -z "${RB_DISABLE_OGRE_DEPREC_WARN_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"RB_DISABLE_OGRE_DEPREC_WARN\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"RB_DISABLE_OGRE_DEPREC_WARN\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -26443,6 +26547,8 @@ do
     "tools/netflooder/Makefile") CONFIG_FILES="$CONFIG_FILES tools/netflooder/Makefile" ;;
     "tools/ftpclient/Makefile") CONFIG_FILES="$CONFIG_FILES tools/ftpclient/Makefile" ;;
     "tools/hashsum/Makefile") CONFIG_FILES="$CONFIG_FILES tools/hashsum/Makefile" ;;
+    "examples/Makefile") CONFIG_FILES="$CONFIG_FILES examples/Makefile" ;;
+    "examples/tapi/Makefile") CONFIG_FILES="$CONFIG_FILES examples/tapi/Makefile" ;;
     "RainbruRPG.html/Makefile") CONFIG_FILES="$CONFIG_FILES RainbruRPG.html/Makefile" ;;
     "config/Makefile") CONFIG_FILES="$CONFIG_FILES config/Makefile" ;;
     "data/Makefile") CONFIG_FILES="$CONFIG_FILES data/Makefile" ;;
@@ -26713,18 +26819,22 @@ RB_OPTION_EDITOR_FLAGS_TRUE!$RB_OPTION_EDITOR_FLAGS_TRUE$ac_delim
 RB_OPTION_EDITOR_FLAGS_FALSE!$RB_OPTION_EDITOR_FLAGS_FALSE$ac_delim
 RB_OPTION_TOOLS_FLAGS_TRUE!$RB_OPTION_TOOLS_FLAGS_TRUE$ac_delim
 RB_OPTION_TOOLS_FLAGS_FALSE!$RB_OPTION_TOOLS_FLAGS_FALSE$ac_delim
+RB_OPTION_EXAMPLES_FLAGS_TRUE!$RB_OPTION_EXAMPLES_FLAGS_TRUE$ac_delim
+RB_OPTION_EXAMPLES_FLAGS_FALSE!$RB_OPTION_EXAMPLES_FLAGS_FALSE$ac_delim
 RB_OPTION_ALL_FLAGS_TRUE!$RB_OPTION_ALL_FLAGS_TRUE$ac_delim
 RB_OPTION_ALL_FLAGS_FALSE!$RB_OPTION_ALL_FLAGS_FALSE$ac_delim
 RB_SCROLLPANE_TEST_TRUE!$RB_SCROLLPANE_TEST_TRUE$ac_delim
 RB_SCROLLPANE_TEST_FALSE!$RB_SCROLLPANE_TEST_FALSE$ac_delim
 RB_MULTICOLUMNLIST_TEST_TRUE!$RB_MULTICOLUMNLIST_TEST_TRUE$ac_delim
 RB_MULTICOLUMNLIST_TEST_FALSE!$RB_MULTICOLUMNLIST_TEST_FALSE$ac_delim
+RB_DISABLE_OGRE_DEPREC_WARN_TRUE!$RB_DISABLE_OGRE_DEPREC_WARN_TRUE$ac_delim
+RB_DISABLE_OGRE_DEPREC_WARN_FALSE!$RB_DISABLE_OGRE_DEPREC_WARN_FALSE$ac_delim
 ALLOCA!$ALLOCA$ac_delim
 LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 50; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 54; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

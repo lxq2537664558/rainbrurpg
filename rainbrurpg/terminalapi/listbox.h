@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** Modifications :
+  * - 11 jul 2008 : Now use std::string member
+  *
+  */
+
 #ifndef LIST_BOX_H
 #define LIST_BOX_H
 
@@ -50,18 +56,18 @@ namespace RainbruRPG{
     class ListBox : public Widget{
     public:
       ListBox();
-      ListBox( const char* );
-      ListBox( const char*, int, int );
+      ListBox( const std::string& );
+      ListBox( const std::string&, int, int );
 
       ~ListBox();
 
-      void setText( const char* );
+      void setText( const std::string& );
       void setDrawCaption( bool );
 
-      const char* getText();
+      const std::string& getText()const;
       bool getDrawCaption();
 
-      void addItem(const char*);
+      void addItem(const std::string&);
 
       virtual void draw( int x, int y );
       virtual void receiveKeyEvent(int);
@@ -83,7 +89,7 @@ namespace RainbruRPG{
       tListBoxItemList itemList;
 
       /** The caption of the label */
-      const char* caption;
+      std::string caption;
 
       /** If \c true, draw the listBox caption 
         * 

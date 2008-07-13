@@ -1,5 +1,10 @@
 *** TerminalAPI ***
 /usr/share/doc/libslang2-dev/examples
+
+* Ne plus utiliser SLang
+- voir ANSI terminal 
+http://www.commentcamarche.net/forum/affich-1128311-texte-couleur-dans-un-terminal
+
 * ScrollingPanel devient un wrapper des commandes S-Lang
 	- Il met toutes ces commandes dans une liste
 	- Execute la liste des commandes

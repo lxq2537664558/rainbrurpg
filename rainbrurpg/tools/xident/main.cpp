@@ -24,7 +24,10 @@
 #include <string>
 
 #include <logger.h>
+
+#define INCLUDE_VERSION_WITHOUT_OGRE
 #include <version.h>
+
 #include <fox-1.6/fx.h>
 #include <hashpassword.h>
 

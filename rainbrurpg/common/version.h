@@ -26,18 +26,25 @@
  *
  */ 
 
+#ifndef VERSION_H
+#define VERSION_H
+
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <curl/curlver.h>
-#include <OGRE/OgrePrerequisites.h>
 #include <fox-1.6/fxver.h>
 #include <OIS/OISPrereqs.h>
 
-#include "logger.h"
+/* The following macro is used by server and tools that do not link Ogre3D
+ * to prevent compilation error
+ */
+#ifndef INCLUDE_VERSION_WITHOUT_OGRE
+//#  include <OgrePrerequisites.h> // For Ogre version
+#  include <maincore/ogreimport.h> // For Ogre version
+#endif //INCLUDE_VERSION_WITHOUT_OGRE
 
-#ifndef VERSION_H
-#define VERSION_H
+#include "logger.h"
 
 using namespace std;
 using namespace OIS;

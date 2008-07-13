@@ -40,22 +40,22 @@ namespace RainbruRPG {
     /** All command that need a Transfer Channel
      *
      */
-    typedef enum tTransferCommand{
+    typedef enum{
       FTC_NONE,     // NOOP command
       FTC_LIST,     // The command is a LIST command
       FTC_RETR,     // The retrieve command
       FTC_STOR,     // The STORE command
-    };
+    }tTransferCommand;
     
     /** An enumeration describing the FTP transfer mode
      *
      * The default is FTM_PASSIVE.
      *
      */
-    typedef enum tTransferMode{
+    typedef enum{
       FTM_ACTIVE,  //!< Active server mode
       FTM_PASSIVE, //!< Passive server mode
-    };
+    }tTransferMode;
     
     /** An enumeration describing the FTP transfer type
      *
@@ -64,20 +64,20 @@ namespace RainbruRPG {
      * The default is FTT_ASCII.
      *
      */
-    typedef enum tTransferType { 
+    typedef enum { 
       FTT_BINARY, //!< The file is opened in binary mode
       FTT_ASCII,  //!< The file is opened in ascii mode
-    };
+    }tTransferType;
 
     /** Defines the errors that can occur during a file transfer
       *
       */
-    typedef enum tTransferError {
+    typedef enum{
       FTE_OPEN_FILE_ERROR,         //!< Cannot create the requested file
       FTE_OPEN_DATA_CHANNEL_ERROR, //!< Cannot open data channel
       FTP_FILE_ALREADY_EXIST,      //!< The file the client try to store
                                    //!< already exist on the server
-    };
+    }tTransferError;
 
   }
 }

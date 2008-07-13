@@ -41,7 +41,7 @@ RainbruRPG::Terminal::Label::Label(){
   *
   * \param c the caption of the label
   */
-RainbruRPG::Terminal::Label::Label( char* c ){
+RainbruRPG::Terminal::Label::Label( const std::string& c ){
   this->caption=c;
   this->setX( 0 );
   this->setY( 0 );
@@ -57,7 +57,7 @@ RainbruRPG::Terminal::Label::Label( char* c ){
   * \param x the x coordonate of the label
   * \param y the y coordonate of the label
   */
-RainbruRPG::Terminal::Label::Label( char* c, int x, int y ){
+RainbruRPG::Terminal::Label::Label( const std::string& c, int x, int y ){
   this->caption=c;
   this->setX( x );
   this->setY( y );
@@ -75,7 +75,7 @@ RainbruRPG::Terminal::Label::~Label(){
   *
   * \param c the new caption of the label
   */
-void RainbruRPG::Terminal::Label::setText( char* c ){
+void RainbruRPG::Terminal::Label::setText( const std::string& c ){
   this->caption=c;
 }
 
@@ -84,11 +84,12 @@ void RainbruRPG::Terminal::Label::setText( char* c ){
   * \return the caption of the label
   *
   */
-char* RainbruRPG::Terminal::Label::getText(){
+const std::string& RainbruRPG::Terminal::Label::getText()const{
   return this->caption;
 }
 
 void RainbruRPG::Terminal::Label::draw( int x, int y ){
   SLsmg_gotorc ((y+this->y)-1, (x+this->x)-2);
-  SLsmg_printf( "%s", this->caption );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)"%s", this->caption.c_str() );
 }

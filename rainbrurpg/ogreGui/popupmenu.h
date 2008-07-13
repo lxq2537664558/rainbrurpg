@@ -29,8 +29,8 @@
 #ifndef _OGRE_GUI_POPUP_MENU_H_
 #define _OGRE_GUI_POPUP_MENU_H_
 
-#include <OgreVector4.h>
-#include <OgreOverlayContainer.h>
+#include <ogreimport.h>
+
 #include <list>
 
 #include "widget.h" 

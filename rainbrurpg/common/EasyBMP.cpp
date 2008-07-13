@@ -20,6 +20,7 @@
 
 
 /* Modifications :
+ * - 06 jul 2008 : New includes to handle memcpy()
  * - 07 aug 2007 : Now using RainbruRPG::logger
  *
  */
@@ -27,8 +28,10 @@
 #include "EasyBMP.h"
 
 #include <sstream>
+#include <cstring> // For memcpy()
 #include "logger.h"
 
+using namespace std;
 using namespace RainbruRPG::Exception;
 
 /* These functions are defined in EasyBMP.h */

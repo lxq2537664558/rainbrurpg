@@ -440,6 +440,15 @@
   *
   * In a Window, you can add some Widget based class. The events are
   * function-pointer driven.
+  *
+  * \note An example of usage of this library is provided in the
+  *       \c examples/ subdirectory. To enable its building, please
+  *       pass the \c --enable-examples option to the configure script.
+  *
+  * \note This library is linked to rainbrurpg-common one. You must 
+  *       include common/ headers and link you program to librainbrurpg-common
+  *       to use terminalApi.
+  *
   */
 
 /** \namespace RainbruRPG::Network

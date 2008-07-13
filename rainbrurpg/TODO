@@ -97,7 +97,21 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-181
-- (5) Fix the resizing window bug (Container::handleButtonEvent())
+- (19) TerminalApp cleanup correctly
+- TerminalApp disable log on stdout
+- tapi example in examples/tapi/
+- now ./configure option to build examples
+- examples/ added
+- Fix some charbase.cpp string to char* deprecated warnings
+- Ogre inclusion deprecated warning fixed with a hack in ogreimport.h
+- OgreGui now uses ogreimport.h
+- maincore/ogreimport.h implemented
+- New configure option to disable deprecated warning from Ogre inclusion
+- Fix the background clipping bug
+- Fix the typedef warning
+- Fix the window moving bug
+- Fix many #include errors
+- Fix the resizing window bug (Container::handleButtonEvent())
 - Bugfix : when moving a window, ScrollBars wasn't move
 - Window's title bar removed from content scissor
 - The content scissor of a window now handle ScrollBars visibility

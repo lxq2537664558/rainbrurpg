@@ -37,6 +37,8 @@
 #include <vector>
 #include <glib.h>
 
+#include <cstring> // For memcpy()
+
 using namespace std;
 
 /* The packets are all reliable if defined */
@@ -64,7 +66,7 @@ namespace RainbruRPG{
       *
       * \sa NetPacketBase
       */
-    typedef enum tNetPacketIdentifier{
+    typedef enum{
       /** <b>The identification packet identifier</b>
         *
 	* This type of packet is sent to a server to tell what type of
@@ -101,12 +103,12 @@ namespace RainbruRPG{
 	*
 	*/
       NPI_INVALID       =0xFFFF
-    };
+    }tNetPacketIdentifier;
 
     /** Only used to get the packet identifier
       *
       */
-    typedef union npPacketBaseData{
+    typedef union{
       /** The data abstraction structure */
       struct {
 	/** The paket identifier
@@ -120,7 +122,7 @@ namespace RainbruRPG{
       };
       /** The data to be sent  over the network */
       enet_uint8 data[2];
-    };
+    }npPacketBaseData;
 
     /** The base Enet network packet
       *

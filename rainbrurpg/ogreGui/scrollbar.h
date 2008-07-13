@@ -31,9 +31,7 @@
 #ifndef _OGRE_GUI_SCROLLBAR_H_
 #define _OGRE_GUI_SCROLLBAR_H_
 
-#include <OgreVector4.h>
-#include <OgreOverlayContainer.h>
-#include <OgreOverlayContainer.h>
+#include <ogreimport.h>
 
 #include "widget.h"
 #include "skinmanager.h"

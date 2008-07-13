@@ -42,13 +42,13 @@ namespace RainbruRPG{
     class LineEdit : public Widget{
     public:
       LineEdit();
-      LineEdit( const char* );
-      LineEdit( const char*, int, int );
+      LineEdit( const string& );
+      LineEdit( const string&, int, int );
 
       virtual ~LineEdit();
 
-      void setText( const char* );
-      const char* getText();
+      void setText( const string& );
+      const string& getText()const;
 
       virtual void draw( int x, int y );
       virtual void receiveKeyEvent(int);

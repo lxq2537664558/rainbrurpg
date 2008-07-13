@@ -20,6 +20,16 @@
  *
  */
 
+/** \file terminalapp.h
+  * Defines the base class of TerminalAPI.
+  * 
+  * Defines the \ref RainbruRPG::Terminal::TerminalApp "TerminalApp"
+  * class.
+  *
+  * Modifications :
+  * - 11 jul 2008 : Now using std strings 
+  *
+  */
 #ifndef TERMINAL_APP
 #define TERMINAL_APP
 
@@ -62,6 +72,21 @@ namespace RainbruRPG{
       * This class uses S-Lang.
       *
       * A dialog can be set with showDialog(Dialog*)
+      *
+      * Before using this class, call init().
+      * This class should use a menu bar, you can set it by calling 
+      * setMenubar(MenuBar*).
+      *
+      * The standard usage is as follow :
+      * <code>
+      * TerminalApp::getSingleton().init();
+      * TerminalApp::getSingleton().setMenubar(createMenubar());
+      * TerminalApp::getSingleton().draw();     
+      * TerminalApp::getSingleton().run();     
+      * // TerminalAPI is wotking
+      * TerminalApp::getSingleton().cleanup();     
+      * </code>
+      *
       */
     class TerminalApp :public Singleton<TerminalApp>{
     public:
@@ -79,7 +104,7 @@ namespace RainbruRPG{
 
       void setMenubar( MenuBar* );
       MenuBar* getMenubar();
-      void showMessage(char*);
+      void showMessage(const std::string&);
       void showDialog(Dialog*);
       void addWindow(Window*);
       void addWindow(Window* , bool);
@@ -143,6 +168,8 @@ namespace RainbruRPG{
 
       /** The TerminalApp MenuBar
         *
+	* Always NULL if no menubar is manually set.
+	*
 	*/
       MenuBar* menubar;
 
@@ -205,7 +232,7 @@ namespace RainbruRPG{
       /** The string to be drawn in the message box
         *
 	*/
-      char* message;
+      std::string message;
     };
   }
 }

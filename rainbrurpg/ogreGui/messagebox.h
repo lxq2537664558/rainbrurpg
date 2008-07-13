@@ -21,7 +21,7 @@
  */
 
 /* Modifications :
- * - 14 may 2008 : Now based ob OgreGui::Dialog
+ * - 14 may 2008 : Now based on OgreGui::Dialog
  *                 Moves from maincore/ to ogregui/
  * - 16 nov 2007 : No more based on DialogSystem (removed)
  * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
@@ -32,7 +32,7 @@
 #ifndef _DIALOG_SYSTEM_H_
 #define _DIALOG_SYSTEM_H_
 
-#include <OgrePrerequisites.h> // For Ogre::String
+#include <ogreimport.h>
 
 #include "bglistener.h"
 

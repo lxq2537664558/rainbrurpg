@@ -23,12 +23,13 @@
 #ifndef VELOCITY_CALCULATOR_H
 #define VELOCITY_CALCULATOR_H
 
-#include <Ogre.h>
-//forward declaration
+#include <ogreimport.h>
+
+
+// Forward declaration
 class EventTarget;
 class Cursor;
-
-#include <OgreTimer.h>
+// End of forward declaration
 
 namespace RainbruRPG{
   namespace Core{

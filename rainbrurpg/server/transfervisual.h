@@ -48,12 +48,12 @@ namespace RainbruRPG{
 	* are defined here.
 	*
 	*/
-      typedef enum tTransferVisualState{
+      typedef enum{
 	TVS_UNDEFINED,   //!< Undefined state
 	TVS_INPROGRESS,  //!< The download is in progress
 	TVS_ERROR,       //!< The data channel was closed 
 	TVS_SUCCESS      //!< The download is successful
-      };
+      }tTransferVisualState;
 
       /** A visual representation of a FTP transfer
         *

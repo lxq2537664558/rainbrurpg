@@ -23,7 +23,7 @@
 #ifndef ENVIRONMENT_SETUP_H
 #define ENVIRONMENT_SETUP_H
 
-#include <Ogre.h>
+#include <ogreimport.h>
 
 #include <xmlobjectlist.h>
 #include <objectmesh.h>

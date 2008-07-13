@@ -28,6 +28,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring> // For strcmp
 
 #include <hashfile.h>
 #include <hashpassword.h>

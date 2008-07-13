@@ -27,11 +27,7 @@
   * we must undef it because FOX and OGRE define it 
   */
 #undef PI
-#include <OGRE/Ogre.h>
-//#include <OgreRoot.h>
-//#include <OgreRenderSystem.h>
-//#include <OgreEventTarget.h>
-//#include <OgreInputEvent.h>
+#include <ogreimport.h>
 
 using namespace RainbruRPG::Options;
 

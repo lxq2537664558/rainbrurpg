@@ -32,9 +32,7 @@
 #define GUI_MANAGER_H
 
 #include <singleton.h>
-#include <Ogre.h>
-#include <OgreStringConverter.h>
-#include <OgreException.h>
+#include <ogreimport.h>
 
 #include "gameengine.h"
 #include "velocitycalculator.h"

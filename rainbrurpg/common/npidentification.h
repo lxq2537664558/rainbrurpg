@@ -40,12 +40,12 @@ namespace RainbruRPG{
       *
       * \sa npIdentification, npIdentificationData
       */
-    typedef enum tNetworkClientType{
+    typedef enum{
       NCT_FLOODER    =0x01, //<! The client is a flooder
       NCT_EDITOR     =0x02, //<! The client is an editor
       NCT_GAME       =0x03, //<! The client is a flooder
       NCT_UNKNOWN    =0x99  //<! Not yet set
-    };
+    }tNetworkClientType;
 
     /** defines the data of a npIdentification packet
       *
@@ -61,7 +61,7 @@ namespace RainbruRPG{
       * \sa \ref npIdentification, \ref tNetworkClientType
       *
       */
-    typedef union npIdentificationData{
+    typedef union{
       /** The data abstraction structure */
       struct {
 	/** The paket identifier
@@ -81,7 +81,7 @@ namespace RainbruRPG{
       };
       /** The data to be sent  over the network */
       enet_uint8 data[4];
-    };
+    }npIdentificationData;
 
     /** The identification packet
       *

@@ -600,3 +600,63 @@ AC_DEFUN([RB_OPTION_MCL_TEST],
   esac
   AM_CONDITIONAL([RB_MULTICOLUMNLIST_TEST], [test x$_mcl_test = xtrue])
 ])
+
+dnl Define an option used to disable the std headers deprecated warning
+dnl due to Ogre
+dnl
+dnl Please see maincore/ogreimport.h for further informations
+dnl
+AC_DEFUN([RB_OPTION_OGRE_DEPREC_WARN],
+[
+  AC_ARG_ENABLE(Wno-stddep-ogre, AC_HELP_STRING([--enable-Wno-stddep-ogre],
+    [Disables deprecated warnings of std headers due to Ogre includes.
+       (default=no)]),
+    [ogre_no_deprec=$enableval], 
+    [ogre_no_deprec=no])
+
+  AC_MSG_CHECKING([if we should disable std deprecated warnings due to Ogre])
+
+  case $ogre_no_deprec in
+    yes)
+      _ogre_no_deprec=true
+      AC_DEFINE([RB_DISABLE_OGRE_DEPREC_WARN], [], [Defines if we must disable
+      the deprecated warnings due to Ogre inclusion of std headers])
+      AC_DEFINE(RB_DISABLE_OGRE_DEPREC_WARN)
+      AC_MSG_RESULT(yes)
+      ;;
+    *)
+      _ogre_no_deprec=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+  AM_CONDITIONAL([RB_DISABLE_OGRE_DEPREC_WARN], [test x$_ogre_no_deprec = xtrue])
+])
+
+dnl Define the tools Option 
+dnl
+dnl Provides the --enable-editor option of the configure script
+dnl By default, the editor is disabled
+dnl
+AC_DEFUN([RB_OPTION_EXAMPLES],
+[
+  AC_ARG_ENABLE(tools, AC_HELP_STRING([--enable-examples],
+    [Build the RainbruRPG examples. It is recommended only for package
+	maintainers and curious users
+       (default=no)]),
+    [build_examples=$enableval], 
+    [build_examples=no])
+
+  AC_MSG_CHECKING([if we should build RainbruRPG-examples])
+
+  case $build_examples in
+    yes)
+      examples=true
+      AC_MSG_RESULT(yes)
+      ;;
+    *)
+      examples=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+  AM_CONDITIONAL([RB_OPTION_EXAMPLES_FLAGS], [test x$examples = xtrue])
+])

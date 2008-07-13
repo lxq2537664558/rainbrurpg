@@ -42,13 +42,13 @@ namespace RainbruRPG{
     class PushButton : public Widget{
     public:
       PushButton();
-      PushButton( const char* );
-      PushButton( const char*, int, int );
+      PushButton( const string& );
+      PushButton( const string&, int, int );
 
       virtual ~PushButton();
 
-      void setText( const char* );
-      const char* getText();
+      void setText( const string& );
+      const string& getText()const;
 
       virtual void draw( int x, int y );
       virtual void receiveKeyEvent(int);

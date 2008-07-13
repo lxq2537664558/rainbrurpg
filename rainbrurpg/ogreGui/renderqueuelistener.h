@@ -28,8 +28,7 @@
 #ifndef _OGRE_GUI_RENDER_QUEUE_LISTENER_H__
 #define _OGRE_GUI_RENDER_QUEUE_LISTENER_H__
 
-#include <Ogre.h>
-#include <OgreRenderQueueListener.h>
+#include <ogreimport.h>
 
 #include "bggui.h"
 

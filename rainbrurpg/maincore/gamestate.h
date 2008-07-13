@@ -29,7 +29,7 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-#include <OgreFrameListener.h>
+#include <ogreimport.h>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>
@@ -49,10 +49,10 @@ namespace RainbruRPG {
       * state we are about to change. 
       *
       */
-    typedef enum tGameStateType{
+    typedef enum{
       GST_MENU, //!< The GameState is a menu
       GST_GAME  //!< The GameState is game (with a map, a moving camera...)
-    };
+    }tGameStateType;
 
     /** Base abstract class of all the GameStates
       *

@@ -29,13 +29,13 @@ namespace BetaGUI {
   /** An enumeration defining the type of a Callback
     *
     */
-  typedef enum OgreGUICallbackType{
+  typedef enum{
     OCT_NULL       = 0,  //<! A null callback
     OCT_FUNC,            //<! A callback based on function pointer
     OCT_LIST,            //<! A callback based on a BetaGUIListener
     OCT_WIN_MOVE,        //<! The callback is used to move a Window
     OCT_WIN_RESIZE,      //<! The callback is used to resize a Window
-  };
+  }OgreGUICallbackType;
 
   /** Defines a callback that can be use with BetaGUI
     *

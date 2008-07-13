@@ -26,8 +26,6 @@
 
 #include <logger.h>
 
-#include <OgreStringConverter.h>
-
 /** The scrollbar constructor
   *
   * \param dim    The dimensions of the scrollbar in pixels

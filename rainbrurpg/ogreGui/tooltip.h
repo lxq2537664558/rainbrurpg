@@ -28,7 +28,7 @@
 #ifndef _OGRE_GUI_TOOL_TIP_H_
 #define _OGRE_GUI_TOOL_TIP_H_
 
-#include <OgreVector4.h>
+#include <ogreimport.h>
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID

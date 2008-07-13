@@ -186,6 +186,10 @@
    informations */
 #undef RAINBRU_RPG_DEBUG
 
+/* Defines if we must disable the deprecated warnings due to Ogre inclusion of
+   std headers */
+#undef RB_DISABLE_OGRE_DEPREC_WARN
+
 /* Defines if the MultiColumnList test window is built */
 #undef RB_MULTICOLUMNLIST_TEST
 

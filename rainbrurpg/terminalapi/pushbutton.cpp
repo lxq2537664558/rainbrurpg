@@ -43,7 +43,7 @@ RainbruRPG::Terminal::PushButton::PushButton(){
   *
   * \param c the caption of the PushButton
   */
-RainbruRPG::Terminal::PushButton::PushButton( const char* c ){
+RainbruRPG::Terminal::PushButton::PushButton( const string& c ){
   actionSet=false;
   this->setX( 0 );
   this->setY( 0 );
@@ -61,7 +61,7 @@ RainbruRPG::Terminal::PushButton::PushButton( const char* c ){
   * \param x the x coordonate of the PushButton
   * \param y the y coordonate of the PushButton
   */
-RainbruRPG::Terminal::PushButton::PushButton( const char* c, int x, int y ){
+RainbruRPG::Terminal::PushButton::PushButton( const string& c, int x, int y ){
   actionSet=false;
   this->setX( x );
   this->setY( y );
@@ -81,7 +81,7 @@ RainbruRPG::Terminal::PushButton::~PushButton(){
   *
   * \param c the new caption of the PushButton
   */
-void RainbruRPG::Terminal::PushButton::setText( const char* c ){
+void RainbruRPG::Terminal::PushButton::setText( const string& c ){
   this->caption->setText( c );
 }
 
@@ -90,8 +90,8 @@ void RainbruRPG::Terminal::PushButton::setText( const char* c ){
   * \return the caption of the label
   *
   */
-const char* RainbruRPG::Terminal::PushButton::getText(){
-  return this->caption->getText().c_str();
+const string& RainbruRPG::Terminal::PushButton::getText()const{
+  return this->caption->getText();
 }
 
 void RainbruRPG::Terminal::PushButton::draw( int x, int y ){
@@ -103,7 +103,8 @@ void RainbruRPG::Terminal::PushButton::draw( int x, int y ){
     SLsmg_set_color (1);
     SLsmg_gotorc (yw, xw);
     for (int i=0; i< this->width; i++)
-      SLsmg_printf( " " );
+      // cast to char* to avoid deprecating conversion warning
+      SLsmg_printf( (char*)" " );
   }
 
   caption->setXPos( xw );
@@ -112,9 +113,11 @@ void RainbruRPG::Terminal::PushButton::draw( int x, int y ){
   caption->setHeight( this->height );
 
   SLsmg_gotorc (yw, xw);
-  SLsmg_printf( "<" );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)"<" );
   SLsmg_gotorc (yw, xw+this->width);
-  SLsmg_printf( ">" );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)">" );
 
   caption->draw();
 
@@ -126,7 +129,8 @@ void RainbruRPG::Terminal::PushButton::receiveKeyEvent(int ch){
   if (ch==13){ //Enter
     int a=fireAction();
     if (a==-1)
-      TerminalApp::getSingleton().showMessage( "This PushButton has no action set."); 
+      TerminalApp::getSingleton()
+	.showMessage( "This PushButton has no action set."); 
   }
 }
 

@@ -26,7 +26,7 @@
 #include <QWidget>
 #include <QLabel>
 
-#include <Ogre.h>
+#include <ogreimport.h>
 
 namespace RainbruRPG{
   namespace Editor{

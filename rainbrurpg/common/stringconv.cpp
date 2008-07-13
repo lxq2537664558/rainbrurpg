@@ -25,6 +25,7 @@
 #include <bitset>
 #include <wchar.h>
 #include <logger.h>
+#include <cstring> // For strcmp()
 
 
 /** Desalocate the dynamic memory used for the conversion

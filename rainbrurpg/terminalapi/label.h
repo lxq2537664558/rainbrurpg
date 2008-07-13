@@ -19,12 +19,20 @@
  *  02110-1301  USA
  *
  */
+
+/** Modifications :
+  * - 11 jul 2008 : Now use std::string member
+  *
+  */
 #ifndef LABEL_H
 #define LABEL_H
 
 #include <slang.h>
+#include <string>
 
 #include "widget.h"
+
+using namespace std;
 
 namespace RainbruRPG{
   namespace Terminal{
@@ -36,19 +44,19 @@ namespace RainbruRPG{
     class Label : public Widget{
     public:
       Label();
-      Label( char* );
-      Label( char*, int, int );
+      Label( const std::string& );
+      Label( const std::string&, int, int );
 
       ~Label();
 
-      void setText( char* );
-      char* getText();
+      void setText( const std::string& );
+      const std::string& getText()const;
 
       virtual void draw( int x, int y );
       virtual void receiveKeyEvent(int){};
     private:
       /** The caption of the label */
-      char* caption;
+      std::string caption;
 
     };
   }

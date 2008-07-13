@@ -76,7 +76,7 @@ namespace RainbruRPG{
 
 
       tCaptionType getType();
-      std::string getText();
+      const std::string& getText()const;
       int getXPos();
       int getYPos();
       int getWidth();

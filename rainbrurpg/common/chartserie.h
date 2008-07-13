@@ -43,11 +43,11 @@ namespace RainbruRPG {
       * ChartSerie::addValue() function.
       *
       */
-    typedef struct tChartSerieValue{
+    typedef struct{
       double value;          //!< The value making the chart
       const char* xCaption;  //!< The caption for the x-Axis
       const char* yCaption;  //!< The caption for the y-Axis
-    };
+    }tChartSerieValue;
 
     /** A serie of values that can be added to a ChartBase
       *

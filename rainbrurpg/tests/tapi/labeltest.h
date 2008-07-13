@@ -29,6 +29,7 @@
 //#include <caption.h>
 
 #include <string>
+#include <cstring> // For strcmp
 
 using namespace std;
 

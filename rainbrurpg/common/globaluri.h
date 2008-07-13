@@ -72,12 +72,12 @@ namespace RainbruRPG{
       *     "tInstalledConfigFilesList"
       *
       */
-    typedef struct tInstalledConfigFilesListItem{
+    typedef struct {
       std::string filename;         //!< The filename without path
       std::string absoluteFileName; //!< The absolute filename (contains path)
       bool needCreation;            //!< Did this file need to be created ?
       bool exists;                  //!< Last exist test
-    };
+    }tInstalledConfigFilesListItem;
 
     /** A simple STL list of tInstalledConfigFilesListItem pointers 
       *

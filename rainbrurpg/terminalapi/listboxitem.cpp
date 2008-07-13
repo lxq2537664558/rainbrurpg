@@ -38,7 +38,7 @@ RainbruRPG::Terminal::ListBoxItem::ListBoxItem(){
   * \param caption The caption of the new item
   *
   */
-RainbruRPG::Terminal::ListBoxItem::ListBoxItem(const char* caption){
+RainbruRPG::Terminal::ListBoxItem::ListBoxItem(const string& caption){
   this->caption=caption;
   this->checked=false;
 }
@@ -72,7 +72,7 @@ void RainbruRPG::Terminal::ListBoxItem::setChecked(bool b){
   * \return The caption of this item
   *
   */
-const char* RainbruRPG::Terminal::ListBoxItem::getCaption(){
+const string& RainbruRPG::Terminal::ListBoxItem::getCaption()const{
   return this->caption;
 }
 
@@ -81,7 +81,7 @@ const char* RainbruRPG::Terminal::ListBoxItem::getCaption(){
   * \param caption The new caption
   *
   */
-void RainbruRPG::Terminal::ListBoxItem::setCaption(const char* caption){
+void RainbruRPG::Terminal::ListBoxItem::setCaption(const string& caption){
   this->caption=caption;
 }
 

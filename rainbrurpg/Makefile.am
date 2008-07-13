@@ -30,8 +30,12 @@ if RB_OPTION_TESTS_FLAGS
   SUBDIRS+=tests
 endif
 
+if RB_OPTION_EXAMPLES_FLAGS
+  SUBDIRS+=examples
+endif
+
 if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=editor server tools tests
+  SUBDIRS+=editor server tools tests examples
 endif 
 
 pkgconfigdir = $(libdir)/pkgconfig

@@ -27,7 +27,7 @@
 #ifndef MY_LOG_LISTENER
 #define MY_LOG_LISTENER
 
-#include <OGRE/Ogre.h>
+#include <ogreimport.h>
 #include <QWidget>
 
 

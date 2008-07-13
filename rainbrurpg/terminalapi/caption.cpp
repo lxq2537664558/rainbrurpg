@@ -23,6 +23,8 @@
 
 #include "caption.h"
 
+#include <vector>
+
 /** The default constructor
   *
   * It creates a basic word-wrapped Caption widget.
@@ -129,7 +131,7 @@ RainbruRPG::Terminal::tCaptionType RainbruRPG::Terminal::Caption::getType(){
   *
   * \return the text of the caption
   */
-std::string RainbruRPG::Terminal::Caption::getText(){
+const std::string& RainbruRPG::Terminal::Caption::getText()const{
   return this->text;
 }
 
@@ -238,7 +240,9 @@ void RainbruRPG::Terminal::Caption::drawHCentered(){
   // Calculate the x placement
   int x=(xPos+(width/2))- (text.length()/2);
   SLsmg_gotorc ( yPos, x );
-  SLsmg_printf( "%s", this->text.c_str() );
+
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)"%s",  text.c_str());
 }
 
 /** Get the first word of the text property and erase it
@@ -289,7 +293,9 @@ void RainbruRPG::Terminal::Caption::drawWordWrapped(){
       y++;
       SLsmg_gotorc (y, xPos);
     }
-    SLsmg_printf( "%s ", w.c_str() );
+
+    // cast to char* to avoid deprecating conversion warning
+    SLsmg_printf( (char*)"%s ", w.c_str() );
     toWidth+=w.length();
     toWidth++;
   }

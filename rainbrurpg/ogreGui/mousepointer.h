@@ -28,7 +28,7 @@
 #ifndef _OGRE_GUI_MOUSE_POINTER_H_
 #define _OGRE_GUI_MOUSE_POINTER_H_
 
-#include <OgreTexture.h>
+#include <ogreimport.h>
 
 // Forward declarations
 namespace Ogre{
@@ -52,7 +52,7 @@ namespace RainbruRPG{
       *     "MousePointer::setState()"
       *
       */
-    typedef enum tMousePointerState{
+    typedef enum{
       MPS_ARROW  =0,      //!< The normal state
       MPS_RESIZE,         //!< We're resizing a window
       MPS_MOVE,           //!< We're moving a window
@@ -67,7 +67,7 @@ namespace RainbruRPG{
       MPS_HSB_BSTEP_LEFT, //!< We're over HScrollBar left big step
       MPS_HSB_SSTEP_RIGHT,//!< We're over HScrollBar right small step
       MPS_HSB_BSTEP_RIGHT,//!< We're over HScrollBar right big step
-    };
+    }tMousePointerState;
 
     /** Draws and handles the OgreGui mouse pointer
       *

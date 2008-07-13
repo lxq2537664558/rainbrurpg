@@ -76,7 +76,8 @@ void RainbruRPG::Terminal::Dialog::drawEmpty(){
     SLsmg_gotorc (y, xPos);
     for (int x=xPos; x<xPos+width; x++){
 
-      SLsmg_printf( " " );
+     // cast to char* to avoid deprecating conversion warning
+      SLsmg_printf( (char*)" " );
     }
   }
   SLsmg_set_color (0);
@@ -145,12 +146,14 @@ void RainbruRPG::Terminal::Dialog::drawShadow(){
 
   for (int y=yPos+1; y<yPos+height+1; y++){
     SLsmg_gotorc (y, xPos+width+1);
-    SLsmg_printf( "  " );
+    // cast to char* to avoid deprecating conversion warning
+    SLsmg_printf( (char*)"  " );
   }
 
   for (int x=xPos+1; x<xPos+width+3; x++){
     SLsmg_gotorc (yPos+height, x);
-    SLsmg_printf( " " );
+    // cast to char* to avoid deprecating conversion warning
+    SLsmg_printf( (char*)" " );
   }
 
   SLsmg_set_color(0);
@@ -205,7 +208,8 @@ void RainbruRPG::Terminal::Dialog::drawTitle(){
   SLsmg_gotorc (yPos, x-1);
   SLsmg_set_char_set (0); //Use the alt charset
 
-  SLsmg_printf( " %s ", title.c_str() );
+  // cast to char* to avoid deprecating conversion warning
+  SLsmg_printf( (char*)" %s ", title.c_str() );
 
 }
 
@@ -258,7 +262,9 @@ void RainbruRPG::Terminal::Dialog::drawButtons(){
   * \param ch the keycode to treat
   */
 void RainbruRPG::Terminal::Dialog::receiveKeyEvent(int ch){
-  if (ch==13){ //ENTER
-    btn1->fireAction();
+  if (nbButton>0){
+    if (ch==13){ //ENTER
+      btn1->fireAction();
+    }
   }
 }

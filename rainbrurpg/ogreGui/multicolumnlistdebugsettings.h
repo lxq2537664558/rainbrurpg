@@ -33,8 +33,7 @@
 
 #include <stringconv.h> // For itobin()
 
-#include <OgreRectangle.h>
-#include <OgreColourValue.h>
+#include <ogreimport.h>
 
 // Forward declarations
 namespace RainbruRPG{

@@ -21,6 +21,7 @@ h_sources=gameengine.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  gsconnection.h		\
+	  ogreimport.h			\
 	  keyboardnavigation.h		\
 	  gscreateaccount.h		\
 	  gsserverlist.h		\

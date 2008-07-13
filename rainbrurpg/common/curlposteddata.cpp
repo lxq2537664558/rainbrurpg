@@ -21,6 +21,7 @@
  */
 
 #include "curlposteddata.h"
+#include <cstring> // For strlen() and strcmp()
 
 
 /** The default constructor

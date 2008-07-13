@@ -58,10 +58,10 @@ namespace RainbruRPG {
       *
       *
       */
-    typedef enum tTextColorSetting{
+    typedef enum{
       TCS_FOREGROUND = 0, //!< Only draw foreground color
       TCS_BACKGROUND,     //!< Draws text on background color
-    };
+    }tTextColorSetting;
 
     /** Encapsulate text information 
       *

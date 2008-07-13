@@ -25,6 +25,7 @@
 #include <string>
 #include <list>
 #include <logger.h>
+#include <cstring> // For strlen()
 
 #include "menuitem.h"
 

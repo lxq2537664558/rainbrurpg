@@ -51,14 +51,13 @@ namespace RainbruRPG{
       * can be used to send a response to the client.
       *
       */
-    typedef struct tReceivedPacket{
-
+    typedef struct{
       enet_uint8* data; //!< The data received
       size_t dataLength;//!< The length of data received
       enet_uint32 host; //!< The host address
       enet_uint16 port; //!< The host port
       ENetPeer*   peer; //!< The peer used to send this packet
-    };
+    }tReceivedPacket;
 
     /** The enet server class
       *

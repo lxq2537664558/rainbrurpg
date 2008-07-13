@@ -23,29 +23,33 @@
 
 #include "infodialog.h"
 
+#include "pushbutton.h"
+
 /** The default constructor
   *
   * Creates an information dialog with width and height set to 10 and
   * a default title : 'Info Dialog'.
   *
   */
-RainbruRPG::Terminal::InfoDialog::InfoDialog()
-                               :Dialog(10, 10){
-
+RainbruRPG::Terminal::InfoDialog::InfoDialog():
+  Dialog(10, 10)
+{
   this->setTitle( "Info Dialog" );
+  this->addButton(new PushButton("Ok"));
 
 }
 
 
-/** The constructor of a centered information dialog with message
+/** The constructor of a centered information dialog with a title
   *
-  * \param s The message of the dialog
+  * \param s The title of the dialog
   * \param w The width of the dialog in column
   * \param h The height of the dialog in lines
   */
 RainbruRPG::Terminal::InfoDialog::InfoDialog( string s, int w, int h )
                                  :Dialog( w, h ){
   this->setTitle( s );
+  this->addButton(new PushButton("Ok"));
 }
 
 void RainbruRPG::Terminal::InfoDialog::draw(){

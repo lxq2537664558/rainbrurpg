@@ -11,8 +11,6 @@
 
 #include <logger.h>
 
-#include <OGRE/OgreMaterialManager.h>
-#include <OGRE/OgreStringConverter.h>
 
 
 /** The constructor

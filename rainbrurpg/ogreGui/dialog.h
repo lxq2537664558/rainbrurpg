@@ -29,7 +29,7 @@
 #ifndef _OGRE_GUI_DIALOG_H_
 #define _OGRE_GUI_DIALOG_H_
 
-#include <OgreVector4.h>
+#include <ogreimport.h>
 
 #include "bgwindow.h"
 

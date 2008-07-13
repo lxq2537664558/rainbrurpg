@@ -26,6 +26,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 #include <string>
+#include <cstring> // For strcmp
 
 using namespace std;
 

@@ -23,7 +23,7 @@
 #ifndef GS_GAME_BASE_H
 #define GS_GAME_BASE_H
 
-#include <OGRE/Ogre.h>
+#include <ogreimport.h>
 
 #include "gamestate.h"
 #include "inputwrapper.h"

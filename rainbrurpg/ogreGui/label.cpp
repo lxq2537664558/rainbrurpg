@@ -28,8 +28,6 @@
 #include <logger.h>
 
 
-#include <OgreStringConverter.h>
-#include <OgreOverlayManager.h>
 
 /** The Label constructor
   *

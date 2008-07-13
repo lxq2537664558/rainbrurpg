@@ -54,7 +54,7 @@ namespace RainbruRPG {
 	* why an account cannot be created
 	*
 	*/
-      typedef enum tCurlAccountAddReturn{
+      typedef enum{
 	CAA_SUCCESS,        //!< Adding the Account was successfull
 	CAA_EXISTS,         //!< The account already exists
 	CAA_EMPTY_NAME,     //!< Empty name error
@@ -65,7 +65,7 @@ namespace RainbruRPG {
 	CAA_MAIL_SIGN_DOT,  //!< Mail address dot sign missing
 	CAA_UNDEFINED,      //!< Response was undefined
 	CAA_UNKNOWN         //!< Unknown error, often controlAfter
-      };
+      }tCurlAccountAddReturn;
 
       /** Submits a add account to the administration site
         * 

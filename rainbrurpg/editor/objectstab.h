@@ -29,7 +29,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
-#include <OGRE/Ogre.h>
+#include <ogreimport.h>
 
 #include <xmlobjectlist.h>
 #include <objectmesh.h>

@@ -23,8 +23,7 @@
 #ifndef SELECTION_CYCLE_H
 #define SELECTION_CYCLE_H
 
-#include <OGRE/OgreSceneQuery.h>
-#include <OGRE/OgreMovableObject.h>
+#include <ogreimport.h>
 
 
 namespace RainbruRPG{

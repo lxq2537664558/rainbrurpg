@@ -38,9 +38,7 @@
 #include <OIS/OISMouse.h>
 
 // OGRE headers
-#include <Ogre.h>
-#include <OgreRoot.h>
-#include <OgreSceneManagerEnumerator.h>
+#include <ogreimport.h>
 
 // OgreGUI headers
 #include "bggui.h"

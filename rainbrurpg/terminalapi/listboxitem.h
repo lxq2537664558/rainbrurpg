@@ -20,8 +20,15 @@
  *
  */
 
+/** Modifications :
+  * - 11 jul 2008 : Now use std::string member
+  *
+  */
+
 #ifndef LISTBOX_ITEM_H
 #define LISTBOX_ITEM_H
+
+#include <string>
 
 #include "widget.h"
 #include "listboxitem.h"
@@ -41,13 +48,13 @@ namespace RainbruRPG{
     class ListBoxItem{
     public:
       ListBoxItem();
-      ListBoxItem(const char*);
+      ListBoxItem(const string&);
       ~ListBoxItem();
 
       bool isChecked();
       void setChecked(bool);
-      const char* getCaption();
-      void setCaption(const char*);
+      const string& getCaption()const;
+      void setCaption(const string&);
 
       void toggle();
 
@@ -56,7 +63,7 @@ namespace RainbruRPG{
       /** Is the item checked */
       bool checked;
       /** The caption of the item */
-      const char* caption;
+      std::string caption;
 
 
     };

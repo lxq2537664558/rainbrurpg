@@ -26,7 +26,7 @@
  */
 
 #include <QApplication>
-#include <OGRE/Ogre.h>
+#include <ogreimport.h>
 #include <version.h>
 
 #include "mainwindow.h"

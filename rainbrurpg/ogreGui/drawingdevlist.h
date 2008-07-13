@@ -29,6 +29,7 @@
 #define _OGRE_GUI_DRAWING_DEV_LIST_H_
 
 #include <list>
+#include <string>
 
 // Forward declaration
 namespace RainbruRPG{

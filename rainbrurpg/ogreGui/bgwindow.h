@@ -24,7 +24,7 @@
 #ifndef _BETA_GUI_WINDOW_
 #define _BETA_GUI_WINDOW_
 
-#include <OgreVector4.h>
+#include <ogreimport.h>
 
 #include "widget.h" 
 

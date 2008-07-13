@@ -44,7 +44,7 @@ namespace RainbruRPG{
       * \sa npFlooder0004
       *
       */
-    typedef union npFlooder0004Data{
+    typedef union{
       /** The data abstraction structure
         *
 	* This is the only way to modify the data content.
@@ -68,7 +68,7 @@ namespace RainbruRPG{
       };
       /** The data to be sent over the network */
       enet_uint8 data[4];
-    };
+    }npFlooder0004Data;
 
     /** A basic netflooder packet with a lenght of 4 bytes
       *

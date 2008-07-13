@@ -28,6 +28,8 @@
 #include <OgreMaterialManager.h>
 #include <OgreResourceGroupManager.h>
 
+#include <sstream> // For debugging QuadRenderer::scissor
+
 /** The static image constructor
   *
   * \param dim    The position and dimension in pixels
@@ -55,8 +57,33 @@ RainbruRPG::OgreGui::StaticImage::~StaticImage(){
   *
   * \param qr The QuadRenderer used to draw the texture
   *
+  * \todo Find the widget that do not disable its parent scissor after 
+  *       using it.
+  *
   */
 void RainbruRPG::OgreGui::StaticImage::draw(QuadRenderer* qr){
+
+  // Debugging for the background clipping bug
+  /*  Rectangle r = qr->getClipRegion();
+  ostringstream oss;
+  oss << "Debugging QuadRenderer :" << endl
+      << "  use parent scissor : " << qr->getUseParentScissor() << endl
+      << "  scissor rectangle  : " << r.right << "," << r.bottom << endl;
+  LOGI(oss.str().c_str());
+  */
+
+  /* v0.0.5-181 : Fix the background clipping bug
+   *
+   * The two following lines fix a bug that clip the background
+   * because parent scissor was in use. 
+   *
+   * TODO : find the widget that do not disable its parent scissor after 
+   *        using it.
+   *
+   */
+  qr->setUseParentScissor(false);
+  qr->setScissorRectangle(corners);
+
   qr->setBlendMode(alphaMode);
   qr->setTexturePtr(texture);
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);

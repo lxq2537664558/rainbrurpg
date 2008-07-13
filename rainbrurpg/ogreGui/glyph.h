@@ -29,7 +29,7 @@
 #ifndef _OGRE_GUI_GLYPH_H_
 #define _OGRE_GUI_GLYPH_H_
 
-#include <OgreRectangle.h>
+#include <ogreimport.h>
 
 namespace RainbruRPG{
   namespace OgreGui{

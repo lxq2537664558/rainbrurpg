@@ -90,14 +90,14 @@ namespace RainbruRPG {
       * \endlink.
       *
       */
-    typedef enum tQuadRendererBlendMode{
+    typedef enum{
       QBM_NONE,         //!< No alpha blending
       QBM_MODULATE,     //!< Blend both source and destination color
       QBM_DISCARDALPHA, //!< Do not use source alpha channel
       QBM_INVERT,       //!< Invert the source alpha channel
       QBM_ALPHA,        //!< Use source alpha channel
       QBM_GLOBAL,       //!< Use global alpha value
-    };
+    }tQuadRendererBlendMode;
    
     /** A class drawing Ogre primitive
       *

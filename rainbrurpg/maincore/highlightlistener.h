@@ -23,8 +23,7 @@
 #ifndef HIGHLIGHT_QUEUE_LISTENER_H
 #define HIGHLIGHT_QUEUE_LISTENER_H
 
-#include <Ogre.h>
-#include <OgreRenderQueueListener.h>
+#include <ogreimport.h>
 
 namespace RainbruRPG{
   namespace Core{

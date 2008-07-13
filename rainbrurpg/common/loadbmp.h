@@ -20,6 +20,10 @@
  *
  */
 
+/** Modifications :
+  * - 10 jul 2008 : oustput now is a std::string (fix a warning)
+  *
+  */
 #ifndef LOAD_BMP_H
 #define LOAD_BMP_H
 
@@ -46,7 +50,7 @@ namespace RainbruRPG {
     /** A stenographic decoder class
       *
       * This class uses EasyBMP (http://easybmp.sourceforge.net/)
-      * to decode text in BMP (4 or bits) images. To encode the text I
+      * to decode text in BMP (4 or 8 bits) images. To encode the text I
       * uses the example found in this archive 
       * http://easybmp.sourceforge.net/downloads/samples/Steganography3.zip.
       *
@@ -95,11 +99,11 @@ namespace RainbruRPG {
 	* getting returned to the program then removed from the hard drive.
 	*
 	*/
-      char* output;
+      std::string output;
 
       /** The string that contains the decoded text
         *
-	* That's the etxt you can get by calling get1().
+	* That's the text you can get by calling get1().
 	*
         */
       std::string a1;

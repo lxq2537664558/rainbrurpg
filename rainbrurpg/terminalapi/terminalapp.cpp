@@ -21,12 +21,18 @@
  */
 #include "terminalapp.h"
 
-#include "logger.h"
+#include <vector>
+
+#include <logger.h>
+
+using namespace RainbruRPG::Exception;
 
 /** The private default constructor
   *
   */
-RainbruRPG::Terminal::TerminalApp::TerminalApp(){
+RainbruRPG::Terminal::TerminalApp::TerminalApp():
+  menubar(NULL)
+{
 
 }
 
@@ -39,8 +45,11 @@ RainbruRPG::Terminal::TerminalApp::~TerminalApp(){
 
 /** The initializer of the Singleton
   *
-  * It sets the timeout private variable to 2, initialize the message
+  * It sets the \ref timeout private variable to 2, initialize the message
   * string and draw the message box.
+  *
+  * The logger is set to only log in text file (disable standard output
+  * log).
   *
   */
 void RainbruRPG::Terminal::TerminalApp::init(){
@@ -55,6 +64,8 @@ void RainbruRPG::Terminal::TerminalApp::init(){
   inSubMenu=false;
   showingDialog=false;
 
+  Logger::getSingleton().setLogType(LOG_FILE );
+
   initTerminal (1, 1);
   initColors();
   draw();
@@ -62,14 +73,20 @@ void RainbruRPG::Terminal::TerminalApp::init(){
 
 /** The destructor of the singleton
   *
+  * It clears the terminal and reset SLang.
+  *
   */
 void RainbruRPG::Terminal::TerminalApp::cleanup(){
+  eraseScreen();
+  SLang_reset_tty ();
+  SLsmg_reset_smg ();
 
 }
 
 /** Initialization of the signal handlers
   * 
   * each signal call a c function declared in hook.h
+  *
   */
 void RainbruRPG::Terminal::TerminalApp::initSignals (void){
 #ifdef SIGTSTP
@@ -93,7 +110,7 @@ int RainbruRPG::Terminal::TerminalApp::initTerminal (int tty, int smg){
     */
    SLang_Exit_Error_Hook = exit_error_hook;
 
-   /* It is wise to block the occurance of display  related signals
+   /* It is wise to block the occurance of display related signals
     * while we are initializing. 
     */
    SLsig_block_signals ();
@@ -140,17 +157,18 @@ int RainbruRPG::Terminal::TerminalApp::initTerminal (int tty, int smg){
   * - Color 10 is white on cyan : it is used in the listview headers
   */
 void RainbruRPG::Terminal::TerminalApp::initColors(){
-  SLtt_set_color (0, NULL,  "white", "blue" );
-  SLtt_set_color (1, NULL,  "blue",  "lightgray" );
-  SLtt_set_color (2, NULL,  "black", "cyan" );
-  SLtt_set_color (3, NULL,  "red",   "cyan" );
-  SLtt_set_color (4, NULL,  "white", "black" );
-  SLtt_set_color (5, NULL,  "cyan",  "black" );
-  SLtt_set_color (6, NULL,  "green", "blue" );
-  SLtt_set_color (7, NULL,  "blue",  "lightgray" );
-  SLtt_set_color (8, NULL,  "white", "lightgray" );
-  SLtt_set_color (9, NULL,  "black", "lightgray" );
-  SLtt_set_color (10, NULL,  "white", "cyan" );
+  // Cast to char* to avoid deprecated warnings
+  SLtt_set_color (0, NULL,  (char*)"white", (char*)"blue" );
+  SLtt_set_color (1, NULL,  (char*)"blue",  (char*)"lightgray" );
+  SLtt_set_color (2, NULL,  (char*)"black", (char*)"cyan" );
+  SLtt_set_color (3, NULL,  (char*)"red",   (char*)"cyan" );
+  SLtt_set_color (4, NULL,  (char*)"white", (char*)"black" );
+  SLtt_set_color (5, NULL,  (char*)"cyan",  (char*)"black" );
+  SLtt_set_color (6, NULL,  (char*)"green", (char*)"blue" );
+  SLtt_set_color (7, NULL,  (char*)"blue",  (char*)"lightgray" );
+  SLtt_set_color (8, NULL,  (char*)"white", (char*)"lightgray" );
+  SLtt_set_color (9, NULL,  (char*)"black", (char*)"lightgray" );
+  SLtt_set_color (10, NULL, (char*)"white", (char*)"cyan" );
 }
 
 /** Refresh the message box according to the char* message string
@@ -161,7 +179,20 @@ void RainbruRPG::Terminal::TerminalApp::drawMessageBox(){
 
   SLsmg_gotorc (row, 0);
   SLsmg_set_color (1);
-  SLsmg_write_string ( this->message );
+
+  //
+  if (message=="Hit F10 for menubar" && menubar){
+    // Convertion from std::string to char*
+    int len = message.length() + 1;
+    std::vector<char> raw(len); 
+    const char* str = message.c_str();
+    std::copy(str, str + len, raw.begin());
+    SLsmg_write_string ( &(raw[0]) );
+  }
+  else{
+    LOGW("No menu bar. Invite not drawn");
+  }
+
   SLsmg_erase_eol ();
   SLsmg_set_color (0);
 
@@ -201,8 +232,11 @@ int RainbruRPG::Terminal::TerminalApp::getch(){
   */
 void RainbruRPG::Terminal::TerminalApp::run(){
   tShortCut* menuSC;
-  createMenuBarShortcut();
+  if (menubar){
+    createMenuBarShortcut();
+  }
   keyHit();
+  draw();
 }
 
 /** Set the menubar pointer to m
@@ -465,7 +499,7 @@ void RainbruRPG::Terminal::TerminalApp::drawMenuBar(){
  
 }
 
-/** Draw the creen 
+/** Draw the screen 
   *
   */
 void RainbruRPG::Terminal::TerminalApp::draw(){
@@ -475,10 +509,13 @@ void RainbruRPG::Terminal::TerminalApp::draw(){
 
   drawWindows();
 
-
-  if (menubar) // Segfault if not
+  // Prevent segfault
+  if (menubar){ 
     drawMenuBar();
-
+  }
+  else{
+    LOGW("No menubar set, menubar not drawn");
+  }
 
   if (inSubMenu)
     drawMenu(getShortcutFromIndex(currentMenu));
@@ -491,7 +528,7 @@ void RainbruRPG::Terminal::TerminalApp::draw(){
 /** Print a message in the message box
   *
   */
-void RainbruRPG::Terminal::TerminalApp::showMessage(char* m){
+void RainbruRPG::Terminal::TerminalApp::showMessage(const std::string& m){
   message=m;
   draw();
 }
@@ -737,7 +774,10 @@ void RainbruRPG::Terminal::TerminalApp::keyHit(){
       
       if (ch==10){ //F10
 	inMenu=!inMenu;
-	drawMenuBar();
+	// If a menubar is present
+	if (menubar){
+	  drawMenuBar();
+	}
       }
       
       if (inMenu)
@@ -749,6 +789,7 @@ void RainbruRPG::Terminal::TerminalApp::keyHit(){
     draw();
     SLsmg_refresh();
   }
+  cleanup();
 }
 
 /** Treats the arrow keys if inMenu is \c true

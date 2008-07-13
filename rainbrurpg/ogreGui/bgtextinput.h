@@ -17,8 +17,7 @@
 #ifndef _BETAGUI_TEXT_INPUT_H_
 #define _BETAGUI_TEXT_INPUT_H_
 
-#include <OGRE/OgreVector4.h>
-#include <OGRE/OgreOverlayContainer.h>
+#include <ogreimport.h>
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID

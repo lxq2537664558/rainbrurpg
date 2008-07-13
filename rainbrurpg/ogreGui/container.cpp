@@ -383,8 +383,22 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	
       case OCT_WIN_MOVE:
 	GameEngine::getSingleton().getOgreGui()->setMovedWindow(win);
+
+	/* v 0.0.5-181 : Fix the moving window bug
+	 *
+	 * The following call of makeCorners() fix an heavy bug when
+	 * mocing window.
+	 *
+	 */
+	makeCorners();
 	movingDevX = mx - corners.left;
 	movingDevY = my - corners.top;
+	LOGCATS("Setting Moving dev to ");
+	LOGCATI(movingDevX);
+	LOGCATS("x");
+	LOGCATI(movingDevY);
+	LOGCATS(" (OCT_WIN_MOVE)");
+	LOGCAT();
 	win->move(mx, my);
 	makeCorners();
 	return true;
