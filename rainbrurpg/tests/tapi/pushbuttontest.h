@@ -162,11 +162,10 @@ public:
     *
     */
   void testPushButtonText(){
-    const char* t="PushButtonText";
+    string t="PushButtonText";
     this->m_caption->setText(t);
-    const char* t2=this->m_caption->getText();
-    int ret=strcmp(t, t2);
-    CPPUNIT_ASSERT( ret==0 );
+    string t2=this->m_caption->getText();
+    CPPUNIT_ASSERT( t == t2 );
   }
 
   /** Tests the x position

@@ -28,8 +28,10 @@
   * It initialize the caption to an empty string. x and y are set to 0.
   *
   */
-RainbruRPG::Terminal::PushButton::PushButton(){
-  actionSet=false;
+RainbruRPG::Terminal::PushButton::PushButton():
+  mObjectAction(NULL)
+{
+  actionSet=TAT_NONE;
   this->setX( 0 );
   this->setY( 0 );
   this->canTakeFocus=true;
@@ -43,8 +45,10 @@ RainbruRPG::Terminal::PushButton::PushButton(){
   *
   * \param c the caption of the PushButton
   */
-RainbruRPG::Terminal::PushButton::PushButton( const string& c ){
-  actionSet=false;
+RainbruRPG::Terminal::PushButton::PushButton( const string& c ):
+  mObjectAction(NULL)
+{
+  actionSet=TAT_NONE;
   this->setX( 0 );
   this->setY( 0 );
   this->canTakeFocus=true;
@@ -61,8 +65,10 @@ RainbruRPG::Terminal::PushButton::PushButton( const string& c ){
   * \param x the x coordonate of the PushButton
   * \param y the y coordonate of the PushButton
   */
-RainbruRPG::Terminal::PushButton::PushButton( const string& c, int x, int y ){
-  actionSet=false;
+RainbruRPG::Terminal::PushButton::PushButton( const string& c, int x, int y ):
+  mObjectAction(NULL)
+{
+  actionSet=TAT_NONE;
   this->setX( x );
   this->setY( y );
   this->setY( y );
@@ -138,15 +144,22 @@ void RainbruRPG::Terminal::PushButton::receiveKeyEvent(int ch){
   *
   * Return -1 if none action has been set, otherwise return the value
   * of the pointed function.
+  *
   */ 
 int RainbruRPG::Terminal::PushButton::fireAction(){
-  if (actionSet){
+  if (actionSet==TAT_FUNC){
     int ret=(*(fptr))();
+    return ret;
+  }
+  else if (actionSet==TAT_OBJT){
+    int ret=(*(ofptr))(mObjectAction);
     return ret;
   }
   else{
     return -1;
   }
+
+  
 }
 
 /** Set the action of the menu
@@ -176,6 +189,56 @@ int RainbruRPG::Terminal::PushButton::fireAction(){
   * \param a the function pointer
   */
 void RainbruRPG::Terminal::PushButton::setAction(FuncPtr a){
-  actionSet=true;
+  actionSet=TAT_FUNC;
   this->fptr=a;
+}
+
+/** Sets a wrapper as action
+  *
+  * A wrapper is a static member that take an object as parameter. Here
+  * is an example of implementation :
+  *
+  * If you have a member function called hide(void) in a class called Foo, 
+  * a possible wrapper 
+  * could be :
+  *
+  * Declaration :
+  * <pre>
+  * class Foo{
+  * public:
+  *   void hide(void);
+  *   static int hide_wrapper(void*);
+  * ];
+  * </pre>
+  *
+  * Implementation :
+  * <pre>
+  * int Foo::hide_wrapper(void* vObject){
+  *   Dialog* dial = static_cast<Dialog*>(vObject);
+  *   if (dial){
+  *     dial->hide();
+  *     return 0;
+  *   }
+  *   else{
+  *     LOGW("Cannot call hide() from its wrapper. Object's pointer is NULL");
+  *     return 1;
+  *   }
+  * }
+  * </pre>
+  *
+  * Usage (to be placed in Foo):
+  * <pre>
+  * PushButton* btnOk=new PushButton("Ok");
+  * btnOk->setObjectAction(this, &Foo::hide_wrapper);
+  * </pre>
+  *
+  * \param vObj The Object to pass to the function wrapper
+  * \param vPtr The function wrapper
+  *
+  */
+void RainbruRPG::Terminal::PushButton::
+setObjectAction(void* vObj, ObjFuncPtr vPtr){
+  actionSet=TAT_OBJT;
+  mObjectAction = vObj;
+  this->ofptr=vPtr;
 }

@@ -25,6 +25,7 @@
 #include <menubar.h>
 #include <menu.h>
 #include <menuitem.h>
+#include <window.h>
 
 #include <logger.h>
 
@@ -36,8 +37,15 @@ MenuBar* createMenubar(void);
 
 int slotFileExit(void);
 int slotExampleDialog(void);
+int slotExampleWindow(void);
 // End of forward declarations
 
+/** The main fonction of the example
+  *
+  * Here, we initialize the TerminalApp singleton and set the menubar
+  * created by the \ref createMenubar() function.
+  *
+  */
 int main(int argc, char** argv){
   Logger::getSingleton().setFilename("RainbruRPG-examples-tapi.log");
 
@@ -49,7 +57,11 @@ int main(int argc, char** argv){
 };
 
 
-
+/** Create the menu bar
+  *
+  * \return Th newly created menubar
+  *
+  */
 MenuBar* createMenubar(void){
   MenuBar* mBar=new MenuBar();
 
@@ -62,18 +74,32 @@ MenuBar* createMenubar(void){
     Menu* mExamples = new Menu("E&xamples");
       MenuItem* mExampleDialog=new MenuItem("&Dialog");
       mExampleDialog->setAction(&slotExampleDialog);
+      MenuItem* mExampleWindow=new MenuItem("&Window");
+      mExampleWindow->setAction(&slotExampleWindow);
     mExamples->addItem(mExampleDialog);
+    mExamples->addItem(mExampleWindow);
 
   mBar->addMenu(mFile);
   mBar->addMenu(mExamples);
   return mBar;
 }
 
+/** The function associated to the File/Exit menu
+  *
+  * \return A value different to -1.
+  *
+  */
 int slotFileExit(void){
   TerminalApp::getSingleton().cleanup();
   exit(0);
+  return 0;
 };
 
+/** The function associated to the Examples/Dialog menu
+  *
+  * \return A value different to -1.
+  *
+  */
 int slotExampleDialog(void){
   Dialog* mDialog=new InfoDialog("", 40,16);
   mDialog->setTitle("InfoDialog sample");
@@ -82,5 +108,16 @@ is simple to create a dialog with a title, a message and a OK button.\n\n \
 This dialog is always modal.");
 
   TerminalApp::getSingleton().showDialog(mDialog);
-    
+  return 0;
+   
+}
+
+int slotExampleWindow(void){
+  Window* mWin=new Window("Window example");
+  mWin->move(4,5);
+  mWin->resize(25, 12);
+
+  TerminalApp::getSingleton().addWindow(mWin);
+
+  return 0;
 }

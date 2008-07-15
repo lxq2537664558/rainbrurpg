@@ -24,10 +24,12 @@
 /** The default constructor
   *
   */
-RainbruRPG::Terminal::Layout::Layout(){
-  this->xOrigin=0;
-  this->yOrigin=0;
-  focusedWidget==NULL;
+RainbruRPG::Terminal::Layout::Layout():
+  xOrigin(0),
+  yOrigin(0),
+  focusedWidget(NULL)
+{
+
 }
 
 /** The default destructor
@@ -60,7 +62,7 @@ void RainbruRPG::Terminal::Layout::draw(){
   }
 
   // Draw the focused widget to provides cursor positionning
-  if (focusedWidget!=NULL)
+  if (focusedWidget)
     focusedWidget->draw( xOrigin, yOrigin );
 }
 
@@ -126,7 +128,7 @@ void RainbruRPG::Terminal::Layout::setYOrigin( int y ){
    this->yOrigin=y;
 }
 
-/** Set the first focus of the first Widget that can have it
+/** Set the focus to the first Widget that can have it
   *
   * It tuns through the widgetList and set the first Widget that can
   * be focused (according to the Widget::canTakeFocus property).
@@ -136,6 +138,7 @@ void RainbruRPG::Terminal::Layout::getFirstFocus(){
   tWidgetList::const_iterator iter;
 
   int ind=1;
+  bool found=false;
 
   // If a widget is already focused, set it to false
   //  currentWidgetLostFocus();
@@ -146,13 +149,18 @@ void RainbruRPG::Terminal::Layout::getFirstFocus(){
       focusedWidgetIndex=ind;
       focusedWidget=(*iter);
       focusedWidget->setFocus(true);
+      found = true;
       break;
     }
     ind++;
   }
+
+  if (!found){
+    focusedWidget=NULL;
+  }
 }
 
-/** The the next widget to have the focus
+/** The next widget to have the focus
   *
   * It iterates through the widgetList and set the focus to the next
   * focusable widget.

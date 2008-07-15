@@ -96,20 +96,19 @@ public:
     *
     */
   void testMenuName(){ 
-    const char* name="MenuNameTest";
-    this->m_caption->setName(name);
-    const char* name2=this->m_caption->getName();
-    int ret=strcmp(name, name2);
-    CPPUNIT_ASSERT( ret==0 );
+    string name="MenuNameTest";
+    this->m_caption->setName(name.c_str());
+    string name2=this->m_caption->getName();
+    CPPUNIT_ASSERT( name == name2 );
   }
 
   /** Tests the Menu width field
     *
     */
   void testMenuWidth(){ 
-    char* name="MenuNameTestWidth";
-    int nameLen=strlen(name);
-    this->m_caption->addItem(new MenuItem(name));
+    string name="MenuNameTestWidth";
+    int nameLen= name.size();
+    this->m_caption->addItem(new MenuItem(name.c_str()));
     int l=this->m_caption->getWidth();
     CPPUNIT_ASSERT( nameLen==l );
   }

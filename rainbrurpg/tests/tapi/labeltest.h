@@ -139,11 +139,10 @@ public:
     *
     */
   void testLabelCaption(){ 
-    char* t="TestCaption";
+    std::string t="TestCaption";
     this->m_caption->setText(t);
-    char* ret=this->m_caption->getText();
-    int cmp=strcmp(t, ret);
-    CPPUNIT_ASSERT( cmp==0 );
+    string ret = m_caption->getText();
+    CPPUNIT_ASSERT( t == ret );
   }
 
   /** Tests the Label x position

@@ -146,11 +146,10 @@ public:
     *
     */
   void testListBoxCaption(){ 
-    const char* t="TestCaption";
+    string t="TestCaption";
     this->m_caption->setText(t);
-    const char* ret=this->m_caption->getText();
-    int cmp=strcmp(t, ret);
-    CPPUNIT_ASSERT( cmp==0 );
+    string ret=this->m_caption->getText();
+    CPPUNIT_ASSERT( t == ret );
   }
 
   /** Tests the ListBox x position

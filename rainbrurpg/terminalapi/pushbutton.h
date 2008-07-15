@@ -38,6 +38,11 @@ namespace RainbruRPG{
       *
       * A push button can fire an action when we hit the Return key
       * when focused.
+      *
+      * There is two ways for setting an action:
+      * - A function pointer : see \ref setAction().
+      * - A member functionwrapper : see \ref setObjectAction().
+      *
       */
     class PushButton : public Widget{
     public:
@@ -54,6 +59,8 @@ namespace RainbruRPG{
       virtual void receiveKeyEvent(int);
 
       void setAction(FuncPtr);
+      void setObjectAction(void*, ObjFuncPtr);
+
       int fireAction();
 
 
@@ -63,13 +70,19 @@ namespace RainbruRPG{
 	*/
       Caption* caption;
 
-      /** The function pointer to the action
+      /** The function pointer to the action when using a flobal function
         *
 	*/
       FuncPtr fptr;
 
-      /** true if an action was set, otherwise false */
-      bool actionSet;
+      /** The function pointer when using a static member wrapper */
+      ObjFuncPtr ofptr;
+
+      /** The object pointer when using a static member wrapper */
+      void* mObjectAction;
+
+      /** The type of action */
+      tActionType actionSet;
 
     };
   }

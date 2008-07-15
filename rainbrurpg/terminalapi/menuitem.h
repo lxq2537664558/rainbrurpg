@@ -27,10 +27,27 @@
 namespace RainbruRPG{
   namespace Terminal{
 
+
+    /** Defines the type of action you can set to a pushbutton
+      *
+      * \todo MenuItem should use this system
+      *
+      */
+    typedef enum{
+      TAT_NONE, //!< No action was set
+      TAT_FUNC, //!< The action is a function pointer
+      TAT_OBJT  //!< The action is a function wrapper
+    }tActionType;
+
     /** A function pointer returning an integer value 
       *
       */
     typedef int (*FuncPtr)();
+
+    /** A function pointer returning an integer value 
+      *
+      */
+    typedef int (*ObjFuncPtr)(void*);
 
     /** The menu item used with the Menu class
       *

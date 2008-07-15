@@ -26,7 +26,9 @@
   * \param w the width of the Dialog
   * \param h the height of the Dialog
   */
-RainbruRPG::Terminal::Dialog::Dialog( int w, int h ){
+RainbruRPG::Terminal::Dialog::Dialog( int w, int h ):
+  visible(true)
+{
   this->width=w;
   this->height=h;
   center( w, h );
@@ -56,14 +58,16 @@ void RainbruRPG::Terminal::Dialog::center( int w, int h ){
   * This method must be called by the subclasses.
   */
 void RainbruRPG::Terminal::Dialog::drawDialog(){
-  drawEmpty();
-  drawBorder();
-  drawShadow();
-  if (title.length()>0)
-    drawTitle();
-
-  drawCaption();
-  drawButtons();
+  if (visible){
+    drawEmpty();
+    drawBorder();
+    drawShadow();
+    if (title.length()>0)
+      drawTitle();
+    
+    drawCaption();
+    drawButtons();
+  }
 }
 
 /** Draws the white panel
@@ -266,5 +270,36 @@ void RainbruRPG::Terminal::Dialog::receiveKeyEvent(int ch){
     if (ch==13){ //ENTER
       btn1->fireAction();
     }
+  }
+}
+
+/** Shows this dialog
+  *
+  */
+void RainbruRPG::Terminal::Dialog::show(void){
+  visible=true;
+}
+
+/** Hides this dialog
+  *
+  */
+void RainbruRPG::Terminal::Dialog::hide(void){
+  visible=false;
+}
+
+/** A static wrapper to call the hide function
+  *
+  * Please see the InfoDialog implementationfor more informations.
+  *
+  */
+int RainbruRPG::Terminal::Dialog::hide_wrapper(void* vObject){
+  Dialog* dial = static_cast<Dialog*>(vObject);
+  if (dial){
+    dial->hide();
+    return 0;
+  }
+  else{
+    LOGW("Cannot call hide() from its wrapper. Object's pointer is NULL");
+    return 1;
   }
 }

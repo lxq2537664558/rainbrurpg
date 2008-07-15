@@ -220,7 +220,8 @@ void RainbruRPG::Terminal::Window::draw( ){
   SLsmg_write_char( SLSMG_RTEE_CHAR );
   SLsmg_set_char_set (0);
 
-  SLsmg_printf( " %s ", caption );
+  // cast to char* to avoid deprecated converion warning
+  SLsmg_printf( (char*)" %s ", caption );
   SLsmg_set_char_set (1);
   SLsmg_write_char( SLSMG_LTEE_CHAR );
   SLsmg_set_char_set (0);

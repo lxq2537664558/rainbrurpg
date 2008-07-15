@@ -168,7 +168,8 @@ void RainbruRPG::Terminal::ListView::drawTheCaption( int x, int y){
   SLsmg_write_char( SLSMG_RTEE_CHAR );
   SLsmg_set_char_set (0);
 
-  SLsmg_printf( " %s ", caption );
+  // cast to char* to avoid deprecated converion warning
+  SLsmg_printf( (char*)" %s ", caption );
   SLsmg_set_char_set (1);
   SLsmg_write_char( SLSMG_LTEE_CHAR );
   SLsmg_set_char_set (0);
@@ -187,7 +188,8 @@ void RainbruRPG::Terminal::ListView::drawColumns( int x, int y){
   // Makes the header background
   SLsmg_set_color(2);
   SLsmg_gotorc( y+1, x+1);
-  SLsmg_write_nchars("                                     ", width-2);
+  // cast to char* to avoid deprecated converion warning
+  SLsmg_write_nchars((char*)"                                     ", width-2);
 
 
   tListViewColumnList::const_iterator iter;
@@ -199,7 +201,8 @@ void RainbruRPG::Terminal::ListView::drawColumns( int x, int y){
       SLsmg_set_color(1);
       for (fillY=0; fillY!=this->height-3; fillY++){
 	SLsmg_gotorc( y+fillY+2, x+1);
-	SLsmg_write_nchars("                       ", (*iter)->getWidth());
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_write_nchars((char*)"                       ", (*iter)->getWidth());
 
       }
 
@@ -208,7 +211,8 @@ void RainbruRPG::Terminal::ListView::drawColumns( int x, int y){
     // Draws the column's caption
     SLsmg_set_color(2);
     SLsmg_gotorc( y+1, x+1);
-    SLsmg_printf( "%s", (*iter)->getCaption() );
+    // cast to char* to avoid deprecated converion warning
+    SLsmg_printf( (char*)"%s", (*iter)->getCaption() );
     
     SLsmg_set_color(10);
     SLsmg_gotorc( y+1, x+1+(*iter)->getWidth());
@@ -259,7 +263,8 @@ void RainbruRPG::Terminal::ListView::drawItem(ListViewItem* it, int x, int y,
 
 
     SLsmg_gotorc( y, x);
-    SLsmg_printf( "%s", it->getColumn(columnNum) );
+    // cast to char* to avoid deprecated converion warning
+    SLsmg_printf( (char*)"%s", it->getColumn(columnNum) );
 
     columnNum++;
     x+=(*iter)->getWidth()+1;

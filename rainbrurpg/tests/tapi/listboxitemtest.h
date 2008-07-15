@@ -97,9 +97,8 @@ public:
   void testListBoxItemCaption(){ 
     std::string c="CaptionTest";
     this->m_caption->setCaption(c.c_str());
-    const char* c2=this->m_caption->getCaption();
-    int ret=c.compare(c2 );
-    CPPUNIT_ASSERT( ret==0 );
+    string c2=this->m_caption->getCaption();
+    CPPUNIT_ASSERT( c == c2 );
   }
 
   /** Tests the toggle function

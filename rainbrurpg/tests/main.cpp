@@ -42,7 +42,7 @@
 
 // If this macro is defined, we use a Text output
 // otherwise, a terminal output is used
-//#define TEXT_OUTPUT
+#define TEXT_OUTPUT
 
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestSuite.h>
@@ -51,6 +51,8 @@
 #include "commontestsuite.h"
 
 #include <logger.h>
+
+using namespace RainbruRPG::Exception;
 
 // Forward declaration
 void initRPGSuite(CPPUNIT_NS::TestSuite* r);
@@ -64,8 +66,10 @@ void initRPGSuite(CPPUNIT_NS::TestSuite* r);
   */
 int main(int argc, char* argv[]){
 
-  RainbruRPG::Exception::Logger::getSingleton()
-    .setLogType(RainbruRPG::Exception::LOG_FILE);
+  Logger::getSingleton().setLogType(RainbruRPG::Exception::LOG_FILE);
+  Logger::getSingleton().setFilename("RainbruRPG-tests");
+
+  LOGI("Starting text version of unit tests");
 
   CPPUNIT_NS::TextTestRunner runner;
   
@@ -85,7 +89,9 @@ int main(int argc, char* argv[]){
   *
   */
 int main(int argc, char* argv[]){
+  Logger::getSingleton().setFilename("RainbruRPG-tests");
 
+  LOGI("Starting graphic version of unit tests");
   QApplication app(argc, argv);
   CPPUNIT_NS::QtTestRunner runner;
   

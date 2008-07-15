@@ -35,7 +35,10 @@ RainbruRPG::Terminal::InfoDialog::InfoDialog():
   Dialog(10, 10)
 {
   this->setTitle( "Info Dialog" );
-  this->addButton(new PushButton("Ok"));
+
+  PushButton* btnOk=new PushButton("Ok");
+  btnOk->setObjectAction(this, &RainbruRPG::Terminal::Dialog::hide_wrapper);
+  this->addButton(btnOk);
 
 }
 
@@ -49,7 +52,9 @@ RainbruRPG::Terminal::InfoDialog::InfoDialog():
 RainbruRPG::Terminal::InfoDialog::InfoDialog( string s, int w, int h )
                                  :Dialog( w, h ){
   this->setTitle( s );
-  this->addButton(new PushButton("Ok"));
+  PushButton* btnOk=new PushButton("Ok");
+  btnOk->setObjectAction(this, &RainbruRPG::Terminal::Dialog::hide_wrapper);
+  this->addButton(btnOk);
 }
 
 void RainbruRPG::Terminal::InfoDialog::draw(){

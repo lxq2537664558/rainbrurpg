@@ -272,11 +272,13 @@ void RainbruRPG::Terminal::TerminalApp::drawKeycodeBox(){
 
   if (lastKeycode!=-1 && lastKeycode!=195){
     if (altKeycode){
-      SLsmg_printf( "A+%d", lastKeycode );
+      // cast to char* to avoid deprecated converion warning
+      SLsmg_printf( (char*)"A+%d", lastKeycode );
       altKeycode=false;
     }
     else
-      SLsmg_printf( "  %d", lastKeycode );
+      // cast to char* to avoid deprecated converion warning
+      SLsmg_printf( (char*)"  %d", lastKeycode );
   }
 
   SLsmg_erase_eol();
@@ -322,7 +324,8 @@ void RainbruRPG::Terminal::TerminalApp::drawMenuCaption(int x, int y,
 	high( true );
 
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
        
 	x++;
 	high( false );
@@ -332,7 +335,8 @@ void RainbruRPG::Terminal::TerminalApp::drawMenuCaption(int x, int y,
       else{
 	SLsmg_set_color (2);
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
 	
 	x++;
 	SLsmg_set_color (0);
@@ -376,7 +380,8 @@ void RainbruRPG::Terminal::TerminalApp::drawSelectedMenuCaption(int x, int y,
 	SLsmg_set_color (5);
 
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
        
 	x++;
 	SLsmg_set_color (4);
@@ -386,7 +391,8 @@ void RainbruRPG::Terminal::TerminalApp::drawSelectedMenuCaption(int x, int y,
       else{
 	SLsmg_set_color (4);
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
 	
 	x++;
 	SLsmg_set_color (0);
@@ -583,7 +589,8 @@ void RainbruRPG::Terminal::TerminalApp::drawItemCaption(int x, int y,
       if (sc){
 	SLsmg_set_color(co2);
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
 	SLsmg_set_color(0);
 	x++;
 	high( false );
@@ -595,7 +602,8 @@ void RainbruRPG::Terminal::TerminalApp::drawItemCaption(int x, int y,
 	SLsmg_set_color (co);
 
 	SLsmg_gotorc (y,x);
-	SLsmg_printf( "%c", c[i] );
+	// cast to char* to avoid deprecated converion warning
+	SLsmg_printf( (char*)"%c", c[i] );
 
 	x++;
 	SLsmg_set_color (0);

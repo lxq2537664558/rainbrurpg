@@ -60,6 +60,11 @@ namespace RainbruRPG{
 
       void receiveKeyEvent(int);
 
+      void show(void);
+      void hide(void);
+
+      static int hide_wrapper(void*);
+
     protected:
       void drawDialog();
 
@@ -118,6 +123,9 @@ namespace RainbruRPG{
         *
 	*/
       PushButton* btn3;
+
+      /** Is the dialog drawn ? */
+      bool visible;
     };
 
   }

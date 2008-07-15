@@ -96,8 +96,15 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-182
+- (4) Unit tests correctly built but SEGFAULT when running
+- InfoDialog::Ok button close the dialog
+- PushButton connection using static function wrapper
+- examples/tapi create a Window
+
 * v 0.0.5-181
-- (19) TerminalApp cleanup correctly
+- Fix the string to char* conversion warnings in terminalapi
+- TerminalApp cleanup correctly
 - TerminalApp disable log on stdout
 - tapi example in examples/tapi/
 - now ./configure option to build examples
