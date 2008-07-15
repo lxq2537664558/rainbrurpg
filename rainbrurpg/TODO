@@ -97,7 +97,8 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-182
-- (4) Unit tests correctly built but SEGFAULT when running
+- (5) All Makefile.in removed from cvs (generated files)
+- Unit tests correctly built but SEGFAULT when running
 - InfoDialog::Ok button close the dialog
 - PushButton connection using static function wrapper
 - examples/tapi create a Window
