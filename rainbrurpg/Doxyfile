@@ -81,6 +81,7 @@ INPUT                  = /home/mouse/programmation/rainbrurpg \
                          /home/mouse/programmation/rainbrurpg/doc/doc.h
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.cpp \
+		         *.c \
                          *.h \
                          *.php \
                          *.php3 \

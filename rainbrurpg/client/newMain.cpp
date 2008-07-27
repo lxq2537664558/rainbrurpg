@@ -20,7 +20,13 @@
  *
  */
 
-// Essai avec libfox
+/** \file newMain.cpp
+  * A test of main() function using Fox-toolkit
+  *
+  * \todo remove this file
+  *
+  */
+// Trying with libfox
 #include <fx.h>
 #include <iostream>
 #include "launcher.h"
@@ -40,10 +46,18 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
   char** argv=&fakeArgv;
 
 #  else
+  /** The main program entry test
+    *
+    * \param argc The number of argument from the command line
+    * \param argv The array of argument from the command line
+    *
+    * \return 0 if success
+    *
+    */
 int main(int argc,char ** argv) {
 #endif
 
-  // The main erturn value
+  // The main return value
   int execRet=0;
   
   FXApp application("RainbruRPG","rainbruFreeFr");

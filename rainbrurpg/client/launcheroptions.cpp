@@ -20,6 +20,12 @@
  *
  */
 
+/** \file launcheroptions.cpp
+  * The implementation of the Fox-toolkit based options editor
+  *
+  *
+  */
+
 #include <iostream>
 
 #include "launcheroptions.h"
@@ -28,6 +34,7 @@
 
 #include "config.h"
 
+/** The Fox-toolkit event mapping */
 FXDEFMAP(RainbruRPG::Gui::LauncherOptions) LauncherOptionsMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::LauncherOptions::ID_BUTTON, 
@@ -67,6 +74,7 @@ FXDEFMAP(RainbruRPG::Gui::LauncherOptions) LauncherOptionsMap[]={
 
 };
 
+/** Declares the implementation of the class */
 FXIMPLEMENT(RainbruRPG::Gui::LauncherOptions,FXDialogBox,
 	    LauncherOptionsMap,ARRAYNUMBER(LauncherOptionsMap));
 

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file languageselector.h
+  * Header file of the client's language selector
+  *
+  * Modifications :
+  * - 26 jul 2008 : Doxygen documentation
+  *
+  */
+
 #include <fox-1.6/fx.h>
 #include <logger.h>
 #include <xmllanguage.h>

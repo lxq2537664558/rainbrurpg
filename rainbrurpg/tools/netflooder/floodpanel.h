@@ -20,10 +20,15 @@
  *
  */
 
-/* Modifications : 
- * - 27 mar 2007 : starting implementation
- *
- */
+/** \file netflooder/floodpanel.h
+  *
+  * Declaration file of the option panel of the flooding tool
+  *
+  * Modifications : 
+  * - 17 jul 2008 : PI redeclaration warning fixed 
+  * - 27 mar 2007 : starting implementation
+  *
+  */
 
 #ifndef FLOOD_PANEL_H
 #define FLOOD_PANEL_H

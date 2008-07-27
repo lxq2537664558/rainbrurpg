@@ -24,6 +24,8 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
 - Client's debug console uses the readline library
+- User can bookmark or blacklist servers
+- In the first page (gsmainmenu), a `quick connect` system
 
 * Editor identification
    The identification is done by GPG keys
@@ -97,7 +99,14 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-182
-- (5) All Makefile.in removed from cvs (generated files)
+- (12) client's files documentation
+- getopt1.c and xmalloc.c doxygen documentation
+- getopt.c doxygen documentation
+- system.h doxygen documentation
+- getopt.h doxygen documentation
+- config.h doxygen documentation
+- Some missing .cvsignore added to cvs
+- All Makefile.in removed from cvs (generated files)
 - Unit tests correctly built but SEGFAULT when running
 - InfoDialog::Ok button close the dialog
 - PushButton connection using static function wrapper

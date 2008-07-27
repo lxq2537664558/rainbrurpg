@@ -20,12 +20,21 @@
  *
  */
 
+/** \file languageselector.cpp
+  * Implementation of the client's language selector
+  *
+  *
+  */
+
 #include <iostream>
 
 #include "languageselector.h"
 #include "options.h"
 #include <xmloptions.h>
 
+/** Defines the Fox-toolkit event mapping
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::LanguageSelector) LanguageSelectorMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::LanguageSelector::ID_BUTTON, 
@@ -42,6 +51,9 @@ FXDEFMAP(RainbruRPG::Gui::LanguageSelector) LanguageSelectorMap[]={
 
 };
 
+/** Declares the implementation of the class
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::LanguageSelector,FXDialogBox,
 	    LanguageSelectorMap,ARRAYNUMBER(LanguageSelectorMap));
 

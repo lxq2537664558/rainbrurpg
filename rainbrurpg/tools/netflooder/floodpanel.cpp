@@ -25,6 +25,11 @@
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** To avoid multiple definition of PI (defined by fxdefs.h 
+  * and common/chartbase.h)
+  */
+#undef PI
+
 #include "ftreliable.h"
 #include "chartviewer.h"
 

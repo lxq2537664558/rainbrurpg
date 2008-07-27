@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 17 jun 2008 : Adding a quiet option
- *                 Now using std::string
- * - 09 jun 2008 : Fix a SEGFAULT due to deleting Ogre Root object
- * - 24 jan 2008 : Handles help and version command-line options
- *
- */
+/** \file rainbrurpg/client/main.cpp
+  *
+  * The file declaring the client's main() function
+  *
+  * Modifications :
+  * - 17 jun 2008 : Adding a quiet option
+  *                 Now using std::string
+  * - 09 jun 2008 : Fix a SEGFAULT due to deleting Ogre Root object
+  * - 24 jan 2008 : Handles help and version command-line options
+  *
+  */
 
 #include <iostream>
 
@@ -44,16 +48,14 @@
 #include "vcconstant.h"
 #include "globaluri.h"
 
-/** To avoid a double definition of PI
-  *
-  * Fox and Ogre both defines PI (fxdefs.h and OgreMath.h)
+/** To avoid a double definition of PI, launcher.h, that include Ogre3D
+  * headers must be included before fox headers. Fox and Ogre both defines 
+  * PI (fxdefs.h and OgreMath.h).
   *
   */
-#define PI
-#include <fox-1.6/fx.h>
 #include "launcher.h"
+#include <fox-1.6/fx.h>
 #include <optionmanager.h>
-#undef PI
 
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::Gui;
@@ -79,13 +81,29 @@ void showVersion(void);
 
 // Handling win32 graphical main fonction
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+/** Tells that we are running on a Win32 platform */
 #  define WIN32_LEAN_AND_MEAN
-
+/** Avoid declaration of min and max macro from Win32 */
 #  define NOMINMAX
 #  include "windows.h"
 
 #  ifdef WIN_GUI_APPLICATION
-INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT ){
+/** Win32 specific main entry for non-console application
+  *
+  * Actually, none of the parameters are used, however I put their
+  * documentation.
+  *
+  * \param hInstance     Handle to the current instance of the application.
+  * \param hPrevInstance Handle to the previous instance of the application. 
+  *                      This parameter is always NULL.
+  * \param lpCmdLine     Pointer to a null-terminated string specifying the 
+  *                      command line for the application, excluding the 
+  *                      program name.
+  * \param nCmdShow      Specifies how the window is to be shown.
+  *
+  */
+INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, 
+		    LPSTR lpCmdLine, INT nCmdShow){
 
   // We must fake the argc and argv variables
   // to prevent FXApp::init() call, but
@@ -96,6 +114,13 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT ){
 
 #  endif
 #else
+  /** The main function for other platforms than Win32 and for Win32 in
+    * console
+    *
+    * \param argc The number of arguments
+    * \param argv The arguments C-strings array
+    *
+    */
 int main(int argc, char **argv){
 #endif
 

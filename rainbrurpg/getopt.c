@@ -20,7 +20,19 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If not,
    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
    Boston, MA 02111-1307, USA.  */
-
+
+/** \file getopt.c
+  * Getopt for GNU implementation
+  *
+  * \def NONOPTION_P
+  * Test whether ARGV[optind] points to a non-option argument
+  *
+  * Either it does not have option syntax, or there is an environment flag
+  * from the shell indicating it is not an option.  The later information
+  * is only used when the used in the GNU libc.  
+  *
+  */
+
 /* This tells Alpha OSF/1 not to define a getopt prototype in <stdio.h>.
    Ditto for AIX 3.2 and <stdlib.h>.  */
 #ifndef _NO_PROTO
@@ -49,6 +61,10 @@
    program understand `configure --with-gnu-libc' and omit the object files,
    it is simpler to just do this in the source for each such file.  */
 
+/** \def GETOPT_INTERFACE_VERSION
+  * Defines the version of the getopt interface
+  *
+  */
 #define GETOPT_INTERFACE_VERSION 2
 #if !defined _LIBC && defined __GLIBC__ && __GLIBC__ >= 2
 # include <gnu-versions.h>
@@ -79,6 +95,11 @@
 #ifndef _
 /* This is for other GNU distributions with internationalized messages.
    When compiling libc, the _ macro is predefined.  */
+
+/** \def _
+  * Gettext usage macro
+  *
+  */
 # ifdef HAVE_LIBINTL_H
 #  include <libintl.h>
 #  define _(msgid)	gettext (msgid)
@@ -103,42 +124,53 @@
 
 #include "getopt.h"
 
-/* For communication from `getopt' to the caller.
-   When `getopt' finds an option that takes an argument,
-   the argument value is returned here.
-   Also, when `ordering' is RETURN_IN_ORDER,
-   each non-option ARGV-element is returned here.  */
-
+/** For communication from `getopt' to the caller.
+  *
+  * When `getopt' finds an option that takes an argument,
+  * the argument value is returned here.
+  * Also, when `ordering' is RETURN_IN_ORDER,
+  * each non-option ARGV-element is returned here.  
+  *
+  */
 char *optarg;
 
-/* Index in ARGV of the next element to be scanned.
-   This is used for communication to and from the caller
-   and for communication between successive calls to `getopt'.
-
-   On entry to `getopt', zero means this is the first call; initialize.
-
-   When `getopt' returns -1, this is the index of the first of the
-   non-option elements that the caller should itself scan.
-
-   Otherwise, `optind' communicates from one call to the next
-   how much of ARGV has been scanned so far.  */
+/** Index in ARGV of the next element to be scanned.
+  *
+  * This is used for communication to and from the caller
+  * and for communication between successive calls to `getopt'.
+  *
+  * On entry to `getopt', zero means this is the first call; initialize.
+  *
+  * When `getopt' returns -1, this is the index of the first of the
+  * non-option elements that the caller should itself scan.
+  *
+  * Otherwise, `optind' communicates from one call to the next
+  * how much of ARGV has been scanned so far.  
+  *
+  */
 
 /* 1003.2 says this must be 1 before any call.  */
 int optind = 1;
 
-/* Formerly, initialization of getopt depended on optind==0, which
-   causes problems with re-calling getopt as programs generally don't
-   know that. */
-
+/** Is getopt initialized
+  *
+  * Formerly, initialization of getopt depended on optind==0, which
+  * causes problems with re-calling getopt as programs generally don't
+  * know that. 
+  *
+  */
 int __getopt_initialized;
 
-/* The next char to be scanned in the option-element
-   in which the last option character we returned was found.
-   This allows us to pick up the scan where we left off.
-
-   If this is zero, or a null string, it means resume the scan
-   by advancing to the next ARGV-element.  */
-
+/** The next char to be scanned in the option-element
+  *
+  * The next char to be scanned in the option-element   
+  * in which the last option character we returned was found.
+  * This allows us to pick up the scan where we left off.
+  *
+  * If this is zero, or a null string, it means resume the scan
+  * by advancing to the next ARGV-element.  
+  *
+  */
 static char *nextchar;
 
 /* Callers store zero here to inhibit the error message
@@ -152,41 +184,44 @@ int opterr = 1;
 
 int optopt = '?';
 
-/* Describe how to deal with options that follow non-option ARGV-elements.
-
-   If the caller did not specify anything,
-   the default is REQUIRE_ORDER if the environment variable
-   POSIXLY_CORRECT is defined, PERMUTE otherwise.
-
-   REQUIRE_ORDER means don't recognize them as options;
-   stop option processing when the first non-option is seen.
-   This is what Unix does.
-   This mode of operation is selected by either setting the environment
-   variable POSIXLY_CORRECT, or using `+' as the first character
-   of the list of option characters.
-
-   PERMUTE is the default.  We permute the contents of ARGV as we scan,
-   so that eventually all the non-options are at the end.  This allows options
-   to be given in any order, even with programs that were not written to
-   expect this.
-
-   RETURN_IN_ORDER is an option available to programs that were written
-   to expect options and other ARGV-elements in any order and that care about
-   the ordering of the two.  We describe each non-option ARGV-element
-   as if it were the argument of an option with character code 1.
-   Using `-' as the first character of the list of option characters
-   selects this mode of operation.
-
-   The special argument `--' forces an end of option-scanning regardless
-   of the value of `ordering'.  In the case of RETURN_IN_ORDER, only
-   `--' can cause `getopt' to return -1 with `optind' != ARGC.  */
-
+/** Describe how to deal with options that follow non-option ARGV-elements.
+  *
+  * If the caller did not specify anything,
+  * the default is REQUIRE_ORDER if the environment variable
+  * POSIXLY_CORRECT is defined, PERMUTE otherwise.
+  *
+  * REQUIRE_ORDER means don't recognize them as options;
+  * stop option processing when the first non-option is seen.
+  * This is what Unix does.
+  * This mode of operation is selected by either setting the environment
+  * variable POSIXLY_CORRECT, or using `+' as the first character
+  * of the list of option characters.
+  *
+  * PERMUTE is the default.  We permute the contents of ARGV as we scan,
+  * so that eventually all the non-options are at the end.  This allows options
+  * to be given in any order, even with programs that were not written to
+  * expect this.
+  *
+  * RETURN_IN_ORDER is an option available to programs that were written
+  * to expect options and other ARGV-elements in any order and that care about
+  * the ordering of the two.  We describe each non-option ARGV-element
+  * as if it were the argument of an option with character code 1.
+  * Using `-' as the first character of the list of option characters
+  * selects this mode of operation.
+  *
+  * The special argument `--' forces an end of option-scanning regardless
+  * of the value of `ordering'.  In the case of RETURN_IN_ORDER, only
+  * `--' can cause `getopt' to return -1 with `optind' != ARGC.  
+  *
+  */
 static enum
 {
-  REQUIRE_ORDER, PERMUTE, RETURN_IN_ORDER
+  REQUIRE_ORDER,  //!< Stop option processing when the first non-option is seen
+  PERMUTE,        //!< We permute the contents of ARGV as we scan
+  RETURN_IN_ORDER //!< Take care of arguments ordering
 } ordering;
 
-/* Value of POSIXLY_CORRECT environment variable.  */
+/** Value of POSIXLY_CORRECT environment variable.  */
 static char *posixly_correct;
 
 #ifdef	__GNU_LIBRARY__
@@ -204,13 +239,27 @@ static char *posixly_correct;
 #  include <strings.h>
 # endif
 
-/* Avoid depending on library functions or files
-   whose names are inconsistent.  */
-
 #ifndef getenv
+/** Read an environment variable 
+  *
+  * Avoid depending on library functions or files
+  * whose names are inconsistent.
+  *
+  */
 extern char *getenv ();
 #endif
-
+/** Returns a pointer to the first occurrence of character in the C string str
+  *
+  * The terminating null-character is considered part of the C string. 
+  * Therefore, it can also be located to retrieve a pointer to the end of 
+  * a string.
+  *
+  * \param str The C string where the character is searched
+  * \param chr The character to search
+  *
+  *\return A pointer to the first occurrence or 0 if not found
+  *
+  */
 static char *
 my_index (str, chr)
      const char *str;
@@ -241,18 +290,31 @@ extern int strlen (const char *);
 
 /* Handle permutation of arguments.  */
 
-/* Describe the part of ARGV that contains non-options that have
-   been skipped.  `first_nonopt' is the index in ARGV of the first of them;
-   `last_nonopt' is the index after the last of them.  */
-
+/** Describe the part of ARGV that contains non-options that have
+  * been skipped.  
+  *
+  *`first_nonopt' is the index in ARGV of the first of them;
+  *
+  */
 static int first_nonopt;
+
+/** Describe the part of ARGV that contains non-options that have
+  * been skipped.  
+  *
+  * `last_nonopt' is the index after the last of them.  
+  *
+  */
 static int last_nonopt;
 
 #ifdef _LIBC
 /* Bash 2.0 gives us an environment variable containing flags
    indicating ARGV elements that should not be considered arguments.  */
 
-/* Defined in getopt_init.c  */
+/** ARGV elements that should not be considered arguments
+  * 
+  * Defined in getopt_init.c  
+  *
+  */
 extern char *__getopt_nonoption_flags;
 
 static int nonoption_flags_max_len;
@@ -285,18 +347,30 @@ text_set_element (__libc_subinit, store_args_and_env);
       __getopt_nonoption_flags[ch2] = __tmp;				      \
     }
 #else	/* !_LIBC */
+/** Swap two flags
+  *
+  * Swaps two flags in the __getopt_nonoption_flags array. Used
+  * by the \ref exchange() function.
+  *
+  * \param ch1, ch2 The flags to swap
+  *
+  */
 # define SWAP_FLAGS(ch1, ch2)
 #endif	/* _LIBC */
 
-/* Exchange two adjacent subsequences of ARGV.
-   One subsequence is elements [first_nonopt,last_nonopt)
-   which contains all the non-options that have been skipped so far.
-   The other is elements [last_nonopt,optind), which contains all
-   the options processed since those non-options were skipped.
-
-   `first_nonopt' and `last_nonopt' are relocated so that they describe
-   the new indices of the non-options in ARGV after they are moved.  */
-
+/** Exchange two adjacent subsequences of ARGV
+  *
+  * One subsequence is elements [first_nonopt,last_nonopt)
+  * which contains all the non-options that have been skipped so far.
+  * The other is elements [last_nonopt,optind), which contains all
+  * the options processed since those non-options were skipped.
+  *
+  * `first_nonopt' and `last_nonopt' are relocated so that they describe
+  * the new indices of the non-options in ARGV after they are moved.  
+  *
+  * \param argv The argument array
+  *
+  */
 #if defined __STDC__ && __STDC__
 static void exchange (char **);
 #endif
@@ -381,7 +455,15 @@ exchange (argv)
   last_nonopt = optind;
 }
 
-/* Initialize the internal data when the first call is made.  */
+/** Initialize the internal data when the first call is made.  
+  *
+  * \param argc      The main() argc value
+  * \param argv      The main() argv value
+  * \param optstring The option string (please see getopt man  page).
+  *
+  * \return The option string
+  *
+  */
 
 #if defined __STDC__ && __STDC__
 static const char *_getopt_initialize (int, char *const *, const char *);
@@ -452,62 +534,67 @@ _getopt_initialize (argc, argv, optstring)
   return optstring;
 }
 
-/* Scan elements of ARGV (whose length is ARGC) for option characters
-   given in OPTSTRING.
-
-   If an element of ARGV starts with '-', and is not exactly "-" or "--",
-   then it is an option element.  The characters of this element
-   (aside from the initial '-') are option characters.  If `getopt'
-   is called repeatedly, it returns successively each of the option characters
-   from each of the option elements.
-
-   If `getopt' finds another option character, it returns that character,
-   updating `optind' and `nextchar' so that the next call to `getopt' can
-   resume the scan with the following option character or ARGV-element.
-
-   If there are no more option characters, `getopt' returns -1.
-   Then `optind' is the index in ARGV of the first ARGV-element
-   that is not an option.  (The ARGV-elements have been permuted
-   so that those that are not options now come last.)
-
-   OPTSTRING is a string containing the legitimate option characters.
-   If an option character is seen that is not listed in OPTSTRING,
-   return '?' after printing an error message.  If you set `opterr' to
-   zero, the error message is suppressed but we still return '?'.
-
-   If a char in OPTSTRING is followed by a colon, that means it wants an arg,
-   so the following text in the same ARGV-element, or the text of the following
-   ARGV-element, is returned in `optarg'.  Two colons mean an option that
-   wants an optional arg; if there is text in the current ARGV-element,
-   it is returned in `optarg', otherwise `optarg' is set to zero.
-
-   If OPTSTRING starts with `-' or `+', it requests different methods of
-   handling the non-option ARGV-elements.
-   See the comments about RETURN_IN_ORDER and REQUIRE_ORDER, above.
-
-   Long-named options begin with `--' instead of `-'.
-   Their names may be abbreviated as long as the abbreviation is unique
-   or is an exact match for some defined option.  If they have an
-   argument, it follows the option name in the same ARGV-element, separated
-   from the option name by a `=', or else the in next ARGV-element.
-   When `getopt' finds a long-named option, it returns 0 if that option's
-   `flag' field is nonzero, the value of the option's `val' field
-   if the `flag' field is zero.
-
-   The elements of ARGV aren't really const, because we permute them.
-   But we pretend they're const in the prototype to be compatible
-   with other systems.
-
-   LONGOPTS is a vector of `struct option' terminated by an
-   element containing a name which is zero.
-
-   LONGIND returns the index in LONGOPT of the long-named option found.
-   It is only valid when a long-named option has been found by the most
-   recent call.
-
-   If LONG_ONLY is nonzero, '-' as well as '--' can introduce
-   long-named options.  */
-
+/** Scan elements of ARGV (whose length is ARGC) for option characters
+  * given in OPTSTRING.
+  *
+  * If an element of ARGV starts with '-', and is not exactly "-" or "--",
+  * then it is an option element.  The characters of this element
+  * (aside from the initial '-') are option characters.  If `getopt'
+  * is called repeatedly, it returns successively each of the option characters
+  * from each of the option elements.
+  *
+  * If `getopt' finds another option character, it returns that character,
+  * updating `optind' and `nextchar' so that the next call to `getopt' can
+  * resume the scan with the following option character or ARGV-element.
+  *
+  * If there are no more option characters, `getopt' returns -1.
+  * Then `optind' is the index in ARGV of the first ARGV-element
+  * that is not an option.  (The ARGV-elements have been permuted
+  * so that those that are not options now come last.)
+  *
+  * If an option character is seen that is not listed 
+  * in OPTSTRING, return '?' after printing an error 
+  * message.  If you set `opterr' to zero, the error 
+  * message is suppressed but we still return '?'.
+  *
+  * If a char in OPTSTRING is followed by a colon, that 
+  * means it wants an arg, so the following text in the 
+  * same ARGV-element, or the text of the following
+  * ARGV-element, is returned in `optarg'.  Two colons 
+  * mean an option that wants an optional arg; if there 
+  * is text in the current ARGV-element, it is returned 
+  * in `optarg', otherwise `optarg' is set to zero.
+  *
+  * If OPTSTRING starts with `-' or `+', it requests 
+  * different methods of handling the non-option ARGV-elements.
+  * See the comments about RETURN_IN_ORDER and REQUIRE_ORDER, 
+  * above.
+  *
+  * Long-named options begin with `--' instead of `-'.
+  * Their names may be abbreviated as long as the abbreviation is unique
+  * or is an exact match for some defined option.  If they have an
+  * argument, it follows the option name in the same ARGV-element, separated
+  * from the option name by a `=', or else the in next ARGV-element.
+  * When `getopt' finds a long-named option, it returns 0 if that option's
+  * `flag' field is nonzero, the value of the option's `val' field
+  * if the `flag' field is zero.
+  *
+  * The elements of ARGV aren't really const, because we permute them.
+  * But we pretend they're const in the prototype to be compatible
+  * with other systems.
+  *
+  * \param argc      The number of argument
+  * \param argv      The array of argument
+  * \param optstring A string containing the legitimate option characters.
+  * \param longopts  A vector of `struct option' terminated by an element 
+  *                  containing a name which is zero.
+  * \param longind   Returns the index in LONGOPT of the long-named option 
+  *                  found. It is only valid when a long-named option has 
+  *                  been found by the most recent call.
+  * \param long_only If nonzero, '-' as well as '--' can introduce 
+  *                  long-named options.  
+  *
+  */
 int
 _getopt_internal (argc, argv, optstring, longopts, longind, long_only)
      int argc;
@@ -531,11 +618,8 @@ _getopt_internal (argc, argv, optstring, longopts, longind, long_only)
       __getopt_initialized = 1;
     }
 
-  /* Test whether ARGV[optind] points to a non-option argument.
-     Either it does not have option syntax, or there is an environment flag
-     from the shell indicating it is not an option.  The later information
-     is only used when the used in the GNU libc.  */
 #ifdef _LIBC
+  // Documented in the file documentation block
 # define NONOPTION_P (argv[optind][0] != '-' || argv[optind][1] == '\0'	      \
 		      || (optind < nonoption_flags_len			      \
 			  && __getopt_nonoption_flags[optind] == '1'))
@@ -968,6 +1052,24 @@ _getopt_internal (argc, argv, optstring, longopts, longind, long_only)
   }
 }
 
+/** gets the next option argument from the argument list specified by 
+  * the argv and argc arguments 
+  *
+  * The optstring argument is a string that specifies the option 
+  * characters that are valid for this program. An option character in 
+  * this string can be followed by a colon (`:') to indicate that it 
+  * takes a required argument. If an option character is followed by 
+  * two colons (`::'), its argument is optional;
+  *
+  * \param argc      The main() argc value
+  * \param argv      The main() argv value
+  * \param optstring The option string 
+  *
+  * \return The getopt function returns the option character for the 
+  *         next command line option. When no more option arguments 
+  *         are available, it returns -1.
+  *
+  */
 int
 getopt (argc, argv, optstring)
      int argc;

@@ -7,7 +7,6 @@ GNET_LIBS = -lpthread 				\
 	    -lgthread-2.0 			\
 	    -lglib-2.0 				\
 	    -lsigc-2.0				\
-	    -lqt-mt 				\
 	    -lqttestrunner
 
 RPG_LIB_ADD = -L$(top_srcdir)/common/.libs 	\

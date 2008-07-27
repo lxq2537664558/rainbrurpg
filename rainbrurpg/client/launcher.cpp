@@ -20,7 +20,11 @@
  *
  */
 
-
+/** \file launcher.cpp
+  * The implementation of the Fox-toolkit based launcher
+  *
+  *
+  */
 #include "launcher.h"
 
 #include <iostream>
@@ -35,6 +39,7 @@
 
 #include "config.h"
 
+/** The Fox-toolkit event mapping */
 FXDEFMAP(RainbruRPG::Gui::Launcher) LauncherMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::Launcher::ID_BTN_PLAY, RainbruRPG::Gui::Launcher::onPlayButtonPressed),
@@ -45,6 +50,7 @@ FXDEFMAP(RainbruRPG::Gui::Launcher) LauncherMap[]={
 
 };
 
+/** Declares the implementation of the class */
 FXIMPLEMENT(RainbruRPG::Gui::Launcher,FXMainWindow,LauncherMap,ARRAYNUMBER(LauncherMap));
 
 

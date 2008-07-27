@@ -18,6 +18,11 @@
    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
    Boston, MA 02111-1307, USA.  */
 
+/** \file getopt1.c
+  * getopt_long and getopt_long_only entry points for GNU getopt
+  *
+  */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -34,14 +39,18 @@
 
 #include <stdio.h>
 
-/* Comment out all this code if we are using the GNU C Library, and are not
-   actually compiling the library itself.  This code is part of the GNU C
-   Library, but also included in many other GNU distributions.  Compiling
-   and linking in this code is a waste when using the GNU C library
-   (especially if it is a shared library).  Rather than having every GNU
-   program understand `configure --with-gnu-libc' and omit the object files,
-   it is simpler to just do this in the source for each such file.  */
-
+/** \def GETOPT_INTERFACE_VERSION
+  * Defines the version of the getopt interface
+  *
+  * Comment out all this code if we are using the GNU C Library, and are not
+  * actually compiling the library itself.  This code is part of the GNU C
+  * Library, but also included in many other GNU distributions.  Compiling
+  * and linking in this code is a waste when using the GNU C library
+  * (especially if it is a shared library).  Rather than having every GNU
+  * program understand `configure --with-gnu-libc' and omit the object files,
+  * it is simpler to just do this in the source for each such file. 
+  *
+  */
 #define GETOPT_INTERFACE_VERSION 2
 #if !defined _LIBC && defined __GLIBC__ && __GLIBC__ >= 2
 #include <gnu-versions.h>
@@ -59,10 +68,28 @@
 #include <stdlib.h>
 #endif
 
+/** \def NULL
+  * Defines the NULL value if it does not exist 
+  *
+  */
 #ifndef	NULL
 #define NULL 0
 #endif
 
+/** Get long option
+  * 
+  * Uses \ref _getopt_internal to get long options.
+  *
+  * \param argc         The number of arguments
+  * \param argv         The array of arguments
+  * \param options      A string containing the legitimate option characters. 
+  * \param long_options A vector of `struct option' terminated by an 
+  *                     element containing a name which is zero. 
+  * \param opt_index    Returns the index in LONGOPT of the long-named 
+  *                     option found. It is only valid when a long-named 
+  *                     option has been found by the most recent call. 
+  *
+  */
 int
 getopt_long (argc, argv, options, long_options, opt_index)
      int argc;
@@ -74,10 +101,23 @@ getopt_long (argc, argv, options, long_options, opt_index)
   return _getopt_internal (argc, argv, options, long_options, opt_index, 0);
 }
 
-/* Like getopt_long, but '-' as well as '--' can indicate a long option.
-   If an option that starts with '-' (not '--') doesn't match a long option,
-   but does match a short option, it is parsed as a short option
-   instead.  */
+/** Get only long option
+  * 
+  * Like getopt_long, but '-' as well as '--' can indicate a long option.
+  * If an option that starts with '-' (not '--') doesn't match a long option,
+  * but does match a short option, it is parsed as a short option
+  * instead.  
+  *
+  * \param argc         The number of arguments
+  * \param argv         The array of arguments
+  * \param options      A string containing the legitimate option characters. 
+  * \param long_options A vector of `struct option' terminated by an 
+  *                     element containing a name which is zero. 
+  * \param opt_index    Returns the index in LONGOPT of the long-named 
+  *                     option found. It is only valid when a long-named 
+  *                     option has been found by the most recent call. 
+  *
+  */
 
 int
 getopt_long_only (argc, argv, options, long_options, opt_index)

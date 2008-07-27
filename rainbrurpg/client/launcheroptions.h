@@ -20,6 +20,15 @@
  *
  */
 
+/** \file launcheroptions.h
+  * Header file of the client's options editor
+  *
+  * Modifications :
+  * - 26 jul 2008 : Doxygen documentation
+  *
+  */
+
+
 #include <fox-1.6/fx.h>
 #include <logger.h>
 #include <optionmanager.h>

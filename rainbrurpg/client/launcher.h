@@ -20,6 +20,17 @@
  *
  */
 
+/** \file client/launcher.h
+  *
+  * The declaration file of the class \ref RainbruRPG::Gui::Launcher "Launcher"
+  *
+  * Modifications :
+  * - 16 jul 2008 : Documentation of header file
+  *
+  * \note This file must be included before libfox one. It is due to
+  *       a double definition of PI, in \c fxdefs.h and \c OgreMath.h.
+  *
+  */
 #include <fox-1.6/fx.h>
 
 #include <xmloptions.h>
