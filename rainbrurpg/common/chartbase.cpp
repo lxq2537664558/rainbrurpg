@@ -20,6 +20,10 @@
  *
  */
 
+/** \file chartbase.cpp
+  * Implements the base-class of all generated charts
+  *
+  */
 #include "chartbase.h"
 
 /** The sized constructor

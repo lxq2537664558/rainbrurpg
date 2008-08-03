@@ -547,6 +547,8 @@
   *
   */
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef BUILD_EDITOR
 /** \def BUILD_EDITOR
   *
   * Defines if the editor is built.
@@ -555,6 +557,7 @@
   * argument is passed to the /c configure script.
   *
   */
+#endif // BUILD_EDITOR
 
 /** \def BUILD_LIB_DESIGN
   * 
@@ -566,6 +569,8 @@
   *
   */
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  BUILD_SERVER
 /** \def BUILD_SERVER
   *
   * Defines if the server is built.
@@ -575,6 +580,7 @@
   *
   *
   */
+#endif //  BUILD_SERVER
 
 /** \def BUILD_RELEASE
   *
@@ -719,6 +725,8 @@
   *
   */
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  HAVE_LIBMAGIC
 /** \def HAVE_LIBMAGIC
   *
   * Define to 1 if you have the `magic' library.
@@ -727,7 +735,10 @@
   * number tests.
   *
   */
+#endif //  HAVE_LIBMAGIC
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  HAVE_LIBQT3SUPPORT
 /** \def HAVE_LIBQT3SUPPORT
   *
   * Define to 1 if you have the `Qt3Support' library.
@@ -735,7 +746,10 @@
   * This library is part od Qt4. It adds support for Qt3 classes.
   *
   */
+#endif //  HAVE_LIBQT3SUPPORT
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  HAVE_LIBQTCORE
 /** \def HAVE_LIBQTCORE
   *
   * Define to 1 if you have the `QtCore' library.
@@ -743,7 +757,10 @@
   * QtCore is the Qt4 part defining non-gui objects.
   *
   */
+#endif //  HAVE_LIBQTCORE
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  HAVE_LIBQTGUI
 /** \def HAVE_LIBQTGUI
   *
   * Define to 1 if you have the `QtGui' library.
@@ -751,7 +768,10 @@
   * QtGui defines the GUI part of Qt4.
   *
   */
+#endif //  HAVE_LIBQTGUI
 
+// Avoid doxygen complains about 'unknown define'
+#ifdef  HAVE_LIBQTNETWORK
 /** \def HAVE_LIBQTNETWORK
   *
   * Define to 1 if you have the `QtNetwork' library.
@@ -759,6 +779,7 @@
   * QtNetwork defines the network related part of Qt4.
   *
   */
+#endif //  HAVE_LIBQTNETWORK
 
 /** \def HAVE_LIBSIGC_2_0
   *
@@ -1033,5 +1054,12 @@
   *
   * \todo This value seems to conflict with \ref PACKAGE_VERSION which is
   *       always equal to 0. Should we use it instead ?
+  *
+  */
+
+/** \def RB_MULTICOLUMNLIST_TEST
+  * A MultiColumnList widget test
+  *
+  * Defines if we should create a test widget.
   *
   */

@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 17 jun 2007 : Documentation improvement
- * - 31 mar 2007 : Make changes in the axis xaption behavior
- * - 26 mar 2007 : Now in rpg/common
- * - 23 mar 2007 : Starting implementation
- */
+/** \file chartbase.h
+  * Defines the base-class of all generated charts
+  *
+  * Modifications :
+  * - 17 jun 2007 : Documentation improved
+  * - 31 mar 2007 : Make changes in the axis xaption behavior
+  * - 26 mar 2007 : Now in rpg/common
+  * - 23 mar 2007 : Starting implementation
+  *
+  */
 #ifndef _CHART_BASE_H_
 #define _CHART_BASE_H_
 

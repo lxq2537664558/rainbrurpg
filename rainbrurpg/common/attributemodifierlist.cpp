@@ -20,6 +20,10 @@
  *
  */
 
+/** \file attributemodifierlist.cpp
+  * Implements a list of attribute modifier
+  *
+  */
 #include "attributemodifierlist.h"
 
 /** Default constructor

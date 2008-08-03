@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 02 mar 2007 : Avoid std::cout during unit testing
- *                 Inprove documentation
- *
- */
+/** \file attributemodifierlist.h
+  * Defines a list of attribute modifier
+  *
+  * Modifications :
+  * - 31 jul 2008 : Documentation improved
+  * - 02 mar 2007 : Avoid std::cout during unit testing
+  *                 Inprove documentation
+  *
+  */
 #ifndef ATTRIBUTE_MODIFIER_LIST_H
 #define ATTRIBUTE_MODIFIER_LIST_H
 
