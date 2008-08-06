@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlserverdelete.cpp
+  * Implements a class used to delete a server in the server list
+  *
+  */
+
 #include "curlserverdelete.h"
 
 /** The default contructor

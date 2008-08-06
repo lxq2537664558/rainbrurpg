@@ -20,6 +20,11 @@
  *
  */
 
+/** \file enetbase.cpp
+  * Implements a base-class for all enet based classes
+  *
+  */
+
 #include "enetbase.h"
 
 /** The default constructor

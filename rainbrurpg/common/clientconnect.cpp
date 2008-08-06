@@ -20,6 +20,11 @@
  *
  */
 
+/** \file clientconnect.cpp
+  * Implements the client connection ability
+  *
+  */
+
 #include "clientconnect.h"
 
 using namespace RainbruRPG::Gui;

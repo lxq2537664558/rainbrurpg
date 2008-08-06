@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 03 apr 2007 : legendCaption added
- * - 29 mar 2007 : Starting implementation
- *
- */
+/** \file chartserie.h
+  * Defines a serie of values used in a chart
+  *
+  * Modifications :
+  * - 03 apr 2007 : legendCaption added
+  * - 29 mar 2007 : Starting implementation
+  *
+  */
 
 #ifndef CHART_SERIE_H
 #define CHART_SERIE_H

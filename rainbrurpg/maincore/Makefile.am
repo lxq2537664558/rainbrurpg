@@ -63,7 +63,6 @@ librainbrurpg_core_la_SOURCES= $(h_sources)		\
 			       $(cc_sources)
 
 librainbrurpg_core_la_LIBADD= -lrainbrurpg-common	\
-			      -lrainbrurpg-ogregui	\
 			      -lOgreMain
 
 librainbrurpg_core_la_LDFLAGS=				\

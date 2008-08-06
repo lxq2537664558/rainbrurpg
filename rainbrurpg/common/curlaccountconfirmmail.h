@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 06 aug 2007 : ConfirmId added
- * - 15 mar 2007 : Added a getName function for unittest         
- *
- */
+/** \file curlaccountconfirmmail.h 
+  * Defines confirmation of a account's mail address
+  *
+  * Modifications :
+  * - 06 aug 2007 : ConfirmId added
+  * - 15 mar 2007 : Added a getName function for unittest         
+  *
+  */
 
 #ifndef CURL_ACCOUNT_CONFIRM_MAIL_H
 #define CURL_ACCOUNT_CONFIRM_MAIL_H

@@ -20,12 +20,15 @@
  *
  */
 
-/* Modification :
- * - 03 aug 2007 : downloadComplete implementation
- * - 31 jul 2007 : Remove curlget.xml
- * - 02 mar 2007 : Using LOGCAT() instead of cout
- *
- */
+/** \file curlgetfile.h
+  * Declare a class used to get a file using cUrl
+  *
+  * Modification :
+  * - 03 aug 2007 : downloadComplete implementation
+  * - 31 jul 2007 : Remove curlget.xml
+  * - 02 mar 2007 : Using LOGCAT() instead of cout
+  *
+  */
 
 #ifndef CURL_GET_FILE
 #define CURL_GET_FILE

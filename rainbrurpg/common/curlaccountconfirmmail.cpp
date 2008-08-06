@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlaccountconfirmmail.cpp
+  * Implements the confirmation of a account's mail address
+  *
+  */
+
 #include "curlaccountconfirmmail.h"
 
 #include "xmlaccountlist.h"

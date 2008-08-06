@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 mar 2007 : To be unit testing, modify :
- *         - A default constructor
- *         - A connect(...) function
- */
+/** \file clientconnect.h
+  * Defines the client connection ability
+  *
+  * Modifications :
+  * - 02 mar 2007 : To be unit testing, modify :
+  *         - A default constructor
+  *         - A connect(...) function
+  */
 
 #ifndef CLIENT_CONNECT_H
 #define CLIENT_CONNECT_H
@@ -55,7 +58,7 @@ namespace RainbruRPG{
 	CCR_UNKNOWN_ERROR        //!< An unknown error occured
       };
 
-     /** Verifies the client connection ability
+      /** Verifies the client connection ability
         *
 	* It uses xmlPlayerList to check if this client can connect. To test
 	* the connection ability of a client, you must call the constructor

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlposteddata.cpp
+  * Implements a class used to compute data for a form submit action
+  *
+  */
+
 #include "curlposteddata.h"
 #include <cstring> // For strlen() and strcmp()
 

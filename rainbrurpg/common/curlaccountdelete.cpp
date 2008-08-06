@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlaccountdelete.cpp 
+  * Implements the class needed to delete accounts
+  *
+  */
 #include "curlaccountdelete.h"
 
 #include "globaluri.h"

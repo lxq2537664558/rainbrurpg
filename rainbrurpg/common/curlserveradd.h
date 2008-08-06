@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 26 jun 2007 : Adding 'uniqueName' and 'type'
- * - 28 may 2007 : Adding the 'ftp' key
- *
- */
+/** \file curlserveradd.h
+  * Defines a class used to add a server in the server list
+  *
+  * Modifications :
+  * - 26 jun 2007 : Adding 'uniqueName' and 'type'
+  * - 28 may 2007 : Adding the 'ftp' key
+  *
+  */
 
 #ifndef CURL_SERVER_ADD_H
 #define CURL_SERVER_ADD_H

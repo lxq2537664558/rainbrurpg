@@ -20,10 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 19 mar 2007 : Adds the connected and isConnected()
- * - 13 mar 2007 : starting implementation
- */
+/** \file enetclient.h
+  * Declares the Enet client
+  *
+  * Modifications :
+  * - 19 mar 2007 : Adds the \ref RainbruRPG::Network::EnetClient::connect()
+  *                 "connect()"  and 
+  *                 \ref RainbruRPG::Network::EnetClient::isConnected() 
+  *                 "isConnected()" functions
+  * - 13 mar 2007 : starting implementation
+  */
 
 
 #ifndef ENET_CLIENT_H

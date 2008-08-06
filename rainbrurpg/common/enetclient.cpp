@@ -20,6 +20,11 @@
  *
  */
 
+/** \file enetclient.cpp
+  * Implements the Enet client
+  *
+  */
+
 #include "enetclient.h"
 
 #include "logger.h"

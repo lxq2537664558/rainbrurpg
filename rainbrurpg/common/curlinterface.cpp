@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlinterface.cpp
+  * Implements a common base for all libcUrl based classes
+  *
+  */
+
 #include "curlinterface.h"
 #include <cstring> // For strlen()
 

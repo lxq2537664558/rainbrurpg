@@ -20,16 +20,18 @@
  *
  */
 
-/* 
- * Modifications :
- * - 03 aug 2007 : removing default write function
- * - 29 jul 2007 : setFilename and getFilename removed
- * - 03 mar 2007 : Some functions become protected :
- *                   setDefaultWriteFunction, setWrittenData, setWriteFunction
- *	           
- * - 25 feb 2007 : Documentation updates
- *
- */
+/** \file curlinterface.h
+  * Defines a common base for all libcUrl based classes
+  * 
+  * Modifications :
+  * - 03 aug 2007 : removing default write function
+  * - 29 jul 2007 : setFilename and getFilename removed
+  * - 03 mar 2007 : Some functions become protected :
+  *                   setDefaultWriteFunction, setWrittenData, setWriteFunction
+  *	           
+  * - 25 feb 2007 : Documentation updates
+  *
+  */
 
 #ifndef CURL_INTERFACE
 #define CURL_INTERFACE

@@ -19,7 +19,10 @@
  *  02110-1301  USA
  *
  */
-
+/** \file curlservermodifclients.cpp
+  * Implements a class to modify connected clients number of a server
+  *
+  */
 #include "curlservermodifclients.h"
 
 /** The default constructor

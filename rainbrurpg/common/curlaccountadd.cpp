@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlaccountadd.cpp
+  * Implements the account addition
+  *
+  */
+
 #include "curlaccountadd.h"
 
 #include "xmlaccountlist.h"

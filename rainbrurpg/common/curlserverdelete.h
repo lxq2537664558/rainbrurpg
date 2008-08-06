@@ -20,6 +20,14 @@
  *
  */
 
+/** \file curlserverdelete.h
+  * Defines a class used to delete a server in the server list
+  *
+  * Modifications :
+  * - 04 aug 2008 : Files documented
+  *
+  */
+
 #ifndef CURL_SERVER_DELETE_H
 #define CURL_SERVER_DELETE_H
 

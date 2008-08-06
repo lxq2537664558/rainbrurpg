@@ -20,9 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 13 mar 2007 : starting implementation
- */
+/** \file enetbase.h
+  * Defines a base-class for all enet based classes
+  *
+  * Modifications :
+  * - 06 aug 2008 : Sigle file documentation
+  * - 13 mar 2007 : starting implementation
+  *
+  */
 
 
 #ifndef ENET_BASE_H

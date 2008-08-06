@@ -20,11 +20,14 @@
  *
  */
 
-/* Modification :
- * - 02 mar 2007 : Renamed CurlAccountDelete (was CurlPlayerDelete)
- * - 02 mar 2007 : Adds setName()
- *         
- */
+/** \file curlaccountdelete.h 
+  * Defines the class needed to delete accounts
+  *
+  * Modification :
+  * - 02 mar 2007 : Renamed CurlAccountDelete (was CurlPlayerDelete)
+  * - 02 mar 2007 : Adds setName()
+  *         
+  */
 
 #ifndef CURL_ACCOUNT_DELETE_H
 #define CURL_ACCOUNT_DELETE_H

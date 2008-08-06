@@ -20,6 +20,14 @@
  *
  */
 
+/** \file curlpersomodifattrb.h
+  * Defines how to submit an attribute modification
+  *
+  * Modifications :
+  * - 04 aug 2008 : File documentation
+  *
+  */
+
 #ifndef CURL_PERSO_MODIF_ATTRB_H
 #define CURL_PERSO_MODIF_ATTRB_H
 

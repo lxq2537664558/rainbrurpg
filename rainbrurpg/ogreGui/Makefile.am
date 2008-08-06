@@ -125,5 +125,7 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  $(OGREGUI_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
 			  $(shell pkg-config sigc++-2.0 OGRE--libs)	\
-				  $(shell freetype-config --libs)
+				  $(shell freetype-config --libs)	\
+				  -L$(top_srcdir)/common/.libs		\
+				  -L$(top_srcdir)/maincore/.libs
 

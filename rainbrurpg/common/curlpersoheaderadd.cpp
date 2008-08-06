@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlpersoheaderadd.cpp
+  * Implements the  'add perso header' request
+  *
+  */
 #include "curlpersoheaderadd.h"
 
 /** The default constructor

@@ -20,12 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 06 mar 2007 : Adds tCurlAccountAddReturn enumeration
- * - 02 mar 2007 : Renamed CurlAccountAdd (was CurlPlayerAdd)
- * - 02 mar 2007 : Adds some accessors( setName, setPassword, setMail)
- *         
- */
+/** \file curlaccountadd.h
+  * Defines how to submit an account addition
+  *
+  * Modifications :
+  * - 06 mar 2007 : Adds tCurlAccountAddReturn enumeration
+  * - 02 mar 2007 : Renamed CurlAccountAdd (was CurlPlayerAdd)
+  * - 02 mar 2007 : Adds some accessors( setName, setPassword, setMail)
+  *         
+  */
 
 #ifndef CURL_ACCOUNT_ADD_H
 #define CURL_ACCOUNT_ADD_H

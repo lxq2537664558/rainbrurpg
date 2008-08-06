@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlserveradd.cpp
+  * Implements a class used to add a server in the server list
+  *
+  */
+
 #include "curlserveradd.h"
 
 /** The default contructor

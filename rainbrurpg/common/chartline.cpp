@@ -20,6 +20,11 @@
  *
  */
 
+/** \file chartline.cpp
+  * Implementation of a chart based on lines
+  *
+  */
+
 #include "chartline.h"
 
 /** The sized constructor

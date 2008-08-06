@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- *
- */
+/** \file curlpersoheaderdelete.h
+  * Defines how to delete the header of a perso
+  *
+  * Modifications : 
+  * - 04 aug 2008 : Doxygen single file documentation
+  *
+  */
 
 #ifndef CURL_PERSO_HEADER_DELETE_H
 #define CURL_PERSO_HEADER_DELETE_H

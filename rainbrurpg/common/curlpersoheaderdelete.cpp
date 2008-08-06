@@ -20,6 +20,11 @@
  *
  */
 
+/** \file curlpersoheaderdelete.cpp
+  * Implements the 'delete perso header' request
+  *
+  */
+
 #include "curlpersoheaderdelete.h"
 
 /** The default constructor

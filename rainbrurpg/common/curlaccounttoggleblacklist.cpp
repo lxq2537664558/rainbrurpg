@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlaccounttoggleblacklist.cpp
+  * Implements the submition of an account toggle blacklist request
+  *
+  */
 #include "curlaccounttoggleblacklist.h"
 
 /** The default constructor

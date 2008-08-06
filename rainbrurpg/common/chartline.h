@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- *
- * - 29 mar 2007 : Starting implementation
- *
- */
+/** \file chartline.h
+  * Defines a chart based on lines
+  *
+  * Modifications :
+  *
+  * - 29 mar 2007 : Starting implementation
+  *
+  */
 
 #ifndef CHART_LINE_H
 #define CHART_LINE_H

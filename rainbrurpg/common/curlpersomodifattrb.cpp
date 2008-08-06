@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlpersomodifattrb.cpp
+  * Implements how to submit an attribute modification
+  *
+  */
 #include "curlpersomodifattrb.h"
 
 /** The default constructor 

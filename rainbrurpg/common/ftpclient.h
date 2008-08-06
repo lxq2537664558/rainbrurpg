@@ -20,17 +20,27 @@
  *
  */
 
-/* Modifications :
- * - 11 mar 2008 : Adds some function for unit tests implementation
- * - 08 jul 2007 : commandRETR uses GlobalURI::getDownloadedFile()
- *                 A sigTransferError signal
- * - 30 jun 2007 : Add UniqueName
- *                 std::string return type become const std::string&
- * - 07 jun 2007 : A transferTerminated signal
- * - 21 may 2007 : Multi-thread implementation started
- * - 27 apr 2007 : Starting implementation
- *
- */
+/** \file ftpclient.h
+  * Declares a FTP client
+  *
+  * Modifications :
+  * - 11 mar 2008 : Adds some function for unit tests implementation
+  * - 08 jul 2007 : 
+  *      - \ref RainbruRPG::Network::FtpClient::commandRETR "commandRETR" uses 
+  *        \ref RainbruRPG::Network::GlobalURI::getDownloadFile()
+  *        "GlobalURI::getDownloadFile()".
+  *      - A \ref RainbruRPG::Network::FtpClient::sigTransferError 
+  *        "sigTransferError" signal
+  * - 30 jun 2007 : 
+  *      - Add \ref RainbruRPG::Network::FtpClient::uniqueName "uniqueName"
+  *        (member)
+  *      - std::string return type become const std::string&
+  * - 07 jun 2007 : A \ref RainbruRPG::Network::FtpClient::sigTransferTerminated 
+  *                 "sigTransferTerminated" signal
+  * - 21 may 2007 : Multi-thread implementation started
+  * - 27 apr 2007 : Starting implementation
+  *
+  */
 
 #ifndef _FTP_CLIENT_H_
 #define _FTP_CLIENT_H_

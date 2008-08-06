@@ -20,6 +20,11 @@
  *
  */
 
+/** \file chartserie.cpp
+  * Implements a serie of values used in a chart
+  *
+  */
+
 #include "chartserie.h"
 #include <logger.h>
 

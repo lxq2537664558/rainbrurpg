@@ -20,6 +20,14 @@
  *
  */
 
+/** \file curlservermodifclients.h
+  * Defines a class to modify connected clients number of a server
+  *
+  * Modifications :
+  * - 05 aug 2008 : File documentation added
+  *
+  */
+
 #ifndef CURL_SERVER_MODIF_CLIENTS_H
 #define CURL_SERVER_MODIF_CLIENTS_H
 

@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 29 jul 2007 : getXMLTextFromName is now implemented here
- *
- */
+/** \file curlfiletoxml.h
+  * Defines a class to get a file from curl and pass it to TinyXml
+  *
+  * Modifications :
+  * - 29 jul 2007 : getXMLTextFromName is now implemented here
+  *
+  */
 
 #ifndef CURL_FILE_TO_XML
 #define CURL_FILE_TO_XML

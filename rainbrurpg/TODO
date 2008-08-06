@@ -1,4 +1,4 @@
-TODO
+doTODO
 -> Libraries versionning in doc/libVersionning.html
 
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
@@ -99,7 +99,9 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-182
-- (12) client's files documentation
+- (14) Error fixed in maincore linkage (needing ogreGui)
+- common/curl* single file documentation 
+- client's files documentation
 - getopt1.c and xmalloc.c doxygen documentation
 - getopt.c doxygen documentation
 - system.h doxygen documentation

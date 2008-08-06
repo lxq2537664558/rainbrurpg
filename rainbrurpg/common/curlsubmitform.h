@@ -20,11 +20,20 @@
  *
  */
 
-/* Modification :
- * - 02 mar 2007 : Some functions become protected
- *         setPostedData, setPostedPwd, setCustomPost
- *         
- */
+/** \file curlsubmitform.h
+  * Defines a class used to fill a form and submit it
+  *
+  * Modification :
+  * - 05 aug 2008 : Single file documentation added
+  * - 02 mar 2007 : Some functions become protected: 
+  *            \ref RainbruRPG::Network::Ident::CurlSubmitForm::setPostedData() 
+  *            "setPostedData()", 
+  *            \ref RainbruRPG::Network::Ident::CurlSubmitForm::setPostedPwd() 
+  *            "setPostedPwd()", 
+  *            \ref RainbruRPG::Network::Ident::CurlSubmitForm::setCustomPost() 
+  *            "setCustomPost()". 
+  *         
+  */
 
 #ifndef CURL_SUBMIT_FORM
 #define CURL_SUBMIT_FORM

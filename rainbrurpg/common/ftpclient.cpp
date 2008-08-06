@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ftpclient.cpp
+  * Implements the FTP client
+  *
+  */
+
 #include "ftpclient.h"
 
 #include "logger.h"

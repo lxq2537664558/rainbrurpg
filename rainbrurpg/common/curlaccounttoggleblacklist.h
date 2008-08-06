@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- *         
- */
+/** \file curlaccounttoggleblacklist.h
+  * Defines how submit a toggle blacklist request of an account
+  *
+  * Modifications :
+  * - 04 aug 2008 : Documentation of the file 
+  *        
+  */
 
 #ifndef CURL_ACCOUNT_TOGGLE_BLACKLIST_H
 #define CURL_ACCOUNT_TOGGLE_BLACKLIST_H

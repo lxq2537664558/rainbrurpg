@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlgetfile.cpp
+  * Implements a class used to get a file using cUrl
+  *
+  */
 #include "curlgetfile.h"
 
 #include "boost/filesystem/operations.hpp"

@@ -20,6 +20,10 @@
  *
  */
 
+/** \file curlsubmitform.cpp
+  * Implements a class to fill and submit a form via libcUrl
+  *
+  */
 #include "curlsubmitform.h"
 
 /** The default constructor

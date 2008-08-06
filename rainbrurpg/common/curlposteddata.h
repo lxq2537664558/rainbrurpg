@@ -20,10 +20,14 @@
  *
  */
 
-/* Modification :
- * - 02 mar 2007 : An include to xmlplayerlist deleted
- *         
- */
+/** \file curlposteddata.h
+  * Defines a class used to compute data for a form submit action
+  *
+  * Modification :
+  * - 04 aug 2008 : File documentation
+  * - 02 mar 2007 : An include to xmlplayerlist deleted
+  *         
+  */
 
 #ifndef CURL_POSTED_DATA_H
 #define CURL_POSTED_DATA_H
