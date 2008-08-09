@@ -20,6 +20,10 @@
  *
  */
 
+/** \file netpacketflooderbase.cpp
+  * Implements the flooder base packet sent over Enet network for 
+  *
+  */
 
 #include "netpacketflooderbase.h"
 

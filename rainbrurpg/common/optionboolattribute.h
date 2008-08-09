@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionboolattribute.h
+  * Declares an option attribute storing a boolean value
+  *
+  * Modifications :
+  * - 08 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_BOOLEAN_ATTRIBUTE_H
 #define OPTION_BOOLEAN_ATTRIBUTE_H
 

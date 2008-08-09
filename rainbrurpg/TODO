@@ -98,8 +98,16 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-183
+
 * v 0.0.5-182
-- (14) Error fixed in maincore linkage (needing ogreGui)
+- Fix a bug in MCL border drawing (bottom and right lines)
+- Fix a bug in MCL scissors when larger than parent window
+- Fix a bug in MCL when window move
+- common/netpacket* files documented
+- Documenting single files until Logger files
+- Documenting single files until ftp related files
+- Error fixed in maincore linkage (needing ogreGui)
 - common/curl* single file documentation 
 - client's files documentation
 - getopt1.c and xmalloc.c doxygen documentation

@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 17 jun 2007 : Documentation improvement
- * - 06 apr 2007 : Implementation
- */
+/** \file npflooder0004.h
+  * Defines a packet of 4 bytes used by the flooder
+  *
+  * Modifications :
+  * - 17 jun 2007 : Documentation improvement
+  * - 06 apr 2007 : Implementation
+  */
 #ifndef NETWORK_PACKET_FLOODER_0004_H
 #define NETWORK_PACKET_FLOODER_0004_H
 

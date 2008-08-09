@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 14 oct 2007 : Documentation update
- *
- */
+/** \file languagelistitem.h
+  * Declares a class defining a language
+  *
+  * Modifications :
+  * - 14 oct 2007 : Documentation update
+  *
+  */
 
 #ifndef LANGUAGE_LIST_ITEM_H
 #define LANGUAGE_LIST_ITEM_H

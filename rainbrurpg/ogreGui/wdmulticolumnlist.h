@@ -120,8 +120,17 @@ namespace RainbruRPG{
       /** The text setting used to draw text cells */
       TextSettings* tsMclTextCell;
 
-      /** The MultiColumnList absolute corners */
+      /** The MultiColumnList absolute corners use as scissor rectangle
+        *
+	* Its value is computed in 
+	* \ref RainbruRPG::OgreGui::wdMultiColumnList::preDrawingComputation
+	* "preDrawingComputation()"
+	*
+	*/
       Ogre::Rectangle mMclAbsCorners;
+
+      /** The MultiColumnList absolute corners used to draw border */
+      Ogre::Rectangle mMclDrawnCorners;
 
       /** The border column */
       Ogre::ColourValue mMclBorderColor;

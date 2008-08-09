@@ -20,6 +20,11 @@
  *
  */
 
+/** \file logger.cpp
+  * Implements a singleton used by logging macros
+  *
+  */
+
 #include "logger.h"
 
 

@@ -468,7 +468,7 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
     std::string storResponse2=storResponse.substr(0,1);
     if (storResponse2=="5"){
       LOGW("The file already exists. Transfer is cancelled");
-      sigTransferError.emit(FTP_FILE_ALREADY_EXIST);
+      sigTransferError.emit(FTE_FILE_ALREADY_EXIST);
     }
     else if (storResponse2=="2"){
       // send file size

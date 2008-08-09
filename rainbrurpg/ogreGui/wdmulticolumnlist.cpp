@@ -30,6 +30,8 @@
 
 #include "quadrenderer.h"
 #include "textsettings.h"
+#include "vscrollbar.h"
+#include "hscrollbar.h"
 #include "bgwindow.h"
 
 #include <logger.h>
@@ -193,12 +195,50 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   * flag of the MultiColumnList is true before the drawing. You know the 
   * Widget moved or was resized recently.
   *
+  * This function is also responsible of the scissor rectangles computation.
+  * By example to avoid window to override the window scissor rectangle.
+  *
   * \param mcl The MultiColumnList that moved or resized
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
 preDrawingComputation(MultiColumnList* mcl){
   mMclAbsCorners = mcl->getAbsoluteCorners();
+  mMclDrawnCorners = mMclAbsCorners;
+
+
+  // Compute right scissor if parent
+  Window* parent = dynamic_cast<Window*>(mcl->getParent());
+  if (mcl->getParent()){
+    int pRight = parent->getRight();
+    pRight -= (parent->isVerticalScrollbarVisible()) ?
+      parent->getVerticalScrollbar()->getWidth() : 0;
+
+    if (pRight < mMclAbsCorners.right){
+      mMclAbsCorners.right = pRight;
+    }
+    else{
+      // Makes the line drawn
+      mMclDrawnCorners.right--;
+    }
+  }
+
+  // Compute bottom scissor if parent
+  if (mcl->getParent()){
+    int pBottom = parent->getBottom();
+    pBottom  -= (parent->isHorizontalScrollbarVisible()) ?
+      parent->getHorizontalScrollbar()->getHeight() : 0;
+
+    if (pBottom < mMclAbsCorners.bottom){
+      mMclAbsCorners.bottom = pBottom;
+    }
+    else{
+      // Makes the line drawn
+      mMclDrawnCorners.bottom--;
+    }
+  }
+
+
   mMclHeaderBottomLine = mMclAbsCorners.top+mcl->getHeaderHeight();
 
   mColumnCaption=Ogre::Rectangle(mMclAbsCorners);
@@ -213,7 +253,14 @@ preDrawingComputation(MultiColumnList* mcl){
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 
-  qr->drawRectangleLines(mMclAbsCorners, mMclBorderColor);
+  qr->setUseParentScissor(false);
+  qr->setScissorRectangle(mMclAbsCorners);
+  qr->setUseParentScissor(true);
+
+  mMclAbsCorners.right--;
+  mMclAbsCorners.bottom--;
+
+  qr->drawRectangleLines(mMclDrawnCorners, mMclBorderColor);
 
   //Header bottom line
   qr->drawLine( mMclAbsCorners.left, mMclHeaderBottomLine, 

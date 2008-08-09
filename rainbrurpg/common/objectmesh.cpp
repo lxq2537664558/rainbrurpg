@@ -20,6 +20,10 @@
  *
  */
 
+/** \file objectmesh.cpp
+  * Implements a static mesh that can have multiple instances
+  *
+  */
 #include "objectmesh.h"
 
 #include "logger.h"

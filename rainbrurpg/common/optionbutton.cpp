@@ -20,6 +20,12 @@
  *
  */
 
+/** \file optionboolattribute.cpp
+  * Implements a button for the launcher's options editor
+  *
+  *
+  */
+
 #include "optionbutton.h"
 
 /** A constructuion that initialize the m_caption

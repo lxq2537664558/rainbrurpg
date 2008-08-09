@@ -505,7 +505,20 @@ handleWidgetMouseEvents(unsigned int px, unsigned int py,
   *
   */
 void RainbruRPG::OgreGui::Container::resetMovingDev(){
-  LOGI("Container::resetMovingDev called");
+  //  LOGI("Container::resetMovingDev called");
   movingDevX = 0;
   movingDevY = 0;
+}
+
+/** Set all children geometryDirty flag
+  *
+  * It is used by \ref RainbruRPG::OgreGui::ScrollPane::move "ScrollPane::move".
+  *
+  */
+void RainbruRPG::OgreGui::Container::setChildWidgetGeometryDirty(void){
+  vector<Widget*>::iterator iter;
+
+  for (iter = widgetList.begin(); iter != widgetList.end(); iter++){
+    (*iter)->setGeometryDirty();
+  }
 }

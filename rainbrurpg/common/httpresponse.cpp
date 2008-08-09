@@ -20,6 +20,11 @@
  *
  */
 
+/** \file httpresponse.cpp
+  * Implements a class need to get readable message from an HTTP status code
+  *
+  */
+
 #include "httpresponse.h"
 
 /** The default constructor 

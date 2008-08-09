@@ -20,6 +20,10 @@
  *
  */
 
+/** \file itemlistfile.cpp
+  * Implements a class that manage a file containing an item list
+  *
+  */
 #include "itemlistfile.h"
 
 #include "logger.h"

@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 20 jul 2007 : Starting implementation
- *
- */
+/** \file hashfile.h
+  * Declares a class that compute hash sum of a file
+  *
+  * Modifications :
+  * - 07 aug 2008 : single file documentation
+  * - 20 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef _HASH_FILE_H_
 #define _HASH_FILE_H_

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file scrollpane.cpp
+  * Implements a scroll pane widget used in OgreGUI's windows
+  *
+  */
+
 #include "scrollpane.h"
 
 #include "bgwindow.h"
@@ -34,9 +39,6 @@
 #include <logger.h>
 
 #include <algorithm>
-
-// The Y position of the vertical scrollbar
-#define VSB_YPOS 24
 
 /** The constructor
   *
@@ -363,6 +365,7 @@ void RainbruRPG::OgreGui::ScrollPane::move(int vX, int vY){
 
   setWidth(temp_width);
   setHeight(temp_height);
+  setChildWidgetGeometryDirty();
 }
 
 
@@ -533,4 +536,28 @@ setContentRectangle(const Ogre::Rectangle& vRect){
 const Ogre::Rectangle& RainbruRPG::OgreGui::ScrollPane::
 getContentRectangle(void){
   return mContentRectangle;
+}
+
+/** Get the horizontal scrollbar
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::mHScrollBar "mHScrollBar"
+  *     (member).
+  *
+  * \return A pointer to the horizontal scrollbar
+  *
+  */
+HScrollBar* RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbar(void){
+  return mHScrollBar;
+}
+
+/** Get the vertical scrollbar
+  *
+  * \sa \ref RainbruRPG::OgreGui::ScrollPane::mVScrollBar "mVScrollBar"
+  *     (member).
+  *
+  * \return A pointer to the vertical scrollbar
+  *
+  */
+VScrollBar* RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbar(void){
+  return mVScrollBar;
 }

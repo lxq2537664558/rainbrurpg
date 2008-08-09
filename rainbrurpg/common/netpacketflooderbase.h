@@ -21,10 +21,14 @@
  */
 
 
-/* Modifications :
- * - 06 apr 2007 : Implementation
- *
- */
+/** \file netpacketflooderbase.h
+  * Defines the flooder base packet sent over Enet network for 
+  *
+  * Modifications :
+  * - 07 aug 2008 : Single file documentation
+  * - 06 apr 2007 : Implementation
+  *
+  */
 
 #ifndef NET_PACKET_FLOODER_BASE_H
 #define NET_PACKET_FLOODER_BASE_H
@@ -34,10 +38,10 @@
 namespace RainbruRPG {
   namespace Network{
 
-    /** A class implementaing a response identifier used by NetFlooder
+    /** A class implementing a response identifier used by NetFlooder
       *
-      * This class only add a field to the NetPacketBase one.
-      * The responseId is used to get the ersponse of a given packet.
+      * This class only add a field to the NetPacketBase packet.
+      * The responseId is used to get the response of a given packet.
       *
       */
     class NetPacketFlooderBase : public NetPacketBase{

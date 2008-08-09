@@ -93,6 +93,8 @@ namespace RainbruRPG{
 
       bool handleWidgetMouseEvents(unsigned int,unsigned int,const MouseEvent&);
 
+      void setChildWidgetGeometryDirty(void);
+
       /** A constant iterator for TextInput lit */
       typedef vector<BetaGUI::TextInput*>::const_iterator TextInputListIterator;
       

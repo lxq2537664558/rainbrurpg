@@ -20,6 +20,11 @@
  *
  */
 
+/** \file globaluri.cpp
+  * Implements a class used to get full file names with path
+  *
+  */
+
 #include "globaluri.h"
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"

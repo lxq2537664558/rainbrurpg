@@ -20,13 +20,21 @@
  *
  */
 
-/* Modifications :
- * - 01 jul 2008 : mContentRectangle added
- * - 12 apr 2008 : events handling now uses MouseEvent
- * - 12 feb 2008 : using QuadRenderer::useParentScissor
- * - 23 nov 2007 : starting implementation
- *         
- */
+/** \file scrollpane.h
+  * Declares a scroll pane widget used in OgreGUI's windows
+  *
+  * Modifications :
+  * - 08 aug 2008 : Implementation of the 
+  *       \ref RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbar
+  *       "ScrollPane::getHorizontalScrollbar()" and
+  *       \ref RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbar
+  *       "ScrollPane::getVerticalScrollbar()" functions
+  * - 01 jul 2008 : mContentRectangle added
+  * - 12 apr 2008 : events handling now uses MouseEvent
+  * - 12 feb 2008 : using QuadRenderer::useParentScissor
+  * - 23 nov 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SCROLLPANE_H_
 #define _OGRE_GUI_SCROLLPANE_H_
@@ -36,6 +44,15 @@
 
 #include <skinmanager.h> // For OgreGuiSkinID
 #include <OgreRectangle.h> 
+
+/** The Y position of the vertical scrollbar
+  *
+  * This value is used in the \ref RainbruRPG::OgreGui::ScrollPane 
+  * "ScrollPane" class constructor and in the resize functions.
+  *
+  */
+#define VSB_YPOS 24
+
 
 // Forward declarations
 namespace BetaGUI{
@@ -105,6 +122,9 @@ namespace RainbruRPG{
 
       tScrollBarPolicy getHorizontalScrollbarPolicy(void);
       tScrollBarPolicy getVerticalScrollbarPolicy(void);
+
+      HScrollBar* getHorizontalScrollbar(void);
+      VScrollBar* getVerticalScrollbar(void);
 
       int getMaxChildRight(void);
       int getMaxChildBottom(void);

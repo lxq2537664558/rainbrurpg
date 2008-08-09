@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 14 apr 2007 : Assignment operator added
- *
- */
+/** \file objectpos.h
+  * Defines an object defining the position/rotation of a mesh
+  *
+  * Modifications :
+  * - 07 aug 2008 : Single file documentation
+  * - 14 apr 2007 : Assignment operator added
+  *
+  */
 
 #ifndef OBJECT_POS_H
 #define OBJECT_POS_H
@@ -33,7 +37,7 @@
 namespace RainbruRPG{
   namespace Core{
 
-    /** An object defining the position of a mesh
+    /** An object defining the position/rotation of a mesh
       *
       * An ObjectMesh can appears more than one times. The position, rotation
       * and name of all its instance are this class.

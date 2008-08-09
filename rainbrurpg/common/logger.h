@@ -20,6 +20,17 @@
  *
  */
 
+/** \file logger.h
+  * Defines preprocessor macros used to debug at runtime
+  *
+  * Modifications :
+  * - 07 aug 2008 : Single file documentation
+  *
+  * For more informations on how you can use these macros, please see the 
+  * \ref RainbruRPG::Exception::Logger "Logger" class documentation.
+  *
+  */
+
 #ifndef _LOGGER_H
 #define _LOGGER_H
 
@@ -41,12 +52,17 @@
   */
 #define TOSTRING(x) STRINGIFY(x)
 
-/** An Information macro for Logger
+/** \def LOGI(STRING)
+  * An Information macro for \ref RainbruRPG::Exception::Logger "Logger"
   *
-  * The \c #define's based macro \c LOGI provides an information log.
+  * The \c define's based macro \c LOGI provides an information log.
   * \c STRING message will be log with \c II loglevel.
   *
   * See Logger class for more informations.
+  *
+  * \note This macro print the message only in debug mode (if
+  *       \ref RAINBRU_RPG_DEBUG macro is defined). It does nothing
+  *       in release mode.
   *
   * \param STRING the information message
   */
@@ -57,7 +73,7 @@
 #endif
 /** A Warning macro for Logger
   *
-  * The \c #define's based macro \c LOGW provides a warning log.
+  * The \c define's based macro \c LOGW provides a warning log.
   * \c STRING message will be log with \c WW loglevel.
   *
   * \param STRING the warning message
@@ -68,7 +84,7 @@
 
 /** A Error macro for Logger
   *
-  * The \c #define's based macro \c LOGE provides a error log.
+  * The \c define's based macro \c LOGE provides a error log.
   * \c STRING message will be log with \c EE loglevel.
   *
   * \param STRING the error message
@@ -77,30 +93,64 @@
   */
 #define LOGE(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),3,STRING );
 
-/** An Assertion macro for Logger
+/** \def LOGA
+  * An Assertion macro for Logger
   *
-  * The \c #define's based macro \c LOGA provides an assertion : the
+  * The \c define's based macro \c LOGA provides an assertion : the
   * \c STRING message will be log with \c II loglevel if \c X is true,
   * otherwise the loglevel will be \c EE. AA will be placed in the
   * beginning of the logged message to marked it like an assertion.
   *
-  * \param X a boolean expression to be tested
+  * \param X      a boolean expression to be tested
   * \param STRING the assertion message
   *
   * See Logger class for more informations.
   */
 #define LOGA(X,STRING) RainbruRPG::Exception::Logger::getSingleton().logAssert(__FILE__,TOSTRING(__LINE__),X,STRING );
 
-
+/** Concatenate a string to the next CAT log
+  *
+  * \param STRING The string to be concatenated
+  *
+  */
 #define LOGCATS(STRING) RainbruRPG::Exception::Logger::getSingleton().logCatStr( STRING );
 
+/** Concatenate a string that represent the given integer value to the next 
+  * CAT log
+  *
+  * \param X The integer to be concatenated
+  *
+  */
 #define LOGCATI(X) RainbruRPG::Exception::Logger::getSingleton().logCatInt( X );
+
+/** Concatenate a string that represent the given boolean value to the next 
+  * CAT log
+  *
+  * \param X The boolean to be concatenated
+  *
+  */
 #define LOGCATB(X) RainbruRPG::Exception::Logger::getSingleton().logCatBool( X );
 
+/** Concatenate a string that represent the given float value to the next 
+  * CAT log
+  *
+  * \param X The boolean to be concatenated
+  *
+  */
+#define LOGCATF(X) RainbruRPG::Exception::Logger::getSingleton().logCatFloat(X);
+
+/** Finally log the current CAT command
+  *
+  */
 #define LOGCAT() RainbruRPG::Exception::Logger::getSingleton().logCat(__FILE__,TOSTRING(__LINE__));
 
+/** Free the current CAT command
+  *
+  * This should not be used in normal use because a call to \ref LOGCAT()
+  * call this.
+  *
+  */
 #define LOGCATFREE() RainbruRPG::Exception::Logger::getSingleton().logCatFree();
-#define LOGCATF(X) RainbruRPG::Exception::Logger::getSingleton().logCatFloat(X);
 
 using namespace RainbruRPG::Core;
 using namespace std;

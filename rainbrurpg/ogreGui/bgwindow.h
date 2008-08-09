@@ -7,19 +7,26 @@
  *
  */
 
-/* Modifications :
- * - 14 may 2008 : No more border possibility, please use Dialog instead
- * - 01 may 2008 : implementation of accessors for scrollbars visibility
- * - 07 feb 2008 : Some function are now inline
- * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
- * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
- * - 21 nov 2007 : Adding widget mouse support in event handling loop
- * - 16 nov 2007 : setTitle(String) implementation
- * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
- * - 24 sep 2007 : This was the original BetaGUI code. 
- *                 Betajaen's headers added
- *
- */
+/** \file bgwindow.h
+  * Declares a window widget used in OgreGUI
+  *
+  * Modifications :
+  * - 08 aug 2008 : Implementation of the 
+  *       \ref BetaGUI::Window::getHorizontalScrollbar
+  *       "Window::getHorizontalScrollbar()" and
+  *       \ref BetaGUI::Window::getVerticalScrollbar
+  *       "Window::getVerticalScrollbar()" functions
+  * - 14 may 2008 : No more border possibility, please use Dialog instead
+  * - 01 may 2008 : implementation of accessors for scrollbars visibility
+  * - 07 feb 2008 : Some function are now inline
+  * - 15 jan 2008 : rootOverlay removed. visibility handled by a bool member
+  * - 18 dec 2007 : Dynamic menu background now dtawn with StaticImage widget
+  * - 21 nov 2007 : Adding widget mouse support in event handling loop
+  * - 16 nov 2007 : setTitle(String) implementation
+  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
+  * - 24 sep 2007 : This was the original BetaGUI code. 
+  *
+  */
 
 #ifndef _BETA_GUI_WINDOW_
 #define _BETA_GUI_WINDOW_
@@ -54,14 +61,25 @@ namespace BetaGUI {
 
   /** A BetaGUI window
     *
-    * You must call \ref BetaGUI::GUI::addWindow() "GUI::addWindow"
-    * to get it to work. But you don't need to call 
-    * \ref BetaGUI::GUI::removeWindow() "GUI::removeWindow" as
-    * this method is automatically called by ~Window().
+    * \section window_add Adding window
     *
-    * To get a mouse over when the mouse move over a Button, you
-    * \b must use the addWidget(BetaGUI::Button*) method to add it 
-    * to the window's internal button list.
+    * In order to get a working window, drawing and gettinjg user input,
+    * you must call \ref BetaGUI::GUI::addWindow() "GUI::addWindow".
+    * But you don't need to call \ref BetaGUI::GUI::removeWindow() 
+    * "GUI::removeWindow" as this method is automatically called by ~Window().
+    *
+    * \section indow_mouse_over Mouse over effect
+    *
+    * To get a mouse over effect when the mouse move over a Button, you
+    * \b must use the \ref BetaGUI::Window::addWidget(BetaGUI::Button*) 
+    * "addWidget(BetaGUI::Button*)" method to add it to the window's 
+    * internal button list.
+    *
+    * \section window_scrollpane_wrapper ScrollPane wrapper
+    *
+    * Window uses a ScrollPane widget instance to manage scrollbars and 
+    * scrolling. The window's interface do not provide function such as 
+    * getScrollPane as I decided to provide wrapper functions.
     *
     * \note If you see your window but the titlebar and widgets are not
     *       visible, please make sure that you have called 
@@ -110,6 +128,10 @@ namespace BetaGUI {
 
     bool isVerticalScrollbarVisible(void)const;
     bool isHorizontalScrollbarVisible(void)const;
+
+    HScrollBar* getHorizontalScrollbar(void);
+    VScrollBar* getVerticalScrollbar(void);
+
 
   protected:
     void makeCorners(void);

@@ -106,6 +106,11 @@ namespace RainbruRPG{
       * list and \ref mHeadersScissorRectangle "mHeadersScissorRectangle"
       * to draw the column headers.
       *
+      * Please note that the scissor rectangles are modified in the 
+      * \ref RainbruRPG::OgreGui::wdMultiColumnList::preDrawingComputation
+      * "wdMultiColumnList::preDrawingComputation" function to handle
+      * Window size or scroll bar visibility.
+      *
       * \section mcl_multiDrawingDev Multiples drawingDev
       *
       * This widget uses two DrawingDevSettings objects : \ref mDrawingDev

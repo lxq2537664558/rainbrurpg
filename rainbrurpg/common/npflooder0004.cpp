@@ -20,6 +20,11 @@
  *
  */
 
+/** \file npflooder0004.cpp
+  * Implements a packet of 4 bytes used by the flooder
+  *
+  */
+
 #include "npflooder0004.h"
 
 /** The identified constructor

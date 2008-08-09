@@ -20,6 +20,15 @@
  *
  */
 
+/** \file httpresponse.h
+  * Declares types and class need to get readable message from an HTTP status 
+  * code
+  *
+  * Modifications :
+  * - 04 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef HTTP_RESPONSE_H
 #define HTTP_RESPONSE_H
 
@@ -42,7 +51,7 @@ namespace RainbruRPG {
       */
     typedef map<long, const char*>   HttpMessageMap;
 
-    /** A shortvut for the HttpMessageMap iterator
+    /** A shortcut for the HttpMessageMap iterator
       *
       */
     typedef HttpMessageMap::iterator HttpMessageMapIterator;
@@ -53,7 +62,7 @@ namespace RainbruRPG {
     typedef pair<long, const char*>  HttpMessagePair;
 
 
-    /** This class give the error message correponding to a http 
+    /** This class give the error message correponding to an http 
       *	status code.
       *
       * HTTP servers always return numeric status code. This codes

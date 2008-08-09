@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 15 jul 2007 : Starting implementation
- *
- */
+/** \file itemlistfile.h
+  * Declares a class that manage a file containing an item list
+  *
+  * Modifications :
+  * - 15 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef ITEM_LIST_FILE_H
 #define ITEM_LIST_FILE_H
@@ -38,7 +41,7 @@ using namespace std;
 namespace RainbruRPG{
   namespace Options{
 
-    /** A simple STL list of C-style strings */
+    /** A simple STL list of STL strings */
     typedef std::list<std::string> tStringList;
 
     /** A class that manage a file containing an item list

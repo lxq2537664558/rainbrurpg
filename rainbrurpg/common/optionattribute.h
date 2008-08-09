@@ -20,6 +20,15 @@
  *
  */
 
+/** \file optionattribute.h
+  * Declares an attribute that will be shown in the launcher's option editor
+  *
+  * Modifications :
+  * - 08 aug 2008 : Single file documentation
+  *
+  */
+
+
 #ifndef OPTION_ATTRIBUTE_H
 #define OPTION_ATTRIBUTE_H
 

@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 18 jun 2007 : Documentation improved
- * - 20 mar 2007 : starting implementation
- */
+/** \file npconnectionresponse.h
+  * Defines the network packet used by server to answer to a client's connection
+  *
+  * Modifications :
+  * - 18 jun 2007 : Documentation improved
+  * - 20 mar 2007 : starting implementation
+  */
 
 #ifndef NETWORK_PACKET_CONNECTION_RESPONSE_H
 #define NETWORK_PACKET_CONNECTION_RESPONSE_H

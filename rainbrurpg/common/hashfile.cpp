@@ -20,6 +20,11 @@
  *
  */
 
+/** \file hashfile.cpp
+  * Implements a class that compute hash sum of a file
+  *
+  */
+
 #include "hashfile.h"
 
 /** The default constructor

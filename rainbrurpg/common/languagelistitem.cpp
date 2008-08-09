@@ -20,6 +20,11 @@
  *
  */
 
+/** \file languagelistitem.cpp
+  * Implements a class defining a language
+  *
+  */
+
 #include "languagelistitem.h"
 
 

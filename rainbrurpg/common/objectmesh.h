@@ -20,6 +20,14 @@
  *
  */
 
+/** \file objectmesh.h
+  * Defines a static mesh that can have multiple instances
+  *
+  * Modifications :
+  * - 07 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OBJECT_MESH_H
 #define OBJECT_MESH_H
 

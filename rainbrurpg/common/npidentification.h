@@ -20,10 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 19 mar 2007 : Starting implementation of serialize deserialize and 
- *      other pure virtual function from NetPacketBase
- * - 05 mar 2007 : starting implementation
+/** \file npidentification.h
+  * Defines the client identification packet
+  *
+  * Modifications :
+  * - 19 mar 2007 : Starting implementation of 
+  *      \ref RainbruRPG::Network::NetPacketBase::netSerialize "netSerialize()",
+  *      \ref RainbruRPG::Network::NetPacketBase::netDeserialize 
+  *      "netDeserialize" and  other pure virtual functions from 
+  *      \ref RainbruRPG::Network::NetPacketBase "NetPacketBase".
+  * - 05 mar 2007 : starting implementation
  */
 
 #ifndef NETWORK_PACKET_IDENTIFICATION_H

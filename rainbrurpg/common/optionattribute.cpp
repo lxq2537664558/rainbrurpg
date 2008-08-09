@@ -20,6 +20,11 @@
  *
  */
 
+/** \file optionattribute.cpp
+  * Implements an attribute that will be shown in the launcher's option editor
+  *
+  */
+
 #include "optionattribute.h"
 
 /** A typed default constructor

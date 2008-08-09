@@ -20,11 +20,22 @@
  *
  */
 
-/* Modifications :
- * - 19 mar 2007 : Documentation update
- *                 Adding getData and getDataLenght
- * - 04 mar 2007 : starting implementation
- */
+/** \file netpacketbase.h
+  * Defines the base packet sent over Enet network 
+  *
+  * Modifications :
+  * - 19 mar 2007 : 
+  *   - Documentation update
+  *   - Adding \ref RainbruRPG::Network::NetPacketBase::getData() "getData()" 
+  *     and \ref RainbruRPG::Network::NetPacketBase::getDataLength() 
+  *     "getDataLength"
+  * - 04 mar 2007 : starting implementation
+  *
+  * \todo 
+  * - Some function are implemented inline and empty. These can't be pure 
+  *   virtual ? (example \ref RainbruRPG::Network::NetPacketBase::netSerialize
+  *   "netSerialize()").
+  */
 
 
 #ifndef NET_PACKET_BASE_H
@@ -41,7 +52,10 @@
 
 using namespace std;
 
-/* The packets are all reliable if defined */
+/** \def ALWAYS_USE_RELIABLE
+  * The packets are all reliable if defined 
+  *
+  */
 #define ALWAYS_USE_RELIABLE
 
 namespace RainbruRPG{
@@ -154,7 +168,7 @@ namespace RainbruRPG{
       *
       * \section sec_Reliable Reliable or not reliable ?
       *
-      * A preprocessor macro called ALWAYS_USE_RELIABLE is defined in
+      * A preprocessor macro called \ref ALWAYS_USE_RELIABLE is defined in
       * the header common/netpacketbase.h to tells always use reliable
       * network packets.
       * 
@@ -220,7 +234,8 @@ namespace RainbruRPG{
 
       /** Defines if the packet is reliable
         *
-	* This value is overriden by the ALWAYS_USE_RELIABLE if defined.
+	* This value is overriden with the \ref ALWAYS_USE_RELIABLE macro 
+	* if defined.
 	*
 	*/
       bool reliable;

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file npidentification.cpp
+  * Implements the client identification packet
+  *
+  */
+
 #include "npidentification.h"
 
 #include "logger.h"

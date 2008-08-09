@@ -20,6 +20,11 @@
  *
  */
 
+/** \file hashpassword.cpp
+  * Implements a class used to compute password's hashsum 
+  *
+  */
+
 #include "hashpassword.h"
 
 #include <iostream>

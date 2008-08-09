@@ -20,6 +20,11 @@
  *
  */
 
+/** \file objectpos.cpp
+  * Implements an object defining the position/rotation of a mesh
+  *
+  */
+
 #include "objectpos.h"
 
 /** The default constructor 

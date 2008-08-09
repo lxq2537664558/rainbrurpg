@@ -20,6 +20,10 @@
  *
  */
 
+/** \file netpacketbase.cpp
+  * Implements the base packet sent over Enet network 
+  *
+  */
 #include "netpacketbase.h"
 
 #include "logger.h"

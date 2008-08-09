@@ -20,6 +20,10 @@
  *
  */
 
+/** \file npconnectionresponse.cpp
+  * Implements the packet used by server to answer to a client's connection
+  *
+  */
 #include "npconnectionresponse.h"
 
 #include <logger.h>

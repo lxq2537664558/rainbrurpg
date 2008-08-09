@@ -7,6 +7,11 @@
  *
  */
 
+/** \file bgwindow.h
+  * Implements a window widget used in OgreGUI
+  *
+  */
+
 #include "bgwindow.h"
 
 #include "bglistener.h"
@@ -261,12 +266,12 @@ void BetaGUI::Window::resize(int px, int py){
 void BetaGUI::Window::move(int px, int py){
   int devX, devY;
   mScrollPane->getMovingDev(devX, devY);
-  LOGCATS("devX=");
+  /*  LOGCATS("devX=");
   LOGCATI(devX);
   LOGCATS(" devY=");
   LOGCATI(devY);
   LOGCAT();
-
+  */
 
   int width  = corners.right - corners.left;
   int height = corners.bottom - corners.top;
@@ -518,4 +523,34 @@ void BetaGUI::Window::makeCorners(void){
     mScrollPane->setContentRectangle(corners);
   }
 
+}
+
+/** Get the scrollbar
+  *
+  * It is just a wrapper to the
+  * \ref RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbar 
+  * "ScrollPane::getHorizontalScrollbar()" function called on
+  * \ref BetaGUI::Window::mScrollPane "mScrollPane".
+  *
+  * \return The scrollbar
+  *
+  */
+RainbruRPG::OgreGui::HScrollBar* 
+BetaGUI::Window::getHorizontalScrollbar(void){
+  return mScrollPane->getHorizontalScrollbar();
+}
+
+/** Get the scrollbar
+  *
+  * It is just a wrapper to the
+  * \ref RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbar 
+  * "ScrollPane::getVerticalScrollbar()" function called on
+  * \ref BetaGUI::Window::mScrollPane "mScrollPane".
+  *
+  * \return The scrollbar
+  *
+  */
+RainbruRPG::OgreGui::VScrollBar* 
+BetaGUI::Window::getVerticalScrollbar(void){
+  return mScrollPane->getVerticalScrollbar();
 }

@@ -20,15 +20,19 @@
  *
  */
 
-/* Modifications :
- * - 17 mar 2008 : InstalledFileList implementation
- * - 15 mar 2008 : Adding some functions for unit test
- *                 Passing existing function const
- * - 09 jul 2007 : Tests if downloaded directory exists
- * - 01 jul 2007 : Switch to const std::string&
- * - 21 jun 2007 : FTP related function added
- *
- */
+/** \file globaluri.h
+  * Declares types and class used to get full file names with path
+  *
+  * Modifications :
+  * - 17 mar 2008 : \ref RainbruRPG::Network::tInstalledConfigFilesList 
+  *                 "tInstalledConfigFilesList" implementation
+  * - 15 mar 2008 : Adding some functions for unit test
+  *                 Passing existing function const
+  * - 09 jul 2007 : Tests if downloaded directory exists
+  * - 01 jul 2007 : Switch to const std::string&
+  * - 21 jun 2007 : FTP related function added
+  *
+  */
 
 #ifndef GLOBAL_URI_H
 #define GLOBAL_URI_H
