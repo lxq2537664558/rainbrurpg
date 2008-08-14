@@ -20,6 +20,14 @@
  *
  */
 
+/** \file staticmeshdialog.h
+  * Declares a class displaying informations on an ObjectMesh
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef STAIC_MESH_DIALOG_H
 #define STAIC_MESH_DIALOG_H
 

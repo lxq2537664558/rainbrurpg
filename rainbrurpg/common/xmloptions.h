@@ -20,6 +20,14 @@
  *
  */
 
+/** \file xmloptions.h
+  * Declares a class used to store client's options
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef XML_OPTIONS_H
 #define XML_OPTIONS_H
 

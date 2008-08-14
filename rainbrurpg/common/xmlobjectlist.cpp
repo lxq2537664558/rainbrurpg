@@ -20,6 +20,11 @@
  *
  */
 
+/** \file xmlobjectlist.cpp
+  * Implements a class that read and create the objects in \c config/objects.xml
+  *
+  */
+
 #include "xmlobjectlist.h"
 #include "globaluri.h"
 

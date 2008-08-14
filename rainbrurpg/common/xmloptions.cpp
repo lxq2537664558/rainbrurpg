@@ -20,6 +20,11 @@
  *
  */
 
+/** \file xmloptions.cpp
+  * Implements a class used to store client's options
+  *
+  */
+
 #include "xmloptions.h"
 #include "config.h"
 #include "globaluri.h"

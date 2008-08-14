@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionboolattribute.h
+/** \file optionbutton.h
   * Declares a button for the launcher's options editor
   *
   * Modifications :

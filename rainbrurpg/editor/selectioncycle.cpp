@@ -20,6 +20,11 @@
  *
  */
 
+/** \file selectioncycle.cpp
+  * Implements the item selection cycle
+  *
+  */
+
 #include "selectioncycle.h"
 
 #include <logger.h>

@@ -20,6 +20,10 @@
  *
  */
 
+/** \file optionlistattribute.cpp
+  * Implements a list of string for the launcher's options editor
+  *
+  */
 
 #include "optionlistattribute.h"
 

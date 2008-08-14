@@ -20,6 +20,11 @@
  *
  */
 
+/** \file optionpanel.cpp
+  * Implements a panel for the launcher's options editor
+  *
+  */
+
 #include "optionpanel.h"
 
 

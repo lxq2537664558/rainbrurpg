@@ -20,6 +20,14 @@
  *
  */
 
+/** \file taccountlist.h
+  * Declares the account list as it can be found in administartion site
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef T_PLAYER_LIST_H
 #define T_PLAYER_LIST_H
 

@@ -20,13 +20,21 @@
  *
  */
 
-/* Modifications :
- * - 11 jun 2008 : itobin implementation
- * - 31 may 2007 : Fix a bug in ctoi when receiving NULL string
- *                 stoi replace ctoi
- * - 09 mar 2007 : Add the xmlStripNewLine and xmlToNewLine functions
- * - 01 nov 2006 : Starting implementation (I'm not sure)
- */
+/** \file stringconv.h
+  * Declares a singleton to convert string format
+  *
+  * Modifications :
+  * - 11 jun 2008 : \ref RainbruRPG::Core::StringConv::itobin "itobin()" 
+  *                 implementation
+  * - 31 may 2007 : 
+  *      - \ref RainbruRPG::Core::StringConv::stoi "stoi()" replace ctoi()
+  *      - Fix a bug in ctoi() when receiving \c NULL string
+  * - 09 mar 2007 : Add the \ref RainbruRPG::Core::StringConv::xmlStripNewLine 
+  *                 "xmlStripNewLine()" and 
+  *                 \ref RainbruRPG::Core::StringConv::xmlToNewLine 
+  *                 "xmlToNewLine" functions.
+  * - 01 nov 2006 : Starting implementation
+  */
 #ifndef STRING_CONVERTER_H
 #define STRING_CONVERTER_H
 

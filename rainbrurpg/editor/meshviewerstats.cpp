@@ -20,6 +20,12 @@
  *
  */
 
+/** \file meshviewerstats.cpp
+  * Implements a widget than can be linked to a MeshViewer to draw some 
+  * statistics
+  *
+  */
+
 #include "meshviewerstats.h"
 
 #include <QHBoxLayout>

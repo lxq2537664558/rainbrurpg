@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 01 apr 2007 : Documentation improvement
- * - 02 mar 2007 : remove an #inchude "tplayerlist.h"
- */
+/** \file xmlattrbcatlist.h
+  * Declares a class used to read the XML file of the attribute categories list
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 01 apr 2007 : Documentation improvement
+  * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  */
 
 #ifndef XML_ATTRB_CAT_LIST_H
 #define XML_ATTRB_CAT_LIST_H

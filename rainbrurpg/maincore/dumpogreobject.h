@@ -20,10 +20,22 @@
  *
  */
 
-/* Modifications :
- * - 06 jan 2008 : Starting implementations
- *
- */
+/** \file dumpogreobject.h
+  * Declares preprocessor macros used to dump Ogre objects
+  *
+  * The preprocessor macros in this header may be use to dump Ogre object.
+  * It provide The \c __FILE__ and \c __LINE__ autofill that let the caller
+  * filename and line number be printed with the dumped ogre object. Please
+  * note that the Logger is used to log objects informations.
+  *
+  * \warning Preprocessor macros do not provide clear type checking and a
+  *          bad parameter could lead to an undefined behaviour.
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 06 jan 2008 : Starting implementations
+  *
+  */
 
 #ifndef _DUMP_OGRE_OBJECT_H_
 #define _DUMP_OGRE_OBJECT_H_
@@ -41,18 +53,37 @@ using namespace std;
 using namespace Ogre;
 using namespace RainbruRPG::Exception;
 
-/* The preprocessor macros in this header may be use to dump Ogre object.
- *
- */
 
+/** \def DUMP_RECT(RECTANGLE)
+  * Dump an Ogre rectangle
+  * 
+  * \param RECTANGLE The rectangle to be logger
+  *
+  *
+  */
 #define DUMP_RECT(RECTANGLE) dumpOgreRectangle(__FILE__,		\
 					       TOSTRING(__LINE__),	\
 					       RECTANGLE );
 
+
+/** \def DUMP_VEC4(VECTOR4)
+  * Dump an Ogre Vector4 object
+  * 
+  * \param VECTOR4 The Vector4 object to be logger
+  *
+  *
+  */
 #define DUMP_VEC4(VECTOR4) dumpOgreVector4(__FILE__,		\
 					   TOSTRING(__LINE__),	\
 					   VECTOR4 );
 
+/** \def DUMP_VEC2(VECTOR2)
+  * Dump an Ogre Vector2 object
+  * 
+  * \param VECTOR2 The Vector2 object to be logger
+  *
+  *
+  */
 #define DUMP_VEC2(VECTOR2) dumpOgreVector2(__FILE__,		\
 					   TOSTRING(__LINE__),	\
 					   VECTOR2 );

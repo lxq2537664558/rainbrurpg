@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 18 jul 2007 : Starting implementation
- *
- */
+/** \file filepreview.h
+  * Declares a class that creates a dialog used to preview a file.
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 18 jul 2007 : Starting implementation
+  *
+  */
 
 
 #ifndef _FILE_PREVIEW_H_

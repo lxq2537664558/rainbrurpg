@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -19,6 +19,11 @@
  *  02110-1301  USA
  *
  */
+
+/** \file timer.cpp
+  * Implements a timer based on glib 2.0
+  *
+  */
 
 #include "timer.h"
 

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionpanel.h
+  * Declares a panel for the launcher's options editor
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_PANEL_H
 #define OPTION_PANEL_H
 

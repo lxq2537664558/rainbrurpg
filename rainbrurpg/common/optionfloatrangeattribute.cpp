@@ -20,6 +20,10 @@
  *
  */
 
+/** \file optionfloatrangeattribute.cpp
+  * Implements a range of floats for the launcher's options editor
+  *
+  */
 
 #include "optionfloatrangeattribute.h"
 

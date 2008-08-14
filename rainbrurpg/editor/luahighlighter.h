@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 03 apr 2007 : Implementation started
- */
+/** \file luahighlighter.h
+  * Declares a highlighter for the Lua programming language
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 03 apr 2007 : Implementation started
+  */
 #ifndef LUA_HIGHLIGHTER_H
 #define LUA_HIGHLIGHTER_H
 

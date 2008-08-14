@@ -349,7 +349,7 @@ char *getenv ();
 /** Test for existence
   *
   * Value for the second argument of the access() function (defined in 
-  * \c unistd.h. It may be OR'd with other ?_OK macros.   
+  * \c unistd.h). It may be OR'd with other ?_OK macros.   
   *
   */
 #define F_OK 0
@@ -357,7 +357,7 @@ char *getenv ();
 /** Test for execute permission
   *
   * Value for the second argument of the access() function (defined in 
-  * \c unistd.h. It may be OR'd with other ?_OK macros.   
+  * \c unistd.h). It may be OR'd with other ?_OK macros.   
   *
   */
 #define X_OK 1
@@ -365,7 +365,7 @@ char *getenv ();
 /** Test for write permission
   *
   * Value for the second argument of the access() function (defined in 
-  * \c unistd.h. It may be OR'd with other ?_OK macros.   
+  * \c unistd.h). It may be OR'd with other ?_OK macros.   
   *
   */
 #define W_OK 2

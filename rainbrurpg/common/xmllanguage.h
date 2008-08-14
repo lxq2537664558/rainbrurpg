@@ -20,6 +20,14 @@
  *
  */
 
+/** \file xmllanguage.h
+  * Declares a class used to read and write languages configuration file
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef XML_LANGUAGE_H
 #define XML_LANGUAGE_H
 

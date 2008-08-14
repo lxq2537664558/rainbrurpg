@@ -20,6 +20,11 @@
  *
  */
 
+/** \file objectstab.cpp
+  * Implements the world object list
+  *
+  */
+
 #include "objectstab.h"
 
 #include <QVBoxLayout>

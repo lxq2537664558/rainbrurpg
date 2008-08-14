@@ -20,6 +20,11 @@
  *
  */
 
+/** \file staticmeshdialog.cpp
+  * Implements a class displaying informations on an ObjectMesh
+  *
+  */
+
 #include "staticmeshdialog.h"
 
 #include <QHBoxLayout>

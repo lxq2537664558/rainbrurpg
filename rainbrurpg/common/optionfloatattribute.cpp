@@ -20,6 +20,11 @@
  *
  */
 
+/** \file optionfloatattribute.cpp
+  * Implements a float attribute for the launcher's options editor
+  *
+  */
+
 #include "optionfloatattribute.h"
 
 /** A named constructor

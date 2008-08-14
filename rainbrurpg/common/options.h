@@ -20,6 +20,11 @@
  *
  */
 
+/** \file options.h
+  * Declares a class used to initialize OptionManager
+  *
+  */
+
 #ifndef OPTIONS_H
 #define OPTIONS_H
 

@@ -1,5 +1,13 @@
-// This header does not contain code
-// It is only documentation
+
+/** \file doc.h
+  * A documentation file
+  *
+  * This header does not contain code. It is only documentation for
+  * namespaces and other members that cannot be documented in other places.
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  */
 
 /*
  *  Copyright 2006-2008 Jerome PASQUIER

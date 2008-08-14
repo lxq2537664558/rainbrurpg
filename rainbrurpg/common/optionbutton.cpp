@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionboolattribute.cpp
+/** \file optionbutton.cpp
   * Implements a button for the launcher's options editor
   *
   *

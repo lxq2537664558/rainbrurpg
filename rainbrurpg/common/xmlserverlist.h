@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 28 jun 2007 : Adding the 'uniqueName' and 'type' keys
- * - 29 may 2007 : Adding the 'ftp' key
- *
- */
+/** \file xmlserverlist.h
+  * Declares a class that read the server list
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 28 jun 2007 : Adding the 'uniqueName' and 'type' keys
+  * - 29 may 2007 : Adding the 'ftp' key
+  *
+  */
 
 #ifndef XML_SERVER_LIST_H
 #define XML_SERVER_LIST_H

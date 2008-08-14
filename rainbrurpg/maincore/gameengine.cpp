@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gameengine.cpp
+  * Implements an Ogre frame listenerthe client game engine
+  *
+  */
+
 #include "gameengine.h"
 
 #include <iostream>

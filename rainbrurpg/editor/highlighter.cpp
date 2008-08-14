@@ -20,6 +20,11 @@
  *
  */
 
+/** \file highlighter.cpp
+  * Implements a base class for all highlighter
+  *
+  */
+
 #include <QtGui>
 
 #include "highlighter.h"

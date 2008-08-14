@@ -20,6 +20,11 @@
  *
  */
 
+/** \file xmlserverlist.cpp
+  * Implements a class that read the server list
+  *
+  */
+
 #include "xmlserverlist.h"
 #include "globaluri.h"
 

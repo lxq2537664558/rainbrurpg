@@ -20,6 +20,16 @@
  *
  */
 
+/** \file ogreview.h
+  * Declares a Ogre3D renderer embedded in a QWidget
+  *
+  * This code is based on the Quentin Bereau's Show Mesh 
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef __OgreView_h__
 #define __OgreView_h__
 

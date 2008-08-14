@@ -20,6 +20,11 @@
  *
  */
 
+/** \file editor/mainwindow.cpp
+  * Implements the editor's main window
+  *
+  */
+
 #include "mainwindow.h"
 
 #include <QtGui/QDockWidget>

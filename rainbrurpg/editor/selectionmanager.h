@@ -20,6 +20,14 @@
  *
  */
 
+/** \file selectionmanager.h
+  * Declares a singleton that manage the entity selection behaviour
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef SELECTION_MANAGER_H
 #define SELECTION_MANAGER_H
 

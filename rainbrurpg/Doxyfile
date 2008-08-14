@@ -88,23 +88,26 @@ FILE_PATTERNS          = *.cpp \
                          *.PHP \
                          *.PHP3
 RECURSIVE              = YES
-EXCLUDE                = /home/mouse/programmation/rainbrurpg/include/ \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP.h \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_DataStructures.h \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_VariousBMPutilities.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinystr.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinystr.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxml.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxml.h \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxmlerror.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/tinyxmlparser.cpp \
-                         /home/mouse/programmation/rainbrurpg/common/EasyBMP_BMP.h \
-                         /home/mouse/programmation/rainbrurpg/IrrClient/ \
-                         /home/mouse/programmation/rainbrurpg/client/oldLauncher/ \
-                         /home/mouse/programmation/rainbrurpg/tests/ \
-                         /home/mouse/programmation/rainbrurpg/common/loadbmp.h \
-                         /home/mouse/programmation/rainbrurpg/common/loadbmp.cpp
+EXCLUDE                = include/				\  
+  		         EasyBMP.cpp 				\
+			 common/EasyBMP.h 			\
+			 common/EasyBMP.cpp 			\
+			 common/EasyBMP_DataStructures.h 	\
+			 common/EasyBMP_VariousBMPutilities.h 	\
+			 common/tinystr.cpp 			\
+			 common/tinystr.h 			\
+			 common/tinyxml.cpp 			\
+			 common/tinyxml.h 			\		
+			 common/tinyxmlerror.cpp 		\
+			 common/tinyxmlparser.cpp 		\
+			 common/EasyBMP_BMP.h 			\
+			 IrrClient/ 				\
+			 client/oldLauncher/ 			\
+			 tests/ 				\
+			 common/loadbmp.h 			\
+			 common/loadbmp.cpp 			\
+			 editor/.rcc/qrc_resources.cpp
+
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = moc_* \
                          *~

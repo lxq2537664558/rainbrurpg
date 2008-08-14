@@ -20,6 +20,11 @@
  *
  */
 
+/** \file helpviewer.cpp
+  * Implements a basic HTML viewer
+  *
+  */
+
 #include "helpviewer.h"
 #include "../config.h"
 

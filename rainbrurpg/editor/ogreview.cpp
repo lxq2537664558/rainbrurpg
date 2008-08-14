@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ogreview.cpp
+  * Implements a Ogre3D renderer embedded in a QWidget
+  *
+  */
+
 #include "ogreview.h"
 #include "mainwindow.h"
 

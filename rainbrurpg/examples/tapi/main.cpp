@@ -20,6 +20,14 @@
  *
  */
 
+/** \file examples/tapi/main.cpp
+  * A simple example showing how to use TerminalApi
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #include <infodialog.h>
 #include <terminalapp.h>
 #include <menubar.h>
@@ -45,6 +53,9 @@ int slotExampleWindow(void);
   * Here, we initialize the TerminalApp singleton and set the menubar
   * created by the \ref createMenubar() function.
   *
+  * \param argc The number of command-line arguments
+  * \param argv The array of command-line arguments
+  *
   */
 int main(int argc, char** argv){
   Logger::getSingleton().setFilename("RainbruRPG-examples-tapi.log");
@@ -59,7 +70,7 @@ int main(int argc, char** argv){
 
 /** Create the menu bar
   *
-  * \return Th newly created menubar
+  * \return The newly created menubar
   *
   */
 MenuBar* createMenubar(void){
@@ -112,6 +123,11 @@ This dialog is always modal.");
    
 }
 
+/** Creates an example window
+  *
+  * \return Always 0
+  *
+  */
 int slotExampleWindow(void){
   Window* mWin=new Window("Window example");
   mWin->move(4,5);

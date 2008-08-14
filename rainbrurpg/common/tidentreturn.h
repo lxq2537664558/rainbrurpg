@@ -21,10 +21,14 @@
  */
 
 
-/* Modifications :
- * - 02 jan 2007 : GNU header added
- *
- */
+/** \file tidentreturn.h
+  * Declares the returned values used in the identification process
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 02 jan 2007 : GNU header added
+  *
+  */
 
 #ifndef T_IDENT_RETURN_H
 #define T_IDENT_RETURN_H

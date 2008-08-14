@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 05 jul 2007 : Removing using namespace Ogre due to conflicts Ogre/Qt4
- * - 04 jul 2007 : OIS version added
- *
- */ 
+/** \file version.h
+  * Declares a class for libraries versions logging
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 05 jul 2007 : Removing using namespace Ogre due to conflicts Ogre/Qt4
+  * - 04 jul 2007 : OIS version added
+  *
+  */ 
 
 #ifndef VERSION_H
 #define VERSION_H
@@ -40,7 +44,6 @@
  * to prevent compilation error
  */
 #ifndef INCLUDE_VERSION_WITHOUT_OGRE
-//#  include <OgrePrerequisites.h> // For Ogre version
 #  include <maincore/ogreimport.h> // For Ogre version
 #endif //INCLUDE_VERSION_WITHOUT_OGRE
 

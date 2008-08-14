@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 jan 2008 : GNU header added
- *
- */ 
+/** \file tnotelist.h
+  * Declares a player's notepad object and a list of them
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 02 jan 2008 : GNU header added
+  *
+  */ 
 
 #ifndef T_NOTE_LIST_H
 #define T_NOTE_LIST_H

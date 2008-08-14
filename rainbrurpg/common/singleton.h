@@ -20,6 +20,13 @@
  *
  */
 
+/** \file singleton.h
+  * Implementation of the Meyer's Singleton design pattern
+  *
+  * Modifications :
+  * - 08 aug 2008 : Single file documentation
+  *
+  */
 #ifndef SINGLETON_H
 #define SINGLETON_H
 

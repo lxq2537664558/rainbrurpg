@@ -53,8 +53,9 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mCurrentMcl(NULL)
 {
   // Debug settings
-  mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 17, 1);
-  mDebugSettings->setDebugFlags(0x00);
+  // mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 3, 1);
+  mDebugSettings =  new MultiColumnListDebugSettings("MCL.MCLTestWindow",3,2);
+  mDebugSettings->setDebugFlags(0x31);
   mDebugSettings->disable();
 
   // Text settings
@@ -111,6 +112,10 @@ void RainbruRPG::OgreGui::wdMultiColumnList::init(MultiColumnList* mcl){
 
 /** Draw a cell of an item
   * 
+  * \warning The scissor rectangle should not be modified here. It is
+  *          set in the \ref wdMultiColumnList::drawOneItem "drawOneItem()"
+  *          function and should not be set at the item's cell content.
+  *
   * \param qr    The QuadRenderer used to draw
   * \param vCell The Cell to be drawn
   * \param vRect The rectangle where we must draw the cell
@@ -121,8 +126,6 @@ drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
 		const Rectangle& vRect){
 
   mDebugSettings->debugCell( qr, mCurrentMcl, vCell, vRect );
-
-
   if (vCell->isText()){
     // The false is to deactivate wordwrap
     qr->drawText(tsMclTextCell, vCell->getText(), vRect, false);
@@ -315,8 +318,14 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   }
   
   // Drawing header caption
+  //
+  // Setting wordwrap to false prevent the header text to fall down when
+  // the header width is too small to show the text entirely
+  qr->setUseParentScissor(false);
+  qr->setScissorRectangle(mColumnCaption);
+  qr->setUseParentScissor(true);  
   qr->drawText(tsMclColumnHeader, vHeader->getCaption(), 
-	       mColumnCaption, true);
+	       mColumnCaption, false);
   
   // Drawing sort sign
   qr->setBlendMode(QBM_ALPHA);
@@ -332,6 +341,9 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     break;
   }
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
+  qr->setUseParentScissor(false);
+  qr->setScissorRectangle(sortSignRect);
+  qr->setUseParentScissor(true);  
   qr->drawRectangle(sortSignRect);
   
   
@@ -353,18 +365,29 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
 
 /** Draw one item in the list
   *
+  * This function do not use 
+  * \ref RainbruRPG::OgreGui::QuadRenderer::useParentScissor 
+  * "QuadRenderer::useParentScissor" ability to provide a fast draw (it
+  * avoid two calls to 
+  * \ref RainbruRPG::OgreGui::QuadRenderer::setUseParentScissor 
+  * "QuadRenderer::setUseParentScissor" for each item's cell drawn). A
+  * side effect is that you need to be sure the current scissor you
+  * get in the \c vScissor parameter is correct when calling
+  * this function from \ref wdMultiColumnList::drawAllItems "drawAllItems()".
+  *
   * \param qr            The QuadRenderer object used to draw
   * \param vItem         The item to be drawn
   * \param vRect         The rectangle where the item is drawn
   * \param vColList      The MultiColumnList's column list
   * \param vMovingColumn The column we are currently moving
+  * \param vScissor      The item scissor rectangle. should be modified.
   * \param vDebug        Should we debug this drawing ?
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
-	    bool vDebug){
+	    Rectangle vScissor, bool vDebug){
 
   mDebugSettings->debugItem( qr, mCurrentMcl, vItem, vRect );
 
@@ -395,8 +418,12 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	qr->enableGhost();
       }
       
+      vScissor.right = itemRect.left + vColList[colId]->getWidth() -
+	ITEM_INSIDE_MARGIN;
+
+      qr->setScissorRectangle(vScissor);
       drawOneItemCell(qr, (*mii), itemRect  );
-      
+
       itemRect.left+=vColList[colId]->getWidth();
       if (colId+1 < vColList.size()){
 	itemRect.right=itemRect.left + vColList[colId+1]->getWidth();
@@ -405,7 +432,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	itemRect.right = mColumnCaption.right -2;
       }
       
-      
+    
       if (colId == vMovingColumn){
 	qr->disableGhost();
       }
@@ -497,13 +524,11 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
     
     qr->setUseParentScissor(false);
-    qr->setScissorRectangle(itemScissorRect);
-    qr->setUseParentScissor(true);
     
-    drawOneItem(qr, (*ili), itemBG, colList, vMovingColumn );
+    drawOneItem(qr, (*ili), itemBG, colList, vMovingColumn, itemScissorRect );
 
-    itemRect.left=mMclAbsCorners.left+5;
-    itemRect.right=itemRect.left+colList[0]->getWidth();
+    itemRect.left=mMclAbsCorners.left+ITEM_INSIDE_MARGIN;
+    itemRect.right=itemRect.left + colList[0]->getWidth();
     itemRect.top+=20;
     itemRect.bottom=itemRect.top+20;
     itemBG.top+=20;

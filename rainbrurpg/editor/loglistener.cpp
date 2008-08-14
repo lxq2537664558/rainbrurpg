@@ -20,6 +20,11 @@
  *
  */
 
+/** \file loglistener.cpp
+  * Implements a class used to show Ogre messages in a Qt widget
+  *
+  */
+
 #include "loglistener.h"
 
 /** The default constructor

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionfloatrangeattribute.h
+  * Declares a range of floats for the launcher's options editor
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_FLOAT_RANGE_ATTRIBUTE_H
 #define OPTION_FLOAT_RANGE_ATTRIBUTE_H
 

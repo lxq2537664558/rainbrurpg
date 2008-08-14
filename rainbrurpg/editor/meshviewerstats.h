@@ -20,6 +20,14 @@
  *
  */
 
+/** \file meshviewerstats.h
+  * Declares a widget than can be linked to a MeshViewer to draw some statistics
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef MESH_VIEWER_STATS_H
 #define MESH_VIEWER_STATS_H
 

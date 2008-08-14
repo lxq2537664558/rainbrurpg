@@ -20,6 +20,14 @@
  *
  */
 
+/** \file meshviewer.h
+  * Declares a class used to view a single mesh
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef MESH_VIEWER_H
 #define MESH_VIEWER_H
 

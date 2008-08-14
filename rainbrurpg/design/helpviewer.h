@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : Creating the map to acess html anchors
- * - 18 jul 2007 : Moves to design/
- *
- */
+/** \file helpviewer.h
+  * Declares a basic HTML viewer
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 19 jul 2007 : Creating the map to acess html anchors
+  * - 18 jul 2007 : Moves to design/
+  *
+  */
 #ifndef SERVER_HELP_VIEWER_H
 #define SERVER_HELP_VIEWER_H
 

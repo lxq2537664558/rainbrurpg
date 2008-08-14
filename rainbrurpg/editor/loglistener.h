@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 04 jan 2008 : GNU header added
- */
+/** \file loglistener.h
+  * Declares a class used to show Ogre messages in a Qt widget
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 04 jan 2008 : GNU header added
+  */
 
 #ifndef MY_LOG_LISTENER
 #define MY_LOG_LISTENER

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file xmlpersolist.cpp
+  * Implements a class that read the character list
+  *
+  */
+
 #include "xmlpersolist.h"
 
 /** The default constructor

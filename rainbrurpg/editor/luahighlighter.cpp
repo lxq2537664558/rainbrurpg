@@ -20,6 +20,11 @@
  *
  */
 
+/** \file luahighlighter.cpp
+  * Implements a highlighter for the Lua programming language
+  *
+  */
+
 #include "luahighlighter.h"
 
 /** The default constructor

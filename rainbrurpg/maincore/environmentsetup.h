@@ -20,6 +20,13 @@
  *
  */
 
+/** \file environmentsetup.h
+  * Declares a class that creates the Ogre environment for the game/editor
+  *
+  * Modifications :
+  * - 14 aug 2008 : Single file documentation
+  *
+  */
 #ifndef ENVIRONMENT_SETUP_H
 #define ENVIRONMENT_SETUP_H
 

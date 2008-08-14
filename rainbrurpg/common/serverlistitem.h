@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 04 aug 2007 : Starting implementation 
- *
- */
+/** \file serverlistitem.h
+  * Defines an item used in the tServerList
+  *
+  * Modifications :
+  * - 08 aug 2008 : Documentation update
+  * - 04 aug 2007 : Starting implementation 
+  *
+  */
 
 #include <string>
 

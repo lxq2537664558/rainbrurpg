@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 03 apr 2007 : Implementation started
- *
- */
+/** \file highlighter.h
+  * Declares a base class for all highlighter
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 03 apr 2007 : Implementation started
+  *
+  */
 
 #ifndef HIGHLIGHTER_H
 #define HIGHLIGHTER_H

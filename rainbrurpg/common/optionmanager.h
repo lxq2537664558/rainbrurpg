@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionmanager.h
+  * Declares the option manager singleton
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_MANAGER_H
 #define OPTION_MANAGER_H
 

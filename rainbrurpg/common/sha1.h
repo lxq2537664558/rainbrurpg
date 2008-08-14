@@ -14,11 +14,15 @@
  *
  */
 
-/* Modifications :
- * - 21 jul 2007 : Documentation for doxygen
- *                 Making functions static members of a class
- *
- */
+/** \file sha1.h
+  * Declares the Secure Hashing Algorithm
+  *
+  * Modifications :
+  * - 08 aug 2008 : Documentation update
+  * - 21 jul 2007 : Documentation for doxygen
+  *                 Making functions static members of a class
+  *
+  */
 
 #ifndef _SHA1_H_
 #define _SHA1_H_
@@ -44,6 +48,8 @@ enum
     shaStateError       /* called Input after Result */
 };
 #endif
+
+/** The size of the hashsum */
 #define SHA1HashSize 20
 
 /**  This structure will hold context information for the SHA-1

@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 14 jul 2007 : Starting implementation
- *
- */
+/** \file filetypeguesser.h
+  * Declares a class that try to guess the type of a file
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 14 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef FILE_TYPE_GUESSER_H
 #define FILE_TYPE_GUESSER_H
@@ -58,7 +62,7 @@ namespace RainbruRPG{
       QFS_UNKNOWN,    //!< This type of file
     }tQuarantineFileStatus;
 
-    /** A file that try to guess the type of a file
+    /** A class that try to guess the type of a file
       *
       * \section magic_extension_sec "Magic numbers and file extension"
       *

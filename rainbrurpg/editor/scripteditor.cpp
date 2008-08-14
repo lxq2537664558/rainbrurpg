@@ -20,6 +20,11 @@
  *
  */
 
+/** \file scripteditor.cpp
+  * Implements a script editor with simple syntax highlighting
+  *
+  */
+
 #include "scripteditor.h"
 
 /** The default constructor

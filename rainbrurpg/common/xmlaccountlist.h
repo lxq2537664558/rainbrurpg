@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 03 mar 2007 : Fix a blacklist status error
- * - 02 mar 2007 : renamed xmlaccountlist (was xmlplayerlist before)
- *         
- */
+/** \file xmlaccountlist.h
+  * Declares a class used to read XML accounts file
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 03 mar 2007 : Fix a blacklist status error
+  * - 02 mar 2007 : renamed xmlaccountlist (was xmlplayerlist before)
+  *         
+  */
 
 #ifndef XML_PLAYER_LIST_H
 #define XML_PLAYER_LIST_H

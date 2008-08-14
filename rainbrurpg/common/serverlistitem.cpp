@@ -20,6 +20,11 @@
  *
  */
 
+/** \file serverlistitem.cpp
+  * Implements an item used in the tServerList
+  *
+  */
+
 #include "serverlistitem.h"
 
 #include "stringconv.h"

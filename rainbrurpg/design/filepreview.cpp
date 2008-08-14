@@ -20,6 +20,11 @@
  *
  */
 
+/** \file filepreview.cpp
+  * Implements a class that creates a dialog used to preview a file.
+  *
+  */
+
 #include "filepreview.h"
 
 /** Constructor

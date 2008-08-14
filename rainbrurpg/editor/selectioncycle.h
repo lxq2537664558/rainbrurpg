@@ -20,6 +20,14 @@
  *
  */
 
+/** \file selectioncycle.h
+  * Declares the item selection cycle
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef SELECTION_CYCLE_H
 #define SELECTION_CYCLE_H
 
@@ -42,6 +50,7 @@ namespace RainbruRPG{
       * call getNextEntity() with your RaySceneQueryResult as parameter each
       * time you need it. If the RaySceneQueryResult is the same, it will
       * manage the selection cycle.
+      *
       */
     class SelectionCycle{
     public:

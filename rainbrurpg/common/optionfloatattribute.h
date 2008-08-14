@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionfloatattribute.h
+  * Declares a float attribute for the launcher's options editor
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_FLOAT_ATTRIBUTE_H
 #define OPTION_FLOAT_ATTRIBUTE_H
 

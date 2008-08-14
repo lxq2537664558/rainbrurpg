@@ -20,6 +20,11 @@
  *
  */
 
+/** \file optionmanager.cpp
+  * Implements the option manager singleton
+  *
+  */
+
 #include "optionmanager.h"
 
 #include "xmloptions.h"

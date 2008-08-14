@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 03 mar 2007 : fix a SEGFAULT during unit test of ClientConnect
- */
+/** \file xmltimestamp.h
+  * Declares a class that manage XML timestamps
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 03 mar 2007 : fix a SEGFAULT during unit test of ClientConnect
+  */
 
 #ifndef XML_TIME_STAMP_H
 #define XML_TIME_STAMP_H

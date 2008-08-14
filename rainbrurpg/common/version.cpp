@@ -20,6 +20,11 @@
  *
  */
 
+/** \file version.cpp
+  * Implements a class for libraries versions logging
+  *
+  */
+
 #include "version.h"
 #include "config.h"
 

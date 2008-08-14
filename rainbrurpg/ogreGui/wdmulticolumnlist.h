@@ -38,8 +38,10 @@
 #include <OgreRectangle.h>
 
 /** Defines the space between header lines and background rectangle */
-# define HEADER_BG_SPACE 2
+#define HEADER_BG_SPACE 2
 
+/** The margin applied to item text drawing function */
+#define ITEM_INSIDE_MARGIN 5;
 
 // Forward declarations
 namespace BetaGUI{
@@ -88,6 +90,7 @@ namespace RainbruRPG{
       void drawOneItemCell(QuadRenderer*,MultiColumnListCell*,const Rectangle&);
       void drawOneItem(QuadRenderer*,MultiColumnListItem*,const Rectangle&,
 		       const tMultiColumnListColumnList&, int, 
+		       Rectangle,
 		       bool vDebug = false);
 
       void drawAllItems(QuadRenderer*,MultiColumnList*, int);

@@ -20,9 +20,14 @@
  *
  */
 
-/* Modifications
- * - 04 apr 2007 : ScriptEditor added
- */
+/** \file editor/mainwindow.h
+  * Declares the editor's main window
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 04 apr 2007 : ScriptEditor added
+  *
+  */
 
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H

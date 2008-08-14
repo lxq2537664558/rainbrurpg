@@ -20,6 +20,11 @@
  *
  */
 
+/** \file options.cpp
+  * Implements a class used to initialize OptionManager
+  *
+  */
+
 #include "options.h"
 
 #include "optionpanel.h"

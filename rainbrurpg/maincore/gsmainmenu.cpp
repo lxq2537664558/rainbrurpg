@@ -365,9 +365,9 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
     mcl->setDebugName("MCL.MCLTestWindow");
     MultiColumnListWin->addWidget(mcl);
 
-    mcl->addColumn( "Col1", 60 );
+    mcl->addColumn( "Col1", 60 )->setMinimumWidth(20);
     mcl->addColumn( "Column2", 100 )->setMinimumWidth(40);
-    mcl->addColumn( "Column3", 140 );
+    mcl->addColumn( "Column3", 140 )->setMinimumWidth(40);
 
     // Adding item 1
     addItem("IT1ST1", "IT1ST2", "IT1ST3");

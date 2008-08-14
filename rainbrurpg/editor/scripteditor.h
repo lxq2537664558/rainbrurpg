@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications
- * - 04 apr 2007 : Implementation
- */
+/** \file scripteditor.h
+  * Declares a script editor with simple syntax highlighting
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 04 apr 2007 : Starting implementation
+  */
 
 #ifndef QSCRIPT_EDITOR_H
 #define QSCRIPT_EDITOR_H

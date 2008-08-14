@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tabenvironment.cpp
+  * Implements the environment parameters tab
+  *
+  */
+
 #include "tabenvironment.h"
 
 #include "QVBoxLayout"

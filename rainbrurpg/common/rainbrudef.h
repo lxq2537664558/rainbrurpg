@@ -20,14 +20,17 @@
  *
  */
 
-
-/** Handle the GCC visibility patch and win32 declspec
+/** \file rainbrudef.h
+  * Handle the GCC visibility patch and win32 declspec
   *
   * For more informations on GCC visibility please follow
-  * this link : \link http://gcc.gnu.org/wiki/Visibility 
-  * "http://gcc.gnu.org/wiki/Visibility" \unlink
+  * this link : http://gcc.gnu.org/wiki/Visibility
+  *
+  * Modifications :
+  * - 08 aug 2008 : Documentation update
   *
   */
+
 #ifdef _MSC_VER
   #ifdef BUILDING_DLL
     #define RAINBRU_EXPORT __declspec(dllexport)

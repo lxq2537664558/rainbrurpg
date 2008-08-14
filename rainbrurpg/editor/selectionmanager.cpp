@@ -20,6 +20,11 @@
  *
  */
 
+/** \file selectionmanager.cpp
+  * Implements a singleton that manage the entity selection behaviour
+  *
+  */
+
 #include "selectionmanager.h"
 
 #include <logger.h>

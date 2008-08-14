@@ -20,6 +20,14 @@
  *
  */
 
+/** \file xmlobjectlist.h
+  * Declares a class that read and create the objects in \c config/objects.xml
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef XML_OBJECT_LIST_H
 #define XML_OBJECT_LIST_H
 

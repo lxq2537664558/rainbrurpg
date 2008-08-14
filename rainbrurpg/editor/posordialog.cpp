@@ -20,6 +20,11 @@
  *
  */
 
+/** \file posordialog.cpp
+  * Implements a dialog to change position and orientation of a mesh
+  *
+  */
+
 #include "posordialog.h"
 
 #include <xmlobjectlist.h>

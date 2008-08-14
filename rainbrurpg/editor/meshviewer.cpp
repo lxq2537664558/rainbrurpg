@@ -20,6 +20,11 @@
  *
  */
 
+/** \file meshviewer.cpp
+  * Implements a class used to view a single mesh
+  *
+  */
+
 #include "meshviewer.h"
 
 #include <logger.h>

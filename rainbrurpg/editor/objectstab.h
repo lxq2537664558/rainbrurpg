@@ -20,6 +20,14 @@
  *
  */
 
+/** \file objectstab.h
+  * Declares the world object list
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OBJECTS_TAB_H
 #define OBJECTS_TAB_H
 
@@ -46,7 +54,7 @@ namespace RainbruRPG{
     /** The Objects tab widget
       *
       * It display a TreeView of all objects in the world. The objects list
-      * it taken from xmlObjectList .
+      * it taken from xmlObjectList.
       *
       * The mouse left double-click action changes with the type of object :
       * - if the object is an ObjectMesh (a top-level TreeView item), a dialog

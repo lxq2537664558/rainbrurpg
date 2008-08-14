@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : Implements a real perso list
- * - 02 mar 2007 : remove an #include "tplayerlist.h"
- */
+/** \file xmlpersolist.h
+  * Declares a class that read the character list
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 19 jul 2007 : Implements a real perso list
+  * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  */
 
 #ifndef XML_PERSO_LIST_H
 #define XML_PERSO_LIST_H

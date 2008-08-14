@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 10 apr 2007 : Starting implementation
- *
- */
+/** \file timer.h
+  * Declares a timer based on glib 2.0
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 10 apr 2007 : Starting implementation
+  *
+  */
 
 #ifndef __Timer_H__
 #define __Timer_H__
@@ -38,6 +42,7 @@ namespace RainbruRPG {
       * Used to get elapsed time in microseconds or milliseconds.
       * The timer is automatically started in the constructor. Call reset()
       * To start it from 0.
+      *
       */
     class Timer {
     public:

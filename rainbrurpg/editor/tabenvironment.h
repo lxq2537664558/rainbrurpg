@@ -20,9 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 04 jan 2008 : GNU header added
- */
+/** \file tabenvironment.h
+  * Declares the environment parameters tab
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 04 jan 2008 : GNU header added
+  *
+  */
 
 #ifndef TAB_ENVIRONMENT_H
 #define TAB_ENVIRONMENT_H

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file posordialog.h
+  * Declares a dialog to change position and orientation of a mesh
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef POSOR_DIALOG_H
 #define POSOR_DIALOG_H
 

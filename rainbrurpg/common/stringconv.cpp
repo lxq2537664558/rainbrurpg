@@ -20,6 +20,11 @@
  *
  */
 
+/** \file stringconv.cpp
+  * Implements a singleton to convert string format
+  *
+  */
+
 #include "stringconv.h"
 
 #include <bitset>

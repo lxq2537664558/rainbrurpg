@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionstringattribute.h
+  * Declares a string for the launcher's options editor
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_STRING_ATTRIBUTE_H
 #define OPTION_STRING_ATTRIBUTE_H
 

@@ -99,6 +99,14 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-183
+- (8) Fix a bug in MCL : item's cell's text drawing now use scissor
+- Fix some bug in MultiColumnList header drawing function
+- editor/* files documented
+- Improve EXCLUDE value of doxygen configuration file
+- exclude editor/.rcc/qrc_resources.cpp file from documentation
+- design/* files documented
+- common/* files documented
+- common/option* files documented
 
 * v 0.0.5-182
 - Fix a bug in MCL border drawing (bottom and right lines)

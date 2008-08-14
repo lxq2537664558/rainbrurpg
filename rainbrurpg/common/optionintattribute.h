@@ -20,6 +20,14 @@
  *
  */
 
+/** \file optionintattribute.h
+  * Declares an integer option for the launcher's options editor
+  *
+  * Modifications :
+  * - 09 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef OPTION_INTEGER_ATTRIBUTE_H
 #define OPTION_INTEGER_ATTRIBUTE_H
 

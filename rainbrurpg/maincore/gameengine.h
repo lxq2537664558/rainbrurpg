@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 21 sep 2007 : Uses OgreGUI
- *
- */
+/** \file gameengine.h
+  * Declares an Ogre frame listenerthe client game engine
+  *
+  * Modifications :
+  * - 14 aug 2008 : Single file documentation
+  * - 21 sep 2007 : Uses OgreGUI
+  *
+  */
 
 #ifndef GAME_ENGINE
 #define GAME_ENGINE
@@ -73,6 +77,7 @@ namespace RainbruRPG {
       *
       * This enumeration is used when dealing with the GameEngine
       * state system. 
+      *
       */
     enum tStateType{
       ST_LOCAL_TEST          =0x0000,  //!< The local test state

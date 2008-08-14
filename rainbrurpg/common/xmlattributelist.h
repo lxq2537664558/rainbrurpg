@@ -20,9 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 mar 2007 : remove an #inchude "tplayerlist.h"
- */
+/** \file xmlattributelist.h
+  * Declares a class used to read the XML file of the attribute list
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  *
+  */
 
 #ifndef XML_ATTRBIBUTE_LIST_H
 #define XML_ATTRBIBUTE_LIST_H
@@ -68,7 +73,7 @@ namespace RainbruRPG{
 	*/
       typedef std::list<tAttributeListItem*> tAttributeList;
 
-      /** Read the XML file of the attribute categories list
+      /** Read the XML file of the attribute list
         *
 	* It uses TinyXML to deal with the file.
 	*/

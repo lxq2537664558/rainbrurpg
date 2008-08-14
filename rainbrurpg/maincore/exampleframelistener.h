@@ -32,6 +32,16 @@ D:        Step right
 -----------------------------------------------------------------------------
 */
 
+/** \file exampleframelistener.h
+  * Declares an Ogre frame listener
+  *
+  * Modifications :
+  * - 14 aug 2008 : Single file documentation
+  *
+  * \todo, rename, cleanup
+  *
+  */
+
 #ifndef __ExampleFrameListener_H__
 #define __ExampleFrameListener_H__
 

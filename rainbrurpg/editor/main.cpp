@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 24 jan 2008 : Handles help and version command-line options
- *
- */
+/** \file editor/main.cpp
+  *  The file declaring the editor's main() function 
+  *
+  * Modifications :
+  * - 13 aug 2008 : Single file documentation
+  * - 24 jan 2008 : Handles help and version command-line options
+  *
+  */
 
 #include <QApplication>
 #include <ogreimport.h>

@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 02 mar 2007 : remove an #inchude "tplayerlist.h"
- */
+/** \file xmlbonusfile.h
+  * Declares a BonusFile choice
+  *
+  * Modifications :
+  * - 11 aug 2008 : Single file documentation
+  * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  */
 
 #ifndef XML_BONUS_FILE_H
 #define XML_BONUS_FILE_H
