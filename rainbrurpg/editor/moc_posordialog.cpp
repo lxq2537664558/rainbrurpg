@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'posordialog.h'
 **
-** Created: Thu Jan 24 15:13:38 2008
-**      by: The Qt Meta Object Compiler version 59 (Qt 4.3.3)
+** Created: Thu Aug 14 14:56:25 2008
+**      by: The Qt Meta Object Compiler version 59 (Qt 4.4.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,11 +11,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'posordialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 59
-#error "This file was generated using the moc from 4.3.3. It"
+#error "This file was generated using the moc from 4.4.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
+QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_RainbruRPG__Editor__PosorDialog[] = {
 
  // content:
@@ -58,3 +59,4 @@ int RainbruRPG::Editor::PosorDialog::qt_metacall(QMetaObject::Call _c, int _id, 
         return _id;
     return _id;
 }
+QT_END_MOC_NAMESPACE

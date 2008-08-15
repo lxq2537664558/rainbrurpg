@@ -442,7 +442,7 @@ void RainbruRPG::Core::GameEngine::initOgre(){
 #endif // RAINBRU_RPG_DEBUG
 
   mWindow=Ogre::Root::getSingleton().getRenderSystem()
-    ->createRenderWindow("RainbruRPG2", winWidth, winHeight, fullscreen);
+    ->createRenderWindow(CLIENT_WIN_CAPTION, winWidth, winHeight, fullscreen);
   
   initOIS();
 

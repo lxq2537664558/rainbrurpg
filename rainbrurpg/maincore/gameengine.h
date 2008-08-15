@@ -70,6 +70,15 @@ using namespace RainbruRPG::OgreGui;
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
 
+/** \def CLIENT_WIN_CAPTION
+  * The client's window title
+  * 
+  * This is the text used as title in the main Ogre window
+  * of the client.
+  *
+  */
+#define CLIENT_WIN_CAPTION "RainbruRPG"
+
 namespace RainbruRPG {
   namespace Core{
 

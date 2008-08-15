@@ -41,8 +41,8 @@
 
 #include <cstdlib> // for abs() function
 
-
-#define VSB_YPOS 2
+/** Defines the placement of vertical scrollbar in multicolumnlist */
+#define MCL_VSB_YPOS 2
 
 // Static data member initialization
 int RainbruRPG::OgreGui::MultiColumnList::mCurrentSortedColumn = -1;
@@ -129,7 +129,7 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 
   setName("MultiColumnList");
 
-  Vector4 sbDim( dim.z-16, VSB_YPOS, 14, dim.w-(VSB_YPOS + 18) );
+  Vector4 sbDim( dim.z-16, MCL_VSB_YPOS, 14, dim.w-(MCL_VSB_YPOS + 18) );
   mVScrollBar=new VScrollBar(sbDim, parent);//, OSI_BETAGUI);
   //  this->addWidget(mVScrollBar);
 
@@ -626,8 +626,8 @@ handleMovingColumn(int vPx, int vPy, int vColLeft, int vColRight,
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 horizontalScrollBarValueChange(int vValue){
-  mDrawingDev->setDevX( -vValue );
-  mXDrawingDev->setDevX( -vValue );
+  mDrawingDev->setDevX( vValue );
+  mXDrawingDev->setDevX( vValue );
 }
 
 /** The vertical value slot
@@ -639,7 +639,7 @@ horizontalScrollBarValueChange(int vValue){
   */
 void RainbruRPG::OgreGui::MultiColumnList::
 verticalScrollBarValueChange(int vValue){
-    mDrawingDev->setDevY( -vValue );
+    mDrawingDev->setDevY( vValue );
 }
 
 /** Is the horizontal scrollbar needed

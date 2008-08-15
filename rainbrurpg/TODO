@@ -99,7 +99,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * *******************************************************
 
 * v 0.0.5-183
-- (8) Fix a bug in MCL : item's cell's text drawing now use scissor
+- (12) Bugfix : MCL item backgrouns was cut by the scrollbars position
+- Bugfix : MCL header sort sign was drawn outside of window
+- Client's window renamed
+- ScrollBars now using abs in getValueFromCursor()
+- Fix a bug in MCL : item's cell's text drawing now use scissor
 - Fix some bug in MultiColumnList header drawing function
 - editor/* files documented
 - Improve EXCLUDE value of doxygen configuration file
@@ -108,68 +112,3 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - common/* files documented
 - common/option* files documented
 
-* v 0.0.5-182
-- Fix a bug in MCL border drawing (bottom and right lines)
-- Fix a bug in MCL scissors when larger than parent window
-- Fix a bug in MCL when window move
-- common/netpacket* files documented
-- Documenting single files until Logger files
-- Documenting single files until ftp related files
-- Error fixed in maincore linkage (needing ogreGui)
-- common/curl* single file documentation 
-- client's files documentation
-- getopt1.c and xmalloc.c doxygen documentation
-- getopt.c doxygen documentation
-- system.h doxygen documentation
-- getopt.h doxygen documentation
-- config.h doxygen documentation
-- Some missing .cvsignore added to cvs
-- All Makefile.in removed from cvs (generated files)
-- Unit tests correctly built but SEGFAULT when running
-- InfoDialog::Ok button close the dialog
-- PushButton connection using static function wrapper
-- examples/tapi create a Window
-
-* v 0.0.5-181
-- Fix the string to char* conversion warnings in terminalapi
-- TerminalApp cleanup correctly
-- TerminalApp disable log on stdout
-- tapi example in examples/tapi/
-- now ./configure option to build examples
-- examples/ added
-- Fix some charbase.cpp string to char* deprecated warnings
-- Ogre inclusion deprecated warning fixed with a hack in ogreimport.h
-- OgreGui now uses ogreimport.h
-- maincore/ogreimport.h implemented
-- New configure option to disable deprecated warning from Ogre inclusion
-- Fix the background clipping bug
-- Fix the typedef warning
-- Fix the window moving bug
-- Fix many #include errors
-- Fix the resizing window bug (Container::handleButtonEvent())
-- Bugfix : when moving a window, ScrollBars wasn't move
-- Window's title bar removed from content scissor
-- The content scissor of a window now handle ScrollBars visibility
-- Fix a moving column bug : see wdMultiColumnList::drawAllHeaders()
-
-* v 0.0.5-180
-- gsServerList refresh list implementation
-- gsServerList buttons enable/disable according to MCL selection
-- MultiColumnList::sigSelectionChange() added
-- A disabled button caption is drawn grayed
-- enable/disable in Button instead of PushButton
-- PushButton enable/disable implementation
-- gsServerList boutons added
-- MultiColumnList items event bugfix (using abs())
-- QuadRenderer documentation improved
-- Clipping and 16+ bug fixed (font.cpp:250)
-- Bugfix : item 16+ was not drawn
-- Removing DrawingDev when drawing scissor rectangle
-- Fix a bug that cutoff right and bottom lines of scissor drawing
-- MCLDebugSettings now debugs scissor rectangle
-- npIdentification documentation improved
-- Using EXIT_SUCESS/FAILED and hendling unknown options
-- client command-line options now using std::string
-- Adding --quiet (-q) command-line option (man and info updated)
-- Cell drawing rectangle logged and drawn for debugging
-- Item drawing rectangle logged and drawn for debugging

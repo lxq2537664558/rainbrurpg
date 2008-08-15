@@ -385,6 +385,12 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
     addItem("qsd", "sdf", "dfg");
     addItem("BBB", "Carine", "Jerome");
     addItem("ert", "rty", "tyu");
+    addItem("qsd", "sdf", "dfg");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
+    addItem("qsd", "sdf", "dfg");
+    addItem("BBB", "Carine", "Jerome");
+    addItem("ert", "rty", "tyu");
 
     // Control window
     MultiColumnListCtrlWin=new Window(Vector4(200, 385, 420, 90),

@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
  * - 11 apr 2008 : Using MouseEvent for event handling
  * - 04 feb 2008 : Drawn again using QuadRenderer
  * - 28 jan 2008 : starting implementation

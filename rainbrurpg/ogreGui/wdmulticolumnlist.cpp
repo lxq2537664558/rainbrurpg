@@ -28,6 +28,7 @@
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlistdebugsettings.h"
 
+#include "drawingdevsettings.h"
 #include "quadrenderer.h"
 #include "textsettings.h"
 #include "vscrollbar.h"
@@ -274,6 +275,11 @@ void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 
 /** Draw a column header
   *
+  * \note The scissor rectangle setting when calling this function
+  *       is important because it is used to cut the header caption.
+  *       The scissor right value when calling this function \b must be the 
+  *       parent window right one.
+  *
   * \param qr      The QuadRenderer used to draw
   * \param vHeader The header to be drawn
   * \param xLeft   The X position of the left line (in absolute position, 
@@ -283,6 +289,8 @@ void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   
+  // We get the right scissor point to cut header caption to it if needed
+  int currentScissorRight = qr->getClipRegion().right;
 
   int y1=mMclAbsCorners.top;
   int y2=mMclAbsCorners.bottom;
@@ -317,17 +325,10 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     qr->drawFilledRectangle( headerBG, headerBGColor );
   }
   
-  // Drawing header caption
-  //
-  // Setting wordwrap to false prevent the header text to fall down when
-  // the header width is too small to show the text entirely
-  qr->setUseParentScissor(false);
-  qr->setScissorRectangle(mColumnCaption);
-  qr->setUseParentScissor(true);  
-  qr->drawText(tsMclColumnHeader, vHeader->getCaption(), 
-	       mColumnCaption, false);
-  
   // Drawing sort sign
+  //
+  // The sort sign must be drawn *before* the header caption because
+  // otherwise, the sortsign can be drawn outside the window
   qr->setBlendMode(QBM_ALPHA);
   switch(vHeader->getSortPolicy()){
   case MCS_NONE:
@@ -341,12 +342,28 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     break;
   }
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
-  qr->setUseParentScissor(false);
   qr->setScissorRectangle(sortSignRect);
-  qr->setUseParentScissor(true);  
   qr->drawRectangle(sortSignRect);
-  
-  
+
+  // Drawing header caption
+  //
+  // Setting wordwrap to false prevent the header text to fall down when
+  // the header width is too small to show the text entirely
+
+  // We draw header caption only if needed
+  if (mColumnCaption.left < currentScissorRight){
+    // Cut the drawing to the current scissor if needed
+    if (mColumnCaption.right > currentScissorRight){
+      mColumnCaption.right = currentScissorRight;
+    }
+
+    qr->setUseParentScissor(false);
+    qr->setScissorRectangle(mColumnCaption);
+    qr->setUseParentScissor(true);  
+    qr->drawText(tsMclColumnHeader, vHeader->getCaption(), 
+		 mColumnCaption, false);
+  }  
+
   // Drawing left line : we need to disable the scissor rectangle
   xLeft+=vHeader->getWidth();
   qr->setUseParentScissor(false);
@@ -375,6 +392,11 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   * get in the \c vScissor parameter is correct when calling
   * this function from \ref wdMultiColumnList::drawAllItems "drawAllItems()".
   *
+  * \note The scissor rectangle setting when calling this function is 
+  *       important because it is used to cut the header caption. The 
+  *       scissor right value when calling this function \b must be the 
+  *       parent window right one.
+  *
   * \param qr            The QuadRenderer object used to draw
   * \param vItem         The item to be drawn
   * \param vRect         The rectangle where the item is drawn
@@ -388,6 +410,9 @@ void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
 	    Rectangle vScissor, bool vDebug){
+
+  // We get the right scissor point to cut caption to it if needed
+  int currentScissorRight = qr->getClipRegion().right;
 
   mDebugSettings->debugItem( qr, mCurrentMcl, vItem, vRect );
 
@@ -421,8 +446,14 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
       vScissor.right = itemRect.left + vColList[colId]->getWidth() -
 	ITEM_INSIDE_MARGIN;
 
-      qr->setScissorRectangle(vScissor);
-      drawOneItemCell(qr, (*mii), itemRect  );
+      // Cut the item caption csissor to the current right scissor if needed
+      if (vScissor.right > currentScissorRight){
+	vScissor.right = currentScissorRight;
+      }
+      if (vScissor.left < currentScissorRight){
+	qr->setScissorRectangle(vScissor);
+	drawOneItemCell(qr, (*mii), itemRect  );
+      }
 
       itemRect.left+=vColList[colId]->getWidth();
       if (colId+1 < vColList.size()){
@@ -513,18 +544,29 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   itemBG.left=mMclAbsCorners.left+5;
   itemBG.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
   itemBG.bottom=itemBG.top+20;
-  itemBG.right=mcl->getLastColumnRight()-5;
+  itemBG.right=mcl->getLastColumnRight() - ITEM_INSIDE_MARGIN;
 
   // The header bottom corners, used to avoid item drawing over the headers
   int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
   Ogre::Rectangle itemScissorRect(mMclAbsCorners);
   if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
 
+  // Handle the drawingdev setting
+  int ddevs = qr->getDrawingDevYSum();
+  //  itemScissorRect.top -= ddevs;
+  //  itemBG.top -= ddevs;
+
+  LOGCATS("Fixing item background bug : devY = ");
+  LOGCATI(ddevs);
+  LOGCAT();
+
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
     
+    // Setting the item scissor to avoid a bug when
+    // drawing item background
     qr->setUseParentScissor(false);
-    
+    qr->setScissorRectangle(itemScissorRect);
     drawOneItem(qr, (*ili), itemBG, colList, vMovingColumn, itemScissorRect );
 
     itemRect.left=mMclAbsCorners.left+ITEM_INSIDE_MARGIN;

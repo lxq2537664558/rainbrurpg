@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
  * - 11 apr 2008 : Using GUI::focusWidget
  * - 07 feb 2008 : Starting implementation
  *         

@@ -28,6 +28,8 @@
 #include "skin.h"
 #include "mousepointer.h"
 
+#include <cstdlib>
+
 /** The constructor
   *
   * \param dim The scrollbar dimensions
@@ -389,7 +391,9 @@ bool RainbruRPG::OgreGui::HScrollBar::isCursorActive(void){
 
 /** Get the value from the cursor position
   *
-  * Change the value of mValue according to cursorPos.
+  * Change the value of mValue according to cursorPos. This function 
+  * uses abs() from cstdlib to be sure \ref mValue is a positive integer.
+  *
   *
   * \sa \ref RainbruRPG::OgreGui::ScrollBar::mValue "mValue" (member),
   *     \ref RainbruRPG::OgreGui::ScrollBar::cursorPos "cursorPos" (member)
@@ -398,7 +402,7 @@ bool RainbruRPG::OgreGui::HScrollBar::isCursorActive(void){
 void RainbruRPG::OgreGui::HScrollBar::getValueFromCursor(void){
   int pos=cursorPos-14;
   int max=getWidth() - 28 - 14;
-  mValue=(pos*mMaxValue)/max;
+  mValue=abs((pos*mMaxValue)/max);
 }
 
 /** Graphically move the cursor to the current value

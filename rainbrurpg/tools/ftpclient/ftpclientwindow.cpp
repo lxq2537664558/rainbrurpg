@@ -731,7 +731,7 @@ void RainbruRPG::Gui::FtpClientWindow::slotTransferError(tTransferError te){
   case FTE_OPEN_DATA_CHANNEL_ERROR:
     logMessage("Cannot open data channel");
     break;
-  case FTP_FILE_ALREADY_EXIST:
+  case FTE_FILE_ALREADY_EXIST:
     logMessage("A file with this name already exist in the server filesystem.");
     break;
   }
