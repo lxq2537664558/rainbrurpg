@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 22 may 2008 : rootWindowName removed (CEGUI not used anymore)
- * - 25 jul 2007 : rootWindowName added
- *
- */
+/** \file gamestate.h
+  * Declares a base abstract class of all the GameStates
+  *
+  * Modifications :
+  * - 15 aug 2008 : Single file documentation
+  * - 22 may 2008 : rootWindowName removed (CEGUI not used anymore)
+  * - 25 jul 2007 : rootWindowName added
+  *
+  */
 
 #ifndef GAME_STATE_H
 #define GAME_STATE_H

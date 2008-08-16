@@ -106,7 +106,8 @@ EXCLUDE                = include/				\
 			 tests/ 				\
 			 common/loadbmp.h 			\
 			 common/loadbmp.cpp 			\
-			 editor/.rcc/qrc_resources.cpp
+			 editor/.rcc/qrc_resources.cpp		\
+			 editor/resources.cpp
 
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = moc_* \

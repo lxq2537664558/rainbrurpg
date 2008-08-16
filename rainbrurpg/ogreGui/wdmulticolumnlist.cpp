@@ -166,7 +166,7 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   
       drawOneHeader(qr, (*iter), x);
 
-      /* v0.0.5-181 : Moving volumn bug
+      /* v0.0.5-181 : Moving column bug
        *
        * The bug was that the column header after the moved one and the 
        * items (all) text was not drawn when moving column.
@@ -446,7 +446,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
       vScissor.right = itemRect.left + vColList[colId]->getWidth() -
 	ITEM_INSIDE_MARGIN;
 
-      // Cut the item caption csissor to the current right scissor if needed
+      // Cut the item caption scissor to the current right scissor if needed
       if (vScissor.right > currentScissorRight){
 	vScissor.right = currentScissorRight;
       }

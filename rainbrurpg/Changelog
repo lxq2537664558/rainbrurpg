@@ -1,0 +1,17 @@
+2008-08-16  Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/wdmulticolumnlist.cpp (drawOneItem): Fix an item bug
+	The item background was cut when scrollbar move (scissor bug)
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Fix a sort sign bug
+	MultiColumnList header's sort sign was drawn outside of window
+
+
+2008-08-15  Jerome Pasquier  <rainbru@free.fr>
+	* maincore/gameengine.cpp (initOgre): Change Ogre3D window's title
+	* maincore/gameengine.h : Ogre3D window's title defined as a macro
+	called CLIENT_WIN_CAPTION
+
+	* ogreGui/vscrollbar.cpp (getValueFromCursor): return positive value
+	Using abs() from stdlib because a bug made negative values returned
+	* ogreGui/hscrollbar.cpp (getValueFromCursor): return positive value
+	Using abs() from stdlib because a bug made negative values returned

@@ -10,8 +10,10 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * cross-compilation to win32
 - fix the config.h warnings (PACKAGE redefined...)
 
-* Xident
-- AddAccount dialog
+* Tools
+- XIdent AddAccount dialog
+- FlooderTest test packet size (ftSize)
+- FlooderTest test constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
 * Maintenance
 - The account is created only if the mail was correctly sent
@@ -27,58 +29,32 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - User can bookmark or blacklist servers
 - In the first page (gsmainmenu), a `quick connect` system
 
-* Editor identification
-   The identification is done by GPG keys
+* Editor identification done by GPG keys
 - The server let manage a list of editors
-- The editor can contact a server to ask an authorisazion
-- In the editor preferences we can choose a gpg key that will be use
-   for all connexions
+- The editor can contact a server to ask an authorization
+- Editor preferences  : let choose a gpg key used for all connexions
 
 * GameServer
-- The HelpViewer is called twice 
-   when we click the OK button it appears again
-- Running 2 servers in the same PC is forbiden
-   A file running-server is created in the $HOME directory when the
-   server is running. When we exit the server application, we delete
-   this file. 
-   ServerLock::lock()
-   ServerLock::unlock()
-   ServerLock::isLock()
-
+- If server cannot connect to the database, a SEGFAULT occurs
+- The HelpViewer is called twice (appears again when OK button clicked)
+- Running 2 servers in the same PC is forbiden ( A lock file ?)
 - The database must be connected even if the server is not started
-  To look for objects without connecting the server
 - Update the client number in statusbar
 - A dialog to export the program log (LogExportDialog)
-  Chose the filename of the export
-- Modele Conceptuel de Donnees pour la base de donnees
-  Dans le repertoire rpg/sql se trouve le script de creation de la
-  base et de ses tables. Il s'agit pour l'instant de faire une bdd
-  minimale qui acceptera la modification des positions et orientation
-  des objets par connection au serveur.
+- Entity/Relation model (Modèle Conceptuel de Données) in sql/
 
 * Editor
-- PosorDialog initialization with the ObjectPos values
-  PosorDialog::setPosName must know the ObjectMesh name
-- OgreView cleanup
-  Give up unused functions ans global variables 
-- SelectionCycle teste si le nom d'Entity retourne contient Outline
-	- Cela evitera un Segfault
+- OgreView doesn't work anymore (Xlib error)
+- PosorDialog initialization with the ObjectPos values (ObjectMesh name)
+- OgreView cleanup (Give up unused functions and global variables)
+- SelectionCycle teste si le nom d'Entity retourne contient Outline (SEGFAULT)
   [ogreview.cpp:1178]           -- Selected object name : Arbre1_1Outline
   [selectionmanager.cpp:107]    II Deleting last selection highlight
   [selectionmanager.cpp:121]    II Creating selection highlight
   Erreur de segmentation
-
-- SelectionManager gere la selection multiple
-- Un overlay d'aide lors de la selection d'un mesh
-- Destructeur de MeshViewer 
-  Permet la possibilite d'afficher 2 MeshViewer l'un apres l'autre
-  pour l'instant, cela cause un segfault a la deuxieme ouverture
-- Environmentsetup utilise le skydome et le fog
-
-* FlooderTest
-- Test the implementation with the packet size (how the performance
-   decrease) (ftSize)
-- Constant time flooding (2ms or 200ms : packet lost?) (ftTime)
+- SelectionManager handle multiple selection
+- MeshViewer Destructor (SEGFAULT if more than one is open)
+- Environmentsetup uses skydome and fog
 
 * Divers
 - modifpersoattrb.php ne teste pas si les champs sont vides, 
@@ -98,8 +74,11 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
+Now using GNU standard :
+http://www.gnu.org/prep/standards/html_node/Change-Logs.html
+
 * v 0.0.5-183
-- (12) Bugfix : MCL item backgrouns was cut by the scrollbars position
+- (12) Bugfix : MCL item background was cut by the scrollbars position
 - Bugfix : MCL header sort sign was drawn outside of window
 - Client's window renamed
 - ScrollBars now using abs in getValueFromCursor()

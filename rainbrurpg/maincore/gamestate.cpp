@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gamestate.cpp
+  * Declares a base abstract class of all the GameStates
+  *
+  */
+
 #include "gamestate.h"
 
 /** A default protected constructor 
