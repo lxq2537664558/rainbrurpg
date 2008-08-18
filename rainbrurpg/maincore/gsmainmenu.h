@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 24 mar 2008 : MultiColumnList test window implementation
- * - 20 sep 2007 : Uses BetaGUI
- * - 22 jul 2007 : Moving the connection menu to gsConnection
- *
- */
+/** \file gsmainmenu.h
+  * Declares the main menu game state
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 24 mar 2008 : MultiColumnList test window implementation
+  * - 20 sep 2007 : Uses BetaGUI
+  * - 22 jul 2007 : Moving the connection menu to gsConnection
+  *
+  */
 
 #ifndef GS_MAIN_MENU_H
 #define GS_MAIN_MENU_H

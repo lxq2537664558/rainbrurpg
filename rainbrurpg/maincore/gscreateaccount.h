@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 18 nov 2007 : Using OgreGUI
- * - 25 jul 2007 : Starting implementation
- *
- */
+/** \file gscreateaccount.h
+  * Declares a gamestate that lets the user create an account
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 18 nov 2007 : Using OgreGUI
+  * - 25 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef GS_CREATE_ACCOUNT_H
 #define GS_CREATE_ACCOUNT_H

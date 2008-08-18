@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gsupdatedatafiles.cpp
+  * Implements the state showing the datafiles that need to be updated
+  *
+  */
+
 #include "gsupdatedatafiles.h"
 
 /** The default constructor

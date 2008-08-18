@@ -1,6 +1,38 @@
+2008-08-17 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/wdmulticolumnlist.cpp (preDrawingComputation): Implements
+	computation of the parentUnderTitleY value.
+	* ogreGui/wdmulticolumnlist.cpp (drawAllHeaders): Now uses 
+	parentUnderTitleY to cut off the scissor
+	* ogreGui/wdmulticolumnlist.cpp (drawAllItems): Now uses 
+	parentUnderTitleY to cut off the scissor 
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Column header's caption
+	use an individual scissor rectangle setting called colCaptionScissor
+	to avoid a cut of of the caption whan MultiColumnList is taller
+	than the window.
+
 2008-08-16  Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/wdmulticolumnlist.cpp (preDrawingComputation): Add vars
+	that handle window perent scrollbar values to modify scissor rectangles.
+	* ogreGui/wdmulticolumnlist.cpp (drawAllItems): itemScissorRect's
+	top value is modified with parentVerticalScrollbarValue
+	* ogreGui/wdmulticolumnlist.cpp (drawAllHeaders): header scissor
+	value is modified with parentVerticalScrollbarValue
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneItem): Add a margin
+	to the item caption used for left and top rectangle named
+	itemTextRect.
+	* ogreGui/wdmulticolumnlist.h : Add a macro that define the
+	top margin for drawing item caption : ITEM_INSIDE_MARGIN_TOP
+	
+	* ogreGui/multicolumnlist.cpp (makeCorners): Fix VScrollBar's bug
+	The vertical scrollbar's max value was spurious.
+	
 	* ogreGui/wdmulticolumnlist.cpp (drawOneItem): Fix an item bug
 	The item background was cut when scrollbar move (scissor bug)
+	* ogreGui/wdmulticolumnlist.cpp (drawAllItems): Removes log info
+	These logs was used to debug item background drawing and this
+	bug is fixed so I remove logged informations.
 	
 	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Fix a sort sign bug
 	MultiColumnList header's sort sign was drawn outside of window

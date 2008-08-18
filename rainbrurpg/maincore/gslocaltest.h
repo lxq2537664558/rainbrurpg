@@ -20,6 +20,13 @@
  *
  */
 
+/** \file gslocaltest.h
+  * Declares a game state class for test purpose only
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  *
+  */
 #ifndef GS_LOCAL_TEST
 #define GS_LOCAL_TEST
 
@@ -28,7 +35,7 @@
 namespace RainbruRPG {
   namespace Core{
 
-    /** A local game for tesdt purpose only
+    /** A local game for test purpose only
       *
       */
     class gsLocalTest : public gsGameBase{

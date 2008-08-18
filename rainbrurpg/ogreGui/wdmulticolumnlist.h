@@ -21,6 +21,7 @@
  */
 
 /* Modifications :
+ * - 16 aug 2008 : Added an inside margin to item caption drawing
  * - 07 jun 2008 : Using MultiColumnListDebugSettings
  * - 26 may 2008 : starting implementation
  *         
@@ -40,8 +41,24 @@
 /** Defines the space between header lines and background rectangle */
 #define HEADER_BG_SPACE 2
 
-/** The margin applied to item text drawing function */
-#define ITEM_INSIDE_MARGIN 5;
+/** The margin applied to item background drawing function */
+#define ITEM_INSIDE_MARGIN_BACK 0;
+
+/** The left margin applied to item text drawing function 
+  *
+  * It is added to the value of \ref ITEM_INSIDE_MARGIN_BACK when dawing
+  * text.
+  *
+  */
+#define ITEM_INSIDE_MARGIN_TEXT 5;
+
+/** The top margin applied to item text drawing function 
+  *
+  * It is added to the value of \ref ITEM_INSIDE_MARGIN_BACK when dawing
+  * text.
+  *
+  */
+#define ITEM_INSIDE_MARGIN_TOP 4;
 
 // Forward declarations
 namespace BetaGUI{
@@ -162,6 +179,19 @@ namespace RainbruRPG{
 	*
 	*/
       MultiColumnList* mCurrentMcl;
+
+      /** The parent window scrollbar value */
+      int parentHorizontalScrollbarValue;
+      /** The parent window scrollbar value */
+      int parentVerticalScrollbarValue;
+
+      /** The parent window position under the titlebar
+        *
+	* It is used to cut scissor rectangle when MCL moves inside the
+	* parent window.
+	*
+	*/
+      int parentUnderTitleY;
     };
 
   }

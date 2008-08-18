@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gsmainmenu.cpp
+  * Implements the main menu game state
+  *
+  */
+
 #include "gsmainmenu.h"
 
 #include "keyboardnavigation.h"

@@ -205,6 +205,10 @@
   * The column called \e ref is the number of pages of the Doxygen 
   * documentation in pdf format. (not computed before build 157)
   *
+  * The column called \e CL is the size of the ChangeLog in line number.
+  * Is was not computed before build 183 because the ChangeLog was not 
+  * GNU coding standard compliant.
+  *
   * \htmlinclude regTest.html
   */
 

@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 27 jun 2008 : PushButtons added
- * - 27 jul 2007 : Starting implementation
- *
- */
+/** \file gsserverlist.h
+  * Declares the state showing the server list
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 27 jun 2008 : PushButtons added
+  * - 27 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef GS_SERVER_LIST_H
 #define GS_SERVER_LIST_H

@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 02 jan 2008 : Dynamic menu conditionnal compilation
- * - 18 nov 2007 : Now using OgreGui::StaticImage for menu background
- * - 02 nov 2007 : Menu overlays are now shown in their own overlay
- *                 (not the BetaGUI one)
- */
+/** \file gsmenubase.h
+  * Declares the base class for all menu game state
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 02 jan 2008 : Dynamic menu conditionnal compilation
+  * - 18 nov 2007 : Now using OgreGui::StaticImage for menu background
+  * - 02 nov 2007 : Menu overlays are now shown in their own overlay
+  *                 (not the BetaGUI one)
+  */
 
 #ifndef GS_MAIN_MENU_BASE_H
 #define GS_MAIN_MENU_BASE_H

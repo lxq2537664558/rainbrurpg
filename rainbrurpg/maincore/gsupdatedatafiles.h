@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 30 jul 2007 : Starting implementation
- *
- */
+/** \file gsupdatedatafiles.h
+  * Declares the state showing the datafiles that need to be updated
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 30 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef _GS_UPDATE_DATAFILES_H_
 #define _GS_UPDATE_DATAFILES_H_

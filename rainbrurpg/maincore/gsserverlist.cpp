@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gsserverlist.cpp
+  * Implements the state showing the server list
+  *
+  */
+
 #include "gsserverlist.h"
 
 #include <stringconv.h>

@@ -74,11 +74,15 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
-Now using GNU standard :
+Now using GNU standard for ChangeLog file :
 http://www.gnu.org/prep/standards/html_node/Change-Logs.html
 
 * v 0.0.5-183
-- (12) Bugfix : MCL item background was cut by the scrollbars position
+- (16) MCL header drawing is correctly cut off by the parentUnderTitleY value
+- Column header now handle parent scrollbar values
+- Fix a MCL bug in the VScrollBar max computation
+- ChangeLog file now follows GNU coding stadard
+- Bugfix : MCL item background was cut by the scrollbars position
 - Bugfix : MCL header sort sign was drawn outside of window
 - Client's window renamed
 - ScrollBars now using abs in getValueFromCursor()

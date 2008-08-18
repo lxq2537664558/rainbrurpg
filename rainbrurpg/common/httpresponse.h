@@ -21,11 +21,12 @@
  */
 
 /** \file httpresponse.h
-  * Declares types and class need to get readable message from an HTTP status 
-  * code
+  * Declares types and class that return string from an HTTP status code
   *
   * Modifications :
   * - 04 aug 2008 : Single file documentation
+  *
+  * \todo Uses C++ string instead of C-style null terminated string
   *
   */
 

@@ -21,7 +21,7 @@
  */
 
 /** \file httpresponse.cpp
-  * Implements a class need to get readable message from an HTTP status code
+  * Implements a class that return a string from an HTTP status code
   *
   */
 

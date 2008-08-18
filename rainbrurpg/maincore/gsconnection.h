@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 22 jul 2007 : Starting implementation
- *
- */
+/** \file gsconnection.h
+  * Declares a gamestate that lets the user enter its username and password
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 22 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef GS_CONNECTION_H
 #define GS_CONNECTION_H

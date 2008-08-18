@@ -20,6 +20,10 @@
  *
  */
 
+/** \file gsmenubase.cpp
+  * Implements the base class for all menu game state
+  *
+  */
 
 #include "gsmenubase.h"
 

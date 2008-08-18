@@ -51,7 +51,11 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   itemBGColor( 0.4f, 0.8f, 0.4f ),
   selItemBGColor( 0.8f, 0.4f, 0.4f ),
   mDebugSettings(NULL),
-  mCurrentMcl(NULL)
+  mCurrentMcl(NULL),
+  parentHorizontalScrollbarValue(0),
+  parentVerticalScrollbarValue(0),
+  parentUnderTitleY(0)
+  
 {
   // Debug settings
   // mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 3, 1);
@@ -154,10 +158,17 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   int x=mMclAbsCorners.left;
   unsigned int colIndex=0;
 
+  // Handle parent window scrollbar value
+  Rectangle hsc = mcl->getHeadersScissorRectangle();
+  hsc.top -= parentVerticalScrollbarValue;
+  if (hsc.top < parentUnderTitleY)
+    hsc.top = parentUnderTitleY;
+
+  // Iterates through column list and draw items
   for(iter = colList.begin();iter != colList.end(); iter++){
     if ((*iter)->isVisible()){
       qr->setUseParentScissor(false);
-      qr->setScissorRectangle(mcl->getHeadersScissorRectangle());
+      qr->setScissorRectangle(hsc);
       qr->setUseParentScissor(true);
 
       if (colIndex == vMovingColumn){
@@ -211,6 +222,7 @@ preDrawingComputation(MultiColumnList* mcl){
   mMclDrawnCorners = mMclAbsCorners;
 
 
+
   // Compute right scissor if parent
   Window* parent = dynamic_cast<Window*>(mcl->getParent());
   if (mcl->getParent()){
@@ -242,12 +254,21 @@ preDrawingComputation(MultiColumnList* mcl){
     }
   }
 
+  // Handle parent scrollbar values
+  parentVerticalScrollbarValue  = parent->getVerticalScrollbar()->getValue();
+  parentHorizontalScrollbarValue= parent->getHorizontalScrollbar()->getValue();
 
   mMclHeaderBottomLine = mMclAbsCorners.top+mcl->getHeaderHeight();
 
   mColumnCaption=Ogre::Rectangle(mMclAbsCorners);
   mColumnCaption.bottom=mColumnCaption.top + mcl->getHeaderHeight();
   maxMclRight = mMclAbsCorners.right;
+
+  // Compute parentUnderTitleY : We use the Skin::getTitleBarHeight()
+  // function as the title bar height depend on the skin
+  parentUnderTitleY = parent->getTop();
+  Skin* woeSkin = SkinManager::getSingleton().getSkin(parent);
+  parentUnderTitleY += woeSkin->getTitleBarHeight();
 }
 
 /** Draw the boder of the widget
@@ -357,8 +378,16 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
       mColumnCaption.right = currentScissorRight;
     }
 
+    // Handle the scissor deviation because QuadRenderer do not apply
+    // DrawingDev to scissor rectangle settings
+    Rectangle colCaptionScissor(mColumnCaption);
+    colCaptionScissor.top -= parentVerticalScrollbarValue;
+    if (colCaptionScissor.top < parentUnderTitleY)
+      colCaptionScissor.top = parentUnderTitleY;
+
+
     qr->setUseParentScissor(false);
-    qr->setScissorRectangle(mColumnCaption);
+    qr->setScissorRectangle(colCaptionScissor);
     qr->setUseParentScissor(true);  
     qr->drawText(tsMclColumnHeader, vHeader->getCaption(), 
 		 mColumnCaption, false);
@@ -411,16 +440,17 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
 	    Rectangle vScissor, bool vDebug){
 
-  // We get the right scissor point to cut caption to it if needed
-  int currentScissorRight = qr->getClipRegion().right;
+  int currentScissorRight;   // Used to cut caption to the right scissor
+  Rectangle itemTextRect;    // Used to draw item text with margins
+  Rectangle itemRect(vRect); // The background item rectangle
+  int colId=0;               // The item column we are drawing
 
+  currentScissorRight = qr->getClipRegion().right;
   mDebugSettings->debugItem( qr, mCurrentMcl, vItem, vRect );
 
-  int colId=0;
   tMultiColumnListCellList mil=vItem->getCellList();
   tMultiColumnListCellList::const_iterator mii;
 
-  Rectangle itemRect(vRect);
 
   if (vItem->isSelected()){
     qr->drawFilledRectangle( vRect, selItemBGColor );
@@ -439,12 +469,18 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
   // Drawing cells (we are using parent scissor)
   for (mii=mil.begin(); mii != mil.end(); mii++){
     if (vColList[colId]->isVisible()){
+
+      itemTextRect = itemRect;
+      itemTextRect.left += ITEM_INSIDE_MARGIN_TEXT;
+      itemTextRect.top += ITEM_INSIDE_MARGIN_TOP;
+
+
       if (colId == vMovingColumn){
 	qr->enableGhost();
       }
       
       vScissor.right = itemRect.left + vColList[colId]->getWidth() -
-	ITEM_INSIDE_MARGIN;
+	ITEM_INSIDE_MARGIN_BACK;
 
       // Cut the item caption scissor to the current right scissor if needed
       if (vScissor.right > currentScissorRight){
@@ -452,7 +488,7 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
       }
       if (vScissor.left < currentScissorRight){
 	qr->setScissorRectangle(vScissor);
-	drawOneItemCell(qr, (*mii), itemRect  );
+	drawOneItemCell(qr, (*mii), itemTextRect  );
       }
 
       itemRect.left+=vColList[colId]->getWidth();
@@ -541,24 +577,20 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   itemRect.right=itemRect.left+colList[0]->getWidth();
 
   Ogre::Rectangle itemBG(mMclAbsCorners);
-  itemBG.left=mMclAbsCorners.left+5;
+  itemBG.left=mMclAbsCorners.left+ITEM_INSIDE_MARGIN_BACK;
   itemBG.top=mColumnCaption.top + mcl->getHeaderHeight()+ HEADER_BG_SPACE;
   itemBG.bottom=itemBG.top+20;
-  itemBG.right=mcl->getLastColumnRight() - ITEM_INSIDE_MARGIN;
+  itemBG.right=mcl->getLastColumnRight() - ITEM_INSIDE_MARGIN_BACK;
 
   // The header bottom corners, used to avoid item drawing over the headers
   int itemTop =  mcl->getAbsoluteCorners().top + mcl->getHeaderHeight();
   Ogre::Rectangle itemScissorRect(mMclAbsCorners);
   if (itemScissorRect.top < itemTop) itemScissorRect.top = itemTop;
 
-  // Handle the drawingdev setting
-  int ddevs = qr->getDrawingDevYSum();
-  //  itemScissorRect.top -= ddevs;
-  //  itemBG.top -= ddevs;
-
-  LOGCATS("Fixing item background bug : devY = ");
-  LOGCATI(ddevs);
-  LOGCAT();
+  // Handle parent window scrollbar value
+  itemScissorRect.top -= parentVerticalScrollbarValue;
+  if (itemScissorRect.top < parentUnderTitleY)
+    itemScissorRect.top = parentUnderTitleY;
 
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
@@ -569,7 +601,7 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
     qr->setScissorRectangle(itemScissorRect);
     drawOneItem(qr, (*ili), itemBG, colList, vMovingColumn, itemScissorRect );
 
-    itemRect.left=mMclAbsCorners.left+ITEM_INSIDE_MARGIN;
+    itemRect.left=mMclAbsCorners.left+ITEM_INSIDE_MARGIN_BACK;
     itemRect.right=itemRect.left + colList[0]->getWidth();
     itemRect.top+=20;
     itemRect.bottom=itemRect.top+20;

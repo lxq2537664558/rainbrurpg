@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gsconnection.cpp
+  * Implements a gamestate that lets the user enter its username and password
+  *
+  */
+
 #include "keyboardnavigation.h"
 #include "gsconnection.h"
 #include "vcconstant.h"

@@ -771,8 +771,8 @@ void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
   unsigned int itemHeight;
   itemHeight = mHeaderHeight;
   itemHeight += (mItemList.size() * 20);
-  int vSbValue = getWidth() - itemHeight;
-  mVScrollBar -> setMax( -vSbValue );
+  int vSbValue = itemHeight - getHeight();
+  mVScrollBar -> setMax( vSbValue );
 }
 
 /** Get the scissor rectangle used when drawing items 

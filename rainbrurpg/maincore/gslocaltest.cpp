@@ -20,6 +20,11 @@
  *
  */
 
+/** \file gslocaltest.cpp
+  * Implements a game state class for test purpose only
+  *
+  */
+
 #include "gslocaltest.h"
 
 void RainbruRPG::Core::gsLocalTest::init(){

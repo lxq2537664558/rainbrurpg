@@ -20,6 +20,14 @@
  *
  */
 
+/** \file gsgamebase.h
+  * Declares a base class for all state supplying game capabilities
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef GS_GAME_BASE_H
 #define GS_GAME_BASE_H
 
