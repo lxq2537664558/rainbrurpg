@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -19,6 +19,11 @@
  *  02110-1301  USA
  *
  */
+
+/** \file velocitycalculator.cpp
+  * Implements a superlass for computation of moving velocity
+  *
+  */
 
 #include "velocitycalculator.h"
 

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file highlightlistener.h
+  * Declares a class used to highlight an entity in the editor 
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef HIGHLIGHT_QUEUE_LISTENER_H
 #define HIGHLIGHT_QUEUE_LISTENER_H
 

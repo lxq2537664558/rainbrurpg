@@ -20,6 +20,14 @@
  *
  */
 
+/** \file velocitycalculator.h
+  * Declares a superlass for computation of moving velocity
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef VELOCITY_CALCULATOR_H
 #define VELOCITY_CALCULATOR_H
 

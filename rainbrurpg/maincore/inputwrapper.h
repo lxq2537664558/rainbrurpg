@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 jan 2008 : GNU header added
- *
- */
+/** \file inputwrapper.h
+  * Declares a class defining some mouse and keyboard wrapping
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 02 jan 2008 : GNU header added
+  *
+  */
 
 #ifndef INPUT_WRAPPER_H
 #define INPUT_WRAPPER_H

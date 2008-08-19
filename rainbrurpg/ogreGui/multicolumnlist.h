@@ -273,6 +273,8 @@ namespace RainbruRPG{
 	*/
       std::string mDebugName;
 
+      /** The scissor used to cur the vertical scrollbar */
+      Rectangle vsbScissor;
     };
   }
 }

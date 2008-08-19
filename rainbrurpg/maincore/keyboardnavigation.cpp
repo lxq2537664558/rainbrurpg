@@ -20,11 +20,13 @@
  *
  */
 
-/* This code was found in the official CEGUI wiki :
- * http://www.cegui.org.uk/wiki/index.php/Tab_Order
- */
-
-
+/** \file keyboardnavigation.cpp
+  * Implements a class that provides keyboard navigation and selection
+  *
+  * This code was originally found in the official CEGUI wiki :
+  * http://www.cegui.org.uk/wiki/index.php/Tab_Order
+  *
+  */
 
 #include "keyboardnavigation.h"
 

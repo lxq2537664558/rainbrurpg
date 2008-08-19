@@ -7,19 +7,31 @@
  *
  */
 
-/* Modifications :
- * - 15 apr 2008 : Right mouse button pressed implementation
- * - 10 apr 2008 : Focused widget handling
- * - 01 apr 2008 : Windows event is now handle when mouse button state changed
- * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
- * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
- * - 16 nov 2007 : dialogOverlay implementation
- * - 10 oct 2007 : No more font or fontSize references
- * - 24 sep 2007 : Some implementation moved from betagui.cpp
- * - 20 sep 2007 : This was the original BetaGUI code. 
- *                 Betajaen's headers added
- *
- */
+/** \file bggui.h
+  * Declares te GUI system object
+  *
+  * <pre>
+  * Betajaen's GUI 015
+  * Written by Robin "Betajaen" Southern 07-Nov-2006, 
+  * http://www.ogre3d.org/wiki/index.php/BetaGUI
+  * This code is under the Whatevar! licence. Do what you want; 
+  * but keep the original copyright header.
+  * </pre>
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 15 apr 2008 : Right mouse button pressed implementation
+  * - 10 apr 2008 : Focused widget handling
+  * - 01 apr 2008 : Windows event is now handle when mouse button state changed
+  * - 12 jan 2008 : Mouse cursor is now drawn using QuadRenderer
+  * - 17 nov 2007 : addDialog() added (replace Window vector by a list)
+  * - 16 nov 2007 : dialogOverlay implementation
+  * - 10 oct 2007 : No more font or fontSize references
+  * - 24 sep 2007 : Some implementation moved from betagui.cpp
+  * - 20 sep 2007 : This was the original BetaGUI code. 
+  *                 Betajaen's headers added
+  *
+  */
 #ifndef _BETA_GUI_GUI_H_
 #define _BETA_GUI_GUI_H_
 

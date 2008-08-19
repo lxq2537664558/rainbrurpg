@@ -20,7 +20,11 @@
  *
  */
 
-/** Modifications :
+/** \file vcconstant.h
+  * Declares a constant time velocity calculator
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
   * - 26 jul 2007 : Including formulas in documentation
   *
   */

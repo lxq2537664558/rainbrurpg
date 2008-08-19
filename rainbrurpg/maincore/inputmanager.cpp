@@ -20,6 +20,11 @@
  *
  */
 
+/** \file inputmanager.cpp
+  * Implements an input manager for OIS to be used with Ogre3D
+  *
+  */
+
 #include "inputmanager.h"
 
 #include <logger.h>

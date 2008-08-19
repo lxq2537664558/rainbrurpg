@@ -20,6 +20,11 @@
  *
  */
 
+/** \file guimanager.cpp
+  * Implements a singleton used to manage GUI
+  *
+  */
+
 #include "guimanager.h"
 
 #include "config.h"

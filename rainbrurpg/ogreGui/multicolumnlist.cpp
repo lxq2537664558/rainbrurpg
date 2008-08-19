@@ -195,7 +195,10 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
     }
     
     mSkin->drawMultiColumnList( qr, this, geometryWasDirty );
-
+    
+    qr->setUseParentScissor(false);
+    qr->setScissorRectangle(vsbScissor);
+    qr->setUseParentScissor(true);
 
     mToolTip->draw( qr );
     mVScrollBar->draw( qr );
@@ -773,6 +776,32 @@ void RainbruRPG::OgreGui::MultiColumnList::makeCorners(void){
   itemHeight += (mItemList.size() * 20);
   int vSbValue = itemHeight - getHeight();
   mVScrollBar -> setMax( vSbValue );
+
+  // Compute the parent under title Y value
+  Window* parent = dynamic_cast<Window*>(this->getParent());
+  int parentUnderTitleY = parent->getTop();
+  Skin* woeSkin = SkinManager::getSingleton().getSkin(parent);
+  parentUnderTitleY += woeSkin->getTitleBarHeight();
+
+  int parentBottom = parent->getBottom();
+  if (parent->isHorizontalScrollbarVisible())
+    parentBottom -= parent->getHorizontalScrollbar()->getHeight();
+
+  int parentRight = parent->getRight();
+  if (parent->isVerticalScrollbarVisible())
+    parentRight -= parent->getVerticalScrollbar()->getWidth();
+
+  // Compute the vertical scrollbar scissor rectangle
+  vsbScissor = mAbsCorners;
+  //  borderScissor.top -= parentVerticalScrollbarValue;
+  vsbScissor.top = parentUnderTitleY;
+
+  if (vsbScissor.right > parentRight)
+    vsbScissor.right = parentRight;
+
+  if (vsbScissor.bottom > parentBottom)
+    vsbScissor.bottom = parentBottom;
+
 }
 
 /** Get the scissor rectangle used when drawing items 

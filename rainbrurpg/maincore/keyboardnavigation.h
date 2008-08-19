@@ -20,16 +20,19 @@
  *
  */
 
-/* This code was found in the official CEGUI wiki :
- * http://www.cegui.org.uk/wiki/index.php/Tab_Order
- */
-
-/* Modifications :
- * - 30 jul 2007 : Support for keyboard based list selection added
- *                 Renamed from TabNavigation to KeyboardNavigation
- * - 22 jul 2007 : Initial import from CEGUI wiki
- *
- */
+/** \file keyboardnavigation.h
+  * Declares a class that provides keyboard navigation and selection
+  *
+  * This code was originally found in the official CEGUI wiki :
+  * http://www.cegui.org.uk/wiki/index.php/Tab_Order
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 30 jul 2007 : Support for keyboard based list selection added
+  *                 Renamed from TabNavigation to KeyboardNavigation
+  * - 22 jul 2007 : Initial import from CEGUI wiki
+  *
+  */
 
 #ifndef _TabNavigation_h_
 #define _TabNavigation_h_
@@ -38,18 +41,18 @@
 
 #include <logger.h>
 
-/* 
- * Defines the name of the event fired when Enter or
- * Return key is pressed on a MultiColumnList.
- *
- */
+/** \def MULTI_COLUMN_LIST_ENTER_EVENT_NAME
+  * Defines the name of the event fired when Enter or
+  * Return key is pressed on a MultiColumnList.
+  *
+  */
 #define MULTI_COLUMN_LIST_ENTER_EVENT_NAME "TabNavigationEnterClicked"
 
-/*
- * Defines the number of item that compose a page (when
- * PageUp/PageDown is pressed in a MultiColumnList.
- *
- */
+/** \def MULTI_COLUMN_LIST_PAGE_SIZE
+  * Defines the number of item that compose a page (when
+  * PageUp/PageDown is pressed in a MultiColumnList.
+  *
+  */
 #define MULTI_COLUMN_LIST_PAGE_SIZE 10
 
 namespace RainbruRPG{

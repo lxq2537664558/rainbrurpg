@@ -7,10 +7,22 @@
  *
  */
 
-/* Modifications :
- * - 27 jun 2008 : enable/disable implementation
- *
- */
+/** \file bgbutton.h
+  * Declares a base class for all buttons
+  *
+  * <pre>
+  * Betajaen's GUI 015
+  * Written by Robin "Betajaen" Southern 07-Nov-2006, 
+  * http://www.ogre3d.org/wiki/index.php/BetaGUI
+  * This code is under the Whatevar! licence. Do what you want; 
+  * but keep the original copyright header.
+  * </pre>
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 27 jun 2008 : enable/disable implementation
+  *
+  */
 
 #ifndef _BETAGUI_BUTTON_H_
 #define _BETAGUI_BUTTON_H_

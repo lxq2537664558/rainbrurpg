@@ -20,6 +20,14 @@
  *
  */
 
+/** \file guiframelistener.h
+  * Declares a frame listener designed for User Interface game state
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef GUI_FRAME_LISTENER
 #define GUI_FRAME_LISTENER
 

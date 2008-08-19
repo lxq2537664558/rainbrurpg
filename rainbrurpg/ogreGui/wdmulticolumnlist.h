@@ -192,6 +192,14 @@ namespace RainbruRPG{
 	*
 	*/
       int parentUnderTitleY;
+
+      /** The parent window position 
+        *
+	* It is used to cut scissor rectangle when MCL moves inside the
+	* parent window.
+	*
+	*/
+      int parentLeftX;
     };
 
   }

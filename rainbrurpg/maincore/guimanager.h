@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 17 nov 2007 : GuiManager::showMessageBox doesn't need anymore a parent
- * - 08 nov 2007 : isInGuiFadeIn() added
- * - 31 jul 2007 : Ogre3D log partially deactivate
- * - 24 jul 2007 : showMessageBox implementaion
- *
+/** \file guimanager.h
+  * Declares a singleton used to manage GUI
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 17 nov 2007 : GuiManager::showMessageBox doesn't need a parent anymore
+  * - 08 nov 2007 : isInGuiFadeIn() added
+  * - 31 jul 2007 : Ogre3D log partially deactivate
+  * - 24 jul 2007 : showMessageBox implementaion
+  *
  */
 
 #ifndef GUI_MANAGER_H

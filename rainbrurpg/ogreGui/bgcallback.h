@@ -7,12 +7,24 @@
  *
  */
 
-/* Modifications :
- * - 10 oct 2007 : Callback's type in an enumeration
- * - 24 sep 2007 : This was the original BetaGUI code. 
- *                 Betajaen's headers added
- *
- */
+/** \file bgcallback.h
+  * Declares a OgerGui callback
+  *
+  * <pre>
+  * Betajaen's GUI 015
+  * Written by Robin "Betajaen" Southern 07-Nov-2006, 
+  * http://www.ogre3d.org/wiki/index.php/BetaGUI
+  * This code is under the Whatevar! licence. Do what you want; 
+  * but keep the original copyright header.
+  * </pre>
+  *
+  * Modifications :
+  * - 18 aug 2008 : Single file documentation
+  * - 10 oct 2007 : Callback's type in an enumeration
+  * - 24 sep 2007 : This was the original BetaGUI code. 
+  *                 Betajaen's headers added
+  *
+  */
 
 #ifndef _BETAGUI_CALLBACK_H_
 #define _BETAGUI_CALLBACK_H_

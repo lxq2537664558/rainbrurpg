@@ -20,6 +20,11 @@
  *
  */
 
+/** \file vcconstant.cpp
+  * Implements a constant time velocity calculator
+  *
+  */
+
 #include "vcconstant.h"
 
 #include "logger.h"

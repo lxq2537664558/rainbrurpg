@@ -1,3 +1,34 @@
+2008-08-19 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/multicolumnlist.h: Declaration of vsbScissor
+	* ogreGui/multicolumnlist.cpp (makeCorners): Compute vsbScissor value
+	* ogreGui/multicolumnlist.cpp (draw): Setting QuadRenderer's parent
+	scissor value to vsbScissor before drawing vertocal scrollbar
+
+2008-08-18 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/wdmulticolumnlist.cpp (drawAllItems): Item background
+	scissor rectangle handle parentHorizontalScrollbarValue and parentLeftX
+	* ogreGui/wdmulticolumnlist.cpp (drawOneItem): Item caption scissor
+	rectangle now handle parentHorizontalScrollbarValue and parentLeftX
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): The visibility
+	test of the left line now handle parentHorizontalScrollbarValue
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Left line scissor
+	rectangle now handle parentHorizontalScrollbarValue and parentLeftX
+	* ogreGui/wdmulticolumnlist.cpp (drawBorder): Border scissor
+	rectangle now handle parentHorizontalScrollbarValue and parentLeftX
+	* ogreGui/wdmulticolumnlist.cpp (drawAllHeaders): header scissor
+	rectangle now handle parentHorizontalScrollbarValue and parentLeftX.
+	* ogreGui/wdmulticolumnlist.h: parentLeftX declaration.
+
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Header caption not
+	cut off when MultiCoulmnList moves to the left.
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader) : Left line drawing
+	now use a scissor rectangle that handle parentUnderTitleY on the top
+	and parentVerticalScrollbarValue to the bottom.
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawBorder): Now using 
+	parentUnderTitleY to cut off the scissor.
+
 2008-08-17 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/wdmulticolumnlist.cpp (preDrawingComputation): Implements
 	computation of the parentUnderTitleY value.

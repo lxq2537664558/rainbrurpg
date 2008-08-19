@@ -20,6 +20,11 @@
  *
  */
 
+/** \file guiframelistener.cpp
+  * Implements a frame listener designed for User Interface game state
+  *
+  */
+
 #include "guiframelistener.h"
 
 

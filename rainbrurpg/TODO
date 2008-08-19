@@ -77,8 +77,14 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 Now using GNU standard for ChangeLog file :
 http://www.gnu.org/prep/standards/html_node/Change-Logs.html
 
+* v 0.0.5-184
+
 * v 0.0.5-183
-- (16) MCL header drawing is correctly cut off by the parentUnderTitleY value
+- MultiColumnList's vertical scrollbar correctly cut off by scissor
+- MultiColumnList now uncut to its left position when moving
+- maincore/* files documented
+- MCL Border drawing cut by the parentUnderTitleY value
+- MCL header drawing is correctly cut off by the parentUnderTitleY value
 - Column header now handle parent scrollbar values
 - Fix a MCL bug in the VScrollBar max computation
 - ChangeLog file now follows GNU coding stadard

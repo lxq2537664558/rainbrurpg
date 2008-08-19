@@ -54,8 +54,8 @@ RainbruRPG::OgreGui::wdMultiColumnList::wdMultiColumnList():
   mCurrentMcl(NULL),
   parentHorizontalScrollbarValue(0),
   parentVerticalScrollbarValue(0),
-  parentUnderTitleY(0)
-  
+  parentUnderTitleY(0),
+  parentLeftX(0)
 {
   // Debug settings
   // mDebugSettings =  new MultiColumnListDebugSettings("MCL.ServerList", 3, 1);
@@ -164,9 +164,16 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   if (hsc.top < parentUnderTitleY)
     hsc.top = parentUnderTitleY;
 
+  // Do not cut to the MCL left value
+  hsc.left -= parentHorizontalScrollbarValue;
+  if (hsc.left < parentLeftX)
+    hsc.left = parentLeftX;
+
   // Iterates through column list and draw items
   for(iter = colList.begin();iter != colList.end(); iter++){
     if ((*iter)->isVisible()){
+
+      
       qr->setUseParentScissor(false);
       qr->setScissorRectangle(hsc);
       qr->setUseParentScissor(true);
@@ -221,8 +228,6 @@ preDrawingComputation(MultiColumnList* mcl){
   mMclAbsCorners = mcl->getAbsoluteCorners();
   mMclDrawnCorners = mMclAbsCorners;
 
-
-
   // Compute right scissor if parent
   Window* parent = dynamic_cast<Window*>(mcl->getParent());
   if (mcl->getParent()){
@@ -269,6 +274,9 @@ preDrawingComputation(MultiColumnList* mcl){
   parentUnderTitleY = parent->getTop();
   Skin* woeSkin = SkinManager::getSingleton().getSkin(parent);
   parentUnderTitleY += woeSkin->getTitleBarHeight();
+
+  // Get the parent left value
+  parentLeftX = parent->getLeft();
 }
 
 /** Draw the boder of the widget
@@ -278,8 +286,19 @@ preDrawingComputation(MultiColumnList* mcl){
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 
+  Rectangle borderScissor(mMclAbsCorners);
+
+  borderScissor.top -= parentVerticalScrollbarValue;
+  if (borderScissor.top < parentUnderTitleY)
+    borderScissor.top = parentUnderTitleY;
+
+  borderScissor.left -= parentHorizontalScrollbarValue;
+  if (borderScissor.left < parentLeftX)
+    borderScissor.left = parentLeftX;
+
+
   qr->setUseParentScissor(false);
-  qr->setScissorRectangle(mMclAbsCorners);
+  qr->setScissorRectangle(borderScissor);
   qr->setUseParentScissor(true);
 
   mMclAbsCorners.right--;
@@ -381,10 +400,14 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     // Handle the scissor deviation because QuadRenderer do not apply
     // DrawingDev to scissor rectangle settings
     Rectangle colCaptionScissor(mColumnCaption);
+
     colCaptionScissor.top -= parentVerticalScrollbarValue;
     if (colCaptionScissor.top < parentUnderTitleY)
       colCaptionScissor.top = parentUnderTitleY;
 
+    colCaptionScissor.left -= parentHorizontalScrollbarValue;
+    if (colCaptionScissor.left < parentLeftX)
+      colCaptionScissor.left = parentLeftX;
 
     qr->setUseParentScissor(false);
     qr->setScissorRectangle(colCaptionScissor);
@@ -393,15 +416,34 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
 		 mColumnCaption, false);
   }  
 
-  // Drawing left line : we need to disable the scissor rectangle
+  // Drawing left line
   xLeft+=vHeader->getWidth();
   qr->setUseParentScissor(false);
-  //  Rectangle parentWindowAbsCorners = mcl->getWindowParent()->getCorners();
-  //  qr->setScissorRectangle(parentWindowAbsCorners);
+
   //  Avoid left line to get more to the right to the mcl right corners
-  if ( xLeft < mMclAbsCorners.right ){
+  if ( xLeft < (mMclAbsCorners.right + parentHorizontalScrollbarValue )){
+    // Compute scissor rectangle
+    Rectangle leftLineScissor(mMclAbsCorners);
+    leftLineScissor.top -= parentVerticalScrollbarValue;
+    
+    // Cut to the parentUnderTitleY value
+    if ( leftLineScissor.top < parentUnderTitleY) 
+      leftLineScissor.top = parentUnderTitleY;
+    
+    leftLineScissor.left -= parentHorizontalScrollbarValue;
+    if (leftLineScissor.left < parentLeftX)
+      leftLineScissor.left = parentLeftX;
+
+
+    qr->setScissorRectangle(leftLineScissor);
+    
+    // Let the line go to the bottom of the list eventy if the parent scrollbar
+    // value changed
+    y2 += parentVerticalScrollbarValue;
+
+    // Render the line
     qr->drawLine( xLeft, y1, xLeft, y2, mMclBorderColor );
-  }
+  } 
   qr->setUseParentScissor(true);
   
   
@@ -486,6 +528,12 @@ drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
       if (vScissor.right > currentScissorRight){
 	vScissor.right = currentScissorRight;
       }
+
+      vScissor.left -= parentHorizontalScrollbarValue;
+      if (vScissor.left < parentLeftX)
+	vScissor.left = parentLeftX;
+
+
       if (vScissor.left < currentScissorRight){
 	qr->setScissorRectangle(vScissor);
 	drawOneItemCell(qr, (*mii), itemTextRect  );
@@ -591,6 +639,11 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   itemScissorRect.top -= parentVerticalScrollbarValue;
   if (itemScissorRect.top < parentUnderTitleY)
     itemScissorRect.top = parentUnderTitleY;
+
+  itemScissorRect.left -= parentHorizontalScrollbarValue;
+  if (itemScissorRect.left < parentLeftX)
+    itemScissorRect.left = parentLeftX;
+
 
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){
