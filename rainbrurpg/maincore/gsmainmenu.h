@@ -41,7 +41,7 @@
 #include "bgwindow.h"
 #include "bglistener.h"
 
-#include "config.h"
+#include "../config.h"
 
 // Forward declarations
 namespace RainbruRPG{

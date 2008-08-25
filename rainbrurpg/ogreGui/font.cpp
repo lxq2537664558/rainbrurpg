@@ -20,6 +20,15 @@
  *
  */
 
+/** \file font.cpp
+  * Implements an OgreGui font
+  *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
+  */
+
 #include "font.h"
 
 #include "logger.h"
@@ -28,6 +37,14 @@
 
 #include <dumpogreobject.h>
 
+/** \def GLYPH_V_SPACE
+  * Defines the vertical margin applied to glyph
+  *
+  * It is used in \ref RainbruRPG::OgreGui::Font::Font() "Font()" to 
+  * compute the value of \ref RainbruRPG::OgreGui::Font::mMaxGlyphHeight 
+  * "mMaxGlyphHeight".
+  *
+  */
 #define GLYPH_V_SPACE 2
 
 /** The font constructor
@@ -183,8 +200,10 @@ bool RainbruRPG::OgreGui::Font::isDelim( char c ) const{
   */
 void RainbruRPG::OgreGui::Font::
 renderAligned( QuadRenderer* qr, const std::string& text, 
-	       const ColourValue& color, const Rectangle& rect, bool wordwrap,
-	       VerticalAlignType vVertAlign, HorizontalAlignType vHorzAlign){
+	       const ColourValue& color, const Ogre::Rectangle& rect, 
+	       bool wordwrap, VerticalAlignType vVertAlign, 
+	       HorizontalAlignType vHorzAlign)
+{
 
   // Process the text block into lines
   mLineList.resize( 0 );
@@ -325,7 +344,7 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
   */
 void RainbruRPG::OgreGui::Font::
 renderAligned(QuadRenderer* qr, LineInfoList& vLineList, 
-	      const ColourValue& vColor, const Rectangle& vRect,
+	      const ColourValue& vColor, const Ogre::Rectangle& vRect,
 	      VerticalAlignType vVertAlign, HorizontalAlignType vHorzAlign,
 	      bool vSelection, int vSelectionStart, int vSelectionEnd ){
 
@@ -518,7 +537,7 @@ render( QuadRenderer* qr, const string& vText, const ColourValue& vColor,
   *
   */
 const Rectangle& RainbruRPG::OgreGui::Font::
-translateRectangle(Rectangle& r, float x, float y)const{
+translateRectangle(Ogre::Rectangle& r, float x, float y)const{
   r.top=r.top+y;
   r.bottom=r.bottom+y;
   r.left=r.left+x;

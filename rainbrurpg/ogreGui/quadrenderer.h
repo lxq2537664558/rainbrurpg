@@ -20,20 +20,28 @@
  *
  */
 
-/* Modifications :
- * - 08 may 2008 : getDrawingDev?Sum implementation (2 functions)
- * - 05 apr 2008 : Now uses DrawingDevList
- * - 01 apr 2008 : ghost handling implementation
- * - 25 mar 2008 : drawLine() implementation
- * - 23 feb 2008 : DrawingDev implementation
- * - 12 feb 2008 : useParentScissor implementation and documentation
- * - 24 jan 2008 : New text renderer implementation using _setTexture()
- *                 instead of _setPass()
- * - 14 jan 2008 : setMaterialName() function removed
- * - 12 jan 2008 : BlendMode implementation
- * - 11 jan 2008 : drawText() take a wordwrap parameter
- *
- */
+/** \file quadrenderer.h
+  * Declares the class that draws OgreGui primitives
+  *
+  * \warning Please use the Ogre namespace to scope Rectangle objects
+  *          to avoid ambiguous use on Win32 platform
+  *
+  * Modifications :
+  * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
+  *                 ambiguous use on Win32 platform
+  * - 08 may 2008 : getDrawingDev?Sum implementation (2 functions)
+  * - 05 apr 2008 : Now uses DrawingDevList
+  * - 01 apr 2008 : ghost handling implementation
+  * - 25 mar 2008 : drawLine() implementation
+  * - 23 feb 2008 : DrawingDev implementation
+  * - 12 feb 2008 : useParentScissor implementation and documentation
+  * - 24 jan 2008 : New text renderer implementation using _setTexture()
+  *                 instead of _setPass()
+  * - 14 jan 2008 : setMaterialName() function removed
+  * - 12 jan 2008 : BlendMode implementation
+  * - 11 jan 2008 : drawText() take a wordwrap parameter
+  *
+  */
 
 #ifndef _QHUAD_RENDERER_H_
 #define _QHUAD_RENDERER_H_
@@ -196,19 +204,19 @@ namespace RainbruRPG {
       
       void setUvMap(double, double, double, double);
       void setScissorRectangle(int, int, int, int);
-      void setScissorRectangle(const Rectangle&);
-      const Rectangle& getClipRegion(void)const;
+      void setScissorRectangle(const Ogre::Rectangle&);
+      const Ogre::Rectangle& getClipRegion(void)const;
       
       void setAlpha(float);
       float getAlpha(void);
 
       void drawRectangle(const Ogre::Rectangle&);
-      void drawText(TextSettings* ,const string&, const Rectangle&, 
+      void drawText(TextSettings* ,const string&, const Ogre::Rectangle&, 
 		    bool wordwrap=true);
 
-      void drawFilledRectangle( const Rectangle&, const ColourValue& );
+      void drawFilledRectangle( const Ogre::Rectangle&, const ColourValue& );
 
-      void addGlyph( const Rectangle&,const Rectangle&,bool vUVRelative=true);
+      void addGlyph( const Ogre::Rectangle&,const Ogre::Rectangle&,bool vUVRelative=true);
       void disableScissor(void);
 
       void setColor(const ColourValue&);
@@ -227,7 +235,7 @@ namespace RainbruRPG {
       void addLine( int, int, int, int, const ColourValue& );
       void endLines(void);
 
-      void drawRectangleLines( const Rectangle&, const ColourValue& );
+      void drawRectangleLines( const Ogre::Rectangle&, const ColourValue& );
 
       void enableGhost(void);
       void disableGhost(void);
@@ -255,11 +263,11 @@ namespace RainbruRPG {
       void beginGlyphs(void);
       void endGlyphs(void);
 
-      void buildUV(const Rectangle&, vector<Vector2>*) const;
-      void buildVertices(const Rectangle&, vector<OgreGui::Vector3>*) const;
-      void getFinalRect( const Rectangle&, Rectangle&) const;
+      void buildUV(const Ogre::Rectangle&, vector<Vector2>*) const;
+      void buildVertices(const Ogre::Rectangle&, vector<OgreGui::Vector3>*) const;
+      void getFinalRect( const Ogre::Rectangle&, Ogre::Rectangle&) const;
 
-      const Rectangle& translateRectangle(Rectangle&, float, float)const;
+      const Ogre::Rectangle& translateRectangle(Ogre::Rectangle&, float, float)const;
       void renderGlyphs(void);
 
       void getFinalPoint(const Vector3&, Vector3&) const;
@@ -314,17 +322,17 @@ namespace RainbruRPG {
       HardwareVertexBufferSharedPtr mBuffer;
     
       /** The rectang to draw (can be outside of scissorRect) */
-      Rectangle finalRect;
+      Ogre::Rectangle finalRect;
       
       /** The rectangle containing texture coordonates */
-      Rectangle uvRect;
+      Ogre::Rectangle uvRect;
       
       /** The scissor rectangle
         *
 	* Outside of this scissor, nothing is drawn.
 	*
 	*/
-      Rectangle scissorRect;
+      Ogre::Rectangle scissorRect;
     
       /** A vector of vertexes */
       vector<Vector3> vert;

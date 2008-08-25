@@ -10,6 +10,10 @@
 /** \file bgwindow.h
   * Declares a window widget used in OgreGUI
   *
+  * \warning Please use the Ogre namespace here for the Rectangle and
+  *          MouseEvent classes to avoid ambiguous use with the 
+  *          \c wingdi.h defined function.
+  *
   * Modifications :
   * - 08 aug 2008 : Implementation of the 
   *       \ref BetaGUI::Window::getHorizontalScrollbar
@@ -55,6 +59,7 @@ namespace RainbruRPG{
 // End of forward declarations
 
 using namespace Ogre;
+using namespace RainbruRPG;
 using namespace RainbruRPG::OgreGui;
 
 namespace BetaGUI {
@@ -93,7 +98,8 @@ namespace BetaGUI {
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 
-    bool check(unsigned int, unsigned int, const MouseEvent&); 
+    // Scoping MouseEvent to avoid ambiguous Ogre one in Win32
+    bool check(unsigned int, unsigned int, const OgreGui::MouseEvent&); 
     bool checkKey(String, unsigned int, unsigned int);
 
     GUI* getGUI();

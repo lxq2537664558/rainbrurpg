@@ -37,29 +37,6 @@
 // Mandatory if we want to use conditionnal compilation
 #include "../config.h"
 
-/*
- *  Copyright 2006-2008 Jerome PASQUIER
- * 
- *  This file is part of RainbruRPG.
- *
- *  RainbruRPG is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  RainbruRPG is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with RainbruRPG; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
- *  02110-1301  USA
- *
- */
-
-
 /** \mainpage Main Page
   *
   * \section intro_sec Introduction
@@ -641,6 +618,7 @@
   *
   */
 
+#ifdef HAVE_ALLOCA_H
 /** \def HAVE_ALLOCA_H
   *
   * Define to 1 if you have \c <alloca.h> and it should be used
@@ -649,6 +627,7 @@
   * of \c stdlib.h
   *
   */
+#endif // HAVE_ALLOCA_H
 
 /** \def HAVE_DIRENT_H
   *
@@ -660,6 +639,7 @@
   *
   */
 
+#ifdef HAVE_DLFCN_H
 /** \def HAVE_DLFCN_H
   *
   * Define to 1 if you have the <dlfcn.h> header file.
@@ -669,6 +649,7 @@
   * as symbols), unloading a library and error handling. 
   *
   */
+#endif // HAVE_DLFCN_H
 
 /** \def HAVE_FCNTL_H
   *
@@ -691,6 +672,7 @@
   *
   */
 
+#ifdef HAVE_LIBBOOST_FILESYSTEM
 /** \def HAVE_LIBBOOST_FILESYSTEM
   * 
   * Define to 1 if you have the `boost_filesystem' library.
@@ -699,7 +681,9 @@
   * and manipulate paths, files, and directories.
   *
   */
+#endif // HAVE_LIBBOOST_FILESYSTEM
 
+#ifdef HAVE_LIBBOOST_THREAD
 /** \def HAVE_LIBBOOST_THREAD
   *
   * Define to 1 if you have the `boost_thread' library
@@ -711,7 +695,9 @@
   * to individual threads. 
   *
   */
+#endif // HAVE_LIBBOOST_THREAD
 
+#ifdef HAVE_LIBENET
 /** \def HAVE_LIBENET
   *
   * Define to 1 if you have the `enet' library.
@@ -722,7 +708,9 @@
   * delivery of packets.
   *
   */
+#endif // HAVE_LIBENET
 
+#ifdef HAVE_LIBFOX_1_6
 /** \def HAVE_LIBFOX_1_6
   *
   *  Define to 1 if you have the `FOX-1.6' library.
@@ -731,7 +719,9 @@
   * http://www.fox-toolkit.org/ for more informations.
   *
   */
+#endif // HAVE_LIBFOX_1_6
 
+#ifdef HAVE_LIBGD
 /** \def HAVE_LIBGD
   *
   * Define to 1 if you have the `gd' library.
@@ -740,7 +730,9 @@
   * graph and charts.
   *
   */
+#endif // HAVE_LIBGD
 
+#ifdef HAVE_LIBGLIB_2_0
 /** \def HAVE_LIBGLIB_2_0
   *
   * Define to 1 if you have the `glib-2.0' library.
@@ -750,7 +742,9 @@
   * 
   *
   */
+#endif // HAVE_LIBGLIB_2_0
 
+#ifdef HAVE_LIBGNET_2_0
 /** \def HAVE_LIBGNET_2_0
   *
   * Define to 1 if you have the `gnet-2.0' library.
@@ -758,12 +752,15 @@
   * GNet is a simple network library.
   *
   */
+#endif // HAVE_LIBGNET_2_0
 
+#ifdef HAVE_LIBJPEG
 /** \def HAVE_LIBJPEG
   * 
   * Define to 1 if you have the `jpeg' library.
   *
   */
+#endif // HAVE_LIBJPEG
 
 // Avoid doxygen complains about 'unknown define'
 #ifdef  HAVE_LIBMAGIC
@@ -821,6 +818,7 @@
   */
 #endif //  HAVE_LIBQTNETWORK
 
+#ifdef HAVE_LIBSIGC_2_0
 /** \def HAVE_LIBSIGC_2_0
   *
   * Define to 1 if you have the `sigc-2.0' library
@@ -829,6 +827,7 @@
   * abstract interfaces, and general programming.
   *
   */
+#endif // HAVE_LIBSIGC_2_0
 
 /** \def HAVE_LOCALE_H
   *
@@ -845,6 +844,7 @@
   *
   */
 
+#ifdef HAVE_MKFIFO
 /** \def HAVE_MKFIFO
   *
   * Define to 1 if you have the `mkfifo' function.
@@ -853,6 +853,7 @@
   * see http://en.wikipedia.org/wiki/FIFO .
   *
   */
+#endif // HAVE_MKFIFO
 
 /** \def HAVE_STDINT_H
   *
@@ -894,6 +895,7 @@
   *
   */
 
+#ifdef HAVE_STRUCT_STAT_ST_BLOCKS
 /** \def HAVE_STRUCT_STAT_ST_BLOCKS
   *
   * Define to 1 if `st_blocks' is member of `struct stat'.
@@ -903,6 +905,7 @@
   * blocks.
   *
   */
+#endif // HAVE_STRUCT_STAT_ST_BLOCKS
 
 /** \def HAVE_STRUCT_UTIMBUF
   *
@@ -913,6 +916,7 @@
   *
   */
 
+#ifdef HAVE_ST_BLOCKS
 /** \def HAVE_ST_BLOCKS
   *
   * Define to 1 if your `struct stat' has `st_blocks'. 
@@ -920,6 +924,7 @@
   * \warning Deprecated, use \ref HAVE_STRUCT_STAT_ST_BLOCKS instead.
   *
   */
+#endif // HAVE_ST_BLOCKS
 
 /** \def HAVE_SYS_PARAM_H
   *
@@ -939,6 +944,7 @@
   *
   */
 
+#ifdef HAVE_SYS_SYSMACROS_H
 /** \def HAVE_SYS_SYSMACROS_H
   *
   * Define to 1 if you have the <sys/sysmacros.h> header file.
@@ -947,6 +953,7 @@
   * \c makedev().
   *
   */
+#endif // HAVE_SYS_SYSMACROS_H
 
 /** \def HAVE_SYS_TIME_H
   *
@@ -1035,6 +1042,7 @@
   *
   */
 
+#ifdef RAINBRU_RPG_DEBUG
 /** \def RAINBRU_RPG_DEBUG
   *
   * Activate local website administration and intensive informative logging
@@ -1048,7 +1056,9 @@
   *   site instead of the official inline one.
   *
   */
+#endif // RAINBRU_RPG_DEBUG
 
+#ifdef RB_DISABLE_OGRE_DEPREC_WARN
 /** \def RB_DISABLE_OGRE_DEPREC_WARN
   * 
   * Defines if we must disable the deprecated warnings due to Ogre 
@@ -1060,6 +1070,7 @@
   * temporally disabled is explained in the \file ogreimport.h
   *
   */
+#endif // RB_DISABLE_OGRE_DEPREC_WARN
 
 /** \def STDC_HEADERS
   *
@@ -1086,7 +1097,6 @@
   */
 
 /** \def VERSION
-  *
   * Version number of package
   *
   * Defines the RainbruRPG version. To get the complete release
@@ -1097,9 +1107,19 @@
   *
   */
 
+#ifdef RB_MULTICOLUMNLIST_TEST
 /** \def RB_MULTICOLUMNLIST_TEST
   * A MultiColumnList widget test
   *
   * Defines if we should create a test widget.
   *
   */
+#endif //RB_MULTICOLUMNLIST_TEST
+
+#ifdef CLOSEDIR_VOID
+/** \def CLOSEDIR_VOID
+  * Defined to 1 if the `closedir' function returns void instead of `int'
+  *
+  *
+  */
+#endif // CLOSEDIR_VOID

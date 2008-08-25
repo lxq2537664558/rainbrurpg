@@ -20,11 +20,19 @@
  *
  */
 
-/* Modifications :
- * - 24 jan 2007 : Removing Pass related statements due to new etxt renderer
- * - 03 dec 2007 : starting implementation
- *         
- */
+/** \file font.h
+  * Declares an OgreGui font
+  *
+  * \warning Please use the Ogre namespace to scope Rectangle objects
+  *          to avoid ambiguous use on Win32 platform
+  *
+  * Modifications :
+  * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
+  *                 ambiguous use on Win32 platform
+  * - 24 jan 2007 : Removing Pass related statements due to new etxt renderer
+  * - 03 dec 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_OGRE_FONT_H_
 #define _OGRE_GUI_OGRE_FONT_H_
@@ -102,15 +110,16 @@ namespace RainbruRPG{
       void setTextureName(const String&);
       const String& getTextureName(void)const;
 
+      // The Ogre scope for Rectangle to avoid ambigous use in Win32
       void renderAligned( QuadRenderer*, const std::string&, 
-			  const ColourValue&, const Rectangle&, bool,
+			  const ColourValue&, const Ogre::Rectangle&, bool,
 			  VerticalAlignType, HorizontalAlignType);
 
       void addGlyph(size_t, Glyph*);
 
     protected:
       void renderAligned(QuadRenderer*, LineInfoList&, 
-			 const ColourValue&, const Rectangle&,
+			 const ColourValue&, const Ogre::Rectangle&,
 			 VerticalAlignType, HorizontalAlignType,
 			 bool vSelection = false, int vSelectionStart = -1, 
 			 int vSelectionEnd = -1);
@@ -125,7 +134,8 @@ namespace RainbruRPG{
       void render( QuadRenderer*, const string&, const ColourValue&, 
 		   const Vector2& vPos, bool, int, int ) const;
 
-      const Rectangle& translateRectangle(Rectangle&, float, float)const;
+      const Ogre::Rectangle& translateRectangle(Ogre::Rectangle&, float, 
+						float)const;
 
     private:
       /** The font name */

@@ -3,14 +3,15 @@
 
 lib_LIBRARIES = librainbrurpg-core.a
 
-INCLUDES = 	-I../common/					\
+INCLUDES = 	-I$(top_srcdir)/common/				\
+	 	-I$(top_srcdir)/ogreGui/			\
 	 	-I/usr/cross/include				\
 		-L/usr/cross/lib				\
 		-I/usr/cross/include/glib-2.0			\
 		-I/usr/cross/include/sigc++-2.0/		\
 		-I/usr/cross/include/gnet/			\
 		-I/usr/cross/include/OGRE/			\
-		-I/usr/cross/include/CEGUI/
+		-I/usr/cross/include/OIS/
 
 
 librainbrurpg_core.adir=.
@@ -31,8 +32,8 @@ h_sources=gameengine.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  gsconnection.h		\
+	  ogreimport.h			\
 	  keyboardnavigation.h		\
-	  messagebox.h			\
 	  gscreateaccount.h		\
 	  gsserverlist.h		\
 	  gsupdatedatafiles.h
@@ -54,20 +55,21 @@ cc_sources=gameengine.cpp		\
 	  highlightlistener.cpp		\
 	  gsconnection.cpp		\
 	  keyboardnavigation.cpp	\
-	  messagebox.cpp		\
 	  gscreateaccount.cpp		\
 	  gsserverlist.cpp		\
 	  gsupdatedatafiles.cpp
-
-LD_USER_FLAGS = $(SHARED_FLAG) -version-info				\
-	        $(GENERIC_LIBRARY_VERSION)				\
-		-L$(top_srcdir)/common/.libs 				\
-		-Wl,--rpath -Wl,$(top_srcdir)/common/.libs 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 librainbrurpg_core_a_SOURCES= $(h_sources) $(cc_sources)
-librainbrurpg_core_a_INCLUDES= $(LD_USER_FLAGS)
-librainbrurpg_core_a_LIBADD= -lrainbrurpg-common 
-#removed from the previous line : $(CROSS_COMPIL_LIBS)
+
+librainbrurpg_core_a_LDFLAGS = $(SHARED_FLAG) -version-info \
+  $(CORE_LIBRARY_VERSION)   		       		\
+  -L$(top_srcdir)/common/.libs 		       		\
+  -Wl,--rpath		       		       		\
+  -Wl,$(top_srcdir)/common/.libs	       		\
+  $(CEGUI_OGRE_LIBS)			       		\
+  $(OIS_LIBS)				       		\
+  $(shell pkg-config sigc++-2.0 --libs)
+

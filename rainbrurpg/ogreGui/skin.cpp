@@ -101,8 +101,8 @@ logUnimplementedFunction(const std::string& vFunctionName){
   * \param caption The title bar caption
   *
   */
-void RainbruRPG::OgreGui::Skin::drawWindow(QuadRenderer*qr, Rectangle corners, 
-					   String caption){
+void RainbruRPG::OgreGui::Skin::
+drawWindow(QuadRenderer*qr, Ogre::Rectangle corners, String caption){
   logUnimplementedFunction("drawWindow");
 }
 
@@ -166,13 +166,13 @@ drawPushButton(QuadRenderer*qr, Vector4 dim, String caption,
   *
   */
 void RainbruRPG::OgreGui::Skin::
-drawTextInput(QuadRenderer* qr, Rectangle dim, String caption, Window* win, 
-	      bool active, int selStart, int selEnd){
+drawTextInput(QuadRenderer* qr, Ogre::Rectangle dim, String caption, 
+	      Window* win, bool active, int selStart, int selEnd){
   logUnimplementedFunction("drawTextInput");
 
 }
 
-/** Graphically create a Label widget
+/** Draws a Label widget
   *
   * \param qr      The QuadRenderer used to draw
   * \param dim     The widget's dimension in pixels in a 
@@ -182,7 +182,7 @@ drawTextInput(QuadRenderer* qr, Rectangle dim, String caption, Window* win,
   *
   */
 void RainbruRPG::OgreGui::Skin::
-drawLabel(QuadRenderer*qr, Rectangle dim, String caption, Window* parent){
+drawLabel(QuadRenderer*qr, Ogre::Rectangle dim, String caption, Window* parent){
   logUnimplementedFunction("drawLabel");
 
 }

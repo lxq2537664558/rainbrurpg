@@ -62,7 +62,7 @@ namespace RainbruRPG{
       * \todo remove EventProcessor, InputReader
       *
       */
-    class ExampleFrameListener: public FrameListener, public KeyListener{
+    class ExampleFrameListener: public FrameListener, public OIS::KeyListener{
 
     public:
       // Constructor takes a RenderWindow because it uses 
@@ -87,12 +87,12 @@ namespace RainbruRPG{
       
       void switchMouseMode();
       void switchKeyMode();
-      void keyClicked(KeyEvent* e);
+      void keyClicked(OIS::KeyEvent* e);
       
       /** The key pressed event listener */
-      void keyPressed(KeyEvent* e) {}
+      void keyPressed(OIS::KeyEvent* e) {}
       /** The key released event listener */
-      void keyReleased(KeyEvent* e) {}
+      void keyReleased(OIS::KeyEvent* e) {}
       
     protected:
       /** The Ogre Event processor */

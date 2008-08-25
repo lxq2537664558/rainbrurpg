@@ -7,12 +7,24 @@
  *
  */
 
-/* Modifications :
- * - 21 jan 2008 : Removing Overlay and Material related var and functions
- * - 20 nov 2007 : setMasked(bool) implementation
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- *
- */
+/** \file bgtextinput.h
+  * Declares a single line text input widget
+  *
+  * <pre>
+  * Betajaen's GUI 015
+  * Written by Robin "Betajaen" Southern 07-Nov-2006, 
+  * http://www.ogre3d.org/wiki/index.php/BetaGUI
+  * This code is under the Whatevar! licence. Do what you want; 
+  * but keep the original copyright header.
+  * </pre>
+  *
+  * Modifications :
+  * - 19 aug 2008 : Single file documentation
+  * - 21 jan 2008 : Removing Overlay and Material related var and functions
+  * - 20 nov 2007 : setMasked(bool) implementation
+  * - 09 nov 2007 : Handling OgreSkinID in constructor
+  *
+  */
 
 #ifndef _BETAGUI_TEXT_INPUT_H_
 #define _BETAGUI_TEXT_INPUT_H_

@@ -41,7 +41,7 @@
   */
 
 // If this macro is defined, we use a Text output
-// otherwise, a terminal output is used
+// otherwise, a Qt provided graphic output is used 
 #define TEXT_OUTPUT
 
 #include <cppunit/TestRunner.h>
@@ -107,7 +107,7 @@ int main(int argc, char* argv[]){
 
 /** Initialize all the test
   *
-  * It initialises a TestSuite for each tested namespace or lib :
+  * It initialises a TestSuite for each tested library or subdir :
   * - TerminalAPI
   * - Common
   */

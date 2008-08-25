@@ -1,3 +1,12 @@
+2008-08-20 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/skin.h: Now using Ogre scoped Rectangle to avoid ambigous 
+	name with wingdi.h defined function
+	
+	* maincore/ogreimport.h: Added a conditionnal compilation block
+	that undefine some config.h macros (VERSION, PACKAGE ...) to
+	try to avoid win32 compilation time warning for redefinitions
+	* common/logger.h: Added te same block to avoid the same problem
+	
 2008-08-19 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/multicolumnlist.h: Declaration of vsbScissor
 	* ogreGui/multicolumnlist.cpp (makeCorners): Compute vsbScissor value

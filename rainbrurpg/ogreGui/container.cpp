@@ -20,6 +20,11 @@
  *
  */
 
+/** \file container.cpp
+  * Implements a base widget that can contain childs
+  *
+  */
+
 #include "container.h"
 
 #include "bgbutton.h"

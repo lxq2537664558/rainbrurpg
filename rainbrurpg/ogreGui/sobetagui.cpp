@@ -395,6 +395,15 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
 }
 
 
+/** Draws a Label widget
+  *
+  * \param qr      The QuadRenderer used to draw
+  * \param corners The widget's dimension in pixels in a 
+  *                Ogre::Vector4 object
+  * \param caption The rendered text
+  * \param parent  The parent window
+  *
+  */
 void RainbruRPG::OgreGui::soBetaGui::
 drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
 	  Window* parent){

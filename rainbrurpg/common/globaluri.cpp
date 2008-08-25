@@ -29,6 +29,8 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 
+#include "../config.h"
+
 /** The default constructor
   *
   * It initalize the base website according to the definition of the

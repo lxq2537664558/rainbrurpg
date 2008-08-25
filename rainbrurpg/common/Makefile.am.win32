@@ -2,6 +2,8 @@ INCLUDES = 	-I/usr/cross/include				\
 		-L/usr/cross/lib				\
 		-I/usr/cross/include/glib-2.0			\
 		-I/usr/cross/include/sigc++-2.0/		\
+		-I/usr/cross/include/OGRE/			\
+		-I/usr/cross/include/gd/			\
 		-I/usr/cross/include/gnet/
 
 

@@ -30,6 +30,21 @@
      
 <!-- Add here a version when it is finished (when switching to Ver++) -->
  
+    <tr class="regTest2">
+       <td>v 0.0.5-183</td>
+       <td>19 aug 2008</td>
+       <td align="right">61 795</td>   
+       <td align="right">13</td> 
+       <td>194</td>    
+       <td>OK&nbsp;<A NAME="UpNote004" HREF="#Note004">4</A></td>    
+       <td><font color="red">No</font>&nbsp;<A NAME="UpNote005"
+	 HREF="#Note005">5</A></td>  
+       <td>-</td>
+       <td>2000</td>
+       <td>81</td>
+       <td>Some MultiColumnList scissor bug fixed.</td>
+       <td>Passed</td>
+     </tr>
     <tr class="regTest1">
        <td>v 0.0.5-182</td>
        <td>09 aug 2008</td>
@@ -39,7 +54,7 @@
        <td>OK</td>    
        <td>-</td>  
        <td>-</td>
-       <td>1819 <A NAME="UpNote003" HREF="#Note003">3</A></td>
+       <td>1819&nbsp;<A NAME="UpNote003" HREF="#Note003">3</A></td>
        <td>-</td>
        <td>Some MultiColumnList bugs fixed.</td>
        <td>N.C.</td>
@@ -56,8 +71,8 @@
        <td>1648</td>
        <td>-</td>
        <td>examples/tapi implementation.</td>
-       <td>N.C.<A NAME="UpNote001" HREF="#Note001">1</A>&nbsp;
-               <A NAME="UpNote002" HREF="#Note002">2</A></td>
+       <td>N.C.&nbsp;<A NAME="UpNote001" HREF="#Note001">1</A>&nbsp;<A
+	 NAME="UpNote002" HREF="#Note002">2</A></td>
      </tr>
     <tr class="regTest1">
        <td>v 0.0.5-180</td>
@@ -473,15 +488,29 @@
    <p>
    <A NAME="Note001"></A>1. I can't build unit test because of a change of the
      TerminalAPI interface.<A HREF="#UpNote001">Up</a><br>
+   
    <A NAME="Note002"></A>2. Unit tests now correctly build but a
      SEGFAULT occurs. I can't fix it now and future tests will come.
      <A HREF="#UpNote002">Up</a><br>
+   
    <A NAME="Note003"></A>3. Size of documentation appreciably increased due
      to the documentation of a part of the single files.
-     <A HREF="#UpNote003">Up</a>
- 
+     <A HREF="#UpNote003">Up</a><br>
+   
+   <A NAME="Note004"></A>4. I said OK for the application running on GNU/Linux
+     system but actually neither the editor nor the server is running
+     correctly. The server has a database connection error bringing a
+     SEGFAULT. The editor runs but the OgreView does not contain the Ogre
+     renderer.
+     <A HREF="#UpNote004">Up</a><br>
+    
+   <A NAME="Note005"></A>5. The cross-compilation failed for some reasons. I
+     need to update the Ogre version because of the use of the
+     <code>_setTexture(Texture*)</code> function, but this version uses the
+     FreeImage library and I can cross-compile it. Seeing next time.
+     <A HREF="#UpNote005">Up</a>
    <hr>
 
      
-<!-- hhmts start -->Last modified: Sun Aug 17 12:06:39 CEST 2008 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Mon Aug 25 08:26:46 CEST 2008 <!-- hhmts end -->
 </body> </html>

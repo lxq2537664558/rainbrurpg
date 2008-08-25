@@ -330,7 +330,7 @@ void RainbruRPG::Core::ExampleFrameListener::switchKeyMode(){
   * \param e The Ogre key event
   *
   */
-void RainbruRPG::Core::ExampleFrameListener::keyClicked(KeyEvent* e){
+void RainbruRPG::Core::ExampleFrameListener::keyClicked(OIS::KeyEvent* e){
   if (e->text == 'm'){
     switchMouseMode();
   }

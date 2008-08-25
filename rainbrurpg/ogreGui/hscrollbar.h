@@ -20,12 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
- * - 11 apr 2008 : Using GUI::focusWidget
- * - 07 feb 2008 : Starting implementation
- *         
- */
+/*
+  *
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  * to avoid ambiguous use with the \c wingdi.h defined function.
+  *
+  * Modifications :
+  * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
+  * - 11 apr 2008 : Using GUI::focusWidget
+  * - 07 feb 2008 : Starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_HORIZONTAL_SCROLLBAR_H_
 #define _OGRE_GUI_HORIZONTAL_SCROLLBAR_H_
@@ -67,14 +72,15 @@ namespace RainbruRPG{
       virtual void draw(RainbruRPG::OgreGui::QuadRenderer*);
       virtual void setValue(int);
 
-      const Rectangle& getLeftArrowCorners(void);
-      const Rectangle& getRightArrowCorners(void);
+      // Scoping MouseEvent to avoid ambiguous Ogre one in Win32
+      const Ogre::Rectangle& getLeftArrowCorners(void);
+      const Ogre::Rectangle& getRightArrowCorners(void);
 
-      const Rectangle& getBodyLeftCorners(void);
-      const Rectangle& getBodyMidCorners(void);
-      const Rectangle& getBodyRightCorners(void);
+      const Ogre::Rectangle& getBodyLeftCorners(void);
+      const Ogre::Rectangle& getBodyMidCorners(void);
+      const Ogre::Rectangle& getBodyRightCorners(void);
 
-      const Rectangle& getCursorCorners(void);
+      const Ogre::Rectangle& getCursorCorners(void);
 
       void setLeftArrowActive(bool);
       void setRightArrowActive(bool);
@@ -99,22 +105,22 @@ namespace RainbruRPG{
       Skin* sk;
 
       /** The rectangle designing left arrow geometry */
-      Rectangle rLeftArrow;
+      Ogre::Rectangle rLeftArrow;
 
       /** The rectangle designing right arrow geometry */
-      Rectangle rRightArrow;
+      Ogre::Rectangle rRightArrow;
 
       /** The geometry of the left part of the body */
-      Rectangle rBodyLeft;
+      Ogre::Rectangle rBodyLeft;
 
       /** The geometry of the middle part of the body */
-      Rectangle rBodyMid;
+      Ogre::Rectangle rBodyMid;
 
       /** The geometry of the right part of the body */
-      Rectangle rBodyRight;
+      Ogre::Rectangle rBodyRight;
 
       /** The geometry of the cursor */
-      Rectangle rCursor;
+      Ogre::Rectangle rCursor;
 
       /** Is the left arrow active */
       bool bLeftArrowActive;

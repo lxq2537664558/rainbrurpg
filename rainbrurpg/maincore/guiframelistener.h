@@ -50,7 +50,7 @@ namespace RainbruRPG{
       *
       */
     class GuiFrameListener : public ExampleFrameListener, 
-                             public MouseListener{
+                             public OIS::MouseListener{
 
     public:
       GuiFrameListener(RenderWindow* win, Camera* cam);
@@ -98,9 +98,9 @@ namespace RainbruRPG{
       /** An empty mouse exited event listener */
       void mouseExited(OIS::MouseEvent* e) {}
 
-      bool keyPressed(const KeyEvent& e);
-      bool keyReleased(const KeyEvent& e);
-      bool keyClicked(const KeyEvent& e);
+      bool keyPressed(const OIS::KeyEvent& e);
+      bool keyReleased(const OIS::KeyEvent& e);
+      bool keyClicked(const OIS::KeyEvent& e);
       
     private:
       /** A flag saying if we have requested the shutdown of the engine */

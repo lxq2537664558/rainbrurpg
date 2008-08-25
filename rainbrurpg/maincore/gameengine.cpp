@@ -32,6 +32,7 @@
 #include <OgreIteratorWrappers.h>
 #include <OgreSceneManagerEnumerator.h>
 #include <OgreLogManager.h>
+#include <OgreConfigFile.h>
 
 #include <logger.h>
 #include "gamestate.h"

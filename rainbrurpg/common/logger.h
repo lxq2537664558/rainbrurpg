@@ -23,7 +23,12 @@
 /** \file logger.h
   * Defines preprocessor macros used to debug at runtime
   *
+  * \note There is a hack on this file that avoid multiple definition of
+  *       some \c config.h macros. It is due to Ogre that include its own
+  *       \c config.h file. 
+  *
   * Modifications :
+  * - 20 aug 2008 : Hacking to avoid multiple definition of macros on Win32
   * - 07 aug 2008 : Single file documentation
   *
   * For more informations on how you can use these macros, please see the 
@@ -40,7 +45,18 @@
 #include <sstream>
 
 #include "singleton.h"
-#include "config.h"
+
+#include "../config.h"
+
+// Avoid multiple definitions of these macros
+#ifdef __WIN32__
+#  undef VERSION
+#  undef PACKAGE_VERSION
+#  undef PACKAGE_TARNAME
+#  undef PACKAGE_STRING
+#  undef PACKAGE_NAME
+#  undef PACKAGE
+#endif // __WIN32__
 
 /** A macro used to fix a \c __LINE__ bug
   *
@@ -61,7 +77,7 @@
   * See Logger class for more informations.
   *
   * \note This macro print the message only in debug mode (if
-  *       \ref RAINBRU_RPG_DEBUG macro is defined). It does nothing
+  *       \c RAINBRU_RPG_DEBUG macro is defined). It does nothing
   *       in release mode.
   *
   * \param STRING the information message

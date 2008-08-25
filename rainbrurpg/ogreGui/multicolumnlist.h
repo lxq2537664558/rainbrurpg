@@ -20,11 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 28 jun 2008 : sigSelectionChanged implementation
- * - 17 apr 2008 : PopupMenu integration
- * - 14 apr 2008 : Now using scissor rectangle
- *                 Using DrawingDevSettings
+ /* 
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  * to avoid ambiguous use with the \c wingdi.h defined function.
+  * Modifications :
+  * - 28 jun 2008 : sigSelectionChanged implementation
+  * - 17 apr 2008 : PopupMenu integration
+  * - 14 apr 2008 : Now using scissor rectangle
+  *                 Using DrawingDevSettings
  * - 24 mar 2008 : Starting implementation
  *         
  */
@@ -274,7 +277,7 @@ namespace RainbruRPG{
       std::string mDebugName;
 
       /** The scissor used to cur the vertical scrollbar */
-      Rectangle vsbScissor;
+      Ogre::Rectangle vsbScissor;
     };
   }
 }

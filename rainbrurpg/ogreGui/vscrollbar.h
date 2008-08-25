@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
- * - 11 apr 2008 : Using MouseEvent for event handling
- * - 04 feb 2008 : Drawn again using QuadRenderer
- * - 28 jan 2008 : starting implementation
- *         
- */
+  /*
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  * to avoid ambiguous use with the \c wingdi.h defined function.
+  *
+  * Modifications :
+  * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
+  * - 11 apr 2008 : Using MouseEvent for event handling
+  * - 04 feb 2008 : Drawn again using QuadRenderer
+  * - 28 jan 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_VERTICAL_SCROLLBAR_H_
 #define _OGRE_GUI_VERTICAL_SCROLLBAR_H_
@@ -74,14 +78,15 @@ namespace RainbruRPG{
       bool isBottomArrowActive(void);
       bool isCursorActive(void);
 
-      const Rectangle& getTopArrowCorners(void);
-      const Rectangle& getBottomArrowCorners(void);
+      // Scoping MouseEvent to avoid ambiguous Ogre one in Win32
+      const Ogre::Rectangle& getTopArrowCorners(void);
+      const Ogre::Rectangle& getBottomArrowCorners(void);
 
-      const Rectangle& getBodyTopCorners(void);
-      const Rectangle& getBodyMidCorners(void);
-      const Rectangle& getBodyBotCorners(void);
+      const Ogre::Rectangle& getBodyTopCorners(void);
+      const Ogre::Rectangle& getBodyMidCorners(void);
+      const Ogre::Rectangle& getBodyBotCorners(void);
 
-      const Rectangle& getCursorCorners(void);
+      const Ogre::Rectangle& getCursorCorners(void);
 
       void moveCursorToValue(void);
       void getValueFromCursor(void);
@@ -93,19 +98,19 @@ namespace RainbruRPG{
       /** A pointer to this widget's skin */
       Skin* sk;
       /** The rectangle designing top arrow geometry */
-      Rectangle rTopArrow;
+      Ogre::Rectangle rTopArrow;
       /** The rectangle designing bottom arrow geometry */
-      Rectangle rBotArrow;
+      Ogre::Rectangle rBotArrow;
 
       /** The geometry of the top of the body */
-      Rectangle rBodyTop;
+      Ogre::Rectangle rBodyTop;
       /** The geometry of the middle of the body */
-      Rectangle rBodyMid;
+      Ogre::Rectangle rBodyMid;
       /** The geometry of the bottom of the body */
-      Rectangle rBodyBot;
+      Ogre::Rectangle rBodyBot;
 
       /** The geometry of the cursor of the body */
-      Rectangle rCursor;
+      Ogre::Rectangle rCursor;
 
 
       /** Is the top arrow active ? */

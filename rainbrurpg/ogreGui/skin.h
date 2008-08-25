@@ -20,16 +20,22 @@
  *
  */
 
-/* Modifications :
- * - 13 may 2008 : draw* functions are not pure virtual anymore
- * - 17 apr 2008 : drawPopupMenu implementation
- * - 25 mar 2008 : drawMultiColumnList implementation
- * - 04 feb 2008 : Class renamed from SkinOverlay to Skin
- * - 15 nov 2007 : createBorderWindow implementation
- * - 15 oct 2007 : Skin class removed
- * - 27 sep 2007 : starting implementation
- *         
- */
+/** \file skin.h
+  * Declares an OgreGui skin
+  * 
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  * to avoid ambiguous use with the \c wingdi.h defined function.
+  *
+  * Modifications :
+  * - 13 may 2008 : draw* functions are not pure virtual anymore
+  * - 17 apr 2008 : drawPopupMenu implementation
+  * - 25 mar 2008 : drawMultiColumnList implementation
+  * - 04 feb 2008 : Class renamed from SkinOverlay to Skin
+  * - 15 nov 2007 : createBorderWindow implementation
+  * - 15 oct 2007 : Skin class removed
+  * - 27 sep 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SKIN_H_
 #define _OGRE_GUI_SKIN_H_
@@ -76,13 +82,17 @@ namespace RainbruRPG{
       Skin(const std::string& n="unamedSkinOverlay");
       virtual ~Skin();
 
-      virtual void drawWindow(QuadRenderer*, Rectangle, String );
+      // Use the Ogre namespace here to avoid ambiguous use with
+      // the wingdi.h function
+      virtual void drawWindow(QuadRenderer*, Ogre::Rectangle, String );
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool );
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
-      virtual void drawPushButton(QuadRenderer*,Vector4,String,Window*,bool,bool);
-      virtual void drawTextInput(QuadRenderer*, Rectangle, String, Window*, 
-				 bool, int selStart = -1, int selEnd = -1);
-      virtual void drawLabel(QuadRenderer*, Rectangle, String, Window* );
+      virtual void drawPushButton(QuadRenderer*, Vector4, String, Window*, 
+				  bool, bool);
+      virtual void drawTextInput(QuadRenderer*, Ogre::Rectangle, String, 
+				 Window*, bool, int selStart = -1, 
+				 int selEnd = -1);
+      virtual void drawLabel(QuadRenderer*, Ogre::Rectangle, String, Window* );
       virtual void drawToolTip(QuadRenderer*, ToolTip*);
       virtual void drawVerticalScrollbar(QuadRenderer*, VScrollBar* );
       virtual void drawHorizontalScrollbar(QuadRenderer*, HScrollBar* );

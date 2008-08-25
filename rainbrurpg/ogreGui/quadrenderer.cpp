@@ -20,6 +20,15 @@
  *
  */
 
+/** \file quadrenderer.cpp
+  * Implements the object that draw OgreGui prilmitives
+  *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
+  */
+
 #include "quadrenderer.h"
 
 #include "logger.h"
@@ -441,8 +450,9 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-drawText(TextSettings* vSettings, const string& text, const Rectangle& rect, 
-	 bool wordwrap){
+drawText(TextSettings* vSettings, const string& text, 
+	 const Ogre::Rectangle& rect, bool wordwrap)
+{
 
   beginGlyphs();
   vSettings->renderAligned( this, text, rect, wordwrap);
@@ -513,7 +523,9 @@ const Rectangle& RainbruRPG::OgreGui::QuadRenderer::getClipRegion(void)const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
+addGlyph( const Ogre::Rectangle& vRect, const Ogre::Rectangle& vUV, 
+	  bool vUVRelative )
+{
 
   vector<OgreGui::Vector3> verts;
   vector<Vector2> uv;
@@ -584,7 +596,7 @@ addGlyph( const Rectangle& vRect, const Rectangle& vUV, bool vUVRelative ){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-buildUV( const Rectangle& vIn, vector<Vector2>* vOut ) const{
+buildUV( const Ogre::Rectangle& vIn, vector<Vector2>* vOut ) const{
   // Setup the UV coordinates for the rectangle
   vOut->push_back(Vector2( vIn.left, vIn.bottom ));
   vOut->push_back(Vector2( vIn.right, vIn.bottom ));
@@ -601,7 +613,7 @@ buildUV( const Rectangle& vIn, vector<Vector2>* vOut ) const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-buildVertices( const Rectangle& vIn, vector<OgreGui::Vector3>* vOut ) const{
+buildVertices(const Ogre::Rectangle& vIn, vector<OgreGui::Vector3>* vOut)const{
 
   Rectangle devRect=vIn;
   if (!mDrawingDevList->empty()){
@@ -636,7 +648,7 @@ buildVertices( const Rectangle& vIn, vector<OgreGui::Vector3>* vOut ) const{
   *
   */
 const Rectangle& RainbruRPG::OgreGui::QuadRenderer::
-translateRectangle(Rectangle& r, float x, float y)const{
+translateRectangle(Ogre::Rectangle& r, float x, float y)const{
   r.top=r.top+y;
   r.bottom=r.bottom+y;
   r.left=r.left+x;
@@ -651,7 +663,7 @@ translateRectangle(Rectangle& r, float x, float y)const{
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-getFinalRect( const Rectangle& vIn, Rectangle& vOut ) const{
+getFinalRect( const Ogre::Rectangle& vIn, Ogre::Rectangle& vOut ) const{
 
   // Flip Y coordinates if necessary
   if ( (mTarget.isNull()) && (mFlipY == false)){
@@ -739,7 +751,7 @@ void RainbruRPG::OgreGui::QuadRenderer::setTexturePtr(TexturePtr tex){
   * 
   */ 
 void RainbruRPG::OgreGui::QuadRenderer::
-setScissorRectangle(const Rectangle& vRect){
+setScissorRectangle(const Ogre::Rectangle& vRect){
   setScissorRectangle(vRect.left, vRect.top, 
 		      vRect.right, vRect.bottom);
 
@@ -848,7 +860,7 @@ void RainbruRPG::OgreGui::QuadRenderer::checkHardwareBuffer(GuiVertex* ptr){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-drawFilledRectangle( const Rectangle& vRect, const ColourValue& vColor ){
+drawFilledRectangle( const Ogre::Rectangle& vRect, const ColourValue& vColor ){
 
   Rectangle uv;
   uv.top    = 0.0f;
@@ -1148,7 +1160,7 @@ void RainbruRPG::OgreGui::QuadRenderer::renderLines(void){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::
-drawRectangleLines( const Rectangle& vRect, const ColourValue& vColor ){
+drawRectangleLines( const Ogre::Rectangle& vRect, const ColourValue& vColor ){
 
   beginLines( );
   addLine( vRect.left, vRect.top , vRect.right,  vRect.top,  vColor );

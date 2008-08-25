@@ -7,7 +7,7 @@
  *
  */
 
-/** \file bgwindow.h
+/** \file bgwindow.cpp
   * Implements a window widget used in OgreGUI
   *
   */
@@ -322,7 +322,10 @@ in(unsigned int mx, unsigned int my, unsigned int px, unsigned int py){
   *
   */
 bool BetaGUI::Window::check(unsigned int px, unsigned int py, 
-			    const MouseEvent& event){
+			    const OgreGui::MouseEvent& event){
+  
+  // The OgreGui scope for MouseEvent to avoid ambigous use in Win32
+  
   bool inWindow=in(px, py, 0, 0);
   bool LMB=event.isLeftMouseButtonPressed();
 

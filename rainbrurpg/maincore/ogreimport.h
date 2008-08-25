@@ -28,9 +28,14 @@
   * script, all deprecated header warning from the Ogre3D inclusion
   * of standard headers will be ignored.
   *
+  * \note There is a hack on this file that avoid multiple definition of
+  *       some \c config.h macros. It is due to Ogre that include its own
+  *       \c config.h file. 
+  *
   * \todo Removing when deprecated header warning fixed by Ogre team
   *
   * Modifications :
+  * - 20 aug 2008 : Added hack to prevent for multiple definition in win32
   * - 08 jul 2008 : Starting implementation
   *
   */
@@ -38,7 +43,7 @@
 #ifndef _RAINBRURPG_OGRE_IMPORT_H_
 #define _RAINBRURPG_OGRE_IMPORT_H_
 
-#include "config.h"
+//#include "../config.h"
 
 #ifdef __GNUC__
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
@@ -49,13 +54,11 @@
 #  endif //RB_DISABLE_OGRE_DEPREC_WARN
 #endif // __GNUC__
 
-
-
-
-
 // Including Ogre headers files
-#include <Ogre.h>
+//#include <Ogre.h>
+#include <OgreCamera.h>
 #include <OgreColourValue.h>
+#include <OgreEntity.h>
 #include <OgreException.h>
 #include <OgreFrameListener.h>
 #include <OgreMaterialManager.h>
@@ -65,6 +68,7 @@
 #include <OgreOverlayManager.h>
 #include <OgrePrerequisites.h>
 #include <OgreRectangle.h>
+#include <OgreRenderSystem.h>
 #include <OgreRenderQueueListener.h>
 #include <OgreRenderWindow.h>
 #include <OgreRoot.h>
@@ -76,6 +80,15 @@
 #include <OgreVector2.h>
 #include <OgreVector4.h>
 
+// Avoid multiple definitions of these macros
+#ifdef __WIN32__
+#  undef VERSION
+#  undef PACKAGE_VERSION
+#  undef PACKAGE_TARNAME
+#  undef PACKAGE_STRING
+#  undef PACKAGE_NAME
+#  undef PACKAGE
+#endif // __WIN32__
 
 
 

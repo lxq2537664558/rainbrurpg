@@ -8,7 +8,7 @@
  */
 
 /** \file bggui.h
-  * Declares te GUI system object
+  * Declares the GUI system object
   *
   * <pre>
   * Betajaen's GUI 015

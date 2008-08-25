@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 15 feb 2008 : starting implementation
- *         
- */
+/** \file container.h
+  * Declares a base widget that can contain childs
+  *
+  * Modifications :
+  * - 19 aug 2008 : Single file documentation
+  * - 15 feb 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_CONTAINER_H_
 #define _OGRE_GUI_CONTAINER_H_

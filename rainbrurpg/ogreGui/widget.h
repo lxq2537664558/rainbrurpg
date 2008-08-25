@@ -20,18 +20,24 @@
  *
  */
 
-/* Modifications :
- * - 22 feb 2008 : visible now part of widget (instead of Window)
- * - 19 jan 2008 : getCorners implementation
- *                 getX, getY renamed getTop, getLeft
- *                 get* qualified const
- * - 21 nov 2007 : Adding injectMouse() function
- * - 09 nov 2007 : parent and getParent() added
- *                 Defaut value of OgreGuiSkinID in constructor is 
- *                   now OSI_PARENT
- * - 26 sep 2007 : starting implementation
- *         
- */
+/** \file ogreGui/widget.h
+  * Declares the base class of all widgets
+  *
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  * to avoid ambiguous use with the \c wingdi.h defined function.
+  *
+  * Modifications :
+  * - 22 feb 2008 : visible now member of widget (instead of Window)
+  * - 19 jan 2008 : getCorners implementation
+  *                 getX, getY renamed getTop, getLeft
+  *                 get* qualified const
+  * - 21 nov 2007 : Adding injectMouse() function
+  * - 09 nov 2007 : parent and getParent() added
+  *                 Defaut value of OgreGuiSkinID in constructor is 
+  *                   now OSI_PARENT
+  * - 26 sep 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_WIDGET_H_
 #define _OGRE_GUI_WIDGET_H_
@@ -140,13 +146,16 @@ namespace RainbruRPG{
       virtual void move(int, int);
 
 
+      // Use the Ogre namespace here to avoid ambiguous use with
+      // the wingdi.h function
+
       /** Get the corners of this widget
         *
 	* \return A Ogre Rectangle that contains top/left and bottom/right
 	*         corners in pixels.
 	*
 	*/
-      inline const Rectangle& getCorners(void) const{  return corners; };
+      inline const Ogre::Rectangle& getCorners(void) const{  return corners; };
 
       /** Draws the widget
         *
@@ -193,7 +202,7 @@ namespace RainbruRPG{
       double alpha;
 
       /** The corners of this widget (in pixels) */
-      Rectangle corners;
+      Ogre::Rectangle corners;
 
       /** Used to tell widget to re-compute its geometry
         *

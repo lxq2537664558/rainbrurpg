@@ -139,7 +139,7 @@ mouseReleased(const OIS::MouseEvent& e){
   * \param e The Ogre key event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::keyPressed(const KeyEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::keyPressed(const OIS::KeyEvent& e){
   if(e.key == KC_ESCAPE){
     mShutdownRequested = true;
     //   e.consume();
@@ -162,7 +162,7 @@ bool RainbruRPG::Events::GuiFrameListener::keyPressed(const KeyEvent& e){
   * \param e The Ogre key event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::keyReleased(const KeyEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::keyReleased(const OIS::KeyEvent& e){
   mTranslateVector.z = 0.0f;
 
    //  e.consume();
@@ -173,7 +173,7 @@ bool RainbruRPG::Events::GuiFrameListener::keyReleased(const KeyEvent& e){
   * \param e The Ogre key event
   *
   */
-bool RainbruRPG::Events::GuiFrameListener::keyClicked(const KeyEvent& e){
+bool RainbruRPG::Events::GuiFrameListener::keyClicked(const OIS::KeyEvent& e){
   // Do nothing
   //  e.consume();
 }

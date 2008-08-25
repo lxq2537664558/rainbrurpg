@@ -136,7 +136,7 @@ RainbruRPG::OgreGui::MousePointer::~MousePointer(){
   */
 void RainbruRPG::OgreGui::MousePointer::draw(QuadRenderer* qr){
   // Removing 16 pixels because
-  Rectangle corners;
+  Ogre::Rectangle corners;
   corners.left  =mousePosX-16;
   corners.top   =mousePosY-16;
   corners.right =(mousePosX-16)+pointerWidth;
