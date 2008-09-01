@@ -20,6 +20,11 @@
  *
  */
 
+/** \file pmiseparator.cpp
+  * Implements a separator for popup menu 
+  *
+  */
+
 #include "pmiseparator.h"
 
 #include "quadrenderer.h"

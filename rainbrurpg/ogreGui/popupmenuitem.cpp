@@ -20,6 +20,11 @@
  *
  */
 
+/** \file popupmenuitem.cpp
+  * Implements the base class for all menu items
+  *
+  */
+
 #include "popupmenuitem.h"
 
 #include "quadrenderer.h"

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file sobetagui.cpp
+  * Implements a skin based on SkinOverlay, drawing like BetaGUI does
+  *
+  */
+
 #include "sobetagui.h"
 
 #include "bgwindow.h"

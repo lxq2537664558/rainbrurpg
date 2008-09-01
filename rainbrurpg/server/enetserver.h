@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 22 mar 2007 : sendPacket() function implementation
- * - 16 mar 2007 : starting implementation
- */
+/** \file enetserver.h
+  * Declares the enet server class
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 22 mar 2007 : sendPacket() function implementation
+  * - 16 mar 2007 : starting implementation
+  */
 
 
 #ifndef ENET_SERVER_H

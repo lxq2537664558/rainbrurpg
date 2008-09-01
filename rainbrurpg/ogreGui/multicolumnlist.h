@@ -20,17 +20,21 @@
  *
  */
 
- /* 
+/** \file multicolumnlist.h
+  * Declares a multi-column list widget
+  *
   * \warning Please use the Ogre namespace here for the Rectangle class
-  * to avoid ambiguous use with the \c wingdi.h defined function.
+  *          to avoid ambiguous use with the \c wingdi.h defined function.
+  *
   * Modifications :
+  * - 26 aug 2008 : Single file documentation
   * - 28 jun 2008 : sigSelectionChanged implementation
   * - 17 apr 2008 : PopupMenu integration
   * - 14 apr 2008 : Now using scissor rectangle
   *                 Using DrawingDevSettings
- * - 24 mar 2008 : Starting implementation
- *         
- */
+  * - 24 mar 2008 : Starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_MULTI_COLUMN_LIST_H_
 #define _OGRE_GUI_MULTI_COLUMN_LIST_H_

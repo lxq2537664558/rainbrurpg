@@ -20,6 +20,11 @@
  *
  */
 
+/** \file pmicheckbox.cpp
+  * Implements a popum menu item containing a check box
+  *
+  */
+
 #include "pmicheckbox.h"
 
 #include "quadrenderer.h"

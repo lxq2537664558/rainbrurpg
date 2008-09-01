@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 22 may 2007 : Starting implementation
- *
- */
+/** \file curlserverdeletetest.h
+  * Implements the unit test for the CurlServerDelete class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 22 may 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_SERVER_DELETE_TEST_H
 #define CURL_SERVER_DELETE_TEST_H

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file pushbuttontest.h
+  * Implements the unit tests of the PushButton class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef PUSHBUTTON_TEST_H
 #define PUSHBUTTON_TEST_H
 
@@ -30,6 +38,11 @@
 
 using namespace std;
 
+/** A default action simply returning 255
+  *
+  * \return 255
+  *
+  */
 int PushButtonTestAction(){
   return 225;
 }

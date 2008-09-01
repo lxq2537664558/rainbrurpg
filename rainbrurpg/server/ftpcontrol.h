@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 10 jul 2007 : Using GlobalURI for RETR file info
- * - 18 apr 2007 : Starting implementation
- */
+/** \file ftpcontrol.h
+  * Declares the FTP control channel
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 10 jul 2007 : Using GlobalURI for RETR file info
+  * - 18 apr 2007 : Starting implementation
+  */
 
 #ifndef _FTP_CONTROL_H_
 #define _FTP_CONTROL_H_

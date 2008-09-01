@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 26 may 2006 : starting implementation
- *         
- */
+/** \file widgetdrawer.h
+  * Declares a class used to draw complex widgets
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 26 may 2006 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_WIDGET_DRAWER_H_
 #define _OGRE_GUI_WIDGET_DRAWER_H_

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file popupmenu.cpp
+  * Implements a popup menu widgets
+  *
+  */
+
 #include "popupmenu.h"
 
 #include "bgwindow.h"

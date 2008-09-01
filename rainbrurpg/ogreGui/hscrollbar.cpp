@@ -20,6 +20,11 @@
  *
  */
 
+/** \file hscrollbar.cpp
+  * Implements an horizontal scrollbar widget
+  *
+  */
+
 #include "hscrollbar.h"
 
 #include <logger.h>

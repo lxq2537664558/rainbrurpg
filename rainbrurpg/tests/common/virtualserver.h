@@ -20,18 +20,19 @@
  *
  */
 
-/** Modifications :
+/** \file virtualserver.h
+  * Declares a virtual server
+  *
+  * This file is used to define  some macro used to create a
+  * virtual  server. This  informations are  shared by some
+  * files  and  to  avoid  multiple definitions.  There  are
+  * defined once, in this file.
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 18 may 2007 : Basic implementation
   *
   */
-
-/*##############################################################
- *#  This file is used to define  some macro used to create a  #
- *#  virtual  server . This  informations are  shared by some  #
- *#  files  and  to  avoid  multiple definitions.  There  are  #
- *#  defined once, in this file.                               #
- *##############################################################
- */
 
 #ifndef _VIRTUAL_SERVER_H_
 #define _VIRTUAL_SERVER_H_

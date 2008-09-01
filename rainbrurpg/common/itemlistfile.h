@@ -24,6 +24,10 @@
   * Declares a class that manage a file containing an item list
   *
   * Modifications :
+  * - 29 aug 2008 : 
+  *   - Implements the load(), reset() functions
+  *   - Implements an empty constructor
+  *   - Fix a bug in load() using fail() instead of bad() (infinite loop)
   * - 15 jul 2007 : Starting implementation
   *
   */
@@ -49,11 +53,21 @@ namespace RainbruRPG{
       * If the first character of the line is #, the line is ignored 
       * (commentary), if the line is empty, it is ignored.
       *
+      * The \ref ItemListFile::addItem "addItem()" function is used to
+      * add an line of text in the file.
+      *
+      * \note A line that contains only space characters is read as an item.
+      *
       */
     class ItemListFile{
     public:
+      ItemListFile(void);
       ItemListFile(const std::string&);
-      ~ItemListFile();
+      ~ItemListFile(void);
+
+      void reset(void);
+      void refresh(void);
+      void load(const std::string&);
 
       const tStringList& getItemList(void);
       void addItem(const std::string&);

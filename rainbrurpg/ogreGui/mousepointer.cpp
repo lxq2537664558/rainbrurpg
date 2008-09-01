@@ -20,6 +20,11 @@
  *
  */
 
+/** \file mousepointer.cpp
+  * Implements a class that handle mouse pointer states
+  *
+  */
+
 #include "mousepointer.h"
 
 #include <logger.h>

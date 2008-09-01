@@ -20,6 +20,14 @@
  *
  */
 
+/** \file infodialogtest.h
+  * Implements the unit tests of the InfoDialog class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef INFODIALOG_TEST_H
 #define INFODIALOG_TEST_H
 

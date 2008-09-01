@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 16 apr 2008 : starting implementation
- *         
- */
+/** \file pmititle.h
+  * Declares a popup menu title
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 16 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_TITLE_H_

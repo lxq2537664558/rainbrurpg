@@ -20,6 +20,11 @@
  *
  */
 
+/** \file multicolumnlistdebugsettings.cpp
+  * Implements the settings used to debug a multi-columns list
+  *
+  */
+
 #include "multicolumnlistdebugsettings.h"
 
 #include "drawingdevsettings.h"

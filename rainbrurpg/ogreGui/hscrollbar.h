@@ -20,12 +20,14 @@
  *
  */
 
-/*
+/** \file hscrollbar.h
+  * Declares an horizontal scrollbar widget
   *
   * \warning Please use the Ogre namespace here for the Rectangle class
   * to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 26 aug 2008 : Single file documentation
   * - 14 aug 2008 : getValueFromCursor() now uses abs() from stdlib
   * - 11 apr 2008 : Using GUI::focusWidget
   * - 07 feb 2008 : Starting implementation

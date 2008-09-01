@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 21 jan 2008 : Removing Overlay references
- * - 16 nov 2007 : setCaption(String) implementation
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- * - 17 oct 2007 : starting implementation
- *         
- */
+/** \file ogreGui/label.h
+  * Declares a caption widget
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 21 jan 2008 : Removing Overlay references
+  * - 16 nov 2007 : setCaption(String) implementation
+  * - 09 nov 2007 : Handling OgreSkinID in constructor
+  * - 17 oct 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_LABEL_H_
 #define _OGRE_GUI_LABEL_H_

@@ -20,4 +20,9 @@
  *
  */
 
+/** \file object.cpp
+  * Implements the base class of all OgreGui and BetaGUI widgets
+  *
+  */
+
 #include "object.h"

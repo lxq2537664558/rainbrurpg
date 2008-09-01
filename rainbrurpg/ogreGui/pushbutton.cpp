@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ogreGui/pushbutton.cpp
+  * Implements a push button widget
+  *
+  */
+
 #include "pushbutton.h"
 
 #include "skin.h"

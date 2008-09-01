@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 apr 2008 : Starting implementation
- *         
- */
+/** \file tooltip.h
+  * Declares a tooltip widget for OgreGui
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 02 apr 2008 : Starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_TOOL_TIP_H_
 #define _OGRE_GUI_TOOL_TIP_H_
@@ -33,8 +37,11 @@
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
 
+/** The transition time of the tooltip effect */
 #define TOOLTIP_EFFECT_TIME 400
-#define TOOLTIP_EFFECT_ALPHA 0.9f
+
+/** The transition lenght of the tooltip effect */
+#define TOOLTIP_EFFECT_ALPHA 0.7f
 
 // Forward declaration
 namespace BetaGUI {

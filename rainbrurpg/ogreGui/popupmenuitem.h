@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 22 apr 2008 : Mouse over effect implementation
- * - 15 apr 2008 : starting implementation
- *         
- */
+/** \file popupmenuitem.h
+  * Declares the base class for all menu items
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 22 apr 2008 : Mouse over effect implementation
+  * - 15 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_H_

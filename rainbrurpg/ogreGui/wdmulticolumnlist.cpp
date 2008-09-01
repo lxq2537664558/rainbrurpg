@@ -20,6 +20,11 @@
  *
  */
 
+/** \file wdmulticolumnlist.cpp
+  * Implements a class used to draw MultiColumnList
+  *
+  */
+
 #include "wdmulticolumnlist.h"
 
 #include "multicolumnlist.h"

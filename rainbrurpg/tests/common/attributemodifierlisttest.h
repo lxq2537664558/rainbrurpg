@@ -20,6 +20,14 @@
  *
  */
 
+/** \file attributemodifierlisttest.h
+  * Implements the unit test for AttributeModifierList class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef ATTRIBUTE_MODIFIER_LIST_TEST_H
 #define ATTRIBUTE_MODIFIER_LIST_TEST_H
 

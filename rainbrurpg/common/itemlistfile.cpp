@@ -24,46 +24,27 @@
   * Implements a class that manage a file containing an item list
   *
   */
+
 #include "itemlistfile.h"
 
 #include "logger.h"
+
+/** An empty constructor */
+RainbruRPG::Options::ItemListFile::ItemListFile(void):
+  filename("")
+{
+
+}
 
 /** The constructor
   *
   * \param filename The filename of the itemlist file to open
   *
   */
-RainbruRPG::Options::ItemListFile::ItemListFile(const std::string& filename){
-  this->filename=filename;
-
-  char buffer[256];
-
-  LOGI("ItemListFile started");
-  LOGCATS("filename=");
-  LOGCATS(filename.c_str());
-  LOGCAT();
-
-  ifstream f;
-  f.open(filename.c_str(), ios::in);
- 
-  if (f.bad()){
-    LOGE("Error while opening ItemList file");
-  }
-
-  while (!f.eof()){
-    f.getline(buffer,256);
-    std::string temp(buffer);
-    if (!(temp.empty()||temp[0]=='#')){
-      stringList.push_back(temp.c_str());
-      LOGCATS("Item=");
-      LOGCATS(temp.c_str());
-      LOGCAT();
-    }
-  }
-
-  f.close();
-
-  stringList.sort();
+RainbruRPG::Options::ItemListFile::ItemListFile(const std::string& filename):
+  filename(filename)
+{
+  load(filename);
 }
 
 /** The destructor
@@ -85,19 +66,28 @@ RainbruRPG::Options::ItemListFile::getItemList(void){
 
 /** Add an item to the file
   *
-  * \todo Refresh the list after the item was added
-  *
   * \param it The new item's content
   *
   */
 void RainbruRPG::Options::ItemListFile::addItem(const std::string& it){
-  ofstream f;
-  f.open(filename.c_str(), ios::out|std::ios::app);
-  f << std::endl << it;
-  f.close();
+  if (!this->filename.empty()){
+    ofstream f;
+    f.open(filename.c_str(), ios::out|std::ios::app);
+    f << std::endl << it;
+    f.close();
+    refresh();
+  }
+  else{
+    LOGW("Cannot append item in ItemListFile with empty file name");
+
+  }
 }
 
-/** Search for the item it in the list
+/** Search for the item in the list
+  *
+  * \param it The item to search
+  *
+  * \return \c true if found
   *
   */
 bool RainbruRPG::Options::ItemListFile::exists(const std::string& it){
@@ -109,5 +99,68 @@ bool RainbruRPG::Options::ItemListFile::exists(const std::string& it){
   }
   else{
     return false;
+  }
+}
+
+/** Load the file
+  *
+  * \param filename The name of the file to load
+  *
+  */
+void RainbruRPG::Options::ItemListFile::load(const std::string& filename){
+  reset();
+
+  this->filename=filename;
+
+  char buffer[256];
+
+  LOGI("ItemListFile started");
+  LOGCATS("filename=");
+  LOGCATS(filename.c_str());
+  LOGCAT();
+
+  ifstream f;
+  f.open(filename.c_str(), ios::in);
+ 
+  if (f.fail()){
+    LOGE("Error while opening ItemList file");
+  }
+  else{
+    while (!f.eof()){
+      f.getline(buffer,256);
+      std::string temp(buffer);
+      if (!(temp.empty()||temp[0]=='#')){
+	stringList.push_back(temp.c_str());
+	LOGCATS("Item=");
+	LOGCATS(temp.c_str());
+	LOGCAT();
+      }
+    }
+    f.close();
+
+    stringList.sort();
+  }
+}
+
+/** Clears the current string list 
+  *
+  * \note This function does not reset \ref filename.
+  *
+  *
+  */
+void RainbruRPG::Options::ItemListFile::reset(void){
+  stringList.clear();
+}
+
+/** re load the file
+  *
+  */
+void RainbruRPG::Options::ItemListFile::refresh(void){
+  if (!this->filename.empty()){
+    reset();
+    load(this->filename);
+  }
+  else{
+    LOGW("Cannot refresh an ItemListFile with empty file name");
   }
 }

@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 21 mar 2007 : A addClient function
- * - 16 mar 2007 : Starting implementation
- *
- */
+/** \file clientlist.h
+  * Declares a widget that shows connected/refused clients information
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 21 mar 2007 : A addClient function
+  * - 16 mar 2007 : Starting implementation
+  *
+  */
 
 #ifndef CLIENTS_LIST_H
 #define CLIENTS_LIST_H

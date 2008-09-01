@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 03 dec 2007 : starting implementation
- *         
- */
+/** \file fontmanager.h
+  * Declares the singleton that manages Font objects
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 03 dec 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_OGRE_FONT_MANAGER_H_
 #define _OGRE_GUI_OGRE_FONT_MANAGER_H_

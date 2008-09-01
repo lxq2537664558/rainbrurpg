@@ -20,6 +20,14 @@
  *
  */
 
+/** \file listboxtest.h
+  * Implements the unit tests of the ListBox class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LISTBOX_TEST_H
 #define LISTBOX_TEST_H
 

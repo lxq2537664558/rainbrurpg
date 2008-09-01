@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 24 apr 2008 : Drop down effect implementation
- * - 15 apr 2008 : starting implementation
- *         
- */
+/** \file popupmenu.h
+  * Declares a popup menu widgets
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 24 apr 2008 : Drop down effect implementation
+  * - 15 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_POPUP_MENU_H_
 #define _OGRE_GUI_POPUP_MENU_H_

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file menuitemtest.h
+  * Implements the unit tests of the MenuItem class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef MENUITEM_TEST_H
 #define MENUITEM_TEST_H
 

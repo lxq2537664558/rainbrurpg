@@ -20,6 +20,14 @@
  *
  */
 
+/** \file chartbasetest.h
+  * Implements the unit test for the ChartBase class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef CHARTBASE_TEST_H
 #define CHARTBASE_TEST_H
 

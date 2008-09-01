@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 08 may 2008 : setValue() implementation
- * - 11 apr 2008 : Using MouseEvent for event handling
- * - 28 jan 2008 : Become a virtual class
- * - 21 nov 2007 : starting implementation
- *         
- */
+/** \file scrollbar.h
+  * Declares a scrollbar base for OgreGui
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 08 may 2008 : setValue() implementation
+  * - 11 apr 2008 : Using MouseEvent for event handling
+  * - 28 jan 2008 : Become a virtual class
+  * - 21 nov 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SCROLLBAR_H_
 #define _OGRE_GUI_SCROLLBAR_H_
@@ -57,7 +61,7 @@ using namespace BetaGUI;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A scrollbar base for  OgreGui
+    /** A scrollbar base for OgreGui
       *
       * A scrollbar handles a selection of an integer beetween 0 and 
       * \link RainbruRPG::OgreGui::ScrollBar::mMaxValue mMaxValue \endlink.

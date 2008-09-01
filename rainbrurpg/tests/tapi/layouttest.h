@@ -20,6 +20,14 @@
  *
  */
 
+/** \file layouttest.h
+  * Implements the unit tests of the Layout class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LAYOUT_TEST_H
 #define LAYOUT_TEST_H
 

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file lineedittest.h
+  * Implements the unit tests of the LineEdit class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LINEEDIT_TEST_H
 #define LINEEDIT_TEST_H
 

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file terminalapptest.h
+  * Implements the unit tests of the TerminalApp class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef TERMINALAPP_TEST_H
 #define TERMINALAPP_TEST_H
 

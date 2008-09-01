@@ -20,6 +20,11 @@
  *
  */
 
+/** \file textsettings.cpp
+  * Implents a class that encapsulate text information 
+  *
+  */
+
 #include "textsettings.h"
 
 #include "font.h"

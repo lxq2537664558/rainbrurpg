@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 04 nov 2007 : Can apply a OgreGuiSkinID in constructor
- * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
- * - 05 oct 2007 : starting implementation
- *         
- */
+/** \file ogreGui/pushbutton.h
+  * Declares a push button widget
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 04 nov 2007 : Can apply a OgreGuiSkinID in constructor
+  * - 17 oct 2007 : No more need a BetaGUI::GUI in constructor parameters
+  * - 05 oct 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_PUSH_BUTTON_H_
 #define _OGRE_GUI_PUSH_BUTTON_H_

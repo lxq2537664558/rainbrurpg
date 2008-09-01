@@ -20,14 +20,18 @@
  *
  */
 
-/* Modifications :
- * - 14 may 2008 : Now based on OgreGui::Dialog
- *                 Moves from maincore/ to ogregui/
- * - 16 nov 2007 : No more based on DialogSystem (removed)
- * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
- * - 23 jul 2007 : Initial import fro CEGUI wiki
- *
- */
+/** \file messagebox.h
+  * Declares a MessageBox dialog based on OgreGUI
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 14 may 2008 : Now based on OgreGui::Dialog
+  *                 Moves from maincore/ to ogregui/
+  * - 16 nov 2007 : No more based on DialogSystem (removed)
+  * - 12 sep 2007 : Renamed from MessageBox to RbMessageBox
+  * - 23 jul 2007 : Initial import fro CEGUI wiki
+  *
+  */
 
 #ifndef _DIALOG_SYSTEM_H_
 #define _DIALOG_SYSTEM_H_
@@ -56,7 +60,7 @@ using namespace RainbruRPG::OgreGui;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A dialog based on OgreGUI
+    /** A MessageBox dialog based on OgreGUI
       *
       * You should not use this class directly, please use the 
       * GuiManager::showMessageBox function instead.

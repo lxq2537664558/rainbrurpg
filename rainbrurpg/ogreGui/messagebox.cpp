@@ -20,9 +20,13 @@
  *
  */
 
-/* This code was found in the official CEGUI wiki :
- * http://www.cegui.org.uk/wiki/index.php/DialogSystem
- */
+/** \file messagebox.cpp
+  * Implements a MessageBox dialog based on OgreGUI
+  *
+  * This code was found in the official CEGUI wiki :
+  * http://www.cegui.org.uk/wiki/index.php/DialogSystem
+  *
+  */
 
 #include "messagebox.h"
 

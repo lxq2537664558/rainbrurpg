@@ -20,6 +20,11 @@
  *
  */
 
+/** \file fontmanager.cpp
+  * Implements the singleton that manages Font objects
+  *
+  */
+
 #include "fontmanager.h"
 
 #include <logger.h>
@@ -32,6 +37,10 @@
 #include <OgreRectangle.h>
 #include <OgreStringConverter.h>
 
+/** \def GLYPH_PAD_SPACE
+  * Defines the vertical margin between two glyphs
+  *
+  */
 #define GLYPH_PAD_SPACE 2
 
 using namespace RainbruRPG::Core;

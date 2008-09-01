@@ -20,6 +20,11 @@
  *
  */
 
+/** \file multicolumnlistitem.cpp
+  * Implements an item of a multi-column list widget
+  *
+  */
+
 #include "multicolumnlistitem.h"
 
 #include <logger.h>

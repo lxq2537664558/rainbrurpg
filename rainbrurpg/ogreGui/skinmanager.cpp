@@ -20,6 +20,11 @@
  *
  */
 
+/** \file skinmanager.cpp
+  * Implements the OgreGui skins manager
+  *
+  */
+
 #include "skinmanager.h"
 
 #include "widget.h"

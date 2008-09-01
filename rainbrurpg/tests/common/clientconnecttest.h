@@ -20,7 +20,11 @@
  *
  */
 
-/** Modifications :
+/** \file clientconnecttest.h
+  * Implements the unit test for the ClientConnect class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 07 mar 2007 : Creates virtualaccount.h
   * - 02 mar 2007 : Implementation
   *

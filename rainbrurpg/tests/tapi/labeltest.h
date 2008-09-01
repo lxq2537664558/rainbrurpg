@@ -20,6 +20,14 @@
  *
  */
 
+/** \file labeltest.h
+  * Implements the unit tests of the Label class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LABEL_TEST_H
 #define LABEL_TEST_H
 

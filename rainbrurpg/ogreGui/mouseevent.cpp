@@ -20,6 +20,11 @@
  *
  */
 
+/** \file mouseevent.cpp
+  * Implements a class used for mouse events handling
+  *
+  */
+
 #include "mouseevent.h"
 
 #include <logger.h>

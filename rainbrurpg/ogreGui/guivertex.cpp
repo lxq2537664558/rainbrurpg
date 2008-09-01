@@ -20,6 +20,11 @@
  *
  */
 
+/** \file guivertex.cpp
+  * Implements a vertex when sent to hardware bufer by QuadRenderer
+  *
+  */
+
 #include "guivertex.h"
 
 #include <logger.h>

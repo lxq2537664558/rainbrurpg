@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 28 mar 2008 : Starting implementation
- *         
- */
+/** \file multicolumnlistcell.h
+  * Declares the cell of a multi-column list widget
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 28 mar 2008 : Starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_
 #define _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_

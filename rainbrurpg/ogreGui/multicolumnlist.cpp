@@ -20,6 +20,11 @@
  *
  */
 
+/** \file multicolumnlist.cpp
+  * Implements a multi-column list widget
+  *
+  */
+
 #include "multicolumnlist.h"
 
 #include "multicolumnlistcolumn.h"
@@ -181,6 +186,9 @@ RainbruRPG::OgreGui::MultiColumnList::~MultiColumnList(void){
 
 /** Draws the widget
   *
+  * \note The Tooltip must be drawn after scrollbars and the PopupMenu must 
+  *       be drawn after tootip, Otherwise, tooltip is drawn under scrollbars.
+  *
   * \param qr The QuadRenderer used to draw
   *
   */
@@ -200,9 +208,11 @@ void RainbruRPG::OgreGui::MultiColumnList::draw(QuadRenderer* qr){
     qr->setScissorRectangle(vsbScissor);
     qr->setUseParentScissor(true);
 
-    mToolTip->draw( qr );
     mVScrollBar->draw( qr );
     mHScrollBar->draw( qr );
+
+    // These must be drawn after scrollbars
+    mToolTip->draw( qr );
     mPopupMenu->draw( qr );
 
   }

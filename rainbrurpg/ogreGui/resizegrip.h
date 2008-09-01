@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- * - 04 oct 2007 : Now using skin for graphical creation
- * - 03 oct 2007 : starting implementation
- *         
- */
+/** \file resizegrip.h
+  * Declares a resize grip for windows
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 09 nov 2007 : Handling OgreSkinID in constructor
+  * - 04 oct 2007 : Now using skin for graphical creation
+  * - 03 oct 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_RESIZE_GRIP_H_
 #define _OGRE_GUI_RESIZE_GRIP_H_
@@ -49,7 +53,7 @@ using namespace RainbruRPG::OgreGui;
 namespace RainbruRPG{
   namespace OgreGui{
 
-    /** A ResizeGrip window
+    /** A ResizeGrip for window
       *
       * This widget is used to resize windows. 
       *

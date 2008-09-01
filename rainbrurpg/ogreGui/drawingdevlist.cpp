@@ -20,6 +20,11 @@
  *
  */
 
+/** \file drawingdevlist.cpp
+  * Implements a list of DrawingDevSettings
+  *
+  */
+
 #include "drawingdevlist.h"
 
 #include "drawingdevsettings.h"

@@ -24,6 +24,7 @@
   * Declares a class used to compute password's hashsum 
   *
   * Modifications :
+  * - 27 aug 2008 : Fix some bugs during unit test
   * - 31 jul 2007 : Remove decryptString() (function)
   * - 02 mar 2007 : Disable a cout that make a line break in stdout
   *

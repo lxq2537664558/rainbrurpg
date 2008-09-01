@@ -20,7 +20,11 @@
  *
  */
 
-/** Modifications :
+/** \file curlaccountdeletetest.h
+  * Implements the unit test for the CurlAccountDelete class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 21 apr 2007 : Implementation
   *
   */

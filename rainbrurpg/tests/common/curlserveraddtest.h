@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : uniqueName and type added
- * - 12 may 2007 : Starting implementation
- *
- */
+/** \file curlserveraddtest.h
+  * Implements the unit test for the CurlServerAdd class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 19 jul 2007 : uniqueName and type added
+  * - 12 may 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_SERVER_ADD_TEST_H
 #define CURL_SERVER_ADD_TEST_H

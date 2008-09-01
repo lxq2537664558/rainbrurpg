@@ -20,6 +20,11 @@
  *
  */
 
+/** \file skin.cpp
+  * Implements an OgreGui skin
+  * 
+  */
+
 #include "skin.h"
 
 #include "bgbutton.h"

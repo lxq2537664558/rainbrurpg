@@ -20,6 +20,11 @@
  *
  */
 
+/** \file staticimage.cpp
+  * Implements a static image for OgreGui
+  *
+  */
+
 #include "staticimage.h"
 
 #include "quadrenderer.h"

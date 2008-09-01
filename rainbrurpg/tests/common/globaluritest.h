@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 15 mar 2008 : Starting implementation
- *
- */
+/** \file globaluritest.h
+  * Implements the unit test for the GlobalUri class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 15 mar 2008 : Starting implementation
+  *
+  */
 
 #ifndef GLOBAL_URI_TEST_H
 #define GLOBAL_URI_TEST_H

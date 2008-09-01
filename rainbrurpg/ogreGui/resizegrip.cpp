@@ -20,6 +20,11 @@
  *
  */
 
+/** \file resizegrip.cpp
+  * Implements a resize grip for windows
+  *
+  */
+
 #include "resizegrip.h"
 
 #include "skin.h"

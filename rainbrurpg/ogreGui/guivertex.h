@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 16 jan 2008 : Starting implementation
- *
- */
+/** \file guivertex.h
+  * Declares a vertex when sent to hardware bufer by QuadRenderer
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 16 jan 2008 : Starting implementation
+  *
+  */
 
 #ifndef _OGRE_GUI_GUI_VERTEX_H_
 #define _OGRE_GUI_GUI_VERTEX_H_

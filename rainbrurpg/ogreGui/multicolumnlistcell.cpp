@@ -20,6 +20,11 @@
  *
  */
 
+/** \file multicolumnlistcell.cpp
+  * Implements the cell of a multi-column list widget
+  *
+  */
+
 #include "multicolumnlistcell.h"
 
 /** The text cell constructor

@@ -20,10 +20,13 @@
  *
  */
 
-/* Modifications :
- * - ?? ??? ???? : Starting implementation
- *
- */
+/** \file captiontest.h
+  * Implements the unit tests of the Caption class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
 
 #ifndef CAPTION_TEST_H
 #define CAPTION_TEST_H

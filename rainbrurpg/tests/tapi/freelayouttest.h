@@ -20,6 +20,14 @@
  *
  */
 
+/** \file freelayouttest.h
+  * Implements the unit tests of the FreeLayout class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef FREELAYOUT_TEST_H
 #define FREELAYOUT_TEST_H
 

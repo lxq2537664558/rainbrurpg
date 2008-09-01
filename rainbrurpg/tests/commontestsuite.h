@@ -20,6 +20,14 @@
  *
  */
 
+/** \file commontestsuite.h
+  * Declares the test suite designed to test the common library
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef COMMON_TEST_SUITE_H
 #define COMMON_TEST_SUITE_H
 

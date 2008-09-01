@@ -20,6 +20,11 @@
  *
  */
 
+/** \file titlebar.cpp
+  * Implements a Window's title bar
+  *
+  */
+
 #include "titlebar.h"
 
 #include "skin.h"

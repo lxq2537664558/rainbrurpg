@@ -20,6 +20,11 @@
  *
  */
 
+/** \file pmititle.cpp
+  * Implements a popup menu title
+  *
+  */
+
 #include "pmititle.h"
 
 #include "quadrenderer.h"

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file menutest.h
+  * Implements the unit tests of the Menu class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef MENU_TEST_H
 #define MENU_TEST_H
 

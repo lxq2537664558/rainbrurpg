@@ -20,10 +20,15 @@
  *
  */
 
-/** Modifications :
+/** \file curlaccountaddtest.h
+  * Implements the unit test for the CurlAccountAdd class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 06 mar 2007 : Implementation
   *
   */
+
 #ifndef CURL_ACCOUNT_ADD_TEST_H
 #define CURL_ACCOUNT_ADD_TEST_H
 

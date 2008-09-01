@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tapitestsuite.cpp
+  * Implements the test suite designed to test the tapi library
+  *
+  */
+
 #include "tapitestsuite.h"
 
 // TestFixtures implementations

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file multicolumnlistcolumn.cpp
+  * Implements the column of a multi-column list widget
+  *
+  */
+
 #include "multicolumnlistcolumn.h"
 #include "multicolumnlist.h"
 

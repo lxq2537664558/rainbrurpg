@@ -20,7 +20,11 @@
  *
  */
 
-/** Modifications :
+/** \file curlaccountconfirmmailtest.h
+  * Implements the unit test for the CurlAccountConfirmMail class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 06 aug 2007 : Fix a bug
   * - 15 mar 2007 : Implementation
   *

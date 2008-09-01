@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tests/main.cpp
+  * Implements the main entry of the unit tests
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 /** \mainpage RainbruRPG unit tests documentation
   *
   * \section intro_sec Introduction
@@ -32,16 +40,21 @@
   * \section gui_sec Result GUI
   *
   * The unit tests results can either be shown in Qt3 or std out. Please see
-  * in the main.cpp file the TEXT_OUTPUT preprocessor macro. You also may
+  * in the main.cpp file the \ref TEXT_OUTPUT preprocessor macro. You also may
   * want to modify the Makefile.am file as it links wih qt libraries.
   *
-  * The only difference is that Qt version of the test provides the RainbruRPG
-  * logger out in std out.
+  * The only difference in RainbruRPG is that Qt version of the test 
+  * provides the RainbruRPG logger out in std out.
   *
   */
 
-// If this macro is defined, we use a Text output
-// otherwise, a Qt provided graphic output is used 
+/** \def TEXT_OUTPUT
+  * Defines if we use text or Qt3 unit tests
+  *
+  * If this macro is defined, we use a Text output otherwise, a Qt based 
+  * graphic output is used. 
+  *
+  */
 #define TEXT_OUTPUT
 
 #include <cppunit/TestRunner.h>
@@ -63,11 +76,14 @@ void initRPGSuite(CPPUNIT_NS::TestSuite* r);
 #  include <cppunit/TextTestRunner.h>
 /** The main function of the UnitTest (text version)
   *
+  * \param argc The number of command-line arguments
+  * \param argv The command-line arguments array
+  *
   */
 int main(int argc, char* argv[]){
 
   Logger::getSingleton().setLogType(RainbruRPG::Exception::LOG_FILE);
-  Logger::getSingleton().setFilename("RainbruRPG-tests");
+  Logger::getSingleton().setFilename("RainbruRPG-tests.log");
 
   LOGI("Starting text version of unit tests");
 
@@ -110,6 +126,9 @@ int main(int argc, char* argv[]){
   * It initialises a TestSuite for each tested library or subdir :
   * - TerminalAPI
   * - Common
+  *
+  * \param r The test suite to add tests to
+  *
   */
 void initRPGSuite(CPPUNIT_NS::TestSuite* r){
   r->addTest( new tapiTestSuite() );

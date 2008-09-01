@@ -20,17 +20,22 @@
  *
  */
 
-/* Modifications :
- * - 15 apr 2008 : Right button handling
- * - 30 mar 2008 : starting implementation
- *         
- */
+/** \file mouseevent.h
+  * Declares a class used for mouse events handling
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 15 apr 2008 : Right button handling
+  * - 30 mar 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_MOUSE_EVENT_H_
 #define _OGRE_GUI_MOUSE_EVENT_H_
 
 #include <ogreimport.h>
 
+/** The minimum duration of a long click */
 #define LONG_CLICK_DURATION 200
 
 namespace RainbruRPG{

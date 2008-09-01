@@ -20,18 +20,19 @@
  *
  */
 
-/** Modifications :
+/** \file virtualaccount.h
+  * Declares a virtual account
+  *
+  * This file is used to define  some macro used to create a
+  * virtual  account. This  informations are  shared by some
+  * files  and  to  avoid  multiple definitions.  There  are
+  * defined once, in this file.
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
   * - 07 mar 2007 : Moving defines from clientconnecttest.h
   *
   */
-
-/*##############################################################
- *#  This file is used to define  some macro used to create a  #
- *#  virtual  account. This  informations are  shared by some  #
- *#  files  and  to  avoid  multiple definitions.  There  are  #
- *#  defined once, in this file.                               #
- *##############################################################
- */
 
 #ifndef VIRTUAL_ACCOUNT_H
 #define VIRTUAL_ACCOUNT_H

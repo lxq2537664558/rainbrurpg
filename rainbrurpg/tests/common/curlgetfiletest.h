@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 04 may 2007 : Starting implementation
- *
- */
+/** \file curlgetfiletest.h
+  * Implements the unit test for the CurlGetFile class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 04 may 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_GET_FILE_TEST_H
 #define CURL_GET_FILE_TEST_H

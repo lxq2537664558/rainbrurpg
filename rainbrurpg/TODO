@@ -4,7 +4,10 @@ TODO
 o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 
-* Unittest failed in production mode (no --enable-debug)
+* Unittests
+- Replace m_caption with m_instance (see doc->Class->Members->m)
+- Next unit test is languagelistitem
+- *** Unit tests failed in production mode (no --enable-debug) ***
 - HTTP response 401 "Unauthorized"
 
 * Tools
@@ -15,7 +18,7 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * Client 
 - MessageBox can be closed with Enter/Return key
 - gsUpdateDataFiles implementation
-- client uses EnvironmentSetup in libRainbruRPG-core.so
+- client uses maincore/EnvironmentSetup
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
 - Client's debug console uses the readline library
@@ -42,6 +45,7 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 - Editor identification and cryptography of message done by GPG keys
 
 * Miscellaneous
+- Logger uses clog and cerr (from the IOstream Library)
 - modifpersoattrb.php do not check fields content (NULL content allowed)
 - Is CurlSubmitForm::computePostedData in use ?
 - A file called adminmsg.xml with administrator message to players (maintenance)
@@ -57,7 +61,14 @@ Now using GNU standard for ChangeLog file :
 http://www.gnu.org/prep/standards/html_node/Change-Logs.html
 
 * v 0.0.5-184
-- (4) Many documentation bugfixes
+- (11) MultiColumnList's ToolTip drawn after ScrollBars
+- /ogreGui/* single file documentation
+- ItemListFile unit test implemented
+- /tests/* single file documentation
+- HashPassword unit test implemented
+- Fix some bugs in HashPassword
+- HashFile unit test implemented
+- Many documentation bugfixes
 - cross-compil : FreeImage.dll.a correctly done using pexports
 - common/ and maincore/ both correctly cross compiled
 - Win32 cross-compilation : fix the config.h warnings (PACKAGE redefined...)

@@ -47,6 +47,9 @@ RainbruRPG::Network::Ident::HashPassword::~HashPassword(){
   *
   * The SHA-1 computation is provided by the Sha1 class.
   *
+  * \note if \c instr is an empty string, the return value is also
+  *       an empty string.
+  *
   * \param instr The string to encrypt
   * \return the string passed in parameter, encrypted by the SHA-1
   *         algorythm
@@ -54,6 +57,10 @@ RainbruRPG::Network::Ident::HashPassword::~HashPassword(){
 std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
 			 const char *instr){
  
+  if (strcmp(instr, "")==0){
+    return "";
+  }
+
   char buffer[40];
 
   SHA1Context sha;
@@ -86,8 +93,8 @@ std::string RainbruRPG::Network::Ident::HashPassword::encryptString(
 
 /** Compare two hashsums
   *
-  * I need to compare char by char.
-  * It is due to null-terminal char not handled by strcmp.
+  * I need to compare char by char. It is due to null-terminal char 
+  * not handled by strcmp.
   *
   * \param p1 The first hashsum
   * \param p2 The second hashsum
@@ -104,7 +111,7 @@ bool RainbruRPG::Network::Ident::HashPassword::compare(const char* p1,
   string s2(p2);
 
 
-  for (unsigned int i=0; i<s1.length()-1; i++){
+  for (unsigned int i=0; i<s1.length(); i++){
     c1=s1[i];
     c2=s2[i];
     if (c1!=c2){

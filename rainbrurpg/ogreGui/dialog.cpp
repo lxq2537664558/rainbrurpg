@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ogreGui/dialog.cpp
+  * Implements a modal dialog for OgreGui
+  *
+  */
+
 #include "dialog.h"
 
 #include <logger.h>

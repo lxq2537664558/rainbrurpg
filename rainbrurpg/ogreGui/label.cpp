@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ogreGui/label.cpp
+  * Implements a caption widget
+  *
+  */
+
 #include "label.h"
 
 #include "bgwindow.h"

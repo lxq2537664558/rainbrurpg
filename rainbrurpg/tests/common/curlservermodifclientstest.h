@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 14 feb 2008 : Starting implementation
- *
- */
+/** \file curlservermodifclientstest.h
+  * Implements the unit test for the CurlServerModifClients class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 14 feb 2008 : Starting implementation
+  *
+  */
 
 #ifndef CURL_SERVER_MODIF_CLIENT_H
 #define CURL_SERVER_MODIF_CLIENT_H

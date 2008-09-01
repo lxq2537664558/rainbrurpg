@@ -20,6 +20,11 @@
  *
  */
 
+/** \file commontestsuite.cpp
+  * Implements the test suite designed to test the common library
+  *
+  */
+
 #include "commontestsuite.h"
 
 // TestFixtures implementations
@@ -40,6 +45,9 @@
 #include "curlservermodifclientstest.h"
 #include "ftpclienttest.h"
 #include "globaluritest.h"
+#include "hashfiletest.h"
+#include "hashpasswordtest.h"
+#include "itemlistfiletest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -59,7 +67,11 @@
 #include <curlservermodifclients.h>
 #include <ftpclient.h>
 #include <globaluri.h>
+#include <hashfile.h>
+#include <hashpassword.h>
+#include <itemlistfile.h>
 
+using namespace RainbruRPG::Options;
 using namespace RainbruRPG::Network::Ident;
 
 /** The default constructor
@@ -85,6 +97,9 @@ CommonTestSuite::CommonTestSuite()
   addTest(CurlServerModifClientsTest<CurlServerModifClients>::suite());
   addTest(FtpClientTest<FtpClient>::suite());
   addTest(GlobalUriTest<GlobalURI>::suite());
+  addTest(HashFileTest<HashFile>::suite());
+  addTest(HashPasswordTest<HashPassword>::suite());
+  addTest(ItemListFileTest<ItemListFile>::suite());
 }
 
 /** The destructor

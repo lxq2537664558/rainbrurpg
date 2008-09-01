@@ -20,6 +20,11 @@
  *
  */
 
+/** \file lineinfo.cpp
+  * Implements a class that stores infos about a single line of text
+  *
+  */
+
 #include "lineinfo.h"
 
 /** Constructor

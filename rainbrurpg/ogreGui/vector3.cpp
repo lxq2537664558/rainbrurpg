@@ -20,6 +20,11 @@
  *
  */
 
+/** \file vector3.cpp
+  * Implements a 3-dimensional vector
+  *
+  */
+
 #include "vector3.h"
 
 #include <logger.h>

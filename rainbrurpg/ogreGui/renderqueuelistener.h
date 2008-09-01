@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 26 nov 2007 : Starting implementation
- *
- */
+/** \file renderqueuelistener.h
+  * Declares a Ogre RenderQueue listener that draws the GUI
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 26 nov 2007 : Starting implementation
+  *
+  */
 
 #ifndef _OGRE_GUI_RENDER_QUEUE_LISTENER_H__
 #define _OGRE_GUI_RENDER_QUEUE_LISTENER_H__

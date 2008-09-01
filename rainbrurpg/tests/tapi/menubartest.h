@@ -20,6 +20,14 @@
  *
  */
 
+/** \file menubartest.h
+  * Implements the unit tests of the MenuBar class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef MENUBAR_TEST_H
 #define MENUBAR_TEST_H
 

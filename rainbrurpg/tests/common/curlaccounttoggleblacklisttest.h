@@ -20,6 +20,14 @@
  *
  */
 
+/** \file curlaccounttoggleblacklisttest.h
+  * Implements the unit test for the CurlAccountTogleBlackList class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef CURL_ACCOUNT_TOGGLE_BLACKLIST_TEST_H
 #define CURL_ACCOUNT_TOGGLE_BLACKLIST_TEST_H
 

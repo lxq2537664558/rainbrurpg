@@ -20,6 +20,14 @@
  *
  */
 
+/** \file listviewcolumntest.h
+  * Implements the unit tests of the ListViewColumn class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LISTVIEW_COLUMN_TEST_H
 #define LISTVIEW_COLUMN_TEST_H
 

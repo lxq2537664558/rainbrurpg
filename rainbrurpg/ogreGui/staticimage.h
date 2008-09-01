@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 dec 2007 : starting implementation
- *         
- */
+/** \file staticimage.h
+  * Declares a static image for OgreGui
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 19 dec 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_STATIC_IMAGE_H_
 #define _OGRE_GUI_STATIC_IMAGE_H_

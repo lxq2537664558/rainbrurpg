@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 10 mar 2008 : Starting implementation
- *
- */
+/** \file ftpclienttest.h
+  * Implements the unit test for the FtpClient class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 10 mar 2008 : Starting implementation
+  *
+  */
 
 #ifndef FTP_CLIENT_TEST_H
 #define FTP_CLIENT_TEST_H

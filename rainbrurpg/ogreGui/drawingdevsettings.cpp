@@ -20,6 +20,11 @@
  *
  */
 
+/** \file drawingdevsettings.cpp
+  * Implements a QuadRenderer deviation setting
+  *
+  */
+
 #include "drawingdevsettings.h"
 
 /** The constructor

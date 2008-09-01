@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : Starting implementation
- *
- */
+/** \file curlpersoheaderaddtest.h
+  * Implements the unit test for the CurlPersoHeaderAdd class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 19 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_PERSO_HEADER_ADD_TEST_H
 #define CURL_PERSO_HEADER_ADD_TEST_H

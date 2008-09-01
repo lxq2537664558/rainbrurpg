@@ -20,6 +20,14 @@
  *
  */
 
+/** \file chartserietest.h
+  * Implements the unit test for the ChartSerie class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef CHARTSERIE_TEST_H
 #define CHARTSERIE_TEST_H
 

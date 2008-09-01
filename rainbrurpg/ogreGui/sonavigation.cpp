@@ -20,6 +20,11 @@
  *
  */
 
+/** \file sonavigation.cpp
+  * Implements a skin that draw navigation buttons
+  *
+  */
+
 #include "sonavigation.h"
 
 #include "bgwindow.h"

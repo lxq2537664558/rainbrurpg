@@ -20,6 +20,11 @@
  *
  */
 
+/** \file widgetdrawer.cpp
+  * Implements a class used to draw complex widgets
+  *
+  */
+
 #include "widgetdrawer.h"
 
 RainbruRPG::OgreGui::WidgetDrawer::WidgetDrawer(){

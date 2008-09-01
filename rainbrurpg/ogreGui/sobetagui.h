@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 25 mar 2008 : drawMultiColumnList implementation
- * - 22 jan 2008 : drawTextInput implementation using QuadRenderer
- * - 27 sep 2007 : starting implementation
- *         
- */
+/** \file sobetagui.h
+  * Declares a skin based on SkinOverlay, drawing like BetaGUI does
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 25 mar 2008 : drawMultiColumnList implementation
+  * - 22 jan 2008 : drawTextInput implementation using QuadRenderer
+  * - 27 sep 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SKIN_BETA_GUI_H_
 #define _OGRE_GUI_SKIN_BETA_GUI_H_

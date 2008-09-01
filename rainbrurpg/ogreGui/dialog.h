@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 13 may 2008 : starting implementation
- *         
- */
+/** \file ogreGui/dialog.h
+  * Declares a modal dialog for OgreGui
+  *
+  * Modifications :
+  * - 25 aug 2008 : Single file documentation
+  * - 13 may 2008 : starting implementation
+  *         
+  */
 
 
 #ifndef _OGRE_GUI_DIALOG_H_
@@ -48,7 +52,7 @@ namespace RainbruRPG{
     /** A Window that can have a border and be modal
       *
       * \note A dialog, by default, can be moved but cannot be resized
-      *       it is to provide a cogerent border.
+      *       it is to provide a coherent border.
       *
       */
     class Dialog : public BetaGUI::Window{

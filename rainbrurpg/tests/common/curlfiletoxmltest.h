@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 04 may 2007 : Starting implementation
- *
- */
+/** \file curlfiletoxmltest.h
+  * Implements the unit test for the CurlFileToXml class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 04 may 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_FILE_TO_XML_TEST_H
 #define CURL_FILE_TO_XML_TEST_H

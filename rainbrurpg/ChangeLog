@@ -1,6 +1,41 @@
+2008-08-30 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/multicolumnlist.cpp (draw): Change the drawing order
+	because ToolTip was drawn under scrollbar
+	
+	* ogreGui/tooltip.cpp (ToolTip): transition lenght now uses the
+	TOOLTIP_EFFECT_ALPHA macro value.
+	* ogreGui/tooltip.cpp (draw): Fix a bug that draw the tooltip with
+	a very little alpha value (invisible tooltip).
+	
+2008-08-29 Jerome Pasquier  <rainbru@free.fr>
+	* tests/common/itemlistfiletest.h: Many new tests implemented
+	* tests/common/itemlistfiletest.h (createTestFile, deleteTestFile): 
+	implementation of new functions.
+	* common/itemlistfile.cpp (load): Fix a bug that makes infinite loop
+	if file does not exist by using ios::fail() instead of ios::bad()
+	
+2008-08-28 Jerome Pasquier  <rainbru@free.fr>
+	* tests/common/itemlistfiletest.h: stating implementation
+	* tests/commontestsuite.cpp: ItemListFileTest test added
+
+	* common/itemlistfile.cpp (reset, refresh, load): Added some needed
+	functions 
+	* common/itemlistfile.cpp: Added an empty constructor
+	
+2008-08-27 Jerome Pasquier  <rainbru@free.fr>
+	* common/hashpassword.cpp (encryptString): Return an empty string
+	if an empty string is received as parameter (cause a SEGFAULT)
+
+	* common/hashpassword.cpp (compare): Fix a bug that did not
+	compare last character of the strings ('aaa' and 'aab' returned true).
+
+2008-08-26 Jerome Pasquier  <rainbru@free.fr>
+	* tests/common/hashfiletest.h: Implementation of the HashFile class
+	unit tests.
+
 2008-08-20 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/skin.h: Now using Ogre scoped Rectangle to avoid ambigous 
-	name with wingdi.h defined function
+	name with wingdi.h defined function.
 	
 	* maincore/ogreimport.h: Added a conditionnal compilation block
 	that undefine some config.h macros (VERSION, PACKAGE ...) to

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file renderqueuelistener.cpp
+  * Implements a Ogre RenderQueue listener that draws the GUI
+  *
+  */
+
 #include "renderqueuelistener.h"
 
 #include <logger.h>

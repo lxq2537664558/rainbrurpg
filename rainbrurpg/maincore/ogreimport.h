@@ -43,7 +43,7 @@
 #ifndef _RAINBRURPG_OGRE_IMPORT_H_
 #define _RAINBRURPG_OGRE_IMPORT_H_
 
-//#include "../config.h"
+#include "../config.h"
 
 #ifdef __GNUC__
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN

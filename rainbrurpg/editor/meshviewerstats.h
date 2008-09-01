@@ -21,7 +21,7 @@
  */
 
 /** \file meshviewerstats.h
-  * Declares a widget than can be linked to a MeshViewer to draw some statistics
+  * Declares a widget that draw statistics about a MeshViewer
   *
   * Modifications :
   * - 13 aug 2008 : Single file documentation

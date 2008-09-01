@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 16 aug 2008 : Added an inside margin to item caption drawing
- * - 07 jun 2008 : Using MultiColumnListDebugSettings
- * - 26 may 2008 : starting implementation
- *         
- */
+/** \file wdmulticolumnlist.h
+  * Declares a class used to draw MultiColumnList
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 16 aug 2008 : Added an inside margin to item caption drawing
+  * - 07 jun 2008 : Using MultiColumnListDebugSettings
+  * - 26 may 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_WIDGET_DRAWER_MULTI_COLUMN_LIST_H_
 #define _OGRE_GUI_WIDGET_DRAWER_MULTI_COLUMN_LIST_H_

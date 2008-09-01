@@ -21,7 +21,7 @@
  */
 
 /** \file ogreGui/widget.h
-  * Declares the base class of all widgets
+  * Declares the base class of all OgreGui widgets
   *
   * \warning Please use the Ogre namespace here for the Rectangle class
   * to avoid ambiguous use with the \c wingdi.h defined function.

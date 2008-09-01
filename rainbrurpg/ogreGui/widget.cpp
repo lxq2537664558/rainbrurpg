@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ogreGui/widget.cpp
+  * Implements the base class of all OgreGui widgets
+  *
+  */
+
 #include "widget.h"
 
 #include <logger.h>

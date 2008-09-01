@@ -20,6 +20,10 @@
  *
  */
 
+/** \file ftpcontrol.cpp
+  * Implements the FTP control channel
+  *
+  */
 
 #include "ftpcontrol.h"
 

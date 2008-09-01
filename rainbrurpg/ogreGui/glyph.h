@@ -20,11 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 10 jan 2008 : Charcode directly assigned in constructor
- * - 03 dec 2007 : starting implementation
- *         
- */
+
+/** \file glyph.h
+  * Declares the class that stores informations about a single glyph 
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 10 jan 2008 : Charcode directly assigned in constructor
+  * - 03 dec 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_GLYPH_H_
 #define _OGRE_GUI_GLYPH_H_

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file clientlist.cpp
+  * Implements a widget that shows connected/refused clients information
+  *
+  */
+
 #include "clientlist.h"
 
 #include <logger.h>

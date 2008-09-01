@@ -34,11 +34,39 @@
    */
 #undef HAVE_DIRENT_H
 
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
 /* Define to 1 if you have the <fcntl.h> header file. */
 #undef HAVE_FCNTL_H
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `boost_filesystem' library
+   (-lboost_filesystem). */
+#undef HAVE_LIBBOOST_FILESYSTEM
+
+/* Define to 1 if you have the `boost_thread' library (-lboost_thread). */
+#undef HAVE_LIBBOOST_THREAD
+
+/* Define to 1 if you have the `enet' library (-lenet). */
+#undef HAVE_LIBENET
+
+/* Define to 1 if you have the `FOX-1.6' library (-lFOX-1.6). */
+#undef HAVE_LIBFOX_1_6
+
+/* Define to 1 if you have the `gd' library (-lgd). */
+#undef HAVE_LIBGD
+
+/* Define to 1 if you have the `glib-2.0' library (-lglib-2.0). */
+#undef HAVE_LIBGLIB_2_0
+
+/* Define to 1 if you have the `gnet-2.0' library (-lgnet-2.0). */
+#undef HAVE_LIBGNET_2_0
+
+/* Define to 1 if you have the `jpeg' library (-ljpeg). */
+#undef HAVE_LIBJPEG
 
 /* Define to 1 if you have the `magic' library (-lmagic). */
 #undef HAVE_LIBMAGIC
@@ -54,6 +82,9 @@
 
 /* Define to 1 if you have the `QtNetwork' library (-lQtNetwork). */
 #undef HAVE_LIBQTNETWORK
+
+/* Define to 1 if you have the `sigc-2.0' library (-lsigc-2.0). */
+#undef HAVE_LIBSIGC_2_0
 
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H
@@ -154,6 +185,16 @@
 /* Activate local website administration and intensive informative logging
    informations */
 #undef RAINBRU_RPG_DEBUG
+
+/* Defines if we must disable the deprecated warnings due to Ogre inclusion of
+   std headers */
+#undef RB_DISABLE_OGRE_DEPREC_WARN
+
+/* Defines if the MultiColumnList test window is built */
+#undef RB_MULTICOLUMNLIST_TEST
+
+/* Defines if the scrollpane test window is built */
+#undef RB_SCROLLPANE_TEST
 
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be

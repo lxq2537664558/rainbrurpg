@@ -20,6 +20,11 @@
  *
  */
 
+/** \file scrollbar.cpp
+  * Implements a scrollbar base for OgreGui
+  *
+  */
+
 #include "scrollbar.h"
 #include "bgwindow.h"
 #include "skin.h"

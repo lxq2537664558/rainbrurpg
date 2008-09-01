@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 16 jan 2008 : Starting imlementation
- *
- */
+/** \file vector3.h
+  * Declares a class implementing a 3-dimensional vector
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 16 jan 2008 : Starting imlementation
+  *
+  */
 
 #ifndef _OGRE_GUI_VECTOR3_H_
 #define _OGRE_GUI_VECTOR3_H_

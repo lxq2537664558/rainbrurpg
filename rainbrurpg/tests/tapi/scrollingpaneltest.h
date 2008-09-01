@@ -20,6 +20,14 @@
  *
  */
 
+/** \file scrollingpaneltest.h
+  * Implements the unit tests of the ScrollingPanel class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef SCROLLING_PANEL_TEST_H
 #define SCROLLING_PANEL_TEST_H
 

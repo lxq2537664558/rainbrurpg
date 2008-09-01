@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 09 nov 2007 : Handling OgreSkinID in constructor
- * - 05 oct 2007 : Now using skin for graphiwal creation
- * - 03 oct 2007 : starting implementation
- *         
- */
+/** \file titlebar.h
+  * Declares a Window's title bar
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 09 nov 2007 : Handling OgreSkinID in constructor
+  * - 05 oct 2007 : Now using skin for graphiwal creation
+  * - 03 oct 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_TITLE_BAR_H_
 #define _OGRE_GUI_TITLE_BAR_H_

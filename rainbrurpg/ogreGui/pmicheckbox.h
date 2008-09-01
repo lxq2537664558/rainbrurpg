@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 18 apr 2008 : starting implementation
- *         
- */
+/** \file pmicheckbox.h
+  * Declares a popum menu item containing a check box
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 18 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_CHECKBOX_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_CHECKBOX_H_

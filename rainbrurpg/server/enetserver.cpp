@@ -20,6 +20,11 @@
  *
  */
 
+/** \file enetserver.cpp
+  * Implements the enet server class
+  *
+  */
+
 #include "enetserver.h"
 
 #include <logger.h>

@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 27 sep 2007 : starting implementation
- *         
- */
+/** \file object.h
+  * Declares the base class of all OgreGui and BetaGUI widgets
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 27 sep 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_OBJECT_H_
 #define _OGRE_GUI_OBJECT_H_

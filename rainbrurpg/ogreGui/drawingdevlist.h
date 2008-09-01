@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 05 apr 2008 : starting implementation
- *         
- */
+/** \file drawingdevlist.h
+  * Declares a list of DrawingDevSettings
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 05 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_DRAWING_DEV_LIST_H_
 #define _OGRE_GUI_DRAWING_DEV_LIST_H_

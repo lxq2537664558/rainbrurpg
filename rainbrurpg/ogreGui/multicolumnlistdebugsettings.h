@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 07 jun 2008 : starting implementation
- *         
- */
+/** \file multicolumnlistdebugsettings.h
+  * Declares the settings used to debug a multi-columns list
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 07 jun 2008 : starting implementation
+  *         
+  */
 
 #ifndef _MULTI_COLUMN_LIST_DEBUG_SETTINGS_H_
 #define _MULTI_COLUMN_LIST_DEBUG_SETTINGS_H_

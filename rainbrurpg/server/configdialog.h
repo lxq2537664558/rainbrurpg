@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 27 jun 2007 : Adding UniqueName
- * - 29 may 2007 : Creation TabControl
- *
- */
+/** \file configdialog.h
+  * Declares the server configuration dialog
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 27 jun 2007 : Adding UniqueName
+  * - 29 may 2007 : Creation TabControl
+  *
+  */
 #ifndef CONFIG_DIALOG_H
 #define CONFIG_DIALOG_H
 
@@ -38,6 +42,7 @@
 
 namespace RainbruRPG{
   namespace Server{
+
     /** The RainbruRPG server configuration dialog
       *
       * It is only the graphic part of the server configuration. The data

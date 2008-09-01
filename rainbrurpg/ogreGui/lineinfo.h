@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 07 dec 2007 : starting implementation
- *         
- */
+/** \file lineinfo.h
+  * Declares a class that stores infos about a single line of text
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 07 dec 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_LINE_INFO_H_
 #define _OGRE_GUI_LINE_INFO_H_

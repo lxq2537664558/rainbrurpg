@@ -20,6 +20,11 @@
  *
  */
 
+/** \file glyph.cpp
+  * Implements the class that stores informations about a single glyph 
+  *
+  */
+
 #include "glyph.h"
 
 #include "logger.h"

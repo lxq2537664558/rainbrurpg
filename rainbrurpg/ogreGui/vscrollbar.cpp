@@ -20,6 +20,11 @@
  *
  */
 
+/** \file vscrollbar.cpp
+  * Implements a vertical scrollbar widget
+  *
+  */
+
 #include "vscrollbar.h"
 
 #include <logger.h>

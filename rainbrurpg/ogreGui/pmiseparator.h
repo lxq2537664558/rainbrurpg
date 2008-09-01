@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 apr 2008 : starting implementation
- *         
- */
+/** \file pmiseparator.h
+  * Declares a separator for popup menu 
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 19 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_POPUP_MENU_ITEM_SEPARATOR_H_
 #define _OGRE_GUI_POPUP_MENU_ITEM_SEPARATOR_H_

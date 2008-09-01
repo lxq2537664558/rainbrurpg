@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 12 jan 2007 : starting implementation
- *         
- */
+/** \file mousepointer.h
+  * Declares a class that handle mouse pointer states
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 12 jan 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_MOUSE_POINTER_H_
 #define _OGRE_GUI_MOUSE_POINTER_H_

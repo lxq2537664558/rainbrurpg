@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 12 may 2007 : Starting implementation
- *
- */
+/** \file curlposteddatatest.h
+  * Implements the unit test for the CurlPostedData class
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  * - 12 may 2007 : Starting implementation
+  *
+  */
 
 #ifndef CURL_POSTED_DATA_TEST_H
 #define CURL_POSTED_DATA_TEST_H

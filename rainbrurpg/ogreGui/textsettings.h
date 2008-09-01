@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 25 jan 2008 : Starting implementation
- *
- */
+/** \file textsettings.h
+  * Declares a class that encapsulate text information 
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 25 jan 2008 : Starting implementation
+  *
+  */
 
 #ifndef _OGRE_GUI_TEXT_SETTINGS_H_
 #define _OGRE_GUI_TEXT_SETTINGS_H_
@@ -43,7 +47,7 @@ namespace RainbruRPG {
 
 
 
-/* Do not set the statement 'using namespace Ogre' because of a
+/* Do not set the statement 'using namespace Ogre' because of an
  * ambiguous reference to Font.
  *
  */

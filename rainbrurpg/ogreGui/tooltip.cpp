@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tooltip.cpp
+  * Implements a tooltip widget for OgreGui
+  *
+  */
+
 #include "tooltip.h"
 
 #include "quadrenderer.h"
@@ -47,7 +52,7 @@ ToolTip(Vector4 vDim, String vCaption, BetaGUI::Window* vParent,
   visible=false;
 
   mVelocityCalculator=new vcConstant();
-  mVelocityCalculator->setTranslationLenght(0.7);
+  mVelocityCalculator->setTranslationLenght(TOOLTIP_EFFECT_ALPHA);
   mVelocityCalculator->setTransitionTime(TOOLTIP_EFFECT_TIME);
 }
 
@@ -73,7 +78,10 @@ void RainbruRPG::OgreGui::ToolTip::draw(QuadRenderer* qr){
     float keepAlpha = qr->setTempAlpha(alpha);
     mSkin->drawToolTip(qr, this);
     qr->setAlpha(keepAlpha);
-    if (stop==false && mTransition){
+
+    // In the next statement, the alpha > TOOLTIP_EFFECT_ALPHA was added
+    // to fix a bug that draw the tooltip with very little value (0.02f)
+    if (stop==false && mTransition && alpha > TOOLTIP_EFFECT_ALPHA){
       mVelocityCalculator->reset();
       mTransition=false;
     }

@@ -20,12 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 09 jun 2008 : cleanup implementation
- * - 08 nov 2007 : OSI_PARENT added
- * - 27 sep 2007 : starting implementation
- *         
- */
+/** \file skinmanager.h
+  * Declares the OgreGui skins manager
+  *
+  * Modifications :
+  * - 09 jun 2008 : cleanup implementation
+  * - 08 nov 2007 : OSI_PARENT added
+  * - 27 sep 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SKIN_MANAGER_H_
 #define _OGRE_GUI_SKIN_MANAGER_H_

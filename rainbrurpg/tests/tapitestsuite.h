@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tapitestsuite.h
+  * Declares the test suite designed to test the tapi library
+  *
+  * Modifications :
+  * - 27 aug 2008 : Single file documentation
+  *
+  */
+
 #ifndef TERMINAL_API_TEST_SUITE_H
 #define TERMINAL_API_TEST_SUITE_H
 

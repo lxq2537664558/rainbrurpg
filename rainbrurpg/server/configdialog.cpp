@@ -20,6 +20,11 @@
  *
  */
 
+/** \file configdialog.cpp
+  * Iplements the server configuration dialog
+  *
+  */
+
 #include <logger.h>
 
 #include "configdialog.h"

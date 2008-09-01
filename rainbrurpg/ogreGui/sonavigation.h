@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 02 nov 2007 : starting implementation
- *         
- */
+/** \file sonavigation.h
+  * Declares a skin that draw navigation buttons
+  *
+  * Modifications :
+  * - 30 aug 2008 : Single file documentation
+  * - 02 nov 2007 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_SKIN_NAVIGATION_H_
 #define _OGRE_GUI_SKIN_NAVIGATION_H_

@@ -20,6 +20,14 @@
  *
  */
 
+/** \file listviewitemtest.h
+  * Implements the unit tests of the ListViewItem class
+  *
+  * Modifications :
+  * - 28 aug 2008 : Starting implementation
+  *
+  */
+
 #ifndef LISTVIEW_TEST_TEST_H
 #define LISTVIEW_TEST_TEST_H
 

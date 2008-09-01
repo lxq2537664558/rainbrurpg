@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 05 apr 2008 : starting implementation
- *         
- */
+/** \file drawingdevsettings.h
+  * Declares a QuadRenderer deviation setting
+  *
+  * Modifications :
+  * - 26 aug 2008 : Single file documentation
+  * - 05 apr 2008 : starting implementation
+  *         
+  */
 
 #ifndef _OGRE_GUI_DRAWING_DEV_SETTINGS_H_
 #define _OGRE_GUI_DRAWING_DEV_SETTINGS_H_
