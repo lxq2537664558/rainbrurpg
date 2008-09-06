@@ -20,6 +20,14 @@
  *
  */
 
+/** \file technotedialog.h
+  * Declares the technical note modification dialog
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef TECH_NOTE_DIALOG_H
 #define TECH_NOTE_DIALOG_H
 

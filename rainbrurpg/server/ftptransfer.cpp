@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ftptransfer.cpp
+  * Implements the transfer channel of the FTP server
+  *
+  */
+
 #include "ftptransfer.h"
 
 #include <logger.h>

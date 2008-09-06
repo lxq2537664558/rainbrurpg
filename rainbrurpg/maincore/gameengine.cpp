@@ -515,7 +515,7 @@ void RainbruRPG::Core::GameEngine::createViewports(){
   // Create one viewport, entire window
   if (mWindow){
     Viewport* vp = mWindow->addViewport(mCamera);
-    vp->setBackgroundColour(ColourValue(0,0,0));
+    vp->setBackgroundColour(ColourValue(1.0f, 1.0f, 1.0f));
     
     // Alter the camera aspect ratio to match the viewport
     mCamera->setAspectRatio(

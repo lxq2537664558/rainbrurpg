@@ -45,11 +45,14 @@
   */
 RainbruRPG::OgreGui::soNavigation::soNavigation() : 
   Skin("soNavigation"),
-  tsPushButton(NULL)
+  tsPushButton(NULL),
+  tsLabel(NULL)
 {
   tsPushButton=new TextSettings("Commonv2c.ttf", 14, 1.0f, 0.2f, 0.8f);
   tsPushButton->setVerticalAlignment( VAT_CENTER );
   tsPushButton->setHorizontalAlignment( HAT_CENTER );
+
+  tsLabel=new TextSettings( "Iconiv2.ttf", 12, 1.0f, 0.0f, 0.0f );
 
   mPushButtonTexture=TextureManager::getSingleton()
     .load("nav.button.png",
@@ -118,5 +121,28 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption,
   qr->drawRectangle(corners);
 
   qr->drawText(tsPushButton, caption, corners, false);
+  qr->reset();
+}
+
+/** Draws a label caption
+  *
+  * \note \c corners is the relative position from the label's parent.
+  *
+  * \param qr      The renderer used to draw
+  * \param corners The rectangle where the caption is printed
+  * \param caption The text to be drawn
+  * \param parent  The label parent
+  *
+  */
+void RainbruRPG::OgreGui::soNavigation::
+drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
+	  Window* parent){
+
+  corners.left  += parent->getLeft();
+  corners.top   += parent->getTop();
+  corners.right += parent->getLeft();
+  corners.bottom+= parent->getTop();
+
+  qr->drawText(tsLabel, caption, corners, false);
   qr->reset();
 }

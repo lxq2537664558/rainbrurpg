@@ -20,6 +20,11 @@
  *
  */
 
+/** \file serverconfiguration.cpp
+  * Implements the datas needed for the server configuration 
+  *
+  */
+
 #include "serverconfiguration.h"
 
 #include <uniquename.h>

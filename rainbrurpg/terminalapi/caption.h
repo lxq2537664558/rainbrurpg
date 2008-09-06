@@ -21,6 +21,14 @@
  */
 
 
+/** \file terminalapi/caption.h
+  * Declares a caption widget
+  *
+  * Modifications :
+  * - 06 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef CAPTION_H
 #define CAPTION_H
 

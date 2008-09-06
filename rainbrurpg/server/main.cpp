@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 24 jan 2008 : Handles help and version command-line options
- * - 05 jul 2007 : Log out the versions
- *
- */
+/** \file server/main.cpp
+  * The file declaring the client's main() function 
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 24 jan 2008 : Handles help and version command-line options
+  * - 05 jul 2007 : Log out the versions
+  *
+  */
 
 #include <QApplication>
 #include <QWidget>

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ftpdataconnection.cpp
+  * Implements how to stores infos about a FTP data channel connection
+  *
+  */
+
 #include "ftpdataconnection.h"
 
 /** Default constructor

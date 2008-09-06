@@ -20,6 +20,11 @@
  *
  */
 
+/** \file uniquename.cpp
+  * Implements a class used to get a unique server name
+  *
+  */
+
 #include "uniquename.h"
 
 #include <logger.h>

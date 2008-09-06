@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 13 jul 2007 : Starting implementation
- *
- */
+/** \file quarantinelist.h
+  * Declares a widget showing files in quarantine
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 13 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef QUARANTINE_LIST_H
 #define QUARANTINE_LIST_H

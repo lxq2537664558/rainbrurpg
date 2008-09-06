@@ -20,9 +20,13 @@
  *
  */
 
-/* Modifications :
- * - 20 apr 2007 : Starting implementation
- */
+/** \file ftpserver.h
+  * Declares a threaded FTP server
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 20 apr 2007 : Starting implementation
+  */
 
 #ifndef FTP_SERVER_H_
 #define FTP_SERVER_H_

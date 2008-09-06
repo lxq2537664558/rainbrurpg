@@ -49,7 +49,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
   mTitleBar(NULL),
   mResizeGrip(NULL),
   minimalWidth(50),
-  minimalHeight(50),
+  minimalHeight(100),
   alwaysTransparent(false),
   mCaption(caption)
 {

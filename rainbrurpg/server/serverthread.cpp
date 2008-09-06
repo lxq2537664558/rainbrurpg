@@ -20,6 +20,11 @@
  *
  */
 
+/** \file serverthread.cpp
+  * Implements a thread that contains a Enet server
+  *
+  */
+
 #include "serverthread.h"
 
 #include <logger.h>

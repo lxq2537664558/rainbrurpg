@@ -531,6 +531,9 @@ void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
 
   Ogre::Vector4 d(0, 0, w,h);
   StaticImage* staticMenu =new StaticImage(d, menuWindow);
+  staticMenu->setAlphaMode(QBM_ALPHA);
   staticMenu->setTextureName("staticmenu.png");
   menuWindow->addWidget(staticMenu);
+
+  GuiManager::getSingleton().createErrorLabel();
 }

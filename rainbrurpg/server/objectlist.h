@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 16 apr 2007 : Starting implementation
- *
- */
+/** \file objectlist.h
+  * Declares a widget showing objects informations
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 16 apr 2007 : Starting implementation
+  *
+  */
 
 #ifndef OBJECTS_LIST_H
 #define OBJECTS_LIST_H

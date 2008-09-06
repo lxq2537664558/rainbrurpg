@@ -205,9 +205,8 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
 	qr->disableGhost();
       }
 
-
-     } // is column is visible
-    x += (*iter)->getWidth();
+      x += (*iter)->getWidth();
+     } // if column is visible
     colIndex++;
   }
   

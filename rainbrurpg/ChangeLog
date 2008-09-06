@@ -1,3 +1,35 @@
+2008-09-06 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/guimanager.cpp (showMessageBox): #warning replaced by a
+	loggger message.
+	
+2008-09-05 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/guimanager.cpp (showMessageBox): Added a #warning
+	
+2008-09-03 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/guimanager.h: Added errorLabel.
+	* maincore/gsmenubase.cpp (createStaticMenu): Call 
+	GuiManager::createErrorLabel().
+	* ogreGui/sonavigation.cpp (drawLabel): Implementation.
+	
+2008-09-02 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/gsmainmenu.cpp (createMultiColumnListTestWindow): Moves
+	and resize MultiColumnList test and control window.
+	* maincore/guimanager.cpp (createTitleOverlay): Handling ErrorMsg
+	Ogre overlay.
+	* maincore/guimanager.cpp (setErrorMessage): Implementation
+	
+	* maincore/gameengine.cpp (createViewport): Changing viemport's
+	background color to 1,1,1 to correctly handle new menu background.
+	* maincore/gsmenubase.cpp (createStaticMenu): Changing static image
+	blend mode to correctly handle new menu background.
+
+2008-09-01 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/bgwindow.cpp (Window): Testing a new value of 
+	initialization for the minimalHeight member.
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawAllHeaders): Fix a bug
+	when drawing headers with hidden columns.
+	
 2008-08-30 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/multicolumnlist.cpp (draw): Change the drawing order
 	because ToolTip was drawn under scrollbar

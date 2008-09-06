@@ -56,7 +56,8 @@ namespace RainbruRPG{
     /** Draws a single image
       *
       * This widget does not use any Skin. It directly use QuadRenderer
-      * to draw an Ogre texture. It has its own blend mode.
+      * to draw an Ogre texture. It has its own blend mode but it is 
+      * by default unused.
       *
       * \note This widget was created for gsMenuBase dybamic background menu.
       *

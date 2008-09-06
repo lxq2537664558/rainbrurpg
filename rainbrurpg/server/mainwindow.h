@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 30 jul 2007 : The quanrantine doesn't work anymore    FIXED
- * - 31 may 2007 : Ftp port added when registering server
- * - 22 mar 2007 : ServerLog is not a dock window anymore (A single MDI child)
- * - 16 mar 2007 : Client connection packets received and sent
- * - 21 jan 2007 : Starting implementation
- */
+/** \file server/mainwindow.h
+  * Declares the server's main window
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 30 jul 2007 : The quanrantine doesn't work anymore    FIXED
+  * - 31 may 2007 : Ftp port added when registering server
+  * - 22 mar 2007 : ServerLog is not a dock window anymore (A single MDI child)
+  * - 16 mar 2007 : Client connection packets received and sent
+  * - 21 jan 2007 : Starting implementation
+  */
 #ifndef __MainWindow_h__
 #define __MainWindow_h__
 

@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/dialog.cpp
+  * Implements a base class of all dialogs
+  *
+  */
+
 #include "dialog.h"
 
 /** The constructor of a centered Dialog

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file xmlserverconf.cpp
+  * Implements a class used to save the server configuration
+  *
+  */
+
 #include "xmlserverconf.h"
 
 #include <globaluri.h>

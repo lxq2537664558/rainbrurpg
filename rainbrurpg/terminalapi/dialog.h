@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/dialog.h
+  * Declares a base class of all dialogs
+  *
+  * Modifications :
+  * - 06 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef DIALOG_H
 #define DIALOG_H
 

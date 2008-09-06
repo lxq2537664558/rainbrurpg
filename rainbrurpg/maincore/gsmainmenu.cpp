@@ -360,12 +360,12 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
   LOGI("Creating MultiColumnListTestWindow");
   BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
   if (!MultiColumnListWin){
-    MultiColumnListWin =new Window(Vector4(10, 10, 340, 370),
+    MultiColumnListWin =new Window(Vector4(10, 10, 340, 345),
 				  BetaGUI::OWT_RESIZE_AND_MOVE, 
 				  "MultiColumnList test", mGUI);
     mGUI->addWindow(MultiColumnListWin);
 
-    Vector4 mclPosDim(10,30,320,330);
+    Vector4 mclPosDim(10,30,320,305);
     mcl=new MultiColumnList(mclPosDim, MultiColumnListWin);
     mcl->setDebugName("MCL.MCLTestWindow");
     MultiColumnListWin->addWidget(mcl);
@@ -398,7 +398,7 @@ void RainbruRPG::Core::gsMainMenu::createMultiColumnListTestWindow(void){
     addItem("ert", "rty", "tyu");
 
     // Control window
-    MultiColumnListCtrlWin=new Window(Vector4(200, 385, 420, 90),
+    MultiColumnListCtrlWin=new Window(Vector4(200, 365, 420, 90),
 		       BetaGUI::OWT_RESIZE_AND_MOVE, 
 		       "MCLTest control window", mGUI);
     mGUI->addWindow(MultiColumnListCtrlWin);

@@ -20,10 +20,14 @@
  *
  */
 
-/* Modification :
- * - 24 jun 2007 : Starting implementation
- *
- */
+/** \file uniquename.h
+  * Declares a class used to get a unique server name
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 24 jun 2007 : Starting implementation
+  *
+  */
 
 #ifndef _UNIQUE_NAME_H_
 #define _UNIQUE_NAME_H_

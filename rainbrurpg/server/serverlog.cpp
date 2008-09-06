@@ -20,6 +20,11 @@
  *
  */
 
+/** \file serverlog.cpp
+  * Implements a logger widget for the server
+  *
+  */
+
 #include "serverlog.h"
 #include "logexportdialog.h"
 

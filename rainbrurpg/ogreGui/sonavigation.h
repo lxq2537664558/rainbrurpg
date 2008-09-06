@@ -72,7 +72,10 @@ namespace RainbruRPG{
       virtual ~soNavigation();
 
       virtual void drawWindow(QuadRenderer*,Rectangle, String);
-      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool, bool);
+      virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, 
+				  bool, bool);
+      virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
+			     String caption, Window* parent);
 
     private:
       /** The font used in PushButtons */
@@ -82,6 +85,9 @@ namespace RainbruRPG{
       TexturePtr mPushButtonTexture;
       /** The texture of the active push button background */
       TexturePtr mPushButtonActiveTexture;
+
+      /** The text setting for drawing label caption */
+      TextSettings* tsLabel;
     };
   }
 }

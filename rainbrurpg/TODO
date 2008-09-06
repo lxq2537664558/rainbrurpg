@@ -60,8 +60,19 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 Now using GNU standard for ChangeLog file :
 http://www.gnu.org/prep/standards/html_node/Change-Logs.html
 
+* v 0.0.5-185
+
 * v 0.0.5-184
-- (11) MultiColumnList's ToolTip drawn after ScrollBars
+- terminalapi/apitest.cpp moved to examles/tapi/
+- GuiManager::setErrorMessage used when possible
+- server/* files documented
+- OgreGui/StatusLabel fade out implementsation
+- OgreGui/StatusLabel base implementation
+- GuiManager::errorMessage now uses a Label widget
+- GuiManager::setErrorMessage implemented
+- Menu background image changed
+- Fix a bug when drawing MCL headers with hidden columns
+- MultiColumnList's ToolTip drawn after ScrollBars
 - /ogreGui/* single file documentation
 - ItemListFile unit test implemented
 - /tests/* single file documentation

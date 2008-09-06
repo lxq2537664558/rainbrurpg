@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 28 jun 2007 : Adding UniqueName and servertype
- * - 31 may 2007 : Adding the FTP control channel port
- *
- */
+/** \file xmlserverconf.h
+  * Declares a class used to save the server configuration
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 28 jun 2007 : Adding UniqueName and servertype
+  * - 31 may 2007 : Adding the FTP control channel port
+  *
+  */
 
 #ifndef XML_SERVER_CONFIGURATION_H
 #define XML_SERVER_CONFIGURATION_H

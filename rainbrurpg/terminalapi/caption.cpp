@@ -20,6 +20,10 @@
  *
  */
 
+/** \file terminalapi/caption.cpp
+  * Implements a caption widget
+  *
+  */
 
 #include "caption.h"
 

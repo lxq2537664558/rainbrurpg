@@ -20,10 +20,15 @@
  *
  */
 
-/** Modifications :
+/** \file terminalapi/label.h
+  * Declares a label widget
+  *
+  * Modifications :
+  * - 06 sep 2008 : Single file documentation
   * - 11 jul 2008 : Now use std::string member
   *
   */
+
 #ifndef LABEL_H
 #define LABEL_H
 

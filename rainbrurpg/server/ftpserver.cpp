@@ -20,6 +20,11 @@
  *
  */
 
+/** \file ftpserver.cpp
+  * Implements a threaded FTP server
+  *
+  */
+
 #include "ftpserver.h"
 
 #include "ftpcontrol.h"

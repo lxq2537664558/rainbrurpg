@@ -205,8 +205,7 @@ onConnectClicked(){
 
   if (name.empty()){
     GuiManager::getSingleton()
-      .showMessageBox("Empty account name", 
-		      "Please enter a user name.");
+      .setErrorMessage("Please enter a user name.");
   }
   else{
     const char* cName=name.c_str();

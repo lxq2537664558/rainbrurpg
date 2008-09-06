@@ -20,6 +20,11 @@
  *
  */
 
+/** \file technotedialog.cpp
+  * Implements the technical note modification dialog
+  *
+  */
+
 #include <logger.h>
 
 #include "technotedialog.h"

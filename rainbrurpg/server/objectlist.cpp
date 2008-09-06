@@ -20,6 +20,11 @@
  *
  */
 
+/** \file objectlist.cpp
+  * Implements a widget showing objects informations
+  *
+  */
+
 #include "objectlist.h"
 
 #include <logger.h>

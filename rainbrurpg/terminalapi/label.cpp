@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/label.h
+  * Implements a label widget
+  *
+  */
+
 #include "label.h"
 
 #include <logger.h>

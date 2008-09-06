@@ -33,7 +33,12 @@
 #include <stringconv.h>
 
 #include <iostream>
+#include <sstream>
 #include <exception>
+
+#include <bgwindow.h>
+#include <label.h>
+#include <statuslabel.h>
 
 /** The constructor of the singleton
   *
@@ -50,6 +55,9 @@ void RainbruRPG::Gui::GuiManager::init(){
   mTitleOverlay=NULL;
   velocity=new vcConstant();
 
+  // Error message
+  mErrorLabel = NULL;
+  errorLabelWindow = NULL;
 }
 
 /** The destructor of the singleton
@@ -104,6 +112,7 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
   else{
     LOGE("Cannot load RainbruRPG/Title");
   }
+
 }
 
 
@@ -251,6 +260,7 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
       setGuiTransparency(0.0f);
     }
   }
+
 }
 
 /** Increase the GUI transparency value
@@ -345,6 +355,15 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
 void RainbruRPG::Gui::GuiManager::
 showMessageBox(const String& title, const String& message){
 
+#ifdef MGM_SHOW_MESSAGE_BOX_WARNING
+  LOGW("*************************************");
+  LOGW("You are about to use a function that should be used only if you	\
+   do not want to use the setErrorMessage() function instead. You can	\
+   disable this warning from the file maincore/guimanager.h");
+  LOGW("*************************************");
+
+#endif // !MGM_SHOW_MESSAGE_BOX_WARNING
+
   RbMessageBox* simpleDialog=new RbMessageBox();
   simpleDialog->initWindow();
   simpleDialog->setTitle(title);
@@ -408,4 +427,34 @@ createNumDebugWindow(Ogre::RenderWindow* win){
   else{
     LOGE("Cannot load RainbruRPG/NumericDebug");
   }
+}
+
+/** Set a temporary error message
+  *
+  * \param s The string to be drawn
+  *
+  */
+void RainbruRPG::Gui::GuiManager::setErrorMessage(const String& s){
+  if (mErrorLabel){
+    mErrorLabel->setCaption(s);
+  }
+  else{
+    LOGE("Cannot set error message, mErrorLabel is NULL");
+  }
+}
+
+/** Creates the label used to print error messages
+  *
+  */
+void RainbruRPG::Gui::GuiManager::createErrorLabel(void){
+  BetaGUI::GUI* mGUI =GameEngine::getSingleton().getOgreGui();
+  Ogre::Vector4 v(5, 462, 800, 477);
+  errorLabelWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
+				   "Error window", mGUI, OSI_NAVIGATION);
+
+  mGUI->addWindow(errorLabelWindow);
+
+  Ogre::Vector4 v2(0, 0, 800, 15);
+  mErrorLabel = new StatusLabel( v2, "Error message...", errorLabelWindow);
+  errorLabelWindow->addWidget(mErrorLabel);
 }

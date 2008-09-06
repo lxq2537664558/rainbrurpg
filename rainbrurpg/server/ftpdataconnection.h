@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 10 jul 2007 : commandRETR implementation uses GlobalURI
- * - 17 jun 2007 : commandRETR implementation
- * - 14 may 2007 : Starting implementation
- */
+/** \file ftpdataconnection.h
+  * Declares how to stores informations about a FTP data channel connection
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 10 jul 2007 : commandRETR implementation uses GlobalURI
+  * - 17 jun 2007 : commandRETR implementation
+  * - 14 may 2007 : Starting implementation
+  */
 
 #ifndef _FTP_DATA_CONNECTION_H_
 #define _FTP_DATA_CONNECTION_H_

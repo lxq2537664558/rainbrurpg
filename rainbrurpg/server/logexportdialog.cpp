@@ -20,6 +20,11 @@
  *
  */
 
+/** \file logexportdialog.cpp
+  * Implements a class to help user to export log content
+  *
+  */
+
 #include "logexportdialog.h"
 
 #include <QVBoxLayout>

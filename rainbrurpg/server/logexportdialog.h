@@ -20,6 +20,14 @@
  *
  */
 
+/** \file logexportdialog.h
+  * Declares a class to help user to export log content
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef LOG_EXPORT_DIALOG_H
 #define LOG_EXPORT_DIALOG_H
 
@@ -30,7 +38,7 @@
 namespace RainbruRPG{
   namespace Server{
 
-    /** A class to help user to export dialog
+    /** A class to help user to export log content
       *
       * It primary use is to define the filename of the log.
       *

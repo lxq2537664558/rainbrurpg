@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 22 may 2007 : States based implementation
- * - 10 may 2007 : Now inherits from Q3ListViewItem
- * - 20 apr 2007 : Starting implementation
- */
+/** \file transfervisual.h
+  * Declares a visual representation of a FTP transfer
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 22 may 2007 : States based implementation
+  * - 10 may 2007 : Now inherits from Q3ListViewItem
+  * - 20 apr 2007 : Starting implementation
+  */
 
 #ifndef TRANSFER_VISUAL_H_
 #define TRANSFER_VISUAL_H_

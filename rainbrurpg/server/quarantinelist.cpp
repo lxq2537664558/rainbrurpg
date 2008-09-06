@@ -20,6 +20,11 @@
  *
  */
 
+/** \file quarantinelist.cpp
+  * Implements a widget showing files in quarantine
+  *
+  */
+
 #include "quarantinelist.h"
 
 /** The default constructor

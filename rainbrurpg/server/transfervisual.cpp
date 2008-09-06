@@ -20,7 +20,10 @@
  *
  */
 
-
+/** \file transfervisual.cpp
+  * Implements a visual representation of a FTP transfer
+  *
+  */
 
 #include "transfervisual.h"
 #include "logger.h"

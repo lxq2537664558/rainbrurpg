@@ -20,12 +20,16 @@
  *
  */
 
-/* Modification :
- * - 21 mar 2007 : The log message are sorted in the ascending order
- * - 17 mar 2007 : Make the new message added at the end of the TreeView
- * - 22 jan 2007 : Implementation (I guess)
- *
- */
+/** \file serverlog.h
+  * Declares a logger widget for the server
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 21 mar 2007 : The log message are sorted in the ascending order
+  * - 17 mar 2007 : Make the new message added at the end of the TreeView
+  * - 22 jan 2007 : Implementation (I guess)
+  *
+  */
 #ifndef SERVER_LOG_H
 #define SERVER_LOG_H
 

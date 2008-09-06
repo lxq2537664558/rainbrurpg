@@ -20,6 +20,11 @@
  *
  */
 
+/** \file server/mainwindow.cpp
+  * Implements the server's main window
+  *
+  */
+
 #include "mainwindow.h"
 
 #include "xmlserverconf.h"

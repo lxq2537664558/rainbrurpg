@@ -20,13 +20,17 @@
  *
  */
 
-/* Modifications :
- * - 09 jul 2007 : commandRETR use getUploadFile
- *                 commandSTOR use getQuarantineFile
- * - 01 may 2007 : PASSIVE mode implementation
- * - 22 apr 2007 : LIST command imlementation
- * - 20 apr 2007 : Starting implementation
- */
+/** \file ftptransfer.h
+  * Declares the transfer channel of the FTP server
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 09 jul 2007 : commandRETR use getUploadFile
+  *                 commandSTOR use getQuarantineFile
+  * - 01 may 2007 : PASSIVE mode implementation
+  * - 22 apr 2007 : LIST command imlementation
+  * - 20 apr 2007 : Starting implementation
+  */
 
 #ifndef _FTP_TRANSFER_H_
 #define _FTP_TRANSFER_H_
@@ -48,6 +52,7 @@
 
 #include "ftpdataconnection.h"
 
+/** The buffer size used to read */
 #define MAX_READ_LENGTH 1024
 
 using namespace std;

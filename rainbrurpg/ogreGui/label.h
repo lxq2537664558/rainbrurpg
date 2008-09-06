@@ -69,11 +69,11 @@ namespace RainbruRPG{
 
       virtual void setTransparency(float);
 
-      void setCaption(const String&);
+      virtual void setCaption(const String&);
 
       virtual void draw(QuadRenderer* qr);
 
-    private:
+    protected:
       /** The caption ofthe label */
       String mCaption;
 

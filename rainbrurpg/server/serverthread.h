@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 19 mar 2007 : cleanupServer() function added
- * - 16 mar 2007 : Starting implementation
- *
- */
+/** \file serverthread.h
+  * Declares a thread that contains a Enet server
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 19 mar 2007 : cleanupServer() function added
+  * - 16 mar 2007 : Starting implementation
+  *
+  */
 
 #ifndef SERVER_THREAD_H
 #define SERVER_THREAD_H
@@ -39,7 +43,7 @@ using namespace RainbruRPG::Network;
 namespace RainbruRPG{
   namespace Server{
 
-    /** Encapsulates a EnetServer in a Qt thread
+    /** Encapsulates a Enet server in a Qt thread
       *
       *
       *

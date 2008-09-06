@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 27 jun 2007 : Adding uniqueName and type
- * - 29 may 2007 : Adding the FTP control channel port
- * - 14 apr 2007 : Adding database connection options
- *
- */
+/** \file serverconfiguration.h
+  * Declares the datas needed for the server configuration 
+  *
+  * Modifications :
+  * - 05 sep 2008 : Single file documentation
+  * - 27 jun 2007 : Adding uniqueName and type
+  * - 29 may 2007 : Adding the FTP control channel port
+  * - 14 apr 2007 : Adding database connection options
+  *
+  */
 
 #ifndef SERVER_CONFIGURATION_H
 #define SERVER_CONFIGURATION_H

@@ -24,6 +24,8 @@
   * Declares a singleton used to manage GUI
   *
   * Modifications :
+  * - 05 sep 2008 : Setting a logger output in showMessageBox()
+  * - 02 sep 2008 : Added ErrorMsg overlay
   * - 18 aug 2008 : Single file documentation
   * - 17 nov 2007 : GuiManager::showMessageBox doesn't need a parent anymore
   * - 08 nov 2007 : isInGuiFadeIn() added
@@ -43,8 +45,36 @@
 #include "vcconstant.h"
 #include "messagebox.h"
 
+#define MGM_SHOW_MESSAGE_BOX_WARNING
+
+// Conditionnal documentation to avoid a doxygen warning if 
+// MGM_SHOW_MESSAGE_BOX_WARNING is undefined
+#ifdef MGM_SHOW_MESSAGE_BOX_WARNING
+/** \def MGM_SHOW_MESSAGE_BOX_WARNING
+  * Should we show a warning if using the showMessageBox() function 
+  *
+  * Please comment this macro to deactivate this warning
+  *
+  * \note This is used as test, to know where are the calls to showMessageBox()
+  *       function
+  *
+  */
+#endif // !MGM_SHOW_MESSAGE_BOX_WARNING
+
+
 using namespace std;
 using namespace RainbruRPG::Core;
+
+// Forward declarations
+namespace BetaGUI{
+  class Window;
+}
+namespace RainbruRPG {
+  namespace OgreGui{
+    class StatusLabel;
+  }
+}
+// End of forward declarations
 
 namespace RainbruRPG {
   namespace Gui{
@@ -137,6 +167,9 @@ namespace RainbruRPG {
       void showMessageBox(const String&, const String&); 
       void hideMessageBox(bool);
 
+      void createErrorLabel(void);
+      void setErrorMessage(const String&);
+
     private:
       /** Unimplemented copy constructors 
         *
@@ -189,6 +222,11 @@ namespace RainbruRPG {
 	*/
       Ogre::Overlay* mTitleOverlay;
 
+      /** The label used to print errors */
+      StatusLabel* mErrorLabel;
+
+      /** The window that contains mErrorLabel */
+      BetaGUI::Window* errorLabelWindow;
     };
   }
 }

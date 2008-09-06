@@ -8,7 +8,7 @@ RainbruRPG/NumericDebug
 		metrics_mode pixels
 		vert_align bottom
 		left 5 
-		top -92
+		top -122
 		width 180
 		height 87
 		material Core/StatsBlockCenter
@@ -107,8 +107,8 @@ RainbruRPG/NumericDebug
 			height 30
 			font_name BlueHighway
 			char_height 12
-			colour_top 0.5 0.7 0.5
-			colour_bottom 0.3 0.5 0.3
+			colour_top 0.0 0.0 1.0
+			colour_bottom 0.0 0.0 1.0
 		}
 				
 	}

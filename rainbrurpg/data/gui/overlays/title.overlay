@@ -1,8 +1,8 @@
 // Ogre overlay scripts
-RainbruRPG/Title
+RainbruRPG/OldTitle
 {
 	zorder 200
-	container BorderPanel(RainbruRPG/Title/Panel)
+	container BorderPanel(RainbruRPG/OldTitle/Panel)
 	{
 		metrics_mode pixels
 		vert_align top
@@ -31,7 +31,7 @@ RainbruRPG/Title
         	border_bottom_uv      0.0625 0.891 0.9375 1.0
 	    	border_bottomright_uv 0.94140625 0.891 1.0000 1.0
 
-		container Panel(RainbruRPG/Title/BreakPanel)
+		container Panel(RainbruRPG/OldTitle/BreakPanel)
 		{
 			metrics_mode pixels
 			left 33 
@@ -41,7 +41,7 @@ RainbruRPG/Title
 			material Core/StatsBreak
 		}
 		    
-		element TextArea(RainbruRPG/Title/Rain)
+		element TextArea(RainbruRPG/OldTitle/Rain)
 		{
 			metrics_mode pixels
 			left 80
@@ -54,7 +54,7 @@ RainbruRPG/Title
 			colour_top 1 1 0.7
 			colour_bottom 0.3 0.3 0.3
 		}
-		element TextArea(RainbruRPG/Title/BackTo)
+		element TextArea(RainbruRPG/OldTitle/BackTo)
 		{
 			metrics_mode pixels
 			left 85
@@ -67,7 +67,7 @@ RainbruRPG/Title
 			colour_top 1.0 1.0 0.8
 			colour_bottom 0.6 0.6 0.6
 		}
-		element TextArea(RainbruRPG/Title/Version)
+		element TextArea(RainbruRPG/OldTitle/Version)
 		{
 			metrics_mode pixels
 			left 125
@@ -85,3 +85,59 @@ RainbruRPG/Title
 }
 
 
+RainbruRPG/Title
+{
+	zorder 200
+	container Panel(RainbruRPG/Title/Panel)
+	{
+		metrics_mode pixels
+		vert_align top
+		horz_align center
+		left -160 
+		top 5
+		width 320
+		height 135
+
+   
+		element TextArea(RainbruRPG/Title/Rain)
+		{
+			metrics_mode pixels
+			left 80
+			top 2
+			width 90
+			height 50
+			font_name BlueHighway
+			char_height 36
+			caption RainbruRPG
+			colour_top 1 1 0.7
+			colour_bottom 0.3 0.3 0.3
+		}
+		element TextArea(RainbruRPG/Title/BackTo)
+		{
+			metrics_mode pixels
+			left 50
+			top 35
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 19
+			caption <UNDEFINED EPISODE NAME>
+			colour_top 0.4 0.4 0.8
+			colour_bottom 0.6 0.6 0.6
+		}
+		element TextArea(RainbruRPG/Title/Version)
+		{
+			metrics_mode pixels
+			left 120
+			top 60
+			width 90
+			height 30
+			font_name BlueHighway
+			char_height 14
+			caption v0.0.2
+			colour_top 1.0 0.4 0.4
+			colour_bottom 1.0 1.0 0.6
+		}
+	}
+
+}

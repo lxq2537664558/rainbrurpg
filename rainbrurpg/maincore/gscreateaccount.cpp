@@ -274,12 +274,12 @@ void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
   mail   =tiMail->getValue();
 
   if (name.empty() || pwd.empty()){
-    GuiManager::getSingleton().showMessageBox(err01, 
-      "Please enter a name and a paddword.");
+    GuiManager::getSingleton()
+      .setErrorMessage("Please enter a name and a password.");
   }
   else if (pwd!=repPwd){
-    GuiManager::getSingleton().showMessageBox(err01, 
-        "Please correctly repeat the password");
+    GuiManager::getSingleton()
+      .setErrorMessage("Please correctly repeat the password");
   }
   else{
     CurlAccountAdd caa;
@@ -290,11 +290,11 @@ void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
     bool success=caa.perform();
     
     if (success){
-      GuiManager::getSingleton().showMessageBox("Account successfully "
-						"created", 
-						"The account was correctly added. Before you are able to use "
-						"it, you must activate it.\n\nPlease wait the activation "
-						"mail.");
+      GuiManager::getSingleton()
+	.showMessageBox("Account successfully "
+	       "created", 
+	       "The account was correctly added. Before you are able to use "
+	       "it, you must activate it.\n\nPlease wait the activation mail.");
     }
     else{
       tCurlAccountAddReturn ret=caa.getResponse();

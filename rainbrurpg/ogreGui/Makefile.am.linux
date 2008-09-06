@@ -44,6 +44,7 @@ h_sources= bgbutton.h				\
 	   sobetagui.h				\
 	   sonavigation.h			\
 	   staticimage.h			\
+	   statuslabel.h			\
 	   textsettings.h			\
 	   titlebar.h				\
 	   tooltip.h				\
@@ -95,6 +96,7 @@ cc_sources= bgbutton.cpp			\
 	    sobetagui.cpp			\
 	    sonavigation.cpp			\
 	    staticimage.cpp			\
+	    statuslabel.cpp			\
 	    textsettings.cpp			\
 	    titlebar.cpp			\
 	    tooltip.cpp				\
