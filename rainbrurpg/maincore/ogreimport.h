@@ -35,6 +35,7 @@
   * \todo Removing when deprecated header warning fixed by Ogre team
   *
   * Modifications :
+  * - 07 sep 2007 : Added some headers needed by editor
   * - 20 aug 2008 : Added hack to prevent for multiple definition in win32
   * - 08 jul 2008 : Starting implementation
   *
@@ -79,6 +80,12 @@
 #include <OgreTimer.h>
 #include <OgreVector2.h>
 #include <OgreVector4.h>
+
+// Needed by editor
+#include <OgreLog.h>
+#include <OgreLogManager.h>
+#include <OgreConfigFile.h>
+#include <OgreSubEntity.h>
 
 // Avoid multiple definitions of these macros
 #ifdef __WIN32__

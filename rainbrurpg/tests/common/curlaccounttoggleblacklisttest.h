@@ -99,7 +99,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -115,14 +115,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Create a virtual account used for tests purpose

@@ -1,10 +1,10 @@
 TODO
 -> Libraries versionning in doc/libVersionning.html
 
-o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
+* OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 
-* Unittests
+o [mouse] Unittests
 - Replace m_caption with m_instance (see doc->Class->Members->m)
 - Next unit test is languagelistitem
 - *** Unit tests failed in production mode (no --enable-debug) ***
@@ -57,52 +57,6 @@ o [mouse] OgreGuiToolkit : GUI over Ogre3D based on QuadRenderer
 * ***************** Changelog ***************************
 * *******************************************************
 
-Now using GNU standard for ChangeLog file :
-http://www.gnu.org/prep/standards/html_node/Change-Logs.html
-
 * v 0.0.5-185
-
-* v 0.0.5-184
-- terminalapi/apitest.cpp moved to examles/tapi/
-- GuiManager::setErrorMessage used when possible
-- server/* files documented
-- OgreGui/StatusLabel fade out implementsation
-- OgreGui/StatusLabel base implementation
-- GuiManager::errorMessage now uses a Label widget
-- GuiManager::setErrorMessage implemented
-- Menu background image changed
-- Fix a bug when drawing MCL headers with hidden columns
-- MultiColumnList's ToolTip drawn after ScrollBars
-- /ogreGui/* single file documentation
-- ItemListFile unit test implemented
-- /tests/* single file documentation
-- HashPassword unit test implemented
-- Fix some bugs in HashPassword
-- HashFile unit test implemented
-- Many documentation bugfixes
-- cross-compil : FreeImage.dll.a correctly done using pexports
-- common/ and maincore/ both correctly cross compiled
-- Win32 cross-compilation : fix the config.h warnings (PACKAGE redefined...)
-
-* v 0.0.5-183
-- MultiColumnList's vertical scrollbar correctly cut off by scissor
-- MultiColumnList now uncut to its left position when moving
-- maincore/* files documented
-- MCL Border drawing cut by the parentUnderTitleY value
-- MCL header drawing is correctly cut off by the parentUnderTitleY value
-- Column header now handle parent scrollbar values
-- Fix a MCL bug in the VScrollBar max computation
-- ChangeLog file now follows GNU coding stadard
-- Bugfix : MCL item background was cut by the scrollbars position
-- Bugfix : MCL header sort sign was drawn outside of window
-- Client's window renamed
-- ScrollBars now using abs in getValueFromCursor()
-- Fix a bug in MCL : item's cell's text drawing now use scissor
-- Fix some bug in MultiColumnList header drawing function
-- editor/* files documented
-- Improve EXCLUDE value of doxygen configuration file
-- exclude editor/.rcc/qrc_resources.cpp file from documentation
-- design/* files documented
-- common/* files documented
-- common/option* files documented
-
+- (2) All common/ tests now use m_instance
+- (1) Added some headers needed by editor in maincore/ogreimport.h

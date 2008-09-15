@@ -73,7 +73,7 @@ protected:
   /** An instance of the class to test
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -89,14 +89,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the default server response
@@ -105,7 +105,7 @@ public:
     *
     */
   void testInitialServerResponse(){
-    long l=this->m_caption->getServerResponse();
+    long l=this->m_instance->getServerResponse();
     CPPUNIT_ASSERT( l==-1 );
   }
 
@@ -115,7 +115,7 @@ public:
     *
     */
   void testInitialCustomErrorMessaeg(){
-    const char* ret=this->m_caption->getCustomErrorMessage();
+    const char* ret=this->m_instance->getCustomErrorMessage();
     int cmp=strcmp(ret, "");
     CPPUNIT_ASSERT( cmp==0 );
 

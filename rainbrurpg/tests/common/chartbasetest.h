@@ -126,7 +126,7 @@ class ChartBaseTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** An instance of the tested class  */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -142,14 +142,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Test the initial values of ChartBase
@@ -158,10 +158,10 @@ public:
     *
     */
   void testInitialValues(){ 
-    int imageWidth=m_caption->getImageWidth();
-    int imageHeight=m_caption->getImageHeight();
-    int serieColors=m_caption->getSerieColorCount();
-    int series=m_caption->getSerieCount();
+    int imageWidth=m_instance->getImageWidth();
+    int imageHeight=m_instance->getImageHeight();
+    int serieColors=m_instance->getSerieColorCount();
+    int series=m_instance->getSerieCount();
 
     CPPUNIT_ASSERT( imageWidth==64 );
     CPPUNIT_ASSERT( imageHeight==64 );
@@ -176,11 +176,11 @@ public:
     *
     */
   void testAddSerie(){ 
-    int series=m_caption->getSerieCount();
+    int series=m_instance->getSerieCount();
 
     ChartSerie s;
-    m_caption->addSerie(&s);
-    int series2=m_caption->getSerieCount();
+    m_instance->addSerie(&s);
+    int series2=m_instance->getSerieCount();
 
     CPPUNIT_ASSERT( series2==++series );
   }
@@ -192,10 +192,10 @@ public:
     *
     */
   void testAddSerieColor(){ 
-    int colors=m_caption->getSerieColorCount();
+    int colors=m_instance->getSerieColorCount();
 
-    m_caption->addSerieColor(0,0,0);
-    int colors2=m_caption->getSerieColorCount();
+    m_instance->addSerieColor(0,0,0);
+    int colors2=m_instance->getSerieColorCount();
 
     CPPUNIT_ASSERT( colors2==++colors );
   }
@@ -207,14 +207,14 @@ public:
     *
     */
   void testGetSerieColor(){ 
-    int colors=m_caption->getSerieColorCount();
+    int colors=m_instance->getSerieColorCount();
 
-    m_caption->addSerieColor(0,0,0);
-    int black=m_caption->getSerieColor(colors++);
+    m_instance->addSerieColor(0,0,0);
+    int black=m_instance->getSerieColor(colors++);
     CPPUNIT_ASSERT( black==0 );
 
-    m_caption->addSerieColor(0,0,256);
-    int blue=m_caption->getSerieColor(colors++);
+    m_instance->addSerieColor(0,0,256);
+    int blue=m_instance->getSerieColor(colors++);
     CPPUNIT_ASSERT( blue==256 );
   }
 
@@ -225,9 +225,9 @@ public:
     */
   void testLeftCaption(){
     std::string lc="newLeftCaption";
-    m_caption->setLeftCaption(lc);
+    m_instance->setLeftCaption(lc);
 
-    std::string lc2=m_caption->getLeftCaption();
+    std::string lc2=m_instance->getLeftCaption();
 
     CPPUNIT_ASSERT( lc.compare(lc2)==0 );
 
@@ -240,9 +240,9 @@ public:
     */
   void testBottomCaption(){
     std::string lc="newBottomCaption";
-    m_caption->setBottomCaption(lc);
+    m_instance->setBottomCaption(lc);
 
-    std::string lc2=m_caption->getBottomCaption();
+    std::string lc2=m_instance->getBottomCaption();
 
     CPPUNIT_ASSERT( lc.compare(lc2)==0 );
 
@@ -255,9 +255,9 @@ public:
     */
   void testTitle(){
     std::string t1="newTitle";
-    m_caption->setTitle(t1);
+    m_instance->setTitle(t1);
 
-    std::string t2=m_caption->getTitle();
+    std::string t2=m_instance->getTitle();
 
     CPPUNIT_ASSERT( t1.compare(t2)==0 );
 
@@ -271,9 +271,9 @@ public:
     */
   void testFilename(){
     std::string t1="newImageFilename";
-    m_caption->setFilename(t1.c_str());
+    m_instance->setFilename(t1.c_str());
 
-    std::string t2=m_caption->getFilename();
+    std::string t2=m_instance->getFilename();
 
     CPPUNIT_ASSERT( t1.compare(t2)==0 );
   }
@@ -285,9 +285,9 @@ public:
     */
   void testImageWidth(){
     int width1=148;
-    m_caption->setImageWidth(width1);
+    m_instance->setImageWidth(width1);
 
-    int width2=m_caption->getImageWidth();
+    int width2=m_instance->getImageWidth();
     CPPUNIT_ASSERT( width1==width2 );
   }
 
@@ -298,9 +298,9 @@ public:
     */
   void testImageHeight(){
     int height1=823;
-    m_caption->setImageWidth(height1);
+    m_instance->setImageWidth(height1);
 
-    int height2=m_caption->getImageWidth();
+    int height2=m_instance->getImageWidth();
     CPPUNIT_ASSERT( height1==height2 );
   }
 };

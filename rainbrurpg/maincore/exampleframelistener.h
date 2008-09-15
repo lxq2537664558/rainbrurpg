@@ -36,9 +36,8 @@ D:        Step right
   * Declares an Ogre frame listener
   *
   * Modifications :
+  * - 06 sep 2008 : Documentation update
   * - 14 aug 2008 : Single file documentation
-  *
-  * \todo, rename, cleanup
   *
   */
 
@@ -57,9 +56,13 @@ using namespace OIS;
 namespace RainbruRPG{
   namespace Core{
 
-    /**
+    /** A file from the Ogre example framework 
       *
-      * \todo remove EventProcessor, InputReader
+      * \todo \ref GuiFrameListener inherits this class. If it is the only one,
+      *       this class can be removed. But we can use some Ogre FrameListener
+      *       in the game : one for the menus, one for the gamebase... In this
+      *       case, it become a class called FrameListenerBase, inherited by all
+      *       other Ogre FrameListener subclasses.
       *
       */
     class ExampleFrameListener: public FrameListener, public OIS::KeyListener{
@@ -79,8 +82,6 @@ namespace RainbruRPG{
 
       virtual void moveCamera();
 
-//      void showDebugOverlay(bool show){ }
-      
       // Override frameStarted event to process that 
       //(don't care about frameEnded)
       bool frameStarted(const FrameEvent& evt);
@@ -95,10 +96,6 @@ namespace RainbruRPG{
       void keyReleased(OIS::KeyEvent* e) {}
       
     protected:
-      /** The Ogre Event processor */
-      //    EventProcessor* mEventProcessor;
-      /** The input device */
-      //      InputReader* mInputDevice;
       /** The Ogre camera */
       Camera* mCamera;
       /** The translation vector */

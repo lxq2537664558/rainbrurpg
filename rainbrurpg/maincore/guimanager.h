@@ -32,7 +32,10 @@
   * - 31 jul 2007 : Ogre3D log partially deactivate
   * - 24 jul 2007 : showMessageBox implementaion
   *
- */
+  * \todo Remove CEGUI layout section when OgreGui will completely replace
+  *       CEGUI (see \ref cegui_layout_sec).
+  *
+  */
 
 #ifndef GUI_MANAGER_H
 #define GUI_MANAGER_H
@@ -45,7 +48,7 @@
 #include "vcconstant.h"
 #include "messagebox.h"
 
-#define MGM_SHOW_MESSAGE_BOX_WARNING
+//#define MGM_SHOW_MESSAGE_BOX_WARNING
 
 // Conditionnal documentation to avoid a doxygen warning if 
 // MGM_SHOW_MESSAGE_BOX_WARNING is undefined
@@ -79,7 +82,7 @@ namespace RainbruRPG {
 namespace RainbruRPG {
   namespace Gui{
 
-    /** The Gui Manager used by the client
+    /** The graphical user interface manager used by the client
       *
       * This singleton class is used to create GUI forms, manage CEGUI
       * layouts and Ogre overlays. It is also responsible of the GUI
@@ -112,9 +115,9 @@ namespace RainbruRPG {
       * \section gui_fading_sec Gui fading
       *
       * Between two menu, a transition effect is based on GUI fading (aka
-      * alpha channel). The setGuiTransparency(float), beginGuiFadeIn() and
-      * beginGuiFadeOut() are interresting. To use this effect you should use
-      * the following code :
+      * alpha channel). The \ref setGuiTransparency(float), 
+      * \ref beginGuiFadeIn() and \ref beginGuiFadeOut() are interresting. 
+      * To use this effect you should use the following code :
       * \code
       *   GuiManager::getSingleton().beginGuiFadeOut();
       *
@@ -133,8 +136,16 @@ namespace RainbruRPG {
       *
       * \section mess_box_sec Message boxes
       *
-      * The showMessageBox() provides a simple CEGUI message box with a single 
-      * OK button . For the hideMessageBox(), please see its own documentation.
+      * The \ref showMessageBox() provides a simple CEGUI message box with 
+      * a single OK button . For the \ref hideMessageBox(), please see its own 
+      * documentation.
+      *
+      * \section error_message_sec Error message
+      *
+      * The game menus uses, since build 185, a new concept. In the
+      * bottom edge of the screen, there is a \ref OgreGui::StatusLabel, 
+      * that can print temporaly error messages. The messages can be set with
+      * the \ref setErrorMessage() function.
       *
       */
     class GuiManager : public RainbruRPG::Core::Singleton<GuiManager>{

@@ -347,6 +347,12 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
   * The message box will remain the focused widget when it is opened and
   * give the focus to \c widget when it is closed.
   *
+  * \note A conditionnal warning is available through the 
+  *       MGM_SHOW_MESSAGE_BOX_WARNING you can find in the \ref guimanager.h 
+  *       file. If this macro is defined, a warning message is sent to the
+  *       logger when this function is called. It has been used when
+  *       switching to the \ref setErrorMessage() function.
+  *
   * \param title   The messageBox title
   * \param message The messageBox message text. This text will be word wrapped
   *                and justify.

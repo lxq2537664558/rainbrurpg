@@ -96,7 +96,7 @@ class ChartSerieTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** An instance of the tested class  */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -112,14 +112,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Test the ChartSerie size function
@@ -129,13 +129,13 @@ public:
     */
   void testSize(){ 
 
-    unsigned int size1=this->m_caption->size();
+    unsigned int size1=this->m_instance->size();
 
     tChartSerieValue v;
     v.value=17;
-    this->m_caption->addValue(&v);
+    this->m_instance->addValue(&v);
 
-    unsigned int size2=this->m_caption->size();
+    unsigned int size2=this->m_instance->size();
     CPPUNIT_ASSERT( size2==++size1 );
   }
 
@@ -146,23 +146,23 @@ public:
     *
     */
   void testGetMinValue(){
-    double minVal1=this->m_caption->getMinValue();
+    double minVal1=this->m_instance->getMinValue();
     CPPUNIT_ASSERT( minVal1==0 );
 
-    this->m_caption->addValue(createSerieValue(5));
-    double minVal2=this->m_caption->getMinValue();
+    this->m_instance->addValue(createSerieValue(5));
+    double minVal2=this->m_instance->getMinValue();
     CPPUNIT_ASSERT( minVal2==0 );
 
-    this->m_caption->addValue(createSerieValue(-2));
-    double minVal3=this->m_caption->getMinValue();
+    this->m_instance->addValue(createSerieValue(-2));
+    double minVal3=this->m_instance->getMinValue();
     CPPUNIT_ASSERT( minVal3==-2 );
 
-    this->m_caption->addValue(createSerieValue(-18));
-    double minVal4=this->m_caption->getMinValue();
+    this->m_instance->addValue(createSerieValue(-18));
+    double minVal4=this->m_instance->getMinValue();
     CPPUNIT_ASSERT( minVal4==-18 );
 
-    this->m_caption->addValue(createSerieValue(-9));
-    double minVal5=this->m_caption->getMinValue();
+    this->m_instance->addValue(createSerieValue(-9));
+    double minVal5=this->m_instance->getMinValue();
     CPPUNIT_ASSERT( minVal5==-18 );
 
   }
@@ -176,15 +176,15 @@ public:
   void testGetMaxValue(){
     double maxVal;
 
-    maxVal=this->m_caption->getMaxValue();
+    maxVal=this->m_instance->getMaxValue();
     CPPUNIT_ASSERT( maxVal==0 );
 
-    this->m_caption->addValue(createSerieValue(5));
-    maxVal=this->m_caption->getMaxValue();
+    this->m_instance->addValue(createSerieValue(5));
+    maxVal=this->m_instance->getMaxValue();
     CPPUNIT_ASSERT( maxVal==5 );
 
-    this->m_caption->addValue(createSerieValue(2));
-    maxVal=this->m_caption->getMaxValue();
+    this->m_instance->addValue(createSerieValue(2));
+    maxVal=this->m_instance->getMaxValue();
     CPPUNIT_ASSERT( maxVal==5 );
   }
 
@@ -213,8 +213,8 @@ public:
     *
     */
   void testGetXCaption(){
-    this->m_caption->addValue(createSerieValue(5, "newXCaption"));
-    const char* xc=this->m_caption->getXCaption(0);
+    this->m_instance->addValue(createSerieValue(5, "newXCaption"));
+    const char* xc=this->m_instance->getXCaption(0);
 
     CPPUNIT_ASSERT( strcmp(xc,"newXCaption" )==0 );
 
@@ -226,8 +226,8 @@ public:
     *
     */
   void testGetYCaption(){
-    this->m_caption->addValue(createSerieValue(5, "", "newYCaption"));
-    const char* xc=this->m_caption->getYCaption(0);
+    this->m_instance->addValue(createSerieValue(5, "", "newYCaption"));
+    const char* xc=this->m_instance->getYCaption(0);
 
     CPPUNIT_ASSERT( strcmp(xc,"newYCaption" )==0 );
   }
@@ -239,8 +239,8 @@ public:
     */
   void testLegendCaption(){
     std::string lc1="new LegendCaption";
-    this->m_caption->setLegendCaption(lc1);
-    std::string lc2=this->m_caption->getLegendCaption();
+    this->m_instance->setLegendCaption(lc1);
+    std::string lc2=this->m_instance->getLegendCaption();
 
     CPPUNIT_ASSERT( lc1.compare(lc2)==0 );
   }
