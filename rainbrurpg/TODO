@@ -58,5 +58,6 @@ o [mouse] Unittests
 * *******************************************************
 
 * v 0.0.5-185
+- (3) All terminalapi/ files individually commented
 - (2) All common/ tests now use m_instance
 - (1) Added some headers needed by editor in maincore/ogreimport.h

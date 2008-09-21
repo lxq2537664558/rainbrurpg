@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/widget.h
+  * Declares the base class of all widgets
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef WIDGET_H
 #define WIDGET_H
 

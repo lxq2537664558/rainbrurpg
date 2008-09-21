@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/window.h
+  * Declares a window for terminalapi
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef WINDOW_H
 #define WINDOW_H
 

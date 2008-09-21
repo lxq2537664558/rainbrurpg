@@ -20,6 +20,11 @@
  *
  */
 
+/** \file listboxitem.cpp
+  * Implements a list box item
+  *
+  */
+
 #include "listboxitem.h"
 
 /** The default constructor

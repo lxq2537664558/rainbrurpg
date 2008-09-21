@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file layout.cpp
+  * Implements the base class of all layouts
+  *
+  */
+
 #include "layout.h"
 
 /** The default constructor

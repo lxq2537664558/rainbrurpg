@@ -20,7 +20,7 @@
  *
  */
 
-/** \file terminalapi/label.h
+/** \file terminalapi/label.cpp
   * Implements a label widget
   *
   */

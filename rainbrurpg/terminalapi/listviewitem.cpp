@@ -20,6 +20,11 @@
  *
  */
 
+/** \file listviewitem.cpp
+  * Implements an item of a a list view widget
+  *
+  */
+
 #include "listviewitem.h"
 
 #include <logger.h>

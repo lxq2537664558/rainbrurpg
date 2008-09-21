@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menu.h
+  * Declares a menu used in menubars
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef TERMINAL_MENU
 #define TERMINAL_MENU
 

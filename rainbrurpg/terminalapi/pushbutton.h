@@ -20,6 +20,13 @@
  *
  */
 
+/** \file terminalapi/pushbutton.h
+  * Declares a push button widget
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
 
 #ifndef PUSH_BUTTON_H
 #define PUSH_BUTTON_H

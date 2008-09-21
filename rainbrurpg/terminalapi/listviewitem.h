@@ -20,6 +20,14 @@
  *
  */
 
+/** \file listviewitem.h
+  * Declares an item of a a list view widget
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef LIST_VIEW_ITEM_H
 #define LIST_VIEW_ITEM_H
 

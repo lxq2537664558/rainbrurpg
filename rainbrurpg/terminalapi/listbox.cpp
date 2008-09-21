@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file listbox.cpp
+  * Implements a list box widget
+  *
+  */
+
 #include "listbox.h"
 
 /** The default constructor

@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menuitem.cpp
+  * Implements the item a menu 
+  *
+  */
+
 #include "menuitem.h"
 
 /** The default constructor

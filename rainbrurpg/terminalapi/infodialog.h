@@ -20,6 +20,13 @@
  *
  */
 
+/** \file infodialog.h
+  * Declares a dialog used to draw some informations
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
 
 #ifndef INFO_DIALOG_H
 #define INFO_DIALOG_H

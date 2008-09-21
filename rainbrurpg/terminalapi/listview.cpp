@@ -20,6 +20,10 @@
  *
  */
 
+/** \file listview.cpp
+  * Implements a list view widget
+  *
+  */
 
 #include "listview.h"
 

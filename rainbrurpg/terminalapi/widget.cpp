@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/widget.cpp
+  * Implements the base class of all widgets
+  *
+  */
+
 #include "widget.h"
 
 /** Default constructor

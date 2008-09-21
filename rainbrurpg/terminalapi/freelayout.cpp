@@ -19,5 +19,11 @@
  *  02110-1301  USA
  *
  */
+
+/** \file freelayout.cpp
+  * Implements a layout where widgets are placed by their coordonates
+  *
+  */
+
 #include "freelayout.h"
 

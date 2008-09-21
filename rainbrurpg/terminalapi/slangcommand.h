@@ -20,6 +20,14 @@
  *
  */
 
+/** \file slangcommand.h
+  * Declares a base-class used to store SLang commands
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef SLANG_COMAND_H
 #define SLANG_COMAND_H
 

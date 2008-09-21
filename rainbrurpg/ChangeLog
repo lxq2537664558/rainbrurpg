@@ -1,3 +1,7 @@
+2008-09-20 Jerome Pasquier  <rainbru@free.fr>
+	* terminalapi/testwindow.h: Moved to example/api directory
+	* terminalapi/testwindow.cpp: Moved to example/api directory
+	
 2008-09-07 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/ogreimport.h: Added some headers needed by editor.
 	Building of editor was broken.

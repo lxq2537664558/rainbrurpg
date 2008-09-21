@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file lineedit.h
+  * Declares a simple line input widget
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef LINE_EDIT_H
 #define LINE_EDIT_H
 

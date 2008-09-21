@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file lineedit.cpp
+  * Implements a simple line input widget
+  *
+  */
+
 #include "lineedit.h"
 
 #include "logger.h"

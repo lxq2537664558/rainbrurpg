@@ -20,6 +20,11 @@
  *
  */
 
+/** \file slangcommand.cpp
+  * Implements a base-class used to store SLang commands
+  *
+  */
+
 #include "slangcommand.h"
 
 /** The default constructor 

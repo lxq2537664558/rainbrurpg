@@ -20,11 +20,23 @@
  *
  */
 
+/** \file tools/netflooder/connectionpanel.cpp
+  * Declares the netFlooder connection panel
+  *
+  */
+
 #include "connectionpanel.h"
 
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::ConnectionPanel "ConnectionPanel" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::ConnectionPanel) ConnectionPanelMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ConnectionPanel::ID_NYI, RainbruRPG::Gui::ConnectionPanel::onNotYetImplemented),
@@ -34,6 +46,13 @@ FXDEFMAP(RainbruRPG::Gui::ConnectionPanel) ConnectionPanelMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::ConnectionPanel "ConnectionPanel" class
+  * uses the ConnectionPanelMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::ConnectionPanel,FXPacker,ConnectionPanelMap,ARRAYNUMBER(ConnectionPanelMap));
 
 /** The constructor

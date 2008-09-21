@@ -20,7 +20,11 @@
  *
  */
 
-/** Modifications :
+/** \file listboxitem.h
+  * Declares a base class for listbox's item
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
   * - 11 jul 2008 : Now use std::string member
   *
   */

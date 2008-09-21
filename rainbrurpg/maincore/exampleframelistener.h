@@ -58,7 +58,8 @@ namespace RainbruRPG{
 
     /** A file from the Ogre example framework 
       *
-      * \todo \ref GuiFrameListener inherits this class. If it is the only one,
+      * \todo The \ref RainbruRPG::Events::GuiFrameListener "GuiFrameListener" class 
+      *       inherits this class. If it is the only one,
       *       this class can be removed. But we can use some Ogre FrameListener
       *       in the game : one for the menus, one for the gamebase... In this
       *       case, it become a class called FrameListenerBase, inherited by all

@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menu.cpp
+  * Implements a menu used in menubars
+  *
+  */
+
 #include "menu.h"
 
 /** The default constructor

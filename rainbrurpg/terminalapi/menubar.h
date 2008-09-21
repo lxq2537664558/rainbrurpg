@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menubar.h
+  * Declares a menubar widget
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef TERMINAL_MENU_BAR
 #define TERMINAL_MENU_BAR
 

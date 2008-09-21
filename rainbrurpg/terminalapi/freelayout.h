@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file freelayout.h
+  * Declares a layout where widgets are placed by their coordonates
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef FREE_LAYOUT_H
 #define FREE_LAYOUT_H
 

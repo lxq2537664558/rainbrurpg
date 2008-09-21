@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file scrollingpanel.cpp
+  * Implements a class that provides the window's scrolling facility
+  *
+  */
+
 #include "scrollingpanel.h"
 
 /** The default constructor

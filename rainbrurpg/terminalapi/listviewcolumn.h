@@ -20,6 +20,14 @@
  *
  */
 
+/** \file listviewcolumn.h
+  * Declares the column of a a list view widget
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef LIST_VIEW_COLUMN_H
 #define LIST_VIEW_COLUMN_H
 

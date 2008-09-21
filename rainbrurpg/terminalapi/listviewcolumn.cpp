@@ -20,6 +20,11 @@
  *
  */
 
+/** \file listviewcolumn.cpp
+  * Implements the column of a a list view widget
+  *
+  */
+
 #include "listviewcolumn.h"
 
 

@@ -27,6 +27,7 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
+  * - 17 sep 2008 : Remove alignement and wordwrap todo item
   * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
   *                 ambiguous use on Win32 platform
   * - 24 jan 2007 : Removing Pass related statements due to new etxt renderer
@@ -84,8 +85,10 @@ namespace RainbruRPG{
 
     /** A font used with QuadRenderer
       * 
-      * \todo Font alignement handle
-      * \todo Font WordWrap handle
+      * This class defines a font that can be used in OgreGui. 
+      *
+      * \note You should not use this class directly. Please use
+      *       \ref FontManager.
       *
       */
     class Font{

@@ -20,12 +20,24 @@
  *
  */
 
+/** \file tools/netflooder/chartviewer.cpp
+  * Implements a dialog used to view netflooder charts
+  *
+  */
+
 #include "chartviewer.h"
 
 #include <fox-1.6/FXPNGImage.h>
 
 
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::ChartViewer "ChartViewer" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::ChartViewer) ChartViewerMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ChartViewer::ID_NYI, 
@@ -36,6 +48,13 @@ FXDEFMAP(RainbruRPG::Gui::ChartViewer) ChartViewerMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::ChartViewer "ChartViewer" class
+  * uses the ChartViewerMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::ChartViewer,FXDialogBox,
 	    ChartViewerMap,ARRAYNUMBER(ChartViewerMap));
 

@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file layout.h
+  * Declares the base class of all layouts
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef LAYOUT_H
 #define LAYOUT_H
 

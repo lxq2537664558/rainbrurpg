@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications : 
- * - 21 mar 2007 : Fix a bug in getSelectedServerName()
- *
- */
+/** \file tools/netflooder/connectionpanel.h
+  * Declares the netFlooder connection panel
+  *
+  * Modifications :
+  * - 20 sep 2008 : Single file documentation
+  * - 21 mar 2007 : Fix a bug in getSelectedServerName()
+  *
+  */
 
 #ifndef CONNECTION_PANEL_H
 #define CONNECTION_PANEL_H

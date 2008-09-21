@@ -20,13 +20,18 @@
  *
  */
 
-/* Modifications :
- * - 12 jul 2007 : Treat the tTransferError signal
- * - 29 jun 2007 : Using xmlServerList
- * - 07 jun 2007 : A transferTerminated slot
- * - 25 apr 2007 : Starting implementation
- * - 25 apr 2007 : Starting implementation
- */ 
+/** \file tools/ftpclient/ftpclientwindow.h
+  * Declares the mainwindow of the ftpclient tool
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  * - 12 jul 2007 : Treat the tTransferError signal
+  * - 29 jun 2007 : Using xmlServerList
+  * - 07 jun 2007 : A transferTerminated slot
+  * - 25 apr 2007 : Starting implementation
+  * - 25 apr 2007 : Starting implementation
+  */ 
+
 #ifndef NET_FLOODER_WINDOW_H
 #define NET_FLOODER_WINDOW_H
 

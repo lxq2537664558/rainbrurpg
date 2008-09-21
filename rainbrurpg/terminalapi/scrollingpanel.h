@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file scrollingpanel.h
+  * Declares a class that provides scrolling ability of a window
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef SCROLLING_PANEL_H
 #define SCROLLING_PANEL_H
 

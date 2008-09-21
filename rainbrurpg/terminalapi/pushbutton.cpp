@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/pushbutton.cpp
+  * Implements a push button widget
+  *
+  */
+
 #include "pushbutton.h"
 
 #include "terminalapp.h"

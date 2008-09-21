@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menubar.cpp
+  * Implements a menubar widget
+  *
+  */
+
 #include "menubar.h"
 
 /** The default constructor

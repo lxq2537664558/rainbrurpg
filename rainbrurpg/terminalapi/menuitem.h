@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file menuitem.h
+  * Declares the item of a menu 
+  *
+  * Modifications :
+  * - 19 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef TERMINAL_MENU_ITEM
 #define TERMINAL_MENU_ITEM
 

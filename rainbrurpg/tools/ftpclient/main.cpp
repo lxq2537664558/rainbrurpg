@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 25 apr 2007 : Starting implementation
- *
- */
+/** \file tools/ftpclient/main.cpp
+  * Implements the main entry of the ftpclient tool
+  *
+  * Modifications :
+  * - 20 sep 2008 : Single file documentation
+  * - 25 apr 2007 : Starting implementation
+  *
+  */
 
 #include <iostream>
 #include <logger.h>
@@ -41,6 +45,9 @@ using namespace FX;
 using namespace RainbruRPG::Gui;
 
 /** ftpClient main entry
+  *
+  * \param argc The number of command-line arguments
+  * \param argv The array of command-line arguments
   *
   */
 int main(int argc, char **argv){

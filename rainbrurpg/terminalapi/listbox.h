@@ -20,8 +20,12 @@
  *
  */
 
-/** Modifications :
-  * - 11 jul 2008 : Now use std::string member
+/** \file listbox.h
+  * Declares a list box widget
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  * - 11 jul 2008 : Now use std::string members
   *
   */
 
@@ -52,6 +56,7 @@ namespace RainbruRPG{
       * select one or more item in the list.
       * It can draw a caption. To disable the caption drawing ability,
       * use setDrawCaption( bool );
+      *
       */
     class ListBox : public Widget{
     public:

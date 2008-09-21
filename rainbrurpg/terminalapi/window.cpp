@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapi/window.cpp
+  * Implements a window for terminalapi
+  *
+  */
+
 #include "window.h"
 
 /** The default constructor

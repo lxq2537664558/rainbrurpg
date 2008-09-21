@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 31 jul 2007 : Add a test option
- * - 20 jul 2007 : Starting implementation
- *
- */
+/** \file tools/hashsum/main.cpp
+  * Implements the main entry of the hashsum tool
+  *
+  * Modifications :
+  * - 20 sep 2008 : Single file documentation
+  * - 31 jul 2007 : Add a test option
+  * - 20 jul 2007 : Starting implementation
+  *
+  */
 
 #include <iostream>
 #include <string>
@@ -39,6 +43,12 @@ using namespace std;
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::Network::Ident;
 
+/** The old percent of hashfile progress
+  * 
+  * This value is kept to be able to know if the percent has changed. It
+  * is used in the \ref fileProgress function.
+  *
+  */
 int oldPercent=-1;
 
 
@@ -54,6 +64,9 @@ void oneTest(HashPassword*, const char*);
 
 
 /** The HashSum program main function
+  *
+  * \param argc The number of command-line arguments
+  * \param argv The array of command-line arguments
   *
   */
 int main(int argc, char** argv){
@@ -87,6 +100,13 @@ int main(int argc, char** argv){
   return 1;
 }
 
+/** Show a message telling how the file progresses
+  *
+  * \param size    The size of the file in bytes
+  * \param dled    The hashed bytes number
+  * \param percent The percent of completed hash
+  *
+  */
 void fileProgress(int size, int dled, double percent){
   if ((int)percent!=oldPercent){
     cout << "fileProgress : "<< (int)percent << "% \t("
@@ -108,6 +128,12 @@ void showHelp(){
 
 }
 
+/** Test the hashsum of a password
+  *
+  * \param hp  The used HashPassword object
+  * \param pwd The password to test
+  *
+  */
 void oneTest(HashPassword* hp, const char* pwd){
   cout << "Testing with " << pwd <<" :"<< endl;
   cout << "Direct                :"
@@ -119,7 +145,9 @@ void oneTest(HashPassword* hp, const char* pwd){
  
 }
 
-
+/** Tests the HashPassword class 
+  *
+  */
 void testHashPassword(){
   HashPassword hp;
   oneTest(&hp, "aaa");

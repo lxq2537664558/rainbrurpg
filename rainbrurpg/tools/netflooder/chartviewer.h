@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 12 apr 2007 : Starting implementation
- *
- */
+/** \file tools/netflooder/chartviewer.h
+  * Declares a dialog used to view netflooder charts
+  *
+  * Modifications :
+  * - 20 sep 2008 : Single file documentation
+  * - 12 apr 2007 : Starting implementation
+  *
+  */
 
 #include <fox-1.6/fx.h>
 #include <logger.h>

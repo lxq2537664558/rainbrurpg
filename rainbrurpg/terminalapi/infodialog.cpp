@@ -20,6 +20,10 @@
  *
  */
 
+/** \file infodialog.cpp
+  * Implements a dialog used to draw some informations
+  *
+  */
 
 #include "infodialog.h"
 

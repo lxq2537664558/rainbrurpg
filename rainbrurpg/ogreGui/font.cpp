@@ -68,8 +68,8 @@ RainbruRPG::OgreGui::Font::Font(const String& name, unsigned int size):
 
 /** The destructor
   *
-  * \bug This should destroy \ref RainbruRPG::OgreGui::Font::mTexture "mTexture"
-  *      is used, but I can't.
+  * \todo This should destroy \ref RainbruRPG::OgreGui::Font::mTexture 
+  *       "mTexture" if used, but I can't.
   *
   */
 RainbruRPG::OgreGui::Font::~Font(){

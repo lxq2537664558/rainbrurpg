@@ -19,13 +19,26 @@
  *  02110-1301  USA
  *
  */
+
+/** \file hook.h
+  * Declares some SLang based signal handler
+  *
+  * Modifications :
+  * - 18 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef HOOK_H
 #define HOOK_H
 
 #include "terminalapp.h"
 
-//using namespace RainbruRPG::Terminal;
-
+/** A simple error handler
+  *
+  * \param fmt The format string
+  * \param ap  The variable argument list
+  *
+  */
 static void exit_error_hook (char *fmt, va_list ap){
    SLang_reset_tty ();
    SLsmg_reset_smg ();
@@ -35,6 +48,11 @@ static void exit_error_hook (char *fmt, va_list ap){
    exit (1);
 }
 
+/** A error handler exting with a signal
+  *
+  * \param sig The signal number
+  *
+  */
 static void demolib_exit (int sig)
 {
    SLang_reset_tty ();

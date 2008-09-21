@@ -20,11 +20,22 @@
  *
  */
 
+/** \file tools/ftpclient/ftpclientwindow.cpp
+  * Implements the mainwindow of the ftpclient tool
+  *
+  */
 
 #include "ftpclientwindow.h"
 
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::FtpClientWindow "FtpClientWindow" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FtpClientWindow::ID_NYI, RainbruRPG::Gui::FtpClientWindow::onNotYetImplemented),
@@ -41,6 +52,13 @@ FXDEFMAP(RainbruRPG::Gui::FtpClientWindow) FtpClientWindowMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::FtpClientWindow "FtpClientWindow" class
+  * uses the FtpClientWindowMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::FtpClientWindow,FXMainWindow,FtpClientWindowMap,ARRAYNUMBER(FtpClientWindowMap));
 
 

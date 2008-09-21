@@ -19,6 +19,12 @@
  *  02110-1301  USA
  *
  */
+
+/** \file terminalapp.cpp
+  * Implements the base class of TerminalAPI.
+  * 
+  */
+
 #include "terminalapp.h"
 
 #include <vector>
