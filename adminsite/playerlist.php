@@ -25,6 +25,7 @@ if ($acc){
       $playerName=$xmlplayer->getPlayerName($player);
       $playerBlack=$xmlplayer->getPlayerBlackList($player);
       $playerMail=$xmlplayer->getPlayerMail($player);
+      $playerConfId=$xmlplayer->getPlayerConfirmId($player);
 
       // The <TR> tag
       $col=colClasse($col, $playerName);
@@ -65,7 +66,7 @@ if ($acc){
 
       // Mail validation
       if (!isExistingTimestamp($player,'confirm')){
-	printf('<a href="mailconfirm.php?name=%s" title="Mail adress confirmation">M</a>', $playerName );
+	printf('<a href="mailconfirm.php?name=%s&&id=%s" title="Mail adress confirmation">M</a>', $playerName, $playerConfId );
 	
       }
       

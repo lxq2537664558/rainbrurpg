@@ -9,9 +9,6 @@
    $err=false;
    $exists=false;
 
-
-
-
    $name = trim($_POST['name']);
    $confirmation = trim($_POST['confirmation']);
    $confirmId = trim($_POST['id']);
