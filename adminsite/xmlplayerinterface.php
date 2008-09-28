@@ -1,3 +1,25 @@
+/*
+ *  Copyright 2006-2007 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
 <?php
 include "xmlinterface.php";
 
@@ -107,10 +129,11 @@ class XmlPlayerInterface extends XmlInterface{
     *
     * The Blacklist is set to 'No'.
     *
-    * \param $name The name of the new player
-    * \param $mail The mail of the new player
-    * \param $pwd The passwotd hashsum of the new player
+    * \param $name      The name of the new player
+    * \param $mail      The mail of the new player
+    * \param $pwd       The passwotd hashsum of the new player
     * \param $timestamp The creation timestamp of the new player
+    * \param $confirmId The Id used to confirm the mail address
     *
     */
   function addPlayer($name, $mail, $pwd, $timestamp, $confirmId){
@@ -276,7 +299,8 @@ class XmlPlayerInterface extends XmlInterface{
   /** Confirm the mail of the given Player (Account)
     *
     * \param $playerNode The player XML node
-    * \param $timestamp The confirmation timestamp
+    * \param $timestamp  The confirmation timestamp
+    * \param $confirmId  The Id used to confirm the mail address
     *
     */
   function confirmMail($playerNode, $timestamp, $confirmId){

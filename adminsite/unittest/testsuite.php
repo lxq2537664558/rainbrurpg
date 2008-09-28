@@ -1,4 +1,11 @@
 <?php
+/** \file testsuite.php
+  * Defines a unit test suite
+  * 
+  * Modifications :
+  * - 26 sep 2008 : Single documentation added
+  *
+  */
 
 require_once("unittest.php");
 
@@ -8,10 +15,14 @@ require_once("unittest.php");
   *
   */
 class __TestSuite{
+  /** The test suite name */
   var $testSuiteName;
+  /** The internal list of test case */
   var $testCaseList;
 
   /** The default constructor
+    *
+    * \param $name The suite name
     *
     */
   function __TestSuite($name){

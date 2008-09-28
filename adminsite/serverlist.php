@@ -1,4 +1,3 @@
-<?php
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
  * 
@@ -21,6 +20,7 @@
  *
  */
 
+<?php
 $acc=include 'access.php';
 if ($acc){
 ?>

@@ -1,6 +1,5 @@
-<?php
 /*
- *  Copyright 2006-2007 Jerome PASQUIER
+ *  Copyright 2006-2008 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -21,6 +20,17 @@
  *
  */
 
+<?php
+
+/** \file addserver.php
+  * Defines a page used to add a server
+  * 
+  * Modifications :
+  * - 26 sep 2008 : Single documentation added
+  *
+  */
+
+  /// Get the access rights
 $acc=include 'access.php';
 if ($acc){
 ?>
@@ -32,7 +42,7 @@ if ($acc){
 
 /** The function called when the form is submitted 
   *
-  * $port is the UDP port. $ftp id the port used by the FTP control channel.
+  * $port is the UDP port. $ftp is the port used by the FTP control channel.
   * FTP data channel is always $ftp-1.
   *
   */

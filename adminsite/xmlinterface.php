@@ -1,4 +1,3 @@
-<?php
 /*
  *  Copyright 2006-2007 Jerome PASQUIER
  * 
@@ -21,9 +20,10 @@
  *
  */
 
+<?php
 include "timestamp.php";
 
-/** A xml interface to avoid complications when the php version
+/** \brief A xml interface to avoid complications when the php version
   * is changed in website.
   *
   *

@@ -1,4 +1,11 @@
 <?php
+/** \file testcase.php
+  * Defines a unit test case
+  * 
+  * Modifications :
+  * - 26 sep 2008 : Single documentation added
+  *
+  */
 
 require_once("unittest.php");
 
@@ -6,12 +13,23 @@ require_once("unittest.php");
   *
   */
 class __TestCase{
+  /** The name of the test case */
   var $testCaseName;
 
+  /** The named constructor
+    *
+    * \param $name The name of the test case
+    *
+    */
   function TestCase($name){
     $this->testCaseName=$name;
   }
 
+  /** Run all the test of this class
+    *
+    * All function starting with '__' are ignored.
+    *
+    */
   function __run(){
     echo "Run TestSuite ";
     echo $this->$testSuiteName;
