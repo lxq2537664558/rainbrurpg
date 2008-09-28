@@ -20,11 +20,23 @@
  *
  */
 
+/** \file tools/xident/servertechnote.cpp
+  * Implements a dialog used to show a server's technical note
+  *
+  */
+
 #include "servertechnote.h"
 
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::ServerTechNote "ServerTechNote" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::ServerTechNote) ServerTechNoteMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ServerTechNote::ID_NYI, RainbruRPG::Gui::ServerTechNote::onNotYetImplemented),
@@ -32,6 +44,13 @@ FXDEFMAP(RainbruRPG::Gui::ServerTechNote) ServerTechNoteMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::ServerTechNote "ServerTechNote" class
+  * uses the ServerTechNoteMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::ServerTechNote,FXDialogBox,ServerTechNoteMap,ARRAYNUMBER(ServerTechNoteMap));
 
 /** The server technical note dialog constructor

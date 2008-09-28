@@ -141,6 +141,7 @@ namespace BetaGUI {
 
   protected:
     void makeCorners(void);
+    void computeMinimumSize(void);
 
     /** Handle the MouseMove cursor
       *

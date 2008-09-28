@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications : 
- * - 27 mar 2007 : starting implementation
- *
- */
+/** \file tools/netflooder/floodertestbase.h
+  * Declares the base class of all netflooder's tests
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 27 mar 2007 : starting implementation
+  *
+  */
 
 #ifndef FLOODER_TEST_BASE
 #define FLOODER_TEST_BASE

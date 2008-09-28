@@ -1,6 +1,45 @@
+2008-09-25 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/scrollpane.cpp (setScrollBarsVisbleStatus): Each scrollbar
+	handle the visibility of the other one when computing its max value.
+	
+	* ogreGui/scrollpane.cpp (isHorizontalScrollbarNeeded): Now handles
+	the vertical scrollbar visibility
+	* ogreGui/scrollpane.cpp (isVerticalScrollbarNeeded): Now handles
+	the horizontal scrollbar visibility
+
+	* ogreGui/wdmulticolumnlist.cpp (drawBorder) Now using mMclDrawnCorners
+	to draw the header bottom line to fix a bug.
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader) Compute bottom scissor
+	for the left line to fix a bug.
+	
+2008-09-24 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/wdmulticolumnlist.cpp (drawAllItems) Compute item scissor
+	bottom value.
+	
+	* ogreGui/wdmulticolumnlist.cpp (drawOneHeader): Adds a left margin 
+	to the header caption.
+	* ogreGui/wdmulticolumnlist.h: Adds the HEADER_TEXT_MARGIN macro.
+	
+2008-09-23 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/quadrenderer.cpp (reset): Now reset blend mode to QBM_GLOBAL.
+	Fix the MultiColumnList border color bug
+	* ogreGui/quadrenderer.cpp (blendModeToString): Implementation
+	* ogreGui/quadrenderer.cpp (debug): Improved. More details.
+	* ogreGui/drawingdevlist.cpp (toString): return statment missed
+	* ogreGui/quadrenderer.cpp (isGhostEnabled): Implementation
+	
+	* ogreGui/bgwindow.cpp (resize): Attraction bug fixed
+	
+	* ogreGui/bgwindow.cpp (getVScrollBarMinHeight): Declaration added
+	* ogreGui/bgwindow.cpp (getHScrollBarMinWidth): Declaration added
+	
+	* ogreGui/bgwindow.cpp (computeMinimumSize): Starting implementation
+	* ogreGui/bgwindow.cpp (Window): Now call computeMinimumSize()
+	
 2008-09-20 Jerome Pasquier  <rainbru@free.fr>
-	* terminalapi/testwindow.h: Moved to example/api directory
-	* terminalapi/testwindow.cpp: Moved to example/api directory
+	* terminalapi/testwindow.h: Moved to example/tapi/ directory
+	* terminalapi/testwindow.cpp: Moved to example/tapi/ directory
 	
 2008-09-07 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/ogreimport.h: Added some headers needed by editor.

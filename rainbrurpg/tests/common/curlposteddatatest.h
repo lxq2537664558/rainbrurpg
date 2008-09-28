@@ -100,7 +100,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_cpd;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -116,14 +116,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_cpd = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_cpd; 
+    delete this->m_instance; 
   }
   
   /** Tests the addKey function
@@ -133,10 +133,10 @@ public:
     *
     */
   void testAddKey(){ 
-    int nbKeys=m_cpd->keyCount();
-    m_cpd->addKey("TestKey");
+    int nbKeys=m_instance->keyCount();
+    m_instance->addKey("TestKey");
 
-    int nbKeys2=this->m_cpd->keyCount();
+    int nbKeys2=this->m_instance->keyCount();
     CPPUNIT_ASSERT( nbKeys2==++nbKeys  );
   }
 
@@ -148,9 +148,9 @@ public:
     */
   void testValueChar(){
     const char* val2="exampleValue";
-    m_cpd->addKey("TestKey");
-    m_cpd->setValue("TestKey", val2);
-    const char* val=m_cpd->getValue("TestKey");
+    m_instance->addKey("TestKey");
+    m_instance->setValue("TestKey", val2);
+    const char* val=m_instance->getValue("TestKey");
     CPPUNIT_ASSERT(strcmp(val, val2)==0);
   }
 
@@ -162,9 +162,9 @@ public:
     */
   void testValueString(){
     std::string val2="exampleValue";
-    m_cpd->addKey("TestKey");
-    m_cpd->setValue("TestKey", val2);
-    const char* val=m_cpd->getValue("TestKey");
+    m_instance->addKey("TestKey");
+    m_instance->setValue("TestKey", val2);
+    const char* val=m_instance->getValue("TestKey");
     CPPUNIT_ASSERT(val2==val);
   }
 
@@ -174,9 +174,9 @@ public:
     *
     */
   void testComputeData1(){
-    m_cpd->addKey("TestKey");
-    m_cpd->setValue("TestKey", "TestValue");
-    std::string computed=m_cpd->getComputedData();
+    m_instance->addKey("TestKey");
+    m_instance->setValue("TestKey", "TestValue");
+    std::string computed=m_instance->getComputedData();
     CPPUNIT_ASSERT(computed=="TestKey=TestValue");
   }
 
@@ -186,11 +186,11 @@ public:
     *
     */
   void testComputeData2(){
-    m_cpd->addKey("TestKey");
-    m_cpd->setValue("TestKey", "TestValue");
-    m_cpd->addKey("TestKey2");
-    m_cpd->setValue("TestKey2", "TestValue2");
-    std::string computed=m_cpd->getComputedData();
+    m_instance->addKey("TestKey");
+    m_instance->setValue("TestKey", "TestValue");
+    m_instance->addKey("TestKey2");
+    m_instance->setValue("TestKey2", "TestValue2");
+    std::string computed=m_instance->getComputedData();
     CPPUNIT_ASSERT(computed=="TestKey=TestValue&TestKey2=TestValue2");
 
   }
@@ -201,7 +201,7 @@ public:
     *
     */
   void testInexistantKey(){
-    const char* computed=m_cpd->getValue("InexistantKey");
+    const char* computed=m_instance->getValue("InexistantKey");
     CPPUNIT_ASSERT(strcmp(computed, "")==0);
 
   }

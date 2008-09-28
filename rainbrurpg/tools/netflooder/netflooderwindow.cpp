@@ -20,6 +20,10 @@
  *
  */
 
+/** \file tools/netflooder/netflooderwindow.cpp
+  * Implements the NetFlooder's main window
+  *
+  */
 
 #include "netflooderwindow.h"
 
@@ -29,6 +33,13 @@
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::NetFlooderWindow "NetFlooderWindow" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::NetFlooderWindow) NetFlooderWindowMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::NetFlooderWindow::ID_NYI, RainbruRPG::Gui::NetFlooderWindow::onNotYetImplemented),
@@ -41,6 +52,13 @@ FXDEFMAP(RainbruRPG::Gui::NetFlooderWindow) NetFlooderWindowMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::NetFlooderWindow "NetFlooderWindow" class
+  * uses the NetFlooderWindowMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::NetFlooderWindow,FXMainWindow,NetFlooderWindowMap,ARRAYNUMBER(NetFlooderWindowMap));
 
 

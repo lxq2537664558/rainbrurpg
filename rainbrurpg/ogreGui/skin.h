@@ -27,9 +27,15 @@
   * to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 23 sep 2008 : \ref RainbruRPG::OgreGui::Skin::getVScrollBarMinHeight
+  *                 "getVScrollBarMinHeight()" and 
+  *                 \ref RainbruRPG::OgreGui::Skin::getHScrollBarMinWidth 
+  *                 "getHScrollBarMinWidth()" added.
   * - 13 may 2008 : draw* functions are not pure virtual anymore
-  * - 17 apr 2008 : drawPopupMenu implementation
-  * - 25 mar 2008 : drawMultiColumnList implementation
+  * - 17 apr 2008 : \ref RainbruRPG::OgreGui::Skin::drawPopupMenu 
+  *                 "drawPopupMenu"implementation
+  * - 25 mar 2008 : \ref RainbruRPG::OgreGui::Skin::drawMultiColumnList 
+  *                 "drawMultiColumnList" implementation
   * - 04 feb 2008 : Class renamed from SkinOverlay to Skin
   * - 15 nov 2007 : createBorderWindow implementation
   * - 15 oct 2007 : Skin class removed
@@ -103,6 +109,33 @@ namespace RainbruRPG{
       virtual unsigned int getDialogBorderSize(void);
 
      int getTitleBarHeight(void);
+
+     /** Get the minimal height of the vertical scrollbar
+       *
+       * This value depends on the skin. It is used to compute the
+       * \ref BetaGUI::Window "Window"'s minimal height.
+       *
+       * \sa \ref BetaGUI::Window::computeMinimumSize 
+       *     "Window::computeMinimumSize"
+       *
+       * \return The minimal height in pixels
+       *
+       */
+     virtual int getVScrollBarMinHeight(void)=0;
+
+     /** Get the minimal width of the horizontal scrollbar
+       *
+       * This value depends on the skin. It is used to compute the
+       * \ref BetaGUI::Window "Window"'s miniman width.
+       *
+       * \sa \ref BetaGUI::Window::computeMinimumSize 
+       *     "Window::computeMinimumSize"
+       *
+       * \return The minimal width in pixels
+       *
+       */
+     virtual int getHScrollBarMinWidth(void)=0;
+
 
     protected:
      void logUnimplementedFunction(const std::string&);

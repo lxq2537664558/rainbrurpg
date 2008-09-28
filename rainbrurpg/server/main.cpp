@@ -21,7 +21,7 @@
  */
 
 /** \file server/main.cpp
-  * The file declaring the client's main() function 
+  * The file that implements the server's main function 
   *
   * Modifications :
   * - 05 sep 2008 : Single file documentation

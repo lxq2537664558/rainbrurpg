@@ -20,12 +20,16 @@
  *
  */
 
-/* Modifications :
- * - 04 aug 2007 : Now using ServerListItem
- * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
- * - 29 may 2007 : Adding the 'ftp' column
- *
- */
+/** \file tools/xident/foxserverlist.h
+  * Declares the XIdent server list widget
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 04 aug 2007 : Now using ServerListItem
+  * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
+  * - 29 may 2007 : Adding the 'ftp' column
+  *
+  */
 
 #ifndef FOX_SERVER_LIST_H
 #define FOX_SERVER_LIST_H

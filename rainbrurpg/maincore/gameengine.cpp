@@ -197,7 +197,7 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
 
 
     if ((unsigned int)t>states.size()){
-      LOGE("An error will occured : we are calling a non-inexisting "
+      LOGE("An error will occur : we are calling a non-inexisting "
 	   "gamestate");
     }
     else{

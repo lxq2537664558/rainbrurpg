@@ -463,10 +463,16 @@
 
 /** \namespace RainbruRPG::Concept
   *
-  * The namespace of the roleplay concept
+  * The namespace of the roleplay concepts
   *
-  * This namespace contains the concepts of the RPG roleplay part of
-  * this game. Player, AI...
+  * This namespace will contains the concepts of the RPG roleplay part of
+  * the game. All concepts that are not part of the player (contained in
+  * \ref RainbruRPG::Concept::Player) or the AI (contained in
+  * \ref RainbruRPG::Concept::AI) should be here. These concepts can be about,
+  * but are not restricted to :
+  * - the world : concepts can be about the world cut off;
+  * - the elementals : the crafting concepts ans all other concepts about
+  *   fire, earth, etc ...
   *
   */
 

@@ -1,1 +1,1 @@
-SUBDIRS = textures scripts
+SUBDIRS = textures scripts programs

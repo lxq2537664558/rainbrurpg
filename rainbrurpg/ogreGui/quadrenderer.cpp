@@ -67,7 +67,9 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mBatchPointer(NULL),
   useParentScissor(false),
   mAlphaNoGhost(0.0f),
-  mDrawingDevList(NULL)
+  mDrawingDevList(NULL),
+  mIsGhostEnabled(false),
+  mBlendMode(QBM_UNSET)
 {
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -423,6 +425,8 @@ void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
   */
 void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   useScissor=false;
+  usedTexture.setNull();
+
   mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
   mRenderSystem->_setTexture(0, true, mTexture );
@@ -433,6 +437,10 @@ void RainbruRPG::OgreGui::QuadRenderer::reset(void){
   
   mBatchPointer=NULL;
   mBatchCount=0;
+
+  // v 0.0.5-185 : Fix the MultiColumnList border color bug
+  setBlendMode(QBM_GLOBAL);
+
 }
 
 /** Draw a text
@@ -769,6 +777,8 @@ setScissorRectangle(const Ogre::Rectangle& vRect){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 setBlendMode(tQuadRendererBlendMode vMode){
+
+  mBlendMode=vMode;
 
   Ogre::LayerBlendModeEx defaultLBM;
   defaultLBM.blendType=LBT_ALPHA;
@@ -1179,6 +1189,7 @@ drawRectangleLines( const Ogre::Rectangle& vRect, const ColourValue& vColor ){
 void RainbruRPG::OgreGui::QuadRenderer::enableGhost(void){
   mAlphaNoGhost=alphaValue;
   alphaValue-=GHOST_ALPHA_VALUE;
+  mIsGhostEnabled=true;
 }
 
 /** Disable the ghost
@@ -1188,6 +1199,7 @@ void RainbruRPG::OgreGui::QuadRenderer::enableGhost(void){
   */
 void RainbruRPG::OgreGui::QuadRenderer::disableGhost(void){
   alphaValue=mAlphaNoGhost;
+  mIsGhostEnabled=false;
 }
 
 /** Set a temporary alpha value
@@ -1230,7 +1242,15 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
     << "  .bottom = " << scissorRect.bottom << endl;
   
   s << "Alpha value :" << alphaValue << endl;
+  s << "Is ghost enabled :" << mIsGhostEnabled << endl;
 
+  if (usedTexture.isNull()){
+    s << "Current texture : None" << endl;
+  }
+  else{
+    s << "Current texture : Yes (" << usedTexture.get() << ")" << endl;
+  }
+  s << "Blend mode :" << blendModeToString(mBlendMode) << endl;
   LOGI(s.str().c_str());
 
 }
@@ -1274,3 +1294,33 @@ int RainbruRPG::OgreGui::QuadRenderer::getDrawingDevYSum(void)const{
   return mDrawingDevList->getDevYSum();
 }
 
+/** Is the ghost feature enabled
+  *
+  * \return \c true if ghost is enbaled
+  *
+  */
+bool RainbruRPG::OgreGui::QuadRenderer::isGhostEnabled(void)const{
+  return mIsGhostEnabled;
+}
+
+/** Get a string from a blend mode
+  *
+  * \sa RainbruRPG::OgreGui::tQuadRendererBlendMode "tQuadRendererBlendMode"
+  *
+  * \param vMode The blend mode
+  *
+  * \return A human-readable string
+  *
+  */
+std::string RainbruRPG::OgreGui::QuadRenderer::
+blendModeToString(tQuadRendererBlendMode vMode){
+  switch (vMode){
+  case QBM_UNSET:        return "QBM_UNSET";
+  case QBM_NONE:         return "QBM_NONE";
+  case QBM_MODULATE:     return "QBM_MODULATE";
+  case QBM_DISCARDALPHA: return "QBM_DISCARDALPHA";
+  case QBM_INVERT:       return "QBM_INVERT";
+  case QBM_ALPHA:        return "QBM_ALPHA";
+  case QBM_GLOBAL:       return "QBM_GLOBAL";
+  }
+}

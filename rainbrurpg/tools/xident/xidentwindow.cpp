@@ -20,6 +20,10 @@
  *
  */
 
+/** \file tools/xident/xidentwindow.cpp
+  * Implements the xIdent main window
+  *
+  */
 
 #include "xidentwindow.h"
 #include "config.h"
@@ -27,6 +31,13 @@
 
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::XIdentWindow "XIdentWindow" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::XIdentWindow) XIdentWindowMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::XIdentWindow::ID_NYI, RainbruRPG::Gui::XIdentWindow::onNotYetImplemented),
@@ -38,6 +49,13 @@ FXDEFMAP(RainbruRPG::Gui::XIdentWindow) XIdentWindowMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::XIdentWindow "XIdentWindow" class
+  * uses the XIdentWindowMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::XIdentWindow,FXMainWindow,XIdentWindowMap,ARRAYNUMBER(XIdentWindowMap));
 
 

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tools/transmsg/transfile.cpp
+  * Implements a class that search translated string in a file
+  *
+  */
+
 #include "transfile.h"
 
 /** The file named constructor

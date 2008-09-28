@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 23 mar 2007 : Using sigc++ signals
- * - 22 mar 2007 : eventLoop() and treatPacket() implementation
- * - 13 mar 2007 : starting implementation
- */
+/** \file tools/netflooder/enetflooderclient.h
+  * Declares the enet client used by NetFlooder
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 23 mar 2007 : Using sigc++ signals
+  * - 22 mar 2007 : eventLoop() and treatPacket() implementation
+  * - 13 mar 2007 : starting implementation
+  */
 
 #ifndef ENET_FLOODER_CLIENT_H
 #define ENET_FLOODER_CLIENT_H

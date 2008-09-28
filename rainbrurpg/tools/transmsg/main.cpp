@@ -19,6 +19,15 @@
  *  02110-1301  USA
  *
  */
+
+/** \file tools/transmsg/main.cpp
+  * Implements the main entry of the TransMsg tool
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #include <iostream>
 #include <fstream>
 
@@ -27,10 +36,16 @@
 using namespace std;
 using namespace RainbruRPG::Trans;
 
-// forward declaration
+// Forward declaration
 void showHelp(int);
+// End of forward declaration
 
-//function main
+/** The main entry of the TransMsg tool
+  *
+  * \param argc The number of command-line arguments
+  * \param argv The array of command-line arguments
+  *
+  */
 int main(int argc, char** argv){
 
   showHelp(argc);
@@ -42,8 +57,9 @@ int main(int argc, char** argv){
 
 /** Show a help message if needed
   *
-  *
-  *
+  * \param argc The number of command-line arguments received by the 
+  *        \ref main function
+  * 
   */
 void showHelp(int argc){
   if (argc != 2){

@@ -82,7 +82,7 @@ class PushButtonTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** The tested PushButton instance */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
 
@@ -99,14 +99,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Deletes the etsted instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the canHaveFocus
@@ -115,7 +115,7 @@ public:
     * 
     */
   void testPushButtonCanHaveFocus(){ 
-    bool ret=this->m_caption->canHaveFocus();
+    bool ret=this->m_instance->canHaveFocus();
     CPPUNIT_ASSERT( ret );
   }
 
@@ -126,7 +126,7 @@ public:
     *
     */
   void testPushButtonEmptyAction(){
-    int ret=this->m_caption->fireAction();
+    int ret=this->m_instance->fireAction();
     CPPUNIT_ASSERT( ret==-1 );
 
   }
@@ -136,8 +136,8 @@ public:
     *
     */
   void testPushButtonFireAction(){
-    this->m_caption->setAction(&PushButtonTestAction);
-    int ret=this->m_caption->fireAction();
+    this->m_instance->setAction(&PushButtonTestAction);
+    int ret=this->m_instance->fireAction();
     CPPUNIT_ASSERT( ret==225 );
   }
 
@@ -146,8 +146,8 @@ public:
     * It sets the focus state to true and check if the change was ok
     */
   void testPushButtonSetFocus(){
-    this->m_caption->setFocus(true);
-    int ret=this->m_caption->getFocus();
+    this->m_instance->setFocus(true);
+    int ret=this->m_instance->getFocus();
     CPPUNIT_ASSERT( ret );
   }
 
@@ -156,8 +156,8 @@ public:
     */
   void testPushButtonHeight(){
     int i=25;
-    this->m_caption->setHeight(i);
-    int ret=this->m_caption->getHeight();
+    this->m_instance->setHeight(i);
+    int ret=this->m_instance->getHeight();
     CPPUNIT_ASSERT( ret==i );
   }
 
@@ -166,8 +166,8 @@ public:
     */
   void testPushButtonWidth(){
     int i=15;
-    this->m_caption->setWidth(i);
-    int ret=this->m_caption->getWidth();
+    this->m_instance->setWidth(i);
+    int ret=this->m_instance->getWidth();
     CPPUNIT_ASSERT( ret==i );
   }
 
@@ -176,8 +176,8 @@ public:
     */
   void testPushButtonText(){
     string t="PushButtonText";
-    this->m_caption->setText(t);
-    string t2=this->m_caption->getText();
+    this->m_instance->setText(t);
+    string t2=this->m_instance->getText();
     CPPUNIT_ASSERT( t == t2 );
   }
 
@@ -186,8 +186,8 @@ public:
     */
   void testPushButtonX(){
     int i=16;
-    this->m_caption->setX(i);
-    int ret=this->m_caption->getX();
+    this->m_instance->setX(i);
+    int ret=this->m_instance->getX();
     CPPUNIT_ASSERT( ret==i );
   }
 
@@ -196,8 +196,8 @@ public:
     */
   void testPushButtonY(){
     int i=16;
-    this->m_caption->setY(i);
-    int ret=this->m_caption->getY();
+    this->m_instance->setY(i);
+    int ret=this->m_instance->getY();
     CPPUNIT_ASSERT( ret==i );
   }
 
@@ -207,9 +207,9 @@ public:
   void testPushButtonPosition(){
     int x=4;
     int y=53;
-    this->m_caption->setPosition(x,y);
-    int x2=this->m_caption->getX();
-    int y2=this->m_caption->getY();
+    this->m_instance->setPosition(x,y);
+    int x2=this->m_instance->getX();
+    int y2=this->m_instance->getY();
     CPPUNIT_ASSERT( x==x2 && y==y2 );
   }
 
@@ -219,9 +219,9 @@ public:
   void testPushButtonSize(){
     int w=14;
     int h=43;
-    this->m_caption->setSize(w,h);
-    int w2=this->m_caption->getWidth();
-    int h2=this->m_caption->getHeight();
+    this->m_instance->setSize(w,h);
+    int w2=this->m_instance->getWidth();
+    int h2=this->m_instance->getHeight();
     CPPUNIT_ASSERT( w==w2 && h==h2 );
   }
 };

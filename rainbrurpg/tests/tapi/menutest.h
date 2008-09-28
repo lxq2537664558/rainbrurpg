@@ -62,7 +62,7 @@ class MenuTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** The tested Menu instance */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test case
@@ -78,14 +78,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Deletes the tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the Menu addItem function
@@ -95,8 +95,8 @@ public:
     *
     */
   void testMenuAddItem(){ 
-    this->m_caption->addItem(new MenuItem("MenuItemTest"));
-    unsigned int ret=this->m_caption->itemCount();
+    this->m_instance->addItem(new MenuItem("MenuItemTest"));
+    unsigned int ret=this->m_instance->itemCount();
     CPPUNIT_ASSERT( ret==1 );
   }
 
@@ -105,8 +105,8 @@ public:
     */
   void testMenuName(){ 
     string name="MenuNameTest";
-    this->m_caption->setName(name.c_str());
-    string name2=this->m_caption->getName();
+    this->m_instance->setName(name.c_str());
+    string name2=this->m_instance->getName();
     CPPUNIT_ASSERT( name == name2 );
   }
 
@@ -116,8 +116,8 @@ public:
   void testMenuWidth(){ 
     string name="MenuNameTestWidth";
     int nameLen= name.size();
-    this->m_caption->addItem(new MenuItem(name.c_str()));
-    int l=this->m_caption->getWidth();
+    this->m_instance->addItem(new MenuItem(name.c_str()));
+    int l=this->m_instance->getWidth();
     CPPUNIT_ASSERT( nameLen==l );
   }
 

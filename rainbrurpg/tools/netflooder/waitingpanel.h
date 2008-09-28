@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications : 
- * - 09 mar 2007 : starting implementation
- *
- */
+/** \file tools/netflooder/waitingpanel.h
+  * Declares the NetFlooder's waiting panel
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 09 mar 2007 : starting implementation
+  *
+  */
 
 #ifndef WAITING_PANEL_H
 #define WAITING_PANEL_H

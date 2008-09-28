@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tools/xident/serverdesc.h
+  * Declares a dialog used to show the server description
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef XIDENT_SERVER_DESC_DIALOG_H
 #define XIDENT_SERVER_DESC_DIALOG_H
 

@@ -137,7 +137,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -153,14 +153,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the ListView caption
@@ -171,8 +171,8 @@ public:
     */
   void testListViewCaption(){ 
     const char* t="TestCaption";
-    this->m_caption->setCaption(t);
-    const char* ret=this->m_caption->getCaption();
+    this->m_instance->setCaption(t);
+    const char* ret=this->m_instance->getCaption();
     int cmp=strcmp(t, ret);
     CPPUNIT_ASSERT( cmp==0 );
   }
@@ -185,8 +185,8 @@ public:
     */
   void testListViewX(){ 
     int x=1;
-    this->m_caption->setX(x);
-    int ret=this->m_caption->getX();
+    this->m_instance->setX(x);
+    int ret=this->m_instance->getX();
     CPPUNIT_ASSERT( x==ret );
   }
 
@@ -198,8 +198,8 @@ public:
     */
   void testListViewY(){ 
     int y=2;
-    this->m_caption->setY(y);
-    int ret=this->m_caption->getY();
+    this->m_instance->setY(y);
+    int ret=this->m_instance->getY();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -211,8 +211,8 @@ public:
     */
   void testListViewWidth(){ 
     int y=3;
-    this->m_caption->setWidth(y);
-    int ret=this->m_caption->getWidth();
+    this->m_instance->setWidth(y);
+    int ret=this->m_instance->getWidth();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -224,8 +224,8 @@ public:
     */
   void testListViewHeight(){ 
     int y=4;
-    this->m_caption->setHeight(y);
-    int ret=this->m_caption->getHeight();
+    this->m_instance->setHeight(y);
+    int ret=this->m_instance->getHeight();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -236,8 +236,8 @@ public:
     *
     */
   void testListViewHasFocus(){
-    this->m_caption->setFocus(true);
-    CPPUNIT_ASSERT( this->m_caption->getFocus() );
+    this->m_instance->setFocus(true);
+    CPPUNIT_ASSERT( this->m_instance->getFocus() );
 
   }
 
@@ -248,8 +248,8 @@ public:
     *
     */
   void testListViewHasntFocus(){
-    this->m_caption->setFocus(false);
-    CPPUNIT_ASSERT( !this->m_caption->getFocus() );
+    this->m_instance->setFocus(false);
+    CPPUNIT_ASSERT( !this->m_instance->getFocus() );
   }
 
   /** Tests if the label can take focus
@@ -258,7 +258,7 @@ public:
     *
     */
   void testListViewCanTakeFocus(){
-    CPPUNIT_ASSERT( this->m_caption->canHaveFocus());
+    CPPUNIT_ASSERT( this->m_instance->canHaveFocus());
   }
 
   /** Tests the setPosition function
@@ -267,9 +267,9 @@ public:
   void testListViewPosition(){
     int x=12;
     int y=15;
-    this->m_caption->setPosition(x, y);
-    int x2=this->m_caption->getX();
-    int y2=this->m_caption->getY();
+    this->m_instance->setPosition(x, y);
+    int x2=this->m_instance->getX();
+    int y2=this->m_instance->getY();
     CPPUNIT_ASSERT( x==x2&&y==y2);
   }
 
@@ -279,9 +279,9 @@ public:
   void testListViewSize(){
     int w=22;
     int h=35;
-    this->m_caption->setSize(w, h);
-    int w2=this->m_caption->getWidth();
-    int h2=this->m_caption->getHeight();
+    this->m_instance->setSize(w, h);
+    int w2=this->m_instance->getWidth();
+    int h2=this->m_instance->getHeight();
     CPPUNIT_ASSERT( w==w2 && h==h2);
   }
 
@@ -289,18 +289,18 @@ public:
     *
     */
   void testListViewDrawCaption(){
-    bool b=!this->m_caption->getDrawCaption();
-    this->m_caption->setDrawCaption(b);
-    CPPUNIT_ASSERT(this->m_caption->getDrawCaption()==b );
+    bool b=!this->m_instance->getDrawCaption();
+    this->m_instance->setDrawCaption(b);
+    CPPUNIT_ASSERT(this->m_instance->getDrawCaption()==b );
   }
 
   /** Tests the addItem function
     *
     */
   void testListViewAddItem(){
-    unsigned int i=this->m_caption->itemCount();
-    this->m_caption->addItem(new ListViewItem());
-    unsigned int i2=this->m_caption->itemCount();
+    unsigned int i=this->m_instance->itemCount();
+    this->m_instance->addItem(new ListViewItem());
+    unsigned int i2=this->m_instance->itemCount();
     CPPUNIT_ASSERT(i2==++i);
 
   }
@@ -309,9 +309,9 @@ public:
     *
     */
   void testListViewAddColumn(){
-    unsigned int i=this->m_caption->columnCount();
-    this->m_caption->addColumn(new ListViewColumn());
-    unsigned int i2=this->m_caption->columnCount();
+    unsigned int i=this->m_instance->columnCount();
+    this->m_instance->addColumn(new ListViewColumn());
+    unsigned int i2=this->m_instance->columnCount();
     CPPUNIT_ASSERT(i2==++i);
 
   }

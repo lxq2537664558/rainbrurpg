@@ -285,7 +285,9 @@ preDrawingComputation(MultiColumnList* mcl){
 
 /** Draw the boder of the widget
   *
-  * We use mMclAbsCorners to draw it.
+  * Here we draw the external border of the MultiColumnList and the 
+  * bottom line of the header.We use \ref mMclAbsCorners and 
+  * \ref mMclDrawnCorners to draw it.
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
@@ -312,7 +314,7 @@ void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 
   //Header bottom line
   qr->drawLine( mMclAbsCorners.left, mMclHeaderBottomLine, 
-		mMclAbsCorners.right,mMclHeaderBottomLine, 
+		mMclDrawnCorners.right,mMclHeaderBottomLine, 
 		mMclBorderColor ); 
 
 }
@@ -416,6 +418,8 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     qr->setUseParentScissor(false);
     qr->setScissorRectangle(colCaptionScissor);
     qr->setUseParentScissor(true);  
+    mColumnCaption.left += HEADER_BG_SPACE // Starts to the background
+      + HEADER_TEXT_MARGIN;                // Adds a left margin
     qr->drawText(tsMclColumnHeader, vHeader->getCaption(), 
 		 mColumnCaption, false);
   }  
@@ -429,7 +433,7 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     // Compute scissor rectangle
     Rectangle leftLineScissor(mMclAbsCorners);
     leftLineScissor.top -= parentVerticalScrollbarValue;
-    
+
     // Cut to the parentUnderTitleY value
     if ( leftLineScissor.top < parentUnderTitleY) 
       leftLineScissor.top = parentUnderTitleY;
@@ -437,13 +441,20 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
     leftLineScissor.left -= parentHorizontalScrollbarValue;
     if (leftLineScissor.left < parentLeftX)
       leftLineScissor.left = parentLeftX;
-
-
-    qr->setScissorRectangle(leftLineScissor);
     
-    // Let the line go to the bottom of the list eventy if the parent scrollbar
+    // Let the line go to the bottom of the list even if the parent scrollbar
     // value changed
     y2 += parentVerticalScrollbarValue;
+
+
+    /* v0.0.5-185 : Fix the left line bug when window is smaller
+     * than the MultiColumnList and vertical scrollbar is move down.
+     *
+     */
+    leftLineScissor.bottom = mMclDrawnCorners.bottom;
+    leftLineScissor.bottom -= parentVerticalScrollbarValue;
+
+    qr->setScissorRectangle(leftLineScissor);
 
     // Render the line
     qr->drawLine( xLeft, y1, xLeft, y2, mMclBorderColor );
@@ -648,6 +659,17 @@ drawAllItems(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   if (itemScissorRect.left < parentLeftX)
     itemScissorRect.left = parentLeftX;
 
+  /* Compute scissor bottom
+   *
+   * v0.0.5-185 : The following fix a bug when the parent is smaller than
+   * the multicolumnlist and the vertical scrollbar is scrolled down. The
+   * item caption was drawn after the bottom line of the multicolumnlist.
+   *
+   */
+  int mclBottomDev = mcl->getAbsoluteCorners().bottom 
+    - parentVerticalScrollbarValue;
+  if (itemScissorRect.bottom > mclBottomDev)
+    itemScissorRect.bottom = mclBottomDev;
 
   // Drawing items
   for (ili = itemList.begin(); ili != itemList.end(); ili++){

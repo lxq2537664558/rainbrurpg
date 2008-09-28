@@ -20,10 +20,22 @@
  *
  */
 
+/** \file tools/xident/deleteserver.cpp
+  * Implements a dialog used to delete a server
+  *
+  */
+
 #include "deleteserver.h"
 
 #include <logger.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::DeleteServer "DeleteServer" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::DeleteServer) DeleteServerMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::DeleteServer::ID_NYI, RainbruRPG::Gui::DeleteServer::onNotYetImplemented),
@@ -32,6 +44,13 @@ FXDEFMAP(RainbruRPG::Gui::DeleteServer) DeleteServerMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::DeleteServer "DeleteServer" class
+  * uses the DeleteServerMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::DeleteServer,FXDialogBox,DeleteServerMap,ARRAYNUMBER(DeleteServerMap));
 
 /** The deleteserver dialog constructor

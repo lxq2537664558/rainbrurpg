@@ -20,10 +20,15 @@
  *
  */
 
-/* Modifications :
- *
- * - 27 mar 2007 : Add the FloodManel
- */ 
+/** \file tools/netflooder/netflooderwindow.h
+  * Declares the NetFlooder's main window
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 27 mar 2007 : Add the FloodManel
+  *
+  */
+ 
 #ifndef NET_FLOODER_WINDOW_H
 #define NET_FLOODER_WINDOW_H
 

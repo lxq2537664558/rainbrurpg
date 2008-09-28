@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tools/netflooder/ftreliable.cpp
+  * Implements a test for reliable/non-reliable packets
+  *
+  */
+
 #include "ftreliable.h"
 #include "timer.h"
 

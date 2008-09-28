@@ -14,28 +14,45 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with RainbruRPG; if not, write to the Free Software
+ *  along with Foobar; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  *  02110-1301  USA
  *
  */
 
-/** \file tools/transmsg/transmanager.h
-  * Declares a translation manager
+/** \file testwindow.h
+  * Declares a sample window for test purpose
+  *
+  * \todo This window seems to be unused in example programs. 
   *
   * Modifications :
-  * - 22 sep 2008 : Single file documentation
-  * - 04 jan 2008 : GNU header added
-  *
-  * \todo Should contain code. This file does not contains any code and should
-  *       be the manager for translation. Using the 
-  *       \ref RainbruRPG::Trans::TransFile "TransFile" class, it could
-  *       search translatable string in a whole directory (using \c dirent.h
-  *       for directory informations).
+  * - 19 sep 2008 : Single file documentation
   *
   */
 
-#ifndef TRANS_MANAGER_H
-#define TRANS_MANAGER_H
+#ifndef TEST_WINDOW_H
+#define TEST_WINDOW_H
 
-#endif // TRANS_MANAGER_H
+#include "window.h"
+
+namespace RainbruRPG{
+  namespace Terminal{
+
+    /** A test window for TerminalApp
+      *
+      * This creates a sample terminalAPI window for
+      * in-development test purpose.
+      */
+    class TestWindow : public Window{
+
+    public:
+      TestWindow();
+      ~TestWindow();
+    };
+
+  }
+}
+
+
+#endif // TEST_WINDOW_H
+

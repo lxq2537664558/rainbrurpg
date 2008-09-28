@@ -71,7 +71,7 @@ class ScrollingPanelTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST_SUITE_END();
 protected:
   /** The tested ScrollingPanel instance */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test case
@@ -87,14 +87,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Deletes the tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the setLogicalSize function
@@ -103,10 +103,10 @@ public:
   void testScrollingPanelLogicalSize(){ 
     int w=10;
     int h=12;
-    this->m_caption->setLogicalSize(w, h);
+    this->m_instance->setLogicalSize(w, h);
 
-    int w2=this->m_caption->getLogicalWidth();
-    int h2=this->m_caption->getLogicalHeight();
+    int w2=this->m_instance->getLogicalWidth();
+    int h2=this->m_instance->getLogicalHeight();
  
     CPPUNIT_ASSERT( w==w2 && h==h2 );
   }
@@ -117,10 +117,10 @@ public:
   void testScrollingPanelPhysicalSize(){ 
     int w=10;
     int h=12;
-    this->m_caption->setPhysicalSize(w, h);
+    this->m_instance->setPhysicalSize(w, h);
 
-    int w2=this->m_caption->getPhysicalWidth();
-    int h2=this->m_caption->getPhysicalHeight();
+    int w2=this->m_instance->getPhysicalWidth();
+    int h2=this->m_instance->getPhysicalHeight();
  
     CPPUNIT_ASSERT( w==w2 && h==h2 );
   }
@@ -130,8 +130,8 @@ public:
     */
   void testScrollingPanelXOffset(){
     int x=14;
-    this->m_caption->setXOffset(x);
-    int x2=this->m_caption->getXOffset();
+    this->m_instance->setXOffset(x);
+    int x2=this->m_instance->getXOffset();
 
     CPPUNIT_ASSERT( x==x2 );
   }
@@ -141,8 +141,8 @@ public:
     */
   void testScrollingPanelYOffset(){
     int y=15;
-    this->m_caption->setYOffset(y);
-    int y2=this->m_caption->getYOffset();
+    this->m_instance->setYOffset(y);
+    int y2=this->m_instance->getYOffset();
 
     CPPUNIT_ASSERT( y==y2 );
   }
@@ -151,12 +151,12 @@ public:
     *
     */
   void testScrollingPanelGoDown(){
-    this->m_caption->setLogicalHeight(40);
-    this->m_caption->setPhysicalHeight(20);
+    this->m_instance->setLogicalHeight(40);
+    this->m_instance->setPhysicalHeight(20);
     int y=8;
-    this->m_caption->setYOffset(y);
-    this->m_caption->goDown();
-    int y2=this->m_caption->getYOffset();
+    this->m_instance->setYOffset(y);
+    this->m_instance->goDown();
+    int y2=this->m_instance->getYOffset();
     CPPUNIT_ASSERT( y2==++y );
   }
 
@@ -164,12 +164,12 @@ public:
     *
     */
   void testScrollingPanelGoUp(){
-    this->m_caption->setLogicalHeight(40);
-    this->m_caption->setPhysicalHeight(20);
+    this->m_instance->setLogicalHeight(40);
+    this->m_instance->setPhysicalHeight(20);
     int y=16;
-    this->m_caption->setYOffset(y);
-    this->m_caption->goUp();
-    int y2=this->m_caption->getYOffset();
+    this->m_instance->setYOffset(y);
+    this->m_instance->goUp();
+    int y2=this->m_instance->getYOffset();
     CPPUNIT_ASSERT( y2==--y );
   }
 
@@ -177,12 +177,12 @@ public:
     *
     */
   void testScrollingPanelGoLeft(){
-    this->m_caption->setLogicalWidth(40);
-    this->m_caption->setPhysicalWidth(20);
+    this->m_instance->setLogicalWidth(40);
+    this->m_instance->setPhysicalWidth(20);
     int x=10;
-    this->m_caption->setXOffset(x);
-    this->m_caption->goLeft();
-    int x2=this->m_caption->getXOffset();
+    this->m_instance->setXOffset(x);
+    this->m_instance->goLeft();
+    int x2=this->m_instance->getXOffset();
     CPPUNIT_ASSERT( x2==--x );
   }
 
@@ -190,12 +190,12 @@ public:
     *
     */
   void testScrollingPanelGoRight(){
-    this->m_caption->setLogicalWidth(40);
-    this->m_caption->setPhysicalWidth(20);
+    this->m_instance->setLogicalWidth(40);
+    this->m_instance->setPhysicalWidth(20);
     int x=12;
-    this->m_caption->setXOffset(x);
-    this->m_caption->goRight();
-    int x2=this->m_caption->getXOffset();
+    this->m_instance->setXOffset(x);
+    this->m_instance->goRight();
+    int x2=this->m_instance->getXOffset();
     CPPUNIT_ASSERT( x2==++x );
   }
 };

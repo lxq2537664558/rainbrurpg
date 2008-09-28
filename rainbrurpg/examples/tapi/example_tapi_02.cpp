@@ -20,11 +20,11 @@
  *
  */
 
-/** \file example_tapi_01.cpp
+/** \file example_tapi_02.cpp
   * A test for terminalAPI
   *
   * Modifications :
-  * - 06 sep 2008 : Documentation
+  * - 06 sep 2008 : Single file documentation
   *
   */
 #include <stdio.h>

@@ -74,7 +74,7 @@ void RainbruRPG::Core::gsGameBase::pause(){
   * It restarts after a pause call.
   */
 void RainbruRPG::Core::gsGameBase::resume(){
-
+  LOGI("gsGameBase::resume called");
 }
 
 /** Runs the gamestate

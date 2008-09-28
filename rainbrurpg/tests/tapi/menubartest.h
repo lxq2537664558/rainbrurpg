@@ -64,7 +64,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
 
@@ -81,14 +81,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the addMenu function
@@ -98,8 +98,8 @@ public:
     *
     */
   void testMenuBarAddMenu(){ 
-    this->m_caption->addMenu(new Menu("MenuTest"));
-    unsigned int ret=this->m_caption->getSize();
+    this->m_instance->addMenu(new Menu("MenuTest"));
+    unsigned int ret=this->m_instance->getSize();
     CPPUNIT_ASSERT( ret==1 );
   }
 

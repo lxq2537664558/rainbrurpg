@@ -20,11 +20,23 @@
  *
  */
 
+/** \file tools/xident/modifyserver.cpp
+  * Implements a dialog used to modify server
+  *
+  */
+
 #include "modifyserver.h"
 
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::ModifyServer "ModifyServer" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::ModifyServer) ModifyServerMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::ModifyServer::ID_NYI, RainbruRPG::Gui::ModifyServer::onNotYetImplemented),
@@ -35,6 +47,13 @@ FXDEFMAP(RainbruRPG::Gui::ModifyServer) ModifyServerMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::ModifyServer "ModifyServer" class
+  * uses the ModifyServerMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::ModifyServer,FXDialogBox,ModifyServerMap,ARRAYNUMBER(ModifyServerMap));
 
 /** The modifyserver dialog constructor

@@ -66,7 +66,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -82,14 +82,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the addColumn function
@@ -99,8 +99,8 @@ public:
     */
   void testListItemAddColumn(){ 
     const char* cap="ColumnCaptionTest";
-    this->m_caption->addColumn(cap);
-    unsigned int count=this->m_caption->columnCount();
+    this->m_instance->addColumn(cap);
+    unsigned int count=this->m_instance->columnCount();
     CPPUNIT_ASSERT( count==1 );
   }
 
@@ -112,9 +112,9 @@ public:
     */
   void testListItemGetColumn(){ 
     const char* cap="ColumnCaptionTest";
-    this->m_caption->addColumn(cap);
+    this->m_instance->addColumn(cap);
     const char* colContent;
-    colContent=this->m_caption->getColumn(0);
+    colContent=this->m_instance->getColumn(0);
     int ret=strcmp(colContent, cap);
     CPPUNIT_ASSERT( ret==0 );
   }

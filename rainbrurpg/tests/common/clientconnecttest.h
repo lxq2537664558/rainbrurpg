@@ -122,7 +122,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_testedClass;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -138,14 +138,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_testedClass = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_testedClass; 
+    delete this->m_instance; 
   }
 
   /** Test an inexistant client connection
@@ -155,7 +155,7 @@ public:
     *
     */
   void testInexistant(){
-    tClientConnectReturn ret=this->m_testedClass->connect(CLIENT_NAME, "");
+    tClientConnectReturn ret=this->m_instance->connect(CLIENT_NAME, "");
     CPPUNIT_ASSERT( ret==CCR_INEXISTANT_USER );
 
     if (ret!=CCR_INEXISTANT_USER){
@@ -169,7 +169,7 @@ public:
     *
     */
   void testStartup(){
-    tClientConnectReturn ret=this->m_testedClass->getResponse();
+    tClientConnectReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CCR_UNKNOWN_ERROR );
   }
 
@@ -211,7 +211,7 @@ public:
     */
   void testEmail(){
 
-    tClientConnectReturn ret=this->m_testedClass
+    tClientConnectReturn ret=this->m_instance
       ->connect(CLIENT_NAME, CLIENT_WRONG_PWD);
     CPPUNIT_ASSERT( ret==CCR_EMAIL_NOT_VALIDATED );
 
@@ -230,7 +230,7 @@ public:
     */
   void testWrongPassword(){
 
-    tClientConnectReturn ret=this->m_testedClass
+    tClientConnectReturn ret=this->m_instance
       ->connect(CLIENT_NAME, CLIENT_WRONG_PWD);
 
     if (ret!=CCR_WRONG_PWD){
@@ -258,7 +258,7 @@ public:
     *
     */
   void testBlacklist(){
-    tClientConnectReturn ret=this->m_testedClass
+    tClientConnectReturn ret=this->m_instance
       ->connect(CLIENT_NAME, CLIENT_PWD);
     CPPUNIT_ASSERT( ret==CCR_BLACKLIST );
 
@@ -278,7 +278,7 @@ public:
     *
     */
   void testSuccess(){
-    tClientConnectReturn ret=this->m_testedClass
+    tClientConnectReturn ret=this->m_instance
       ->connect(CLIENT_NAME, CLIENT_PWD);
     CPPUNIT_ASSERT( ret==CCR_SUCCESS );
 

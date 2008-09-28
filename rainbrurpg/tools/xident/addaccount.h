@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 08 aug 2007 : Starting implementation
- *
- */
+/** \file tools/xident/addaccount.h
+  * Declares a dialog used to add an account
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 08 aug 2007 : Starting implementation
+  *
+  */
 
 #ifndef XIDENT_ADD_ACCOUNT_H
 #define XIDENT_ADD_ACCOUNT_H

@@ -85,7 +85,7 @@ protected:
   /** An instance of the CurlAccountAdd class
     *
     */
-  TESTEDCLASS	*m_testedClass;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -101,14 +101,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_testedClass = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_testedClass; 
+    delete this->m_instance; 
   }
 
   /** Try to delete an inexistant account
@@ -119,8 +119,8 @@ public:
     *
     */
   void testInexistant(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( bret==false);
 
   }
@@ -150,8 +150,8 @@ public:
     *
     */
   void testDeleteAccount(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( bret==true);
 
   }

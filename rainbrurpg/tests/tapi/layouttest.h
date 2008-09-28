@@ -70,7 +70,7 @@ protected:
   /** An instance of the Layout widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -86,14 +86,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the Layout x origin
@@ -104,8 +104,8 @@ public:
     */
   void testLaoutXOrigin(){ 
     int x=10;
-    this->m_caption->setXOrigin(x);
-    int ret=this->m_caption->getXOrigin();
+    this->m_instance->setXOrigin(x);
+    int ret=this->m_instance->getXOrigin();
     CPPUNIT_ASSERT( ret==x );
   }
 
@@ -117,8 +117,8 @@ public:
     */
   void testLaoutYOrigin(){ 
     int x=12;
-    this->m_caption->setYOrigin(x);
-    int ret=this->m_caption->getYOrigin();
+    this->m_instance->setYOrigin(x);
+    int ret=this->m_instance->getYOrigin();
     CPPUNIT_ASSERT( ret==x );
   }
 

@@ -146,3 +146,27 @@ drawLabel(QuadRenderer* qr, Rectangle corners, String caption,
   qr->drawText(tsLabel, caption, corners, false);
   qr->reset();
 }
+
+/** Get the minimal height of the vertical scrollbar
+  *
+  * As soNavigation does not handle the Window TitleBar and ScrollBars
+  * this function always return zero.
+  *
+  * \return Always 0
+  *
+  */
+int RainbruRPG::OgreGui::soNavigation::getVScrollBarMinHeight(void){
+  return 0;
+}
+
+/** Get the minimal width of the horizontal scrollbar
+  *
+  * As soNavigation does not handle the Window TitleBar and ScrollBars
+  * this function always return zero.
+  *
+  * \return Always 0
+  *
+  */
+int RainbruRPG::OgreGui::soNavigation::getHScrollBarMinWidth(void){
+  return 0;
+}

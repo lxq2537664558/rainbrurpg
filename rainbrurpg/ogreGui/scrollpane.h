@@ -106,6 +106,12 @@ namespace RainbruRPG{
       * and \ref ScrollPane::getContentRectangle() "getContentRectangle()"
       * functions.
       *
+      * \section ScrollBars max values
+      *
+      * The maximal values of scrollbars are automatically ajusted. These
+      * values are computed in the \ref setScrollBarsVisbleStatus()
+      * function.
+      *
       * \note A scrollpane test window is created if the \c configure script
       *       is called with the \c --enable-scrollp-test option.
       *

@@ -128,7 +128,7 @@ protected:
   /** An instance of the CurlAccountAdd class
     *
     */
-  TESTEDCLASS	*m_testedClass;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -144,14 +144,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_testedClass = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_testedClass; 
+    delete this->m_instance; 
   }
 
   /** Test the initial value of the response
@@ -161,7 +161,7 @@ public:
     *
     */
   void testInitialResponse(){
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret== CAA_UNDEFINED);
 
   }
@@ -173,11 +173,11 @@ public:
     *
     */
   void testEmptyName(){
-    this->m_testedClass->setName("");
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName("");
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_EMPTY_NAME);
 
   }
@@ -189,11 +189,11 @@ public:
     *
     */
   void testEmptyPassword(){
-   this->m_testedClass->setName(CLIENT_NAME);
-    bool bret=this->m_testedClass->perform();
+   this->m_instance->setName(CLIENT_NAME);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_EMPTY_PWD);
 
   }
@@ -205,12 +205,12 @@ public:
     *
     */
   void testEmptyMail(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    this->m_instance->setPassword(CLIENT_PWD);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_EMPTY_MAIL);
 
   }
@@ -223,13 +223,13 @@ public:
     *
     */
   void testMissingAt(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    this->m_testedClass->setMail(CLIENT_MAIL_EAT);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    this->m_instance->setPassword(CLIENT_PWD);
+    this->m_instance->setMail(CLIENT_MAIL_EAT);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_MAIL_SIGN_AT);
   }
 
@@ -241,13 +241,13 @@ public:
     *
     */
   void testMissingDot(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    this->m_testedClass->setMail(CLIENT_MAIL_EDOT);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    this->m_instance->setPassword(CLIENT_PWD);
+    this->m_instance->setMail(CLIENT_MAIL_EDOT);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_MAIL_SIGN_DOT);
   }
 
@@ -259,13 +259,13 @@ public:
     *
     */
   void testAddAccount(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    this->m_testedClass->setMail(CLIENT_MAIL);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    this->m_instance->setPassword(CLIENT_PWD);
+    this->m_instance->setMail(CLIENT_MAIL);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( bret==true);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_SUCCESS);
   }
 
@@ -288,13 +288,13 @@ public:
     *
     */
   void testExists(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    this->m_testedClass->setMail(CLIENT_MAIL_EDOT);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    this->m_instance->setPassword(CLIENT_PWD);
+    this->m_instance->setMail(CLIENT_MAIL_EDOT);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_EXISTS);
 
   }
@@ -306,13 +306,13 @@ public:
     *
     */
   void testMailExists(){
-    this->m_testedClass->setName(CLIENT_NAME2);
-    this->m_testedClass->setPassword(CLIENT_PWD);
-    this->m_testedClass->setMail(CLIENT_MAIL);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME2);
+    this->m_instance->setPassword(CLIENT_PWD);
+    this->m_instance->setMail(CLIENT_MAIL);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( !bret);
 
-    tCurlAccountAddReturn ret=this->m_testedClass->getResponse();
+    tCurlAccountAddReturn ret=this->m_instance->getResponse();
     CPPUNIT_ASSERT( ret==CAA_MAIL_INUSE);
   }
 };

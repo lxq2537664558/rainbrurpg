@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tools/netflooder/floodertestbase.cpp
+  * Implements the base class of all netflooder's tests
+  *
+  */
+
 #include "floodertestbase.h"
 
 /** The default constructor

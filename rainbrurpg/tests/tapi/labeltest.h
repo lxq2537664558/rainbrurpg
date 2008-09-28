@@ -114,7 +114,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -130,14 +130,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the Label caption
@@ -148,8 +148,8 @@ public:
     */
   void testLabelCaption(){ 
     std::string t="TestCaption";
-    this->m_caption->setText(t);
-    string ret = m_caption->getText();
+    this->m_instance->setText(t);
+    string ret = m_instance->getText();
     CPPUNIT_ASSERT( t == ret );
   }
 
@@ -161,8 +161,8 @@ public:
     */
   void testLabelX(){ 
     int x=1;
-    this->m_caption->setX(x);
-    int ret=this->m_caption->getX();
+    this->m_instance->setX(x);
+    int ret=this->m_instance->getX();
     CPPUNIT_ASSERT( x==ret );
   }
 
@@ -174,8 +174,8 @@ public:
     */
   void testLabelY(){ 
     int y=2;
-    this->m_caption->setY(y);
-    int ret=this->m_caption->getY();
+    this->m_instance->setY(y);
+    int ret=this->m_instance->getY();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -187,8 +187,8 @@ public:
     */
   void testLabelWidth(){ 
     int y=3;
-    this->m_caption->setWidth(y);
-    int ret=this->m_caption->getWidth();
+    this->m_instance->setWidth(y);
+    int ret=this->m_instance->getWidth();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -200,8 +200,8 @@ public:
     */
   void testLabelHeight(){ 
     int y=4;
-    this->m_caption->setHeight(y);
-    int ret=this->m_caption->getHeight();
+    this->m_instance->setHeight(y);
+    int ret=this->m_instance->getHeight();
     CPPUNIT_ASSERT( y==ret );
   }
 
@@ -212,8 +212,8 @@ public:
     *
     */
   void testLabelHasFocus(){
-    this->m_caption->setFocus(true);
-    CPPUNIT_ASSERT( this->m_caption->getFocus() );
+    this->m_instance->setFocus(true);
+    CPPUNIT_ASSERT( this->m_instance->getFocus() );
 
   }
 
@@ -224,8 +224,8 @@ public:
     *
     */
   void testLabelHasntFocus(){
-    this->m_caption->setFocus(false);
-    CPPUNIT_ASSERT( !this->m_caption->getFocus() );
+    this->m_instance->setFocus(false);
+    CPPUNIT_ASSERT( !this->m_instance->getFocus() );
   }
 
   /** Tests if the label can take focus
@@ -234,7 +234,7 @@ public:
     *
     */
   void testLabelCanTakeFocus(){
-    CPPUNIT_ASSERT( !this->m_caption->canHaveFocus());
+    CPPUNIT_ASSERT( !this->m_instance->canHaveFocus());
   }
 
 };

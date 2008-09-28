@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tools/xident/servertechnote.h
+  * Declares a dialog used to show a server's technical note
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef XIDENT_SERVER_TECHNOTE_DIALOG_H
 #define XIDENT_SERVER_TECHNOTE_DIALOG_H
 

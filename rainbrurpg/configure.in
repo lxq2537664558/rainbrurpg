@@ -199,6 +199,7 @@ AC_CONFIG_FILES([Makefile			\
 	  mapdata/materials/Makefile		\
 	  mapdata/materials/textures/Makefile	\
 	  mapdata/materials/scripts/Makefile	\
+	  mapdata/materials/programs/Makefile	\
 	  mapdata/models/Makefile		\
 	  \
 	  RainbruRPG.lsm RainbruRPG.spec	\

@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tools/netflooder/enetflooderclient.cpp
+  * Implements the enet client used by NetFlooder
+  *
+  */
+
 #include "enetflooderclient.h"
 
 #include <logger.h>

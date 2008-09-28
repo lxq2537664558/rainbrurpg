@@ -70,7 +70,7 @@ protected:
   /** An instance of the ListBoxItem widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -86,14 +86,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the caption of a ListBoxItem
@@ -104,8 +104,8 @@ public:
     */
   void testListBoxItemCaption(){ 
     std::string c="CaptionTest";
-    this->m_caption->setCaption(c.c_str());
-    string c2=this->m_caption->getCaption();
+    this->m_instance->setCaption(c.c_str());
+    string c2=this->m_instance->getCaption();
     CPPUNIT_ASSERT( c == c2 );
   }
 
@@ -116,11 +116,11 @@ public:
     *
     */
   void testListBoxItemToggle(){
-    this->m_caption->toggle();
-    CPPUNIT_ASSERT( this->m_caption->isChecked() );
+    this->m_instance->toggle();
+    CPPUNIT_ASSERT( this->m_instance->isChecked() );
 
-    this->m_caption->toggle();
-    CPPUNIT_ASSERT( !this->m_caption->isChecked() );
+    this->m_instance->toggle();
+    CPPUNIT_ASSERT( !this->m_instance->isChecked() );
 
   }
 
@@ -130,8 +130,8 @@ public:
     *
     */
   void testListBoxItemCheck(){
-    this->m_caption->setChecked(true);
-    CPPUNIT_ASSERT( this->m_caption->isChecked() );
+    this->m_instance->setChecked(true);
+    CPPUNIT_ASSERT( this->m_instance->isChecked() );
 
   }
 

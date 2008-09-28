@@ -20,11 +20,15 @@
  *
  */
 
-/* Modifications :
- * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
- * - 29 may 2007 : Adding the 'ftp' column
- *
- */
+/** \file tools/xident/addserver.h
+  * Declares a dialog used to add a server
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 28 jun 2007 : Adding the 'uniquename' and 'type' column
+  * - 29 may 2007 : Adding the 'ftp' column
+  *
+  */
 
 #ifndef XIDENT_ADD_SERVER_H
 #define XIDENT_ADD_SERVER_H

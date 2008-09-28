@@ -669,6 +669,7 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl, bool geoWasDirty ){
+
   if (geoWasDirty){
     mMultiColumnListDrawer->preDrawingComputation( mcl );
   }
@@ -724,4 +725,21 @@ drawDialog(QuadRenderer* vQr, Dialog* vDialog){
 
 }
 
+/** Get the minimal height of the vertical scrollbar
+  *
+  * \return Always 70.
+  *
+  */
+int RainbruRPG::OgreGui::soBetaGui::getVScrollBarMinHeight(void){
+  return 70;
+}
+
+/** Get the minimal width of the horizontal scrollbar
+  *
+  * \return Always 70.
+  *
+  */
+int RainbruRPG::OgreGui::soBetaGui::getHScrollBarMinWidth(void){
+  return 70;
+}
 

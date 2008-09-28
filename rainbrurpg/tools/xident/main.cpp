@@ -20,11 +20,20 @@
  *
  */
 
+/** \file tools/xident/main.cpp
+  * Declares the XIdent main entry
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #include <iostream>
 #include <string>
 
 #include <logger.h>
 
+/// Needed to include version without Ogre
 #define INCLUDE_VERSION_WITHOUT_OGRE
 #include <version.h>
 
@@ -38,7 +47,10 @@ using namespace std;
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Network::Ident;
 
+/// The correct user name hash sum
 #define USER_HASH "20DB5DCC44B3A44C4BC0592C6AB55B8216932FE7"
+
+/// The correct password hash sum
 #define PWD_HASH  "AC3E7B007D7AB0BA379FAA8AB62D9DA35C5444F4"
 
 /// An enumeration that defines the connection response
@@ -55,6 +67,9 @@ tXIdentConnection connect();
 
 
 /** xIdent main entry
+  *
+  * \param argc The number of command-line arguments
+  * \param argv The array of command-line arguments
   *
   */
 int main(int argc, char **argv){

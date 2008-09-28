@@ -20,11 +20,23 @@
  *
  */
 
+/** \file tools/netflooder/waitingpanel.cpp
+  * Implements the NetFlooder's waiting panel
+  *
+  */
+
 #include "waitingpanel.h"
 
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::WaitingPanel "WaitingPanel" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::WaitingPanel) WaitingPanelMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::WaitingPanel::ID_NYI, RainbruRPG::Gui::WaitingPanel::onNotYetImplemented),
@@ -32,6 +44,13 @@ FXDEFMAP(RainbruRPG::Gui::WaitingPanel) WaitingPanelMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::WaitingPanel "WaitingPanel" class
+  * uses the WaitingPanelMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::WaitingPanel,FXPacker,WaitingPanelMap,ARRAYNUMBER(WaitingPanelMap));
 
 /** The constructor

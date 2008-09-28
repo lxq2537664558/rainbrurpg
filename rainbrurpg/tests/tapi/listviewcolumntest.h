@@ -65,7 +65,7 @@ protected:
   /** An instance that is tested
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -81,14 +81,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the ListViewColumn's caption
@@ -97,8 +97,8 @@ public:
     */
   void testListViewColumnCaption(){ 
     const char* cap="CaptionTest";
-    this->m_caption->setCaption(cap);
-    const char* cap2=this->m_caption->getCaption();
+    this->m_instance->setCaption(cap);
+    const char* cap2=this->m_instance->getCaption();
     CPPUNIT_ASSERT( strcmp(cap, cap2)==0 );
   }
 
@@ -107,8 +107,8 @@ public:
     */
   void testListViewColumnWidth(){ 
     int x=12;
-    this->m_caption->setWidth(x);
-    int ret=this->m_caption->getWidth();
+    this->m_instance->setWidth(x);
+    int ret=this->m_instance->getWidth();
     CPPUNIT_ASSERT( ret==x );
   }
 

@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : Adds a 'persolist' menu item
- *
- */
+/** \file tools/xident/xidentwindow.h
+  * Declares the xIdent main window
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 19 jul 2007 : Adds a 'persolist' menu item
+  *
+  */
 
 #include <fox-1.6/fx.h>
 

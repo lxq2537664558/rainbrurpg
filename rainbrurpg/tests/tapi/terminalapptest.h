@@ -66,7 +66,7 @@ class TerminalAppTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** The tested instance of TerminalApp */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
 
@@ -82,23 +82,23 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the addWindow function
     *
     */
   void testTerminalAppAddWindow(){ 
-    unsigned int wn=this->m_caption->windowCount();
-    this->m_caption->addWindow(new Window());
-    unsigned int wn2=this->m_caption->windowCount();
+    unsigned int wn=this->m_instance->windowCount();
+    this->m_instance->addWindow(new Window());
+    unsigned int wn2=this->m_instance->windowCount();
     CPPUNIT_ASSERT( wn2==++wn );
   }
 
@@ -106,8 +106,8 @@ public:
     *
     */
   void testTerminalGetMenuBar(){
-    this->m_caption->setMenubar(new MenuBar());
-    MenuBar* mb=this->m_caption->getMenubar();
+    this->m_instance->setMenubar(new MenuBar());
+    MenuBar* mb=this->m_instance->getMenubar();
     CPPUNIT_ASSERT( mb!=NULL );
   }
 };

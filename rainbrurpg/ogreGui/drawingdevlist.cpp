@@ -122,10 +122,9 @@ bool RainbruRPG::OgreGui::DrawingDevList::empty()const{
   * \return A std string
   *
   */
-const std::string& RainbruRPG::OgreGui::DrawingDevList::toString(void)const{
+std::string RainbruRPG::OgreGui::DrawingDevList::toString(void)const{
   ostringstream s;
   s << "DrawingDevList : " 
-    << "  size : " << mList.size()
-    << endl;
-
+    << "  size : " << mList.size();
+  return s.str();
 }

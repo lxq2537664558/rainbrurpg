@@ -20,57 +20,32 @@
  *
  */
 
-/** \file curlpersoheaderaddtest.h
-  * Implements the unit test for the CurlPersoHeaderAdd class
+/** \file languagelistitemtest.h
+  * Implements the unit tests of the LanguageListItem class
   *
   * Modifications :
-  * - 27 aug 2008 : Single file documentation
-  * - 19 jul 2007 : Starting implementation
+  * - 27 sep 2008 : Starting implementation
   *
   */
 
-#ifndef CURL_PERSO_HEADER_ADD_TEST_H
-#define CURL_PERSO_HEADER_ADD_TEST_H
+#ifndef _LANGUAGE_LIST_ITEM_TEST_H_
+#define _LANGUAGE_LIST_ITEM_TEST_H_
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/portability/Stream.h>
-
-#include <curlserverdelete.h>
-#include <string>
-
-#include "virtualserver.h"
-
-using namespace std;
-
-/** A test class for CurlPersoHeaderAdd
+/** A test class for LanguageListItem widget
   *
   */
 template<class TESTEDCLASS> 
-class CurlPersoHeaderAddTest : public CPPUNIT_NS::TestFixture 
+class LanguageListItemTest : public CPPUNIT_NS::TestFixture 
 {
 
   /// Start the test 
-  CPPUNIT_TEST_SUITE( CurlPersoHeaderAddTest );
-
-  /** Tests the initial values
-    *
-    * \sa testInitialValues
-    *
-    */
-  CPPUNIT_TEST(testInitialValues);
-
-  /** Tests the perso name
-    *
-    * \sa testName
-    *
-    */
-  CPPUNIT_TEST(testName);
+  CPPUNIT_TEST_SUITE( LanguageListItemTest );
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
 
 protected:
-  /** An instance of the tested class
+  /** An instance of the caption widget
     *
     */
   TESTEDCLASS	*m_instance;
@@ -98,29 +73,8 @@ public:
   void tearDown(){ 
     delete this->m_instance; 
   }
+  
 
-  /** Tests if the initial values are as expected
-    *
-    */
-  void testInitialValues(){
-    std::string name=this->m_instance->getName();
-    CPPUNIT_ASSERT(name=="");
-  }
 
-  /** Tests the perso name
-    *
-    * Simply change the name with setName() and test with getName() if
-    * it was correctly changed.
-    *
-    */
-  void testName(){
-    std::string name="New name";
-    this->m_instance->setName(name);
-
-    std::string name2=this->m_instance->getName();
-    CPPUNIT_ASSERT(name==name2);
-  }
 };
-
-
-#endif // CURL_PERSO_HEADER_ADD_TEST_H
+#endif // _LANGUAGE_LIST_ITEM_TEST_H_

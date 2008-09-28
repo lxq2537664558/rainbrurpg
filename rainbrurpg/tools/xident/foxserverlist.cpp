@@ -20,6 +20,11 @@
  *
  */
 
+/** \file tools/xident/foxserverlist.cpp
+  * Implements the XIdent server list widget
+  *
+  */
+
 #include "foxserverlist.h"
 #include "addserver.h"
 #include "deleteserver.h"
@@ -28,6 +33,13 @@
 #include "servertechnote.h"
 #include <logger.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::FoxServerList "FoxServerList" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::FoxServerList) FoxServerListMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxServerList::ID_NYI, RainbruRPG::Gui::FoxServerList::onNotYetImplemented),
@@ -40,6 +52,13 @@ FXDEFMAP(RainbruRPG::Gui::FoxServerList) FoxServerListMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::FoxServerList "FoxServerList" class
+  * uses the FoxServerListMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::FoxServerList,FXPacker,FoxServerListMap,ARRAYNUMBER(FoxServerListMap));
 
 /** The constructor

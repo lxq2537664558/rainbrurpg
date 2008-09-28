@@ -80,6 +80,7 @@ BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption,
 
   makeCorners();
   mScrollPane->setScrollBarsVisbleStatus();
+  computeMinimumSize();
 }
 
 /** The destructor
@@ -229,16 +230,24 @@ void BetaGUI::Window::resize(int px, int py){
   // Now devX and devY contains position of mouse cursor relative
   // to Window (or Container) top left corner.
 
-  // Compute new width
-  if (px-corners.left<minimalWidth){
+  /* Compute new width
+   *
+   * v0.0.5-185 : The devX addition fix the attraction bug
+   *
+   */
+  if (((px+devX) - getLeft()) < minimalWidth){
     new_width= minimalWidth;
   }
   else{
     new_width=  (px - getLeft()) + devX;
   }
 
-  // Compute new height
-  if (py-corners.top<minimalHeight){ 
+  /* Compute new height
+   *
+   * v0.0.5-185 : The devY addition fix the attraction bug
+   *
+   */
+  if (((py+devY) - getTop()) < minimalHeight){ 
     new_height= minimalHeight;
   }
   else{
@@ -556,4 +565,27 @@ BetaGUI::Window::getHorizontalScrollbar(void){
 RainbruRPG::OgreGui::VScrollBar* 
 BetaGUI::Window::getVerticalScrollbar(void){
   return mScrollPane->getVerticalScrollbar();
+}
+
+/** Computation of the minimal size of the window
+  *
+  * The minimal size of the windows must depends only on Skin values. In case
+  * some skins are used, the size will be computed with real used values.
+  * In both width and height, the size of the ResizeGrip must be used.
+  *
+  * The minimal height depends on the TitleBar's height if the window is
+  * movable and the vertical scrollbar's height. 
+  *
+  * The minimal width depends only on the horizontal scrollbar's width.
+  *
+  */
+void BetaGUI::Window::computeMinimumSize(void){
+  //minimalWidth(50),
+  minimalHeight =  mSkin->getVScrollBarMinHeight();
+
+  if (this->mTitleBar){
+    minimalHeight += mSkin->getTitleBarHeight();
+  }
+
+  minimalWidth = mSkin->getHScrollBarMinWidth();
 }

@@ -113,7 +113,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -129,14 +129,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the Caption text field
@@ -147,8 +147,8 @@ public:
     */
   void testCaptionText(){ 
     std::string t="TestString";
-    this->m_caption->setText(t);
-    std::string ret=this->m_caption->getText();
+    this->m_instance->setText(t);
+    std::string ret=this->m_instance->getText();
     int cmp=t.compare(ret);
     CPPUNIT_ASSERT( cmp==0 );
   }
@@ -161,8 +161,8 @@ public:
     */
   void testCaptionType(){ 
     RainbruRPG::Terminal::tCaptionType t=RainbruRPG::Terminal::SCROLLED;
-    this->m_caption->setType(t);
-    CPPUNIT_ASSERT( this->m_caption->getType()==t );
+    this->m_instance->setType(t);
+    CPPUNIT_ASSERT( this->m_instance->getType()==t );
   }
 
   /** Tests the Caption height field
@@ -173,8 +173,8 @@ public:
     */
   void testCaptionHeight(){
     int h=12;
-    this->m_caption->setHeight(h);
-    CPPUNIT_ASSERT( this->m_caption->getHeight()==h );
+    this->m_instance->setHeight(h);
+    CPPUNIT_ASSERT( this->m_instance->getHeight()==h );
   }
 
   /** Tests the Caption width field
@@ -185,8 +185,8 @@ public:
     */
   void testCaptionWidth(){
     int h=10;
-    this->m_caption->setWidth(h);
-    CPPUNIT_ASSERT( this->m_caption->getWidth()==h );
+    this->m_instance->setWidth(h);
+    CPPUNIT_ASSERT( this->m_instance->getWidth()==h );
   }
 
   /** Tests the Caption xOffset field
@@ -197,8 +197,8 @@ public:
     */
   void testCaptionXOffset(){
     int h=4;
-    this->m_caption->setXOffset(h);
-    CPPUNIT_ASSERT( this->m_caption->getXOffset()==h );
+    this->m_instance->setXOffset(h);
+    CPPUNIT_ASSERT( this->m_instance->getXOffset()==h );
   }
 
   /** Tests the Caption yOffset field
@@ -209,8 +209,8 @@ public:
     */
   void testCaptionYOffset(){
     int h=5;
-    this->m_caption->setYOffset(h);
-    CPPUNIT_ASSERT( this->m_caption->getYOffset()==h );
+    this->m_instance->setYOffset(h);
+    CPPUNIT_ASSERT( this->m_instance->getYOffset()==h );
   }
 
   /** Tests the Caption xPos field
@@ -221,8 +221,8 @@ public:
     */
   void testCaptionXpos(){
     int h=65;
-    this->m_caption->setXPos(h);
-    CPPUNIT_ASSERT( this->m_caption->getXPos()==h );
+    this->m_instance->setXPos(h);
+    CPPUNIT_ASSERT( this->m_instance->getXPos()==h );
   }
 
   /** Tests the Caption yPos field
@@ -233,8 +233,8 @@ public:
     */
   void testCaptionYPos(){
     int h=64;
-    this->m_caption->setYPos(h);
-    CPPUNIT_ASSERT( this->m_caption->getYPos()==h );
+    this->m_instance->setYPos(h);
+    CPPUNIT_ASSERT( this->m_instance->getYPos()==h );
   }
 };
 

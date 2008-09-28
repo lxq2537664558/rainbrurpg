@@ -21,7 +21,7 @@
  */
 
 /** \file editor/main.cpp
-  *  The file declaring the editor's main() function 
+  *  The file that implements the editor's main function 
   *
   * Modifications :
   * - 13 aug 2008 : Single file documentation

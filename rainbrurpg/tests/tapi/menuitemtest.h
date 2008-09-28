@@ -74,7 +74,7 @@ class MenuItemTest : public CPPUNIT_NS::TestFixture
 
 protected:
   /** The tested MenuItem instance */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test case
@@ -90,14 +90,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Deletes the tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the name field
@@ -108,8 +108,8 @@ public:
     */
   void testMenuItemName(){ 
     const char* name="MenuItemName";
-    this->m_caption->setName(name);
-    int ret=strcmp( this->m_caption->getName(), name);
+    this->m_instance->setName(name);
+    int ret=strcmp( this->m_instance->getName(), name);
     CPPUNIT_ASSERT( ret==0 );
   }
 
@@ -120,7 +120,7 @@ public:
     *
     */
   void testMenuItemEmptyAction(){
-    int ret=this->m_caption->fireAction();
+    int ret=this->m_instance->fireAction();
     CPPUNIT_ASSERT( ret==-1 );
   }
 
@@ -129,8 +129,8 @@ public:
     *
     */
   void testMenuItemFireAction(){
-    this->m_caption->setAction(&MenuItemTestAction);
-    int ret=this->m_caption->fireAction();
+    this->m_instance->setAction(&MenuItemTestAction);
+    int ret=this->m_instance->fireAction();
     CPPUNIT_ASSERT( ret==255 );
   }
 

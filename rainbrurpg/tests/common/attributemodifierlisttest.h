@@ -98,7 +98,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_testedClass;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -114,14 +114,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_testedClass = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_testedClass; 
+    delete this->m_instance; 
   }
 
   /** Test if AttributeModifierList::getTotal returns 0
@@ -131,7 +131,7 @@ public:
     *
     */
   void testIfNull(){
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==0 );
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==0 );
   }
 
   /** A first step of tests
@@ -142,12 +142,12 @@ public:
     *
     */
   void testStep1(){
-    this->m_testedClass->addModifier("+2");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==2 );
-    this->m_testedClass->addModifier("+3");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==5 );
-    this->m_testedClass->addModifier("+12");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==17 );
+    this->m_instance->addModifier("+2");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==2 );
+    this->m_instance->addModifier("+3");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==5 );
+    this->m_instance->addModifier("+12");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==17 );
 
   }
 
@@ -159,12 +159,12 @@ public:
     *
     */
   void testStep2(){
-    this->m_testedClass->addModifier("-10");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==-10 );
-    this->m_testedClass->addModifier("-4");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==-14 );
-    this->m_testedClass->addModifier("+2");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==-12 );
+    this->m_instance->addModifier("-10");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==-10 );
+    this->m_instance->addModifier("-4");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==-14 );
+    this->m_instance->addModifier("+2");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==-12 );
 
   }
 
@@ -176,13 +176,13 @@ public:
     *
     */
   void testStep3(){
-    this->m_testedClass->addModifier("+10");
-    this->m_testedClass->addModifierInverse("+10");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==0 );
+    this->m_instance->addModifier("+10");
+    this->m_instance->addModifierInverse("+10");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==0 );
 
-    this->m_testedClass->addModifier("-4");
-    this->m_testedClass->addModifierInverse("-4");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==0 );
+    this->m_instance->addModifier("-4");
+    this->m_instance->addModifierInverse("-4");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==0 );
   }
 
   /** Tests the unsigned modifiers
@@ -192,8 +192,8 @@ public:
     *
     */
   void testUnsigned(){
-    this->m_testedClass->addModifier("10");
-    CPPUNIT_ASSERT( this->m_testedClass->getTotal()==0 );
+    this->m_instance->addModifier("10");
+    CPPUNIT_ASSERT( this->m_instance->getTotal()==0 );
   }
 
   /** Tests the getTotalString function
@@ -203,16 +203,16 @@ public:
     */
   void testTotalString(){
     std::string s;
-    this->m_testedClass->addModifier("+2");
-    s=this->m_testedClass->getTotalString();
+    this->m_instance->addModifier("+2");
+    s=this->m_instance->getTotalString();
     CPPUNIT_ASSERT( s=="+2" );
 
-    this->m_testedClass->addModifierInverse("+2");
-    s=this->m_testedClass->getTotalString();
+    this->m_instance->addModifierInverse("+2");
+    s=this->m_instance->getTotalString();
     CPPUNIT_ASSERT( s=="" );
 
-    this->m_testedClass->addModifier("-4");
-    s=this->m_testedClass->getTotalString();
+    this->m_instance->addModifier("-4");
+    s=this->m_instance->getTotalString();
     CPPUNIT_ASSERT( s=="-4" );
 
   }

@@ -20,12 +20,24 @@
  *
  */
 
+/** \file tools/xident/foxaccountlist.cpp
+  * Implements the XIdent account list
+  *
+  */
+
 #include "foxaccountlist.h"
 
 #include <xmlaccountlist.h>
 #include <taccountlist.h>
 #include <logger.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::FoxAccountList "FoxAccountList" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::FoxAccountList) FoxAccountListMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxAccountList::ID_NYI, RainbruRPG::Gui::FoxAccountList::onNotYetImplemented),
@@ -34,6 +46,13 @@ FXDEFMAP(RainbruRPG::Gui::FoxAccountList) FoxAccountListMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::FoxAccountList "FoxAccountList" class
+  * uses the FoxAccountListMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::FoxAccountList,FXPacker,FoxAccountListMap,ARRAYNUMBER(FoxAccountListMap));
 
 /** The constructor

@@ -187,7 +187,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_csa;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -203,14 +203,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_csa = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_csa; 
+    delete this->m_instance; 
   }
   
   /** Tests the name (const char* version)
@@ -221,8 +221,8 @@ public:
     */
   void testNameChar(){ 
     const char* serverName="ServerName";
-    this->m_csa->setName(serverName);
-    const char* name=this->m_csa->getName();
+    this->m_instance->setName(serverName);
+    const char* name=this->m_instance->getName();
     CPPUNIT_ASSERT( strcmp( serverName,name)==0  );
   }
 
@@ -235,8 +235,8 @@ public:
     */
   void testNameString(){
     std::string serverName="ServerName";
-    this->m_csa->setName(serverName);
-    const char* name=this->m_csa->getName();
+    this->m_instance->setName(serverName);
+    const char* name=this->m_instance->getName();
     CPPUNIT_ASSERT( serverName==name );
 
   }
@@ -249,8 +249,8 @@ public:
     */
   void testIPChar(){
     const char* serverIp="ServerName";
-    this->m_csa->setIpAddress(serverIp);
-    const char* ip=this->m_csa->getIpAddress();
+    this->m_instance->setIpAddress(serverIp);
+    const char* ip=this->m_instance->getIpAddress();
     CPPUNIT_ASSERT( strcmp( serverIp, ip )==0  );
   }
 
@@ -262,8 +262,8 @@ public:
     */
   void testIPString(){
     std::string serverIp="ServerName";
-    this->m_csa->setIpAddress(serverIp);
-    const char* ip=this->m_csa->getIpAddress();
+    this->m_instance->setIpAddress(serverIp);
+    const char* ip=this->m_instance->getIpAddress();
     CPPUNIT_ASSERT( serverIp == ip  );
   }
 
@@ -275,8 +275,8 @@ public:
     */
   void testPortChar(){
     const char* serverPort="ServerName";
-    this->m_csa->setPort(serverPort);
-    const char* port=this->m_csa->getPort();
+    this->m_instance->setPort(serverPort);
+    const char* port=this->m_instance->getPort();
     CPPUNIT_ASSERT( strcmp( serverPort, port )==0  );
   }
 
@@ -288,8 +288,8 @@ public:
     */
   void testPortString(){
     std::string serverPort="ServerName";
-    this->m_csa->setPort(serverPort);
-    const char* port=this->m_csa->getPort();
+    this->m_instance->setPort(serverPort);
+    const char* port=this->m_instance->getPort();
     CPPUNIT_ASSERT( serverPort == port );
   }
 
@@ -302,8 +302,8 @@ public:
     */
   void testMaxClientsChar(){
     const char* maxClients="ServerName";
-    this->m_csa->setMaxClients(maxClients);
-    const char* mc=this->m_csa->getMaxClients();
+    this->m_instance->setMaxClients(maxClients);
+    const char* mc=this->m_instance->getMaxClients();
     CPPUNIT_ASSERT( strcmp( maxClients, mc )==0  );
   }
 
@@ -315,8 +315,8 @@ public:
     */
   void testMaxClientsString(){
     std::string maxClients="ServerName";
-    this->m_csa->setMaxClients(maxClients);
-    const char* mc=this->m_csa->getMaxClients();
+    this->m_instance->setMaxClients(maxClients);
+    const char* mc=this->m_instance->getMaxClients();
     CPPUNIT_ASSERT( maxClients==mc );
   }
 
@@ -328,8 +328,8 @@ public:
     */
   void testDescriptionChar(){
     const char* description="ServerName";
-    this->m_csa->setDescription(description);
-    const char* desc=this->m_csa->getDescription();
+    this->m_instance->setDescription(description);
+    const char* desc=this->m_instance->getDescription();
     CPPUNIT_ASSERT( strcmp( description, desc )==0  );
   }
 
@@ -341,8 +341,8 @@ public:
     */
   void testDescriptionString(){
     std::string description="ServerName";
-    this->m_csa->setDescription(description);
-    const char* desc=this->m_csa->getDescription();
+    this->m_instance->setDescription(description);
+    const char* desc=this->m_instance->getDescription();
     CPPUNIT_ASSERT( description==desc );
   }
 
@@ -354,8 +354,8 @@ public:
     */
   void testTechNoteChar(){
     const char* tech="ServerName";
-    this->m_csa->setTechNote(tech);
-    const char* tn=this->m_csa->getTechNote();
+    this->m_instance->setTechNote(tech);
+    const char* tn=this->m_instance->getTechNote();
     CPPUNIT_ASSERT( strcmp( tech, tn )==0  );
   }
 
@@ -367,8 +367,8 @@ public:
     */
   void testTechNoteString(){
     std::string tech="ServerName";
-    this->m_csa->setTechNote(tech);
-    const char* tn=this->m_csa->getTechNote();
+    this->m_instance->setTechNote(tech);
+    const char* tn=this->m_instance->getTechNote();
     CPPUNIT_ASSERT( tech==tn );
   }
 
@@ -378,18 +378,18 @@ public:
     *
     */
   void testInitialValues(){
-    const char* name=this->m_csa->getName();
-    const char* ip=this->m_csa->getIpAddress();
-    const char* port=this->m_csa->getPort();
-    const char* ftp=this->m_csa->getFtpPort();
-    const char* maxClients=this->m_csa->getMaxClients();
-    const char* desc=this->m_csa->getDescription();
-    const char* techNote=this->m_csa->getTechNote();
-    long serverLong=this->m_csa->getServerResponse();
-    const char* errMsg=this->m_csa->getCustomErrorMessage();
+    const char* name=this->m_instance->getName();
+    const char* ip=this->m_instance->getIpAddress();
+    const char* port=this->m_instance->getPort();
+    const char* ftp=this->m_instance->getFtpPort();
+    const char* maxClients=this->m_instance->getMaxClients();
+    const char* desc=this->m_instance->getDescription();
+    const char* techNote=this->m_instance->getTechNote();
+    long serverLong=this->m_instance->getServerResponse();
+    const char* errMsg=this->m_instance->getCustomErrorMessage();
 
-    std::string uniqueName=this->m_csa->getUniqueName();
-      std::string type=this->m_csa->getType();
+    std::string uniqueName=this->m_instance->getUniqueName();
+      std::string type=this->m_instance->getType();
 
     CPPUNIT_ASSERT( strcmp(name, "")==0 );
     CPPUNIT_ASSERT( strcmp(ip, "")==0 );
@@ -413,14 +413,14 @@ public:
     */
   void testAddVirtual(){
 
-    this->m_csa->setName(SERVER_NAME);
-    this->m_csa->setIpAddress(SERVER_IP);
-    this->m_csa->setPort(SERVER_PORT);
-    this->m_csa->setMaxClients(SERVER_MAX_CLIENTS);
-    this->m_csa->setDescription(SERVER_DESC);
-    this->m_csa->setTechNote(SERVER_TECH_NOTE);
+    this->m_instance->setName(SERVER_NAME);
+    this->m_instance->setIpAddress(SERVER_IP);
+    this->m_instance->setPort(SERVER_PORT);
+    this->m_instance->setMaxClients(SERVER_MAX_CLIENTS);
+    this->m_instance->setDescription(SERVER_DESC);
+    this->m_instance->setTechNote(SERVER_TECH_NOTE);
 
-    bool addServerSuccess=this->m_csa->perform();
+    bool addServerSuccess=this->m_instance->perform();
     CPPUNIT_ASSERT( addServerSuccess );
 
     CurlServerDelete csd;
@@ -437,8 +437,8 @@ public:
     */
   void testFtpChar(){
     const char* ftp="ServerName";
-    this->m_csa->setFtpPort(ftp);
-    const char* ftp2=this->m_csa->getFtpPort();
+    this->m_instance->setFtpPort(ftp);
+    const char* ftp2=this->m_instance->getFtpPort();
     CPPUNIT_ASSERT( strcmp( ftp, ftp2 )==0  );
 
   }
@@ -451,8 +451,8 @@ public:
     */
   void testFtpString(){
     std::string ftp="ServerName";
-    this->m_csa->setFtpPort(ftp);
-    const char* ftp2=this->m_csa->getFtpPort();
+    this->m_instance->setFtpPort(ftp);
+    const char* ftp2=this->m_instance->getFtpPort();
     CPPUNIT_ASSERT( ftp==ftp2 );
 
   }
@@ -465,8 +465,8 @@ public:
     */
   void testUniqueName(){
     std::string un="ServerUniqueName";
-    this->m_csa->setUniqueName(un);
-    std::string un2=this->m_csa->getUniqueName();
+    this->m_instance->setUniqueName(un);
+    std::string un2=this->m_instance->getUniqueName();
     CPPUNIT_ASSERT( un==un2 );
   }
 
@@ -478,8 +478,8 @@ public:
     */
   void testType(){
     std::string st="ServerType";
-    this->m_csa->setType(st);
-    std::string st2=this->m_csa->getType();
+    this->m_instance->setType(st);
+    std::string st2=this->m_instance->getType();
     CPPUNIT_ASSERT( st==st2 );
   }
 

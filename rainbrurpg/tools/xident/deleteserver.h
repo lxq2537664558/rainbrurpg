@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tools/xident/deleteserver.h
+  * Declares a dialog used to delete a server
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef XIDENT_DELETE_SERVER_H
 #define XIDENT_DELETE_SERVER_H
 

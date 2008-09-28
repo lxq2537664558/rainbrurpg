@@ -27,6 +27,8 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
+  * - 23 sep 2008 : \ref RainbruRPG::OgreGui::QuadRenderer::isGhostEnabled
+  *                 "isGhostEnabled()" implementation
   * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
   *                 ambiguous use on Win32 platform
   * - 08 may 2008 : getDrawingDev?Sum implementation (2 functions)
@@ -97,8 +99,14 @@ namespace RainbruRPG {
       * \link QuadRenderer::setBlendMode() QuadRenderer::setBlendMode()
       * \endlink.
       *
+      * To be able to debug \ref RainbruRPG::OgreGui::QuadRenderer 
+      * "QuadRenderer" these values can be converted to string using the
+      * \ref RainbruRPG::OgreGui::QuadRenderer::blendModeToString
+      * "QuadRenderer::blendModeToString()" function.
+      *
       */
     typedef enum{
+      QBM_UNSET,        //!< Was never set
       QBM_NONE,         //!< No alpha blending
       QBM_MODULATE,     //!< Blend both source and destination color
       QBM_DISCARDALPHA, //!< Do not use source alpha channel
@@ -239,6 +247,7 @@ namespace RainbruRPG {
 
       void enableGhost(void);
       void disableGhost(void);
+      bool isGhostEnabled(void)const;
 
       float setTempAlpha(float);
 
@@ -247,6 +256,8 @@ namespace RainbruRPG {
 
       int getDrawingDevXSum(void)const;
       int getDrawingDevYSum(void)const;
+
+      std::string blendModeToString(tQuadRendererBlendMode);
 
     protected:
       void setupHardwareBuffer(void);
@@ -435,6 +446,12 @@ namespace RainbruRPG {
 
       /** The list of drawing dev */
       DrawingDevList* mDrawingDevList;
+
+      /** Is the ghost feature enabled */
+      bool mIsGhostEnabled;
+      
+      /** The current blend mode */
+      tQuadRendererBlendMode mBlendMode;
 
     };
   }

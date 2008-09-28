@@ -87,7 +87,7 @@ protected:
   /** An instance of the tested class
     *
     */
-  TESTEDCLASS	*m_csd;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -103,14 +103,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_csd = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_csd; 
+    delete this->m_instance; 
   }
   
   /** Tests the initial values
@@ -119,7 +119,7 @@ public:
     *
     */
   void testDefaultValue(){
-    const char* serverName=this->m_csd->getName(); 
+    const char* serverName=this->m_instance->getName(); 
     CPPUNIT_ASSERT( strcmp( serverName,"")==0  );
   }
 
@@ -131,8 +131,8 @@ public:
     */
   void testNameChar(){ 
     const char* serverName="ServerName";
-    this->m_csd->setName(serverName);
-    const char* name=this->m_csd->getName();
+    this->m_instance->setName(serverName);
+    const char* name=this->m_instance->getName();
     CPPUNIT_ASSERT( strcmp( serverName,name)==0  );
   }
 
@@ -144,8 +144,8 @@ public:
     */
   void testNameString(){
     std::string serverName="ServerName";
-    this->m_csd->setName(serverName);
-    const char* name=this->m_csd->getName();
+    this->m_instance->setName(serverName);
+    const char* name=this->m_instance->getName();
     CPPUNIT_ASSERT( serverName==name );
   }
 
@@ -167,8 +167,8 @@ public:
     bool addServerSuccess=csa.perform();
     CPPUNIT_ASSERT( addServerSuccess );
 
-    this->m_csd->setName(SERVER_NAME);
-    bool deleteServerSuccess=this->m_csd->perform();
+    this->m_instance->setName(SERVER_NAME);
+    bool deleteServerSuccess=this->m_instance->perform();
     CPPUNIT_ASSERT( deleteServerSuccess );
   }
 };

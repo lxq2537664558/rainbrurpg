@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 04 jan 2008 : GNU header added
- *
- */
+/** \file tools/transmsg/transfile.h
+  * Declares a class that search translated string in a file
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 04 jan 2008 : GNU header added
+  *
+  */
 
 #ifndef TRANS_FILE_H
 #define TRANS_FILE_H
@@ -33,10 +37,7 @@
 #include <string>
 #include <logger.h>
 
-//#include "transmanager.h"
-
-
-// Nombre maximum de caractères dans une ligne
+/// Maximum number of char in a line
 #define MAX_CHAR_BY_LINE 256
 
 using namespace std;
@@ -54,7 +55,7 @@ namespace RainbruRPG{
       TTS_TD_FOUND, //TD found, wait a parenthese
       TTS_PARENT_FOUND, // Parenthese found, searching ""
       TTS_STRING_FOUND, // The string to translate was found
-                        // We are searchind the end parenthesis
+                        // We are searching the end parenthesis
     };
     
     

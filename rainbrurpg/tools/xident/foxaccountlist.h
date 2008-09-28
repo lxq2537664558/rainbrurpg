@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 08 aug 2007 : AddAcount button managed
- *
- */
+/** \file tools/xident/foxaccountlist.h
+  * Declares the XIdent account list
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 08 aug 2007 : AddAcount button managed
+  *
+  */
 
 #ifndef FOX_ACCOUNT_LIST_H
 #define FOX_ACCOUNT_LIST_H

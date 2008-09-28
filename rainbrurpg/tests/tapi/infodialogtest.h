@@ -70,7 +70,7 @@ protected:
   /** An instance of the InfioDialog widget
     *
     */
-  TESTEDCLASS	*m_caption;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -86,14 +86,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_caption = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_caption; 
+    delete this->m_instance; 
   }
   
   /** Tests the IndoDialog message field
@@ -104,8 +104,8 @@ public:
     */
   void testInfoDialogMessage(){ 
     std::string t="TestMessage";
-    this->m_caption->setMessage(t);
-    std::string ret=this->m_caption->getMessage();
+    this->m_instance->setMessage(t);
+    std::string ret=this->m_instance->getMessage();
     int cmp=t.compare(ret);
     CPPUNIT_ASSERT( cmp==0 );
   }
@@ -118,8 +118,8 @@ public:
     */
   void testInfoDialogTitle(){
     std::string t="TestTitle";
-    this->m_caption->setTitle(t);
-    std::string ret=this->m_caption->getTitle();
+    this->m_instance->setTitle(t);
+    std::string ret=this->m_instance->getTitle();
     int cmp=t.compare(ret);
     CPPUNIT_ASSERT( cmp==0 );
   }

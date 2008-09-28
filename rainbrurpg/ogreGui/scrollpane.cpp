@@ -237,10 +237,15 @@ int RainbruRPG::OgreGui::ScrollPane::getMaxChildBottom(void){
 
 /** Tells if the horizontal scrollbar is needed according to its policy
   * 
+  * \note This function uses \ref isVerticalScrollbarNeeded() to
+  *       know if the horizontal one is needed.
+  *
   * \return \c true if we need to draw horizontal scrollbar
   *
   */
 bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
+  bool ret; // The scrollbar visibility status
+
   switch (mHScrollBarPolicy){
   case SBP_NEVER:
     return false;
@@ -252,17 +257,36 @@ bool RainbruRPG::OgreGui::ScrollPane::isHorizontalScrollbarNeeded(void){
 
   case SBP_IF_NEEDED:
     int maxRight=getMaxChildRight()+parent->getLeft();
-    return (maxRight>corners.right);
+
+    // If the vertical scrollbar is needed, it must be outside computation
+    if (isVerticalScrollbarNeeded()){
+      ret = maxRight > (corners.right - mVScrollBar->getWidth());
+    }
+    else{
+      ret = maxRight > corners.right;
+    }
+
+    return ret;
     break;
   }
 }
 
 /** Tells if the vertical scrollbar is needed according to its policy
   * 
+  * \note We must know if the horizontal scrollbar is visible to know
+  *       if the vertical one is needed but we cannot use the 
+  *       \ref isHorizontalScrollbarNeeded() function : This uses 
+  *       isVerticalScrollbarNeeded() and if both function uses
+  *       the other one, we could have a circular reference.
+  *       
+  *
   * \return \c true if we need to draw vertical scrollbar
   *
   */
 bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
+  bool isHorisVisible; // Is the horizontal scrollbar visible ?
+  bool ret;            // The vertical scrollbar visibility status
+
   switch (mVScrollBarPolicy){
   case SBP_NEVER:
     return false;
@@ -273,8 +297,21 @@ bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
     break;
 
   case SBP_IF_NEEDED:
+
+    // We must know if horizontal scrollbar is needed but we can't
+    // call isHorizontalScrollbarNeeded() to avoid circular refences
+    int maxRight=getMaxChildRight()+parent->getLeft();
+    isHorisVisible = maxRight > corners.right;
+
+    // Is the vertical scroll bar visible
     int maxBottom=getMaxChildBottom()+parent->getTop();
-    return (maxBottom>corners.bottom);
+    if (isHorisVisible){
+      ret = maxBottom > (corners.bottom - mHScrollBar->getHeight());
+    }
+    else{
+      ret = maxBottom > corners.bottom;
+    }
+    return ret;
     break;
   }
 }
@@ -291,18 +328,33 @@ bool RainbruRPG::OgreGui::ScrollPane::isVerticalScrollbarNeeded(void){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::setScrollBarsVisbleStatus(){
-  if (isHorizontalScrollbarNeeded()){
+  bool hsb_needed = isHorizontalScrollbarNeeded();
+  bool vsb_needed = isVerticalScrollbarNeeded();
+
+  if (hsb_needed){
     mHScrollBar->setVisible(true);
-    mHScrollBar->setMax(getMaxChildRight() - getWidth() + 5);
+
+    int hsb_max = getMaxChildRight() - getWidth() + 5;
+
+    // Handle the vertical scrollbar's width if needed
+    if (vsb_needed) hsb_max += mVScrollBar->getWidth();
+
+    mHScrollBar->setMax(hsb_max);
   }
   else{
     mHScrollBar->setVisible(false);
     mHScrollBar->setValue(0);
   }
 
-  if (isVerticalScrollbarNeeded()){
+  if (vsb_needed){
     mVScrollBar->setVisible(true);
-    mVScrollBar->setMax(getMaxChildBottom() - getHeight() + 5);
+
+    int vsb_max = getMaxChildBottom() - getHeight() + 5;
+
+    // Handle the horizontal scrollbar's height if needed
+    if (hsb_needed) vsb_max += mHScrollBar->getHeight();
+
+    mVScrollBar->setMax(vsb_max);
   }
   else{
     mVScrollBar->setVisible(false);
@@ -356,7 +408,6 @@ void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::move(int vX, int vY){
-  LOGI("ScrollPane::move called");
   int temp_width = getWidth();
   int temp_height= getHeight();
 

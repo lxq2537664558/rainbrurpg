@@ -20,6 +20,14 @@
  *
  */
 
+/** \file tools/xident/modifyserver.h
+  * Declares a dialog used to modify server
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  *
+  */
+
 #ifndef XIDENT_MODIFY_SERVER_H
 #define XIDENT_MODIFY_SERVER_H
 

@@ -24,6 +24,10 @@
   * Declares a skin based on SkinOverlay, drawing like BetaGUI does
   *
   * Modifications :
+  * - 23 sep 2008 : \ref RainbruRPG::OgreGui::soBetaGui::getVScrollBarMinHeight
+  *                 "getVScrollBarMinHeight()" and 
+  *                 \ref RainbruRPG::OgreGui::soBetaGui::getHScrollBarMinWidth 
+  *                 "getHScrollBarMinWidth()" added.
   * - 30 aug 2008 : Single file documentation
   * - 25 mar 2008 : drawMultiColumnList implementation
   * - 22 jan 2008 : drawTextInput implementation using QuadRenderer
@@ -86,6 +90,9 @@ namespace RainbruRPG{
       virtual void drawToolTip(QuadRenderer*, ToolTip* );
       virtual void drawPopupMenu(QuadRenderer*, PopupMenu*);
       virtual void drawDialog(QuadRenderer*, Dialog* );
+
+      virtual int getVScrollBarMinHeight(void);
+      virtual int getHScrollBarMinWidth(void);
 
     private:
       // ============= MATERIALS VALUES =================

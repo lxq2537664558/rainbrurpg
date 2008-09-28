@@ -24,6 +24,7 @@
   * Declares a class used to draw MultiColumnList
   *
   * Modifications :
+  * - 24 sep 2008 : Adds a left margin to the header caption
   * - 30 aug 2008 : Single file documentation
   * - 16 aug 2008 : Added an inside margin to item caption drawing
   * - 07 jun 2008 : Using MultiColumnListDebugSettings
@@ -44,6 +45,9 @@
 
 /** Defines the space between header lines and background rectangle */
 #define HEADER_BG_SPACE 2
+
+/** Define the header caption left margin */
+#define HEADER_TEXT_MARGIN 4
 
 /** The margin applied to item background drawing function */
 #define ITEM_INSIDE_MARGIN_BACK 0;

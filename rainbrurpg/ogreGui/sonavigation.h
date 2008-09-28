@@ -24,6 +24,12 @@
   * Declares a skin that draw navigation buttons
   *
   * Modifications :
+  * - 23 sep 2008 : \ref 
+  *                 RainbruRPG::OgreGui::soNavigation::getVScrollBarMinHeight
+  *                 "getVScrollBarMinHeight()" and 
+  *                 \ref 
+  *                 RainbruRPG::OgreGui::soNavigation::getHScrollBarMinWidth 
+  *                 "getHScrollBarMinWidth()" added.
   * - 30 aug 2008 : Single file documentation
   * - 02 nov 2007 : starting implementation
   *         
@@ -76,6 +82,9 @@ namespace RainbruRPG{
 				  bool, bool);
       virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
 			     String caption, Window* parent);
+
+      virtual int getVScrollBarMinHeight(void);
+      virtual int getHScrollBarMinWidth(void);
 
     private:
       /** The font used in PushButtons */

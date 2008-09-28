@@ -5,13 +5,26 @@ TODO
 - gsServerList uses OgreGUI (with MulticolumnList)
 
 o [mouse] Unittests
-- Replace m_caption with m_instance (see doc->Class->Members->m)
-- Next unit test is languagelistitem
+- Next unit test is languagelistitem (started)
 - *** Unit tests failed in production mode (no --enable-debug) ***
 - HTTP response 401 "Unauthorized"
 
-* Tools
+* tool-adminsite-databackup
+- a comand-line tool to backup adminsite XML files
+- takes the version number as argument
+- used by back_prog script
+
+* Adminsite
+- See the adminsite backup
+- Remove bonusfile and others
+- Remove associated common/ classes
+- Made a info page which is called from the homepage
+
+* xIdent
 - XIdent AddAccount dialog
+- Modify the connection system
+
+* FlooderTest
 - FlooderTest test packet size (ftSize)
 - FlooderTest test constant time flooding (2ms or 200ms : packet lost?) (ftTime)
 
@@ -58,6 +71,20 @@ o [mouse] Unittests
 * *******************************************************
 
 * v 0.0.5-185
-- (3) All terminalapi/ files individually commented
-- (2) All common/ tests now use m_instance
-- (1) Added some headers needed by editor in maincore/ogreimport.h
+- (17) All unit test tested instance are now called m_instance
+- Adminsite documentation segfault fixed
+- Scrollbars handle visibility when computing max value
+- Window's ScrollBar visibility status are auto-inclusive
+- LocalTest works again (was broken since several months)
+- Fix a bug in wdmulticolumnlist::drawOneHeader scissor bottom
+- Fix a bug in wdmulticolumnlist::drawAllItems scissor bottom
+- Adds an indentation to the MultiColumnList's header caption
+- Fix the MultiColumnList border column bug
+- QuadRenerer::debug SEGFAULT fixed
+- Window's resize attraction bug fixed
+- Window::computeMinimumSize() implementation
+- All files individually docommented
+- All tools/netflooder/ files individually docommented
+- All terminalapi/ files individually docommented
+- All common/ tests now use m_instance
+- Added some headers needed by editor in maincore/ogreimport.h

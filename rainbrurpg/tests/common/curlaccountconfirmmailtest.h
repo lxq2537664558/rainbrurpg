@@ -87,7 +87,7 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_testedClass;
+  TESTEDCLASS	*m_instance;
   
 public:
   /** Return the number of test cases
@@ -103,14 +103,14 @@ public:
     *
     */
   void setUp(){ 
-    this->m_testedClass = new TESTEDCLASS; 
+    this->m_instance = new TESTEDCLASS; 
   }
   
   /** Delete the current tested instance
     *
     */
   void tearDown(){ 
-    delete this->m_testedClass; 
+    delete this->m_instance; 
   }
 
   /** Add a valid account
@@ -194,7 +194,7 @@ public:
     *
     */
   void testDefaultName(){
-    const char* name=this->m_testedClass->getName();
+    const char* name=this->m_instance->getName();
     CPPUNIT_ASSERT( strcmp(name, "")==0);
 
   }
@@ -203,8 +203,8 @@ public:
     *
     */
   void testMailIsConfirmed(){
-    this->m_testedClass->setName(CLIENT_NAME);
-    bool bret=this->m_testedClass->perform();
+    this->m_instance->setName(CLIENT_NAME);
+    bool bret=this->m_instance->perform();
     CPPUNIT_ASSERT( bret==true);
 
 

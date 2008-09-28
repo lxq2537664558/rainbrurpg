@@ -24,6 +24,8 @@
   * Declares a list of DrawingDevSettings
   *
   * Modifications :
+  * - 23 sep 2008 : \ref RainbruRPG::OgreGui::DrawingDevList::toString
+  *                 "toString()" returned value bugfix
   * - 26 aug 2008 : Single file documentation
   * - 05 apr 2008 : starting implementation
   *         
@@ -71,7 +73,7 @@ namespace RainbruRPG{
       int getDevYSum(void)const;
       bool empty()const;
 
-      const std::string& toString(void)const;
+      std::string toString(void)const;
 
     protected:
       void computeValues(void);

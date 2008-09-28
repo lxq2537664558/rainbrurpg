@@ -20,17 +20,36 @@
  *
  */
 
+/** \file tools/xident/addaccount.cpp
+  * Implements a dialog used to add an account
+  *
+  */
+
 #include "addaccount.h"
 
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::AddAccount "AddAccount" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::AddAccount) AddAccountMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::AddAccount::ID_NYI, RainbruRPG::Gui::AddAccount::onNotYetImplemented),
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::AddAccount "AddAccount" class
+  * uses the AddAccountMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::AddAccount,FXDialogBox,AddAccountMap,ARRAYNUMBER(AddAccountMap));
 
 /** The constructor

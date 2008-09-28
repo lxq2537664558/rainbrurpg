@@ -20,6 +20,11 @@
  *
  */
 
+/** \file netflooder/floodpanel.cpp
+  * Implements the options panel of the flooding tool
+  *
+  */
+
 #include "floodpanel.h"
 
 #include <logger.h>
@@ -33,6 +38,13 @@
 #include "ftreliable.h"
 #include "chartviewer.h"
 
+/** The Fox-toolkit event mapping 
+  *
+  * This map is needed by the Fox-Toolkit event model. It defines
+  * the event used by the 
+  * \ref RainbruRPG::Gui::FloodPanel "FloodPanel" class.
+  *
+  */
 FXDEFMAP(RainbruRPG::Gui::FloodPanel) FloodPanelMap[]={
   //____Message_Type_____________ID_______________Message_Handler_______
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FloodPanel::ID_NYI, RainbruRPG::Gui::FloodPanel::onNotYetImplemented),
@@ -41,6 +53,13 @@ FXDEFMAP(RainbruRPG::Gui::FloodPanel) FloodPanelMap[]={
 
 };
 
+/** Declares the implementation of the class 
+  *
+  * This statement tells to Fox-Toolkit that the 
+  * \ref RainbruRPG::Gui::FloodPanel "FloodPanel" class
+  * uses the FloodPanelMap event map.
+  *
+  */
 FXIMPLEMENT(RainbruRPG::Gui::FloodPanel,FXPacker,FloodPanelMap,ARRAYNUMBER(FloodPanelMap));
 
 /** The constructor

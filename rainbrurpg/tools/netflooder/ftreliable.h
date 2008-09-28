@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications : 
- * - 27 mar 2007 : starting implementation
- *
- */
+/** \file tools/netflooder/ftreliable.h
+  * Declares a test for reliable/non-reliable packets
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 27 mar 2007 : starting implementation
+  *
+  */
 
 #ifndef FLOODER_TEST_RELIABLE
 #define FLOODER_TEST_RELIABLE

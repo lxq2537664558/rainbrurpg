@@ -20,10 +20,14 @@
  *
  */
 
-/* Modifications :
- * - 19 jul 2007 : Starting implementation
- *
- */
+/** \file tools/xident/foxpersolist.h
+  * Declares the XIdent perso list widget
+  *
+  * Modifications :
+  * - 22 sep 2008 : Single file documentation
+  * - 19 jul 2007 : Starting implementation
+  *
+  */
 
 #ifndef FOX_PERSOS_LIST_H
 #define FOX_PERSOS_LIST_H

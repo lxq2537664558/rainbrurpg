@@ -21,8 +21,7 @@
  */
 
 /** \file netflooder/floodpanel.h
-  *
-  * Declaration file of the option panel of the flooding tool
+  * Declaration file of the options panel of the flooding tool
   *
   * Modifications : 
   * - 17 jul 2008 : PI redeclaration warning fixed 
