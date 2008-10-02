@@ -24,6 +24,7 @@
   * Declares the main menu game state
   *
   * Modifications :
+  * - 01 oct 2008 : Documentation improved
   * - 16 aug 2008 : Single file documentation
   * - 24 mar 2008 : MultiColumnList test window implementation
   * - 20 sep 2007 : Uses BetaGUI
@@ -61,8 +62,10 @@ namespace RainbruRPG {
       * The main menu is the first screen to appears when the game is 
       * launched. It provides 3 buttons : 
       * - Network game : you can play in a worldwide server
-      * - Local test : You play alone to test the rendering engine
-      * - Quit
+      *     Switch to the \ref gsConnection game state)
+      * - Local test : You play alone to test the rendering engine.
+      *     Switch to the \ref gsLocalTest game state.
+      * - Quit : exit the game without any advice or prompt.
       *
       * \section gsMainMenu_configure_sec Configure script options
       *
@@ -133,7 +136,7 @@ namespace RainbruRPG {
       BetaGUI::Button* btnLocalTest;
       /** The Exit button, kept for testing it */
       BetaGUI::Button* btnExit;
-      /** The Button where the buttons are aded */
+      /** The window where the buttons are added */
       BetaGUI::Window* window;
     };
   }

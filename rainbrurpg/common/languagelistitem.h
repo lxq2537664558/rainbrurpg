@@ -41,7 +41,7 @@ namespace RainbruRPG{
     /** A class defining a language.
       *
       * It represents a Language/Country pair, used in tLanguageList.
-      * These values is shown in \ref RainbruRPG::Gui::LanguageSelector
+      * These values are shown in \ref RainbruRPG::Gui::LanguageSelector
       * "LanguageSelector" to provides a language selection for the user.
       *
       * \sa tLanguageList, \ref RainbruRPG::Gui::LanguageSelector

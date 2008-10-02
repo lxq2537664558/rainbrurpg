@@ -30,8 +30,11 @@
 
 /** The default constructor
   *
-  * It initializes all local value at 0 or an empty string. defaultLanguage
-  * and currentLanguage are set to \c false.
+  * It initializes all local value at 0 or an empty string. \ref defaultLanguage
+  * and \ref currentLanguage are set to \c false.
+  *
+  * \note A call to \ref getComboText() on a default language list item
+  *       will not give an empty string.
   *
   */
 RainbruRPG::Options::LanguageListItem::LanguageListItem(){
@@ -146,6 +149,8 @@ const char* RainbruRPG::Options::LanguageListItem::getCountryText(){
 }
 
 /** Set the completePercent value
+  *
+  * The conversion is assumed by \ref RainbruRPG::Core::StringConv::ctof().
   *
   * \param val The new completePercent value in string format
   *

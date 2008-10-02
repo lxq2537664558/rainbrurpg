@@ -24,6 +24,7 @@
   * Declares the test suite designed to test the common library
   *
   * Modifications :
+  * - 01 oct 2008 : Added the common/LanguageListItem test
   * - 27 aug 2008 : Single file documentation
   *
   */

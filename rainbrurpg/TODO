@@ -5,7 +5,7 @@ TODO
 - gsServerList uses OgreGUI (with MulticolumnList)
 
 o [mouse] Unittests
-- Next unit test is languagelistitem (started)
+- Next unit test is common/loadbmp
 - *** Unit tests failed in production mode (no --enable-debug) ***
 - HTTP response 401 "Unauthorized"
 
@@ -70,8 +70,13 @@ o [mouse] Unittests
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-186
+
 * v 0.0.5-185
-- (17) All unit test tested instance are now called m_instance
+- gsMainMenu documentation improved
+- Fix a documentation warning on server/resources.cpp
+- LanguageListItem unit test implemented
+- All unit test tested instance are now called m_instance
 - Adminsite documentation segfault fixed
 - Scrollbars handle visibility when computing max value
 - Window's ScrollBar visibility status are auto-inclusive

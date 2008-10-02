@@ -76,6 +76,8 @@ RainbruRPG::Core::gsMainMenu::gsMainMenu():
 
 /** The default destructor
   *
+  * Deletes the \ref velocity member.
+  *
   */
 RainbruRPG::Core::gsMainMenu::~gsMainMenu(){
   if (velocity){
@@ -102,6 +104,10 @@ RainbruRPG::Core::gsMainMenu::~gsMainMenu(){
   *
   * This function may not call GuiManager::beginGuiFadeIn as it is called
   * at the end of the menu border transition.
+  *
+  * The function used here are \ref gsMenuBase::init(), \ref setupMainMenu()
+  * and \ref setupTabOrder().
+  *
   */
 void RainbruRPG::Core::gsMainMenu::init(){
   LOGI("Initialising gsMainMenu");
@@ -115,7 +121,8 @@ void RainbruRPG::Core::gsMainMenu::init(){
 
 /** The Network Game function
   *
-  * Is is called when the `network game` button is clicked.
+  * Is is called when the `network game` button is clicked. It 
+  * begin a GUI fade out and switch to \ref gsConnection game state.
   *
   * \return Always \c true
   *
@@ -140,6 +147,11 @@ onNetworkGameClicked(){
   return true;
 }
 
+/** Resume the main menu after a pause() call
+  *
+  * It calls \ref setupMainMenu() and show the window.
+  *
+  */
 void RainbruRPG::Core::gsMainMenu::resume(){
 
   setupMainMenu();
@@ -153,6 +165,9 @@ void RainbruRPG::Core::gsMainMenu::resume(){
   LOGI("gsMainMenu::resume() called");
 }
 
+/** Set up the keyboard navigation tab order
+  *
+  */
 void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   // Registering TabNavigation
   /*  tabNav->clear();
@@ -166,6 +181,13 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
 /** Setup the screen
   *
   * It uses OgreGUI to creates the main menu screen.
+  *
+  * The members \ref window, \ref btnNetworkGame, \ref btnLocalTest and 
+  * \ref btnExit are initialized here.
+  *
+  * If the associated option is enable in the \c ./configure script, 
+  * it also call the createScrollPaneTestWindow() and 
+  * createMultiColumnListTestWindow() functions.
   *
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
@@ -221,6 +243,12 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
 /** The BetaGui button callback implementation
   *
+  * The button recieved in parameter is here compared with \ref btnLocalTest,
+  * \ref btnNetworkGame and \ref btnExit.
+  *
+  * The buttons associated with the enable \c ./configure script options
+  * are also tested in this function.
+  *
   * \param b The button that was pressed
   *
   */
@@ -253,6 +281,12 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
 
 }
 
+/** Temporally stop this game state
+  *
+  * This function hides the \ref window. After a call to this function, you
+  * could call \ref resume() to show again the game state.
+  *
+  */
 void RainbruRPG::Core::gsMainMenu::pause(){
   if (window){
     window->hide();

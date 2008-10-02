@@ -1,3 +1,6 @@
+2008-10-01 Jerome Pasquier  <rainbru@free.fr>
+	* tests/common/languagelistitemtest.h: Implementation of tests
+	
 2008-09-25 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/scrollpane.cpp (setScrollBarsVisbleStatus): Each scrollbar
 	handle the visibility of the other one when computing its max value.

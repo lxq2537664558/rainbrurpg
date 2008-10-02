@@ -48,6 +48,7 @@
 #include "hashfiletest.h"
 #include "hashpasswordtest.h"
 #include "itemlistfiletest.h"
+#include "languagelistitemtest.h"
 
 // Classes to be tested
 #include <attributemodifierlist.h>
@@ -70,6 +71,7 @@
 #include <hashfile.h>
 #include <hashpassword.h>
 #include <itemlistfile.h>
+#include <languagelistitem.h>
 
 using namespace RainbruRPG::Options;
 using namespace RainbruRPG::Network::Ident;
@@ -100,6 +102,7 @@ CommonTestSuite::CommonTestSuite()
   addTest(HashFileTest<HashFile>::suite());
   addTest(HashPasswordTest<HashPassword>::suite());
   addTest(ItemListFileTest<ItemListFile>::suite());
+  addTest(LanguageListItemTest<LanguageListItem>::suite());
 }
 
 /** The destructor
