@@ -44,8 +44,6 @@
 #ifndef _RAINBRURPG_OGRE_IMPORT_H_
 #define _RAINBRURPG_OGRE_IMPORT_H_
 
-#include "../config.h"
-
 #ifdef __GNUC__
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
   
@@ -55,8 +53,18 @@
 #  endif //RB_DISABLE_OGRE_DEPREC_WARN
 #endif // __GNUC__
 
-// Including Ogre headers files
-//#include <Ogre.h>
+/* v0.0.5-186 : A hack that avoid compilation time error about multiple 
+ * definitions.
+ *
+ */
+#ifdef __WIN32__
+#  define _UNISTD_H
+#  ifndef _SYS_SELECT_H
+#    define _SYS_SELECT_H
+#  endif // _SYS_SELECT_H
+#  define ___need_timeval
+#endif // __WIN32__
+
 #include <OgreCamera.h>
 #include <OgreColourValue.h>
 #include <OgreEntity.h>
@@ -88,6 +96,7 @@
 #include <OgreSubEntity.h>
 
 // Avoid multiple definitions of these macros
+// Please the `#include "../config.h"' explanation.
 #ifdef __WIN32__
 #  undef VERSION
 #  undef PACKAGE_VERSION
@@ -97,7 +106,18 @@
 #  undef PACKAGE
 #endif // __WIN32__
 
-
+/* v0.0.5-186 : Avoid multiple definitions of ./configure macros
+ * 
+ * Please let this include after the __WIN32__ #undef(s) block to correctly
+ * avoid multiple defintions of VERSION, PACKAGE_VERSION, PACKAGE_TARNAME
+ * PACKAGE_STRING, PACKAGE_NAME, PACKAGE macros. 
+ *
+ * These macros are defined by the config.h file of Ogre package. But my
+ * config.h redefine them. I keep `my' versions by undefining Ogre's ones
+ * with the #undef(s) block and include `my' config.h at the end.
+ *
+ */
+#include "../config.h"
 
 
 #ifdef __GNUC__

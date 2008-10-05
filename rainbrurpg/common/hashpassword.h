@@ -34,7 +34,7 @@
 #define HASH_PASSWORD_H
 
 // For hash sum
-#include <unistd.h>
+//#include <unistd.h>
 #include <string>
 #include <sstream>
 

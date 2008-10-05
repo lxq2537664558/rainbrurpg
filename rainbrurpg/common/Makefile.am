@@ -3,6 +3,7 @@ lib_LTLIBRARIES = librainbrurpg-common.la
 librainbrurpg_common.adir=$(libdir)
 
 h_sources= rainbrudef.h				\
+	   curlimport.h				\
 	   \
 	   logger.h				\
 	   tinystr.h				\
@@ -155,7 +156,8 @@ library_include_HEADERS = $(h_sources)
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
 
 INCLUDES= -Ifox-1.6  		 \
-	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 OGRE --cflags) 
+	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 OGRE --cflags) \
+	  $(OGRE_CFLAGS)
 
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 

@@ -25,7 +25,6 @@
   *
   */
 
-#include "gameengine.h"
 
 #include <iostream>
 #include <OgreRenderSystem.h>
@@ -35,6 +34,12 @@
 #include <OgreConfigFile.h>
 
 #include <logger.h>
+
+#ifdef __WIN32__
+#  include <windows.h>
+#endif __WIN32__
+
+
 #include "gamestate.h"
 
 #include "gsmainmenu.h"
@@ -53,6 +58,8 @@
 
 #include "skinmanager.h"
 #include "renderqueuelistener.h"
+
+#include "gameengine.h"
 
 using namespace RainbruRPG::Events;
 

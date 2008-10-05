@@ -12,6 +12,9 @@
 /* Defines if the server is built */
 #undef BUILD_SERVER
 
+/* Defines if the TerminalApi libary is built */
+#undef BUILD_TAPI
+
 /* Define to 1 if the `closedir' function returns void instead of `int'. */
 #undef CLOSEDIR_VOID
 
@@ -85,6 +88,9 @@
 
 /* Define to 1 if you have the `sigc-2.0' library (-lsigc-2.0). */
 #undef HAVE_LIBSIGC_2_0
+
+/* Define to 1 if you have the `slang' library (-lslang). */
+#undef HAVE_LIBSLANG
 
 /* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H

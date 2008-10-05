@@ -1,3 +1,13 @@
+2008-10-04 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/ogreimport.h: Fix some redefinitions errors when 
+	cross-compiling
+	
+	* Makefile.am.linux: Handle the --enable-terminal-api option in SUBDIRS
+	* configure.in.linux: New --enable-terminal-api option
+	
+	* common/Makefile.am.linux: Added $(OGRE_CFLAGS) to INCLUDES to
+	fix a cross-compilation error.
+
 2008-10-01 Jerome Pasquier  <rainbru@free.fr>
 	* tests/common/languagelistitemtest.h: Implementation of tests
 	

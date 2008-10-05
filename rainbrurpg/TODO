@@ -1,5 +1,12 @@
-TODO
+TODO 
 -> Libraries versionning in doc/libVersionning.html
+
+* cross-compil test command-line
+./bootstrap&& \
+export CPPFLAGS=-I/usr/cross/include/ &&                \
+    export LDFLAGS=-L/usr/cross/lib/  &&                \
+    export OGRE_CFLAGS=-I/usr/cross/include/OGRE/ &&    \
+    ./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -71,6 +78,10 @@ o [mouse] Unittests
 * *******************************************************
 
 * v 0.0.5-186
+- (4) Fix some ogreimport.h errors
+- Slang libraries automake check only if needed
+- Adds an --enable-terminal-api configure script option
+- cross-compil : Fix a compil error for common library
 
 * v 0.0.5-185
 - gsMainMenu documentation improved

@@ -292,6 +292,7 @@ AC_DEFUN([RB_OPTION_ALL],
 
   case $build_all in
     yes)
+      RB_CHECK_LIBSLANG
       all=true
       AC_MSG_RESULT(yes)
       AC_DEFINE(BUILD_SERVER)
@@ -659,4 +660,36 @@ AC_DEFUN([RB_OPTION_EXAMPLES],
       ;;
   esac
   AM_CONDITIONAL([RB_OPTION_EXAMPLES_FLAGS], [test x$examples = xtrue])
+])
+
+dnl Define the terminalApi Option 
+dnl
+dnl Provides the --enable-terminal-api option of the configure script
+dnl By default, the lib is disabled
+dnl
+AC_DEFUN([RB_OPTION_TAPI],
+[
+  AC_ARG_ENABLE(terminal-api, AC_HELP_STRING([--enable-terminal-api],
+    [Build the TerminalApi library. It is a deprecated library, only
+    build it if you are curious.
+       (default=no)]),
+    [build_tapi=$enableval], 
+    [build_tapi=no])
+
+  AC_MSG_CHECKING([if we should build TerminalApi])
+
+  case $build_tapi in
+    yes)
+      RB_CHECK_LIBSLANG
+      terminal-api=true
+      AC_DEFINE([BUILD_TAPI], [], [Defines if the TerminalApi libary is built])
+      AC_DEFINE(BUILD_TAPI)
+      AC_MSG_RESULT(yes)
+      ;;
+    *)
+      terminal-api=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+  AM_CONDITIONAL([RB_OPTION_TAPI_FLAGS], [test x$terminal-api = xtrue])
 ])

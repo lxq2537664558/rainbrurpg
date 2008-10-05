@@ -2,7 +2,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = common terminalapi maincore ogreGui client
+SUBDIRS = common maincore ogreGui client
 
 # The data files
 SUBDIRS+= config data media mapdata
@@ -34,8 +34,12 @@ if RB_OPTION_EXAMPLES_FLAGS
   SUBDIRS+=examples
 endif
 
+if RB_OPTION_TAPI_FLAGS
+  SUBDIRS+=terminalapi
+endif
+
 if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=editor server tools tests examples
+  SUBDIRS+=terminalapi editor server tools tests examples
 endif 
 
 pkgconfigdir = $(libdir)/pkgconfig

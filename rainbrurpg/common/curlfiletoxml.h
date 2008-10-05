@@ -31,8 +31,7 @@
 #ifndef CURL_FILE_TO_XML
 #define CURL_FILE_TO_XML
 
-
-#include <curl/curl.h>
+#include "curlimport.h"
 
 #include "curlgetfile.h"
 
