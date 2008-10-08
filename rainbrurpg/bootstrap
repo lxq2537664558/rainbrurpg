@@ -1,4 +1,30 @@
 #!/bin/bash
+#
+#  Copyright 2006-2008 Jerome PASQUIER
+# 
+#  This file is part of RainbruRPG.
+#
+#  RainbruRPG is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  RainbruRPG is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with RainbruRPG; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+#  02110-1301  USA
+#
+
+# 
+# Modifications :
+# - 08 oct 2008 : Removed configure.in.linux and other cross-compilation
+#                 related hacks.
+#
 
 # Creates the RainbruRPG.html/ directory if needed
 if [ ! -d RainbruRPG.html ]; then
@@ -14,14 +40,7 @@ else
    echo "RainbruRPG.html/Makefile.am doesn't need to be copied"	
 fi
 
-# setting up compilation for GNU/Linux
-cp configure.in.linux configure.in
-cp Makefile.am.linux Makefile.am
-cp common/Makefile.am.linux common/Makefile.am
-cp maincore/Makefile.am.linux maincore/Makefile.am
-cp ogreGui/Makefile.am.linux ogreGui/Makefile.am
-cp client/Makefile.am.linux client/Makefile.am
 
-
+aclocal
 automake
 autoconf

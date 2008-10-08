@@ -58,11 +58,7 @@
  *
  */
 #ifdef __WIN32__
-#  define _UNISTD_H
-#  ifndef _SYS_SELECT_H
-#    define _SYS_SELECT_H
-#  endif // _SYS_SELECT_H
-#  define ___need_timeval
+#  include <cctype>
 #endif // __WIN32__
 
 #include <OgreCamera.h>
@@ -96,7 +92,7 @@
 #include <OgreSubEntity.h>
 
 // Avoid multiple definitions of these macros
-// Please the `#include "../config.h"' explanation.
+// Please see the `#include "../config.h"' explanation.
 #ifdef __WIN32__
 #  undef VERSION
 #  undef PACKAGE_VERSION
@@ -123,7 +119,7 @@
 #ifdef __GNUC__
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
 // Enable the __DEPRECATED warnings if needed
-#    define __DEPRECATED
+//#    define __DEPRECATED
 // With the following line, deprecated headers used after the include of this 
 // file will again make a warning.
 #    undef _BACKWARD_BACKWARD_WARNING_H

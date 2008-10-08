@@ -31,7 +31,10 @@
   *       we need to include the config.h file.
   *
   * Modifications :
+  * - 08 oct 2008 : Cross compilation section moved to doc_crosscompil.h
+  * - 07 oct 2008 : Cross compilation section added
   * - 13 aug 2008 : Single file documentation
+  *
   */
 
 // Mandatory if we want to use conditionnal compilation
@@ -137,6 +140,7 @@
   *
   *
   */
+
 
 /** \page xoops_module Server/Player information in website
   *

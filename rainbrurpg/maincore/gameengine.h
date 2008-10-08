@@ -32,6 +32,8 @@
 #ifndef GAME_ENGINE
 #define GAME_ENGINE
 
+// OGRE headers
+#include <ogreimport.h>
 #include <vector>
 #include <string>
 #include <singleton.h>
@@ -40,9 +42,6 @@
 
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
-
-// OGRE headers
-#include <ogreimport.h>
 
 // OgreGUI headers
 #include "bggui.h"

@@ -163,7 +163,7 @@ librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 
 # Adds the FOX-Toolkit libs
 fox_config=$(shell fox-config --libs)		\
-  $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 --libs)
+  $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 enet --libs)
 
 librainbrurpg_common_la_LIBADD= $(fox config) 
 

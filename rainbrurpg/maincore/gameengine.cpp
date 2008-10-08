@@ -25,20 +25,11 @@
   *
   */
 
-
-#include <iostream>
-#include <OgreRenderSystem.h>
-#include <OgreIteratorWrappers.h>
-#include <OgreSceneManagerEnumerator.h>
-#include <OgreLogManager.h>
-#include <OgreConfigFile.h>
-
-#include <logger.h>
-
 #ifdef __WIN32__
 #  include <windows.h>
-#endif __WIN32__
+#endif // __WIN32__
 
+//#include <iostream>
 
 #include "gamestate.h"
 
@@ -60,6 +51,8 @@
 #include "renderqueuelistener.h"
 
 #include "gameengine.h"
+
+#include <logger.h>
 
 using namespace RainbruRPG::Events;
 
@@ -489,7 +482,7 @@ void RainbruRPG::Core::GameEngine::chooseSceneManager(){
   LOGI("chooseSceneManager");
   // Get the SceneManager, in this case a generic one
   mSceneMgr = Ogre::Root::getSingleton().
-    createSceneManager("DefaultSceneManager" );
+    createSceneManager("DefaultSceneManager", "DefaultSceneManager_Instance" );
 
   // Set ambient light
   mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
@@ -503,7 +496,13 @@ void RainbruRPG::Core::GameEngine::createCamera(){
   LOGI("createCamera");
 
   // Create the camera
-  mCamera = mSceneMgr->createCamera("PlayerCam");
+
+  if (mSceneMgr != NULL){
+    mCamera = mSceneMgr->createCamera("PlayerCam");
+  }
+  else{
+    LOGE("mSceneMgr is NULL");
+  }
   
   // Position it at 500 in Z direction
   //  mCamera->setPosition(Vector3(0,0,500));

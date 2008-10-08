@@ -20,6 +20,7 @@ rainbrurpg_LDADD= -lrainbrurpg-common			\
 rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/.libs		\
 		    -L$(top_srcdir)/maincore/.libs		\
 		    -L$(top_srcdir)/ogreGui/.libs		\
+		    $(shell pkg-config OIS --libs)		\
  		    $(libcurl_LIBS)
 
 

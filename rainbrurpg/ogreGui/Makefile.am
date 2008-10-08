@@ -113,7 +113,9 @@ librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
-	   $(shell pkg-config sigc++-2.0 OGRE --cflags)	\
+	   $(OGRE_CFLAGS)				\
+	   $(OIS_CFLAGS)				\
+	   $(shell pkg-config sigc++-2.0 --cflags)	\
 	   $(shell freetype-config --cflags)
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
