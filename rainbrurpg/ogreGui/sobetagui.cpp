@@ -23,6 +23,10 @@
 /** \file sobetagui.cpp
   * Implements a skin based on SkinOverlay, drawing like BetaGUI does
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "sobetagui.h"
@@ -275,7 +279,7 @@ RainbruRPG::OgreGui::soBetaGui::~soBetaGui(){
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
+drawWindow(QuadRenderer* qr, Ogre::Rectangle corners, String caption){
   // Draw the window background
   qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(corners);
@@ -294,7 +298,7 @@ drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
-  Rectangle corners;
+  Ogre::Rectangle corners;
   corners.left=dim.x;
   corners.top =dim.y;
   corners.right=dim.x+dim.z;
@@ -329,7 +333,7 @@ drawResizeGrip(QuadRenderer* qr, Vector4 dim, bool active ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawTitleBar(QuadRenderer* qr, Vector4 dim, String caption, bool active ){
-  Rectangle corners;
+  Ogre::Rectangle corners;
   corners.left=dim.x;
   corners.top =dim.y;
   corners.right=dim.x+dim.z;
@@ -368,13 +372,13 @@ void RainbruRPG::OgreGui::soBetaGui::
 drawPushButton(QuadRenderer* qr, Vector4 dim, 
 	       String caption, Window* win, bool active, bool enable ){
 
-  Rectangle corners;
+  Ogre::Rectangle corners;
   corners.left  = dim.x+win->getLeft();
   corners.top   = dim.y+win->getTop();
   corners.right = dim.x+dim.z+win->getLeft();
   corners.bottom= dim.y+dim.w+win->getTop();
 
-  Rectangle scissor=win->getCorners();
+  Ogre::Rectangle scissor=win->getCorners();
 
   qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(scissor);
@@ -410,7 +414,7 @@ drawPushButton(QuadRenderer* qr, Vector4 dim,
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
+drawLabel(QuadRenderer* qr, Ogre::Rectangle corners, String caption, 
 	  Window* parent){
 
   corners.left  += parent->getLeft();
@@ -439,7 +443,7 @@ drawLabel(QuadRenderer* qr, Rectangle corners, String caption,
   *
   */
 void RainbruRPG::OgreGui::soBetaGui::
-drawTextInput(QuadRenderer* qr, Rectangle corners, String caption,  
+drawTextInput(QuadRenderer* qr, Ogre::Rectangle corners, String caption,  
 	      Window* win, bool vActive, int selStart, int selEnd){
 
   corners.left  += win->getLeft();
@@ -447,7 +451,7 @@ drawTextInput(QuadRenderer* qr, Rectangle corners, String caption,
   corners.right += win->getLeft();
   corners.bottom+= win->getTop();
 
-  Rectangle scissor=win->getCorners();
+  Ogre::Rectangle scissor=win->getCorners();
 
   qr->setBlendMode(QBM_GLOBAL);
   qr->setScissorRectangle(scissor);
@@ -618,7 +622,7 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawToolTip(QuadRenderer* qr, ToolTip* tt){
-  Rectangle dim(tt->getCorners());
+  Ogre::Rectangle dim(tt->getCorners());
   String text=tt->getText();
 
   Ogre::ColourValue BGColor( 0.2f, 0.2f, 0.4f );
@@ -632,7 +636,7 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   qr->setUseParentScissor(false);
 
   // Draw shadow
-  Rectangle shadow;
+  Ogre::Rectangle shadow;
   int shadowDev = 6;
   shadow.left   = dim.left   + shadowDev;
   shadow.top    = dim.top    + shadowDev;
@@ -685,7 +689,7 @@ drawMultiColumnList(QuadRenderer*qr, MultiColumnList* mcl, bool geoWasDirty ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
-  Rectangle dim(pm->getAbsCorners());
+  Ogre::Rectangle dim(pm->getAbsCorners());
 
   Ogre::ColourValue BGColor( 0.3f, 0.3f, 0.3f );
   Ogre::ColourValue shadowColor( 0.2f, 0.2f, 0.2f );
@@ -694,7 +698,7 @@ drawPopupMenu(QuadRenderer* qr, PopupMenu* pm){
 						    10, 1.0f, 1.0f, 1.0f );
 
   // Draw shadow
-  Rectangle shadow;
+  Ogre::Rectangle shadow;
   int shadowDev = 6;
   shadow.left   = dim.left   + shadowDev;
   shadow.top    = dim.top    + shadowDev;

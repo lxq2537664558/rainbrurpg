@@ -76,7 +76,8 @@ RainbruRPG::OgreGui::HScrollBar::~HScrollBar(){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getLeftArrowCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::
+getLeftArrowCorners(void){
   return rLeftArrow;
 }
 
@@ -85,7 +86,8 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getLeftArrowCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getRightArrowCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::
+getRightArrowCorners(void){
   return rRightArrow;
 }
 
@@ -94,7 +96,8 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getRightArrowCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyLeftCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::
+getBodyLeftCorners(void){
   return rBodyLeft;
 }
 
@@ -103,7 +106,7 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyLeftCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyMidCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyMidCorners(void){
   return rBodyMid;
 }
 
@@ -112,7 +115,7 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyMidCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyRightCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyRightCorners(void){
   return rBodyRight;
 }
 
@@ -121,7 +124,7 @@ const Rectangle& RainbruRPG::OgreGui::HScrollBar::getBodyRightCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::HScrollBar::getCursorCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::HScrollBar::getCursorCorners(void){
   return rCursor;
 }
 

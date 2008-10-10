@@ -23,6 +23,10 @@
 /** \file statuslabel.cpp
   * Implements a label showing status message
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "statuslabel.h"
@@ -101,7 +105,7 @@ void RainbruRPG::OgreGui::StatusLabel::draw(QuadRenderer* qr){
     }
   }
 
-  Rectangle c(getCorners());
+  Ogre::Rectangle c(getCorners());
   c.left  += parent->getLeft();
   c.top   += parent->getTop();
   c.right += parent->getLeft();

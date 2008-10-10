@@ -1,9 +1,17 @@
+2008-10-10 Jerome Pasquier  <rainbru@free.fr>
+	* create_dll.sh: Implementation of a shell script that
+	help developpers to create win32 shared libraries.
+	* common/Makefile.am: A dll rule that create the win32 shared
+	library using create_dll.sh.
+	* maincore/Makefile.am: A dll rule that create the win32 shared
+	library using create_dll.sh.
+	
 2008-10-04 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/ogreimport.h: Fix some redefinitions errors when 
-	cross-compiling
+	cross-compiling.
 	
 	* Makefile.am.linux: Handle the --enable-terminal-api option in SUBDIRS
-	* configure.in.linux: New --enable-terminal-api option
+	* configure.in.linux: New --enable-terminal-api option.
 	
 	* common/Makefile.am.linux: Added $(OGRE_CFLAGS) to INCLUDES to
 	fix a cross-compilation error.

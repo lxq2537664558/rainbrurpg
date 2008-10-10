@@ -513,7 +513,8 @@ void RainbruRPG::OgreGui::QuadRenderer::endGlyphs(void){
   * \return the scissor rectangle
   *
   */
-const Rectangle& RainbruRPG::OgreGui::QuadRenderer::getClipRegion(void)const{
+const Ogre::Rectangle& RainbruRPG::OgreGui::QuadRenderer::
+getClipRegion(void)const{
   return this->scissorRect;
 }
 
@@ -545,7 +546,7 @@ addGlyph( const Ogre::Rectangle& vRect, const Ogre::Rectangle& vUV,
     // Translate absolute coordinates to relative
     const Vector2 size(mTexture->getWidth(), mTexture->getHeight());
 
-    Rectangle r;
+    Ogre::Rectangle r;
     r.top = vUV.top / size.y;
     r.bottom = vUV.bottom / size.y;
     r.left = vUV.left / size.x;
@@ -623,7 +624,7 @@ buildUV( const Ogre::Rectangle& vIn, vector<Vector2>* vOut ) const{
 void RainbruRPG::OgreGui::QuadRenderer::
 buildVertices(const Ogre::Rectangle& vIn, vector<OgreGui::Vector3>* vOut)const{
 
-  Rectangle devRect=vIn;
+  Ogre::Rectangle devRect=vIn;
   if (!mDrawingDevList->empty()){
     devRect.left   -= mDrawingDevList->getDevXSum();
     devRect.top    -= mDrawingDevList->getDevYSum();
@@ -632,7 +633,7 @@ buildVertices(const Ogre::Rectangle& vIn, vector<OgreGui::Vector3>* vOut)const{
   }
 
   // Calculate final screen rectangle
-  Rectangle finalRect;
+  Ogre::Rectangle finalRect;
   getFinalRect( devRect, finalRect );
 
 
@@ -655,7 +656,7 @@ buildVertices(const Ogre::Rectangle& vIn, vector<OgreGui::Vector3>* vOut)const{
   * \return The translated rectangle
   *
   */
-const Rectangle& RainbruRPG::OgreGui::QuadRenderer::
+const Ogre::Rectangle& RainbruRPG::OgreGui::QuadRenderer::
 translateRectangle(Ogre::Rectangle& r, float x, float y)const{
   r.top=r.top+y;
   r.bottom=r.bottom+y;
@@ -872,7 +873,7 @@ void RainbruRPG::OgreGui::QuadRenderer::checkHardwareBuffer(GuiVertex* ptr){
 void RainbruRPG::OgreGui::QuadRenderer::
 drawFilledRectangle( const Ogre::Rectangle& vRect, const ColourValue& vColor ){
 
-  Rectangle uv;
+  Ogre::Rectangle uv;
   uv.top    = 0.0f;
   uv.left   = 0.0f;
   uv.bottom = 1.0f;

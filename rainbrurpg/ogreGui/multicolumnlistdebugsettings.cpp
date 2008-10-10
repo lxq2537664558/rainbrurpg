@@ -23,6 +23,9 @@
 /** \file multicolumnlistdebugsettings.cpp
   * Implements the settings used to debug a multi-columns list
   *
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  *          to avoid ambiguous use with the \c wingdi.h defined function.
+  *
   */
 
 #include "multicolumnlistdebugsettings.h"
@@ -176,7 +179,7 @@ void RainbruRPG::OgreGui::MultiColumnListDebugSettings::reset(void){
   */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
-	  const Rectangle& vDrawingRect){
+	  const Ogre::Rectangle& vDrawingRect){
 
   mCurrentCell=0;
   mCurrentItem++;
@@ -216,7 +219,7 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
   */
 void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell,
-	  const Rectangle& vDrawingRect){
+	  const Ogre::Rectangle& vDrawingRect){
   mCurrentCell++;
   LOGA(vMcl, "MultiColumnList pointer is NULL. Program should crash.");
 
@@ -287,7 +290,7 @@ setDebugFlags(const tMultiColumnListDebugFlags& vFlags){
   */
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem, 
-		const Rectangle& vDrawingRect){
+		const Ogre::Rectangle& vDrawingRect){
   ostringstream out("debugItem called : ");
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
@@ -344,7 +347,7 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem,
   */
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
-	  const Rectangle& vDrawingRect){
+	  const Ogre::Rectangle& vDrawingRect){
 
   ostringstream out("debugCell called : ");
   out << "(debug flag is ";
@@ -387,7 +390,7 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
   */
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeScissorDebugString(QuadRenderer* vQr){
-  Rectangle clip=vQr->getClipRegion();
+  Ogre::Rectangle clip=vQr->getClipRegion();
   ostringstream out("Debugging Scissor : ");
   out << endl
       << "Using parent siscor : " << vQr->getUseParentScissor() << endl
@@ -424,7 +427,7 @@ drawScissorRectangle(QuadRenderer* vQr){
     dds->move( -xSum, -ySum ); 
 
     vQr->addDrawingDev( dds );
-    Rectangle scissor = vQr->getClipRegion();
+    Ogre::Rectangle scissor = vQr->getClipRegion();
     // To see right and bottom lines
     scissor.right--;
     scissor.bottom--;

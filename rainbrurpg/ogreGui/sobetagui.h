@@ -23,6 +23,10 @@
 /** \file sobetagui.h
   * Declares a skin based on SkinOverlay, drawing like BetaGUI does
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   * Modifications :
   * - 23 sep 2008 : \ref RainbruRPG::OgreGui::soBetaGui::getVScrollBarMinHeight
   *                 "getVScrollBarMinHeight()" and 
@@ -74,14 +78,14 @@ namespace RainbruRPG{
       soBetaGui();
       virtual ~soBetaGui();
 
-      virtual void drawWindow(QuadRenderer*, Rectangle, String);
+      virtual void drawWindow(QuadRenderer*, Ogre::Rectangle, String);
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, bool, bool);
       virtual void drawResizeGrip(QuadRenderer*, Vector4, bool);
       virtual void drawTitleBar(QuadRenderer*, Vector4, String, bool);
-      virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
+      virtual void drawLabel(QuadRenderer* qr, Ogre::Rectangle dim, 
 			     String caption, Window* parent);
-      virtual void drawTextInput(QuadRenderer*, Rectangle , String , Window*, 
-				 bool active, int selStart = -1,
+      virtual void drawTextInput(QuadRenderer*, Ogre::Rectangle , String , 
+				 Window*, bool active, int selStart = -1,
 				 int selEnd = -1);
 
       virtual void drawVerticalScrollbar(QuadRenderer*qr, VScrollBar* );

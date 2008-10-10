@@ -94,6 +94,7 @@ AC_PROG_CC
 AC_PROG_CXX
 
 AC_DISABLE_STATIC
+AC_LIBTOOL_WIN32_DLL dnl Handle dlls
 AM_PROG_LIBTOOL
 AM_SANITY_CHECK
 
@@ -152,6 +153,14 @@ AC_CHECK_FUNCS(mkfifo)
 AC_CHECK_FUNC(mknod)
 
 dnl Checks for typedefs, structures, and compiler characteristics.
+
+dnl Check for cross compilation. If yes, define DLLWRAP
+if test "$host_os" = "mingw32msvc"; then
+  dllwrap="i586-mingw32msvc-dllwrap"
+else
+  dllwrap=${target}-"dllwrap"
+fi
+AC_PATH_PROG(DLLWRAP, $dllwrap)
 
 dnl Checks for library functions.
 

@@ -23,6 +23,10 @@
 /** \file vscrollbar.cpp
   * Implements a vertical scrollbar widget
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "vscrollbar.h"
@@ -262,7 +266,8 @@ void RainbruRPG::OgreGui::VScrollBar::makeCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getTopArrowCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::
+getTopArrowCorners(void){
   return rTopArrow;
 }
 
@@ -271,7 +276,8 @@ const Rectangle& RainbruRPG::OgreGui::VScrollBar::getTopArrowCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBottomArrowCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::
+getBottomArrowCorners(void){
   return rBotArrow;
 }
 
@@ -280,7 +286,7 @@ const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBottomArrowCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyTopCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyTopCorners(void){
   return rBodyTop;
 }
 
@@ -289,7 +295,7 @@ const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyTopCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyMidCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyMidCorners(void){
   return rBodyMid;
 }
 
@@ -298,7 +304,7 @@ const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyMidCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyBotCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyBotCorners(void){
   return rBodyBot;
 }
 
@@ -307,7 +313,7 @@ const Rectangle& RainbruRPG::OgreGui::VScrollBar::getBodyBotCorners(void){
   * \return The geometry
   *
   */
-const Rectangle& RainbruRPG::OgreGui::VScrollBar::getCursorCorners(void){
+const Ogre::Rectangle& RainbruRPG::OgreGui::VScrollBar::getCursorCorners(void){
   return rCursor;
 }
 

@@ -23,6 +23,10 @@
 /** \file wdmulticolumnlist.h
   * Declares a class used to draw MultiColumnList
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   * Modifications :
   * - 24 sep 2008 : Adds a left margin to the header caption
   * - 30 aug 2008 : Single file documentation
@@ -112,10 +116,12 @@ namespace RainbruRPG{
       void drawAllHeaders(QuadRenderer*, MultiColumnList*, int);
       void drawOneHeader(QuadRenderer*, MultiColumnListColumn*, int);
 
-      void drawOneItemCell(QuadRenderer*,MultiColumnListCell*,const Rectangle&);
-      void drawOneItem(QuadRenderer*,MultiColumnListItem*,const Rectangle&,
+      void drawOneItemCell(QuadRenderer*,MultiColumnListCell*,
+			   const Ogre::Rectangle&);
+      void drawOneItem(QuadRenderer*,MultiColumnListItem*,
+		       const Ogre::Rectangle&,
 		       const tMultiColumnListColumnList&, int, 
-		       Rectangle,
+		       Ogre::Rectangle,
 		       bool vDebug = false);
 
       void drawAllItems(QuadRenderer*,MultiColumnList*, int);

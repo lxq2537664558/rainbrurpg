@@ -23,6 +23,9 @@
 /** \file textsettings.h
   * Declares a class that encapsulate text information 
   *
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  *          to avoid ambiguous use with the \c wingdi.h defined function.
+  *
   * Modifications :
   * - 30 aug 2008 : Single file documentation
   * - 25 jan 2008 : Starting implementation
@@ -105,7 +108,7 @@ namespace RainbruRPG {
       const tTextColorSetting& getColorSetting(void) const;
 
       void renderAligned( QuadRenderer*, const std::string&,
-			  const Rectangle&, bool );
+			  const Ogre::Rectangle&, bool );
 
     private:
       /** The font used to draw text */

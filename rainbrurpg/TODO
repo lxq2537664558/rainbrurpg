@@ -9,8 +9,6 @@ export CPPFLAGS="-I/usr/cross/include/ -mwindows"&&                \
     ./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 
 
-i586-mingw32msvc-g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../common -I../ogreGui -I/usr/cross/include/OGRE/ -I/usr/local/include -I/usr/local/include/CEGUI -I/usr//include/OIS -I/usr//include -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/cross/include/ -mwindows -mthreads -lstdc++ -g -O2 -MT gameengine.lo -MD -MP -MF .deps/gameengine.Tpo -c gameengine.cpp  -DDLL_EXPORT -DPIC -o .libs/gameengine.o
-
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 
@@ -81,8 +79,11 @@ o [mouse] Unittests
 * *******************************************************
 
 * v 0.0.5-186
-- (7) Removed cross-compilation hacks on configure.in and Makefile(s).am
-- Documentation related pag about win32 cross compilation
+- (10) common/make_dll.sh removed. Now its a Makefile.am rule.
+- create_dll.sh and common/make_dll.sh scripts
+- Fix many Rectangle ambiguous reference in OgreGui
+- Removed cross-compilation hacks on configure.in and Makefile(s).am
+- Documentation related page about win32 cross compilation
 - Now using Ogre 1.4.9 (Debian package) instead of Ogre 1.4.3
 - Fix some ogreimport.h errors
 - Slang libraries automake check only if needed

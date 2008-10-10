@@ -23,6 +23,10 @@
 /** \file sonavigation.h
   * Declares a skin that draw navigation buttons
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   * Modifications :
   * - 23 sep 2008 : \ref 
   *                 RainbruRPG::OgreGui::soNavigation::getVScrollBarMinHeight
@@ -77,10 +81,10 @@ namespace RainbruRPG{
       soNavigation();
       virtual ~soNavigation();
 
-      virtual void drawWindow(QuadRenderer*,Rectangle, String);
+      virtual void drawWindow(QuadRenderer*, Ogre::Rectangle, String);
       virtual void drawPushButton(QuadRenderer*,Vector4, String, Window*, 
 				  bool, bool);
-      virtual void drawLabel(QuadRenderer* qr, Rectangle dim, 
+      virtual void drawLabel(QuadRenderer* qr, Ogre::Rectangle dim, 
 			     String caption, Window* parent);
 
       virtual int getVScrollBarMinHeight(void);

@@ -23,6 +23,9 @@
 /** \file multicolumnlistdebugsettings.h
   * Declares the settings used to debug a multi-columns list
   *
+  * \warning Please use the Ogre namespace here for the Rectangle class
+  *          to avoid ambiguous use with the \c wingdi.h defined function.
+  *
   * Modifications :
   * - 26 aug 2008 : Single file documentation
   * - 07 jun 2008 : starting implementation
@@ -137,9 +140,9 @@ namespace RainbruRPG{
       void reset(void);
 
       void debugItem(QuadRenderer*, MultiColumnList*, MultiColumnListItem*,
-		     const Rectangle&);
+		     const Ogre::Rectangle&);
       void debugCell(QuadRenderer*, MultiColumnList*, MultiColumnListCell*,
-		     const Rectangle&);
+		     const Ogre::Rectangle&);
 
       void setDebugFlags(unsigned int);
       void setDebugFlags(const tMultiColumnListDebugFlags&);
@@ -153,9 +156,9 @@ namespace RainbruRPG{
       void init(void);
 
       std::string makeDebugString(MultiColumnList*, MultiColumnListItem*,
-				  const Rectangle&);
+				  const Ogre::Rectangle&);
       std::string makeDebugString(MultiColumnList*, MultiColumnListCell*,
-				  const Rectangle&);
+				  const Ogre::Rectangle&);
 
       std::string makeScissorDebugString(QuadRenderer*);
       void drawScissorRectangle(QuadRenderer*);

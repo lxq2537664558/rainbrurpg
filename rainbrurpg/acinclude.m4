@@ -676,20 +676,20 @@ AC_DEFUN([RB_OPTION_TAPI],
     [build_tapi=$enableval], 
     [build_tapi=no])
 
-  AC_MSG_CHECKING([if we should build TerminalApi])
+  AC_MSG_CHECKING([if we should build RainbruRPG-terminalApi])
 
   case $build_tapi in
     yes)
       RB_CHECK_LIBSLANG
-      terminal-api=true
+      terminal_api=true
       AC_DEFINE([BUILD_TAPI], [], [Defines if the TerminalApi libary is built])
       AC_DEFINE(BUILD_TAPI)
       AC_MSG_RESULT(yes)
       ;;
     *)
-      terminal-api=false
+      terminal_api=false
       AC_MSG_RESULT(no)
       ;;
   esac
-  AM_CONDITIONAL([RB_OPTION_TAPI_FLAGS], [test x$terminal-api = xtrue])
+  AM_CONDITIONAL([RB_OPTION_TAPI_FLAGS], [test x$terminal_api = xtrue])
 ])

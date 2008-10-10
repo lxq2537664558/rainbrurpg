@@ -23,6 +23,10 @@
 /** \file sonavigation.cpp
   * Implements a skin that draw navigation buttons
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "sonavigation.h"
@@ -83,7 +87,7 @@ RainbruRPG::OgreGui::soNavigation::~soNavigation(){
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
+drawWindow(QuadRenderer* qr, Ogre::Rectangle corners, String caption){
 
 
 }
@@ -101,7 +105,7 @@ drawWindow(QuadRenderer* qr, Rectangle corners, String caption){
 void RainbruRPG::OgreGui::soNavigation::
 drawPushButton(QuadRenderer* qr, Vector4 dim, String caption, 
 	       Window* win, bool active, bool enable){
-  Rectangle corners;
+  Ogre::Rectangle corners;
   corners.left  = dim.x+win->getLeft();
   corners.top   = dim.y+win->getTop();
   corners.right = dim.x+dim.z+win->getLeft();
@@ -135,7 +139,7 @@ drawPushButton(QuadRenderer* qr, Vector4 dim, String caption,
   *
   */
 void RainbruRPG::OgreGui::soNavigation::
-drawLabel(QuadRenderer* qr, Rectangle corners, String caption, 
+drawLabel(QuadRenderer* qr, Ogre::Rectangle corners, String caption, 
 	  Window* parent){
 
   corners.left  += parent->getLeft();

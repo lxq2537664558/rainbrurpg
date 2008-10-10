@@ -73,3 +73,7 @@ librainbrurpg_core_la_LDFLAGS=				\
   $(CEGUI_OGRE_LIBS)			       		\
   $(shell pkg-config sigc++-2.0 --libs)
 
+
+dll:
+	source ../create_dll.sh &&		\
+	run "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lFOX-1.6  -lcurl -L../../common/.libs -lrainbrurpg-common.dll"

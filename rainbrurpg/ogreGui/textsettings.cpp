@@ -23,6 +23,10 @@
 /** \file textsettings.cpp
   * Implents a class that encapsulate text information 
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "textsettings.h"
@@ -293,7 +297,7 @@ getBackgroundColor(void)const{
   */
 void RainbruRPG::OgreGui::TextSettings::
 renderAligned( QuadRenderer* qr, const std::string& text, 
-	       const Rectangle& vRect, bool wordwrap )
+	       const Ogre::Rectangle& vRect, bool wordwrap )
 {
 
   switch (mColorSetting){

@@ -21,7 +21,7 @@
  */
 
 /** Modifications :
-  * - 10 jul 2008 : oustput now is a std::string (fix a warning)
+  * - 10 jul 2008 : output now is a std::string (fix a warning)
   *
   */
 #ifndef LOAD_BMP_H
@@ -36,6 +36,7 @@
 #include <string>
 
 #include "EasyBMP.h"
+#include "rainbrudef.h"
 
 using namespace std;
 
@@ -75,7 +76,7 @@ namespace RainbruRPG {
       * menu.
       *
       */
-    class LoadBMP{
+    class RAINBRU_EXPORT LoadBMP{
     public:
       LoadBMP();
       ~LoadBMP();

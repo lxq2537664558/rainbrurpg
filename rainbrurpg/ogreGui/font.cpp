@@ -507,7 +507,7 @@ render( QuadRenderer* qr, const string& vText, const ColourValue& vColor,
       r.bottom=r.top+g->getHeight();
       r.right=r.left+g->getWidth();
 
-      Rectangle uvr = g->getGeometry();
+      Ogre::Rectangle uvr = g->getGeometry();
       uvr.left /= tsize.x;
       uvr.right /= tsize.x;
       uvr.top /= tsize.y;
@@ -520,7 +520,7 @@ render( QuadRenderer* qr, const string& vText, const ColourValue& vColor,
       r.bottom=r.top+mMaxGlyphHeight;
 
       if ( (x >= vSelectionStart) && (x < vSelectionEnd) )
-	qr->addGlyph(r, Rectangle());
+	qr->addGlyph(r, Ogre::Rectangle());
     }
 
     currentX += g->getSpace();
@@ -536,7 +536,7 @@ render( QuadRenderer* qr, const string& vText, const ColourValue& vColor,
   * \return The translated rectangle
   *
   */
-const Rectangle& RainbruRPG::OgreGui::Font::
+const Ogre::Rectangle& RainbruRPG::OgreGui::Font::
 translateRectangle(Ogre::Rectangle& r, float x, float y)const{
   r.top=r.top+y;
   r.bottom=r.bottom+y;

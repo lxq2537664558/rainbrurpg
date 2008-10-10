@@ -23,6 +23,10 @@
 /** \file wdmulticolumnlist.cpp
   * Implements a class used to draw MultiColumnList
   *
+  * \note We must scope the Rectangle class with its namespace in this 
+  *       file to avoid complications when cross-compiling to Win32
+  *       platform.
+  *
   */
 
 #include "wdmulticolumnlist.h"
@@ -133,7 +137,7 @@ void RainbruRPG::OgreGui::wdMultiColumnList::init(MultiColumnList* mcl){
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
 drawOneItemCell(QuadRenderer* qr, MultiColumnListCell* vCell,
-		const Rectangle& vRect){
+		const Ogre::Rectangle& vRect){
 
   mDebugSettings->debugCell( qr, mCurrentMcl, vCell, vRect );
   if (vCell->isText()){
@@ -164,7 +168,7 @@ drawAllHeaders(QuadRenderer* qr, MultiColumnList* mcl, int vMovingColumn){
   unsigned int colIndex=0;
 
   // Handle parent window scrollbar value
-  Rectangle hsc = mcl->getHeadersScissorRectangle();
+  Ogre::Rectangle hsc = mcl->getHeadersScissorRectangle();
   hsc.top -= parentVerticalScrollbarValue;
   if (hsc.top < parentUnderTitleY)
     hsc.top = parentUnderTitleY;
@@ -292,7 +296,7 @@ preDrawingComputation(MultiColumnList* mcl){
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::drawBorder(QuadRenderer* qr){
 
-  Rectangle borderScissor(mMclAbsCorners);
+  Ogre::Rectangle borderScissor(mMclAbsCorners);
 
   borderScissor.top -= parentVerticalScrollbarValue;
   if (borderScissor.top < parentUnderTitleY)
@@ -405,7 +409,7 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
 
     // Handle the scissor deviation because QuadRenderer do not apply
     // DrawingDev to scissor rectangle settings
-    Rectangle colCaptionScissor(mColumnCaption);
+    Ogre::Rectangle colCaptionScissor(mColumnCaption);
 
     colCaptionScissor.top -= parentVerticalScrollbarValue;
     if (colCaptionScissor.top < parentUnderTitleY)
@@ -431,7 +435,7 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   //  Avoid left line to get more to the right to the mcl right corners
   if ( xLeft < (mMclAbsCorners.right + parentHorizontalScrollbarValue )){
     // Compute scissor rectangle
-    Rectangle leftLineScissor(mMclAbsCorners);
+    Ogre::Rectangle leftLineScissor(mMclAbsCorners);
     leftLineScissor.top -= parentVerticalScrollbarValue;
 
     // Cut to the parentUnderTitleY value
@@ -493,13 +497,14 @@ drawOneHeader(QuadRenderer* qr, MultiColumnListColumn* vHeader, int xLeft){
   *
   */
 void RainbruRPG::OgreGui::wdMultiColumnList::
-drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,const Rectangle& vRect,
+drawOneItem(QuadRenderer* qr,MultiColumnListItem* vItem,
+	    const Ogre::Rectangle& vRect,
 	    const tMultiColumnListColumnList& vColList, int vMovingColumn,
-	    Rectangle vScissor, bool vDebug){
+	    Ogre::Rectangle vScissor, bool vDebug){
 
   int currentScissorRight;   // Used to cut caption to the right scissor
-  Rectangle itemTextRect;    // Used to draw item text with margins
-  Rectangle itemRect(vRect); // The background item rectangle
+  Ogre::Rectangle itemTextRect;    // Used to draw item text with margins
+  Ogre::Rectangle itemRect(vRect); // The background item rectangle
   int colId=0;               // The item column we are drawing
 
   currentScissorRight = qr->getClipRegion().right;

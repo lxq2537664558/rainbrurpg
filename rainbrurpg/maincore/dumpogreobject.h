@@ -31,6 +31,11 @@
   * \warning Preprocessor macros do not provide clear type checking and a
   *          bad parameter could lead to an undefined behaviour.
   *
+  * \warning Please use the Ogre namespace to scope Rectangle objects
+  *          to avoid ambiguous use on Win32 platform when included from
+  *          the OgreGui library.
+  *
+  *
   * Modifications :
   * - 13 aug 2008 : Single file documentation
   * - 06 jan 2008 : Starting implementations
@@ -89,7 +94,7 @@ using namespace RainbruRPG::Exception;
 					   VECTOR2 );
 
 
-void dumpOgreRectangle(const string&, const string&, const Rectangle&);
+void dumpOgreRectangle(const string&, const string&, const Ogre::Rectangle&);
 void dumpOgreVector4(const string&, const string&, const Vector4&);
 void dumpOgreVector2(const string&, const string&, const Vector2&);
 
