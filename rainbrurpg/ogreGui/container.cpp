@@ -387,7 +387,7 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	break;
 	
       case OCT_WIN_MOVE:
-	GameEngine::getSingleton().getOgreGui()->setMovedWindow(win);
+	GUI::getSingleton().setMovedWindow(win);
 
 	/* v 0.0.5-181 : Fix the moving window bug
 	 *
@@ -410,7 +410,7 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	break;
 	
       case OCT_WIN_RESIZE:
-	GameEngine::getSingleton().getOgreGui()->setResizedWindow(win);
+	GUI::getSingleton().setResizedWindow(win);
 	movingDevX = corners.right  - mx;
 	movingDevY = corners.bottom - my;
 

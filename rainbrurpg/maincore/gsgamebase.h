@@ -24,6 +24,7 @@
   * Declares a base class for all state supplying game capabilities
   *
   * Modifications :
+  * - 15 oct 2008 : Constructor handles GameState's name
   * - 16 aug 2008 : Single file documentation
   *
   */
@@ -32,6 +33,7 @@
 #define GS_GAME_BASE_H
 
 #include <ogreimport.h>
+#include <string>
 
 #include "gamestate.h"
 #include "inputwrapper.h"
@@ -70,7 +72,7 @@ namespace RainbruRPG {
  
 
     protected:
-      gsGameBase();
+      gsGameBase(const std::string&);
 
       void moveCamera();
 

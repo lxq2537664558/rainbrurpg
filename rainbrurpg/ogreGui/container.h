@@ -86,7 +86,7 @@ namespace RainbruRPG{
       bool handleKeyEvent(String, unsigned int, unsigned int);
       bool handleButtonEvent(unsigned int, unsigned int,
 			     unsigned int, unsigned int,
-			     bool, Window*, Button*);
+			     bool, Window*, BetaGUI::Button*);
 
     protected:
 

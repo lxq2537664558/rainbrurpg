@@ -36,12 +36,8 @@
   *
   * The requested parameters are used to create an instance of QuadRenderer.
   *
-  * \param rs The Ogre RenderSystem
-  * \param sm The Ogre SceneManager
-  * \param vp The Ogre Viewport
-  *
   */
-BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
+BetaGUI::GUI::GUI():
   resizedWindow(NULL),
   movedWindow(NULL),
   wc(NULL),
@@ -54,6 +50,16 @@ BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
   mFocusedWidget(NULL)
 {
 
+}
+
+/** Inititalize the GUI system
+  *
+  * \param rs The Ogre RenderSystem
+  * \param sm The Ogre SceneManager
+  * \param vp The Ogre Viewport
+  *
+  */
+void BetaGUI::GUI::init(RenderSystem* rs, SceneManager* sm, Viewport* vp){
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
   rootOverlay->setZOrder(500);
@@ -64,7 +70,9 @@ BetaGUI::GUI::GUI(RenderSystem* rs, SceneManager* sm, Viewport* vp):
 
   mQuadRenderer=new QuadRenderer(rs, sm, vp);
   mousePointer=new MousePointer();
+
 }
+
 
 /** The destructor
   *

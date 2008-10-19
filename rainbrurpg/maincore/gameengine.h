@@ -24,6 +24,10 @@
   * Declares an Ogre frame listenerthe client game engine
   *
   * Modifications :
+  * - 16 oct 2008 : changeState() now takes a string parameter
+  * - 15 oct 2008 : 
+  *   - Avoid the use of OgreGui
+  *   - Removed initStates()
   * - 14 aug 2008 : Single file documentation
   * - 21 sep 2007 : Uses OgreGUI
   *
@@ -43,9 +47,6 @@
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-// OgreGUI headers
-#include "bggui.h"
-
 // Forward declaration
 namespace RainbruRPG {
   namespace Core{
@@ -55,17 +56,12 @@ namespace RainbruRPG {
   namespace Network{
     class GlobalURI;
   }
-  namespace OgreGui{
-    class OgreGuiRenderQueueListener;
-  }
 }
 // End of forward declaration
 
 using namespace std;
 using namespace Ogre;
 
-//using namespace RainbruRPG::Events;
-using namespace RainbruRPG::OgreGui;
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
 
@@ -81,20 +77,6 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Core{
 
-    /** The game states enumeration
-      *
-      * This enumeration is used when dealing with the GameEngine
-      * state system. 
-      *
-      */
-    enum tStateType{
-      ST_LOCAL_TEST          =0x0000,  //!< The local test state
-      ST_MENU_CONNECT        =0x0001,  //!< The connection menu
-      ST_MAIN_MENU           =0x0002,  //!< The main menu state
-      ST_CREATE_ACCOUNT      =0x0003,  //!< The create account state
-      ST_SERVER_LIST         =0x0004,  //!< The server list menu state
-    };
-
     /** The game engine
       *
       * This singleton deals with some GameState and with options
@@ -109,6 +91,14 @@ namespace RainbruRPG {
       * To quit the application from the launcher, the quit button
       * callback does not call play(). m_running is not set to true
       * and when we call run(), we do not enter in the main loop.
+      *
+      * \section gameengine_gs_ident Game states identification
+      *
+      * Each game state added with the \ref registerGameState() function
+      * is identified by its name. To switch between states, you would
+      * call the \ref changeState() function with the game state name
+      * as parameter.
+      *
       */
     class GameEngine : public Singleton<GameEngine>, OIS::MouseListener, 
       OIS::KeyListener{
@@ -123,15 +113,13 @@ namespace RainbruRPG {
       void run();
       
       // Set state as actual gameState
-      void changeState(tStateType);
+      void changeState(const std::string&);
       
       bool running();
       void play();
       void quit();  
 
-      void initStates();
       void initOgre();
-      void initOgreGui();
       void initOIS();
 
       void showConsole();
@@ -158,8 +146,10 @@ namespace RainbruRPG {
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 
       RainbruRPG::Core::InputManager* getInputManager();
-      BetaGUI::GUI* getOgreGui();
- 
+
+      void registerGameState(GameState*);
+      size_t getGameStateIndexByName(const std::string&);
+
     private:
       /** Unimplemented copy constructors 
         *
@@ -226,7 +216,7 @@ namespace RainbruRPG {
       RainbruRPG::Core::InputManager* mInputMgr;
 
       /** The OgreGUI manager instance */
-      BetaGUI::GUI* mOgreGUI;
+      //      BetaGUI::GUI* mOgreGUI; // Removed to avoid OgreGui deps
 
       /** The userName the user entered 
         *
@@ -241,9 +231,6 @@ namespace RainbruRPG {
 	*
         */
       const char* userPwd;
-
-      /** The render queue listener that draw the GUI */
-      OgreGuiRenderQueueListener* mRenderQueueListener;
 
     };
   }

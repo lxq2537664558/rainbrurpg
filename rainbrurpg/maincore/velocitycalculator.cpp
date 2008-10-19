@@ -27,8 +27,11 @@
 
 #include "velocitycalculator.h"
 
+#include "ogreimport.h"
+
 #include <logger.h>
-#include "guimanager.h"
+  
+//#include "guimanager.h"
 
 /** The default constructor
   *
@@ -39,9 +42,10 @@
 RainbruRPG::Core::VelocityCalculator::VelocityCalculator(){
   mRunning=false;
   //  timer= Ogre::PlatformManager::getSingleton().createTimer();
-  timer= new Timer();
+  timer= new Ogre::Timer();
 
-  this->setTransitionTime(GuiManager::getSingleton().getTransitionTime());
+  //  this->setTransitionTime(GuiManager::getSingleton().getTransitionTime());
+  this->setTransitionTime(700);
   translationLenght=0;
 }
 

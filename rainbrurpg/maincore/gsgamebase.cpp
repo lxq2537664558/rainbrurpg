@@ -34,9 +34,10 @@
 /** The default constructor
   *
   */
-RainbruRPG::Core::gsGameBase::gsGameBase(){
+RainbruRPG::Core::gsGameBase::gsGameBase(const std::string& vName):
+  GameState(vName, GST_GAME)
+{
   LOGI("Constructing a gsGameBase");
-  stateType=GST_GAME;
   mapName="";
   mMoveScale=2.0f;
   inputWrapper=new InputWrapper();

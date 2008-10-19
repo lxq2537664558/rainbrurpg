@@ -29,32 +29,19 @@
 #  include <windows.h>
 #endif // __WIN32__
 
-//#include <iostream>
-
 #include "gamestate.h"
 
-#include "gsmainmenu.h"
 #include "gslocaltest.h"
-#include "gsconnection.h"
-#include "gscreateaccount.h"
-#include "gsserverlist.h"
 
-#include "guimanager.h"
-#include "guiframelistener.h"
-#include "exampleframelistener.h"
 #include "xmlobjectlist.h"
 #include "globaluri.h"
 #include "inputmanager.h"
-#include "globaluri.h"
-
-#include "skinmanager.h"
-#include "renderqueuelistener.h"
 
 #include "gameengine.h"
 
 #include <logger.h>
 
-using namespace RainbruRPG::Events;
+//using namespace RainbruRPG::Events; // Removed to avoid OgreGui deps
 
 /** A function used to know if the GameEngine is running.
   * 
@@ -76,13 +63,10 @@ void RainbruRPG::Core::GameEngine::init(){
   userName="";
   userPwd="";
   mInputMgr=NULL;
-  mOgreGUI=NULL;
   mSceneMgr=NULL;
-  actualState=ST_MAIN_MENU;
+  actualState=-1;
 
   initOgre();
-  initOgreGui();
-  initStates();
 }
 
 /** Set m_running to \c true telling GameEngine it can run
@@ -120,13 +104,6 @@ void RainbruRPG::Core::GameEngine::quit() {
 void RainbruRPG::Core::GameEngine::run() {
   if (m_running){
 
-     LOGI("Setting the GuiFrameListener");
-    
-    mFrameListener= new GuiFrameListener(mWindow, mCamera);
-    Ogre::Root::getSingleton().addFrameListener(mFrameListener);
-    
-    
-    
     try {
       LOGI("starting rendering");
       Ogre::Root::getSingleton().startRendering();
@@ -147,62 +124,49 @@ void RainbruRPG::Core::GameEngine::run() {
   LOGI("GameEngine::run ended");
 }
 
-/** Initialize all the states
-  *
-  *
-  */
-void RainbruRPG::Core::GameEngine::initStates() {
-  LOGI("Initializing Game states...");
-
-  GameState *gs1=new gsLocalTest();
-  GameState *gs2=new gsConnection();
-  GameState *gs3=new gsMainMenu();
-  GameState *gs4=new gsCreateAccount();
-  GameState *gs5=new gsServerList();
-
-  states.push_back(gs1);
-  states.push_back(gs2);
-  states.push_back(gs3);
-  states.push_back(gs4);
-  states.push_back(gs5);
-
-}
-
 /** Set the current GameState to \c t
   *
-  * \param t The GameState type to switch to
+  * \param vName The name of the GameState to switch to
+  *
   */
-void RainbruRPG::Core::GameEngine::changeState(tStateType t){
+void RainbruRPG::Core::GameEngine::changeState(const std::string& vName){
   if (m_running){
+    std::string msg;
 
-    switch (t){
-    case ST_MAIN_MENU:
-      LOGI("Switching to MainMenu Game...");
-      break;
-    case ST_LOCAL_TEST:
-      LOGI("Switching to LocalTest...");
-      break;
-    case ST_MENU_CONNECT:
-      LOGI("Switching to ConnectMenu Game...");
-      break;
-    case ST_CREATE_ACCOUNT:
-      LOGI("Switching to CreateMenu...");
-      break;
-    case ST_SERVER_LIST:
-      LOGI("Switching to ServerList...");
-      break;
-    default:
-      LOGW("Unknown game state received");
+    size_t t = this->getGameStateIndexByName(vName);
+
+    if (t == std::string::npos){
+      msg = "Cannot find ";
+      msg += vName;
+      msg += " state";
+      LOGE(msg.c_str());
     }
-
+    else{
+      std::string msg = "Switching to ";
+      msg += vName;
+      msg += " state...";
+      LOGI(msg.c_str());
+    }
 
     if ((unsigned int)t>states.size()){
       LOGE("An error will occur : we are calling a non-inexisting "
 	   "gamestate");
     }
     else{
-      tGameStateType oldType=states[actualState]->getStateType();
+      /* Avoid a SEGFAULT when setting the first game state */
+      tGameStateType oldType;
+      if (actualState != -1){
+	oldType=states[actualState]->getStateType();
+      }
+      else{
+	oldType = GST_UDEF;
+      }
       tGameStateType newType=states[t]->getStateType();
+
+      if (oldType==GST_UDEF && newType==GST_UDEF){
+	LOGE("Both game states type are Undefined");
+      }
+
       if (oldType!=newType){
 	if (oldType==GST_MENU){
 	  if (newType==GST_GAME){
@@ -212,7 +176,9 @@ void RainbruRPG::Core::GameEngine::changeState(tStateType t){
       }
 
        // Pause the actual state
-      states[actualState]->pause();
+      if (actualState != -1){
+	states[actualState]->pause();
+      }
 
       // Change the state
       actualState=t;
@@ -240,11 +206,12 @@ void RainbruRPG::Core::GameEngine::cleanup(){
   m_running=false;
   delete mInputMgr;
 
-  mSceneMgr->removeRenderQueueListener(mRenderQueueListener);
+  /* Removed to avoid OgreGui dependencies
+    mSceneMgr->removeRenderQueueListener(mRenderQueueListener);
   delete mRenderQueueListener;
   mRenderQueueListener=NULL;
-
   SkinManager::getSingleton().cleanup();
+  */
 
 /*
   this->cleanStates();
@@ -330,9 +297,10 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
 
   if (ret!=CCR_SUCCESS){
     LOGW("The login of this user failed");
+  /* Removed to avoid OgreGui dependencies
     GuiManager::getSingleton()
       .showMessageBox("Connection failed", errMsg);
-
+  */
     return false;
 
   }
@@ -423,6 +391,7 @@ void RainbruRPG::Core::GameEngine::initOgre(){
 
   // True for autocreate window
   Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
+  this->mRoot = &Ogre::Root::getSingleton();
 
   // It seems to avoid the 'GLX_icon.png not found' Exception
   // as the setupResources() and loadResources() functions are
@@ -466,12 +435,6 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   // Set default mipmap level (NB some APIs ignore this)
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-#ifdef RAINBRU_RPG_DEBUG
-  GuiManager::getSingleton().createNumDebugWindow(mWindow);
-#endif
-
-  GuiManager::getSingleton().createTitleOverlay(mWindow);
-  
 }
 
 /** Get the PagingLandScape2 scene manager
@@ -687,14 +650,17 @@ loadResourcesGroup(const Ogre::String& groupName){
 void RainbruRPG::Core::GameEngine::
 fromMenuToGame(GameState* from, GameState* to){
   LOGI("Switching from menuType to gameType");
+  /* Removed to avoid OgreGui dependencies
   GuiManager::getSingleton().beginGuiFadeOut();
+  */
 
   // We must wait for the CEGUI fade end to prevent
   // SEGFAULT in access to CEGUI windows (getAlpha())
+  /* Removed to avoid OgreGui dependencies
   while (GuiManager::getSingleton().isInGuiFadeOut()){
     Ogre::Root::getSingleton().renderOneFrame();
   }
-
+  */
   LOGI("Clearing Scene");
   mSceneMgr->clearScene();
   mWindow->removeAllViewports();
@@ -712,9 +678,10 @@ fromMenuToGame(GameState* from, GameState* to){
   createCamera();
 
   //mettre a jour la camera de mFrameListener
+  /* Removed to avoid OgreGui dependencies
   GuiFrameListener* gfl=(GuiFrameListener*)mFrameListener;
   gfl->setCamera(mCamera);
-
+  */
   //BaseCameraViewpoint.x=-4098.0f
   //BaseCameraViewpoint.y=30644.0f
   //BaseCameraViewpoint.z=293.0f
@@ -726,8 +693,9 @@ fromMenuToGame(GameState* from, GameState* to){
 
   createViewports();
 
+  /* Removed to avoid OgreGui dependencies
   GuiManager::getSingleton().destroyTitleOverlay();
-
+  */
   ColourValue fadeColour( 0.9, 0.9, 0.9 );
   //mSceneMgr->setFog( FOG_LINEAR, fadeColour, 0.0, 350, 515 );
   //mWindow->getViewport(0)->setBackgroundColour( fadeColour );
@@ -805,9 +773,13 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
    * should be handled.
    *
    */
+  /* Removed to avoid OgreGui dependencies
   if (!GuiManager::getSingleton().isInGuiFadeIn()){
+  */
     states[actualState]->mousePressed(evt, id);
+    /*
   }
+  */
   return true;
 
 }
@@ -877,39 +849,32 @@ RainbruRPG::Core::GameEngine::getInputManager(){
   return mInputMgr;
 }
 
-/** Initializes the OgreGUI system
+/** Adds the given game state to the map
   *
-  * This function is called from the init() one. It must set the 
-  * OgreGUI system in InputManager.
+  * \param gs The game state to be added
   *
   */
-void RainbruRPG::Core::GameEngine::initOgreGui(){
-  // mOgreGUI = new BetaGUI::GUI("commonwealth-10",14);
-  SkinManager::getSingleton().init();
-
-
-
-  mOgreGUI = new BetaGUI::GUI(Root::getSingleton().getRenderSystem(),
-			      mSceneMgr, mSceneMgr->getCurrentViewport());
-
-  mRenderQueueListener=new OgreGuiRenderQueueListener(mOgreGUI);
-  mSceneMgr->addRenderQueueListener(mRenderQueueListener);
+void RainbruRPG::Core::GameEngine::registerGameState(GameState* gs){
+  LOGA( gs , "Adding a NULL GameState");
+  states.push_back(gs);
 }
 
-/** Return the current OgreGUI instance
+/** Get the index of a named GameState
   *
-  * This function is mainly used by gsMenuBase to inject mouse
-  * and keyboard event in the OgreGUI system.
+  * \param vName The name of the searched game state
   *
-  * This function logs an error if mOgreGUI is NULL (could cause a segfault).
-  *
-  * \return The currently used OgreGui instance
+  * \return The index of the gamestate in the \ref states vactor if found,
+  *         otherwise, returns the \c std::string::npos value.
   *
   */
-BetaGUI::GUI* RainbruRPG::Core::GameEngine::getOgreGui(){
-  if (!mOgreGUI){
-    LOGE("Returning a NULL OgreGUI instance");
-  }
+size_t RainbruRPG::Core::GameEngine::
+getGameStateIndexByName(const std::string& vName){
+  int i;
 
-  return mOgreGUI;
+  for (i=0; i< states.size(); i++){
+    if (states[i]->getName().compare(vName) == 0){
+      return i;
+    }
+  }
+  return std::string::npos;
 }

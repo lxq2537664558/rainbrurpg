@@ -24,6 +24,9 @@
   * Declares a base abstract class of all the GameStates
   *
   * Modifications :
+  * - 18 oct 2008 : Added a state type parameter in constructor
+  * - 16 oct 2008 : Added GST_UDEF state type
+  * - 15 oct 2008 : Adding name member
   * - 15 aug 2008 : Single file documentation
   * - 22 may 2008 : rootWindowName removed (CEGUI not used anymore)
   * - 25 jul 2007 : rootWindowName added
@@ -41,6 +44,9 @@
 
 #include <logger.h>
 
+#include <string>
+
+using namespace std;
 using namespace Ogre;
 
 namespace RainbruRPG {
@@ -54,6 +60,7 @@ namespace RainbruRPG {
       *
       */
     typedef enum{
+      GST_UDEF, //!< Undefined state type
       GST_MENU, //!< The GameState is a menu
       GST_GAME  //!< The GameState is game (with a map, a moving camera...)
     }tGameStateType;
@@ -77,7 +84,7 @@ namespace RainbruRPG {
     public:
       virtual ~GameState();
 
-      tGameStateType getStateType();
+      const tGameStateType& getStateType()const;
 
       /** The constructor of GameState 
         * 
@@ -118,17 +125,28 @@ namespace RainbruRPG {
       /** The OIS mouse released implementation */
       virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID)=0;
 
-
       bool wasInit();
+
+      void setName(const string&);
+      const string& getName(void)const;
+
     protected:
-      GameState();
+      GameState(const string&, const tGameStateType& vState = GST_UDEF);
 
       /** Tells if the gamestate was initialized */
       bool isInit;
 
+      
+
+      /** The name of the state
+        *
+	* It is used when changing game state in \ref GameEngine.
+	*
+	*/
+      string name;
+
       /** The common input wrapper */
       tGameStateType stateType;
-
    };
   }
 }

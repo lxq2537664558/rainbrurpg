@@ -29,11 +29,21 @@
 
 /** A default protected constructor 
   *
-  * This constructor is defined protected as this class shoiuld not
-  * be created directly. Use subclasses
+  * This constructor is defined protected as this class should not
+  * be created directly. Use subclasses.
+  *
+  * \note The name is used when changing state. Its name is its identifier,
+  *       so the name must be non-null and unique.
+  *
+  * \param vName The name of the gamestate
+  * \param vType The type of the game state
   *
   */ 
-RainbruRPG::Core::GameState::GameState(){
+RainbruRPG::Core::GameState::
+GameState(const string& vName, const tGameStateType& vType):
+  name(vName),
+  stateType(vType)
+{
   LOGI("Initializing game state super-class");
   isInit=false;
 }
@@ -56,6 +66,24 @@ bool RainbruRPG::Core::GameState::wasInit(){
   * \return The type of this state
   *
   */
-tGameStateType RainbruRPG::Core::GameState::getStateType(){
+const tGameStateType& RainbruRPG::Core::GameState::getStateType()const{
   return this->stateType;
+}
+
+/** Change the name of this gamestate
+  *
+  * \param vName The new name
+  *
+  */
+void RainbruRPG::Core::GameState::setName(const string& vName){
+  this->name = vName;
+}
+
+/** Get the name of this gamestate
+  *
+  * \return The current name
+  *
+  */
+const string& RainbruRPG::Core::GameState::getName(void)const{
+  return this->name;
 }

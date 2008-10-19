@@ -70,6 +70,9 @@ init(){
     IS_INITIALIZED=1
 }
 
+#
+# Check if this script has been initialized and exit if not
+#
 check_initialized(){
     if [ $IS_INITIALIZED != 1 ]; then
 	error "create_dll.sh is not initialized !"
@@ -77,6 +80,12 @@ check_initialized(){
     fi
 }
 
+#
+# Get the library name and set it in the LIB_NAME variable
+#
+# The library name is taken from the lib*.a file. Example : 
+# If I found a libfoo.a, the library name is foo.
+#
 get_library_name(){
     check_initialized
     step "Check for library canonical name"
@@ -84,6 +93,11 @@ get_library_name(){
     echo "  library name is "$LIB_NAME
 }
 
+#
+# Get the object list and set it in the OBJ_LIST variable
+#
+# The object list is taken from the lib$LIB_NAME.a archive.
+#
 get_object_list(){
     check_initialized
     step "Get object list"
@@ -91,6 +105,9 @@ get_object_list(){
     echo "  object list contains "${#OBJ_LIST[*]}" objects"
 }
 
+#
+# Uses dllwrap tool to create the shared library
+#
 create_dll(){
     check_initialized
     step "Creating shared library(.libs/$LIB_NAME.dll)"
@@ -98,6 +115,11 @@ create_dll(){
 	-o $LIB_NAME.dll ${OBJ_LIST[@]:0} $LIBADD
 }
 
+#
+# Run the scipt
+#
+# param $1 The LIBADD parameter (-l -L etc...)
+#
 run(){
     LIBADD=$1
 

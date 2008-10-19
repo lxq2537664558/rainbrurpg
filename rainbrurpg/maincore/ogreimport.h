@@ -45,8 +45,9 @@
 #define _RAINBRURPG_OGRE_IMPORT_H_
 
 #ifdef __GNUC__
+// Included to get the RB_DISABLE_OGRE_DEPREC_WARN definition
+#  include "../config.h"
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
-  
 // The following #undef will disable warnings due to inclusion
 // of deprecated std headers.
 #    undef __DEPRECATED
@@ -112,8 +113,12 @@
  * config.h redefine them. I keep `my' versions by undefining Ogre's ones
  * with the #undef(s) block and include `my' config.h at the end.
  *
+ * Only in Win32 because the GNUC include handles the deprecated warnings. 
+ *
  */
-#include "../config.h"
+#ifdef __WIN32__
+#  include "../config.h"
+#endif // __WIN32__
 
 
 #ifdef __GNUC__

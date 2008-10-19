@@ -20,19 +20,25 @@
  *
  */
 
-/** \file gslocaltest.cpp
-  * Implements a game state class for test purpose only
+/** \file gsupdatedatafiles.cpp
+  * Implements the state showing the datafiles that need to be updated
   *
   */
 
-#include "gslocaltest.h"
+#include "gsupdatedatafiles.h"
 
-RainbruRPG::Core::gsLocalTest::gsLocalTest():
-  gsGameBase("gsLocalTest")
-{
+/** The default constructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::gsUpdateDatafiles()
+  :gsMenuBase("gsUpdateDatafiles", false){
+
 
 }
 
-void RainbruRPG::Core::gsLocalTest::init(){
-  mapName="paginglandscape2.cfg";
+/** The destructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::~gsUpdateDatafiles(){
+
 }

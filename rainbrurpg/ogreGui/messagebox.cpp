@@ -59,7 +59,7 @@ RainbruRPG::OgreGui::RbMessageBox::RbMessageBox():
 
 RainbruRPG::OgreGui::RbMessageBox::~RbMessageBox(){
   if (mWin != NULL){
-    GameEngine::getSingleton().getOgreGui()->removeWindow(mWin);
+    GUI::getSingleton().removeWindow(mWin);
   }
 }
 
@@ -77,10 +77,10 @@ void RainbruRPG::OgreGui::RbMessageBox::initWindow(){
 
   // Initialise the dialog
   Vector4 winDim=Vector4(posX, posY, width, height);
-  BetaGUI::GUI* gui=GameEngine::getSingleton().getOgreGui();
+  BetaGUI::GUI gui=GUI::getSingleton();
   title="Unset";
-  mWin=new Dialog(winDim, title, gui, OSI_BETAGUI);
-  gui->addDialog(mWin);
+  mWin=new Dialog(winDim, title, &gui, OSI_BETAGUI);
+  gui.addDialog(mWin);
 
   Vector4 labDim=Vector4(2, 24, width-20, 30);
   caption=new Label( labDim, "Unset", mWin );
@@ -149,7 +149,7 @@ const String& RainbruRPG::OgreGui::RbMessageBox::getTitle(void){
 void RainbruRPG::OgreGui::RbMessageBox::show(void){
   mWin->setTransparency(0.9f);
   mWin->show();
-  GameEngine::getSingleton().getOgreGui()->moveWindowToForeGround(mWin);
+  GUI::getSingleton().moveWindowToForeGround(mWin);
   // Dilaog become modal
   //  GameEngine::getSingleton().getOgreGui()->setFocusedWidget(btnOk);
 }
@@ -160,7 +160,7 @@ void RainbruRPG::OgreGui::RbMessageBox::show(void){
 void RainbruRPG::OgreGui::RbMessageBox::hide(void){
   mWin->hide();
   //  GameEngine::getSingleton().getOgreGui()->disableFocusedWidget();
-  GameEngine::getSingleton().getOgreGui()->removeWindow(mWin);
+  GUI::getSingleton().removeWindow(mWin);
 }
 
 /** The callback od OgreGUI buttons

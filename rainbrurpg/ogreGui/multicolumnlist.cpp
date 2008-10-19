@@ -119,7 +119,7 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 {
   mParentWindow = vParent;
   mSkin = SkinManager::getSingleton().getSkin(this);
-  mGui = GameEngine::getSingleton().getOgreGui();
+  mGui = &GUI::getSingleton();
   LOGA( mGui, "GUI pointer is NULL, program should crash (segfault).");
 
   mToolTip=new ToolTip(Vector4(0, 0, 200, 50), 

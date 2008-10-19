@@ -1,3 +1,41 @@
+2008-10-17 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/gamestate.cpp (GameState): Constructor now takes the
+	type argument.
+	
+	* maincore/gameengine.cpp (mousePressed): decomment
+	* client/main.cpp (main): Create and register OgreGuiQueueListener
+
+2008-10-16 Jerome Pasquier  <rainbru@free.fr>
+	* client/main.cpp (main): Initialize SkinManager.
+	
+	* maincore/gameengine.h: Removed the GameState type enumeration.
+	* maincore/gameengine.cpp (changeState): Now using a string parameter.
+
+2008-10-15 Jerome Pasquier  <rainbru@free.fr>
+	I must move some code from maincore to client to avoid
+	the maincore library ro be linked with ogreGui.
+
+	* maincore/gameengine.cpp (getGameStateIndexByName): implementation
+	* maincore/gameengine.cpp (registerGameState): implementation
+	
+	* ogreGui/bggui.h: GUI become a singleton
+	* maincore/exampleframelistener.*: moved to client/  
+	* maincore/guiframelistener.*: moved to client/  
+	* maincore/guimanager.*: moved to client/  
+
+2008-10-14 Jerome Pasquier  <rainbru@free.fr>
+	I must move some code from maincore to client to avoid
+	the maincore library ro be linked with ogreGui.
+	
+	* maincore/gsconnection.*: moved to client/  
+	* maincore/gsserverlist.*: moved to client/
+	* maincore/gscreateaccount.h *: moved to client/
+	
+	* maincore/gsmenubase.cpp: moved to client/
+	* maincore/gsmenubase.h: moved to client/
+	* maincore/gsmainmenu.cpp: moved to client/
+	* maincore/gsmainmenu.h: moved to client/
+	
 2008-10-10 Jerome Pasquier  <rainbru@free.fr>
 	* create_dll.sh: Implementation of a shell script that
 	help developpers to create win32 shared libraries.

@@ -55,9 +55,11 @@
   * ./configure --host=i586-mingw32msvc --prefix=/usr/cross/
   * </code>
   *
-  * To create the shared library (.dll), I'm testing a shell script I
-  * added to the common/ directory. It actually produce a libarry but it need
-  * to be tested in a cross-compiled program.
+  * To create the shared library (.dll), I use a shell script called 
+  * \c create_dll.sh but we do not need to call it. It is integrated
+  * to the Makefile.am files. Please see common/Makefile.am for
+  * integration example. To create the common/ shared library, please go to
+  * the common/ directory and call <code>make dll</code>.
   *
   * \todo Test the rainbrurpg-common.dll shared library created by the 
   *       common/make.sh script.

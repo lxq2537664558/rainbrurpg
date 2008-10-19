@@ -37,6 +37,10 @@
 #include "gameengine.h"
 #include <logger.h>
 #include "guimanager.h"
+#include "skinmanager.h"
+#include "bggui.h"
+#include "guiframelistener.h"
+#include <renderqueuelistener.h>
 
 #include <version.h>
 //#include <cstdlib> 
@@ -48,6 +52,15 @@
 #include "vcconstant.h"
 #include "globaluri.h"
 
+// includes game states
+#include "gsmainmenu.h"
+#include "gsconnection.h"
+#include "gscreateaccount.h"
+#include "gsserverlist.h"
+#include "gsupdatedatafiles.h"
+
+#include <gslocaltest.h>
+
 /** To avoid a double definition of PI, launcher.h, that include Ogre3D
   * headers must be included before fox headers. Fox and Ogre both defines 
   * PI (fxdefs.h and OgreMath.h).
@@ -57,7 +70,10 @@
 #include <fox-1.6/fx.h>
 #include <optionmanager.h>
 
+#include "../config.h"
+
 using namespace RainbruRPG::Core;
+using namespace RainbruRPG::Events;
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Options;
 using namespace RainbruRPG::Network;
@@ -76,6 +92,7 @@ void handleCommandLineOptions(int argc, char **argv);
 void showHelp(void);
 bool showLauncher(int argc, char **argv);
 void showVersion(void);
+void initGameStates();
 // End of forward declarations
 
 
@@ -141,9 +158,47 @@ int main(int argc, char **argv){
 
     GuiManager::getSingleton().init();
     GameEngine::getSingleton().init();
-    GameEngine::getSingleton().changeState(ST_MAIN_MENU);
 
-    // main loop
+    // Must be called after GameEngine::init() for ressources to be loaded
+    SkinManager::getSingleton().init();
+
+
+    initGameStates();
+    GameEngine::getSingleton().changeState("gsMainMenu");
+
+    // Moved from GameEngine::init()
+    GuiFrameListener* mFrameListener = 
+      new GuiFrameListener(GameEngine::getSingleton().getRenderWindow(), 
+			   GameEngine::getSingleton().getCamera());
+    Ogre::Root::getSingleton().addFrameListener(mFrameListener);
+    mFrameListener->setCamera(GameEngine::getSingleton().getCamera());
+
+    if (!GameEngine::getSingleton().getOgreRoot()){
+      LOGE("OgreRoot is not initialized");
+    }
+
+    // OgreGui settings
+    GUI::getSingleton()
+      .init(GameEngine::getSingleton().getOgreRoot()->getRenderSystem(),
+	    GameEngine::getSingleton().getOgreSceneMgr(),
+	    GameEngine::getSingleton().getRenderWindow()->getViewport(0));
+
+    GameEngine::getSingleton().getOgreSceneMgr()
+      ->addRenderQueueListener(new OgreGuiRenderQueueListener(
+         &GUI::getSingleton()));
+
+
+
+    // GuiManager settings
+#ifdef RAINBRU_RPG_DEBUG
+    GuiManager::getSingleton()
+      .createNumDebugWindow(GameEngine::getSingleton().getRenderWindow());
+#endif
+    GuiManager::getSingleton()
+      .createTitleOverlay(GameEngine::getSingleton().getRenderWindow());
+
+ 
+   // main loop
     GameEngine::getSingleton().run();
     
     GameEngine::getSingleton().cleanup();
@@ -279,3 +334,14 @@ void handleCommandLineOptions(int argc, char **argv){
    v.logVersion();
  }
  
+ /** Initializes the game states
+   *
+   */
+ void initGameStates(){
+   GameEngine::getSingleton().registerGameState(new gsMainMenu());
+   GameEngine::getSingleton().registerGameState(new gsConnection());
+   GameEngine::getSingleton().registerGameState(new gsServerList());
+   //   GameEngine::getSingleton().registerGameState(new gsUpdateDatafiles());
+
+   GameEngine::getSingleton().registerGameState(new gsLocalTest());
+ }

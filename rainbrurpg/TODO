@@ -9,10 +9,10 @@ export CPPFLAGS="-I/usr/cross/include/ -mwindows"&&                \
     ./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 
 
-* OgreGui : GUI over Ogre3D based on QuadRenderer
+o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 
-o [mouse] Unittests
+* Unittests
 - Next unit test is common/loadbmp
 - *** Unit tests failed in production mode (no --enable-debug) ***
 - HTTP response 401 "Unauthorized"
@@ -65,6 +65,25 @@ o [mouse] Unittests
 - Environmentsetup uses skydome and fog
 - Editor identification and cryptography of message done by GPG keys
 
+* GuiSerializer
+A system that serialize widgets position and configuration
+- Two central classes GuiSerializer and SerializableWisget
+- GuiSerializer is a singleton that handle XML files and widget vectors
+   void setWidgetName(string)
+   void setContextName
+   void addValue(str key, value)
+   bool getValue(key, &int)
+   bool getValue(key, afloat)
+   The bools are telling if the key was found
+- SerialisableWidget is inherited by complex widget
+   void serialize(GuiSerializer*)=0;
+   void deserialize(GuiSerializer*)=0;
+- The XML file
+   GuiSerializer
+      widgetName
+         ContextName
+           Key=value
+
 * Miscellaneous
 - Logger uses clog and cerr (from the IOstream Library)
 - modifpersoattrb.php do not check fields content (NULL content allowed)
@@ -79,7 +98,9 @@ o [mouse] Unittests
 * *******************************************************
 
 * v 0.0.5-186
-- (10) common/make_dll.sh removed. Now its a Makefile.am rule.
+- (12) maincore does not depends anymore on ogreGui
+- the ogreGui/GUI class become a Singleton
+- common/make_dll.sh removed. Now its a Makefile.am rule.
 - create_dll.sh and common/make_dll.sh scripts
 - Fix many Rectangle ambiguous reference in OgreGui
 - Removed cross-compilation hacks on configure.in and Makefile(s).am

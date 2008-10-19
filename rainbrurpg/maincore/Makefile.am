@@ -1,5 +1,10 @@
 # maincore is a library shared by editor and client
 # it is linked with Ogre
+#
+
+# Warning :
+# It should not be linked with OgreGui because OgreGui is linked with it
+#
 
 lib_LTLIBRARIES = librainbrurpg-core.la
 
@@ -7,53 +12,34 @@ librainbrurpg_core.adir=.
 
 h_sources=gameengine.h			\
 	  gamestate.h			\
-	  guimanager.h			\
 	  velocitycalculator.h		\
 	  vcconstant.h			\
-	  gsmenubase.h			\
 	  inputwrapper.h		\
 	  inputmanager.h		\
-	  gsmainmenu.h			\
-	  gslocaltest.h			\
-	  guiframelistener.h		\
-	  exampleframelistener.h	\
 	  gsgamebase.h			\
+	  gslocaltest.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
-	  gsconnection.h		\
 	  ogreimport.h			\
-	  keyboardnavigation.h		\
-	  gscreateaccount.h		\
-	  gsserverlist.h		\
-	  gsupdatedatafiles.h
+	  keyboardnavigation.h
 
 cc_sources=gameengine.cpp		\
 	  gamestate.cpp			\
-	  guimanager.cpp		\
 	  velocitycalculator.cpp	\
 	  vcconstant.cpp		\
-	  gsmenubase.cpp		\
 	  inputwrapper.cpp		\
 	  inputmanager.cpp		\
-	  gsmainmenu.cpp		\
-	  gslocaltest.cpp		\
-	  guiframelistener.cpp		\
-	  exampleframelistener.cpp	\
 	  gsgamebase.cpp		\
+	  gslocaltest.cpp		\
 	  environmentsetup.cpp		\
 	  highlightlistener.cpp		\
-	  gsconnection.cpp		\
-	  keyboardnavigation.cpp	\
-	  gscreateaccount.cpp		\
-	  gsserverlist.cpp		\
-	  gsupdatedatafiles.cpp
+	  keyboardnavigation.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 INCLUDES= -I$(top_srcdir)/common			\
-	  -I$(top_srcdir)/ogreGui			\
 	  $(OGRE_CFLAGS)				\
 	  $(OIS_CFLAGS)					\
 	  $(shell pkg-config sigc++-2.0 --cflags) 
@@ -61,6 +47,7 @@ INCLUDES= -I$(top_srcdir)/common			\
 librainbrurpg_core_la_SOURCES= $(h_sources)		\
 			       $(cc_sources)
 
+# Do not add OgreGui here to avoid circular references
 librainbrurpg_core_la_LIBADD= -lrainbrurpg-common	\
 			      -lOgreMain
 

@@ -38,7 +38,7 @@
   *
   */
 void dumpOgreRectangle(const string& file, const string& line, 
-		       const Rectangle& obj){
+		       const Ogre::Rectangle& obj){
 
   ostringstream oss;
   oss << "Debugging ogre rectangle : top=" << obj.top

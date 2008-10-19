@@ -20,19 +20,37 @@
  *
  */
 
-/** \file gslocaltest.cpp
-  * Implements a game state class for test purpose only
+/** \file gsupdatedatafiles.h
+  * Declares the state showing the datafiles that need to be updated
+  *
+  * Modifications :
+  * - 16 aug 2008 : Single file documentation
+  * - 30 jul 2007 : Starting implementation
   *
   */
 
-#include "gslocaltest.h"
+#ifndef _GS_UPDATE_DATAFILES_H_
+#define _GS_UPDATE_DATAFILES_H_
 
-RainbruRPG::Core::gsLocalTest::gsLocalTest():
-  gsGameBase("gsLocalTest")
-{
+#include "gsmenubase.h"
+#include "vcconstant.h"
+#include "guimanager.h"
 
+namespace RainbruRPG {
+  namespace Core{
+
+    /** A game state used to show client update progression
+      *
+      *
+      *
+      */
+    class gsUpdateDatafiles : public gsMenuBase{
+    public:
+      gsUpdateDatafiles();
+      virtual ~gsUpdateDatafiles();
+    };
+  }
 }
 
-void RainbruRPG::Core::gsLocalTest::init(){
-  mapName="paginglandscape2.cfg";
-}
+#endif // _GS_UPDATE_DATAFILES_H_
+

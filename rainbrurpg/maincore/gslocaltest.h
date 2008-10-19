@@ -40,6 +40,8 @@ namespace RainbruRPG {
       */
     class gsLocalTest : public gsGameBase{
     public:
+      gsLocalTest();
+
       /** An empty default destructor needed to avoid compilation warnings */
       virtual ~gsLocalTest(){};
 

@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 15 oct 2008 : Become a Singleton
   * - 18 aug 2008 : Single file documentation
   * - 15 apr 2008 : Right mouse button pressed implementation
   * - 10 apr 2008 : Focused widget handling
@@ -36,6 +37,8 @@
 #define _BETA_GUI_GUI_H_
 
 #include <ogreimport.h>
+
+#include <singleton.h>
 
 #include <vector>
 #include <list>
@@ -113,11 +116,13 @@ namespace BetaGUI {
     * \sa \ref GUI::resizedWindow "resizedWindow".
     *
     */
-  class GUI{
+  class GUI : public RainbruRPG::Core::Singleton<GUI>{
 
   public:
-    GUI(RenderSystem*, SceneManager*, Viewport*);
+    GUI();
     ~GUI();	
+
+    void init(RenderSystem*, SceneManager*, Viewport*);
 
     bool injectMouse(unsigned int, unsigned int);
     bool injectKey(String, unsigned int, unsigned int);
