@@ -100,6 +100,9 @@ AM_SANITY_CHECK
 
 AC_LANG_CPLUSPLUS
 
+dnl Handles cross compil with prefix
+RB_HANDLE_CROSS_COMPIL(/usr/cross)
+
 dnl Checks for libraries and headers
 RB_CHECK_OGREMAIN
 RB_CHECK_PLSM2

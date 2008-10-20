@@ -20723,6 +20723,19 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
 
+  echo -n "checking for cross-compilation..."
+
+  if test $host_os ==  "mingw32msvc"
+  then
+    echo "win32. Prefix is /usr/cross"
+    rb_cross_compil_host=win32
+    rb_cross_compil_prefix=/usr/cross
+  else
+    echo "no"
+  fi
+
+
+
 
 if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
 	if test -n "$ac_tool_prefix"; then
@@ -21373,7 +21386,6 @@ fi
     exit -1
   fi
 
-
     FOX_CFLAGS=`$FOX_CONFIG --cflags`
   FOX_LIBS=`$FOX_CONFIG --libs`
 
@@ -21494,6 +21506,12 @@ fi
 
 
 
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding boost_filesystem flags for "mingw32msvc""
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
+    LDFLAGS="$LDFLAGS -lboost_filesystem.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lboost_filesystem" >&5
 echo $ECHO_N "checking for main in -lboost_filesystem... $ECHO_C" >&6; }
@@ -21559,12 +21577,12 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have Boost-filesystem installed."
-    exit -1
+      echo "Error! You need to have Boost-filesystem installed."
+      exit -1
 
 fi
 
-  if test "${ac_cv_header_boost_filesystem_path_hpp+set}" = set; then
+    if test "${ac_cv_header_boost_filesystem_path_hpp+set}" = set; then
   { echo "$as_me:$LINENO: checking for boost/filesystem/path.hpp" >&5
 echo $ECHO_N "checking for boost/filesystem/path.hpp... $ECHO_C" >&6; }
 if test "${ac_cv_header_boost_filesystem_path_hpp+set}" = set; then
@@ -21693,15 +21711,21 @@ if test $ac_cv_header_boost_filesystem_path_hpp = yes; then
   :
 else
 
-    echo "Error! Cannot find the Boost-filesystem headers."
-    exit -1
+      echo "Error! Cannot find the Boost-filesystem headers."
+      exit -1
 
 fi
 
 
+  fi
 
 
-
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding boost_thread flags for "mingw32msvc""
+    CFLAGS="$CFLAGS"
+    LDFLAGS="$LDFLAGS -lboost_thread.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lboost_thread" >&5
 echo $ECHO_N "checking for main in -lboost_thread... $ECHO_C" >&6; }
@@ -21767,12 +21791,12 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have boost::thread installed."
-    exit -1
+      echo "Error! You need to have boost::thread installed."
+      exit -1
 
 fi
 
-  if test "${ac_cv_header_boost_thread_hpp+set}" = set; then
+    if test "${ac_cv_header_boost_thread_hpp+set}" = set; then
   { echo "$as_me:$LINENO: checking for boost/thread.hpp" >&5
 echo $ECHO_N "checking for boost/thread.hpp... $ECHO_C" >&6; }
 if test "${ac_cv_header_boost_thread_hpp+set}" = set; then
@@ -21901,15 +21925,20 @@ if test $ac_cv_header_boost_thread_hpp = yes; then
   :
 else
 
-     echo "Error! Cannot find the boost::thread headers."
-     exit -1
+       echo "Error! Cannot find the boost::thread headers."
+       exit -1
 
 fi
 
 
+  fi
 
 
-
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding enet flags for "mingw32msvc""
+    LDFLAGS="$LDFLAGS -lenet.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lenet" >&5
 echo $ECHO_N "checking for main in -lenet... $ECHO_C" >&6; }
@@ -21975,13 +22004,13 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have libenet-dev installed."
+      echo "Error! You need to have libenet-dev installed."
     exit -1
 
 fi
 
 
-  if test "${ac_cv_header_enet_enet_h+set}" = set; then
+    if test "${ac_cv_header_enet_enet_h+set}" = set; then
   { echo "$as_me:$LINENO: checking for enet/enet.h" >&5
 echo $ECHO_N "checking for enet/enet.h... $ECHO_C" >&6; }
 if test "${ac_cv_header_enet_enet_h+set}" = set; then
@@ -22110,15 +22139,21 @@ if test $ac_cv_header_enet_enet_h = yes; then
   :
 else
 
-    echo "Error! Cannot find libenet headers."
-    exit -1
+      echo "Error! Cannot find libenet headers."
+      exit -1
 
 fi
 
 
+  fi
 
 
-
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding glib-2.0 flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/glib-2.0/"
+    LDFLAGS="$LDFLAGS -lglib2.0.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lglib-2.0" >&5
 echo $ECHO_N "checking for main in -lglib-2.0... $ECHO_C" >&6; }
@@ -22184,13 +22219,20 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have glib-2.0 installed."
-    exit -1
+      echo "Error! You need to have glib-2.0 installed."
+      exit -1
 
 fi
 
+  fi
 
 
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding sigc++ flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
+    LDFLAGS="$LDFLAGS -lsigc-2.0.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lsigc-2.0" >&5
 echo $ECHO_N "checking for main in -lsigc-2.0... $ECHO_C" >&6; }
@@ -22256,13 +22298,20 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have sigc++-2.0 installed."
-    exit -1
+      echo "Error! You need to have sigc++-2.0 installed."
+      exit -1
 
 fi
 
+  fi
 
 
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding libgd flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
+    LDFLAGS="$LDFLAGS -lgd.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lgd" >&5
 echo $ECHO_N "checking for main in -lgd... $ECHO_C" >&6; }
@@ -22328,12 +22377,12 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have libgd installed."
-    exit -1
+      echo "Error! You need to have libgd installed."
+      exit -1
 
 fi
 
-  if test "${ac_cv_header_gd_h+set}" = set; then
+    if test "${ac_cv_header_gd_h+set}" = set; then
   { echo "$as_me:$LINENO: checking for gd.h" >&5
 echo $ECHO_N "checking for gd.h... $ECHO_C" >&6; }
 if test "${ac_cv_header_gd_h+set}" = set; then
@@ -22462,14 +22511,21 @@ if test $ac_cv_header_gd_h = yes; then
   :
 else
 
-     echo "Error! Cannot find the libgd headers."
-     exit -1
+       echo "Error! Cannot find the libgd headers."
+       exit -1
 
 fi
 
 
+  fi
 
 
+  if test $rb_cross_compil_host == "win32"
+  then
+    echo "Adding libgd flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/gnet/"
+    LDFLAGS="$LDFLAGS -lgnet.dll"
+  else
 
 { echo "$as_me:$LINENO: checking for main in -lgnet-2.0" >&5
 echo $ECHO_N "checking for main in -lgnet-2.0... $ECHO_C" >&6; }
@@ -22535,10 +22591,12 @@ _ACEOF
 
 else
 
-    echo "Error! You need to have GNet installed."
-    exit -1
+      echo "Error! You need to have GNet installed."
+      exit -1
 
 fi
+
+  fi
 
 
 

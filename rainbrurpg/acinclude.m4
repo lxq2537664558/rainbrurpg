@@ -1,7 +1,10 @@
-#serial 3
+dnl
+dnl Modifications :
+dnl - 20 oct 2008 : Better handling of cross-compil through the
+dnl                 RB_HANDLE_CROSS_COMPIL macro.
+dnl
 
 dnl From Jim Meyering
-
 dnl Define HAVE_STRUCT_UTIMBUF if `struct utimbuf' is declared --
 dnl usually in <utime.h>.
 dnl Some systems have utime.h but don't declare the struct anywhere.
@@ -127,7 +130,6 @@ AC_DEFUN([RB_CHECK_LIBFOX],
     echo "The version I found is $FOX_VERSION."
     exit -1
   fi
-
 
   dnl Getting compiler flags
   FOX_CFLAGS=`$FOX_CONFIG --cflags`
@@ -257,15 +259,21 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_BOOST_FS],
 [
-  AC_CHECK_LIB(boost_filesystem, main, [], [
-    echo "Error! You need to have Boost-filesystem installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([boost/filesystem/path.hpp], [], [
-    echo "Error! Cannot find the Boost-filesystem headers."
-    exit -1
-  ])
-
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding boost_filesystem flags for "mingw32msvc""
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
+    LDFLAGS="$LDFLAGS -lboost_filesystem.dll"
+  else
+    AC_CHECK_LIB(boost_filesystem, main, [], [
+      echo "Error! You need to have Boost-filesystem installed."
+      exit -1
+    ])
+    AC_CHECK_HEADER([boost/filesystem/path.hpp], [], [
+      echo "Error! Cannot find the Boost-filesystem headers."
+      exit -1
+    ])
+  fi
 ])
 
 dnl Define the tools Option 
@@ -364,17 +372,22 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_ENET],
 [
-
-  AC_CHECK_LIB(enet, main, [], [
-    echo "Error! You need to have libenet-dev installed."
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding enet flags for "mingw32msvc""
+dnl    CFLAGS="$CFLAGS -I/usr/cross/include/"
+    LDFLAGS="$LDFLAGS -lenet.dll"
+  else
+    AC_CHECK_LIB(enet, main, [], [
+      echo "Error! You need to have libenet-dev installed."
     exit -1
-  ])
+    ])
 
-  AC_CHECK_HEADER([enet/enet.h], [], [
-    echo "Error! Cannot find libenet headers."
-    exit -1
-  ])
-
+    AC_CHECK_HEADER([enet/enet.h], [], [
+      echo "Error! Cannot find libenet headers."
+      exit -1
+    ])
+  fi
 ])
 
 dnl Defines the tests Option 
@@ -410,52 +423,73 @@ dnl Tests the glib library and headers
 dnl
 AC_DEFUN([RB_CHECK_GLIB],
 [
-  AC_CHECK_LIB(glib-2.0, main, [], [
-    echo "Error! You need to have glib-2.0 installed."
-    exit -1
-  ])
-dnl  AC_CHECK_HEADER([glib-2.0/glib.h], [], [
-dnl     echo "Error! Cannot find the glib-2.0 headers."
-dnl     exit -1
-dnl   ])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding glib-2.0 flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/glib-2.0/"
+    LDFLAGS="$LDFLAGS -lglib2.0.dll"
+  else
+    AC_CHECK_LIB(glib-2.0, main, [], [
+      echo "Error! You need to have glib-2.0 installed."
+      exit -1
+    ])
+  fi
 ])
 
 dnl Tests the libsig++ library and headers
 dnl
 AC_DEFUN([RB_CHECK_LIBSIG],
 [
-  AC_CHECK_LIB(sigc-2.0, main, [], [
-    echo "Error! You need to have sigc++-2.0 installed."
-    exit -1
-  ])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding sigc++ flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
+    LDFLAGS="$LDFLAGS -lsigc-2.0.dll"
+  else
+    AC_CHECK_LIB(sigc-2.0, main, [], [
+      echo "Error! You need to have sigc++-2.0 installed."
+      exit -1
+    ])
+  fi
 ])
 
 dnl Tests the libgd library and headers
 dnl
 AC_DEFUN([RB_CHECK_LIBGD],
 [
-  AC_CHECK_LIB(gd, main, [], [
-    echo "Error! You need to have libgd installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([gd.h], [], [
-     echo "Error! Cannot find the libgd headers."
-     exit -1
-   ])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding libgd flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
+    LDFLAGS="$LDFLAGS -lgd.dll"
+  else
+    AC_CHECK_LIB(gd, main, [], [
+      echo "Error! You need to have libgd installed."
+      exit -1
+    ])
+    AC_CHECK_HEADER([gd.h], [], [
+       echo "Error! Cannot find the libgd headers."
+       exit -1
+     ])
+  fi
 ])
 
 dnl Tests the libgd library and headers
 dnl
 AC_DEFUN([RB_CHECK_LIBGNET],
 [
-  AC_CHECK_LIB(gnet-2.0, main, [], [
-    echo "Error! You need to have GNet installed."
-    exit -1
-  ])
-dnl  AC_CHECK_HEADER([gnet-2.0/tcp.h], [], [
-dnl     echo "Error! Cannot find the GNet headers."
-dnl     exit -1
-dnl   ])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding libgd flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/gnet/"
+    LDFLAGS="$LDFLAGS -lgnet.dll"
+  else
+    AC_CHECK_LIB(gnet-2.0, main, [], [
+      echo "Error! You need to have GNet installed."
+      exit -1
+    ])
+  fi
+
 ])
 
 
@@ -463,14 +497,21 @@ dnl Test the usability of the boost::thread library
 dnl
 AC_DEFUN([RB_CHECK_BOOST_THREAD],
 [
-  AC_CHECK_LIB(boost_thread, main, [], [
-    echo "Error! You need to have boost::thread installed."
-    exit -1
-  ])
-  AC_CHECK_HEADER([boost/thread.hpp], [], [
-     echo "Error! Cannot find the boost::thread headers."
-     exit -1
-   ])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding boost_thread flags for "mingw32msvc""
+    CFLAGS="$CFLAGS"
+    LDFLAGS="$LDFLAGS -lboost_thread.dll"
+  else
+    AC_CHECK_LIB(boost_thread, main, [], [
+      echo "Error! You need to have boost::thread installed."
+      exit -1
+    ])
+    AC_CHECK_HEADER([boost/thread.hpp], [], [
+       echo "Error! Cannot find the boost::thread headers."
+       exit -1
+    ])
+  fi
 ])
 
 dnl Test the usability of the magic library
@@ -715,4 +756,29 @@ AC_DEFUN([RB_OPTION_TAPI],
       ;;
   esac
   AM_CONDITIONAL([RB_OPTION_TAPI_FLAGS], [test x$terminal_api = xtrue])
+])
+
+dnl
+dnl Handle the cross-compilation
+dnl
+dnl It set the rb_cross_compil_host variable to win32 if cross-compilation
+dnl to win32 is detected. It also set the rb_cross_compil_prefix prefix
+dnl
+dnl param: $1 The prefix for cross-compilation used with CFLAGS and LDFLAGS
+dnl        if cross-compilation is detected. Set it to '/usr/cross' by
+dnl        example if headers are in /usr/cross/include and libs are in
+dnl        /usr/cross/lib
+dnl
+AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
+[
+  echo -n "checking for cross-compilation..."
+
+  if test $host_os ==  "mingw32msvc"
+  then
+    echo "win32. Prefix is $1"
+    rb_cross_compil_host=win32
+    rb_cross_compil_prefix=$1
+  else  
+    echo "no"
+  fi
 ])
