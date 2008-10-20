@@ -98,17 +98,40 @@ AC_DEFUN([RB_CHECK_LIBOIS],
 
 dnl Checks for the FOX-toolkit and one of its header
 dnl
+dnl It set the FOX_CONFIG var to the fox-config tool executable
+dnl or exit with an error if no found.
+dnl
+dnl Then, it set the FOX_CFLAGS and FOX_LIBS to fox-config returned value
+dnl
+dnl param: $1 The version number that must at least be installed. Examples:
+dnl        1.6 or 1.8 (wothout quotes or revision number).
+dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBFOX],
 [
-  AC_CHECK_LIB(FOX-1.6, main, [], [
-    echo "Error! You need to have FOX-Toolkit 1.6 installed."
+  dnl Get the correct executable
+  AC_PATH_TOOL(FOX_CONFIG, fox-config, [
+    echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
     exit -1
   ])
-  AC_CHECK_HEADER([fox-1.6/fxver.h], [], [
-    echo "Error! Cannot find the FOX-Toolkit 1.6 headers."
+
+  dnl check for version
+  echo -n "checking if Fox version is at least v$1... "
+  FOX_VERSION=`$FOX_CONFIG --version`
+  if test "${FOX_VERSION:0:3}" == "$1"
+  then 
+    echo "yes"
+  else
+    echo "no"
+    echo -n "Error! You need at least Fox-Toolkit v$1. "
+    echo "The version I found is $FOX_VERSION."
     exit -1
-  ])
+  fi
+
+
+  dnl Getting compiler flags
+  FOX_CFLAGS=`$FOX_CONFIG --cflags`
+  FOX_LIBS=`$FOX_CONFIG --libs`
 ])
 
 dnl Checks for the Curl lib and one of its header
@@ -124,7 +147,7 @@ dnl  AC_CHECK_HEADER([curl/curl.h], [], [
 dnl    echo "Error! Cannot find the libcurl headers."
 dnl    exit -1
 dnl  ])
-  PKG_CHECK_MODULES(libcurl, [libcurl >= 7.17])	
+  PKG_CHECK_MODULES(libcurl, [libcurl >= 7.15])	
 
 
 ])

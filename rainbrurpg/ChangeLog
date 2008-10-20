@@ -1,3 +1,7 @@
+2008-10-20 Jerome Pasquier  <rainbru@free.fr>
+	* acinclude.m4 (RB_CHECK_LIBFOX): Big improvment including check
+	and usage if the fox-toolkit found and version checking.
+	
 2008-10-17 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/gamestate.cpp (GameState): Constructor now takes the
 	type argument.

@@ -98,7 +98,8 @@ A system that serialize widgets position and configuration
 * *******************************************************
 
 * v 0.0.5-186
-- (12) maincore does not depends anymore on ogreGui
+- (13) Improvment of the RB_CHECK_LIBFOX of the acinclude.m4 script
+- maincore does not depends anymore on ogreGui
 - the ogreGui/GUI class become a Singleton
 - common/make_dll.sh removed. Now its a Makefile.am rule.
 - create_dll.sh and common/make_dll.sh scripts

@@ -21,13 +21,15 @@ INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/ogreGui			\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
-	   $(shell pkg-config sigc++-2.0 --cflags)
+	   $(shell pkg-config sigc++-2.0 --cflags)	\
+	   $(FOX_CFLAGS)
 
 rainbrurpg_LDADD= -lrainbrurpg-common			\
 		  -lrainbrurpg-core 			\
 		  -lrainbrurpg-ogregui			\
 		  $(OGRE_LIBS)				\
-		  $(OIS_LIBS)	
+		  $(OIS_LIBS)				\
+		  $(FOX_LIBS)
 
 rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/		\
 		    -L$(top_srcdir)/maincore/		\
