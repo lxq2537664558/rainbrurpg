@@ -116,7 +116,8 @@ INCLUDES = -I$(top_srcdir)/common			\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
 	   $(shell pkg-config sigc++-2.0 --cflags)	\
-	   $(shell freetype-config --cflags)
+	   $(shell freetype-config --cflags)		\
+	   $(CFLAGS)
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 

@@ -157,22 +157,21 @@ librainbrurpg_common_la_INCLUDES = -I$(top_srcdir)
 
 INCLUDES= -Ifox-1.6  		 \
 	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 OGRE --cflags) \
-	  $(OGRE_CFLAGS)
+	  $(OGRE_CFLAGS)	\
+	  $(CFLAGS)
 
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 
-# Adds the FOX-Toolkit libs
-fox_config=$(shell fox-config --libs)		\
-  $(shell pkg-config gnet-2.0 glib-2.0 sigc++-2.0 enet --libs)
-
-librainbrurpg_common_la_LIBADD= $(fox config) 
+librainbrurpg_common_la_LIBADD= 
 
 librainbrurpg_common_la_LDFLAGS=      	        \
   $(SHARED_FLAG)				\
   -version-info					\
   $(COMMON_LIBRARY_VERSION)			\
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
-  $(libcurl_LIBS)
+  $(libcurl_LIBS)				\
+  $(shell $(FOX_CONFIG) --libs)			\
+  $(shell $(PKG_CONFIG) gnet-2.0 glib-2.0 sigc++-2.0 enet --libs
 
 dll:
 	source ../create_dll.sh &&		\

@@ -56,9 +56,6 @@
 /* Define to 1 if you have the `enet' library (-lenet). */
 #undef HAVE_LIBENET
 
-/* Define to 1 if you have the `FOX-1.6' library (-lFOX-1.6). */
-#undef HAVE_LIBFOX_1_6
-
 /* Define to 1 if you have the `gd' library (-lgd). */
 #undef HAVE_LIBGD
 

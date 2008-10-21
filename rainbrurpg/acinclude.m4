@@ -780,5 +780,7 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
     rb_cross_compil_prefix=$1
   else  
     echo "no"
+    rb_cross_compil_host=no
+    
   fi
 ])
