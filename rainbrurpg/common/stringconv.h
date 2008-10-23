@@ -24,6 +24,7 @@
   * Declares a singleton to convert string format
   *
   * Modifications :
+  * - 23 oct 2008 : BITSET_STR added bacause of an error on win32 platform
   * - 11 jun 2008 : \ref RainbruRPG::Core::StringConv::itobin "itobin()" 
   *                 implementation
   * - 31 may 2007 : 
@@ -46,8 +47,17 @@
 #include "singleton.h"
 
 using namespace std;
-
 using namespace RainbruRPG::Core;
+
+
+#ifdef __linux__
+#  define BITSET_STR(x) (x.to_string())
+#elif defined __WIN32__
+#  define BITSET_STR(x) (x.to_string<char, char_traits<char>, \
+                         allocator<char> >())
+#else
+#  error "Bitset to string conversion is not implemented for this platform"
+#endif
 
 namespace RainbruRPG {
   namespace Core{
@@ -76,7 +86,7 @@ namespace RainbruRPG {
       std::string itos(int);
       const char* itoc(int);
 
-      std::string itobin(int, int);
+      std::string itobin(int,const int);
 
       std::string ftos(float);
       const char* ftoc(float);

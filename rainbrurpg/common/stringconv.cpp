@@ -236,10 +236,11 @@ std::string RainbruRPG::Core::StringConv::
 itobin(int vInt, const int vBase){
   string out;
 
-  // Using if...else statemenst instead of case one to avoid  crosses 
+  // Using if...else statemenst instead of case to avoid cross 
   // initializations
 
-
+  // We also need to use a different bitset for each case because
+  // the argument of a template cannot be a variable
 
   if (vBase==1){
      bitset<1> num1(vInt);
