@@ -229,28 +229,38 @@ std::string RainbruRPG::Core::StringConv::xmlToNewLine(std::string s){
   *
   * \param vInt  The integer to stringify
   * \param vBase How many characters in the binary string.
-  *              Should be 2, 4 or 8
+  *              Should be 1, 2, 4 or 8
   *
   */
 std::string RainbruRPG::Core::StringConv::
-itobin(int vInt, int vBase){
+itobin(int vInt, const int vBase){
   string out;
- 
-  switch (vBase){
-  case 1:
-    out += bitset<1>(vInt).to_string();
-    break;
-  case 2:
-    out += bitset<2>(vInt).to_string();
-    break;
-  case 4:
-    out += bitset<4>(vInt).to_string();
-    break;
-  case 8:
-    out += bitset<8>(vInt).to_string();
-    break;
-  default:
-    LOGW("StringConv::itobin base parameter unrecognized");
+
+  // Using if...else statemenst instead of case one to avoid  crosses 
+  // initializations
+
+
+
+  if (vBase==1){
+     bitset<1> num1(vInt);
+     out+=BITSET_STR(num1);
   }
+  else if (vBase==2){
+     bitset<2> num2(vInt);
+     out+=BITSET_STR(num2);
+  }
+  else if (vBase==4){
+     bitset<4> num4(vInt);
+     out+=BITSET_STR(num4);
+  }
+  else if (vBase==8){
+     bitset<8> num8(vInt);
+     out+=BITSET_STR(num8);
+  }
+  else{
+    LOGW("StringConv::itobin base parameter unrecognized");
+
+  }
+
   return out;
 }
