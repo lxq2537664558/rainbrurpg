@@ -171,7 +171,7 @@ librainbrurpg_common_la_LDFLAGS=      	        \
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
   $(libcurl_LIBS)				\
   $(shell $(FOX_CONFIG) --libs)			\
-  $(shell $(PKG_CONFIG) gnet-2.0 glib-2.0 sigc++-2.0 enet --libs
+  $(shell $(PKG_CONFIG) gnet-2.0 glib-2.0 sigc++-2.0 enet --libs)
 
 dll:
 	source ../create_dll.sh &&		\

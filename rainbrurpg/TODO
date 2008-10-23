@@ -47,6 +47,13 @@ o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 - In the first page (gsmainmenu), a `quick connect` system
 
 * GameServer
+   Interactive command-line server featuring debus and telnet API
+   server/                 Contains the interactive command-line server
+   server-gui/             The server's GUI related code
+   server-gui/dbus-api/    The dbus related classes
+   server-gui/telnet-api/  The telnet related classes
+   server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
+   server-gui/telnet-gui/  A telnet-based command-line remote control
 - If server cannot connect to the database, a SEGFAULT occurs
 - The HelpViewer is called twice (appears again when OK button clicked)
 - Running 2 servers in the same PC is forbiden ( A lock file ?)
