@@ -12,6 +12,9 @@ export CPPFLAGS="-I/usr/cross/include/ -mwindows"&&                \
 o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 
+o [mouse] Doxygen documentation error
+- removing config/ogre.log
+
 * Unittests
 - Next unit test is common/loadbmp
 - *** Unit tests failed in production mode (no --enable-debug) ***

@@ -64,6 +64,16 @@
   * \todo Test the rainbrurpg-common.dll shared library created by the 
   *       common/make.sh script.
   *
+  * \warning When cross-compiling, the \c ./configure script does not test
+  *          libraries or headers presence, the calls to the \c AC_CHECK_LIB
+  *          and the \c AC_CHECK_HEADER m4 macros are deactivated in
+  *          the \c acinclude.m4 file. I add manually the needed libraries
+  *          and compiler/linker flags, so you need to set the base path
+  *          for cross-compilation in \c configure.in as parameter of the
+  *          \c RB_HANDLE_CROSS_COMPIL m4 macro call. You should set 
+  *          \c /usr/cross if your filesystem contains the \c /usr/cross/lib
+  *          and \c /usr/cross/include directories.
+  *
   * Last modified 2008/10/08.
   *
   * \section win32_troubleshooting Troubleshooting

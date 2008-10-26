@@ -22,6 +22,8 @@
 
 # 
 # Modifications :
+# - 24 oct 2008 : Added a call to autoheader beacause config.h.in was removed
+#                 from the CVS repository
 # - 08 oct 2008 : Removed configure.in.linux and other cross-compilation
 #                 related hacks.
 #
@@ -42,5 +44,6 @@ fi
 
 
 aclocal
+autoheader
 automake
 autoconf
