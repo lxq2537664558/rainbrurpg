@@ -1,5 +1,28 @@
+2008-10-27 Jerome Pasquier  <rainbru@free.fr>
+	* configure.in: Adding a call to RB_CHECK_FREETYPE, a new acinclude.m4
+	macro caus client/ was testing it directly in Makefile.am.
+	* acinclude.m4: Implements a macro called RB_CHECK_FREETYPE with
+	version control and using AC_PATH_TOOL.
+	
+	* maincore/Makefile.am: Using $(SIGC_CFLAGS) and $(SIGC_LIBS)
+	instead of a pkg-config call.
+	
+	* common/Makefile.am: Using a better handling of PKG_CHECK_MODULE
+	generated LIBS and CFLAGS values for INCLUDES and lib_LDFLAGS for
+	libraries : GLIB, SIGC.
+	* acinclude.m4: Using PKG_CHECK_MODULE for many more libraries. The
+	way it define LIBS and CFLAGS variables are used to override them
+	for cross-compilation.
+	
+	* common/Makefile.am: Using $(CFLAGS) and $(LIBS) for libraries
+	that are not based on pkg-config.
+	* common/Makefile.am: Using $(OIS_CFLAGS) instead of pkg-config
+	OIS in INCLUDES to avoid the override of /usr/cross/include
+	with /usr/local/include when cross-compiling. Also Adding $(OGRE_LIBS)
+	and $(OIS_LIBS) in lib_LDFLAGS.
+
 2008-10-27 Carine Chum <carine.chum@free.fr>
-	* common/Makefile.am : Using $(OGRE_CFLAGS) instead of pkg-config
+	* common/Makefile.am: Using $(OGRE_CFLAGS) instead of pkg-config
 	OGRE in INCLUDES to avoid the override of /usr/cross/include
 	with /usr/local/include
 

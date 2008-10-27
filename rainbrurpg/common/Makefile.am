@@ -155,10 +155,14 @@ library_include_HEADERS = $(h_sources)
 
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
 
-INCLUDES= -Ifox-1.6  		 \
-	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 --cflags) \
-	  $(OGRE_CFLAGS)	\
+INCLUDES= $(OGRE_CFLAGS)	\
+	  $(OIS_CFLAGS)         \
+	  $(GLIB_CFLAGS)	\
+	  $(SIGC_CFLAGS)	\
+	  $(GNET_CFLAGS)	\
 	  $(CFLAGS)
+# -Ifox-1.6  		  
+#	  $(shell pkg-config sigc++-2.0 gnet-2.0 --cflags) 
 
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 
@@ -171,7 +175,12 @@ librainbrurpg_common_la_LDFLAGS=      	        \
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
   $(libcurl_LIBS)				\
   $(shell $(FOX_CONFIG) --libs)			\
-  $(shell $(PKG_CONFIG) gnet-2.0 glib-2.0 sigc++-2.0 enet --libs)
+  $(OGRE_LIBS)					\
+  $(OIS_LIBS)					\
+  $(GLIB_LIBS)					\
+  $(SIGC_LIBS)					\
+  $(GNET_LIBS)					\
+  $(LIBS)
 
 dll:
 	source ../create_dll.sh &&		\

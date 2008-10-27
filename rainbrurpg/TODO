@@ -19,7 +19,7 @@ o [mouse] Doxygen documentation error
 * Unittests
 - Next unit test is common/loadbmp
 - *** Unit tests failed in production mode (no --enable-debug) ***
-- HTTP response 401 "Unauthorized"
+   HTTP response 401 "Unauthorized"
 
 * tool-adminsite-databackup
 - a comand-line tool to backup adminsite XML files
@@ -109,7 +109,8 @@ A system that serialize widgets position and configuration
 * *******************************************************
 
 * v 0.0.5-186
-- (14) Fix a bitset to string conversion in stringconv.cpp
+- (15) Highly improved Makefiles for cross-compilation handling
+- Fix a bitset to string conversion in stringconv.cpp
 - Improvment of the RB_CHECK_LIBFOX of the acinclude.m4 script
 - maincore does not depends anymore on ogreGui
 - the ogreGui/GUI class become a Singleton

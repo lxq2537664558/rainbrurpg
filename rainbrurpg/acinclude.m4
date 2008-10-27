@@ -1,5 +1,6 @@
 dnl
 dnl Modifications :
+dnl - 27 oct 2008 : RB_CHECK_FREETYPE macro implementation for client/
 dnl - 20 oct 2008 : Better handling of cross-compil through the
 dnl                 RB_HANDLE_CROSS_COMPIL macro.
 dnl
@@ -429,10 +430,7 @@ AC_DEFUN([RB_CHECK_GLIB],
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/glib-2.0/"
     LDFLAGS="$LDFLAGS -lglib2.0.dll"
   else
-    AC_CHECK_LIB(glib-2.0, main, [], [
-      echo "Error! You need to have glib-2.0 installed."
-      exit -1
-    ])
+    PKG_CHECK_MODULES(GLIB, [glib-2.0 >= 2.0.0])
   fi
 ])
 
@@ -446,10 +444,7 @@ AC_DEFUN([RB_CHECK_LIBSIG],
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
     LDFLAGS="$LDFLAGS -lsigc-2.0.dll"
   else
-    AC_CHECK_LIB(sigc-2.0, main, [], [
-      echo "Error! You need to have sigc++-2.0 installed."
-      exit -1
-    ])
+    PKG_CHECK_MODULES(SIGC, [sigc++-2.0 >= 2.0.0])
   fi
 ])
 
@@ -484,10 +479,7 @@ AC_DEFUN([RB_CHECK_LIBGNET],
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/gnet/"
     LDFLAGS="$LDFLAGS -lgnet.dll"
   else
-    AC_CHECK_LIB(gnet-2.0, main, [], [
-      echo "Error! You need to have GNet installed."
-      exit -1
-    ])
+    PKG_CHECK_MODULES(GNET, [gnet-2.0 >= 2.0.0])
   fi
 
 ])
@@ -783,4 +775,41 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
     rb_cross_compil_host=no
     
   fi
+])
+
+dnl Chack the Freetype library
+dnl
+AC_DEFUN([RB_CHECK_FREETYPE],
+[
+
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding libgd flags for mingw32msvc"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/freetype/"
+    LDFLAGS="$LDFLAGS -lfreetype6.dll"
+  else
+    dnl Get the correct executable
+    AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, [
+      echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
+      exit -1
+    ])
+
+    dnl check for version
+    echo -n "checking if Freetype version is at least v$1... "
+    FREETYPE_VERSION=`$FREETYPE_CONFIG --version`
+    if test "${FREETYPE_VERSION:0:4}" == "$1"
+    then 
+      echo "yes"
+    else
+      echo "no"
+      echo -n "Error! You need at least FreeType v$1. "
+      echo "The version I found is $FREETYPE_VERSION."
+      exit -1
+    fi
+
+    dnl Getting compiler flags
+    FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+    FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
+  fi
+
 ])

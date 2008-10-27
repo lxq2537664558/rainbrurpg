@@ -42,7 +42,7 @@ library_include_HEADERS = $(h_sources)
 INCLUDES= -I$(top_srcdir)/common			\
 	  $(OGRE_CFLAGS)				\
 	  $(OIS_CFLAGS)					\
-	  $(shell pkg-config sigc++-2.0 --cflags)	\
+	  $(SIGC_CFLAGS)				\
 	  $(CFLAGS) 
 
 librainbrurpg_core_la_SOURCES= $(h_sources)		\
@@ -58,8 +58,7 @@ librainbrurpg_core_la_LDFLAGS=				\
   -L$(top_srcdir)/common/.libs 		       		\
   -Wl,--rpath		       		       		\
   -Wl,$(top_srcdir)/common/.libs	       		\
-  $(CEGUI_OGRE_LIBS)			       		\
-  $(shell pkg-config sigc++-2.0 --libs)
+  $(SIGC_LIBS)
 
 
 dll:

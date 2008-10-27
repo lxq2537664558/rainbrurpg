@@ -115,8 +115,8 @@ INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
-	   $(shell pkg-config sigc++-2.0 --cflags)	\
-	   $(shell freetype-config --cflags)		\
+	   $(SIGC_CFLAGS)				\
+	   $(FREETYPE_CFLAGS)				\
 	   $(CFLAGS)
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
@@ -129,8 +129,9 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  -version-info  			\
 				  $(OGREGUI_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
-			  $(shell pkg-config sigc++-2.0 OGRE--libs)	\
-				  $(shell freetype-config --libs)	\
+				  $(OGRE_LIBS)				\
+				  $(SIGC_LIBS)				\
+				  $(FREETYPE_LIBS)			\
 				  -L$(top_srcdir)/common/.libs		\
 				  -L$(top_srcdir)/maincore/.libs
 
