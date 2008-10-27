@@ -35,8 +35,8 @@
 #ifndef ENET_CLIENT_H
 #define ENET_CLIENT_H
 
-#include <enet/enet.h>
 #include <string>
+#include <enet/enet.h>
 #include <glib.h>
 
 #include "enetbase.h"

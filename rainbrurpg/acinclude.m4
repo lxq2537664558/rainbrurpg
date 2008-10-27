@@ -52,12 +52,6 @@ dnl
 dnl We then use the ASSUMED_INSTALL_PEFIX
 AC_DEFUN([RB_INSTALL_DIR],
 [
-  AC_DEFINE([USER_INSTALL_PREFIX], [], 
-[
-The directory installation prefix.
-
-This value is needed to locate the datafiles.
-])
 
   ASSUMED_INSTALL_PEFIX=/usr/local
   GET_INSTALL_PREFIX=$prefix
@@ -70,7 +64,16 @@ This value is needed to locate the datafiles.
   else
     echo "Found install prefix set to " $GET_INSTALL_PREFIX
   fi
-  AC_DEFINE_UNQUOTED(USER_INSTALL_PREFIX, "$GET_INSTALL_PREFIX")
+
+  dnl Using the UNQUOTED definition to get shell expansion for
+  dnl GET_INSTALL_PREFIX variable
+  AC_DEFINE_UNQUOTED([USER_INSTALL_PREFIX], "${GET_INSTALL_PREFIX}", 
+  [
+  The directory installation prefix.
+
+  This value is needed to locate the datafiles.
+  ])
+
 ])
 
 dnl Tests the OgreMain lib and headers
@@ -97,7 +100,14 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBOIS],
 [
-  PKG_CHECK_MODULES(OIS, [OIS >= 0.1])	
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding OIS flags for "mingw32msvc""
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/OIS"
+    LDFLAGS="$LDFLAGS -lOIS.dll"
+  else
+    PKG_CHECK_MODULES(OIS, [OIS >= 0.1])	
+  fi
 ])
 
 dnl Checks for the FOX-toolkit and one of its header
@@ -135,6 +145,9 @@ AC_DEFUN([RB_CHECK_LIBFOX],
   dnl Getting compiler flags
   FOX_CFLAGS=`$FOX_CONFIG --cflags`
   FOX_LIBS=`$FOX_CONFIG --libs`
+
+  AC_SUBST(FOX_CFLAGS)
+  AC_SUBST(FOX_LIBS)
 ])
 
 dnl Checks for the Curl lib and one of its header
@@ -376,7 +389,7 @@ AC_DEFUN([RB_CHECK_ENET],
   if test $rb_cross_compil_host == "win32"
   then	
     echo "Adding enet flags for "mingw32msvc""
-dnl    CFLAGS="$CFLAGS -I/usr/cross/include/"
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/enet/"
     LDFLAGS="$LDFLAGS -lenet.dll"
   else
     AC_CHECK_LIB(enet, main, [], [
@@ -469,13 +482,13 @@ AC_DEFUN([RB_CHECK_LIBGD],
   fi
 ])
 
-dnl Tests the libgd library and headers
+dnl Tests the libgnet library and headers
 dnl
 AC_DEFUN([RB_CHECK_LIBGNET],
 [
   if test $rb_cross_compil_host == "win32"
   then	
-    echo "Adding libgd flags for mingw32msvc"
+    echo "Adding libgnet flags for mingw32msvc"
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/gnet/"
     LDFLAGS="$LDFLAGS -lgnet.dll"
   else
@@ -777,16 +790,22 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
   fi
 ])
 
-dnl Chack the Freetype library
+dnl Check the Freetype library
+dnl
+dnl In GNU/Linux platform : It search fro the freetype-config tool
+dnl    and get the FREETYPE_LIBS and FREETYPE_CFLAGS from it.
+dnl
+dnl In Win32 cross-compilation: It simply add flags according to the 
+dnl    cross-compil prefix passed to the RB_HANDLE_CROSS_COMPIL macro.
 dnl
 AC_DEFUN([RB_CHECK_FREETYPE],
 [
 
   if test $rb_cross_compil_host == "win32"
   then	
-    echo "Adding libgd flags for mingw32msvc"
-    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/freetype/"
-    LDFLAGS="$LDFLAGS -lfreetype6.dll"
+    echo "Adding libfreetype flags for mingw32msvc"
+    FREETYPE_CFLAGS="-I$rb_cross_compil_prefix/include/freetype/"
+    FREETYPE_LIBS="-lfreetype6.dll"
   else
     dnl Get the correct executable
     AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, [
@@ -809,7 +828,10 @@ AC_DEFUN([RB_CHECK_FREETYPE],
 
     dnl Getting compiler flags
     FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+    echo "$FREETYPE_CONFIG --cflags"
     FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
   fi
 
+  AC_SUBST(FREETYPE_CFLAGS)
+  AC_SUBST(FREETYPE_LIBS)
 ])

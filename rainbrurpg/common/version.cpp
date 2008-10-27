@@ -26,7 +26,7 @@
   */
 
 #include "version.h"
-#include "config.h"
+#include "../config.h"
 
 /** The default constructor
   *

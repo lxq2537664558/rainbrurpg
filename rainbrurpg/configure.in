@@ -7,8 +7,7 @@ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
 AC_SUBST(VERSION)
 
-AC_DEFINE([BUILD_RELEASE], [], [The build release number])
-AC_DEFINE_UNQUOTED(BUILD_RELEASE, "186")
+AC_DEFINE([BUILD_RELEASE], ["186"], [The build release number])
 
 
 

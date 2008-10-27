@@ -1,3 +1,10 @@
+2008-10-27 Carine Chum <carine.chum@free.fr>
+	* acinclude.m4 (RB_INSTALL_DIR): Changing macro define system by
+	using AC_DEFINE_UNQUOTED to get shell expansion.
+	* configure.in: Fix a bug in BUILD_RELEASE definition.
+	* acinclude.m4: Using AC_SUBST to define variables for 
+	FOX and FREETYPE libs.
+
 2008-10-27 Jerome Pasquier  <rainbru@free.fr>
 	* configure.in: Adding a call to RB_CHECK_FREETYPE, a new acinclude.m4
 	macro caus client/ was testing it directly in Makefile.am.
