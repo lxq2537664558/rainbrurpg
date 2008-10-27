@@ -1,3 +1,8 @@
+2008-10-27 Carine Chum <carine.chum@free.fr>
+	* common/Makefile.am : Using $(OGRE_CFLAGS) instead of pkg-config
+	OGRE in INCLUDES to avoid the override of /usr/cross/include
+	with /usr/local/include
+
 2008-10-23 Carine Chum <carine.chum@free.fr>
 	* common/stringconv.cpp (itobin): Fix a compilation error when using
 	std::bitset::to_string() using a MACRO defined in stringconv.h.

@@ -156,7 +156,7 @@ library_include_HEADERS = $(h_sources)
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
 
 INCLUDES= -Ifox-1.6  		 \
-	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 OGRE --cflags) \
+	  $(shell pkg-config glib-2.0 sigc++-2.0 gnet-2.0 --cflags) \
 	  $(OGRE_CFLAGS)	\
 	  $(CFLAGS)
 

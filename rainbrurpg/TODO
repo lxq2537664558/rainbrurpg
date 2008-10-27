@@ -3,9 +3,10 @@ TODO
 
 * cross-compil test command-line
 ./bootstrap&& \
-export CPPFLAGS="-I/usr/cross/include/ -mwindows"&&                \
-    export LDFLAGS=-L/usr/cross/lib/  &&                \
-    export OGRE_CFLAGS=-I/usr/cross/include/OGRE/ &&    \
+export CPPFLAGS="-I/usr/cross/include/ -mwindows"    &&    \
+    export LDFLAGS=-L/usr/cross/lib/                 &&    \
+    export OGRE_CFLAGS=-I/usr/cross/include/OGRE/    &&    \
+    export OGRE_LIBS="-L/usr/cross/lib -lOgreMain"   &&    \
     ./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 
 
