@@ -28,6 +28,7 @@
   *       \c config.h file. 
   *
   * Modifications :
+  * - 28 oct 2008 ; Added a todo documentation item for LOGA
   * - 20 aug 2008 : Hacking to avoid multiple definition of macros on Win32
   * - 07 aug 2008 : Single file documentation
   *
@@ -81,6 +82,7 @@
   *       in release mode.
   *
   * \param STRING the information message
+  *
   */
 #ifdef RAINBRU_RPG_DEBUG
 #  define LOGI(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),1,STRING );
@@ -95,6 +97,7 @@
   * \param STRING the warning message
   *
   * See Logger class for more informations.
+  *
   */
 #define LOGW(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),2,STRING );
 
@@ -106,6 +109,7 @@
   * \param STRING the error message
   *
   * See Logger class for more informations.
+  *
   */
 #define LOGE(STRING) RainbruRPG::Exception::Logger::getSingleton().log(__FILE__,TOSTRING(__LINE__),3,STRING );
 
@@ -121,6 +125,10 @@
   * \param STRING the assertion message
   *
   * See Logger class for more informations.
+  *
+  * \todo Test this macro. It seems that a SEGFAULT may occurs when
+  *       used with a NULL pointer.
+  *
   */
 #define LOGA(X,STRING) RainbruRPG::Exception::Logger::getSingleton().logAssert(__FILE__,TOSTRING(__LINE__),X,STRING );
 

@@ -1,11 +1,13 @@
 TODO
--> Libraries versionning in doc/libVersionning.html
+-> Libraries versionning in doc/libVersionning.html and configure.in
 
-* cross-compil test command-line
+o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/
+- Fixing client executable size (310Mo) (see and update doc_cross_compil)
 
 o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
+- Error message label is not correctly placed in fullscreen mode
 
 * Unittests
 - Next unit test is common/loadbmp
@@ -15,7 +17,7 @@ o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 * tool-adminsite-databackup
 - a comand-line tool to backup adminsite XML files
 - takes the version number as argument
-- used by back_prog script
+- used by backup_prog script
 
 * Adminsite
 - See the adminsite backup
@@ -94,13 +96,22 @@ A system that serialize widgets position and configuration
 - Searching informations on Audiere
 - The account is created only if the mail was correctly sent
 - CurlAccountAdd::controlAfter tests if the account was correctly created
+- RainbruRPG man pages should be renamed rainbrurpg (in lower case)
+- pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 
 * *******************************************************
 * ***************** Changelog ***************************
 * *******************************************************
 
+* v 0.0.5-187
+
 * v 0.0.5-186
-- (15) Highly improved Makefiles for cross-compilation handling
+- Made a details documentation page for Bug26
+- Modify create_dll.sh to use g++ instead of dllwrap
+- GameEngine do not use anymore GlobalUri::getShareFile() on win32
+- Define DLL_EXT to easily change all dlls extension in -l flags
+- Fix a problem of macro redefinition in maincore/ogreimport.h
+- Highly improved Makefiles for cross-compilation handling
 - Fix a bitset to string conversion in stringconv.cpp
 - Improvment of the RB_CHECK_LIBFOX of the acinclude.m4 script
 - maincore does not depends anymore on ogreGui

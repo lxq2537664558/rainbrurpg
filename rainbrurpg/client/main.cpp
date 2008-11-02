@@ -177,11 +177,16 @@ int main(int argc, char **argv){
       LOGE("OgreRoot is not initialized");
     }
 
+    // Moved from GameEngine::init()
+    GuiFrameListener* gfl=(GuiFrameListener*)mFrameListener;
+    gfl->setCamera(GameEngine::getSingleton().getCamera());
+
+
     // OgreGui settings
     GUI::getSingleton()
       .init(GameEngine::getSingleton().getOgreRoot()->getRenderSystem(),
 	    GameEngine::getSingleton().getOgreSceneMgr(),
-	    GameEngine::getSingleton().getRenderWindow()->getViewport(0));
+	    GameEngine::getSingleton().getViewport());
 
     GameEngine::getSingleton().getOgreSceneMgr()
       ->addRenderQueueListener(new OgreGuiRenderQueueListener(

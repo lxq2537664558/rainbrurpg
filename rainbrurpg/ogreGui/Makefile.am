@@ -121,9 +121,10 @@ INCLUDES = -I$(top_srcdir)/common			\
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
-librainbrurpg_ogregui_la_LIBADD= -lrainbrurpg-common			\
-				 -lrainbrurpg-core			\
-				 -lOgreMain
+librainbrurpg_ogregui_la_LIBADD= 
+#-lrainbrurpg-common			\
+#				 -lrainbrurpg-core			\
+#				 -lOgreMain
 
 librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  -version-info  			\
@@ -137,4 +138,4 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 
 dll:
 	source ../create_dll.sh &&		\
-	run "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lFOX-1.6  -lcurl -lOgreMain.dll -lfreetype.dll -lfreeimage.dll -lzzip.dll -L../../common/.libs -lrainbrurpg-common.dll"
+	run "rainbrurpg-ogregui" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lFOX-1.6  -lcurl -lOgreMain -lfreetype6 -lfreeimage.dll -lzzip.dll -L../../maincore/.libs -lrainbrurpg-core.dll -lOIS -L../../common/.libs -lrainbrurpg-common.dll"

@@ -19,24 +19,20 @@ rainbrurpg_SOURCES= exampleframelistener.cpp		\
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/maincore			\
 	   -I$(top_srcdir)/ogreGui			\
-	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
-	   $(shell pkg-config sigc++-2.0 --cflags)	\
+	   $(OGRE_CFLAGS)				\
+	   $(SIGC_CFLAGS)				\
 	   $(FOX_CFLAGS)				\
 	   $(CFLAGS)
-
-rainbrurpg_LDADD= -lrainbrurpg-common			\
-		  -lrainbrurpg-core 			\
-		  -lrainbrurpg-ogregui			\
-		  $(OGRE_LIBS)				\
-		  $(OIS_LIBS)				\
-		  $(FOX_LIBS)
 
 rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/		\
 		    -L$(top_srcdir)/maincore/		\
 		    -L$(top_srcdir)/ogreGui/		\
-		    $(shell pkg-config OIS --libs)	\
-		    $(libcurl_LIBS)			\
-		    $(shell $(FOX_CONFIG) --libs)	
+		  -lrainbrurpg-common			\
+		  -lrainbrurpg-core			\
+		  -lrainbrurpg-ogregui
 
-
+rainbrurpg_LDADD= $(FREETYPE_LIBS)			\
+		  $(FOX_LIBS)				\
+		  $(FREETYPE_LIBS)			\
+		  $(LDFLAGS)

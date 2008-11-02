@@ -224,7 +224,12 @@ onConnectClicked(){
       GameEngine::getSingleton().changeState("gsServerList");
       GuiManager::getSingleton().beginGuiFadeIn();
     }
+    else{
+      GuiManager::getSingleton()
+	.showMessageBox("Login failed", 
+	"Please verify your username and password.");
 
+    }
   }
   return true;
 }

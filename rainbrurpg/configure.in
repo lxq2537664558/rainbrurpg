@@ -7,7 +7,7 @@ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
 AC_SUBST(VERSION)
 
-AC_DEFINE([BUILD_RELEASE], ["186"], [The build release number])
+AC_DEFINE([BUILD_RELEASE], ["187"], [The build release number])
 
 
 
@@ -100,9 +100,10 @@ AM_SANITY_CHECK
 AC_LANG_CPLUSPLUS
 
 dnl Handles cross compil with prefix
-RB_HANDLE_CROSS_COMPIL(/usr/cross)
+RB_HANDLE_CROSS_COMPIL(/usr/cross, "")
 
 dnl Checks for libraries and headers
+RB_CHECK_FREETYPE(9.18)
 RB_CHECK_OGREMAIN
 RB_CHECK_PLSM2
 RB_CHECK_LIBOIS
@@ -116,7 +117,6 @@ RB_CHECK_GLIB
 RB_CHECK_LIBSIG
 RB_CHECK_LIBGD
 RB_CHECK_LIBGNET
-RB_CHECK_FREETYPE(9.18)
 
 dnl #################################################################"""
 dnl #################################################################"""

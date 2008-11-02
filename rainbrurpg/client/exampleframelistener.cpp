@@ -28,6 +28,7 @@
 #include "exampleframelistener.h"
 
 #include <iostream>
+#include <assert.h>
 
 /** The constructor
   *
@@ -42,6 +43,7 @@ ExampleFrameListener( RenderWindow* win, Camera* cam,
 		      bool useBufferedInputKeys, 
 		      bool useBufferedInputMouse){
 
+  assert(cam && "Creating an ExampleFrameListener with NULL Camera");
 
        mUseBufferedInputKeys = useBufferedInputKeys;
       mUseBufferedInputMouse = useBufferedInputMouse;
@@ -246,6 +248,7 @@ processUnbufferedMouseInput(const FrameEvent& evt){
   *
   */
 void RainbruRPG::Core::ExampleFrameListener::moveCamera(){
+  assert(mCamera && "Camera is NULL");
   mCamera->yaw(mRotX);
   mCamera->pitch(mRotY);
   mCamera->moveRelative(mTranslateVector);

@@ -79,20 +79,27 @@ AC_DEFUN([RB_INSTALL_DIR],
 dnl Tests the OgreMain lib and headers
 dnl
 dnl This function is used to test the header Ogre.h and
-dnl the OgreMain library. 
-dnl It is used by configure.in
+dnl the OgreMain library. It is used by configure.in
+dnl
+dnl Warning : This macro need to be called after RB_CHECK_FREETYPE
+dnl           because it uses FREETYPE_LIBS value
+dnl
 AC_DEFUN([RB_CHECK_OGREMAIN],
 [
-  PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4.0])
-  AC_SUBST(OGRE_PLUGINDIR, [$($PKG_CONFIG --variable=plugindir OGRE)])
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding OGRE flags for "mingw32msvc""
+    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/OGRE"
+    LDFLAGS="$LDFLAGS -lOgreMain$DLL_EXT -lfreeimage$DLL_EXT"
+    LDFLAGS="$LDFLAGS -lzzip$DLL_EXT $FREETYPE_LIBS"
+    AC_SUBST(OGRE_PLUGINDIR, [$rb_cross_compil_prefix/lib/OGRE])
+  else
+    PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4.0])
+    AC_SUBST(OGRE_PLUGINDIR, [$($PKG_CONFIG --variable=plugindir OGRE)])
 
-  PKG_CHECK_MODULES(CEGUI, [CEGUI >= 0.5.0])
-#  AC_SUBST(CEGUI_OGRE_CFLAGS, [$($PKG_CONFIG --cflags CEGUI-OGRE)])
-#  AC_SUBST(CEGUI_OGRE_LIBS, [$($PKG_CONFIG --libs CEGUI-OGRE)])
-
-  # Devil
-  AC_CHECK_LIB(jpeg, main, [], [])
-
+    # Devil
+    AC_CHECK_LIB(jpeg, main, [], [])
+  fi
 ])
 
 dnl Checks for libOIS and one of its header
@@ -104,7 +111,7 @@ AC_DEFUN([RB_CHECK_LIBOIS],
   then	
     echo "Adding OIS flags for "mingw32msvc""
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/OIS"
-    LDFLAGS="$LDFLAGS -lOIS.dll"
+    LDFLAGS="$LDFLAGS -lOIS$DLL_EXT"
   else
     PKG_CHECK_MODULES(OIS, [OIS >= 0.1])	
   fi
@@ -123,28 +130,35 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBFOX],
 [
-  dnl Get the correct executable
-  AC_PATH_TOOL(FOX_CONFIG, fox-config, [
-    echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
-    exit -1
-  ])
-
-  dnl check for version
-  echo -n "checking if Fox version is at least v$1... "
-  FOX_VERSION=`$FOX_CONFIG --version`
-  if test "${FOX_VERSION:0:3}" == "$1"
-  then 
-    echo "yes"
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding FOX flags for "mingw32msvc""
+    FOX_CFLAGS="-I$rb_cross_compil_prefix/include/FOX-1.6"
+    FOX_LIBS="-lFOX-1.6"
   else
-    echo "no"
-    echo -n "Error! You need at least Fox-Toolkit v$1. "
-    echo "The version I found is $FOX_VERSION."
-    exit -1
-  fi
+    dnl Get the correct executable
+    AC_PATH_TOOL(FOX_CONFIG, fox-config, [
+      echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
+      exit -1
+    ])
 
-  dnl Getting compiler flags
-  FOX_CFLAGS=`$FOX_CONFIG --cflags`
-  FOX_LIBS=`$FOX_CONFIG --libs`
+    dnl check for version
+    echo -n "checking if Fox version is at least v$1... "
+    FOX_VERSION=`$FOX_CONFIG --version`
+    if test "${FOX_VERSION:0:3}" == "$1"
+    then 
+      echo "yes"
+    else
+      echo "no"
+      echo -n "Error! You need at least Fox-Toolkit v$1. "
+      echo "The version I found is $FOX_VERSION."
+      exit -1
+    fi
+
+    dnl Getting compiler flags
+    FOX_CFLAGS=`$FOX_CONFIG --cflags`
+    FOX_LIBS=`$FOX_CONFIG --libs`
+  fi
 
   AC_SUBST(FOX_CFLAGS)
   AC_SUBST(FOX_LIBS)
@@ -277,7 +291,7 @@ AC_DEFUN([RB_CHECK_BOOST_FS],
   then	
     echo "Adding boost_filesystem flags for "mingw32msvc""
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
-    LDFLAGS="$LDFLAGS -lboost_filesystem.dll"
+    LDFLAGS="$LDFLAGS -lboost_filesystem$DLL_EXT"
   else
     AC_CHECK_LIB(boost_filesystem, main, [], [
       echo "Error! You need to have Boost-filesystem installed."
@@ -389,8 +403,10 @@ AC_DEFUN([RB_CHECK_ENET],
   if test $rb_cross_compil_host == "win32"
   then	
     echo "Adding enet flags for "mingw32msvc""
-    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/enet/"
-    LDFLAGS="$LDFLAGS -lenet.dll"
+dnl Do not include directly enet/ cause it define a time.h file that
+dnl seems to conflict with a system header file
+dnl    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/enet/"
+    LDFLAGS="$LDFLAGS -lenet$DLL_EXT"
   else
     AC_CHECK_LIB(enet, main, [], [
       echo "Error! You need to have libenet-dev installed."
@@ -441,7 +457,7 @@ AC_DEFUN([RB_CHECK_GLIB],
   then	
     echo "Adding glib-2.0 flags for mingw32msvc"
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/glib-2.0/"
-    LDFLAGS="$LDFLAGS -lglib2.0.dll"
+    LDFLAGS="$LDFLAGS -lglib-2.0$DLL_EXT"
   else
     PKG_CHECK_MODULES(GLIB, [glib-2.0 >= 2.0.0])
   fi
@@ -455,7 +471,7 @@ AC_DEFUN([RB_CHECK_LIBSIG],
   then	
     echo "Adding sigc++ flags for mingw32msvc"
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
-    LDFLAGS="$LDFLAGS -lsigc-2.0.dll"
+    LDFLAGS="$LDFLAGS -lsigc-2.0$DLL_EXT"
   else
     PKG_CHECK_MODULES(SIGC, [sigc++-2.0 >= 2.0.0])
   fi
@@ -469,7 +485,7 @@ AC_DEFUN([RB_CHECK_LIBGD],
   then	
     echo "Adding libgd flags for mingw32msvc"
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/sigc++-2.0/"
-    LDFLAGS="$LDFLAGS -lgd.dll"
+    LDFLAGS="$LDFLAGS -lgd$DLL_EXT"
   else
     AC_CHECK_LIB(gd, main, [], [
       echo "Error! You need to have libgd installed."
@@ -488,9 +504,9 @@ AC_DEFUN([RB_CHECK_LIBGNET],
 [
   if test $rb_cross_compil_host == "win32"
   then	
-    echo "Adding libgnet flags for mingw32msvc"
+    echo "Adding libgnet-2.0 flags for mingw32msvc"
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/gnet/"
-    LDFLAGS="$LDFLAGS -lgnet.dll"
+    LDFLAGS="$LDFLAGS -lgnet-2.0$DLL_EXT"
   else
     PKG_CHECK_MODULES(GNET, [gnet-2.0 >= 2.0.0])
   fi
@@ -506,7 +522,7 @@ AC_DEFUN([RB_CHECK_BOOST_THREAD],
   then	
     echo "Adding boost_thread flags for "mingw32msvc""
     CFLAGS="$CFLAGS"
-    LDFLAGS="$LDFLAGS -lboost_thread.dll"
+    LDFLAGS="$LDFLAGS -lboost_thread$DLL_EXT"
   else
     AC_CHECK_LIB(boost_thread, main, [], [
       echo "Error! You need to have boost::thread installed."
@@ -774,6 +790,10 @@ dnl        if cross-compilation is detected. Set it to '/usr/cross' by
 dnl        example if headers are in /usr/cross/include and libs are in
 dnl        /usr/cross/lib
 dnl
+dnl        $2 The suffix added to all library flags when cross-compiling
+dnl        changing lname to lname.dll if suffix is '.dll' by example. 
+dnl        You need to add the dot
+dnl
 AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
 [
   echo -n "checking for cross-compilation..."
@@ -783,11 +803,15 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
     echo "win32. Prefix is $1"
     rb_cross_compil_host=win32
     rb_cross_compil_prefix=$1
+    LDFLAGS="$LDFLAGS -L/usr/cross/lib"
+    DLL_EXT="$2"
   else  
     echo "no"
     rb_cross_compil_host=no
-    
+    DLL_EXT=""
   fi
+  AC_SUBST(DLL_EXT)
+  AC_SUBST(rb_cross_compil_host)
 ])
 
 dnl Check the Freetype library
@@ -805,7 +829,7 @@ AC_DEFUN([RB_CHECK_FREETYPE],
   then	
     echo "Adding libfreetype flags for mingw32msvc"
     FREETYPE_CFLAGS="-I$rb_cross_compil_prefix/include/freetype/"
-    FREETYPE_LIBS="-lfreetype6.dll"
+    FREETYPE_LIBS="-lfreetype6$DLL_EXT"
   else
     dnl Get the correct executable
     AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, [

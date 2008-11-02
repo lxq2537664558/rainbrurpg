@@ -49,7 +49,25 @@
 using namespace std;
 using namespace RainbruRPG::Core;
 
-
+/** \def BITSET_STR
+  * Call the to_string() method on a STL bitset object
+  * 
+  * This macro is needed when cross-compiling because the behaviour
+  * of the bitset.to_string() function is different in GNU/Linux and 
+  * Win32 platforms.
+  *
+  * \note Please do not modify the synthax of the Win32 version of this macro.
+  *       In the following part :
+  *       <pre>
+  *       x.to_string<char, char_traits<char>, allocator<char> >()
+  *                                                           ^
+  *                                                           |
+  *                                                       this space
+  *       </pre>
+  *       must not be removed to avoid the following error : <code>error: 
+  *       '>>' should be '> >' within a nested template argument list</code>.
+  *       
+  */
 #ifdef __linux__
 #  define BITSET_STR(x) (x.to_string())
 #elif defined __WIN32__

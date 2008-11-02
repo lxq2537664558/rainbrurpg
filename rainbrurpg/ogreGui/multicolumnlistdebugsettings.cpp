@@ -292,8 +292,14 @@ std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem, 
 		const Ogre::Rectangle& vDrawingRect){
   ostringstream out("debugItem called : ");
+#ifdef __linux__
+  /* v0.0.5-186 : This part of the code was removed due to an undefined
+   * reference to StringConv::itobin() on on win32 platform. 
+   *
+   */
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
+#endif // __linux__
   out << endl;
 
   if (mFlags.localize){
@@ -350,8 +356,14 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
 	  const Ogre::Rectangle& vDrawingRect){
 
   ostringstream out("debugCell called : ");
+#ifdef __linux__
+  /* v0.0.5-186 : This part of the code was removed due to an undefined
+   * reference to StringConv::itobin() on win32 platform. 
+   *
+   */
   out << "(debug flag is ";
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
+#endif // __linux__
   out << endl;
 
   if (mFlags.localize){

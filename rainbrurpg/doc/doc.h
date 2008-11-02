@@ -249,7 +249,7 @@
   */
 
 
-/** \page leb_versionning Libraries versionning
+/** \page lib_versionning Libraries versionning
   *
   * The code is often build and compiled in a library, it avoid redondant
   * code and share it between client, server and over executables.
@@ -997,11 +997,19 @@
   *
   * Define to 1 if you have the <sys/sysmacros.h> header file.
   *
-  * The \c <sys/sysmacros.h> the macros \c major(), \c minor() and 
+  * The \c <sys/sysmacros.h> defines the macros \c major(), \c minor() and 
   * \c makedev().
   *
   */
 #endif // HAVE_SYS_SYSMACROS_H
+
+#ifdef HAVE_LIBSLANG
+/** \def HAVE_LIBSLANG
+  *
+  * Define to 1 if you have the SLang library installed
+  *
+  */
+#endif // !HAVE_LIBSLANG
 
 /** \def HAVE_SYS_TIME_H
   *

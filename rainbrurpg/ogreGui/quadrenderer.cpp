@@ -33,9 +33,11 @@
 
 #include "logger.h"
 #include "textsettings.h"
+#include <gameengine.h>
 
 #include <dumpogreobject.h>
 #include <sstream>
+#include <assert.h>
 
 /** The renderer constructor
   *
@@ -71,6 +73,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mIsGhostEnabled(false),
   mBlendMode(QBM_UNSET)
 {
+  assert(vp && "Cannot create QuadRenderer with NULL viewport");
+  assert(rs && "Cannot create QuadRenderer with NULL RenderSystem");
 
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
   setupHardwareBuffer();
@@ -301,6 +305,13 @@ drawRectangle(const Ogre::Rectangle& corners){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::begin(){
+  assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
+  assert(mSceneManager && "Ogre's SceneManager is a NULL object");
+  if (mViewport == NULL){
+    mViewport = GameEngine::getSingleton().getViewport();
+    assert(mViewport && "Ogre's ViewPort is a NULL object");
+  }
+
   mViewport=mSceneManager->getCurrentViewport();
   winWidth=mViewport->getActualWidth();
   winHeight=mViewport->getActualHeight();
@@ -308,20 +319,11 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   mRenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setProjectionMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setViewMatrix( Ogre::Matrix4::IDENTITY );
-
-
-  // Set the alpha blending active
   mRenderSystem->_setTextureUnitFiltering( 0, Ogre::FO_LINEAR, Ogre::FO_LINEAR, 
 					   Ogre::FO_NONE );
 
-  
-
-
-
   mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
-
-
 }
 
 /** End the rendering of a frame

@@ -36,6 +36,7 @@
 #define _BETA_GUI_WINDOW_
 
 #include <ogreimport.h>
+#include <assert.h>
 
 #include "widget.h" 
 
@@ -153,6 +154,9 @@ namespace BetaGUI {
       */
     inline bool handleMouseMoveCursor(unsigned int px, unsigned int py, 
 				      bool leftMouseButton){
+      assert(mGUI && "GUI object is NULL");
+      assert(mGUI->getMousePointer() && "GUI's MousePointer object is NULL");
+
       // Handle mouse move cursor
       if (mTitleBar){
 	if (mTitleBar->in(px, py, corners.left, corners.top)){

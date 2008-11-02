@@ -64,6 +64,8 @@ void RainbruRPG::Core::GameEngine::init(){
   userPwd="";
   mInputMgr=NULL;
   mSceneMgr=NULL;
+  mViewport=NULL;
+  mCamera=NULL;
   actualState=-1;
 
   initOgre();
@@ -397,7 +399,7 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   // as the setupResources() and loadResources() functions are
   // called later
   GlobalURI gu;
-  std::string dataPath=gu.getShareFile("data");
+  std::string dataPath=GET_SHARE_FILE(gu, "data");
   Ogre::Root::getSingleton().addResourceLocation(dataPath, "FileSystem");
 
 
@@ -483,12 +485,12 @@ void RainbruRPG::Core::GameEngine::createViewports(){
 
   // Create one viewport, entire window
   if (mWindow){
-    Viewport* vp = mWindow->addViewport(mCamera);
-    vp->setBackgroundColour(ColourValue(1.0f, 1.0f, 1.0f));
+    mViewport = mWindow->addViewport(mCamera);
+    mViewport->setBackgroundColour(ColourValue(1.0f, 1.0f, 1.0f));
     
     // Alter the camera aspect ratio to match the viewport
     mCamera->setAspectRatio(
-      Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
+      Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
   }
   else{
     LOGE("Invalid OgreWindow");
@@ -509,7 +511,7 @@ void RainbruRPG::Core::GameEngine::setupResources(){
 
   // Get the filename according to the installation prefix
   Network::GlobalURI gu;
-  std::string resCfg=gu.getShareFile("config/resources.cfg");
+  std::string resCfg=GET_SHARE_FILE(gu,"config/resources.cfg");
 
   // Load resource paths from config file
   ConfigFile cf;
@@ -527,7 +529,7 @@ void RainbruRPG::Core::GameEngine::setupResources(){
     for (i = settings->begin(); i != settings->end(); ++i){
       typeName = i->first;
       archName = i->second;
-      shareArchName= gu.getShareFile(archName);
+      shareArchName= GET_SHARE_FILE(gu, archName);
 
       // Logging
       LOGCATS("secName :");
@@ -878,3 +880,8 @@ getGameStateIndexByName(const std::string& vName){
   }
   return std::string::npos;
 }
+
+Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const{
+  return mViewport;
+}
+

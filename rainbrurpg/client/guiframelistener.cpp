@@ -40,6 +40,9 @@ GuiFrameListener(RenderWindow* win, Camera* cam):
   mShutdownRequested(false),
   mMoveScale(1.1f)
 {
+  if (!cam){
+    LOGW("Constructing GuiFrameListener with NULL Camera");
+  }
   LOGI("Constructing GuiFrameListener");
   /*  mEventProcessor->addMouseMotionListener(this);
   mEventProcessor->addMouseListener(this);

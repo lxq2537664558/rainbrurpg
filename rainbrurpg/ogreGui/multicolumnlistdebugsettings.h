@@ -27,6 +27,8 @@
   *          to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 30 oct 2008 : Conditionnal compilation in both makeDebugString()
+  *                 function due to undefined reference on win32 platform.
   * - 26 aug 2008 : Single file documentation
   * - 07 jun 2008 : starting implementation
   *         

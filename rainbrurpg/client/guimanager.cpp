@@ -372,12 +372,13 @@ showMessageBox(const String& title, const String& message){
   LOGW("*************************************");
 
 #endif // !MGM_SHOW_MESSAGE_BOX_WARNING
-
+  LOGI("GuiManager::showMessageBox() called");
   RbMessageBox* simpleDialog=new RbMessageBox();
   simpleDialog->initWindow();
   simpleDialog->setTitle(title);
   simpleDialog->setMessage(message);
   simpleDialog->show();
+  LOGI("simpleDialog->show() called");
 
 
 }

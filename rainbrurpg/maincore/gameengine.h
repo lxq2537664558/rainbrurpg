@@ -24,6 +24,8 @@
   * Declares an Ogre frame listenerthe client game engine
   *
   * Modifications :
+  * - 31 oct 2008 : Adding mViewport member and accessor
+  * - 29 oct 2008 : Defining and using GET_SHARE_FILE
   * - 16 oct 2008 : changeState() now takes a string parameter
   * - 15 oct 2008 : 
   *   - Avoid the use of OgreGui
@@ -64,6 +66,18 @@ using namespace Ogre;
 
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
+
+/** \def GET_SHARE_FILE
+  * A wrapper to GlobalURI's getShareFile() function
+  *
+  * In Win32 platform, we do not use GlobalURI.
+  *
+  */
+#ifdef __linux__
+#  define GET_SHARE_FILE(GU,PATH) (GU.getShareFile(PATH))
+#elif defined __WIN32__
+#  define GET_SHARE_FILE(GU,PATH) (PATH)
+#endif
 
 /** \def CLIENT_WIN_CAPTION
   * The client's window title
@@ -135,9 +149,10 @@ namespace RainbruRPG {
       void frameStarted(const FrameEvent&);
       void frameEnded(const FrameEvent&);
 
-      Root *getOgreRoot();
-      SceneManager* getOgreSceneMgr();
-      Camera* getCamera();
+      Root *getOgreRoot(void);
+      SceneManager* getOgreSceneMgr(void);
+      Camera* getCamera(void);
+      Viewport* getViewport(void) const;
 
       virtual bool keyPressed(const OIS::KeyEvent&);
       virtual bool keyReleased(const OIS::KeyEvent&);
@@ -231,7 +246,7 @@ namespace RainbruRPG {
 	*
         */
       const char* userPwd;
-
+      Viewport* mViewport;
     };
   }
 }

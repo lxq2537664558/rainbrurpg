@@ -24,6 +24,7 @@
   * Declares a gamestate that lets the user enter its username and password
   *
   * Modifications :
+  * - 31 oct 2008 : Added a showMessageBox() call when connection fails
   * - 16 aug 2008 : Single file documentation
   * - 22 jul 2007 : Starting implementation
   *

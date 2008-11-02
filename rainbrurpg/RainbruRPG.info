@@ -4,7 +4,7 @@ RainbruRPG.texinfo.
 `RainbruRPG' is an in-development 3D Multiplayer Online Role-Playing
 Game
 
-   Copyright (C) 2006-2008 Jerome PASQUIER
+   Copyright (C) 2006-2008 Je'ro^me PASQUIER
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -432,12 +432,8 @@ File: RainbruRPG.info,  Node: Overview,  Next: Server,  Prev: Copying,  Up: Top
 3 Overview
 **********
 
-The `RainbruRPG' program produces a familiar, friendly greeting.  It
-allows nonprogrammers to use a classic computer science tool which
-would otherwise be unavailable to them.  Because it is protected by the
-GNU General Public License, users are free to share and change it.
-
-   `RainbruRPG' was written by Jérôme PASQUIER.
+The `RainbruRPG' program provides a 3D multiplayer role playing game.
+It is not yet playable but it is in active devlopment.
 
 
 File: RainbruRPG.info,  Node: Server,  Next: Invoking RainbruRPG,  Prev: Overview,  Up: Top
@@ -558,13 +554,13 @@ Concept Index
 
 
 Tag Table:
-Node: Top864
-Node: Instructions1478
-Node: Copying2157
-Node: Overview21343
-Node: Server21776
-Node: Invoking RainbruRPG23411
-Node: Problems24087
-Node: Concept Index24717
+Node: Top866
+Node: Instructions1480
+Node: Copying2159
+Node: Overview21345
+Node: Server21577
+Node: Invoking RainbruRPG23212
+Node: Problems23888
+Node: Concept Index24518
 
 End Tag Table

@@ -1,3 +1,43 @@
+2008-10-31 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/bggui.cpp (init): The segfault seems to come from
+	this viewport instance. Assertion added.
+	* ogreGui/quadrenderer.cpp (begin): Added some assert on
+	Ogre pointer to search for the cause of a segfault when using
+	GuiManager::showMessageBox().
+
+2008-10-30 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/multicolumnlistdebugsetting (makeDebugString): Do not
+	use StringConv::itobin() function on win32 platform. Modification
+	apply to both makeDebugString() functions.
+	
+2008-10-29 Jerome Pasquier  <rainbru@free.fr>
+	* create_dll.h: Trying to use ls -shared instead od dllwrap.
+	
+	* maincore/gameengine.h: Create a GET_SHARE_FILE C macro to
+	avoid the use od GlobalUri::getShareFile() on Win32 platform.
+	* maincore/gameengine.cpp (initOgre): Using the GET_SHARE_FILE macro.
+	* maincore/gameengine.cpp (setupResources): Using the GET_SHARE_FILE 
+	macro.
+	
+2008-10-28 Jerome Pasquier  <rainbru@free.fr>
+	* common/globaluri.h: Now using RAINBRU_EXPORT GCC visibility 
+	handler. It is to fix the maincore's `make dll` undefined reference
+	but it doesn't work.
+	
+	* common/Makefile.am: Add some -l flags to LDADD.
+	* acinclude.m4 (RB_CHECK_LIBFOX): Now handle cross-compilation to
+	prevent fox-config tool to add X11 libraries.
+	
+	* configure.in (RB_HANDLE_CROSS_COMPIL): DLL_EXT is now a parameter
+	of the RB_HANDLE_CROSS_COMPIL macro.
+	* acinclude.m4 (RB_HANDLE_CROSS_COMPIL): Define DLL_EXT to easily 
+	change all dlls extension in -l flags.
+	* maincore/ogreimport.h: Fix a package redefinition warning on win32.
+	
+2008-10-27 Jerome Pasquier  <rainbru@free.fr>
+	* acinclude.m4 (RB_CHECK_OGREMAIN): Handle cross-compilation to avoid
+	pkg-config generted flags include GNU/Linux headers.
+
 2008-10-27 Carine Chum <carine.chum@free.fr>
 	* acinclude.m4 (RB_INSTALL_DIR): Changing macro define system by
 	using AC_DEFINE_UNQUOTED to get shell expansion.

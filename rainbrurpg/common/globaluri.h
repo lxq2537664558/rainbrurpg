@@ -24,6 +24,7 @@
   * Declares types and class used to get full file names with path
   *
   * Modifications :
+  * - 29 oct 2008 : Now using RAINBRU_EXPORT GCC visibility handler
   * - 17 mar 2008 : \ref RainbruRPG::Network::tInstalledConfigFilesList 
   *                 "tInstalledConfigFilesList" implementation
   * - 15 mar 2008 : Adding some functions for unit test
@@ -46,6 +47,7 @@
 #include <list>
 
 #include "logger.h"
+#include "rainbrudef.h"
 
 #ifdef RAINBRU_RPG_DEBUG
 #  define WEBSITE_DEBUG
@@ -142,7 +144,7 @@ namespace RainbruRPG{
       * getInstallConfigFilesList() function returns this list.
       *
       */
-    class GlobalURI{
+    class RAINBRU_EXPORT GlobalURI{
     public:
       GlobalURI();
       ~GlobalURI();

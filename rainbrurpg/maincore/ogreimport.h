@@ -35,6 +35,7 @@
   * \todo Removing when deprecated header warning fixed by Ogre team
   *
   * Modifications :
+  * - 31 oct 2008 : Added Viewport header needed by GameEngine
   * - 07 sep 2007 : Added some headers needed by editor
   * - 20 aug 2008 : Added hack to prevent for multiple definition in win32
   * - 08 jul 2008 : Starting implementation
@@ -44,7 +45,7 @@
 #ifndef _RAINBRURPG_OGRE_IMPORT_H_
 #define _RAINBRURPG_OGRE_IMPORT_H_
 
-#ifdef __GNUC__
+#ifdef __linux__
 // Included to get the RB_DISABLE_OGRE_DEPREC_WARN definition
 #  include "../config.h"
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
@@ -85,6 +86,7 @@
 #include <OgreTimer.h>
 #include <OgreVector2.h>
 #include <OgreVector4.h>
+#include <OgreViewport.h> 
 
 // Needed by editor
 #include <OgreLog.h>

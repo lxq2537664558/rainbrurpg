@@ -31,10 +31,9 @@
 #include <OgreOverlayManager.h>
 #include <OgreStringConverter.h>
 
+#include <assert.h>
 
 /** The GUI constructor
-  *
-  * The requested parameters are used to create an instance of QuadRenderer.
   *
   */
 BetaGUI::GUI::GUI():
@@ -60,6 +59,9 @@ BetaGUI::GUI::GUI():
   *
   */
 void BetaGUI::GUI::init(RenderSystem* rs, SceneManager* sm, Viewport* vp){
+  assert(vp && "Cannot create GUI on NULL viewport instance");
+  assert(rs && "Cannot create GUI on NULL RenderSystem instance");
+
   rootOverlay=OverlayManager::getSingleton().create("BetaGUI");
   rootOverlay->show();
   rootOverlay->setZOrder(500);

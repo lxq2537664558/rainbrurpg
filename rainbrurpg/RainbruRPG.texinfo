@@ -1,4 +1,9 @@
 \input texinfo @c -*-texinfo-*-
+
+@c == Modifications :
+@c == - 28 oct 2008 : Trying to handle é and ô characters
+
+
 @c This file uses the @command command introduced in Texinfo 4.0.
 @c %**start of header
 @setfilename RainbruRPG.info
@@ -7,12 +12,12 @@
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.0.5-180
+@set VERSION 0.0.5-186
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
 
-Copyright (C) 2006-2008 Jerome PASQUIER
+Copyright (C) 2006-2008 J@'er@^ome PASQUIER
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -40,11 +45,11 @@ by the Foundation.
 @title RainbruRPG
 @subtitle RainbruRPG is a in-development Multiplayer Online Role-Playing Game
 @subtitle for RainbruRPG Version @value{VERSION}
-@author by Jérôme PASQUIER
+@author by J@'er@^ome PASQUIER
 
 @page
 @vskip 0pt plus 1filll
-Copyright @copyright{} 2006-2008 Jérôme PASQUIER
+Copyright @copyright{} 2006-2008 J@'er@^ome PASQUIER
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -119,12 +124,8 @@ Or simply call the @command{./bootstrap} command.
 @cindex greetings
 @cindex overview
 
-The @command{RainbruRPG} program produces a familiar, friendly greeting.
-It allows nonprogrammers to use a classic computer science tool which
-would otherwise be unavailable to them.  Because it is protected by the
-GNU General Public License, users are free to share and change it.
-
-@command{RainbruRPG} was written by Jérôme PASQUIER.
+The @command{RainbruRPG} program provides a 3D multiplayer role playing
+game. It is not yet playable but it is in active devlopment.
 
 @c The server documentation starts here
 @node Server, Invoking RainbruRPG, Overview, Top
