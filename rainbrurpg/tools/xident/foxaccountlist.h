@@ -24,6 +24,8 @@
   * Declares the XIdent account list
   *
   * Modifications :
+  * - 06 nov 2008 : mSelectedAccountName added
+  * - 05 nov 2008 : Table is not editable and selection only whole row
   * - 22 sep 2008 : Single file documentation
   * - 08 aug 2007 : AddAcount button managed
   *
@@ -69,16 +71,16 @@ namespace RainbruRPG{
         * mechanism
 	*/
       enum{
-	/** Not Yet Implemented Identifier */
-	ID_NYI=FXPacker::ID_LAST,
-	/** The add account button FOX identifier */
-	ID_BTN_ADD,
- 	/** Setting the new value to  FXMainWindow::ID_LAST*/
-	ID_LAST
+	ID_NYI=FXPacker::ID_LAST,  //!<Not Yet Implemented Identifier 
+	ID_BTN_ADD,                //!< The add account button 
+	ID_TABLE_SEL,              //!< The table selection change
+	ID_LAST                    //!<Setting the new value of LAST
       };
  
       long onNotYetImplemented(FXObject *,FXSelector,void*);
       long onAddAccountClicked(FXObject *,FXSelector,void*);
+      long onTableSelectionChange(FXObject *,FXSelector,void*);
+      long onTableDeselection(FXObject *,FXSelector,void*);
 
     private:
       /** The account list */
@@ -91,6 +93,9 @@ namespace RainbruRPG{
       void feedTable();
       void setAccountNumber(unsigned int);
       void addAccount(RainbruRPG::Gui::tAccountListItem*);
+
+      /// The name of the selected account or empty string if none
+      FXString mSelectedAccountName;
     }; 
 
   }

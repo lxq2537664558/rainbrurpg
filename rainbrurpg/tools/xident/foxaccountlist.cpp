@@ -44,6 +44,8 @@ FXDEFMAP(RainbruRPG::Gui::FoxAccountList) FoxAccountListMap[]={
 
   FXMAPFUNC(SEL_COMMAND, RainbruRPG::Gui::FoxAccountList::ID_BTN_ADD, RainbruRPG::Gui::FoxAccountList::onAddAccountClicked),
 
+  FXMAPFUNC(SEL_SELECTED, RainbruRPG::Gui::FoxAccountList::ID_TABLE_SEL, RainbruRPG::Gui::FoxAccountList::onTableSelectionChange),
+
 };
 
 /** Declares the implementation of the class 
@@ -64,8 +66,9 @@ FXIMPLEMENT(RainbruRPG::Gui::FoxAccountList,FXPacker,FoxAccountListMap,ARRAYNUMB
   *
   */
 RainbruRPG::Gui::FoxAccountList::
-FoxAccountList(FXComposite *parent,FXuint opts)
-  :FXPacker(parent, opts)
+FoxAccountList(FXComposite *parent,FXuint opts):
+  FXPacker(parent, opts),
+  mSelectedAccountName("")
 {
 
 
@@ -86,8 +89,10 @@ FoxAccountList(FXComposite *parent,FXuint opts)
   FXVerticalFrame *frame = new FXVerticalFrame(hframe,
              LAYOUT_FILL_X|LAYOUT_FILL_Y);
 
+  FXuint table_opts = LAYOUT_FILL_X|LAYOUT_FILL_Y|TABLE_READONLY
+    |TABLE_NO_COLSELECT;
 
-  table=new FXTable(frame, NULL, 0, LAYOUT_FILL_X|LAYOUT_FILL_Y);
+  table=new FXTable(frame, this, ID_TABLE_SEL, table_opts);
   table->insertColumns(0, 5);
   table->getColumnHeader()->setItemText(0, "Name");
   table->getColumnHeader()->setItemText(1, "Mail");
@@ -250,5 +255,34 @@ long RainbruRPG::Gui::FoxAccountList::
 onAddAccountClicked(FXObject* o,FXSelector s,void* v){
   LOGW("onAddAccountClicked called");
 
+  return 1;
+}
 
+/** The Table selection callback
+  *
+  * This function is called when the \ref table selection change. To
+  * provide only the whole row selection, we get the selected row from
+  * the third argument. It must be cast to a FXTablePos pointer that
+  * contains the selection psition.
+  * 
+  * \param vObj Not used
+  * \param vSel Not used
+  * \param vPos The object we cast to FXTablePos* to get the selection
+  *             position.
+  *
+  * \return Always 1.
+  *
+  */
+long RainbruRPG::Gui::FoxAccountList::
+onTableSelectionChange(FXObject* vObj,FXSelector vSel,void* vPos){
+  FXTablePos* pos= static_cast<FXTablePos*>(vPos);
+  if (pos){
+    cout << pos->row << "," << pos->col << endl;
+    table->selectRow(pos->row);
+    mSelectedAccountName=table->getItemText(pos->row, 0);
+    LOGCATS("mSelectedAccountName=");
+    LOGCATS(mSelectedAccountName.text());
+    LOGCAT();
+  }
+  return 1;
 }

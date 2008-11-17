@@ -246,6 +246,8 @@ namespace RainbruRPG {
 	*
         */
       const char* userPwd;
+
+      /** The Ogre iewport instance */
       Viewport* mViewport;
     };
   }

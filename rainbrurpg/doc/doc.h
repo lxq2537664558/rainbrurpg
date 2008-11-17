@@ -286,7 +286,7 @@
   * are in gray, the other colors are pllied to soled bugs.
   *
   * The bugs are ordered, the num is on the \b # column. The sys is
-  * here to tell if this bug is in Linux, Win32 or both.
+  * here to tell if this bug is in GNU/Linux, Win32 or both.
   *
   * <!--"#CCFFFF">  BLUE -->
   * <!--"#FFFFCC">  YELLOW -->

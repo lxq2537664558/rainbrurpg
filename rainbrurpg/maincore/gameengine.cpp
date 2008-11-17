@@ -881,6 +881,9 @@ getGameStateIndexByName(const std::string& vName){
   return std::string::npos;
 }
 
+/** Get the current Ogre viewport
+  *
+  */
 Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const{
   return mViewport;
 }

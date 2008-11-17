@@ -1,3 +1,16 @@
+2008-11-06 Jerome Pasquier  <rainbru@free.fr>
+	* tools/xident/foxaccountlist.h : mSelectedAccountName member added.
+	* tools/xident/foxaccountlist.cpp (onTableSelectionChange): now
+	set the value of mSelectedAccountName.
+	
+2008-11-05 Jerome Pasquier  <rainbru@free.fr>
+	* tools/xident/foxaccountlist.h : Added a fox selector for the table.
+	* tools/xident/foxaccountlist.cpp (onTableSelectionChange): Select
+	only rows.
+	
+	* tools/xident/foxaccountlist.cpp (FoxAccountList): Table is not 
+	editable anymore.
+
 2008-10-31 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/bggui.cpp (init): The segfault seems to come from
 	this viewport instance. Assertion added.

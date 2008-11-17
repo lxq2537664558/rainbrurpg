@@ -44,6 +44,17 @@
   * In the connection Window (gsConnection) simply enter wrong connection
   * values (username and password) and click on the connect button.
   *
+  * \section bug26_history
   *
+  * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
+  *   <TR bgcolor="#00CC99">
+  *     <TH>Date</TH>
+  *     <TH>Comment</TH>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>01 nov 2008</TD>
+  *     <TD>Created this detail page</TD>
+  *   </TR>
+  * </TABLE>
   *
   */
