@@ -1,19 +1,22 @@
-TODO 
------------------------------------
-- xmlpersoattrb.php cree la cayegorie si elle n'existe pas
+adminsite - The meta server of RainbruRPG. Written in PHP.
+
+- xmlpersoattrb.php cree la category si elle n'existe pas
 - Test global player
 	- Problème d'affichage des titres
 	- Si plus d'une note, lors de la modif de la premiere, le champ
 	  note content de la premiere se remplit mal
 
 * Improve documentation
-- Make a mainpage. The actual one is tthe unit test one.
+- Make a mainpage. The actual one is the unit test one.
 
 * Remove bonusfile and others
 
 
-CHANGELOG
-* v0.0.5-185
+=== CHANGELOG ===
+The version number is the RainbruRPG's one.
+The revison number is an internal one. Not linked this the RainbruRPG's one.
+
+* v0.0.5-7
 - Some files individually documentated
 - GNU headers added
 - fix documentation warnings

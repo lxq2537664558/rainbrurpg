@@ -1,11 +1,14 @@
 ## Only copy php and html in local www directory for test purpose
 
 SUBDIRS = unittest
+INSTALL_DIR = /var/www/rpg/admin
 
 install:
-	cp -R *.php /var/www/rpg/admin
-	cp -R *.html /var/www/rpg/admin
-	cp -R unittest/*.php /var/www/rpg/admin/unittest
+	rm -fR $(INSTALL_DIR)/*
+	cp -R *.php $(INSTALL_DIR)
+	cp -R *.html $(INSTALL_DIR)
+	mkdir $(INSTALL_DIR)/unittest
+	cp -R unittest/*.php $(INSTALL_DIR)/unittest
 
 clean:
 	rm -f *~
