@@ -1,4 +1,5 @@
-TODO
+RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
+
 -> Libraries versionning in doc/libVersionning.html and configure.in
 
 o [Carine] cross-compilation to win32
@@ -100,9 +101,8 @@ A system that serialize widgets position and configuration
 - RainbruRPG man pages should be renamed rainbrurpg (in lower case)
 - pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 
-* *******************************************************
-* ***************** Changelog ***************************
-* *******************************************************
+===  Changelog ===
+   (20 items by revision)
 
 * v 0.0.5-187
 - (4)Xident Account panel is read only and the selection is whole row only
@@ -132,24 +132,3 @@ A system that serialize widgets position and configuration
 - Adds an --enable-terminal-api configure script option
 - cross-compil : Fix a compil error for common library
 
-* v 0.0.5-185
-- gsMainMenu documentation improved
-- Fix a documentation warning on server/resources.cpp
-- LanguageListItem unit test implemented
-- All unit test tested instance are now called m_instance
-- Adminsite documentation segfault fixed
-- Scrollbars handle visibility when computing max value
-- Window's ScrollBar visibility status are auto-inclusive
-- LocalTest works again (was broken since several months)
-- Fix a bug in wdmulticolumnlist::drawOneHeader scissor bottom
-- Fix a bug in wdmulticolumnlist::drawAllItems scissor bottom
-- Adds an indentation to the MultiColumnList's header caption
-- Fix the MultiColumnList border column bug
-- QuadRenerer::debug SEGFAULT fixed
-- Window's resize attraction bug fixed
-- Window::computeMinimumSize() implementation
-- All files individually docommented
-- All tools/netflooder/ files individually docommented
-- All terminalapi/ files individually docommented
-- All common/ tests now use m_instance
-- Added some headers needed by editor in maincore/ogreimport.h
