@@ -1,0 +1,76 @@
+Changelog
+-----------------------------------
+* v 0.0.4-6
+- Server uses Unique name and type
+
+* v0.0.4-5
+- Doxygen documentation
+
+* v0.0.1-4
+- modifpersoattrb.php prend en compte la categorie
+- XmlAttrbInterface::getAttrbByCat();
+- xmlpersointerface.php
+- deleteperso.php
+- addperso.php
+- persolist.php
+
+* v0.0.1-3
+- xmlInterface moveUpNode
+- xmlInterface moveDownNode
+- modifattrb.php
+- deleteattrb.php
+- addattrb.php
+- attrblist
+- xmlattrbinterface.php
+- modifattrbcat.php
+- deleteattrbcat.php
+- addattrbcat.php
+
+* v0.0.1-2
+- listattrbcatlist.php
+- xmlpersoattrbcatinterface.php gere les caegories de persoattributes
+- Bonus file list
+ 	- test sans choice
+- modifybonusfilechoice.php
+- deletebonusfilechoice.php
+- addbonusfilechoice.php
+- modifbonusfilemodifier.php
+- addbonusfilemodifier.php
+	- Tester si un mod avec le même ettribut n'existe pas encore
+- deletebonusfilemodifier.php
+- detailbonusfile
+	- a xmlbonusfileinterface($filename)
+- modifbonusfile.php
+- deletebonusfile.php
+- addBonusFile
+	- test si name et filename existent
+- persoattribute::typesinfo
+
+* v0.0.1-1
+- addserver.php
+- deleteserver.php
+- listserverlist.php
+- changeserveract.php
+- serverdetails.php
+- xmlserverinterface.php
+- serverlist.php
+- modifnote
+- deletenote
+	- xmlplayerinterface::getNoteByName
+	- xmlplayerinterface::deleteNote
+- Probleme de lecture des date de creation des notes	OK
+	- L'ajout de notes se fait dans la première note
+- addnote
+- mailconfirm
+- changepasswordpwd.php
+- playerdetails
+- ToggleBlackList
+- delPlayer
+- AddPlayer is OK
+- isplayerexists... dans xmlplayerinterface
+	- isPlayerExists()
+	- isMailExists()
+- suppression de errormsg
+- addplayer utilise xmlplayerinterface
+- La classe xmlinterface
+- playerlist utilise xmlplayerinterface
