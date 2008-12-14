@@ -84,7 +84,7 @@ A system that serialize widgets position and configuration
 - SerialisableWidget is inherited by complex widget
    void serialize(GuiSerializer*)=0;
    void deserialize(GuiSerializer*)=0;
-- The XML file
+- The XML file for GuiSerializer
    GuiSerializer
       widgetName
          ContextName
@@ -105,7 +105,23 @@ A system that serialize widgets position and configuration
    (20 items by revision)
 
 * v 0.0.5-187
-- (4)Xident Account panel is read only and the selection is whole row only
+- (15) Added common/ptypes
+- (14) BugReport value now is sourceforge's mail adress
+- Fix some Doxygen warning when configure never complete
+   PACKAGE_BUGREPORT, PACKAGE, HAVE_UTIME_H, HAVE_UNISTD_H,
+   HAVE_TIME_H, HAVE_SYS_TYPES_H, HAVE_SYS_TIME_H, HAVE_SYS_STAT_H
+   HAVE_SYS_PARAM_H, HAVE_STRUCT_UTIMBUF, HAVE_STRING_H
+   HAVE_STRINGS_H, HAVE_STDLIB_H, HAVE_STDINT_H, HAVE_MEMORY_H
+   HAVE_LOCALE_H, HAVE_FCNTL_H, HAVE_DIRENT_H, HAVE_ALLOCA
+   BUILD_RELEASE
+- Change configure.in's AC_INIT call to define BUGREPORT
+- Fix some Doxygen warning when configure never complete
+   TIME_WITH_SYS_TIME, USER_INSTALL_PREFIX, VERSION, STDC_HEADERS,
+   PACKAGE_VERSION, PACKAGE_TARNAME
+- Fix many Doxygen warning (by setting SHORT_NAMES to YES)
+- acinclude.m4 RB_CHECK_LIBFOX now check for fox-config tool
+- acinclude.m4 RB_CHECK_FREETYPE now check for freetype-config tool
+- Xident Account panel is read only and the selection is whole row only
 - Close bug #25
 - Detail page for Bug #27
 - HTML validation of homepage

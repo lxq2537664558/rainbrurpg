@@ -80,7 +80,6 @@ namespace RainbruRPG{
       long onNotYetImplemented(FXObject *,FXSelector,void*);
       long onAddAccountClicked(FXObject *,FXSelector,void*);
       long onTableSelectionChange(FXObject *,FXSelector,void*);
-      long onTableDeselection(FXObject *,FXSelector,void*);
 
     private:
       /** The account list */

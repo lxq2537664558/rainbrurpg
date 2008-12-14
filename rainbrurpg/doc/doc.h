@@ -31,6 +31,7 @@
   *       we need to include the config.h file.
   *
   * Modifications :
+  * - 03 dec 2008 : Fix some Doxygen warning when configure never complete
   * - 08 oct 2008 : Cross compilation section moved to doc_crosscompil.h
   * - 07 oct 2008 : Cross compilation section added
   * - 13 aug 2008 : Single file documentation
@@ -624,6 +625,8 @@
   */
 #endif // BUILD_EDITOR
 
+// The BUILD_LIB_DESIGN macro can be undefined if configure call never complete
+#ifdef BUILD_LIB_DESIGN
 /** \def BUILD_LIB_DESIGN
   * 
   * Defines if the \c design library must be built. 
@@ -633,6 +636,7 @@
   * server...).
   *
   */
+#endif // BUILD_LIB_DESIGN
 
 // Avoid doxygen complains about 'unknown define'
 #ifdef  BUILD_SERVER
@@ -647,6 +651,8 @@
   */
 #endif //  BUILD_SERVER
 
+// The BUILD_RELEASE macro can be undefined if configure call never complete
+#ifdef BUILD_RELEASE
 /** \def BUILD_RELEASE
   *
   * Defines the build release number as a string.
@@ -655,7 +661,10 @@
   * release, I will never reset it.
   *
   */
+#endif // BUILD_RELEASE
 
+// The HAVE_ALLOCA macro can be undefined if configure call never complete
+#ifdef HAVE_ALLOCA
 /** \def HAVE_ALLOCA
   *
   * Define to 1 if you have `alloca', as a function or macro.
@@ -665,6 +674,7 @@
   * http://www.gnu.org/software/libtool/manual/libc/Variable-Size-Automatic.html#Variable-Size-Automatic
   *
   */
+#endif // HAVE_ALLOCA
 
 #ifdef HAVE_ALLOCA_H
 /** \def HAVE_ALLOCA_H
@@ -677,6 +687,8 @@
   */
 #endif // HAVE_ALLOCA_H
 
+// The HAVE_DIRENT_H macro can be undefined if configure call never complete
+#ifdef HAVE_DIRENT_H
 /** \def HAVE_DIRENT_H
   *
   * Define to 1 if you have the \c <dirent.h> header file, and it defines 
@@ -686,6 +698,7 @@
   * constructs that facilitate directory traversing. 
   *
   */
+#endif // HAVE_DIRENT_H
 
 #ifdef HAVE_DLFCN_H
 /** \def HAVE_DLFCN_H
@@ -699,6 +712,8 @@
   */
 #endif // HAVE_DLFCN_H
 
+// The HAVE_FCNTL_H macro can be undefined if configure call never complete
+#ifdef HAVE_FCNTL_H
 /** \def HAVE_FCNTL_H
   *
   * Defines file control options. 
@@ -708,7 +723,10 @@
   * for the Oflag parameter of the \c open subroutine. The file-status 
   * flags of an open file are also described. 
   */
+#endif // HAVE_FCNTL_H
 
+// The HAVE_INTTYPES_H macro can be undefined if configure call never complete
+#ifdef HAVE_INTTYPES_H
 /** \def HAVE_INTTYPES_H
   *
   * Define to 1 if you have the \c <inttypes.h> header file.
@@ -719,6 +737,7 @@
   * as well as functions for working with the \c intmax_t type.
   *
   */
+#endif // HAVE_INTTYPES_H
 
 #ifdef HAVE_LIBBOOST_FILESYSTEM
 /** \def HAVE_LIBBOOST_FILESYSTEM
@@ -877,6 +896,8 @@
   */
 #endif // HAVE_LIBSIGC_2_0
 
+// The HAVE_LOCALE_H macro can be undefined if configure call never complete
+#ifdef HAVE_LOCALE_H
 /** \def HAVE_LOCALE_H
   *
   * Define to 1 if you have the <locale.h> header file.
@@ -885,12 +906,16 @@
   * monetary.
   *
   */
+#endif // HAVE_LOCALE_H
 
+// The HAVE_MEMORY_H macro can be undefined if configure call never complete
+#ifdef HAVE_MEMORY_H
 /** \def HAVE_MEMORY_H
   *
   * Define to 1 if you have the <memory.h> header file.
   *
   */
+#endif // HAVE_MEMORY_H
 
 #ifdef HAVE_MKFIFO
 /** \def HAVE_MKFIFO
@@ -903,6 +928,8 @@
   */
 #endif // HAVE_MKFIFO
 
+// The HAVE_STDINT_H macro can be undefined if configure call never complete
+#ifdef HAVE_STDINT_H
 /** \def HAVE_STDINT_H
   *
   * Define to 1 if you have the <stdint.h> header file.
@@ -913,7 +940,10 @@
   * allowable values for each type, using macros.
   *
   */
+#endif // HAVE_STDINT_H
 
+// The HAVE_STDLIB_H macro can be undefined if configure call never complete
+#ifdef HAVE_STDLIB_H
 /** \def HAVE_STDLIB_H
   *
   * Define to 1 if you have the <stdlib.h> header file.
@@ -922,7 +952,10 @@
   * allocation, process control, conversion and others.
   *
   */
+#endif // HAVE_STDLIB_H
 
+// The HAVE_STRINGS_H macro can be undefined if configure call never complete
+#ifdef HAVE_STRINGS_H
 /** \def HAVE_STRINGS_H
   *
   * Define to 1 if you have the <strings.h> header file.
@@ -931,7 +964,10 @@
   * macro providing string operations.
   *
   */
+#endif // HAVE_STRINGS_H
 
+// The HAVE_STRING_H macro can be undefined if configure call never complete
+#ifdef HAVE_STRING_H
 /** \def HAVE_STRING_H
   *
   * Define to 1 if you have the <string.h> header file.
@@ -942,6 +978,7 @@
   * functions.
   *
   */
+#endif // HAVE_STRING_H
 
 #ifdef HAVE_STRUCT_STAT_ST_BLOCKS
 /** \def HAVE_STRUCT_STAT_ST_BLOCKS
@@ -955,6 +992,8 @@
   */
 #endif // HAVE_STRUCT_STAT_ST_BLOCKS
 
+// HAVE_STRUCT_UTIMBUF macro can be undefined if configure call never complete
+#ifdef HAVE_STRUCT_UTIMBUF
 /** \def HAVE_STRUCT_UTIMBUF
   *
   * Define if struct utimbuf is declared.
@@ -963,6 +1002,7 @@
   * have utime.h but don't declare the struct anywhere.
   *
   */
+#endif // HAVE_STRUCT_UTIMBUF
 
 #ifdef HAVE_ST_BLOCKS
 /** \def HAVE_ST_BLOCKS
@@ -974,6 +1014,8 @@
   */
 #endif // HAVE_ST_BLOCKS
 
+// The HAVE_SYS_PARAM_H macro can be undefined if configure call never complete
+#ifdef HAVE_SYS_PARAM_H
 /** \def HAVE_SYS_PARAM_H
   *
   * Define to 1 if you have the <sys/param.h> header file.
@@ -982,7 +1024,10 @@
   * bit map related or rounding/counting macros.
   *
   */
+#endif // HAVE_SYS_PARAM_H
 
+// The HAVE_SYS_STAT_H macro can be undefined if configure call never complete
+#ifdef HAVE_SYS_STAT_H
 /** \def HAVE_SYS_STAT_H
   *
   * Define to 1 if you have the <sys/stat.h> header file.
@@ -991,6 +1036,7 @@
   * characteristics.
   *
   */
+#endif // HAVE_SYS_STAT_H
 
 #ifdef HAVE_SYS_SYSMACROS_H
 /** \def HAVE_SYS_SYSMACROS_H
@@ -1011,6 +1057,8 @@
   */
 #endif // !HAVE_LIBSLANG
 
+// The HAVE_SYS_TIME_H macro can be undefined if configure call never complete
+#ifdef HAVE_SYS_TIME_H
 /** \def HAVE_SYS_TIME_H
   *
   * Define to 1 if you have the <sys/time.h> header file.
@@ -1019,7 +1067,10 @@
   * timespec.
   *
   */
+#endif // HAVE_SYS_TIME_H
 
+// The HAVE_SYS_TYPES_H macro can be undefined if configure call never complete
+#ifdef HAVE_SYS_TYPES_H
 /** \def HAVE_SYS_TYPES_H
   *
   * Define to 1 if you have the <sys/types.h> header file.
@@ -1028,7 +1079,10 @@
   * data types.
   *
   */
+#endif // HAVE_SYS_TYPES_H
 
+// The HAVE_TIME_H macro can be undefined if configure call never complete
+#ifdef HAVE_TIME_H
 /** \def HAVE_TIME_H
   *
   * Define to 1 if you have the <time.h> header file.
@@ -1037,7 +1091,10 @@
   * and functions.
   *
   */
+#endif // HAVE_TIME_H
 
+// The HAVE_UNISTD_H macro can be undefined if configure call never complete
+#ifdef HAVE_UNISTD_H
 /** \def HAVE_UNISTD_H
   *
   * Define to 1 if you have the <unistd.h> header file.
@@ -1049,7 +1106,10 @@
   * here.
   *
   */
+#endif // HAVE_UNISTD_H
 
+// The HAVE_UTIME_H macro can be undefined if configure call never complete
+#ifdef HAVE_UTIME_H
 /** \def HAVE_UTIME_H
   *
   * Define to 1 if you have the <utime.h> header file.
@@ -1059,7 +1119,10 @@
   * modification times.
   *
   */
+#endif // HAVE_UTIME_H
 
+// The PACKAGE macro can be undefined if configure call never complete
+#ifdef PACKAGE
 /** \def PACKAGE
   *
   * Defines the name of the package
@@ -1067,36 +1130,55 @@
   * This value should always be \b RainbruRPG.
   *
   */
+#endif PACKAGE
 
+// PACKAGE_BUGREPORT macro can be undefined if configure call never complete
+#ifdef PACKAGE_BUGREPORT
 /** \def PACKAGE_BUGREPORT
   *
   * Define to the address where bug reports for this package should be sent.
   *
+  * \todo Test if this value is correct. It should be set from the call
+  *       to AC_INIT in the configure.in file.
+  *
   */
+#endif // PACKAGE_BUGREPORT
 
+// PACKAGE_NAME macro can be undefined if configure call never complete
+#ifdef PACKAGE_NAME
 /** \def PACKAGE_NAME
   *
   * Define to the full name of this package.
   *
   */
+#endif // PACKAGE_STRING
 
+// PACKAGE_STRING macro can be undefined if configure call never complete
+#ifdef PACKAGE_STRING
 /** \def PACKAGE_STRING
   *
   * Define to the full name and version of this package.
   *
   */
+#endif // PACKAGE_STRING
 
+// PACKAGE_TARNAME macro can be undefined if configure call never complete
+#ifdef PACKAGE_TARNAME
 /** \def PACKAGE_TARNAME
   *
   * Define to the one symbol short name of this package.
   *
   */
+#endif // PACKAGE_TARNAME
 
+// PACKAGE_VERSION macro can be undefined if configure call never complete
+#ifdef PACKAGE_VERSION
 /** \def PACKAGE_VERSION
   *
   * Define to the version of this package.
   *
   */
+#ifdef // PACKAGE_VERSION
 
 #ifdef RAINBRU_RPG_DEBUG
 /** \def RAINBRU_RPG_DEBUG
@@ -1128,20 +1210,28 @@
   */
 #endif // RB_DISABLE_OGRE_DEPREC_WARN
 
+// STDC_HEADERS macro can be undefined if configure call never complete
+#ifdef STDC_HEADERS
 /** \def STDC_HEADERS
   *
   * Define to 1 if you have the ANSI C header files.
   *
   *
   */
+#endif // STDC_HEADERS
 
+// TIME_WITH_SYS_TIME macro can be undefined if configure call never complete
+#ifdef TIME_WITH_SYS_TIME
 /** \def TIME_WITH_SYS_TIME
   *
   * Define to 1 if you can safely include both <sys/time.h> and <time.h>.
   *
   *
   */
+#endif // TIME_WITH_SYS_TIME
 
+// USER_INSTALL_PREFIX macro can be undefined if configure call never complete
+#ifdef USER_INSTALL_PREFIX
 /** \def USER_INSTALL_PREFIX
   *
   * The directory installation prefix. This value is needed to locate the
@@ -1151,7 +1241,10 @@
   * use the \c --prefix argument of the \c ./configure script.
   *
   */
+#endif // USER_INSTALL_PREFIX
 
+// The VERSION macro can be undefined if configure call never complete
+#ifdef VERSION
 /** \def VERSION
   * Version number of package
   *
@@ -1162,6 +1255,7 @@
   *       always equal to 0. Should we use it instead ?
   *
   */
+#endif // VERSION
 
 #ifdef RB_MULTICOLUMNLIST_TEST
 /** \def RB_MULTICOLUMNLIST_TEST

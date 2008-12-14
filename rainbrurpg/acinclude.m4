@@ -1,5 +1,8 @@
 dnl
 dnl Modifications :
+dnl - 03 dec 2008 : 
+dnl         - RB_CHECK_FREETYPE macro now check freetype-config presence
+dnl         - RB_CHECK_LIBFOX macro now check fox-config presence
 dnl - 27 oct 2008 : RB_CHECK_FREETYPE macro implementation for client/
 dnl - 20 oct 2008 : Better handling of cross-compil through the
 dnl                 RB_HANDLE_CROSS_COMPIL macro.
@@ -137,10 +140,14 @@ AC_DEFUN([RB_CHECK_LIBFOX],
     FOX_LIBS="-lFOX-1.6"
   else
     dnl Get the correct executable
-    AC_PATH_TOOL(FOX_CONFIG, fox-config, [
-      echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
+    AC_PATH_TOOL(FOX_CONFIG, fox-config, -1)
+
+    if test $FOX_CONFIG -eq -1
+    then
+      echo "Error! You need the Fox-Toolkit installed. Cannot find the fox-config tool."
       exit -1
-    ])
+    fi
+
 
     dnl check for version
     echo -n "checking if Fox version is at least v$1... "
@@ -832,12 +839,16 @@ AC_DEFUN([RB_CHECK_FREETYPE],
     FREETYPE_LIBS="-lfreetype6$DLL_EXT"
   else
     dnl Get the correct executable
-    AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, [
-      echo "Error! You need FOX-Toolkit $1 installed. Cannot find fox-config."
+    AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, -1)
+    
+    dnl Check for the precense of freetype-config
+    if test $FREETYPE_CONFIG -eq -1
+    then
+      echo "Error! You need Freetype $1 installed. Cannot find the freetype-config tool."
       exit -1
-    ])
+    fi
 
-    dnl check for version
+    dnl check for version of freetype using freetype-config
     echo -n "checking if Freetype version is at least v$1... "
     FREETYPE_VERSION=`$FREETYPE_CONFIG --version`
     if test "${FREETYPE_VERSION:0:4}" == "$1"
