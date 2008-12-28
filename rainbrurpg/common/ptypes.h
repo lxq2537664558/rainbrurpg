@@ -26,6 +26,7 @@
   * These types was originally defined to provide a 32/64 bits portability.
   *
   * Modifications :
+  * - 15 dec 2008 : Add ui_ptr for a pointer cast to uint
   * - 13 dec 2008 : Starting implementation
   *
   */
@@ -60,6 +61,8 @@ typedef struct {
   typedef unsigned int   uint32; 
   typedef unsigned long  uint64; 
 
+  typedef uint64 ui_ptr; // The size of a pointer is 64bits
+
 #  elif defined(__WIN32) || (__WORDSIZE == 32) // for 32 bits
   typedef unsigned char  int8; 
   typedef unsigned short int16; 
@@ -70,6 +73,8 @@ typedef struct {
   typedef unsigned short uint16; 
   typedef unsigned int   uint32;
   typedef unsigned long long  uint64; 
+
+  typedef uint32 ui_ptr; // The size of a pointer is 32 bits
 #endif // !(__WORDSIZE == 64) 
 
 #endif // !_PTYPES_H_

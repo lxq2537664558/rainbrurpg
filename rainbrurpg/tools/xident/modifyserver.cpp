@@ -30,6 +30,8 @@
 #include <logger.h>
 #include <fox-1.6/FXMessageBox.h>
 
+#include "ptypes.h" // For ui_ptr
+
 /** The Fox-toolkit event mapping 
   *
   * This map is needed by the Fox-Toolkit event model. It defines
@@ -211,8 +213,8 @@ onCancelClicked(FXObject *o,FXSelector s,void* v){
   */
 long RainbruRPG::Gui::ModifyServer::
 onSpinnerClicked(FXObject *o,FXSelector s,void* v){
-
-  int i=(int)v;
+  // Cast from void* to unsigned int in 32/64 bits CPUs
+  ui_ptr i=(ui_ptr)v; 
   LOGCATS("New value ");
   LOGCATI(i);
   LOGCAT();

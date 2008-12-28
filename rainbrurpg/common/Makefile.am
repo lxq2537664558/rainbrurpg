@@ -74,7 +74,8 @@ h_sources= rainbrudef.h				\
 	   itemlistfile.h			\
 	   curlpersoheaderdelete.h		\
 	   hashfile.h				\
-	   serverlistitem.h
+	   serverlistitem.h			\
+	   ptypes.h
 
 
 cc_sources= loadbmp.cpp				\
@@ -172,7 +173,7 @@ librainbrurpg_common_la_LDFLAGS=      	        \
   $(COMMON_LIBRARY_VERSION)			\
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	       	\
   $(libcurl_LIBS)				\
-  $(shell $(FOX_CONFIG) --libs)			\
+  $(FOX_LIBS)					\
   $(OGRE_LIBS)					\
   $(OIS_LIBS)					\
   $(GLIB_LIBS)					\

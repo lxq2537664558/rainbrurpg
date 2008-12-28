@@ -140,9 +140,9 @@ AC_DEFUN([RB_CHECK_LIBFOX],
     FOX_LIBS="-lFOX-1.6"
   else
     dnl Get the correct executable
-    AC_PATH_TOOL(FOX_CONFIG, fox-config, -1)
+    AC_PATH_TOOL(FOX_CONFIG, fox-config, 'NOT_FOUND')
 
-    if test $FOX_CONFIG -eq -1
+    if test $FOX_CONFIG = 'NOT_FOUND'
     then
       echo "Error! You need the Fox-Toolkit installed. Cannot find the fox-config tool."
       exit -1
@@ -823,7 +823,7 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
 
 dnl Check the Freetype library
 dnl
-dnl In GNU/Linux platform : It search fro the freetype-config tool
+dnl In GNU/Linux platform : It search for the freetype-config tool
 dnl    and get the FREETYPE_LIBS and FREETYPE_CFLAGS from it.
 dnl
 dnl In Win32 cross-compilation: It simply add flags according to the 

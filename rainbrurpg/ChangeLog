@@ -1,13 +1,50 @@
+2008-12-24 Jerome Pasquier  <rainbru@free.fr>
+	* tools/ftpclient/Makefile.am : now uses GLIB_CFLAGS/GLIB_LIBS 
+	and SIGC_CFLAGS/SIGC_LIBS instead of pkg-config calls.
+	* tools/hashsum/Makefile.am : now uses SIGC_CFLAGS/SIGC_LIBS 
+	instead of pkg-config calls.
+	* tools/netflooder/Makefile.am : now uses GLIB_CFLAGS/GLIB_LIBS 
+	and SIGC_CFLAGS/SIGC_LIBS instead of pkg-config calls.
+	* editor/Makefile.am : now uses OGRE_CFLAGS and OGRE_LIBS instead
+	of pkg-config calls.
+	* server/Makefile.am : now uses GLIB_CFLAGS and GLIB_LIBS instead
+	of pkg-config calls.
+
+2008-12-23 Jerome Pasquier  <rainbru@free.fr>
+	* design/Makefile.am : now use OGRE_LIBS and OGRE_CFLAGS instead
+	of a shell pkg-config call.
+	
+	* common/Makefile.am : now use FOX_LIBS instead of a shell call.
+	
+	* acinclude.m4 (RB_CHECK_LIBFOX) : Fix a bug due to test 
+	between string and integer values.
+	
+2008-12-15 Jerome Pasquier  <rainbru@free.fr>
+	* tools/xident/foxpersolist.cpp (onAccountSelected) : Now uses
+	ui_ptr from common/ptypes.h to avoid a 'loses precision'
+	compilation error when casting a void* to an int.
+
+	* tools/xident/modifyserver.cpp (onSpinnerClicked) : Now uses
+	ui_ptr from common/ptypes.h to avoid a 'loses precision'
+	compilation error when casting a void* to an int.
+	
+	* client/launcheroptions.cpp (onAttributeChange) : Now uses
+	ui_ptr from common/ptypes.h to avoid a 'loses precision'
+	compilation error when casting a void* to an int.
+
+	* common/ptypes.h : Added ui_ptr type for pointer to uint cast.
+	
 2008-12-13 Jerome Pasquier  <rainbru@free.fr>
-	* common/ptypes.h : Starting implementation of portables types.
+	* common/ptypes.h : Starting implementation of portables types to
+	handle difference between 32 bits and 34 bits systems.
 	
 2008-12-04 Jerome Pasquier  <rainbru@free.fr>
 	* doc/doc.h : Fix some Doxygen warning when configure never complete :
 	PACKAGE_BUGREPORT, PACKAGE, HAVE_UTIME_H, HAVE_UNISTD_H, HAVE_TIME_H
 	HAVE_SYS_TYPES_H, HAVE_SYS_TIME_H, HAVE_SYS_STAT_H, HAVE_SYS_PARAM_H
 	HAVE_STRUCT_UTIMBUF, HAVE_STRING_H, HAVE_STRINGS_H, HAVE_STDLIB_H
-	HAVE_STDINT_H, HAVE_MEMORY_H, HAVE_LOCALE_H, HAVE_FCNTL_H, HAVE_DIRENT_H
-	HAVE_ALLOCA, BUILD_RELEASE
+	HAVE_STDINT_H, HAVE_MEMORY_H, HAVE_LOCALE_H, HAVE_FCNTL_H 
+	HAVE_DIRENT_H, HAVE_ALLOCA, BUILD_RELEASE
 	
 2008-12-03 Jerome Pasquier  <rainbru@free.fr>
 	* configure.in : Change configure.in's AC_INIT call to define BUGREPORT

@@ -1,18 +1,20 @@
 # The final program is called "myapp"
 bin_PROGRAMS = rainbrurpg-server
 
-rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common \
-			-lrainbrurpg-design \
-			-L$(top_srcdir)/common/.libs \
-			-L$(top_srcdir)/design/.libs -lglib-2.0 -lQtSql \
-			-lQt3Support
+rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common 	\
+			-lrainbrurpg-design 			\
+			-L$(top_srcdir)/common/.libs 		\
+			-L$(top_srcdir)/design/.libs 		\
+			-lQtSql 				\
+			-lQt3Support				\
+			$(GLIB_LIBS)
 
-glib_cflags = $(shell pkg-config glib-2.0 --cflags) -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
-
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design \
-           -I/usr/include/qt4/QtGui -I/usr/include/qt4 \
-           -I/usr/include/qt4/QtCore -I/usr/include/qt4/Qt3Support \
-	   $(glib_cflags)
+INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design 	\
+           -I/usr/include/qt4/QtGui -I/usr/include/qt4 		\
+           -I/usr/include/qt4/QtCore 				\
+	   -I/usr/include/qt4/Qt3Support 			\
+	   $(GLIB_CFLAGS)					\
+	   -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
 
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
 # Remember to include the name of the resource file with the .cpp extension.
@@ -70,12 +72,12 @@ moc_%.cpp: %.h
 	moc-qt4 $< -o $@
 
 # Adjust this line according to your resources.qrc
-resources.cpp : resources.qrc #octave-gui.png
+resources.cpp : resources.qrc
 	rcc resources.qrc -o resources.cpp
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
-CLEANFILES = $(filter moc_%.cpp,$(rainbrurpg_server_SOURCES)) resources.cpp
+CLEANFILES = $(filter moc_%.cpp, $(rainbrurpg_server_SOURCES)) resources.cpp
 
 
 

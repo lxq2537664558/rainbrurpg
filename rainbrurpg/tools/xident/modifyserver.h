@@ -24,6 +24,8 @@
   * Declares a dialog used to modify server
   *
   * Modifications :
+  * - 15 dec 2008 : onSpinnerClicked() uses ui_ptr from common/ptypes
+  *                 to avoid a 'loses precision' compilation error.
   * - 22 sep 2008 : Single file documentation
   *
   */

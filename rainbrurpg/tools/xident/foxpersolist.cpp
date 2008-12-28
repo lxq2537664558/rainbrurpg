@@ -31,6 +31,8 @@
 
 #include <fox-1.6/FXMessageBox.h>
 
+#include "ptypes.h"
+
 /** The Fox-toolkit event mapping 
   *
   * This map is needed by the Fox-Toolkit event model. It defines
@@ -163,7 +165,10 @@ long RainbruRPG::Gui::FoxPersoList::
 onAccountSelected(FXObject* o,FXSelector s,void* v){
   LOGI("onAccountSelected called");
 
-  FXint itemIndex=(int)v;
+  // Uses ui_ptr from common/ptypes.h to cast a void* to unsigned int
+  // to handle 32bits and 64bits platforms and avoid a 'loses precision'
+  // compilation error.
+  ui_ptr itemIndex=(ui_ptr)v;
   FXString itemText=accountList->getItemText(itemIndex);
   std::string strItemText(itemText.text());
   LOGCATS("Item index : ");

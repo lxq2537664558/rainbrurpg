@@ -94,20 +94,29 @@ A system that serialize widgets position and configuration
 - Logger uses clog and cerr (from the IOstream Library)
 - modifpersoattrb.php do not check fields content (NULL content allowed)
 - Is CurlSubmitForm::computePostedData in use ?
-- A file called adminmsg.xml with administrator message to players (maintenance)
+- A file called adminmsg.xml with admin message to players (maintenance)
 - Searching informations on Audiere
 - The account is created only if the mail was correctly sent
 - CurlAccountAdd::controlAfter tests if the account was correctly created
 - RainbruRPG man pages should be renamed rainbrurpg (in lower case)
 - pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 
-===  Changelog ===
-   (20 items by revision)
+===  Changelog ===   (20 items by revision)
+
+* v 0.0.5-188
+- (2) editor/Makefile.am now uses PGRE_CFLAGS and OGRE_LIBS
+- server/Makefile.am and tools netflooder now uses GLIB_CFLAGS and GLIB_LIBS
 
 * v 0.0.5-187
-- (15) Added common/ptypes
-- (14) BugReport value now is sourceforge's mail adress
-- Fix some Doxygen warning when configure never complete
+- design/Makefile.am : now use OGRE_LIBS and OGRE_CFLAGS (was a shell call)
+- common/Makefile.am : Now uses FOX_LIBS instead of a shell call
+- acinclude.m4 : fix a bug in RB_CHECK_LIBFOX
+- Some files uses ui_ptr to cast from pointer to unsigned int
+   to avoid 'loses precision' compilation error.
+- Added ui_ptr in common/ptypes
+- Added common/ptypes
+- BugReport value now is sourceforge's mail adress
+- Fix some Doxygen warning when configure never completed
    PACKAGE_BUGREPORT, PACKAGE, HAVE_UTIME_H, HAVE_UNISTD_H,
    HAVE_TIME_H, HAVE_SYS_TYPES_H, HAVE_SYS_TIME_H, HAVE_SYS_STAT_H
    HAVE_SYS_PARAM_H, HAVE_STRUCT_UTIMBUF, HAVE_STRING_H

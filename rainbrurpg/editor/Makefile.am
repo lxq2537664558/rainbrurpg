@@ -10,7 +10,8 @@ rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\
 			-L$(top_srcdir)/design/.libs 	\
 			-L$(top_srcdir)/maincore/.libs	\
 			-L$(top_srcdir)/ogreGui/.libs	\
-			$(OIS_LIBS)
+			$(OIS_LIBS)			\
+			$(OGRE_LIBS)
 
 OGRE_CFLAGS= -I/usr/local/include/OGRE
 
@@ -20,7 +21,8 @@ INCLUDES = -I$(top_srcdir)/common/ 			\
 	   -I$(top_srcdir)/ogreGui/			\
            -I/usr/include/qt4/QtGui -I/usr/include/qt4  \
            -I/usr/include/qt4/QtCore 			\
-	    $(shell pkg-config OGRE --cflags) $(OIS_CFLAGS)
+	   $(OIS_CFLAGS)				\
+	   $(OGRE_CFLAGS)
 
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
 # Remember to include the name of the resource file with the .cpp extension.

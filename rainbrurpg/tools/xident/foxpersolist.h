@@ -24,6 +24,8 @@
   * Declares the XIdent perso list widget
   *
   * Modifications :
+  * - 15 dec 2008 : onAccountSelected() uses ui_ptr from common/ptypes.h
+  *                 to avoid a 'loses precision' compilation error.
   * - 22 sep 2008 : Single file documentation
   * - 19 jul 2007 : Starting implementation
   *

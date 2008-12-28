@@ -27,7 +27,7 @@ INCLUDES = -I$(top_srcdir)/common 		\
 	   -I/usr/include/qt4/QtCore 		\
 	   -I/usr/include/qt4/Qt3Support	\
 	   -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT	\
-	   $(shell pkg-config OGRE --cflags)
+	   $(OGRE_CFLAGS)
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
@@ -44,7 +44,7 @@ librainbrurpg_design_la_LDFLAGS= \
   -version-info $(DESIGN_LIBRARY_VERSION) 	\
   -L$(top_srcdir)/common/.libs 			\
   -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 	\
-  $(shell pkg-config OGRE --libs)
+  $(OGRE_LIBS)
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
