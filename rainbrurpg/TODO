@@ -33,7 +33,7 @@ o [mouse] xIdent
 
 * FlooderTest
 - FlooderTest test packet size (ftSize)
-- FlooderTest test constant time flooding (2ms or 200ms : packet lost?) (ftTime)
+- FlooderTest test constant time flooding (2/200ms : packet lost?) (ftTime)
 
 * Client 
 - MessageBox can be closed with Enter/Return key
@@ -101,10 +101,24 @@ A system that serialize widgets position and configuration
 - RainbruRPG man pages should be renamed rainbrurpg (in lower case)
 - pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 
-===  Changelog ===   (20 items by revision)
+===  Changelog ===   (18 items by revision)
 
 * v 0.0.5-188
-- (2) editor/Makefile.am now uses PGRE_CFLAGS and OGRE_LIBS
+- (16) Changing Copyright date for server/*, ogreGui/*, terminalapi/*, doc/*
+- Switching items by revision from 20 to 18
+- Changing Copyright date for examples/*
+- Changing Copyright date for tests/tapi/*, tests/common/* and tests/*
+- Changing Copyright date for IrrClient/*, maincore/* and editor/*
+- Change some GNU header dates that was in 2006
+- Fix a GNU make warning in design/Makefile.am
+- Fix a warning on filter moc in editor/Makefile.am
+- Fix a GNU make extension warning in server/Makefile.am
+- acinclude.m4: --enable-all enable seraching for CppUnit
+- Cleanup of tests/Makefile.am
+- acinclude.m4 : RB_CONDITIONAL_LINKING_CPPUNIT implementation
+- Added GNET CFLGS and LIBS to tools/ftpclient/
+- Fix a compilation error in editor/
+- editor/Makefile.am now uses OGRE_CFLAGS and OGRE_LIBS
 - server/Makefile.am and tools netflooder now uses GLIB_CFLAGS and GLIB_LIBS
 
 * v 0.0.5-187

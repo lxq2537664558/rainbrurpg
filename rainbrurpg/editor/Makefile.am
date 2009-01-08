@@ -13,8 +13,6 @@ rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\
 			$(OIS_LIBS)			\
 			$(OGRE_LIBS)
 
-OGRE_CFLAGS= -I/usr/local/include/OGRE
-
 INCLUDES = -I$(top_srcdir)/common/ 			\
 	   -I$(top_srcdir)/maincore/ 			\
 	   -I$(top_srcdir)/design/ 			\
@@ -24,7 +22,22 @@ INCLUDES = -I$(top_srcdir)/common/ 			\
 	   $(OIS_CFLAGS)				\
 	   $(OGRE_CFLAGS)
 
-# You have two .cpp files you wrote, myapp.cpp and another.cpp
+MOC_FILES = 		   moc_mainwindow.cpp       \
+		           moc_ogreview.cpp         \
+		           moc_loglistener.cpp      \
+		           moc_tabenvironment.cpp   \
+		           moc_objectstab.cpp       \
+		           moc_staticmeshdialog.cpp \
+		           moc_meshviewer.cpp       \
+		           moc_meshviewerstats.cpp  \
+		           moc_selectioncycle.cpp   \
+		           moc_selectionmanager.cpp \
+		           moc_posordialog.cpp	    \
+			   moc_highlighter.cpp      \
+			   moc_luahighlighter.cpp   \
+			   moc_scripteditor.cpp
+
+
 # Remember to include the name of the resource file with the .cpp extension.
 rainbrurpg_editor_SOURCES = resources.cpp        \
 			    \
@@ -42,24 +55,13 @@ rainbrurpg_editor_SOURCES = resources.cpp        \
 		            posordialog.cpp	\
 			    highlighter.cpp      \
 			    luahighlighter.cpp   \
-			    scripteditor.cpp
+			    scripteditor.cpp	\
+			    \
+			    $(MOC_FILES)
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.
-nodist_rainbrurpg_editor_SOURCES = moc_mainwindow.cpp       \
-		           moc_ogreview.cpp         \
-		           moc_loglistener.cpp      \
-		           moc_tabenvironment.cpp   \
-		           moc_objectstab.cpp       \
-		           moc_staticmeshdialog.cpp \
-		           moc_meshviewer.cpp       \
-		           moc_meshviewerstats.cpp  \
-		           moc_selectioncycle.cpp   \
-		           moc_selectionmanager.cpp \
-		           moc_posordialog.cpp	    \
-			   moc_highlighter.cpp      \
-			   moc_luahighlighter.cpp   \
-			   moc_scripteditor.cpp
+nodist_rainbrurpg_editor_SOURCES = $(MOC_FILES)
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
 moc_%.cpp: %.h
@@ -71,7 +73,7 @@ resources.cpp : resources.qrc #octave-gui.png
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
-CLEANFILES = $(filter moc_%.cpp,$(rainbrurpg_editor_SOURCES)) resources.cpp
+CLEANFILES = $(MOC_FILES) ressources.cpp
 
 
 

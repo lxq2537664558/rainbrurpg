@@ -1,26 +1,30 @@
-# The final program is called "myapp"
+# The final program is called "rainbrurpg-tests"
 bin_PROGRAMS = rainbrurpg-tests
 
-# returned by `pkg-config gnet-2.0 --libs'
-GNET_LIBS = -lpthread 				\
-	    -lgnet-2.0 				\
-	    -lgthread-2.0 			\
-	    -lglib-2.0 				\
-	    -lsigc-2.0				\
-	    -lqttestrunner
-
-RPG_LIB_ADD = -L$(top_srcdir)/common/.libs 	\
-	      -L$(top_srcdir)/terminalapi/.libs
-
-rainbrurpg_tests_LDADD = -lrainbrurpg-common -lrainbrurpg-terminalapi 	\
-		         -lcppunit -lm 					\
+rainbrurpg_tests_LDADD = -L$(top_srcdir)/common/.libs 			\
+	                 -L$(top_srcdir)/terminalapi/.libs		\
+			 -lrainbrurpg-common 				\
+			 -lrainbrurpg-terminalapi 			\
 			 $(GNET_LIBS)					\
-			 $(RPG_LIB_ADD)
+			 $(RPG_LIB_ADD)					\
+			 $(CPPUNIT_LIBS)				\
+			 $(SIGC_LIBS)
 
+# Defines the subdirectories of tests/ that contain individuals tests
+#
+# These directories are relative from rainbrurpg/tests/
+# It is needed because each library's test suite will include his
+# files from these directories
+#
+TESTS_DIRS = -Itapi/		\
+	     -Icommon/
 
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/terminalapi  -Itapi/  \
-	   -Icommon/ $(shell pkg-config gnet-2.0 sigc++-2.0 --cflags) 	\
-	   -I/usr/include/qt3 -I/usr/include/cppunit/ui/qt/
+INCLUDES = -I$(top_srcdir)/common/ 			\
+	   -I$(top_srcdir)/terminalapi/   		\
+	   $(TESTS_DIRS)				\
+	   $(GNET_CFLAGS) 				\
+	   $(CPPUNIT_CFLAGS)				\
+	   $(SIGC_CFLAGS)
 
 rainbrurpg_tests_SOURCES = main.cpp			\
 			   tapitestsuite.cpp		\

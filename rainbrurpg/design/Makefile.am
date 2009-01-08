@@ -11,12 +11,15 @@ h_sources =filetypeguesser.h		\
 	   helpviewer.h			\
 	   filepreview.h
 
+MOC_FILES = moc_helpviewer.cpp		\
+	   moc_filepreview.cpp
+
+
 cc_sources=filetypeguesser.cpp		\
 	   helpviewer.cpp		\
 	   filepreview.cpp		\
 	   \
-	   moc_helpviewer.cpp		\
-	   moc_filepreview.cpp
+	   $(MOC_FILES)
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_DESIGN_NAME)
 library_include_HEADERS = $(h_sources)
@@ -48,4 +51,4 @@ librainbrurpg_design_la_LDFLAGS= \
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
-CLEANFILES = $(filter moc_%.cpp,$(librainbrurpg_design_la_SOURCES=)) resources.cpp
+CLEANFILES = $(MOC_FILES) resources.cpp

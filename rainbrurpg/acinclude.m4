@@ -345,6 +345,9 @@ dnl
 dnl Provides the --enable-all to enable all the 'enable like'
 dnl ./configure script options
 dnl
+dnl If we set this options, we should set 'build_tests' to 'yes' to
+dnl enable CPPUNIT search
+dnl
 AC_DEFUN([RB_OPTION_ALL],
 [
   AC_ARG_ENABLE(all, AC_HELP_STRING([--enable-all],
@@ -360,6 +363,7 @@ AC_DEFUN([RB_OPTION_ALL],
     yes)
       RB_CHECK_LIBSLANG
       all=true
+      build_tests=yes
       AC_MSG_RESULT(yes)
       AC_DEFINE(BUILD_SERVER)
       AC_DEFINE(BUILD_EDITOR)
@@ -576,8 +580,8 @@ AS_IF([test AS_VAR_GET(ac_var) != "no"], [$2], [$3])dnl
 AS_VAR_POPDEF([ac_var])dnl
 ])
 
-dnl RB_CONDITIONNAL_LINKING
-AC_DEFUN([RB_CONDITIONNAL_LINKING_LIB_MAGIC],
+dnl RB_CONDITIONAL_LINKING
+AC_DEFUN([RB_CONDITIONAL_LINKING_LIB_MAGIC],
 [
   # cheking libMagic if we build the server
   RB_CHECK_DEFINED([BUILD_SERVER], [
@@ -869,4 +873,26 @@ AC_DEFUN([RB_CHECK_FREETYPE],
 
   AC_SUBST(FREETYPE_CFLAGS)
   AC_SUBST(FREETYPE_LIBS)
+])
+
+AC_DEFUN([RB_CONDITIONAL_LINKING_CPPUNIT],
+[
+
+  AC_MSG_CHECKING([if we should search for CppUnit])
+
+  case $build_tests in
+    yes)
+      tests=true
+      AC_MSG_RESULT(yes)
+      RB_CHECK_CPPUNIT
+      ;;
+    *)
+      tests=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+])
+
+AC_DEFUN([RB_CHECK_CPPUNIT],[
+  PKG_CHECK_MODULES(CPPUNIT, [cppunit >= 1.12.0])
 ])

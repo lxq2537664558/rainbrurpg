@@ -16,6 +16,22 @@ INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design 	\
 	   $(GLIB_CFLAGS)					\
 	   -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT
 
+MOC_FILES = 		    moc_mainwindow.cpp       	\
+                            moc_serverlog.cpp        	\
+                            moc_logexportdialog.cpp	\
+			    moc_configdialog.cpp	\
+			    moc_technotedialog.cpp	\
+			    moc_clientlist.cpp		\
+			    moc_enetserver.cpp		\
+			    moc_serverthread.cpp	\
+			    moc_objectlist.cpp		\
+			    moc_ftpcontrol.cpp		\
+			    moc_ftptransfer.cpp		\
+			    moc_ftpserver.cpp		\
+			    moc_ftpdataconnection.cpp   \
+			    moc_quarantinelist.cpp           
+
+
 # You have two .cpp files you wrote, myapp.cpp and another.cpp
 # Remember to include the name of the resource file with the .cpp extension.
 rainbrurpg_server_SOURCES = resources.cpp		\
@@ -40,20 +56,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    uniquename.cpp              \
 			    quarantinelist.cpp     	\
 			    \
-			    moc_mainwindow.cpp       	\
-                            moc_serverlog.cpp        	\
-                            moc_logexportdialog.cpp	\
-			    moc_configdialog.cpp	\
-			    moc_technotedialog.cpp	\
-			    moc_clientlist.cpp		\
-			    moc_enetserver.cpp		\
-			    moc_serverthread.cpp	\
-			    moc_objectlist.cpp		\
-			    moc_ftpcontrol.cpp		\
-			    moc_ftptransfer.cpp		\
-			    moc_ftpserver.cpp		\
-			    moc_ftpdataconnection.cpp   \
-			    moc_quarantinelist.cpp           
+			    $(MOC_FILES)
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.
@@ -68,7 +71,7 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 #	resources.qrc myapp.png
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
-moc_%.cpp: %.h
+moc_%.cpp : %.h
 	moc-qt4 $< -o $@
 
 # Adjust this line according to your resources.qrc
@@ -77,7 +80,8 @@ resources.cpp : resources.qrc
 
 # This line ensures that generated moc_*.cpp and resources.cpp files are
 # deleted when we make clean.
-CLEANFILES = $(filter moc_%.cpp, $(rainbrurpg_server_SOURCES)) resources.cpp
+CLEANFILES = 	$(MOC_FILES) 		\
+		resources.cpp
 
 
 

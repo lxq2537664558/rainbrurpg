@@ -1,3 +1,28 @@
+2008-12-30 Jerome Pasquier  <rainbru@free.fr>
+	* design/Makefile.am : fix a GNU make extension warning by creating
+	the MOC_FILES variable on the CLEANFILES rule.
+	
+	* editor/Makefile.am : fix a GNU make extension warning by creating
+	the MOC_FILES variable on the CLEANFILES rule.
+	
+	* server/Makefile.am : fix a GNU make extension warning by creating
+	the MOC_FILES variable on the CLEANFILES rule.
+	
+2008-12-30 Jerome Pasquier  <rainbru@free.fr>
+	* acinclude.m4 (RB_OPTION_ALL) : Passing the --enable-all 
+	argument to the configure script now set the build_tests value
+	to yes to enable the search of CppUnit.
+	
+2008-12-29 Jerome Pasquier  <rainbru@free.fr>
+	* tests/Makefile.am : Using more variables from configure.
+	
+	* acinclude.m4 : RB_CONDITIONAL_LINKING_CPPUNIT implementation.
+	
+	* tools/ftpclient/Makefile.am : Added missing GNET CFLAGS and LIBS.
+	
+	* editor/Makefile.am : Fix a compilation error : was redifining
+	OGRE_CFLAGS.
+	
 2008-12-24 Jerome Pasquier  <rainbru@free.fr>
 	* tools/ftpclient/Makefile.am : now uses GLIB_CFLAGS/GLIB_LIBS 
 	and SIGC_CFLAGS/SIGC_LIBS instead of pkg-config calls.

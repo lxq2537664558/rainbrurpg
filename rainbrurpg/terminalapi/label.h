@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2008 Jerome PASQUIER
+ *  Copyright 2006-2009 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with Foobar; if not, write to the Free Software
+ *  along with RainbruRPG; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  *  02110-1301  USA
  *
