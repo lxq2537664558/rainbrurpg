@@ -55,9 +55,7 @@ rainbrurpg_editor_SOURCES = resources.cpp        \
 		            posordialog.cpp	\
 			    highlighter.cpp      \
 			    luahighlighter.cpp   \
-			    scripteditor.cpp	\
-			    \
-			    $(MOC_FILES)
+			    scripteditor.cpp
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.

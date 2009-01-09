@@ -103,8 +103,16 @@ A system that serialize widgets position and configuration
 
 ===  Changelog ===   (18 items by revision)
 
-* v 0.0.5-188
-- (16) Changing Copyright date for server/*, ogreGui/*, terminalapi/*, doc/*
+* v 0.0.5-189 (08 jan 2009 - )
+- (4) Changing Copyright date for common/*, adminsite/*
+- Fix some Foobar error IrrClient/*.cpp
+- Fix errors in server and editor Makefile.am due to MOC files
+- Fix some Foobar error in IrrClient/*.h
+
+* v 0.0.5-188 (??? - 08 jan 2009)
+- (18) Changing Copyright date for tools/netflooder/*, design/*, client/*
+- Fix some Foobar error in GNU headers
+- Changing Copyright date for server/*, ogreGui/*, terminalapi/*, doc/*
 - Switching items by revision from 20 to 18
 - Changing Copyright date for examples/*
 - Changing Copyright date for tests/tapi/*, tests/common/* and tests/*

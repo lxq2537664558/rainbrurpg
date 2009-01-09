@@ -54,15 +54,11 @@ rainbrurpg_server_SOURCES = resources.cpp		\
 			    transfervisual.cpp		\
 			    ftpdataconnection.cpp	\
 			    uniquename.cpp              \
-			    quarantinelist.cpp     	\
-			    \
-			    $(MOC_FILES)
+			    quarantinelist.cpp
 
 # You have one .h file, it's called myapp.h. Therefore, here I list
 # its mocced name, moc_myapp.cpp.
-#nodist_rainbrurpg_server_SOURCES = moc_mainwindow.cpp       \
-#                                   moc_serverlog.cpp        \
-#                                   moc_logexportdialog.cpp
+nodist_rainbrurpg_server_SOURCES = $(MOC_FILES)
 
 # This is to ensure the myapp.h file is distributed in your myapp-0.1.tar.gz
 # I also have a resources.qrc I need to include. The png is used in myapp.
