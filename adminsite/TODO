@@ -12,11 +12,14 @@ adminsite - The meta server of RainbruRPG. Written in PHP.
 * Remove bonusfile and others
 
 
-=== CHANGELOG ===
+=== CHANGELOG === (4 items by revision)
 The version number is the RainbruRPG's one.
 The revison number is an internal one. Not linked this the RainbruRPG's one.
 
-* v0.0.5-7
+* v0.0.5-8 (09 jan 2008 - ???)
+- Changing GNU header dates
+
+* v0.0.5-7 (??? - 09 jan 2008)
 - Some files individually documentated
 - GNU headers added
 - fix documentation warnings
