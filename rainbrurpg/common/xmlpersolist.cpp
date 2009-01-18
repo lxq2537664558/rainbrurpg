@@ -59,7 +59,9 @@ bool RainbruRPG::Network::xmlPersoList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     LOGW("An error occured while getting xmlPersoList");
-    cout << "Last server response : " << resp << endl;
+    LOGCATS("Server response was : ");
+    LOGCATI(resp);
+    LOGCAT();
     correctlyLoaded=false;
     ret=false;
   }

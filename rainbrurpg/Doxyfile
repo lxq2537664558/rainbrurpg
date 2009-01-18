@@ -15,7 +15,7 @@ ABBREVIATE_BRIEF       =
 ALWAYS_DETAILED_SEC    = NO
 INLINE_INHERITED_MEMB  = YES
 FULL_PATH_NAMES        = YES
-STRIP_FROM_PATH        = /home/mouse/programmation/rainbrurpg
+STRIP_FROM_PATH        = .
 STRIP_FROM_INC_PATH    = 
 SHORT_NAMES            = YES
 JAVADOC_AUTOBRIEF      = YES
@@ -77,8 +77,7 @@ WARN_LOGFILE           = doxygen.log
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/mouse/programmation/rainbrurpg \
-                         /home/mouse/programmation/rainbrurpg/doc/doc.h
+INPUT                  = . doc/doc.h
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.cpp \
 		         *.c \
@@ -113,10 +112,10 @@ EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = moc_* \
                          *~
 EXCLUDE_SYMBOLS        = 
-EXAMPLE_PATH           = /home/mouse/programmation/rainbrurpg/doc/
+EXAMPLE_PATH           = doc/
 EXAMPLE_PATTERNS       = 
 EXAMPLE_RECURSIVE      = NO
-IMAGE_PATH             = /home/mouse/programmation/rainbrurpg/doc/
+IMAGE_PATH             = doc/
 INPUT_FILTER           = 
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO

@@ -24,6 +24,7 @@
   * Defines a class to get a file from curl and pass it to TinyXml
   *
   * Modifications :
+  * - 16 jan 2009 : Adding a constructor initializer for the doc pointer
   * - 29 jul 2007 : getXMLTextFromName is now implemented here
   *
   */

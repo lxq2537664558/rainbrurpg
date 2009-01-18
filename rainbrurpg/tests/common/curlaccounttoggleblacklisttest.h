@@ -24,7 +24,9 @@
   * Implements the unit test for the CurlAccountTogleBlackList class
   *
   * Modifications :
-  * - 27 aug 2008 : Single file documentation
+  * - 12 jan 2009 : testInitialValue and testFinalValue now tests for a 
+  *          non NULL account.
+  * - 27 aug 2008 : Single file documentation.
   *
   */
 
@@ -147,8 +149,14 @@ public:
   void testInitialValue(){
     xmlAccountList xal;
     tAccountListItem *it=xal.getAccount(CLIENT_NAME);
-    CPPUNIT_ASSERT( it->blacklist==false);
-
+    if (it != NULL){
+      CPPUNIT_ASSERT( it->blacklist==false);
+    }
+    else{
+      // We add a unit test we know it will failed to tell
+      // an error occured
+      CPPUNIT_ASSERT( false);
+    }
   }
 
   /** Try to toggle the blacklist status of an account
@@ -170,8 +178,14 @@ public:
   void testFinalValue(){
     xmlAccountList xal;
     tAccountListItem *it=xal.getAccount(CLIENT_NAME);
-    CPPUNIT_ASSERT( it->blacklist==true);
-
+    if (it != NULL){
+      CPPUNIT_ASSERT( it->blacklist==true);
+    }
+    else{
+      // We add a unit test we know it will failed to tell
+      // an error occured
+      CPPUNIT_ASSERT( false);
+    }
   }
 
   /** Delete the added account

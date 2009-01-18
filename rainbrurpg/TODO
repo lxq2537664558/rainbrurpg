@@ -104,7 +104,16 @@ A system that serialize widgets position and configuration
 ===  Changelog ===   (18 items by revision)
 
 * v 0.0.5-189 (08 jan 2009 - )
-- (4) Changing Copyright date for common/*, adminsite/*
+- (11) Fix a segfault when running unit tests
+- (10) Removed a std::cout call in common/
+   xmlbonusfile.cpp, xmlbonusfilelist.cpp, xmlattributelist.cpp,
+   xmlattrbcatlist.cpp, xmlaccountlist.cpp
+- Doxyfile now uses relative paths
+- Removed a std::cout call in common/xmlpersolist.cpp
+- Avoid some segfaults in the curlAccountToggleBlackList unit tests
+- Add some constructor initializer in xmlAccountList
+- Fix some doc/doc.h errors due to an inexisting #endif
+- Changing Copyright date for common/*, adminsite/*
 - Fix some Foobar error IrrClient/*.cpp
 - Fix errors in server and editor Makefile.am due to MOC files
 - Fix some Foobar error in IrrClient/*.h

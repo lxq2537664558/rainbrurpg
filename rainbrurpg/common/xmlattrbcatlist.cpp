@@ -58,7 +58,9 @@ bool RainbruRPG::Network::Ident::xmlAttrbCatList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     LOGW("An error occured while getting xmlAttrbCatList");
-    cout << "Last server response : " << resp << endl;
+    LOGCATS("Server response was : ");
+    LOGCATI(resp);
+    LOGCAT();
     correctlyLoaded=false;
     ret=false;
   }

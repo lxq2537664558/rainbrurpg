@@ -34,7 +34,10 @@
   * call getServerList().
   *
   */
-RainbruRPG::Network::Ident::xmlServerList::xmlServerList(){
+RainbruRPG::Network::Ident::xmlServerList::xmlServerList():
+  doc(NULL),
+  root(NULL)
+{
   refresh();
 }
 
@@ -65,7 +68,7 @@ RainbruRPG::Network::Ident::xmlServerList::~xmlServerList(){
   *
   * It creates a new instance of tServerList and returns it.
   *
-  * \return The server list
+  * \return The server list or NULL if an error occured
   *
   */
 RainbruRPG::Network::Ident::tServerList* 
@@ -75,31 +78,37 @@ RainbruRPG::Network::Ident::xmlServerList::getServerList(){
 
   tServerList* pl= new tServerList();
 
-  TiXmlHandle docHandle( doc );
-  TiXmlElement* child = docHandle.FirstChild( "ServerList" )
-                                  .FirstChild( "Server" ).Element();
+  if (doc != NULL){
+    TiXmlHandle docHandle( doc );
+    TiXmlHandle sl_handle = docHandle.FirstChild( "ServerList" );
 
-  for( child; child; child=child->NextSiblingElement() ){
+    TiXmlElement* child = sl_handle.FirstChild( "Server" ).Element();
 
-    ServerListItem *it=new ServerListItem();
+    for( child; child; child=child->NextSiblingElement() ){
 
-    // Get the creation timestamp
-    xmlTimestamp xts;
-    it->setCreationDate(xts.getCTimeS("creation", child));
-    it->setName(getXMLTextFromName(child, "Name"));
-    it->setUniqueName(getXMLTextFromName(child, "UniqueName"));
-    it->setDescription(getXMLTextFromName(child, "Desc"));
-    it->setIpAddress(getXMLTextFromName(child, "Ip"));
-    it->setUdpPort(getXMLTextFromName(child, "Port"));
-    it->setFtpPort(getXMLTextFromName(child, "Ftp"));
-    it->setTechNote(getXMLTextFromName(child, "TechNote"));
-    it->setMaxClients(getXMLTextFromName(child, "MaxClients"));
-    it->setActClients(getXMLTextFromName(child, "ActClients"));
-    it->setType(getXMLTextFromName(child, "Type"));
+      ServerListItem *it=new ServerListItem();
 
-    pl->push_back(it);
+      // Get the creation timestamp
+      xmlTimestamp xts;
+      it->setCreationDate(xts.getCTimeS("creation", child));
+      it->setName(getXMLTextFromName(child, "Name"));
+      it->setUniqueName(getXMLTextFromName(child, "UniqueName"));
+      it->setDescription(getXMLTextFromName(child, "Desc"));
+      it->setIpAddress(getXMLTextFromName(child, "Ip"));
+      it->setUdpPort(getXMLTextFromName(child, "Port"));
+      it->setFtpPort(getXMLTextFromName(child, "Ftp"));
+      it->setTechNote(getXMLTextFromName(child, "TechNote"));
+      it->setMaxClients(getXMLTextFromName(child, "MaxClients"));
+      it->setActClients(getXMLTextFromName(child, "ActClients"));
+      it->setType(getXMLTextFromName(child, "Type"));
+
+      pl->push_back(it);
+    }
+    return pl;
   }
-  return pl;
+  else{
+    return NULL;
+  }
 }
 
 /** Test if a server name is already in use

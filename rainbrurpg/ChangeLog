@@ -1,3 +1,38 @@
+2009-01-16 Jerome Pasquier  <rainbru@free.fr>
+	* common/curlfiletoxml.cpp (CurlFileToXml) : Added a constructor
+	initializer for the doc pointer to avoid an instance creation with 
+	non-NULL value.
+	
+2009-01-13 Jerome Pasquier  <rainbru@free.fr>
+	* common/xmlaccountlist.cpp (refresh) : A std::cout call replaced 
+	by a LOGCAT* one to avoid std out print when unit test.
+	* common/xmlattrbcatlist.cpp (refresh) : A std::cout call replaced 
+	by a LOGCAT* one to avoid std out print when unit test.
+	* common/xmlattributelist.cpp (refresh) : A std::cout call replaced 
+	by a LOGCAT* one to avoid std out print when unit test.
+	* common/xmlbonusfilelist.cpp (refresh) : A std::cout call replaced 
+	by a LOGCAT* one to avoid std out print when unit test.
+	* common/xmlbonusfile.cpp (refresh) : A std::cout call replaced by a
+	LOGCAT* one to avoid std out print when unit test.
+
+2009-01-13 Jerome Pasquier  <rainbru@free.fr>
+	* common/xmlpersolist.cpp (refresh) : A cout call replaced by a
+	LOGCAT* one to avoid std out print when unit test.
+	
+2009-01-11 Jerome Pasquier  <rainbru@free.fr>
+	* common/xmlserverlist.cpp (getServerList) : Now returns NULL if
+	doc is NULL (an error occured).
+	* common/xmlserverlist.cpp (xmlAccountList) : Add some initializers
+	to avoid segfault due to non-NULL values.
+
+	* tests/common/curlaccounttogglebacklisttest.h (testFinalValue) :
+	Now test if the returned item is not NULL to avoid a segfault.
+	* tests/common/curlaccounttogglebacklisttest.h (testInitialValue) :
+	Now test if the returned item is not NULL to avoid a segfault.
+	
+	* common/xmlaccountlist.cpp (xmlAccountList) : Add some initializers
+	to avoid segfault due to non-NULL values.
+	
 2009-01-08 Jerome Pasquier  <rainbru@free.fr>
 	* editor/Makefile.am : fix an error due to MOC files, linked twice
 	* server/Makefile.am : fix an error due to MOC files, linked twice

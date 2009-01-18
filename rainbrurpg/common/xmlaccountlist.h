@@ -24,6 +24,8 @@
   * Declares a class used to read XML accounts file
   *
   * Modifications :
+  * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
+  * - 12 jan 2009 : Add some constructor initializers to avoid segfault
   * - 11 aug 2008 : Single file documentation
   * - 03 mar 2007 : Fix a blacklist status error
   * - 02 mar 2007 : renamed xmlaccountlist (was xmlplayerlist before)

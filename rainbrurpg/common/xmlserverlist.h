@@ -24,6 +24,7 @@
   * Declares a class that read the server list
   *
   * Modifications :
+  * - 12 jan 2009 : Added contructor initializers to avoid segfault
   * - 11 aug 2008 : Single file documentation
   * - 28 jun 2007 : Adding the 'uniqueName' and 'type' keys
   * - 29 may 2007 : Adding the 'ftp' key

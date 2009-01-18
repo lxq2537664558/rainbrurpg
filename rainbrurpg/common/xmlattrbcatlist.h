@@ -24,6 +24,7 @@
   * Declares a class used to read the XML file of the attribute categories list
   *
   * Modifications :
+  * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
   * - 11 aug 2008 : Single file documentation
   * - 01 apr 2007 : Documentation improvement
   * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>

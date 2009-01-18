@@ -31,7 +31,9 @@
 /** The default constructor
   *
   */
-RainbruRPG::Network::Ident::CurlFileToXml::CurlFileToXml(){
+RainbruRPG::Network::Ident::CurlFileToXml::CurlFileToXml():
+  doc(NULL)
+{
 
 }
 
@@ -86,7 +88,7 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::controlAfter (){
   *
   */
 TiXmlDocument* RainbruRPG::Network::Ident::CurlFileToXml::getXmlDocument(){
-  if (!doc)
+  if (doc == NULL)
     LOGW("Returning a NULL xml document");
 
   return doc;

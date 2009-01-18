@@ -26,15 +26,16 @@
   * This header does not contain code. It is only documentation for
   * namespaces and other members that cannot be documented in other places.
   *
-  * \note Some macro from \c fonfig.h are documented here because they
+  * \note Some macro from \c config.h are documented here because they
   *       use conditionnal compilation to avoid doxygen warnings. That's why
   *       we need to include the config.h file.
   *
   * Modifications :
-  * - 03 dec 2008 : Fix some Doxygen warning when configure never complete
+  * - 09 jan 2008 : Add some precisions on regression tests 'line' value.
+  * - 03 dec 2008 : Fix some Doxygen warning when configure never complete.
   * - 08 oct 2008 : Cross compilation section moved to doc_crosscompil.h
-  * - 07 oct 2008 : Cross compilation section added
-  * - 13 aug 2008 : Single file documentation
+  * - 07 oct 2008 : Cross compilation section added.
+  * - 13 aug 2008 : Single file documentation.
   *
   */
 
@@ -210,12 +211,16 @@
 
 /** \page reg_test Regression test
   *
-  * The line count is 
-  * generated using David A Wheeler's 'SLOCCount'.
+  * The \e line count is 
+  * generated using David A Wheeler's 'SLOCCount'. This value must be
+  * computed on RainbruRPG and adminsite after a 'make distclean' command.
   *
-  * The Mem column is the amount of memory used by the application on
-  * Win32 system with the OpenGL renderer. Sys is set to OK if the
-  * application can be compiles, linked and run on the given OS.
+  * The \e mem column is the amount of memory used by the application on
+  * Win32 system with the OpenGL renderer. 
+  * 
+  * The \e sys is set to OK if the
+  * application can be run on the given OS. The compilation can be
+  * made on another system (cross-compilation).
   *
   * The column called \e cc represents the Console's Count command result
   *
@@ -1178,7 +1183,7 @@
   * Define to the version of this package.
   *
   */
-#ifdef // PACKAGE_VERSION
+#endif // PACKAGE_VERSION
 
 #ifdef RAINBRU_RPG_DEBUG
 /** \def RAINBRU_RPG_DEBUG

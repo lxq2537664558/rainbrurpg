@@ -30,7 +30,11 @@
 /** The default constructor
   *
   */
-RainbruRPG::Network::Ident::xmlAccountList::xmlAccountList(){
+RainbruRPG::Network::Ident::xmlAccountList::xmlAccountList():
+  doc(NULL),
+  root(NULL),
+  correctlyLoaded(false)
+{
   LOGI("Creation xmlAccountList");
   refresh();
 
@@ -57,7 +61,9 @@ bool RainbruRPG::Network::Ident::xmlAccountList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     LOGE("An error occured while getting xmlAccountList");
-    cout << "Last server response : " << resp << endl;
+    LOGCATS("Server response was : ");
+    LOGCATI(resp);
+    LOGCAT();
     correctlyLoaded=false;
     ret=false;
   }

@@ -63,7 +63,9 @@ bool RainbruRPG::Network::Ident::xmlBonusFileList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     LOGE("An error occured while getting xmlBonusFile");
-    cout << "Last server response : " << resp << endl;
+    LOGCATS("Server response was : ");
+    LOGCATI(resp);
+    LOGCAT();
     correctlyLoaded=false;
     ret=false;
   }
