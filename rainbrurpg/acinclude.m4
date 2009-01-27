@@ -176,17 +176,14 @@ dnl
 dnl
 AC_DEFUN([RB_CHECK_LIBCURL],
 [
-dnl  AC_CHECK_LIB(curl, main, [], [
-dnl    echo "Error! You need to have libcurl installed."
-dnl    exit -1
-dnl  ])
-dnl  AC_CHECK_HEADER([curl/curl.h], [], [
-dnl    echo "Error! Cannot find the libcurl headers."
-dnl    exit -1
-dnl  ])
-  PKG_CHECK_MODULES(libcurl, [libcurl >= 7.15])	
-
-
+  if test $rb_cross_compil_host == "win32"
+  then	
+    echo "Adding CURL flags for "mingw32msvc""
+    libcurl_CFLAGS="-I$rb_cross_compil_prefix/include/curl"
+    libcurl_LIBS="-lcurl"
+  else
+    PKG_CHECK_MODULES(libcurl, [libcurl >= 7.15])	
+  fi  
 ])
 
 dnl Checks for the SLang lib and one of its header

@@ -104,8 +104,9 @@ A system that serialize widgets position and configuration
 ===  Changelog ===   (18 items by revision)
 
 * v 0.0.5-189 (08 jan 2009 - )
-- (11) Fix a segfault when running unit tests
-- (10) Removed a std::cout call in common/
+- (12) RB_CHECK_LIBCURL now support cross-compilation
+- Fix a segfault when running unit tests
+- Removed a std::cout call in common/
    xmlbonusfile.cpp, xmlbonusfilelist.cpp, xmlattributelist.cpp,
    xmlattrbcatlist.cpp, xmlaccountlist.cpp
 - Doxyfile now uses relative paths
