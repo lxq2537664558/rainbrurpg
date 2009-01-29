@@ -1,5 +1,6 @@
 dnl
 dnl Modifications :
+dnl - 29 dec 2008 : Using $DLL_EXT for more macros
 dnl - 03 dec 2008 : 
 dnl         - RB_CHECK_FREETYPE macro now check freetype-config presence
 dnl         - RB_CHECK_LIBFOX macro now check fox-config presence
@@ -800,7 +801,11 @@ dnl        /usr/cross/lib
 dnl
 dnl        $2 The suffix added to all library flags when cross-compiling
 dnl        changing lname to lname.dll if suffix is '.dll' by example. 
-dnl        You need to add the dot
+dnl        You need to add the dot of the extension.
+dnl
+dnl Warning : using '.dll' as extension causes many undefined reference
+dnl           when linking the executable. The undefined reference seems
+dnl           to come from the stdc++ library (string and containers).
 dnl
 AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
 [
@@ -811,7 +816,7 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
     echo "win32. Prefix is $1"
     rb_cross_compil_host=win32
     rb_cross_compil_prefix=$1
-    LDFLAGS="$LDFLAGS -L/usr/cross/lib"
+    LDFLAGS="$LDFLAGS -lstdc++ -L/usr/cross/lib"
     DLL_EXT="$2"
   else  
     echo "no"
