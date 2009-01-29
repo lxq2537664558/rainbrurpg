@@ -100,7 +100,7 @@ AM_SANITY_CHECK
 AC_LANG_CPLUSPLUS
 
 dnl Handles cross compil with prefix
-RB_HANDLE_CROSS_COMPIL(/usr/cross, "")
+RB_HANDLE_CROSS_COMPIL("/usr/cross", ".dll")
 
 dnl Checks for libraries and headers
 RB_CHECK_FREETYPE(9.18)

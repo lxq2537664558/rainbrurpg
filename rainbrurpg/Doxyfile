@@ -96,7 +96,7 @@ EXCLUDE                = include/				\
 			 common/tinystr.cpp 			\
 			 common/tinystr.h 			\
 			 common/tinyxml.cpp 			\
-			 common/tinyxml.h 			\		
+			 common/tinyxml.h 			\	 
 			 common/tinyxmlerror.cpp 		\
 			 common/tinyxmlparser.cpp 		\
 			 common/EasyBMP_BMP.h 			\

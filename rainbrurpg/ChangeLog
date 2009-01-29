@@ -1,3 +1,9 @@
+2009-01-28 Carine Chum <carine.chum@free.fr>
+	* acinclude.m4 : Added support for the $DLL_EXT variable to
+	some cross-compilation aware macros.
+	* configure.in : Change the $DLL_EXT variable value from an empty
+	string to 'dll'.
+
 2009-01-27 Jerome Pasquier  <rainbru@free.fr>
 	* acinclude.m4 (RB_CHECK_LIBCURL) : Added support for
 	cross-compilation to win32.

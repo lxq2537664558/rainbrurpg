@@ -137,7 +137,7 @@ AC_DEFUN([RB_CHECK_LIBFOX],
   then	
     echo "Adding FOX flags for "mingw32msvc""
     FOX_CFLAGS="-I$rb_cross_compil_prefix/include/FOX-1.6"
-    FOX_LIBS="-lFOX-1.6"
+    FOX_LIBS="-lFOX-1.6$DLL_EXT"
   else
     dnl Get the correct executable
     AC_PATH_TOOL(FOX_CONFIG, fox-config, 'NOT_FOUND')
@@ -180,7 +180,7 @@ AC_DEFUN([RB_CHECK_LIBCURL],
   then	
     echo "Adding CURL flags for "mingw32msvc""
     libcurl_CFLAGS="-I$rb_cross_compil_prefix/include/curl"
-    libcurl_LIBS="-lcurl"
+    libcurl_LIBS="-lcurl$DLL_EXT"
   else
     PKG_CHECK_MODULES(libcurl, [libcurl >= 7.15])	
   fi  
