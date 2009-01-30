@@ -2,6 +2,11 @@ RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
 -> Libraries versionning in doc/libVersionning.html and configure.in
 
+* Client segfault
+- when trying to connect : 
+   The QuadRenderer object is spurious, its state is 'none' and its
+   viewport poiner is devalidate.
+
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 - Fixing client executable size (310Mo) (see and update doc_cross_compil)
@@ -101,10 +106,20 @@ A system that serialize widgets position and configuration
 - RainbruRPG man pages should be renamed rainbrurpg (in lower case)
 - pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 
-===  Changelog ===   (18 items by revision)
+===  Changelog ===   
+   18 items by revision
+   Please update version and revision in configure.in
 
-* v 0.0.5-189 (08 jan 2009 - )
-- (12) RB_CHECK_LIBCURL now support cross-compilation
+* v 0.0.5-190 (30 jan 2009 - ???)
+
+* v 0.0.5-189 (08 jan 2009 - 30 jan 2009)
+- Updated documentation for bug26
+- QuadRenderer state implemented
+- Removed an injectMouse call in gsMenuBase to prevent a segfault
+- Added an assert in bggui::handleWindowsEvents for a segfault
+- Added an assertion in GUI::getMousePointer()
+- Trying to avoid a segfault in ogreGui/MousePointer but failed
+- RB_CHECK_LIBCURL now support cross-compilation
 - Fix a segfault when running unit tests
 - Removed a std::cout call in common/
    xmlbonusfile.cpp, xmlbonusfilelist.cpp, xmlattributelist.cpp,
@@ -118,74 +133,4 @@ A system that serialize widgets position and configuration
 - Fix some Foobar error IrrClient/*.cpp
 - Fix errors in server and editor Makefile.am due to MOC files
 - Fix some Foobar error in IrrClient/*.h
-
-* v 0.0.5-188 (??? - 08 jan 2009)
-- (18) Changing Copyright date for tools/netflooder/*, design/*, client/*
-- Fix some Foobar error in GNU headers
-- Changing Copyright date for server/*, ogreGui/*, terminalapi/*, doc/*
-- Switching items by revision from 20 to 18
-- Changing Copyright date for examples/*
-- Changing Copyright date for tests/tapi/*, tests/common/* and tests/*
-- Changing Copyright date for IrrClient/*, maincore/* and editor/*
-- Change some GNU header dates that was in 2006
-- Fix a GNU make warning in design/Makefile.am
-- Fix a warning on filter moc in editor/Makefile.am
-- Fix a GNU make extension warning in server/Makefile.am
-- acinclude.m4: --enable-all enable seraching for CppUnit
-- Cleanup of tests/Makefile.am
-- acinclude.m4 : RB_CONDITIONAL_LINKING_CPPUNIT implementation
-- Added GNET CFLGS and LIBS to tools/ftpclient/
-- Fix a compilation error in editor/
-- editor/Makefile.am now uses OGRE_CFLAGS and OGRE_LIBS
-- server/Makefile.am and tools netflooder now uses GLIB_CFLAGS and GLIB_LIBS
-
-* v 0.0.5-187
-- design/Makefile.am : now use OGRE_LIBS and OGRE_CFLAGS (was a shell call)
-- common/Makefile.am : Now uses FOX_LIBS instead of a shell call
-- acinclude.m4 : fix a bug in RB_CHECK_LIBFOX
-- Some files uses ui_ptr to cast from pointer to unsigned int
-   to avoid 'loses precision' compilation error.
-- Added ui_ptr in common/ptypes
-- Added common/ptypes
-- BugReport value now is sourceforge's mail adress
-- Fix some Doxygen warning when configure never completed
-   PACKAGE_BUGREPORT, PACKAGE, HAVE_UTIME_H, HAVE_UNISTD_H,
-   HAVE_TIME_H, HAVE_SYS_TYPES_H, HAVE_SYS_TIME_H, HAVE_SYS_STAT_H
-   HAVE_SYS_PARAM_H, HAVE_STRUCT_UTIMBUF, HAVE_STRING_H
-   HAVE_STRINGS_H, HAVE_STDLIB_H, HAVE_STDINT_H, HAVE_MEMORY_H
-   HAVE_LOCALE_H, HAVE_FCNTL_H, HAVE_DIRENT_H, HAVE_ALLOCA
-   BUILD_RELEASE
-- Change configure.in's AC_INIT call to define BUGREPORT
-- Fix some Doxygen warning when configure never complete
-   TIME_WITH_SYS_TIME, USER_INSTALL_PREFIX, VERSION, STDC_HEADERS,
-   PACKAGE_VERSION, PACKAGE_TARNAME
-- Fix many Doxygen warning (by setting SHORT_NAMES to YES)
-- acinclude.m4 RB_CHECK_LIBFOX now check for fox-config tool
-- acinclude.m4 RB_CHECK_FREETYPE now check for freetype-config tool
-- Xident Account panel is read only and the selection is whole row only
-- Close bug #25
-- Detail page for Bug #27
-- HTML validation of homepage
-
-* v 0.0.5-186
-- Made a details documentation page for Bug26
-- Modify create_dll.sh to use g++ instead of dllwrap
-- GameEngine do not use anymore GlobalUri::getShareFile() on win32
-- Define DLL_EXT to easily change all dlls extension in -l flags
-- Fix a problem of macro redefinition in maincore/ogreimport.h
-- Highly improved Makefiles for cross-compilation handling
-- Fix a bitset to string conversion in stringconv.cpp
-- Improvment of the RB_CHECK_LIBFOX of the acinclude.m4 script
-- maincore does not depends anymore on ogreGui
-- the ogreGui/GUI class become a Singleton
-- common/make_dll.sh removed. Now its a Makefile.am rule.
-- create_dll.sh and common/make_dll.sh scripts
-- Fix many Rectangle ambiguous reference in OgreGui
-- Removed cross-compilation hacks on configure.in and Makefile(s).am
-- Documentation related page about win32 cross compilation
-- Now using Ogre 1.4.9 (Debian package) instead of Ogre 1.4.3
-- Fix some ogreimport.h errors
-- Slang libraries automake check only if needed
-- Adds an --enable-terminal-api configure script option
-- cross-compil : Fix a compil error for common library
 

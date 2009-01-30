@@ -71,7 +71,8 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
   mAlphaNoGhost(0.0f),
   mDrawingDevList(NULL),
   mIsGhostEnabled(false),
-  mBlendMode(QBM_UNSET)
+  mBlendMode(QBM_UNSET),
+  mState(QRS_UNSET)
 {
   assert(vp && "Cannot create QuadRenderer with NULL viewport");
   assert(rs && "Cannot create QuadRenderer with NULL RenderSystem");
@@ -308,21 +309,28 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
   assert(mSceneManager && "Ogre's SceneManager is a NULL object");
   if (mViewport == NULL){
+    LOGW("ViewPort was NULL. Trying to get it from GameEngine");
+    LOGCATS("QuadRenderer is in '");
+    LOGCATS(stateToString(mState).c_str());
+    LOGCATS("' state");
+    LOGCAT();
     mViewport = GameEngine::getSingleton().getViewport();
     assert(mViewport && "Ogre's ViewPort is a NULL object");
   }
 
-  mViewport=mSceneManager->getCurrentViewport();
+  mState = QRS_BEGIN;
+
+  //  mViewport=mSceneManager->getCurrentViewport();
   winWidth=mViewport->getActualWidth();
   winHeight=mViewport->getActualHeight();
 
+  mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setProjectionMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setViewMatrix( Ogre::Matrix4::IDENTITY );
   mRenderSystem->_setTextureUnitFiltering( 0, Ogre::FO_LINEAR, Ogre::FO_LINEAR, 
 					   Ogre::FO_NONE );
 
-  mRenderSystem->_setViewport( mViewport );
   mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
 }
 
@@ -330,6 +338,7 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::end(){
+  mState = QRS_END;
   mRenderSystem->setScissorTest( false );
 }
 
@@ -426,6 +435,8 @@ void RainbruRPG::OgreGui::QuadRenderer::setAlpha(float a){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::reset(void){
+  mState = QRS_RESET;
+
   useScissor=false;
   usedTexture.setNull();
 
@@ -1325,5 +1336,27 @@ blendModeToString(tQuadRendererBlendMode vMode){
   case QBM_INVERT:       return "QBM_INVERT";
   case QBM_ALPHA:        return "QBM_ALPHA";
   case QBM_GLOBAL:       return "QBM_GLOBAL";
+  }
+}
+
+/** Get a human-readable string from a state
+  *
+  * This is mainly a debugging function used by the \ref begin()
+  * function to produce logger output.
+  *
+  * \param vState The state
+  *
+  * \return A human readable string
+  *
+  */
+std::string RainbruRPG::OgreGui::QuadRenderer::
+stateToString(const tQuadRendererState vState){
+  // Do not return a const& because the string is temporary
+  switch (vState){
+  case QRS_UNSET:    return "unset";
+  case QRS_RESET:    return "reset";
+  case QRS_BEGIN:    return "begin";
+  case QRS_END:      return "end";
+  default:           return "none";
   }
 }

@@ -193,6 +193,7 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
 bool BetaGUI::GUI::handleWindowsEvents(void){
   WindowListReverseIterator iter;
   for( iter=windowList.rbegin(); iter!=windowList.rend(); iter++){
+    assert((*iter) && "A windowList item was NULL");
     if((*iter)->check( mMouseX, mMouseY, mMouseEvent )){
       deactivateAllOtherWindow((*iter));
       if (mMouseEvent.isLeftMouseButtonPressed()){
@@ -464,6 +465,7 @@ void BetaGUI::GUI::draw(){
   *
   */
 void BetaGUI::GUI::drawBeforeOverlay(){
+  assert(mQuadRenderer && "QuadRenderer pointer is NULL");
   mQuadRenderer->begin();
 
   list<Window*>::iterator iter;
@@ -539,7 +541,8 @@ void BetaGUI::GUI::deactivateAllOtherWindow(Window* win){
   *
   */
 MousePointer* BetaGUI::GUI::getMousePointer(void){
-  return mousePointer;
+  assert(mousePointer&&"GUI object will return a NULL mouse pointer");
+  return this->mousePointer;
 }
 
 /** Set the current focused widget

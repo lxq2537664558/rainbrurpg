@@ -233,7 +233,7 @@ setPosition(unsigned int x, unsigned int y){
   *     \ref RainbruRPG::OgreGui::tMousePointerState "tMousePointerState"
   *
   */
-void RainbruRPG::OgreGui::MousePointer::setState(tMousePointerState s){
+void RainbruRPG::OgreGui::MousePointer::setState(const tMousePointerState s){
   mState=s;
 }
 

@@ -24,6 +24,7 @@
   * Declares a class that handle mouse pointer states
   *
   * Modifications :
+  * - 28 jan 2009 : setState parameter is now a constant
   * - 26 aug 2008 : Single file documentation
   * - 12 jan 2007 : starting implementation
   *         
@@ -57,7 +58,7 @@ namespace RainbruRPG{
       *
       */
     typedef enum{
-      MPS_ARROW  =0,      //!< The normal state
+      MPS_ARROW  = 1,     //!< The normal state
       MPS_RESIZE,         //!< We're resizing a window
       MPS_MOVE,           //!< We're moving a window
       MPS_TEXT,           //!< We're about to edit text
@@ -94,7 +95,7 @@ namespace RainbruRPG{
 
       void setPosition(unsigned int, unsigned int);
 
-      void setState(tMousePointerState);
+      void setState(const tMousePointerState);
       tMousePointerState getState(void) const;
 
     private:

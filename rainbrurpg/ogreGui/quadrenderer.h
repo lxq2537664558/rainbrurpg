@@ -27,6 +27,7 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
+  * - 30 jan 2008 : State and stateToString() implementation
   * - 23 sep 2008 : \ref RainbruRPG::OgreGui::QuadRenderer::isGhostEnabled
   *                 "isGhostEnabled()" implementation
   * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
@@ -112,8 +113,18 @@ namespace RainbruRPG {
       QBM_DISCARDALPHA, //!< Do not use source alpha channel
       QBM_INVERT,       //!< Invert the source alpha channel
       QBM_ALPHA,        //!< Use source alpha channel
-      QBM_GLOBAL,       //!< Use global alpha value
+      QBM_GLOBAL        //!< Use global alpha value
     }tQuadRendererBlendMode;
+
+    /** Defines the actual state of the QuadRenderer
+      *
+      */
+    typedef enum{
+      QRS_UNSET,        //!< The last operation was not set
+      QRS_RESET,        //!< The last operation was reset()
+      QRS_BEGIN,        //!< The last operation was begin()
+      QRS_END           //!< The last operation was end();
+    }tQuadRendererState;
    
     /** A class drawing Ogre primitive
       *
@@ -280,10 +291,9 @@ namespace RainbruRPG {
 
       const Ogre::Rectangle& translateRectangle(Ogre::Rectangle&, float, float)const;
       void renderGlyphs(void);
-
       void getFinalPoint(const Vector3&, Vector3&) const;
-
       void renderLines(void);
+      std::string stateToString(const tQuadRendererState);
 
     private:
       /** The current Ogre scene manager
@@ -452,7 +462,9 @@ namespace RainbruRPG {
       
       /** The current blend mode */
       tQuadRendererBlendMode mBlendMode;
-
+      
+      /// The QuadRenderer state
+      tQuadRendererState mState;
     };
   }
 }

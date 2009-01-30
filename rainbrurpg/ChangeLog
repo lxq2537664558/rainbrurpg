@@ -1,12 +1,34 @@
+2009-01-30 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/quadrenderer.cpp (stateToString) : implemented.
+	
+	* ogreGui/quadrenderer.cpp (reser) : Set mState to QRS_RESET.
+	* ogreGui/quadrenderer.cpp (end) : Set mState to QRS_END.
+	* ogreGui/quadrenderer.cpp (begin) : Set mState to QRS_BEGIN.
+	* ogreGui/quadrenderer.cpp (QuadRenderer) : Constructor set
+	mState to QRS_UNSET.
+	* ogreGui/quadrenderer.h : tQuadRendererState enumeration and
+	mState class member added.
+	
+2009-01-29 Jerome Pasquier  <rainbru@free.fr>
+	* client/gsmenubase.cpp (mousePressed) : Trying to remove
+	the injectMouse() call to prevent the same segfault : works but
+	another segfault occurs.
+	* ogreGui/bgbui.cpp (handleWindowsEvents) : Added an assertion
+	to try to prevent a segfault but failed.
+	
 2009-01-29 Carine Chum <carine.chum@free.fr>
 	* acinclude.m4 : Changing some cross-compil stuff to prevent
 	undefined reference when linking the executable.
 	
+2009-01-28 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/mousepointer.cpp (setState) : Setting the parameter a
+	const reference to try to avoid segfault but failed.
+
 2009-01-28 Carine Chum <carine.chum@free.fr>
 	* acinclude.m4 : Added support for the $DLL_EXT variable to
 	some cross-compilation aware macros.
 	* configure.in : Change the $DLL_EXT variable value from an empty
-	string to 'dll'.
+	string to '.dll'.
 
 2009-01-27 Jerome Pasquier  <rainbru@free.fr>
 	* acinclude.m4 (RB_CHECK_LIBCURL) : Added support for

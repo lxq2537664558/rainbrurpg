@@ -24,6 +24,8 @@
   * Declares the base class for all menu game state
   *
   * Modifications :
+  * - 29 jan 2009 : Remove an injectMouse() call in mousePressed() to
+  *                 prevent a segfault.
   * - 16 aug 2008 : Single file documentation
   * - 02 jan 2008 : Dynamic menu conditionnal compilation
   * - 18 nov 2007 : Now using OgreGui::StaticImage for menu background

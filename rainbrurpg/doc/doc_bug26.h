@@ -27,6 +27,7 @@
   * a bug.
   *
   * Modifications :
+  * - 30 jan 2009 : Updated
   * - 01 nov 2008 : Starting implementation
   *
   */
@@ -44,6 +45,23 @@
   * In the connection Window (gsConnection) simply enter wrong connection
   * values (username and password) and click on the connect button.
   *
+  * \subsection bug_26_30jan2009 30 jan 2009 update
+  *
+  * I implemented the QuadRenderer's state mechanism and added a log
+  * when \ref RainbruRPG::OgreGui::QuadRenderer::begin() QuadRenderer::begin()
+  * is started with a NULL viewport.
+  * When this viewport is NULL, we log the QuadRenderer's state, 
+  * here is the ouput log :
+  * <pre>
+  *  [quadrenderer.cpp:312]	WW ViewPort was NULL. Trying to get it from GameEngine
+  *  [quadrenderer.cpp:316]	-- QuadRenderer is in 'none' state
+  * </pre>
+  * Then a segfault occurs.
+  *
+  * Well, I guess or I know that :
+  * - The Viewport pointer we got from GameEngine is devalidate;
+  * - The 'none' state should never happen.
+  *
   * \section bug26_history
   *
   * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
@@ -54,6 +72,10 @@
   *   <TR class="bugList1">
   *     <TD>01 nov 2008</TD>
   *     <TD>Created this detail page</TD>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>30 jan 2008</TD>
+  *     <TD>Updated. QuadRenderer's state improvment</TD>
   *   </TR>
   * </TABLE>
   *

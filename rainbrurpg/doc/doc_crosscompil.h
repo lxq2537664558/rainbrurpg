@@ -26,7 +26,7 @@
   * This header does not contain code. It is only documentation for
   * namespaces and other members that cannot be documented in other places.
   *
-  * \note Some macro from \c fonfig.h are documented here because they
+  * \note Some macro from \c config.h are documented here because they
   *       use conditionnal compilation to avoid doxygen warnings. That's why
   *       we need to include the config.h file.
   *

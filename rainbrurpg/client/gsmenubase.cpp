@@ -424,7 +424,11 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   mouseX=evt.state.X.abs;
   mouseY=evt.state.Y.abs;
 
-  GUI::getSingleton().injectMouse(mouseX, mouseY);
+  /* v0.0.5-189 : 
+   * I removed this call because a segfault occurs here.
+   * The segfault occured in MousePointer::setState().
+   */
+  //  GUI::getSingleton().injectMouse(mouseX, mouseY);
 
 
   return true;
