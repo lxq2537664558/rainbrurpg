@@ -53,30 +53,44 @@ RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
 
 /** The QueueStarted listener 
   *
-  * \param vQueueGroupId The render queue group currently drawn
-  * \param vInvocation, vRepeatThisInvocation not used parameters
+  * \param vQueueGroupId      The render queue group currently drawn
+  * \param vInvocation        The name of the invocation which is causing this 
+  *                           to be called
+  * \param skipThisInvocation A boolean passed by reference which is by 
+  *                           default set to false. If the event sets this 
+  *                           to true, the queue will be skipped and not 
+  *                           rendered. Note that in this case the 
+  *                           renderQueueEnded event will not be raised 
+  *                           for this queue group. 
   *
   */
 void RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
 renderQueueStarted (uint8 vQueueGroupId, const String& vInvocation, 
-		    bool& vRepeatThisInvocation){
+		    bool& skipThisInvocation){
 
   if ( vQueueGroupId == mQueue ){
     gm->drawBeforeOverlay();
   }
+  
 }
 
 /** The QueueEnded listener
   *
   * Call draw() function  of gm.
   *
-  * \param vQueueGroupId The render queue group currently drawn
-  * \param vInvocation, vRepeatThisInvocation not used parameters
+  * \param vQueueGroupId       The render queue group currently drawn
+  * \param vInvocation         The name of the invocation which is causing 
+  *                            this to be called
+  * \param repeatThisInvocation A boolean passed by reference which is by 
+  *                             default set to false. If the event sets this 
+  *                             to true, this queue will be repeated and the
+  *                             RenderQueueStarted and RenderQueueEnded
+  *                             events will be fired again.
   *
   */
 void RainbruRPG::OgreGui::OgreGuiRenderQueueListener::
 renderQueueEnded( uint8 vQueueGroupId, const String& vInvocation, 
-		  bool& vRepeatThisInvocation){
+		  bool& repeatThisInvocation){
 
 
   if ( vQueueGroupId == mQueue ){

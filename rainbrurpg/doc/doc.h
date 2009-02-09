@@ -31,6 +31,7 @@
   *       we need to include the config.h file.
   *
   * Modifications :
+  * - 02 feb 2009 : Add publicserver.png to the latex documentation
   * - 09 jan 2008 : Add some precisions on regression tests 'line' value.
   * - 03 dec 2008 : Fix some Doxygen warning when configure never complete.
   * - 08 oct 2008 : Cross compilation section moved to doc_crosscompil.h
@@ -139,6 +140,7 @@
   * design/ library. Both client and server uses the common/ library.
   *
   * \image html publicserver.png
+  * \image latex publicserver.png
   *
   *
   */

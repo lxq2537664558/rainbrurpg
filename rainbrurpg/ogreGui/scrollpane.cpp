@@ -39,6 +39,7 @@
 #include <logger.h>
 
 #include <algorithm>
+#include <assert.h>
 
 /** The constructor
   *
@@ -107,6 +108,8 @@ RainbruRPG::OgreGui::ScrollPane::~ScrollPane(){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::draw(QuadRenderer* qr){
+  assert( mDrawingDev && "DrawingDevList is NULL");
+
   /* v0.0.5-172 : This line fix a bug : The label wasn't drawn until scrollbars
    * was shown. The scissor rectangle was in used when ScrollBar wasn't needed
    *

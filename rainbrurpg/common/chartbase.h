@@ -24,6 +24,7 @@
   * Defines the base-class of all generated charts
   *
   * Modifications :
+  * - 02 feb 2009 : Added the charLayout.png image to the latex documentation
   * - 17 jun 2007 : Documentation improved
   * - 31 mar 2007 : Make changes in the axis xaption behavior
   * - 26 mar 2007 : Now in rpg/common
@@ -94,6 +95,7 @@ namespace RainbruRPG {
       * driven by its own class.
       * 
       * \image html chartLayout.png
+      * \image latex chartLayout.png
       *
       * Some precission may ne needed :
       *

@@ -15,6 +15,7 @@
   *          \c wingdi.h defined function.
   *
   * Modifications :
+  * - 05 feb 2009 : Added support for NULL ResizeGrip and TitleBar in resize()
   * - 08 aug 2008 : Implementation of the 
   *       \ref BetaGUI::Window::getHorizontalScrollbar
   *       "Window::getHorizontalScrollbar()" and

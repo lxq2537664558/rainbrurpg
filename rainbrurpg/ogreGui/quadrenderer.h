@@ -27,7 +27,10 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
-  * - 30 jan 2008 : State and stateToString() implementation
+  * - 02 fev 2009 : In begin, retrieve a RenderSystem pointer if NULL
+  * - 01 fev 2009 : Creator name added (member, constructor, debug)
+  * - 31 jan 2009 : debug() now log the state. Segfault fix in debug().
+  * - 30 jan 2009 : State and stateToString() implementation
   * - 23 sep 2008 : \ref RainbruRPG::OgreGui::QuadRenderer::isGhostEnabled
   *                 "isGhostEnabled()" implementation
   * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
@@ -55,6 +58,7 @@
 #include "guivertex.h"
 #include "drawingdevlist.h"
 
+#include <string>
 #include <vector>
 #include <iostream>
 
@@ -214,7 +218,8 @@ namespace RainbruRPG {
       */
     class RAINBRU_EXPORT QuadRenderer{
     public:
-      QuadRenderer( RenderSystem*, SceneManager*, Viewport*);
+      QuadRenderer( RenderSystem*, SceneManager*, Viewport*, 
+		    const std::string&);
       ~QuadRenderer();
       
       void begin();
@@ -235,7 +240,8 @@ namespace RainbruRPG {
 
       void drawFilledRectangle( const Ogre::Rectangle&, const ColourValue& );
 
-      void addGlyph( const Ogre::Rectangle&,const Ogre::Rectangle&,bool vUVRelative=true);
+      void addGlyph( const Ogre::Rectangle&,const Ogre::Rectangle&,
+		     bool vUVRelative=true);
       void disableScissor(void);
 
       void setColor(const ColourValue&);
@@ -319,6 +325,14 @@ namespace RainbruRPG {
 	*/
       Viewport* mViewport;
     
+      /** The name of the object which create this instance
+        *
+	* This name is set in the constructor. Feed it freely, it
+	* is only a debugging help.
+	*
+	*/
+      std::string mCreatorName;
+
       /** The Ogre material pointer that handles the texture
         *
 	* \note Only the first pass of the first technique of this material

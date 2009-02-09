@@ -24,6 +24,7 @@
   * Declares an Ogre frame listenerthe client game engine
   *
   * Modifications :
+  * - 01 fev 2009 : Adding assertions to test some pointers
   * - 31 oct 2008 : Adding mViewport member and accessor
   * - 29 oct 2008 : Defining and using GET_SHARE_FILE
   * - 16 oct 2008 : changeState() now takes a string parameter

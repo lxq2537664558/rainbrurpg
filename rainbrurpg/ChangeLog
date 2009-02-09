@@ -1,3 +1,36 @@
+2009-02-05 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/bgwindow.cpp (resize) : Added support for NULL pointer
+	for ResizeGrip and TitleBar.
+	
+	* ogreGui/dialog.cpp : Changing constructor from OWT_MOVE to
+	OWT_RESIZE_AND_MOVE to test if the segfault is due to a spurious
+	ResizeGrip pointer. It is not the solution.
+	
+2009-02-02 Jerome Pasquier  <rainbru@free.fr>
+	* client/guimanager.cpp (showMessageBox) : Comment
+	simpleDialog->show() for test purpose.
+	
+2009-02-01 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/scrollpane.cpp (draw): Added assertion to test
+	NULL DrawingDevList pointer;
+
+	* ogreGui/quadrenderer.cpp (begin): Retrieve a new RenderSystem
+	pointer from OgreRoot if the one we have is spurious.
+
+	* maincore/gameengine.cpp : Added some assertions.
+	
+	* ogreGui/quadrenderer.cpp : Added the mCreatorName member and its
+	initializer in the constructor. It is a debugging member only.
+	
+2009-01-30 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/quadrenderer.cpp (debug) : Fixed a segfault that occurs
+	when mDrawingDevList pointer was NULL.
+
+	* ogreGui/quadrenderer.cpp (debug) : Now log the state.
+	* ogreGui/quadrenderer.cpp (begin) : Now uses debug() if 
+	ViewPort is NULL.
+
+
 2009-01-30 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/quadrenderer.cpp (stateToString) : implemented.
 	

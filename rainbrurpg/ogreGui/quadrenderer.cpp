@@ -41,20 +41,26 @@
 
 /** The renderer constructor
   *
+  * The creator name is only a debugging string.
+  *
   * \param rs  The render system where you want to draw GUI elements 
   * \param mgr The scene manager where you want to draw GUI elements
   * \param vp  The viewport system where you want to draw GUI elements
+  * \param vCreatorName The name of the creator of this resource
   *
   * \sa \ref mRenderSystem "mRenderSystem" (member), 
   *     \ref mSceneManager "mSceneManager" (member), 
-  *     \ref mViewport "mViewport" (member)
+  *     \ref mViewport "mViewport" (member),
+  *     \ref mCreatorName "mCreatorName" (member)
   *
   */
 RainbruRPG::OgreGui::QuadRenderer::
-QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ):
+QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ,
+	     const std::string& vCreatorName):
   mSceneManager(mgr),
   mRenderSystem(rs),
   mViewport(vp),
+  mCreatorName(vCreatorName),
   useScissor(false),
   alphaValue(ALPHA),
   mColor(DEFAULT_COL),
@@ -309,13 +315,17 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
   assert(mSceneManager && "Ogre's SceneManager is a NULL object");
   if (mViewport == NULL){
-    LOGW("ViewPort was NULL. Trying to get it from GameEngine");
-    LOGCATS("QuadRenderer is in '");
-    LOGCATS(stateToString(mState).c_str());
-    LOGCATS("' state");
-    LOGCAT();
+    LOGW("Viewport is NULL, debugging QuadRenderer");
+    this->debug("QuadRenderer::begin");
     mViewport = GameEngine::getSingleton().getViewport();
+    
     assert(mViewport && "Ogre's ViewPort is a NULL object");
+
+    /* v0.0.5-190 : This line fix a segfault that occurs when
+     *              called from drawBeforeOverlay().
+     */
+    mRenderSystem = GameEngine::getSingleton().getOgreRoot()
+      ->getRenderSystem();
   }
 
   mState = QRS_BEGIN;
@@ -1246,7 +1256,15 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
   // Intro
   ostringstream s;
   s << "QuadRenderer::debug() called from " << from << endl;
-  s << mDrawingDevList->toString() << endl;
+  //  s << "Creator was " << mCreatorName;
+
+  // The following cause a segfault if mDrawingDevList is NULL
+  if (mDrawingDevList){
+    s << mDrawingDevList->toString() << endl;
+  }
+  else{
+    s << "mDrawingDevList is NULL" << endl;
+  }
   s << "using scrissor rectangle : " << useScissor << endl;
   s << "using parent scrissor : " << useParentScissor << endl;
   s << "Scissor rectangle :" << endl
@@ -1258,6 +1276,7 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
   s << "Alpha value :" << alphaValue << endl;
   s << "Is ghost enabled :" << mIsGhostEnabled << endl;
 
+  // usedTexture member
   if (usedTexture.isNull()){
     s << "Current texture : None" << endl;
   }
@@ -1265,6 +1284,11 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
     s << "Current texture : Yes (" << usedTexture.get() << ")" << endl;
   }
   s << "Blend mode :" << blendModeToString(mBlendMode) << endl;
+
+  // mState
+  s << "Current state : " << stateToString(mState) << "("
+    << (int)mState << ")" << endl;
+
   LOGI(s.str().c_str());
 
 }
@@ -1276,6 +1300,9 @@ void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 addDrawingDev(DrawingDevSettings* vDev){
+  if (mDrawingDevList == NULL){
+    mDrawingDevList = new DrawingDevList();
+  }
   mDrawingDevList->addSettings(vDev);
 }
 

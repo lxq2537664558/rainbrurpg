@@ -70,7 +70,7 @@ void BetaGUI::GUI::init(RenderSystem* rs, SceneManager* sm, Viewport* vp){
   dialogOverlay->show();
   dialogOverlay->setZOrder(550);
 
-  mQuadRenderer=new QuadRenderer(rs, sm, vp);
+  mQuadRenderer=new QuadRenderer(rs, sm, vp, "bggui.cpp::init()");
   mousePointer=new MousePointer();
 
 }
@@ -467,6 +467,7 @@ void BetaGUI::GUI::draw(){
 void BetaGUI::GUI::drawBeforeOverlay(){
   assert(mQuadRenderer && "QuadRenderer pointer is NULL");
   mQuadRenderer->begin();
+  //  mQuadRenderer->debug("BetaGUI::GUI::drawBeforeOverlay()");
 
   list<Window*>::iterator iter;
   for(iter=windowBeforeOverlayList.begin();

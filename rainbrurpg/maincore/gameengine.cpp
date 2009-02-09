@@ -29,6 +29,8 @@
 #  include <windows.h>
 #endif // __WIN32__
 
+#include <assert.h>
+
 #include "gamestate.h"
 
 #include "gslocaltest.h"
@@ -199,7 +201,7 @@ void RainbruRPG::Core::GameEngine::changeState(const std::string& vName){
 
 
 
-/** The Destrictor of the GameEngine destructor
+/** The Destructor of the GameEngine
   *
   *
   */
@@ -299,10 +301,10 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
 
   if (ret!=CCR_SUCCESS){
     LOGW("The login of this user failed");
-  /* Removed to avoid OgreGui dependencies
+    /* Removed to avoid OgreGui dependencies
     GuiManager::getSingleton()
       .showMessageBox("Connection failed", errMsg);
-  */
+    */
     return false;
 
   }
@@ -491,6 +493,7 @@ void RainbruRPG::Core::GameEngine::createViewports(){
     // Alter the camera aspect ratio to match the viewport
     mCamera->setAspectRatio(
       Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
+    assert(mViewport && "Failed to create the Ogre viewport");
   }
   else{
     LOGE("Invalid OgreWindow");

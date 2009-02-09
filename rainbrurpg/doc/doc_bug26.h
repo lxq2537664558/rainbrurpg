@@ -27,12 +27,11 @@
   * a bug.
   *
   * Modifications :
+  * - 01 feb 2009 : Added a sequence diagram
   * - 30 jan 2009 : Updated
   * - 01 nov 2008 : Starting implementation
   *
-  */
-
-/** \page bug26_details Details bug #26
+  * \page bug26_details Details bug #26
   *
   * \section bug26_identification Identification
   * \subsection bug26_description Description
@@ -62,7 +61,32 @@
   * - The Viewport pointer we got from GameEngine is devalidate;
   * - The 'none' state should never happen.
   *
-  * \section bug26_history
+  * \subsection bug_26_01_feb2009 01 feb 2009 update
+  *
+  * The following image is the sequence diagram of the drawing process.
+  * It shows the methods called from RenderQueueListener to GUI and
+  * RainbruRPG.
+  *
+  * \image html bug26-drawing-sequence.png
+  * \image latex bug26-drawing-sequence.png
+  *
+  * \subsection bug_26_03_feb2009 03 feb 2009 update
+  *
+  * After many tests, here's my conclusion : I through the segfault came from
+  * the drawing process of the dialog (SimpleDialog created in the 
+  * onConnectClicked() callback of gsConnection) but now I think it occurs
+  * at the SimpleDialog costruction.
+  *
+  * I decided to comment the <em>SimpleDialog->show()</em> statement and
+  * several segfaults comes randomly when I clicked on the <em>connect</em>
+  * button. So, the segfaults are not due to the drawing process but the
+  * RbMessageBox class instanciation could be the cause.
+  *
+  * Another stuff I notice is when I have luck enough, I can see the
+  * the Dialog drawn, the ResizeGrip quad was ugly. It was a whole white
+  * square instead of the ResizeGrip image. Maybe the bug is here...
+  *
+  * \section bug26_history History
   *
   * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
   *   <TR bgcolor="#00CC99">
@@ -73,9 +97,17 @@
   *     <TD>01 nov 2008</TD>
   *     <TD>Created this detail page</TD>
   *   </TR>
-  *   <TR class="bugList1">
-  *     <TD>30 jan 2008</TD>
+  *   <TR class="bugList2">
+  *     <TD>30 jan 2009</TD>
   *     <TD>Updated. QuadRenderer's state improvment</TD>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>01 feb 2009</TD>
+  *     <TD>Added a sequence diagram</TD>
+  *   </TR>
+  *   <TR class="bugList2">
+  *     <TD>03 feb 2009</TD>
+  *     <TD>Updated for the construction/not drawing precision</TD>
   *   </TR>
   * </TABLE>
   *

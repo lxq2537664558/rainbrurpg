@@ -27,6 +27,7 @@
   * a bug.
   *
   * Modifications :
+  * - 01 feb 2009 : Closed
   * - 04 nov 2008 : Starting implementation
   *
   */
@@ -44,6 +45,11 @@
   * The segfault does not occurs every time. Sometimes it failed, sometimes 
   * it works.
   *
+  * \subsection bug27_01feb2009 01 feb 2009 update
+  *
+  * I decided to close this bug. I didn't fix it but I can't reproduce it.
+  * However, I keep this detail page for further references.
+  *
   * \section bug26_history
   *
   * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
@@ -54,6 +60,10 @@
   *   <TR class="bugList1">
   *     <TD>01 nov 2008</TD>
   *     <TD>Created this detail page</TD>
+  *   </TR>
+  *   <TR class="bugList2">
+  *     <TD>01 nov 2008</TD>
+  *     <TD>Closed</TD>
   *   </TR>
   * </TABLE>
   *

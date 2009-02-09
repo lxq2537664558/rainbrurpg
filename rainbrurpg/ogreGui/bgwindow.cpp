@@ -255,11 +255,13 @@ void BetaGUI::Window::resize(int px, int py){
   }
 
   // Moves the ResizeGrip
-  mResizeGrip->move( new_width - 16, new_height - 16 );
+  if (mResizeGrip)
+    mResizeGrip->move( new_width - 16, new_height - 16 );
 
 
   // Resize the title bar
-  mTitleBar->setWidth( new_width );
+  if (mTitleBar)
+    mTitleBar->setWidth( new_width );
 
   setWidth( new_width );
   setHeight (new_height );

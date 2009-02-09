@@ -212,6 +212,7 @@ void RainbruRPG::OgreGui::MousePointer::draw(QuadRenderer* qr){
   qr->setUvMap(0.0, 0.0, 1.0, 1.0);
   qr->drawRectangle(corners);
   qr->reset();
+  qr->end(); 
 }
 
 /** Change the position of the mouse pointer

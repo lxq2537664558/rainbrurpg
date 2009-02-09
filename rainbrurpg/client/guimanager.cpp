@@ -373,14 +373,15 @@ showMessageBox(const String& title, const String& message){
 
 #endif // !MGM_SHOW_MESSAGE_BOX_WARNING
   LOGI("GuiManager::showMessageBox() called");
+  LOGI("  Creating messageBox");
   RbMessageBox* simpleDialog=new RbMessageBox();
+  LOGI("Creating a MessageBox");
   simpleDialog->initWindow();
   simpleDialog->setTitle(title);
   simpleDialog->setMessage(message);
-  simpleDialog->show();
-  LOGI("simpleDialog->show() called");
-
-
+  LOGI("MessageBox created");
+  //  simpleDialog->show();
+  LOGW("simpleDialog->show() disabled");
 }
 
 /** Set the dialogSystemLayout to NULL

@@ -24,6 +24,7 @@
   * Declares a Ogre RenderQueue listener that draws the GUI
   *
   * Modifications :
+  * - 31 jan 2009 : Documentation upgrade for skip/repeatThisInvocation
   * - 30 aug 2008 : Single file documentation
   * - 26 nov 2007 : Starting implementation
   *
