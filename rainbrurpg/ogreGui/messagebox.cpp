@@ -40,57 +40,48 @@
 
 #include <OGRE/OgreVector4.h>
 
-/** The default constructor
+/** The constructor
   *
-  * Actually, this initialize only message and title with empty strings.
+  *  Create a new MessageBox with an empty message.
+  *
+  * \param vTitle The title of the message box
+  * \param vGui   The GUI object
+  * \param sid    The skin identifier
   *
   */
-RainbruRPG::OgreGui::RbMessageBox::RbMessageBox():
+RainbruRPG::OgreGui::RbMessageBox::
+RbMessageBox( const String& vTitle, GUI* vGui, OgreGuiSkinID sid):
+  Dialog(Vector4(10, 10, 300, 100), vTitle, vGui, sid),
   message(""),
-  title(""),
+  title(vTitle),
   width(300),
   height(100),
-  mWin(NULL),
   caption(NULL),
   btnOk(NULL)
 {
-
-}
-
-RainbruRPG::OgreGui::RbMessageBox::~RbMessageBox(){
-  if (mWin != NULL){
-    GUI::getSingleton().removeWindow(mWin);
-  }
-}
-
-/** Initialize the dialog
-  *
-  */
-void RainbruRPG::OgreGui::RbMessageBox::initWindow(){
   // Center the dialog
   unsigned int rwWidth, rwHeight, posX, posY;
   rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
   rwHeight=GameEngine::getSingleton().getRenderWindow()->getHeight();
-
   posX=(rwWidth/2)-(width/2);
   posY=(rwHeight/2)-(height/2);
+  move(posY, posY);
 
-  // Initialise the dialog
-  Vector4 winDim=Vector4(posX, posY, width, height);
-  BetaGUI::GUI gui=GUI::getSingleton();
-  title="Unset";
-  mWin=new Dialog(winDim, title, &gui, OSI_BETAGUI);
-  gui.addDialog(mWin);
-
+  // Adds default widgets
   Vector4 labDim=Vector4(2, 24, width-20, 30);
-  caption=new Label( labDim, "Unset", mWin );
-  mWin->addWidget(caption);
+  caption=new Label( labDim, "Unset", this );
+  addWidget(caption);
   
   Vector4 btnDim=Vector4( (width/2)-50, height-30, 100, 24 );
-  btnOk=new PushButton (btnDim, "OK", Callback(this), mWin);
-  mWin->addWidget(btnOk);
+  btnOk=new PushButton (btnDim, "OK", Callback(this), this);
+  addWidget(btnOk);
+}
 
-
+RainbruRPG::OgreGui::RbMessageBox::~RbMessageBox(){
+  /*  if (mWin != NULL){
+    GUI::getSingleton().removeWindow(mWin);
+  }
+  */
 }
 
 /** Changes the message of the dialog
@@ -104,7 +95,9 @@ void RainbruRPG::OgreGui::RbMessageBox::initWindow(){
   */
 void RainbruRPG::OgreGui::RbMessageBox::setMessage(const String& mess){
   this->message=mess;
-  caption->setCaption(mess);
+  if (caption != NULL){
+    caption->setCaption(mess);
+  }
 }
 
 /** Get the message of the dialog
@@ -118,39 +111,15 @@ const String& RainbruRPG::OgreGui::RbMessageBox::getMessage(void){
   return this->message;
 }
 
-/** Changes the title of the dialog
-  * 
-  * This should be called before showing the dialog.
-  *
-  * \param t The new title's text
-  *
-  * \sa getTitle()
-  *
-  */
-void RainbruRPG::OgreGui::RbMessageBox::setTitle(const String& t){
-  this->title=t;
-  mWin->setTitle(t);
-}
-
-/** Get the title of the dialog
-  *
-  * \return The value of the RbMessageBox::title class member
-  *
-  * \sa setTitle(const CEGUI::String&)
-  *
-  */ 
-const String& RainbruRPG::OgreGui::RbMessageBox::getTitle(void){
-  return this->title;
-}
 
 /** Shows this message box
   *
   */
 void RainbruRPG::OgreGui::RbMessageBox::show(void){
-  mWin->setTransparency(0.9f);
-  mWin->show();
-  GUI::getSingleton().moveWindowToForeGround(mWin);
-  // Dilaog become modal
+  setTransparency(0.9f);
+  //show();
+  GUI::getSingleton().moveWindowToForeGround(this);
+  // Dialog become modal
   //  GameEngine::getSingleton().getOgreGui()->setFocusedWidget(btnOk);
 }
 
@@ -158,12 +127,12 @@ void RainbruRPG::OgreGui::RbMessageBox::show(void){
   *
   */
 void RainbruRPG::OgreGui::RbMessageBox::hide(void){
-  mWin->hide();
+  //  mWin->hide();
   //  GameEngine::getSingleton().getOgreGui()->disableFocusedWidget();
-  GUI::getSingleton().removeWindow(mWin);
+  GUI::getSingleton().removeWindow(this);
 }
 
-/** The callback od OgreGUI buttons
+/** The callback of OgreGUI buttons
   *
   * \param ref The button that fires the event
   *

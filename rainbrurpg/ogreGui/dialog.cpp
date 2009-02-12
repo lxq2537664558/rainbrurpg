@@ -27,6 +27,8 @@
 
 #include "dialog.h"
 
+#include "quadrenderer.h"
+
 #include <logger.h>
 
 /** The dialog constructor
@@ -38,7 +40,7 @@
   *
   */
 RainbruRPG::OgreGui::Dialog::
-Dialog( Vector4 vDim, String vCaption, GUI* vGui,
+Dialog( const Vector4& vDim, const String& vCaption, GUI* vGui,
 	RainbruRPG::OgreGui::OgreGuiSkinID sid ):
   Window(vDim, OWT_MOVE, vCaption, vGui, sid)
 {
@@ -64,5 +66,6 @@ void RainbruRPG::OgreGui::Dialog::draw(QuadRenderer* qr){
     if (mResizeGrip) mResizeGrip->draw(qr);
     if (mTitleBar)   mTitleBar->draw(qr);
     mScrollPane->draw( qr );
+    qr->reset();
   }
 }

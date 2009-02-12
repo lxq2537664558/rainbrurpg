@@ -24,6 +24,7 @@
   * Declares a MessageBox dialog based on OgreGUI
   *
   * Modifications :
+  * - 12 feb 2009 : Become a subclass of Dialog (closes bug26)
   * - 26 aug 2008 : Single file documentation
   * - 14 may 2008 : Now based on OgreGui::Dialog
   *                 Moves from maincore/ to ogregui/
@@ -39,6 +40,7 @@
 #include <ogreimport.h>
 
 #include "bglistener.h"
+#include "dialog.h"
 
 // Forward declarations
 namespace BetaGUI {
@@ -73,21 +75,17 @@ namespace RainbruRPG{
       *       window's focus.
       *
       */
-    class RbMessageBox : public BetaGUIListener{
+    class RbMessageBox : public Dialog, public BetaGUIListener{
     public:
-      RbMessageBox();
+      RbMessageBox(const String&, GUI*,
+	      RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT);
       virtual ~RbMessageBox();
-
-      void initWindow();
       
       void setMessage(const String&);
-      void setTitle(const String&);
-
       const String& getMessage(void);
-      const String& getTitle(void);
       
-      void show(void);
-      void hide(void);
+      virtual void show(void);
+      virtual void hide(void);
 
       virtual void onButtonPress(BetaGUI::Button* ref);
 
@@ -98,10 +96,8 @@ namespace RainbruRPG{
       String title;
            
       /** The data content */
-      String dataString;
+      //      String dataString;
 
-      /** The OgreGUI window shown by this dialog */
-      Window* mWin;
       /** The label of this dialog */
       Label* caption;
 

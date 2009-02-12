@@ -39,7 +39,7 @@
   *
   */
 RainbruRPG::OgreGui::Widget::
-Widget(Vector4 dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+Widget(const Vector4& dim, Widget* P, RainbruRPG::OgreGui::OgreGuiSkinID sid):
   skinId(sid),
   parent(P),
   frameOverlay(NULL),

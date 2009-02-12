@@ -41,6 +41,9 @@
 #include <label.h>
 #include <statuslabel.h>
 
+#include <dialog.h> // For bug26 tests only
+
+
 /** The constructor of the singleton
   *
   * This method must be called before using GuiManager
@@ -335,7 +338,7 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
   }
 }
 
-/** Shows a CEGUI message box with a single OK button
+/** Shows a message box with a single OK button
   *
   * Uses RbMessageBox to show a message with a title. 
   *
@@ -374,14 +377,13 @@ showMessageBox(const String& title, const String& message){
 #endif // !MGM_SHOW_MESSAGE_BOX_WARNING
   LOGI("GuiManager::showMessageBox() called");
   LOGI("  Creating messageBox");
-  RbMessageBox* simpleDialog=new RbMessageBox();
-  LOGI("Creating a MessageBox");
-  simpleDialog->initWindow();
-  simpleDialog->setTitle(title);
-  simpleDialog->setMessage(message);
+
+  RbMessageBox* mb=new RbMessageBox(title, &GUI::getSingleton());
+  mb->setMessage(message);
+  mb->show();
+  GUI::getSingleton().addDialog(mb);
+
   LOGI("MessageBox created");
-  //  simpleDialog->show();
-  LOGW("simpleDialog->show() disabled");
 }
 
 /** Set the dialogSystemLayout to NULL

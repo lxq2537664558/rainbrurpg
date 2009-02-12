@@ -42,8 +42,9 @@ using namespace RainbruRPG::Core;
   * \param sid     The Skin used to draw this window
   *
   */
-BetaGUI::Window::Window(Vector4 D,OgreGuiWindowType t,String caption, 
-			GUI *G, RainbruRPG::OgreGui::OgreGuiSkinID sid):
+BetaGUI::Window::Window(const Vector4& D,OgreGuiWindowType t,
+			const String& caption, GUI *G, 
+			RainbruRPG::OgreGui::OgreGuiSkinID sid):
   Widget(D, NULL, sid), // Warning, parent is now NULL
   mGUI(G),
   mTitleBar(NULL),

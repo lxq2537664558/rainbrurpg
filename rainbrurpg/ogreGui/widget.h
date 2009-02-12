@@ -27,6 +27,7 @@
   * to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 10 feb 2009 : Constructor now takes a const Vector4& argument
   * - 22 feb 2008 : visible now member of widget (instead of Window)
   * - 19 jan 2008 : getCorners implementation
   *                 getX, getY renamed getTop, getLeft
@@ -75,7 +76,7 @@ namespace RainbruRPG{
       */
     class Widget : public Object{
     public:
-      Widget(Vector4, Widget*, OgreGuiSkinID sid=OSI_PARENT);    
+      Widget(const Vector4&, Widget*, OgreGuiSkinID sid=OSI_PARENT);    
       virtual ~Widget();
 
       OgreGuiSkinID getSkinId(void);

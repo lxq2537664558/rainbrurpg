@@ -27,11 +27,12 @@
   * a bug.
   *
   * Modifications :
+  * - 12 feb 2008 : Closed
   * - 01 feb 2009 : Added a sequence diagram
   * - 30 jan 2009 : Updated
   * - 01 nov 2008 : Starting implementation
   *
-  * \page bug26_details Details bug #26
+  * \page bug26_details [Closed] Details bug #26
   *
   * \section bug26_identification Identification
   * \subsection bug26_description Description
@@ -86,6 +87,26 @@
   * the Dialog drawn, the ResizeGrip quad was ugly. It was a whole white
   * square instead of the ResizeGrip image. Maybe the bug is here...
   *
+  * Note : I said the segmentation fault was due to the Dialog creation
+  * but it happens in the drawing queue, not in the creation sequence.
+  * If the dialog is created, the segfault occured, if the dialog is not
+  * created, no segfault in drawing sequence.
+  *
+  * \subsection bug_26_11feb2009 11 feb 2009 update
+  * 
+  * The segfault seems to come from the RbMessageBox instanciation.The
+  * following code in GuiManager::showMessageBox() works perfectly :
+  * <pre>
+  * Dialog* dlg = new Dialog(Vector4(10, 10,100, 100), title, &GUI::getSingleton());
+  * dlg->show();
+  * GUI::getSingleton().addDialog(dlg);
+  * </pre>
+  * 
+  * \subsection bug_26_112eb2009 12 feb 2009 update
+  *
+  * I manage to get a RbMessageBox drawn when it became a subclass
+  * of Dialog. The segfault did not occur anymore. Closed.
+  *
   * \section bug26_history History
   *
   * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
@@ -108,6 +129,18 @@
   *   <TR class="bugList2">
   *     <TD>03 feb 2009</TD>
   *     <TD>Updated for the construction/not drawing precision</TD>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>09 feb 2009</TD>
+  *     <TD>Updated the drawing sequence</TD>
+  *   </TR>
+  *   <TR class="bugList2">
+  *     <TD>11 feb 2009</TD>
+  *     <TD>Updated with the Dialog code</TD>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>12 feb 2009</TD>
+  *     <TD>Closed</TD>
   *   </TR>
   * </TABLE>
   *

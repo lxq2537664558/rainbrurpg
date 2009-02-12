@@ -1,3 +1,20 @@
+2009-02-12 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/messagebox.h : function initWindow() removed.
+
+	* client/guimanager.cpp (showMessageBox) : Uses the new MessageBox.
+	* ogreGui/messagebox.h : Become a subclass of Dialog.
+		
+2009-02-11 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/bgwindow.h : Constructor now takes a const String& argument.
+	* ogreGui/dialog.h : Constructor now takes a const String& argument.
+
+2009-02-10 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/widget.h : Constructor now takes a const Vector4& argument.
+	* ogreGui/bgwindow.h : Constructor now takes a const Vector4& argument.
+	* ogreGui/dialog.h : Constructor now takes a const Vector4& argument.
+
+	* ogreGui/dialog.cpp (draw) : Now call QuadRenderer::reset().
+
 2009-02-05 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/bgwindow.cpp (resize) : Added support for NULL pointer
 	for ResizeGrip and TitleBar.

@@ -1,15 +1,5 @@
 RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
--> Libraries versionning in doc/libVersionning.html and configure.in
-
-* Client segfault
-- when trying to connect (see bug #26) : 
-   The QuadRenderer object is spurious, its state is 'none' and its
-   viewport poiner is devalidate.
-- There is no problem if SimpleDialog is not created in
-   gsconnection::showMessageBox
-   
-
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 - Fixing client executable size (310Mo) (see and update doc_cross_compil)
@@ -112,9 +102,15 @@ A system that serialize widgets position and configuration
 ===  Changelog ===   
    18 items by revision
    Please update version and revision in configure.in
+   Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-190 (30 jan 2009 - ???)
-- (10) Trying the Dialog OWT_MOVE argument (no)
+- (15) RbMessageBox now inherits Dialog (closes bug 26)
+- Updated doc/doc_bug26.h with he Dialog code
+- gsConnection test bug26 with a Dialog : works
+- Dialog and Window now take a const String& argument
+- Dialog, Window and Widget now take a const Vector4& argument
+- Trying the Dialog OWT_MOVE argument (no)
 - Updated documentation of bug26 (creation vs drawing)
 - Comment MessageBox::show() in guimanager shows a spurious mouseptr
 - Added some images to the latex documentation (was only for html)

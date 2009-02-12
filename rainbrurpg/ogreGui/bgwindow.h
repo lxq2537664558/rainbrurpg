@@ -15,6 +15,8 @@
   *          \c wingdi.h defined function.
   *
   * Modifications :
+  * - 11 feb 2009 : Constructor now takes a const String& argument
+  * - 10 feb 2009 : Constructor now takes a const Vector4& argument
   * - 05 feb 2009 : Added support for NULL ResizeGrip and TitleBar in resize()
   * - 08 aug 2008 : Implementation of the 
   *       \ref BetaGUI::Window::getHorizontalScrollbar
@@ -96,7 +98,7 @@ namespace BetaGUI {
     */
   class Window : public RainbruRPG::OgreGui::Widget{
   public:
-    Window( Vector4, OgreGuiWindowType, String, GUI*, 
+    Window( const Vector4&, OgreGuiWindowType, const String&, GUI*, 
 	    RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
     virtual ~Window();
 

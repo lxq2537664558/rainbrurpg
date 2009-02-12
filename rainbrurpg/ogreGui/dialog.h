@@ -24,6 +24,9 @@
   * Declares a modal dialog for OgreGui
   *
   * Modifications :
+  * - 11 feb 2009 : Constructor now takes a const Vector4&  
+  * - 10 feb 2009 : - draw() now calls QuadRenderer::reset()
+  *                 - Constructor now takes a const Vector4&  
   * - 25 aug 2008 : Single file documentation
   * - 13 may 2008 : starting implementation
   *         
@@ -57,7 +60,7 @@ namespace RainbruRPG{
       */
     class Dialog : public BetaGUI::Window{
     public:
-      Dialog( Vector4, String, GUI*,
+      Dialog( const Vector4&, const String&, GUI*,
 	      RainbruRPG::OgreGui::OgreGuiSkinID sid=OSI_DEFAULT );
       virtual ~Dialog();
 
