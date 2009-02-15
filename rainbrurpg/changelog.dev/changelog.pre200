@@ -1,3 +1,55 @@
+* v 0.0.5-190 (30 jan 2009 - 15 feb 2009)
+- Homepage news added :
+  Title: Segfault fixed and crew update              2009-02-15 15:13:21
+  Content: I finally fix a critical segmentation fault that occurred
+   when a dialog was about to be drawn : it was a design error.
+
+   I have to welcome Carine in the crew. She is now the official maintainer
+   of the win32 port of the client. To contact her, please use the
+   SourceForge email address (cchum at users.sourceforge.net)
+
+   I will soon release the 0.0.6 version, probably in the next weeks, when
+   OgreGui, my custom Graphic User Interface will be finished.
+- Fix a bug when moving a dialog in Dialog::draw()
+- ScrollPane::resize() implementation
+- RbMessageBox now inherits Dialog (closes bug 26)
+- Updated doc/doc_bug26.h with he Dialog code
+- gsConnection test bug26 with a Dialog : works
+- Dialog and Window now take a const String& argument
+- Dialog, Window and Widget now take a const Vector4& argument
+- Trying the Dialog OWT_MOVE argument (no)
+- Updated documentation of bug26 (creation vs drawing)
+- Comment MessageBox::show() in guimanager shows a spurious mouseptr
+- Added some images to the latex documentation (was only for html)
+- Fix a RenderSystem pointer error in QuadRenderer::begin()
+- Closed bug 27
+- Added a sequence diagram to the bug26 related page
+- Fix a segfault in QuadRenderer::debug()
+- QuadRenderer::debug() now log state
+- Improved documentation for ogreGui/RenderQueueListener
+
+* v 0.0.5-189 (08 jan 2009 - 30 jan 2009)
+- Updated documentation for bug26
+- QuadRenderer state implemented
+- Removed an injectMouse call in gsMenuBase to prevent a segfault
+- Added an assert in bggui::handleWindowsEvents for a segfault
+- Added an assertion in GUI::getMousePointer()
+- Trying to avoid a segfault in ogreGui/MousePointer but failed
+- RB_CHECK_LIBCURL now support cross-compilation
+- Fix a segfault when running unit tests
+- Removed a std::cout call in common/
+   xmlbonusfile.cpp, xmlbonusfilelist.cpp, xmlattributelist.cpp,
+   xmlattrbcatlist.cpp, xmlaccountlist.cpp
+- Doxyfile now uses relative paths
+- Removed a std::cout call in common/xmlpersolist.cpp
+- Avoid some segfaults in the curlAccountToggleBlackList unit tests
+- Add some constructor initializer in xmlAccountList
+- Fix some doc/doc.h errors due to an inexisting #endif
+- Changing Copyright date for common/*, adminsite/*
+- Fix some Foobar error IrrClient/*.cpp
+- Fix errors in server and editor Makefile.am due to MOC files
+- Fix some Foobar error in IrrClient/*.h
+
 * v 0.0.5-188 (??? - 08 jan 2009)
 - Changing Copyright date for tools/netflooder/*, design/*, client/*
 - Fix some Foobar error in GNU headers

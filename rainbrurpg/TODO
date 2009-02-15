@@ -7,7 +7,6 @@ o [Carine] cross-compilation to win32
 o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 - Error message label is not correctly placed in fullscreen mode
-- MessageBox makes segfault (see bug #26)
 
 * Unittests
 - Next unit test is common/loadbmp
@@ -21,9 +20,7 @@ o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
 
 * Adminsite
 - See the tool-adminsite-databackup
-- Remove bonusfile and others
-- Remove associated common/ classes
-- Made a info page which is called from the homepage
+- Made a info page on server status which is called from the homepage
 
 o [mouse] xIdent
 - XIdent AddAccount dialog and other buttons
@@ -104,8 +101,23 @@ A system that serialize widgets position and configuration
    Please update version and revision in configure.in
    Libraries versionning in doc/libVersionning.html and configure.in
 
-* v 0.0.5-190 (30 jan 2009 - ???)
-- (15) RbMessageBox now inherits Dialog (closes bug 26)
+* v 0.0.5-191 (15 feb 2009 - ???)
+
+* v 0.0.5-190 (30 jan 2009 - 15 feb 2009)
+- Homepage news added :
+  Title: Segfault fixed and crew update              2009-02-15 15:13:21
+  Content: I finally fix a critical segmentation fault that occurred
+   when a dialog was about to be drawn : it was a design error.
+
+   I have to welcome Carine in the crew. She is now the official maintainer
+   of the win32 port of the client. To contact her, please use the
+   SourceForge email address (cchum at users.sourceforge.net)
+
+   I will soon release the 0.0.6 version, probably in the next weeks, when
+   OgreGui, my custom Graphic User Interface will be finished.
+- Fix a bug when moving a dialog in Dialog::draw()
+- ScrollPane::resize() implementation
+- RbMessageBox now inherits Dialog (closes bug 26)
 - Updated doc/doc_bug26.h with he Dialog code
 - gsConnection test bug26 with a Dialog : works
 - Dialog and Window now take a const String& argument

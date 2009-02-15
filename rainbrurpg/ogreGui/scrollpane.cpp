@@ -411,15 +411,15 @@ void RainbruRPG::OgreGui::ScrollPane::setHeight(int i){
   *
   */
 void RainbruRPG::OgreGui::ScrollPane::move(int vX, int vY){
+  LOGI("Moving a scrollpane");
   int temp_width = getWidth();
   int temp_height= getHeight();
 
   corners.top  = vY;
   corners.left = vX;
 
-  setWidth(temp_width);
-  setHeight(temp_height);
-  setChildWidgetGeometryDirty();
+  resize(temp_width, temp_height);
+  Container::setGeometryDirty();
 }
 
 
@@ -614,4 +614,9 @@ HScrollBar* RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbar(void){
   */
 VScrollBar* RainbruRPG::OgreGui::ScrollPane::getVerticalScrollbar(void){
   return mVScrollBar;
+}
+
+void RainbruRPG::OgreGui::ScrollPane::resize(int vWidth, int vHeight){
+  setWidth(vWidth);
+  setHeight(vHeight);
 }

@@ -24,6 +24,7 @@
   * Declares a modal dialog for OgreGui
   *
   * Modifications :
+  * - 13 feb 2009 : Fix a bug when moving the dialog in draw()
   * - 11 feb 2009 : Constructor now takes a const Vector4&  
   * - 10 feb 2009 : - draw() now calls QuadRenderer::reset()
   *                 - Constructor now takes a const Vector4&  

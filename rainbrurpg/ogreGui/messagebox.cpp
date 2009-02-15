@@ -65,6 +65,7 @@ RbMessageBox( const String& vTitle, GUI* vGui, OgreGuiSkinID sid):
   rwHeight=GameEngine::getSingleton().getRenderWindow()->getHeight();
   posX=(rwWidth/2)-(width/2);
   posY=(rwHeight/2)-(height/2);
+  LOGI("Centering the Dialog");
   move(posY, posY);
 
   // Adds default widgets

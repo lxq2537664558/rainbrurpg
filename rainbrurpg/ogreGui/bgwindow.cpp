@@ -278,12 +278,6 @@ void BetaGUI::Window::resize(int px, int py){
 void BetaGUI::Window::move(int px, int py){
   int devX, devY;
   mScrollPane->getMovingDev(devX, devY);
-  /*  LOGCATS("devX=");
-  LOGCATI(devX);
-  LOGCATS(" devY=");
-  LOGCATI(devY);
-  LOGCAT();
-  */
 
   int width  = corners.right - corners.left;
   int height = corners.bottom - corners.top;

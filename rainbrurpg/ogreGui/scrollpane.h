@@ -24,6 +24,7 @@
   * Declares a scroll pane widget used in OgreGUI's windows
   *
   * Modifications :
+  * - 13 feb 2009 : resize() function implemented
   * - 02 feb 2009 : Added assertion in draw()
   * - 08 aug 2008 : Implementation of the 
   *       \ref RainbruRPG::OgreGui::ScrollPane::getHorizontalScrollbar
@@ -144,6 +145,7 @@ namespace RainbruRPG{
       virtual void setWidth(int);
       virtual void setHeight(int);
       virtual void move(int, int);
+      virtual void resize(int, int);
 
       void horizontalScrollBarValueChange(int);
       void verticalScrollBarValueChange(int);

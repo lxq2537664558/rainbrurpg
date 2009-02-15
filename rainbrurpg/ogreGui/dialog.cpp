@@ -62,6 +62,10 @@ RainbruRPG::OgreGui::Dialog::~Dialog(){
   */
 void RainbruRPG::OgreGui::Dialog::draw(QuadRenderer* qr){
   if (visible){
+    // v0.0.5-191 : The following fix a bug when moving a dialog
+    if (geometryDirty){
+      makeCorners();
+    }
     mSkin -> drawDialog(qr, this);
     if (mResizeGrip) mResizeGrip->draw(qr);
     if (mTitleBar)   mTitleBar->draw(qr);

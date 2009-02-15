@@ -392,7 +392,7 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	/* v 0.0.5-181 : Fix the moving window bug
 	 *
 	 * The following call of makeCorners() fix an heavy bug when
-	 * mocing window.
+	 * moving window.
 	 *
 	 */
 	makeCorners();
