@@ -28,6 +28,7 @@
   *       platform.
   *
   * Modifications :
+  * - 16 feb 2009 : Fix a bug in drawToolTip().
   * - 23 sep 2008 : \ref RainbruRPG::OgreGui::soBetaGui::getVScrollBarMinHeight
   *                 "getVScrollBarMinHeight()" and 
   *                 \ref RainbruRPG::OgreGui::soBetaGui::getHScrollBarMinWidth 

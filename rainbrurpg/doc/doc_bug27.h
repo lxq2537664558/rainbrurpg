@@ -27,6 +27,7 @@
   * a bug.
   *
   * Modifications :
+  * - 16 feb 2009 : reopened
   * - 01 feb 2009 : Closed
   * - 04 nov 2008 : Starting implementation
   *
@@ -50,6 +51,36 @@
   * I decided to close this bug. I didn't fix it but I can't reproduce it.
   * However, I keep this detail page for further references.
   *
+  * \subsection bug27_06feb2009 16 feb 2009 update
+  *
+  * The bug is reopened. 
+  * <pre>
+  * #0  0x0000000000000000 in ?? ()
+  * #1  0x00007f84f7ee173d in Ogre::Node::_updateFromParent ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #2  0x00007f84f7ee27b9 in Ogre::Node::translate ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #3  0x00007f84f7dfd192 in Ogre::Camera::rotate ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #4  0x00007f84f7dfd253 in Ogre::Camera::yaw ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #5  0x000000000040c3c6 in RainbruRPG::Core::ExampleFrameListener::moveCamera (
+  *     this=0x2b70d70) at exampleframelistener.cpp:252
+  * #6  0x0000000000418db2 in RainbruRPG::Events::GuiFrameListener::frameStarted (
+  *     this=0x266d1e0, evt=@0x7f84f82c8d44) at guiframelistener.cpp:69
+  * #7  0x00007f84f7f546f2 in Ogre::Root::_fireFrameStarted ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #8  0x00007f84f7f5526c in Ogre::Root::_fireFrameStarted ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #9  0x00007f84f7f552e9 in Ogre::Root::renderOneFrame ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #10 0x00007f84f7f55355 in Ogre::Root::startRendering ()
+  *    from /usr/lib/libOgreMain-1.4.9.so
+  * #11 0x00007f84fe070ade in RainbruRPG::Core::GameEngine::run (
+  *     this=<value optimized out>) at gameengine.cpp:113
+  * #12 0x0000000000424107 in main (argc=1, argv=0x7fff06725d68) at main.cpp:207
+  * </pre>
+  *
   * \section bug26_history
   *
   * <TABLE width=100% border="1" cellspacing ="0" cellpadding ="0">
@@ -62,8 +93,12 @@
   *     <TD>Created this detail page</TD>
   *   </TR>
   *   <TR class="bugList2">
-  *     <TD>01 nov 2008</TD>
+  *     <TD>01 feb 2009</TD>
   *     <TD>Closed</TD>
+  *   </TR>
+  *   <TR class="bugList1">
+  *     <TD>16 feb 2009</TD>
+  *     <TD>Reopened</TD>
   *   </TR>
   * </TABLE>
   *

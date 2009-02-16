@@ -291,7 +291,7 @@
 /** \page bug_list Bug list
   *
   * Here you can find all bugs found in RainbruRPG. The unsolved bugs
-  * are in gray, the other colors are pllied to soled bugs.
+  * are in gray, the other colors are applied to solved bugs.
   *
   * The bugs are ordered, the num is on the \b # column. The sys is
   * here to tell if this bug is in GNU/Linux, Win32 or both.

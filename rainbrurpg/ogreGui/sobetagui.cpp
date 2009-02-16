@@ -622,7 +622,18 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawToolTip(QuadRenderer* qr, ToolTip* tt){
+  /* v0.0.5-191 : I decided to deactivate setScissorRectangle() calls
+   * to fix a bug.
+   */
+  DrawingDevSettings* dds=new DrawingDevSettings("Temp");
+  int xSum = qr->getDrawingDevXSum();
+  int ySum = qr->getDrawingDevYSum();
+  dds->move( -xSum, -ySum ); 
+  qr->addDrawingDev(dds);
+  
+
   Ogre::Rectangle dim(tt->getCorners());
+  dim.left -= xSum;
   String text=tt->getText();
 
   Ogre::ColourValue BGColor( 0.2f, 0.2f, 0.4f );
@@ -661,6 +672,8 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   // Re-set the parent scissor rectangle settings
   qr->setScissorRectangle(sr);
   qr->setUseParentScissor(true);
+
+  qr->removeDrawingDev( dds );
 
 }
 
