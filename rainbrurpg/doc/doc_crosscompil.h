@@ -202,9 +202,9 @@
   *
   * I think the libraries that are not in this list (OgreMain, common, 
   * ogregui...)
-  * are statically compiled.
+  * are statically linked.
   *
-  * In the g++ command line ther is some lib*.a :
+  * In the g++ command line there is some lib*.a :
   *
   * <code>i586-mingw32msvc-g++ -g -O2 -o rainbrurpg.exe exampleframelistener.o gsconnection.o gscreateaccount.o gsmainmenu.o gsmenubase.o gsserverlist.o gsupdatedatafiles.o guiframelistener.o guimanager.o launcher.o launcheroptions.o main.o languageselector.o  -L/home/mouse/programmation/rainbrurpg/common/.libs -L/home/mouse/programmation/rainbrurpg/maincore/.libs -L/usr/cross/lib -L/home/mouse/programmation/rainbrurpg/common -L/home/mouse/programmation/rainbrurpg/maincore -L/home/mouse/programmation/rainbrurpg/ogreGui <b>/home/mouse/programmation/rainbrurpg/maincore/.libs/librainbrurpg-core.a /home/mouse/programmation/rainbrurpg/common/.libs/librainbrurpg-common.a</b> -lcurl <b>/home/mouse/programmation/rainbrurpg/ogreGui/.libs/librainbrurpg-ogregui.a</b> -lFOX-1.6 -lOgreMain -lfreeimage -lzzip -lfreetype6 -lOIS -lboost_filesystem -lboost_thread -lenet -lglib-2.0 -lsigc-2.0 -lgd -lgnet-2.0
 </code>
@@ -213,5 +213,17 @@
   *
   * In the same way, I manage to create the maincore/ library with the
   * create_dll shell script but its size is 192Mo.
+  *
+  * I should try with this link 
+  * http://www.emmestech.com/moron_guides/moron1.html.
+  *
+  * \subsection win32_troubles_191_exesize v0.0.5-191 Undefined reference
+  *
+  * When trying to cross-compile I had many undefined references from OgreMain
+  * concerning the std library. When switching mingw from version 3 to 4.2.1,
+  * the problem disapear.
+  *
+  * However, the client size problem always exist.
+  *
   *
   */
