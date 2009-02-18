@@ -4,11 +4,12 @@ o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/
 - Fixing client executable size (310Mo) (see and update doc_cross_compil)
 
-o [mouse] OgreGui : GUI over Ogre3D based on QuadRenderer
-- Tooltip background bug : The top pos of the tooltip background is
-   cut if the MultiColumnList is moved to bottom. 
+o [mouse] Fixing some OgreGui related graphical bugs
 - MCL's contextual menu doesn't work anymore
 - Tooltip doesn't disappear if we aren't in the window anymore
+- Moving MCL scrollbar when window's SB were moved is spurious 
+
+* OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 - Error message label is not correctly placed in fullscreen mode
 
@@ -106,5 +107,7 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-191 (15 feb 2009 - ???)
-- (2) Fix a bug when drawing ToolTips
+- (4) ToolTip drawing bug fix in a better way
+- Fix a bug27 detail page error due to gdb output
+- Fix a bug when drawing ToolTips
 - Reopens bug 27 and set gdb output in detail page

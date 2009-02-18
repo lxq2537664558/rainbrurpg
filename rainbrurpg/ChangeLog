@@ -1,4 +1,7 @@
 2009-02-16 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/sobetagui.cpp (drawToolTip): Better fix for the
+	tooltip drawing bug.
+
 	* ogreGui/sobetagui.cpp (drawToolTip): Fix a bug when drawing tootip.
 
 2009-02-13 Jerome Pasquier  <rainbru@free.fr>

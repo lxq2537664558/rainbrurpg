@@ -622,9 +622,6 @@ drawHorizontalScrollbar(QuadRenderer*qr, HScrollBar* hs ){
   */
 void RainbruRPG::OgreGui::soBetaGui::
 drawToolTip(QuadRenderer* qr, ToolTip* tt){
-  /* v0.0.5-191 : I decided to deactivate setScissorRectangle() calls
-   * to fix a bug.
-   */
   DrawingDevSettings* dds=new DrawingDevSettings("Temp");
   int xSum = qr->getDrawingDevXSum();
   int ySum = qr->getDrawingDevYSum();
@@ -633,7 +630,11 @@ drawToolTip(QuadRenderer* qr, ToolTip* tt){
   
 
   Ogre::Rectangle dim(tt->getCorners());
+  /* v0.0.5-191 : Here, we must take care of the xSum of ySum value
+   * when drawing tooltip to avoid a very far box
+   */
   dim.left -= xSum;
+  dim.top  -= ySum;
   String text=tt->getText();
 
   Ogre::ColourValue BGColor( 0.2f, 0.2f, 0.4f );
