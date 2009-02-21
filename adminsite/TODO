@@ -1,10 +1,10 @@
 adminsite - The meta server of RainbruRPG. Written in PHP.
 
-- xmlpersoattrb.php cree la category si elle n'existe pas
+- xmlpersoattrb.php create category if it does not exist
 - Test global player
-	- Problème d'affichage des titres
-	- Si plus d'une note, lors de la modif de la premiere, le champ
-	  note content de la premiere se remplit mal
+        - The title drawing is bugged
+        - If we have more than one note, when we modify the first, the
+          note field content of the first is spurious
 
 * Improve documentation
 - Make a mainpage. The actual one is the unit test one.
@@ -17,6 +17,7 @@ The version number is the RainbruRPG's one.
 The revison number is an internal one. Not linked this the RainbruRPG's one.
 
 * v0.0.5-8 (09 jan 2008 - ???)
+- Translation of this file
 - Changing GNU header dates
 
 * v0.0.5-7 (??? - 09 jan 2008)
