@@ -103,7 +103,7 @@ A system that serialize widgets position and configuration
 
 ===  Changelog ===   
    18 items by revision
-   Please update version and revision in configure.in
+   Please update version and revision in configure.in and Doxyfile
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-191 (15 feb 2009 - ???)
