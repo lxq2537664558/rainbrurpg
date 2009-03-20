@@ -1,0 +1,9 @@
+# List of source files which contain translatable strings.
+
+# in the 'common' library
+common/attributemodifierlist.cpp
+common/chartbase.cpp
+common/chartline.cpp
+common/chartserie.cpp
+common/clientconnect.cpp
+common/curlaccountadd.cpp

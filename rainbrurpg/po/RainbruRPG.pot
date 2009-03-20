@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RainbruRPG 0.3.0\n"
+"Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
+"POT-Creation-Date: 2009-03-20 12:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: common/attributemodifierlist.cpp:72 common/attributemodifierlist.cpp:187
+msgid "Cannot find the modifier's sign"
+msgstr ""
+
+#: common/attributemodifierlist.cpp:82 common/attributemodifierlist.cpp:197
+msgid "Cannot find the modifier's value : modifier is not added"
+msgstr ""
+
+#: common/attributemodifierlist.cpp:123
+msgid "Cannot get usable modifier's type"
+msgstr ""
+
+#: common/chartbase.cpp:43
+msgid "RainbruRPG-netflooder statistics"
+msgstr ""
+
+#: common/chartbase.cpp:45
+msgid "Left caption"
+msgstr ""
+
+#: common/chartbase.cpp:46
+msgid "Bottom caption test filling"
+msgstr ""
+
+#: common/chartbase.cpp:354
+msgid "Legend"
+msgstr ""
+
+#: common/chartline.cpp:53
+msgid "ChartLine::draw() called"
+msgstr ""
+
+#: common/chartline.cpp:77
+msgid "ChartLine: drawing axis"
+msgstr ""
+
+#: common/chartline.cpp:79
+msgid "ChartLine: drawing chart's title"
+msgstr ""
+
+#: common/chartline.cpp:81
+msgid "ChartLine: drawing Y axis caption"
+msgstr ""
+
+#: common/chartline.cpp:83
+msgid "ChartLine: drawing X axis caption"
+msgstr ""
+
+#: common/chartline.cpp:85
+msgid "ChartLine: drawing legend background"
+msgstr ""
+
+#: common/chartline.cpp:87
+msgid "ChartLine: drawing left caption"
+msgstr ""
+
+#: common/chartline.cpp:89
+msgid "ChartLine: drawing bottom caption"
+msgstr ""
+
+#: common/chartline.cpp:92
+msgid "ChartLine: drawing legend"
+msgstr ""
+
+#: common/chartline.cpp:95
+msgid "ChartLine: drawing series"
+msgstr ""
+
+#: common/chartline.cpp:99
+msgid "ChartLine: saving image in "
+msgstr ""
+
+#: common/chartline.cpp:108
+msgid "ChartLine: drawing complete"
+msgstr ""
+
+#: common/chartline.cpp:117
+msgid "drawSeries called"
+msgstr ""
+
+#: common/chartline.cpp:257
+msgid "drawLeftCaption called"
+msgstr ""
+
+#: common/chartline.cpp:272
+msgid "Searching for valueIndent"
+msgstr ""
+
+#: common/chartline.cpp:300
+msgid "drawLeftCaption starting to draw"
+msgstr ""
+
+#: common/chartline.cpp:418
+msgid "Searching valueIndent"
+msgstr ""
+
+#: common/chartserie.cpp:122
+msgid "getXCaption : index out of bound"
+msgstr ""
+
+#: common/chartserie.cpp:137
+msgid "getYCaption : index out of bound"
+msgstr ""
+
+#: common/clientconnect.cpp:93
+msgid "Account blacklist status : "
+msgstr ""
+
+#: common/curlaccountadd.cpp:79
+msgid "The email adress does not contain the 'dot' sign"
+msgstr ""
+
+#: common/curlaccountadd.cpp:89
+msgid "The email adress does not contain the 'at' sign"
+msgstr ""
+
+#: common/curlaccountadd.cpp:98
+msgid "Cannot add a player with empty email adress"
+msgstr ""
+
+#: common/curlaccountadd.cpp:107
+msgid "This mail adress is already in use"
+msgstr ""
+
+#: common/curlaccountadd.cpp:116
+msgid "The player already exists"
+msgstr ""
+
+#: common/curlaccountadd.cpp:126
+msgid "Cannot add a player with empty password"
+msgstr ""
+
+#: common/curlaccountadd.cpp:135
+msgid "The new player's name is empty"
+msgstr ""
+
+#: common/curlaccountadd.cpp:173
+msgid "One of the name is empty, controlAfter failed"
+msgstr ""
+
+#: common/curlaccountadd.cpp:179
+msgid "The name is the same"
+msgstr ""
+
+#: common/curlaccountadd.cpp:182
+msgid "The name is not the same"
+msgstr ""
+
+#: common/curlaccountadd.cpp:192
+msgid "The password is the same"
+msgstr ""
+
+#: common/curlaccountadd.cpp:195
+msgid "The password is not the same"
+msgstr ""
+
+#: common/curlaccountadd.cpp:205
+msgid "The mail adress is the same"
+msgstr ""
+
+#: common/curlaccountadd.cpp:208
+msgid "The mail adress is not the same"
+msgstr ""
