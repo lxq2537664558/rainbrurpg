@@ -24,6 +24,7 @@
   * Defines a list of attribute modifier
   *
   * Modifications :
+  * - 18 mar 2009 : string ready to be translated
   * - 31 jul 2008 : Documentation improved
   * - 02 mar 2007 : Avoid std::cout during unit testing
   *                 Inprove documentation
@@ -39,7 +40,7 @@
 
 #include "logger.h"
 #include "stringconv.h"
-
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

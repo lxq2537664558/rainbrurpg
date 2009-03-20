@@ -69,7 +69,7 @@ addModifier(std::string mod){
     it.type=AMT_MINUS;
   }
   else{
-    LOGW("Cannot find the modifier's sign");
+    LOGW(_("Cannot find the modifier's sign"));
     check=false;
   }
 
@@ -79,7 +79,7 @@ addModifier(std::string mod){
   iss >> it.value;
 
   if (it.value==-1){
-    LOGW("Cannot find the modifier's value : modifier is not added");
+    LOGW(_("Cannot find the modifier's value : modifier is not added"));
     check=false;
   }
 
@@ -120,7 +120,7 @@ addToTotal(const tAttributeModifierListItem* it){
     total-=it->value;
   }
   else{
-    LOGI("Cannot get usable type");
+    LOGI(_("Cannot get usable modifier's type"));
   }
 }
 
@@ -134,7 +134,7 @@ int RainbruRPG::Network::Ident::AttributeModifierList::getTotal(){
 
 /** Get the total in a string format
   *
-  * It the total is null (zero), the returned string is empty. If
+  * If the total is null (zero), the returned string is empty. If
   * the total isn't null, The string returned contains the sign.
   *
   * \return The string of the total
@@ -184,7 +184,7 @@ addModifierInverse(std::string mod){
     it.type=AMT_MINUS;
   }
   else{
-    LOGW("Cannot find the modifier's sign");
+    LOGW(_("Cannot find the modifier's sign"));
     check=false;
   }
 
@@ -194,7 +194,7 @@ addModifierInverse(std::string mod){
   iss >> it.value;
 
   if (it.value==-1){
-    LOGW("Cannot  find the modifier's value : modifier is not added");
+    LOGW(_("Cannot find the modifier's value : modifier is not added"));
     check=false;
   }
 

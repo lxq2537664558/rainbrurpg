@@ -76,7 +76,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
   // The . sign
   char* dotSign=strchr(mail, '.');
   if (dotSign==NULL){
-    errmsg="The email adress does not contain the 'dot' sign";
+    errmsg=_("The email adress does not contain the 'dot' sign");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -86,7 +86,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
   // The @ sign
   char* atSign=strchr(mail, '@');
   if (atSign==NULL){
-    errmsg="The email adress does not contain the 'at' sign";
+    errmsg=_("The email adress does not contain the 'at' sign");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -95,7 +95,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
 
   // The mail is empty
   if (strlen(mail)==0){
-    errmsg="Cannot add a player with empty email adress";
+    errmsg=_("Cannot add a player with empty email adress");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -104,7 +104,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
 
   // The mail already in use
   if (xml->isMailExisting(mail)){
-    errmsg="This mail adress is already in use";
+    errmsg=_("This mail adress is already in use");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -113,7 +113,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
 
   // The player already exists
   if (xml->isAccountExisting(name)){
-    errmsg="The player already exists";
+    errmsg=_("The player already exists");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
 
@@ -123,7 +123,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
 
   // The password is empty
   if (strlen(pwd)==0){
-    errmsg="Cannot add a player with empty password";
+    errmsg=_("Cannot add a player with empty password");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -132,7 +132,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
 
   // The name is empty
   if (strlen(name)==0){
-    errmsg="The new player's name is empty";
+    errmsg=_("The new player's name is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -170,16 +170,16 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlAfter(){
     
     // control Name
     if ((strlen(name)==0)||(strlen(itname)==0)){
-      LOGW("One of the name is empty, controlAfter failed");
+      LOGW(_("One of the name is empty, controlAfter failed"));
       ret=false;
       
     }
     else{
       if (strcmp(name, itname)==0){
-	LOGI("The name is the same");
+	LOGI(_("The name is the same"));
       }
       else{
-	LOGW("The name is not the same");
+	LOGW(_("The name is not the same"));
 	ret=false;
 	response=CAA_UNKNOWN;
       }
@@ -189,10 +189,10 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlAfter(){
       HashPassword hp;
       bool retpwd=hp.compare(pwd, itpwd);
       if (retpwd){
-	LOGI("The password is the same");
+	LOGI(_("The password is the same"));
       }
       else{
-	LOGW("The password is not the same");
+	LOGW(_("The password is not the same"));
 	LOGW(pwd);
 	LOGW(itpwd);
 	
@@ -202,10 +202,10 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlAfter(){
       
       // control Mail
       if (strcmp(mail, itmail)==0){
-	LOGI("The mail adress is the same");
+	LOGI(_("The mail adress is the same"));
       }
       else{
-	LOGW("The mail adress is not the same");
+	LOGW(_("The mail adress is not the same"));
 	ret=false;
 	response=CAA_UNKNOWN;
       }

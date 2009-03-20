@@ -119,7 +119,7 @@ unsigned int RainbruRPG::Core::ChartSerie::size(){
   */
 const char* RainbruRPG::Core::ChartSerie::getXCaption(int index){
   if (index>valueList.size()){
-    LOGW("getXCaption : index out of bound");
+    LOGW(_("getXCaption : index out of bound"));
   }
   return valueList[index]->xCaption;
 
@@ -134,7 +134,7 @@ const char* RainbruRPG::Core::ChartSerie::getXCaption(int index){
   */
 const char* RainbruRPG::Core::ChartSerie::getYCaption(int index){
   if (index>valueList.size()){
-    LOGW("getYCaption : index out of bound");
+    LOGW(_("getYCaption : index out of bound"));
   }
   return valueList[index]->yCaption;
 

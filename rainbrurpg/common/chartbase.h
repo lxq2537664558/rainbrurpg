@@ -24,6 +24,7 @@
   * Defines the base-class of all generated charts
   *
   * Modifications :
+  * - 18 mar 2009 : Strings are now ready to be translated
   * - 02 feb 2009 : Added the charLayout.png image to the latex documentation
   * - 17 jun 2007 : Documentation improved
   * - 31 mar 2007 : Make changes in the axis xaption behavior
@@ -48,6 +49,7 @@
 #include <iostream>
 
 #include "chartserie.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 /// Defines PI
 #define PI 3.1415916

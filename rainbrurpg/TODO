@@ -9,6 +9,9 @@ o [mouse] Fixing some OgreGui related graphical bugs
 - Tooltip doesn't disappear if we aren't in the window anymore
 - Moving MCL scrollbar when window's SB were moved is spurious 
 
+* i18n (source are taken alphabetically)
+- common/chartserie.cpp was the last translated source
+
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 - Error message label is not correctly placed in fullscreen mode
@@ -107,7 +110,14 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-191 (15 feb 2009 - ???)
-- (4) ToolTip drawing bug fix in a better way
+- (9) In common/ : chartserie.cpp, clientconnect.cpp and
+   curlaccountadd are now ready to be translated
+- Number of translatable strings added to regtest statistics
+- common/chartline now ready to be translated
+- package gettextized (ready for i18n)
+- Added i18n stuff to common/rainbrudef.h
+   common/attributemodiferlist.cpp and common/chartbase.cpp now use it
+- ToolTip drawing bug fix in a better way
 - Fix a bug27 detail page error due to gdb output
 - Fix a bug when drawing ToolTips
 - Reopens bug 27 and set gdb output in detail page

@@ -90,9 +90,9 @@ connect(const char* user, const char* pwd){
   else{
     RainbruRPG::Gui::tAccountListItem* player=xml.getAccount(user);
 
-	LOGCATS("Account blacklist status : ");
-	LOGCATB(player->blacklist);
-	LOGCAT();
+    LOGCATS(_("Account blacklist status : "));
+    LOGCATB(player->blacklist);
+    LOGCAT();
 
 
     // Test the email confirmation status

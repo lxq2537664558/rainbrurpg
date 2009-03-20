@@ -24,6 +24,7 @@
   * Defines the client connection ability
   *
   * Modifications :
+  * - 20 mar 2009 : Makes the strings translatable using gettext
   * - 02 mar 2007 : To be unit testing, modify :
   *         - A default constructor
   *         - A connect(...) function
@@ -35,6 +36,8 @@
 #include "xmlaccountlist.h"
 #include "taccountlist.h"
 #include "hashpassword.h"
+
+# include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

@@ -24,7 +24,7 @@
   * Defines a chart based on lines
   *
   * Modifications :
-  *
+  * - 19 mar 2009 : Now using gettext
   * - 29 mar 2007 : Starting implementation
   *
   */
@@ -40,6 +40,7 @@
 #include <chartbase.h>
 #include <logger.h>
 
+#include "rainbrudef.h"
 using namespace std;
 
 namespace RainbruRPG{

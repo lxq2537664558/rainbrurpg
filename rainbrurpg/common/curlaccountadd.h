@@ -24,6 +24,7 @@
   * Defines how to submit an account addition
   *
   * Modifications :
+  * - 20 mar 2009 : Strings are translatable using gettext
   * - 06 mar 2007 : Adds tCurlAccountAddReturn enumeration
   * - 02 mar 2007 : Renamed CurlAccountAdd (was CurlPlayerAdd)
   * - 02 mar 2007 : Adds some accessors( setName, setPassword, setMail)
@@ -34,6 +35,8 @@
 #define CURL_ACCOUNT_ADD_H
 
 #include "curlsubmitform.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

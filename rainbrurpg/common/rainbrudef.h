@@ -27,9 +27,15 @@
   * this link : http://gcc.gnu.org/wiki/Visibility
   *
   * Modifications :
+  * - 18 mar 2009 : Added gettext stuff
   * - 08 aug 2008 : Documentation update
   *
   */
+
+// i18n stuff
+#include <libintl.h>
+#include <locale.h>
+# define _(STRING) gettext(STRING)
 
 #ifdef _MSC_VER
   #ifdef BUILDING_DLL

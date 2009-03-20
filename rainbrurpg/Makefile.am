@@ -2,7 +2,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = common maincore ogreGui client
+SUBDIRS = po common maincore ogreGui client
 
 # The data files
 SUBDIRS+= config data media mapdata
@@ -45,7 +45,7 @@ endif
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc
 
-EXTRA_DIST=RainbruRPG.lsm.in  \
+EXTRA_DIST= config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
 	   RainbruRPG.texinfo \
 	   RainbruRPG.spec.in \
 	   Doxyfile
@@ -62,3 +62,5 @@ RainbruRPG_TEXINFOS = gpl.texinfo
 man_MANS=RainbruRPG.6        \
 	 RainbruRPG-server.6 \
 	 RainbruRPG-editor.6
+
+ACLOCAL_AMFLAGS = -I m4

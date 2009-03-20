@@ -227,14 +227,18 @@
   * The column called \e cc represents the Console's Count command result
   *
   * The column called \e ut represents the number of unit test (made 
-  * with CppUnit)
+  * with CppUnit).
   *
   * The column called \e ref is the number of pages of the Doxygen 
   * documentation in pdf format. (not computed before build 157)
   *
   * The column called \e CL is the size of the ChangeLog in line number.
-  * Is was not computed before build 183 because the ChangeLog was not 
+  * It was not computed before build 183 because the ChangeLog was not 
   * GNU coding standard compliant.
+  *
+  * The column called \e PoMsg is the number of ready-to-be-translated
+  * strings. There are listed in the \e po/RainbruRPG.po. It was not
+  * computed before build 191.
   *
   * \htmlinclude regTest.html
   */

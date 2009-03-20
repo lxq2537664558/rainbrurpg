@@ -24,9 +24,6 @@
 --
 -- SQL script for postgres 8.1
 --
--- To execute this script in a terminal :
--- * from the shell :$mysql database < createdb.sql
--- * from the interactive client : source createdb.sql
 --
 -- Used type :
 -- * UNDIGNED INT

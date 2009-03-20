@@ -40,10 +40,10 @@ RainbruRPG::Core::ChartBase::ChartBase(int width, int height){
   legendWidth=180;
   legendExteriorMargin=10;
 
-  graphTitle="RainbruRPG-netflooder statistics";
+  graphTitle=_("RainbruRPG-netflooder statistics");
 
-  yAxisCaption="Left caption";
-  xAxisCaption="Bottom caption test filling";
+  yAxisCaption=_("Left caption");
+  xAxisCaption=_("Bottom caption test filling");
 
   titleFontSize=16;
   captionFontSize=10;
@@ -132,8 +132,9 @@ void RainbruRPG::Core::ChartBase::drawChartTitle(gdImagePtr im, int c){
   * \param c The color of the drawing
   * 
   */
-void RainbruRPG::Core::ChartBase::drawSmallText(const std::string& text, int x, int y, 
-			      gdImagePtr im, int c){
+void RainbruRPG::Core::ChartBase::
+drawSmallText(const std::string& text, int x, int y, 
+	      gdImagePtr im, int c){
 
 
   int len = text.length() + 1;
@@ -257,7 +258,8 @@ int RainbruRPG::Core::ChartBase::getTextWidth(const std::string& text, int fontS
   * \return The given text's width in pixel
   *
   */
-int RainbruRPG::Core::ChartBase::getTextHeight(const std::string& text, int fontSize){
+int RainbruRPG::Core::ChartBase::
+getTextHeight(const std::string& text, int fontSize){
   int rect[8];
 
   // Font name
@@ -294,8 +296,9 @@ int RainbruRPG::Core::ChartBase::getTextHeight(const std::string& text, int font
   * \param fontSize The text font size in points
   * 
   */
-void RainbruRPG::Core::ChartBase::drawTrueTypeUp(const std::string& text, int x, 
-			       int y, gdImagePtr im, int c, int fontSize){
+void RainbruRPG::Core::ChartBase::
+drawTrueTypeUp(const std::string& text, int x, 
+	       int y, gdImagePtr im, int c, int fontSize){
 
   int rect[8];
   // Font name
@@ -348,12 +351,14 @@ drawLegendBackground(gdImagePtr im, int bc, int fc){
   gdImageFilledRectangle(im, left, top, right, bottom, fc);
   gdImageRectangle(im, left, top, right, bottom, bc);
 
-  int textWidth=getTextWidth("Legend", legendTitleFontSize);
-  int textHeight=getTextHeight("Legend", legendTitleFontSize);
+  std::string legend = _("Legend");
+
+  int textWidth=getTextWidth(legend, legendTitleFontSize);
+  int textHeight=getTextHeight(legend, legendTitleFontSize);
   int titleLeft=left+(legendWidth/2)-(textWidth/2)-6;
   int titleTop=top+textHeight+2;
 
-  drawTrueType("Legend", titleLeft, titleTop, im, bc, legendTitleFontSize);
+  drawTrueType(legend, titleLeft, titleTop, im, bc, legendTitleFontSize);
 }
 
 /** Draws the horieontal and vertical axis 

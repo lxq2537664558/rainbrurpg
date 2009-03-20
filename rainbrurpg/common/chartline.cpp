@@ -50,7 +50,7 @@ RainbruRPG::Core::ChartLine::~ChartLine(){
   *
   */
 void RainbruRPG::Core::ChartLine::draw(){
-  LOGI("ChartLine::draw() called");
+  LOGI(_("ChartLine::draw() called"));
   computeMargins();
   /* Declare the image */
   gdImagePtr im;
@@ -74,29 +74,29 @@ void RainbruRPG::Core::ChartLine::draw(){
   computePreDrawing();
 
   // Drawing private functions 
-  LOGI("ChartLine: drawing axis");
+  LOGI(_("ChartLine: drawing axis"));
   drawAxis(im, black);
-  LOGI("ChartLine: drawing chart's title");
+  LOGI(_("ChartLine: drawing chart's title"));
   drawChartTitle(im, black);
-  LOGI("ChartLine: drawing Y axis caption");
+  LOGI(_("ChartLine: drawing Y axis caption"));
   drawYAxisCaption(im, black);
-  LOGI("ChartLine: drawing X axis caption");
+  LOGI(_("ChartLine: drawing X axis caption"));
   drawXAxisCaption(im, black);
-  LOGI("ChartLine: drawing legend background");
+  LOGI(_("ChartLine: drawing legend background"));
   drawLegendBackground(im, black, lightGray);
-  LOGI("ChartLine: drawing left caption");
+  LOGI(_("ChartLine: drawing left caption"));
   drawLeftCaption(im);
-  LOGI("ChartLine: drawing bottom caption");
+  LOGI(_("ChartLine: drawing bottom caption"));
   drawBottomCaption(im);
 
-  LOGI("ChartLine: drawing legend");
+  LOGI(_("ChartLine: drawing legend"));
   drawLegend(im);
 
-  LOGI("ChartLine: drawing series");
+  LOGI(_("ChartLine: drawing series"));
   drawSeries(im);
 
   // Save file
-  LOGCATS("ChartLine: saving image in ");
+  LOGCATS(_("ChartLine: saving image in "));
   LOGCATS(filename);
   LOGCAT();
   pngout = fopen(filename, "wb");
@@ -105,7 +105,7 @@ void RainbruRPG::Core::ChartLine::draw(){
 
   // Destroy the image in memory.
   gdImageDestroy(im);
-  LOGI("ChartLine: drawing complete");
+  LOGI(_("ChartLine: drawing complete"));
 }
 
 /** Draw all series
@@ -114,7 +114,7 @@ void RainbruRPG::Core::ChartLine::draw(){
   *
   */
 void RainbruRPG::Core::ChartLine::drawSeries(gdImagePtr im){
-  cout << "drawSeries called" << endl;
+  cout << _("drawSeries called") << endl;
   cout << "chartSerieList.size=" << chartSerieList->size() << endl;
 
   int black=gdTrueColor(0, 0, 0);
@@ -254,7 +254,7 @@ int RainbruRPG::Core::ChartLine::getLeftCaptionMaxWidth(){
   *
   */
 void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
-  LOGI("drawLeftCaption called");
+  LOGI(_("drawLeftCaption called"));
   int indicWidth=3;
   int valueTextWidth;
 
@@ -269,7 +269,7 @@ void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
   int minValueIndent=captionFontSize+5;
   int valueIndent=1;
 
-  LOGI("Searching for valueIndent");
+  LOGI(_("Searching for valueIndent"));
   while (true){
     int val1=(int)(bottom-((graphHeight*1)/serieInterval));
     int val2=(int)(bottom-((graphHeight*(1+valueIndent))/serieInterval));
@@ -297,7 +297,7 @@ void RainbruRPG::Core::ChartLine::drawLeftCaption(gdImagePtr im){
     }
   }
 
-  LOGI("drawLeftCaption starting to draw");
+  LOGI(_("drawLeftCaption starting to draw"));
 
   for (int value=(int)getSeriesMinValue(); value<(int)getSeriesMaxValue()+1; value+=valueIndent){
     // Draws the indicators
@@ -415,7 +415,7 @@ void RainbruRPG::Core::ChartLine::drawBottomCaption(gdImagePtr im){
   int valueIndent=1;
   int minValueIndent=captionFontSize+5;
 
-  LOGI("Searching valueIndent");
+  LOGI(_("Searching valueIndent"));
 
   ChartSerie* bigOne=getBiggestSerie();
 

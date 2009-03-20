@@ -24,6 +24,7 @@
   * Defines a serie of values used in a chart
   *
   * Modifications :
+  * - 20 mar 2009 : Makes the strings translatable
   * - 03 apr 2007 : legendCaption added
   * - 29 mar 2007 : Starting implementation
   *
@@ -34,6 +35,8 @@
 
 #include <vector>
 #include <string>
+
+#include "rainbrudef.h" // for gettext stuff
 
 using namespace std;
 
