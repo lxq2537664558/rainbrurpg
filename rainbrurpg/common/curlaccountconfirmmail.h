@@ -24,6 +24,7 @@
   * Defines confirmation of a account's mail address
   *
   * Modifications :
+  * - 21 mar 2009 : Now using gettext compliant strings
   * - 06 aug 2007 : ConfirmId added
   * - 15 mar 2007 : Added a getName function for unittest         
   *
@@ -33,6 +34,7 @@
 #define CURL_ACCOUNT_CONFIRM_MAIL_H
 
 #include "curlsubmitform.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 // Forward declarations
 namespace RainbruRPG {

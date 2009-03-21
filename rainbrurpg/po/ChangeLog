@@ -1,4 +1,7 @@
 2009-03-20  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/curlaccountconfirmmail.cpp added.
+
+2009-03-20  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/chartserie.cpp, common/clientconnect.cpp
 	and common/curlaccountadd.cpp added.
 

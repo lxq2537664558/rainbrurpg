@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-03-20 12:16+0100\n"
+"POT-Creation-Date: 2009-03-21 17:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,4 +178,36 @@ msgstr ""
 
 #: common/curlaccountadd.cpp:208
 msgid "The mail adress is not the same"
+msgstr ""
+
+#. TRANSLATORS: The first parameter is the account name, the second
+#. is the validationId used in the confirmation mail in string format.
+#: common/curlaccountconfirmmail.cpp:81
+#, c-format
+msgid "ValidationId for account '%s' is %s"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a account.
+#: common/curlaccountconfirmmail.cpp:88
+#, c-format
+msgid "Cannot get the account with the name '%s'"
+msgstr ""
+
+#. TRANSLATORS: The parameter should be a date if the account
+#. was confirmed.
+#: common/curlaccountconfirmmail.cpp:127
+#, c-format
+msgid "Mail's confirm date is %s"
+msgstr ""
+
+#. TRANSLATORS: controlAfter() is the name of a function.
+#. Do not translate it.
+#: common/curlaccountconfirmmail.cpp:135
+msgid "controlAfter() : confirm timestamp is empty"
+msgstr ""
+
+#. TRANSLATORS: controlAfter() is the name of a function.
+#. Do not translate it.
+#: common/curlaccountconfirmmail.cpp:142
+msgid "controlAfter() : account not found"
 msgstr ""

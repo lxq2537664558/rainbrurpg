@@ -7,3 +7,4 @@ common/chartline.cpp
 common/chartserie.cpp
 common/clientconnect.cpp
 common/curlaccountadd.cpp
+common/curlaccountconfirmmail.cpp

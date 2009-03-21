@@ -73,18 +73,20 @@ setName(const std::string& c){
   if (it){
     std::string val=it->validationId;
     this->setPostedData("id", val.c_str());
-    std::string s;
-    s ="validationId for account ";
-    s+=c;
-    s+=" is ";
-    s+=val;
-    LOGI(s.c_str());
+
+    char err[80];
+
+    // TRANSLATORS: The first parameter is the account name, the second
+    // is the validationId used in the confirmation mail in string format.
+    sprintf(err, _("ValidationId for account '%s' is %s"), c.c_str(), 
+	    val.c_str());
+    LOGI(err);
   }
   else{
-    std::string err="Cannot get the account with the name '";
-    err+=c;
-    err+="'";
-    LOGE(err.c_str());
+    char err[80];
+    // TRANSLATORS: The parameter is the name of a account.
+    sprintf(err, _("Cannot get the account with the name '%s'"), c.c_str());
+    LOGE(err);
   }
 }
 
@@ -113,31 +115,31 @@ bool RainbruRPG::Network::Ident::CurlAccountConfirmMail::controlAfter(){
 
   const char* accountName=this->getName();
 
-  LOGCATS("accountName='");
-  LOGCATS(accountName);
-  LOGCATS("'");
-  LOGCAT();
-
   // Testing if the mail address was confirmed
   xml->refresh();
   RainbruRPG::Gui::tAccountListItem* it=xml->getAccount(accountName);
   if (it){
     std::string conf(it->confirm);
 
-    LOGCATS("Confirm='");
-    LOGCATS(conf.c_str());
-    LOGCATS("'");
-    LOGCAT();
+    char err[80];
+    // TRANSLATORS: The parameter should be a date if the account
+    // was confirmed.
+    sprintf(err, _("Mail's confirm date is %s"), it->confirm.c_str());
+    LOGI(err);
 
     // If tAccountListItem.confirm is empty, the mail was not confirmed
     if (conf.size()==0){
       ret=false;
-      LOGE("CurlAccountConfirmMail::controlAfter : confirm timestamp is empty");
+      // TRANSLATORS: controlAfter() is the name of a function.
+      // Do not translate it.
+      LOGE(_("controlAfter() : confirm timestamp is empty"));
     }
   }
   else{
     ret=false;
-    LOGE("CurlAccountConfirmMail::controlAfter : account not found");
+    // TRANSLATORS: controlAfter() is the name of a function.
+    // Do not translate it.
+    LOGE(_("controlAfter() : account not found"));
 
   }
 
