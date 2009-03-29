@@ -24,6 +24,7 @@
   * Defines how submit a toggle blacklist request of an account
   *
   * Modifications :
+  * - 26 mar 2009 : Added gettext stuff
   * - 04 aug 2008 : Documentation of the file 
   *        
   */
@@ -34,6 +35,7 @@
 #include "globaluri.h"
 #include "curlsubmitform.h"
 #include "xmlaccountlist.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

@@ -89,7 +89,7 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::controlAfter (){
   */
 TiXmlDocument* RainbruRPG::Network::Ident::CurlFileToXml::getXmlDocument(){
   if (doc == NULL)
-    LOGW("Returning a NULL xml document");
+    LOGW(_("Returning a NULL xml document"));
 
   return doc;
 }
@@ -111,19 +111,20 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
       return true;
     }
     else{
-      std::string err;
-      err ="An error occured while loading curlget.xml for file '";
-      err+=this->filename;
-      err+="'. Error desc from TinyXML is : '";
-      err+=doc->ErrorDesc();
-      err+="'";
-      LOGE(err.c_str());
+      char err[300];
+      /* TRANSLATORS: The first parameter is the file name, the second
+	 if the error string returned by TinyXml
+       */
+	sprintf(err, _("An error occured while loading curlget.xml for \
+file '%s'. Error desc from TinyXML is : '%s'"), this->filename.c_str(), 
+		doc->ErrorDesc());
+      LOGE(err);
 
       return false;
     }
   }
   else{
-    LOGW("The writeToFile operation failed");
+    LOGW(_("The writeToFile operation failed"));
     return false;
   }
 }

@@ -2,153 +2,154 @@ lib_LTLIBRARIES = librainbrurpg-common.la
 
 librainbrurpg_common.adir=$(libdir)
 
-h_sources= rainbrudef.h				\
+# Please keep this file list sorted
+h_sources= attributemodifierlist.h		\
+	   chartbase.h				\
+	   chartserie.h				\
+	   chartline.h				\
+	   clientconnect.h			\
+	   curlaccountadd.h			\
+	   curlaccountconfirmmail.h		\
+	   curlaccountdelete.h			\
+	   curlaccounttoggleblacklist.h		\
+	   curlfiletoxml.h			\
+	   curlgetfile.h			\
 	   curlimport.h				\
-	   \
+	   curlinterface.h			\
+	   curlpersoheaderadd.h			\
+	   curlpersoheaderdelete.h		\
+	   curlpersomodifattrb.h		\
+	   curlposteddata.h			\
+	   curlserveradd.h			\
+	   curlserverdelete.h			\
+	   curlservermodifclients.h		\
+	   curlsubmitform.h			\
+	   EasyBMP.h				\
+	   enetbase.h				\
+	   enetclient.h				\
+	   ftpclient.h				\
+	   globaluri.h				\
+	   hashfile.h				\
+	   hashpassword.h			\
+	   httpresponse.h			\
+	   itemlistfile.h			\
+	   languagelistitem.h			\
+	   loadbmp.h				\
 	   logger.h				\
+	   netpacketbase.h			\
+	   netpacketflooderbase.h		\
+	   npconnectionresponse.h		\
+	   npflooder0004.h			\
+	   npidentification.h			\
+	   objectmesh.h				\
+	   objectpos.h				\
+	   options.h				\
+	   optionattribute.h			\
+	   optionboolattribute.h		\
+	   optionbutton.h			\
+	   optionfloatattribute.h		\
+	   optionfloatrangeattribute.h		\
+	   optionintattribute.h			\
+	   optionintrangeattribute.h		\
+	   optionlistattribute.h		\
+	   optionmanager.h			\
+	   optionpanel.h			\
+	   optionstringattribute.h		\
+	   ptypes.h				\
+	   rainbrudef.h				\
+	   serverlistitem.h			\
+	   sha1.h				\
+	   stringconv.h				\
+	   taccountlist.h			\
+	   timer.h				\
 	   tinystr.h				\
 	   tinyxml.h				\
-	   EasyBMP.h				\
-	   loadbmp.h				\
-	   hashpassword.h			\
-	   stringconv.h				\
-	   sha1.h				\
 	   version.h				\
-	   curlgetfile.h			\
-	   curlinterface.h			\
-	   curlsubmitform.h			\
-	   curlfiletoxml.h			\
-	   httpresponse.h			\
-	   curlposteddata.h			\
-	   curlaccountadd.h			\
 	   xmlaccountlist.h			\
-	   xmltimestamp.h			\
-	   globaluri.h				\
-	   curlaccountdelete.h			\
-	   clientconnect.h			\
 	   xmlattrbcatlist.h			\
 	   xmlattributelist.h			\
 	   xmlbonusfile.h			\
 	   xmlbonusfilelist.h			\
-	   attributemodifierlist.h		\
-	   curlpersoheaderadd.h			\
-	   xmlpersolist.h			\
-	   curlpersomodifattrb.h		\
-	   optionmanager.h			\
-	   optionbutton.h			\
-	   optionpanel.h			\
-	   optionattribute.h			\
-	   optionintattribute.h			\
-	   optionboolattribute.h		\
-	   optionintrangeattribute.h		\
-	   optionlistattribute.h		\
-	   optionstringattribute.h		\
-	   optionfloatattribute.h		\
-	   optionfloatrangeattribute.h		\
-	   options.h				\
-	   xmloptions.h				\
-	   languagelistitem.h			\
 	   xmllanguage.h			\
 	   xmlobjectlist.h			\
-	   objectmesh.h				\
-	   objectpos.h				\
+	   xmloptions.h				\
+	   xmlpersolist.h			\
 	   xmlserverlist.h			\
-	   curlserveradd.h			\
-	   curlserverdelete.h			\
-	   curlservermodifclients.h		\
-	   taccountlist.h			\
-	   curlaccountconfirmmail.h		\
-	   curlaccounttoggleblacklist.h		\
-	   netpacketbase.h			\
-	   npidentification.h			\
-	   enetbase.h				\
-	   enetclient.h				\
-	   npconnectionresponse.h		\
-	   chartbase.h				\
-	   chartserie.h				\
-	   chartline.h				\
-	   npflooder0004.h			\
-	   netpacketflooderbase.h		\
-	   timer.h				\
-	   ftpclient.h				\
-	   itemlistfile.h			\
-	   curlpersoheaderdelete.h		\
-	   hashfile.h				\
-	   serverlistitem.h			\
-	   ptypes.h
+	   xmltimestamp.h
 
-
-cc_sources= loadbmp.cpp				\
+# Please keep this file list sorted
+cc_sources=attributemodifierlist.cpp		\
+	  chartbase.cpp				\
+	  chartline.cpp				\
+	  chartserie.cpp			\
+	  clientconnect.cpp			\
+	  curlaccountadd.cpp			\
+	  curlaccountconfirmmail.cpp		\
+	  curlaccountdelete.cpp			\
+	  curlaccounttoggleblacklist.cpp	\
+	  curlfiletoxml.cpp			\
+	  curlgetfile.cpp			\
+	  curlinterface.cpp			\
+	  curlpersoheaderadd.cpp		\
+	  curlpersoheaderdelete.cpp		\
+	  curlpersomodifattrb.cpp		\
+	  curlposteddata.cpp			\
+	  curlserveradd.cpp			\
+	  curlserverdelete.cpp			\
+	  curlservermodifclients.cpp		\
+	  curlsubmitform.cpp			\
+	  enetbase.cpp				\
+	  enetclient.cpp			\
+	  EasyBMP.cpp				\
+	  ftpclient.cpp				\
+	  globaluri.cpp				\
+	  hashfile.cpp				\
+	  hashpassword.cpp			\
+	  httpresponse.cpp			\
+	  itemlistfile.cpp			\
+	  languagelistitem.cpp			\
+	  loadbmp.cpp				\
+	  logger.cpp				\
+	  netpacketbase.cpp			\
+	  netpacketflooderbase.cpp		\
+	  npconnectionresponse.cpp		\
+	  npflooder0004.cpp			\
+	  npidentification.cpp			\
+	  objectmesh.cpp			\
+	  objectpos.cpp				\
+	  optionattribute.cpp			\
+	  optionbutton.cpp			\
+	  optionboolattribute.cpp		\
+	  optionfloatattribute.cpp		\
+	  optionfloatrangeattribute.cpp		\
+	  optionintattribute.cpp		\
+	  optionintrangeattribute.cpp		\
+	  optionlistattribute.cpp		\
+	  optionmanager.cpp			\
+	  optionpanel.cpp			\
+	  options.cpp				\
+	  optionstringattribute.cpp		\
+	  serverlistitem.cpp			\
+	  sha1.cpp				\
+	  stringconv.cpp			\
+	  timer.cpp				\
 	  tinystr.cpp				\
 	  tinyxml.cpp				\
 	  tinyxmlerror.cpp			\
 	  tinyxmlparser.cpp			\
-	  EasyBMP.cpp				\
-	  logger.cpp				\
-	  hashpassword.cpp			\
-	  stringconv.cpp			\
-	  sha1.cpp				\
 	  version.cpp				\
-	  curlgetfile.cpp			\
-	  curlinterface.cpp			\
-	  curlsubmitform.cpp			\
-	  curlfiletoxml.cpp			\
-	  httpresponse.cpp			\
-	  curlposteddata.cpp			\
-	  curlaccountadd.cpp			\
 	  xmlaccountlist.cpp			\
-	  xmltimestamp.cpp			\
-	  globaluri.cpp				\
-	  curlaccountdelete.cpp			\
-	  clientconnect.cpp			\
 	  xmlattrbcatlist.cpp			\
 	  xmlattributelist.cpp			\
 	  xmlbonusfile.cpp			\
 	  xmlbonusfilelist.cpp			\
-	  attributemodifierlist.cpp		\
-	  curlpersoheaderadd.cpp		\
-	  xmlpersolist.cpp			\
-	  curlpersomodifattrb.cpp		\
-	  optionmanager.cpp			\
-	  optionbutton.cpp			\
-	  optionpanel.cpp			\
-	  optionattribute.cpp			\
-	  optionintattribute.cpp		\
-	  optionboolattribute.cpp		\
-	  optionintrangeattribute.cpp		\
-	  optionlistattribute.cpp		\
-	  optionstringattribute.cpp		\
-	  optionfloatattribute.cpp		\
-	  optionfloatrangeattribute.cpp		\
-	  options.cpp				\
-	  xmloptions.cpp			\
-	  languagelistitem.cpp			\
 	  xmllanguage.cpp			\
 	  xmlobjectlist.cpp			\
-	  objectmesh.cpp			\
-	  objectpos.cpp				\
-	  xmlserverlist.cpp			\
-	  curlserveradd.cpp			\
-	  curlserverdelete.cpp			\
-	  curlservermodifclients.cpp		\
-	  curlaccountconfirmmail.cpp		\
-	  curlaccounttoggleblacklist.cpp	\
-	  netpacketbase.cpp			\
-	  npidentification.cpp			\
-	  enetbase.cpp				\
-	  enetclient.cpp			\
-	  npconnectionresponse.cpp		\
-	  chartbase.cpp				\
-	  chartserie.cpp			\
-	  chartline.cpp				\
-	  npflooder0004.cpp			\
-	  netpacketflooderbase.cpp		\
-	  timer.cpp				\
-	  ftpclient.cpp				\
-	  itemlistfile.cpp			\
-	  curlpersoheaderdelete.cpp		\
-	  hashfile.cpp				\
-	  serverlistitem.cpp
+	  xmloptions.cpp			\
+	  xmlpersolist.cpp			\
+	  xmltimestamp.cpp			\
+	  xmlserverlist.cpp
+
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)

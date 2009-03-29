@@ -24,6 +24,7 @@
   * Defines a class used to add a server in the server list
   *
   * Modifications :
+  * - 28 mar 2009 : Now using gettext
   * - 26 jun 2007 : Adding 'uniqueName' and 'type'
   * - 28 may 2007 : Adding the 'ftp' key
   *
@@ -36,6 +37,8 @@
 #include <globaluri.h>
 #include <curlsubmitform.h>
 #include <xmlserverlist.h>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network;

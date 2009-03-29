@@ -24,6 +24,7 @@
   * Defines the class needed to delete accounts
   *
   * Modification :
+  * - 26 mar 2009 : Now uses gettext compliant strings
   * - 02 mar 2007 : Renamed CurlAccountDelete (was CurlPlayerDelete)
   * - 02 mar 2007 : Adds setName()
   *         
@@ -33,6 +34,7 @@
 #define CURL_ACCOUNT_DELETE_H
 
 #include "curlsubmitform.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

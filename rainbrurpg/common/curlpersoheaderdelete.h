@@ -24,6 +24,7 @@
   * Defines how to delete the header of a perso
   *
   * Modifications : 
+  * - 27 mar 2009 : Added the gettext stuff include
   * - 04 aug 2008 : Doxygen single file documentation
   *
   */
@@ -33,6 +34,7 @@
 
 #include <string>
 
+#include "rainbrudef.h" // For gettext stuff
 #include "globaluri.h"
 #include "curlsubmitform.h"
 #include "xmlpersolist.h"

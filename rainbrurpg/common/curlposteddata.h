@@ -24,6 +24,7 @@
   * Defines a class used to compute data for a form submit action
   *
   * Modification :
+  * - 27 mar 2009 : Now using gettext
   * - 04 aug 2008 : File documentation
   * - 02 mar 2007 : An include to xmlplayerlist deleted
   *         
@@ -39,7 +40,7 @@
 #include <time.h>
 #include <string>
 
-//#include "xmlplayerlist.h"
+#include "rainbrudef.h" // For the gettext stuff
 #include "logger.h"
 
 using namespace std;

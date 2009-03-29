@@ -147,10 +147,13 @@ mouseMove(unsigned int px, unsigned int py){
 
 /** Set the right button state
   *
+  * This function is called from BetaGUI::GUI::injectRightMouseButtonPressed;
+  *
   * \param vPressed The new value
   *
   */
-void RainbruRPG::OgreGui::MouseEvent::setRightMouseButtonPressed(bool vPressed){
+void RainbruRPG::OgreGui::MouseEvent::
+setRightMouseButtonPressed(bool vPressed){
   mRightMouseButtonPressed = vPressed;
 }
 

@@ -68,7 +68,7 @@ bool RainbruRPG::Network::Ident::CurlAccountDelete::controlBefore(){
 
   // The name is empty
   if (strlen(name)==0){
-    errmsg="The player's name is empty";
+    errmsg=_("The player's name is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -78,7 +78,7 @@ bool RainbruRPG::Network::Ident::CurlAccountDelete::controlBefore(){
 
   // The player does not exists
   if (!xml->isAccountExisting(name)){
-    errmsg="The player does not exists";
+    errmsg=_("The player does not exists");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
 
@@ -105,7 +105,7 @@ bool RainbruRPG::Network::Ident::CurlAccountDelete::controlAfter(){
   tAccountListItem *it=xml->getAccount(name);
 
   if (it){
-    errmsg="The player exists";
+    errmsg=_("The player exists");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;

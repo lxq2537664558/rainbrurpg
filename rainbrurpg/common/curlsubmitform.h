@@ -24,6 +24,7 @@
   * Defines a class used to fill a form and submit it
   *
   * Modification :
+  * - 23 mar 2009 : Now uses gettext
   * - 05 aug 2008 : Single file documentation added
   * - 02 mar 2007 : Some functions become protected: 
   *            \ref RainbruRPG::Network::Ident::CurlSubmitForm::setPostedData() 
@@ -42,6 +43,7 @@
 #include <vector>
 #include <curl/curl.h>
 
+#include "rainbrudef.h"
 #include "curlinterface.h"
 #include "curlposteddata.h"
 #include "hashpassword.h"

@@ -52,7 +52,7 @@ RainbruRPG::Network::Ident::CurlInterface::~CurlInterface(){
   * \return true if successfull otherwise false.
   */
 bool RainbruRPG::Network::Ident::CurlInterface::init(){
-  LOGI("Initializing the libcurl interface");
+  LOGI(_("Initializing the libcurl interface"));
   handle=curl_easy_init();
 
   if (handle){
@@ -60,7 +60,7 @@ bool RainbruRPG::Network::Ident::CurlInterface::init(){
   }
   else{
 
-    LOGE("An error occured during the libcurl iitialization");
+    LOGE(_("An error occured during the libcurl iitialization"));
 
     return false;
   }
@@ -71,14 +71,14 @@ bool RainbruRPG::Network::Ident::CurlInterface::init(){
   * \return Currently always returns true
   */
 bool RainbruRPG::Network::Ident::CurlInterface::cleanup(){
-  LOGI("Cleaning up the libcurl interface");
+  LOGI(_("Cleaning up the libcurl interface"));
 
   if (handle){
     curl_easy_cleanup( handle );
     handle=NULL;
   }
   else{
-    LOGW("Calling cleanup on a non-existing handle");
+    LOGW(_("Calling cleanup on a non-existing handle"));
   }
   return true;
 }
@@ -89,13 +89,12 @@ bool RainbruRPG::Network::Ident::CurlInterface::cleanup(){
   * \param f The function parameter
   */
 void RainbruRPG::Network::Ident::CurlInterface::setWriteFunction(void* f){
-  LOGI("Setting up a custom WriteFunction");
-
+  LOGI(_("Setting up a custom WriteFunction"));
 
   if (handle)
     curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, f);
   else
-    LOGW("Cannot set a WriteFunction, the handle is undefined");
+    LOGW(_("Cannot set a WriteFunction, the handle is undefined"));
 }
 
 /** Returns the last server response
@@ -137,8 +136,7 @@ void RainbruRPG::Network::Ident::CurlInterface::setCustomErrorMessage(
 						      const char* msg){
 
   if (strlen(customErrorMessage)!=0){
-    LOGW("A customErrorMessage already exists. "
-	 "Only the first message is kept");
+   LOGW(_("A customErrorMessage already exists. Keeping only the first one."));
   }
   else{
     customErrorMessage=msg;

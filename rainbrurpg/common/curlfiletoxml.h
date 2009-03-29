@@ -24,6 +24,7 @@
   * Defines a class to get a file from curl and pass it to TinyXml
   *
   * Modifications :
+  * - 26 mar 2009 : Now using gettext
   * - 16 jan 2009 : Adding a constructor initializer for the doc pointer
   * - 29 jul 2007 : getXMLTextFromName is now implemented here
   *
@@ -33,8 +34,8 @@
 #define CURL_FILE_TO_XML
 
 #include "curlimport.h"
-
 #include "curlgetfile.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 // Forward declarations
 class TiXmlDocument;

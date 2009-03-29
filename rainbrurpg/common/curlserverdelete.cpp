@@ -86,7 +86,7 @@ bool RainbruRPG::Network::Ident::CurlServerDelete::controlBefore(){
 
   // The name is empty
   if (strlen(name)==0){
-    errmsg="The new server's name is empty";
+    errmsg=_("The server's name is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;

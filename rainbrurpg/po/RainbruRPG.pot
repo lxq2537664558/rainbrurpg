@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-03-21 17:33+0100\n"
+"POT-Creation-Date: 2009-03-28 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,4 +210,222 @@ msgstr ""
 #. Do not translate it.
 #: common/curlaccountconfirmmail.cpp:142
 msgid "controlAfter() : account not found"
+msgstr ""
+
+#: common/curlaccountdelete.cpp:71
+msgid "The player's name is empty"
+msgstr ""
+
+#: common/curlaccountdelete.cpp:81
+msgid "The player does not exists"
+msgstr ""
+
+#: common/curlaccountdelete.cpp:108
+msgid "The player exists"
+msgstr ""
+
+#: common/curlfiletoxml.cpp:92
+msgid "Returning a NULL xml document"
+msgstr ""
+
+#. TRANSLATORS: The first parameter is the file name, the second
+#. if the error string returned by TinyXml
+#.
+#: common/curlfiletoxml.cpp:118
+#, c-format
+msgid ""
+"An error occured while loading curlget.xml for file '%s'. Error desc from "
+"TinyXML is : '%s'"
+msgstr ""
+
+#: common/curlfiletoxml.cpp:127
+msgid "The writeToFile operation failed"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of the file we are
+#. about to write.
+#: common/curlgetfile.cpp:92
+#, c-format
+msgid "Performing CurlGetFile writeToFile action, filename : %s"
+msgstr ""
+
+#: common/curlgetfile.cpp:98
+msgid "The curl handle was not properly initialized"
+msgstr ""
+
+#: common/curlgetfile.cpp:110 common/curlsubmitform.cpp:111
+msgid "Setting the licurl URL"
+msgstr ""
+
+#: common/curlgetfile.cpp:127 common/curlsubmitform.cpp:104
+msgid "Error opening the FILE pointer"
+msgstr ""
+
+#: common/curlgetfile.cpp:137
+msgid "An error occured during CurlGetFile::writeToFile()."
+msgstr ""
+
+#: common/curlgetfile.cpp:141
+msgid "Getting the last HTTP server status code"
+msgstr ""
+
+#: common/curlgetfile.cpp:148
+msgid "The CurlGetInfo was successfull"
+msgstr ""
+
+#: common/curlgetfile.cpp:152
+msgid "HTTP server returns SUCCESS."
+msgstr ""
+
+#: common/curlgetfile.cpp:156
+msgid "HTTP server returns an error status code :"
+msgstr ""
+
+#: common/curlgetfile.cpp:164
+msgid "An error occured during CurlGetInfo operation"
+msgstr ""
+
+#: common/curlinterface.cpp:55
+msgid "Initializing the libcurl interface"
+msgstr ""
+
+#: common/curlinterface.cpp:63
+msgid "An error occured during the libcurl iitialization"
+msgstr ""
+
+#: common/curlinterface.cpp:74
+msgid "Cleaning up the libcurl interface"
+msgstr ""
+
+#: common/curlinterface.cpp:81
+msgid "Calling cleanup on a non-existing handle"
+msgstr ""
+
+#: common/curlinterface.cpp:92
+msgid "Setting up a custom WriteFunction"
+msgstr ""
+
+#: common/curlinterface.cpp:97
+msgid "Cannot set a WriteFunction, the handle is undefined"
+msgstr ""
+
+#: common/curlinterface.cpp:139
+msgid "A customErrorMessage already exists. Keeping only the first one."
+msgstr ""
+
+#. TRANSLATORS: Here, CurlPostedData is a class name. Do not translate it
+#: common/curlposteddata.cpp:38
+msgid "Creating a CurlPostedData structure"
+msgstr ""
+
+#: common/curlposteddata.cpp:59
+msgid "Adding a key to the CurlPostedData list"
+msgstr ""
+
+#: common/curlposteddata.cpp:61
+msgid "Trying to add a empty key to the CurlPostedData list. Aborded"
+msgstr ""
+
+#: common/curlposteddata.cpp:74
+msgid "Debugging CurlPostedData key list : "
+msgstr ""
+
+#: common/curlposteddata.cpp:91
+msgid "Adding an auto timestamp"
+msgstr ""
+
+#: common/curlposteddata.cpp:100
+msgid "Setting an auto timestamp while a custom timestamp already exists"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a CurlPostedData key.
+#: common/curlposteddata.cpp:132
+#, c-format
+msgid "In CurlPostedData::getValue() : this key cannot be found : '%s'"
+msgstr ""
+
+#: common/curlposteddata.cpp:152
+msgid "Setting the value of a key (std::string form)"
+msgstr ""
+
+#: common/curlposteddata.cpp:163
+msgid "Computing posted data..."
+msgstr ""
+
+#: common/curlposteddata.cpp:174
+#, c-format
+msgid "The key '%s' has no value."
+msgstr ""
+
+#: common/curlposteddata.cpp:201
+msgid "Setting the value of a key (const char* form)"
+msgstr ""
+
+#: common/curlposteddata.cpp:208
+msgid "The key was found"
+msgstr ""
+
+#: common/curlposteddata.cpp:210
+msgid "Setting a custom timestamp"
+msgstr ""
+
+#: common/curlposteddata.cpp:223
+#, c-format
+msgid "The key called '%s' was not found"
+msgstr ""
+
+#: common/curlserveradd.cpp:80
+msgid "The new server's listening port is empty"
+msgstr ""
+
+#: common/curlserveradd.cpp:88
+msgid "The new server's IP address is empty"
+msgstr ""
+
+#: common/curlserveradd.cpp:96
+msgid "The new server's name is empty"
+msgstr ""
+
+#: common/curlserverdelete.cpp:89
+msgid "The server's name is empty"
+msgstr ""
+
+#: common/curlsubmitform.cpp:45
+msgid "Performing CurlSubmitForm action..."
+msgstr ""
+
+#: common/curlsubmitform.cpp:57
+msgid "CurlSubmitForm controlAfter() failed..."
+msgstr ""
+
+#: common/curlsubmitform.cpp:62
+msgid "CurlSubmitForm failed to submit form..."
+msgstr ""
+
+#: common/curlsubmitform.cpp:67
+msgid "CurlSubmitForm failed to compute posted data..."
+msgstr ""
+
+#: common/curlsubmitform.cpp:72
+msgid "CurlSubmitForm controlBefore() failed..."
+msgstr ""
+
+#: common/curlsubmitform.cpp:149
+msgid "The form was successfully submited"
+msgstr ""
+
+#: common/curlsubmitform.cpp:153
+msgid "An error occured during submitForm"
+msgstr ""
+
+#: common/curlsubmitform.cpp:167
+msgid "Setting server response successfull"
+msgstr ""
+
+#: common/curlsubmitform.cpp:170
+msgid "Cannot get the server response"
+msgstr ""
+
+#: common/curlsubmitform.cpp:213
+msgid "Adding a Pwd Data to post"
 msgstr ""

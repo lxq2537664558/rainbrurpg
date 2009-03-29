@@ -24,6 +24,7 @@
   * Defines a common base for all libcUrl based classes
   * 
   * Modifications :
+  * - 29 mar 2009 : Now using gettext 
   * - 03 aug 2007 : removing default write function
   * - 29 jul 2007 : setFilename and getFilename removed
   * - 03 mar 2007 : Some functions become protected :
@@ -41,6 +42,7 @@
 #include <string>
 #include <vector>
 
+#include "rainbrudef.h"
 #include "logger.h"
 
 using namespace std;

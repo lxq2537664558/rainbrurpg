@@ -102,10 +102,10 @@ bool RainbruRPG::Network::CurlPersoModifAttrb::controlAfter(){
   }
   else{
     if (strcmp(name, itname)==0){
-      LOGI("The name is the same");
+      LOGI(_("The name is the same"));
     }
     else{
-      LOGW("The name is not the same");
+      LOGW(_("The name is not the same"));
       ret=false;
     }
 
@@ -114,22 +114,20 @@ bool RainbruRPG::Network::CurlPersoModifAttrb::controlAfter(){
     HashPassword hp;
     bool retpwd=hp.compare(pwd, itpwd);
     if (retpwd){
-      LOGI("The password is the same");
+      LOGI(_("The password is the same"));
     }
     else{
-      LOGW("The password is not the same");
-      LOGW(pwd);
-      LOGW(itpwd);
+      LOGW(_("The password is not the same"));
       
       ret=false;
     }
 
     // control Mail
     if (strcmp(mail, itmail)==0){
-      LOGI("The mail adress is the same");
+      LOGI(_("The mail adress is the same"));
     }
     else{
-      LOGW("The mail adress is not the same");
+      LOGW(_("The mail adress is not the same"));
       ret=false;
     }
   }

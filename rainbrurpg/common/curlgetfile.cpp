@@ -86,13 +86,16 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   boost::filesystem::path path("curlget.xml");
   boost::filesystem::remove(path);
 
-  LOGI("Performing CurlGetFile writeToFile action, filename :");
-  LOGCATS( this->filename.c_str() );
-  LOGCAT();
+  char msg[100];
+  // TRANSLATORS: The parameter is the name of the file we are
+  // about to write.
+  sprintf(msg, _("Performing CurlGetFile writeToFile action, filename : %s"),
+	  this->filename.c_str());
+  LOGI(msg);
 
   handle=curl_easy_init();
   if (handle==NULL){
-    LOGE("The curl handle was not properly initialized");
+    LOGE(_("The curl handle was not properly initialized"));
     ret= false;
   }
 
@@ -104,7 +107,7 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   curl_easy_setopt(handle, CURLOPT_USERPWD, a);
 
   // Curl URL setting
-  LOGI("==> Setting the licurl URL");
+  LOGI(_("Setting the licurl URL"));
   std::string s=filename;
 
   // Think about the \0 terminating string	       
@@ -121,7 +124,7 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   // cUrl write function
   FILE* f;
   if ((f = fopen("curlget.xml", "w")) == NULL){
-    LOGE("Error opening the FILE pointer");
+    LOGE(_("Error opening the FILE pointer"));
   }
   else{
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, f);
@@ -131,26 +134,26 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
 
   // Error handling
   if (success!=0){
-    LOGE("An error occured during CurlGetFile::writeToFile().");
+    LOGE(_("An error occured during CurlGetFile::writeToFile()."));
     ret= false;
   }
   else{
-    LOGI("Getting the last HTTP server status code");
+    LOGI(_("Getting the last HTTP server status code"));
 
     // Get the last response code
     CURLcode a=curl_easy_getinfo(handle, CURLINFO_RESPONSE_CODE, 
 				 &serverResponse);
     
     if (a==0){
-       LOGI("The CurlGetInfo was successfull");
+      LOGI(_("The CurlGetInfo was successfull"));
  
       /** A 2xx response is a success */
        if (serverResponse>199 & serverResponse<300){
-	 LOGI("HTTP server returns SUCCESS.");
+	 LOGI(_("HTTP server returns SUCCESS."));
 	 ret= true;
        }
        else{
-	 LOGW("HTTP server returns an error status code :");
+	 LOGW(_("HTTP server returns an error status code :"));
 	 HttpResponse h;
 	 LOGW(h.getMessage(serverResponse));
 
@@ -158,7 +161,7 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
        }
     }
     else{
-      LOGW("An error occured during CurlGetInfo operation");
+      LOGW(_("An error occured during CurlGetInfo operation"));
       ret= false;
     }
   }

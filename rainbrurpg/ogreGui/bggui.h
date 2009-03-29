@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 27 mar 2009 : Fix a bug in the right mouse button handling
   * - 28 jan 2009 : Added assertion in getMousePointer()
   * - 15 oct 2008 : Become a Singleton
   * - 18 aug 2008 : Single file documentation

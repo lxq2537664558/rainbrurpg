@@ -75,31 +75,9 @@ bool RainbruRPG::Network::Ident::CurlServerAdd::controlBefore(){
   const char* cli=postedData.getValue("maxClients");
   const char* errmsg;
 
-  LOGI("Testing posted data :");
-
-  LOGCATS("Server name : '");
-  LOGCATS(name);
-  LOGCATS("'");
-  LOGCAT();
-
-  LOGCATS("Server IP : '");
-  LOGCATS(ip);
-  LOGCATS("'");
-  LOGCAT();
-
-  LOGCATS("Server port : '");
-  LOGCATS(port);
-  LOGCATS("'");
-  LOGCAT();
-
-  LOGCATS("Server maxClients : '");
-  LOGCATS(cli);
-  LOGCATS("'");
-  LOGCAT();
-
   // The port adress is empty
   if (strlen(port)==0){
-    errmsg="The new server's listening port adress is empty";
+    errmsg=_("The new server's listening port is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -107,7 +85,7 @@ bool RainbruRPG::Network::Ident::CurlServerAdd::controlBefore(){
 
   // The IP adress is empty
   if (strlen(ip)==0){
-    errmsg="The new server's IP adress is empty";
+    errmsg=_("The new server's IP address is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;
@@ -115,7 +93,7 @@ bool RainbruRPG::Network::Ident::CurlServerAdd::controlBefore(){
 
   // The name is empty
   if (strlen(name)==0){
-    errmsg="The new server's name is empty";
+    errmsg=_("The new server's name is empty");
     setCustomErrorMessage(errmsg);
     LOGW(errmsg);
     ret=false;

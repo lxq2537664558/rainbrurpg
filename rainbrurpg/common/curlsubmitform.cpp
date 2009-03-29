@@ -42,7 +42,7 @@ RainbruRPG::Network::Ident::CurlSubmitForm::CurlSubmitForm(){
   */
 bool RainbruRPG::Network::Ident::CurlSubmitForm::perform(){
   bool ret=false;
-  LOGI("Performing CurlSubmitForm action...");
+  LOGI(_("Performing CurlSubmitForm action..."));
   if (controlBefore()){
     // Control before success
     if (computePostedData()){
@@ -54,22 +54,22 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::perform(){
 	  ret=true;
 	}
 	else{
-	  LOGW("CurlSubmitForm controlAfter() failed...");
+	  LOGW(_("CurlSubmitForm controlAfter() failed..."));
 	  ret=false;
 	}
       }
       else{
-	LOGW("CurlSubmitForm failed to submit form...");
+	LOGW(_("CurlSubmitForm failed to submit form..."));
 	ret=false;
       }
     }
     else{
-      LOGW("CurlSubmitForm failed to compute posted data...");
+      LOGW(_("CurlSubmitForm failed to compute posted data..."));
       ret=false;
     }
   }
   else{
-    LOGW("CurlSubmitForm controlBefore() failed...");
+    LOGW(_("CurlSubmitForm controlBefore() failed..."));
     ret=false;
   }
   return ret;
@@ -101,14 +101,14 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   // not write to stdout)
   FILE* f;
   if ((f = fopen("curlget.xml", "w")) == NULL){
-    LOGE("Error opening the FILE pointer");
+    LOGE(_("Error opening the FILE pointer"));
   }
   else{
     curl_easy_setopt(handle, CURLOPT_WRITEDATA, f);
   }
 
   // Curl URL setting
-  LOGI("==> Setting the licurl URL");
+  LOGI(_("Setting the licurl URL"));
   std::string s2=filename;
   // Penser au 0 terminal	       
   int len2 = s2.length() + 1;
@@ -146,11 +146,11 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
   CURLcode success=curl_easy_perform(handle); /* post away! */
 
   if (success==0){
-    LOGI("The form was successfully submited");
+    LOGI(_("The form was successfully submited"));
     ret=true;
   }
   else{
-    LOGW("An error occured during submitForm");
+    LOGW(_("An error occured during submitForm"));
   }
 
 
@@ -164,10 +164,10 @@ bool RainbruRPG::Network::Ident::CurlSubmitForm::submitForm(){
     ret=false;
 
   if (a==0){
-    LOGI("Setting server response successfull");
+    LOGI(_("Setting server response successfull"));
   }
   else{
-    LOGW("Cannot get the server response");
+    LOGW(_("Cannot get the server response"));
   }
 
   curl_easy_cleanup( handle );
@@ -210,7 +210,7 @@ const char* RainbruRPG::Network::Ident::CurlSubmitForm::getComputedData(){
 void RainbruRPG::Network::Ident::CurlSubmitForm::setPostedPwd(
 	                  const char* key, const char* value){
 
-  LOGI("Adding a Pwd Data to post");
+  LOGI(_("Adding a Pwd Data to post"));
 
   HashPassword hp;
   std::string hash= hp.encryptString( value );

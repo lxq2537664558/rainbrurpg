@@ -24,6 +24,7 @@
   * Defines a class used to delete a server in the server list
   *
   * Modifications :
+  * - 28 mar 2009 : Now uses gettext
   * - 04 aug 2008 : Files documented
   *
   */
@@ -35,6 +36,8 @@
 #include <globaluri.h>
 #include <curlsubmitform.h>
 #include <xmlserverlist.h>
+
+#include "rainbrudef.h"
 
 using namespace std;
 using namespace RainbruRPG::Network;

@@ -1,3 +1,21 @@
+2009-03-28 Jerome Pasquier  <rainbru@free.fr>
+	* common/curlsubmit.cpp : now uses gettext.
+	* common/curlservermodifclients.cpp : now uses gettext.
+	* common/curlserverdelete.cpp : now uses gettext.
+	* common/curlserveradd.cpp : now uses gettext.
+	
+	* common/Makefile.in : header/sources lists now sorted.
+
+2009-03-27 Jerome Pasquier  <rainbru@free.fr>
+	* common/curlposteddata.cpp : Now uses gettext.
+	* common/curlgetfile.cpp : Now uses gettext.
+	* common/curlgetfile.cpp : Prepare strings to be translated
+	using sprintf instead of LOGCAT*.
+	
+	* ogreGui/bggui.cpp (injectRightMouseButtonPressed): Fix a bug
+	in the right mouse button handling that avoid the drawing of
+	the PopupMenu of the MultiColumnList.
+	
 2009-03-18  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (SUBDIRS): Add po.

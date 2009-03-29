@@ -24,6 +24,7 @@
   * Declare a class used to get a file using cUrl
   *
   * Modification :
+  * - 27 mar 2009 : Now using gettext 
   * - 03 aug 2007 : downloadComplete implementation
   * - 31 jul 2007 : Remove curlget.xml
   * - 02 mar 2007 : Using LOGCAT() instead of cout
@@ -39,6 +40,7 @@
 #define DO_NOT_INCLUDE_WRITE_DATA
 
 #include "curlinterface.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Network {

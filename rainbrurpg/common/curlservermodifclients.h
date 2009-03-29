@@ -24,6 +24,7 @@
   * Defines a class to modify connected clients number of a server
   *
   * Modifications :
+  * - 28 mar 2009 : Now uses gettext
   * - 05 aug 2008 : File documentation added
   *
   */
@@ -36,6 +37,8 @@
 #include <curlsubmitform.h>
 #include <xmlserverlist.h>
 #include <stringconv.h>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Core;

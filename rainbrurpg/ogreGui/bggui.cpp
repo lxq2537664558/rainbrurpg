@@ -8,7 +8,7 @@
  */
 
 /** \file bggui.cpp
-  * Declares te GUI system object
+  * Declares the GUI system object
   *
   * <pre>
   * Betajaen's GUI 015
@@ -586,5 +586,12 @@ void BetaGUI::GUI::disableFocusedWidget(void){
   */
 void BetaGUI::GUI::injectRightMouseButtonPressed(const std::string& str){
   mMouseEvent.setRightMouseButtonPressed(true);
+  /* v0.0.5-191 : The following call draws the MultiColumnList's PopupMenu
+   *
+   * If it is not here, the injectMouseButtonRelease() function
+   * will be call before we handle the new state of the RMB.
+   *
+   */
+  handleWindowsEvents();
 }
 

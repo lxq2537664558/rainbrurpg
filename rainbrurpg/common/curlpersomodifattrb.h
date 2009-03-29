@@ -24,6 +24,7 @@
   * Defines how to submit an attribute modification
   *
   * Modifications :
+  * - 27 mar 2009 : Now using gettext
   * - 04 aug 2008 : File documentation
   *
   */
@@ -31,6 +32,7 @@
 #ifndef CURL_PERSO_MODIF_ATTRB_H
 #define CURL_PERSO_MODIF_ATTRB_H
 
+#include "rainbrudef.h"     // For the gettext stuff
 #include "globaluri.h"
 #include "curlsubmitform.h"
 #include "xmlpersolist.h"

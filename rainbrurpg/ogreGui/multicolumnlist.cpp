@@ -416,7 +416,8 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
       return true;
     }
   }
-  if (event.isRightMouseButtonPressed()){
+
+  if (event.isRightMouseButtonPressed() == true){
     LOGI("Showing PopupMenu");
     mPopupMenu->move( px, py);
     mPopupMenu->show();

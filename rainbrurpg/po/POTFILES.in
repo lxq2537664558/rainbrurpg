@@ -8,3 +8,15 @@ common/chartserie.cpp
 common/clientconnect.cpp
 common/curlaccountadd.cpp
 common/curlaccountconfirmmail.cpp
+common/curlaccountdelete.cpp
+common/curlaccounttoggleblacklist.cpp
+common/curlfiletoxml.cpp
+common/curlgetfile.cpp
+common/curlinterface.cpp
+common/curlpersoheaderadd.cpp
+common/curlpersoheaderdelete.cpp
+common/curlposteddata.cpp
+common/curlserveradd.cpp
+common/curlserverdelete.cpp
+common/curlservermodifclients.cpp
+common/curlsubmitform.cpp

@@ -34,7 +34,8 @@
   * It actually set customTimestamp to false and create the PostedDataKeyList.
   */
 RainbruRPG::Network::Ident::CurlPostedData::CurlPostedData(){
-  LOGI("Creating a posted data structure");
+  // TRANSLATORS: Here, CurlPostedData is a class name. Do not translate it
+  LOGI(_("Creating a CurlPostedData structure"));
   customTimestamp=false;
   list=new PostedDataKeyList();
 }
@@ -55,9 +56,9 @@ RainbruRPG::Network::Ident::CurlPostedData::~CurlPostedData(){
   * \param key The key to add.
   */
 void RainbruRPG::Network::Ident::CurlPostedData::addKey(const char* key){
-  LOGI("Adding a key to the CurlPostedData list");
+  LOGI(_("Adding a key to the CurlPostedData list"));
   if (strlen(key)==0){
-    LOGW("Trying to add a empty key to the CurlPostedData list. Aborded");
+    LOGW(_("Trying to add a empty key to the CurlPostedData list. Aborded"));
   }
   else{
     list->push_back(key);
@@ -69,7 +70,8 @@ void RainbruRPG::Network::Ident::CurlPostedData::addKey(const char* key){
   * It prints in the standard output (cout) the kay list.
   */
 void RainbruRPG::Network::Ident::CurlPostedData::debugKeyList(){
-  LOGI("Debugging CurlPostedData key list");
+
+  LOGI(_("Debugging CurlPostedData key list : "));
   for(PostedDataKeyList::iterator iter = list->begin();
       iter != list->end(); iter++){
     LOGCATS((*iter));
@@ -86,7 +88,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::debugKeyList(){
   * \param key The key that will receive the timestamp.
   */
 void RainbruRPG::Network::Ident::CurlPostedData::setTimestamp(const char* key){
-  LOGI("Adding an auto timestamp");
+  LOGI(_("Adding an auto timestamp"));
   if (!customTimestamp){
     time_t now=time(NULL);
     
@@ -95,7 +97,8 @@ void RainbruRPG::Network::Ident::CurlPostedData::setTimestamp(const char* key){
     this->setValue( key, o.str().c_str());
   }
   else{
-    LOGW("Setting an auto timestamp while a custom timestamp already exists");
+    LOGW(_("Setting an auto timestamp while a custom timestamp already "
+	   "exists"));
   }
 
 }
@@ -124,10 +127,11 @@ const char* RainbruRPG::Network::Ident::CurlPostedData::getValue(
     }
   }
   if (!found){
-    string err="In CurlPostedData::getValue() : this key cannot be found : '";
-    err.append(key);
-    err.append("'");
-    LOGW(err.c_str());
+    char err[180];
+    // TRANSLATORS: The parameter is the name of a CurlPostedData key.
+    sprintf(err, _("In CurlPostedData::getValue() : this key cannot "
+		   "be found : '%s'"), key);
+    LOGW(err);
     ret= "";
   }
 
@@ -145,7 +149,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
 						  const std::string& val){
 
   string snew(val);
-  LOGI("Setting the value of a key (std::string form)");
+  LOGI(_("Setting the value of a key (std::string form)"));
   setValue(key, snew.c_str());
 }
 
@@ -156,7 +160,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
   * \return The computed data string.
   */
 std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
-  LOGI( "Computing posted data..." );
+  LOGI( _("Computing posted data..." ));
   PostedDataMapIterator iter;
   //  const char* key, val;
   ostringstream oss;
@@ -166,10 +170,9 @@ std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
   for(iter = map.begin(); iter != map.end(); iter++){
 
     if (iter->second.length()==0){
-      LOGW("A key has no value : ");
-      LOGCATS("key name : ");
-      LOGCATS(iter->first);
-      LOGCAT();
+      char err[80];
+      sprintf(err, _("The key '%s' has no value."), iter->first);
+      LOGW(err);
     }
     else{
       if (first){
@@ -195,16 +198,16 @@ std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
 void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key, 
 							  const char* val){
 
-  LOGI("Setting the value of a key (const char* form)");
+  LOGI(_("Setting the value of a key (const char* form)"));
   bool found=false;
   //if the key exists in the list
   for(PostedDataKeyList::iterator iter = list->begin();
       iter != list->end(); iter++){
 
     if (strcmp((*iter), key)==0){
-      LOGI("The key was found");
+      LOGI(_("The key was found"));
       if (strcmp("timestamp", key)==0){
-	LOGI("Setting a custom timestamp");
+	LOGI(_("Setting a custom timestamp"));
 	customTimestamp=true;
 
       }
@@ -216,10 +219,9 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
   }
   
   if (!found){
-    string warn="The key you want was not found : '";
-    warn.append(key);
-    warn.append("'");
-    LOGW(warn.c_str());
+    char warn[80];
+    sprintf(warn, _("The key called '%s' was not found"), key);
+    LOGW(warn);
   }
   //  debugKeyList();
 }
