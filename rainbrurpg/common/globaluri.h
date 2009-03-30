@@ -38,8 +38,10 @@
 #ifndef GLOBAL_URI_H
 #define GLOBAL_URI_H
 
-#include "boost/filesystem/operations.hpp"
-#include "boost/filesystem/fstream.hpp"
+// Removed boost filesystem headers due to an win32 error
+//#include "boost/filesystem/operations.hpp"
+//#include "boost/filesystem/path.hpp"
+
 #include <stdlib.h>
 #include <iostream>
 #include <sstream>
@@ -53,8 +55,8 @@
 #  define WEBSITE_DEBUG
 #endif
 
-using namespace std;
-using namespace boost::filesystem;
+//using namespace std;
+//namespace fs = boost::filesystem;
 
 namespace RainbruRPG{
   namespace Network {

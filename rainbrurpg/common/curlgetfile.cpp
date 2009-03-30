@@ -26,10 +26,13 @@
   */
 #include "curlgetfile.h"
 
-#include "boost/filesystem/operations.hpp"
-#include "boost/filesystem/fstream.hpp"
 #include "loadbmp.h"
 #include "httpresponse.h"
+
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/path.hpp"
+
+namespace fs = boost::filesystem;
 
 /** The destructor
   *
@@ -38,8 +41,8 @@
   */
 RainbruRPG::Network::Ident::CurlGetFile::~CurlGetFile(){
   // Remove curlget.xml
-  boost::filesystem::path path("curlget.xml");
-  boost::filesystem::remove(path);
+  fs::path path("curlget.xml");
+  fs::remove(path);
 }
 
 /** Perform the given operation
@@ -83,8 +86,8 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   bool ret=false;
 
   // Remove curlget.xml
-  boost::filesystem::path path("curlget.xml");
-  boost::filesystem::remove(path);
+  fs::path path("curlget.xml");
+  fs::remove(path);
 
   char msg[100];
   // TRANSLATORS: The parameter is the name of the file we are

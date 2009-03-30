@@ -1,3 +1,7 @@
+2009-03-30 Carine Chum <carine.chum@free.fr>
+	* common/curlgetfile.cpp : Now using namespace alias for 
+	boost::filesystem.
+
 2009-03-28 Jerome Pasquier  <rainbru@free.fr>
 	* common/curlsubmit.cpp : now uses gettext.
 	* common/curlservermodifclients.cpp : now uses gettext.

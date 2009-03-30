@@ -24,6 +24,7 @@
   * Declare a class used to get a file using cUrl
   *
   * Modification :
+  * - 30 mar 2009 : Now using namespace alias for boost::filesystem
   * - 27 mar 2009 : Now using gettext 
   * - 03 aug 2007 : downloadComplete implementation
   * - 31 jul 2007 : Remove curlget.xml
