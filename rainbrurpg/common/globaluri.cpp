@@ -26,10 +26,13 @@
   */
 
 #include "globaluri.h"
-//#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 
 #include "../config.h"
+
+// WARNING : Uses this namespace alias to avoid compilation error
+namespace fs = boost::filesystem;
 
 /** The default constructor
   *
@@ -140,20 +143,20 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   LOGCAT();
 
   // Creating directory if inexists
-  boost::filesystem::path homePath(userDir.c_str(), 
-				   boost::filesystem::native);
+  fs::path homePath(userDir.c_str(), 
+				   fs::native);
   LOGCATS("Boost path returns '");
   LOGCATS(homePath.string().c_str());
   LOGCATS("'");
   LOGCAT();
 
-  bool ex=boost::filesystem::exists( homePath );
+  bool ex=fs::exists( homePath );
   if (ex){
     LOGI("Home directory alerady exists");
   }
   else{
     LOGI("Home directory doesn't exists, creating it");
-    boost::filesystem::create_directory( homePath );
+    fs::create_directory( homePath );
   }
 
   // Copying necessary files
@@ -180,8 +183,8 @@ getShareFile(const std::string& file)const{
   std::string s=shareDir;
   s+=file;
 
-  boost::filesystem::path test( s,boost::filesystem::native);
-  if (!boost::filesystem::exists(test)){
+  fs::path test( s,fs::native);
+  if (!fs::exists(test)){
     LOGW("The given file doesn't exist");
   }
 
@@ -215,18 +218,18 @@ installConfigFile(const std::string& filename){
   it->absoluteFileName = s2;
 
   // The boost path
-  boost::filesystem::path optionXmlPath( s, 
-	boost::filesystem::native);
-  boost::filesystem::path userOptionXmlPath( s2, 
-	boost::filesystem::native);
+  fs::path optionXmlPath( s, 
+	fs::native);
+  fs::path userOptionXmlPath( s2, 
+	fs::native);
 
   // Need to be installed
-  if (!boost::filesystem::exists(userOptionXmlPath)){
+  if (!fs::exists(userOptionXmlPath)){
     std::string msg=filename;
     msg+=" not found, copying it from $PREFIX/share";
     LOGW(msg.c_str());
 
-    boost::filesystem::copy_file(optionXmlPath, userOptionXmlPath);
+    fs::copy_file(optionXmlPath, userOptionXmlPath);
     it->needCreation=true;
   }
   else{
@@ -237,7 +240,7 @@ installConfigFile(const std::string& filename){
   }
 
   // Exists ?
-  if (boost::filesystem::exists(userOptionXmlPath)){
+  if (fs::exists(userOptionXmlPath)){
     it->exists=true;
   }
   else{
@@ -261,11 +264,11 @@ getUploadFile(const std::string& s)const{
   std::string ret=uploadDir+s;
 
   // Create the directory if not exist
-  boost::filesystem::path p(uploadDir, boost::filesystem::native);
-  if(!boost::filesystem::exists(p)){
+  fs::path p(uploadDir, fs::native);
+  if(!fs::exists(p)){
     LOGW("uploaded/ directory does not exist, creating it");
     // If the uploaded directory does not exist, create it
-    boost::filesystem::create_directory(p);
+    fs::create_directory(p);
   }
 
   return ret;
@@ -285,11 +288,11 @@ getQuarantineFile(const std::string& s)const{
   std::string ret=quarantineDir+s;
 
   // Create the directory if not exist
-  boost::filesystem::path p(quarantineDir, boost::filesystem::native);
-  if(!boost::filesystem::exists(p)){
+  fs::path p(quarantineDir, fs::native);
+  if(!fs::exists(p)){
     LOGW("quarantine/ directory does not exist, creating it");
     // If the uploaded directory does not exist, create it
-    boost::filesystem::create_directory(p);
+    fs::create_directory(p);
   }
 
   return ret;
@@ -328,25 +331,25 @@ getDownloadFile(const std::string& s, const std::string& sun,
   ret+=s;
 
   // Test if the unique directory exists
-  boost::filesystem::path p(dir, boost::filesystem::native);
-  boost::filesystem::path p2(dirWoSun, boost::filesystem::native);
-  if(boost::filesystem::exists(p)){
-    if (boost::filesystem::is_directory(p)){
+  fs::path p(dir, fs::native);
+  fs::path p2(dirWoSun, fs::native);
+  if(fs::exists(p)){
+    if (fs::is_directory(p)){
       LOGI("Downloaded/ directory exists");
 
     }
   }
   else{
     // If the downloaded directory does not exist, create it
-    if (!boost::filesystem::exists(p2)){
-	boost::filesystem::create_directory(p2);
+    if (!fs::exists(p2)){
+	fs::create_directory(p2);
 	LOGW("Downloaded/ directory does not exist, creating it");
     }
   }
 
   if (createIfMissing){
     // Create the unique name server directory
-    boost::filesystem::create_directory(p);
+    fs::create_directory(p);
   }
   else{
     LOGW("Missing unique directory not created (createIfMissing=false)");

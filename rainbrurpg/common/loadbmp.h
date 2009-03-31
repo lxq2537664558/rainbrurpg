@@ -21,9 +21,11 @@
  */
 
 /** Modifications :
+  * - 30 mar 2009 : Added boost::filesystem::operation.hpp with alias
   * - 10 jul 2008 : output now is a std::string (fix a warning)
   *
   */
+
 #ifndef LOAD_BMP_H
 #define LOAD_BMP_H
 

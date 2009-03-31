@@ -110,6 +110,7 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-192 (28 mar 2009 - ???)
+- Using namespace alias when building curlgetfile.cpp in win32
 
 * v 0.0.5-191 (15 feb 2009 - 28 mar 2009)
 - Fix a bug in the common/ Makefile

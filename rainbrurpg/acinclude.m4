@@ -296,7 +296,7 @@ AC_DEFUN([RB_CHECK_BOOST_FS],
   then	
     echo "Adding boost_filesystem flags for "mingw32msvc""
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
-    LDFLAGS="$LDFLAGS -lboost_filesystem$DLL_EXT"
+    LDFLAGS="$LDFLAGS -lboost_filesystem-1_34_1$DLL_EXT"
   else
     AC_CHECK_LIB(boost_filesystem, main, [], [
       echo "Error! You need to have Boost-filesystem installed."
@@ -531,7 +531,7 @@ AC_DEFUN([RB_CHECK_BOOST_THREAD],
   then	
     echo "Adding boost_thread flags for "mingw32msvc""
     CFLAGS="$CFLAGS"
-    LDFLAGS="$LDFLAGS -lboost_thread$DLL_EXT"
+    LDFLAGS="$LDFLAGS -lboost_thread-1_34_1$DLL_EXT"
   else
     AC_CHECK_LIB(boost_thread, main, [], [
       echo "Error! You need to have boost::thread installed."

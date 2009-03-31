@@ -21,8 +21,11 @@
  */
 
 #include "loadbmp.h"
-
 #include "globaluri.h"
+
+#include "boost/filesystem/operations.hpp"
+
+namespace fs = boost::filesystem;
 
 /** The default constructor 
   *
@@ -117,7 +120,7 @@ void RainbruRPG::Core::LoadBMP::decode(){
   a1=temp1;
 
   // remove the temp file
-  remove( output );
+  fs::remove( output );
 }
 
 /** Return the phrasepass for getting xml files from admin website

@@ -32,7 +32,10 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 
+// Seems to fix a win32 build error
 namespace fs = boost::filesystem;
+
+
 
 /** The destructor
   *
@@ -41,8 +44,8 @@ namespace fs = boost::filesystem;
   */
 RainbruRPG::Network::Ident::CurlGetFile::~CurlGetFile(){
   // Remove curlget.xml
-  fs::path path("curlget.xml");
-  fs::remove(path);
+  //  fs::path path("curlget.xml");
+  fs::remove("curlget.xml");
 }
 
 /** Perform the given operation

@@ -24,6 +24,8 @@
   * Declares types and class used to get full file names with path
   *
   * Modifications :
+  * - 30 mar 2009 : Using namespace alias for boost::filesystem to
+  *                 avoid compilation errors.
   * - 29 oct 2008 : Now using RAINBRU_EXPORT GCC visibility handler
   * - 17 mar 2008 : \ref RainbruRPG::Network::tInstalledConfigFilesList 
   *                 "tInstalledConfigFilesList" implementation
@@ -37,10 +39,6 @@
 
 #ifndef GLOBAL_URI_H
 #define GLOBAL_URI_H
-
-// Removed boost filesystem headers due to an win32 error
-//#include "boost/filesystem/operations.hpp"
-//#include "boost/filesystem/path.hpp"
 
 #include <stdlib.h>
 #include <iostream>

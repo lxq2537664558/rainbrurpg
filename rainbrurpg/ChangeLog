@@ -1,4 +1,10 @@
 2009-03-30 Carine Chum <carine.chum@free.fr>
+	* acinclude.m4 : Adding version to boost libraries names.
+	
+	* common/loadbmp.cpp : Now using namespace alias for 
+	boost::filesystem.
+	* common/globaluri.cpp : Now using namespace alias for 
+	boost::filesystem.
 	* common/curlgetfile.cpp : Now using namespace alias for 
 	boost::filesystem.
 
