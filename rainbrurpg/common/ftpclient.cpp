@@ -30,9 +30,7 @@
 #include "logger.h"
 #include "stringconv.h"
 
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-#include <boost/thread/thread.hpp>
+#include "include_boost.h"
 
 /** The default constructor
   *

@@ -26,8 +26,8 @@
   */
 
 #include "globaluri.h"
-#include "boost/filesystem/operations.hpp"
-#include "boost/filesystem/path.hpp"
+#include "include_boost.h"
+
 
 #include "../config.h"
 

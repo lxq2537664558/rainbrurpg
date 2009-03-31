@@ -56,8 +56,6 @@
 
 #include "ftpdef.h"
 #include "globaluri.h"
-#include "boost/filesystem/operations.hpp"
-#include "boost/filesystem/fstream.hpp"
 
 using namespace std;
 

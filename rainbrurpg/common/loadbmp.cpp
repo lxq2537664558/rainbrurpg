@@ -23,7 +23,7 @@
 #include "loadbmp.h"
 #include "globaluri.h"
 
-#include "boost/filesystem/operations.hpp"
+#include "include_boost.h"
 
 namespace fs = boost::filesystem;
 

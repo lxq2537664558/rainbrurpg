@@ -29,13 +29,10 @@
 #include "loadbmp.h"
 #include "httpresponse.h"
 
-#include "boost/filesystem/operations.hpp"
-#include "boost/filesystem/path.hpp"
+#include "include_boost.h"
 
-// Seems to fix a win32 build error
+
 namespace fs = boost::filesystem;
-
-
 
 /** The destructor
   *

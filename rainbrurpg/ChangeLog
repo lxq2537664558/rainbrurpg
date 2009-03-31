@@ -1,3 +1,11 @@
+2009-03-31 Carine Chum <carine.chum@free.fr>
+	* common/include_boost.h : Using this header
+	instead a direct boost include fix a lot of compilation
+	errors in the common library.
+
+	* common/Makefile.am: Added version numbers for boost libraries
+	name to be compliant with the dlls.
+	
 2009-03-30 Carine Chum <carine.chum@free.fr>
 	* acinclude.m4 : Adding version to boost libraries names.
 	
