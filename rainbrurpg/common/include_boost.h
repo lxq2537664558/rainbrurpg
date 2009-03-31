@@ -23,7 +23,10 @@
 /** \file include_boost.cpp
   * Implements a hack used to build in win32 due to ptrdiff_t
   *
+  * Modifications :
+  * - 31 mar 2009 : Implementation
   */
+
 #ifndef RAINBRURPG_BOOST_INCLUDE
 #define RAINBRURPG_BOOST_INCLUDE
 
