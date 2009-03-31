@@ -20,3 +20,4 @@ common/curlserveradd.cpp
 common/curlserverdelete.cpp
 common/curlservermodifclients.cpp
 common/curlsubmitform.cpp
+common/EasyBMP.cpp

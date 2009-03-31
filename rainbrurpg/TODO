@@ -1,4 +1,4 @@
-RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
+*RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/
@@ -10,6 +10,7 @@ o [rainbru] Fixing some OgreGui related graphical bugs
 
 o [rainbru] i18n (source are taken alphabetically)
 - common/curlsubmitform.cpp was the last translated source
+- Continue EasyBMP.cpp (78%)
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -110,7 +111,10 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-192 (28 mar 2009 - ???)
+- (4) Removed RainbruRPG.cc (not used)
 - Using namespace alias when building curlgetfile.cpp in win32
+- curlgetfile.cpp : Now using namespace alias for boost::filesystem
+- gettext 0.7 added to INSTALL dependencies
 
 * v 0.0.5-191 (15 feb 2009 - 28 mar 2009)
 - Fix a bug in the common/ Makefile

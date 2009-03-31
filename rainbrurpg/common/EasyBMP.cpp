@@ -18,13 +18,6 @@
 *                                                *
 *************************************************/
 
-
-/* Modifications :
- * - 06 jul 2008 : New includes to handle memcpy()
- * - 07 aug 2007 : Now using RainbruRPG::logger
- *
- */
-
 #include "EasyBMP.h"
 
 #include <sstream>
@@ -101,42 +94,9 @@ void BMIH::SwitchEndianess( void )
 
 void BMIH::display( void ){
 
- using namespace std;
- stringstream ss, ss2;
-
- LOGI("Displaying Bitmap informations :");
- ss << "biSize: " << (int) biSize 
-    << "biWidth: " << (int) biWidth
-    << "biHeight: " << (int) biHeight
-    << "biPlanes: " << (int) biPlanes
-    << "biBitCount: " << (int) biBitCount
-    << "biCompression: " << (int) biCompression;
- LOGCATS(ss.str().c_str());
- LOGCAT();
-
- ss2 << "biSizeImage: " << (int) biSizeImage
-     << "biXPelsPerMeter: " << (int) biXPelsPerMeter
-     << "biYPelsPerMeter: " << (int) biYPelsPerMeter
-     << "biClrUsed: " << (int) biClrUsed
-     << "biClrImportant: " << (int) biClrImportant;
- LOGCATS(ss2.str().c_str());
- LOGCAT();
-
 }
 
 void BMFH::display( void ){
-
-  using namespace std;
-  stringstream ss;
-
-  LOGI("Displaying BF informations :");
-  ss << "bfType: " << (int) bfType
-     << "bfSize: " << (int) bfSize
-     << "bfReserved1: " << (int) bfReserved1
-     << "bfReserved2: " << (int) bfReserved2
-     << "bfOffBits: " << (int) bfOffBits;
-  LOGCATS(ss.str().c_str());
-  LOGCAT();
 }
 
 /* These functions are defined in EasyBMP_BMP.h */
@@ -147,16 +107,16 @@ bool BMP::SetColor( int ColorNumber , RGBApixel NewColor ){
   using namespace std;
   if( BitDepth != 1 && BitDepth != 4 && BitDepth != 8 ){
     if( EasyBMPwarnings ){
-      outStr ="Attempted to change color table for a BMP ";
-      outStr+="object that lacks a color table. Ignoring request.";
+      outStr =_("Attempted to change color table for a BMP "
+		"object that lacks a color table. Ignoring request.");
       LOGW(outStr.c_str());
     }
     return false;
   }
   if( !Colors ){
     if( EasyBMPwarnings ){
-      outStr ="Attempted to set a color, but the color table";
-      outStr+="is not defined. Ignoring request.";
+      outStr =_("Attempted to set a color, but the color table "
+		"is not defined. Ignoring request.");
       LOGW(outStr.c_str());
 
     }
@@ -164,13 +124,14 @@ bool BMP::SetColor( int ColorNumber , RGBApixel NewColor ){
   }
   if( ColorNumber >= TellNumberOfColors()){
     if( EasyBMPwarnings ){
-      stringstream ss;
-
-      ss << "Requested color number " << ColorNumber 
-	 << " is outside the allowed"
-	 << " range [0," << TellNumberOfColors()-1 
-	 << "]. Ignoring request to set this color.";
-      LOGW(ss.str().c_str());
+      char str[120];
+      // TRANSLATORS: The first parameter is a color number, the one
+      // we are trying to set. The second parameter is the maximum
+      // allowed color index.
+      sprintf(str, _("Requested color number %d is outside the allowed "
+		     "range [1, %d]. Ignoring request to set this color."),
+	      ColorNumber, TellNumberOfColors()-1);
+      LOGW(str);
 
   }
   return false;
@@ -190,21 +151,16 @@ RGBApixel BMP::GetColor( int ColorNumber )
  using namespace std;
  if( BitDepth != 1 && BitDepth != 4 && BitDepth != 8 ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Attempted to access color table for a BMP object" 
-       << " that lacks a color table. Ignoring request.";
-
-    LOGW(ss.str().c_str());
+    LOGW(_("Attempted to access color table for a BMP object" 
+	   " that lacks a color table. Ignoring request."));
 
   }
   return Output;
  }
  if( !Colors ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Requested a color, but the color table"
-       << " is not defined. Ignoring request.";
-    LOGW(ss.str().c_str());
+    LOGW(_("Requested a color, but the color table "
+	   "is not defined. Ignoring request."));
   }
   return Output; 
  }
@@ -212,12 +168,14 @@ RGBApixel BMP::GetColor( int ColorNumber )
  {
   if( EasyBMPwarnings )
   {
-    stringstream ss;
-    ss << "EasyBMP Warning: Requested color number " 
-       << ColorNumber << " is outside the allowed"
-       << " range [0," << TellNumberOfColors()-1 
-       << "]. Ignoring request to get this color.";
-    LOGW(ss.str().c_str());
+      char str[120];
+      // TRANSLATORS: The first parameter is a color number, the one
+      // we are trying to set. The second parameter is the maximum
+      // allowed color index.
+      sprintf(str, _("Requested color number %d is outside the allowed "
+		     "range [1, %d]. Ignoring request to set this color."),
+	      ColorNumber, TellNumberOfColors()-1);
+      LOGW(str);
   }
   return Output;
  }
@@ -280,13 +238,15 @@ RGBApixel* BMP::operator()(int i, int j){
   }
   if( Warn && EasyBMPwarnings ){
 
+    char str[120];
     stringstream ss;
 
-    ss << "Attempted to access non-existent pixel"
-       << " Truncating request to fit in the range [0,"
-       << Width-1 << "] x [0," << Height-1 << "].";
-
-    LOGW(ss.str().c_str());
+    // TRANSLATORS: The first parameter if the width of the image in pixels,
+    // the second if the height of the image in pixels.
+    sprintf(str, _("Attempted to access non-existent pixel"
+		   " Truncating request to fit in the range [0,"
+		   " %d] x [0, %d]."), Width-1, Height-1);
+    LOGW(str);
 
   }	
   return &(Pixels[i][j]);
@@ -316,14 +276,14 @@ bool BMP::SetBitDepth( int NewDepth )
      NewDepth != 8 && NewDepth != 16 && 
      NewDepth != 24 && NewDepth != 32 )
  {
-  if( EasyBMPwarnings )
-  {
-    stringstream ss;
-    ss << "User attempted to set unsupported bit depth " 
-       << NewDepth << "." << endl
-       << " Bit depth remains unchanged at " 
-       << BitDepth << ".";
-    LOGW(ss.str().c_str());
+  if( EasyBMPwarnings ){
+
+    char str[120];
+    // TRANSLATORS: The first parameter is the new bit depth of the image,
+    // the second parameter is the actual bit depth.
+    sprintf(str, _("User attempted to set unsupported bit depth %d. " 
+		   "Bit depth remains unchanged at %d."), NewDepth, BitDepth);
+    LOGW(str);
 
   }
   return false;
@@ -349,11 +309,13 @@ bool BMP::SetSize(int NewWidth , int NewHeight )
  if( NewWidth <= 0 || NewHeight <= 0 )
  {
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "User attempted to set a non-positive width or height."
-       << " Size remains unchanged at " 
-       << Width << " x " << Height << ".";
-    LOGW(ss.str().c_str());
+
+    char str[80];
+    // TRANSLATORS: The parameters are the width and the height of the image
+    // in pixels.
+    printf(str, _("User attempted to set a non-positive width or height."
+		  " Size remains unchanged at %d x %d"), Width, Height);
+    LOGW(str);
   }
   return false;
  }
@@ -390,13 +352,11 @@ bool BMP::WriteToFile( const char* FileName )
  using namespace std;
  if( !EasyBMPcheckDataSize()){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Data types are wrong size!"
-       << " You may need to mess with EasyBMP_DataTypes.h"
-       << " to fix these errors, and then recompile."
-       << " All 32-bit and 64-bit machines should be"
-       << " supported, however.";
-    LOGE(ss.str().c_str());
+    LOGE(_("Data types are wrong size!"
+	  " You may need to mess with EasyBMP_DataTypes.h"
+	  " to fix these errors, and then recompile."
+	  " All 32-bit and 64-bit machines should be"
+	  " supported, however."));
   }
   return false; 
  }
@@ -404,14 +364,13 @@ bool BMP::WriteToFile( const char* FileName )
  FILE* fp = fopen( FileName, "wb" );
  if( fp == NULL ){
    if( EasyBMPwarnings ){
-     LOGE("Cannot open file for output");
+     LOGE(_("Cannot open file for output"));
    }
    fclose( fp );
    return false;
  }
   
  // some preliminaries
- 
  double dBytesPerPixel = ( (double) BitDepth ) / 8.0;
  double dBytesPerRow = dBytesPerPixel * (Width+0.0);
  dBytesPerRow = ceil(dBytesPerRow);
@@ -548,10 +507,9 @@ bool BMP::WriteToFile( const char* FileName )
    }
    if( !Success )
    {
-    if( EasyBMPwarnings )
-    {
-      LOGE("Could not write proper amount of data.");
-	}
+    if( EasyBMPwarnings ){
+      LOGE(_("Could not write proper amount of data."));
+    }
     j = -1; 
    }
    j--; 
@@ -630,9 +588,9 @@ bool BMP::ReadFromFile( const char* FileName ){
   using namespace std;
   if( !EasyBMPcheckDataSize() ){
     if( EasyBMPwarnings ){
-      LOGE("Data types are wrong size! You may need to mess with "
-	   "EasyBMP_DataTypes.h to fix these errors, and then recompile. "
-	   "All 32-bit and 64-bit machines should be supported, however.");
+      LOGE(_("Data types are wrong size! You may need to mess with "
+	     "EasyBMP_DataTypes.h to fix these errors, and then recompile. "
+	     "All 32-bit and 64-bit machines should be supported, however."));
     }
     return false; 
   }
@@ -640,13 +598,11 @@ bool BMP::ReadFromFile( const char* FileName ){
  FILE* fp = fopen( FileName, "rb" );
  if( fp == NULL )
  {
-  if( EasyBMPwarnings )
-  {
-    std::string s;
-    s ="EasyBMP Error: Cannot open file '" ;
-    s+=FileName;
-    s+="' for input.";
-    LOGE(s.c_str());
+  if( EasyBMPwarnings ){
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("Cannot open file %s for input."), FileName);
+    LOGE(str);
 
   }
   SetBitDepth(1);
@@ -668,15 +624,11 @@ bool BMP::ReadFromFile( const char* FileName ){
  if( !IsBigEndian() && bmfh.bfType == 19778 )
  { IsBitmap = true; }
  
- if( !IsBitmap ) 
- {
-  if( EasyBMPwarnings )
-  {
-    std::string s;
-    s =FileName;
-    s+=" is not a Windows BMP file!";
-    LOGE(s.c_str());
-
+ if( !IsBitmap ){
+  if( EasyBMPwarnings ){
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("%s is not a Windows BMP file!"), FileName);
   }
   fclose( fp ); 
   return false;
@@ -717,10 +669,10 @@ bool BMP::ReadFromFile( const char* FileName ){
  {
   if( EasyBMPwarnings )
   {
-    std::string s;
-    s =FileName;
-    s+=" is obviously corrupted.";
-    LOGE(s.c_str());
+    char str[40];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("%s is obviously corrupted."), FileName);
+    LOGE(str);
   }
   SetSize(1,1);
   SetBitDepth(1);
@@ -735,11 +687,11 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression == 1 || bmih.biCompression == 2 ){
    if( EasyBMPwarnings ){
-
-     stringstream ss;
-     ss << FileName << " is (RLE) compressed."
-	<< " EasyBMP does not support compression.";
-     LOGE(ss.str().c_str());
+     // TRANSLATORS: The parameter is a file name.
+     char str[100];
+     sprintf(str, _("%s  is (RLE) compressed."
+	       " EasyBMP does not support compression."),FileName);
+     LOGE(str);
      
    }
   SetSize(1,1);
@@ -753,12 +705,13 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression > 3 ){
    if( EasyBMPwarnings ){
-
-     stringstream ss;
-     ss << FileName << " is in an unsupported format. (bmih.biCompression = " 
-	<< bmih.biCompression << ") The file is probably an old OS2 bitmap "
-	<< "or corrupted."; 
-     LOGE(ss.str().c_str());
+     char str[160];
+     // TRANSLATORS: The first parameter is a file name. The second one
+     // is a compression number.
+     sprintf(str, _("%s is in an unsupported format. (bmih.biCompression = "
+		    "%d)  The file is probably an old OS2 bitmap "
+		    "or corrupted."), FileName, bmih.biCompression); 
+     LOGE(str);
      
   }		
   SetSize(1,1);
@@ -769,10 +722,11 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression == 3 && bmih.biBitCount != 16 ){
    if( EasyBMPwarnings ){
-     stringstream ss;
-     ss << FileName << " uses bit fields and is not a"
-	<< " 16-bit file. This is not supported.";
-     LOGE(ss.str().c_str());
+     char str[80];
+     // TRANSLATORS: The parameter is a file name.
+     sprintf(str, _("%s uses bit fields and is not a 16-bit file. "
+		    "This is not supported."), FileName);
+     LOGE(str);
   }
   SetSize(1,1);
   SetBitDepth(1);
@@ -788,9 +742,10 @@ bool BMP::ReadFromFile( const char* FileName ){
      && TempBitDepth != 24 && TempBitDepth != 32 )
    {
      if( EasyBMPwarnings ){
-       stringstream ss;
-       ss << FileName << " has unrecognized bit depth.";
-       LOGE(ss.str().c_str());
+       char str[40];
+       // TRANSLATORS: The parameter is a file name.
+       sprintf(str, _("%s has unrecognized bit depth."), FileName);
+       LOGE(str);
 
      }
      SetSize(1,1);
@@ -804,9 +759,10 @@ bool BMP::ReadFromFile( const char* FileName ){
 
  if( (int) bmih.biWidth <= 0 || (int) bmih.biHeight <= 0 ){
    if( EasyBMPwarnings ){
-     stringstream ss;
-     ss << FileName<< " has a non-positive width or height.";
-     LOGE(ss.str().c_str());
+     char str[60];
+     // TRANSLATORS: The parameter is a file name.
+     sprintf(str, _("%s has a non-positive width or height."), FileName);
+     LOGE(str);
 
   }
   SetSize(1,1);
@@ -839,12 +795,12 @@ bool BMP::ReadFromFile( const char* FileName ){
  
   if( NumberOfColorsToRead < TellNumberOfColors() ){
     if( EasyBMPwarnings ){
-
-      stringstream ss;
-      ss << "File " << FileName << " has an underspecified"
-	 << " color table. The table will be padded with extra"
-	 << " white (255,255,255,0) entries.";
-      LOGE(ss.str().c_str());
+      char str[180];
+      // TRANSLATORS: The parameter is a file name.
+      sprintf(str, _("File %s has an underspecified"
+		     " color table. The table will be padded with extra"
+		     " white (255,255,255,0) entries."), FileName);
+      LOGE(str);
       
     }
   }
@@ -880,11 +836,11 @@ bool BMP::ReadFromFile( const char* FileName ){
  {
   if( EasyBMPwarnings ){
 
-    stringstream ss;
-    ss << "Extra meta data detected in file '" << FileName
-       << "' Data will be skipped.";
-
-     LOGW(ss.str().c_str());
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("Extra meta data detected in file '%s"
+		   "' Data will be skipped."), FileName);
+    LOGW(str);
 
   }
   ebmpBYTE* TempSkipBYTE;
@@ -915,7 +871,7 @@ bool BMP::ReadFromFile( const char* FileName ){
     j = -1; 
     if( EasyBMPwarnings )
     {
-      LOGE("Could not read proper amount of data.");
+      LOGE(_("Could not read proper amount of data."));
 	}
    }
    else
@@ -933,7 +889,7 @@ bool BMP::ReadFromFile( const char* FileName ){
 	{ Success = Read32bitRow( Buffer, BufferSize, j ); }
     if( !Success ){
       if( EasyBMPwarnings ){
-	LOGE("Could not read enough pixel data!");
+	LOGE(_("Could not read enough pixel data!"));
       }
       j = -1;
     }
@@ -984,10 +940,11 @@ bool BMP::ReadFromFile( const char* FileName ){
 
   if( BytesToSkip > 0 ){
    if( EasyBMPwarnings ){
-     stringstream ss;
-     ss << "Extra meta data detected in file '" << FileName
-	<< "'. Data will be skipped.";
-     LOGW(ss.str().c_str());
+     char str[80];
+    // TRANSLATORS: The parameter is a file name.
+     sprintf(str, _("Extra meta data detected in file '%s"
+		    "'. Data will be skipped."), FileName);
+     LOGW(str);
    }
    ebmpBYTE* TempSkipBYTE;
    TempSkipBYTE = new ebmpBYTE [BytesToSkip];
@@ -1060,9 +1017,9 @@ bool BMP::CreateStandardColorTable( void )
  {
   if( EasyBMPwarnings )
   {
-    LOGW("Attempted to create color table at a bit " 
-	 "depth that does not require a color table. "
-	 "Ignoring request.");
+    LOGW(_("Attempted to create color table at a bit " 
+	   "depth that does not require a color table. "
+	   "Ignoring request."));
   }
   return false;
  }
@@ -1268,10 +1225,11 @@ BMFH GetBMFH( const char* szFileNameIn )
  
  if( !fp  ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Cannot initialize from file '" << szFileNameIn << "'." 
-       << " File cannot be opened or does not exist.";
-    LOGE(ss.str().c_str());
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("Cannot initialize from file '%s'." 
+		   " File cannot be opened or does not exist."), szFileNameIn);
+    LOGE(str);
   }
   bmfh.bfType = 0;
   return bmfh;
@@ -1302,10 +1260,11 @@ BMIH GetBMIH( const char* szFileNameIn )
 
  if( !fp  ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Cannot initialize from file '" << szFileNameIn << "'."
-       << " File cannot be opened or does not exist." ;
-   LOGE(ss.str().c_str());
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("Cannot initialize from file '%s'."
+		   " File cannot be opened or does not exist."), szFileNameIn);
+    LOGE(str);
   }
   return bmih;
  } 
@@ -1349,10 +1308,11 @@ void DisplayBitmapInfo( const char* szFileNameIn )
  
  if( !fp  ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "Cannot initialize from file '" <<szFileNameIn << "'."
-       << " File cannot be opened or does not exist.";
-    LOGE(ss.str().c_str());
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("Cannot initialize from file '%s'."
+		   " File cannot be opened or does not exist."), szFileNameIn);
+    LOGE(str);
   }
   return;
  } 

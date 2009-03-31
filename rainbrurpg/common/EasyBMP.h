@@ -18,6 +18,15 @@
 *                                                *
 *************************************************/
 
+/* Modifications :
+ * - 30 mar 2009 : Now uses gettext
+ * - 06 jul 2008 : New includes to handle memcpy()
+ * - 07 aug 2007 : Now using RainbruRPG::logger
+ *
+ */
+
+#include "rainbrudef.h" // For the gettext stuff
+
 #ifdef _MSC_VER 
 // MS Visual Studio gives warnings when using 
 // fopen. But fopen_s is not going to work well 

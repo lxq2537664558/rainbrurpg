@@ -268,9 +268,9 @@ Dependencies
 
 Building client is needed, so all these libraries are needed :
 - Ogre (GLX platform)
-- CEGUI
 - OIS
 - PLSM2
+- gettext 0.17
 
     When building Editor or/and Server
     ----------------------------------

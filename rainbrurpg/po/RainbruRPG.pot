@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-03-28 17:43+0100\n"
+"POT-Creation-Date: 2009-03-30 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -428,4 +428,32 @@ msgstr ""
 
 #: common/curlsubmitform.cpp:213
 msgid "Adding a Pwd Data to post"
+msgstr ""
+
+#: common/EasyBMP.cpp:110
+msgid ""
+"Attempted to change color table for a BMP object that lacks a color table. "
+"Ignoring request."
+msgstr ""
+
+#: common/EasyBMP.cpp:118
+msgid ""
+"Attempted to set a color, but the color table is not defined. Ignoring "
+"request."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a color number, the one
+#. we are trying to set. The second parameter is the maximum
+#. allowed color index.
+#: common/EasyBMP.cpp:131
+#, c-format
+msgid ""
+"Requested color number %d is outside the allowed range [1, %d]. Ignoring "
+"request to set this color."
+msgstr ""
+
+#: common/EasyBMP.cpp:154
+msgid ""
+"Attempted to access color table for a BMP object that lacks a color table. "
+"Ignoring request."
 msgstr ""

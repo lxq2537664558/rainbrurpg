@@ -1,3 +1,5 @@
+2009-03-30  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/EasyBMP.cpp added.
 2009-03-28  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/curlserveradd.cpp, common/curlserverdelete.cpp 
 	common/curlservermodifsclients.cpp and common/curlsubmitform added.
