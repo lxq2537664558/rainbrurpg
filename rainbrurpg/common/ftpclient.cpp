@@ -30,7 +30,7 @@
 #include "logger.h"
 #include "stringconv.h"
 
-#include "include_boost.h"
+#include "boostimport.h"
 
 /** The default constructor
   *
@@ -89,14 +89,14 @@ connectToHost(const std::string& ip, int port, const std::string& uName){
   this->uniqueName=uName;
 
   if (uName==""){
-    LOGE("The given server's UniqueName is empty. FtpClient cannot work "
-	 "properly.");
+    LOGE(_("The given server's UniqueName is empty. FtpClient cannot work "
+	   "properly."));
   }
 
   controlSock=gnet_tcp_socket_connect(ip.c_str(), port);
 
   if (controlSock==NULL){
-    LOGE("Connection to host FAILED");
+    LOGE(_("Connection to host FAILED"));
     return false;
   }
   else{
@@ -112,7 +112,7 @@ connectToHost(const std::string& ip, int port, const std::string& uName){
   *
   */
 void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
-  LOGI("sendString called");
+  LOGI(_("sendString called"));
   // Get a char* from the std::string
   int len = s.length() + 1;
   std::vector<char> raw(len);
@@ -126,9 +126,9 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   GIOError err=gnet_io_channel_writen( ioChannel, &(raw[0]), 
 				       s.size(), &bytesWritten);
 
-  LOGCATS("Bytes written : ");
-  LOGCATI(bytesWritten);
-  LOGCAT();
+  char msg[80];
+  sprintf(msg, _("%d bytes written"), bytesWritten);
+  LOGI(msg);
 }
 
 /** Opens the data channel
@@ -137,26 +137,27 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::openDataChannel(){
-  LOGI("Opening data channel :");
-  LOGCATS("Server adress : ");
-  LOGCATS(hostIp.c_str());
-  LOGCATS(" port : ");
-  LOGCATI(hostPort-1);
-  LOGCAT();
+  char msg[100];
+  // TRANSLATORS: The first parameter is a string containing the server
+  // IP address, the second one is a potr number.
+  sprintf(msg, _("Opening data channel :\n"
+		 "  Server address : %s\n"
+		 "  Server port    : %d"), hostIp.c_str(), hostPort-1);
+  LOGI(msg);
   dataSock=gnet_tcp_socket_connect(hostIp.c_str(), hostPort-1);
 
   if (dataSock==NULL){
-    LOGE("Cannot open data channel");
-    LOGCATS("Host IP : '");
-    LOGCATS(hostIp.c_str());
-    LOGCATS("' Host port : '");
-    LOGCATI(hostPort-1);
-    LOGCATS("'");
-    LOGCAT();
+    char msg02[100];
+    // TRANSLATORS: The first parameter is a string containing the server
+    // IP address, the second one is a potr number.
+    sprintf(msg02, _("Cannot open data channel :\n"
+		   "  Server address : %s\n"
+		   "  Server port    : %d"), hostIp.c_str(), hostPort-1);
+    LOGE(msg02);
     return false;
   }
   else{
-    LOGI("Data channel opened");
+    LOGI(_("Data channel opened"));
     dataChannelConnected=true;
     return true;
   }
@@ -182,7 +183,7 @@ void RainbruRPG::Network::FtpClient::toggleTransferMode(){
   *
   */
 std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
-  LOGI("waitControlResponse called");
+  LOGI(_("waitControlResponse() called"));
   gchar buffer[128];
   gsize bytesWritten;
 
@@ -202,12 +203,6 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
       nextFilesize=fs;
       sigFileSizeReceived.emit((int)fs);
     }
-    else{
-      LOGCATS("Text found : '");
-      LOGCATS(s.c_str());
-      LOGCATS("'");
-      LOGCAT();
-    }
   }
   return s;
 }
@@ -218,15 +213,15 @@ std::string RainbruRPG::Network::FtpClient::waitControlResponse(){
 std::string RainbruRPG::Network::FtpClient::commandLIST(){
   std::string s;
 
-  LOGI("Sending LIST command");
+  LOGI(_("Sending LIST command"));
   sendString("LIST\r\n");
-  LOGI("Waiting for first control response");
+  LOGI(_("Waiting for first control response"));
   s=waitControlResponse();
   s+="\n";
   if (openDataChannel()){
     s+=readDataChannel();
   }
-  LOGI("Waiting for second control response");
+  LOGI(_("Waiting for second control response"));
   s+=waitControlResponse();
 
   closeDataChannel();
@@ -240,7 +235,7 @@ std::string RainbruRPG::Network::FtpClient::commandLIST(){
   * 
   */
 std::string RainbruRPG::Network::FtpClient::readDataChannel(){
-  LOGI("readDataChannel called");
+  LOGI(_("readDataChannel called"));
   gchar buffer[1024];
   gsize bytesWritten=128;
   string s;
@@ -250,16 +245,11 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
 
   while(true){
 
-    cout << "Calling gnet_io_channel_readn" << endl;
+    LOGI(_("Calling gnet_io_channel_readn()"));
     GIOError err=gnet_io_channel_readn( ioChannel, buffer, 
 					1024, &bytesWritten);
-    cout << "gnet_io_channel_readn called" << endl;
+    LOGI(_("gnet_io_channel_readn() called"));
   
-
-    LOGCATI(bytesWritten);
-    LOGCATS(" bytes read. GIOError =");
-    LOGCATI(err);
-    LOGCAT();
     if (bytesWritten==0){
       break;
     }
@@ -268,18 +258,14 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
       // FIX a string lenght bug
       //
       // We had bytesWritten=676 and s2.size=725 or other
-      // It appears it comes with the gchar* to td::string conversion
+      // It appears it comes with the gchar* to std::string conversion
       // Truncates The string to have the good lenght one
       s2=s2.substr(0, bytesWritten);
       s+=s2;
-      LOGCATS("strlen return : ");
-      LOGCATI(s.size());
-      LOGCAT();
-
     }
   }
 
-  LOGI("readDataChannel finished");
+  LOGI(_("readDataChannel() call finished"));
   return s;
 }
 
@@ -291,7 +277,6 @@ std::string RainbruRPG::Network::FtpClient::readDataChannel(){
 std::string RainbruRPG::Network::FtpClient::commandPWD(){
   sendString("PWD\r\n");
   std::string s=waitControlResponse();
-
   return s;
 }
 
@@ -303,7 +288,6 @@ std::string RainbruRPG::Network::FtpClient::commandPWD(){
 std::string RainbruRPG::Network::FtpClient::commandSYST(){
   sendString("SYST\r\n");
   std::string s=waitControlResponse();
-
   return s;
 }
 
@@ -346,8 +330,9 @@ commandSTOR(const std::string& filename){
 
   // Is this file exist ?
   if (!boost::filesystem::exists(filename)){
-    LOGW("File does not exist");
-    return "File does not exist";
+    std::string str(_("File does not exist"));
+    LOGW(str.c_str());
+    return str;
   }
 
   // Setting the filename
@@ -381,7 +366,7 @@ commandRETR(const std::string& filename){
 
   // Is this file exist ?
   if (boost::filesystem::exists(filename)){
-    LOGW("File already exist");
+    LOGW(_("File already exist"));
   }
 
   // Setting the filename
@@ -404,21 +389,14 @@ commandRETR(const std::string& filename){
   *
   */
 void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
-  LOGI("In the thread");
-  LOGCATS("Val in threaded function hostIp=");
-  LOGCATS(hostIp.c_str());
-  LOGCATS(" filename='");
-  LOGCATS(transferFilename.c_str());
-  LOGCATS("'");
-  LOGCAT();
-
   std::string filename=transferFilename;
 
   // Creates the buffer used to write datas
   char* buffer=(char*)malloc(1024*sizeof(char));
   if (buffer==NULL){
-    LOGE("Cannot allocate buffer");
-    returnValue= "Cannot allocate buffer";
+    std::string str(_("Cannot allocate buffer"));
+    LOGE(str.c_str());
+    returnValue=str;
   }
 
   boost::filesystem::ifstream fs;
@@ -431,19 +409,12 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
   // We send only the filename
   string::size_type pos = filename.rfind("/", filename.size());
   if (pos == string::npos){
-    LOGI("The filename doesn't contain path");
+    LOGI(_("The filename doesn't contain path"));
     s+=filename;
   }
   else{
-    LOGCATS("Position of the last slash : ");
-    LOGCATI(pos);
-    LOGCAT();
     string::size_type len=filename.size()-pos;
     std::string onlyFilename=filename.substr(pos+1, len);
-    LOGCATS("OnlyFilename='");
-    LOGCATS(onlyFilename.c_str());
-    LOGCATS("'");
-    LOGCAT();
     s+=onlyFilename;
   }
 
@@ -465,7 +436,7 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
     // Is the STOR command accepted
     std::string storResponse2=storResponse.substr(0,1);
     if (storResponse2=="5"){
-      LOGW("The file already exists. Transfer is cancelled");
+      LOGW(_("The file already exists. Transfer is cancelled"));
       sigTransferError.emit(FTE_FILE_ALREADY_EXIST);
     }
     else if (storResponse2=="2"){
@@ -490,14 +461,14 @@ void RainbruRPG::Network::FtpClient::STOR_ThreadedFunction(){
 	  // Emit signal
 	  sigBytesWritten.emit((int)bytesWritten);
 	}
-	LOGI("Returned from thread");
+	LOGI(_("Returned from thread"));
 	fs.close();
       }
       closeDataChannel();
       sigTransferTerminated.emit();
     }
     else{
-      LOGE("An error occured during opening file");
+      LOGE(_("An error occured during opening file"));
     }
   }
   // Memory deallocation
@@ -523,7 +494,7 @@ int RainbruRPG::Network::FtpClient::getFilesize(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::closeDataChannel(){
-  LOGI("Closing data channel");
+  LOGI(_("Closing data channel"));
   gnet_tcp_socket_delete(dataSock);
   dataChannelConnected=false;
 }
@@ -538,21 +509,15 @@ bool RainbruRPG::Network::FtpClient::closeDataChannel(){
   *
   */
 void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
-  LOGI("In the thread");
-  LOGCATS("Val in threaded function hostIp=");
-  LOGCATS(hostIp.c_str());
-  LOGCATS(" filename='");
-  LOGCATS(transferFilename.c_str());
-  LOGCATS("'");
-  LOGCAT();
 
   std::string filename=transferFilename;
 
   // Creates the buffer used to write datas
   char* buffer=(char*)malloc(1024*sizeof(char));
   if (buffer==NULL){
-    LOGE("Cannot allocate buffer");
-    returnValue= "Cannot allocate buffer";
+    std::string msg(_("Cannot allocate buffer"));
+    LOGE(msg.c_str());
+    returnValue= msg;
   }
 
   boost::filesystem::ofstream fs;
@@ -566,29 +531,17 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
   std::string onlyFilename;
   string::size_type pos = filename.rfind("/", filename.size());
   if (pos == string::npos){
-    LOGI("The filename doesn't contain path");
+    LOGI(_("The filename doesn't contain path"));
     s+=filename;
     onlyFilename=filename;
   }
   else{
-    LOGCATS("Position of the last slash : ");
-    LOGCATI(pos);
-    LOGCAT();
     string::size_type len=filename.size()-pos;
     onlyFilename=filename.substr(pos+1, len);
-    LOGCATS("OnlyFilename='");
-    LOGCATS(onlyFilename.c_str());
-    LOGCATS("'");
-    LOGCAT();
     s+=onlyFilename;
   }
 
   // Open the file according to the transfer type
-  LOGI("Openening file for writing :");
-  LOGCATS("Filename : ");
-  LOGCATS(transferFilename.c_str());
-  LOGCAT();
-
   try{
     // Using a path object to avoid exception due to '.RainbruRPG'
     // filesystem error (the dot is misunderstood)
@@ -602,14 +555,14 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
     }
   }
   catch(const std::exception& e){
-    LOGE("An error occured during opening file : ");
+    LOGE(_("An error occured during opening file : "));
     LOGE(e.what());
     sigTransferError.emit(FTE_OPEN_FILE_ERROR);
   }
 
   // If the file is correctly opened
   if (fs.is_open()){
-    LOGI("File is correctly opened");
+    LOGI(_("File is correctly opened"));
     s+="\r\n";
     sendString(s);
     s+=waitControlResponse();
@@ -618,11 +571,10 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
     s+=waitControlResponse();
 
     if (openDataChannel()){
-      LOGI("Data channel is opened")
+      LOGI(_("Data channel is opened"));
       GConn* connection=gnet_conn_new_socket(dataSock, NULL, NULL);
 
       // Sending file
-      LOGI("Entering WHILE loop");
       //      while (gnet_conn_is_connected(connection)==TRUE){
       while (totalBytesReceived!=nextFilesize){
 	// Read the incoming network packet
@@ -638,19 +590,17 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
 	sigBytesWritten.emit((int)bytesRead);
       }
 
-      LOGI("Exitting WHILE loop");
-
       gnet_conn_delete(connection);
-      LOGI("Returned from thread");
+      LOGI(_("Returned from thread"));
       fs.close();
     }
     else{
-      LOGE("An error occured when opening data channel");
+      LOGE(_("An error occured when opening data channel"));
       sigTransferError.emit(FTE_OPEN_DATA_CHANNEL_ERROR);
 
     }
     sigTransferTerminated.emit();
-    LOGI("Transfer is terminated");
+    LOGI(_("Transfer is terminated"));
   }
 
   // Memory deallocation

@@ -24,7 +24,7 @@
   * Defines a base-class for all enet based classes
   *
   * Modifications :
-  * - 06 aug 2008 : Sigle file documentation
+  * - 06 aug 2008 : Single file documentation
   * - 13 mar 2007 : starting implementation
   *
   */
@@ -38,6 +38,7 @@
 #include <glib.h>
 
 #include "netpacketbase.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network;

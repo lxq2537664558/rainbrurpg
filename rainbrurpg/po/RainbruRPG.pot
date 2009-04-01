@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-03-30 16:41+0200\n"
+"POT-Creation-Date: 2009-03-31 22:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,44 +244,44 @@ msgstr ""
 
 #. TRANSLATORS: The parameter is the name of the file we are
 #. about to write.
-#: common/curlgetfile.cpp:92
+#: common/curlgetfile.cpp:98
 #, c-format
 msgid "Performing CurlGetFile writeToFile action, filename : %s"
 msgstr ""
 
-#: common/curlgetfile.cpp:98
+#: common/curlgetfile.cpp:104
 msgid "The curl handle was not properly initialized"
 msgstr ""
 
-#: common/curlgetfile.cpp:110 common/curlsubmitform.cpp:111
+#: common/curlgetfile.cpp:116 common/curlsubmitform.cpp:111
 msgid "Setting the licurl URL"
 msgstr ""
 
-#: common/curlgetfile.cpp:127 common/curlsubmitform.cpp:104
+#: common/curlgetfile.cpp:133 common/curlsubmitform.cpp:104
 msgid "Error opening the FILE pointer"
 msgstr ""
 
-#: common/curlgetfile.cpp:137
+#: common/curlgetfile.cpp:143
 msgid "An error occured during CurlGetFile::writeToFile()."
 msgstr ""
 
-#: common/curlgetfile.cpp:141
+#: common/curlgetfile.cpp:147
 msgid "Getting the last HTTP server status code"
 msgstr ""
 
-#: common/curlgetfile.cpp:148
+#: common/curlgetfile.cpp:154
 msgid "The CurlGetInfo was successfull"
 msgstr ""
 
-#: common/curlgetfile.cpp:152
+#: common/curlgetfile.cpp:158
 msgid "HTTP server returns SUCCESS."
 msgstr ""
 
-#: common/curlgetfile.cpp:156
+#: common/curlgetfile.cpp:162
 msgid "HTTP server returns an error status code :"
 msgstr ""
 
-#: common/curlgetfile.cpp:164
+#: common/curlgetfile.cpp:170
 msgid "An error occured during CurlGetInfo operation"
 msgstr ""
 
@@ -445,7 +445,7 @@ msgstr ""
 #. TRANSLATORS: The first parameter is a color number, the one
 #. we are trying to set. The second parameter is the maximum
 #. allowed color index.
-#: common/EasyBMP.cpp:131
+#: common/EasyBMP.cpp:131 common/EasyBMP.cpp:175
 #, c-format
 msgid ""
 "Requested color number %d is outside the allowed range [1, %d]. Ignoring "
@@ -456,4 +456,305 @@ msgstr ""
 msgid ""
 "Attempted to access color table for a BMP object that lacks a color table. "
 "Ignoring request."
+msgstr ""
+
+#: common/EasyBMP.cpp:162
+msgid ""
+"Requested a color, but the color table is not defined. Ignoring request."
+msgstr ""
+
+#. TRANSLATORS: The first parameter if the width of the image in pixels,
+#. the second if the height of the image in pixels.
+#: common/EasyBMP.cpp:246
+#, c-format
+msgid ""
+"Attempted to access non-existent pixel Truncating request to fit in the "
+"range [0, %d] x [0, %d]."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is the new bit depth of the image,
+#. the second parameter is the actual bit depth.
+#: common/EasyBMP.cpp:284
+#, c-format
+msgid ""
+"User attempted to set unsupported bit depth %d. Bit depth remains unchanged "
+"at %d."
+msgstr ""
+
+#. TRANSLATORS: The parameters are the width and the height of the image
+#. in pixels.
+#: common/EasyBMP.cpp:316
+#, c-format
+msgid ""
+"User attempted to set a non-positive width or height. Size remains unchanged "
+"at %d x %d"
+msgstr ""
+
+#: common/EasyBMP.cpp:355 common/EasyBMP.cpp:591
+msgid ""
+"Data types are wrong size! You may need to mess with EasyBMP_DataTypes.h to "
+"fix these errors, and then recompile. All 32-bit and 64-bit machines should "
+"be supported, however."
+msgstr ""
+
+#: common/EasyBMP.cpp:367
+msgid "Cannot open file for output"
+msgstr ""
+
+#: common/EasyBMP.cpp:511
+msgid "Could not write proper amount of data."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:604
+#, c-format
+msgid "Cannot open file %s for input."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:631
+#, c-format
+msgid "%s is not a Windows BMP file!"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:674
+#, c-format
+msgid "%s is obviously corrupted."
+msgstr ""
+
+#: common/EasyBMP.cpp:692
+#, c-format
+msgid "%s  is (RLE) compressed. EasyBMP does not support compression."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a file name. The second one
+#. is a compression number.
+#: common/EasyBMP.cpp:711
+#, c-format
+msgid ""
+"%s is in an unsupported format. (bmih.biCompression = %d)  The file is "
+"probably an old OS2 bitmap or corrupted."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:727
+#, c-format
+msgid "%s uses bit fields and is not a 16-bit file. This is not supported."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:747
+#, c-format
+msgid "%s has unrecognized bit depth."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:764
+#, c-format
+msgid "%s has a non-positive width or height."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:800
+#, c-format
+msgid ""
+"File %s has an underspecified color table. The table will be padded with "
+"extra white (255,255,255,0) entries."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:841
+#, c-format
+msgid "Extra meta data detected in file '%s' Data will be skipped."
+msgstr ""
+
+#: common/EasyBMP.cpp:874
+msgid "Could not read proper amount of data."
+msgstr ""
+
+#: common/EasyBMP.cpp:892
+msgid "Could not read enough pixel data!"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:945
+#, c-format
+msgid "Extra meta data detected in file '%s'. Data will be skipped."
+msgstr ""
+
+#: common/EasyBMP.cpp:1020 common/EasyBMP.cpp:1432
+msgid ""
+"Attempted to create color table at a bit depth that does not require a color "
+"table. Ignoring request."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/EasyBMP.cpp:1230 common/EasyBMP.cpp:1265 common/EasyBMP.cpp:1313
+#, c-format
+msgid ""
+"Cannot initialize from file '%s'. File cannot be opened or does not exist."
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
+#: common/EasyBMP.cpp:1651
+#, c-format
+msgid ""
+"ebmpBYTE has the wrong size (%d bytes), Compared to the expected 1 byte value"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+#: common/EasyBMP.cpp:1661
+#, c-format
+msgid ""
+"ebmpWORD has the wrong size (%d bytes), Compared to the expected 2 byte value"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+#: common/EasyBMP.cpp:1671
+#, c-format
+msgid ""
+"EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), Compared to the "
+"expected 4 byte value"
+msgstr ""
+
+#: common/enetclient.cpp:94
+msgid "No available peers for initiating an ENet connection."
+msgstr ""
+
+#: common/enetclient.cpp:100
+msgid "Connection to server succeeded."
+msgstr ""
+
+#: common/enetclient.cpp:109
+msgid "Connection to server failed."
+msgstr ""
+
+#: common/enetclient.cpp:113
+msgid "Trying to connect an already connected client"
+msgstr ""
+
+#: common/ftpclient.cpp:94
+msgid "The given server's UniqueName is empty. FtpClient cannot work properly."
+msgstr ""
+
+#: common/ftpclient.cpp:101
+msgid "Connection to host FAILED"
+msgstr ""
+
+#: common/ftpclient.cpp:117
+msgid "sendString called"
+msgstr ""
+
+#: common/ftpclient.cpp:132
+#, c-format
+msgid "%d bytes written"
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a string containing the server
+#. IP address, the second one is a potr number.
+#: common/ftpclient.cpp:145
+#, c-format
+msgid ""
+"Opening data channel :\n"
+"  Server address : %s\n"
+"  Server port    : %d"
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a string containing the server
+#. IP address, the second one is a potr number.
+#: common/ftpclient.cpp:155
+#, c-format
+msgid ""
+"Cannot open data channel :\n"
+"  Server address : %s\n"
+"  Server port    : %d"
+msgstr ""
+
+#: common/ftpclient.cpp:162
+msgid "Data channel opened"
+msgstr ""
+
+#: common/ftpclient.cpp:188
+msgid "waitControlResponse() called"
+msgstr ""
+
+#: common/ftpclient.cpp:218
+msgid "Sending LIST command"
+msgstr ""
+
+#: common/ftpclient.cpp:220
+msgid "Waiting for first control response"
+msgstr ""
+
+#: common/ftpclient.cpp:226
+msgid "Waiting for second control response"
+msgstr ""
+
+#: common/ftpclient.cpp:240
+msgid "readDataChannel called"
+msgstr ""
+
+#: common/ftpclient.cpp:250
+msgid "Calling gnet_io_channel_readn()"
+msgstr ""
+
+#: common/ftpclient.cpp:253
+msgid "gnet_io_channel_readn() called"
+msgstr ""
+
+#: common/ftpclient.cpp:270
+msgid "readDataChannel() call finished"
+msgstr ""
+
+#: common/ftpclient.cpp:335
+msgid "File does not exist"
+msgstr ""
+
+#: common/ftpclient.cpp:371
+msgid "File already exist"
+msgstr ""
+
+#: common/ftpclient.cpp:399 common/ftpclient.cpp:520
+msgid "Cannot allocate buffer"
+msgstr ""
+
+#: common/ftpclient.cpp:414 common/ftpclient.cpp:536
+msgid "The filename doesn't contain path"
+msgstr ""
+
+#: common/ftpclient.cpp:441
+msgid "The file already exists. Transfer is cancelled"
+msgstr ""
+
+#: common/ftpclient.cpp:466 common/ftpclient.cpp:596
+msgid "Returned from thread"
+msgstr ""
+
+#: common/ftpclient.cpp:473
+msgid "An error occured during opening file"
+msgstr ""
+
+#: common/ftpclient.cpp:499
+msgid "Closing data channel"
+msgstr ""
+
+#: common/ftpclient.cpp:560
+msgid "An error occured during opening file : "
+msgstr ""
+
+#: common/ftpclient.cpp:567
+msgid "File is correctly opened"
+msgstr ""
+
+#: common/ftpclient.cpp:576
+msgid "Data channel is opened"
+msgstr ""
+
+#: common/ftpclient.cpp:600
+msgid "An error occured when opening data channel"
+msgstr ""
+
+#: common/ftpclient.cpp:605
+msgid "Transfer is terminated"
 msgstr ""

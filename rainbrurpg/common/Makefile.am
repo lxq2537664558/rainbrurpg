@@ -4,6 +4,7 @@ librainbrurpg_common.adir=$(libdir)
 
 # Please keep this file list sorted
 h_sources= attributemodifierlist.h		\
+	   boostimport.h			\
 	   chartbase.h				\
 	   chartserie.h				\
 	   chartline.h				\

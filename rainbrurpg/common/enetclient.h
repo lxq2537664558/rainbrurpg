@@ -24,6 +24,7 @@
   * Declares the Enet client
   *
   * Modifications :
+  * - 31 mar 2009 : Now uses gettext
   * - 19 mar 2007 : Adds the \ref RainbruRPG::Network::EnetClient::connect()
   *                 "connect()"  and 
   *                 \ref RainbruRPG::Network::EnetClient::isConnected() 
@@ -41,6 +42,8 @@
 
 #include "enetbase.h"
 #include "netpacketbase.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network;

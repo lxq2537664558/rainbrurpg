@@ -1323,40 +1323,6 @@ void DisplayBitmapInfo( const char* szFileNameIn )
  BMFH bmfh = GetBMFH(szFileNameIn);
  BMIH bmih = GetBMIH(szFileNameIn);
 
- stringstream ss, ss2, ss3, ss4;
- ss << "File information for file '" << szFileNameIn  << "' :";
- LOGI(ss.str().c_str());
-
- LOGCATS("  BITMAPFILEHEADER:");
- LOGCAT();
- ss2 << "    bfType: " << bmfh.bfType
-     << " bfSize: " << bmfh.bfSize
-     << " bfReserved1: " << bmfh.bfReserved1
-     << " bfReserved2: " << bmfh.bfReserved2    
-     << " bfOffBits: " << bmfh.bfOffBits;
- LOGCATS(ss2.str().c_str());
- LOGCAT();
-
-
- LOGCATS("  BITMAPINFOHEADER:");
- LOGCAT();
- ss3 << "    biSize: " << bmih.biSize
-     << " biWidth: " << bmih.biWidth
-     << " biHeight: " << bmih.biHeight
-     << " biPlanes: " << bmih.biPlanes
-     << " biBitCount: " << bmih.biBitCount
-     << " biCompression: " << bmih.biCompression;
- LOGCATS(ss3.str().c_str());
- LOGCAT();
-
-
- ss4 << "    biSizeImage: " << bmih.biSizeImage
-     << " biXPelsPerMeter: " << bmih.biXPelsPerMeter
-     << " biYPelsPerMeter: " << bmih.biYPelsPerMeter
-     << " biClrUsed: " << bmih.biClrUsed
-     << " biClrImportant: " << bmih.biClrImportant ;  
- LOGCATS(ss4.str().c_str());
- LOGCAT();
  return;
 }
 
@@ -1463,9 +1429,9 @@ bool CreateGrayscaleColorTable( BMP& InputImage )
  {
   if( EasyBMPwarnings )
   {
-    LOGW("Attempted to create color table at a bit "
-	 "depth that does not require a color table. "
-	 "Ignoring request.");
+    LOGW(_("Attempted to create color table at a bit "
+	   "depth that does not require a color table. "
+	   "Ignoring request."));
   }
   return false;
  }
@@ -1680,35 +1646,31 @@ bool EasyBMPcheckDataSize( void )
  bool ReturnValue = true;
  if( sizeof( ebmpBYTE ) != 1 ){
   if( EasyBMPwarnings ){
-    stringstream ss;
-    ss << "ebmpBYTE has the wrong size (" 
-       << sizeof( ebmpBYTE ) << " bytes),"
-       << " Compared to the expected 1 byte value";
-   LOGE(ss.str().c_str());
+    char str[120];
+    // TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
+    sprintf(str,_("ebmpBYTE has the wrong size (%d bytes), "
+		  "Compared to the expected 1 byte value"), sizeof(ebmpBYTE));
+    LOGE(str);
   }
   ReturnValue = false;
  }
- if( sizeof( ebmpWORD ) != 2 )
- {
-  if( EasyBMPwarnings )
-  {
-    stringstream ss;
-    ss << "ebmpWORD has the wrong size (" 
-       << sizeof( ebmpWORD ) << " bytes),"
-       << " Compared to the expected 2 byte value";
-   LOGE(ss.str().c_str());
+ if( sizeof( ebmpWORD ) != 2 ){
+  if( EasyBMPwarnings ){
+    char str[120];
+    // TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+    sprintf(str, _("ebmpWORD has the wrong size (%d bytes), "
+		   "Compared to the expected 2 byte value"),sizeof(ebmpWORD));
+   LOGE(str);
   }
   ReturnValue = false;
  }
- if( sizeof( ebmpDWORD ) != 4 )
- {
-  if( EasyBMPwarnings )
-  {
-    stringstream ss;
-    ss << "EasyBMP Error: ebmpDWORD has the wrong size (" 
-        << sizeof( ebmpDWORD ) << " bytes),"
-       << " Compared to the expected 4 byte value";
-   LOGE(ss.str().c_str());
+ if( sizeof( ebmpDWORD ) != 4 ){
+  if( EasyBMPwarnings ){
+    char str[120];
+    // TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+    sprintf(str,_("EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), "
+		  "Compared to the expected 4 byte value"), sizeof(ebmpDWORD));
+   LOGE(str);
   }
   ReturnValue = false;
  }

@@ -1,4 +1,4 @@
-*RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
+RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/ --enable-Wno-stddep-ogre
@@ -9,8 +9,7 @@ o [rainbru] Fixing some OgreGui related graphical bugs
 - Moving MCL scrollbar when window's SB were moved is spurious 
 
 o [rainbru] i18n (source are taken alphabetically)
-- common/curlsubmitform.cpp was the last translated source
-- Continue EasyBMP.cpp (78%)
+- common/enetbase.cpp was the last translated source
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -111,7 +110,11 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-192 (28 mar 2009 - ???)
-- (4) Removed RainbruRPG.cc (not used)
+- (7) Renamed includeboost.h to boostimport.h
+- Created common/include_boost.h to fix a ptrdiff_t cross-compilation error
+- EasyBMP.cpp now uses gettext compliant strings
+   Also : enetbase.cpp, enetclient.cpp, ftpclient.cpp
+- Removed RainbruRPG.cc (not used)
 - Using namespace alias when building curlgetfile.cpp in win32
 - curlgetfile.cpp : Now using namespace alias for boost::filesystem
 - gettext 0.7 added to INSTALL dependencies

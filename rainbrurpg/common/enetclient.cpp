@@ -91,13 +91,13 @@ connect(const char* hostName, enet_uint16 port, int waitingTime){
     peer = enet_host_connect (client, address, 2);    
     
     if (peer == NULL){
-      LOGE("No available peers for initiating an ENet connection.");
+      LOGE(_("No available peers for initiating an ENet connection."));
     }
     
     /* Wait up to 5 seconds for the connection attempt to succeed.*/
     if (enet_host_service (client, & event, waitingTime) > 0 &&
 	event.type == ENET_EVENT_TYPE_CONNECT){
-      LOGI("Connection to server succeeded.");
+      LOGI(_("Connection to server succeeded."));
       connected=true;
       
     }
@@ -106,11 +106,11 @@ connect(const char* hostName, enet_uint16 port, int waitingTime){
       /* received. Reset the peer in the event the 5 seconds   */
       /* had run out without any significant event.            */
       enet_peer_reset(peer);
-      LOGE ("Connection to server failed.");
+      LOGE (_("Connection to server failed."));
     }
   }
   else{
-    LOGW("Trying to connect an already connected client");
+    LOGW(_("Trying to connect an already connected client"));
   }
 }
 

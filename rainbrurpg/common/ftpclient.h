@@ -24,6 +24,7 @@
   * Declares a FTP client
   *
   * Modifications :
+  * - 31 mar 2009 : Now using gettext
   * - 11 mar 2008 : Adds some function for unit tests implementation
   * - 08 jul 2007 : 
   *      - \ref RainbruRPG::Network::FtpClient::commandRETR "commandRETR" uses 
@@ -56,6 +57,8 @@
 
 #include "ftpdef.h"
 #include "globaluri.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

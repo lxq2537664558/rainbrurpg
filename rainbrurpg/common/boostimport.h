@@ -20,11 +20,13 @@
  *
  */
 
-/** \file include_boost.cpp
+/** \file boostimport.cpp
   * Implements a hack used to build in win32 due to ptrdiff_t
   *
   * Modifications :
+  * - 01 apr 2009 : Renamed from include_boost.h to boostimport.h
   * - 31 mar 2009 : Implementation
+  *
   */
 
 #ifndef RAINBRURPG_BOOST_INCLUDE
@@ -49,4 +51,4 @@
 #include <boost/bind.hpp>
 #include <boost/thread/thread.hpp>
 
-#endif // RAINBRURPG_BOOST_INCLUDE
+#endif // !RAINBRURPG_BOOST_INCLUDE

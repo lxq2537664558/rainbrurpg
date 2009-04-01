@@ -1,3 +1,14 @@
+2009-04-01 Jerome Pasquier  <rainbru@free.fr>
+	* common/Makefile.am : Added boostimport.h
+	
+	* common/nclude_boost.h : Renamed boostimport.h.
+
+2009-03-31 Jerome Pasquier  <rainbru@free.fr>
+	* common/ftpclient.cpp : Now uses gettext.
+	* common/enetclient.cpp : Now uses gettext.
+	* common/enetbase.cpp : Now uses gettext.
+	* common/EasyBMP.cpp : Now uses gettext.
+	
 2009-03-31 Carine Chum <carine.chum@free.fr>
 	* common/include_boost.h : Using this header
 	instead a direct boost include fix a lot of compilation

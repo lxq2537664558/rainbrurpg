@@ -21,3 +21,6 @@ common/curlserverdelete.cpp
 common/curlservermodifclients.cpp
 common/curlsubmitform.cpp
 common/EasyBMP.cpp
+common/enetbase.cpp
+common/enetclient.cpp
+common/ftpclient.cpp
