@@ -65,7 +65,7 @@ RainbruRPG::Network::npConnectionResponse::~npConnectionResponse(){
   */
 void RainbruRPG::Network::npConnectionResponse::netSerialize(){
   if (response==NCR_UNDEFINED){
-    LOGW("The server's response is not set");
+    LOGW(_("The server's response is not set"));
   }
   data->packetIdentifier=GUINT16_TO_LE(this->id);
 

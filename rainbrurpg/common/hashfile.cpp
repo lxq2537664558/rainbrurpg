@@ -59,7 +59,10 @@ std::string RainbruRPG::Core::HashFile::getHashSum(const std::string& path){
   file.open(path.c_str(), ios_base::in |ios_base::binary);
 
   if (file.fail()){
-    LOGE("Cannot open file");
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("The file '%s' cannot be opened."), path.c_str());
+    LOGE(str);
   }
   else{
     SHA1Context sha;

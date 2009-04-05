@@ -124,24 +124,32 @@ typeToString(tNetPacketIdentifier t){
   const char* ret;
 
   switch(t){
-  case NPI_GEN_IDENT :
-    ret="Identification";
+  case NPI_GEN_IDENT:
+    // TRANSLATORS: The following define an Identification network packet.
+    ret=_("Identification");
     break;
 
   case NPI_SVR_CONRESP:
-    ret="Server connection response";
+    // TRANSLATORS: The following the response packet of the server to the 
+    // network connection.
+    ret=_("Server connection response");
     break;
 
   case NPI_FLOOD_0004:
-    ret="Net flooder packet (4 bytes)";
+    // TRANSLATORS: The following define a flood network packet. 'Netflooder'
+    // is the name of a tool.
+    ret=_("Netflooder packet (4 bytes)");
     break;
 
   case NPI_INVALID:
-    ret="Unset";
+    // TRANSLATORS: The following define an unset network packet type.
+    ret=_("Unset");
     break;
 
   default:
-    ret="Error";
+    // TRANSLATORS: The following define an error in the handling of a
+    // packet type.
+    ret=_("Error");
     break;
   }
 

@@ -24,7 +24,8 @@
   * Declares a class that compute hash sum of a file
   *
   * Modifications :
-  * - 07 aug 2008 : single file documentation
+  * - 01 apr 2009 : Now using gettext compliant string
+  * - 07 aug 2008 : Single file documentation
   * - 20 jul 2007 : Starting implementation
   *
   */
@@ -32,8 +33,7 @@
 #ifndef _HASH_FILE_H_
 #define _HASH_FILE_H_
 
-// For hash sum
-#include <unistd.h>
+#include <unistd.h> // For hash sum
 
 #include <string>
 #include <fstream>
@@ -42,6 +42,8 @@
 
 #include "logger.h"
 #include "sha1.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

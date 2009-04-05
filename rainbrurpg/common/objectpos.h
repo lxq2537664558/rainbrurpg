@@ -24,6 +24,7 @@
   * Defines an object defining the position/rotation of a mesh
   *
   * Modifications :
+  * - 03 apr 2009 : Using initiazlizers
   * - 07 aug 2008 : Single file documentation
   * - 14 apr 2007 : Assignment operator added
   *
@@ -33,6 +34,8 @@
 #define OBJECT_POS_H
 
 #include <string>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Core{

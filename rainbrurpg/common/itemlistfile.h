@@ -24,6 +24,7 @@
   * Declares a class that manage a file containing an item list
   *
   * Modifications :
+  * - 01 apr 2009 : Use getetxt
   * - 29 aug 2008 : 
   *   - Implements the load(), reset() functions
   *   - Implements an empty constructor
@@ -39,6 +40,8 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

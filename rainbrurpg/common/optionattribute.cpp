@@ -27,6 +27,9 @@
 
 #include "optionattribute.h"
 
+// Added here cause it doesn't work if added in optionattribute.h
+#include "rainbrudef.h" // For the gettext stuff
+
 /** A typed default constructor
   *
   * This calls setType() with \c t as parameter.
@@ -51,7 +54,7 @@ RainbruRPG::Options::OptionAttribute::OptionAttribute(tOptionAttributeType t){
   */
 void RainbruRPG::Options::OptionAttribute::setType(tOptionAttributeType t){
   if (t==OAT_UNKNOWN)
-    LOGW("Setting a unknown type to an OptionAttribute");
+    LOGW(_("Setting a unknown type to an OptionAttribute"));
 
   this->type=t;
 }
@@ -82,7 +85,7 @@ RainbruRPG::Options::OptionAttribute::getType(){
   */
 void RainbruRPG::Options::OptionAttribute::setName(const char*n){
   if (strlen(n)==0)
-    LOGW("Setting an empty name to an OptionAttribute");
+    LOGW(_("Setting an empty name to an OptionAttribute"));
   this->name=n;
 }
 

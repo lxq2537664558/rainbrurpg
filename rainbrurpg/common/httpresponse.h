@@ -24,6 +24,7 @@
   * Declares types and class that return string from an HTTP status code
   *
   * Modifications :
+  * - 01 apr 2009 : Using gettext and the RESPADD macro
   * - 04 aug 2008 : Single file documentation
   *
   * \todo Uses C++ string instead of C-style null terminated string
@@ -40,6 +41,9 @@
 #include <sstream>
 
 #include "logger.h"
+#include "rainbrudef.h" // For the gettext stuff
+
+#define RESPADD(ID,MSG) (msgMap->insert(HttpMessagePair(ID, MSG)))
 
 using namespace std;
 

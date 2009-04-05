@@ -110,7 +110,7 @@ void RainbruRPG::Options::OptionFloatAttribute::decrease(){
 
 void RainbruRPG::Options::OptionFloatAttribute::controlStep(){
   if (step==0.0f)
-    LOGW("Calling increase or decrease with a step set to 0");
+    LOGW(_("Calling increase or decrease with a step set to 0"));
 }
 
 /** Update the associated widget
@@ -120,9 +120,9 @@ void RainbruRPG::Options::OptionFloatAttribute::controlStep(){
   */
 void RainbruRPG::Options::OptionFloatAttribute::update(){
   if (widget){
-    LOGW("Update not yet implemented");
+    LOGW(_("Update not yet implemented"));
   }
   else{
-    LOGW("Cannot update optionattribute : widget=NULL");
+    LOGW(_("Cannot update optionattribute : widget=NULL"));
   }
 }

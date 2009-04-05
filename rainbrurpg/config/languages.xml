@@ -5,23 +5,24 @@
   -->
   <LastUsed>fr_FR</LastUsed>
   <Default>en_US</Default>
+  <PoMessagesNumber>217</PoMessagesNumber><!-- Number of gettext messages -->
   <Language>
     <Code>fr</Code>
     <Text>Français</Text>
     <Country>
       <Code>FR</Code>
       <Text>France</Text>
-      <CompletePerCent>90</CompletePerCent>
+      <TranslatedMessages>90</TranslatedMessages>
     </Country>
     <Country>
       <Code>CH</Code>
       <Text>Suisse</Text>
-      <CompletePerCent>3</CompletePerCent>
+      <TranslatedMessages>3</TranslatedMessages>
    </Country>
     <Country>
       <Code>BE</Code>
       <Text>Blegique</Text>
-      <CompletePerCent>25</CompletePerCent>
+      <TranslatedMessages>25</TranslatedMessages>
    </Country>
   </Language>
   <Language>
@@ -30,10 +31,12 @@
     <Country>
       <Code>US</Code>
       <Text>USA</Text>
+      <TranslatedMessages>15</TranslatedMessages>
     </Country>
     <Country>
       <Code>EN</Code>
       <Text>England</Text>
+      <TranslatedMessages>2</TranslatedMessages>
     </Country>
   </Language>
 </LanguageList>

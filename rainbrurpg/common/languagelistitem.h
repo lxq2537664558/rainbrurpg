@@ -24,6 +24,7 @@
   * Declares a class defining a language
   *
   * Modifications :
+  * - 01 apr 2009 : Using gettext
   * - 14 oct 2007 : Documentation update
   *
   */
@@ -32,6 +33,7 @@
 #define LANGUAGE_LIST_ITEM_H
 
 #include "stringconv.h"
+#include "rainbrudef.h"
 
 using namespace RainbruRPG::Core;
 

@@ -24,11 +24,12 @@
   * Defines the client identification packet
   *
   * Modifications :
+  * - 02 apt 2009 : Now uses gettext strings
   * - 19 mar 2007 : Starting implementation of 
-  *      \ref RainbruRPG::Network::NetPacketBase::netSerialize "netSerialize()",
-  *      \ref RainbruRPG::Network::NetPacketBase::netDeserialize 
-  *      "netDeserialize" and  other pure virtual functions from 
-  *      \ref RainbruRPG::Network::NetPacketBase "NetPacketBase".
+  *     \ref RainbruRPG::Network::NetPacketBase::netSerialize "netSerialize()",
+  *     \ref RainbruRPG::Network::NetPacketBase::netDeserialize 
+  *     "netDeserialize" and  other pure virtual functions from 
+  *     \ref RainbruRPG::Network::NetPacketBase "NetPacketBase".
   * - 05 mar 2007 : starting implementation
  */
 
@@ -36,6 +37,7 @@
 #define NETWORK_PACKET_IDENTIFICATION_H
 
 #include "netpacketbase.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Network{

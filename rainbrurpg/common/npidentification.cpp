@@ -76,7 +76,7 @@ setClientType(tNetworkClientType t){
   */
 void RainbruRPG::Network::npIdentification::netSerialize(){
   if (clientType==NCT_UNKNOWN){
-    LOGW("The client type is not set");
+    LOGW(_("The client type is not set"));
   }
   data->packetIdentifier=GUINT16_TO_LE(this->id);
 
@@ -153,23 +153,28 @@ clientTypeToString(RainbruRPG::Network::tNetworkClientType t){
 
   switch (t){
   case NCT_FLOODER:
-    ret="NetFlooder";
+    // TRANSLATORS: This is the name of a client type.
+    ret=_("NetFlooder");
     break;
 
   case NCT_EDITOR:
-    ret="Editor";
+    // TRANSLATORS: This is the name of a client type.
+    ret=_("Editor");
     break;
 
   case NCT_GAME:  
-    ret="Game";
+    // TRANSLATORS: This is the name of a client type.
+    ret=_("Game");
     break;
 
   case NCT_UNKNOWN:
-    ret="Unknown";
+    // TRANSLATORS: This is the unknown client type.
+    ret=_("Unknown");
     break;
 
   default:
-    ret="Default";
+    // TRANSLATORS: This is the unknown client type.
+    ret=_("Default");
     break;
 
   }

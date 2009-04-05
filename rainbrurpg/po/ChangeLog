@@ -1,5 +1,23 @@
+2009-04-04  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/objectpos.cpp, common/optionattribute.cpp,
+	common/optionboolattribute.cpp, common/optionbutton.cpp,
+	common/optionfloatattribute.cpp, optionfloatrangeattribute.cpp added.
+
+2009-04-03  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/npidentification.cpp, common/objectmesh.cpp
+	added.
+
+2009-04-01  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/globaluri.cpp, common/hashfile.cpp,
+	common/hashpassword.cpp ,common/httpresponse.cpp,
+	common/itemlistfile.cpp added.
+
+2009-03-31  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/ftpclient.cpp added.
+
 2009-03-30  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/EasyBMP.cpp added.
+	
 2009-03-28  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/curlserveradd.cpp, common/curlserverdelete.cpp 
 	common/curlservermodifsclients.cpp and common/curlsubmitform added.

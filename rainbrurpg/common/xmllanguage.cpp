@@ -38,7 +38,8 @@ RainbruRPG::Options::xmlLanguage::xmlLanguage()
   :doc(NULL), 
    root(NULL), 
    lastUsed(""),
-   defaultLang("")
+   defaultLang(""),
+   mNbMessages(0)
 {
 
   LOGI("xmlLanguage creation");
@@ -52,6 +53,7 @@ RainbruRPG::Options::xmlLanguage::xmlLanguage()
   if (loadDocument()){
     loadLastUsed();
     loadDefault();
+    loadNbMessages();
 
     LOGCATS("Last used language found : '");
     LOGCATS(lastUsed);
@@ -168,18 +170,26 @@ void RainbruRPG::Options::xmlLanguage::loadLastUsed(){
   *
   */
 void RainbruRPG::Options::xmlLanguage::loadDefault(){
-
   TiXmlNode* childNode = root->FirstChild( "Default" );
   if (childNode){
     TiXmlElement* lu= childNode->ToElement();
     if (lu){
       defaultLang=lu->GetText();
     }
-
   }
-
-
 }
+
+void RainbruRPG::Options::xmlLanguage::loadNbMessages(){
+  TiXmlNode* childNode = root->FirstChild( "PoMessagesNumber");
+  if (childNode){
+    TiXmlElement* lu= childNode->ToElement();
+    if (lu){
+      const char* txt=lu->GetText();
+      mNbMessages = StringConv::getSingleton().stoi(txt);
+    }
+  }
+}
+
 
 /** Get all the language nodes and call TreatOneLanguage for each one
   *
@@ -315,18 +325,20 @@ const char* RainbruRPG::Options::xmlLanguage::getCommonText(TiXmlElement* e){
   *
   */
 float RainbruRPG::Options::xmlLanguage::getCountryPerCent(TiXmlElement* e){
-  TiXmlNode* code=e->FirstChild( "CompletePerCent" );
+  float tr_msg_nb;
+  TiXmlNode* code=e->FirstChild( "TranslatedMessages" );
   if (code){
     TiXmlElement* elem=code->ToElement();
     if (elem){
-      return StringConv::getSingleton().ctof(elem->GetText());
+       tr_msg_nb = StringConv::getSingleton().ctof(elem->GetText());
+       return (double)(tr_msg_nb * 100.0f) / (double)mNbMessages;
     }
     else{
-      return 0;
+      return 0.0f;
     }
   }
   else{
-    return 0;
+    return 0.0f;
   }
 }
 

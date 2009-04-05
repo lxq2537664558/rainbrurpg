@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-03-31 22:53+0200\n"
+"POT-Creation-Date: 2009-04-04 17:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,44 +244,44 @@ msgstr ""
 
 #. TRANSLATORS: The parameter is the name of the file we are
 #. about to write.
-#: common/curlgetfile.cpp:98
+#: common/curlgetfile.cpp:95
 #, c-format
 msgid "Performing CurlGetFile writeToFile action, filename : %s"
 msgstr ""
 
-#: common/curlgetfile.cpp:104
+#: common/curlgetfile.cpp:101
 msgid "The curl handle was not properly initialized"
 msgstr ""
 
-#: common/curlgetfile.cpp:116 common/curlsubmitform.cpp:111
+#: common/curlgetfile.cpp:113 common/curlsubmitform.cpp:111
 msgid "Setting the licurl URL"
 msgstr ""
 
-#: common/curlgetfile.cpp:133 common/curlsubmitform.cpp:104
+#: common/curlgetfile.cpp:130 common/curlsubmitform.cpp:104
 msgid "Error opening the FILE pointer"
 msgstr ""
 
-#: common/curlgetfile.cpp:143
+#: common/curlgetfile.cpp:140
 msgid "An error occured during CurlGetFile::writeToFile()."
 msgstr ""
 
-#: common/curlgetfile.cpp:147
+#: common/curlgetfile.cpp:144
 msgid "Getting the last HTTP server status code"
 msgstr ""
 
-#: common/curlgetfile.cpp:154
+#: common/curlgetfile.cpp:151
 msgid "The CurlGetInfo was successfull"
 msgstr ""
 
-#: common/curlgetfile.cpp:158
+#: common/curlgetfile.cpp:155
 msgid "HTTP server returns SUCCESS."
 msgstr ""
 
-#: common/curlgetfile.cpp:162
+#: common/curlgetfile.cpp:159
 msgid "HTTP server returns an error status code :"
 msgstr ""
 
-#: common/curlgetfile.cpp:170
+#: common/curlgetfile.cpp:167
 msgid "An error occured during CurlGetInfo operation"
 msgstr ""
 
@@ -634,26 +634,26 @@ msgstr ""
 msgid "Trying to connect an already connected client"
 msgstr ""
 
-#: common/ftpclient.cpp:94
+#: common/ftpclient.cpp:92
 msgid "The given server's UniqueName is empty. FtpClient cannot work properly."
 msgstr ""
 
-#: common/ftpclient.cpp:101
+#: common/ftpclient.cpp:99
 msgid "Connection to host FAILED"
 msgstr ""
 
-#: common/ftpclient.cpp:117
+#: common/ftpclient.cpp:115
 msgid "sendString called"
 msgstr ""
 
-#: common/ftpclient.cpp:132
+#: common/ftpclient.cpp:130
 #, c-format
 msgid "%d bytes written"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: common/ftpclient.cpp:145
+#: common/ftpclient.cpp:143
 #, c-format
 msgid ""
 "Opening data channel :\n"
@@ -663,7 +663,7 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: common/ftpclient.cpp:155
+#: common/ftpclient.cpp:153
 #, c-format
 msgid ""
 "Cannot open data channel :\n"
@@ -671,90 +671,419 @@ msgid ""
 "  Server port    : %d"
 msgstr ""
 
-#: common/ftpclient.cpp:162
+#: common/ftpclient.cpp:160
 msgid "Data channel opened"
 msgstr ""
 
-#: common/ftpclient.cpp:188
+#: common/ftpclient.cpp:186
 msgid "waitControlResponse() called"
 msgstr ""
 
-#: common/ftpclient.cpp:218
+#: common/ftpclient.cpp:216
 msgid "Sending LIST command"
 msgstr ""
 
-#: common/ftpclient.cpp:220
+#: common/ftpclient.cpp:218
 msgid "Waiting for first control response"
 msgstr ""
 
-#: common/ftpclient.cpp:226
+#: common/ftpclient.cpp:224
 msgid "Waiting for second control response"
 msgstr ""
 
-#: common/ftpclient.cpp:240
+#: common/ftpclient.cpp:238
 msgid "readDataChannel called"
 msgstr ""
 
-#: common/ftpclient.cpp:250
+#: common/ftpclient.cpp:248
 msgid "Calling gnet_io_channel_readn()"
 msgstr ""
 
-#: common/ftpclient.cpp:253
+#: common/ftpclient.cpp:251
 msgid "gnet_io_channel_readn() called"
 msgstr ""
 
-#: common/ftpclient.cpp:270
+#: common/ftpclient.cpp:268
 msgid "readDataChannel() call finished"
 msgstr ""
 
-#: common/ftpclient.cpp:335
+#: common/ftpclient.cpp:333
 msgid "File does not exist"
 msgstr ""
 
-#: common/ftpclient.cpp:371
+#: common/ftpclient.cpp:369
 msgid "File already exist"
 msgstr ""
 
-#: common/ftpclient.cpp:399 common/ftpclient.cpp:520
+#: common/ftpclient.cpp:397 common/ftpclient.cpp:518
 msgid "Cannot allocate buffer"
 msgstr ""
 
-#: common/ftpclient.cpp:414 common/ftpclient.cpp:536
+#: common/ftpclient.cpp:412 common/ftpclient.cpp:534
 msgid "The filename doesn't contain path"
 msgstr ""
 
-#: common/ftpclient.cpp:441
+#: common/ftpclient.cpp:439
 msgid "The file already exists. Transfer is cancelled"
 msgstr ""
 
-#: common/ftpclient.cpp:466 common/ftpclient.cpp:596
+#: common/ftpclient.cpp:464 common/ftpclient.cpp:594
 msgid "Returned from thread"
 msgstr ""
 
-#: common/ftpclient.cpp:473
+#: common/ftpclient.cpp:471
 msgid "An error occured during opening file"
 msgstr ""
 
-#: common/ftpclient.cpp:499
+#: common/ftpclient.cpp:497
 msgid "Closing data channel"
 msgstr ""
 
-#: common/ftpclient.cpp:560
+#: common/ftpclient.cpp:558
 msgid "An error occured during opening file : "
 msgstr ""
 
-#: common/ftpclient.cpp:567
+#: common/ftpclient.cpp:565
 msgid "File is correctly opened"
 msgstr ""
 
-#: common/ftpclient.cpp:576
+#: common/ftpclient.cpp:574
 msgid "Data channel is opened"
 msgstr ""
 
-#: common/ftpclient.cpp:600
+#: common/ftpclient.cpp:598
 msgid "An error occured when opening data channel"
 msgstr ""
 
-#: common/ftpclient.cpp:605
+#: common/ftpclient.cpp:603
 msgid "Transfer is terminated"
+msgstr ""
+
+#: common/globaluri.cpp:49
+msgid "Using the local website (127.0.0.1)"
+msgstr ""
+
+#: common/globaluri.cpp:53
+msgid "Using the real website"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the user's home directory.
+#: common/globaluri.cpp:137
+#, c-format
+msgid "Setting user's HOME directory to' %s'"
+msgstr ""
+
+#: common/globaluri.cpp:145
+msgid "Home directory alerady exists"
+msgstr ""
+
+#: common/globaluri.cpp:148
+msgid "Home directory doesn't exists, creating it"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the user's home directory.
+#: common/globaluri.cpp:179
+#, c-format
+msgid "The file '%s' doesn't exist"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/globaluri.cpp:222
+#, c-format
+msgid "The file '%s' was not found. Copying it from $PREFIX/share/."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/globaluri.cpp:232
+#, c-format
+msgid "The file '%s' was found. in the user's directory."
+msgstr ""
+
+#: common/globaluri.cpp:265
+msgid "uploaded/ directory does not exist, creating it"
+msgstr ""
+
+#: common/globaluri.cpp:288
+msgid "quarantine/ directory does not exist, creating it"
+msgstr ""
+
+#: common/globaluri.cpp:333
+msgid "Downloaded/ directory exists"
+msgstr ""
+
+#: common/globaluri.cpp:341
+msgid "Downloaded/ directory does not exist, creating it"
+msgstr ""
+
+#. TRANSLATORS: To avoid filename conflicts, all files downloaded
+#. from a server go to a directory named from the server's unique name.
+#. This message tells the user that this unique directory doesn't exist
+#. and it will not created because the variable 'createIfMissing' has
+#. the 'false' value.
+#: common/globaluri.cpp:355
+msgid ""
+"Missing server's unique directory. It is  not created because "
+"createIfMissing=false."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: common/hashfile.cpp:64
+#, c-format
+msgid "The file '%s' cannot be opened."
+msgstr ""
+
+#: common/httpresponse.cpp:42
+msgid "Ok : The request was fulfilled"
+msgstr ""
+
+#: common/httpresponse.cpp:43
+msgid "Created : The POST request was successful"
+msgstr ""
+
+#: common/httpresponse.cpp:44
+msgid ""
+"Accepted : The request has been accepted for processing, but the processing "
+"has not been completed"
+msgstr ""
+
+#: common/httpresponse.cpp:46
+msgid ""
+"Partial Information : A GET command returned metainformation that is not a "
+"definitive set of the object from a server with a copy of the object"
+msgstr ""
+
+#: common/httpresponse.cpp:49
+msgid ""
+"No Response : Server has received the request but there is no information to "
+"send back, and the client should stay in the same document view"
+msgstr ""
+
+#: common/httpresponse.cpp:54
+msgid ""
+"Moved : The data requested has been assigned a new URI, the change is "
+"permanent"
+msgstr ""
+
+#: common/httpresponse.cpp:56
+msgid ""
+"Found : The data requested actually resides under a different URL, however, "
+"the redirection may be altered on occasion"
+msgstr ""
+
+#: common/httpresponse.cpp:59
+msgid ""
+"Method : The client may go try another network address. In this case, a "
+"different method may be used too, rather than GET"
+msgstr ""
+
+#: common/httpresponse.cpp:62
+msgid ""
+"Not Modified : If the client has done a conditional GET and access is "
+"allowed, but the document has not been modified"
+msgstr ""
+
+#: common/httpresponse.cpp:66
+msgid ""
+"Bad request : The request had bad syntax or was inherently impossible to be "
+"satisfied"
+msgstr ""
+
+#: common/httpresponse.cpp:68
+msgid ""
+"Unauthorized : The client should retry the request with a suitable "
+"Authorization header"
+msgstr ""
+
+#: common/httpresponse.cpp:70
+msgid ""
+"PaymentRequired : The client may retry the request with a suitable ChargeTo "
+"header"
+msgstr ""
+
+#: common/httpresponse.cpp:72
+msgid ""
+"Forbidden : The request is for something forbidden. Authorization will not "
+"help"
+msgstr ""
+
+#: common/httpresponse.cpp:74
+msgid "Not found : The server has not found anything matching the URI given"
+msgstr ""
+
+#: common/httpresponse.cpp:78
+msgid ""
+"Internal Error : The server encountered an unexpected condition which "
+"prevented it from fulfilling the request"
+msgstr ""
+
+#: common/httpresponse.cpp:80
+msgid "Not implemented : The server does not support the facility required"
+msgstr ""
+
+#: common/httpresponse.cpp:82
+msgid ""
+"Service temporarily overloaded : The server cannot process the request due "
+"to a high load (whether HTTP servicing or other requests). The implication "
+"is that this is a temporary condition which maybe alleviated at other times"
+msgstr ""
+
+#: common/httpresponse.cpp:86
+msgid ""
+"Gateway timeout : This is equivalent to Internal Error 500, but in the case "
+"of a server which is in turn accessing some other service, this indicates "
+"that the respose from the other service did not return within a time that "
+"the gateway was prepared to wait"
+msgstr ""
+
+#: common/httpresponse.cpp:122
+msgid "The requested http status code is not in list. Returning empty message"
+msgstr ""
+
+#: common/itemlistfile.cpp:81
+msgid "Cannot append item in ItemListFile with empty file name"
+msgstr ""
+
+#: common/itemlistfile.cpp:118
+#, c-format
+msgid "ItemListFile object started with the '%s' file."
+msgstr ""
+
+#: common/itemlistfile.cpp:126
+msgid "Error while opening ItemList file"
+msgstr ""
+
+#: common/itemlistfile.cpp:161
+msgid "Cannot refresh an ItemListFile with empty file name"
+msgstr ""
+
+#: common/logger.cpp:187
+msgid " LOGGER CAN'T OPEN FILE "
+msgstr ""
+
+#: common/logger.cpp:273
+msgid "true"
+msgstr ""
+
+#: common/logger.cpp:275
+msgid "false"
+msgstr ""
+
+#. TRANSLATORS: The following define an Identification network packet.
+#: common/netpacketbase.cpp:129
+msgid "Identification"
+msgstr ""
+
+#. TRANSLATORS: The following the response packet of the server to the
+#. network connection.
+#: common/netpacketbase.cpp:135
+msgid "Server connection response"
+msgstr ""
+
+#. TRANSLATORS: The following define a flood network packet. 'Netflooder'
+#. is the name of a tool.
+#: common/netpacketbase.cpp:141
+msgid "Netflooder packet (4 bytes)"
+msgstr ""
+
+#. TRANSLATORS: The following define an unset network packet type.
+#: common/netpacketbase.cpp:146
+msgid "Unset"
+msgstr ""
+
+#. TRANSLATORS: The following define an error in the handling of a
+#. packet type.
+#: common/netpacketbase.cpp:152
+msgid "Error"
+msgstr ""
+
+#: common/npconnectionresponse.cpp:68
+msgid "The server's response is not set"
+msgstr ""
+
+#: common/npidentification.cpp:79
+msgid "The client type is not set"
+msgstr ""
+
+#. TRANSLATORS: This is the name of a client type.
+#: common/npidentification.cpp:157
+msgid "NetFlooder"
+msgstr ""
+
+#. TRANSLATORS: This is the name of a client type.
+#: common/npidentification.cpp:162
+msgid "Editor"
+msgstr ""
+
+#. TRANSLATORS: This is the name of a client type.
+#: common/npidentification.cpp:167
+msgid "Game"
+msgstr ""
+
+#. TRANSLATORS: This is the unknown client type.
+#: common/npidentification.cpp:172
+msgid "Unknown"
+msgstr ""
+
+#. TRANSLATORS: This is the unknown client type.
+#: common/npidentification.cpp:177
+msgid "Default"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of an ObjectPos.
+#: common/objectmesh.cpp:174
+#, c-format
+msgid "ObjectPos '%s' not found."
+msgstr ""
+
+#: common/optionattribute.cpp:57
+msgid "Setting a unknown type to an OptionAttribute"
+msgstr ""
+
+#: common/optionattribute.cpp:88
+msgid "Setting an empty name to an OptionAttribute"
+msgstr ""
+
+#: common/optionboolattribute.cpp:43
+msgid "Constructing a bool OptionAttribute"
+msgstr ""
+
+#: common/optionboolattribute.cpp:86
+msgid "Updating an OptionIntAttribute"
+msgstr ""
+
+#: common/optionboolattribute.cpp:90
+msgid "Cannot get a valid FXCheckButton"
+msgstr ""
+
+#: common/optionboolattribute.cpp:94 common/optionfloatattribute.cpp:126
+#: common/optionfloatrangeattribute.cpp:178
+msgid "Cannot update optionattribute : widget=NULL"
+msgstr ""
+
+#: common/optionbutton.cpp:39
+msgid "Creating an OptionButton without an Icon"
+msgstr ""
+
+#: common/optionbutton.cpp:67
+msgid "Creating an OptionButton with empty caption"
+msgstr ""
+
+#: common/optionbutton.cpp:81
+msgid "Creating an OptionButton with empty icon filename"
+msgstr ""
+
+#: common/optionfloatattribute.cpp:113
+msgid "Calling increase or decrease with a step set to 0"
+msgstr ""
+
+#: common/optionfloatattribute.cpp:123
+#: common/optionfloatrangeattribute.cpp:175
+msgid "Update not yet implemented"
+msgstr ""
+
+#. TRANSLATORS: The parameters are : The attribute name, the attribute
+#. value (as a float) and the min and max ranges in floats.
+#: common/optionfloatrangeattribute.cpp:127
+#, c-format
+msgid "Value out of range for attribute '%s'. Value %f (range %f to %f)"
 msgstr ""

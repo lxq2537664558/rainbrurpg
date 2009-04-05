@@ -21,17 +21,21 @@
  */
 
 /** \file npconnectionresponse.h
-  * Defines the network packet used by server to answer to a client's connection
+  * Defines the network packet used by server to answer to a client's 
+  * connection.
   *
   * Modifications :
+  * - 01 apr 2009 : Uses gettext
   * - 18 jun 2007 : Documentation improved
   * - 20 mar 2007 : starting implementation
+  *
   */
 
 #ifndef NETWORK_PACKET_CONNECTION_RESPONSE_H
 #define NETWORK_PACKET_CONNECTION_RESPONSE_H
 
 #include "netpacketbase.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Network{

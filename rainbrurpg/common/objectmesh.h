@@ -24,6 +24,7 @@
   * Defines a static mesh that can have multiple instances
   *
   * Modifications :
+  * - 02 apr 2009 : Using gettext string
   * - 07 aug 2008 : Single file documentation
   *
   */
@@ -35,6 +36,8 @@
 
 #include <list>
 #include <string>
+
+#include "rainbrudef.h"
 
 using namespace std;
 

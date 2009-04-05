@@ -1,4 +1,17 @@
+2009-04-03 Jerome Pasquier  <rainbru@free.fr>
+	* common/objectpos.cpp : Uses constructor initializers
+	
+	* common/xmllanguage.cpp : Now computes complete percent.
+	* config/language.xml : Added PoMessagesNumber and renamed 
+	CompletePercent to TranslatedMessages.
+
 2009-04-01 Jerome Pasquier  <rainbru@free.fr>
+	* common/netpacketbase.cpp : Using gettext strings and a macro.
+	* common/itemlistfile.cpp : Using gettext strings and a macro.
+	* common/httpresponse.cpp : Using gettext strings and a macro.
+	* common/hashfile.cpp : Using gettext strings.
+	* common/globaluri.cpp : Using gettext strings.
+	
 	* common/Makefile.am : Added boostimport.h
 	
 	* common/nclude_boost.h : Renamed boostimport.h.

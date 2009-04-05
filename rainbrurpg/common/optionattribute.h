@@ -24,6 +24,7 @@
   * Declares an attribute that will be shown in the launcher's option editor
   *
   * Modifications :
+  * - 04 apr 2009 : Using gettext strings
   * - 08 aug 2008 : Single file documentation
   *
   */

@@ -2,14 +2,17 @@ RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/ --enable-Wno-stddep-ogre
-- Fixing client executable size (310Mo) (see and update doc_cross_compil)
+- Fixing maincore lib size (310Mo) (see and update doc_cross_compil)
 
 o [rainbru] Fixing some OgreGui related graphical bugs
 - Tooltip doesn't disappear if we aren't in the window anymore
 - Moving MCL scrollbar when window's SB were moved is spurious 
 
 o [rainbru] i18n (source are taken alphabetically)
-- common/enetbase.cpp was the last translated source
+- common/optionfloatrangeattribute.cpp was the last translated source
+
+* xmlLanguageList auto compute complete percent
+- config/languagelist.xml ...
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -92,6 +95,15 @@ A system that serialize widgets position and configuration
          ContextName
            Key=value
 
+* Transmsg
+   This tool should extract text from the server and editor to the
+   users, making a POT file (quest, server's messages, objects
+   name...). This pot file, translated and compiled by the server
+   administrator will be downloaded by the users for their own
+   language. The gettext textdomain should be the server's unique name
+   to avoid message's conflicts.
+- gettext can have multiple textdomain (RainbruRPG and server's unique name)?
+
 * Miscellaneous
 - Logger uses clog and cerr (from the IOstream Library)
 - modifpersoattrb.php do not check fields content (NULL content allowed)
@@ -107,10 +119,20 @@ A system that serialize widgets position and configuration
    18 items by revision
    Please update version and revision in configure.in and Doxyfile
    Please update doc/regTest.html for each revision
+   Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-192 (28 mar 2009 - ???)
-- (7) Renamed includeboost.h to boostimport.h
+- (12) common/optionattribute.cpp now uses gettext compliant strings
+   Also optionbutton.cpp, optionfloatattriute.cpp, optionfloatrangeattribute
+- common/objectpos uses contructor initializers
+- Now xmlLanguage compute the complete percent
+- common/npidentification.cpp now uses gettext compliant strings
+   Also objectmesh.cpp
+- common/globaluri.cpp now uses gettext compliant strings
+   Also hashfile.cpp, hashpassword.cpp, httpresponse.cpp,
+   itemlistfile.cpp, netpacketbase.cpp   
+- Renamed includeboost.h to boostimport.h
 - Created common/include_boost.h to fix a ptrdiff_t cross-compilation error
 - EasyBMP.cpp now uses gettext compliant strings
    Also : enetbase.cpp, enetclient.cpp, ftpclient.cpp

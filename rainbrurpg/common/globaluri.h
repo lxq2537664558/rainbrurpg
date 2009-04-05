@@ -24,6 +24,7 @@
   * Declares types and class used to get full file names with path
   *
   * Modifications :
+  * - 31 mar 2009 : Using gettext
   * - 30 mar 2009 : Using namespace alias for boost::filesystem to
   *                 avoid compilation errors.
   * - 29 oct 2008 : Now using RAINBRU_EXPORT GCC visibility handler

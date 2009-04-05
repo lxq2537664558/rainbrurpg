@@ -24,6 +24,7 @@
   * Declares an option attribute storing a boolean value
   *
   * Modifications :
+  * - 04 apr 2009 : Now using gettext
   * - 08 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 #include "logger.h"
 #include "optionattribute.h"
 #include "stringconv.h"
+
+#include "rainbrudef.h"
 
 using namespace std;
 

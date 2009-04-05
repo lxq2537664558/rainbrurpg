@@ -30,15 +30,17 @@
 /** The default constructor 
   *
   */
-RainbruRPG::Core::ObjectPos::ObjectPos(){
-  this->name="";
-  this->posX=0;
-  this->posY=0;
-  this->posZ=0;
-  this->rotW=0;
-  this->rotX=0;
-  this->rotY=0;
-  this->rotZ=0;
+RainbruRPG::Core::ObjectPos::ObjectPos():
+  name(""),
+  posX(0),
+  posY(0),
+  posZ(0),
+  rotW(0),
+  rotX(0),
+  rotY(0),
+  rotZ(0)
+{
+  // Nothing
 }
 
 /** The copy constructor

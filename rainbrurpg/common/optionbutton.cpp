@@ -36,7 +36,7 @@
   * \param caption The caption (the shown text) of the button
   */
 RainbruRPG::Options::OptionButton::OptionButton(const char* caption){
-  LOGW("You are creating a OptionButton without an Icon");
+  LOGW(_("Creating an OptionButton without an Icon"));
   this->setCaption(caption);
   foxPanelId=-1;
 }
@@ -64,7 +64,7 @@ RainbruRPG::Options::OptionButton::OptionButton(const char* caption,
   */
 void RainbruRPG::Options::OptionButton::setCaption(const char* caption){
   if (strlen(caption)==0){
-    LOGW("You are setting an empty caption");
+    LOGW(_("Creating an OptionButton with empty caption"));
   }
   this->m_caption=caption;
 }
@@ -78,7 +78,7 @@ void RainbruRPG::Options::OptionButton::setCaption(const char* caption){
   */
 void RainbruRPG::Options::OptionButton::setIconFilename(const char* filename){
   if (strlen(filename)==0){
-    LOGW("You are setting an empty icon filename");
+    LOGW(_("Creating an OptionButton with empty icon filename"));
   }
   this->m_iconFilename=filename;
 }

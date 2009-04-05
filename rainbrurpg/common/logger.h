@@ -28,6 +28,7 @@
   *       \c config.h file. 
   *
   * Modifications :
+  * - 01 apr 2009 : Use gettext
   * - 28 oct 2008 ; Added a todo documentation item for LOGA
   * - 20 aug 2008 : Hacking to avoid multiple definition of macros on Win32
   * - 07 aug 2008 : Single file documentation
@@ -46,6 +47,7 @@
 #include <sstream>
 
 #include "singleton.h"
+#include "rainbrudef.h"
 
 #include "../config.h"
 

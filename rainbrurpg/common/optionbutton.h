@@ -24,6 +24,7 @@
   * Declares a button for the launcher's options editor
   *
   * Modifications :
+  * - 04 apr 2009 : Using gettext
   * - 08 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 
 #include "logger.h"
 #include "optionattribute.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

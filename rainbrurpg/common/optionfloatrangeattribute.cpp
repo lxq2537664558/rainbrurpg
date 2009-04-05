@@ -121,16 +121,13 @@ setValueStr(const char* c){
     this->value=i;
   }
   else{
-    LOGW("The value is out of range :");
-    LOGCATS("Attribute name : "); 
-    LOGCATS(this->getName());
-    LOGCATS("  Value : "); 
-    LOGCATF(i);
-    LOGCATS("  Accepted range : "); 
-    LOGCATF(minRange);
-    LOGCATS(" to "); 
-    LOGCATF(maxRange);
-    LOGCAT();
+    char str[120];
+    // TRANSLATORS: The parameters are : The attribute name, the attribute
+    // value (as a float) and the min and max ranges in floats.
+    sprintf(str, _("Value out of range for attribute '%s'. "
+		   "Value %f (range %f to %f)"), 
+	    this->getName(), i, minRange, maxRange);
+    LOGW(str);
   }
 
   return true;
@@ -175,9 +172,9 @@ void RainbruRPG::Options::OptionFloatRangeAttribute::decrease(){
   */
 void RainbruRPG::Options::OptionFloatRangeAttribute::update(){
   if (widget){
-    LOGW("Update not yet implemented");
+    LOGW(_("Update not yet implemented"));
   }
   else{
-    LOGW("Cannot update optionattribute : widget=NULL");
+    LOGW(_("Cannot update optionattribute : widget=NULL"));
   }
 }

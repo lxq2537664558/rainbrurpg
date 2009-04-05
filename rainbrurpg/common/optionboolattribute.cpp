@@ -40,7 +40,7 @@
 RainbruRPG::Options::OptionBoolAttribute::OptionBoolAttribute(const char* n)
                                 :OptionAttribute(OAT_BOOLEAN){
 
-  LOGI("Constructing a bool OptionAttribute");
+  LOGI(_("Constructing a bool OptionAttribute"));
   this->setName(n);
   this->value=false;
 
@@ -83,14 +83,14 @@ void RainbruRPG::Options::OptionBoolAttribute::update(){
   if (widget){
     FXCheckButton* spin=(FXCheckButton*)widget;
     if (spin){
-      LOGI("Updating an OptionIntAttribute");
+      LOGI(_("Updating an OptionIntAttribute"));
       spin->setCheck(this->value);
     }
     else{
-      LOGW("Cannot get a valid FXCheckButton");
+      LOGW(_("Cannot get a valid FXCheckButton"));
     }
   }
   else{
-    LOGW("Cannot update optionattribute : widget=NULL");
+    LOGW(_("Cannot update optionattribute : widget=NULL"));
   }
 }

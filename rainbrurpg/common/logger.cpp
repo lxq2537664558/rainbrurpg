@@ -184,7 +184,7 @@ void RainbruRPG::Exception::Logger::openFile(){
 
 #ifndef WIN32
   if (!file){
-    cout << "  EE" << __FILE__ <<":"<< __LINE__, " LOGGER CAN'T OPEN FILE ";
+    cout << "  EE" << __FILE__ <<":"<< __LINE__, _(" LOGGER CAN'T OPEN FILE ");
     cout << fileName;
   }
 #endif
@@ -270,7 +270,7 @@ void RainbruRPG::Exception::Logger::logCatFloat(float f){
   */
 void RainbruRPG::Exception::Logger::logCatBool(bool b){
   if (b)
-    oss << "true";
+    oss << _("true");
   else
-    oss << "false";
+    oss << _("false");
 }

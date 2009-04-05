@@ -46,11 +46,11 @@ RainbruRPG::Network::GlobalURI::GlobalURI():
 #ifdef WEBSITE_DEBUG
   adminSite="http://127.0.0.1/rpg/admin/";
   xmlSite="http://127.0.0.1/rpg/metadata/";
-  LOGW("Using the local website (127.0.0.1)");
+  LOGW(_("Using the local website (127.0.0.1)"));
 #else //WEBSITE_DEBUG
   adminSite="http://rainbru.free.fr/rpg/admin/";
   xmlSite="http://rainbru.free.fr/rpg/metadata/";
-  LOGI("Using the real website");
+  LOGI(_("Using the real website"));
 #endif //WEBSITE_DEBUG
 
   shareDir = USER_INSTALL_PREFIX;
@@ -115,15 +115,9 @@ getXmlAdress(const std::string& file)const{
 std::string RainbruRPG::Network::GlobalURI::
 getUserDirFile(const std::string& file)const{
 
-  LOGI("GlobalURI::getUserDirFile called");
   ostringstream oss;
   oss << this->userDir;
   oss << file;
-
-  LOGCATS("returned value is '");
-  LOGCATS(oss.str().c_str());
-  LOGCATS("'");
-  LOGCAT();
 
   return oss.str();
 }
@@ -137,25 +131,21 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   // Get RainbruRPG user's directory
   userDir=getenv("HOME");
   userDir+="/.RainbruRPG/";
-  LOGCATS("Setting user's HOME directory to'");
-  LOGCATS(userDir.c_str());
-  LOGCATS("'");
-  LOGCAT();
+
+  char str[80];
+  // TRANSLATORS: The parameter is the user's home directory.
+  sprintf(str,_("Setting user's HOME directory to' %s'"), userDir.c_str());
+  LOGI(str);
 
   // Creating directory if inexists
-  fs::path homePath(userDir.c_str(), 
-				   fs::native);
-  LOGCATS("Boost path returns '");
-  LOGCATS(homePath.string().c_str());
-  LOGCATS("'");
-  LOGCAT();
+  fs::path homePath(userDir.c_str(), fs::native);
 
   bool ex=fs::exists( homePath );
   if (ex){
-    LOGI("Home directory alerady exists");
+    LOGI(_("Home directory alerady exists"));
   }
   else{
-    LOGI("Home directory doesn't exists, creating it");
+    LOGI(_("Home directory doesn't exists, creating it"));
     fs::create_directory( homePath );
   }
 
@@ -178,14 +168,16 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   */
 std::string RainbruRPG::Network::GlobalURI::
 getShareFile(const std::string& file)const{
-  LOGI("GlobalURI::getShareFile called");
   // Copying necessary files
   std::string s=shareDir;
   s+=file;
 
   fs::path test( s,fs::native);
   if (!fs::exists(test)){
-    LOGW("The given file doesn't exist");
+    char str[80];
+    // TRANSLATORS: The parameter is the user's home directory.
+    sprintf(str, _("The file '%s' doesn't exist"), file.c_str());
+    LOGW(str);
   }
 
   return s;
@@ -225,17 +217,21 @@ installConfigFile(const std::string& filename){
 
   // Need to be installed
   if (!fs::exists(userOptionXmlPath)){
-    std::string msg=filename;
-    msg+=" not found, copying it from $PREFIX/share";
-    LOGW(msg.c_str());
+    char str[100];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("The file '%s' was not found. "
+		   "Copying it from $PREFIX/share/."), filename.c_str());
+    LOGW(str);
 
     fs::copy_file(optionXmlPath, userOptionXmlPath);
     it->needCreation=true;
   }
   else{
-    std::string msg2=filename;
-    msg2+=" found in user directory";
-    LOGI(msg2.c_str());
+    char str[80];
+    // TRANSLATORS: The parameter is a file name.
+    sprintf(str, _("The file '%s' was found. in the user's directory."), 
+	    filename.c_str());
+    LOGI(str);
     it->needCreation=false;
   }
 
@@ -266,7 +262,7 @@ getUploadFile(const std::string& s)const{
   // Create the directory if not exist
   fs::path p(uploadDir, fs::native);
   if(!fs::exists(p)){
-    LOGW("uploaded/ directory does not exist, creating it");
+    LOGW(_("uploaded/ directory does not exist, creating it"));
     // If the uploaded directory does not exist, create it
     fs::create_directory(p);
   }
@@ -284,13 +280,12 @@ getUploadFile(const std::string& s)const{
   */
 std::string RainbruRPG::Network::GlobalURI::
 getQuarantineFile(const std::string& s)const{
-  LOGI("GlobalURI::getQuarantineFile called");
   std::string ret=quarantineDir+s;
 
   // Create the directory if not exist
   fs::path p(quarantineDir, fs::native);
   if(!fs::exists(p)){
-    LOGW("quarantine/ directory does not exist, creating it");
+    LOGW(_("quarantine/ directory does not exist, creating it"));
     // If the uploaded directory does not exist, create it
     fs::create_directory(p);
   }
@@ -335,7 +330,7 @@ getDownloadFile(const std::string& s, const std::string& sun,
   fs::path p2(dirWoSun, fs::native);
   if(fs::exists(p)){
     if (fs::is_directory(p)){
-      LOGI("Downloaded/ directory exists");
+      LOGI(_("Downloaded/ directory exists"));
 
     }
   }
@@ -343,7 +338,7 @@ getDownloadFile(const std::string& s, const std::string& sun,
     // If the downloaded directory does not exist, create it
     if (!fs::exists(p2)){
 	fs::create_directory(p2);
-	LOGW("Downloaded/ directory does not exist, creating it");
+	LOGW(_("Downloaded/ directory does not exist, creating it"));
     }
   }
 
@@ -352,7 +347,13 @@ getDownloadFile(const std::string& s, const std::string& sun,
     fs::create_directory(p);
   }
   else{
-    LOGW("Missing unique directory not created (createIfMissing=false)");
+    // TRANSLATORS: To avoid filename conflicts, all files downloaded
+    // from a server go to a directory named from the server's unique name.
+    // This message tells the user that this unique directory doesn't exist
+    // and it will not created because the variable 'createIfMissing' has
+    // the 'false' value.
+    LOGW(_("Missing server's unique directory. It is  not created because "
+	   "createIfMissing=false."));
   }
 
   return ret;

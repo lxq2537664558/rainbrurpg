@@ -78,7 +78,7 @@ void RainbruRPG::Options::ItemListFile::addItem(const std::string& it){
     refresh();
   }
   else{
-    LOGW("Cannot append item in ItemListFile with empty file name");
+    LOGW(_("Cannot append item in ItemListFile with empty file name"));
 
   }
 }
@@ -114,16 +114,16 @@ void RainbruRPG::Options::ItemListFile::load(const std::string& filename){
 
   char buffer[256];
 
-  LOGI("ItemListFile started");
-  LOGCATS("filename=");
-  LOGCATS(filename.c_str());
-  LOGCAT();
+  char str[80];
+  sprintf(str, _("ItemListFile object started with the '%s' file."), 
+	  filename.c_str());
+  LOGI(str);
 
   ifstream f;
   f.open(filename.c_str(), ios::in);
  
   if (f.fail()){
-    LOGE("Error while opening ItemList file");
+    LOGE(_("Error while opening ItemList file"));
   }
   else{
     while (!f.eof()){
@@ -131,9 +131,6 @@ void RainbruRPG::Options::ItemListFile::load(const std::string& filename){
       std::string temp(buffer);
       if (!(temp.empty()||temp[0]=='#')){
 	stringList.push_back(temp.c_str());
-	LOGCATS("Item=");
-	LOGCATS(temp.c_str());
-	LOGCAT();
       }
     }
     f.close();
@@ -161,6 +158,6 @@ void RainbruRPG::Options::ItemListFile::refresh(void){
     load(this->filename);
   }
   else{
-    LOGW("Cannot refresh an ItemListFile with empty file name");
+    LOGW(_("Cannot refresh an ItemListFile with empty file name"));
   }
 }

@@ -24,6 +24,7 @@
   * Declares a class used to read and write languages configuration file
   *
   * Modifications :
+  * - 03 apr 2009 : Now computes the complete percent
   * - 11 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,7 @@
 
 #include "languagelistitem.h"
 #include "tinyxml.h"
+#include "ptypes.h" // For unsigned int types
 
 namespace RainbruRPG{
   namespace Options{
@@ -47,7 +49,8 @@ namespace RainbruRPG{
 
     /** A class used to read and write languages.xml configuration file
       *
-      * The codes use in this file are from KDE (http://l10n.kde.org/).
+      * The country codes used in this file are from KDE 
+      * (http://l10n.kde.org/).
       *
       * First, there is a LastUsed element. If it is empty, the 
       * LanguageSelector is shown at startup. The Default element
@@ -86,6 +89,7 @@ namespace RainbruRPG{
       bool loadDocument();
       void loadLastUsed();
       void loadDefault();
+      void loadNbMessages();
       void treatAllLanguages();
       void treatOneLanguage(TiXmlElement*);
       void treatLanguageCountries(TiXmlElement*, const LanguageListItem&);
@@ -106,6 +110,9 @@ namespace RainbruRPG{
       const char* lastUsed;
       /** The default language */
       const char* defaultLang;
+
+      /** The number of messages to be translated */
+      uint16 mNbMessages;
     };
   }
 }

@@ -21,6 +21,7 @@
  */
 
 /** Modifications :
+ *  - 01 apr 2009 : Now using gettext
   * - 30 mar 2009 : Added boost::filesystem::operation.hpp with alias
   * - 10 jul 2008 : output now is a std::string (fix a warning)
   *
@@ -38,7 +39,7 @@
 #include <string>
 
 #include "EasyBMP.h"
-#include "rainbrudef.h"
+#include "rainbrudef.h" 
 
 using namespace std;
 
