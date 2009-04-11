@@ -138,4 +138,4 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 
 dll:
 	source ../create_dll.sh &&		\
-	run "rainbrurpg-ogregui" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread -lboost_filesystem -lFOX-1.6  -lcurl -lOgreMain -lfreetype6 -lfreeimage.dll -lzzip.dll -L../../maincore/.libs -lrainbrurpg-core.dll -lOIS -L../../common/.libs -lrainbrurpg-common.dll"
+	run "rainbrurpg-ogregui" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread-1_34_1 -lboost_filesystem-1_34_1 -lFOX-1.6  -lcurl -lOgreMain -lfreetype6 -lfreeimage -L../../maincore/.libs/ -lrainbrurpg-core -lOIS -L../../common/.libs -lrainbrurpg-common"

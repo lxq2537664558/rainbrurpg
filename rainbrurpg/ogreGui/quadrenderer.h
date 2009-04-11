@@ -27,6 +27,8 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
+  * - 01 apr 2009 : Now using ogreimport.h from maincore to handle
+  *                 an error due to ptrdiff_t on win32
   * - 02 fev 2009 : In begin, retrieve a RenderSystem pointer if NULL
   * - 01 fev 2009 : Creator name added (member, constructor, debug)
   * - 31 jan 2009 : debug() now log the state. Segfault fix in debug().
@@ -53,7 +55,7 @@
 #define _QHUAD_RENDERER_H_
 
 #include "rainbrudef.h"
-#include "font.h" // For text alignment enumerations
+#include "font.h"            // For text alignment enumerations
 #include "vector3.h"
 #include "guivertex.h"
 #include "drawingdevlist.h"
@@ -62,10 +64,7 @@
 #include <vector>
 #include <iostream>
 
-#include <Ogre.h>
-#include <OgreTexture.h>
-#include <OgreRenderOperation.h>
-#include <OgreDefaultHardwareBufferManager.h>
+#include <ogreimport.h>
 
 // Forward declarations
 namespace RainbruRPG {

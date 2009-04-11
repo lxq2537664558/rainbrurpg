@@ -35,6 +35,9 @@
   * \todo Removing when deprecated header warning fixed by Ogre team
   *
   * Modifications :
+  * - 01 apr 2009 : 
+  *          - Added the prtdiff_t hack
+  *          - Added QuadRenderer dependencies
   * - 31 oct 2008 : Added Viewport header needed by GameEngine
   * - 07 sep 2007 : Added some headers needed by editor
   * - 20 aug 2008 : Added hack to prevent for multiple definition in win32
@@ -62,6 +65,19 @@
 #ifdef __WIN32__
 #  include <cctype>
 #endif // __WIN32__
+
+/* v0.0.5-192 : When cross-compiling to win32, the config.h file
+ * defined ptrdiff_t as a preprocessor macro. The boost code
+ * prefix its use with the std namespace. It causes a lot of 
+ * compilation errors. Undefining 'ptrdiff_t' will let
+ * boost see the std::ptrdiff_t declaration.
+ *
+ */
+#if defined __WIN32__
+#  undef ptrdiff_t
+#  include <cstddef>
+#endif  
+
 
 #include <OgreCamera.h>
 #include <OgreColourValue.h>
@@ -93,6 +109,12 @@
 #include <OgreLogManager.h>
 #include <OgreConfigFile.h>
 #include <OgreSubEntity.h>
+
+// Needed by ogreGui's QuadRenderer
+#include <Ogre.h>
+#include <OgreRenderOperation.h>
+#include <OgreDefaultHardwareBufferManager.h>
+
 
 // Avoid multiple definitions of these macros
 // Please see the `#include "../config.h"' explanation.

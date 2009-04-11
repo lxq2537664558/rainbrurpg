@@ -5,6 +5,14 @@
 	* config/language.xml : Added PoMessagesNumber and renamed 
 	CompletePercent to TranslatedMessages.
 
+2009-04-01 Carine Chum <carine.chum@free.fr>
+	* ogreGui/quadrenderer.cpp : Using maincore/ogreimport.h to
+	avoid the ptrdiff-t compilation errors.
+	* maincore/Makefile.am: Added version numbers for boost libraries
+	name to be compliant with the dlls.
+
+	* maincore/ogerimport.h : Added the prtdiff_t hack.
+
 2009-04-01 Jerome Pasquier  <rainbru@free.fr>
 	* common/netpacketbase.cpp : Using gettext strings and a macro.
 	* common/itemlistfile.cpp : Using gettext strings and a macro.

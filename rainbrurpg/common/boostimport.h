@@ -39,7 +39,7 @@
  * boost see the std::ptrdiff_t declaration.
  *
  */
-#if defined WIN32
+#if defined __WIN32__
 #  undef ptrdiff_t
 #endif  
 
