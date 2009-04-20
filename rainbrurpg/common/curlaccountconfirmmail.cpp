@@ -74,8 +74,7 @@ setName(const std::string& c){
     std::string val=it->validationId;
     this->setPostedData("id", val.c_str());
 
-    char err[80];
-
+    GTS_LIT(err);
     // TRANSLATORS: The first parameter is the account name, the second
     // is the validationId used in the confirmation mail in string format.
     sprintf(err, _("ValidationId for account '%s' is %s"), c.c_str(), 
@@ -83,7 +82,7 @@ setName(const std::string& c){
     LOGI(err);
   }
   else{
-    char err[80];
+    GTS_LIT(err);
     // TRANSLATORS: The parameter is the name of a account.
     sprintf(err, _("Cannot get the account with the name '%s'"), c.c_str());
     LOGE(err);
@@ -121,7 +120,7 @@ bool RainbruRPG::Network::Ident::CurlAccountConfirmMail::controlAfter(){
   if (it){
     std::string conf(it->confirm);
 
-    char err[80];
+    GTS_LIT(err);
     // TRANSLATORS: The parameter should be a date if the account
     // was confirmed.
     sprintf(err, _("Mail's confirm date is %s"), it->confirm.c_str());

@@ -126,7 +126,7 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   GIOError err=gnet_io_channel_writen( ioChannel, &(raw[0]), 
 				       s.size(), &bytesWritten);
 
-  char msg[80];
+  GTS_TIN(msg);
   sprintf(msg, _("%d bytes written"), bytesWritten);
   LOGI(msg);
 }
@@ -137,7 +137,7 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
   *
   */
 bool RainbruRPG::Network::FtpClient::openDataChannel(){
-  char msg[100];
+  GTS_MID(msg);
   // TRANSLATORS: The first parameter is a string containing the server
   // IP address, the second one is a potr number.
   sprintf(msg, _("Opening data channel :\n"
@@ -147,7 +147,7 @@ bool RainbruRPG::Network::FtpClient::openDataChannel(){
   dataSock=gnet_tcp_socket_connect(hostIp.c_str(), hostPort-1);
 
   if (dataSock==NULL){
-    char msg02[100];
+    GTS_MID(msg02);
     // TRANSLATORS: The first parameter is a string containing the server
     // IP address, the second one is a potr number.
     sprintf(msg02, _("Cannot open data channel :\n"

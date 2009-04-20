@@ -132,7 +132,7 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   userDir=getenv("HOME");
   userDir+="/.RainbruRPG/";
 
-  char str[80];
+  GTS_LIT(str);
   // TRANSLATORS: The parameter is the user's home directory.
   sprintf(str,_("Setting user's HOME directory to' %s'"), userDir.c_str());
   LOGI(str);
@@ -217,7 +217,7 @@ installConfigFile(const std::string& filename){
 
   // Need to be installed
   if (!fs::exists(userOptionXmlPath)){
-    char str[100];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("The file '%s' was not found. "
 		   "Copying it from $PREFIX/share/."), filename.c_str());
@@ -227,7 +227,7 @@ installConfigFile(const std::string& filename){
     it->needCreation=true;
   }
   else{
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("The file '%s' was found. in the user's directory."), 
 	    filename.c_str());

@@ -49,15 +49,18 @@ RainbruRPG::Options::OptionListAttribute::OptionListAttribute(const char* n)
   */
 bool RainbruRPG::Options::OptionListAttribute::setValueStr(const char* c){
 
-  LOGCATS("Attribute value :");
-  LOGCATS(c);
-  LOGCAT();
-
-  if (exists(c))
+  if (exists(c)){
     value=c;
-  else
-    LOGW ("The selected value does not exist");
-
+  }
+  else{
+    GTS_LIT(str);
+    // TRANSLATORS: This message is used when trying to select a
+    // value that does not exist in the list. The parameter is the
+    // value we are trying to set.
+    sprintf(str, _("The requested value (%s) does not exist in the list"),
+	    c);
+    LOGW(str);
+  }
   return true;
 }
 
@@ -89,12 +92,11 @@ void RainbruRPG::Options::OptionListAttribute::add(const char* it){
 
     }
     else{
-      LOGW("Inserting an existing value to an OptionListAttribute");
-
+      LOGW(_("Inserting an existing value to an OptionListAttribute"));
     }
   }
   else
-    LOGW("Inserting an empty string to an OptionListAttribute");
+    LOGW(_("Inserting an empty string to an OptionListAttribute"));
 
 
 }
@@ -148,12 +150,13 @@ void RainbruRPG::Options::OptionListAttribute::update(){
 
     FXComboBox* cb=(FXComboBox*)widget;
     if (cb){
-      LOGI("Updating an OptionListAttribute");
+      LOGI(_("Updating an OptionListAttribute"));
       int i=cb->findItem(this->value.c_str());
       cb->setCurrentItem(i);
     }
     else{
-      LOGW("Cannot get a valid FXCheckButton");
+      LOGW(_("Cannot get a valid FXCheckButton to update an "
+	     "OptionListAttribute"));
     }
 
   }

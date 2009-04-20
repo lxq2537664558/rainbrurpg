@@ -121,7 +121,7 @@ setValueStr(const char* c){
     this->value=i;
   }
   else{
-    char str[120];
+    GTS_MID(str);
     // TRANSLATORS: The parameters are : The attribute name, the attribute
     // value (as a float) and the min and max ranges in floats.
     sprintf(str, _("Value out of range for attribute '%s'. "

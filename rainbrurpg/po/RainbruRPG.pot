@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-04-04 17:45+0200\n"
+"POT-Creation-Date: 2009-04-18 20:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: common/attributemodifierlist.cpp:72 common/attributemodifierlist.cpp:187
+#: common/attributemodifierlist.cpp:71 common/attributemodifierlist.cpp:186
 msgid "Cannot find the modifier's sign"
 msgstr ""
 
-#: common/attributemodifierlist.cpp:82 common/attributemodifierlist.cpp:197
+#: common/attributemodifierlist.cpp:81 common/attributemodifierlist.cpp:196
 msgid "Cannot find the modifier's value : modifier is not added"
 msgstr ""
 
-#: common/attributemodifierlist.cpp:123
+#: common/attributemodifierlist.cpp:122
 msgid "Cannot get usable modifier's type"
 msgstr ""
 
@@ -92,23 +92,19 @@ msgstr ""
 msgid "ChartLine: drawing complete"
 msgstr ""
 
-#: common/chartline.cpp:117
-msgid "drawSeries called"
-msgstr ""
-
-#: common/chartline.cpp:257
+#: common/chartline.cpp:254
 msgid "drawLeftCaption called"
 msgstr ""
 
-#: common/chartline.cpp:272
+#: common/chartline.cpp:269
 msgid "Searching for valueIndent"
 msgstr ""
 
-#: common/chartline.cpp:300
+#: common/chartline.cpp:297
 msgid "drawLeftCaption starting to draw"
 msgstr ""
 
-#: common/chartline.cpp:418
+#: common/chartline.cpp:415
 msgid "Searching valueIndent"
 msgstr ""
 
@@ -182,33 +178,33 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter is the account name, the second
 #. is the validationId used in the confirmation mail in string format.
-#: common/curlaccountconfirmmail.cpp:81
+#: common/curlaccountconfirmmail.cpp:80
 #, c-format
 msgid "ValidationId for account '%s' is %s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a account.
-#: common/curlaccountconfirmmail.cpp:88
+#: common/curlaccountconfirmmail.cpp:87
 #, c-format
 msgid "Cannot get the account with the name '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter should be a date if the account
 #. was confirmed.
-#: common/curlaccountconfirmmail.cpp:127
+#: common/curlaccountconfirmmail.cpp:126
 #, c-format
 msgid "Mail's confirm date is %s"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: common/curlaccountconfirmmail.cpp:135
+#: common/curlaccountconfirmmail.cpp:134
 msgid "controlAfter() : confirm timestamp is empty"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: common/curlaccountconfirmmail.cpp:142
+#: common/curlaccountconfirmmail.cpp:141
 msgid "controlAfter() : account not found"
 msgstr ""
 
@@ -465,7 +461,7 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter if the width of the image in pixels,
 #. the second if the height of the image in pixels.
-#: common/EasyBMP.cpp:246
+#: common/EasyBMP.cpp:244
 #, c-format
 msgid ""
 "Attempted to access non-existent pixel Truncating request to fit in the "
@@ -474,7 +470,7 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter is the new bit depth of the image,
 #. the second parameter is the actual bit depth.
-#: common/EasyBMP.cpp:284
+#: common/EasyBMP.cpp:282
 #, c-format
 msgid ""
 "User attempted to set unsupported bit depth %d. Bit depth remains unchanged "
@@ -483,54 +479,54 @@ msgstr ""
 
 #. TRANSLATORS: The parameters are the width and the height of the image
 #. in pixels.
-#: common/EasyBMP.cpp:316
+#: common/EasyBMP.cpp:314
 #, c-format
 msgid ""
 "User attempted to set a non-positive width or height. Size remains unchanged "
 "at %d x %d"
 msgstr ""
 
-#: common/EasyBMP.cpp:355 common/EasyBMP.cpp:591
+#: common/EasyBMP.cpp:353 common/EasyBMP.cpp:589
 msgid ""
 "Data types are wrong size! You may need to mess with EasyBMP_DataTypes.h to "
 "fix these errors, and then recompile. All 32-bit and 64-bit machines should "
 "be supported, however."
 msgstr ""
 
-#: common/EasyBMP.cpp:367
+#: common/EasyBMP.cpp:365
 msgid "Cannot open file for output"
 msgstr ""
 
-#: common/EasyBMP.cpp:511
+#: common/EasyBMP.cpp:509
 msgid "Could not write proper amount of data."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:604
+#: common/EasyBMP.cpp:602
 #, c-format
 msgid "Cannot open file %s for input."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:631
+#: common/EasyBMP.cpp:629
 #, c-format
 msgid "%s is not a Windows BMP file!"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:674
+#: common/EasyBMP.cpp:672
 #, c-format
 msgid "%s is obviously corrupted."
 msgstr ""
 
-#: common/EasyBMP.cpp:692
+#: common/EasyBMP.cpp:690
 #, c-format
 msgid "%s  is (RLE) compressed. EasyBMP does not support compression."
 msgstr ""
 
 #. TRANSLATORS: The first parameter is a file name. The second one
 #. is a compression number.
-#: common/EasyBMP.cpp:711
+#: common/EasyBMP.cpp:709
 #, c-format
 msgid ""
 "%s is in an unsupported format. (bmih.biCompression = %d)  The file is "
@@ -538,25 +534,25 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:727
+#: common/EasyBMP.cpp:725
 #, c-format
 msgid "%s uses bit fields and is not a 16-bit file. This is not supported."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:747
+#: common/EasyBMP.cpp:745
 #, c-format
 msgid "%s has unrecognized bit depth."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:764
+#: common/EasyBMP.cpp:762
 #, c-format
 msgid "%s has a non-positive width or height."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:800
+#: common/EasyBMP.cpp:798
 #, c-format
 msgid ""
 "File %s has an underspecified color table. The table will be padded with "
@@ -564,54 +560,54 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:841
+#: common/EasyBMP.cpp:839
 #, c-format
 msgid "Extra meta data detected in file '%s' Data will be skipped."
 msgstr ""
 
-#: common/EasyBMP.cpp:874
+#: common/EasyBMP.cpp:872
 msgid "Could not read proper amount of data."
 msgstr ""
 
-#: common/EasyBMP.cpp:892
+#: common/EasyBMP.cpp:890
 msgid "Could not read enough pixel data!"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:945
+#: common/EasyBMP.cpp:943
 #, c-format
 msgid "Extra meta data detected in file '%s'. Data will be skipped."
 msgstr ""
 
-#: common/EasyBMP.cpp:1020 common/EasyBMP.cpp:1432
+#: common/EasyBMP.cpp:1018 common/EasyBMP.cpp:1430
 msgid ""
 "Attempted to create color table at a bit depth that does not require a color "
 "table. Ignoring request."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:1230 common/EasyBMP.cpp:1265 common/EasyBMP.cpp:1313
+#: common/EasyBMP.cpp:1228 common/EasyBMP.cpp:1263 common/EasyBMP.cpp:1311
 #, c-format
 msgid ""
 "Cannot initialize from file '%s'. File cannot be opened or does not exist."
 msgstr ""
 
 #. TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
-#: common/EasyBMP.cpp:1651
+#: common/EasyBMP.cpp:1649
 #, c-format
 msgid ""
 "ebmpBYTE has the wrong size (%d bytes), Compared to the expected 1 byte value"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
-#: common/EasyBMP.cpp:1661
+#: common/EasyBMP.cpp:1659
 #, c-format
 msgid ""
 "ebmpWORD has the wrong size (%d bytes), Compared to the expected 2 byte value"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
-#: common/EasyBMP.cpp:1671
+#: common/EasyBMP.cpp:1669
 #, c-format
 msgid ""
 "EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), Compared to the "
@@ -960,11 +956,11 @@ msgstr ""
 msgid " LOGGER CAN'T OPEN FILE "
 msgstr ""
 
-#: common/logger.cpp:273
+#: common/logger.cpp:273 common/stringconv.cpp:139
 msgid "true"
 msgstr ""
 
-#: common/logger.cpp:275
+#: common/logger.cpp:275 common/stringconv.cpp:141
 msgid "false"
 msgstr ""
 
@@ -1047,7 +1043,7 @@ msgstr ""
 msgid "Constructing a bool OptionAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:86
+#: common/optionboolattribute.cpp:86 common/optionintattribute.cpp:121
 msgid "Updating an OptionIntAttribute"
 msgstr ""
 
@@ -1072,7 +1068,7 @@ msgstr ""
 msgid "Creating an OptionButton with empty icon filename"
 msgstr ""
 
-#: common/optionfloatattribute.cpp:113
+#: common/optionfloatattribute.cpp:113 common/optionintattribute.cpp:109
 msgid "Calling increase or decrease with a step set to 0"
 msgstr ""
 
@@ -1086,4 +1082,135 @@ msgstr ""
 #: common/optionfloatrangeattribute.cpp:127
 #, c-format
 msgid "Value out of range for attribute '%s'. Value %f (range %f to %f)"
+msgstr ""
+
+#: common/optionintattribute.cpp:37
+msgid "Constructing an integer OptionAttribute"
+msgstr ""
+
+#: common/optionintattribute.cpp:125
+msgid "Cannot get a valid FXSpinner"
+msgstr ""
+
+#: common/optionintattribute.cpp:129
+msgid "Cannot update OptionIntAttribute : widget=NULL"
+msgstr ""
+
+#. TRANSLATORS: This warning message denotes that the user try
+#. to set a value out of the ranges of an interget range attribute.
+#. The first parameter is the name of the atribute. The second
+#. parameter is the value the user attempt to set. The two last
+#. parameters are the min and max range of this attribute.
+#: common/optionintrangeattribute.cpp:131
+#, c-format
+msgid ""
+"Value out of range for attribute %s (value = %d, Accepted range : %d to %d"
+msgstr ""
+
+#: common/optionintrangeattribute.cpp:180
+msgid "Update not yet implemented for IntRangeAttribute"
+msgstr ""
+
+#. TRANSLATORS: This message is used when trying to select a
+#. value that does not exist in the list. The parameter is the
+#. value we are trying to set.
+#: common/optionlistattribute.cpp:60
+#, c-format
+msgid "The requested value (%s) does not exist in the list"
+msgstr ""
+
+#: common/optionlistattribute.cpp:95
+msgid "Inserting an existing value to an OptionListAttribute"
+msgstr ""
+
+#: common/optionlistattribute.cpp:99
+msgid "Inserting an empty string to an OptionListAttribute"
+msgstr ""
+
+#: common/optionlistattribute.cpp:153
+msgid "Updating an OptionListAttribute"
+msgstr ""
+
+#: common/optionlistattribute.cpp:158
+msgid "Cannot get a valid FXCheckButton to update an OptionListAttribute"
+msgstr ""
+
+#: common/optionmanager.cpp:38
+msgid "Initializing OptionManager"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a OptionPanel object name
+#: common/optionmanager.cpp:145
+#, c-format
+msgid "Cannot get the OptionPanel named '%s'"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of an option snapshot.
+#: common/optionmanager.cpp:226
+#, c-format
+msgid "Loading options snapshots named '%s'"
+msgstr ""
+
+#: common/optionpanel.cpp:48
+msgid "You are setting an empty caption on a OptionPanel"
+msgstr ""
+
+#: common/optionpanel.cpp:71
+msgid "You are adding a NULL OptionButton pointer"
+msgstr ""
+
+#: common/options.cpp:45
+msgid "Graphics"
+msgstr ""
+
+#: common/options.cpp:46
+msgid "Renderer"
+msgstr ""
+
+#: common/options.cpp:50
+msgid "A simple example integer value to test the layout disposition."
+msgstr ""
+
+#: common/options.cpp:60
+msgid "Will the game launch in full screen or windowed mode"
+msgstr ""
+
+#: common/options.cpp:66
+msgid "Sets the screen size for both fullscreen and windowed mode"
+msgstr ""
+
+#: common/optionstringattribute.cpp:38
+msgid "Constructing an OptionStringAttribute"
+msgstr ""
+
+#: common/optionstringattribute.cpp:75
+msgid "Updating an OptionStringAttribute"
+msgstr ""
+
+#: common/optionstringattribute.cpp:79
+msgid "Cannot get a valid FXTextField to update an OptionStringAttribute"
+msgstr ""
+
+#: common/serverlistitem.cpp:286
+msgid "1 (Fantasy)"
+msgstr ""
+
+#: common/serverlistitem.cpp:289
+msgid "2 (Contemporary)"
+msgstr ""
+
+#: common/serverlistitem.cpp:292
+msgid "3 (Futuristic)"
+msgstr ""
+
+#: common/serverlistitem.cpp:295
+msgid "4 (Post-apocalyptic)"
+msgstr ""
+
+#: common/stringconv.cpp:45
+msgid "  desalocating memory for char*..."
+msgstr ""
+
+#: common/stringconv.cpp:262
+msgid "StringConv::itobin base parameter unrecognized"
 msgstr ""

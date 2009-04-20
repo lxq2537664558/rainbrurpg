@@ -114,7 +114,7 @@ void RainbruRPG::Options::ItemListFile::load(const std::string& filename){
 
   char buffer[256];
 
-  char str[80];
+  GTS_MID(str);
   sprintf(str, _("ItemListFile object started with the '%s' file."), 
 	  filename.c_str());
   LOGI(str);

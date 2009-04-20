@@ -127,7 +127,7 @@ const char* RainbruRPG::Network::Ident::CurlPostedData::getValue(
     }
   }
   if (!found){
-    char err[180];
+    GTS_BIG(err);
     // TRANSLATORS: The parameter is the name of a CurlPostedData key.
     sprintf(err, _("In CurlPostedData::getValue() : this key cannot "
 		   "be found : '%s'"), key);
@@ -170,7 +170,7 @@ std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
   for(iter = map.begin(); iter != map.end(); iter++){
 
     if (iter->second.length()==0){
-      char err[80];
+      GTS_TIN(err);
       sprintf(err, _("The key '%s' has no value."), iter->first);
       LOGW(err);
     }
@@ -219,7 +219,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
   }
   
   if (!found){
-    char warn[80];
+    GTS_LIT(warn);
     sprintf(warn, _("The key called '%s' was not found"), key);
     LOGW(warn);
   }

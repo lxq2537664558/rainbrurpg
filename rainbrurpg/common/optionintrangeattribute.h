@@ -24,6 +24,7 @@
   * Declares a range of integer for the launcher's options editor
   *
   * Modifications :
+  * - 14 apr 2009 : Using gettext compliant strings
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 #include "logger.h"
 #include "optionintattribute.h"
 #include "stringconv.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

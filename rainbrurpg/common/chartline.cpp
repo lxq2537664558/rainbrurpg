@@ -114,9 +114,6 @@ void RainbruRPG::Core::ChartLine::draw(){
   *
   */
 void RainbruRPG::Core::ChartLine::drawSeries(gdImagePtr im){
-  cout << _("drawSeries called") << endl;
-  cout << "chartSerieList.size=" << chartSerieList->size() << endl;
-
   int black=gdTrueColor(0, 0, 0);
 
 // Create constant iterator for list.

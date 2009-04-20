@@ -111,7 +111,7 @@ bool RainbruRPG::Network::Ident::CurlFileToXml::fileToxml(){
       return true;
     }
     else{
-      char err[300];
+      GTS_MID(err);
       /* TRANSLATORS: The first parameter is the file name, the second
 	 if the error string returned by TinyXml
        */

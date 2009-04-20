@@ -169,7 +169,7 @@ RainbruRPG::Core::ObjectMesh::getPosByName(const std::string& name){
 
   // No object found
   if (!found){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is the name of an ObjectPos.
     sprintf(str, _("ObjectPos '%s' not found."), name.c_str());
     LOGW(str);

@@ -24,6 +24,7 @@
   * Declares the option manager singleton
   *
   * Modifications :
+  * - 14 apr 2009 : Using gettext compliant strings
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -35,6 +36,8 @@
 #include "logger.h"
 #include "optionpanel.h"
 #include "options.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 #include <list>
 

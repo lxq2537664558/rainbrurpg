@@ -283,16 +283,16 @@ std::string RainbruRPG::Network::Ident::ServerListItem::getTypeStr(){
   std::string itemTypeText;
   switch (this->type){
   case 1:
-    itemTypeText="1 (Fantasy)";
+    itemTypeText=_("1 (Fantasy)");
     break;
   case 2:
-    itemTypeText="2 (Contemporary)";
+    itemTypeText=_("2 (Contemporary)");
     break;
   case 3:
-    itemTypeText="3 (Futuristic)";
+    itemTypeText=_("3 (Futuristic)");
     break;
   case 4:
-    itemTypeText="4 (Post-apocalyptic)";
+    itemTypeText=_("4 (Post-apocalyptic)");
     break;
   default:
     itemTypeText="ERROR";

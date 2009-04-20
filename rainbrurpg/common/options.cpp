@@ -42,13 +42,13 @@ RainbruRPG::Options::Options::Options(){
   *
   */
 void RainbruRPG::Options::Options::createAttributes(){
-  OptionPanel *opGraphics=new OptionPanel("Graphics");
-      OptionButton* btn1=new OptionButton("Renderer", 
+  OptionPanel *opGraphics=new OptionPanel(_("Graphics"));
+  OptionButton* btn1=new OptionButton(_("Renderer"), 
 					  "DawnTime.ico");
       // Example IntAttribute
       int1=new OptionIntAttribute("IntAttribute");
-      int1->setToolTip("A simple example integer value to test the "
-			 "layout disposition.");
+      int1->setToolTip(_("A simple example integer value to test the "
+			 "layout disposition."));
       btn1->add(int1);
 
       // Example StringAttribute
@@ -57,14 +57,14 @@ void RainbruRPG::Options::Options::createAttributes(){
 
       // Example boolAttribute
       boo=new OptionBoolAttribute("Fullscreen");
-      boo->setToolTip("Will the game launch in full screen or "
-		      "windowed mode");
+      boo->setToolTip(_("Will the game launch in full screen or "
+			"windowed mode"));
       btn1->add(boo);
 
   // Resolution
 	lst=new OptionListAttribute("Resolution");
-	boo->setToolTip("Sets the screen size for both fullscreen "
-			"and windowed mode");
+	boo->setToolTip(_("Sets the screen size for both fullscreen "
+			  "and windowed mode"));
 
 	lst->add("640x480");
 	lst->add("800x600");

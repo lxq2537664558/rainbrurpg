@@ -24,6 +24,7 @@
   * Declares a singleton to convert string format
   *
   * Modifications :
+  * - 18 apr 2009 : Uses gettext
   * - 23 oct 2008 : BITSET_STR added bacause of an error on win32 platform
   * - 11 jun 2008 : \ref RainbruRPG::Core::StringConv::itobin "itobin()" 
   *                 implementation
@@ -45,6 +46,7 @@
 #include <sstream>
 
 #include "singleton.h"
+#include "rainbrudef.h"
 
 using namespace std;
 using namespace RainbruRPG::Core;

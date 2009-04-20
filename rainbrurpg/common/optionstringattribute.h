@@ -24,6 +24,7 @@
   * Declares a string for the launcher's options editor
   *
   * Modifications :
+  * - 14 apr 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -35,6 +36,8 @@
 
 #include "logger.h"
 #include "optionattribute.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

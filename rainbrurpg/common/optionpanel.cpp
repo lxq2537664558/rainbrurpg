@@ -45,7 +45,7 @@ RainbruRPG::Options::OptionPanel::OptionPanel(const char* caption){
   */
 void RainbruRPG::Options::OptionPanel::setCaption(const char* caption){
   if (strlen(caption)==0){
-    LOGW("You are setting an empty caption");
+    LOGW(_("You are setting an empty caption on a OptionPanel"));
   }
   this->m_caption=caption;
 }
@@ -68,7 +68,7 @@ void RainbruRPG::Options::OptionPanel::add(OptionButton* ob){
   if (ob)
     buttonList.push_back(ob);
   else 
-    LOGW ("You are adding a NULL OptionButton pointer");
+    LOGW (_("You are adding a NULL OptionButton pointer"));
 }
 
 /** Get the OptionButton list

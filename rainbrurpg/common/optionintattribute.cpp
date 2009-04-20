@@ -34,7 +34,7 @@
 RainbruRPG::Options::OptionIntAttribute::OptionIntAttribute(const char* n)
                                 :OptionAttribute(OAT_INTEGER){
 
-  LOGI("Constructing an integer OptionAttribute");
+  LOGI(_("Constructing an integer OptionAttribute"));
   this->setName(n);
   this->value=0;
   this->setStep(1);
@@ -106,7 +106,7 @@ void RainbruRPG::Options::OptionIntAttribute::decrease(){
   */
 void RainbruRPG::Options::OptionIntAttribute::controlStep(){
   if (step==0)
-    LOGW("Calling increase or decrease with a step set to 0");
+    LOGW(_("Calling increase or decrease with a step set to 0"));
 }
 
 /** Updates the widget associated with this spinner
@@ -118,14 +118,14 @@ void RainbruRPG::Options::OptionIntAttribute::update(){
   if (widget){
     FXSpinner* spin=(FXSpinner*)widget;
     if (spin){
-      LOGI("Updating an OptionIntAttribute");
+      LOGI(_("Updating an OptionIntAttribute"));
       spin->setValue(this->value);
     }
     else{
-      LOGW("Cannot get a valid FXSpinner");
+      LOGW(_("Cannot get a valid FXSpinner"));
     }
   }
   else{
-    LOGW("Cannot update optionattribute : widget=NULL");
+    LOGW(_("Cannot update OptionIntAttribute : widget=NULL"));
   }
 }

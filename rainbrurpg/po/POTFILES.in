@@ -44,3 +44,14 @@ common/optionboolattribute.cpp
 common/optionbutton.cpp
 common/optionfloatattribute.cpp
 common/optionfloatrangeattribute.cpp
+common/optionintattribute.cpp
+common/optionintrangeattribute.cpp
+common/optionlistattribute.cpp
+common/optionmanager.cpp
+common/optionpanel.cpp
+common/options.cpp
+common/optionstringattribute.cpp
+common/serverlistitem.cpp
+common/sha1.cpp
+common/stringconv.cpp
+common/timer.cpp

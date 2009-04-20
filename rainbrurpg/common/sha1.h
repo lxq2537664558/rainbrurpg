@@ -18,6 +18,7 @@
   * Declares the Secure Hashing Algorithm
   *
   * Modifications :
+  * - 18 apr 2009 : Uses gettext 
   * - 08 aug 2008 : Documentation update
   * - 21 jul 2007 : Documentation for doxygen
   *                 Making functions static members of a class
@@ -26,6 +27,8 @@
 
 #ifndef _SHA1_H_
 #define _SHA1_H_
+
+#include "rainbrudef.h"
 
 #include <stdint.h>
 /*

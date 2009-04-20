@@ -35,7 +35,7 @@
   *
   */
 void RainbruRPG::Options::OptionManager::init(){
-  LOGI("Initializing OptionManager");
+  LOGI(_("Initializing OptionManager"));
   this->damage=false;
   options=new Options();
 }
@@ -140,7 +140,10 @@ RainbruRPG::Options::OptionManager::getButtonByName(const char* p,
     ret=panel->getButtonByName(b);
   }
   else{
-    LOGW("Cannot get the OptionPanel");
+    GTS_TIN(str);
+    // TRANSLATORS: The parameter is a OptionPanel object name
+    sprintf(str, _("Cannot get the OptionPanel named '%s'"), p);
+    LOGW(str);
   }
 
   return ret;
@@ -218,11 +221,10 @@ void RainbruRPG::Options::OptionManager::saveCurrentSnapshot(const char* c){
   *
   */
 void RainbruRPG::Options::OptionManager::loadSnapshot(const char* c){
-  LOGI("Loading snapshot :");
-  LOGCATS("Snapshot name :");
-  LOGCATS(c);
-  LOGCAT();
-
+  GTS_TIN(str);
+  // TRANSLATORS: The parameter is the name of an option snapshot.
+  sprintf(str, _("Loading options snapshots named '%s'"), c);
+  LOGI(str);
 
   xmlOptions o;
   o.loadSnapshot( c, &panelList);

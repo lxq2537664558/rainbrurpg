@@ -122,16 +122,17 @@ bool RainbruRPG::Options::OptionIntRangeAttribute::setValueStr(const char* c){
     this->value=i;
   }
   else{
-    LOGW("The value is out of range :");
-    LOGCATS("Attribute name : "); 
-    LOGCATS(this->getName());
-    LOGCATS("  Value : "); 
-    LOGCATI(i);
-    LOGCATS("  Accepted range : "); 
-    LOGCATI(minRange);
-    LOGCATS(" to "); 
-    LOGCATI(maxRange);
-    LOGCAT();
+    GTS_MID(str);
+    // TRANSLATORS: This warning message denotes that the user try
+    // to set a value out of the ranges of an interget range attribute.
+    // The first parameter is the name of the atribute. The second
+    // parameter is the value the user attempt to set. The two last
+    // parameters are the min and max range of this attribute.
+    sprintf(str, _("Value out of range for attribute %s (value = %d, "
+		   "Accepted range : %d to %d"), this->getName(), i,
+	    minRange, maxRange);
+
+    LOGW(str);
   }
 
   return true;
@@ -176,9 +177,9 @@ void RainbruRPG::Options::OptionIntRangeAttribute::decrease(){
   */
 void RainbruRPG::Options::OptionIntRangeAttribute::update(){
   if (widget){
-    LOGW("Update not yet implemented");
+    LOGW(_("Update not yet implemented for IntRangeAttribute"));
   }
   else{
-    LOGW("Cannot update optionattribute : widget=NULL");
+    LOGW("Cannot update OptionIntRangeAttribute : widget=NULL");
   }
 }

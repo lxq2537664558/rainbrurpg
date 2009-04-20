@@ -23,6 +23,9 @@
 /** \file options.h
   * Declares a class used to initialize OptionManager
   *
+  * Modifications :
+  * - 14 apr 2009 : Uses gettext compliant strings
+  *
   */
 
 #ifndef OPTIONS_H
@@ -32,6 +35,8 @@
 #include "optionstringattribute.h"
 #include "optionboolattribute.h"
 #include "optionlistattribute.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Options{

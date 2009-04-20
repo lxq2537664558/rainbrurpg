@@ -1,3 +1,24 @@
+2009-05-18 Jerome Pasquier  <rainbru@free.fr>
+	* common/optionmanager.cpp : Uses GTS_* macros.
+	* common/optionlistattribute.cpp : Uses GTS_* macros.
+	* common/optionintrangeattribute.cpp : Uses GTS_* macros.
+	* common/optionfloatrangeattribute.cpp : Uses GTS_* macros.
+	* common/objectmesh.cpp : Uses GTS_* macros.
+
+2009-05-16 Jerome Pasquier  <rainbru@free.fr>
+	* common/itemlistfile.cpp : Uses GTS_* macros.
+	* common/hashfile.cpp : Uses GTS_* macros.
+	* common/globaluri.cpp : Uses GTS_* macros.
+	* common/ftpclient.cpp : Uses GTS_* macros.
+	* common/EasyBMP.cpp : Uses GTS_* macros.
+	* common/curlposteddata.cpp : Uses GTS_* macros.
+	* common/curlgetfile.cpp : Uses GTS_* macros.
+	* common/curlfiletoxml.cpp : Uses GTS_* macros.
+	* common/curlaccountconfirmmail.cpp : Uses GTS_* macros.
+
+2009-05-15 Jerome Pasquier  <rainbru@free.fr>
+	* common/rainbrudef.h : Added GTS_* macros.
+	
 2009-04-03 Jerome Pasquier  <rainbru@free.fr>
 	* common/objectpos.cpp : Uses constructor initializers
 	

@@ -27,6 +27,7 @@
   * this link : http://gcc.gnu.org/wiki/Visibility
   *
   * Modifications :
+  * - 15 apr 2009 : Added GTS_* macros
   * - 18 mar 2009 : Added gettext stuff
   * - 08 aug 2008 : Documentation update
   *
@@ -36,6 +37,14 @@
 #include <libintl.h>
 #include <locale.h>
 # define _(STRING) gettext(STRING)
+
+// The following are gettext related macros used when filling a
+// parametered string with sprintf
+#define GTS_TIN(var) char var[40]
+#define GTS_LIT(var) char var[80]
+#define GTS_MID(var) char var[120]
+#define GTS_BIG(var) char var[200]
+#define GTS_HUG(var) char var[400]
 
 #ifdef _MSC_VER
   #ifdef BUILDING_DLL

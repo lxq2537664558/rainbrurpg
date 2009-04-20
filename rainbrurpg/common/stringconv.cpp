@@ -42,7 +42,7 @@
   */
 void RainbruRPG::Core::StringConv::freeTte(){
   if (mustFree){
-    cout << "  desalocating memory for char*..." <<endl;
+    LOGI(_("  desalocating memory for char*..."));
     free(tte);
   }
 }
@@ -136,9 +136,9 @@ std::string RainbruRPG::Core::StringConv::btos(bool b){
   */
 const char* RainbruRPG::Core::StringConv::btoc(bool b){
   if (b)
-    return "true";
+    return _("true");
   else
-    return "false";
+    return _("false");
 
 }
 
@@ -259,7 +259,7 @@ itobin(int vInt, const int vBase){
      out+=BITSET_STR(num8);
   }
   else{
-    LOGW("StringConv::itobin base parameter unrecognized");
+    LOGW(_("StringConv::itobin base parameter unrecognized"));
 
   }
 

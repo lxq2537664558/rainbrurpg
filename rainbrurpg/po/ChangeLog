@@ -1,3 +1,13 @@
+2009-04-18  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/serverlistitem.cpp, sha1.cpp, 
+	stringconv.cpp, timer.cpp
+
+2009-04-04  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: common/optionintattribute.cpp, 
+	common/optionintrangeattribute.cpp, common/optionlistattribute.cpp,
+	optionmanager.cpp, optionpanel.cpp, options.cpp,
+	optionstringattribute.cpp added.	
+
 2009-04-04  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/objectpos.cpp, common/optionattribute.cpp,
 	common/optionboolattribute.cpp, common/optionbutton.cpp,

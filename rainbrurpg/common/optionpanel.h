@@ -24,6 +24,7 @@
   * Declares a panel for the launcher's options editor
   *
   * Modifications :
+  * - 14 par 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 
 #include "logger.h"
 #include "optionbutton.h"
+
+#include "rainbrudef.h"
 
 using namespace std;
 

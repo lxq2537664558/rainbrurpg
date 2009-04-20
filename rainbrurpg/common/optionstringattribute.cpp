@@ -35,7 +35,7 @@
 RainbruRPG::Options::OptionStringAttribute::OptionStringAttribute(const char*n)
                                 :OptionAttribute(OAT_STRING){
 
-  LOGI("Constructing an string OptionAttribute");
+  LOGI(_("Constructing an OptionStringAttribute"));
   this->setName(n);
   this->value="";
 
@@ -72,11 +72,12 @@ void RainbruRPG::Options::OptionStringAttribute::update(){
   if (widget){
     FXTextField* tf=(FXTextField*)widget;
     if (tf){
-      LOGI("Updating an OptionStringAttribute");
+      LOGI(_("Updating an OptionStringAttribute"));
       tf->setText(this->value.c_str());
     }
     else{
-      LOGW("Cannot get a valid FXTextField");
+      LOGW(_("Cannot get a valid FXTextField to update an "
+	     "OptionStringAttribute"));
     }
   }
   else{

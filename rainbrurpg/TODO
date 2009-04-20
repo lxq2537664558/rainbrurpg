@@ -10,7 +10,9 @@ o [rainbru] Fixing some OgreGui related graphical bugs
 - Moving MCL scrollbar when window's SB were moved is spurious 
 
 o [rainbru] i18n (source are taken alphabetically)
-- common/optionfloatrangeattribute.cpp was the last translated source
+   Please use GTS_* macros from rainbrudef.h for all translated
+   strings using sprintf and parameters
+- common/timer.cpp was the last translated source
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -124,7 +126,20 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-192 (28 mar 2009 - ???)
-- (12) common/optionattribute.cpp now uses gettext compliant strings
+- (17) common/serverlistitem.cpp now uses gettext compliant string
+   Also sha1.cpp, stringconv.cpp, timer.cpp
+- (16) common/objectmesh.cpp uses some GTS_* macros
+   Also optionfloatrangeattribute.cpp, optionintrangeattribute.cpp,
+   optionlistattribute.cpp, optionmanager.cpp
+- common/curlaccountconfirmail.cpp uses some GTS_* macros
+   Also curlfiletoxml.cpp, curlgetfile.cpp, curlposteddata.cpp,
+   EasyBMP.cpp, ftpclient.cpp, globaluri.cpp, hashfile.cpp,
+   itemlistfle.cpp
+-  Added GTS_* macros in rainbrudef.h
+-  common/optionintattribute.cpp now uses gettext compliant strings
+   Also optionintrangeattribute.cpp, optionlistattribute.cpp,
+   optionmanager.cpp, optionpanel.cpp, options.cpp
+- common/optionattribute.cpp now uses gettext compliant strings
    Also optionbutton.cpp, optionfloatattriute.cpp, optionfloatrangeattribute
 - common/objectpos uses contructor initializers
 - Now xmlLanguage compute the complete percent

@@ -89,7 +89,7 @@ bool RainbruRPG::Network::Ident::CurlGetFile::writeToFile(){
   fs::path path("curlget.xml");
   fs::remove(path);
 
-  char msg[100];
+  GTS_MID(msg);
   // TRANSLATORS: The parameter is the name of the file we are
   // about to write.
   sprintf(msg, _("Performing CurlGetFile writeToFile action, filename : %s"),

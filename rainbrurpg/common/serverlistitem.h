@@ -24,6 +24,7 @@
   * Defines an item used in the tServerList
   *
   * Modifications :
+  * - 18 apr 2009 : Using gettext string
   * - 08 aug 2008 : Documentation update
   * - 04 aug 2007 : Starting implementation 
   *
@@ -33,6 +34,8 @@
 
 #ifndef _SERVER_LIST_ITEM_H_
 #define _SERVER_LIST_ITEM_H_
+
+#include "rainbrudef.h" // For the gettext stuff
 
 /** Defines the initial value of server's type
   *

@@ -31,7 +31,6 @@
   * It initialize modList
   */
 RainbruRPG::Network::Ident::AttributeModifierList::AttributeModifierList(){
-
   LOGI("AttributeModifierList construction");
   //  modList=new tAttributeModifierList();
   total=0;

@@ -24,6 +24,7 @@
   * Declares an integer option for the launcher's options editor
   *
   * Modifications :
+  * - 14 apr 2009 : Now using gettext
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 #include "logger.h"
 #include "optionattribute.h"
 #include "stringconv.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 

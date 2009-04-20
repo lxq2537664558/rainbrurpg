@@ -124,7 +124,7 @@ bool BMP::SetColor( int ColorNumber , RGBApixel NewColor ){
   }
   if( ColorNumber >= TellNumberOfColors()){
     if( EasyBMPwarnings ){
-      char str[120];
+      GTS_MID(str);
       // TRANSLATORS: The first parameter is a color number, the one
       // we are trying to set. The second parameter is the maximum
       // allowed color index.
@@ -168,7 +168,7 @@ RGBApixel BMP::GetColor( int ColorNumber )
  {
   if( EasyBMPwarnings )
   {
-      char str[120];
+    GTS_MID(str);
       // TRANSLATORS: The first parameter is a color number, the one
       // we are trying to set. The second parameter is the maximum
       // allowed color index.
@@ -238,9 +238,7 @@ RGBApixel* BMP::operator()(int i, int j){
   }
   if( Warn && EasyBMPwarnings ){
 
-    char str[120];
-    stringstream ss;
-
+    GTS_MID(str);
     // TRANSLATORS: The first parameter if the width of the image in pixels,
     // the second if the height of the image in pixels.
     sprintf(str, _("Attempted to access non-existent pixel"
@@ -278,7 +276,7 @@ bool BMP::SetBitDepth( int NewDepth )
  {
   if( EasyBMPwarnings ){
 
-    char str[120];
+    GTS_LIT(str);
     // TRANSLATORS: The first parameter is the new bit depth of the image,
     // the second parameter is the actual bit depth.
     sprintf(str, _("User attempted to set unsupported bit depth %d. " 
@@ -310,7 +308,7 @@ bool BMP::SetSize(int NewWidth , int NewHeight )
  {
   if( EasyBMPwarnings ){
 
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameters are the width and the height of the image
     // in pixels.
     printf(str, _("User attempted to set a non-positive width or height."
@@ -599,7 +597,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  if( fp == NULL )
  {
   if( EasyBMPwarnings ){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Cannot open file %s for input."), FileName);
     LOGE(str);
@@ -626,7 +624,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( !IsBitmap ){
   if( EasyBMPwarnings ){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("%s is not a Windows BMP file!"), FileName);
   }
@@ -669,7 +667,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  {
   if( EasyBMPwarnings )
   {
-    char str[40];
+    GTS_TIN(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("%s is obviously corrupted."), FileName);
     LOGE(str);
@@ -688,7 +686,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  if( bmih.biCompression == 1 || bmih.biCompression == 2 ){
    if( EasyBMPwarnings ){
      // TRANSLATORS: The parameter is a file name.
-     char str[100];
+     GTS_LIT(str);
      sprintf(str, _("%s  is (RLE) compressed."
 	       " EasyBMP does not support compression."),FileName);
      LOGE(str);
@@ -705,7 +703,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression > 3 ){
    if( EasyBMPwarnings ){
-     char str[160];
+     GTS_MID(str);
      // TRANSLATORS: The first parameter is a file name. The second one
      // is a compression number.
      sprintf(str, _("%s is in an unsupported format. (bmih.biCompression = "
@@ -722,7 +720,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression == 3 && bmih.biBitCount != 16 ){
    if( EasyBMPwarnings ){
-     char str[80];
+     GTS_LIT(str);
      // TRANSLATORS: The parameter is a file name.
      sprintf(str, _("%s uses bit fields and is not a 16-bit file. "
 		    "This is not supported."), FileName);
@@ -742,7 +740,7 @@ bool BMP::ReadFromFile( const char* FileName ){
      && TempBitDepth != 24 && TempBitDepth != 32 )
    {
      if( EasyBMPwarnings ){
-       char str[40];
+       GTS_TIN(str);
        // TRANSLATORS: The parameter is a file name.
        sprintf(str, _("%s has unrecognized bit depth."), FileName);
        LOGE(str);
@@ -759,7 +757,7 @@ bool BMP::ReadFromFile( const char* FileName ){
 
  if( (int) bmih.biWidth <= 0 || (int) bmih.biHeight <= 0 ){
    if( EasyBMPwarnings ){
-     char str[60];
+     GTS_LIT(str);
      // TRANSLATORS: The parameter is a file name.
      sprintf(str, _("%s has a non-positive width or height."), FileName);
      LOGE(str);
@@ -795,7 +793,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  
   if( NumberOfColorsToRead < TellNumberOfColors() ){
     if( EasyBMPwarnings ){
-      char str[180];
+      GTS_BIG(str);
       // TRANSLATORS: The parameter is a file name.
       sprintf(str, _("File %s has an underspecified"
 		     " color table. The table will be padded with extra"
@@ -836,7 +834,7 @@ bool BMP::ReadFromFile( const char* FileName ){
  {
   if( EasyBMPwarnings ){
 
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Extra meta data detected in file '%s"
 		   "' Data will be skipped."), FileName);
@@ -940,7 +938,7 @@ bool BMP::ReadFromFile( const char* FileName ){
 
   if( BytesToSkip > 0 ){
    if( EasyBMPwarnings ){
-     char str[80];
+     GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
      sprintf(str, _("Extra meta data detected in file '%s"
 		    "'. Data will be skipped."), FileName);
@@ -1225,7 +1223,7 @@ BMFH GetBMFH( const char* szFileNameIn )
  
  if( !fp  ){
   if( EasyBMPwarnings ){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Cannot initialize from file '%s'." 
 		   " File cannot be opened or does not exist."), szFileNameIn);
@@ -1260,7 +1258,7 @@ BMIH GetBMIH( const char* szFileNameIn )
 
  if( !fp  ){
   if( EasyBMPwarnings ){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Cannot initialize from file '%s'."
 		   " File cannot be opened or does not exist."), szFileNameIn);
@@ -1308,7 +1306,7 @@ void DisplayBitmapInfo( const char* szFileNameIn )
  
  if( !fp  ){
   if( EasyBMPwarnings ){
-    char str[80];
+    GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Cannot initialize from file '%s'."
 		   " File cannot be opened or does not exist."), szFileNameIn);
@@ -1646,7 +1644,7 @@ bool EasyBMPcheckDataSize( void )
  bool ReturnValue = true;
  if( sizeof( ebmpBYTE ) != 1 ){
   if( EasyBMPwarnings ){
-    char str[120];
+    GTS_MID(str);
     // TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
     sprintf(str,_("ebmpBYTE has the wrong size (%d bytes), "
 		  "Compared to the expected 1 byte value"), sizeof(ebmpBYTE));
@@ -1656,7 +1654,7 @@ bool EasyBMPcheckDataSize( void )
  }
  if( sizeof( ebmpWORD ) != 2 ){
   if( EasyBMPwarnings ){
-    char str[120];
+    GTS_MID(str);
     // TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
     sprintf(str, _("ebmpWORD has the wrong size (%d bytes), "
 		   "Compared to the expected 2 byte value"),sizeof(ebmpWORD));
@@ -1666,7 +1664,7 @@ bool EasyBMPcheckDataSize( void )
  }
  if( sizeof( ebmpDWORD ) != 4 ){
   if( EasyBMPwarnings ){
-    char str[120];
+    GTS_MID(str);
     // TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
     sprintf(str,_("EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), "
 		  "Compared to the expected 4 byte value"), sizeof(ebmpDWORD));
