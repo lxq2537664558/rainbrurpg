@@ -1,3 +1,6 @@
+2009-04-24  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/tinyxmlerror.cpp
+
 2009-04-18  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added common/serverlistitem.cpp, sha1.cpp, 
 	stringconv.cpp, timer.cpp

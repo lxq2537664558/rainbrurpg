@@ -22,6 +22,10 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
+/*
+  Modification by Jerome Pasquier :
+  - 24 apr 2009 : error messages gettextized
+*/
 
 #ifndef TINYXML_INCLUDED
 #define TINYXML_INCLUDED
@@ -37,6 +41,8 @@ distribution.
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 // Help out windows:
 #if defined( _DEBUG ) && !defined( DEBUG )

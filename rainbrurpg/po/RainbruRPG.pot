@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-04-18 20:11+0200\n"
+"POT-Creation-Date: 2009-04-24 11:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -988,7 +988,7 @@ msgstr ""
 
 #. TRANSLATORS: The following define an error in the handling of a
 #. packet type.
-#: common/netpacketbase.cpp:152
+#: common/netpacketbase.cpp:152 common/tinyxmlerror.cpp:37
 msgid "Error"
 msgstr ""
 
@@ -1213,4 +1213,64 @@ msgstr ""
 
 #: common/stringconv.cpp:262
 msgid "StringConv::itobin base parameter unrecognized"
+msgstr ""
+
+#: common/tinyxmlerror.cpp:36
+msgid "No error"
+msgstr ""
+
+#: common/tinyxmlerror.cpp:38
+msgid "Failed to open file"
+msgstr ""
+
+#: common/tinyxmlerror.cpp:39
+msgid "Memory allocation failed."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:40
+msgid "Error parsing Element."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:41
+msgid "Failed to read Element name"
+msgstr ""
+
+#: common/tinyxmlerror.cpp:42
+msgid "Error reading Element value."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:43
+msgid "Error reading Attributes."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:44
+msgid "Error: empty tag."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:45
+msgid "Error reading end tag."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:46
+msgid "Error parsing Unknown."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:47
+msgid "Error parsing Comment."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:48
+msgid "Error parsing Declaration."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:49
+msgid "Error document empty."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:50
+msgid "Error null (0) or unexpected EOF found in input stream."
+msgstr ""
+
+#: common/tinyxmlerror.cpp:51
+msgid "Error parsing CDATA."
 msgstr ""
