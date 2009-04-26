@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-04-24 11:44+0200\n"
+"POT-Creation-Date: 2009-04-25 23:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1273,4 +1273,47 @@ msgstr ""
 
 #: common/tinyxmlerror.cpp:51
 msgid "Error parsing CDATA."
+msgstr ""
+
+#: common/version.cpp:60
+#, c-format
+msgid ""
+"Starting %s v%s-%s using :\n"
+" - FOX-Toolkit v%d.%d.%d\n"
+" - Ogre3D v%d.%d.%d (%s)\n"
+" - OIS v%d.%d.%d (%s)\n"
+" - libCurl v%s (%s)"
+msgstr ""
+
+#: common/version.cpp:77
+msgid ""
+"Copyright (C) 2006-2009 Jerome PASQUIER\n"
+"RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
+"and you are welcome to redistribute it under certain conditions.\n"
+"See the GNU General Public License for more details.\n"
+msgstr ""
+
+#: common/xmlaccountlist.cpp:61 common/xmlattrbcatlist.cpp:59
+#, c-format
+msgid "An error occured while getting xmlAccountList. Server response was : %d"
+msgstr ""
+
+#: common/xmlaccountlist.cpp:97
+msgid "An error occured while getting xmlAccountList"
+msgstr ""
+
+#: common/xmlaccountlist.cpp:153
+msgid "Cannot get a valid root element, account list will be NULL"
+msgstr ""
+
+#: common/xmlaccountlist.cpp:220
+msgid "A note has no text"
+msgstr ""
+
+#: common/xmlaccountlist.cpp:223
+msgid "A note element has no child"
+msgstr ""
+
+#: common/xmlattrbcatlist.cpp:99
+msgid "An error occured while getting xmlAttrbCatList"
 msgstr ""

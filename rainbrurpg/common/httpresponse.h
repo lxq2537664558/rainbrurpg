@@ -43,6 +43,7 @@
 #include "logger.h"
 #include "rainbrudef.h" // For the gettext stuff
 
+/** A shortcut macro to add a message */
 #define RESPADD(ID,MSG) (msgMap->insert(HttpMessagePair(ID, MSG)))
 
 using namespace std;

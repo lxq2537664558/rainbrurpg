@@ -1,3 +1,62 @@
+* v 0.0.5-192 (28 mar 2009 - 24 apr 2009)
+-  common/tinyxmlerror.cpp now uses gettext compliant string
+-  common/serverlistitem.cpp now uses gettext compliant string
+   Also sha1.cpp, stringconv.cpp, timer.cpp
+-  common/objectmesh.cpp uses some GTS_* macros
+   Also optionfloatrangeattribute.cpp, optionintrangeattribute.cpp,
+   optionlistattribute.cpp, optionmanager.cpp
+- common/curlaccountconfirmail.cpp uses some GTS_* macros
+   Also curlfiletoxml.cpp, curlgetfile.cpp, curlposteddata.cpp,
+   EasyBMP.cpp, ftpclient.cpp, globaluri.cpp, hashfile.cpp,
+   itemlistfle.cpp
+-  Added GTS_* macros in rainbrudef.h
+-  common/optionintattribute.cpp now uses gettext compliant strings
+   Also optionintrangeattribute.cpp, optionlistattribute.cpp,
+   optionmanager.cpp, optionpanel.cpp, options.cpp
+- common/optionattribute.cpp now uses gettext compliant strings
+   Also optionbutton.cpp, optionfloatattriute.cpp, optionfloatrangeattribute
+- common/objectpos uses contructor initializers
+- Now xmlLanguage compute the complete percent
+- common/npidentification.cpp now uses gettext compliant strings
+   Also objectmesh.cpp
+- common/globaluri.cpp now uses gettext compliant strings
+   Also hashfile.cpp, hashpassword.cpp, httpresponse.cpp,
+   itemlistfile.cpp, netpacketbase.cpp   
+- Renamed includeboost.h to boostimport.h
+- Created common/include_boost.h to fix a ptrdiff_t cross-compilation error
+- EasyBMP.cpp now uses gettext compliant strings
+   Also : enetbase.cpp, enetclient.cpp, ftpclient.cpp
+- Removed RainbruRPG.cc (not used)
+- Using namespace alias when building curlgetfile.cpp in win32
+- curlgetfile.cpp : Now using namespace alias for boost::filesystem
+- gettext 0.7 added to INSTALL dependencies
+
+* v 0.0.5-191 (15 feb 2009 - 28 mar 2009)
+- Fix a bug in the common/ Makefile
+- common/curlserveradd.cpp now uses gettext
+   Also curlserverdelete.cpp, curlservermodifclients.cpp, curlsubmitform.cpp
+- common/Makefile.in header/sources lists sorted
+- common/curlpersomodifattrb.cpp now uses gettext
+   Also curlposteddata.cpp
+- common/curlgetfile.cpp now uses gettext
+   Also: curlinterface.cpp, curlpersoheaderadd.cpp, curlpersoheaderdelete.cpp
+- Prepare common/curlgetfile.cpp strings to be translated (sprintf)
+- MCL's contextual menu doesn't work anymore (fixed)
+- In common/ : curlaccountdelete.cpp uses gettext and :
+   curlaccounttoggleblacklist.cpp, curlfiletoxml.cpp
+- In common/ : curlaccountconfirmmail.cpp uses gettext
+- In common/ : chartserie.cpp, clientconnect.cpp and
+   curlaccountadd are now ready to be translated
+- Number of translatable strings added to regtest statistics
+- common/chartline now ready to be translated
+- package gettextized (ready for i18n)
+- Added i18n stuff to common/rainbrudef.h
+   common/attributemodiferlist.cpp and common/chartbase.cpp now use it
+- ToolTip drawing bug fix in a better way
+- Fix a bug27 detail page error due to gdb output
+- Fix a bug when drawing ToolTips
+- Reopens bug 27 and set gdb output in detail page
+
 * v 0.0.5-190 (30 jan 2009 - 15 feb 2009)
 - Homepage news added :
   Title: Segfault fixed and crew update              2009-02-15 15:13:21

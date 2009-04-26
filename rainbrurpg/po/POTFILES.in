@@ -56,3 +56,6 @@ common/sha1.cpp
 common/stringconv.cpp
 common/timer.cpp
 common/tinyxmlerror.cpp
+common/version.cpp
+common/xmlaccountlist.cpp
+common/xmlattrbcatlist.cpp

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file boostimport.cpp
+/** \file boostimport.h
   * Implements a hack used to build in win32 due to ptrdiff_t
   *
   * Modifications :

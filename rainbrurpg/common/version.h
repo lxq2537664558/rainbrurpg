@@ -24,6 +24,7 @@
   * Declares a class for libraries versions logging
   *
   * Modifications :
+  * - 25 apr 2009 : Added gettext stuff header
   * - 11 aug 2008 : Single file documentation
   * - 05 jul 2007 : Removing using namespace Ogre due to conflicts Ogre/Qt4
   * - 04 jul 2007 : OIS version added
@@ -48,6 +49,7 @@
 #endif //INCLUDE_VERSION_WITHOUT_OGRE
 
 #include "logger.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace OIS;

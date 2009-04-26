@@ -35,9 +35,7 @@ RainbruRPG::Network::Ident::xmlAccountList::xmlAccountList():
   root(NULL),
   correctlyLoaded(false)
 {
-  LOGI("Creation xmlAccountList");
   refresh();
-
 }
 
 /** Get the xml file and load it
@@ -46,7 +44,6 @@ RainbruRPG::Network::Ident::xmlAccountList::xmlAccountList():
   *
   */
 bool RainbruRPG::Network::Ident::xmlAccountList::refresh(){
-  LOGI("xmlAccountList refresh function called");
   bool ret;
 
   GlobalURI gu;
@@ -60,10 +57,10 @@ bool RainbruRPG::Network::Ident::xmlAccountList::refresh(){
   }
   else{
     long resp=CurlFileToXml::getServerResponse();
-    LOGE("An error occured while getting xmlAccountList");
-    LOGCATS("Server response was : ");
-    LOGCATI(resp);
-    LOGCAT();
+    GTS_LIT(str);
+    sprintf(str, _("An error occured while getting xmlAccountList. "
+		   "Server response was : %d"), resp);
+    LOGE(str);
     correctlyLoaded=false;
     ret=false;
   }
@@ -94,11 +91,10 @@ void RainbruRPG::Network::Ident::xmlAccountList::loadDocument(
   if (doc){
     root =doc->RootElement();
     correctlyLoaded=true;
-    LOGI("xmlAccountList correctly loaded"); 
   }
   else{
     correctlyLoaded=false;
-    LOGW("An error occured while getting xmlAccountList");
+    LOGW(_("An error occured while getting xmlAccountList"));
   }
 }
 
@@ -154,7 +150,7 @@ RainbruRPG::Gui::tAccountList* RainbruRPG::Network::Ident::
     return pl;
   }
   else{
-    LOGW("Cannot get a valid root element, account list will be NULL");
+    LOGW(_("Cannot get a valid root element, account list will be NULL"));
     return NULL;
   }
 }
@@ -221,10 +217,10 @@ tNoteList* RainbruRPG::Network::Ident::xmlAccountList::getAccountNoteList(
 	  if (textNode)
 	    i1->text=textNode->Value();
 	  else
-	    LOGI("A note has no text");
+	    LOGI(_("A note has no text"));
 	}
 	else
-	  LOGI("A note element has no child");
+	  LOGI(_("A note element has no child"));
 
 	list->push_back(i1);
 

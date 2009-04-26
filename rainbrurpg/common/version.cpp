@@ -56,42 +56,28 @@ RainbruRPG::Core::Version::~Version(){
   * numbers and strings, then it calls Logger::logMessage().
   */
 void RainbruRPG::Core::Version::logVersion(){
+  GTS_BIG(str);
+  sprintf(str, _("Starting %s v%s-%s using :\n"
+		 " - FOX-Toolkit v%d.%d.%d\n"
+		 " - Ogre3D v%d.%d.%d (%s)\n"
+		 " - OIS v%d.%d.%d (%s)\n"
+		 " - libCurl v%s (%s)"),
+	  appName, version, build,                // First line : own version
+	  FOX_MAJOR, FOX_MINOR, FOX_LEVEL,        // Fox versions
+	  OGRE_VERSION_MAJOR, OGRE_VERSION_MINOR, // Ogre 1st part
+	  OGRE_VERSION_PATCH, OGRE_VERSION_NAME,  // Ogre 2nd part
+	  OIS_VERSION_MAJOR, OIS_VERSION_MINOR,   // OIS 1st part
+	  OIS_VERSION_PATCH, OIS_VERSION_NAME,    // OIS 2nd part
+	  LIBCURL_VERSION, LIBCURL_TIMESTAMP      // libCurl
+	  );
+   
+  Logger::getSingleton().logMessage( str );
+
   string m;
-
-  std::ostringstream ostr;
-    
-  ostr <<endl <<endl << appName << " v" <<version << "-"
-       << build << " using :" << endl 
-       << " - FOX-Toolkit v"
-       << FOX_MAJOR << "."
-       << FOX_MINOR << "."
-       << FOX_LEVEL << endl 
-       << " - Ogre3D v"
-       << OGRE_VERSION_MAJOR << "." << OGRE_VERSION_MINOR 
-       << "." << OGRE_VERSION_PATCH << " (" 
-       << OGRE_VERSION_NAME<< ")"<< endl 
-       << " - OIS v" 
-       << OIS_VERSION_MAJOR << "." << OIS_VERSION_MINOR
-       << "." << OIS_VERSION_PATCH << " (" 
-       << OIS_VERSION_NAME << ")" << endl
-       << " - CURL v"
-       << LIBCURL_VERSION << " (" <<  LIBCURL_TIMESTAMP
-       << ")" << endl;
-
-  Logger::getSingleton().logMessage( ostr.str() );
-
-
-
-  m="Copyright (C) 2006-2008 Jerome PASQUIER";
-  Logger::getSingleton().logMessage(m.c_str());
-  
-  m="RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,";
-  Logger::getSingleton().logMessage(m.c_str());
-  
-  m="and you are welcome to redistribute it under certain conditions.";
-  Logger::getSingleton().logMessage(m.c_str());
-  
-  m="See the GNU General Public License for more details.";
+  m=_("Copyright (C) 2006-2009 Jerome PASQUIER\n"
+      "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
+      "and you are welcome to redistribute it under certain conditions.\n"
+      "See the GNU General Public License for more details.\n");
   Logger::getSingleton().logMessage(m.c_str());
 
 }

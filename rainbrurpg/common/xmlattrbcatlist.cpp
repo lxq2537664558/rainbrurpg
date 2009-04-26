@@ -31,7 +31,6 @@
   *
   */
 RainbruRPG::Network::Ident::xmlAttrbCatList::xmlAttrbCatList(){
-  LOGI("Creates xmlAttrbCatList");
   refresh();
 
 }
@@ -43,7 +42,6 @@ RainbruRPG::Network::Ident::xmlAttrbCatList::xmlAttrbCatList(){
   *
   */
 bool RainbruRPG::Network::Ident::xmlAttrbCatList::refresh(){
-  LOGI("xmlAttrbCatList refresh function called");
   bool ret;
 
   GlobalURI gu;
@@ -57,10 +55,10 @@ bool RainbruRPG::Network::Ident::xmlAttrbCatList::refresh(){
   }
   else{
     long resp=CurlFileToXml::getServerResponse();
-    LOGW("An error occured while getting xmlAttrbCatList");
-    LOGCATS("Server response was : ");
-    LOGCATI(resp);
-    LOGCAT();
+    GTS_LIT(str);
+    sprintf(str, _("An error occured while getting xmlAccountList. "
+		   "Server response was : %d"), resp);
+    LOGE(str);
     correctlyLoaded=false;
     ret=false;
   }
@@ -95,11 +93,10 @@ void RainbruRPG::Network::Ident::xmlAttrbCatList::loadDocument(
   if (doc){
     root =doc->RootElement();
     correctlyLoaded=true;
-    LOGI("xmlPlayerList correctly loaded"); 
   }
   else{
     correctlyLoaded=false;
-    LOGW("An error occured while getting xmlPlayerList");
+    LOGW(_("An error occured while getting xmlAttrbCatList"));
   }
 }
 

@@ -179,6 +179,9 @@ void RainbruRPG::Options::xmlLanguage::loadDefault(){
   }
 }
 
+/** Load the number of po message translated
+  *
+  */
 void RainbruRPG::Options::xmlLanguage::loadNbMessages(){
   TiXmlNode* childNode = root->FirstChild( "PoMessagesNumber");
   if (childNode){

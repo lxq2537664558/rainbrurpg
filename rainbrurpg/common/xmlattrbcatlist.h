@@ -24,6 +24,7 @@
   * Declares a class used to read the XML file of the attribute categories list
   *
   * Modifications :
+  * - 25 apr 2009 : Now uses gettext compliant strings
   * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
   * - 11 aug 2008 : Single file documentation
   * - 01 apr 2007 : Documentation improvement
@@ -46,6 +47,8 @@
 #include "logger.h"
 #include "curlfiletoxml.h"
 #include "globaluri.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;
