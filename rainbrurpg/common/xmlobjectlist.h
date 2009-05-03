@@ -24,6 +24,7 @@
   * Declares a class that read and create the objects in \c config/objects.xml
   *
   * Modifications :
+  * - 01 may 2009 : Strings are getetxt compliant
   * - 11 aug 2008 : Single file documentation
   *
   */
@@ -38,6 +39,8 @@
 
 #include <list>
 #include <string>
+
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Core{

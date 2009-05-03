@@ -33,8 +33,10 @@
   * \param caption The caption of the panel
   *
   */
-RainbruRPG::Options::OptionPanel::OptionPanel(const char* caption){
-  this->setCaption(caption);
+RainbruRPG::Options::OptionPanel::
+OptionPanel(const char* vName, const char* vCaption){
+  this->setName(vName);
+  this->setCaption(vCaption);
 }
 
 
@@ -115,7 +117,7 @@ RainbruRPG::Options::OptionPanel::getButtonByName(const char* n){
 
   // Iterate through list and output each element.
   for (iter=buttonList.begin(); iter != buttonList.end(); iter++){
-    const char*name=(*iter)->getCaption();
+    const char*name=(*iter)->getName();
 
     if (strcmp(name, n)==0)
       ret=(*iter);
@@ -142,4 +144,12 @@ void RainbruRPG::Options::OptionPanel::update(){
   for (iter=buttonList.begin(); iter != buttonList.end(); iter++){
     (*iter)->update();
   }
+}
+
+void RainbruRPG::Options::OptionPanel::setName(const char* vName){
+  this->m_name = vName;
+}
+
+const char* RainbruRPG::Options::OptionPanel::getName() const{
+  return this->m_name;
 }

@@ -31,11 +31,13 @@
   *
   * \param n The name of the attribute
   */
-RainbruRPG::Options::OptionIntAttribute::OptionIntAttribute(const char* n)
-                                :OptionAttribute(OAT_INTEGER){
-
+RainbruRPG::Options::OptionIntAttribute::
+OptionIntAttribute(const char* vName, const char* vCaption):
+  OptionAttribute(OAT_INTEGER)
+{
   LOGI(_("Constructing an integer OptionAttribute"));
-  this->setName(n);
+  this->setName(vName);
+  this->setCaption(vCaption);
   this->value=0;
   this->setStep(1);
 

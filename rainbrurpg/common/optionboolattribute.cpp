@@ -37,11 +37,14 @@
   * \param n The setName() param.
   *
   */
-RainbruRPG::Options::OptionBoolAttribute::OptionBoolAttribute(const char* n)
-                                :OptionAttribute(OAT_BOOLEAN){
+RainbruRPG::Options::OptionBoolAttribute::
+OptionBoolAttribute(const char* vName, const char* vCaption):
+  OptionAttribute(OAT_BOOLEAN)
+{
 
   LOGI(_("Constructing a bool OptionAttribute"));
-  this->setName(n);
+  this->setName(vName);
+  this->setCaption(vCaption);
   this->value=false;
 
 }

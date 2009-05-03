@@ -32,11 +32,14 @@
   * \param n The name of the attribute
   *
   */
-RainbruRPG::Options::OptionStringAttribute::OptionStringAttribute(const char*n)
-                                :OptionAttribute(OAT_STRING){
+RainbruRPG::Options::OptionStringAttribute::
+OptionStringAttribute(const char* vName, const char* vCaption):
+  OptionAttribute(OAT_STRING)
+{
 
   LOGI(_("Constructing an OptionStringAttribute"));
-  this->setName(n);
+  this->setName(vName);
+  this->setCaption(vCaption);
   this->value="";
 
 }

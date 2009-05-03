@@ -50,7 +50,8 @@
   */
 RainbruRPG::Server::MainServerWindow::
 MainServerWindow(const QString &fileName, QWidget *parent)
-		  : QMainWindow(parent)
+  : QMainWindow(parent),
+    quarantDir(NULL)
 {
   LOGI("Creating MainWindow");
   setWindowTitle(fileName);
@@ -119,6 +120,7 @@ MainServerWindow(const QString &fileName, QWidget *parent)
       tr("Connection to database successfull"));
   }
   else{
+    LOGE("Connection to database failed");
     QMessageBox::critical ( this, tr("Database connection error"), 
       tr("An error occured during the database connection. Please "
 	 "change the server's configuration and restart the server."));
@@ -673,8 +675,23 @@ void RainbruRPG::Server::MainServerWindow::manageQuarantine(){
   */
 void RainbruRPG::Server::MainServerWindow::quarantineNotifier(){
   LOGI("quarantineNotifier called");
-  quarantDir->refresh();
-  uint i=quarantDir->count();
+  uint i;
+  /* v0.0.5-193 : Fix a segfault when database connection failed
+   * For some reason, the postgres plugin for Qt is no longer
+   * available. It could cause a devalidation of the quarantDir
+   * pointer that causes a segfault on the server startup.
+   *
+   */
+  if (quarantDir != NULL){
+    quarantDir->refresh();
+    i=quarantDir->count();
+  }
+  else{
+    const char* m="quarantineNotifier call failed.";
+    LOGE(m);
+    serverLog->addMessage (SLL_ERROR, m);
+    return;
+  }
 
   // If new files are arrived, alert
   if (i!=numQuarantFiles ){ 

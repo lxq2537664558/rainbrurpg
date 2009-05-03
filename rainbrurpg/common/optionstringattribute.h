@@ -24,6 +24,7 @@
   * Declares a string for the launcher's options editor
   *
   * Modifications :
+  * - 30 apr 2009 : Added caption parameter to constructor
   * - 14 apr 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
@@ -53,7 +54,7 @@ namespace RainbruRPG {
     class OptionStringAttribute : public OptionAttribute{
 
     public:
-      OptionStringAttribute(const char*);
+      OptionStringAttribute(const char*, const char*);
       /** An empty default destructor */
       ~OptionStringAttribute(){};
 

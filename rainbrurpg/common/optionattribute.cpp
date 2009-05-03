@@ -144,3 +144,20 @@ FXObject* RainbruRPG::Options::OptionAttribute::getWidget(){
   return this->widget;
 }
 
+/** Changes the caption of this option attribute
+  * 
+  * \param vCaption The new caption
+  *
+  */
+void RainbruRPG::Options::OptionAttribute::setCaption(const char* vCaption){
+  this->mCaption = vCaption;
+}
+
+/** Get the caption of this option attribute
+  * 
+  * \return The current caption
+  *
+  */
+const char* RainbruRPG::Options::OptionAttribute::getCaption(void) const{
+  return mCaption;
+}

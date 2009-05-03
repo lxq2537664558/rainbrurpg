@@ -24,6 +24,7 @@
   * Declares a class used to read and write languages configuration file
   *
   * Modifications :
+  * - 29 apr 2009 : Using gettext compliant strings
   * - 03 apr 2009 : Now computes the complete percent
   * - 11 aug 2008 : Single file documentation
   *
@@ -37,7 +38,8 @@
 
 #include "languagelistitem.h"
 #include "tinyxml.h"
-#include "ptypes.h" // For unsigned int types
+#include "ptypes.h"     // For unsigned int types
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Options{

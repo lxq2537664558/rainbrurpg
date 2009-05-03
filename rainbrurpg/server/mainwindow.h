@@ -24,6 +24,7 @@
   * Declares the server's main window
   *
   * Modifications :
+  * - 28 apr 2009 : Fix a segfault in quarantineNotifier()
   * - 05 sep 2008 : Single file documentation
   * - 30 jul 2007 : The quanrantine doesn't work anymore    FIXED
   * - 31 may 2007 : Ftp port added when registering server

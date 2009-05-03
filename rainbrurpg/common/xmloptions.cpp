@@ -60,18 +60,16 @@ RainbruRPG::Options::xmlOptions::~xmlOptions(){
   *
   */
 bool RainbruRPG::Options::xmlOptions::refresh(){
-  LOGI("xmlOptions refresh function called");
   bool ret=false;
 
   if (loadDocument()){
     ret=true;
   }
   else{
-    LOGE("Can not load the xml options");
-    LOGCATS("Missing filename : '");
-    LOGCATS(this->filename.c_str());
-    LOGCATS("'");
-    LOGCAT();
+    GTS_MID(str);
+    sprintf(str, _("Cannot load the XML options from file %s"), 
+	    this->filename.c_str());
+    LOGE(str);
   }
   return ret;
 }
@@ -93,7 +91,7 @@ bool RainbruRPG::Options::xmlOptions::loadDocument(){
 
 /** Saves the given snapshot with the current name 
   *
-  * This function is called bu the OptionManager when it may save
+  * This function is called by the OptionManager when it may save
   * a snapshot.
   *
   * \param snapName The name of the snapshot
@@ -144,10 +142,8 @@ saveSnapshot(const char* snapName, tOptionPanelList* panels){
   */
 void RainbruRPG::Options::xmlOptions::
 savePanel(TiXmlElement* elem, OptionPanel* panel){
-  LOGI("Adding panel :");
-
   TiXmlElement* panelNode=new TiXmlElement( "Panel" );
-  panelNode->SetAttribute("name", panel->getCaption() );
+  panelNode->SetAttribute("name", panel->getName() );
 
 
   TiXmlNode* ret=elem->LinkEndChild( panelNode );
@@ -160,9 +156,9 @@ savePanel(TiXmlElement* elem, OptionPanel* panel){
     saveButton( panelNode, (*iter) );
   }
 
-  if (!ret)
-    LOGW("An error occured while adding panel");
-
+  if (!ret){
+    LOGW(_("An error occured while saving panel to XML option file."));
+  }
 }
 
 /** Save an option button
@@ -178,7 +174,7 @@ void RainbruRPG::Options::xmlOptions::
 saveButton(TiXmlElement* elem, OptionButton* button){
 
   TiXmlElement* btnNode=new TiXmlElement( "Button" );
-  btnNode->SetAttribute("name", button->getCaption() );
+  btnNode->SetAttribute("name", button->getName() );
 
 
   TiXmlNode* ret=elem->LinkEndChild( btnNode );
@@ -207,10 +203,6 @@ saveAttribute(TiXmlElement* elem, OptionAttribute* attrb){
   TiXmlElement* btnNode=new TiXmlElement( "Attribute" );
   btnNode->SetAttribute("name", attrb->getName() );
 
-  LOGCATS("Attribute value :");
-  LOGCATS(attrb->getValueStr());
-  LOGCAT();
-
   TiXmlText* textNode=new TiXmlText( attrb->getValueStr() );
   btnNode->LinkEndChild( textNode );
   elem->LinkEndChild( btnNode );
@@ -237,12 +229,12 @@ RainbruRPG::Options::xmlOptions::getSnapshotList(){
       }
     }
     else{
-      LOGW("Empty snapshot list");
+      LOGW(_("Empty snapshot list found in XML options file."));
       return NULL;
     }
   }
   else{
-    LOGE("Can not get a valid root element");
+    LOGE(_("Cannot get a valid root element for XML options snapshot list."));
     return NULL;
   }
 
@@ -348,7 +340,7 @@ loadPanel(TiXmlElement* snapNode, OptionPanel* panel){
       const char* panelName=child->Attribute("name");
 
       // We have the good panel (xml)
-      if (strcmp(panelName, panel->getCaption())==0){
+      if (strcmp(panelName, panel->getName())==0){
 	
 	tOptionButtonList* buttons=panel->getButtonList();
 	tOptionButtonList::const_iterator iter2;
@@ -383,7 +375,7 @@ loadButton(TiXmlElement* panelNode, OptionButton* button){
       const char* buttonName=child->Attribute("name");
 
       // We have the good button (xml)
-      if (strcmp(buttonName, button->getCaption())==0){
+      if (strcmp(buttonName, button->getName())==0){
 
 
 	tOptionAttributeList* attrbs=button->getAttributeList();
@@ -443,11 +435,12 @@ void RainbruRPG::Options::xmlOptions::deleteSnapshot(const char* c){
 
     if (b){
       doc->SaveFile();
-      LOGI("Snapshot deleted successfully");
     }
-    else
-      LOGW("Cannot delete the snapshot");
-
+    else{
+      GTS_LIT(str);
+      sprintf(str, "Cannot delete the snapshot '%s'.", c);
+      LOGW(str);
+    }
   }
   else{
     LOGW("Cannot get the snapshot xml node to delete");

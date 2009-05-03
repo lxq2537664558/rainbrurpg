@@ -24,6 +24,7 @@
   * Declares a range of floats for the launcher's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Added caption to the constructor
   * - 04 apr 2009 : Now uses gettext strings
   * - 09 aug 2008 : Single file documentation
   *
@@ -55,8 +56,8 @@ namespace RainbruRPG {
     class OptionFloatRangeAttribute : public OptionFloatAttribute{
 
     public:
-      OptionFloatRangeAttribute(const char*, float, float);
-      OptionFloatRangeAttribute(const char*, float, float, float);
+      OptionFloatRangeAttribute(const char*, const char*, float, float);
+      OptionFloatRangeAttribute(const char*,const char*, float, float, float);
 
       /** An empty default constructor */
       ~OptionFloatRangeAttribute(){};

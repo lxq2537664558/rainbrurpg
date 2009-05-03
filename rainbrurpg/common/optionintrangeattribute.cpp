@@ -38,9 +38,9 @@
   *
   */
 RainbruRPG::Options::OptionIntRangeAttribute::
-OptionIntRangeAttribute(const char* name, int min, int max)
-                                  :OptionIntAttribute(name){
-
+OptionIntRangeAttribute(const char* name,const char* vCaption,
+			int min, int max):
+  OptionIntAttribute(name, vCaption){
   this->setType(OAT_INT_RANGE);
   this->setMinRange(min);
   this->setMaxRange(max);
@@ -59,8 +59,11 @@ OptionIntRangeAttribute(const char* name, int min, int max)
   * \param step The step of the attribute
   */
 RainbruRPG::Options::OptionIntRangeAttribute::
-OptionIntRangeAttribute(const char* name, int min, int max, unsigned int step)
-                                                    :OptionIntAttribute(name){
+OptionIntRangeAttribute(const char* name, const char* caption,
+			int min, int max, unsigned int step):
+  OptionIntAttribute(name, caption)
+{
+
   this->setMinRange(min);
   this->setMaxRange(max);
   this->setStep(step);

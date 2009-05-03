@@ -24,10 +24,12 @@
   * Declares a class that read the character list
   *
   * Modifications :
+  * - 02 may 2009 : Using gettext compliant strings
   * - 13 jan 2009 : A cout call replaced by LOGCAT*
   * - 11 aug 2008 : Single file documentation
   * - 19 jul 2007 : Implements a real perso list
   * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  *
   */
 
 #ifndef XML_PERSO_LIST_H
@@ -47,6 +49,8 @@
 #include "logger.h"
 #include "curlfiletoxml.h"
 #include "globaluri.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network::Ident;

@@ -32,9 +32,7 @@
   * It calls the refresh() function.
   */
 RainbruRPG::Network::xmlPersoList::xmlPersoList(){
-  LOGI("Creation xmlPersoList");
   refresh();
-
 }
 
 /** Refresh the xml document
@@ -44,7 +42,6 @@ RainbruRPG::Network::xmlPersoList::xmlPersoList(){
   * \return \c false if the operation failed, otherwise \c true.
   */
 bool RainbruRPG::Network::xmlPersoList::refresh(){
-  LOGI("xmlPersoList refresh function called");
   bool ret;
 
   GlobalURI gu;
@@ -58,10 +55,10 @@ bool RainbruRPG::Network::xmlPersoList::refresh(){
   }
   else{
     long resp=CurlFileToXml::getServerResponse();
-    LOGW("An error occured while getting xmlPersoList");
-    LOGCATS("Server response was : ");
-    LOGCATI(resp);
-    LOGCAT();
+    GTS_MID(str);
+    sprintf(str, _("An error occured while getting xmlPersoList."
+		   "Server response was : %d"), resp);
+    LOGW(str);
     correctlyLoaded=false;
     ret=false;
   }
@@ -91,11 +88,10 @@ void RainbruRPG::Network::xmlPersoList::loadDocument(
   if (doc){
     root =doc->RootElement();
     correctlyLoaded=true;
-    LOGI("xmlPlayerList correctly loaded"); 
   }
   else{
     correctlyLoaded=false;
-    LOGW("An error occured while getting xmlPlayerList");
+    LOGW(_("An error occured while getting xmlPlayerList"));
   }
 }
 

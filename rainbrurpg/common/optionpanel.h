@@ -24,7 +24,8 @@
   * Declares a panel for the launcher's options editor
   *
   * Modifications :
-  * - 14 par 2009 : Using gettext strings
+  * - 29 apr 2009 : Added the name member to help translation
+  * - 14 mar 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
   */
@@ -55,10 +56,13 @@ namespace RainbruRPG {
       */
     class OptionPanel{
     public:
-      OptionPanel(const char*);
+      OptionPanel(const char*, const char*);
 
       void setCaption(const char*);
       const char* getCaption();
+
+      void setName(const char*);
+      const char* getName() const;
 
       void add(OptionButton*);
       tOptionButtonList* getButtonList();
@@ -71,6 +75,9 @@ namespace RainbruRPG {
     private:
       /** The caption of the panel */
       const char* m_caption;
+
+      /** The name of the panel */
+      const char* m_name;
 
       /** The list of buttons that were added to the OprionPanel */
       tOptionButtonList buttonList;

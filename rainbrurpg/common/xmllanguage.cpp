@@ -54,35 +54,32 @@ RainbruRPG::Options::xmlLanguage::xmlLanguage()
     loadLastUsed();
     loadDefault();
     loadNbMessages();
+    
+    GTS_LIT(str1);
+    sprintf(str1, _("Last used language found : '%s'"), lastUsed);
+    LOGI(str1);
 
-    LOGCATS("Last used language found : '");
-    LOGCATS(lastUsed);
-    LOGCATS("'");
-    LOGCAT();
-
-    LOGCATS("Default language found : '");
-    LOGCATS(defaultLang);
-    LOGCATS("'");
-    LOGCAT();
+    GTS_LIT(str2);
+    sprintf(str2, _("Default language found : '%s'"), defaultLang);
+    LOGI(str2);
 
     treatAllLanguages();
 
-    LOGCATS("List size : ");
-    LOGCATI(languageList->size());
-    LOGCAT();
+    GTS_TIN(str3);
+    sprintf(str3, _("Language list size is '%d'"), languageList->size());
+    LOGI(str3);
+
   }
   else{
-    LOGE("Cannot load languages.xml");
+    LOGE(_("Cannot load languages.xml"));
 
-    LOGCATS("languages.xml absolute filename : '");
-    LOGCATS(filename.c_str());
-    LOGCATS("'");
-    LOGCAT();
+    GTS_LIT(str4);
+    sprintf(str4,_("languages.xml absolute filename : '%s'"),filename.c_str());
+    LOGE(str4)
 
-    LOGCATS("TinyXml error description '");
-    LOGCATS(doc->ErrorDesc());
-    LOGCATS("'");
-    LOGCAT();
+    GTS_BIG(str5);
+    sprintf(str5,_("TinyXml error description '%s'"),doc->ErrorDesc());
+    LOGE(str5)
   }
 
 }
@@ -136,7 +133,6 @@ bool RainbruRPG::Options::xmlLanguage::refresh(){
   *
   */
 bool RainbruRPG::Options::xmlLanguage::loadDocument(){
-  LOGI("Loading language list");
   doc=new TiXmlDocument( this->filename.c_str() );
   bool ret=doc->LoadFile();
   root =doc->RootElement();
@@ -207,7 +203,7 @@ void RainbruRPG::Options::xmlLanguage::treatAllLanguages(){
 
   }
   else{
-    LOGW("Empty snapshot list");
+    LOGW(_("Empty language list found"));
   }
 
 }
@@ -223,13 +219,6 @@ void RainbruRPG::Options::xmlLanguage::treatOneLanguage(TiXmlElement* e){
   LanguageListItem lli;
   lli.setLanguageCode(getCommonCode(e));
   lli.setLanguageText(getCommonText(e));
-
-  LOGCATS("code='");
-  LOGCATS(lli.getLanguageCode());
-  LOGCATS("' text='");
-  LOGCATS(lli.getLanguageText());
-  LOGCATS("'");
-  LOGCAT();
 
   treatLanguageCountries(e, lli);
 }
@@ -248,7 +237,7 @@ treatLanguageCountries(TiXmlElement* e, const LanguageListItem& it){
 
   }
   else{
-    LOGW("Empty snapshot list");
+    LOGW(_("Empty country list found"));
   }
 }
 
@@ -274,16 +263,6 @@ treatCountry(TiXmlElement* e, const LanguageListItem& it){
   }
 
   languageList->push_back(item);
-
-  LOGI("Treating a country");
-  LOGCATS("code='");
-  LOGCATS(getCommonCode(e));
-  LOGCATS("' text='");
-  LOGCATS(getCommonText(e));
-  LOGCATS("' percent='");
-  LOGCATF(getCountryPerCent(e));
-  LOGCATS("'%");
-  LOGCAT();
 }
 
 /** Get the Code of a language or a country node

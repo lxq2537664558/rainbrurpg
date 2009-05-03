@@ -24,6 +24,7 @@
   * Declares a list of string for the launcher's options editor
   *
   * Modifications :
+  * - 30 apr 2009 : Need caption in constructor
   * - 14 apr 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
@@ -59,7 +60,7 @@ namespace RainbruRPG {
     class OptionListAttribute : public OptionAttribute{
 
     public:
-      OptionListAttribute(const char*);
+      OptionListAttribute(const char*, const char*);
       /** An empty default constructor */
       virtual ~OptionListAttribute(){};
 

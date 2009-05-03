@@ -42,27 +42,27 @@ RainbruRPG::Options::Options::Options(){
   *
   */
 void RainbruRPG::Options::Options::createAttributes(){
-  OptionPanel *opGraphics=new OptionPanel(_("Graphics"));
-  OptionButton* btn1=new OptionButton(_("Renderer"), 
-					  "DawnTime.ico");
+  OptionPanel *opGraphics=new OptionPanel("Graphics", _("Graphics"));
+  OptionButton* btn1=new OptionButton("Renderer",_("Renderer"),"DawnTime.ico");
+
       // Example IntAttribute
-      int1=new OptionIntAttribute("IntAttribute");
+  int1=new OptionIntAttribute("IntAttribute", _("Integer Attribute"));
       int1->setToolTip(_("A simple example integer value to test the "
 			 "layout disposition."));
       btn1->add(int1);
 
       // Example StringAttribute
-      st1=new OptionStringAttribute("StringAttrb");
+      st1=new OptionStringAttribute("String Attribute", _("String Attribute"));
       btn1->add(st1);
 
       // Example boolAttribute
-      boo=new OptionBoolAttribute("Fullscreen");
+      boo=new OptionBoolAttribute("Fullscreen", _("Fullscreen"));
       boo->setToolTip(_("Will the game launch in full screen or "
 			"windowed mode"));
       btn1->add(boo);
 
   // Resolution
-	lst=new OptionListAttribute("Resolution");
+      lst=new OptionListAttribute("Resolution", _("Resolution"));
 	boo->setToolTip(_("Sets the screen size for both fullscreen "
 			  "and windowed mode"));
 
@@ -89,7 +89,7 @@ void RainbruRPG::Options::Options::createAttributes(){
     opGraphics->add(btn1);
   OptionManager::getSingleton().add(opGraphics);
 
-  OptionPanel *opSounds=new OptionPanel("Sounds");
+  OptionPanel *opSounds=new OptionPanel("Sounds", _("Sounds"));
   OptionManager::getSingleton().add(opSounds);
 }
 

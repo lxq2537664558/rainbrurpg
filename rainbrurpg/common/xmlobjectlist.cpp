@@ -32,7 +32,7 @@
   *
   */
 RainbruRPG::Core::xmlObjectList::xmlObjectList(){
-  LOGI("Loading object list");
+  LOGI(_("Loading object list"));
 
   RainbruRPG::Network::GlobalURI gu;
   std::string confStr= gu.getUserDirFile("objects.xml");
@@ -47,7 +47,7 @@ RainbruRPG::Core::xmlObjectList::xmlObjectList(){
   root =doc->RootElement();
 
   treatAllObjects();
-  LOGI("Object list correctly loaded");
+  LOGI(_("Object list correctly loaded"));
 }
 
 /** The default destructor
@@ -82,17 +82,17 @@ void RainbruRPG::Core::xmlObjectList::treatAllObjects(){
       }
     }
     else{
-      LOGW("Empty object list");
+      LOGW(_("Empty object list found"));
     }
   }
   else{
-    LOGW("Can not get a valid root element");
+    LOGW(_("Can not get a valid root element for ObjectList"));
   }
 }
 
-/** Treat ne object xml node
+/** Treat one object xml node
   *
-  * \param elem The xmlobject node
+  * \param elem The xml object node
   *
   */
 void RainbruRPG::Core::xmlObjectList::treatOneObject(TiXmlElement* elem){
@@ -112,7 +112,9 @@ void RainbruRPG::Core::xmlObjectList::treatOneObject(TiXmlElement* elem){
     }
   }
   else{
-    LOGW("Empty Pos list");
+    GTS_LIT(str);
+    sprintf(str,_("Empty position list found for mesh %s"), name);
+    LOGW(str);
   }
   mesh=NULL;
 }
@@ -180,11 +182,6 @@ getObjectMeshByName(const std::string& name){
 
   std::string omName;
   bool found=false;
-
-  LOGI("getObjectMeshByName called :");
-  LOGCATS("Object name :");
-  LOGCATS(name.c_str());
-  LOGCAT();
 
   ObjectMeshList::const_iterator iter;
   for (iter=meshList->begin(); iter != meshList->end(); iter++){

@@ -449,7 +449,7 @@ addOptionAttribute(FXComposite* parent, OptionButton* button){
 void RainbruRPG::Gui::LauncherOptions::drawInteger(FXComposite* parent, 
 						   OptionAttribute* attrb){
 
-  FXLabel* lab=new FXLabel(parent, attrb->getName());
+  FXLabel* lab=new FXLabel(parent, attrb->getCaption());
   FXSpinner *spin=new FXSpinner (parent, 4, this, ID_ATTRB_WIDGET);
   spin->setUserData(attrb);
 
@@ -467,7 +467,7 @@ void RainbruRPG::Gui::LauncherOptions::drawInteger(FXComposite* parent,
   */
 void RainbruRPG::Gui::LauncherOptions::drawString(FXComposite* parent, 
 						  OptionAttribute* attrb){
-  FXLabel* lab=new FXLabel(parent, attrb->getName());
+  FXLabel* lab=new FXLabel(parent, attrb->getCaption());
   FXTextField* tf=new FXTextField (parent, 20, this, ID_ATTRB_STRING);
   tf->setUserData(attrb);
 
@@ -487,7 +487,7 @@ void RainbruRPG::Gui::LauncherOptions::drawString(FXComposite* parent,
 void RainbruRPG::Gui::LauncherOptions::drawBoolean(FXComposite*parent, 
 						   OptionAttribute*attrb){
 
-  FXLabel* lab=new FXLabel(parent, attrb->getName());
+  FXLabel* lab=new FXLabel(parent, attrb->getCaption());
   FXCheckButton* check=new FXCheckButton (parent, "", this, ID_ATTRB_WIDGET);
   check->setUserData(attrb);
 
@@ -510,7 +510,7 @@ void RainbruRPG::Gui::LauncherOptions::drawList(FXComposite*parent,
 
   OptionListAttribute* vList=(OptionListAttribute*)attrb;
 
-  new FXLabel(parent, attrb->getName());
+  new FXLabel(parent, attrb->getCaption());
 
   FXComboBox *cb=new FXComboBox( parent, 31, this, ID_ATTRB_WIDGET, 
     COMBOBOX_STATIC||LAYOUT_FIX_WIDTH|LAYOUT_RIGHT,

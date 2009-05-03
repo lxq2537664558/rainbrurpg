@@ -24,6 +24,7 @@
   * Declares a class used to store client's options
   *
   * Modifications :
+  * - 01 may 2009 : Strings are getetxt compliant
   * - 11 aug 2008 : Single file documentation
   *
   */
@@ -36,6 +37,8 @@
 #include "logger.h"
 #include "tinyxml.h"
 #include "optionmanager.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Options{

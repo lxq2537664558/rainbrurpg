@@ -24,6 +24,7 @@
   * Declares an integer option for the launcher's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Constructor need caption parameter
   * - 14 apr 2009 : Now using gettext
   * - 09 aug 2008 : Single file documentation
   *
@@ -55,7 +56,7 @@ namespace RainbruRPG {
     class OptionIntAttribute : public OptionAttribute{
 
     public:
-      OptionIntAttribute(const char*);
+      OptionIntAttribute(const char*, const char*);
       /** An empty default destructor */
       ~OptionIntAttribute(){};
 

@@ -24,6 +24,7 @@
   * Declares an attribute that will be shown in the launcher's option editor
   *
   * Modifications :
+  * - 29 apr 2009 : Added caption member for translation
   * - 04 apr 2009 : Using gettext strings
   * - 08 aug 2008 : Single file documentation
   *
@@ -59,7 +60,7 @@ namespace RainbruRPG {
       OAT_FLOAT,       /** A float attribute */
       OAT_FLOAT_RANGE, /** A range of floats */
       OAT_INT_RANGE,   /** A range of integers */
-      OAT_LIST         /**! A list of string values */
+      OAT_LIST         /** A list of string values */
     };
 
     /** An attribute that will be shown in the launcher's option dialog
@@ -69,6 +70,9 @@ namespace RainbruRPG {
       *
       * It is a pure virtual class that can not be instancied. Please
       * use a subclass.
+      *
+      * \note Attributes ar identified by their name, always in english.
+      *       The caption is the shown text, that can be translated.
       *
       * \sa OptionManager, OptionIntAttribute, OptionStringAttribute, 
       *     OptionFloatAttribute, OptionListAttribute, 
@@ -87,6 +91,9 @@ namespace RainbruRPG {
       tOptionAttributeType getType();
       const char* getName();
       const char* getToolTip();
+
+      void setCaption(const char*);
+      const char* getCaption(void) const;
 
       void setWidget(FXObject*);
       FXObject* getWidget();
@@ -128,6 +135,13 @@ namespace RainbruRPG {
 	*
 	*/
       const char* name;
+
+      /** The caption of the attribute
+        *
+	* \sa setCaption(), getCaption();
+	*
+	*/
+      const char* mCaption;
 
       /** The tooltip associated with this attribute
         *

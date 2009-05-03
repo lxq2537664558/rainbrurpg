@@ -35,8 +35,10 @@
   *
   */
 RainbruRPG::Options::OptionFloatRangeAttribute::
-OptionFloatRangeAttribute(const char* name, float min, float max)
-                                  :OptionFloatAttribute(name){
+OptionFloatRangeAttribute(const char* name,const char* caption,float min, 
+			  float max):
+  OptionFloatAttribute(name, caption)
+{
 
   this->setType(OAT_FLOAT_RANGE);
   this->setMinRange(min);
@@ -55,8 +57,10 @@ OptionFloatRangeAttribute(const char* name, float min, float max)
   *
   */
 RainbruRPG::Options::OptionFloatRangeAttribute::
-OptionFloatRangeAttribute(const char* name, float min, float max, float step)
-                                           :OptionFloatAttribute(name){
+OptionFloatRangeAttribute(const char* name, const char* caption, 
+			  float min, float max, float step):
+  OptionFloatAttribute(name, caption)
+{
 
   this->setMinRange(min);
   this->setMaxRange(max);

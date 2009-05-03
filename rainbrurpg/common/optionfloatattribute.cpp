@@ -32,9 +32,13 @@
   * \param n The name of the attribute
   *
   */
-RainbruRPG::Options::OptionFloatAttribute::OptionFloatAttribute(const char* n)
-                                            :OptionAttribute(OAT_FLOAT){
-  setName(n);
+RainbruRPG::Options::OptionFloatAttribute::
+OptionFloatAttribute(const char* vName, const char* vCaption):
+  OptionAttribute(OAT_FLOAT)
+{
+  setName(vName);
+  setCaption(vCaption);
+
   setStep(0.0f);
   value=0.0f;
 }

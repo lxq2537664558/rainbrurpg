@@ -24,6 +24,7 @@
   * Declares an option attribute storing a boolean value
   *
   * Modifications :
+  * - 30 apr 2009 : Added caption parameter to constructor
   * - 04 apr 2009 : Now using gettext
   * - 08 aug 2008 : Single file documentation
   *
@@ -57,7 +58,7 @@ namespace RainbruRPG {
     class OptionBoolAttribute : public OptionAttribute{
 
     public:
-      OptionBoolAttribute(const char*);
+      OptionBoolAttribute(const char*, const char*);
       /** An empty default constructor 
         *
         */

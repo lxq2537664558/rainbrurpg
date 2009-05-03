@@ -31,7 +31,6 @@
   *
   */
 RainbruRPG::Network::Ident::xmlBonusFile::xmlBonusFile(std::string fn){
-  LOGI("Creates xmlBonusFile");
   this->filename=fn;
   refresh();
 }
@@ -44,7 +43,6 @@ RainbruRPG::Network::Ident::xmlBonusFile::xmlBonusFile(std::string fn){
   *
   */
 bool RainbruRPG::Network::Ident::xmlBonusFile::refresh(){
-  LOGI("xmlBonusFile refresh function called");
   bool ret;
 
   GlobalURI gu;
@@ -63,10 +61,10 @@ bool RainbruRPG::Network::Ident::xmlBonusFile::refresh(){
   }
   else{
     long resp=CurlFileToXml::getServerResponse();
-    LOGE("An error occured while getting xmlBonusFile");
-    LOGCATS("Server response was : ");
-    LOGCATI(resp);
-    LOGCAT();
+    GTS_LIT(str);
+    sprintf(str, _("An error occured while getting xmlBonusFile. "
+		   "Server response was : %d"), resp);
+    LOGE(str);
     correctlyLoaded=false;
     ret=false;
   }
@@ -98,12 +96,11 @@ bool RainbruRPG::Network::Ident::xmlBonusFile::loadDocument(
   if (doc){
     root =doc->RootElement();
     correctlyLoaded=true;
-    LOGI("xmlBonusFile correctly loaded"); 
     return true;
   }
   else{
     correctlyLoaded=false;
-    LOGW("An error occured while getting xmlBonusFile");
+    LOGW(_("An error occured while getting xmlBonusFile"));
     return false;
   }
 }

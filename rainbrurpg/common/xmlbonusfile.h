@@ -24,9 +24,11 @@
   * Declares a BonusFile choice
   *
   * Modifications :
+  * - 28 apr 2009 : Strings gettextized
   * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
   * - 11 aug 2008 : Single file documentation
   * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
+  *
   */
 
 #ifndef XML_BONUS_FILE_H
@@ -45,6 +47,8 @@
 #include "logger.h"
 #include "curlfiletoxml.h"
 #include "globaluri.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

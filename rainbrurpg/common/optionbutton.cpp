@@ -33,11 +33,16 @@
   * It will create a button without icon if you do not call
   * setIconFileName() later. It initialize foxPanelId to -1.
   *
-  * \param caption The caption (the shown text) of the button
+  * \param vName The name (identifier) of the button
+  * \param vCaption The caption (the shown text) of the button
+  *
   */
-RainbruRPG::Options::OptionButton::OptionButton(const char* caption){
+RainbruRPG::Options::OptionButton::
+OptionButton(const char* vName, const char* vCaption):
+  m_name(vName)  
+{
   LOGW(_("Creating an OptionButton without an Icon"));
-  this->setCaption(caption);
+  this->setCaption(vCaption);
   foxPanelId=-1;
 }
 
@@ -47,9 +52,9 @@ RainbruRPG::Options::OptionButton::OptionButton(const char* caption){
   * \param filename The filename of the icon
   *
   */
-RainbruRPG::Options::OptionButton::OptionButton(const char* caption, 
-						const char* filename){
-
+RainbruRPG::Options::OptionButton::
+OptionButton(const char* vName, const char* caption, const char* filename){
+  this->setName(vName);
   this->setCaption(caption);
   this->setIconFilename(filename);
 }
@@ -161,4 +166,12 @@ void RainbruRPG::Options::OptionButton::update(){
   for (iter=attrbList.begin(); iter != attrbList.end(); iter++){
     (*iter)->update();
   }
+}
+
+void RainbruRPG::Options::OptionButton::setName(const char* vName){
+  this->m_name = vName;
+}
+
+const char* RainbruRPG::Options::OptionButton::getName(void) const{
+  return this->m_name;
 }

@@ -32,11 +32,13 @@
   * \param n The name of the option attribute
   *
   */
-RainbruRPG::Options::OptionListAttribute::OptionListAttribute(const char* n)
+RainbruRPG::Options::OptionListAttribute::
+OptionListAttribute(const char* vName, const char* vCaption)
                                      :OptionAttribute( OAT_LIST )
 {
   hasDefaultValue=false;
-  setName(n);
+  setName(vName);
+  setCaption(vCaption);
   value="";
 }
 

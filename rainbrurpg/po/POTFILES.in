@@ -59,3 +59,10 @@ common/tinyxmlerror.cpp
 common/version.cpp
 common/xmlaccountlist.cpp
 common/xmlattrbcatlist.cpp
+common/xmlattributelist.cpp
+common/xmlbonusfile.cpp
+common/xmlbonusfilelist.cpp
+common/xmllanguage.cpp
+common/xmlobjectlist.cpp
+common/xmloptions.cpp
+common/xmlpersolist.cpp

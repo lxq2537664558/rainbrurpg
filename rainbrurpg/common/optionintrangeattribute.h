@@ -24,6 +24,7 @@
   * Declares a range of integer for the launcher's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Constructor need caption parameter
   * - 14 apr 2009 : Using gettext compliant strings
   * - 09 aug 2008 : Single file documentation
   *
@@ -55,8 +56,8 @@ namespace RainbruRPG {
     class OptionIntRangeAttribute : public OptionIntAttribute{
 
     public:
-      OptionIntRangeAttribute(const char*, int, int);
-      OptionIntRangeAttribute(const char*, int, int, unsigned int);
+      OptionIntRangeAttribute(const char*,const char*, int, int);
+      OptionIntRangeAttribute(const char*,const char*, int, int, unsigned int);
 
       /** An empty default destructor */
       ~OptionIntRangeAttribute(){};

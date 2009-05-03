@@ -24,6 +24,7 @@
   * Header file of the client's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Using attributes's caption instead of name for drawing
   * - 15 dec 2008 : Using ui_ptr in onAttributeChange to avoid a
   *                 'loses precision' compilation error.
   * - 26 jul 2008 : Doxygen documentation

@@ -1,3 +1,39 @@
+2009-05-10 Jerome Pasquier  <rainbru@free.fr>
+	* common/optionlistattribute.cpp : Added caption to the 
+	constructor.
+	* common/optionboolattribute.cpp : Added caption to the 
+	constructor.
+	* common/optionstringattribute.cpp : Added caption to the 
+	constructor.
+
+2009-05-29 Jerome Pasquier  <rainbru@free.fr>
+	* common/optionintrangeattribute.cpp : Added caption to the 
+	constructor.
+	* common/optionintattribute.cpp : Added caption to the constructor.
+	* common/optionfloatrangeattribute.cpp : Added caption to the 
+	constructor.
+	* common/optionfloatattribute.cpp : Added caption to the constructor.
+
+	* common/xmloptions.cpp : Now uses panel and button name instead
+	of caption.
+
+	* client/launcheroptions.cpp : Now uses attributes caption for
+	drawing.
+	
+	* common/optionpanel.h : Added the name member to
+	separate name (identifier) ans caption (translated).
+
+	* common/optionbutton.h : Added the name member to
+	separate name (identifier) ans caption (translated).
+
+	* common/optionattribute.h : Added the caption member to
+	separate name (identifier) ans caption (translated).
+	
+2009-05-28 Jerome Pasquier  <rainbru@free.fr>
+	* server/mainwndoc.cpp (quarantineNotifier) : Fix a segfault
+	that occurs on the server's startup due to a devalidation of the 
+	quarantDir startup.
+	
 2009-05-18 Jerome Pasquier  <rainbru@free.fr>
 	* common/optionmanager.cpp : Uses GTS_* macros.
 	* common/optionlistattribute.cpp : Uses GTS_* macros.

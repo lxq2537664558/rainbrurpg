@@ -24,6 +24,7 @@
   * Declares a float attribute for the launcher's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Added caption in constructor
   * - 04 apr 2009 : Now using gettext
   * - 09 aug 2008 : Single file documentation
   *
@@ -55,7 +56,7 @@ namespace RainbruRPG {
     class OptionFloatAttribute : public OptionAttribute{
 
     public:
-      OptionFloatAttribute(const char*);
+      OptionFloatAttribute(const char*, const char*);
       /** An empty default constructor */
       ~OptionFloatAttribute(){};
 

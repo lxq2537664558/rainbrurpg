@@ -24,6 +24,7 @@
   * Declares a button for the launcher's options editor
   *
   * Modifications :
+  * - 29 apr 2009 : Added name and modified constructors
   * - 04 apr 2009 : Using gettext
   * - 08 aug 2008 : Single file documentation
   *
@@ -57,14 +58,17 @@ namespace RainbruRPG {
       */
     class OptionButton{
     public:
-      OptionButton(const char*);
       OptionButton(const char*, const char*);
+      OptionButton(const char*, const char*, const char*);
 
       void setCaption(const char*);
       void setIconFilename(const char*);
 
       const char* getCaption();
       const char* getIconFilename();
+
+      void setName(const char*);
+      const char* getName(void) const;
 
       void setFoxPanelId(int);
       int getFoxPanelId();
@@ -75,7 +79,10 @@ namespace RainbruRPG {
       tOptionAttributeList* getAttributeList();
 
     private:
-      /** The caption of the panel */
+      /** The name of the button (its identifier) */
+      const char* m_name;
+
+      /** The caption of the button (can be translated) */
       const char* m_caption;
 
       /** The filename of the icon of the panel */

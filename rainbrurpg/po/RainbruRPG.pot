@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-04-25 23:47+0200\n"
+"POT-Creation-Date: 2009-05-02 15:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1039,60 +1039,60 @@ msgstr ""
 msgid "Setting an empty name to an OptionAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:43
+#: common/optionboolattribute.cpp:45
 msgid "Constructing a bool OptionAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:86 common/optionintattribute.cpp:121
+#: common/optionboolattribute.cpp:89 common/optionintattribute.cpp:123
 msgid "Updating an OptionIntAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:90
+#: common/optionboolattribute.cpp:93
 msgid "Cannot get a valid FXCheckButton"
 msgstr ""
 
-#: common/optionboolattribute.cpp:94 common/optionfloatattribute.cpp:126
-#: common/optionfloatrangeattribute.cpp:178
+#: common/optionboolattribute.cpp:97 common/optionfloatattribute.cpp:130
+#: common/optionfloatrangeattribute.cpp:182
 msgid "Cannot update optionattribute : widget=NULL"
 msgstr ""
 
-#: common/optionbutton.cpp:39
+#: common/optionbutton.cpp:44
 msgid "Creating an OptionButton without an Icon"
 msgstr ""
 
-#: common/optionbutton.cpp:67
+#: common/optionbutton.cpp:72
 msgid "Creating an OptionButton with empty caption"
 msgstr ""
 
-#: common/optionbutton.cpp:81
+#: common/optionbutton.cpp:86
 msgid "Creating an OptionButton with empty icon filename"
 msgstr ""
 
-#: common/optionfloatattribute.cpp:113 common/optionintattribute.cpp:109
+#: common/optionfloatattribute.cpp:117 common/optionintattribute.cpp:111
 msgid "Calling increase or decrease with a step set to 0"
 msgstr ""
 
-#: common/optionfloatattribute.cpp:123
-#: common/optionfloatrangeattribute.cpp:175
+#: common/optionfloatattribute.cpp:127
+#: common/optionfloatrangeattribute.cpp:179
 msgid "Update not yet implemented"
 msgstr ""
 
 #. TRANSLATORS: The parameters are : The attribute name, the attribute
 #. value (as a float) and the min and max ranges in floats.
-#: common/optionfloatrangeattribute.cpp:127
+#: common/optionfloatrangeattribute.cpp:131
 #, c-format
 msgid "Value out of range for attribute '%s'. Value %f (range %f to %f)"
 msgstr ""
 
-#: common/optionintattribute.cpp:37
+#: common/optionintattribute.cpp:38
 msgid "Constructing an integer OptionAttribute"
 msgstr ""
 
-#: common/optionintattribute.cpp:125
+#: common/optionintattribute.cpp:127
 msgid "Cannot get a valid FXSpinner"
 msgstr ""
 
-#: common/optionintattribute.cpp:129
+#: common/optionintattribute.cpp:131
 msgid "Cannot update OptionIntAttribute : widget=NULL"
 msgstr ""
 
@@ -1101,37 +1101,37 @@ msgstr ""
 #. The first parameter is the name of the atribute. The second
 #. parameter is the value the user attempt to set. The two last
 #. parameters are the min and max range of this attribute.
-#: common/optionintrangeattribute.cpp:131
+#: common/optionintrangeattribute.cpp:134
 #, c-format
 msgid ""
 "Value out of range for attribute %s (value = %d, Accepted range : %d to %d"
 msgstr ""
 
-#: common/optionintrangeattribute.cpp:180
+#: common/optionintrangeattribute.cpp:183
 msgid "Update not yet implemented for IntRangeAttribute"
 msgstr ""
 
 #. TRANSLATORS: This message is used when trying to select a
 #. value that does not exist in the list. The parameter is the
 #. value we are trying to set.
-#: common/optionlistattribute.cpp:60
+#: common/optionlistattribute.cpp:62
 #, c-format
 msgid "The requested value (%s) does not exist in the list"
 msgstr ""
 
-#: common/optionlistattribute.cpp:95
+#: common/optionlistattribute.cpp:97
 msgid "Inserting an existing value to an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:99
+#: common/optionlistattribute.cpp:101
 msgid "Inserting an empty string to an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:153
+#: common/optionlistattribute.cpp:155
 msgid "Updating an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:158
+#: common/optionlistattribute.cpp:160
 msgid "Cannot get a valid FXCheckButton to update an OptionListAttribute"
 msgstr ""
 
@@ -1151,11 +1151,11 @@ msgstr ""
 msgid "Loading options snapshots named '%s'"
 msgstr ""
 
-#: common/optionpanel.cpp:48
+#: common/optionpanel.cpp:50
 msgid "You are setting an empty caption on a OptionPanel"
 msgstr ""
 
-#: common/optionpanel.cpp:71
+#: common/optionpanel.cpp:73
 msgid "You are adding a NULL OptionButton pointer"
 msgstr ""
 
@@ -1167,27 +1167,47 @@ msgstr ""
 msgid "Renderer"
 msgstr ""
 
+#: common/options.cpp:49
+msgid "Integer Attribute"
+msgstr ""
+
 #: common/options.cpp:50
 msgid "A simple example integer value to test the layout disposition."
+msgstr ""
+
+#: common/options.cpp:55
+msgid "String Attribute"
+msgstr ""
+
+#: common/options.cpp:59
+msgid "Fullscreen"
 msgstr ""
 
 #: common/options.cpp:60
 msgid "Will the game launch in full screen or windowed mode"
 msgstr ""
 
+#: common/options.cpp:65
+msgid "Resolution"
+msgstr ""
+
 #: common/options.cpp:66
 msgid "Sets the screen size for both fullscreen and windowed mode"
 msgstr ""
 
-#: common/optionstringattribute.cpp:38
+#: common/options.cpp:92
+msgid "Sounds"
+msgstr ""
+
+#: common/optionstringattribute.cpp:40
 msgid "Constructing an OptionStringAttribute"
 msgstr ""
 
-#: common/optionstringattribute.cpp:75
+#: common/optionstringattribute.cpp:78
 msgid "Updating an OptionStringAttribute"
 msgstr ""
 
-#: common/optionstringattribute.cpp:79
+#: common/optionstringattribute.cpp:82
 msgid "Cannot get a valid FXTextField to update an OptionStringAttribute"
 msgstr ""
 
@@ -1316,4 +1336,121 @@ msgstr ""
 
 #: common/xmlattrbcatlist.cpp:99
 msgid "An error occured while getting xmlAttrbCatList"
+msgstr ""
+
+#: common/xmlattributelist.cpp:65
+#, c-format
+msgid ""
+"An error occured while getting xmlAttrbibuteList. Server response was : %d"
+msgstr ""
+
+#: common/xmlattributelist.cpp:107
+msgid "An error occured while getting xmlAttributeList"
+msgstr ""
+
+#: common/xmlbonusfile.cpp:65
+#, c-format
+msgid "An error occured while getting xmlBonusFile. Server response was : %d"
+msgstr ""
+
+#: common/xmlbonusfile.cpp:103
+msgid "An error occured while getting xmlBonusFile"
+msgstr ""
+
+#: common/xmlbonusfilelist.cpp:64
+#, c-format
+msgid ""
+"An error occured while getting xmlBonusFileList. Server response was : %d"
+msgstr ""
+
+#: common/xmlbonusfilelist.cpp:106
+msgid "An error occured while getting xmlBonusFileList"
+msgstr ""
+
+#: common/xmlbonusfilelist.cpp:140
+msgid "Cannot get BonusFile list, document not loaded"
+msgstr ""
+
+#: common/xmllanguage.cpp:59
+#, c-format
+msgid "Last used language found : '%s'"
+msgstr ""
+
+#: common/xmllanguage.cpp:63
+#, c-format
+msgid "Default language found : '%s'"
+msgstr ""
+
+#: common/xmllanguage.cpp:69
+#, c-format
+msgid "Language list size is '%d'"
+msgstr ""
+
+#: common/xmllanguage.cpp:74
+msgid "Cannot load languages.xml"
+msgstr ""
+
+#: common/xmllanguage.cpp:77
+#, c-format
+msgid "languages.xml absolute filename : '%s'"
+msgstr ""
+
+#: common/xmllanguage.cpp:81
+#, c-format
+msgid "TinyXml error description '%s'"
+msgstr ""
+
+#: common/xmllanguage.cpp:206
+msgid "Empty language list found"
+msgstr ""
+
+#: common/xmllanguage.cpp:240
+msgid "Empty country list found"
+msgstr ""
+
+#: common/xmlobjectlist.cpp:35
+msgid "Loading object list"
+msgstr ""
+
+#: common/xmlobjectlist.cpp:50
+msgid "Object list correctly loaded"
+msgstr ""
+
+#: common/xmlobjectlist.cpp:85
+msgid "Empty object list found"
+msgstr ""
+
+#: common/xmlobjectlist.cpp:89
+msgid "Can not get a valid root element for ObjectList"
+msgstr ""
+
+#: common/xmlobjectlist.cpp:116
+#, c-format
+msgid "Empty position list found for mesh %s"
+msgstr ""
+
+#: common/xmloptions.cpp:70
+#, c-format
+msgid "Cannot load the XML options from file %s"
+msgstr ""
+
+#: common/xmloptions.cpp:160
+msgid "An error occured while saving panel to XML option file."
+msgstr ""
+
+#: common/xmloptions.cpp:232
+msgid "Empty snapshot list found in XML options file."
+msgstr ""
+
+#: common/xmloptions.cpp:237
+msgid "Cannot get a valid root element for XML options snapshot list."
+msgstr ""
+
+#: common/xmlpersolist.cpp:59
+#, c-format
+msgid "An error occured while getting xmlPersoList.Server response was : %d"
+msgstr ""
+
+#: common/xmlpersolist.cpp:94
+msgid "An error occured while getting xmlPlayerList"
 msgstr ""

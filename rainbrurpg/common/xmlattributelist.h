@@ -24,6 +24,7 @@
   * Declares a class used to read the XML file of the attribute list
   *
   * Modifications :
+  * - 28 apr 2009 : Using gettext compliant string
   * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
   * - 11 aug 2008 : Single file documentation
   * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
@@ -47,6 +48,8 @@
 #include "curlfiletoxml.h"
 #include "globaluri.h"
 #include "attributemodifierlist.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

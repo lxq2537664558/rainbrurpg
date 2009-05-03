@@ -1,3 +1,16 @@
+2009-05-01  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/xmlpersolist.cpp
+
+2009-05-01  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/xmlobjectlist.cpp, xmloptions.cpp
+
+2009-04-29  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/xmllanguage.cpp
+
+2009-04-28  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/xmlattributelist.cpp, xmlbonusfile.cpp,
+	xmlbonusfilelist.cpp
+	
 2009-04-24  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added common/version.cpp, xmlaccountlist.cpp,
 	xmlattrbcatlist.cpp

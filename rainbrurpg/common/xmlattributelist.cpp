@@ -31,7 +31,6 @@
   *
   */
 RainbruRPG::Network::Ident::xmlAttributeList::xmlAttributeList(){
-  LOGI("Creates xmlAttributeList");
   refresh();
 }
 
@@ -42,7 +41,6 @@ RainbruRPG::Network::Ident::xmlAttributeList::xmlAttributeList(){
   *
   */
 bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
-  LOGI("xmlAttrbibuteList refresh function called");
   bool ret;
 
   GlobalURI gu;
@@ -63,10 +61,10 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
   }
   else{
     long resp=CurlFileToXml::getServerResponse();
-    LOGE("An error occured while getting xmlAttrbibuteList");
-    LOGCATS("Server response was : ");
-    LOGCATI(resp);
-    LOGCAT();
+    GTS_LIT(str);
+    sprintf(str, _("An error occured while getting xmlAttrbibuteList. "
+		   "Server response was : %d"), resp);
+    LOGE(str)
     correctlyLoaded=false;
     ret=false;
   }
@@ -102,12 +100,11 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::loadDocument(
   if (doc){
     root =doc->RootElement();
     correctlyLoaded=true;
-    LOGI("xmlAttributeList correctly loaded"); 
     return true;
   }
   else{
     correctlyLoaded=false;
-    LOGW("An error occured while getting xmlAttributeList");
+    LOGW(_("An error occured while getting xmlAttributeList"));
     return false;
   }
 }
