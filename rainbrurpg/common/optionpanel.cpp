@@ -30,7 +30,13 @@
 
 /** A constructor setting the caption
   *
-  * \param caption The caption of the panel
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
+  * \param vName    The name of the attribute
+  * \param vCaption The caption of the attribute
   *
   */
 RainbruRPG::Options::OptionPanel::
@@ -123,10 +129,7 @@ RainbruRPG::Options::OptionPanel::getButtonByName(const char* n){
       ret=(*iter);
 
   }
-
   return ret;
-
-
 }
 
 /** Graphically update the attributes content
@@ -146,10 +149,26 @@ void RainbruRPG::Options::OptionPanel::update(){
   }
 }
 
+/** Set the name of this panel
+  *
+  * The name must be in english and will never be translated. If
+  * you wanted the drawn name, please see caption.
+  *
+  * \param vName The new name
+  *
+  */
 void RainbruRPG::Options::OptionPanel::setName(const char* vName){
   this->m_name = vName;
 }
 
+/** Get the name of this panel
+  *
+  * The name should be in english and will never be translated. If
+  * you wanted the drawn name, please see caption.
+  *
+  * \return The actual name
+  *
+  */
 const char* RainbruRPG::Options::OptionPanel::getName() const{
   return this->m_name;
 }

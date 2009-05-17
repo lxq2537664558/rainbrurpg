@@ -29,7 +29,14 @@
 
 /** A named integer attribute constructor
   *
-  * \param n The name of the attribute
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
+  * \param vName     The name of the option attribute
+  * \param vCaption The caption of the attribute
+  *
   */
 RainbruRPG::Options::OptionIntAttribute::
 OptionIntAttribute(const char* vName, const char* vCaption):
@@ -48,6 +55,7 @@ OptionIntAttribute(const char* vName, const char* vCaption):
   * \param c The new value
   *
   * \return always return \c true
+  *
   */
 bool RainbruRPG::Options::OptionIntAttribute::setValueStr(const char* c){
   this->value =StringConv::getSingleton().stoi(c);

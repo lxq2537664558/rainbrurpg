@@ -29,12 +29,18 @@
 
 /** The base constructor
   *
-  * It constructs an option beetween the min and the max range with a
-  * step of 1. The initial value is set to 0.
+  * It constructs an option acceptiong values beetween the min and 
+  * the max range with a step of 1. The initial value is set to 0.
   *
-  * \param name The name of the option attribute
-  * \param min The min range
-  * \param max the max range
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
+  * \param name     The name of the option attribute
+  * \param vCaption The caption of the attribute
+  * \param min      The min range
+  * \param max      The max range
   *
   */
 RainbruRPG::Options::OptionIntRangeAttribute::
@@ -53,10 +59,11 @@ OptionIntRangeAttribute(const char* name,const char* vCaption,
   * It constructs an option beetween the min and the max range with a
   * defined step.The initial value is set to 0.
   *
-  * \param name The name of the option attribute
-  * \param min The min range
-  * \param max the max range
-  * \param step The step of the attribute
+  * \param name    The name of the option attribute
+  * \param caption The caption of the attribute
+  * \param min     The min range
+  * \param max     The max range
+  * \param step    The step of the attribute
   */
 RainbruRPG::Options::OptionIntRangeAttribute::
 OptionIntRangeAttribute(const char* name, const char* caption,

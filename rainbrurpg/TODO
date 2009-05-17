@@ -1,4 +1,3 @@
-
 RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
 
 o [Carine] cross-compilation to win32
@@ -127,7 +126,14 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-193 (24 apr 2009 - ???)
-- (12) common/xmlpersolist.cpp gettextized
+   glthread_* maybe in intl.m4
+- (15) Fix some documentation warnings
+   optionbutton, boolattribute
+- Fix some documentation warnings
+   optionlistattribute, intrangeattribute, intattribute, floatrangeattribute
+- Fix some documentation warnings
+   optionstringattribute, optionpanel, optionfloatattribute
+- common/xmlpersolist.cpp gettextized
 - common/xmllanguage.cpp gettextized
    Also xmloptions
 - Added caption parameter to options attributes :

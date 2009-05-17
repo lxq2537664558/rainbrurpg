@@ -48,6 +48,7 @@ OptionButton(const char* vName, const char* vCaption):
 
 /** A constructor that initialize m_caption and m_iconFilename
   *
+  * \param vName The name (identifier) of the button
   * \param caption The caption (the shown text) of the button
   * \param filename The filename of the icon
   *
@@ -168,10 +169,20 @@ void RainbruRPG::Options::OptionButton::update(){
   }
 }
 
+/** Change the name of thi button
+  *
+  * \param vName The name (identifier) of the button
+  *
+  */
 void RainbruRPG::Options::OptionButton::setName(const char* vName){
   this->m_name = vName;
 }
 
+/** Get the name of the button
+  *
+  * \return The current name of the button
+  *
+  */
 const char* RainbruRPG::Options::OptionButton::getName(void) const{
   return this->m_name;
 }

@@ -32,9 +32,15 @@
   * It sets the type of the attribuet at OAT_BOOLEAN, call setName() and
   * sets value to \c true.
   *
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
   * \sa OptionAttribute, setName(), value
   *
-  * \param n The setName() param.
+  * \param vName     The name of the option attribute
+  * \param vCaption The caption of the attribute
   *
   */
 RainbruRPG::Options::OptionBoolAttribute::

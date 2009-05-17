@@ -29,9 +29,15 @@
 
 /** The constructor
   *
-  * \param name The name of this option attribute
-  * \param min The minimal range
-  * \param max The maximal range
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
+  * \param name    The name of the option attribute
+  * \param caption The caption of the attribute
+  * \param min     The minimal range
+  * \param max     The maximal range
   *
   */
 RainbruRPG::Options::OptionFloatRangeAttribute::
@@ -50,10 +56,16 @@ OptionFloatRangeAttribute(const char* name,const char* caption,float min,
 
 /** The constructor
   *
-  * \param name The name of this option attribute
-  * \param min The minimal range
-  * \param max The maximal range
-  * \param step The incremental step
+  * The name of the attribute should always be used to work with
+  * an attribute in a program, it is always in english language.
+  * The caption can be translated and may change with the user's
+  * environment setup.
+  *
+  * \param name    The name of the option attribute
+  * \param caption The caption of the attribute
+  * \param min     The minimal range
+  * \param max     The maximal range
+  * \param step    The incremental step
   *
   */
 RainbruRPG::Options::OptionFloatRangeAttribute::
