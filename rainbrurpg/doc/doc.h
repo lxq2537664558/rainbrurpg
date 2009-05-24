@@ -1330,3 +1330,144 @@
   *
   */
 #endif // BUILD_SERVER
+
+// DEFINED BY INTL IN config.h
+#ifdef glthread_once_singlethreaded
+/** \def glthread_once_singlethreaded
+  * Defined to \c libintl_once_singlethreaded by libintl autoconf functions.
+  *
+  */
+#endif // glthread_once_singlethreaded
+
+#ifdef glthread_once_call
+/** \def glthread_once_call
+  * Defined to \c libintl_once_call by libintl autoconf functions.
+  *
+  */
+#endif // glthread_once_call
+
+#ifdef glthread_once
+/** \def glthread_once
+  * Defined to \c libintl_once by libintl autoconf functions.
+  *
+  */
+#endif // glthread_once
+
+#ifdef glthread_recursive_lock_destroy
+/** \def glthread_recursive_lock_destroy
+  * Defined to \c libintl_recursive_lock_destroy by libintl autoconf functions.
+  *
+  */
+#endif // glthread_recursive_lock_destroy
+
+#ifdef glthread_recursive_lock_unlock
+/** \def glthread_recursive_lock_unlock
+  * Defined to \c libintl_recursive_lock_unlock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_recursive_lock_unlock
+
+#ifdef glthread_recursive_lock_lock
+/** \def glthread_recursive_lock_lock
+  * Defined to \c libintl_recursive_lock_lock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_recursive_lock_lock
+
+#ifdef glthread_recursive_lock_init
+/** \def glthread_recursive_lock_init
+  * Defined to \c libintl_recursive_lock_init by libintl autoconf functions.
+  *
+  */
+#endif // glthread_recursive_lock_init
+
+#ifdef glthread_rwlock_destroy
+/** \def glthread_rwlock_destroy
+  * Defined to \c libintl_rwlock_destroy by libintl autoconf functions.
+  *
+  */
+#endif // glthread_rwlock_destroy
+
+#ifdef glthread_rwlock_unlock
+/** \def glthread_rwlock_unlock
+  * Defined to \c libintl_rwlock_unlock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_rwlock_unlock
+
+#ifdef glthread_rwlock_wrlock
+/** \def glthread_rwlock_wrlock
+  * Defined to \c libintl_rwlock_wrlock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_rwlock_wrlock
+
+#ifdef glthread_rwlock_rdlock
+/** \def glthread_rwlock_rdlock
+  * Defined to \c libintl_rwlock_rdlock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_rwlock_rdlock
+
+#ifdef glthread_rwlock_init
+/** \def glthread_rwlock_init
+  * Defined to \c libintl_rwlock_init by libintl autoconf functions.
+  *
+  */
+#endif // glthread_rwlock_init
+
+#ifdef glthread_lock_destroy
+/** \def glthread_lock_destroy
+  * Defined to \c libintl_lock_destroy by libintl autoconf functions.
+  *
+  */
+#endif // glthread_lock_destroy
+
+#ifdef glthread_lock_unlock
+/** \def glthread_lock_unlock
+  * Defined to \c libintl_lock_unlock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_lock_unlock
+
+#ifdef glthread_lock_lock
+/** \def glthread_lock_lock
+  * Defined to \c libintl_lock_lock by libintl autoconf functions.
+  *
+  */
+#endif // glthread_lock_lock
+
+#ifdef glthread_lock_init
+/** \def glthread_lock_init
+  * Defined to \c libintl_lock_init by libintl autoconf functions.
+  *
+  */
+#endif // glthread_lock_init
+
+#ifdef glthread_in_use
+/** \def glthread_in_use
+  * Defined to \c libintl_thread_in_use by libintl autoconf functions.
+  *
+  */
+#endif // glthread_in_use
+
+#ifdef __libc_lock_unlock_recursive
+/** \def __libc_lock_unlock_recursive
+  * Defined to \c gl_recursive_lock_unlock by libintl autoconf functions.
+  *
+  */
+#endif // __libc_lock_unlock_recursive
+
+#ifdef __libc_lock_lock_recursive
+/** \def __libc_lock_lock_recursive
+  * Defined to \c gl_recursive_lock_lock by libintl autoconf functions.
+  *
+  */
+#endif // __libc_lock_lock_recursive
+
+#ifdef __libc_lock_init_recursive
+/** \def __libc_lock_init_recursive
+  * Defined to \c gl_recursive_lock_init by libintl autoconf functions.
+  *
+  */
+#endif // __libc_lock_init_recursive

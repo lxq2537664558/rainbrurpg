@@ -127,7 +127,14 @@ A system that serialize widgets position and configuration
 
 * v 0.0.5-193 (24 apr 2009 - ???)
    glthread_* maybe in intl.m4
-- (15) Fix some documentation warnings
+- (18) Fix some __lic_lock_* defines doc warning
+   unlock_recursive, lock_r, init_r
+- Fix some glthread_* defines doc warning
+   rwlock_destroy, unlock, wrlock, rdlock, init, lock_destroy, unlock, 
+   lock, init, in_use
+- Fix some glthread_* defines doc warning
+   singlethreaded,once_call,once,recursive_lock_*
+- Fix some documentation warnings
    optionbutton, boolattribute
 - Fix some documentation warnings
    optionlistattribute, intrangeattribute, intattribute, floatrangeattribute
