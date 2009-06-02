@@ -125,9 +125,10 @@ A system that serialize widgets position and configuration
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
-* v 0.0.5-193 (24 apr 2009 - ???)
-   glthread_* maybe in intl.m4
-- (18) Fix some __lic_lock_* defines doc warning
+* v 0.0.5-194 (02 jun 2009 - ???)
+
+* v 0.0.5-193 (24 apr 2009 - 02 jun 2009)
+- Fix some __lic_lock_* defines doc warning
    unlock_recursive, lock_r, init_r
 - Fix some glthread_* defines doc warning
    rwlock_destroy, unlock, wrlock, rdlock, init, lock_destroy, unlock, 
