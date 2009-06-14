@@ -126,7 +126,12 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-194 (02 jun 2009 - ???)
-
+- (3) Others defines doc warnings in config.h
+   _TANDEM_SOURCE, _POSIX_PTHREAD_SEMANTICS, _POSIX_PTHREAD_SEMANTICS
+- Fix__libc_lock_* defines doc warnings 
+   init, define, define_initialized, lock_t 
+- Fix__libc_lock_* defines doc warnings 
+   initialized_recursive, recursive, recursive_t, unlock, lock
 * v 0.0.5-193 (24 apr 2009 - 02 jun 2009)
 - Fix some __lic_lock_* defines doc warning
    unlock_recursive, lock_r, init_r

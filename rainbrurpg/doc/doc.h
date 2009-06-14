@@ -1471,3 +1471,98 @@
   *
   */
 #endif // __libc_lock_init_recursive
+
+#ifdef __libc_lock_define_initialized_recursive
+/** \def __libc_lock_define_initialized_recursive
+  * Defined to \c gl_recursive_lock_define_initialized by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_define_initialized_recursive
+
+#ifdef __libc_lock_define_recursive
+/** \def __libc_lock_define_recursive
+  * Defined to \c gl_recursive_lock_define by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_define_recursive
+
+#ifdef __libc_lock_recursive_t
+/** \def __libc_lock_recursive_t
+  * Defined to \c gl_recursive_lock_t by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_recursive_t
+
+#ifdef __libc_lock_unlock
+/** \def __libc_lock_unlock
+  * Defined to \c gl_lock_unlock by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_unlock
+
+#ifdef __libc_lock_lock
+/** \def __libc_lock_lock
+  * Defined to \c gl_lock_lock by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_lock
+
+#ifdef __libc_lock_init
+/** \def __libc_lock_init
+  * Defined to \c gl_lock_init by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_init
+
+#ifdef __libc_lock_define_initialized
+/** \def __libc_lock_define_initialized
+  * Defined to \c gl_lock_define_initialized by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_define_initialized
+
+#ifdef __libc_lock_define
+/** \def __libc_lock_define
+  * Defined to \c gl_lock_define by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_define
+
+#ifdef __libc_lock_t
+/** \def __libc_lock_t
+  * Defined to \c gl_lock_t by libintl autoconf 
+  * functions.
+  *
+  */
+#endif // __libc_lock_t
+
+#ifdef _TANDEM_SOURCE
+/** \def _TANDEM_SOURCE
+  * Defined to 1 to enableextensions on Solaris.
+  *
+  */
+#endif // _TANDEM_SOURCE
+
+#ifdef _POSIX_PTHREAD_SEMANTICS
+/** \def _POSIX_PTHREAD_SEMANTICS
+  * Defined to 1 to enableextensions on Solaris.
+  *
+  */
+#endif // _POSIX_PTHREAD_SEMANTICS
+
+#ifdef __EXTENSIONS__
+/** \def __EXTENSIONS__
+  * Defined to 1 to enableextensions on Solaris.
+  *
+  */
+#endif // __EXTENSIONS__
+
+
