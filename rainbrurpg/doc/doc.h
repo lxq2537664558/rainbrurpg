@@ -1546,23 +1546,42 @@
 
 #ifdef _TANDEM_SOURCE
 /** \def _TANDEM_SOURCE
-  * Defined to 1 to enableextensions on Solaris.
+  * Defined to 1 to enable extensions on Solaris.
   *
   */
 #endif // _TANDEM_SOURCE
 
 #ifdef _POSIX_PTHREAD_SEMANTICS
 /** \def _POSIX_PTHREAD_SEMANTICS
-  * Defined to 1 to enableextensions on Solaris.
+  * Defined to 1 to enable extensions on Solaris.
   *
   */
 #endif // _POSIX_PTHREAD_SEMANTICS
 
 #ifdef __EXTENSIONS__
 /** \def __EXTENSIONS__
-  * Defined to 1 to enableextensions on Solaris.
+  * Defined to 1 to enable extensions on Solaris.
   *
   */
 #endif // __EXTENSIONS__
+
+#ifdef _GNU_SOURCE
+/** \def _GNU_SOURCE
+  * Defined to 1 to enable GNU extensions on systems that have them. 
+  */
+#endif // _GNU_SOURCE
+
+#ifdef USE_POSIX_THREADS_WEAK
+/** \def USE_POSIX_THREADS_WEAK
+  * Defined to 1 if references to the POSIX multithreading library 
+  * should be made weak.
+  */
+#endif // USE_POSIX_THREADS_WEAK
+
+#ifdef USE_POSIX_THREADS
+/** \def USE_POSIX_THREADS
+  * Define to 1 if the POSIX multithreading library can be used.
+  */
+#endif // USE_POSIX_THREADS
 
 
