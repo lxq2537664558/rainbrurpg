@@ -126,7 +126,11 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-194 (02 jun 2009 - ???)
-- (4) Others defines doc warnings in config.h
+- (6) fixed defines doc warnings in config.h
+   HAVE_WINT_T
+- fixed defines doc warnings in config.h
+   SIZE_MAX, INTDIV0_RAISES_SIGFPE, ICONV_CONST, HAVE___FSETLOCKING
+- Others defines doc warnings in config.h
    _GNU_SOURCES, USE_POSIX_THREADS_WEAK, USE_POSIX_THREADS
 - Others defines doc warnings in config.h
    _TANDEM_SOURCE, _POSIX_PTHREAD_SEMANTICS, _POSIX_PTHREAD_SEMANTICS
