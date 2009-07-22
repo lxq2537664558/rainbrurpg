@@ -62,7 +62,8 @@ namespace RainbruRPG {
 
     /** Controls how TextSettings draw text
       *
-      *
+      * This enumeration is used by \ref RainbruRPG::OgreGui::TextSettings
+      * "TextSettings" to know how to draw text.
       *
       */
     typedef enum{
@@ -76,7 +77,7 @@ namespace RainbruRPG {
       * object.
       *
       * The color setting is always TCS_FOREGROUND (Draws only text 
-      * foreground) and the background color is always fullt opaque
+      * foreground) and the background color is always fully opaque
       * white. Please see \ref RainbruRPG::OgreGui::tTextColorSetting
       * "tTextColorSetting" for more informations.
       *

@@ -127,7 +127,8 @@ A system that serialize widgets position and configuration
 
 * v 0.0.5-194 (02 jun 2009 - ???)
 - (6) fixed defines doc warnings in config.h
-   HAVE_WINT_T
+   HAVE_WINT_T, SIZE_MAX, INTDIV0_RAISES_SIGFPE, ICONV_CONST 
+   HAVE___FSETLOCKING, HAVE_WINT_T
 - fixed defines doc warnings in config.h
    SIZE_MAX, INTDIV0_RAISES_SIGFPE, ICONV_CONST, HAVE___FSETLOCKING
 - Others defines doc warnings in config.h
@@ -138,34 +139,3 @@ A system that serialize widgets position and configuration
    init, define, define_initialized, lock_t 
 - Fix__libc_lock_* defines doc warnings 
    initialized_recursive, recursive, recursive_t, unlock, lock
-* v 0.0.5-193 (24 apr 2009 - 02 jun 2009)
-- Fix some __lic_lock_* defines doc warning
-   unlock_recursive, lock_r, init_r
-- Fix some glthread_* defines doc warning
-   rwlock_destroy, unlock, wrlock, rdlock, init, lock_destroy, unlock, 
-   lock, init, in_use
-- Fix some glthread_* defines doc warning
-   singlethreaded,once_call,once,recursive_lock_*
-- Fix some documentation warnings
-   optionbutton, boolattribute
-- Fix some documentation warnings
-   optionlistattribute, intrangeattribute, intattribute, floatrangeattribute
-- Fix some documentation warnings
-   optionstringattribute, optionpanel, optionfloatattribute
-- common/xmlpersolist.cpp gettextized
-- common/xmllanguage.cpp gettextized
-   Also xmloptions
-- Added caption parameter to options attributes :
-   list, bool, string
-- Added Caption parameter in attributes :
-   float, floatrange, int, intrange
-- Modified launcherOption and xmlOption for caption/name
-- Added a name member to OptionPanel
-- Added a name member to OptionButton
-- Added a caption member to OptionAttribute
-- common/xmllanguage.cpp gettextized
-- common/xmlattributelist.cpp gettextized
-   Also xmlbonusfile.cpp, xmlbonusfilelist.cpp
-- Fix a segfault on the server's startup
-- common/version.cpp gettextized
-   Also xmlaccountlist.cpp, xmlattrbcatlist.cpp
