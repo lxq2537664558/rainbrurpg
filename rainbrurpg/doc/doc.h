@@ -1651,8 +1651,56 @@
   */
 #endif // !HAVE_UNSIGNED_LONG_LONG_INT
 
-// CVS commit test
+#ifdef HAVE_UINTMAX_T
+/** \def HAVE_UINTMAX_T
+  * Define if you have the <code>uintmax_t</code> type in 
+  * <code>stdint.h</code> or <code>inttypes.h</code>. <code>uintmax_t</code>
+  * is the largest unsigned int available.
+  */
+#endif // HAVE_UINTMAX_T
 
+#ifdef HAVE_TSEARCH
+/** \def HAVE_TSEARCH
+  * Define to 1 if you have the <code>tsearch</code> function, the C
+  * programming language function for a binary search tree. 
+  */
+#endif // HAVE_TSEARCH
 
+#ifdef HAVE_STRTOUL
+/** \def HAVE_STRTOUL
+  * Define to 1 if you have the <code>strtoul</code> function, used
+  * to convert a string to an unsigned lon integer. 
+  */
+#endif // HAVE_STRTOUL
 
+#ifdef HAVE_STRDUP
+/** \def HAVE_STRDUP
+  * Define to 1 if you have the \c strdup function. The \c strdup function
+  * allocates memory and copy into it the string passed as first argument,
+  * including the terminating null character. The allocated memory must
+  * be freed by the user.
+  */
+#endif // HAVE_STRDUP
+
+#ifdef HAVE_STRCASECMP
+/** \def HAVE_STRCASECMP
+  * Define to 1 if you have the \c strcasecmp function, the 
+  * case-insensitive string comparison. 
+  */
+#endif // HAVE_STRCASECMP
+
+#ifdef HAVE_STPCPY
+/** \def HAVE_STPCPY
+  * Define to 1 if you have the \c stpcpy function. \c stpcpy is a function
+  * that copy a string returning a pointer to its end (the address of the
+  * terminating null character).
+  */
+#endif // HAVE_STPCPY
+
+#ifdef HAVE_STDINT_H_WITH_UINTMAX
+/** \def HAVE_STDINT_H_WITH_UINTMAX
+  * Define if <code>stdint.h</code> exists, doesn't clash with 
+  * <code>sys/types.h</code>, and declares <code>uintmax_t</code>. 
+  */
+#endif // HAVE_STDINT_H_WITH_UINTMAX
 

@@ -126,7 +126,14 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-194 (02 jun 2009 - ???)
-- (6) fixed defines doc warnings in config.h
+- (10) fixed defines doc warnings in config.h
+   HAVE_STRDUP, HAVE_STRCASECMP, HAVE_STPCPY, HAVE_STDINT_H_WITH_UINTMAX
+- fixed defines doc warnings in config.h
+   HAVE_UINTMAX_T, HAVE_TSEARCH, HAVE_STRTOUL
+- fixed a commit problem for the doc/ directory
+- fixed defines doc warnings in config.h
+   HAVE_WCHAR_T, HAVE_VISIBILITY, HAVE_UNSIGNED_LONG_LONG_INT
+- fixed defines doc warnings in config.h
    HAVE_WINT_T, SIZE_MAX, INTDIV0_RAISES_SIGFPE, ICONV_CONST 
    HAVE___FSETLOCKING, HAVE_WINT_T
 - fixed defines doc warnings in config.h
