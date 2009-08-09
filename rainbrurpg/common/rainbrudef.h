@@ -27,16 +27,24 @@
   * this link : http://gcc.gnu.org/wiki/Visibility
   *
   * Modifications :
+  * - 06 aug 2009 : handle HAVE_GETEXT from config.h
   * - 15 apr 2009 : Added GTS_* macros
   * - 18 mar 2009 : Added gettext stuff
   * - 08 aug 2008 : Documentation update
   *
   */
 
+#include "../config.h" // for HAVE_GETTEXT
+
+#ifdef HAVE_GETTEXT
 // i18n stuff
-#include <libintl.h>
-#include <locale.h>
-# define _(STRING) gettext(STRING)
+#  include <libintl.h>
+#  include <locale.h>
+#  define _(STRING) gettext(STRING)
+#else
+#  warning Gettext nof found. I18n will not be available.
+#  define _(STRING) STRING
+#endif // HAVE_GETTEXT
 
 // The following are gettext related macros used when filling a
 // parametered string with sprintf

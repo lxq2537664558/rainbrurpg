@@ -1,3 +1,7 @@
+2009-08-06 Jerome Pasquier  <rainbru@free.fr>
+	* common/rainbrudef.h : Now handles HAVE_GETEXT from config.h
+	with conditionnal compilation of I18N stuff.
+
 2009-05-10 Jerome Pasquier  <rainbru@free.fr>
 	* common/optionlistattribute.cpp : Added caption to the 
 	constructor.

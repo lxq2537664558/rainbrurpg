@@ -1704,3 +1704,172 @@
   */
 #endif // HAVE_STDINT_H_WITH_UINTMAX
 
+#ifdef HAVE_STDDEF_H
+/** \def HAVE_STDDEF_H
+  * Define to 1 if you have the <stddef.h> header file. 
+*/
+#endif // HAVE_STDDEF_H
+
+#ifdef HAVE_SNPRINTF
+/** \def HAVE_SNPRINTF
+  * Define to 1 if you have the \c snprintf function. 
+  */
+#endif // HAVE_SNPRINTF
+
+#ifdef HAVE_SETLOCALE
+/** \def HAVE_SETLOCALE
+  * Define to 1 if you have the \c setlocale function. 
+  */
+#endif // HAVE_SETLOCALE
+
+#ifdef HAVE_SETENV
+/** \def HAVE_SETENV
+  * Define to 1 if you have the \c setenv function. 
+  */
+#endif // HAVE_SETENV
+
+#ifdef HAVE_PUTENV
+/** \def HAVE_PUTENV
+  * Define to 1 if you have the \c putenv function. 
+  */
+#endif // HAVE_PUTENV
+
+#ifdef HAVE_PTHREAD_RWLOCK
+/** \def HAVE_PTHREAD_RWLOCK
+  * Define if the POSIX multithreading library has read/write locks. 
+  */
+#endif // HAVE_PTHREAD_RWLOCK
+
+#ifdef HAVE_PTHREAD_MUTEX_RECURSIVE
+/** \def HAVE_PTHREAD_MUTEX_RECURSIVE
+  * Define if the <pthread.h> defines PTHREAD_MUTEX_RECURSIVE. 
+  */
+#endif // HAVE_PTHREAD_MUTEX_RECURSIVE
+
+#ifdef HAVE_POSIX_PRINTF
+/** \def HAVE_POSIX_PRINTF
+  * Define if your printf() function supports format strings with positions. 
+  */
+#endif // HAVE_POSIX_PRINTF
+
+#ifdef HAVE_NL_LOCALE_NAME
+/** \def HAVE_NL_LOCALE_NAME
+  * Define if you have <langinfo.h> and it defines the NL_LOCALE_NAME 
+  * macro if _GNU_SOURCE is defined. 
+  */
+#endif // HAVE_NL_LOCALE_NAME
+
+#ifdef HAVE_MUNMAP
+/** \def HAVE_MUNMAP
+  * Define to 1 if you have the \c munmap function, that removes mapping
+  * for memory pages. 
+  *
+  * \sa \ref HAVE_MMAP
+  */
+#endif //HAVE_MUNMAP
+
+#ifdef HAVE_MMAP
+/** \def HAVE_MMAP
+  * Define to 1 if you have a working \c mmap system call, used to
+  * establish a mapping newteen a process' address space and a file,
+  * shared memory object or a typed memory object. 
+  *
+  * \sa \ref HAVE_MUNMAP
+  */
+#endif // HAVE_MMAP
+
+#ifdef HAVE_MEMPCPY
+/** \def HAVE_MEMPCPY
+  * Define to 1 if you have the \c mempcpy function, that copies memory
+  * area and returns a pointer to the byte following the last written byte. 
+  */
+#endif // HAVE_MEMPCPY
+
+#ifdef HAVE_LONG_LONG_INT
+/** \def HAVE_LONG_LONG_INT
+  * Define to 1 if the system has the type <code>long long int</code>. 
+  */
+#endif // HAVE_LONG_LONG_INT
+
+#ifdef HAVE_LOCALE_H
+/** \def HAVE_LOCALE_H
+  * Define to 1 if you have the <locale.h> header file, used for purposes
+  * of localization. 
+  */
+#endif // HAVE_LOCALE_H
+
+#ifdef HAVE_LIMITS_H
+/** \def HAVE_LIMITS_H
+  * Define to 1 if you have the <limits.h> header file. 
+  */
+#endif // HAVE_LIMITS_H
+
+#ifdef HAVE_LC_MESSAGES
+/** \def HAVE_LC_MESSAGES
+  * Define if your <locale.h> file defines \c LC_MESSAGES. 
+  */
+#endif // HAVE_LC_MESSAGES
+
+#ifdef HAVE_LANGINFO_CODESET
+/** \def HAVE_LANGINFO_CODESET
+  * Define if you have <langinfo.h> and <code>nl_langinfo(CODESET)</code>,
+  * a function that return a pointer to a string containing information
+  * relevant to the paticular language or cultural area defined in the
+  * program's locale. 
+  */
+#endif // HAVE_LANGINFO_CODESET
+
+#ifdef HAVE_INTTYPES_H_WITH_UINTMAX
+/** \def HAVE_INTTYPES_H_WITH_UINTMAX
+  * Define if <inttypes.h> exists, doesn't clash with <sys/types.h>, 
+  * and declares \c uintmax_t. 
+  */
+#endif // HAVE_INTTYPES_H_WITH_UINTMAX
+
+#ifdef HAVE_INTMAX_T
+/** \def HAVE_INTMAX_T
+  * Define if you have the \c intmax_t type in <stdint.h> or <inttypes.h>. 
+  */
+#endif // HAVE_INTMAX_T
+
+#ifdef HAVE_ICONV
+/** \def HAVE_ICONV
+  * Define if you have the <code>iconv()</code> function and it works. 
+  *
+  * The <code>iconv()</code> function is used to perform character set
+  * conversion. It is generally defined in the <code>iconv.h</code>
+  * header.
+  */
+#endif // HAVE_ICONV
+
+#ifdef HAVE_GETUID
+/** \def HAVE_GETUID
+  * Define to 1 if you have the \c getuid function. 
+  *
+  * This function is used to get the real user ID of the calling process and 
+  * should be defined in <code>unistd.h</code>.
+  */
+#endif // HAVE_GETUID
+
+#ifdef HAVE_GETTEXT
+/** \def HAVE_GETTEXT
+  * Define if the GNU gettext() function is already present or preinstalled. 
+  */
+#endif // HAVE_GETTEXT
+
+#ifdef HAVE_GETPAGESIZE
+/** \def HAVE_GETPAGESIZE
+  * Define to 1 if you have the \c getpagesize function. 
+  *
+  * This function returns the systempage size and should be defined in
+  * <code>unistd.h</code>.
+  */
+#endif // HAVE_GETPAGESIZE
+
+
+
+
+
+
+
+
