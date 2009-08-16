@@ -126,7 +126,9 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-194 (02 jun 2009 - ???)
-- (14) rainbrudef.h now handles HAVE_GETTEXT from config.h
+- (15) Fixed defines doc warnings in config.h
+   HAVE_GETGID, HAVE_GETEUID
+- rainbrudef.h now handles HAVE_GETTEXT from config.h
 - Fixed defines doc warnings in config.h
    HAVE_LANGINFO_CODESET, HAVE_INTTYPES_H_WITH_UINTMAX, HAVE_INTMAX_T
    HAVE_ICONV, HAVE_GETUID, HAVE_GETTEXT, HAVE_GETPAGESIZE

@@ -1842,15 +1842,6 @@
   */
 #endif // HAVE_ICONV
 
-#ifdef HAVE_GETUID
-/** \def HAVE_GETUID
-  * Define to 1 if you have the \c getuid function. 
-  *
-  * This function is used to get the real user ID of the calling process and 
-  * should be defined in <code>unistd.h</code>.
-  */
-#endif // HAVE_GETUID
-
 #ifdef HAVE_GETTEXT
 /** \def HAVE_GETTEXT
   * Define if the GNU gettext() function is already present or preinstalled. 
@@ -1866,10 +1857,37 @@
   */
 #endif // HAVE_GETPAGESIZE
 
+#ifdef HAVE_GETGID
+/** \def HAVE_GETGID
+  * Define to 1 if you have the \c getgid function. 
+  *
+  * The \c getgid function shall return the real group ID ofthe calling
+  * process. It should be defined in the <code>unistd.h</code> standard
+  * header.
+  *
+  */
+#endif // HAVE_GETGID
 
+#ifdef HAVE_GETUID
+/** \def HAVE_GETUID
+  * Define to 1 if you have the \c getuid function. 
+  *
+  * This function is used to get the real user ID of the calling process and 
+  * should be defined in <code>unistd.h</code>.
+  *
+  * \sa \ref HAVE_GETEUID
+  *
+  */
+#endif // HAVE_GETUID
 
-
-
-
-
-
+#ifdef HAVE_GETEUID
+/** \def HAVE_GETEUID
+  * Define to 1 if you have the \c geteuid function. 
+  *
+  * This function is used to get the effective user ID of the calling 
+  * process and should be defined in <code>unistd.h</code>.
+  *
+  * \sa \ref HAVE_GETUID
+  *
+  */
+#endif // HAVE_GETEUID
