@@ -1857,17 +1857,6 @@
   */
 #endif // HAVE_GETPAGESIZE
 
-#ifdef HAVE_GETGID
-/** \def HAVE_GETGID
-  * Define to 1 if you have the \c getgid function. 
-  *
-  * The \c getgid function shall return the real group ID ofthe calling
-  * process. It should be defined in the <code>unistd.h</code> standard
-  * header.
-  *
-  */
-#endif // HAVE_GETGID
-
 #ifdef HAVE_GETUID
 /** \def HAVE_GETUID
   * Define to 1 if you have the \c getuid function. 
@@ -1891,3 +1880,150 @@
   *
   */
 #endif // HAVE_GETEUID
+
+#ifdef HAVE_GETGID
+/** \def HAVE_GETGID
+  * Define to 1 if you have the \c getgid function. 
+  *
+  * The \c getgid function shall return the real group ID ofthe calling
+  * process. It should be defined in the <code>unistd.h</code> standard
+  * header.
+  *
+  * \sa HAVE_GETEGID
+  *
+  */
+#endif // HAVE_GETGID
+
+#ifdef HAVE_GETEGID
+/** \def HAVE_GETEGID
+  * Define to 1 if you have the \c getegid function. 
+  *
+  * The \c getgid function shall return the effective group ID ofthe calling
+  * process. It should be defined in the <code>unistd.h</code> standard
+  * header.
+  *
+  * \sa HAVE_GETGID
+  *
+  */
+#endif // !HAVE_GETEGID
+
+#ifdef HAVE_GETCWD
+/** \def HAVE_GETCWD
+  * Define to 1 if you have the \c getcwd function. 
+  * 
+  * The the \c getcwd function is used to get the pathname of the
+  * working directory. It should be defined in the <code>unistd.h</code> 
+  * standard header.
+  *
+  */
+#endif // HAVE_GETCWD
+
+#ifdef HAVE_FWPRINTF
+/** \def HAVE_FWPRINTF
+  * Define to 1 if you have the \c fwprintf function. 
+  * 
+  * The \c fwprintf function prints formatted wide-character output on a
+  * named output stream.
+  * 
+  */
+#endif // HAVE_FWPRINTF
+
+#ifdef HAVE_DECL__SNWPRINTF
+/** \def HAVE_DECL__SNWPRINTF
+  * Define to 1 if you have the declaration of \c _snwprintf, and to 
+  * 0 if you don't. 
+  *
+  * The \c _snwprintf returns the number of bytes stored in a given 
+  * wide-character buffer.
+  * 
+  */
+#endif // HAVE_DECL__SNWPRINTF
+
+#ifdef HAVE_DECL__SNPRINTF
+/** \def HAVE_DECL__SNPRINTF
+  * Define to 1 if you have the declaration of \c _snprintf, and to 
+  * 0 if you don't. 
+  *
+  */
+#endif // HAVE_DECL__SNPRINTF
+
+#ifdef HAVE_DECL_GETC_UNLOCKED
+/** \def HAVE_DECL_GETC_UNLOCKED
+  * Define to 1 if you have the declaration of \c getc_unlocked, and 
+  * to 0 if you don't. 
+  */
+#endif // HAVE_DECL_GETC_UNLOCKED
+
+#fidef HAVE_DECL_FGETS_UNLOCKED
+/** \def HAVE_DECL_FGETS_UNLOCKED
+  * Define to 1 if you have the declaration of \c fgets_unlocked, and 
+  * to 0 if you don't. 
+  *
+  */
+#endif // HAVE_DECL_FGETS_UNLOCKED
+
+#ifdef HAVE_DECL_FEOF_UNLOCKED
+/** \def HAVE_DECL_FEOF_UNLOCKED
+  * Define to 1 if you have the declaration of \c feof_unlocked, and 
+  * to 0 if you don't. 
+  *
+  */
+#endif // HAVE_DECL_FEOF_UNLOCKED
+
+#ifdef HAVE_DCGETTEXT
+/** \def HAVE_DCGETTEXT
+  * Define if the GNU \c dcgettext() function is already present 
+  * or preinstalled.
+  *
+  */
+#endif // HAVE_DCGETTEXT
+
+#ifdef HAVE_BUILTIN_EXPECT
+/** \def HAVE_BUILTIN_EXPECT
+  * Define to 1 if the compiler understands \c __builtin_expect. 
+  */
+#endif // HAVE_BUILTIN_EXPECT
+
+#ifdef HAVE_ASPRINTF
+/** \def HAVE_ASPRINTF
+  * Define to 1 if you have the \c asprintf function. 
+  *
+  */
+#endif // HAVE_ASPRINTF
+
+#ifdef HAVE_ARGZ_STRINGIFY
+/** \def HAVE_ARGZ_STRINGIFY
+  * Define to 1 if you have the \c argz_stringify function. 
+  *
+  */
+#endif // HAVE_ARGZ_STRINGIFY
+
+#fidef HAVE_ARGZ_NEXT
+/** \def HAVE_ARGZ_NEXT
+  * Define to 1 if you have the \c argz_next function. 
+  *
+  */
+#endif // HAVE_ARGZ_NEXT
+
+#ifdef HAVE_ARGZ_H
+/** \def HAVE_ARGZ_H
+  * Define to 1 if you have the <code>argz.h</code> header file. 
+  *
+  */
+#endif // HAVE_ARGZ_H
+
+#ifdef HAVE_ARGZ_COUNT
+/** \def HAVE_ARGZ_COUNT
+  * Define to 1 if you have the \c argz_count function. 
+  *
+  */
+#endif // HAVE_ARGZ_COUNT
+
+#ifdef ENABLE_NLS
+/** \def ENABLE_NLS
+  * Define to 1 if translation of program messages to the user's 
+  * native language is requested. 
+  *
+  */
+#endif // ENABLE_NLS
+
