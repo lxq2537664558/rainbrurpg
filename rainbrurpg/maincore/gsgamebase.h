@@ -24,6 +24,7 @@
   * Declares a base class for all state supplying game capabilities
   *
   * Modifications :
+  * - 29 aug 2009 : Made messages transatable with gettext
   * - 15 oct 2008 : Constructor handles GameState's name
   * - 16 aug 2008 : Single file documentation
   *
@@ -34,6 +35,7 @@
 
 #include <ogreimport.h>
 #include <string>
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 #include "gamestate.h"
 #include "inputwrapper.h"

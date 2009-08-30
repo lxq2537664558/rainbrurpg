@@ -24,6 +24,7 @@
   * Declares a class that read the server list
   *
   * Modifications :
+  * - 27 aug 2009 : Using gettext compliant strings
   * - 12 jan 2009 : Added contructor initializers to avoid segfault
   * - 11 aug 2008 : Single file documentation
   * - 28 jun 2007 : Adding the 'uniqueName' and 'type' keys
@@ -45,6 +46,8 @@
 #include "curlfiletoxml.h"
 #include "serverlistitem.h"
 #include "stringconv.h"
+
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

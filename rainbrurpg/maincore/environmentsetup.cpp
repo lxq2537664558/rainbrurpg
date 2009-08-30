@@ -42,26 +42,26 @@ EnvironmentSetup( Ogre::RenderWindow* renderWindow,
 		  const char* sceneMgrName, 
 		  const char* cameraName){
 
-  LOGI("Starting environment setup");
+  LOGI(_("Starting environment setup"));
 
   this->mRenderWindow=renderWindow;
   this->sceneManagerName=sceneMgrName;
   this->cameraName=cameraName;
 
-  LOGI("Creating SceneManeger");
+  LOGI(_("Creating SceneManeger"));
   createSceneManager();
-  LOGI("Creating camera");
+  LOGI(_("Creating camera"));
   createCamera();
-  LOGI("Creating viewport");
+  LOGI(_("Creating viewport"));
   createViewport();
-  LOGI("Creating light");
+  LOGI(_("Creating light"));
   createLight();
-  LOGI("Initialising Ogre resources");
+  LOGI(_("Initialising Ogre resources"));
   ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
-  LOGI("Starting adding objects");
+  LOGI(_("Starting adding objects"));
   addObjects();
-  LOGI("Environment correctly setup");
+  LOGI(_("Environment correctly setup"));
 }
 
 /** The default destructor

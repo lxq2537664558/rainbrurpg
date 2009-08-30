@@ -37,7 +37,7 @@
 RainbruRPG::Core::gsGameBase::gsGameBase(const std::string& vName):
   GameState(vName, GST_GAME)
 {
-  LOGI("Constructing a gsGameBase");
+  LOGI(_("Constructing a gsGameBase"));
   mapName="";
   mMoveScale=2.0f;
   inputWrapper=new InputWrapper();
@@ -48,7 +48,7 @@ RainbruRPG::Core::gsGameBase::gsGameBase(const std::string& vName):
   *
   */
 void RainbruRPG::Core::gsGameBase::init(){
-  LOGI("Initialising gsGameBase");
+  LOGI(_("Initialising gsGameBase"));
 
   mRoot=GameEngine::getSingleton().getOgreRoot();
   mSceneMgr=GameEngine::getSingleton().getOgreSceneMgr();
@@ -75,7 +75,7 @@ void RainbruRPG::Core::gsGameBase::pause(){
   * It restarts after a pause call.
   */
 void RainbruRPG::Core::gsGameBase::resume(){
-  LOGI("gsGameBase::resume called");
+  LOGI(_("gsGameBase::resume called"));
 }
 
 /** Runs the gamestate

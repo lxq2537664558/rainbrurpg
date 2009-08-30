@@ -44,7 +44,7 @@ GameState(const string& vName, const tGameStateType& vType):
   name(vName),
   stateType(vType)
 {
-  LOGI("Initializing game state super-class");
+  LOGI(_("Initializing game state super-class"));
   isInit=false;
 }
 

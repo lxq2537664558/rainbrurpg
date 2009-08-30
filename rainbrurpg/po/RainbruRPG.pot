@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-02 11:35+0200\n"
+"POT-Creation-Date: 2009-08-29 16:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1453,4 +1453,220 @@ msgstr ""
 
 #: common/xmlpersolist.cpp:94
 msgid "An error occured while getting xmlPlayerList"
+msgstr ""
+
+#: maincore/dumpogreobject.cpp:44
+msgid "Debugging ogre rectangle :"
+msgstr ""
+
+#: maincore/dumpogreobject.cpp:69
+msgid "Debugging ogre Vector4 : "
+msgstr ""
+
+#: maincore/dumpogreobject.cpp:93
+msgid "Debugging ogre Vector2 : "
+msgstr ""
+
+#: maincore/environmentsetup.cpp:45
+msgid "Starting environment setup"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:51
+msgid "Creating SceneManeger"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:53
+msgid "Creating camera"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:55
+msgid "Creating viewport"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:57
+msgid "Creating light"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:59
+msgid "Initialising Ogre resources"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:62
+msgid "Starting adding objects"
+msgstr ""
+
+#: maincore/environmentsetup.cpp:64
+msgid "Environment correctly setup"
+msgstr ""
+
+#: maincore/gameengine.cpp:96
+msgid "Exiting GameEngine ..."
+msgstr ""
+
+#: maincore/gameengine.cpp:112
+msgid "starting rendering"
+msgstr ""
+
+#: maincore/gameengine.cpp:118
+msgid "An exception has occured!"
+msgstr ""
+
+#: maincore/gameengine.cpp:121
+msgid "An exception has occured: "
+msgstr ""
+
+#: maincore/gameengine.cpp:128
+msgid "GameEngine::run ended"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a game state.
+#: maincore/gameengine.cpp:144
+#, c-format
+msgid "Cannot find %s state"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a game state.
+#: maincore/gameengine.cpp:149
+#, c-format
+msgid "Switching to %s state"
+msgstr ""
+
+#: maincore/gameengine.cpp:154
+msgid "An error will occur : we are calling a non-inexisting gamestate"
+msgstr ""
+
+#: maincore/gameengine.cpp:169
+msgid "Both game states type are Undefined"
+msgstr ""
+
+#: maincore/gameengine.cpp:207
+msgid "Cleaning up GameEngine..."
+msgstr ""
+
+#: maincore/gameengine.cpp:226
+msgid "GameEngine cleaned"
+msgstr ""
+
+#: maincore/gameengine.cpp:233
+msgid "  Cleaning up GameStates..."
+msgstr ""
+
+#: maincore/gameengine.cpp:271
+msgid "Trying to connect a user"
+msgstr ""
+
+#: maincore/gameengine.cpp:281
+msgid ""
+"This user does not exist.\n"
+"Please create an account"
+msgstr ""
+
+#: maincore/gameengine.cpp:284
+msgid "Wrong password."
+msgstr ""
+
+#: maincore/gameengine.cpp:287
+msgid "Your email was not yet validated."
+msgstr ""
+
+#: maincore/gameengine.cpp:290
+msgid "You are in blacklist."
+msgstr ""
+
+#: maincore/gameengine.cpp:293
+msgid "An unknown error occured."
+msgstr ""
+
+#: maincore/gameengine.cpp:301
+msgid "The login of this user failed"
+msgstr ""
+
+#: maincore/gameengine.cpp:310
+msgid "The login is successfull"
+msgstr ""
+
+#: maincore/gameengine.cpp:327
+#, c-format
+msgid "Setting renderer '%s'"
+msgstr ""
+
+#: maincore/gameengine.cpp:421
+msgid "The Ogre::Root cannot be initalized"
+msgstr ""
+
+#: maincore/gameengine.cpp:465
+msgid "mSceneMgr is NULL"
+msgstr ""
+
+#: maincore/gameengine.cpp:491
+msgid "Invalid OgreWindow"
+msgstr ""
+
+#. TRANSLATORS: The parameters are ressource settings.
+#: maincore/gameengine.cpp:530
+#, c-format
+msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
+msgstr ""
+
+#: maincore/gameengine.cpp:540
+msgid "All resources correctly setup"
+msgstr ""
+
+#: maincore/gameengine.cpp:577
+msgid "Logging available scene manager"
+msgstr ""
+
+#: maincore/gameengine.cpp:585
+#, c-format
+msgid "Scene manager '%s' found."
+msgstr ""
+
+#: maincore/gameengine.cpp:597
+msgid "Loading all resources"
+msgstr ""
+
+#: maincore/gameengine.cpp:608
+msgid "All resources loaded"
+msgstr ""
+
+#: maincore/gameengine.cpp:620
+#, c-format
+msgid "Loading resource group '%s'"
+msgstr ""
+
+#: maincore/gameengine.cpp:631
+#, c-format
+msgid "Loading ressource '%s'"
+msgstr ""
+
+#: maincore/gameengine.cpp:645
+msgid "Switching from menuType to gameType"
+msgstr ""
+
+#: maincore/gameengine.cpp:657
+msgid "Clearing Scene"
+msgstr ""
+
+#: maincore/gameengine.cpp:663
+msgid "Setting new scene manager"
+msgstr ""
+
+#: maincore/gameengine.cpp:703
+msgid "LocalTest environment successfully initialized"
+msgstr ""
+
+#: maincore/gamestate.cpp:47
+msgid "Initializing game state super-class"
+msgstr ""
+
+#: maincore/gsgamebase.cpp:40
+msgid "Constructing a gsGameBase"
+msgstr ""
+
+#: maincore/gsgamebase.cpp:51
+msgid "Initialising gsGameBase"
+msgstr ""
+
+#: maincore/gsgamebase.cpp:78
+msgid "gsGameBase::resume called"
 msgstr ""

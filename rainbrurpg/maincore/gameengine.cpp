@@ -93,7 +93,7 @@ void RainbruRPG::Core::GameEngine::play() {
   * it request the shutdown of the engine.
   */
 void RainbruRPG::Core::GameEngine::quit() {
-  LOGI("Exiting GameEngine ...");
+  LOGI(_("Exiting GameEngine ..."));
   mInputMgr->removeAllListeners();
   m_running = false; 
 }
@@ -109,23 +109,23 @@ void RainbruRPG::Core::GameEngine::run() {
   if (m_running){
 
     try {
-      LOGI("starting rendering");
+      LOGI(_("starting rendering"));
       Ogre::Root::getSingleton().startRendering();
     } 
     catch( Ogre::Exception& e ) {
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32 
      MessageBox( NULL, e.getFullDescription().c_str(), 
-		  "An exception has occured!", 
-		  MB_OK | MB_ICONERROR | MB_TASKMODAL);
+		 _("An exception has occured!"), 
+		 MB_OK | MB_ICONERROR | MB_TASKMODAL);
 #else
-      std::string err= "An exception has occured: ";
-      err+= e.getFullDescription().c_str();
-      LOGE(err.c_str());
+     std::string err= _("An exception has occured: ");
+     err+= e.getFullDescription().c_str();
+     LOGE(err.c_str());
 #endif
     }
   }
 
-  LOGI("GameEngine::run ended");
+  LOGI(_("GameEngine::run ended"));
 }
 
 /** Set the current GameState to \c t
@@ -135,26 +135,24 @@ void RainbruRPG::Core::GameEngine::run() {
   */
 void RainbruRPG::Core::GameEngine::changeState(const std::string& vName){
   if (m_running){
-    std::string msg;
-
     size_t t = this->getGameStateIndexByName(vName);
 
+    GTS_MID(msg); // A char* used to create parametered messages
+
     if (t == std::string::npos){
-      msg = "Cannot find ";
-      msg += vName;
-      msg += " state";
-      LOGE(msg.c_str());
+      // TRANSLATORS: The parameter is the name of a game state.
+      sprintf(msg, _("Cannot find %s state"), vName.c_str());
+      LOGE(msg);
     }
     else{
-      std::string msg = "Switching to ";
-      msg += vName;
-      msg += " state...";
-      LOGI(msg.c_str());
+      // TRANSLATORS: The parameter is the name of a game state.
+      sprintf(msg, _("Switching to %s state"), vName.c_str());
+      LOGI(msg);
     }
 
     if ((unsigned int)t>states.size()){
-      LOGE("An error will occur : we are calling a non-inexisting "
-	   "gamestate");
+      LOGE(_("An error will occur : we are calling a non-inexisting "
+	     "gamestate"));
     }
     else{
       /* Avoid a SEGFAULT when setting the first game state */
@@ -168,7 +166,7 @@ void RainbruRPG::Core::GameEngine::changeState(const std::string& vName){
       tGameStateType newType=states[t]->getStateType();
 
       if (oldType==GST_UDEF && newType==GST_UDEF){
-	LOGE("Both game states type are Undefined");
+	LOGE(_("Both game states type are Undefined"));
       }
 
       if (oldType!=newType){
@@ -206,7 +204,7 @@ void RainbruRPG::Core::GameEngine::changeState(const std::string& vName){
   *
   */
 void RainbruRPG::Core::GameEngine::cleanup(){
-  LOGI("Cleaning up GameEngine...");
+  LOGI(_("Cleaning up GameEngine..."));
   m_running=false;
   delete mInputMgr;
 
@@ -225,14 +223,14 @@ void RainbruRPG::Core::GameEngine::cleanup(){
   erc=NULL;
 */
 
-  LOGI("GameEngine cleaned");
+  LOGI(_("GameEngine cleaned"));
 }
 
 /** delete all states and receivers in vectors
   *
   */
 void RainbruRPG::Core::GameEngine::cleanStates(){
-  LOGI("  Cleaning up GameStates...");
+  LOGI(_("  Cleaning up GameStates..."));
   // delete all states
   for (unsigned int indx = 0; indx < states.size(); indx++){
     states[indx]->cleanup();
@@ -270,7 +268,7 @@ void RainbruRPG::Core::GameEngine::hideConsole(){
   */
 bool RainbruRPG::Core::GameEngine::connectUser(const char* user, 
 					       const char* pwd ){
-  LOGI("Trying to connect a user");
+  LOGI(_("Trying to connect a user"));
 
   ClientConnect cc(user, pwd);
 
@@ -280,19 +278,19 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
 
   switch(ret){
   case CCR_INEXISTANT_USER: 
-    errMsg="This user does not exist.\nPlease create an account";
+    errMsg=_("This user does not exist.\nPlease create an account");
     break;
   case CCR_WRONG_PWD:
-    errMsg="Wrong password.";
+    errMsg=_("Wrong password.");
     break;
   case CCR_EMAIL_NOT_VALIDATED:
-    errMsg="Your email was not yet validated.";
+    errMsg=_("Your email was not yet validated.");
      break;
   case CCR_BLACKLIST:
-    errMsg="Your in blacklist.";
+    errMsg=_("You are in blacklist.");
     break;
   case CCR_UNKNOWN_ERROR:
-    errMsg="An unknown error occured.";
+    errMsg=_("An unknown error occured.");
     break;
   case CCR_SUCCESS:
     errMsg="";
@@ -300,7 +298,7 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
   }
 
   if (ret!=CCR_SUCCESS){
-    LOGW("The login of this user failed");
+    LOGW(_("The login of this user failed"));
     /* Removed to avoid OgreGui dependencies
     GuiManager::getSingleton()
       .showMessageBox("Connection failed", errMsg);
@@ -309,7 +307,7 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
 
   }
   else{
-    LOGI("The login is successfull");
+    LOGI(_("The login is successfull"));
     userName=user;
     userPwd=pwd;
 
@@ -325,10 +323,9 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
   * \todo Use Root::getSingleton().getRenderSystemByName(rName) when available
   */
 void RainbruRPG::Core::GameEngine::setRender(const char* rName){
-  LOGI("Setting renderer :");
-  LOGCATS("Renderer name :");
-  LOGCATS(rName);
-  LOGCAT();
+  GTS_LIT(str);
+  sprintf(str, _("Setting renderer '%s'"), rName);
+  LOGI(str);
 
   bool found=false;
   const char* name;
@@ -421,7 +418,7 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   initOIS();
 
   if (!mWindow){
-    LOGE("The Ogre::Root cannot be initalized");
+    LOGE(_("The Ogre::Root cannot be initalized"));
   }
 
   // Added for Ogre v1.2 to avoid crashes due to uninitialized materials,
@@ -446,7 +443,6 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   *
   */
 void RainbruRPG::Core::GameEngine::chooseSceneManager(){
-  LOGI("chooseSceneManager");
   // Get the SceneManager, in this case a generic one
   mSceneMgr = Ogre::Root::getSingleton().
     createSceneManager("DefaultSceneManager", "DefaultSceneManager_Instance" );
@@ -460,15 +456,13 @@ void RainbruRPG::Core::GameEngine::chooseSceneManager(){
   *
   */
 void RainbruRPG::Core::GameEngine::createCamera(){
-  LOGI("createCamera");
-
   // Create the camera
 
   if (mSceneMgr != NULL){
     mCamera = mSceneMgr->createCamera("PlayerCam");
   }
   else{
-    LOGE("mSceneMgr is NULL");
+    LOGE(_("mSceneMgr is NULL"));
   }
   
   // Position it at 500 in Z direction
@@ -483,8 +477,6 @@ void RainbruRPG::Core::GameEngine::createCamera(){
   *
   */
 void RainbruRPG::Core::GameEngine::createViewports(){
-  LOGI("createViewports");
-
   // Create one viewport, entire window
   if (mWindow){
     mViewport = mWindow->addViewport(mCamera);
@@ -496,7 +488,7 @@ void RainbruRPG::Core::GameEngine::createViewports(){
     assert(mViewport && "Failed to create the Ogre viewport");
   }
   else{
-    LOGE("Invalid OgreWindow");
+    LOGE(_("Invalid OgreWindow"));
   }
 }
 
@@ -510,8 +502,6 @@ void RainbruRPG::Core::GameEngine::createViewports(){
   *
   */
 void RainbruRPG::Core::GameEngine::setupResources(){
-  LOGI("Setting up Resources");
-
   // Get the filename according to the installation prefix
   Network::GlobalURI gu;
   std::string resCfg=GET_SHARE_FILE(gu,"config/resources.cfg");
@@ -535,20 +525,19 @@ void RainbruRPG::Core::GameEngine::setupResources(){
       shareArchName= GET_SHARE_FILE(gu, archName);
 
       // Logging
-      LOGCATS("secName :");
-      LOGCATS(secName.c_str());
-      LOGCATS(" typeName :");
-      LOGCATS(typeName.c_str());
-      LOGCATS(" archName :");
-      LOGCATS(shareArchName.c_str());
-      LOGCAT();
+      GTS_HUG(str);
+      // TRANSLATORS: The parameters are ressource settings.
+      sprintf(str, _("Loading ressource : secName='%s' typeName='%s' "
+		     "archName='%s'"), 
+	      secName.c_str(), typeName.c_str(), shareArchName.c_str());
+      LOGI(str);
 
       ResourceGroupManager::getSingleton().
 	addResourceLocation( shareArchName, typeName, secName);
     }
   }
 
-  LOGI("All resources correctly setup");
+  LOGI(_("All resources correctly setup"));
 
 }
 
@@ -585,17 +574,16 @@ void RainbruRPG::Core::GameEngine::frameEnded(const FrameEvent& evt){
   *
   */
 void RainbruRPG::Core::GameEngine::logSceneMgrList(){
-  LOGI("Logging available scene manager");
+  LOGI(_("Logging available scene manager"));
 
   SceneManagerEnumerator::MetaDataIterator it = Ogre::Root::getSingleton()
     .getSceneManagerMetaDataIterator();
 
-
+  GTS_MID(str);
   while (it.hasMoreElements ()){
     const SceneManagerMetaData* metaData = it.getNext ();
-
-    LOGCATS(metaData->typeName.c_str());
-    LOGCAT();
+    sprintf(str, _("Scene manager '%s' found."), metaData->typeName.c_str());
+    LOGI(str);
   } 
 }
 
@@ -606,7 +594,7 @@ void RainbruRPG::Core::GameEngine::logSceneMgrList(){
   *
  */
 void RainbruRPG::Core::GameEngine::loadResources(void){
-  LOGI("Loading all resources");
+  LOGI(_("Loading all resources"));
 
   // Get a vector of groups
   StringVector sv=ResourceGroupManager::getSingleton().getResourceGroups();
@@ -617,7 +605,7 @@ void RainbruRPG::Core::GameEngine::loadResources(void){
 
   // Initialise, parse scripts etc
   //  ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-  LOGI("All resources loaded");
+  LOGI(_("All resources loaded"));
 }
 
 /** Load a named resource group
@@ -627,9 +615,10 @@ void RainbruRPG::Core::GameEngine::loadResources(void){
   */
 void RainbruRPG::Core::GameEngine::
 loadResourcesGroup(const Ogre::String& groupName){
-    LOGCATS("Loading resource group : ");
-    LOGCATS(groupName.c_str());
-    LOGCAT();
+
+  GTS_LIT(str);
+  sprintf(str, _("Loading resource group '%s'"), groupName.c_str());
+  LOGI(str);
 
     Ogre::ResourceGroupManager::ResourceDeclarationList::iterator iter;
 
@@ -639,9 +628,8 @@ loadResourcesGroup(const Ogre::String& groupName){
 
 
     for (iter=rdl.begin(); iter != rdl.end(); iter++){
-      LOGCATS("Loading ressource ");
-      LOGCATS((*iter).resourceName.c_str());
-      LOGCAT();
+      sprintf(str, _("Loading ressource '%s'"), (*iter).resourceName.c_str());
+      LOGI(str);
     }
 
     ResourceGroupManager::getSingleton().initialiseResourceGroup(groupName);
@@ -654,7 +642,7 @@ loadResourcesGroup(const Ogre::String& groupName){
   */
 void RainbruRPG::Core::GameEngine::
 fromMenuToGame(GameState* from, GameState* to){
-  LOGI("Switching from menuType to gameType");
+  LOGI(_("Switching from menuType to gameType"));
   /* Removed to avoid OgreGui dependencies
   GuiManager::getSingleton().beginGuiFadeOut();
   */
@@ -666,13 +654,13 @@ fromMenuToGame(GameState* from, GameState* to){
     Ogre::Root::getSingleton().renderOneFrame();
   }
   */
-  LOGI("Clearing Scene");
+  LOGI(_("Clearing Scene"));
   mSceneMgr->clearScene();
   mWindow->removeAllViewports();
   mSceneMgr->destroyAllCameras();
 
 
-  LOGI("Setting new scene manager");
+  LOGI(_("Setting new scene manager"));
   mSceneMgr = Ogre::Root::getSingleton().
     createSceneManager("PagingLandScapeSceneManager"); 
 
@@ -712,7 +700,7 @@ fromMenuToGame(GameState* from, GameState* to){
   // Loads object list
   xmlObjectList xol;
 
-  LOGI("LocalTest environment successfully initialized");
+  LOGI(_("LocalTest environment successfully initialized"));
 }
 
 /** The keypressed OIS callback

@@ -24,11 +24,14 @@
   * Declares a game state class for test purpose only
   *
   * Modifications :
+  * - 29 aug 2009 : Made messages transatable with gettext
   * - 16 aug 2008 : Single file documentation
   *
   */
 #ifndef GS_LOCAL_TEST
 #define GS_LOCAL_TEST
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 #include "gsgamebase.h"
 

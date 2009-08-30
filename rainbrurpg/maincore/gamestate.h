@@ -24,6 +24,7 @@
   * Declares a base abstract class of all the GameStates
   *
   * Modifications :
+  * - 29 aug 2009 : Made messages transatable with gettext
   * - 18 oct 2008 : Added a state type parameter in constructor
   * - 16 oct 2008 : Added GST_UDEF state type
   * - 15 oct 2008 : Adding name member
@@ -43,6 +44,7 @@
 #include <OIS/OISMouse.h>
 
 #include <logger.h>
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 #include <string>
 

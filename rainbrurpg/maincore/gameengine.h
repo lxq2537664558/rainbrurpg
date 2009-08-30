@@ -24,6 +24,7 @@
   * Declares an Ogre frame listenerthe client game engine
   *
   * Modifications :
+  * - 29 aug 2009 : Made messages transatable with gettext
   * - 01 fev 2009 : Adding assertions to test some pointers
   * - 31 oct 2008 : Adding mViewport member and accessor
   * - 29 oct 2008 : Defining and using GET_SHARE_FILE
@@ -49,6 +50,8 @@
 
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 // Forward declaration
 namespace RainbruRPG {

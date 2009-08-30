@@ -66,3 +66,13 @@ common/xmllanguage.cpp
 common/xmlobjectlist.cpp
 common/xmloptions.cpp
 common/xmlpersolist.cpp
+common/xmlserverlist.cpp
+common/xmltimestamp.cpp
+
+# in the 'maincore' library
+maincore/dumpogreobject.cpp
+maincore/environmentsetup.cpp
+maincore/gameengine.cpp
+maincore/gamestate.cpp
+maincore/gsgamebase.cpp
+maincore/gslocaltest.cpp

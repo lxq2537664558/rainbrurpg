@@ -1,3 +1,6 @@
+2009-08-28 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/Makefile.am : added dumpogreobject.h/cpp.
+	
 2009-08-06 Jerome Pasquier  <rainbru@free.fr>
 	* common/rainbrudef.h : Now handles HAVE_GETEXT from config.h
 	with conditionnal compilation of I18N stuff.

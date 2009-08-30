@@ -37,6 +37,7 @@
   *
   *
   * Modifications :
+  * - 28 aug 2009 : Translated messages with gettext
   * - 13 aug 2008 : Single file documentation
   * - 06 jan 2008 : Starting implementations
   *
@@ -53,6 +54,8 @@
 #include <OgreVector2.h>
 #include <OgreVector4.h>
 #include <OgreRectangle.h>
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 using namespace std;
 using namespace Ogre;

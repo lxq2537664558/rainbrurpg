@@ -10,7 +10,8 @@ lib_LTLIBRARIES = librainbrurpg-core.la
 
 librainbrurpg_core.adir=.
 
-h_sources=gameengine.h			\
+h_sources=dumpogreobject.h		\
+	  gameengine.h			\
 	  gamestate.h			\
 	  velocitycalculator.h		\
 	  vcconstant.h			\
@@ -23,7 +24,8 @@ h_sources=gameengine.h			\
 	  ogreimport.h			\
 	  keyboardnavigation.h
 
-cc_sources=gameengine.cpp		\
+cc_sources=dumpogreobject.cpp		\
+	  gameengine.cpp		\
 	  gamestate.cpp			\
 	  velocitycalculator.cpp	\
 	  vcconstant.cpp		\

@@ -11,7 +11,11 @@ o [rainbru] Fixing some OgreGui related graphical bugs
 o [rainbru] i18n (source are taken alphabetically)
    Please use GTS_* macros from rainbrudef.h for all translated
    strings using sprintf and parameters
-- common/xmlpersolist.cpp was the last translated source
+   Add the translated sources to po/POTFILES.in
+- common/ finished
+- do not translate design (library should change)
+- maincore/gslocaltest.cpp was the last translated source
+- Find why po/RainbruRPG.pot is not updated
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -126,4 +130,15 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-195 (22 aug 2009 - ???)
-
+- (7) Made messages translatable using gettext in maincore/
+   gameengine, gamestate, gsgamebase, gslocaltest
+- Made messages translatable using gettext in maincore/
+   dumpogreobject, environmentsetup
+- added dumpogreobject to maincore/Makefile.am
+- Translate messages using gettext in common/
+   xmlserverlist, xmltimestamp. common/ library finished
+- Fix some doxygen warnings in common/rainbrudef.h
+   GTS_MID, GTS_LIT, GTS_TIN, _(STRING)
+- Fix some doxygen warnings in common/rainbrudef.h
+   RAINBRU_LOCAL, RAINBRU_EXPORT, GTS_HUG, GTS_BIG
+- Fix some typo errors in dc/doc.h

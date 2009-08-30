@@ -1954,7 +1954,7 @@
   */
 #endif // HAVE_DECL_GETC_UNLOCKED
 
-#fidef HAVE_DECL_FGETS_UNLOCKED
+#ifdef HAVE_DECL_FGETS_UNLOCKED
 /** \def HAVE_DECL_FGETS_UNLOCKED
   * Define to 1 if you have the declaration of \c fgets_unlocked, and 
   * to 0 if you don't. 
@@ -1998,7 +1998,7 @@
   */
 #endif // HAVE_ARGZ_STRINGIFY
 
-#fidef HAVE_ARGZ_NEXT
+#ifdef HAVE_ARGZ_NEXT
 /** \def HAVE_ARGZ_NEXT
   * Define to 1 if you have the \c argz_next function. 
   *

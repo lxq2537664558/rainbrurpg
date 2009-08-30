@@ -24,6 +24,7 @@
   * Declares a class that creates the Ogre environment for the game/editor
   *
   * Modifications :
+  * - 28 aug 2009 : Translated messages with gettext
   * - 14 aug 2008 : Single file documentation
   *
   */
@@ -37,6 +38,8 @@
 #include <objectpos.h>
 
 #include <string>
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 using namespace Ogre;
 

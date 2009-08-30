@@ -24,6 +24,7 @@
   * Declares a class that manage XML timestamps
   *
   * Modifications :
+  * - 27 aug 2009 : Using gettext compliant strings
   * - 11 aug 2008 : Single file documentation
   * - 03 mar 2007 : fix a SEGFAULT during unit test of ClientConnect
   */
@@ -37,6 +38,7 @@
 #include <sstream> // for stringstream
 
 #include "tinyxml.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 
 using namespace std;

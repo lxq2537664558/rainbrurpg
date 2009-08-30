@@ -1,3 +1,11 @@
+2009-08-28  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added gamestate.cpp, gsgamebase.cpp and
+	gslocaltest from maincore/.
+
+2009-08-28  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added common/xmlserverlist, xmltimestamp,
+	maincore/dumpogreobject, environmentsetup, gameengine.
+
 2009-05-01  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added common/xmlpersolist.cpp
 

@@ -41,7 +41,8 @@ void dumpOgreRectangle(const string& file, const string& line,
 		       const Ogre::Rectangle& obj){
 
   ostringstream oss;
-  oss << "Debugging ogre rectangle : top=" << obj.top
+  oss << _("Debugging ogre rectangle :") 
+      << " top=" << obj.top
       << "; left=" << obj.left
       << "; bottom=" << obj.bottom
       << "; right=" << obj.right << ";";
@@ -65,7 +66,7 @@ void dumpOgreVector4(const string& file, const string& line,
 		     const Vector4& obj){
 
   ostringstream oss;
-  oss << "Debugging ogre Vector4 : "
+  oss << _("Debugging ogre Vector4 : ")
       << "x=" << obj.x
       << "; y=" << obj.y
       << "; z=" << obj.z
@@ -89,7 +90,7 @@ void dumpOgreVector4(const string& file, const string& line,
 void dumpOgreVector2(const string& file,const string& line,const Vector2& obj){
 
   ostringstream oss;
-  oss << "Debugging ogre Vector2 : "
+  oss << _("Debugging ogre Vector2 : ")
       << "x=" << obj.x
       << "; y=" << obj.y << ";";
   
