@@ -130,23 +130,34 @@ getUserDirFile(const std::string& file)const{
 
 /** Sets up the HOME/.RainbruRPG/ directory
   *
-  * \todo Makes this function working on Win32
+  * Note : The huser's home directory is called \c HOME in GNU/Linux 
+  * platform and \c UserProfile on Win32.
   *
   */
 void RainbruRPG::Network::GlobalURI::homeSetup(){
   // Get RainbruRPG user's directory
   LOGI("Getting home directory");
-  char* ud = getenv("HOME");
+  char* ud;
+
+#ifdef WIN32
+  ud = getenv("UserProfile");
+#else
+  ud = getenv("HOME");
+#endif
 
   if (ud==NULL){
-    LOGE("$HOME is NULL. Program should crash");
+    LOGE("User home directory is NULL. Program should crash");
     userDir=".";
   }
   else{
     userDir= ud;
   }
 
+#ifdef WIN32
+  userDir+="/RainbruRPG/";
+#else
   userDir+="/.RainbruRPG/";
+#endif
 
   GTS_LIT(str);
   // TRANSLATORS: The parameter is the user's home directory.

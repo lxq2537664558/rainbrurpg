@@ -130,7 +130,8 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-195 (22 aug 2009 - ???)
-- (8) Making more logging in common/GlobalURI for cross-compil
+- (9) Making GlobalURI::homeSetup() work on win32 platform
+- Making more logging in common/GlobalURI for cross-compil
 - Made messages translatable using gettext in maincore/
    gameengine, gamestate, gsgamebase, gslocaltest
 - Made messages translatable using gettext in maincore/

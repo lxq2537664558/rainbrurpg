@@ -24,6 +24,7 @@
   * Declares types and class used to get full file names with path
   *
   * Modifications :
+  * - 30 aug 2009 : Makes homesetup work on Win32 platform
   * - 31 mar 2009 : Using gettext
   * - 30 mar 2009 : Using namespace alias for boost::filesystem to
   *                 avoid compilation errors.

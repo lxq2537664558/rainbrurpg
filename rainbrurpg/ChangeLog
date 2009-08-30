@@ -1,4 +1,8 @@
-2009-08-03 Jerome Pasquier  <rainbru@free.fr>
+2009-08-30 Jerome Pasquier  <rainbru@free.fr>
+	* common/globaluri.cpp (homeSetup): Make this function works
+	on Win32 platform. getenv must retrieve HOME for GNU/Linux and
+	UserProfile for WIN32.
+
 	* common/globaluri.cpp : added logger calls to solve
 	a cross-compil issue.
 
