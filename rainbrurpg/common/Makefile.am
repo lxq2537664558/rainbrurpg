@@ -186,4 +186,4 @@ librainbrurpg_common_la_LDFLAGS=      	        \
 
 dll:
 	source ../create_dll.sh &&		\
-	run "rainbrurpg-common" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread-1_34_1 -lboost_filesystem-1_34_1 -lFOX-1.6 -lcurl -lintl.dll"
+	run "rainbrurpg-common" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread-1_34_1 -lboost_filesystem-1_34_1 -lFOX-1.6 -lcurl -lintl"

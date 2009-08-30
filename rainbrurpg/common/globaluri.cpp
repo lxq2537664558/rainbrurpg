@@ -53,8 +53,14 @@ RainbruRPG::Network::GlobalURI::GlobalURI():
   LOGI(_("Using the real website"));
 #endif //WEBSITE_DEBUG
 
+  GTS_BIG(str);
+  sprintf(str, _("USER_INSTALL_PREFIX=%s"), USER_INSTALL_PREFIX);
+  LOGI(str);
+
   shareDir = USER_INSTALL_PREFIX;
   shareDir+="/share/RainbruRPG/";
+  sprintf(str, _("shareDir=%s"), shareDir.c_str());
+  LOGI(str);
 
   homeSetup();
 
@@ -129,7 +135,17 @@ getUserDirFile(const std::string& file)const{
   */
 void RainbruRPG::Network::GlobalURI::homeSetup(){
   // Get RainbruRPG user's directory
-  userDir=getenv("HOME");
+  LOGI("Getting home directory");
+  char* ud = getenv("HOME");
+
+  if (ud==NULL){
+    LOGE("$HOME is NULL. Program should crash");
+    userDir=".";
+  }
+  else{
+    userDir= ud;
+  }
+
   userDir+="/.RainbruRPG/";
 
   GTS_LIT(str);

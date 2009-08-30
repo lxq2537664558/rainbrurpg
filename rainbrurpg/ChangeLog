@@ -1,3 +1,7 @@
+2009-08-03 Jerome Pasquier  <rainbru@free.fr>
+	* common/globaluri.cpp : added logger calls to solve
+	a cross-compil issue.
+
 2009-08-28 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/Makefile.am : added dumpogreobject.h/cpp.
 	
