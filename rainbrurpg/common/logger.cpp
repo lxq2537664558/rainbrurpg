@@ -49,8 +49,6 @@ RainbruRPG::Exception::Logger::Logger(){
   openFile();
 };
 
-
-// id 1=II, 2=WW, 3=EE
 /** The main log method
   * 
   * It sends a log according to the received parameters. 
@@ -71,9 +69,9 @@ void RainbruRPG::Exception::Logger::log( const char* file,
 
   if (id>=logLevel){
     switch(id){
-      case 1: c="II"; break;
-      case 2: c="WW"; break;
-      case 3: c="EE"; break;
+    case 1: c="II"; break;
+    case 2: c="WW"; break;
+    case 3: c="EE"; break;
     }
 
     string o= "  [";
