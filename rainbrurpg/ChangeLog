@@ -1,3 +1,6 @@
+2009-09-12 Jerome Pasquier  <rainbru@free.fr>
+	* maincore/Makefile.am (dll): Changed -lintl flag (was -lintl.dll).
+	
 2009-08-30 Jerome Pasquier  <rainbru@free.fr>
 	* common/globaluri.cpp (homeSetup): Make this function works
 	on Win32 platform. getenv must retrieve HOME for GNU/Linux and
