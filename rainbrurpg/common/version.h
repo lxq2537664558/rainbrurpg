@@ -24,6 +24,7 @@
   * Declares a class for libraries versions logging
   *
   * Modifications :
+  * - 17 sep 2009 : Now logs build date and time
   * - 25 apr 2009 : Added gettext stuff header
   * - 11 aug 2008 : Single file documentation
   * - 05 jul 2007 : Removing using namespace Ogre due to conflicts Ogre/Qt4
@@ -107,6 +108,21 @@ namespace RainbruRPG{
 	*/
       const char* build;
 
+      /** The compilation date
+        *
+	* The value of this string will be set to \c __DATE__
+	* in the constructor.
+	*
+	*/
+      const char* buildDate;
+
+      /** The compilation time
+        *
+	* The value of this string will be set to \c __TIME__
+	* in the constructor.
+	*
+	*/
+      const char* buildTime;
     };
   }
 }

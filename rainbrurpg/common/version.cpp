@@ -38,6 +38,8 @@ RainbruRPG::Core::Version::Version(){
   this->appName =PACKAGE;
   this->version =VERSION;
   this->build   =BUILD_RELEASE;
+  this->buildDate = __DATE__;
+  this->buildTime = __TIME__;
 }
 
 /** The default destructor
@@ -72,6 +74,10 @@ void RainbruRPG::Core::Version::logVersion(){
 	  );
    
   Logger::getSingleton().logMessage( str );
+
+  GTS_MID(str2);
+  sprintf(str2, _("Built '%s' at '%s' \n"), buildDate, buildTime);
+  Logger::getSingleton().logMessage( str2 );
 
   string m;
   m=_("Copyright (C) 2006-2009 Jerome PASQUIER\n"

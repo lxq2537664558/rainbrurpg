@@ -1,3 +1,7 @@
+2009-09-17 Jerome Pasquier  <rainbru@free.fr>
+	* common/version.cpp (logVersion): Now log build date and time.
+	* common/version.h : Added buildDate and buildTime class members.
+
 2009-09-12 Jerome Pasquier  <rainbru@free.fr>
 	* maincore/Makefile.am (dll): Changed -lintl flag (was -lintl.dll).
 	
