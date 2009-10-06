@@ -116,7 +116,7 @@
   * -DDLL_EXPORT -DPIC -o .libs/gameengine.o</code>
   *
   * The possible cause of the issie could be the 
-  * <code>-I/usr/local/include</code> flag. It should reslt in this error, 
+  * <code>-I/usr/local/include</code> flag. It should result in this error, 
   * that occurs when cross compiling <em>GameEngine.o</em> :
   * <pre>
   * In file included from /usr//include/sys/select.h:46,
@@ -225,5 +225,38 @@
   *
   * However, the client size problem always exist.
   *
+  *
+  *
+  * <!-- ======================== -->
+  * <!--   CONFIG.H EXTRA CHARS   -->
+  * <!-- ======================== -->
+  * \subsection win32_troubles_195_config_h v0.0.5-195 config.h extra chars
+  *
+  * Just after calling my cross-compilation configure command 
+  * (<code>./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/   --enable-Wno-stddep-ogre --enable-debug</code>) the building failed. The
+  * compiler complains with that error :
+  * <code>../config.h:387: error: expected unqualified-id before ')' 
+  * token</code>.
+  *
+  * \htmlonly 
+  * Looking deeper in the <code>config.h</code> file, I found this 
+  * preprocessor : <code>#define SIZE_MAX (((1UL << 31<b>&#136;M</b>) - 1) * 2 + 1)
+  * </code>(note the extra character after the '31' token.
+  * \endhtmlonly
+  * 
+  * \subsubsection win32_troubles_195_search Searching for a solution
+  *
+  * After some internet search, I found that this extra char could be a
+  * CRLF (<a href="http://fr.wikipedia.org/wiki/Fin_de_ligne">
+  * http://fr.wikipedia.org/wiki/Fin_de_ligne</a>). Testing with
+  * <code>file</code> program, I get this result : 
+  * <pre>$ file config.h
+config.h: ASCII C program text, with CR, LF line terminators</pre>
+  * 
+  * Testing with utils in the <code>tofrodos</code> package, conveting 
+  * files from and to dos carriage returns, does not change anything. The
+  * extra char is still here.
+  *
+  * TODO: Searching the m4 file that create this preprocessor macro.
   *
   */
