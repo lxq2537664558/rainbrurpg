@@ -24,6 +24,7 @@
   * Declares a class defining some mouse and keyboard wrapping
   *
   * Modifications :
+  * - 22 sep 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   * - 02 jan 2008 : GNU header added
   *
@@ -35,6 +36,8 @@
 #include <OIS/OISMouse.h>
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISPrereqs.h>
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 namespace RainbruRPG{
   namespace Core{

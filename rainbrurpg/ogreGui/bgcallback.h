@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   * - 10 oct 2007 : Callback's type in an enumeration
   * - 24 sep 2007 : This was the original BetaGUI code. 
@@ -30,6 +31,7 @@
 #define _BETAGUI_CALLBACK_H_
 
 #include "object.h"
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 namespace BetaGUI {
 

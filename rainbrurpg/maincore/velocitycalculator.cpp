@@ -106,8 +106,7 @@ void RainbruRPG::Core::VelocityCalculator::setTranslationLenght(float f){
   *
   */
 void RainbruRPG::Core::VelocityCalculator::setTransitionTime(unsigned int i){
-  if (i==0)
-    LOGW("setting a null transition time");
+  if (i==0) LOGW(_("setting a null transition time"));
 
   transitionTime=i;
 }

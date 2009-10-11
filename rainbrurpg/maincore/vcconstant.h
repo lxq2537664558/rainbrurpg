@@ -24,6 +24,7 @@
   * Declares a constant time velocity calculator
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   * - 26 jul 2007 : Including formulas in documentation
   *
@@ -33,6 +34,7 @@
 #define VELOCITY_CALCULATOR_CONSTANT_H
 
 #include "velocitycalculator.h"
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 using namespace std;
 

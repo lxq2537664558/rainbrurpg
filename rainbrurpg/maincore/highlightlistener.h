@@ -24,6 +24,7 @@
   * Declares a class used to highlight an entity in the editor 
   *
   * Modifications :
+  * - 22 sep 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   *
   */
@@ -32,6 +33,8 @@
 #define HIGHLIGHT_QUEUE_LISTENER_H
 
 #include <ogreimport.h>
+
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 namespace RainbruRPG{
   namespace Core{

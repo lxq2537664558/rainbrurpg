@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 27 mar 2009 : Fix a bug in the right mouse button handling
   * - 28 jan 2009 : Added assertion in getMousePointer()
   * - 15 oct 2008 : Become a Singleton
@@ -44,6 +45,7 @@
 
 #include <vector>
 #include <list>
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 #include "mouseevent.h"
 

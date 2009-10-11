@@ -76,3 +76,15 @@ maincore/gameengine.cpp
 maincore/gamestate.cpp
 maincore/gsgamebase.cpp
 maincore/gslocaltest.cpp
+maincore/highlightlistener.cpp
+maincore/inputmanager.cpp
+maincore/inputwrapper.cpp
+maincore/keyboardnavigation.cpp
+maincore/vcconstant.cpp
+maincore/velocitycalculator.cpp
+
+# in the 'ogreGui' library
+ogreGui/bgbutton.cpp
+ogreGui/bgcallback.cpp
+ogreGui/bggui.cpp
+ogreGui/bgtextinput.cpp

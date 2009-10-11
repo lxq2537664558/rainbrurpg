@@ -24,6 +24,7 @@
   * Declares a superlass for computation of moving velocity
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   *
   */
@@ -32,6 +33,7 @@
 #define VELOCITY_CALCULATOR_H
 
 #include <ogreimport.h>
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 
 // Forward declaration

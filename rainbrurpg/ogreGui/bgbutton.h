@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 18 aug 2008 : Single file documentation
   * - 27 jun 2008 : enable/disable implementation
   *
@@ -33,6 +34,7 @@
 
 #include "bgcallback.h"
 #include "skinmanager.h" // For OgreGuiSkinID
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 
 using namespace Ogre;

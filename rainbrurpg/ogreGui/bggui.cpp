@@ -162,10 +162,11 @@ bool BetaGUI::GUI::injectMouse(unsigned int x,unsigned int y){
      */
     if (mFocusedWidget!=NULL){
       
-      string s = "FocusedWidget's parent is NULL. Widget's name is `";
-      s += mFocusedWidget->getName();
-      s += "'.";
-      LOGA(mFocusedWidget->getParent(), s.c_str());
+      GTS_MID(str);
+      // TRANSLATORS: The argument is the name of a widget
+      sprintf(str, _("FocusedWidget's parent is NULL. Widget's name is `%s')"),
+	      mFocusedWidget->getName().c_str());
+      LOGA(mFocusedWidget->getParent(), str);
 
       int parentX = mFocusedWidget->getParent()->getLeft();
       int parentY = mFocusedWidget->getParent()->getTop();
@@ -283,11 +284,11 @@ createOverlay(String N,Vector2 P,Vector2 D,String M,String C,bool A){
   */
 void BetaGUI::GUI::addWindow(Window* w){
   windowList.push_back(w);
-
-  LOGCATS("GUI::addWindow called (");
-  LOGCATI(windowList.size());
-  LOGCATS(" registered)");
-  LOGCAT();
+  GTS_MID(str);
+  // TRANSLATORS: The argument is the number of registered windows
+  sprintf(str, _("GUI::addWindow() called (%i windows registered)"),
+	  windowList.size());
+  LOGI(str);
 }
 
 /** Get the next uniqueId used by button
@@ -388,7 +389,7 @@ void BetaGUI::GUI::setMovedWindow(Window* w){
   *
   */
 void BetaGUI::GUI::deactivateWindow(Window* win){
-  LOGI("Deactivate window");
+  LOGI(_("Deactivate window"));
   this->resizedWindow=NULL;
   this->movedWindow=NULL;
 }

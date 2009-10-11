@@ -12,7 +12,7 @@
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.0.5-186
+@set VERSION 0.0.5-195
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game

@@ -59,7 +59,7 @@ RainbruRPG::Core::vcConstant::vcConstant()
   */
 float RainbruRPG::Core::vcConstant::getNextFrame(bool& b){
   if (!mRunning){
-    LOGW("VelocityCalculator not started");
+    LOGW(_("VelocityCalculator not started"));
     return 0.0f;
   }
   else{

@@ -115,12 +115,13 @@ initialise( Ogre::RenderWindow *renderWindow ) {
     renderWindow->getCustomAttribute( "WINDOW", &windowHnd );
 #endif
 
-    LOGA(windowHnd, "Cannot get non null window handle, events will "
-	 "not be captured correctly");
+    LOGA(windowHnd, _("Cannot get non null window handle, events will "
+		      "not be captured correctly"));
 
     // Fill parameter list
     windowHndStr << (unsigned int) windowHnd;
-    paramList.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+    paramList.insert(std::make_pair(std::string("WINDOW"), 
+				    windowHndStr.str()));
 
     // Create inputsystem
     mInputSystem = OIS::InputManager::createInputSystem( paramList );
@@ -174,14 +175,14 @@ initialise( Ogre::RenderWindow *renderWindow ) {
 void RainbruRPG::Core::InputManager::capture( void ) {
     // Need to capture / update each device every frame
     if( mMouse ) {
-      LOGA( mMouse, "RainbruRPG::Core::InputManager::mMouse is NULL. "
-	    "Program should crash.");
+      LOGA( mMouse, _("RainbruRPG::Core::InputManager::mMouse is NULL. "
+		      "Program should crash."));
       mMouse->capture();
     }
 
     if( mKeyboard ) {
-      LOGA( mKeyboard, "RainbruRPG::Core::InputManager::mKeyboard is NULL. "
-	    "Program should crash.");
+      LOGA( mKeyboard, _("RainbruRPG::Core::InputManager::mKeyboard is NULL. "
+			 "Program should crash."));
       mKeyboard->capture();
     }
 
@@ -221,7 +222,7 @@ void RainbruRPG::Core::InputManager::addKeyListener( OIS::KeyListener *keyListen
   */
 void RainbruRPG::Core::InputManager::addMouseListener( OIS::MouseListener *mouseListener, const std::string& instanceName ) {
 
-  LOGI("Adding a mouse listener");
+  LOGI(_("Adding a mouse listener"));
 
     if( mMouse ) {
         // Check for duplicate items
@@ -277,7 +278,7 @@ void RainbruRPG::Core::InputManager::removeKeyListener( const std::string& insta
   */
 void RainbruRPG::Core::InputManager::removeMouseListener( const std::string& instanceName ) {
 
-  LOGI("Removing MouseListener");
+  LOGI(_("Removing MouseListener"));
   // Check if item exists
   itMouseListener = mMouseListeners.find( instanceName );
   if( itMouseListener != mMouseListeners.end() ) {
@@ -285,7 +286,7 @@ void RainbruRPG::Core::InputManager::removeMouseListener( const std::string& ins
   }
   else {
     // Doesn't Exist
-    LOGW("MouseListener not found");
+    LOGW(_("MouseListener not found"));
   }
 }
 
@@ -449,7 +450,7 @@ int RainbruRPG::Core::InputManager::getNumOfJoysticks( void ) {
   *
   */
 bool RainbruRPG::Core::InputManager::keyPressed( const OIS::KeyEvent &e ) {
-  LOGI("InputManager::keyPressed called");
+  LOGI(_("InputManager::keyPressed called"));
 
   itKeyListener    = mKeyListeners.begin();
   itKeyListenerEnd = mKeyListeners.end();

@@ -19,6 +19,7 @@
   * </pre>
   *
   * Modifications :
+  * - 06 oct 2009 : Made messages transatable with gettext
   * - 19 aug 2008 : Single file documentation
   * - 21 jan 2008 : Removing Overlay and Material related var and functions
   * - 20 nov 2007 : setMasked(bool) implementation
@@ -30,6 +31,7 @@
 #define _BETAGUI_TEXT_INPUT_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h> // For the GNU gettext stuff
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID

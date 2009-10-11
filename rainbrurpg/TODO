@@ -10,13 +10,11 @@ o [rainbru] Fixing some OgreGui related graphical bugs
 - Moving MCL scrollbar when window's SB were moved is spurious 
 
 o [rainbru] i18n (source are taken alphabetically)
-   Please use GTS_* macros from rainbrudef.h for all translated
-   strings using sprintf and parameters
+   Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
    Add the translated sources to po/POTFILES.in
-- common/ finished
+- common/ and maincore/ finished
 - do not translate design (library should change)
-- maincore/gslocaltest.cpp was the last translated source
-- Find why po/RainbruRPG.pot is not updated
+- ogregui/bgtextinput.cpp was the last translated source
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -125,13 +123,20 @@ A system that serialize widgets position and configuration
 
 ===  Changelog ===   
    18 items by revision
-   Please update version and revision in configure.in and Doxyfile
+   Please update version and revision in configure.in, Doxyfile, texinfo
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-195 (22 aug 2009 - ???)
-- (11) common/Version now logs build date and time
+- (15) Updated doc/doc_cross_compil with config.h extra chars bug
+- Made messages translatable using gettext in opgreGui/
+   bgbutton, bgcallback, bggui, bgtextinput
+- Made messages translatable using gettext in maincore/
+   keyboardnavigation, vcconstant, velocitycalculator : maincore/ finished
+- Made messages translatable using gettext in maincore/
+   gighlightlistener, inputmanager, inputwrapper
+- common/Version now logs build date and time
 - Changed 'make dll' rules for maincore/
 - Making GlobalURI::homeSetup() work on win32 platform
 - Making more logging in common/GlobalURI for cross-compil

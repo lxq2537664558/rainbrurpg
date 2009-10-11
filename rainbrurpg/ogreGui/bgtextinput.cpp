@@ -187,12 +187,8 @@ void BetaGUI::TextInput::deactivate(void){
   *
   */
 void BetaGUI::TextInput::computeMaskedValue(void){
-  LOGI("computeMaskedValue called");
+  LOGI(_("computeMaskedValue called"));
   size_t len = value.length();
-  LOGCATS("value.length() returns ");
-  LOGCATI(len);
-  LOGCAT();
-
   maskedValue.clear();
 
   std::ostringstream oss;
@@ -200,10 +196,6 @@ void BetaGUI::TextInput::computeMaskedValue(void){
     oss << "*";
   }
   maskedValue=oss.str();
-
-  LOGCATS("maskedValue.length() returns ");
-  LOGCATI(maskedValue.length());
-  LOGCAT();
 }
 
 /** Get the current content as an integer
