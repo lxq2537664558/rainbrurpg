@@ -89,7 +89,7 @@ BetaGUI::Window::Window(const Vector4& D,OgreGuiWindowType t,
   */
 BetaGUI::Window::~Window(){
 
-  LOGI("Window destructor called");
+  LOGI(_("Window destructor called"));
   mGUI->removeWindow(this);
 
   delete mScrollPane;
@@ -486,11 +486,15 @@ tScrollBarPolicy BetaGUI::Window::getVerticalScrollbarPolicy(void){
   *
   */
 void BetaGUI::Window::debugScrollPane(void){
-  LOGCATS("maxChildRight=");
-  LOGCATI(mScrollPane->getMaxChildRight());
-  LOGCATS(" maxChildBottom=");
-  LOGCATI(mScrollPane->getMaxChildBottom());
-  LOGCAT();
+  GTS_LIT(str);
+  // TRANSLATORS: The parameters are some integers values from the
+  // ScrollPane class getted through getMaxChildRight() and 
+  // getMaxChildBottom()
+  sprintf(str, _("Debugging ScrollPane : maxChildRight=%d maxChildBottom=%d"),
+	  mScrollPane->getMaxChildRight(),
+	  mScrollPane->getMaxChildBottom());
+  LOGI(str);
+	  
 }
 
 /** Is the vertical scrollbar needed ?

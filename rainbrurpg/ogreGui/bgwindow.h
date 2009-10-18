@@ -15,6 +15,7 @@
   *          \c wingdi.h defined function.
   *
   * Modifications :
+  * - 15 oct 2009 : Made messages transatable with gettext
   * - 11 feb 2009 : Constructor now takes a const String& argument
   * - 10 feb 2009 : Constructor now takes a const Vector4& argument
   * - 05 feb 2009 : Added support for NULL ResizeGrip and TitleBar in resize()
@@ -40,10 +41,11 @@
 
 #include <ogreimport.h>
 #include <assert.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 #include "widget.h" 
 
-#include "bggui.h"         // For enum OgreGUIWindowType
+#include "bggui.h"         // For the OgreGUIWindowType enumeation
 #include "scrollpane.h"    // For tScrollBarPolicy
 #include "bgtextinput.h"
 #include "resizegrip.h"

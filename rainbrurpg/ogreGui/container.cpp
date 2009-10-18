@@ -61,15 +61,15 @@ Container(Vector4 dim, Widget* parent, OgreGuiSkinID sid):
   */
 RainbruRPG::OgreGui::Container::~Container(){
 
-  LOGI("Cleaning buttonList");
+  LOGI(_("Cleaning buttonList"));
   for(unsigned int i=0;i<buttonList.size();i++)
     delete buttonList[i];
 
-  LOGI("Cleaning textInputList");
+  LOGI(_("Cleaning textInputList"));
   for(unsigned int i=0;i<textInputList.size();i++)
     delete textInputList[i];
   
-  LOGI("Cleaning widgetList");
+  LOGI(_("Cleaning widgetList"));
   for(unsigned int i=0;i<widgetList.size();i++)
     delete widgetList[i];
 
@@ -301,7 +301,7 @@ handleKeyEvent( String k, unsigned int px, unsigned int py ){
      return true;
   }
   else if (k=="@"){
-    LOGI("At sign called");
+    LOGI(_("At sign called"));
   }  
 
   // If the lenght limit of the textInput is reached, we do nothing
@@ -398,12 +398,13 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	makeCorners();
 	movingDevX = mx - corners.left;
 	movingDevY = my - corners.top;
-	LOGCATS("Setting Moving dev to ");
-	LOGCATI(movingDevX);
-	LOGCATS("x");
-	LOGCATI(movingDevY);
-	LOGCATS(" (OCT_WIN_MOVE)");
-	LOGCAT();
+	GTS_LIT(str_winmove);
+	// TRANSLATORS: The parameters are some integer values 
+	// telling X and Y moving deviation
+	sprintf(str_winmove, 
+		_("Container: setting Moving dev to %d,%d (OCT_WIN_MOVE)"),
+		movingDevX, movingDevY);
+	LOGI(str_winmove);
 	win->move(mx, my);
 	makeCorners();
 	return true;
@@ -429,12 +430,13 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	  movingDevY = corners.bottom - my;
 	}
 
-	LOGCATS("Setting Moving dev to ");
-	LOGCATI(movingDevX);
-	LOGCATS("x");
-	LOGCATI(movingDevY);
-	LOGCATS(" (OCT_WIN_RESIZE)");
-	LOGCAT();
+	GTS_LIT(str_winresize);
+	// TRANSLATORS: The parameters are some integer values 
+	// telling X and Y moving deviation
+	sprintf(str_winresize, 
+		_("Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"),
+		movingDevX, movingDevY);
+	LOGI(str_winresize);
 	win->resize(mx, my);
 	makeCorners();
 	return true;     
@@ -510,7 +512,6 @@ handleWidgetMouseEvents(unsigned int px, unsigned int py,
   *
   */
 void RainbruRPG::OgreGui::Container::resetMovingDev(){
-  //  LOGI("Container::resetMovingDev called");
   movingDevX = 0;
   movingDevY = 0;
 }

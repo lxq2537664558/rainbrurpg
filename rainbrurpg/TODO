@@ -1,4 +1,5 @@
-RainbruRPG - A 3D multiplayer Role Playing Game project based on Ogre3D.
+RainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
+   on Ogre3D and Fox-toolkit.
 
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/   --enable-Wno-stddep-ogre --enable-debug
@@ -14,7 +15,7 @@ o [rainbru] i18n (source are taken alphabetically)
    Add the translated sources to po/POTFILES.in
 - common/ and maincore/ finished
 - do not translate design (library should change)
-- ogregui/bgtextinput.cpp was the last translated source
+- ogregui/drawingdevsettings.cpp was the last translated source
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -129,7 +130,10 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-195 (22 aug 2009 - ???)
-- (15) Updated doc/doc_cross_compil with config.h extra chars bug
+- (17) Made messages translatable using gettext in opgreGui/
+   bgwindow, container, dialog, drawingdevlist, drawingdevsettings
+- Fixed typo in texinfo manual
+- Updated doc/doc_cross_compil with config.h extra chars bug
 - Made messages translatable using gettext in opgreGui/
    bgbutton, bgcallback, bggui, bgtextinput
 - Made messages translatable using gettext in maincore/

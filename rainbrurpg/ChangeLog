@@ -1,3 +1,10 @@
+2009-10-15 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/bgwindow.cpp : Uses GTS_* macros.
+	* ogreGui/container.cpp : Uses GTS_* macros.
+	* ogreGui/dialog.cpp : Uses GTS_* macros.
+	* ogreGui/drawingdevlist.cpp : Uses GTS_* macros.
+	* ogreGui/drawingdevsettings.cpp : Uses GTS_* macros.
+
 2009-09-17 Jerome Pasquier  <rainbru@free.fr>
 	* common/version.cpp (logVersion): Now log build date and time.
 	* common/version.h : Added buildDate and buildTime class members.

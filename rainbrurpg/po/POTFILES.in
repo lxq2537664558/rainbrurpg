@@ -88,3 +88,8 @@ ogreGui/bgbutton.cpp
 ogreGui/bgcallback.cpp
 ogreGui/bggui.cpp
 ogreGui/bgtextinput.cpp
+ogreGui/bgwindow.cpp
+ogreGui/container.cpp
+ogreGui/dialog.cpp
+ogreGui/drawingdevlist.cpp
+ogreGui/drawingdevsettings.cpp

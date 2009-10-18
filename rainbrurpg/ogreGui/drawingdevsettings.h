@@ -24,6 +24,7 @@
   * Declares a QuadRenderer deviation setting
   *
   * Modifications :
+  * - 15 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 05 apr 2008 : starting implementation
   *         
@@ -33,6 +34,7 @@
 #define _OGRE_GUI_DRAWING_DEV_SETTINGS_H_
 
 #include <string>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 using namespace std;
 

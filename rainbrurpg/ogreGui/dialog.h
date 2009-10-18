@@ -24,6 +24,7 @@
   * Declares a modal dialog for OgreGui
   *
   * Modifications :
+  * - 15 oct 2009 : Made messages transatable with gettext
   * - 13 feb 2009 : Fix a bug when moving the dialog in draw()
   * - 11 feb 2009 : Constructor now takes a const Vector4&  
   * - 10 feb 2009 : - draw() now calls QuadRenderer::reset()
@@ -38,6 +39,7 @@
 #define _OGRE_GUI_DIALOG_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 #include "bgwindow.h"
 

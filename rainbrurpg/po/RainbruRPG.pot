@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-06 10:18+0200\n"
+"POT-Creation-Date: 2009-10-15 09:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1738,4 +1738,46 @@ msgstr ""
 
 #: ogreGui/bggui.cpp:392
 msgid "Deactivate window"
+msgstr ""
+
+#: ogreGui/bgtextinput.cpp:190
+msgid "computeMaskedValue called"
+msgstr ""
+
+#: ogreGui/bgwindow.cpp:92
+msgid "Window destructor called"
+msgstr ""
+
+#. TRANSLATORS: The parameters are some integers values from the
+#. ScrollPane class getted through getMaxChildRight() and
+#. getMaxChildBottom()
+#: ogreGui/bgwindow.cpp:493
+#, c-format
+msgid "Debugging ScrollPane : maxChildRight=%d maxChildBottom=%d"
+msgstr ""
+
+#: ogreGui/container.cpp:64
+msgid "Cleaning buttonList"
+msgstr ""
+
+#: ogreGui/container.cpp:68
+msgid "Cleaning textInputList"
+msgstr ""
+
+#: ogreGui/container.cpp:72
+msgid "Cleaning widgetList"
+msgstr ""
+
+#: ogreGui/container.cpp:304
+msgid "At sign called"
+msgstr ""
+
+#: ogreGui/container.cpp:405
+#, c-format
+msgid "Container: setting Moving dev to %d,%d (OCT_WIN_MOVE)"
+msgstr ""
+
+#: ogreGui/container.cpp:437
+#, c-format
+msgid "Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"
 msgstr ""

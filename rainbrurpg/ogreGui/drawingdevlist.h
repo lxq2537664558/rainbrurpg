@@ -24,6 +24,7 @@
   * Declares a list of DrawingDevSettings
   *
   * Modifications :
+  * - 15 oct 2009 : Made messages transatable with gettext
   * - 23 sep 2008 : \ref RainbruRPG::OgreGui::DrawingDevList::toString
   *                 "toString()" returned value bugfix
   * - 26 aug 2008 : Single file documentation
@@ -36,6 +37,7 @@
 
 #include <list>
 #include <string>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declaration
 namespace RainbruRPG{
