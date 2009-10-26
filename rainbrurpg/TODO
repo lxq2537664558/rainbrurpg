@@ -15,7 +15,7 @@ o [rainbru] i18n (source are taken alphabetically)
    Add the translated sources to po/POTFILES.in
 - common/ and maincore/ finished
 - do not translate design (library should change)
-- ogregui/drawingdevsettings.cpp was the last translated source
+- ogregui/hscrollbar.cpp was the last translated source
 
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
@@ -129,8 +129,12 @@ A system that serialize widgets position and configuration
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
-* v 0.0.5-195 (22 aug 2009 - ???)
-- (17) Made messages translatable using gettext in opgreGui/
+* v 0.0.5-196 (26 oct 2009 - ???)
+
+* v 0.0.5-195 (22 aug 2009 - 26 oct 2009)
+- Made messages translatable using gettext in ogreGui/
+   font, fontmanager, glyph, guivertex, hscrollbar
+- Made messages translatable using gettext in opgreGui/
    bgwindow, container, dialog, drawingdevlist, drawingdevsettings
 - Fixed typo in texinfo manual
 - Updated doc/doc_cross_compil with config.h extra chars bug

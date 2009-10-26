@@ -23,7 +23,7 @@ translation approved by the Foundation.
 
 File: RainbruRPG.info,  Node: Top,  Next: Instructions,  Prev: (dir),  Up: (dir)
 
-   This file documents the `RainbruRPG' command to RainbruRPG is a
+   This file documents the `RainbruRPG' command, the client of an
 in-development Multiplayer Online Role-Playing Game.
 
 * Menu:
@@ -555,12 +555,12 @@ Concept Index
 
 Tag Table:
 Node: Top866
-Node: Instructions1480
-Node: Copying2159
-Node: Overview21345
-Node: Server21577
-Node: Invoking RainbruRPG23212
-Node: Problems23888
-Node: Concept Index24518
+Node: Instructions1479
+Node: Copying2158
+Node: Overview21344
+Node: Server21576
+Node: Invoking RainbruRPG23211
+Node: Problems23887
+Node: Concept Index24517
 
 End Tag Table

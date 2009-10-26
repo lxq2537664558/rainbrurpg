@@ -113,11 +113,13 @@ loadFont(const String& name, unsigned int size){
 
   // Initialize FreeType library
   err= FT_Init_FreeType(&lib);
-  LOGA(err==0, "Unable to initialize FreeType");
+  LOGA(err==0, _("Unable to initialize FreeType library"));
   if (err){
-    LOGCATS("FT error code :");
-    LOGCATI(err);
-    LOGCAT();
+    GTS_LIT(str);
+    // TRANSLATORS: The parameter is the error code returned by the FreeType
+    // library. It is a signed integer.
+    sprintf(str, _("FT error code : %i"), err);
+    LOGE(str);
   }
 
   int bufferSize = dsp->size();
@@ -125,10 +127,10 @@ loadFont(const String& name, unsigned int size){
 
   dsp->read( fontBuffer, bufferSize );
   err= FT_New_Memory_Face( lib, fontBuffer, bufferSize, 0, &face );
-  LOGA(err==0, "Unable to load font");
+  LOGA(err==0, _("Unable to load font"));
 
   err=FT_Set_Char_Size( face, 0, size * 64, 96, 96 );
-  LOGA(err==0, "Unable to set font size");
+  LOGA(err==0, _("Unable to set font size"));
 
   err=FT_Select_Charmap( face,FT_ENCODING_UNICODE);
   
@@ -208,9 +210,11 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
 		       glyph_index, /* glyph index */  
 		       FT_LOAD_RENDER );
     if (err!=0){
-      LOGCATS("FT error code while loading glyph :");
-      LOGCATI(err);
-      LOGCAT();
+      GTS_MID(str);
+      // TRANSLATORS: The parameter is the error code returned by the FreeType
+      // library. It is a signed integer.
+      sprintf(str, _("FT error code while loading glyph : %i"), err);
+      LOGE(str);
     }
 
     width = slot->bitmap.width + GLYPH_PAD_SPACE;
@@ -218,10 +222,11 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
       if (charCode == 32){
 	width = GLYPH_PAD_SPACE + (vFont->getSize() / 2);
       }
-      string warn;
-      warn= "Glyph width is NULL for charcode ";
-      warn+=StringConv::getSingleton().itos(charCode);
-      LOGW(warn.c_str());
+      GTS_MID(warn);
+      // TRANSLATORS: The parameter is an unsigned integer that represents
+      // a character (a charcode).
+      sprintf(warn, _("Glyph width is NULL for charcode %u"), charCode);
+      LOGW(warn);
     }
 
     // see if we need to wrap to next row

@@ -23,7 +23,8 @@
 /** \file guivertex.h
   * Declares a vertex when sent to hardware bufer by QuadRenderer
   *
-  * Modifications :
+  * Modifications : 
+  * - 26 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 16 jan 2008 : Starting implementation
   *
@@ -33,6 +34,7 @@
 #define _OGRE_GUI_GUI_VERTEX_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 #include "vector3.h"
 

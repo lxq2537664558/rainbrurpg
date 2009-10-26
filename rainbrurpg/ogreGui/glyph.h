@@ -25,6 +25,7 @@
   * Declares the class that stores informations about a single glyph 
   *
   * Modifications :
+  * - 26 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 10 jan 2008 : Charcode directly assigned in constructor
   * - 03 dec 2007 : starting implementation
@@ -35,6 +36,7 @@
 #define _OGRE_GUI_GLYPH_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 namespace RainbruRPG{
   namespace OgreGui{

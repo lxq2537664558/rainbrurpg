@@ -93,3 +93,8 @@ ogreGui/container.cpp
 ogreGui/dialog.cpp
 ogreGui/drawingdevlist.cpp
 ogreGui/drawingdevsettings.cpp
+ogreGui/font.cpp
+ogreGui/fontmanager.cpp
+ogreGui/glyph.cpp
+ogreGui/guivertex.cpp
+ogreGui/hscrollbar.cpp

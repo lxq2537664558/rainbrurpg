@@ -27,6 +27,7 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
+  * - 26 oct 2009 : Made messages transatable with gettext
   * - 17 sep 2008 : Remove alignement and wordwrap todo item
   * - 20 aug 2008 : Adding Ogre scope to Rectangle object to avoid 
   *                 ambiguous use on Win32 platform
@@ -41,6 +42,7 @@
 #include <string>
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 #include "glyph.h"
 #include "lineinfo.h"

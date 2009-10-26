@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.3.0\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-15 09:23+0200\n"
+"POT-Creation-Date: 2009-10-26 11:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1780,4 +1780,63 @@ msgstr ""
 #: ogreGui/container.cpp:437
 #, c-format
 msgid "Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"
+msgstr ""
+
+#. TRANSLATORS: The parameter is an unsigned integer (size_t typed)
+#. that represents a character (a charcode).
+#: ogreGui/font.cpp:317
+#, c-format
+msgid "Font::getGlyph not found for charcode %u"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the size of the map containing
+#. character glyphs (an unsigned integer value).
+#: ogreGui/font.cpp:323
+#, c-format
+msgid "mGlyphMap.size=%u"
+msgstr ""
+
+#: ogreGui/fontmanager.cpp:116
+msgid "Unable to initialize FreeType library"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the error code returned by the FreeType
+#. library. It is a signed integer.
+#: ogreGui/fontmanager.cpp:121
+#, c-format
+msgid "FT error code : %i"
+msgstr ""
+
+#: ogreGui/fontmanager.cpp:130
+msgid "Unable to load font"
+msgstr ""
+
+#: ogreGui/fontmanager.cpp:133
+msgid "Unable to set font size"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the error code returned by the FreeType
+#. library. It is a signed integer.
+#: ogreGui/fontmanager.cpp:216
+#, c-format
+msgid "FT error code while loading glyph : %i"
+msgstr ""
+
+#. TRANSLATORS: The parameter is an unsigned integer that represents
+#. a character (a charcode).
+#: ogreGui/fontmanager.cpp:228
+#, c-format
+msgid "Glyph width is NULL for charcode %u"
+msgstr ""
+
+#: ogreGui/glyph.cpp:57
+msgid "Constructing a glyph with NULL height"
+msgstr ""
+
+#: ogreGui/guivertex.cpp:82
+msgid "GuiVertex::setPosition parameter is NULL."
+msgstr ""
+
+#: ogreGui/hscrollbar.cpp:60
+msgid "Cannot get parent Window. We're enable to change mouse cursor."
 msgstr ""

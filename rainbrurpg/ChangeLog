@@ -1,3 +1,12 @@
+2009-10-26 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/hscrollbar.cpp : Made messages translatable using 
+	GNU gettext.
+	* ogreGui/guivertex.cpp : Made messages translatable using GNU gettext.
+	* ogreGui/glyp.cpp : Made messages translatable using GNU gettext.
+	* ogreGui/fontmanager.cpp : Made messages translatable using 
+	GNU gettext.
+	* ogreGui/font.cpp : Made messages translatable using GNU gettext.
+
 2009-10-15 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/bgwindow.cpp : Uses GTS_* macros.
 	* ogreGui/container.cpp : Uses GTS_* macros.

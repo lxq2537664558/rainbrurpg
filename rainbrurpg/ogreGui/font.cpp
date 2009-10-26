@@ -311,19 +311,21 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
 
   if (!found){
 
-    string s;
-    s="Font::getGlyph not found for charcode ";
-    s+=StringConv::getSingleton().itos(vChar);
-    LOGE(s.c_str());
+    GTS_MID(str);
+    // TRANSLATORS: The parameter is an unsigned integer (size_t typed)
+    // that represents a character (a charcode).
+    sprintf(str, _("Font::getGlyph not found for charcode %u"), vChar);
+    LOGE(str);
 
-    LOGCATS("mGlyphMap.size=");
-    LOGCATI(mGlyphMap.size());
-    LOGCAT();
+    GTS_LIT(str2);
+    // TRANSLATORS: The parameter is the size of the map containing
+    // character glyphs (an unsigned integer value).
+    sprintf(str2, _("mGlyphMap.size=%u"), mGlyphMap.size());
+    LOGI(str2);
 
     it=mGlyphMap.begin();
     return (*it).second;
   }
-
 }
 
 /** Render a text

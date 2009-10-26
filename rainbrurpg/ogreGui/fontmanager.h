@@ -24,6 +24,7 @@
   * Declares the singleton that manages Font objects
   *
   * Modifications :
+  * - 26 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 03 dec 2007 : starting implementation
   *         
@@ -32,8 +33,9 @@
 #ifndef _OGRE_GUI_OGRE_FONT_MANAGER_H_
 #define _OGRE_GUI_OGRE_FONT_MANAGER_H_
 
-#include "singleton.h"
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
+#include "singleton.h"
 #include "font.h"
 
 #include <list>

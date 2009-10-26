@@ -56,8 +56,8 @@ HScrollBar(Vector4 dim, Widget* win, OgreGuiSkinID sid):
   makeCorners();
 
   Window* winn=dynamic_cast<Window*>(win);
-  LOGA(winn, "Cannot get parent Window. "
-       "We're enable to change mouse cursor.");
+  LOGA(winn, 
+       _("Cannot get parent Window. We're enable to change mouse cursor."));
 
   mGUI=winn->getGUI();
 

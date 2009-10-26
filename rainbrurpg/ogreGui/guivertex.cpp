@@ -79,8 +79,7 @@ void RainbruRPG::OgreGui::GuiVertex::setPosition(const OgreGui::Vector3& vPos){
    * See the complete trace of this SEGFAULT in v0.0.5-168's changelog.
    *
    */
-  LOGA(&vPos, "GuiVertex::setPosition parameter is NULL. "
-       "Program should crash.");
+  LOGA(&vPos, _("GuiVertex::setPosition parameter is NULL."));
   pos=vPos;
 }
 
