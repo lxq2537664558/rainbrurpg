@@ -95,6 +95,12 @@ AC_LIBTOOL_WIN32_DLL dnl Handle dlls
 AM_PROG_LIBTOOL
 AM_SANITY_CHECK
 
+dnl Needs GNU gettext for translation
+dnl
+dnl v0.0.5-196 : AM_GNU_GETTEXT must be declared before AC_LANG_CPLUSPLUS.
+dnl If after, it may declare SIZE_MAX with a newline charcater causing 
+dnl errors during configure and compilation.
+AM_GNU_GETTEXT 
 AC_LANG_CPLUSPLUS
 
 dnl Handles cross compil with prefix
@@ -164,8 +170,7 @@ else
 fi
 AC_PATH_PROG(DLLWRAP, $dllwrap)
 
-dnl Needs GNU gettext for translation
-AM_GNU_GETTEXT
+
 
 AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\

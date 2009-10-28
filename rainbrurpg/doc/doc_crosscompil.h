@@ -257,6 +257,11 @@ config.h: ASCII C program text, with CR, LF line terminators</pre>
   * files from and to dos carriage returns, does not change anything. The
   * extra char is still here.
   *
-  * TODO: Searching the m4 file that create this preprocessor macro.
+  * \subsubsection win32_troubles_195_solution A solution ?
+  *
+  * It seems that the bug is fixed. In <code>configure.in</code>, the
+  * <code>AM_GNU_GETTEXT</code> macro must e placed before 
+  * <code>AC_LANG_CPLUSPLUS</code>, through it does not define 
+  * <code>SIZE_MAX</code> anymore in <code>config.h</code>.
   *
   */

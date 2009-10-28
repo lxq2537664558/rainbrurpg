@@ -1,3 +1,7 @@
+2009-10-28 Carine Chum <carine.chum@free.fr>
+	* configure.in : Fixed SIZE_MAX declaration error : AM_GNU_GETTEXT
+	must be declared before AC_LANG_CPLUSPLUS.
+	
 2009-10-26 Jerome Pasquier  <rainbru@free.fr>
 	* ogreGui/hscrollbar.cpp : Made messages translatable using 
 	GNU gettext.

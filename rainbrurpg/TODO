@@ -130,6 +130,7 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
 
 * v 0.0.5-196 (26 oct 2009 - ???)
+- Fixed the SIZE_MAX bug in cross-compil
 
 * v 0.0.5-195 (22 aug 2009 - 26 oct 2009)
 - Made messages translatable using gettext in ogreGui/
