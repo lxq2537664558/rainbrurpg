@@ -24,6 +24,7 @@
   * Declares a MessageBox dialog based on OgreGUI
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 12 feb 2009 : Become a subclass of Dialog (closes bug26)
   * - 26 aug 2008 : Single file documentation
   * - 14 may 2008 : Now based on OgreGui::Dialog
@@ -41,6 +42,8 @@
 
 #include "bglistener.h"
 #include "dialog.h"
+
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace BetaGUI {

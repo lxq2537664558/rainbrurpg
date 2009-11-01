@@ -24,6 +24,7 @@
   * Declares a class used for mouse events handling
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 15 apr 2008 : Right button handling
   * - 30 mar 2008 : starting implementation
@@ -34,6 +35,7 @@
 #define _OGRE_GUI_MOUSE_EVENT_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 /** The minimum duration of a long click */
 #define LONG_CLICK_DURATION 200

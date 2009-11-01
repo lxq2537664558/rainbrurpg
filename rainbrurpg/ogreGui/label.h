@@ -24,6 +24,7 @@
   * Declares a caption widget
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 21 jan 2008 : Removing Overlay references
   * - 16 nov 2007 : setCaption(String) implementation
@@ -39,6 +40,8 @@
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID
+
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declaration
 namespace BetaGUI {

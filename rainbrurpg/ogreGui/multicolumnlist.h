@@ -27,6 +27,7 @@
   *          to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 28 jun 2008 : sigSelectionChanged implementation
   * - 17 apr 2008 : PopupMenu integration
@@ -50,6 +51,7 @@
 #include <list>
 #include <sigc++/sigc++.h>
 #include <algorithm> // for sort
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 /// The sensitivity in pixels
 #define COLUMN_RESIZE_SENSITIVITY 4

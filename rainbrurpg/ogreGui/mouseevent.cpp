@@ -73,18 +73,18 @@ void RainbruRPG::OgreGui::MouseEvent::setLeftMouseButtonPressed(bool b){
     mClickDuration=mTimer->getMilliseconds()-mClickStartTime;
 
     if (mClickDuration > LONG_CLICK_DURATION){
-      LOGCATS("mClickDuration=");
-      LOGCATI(mClickDuration);
-      LOGCATS("(long click)");
-      LOGCAT();
+      GTS_LIT(str);
+      // TRANSLATORS: The parameter is a duration in milliseconds.
+      sprintf(str, _("mClickDuration=%d (long click)"), mClickDuration);
+      LOGI(str);
       mLongClick=true;
       mLeftClick=false;
     }
     else{
-      LOGCATS("mClickDuration=");
-      LOGCATI(mClickDuration);
-      LOGCATS("(short click)");
-      LOGCAT();
+      GTS_LIT(str2);
+      // TRANSLATORS: The parameter is a duration in milliseconds.
+      sprintf(str2, _("mClickDuration=%d (short click)"), mClickDuration);
+      LOGI(str2);
       mLongClick=false;
       mLeftClick=true;
     }

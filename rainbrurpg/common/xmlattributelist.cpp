@@ -62,6 +62,7 @@ bool RainbruRPG::Network::Ident::xmlAttributeList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     GTS_LIT(str);
+    // TRANSLATORS: The parameter is a numerical error code.
     sprintf(str, _("An error occured while getting xmlAttrbibuteList. "
 		   "Server response was : %d"), resp);
     LOGE(str)

@@ -59,6 +59,12 @@ RainbruRPG::Core::Version::~Version(){
   */
 void RainbruRPG::Core::Version::logVersion(){
   GTS_BIG(str);
+  // TRANSLATORS: The parameters are (in the same order and line layout) :
+  // L1 : The application name, version, revision
+  // L2 : Fox-Toolkit major, minor and level version
+  // L3 : Ogre major, minor version, version patch and version name
+  // L4 : Same as Ogre for OIS
+  // L5 : libCurl version, timestamp
   sprintf(str, _("Starting %s v%s-%s using :\n"
 		 " - FOX-Toolkit v%d.%d.%d\n"
 		 " - Ogre3D v%d.%d.%d (%s)\n"
@@ -76,6 +82,7 @@ void RainbruRPG::Core::Version::logVersion(){
   Logger::getSingleton().logMessage( str );
 
   GTS_MID(str2);
+  // TRANSLATORS: The parameters are the build (compilation) date and time.
   sprintf(str2, _("Built '%s' at '%s' \n"), buildDate, buildTime);
   Logger::getSingleton().logMessage( str2 );
 

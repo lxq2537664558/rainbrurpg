@@ -324,6 +324,7 @@ bool RainbruRPG::Core::GameEngine::connectUser(const char* user,
   */
 void RainbruRPG::Core::GameEngine::setRender(const char* rName){
   GTS_LIT(str);
+  // TRANSLATORS: The parameter is a graphic renderer name.
   sprintf(str, _("Setting renderer '%s'"), rName);
   LOGI(str);
 
@@ -582,6 +583,7 @@ void RainbruRPG::Core::GameEngine::logSceneMgrList(){
   GTS_MID(str);
   while (it.hasMoreElements ()){
     const SceneManagerMetaData* metaData = it.getNext ();
+    // TRANSLATORS: The parameter is a scene manager name.
     sprintf(str, _("Scene manager '%s' found."), metaData->typeName.c_str());
     LOGI(str);
   } 
@@ -617,6 +619,7 @@ void RainbruRPG::Core::GameEngine::
 loadResourcesGroup(const Ogre::String& groupName){
 
   GTS_LIT(str);
+  // TRANSLATORS: The parameter is a ressource group name
   sprintf(str, _("Loading resource group '%s'"), groupName.c_str());
   LOGI(str);
 
@@ -628,6 +631,7 @@ loadResourcesGroup(const Ogre::String& groupName){
 
 
     for (iter=rdl.begin(); iter != rdl.end(); iter++){
+      // TRANSLATORS: The parameter is a ressource name
       sprintf(str, _("Loading ressource '%s'"), (*iter).resourceName.c_str());
       LOGI(str);
     }

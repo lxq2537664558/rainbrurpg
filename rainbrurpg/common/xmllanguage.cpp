@@ -56,16 +56,19 @@ RainbruRPG::Options::xmlLanguage::xmlLanguage()
     loadNbMessages();
     
     GTS_LIT(str1);
+    // TRANSLATORS: The parameter is a language name.
     sprintf(str1, _("Last used language found : '%s'"), lastUsed);
     LOGI(str1);
 
     GTS_LIT(str2);
+    // TRANSLATORS: The parameter is a language name.
     sprintf(str2, _("Default language found : '%s'"), defaultLang);
     LOGI(str2);
 
     treatAllLanguages();
 
     GTS_TIN(str3);
+    // TRANSLATORS: The parameter is an integer (the list size).
     sprintf(str3, _("Language list size is '%d'"), languageList->size());
     LOGI(str3);
 
@@ -74,10 +77,12 @@ RainbruRPG::Options::xmlLanguage::xmlLanguage()
     LOGE(_("Cannot load languages.xml"));
 
     GTS_LIT(str4);
+    // TRANSLATORS: The parameter is an absolute file name (i.e. with paths).
     sprintf(str4,_("languages.xml absolute filename : '%s'"),filename.c_str());
     LOGE(str4)
 
     GTS_BIG(str5);
+    // TRANSLATORS: The parameter is an error string
     sprintf(str5,_("TinyXml error description '%s'"),doc->ErrorDesc());
     LOGE(str5)
   }

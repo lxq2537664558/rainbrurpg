@@ -54,11 +54,13 @@ RainbruRPG::Network::GlobalURI::GlobalURI():
 #endif //WEBSITE_DEBUG
 
   GTS_BIG(str);
+  // TRANSLATORS: The parameter is a direcoty name
   sprintf(str, _("USER_INSTALL_PREFIX=%s"), USER_INSTALL_PREFIX);
   LOGI(str);
 
   shareDir = USER_INSTALL_PREFIX;
   shareDir+="/share/RainbruRPG/";
+  // TRANSLATORS: The parameter is a direcoty name
   sprintf(str, _("shareDir=%s"), shareDir.c_str());
   LOGI(str);
 

@@ -127,6 +127,7 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
 				       s.size(), &bytesWritten);
 
   GTS_TIN(msg);
+  // TRANSLATORS: The parameter is the number of bytes we wrote.
   sprintf(msg, _("%d bytes written"), bytesWritten);
   LOGI(msg);
 }

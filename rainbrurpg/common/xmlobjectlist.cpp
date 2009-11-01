@@ -113,6 +113,7 @@ void RainbruRPG::Core::xmlObjectList::treatOneObject(TiXmlElement* elem){
   }
   else{
     GTS_LIT(str);
+    // TRANSLATORS: The parameter is an object name.
     sprintf(str,_("Empty position list found for mesh %s"), name);
     LOGW(str);
   }

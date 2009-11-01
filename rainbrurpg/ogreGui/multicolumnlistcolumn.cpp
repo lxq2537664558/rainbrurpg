@@ -108,8 +108,8 @@ void RainbruRPG::OgreGui::MultiColumnListColumn::toggleSort(void){
     break;
   };
 
-  LOGA(mParent, "Column's parent is NULL. Cannot apply sort");
-  LOGA(mIndex!=-1, "Column's index is -1. Cannot apply sort");
+  LOGA(mParent, _("Column's parent is NULL. Cannot apply sort"));
+  LOGA(mIndex!=-1, _("Column's index is -1. Cannot apply sort"));
 
   if (mParent){
     mParent->setSort(mIndex, mSortPolicy);

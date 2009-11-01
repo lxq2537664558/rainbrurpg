@@ -98,3 +98,13 @@ ogreGui/fontmanager.cpp
 ogreGui/glyph.cpp
 ogreGui/guivertex.cpp
 ogreGui/hscrollbar.cpp
+ogreGui/label.cpp
+ogreGui/lineinfo.cpp
+ogreGui/messagebox.cpp
+ogreGui/mouseevent.cpp
+ogreGui/mousepointer.cpp
+ogreGui/multicolumnlist.cpp
+ogreGui/multicolumnlistcell.cpp
+ogreGui/multicolumnlistcolumn.cpp
+ogreGui/multicolumnlistdebugsettings.cpp
+ogreGui/multicolumnlistitem.cpp

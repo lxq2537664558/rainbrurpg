@@ -120,7 +120,7 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
   mParentWindow = vParent;
   mSkin = SkinManager::getSingleton().getSkin(this);
   mGui = &GUI::getSingleton();
-  LOGA( mGui, "GUI pointer is NULL, program should crash (segfault).");
+  LOGA( mGui, _("GUI pointer is NULL, program should crash (segfault)."));
 
   mToolTip=new ToolTip(Vector4(0, 0, 200, 50), 
 		       "Long time click to move column. Right button for "
@@ -129,7 +129,7 @@ MultiColumnList(Vector4 dim, BetaGUI::Window* vParent,
 
   mDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
   mXDrawingDev = new DrawingDevSettings("MultiColumnList", 0, 0);
-  mPopupMenu = new PopupMenu(Vector4(0, 0, 200, 50),"Columns menu", vParent);
+  mPopupMenu = new PopupMenu(Vector4(0, 0, 200, 50),_("Columns menu"),vParent);
   mPopupMenu->hide();
 
   setName("MultiColumnList");
@@ -418,7 +418,7 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
   }
 
   if (event.isRightMouseButtonPressed() == true){
-    LOGI("Showing PopupMenu");
+    LOGI(_("Showing PopupMenu"));
     mPopupMenu->move( px, py);
     mPopupMenu->show();
   }
@@ -426,7 +426,9 @@ injectMouse( unsigned int px, unsigned int py, const MouseEvent& event,
   // Disabling movingcolumn if no left button down
   if (!event.isLeftMouseButtonPressed()){
     if (mMovingColumn != -1){
-      LOGI("mMovingColumn is now -1");
+      // TRANSLATORS: Do not translate mMovingColumn here, it is a
+      // variable name.
+      LOGI(_("mMovingColumn is now -1"));
       mMovingColumn = -1;
     }
     

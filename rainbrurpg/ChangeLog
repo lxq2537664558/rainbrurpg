@@ -1,3 +1,51 @@
+2009-10-29 Jerome Pasquier  <rainbru@free.fr>
+	* ogregui/multicolumnlistitem.cpp : Made messages translatable 
+	using GNU gettext.
+	* ogregui/multicolumndebugsettings.cpp : Made messages translatable 
+	using GNU gettext.
+	* ogregui/multicolumnlistcell.cpp : Made messages translatable 
+	using GNU gettext.
+	* ogregui/multicolumnlist.cpp : Made messages translatable using GNU 
+	gettext.
+	* ogregui/mouseevent.cpp : Made messages translatable using GNU 
+	gettext.
+	* ogregui/messagebox.cpp : Made messages translatable using GNU 
+	gettext.
+	* ogregui/lineinfo.cpp : Made messages translatable using GNU gettext.
+	* ogregui/label.cpp : Made messages translatable using GNU gettext.
+
+	* ogregui/container.cpp : Fixed unfound translator comments of 
+	c-format strings.
+
+	* maincore/gameengine.cpp : Add a translator comment to a 
+	c-format string.
+
+	* common/xmlpersolist.cpp : Add a translator comment to a 
+	c-format string.
+	* common/xmloptions.cpp : Add a translator comment to a 
+	c-format string.
+	* common/xmlobjectlist.cpp : Add a translator comment to a 
+	c-format string.
+	* common/xmllanguage.cpp (refresh): Add a translator comment to a 
+	c-format string (many).
+	* common/xmlbonusfilelist.cpp (refresh): Add a translator comment to a 
+	c-format string.
+	* common/xmlbonusfile.cpp (refresh): Add a translator comment to a 
+	c-format string.
+	* common/xmlattributelist.cpp (refresh): Add a translator comment to a 
+	c-format string.
+	* common/xmlaccountlist.cpp (refresh): Add a translator comment to a 
+	c-format string.
+	* common/itemlistfile.cpp (load): Add a translator comment to a 
+	c-format string.
+	* common/globaluri.cpp : Add a translator comment to a c-format 
+	string.
+	* common/ftpclient.cpp (sendString): Add a translator comment to 
+	a c-format string.
+	* common/EasyBMP.cpp : Add a translator	comment to a c-format string.
+	* common/curlposteddata.cpp (getComputedData) : Add a translator
+	comment to a c-format string.
+
 2009-10-28 Carine Chum <carine.chum@free.fr>
 	* configure.in : Fixed SIZE_MAX declaration error : AM_GNU_GETTEXT
 	must be declared before AC_LANG_CPLUSPLUS.

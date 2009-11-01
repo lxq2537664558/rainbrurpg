@@ -171,6 +171,8 @@ std::string RainbruRPG::Network::Ident::CurlPostedData::getComputedData(){
 
     if (iter->second.length()==0){
       GTS_TIN(err);
+      // TRANSLATORS: The parameter is the name of a posted data. It
+      // is a string.
       sprintf(err, _("The key '%s' has no value."), iter->first);
       LOGW(err);
     }
@@ -220,6 +222,7 @@ void RainbruRPG::Network::Ident::CurlPostedData::setValue(const char* key,
   
   if (!found){
     GTS_LIT(warn);
+    // TRANSLATORS: The parameter is a posted data key.
     sprintf(warn, _("The key called '%s' was not found"), key);
     LOGW(warn);
   }

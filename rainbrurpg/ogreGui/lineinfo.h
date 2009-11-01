@@ -24,6 +24,7 @@
   * Declares a class that stores infos about a single line of text
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 07 dec 2007 : starting implementation
   *         
@@ -33,6 +34,7 @@
 #define _OGRE_GUI_LINE_INFO_H_
 
 #include <string>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 using namespace std;
 

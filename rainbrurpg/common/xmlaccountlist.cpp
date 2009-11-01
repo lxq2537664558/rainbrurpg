@@ -58,6 +58,7 @@ bool RainbruRPG::Network::Ident::xmlAccountList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     GTS_LIT(str);
+    // TRANSLATORS: The parameter is a numerical error code.
     sprintf(str, _("An error occured while getting xmlAccountList. "
 		   "Server response was : %d"), resp);
     LOGE(str);

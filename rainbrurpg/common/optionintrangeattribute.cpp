@@ -134,7 +134,7 @@ bool RainbruRPG::Options::OptionIntRangeAttribute::setValueStr(const char* c){
   else{
     GTS_MID(str);
     // TRANSLATORS: This warning message denotes that the user try
-    // to set a value out of the ranges of an interget range attribute.
+    // to set a value out of the ranges of an integer range attribute.
     // The first parameter is the name of the atribute. The second
     // parameter is the value the user attempt to set. The two last
     // parameters are the min and max range of this attribute.

@@ -56,6 +56,7 @@ bool RainbruRPG::Network::xmlPersoList::refresh(){
   else{
     long resp=CurlFileToXml::getServerResponse();
     GTS_MID(str);
+    // TRANSLATORS: The parameter is a numerical error code.
     sprintf(str, _("An error occured while getting xmlPersoList."
 		   "Server response was : %d"), resp);
     LOGW(str);

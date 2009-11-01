@@ -24,6 +24,7 @@
   * Declares the cell of a multi-column list widget
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 28 mar 2008 : Starting implementation
   *         
@@ -33,6 +34,7 @@
 #define _OGRE_GUI_MULTI_COLUMN_LIST_CELL_H_
 
 #include <string>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 using namespace std;
 

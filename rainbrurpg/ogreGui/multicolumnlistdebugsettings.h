@@ -27,6 +27,7 @@
   *          to avoid ambiguous use with the \c wingdi.h defined function.
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 30 oct 2008 : Conditionnal compilation in both makeDebugString()
   *                 function due to undefined reference on win32 platform.
   * - 26 aug 2008 : Single file documentation
@@ -40,9 +41,9 @@
 #include <string>
 #include <sstream>
 
-#include <stringconv.h> // For itobin()
-
 #include <ogreimport.h>
+#include <stringconv.h>    // For itobin()
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace RainbruRPG{

@@ -136,7 +136,8 @@ RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 ~MultiColumnListDebugSettings(){
   
   if (!mUsefull){
-    LOGW("MultiColumnListDebugSettings was unused. Please check widget name");
+    LOGW(_("MultiColumnListDebugSettings was unused. Please check "
+	   "widget name"));
   }
 }
 
@@ -184,7 +185,7 @@ debugItem(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListItem* vItem,
   mCurrentCell=0;
   mCurrentItem++;
 
-  LOGA(vMcl, "MultiColumnList pointer is NULL. Program should crash.");
+  LOGA(vMcl, _("MultiColumnList pointer is NULL. Program should crash."));
 
   std::string WidgetName = vMcl->getDebugName();
   if (mEnabled){
@@ -221,7 +222,7 @@ void RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 debugCell(QuadRenderer* vQr, MultiColumnList* vMcl, MultiColumnListCell* vCell,
 	  const Ogre::Rectangle& vDrawingRect){
   mCurrentCell++;
-  LOGA(vMcl, "MultiColumnList pointer is NULL. Program should crash.");
+  LOGA(vMcl, _("MultiColumnList pointer is NULL. Program should crash."));
 
   std::string WidgetName = vMcl->getDebugName();
   if (mEnabled){
@@ -291,25 +292,25 @@ setDebugFlags(const tMultiColumnListDebugFlags& vFlags){
 std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem, 
 		const Ogre::Rectangle& vDrawingRect){
-  ostringstream out("debugItem called : ");
+  ostringstream out(_("debugItem called : "));
 #ifdef __linux__
   /* v0.0.5-186 : This part of the code was removed due to an undefined
    * reference to StringConv::itobin() on on win32 platform. 
    *
    */
-  out << "(debug flag is ";
+  out << _("(debug flag is ");
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
 #endif // __linux__
   out << endl;
 
   if (mFlags.localize){
-    out << "localization : ";
+    out << _("localization : ");
     out << vMcl->getDebugName().c_str() << ":";
     out << mCurrentItem << endl;
   }
  
   if (mFlags.content){
-    out << "content : ";
+    out << _("content : ");
 
     tMultiColumnListCellList::const_iterator iter;
     tMultiColumnListCellList cellList = vItem->getCellList();
@@ -323,12 +324,12 @@ makeDebugString(MultiColumnList* vMcl, MultiColumnListItem* vItem,
   }
 
   if (mFlags.drawingRect_log){
-    out << "drawing rectangle " ;
+    out << _("drawing rectangle ") ;
     if (mFlags.drawingRect_draw){
-      out << "(filled with " << mDrawingRectangleColor << ") ";
+      out << _("(filled with ") << mDrawingRectangleColor << ") ";
     }
     else{
-      out << "(not drawn) ";
+      out << _("(not drawn) ");
     }
     out << ":";
     out << "(" << vDrawingRect.left << ":" << vDrawingRect.top << ")";
@@ -355,34 +356,34 @@ std::string RainbruRPG::OgreGui::MultiColumnListDebugSettings::
 makeDebugString(MultiColumnList* vMcl, MultiColumnListCell* vCell,
 	  const Ogre::Rectangle& vDrawingRect){
 
-  ostringstream out("debugCell called : ");
+  ostringstream out(_("debugCell called : "));
 #ifdef __linux__
   /* v0.0.5-186 : This part of the code was removed due to an undefined
    * reference to StringConv::itobin() on win32 platform. 
    *
    */
-  out << "(debug flag is ";
+  out << _("(debug flag is ");
   out << StringConv::getSingleton().itobin(mFlags.direct_access, 8);
 #endif // __linux__
   out << endl;
 
   if (mFlags.localize){
-    out << "localization : ";
+    out << _("localization : ");
     out << vMcl->getDebugName().c_str() << ":";
     out << mCurrentItem << ":" << mCurrentCell <<endl;
   }
  
   if (mFlags.content){
-    out << "content : " << vCell->getText() << endl;
+    out << _("content : ") << vCell->getText() << endl;
   }
  
   if (mFlags.drawingRect_log){
-    out << "drawing rectangle " ;
+    out << _("drawing rectangle ") ;
     if (mFlags.drawingRect_draw){
-      out << "(filled with " << mDrawingRectangleColor << ") ";
+      out << _("(filled with ") << mDrawingRectangleColor << ") ";
     }
     else{
-      out << "(not drawn) ";
+      out << _("(not drawn) ");
     }
     out << ":";
     out << "(" << vDrawingRect.left << ":" << vDrawingRect.top << ")";
@@ -405,12 +406,12 @@ makeScissorDebugString(QuadRenderer* vQr){
   Ogre::Rectangle clip=vQr->getClipRegion();
   ostringstream out("Debugging Scissor : ");
   out << endl
-      << "Using parent siscor : " << vQr->getUseParentScissor() << endl
-      << "Current scissor :"
-      << " top=" << clip.top
-      << " left=" << clip.left
-      << " bottom=" << clip.bottom
-      << " right=" << clip.right
+      << _("Using parent siscor : ") << vQr->getUseParentScissor() << endl
+      << _("Current scissor :")
+      << _(" top=") << clip.top
+      << _(" left=") << clip.left
+      << _(" bottom=") << clip.bottom
+      << _(" right=") << clip.right
       << endl;
     
   return out.str();

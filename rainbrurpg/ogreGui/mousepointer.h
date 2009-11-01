@@ -24,6 +24,7 @@
   * Declares a class that handle mouse pointer states
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 28 jan 2009 : setState parameter is now a constant
   * - 26 aug 2008 : Single file documentation
   * - 12 jan 2007 : starting implementation
@@ -34,6 +35,7 @@
 #define _OGRE_GUI_MOUSE_POINTER_H_
 
 #include <ogreimport.h>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace Ogre{

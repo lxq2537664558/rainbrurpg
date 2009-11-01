@@ -24,6 +24,7 @@
   * Declares the column of a multi-column list widget
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 27 mar 2008 : Starting implementation
   *         
@@ -32,8 +33,10 @@
 #ifndef _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
 #define _OGRE_GUI_MULTI_COLUMN_LIST_COLUMN_H_
 
-#include <string>
 #include "multicolumnlist.h"
+
+#include <string>
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 namespace RainbruRPG{
   namespace OgreGui{

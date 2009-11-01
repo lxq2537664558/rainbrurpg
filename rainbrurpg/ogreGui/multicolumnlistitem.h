@@ -24,6 +24,7 @@
   * Declares an item of a multi-column list widget
   *
   * Modifications :
+  * - 29 oct 2009 : Made messages transatable with gettext
   * - 26 aug 2008 : Single file documentation
   * - 27 mar 2008 : Starting implementation
   *         
@@ -32,9 +33,11 @@
 #ifndef _OGRE_GUI_MULTI_COLUMN_LIST_ITEM_H_
 #define _OGRE_GUI_MULTI_COLUMN_LIST_ITEM_H_
 
+#include "multicolumnlist.h" // for tMultiColumnListColumnSortPolicy
+
 #include <string>
 #include <vector>
-#include "multicolumnlist.h" // for tMultiColumnListColumnSortPolicy
+#include <rainbrudef.h>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace RainbruRPG{

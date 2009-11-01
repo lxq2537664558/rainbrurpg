@@ -67,6 +67,7 @@ bool RainbruRPG::Options::xmlOptions::refresh(){
   }
   else{
     GTS_MID(str);
+    // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("Cannot load the XML options from file %s"), 
 	    this->filename.c_str());
     LOGE(str);

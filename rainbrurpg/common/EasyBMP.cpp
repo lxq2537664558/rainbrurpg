@@ -685,8 +685,8 @@ bool BMP::ReadFromFile( const char* FileName ){
  
  if( bmih.biCompression == 1 || bmih.biCompression == 2 ){
    if( EasyBMPwarnings ){
-     // TRANSLATORS: The parameter is a file name.
      GTS_LIT(str);
+     // TRANSLATORS: The parameter is a file name.
      sprintf(str, _("%s  is (RLE) compressed."
 	       " EasyBMP does not support compression."),FileName);
      LOGE(str);

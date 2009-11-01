@@ -400,9 +400,9 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	movingDevY = my - corners.top;
 	GTS_LIT(str_winmove);
 	// TRANSLATORS: The parameters are some integer values 
-	// telling X and Y moving deviation
-	sprintf(str_winmove, 
-		_("Container: setting Moving dev to %d,%d (OCT_WIN_MOVE)"),
+	// telling X and Y moving deviation.
+	sprintf(str_winmove, _("Container: setting Moving dev to %d,%d "
+			       "(OCT_WIN_MOVE)"),
 		movingDevX, movingDevY);
 	LOGI(str_winmove);
 	win->move(mx, my);
@@ -433,8 +433,8 @@ handleButtonEvent(unsigned int mx, unsigned int my,
 	GTS_LIT(str_winresize);
 	// TRANSLATORS: The parameters are some integer values 
 	// telling X and Y moving deviation
-	sprintf(str_winresize, 
-		_("Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"),
+	sprintf(str_winresize, _("Container: setting Moving dev to %d,%d "
+				 "(OCT_WIN_RESIZE)"),
 		movingDevX, movingDevY);
 	LOGI(str_winresize);
 	win->resize(mx, my);
