@@ -5,10 +5,13 @@ o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/   --enable-Wno-stddep-ogre --enable-debug
 - Fixing maincore lib size (310Mo) (see and update doc_cross_compil)
 - fix the 'config.h extar chars' bug (see in doc/doc_cross_compil)
+- GlobalURI/loadRessources for win32
 
 o [rainbru] Fixing some OgreGui related graphical bugs
 - Tooltip doesn't disappear if we aren't in the window anymore
 - Moving MCL scrollbar when window's SB were moved is spurious 
+- Bug MCL when Window's HSB  moved
+- Scrollbars bug when window's resized
 
 o [rainbru] i18n (source are taken alphabetically)
    Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
@@ -17,10 +20,15 @@ o [rainbru] i18n (source are taken alphabetically)
 - do not translate design (library should change)
 - ogregui/multicolumnlistirem.cpp was the last translated source
 
+* Using printf for MultiColumnListDebugSettings
+
+* LocalTest load time bug
 * OgreGui : GUI over Ogre3D based on QuadRenderer
 - gsServerList uses OgreGUI (with MulticolumnList)
 - Error message label is not correctly placed in fullscreen mode
+- Play/Details buttons implementation
 
+* KeyboardNavigation for OgreGui
 * Unittests
 - Next unit test is common/loadbmp
 - Unit tests failed in production mode (no --enable-debug)
@@ -122,14 +130,16 @@ A system that serialize widgets position and configuration
 - pkg-config files (pc.in) give spurious value (-lRainbruRPG-1.0 ???)
 - Implementation of the option*attribute::update() functions
 
-===  Changelog ===   
+=== Changelog ===   
    18 items by revision
    Please update version and revision in configure.in, Doxyfile, texinfo
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
-* v 0.0.5-196 (26 oct 2009 - ???)
+- Moved ogreGui/ to oldOgreGui/
+
+* v0.0.5-196 (26 oct 2009 - ???)
 - (3) Made messages translatable using gettext in ogreGui/
    label, lineinfo, messagebox, mouseevent, mousepointer
    multicolumnlist, multicolumnlistcell, multicolumnlistcolumn
