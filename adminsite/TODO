@@ -1,4 +1,4 @@
-adminsite - The meta server of RainbruRPG. Written in PHP.
+adminsite - GPLv2 - The meta server of RainbruRPG. Written in PHP.
 
 - xmlpersoattrb.php create category if it does not exist
 - Test global player
@@ -14,9 +14,16 @@ adminsite - The meta server of RainbruRPG. Written in PHP.
 
 === CHANGELOG === (4 items by revision)
 The version number is the RainbruRPG's one.
-The revison number is an internal one. Not linked this the RainbruRPG's one.
+The revison number is an internal one. Not linked with the
+   RainbruRPG's one.
+This project uses the Sourceforge CVS
 
-* v0.0.5-8 (09 jan 2008 - ???)
+* v0.0.5-9 (09 jan 2008 - ???) SLOC ???
+- Added GNU headers to unittest/ files
+
+* v0.0.5-8 (09 jan 2008 - 02 jan 2010) SLOC 3,411
+- Changed GNU header dates for 2010
+- Added TODO notice for Sourcefrge CVS
 - Translation of this file
 - Changing GNU header dates
 
