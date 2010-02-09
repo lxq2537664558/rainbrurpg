@@ -138,6 +138,7 @@ A system that serialize widgets position and configuration
 
 
 * v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ?
+- (1) Updated doc/regTest.html
 
 * v0.0.5-197 (21 nov 2009 2009 - 09 feb 2010) SLOC 63,394 UT 220
 - Added GNU headers to Makefile.am files

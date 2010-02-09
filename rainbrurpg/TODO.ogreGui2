@@ -1,0 +1,21 @@
+o [mouse] WidgetList
+- inherits Serializable ?
+- std::list of Widget*
+- getWidgetList(void) const;
+- serialize/deserialize
+
+* GuiSerializer
+- need WidgetList
+- bool serialize(const GameState*)const
+- DeserializationErrorList* deserialize(const GameState*)const
+
+
+* Question
+- if Widget overrides operator==, does it must override operator!= and 
+   equal(*) (that use op==).
+
+* Misc.
+- Remove SkinManager/Skin
+- injectmouse should use a struct (or a class)
+   absolute position(x+y)
+   buttons state
