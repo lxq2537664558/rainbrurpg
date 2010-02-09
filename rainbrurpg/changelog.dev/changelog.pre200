@@ -1,3 +1,27 @@
+* v0.0.5-196 (26 oct 2009 - 21 nov 2009) 
+- Fixed errors in Serializable's unit test
+- Updated documentation for Serializable
+- Modified Doxyfile to handle only ogreGui/ and tests/
+- Serializable [de]serializeString implementation
+- Serializable operator== and operator!= implementation
+- DeserializationErrorList implementation and test
+- Serializable::serialize() and deserialize() tests complete
+- Created OGREGUI2_INSTALL file
+- first unit test for Serializable
+- test moved from ogreGui/ to ./
+- Integrated unit tests in ogreGui/tests
+- ogreGui/Widget implementation started
+- ogreGui/Serializable implementation started
+- Removed all in ogreGui/
+- OgreGui2: Removed many unmodified directories 
+   datas, common/, editor/, design/
+- Made messages translatable using gettext in ogreGui/
+   label, lineinfo, messagebox, mouseevent, mousepointer
+   multicolumnlist, multicolumnlistcell, multicolumnlistcolumn
+   multicolumnlistdebugsettings (long), multicolumnlistitem
+- Fixed c-format string with no translator comment
+- Fixed the SIZE_MAX bug in cross-compil
+	
 * v 0.0.5-195 (22 aug 2009 - 26 oct 2009)
 - Made messages translatable using gettext in ogreGui/
    font, fontmanager, glyph, guivertex, hscrollbar

@@ -7,11 +7,9 @@ o [Carine] cross-compilation to win32
 - fix the 'config.h extar chars' bug (see in doc/doc_cross_compil)
 - GlobalURI/loadRessources for win32
 
-o [rainbru] Fixing some OgreGui related graphical bugs
-- Tooltip doesn't disappear if we aren't in the window anymore
-- Moving MCL scrollbar when window's SB were moved is spurious 
-- Bug MCL when Window's HSB  moved
-- Scrollbars bug when window's resized
+o [rainbru] OgreGui2: see TODO.ogreGui2
+- merge TODO.ogreGui2 with ROADMAP file (checkboxes)
+- Should add ROADMAP file to cvs
 
 o [rainbru] i18n (source are taken alphabetically)
    Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
@@ -132,17 +130,35 @@ A system that serialize widgets position and configuration
 
 === Changelog ===   
    18 items by revision
+   Please see the ROADMAP file
    Please update version and revision in configure.in, Doxyfile, texinfo
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
 
-- Moved ogreGui/ to oldOgreGui/
 
-* v0.0.5-196 (26 oct 2009 - ???)
-- (3) Made messages translatable using gettext in ogreGui/
-   label, lineinfo, messagebox, mouseevent, mousepointer
-   multicolumnlist, multicolumnlistcell, multicolumnlistcolumn
-   multicolumnlistdebugsettings (long), multicolumnlistitem
-- Fixed c-format string with no translator comment
-- Fixed the SIZE_MAX bug in cross-compil
+* v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ?
+
+* v0.0.5-197 (21 nov 2009 2009 - 09 feb 2010) SLOC 63,394 UT 220
+- Added GNU headers to Makefile.am files
+- Updated GNU headers date for 2010
+   design/*.h, design/*.cpp, editor/*.h, editor/*.cpp, examples/tapt/*
+   IrrClient/*, maincore/*, oldOgreGui/*, server/*, sql/*,
+   terminalapi/*, tests/*, tools/*/*
+- Created a ROADMAP file
+- Updated GNU headers date for 2010
+   client/*.h,  client/*.cpp, common/*.h, common/*.cpp, config/*
+- Moved ogreGui/ to oldOgreGui/
+- Drawable : constructor with int
+- Drawable unittest tests computeAbsolute and adjustScissor
+- Drawable implementation updated
+- Cerated doc/drawable.png and added to Drawable class documentation
+- Drawable documentation updated
+- Drawable unit test implementation
+- Drawable implementation
+- Serializable now uses DeserializableErrorList
+- Added a unit test for DeserializationError
+- documentation update
+- Serializable::testEqualPtr test implementation
+- Serializable::seekg test implementation
+- Serializable::equal() implementation
