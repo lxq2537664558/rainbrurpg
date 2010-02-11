@@ -2,8 +2,14 @@
 
 	* Doxyfile.in: Now takes version and package from configure.in.
 	* configure.in (AC_CONFIG_FILES): Doxyfile now in generated files.
-	* configure.in (BUIL_RELEASE): Value taken from RELEASE's one.
+	* configure.in (BUILD_RELEASE): Value taken from RELEASE's one.
 
+	* RainbruRPG.texinfo.in: Replace RainbruRPG.texinfo.
+	* configure.in (AC_CONFIG_FILES): RainbruRPG.texinfo added.
+
+	* common/version.cpp (Version): VERSION and BUILD_RELEASE now need
+	a conversion from int to string due to changes in configure.in.
+	
 2009-10-29 Jerome Pasquier  <rainbru@free.fr>
 	* ogregui/multicolumnlistitem.cpp : Made messages translatable 
 	using GNU gettext.

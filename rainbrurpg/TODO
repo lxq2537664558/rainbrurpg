@@ -10,13 +10,6 @@ o [Carine] cross-compilation to win32
 o [rainbru] OgreGui2: see TODO.ogreGui2
 - merge TODO.ogreGui2 with ROADMAP file (checkboxes)
 
-o [rainbru] i18n (source are taken alphabetically)
-   Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
-   Add the translated sources to po/POTFILES.in
-- common/ and maincore/ finished
-- do not translate design (library should change)
-- ogregui/multicolumnlistitem.cpp was the last translated source
-
 * Using printf for MultiColumnListDebugSettings
 
 * LocalTest load time bug
@@ -113,14 +106,18 @@ A system that serialize widgets position and configuration
 === Changelog ===   
    18 items by revision
    Please see the ROADMAP file
-   Please update version and revision in configure.in, texinfo
+   Please update version and revision in configure.in
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
+   Please update DEPENCENCIES if needed.
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ? FT ?:??
-- (4) Replaced Doxyfile by Doxyfile.in
+- (7) Fix a build error in version.cpp due to changes in configure
+- Created a DEPENDENCIES file
+- Replaced RainbruRPG.texinfo by RainbruRPG/texinfo.in
+- Replaced Doxyfile by Doxyfile.in
 - Updated ROADMAP with paper TODO
 - cvs commit (rev 1284)
 - Updated doc/regTest.html

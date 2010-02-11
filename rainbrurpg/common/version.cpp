@@ -28,6 +28,10 @@
 #include "version.h"
 #include "../config.h"
 
+#include <sstream>
+
+using namespace std;
+
 /** The default constructor
   *
   * It set appName to its default value (RainbruRPG) and calls 
@@ -35,9 +39,14 @@
   *
   */
 RainbruRPG::Core::Version::Version(){
+
+  stringstream ss, ss2;
+  ss << VERSION;
+  ss2 << BUILD_RELEASE;
+
   this->appName =PACKAGE;
-  this->version =VERSION;
-  this->build   =BUILD_RELEASE;
+  this->version =ss.str().c_str();
+  this->build   =ss2.str().c_str();
   this->buildDate = __DATE__;
   this->buildTime = __TIME__;
 }

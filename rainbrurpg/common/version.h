@@ -24,6 +24,7 @@
   * Declares a class for libraries versions logging
   *
   * Modifications :
+  * - 11 feb 2010 : Need a conversion for VERSION and BUILD_RELEASE
   * - 17 sep 2009 : Now logs build date and time
   * - 25 apr 2009 : Added gettext stuff header
   * - 11 aug 2008 : Single file documentation

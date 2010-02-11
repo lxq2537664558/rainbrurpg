@@ -7,12 +7,12 @@
 @c This file uses the @command command introduced in Texinfo 4.0.
 @c %**start of header
 @setfilename RainbruRPG.info
-@settitle RainbruRPG
+@settitle @PACKAGE@
 @finalout
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.0.5-195
+@set VERSION @VERSION@-@RELEASE@
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
