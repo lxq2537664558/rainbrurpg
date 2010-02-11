@@ -1,3 +1,27 @@
+* v0.0.5-197 (21 nov 2009 2009 - 09 feb 2010) SLOC 63,394 UT 220
+- Added GNU headers to Makefile.am files
+- Updated GNU headers date for 2010
+   design/*.h, design/*.cpp, editor/*.h, editor/*.cpp, examples/tapt/*
+   IrrClient/*, maincore/*, oldOgreGui/*, server/*, sql/*,
+   terminalapi/*, tests/*, tools/*/*
+- Created a ROADMAP file
+- Updated GNU headers date for 2010
+   client/*.h,  client/*.cpp, common/*.h, common/*.cpp, config/*
+- Moved ogreGui/ to oldOgreGui/
+- Drawable : constructor with int
+- Drawable unittest tests computeAbsolute and adjustScissor
+- Drawable implementation updated
+- Cerated doc/drawable.png and added to Drawable class documentation
+- Drawable documentation updated
+- Drawable unit test implementation
+- Drawable implementation
+- Serializable now uses DeserializableErrorList
+- Added a unit test for DeserializationError
+- documentation update
+- Serializable::testEqualPtr test implementation
+- Serializable::seekg test implementation
+- Serializable::equal() implementation
+	
 * v0.0.5-196 (26 oct 2009 - 21 nov 2009) 
 - Fixed errors in Serializable's unit test
 - Updated documentation for Serializable

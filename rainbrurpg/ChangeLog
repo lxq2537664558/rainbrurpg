@@ -1,3 +1,9 @@
+2010-02-11 Jerome Pasquier  <rainbru@free.fr>
+
+	* Doxyfile.in: Now takes version and package from configure.in.
+	* configure.in (AC_CONFIG_FILES): Doxyfile now in generated files.
+	* configure.in (BUIL_RELEASE): Value taken from RELEASE's one.
+
 2009-10-29 Jerome Pasquier  <rainbru@free.fr>
 	* ogregui/multicolumnlistitem.cpp : Made messages translatable 
 	using GNU gettext.

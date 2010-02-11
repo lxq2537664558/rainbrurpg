@@ -1,28 +1,147 @@
 					Hey emacs, this is a -*-org-*- file.
 					
 * v1.0.0
+** v0.3.0
+*** v0.2.1
+**** QuadRenderer improvements
+- Text selection
+- multicolor test
+
+** v0.2.0
+*** Characters can move
+- Handle by a 'signe de vie' packet
+*** Chat and debug console
+- Binding SWIG and usage of ReadLine library
+*** BuddyFinder in gsServerList
+*** v0.1.4
+**** Editor prints a datafiles dependencies
+- Editor pass through FTP (like LS)
+- Server uses a SQL query
+
+*** v0.1.3
+**** Server executes scripts
+- Example
+  - client send a packet telling ObjectName.click()
+  - Server execute the script (example PErso.message())
+  - Server send a packet from the LUA code
+**** Server identifiation and GPG keys
+**** Server backup system
+- The same list as datafiles synchronisation create a tr.bz2 archive
+- restore backup
+*** v0.1.2
+**** Editor may move objects
+- [ ] NetPacket send by editor to the server
+- [ ] Server send new position of object
+**** Screenshots
+- .RainbruRPG/Screenshots/ directory
+- A txt fileis create containing
+name, date, heure, gamestate, position, name perso, name server, versions
+- need GameState::getFullName()
+- Singleton ScreenShotManager takes them (F11 key)
+- ScreenshotViewer dialog from Launcher
+*** v0.1.1
+**** Client
+- [ ] gsUpdateDataFiles implementation
+**** Datafiles synchronisation
+- [ ] Server create a datafiles list
+- [ ] Client download the datafiles list and compare with its own
+- [ ] Client download needed datafiles and updates the Ogre ressources
+**** downloaded/<UniqueServerName> directory
+
+- [ ] Contains a list of downloaded datafiles from this server with SHA1 
+      hashsum, date and filename. Eventually the server description.
+
+**** Environment setup
+- [ ] Draw objects
+- [ ] Used by client and editor
+- [ ] May use libforest
 ** v0.1.0
-*** v0.0.6 
-**** TODO OgreGui2 integration and implementation
+*** Give up Qt
+- [ ] Server, Editor and design become qtServer, qtEditor and qtDesign.
+- [ ] Uses Fox instead (fxEditor, fxDesign, fxServer-gui).
+*** Server become a console only application
+      We also need a server-ctl binary to be able to use the server as a
+      GNU/Linux daemon. --stop should have a 5mn delay if connexion are present.
+      We could also use` start-stop-daemon`.
+   Interactive command-line server featuring debus and telnet API
+   server/                 Contains the interactive command-line server
+   server-gui/             The server's GUI related code
+   server-gui/dbus-api/    The dbus related classes
+   server-gui/telnet-api/  The telnet related classes
+   server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
+   server-gui/telnet-gui/  A telnet-based command-line remote control
+
+*** v0.0.7
+**** Switch to GPLv3
+- [ ] See if OSI/Sourceforge are agree
+- [ ] See compatibility with EasyBMP/TinyXML
+
+**** KeyboardNavigation for OgreGui
+**** tool/adminsite-databackup
+    A comand-line tool to backup adminsite XML files that takes the version
+    number as argument (used by backup_prog script).
+**** xIdent
+- XIdent AddAccount dialog and other buttons
+- Modify the connection system
+
+**** TODO Cross compilation to win32                                  [0%]
+- [ ] GlobalURI + loadRessources for Win32.
+- [ ] remove config file 'ogre.cfg'.
+**** TODO Coding standards
+- [ ] Should split the common/ library in commnon/ and net/
+- [ ] May headers files be called *.hpp
+**** TODO Make a better use of CppUnit (see libkics for example)      [0%]
+- [ ] autoregister test fixtures
+- [ ] no templates
+- [ ] Integrate it to make check
+**** TODO Miscelaneous                                                [0%]
+- [ ] Uses GCC visibility attribute
+- [ ] May use C++ exceptions
+
+*** v0.0.6
+**** TODO OgreGui2 integration and implementation                     [0%]
      :CLOCK:
+     CLOCK: [2010-02-11 jeu 10:27]--[2010-02-11 jeu 10:28] =>  0:01
      CLOCK: [2010-02-09 mar 10:17]--[2010-02-09 mar 10:23] =>  0:06
      :END:
 
-- [ ] Create a configure option to switch between oldOgreGui and new one
+- [ ] Create a configure option to switch between oldOgreGui and new one.
+      Default set to old since ogreGui2 isn't fully implemented.
 - [ ] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
 
-**** TODO Coding standards
-- [ ] All code should be in a src/ directory. Using of `sloccount` is easier.
-- [ ] Should split the common/ library in commnon/ and net/
-- [ ] May headers files be called *.hpp
-- [ ] Add GNU headers to MAkefile.am files
-- [ ] Doxyfile should take version from configure
-      By creating a Doxyfile.in file
+**** TODO Miscelaneous                                                [0%]
+- [ ] Remove IrrClient and oldXClient (3,082 SLOC) and explain it in regtests.
+- [ ] Trying to fix Doxugen documentation TODO items.
+- [ ] Datafiles cleanup (many are not used anymore)
+
+**** Coding standards                                            [20%]
+     :CLOCK:
+     CLOCK: [2010-02-11 jeu 11:01]
+     CLOCK: [2010-02-11 jeu 10:28]--[2010-02-11 jeu 11:01] =>  0:33
+     CLOCK: [2010-02-10 mer 10:45]--[2010-02-10 mer 10:47] =>  0:02
+     :END:
+- [ ] All code should be in a src/ directory, making usage of `sloccount` easier.
+      In the same way, external code should move to lib/ directory (eg. TinyXml
+      and EasyBMP, actually in common/)
+- [ ] Add GNU headers to all Makefile.am files
 - [ ] Should remove all unused source files from topdir
       There are autogenerated files from autoproject
-**** Make a better use of CppUnit (see libkics for example)
-- [ ] autoregister test fixtures
-- [ ] no templates
-- [ ] Integrate it to make check
+- [ ] Make a DEPENDENCIES file in topdir
+- [X] Doxyfile should take version from configure
+      By creating a Doxyfile.in file (Texinfo file too)
+      - [X] Then, remove Doxyfile and add Doxyfile.in from cvs.
+      - [X] Then commit changes.
+**** DONE Update this document                                        [100%]
+     :CLOCK:
+     CLOCK: [2010-02-11 jeu 10:21]--[2010-02-11 jeu 10:24] =>  0:03
+     CLOCK: [2010-02-10 mer 17:09]--[2010-02-10 mer 17:31] =>  0:22
+     CLOCK: [2010-02-10 mer 16:46]--[2010-02-10 mer 16:50] =>  0:04
+     CLOCK: [2010-02-10 mer 16:13]--[2010-02-10 mer 16:32] =>  0:19
+     :END:
+- [X] Find a way to get a v0.0.6 version earlier
+      Maybe by moving some items to 0.0.7
+- [X] I currently work with many paper TODO. Update this document with them.
+- [X] Merge TODO long terms items with this document.
+

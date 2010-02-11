@@ -9,14 +9,13 @@ o [Carine] cross-compilation to win32
 
 o [rainbru] OgreGui2: see TODO.ogreGui2
 - merge TODO.ogreGui2 with ROADMAP file (checkboxes)
-- Should add ROADMAP file to cvs
 
 o [rainbru] i18n (source are taken alphabetically)
    Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
    Add the translated sources to po/POTFILES.in
 - common/ and maincore/ finished
 - do not translate design (library should change)
-- ogregui/multicolumnlistirem.cpp was the last translated source
+- ogregui/multicolumnlistitem.cpp was the last translated source
 
 * Using printf for MultiColumnListDebugSettings
 
@@ -26,24 +25,14 @@ o [rainbru] i18n (source are taken alphabetically)
 - Error message label is not correctly placed in fullscreen mode
 - Play/Details buttons implementation
 
-* KeyboardNavigation for OgreGui
 * Unittests
 - Next unit test is common/loadbmp
 - Unit tests failed in production mode (no --enable-debug)
    HTTP response 401 "Unauthorized"
 
-* tool-adminsite-databackup
-- a comand-line tool to backup adminsite XML files
-- takes the version number as argument
-- used by backup_prog script
-
 * Adminsite
 - See the tool-adminsite-databackup
 - Made a info page on server status which is called from the homepage
-
-* xIdent
-- XIdent AddAccount dialog and other buttons
-- Modify the connection system
 
 * FlooderTest
 - FlooderTest test packet size (ftSize)
@@ -51,7 +40,6 @@ o [rainbru] i18n (source are taken alphabetically)
 
 * Client 
 - MessageBox can be closed with Enter/Return key
-- gsUpdateDataFiles implementation
 - client uses maincore/EnvironmentSetup
   Waiting to be to the same rendering level with EnvironmentSetup
   (Fog and Skydome)
@@ -60,13 +48,6 @@ o [rainbru] i18n (source are taken alphabetically)
 - In the first page (gsmainmenu), a `quick connect` system
 
 * GameServer
-   Interactive command-line server featuring debus and telnet API
-   server/                 Contains the interactive command-line server
-   server-gui/             The server's GUI related code
-   server-gui/dbus-api/    The dbus related classes
-   server-gui/telnet-api/  The telnet related classes
-   server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
-   server-gui/telnet-gui/  A telnet-based command-line remote control
 - The HelpViewer is called twice (appears again when OK button clicked)
 - Running 2 servers in the same PC is forbiden ( A lock file ?)
 - The database must be connected even if the server is not started
@@ -84,7 +65,7 @@ o [rainbru] i18n (source are taken alphabetically)
 - Environmentsetup uses skydome and fog
 - Editor identification and cryptography of message done by GPG keys
 
-* GuiSerializer
+* GuiSerializer (In OgreGui2 ?)
 A system that serialize widgets position and configuration
 - Two central classes GuiSerializer and SerializableWisget
 - GuiSerializer is a singleton that handle XML files and widget vectors
@@ -111,6 +92,7 @@ A system that serialize widgets position and configuration
    language. The gettext textdomain should be the server's unique name
    to avoid message identifier's conflicts.
 - Can gettext have multiple textdomain (RainbruRPG and server's unique name)?
+- See autopoint program to update automatically
 
 * Using glib's thread instead of boost::thread
    Must see the config.h defines related to libintl
@@ -131,35 +113,14 @@ A system that serialize widgets position and configuration
 === Changelog ===   
    18 items by revision
    Please see the ROADMAP file
-   Please update version and revision in configure.in, Doxyfile, texinfo
+   Please update version and revision in configure.in, texinfo
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
    Libraries versionning in doc/libVersionning.html and configure.in
+   FT is the ROADMAP file time (C-c C-x C-d)
 
-
-* v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ?
-- (1) Updated doc/regTest.html
-
-* v0.0.5-197 (21 nov 2009 2009 - 09 feb 2010) SLOC 63,394 UT 220
-- Added GNU headers to Makefile.am files
-- Updated GNU headers date for 2010
-   design/*.h, design/*.cpp, editor/*.h, editor/*.cpp, examples/tapt/*
-   IrrClient/*, maincore/*, oldOgreGui/*, server/*, sql/*,
-   terminalapi/*, tests/*, tools/*/*
-- Created a ROADMAP file
-- Updated GNU headers date for 2010
-   client/*.h,  client/*.cpp, common/*.h, common/*.cpp, config/*
-- Moved ogreGui/ to oldOgreGui/
-- Drawable : constructor with int
-- Drawable unittest tests computeAbsolute and adjustScissor
-- Drawable implementation updated
-- Cerated doc/drawable.png and added to Drawable class documentation
-- Drawable documentation updated
-- Drawable unit test implementation
-- Drawable implementation
-- Serializable now uses DeserializableErrorList
-- Added a unit test for DeserializationError
-- documentation update
-- Serializable::testEqualPtr test implementation
-- Serializable::seekg test implementation
-- Serializable::equal() implementation
+* v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ? FT ?:??
+- (4) Replaced Doxyfile by Doxyfile.in
+- Updated ROADMAP with paper TODO
+- cvs commit (rev 1284)
+- Updated doc/regTest.html

@@ -5,9 +5,11 @@ dnl Every other copy of the package version number gets its value from here
 AM_INIT_AUTOMAKE(RainbruRPG, 0.0.5)
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
-AC_SUBST(VERSION)
 
-AC_DEFINE([BUILD_RELEASE], ["198"], [The build release number])
+dnl The release number (revision)
+RELEASE=198
+AC_SUBST([RELEASE])
+AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 
 dnl -----------------------------------------------
 dnl Package name and version number (user defined)
@@ -16,6 +18,7 @@ dnl -----------------------------------------------
 dnl The basename of all the RainbruRPG libraries' include
 dnl directories
 GENERIC_LIBRARY_NAME=RainbruRPG
+AC_SUBST(GENERIC_LIBRARY_NAME)
 
 dnl Defines the name of the libraries include directories
 
@@ -66,16 +69,14 @@ dnl Package name and version number
 dnl --------------------------------
 
 
-PACKAGE=$GENERIC_LIBRARY_NAME
-AC_SUBST(GENERIC_LIBRARY_NAME)
 
-GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
-GENERIC_RELEASE=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION
-AC_SUBST(GENERIC_RELEASE)
-AC_SUBST(GENERIC_VERSION)
+dnl GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
+dnl GENERIC_RELEASE=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION
+dnl AC_SUBST(GENERIC_RELEASE)
+dnl AC_SUBST(GENERIC_VERSION)
 
-VERSION=$GENERIC_VERSION
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+dnl VERSION=$GENERIC_VERSION
+dnl AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
 
 dnl Call a custom m4 MAcro that defines the install dir in config.h
 RB_INSTALL_DIR
@@ -224,7 +225,8 @@ AC_CONFIG_FILES([Makefile			\
 	  \
 	  RainbruRPG.lsm RainbruRPG.spec	\
 	  terminalapi-1.0.pc			\
-	  RainbruRPG-common.pc])
+	  RainbruRPG-common.pc			\
+	  Doxyfile])
 
 
 AC_OUTPUT
