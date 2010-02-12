@@ -151,7 +151,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Trying to fix configure script warnings
 - [ ] Datafiles cleanup (many are not used anymore)
 
-**** TODO Coding standards                                            [87%]
+**** TODO Coding standards                                            [88%]
      :CLOCK:
      CLOCK: [2010-02-12 ven 19:49]--[2010-02-12 ven 20:26] =>  0:37
      CLOCK: [2010-02-12 ven 16:42]--[2010-02-12 ven 16:56] =>  0:14
@@ -181,6 +181,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
       * [ ] terminalapi/
       * [ ] tests/
       * [ ] tools/
+- [ ] cvs commit (many failed updates)
+- [X] Cleanup oldOgreGui (many generated and object files)
+      + tests/curlget.xml /tests/*.log
 - [X] External code should move to lib/ directory           [100%]
       actually in common/)
       - [X] Manage to build ext/ sources in common library
