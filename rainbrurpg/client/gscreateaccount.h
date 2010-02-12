@@ -42,11 +42,12 @@
 #include "bglistener.h"
 
 // Forward declarations
-namespace BetaGUI{
+/*namespace BetaGUI{
   class Window;
   class Button;
   class TextInput;
 }
+*/
 namespace RainbruRPG{
   namespace OgreGui{
     class Label;

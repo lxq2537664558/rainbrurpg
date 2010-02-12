@@ -44,7 +44,6 @@ h_sources= attributemodifierlist.h		\
 	   curlserverdelete.h			\
 	   curlservermodifclients.h		\
 	   curlsubmitform.h			\
-	   EasyBMP.h				\
 	   enetbase.h				\
 	   enetclient.h				\
 	   ftpclient.h				\
@@ -82,8 +81,6 @@ h_sources= attributemodifierlist.h		\
 	   stringconv.h				\
 	   taccountlist.h			\
 	   timer.h				\
-	   tinystr.h				\
-	   tinyxml.h				\
 	   version.h				\
 	   xmlaccountlist.h			\
 	   xmlattrbcatlist.h			\
@@ -120,7 +117,6 @@ cc_sources=attributemodifierlist.cpp		\
 	  curlsubmitform.cpp			\
 	  enetbase.cpp				\
 	  enetclient.cpp			\
-	  EasyBMP.cpp				\
 	  ftpclient.cpp				\
 	  globaluri.cpp				\
 	  hashfile.cpp				\
@@ -153,10 +149,6 @@ cc_sources=attributemodifierlist.cpp		\
 	  sha1.cpp				\
 	  stringconv.cpp			\
 	  timer.cpp				\
-	  tinystr.cpp				\
-	  tinyxml.cpp				\
-	  tinyxmlerror.cpp			\
-	  tinyxmlparser.cpp			\
 	  version.cpp				\
 	  xmlaccountlist.cpp			\
 	  xmlattrbcatlist.cpp			\
@@ -182,11 +174,13 @@ INCLUDES= $(OGRE_CFLAGS)	\
 	  $(GLIB_CFLAGS)	\
 	  $(SIGC_CFLAGS)	\
 	  $(GNET_CFLAGS)	\
-	  $(CFLAGS)
+	  $(CFLAGS)		\
+	  -I$(top_srcdir)/ext/
 
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 
-librainbrurpg_common_la_LIBADD= 
+# Here we use the convenience library created in the ext/ directory
+librainbrurpg_common_la_LIBADD= $(top_srcdir)/ext/libexternal.la
 
 librainbrurpg_common_la_LDFLAGS=      	        \
   $(SHARED_FLAG)				\

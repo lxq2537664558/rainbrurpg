@@ -32,12 +32,12 @@
 
 #include "keyboardnavigation.h"
 
-#include "ogreGui/bgwindow.h"
+/*#include "ogreGui/bgwindow.h"
 #include "ogreGui/bgbutton.h"
 #include "ogreGui/pushbutton.h"
 #include "ogreGui/label.h"
 #include "ogreGui/bgtextinput.h"
-
+*/
 /** The default constructor
   *
   */
@@ -209,6 +209,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   tiMail=new TextInput(tiMailDim, "", 40, window);
   window->addWidget(tiMail);
   */
+  /*
   posY+=30;
   unsigned int btnSubmitWidth=100;
   Vector4 btnSubmitDim((winWidth/2)-(btnSubmitWidth/2),posY,btnSubmitWidth,24);
@@ -216,10 +217,10 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
 			    BetaGUI::Callback::Callback(this), window);
   window->addWidget(btnSubmit);
   mGUI->addWindow(window);
-
+  */
 
   // The Back button window (false= no border)
-  winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
+  /*  winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
 		       BetaGUI::OWT_NONE, "Connection", mGUI, OSI_NAVIGATION);
   winBack->setAlwaysTransparent(true);
 
@@ -227,7 +228,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
 			   "Back", BetaGUI::Callback::Callback(this), winBack);
   winBack->addWidget(btnBack);
   mGUI->addWindow(winBack);
-
+  */
 }
 
 /** Setup the tabulation order 
@@ -337,12 +338,13 @@ void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
   *
   */
 void RainbruRPG::Core::gsCreateAccount::onButtonPress(BetaGUI::Button* btn){
-  if (btn==btnSubmit){
+  /*  if (btn==btnSubmit){
     onSubmitClicked();
   }
   else if (btn==btnBack){
     onBackClicked();
   }
+  */
 }
 
 /** Pause the execution of this GameState

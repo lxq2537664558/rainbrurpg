@@ -36,6 +36,7 @@ rainbrurpg_SOURCES= exampleframelistener.cpp		\
 		    languageselector.cpp		
 
 INCLUDES = -I$(top_srcdir)/common			\
+	   -I$(top_srcdir)/ext				\
 	   -I$(top_srcdir)/maincore			\
 	   -I$(top_srcdir)/oldOgreGui			\
 	   $(OIS_CFLAGS)				\
