@@ -108,39 +108,113 @@ name, date, heure, gamestate, position, name perso, name server, versions
      common/ and maincore/ finished
      do not translate design (library should change)
      ogregui/multicolumnlistitem.cpp was the last translated source
-**** TODO OgreGui2 integration and implementation                     [0%]
+
+**** TODO OgreGui2 implementation                                     [0%]
+     To be completed with the previous TODO task.
+     Should use sigc++ for connection
+- [ ] Widget implementation
+- [ ] Serializable should use Boost.Serialization (Archive)
+- [ ] Modified files during integration     
+      - [ ] client/gsCreateAccount
+
+**** TODO OgreGui2 integration                                        [60%]
      :CLOCK:
+     CLOCK: [2010-02-12 ven 10:36]--[2010-02-12 ven 10:38] =>  0:02
+     CLOCK: [2010-02-12 ven 10:17]--[2010-02-12 ven 10:34] =>  0:17
+     CLOCK: [2010-02-11 jeu 22:01]--[2010-02-11 jeu 22:13] =>  0:12
      CLOCK: [2010-02-11 jeu 10:27]--[2010-02-11 jeu 10:28] =>  0:01
      CLOCK: [2010-02-09 mar 10:17]--[2010-02-09 mar 10:23] =>  0:06
      :END:
 
+- [-] ogreGui/ implementation item creation
+      - [X] Check what is already implemented (on a paper TODO)
+      - [ ] Compare with my paper concepts and populate the OgreGui2 implementation
+	    section below.
 - [ ] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
-
+      - [ ] Copy *.hpp/*.cpp/Makefile.am file list here
+      - [ ] cvs add for all added files
+      - [ ] Pass the tests in tests/ogreGui/
+      - [ ] cvs add for Test files
+      - [ ] Remove ogreGui2 project
+- [X] Fix some build issues in client/
+      Mark modified files in OgreGui2 implementation item.
+      - [X] gsCreateAccount.cpp
+      - [X] Some headers are absent (bgwindow.h, bgbutton.h,...)
+      - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
+- [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
+- [X] olgOgreGui shoundn't be compiled
 **** TODO Miscelaneous                                                [0%]
 - [ ] Remove IrrClient and oldXClient (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxugen documentation TODO items.
 - [ ] Trying to fix configure script warnings
 - [ ] Datafiles cleanup (many are not used anymore)
 
-**** TODO Coding standards                                            [71%]
+**** TODO Coding standards                                            [87%]
      :CLOCK:
+     CLOCK: [2010-02-12 ven 19:49]--[2010-02-12 ven 20:26] =>  0:37
+     CLOCK: [2010-02-12 ven 16:42]--[2010-02-12 ven 16:56] =>  0:14
+     CLOCK: [2010-02-12 ven 16:02]--[2010-02-12 ven 16:34] =>  0:32
+     CLOCK: [2010-02-12 ven 15:18]--[2010-02-12 ven 15:52] =>  0:34
+     CLOCK: [2010-02-12 ven 11:17]--[2010-02-12 ven 11:50] =>  0:33
      CLOCK: [2010-02-11 jeu 15:32]--[2010-02-11 jeu 15:45] =>  0:13
      CLOCK: [2010-02-11 jeu 14:49]--[2010-02-11 jeu 15:22] =>  0:33
      CLOCK: [2010-02-11 jeu 14:03]--[2010-02-11 jeu 14:42] =>  0:39
-     CLOCK: [2010-02-11 jeu 11:01]
+     CLOCK: [2010-02-11 jeu 11:01]--[2010-02-11 jeu 11:10] =>  0:09
      CLOCK: [2010-02-11 jeu 10:28]--[2010-02-11 jeu 11:01] =>  0:33
      CLOCK: [2010-02-10 mer 10:45]--[2010-02-10 mer 10:47] =>  0:02
      :END:
-- [ ] All code should be in a src/ directory, making usage of `sloccount` easier.
-      In the same way, external code should move to lib/ directory (eg. TinyXml
-      and EasyBMP, actually in common/)
-- [ ] Add GNU headers to all Makefile.am files
+
+- [ ] All code should be in a src/ directory.               [0%]
+      Makes usage of `sloccount` easier but must wait for OgreGui2 integration
+      to be tested.
+      * [ ] client/
+      * [ ] common/
+      * [ ] design/
+      * [ ] editor/
+      * [ ] example/
+      * [ ] maincore/
+      * [ ] ogreGui/
+      * [ ] oldOgreGui/
+      * [ ] server/
+      * [ ] terminalapi/
+      * [ ] tests/
+      * [ ] tools/
+- [X] External code should move to lib/ directory           [100%]
+      actually in common/)
+      - [X] Manage to build ext/ sources in common library
+	    - [X] Trying with libtool convenience library
+      - [X] Remove All these files from common/Makefile.am
+      - [X] TinyXml/                              [100%]
+	    - [X] tinystr.cpp
+	    - [X] tinystr.h
+	    - [X] tinyxml.cpp
+	    - [X] tinyxmlerror.cpp
+	    - [X] tinyxml.h
+	    - [X] tinyxmlparser.cpp
+      - [X] EasyBMP/                              [100%]
+	    To move a file :
+	      `mv [file] ../ext/`
+	      `cvs rm [file]`
+	      `cd ../ext/`
+	      `cvs add [file]`
+	      add it to the Makefile.am file
+	    - [X] EasyBMP_BMP.h
+	    - [X] EasyBMP_ChangeLog.txt
+	    - [X] EasyBMP.cpp
+	    - [X] EasyBMP_DataStructures.h
+	    - [X] EasyBMP.h
+	    - [X] EasyBMP_VariousBMPutilities.h
+      - [X] add ext/Makefile.am to CVS
+      - [X] create ext/Makefile.am
+      - [X] add ext/ to CVS
+      - [X] Create the ext/ directory and its Makefile.
+- [X] Add GNU headers to all Makefile.am files
 - [X] Should remove all unused source files from topdir     [100%]
       There are autogenerated files from autoproject
       - [X] RainbruRPG.cc
-      - [X] system.h: No generated file
+      - [X] system.h: Not a generated file
       - [X] xmalloc.c
       - [X] xmalloc.h    
 - [X] Fix the common/version.c error due to changes in configure.in
@@ -154,6 +228,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Then commit changes.
 **** DONE Update this document                                        [100%]
      :CLOCK:
+     CLOCK: [2010-02-11 jeu 16:57]--[2010-02-11 jeu 17:05] =>  0:08
      CLOCK: [2010-02-11 jeu 10:21]--[2010-02-11 jeu 10:24] =>  0:03
      CLOCK: [2010-02-10 mer 17:09]--[2010-02-10 mer 17:31] =>  0:22
      CLOCK: [2010-02-10 mer 16:46]--[2010-02-10 mer 16:50] =>  0:04

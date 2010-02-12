@@ -176,10 +176,11 @@ AC_PATH_PROG(DLLWRAP, $dllwrap)
 AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\
 	  \
+	  ext/Makefile				\
           common/Makefile			\
           terminalapi/Makefile			\
 	  maincore/Makefile			\
-	  oldOgreGui/Makefile			\
+	  ogreGui/Makefile			\
 	  design/Makefile			\
 	  client/Makefile			\
 	  editor/Makefile			\

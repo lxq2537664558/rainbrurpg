@@ -1,3 +1,16 @@
+2010-02-12 Jerome Pasquier  <rainbru@free.fr>
+
+	* Makefile.am (SUBDIRS): Replaced oldOgreGui by ogreGui.
+	* ogreGui/Makefile.am: Created.
+	* configure.in (AC_CONFIG_FILES): Replaced oldOgreGui by ogreGui.
+
+	* client/gscreateaccount.cpp: Many code commented to fix build issues.
+
+	* ext/EasyBMP*: Retrieved from common/ directory.
+
+	* ext/Makefile.am: Create a convenience library.
+	* common/Makefile.am: Now uses the convenience library from ext/.
+	
 2010-02-11 Jerome Pasquier  <rainbru@free.fr>
 
 	* Doxyfile.in: Now takes version and package from configure.in.
@@ -9,6 +22,26 @@
 
 	* common/version.cpp (Version): VERSION and BUILD_RELEASE now need
 	a conversion from int to string due to changes in configure.in.
+
+2009-11-26 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/Drawable: Implementation of an integers based
+	constructor.
+
+2009-11-25 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/Drawable: Implementation updated (adjustScissor(),
+	computeAbsolute().
+
+2009-11-23 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/Drawable: Implementation started.
+	* ogreGui/Serializable: Now uses DeserializationErrorList.
+	* tests/SerializableTest.hpp: seekg test implementation.
+	
+2009-11-20 Jerome Pasquier  <rainbru@free.fr>
+	* ogreGui/Serializable: [de]serializeString implementation.
+
+2009-11-16 Jerome Pasquier  <rainbru@free.fr>
+	* ogregui/Widget.hpp/cpp: Implementation started.
+	* ogregui/Serializable.hpp/cpp: Implementation started.
 	
 2009-10-29 Jerome Pasquier  <rainbru@free.fr>
 	* ogregui/multicolumnlistitem.cpp : Made messages translatable 

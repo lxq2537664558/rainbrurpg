@@ -113,11 +113,16 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-198 (21 nov 2009 2009 - 09 feb 2010) SLOC ???? UT ? FT ?:??
-- (7) Fix a build error in version.cpp due to changes in configure
+* v0.0.5-198 (09 feb 2010 - ???) SLOC ???? UT ? FT ?:??
+- (12) Created a convenience library in ext/ for external code
+- Moved tiny* from common/ to ext/
+- Moved EasyBMP* from common/ to ext/
+- Now build but with many warning in gscreateaccount
+- Merged ogreGui2/ChangeLog with ChangeLog
+- Build ogreGui instead of oldOgreGui
+- Fix a build error in version.cpp due to changes in configure
 - Created a DEPENDENCIES file
 - Replaced RainbruRPG.texinfo by RainbruRPG/texinfo.in
 - Replaced Doxyfile by Doxyfile.in
 - Updated ROADMAP with paper TODO
-- cvs commit (rev 1284)
 - Updated doc/regTest.html
