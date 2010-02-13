@@ -87,10 +87,18 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
 
-**** TODO Cross compilation to win32                                  [0%]
+**** TODO Cross compilation to win32                                  [60%]
+     CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
 - [ ] GlobalURI + loadRessources for Win32.
 - [ ] remove config file 'ogre.cfg'.
-**** TODO Coding standards
+- [ ] Should build with debugging symbols      
+- [X] Test created executable (164Mo)
+      Unhandled page fault
+- [X] Trying cross-compilation : Works
+      Get a 'undefined reference to `_libintl_gettext'' error
+      Fixed in acinclude.m4
+- [X] Cross-compil documentation must reference mingw.sh
+**** TODO Coing standards
 - [ ] Should split the common/ library in commnon/ and net/
 - [ ] May headers files be called *.hpp
 **** TODO Make a better use of CppUnit (see libkics for example)      [0%]

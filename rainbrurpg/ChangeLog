@@ -1,3 +1,8 @@
+2010-02-13 Jerome Pasquier  <rainbru@free.fr>
+
+	* acinclude.m4 (RB_CHECK_OGREMAIN): Added -lintl if
+	cross-compilation (fix undefined reference).
+	
 2010-02-12 Jerome Pasquier  <rainbru@free.fr>
 
 	* Makefile.am (SUBDIRS): Replaced oldOgreGui by ogreGui.

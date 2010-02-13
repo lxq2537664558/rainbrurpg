@@ -95,7 +95,10 @@ AC_DEFUN([RB_CHECK_OGREMAIN],
     echo "Adding OGRE flags for "mingw32msvc""
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/OGRE"
     LDFLAGS="$LDFLAGS -lOgreMain$DLL_EXT -lfreeimage$DLL_EXT"
+    echo "Adding zzip flags for "mingw32msvc""
     LDFLAGS="$LDFLAGS -lzzip$DLL_EXT $FREETYPE_LIBS"
+    echo "Adding libintl flags for "mingw32msvc""
+    LDFLAGS="$LDFLAGS -lintl$DLL_EXT"
     AC_SUBST(OGRE_PLUGINDIR, [$rb_cross_compil_prefix/lib/OGRE])
   else
     PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4.0])

@@ -114,7 +114,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-198 (09 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (12) Created a convenience library in ext/ for external code
+- (13) doc/doc_crosscompil.h references mingw.sh script
+- Created a convenience library in ext/ for external code
 - Moved tiny* from common/ to ext/
 - Moved EasyBMP* from common/ to ext/
 - Now build but with many warning in gscreateaccount

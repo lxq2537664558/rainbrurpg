@@ -45,6 +45,25 @@
   *
   * \sa http://en.wikipedia.org/wiki/Cross_compilation
   *
+  * \section win32_env Environment configuration
+  *
+  * To easily configure cross-compilation toolchain, create
+  * a script called \c mingw.sh with this content :
+  * <code>
+  * #!/bin/sh
+  * 
+  * export MINGW_PREFIX="/usr/cross"
+  * 
+  * export CPPFLAGS="-I$MINGW_PREFIX/include"
+  * export LDFLAGS="-L$MINGW_PREFIX/lib"
+  * export PATH="$MINGW_PREFIX/bin:$PATH"
+  * export LD_LIBRARY_PATH="$MINGW_PREFIX/lib"
+  * export PKG_CONFIG_PATH="$MINGW_PREFIX/lib/pkgconfig"
+  * </code>
+  *
+  * When you start your cross-compilation session, you may type :
+  * <code>source mingw.sh</code>.
+  *
   * \section win32_current_line Current command line
   *
   * Here is current command-line I use for cross-compilation to win32 :
