@@ -180,7 +180,6 @@ AC_CONFIG_FILES([Makefile			\
           common/Makefile			\
           terminalapi/Makefile			\
 	  maincore/Makefile			\
-	  ogreGui/Makefile			\
 	  design/Makefile			\
 	  client/Makefile			\
 	  editor/Makefile			\

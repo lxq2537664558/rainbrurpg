@@ -87,7 +87,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
 
-**** TODO Cross compilation to win32                                  [60%]
+**** TODO Cross compilation to win32                                  [50%]
      CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
 - [ ] GlobalURI + loadRessources for Win32.
 - [ ] remove config file 'ogre.cfg'.
@@ -98,9 +98,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Get a 'undefined reference to `_libintl_gettext'' error
       Fixed in acinclude.m4
 - [X] Cross-compil documentation must reference mingw.sh
-**** TODO Coing standards
+**** TODO Coding standards
 - [ ] Should split the common/ library in commnon/ and net/
 - [ ] May headers files be called *.hpp
+- [ ] Should use Boost.Format instead of printf/GTS_* macros
+- [ ] tests/Doxyfile replaced by tests/Doxyfile.in
 **** TODO Make a better use of CppUnit (see libkics for example)      [0%]
 - [ ] autoregister test fixtures
 - [ ] no templates
@@ -110,13 +112,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] May use C++ exceptions
 
 *** v0.0.6
-**** TODO SPARE TIME Uses GTS_* and gettext                           [0%]
-   Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
-   Add the translated sources to po/POTFILES.in
-     common/ and maincore/ finished
-     do not translate design (library should change)
-     ogregui/multicolumnlistitem.cpp was the last translated source
-
+**** TODO Miscelaneous                                                [0%]
+- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
+- [ ] Trying to fix Doxygen documentation TODO items.
+- [ ] Trying to fix configure script warnings
+- [ ] Datafiles cleanup (many are not used anymore)
 **** TODO OgreGui2 implementation                                     [0%]
      To be completed with the previous TODO task.
      Should use sigc++ for connection
@@ -127,6 +127,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 integration                                        [60%]
      :CLOCK:
+     CLOCK: [2010-02-14 dim 11:30]--[2010-02-14 dim 11:57] =>  0:27
      CLOCK: [2010-02-12 ven 10:36]--[2010-02-12 ven 10:38] =>  0:02
      CLOCK: [2010-02-12 ven 10:17]--[2010-02-12 ven 10:34] =>  0:17
      CLOCK: [2010-02-11 jeu 22:01]--[2010-02-11 jeu 22:13] =>  0:12
@@ -138,9 +139,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Check what is already implemented (on a paper TODO)
       - [ ] Compare with my paper concepts and populate the OgreGui2 implementation
 	    section below.
-- [ ] OgreGui2 is a separate project that intends to completely replace OgreGui.
+- [-] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
+      - [X] Remove all files from ogreGui/ (in working copy)
       - [ ] Copy *.hpp/*.cpp/Makefile.am file list here
       - [ ] cvs add for all added files
       - [ ] Pass the tests in tests/ogreGui/
@@ -153,14 +155,361 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Miscelaneous                                                [0%]
-- [ ] Remove IrrClient and oldXClient (3,082 SLOC) and explain it in regtests.
-- [ ] Trying to fix Doxugen documentation TODO items.
-- [ ] Trying to fix configure script warnings
-- [ ] Datafiles cleanup (many are not used anymore)
+**** TODO Move code to src/                                           
+     CLOCK: [2010-02-13 sam 18:01]--[2010-02-13 sam 18:13] =>  0:12
 
-**** TODO Coding standards                                            [88%]
+     All code should be in a src/ directory.
+     Makes usage of `sloccount` easier but must wait for OgreGui2 integration
+     to be tested.
+***** client/                                               [0/0]
+***** common/                                               [0/0]
+***** design/                                               [0/0]
+***** editor/                                               [0/0]
+***** example/                                              [0/0]
+***** maincore/                                             [0/0]
+***** TODO ogreGui/                                         [0/1]
+      All files should be removed (previous step)
+      - [ ] Check it
+***** TODO oldOgreGui/                                      [0/104]
+      - [ ] bgbutton.cpp
+      - [ ] bgbutton.h
+      - [ ] bgcallback.cpp
+      - [ ] bgcallback.h
+      - [ ] bggui.cpp
+      - [ ] bggui.h
+      - [ ] bglistener.h
+      - [ ] bgtextinput.cpp
+      - [ ] bgtextinput.h
+      - [ ] bgwindow.cpp
+      - [ ] bgwindow.h
+      - [ ] container.cpp
+      - [ ] container.h
+      - [ ] dialog.cpp
+      - [ ] dialog.h
+      - [ ] drawingdevlist.cpp
+      - [ ] drawingdevlist.h
+      - [ ] drawingdevsettings.cpp
+      - [ ] drawingdevsettings.h
+      - [ ] font.cpp
+      - [ ] font.h
+      - [ ] fontmanager.cpp
+      - [ ] fontmanager.h
+      - [ ] glyph.cpp
+      - [ ] glyph.h
+      - [ ] guivertex.cpp
+      - [ ] guivertex.h
+      - [ ] hscrollbar.cpp
+      - [ ] hscrollbar.h
+      - [ ] label.cpp
+      - [ ] label.h
+      - [ ] lineinfo.cpp
+      - [ ] lineinfo.h
+      - [ ] Makefile
+      - [ ] Makefile.am
+      - [ ] Makefile.in
+      - [ ] messagebox.cpp
+      - [ ] messagebox.h
+      - [ ] mouseevent.cpp
+      - [ ] mouseevent.h
+      - [ ] mousepointer.cpp
+      - [ ] mousepointer.h
+      - [ ] multicolumnlistcell.cpp
+      - [ ] multicolumnlistcell.h
+      - [ ] multicolumnlistcolumn.cpp
+      - [ ] multicolumnlistcolumn.h
+      - [ ] multicolumnlist.cpp
+      - [ ] multicolumnlistdebugsettings.cpp
+      - [ ] multicolumnlistdebugsettings.h
+      - [ ] multicolumnlist.h
+      - [ ] multicolumnlistitem.cpp
+      - [ ] multicolumnlistitem.h
+      - [ ] object.cpp
+      - [ ] object.h
+      - [ ] pmicheckbox.cpp
+      - [ ] pmicheckbox.h
+      - [ ] pmiseparator.cpp
+      - [ ] pmiseparator.h
+      - [ ] pmititle.cpp
+      - [ ] pmititle.h
+      - [ ] popupmenu.cpp
+      - [ ] popupmenu.h
+      - [ ] popupmenuitem.cpp
+      - [ ] popupmenuitem.h
+      - [ ] pushbutton.cpp
+      - [ ] pushbutton.h
+      - [ ] quadrenderer.cpp
+      - [ ] quadrenderer.h
+      - [ ] renderqueuelistener.cpp
+      - [ ] renderqueuelistener.h
+      - [ ] resizegrip.cpp
+      - [ ] resizegrip.h
+      - [ ] scrollbar.cpp
+      - [ ] scrollbar.h
+      - [ ] scrollpane.cpp
+      - [ ] scrollpane.h
+      - [ ] skin.cpp
+      - [ ] skin.h
+      - [ ] skinmanager.cpp
+      - [ ] skinmanager.h
+      - [ ] sobetagui.cpp
+      - [ ] sobetagui.h
+      - [ ] sonavigation.cpp
+      - [ ] sonavigation.h
+      - [ ] staticimage.cpp
+      - [ ] staticimage.h
+      - [ ] statuslabel.cpp
+      - [ ] statuslabel.h
+      - [ ] textsettings.cpp
+      - [ ] textsettings.h
+      - [ ] titlebar.cpp
+      - [ ] titlebar.h
+      - [ ] tooltip.cpp
+      - [ ] tooltip.h
+      - [ ] vector3.cpp
+      - [ ] vector3.h
+      - [ ] vscrollbar.cpp
+      - [ ] vscrollbar.h
+      - [ ] wdmulticolumnlist.cpp
+      - [ ] wdmulticolumnlist.h
+      - [ ] widget.cpp
+      - [ ] widgetdrawer.cpp
+      - [ ] widgetdrawer.h
+      - [ ] widget.h
+***** TODO server/                                          [0/42]
+      - [ ] clientlist.cpp
+      - [ ] clientlist.h
+      - [ ] configdialog.cpp
+      - [ ] configdialog.h
+      - [ ] enetserver.cpp
+      - [ ] enetserver.h
+      - [ ] ftpcontrol.cpp
+      - [ ] ftpcontrol.h
+      - [ ] ftpdataconnection.cpp
+      - [ ] ftpdataconnection.h
+      - [ ] ftpserver.cpp
+      - [ ] ftpserver.h
+      - [ ] ftptransfer.cpp
+      - [ ] ftptransfer.h
+      - [ ] logexportdialog.cpp
+      - [ ] logexportdialog.h
+      - [ ] main.cpp
+      - [ ] mainwindow.cpp
+      - [ ] mainwindow.h
+      - [ ] Makefile.am
+      - [ ] Makefile.in
+      - [ ] objectlist.cpp
+      - [ ] objectlist.h
+      - [ ] quarantinelist.cpp
+      - [ ] quarantinelist.h
+      - [ ] resources.qrc
+      - [ ] serverconfiguration.cpp
+      - [ ] serverconfiguration.h
+      - [ ] serverlog.cpp
+      - [ ] serverlog.h
+      - [ ] server.pro
+      - [ ] serverthread.cpp
+      - [ ] serverthread.h
+      - [ ] technotedialog.cpp
+      - [ ] technotedialog.h
+      - [ ] transfervisual.cpp
+      - [ ] transfervisual.h
+      - [ ] uniquename.cpp
+      - [ ] uniquename.h
+      - [ ] xmlserverconf.cpp
+      - [ ] xmlserverconf.h
+      - [ ] images/
+  	  - [ ] accept.png
+  	  - [ ] preview.png
+	  - [ ] quarantine1.png
+	  - [ ] quarantine2.png
+	  - [ ] refuse.png
+	  - [ ] start.png
+	  - [ ] stop.png
+	  - [ ] transferIn.png
+	  - [ ] transferOut.png
+***** TODO terminalapi/                                     [0/48]
+      - [ ] apitest.cpp
+      - [ ] caption.cpp
+      - [ ] caption.h
+      - [ ] dialog.cpp
+      - [ ] dialog.h
+      - [ ] freelayout.cpp
+      - [ ] freelayout.h
+      - [ ] hook.h
+      - [ ] infodialog.cpp
+      - [ ] infodialog.h
+      - [ ] label.cpp
+      - [ ] label.h
+      - [ ] layout.cpp
+      - [ ] layout.h
+      - [ ] lineedit.cpp
+      - [ ] lineedit.h
+      - [ ] listbox.cpp
+      - [ ] listbox.h
+      - [ ] listboxitem.cpp
+      - [ ] listboxitem.h
+      - [ ] listviewcolumn.cpp
+      - [ ] listviewcolumn.h
+      - [ ] listview.cpp
+      - [ ] listview.h
+      - [ ] listviewitem.cpp
+      - [ ] listviewitem.h
+      - [ ] ls-result
+      - [ ] Makefile
+      - [ ] Makefile.am
+      - [ ] Makefile.in
+      - [ ] menubar.cpp
+      - [ ] menubar.h
+      - [ ] menu.cpp
+      - [ ] menu.h
+      - [ ] menuitem.cpp
+      - [ ] menuitem.h
+      - [ ] pushbutton.cpp
+      - [ ] pushbutton.h
+      - [ ] scrollingpanel.cpp
+      - [ ] scrollingpanel.h
+      - [ ] slangcommand.cpp
+      - [ ] slangcommand.h
+      - [ ] terminalapp.cpp
+      - [ ] terminalapp.h
+      - [ ] widget.cpp
+      - [ ] widget.h
+      - [ ] window.cpp
+      - [ ] window.h
+***** TODO tests/                                           [0/17]
+      - [ ] commontestsuite.cpp
+      - [ ] commontestsuite.h
+      - [ ] Doxyfile
+      - [ ] Doxyfile.bak
+      - [ ] doxygen.log
+      - [ ] ls-result
+      - [ ] main.cpp
+      - [ ] Makefile
+      - [ ] Makefile.am
+      - [ ] Makefile.in
+      - [ ] #make.log#
+      - [ ] RainbruRPG.log
+      - [ ] tapitestsuite.cpp
+      - [ ] tapitestsuite.h
+      - [ ] common/                         [0/23]
+          - [ ] attributemodifierlisttest.h
+	  - [ ] chartbasetest.h
+	  - [ ] chartserietest.h
+	  - [ ] clientconnecttest.h
+	  - [ ] curlaccountaddtest.h
+	  - [ ] curlaccountconfirmmailtest.h
+	  - [ ] curlaccountdeletetest.h
+	  - [ ] curlaccounttoggleblacklisttest.h
+	  - [ ] curlfiletoxmltest.h
+	  - [ ] curlgetfiletest.h
+	  - [ ] curlpersoheaderaddtest.h
+	  - [ ] curlposteddatatest.h
+	  - [ ] curlserveraddtest.h
+	  - [ ] curlserverdeletetest.h
+	  - [ ] curlservermodifclientstest.h
+	  - [ ] ftpclienttest.h
+	  - [ ] globaluritest.h
+	  - [ ] hashfiletest.h
+	  - [ ] hashpasswordtest.h
+	  - [ ] itemlistfiletest.h
+	  - [ ] languagelistitemtest.h
+	  - [ ] virtualaccount.h
+	  - [ ] virtualserver.h
+      - [ ] tapi/                           [0/17]
+	  - [ ] captiontest.h
+	  - [ ] freelayouttest.h
+	  - [ ] infodialogtest.h
+	  - [ ] labeltest.h
+	  - [ ] layouttest.h
+	  - [ ] lineedittest.h
+	  - [ ] listboxitemtest.h
+	  - [ ] listboxtest.h
+	  - [ ] listviewcolumntest.h
+	  - [ ] listviewitemtest.h
+	  - [ ] listviewtest.h
+	  - [ ] menubartest.h
+	  - [ ] menuitemtest.h
+	  - [ ] menutest.h
+	  - [ ] pushbuttontest.h
+	  - [ ] scrollingpaneltest.h
+	  - [ ] terminalapptest.h
+      - [ ] tools/                                          [0%]
+	  - [ ] Makefile.am
+	  - [ ] ftpclient/                      [0/5]
+	      - [ ] ftpclientwindow.cpp
+	      - [ ] ftpclientwindow.h
+	      - [ ] main.cpp
+	      - [ ] Makefile.am
+	      - [ ] Makefile.in
+	  - [ ] hashsum/                        [0/3]
+    	      - [ ] main.cpp
+	      - [ ] Makefile.am
+	      - [ ] Makefile.in
+    - [ ] netflooder/                     [0/21]
+ 	  - [ ] chartviewer.cpp
+	  - [ ] chartviewer.h
+	  - [ ] connectionpanel.cpp
+	  - [ ] connectionpanel.h
+	  - [ ] curlget.xml
+	  - [ ] enetflooderclient.cpp
+	  - [ ] enetflooderclient.h
+	  - [ ] floodertestbase.cpp
+	  - [ ] floodertestbase.h
+	  - [ ] floodpanel.cpp
+	  - [ ] floodpanel.h
+	  - [ ] ftreliable.cpp
+	  - [ ] ftreliable.h
+	  - [ ] main.cpp
+	  - [ ] Makefile.am
+	  - [ ] Makefile.in
+	  - [ ] netflooderwindow.cpp
+	  - [ ] netflooderwindow.h
+	  - [ ] RainbruRPG.log
+	  - [ ] waitingpanel.cpp
+	  - [ ] waitingpanel.h
+   - [ ] oldXident/
+          - [ ] transmsg/
+	  - [ ] essai2.txt
+	  - [ ] essai.txt
+	  - [ ] ls-result
+	  - [ ] main.cpp
+	  - [ ] Makefile
+	  - [ ] Makefile.am
+	  - [ ] Makefile.in
+	  - [ ] RainbruRPG.log
+	  - [ ] TODO
+	  - [ ] transfile.cpp
+	  - [ ] transfile.h
+	  - [ ] transmanager.h
+   - [ ] xident/                         [0/22]
+	  - [ ] addaccount.cpp
+	  - [ ] addaccount.h
+	  - [ ] addserver.cpp
+	  - [ ] addserver.h
+	  - [ ] deleteserver.cpp
+	  - [ ] deleteserver.h
+	  - [ ] foxaccountlist.cpp
+	  - [ ] foxaccountlist.h
+	  - [ ] foxpersolist.cpp
+	  - [ ] foxpersolist.h
+	  - [ ] foxserverlist.cpp
+	  - [ ] foxserverlist.h
+	  - [ ] main.cpp
+	  - [ ] Makefile.am
+	  - [ ] modifyserver.cpp
+	  - [ ] modifyserver.h
+	  - [ ] serverdesc.cpp
+	  - [ ] serverdesc.h
+	  - [ ] servertechnote.cpp
+	  - [ ] servertechnote.h
+	  - [ ] xidentwindow.cpp
+	  - [ ] xidentwindow.h
+
+**** TODO Coding standards                                            [90%]
      :CLOCK:
+     CLOCK: [2010-02-13 sam 18:15]
+     CLOCK: [2010-02-13 sam 16:57]--[2010-02-13 sam 17:20] =>  0:23
+     CLOCK: [2010-02-12 ven 20:58]--[2010-02-12 ven 21:27] =>  0:29
      CLOCK: [2010-02-12 ven 19:49]--[2010-02-12 ven 20:26] =>  0:37
      CLOCK: [2010-02-12 ven 16:42]--[2010-02-12 ven 16:56] =>  0:14
      CLOCK: [2010-02-12 ven 16:02]--[2010-02-12 ven 16:34] =>  0:32
@@ -174,22 +523,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-02-10 mer 10:45]--[2010-02-10 mer 10:47] =>  0:02
      :END:
 
-- [ ] All code should be in a src/ directory.               [0%]
-      Makes usage of `sloccount` easier but must wait for OgreGui2 integration
-      to be tested.
-      * [ ] client/
-      * [ ] common/
-      * [ ] design/
-      * [ ] editor/
-      * [ ] example/
-      * [ ] maincore/
-      * [ ] ogreGui/
-      * [ ] oldOgreGui/
-      * [ ] server/
-      * [ ] terminalapi/
-      * [ ] tests/
-      * [ ] tools/
-- [ ] cvs commit (many failed updates)
+- [ ] Finish the list above (place TODO word when made)
+- [X] cvs commit (many failed updates)
 - [X] Cleanup oldOgreGui (many generated and object files)
       + tests/curlget.xml /tests/*.log
 - [X] External code should move to lib/ directory           [100%]
@@ -237,6 +572,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
       By creating a Doxyfile.in file (Texinfo file too)
       - [X] Then, remove Doxyfile and add Doxyfile.in from cvs.
       - [X] Then commit changes.
+**** DONE SPARE TIME Uses GTS_* and gettext                           [100%]
+   Please use rainbrudef.h:GTS_* for all strings using sprintf and parameters
+   Add the translated sources to po/POTFILES.in
+     common/ and maincore/ finished
+     do not translate design (library should change)
+     ogregui/multicolumnlistitem.cpp was the last translated source
+     - [X] Should uses Boost.Format instead (v0.0.7: Coding standards
 **** DONE Update this document                                        [100%]
      :CLOCK:
      CLOCK: [2010-02-11 jeu 16:57]--[2010-02-11 jeu 17:05] =>  0:08

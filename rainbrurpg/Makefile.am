@@ -21,7 +21,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = po ext common maincore ogreGui client
+SUBDIRS = po ext common maincore client
 
 # The data files
 SUBDIRS+= config data media mapdata
