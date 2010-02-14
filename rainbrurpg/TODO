@@ -115,7 +115,7 @@ A system that serialize widgets position and configuration
 
 * v0.0.5-198 (09 feb 2010 - ???) SLOC ???? UT ? FT ?:??
 - (15) Moved some sources to src/
-   tools/cident/, 
+   tools/cident/, tools/transmsg/
 - Updated files to be moved to src/
    tools/, tests/, termnalapi, server/
 - doc/doc_crosscompil.h references mingw.sh script
