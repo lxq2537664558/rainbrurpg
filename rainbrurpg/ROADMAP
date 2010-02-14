@@ -188,7 +188,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
            - [ ] Makefile.am
  	   - [ ] ftpclient/
 	   - [ ] hashsum/
-           - [X] netflooder/
+           - [X] netflooder/        Not removed from tools/
 	   - [X] transmsg/
            - [X] oldXident/
            - [X] xident/
