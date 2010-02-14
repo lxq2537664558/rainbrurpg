@@ -157,7 +157,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Move code to src/                                           [7%]
+**** TODO Move code to src/                                           [15%]
      :CLOCK:
      CLOCK: [2010-02-14 dim 16:07]
      CLOCK: [2010-02-14 dim 15:46]--[2010-02-14 dim 15:59] =>  0:13
@@ -184,11 +184,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
      - [ ] tests/
            - [ ] common/
            - [ ] tapi/
-     - [-] tools/
-           - [ ] Makefile.am
- 	   - [ ] ftpclient/
-	   - [ ] hashsum/
-           - [X] netflooder/        Not removed from tools/
+     - [X] tools/
+           - [X] Makefile.am
+ 	   - [X] ftpclient/
+	   - [X] hashsum/
+           - [X] netflooder/
 	   - [X] transmsg/
            - [X] oldXident/
            - [X] xident/
