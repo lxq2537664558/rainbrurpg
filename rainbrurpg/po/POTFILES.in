@@ -1,5 +1,8 @@
 # List of source files which contain translatable strings.
 
+ext/EasyBMP.cpp
+ext/tinyxmlerror.cpp
+
 # in the 'common' library
 common/attributemodifierlist.cpp
 common/chartbase.cpp
@@ -20,7 +23,6 @@ common/curlserveradd.cpp
 common/curlserverdelete.cpp
 common/curlservermodifclients.cpp
 common/curlsubmitform.cpp
-common/EasyBMP.cpp
 common/enetbase.cpp
 common/enetclient.cpp
 common/ftpclient.cpp
@@ -55,7 +57,6 @@ common/serverlistitem.cpp
 common/sha1.cpp
 common/stringconv.cpp
 common/timer.cpp
-common/tinyxmlerror.cpp
 common/version.cpp
 common/xmlaccountlist.cpp
 common/xmlattrbcatlist.cpp
@@ -83,28 +84,28 @@ maincore/keyboardnavigation.cpp
 maincore/vcconstant.cpp
 maincore/velocitycalculator.cpp
 
-# in the 'ogreGui' library
-ogreGui/bgbutton.cpp
-ogreGui/bgcallback.cpp
-ogreGui/bggui.cpp
-ogreGui/bgtextinput.cpp
-ogreGui/bgwindow.cpp
-ogreGui/container.cpp
-ogreGui/dialog.cpp
-ogreGui/drawingdevlist.cpp
-ogreGui/drawingdevsettings.cpp
-ogreGui/font.cpp
-ogreGui/fontmanager.cpp
-ogreGui/glyph.cpp
-ogreGui/guivertex.cpp
-ogreGui/hscrollbar.cpp
-ogreGui/label.cpp
-ogreGui/lineinfo.cpp
-ogreGui/messagebox.cpp
-ogreGui/mouseevent.cpp
-ogreGui/mousepointer.cpp
-ogreGui/multicolumnlist.cpp
-ogreGui/multicolumnlistcell.cpp
-ogreGui/multicolumnlistcolumn.cpp
-ogreGui/multicolumnlistdebugsettings.cpp
-ogreGui/multicolumnlistitem.cpp
+# in the 'oldOgreGui' library
+oldOgreGui/bgbutton.cpp
+oldOgreGui/bgcallback.cpp
+oldOgreGui/bggui.cpp
+oldOgreGui/bgtextinput.cpp
+oldOgreGui/bgwindow.cpp
+oldOgreGui/container.cpp
+oldOgreGui/dialog.cpp
+oldOgreGui/drawingdevlist.cpp
+oldOgreGui/drawingdevsettings.cpp
+oldOgreGui/font.cpp
+oldOgreGui/fontmanager.cpp
+oldOgreGui/glyph.cpp
+oldOgreGui/guivertex.cpp
+oldOgreGui/hscrollbar.cpp
+oldOgreGui/label.cpp
+oldOgreGui/lineinfo.cpp
+oldOgreGui/messagebox.cpp
+oldOgreGui/mouseevent.cpp
+oldOgreGui/mousepointer.cpp
+oldOgreGui/multicolumnlist.cpp
+oldOgreGui/multicolumnlistcell.cpp
+oldOgreGui/multicolumnlistcolumn.cpp
+oldOgreGui/multicolumnlistdebugsettings.cpp
+oldOgreGui/multicolumnlistitem.cpp

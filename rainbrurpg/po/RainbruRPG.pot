@@ -6,15 +6,270 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RainbruRPG 0.3.0\n"
+"Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-29 17:26+0100\n"
+"POT-Creation-Date: 2010-02-16 10:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ext/EasyBMP.cpp:110
+msgid ""
+"Attempted to change color table for a BMP object that lacks a color table. "
+"Ignoring request."
+msgstr ""
+
+#: ext/EasyBMP.cpp:118
+msgid ""
+"Attempted to set a color, but the color table is not defined. Ignoring "
+"request."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a color number, the one
+#. we are trying to set. The second parameter is the maximum
+#. allowed color index.
+#: ext/EasyBMP.cpp:131 ext/EasyBMP.cpp:175
+#, c-format
+msgid ""
+"Requested color number %d is outside the allowed range [1, %d]. Ignoring "
+"request to set this color."
+msgstr ""
+
+#: ext/EasyBMP.cpp:154
+msgid ""
+"Attempted to access color table for a BMP object that lacks a color table. "
+"Ignoring request."
+msgstr ""
+
+#: ext/EasyBMP.cpp:162
+msgid ""
+"Requested a color, but the color table is not defined. Ignoring request."
+msgstr ""
+
+#. TRANSLATORS: The first parameter if the width of the image in pixels,
+#. the second if the height of the image in pixels.
+#: ext/EasyBMP.cpp:244
+#, c-format
+msgid ""
+"Attempted to access non-existent pixel Truncating request to fit in the "
+"range [0, %d] x [0, %d]."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is the new bit depth of the image,
+#. the second parameter is the actual bit depth.
+#: ext/EasyBMP.cpp:282
+#, c-format
+msgid ""
+"User attempted to set unsupported bit depth %d. Bit depth remains unchanged "
+"at %d."
+msgstr ""
+
+#. TRANSLATORS: The parameters are the width and the height of the image
+#. in pixels.
+#: ext/EasyBMP.cpp:314
+#, c-format
+msgid ""
+"User attempted to set a non-positive width or height. Size remains unchanged "
+"at %d x %d"
+msgstr ""
+
+#: ext/EasyBMP.cpp:353 ext/EasyBMP.cpp:589
+msgid ""
+"Data types are wrong size! You may need to mess with EasyBMP_DataTypes.h to "
+"fix these errors, and then recompile. All 32-bit and 64-bit machines should "
+"be supported, however."
+msgstr ""
+
+#: ext/EasyBMP.cpp:365
+msgid "Cannot open file for output"
+msgstr ""
+
+#: ext/EasyBMP.cpp:509
+msgid "Could not write proper amount of data."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:602
+#, c-format
+msgid "Cannot open file %s for input."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:629
+#, c-format
+msgid "%s is not a Windows BMP file!"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:672
+#, c-format
+msgid "%s is obviously corrupted."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:690
+#, c-format
+msgid "%s  is (RLE) compressed. EasyBMP does not support compression."
+msgstr ""
+
+#. TRANSLATORS: The first parameter is a file name. The second one
+#. is a compression number.
+#: ext/EasyBMP.cpp:709
+#, c-format
+msgid ""
+"%s is in an unsupported format. (bmih.biCompression = %d)  The file is "
+"probably an old OS2 bitmap or corrupted."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:725
+#, c-format
+msgid "%s uses bit fields and is not a 16-bit file. This is not supported."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:745
+#, c-format
+msgid "%s has unrecognized bit depth."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:762
+#, c-format
+msgid "%s has a non-positive width or height."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:798
+#, c-format
+msgid ""
+"File %s has an underspecified color table. The table will be padded with "
+"extra white (255,255,255,0) entries."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:839
+#, c-format
+msgid "Extra meta data detected in file '%s' Data will be skipped."
+msgstr ""
+
+#: ext/EasyBMP.cpp:872
+msgid "Could not read proper amount of data."
+msgstr ""
+
+#: ext/EasyBMP.cpp:890
+msgid "Could not read enough pixel data!"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:943
+#, c-format
+msgid "Extra meta data detected in file '%s'. Data will be skipped."
+msgstr ""
+
+#: ext/EasyBMP.cpp:1018 ext/EasyBMP.cpp:1430
+msgid ""
+"Attempted to create color table at a bit depth that does not require a color "
+"table. Ignoring request."
+msgstr ""
+
+#. TRANSLATORS: The parameter is a file name.
+#: ext/EasyBMP.cpp:1228 ext/EasyBMP.cpp:1263 ext/EasyBMP.cpp:1311
+#, c-format
+msgid ""
+"Cannot initialize from file '%s'. File cannot be opened or does not exist."
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
+#: ext/EasyBMP.cpp:1649
+#, c-format
+msgid ""
+"ebmpBYTE has the wrong size (%d bytes), Compared to the expected 1 byte value"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+#: ext/EasyBMP.cpp:1659
+#, c-format
+msgid ""
+"ebmpWORD has the wrong size (%d bytes), Compared to the expected 2 byte value"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
+#: ext/EasyBMP.cpp:1669
+#, c-format
+msgid ""
+"EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), Compared to the "
+"expected 4 byte value"
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:36
+msgid "No error"
+msgstr ""
+
+#. TRANSLATORS: The following define an error in the handling of a
+#. packet type.
+#: ext/tinyxmlerror.cpp:37 common/netpacketbase.cpp:152
+msgid "Error"
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:38
+msgid "Failed to open file"
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:39
+msgid "Memory allocation failed."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:40
+msgid "Error parsing Element."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:41
+msgid "Failed to read Element name"
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:42
+msgid "Error reading Element value."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:43
+msgid "Error reading Attributes."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:44
+msgid "Error: empty tag."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:45
+msgid "Error reading end tag."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:46
+msgid "Error parsing Unknown."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:47
+msgid "Error parsing Comment."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:48
+msgid "Error parsing Declaration."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:49
+msgid "Error document empty."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:50
+msgid "Error null (0) or unexpected EOF found in input stream."
+msgstr ""
+
+#: ext/tinyxmlerror.cpp:51
+msgid "Error parsing CDATA."
+msgstr ""
 
 #: common/attributemodifierlist.cpp:71 common/attributemodifierlist.cpp:186
 msgid "Cannot find the modifier's sign"
@@ -429,195 +684,6 @@ msgstr ""
 msgid "Adding a Pwd Data to post"
 msgstr ""
 
-#: common/EasyBMP.cpp:110
-msgid ""
-"Attempted to change color table for a BMP object that lacks a color table. "
-"Ignoring request."
-msgstr ""
-
-#: common/EasyBMP.cpp:118
-msgid ""
-"Attempted to set a color, but the color table is not defined. Ignoring "
-"request."
-msgstr ""
-
-#. TRANSLATORS: The first parameter is a color number, the one
-#. we are trying to set. The second parameter is the maximum
-#. allowed color index.
-#: common/EasyBMP.cpp:131 common/EasyBMP.cpp:175
-#, c-format
-msgid ""
-"Requested color number %d is outside the allowed range [1, %d]. Ignoring "
-"request to set this color."
-msgstr ""
-
-#: common/EasyBMP.cpp:154
-msgid ""
-"Attempted to access color table for a BMP object that lacks a color table. "
-"Ignoring request."
-msgstr ""
-
-#: common/EasyBMP.cpp:162
-msgid ""
-"Requested a color, but the color table is not defined. Ignoring request."
-msgstr ""
-
-#. TRANSLATORS: The first parameter if the width of the image in pixels,
-#. the second if the height of the image in pixels.
-#: common/EasyBMP.cpp:244
-#, c-format
-msgid ""
-"Attempted to access non-existent pixel Truncating request to fit in the "
-"range [0, %d] x [0, %d]."
-msgstr ""
-
-#. TRANSLATORS: The first parameter is the new bit depth of the image,
-#. the second parameter is the actual bit depth.
-#: common/EasyBMP.cpp:282
-#, c-format
-msgid ""
-"User attempted to set unsupported bit depth %d. Bit depth remains unchanged "
-"at %d."
-msgstr ""
-
-#. TRANSLATORS: The parameters are the width and the height of the image
-#. in pixels.
-#: common/EasyBMP.cpp:314
-#, c-format
-msgid ""
-"User attempted to set a non-positive width or height. Size remains unchanged "
-"at %d x %d"
-msgstr ""
-
-#: common/EasyBMP.cpp:353 common/EasyBMP.cpp:589
-msgid ""
-"Data types are wrong size! You may need to mess with EasyBMP_DataTypes.h to "
-"fix these errors, and then recompile. All 32-bit and 64-bit machines should "
-"be supported, however."
-msgstr ""
-
-#: common/EasyBMP.cpp:365
-msgid "Cannot open file for output"
-msgstr ""
-
-#: common/EasyBMP.cpp:509
-msgid "Could not write proper amount of data."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:602
-#, c-format
-msgid "Cannot open file %s for input."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:629
-#, c-format
-msgid "%s is not a Windows BMP file!"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:672
-#, c-format
-msgid "%s is obviously corrupted."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:690
-#, c-format
-msgid "%s  is (RLE) compressed. EasyBMP does not support compression."
-msgstr ""
-
-#. TRANSLATORS: The first parameter is a file name. The second one
-#. is a compression number.
-#: common/EasyBMP.cpp:709
-#, c-format
-msgid ""
-"%s is in an unsupported format. (bmih.biCompression = %d)  The file is "
-"probably an old OS2 bitmap or corrupted."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:725
-#, c-format
-msgid "%s uses bit fields and is not a 16-bit file. This is not supported."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:745
-#, c-format
-msgid "%s has unrecognized bit depth."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:762
-#, c-format
-msgid "%s has a non-positive width or height."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:798
-#, c-format
-msgid ""
-"File %s has an underspecified color table. The table will be padded with "
-"extra white (255,255,255,0) entries."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:839
-#, c-format
-msgid "Extra meta data detected in file '%s' Data will be skipped."
-msgstr ""
-
-#: common/EasyBMP.cpp:872
-msgid "Could not read proper amount of data."
-msgstr ""
-
-#: common/EasyBMP.cpp:890
-msgid "Could not read enough pixel data!"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:943
-#, c-format
-msgid "Extra meta data detected in file '%s'. Data will be skipped."
-msgstr ""
-
-#: common/EasyBMP.cpp:1018 common/EasyBMP.cpp:1430
-msgid ""
-"Attempted to create color table at a bit depth that does not require a color "
-"table. Ignoring request."
-msgstr ""
-
-#. TRANSLATORS: The parameter is a file name.
-#: common/EasyBMP.cpp:1228 common/EasyBMP.cpp:1263 common/EasyBMP.cpp:1311
-#, c-format
-msgid ""
-"Cannot initialize from file '%s'. File cannot be opened or does not exist."
-msgstr ""
-
-#. TRANSLATORS: The parameter is the sizeof(ebmpBYTE) value.
-#: common/EasyBMP.cpp:1649
-#, c-format
-msgid ""
-"ebmpBYTE has the wrong size (%d bytes), Compared to the expected 1 byte value"
-msgstr ""
-
-#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
-#: common/EasyBMP.cpp:1659
-#, c-format
-msgid ""
-"ebmpWORD has the wrong size (%d bytes), Compared to the expected 2 byte value"
-msgstr ""
-
-#. TRANSLATORS: The parameter is the sizeof(ebmpWORD) value.
-#: common/EasyBMP.cpp:1669
-#, c-format
-msgid ""
-"EasyBMP Error: ebmpDWORD has the wrong size (%d bytes), Compared to the "
-"expected 4 byte value"
-msgstr ""
-
 #: common/enetclient.cpp:94
 msgid "No available peers for initiating an ENet connection."
 msgstr ""
@@ -1004,12 +1070,6 @@ msgstr ""
 msgid "Unset"
 msgstr ""
 
-#. TRANSLATORS: The following define an error in the handling of a
-#. packet type.
-#: common/netpacketbase.cpp:152 common/tinyxmlerror.cpp:37
-msgid "Error"
-msgstr ""
-
 #: common/npconnectionresponse.cpp:68
 msgid "The server's response is not set"
 msgstr ""
@@ -1253,73 +1313,13 @@ msgstr ""
 msgid "StringConv::itobin base parameter unrecognized"
 msgstr ""
 
-#: common/tinyxmlerror.cpp:36
-msgid "No error"
-msgstr ""
-
-#: common/tinyxmlerror.cpp:38
-msgid "Failed to open file"
-msgstr ""
-
-#: common/tinyxmlerror.cpp:39
-msgid "Memory allocation failed."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:40
-msgid "Error parsing Element."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:41
-msgid "Failed to read Element name"
-msgstr ""
-
-#: common/tinyxmlerror.cpp:42
-msgid "Error reading Element value."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:43
-msgid "Error reading Attributes."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:44
-msgid "Error: empty tag."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:45
-msgid "Error reading end tag."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:46
-msgid "Error parsing Unknown."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:47
-msgid "Error parsing Comment."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:48
-msgid "Error parsing Declaration."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:49
-msgid "Error document empty."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:50
-msgid "Error null (0) or unexpected EOF found in input stream."
-msgstr ""
-
-#: common/tinyxmlerror.cpp:51
-msgid "Error parsing CDATA."
-msgstr ""
-
 #. TRANSLATORS: The parameters are (in the same order and line layout) :
 #. L1 : The application name, version, revision
 #. L2 : Fox-Toolkit major, minor and level version
 #. L3 : Ogre major, minor version, version patch and version name
 #. L4 : Same as Ogre for OIS
 #. L5 : libCurl version, timestamp
-#: common/version.cpp:68
+#: common/version.cpp:77
 #, c-format
 msgid ""
 "Starting %s v%s-%s using :\n"
@@ -1330,14 +1330,14 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameters are the build (compilation) date and time.
-#: common/version.cpp:86
+#: common/version.cpp:95
 #, c-format
 msgid "Built '%s' at '%s' \n"
 msgstr ""
 
-#: common/version.cpp:90
+#: common/version.cpp:99
 msgid ""
-"Copyright (C) 2006-2009 Jerome PASQUIER\n"
+"Copyright (C) 2006-2010 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
 "and you are welcome to redistribute it under certain conditions.\n"
 "See the GNU General Public License for more details.\n"
@@ -1756,235 +1756,235 @@ msgid "setting a null transition time"
 msgstr ""
 
 #. TRANSLATORS: The argument is the name of a widget
-#: ogreGui/bggui.cpp:167
+#: oldOgreGui/bggui.cpp:167
 #, c-format
 msgid "FocusedWidget's parent is NULL. Widget's name is `%s')"
 msgstr ""
 
 #. TRANSLATORS: The argument is the number of registered windows
-#: ogreGui/bggui.cpp:289
+#: oldOgreGui/bggui.cpp:289
 #, c-format
 msgid "GUI::addWindow() called (%i windows registered)"
 msgstr ""
 
-#: ogreGui/bggui.cpp:392
+#: oldOgreGui/bggui.cpp:392
 msgid "Deactivate window"
 msgstr ""
 
-#: ogreGui/bgtextinput.cpp:190
+#: oldOgreGui/bgtextinput.cpp:190
 msgid "computeMaskedValue called"
 msgstr ""
 
-#: ogreGui/bgwindow.cpp:92
+#: oldOgreGui/bgwindow.cpp:92
 msgid "Window destructor called"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integers values from the
 #. ScrollPane class getted through getMaxChildRight() and
 #. getMaxChildBottom()
-#: ogreGui/bgwindow.cpp:493
+#: oldOgreGui/bgwindow.cpp:493
 #, c-format
 msgid "Debugging ScrollPane : maxChildRight=%d maxChildBottom=%d"
 msgstr ""
 
-#: ogreGui/container.cpp:64
+#: oldOgreGui/container.cpp:64
 msgid "Cleaning buttonList"
 msgstr ""
 
-#: ogreGui/container.cpp:68
+#: oldOgreGui/container.cpp:68
 msgid "Cleaning textInputList"
 msgstr ""
 
-#: ogreGui/container.cpp:72
+#: oldOgreGui/container.cpp:72
 msgid "Cleaning widgetList"
 msgstr ""
 
-#: ogreGui/container.cpp:304
+#: oldOgreGui/container.cpp:304
 msgid "At sign called"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integer values
 #. telling X and Y moving deviation.
-#: ogreGui/container.cpp:404
+#: oldOgreGui/container.cpp:404
 #, c-format
 msgid "Container: setting Moving dev to %d,%d (OCT_WIN_MOVE)"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integer values
 #. telling X and Y moving deviation
-#: ogreGui/container.cpp:436
+#: oldOgreGui/container.cpp:436
 #, c-format
 msgid "Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an unsigned integer (size_t typed)
 #. that represents a character (a charcode).
-#: ogreGui/font.cpp:317
+#: oldOgreGui/font.cpp:317
 #, c-format
 msgid "Font::getGlyph not found for charcode %u"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the size of the map containing
 #. character glyphs (an unsigned integer value).
-#: ogreGui/font.cpp:323
+#: oldOgreGui/font.cpp:323
 #, c-format
 msgid "mGlyphMap.size=%u"
 msgstr ""
 
-#: ogreGui/fontmanager.cpp:116
+#: oldOgreGui/fontmanager.cpp:116
 msgid "Unable to initialize FreeType library"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the error code returned by the FreeType
 #. library. It is a signed integer.
-#: ogreGui/fontmanager.cpp:121
+#: oldOgreGui/fontmanager.cpp:121
 #, c-format
 msgid "FT error code : %i"
 msgstr ""
 
-#: ogreGui/fontmanager.cpp:130
+#: oldOgreGui/fontmanager.cpp:130
 msgid "Unable to load font"
 msgstr ""
 
-#: ogreGui/fontmanager.cpp:133
+#: oldOgreGui/fontmanager.cpp:133
 msgid "Unable to set font size"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the error code returned by the FreeType
 #. library. It is a signed integer.
-#: ogreGui/fontmanager.cpp:216
+#: oldOgreGui/fontmanager.cpp:216
 #, c-format
 msgid "FT error code while loading glyph : %i"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an unsigned integer that represents
 #. a character (a charcode).
-#: ogreGui/fontmanager.cpp:228
+#: oldOgreGui/fontmanager.cpp:228
 #, c-format
 msgid "Glyph width is NULL for charcode %u"
 msgstr ""
 
-#: ogreGui/glyph.cpp:57
+#: oldOgreGui/glyph.cpp:57
 msgid "Constructing a glyph with NULL height"
 msgstr ""
 
-#: ogreGui/guivertex.cpp:82
+#: oldOgreGui/guivertex.cpp:82
 msgid "GuiVertex::setPosition parameter is NULL."
 msgstr ""
 
-#: ogreGui/hscrollbar.cpp:60
+#: oldOgreGui/hscrollbar.cpp:60
 msgid "Cannot get parent Window. We're enable to change mouse cursor."
 msgstr ""
 
-#: ogreGui/messagebox.cpp:68
+#: oldOgreGui/messagebox.cpp:68
 msgid "Centering the Dialog"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a duration in milliseconds.
-#: ogreGui/mouseevent.cpp:78
+#: oldOgreGui/mouseevent.cpp:78
 #, c-format
 msgid "mClickDuration=%d (long click)"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a duration in milliseconds.
-#: ogreGui/mouseevent.cpp:86
+#: oldOgreGui/mouseevent.cpp:86
 #, c-format
 msgid "mClickDuration=%d (short click)"
 msgstr ""
 
-#: ogreGui/multicolumnlist.cpp:123
+#: oldOgreGui/multicolumnlist.cpp:123
 msgid "GUI pointer is NULL, program should crash (segfault)."
 msgstr ""
 
-#: ogreGui/multicolumnlist.cpp:132
+#: oldOgreGui/multicolumnlist.cpp:132
 msgid "Columns menu"
 msgstr ""
 
-#: ogreGui/multicolumnlist.cpp:421
+#: oldOgreGui/multicolumnlist.cpp:421
 msgid "Showing PopupMenu"
 msgstr ""
 
 #. TRANSLATORS: Do not translate mMovingColumn here, it is a
 #. variable name.
-#: ogreGui/multicolumnlist.cpp:431
+#: oldOgreGui/multicolumnlist.cpp:431
 msgid "mMovingColumn is now -1"
 msgstr ""
 
-#: ogreGui/multicolumnlistcolumn.cpp:111
+#: oldOgreGui/multicolumnlistcolumn.cpp:111
 msgid "Column's parent is NULL. Cannot apply sort"
 msgstr ""
 
-#: ogreGui/multicolumnlistcolumn.cpp:112
+#: oldOgreGui/multicolumnlistcolumn.cpp:112
 msgid "Column's index is -1. Cannot apply sort"
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:139
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:139
 msgid "MultiColumnListDebugSettings was unused. Please check widget name"
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:188
-#: ogreGui/multicolumnlistdebugsettings.cpp:225
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:188
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:225
 msgid "MultiColumnList pointer is NULL. Program should crash."
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:295
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:295
 msgid "debugItem called : "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:301
-#: ogreGui/multicolumnlistdebugsettings.cpp:365
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:301
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:365
 msgid "(debug flag is "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:307
-#: ogreGui/multicolumnlistdebugsettings.cpp:371
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:307
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:371
 msgid "localization : "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:313
-#: ogreGui/multicolumnlistdebugsettings.cpp:377
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:313
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:377
 msgid "content : "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:327
-#: ogreGui/multicolumnlistdebugsettings.cpp:381
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:327
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:381
 msgid "drawing rectangle "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:329
-#: ogreGui/multicolumnlistdebugsettings.cpp:383
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:329
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:383
 msgid "(filled with "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:332
-#: ogreGui/multicolumnlistdebugsettings.cpp:386
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:332
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:386
 msgid "(not drawn) "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:359
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:359
 msgid "debugCell called : "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:409
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:409
 msgid "Using parent siscor : "
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:410
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:410
 msgid "Current scissor :"
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:411
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:411
 msgid " top="
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:412
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:412
 msgid " left="
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:413
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:413
 msgid " bottom="
 msgstr ""
 
-#: ogreGui/multicolumnlistdebugsettings.cpp:414
+#: oldOgreGui/multicolumnlistdebugsettings.cpp:414
 msgid " right="
 msgstr ""
