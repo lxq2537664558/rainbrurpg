@@ -163,6 +163,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] olgOgreGui shoundn't be compiled
 **** TODO Move code to src/                                           [15%]
      :CLOCK:
+     CLOCK: [2010-02-16 mar 16:04]
      CLOCK: [2010-02-14 dim 16:07]--[2010-02-14 dim 16:37] =>  0:30
      CLOCK: [2010-02-14 dim 15:46]--[2010-02-14 dim 15:59] =>  0:13
      CLOCK: [2010-02-13 sam 18:01]--[2010-02-13 sam 18:13] =>  0:12
@@ -185,9 +186,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
      - [ ] server/
            - [ ] images/
      - [ ] terminalapi/
-     - [ ] tests/
-           - [ ] common/
-           - [ ] tapi/
+     - [-] tests/
+	   - [ ] ./*
+           - [X] common/
+           - [X] tapi/
      - [X] tools/
            - [X] Makefile.am
  	   - [X] ftpclient/

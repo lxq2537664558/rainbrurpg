@@ -114,7 +114,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-199 (16 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (2) Changes in MAkefile.am due to tools/ src/tools changes
+- (3) Moved some sources to src/
+   from tests/tapi/, tests/common/
+- Changes in MAkefile.am due to tools/ src/tools changes
 - Fixed directory moves in po/POTFILES.in
 
 * v0.0.5-198 (09 feb 2010 - 16 feb 2010) SLOC ???? UT ? FT ?:??
