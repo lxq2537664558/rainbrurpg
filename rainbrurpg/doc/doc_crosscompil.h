@@ -49,7 +49,7 @@
   *
   * To easily configure cross-compilation toolchain, create
   * a script called \c mingw.sh with this content :
-  * <code>
+  * <pre>
   * #!/bin/sh
   * 
   * export MINGW_PREFIX="/usr/cross"
@@ -59,10 +59,12 @@
   * export PATH="$MINGW_PREFIX/bin:$PATH"
   * export LD_LIBRARY_PATH="$MINGW_PREFIX/lib"
   * export PKG_CONFIG_PATH="$MINGW_PREFIX/lib/pkgconfig"
-  * </code>
+  * </pre>
   *
   * When you start your cross-compilation session, you may type :
-  * <code>source mingw.sh</code>.
+  * <pre>
+  * source mingw.sh
+  * </pre>
   *
   * \section win32_current_line Current command line
   *
