@@ -115,7 +115,7 @@ A system that serialize widgets position and configuration
 
 * v0.0.5-199 (16 feb 2010 - ???) SLOC ???? UT ? FT ?:??
 - (3) Moved some sources to src/
-   from tests/tapi/, tests/common/, tests/
+   from tests/tapi/, tests/common/, tests/, server/, oldOgreGui
 - Changes in MAkefile.am due to tools/ src/tools changes
 - Fixed directory moves in po/POTFILES.in
 
