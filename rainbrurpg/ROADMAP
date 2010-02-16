@@ -161,9 +161,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Move code to src/                                           [23%]
+**** TODO Move code to src/                                           [30%]
      :CLOCK:
-     CLOCK: [2010-02-16 mar 16:04]
+     CLOCK: [2010-02-16 mar 17:19]
+     CLOCK: [2010-02-16 mar 16:04]--[2010-02-16 mar 16:18] =>  0:14
      CLOCK: [2010-02-14 dim 16:07]--[2010-02-14 dim 16:37] =>  0:30
      CLOCK: [2010-02-14 dim 15:46]--[2010-02-14 dim 15:59] =>  0:13
      CLOCK: [2010-02-13 sam 18:01]--[2010-02-13 sam 18:13] =>  0:12
@@ -183,9 +184,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   All files should be removed (previous step)
            - [X] Check it
      - [ ] oldOgreGui/
-     - [ ] server/
-           - [ ] images/
-     - [ ] terminalapi/
+     - [-] server/
+	   - [ ] ./*
+           - [X] images/  (Add it as binary)
+     - [X] terminalapi/
      - [X] tests/
 	   - [X] ./*
            - [X] common/
