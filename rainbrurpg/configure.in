@@ -7,7 +7,7 @@ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
 
 dnl The release number (revision)
-RELEASE=198
+RELEASE=199
 AC_SUBST([RELEASE])
 AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 
@@ -185,12 +185,12 @@ AC_CONFIG_FILES([Makefile			\
 	  editor/Makefile			\
 	  server/Makefile			\
 	  tests/Makefile			\
-	  tools/Makefile			\
-	  tools/transmsg/Makefile		\
-	  tools/xident/Makefile			\
-	  tools/netflooder/Makefile		\
-	  tools/ftpclient/Makefile		\
-	  tools/hashsum/Makefile		\
+	  src/tools/Makefile			\
+	  src/tools/transmsg/Makefile		\
+	  src/tools/xident/Makefile		\
+	  src/tools/netflooder/Makefile		\
+	  src/tools/ftpclient/Makefile		\
+	  src/tools/hashsum/Makefile		\
 	  examples/Makefile			\
 	  examples/tapi/Makefile		\
 	  \

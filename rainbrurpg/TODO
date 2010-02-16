@@ -113,9 +113,15 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-198 (09 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (15) Moved some sources to src/
-   tools/cident/, tools/transmsg/
+* v0.0.5-199 (16 feb 2010 - ???) SLOC ???? UT ? FT ?:??
+- (2) Changes in MAkefile.am due to tools/ src/tools changes
+- Fixed directory moves in po/POTFILES.in
+
+* v0.0.5-198 (09 feb 2010 - 16 feb 2010) SLOC ???? UT ? FT ?:??
+- Fix a typo issue in doc_crossCompil.h
+- Created ChangeLog.2009
+- Prepend tools/ Makefile's name with src/ in configure.in
+- All tools moved to src/
 - Updated files to be moved to src/
    tools/, tests/, termnalapi, server/
 - doc/doc_crosscompil.h references mingw.sh script

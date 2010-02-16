@@ -41,10 +41,6 @@ if RB_OPTION_SERVER_FLAGS
   SUBDIRS+=server
 endif
 
-if RB_OPTION_TOOLS_FLAGS
-  SUBDIRS+=tools
-endif
-
 if RB_OPTION_TESTS_FLAGS
   SUBDIRS+=tests
 endif
@@ -58,7 +54,7 @@ if RB_OPTION_TAPI_FLAGS
 endif
 
 if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=terminalapi editor server tools tests examples
+  SUBDIRS+=terminalapi editor server tests examples
 endif 
 
 pkgconfigdir = $(libdir)/pkgconfig

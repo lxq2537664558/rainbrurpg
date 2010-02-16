@@ -112,7 +112,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] May use C++ exceptions
 
 *** v0.0.6
-**** TODO Miscelaneous                                               [20%]
+**** TODO Sourceforge release
+- [ ] Removed CEGUI reference from Sourceforge project overview
+- [ ] File release sourceforge (zip+bz2)
+**** TODO Miscelaneous                                                [20%]
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
@@ -159,7 +162,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] olgOgreGui shoundn't be compiled
 **** TODO Move code to src/                                           [15%]
      :CLOCK:
-     CLOCK: [2010-02-14 dim 16:07]
+     CLOCK: [2010-02-14 dim 16:07]--[2010-02-14 dim 16:37] =>  0:30
      CLOCK: [2010-02-14 dim 15:46]--[2010-02-14 dim 15:59] =>  0:13
      CLOCK: [2010-02-13 sam 18:01]--[2010-02-13 sam 18:13] =>  0:12
      :END:
@@ -281,3 +284,4 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] I currently work with many paper TODO. Update this document with them.
 - [X] Merge TODO long terms items with this document.
 
+      
