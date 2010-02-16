@@ -147,8 +147,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [-] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
-      - [X] Remove all files from ogreGui/ (in working copy)
+      - [X] Remove all files from src/ogreGui/ (in working copy)
       - [ ] Copy *.hpp/*.cpp/Makefile.am file list here
+      - [ ] Also copy documentation images.
       - [ ] cvs add for all added files
       - [ ] Pass the tests in tests/ogreGui/
       - [ ] cvs add for Test files
@@ -284,4 +285,5 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] I currently work with many paper TODO. Update this document with them.
 - [X] Merge TODO long terms items with this document.
 
+      
       
