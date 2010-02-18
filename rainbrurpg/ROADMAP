@@ -79,7 +79,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] See if OSI/Sourceforge are agree
 - [ ] See compatibility with EasyBMP/TinyXML
 
-**** Keyboard Navigation for OgreGui
 **** tool/adminsite-databackup
     A comand-line tool to backup adminsite XML files that takes the version
     number as argument (used by backup_prog script).
@@ -103,6 +102,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] May headers files be called *.hpp
 - [ ] Should use Boost.Format instead of printf/GTS_* macros
 - [ ] tests/Doxyfile replaced by tests/Doxyfile.in
+- [ ] acinclude.m4 code should go into separate files in m4/
 **** TODO Make a better use of CppUnit (see libkics for example)      [0%]
 - [ ] autoregister test fixtures
 - [ ] no templates
@@ -116,12 +116,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] File release sourceforge (zip+bz2)
 **** TODO Miscelaneous                                                [20%]
+     CLOCK: [2010-02-17 mer 18:15]
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
 - [ ] Datafiles cleanup (many are not used anymore)
+- [ ] Should add a configuration summary at the end of configure
 **** TODO OgreGui2 implementation                                     [0%]
+     CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 20:01] =>  1:12
      To be completed with the previous TODO task.
      Should use sigc++ for connection
 - [ ] Dirty flag become a configure option
@@ -132,6 +135,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 integration                                        [60%]
      :CLOCK:
+     CLOCK: [2010-02-18 jeu 06:43]--[2010-02-18 jeu 07:07] =>  0:24
+     CLOCK: [2010-02-17 mer 17:48]--[2010-02-17 mer 18:15] =>  0:27
      CLOCK: [2010-02-14 dim 11:30]--[2010-02-14 dim 11:57] =>  0:27
      CLOCK: [2010-02-12 ven 10:36]--[2010-02-12 ven 10:38] =>  0:02
      CLOCK: [2010-02-12 ven 10:17]--[2010-02-12 ven 10:34] =>  0:17
@@ -148,11 +153,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
       - [X] Remove all files from src/ogreGui/ (in working copy)
-      - [ ] Copy *.hpp/*.cpp/Makefile.am file list here
-      - [ ] Also copy documentation images.
-      - [ ] cvs add for all added files
-      - [ ] Pass the tests in tests/ogreGui/
-      - [ ] cvs add for Test files
+      - [X] Copy *.hpp/*.cpp/Makefile.am file list here
+      - [X] Also copy documentation images.
+      - [X] cvs add for all added files
+      - [X] Pass the tests in tests/ogreGui/
+      - [X] cvs add for Test files
       - [ ] Remove ogreGui2 project
 - [X] Fix some build issues in client/
       Mark modified files in OgreGui2 implementation item.
@@ -161,9 +166,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Move code to src/                                           [38%]
+**** TODO Move code to src/                                           [53%]
      :CLOCK:
-     CLOCK: [2010-02-16 mar 17:19]
+     CLOCK: [2010-02-16 mar 18:12]--[2010-02-16 mar 18:38] =>  0:26
+     CLOCK: [2010-02-16 mar 17:19]--[2010-02-16 mar 17:44] =>  0:25
      CLOCK: [2010-02-16 mar 16:04]--[2010-02-16 mar 16:18] =>  0:14
      CLOCK: [2010-02-14 dim 16:07]--[2010-02-14 dim 16:37] =>  0:30
      CLOCK: [2010-02-14 dim 15:46]--[2010-02-14 dim 15:59] =>  0:13
@@ -179,11 +185,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
      - [ ] design/
      - [ ] editor/
      - [ ] example/
-     - [ ] maincore/
+     - [X] maincore/
      - [X] ogreGui/
 	   All files should be removed (previous step)
            - [X] Check it
-     - [ ] oldOgreGui/
+     - [X] oldOgreGui/
      - [X] server/
 	   - [X] ./*
            - [X] images/  (Add it as binary)

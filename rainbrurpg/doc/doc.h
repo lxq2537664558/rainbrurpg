@@ -578,27 +578,20 @@
 
 /** \namespace RainbruRPG::OgreGui
   *
-  * \brief A graphical user interface over Ogre3D based on BetaGui.
-  *
-  * \section ogreGui_intro_sec Introduction
-  *
-  * OgreGuiToolkit is a toolkit providing a graphical user interface over
-  * Ogre3D. It is based on BetaGui 
-  * (http://www.ogre3d.org/wiki/index.php/BetaGUI). For this reason, some
-  * classes are in the BetaGUI namespace.
-  *
-  * \section ogreGui_skinmanager_sec Skin manager
-  *
-  * An important class is \ref RainbruRPG::OgreGui::SkinManager "SkinManager"
-  * which manages a vector of \ref RainbruRPG::OgreGui::Skin 
-  * "Skin" objects.
-  *
-  * \section ogreGui_fontdebug_sec Debugging font
-  * 
-  * In the \c ogreGui/fontmanager.h file, a preprocessor macro called 
-  * \c DEBUG_FONT_TEXTURE_QUAD is defined. If this macro is defined as 
-  * \c true, the font called \c DEBUG_FONT_TTF_NAME will be applied
-  * as ogre window background.
+  * OgreGui is the second implementation of a Graphical User Interface
+  * over Ogre3D for RainbruRPG. The design goals are the following :
+  * - global alpha allowing developper to implements fade in/fade out effects;
+  * - Keyboard navigation;
+  * - pre-computation of absolute sizes and positions through the use
+  *   of a propagated dirty flag. This feature can be disabled by passing
+  *   \c --disable-dirty-flag to the \c configure script;
+  * - Gui element serialization, allowing the user to keep placement and
+  *    sizes of the user interface between sessions;
+  * - the abiklity to add widgets before Ogre3D overlays through the use of two
+  * - different RenderQueueListener. This feature can be disabled by passing
+  *   \c --disable-guibfolay to the \c configure script;
+  * - the ability to provide multiple skins is possible by prepending the
+  *   filename of GUI elements images with the skin name.
   *
   */
 

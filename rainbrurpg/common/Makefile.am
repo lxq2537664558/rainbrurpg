@@ -169,13 +169,15 @@ library_include_HEADERS = $(h_sources)
 
 librainbrurpg_common_la_INCLUDES = -I$(top_srcdir) 
 
-INCLUDES= $(OGRE_CFLAGS)	\
-	  $(OIS_CFLAGS)         \
-	  $(GLIB_CFLAGS)	\
-	  $(SIGC_CFLAGS)	\
-	  $(GNET_CFLAGS)	\
-	  $(CFLAGS)		\
-	  -I$(top_srcdir)/ext/
+INCLUDES= $(OGRE_CFLAGS)			\
+	  $(OIS_CFLAGS)         		\
+	  $(GLIB_CFLAGS)			\
+	  $(SIGC_CFLAGS)			\
+	  $(GNET_CFLAGS)			\
+	  $(CFLAGS)				\
+	  -I$(top_srcdir)/ext/  		\
+	  -I$(top_srcdir)/src/maincore/
+
 
 librainbrurpg_common_la_SOURCES= $(h_sources) $(cc_sources)
 

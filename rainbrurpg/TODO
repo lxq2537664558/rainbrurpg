@@ -114,8 +114,15 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-199 (16 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (3) Moved some sources to src/
-   from tests/tapi/, tests/common/, tests/, server/, oldOgreGui
+- (9) Retrieved ogreGui2 sources from cpp/ project
+- Some m4 functions moved from acinclude.m4 to m4/
+- Documented OgreGui namespace
+- --disable-dirty-flag now works
+- Trying to implement a configure option to disable 
+   dirty flag but doesn't work as expected
+- Makes configure and some Makefile work again
+- Moved some sources to src/
+   from tests/tapi/, tests/common/, tests/, server/, oldOgreGui/, maincore/
 - Changes in MAkefile.am due to tools/ src/tools changes
 - Fixed directory moves in po/POTFILES.in
 

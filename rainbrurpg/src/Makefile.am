@@ -17,10 +17,24 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
+SUBDIRS=maincore 
+
 if RB_OPTION_TOOLS_FLAGS
   SUBDIRS+=tools
 endif
 
+if RB_OPTION_SERVER_FLAGS
+  SUBDIRS+=server
+endif
+
+if RB_OPTION_TESTS_FLAGS
+  SUBDIRS+=tests
+endif
+
+if RB_OPTION_TAPI_FLAGS
+  SUBDIRS+=terminalapi
+endif
+
 if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=tools
+  SUBDIRS+=terminalapi tools server tests 
 endif 

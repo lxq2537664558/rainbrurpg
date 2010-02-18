@@ -570,25 +570,14 @@ RECURSIVE              = YES
 # excluded from the INPUT source files. This way you can easily exclude a 
 # subdirectory from a directory tree whose root is specified with the INPUT tag.
 
-EXCLUDE                = include/ \
-                         EasyBMP.cpp \
-                         common/EasyBMP.h \
-                         common/EasyBMP.cpp \
-                         common/EasyBMP_DataStructures.h \
-                         common/EasyBMP_VariousBMPutilities.h \
-                         common/tinystr.cpp \
-                         common/tinystr.h \
-                         common/tinyxml.cpp \
-                         common/tinyxml.h \
-                         common/tinyxmlerror.cpp \
-                         common/tinyxmlparser.cpp \
-                         common/EasyBMP_BMP.h \
-                         IrrClient/ \
-                         client/oldLauncher/ \
-                         tests/ \
-                         common/loadbmp.h \
-                         common/loadbmp.cpp \
-                         editor/.rcc/qrc_resources.cpp \
+EXCLUDE                = ext/	     	   	   	     	  \
+		         src/oldOgreGui		   		  \
+		         IrrClient/ 		   		  \
+                         client/oldLauncher/ 	   		  \
+                         tests/			   		  \
+                         common/loadbmp.h 			  \
+                         common/loadbmp.cpp 			  \
+                         editor/.rcc/qrc_resources.cpp 		  \
                          editor/resources.cpp
 
 # The EXCLUDE_SYMLINKS tag can be used select whether or not files or 

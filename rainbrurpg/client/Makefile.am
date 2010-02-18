@@ -37,8 +37,8 @@ rainbrurpg_SOURCES= exampleframelistener.cpp		\
 
 INCLUDES = -I$(top_srcdir)/common			\
 	   -I$(top_srcdir)/ext				\
-	   -I$(top_srcdir)/maincore			\
-	   -I$(top_srcdir)/oldOgreGui			\
+	   -I$(top_srcdir)/src/maincore			\
+	   -I$(top_srcdir)/src/oldOgreGui			\
 	   $(OIS_CFLAGS)				\
 	   $(OGRE_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\

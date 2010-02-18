@@ -1,7 +1,23 @@
+2010-02-17 Jerome Pasquier  <rainbru@free.fr>
+
+	* Doxyfile.in (EXCLUDE): Now excludes src/oldOgreGui/ directory.
+	* bootstrap: aclocal now called with '-I m4/' option.
+	
 2010-02-16 Jerome Pasquier  <rainbru@free.fr>
 
 	* Makefile.am: Changes for tools/ to src/tools/ directory.
 	
+	* configure.in: Changes due to sources moves to src/.
+	* Makefile.am (SUBDIRS): Moved some sources to src/.
+	* src/Makefile.am (SUBDIRS): Moved some sources from ../.
+	* common/Makefile.am (INCLUDES): Makes maincore includes works again.
+	* client/Makefile.am (INCLUDES): Makes maincore includes works again.
+
+	* acinclude.m4 (RB_OPTION_DIRTYFLAG): Trying to implement an option to
+	disable OgreGui's dirty flag but doesn't work as expected.
+
+	* acinclude.m4 (RB_OPTION_DIRTYFLAG): Some changes makes this working.
+
 2010-02-15 Jerome Pasquier  <rainbru@free.fr>
 
 	* configure.in (AC_CONFIG_FILES): tools/ directory's Makefiles prepend

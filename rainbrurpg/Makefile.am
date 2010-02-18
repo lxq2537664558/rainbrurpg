@@ -21,7 +21,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = po ext common maincore client
+SUBDIRS = po ext common client
 
 # The data files
 SUBDIRS+= config data media mapdata
@@ -37,24 +37,12 @@ if RB_OPTION_EDITOR_FLAGS
   SUBDIRS+=editor
 endif
 
-if RB_OPTION_SERVER_FLAGS
-  SUBDIRS+=server
-endif
-
-if RB_OPTION_TESTS_FLAGS
-  SUBDIRS+=tests
-endif
-
 if RB_OPTION_EXAMPLES_FLAGS
   SUBDIRS+=examples
 endif
 
-if RB_OPTION_TAPI_FLAGS
-  SUBDIRS+=terminalapi
-endif
-
 if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=terminalapi editor server tests examples
+  SUBDIRS+=editor examples
 endif 
 
 pkgconfigdir = $(libdir)/pkgconfig
