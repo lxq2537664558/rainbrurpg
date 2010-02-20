@@ -46,8 +46,8 @@ INCLUDES = -I$(top_srcdir)/common			\
 	   $(CFLAGS)
 
 rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/		\
-		    -L$(top_srcdir)/maincore/		\
-		    -L$(top_srcdir)/oldOgreGui/		\
+		    -L$(top_srcdir)/src/maincore/	\
+		    -L$(top_srcdir)/src/oldOgreGui/	\
 		  -lrainbrurpg-common			\
 		  -lrainbrurpg-core			\
 		  -lrainbrurpg-ogregui

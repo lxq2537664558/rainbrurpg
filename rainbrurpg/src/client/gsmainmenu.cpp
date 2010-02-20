@@ -191,6 +191,7 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   *
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
+  /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();
 
 
@@ -238,7 +239,7 @@ void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 #ifdef RB_MULTICOLUMNLIST_TEST
   createMultiColumnListTestWindow();
 #endif // RB_MULTICOLUMNLIST_TEST
-
+  */
 }
 
 /** The BetaGui button callback implementation

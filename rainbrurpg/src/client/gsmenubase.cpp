@@ -163,6 +163,7 @@ void RainbruRPG::Core::gsMenuBase::run(){
   *
   */
 void RainbruRPG::Core::gsMenuBase::createMenuWindow(void){
+  /*
   BetaGUI::GUI* mGUI =&GUI::getSingleton();
 
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
@@ -175,6 +176,7 @@ void RainbruRPG::Core::gsMenuBase::createMenuWindow(void){
 				   "Dynamic menu", mGUI, OSI_NAVIGATION);
 
   mGUI->addWindowBeforeOverlays(menuWindow);
+  */
 }
 
 
@@ -386,6 +388,7 @@ bool RainbruRPG::Core::gsMenuBase::keyReleased(const OIS::KeyEvent& evt){
   *
   */
 bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
+  /*
   // CEGUI
   int x=evt.state.X.rel;
   int y=evt.state.Y.rel;
@@ -397,7 +400,7 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
   mouseY=evt.state.Y.abs;
 
   GUI::getSingleton().injectMouse(mouseX, mouseY);
-
+  */
   return true;
 }
 
@@ -411,7 +414,7 @@ bool RainbruRPG::Core::gsMenuBase::mouseMoved(const OIS::MouseEvent& evt){
   */
 bool RainbruRPG::Core::gsMenuBase::
 mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
-
+  /*
   if (evt.state.buttonDown(OIS::MB_Left)){
     GUI::getSingleton().injectMouseButtonPressed("gsMenuBase::mousePressed");
   }
@@ -423,7 +426,7 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   // OgreGUI
   mouseX=evt.state.X.abs;
   mouseY=evt.state.Y.abs;
-
+  */
   /* v0.0.5-189 : 
    * I removed this call because a segfault occurs here.
    * The segfault occured in MousePointer::setState().
@@ -445,7 +448,7 @@ mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
 bool RainbruRPG::Core::gsMenuBase::
 mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
   // OgreGUI
-  GUI::getSingleton().injectMouseButtonReleased();
+  //  GUI::getSingleton().injectMouseButtonReleased();
 
   return true;
 }
@@ -462,7 +465,7 @@ mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id){
 bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   // Injecting BackSpace as a special char
   if (evt.key == OIS::KC_BACK){
-    GUI::getSingleton().injectBackspace(mouseX, mouseY);
+    //    GUI::getSingleton().injectBackspace(mouseX, mouseY);
   }
   /* The next specials cases (Left shift and Right Shift) are
    * mandatory. Injecting this in OgreGUI::GUI seems to break
@@ -492,7 +495,7 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
       LOGI("<At> sign clicked");
 
       Ogre::String s="@";
-      GUI::getSingleton().injectKey(s, mouseX, mouseY);
+      //      GUI::getSingleton().injectKey(s, mouseX, mouseY);
     }
     else {
       LOGCATS("Another key pressed : text=");
@@ -504,7 +507,7 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
       s+=c;
       
       if (s.size()!=0){
-	GUI::getSingleton().injectKey(s, mouseX, mouseY);
+	//	GUI::getSingleton().injectKey(s, mouseX, mouseY);
       }
     }
   }
@@ -518,6 +521,7 @@ bool RainbruRPG::Core::gsMenuBase::keyPressed(const OIS::KeyEvent& evt){
   *
   */
 void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
+  /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();
 
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
@@ -538,4 +542,5 @@ void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
   menuWindow->addWidget(staticMenu);
 
   GuiManager::getSingleton().createErrorLabel();
+  */
 }

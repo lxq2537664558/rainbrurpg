@@ -128,7 +128,7 @@ onQuitClicked(){
   *
   */
 void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
-  BetaGUI::GUI* mGUI =&GUI::getSingleton();
+  /*  BetaGUI::GUI* mGUI =&GUI::getSingleton();
 
   // Center the window in the right background
   RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
@@ -189,6 +189,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 			   "Back", BetaGUI::Callback::Callback(this), winBack);
   winBack->addWidget(btnBack);
   mGUI->addWindow(winBack);
+  */
 }
 
 /** The callback of the Connect button
@@ -199,7 +200,7 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 bool RainbruRPG::Core::gsConnection::
 onConnectClicked(){
   LOGI("Connect button clicked");
-
+  /*
   // Get the strings
   Ogre::String name=tiUserName->getValue();
 
@@ -231,6 +232,7 @@ onConnectClicked(){
 
     }
   }
+  */
   return true;
 }
 

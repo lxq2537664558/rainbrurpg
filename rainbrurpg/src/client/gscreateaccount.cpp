@@ -140,7 +140,7 @@ void RainbruRPG::Core::gsCreateAccount::onBackClicked(void){
   *
   */
 void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
-
+  /*  
   BetaGUI::GUI* mGUI = &GUI::getSingleton();
 
   // Center the window in the right background
@@ -170,7 +170,7 @@ void RainbruRPG::Core::gsCreateAccount::setupCreateAccountMenu(){
   // Y position of right widget
   unsigned int rightX=100;
 
-  /*
+  
   Vector4 labHelpDim(10,posY,winWidth-20,24);
   labHelp=new Label(labHelpDim, mess, window);
   window->addWidget(labHelp);
@@ -261,7 +261,7 @@ void RainbruRPG::Core::gsCreateAccount::setupTabOrder(){
   *
   */
 void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
-
+  /*
   LOGI("Submit button clicked");
   String name, pwd, repPwd, mail;
 
@@ -330,6 +330,7 @@ void RainbruRPG::Core::gsCreateAccount::onSubmitClicked(void){
     }
     
   }
+  */
 }
 
 /** The OgreGUI buttons callback
