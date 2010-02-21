@@ -115,26 +115,48 @@ name, date, heure, gamestate, position, name perso, name server, versions
 **** TODO Sourceforge release
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] File release sourceforge (zip+bz2)
-**** TODO Miscelaneous                                                [20%]
+**** TODO Miscelaneous                                                [33%]
+     :CLOCK:
+     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
+     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
      CLOCK: [2010-02-17 mer 18:15]
+     :END:
 - [X] Remove tools/oldXIdent and explain it in regtests.
+- [X] Should add a configuration summary at the end of configure
+- [ ] common/version.cpp should print option summary
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
 - [ ] Datafiles cleanup (many are not used anymore)
-- [ ] Should add a configuration summary at the end of configure
-**** TODO OgreGui2 implementation                                     [0%]
+**** TODO OgreGui2 implementation                                     [50%]
+     :CLOCK:
+     CLOCK: [2010-02-20 sam 11:08]--[2010-02-20 sam 11:36] =>  0:28
+     CLOCK: [2010-02-19 ven 20:43]--[2010-02-19 ven 21:03] =>  0:20
+     CLOCK: [2010-02-18 jeu 17:29]
+     CLOCK: [2010-02-18 jeu 11:12]--[2010-02-18 jeu 11:44] =>  0:32
+     CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 11:08] =>  0:50
      CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 20:01] =>  1:12
+     :END:
      To be completed with the previous TODO task.
      Should use sigc++ for connection
-- [ ] Dirty flag become a configure option
+- [X] Dirty flag become a configure option
+- [X] Test in cpp/layoutTemplate
+      Should be use for Layout implementation
+- [X] cpp/layoutTemplate should not use associative array (sorted)
+- [ ] Create a command-line option --ogregui-test which uses a new
+      gsOgreguiTest gamestate (if Boost.Program_options add to DEPENDENCIES)
 - [ ] Widget implementation
 - [ ] Serializable should use Boost.Serialization (Archive)
 - [ ] Modified files during integration     
       - [ ] client/gsCreateAccount
+      - [ ] client/gsConnection
+      - [ ] client/gsMainMenu
+      - [ ] client/gsMenuBase
 
-**** TODO OgreGui2 integration                                        [60%]
+**** TODO OgreGui2 integration                                        [80%]
      :CLOCK:
+     CLOCK: [2010-02-21 dim 15:55]
+     CLOCK: [2010-02-19 ven 18:26]--[2010-02-19 ven 18:50] =>  0:24
      CLOCK: [2010-02-18 jeu 06:43]--[2010-02-18 jeu 07:07] =>  0:24
      CLOCK: [2010-02-17 mer 17:48]--[2010-02-17 mer 18:15] =>  0:27
      CLOCK: [2010-02-14 dim 11:30]--[2010-02-14 dim 11:57] =>  0:27
@@ -147,9 +169,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 - [-] ogreGui/ implementation item creation
       - [X] Check what is already implemented (on a paper TODO)
-      - [ ] Compare with my paper concepts and populate the OgreGui2 implementation
-	    section below.
-- [-] OgreGui2 is a separate project that intends to completely replace OgreGui.
+      - [ ] integrate dot tool to create UML diagram in doc/
+      - [ ] Create the UML diagram
+      - [ ] Populate the OgreGui2 implementation section below
+- [X] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
       - [X] Remove all files from src/ogreGui/ (in working copy)
@@ -158,7 +181,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] cvs add for all added files
       - [X] Pass the tests in tests/ogreGui/
       - [X] cvs add for Test files
-      - [ ] Remove ogreGui2 project
+      - [X] Remove ogreGui2 project
 - [X] Fix some build issues in client/
       Mark modified files in OgreGui2 implementation item.
       - [X] gsCreateAccount.cpp
@@ -166,8 +189,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Move code to src/                                           [53%]
+**** TODO Move code to src/                                           [93%]
      :CLOCK:
+     CLOCK: [2010-02-20 sam 16:25]--[2010-02-20 sam 16:53] =>  0:28
+     CLOCK: [2010-02-20 sam 11:53]--[2010-02-20 sam 11:54] =>  0:01
+     CLOCK: [2010-02-19 ven 21:03]--[2010-02-19 ven 21:12] =>  0:09
+     CLOCK: [2010-02-18 jeu 16:30]--[2010-02-18 jeu 16:59] =>  0:29
      CLOCK: [2010-02-16 mar 18:12]--[2010-02-16 mar 18:38] =>  0:26
      CLOCK: [2010-02-16 mar 17:19]--[2010-02-16 mar 17:44] =>  0:25
      CLOCK: [2010-02-16 mar 16:04]--[2010-02-16 mar 16:18] =>  0:14
@@ -180,11 +207,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
      Makes usage of `sloccount` easier but must wait for OgreGui2 integration
      to be tested.
      - [ ] Changes all Makefile.am to make the compilation work again
-     - [ ] client/
-     - [ ] common/
-     - [ ] design/
-     - [ ] editor/
-     - [ ] example/
+     - [X] client/
+     - [X] common/
+     - [X] design/
+     - [X] editor/
+     - [X] editor/images/
+     - [X] example/
+     - [X] example/tapi/	   
      - [X] maincore/
      - [X] ogreGui/
 	   All files should be removed (previous step)

@@ -133,7 +133,6 @@ RB_OPTION_EDITOR
 RB_OPTION_TOOLS
 RB_OPTION_EXAMPLES
 RB_OPTION_TAPI
-RB_OPTION_ALL
 RB_OPTION_SCROLLPANE_TEST
 RB_OPTION_MCL_TEST
 RB_OPTION_OGRE_DEPREC_WARN
@@ -148,6 +147,7 @@ RB_CONDITIONAL_LINKING_LIB_MAGIC
 RB_CONDITIONAL_LINKING_CPPUNIT
 
 RB_OPTION_DEBUG
+RB_CHECK_DOT
 
 dnl Checks for header files.
 AC_HEADER_STDC
@@ -178,12 +178,13 @@ AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\
 	  \
 	  ext/Makefile				\
-          common/Makefile			\
-          src/terminalapi/Makefile			\
+	  src/Makefile				\
+          src/common/Makefile			\
+          src/terminalapi/Makefile		\
 	  src/maincore/Makefile			\
-	  design/Makefile			\
-	  client/Makefile			\
-	  editor/Makefile			\
+	  src/design/Makefile			\
+	  src/client/Makefile			\
+	  src/editor/Makefile			\
 	  src/server/Makefile			\
 	  src/tests/Makefile			\
 	  src/tools/Makefile			\
@@ -192,8 +193,8 @@ AC_CONFIG_FILES([Makefile			\
 	  src/tools/netflooder/Makefile		\
 	  src/tools/ftpclient/Makefile		\
 	  src/tools/hashsum/Makefile		\
-	  examples/Makefile			\
-	  examples/tapi/Makefile		\
+	  src/examples/Makefile			\
+	  src/examples/tapi/Makefile		\
 	  \
  	  RainbruRPG.html/Makefile	        \
 	  config/Makefile			\
@@ -233,16 +234,20 @@ AC_CONFIG_FILES([Makefile			\
 
 AC_OUTPUT
 
-echo
-echo "#####################################"
-echo
-echo " You can generate a pdf manual by calling :"
-echo "    make pdf"
-echo
-echo " To update the HTML documentation or if a Rainbru.HTML/Makefile.am"
-echo " is missing :"
-echo "    make html"
-echo "    cp htmlMakefile.am RainbruRPG.html/Makefile.am"
-echo "    autoconf&&automake&&./configure"
-echo
-echo "#####################################"
+dnl #########################################""
+dnl ## Configuration summary
+
+RB_SUMMARY
+dnl
+dnl"#####################################"
+dnl
+dnl" You can generate a pdf manual by calling :"
+dnl"    make pdf"
+dnl
+dnl" To update the HTML documentation or if a Rainbru.HTML/Makefile.am"
+dnl" is missing :"
+dnl"    make html"
+dnl"    cp htmlMakefile.am RainbruRPG.html/Makefile.am"
+dnl"    autoconf&&automake&&./configure"
+dnl
+dnl"#####################################"

@@ -113,8 +113,24 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-199 (16 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (9) Retrieved ogreGui2 sources from cpp/ project
+* v0.0.5-200 (21 feb 2010 - ???) SLOC ???? UT ? FT ?:??
+
+* v0.0.5-199 (16 feb 2010 - 21 feb 2010) SLOC 40,425 UT 220 FT 17:15
+- configure now checks for dot
+- Moved sources to src/
+   common/ client/.  All's done noew SLOC are 40,425
+- Finished configure configuration summary
+- configure configuration summary moved to m4/rb_summary.m4
+- Removed configure's --enable-all option
+   its code moves also to m4/
+- configure script options summary
+   For dirty-flag, server
+- Drawable handles deactivation of dirty flag
+- Added notice for template-based layout
+   After some tests in an external project
+- Moved some sources to src/
+   examples/tapi/, examples/, editor/images/, editor/, design
+- Retrieved ogreGui2 sources from cpp/ project
 - Some m4 functions moved from acinclude.m4 to m4/
 - Documented OgreGui namespace
 - --disable-dirty-flag now works

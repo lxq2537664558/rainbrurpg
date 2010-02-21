@@ -1,3 +1,24 @@
+2010-02-20 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in: Removed --enable-all option.
+	* acinclude.m4 (RB_OPTION_ALL): Code moved to m4/.
+	* src/Makefile.am: Remove RB_OPTION_ALL_FLAG usage.
+
+	* configure.in: Configuration summary moved to m4/rb_summary.m4.
+	* m4/rb_summary.m4: file created.
+
+	* configure.in: Changes due to sources moved to src/.
+	* Makefile.in: Changes due to sources moved to src/.
+	* src/Makefile.in: Changes due to sources moved to src/.
+	
+
+2010-02-19 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in (AC_CONFIG_FILES): Added src/ to moved sources.
+	* src/ogreGui/Drawable: Handle RB_DIRTY_FLAG from config.h.
+	* Makefile.am: Changes conditionnal due to move to src/.
+	* src/Makefile.am: Changes conditionnal due to move to src/.
+	
 2010-02-17 Jerome Pasquier  <rainbru@free.fr>
 
 	* Doxyfile.in (EXCLUDE): Now excludes src/oldOgreGui/ directory.

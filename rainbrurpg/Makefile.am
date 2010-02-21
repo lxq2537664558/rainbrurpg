@@ -21,29 +21,13 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = po ext common client
+SUBDIRS = po ext src
 
 # The data files
 SUBDIRS+= config data media mapdata
 
 # Bug ?
 # RainbruRPG.html
-
-if BUILD_LIB_DESIGN
-  SUBDIRS+=design
-endif
-
-if RB_OPTION_EDITOR_FLAGS
-  SUBDIRS+=editor
-endif
-
-if RB_OPTION_EXAMPLES_FLAGS
-  SUBDIRS+=examples
-endif
-
-if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=editor examples
-endif 
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc

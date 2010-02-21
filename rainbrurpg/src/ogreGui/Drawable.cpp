@@ -40,8 +40,10 @@
 RainbruRPG::OgreGui::Drawable::
 Drawable(Drawable* vParent, const Rectangle& vRelative):
   mParent(vParent),
-  mRelative(vRelative),
-  mDirty(true)
+  mRelative(vRelative)
+#ifdef RB_DIRTY_FLAG
+  ,mDirty(true)
+#endif
 {
 
 }
@@ -55,8 +57,10 @@ Drawable(Drawable* vParent, const Rectangle& vRelative):
   */
 RainbruRPG::OgreGui::Drawable::
 Drawable(Drawable* vParent, int vX1, int vY1, int vX2, int vY2):
-  mParent(vParent),
-  mDirty(true)
+  mParent(vParent)
+#ifdef RB_DIRTY_FLAG
+  ,mDirty(true)
+#endif
 {
   mRelative.left   = vX1;
   mRelative.top    = vY1;
@@ -81,10 +85,12 @@ RainbruRPG::OgreGui::Drawable::~Drawable(void){
   *
   */
 void RainbruRPG::OgreGui::Drawable::setDirty(bool vDirty){
+#ifdef RB_DIRTY_FLAG
   mDirty = vDirty;
 
   // Propagation only for true
   if (vDirty && mParent) mParent->setDirty(true);
+#endif
 }
 
 /** Get the parent

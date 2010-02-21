@@ -25,12 +25,15 @@
   * Declare an ogreGui drawable object
   *
   * Modifications :
+  * - 19 feb 2010 : Handles deactivation of dirty flag
   * - 23 nov 2009 : Starting implementation
   *
   */
 
 #ifndef _DRAWABLE_HPP_
 #define _DRAWABLE_HPP_
+
+#include "config.h"
 
 #include <OgreRectangle.h> // Members are left,top,right,bottom;
 
@@ -81,7 +84,13 @@ namespace RainbruRPG{
 	* \return The value of the dirty flag
 	*
 	*/
-      bool isDirty(void) const{ return mDirty; };
+      inline bool isDirty(void) const{ 
+#ifdef RB_DIRTY_FLAG
+	return mDirty; 
+#else
+	return true;
+#endif
+      };
 
       Drawable* getParent(void) const;
       const Rectangle& getAbsolute(void)const;
@@ -92,7 +101,9 @@ namespace RainbruRPG{
       void adjustScissor(const Rectangle&);
 
     private:
+#ifdef RB_DIRTY_FLAG
       bool mDirty;         //!< The dirty flag
+#endif
       Drawable* mParent;   //!< The parent
       Rectangle mScissor;  //!< The scissor rectangle
       Rectangle mRelative; //!< The relative bounding box

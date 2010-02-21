@@ -587,11 +587,10 @@
   *   \c --disable-dirty-flag to the \c configure script;
   * - Gui element serialization, allowing the user to keep placement and
   *    sizes of the user interface between sessions;
-  * - the abiklity to add widgets before Ogre3D overlays through the use of two
-  * - different RenderQueueListener. This feature can be disabled by passing
-  *   \c --disable-guibfolay to the \c configure script;
+  * - all widgets are drawn before Ogre3D overlays;
   * - the ability to provide multiple skins is possible by prepending the
   *   filename of GUI elements images with the skin name.
+  * - a template-based layout system for widgets placements and sizes.
   *
   */
 

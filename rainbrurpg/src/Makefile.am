@@ -17,7 +17,7 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-SUBDIRS=maincore 
+SUBDIRS=common maincore client 
 
 if RB_OPTION_TOOLS_FLAGS
   SUBDIRS+=tools
@@ -35,6 +35,14 @@ if RB_OPTION_TAPI_FLAGS
   SUBDIRS+=terminalapi
 endif
 
-if RB_OPTION_ALL_FLAGS
-  SUBDIRS+=terminalapi tools server tests 
-endif 
+if BUILD_LIB_DESIGN
+  SUBDIRS+=design
+endif
+
+if RB_OPTION_EDITOR_FLAGS
+  SUBDIRS+=editor
+endif
+
+if RB_OPTION_EXAMPLES_FLAGS
+  SUBDIRS+=examples
+endif

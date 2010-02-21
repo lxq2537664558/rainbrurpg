@@ -341,43 +341,6 @@ AC_DEFUN([RB_OPTION_TOOLS],
   AM_CONDITIONAL([RB_OPTION_TOOLS_FLAGS], [test x$tools = xtrue])
 ])
 
-dnl Define the all Option 
-dnl
-dnl Provides the --enable-all to enable all the 'enable like'
-dnl ./configure script options
-dnl
-dnl If we set this options, we should set 'build_tests' to 'yes' to
-dnl enable CPPUNIT search
-dnl
-AC_DEFUN([RB_OPTION_ALL],
-[
-  AC_ARG_ENABLE(all, AC_HELP_STRING([--enable-all],
-    [Build the whole package. It is a convenience option that build
-	the client, the server, the editor and the tools.
-       (default=no)]),
-    [build_all=$enableval], 
-    [build_all=no])
-
-  AC_MSG_CHECKING([if we should build RainbruRPG-all])
-
-  case $build_all in
-    yes)
-      RB_CHECK_LIBSLANG
-      all=true
-      build_tests=yes
-      AC_MSG_RESULT(yes)
-      AC_DEFINE(BUILD_SERVER)
-      AC_DEFINE(BUILD_EDITOR)
-      ;;
-    *)
-      all=false
-      AC_MSG_RESULT(no)
-      ;;
-  esac
-  AM_CONDITIONAL([RB_OPTION_ALL_FLAGS], [test x$all = xtrue])
-  AM_CONDITIONAL([BUILD_LIB_DESIGN], [test x$all = xtrue])
-])
-
 dnl Checks for the Qt4 lib ad headers (QtCore and QtGui needed)
 dnl
 dnl
