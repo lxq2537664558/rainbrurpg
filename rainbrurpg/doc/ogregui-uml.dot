@@ -1,0 +1,102 @@
+/*
+ *  Copyright 2006-2009 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
+/*
+  Trying to create a UML (Entity-Relation) diagram for OgreGUI
+
+  XML escape sequences :
+  &lt;     <
+  &gt;     >
+  &amp;    &
+  &quot;   "
+  &apos;   '
+*/
+digraph G {
+        fontname = "Bitstream Vera Sans"
+        fontsize = 8
+	
+        node [
+              fontname = "Bitstream Vera Sans"
+              fontsize = 8
+              shape = "record"
+              ]
+	
+        edge [
+              fontname = "Bitstream Vera Sans"
+              fontsize = 8
+              ]
+
+
+// Classes definition
+	
+	Drawable [
+		  label = "{Drawable|+ name : string\l+ age : int\l|+ die() : void\l}"
+		]
+
+	FreeWindow [ 
+	  label= "{FreeWindow : public Layout &lt;int, int&gt;||}"
+	]
+
+        Layout [
+	  label= "{Layout &lt;T1,T2&gt;|"+
+		 "- mList: std::list&lt;LayoutObject &lt;T1,T2&gt; &gt;|"+
+		 "}"
+	]
+
+	Serializable [
+		      label = "{Serializable||"+
+			      "+ serialize(Archive&) : void\l" +
+			      "+ deserialize(Archive&) : void\l }"
+	     ]
+	
+        Widget [
+		label = "{Widget || + meow() : void \l}"
+             ]
+     
+	Window [
+	  label="{Window ||}"
+	]
+
+     edge [
+           arrowhead = "empty"
+           ]
+
+// Here start the hierarchy formalism
+     
+     Drawable -> Widget
+     Serializable -> Widget
+     
+     Widget -> Window
+
+     Window -> FreeWindow
+     Layout -> FreeWindow
+
+// Here start the instanciation formalism (no arrow and numerical attributes
+/*     edge [
+           arrowhead = "none"
+	   
+           headlabel = "0..*"
+           taillabel = "0..*"
+           ]
+Dog -> Cat
+     */
+}

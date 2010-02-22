@@ -114,51 +114,7 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-200 (21 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-
-* v0.0.5-199 (16 feb 2010 - 21 feb 2010) SLOC 40,425 UT 220 FT 17:15
-- configure now checks for dot
-- Moved sources to src/
-   common/ client/.  All's done noew SLOC are 40,425
-- Finished configure configuration summary
-- configure configuration summary moved to m4/rb_summary.m4
-- Removed configure's --enable-all option
-   its code moves also to m4/
-- configure script options summary
-   For dirty-flag, server
-- Drawable handles deactivation of dirty flag
-- Added notice for template-based layout
-   After some tests in an external project
-- Moved some sources to src/
-   examples/tapi/, examples/, editor/images/, editor/, design
-- Retrieved ogreGui2 sources from cpp/ project
-- Some m4 functions moved from acinclude.m4 to m4/
-- Documented OgreGui namespace
-- --disable-dirty-flag now works
-- Trying to implement a configure option to disable 
-   dirty flag but doesn't work as expected
-- Makes configure and some Makefile work again
-- Moved some sources to src/
-   from tests/tapi/, tests/common/, tests/, server/, oldOgreGui/, maincore/
-- Changes in MAkefile.am due to tools/ src/tools changes
-- Fixed directory moves in po/POTFILES.in
-
-* v0.0.5-198 (09 feb 2010 - 16 feb 2010) SLOC ???? UT ? FT ?:??
-- Fix a typo issue in doc_crossCompil.h
-- Created ChangeLog.2009
-- Prepend tools/ Makefile's name with src/ in configure.in
-- All tools moved to src/
-- Updated files to be moved to src/
-   tools/, tests/, termnalapi, server/
-- doc/doc_crosscompil.h references mingw.sh script
-- Created a convenience library in ext/ for external code
-- Moved tiny* from common/ to ext/
-- Moved EasyBMP* from common/ to ext/
-- Now build but with many warning in gscreateaccount
-- Merged ogreGui2/ChangeLog with ChangeLog
-- Build ogreGui instead of oldOgreGui
-- Fix a build error in version.cpp due to changes in configure
-- Created a DEPENDENCIES file
-- Replaced RainbruRPG.texinfo by RainbruRPG/texinfo.in
-- Replaced Doxyfile by Doxyfile.in
-- Updated ROADMAP with paper TODO
-- Updated doc/regTest.html
+- (3) OgreGui uml diagram conditionnal added to ogre namespace documentation
+- doc/Makefile rule to create png images with dot (if found)
+- Make build work again after sources moved to src/
+   ext/Makefile.am, src/maincore/Makefile.am

@@ -1,4 +1,4 @@
-/*
+ /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.

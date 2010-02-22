@@ -24,10 +24,13 @@ AC_DEFUN([RB_CHECK_DOT],[
   case $TOOL_DOT in
     no)
       dnl Nothing
+      dot_was_found=false
       ;;    
     *)   
       AC_DEFINE([HAVE_DOT], [], [Defines if the dot tool was found])
-      AC_DEFINE(HAVE_SOT)
+      AC_DEFINE(HAVE_DOT)
+      dot_was_found=true
       ;;
   esac  
+  AM_CONDITIONAL(DOT_FOUND, test x$dot_was_found = xtrue)
 ])

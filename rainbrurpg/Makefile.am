@@ -21,7 +21,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = po ext src
+SUBDIRS = doc po ext src
 
 # The data files
 SUBDIRS+= config data media mapdata

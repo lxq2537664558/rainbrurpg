@@ -17,25 +17,33 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-# Simply create a 'libtool convenience library' because this code is note
-# mine. It is later incorporated in the common/ library. Headers are
-# installed in the common directory
+# This makefile generates PNG images from text files using the dot tool.
+# The dot tool should be automatically foung by the configure script
 
-noinst_LTLIBRARIES = libexternal.la
+SOURCES=
 
-h_sources= EasyBMP_BMP.h			\
-	   EasyBMP_DataStructures.h		\
-	   EasyBMP.h				\
-	   EasyBMP_VariousBMPutilities.h	\
-	   tinystr.h				\
-	   tinyxml.h
+if DOT_FOUND
+  SOURCES+=ogregui-uml.png
 
-libexternal_la_SOURCES = EasyBMP.cpp		\
-			 tinystr.cpp		\
-			 tinyxml.cpp		\
-			 tinyxmlerror.cpp	\
-			 tinyxmlparser.cpp
+endif 
 
-library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
-library_include_HEADERS = $(h_sources)
-INCLUDES = -I$(top_srcdir)/src/common/
+# Defines the dot suffixe
+SUFFIXES = .dot
+
+all: $(SOURCES)
+
+
+# Reminder for internal vars
+# $@ The target name
+# $< First dependency name
+# $^ Dependencies list
+# $? List of deps most recent than target
+# $* File name without suffix
+.dot.png: $*.dot
+	$(TOOL_DOT) -T png -o $*.png $*.dot
+
+#dot -T png -o ogregui-uml.png ogregui-uml.dot
+
+
+clean-local:
+	rm -fr $(SOURCES)

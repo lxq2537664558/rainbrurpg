@@ -111,7 +111,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Uses GCC visibility attribute
 - [ ] May use C++ exceptions
 
-*** v0.0.6
+*** TODO v0.0.6
 **** TODO Sourceforge release
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] File release sourceforge (zip+bz2)
@@ -127,6 +127,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
+      See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
 **** TODO OgreGui2 implementation                                     [50%]
      :CLOCK:
@@ -153,9 +154,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] client/gsMainMenu
       - [ ] client/gsMenuBase
 
-**** TODO OgreGui2 integration                                        [80%]
+**** TODO OgreGui2 integration                                        [71%]
      :CLOCK:
-     CLOCK: [2010-02-21 dim 15:55]
+     CLOCK: [2010-02-22 lun 14:08]--[2010-02-22 lun 14:48] =>  0:40
+     CLOCK: [2010-02-22 lun 13:41]--[2010-02-22 lun 14:01] =>  0:20
+     CLOCK: [2010-02-22 lun 11:57]--[2010-02-22 lun 12:08] =>  0:11
+     CLOCK: [2010-02-21 dim 15:55]--[2010-02-21 dim 16:29] =>  0:34
      CLOCK: [2010-02-19 ven 18:26]--[2010-02-19 ven 18:50] =>  0:24
      CLOCK: [2010-02-18 jeu 06:43]--[2010-02-18 jeu 07:07] =>  0:24
      CLOCK: [2010-02-17 mer 17:48]--[2010-02-17 mer 18:15] =>  0:27
@@ -167,11 +171,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-02-09 mar 10:17]--[2010-02-09 mar 10:23] =>  0:06
      :END:
 
-- [-] ogreGui/ implementation item creation
+- [ ] Create the UML diagram
+- [ ] Populate the OgreGui2 implementation section below
+- [X] ogreGui/ implementation item creation
       - [X] Check what is already implemented (on a paper TODO)
-      - [ ] integrate dot tool to create UML diagram in doc/
-      - [ ] Create the UML diagram
-      - [ ] Populate the OgreGui2 implementation section below
+      - [X] integrate dot tool to create UML diagram in doc/
+	    - [X] doc/Makefile.am : a rule using doc to .dot -> .png
+	    - [X] add the generated image to the OgerGui namespace doc
+	    - [X] if dot was not found, insert a message in the doc
+	    - [X] doc/Makefile clean rule must remove generated images		  
 - [X] OgreGui2 is a separate project that intends to completely replace OgreGui.
       It is a new design that should be more bug-free. This project must be 
       merged with the current rainbrurpg sources.
@@ -189,8 +197,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Name conflict between BetaGUI classes and RainbruRPG::OgreGui ones
 - [X] Should merge cpp/ogreGui2/ChangeLog with rainbrurpg/ChangeLog      
 - [X] olgOgreGui shoundn't be compiled
-**** TODO Move code to src/                                           [93%]
+**** DONE Move code to src/                                           [100%]
      :CLOCK:
+     CLOCK: [2010-02-22 lun 11:08]--[2010-02-22 lun 11:24] =>  0:16
      CLOCK: [2010-02-20 sam 16:25]--[2010-02-20 sam 16:53] =>  0:28
      CLOCK: [2010-02-20 sam 11:53]--[2010-02-20 sam 11:54] =>  0:01
      CLOCK: [2010-02-19 ven 21:03]--[2010-02-19 ven 21:12] =>  0:09
@@ -206,7 +215,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
      All code should be in a src/ directory.
      Makes usage of `sloccount` easier but must wait for OgreGui2 integration
      to be tested.
-     - [ ] Changes all Makefile.am to make the compilation work again
+     - [X] Changes all Makefile.am to make the compilation work again
      - [X] client/
      - [X] common/
      - [X] design/

@@ -35,17 +35,17 @@ rainbrurpg_SOURCES= exampleframelistener.cpp		\
 		    main.cpp	 			\
 		    languageselector.cpp		
 
-INCLUDES = -I$(top_srcdir)/common			\
-	   -I$(top_srcdir)/ext				\
+INCLUDES = -I$(top_srcdir)/ext				\
+	   -I$(top_srcdir)/src/common			\
 	   -I$(top_srcdir)/src/maincore			\
-	   -I$(top_srcdir)/src/oldOgreGui			\
+	   -I$(top_srcdir)/src/oldOgreGui		\
 	   $(OIS_CFLAGS)				\
 	   $(OGRE_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\
 	   $(FOX_CFLAGS)				\
 	   $(CFLAGS)
 
-rainbrurpg_LDFLAGS= -L$(top_srcdir)/common/		\
+rainbrurpg_LDFLAGS= -L$(top_srcdir)/src/common/		\
 		    -L$(top_srcdir)/src/maincore/	\
 		    -L$(top_srcdir)/src/oldOgreGui/	\
 		  -lrainbrurpg-common			\

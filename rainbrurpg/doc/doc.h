@@ -41,7 +41,7 @@
   */
 
 // Mandatory if we want to use conditionnal compilation
-#include "../config.h"
+#include "config.h"
 
 /** \mainpage Main Page
   *
@@ -592,8 +592,26 @@
   *   filename of GUI elements images with the skin name.
   * - a template-based layout system for widgets placements and sizes.
   *
+  * \section ogregui-uml Entity-relation diagram
+  *
+  * Here is the entity-relation diagram for ogregui :
+  *
   */
 
+#ifdef HAVE_DOT
+/** \namespace RainbruRPG::OgreGui
+  *
+  * \image html ogregui-uml.png
+  * \image latex ogregui-uml.png
+  */
+#else
+/** \namespace RainbruRPG::OgreGui
+  * 
+  * \note Entity-relation cannot be created because the graphviz dot tool was
+  *       not found.
+  *
+  */
+#endif
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////

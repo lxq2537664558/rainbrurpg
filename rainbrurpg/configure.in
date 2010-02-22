@@ -7,7 +7,7 @@ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
 
 dnl The release number (revision)
-RELEASE=199
+RELEASE=200
 AC_SUBST([RELEASE])
 AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 
@@ -172,12 +172,11 @@ else
 fi
 AC_PATH_PROG(DLLWRAP, $dllwrap)
 
-
-
 AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\
 	  \
 	  ext/Makefile				\
+	  doc/Makefile				\
 	  src/Makefile				\
           src/common/Makefile			\
           src/terminalapi/Makefile		\

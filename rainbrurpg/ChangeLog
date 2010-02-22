@@ -1,3 +1,10 @@
+2010-02-22 Jerome Pasquier  <rainbru@free.fr>
+
+	* ext/Makefile.am (INCLUDES): common/ moved to src/.
+	* src/maincore/Makefile.am (INCLUDES): common/ moved to src/.
+
+	* doc/Makefile.am: Create a png image from dot source.
+	
 2010-02-20 Jerome Pasquier  <rainbru@free.fr>
 
 	* configure.in: Removed --enable-all option.
