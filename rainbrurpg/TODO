@@ -114,7 +114,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-200 (21 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (3) OgreGui uml diagram conditionnal added to ogre namespace documentation
+- (7) LayoutObject of UML diagram finished
+- Added comments to UML diagram
+- Added hierarchy to the UML diagram
+- Found a way to get oblique font with graphviz
+- OgreGui uml diagram conditionnal added to ogre namespace documentation
 - doc/Makefile rule to create png images with dot (if found)
 - Make build work again after sources moved to src/
    ext/Makefile.am, src/maincore/Makefile.am

@@ -115,7 +115,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 **** TODO Sourceforge release
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] File release sourceforge (zip+bz2)
-**** TODO Miscelaneous                                                [33%]
+**** TODO Miscelaneous                                                [28%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
@@ -129,7 +129,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
-**** TODO OgreGui2 implementation                                     [50%]
+**** TODO OgreGui2 implementation                                     [42%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 11:08]--[2010-02-20 sam 11:36] =>  0:28
      CLOCK: [2010-02-19 ven 20:43]--[2010-02-19 ven 21:03] =>  0:20
@@ -156,6 +156,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 integration                                        [71%]
      :CLOCK:
+     CLOCK: [2010-02-23 mar 11:36]--[2010-02-23 mar 12:24] =>  0:48
+     CLOCK: [2010-02-22 lun 15:54]--[2010-02-22 lun 16:20] =>  0:26
      CLOCK: [2010-02-22 lun 14:08]--[2010-02-22 lun 14:48] =>  0:40
      CLOCK: [2010-02-22 lun 13:41]--[2010-02-22 lun 14:01] =>  0:20
      CLOCK: [2010-02-22 lun 11:57]--[2010-02-22 lun 12:08] =>  0:11
@@ -171,8 +173,18 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-02-09 mar 10:17]--[2010-02-09 mar 10:23] =>  0:06
      :END:
 
-- [ ] Create the UML diagram
 - [ ] Populate the OgreGui2 implementation section below
+- [-] Create the UML diagram
+      From the following paper concepts :
+      - [X] Hirerachy
+      - [ ] Modif events/draw
+      - [ ] Workflow skin (2X)    
+      - [ ] Workflow events keyboard/mouse
+      - [ ] Workflow precomputing/draw
+      - [ ] Workflow global alpha
+      - [ ] Workflow serialization
+      - [ ] Workflow layout
+      - [ ] Workflow focus/KeyboardNavigation
 - [X] ogreGui/ implementation item creation
       - [X] Check what is already implemented (on a paper TODO)
       - [X] integrate dot tool to create UML diagram in doc/
