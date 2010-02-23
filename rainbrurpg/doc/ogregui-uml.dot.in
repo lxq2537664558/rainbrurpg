@@ -1,0 +1,253 @@
+/*
+ *  Copyright 2006-2009 Jerome PASQUIER
+ * 
+ *  This file is part of RainbruRPG.
+ *
+ *  RainbruRPG is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  RainbruRPG is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with RainbruRPG; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ *  02110-1301  USA
+ *
+ */
+
+// Process this file with automake to produce a valid dot file
+
+/*
+  Trying to create a UML (Entity-Relation) diagram for OgreGUI
+
+  XML escape sequences :
+  &lt;     <
+  &gt;     >
+  &amp;    &
+  &quot;   "
+  &apos;   '
+  &#35;	   #
+
+  UML attributes:
+  + public attribute
+  # protected attribute
+  - private attribute
+
+  virtual functions are in italic (see the graphviz fontfaq.txt file for advies):
+    label=< <FONT FACE="DejaVu italic">serialize(Archive&amp;)</FONT> >
+
+*/
+digraph G {
+        fontname = "Bitstream Vera Sans"
+        fontsize = 8
+		
+        node [
+          fontname = "Bitstream Vera Sans"
+          fontsize = 8
+          shape = "record"
+        ]
+	
+        edge [
+          fontname = "Bitstream Vera Sans"
+          fontsize = 8
+	  arrowhead = "ediamond"
+        ]
+
+
+// Classes definition
+// Please keep this list sorted	
+   	Container [
+	  label = < {Container||} >
+	]
+
+	Drawable [
+	  label = "{Drawable||}"
+	]
+
+	FreeWindow [ 
+	  label= <{FreeWindow : public Layout &lt;int, int&gt;|
+	  - mScrollPane: ScrollPane|
+<FONT FACE="DejaVu italic">+ add(int, int, int, int, Widget*): void</FONT><BR ALIGN="LEFT"/>
+}>
+	]
+
+        Layout [
+	  label = <{ Layout &lt;T1, T2&gt; | <BR ALIGN="LEFT"/>
+- mList: std::list&lt;LayoutObject &lt;T1, T2&gt;|
+<FONT FACE="DejaVu italic">+ add(T1, T1, T2, T2, Widget*): void</FONT><BR ALIGN="LEFT"/>
+&#35; computeAll(): void <BR  ALIGN="LEFT"/>
+&#35; <FONT FACE="DejaVu italic">compute(T1, T1, T2, T2, Widget*)=0: void</FONT>
+	   	  }>  
+	]
+
+        LayoutObject [
+	  label = <{ LayoutObject&lt;T1, T2&gt; |
+<table width = "100%" border="0"><tr><td balign="left">
+- T1 mX = 0<BR/>
+- T1 mY = 0<BR/>
+- T1 mY = 0<BR/>
+- T2 mWidth = 0<BR/>
+- T2 mHeight = 0<BR/>
+- Widget* mWidget = NULL
+</td></tr></table>
+|
+<table width = "100%" border="0"><tr><td balign="left">
++ LayoutObject(T1, T1, T2, T2, Widget*)<BR/>
+<FONT FACE="DejaVu italic">+ ~LayoutObject()</FONT><BR/>
+  <BR/>
++ getX() const: T1<BR/>
++ getY() const: T1<BR/>
++ getWidth() const: T2<BR/>
++ getHeight() const: T2<BR/>
++ getWidget() const: Widget*<BR/>
+  <BR/>
++ setX(const T1&amp;): void<BR/>
++ setY(const T1&amp;): void<BR/>
++ setWidth(const T2&amp;): void<BR/>
++ setHeight(const T2&amp;): void<BR/>
++ setWidget(Widget*): void
+</td></tr></table>
+
+}>
+
+/*
+|
+
+*/
+
+        ]
+
+	MultiColumnList  [
+	  label = < {MulticolumnList||} >
+	]
+
+	MultiColumnListContent  [
+	  label = < {MulticolumnListContent||} >
+	]
+	
+	MultiColumnListHeader  [
+	  label = < {MulticolumnListHeader||} >
+	]
+
+	MultiColumnListRow  [
+	  label = < {MulticolumnListRow||} >
+	]
+
+	PopupMenu  [
+	  label = < {PopupMenu||} >
+	]
+
+	ScrollPane  [
+	  label = < {ScrollPane||} >
+	]
+
+	Serializable [
+	  label=< {Serializable|
+	    + <FONT FACE="DejaVu italic">serialize(Archive&amp;)</FONT> : void<BR ALIGN="LEFT"/>
+	    + <FONT FACE="DejaVu italic">deserialize(Archive&amp;)</FONT> : void
+	    } >
+	]
+	
+        Widget [
+	  label = "{Widget ||}"
+        ]
+
+	WidgetList [
+	  label="{WidgetList ||}"
+	]
+     
+	Window [
+	  label=< {Window |
+	  <FONT COLOR="red">Should implement events<BR/>
+	  and  skins</FONT>
+	  |}>
+	]
+
+// Here start the comments about classes
+        node [
+          shape = "note"
+	  style = "filled"
+	  fillcolor = "#FFFFCC"
+        ]
+	
+        edge [
+	  arrowhead = "none"
+	  style = "dotted"
+        ]
+
+	FreeWindowComments[
+	  label = <The add(...) implementation of<BR/>
+	    FreeWindow add the widget to the<BR/>
+	    instancied ScrollPane instead of<BR/>
+	    the Layout.>
+	]
+
+	LayoutComments[
+	  label = <The computeAll() function call<BR/>
+	    compute(...) for each widget. <BR/>
+	    Subclasses must implement <BR/>
+	    compute(...) >
+	]
+
+	WidgetComments[
+	  label = <Widget should have a<BR/>
+	    constructor without <BR/>
+	    position and size. <BR/>
+	    Not needed because <BR/>
+	    Layout::compute(...)<BR/>
+	    can modify these values.>
+	]
+
+	LayoutComments -> Layout
+	WidgetComments -> Widget
+	FreeWindowComments ->FreeWindow
+
+// Here start the hierarchy formalism
+     edge [
+       arrowhead = "ediamond"
+       style = "solid"
+     ]
+     
+     Drawable -> Widget
+     Serializable -> Widget
+     Serializable -> WidgetList
+     
+     Widget -> Window
+     Widget -> Container
+
+     WidgetList -> Container
+
+     Container -> PopupMenu
+     Container -> ScrollPane
+     Container -> MultiColumnListHeader
+     Container -> MultiColumnListRow
+
+     ScrollPane -> MultiColumnList
+     ScrollPane -> MultiColumnListContent
+
+     Window -> FreeWindow
+     Layout -> FreeWindow
+
+// Here start the instanciation formalism (no arrow and numerical attributes
+     edge [
+       arrowhead = "none"
+     ]	   
+     edge[
+       headlabel = "0..*"
+       taillabel = ""
+     ]
+     LayoutObject -> Layout
+
+/*
+     edge[
+       headlabel = "1"
+       taillabel = ""
+     ]
+     ScrollPane -> FreeWindow
+  */   
+}
