@@ -18,19 +18,19 @@ dnl Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 dnl 02110-1301  USA
 
 
-AC_DEFUN([RB_CHECK_DOT],[
-  AC_ARG_VAR([TOOL_DOT], [Define the path to the graphviz dot executable])
-  AC_PATH_PROG(TOOL_DOT, dot, [no])
-  case $TOOL_DOT in
+AC_DEFUN([RB_CHECK_M4],[
+  AC_ARG_VAR([TOOL_M4], [Define the path to the m4 executable])
+  AC_PATH_PROG(TOOL_M4, m4, [no])
+  case $TOOL_M4 in
     no)
       dnl Nothing
-      dot_was_found=false
+      m_was_found=false
       ;;    
     *)   
-      AC_DEFINE([HAVE_DOT], [], [Defines if the dot tool was found])
-      AC_DEFINE(HAVE_DOT)
-      dot_was_found=true
+      AC_DEFINE([HAVE_M4], [], [Defines if the dot tool was found])
+      AC_DEFINE(HAVE_M4)
+      m_was_found=true
       ;;
   esac  
-  AM_CONDITIONAL(DOT_FOUND, test x$dot_was_found = xtrue)
+  AM_CONDITIONAL(M4_FOUND, test x$m_was_found = xtrue)
 ])

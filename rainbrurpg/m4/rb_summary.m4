@@ -40,4 +40,5 @@ echo "  Dirty-flag...................${dirty_flag}"
 echo
 echo "Tools:"
 echo "  dot..........................${TOOL_DOT}"
+echo "  m4...........................${TOOL_M4}"
 ])
