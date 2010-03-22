@@ -26,6 +26,7 @@ rainbrurpg_SOURCES= exampleframelistener.cpp		\
 		    gscreateaccount.cpp			\
 		    gsmainmenu.cpp			\
 		    gsmenubase.cpp                      \
+		    gsOgreguiTest.cpp			\
 		    gsserverlist.cpp			\
 	            gsupdatedatafiles.cpp		\
 		    guiframelistener.cpp		\

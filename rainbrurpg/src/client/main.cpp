@@ -282,9 +282,10 @@ bool showLauncher(int argc, char **argv){
   */
 void showHelp(void){
   cout << "usage: rainbrurpg [-h] [-V]" << endl
-       << "-?, -h, --help\t\t" << "show this usage message." << endl
-       << "-V, --version\t\t"  << "show version." << endl
-       << "-q, --quiet\t\t"    << "disabled std-out messages logging." << endl;
+       << "-?, -h, --help\t\t"   << "show this usage message." << endl
+       << "-V, --version\t\t"    << "show version." << endl
+       << "-q, --quiet\t\t"      << "disabled std-out messages logging." << endl
+       << "    --ogregui-test\t" << "used to test the GUI feature." << endl;
 }
  
 /** Handles the command line options
@@ -315,6 +316,11 @@ void handleCommandLineOptions(int argc, char **argv){
      else if (opt == "-q" || opt == "--quiet"){
        RainbruRPG::Exception::Logger::getSingleton().setLogType(LOG_FILE);
        // Do not quit the game
+     }
+     // Quiet option, no log in std::out
+     else if (opt == "--ogregui-test"){
+       cout << "Option not yet implemented" << opt << endl;
+       exit(EXIT_FAILURE);
      }
      // Unknown options
      else{
