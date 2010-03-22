@@ -19,19 +19,15 @@
 
 lib_LTLIBRARIES = librainbrurpg-ogregui.la
 
-
-
 librainbrurpg_ogregui.adir=$(libdir)
 
 # Please keep this list sorted
-h_sources= DeserializationErrorList.hpp			\
-	   Drawable.hpp					\
+h_sources= Drawable.hpp					\
 	   Serializable.hpp				\
 	   Widget.hpp
 
 # Please keep this list sorted
-cc_sources=DeserializationErrorList.cpp			\
-	   Drawable.cpp					\
+cc_sources=Drawable.cpp					\
 	   Serializable.cpp				\
 	   Widget.cpp
 
@@ -42,9 +38,8 @@ librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
 inc_dir=/home/mouse/programmation/rainbrurpg
 
-INCLUDES = -I$(inc_dir)/common			\
-	   -I$(top_srcdir)/common			\
-	   -I$(top_srcdir)/maincore			\
+INCLUDES = -I$(top_srcdir)/src/common			\
+	   -I$(top_srcdir)/src/maincore			\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\
@@ -65,8 +60,8 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  $(OGRE_LIBS)				\
 				  $(SIGC_LIBS)				\
 				  $(FREETYPE_LIBS)			\
-				  -L$(top_srcdir)/common/.libs		\
-				  -L$(top_srcdir)/maincore/.libs
+				  -L$(top_srcdir)/src/common/.libs	\
+				  -L$(top_srcdir)/src/maincore/.libs
 
 dll:
 	source ../create_dll.sh &&		\

@@ -34,8 +34,6 @@
 #include <rainbrudef.h> // For the gettext stuff
 #include <logger.h>
 
-#include <DeserializationErrorList.hpp>
-
 /** A named constructor
   *
   * The name should not be empty as it is used for creating unique name;
@@ -76,49 +74,12 @@ setUniqueName(const string& vParentUniqueName){
   * \return \c true if the operation was successfull
   *
   */
-bool RainbruRPG::OgreGui::Serializable::serialize(ostream& os)const{
-  serializeString(os, mUniqueName);
-  return os.good();
-}
-
-/** Deserialize and test the unique name from the given stream
-  *
-  * If the unique name is not the same as the object's one,
-  * the stream seek to the position just before the failed unique name,
-  * to allow other Serializable object to extract (and check) it.
-  *
-  * This function must be called before the widget's deserialization,
-  * to know if the widget and the stream position is the same.
-  *
-  * \param is The stream used to extract unique name
-  *
-  * \return \c true if the unique name check is succefull
-  *
-  */
-bool RainbruRPG::OgreGui::Serializable::checkUniqueName(istream& is)const{
-  const streampos beforeName=is.tellg();
-  if (beforeName == ios::beg){
-    LOGI("beforeName is at the stream's begining position");
-  }
-  else if (beforeName == -1){
-    LOGE(_("beforeName stream position is -1 (failure)"));
-  } 
-
-  string un = deserializeString(is);
-  if (un != mUniqueName){
-    GTS_MID(str);
-    // TRANSLATORS: The two parameters are Serializable object's
-    // unique name.
-    sprintf(str, _("Cannot deserialize '%s' (extracted unique name '%s')"),
-	    mUniqueName.c_str(), un.c_str());
-    
-    LOGW("UniqueName is not the same");
-    LOGW(str);
-    is.seekg(beforeName);
-    return false;
-  }
+template<class Archive> bool RainbruRPG::OgreGui::Serializable::serialize(Archive& ar)const{
+  //  serializeString(os, mUniqueName);
+  //  return os.good();
   return true;
 }
+
 
 /** Deserialize this object
   *
@@ -132,13 +93,13 @@ bool RainbruRPG::OgreGui::Serializable::checkUniqueName(istream& is)const{
   *         (checkUniqueName failed).
   *
   */
-bool RainbruRPG::OgreGui::Serializable::
-deserialize(istream& is, DeserializationErrorList* el)const{
-  if (checkUniqueName(is)){
+template<class Archive> bool RainbruRPG::OgreGui::Serializable::
+deserialize(Archive& ar)const{
+  if (checkUniqueName(ar)){
     // deserialize here
   }
   else{ 
-    el->add(mUniqueName, BAD_UNIQUE_NAME, "checkUniqueName failed");
+    //    el->add(mUniqueName, BAD_UNIQUE_NAME, "checkUniqueName failed");
     return false;
   }
   return true;
@@ -191,32 +152,3 @@ equal(const Serializable* other)const{
   return (*this==(*other));
 }
 
-/** Serialize a string to a stream
-  *
-  * Serialize a string and handles the string separator.
-  *
-  * \param os  The output stream to put the string in
-  * \param str The string to be serialized
-  *
-  */
-void RainbruRPG::OgreGui::Serializable::
-serializeString(ostream& os, const string& str)const{
-  os << str << STRING_SEPARATOR;
-}
-
-/** Deserialize a string from a stream
-  *
-  * Deserialize a string previously serialized with \ref serializeString.
-  * It handles the string separator and returns the extracted string.
-  *
-  * \param is The input stream where the string is extracted
-  *
-  * \return The extracted string
-  *
-  */
-string RainbruRPG::OgreGui::Serializable::
-deserializeString(istream& is)const{
-  string str;
-  is >> str;
-  return str;
-}

@@ -49,8 +49,6 @@
 #include "singleton.h"
 #include "rainbrudef.h"
 
-#include "../config.h"
-
 // Avoid multiple definitions of these macros
 #ifdef __WIN32__
 #  undef VERSION

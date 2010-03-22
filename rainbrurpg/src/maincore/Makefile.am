@@ -27,7 +27,7 @@
 
 lib_LTLIBRARIES = librainbrurpg-core.la
 
-librainbrurpg_core.adir=.
+librainbrurpg_core.adir=$(libdir)
 
 h_sources=dumpogreobject.h		\
 	  gameengine.h			\
@@ -77,10 +77,9 @@ librainbrurpg_core_la_LIBADD= -lrainbrurpg-common	\
 librainbrurpg_core_la_LDFLAGS=				\
   $(SHARED_FLAG) -version-info 		       		\
   $(CORE_LIBRARY_VERSION)   		       		\
+  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)       		\
   -L$(top_srcdir)/src/common/	 		       	\
-  -Wl,--rpath		       		       		\
   $(SIGC_LIBS)
-#  -Wl,$(top_srcdir)/src/common/		       		
 
 
 dll:

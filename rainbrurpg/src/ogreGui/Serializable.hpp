@@ -33,18 +33,10 @@
 #define _SERIALIZABLE_HPP_
 
 #include <string>
-#include <fstream>
 
 /// The separator character for serialized strings 
 #define STRING_SEPARATOR '\t'
 
-// Forward declarations
-namespace RainbruRPG{
-  namespace OgreGui{
-    class DeserializationErrorList;
-  }
-}
-// End of forward declarations
 
 using namespace std;
 
@@ -64,18 +56,13 @@ namespace RainbruRPG{
       void setUniqueName(const string&);
       const string& getUniqueName(void) const;
 
-      virtual bool serialize(ostream&)const;
-      virtual bool deserialize(istream&, DeserializationErrorList*)const;
+      template<class Archive> bool serialize(Archive&)const;
+      template<class Archive> bool deserialize(Archive&)const;
 
       virtual bool operator==(const Serializable&)const;
       virtual bool operator!=(const Serializable&)const;
       virtual bool equal(const Serializable*)const;
       
-    protected:
-      bool checkUniqueName(istream&)const;
-      void serializeString(ostream&, const string&)const;
-      string deserializeString(istream&)const;
-
     private:
       /** The name passed to the constructor */
       string mName;
