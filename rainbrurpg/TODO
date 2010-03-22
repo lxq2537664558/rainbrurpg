@@ -1,14 +1,16 @@
 RainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
    on Ogre3D and Fox-toolkit.
 
+* Building maincore/ failed
+  librainbrurpg-core.so.0: No such file
+
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/   --enable-Wno-stddep-ogre --enable-debug
 - Fixing maincore lib size (310Mo) (see and update doc_cross_compil)
 - fix the 'config.h extar chars' bug (see in doc/doc_cross_compil)
 - GlobalURI/loadRessources for win32
 
-o [rainbru] OgreGui2: see TODO.ogreGui2
-- merge TODO.ogreGui2 with ROADMAP file (checkboxes)
+o [rainbru] OgreGui2: see ROADMAP
 
 * Using printf for MultiColumnListDebugSettings
 
@@ -113,12 +115,21 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-200 (21 feb 2010 - ???) SLOC ???? UT ? FT ?:??
-- (7) LayoutObject of UML diagram finished
-- Added comments to UML diagram
-- Added hierarchy to the UML diagram
-- Found a way to get oblique font with graphviz
-- OgreGui uml diagram conditionnal added to ogre namespace documentation
-- doc/Makefile rule to create png images with dot (if found)
-- Make build work again after sources moved to src/
-   ext/Makefile.am, src/maincore/Makefile.am
+* v0.0.5-201 (04 mar 2010 - ???) SLOC ???? UT ? FT ?:??
+- (13) gsOgerGuiTest base implementation
+- Serializable now uses Boost.Serialization
+- Removed DeserializationErrorList
+- Fixed non-buildng of ogreGui
+- configure.in: updated all libs version to at least 1:0:0
+- Finished to populate ROADMAP section from UML
+- Started to populate ROADMAP section from UML
+- KeyboardNavigation workflow to UML
+- Paper workflow to UML
+   Layout/LayoutObject concept
+- Paper workflow to UML
+   global alpha, serialization
+- ogreGui already implemented conepts to UML
+   Serializable, Drawable
+- Cleaned changelog.dev/ directory
+- configure checks for m4 for UML diagram generation
+

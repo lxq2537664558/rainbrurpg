@@ -54,6 +54,12 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http::/sourceforge.net/projects/boost/files/
 
+* Boost.Serialization 1.34
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
+
 * Enet 1.1
   + homepage:
     http://enet.bespin.org
@@ -99,3 +105,11 @@ The following package should be installed before RainbruRPG is installed:
     http://apps.sourceforge.net/mediawiki/cppunit/
   + download:
     http://sourceforge.net/projects/cppunit/files/
+
+* dot 2.20.2
+  + Recommended.
+    Needed to produce graphs in documentation.
+  + homepage:
+    http://www.graphviz.org/
+  + download:
+    http://www.graphviz.org/Download..php

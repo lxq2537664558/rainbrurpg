@@ -1,3 +1,34 @@
+2010-03-22 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in: Libraries version updated at least to 1:0:0.
+	* configure.in: OgreGui version updated to 2:0:0.
+
+	* configure.in (AC_CONFIG_FILES): Generates src/ogreGui/Makefile.
+	* src/Makefile.am (SUBDIRS): Added ogreGui/.
+
+	* src/ogreGui/Serializable: Now uses Boost.Serialization.
+	
+2010-03-04 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/Makefile.am (LDFLAGS): Fix a build issue
+	changing '-Wl,--rpath' to '-Wl,--rpath -Wl,$(DESTDIR)$(libdir)'.
+
+2010-03-01 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_uml.m4: relation and relation_m macros implemented.
+
+2010-02-27 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_uml.m4: Defines a note macro.
+	
+2010-02-25 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_uml.m4: Now uses tables to draw entities.
+
+2010-02-24 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_uml.m4: GRAPH_HEADER implemented.
+	
 2010-02-22 Jerome Pasquier  <rainbru@free.fr>
 
 	* ext/Makefile.am (INCLUDES): common/ moved to src/.

@@ -14,6 +14,25 @@
 
 
 
+#  Copyright 2006-2010 Jerome PASQUIER
+# 
+#  This file is part of RainbruRPG.
+#
+#  RainbruRPG is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  RainbruRPG is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with RainbruRPG; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+#  02110-1301  USA
+
 # To make the HTML version of the texinfo help
 # You need the texinfo package
 
@@ -35,29 +54,25 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-
-# Bug ?
-# RainbruRPG.html
-am__append_1 = design
-#am__append_2 = editor
-#am__append_3 = server
-#am__append_4 = tools
-#am__append_5 = tests
-#am__append_6 = examples
-#am__append_7 = terminalapi
-am__append_8 = terminalapi editor server tools tests examples
 subdir = .
 DIST_COMMON = README $(RainbruRPG_TEXINFOS) $(am__configure_deps) \
-	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(srcdir)/RainbruRPG-common.pc.in $(srcdir)/RainbruRPG.lsm.in \
-	$(srcdir)/RainbruRPG.spec.in $(srcdir)/config.h.in \
+	$(srcdir)/Doxyfile.in $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in $(srcdir)/RainbruRPG-common.pc.in \
+	$(srcdir)/RainbruRPG.lsm.in $(srcdir)/RainbruRPG.spec.in \
+	$(srcdir)/RainbruRPG.texinfo.in $(srcdir)/config.h.in \
 	$(srcdir)/terminalapi-1.0.pc.in $(top_srcdir)/configure \
 	ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS TODO \
 	config.guess config.rpath config.sub depcomp install-sh \
 	ltmain.sh missing texinfo.tex
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
+	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
+	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/rb_dirtyflag.m4 \
+	$(top_srcdir)/m4/rb_dot.m4 $(top_srcdir)/m4/rb_freetype.m4 \
+	$(top_srcdir)/m4/rb_m4.m4 $(top_srcdir)/m4/rb_summary.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -65,7 +80,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc \
-	RainbruRPG-common.pc
+	RainbruRPG-common.pc RainbruRPG.texinfo Doxyfile
 SOURCES =
 DIST_SOURCES =
 INFO_DEPS = $(srcdir)/RainbruRPG.info
@@ -104,8 +119,7 @@ RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = po common maincore ogreGui client config data media \
-	mapdata design editor server tools tests examples terminalapi
+DIST_SUBDIRS = $(SUBDIRS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -126,27 +140,23 @@ AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.10
 AWK = gawk
-BUILD_INCLUDED_LIBINTL = no
-CATOBJEXT = .gmo
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
-CFLAG_VISIBILITY = -fvisibility=hidden
-COMMON_LIBRARY_VERSION = 0:0:0
-CORE_LIBRARY_VERSION = 0:0:0
+COMMON_LIBRARY_VERSION = 1:0:0
+CORE_LIBRARY_VERSION = 1:0:0
 CPP = gcc -E
 CPPFLAGS = 
-CPPUNIT_CFLAGS =  
-CPPUNIT_LIBS = -lcppunit  
+CPPUNIT_CFLAGS = 
+CPPUNIT_LIBS = 
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DATADIRNAME = share
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-DESIGN_LIBRARY_VERSION = 0:0:0
+DESIGN_LIBRARY_VERSION = 1:0:0
 DLLTOOL = dlltool
 DLLWRAP = 
 DLL_EXT = 
@@ -165,14 +175,9 @@ FOX_LIBS = -lFOX-1.6 -lXext -lX11 -lXft -lfontconfig -lXcursor -ldl -lpthread -l
 FREETYPE_CFLAGS = -I/usr/include/freetype2
 FREETYPE_CONFIG = /usr/bin/freetype-config
 FREETYPE_LIBS = -lfreetype -lz
-GENCAT = gencat
 GENERIC_API_VERSION = 1.0
 GENERIC_LIBRARY_NAME = RainbruRPG
-GENERIC_RELEASE = 0.3
-GENERIC_VERSION = 0.3.0
 GETTEXT_MACRO_VERSION = 0.17
-GLIBC2 = yes
-GLIBC21 = yes
 GLIB_CFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include  
 GLIB_LIBS = -lglib-2.0  
 GMSGFMT = /usr/bin/msgfmt
@@ -180,32 +185,19 @@ GMSGFMT_015 = /usr/bin/msgfmt
 GNET_CFLAGS = -pthread -I/usr/include/gnet-2.0 -I/usr/lib/gnet-2.0/include/ -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include  
 GNET_LIBS = -pthread -lgnet-2.0 -lgthread-2.0 -lrt -lglib-2.0  
 GREP = /bin/grep
-HAVE_ASPRINTF = 1
-HAVE_POSIX_PRINTF = 1
-HAVE_SNPRINTF = 1
-HAVE_VISIBILITY = 1
-HAVE_WPRINTF = 0
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-INSTOBJEXT = .mo
-INTLBISON = bison
 INTLLIBS = 
-INTLOBJS = 
-INTL_LIBTOOL_SUFFIX_PREFIX = 
 INTL_MACOSX_LIBS = 
-ISODATE = 2009-12-20
+ISODATE = 2010-03-22
 LDFLAGS = 
-LIBICONV = 
+LIBICONV = -liconv
 LIBINTL = 
-LIBMULTITHREAD = -lpthread
 LIBOBJS = 
-LIBPTH = 
-LIBPTH_PREFIX = 
-LIBS = -lQt3Support -lQtNetwork -lQtGui -lQtCore -lmagic -lslang -lgd -lenet -lboost_thread -lboost_filesystem -ljpeg 
-LIBTHREAD = 
+LIBS = -lgd -lenet -lboost_thread -lboost_filesystem -ljpeg 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
@@ -213,13 +205,9 @@ LIB_DESIGN_NAME = design
 LIB_OGREGUI_NAME = ogreGui
 LIB_TERAPI_NAME = terminalAPI
 LN_S = ln -s
-LTLIBC = -lc
-LTLIBICONV = 
+LTLIBICONV = -liconv
 LTLIBINTL = 
-LTLIBMULTITHREAD = -lpthread
 LTLIBOBJS = 
-LTLIBPTH = 
-LTLIBTHREAD = 
 MAKEINFO = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MSGFMT = /usr/bin/msgfmt
@@ -228,7 +216,7 @@ MSGMERGE = /usr/bin/msgmerge
 NMEDIT = 
 OBJDUMP = objdump
 OBJEXT = o
-OGREGUI_LIBRARY_VERSION = 0:0:0
+OGREGUI_LIBRARY_VERSION = 2:0:0
 OGRE_CFLAGS = -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE  
 OGRE_LIBS = -lOgreMain  
 OGRE_PLUGINDIR = /usr/lib/OGRE
@@ -243,21 +231,19 @@ PACKAGE_VERSION = 0.0.5
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 POSUB = po
-PRI_MACROS_BROKEN = 0
 RANLIB = ranlib
+RELEASE = 200
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 SIGC_CFLAGS = -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include  
 SIGC_LIBS = -lsigc-2.0  
 STRIP = strip
-TAPI_LIBRARY_VERSION = 0:1:0
-USE_INCLUDED_LIBINTL = no
+TAPI_LIBRARY_VERSION = 1:1:0
+TOOL_DOT = /usr/bin/dot
+TOOL_M4 = /usr/bin/m4
 USE_NLS = yes
-VERSION = 0.3.0
-WINDRES = 
-WOE32 = no
-WOE32DLL = no
+VERSION = 0.0.5
 XGETTEXT = /usr/bin/xgettext
 XGETTEXT_015 = /usr/bin/xgettext
 XGETTEXT_EXTRA_OPTIONS = 
@@ -319,10 +305,10 @@ top_srcdir = .
 # The sources
 
 # The data files
-SUBDIRS = po common maincore ogreGui client config data media mapdata \
-	$(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) $(am__append_5) $(am__append_6) \
-	$(am__append_7) $(am__append_8)
+SUBDIRS = doc po ext src config data media mapdata
+
+# Bug ?
+# RainbruRPG.html
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc
 EXTRA_DIST = config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
@@ -407,6 +393,10 @@ RainbruRPG.spec: $(top_builddir)/config.status $(srcdir)/RainbruRPG.spec.in
 terminalapi-1.0.pc: $(top_builddir)/config.status $(srcdir)/terminalapi-1.0.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 RainbruRPG-common.pc: $(top_builddir)/config.status $(srcdir)/RainbruRPG-common.pc.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+RainbruRPG.texinfo: $(top_builddir)/config.status $(srcdir)/RainbruRPG.texinfo.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+Doxyfile: $(top_builddir)/config.status $(srcdir)/Doxyfile.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 
 mostlyclean-libtool:
@@ -858,7 +848,6 @@ distcheck: dist
 	  && dc_destdir="$${TMPDIR-/tmp}/am-dc-$$$$/" \
 	  && cd $(distdir)/_build \
 	  && ../configure --srcdir=.. --prefix="$$dc_install_base" \
-	    --with-included-gettext \
 	    $(DISTCHECK_CONFIGURE_FLAGS) \
 	  && $(MAKE) $(AM_MAKEFLAGS) \
 	  && $(MAKE) $(AM_MAKEFLAGS) dvi \

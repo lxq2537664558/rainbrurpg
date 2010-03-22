@@ -129,11 +129,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
-**** TODO OgreGui2 implementation                                     [42%]
+- [ ] See what o do with RainbruRPG-common.pc.in
+
+**** TODO OgreGui2 implementation and UnitTest                        [47%]
      :CLOCK:
+     CLOCK: [2010-03-22 lun 19:13]
+     CLOCK: [2010-03-22 lun 18:55]--[2010-03-22 lun 19:05] =>  0:10
+     CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 18:55] =>  2:03
      CLOCK: [2010-02-20 sam 11:08]--[2010-02-20 sam 11:36] =>  0:28
      CLOCK: [2010-02-19 ven 20:43]--[2010-02-19 ven 21:03] =>  0:20
-     CLOCK: [2010-02-18 jeu 17:29]
      CLOCK: [2010-02-18 jeu 11:12]--[2010-02-18 jeu 11:44] =>  0:32
      CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 11:08] =>  0:50
      CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 20:01] =>  1:12
@@ -144,18 +148,109 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Test in cpp/layoutTemplate
       Should be use for Layout implementation
 - [X] cpp/layoutTemplate should not use associative array (sorted)
-- [ ] Create a command-line option --ogregui-test which uses a new
+- [X] configure.in : library version should be 2.0.0 
+      according to the libtool versionning system
+- [X] Remove DeserializationErrorList from previous implementation
+- [X] Create a command-line option --ogregui-test which uses a new
       gsOgreguiTest gamestate (if Boost.Program_options add to DEPENDENCIES)
-- [ ] Widget implementation
-- [ ] Serializable should use Boost.Serialization (Archive)
-- [ ] Modified files during integration     
+- [X] Add Boost.Serialization to DEPENDENCIES
+- [X] Serializable should use Boost.Serialization (Archive)
+- [X] gsOgreguiTest game state implementation in client (add it to cvs)
+- [ ] command-line option --ogregui-test uses gsOgreguiTest game state
+- [ ] Precomputing/Draw
+      - [ ] GameSatte modification
+      - [ ] GameEngine modification
+      - [ ] Drawable implementation
+      - [ ] Widget implementation
+      - [ ] Container impl.
+      - [ ] Window impl.
+      - [ ] Brush implmentation
+- [ ] Skins
+      - [ ] Window
+      - [ ] Drawable
+      - [ ] Widget
+      - [ ] Label
+- [ ] Layout
+      - [ ] Layout<T1, T2>
+      - [ ] LayoutObject
+      - [ ] Window
+      - [ ] FreeWindow
+      - [ ] WeightWindow (can wait)
+      - [ ] RelativeWindow (can wait)
+- [ ] Global alpha
+      - [ ] GameEngine
+      - [ ] Brush
+- [ ] Serialization
+      - [ ] GameEngine
+      - [ ] GameState
+      - [ ] Container
+      - [ ] Serializable
+      - [ ] Widget
+- [ ] Events Keyboard/Mouse
+      - [ ] GameEngine
+      - [ ] GameState
+      - [ ] Container
+      - [ ] MouseEvent
+      - [ ] KeyEvent
+- [ ] Focus/KeyboardNavigation
+      - [ ] Focusable
+      - [ ] GameState
+      - [ ] WidgetList
+- [ ] Hierachy
+      All widget we should need
+      - [ ] Button
+      - [ ] MultiColumnList
+      - [ ] LineEdit
+	    and others...
+- [ ] Modified files during integration now use ogreGui2.0
       - [ ] client/gsCreateAccount
       - [ ] client/gsConnection
       - [ ] client/gsMainMenu
       - [ ] client/gsMenuBase
 
-**** TODO OgreGui2 integration                                        [71%]
+**** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
+     CLOCK: [2010-03-22 lun 11:31]--[2010-03-22 lun 11:45] =>  0:14
+     CLOCK: [2010-03-20 sam 15:32]--[2010-03-20 sam 15:53] =>  0:21
+     CLOCK: [2010-03-08 lun 10:28]--[2010-03-08 lun 10:36] =>  0:08
+     CLOCK: [2010-03-02 mar 15:45]--[2010-03-02 mar 16:12] =>  0:27
+     CLOCK: [2010-03-02 mar 09:48]--[2010-03-02 mar 10:10] =>  0:22
+     CLOCK: [2010-03-01 lun 15:17]--[2010-03-01 lun 16:23] =>  1:06
+     CLOCK: [2010-02-27 sam 11:23]--[2010-02-27 sam 12:05] =>  0:42
+     CLOCK: [2010-02-26 ven 15:28]--[2010-02-26 ven 15:55] =>  0:27
+     :END:
+- [X] Populate the OgreGui2 implementation section below in this order
+      - [X] Precomputing/draw
+      - [X] Skins
+      - [X] Layout
+      - [X] Global alpha
+      - [X] Serialization
+      - [X] Events Keyboard/Mouse
+      - [X] Focus/KeyboardNavigation
+      - [X] Hierachy
+- [X] Create the UML diagram
+      From the following paper concepts :
+      + [X] Hirerachy
+      + [X] Modif events/draw
+      + [X] Workflow skin    
+      + [X] Workflow skin    
+      + [X] Workflow events keyboard/mouse
+      + [X] Workflow precomputing/draw
+      + [X] Workflow global alpha
+      + [X] Workflow serialization
+      + [X] Workflow layout
+      + [X] Workflow focus/KeyboardNavigation
+**** DONE OgreGui2 integration                                        [100%]
+     :CLOCK:
+     CLOCK: [2010-02-26 ven 11:08]--[2010-02-26 ven 11:44] =>  0:36
+     CLOCK: [2010-02-26 ven 10:47]--[2010-02-26 ven 11:01] =>  0:14
+     CLOCK: [2010-02-25 jeu 15:38]--[2010-02-25 jeu 16:01] =>  0:23
+     CLOCK: [2010-02-25 jeu 15:02]--[2010-02-25 jeu 15:30] =>  0:28
+     CLOCK: [2010-02-25 jeu 11:57]--[2010-02-25 jeu 12:24] =>  0:27
+     CLOCK: [2010-02-25 jeu 08:49]--[2010-02-25 jeu 09:21] =>  0:32
+     CLOCK: [2010-02-24 mer 16:39]--[2010-02-24 mer 17:20] =>  0:41
+     CLOCK: [2010-02-24 mer 11:46]--[2010-02-24 mer 11:58] =>  0:12
+     CLOCK: [2010-02-23 mar 18:52]--[2010-02-23 mar 19:35] =>  0:43
      CLOCK: [2010-02-23 mar 11:36]--[2010-02-23 mar 12:24] =>  0:48
      CLOCK: [2010-02-22 lun 15:54]--[2010-02-22 lun 16:20] =>  0:26
      CLOCK: [2010-02-22 lun 14:08]--[2010-02-22 lun 14:48] =>  0:40
@@ -173,18 +268,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-02-09 mar 10:17]--[2010-02-09 mar 10:23] =>  0:06
      :END:
 
-- [ ] Populate the OgreGui2 implementation section below
-- [-] Create the UML diagram
-      From the following paper concepts :
-      - [X] Hirerachy
-      - [ ] Modif events/draw
-      - [ ] Workflow skin (2X)    
-      - [ ] Workflow events keyboard/mouse
-      - [ ] Workflow precomputing/draw
-      - [ ] Workflow global alpha
-      - [ ] Workflow serialization
-      - [ ] Workflow layout
-      - [ ] Workflow focus/KeyboardNavigation
 - [X] ogreGui/ implementation item creation
       - [X] Check what is already implemented (on a paper TODO)
       - [X] integrate dot tool to create UML diagram in doc/

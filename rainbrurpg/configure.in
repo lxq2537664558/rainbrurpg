@@ -52,15 +52,15 @@ GENERIC_API_VERSION=1.0
 AC_SUBST(GENERIC_API_VERSION)
 
 #shared library versioning
-COMMON_LIBRARY_VERSION="0:0:0"
+COMMON_LIBRARY_VERSION="1:0:0"
 AC_SUBST(COMMON_LIBRARY_VERSION)
-CORE_LIBRARY_VERSION="0:0:0"
+CORE_LIBRARY_VERSION="1:0:0"
 AC_SUBST(CORE_LIBRARY_VERSION)
-DESIGN_LIBRARY_VERSION="0:0:0"
+DESIGN_LIBRARY_VERSION="1:0:0"
 AC_SUBST(DESIGN_LIBRARY_VERSION)
-OGREGUI_LIBRARY_VERSION="0:0:0"
+OGREGUI_LIBRARY_VERSION="2:0:0"
 AC_SUBST(OGREGUI_LIBRARY_VERSION)
-TAPI_LIBRARY_VERSION="0:1:0"
+TAPI_LIBRARY_VERSION="1:1:0"
 AC_SUBST(TAPI_LIBRARY_VERSION)
 
 
@@ -148,6 +148,7 @@ RB_CONDITIONAL_LINKING_CPPUNIT
 
 RB_OPTION_DEBUG
 RB_CHECK_DOT
+RB_CHECK_M4
 
 dnl Checks for header files.
 AC_HEADER_STDC
@@ -177,11 +178,11 @@ AC_CONFIG_FILES([Makefile			\
 	  \
 	  ext/Makefile				\
 	  doc/Makefile				\
-	  doc/ogregui-uml.dot			\
 	  src/Makefile				\
           src/common/Makefile			\
           src/terminalapi/Makefile		\
 	  src/maincore/Makefile			\
+	  src/ogreGui/Makefile			\
 	  src/design/Makefile			\
 	  src/client/Makefile			\
 	  src/editor/Makefile			\
