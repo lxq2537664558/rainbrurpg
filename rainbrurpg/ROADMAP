@@ -131,8 +131,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Datafiles cleanup (many are not used anymore)
 - [ ] See what o do with RainbruRPG-common.pc.in
 
-**** TODO OgreGui2 implementation and UnitTest                        [47%]
+**** TODO OgreGui2 implementation and UnitTest                        [52%]
      :CLOCK:
+     CLOCK: [2010-03-24 mer 09:45]--[2010-03-24 mer 10:25] =>  0:40
+     CLOCK: [2010-03-23 mar 10:40]--[2010-03-23 mar 10:54] =>  0:14
+     CLOCK: [2010-03-23 mar 09:06]--[2010-03-23 mar 09:23] =>  0:17
      CLOCK: [2010-03-22 lun 19:13]
      CLOCK: [2010-03-22 lun 18:55]--[2010-03-22 lun 19:05] =>  0:10
      CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 18:55] =>  2:03
@@ -156,7 +159,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Add Boost.Serialization to DEPENDENCIES
 - [X] Serializable should use Boost.Serialization (Archive)
 - [X] gsOgreguiTest game state implementation in client (add it to cvs)
-- [ ] command-line option --ogregui-test uses gsOgreguiTest game state
+- [X] configure should test for Boost.Serialization 
+- [X] configure should test for libbz2-dev
+- [-] command-line option --ogregui-test uses gsOgreguiTest game state
+      - [X] GameEngineOptions implementation (struct in gameengine.h)
+      - [ ] GameEngine uses GameEngineOptions for ogregui test
+      - [ ] GameEngine uses GameEngineOptions for fullscreen
 - [ ] Precomputing/Draw
       - [ ] GameSatte modification
       - [ ] GameEngine modification
@@ -207,7 +215,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] client/gsConnection
       - [ ] client/gsMainMenu
       - [ ] client/gsMenuBase
-
+      - [ ] client/main.cpp 
+	    OgreGuiRenderQueueListener, BetaGui::GUI and
+	    SkinManager references removed
+      - [ ] client/guimanaer.cpp 
+	    BetaGui::GUI references removed
+      - [ ] client/gsserverlist.cpp
+	    BetaGui::GUI and some Widgets references removed
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
      CLOCK: [2010-03-22 lun 11:31]--[2010-03-22 lun 11:45] =>  0:14

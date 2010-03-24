@@ -116,7 +116,10 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-201 (04 mar 2010 - ???) SLOC ???? UT ? FT ?:??
-- (13) gsOgerGuiTest base implementation
+- (16) Building works (ogreGui undefined references removed)
+- GameEngineOptions implementation
+- configure now check for Boost.Serialization and libbz2
+- gsOgerGuiTest base implementation
 - Serializable now uses Boost.Serialization
 - Removed DeserializationErrorList
 - Fixed non-buildng of ogreGui

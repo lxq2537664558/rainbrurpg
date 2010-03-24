@@ -1,3 +1,20 @@
+2010-03-24 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/gameengine.h: GameEngineOptions usage in init().
+
+2010-03-23 Jerome Pasquier  <rainbru@free.fr>
+	
+	* configure.in (AC_CONFIG_FILES): Added doc/ogregui-uml.dot.
+	
+	* m4/rb_boost_serialization.m4: Test for Boost.Serialization.
+	* configure.in: Added call to RB_CHECK_BOOST_SERIALIZATION.
+
+	* m4/rb_bz2.m4: Test for libbz2.
+	* configure.in: Added call to RB_CHECK_BZ2.
+
+	* src/maincore/gameengine.h: GameEngineOptions declaration.
+	* src/client/main.cpp: GameEngineOptions usage for ogregui test.
+	
 2010-03-22 Jerome Pasquier  <rainbru@free.fr>
 
 	* configure.in: Libraries version updated at least to 1:0:0.

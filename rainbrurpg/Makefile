@@ -52,8 +52,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = x86_64-unknown-linux-gnu
+build_triplet = i686-pc-linux-gnu
+host_triplet = i686-pc-linux-gnu
 subdir = .
 DIST_COMMON = README $(RainbruRPG_TEXINFOS) $(am__configure_deps) \
 	$(srcdir)/Doxyfile.in $(srcdir)/Makefile.am \
@@ -69,7 +69,9 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
 	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
 	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
-	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/rb_dirtyflag.m4 \
+	$(top_srcdir)/m4/progtest.m4 \
+	$(top_srcdir)/m4/rb_boost_serialization.m4 \
+	$(top_srcdir)/m4/rb_bz2.m4 $(top_srcdir)/m4/rb_dirtyflag.m4 \
 	$(top_srcdir)/m4/rb_dot.m4 $(top_srcdir)/m4/rb_freetype.m4 \
 	$(top_srcdir)/m4/rb_m4.m4 $(top_srcdir)/m4/rb_summary.m4 \
 	$(top_srcdir)/acinclude.m4 $(top_srcdir)/configure.in
@@ -131,14 +133,14 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run aclocal-1.10
 ALLOCA = 
-AMTAR = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run tar
+AMTAR = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run tar
 AR = ar
 AS = as
-AUTOCONF = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run automake-1.10
+AUTOCONF = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run automake-1.10
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -171,7 +173,7 @@ F77 =
 FFLAGS = 
 FOX_CFLAGS = -I/usr/include/fox-1.6
 FOX_CONFIG = /usr/bin/fox-config
-FOX_LIBS = -lFOX-1.6 -lXext -lX11 -lXft -lfontconfig -lXcursor -ldl -lpthread -lrt -ljpeg -lpng -ltiff -lz -lm -lcups -lnsl -lGLU -lGL
+FOX_LIBS = -lFOX-1.6 -lXext -lX11 -lXft -lfontconfig -lXcursor -lXrandr -ldl -lpthread -lrt -ljpeg -lpng -ltiff -lz -lbz2 -lm -lcups -lnsl -lGLU -lGL
 FREETYPE_CFLAGS = -I/usr/include/freetype2
 FREETYPE_CONFIG = /usr/bin/freetype-config
 FREETYPE_LIBS = -lfreetype -lz
@@ -192,12 +194,12 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 INTLLIBS = 
 INTL_MACOSX_LIBS = 
-ISODATE = 2010-03-22
+ISODATE = 2010-03-24
 LDFLAGS = 
 LIBICONV = -liconv
 LIBINTL = 
 LIBOBJS = 
-LIBS = -lgd -lenet -lboost_thread -lboost_filesystem -ljpeg 
+LIBS = -lbz2 -lgd -lenet -lboost_serialization -lboost_thread -lboost_filesystem -ljpeg 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIB_COMMON_NAME = common
 LIB_CORE_NAME = core
@@ -208,7 +210,7 @@ LN_S = ln -s
 LTLIBICONV = -liconv
 LTLIBINTL = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/mouse/programmation/rainbrurpg/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/carine/programmation/rainbrurpg/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MSGFMT = /usr/bin/msgfmt
 MSGFMT_015 = /usr/bin/msgfmt
@@ -247,10 +249,10 @@ VERSION = 0.0.5
 XGETTEXT = /usr/bin/xgettext
 XGETTEXT_015 = /usr/bin/xgettext
 XGETTEXT_EXTRA_OPTIONS = 
-abs_builddir = /home/mouse/programmation/rainbrurpg
-abs_srcdir = /home/mouse/programmation/rainbrurpg
-abs_top_builddir = /home/mouse/programmation/rainbrurpg
-abs_top_srcdir = /home/mouse/programmation/rainbrurpg
+abs_builddir = /home/carine/programmation/rainbrurpg
+abs_srcdir = /home/carine/programmation/rainbrurpg
+abs_top_builddir = /home/carine/programmation/rainbrurpg
+abs_top_srcdir = /home/carine/programmation/rainbrurpg
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = 
@@ -260,26 +262,26 @@ am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
+build = i686-pc-linux-gnu
 build_alias = 
-build_cpu = x86_64
+build_cpu = i686
 build_os = linux-gnu
-build_vendor = unknown
+build_vendor = pc
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-unknown-linux-gnu
+host = i686-pc-linux-gnu
 host_alias = 
-host_cpu = x86_64
+host_cpu = i686
 host_os = linux-gnu
-host_vendor = unknown
+host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /home/mouse/programmation/rainbrurpg/install-sh
+install_sh = $(SHELL) /home/carine/programmation/rainbrurpg/install-sh
 libcurl_CFLAGS =  
 libcurl_LIBS = -lcurl  
 libdir = ${exec_prefix}/lib

@@ -117,11 +117,13 @@ RB_CHECK_LIBCURL
 dnl RB_CHECK_LIBSLANG Only used by terminalAPI
 RB_CHECK_BOOST_FS
 RB_CHECK_BOOST_THREAD
+RB_CHECK_BOOST_SERIALIZATION
 RB_CHECK_ENET
 RB_CHECK_GLIB
 RB_CHECK_LIBSIG
 RB_CHECK_LIBGD
 RB_CHECK_LIBGNET
+RB_CHECK_BZ2
 
 dnl #################################################################"""
 dnl #################################################################"""
@@ -178,6 +180,7 @@ AC_CONFIG_FILES([Makefile			\
 	  \
 	  ext/Makefile				\
 	  doc/Makefile				\
+	  doc/ogregui-uml.dot			\
 	  src/Makefile				\
           src/common/Makefile			\
           src/terminalapi/Makefile		\
