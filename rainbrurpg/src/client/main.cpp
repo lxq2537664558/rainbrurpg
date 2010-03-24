@@ -88,7 +88,7 @@ using namespace std;
 
 
 // Forward declarations
-void handleCommandLineOptions(int argc, char **argv);
+void handleCommandLineOptions(int argc, char **argv, GameEngineOptions*);
 void showHelp(void);
 bool showLauncher(int argc, char **argv);
 void showVersion(void);
@@ -141,7 +141,10 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 int main(int argc, char **argv){
 #endif
 
-  handleCommandLineOptions(argc, argv);
+  GameEngineOptions geo;
+  geo.ogreGuiTest = false;
+
+  handleCommandLineOptions(argc, argv, &geo);
   showVersion();
 
   // Initialize the pseudo-random number generator
@@ -157,10 +160,10 @@ int main(int argc, char **argv){
   if (showLauncher(argc, argv)){
 
     GuiManager::getSingleton().init();
-    GameEngine::getSingleton().init();
+    GameEngine::getSingleton().init(geo);
 
     // Must be called after GameEngine::init() for ressources to be loaded
-    SkinManager::getSingleton().init();
+    //    SkinManager::getSingleton().init();
 
 
     initGameStates();
@@ -183,15 +186,15 @@ int main(int argc, char **argv){
 
 
     // OgreGui settings
-    GUI::getSingleton()
+    /*    GUI::getSingleton()
       .init(GameEngine::getSingleton().getOgreRoot()->getRenderSystem(),
 	    GameEngine::getSingleton().getOgreSceneMgr(),
 	    GameEngine::getSingleton().getViewport());
-
-    GameEngine::getSingleton().getOgreSceneMgr()
+    */
+    /*   GameEngine::getSingleton().getOgreSceneMgr()
       ->addRenderQueueListener(new OgreGuiRenderQueueListener(
          &GUI::getSingleton()));
-
+    */
 
 
     // GuiManager settings
@@ -297,7 +300,7 @@ void showHelp(void){
   * \param argv The command line arguments array
   *
   */
-void handleCommandLineOptions(int argc, char **argv){
+void handleCommandLineOptions(int argc, char **argv, GameEngineOptions* geo){
 
   string opt;
   // Start at 1 to prevent a 'Unknown option rainbrurpg' bug
@@ -319,7 +322,7 @@ void handleCommandLineOptions(int argc, char **argv){
      }
      // Quiet option, no log in std::out
      else if (opt == "--ogregui-test"){
-       cout << "Option not yet implemented" << opt << endl;
+       geo->ogreGuiTest = true;
        exit(EXIT_FAILURE);
      }
      // Unknown options

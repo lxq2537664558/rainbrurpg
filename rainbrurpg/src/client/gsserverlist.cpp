@@ -135,7 +135,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   unsigned int width = 600;
   unsigned int rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
   unsigned int posX=(rwWidth/2)-(width/2);
-  BetaGUI::GUI* mGUI = &GUI::getSingleton();
+  /*  BetaGUI::GUI* mGUI = &GUI::getSingleton();
   mWin =new Window(Vector4(posX, 10, width, 400), BetaGUI::OWT_RESIZE_AND_MOVE, 
 		   "Server list", mGUI);
   mGUI->addWindow(mWin);
@@ -158,7 +158,6 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   Vector4 mNumServerDim(10, 362, 20, 20);
   mNumServer=new Label (mNumServerDim, "??? servers found", mWin);
   mWin->addWidget(mNumServer);
-
   // Boutons
   btnRefresh= new PushButton(Vector4(200,360,100,24),
 				 "Refresh", 
@@ -178,7 +177,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   mWin->addWidget(btnMoreInfos);
 
 
-
+  */
   feedList();
 
 }
@@ -193,7 +192,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   *
   */
 void RainbruRPG::Core::gsServerList::feedList(){
-  unsigned int itemId=1;
+  /* unsigned int itemId=1;
   tServerList* lst=xml->getServerList();
   tServerList::const_iterator iter;
   MultiColumnListItem* item;
@@ -218,6 +217,7 @@ void RainbruRPG::Core::gsServerList::feedList(){
   String numS=StringConv::getSingleton().itos(lst->size());
   numS += " servers found";
   mNumServer->setCaption(numS);
+  */
 }
 
 /** Setup the tabulation order 
@@ -279,10 +279,11 @@ void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button* vButton){
   */
 void RainbruRPG::Core::gsServerList::slotSelectionChanged(void){
   LOGI("slotSelectionChanged called");
-
+  /*
   bool sel = mMcl->isOneItemSelected();
   btnPlay->setEnable( sel );
   btnMoreInfos->setEnable( sel );
+  */
 }
 
 /** Refresh the server list
@@ -294,7 +295,7 @@ void RainbruRPG::Core::gsServerList::slotSelectionChanged(void){
   */
 void RainbruRPG::Core::gsServerList::refreshList(void){
   LOGI("gsServerList::refreshList called");
-
+  /*
   // Disable all buttons
   btnRefresh->disable();
   btnPlay->disable();
@@ -311,5 +312,5 @@ void RainbruRPG::Core::gsServerList::refreshList(void){
 
   // Enable refresh button
   btnRefresh->enable();
-  
+  */
 }

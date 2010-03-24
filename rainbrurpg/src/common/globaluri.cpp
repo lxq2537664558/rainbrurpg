@@ -249,7 +249,9 @@ installConfigFile(const std::string& filename){
     GTS_LIT(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("The file '%s' was not found. "
-		   "Copying it from $PREFIX/share/."), filename.c_str());
+		   "Copying it from '%s' to '%s'"), filename.c_str(), 
+	    optionXmlPath.string().c_str(),
+	    userOptionXmlPath.string().c_str());
     LOGW(str);
 
     fs::copy_file(optionXmlPath, userOptionXmlPath);

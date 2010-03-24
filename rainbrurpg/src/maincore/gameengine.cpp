@@ -61,7 +61,7 @@ bool RainbruRPG::Core::GameEngine::running() {
   * It only initialize 3D engine. Each GameState initialize its
   * own parameters.
   */
-void RainbruRPG::Core::GameEngine::init(){
+void RainbruRPG::Core::GameEngine::init(const GameEngineOptions& vOptions){
   userName="";
   userPwd="";
   mInputMgr=NULL;
@@ -69,6 +69,7 @@ void RainbruRPG::Core::GameEngine::init(){
   mViewport=NULL;
   mCamera=NULL;
   actualState=-1;
+  mOptions = vOptions;
 
   initOgre();
 }

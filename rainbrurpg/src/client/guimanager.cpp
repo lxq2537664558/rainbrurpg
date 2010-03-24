@@ -231,7 +231,7 @@ void RainbruRPG::Gui::GuiManager::setGuiTransparency(float f){
     LOGW("GuiManager::setGuiTransparency : f>=0.7f");
   }
 
-  GUI::getSingleton().setGuiTransparency(f);
+  //  GUI::getSingleton().setGuiTransparency(f);
 }
 
 /** Called when the gui fadeIn must begin
@@ -275,7 +275,8 @@ void RainbruRPG::Gui::GuiManager::guiFade(){
   *
   */
 void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
-  float t=GUI::getSingleton().getGuiTransparency();
+  //  float t=GUI::getSingleton().getGuiTransparency();
+  float t=0.0f;
   float newT=t+f;
   
   /* v 0.0.5-160 : Gui transparency bugfix
@@ -289,7 +290,7 @@ void RainbruRPG::Gui::GuiManager::increaseGuiTransparency(float f){
     newT=0.7f;
   }
 
-  GUI::getSingleton().setGuiTransparency(newT);
+  //  GUI::getSingleton().setGuiTransparency(newT);
 
 }
 
@@ -378,11 +379,11 @@ showMessageBox(const String& title, const String& message){
   LOGI("GuiManager::showMessageBox() called");
   LOGI("  Creating messageBox");
 
-  RbMessageBox* mb=new RbMessageBox(title, &GUI::getSingleton());
+  /*  RbMessageBox* mb=new RbMessageBox(title, &GUI::getSingleton());
   mb->setMessage(message);
   mb->show();
   GUI::getSingleton().addDialog(mb);
-
+  */
   LOGI("MessageBox created");
 }
 
@@ -460,7 +461,7 @@ void RainbruRPG::Gui::GuiManager::setErrorMessage(const String& s){
   *
   */
 void RainbruRPG::Gui::GuiManager::createErrorLabel(void){
-  BetaGUI::GUI* mGUI = &GUI::getSingleton();
+  /*  BetaGUI::GUI* mGUI = &GUI::getSingleton();
   Ogre::Vector4 v(5, 462, 800, 477);
   errorLabelWindow = new BetaGUI::Window(v, BetaGUI::OWT_NONE, 
 				   "Error window", mGUI, OSI_NAVIGATION);
@@ -470,4 +471,5 @@ void RainbruRPG::Gui::GuiManager::createErrorLabel(void){
   Ogre::Vector4 v2(0, 0, 800, 15);
   mErrorLabel = new StatusLabel( v2, "Error message...", errorLabelWindow);
   errorLabelWindow->addWidget(mErrorLabel);
+  */
 }

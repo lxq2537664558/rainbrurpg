@@ -95,6 +95,14 @@ using namespace RainbruRPG::Network::Ident;
 namespace RainbruRPG {
   namespace Core{
 
+    /** A structure that defines the GameEngine's runtime options
+      *
+      */
+    typedef struct {
+      /// Should we run ogregui test
+      bool ogreGuiTest;
+    }GameEngineOptions;
+
     /** The game engine
       *
       * This singleton deals with some GameState and with options
@@ -125,7 +133,7 @@ namespace RainbruRPG {
       /** An empty default constructor */
       GameEngine(){};
 
-      void init();
+      void init(const GameEngineOptions&);
       /// The singleton destructor
       void cleanup();
       void run();
@@ -172,16 +180,19 @@ namespace RainbruRPG {
     private:
       /** Unimplemented copy constructors 
         *
-	* In a singleton the use of this methos must be forbidden.
+	* In a singleton the use of this method must be forbidden.
 	* 
 	* \param obj A GameEngine
+	*
 	*/
       GameEngine(const GameEngine& obj);
 
       /** Unimplemented assignment
         *
 	* In a singleton the use of this method must be forbidden.
+	*
 	* \param obj A GameEngine
+	*
 	*/
       GameEngine& operator=(const GameEngine& obj);
 
@@ -253,6 +264,8 @@ namespace RainbruRPG {
 
       /** The Ogre iewport instance */
       Viewport* mViewport;
+
+      GameEngineOptions mOptions;
     };
   }
 }
