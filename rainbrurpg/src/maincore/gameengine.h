@@ -101,6 +101,8 @@ namespace RainbruRPG {
     typedef struct {
       /// Should we run ogregui test
       bool ogreGuiTest;
+      /// Should we run the game in fullscreen mode
+      bool fullscreen;
     }GameEngineOptions;
 
     /** The game engine

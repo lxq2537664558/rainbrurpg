@@ -59,6 +59,8 @@
 #include "gsserverlist.h"
 #include "gsupdatedatafiles.h"
 
+#include "gsOgreguiTest.hpp"
+
 #include <gslocaltest.h>
 
 /** To avoid a double definition of PI, launcher.h, that include Ogre3D
@@ -143,6 +145,7 @@ int main(int argc, char **argv){
 
   GameEngineOptions geo;
   geo.ogreGuiTest = false;
+  geo.fullscreen = false;
 
   handleCommandLineOptions(argc, argv, &geo);
   showVersion();
@@ -286,6 +289,7 @@ bool showLauncher(int argc, char **argv){
 void showHelp(void){
   cout << "usage: rainbrurpg [-h] [-V]" << endl
        << "-?, -h, --help\t\t"   << "show this usage message." << endl
+       << "-f, --fullscreen\t\t" << "Launch the game in fullscreen mode." << endl
        << "-V, --version\t\t"    << "show version." << endl
        << "-q, --quiet\t\t"      << "disabled std-out messages logging." << endl
        << "    --ogregui-test\t" << "used to test the GUI feature." << endl;
@@ -311,6 +315,9 @@ void handleCommandLineOptions(int argc, char **argv, GameEngineOptions* geo){
        showHelp();
        exit(EXIT_SUCCESS);
      }
+     else if (opt == "-f" || opt == "--fullscreen"){
+       geo->fullscreen=true;
+     }
      else if (opt == "-V" || opt == "--version"){
        showVersion();
        exit(EXIT_SUCCESS);
@@ -323,7 +330,7 @@ void handleCommandLineOptions(int argc, char **argv, GameEngineOptions* geo){
      // Quiet option, no log in std::out
      else if (opt == "--ogregui-test"){
        geo->ogreGuiTest = true;
-       exit(EXIT_FAILURE);
+       GameEngine::getSingleton().changeState("gsOgreGuiTest");
      }
      // Unknown options
      else{
@@ -358,4 +365,6 @@ void handleCommandLineOptions(int argc, char **argv, GameEngineOptions* geo){
    //   GameEngine::getSingleton().registerGameState(new gsUpdateDatafiles());
 
    GameEngine::getSingleton().registerGameState(new gsLocalTest());
+   GameEngine::getSingleton().registerGameState(new gsOgreguiTest());
+  
  }

@@ -28,20 +28,16 @@
   *
   */
 
+#include <cppunit/CompilerOutputter.h>
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestSuite.h>
 #include <cppunit/TextTestRunner.h>
-
-#include "OgreguiTestSuite.hpp"
+#include <cppunit/extensions/TestFactoryRegistry.h>
 
 #include <logger.h>
 
+using namespace CppUnit;
 using namespace RainbruRPG::Exception;
-
-// Forward declaration
-void initRPGSuite(CPPUNIT_NS::TestSuite* r);
-// End of forward declaration
-
 
 /** The main function of the UnitTest (text version)
   *
@@ -58,26 +54,13 @@ int main(int argc, char* argv[]){
 
   CPPUNIT_NS::TextTestRunner runner;
   
-  CPPUNIT_NS::TestSuite* suite = new CPPUNIT_NS::TestSuite("RPG");
-  initRPGSuite(suite);
+  Test* suite = TestFactoryRegistry::getRegistry().makeTest();
+
+  // Change the default outputter to a compiler error format outputter
+  runner.setOutputter( new CompilerOutputter( &runner.result(), std::cerr));
   
   runner.addTest(suite);
   
   runner.run("", false, true, true);
-  delete suite;
   return 0;
 }
-
-/** Initialize all the test
-  *
-  * It initialises a TestSuite for each tested library or subdir :
-  * - TerminalAPI
-  * - Common
-  *
-  * \param r The test suite to add tests to
-  *
-  */
-void initRPGSuite(CPPUNIT_NS::TestSuite* r){
-  r->addTest( new OgreguiTestSuite() );
-}
-

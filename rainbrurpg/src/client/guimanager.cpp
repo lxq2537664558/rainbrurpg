@@ -98,7 +98,7 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
   LOGI("Creating Title overlay...");
 
   mTitleOverlay=NULL;
-
+  /*
   mTitleOverlay =OverlayManager::getSingleton().getByName("RainbruRPG/Title");
 
   if (mTitleOverlay){
@@ -117,7 +117,7 @@ void RainbruRPG::Gui::GuiManager::createTitleOverlay(Ogre::RenderWindow* win){
   else{
     LOGE("Cannot load RainbruRPG/Title");
   }
-
+  */
 }
 
 

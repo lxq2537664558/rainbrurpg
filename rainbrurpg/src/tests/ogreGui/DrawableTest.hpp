@@ -42,7 +42,6 @@ using namespace RainbruRPG::OgreGui;
 /** A test case for ogreGui's Drawable
   *
   */
-template<class TESTEDCLASS> 
 class DrawableTest : public CPPUNIT_NS::TestFixture 
 {
   CPPUNIT_TEST_SUITE( DrawableTest );
@@ -61,113 +60,19 @@ protected:
   /** An instance of the caption widget
     *
     */
-  TESTEDCLASS	*m_instance;
+  Drawable* m_instance;
   
 public:
-  /** Return the number of test cases
-    *
-    * \return Currently always return 1
-    *
-    */
-  int countTestCases () const{ return 1;  }
-  
-  /** Creates a new instance to test
-    *
-    */
-  void setUp(){ 
-    this->m_instance = new TESTEDCLASS(NULL, RECT); 
-  }
-  
-  /** Delete the current tested instance
-    *
-    */
-  void tearDown(){ 
-    delete this->m_instance; 
-  }
-  
-  // Test if the parent is correctly set by the constructor
-  void testParent(){ 
-    Drawable d1(NULL, RECT);
-    CPPUNIT_ASSERT( d1.getParent() == NULL);
-    Drawable d2(&d1, RECT);
-    CPPUNIT_ASSERT( d2.getParent() != NULL);
-    CPPUNIT_ASSERT( d2.getParent() == &d1);
-  }
+  void setUp();
+  void tearDown();
+  void testParent();
+  void testDirty();
+  void testDirtyPropagation();
+  void testComputeAbsolute();
+  void testAdjustScissor1();
+  void testAdjustScissor2();
 
-  // Test the dirty flag
-  void testDirty(){ 
-    // At startup, dirty should be true
-    CPPUNIT_ASSERT( m_instance->isDirty());
-    
-  }
-
-  // Test the dirty propagation property
-  void testDirtyPropagation(){ 
-    // No segfault if parent is NULL ?
-    Drawable* d1=new Drawable(NULL, RECT);
-    d1->setDirty(true);
-
-    // Propagation test
-    d1->setDirty(false);
-    CPPUNIT_ASSERT( d1->isDirty() == false);
-    Drawable d2(d1, RECT);      // Creating a child
-    d2.setDirty(true);     // Parent should be dirty now
-    CPPUNIT_ASSERT( d1->isDirty() == true);
-    d2.setDirty(false);     // Parent should also be dirty
-    CPPUNIT_ASSERT( d1->isDirty() == true);
-    delete d1;
-  }
-
-  void testComputeAbsolute(){ 
-    Rectangle r1;
-    setRectangle(&r1, 50, 50 ,100 ,100);
-    Drawable d(NULL, r1);
-    d.compute(20, 30, r1); // to call computeAbsolute
-    Rectangle r2 = d.getAbsolute();
-    CPPUNIT_ASSERT( r2.left == r1.left + 20);
-    CPPUNIT_ASSERT( r2.right == r1.right + 20);
-    CPPUNIT_ASSERT( r2.top == r1.top + 30);
-    CPPUNIT_ASSERT( r2.bottom == r1.bottom + 30);
-  }
-
-  void testAdjustScissor1(){ 
-    Rectangle r1;
-    setRectangle(&r1, 50, 50 ,100 ,100);
-    Drawable d(NULL, r1);
-
-    // First test : chop all
-    Rectangle s1;
-    setRectangle(&s1, 70, 75 ,80 ,85);
-    d.compute(0, 0, s1); // to call computeAbsolute
-    Rectangle r2 = d.getScissor();
-    CPPUNIT_ASSERT( r2.left   == 70);
-    CPPUNIT_ASSERT( r2.right  == 80);
-    CPPUNIT_ASSERT( r2.top    == 75);
-    CPPUNIT_ASSERT( r2.bottom == 85);
-  }
-
-  void testAdjustScissor2(){ 
-    Rectangle r1;
-    setRectangle(&r1, 50, 50 ,100 ,100);
-    Drawable d(NULL, r1);
-
-    // First test : chop none
-    Rectangle s1;
-    setRectangle(&s1, 30, 35 ,110 ,115);
-    d.compute(0, 0, s1); // to call computeAbsolute
-    Rectangle r2 = d.getScissor();
-    CPPUNIT_ASSERT( r2.left   == 50);
-    CPPUNIT_ASSERT( r2.right  == 100);
-    CPPUNIT_ASSERT( r2.top    == 50);
-    CPPUNIT_ASSERT( r2.bottom == 100);
-  }
-
-  void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2){
-    r->left   = x1;
-    r->top    = y1;
-    r->right  = x2;
-    r->bottom = y2;
-  }
+  void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2);
 };
 
 

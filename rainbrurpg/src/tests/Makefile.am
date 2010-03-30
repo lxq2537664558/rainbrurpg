@@ -20,8 +20,8 @@
 # The final program is called "rainbrurpg-tests"
 bin_PROGRAMS = rainbrurpg-tests
 
-rainbrurpg_tests_LDADD = -L$(top_srcdir)/common/.libs 			\
-	                 -L$(top_srcdir)/terminalapi/.libs		\
+rainbrurpg_tests_LDADD = -L$(top_srcdir)/src/common/.libs		\
+	                 -L$(top_srcdir)/src/terminalapi/.libs		\
 			 -lrainbrurpg-common 				\
 			 -lrainbrurpg-terminalapi 			\
 			 $(GNET_LIBS)					\
@@ -31,15 +31,16 @@ rainbrurpg_tests_LDADD = -L$(top_srcdir)/common/.libs 			\
 
 # Defines the subdirectories of tests/ that contain individuals tests
 #
-# These directories are relative from rainbrurpg/tests/
+# These directories are relative from src/tests/
 # It is needed because each library's test suite will include his
 # files from these directories
 #
 TESTS_DIRS = -Itapi/		\
 	     -Icommon/
 
-INCLUDES = -I$(top_srcdir)/common/ 			\
-	   -I$(top_srcdir)/terminalapi/   		\
+INCLUDES = -I$(top_srcdir)/ext/ 			\
+	   -I$(top_srcdir)/src/common/ 			\
+	   -I$(top_srcdir)/src/terminalapi/   		\
 	   $(TESTS_DIRS)				\
 	   $(GNET_CFLAGS) 				\
 	   $(CPPUNIT_CFLAGS)				\

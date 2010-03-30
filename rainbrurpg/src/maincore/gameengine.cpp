@@ -405,17 +405,15 @@ void RainbruRPG::Core::GameEngine::initOgre(){
 
 
 #ifdef RAINBRU_RPG_DEBUG
-  bool fullscreen=false;
   int winWidth=640;
   int winHeight=480;
 #else
-  bool fullscreen=true;
   int winWidth=1024;
   int winHeight=768;
 #endif // RAINBRU_RPG_DEBUG
 
   mWindow=Ogre::Root::getSingleton().getRenderSystem()
-    ->createRenderWindow(CLIENT_WIN_CAPTION, winWidth, winHeight, fullscreen);
+    ->createRenderWindow(CLIENT_WIN_CAPTION, winWidth, winHeight, mOptions.fullscreen);
   
   initOIS();
 

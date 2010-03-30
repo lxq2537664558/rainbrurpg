@@ -47,6 +47,11 @@ namespace RainbruRPG {
       virtual void init();
       virtual void resume();
       virtual void pause();
+
+      // Purely virtual in gsmenubase
+      virtual void setupTabOrder(){
+
+      };
     };
   }
 }
