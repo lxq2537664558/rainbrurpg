@@ -1,6 +1,21 @@
+2010-03-25 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/Makefile.am (INCLUDES): Fixed some issues with includes 
+	directory.
+
+	* stc/tests/ogreGui/SerializableTest.cpp: Moved implementation from
+	header (was a template).
+	
 2010-03-24 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/maincore/gameengine.h: GameEngineOptions usage in init().
+
+	* src/client/guimanager.cpp (createTitleOverlay): Deactivated
+	title overlay due to an Ogre error.
+
+	* src/client/main.cpp: Handles --ogergui-test command-line option.
+
+	* src/maincore/gameengine.cpp: Handle fullscreen from command-line option.
 
 2010-03-23 Jerome Pasquier  <rainbru@free.fr>
 	
@@ -24,6 +39,8 @@
 	* src/Makefile.am (SUBDIRS): Added ogreGui/.
 
 	* src/ogreGui/Serializable: Now uses Boost.Serialization.
+
+	* src/client/gsOgreguiTest: started implementation.
 	
 2010-03-04 Jerome Pasquier  <rainbru@free.fr>
 

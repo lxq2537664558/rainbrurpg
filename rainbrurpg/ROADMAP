@@ -103,6 +103,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should use Boost.Format instead of printf/GTS_* macros
 - [ ] tests/Doxyfile replaced by tests/Doxyfile.in
 - [ ] acinclude.m4 code should go into separate files in m4/
+- [ ] Unit test shouldn't be template class
+      To speed up building. See ogreGui tests for example.
 **** TODO Make a better use of CppUnit (see libkics for example)      [0%]
 - [ ] autoregister test fixtures
 - [ ] no templates
@@ -130,20 +132,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
       See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
 - [ ] See what o do with RainbruRPG-common.pc.in
+- [ ] GuiManager::createTitleOverlay issue
+      deactivated due to a malformed UTF string error from Ogre
 
-**** TODO OgreGui2 implementation and UnitTest                        [52%]
+**** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
-     CLOCK: [2010-03-24 mer 09:45]--[2010-03-24 mer 10:25] =>  0:40
-     CLOCK: [2010-03-23 mar 10:40]--[2010-03-23 mar 10:54] =>  0:14
-     CLOCK: [2010-03-23 mar 09:06]--[2010-03-23 mar 09:23] =>  0:17
-     CLOCK: [2010-03-22 lun 19:13]
-     CLOCK: [2010-03-22 lun 18:55]--[2010-03-22 lun 19:05] =>  0:10
-     CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 18:55] =>  2:03
-     CLOCK: [2010-02-20 sam 11:08]--[2010-02-20 sam 11:36] =>  0:28
-     CLOCK: [2010-02-19 ven 20:43]--[2010-02-19 ven 21:03] =>  0:20
-     CLOCK: [2010-02-18 jeu 11:12]--[2010-02-18 jeu 11:44] =>  0:32
-     CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 11:08] =>  0:50
-     CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 20:01] =>  1:12
+     CLOCK: [2010-03-25 jeu 15:16]--[2010-03-25 jeu 15:53] =>  0:37
+     CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 19:42] =>  2:50
+     CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 12:50] =>  2:32
+     CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 21:52] =>  3:03
      :END:
      To be completed with the previous TODO task.
      Should use sigc++ for connection
@@ -161,12 +158,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] gsOgreguiTest game state implementation in client (add it to cvs)
 - [X] configure should test for Boost.Serialization 
 - [X] configure should test for libbz2-dev
-- [-] command-line option --ogregui-test uses gsOgreguiTest game state
+- [X] command-line option --ogregui-test uses gsOgreguiTest game state
       - [X] GameEngineOptions implementation (struct in gameengine.h)
-      - [ ] GameEngine uses GameEngineOptions for ogregui test
-      - [ ] GameEngine uses GameEngineOptions for fullscreen
+      - [X] GameEngine uses GameEngineOptions for ogregui test
+      - [X] GameEngine uses GameEngineOptions for fullscreen
 - [ ] Precomputing/Draw
-      - [ ] GameSatte modification
+      - [ ] GameState modification
       - [ ] GameEngine modification
       - [ ] Drawable implementation
       - [ ] Widget implementation

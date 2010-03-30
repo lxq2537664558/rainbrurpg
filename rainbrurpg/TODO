@@ -115,8 +115,14 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-201 (04 mar 2010 - ???) SLOC ???? UT ? FT ?:??
-- (16) Building works (ogreGui undefined references removed)
+* v0.0.5-202 (25 mar 2010 - ???) SLOC ??? UT ??? FT ?:??
+- (2) SerializableTest and DrawableTestimplementation moved to .cpp
+- ogreGui unit test now uses a CppUnit Registry
+
+* v0.0.5-201 (04 mar 2010 - 25 mar 2010) SLOC 40,283 UT 220 FT 32:22
+- deactivated Title overlay due to an Ogre UTF string error
+- fullscreen command line option implemented
+- Building works (ogreGui undefined references removed)
 - GameEngineOptions implementation
 - configure now check for Boost.Serialization and libbz2
 - gsOgerGuiTest base implementation
