@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -20,7 +21,6 @@
  *
  */
 
-<?php
 /** \file movedownattrb.php
   * Defines a form used to move down an attribute
   * 

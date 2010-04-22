@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -19,8 +20,6 @@
  *  02110-1301  USA
  *
  */
-
-<?php
 /** \file access.php
   * Defines if the user can access the site
   * 
@@ -56,5 +55,4 @@ if ($cook!="true"){
 }
 
 return $cook;
-
 ?>

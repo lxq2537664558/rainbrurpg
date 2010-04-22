@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -20,7 +21,6 @@
  *
  */
 
-<?php
 /** \file toggleblacklist.php
   * Defines a page used to toggles player's blacklist status
   * 

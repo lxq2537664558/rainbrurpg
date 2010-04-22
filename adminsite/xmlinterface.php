@@ -1,4 +1,5 @@
-/*
+<?php
+  /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
@@ -20,11 +21,16 @@
  *
  */
 
-<?php
+  /** Modifications :
+    * - 09 apr 2010 : Now uses Factory to load Xml modules
+    */
 include "timestamp.php";
+include 'Factory.php';
+
+define(XML_MODULE, "Domxml");
 
 /** \brief A xml interface to avoid complications when the php version
-  * is changed in website.
+  * changed in website.
   *
   *
   * Usage example :
@@ -41,6 +47,8 @@ class XmlInterface{
   var $dom;
   /** The xml root element */
   var $root;
+  /** The Xml module instancied through the Factory */
+  var $module;
 
   // Methodes
 
@@ -52,6 +60,7 @@ class XmlInterface{
     * \param $fn The filename of the xmlfile (without path)
     */
   function XmlInterface($fn){
+    $module=Factory::get_xml_module(XML_MODULE);
     $this->filename='../metadata/'.$fn;
 
     if (!file_exists($this->filename)) {
@@ -260,9 +269,9 @@ class XmlInterface{
     }
   }
 
-  /** Move up a domxml node object
+  /** Move down a domxml node object
     *
-    * \param $node the domxml node to move up once
+    * \param $node the domxml node to move down once
     *
     * \return \c true if the operation is success, \c false if the operation
     *         failed

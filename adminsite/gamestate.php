@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -20,10 +21,7 @@
  *
  */
 
-<?php
 // Do not let this tag be in a xoops block
-
-
 
 function drawServersGauge($f){
   if (file_exists($f)) {

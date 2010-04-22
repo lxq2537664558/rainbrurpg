@@ -1,5 +1,22 @@
 adminsite - GPLv2 - The meta server of RainbruRPG. Written in PHP.
 
+o [mouse] Should use another XML library
+- Modules/XmlModuleBase.php
+   Some functions should be removed:
+   getChildNodeList() can be use instead of getChildNode()
+- Modules/Xml_Domxml.php: domxml php4
+- Modules/Xml_Domphp5.php: domxml php5
+- Def.php with version
+
+* Should made dtd files for validation
+
+* May use UML rewritting
+- http//.../rpg/admin/perso/list -> PersoList.php
+   This way, we could write only one php file by type. Perso.php
+   could handle different actions. The same result could be reached
+   with params: http//.../rpg/admin/index.php?page=perso&action=list.
+   
+* Miscellaneous
 - xmlpersoattrb.php create category if it does not exist
 - Test global player
         - The title drawing is bugged
@@ -12,13 +29,20 @@ adminsite - GPLv2 - The meta server of RainbruRPG. Written in PHP.
 * Remove bonusfile and others
 
 
-=== CHANGELOG === (4 items by revision)
-The version number is the RainbruRPG's one.
-The revison number is an internal one. Not linked with the
-   RainbruRPG's one.
-This project uses the Sourceforge CVS
+=== CHANGELOG === 
+   4 items by revision
+   The version number is the RainbruRPG's one.
+   The revison number is an internal one. Not linked with the
+       RainbruRPG's one.
+   This project uses the Sourceforge CVS
 
-* v0.0.5-9 (09 jan 2008 - ???) SLOC ???
+* v0.0.5-10 (09 apr 2010 - ???) SLOC ???
+- Modules/XmlModuleBase.pp implemented and documented
+
+* v0.0.5-9 (09 jan 2008 - 09 apr 2010) SLOC 3,432
+- Factory implementation
+- logincontrol now uses constants
+- Finished to move GNU headers in php block
 - Added GNU headers to unittest/ files
 
 * v0.0.5-8 (09 jan 2008 - 02 jan 2010) SLOC 3,411
@@ -28,6 +52,7 @@ This project uses the Sourceforge CVS
 - Changing GNU header dates
 
 * v0.0.5-7 (??? - 09 jan 2008)
+- Moved some GNU headers
 - Some files individually documentated
 - GNU headers added
 - fix documentation warnings

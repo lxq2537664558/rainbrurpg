@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -19,9 +20,6 @@
  *  02110-1301  USA
  *
  */
-
-<?php
-//include "xmlinterface.php";
 
 /** A class used with xml persolist
   *

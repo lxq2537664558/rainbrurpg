@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -19,6 +20,7 @@
  *  02110-1301  USA
  *
  */
+?>
 
 <script type="text/javascript">
 function openDetails(link){

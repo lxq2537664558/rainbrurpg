@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -20,7 +21,6 @@
  *
  */
 
-<?php
 /** This functions create a gauge with 2 values
   * - $actual : The value to indicate
   * - $max    : The max number 

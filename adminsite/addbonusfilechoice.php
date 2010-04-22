@@ -1,3 +1,4 @@
+<?php
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -19,8 +20,6 @@
  *  02110-1301  USA
  *
  */
-
-<?php
 /** \file addbonusfilechoice.php
   * Defines a page used to add a choice in a bonus file
   * 

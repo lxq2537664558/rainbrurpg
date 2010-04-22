@@ -1,3 +1,5 @@
+<?php
+
 /*
  *  Copyright 2006-2010 Jerome PASQUIER
  * 
@@ -20,7 +22,6 @@
  *
  */
 
-<?php
 /** \file menu.php
   * Defines the menu
   * 
