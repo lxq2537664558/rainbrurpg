@@ -43,8 +43,6 @@ all: $(SOURCES)
 	$(TOOL_M4) -I ../m4/ -I /usr/share/autoconf $*.dot.in > $*.dot
 	$(TOOL_DOT) -T png -o $*.png $*.dot
 
-#dot -T png -o ogregui-uml.png ogregui-uml.dot
-
 
 clean-local:
 	rm -fr $(SOURCES)

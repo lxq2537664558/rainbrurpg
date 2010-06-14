@@ -21,7 +21,8 @@
  */
 
 /** Modifications :
- *  - 01 apr 2009 : Now using gettext
+  * - 07 apr 2010 : Switch member input from char* to std::string
+  * - 01 apr 2009 : Now using gettext
   * - 30 mar 2009 : Added boost::filesystem::operation.hpp with alias
   * - 10 jul 2008 : output now is a std::string (fix a warning)
   *
@@ -88,6 +89,8 @@ namespace RainbruRPG {
 
       const char* get1();
 
+      const std::string& getInputFilename(void)const;
+      void setInputFilename(const std::string&);
 
     private:
       /** The filename of the input image
@@ -96,7 +99,7 @@ namespace RainbruRPG {
 	* encoded image.
 	*
 	*/
-      char* input;
+      std::string input;
       /** The filename of the output stream
         *
 	* The text extracted from the image will be placed here before

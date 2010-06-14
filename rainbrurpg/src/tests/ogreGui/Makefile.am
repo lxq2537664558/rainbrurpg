@@ -3,7 +3,7 @@ bin_PROGRAMS = ogregui2-tests
 
 ogregui2_tests_LDADD = -L$(top_srcdir)/src/common/.libs			\
 			 -lrainbrurpg-common 				\
-			-L$(top_srcdir)/srcogreGui/.libs		\
+			-L$(top_srcdir)/src/ogreGui/.libs		\
 			 -lrainbrurpg-ogregui				\
 			 $(GNET_LIBS)					\
 			 $(RPG_LIB_ADD)					\
@@ -21,4 +21,5 @@ INCLUDES = -I$(top_srcdir)/src/common/ 			\
 ogregui2_tests_SOURCES = main.cpp			\
 			 \
 			 DrawableTest.cpp		\
-			 SerializableTest.cpp
+			 SerializableTest.cpp		\
+			 WidgetListTest.cpp

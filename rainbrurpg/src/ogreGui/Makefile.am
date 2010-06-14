@@ -23,13 +23,17 @@ librainbrurpg_ogregui.adir=$(libdir)
 
 # Please keep this list sorted
 h_sources= Drawable.hpp					\
+	   Focusable.hpp				\
 	   Serializable.hpp				\
-	   Widget.hpp
+	   Widget.hpp					\
+	   WidgetList.hpp
 
 # Please keep this list sorted
 cc_sources=Drawable.cpp					\
+	   Focusable.cpp				\
 	   Serializable.cpp				\
-	   Widget.cpp
+	   Widget.cpp					\
+	   WidgetList.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)

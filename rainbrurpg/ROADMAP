@@ -137,10 +137,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
-     CLOCK: [2010-03-25 jeu 15:16]--[2010-03-25 jeu 15:53] =>  0:37
+     CLOCK: [2010-06-13 dim 16:12]--[2010-06-13 dim 16:35] =>  0:23
+     CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:32] =>  0:47
+     CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:13] =>  0:44
+     CLOCK: [2010-06-08 mar 10:51]--[2010-06-08 mar 11:22] =>  0:31
+     CLOCK: [2010-06-07 lun 15:01]--[2010-06-07 lun 15:57] =>  0:31
+     CLOCK: [2010-03-25 jeu 15:07]--[2010-03-25 jeu 15:53] =>  0:46
      CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 19:42] =>  2:50
      CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 12:50] =>  2:32
-     CLOCK: [2010-02-16 mar 18:49]--[2010-02-16 mar 21:52] =>  3:03
+     CLOCK: [2010-02-16 mar 18:29]--[2010-02-16 mar 21:52] =>  3:03
      :END:
      To be completed with the previous TODO task.
      Should use sigc++ for connection
@@ -162,14 +167,23 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] GameEngineOptions implementation (struct in gameengine.h)
       - [X] GameEngine uses GameEngineOptions for ogregui test
       - [X] GameEngine uses GameEngineOptions for fullscreen
-- [ ] Precomputing/Draw
+- [-] Precomputing/Draw
+      For each class implements a Test class
+      - [X] WidgetList implementation
+	    Inherits from Serializable
+      - [ ] Focusable implementation
+	    to build WidgetList
+      - [ ] Container impl.
+	    Inherits from Widget and WidgetList
+      - [ ] Brush implmentation
       - [ ] GameState modification
+	    - [ ] A container member named mContainer
+	    - [ ] void draw(Brush*) implementation
       - [ ] GameEngine modification
       - [ ] Drawable implementation
+	    DrawableTest should handle the disable-dirtyflag configure option
       - [ ] Widget implementation
-      - [ ] Container impl.
       - [ ] Window impl.
-      - [ ] Brush implmentation
 - [ ] Skins
       - [ ] Window
       - [ ] Drawable

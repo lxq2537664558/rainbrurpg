@@ -69,7 +69,7 @@ setUniqueName(const string& vParentUniqueName){
 
 /** Serialize this object
   *
-  * \param os The stream used to serialize
+  * \param ar The archive used to serialize
   *
   * \return \c true if the operation was successfull
   *
@@ -86,8 +86,7 @@ template<class Archive> bool RainbruRPG::OgreGui::Serializable::serialize(Archiv
   * The object is deserialized only if the unique name check
   * is successfull (see \ref checkUniqueName).
   *
-  * \param is The input stream
-  * \param el The error list
+  * \param ar The archive used for deserialization
   *
   * \return \c true if deserialization was a success, \c false otherwise
   *         (checkUniqueName failed).

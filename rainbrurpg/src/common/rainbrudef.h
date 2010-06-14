@@ -35,7 +35,9 @@
   *
   */
 
-#include "../../config.h" // for HAVE_GETTEXT
+#ifndef NO_CONFIG_H
+#  include "../../config.h" // for HAVE_GETTEXT
+#endif
 
 /** \def _(STRING)
   * Defines a translatable string if GNU gettext is available.

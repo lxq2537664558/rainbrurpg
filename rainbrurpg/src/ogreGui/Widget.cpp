@@ -29,3 +29,12 @@
   *
   */
  #include "Widget.hpp"
+
+RainbruRPG::OgreGui::Widget::Widget(Widget* vParent, const string& vName, 
+				    int vX1, int vY1, int vX2, int vY2):
+  Drawable((Drawable*)vParent, vX1, vY1, vX2, vY2),
+  Focusable(true), // take focus by default
+  Serializable(vName)
+{
+
+}

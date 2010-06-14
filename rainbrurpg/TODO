@@ -1,14 +1,11 @@
 RainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
    on Ogre3D and Fox-toolkit.
 
-* Building maincore/ failed
-  librainbrurpg-core.so.0: No such file
-
 o [Carine] cross-compilation to win32
 ./bootstrap&&./configure --host=i586-mingw32msvc --prefix=/usr/cross/   --enable-Wno-stddep-ogre --enable-debug
-- Fixing maincore lib size (310Mo) (see and update doc_cross_compil)
-- fix the 'config.h extar chars' bug (see in doc/doc_cross_compil)
 - GlobalURI/loadRessources for win32
+- Version.cpp: show revision instead of version
+- Version.cpp should summary dirty flag compile-time option
 
 o [rainbru] OgreGui2: see ROADMAP
 
@@ -106,7 +103,7 @@ A system that serialize widgets position and configuration
 - Implementation of the option*attribute::update() functions
 
 === Changelog ===   
-   18 items by revision
+   15 items by revision
    Please see the ROADMAP file
    Please update version and revision in configure.in
    Please update doc/regTest.html for each revision
@@ -115,30 +112,25 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-202 (25 mar 2010 - ???) SLOC ??? UT ??? FT ?:??
-- (2) SerializableTest and DrawableTestimplementation moved to .cpp
+* v0.0.5-203 (13 jun 2010 - ???) SLOC ??? UT ??? FT ??:??
+
+* v0.0.5-202 (25 mar 2010 - 13 jun 2010) SLOC 40,550 UT ??? FT 37:29
+- WidgetList implementation finished
+- WidgetList::FocusNext and FocusPrevious tests pass
+- Documentation warnings fixed
+   Focusable, WidgetList, Serializable
+- Focusable squeleton implementation
+- WidgetList's empty() and setUniqueName() implementation and tests
+- WidgetListTest: two tests implemented
+- Implemented Widget's constructor for WidgetList's unittest purpose
+- WidgetList's push_back() an size() implementation
+- Fixed an error in tests/ogreGui/Makefile that makes building ail
+- WidgetListTest squeleton implementation
+- WidgetList squeleton implementation
+- Switched to 15 items by revision
+- Updated ROADMAP for precompute/drawing section
+- maincore lib error fixed
+- common/LoadBMP::input is now an std::string (was a char*)
+- rainbrudef.h uses NO_CONFIG_H
+- SerializableTest and DrawableTestimplementation moved to .cpp
 - ogreGui unit test now uses a CppUnit Registry
-
-* v0.0.5-201 (04 mar 2010 - 25 mar 2010) SLOC 40,283 UT 220 FT 32:22
-- deactivated Title overlay due to an Ogre UTF string error
-- fullscreen command line option implemented
-- Building works (ogreGui undefined references removed)
-- GameEngineOptions implementation
-- configure now check for Boost.Serialization and libbz2
-- gsOgerGuiTest base implementation
-- Serializable now uses Boost.Serialization
-- Removed DeserializationErrorList
-- Fixed non-buildng of ogreGui
-- configure.in: updated all libs version to at least 1:0:0
-- Finished to populate ROADMAP section from UML
-- Started to populate ROADMAP section from UML
-- KeyboardNavigation workflow to UML
-- Paper workflow to UML
-   Layout/LayoutObject concept
-- Paper workflow to UML
-   global alpha, serialization
-- ogreGui already implemented conepts to UML
-   Serializable, Drawable
-- Cleaned changelog.dev/ directory
-- configure checks for m4 for UML diagram generation
-

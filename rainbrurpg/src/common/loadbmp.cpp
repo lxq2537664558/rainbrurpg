@@ -25,6 +25,8 @@
 
 #include "boostimport.h"
 
+#include <vector>
+
 namespace fs = boost::filesystem;
 
 /** The default constructor 
@@ -33,9 +35,8 @@ namespace fs = boost::filesystem;
 RainbruRPG::Core::LoadBMP::LoadBMP(){
 
   RainbruRPG::Network::GlobalURI gu;
-  std::string a=gu.getShareFile("data/main.bmp");
+  input = gu.getShareFile("data/main.bmp");
 
-  input= const_cast<char*>(a.c_str());
   output="steg.txt";
 
 }
@@ -44,7 +45,6 @@ RainbruRPG::Core::LoadBMP::LoadBMP(){
   *
   */
 RainbruRPG::Core::LoadBMP::~LoadBMP(){
-  input= NULL;
 
 }
 
@@ -58,7 +58,12 @@ void RainbruRPG::Core::LoadBMP::decode(){
 
   // open the bmp file
   BMP Image;
-  Image.ReadFromFile( input );
+
+  int len=input.length()+1;
+  std::vector<char> raw(len);
+  const char* str = input.c_str();
+  std::copy(str, str + len, raw.begin());
+  Image.ReadFromFile( &(raw[0]) );
   
   // prep the output stream
   
@@ -130,4 +135,22 @@ void RainbruRPG::Core::LoadBMP::decode(){
   */
 const char* RainbruRPG::Core::LoadBMP::get1(){
   return a1.c_str();
+}
+
+/** Return the current input filename
+  *
+  * \return the input filename
+  *
+  */
+const std::string& RainbruRPG::Core::LoadBMP::getInputFilename(void)const{
+  return input;
+}
+
+/** Change the input filename
+  *
+  * \param vFilename The new file name
+  *
+  */
+void RainbruRPG::Core::LoadBMP::setInputFilename(const std::string& vFilename){
+  input= vFilename;  
 }

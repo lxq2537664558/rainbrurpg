@@ -27,7 +27,7 @@ AC_DEFUN([RB_CHECK_M4],[
       m_was_found=false
       ;;    
     *)   
-      AC_DEFINE([HAVE_M4], [], [Defines if the dot tool was found])
+      AC_DEFINE([HAVE_M4], [], [Defines if the m4 tool was found])
       AC_DEFINE(HAVE_M4)
       m_was_found=true
       ;;

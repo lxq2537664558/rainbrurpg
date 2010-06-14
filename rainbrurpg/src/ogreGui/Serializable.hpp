@@ -62,18 +62,20 @@ namespace RainbruRPG{
       virtual bool operator==(const Serializable&)const;
       virtual bool operator!=(const Serializable&)const;
       virtual bool equal(const Serializable*)const;
-      
-    private:
-      /** The name passed to the constructor */
-      string mName;
 
+    protected:
       /** The unique name of the object
         *
 	* This name will be used when deserializing, to be sure
-	* we are taking values of the same object.
+	* we are taking values of the same object. It is declared
+	* as protected to bu used by WidgetList.
 	*
 	*/
       string mUniqueName;
+
+      /** The name passed to the constructor */
+      string mName;
+
     };
   }
 }

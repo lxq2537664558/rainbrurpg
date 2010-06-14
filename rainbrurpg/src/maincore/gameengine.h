@@ -267,6 +267,7 @@ namespace RainbruRPG {
       /** The Ogre iewport instance */
       Viewport* mViewport;
 
+      /// The options structure instance of this game engine
       GameEngineOptions mOptions;
     };
   }

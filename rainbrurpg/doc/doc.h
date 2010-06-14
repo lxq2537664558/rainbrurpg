@@ -2037,3 +2037,45 @@
   */
 #endif // ENABLE_NLS
 
+#idef RB_DIRTY_FLAG
+/** \def RB_DIRTY_FLAG
+  *
+  * Defined if we should enable the pre-computing and dirty flag feature of
+  * OgreGui. This feature was designed to speed up drawing for GUI
+  * elements, but for debugging purpose, it can be disabled.
+  *
+  */
+#endif // RB_DIRTY_FLAG
+
+#idef HAVE_M4
+/** \def HAVE_M4
+  * Defined if the m4 executable was found. m4 is used directly for
+  * some documentation generation (mainly Entity-Relation diagrams).
+  *
+  */
+#endif // HAVE_M4
+
+#idef HAVE_DOT
+/** \def HAVE_DOT
+  * Defined if the dot executable was found. dot is used directly for
+  * some documentation generation (mainly Entity-Relation diagrams).
+  *
+  */
+#endif // HAVE_DOT
+
+#ifdef HAVE_LIBBZ2
+/** \def HAVE_LIBBZ2
+  * 
+  * Define to 1 if you have the `bz2' library (-lbz2).
+  *
+  */
+#endif // HAVE_LIBBZ2
+
+#ifdef HAVE_LIBBOOST_SERIALIZATION
+/** \def HAVE_LIBBOOST_SERIALIZATION
+  * 
+  * Define to 1 if you have the `boost_serialization' library
+  * (-lboost_serialization).
+  *
+  */
+#endif // HAVE_LIBBOOST_SERIALIZATION

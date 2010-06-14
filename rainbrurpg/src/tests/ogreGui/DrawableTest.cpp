@@ -24,7 +24,6 @@
 
 // Registers the fixture to the registry
 CPPUNIT_TEST_SUITE_REGISTRATION( DrawableTest );
-
   
 /** Creates a new instance to test
   *

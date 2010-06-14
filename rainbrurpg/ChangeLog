@@ -1,3 +1,65 @@
+2010-06-13 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/ogreGui/WidgetListTest.cpp (testFocusMixed): implementation.
+
+	* src/ogreGui/WidgetList.cpp (focusPrevious): reimplementation
+	using a valid iterator flag, now test pass.
+
+2010-06-12 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/WidgetList.cpp (focusPrevious): first implementation
+	but unit tests fail.
+
+	* src/tests/ogreGui/WidgetListTest.cpp (testFocusPrevious): implementation
+	of some basic ordering tests.
+
+	* src/ogreGui/WidgetList.cpp (focusNext): unit test now pass. NULL
+	iterator is end now end of list.
+
+2010-06-08 Jerome Pasquier  <rainbru@free.fr>
+
+	* Doxyfile.in (FILE_PATTERN): added hpp extension to avoid
+	warnings on undeclared functions in ogreGui2.
+	
+	* src/tests/ogreGui/WidgetListTest.cpp (testFocusTest): first
+	implementation that fail.
+	
+	* src/ogreGui/Focusable.cpp: squeleton implementation.
+	* src/ogreGui/Focusable.hpp: squeleton implementation.
+	
+	* src/tests/ogreGui/WidgetListTest.cpp (testUniqueName): implementation.
+	* src/ogreGui/WidgetList.cpp (setUniqueName): implementation.
+
+2010-06-07 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/WidgetList.cpp (empty): implementation and tests.
+	* src/tests/ogreGui/WidgetListTest: Added tests for empty list
+	and push_back() function.
+	* src/ogreGui/Widget: Implemented a basec constructor for unit
+	tests purpose.
+	
+	* src/ogreGui/WidgetList: size() and push_back() implementation.
+
+	* src/tests/ogreGui/Makefile.am: Typo error made undefined
+	references errors in WidgetList.
+	
+	* src/tests/ogreGui/WidgetListTest.hpp: base implementation.
+	* src/tests/ogreGui/WidgetListTest.cpp: base implementation.
+
+2010-05-30 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/WidgetList.hpp: base implementation.
+	* src/ogreGui/WidgetList.cpp: base implementation.
+	
+2010-04-07 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/common/rainbrudef.h: uses NO_CONFIG_H to disable
+	config.h include due to a third-party project.
+
+	* src/common/loadbmp.h: Member input is now a std::string.
+	* src/common/loadbmp.cpp (decode): Uses a std::vector to
+	send a char* to EasyBMP.
+
 2010-03-25 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/tests/Makefile.am (INCLUDES): Fixed some issues with includes 
@@ -13,7 +75,7 @@
 	* src/client/guimanager.cpp (createTitleOverlay): Deactivated
 	title overlay due to an Ogre error.
 
-	* src/client/main.cpp: Handles --ogergui-test command-line option.
+	* src/client/main.cpp: Handles --ogregui-test command-line option.
 
 	* src/maincore/gameengine.cpp: Handle fullscreen from command-line option.
 

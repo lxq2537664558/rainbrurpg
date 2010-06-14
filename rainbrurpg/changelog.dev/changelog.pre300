@@ -1,3 +1,26 @@
+* v0.0.5-201 (04 mar 2010 - 25 mar 2010) SLOC 40,283 UT 220 FT 32:22
+- deactivated Title overlay due to an Ogre UTF string error
+- fullscreen command line option implemented
+- Building works (ogreGui undefined references removed)
+- GameEngineOptions implementation
+- configure now check for Boost.Serialization and libbz2
+- gsOgerGuiTest base implementation
+- Serializable now uses Boost.Serialization
+- Removed DeserializationErrorList
+- Fixed non-buildng of ogreGui
+- configure.in: updated all libs version to at least 1:0:0
+- Finished to populate ROADMAP section from UML
+- Started to populate ROADMAP section from UML
+- KeyboardNavigation workflow to UML
+- Paper workflow to UML
+   Layout/LayoutObject concept
+- Paper workflow to UML
+   global alpha, serialization
+- ogreGui already implemented conepts to UML
+   Serializable, Drawable
+- Cleaned changelog.dev/ directory
+- configure checks for m4 for UML diagram generation
+
 * v0.0.5-200 (21 feb 2010 - 04 mar 2010) SLOC 40,425 UT 220 FT 27:16
 - Fix a build issue in maincore
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir) instead of -Wl,--rpath

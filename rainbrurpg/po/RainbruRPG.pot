@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2010-02-16 10:37+0100\n"
+"POT-Creation-Date: 2010-06-14 09:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -211,7 +211,7 @@ msgstr ""
 
 #. TRANSLATORS: The following define an error in the handling of a
 #. packet type.
-#: ext/tinyxmlerror.cpp:37 common/netpacketbase.cpp:152
+#: ext/tinyxmlerror.cpp:37 src/common/netpacketbase.cpp:152
 msgid "Error"
 msgstr ""
 
@@ -271,456 +271,458 @@ msgstr ""
 msgid "Error parsing CDATA."
 msgstr ""
 
-#: common/attributemodifierlist.cpp:71 common/attributemodifierlist.cpp:186
+#: src/common/attributemodifierlist.cpp:71
+#: src/common/attributemodifierlist.cpp:186
 msgid "Cannot find the modifier's sign"
 msgstr ""
 
-#: common/attributemodifierlist.cpp:81 common/attributemodifierlist.cpp:196
+#: src/common/attributemodifierlist.cpp:81
+#: src/common/attributemodifierlist.cpp:196
 msgid "Cannot find the modifier's value : modifier is not added"
 msgstr ""
 
-#: common/attributemodifierlist.cpp:122
+#: src/common/attributemodifierlist.cpp:122
 msgid "Cannot get usable modifier's type"
 msgstr ""
 
-#: common/chartbase.cpp:43
+#: src/common/chartbase.cpp:43
 msgid "RainbruRPG-netflooder statistics"
 msgstr ""
 
-#: common/chartbase.cpp:45
+#: src/common/chartbase.cpp:45
 msgid "Left caption"
 msgstr ""
 
-#: common/chartbase.cpp:46
+#: src/common/chartbase.cpp:46
 msgid "Bottom caption test filling"
 msgstr ""
 
-#: common/chartbase.cpp:354
+#: src/common/chartbase.cpp:354
 msgid "Legend"
 msgstr ""
 
-#: common/chartline.cpp:53
+#: src/common/chartline.cpp:53
 msgid "ChartLine::draw() called"
 msgstr ""
 
-#: common/chartline.cpp:77
+#: src/common/chartline.cpp:77
 msgid "ChartLine: drawing axis"
 msgstr ""
 
-#: common/chartline.cpp:79
+#: src/common/chartline.cpp:79
 msgid "ChartLine: drawing chart's title"
 msgstr ""
 
-#: common/chartline.cpp:81
+#: src/common/chartline.cpp:81
 msgid "ChartLine: drawing Y axis caption"
 msgstr ""
 
-#: common/chartline.cpp:83
+#: src/common/chartline.cpp:83
 msgid "ChartLine: drawing X axis caption"
 msgstr ""
 
-#: common/chartline.cpp:85
+#: src/common/chartline.cpp:85
 msgid "ChartLine: drawing legend background"
 msgstr ""
 
-#: common/chartline.cpp:87
+#: src/common/chartline.cpp:87
 msgid "ChartLine: drawing left caption"
 msgstr ""
 
-#: common/chartline.cpp:89
+#: src/common/chartline.cpp:89
 msgid "ChartLine: drawing bottom caption"
 msgstr ""
 
-#: common/chartline.cpp:92
+#: src/common/chartline.cpp:92
 msgid "ChartLine: drawing legend"
 msgstr ""
 
-#: common/chartline.cpp:95
+#: src/common/chartline.cpp:95
 msgid "ChartLine: drawing series"
 msgstr ""
 
-#: common/chartline.cpp:99
+#: src/common/chartline.cpp:99
 msgid "ChartLine: saving image in "
 msgstr ""
 
-#: common/chartline.cpp:108
+#: src/common/chartline.cpp:108
 msgid "ChartLine: drawing complete"
 msgstr ""
 
-#: common/chartline.cpp:254
+#: src/common/chartline.cpp:254
 msgid "drawLeftCaption called"
 msgstr ""
 
-#: common/chartline.cpp:269
+#: src/common/chartline.cpp:269
 msgid "Searching for valueIndent"
 msgstr ""
 
-#: common/chartline.cpp:297
+#: src/common/chartline.cpp:297
 msgid "drawLeftCaption starting to draw"
 msgstr ""
 
-#: common/chartline.cpp:415
+#: src/common/chartline.cpp:415
 msgid "Searching valueIndent"
 msgstr ""
 
-#: common/chartserie.cpp:122
+#: src/common/chartserie.cpp:122
 msgid "getXCaption : index out of bound"
 msgstr ""
 
-#: common/chartserie.cpp:137
+#: src/common/chartserie.cpp:137
 msgid "getYCaption : index out of bound"
 msgstr ""
 
-#: common/clientconnect.cpp:93
+#: src/common/clientconnect.cpp:93
 msgid "Account blacklist status : "
 msgstr ""
 
-#: common/curlaccountadd.cpp:79
+#: src/common/curlaccountadd.cpp:79
 msgid "The email adress does not contain the 'dot' sign"
 msgstr ""
 
-#: common/curlaccountadd.cpp:89
+#: src/common/curlaccountadd.cpp:89
 msgid "The email adress does not contain the 'at' sign"
 msgstr ""
 
-#: common/curlaccountadd.cpp:98
+#: src/common/curlaccountadd.cpp:98
 msgid "Cannot add a player with empty email adress"
 msgstr ""
 
-#: common/curlaccountadd.cpp:107
+#: src/common/curlaccountadd.cpp:107
 msgid "This mail adress is already in use"
 msgstr ""
 
-#: common/curlaccountadd.cpp:116
+#: src/common/curlaccountadd.cpp:116
 msgid "The player already exists"
 msgstr ""
 
-#: common/curlaccountadd.cpp:126
+#: src/common/curlaccountadd.cpp:126
 msgid "Cannot add a player with empty password"
 msgstr ""
 
-#: common/curlaccountadd.cpp:135
+#: src/common/curlaccountadd.cpp:135
 msgid "The new player's name is empty"
 msgstr ""
 
-#: common/curlaccountadd.cpp:173
+#: src/common/curlaccountadd.cpp:173
 msgid "One of the name is empty, controlAfter failed"
 msgstr ""
 
-#: common/curlaccountadd.cpp:179
+#: src/common/curlaccountadd.cpp:179
 msgid "The name is the same"
 msgstr ""
 
-#: common/curlaccountadd.cpp:182
+#: src/common/curlaccountadd.cpp:182
 msgid "The name is not the same"
 msgstr ""
 
-#: common/curlaccountadd.cpp:192
+#: src/common/curlaccountadd.cpp:192
 msgid "The password is the same"
 msgstr ""
 
-#: common/curlaccountadd.cpp:195
+#: src/common/curlaccountadd.cpp:195
 msgid "The password is not the same"
 msgstr ""
 
-#: common/curlaccountadd.cpp:205
+#: src/common/curlaccountadd.cpp:205
 msgid "The mail adress is the same"
 msgstr ""
 
-#: common/curlaccountadd.cpp:208
+#: src/common/curlaccountadd.cpp:208
 msgid "The mail adress is not the same"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is the account name, the second
 #. is the validationId used in the confirmation mail in string format.
-#: common/curlaccountconfirmmail.cpp:80
+#: src/common/curlaccountconfirmmail.cpp:80
 #, c-format
 msgid "ValidationId for account '%s' is %s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a account.
-#: common/curlaccountconfirmmail.cpp:87
+#: src/common/curlaccountconfirmmail.cpp:87
 #, c-format
 msgid "Cannot get the account with the name '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter should be a date if the account
 #. was confirmed.
-#: common/curlaccountconfirmmail.cpp:126
+#: src/common/curlaccountconfirmmail.cpp:126
 #, c-format
 msgid "Mail's confirm date is %s"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: common/curlaccountconfirmmail.cpp:134
+#: src/common/curlaccountconfirmmail.cpp:134
 msgid "controlAfter() : confirm timestamp is empty"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: common/curlaccountconfirmmail.cpp:141
+#: src/common/curlaccountconfirmmail.cpp:141
 msgid "controlAfter() : account not found"
 msgstr ""
 
-#: common/curlaccountdelete.cpp:71
+#: src/common/curlaccountdelete.cpp:71
 msgid "The player's name is empty"
 msgstr ""
 
-#: common/curlaccountdelete.cpp:81
+#: src/common/curlaccountdelete.cpp:81
 msgid "The player does not exists"
 msgstr ""
 
-#: common/curlaccountdelete.cpp:108
+#: src/common/curlaccountdelete.cpp:108
 msgid "The player exists"
 msgstr ""
 
-#: common/curlfiletoxml.cpp:92
+#: src/common/curlfiletoxml.cpp:92
 msgid "Returning a NULL xml document"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is the file name, the second
 #. if the error string returned by TinyXml
 #.
-#: common/curlfiletoxml.cpp:118
+#: src/common/curlfiletoxml.cpp:118
 #, c-format
 msgid ""
 "An error occured while loading curlget.xml for file '%s'. Error desc from "
 "TinyXML is : '%s'"
 msgstr ""
 
-#: common/curlfiletoxml.cpp:127
+#: src/common/curlfiletoxml.cpp:127
 msgid "The writeToFile operation failed"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of the file we are
 #. about to write.
-#: common/curlgetfile.cpp:95
+#: src/common/curlgetfile.cpp:95
 #, c-format
 msgid "Performing CurlGetFile writeToFile action, filename : %s"
 msgstr ""
 
-#: common/curlgetfile.cpp:101
+#: src/common/curlgetfile.cpp:101
 msgid "The curl handle was not properly initialized"
 msgstr ""
 
-#: common/curlgetfile.cpp:113 common/curlsubmitform.cpp:111
+#: src/common/curlgetfile.cpp:113 src/common/curlsubmitform.cpp:111
 msgid "Setting the licurl URL"
 msgstr ""
 
-#: common/curlgetfile.cpp:130 common/curlsubmitform.cpp:104
+#: src/common/curlgetfile.cpp:130 src/common/curlsubmitform.cpp:104
 msgid "Error opening the FILE pointer"
 msgstr ""
 
-#: common/curlgetfile.cpp:140
+#: src/common/curlgetfile.cpp:140
 msgid "An error occured during CurlGetFile::writeToFile()."
 msgstr ""
 
-#: common/curlgetfile.cpp:144
+#: src/common/curlgetfile.cpp:144
 msgid "Getting the last HTTP server status code"
 msgstr ""
 
-#: common/curlgetfile.cpp:151
+#: src/common/curlgetfile.cpp:151
 msgid "The CurlGetInfo was successfull"
 msgstr ""
 
-#: common/curlgetfile.cpp:155
+#: src/common/curlgetfile.cpp:155
 msgid "HTTP server returns SUCCESS."
 msgstr ""
 
-#: common/curlgetfile.cpp:159
+#: src/common/curlgetfile.cpp:159
 msgid "HTTP server returns an error status code :"
 msgstr ""
 
-#: common/curlgetfile.cpp:167
+#: src/common/curlgetfile.cpp:167
 msgid "An error occured during CurlGetInfo operation"
 msgstr ""
 
-#: common/curlinterface.cpp:55
+#: src/common/curlinterface.cpp:55
 msgid "Initializing the libcurl interface"
 msgstr ""
 
-#: common/curlinterface.cpp:63
+#: src/common/curlinterface.cpp:63
 msgid "An error occured during the libcurl iitialization"
 msgstr ""
 
-#: common/curlinterface.cpp:74
+#: src/common/curlinterface.cpp:74
 msgid "Cleaning up the libcurl interface"
 msgstr ""
 
-#: common/curlinterface.cpp:81
+#: src/common/curlinterface.cpp:81
 msgid "Calling cleanup on a non-existing handle"
 msgstr ""
 
-#: common/curlinterface.cpp:92
+#: src/common/curlinterface.cpp:92
 msgid "Setting up a custom WriteFunction"
 msgstr ""
 
-#: common/curlinterface.cpp:97
+#: src/common/curlinterface.cpp:97
 msgid "Cannot set a WriteFunction, the handle is undefined"
 msgstr ""
 
-#: common/curlinterface.cpp:139
+#: src/common/curlinterface.cpp:139
 msgid "A customErrorMessage already exists. Keeping only the first one."
 msgstr ""
 
 #. TRANSLATORS: Here, CurlPostedData is a class name. Do not translate it
-#: common/curlposteddata.cpp:38
+#: src/common/curlposteddata.cpp:38
 msgid "Creating a CurlPostedData structure"
 msgstr ""
 
-#: common/curlposteddata.cpp:59
+#: src/common/curlposteddata.cpp:59
 msgid "Adding a key to the CurlPostedData list"
 msgstr ""
 
-#: common/curlposteddata.cpp:61
+#: src/common/curlposteddata.cpp:61
 msgid "Trying to add a empty key to the CurlPostedData list. Aborded"
 msgstr ""
 
-#: common/curlposteddata.cpp:74
+#: src/common/curlposteddata.cpp:74
 msgid "Debugging CurlPostedData key list : "
 msgstr ""
 
-#: common/curlposteddata.cpp:91
+#: src/common/curlposteddata.cpp:91
 msgid "Adding an auto timestamp"
 msgstr ""
 
-#: common/curlposteddata.cpp:100
+#: src/common/curlposteddata.cpp:100
 msgid "Setting an auto timestamp while a custom timestamp already exists"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a CurlPostedData key.
-#: common/curlposteddata.cpp:132
+#: src/common/curlposteddata.cpp:132
 #, c-format
 msgid "In CurlPostedData::getValue() : this key cannot be found : '%s'"
 msgstr ""
 
-#: common/curlposteddata.cpp:152
+#: src/common/curlposteddata.cpp:152
 msgid "Setting the value of a key (std::string form)"
 msgstr ""
 
-#: common/curlposteddata.cpp:163
+#: src/common/curlposteddata.cpp:163
 msgid "Computing posted data..."
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a posted data. It
 #. is a string.
-#: common/curlposteddata.cpp:176
+#: src/common/curlposteddata.cpp:176
 #, c-format
 msgid "The key '%s' has no value."
 msgstr ""
 
-#: common/curlposteddata.cpp:203
+#: src/common/curlposteddata.cpp:203
 msgid "Setting the value of a key (const char* form)"
 msgstr ""
 
-#: common/curlposteddata.cpp:210
+#: src/common/curlposteddata.cpp:210
 msgid "The key was found"
 msgstr ""
 
-#: common/curlposteddata.cpp:212
+#: src/common/curlposteddata.cpp:212
 msgid "Setting a custom timestamp"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a posted data key.
-#: common/curlposteddata.cpp:226
+#: src/common/curlposteddata.cpp:226
 #, c-format
 msgid "The key called '%s' was not found"
 msgstr ""
 
-#: common/curlserveradd.cpp:80
+#: src/common/curlserveradd.cpp:80
 msgid "The new server's listening port is empty"
 msgstr ""
 
-#: common/curlserveradd.cpp:88
+#: src/common/curlserveradd.cpp:88
 msgid "The new server's IP address is empty"
 msgstr ""
 
-#: common/curlserveradd.cpp:96
+#: src/common/curlserveradd.cpp:96
 msgid "The new server's name is empty"
 msgstr ""
 
-#: common/curlserverdelete.cpp:89
+#: src/common/curlserverdelete.cpp:89
 msgid "The server's name is empty"
 msgstr ""
 
-#: common/curlsubmitform.cpp:45
+#: src/common/curlsubmitform.cpp:45
 msgid "Performing CurlSubmitForm action..."
 msgstr ""
 
-#: common/curlsubmitform.cpp:57
+#: src/common/curlsubmitform.cpp:57
 msgid "CurlSubmitForm controlAfter() failed..."
 msgstr ""
 
-#: common/curlsubmitform.cpp:62
+#: src/common/curlsubmitform.cpp:62
 msgid "CurlSubmitForm failed to submit form..."
 msgstr ""
 
-#: common/curlsubmitform.cpp:67
+#: src/common/curlsubmitform.cpp:67
 msgid "CurlSubmitForm failed to compute posted data..."
 msgstr ""
 
-#: common/curlsubmitform.cpp:72
+#: src/common/curlsubmitform.cpp:72
 msgid "CurlSubmitForm controlBefore() failed..."
 msgstr ""
 
-#: common/curlsubmitform.cpp:149
+#: src/common/curlsubmitform.cpp:149
 msgid "The form was successfully submited"
 msgstr ""
 
-#: common/curlsubmitform.cpp:153
+#: src/common/curlsubmitform.cpp:153
 msgid "An error occured during submitForm"
 msgstr ""
 
-#: common/curlsubmitform.cpp:167
+#: src/common/curlsubmitform.cpp:167
 msgid "Setting server response successfull"
 msgstr ""
 
-#: common/curlsubmitform.cpp:170
+#: src/common/curlsubmitform.cpp:170
 msgid "Cannot get the server response"
 msgstr ""
 
-#: common/curlsubmitform.cpp:213
+#: src/common/curlsubmitform.cpp:213
 msgid "Adding a Pwd Data to post"
 msgstr ""
 
-#: common/enetclient.cpp:94
+#: src/common/enetclient.cpp:94
 msgid "No available peers for initiating an ENet connection."
 msgstr ""
 
-#: common/enetclient.cpp:100
+#: src/common/enetclient.cpp:100
 msgid "Connection to server succeeded."
 msgstr ""
 
-#: common/enetclient.cpp:109
+#: src/common/enetclient.cpp:109
 msgid "Connection to server failed."
 msgstr ""
 
-#: common/enetclient.cpp:113
+#: src/common/enetclient.cpp:113
 msgid "Trying to connect an already connected client"
 msgstr ""
 
-#: common/ftpclient.cpp:92
+#: src/common/ftpclient.cpp:92
 msgid "The given server's UniqueName is empty. FtpClient cannot work properly."
 msgstr ""
 
-#: common/ftpclient.cpp:99
+#: src/common/ftpclient.cpp:99
 msgid "Connection to host FAILED"
 msgstr ""
 
-#: common/ftpclient.cpp:115
+#: src/common/ftpclient.cpp:115
 msgid "sendString called"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the number of bytes we wrote.
-#: common/ftpclient.cpp:131
+#: src/common/ftpclient.cpp:131
 #, c-format
 msgid "%d bytes written"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: common/ftpclient.cpp:144
+#: src/common/ftpclient.cpp:144
 #, c-format
 msgid ""
 "Opening data channel :\n"
@@ -730,7 +732,7 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: common/ftpclient.cpp:154
+#: src/common/ftpclient.cpp:154
 #, c-format
 msgid ""
 "Cannot open data channel :\n"
@@ -738,159 +740,159 @@ msgid ""
 "  Server port    : %d"
 msgstr ""
 
-#: common/ftpclient.cpp:161
+#: src/common/ftpclient.cpp:161
 msgid "Data channel opened"
 msgstr ""
 
-#: common/ftpclient.cpp:187
+#: src/common/ftpclient.cpp:187
 msgid "waitControlResponse() called"
 msgstr ""
 
-#: common/ftpclient.cpp:217
+#: src/common/ftpclient.cpp:217
 msgid "Sending LIST command"
 msgstr ""
 
-#: common/ftpclient.cpp:219
+#: src/common/ftpclient.cpp:219
 msgid "Waiting for first control response"
 msgstr ""
 
-#: common/ftpclient.cpp:225
+#: src/common/ftpclient.cpp:225
 msgid "Waiting for second control response"
 msgstr ""
 
-#: common/ftpclient.cpp:239
+#: src/common/ftpclient.cpp:239
 msgid "readDataChannel called"
 msgstr ""
 
-#: common/ftpclient.cpp:249
+#: src/common/ftpclient.cpp:249
 msgid "Calling gnet_io_channel_readn()"
 msgstr ""
 
-#: common/ftpclient.cpp:252
+#: src/common/ftpclient.cpp:252
 msgid "gnet_io_channel_readn() called"
 msgstr ""
 
-#: common/ftpclient.cpp:269
+#: src/common/ftpclient.cpp:269
 msgid "readDataChannel() call finished"
 msgstr ""
 
-#: common/ftpclient.cpp:334
+#: src/common/ftpclient.cpp:334
 msgid "File does not exist"
 msgstr ""
 
-#: common/ftpclient.cpp:370
+#: src/common/ftpclient.cpp:370
 msgid "File already exist"
 msgstr ""
 
-#: common/ftpclient.cpp:398 common/ftpclient.cpp:519
+#: src/common/ftpclient.cpp:398 src/common/ftpclient.cpp:519
 msgid "Cannot allocate buffer"
 msgstr ""
 
-#: common/ftpclient.cpp:413 common/ftpclient.cpp:535
+#: src/common/ftpclient.cpp:413 src/common/ftpclient.cpp:535
 msgid "The filename doesn't contain path"
 msgstr ""
 
-#: common/ftpclient.cpp:440
+#: src/common/ftpclient.cpp:440
 msgid "The file already exists. Transfer is cancelled"
 msgstr ""
 
-#: common/ftpclient.cpp:465 common/ftpclient.cpp:595
+#: src/common/ftpclient.cpp:465 src/common/ftpclient.cpp:595
 msgid "Returned from thread"
 msgstr ""
 
-#: common/ftpclient.cpp:472
+#: src/common/ftpclient.cpp:472
 msgid "An error occured during opening file"
 msgstr ""
 
-#: common/ftpclient.cpp:498
+#: src/common/ftpclient.cpp:498
 msgid "Closing data channel"
 msgstr ""
 
-#: common/ftpclient.cpp:559
+#: src/common/ftpclient.cpp:559
 msgid "An error occured during opening file : "
 msgstr ""
 
-#: common/ftpclient.cpp:566
+#: src/common/ftpclient.cpp:566
 msgid "File is correctly opened"
 msgstr ""
 
-#: common/ftpclient.cpp:575
+#: src/common/ftpclient.cpp:575
 msgid "Data channel is opened"
 msgstr ""
 
-#: common/ftpclient.cpp:599
+#: src/common/ftpclient.cpp:599
 msgid "An error occured when opening data channel"
 msgstr ""
 
-#: common/ftpclient.cpp:604
+#: src/common/ftpclient.cpp:604
 msgid "Transfer is terminated"
 msgstr ""
 
-#: common/globaluri.cpp:49
+#: src/common/globaluri.cpp:49
 msgid "Using the local website (127.0.0.1)"
 msgstr ""
 
-#: common/globaluri.cpp:53
+#: src/common/globaluri.cpp:53
 msgid "Using the real website"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: common/globaluri.cpp:58
+#: src/common/globaluri.cpp:58
 #, c-format
 msgid "USER_INSTALL_PREFIX=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: common/globaluri.cpp:64
+#: src/common/globaluri.cpp:64
 #, c-format
 msgid "shareDir=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: common/globaluri.cpp:166
+#: src/common/globaluri.cpp:166
 #, c-format
 msgid "Setting user's HOME directory to' %s'"
 msgstr ""
 
-#: common/globaluri.cpp:174
+#: src/common/globaluri.cpp:174
 msgid "Home directory alerady exists"
 msgstr ""
 
-#: common/globaluri.cpp:177
+#: src/common/globaluri.cpp:177
 msgid "Home directory doesn't exists, creating it"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: common/globaluri.cpp:208
+#: src/common/globaluri.cpp:208
 #, c-format
 msgid "The file '%s' doesn't exist"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/globaluri.cpp:251
+#: src/common/globaluri.cpp:251
 #, c-format
-msgid "The file '%s' was not found. Copying it from $PREFIX/share/."
+msgid "The file '%s' was not found. Copying it from '%s' to '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/globaluri.cpp:261
+#: src/common/globaluri.cpp:263
 #, c-format
 msgid "The file '%s' was found. in the user's directory."
 msgstr ""
 
-#: common/globaluri.cpp:294
+#: src/common/globaluri.cpp:296
 msgid "uploaded/ directory does not exist, creating it"
 msgstr ""
 
-#: common/globaluri.cpp:317
+#: src/common/globaluri.cpp:319
 msgid "quarantine/ directory does not exist, creating it"
 msgstr ""
 
-#: common/globaluri.cpp:362
+#: src/common/globaluri.cpp:364
 msgid "Downloaded/ directory exists"
 msgstr ""
 
-#: common/globaluri.cpp:370
+#: src/common/globaluri.cpp:372
 msgid "Downloaded/ directory does not exist, creating it"
 msgstr ""
 
@@ -899,114 +901,114 @@ msgstr ""
 #. This message tells the user that this unique directory doesn't exist
 #. and it will not created because the variable 'createIfMissing' has
 #. the 'false' value.
-#: common/globaluri.cpp:384
+#: src/common/globaluri.cpp:386
 msgid ""
 "Missing server's unique directory. It is  not created because "
 "createIfMissing=false."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/hashfile.cpp:64
+#: src/common/hashfile.cpp:64
 #, c-format
 msgid "The file '%s' cannot be opened."
 msgstr ""
 
-#: common/httpresponse.cpp:42
+#: src/common/httpresponse.cpp:42
 msgid "Ok : The request was fulfilled"
 msgstr ""
 
-#: common/httpresponse.cpp:43
+#: src/common/httpresponse.cpp:43
 msgid "Created : The POST request was successful"
 msgstr ""
 
-#: common/httpresponse.cpp:44
+#: src/common/httpresponse.cpp:44
 msgid ""
 "Accepted : The request has been accepted for processing, but the processing "
 "has not been completed"
 msgstr ""
 
-#: common/httpresponse.cpp:46
+#: src/common/httpresponse.cpp:46
 msgid ""
 "Partial Information : A GET command returned metainformation that is not a "
 "definitive set of the object from a server with a copy of the object"
 msgstr ""
 
-#: common/httpresponse.cpp:49
+#: src/common/httpresponse.cpp:49
 msgid ""
 "No Response : Server has received the request but there is no information to "
 "send back, and the client should stay in the same document view"
 msgstr ""
 
-#: common/httpresponse.cpp:54
+#: src/common/httpresponse.cpp:54
 msgid ""
 "Moved : The data requested has been assigned a new URI, the change is "
 "permanent"
 msgstr ""
 
-#: common/httpresponse.cpp:56
+#: src/common/httpresponse.cpp:56
 msgid ""
 "Found : The data requested actually resides under a different URL, however, "
 "the redirection may be altered on occasion"
 msgstr ""
 
-#: common/httpresponse.cpp:59
+#: src/common/httpresponse.cpp:59
 msgid ""
 "Method : The client may go try another network address. In this case, a "
 "different method may be used too, rather than GET"
 msgstr ""
 
-#: common/httpresponse.cpp:62
+#: src/common/httpresponse.cpp:62
 msgid ""
 "Not Modified : If the client has done a conditional GET and access is "
 "allowed, but the document has not been modified"
 msgstr ""
 
-#: common/httpresponse.cpp:66
+#: src/common/httpresponse.cpp:66
 msgid ""
 "Bad request : The request had bad syntax or was inherently impossible to be "
 "satisfied"
 msgstr ""
 
-#: common/httpresponse.cpp:68
+#: src/common/httpresponse.cpp:68
 msgid ""
 "Unauthorized : The client should retry the request with a suitable "
 "Authorization header"
 msgstr ""
 
-#: common/httpresponse.cpp:70
+#: src/common/httpresponse.cpp:70
 msgid ""
 "PaymentRequired : The client may retry the request with a suitable ChargeTo "
 "header"
 msgstr ""
 
-#: common/httpresponse.cpp:72
+#: src/common/httpresponse.cpp:72
 msgid ""
 "Forbidden : The request is for something forbidden. Authorization will not "
 "help"
 msgstr ""
 
-#: common/httpresponse.cpp:74
+#: src/common/httpresponse.cpp:74
 msgid "Not found : The server has not found anything matching the URI given"
 msgstr ""
 
-#: common/httpresponse.cpp:78
+#: src/common/httpresponse.cpp:78
 msgid ""
 "Internal Error : The server encountered an unexpected condition which "
 "prevented it from fulfilling the request"
 msgstr ""
 
-#: common/httpresponse.cpp:80
+#: src/common/httpresponse.cpp:80
 msgid "Not implemented : The server does not support the facility required"
 msgstr ""
 
-#: common/httpresponse.cpp:82
+#: src/common/httpresponse.cpp:82
 msgid ""
 "Service temporarily overloaded : The server cannot process the request due "
 "to a high load (whether HTTP servicing or other requests). The implication "
 "is that this is a temporary condition which maybe alleviated at other times"
 msgstr ""
 
-#: common/httpresponse.cpp:86
+#: src/common/httpresponse.cpp:86
 msgid ""
 "Gateway timeout : This is equivalent to Internal Error 500, but in the case "
 "of a server which is in turn accessing some other service, this indicates "
@@ -1014,163 +1016,165 @@ msgid ""
 "the gateway was prepared to wait"
 msgstr ""
 
-#: common/httpresponse.cpp:122
+#: src/common/httpresponse.cpp:122
 msgid "The requested http status code is not in list. Returning empty message"
 msgstr ""
 
-#: common/itemlistfile.cpp:81
+#: src/common/itemlistfile.cpp:81
 msgid "Cannot append item in ItemListFile with empty file name"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/itemlistfile.cpp:119
+#: src/common/itemlistfile.cpp:119
 #, c-format
 msgid "ItemListFile object started with the '%s' file."
 msgstr ""
 
-#: common/itemlistfile.cpp:127
+#: src/common/itemlistfile.cpp:127
 msgid "Error while opening ItemList file"
 msgstr ""
 
-#: common/itemlistfile.cpp:162
+#: src/common/itemlistfile.cpp:162
 msgid "Cannot refresh an ItemListFile with empty file name"
 msgstr ""
 
-#: common/logger.cpp:185
+#: src/common/logger.cpp:185
 msgid " LOGGER CAN'T OPEN FILE "
 msgstr ""
 
-#: common/logger.cpp:271 common/stringconv.cpp:139
+#: src/common/logger.cpp:271 src/common/stringconv.cpp:139
 msgid "true"
 msgstr ""
 
-#: common/logger.cpp:273 common/stringconv.cpp:141
+#: src/common/logger.cpp:273 src/common/stringconv.cpp:141
 msgid "false"
 msgstr ""
 
 #. TRANSLATORS: The following define an Identification network packet.
-#: common/netpacketbase.cpp:129
+#: src/common/netpacketbase.cpp:129
 msgid "Identification"
 msgstr ""
 
 #. TRANSLATORS: The following the response packet of the server to the
 #. network connection.
-#: common/netpacketbase.cpp:135
+#: src/common/netpacketbase.cpp:135
 msgid "Server connection response"
 msgstr ""
 
 #. TRANSLATORS: The following define a flood network packet. 'Netflooder'
 #. is the name of a tool.
-#: common/netpacketbase.cpp:141
+#: src/common/netpacketbase.cpp:141
 msgid "Netflooder packet (4 bytes)"
 msgstr ""
 
 #. TRANSLATORS: The following define an unset network packet type.
-#: common/netpacketbase.cpp:146
+#: src/common/netpacketbase.cpp:146
 msgid "Unset"
 msgstr ""
 
-#: common/npconnectionresponse.cpp:68
+#: src/common/npconnectionresponse.cpp:68
 msgid "The server's response is not set"
 msgstr ""
 
-#: common/npidentification.cpp:79
+#: src/common/npidentification.cpp:79
 msgid "The client type is not set"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: common/npidentification.cpp:157
+#: src/common/npidentification.cpp:157
 msgid "NetFlooder"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: common/npidentification.cpp:162
+#: src/common/npidentification.cpp:162
 msgid "Editor"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: common/npidentification.cpp:167
+#: src/common/npidentification.cpp:167
 msgid "Game"
 msgstr ""
 
 #. TRANSLATORS: This is the unknown client type.
-#: common/npidentification.cpp:172
+#: src/common/npidentification.cpp:172
 msgid "Unknown"
 msgstr ""
 
 #. TRANSLATORS: This is the unknown client type.
-#: common/npidentification.cpp:177
+#: src/common/npidentification.cpp:177
 msgid "Default"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of an ObjectPos.
-#: common/objectmesh.cpp:174
+#: src/common/objectmesh.cpp:174
 #, c-format
 msgid "ObjectPos '%s' not found."
 msgstr ""
 
-#: common/optionattribute.cpp:57
+#: src/common/optionattribute.cpp:57
 msgid "Setting a unknown type to an OptionAttribute"
 msgstr ""
 
-#: common/optionattribute.cpp:88
+#: src/common/optionattribute.cpp:88
 msgid "Setting an empty name to an OptionAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:51
+#: src/common/optionboolattribute.cpp:51
 msgid "Constructing a bool OptionAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:95 common/optionintattribute.cpp:131
+#: src/common/optionboolattribute.cpp:95 src/common/optionintattribute.cpp:131
 msgid "Updating an OptionIntAttribute"
 msgstr ""
 
-#: common/optionboolattribute.cpp:99
+#: src/common/optionboolattribute.cpp:99
 msgid "Cannot get a valid FXCheckButton"
 msgstr ""
 
-#: common/optionboolattribute.cpp:103 common/optionfloatattribute.cpp:136
-#: common/optionfloatrangeattribute.cpp:194
+#: src/common/optionboolattribute.cpp:103
+#: src/common/optionfloatattribute.cpp:136
+#: src/common/optionfloatrangeattribute.cpp:194
 msgid "Cannot update optionattribute : widget=NULL"
 msgstr ""
 
-#: common/optionbutton.cpp:44
+#: src/common/optionbutton.cpp:44
 msgid "Creating an OptionButton without an Icon"
 msgstr ""
 
-#: common/optionbutton.cpp:73
+#: src/common/optionbutton.cpp:73
 msgid "Creating an OptionButton with empty caption"
 msgstr ""
 
-#: common/optionbutton.cpp:87
+#: src/common/optionbutton.cpp:87
 msgid "Creating an OptionButton with empty icon filename"
 msgstr ""
 
-#: common/optionfloatattribute.cpp:123 common/optionintattribute.cpp:119
+#: src/common/optionfloatattribute.cpp:123
+#: src/common/optionintattribute.cpp:119
 msgid "Calling increase or decrease with a step set to 0"
 msgstr ""
 
-#: common/optionfloatattribute.cpp:133
-#: common/optionfloatrangeattribute.cpp:191
+#: src/common/optionfloatattribute.cpp:133
+#: src/common/optionfloatrangeattribute.cpp:191
 msgid "Update not yet implemented"
 msgstr ""
 
 #. TRANSLATORS: The parameters are : The attribute name, the attribute
 #. value (as a float) and the min and max ranges in floats.
-#: common/optionfloatrangeattribute.cpp:143
+#: src/common/optionfloatrangeattribute.cpp:143
 #, c-format
 msgid "Value out of range for attribute '%s'. Value %f (range %f to %f)"
 msgstr ""
 
-#: common/optionintattribute.cpp:45
+#: src/common/optionintattribute.cpp:45
 msgid "Constructing an integer OptionAttribute"
 msgstr ""
 
-#: common/optionintattribute.cpp:135
+#: src/common/optionintattribute.cpp:135
 msgid "Cannot get a valid FXSpinner"
 msgstr ""
 
-#: common/optionintattribute.cpp:139
+#: src/common/optionintattribute.cpp:139
 msgid "Cannot update OptionIntAttribute : widget=NULL"
 msgstr ""
 
@@ -1179,137 +1183,137 @@ msgstr ""
 #. The first parameter is the name of the atribute. The second
 #. parameter is the value the user attempt to set. The two last
 #. parameters are the min and max range of this attribute.
-#: common/optionintrangeattribute.cpp:141
+#: src/common/optionintrangeattribute.cpp:141
 #, c-format
 msgid ""
 "Value out of range for attribute %s (value = %d, Accepted range : %d to %d"
 msgstr ""
 
-#: common/optionintrangeattribute.cpp:190
+#: src/common/optionintrangeattribute.cpp:190
 msgid "Update not yet implemented for IntRangeAttribute"
 msgstr ""
 
 #. TRANSLATORS: This message is used when trying to select a
 #. value that does not exist in the list. The parameter is the
 #. value we are trying to set.
-#: common/optionlistattribute.cpp:68
+#: src/common/optionlistattribute.cpp:68
 #, c-format
 msgid "The requested value (%s) does not exist in the list"
 msgstr ""
 
-#: common/optionlistattribute.cpp:103
+#: src/common/optionlistattribute.cpp:103
 msgid "Inserting an existing value to an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:107
+#: src/common/optionlistattribute.cpp:107
 msgid "Inserting an empty string to an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:161
+#: src/common/optionlistattribute.cpp:161
 msgid "Updating an OptionListAttribute"
 msgstr ""
 
-#: common/optionlistattribute.cpp:166
+#: src/common/optionlistattribute.cpp:166
 msgid "Cannot get a valid FXCheckButton to update an OptionListAttribute"
 msgstr ""
 
-#: common/optionmanager.cpp:38
+#: src/common/optionmanager.cpp:38
 msgid "Initializing OptionManager"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a OptionPanel object name
-#: common/optionmanager.cpp:145
+#: src/common/optionmanager.cpp:145
 #, c-format
 msgid "Cannot get the OptionPanel named '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of an option snapshot.
-#: common/optionmanager.cpp:226
+#: src/common/optionmanager.cpp:226
 #, c-format
 msgid "Loading options snapshots named '%s'"
 msgstr ""
 
-#: common/optionpanel.cpp:56
+#: src/common/optionpanel.cpp:56
 msgid "You are setting an empty caption on a OptionPanel"
 msgstr ""
 
-#: common/optionpanel.cpp:79
+#: src/common/optionpanel.cpp:79
 msgid "You are adding a NULL OptionButton pointer"
 msgstr ""
 
-#: common/options.cpp:45
+#: src/common/options.cpp:45
 msgid "Graphics"
 msgstr ""
 
-#: common/options.cpp:46
+#: src/common/options.cpp:46
 msgid "Renderer"
 msgstr ""
 
-#: common/options.cpp:49
+#: src/common/options.cpp:49
 msgid "Integer Attribute"
 msgstr ""
 
-#: common/options.cpp:50
+#: src/common/options.cpp:50
 msgid "A simple example integer value to test the layout disposition."
 msgstr ""
 
-#: common/options.cpp:55
+#: src/common/options.cpp:55
 msgid "String Attribute"
 msgstr ""
 
-#: common/options.cpp:59
+#: src/common/options.cpp:59
 msgid "Fullscreen"
 msgstr ""
 
-#: common/options.cpp:60
+#: src/common/options.cpp:60
 msgid "Will the game launch in full screen or windowed mode"
 msgstr ""
 
-#: common/options.cpp:65
+#: src/common/options.cpp:65
 msgid "Resolution"
 msgstr ""
 
-#: common/options.cpp:66
+#: src/common/options.cpp:66
 msgid "Sets the screen size for both fullscreen and windowed mode"
 msgstr ""
 
-#: common/options.cpp:92
+#: src/common/options.cpp:92
 msgid "Sounds"
 msgstr ""
 
-#: common/optionstringattribute.cpp:46
+#: src/common/optionstringattribute.cpp:46
 msgid "Constructing an OptionStringAttribute"
 msgstr ""
 
-#: common/optionstringattribute.cpp:84
+#: src/common/optionstringattribute.cpp:84
 msgid "Updating an OptionStringAttribute"
 msgstr ""
 
-#: common/optionstringattribute.cpp:88
+#: src/common/optionstringattribute.cpp:88
 msgid "Cannot get a valid FXTextField to update an OptionStringAttribute"
 msgstr ""
 
-#: common/serverlistitem.cpp:286
+#: src/common/serverlistitem.cpp:286
 msgid "1 (Fantasy)"
 msgstr ""
 
-#: common/serverlistitem.cpp:289
+#: src/common/serverlistitem.cpp:289
 msgid "2 (Contemporary)"
 msgstr ""
 
-#: common/serverlistitem.cpp:292
+#: src/common/serverlistitem.cpp:292
 msgid "3 (Futuristic)"
 msgstr ""
 
-#: common/serverlistitem.cpp:295
+#: src/common/serverlistitem.cpp:295
 msgid "4 (Post-apocalyptic)"
 msgstr ""
 
-#: common/stringconv.cpp:45
+#: src/common/stringconv.cpp:45
 msgid "  desalocating memory for char*..."
 msgstr ""
 
-#: common/stringconv.cpp:262
+#: src/common/stringconv.cpp:262
 msgid "StringConv::itobin base parameter unrecognized"
 msgstr ""
 
@@ -1319,7 +1323,7 @@ msgstr ""
 #. L3 : Ogre major, minor version, version patch and version name
 #. L4 : Same as Ogre for OIS
 #. L5 : libCurl version, timestamp
-#: common/version.cpp:77
+#: src/common/version.cpp:77
 #, c-format
 msgid ""
 "Starting %s v%s-%s using :\n"
@@ -1330,12 +1334,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameters are the build (compilation) date and time.
-#: common/version.cpp:95
+#: src/common/version.cpp:95
 #, c-format
 msgid "Built '%s' at '%s' \n"
 msgstr ""
 
-#: common/version.cpp:99
+#: src/common/version.cpp:99
 msgid ""
 "Copyright (C) 2006-2010 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
@@ -1344,647 +1348,647 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: common/xmlaccountlist.cpp:62 common/xmlattrbcatlist.cpp:59
+#: src/common/xmlaccountlist.cpp:62 src/common/xmlattrbcatlist.cpp:59
 #, c-format
 msgid "An error occured while getting xmlAccountList. Server response was : %d"
 msgstr ""
 
-#: common/xmlaccountlist.cpp:98
+#: src/common/xmlaccountlist.cpp:98
 msgid "An error occured while getting xmlAccountList"
 msgstr ""
 
-#: common/xmlaccountlist.cpp:154
+#: src/common/xmlaccountlist.cpp:154
 msgid "Cannot get a valid root element, account list will be NULL"
 msgstr ""
 
-#: common/xmlaccountlist.cpp:221
+#: src/common/xmlaccountlist.cpp:221
 msgid "A note has no text"
 msgstr ""
 
-#: common/xmlaccountlist.cpp:224
+#: src/common/xmlaccountlist.cpp:224
 msgid "A note element has no child"
 msgstr ""
 
-#: common/xmlattrbcatlist.cpp:99
+#: src/common/xmlattrbcatlist.cpp:99
 msgid "An error occured while getting xmlAttrbCatList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: common/xmlattributelist.cpp:66
+#: src/common/xmlattributelist.cpp:66
 #, c-format
 msgid ""
 "An error occured while getting xmlAttrbibuteList. Server response was : %d"
 msgstr ""
 
-#: common/xmlattributelist.cpp:108
+#: src/common/xmlattributelist.cpp:108
 msgid "An error occured while getting xmlAttributeList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: common/xmlbonusfile.cpp:66
+#: src/common/xmlbonusfile.cpp:66
 #, c-format
 msgid "An error occured while getting xmlBonusFile. Server response was : %d"
 msgstr ""
 
-#: common/xmlbonusfile.cpp:104
+#: src/common/xmlbonusfile.cpp:104
 msgid "An error occured while getting xmlBonusFile"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: common/xmlbonusfilelist.cpp:65
+#: src/common/xmlbonusfilelist.cpp:65
 #, c-format
 msgid ""
 "An error occured while getting xmlBonusFileList. Server response was : %d"
 msgstr ""
 
-#: common/xmlbonusfilelist.cpp:107
+#: src/common/xmlbonusfilelist.cpp:107
 msgid "An error occured while getting xmlBonusFileList"
 msgstr ""
 
-#: common/xmlbonusfilelist.cpp:141
+#: src/common/xmlbonusfilelist.cpp:141
 msgid "Cannot get BonusFile list, document not loaded"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a language name.
-#: common/xmllanguage.cpp:60
+#: src/common/xmllanguage.cpp:60
 #, c-format
 msgid "Last used language found : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a language name.
-#: common/xmllanguage.cpp:65
+#: src/common/xmllanguage.cpp:65
 #, c-format
 msgid "Default language found : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an integer (the list size).
-#: common/xmllanguage.cpp:72
+#: src/common/xmllanguage.cpp:72
 #, c-format
 msgid "Language list size is '%d'"
 msgstr ""
 
-#: common/xmllanguage.cpp:77
+#: src/common/xmllanguage.cpp:77
 msgid "Cannot load languages.xml"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an absolute file name (i.e. with paths).
-#: common/xmllanguage.cpp:81
+#: src/common/xmllanguage.cpp:81
 #, c-format
 msgid "languages.xml absolute filename : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an error string
-#: common/xmllanguage.cpp:86
+#: src/common/xmllanguage.cpp:86
 #, c-format
 msgid "TinyXml error description '%s'"
 msgstr ""
 
-#: common/xmllanguage.cpp:211
+#: src/common/xmllanguage.cpp:211
 msgid "Empty language list found"
 msgstr ""
 
-#: common/xmllanguage.cpp:245
+#: src/common/xmllanguage.cpp:245
 msgid "Empty country list found"
 msgstr ""
 
-#: common/xmlobjectlist.cpp:35
+#: src/common/xmlobjectlist.cpp:35
 msgid "Loading object list"
 msgstr ""
 
-#: common/xmlobjectlist.cpp:50
+#: src/common/xmlobjectlist.cpp:50
 msgid "Object list correctly loaded"
 msgstr ""
 
-#: common/xmlobjectlist.cpp:85
+#: src/common/xmlobjectlist.cpp:85
 msgid "Empty object list found"
 msgstr ""
 
-#: common/xmlobjectlist.cpp:89
+#: src/common/xmlobjectlist.cpp:89
 msgid "Can not get a valid root element for ObjectList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an object name.
-#: common/xmlobjectlist.cpp:117
+#: src/common/xmlobjectlist.cpp:117
 #, c-format
 msgid "Empty position list found for mesh %s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: common/xmloptions.cpp:71
+#: src/common/xmloptions.cpp:71
 #, c-format
 msgid "Cannot load the XML options from file %s"
 msgstr ""
 
-#: common/xmloptions.cpp:161
+#: src/common/xmloptions.cpp:161
 msgid "An error occured while saving panel to XML option file."
 msgstr ""
 
-#: common/xmloptions.cpp:233
+#: src/common/xmloptions.cpp:233
 msgid "Empty snapshot list found in XML options file."
 msgstr ""
 
-#: common/xmloptions.cpp:238
+#: src/common/xmloptions.cpp:238
 msgid "Cannot get a valid root element for XML options snapshot list."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: common/xmlpersolist.cpp:60
+#: src/common/xmlpersolist.cpp:60
 #, c-format
 msgid "An error occured while getting xmlPersoList.Server response was : %d"
 msgstr ""
 
-#: common/xmlpersolist.cpp:95
+#: src/common/xmlpersolist.cpp:95
 msgid "An error occured while getting xmlPlayerList"
 msgstr ""
 
-#: maincore/dumpogreobject.cpp:44
+#: src/maincore/dumpogreobject.cpp:44
 msgid "Debugging ogre rectangle :"
 msgstr ""
 
-#: maincore/dumpogreobject.cpp:69
+#: src/maincore/dumpogreobject.cpp:69
 msgid "Debugging ogre Vector4 : "
 msgstr ""
 
-#: maincore/dumpogreobject.cpp:93
+#: src/maincore/dumpogreobject.cpp:93
 msgid "Debugging ogre Vector2 : "
 msgstr ""
 
-#: maincore/environmentsetup.cpp:45
+#: src/maincore/environmentsetup.cpp:45
 msgid "Starting environment setup"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:51
+#: src/maincore/environmentsetup.cpp:51
 msgid "Creating SceneManeger"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:53
+#: src/maincore/environmentsetup.cpp:53
 msgid "Creating camera"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:55
+#: src/maincore/environmentsetup.cpp:55
 msgid "Creating viewport"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:57
+#: src/maincore/environmentsetup.cpp:57
 msgid "Creating light"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:59
+#: src/maincore/environmentsetup.cpp:59
 msgid "Initialising Ogre resources"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:62
+#: src/maincore/environmentsetup.cpp:62
 msgid "Starting adding objects"
 msgstr ""
 
-#: maincore/environmentsetup.cpp:64
+#: src/maincore/environmentsetup.cpp:64
 msgid "Environment correctly setup"
 msgstr ""
 
-#: maincore/gameengine.cpp:96
+#: src/maincore/gameengine.cpp:97
 msgid "Exiting GameEngine ..."
 msgstr ""
 
-#: maincore/gameengine.cpp:112
+#: src/maincore/gameengine.cpp:113
 msgid "starting rendering"
 msgstr ""
 
-#: maincore/gameengine.cpp:118
+#: src/maincore/gameengine.cpp:119
 msgid "An exception has occured!"
 msgstr ""
 
-#: maincore/gameengine.cpp:121
+#: src/maincore/gameengine.cpp:122
 msgid "An exception has occured: "
 msgstr ""
 
-#: maincore/gameengine.cpp:128
+#: src/maincore/gameengine.cpp:129
 msgid "GameEngine::run ended"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: maincore/gameengine.cpp:144
+#: src/maincore/gameengine.cpp:145
 #, c-format
 msgid "Cannot find %s state"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: maincore/gameengine.cpp:149
+#: src/maincore/gameengine.cpp:150
 #, c-format
 msgid "Switching to %s state"
 msgstr ""
 
-#: maincore/gameengine.cpp:154
+#: src/maincore/gameengine.cpp:155
 msgid "An error will occur : we are calling a non-inexisting gamestate"
 msgstr ""
 
-#: maincore/gameengine.cpp:169
+#: src/maincore/gameengine.cpp:170
 msgid "Both game states type are Undefined"
 msgstr ""
 
-#: maincore/gameengine.cpp:207
+#: src/maincore/gameengine.cpp:208
 msgid "Cleaning up GameEngine..."
 msgstr ""
 
-#: maincore/gameengine.cpp:226
+#: src/maincore/gameengine.cpp:227
 msgid "GameEngine cleaned"
 msgstr ""
 
-#: maincore/gameengine.cpp:233
+#: src/maincore/gameengine.cpp:234
 msgid "  Cleaning up GameStates..."
 msgstr ""
 
-#: maincore/gameengine.cpp:271
+#: src/maincore/gameengine.cpp:272
 msgid "Trying to connect a user"
 msgstr ""
 
-#: maincore/gameengine.cpp:281
+#: src/maincore/gameengine.cpp:282
 msgid ""
 "This user does not exist.\n"
 "Please create an account"
 msgstr ""
 
-#: maincore/gameengine.cpp:284
+#: src/maincore/gameengine.cpp:285
 msgid "Wrong password."
 msgstr ""
 
-#: maincore/gameengine.cpp:287
+#: src/maincore/gameengine.cpp:288
 msgid "Your email was not yet validated."
 msgstr ""
 
-#: maincore/gameengine.cpp:290
+#: src/maincore/gameengine.cpp:291
 msgid "You are in blacklist."
 msgstr ""
 
-#: maincore/gameengine.cpp:293
+#: src/maincore/gameengine.cpp:294
 msgid "An unknown error occured."
 msgstr ""
 
-#: maincore/gameengine.cpp:301
+#: src/maincore/gameengine.cpp:302
 msgid "The login of this user failed"
 msgstr ""
 
-#: maincore/gameengine.cpp:310
+#: src/maincore/gameengine.cpp:311
 msgid "The login is successfull"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a graphic renderer name.
-#: maincore/gameengine.cpp:328
+#: src/maincore/gameengine.cpp:329
 #, c-format
 msgid "Setting renderer '%s'"
 msgstr ""
 
-#: maincore/gameengine.cpp:422
+#: src/maincore/gameengine.cpp:421
 msgid "The Ogre::Root cannot be initalized"
 msgstr ""
 
-#: maincore/gameengine.cpp:466
+#: src/maincore/gameengine.cpp:465
 msgid "mSceneMgr is NULL"
 msgstr ""
 
-#: maincore/gameengine.cpp:492
+#: src/maincore/gameengine.cpp:491
 msgid "Invalid OgreWindow"
 msgstr ""
 
 #. TRANSLATORS: The parameters are ressource settings.
-#: maincore/gameengine.cpp:531
+#: src/maincore/gameengine.cpp:530
 #, c-format
 msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
 msgstr ""
 
-#: maincore/gameengine.cpp:541
+#: src/maincore/gameengine.cpp:540
 msgid "All resources correctly setup"
 msgstr ""
 
-#: maincore/gameengine.cpp:578
+#: src/maincore/gameengine.cpp:577
 msgid "Logging available scene manager"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a scene manager name.
-#: maincore/gameengine.cpp:587
+#: src/maincore/gameengine.cpp:586
 #, c-format
 msgid "Scene manager '%s' found."
 msgstr ""
 
-#: maincore/gameengine.cpp:599
+#: src/maincore/gameengine.cpp:598
 msgid "Loading all resources"
 msgstr ""
 
-#: maincore/gameengine.cpp:610
+#: src/maincore/gameengine.cpp:609
 msgid "All resources loaded"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource group name
-#: maincore/gameengine.cpp:623
+#: src/maincore/gameengine.cpp:622
 #, c-format
 msgid "Loading resource group '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource name
-#: maincore/gameengine.cpp:635
+#: src/maincore/gameengine.cpp:634
 #, c-format
 msgid "Loading ressource '%s'"
 msgstr ""
 
-#: maincore/gameengine.cpp:649
+#: src/maincore/gameengine.cpp:648
 msgid "Switching from menuType to gameType"
 msgstr ""
 
-#: maincore/gameengine.cpp:661
+#: src/maincore/gameengine.cpp:660
 msgid "Clearing Scene"
 msgstr ""
 
-#: maincore/gameengine.cpp:667
+#: src/maincore/gameengine.cpp:666
 msgid "Setting new scene manager"
 msgstr ""
 
-#: maincore/gameengine.cpp:707
+#: src/maincore/gameengine.cpp:706
 msgid "LocalTest environment successfully initialized"
 msgstr ""
 
-#: maincore/gamestate.cpp:47
+#: src/maincore/gamestate.cpp:47
 msgid "Initializing game state super-class"
 msgstr ""
 
-#: maincore/gsgamebase.cpp:40
+#: src/maincore/gsgamebase.cpp:40
 msgid "Constructing a gsGameBase"
 msgstr ""
 
-#: maincore/gsgamebase.cpp:51
+#: src/maincore/gsgamebase.cpp:51
 msgid "Initialising gsGameBase"
 msgstr ""
 
-#: maincore/gsgamebase.cpp:78
+#: src/maincore/gsgamebase.cpp:78
 msgid "gsGameBase::resume called"
 msgstr ""
 
-#: maincore/inputmanager.cpp:118
+#: src/maincore/inputmanager.cpp:118
 msgid ""
 "Cannot get non null window handle, events will not be captured correctly"
 msgstr ""
 
-#: maincore/inputmanager.cpp:178
+#: src/maincore/inputmanager.cpp:178
 msgid "RainbruRPG::Core::InputManager::mMouse is NULL. Program should crash."
 msgstr ""
 
-#: maincore/inputmanager.cpp:184
+#: src/maincore/inputmanager.cpp:184
 msgid ""
 "RainbruRPG::Core::InputManager::mKeyboard is NULL. Program should crash."
 msgstr ""
 
-#: maincore/inputmanager.cpp:225
+#: src/maincore/inputmanager.cpp:225
 msgid "Adding a mouse listener"
 msgstr ""
 
-#: maincore/inputmanager.cpp:281
+#: src/maincore/inputmanager.cpp:281
 msgid "Removing MouseListener"
 msgstr ""
 
-#: maincore/inputmanager.cpp:289
+#: src/maincore/inputmanager.cpp:289
 msgid "MouseListener not found"
 msgstr ""
 
-#: maincore/inputmanager.cpp:453
+#: src/maincore/inputmanager.cpp:453
 msgid "InputManager::keyPressed called"
 msgstr ""
 
-#: maincore/vcconstant.cpp:62
+#: src/maincore/vcconstant.cpp:62
 msgid "VelocityCalculator not started"
 msgstr ""
 
-#: maincore/velocitycalculator.cpp:109
+#: src/maincore/velocitycalculator.cpp:109
 msgid "setting a null transition time"
 msgstr ""
 
 #. TRANSLATORS: The argument is the name of a widget
-#: oldOgreGui/bggui.cpp:167
+#: src/oldOgreGui/bggui.cpp:167
 #, c-format
 msgid "FocusedWidget's parent is NULL. Widget's name is `%s')"
 msgstr ""
 
 #. TRANSLATORS: The argument is the number of registered windows
-#: oldOgreGui/bggui.cpp:289
+#: src/oldOgreGui/bggui.cpp:289
 #, c-format
 msgid "GUI::addWindow() called (%i windows registered)"
 msgstr ""
 
-#: oldOgreGui/bggui.cpp:392
+#: src/oldOgreGui/bggui.cpp:392
 msgid "Deactivate window"
 msgstr ""
 
-#: oldOgreGui/bgtextinput.cpp:190
+#: src/oldOgreGui/bgtextinput.cpp:190
 msgid "computeMaskedValue called"
 msgstr ""
 
-#: oldOgreGui/bgwindow.cpp:92
+#: src/oldOgreGui/bgwindow.cpp:92
 msgid "Window destructor called"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integers values from the
 #. ScrollPane class getted through getMaxChildRight() and
 #. getMaxChildBottom()
-#: oldOgreGui/bgwindow.cpp:493
+#: src/oldOgreGui/bgwindow.cpp:493
 #, c-format
 msgid "Debugging ScrollPane : maxChildRight=%d maxChildBottom=%d"
 msgstr ""
 
-#: oldOgreGui/container.cpp:64
+#: src/oldOgreGui/container.cpp:64
 msgid "Cleaning buttonList"
 msgstr ""
 
-#: oldOgreGui/container.cpp:68
+#: src/oldOgreGui/container.cpp:68
 msgid "Cleaning textInputList"
 msgstr ""
 
-#: oldOgreGui/container.cpp:72
+#: src/oldOgreGui/container.cpp:72
 msgid "Cleaning widgetList"
 msgstr ""
 
-#: oldOgreGui/container.cpp:304
+#: src/oldOgreGui/container.cpp:304
 msgid "At sign called"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integer values
 #. telling X and Y moving deviation.
-#: oldOgreGui/container.cpp:404
+#: src/oldOgreGui/container.cpp:404
 #, c-format
 msgid "Container: setting Moving dev to %d,%d (OCT_WIN_MOVE)"
 msgstr ""
 
 #. TRANSLATORS: The parameters are some integer values
 #. telling X and Y moving deviation
-#: oldOgreGui/container.cpp:436
+#: src/oldOgreGui/container.cpp:436
 #, c-format
 msgid "Container: setting Moving dev to %d,%d (OCT_WIN_RESIZE)"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an unsigned integer (size_t typed)
 #. that represents a character (a charcode).
-#: oldOgreGui/font.cpp:317
+#: src/oldOgreGui/font.cpp:317
 #, c-format
 msgid "Font::getGlyph not found for charcode %u"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the size of the map containing
 #. character glyphs (an unsigned integer value).
-#: oldOgreGui/font.cpp:323
+#: src/oldOgreGui/font.cpp:323
 #, c-format
 msgid "mGlyphMap.size=%u"
 msgstr ""
 
-#: oldOgreGui/fontmanager.cpp:116
+#: src/oldOgreGui/fontmanager.cpp:116
 msgid "Unable to initialize FreeType library"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the error code returned by the FreeType
 #. library. It is a signed integer.
-#: oldOgreGui/fontmanager.cpp:121
+#: src/oldOgreGui/fontmanager.cpp:121
 #, c-format
 msgid "FT error code : %i"
 msgstr ""
 
-#: oldOgreGui/fontmanager.cpp:130
+#: src/oldOgreGui/fontmanager.cpp:130
 msgid "Unable to load font"
 msgstr ""
 
-#: oldOgreGui/fontmanager.cpp:133
+#: src/oldOgreGui/fontmanager.cpp:133
 msgid "Unable to set font size"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the error code returned by the FreeType
 #. library. It is a signed integer.
-#: oldOgreGui/fontmanager.cpp:216
+#: src/oldOgreGui/fontmanager.cpp:216
 #, c-format
 msgid "FT error code while loading glyph : %i"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an unsigned integer that represents
 #. a character (a charcode).
-#: oldOgreGui/fontmanager.cpp:228
+#: src/oldOgreGui/fontmanager.cpp:228
 #, c-format
 msgid "Glyph width is NULL for charcode %u"
 msgstr ""
 
-#: oldOgreGui/glyph.cpp:57
+#: src/oldOgreGui/glyph.cpp:57
 msgid "Constructing a glyph with NULL height"
 msgstr ""
 
-#: oldOgreGui/guivertex.cpp:82
+#: src/oldOgreGui/guivertex.cpp:82
 msgid "GuiVertex::setPosition parameter is NULL."
 msgstr ""
 
-#: oldOgreGui/hscrollbar.cpp:60
+#: src/oldOgreGui/hscrollbar.cpp:60
 msgid "Cannot get parent Window. We're enable to change mouse cursor."
 msgstr ""
 
-#: oldOgreGui/messagebox.cpp:68
+#: src/oldOgreGui/messagebox.cpp:68
 msgid "Centering the Dialog"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a duration in milliseconds.
-#: oldOgreGui/mouseevent.cpp:78
+#: src/oldOgreGui/mouseevent.cpp:78
 #, c-format
 msgid "mClickDuration=%d (long click)"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a duration in milliseconds.
-#: oldOgreGui/mouseevent.cpp:86
+#: src/oldOgreGui/mouseevent.cpp:86
 #, c-format
 msgid "mClickDuration=%d (short click)"
 msgstr ""
 
-#: oldOgreGui/multicolumnlist.cpp:123
+#: src/oldOgreGui/multicolumnlist.cpp:123
 msgid "GUI pointer is NULL, program should crash (segfault)."
 msgstr ""
 
-#: oldOgreGui/multicolumnlist.cpp:132
+#: src/oldOgreGui/multicolumnlist.cpp:132
 msgid "Columns menu"
 msgstr ""
 
-#: oldOgreGui/multicolumnlist.cpp:421
+#: src/oldOgreGui/multicolumnlist.cpp:421
 msgid "Showing PopupMenu"
 msgstr ""
 
 #. TRANSLATORS: Do not translate mMovingColumn here, it is a
 #. variable name.
-#: oldOgreGui/multicolumnlist.cpp:431
+#: src/oldOgreGui/multicolumnlist.cpp:431
 msgid "mMovingColumn is now -1"
 msgstr ""
 
-#: oldOgreGui/multicolumnlistcolumn.cpp:111
+#: src/oldOgreGui/multicolumnlistcolumn.cpp:111
 msgid "Column's parent is NULL. Cannot apply sort"
 msgstr ""
 
-#: oldOgreGui/multicolumnlistcolumn.cpp:112
+#: src/oldOgreGui/multicolumnlistcolumn.cpp:112
 msgid "Column's index is -1. Cannot apply sort"
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:139
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:139
 msgid "MultiColumnListDebugSettings was unused. Please check widget name"
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:188
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:225
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:188
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:225
 msgid "MultiColumnList pointer is NULL. Program should crash."
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:295
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:295
 msgid "debugItem called : "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:301
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:365
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:301
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:365
 msgid "(debug flag is "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:307
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:371
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:307
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:371
 msgid "localization : "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:313
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:377
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:313
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:377
 msgid "content : "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:327
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:381
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:327
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:381
 msgid "drawing rectangle "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:329
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:383
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:329
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:383
 msgid "(filled with "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:332
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:386
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:332
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:386
 msgid "(not drawn) "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:359
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:359
 msgid "debugCell called : "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:409
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:409
 msgid "Using parent siscor : "
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:410
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:410
 msgid "Current scissor :"
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:411
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:411
 msgid " top="
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:412
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:412
 msgid " left="
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:413
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:413
 msgid " bottom="
 msgstr ""
 
-#: oldOgreGui/multicolumnlistdebugsettings.cpp:414
+#: src/oldOgreGui/multicolumnlistdebugsettings.cpp:414
 msgid " right="
 msgstr ""

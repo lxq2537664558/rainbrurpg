@@ -20,37 +20,62 @@
  *
  */
 
-/** \file Widget.hpp
+/** \file WidgetList.hpp
   *
-  * Declare an ogreGui widget
+  * Declare a list of widget
   *
   * Modifications :
-  * - 16 nov 2009 : Starting implementation
+  * - 30 may 2009 : Starting implementation
   *
   */
 
-#ifndef _WIDGET_HPP_
-#define _WIDGET_HPP_
+#ifndef _WIDGET_LIST_HPP_
+#define _WIDGET_LIST_HPP_
 
-#include "Drawable.hpp"
-#include "Focusable.hpp"
-#include "Serializable.hpp"
+#include "Widget.hpp"
+
+#include <list>
+#include <string>
 
 using namespace std;
 
 namespace RainbruRPG{
   namespace OgreGui{
-    /** The base class of all widgets
-      *
-      * - a Widget is serializable.
+ 
+    /// The internal type used in WidgetList class
+    typedef list<Widget*> tWidgetList;
+
+   /** A list of widget
       *
       */
-    class Widget : public Drawable, public Focusable, public Serializable{
+    class WidgetList : public Serializable{
 
     public:
-      Widget(Widget*, const string&, int, int, int, int);
 
+      WidgetList(const string&);
+      virtual ~WidgetList();
+
+      unsigned int size();
+      void push_back(Widget*);
+      bool empty();
+
+      const tWidgetList& getList()const;
+
+      virtual void setUniqueName(const string&);
+
+      Widget* focusNext(void);
+      Widget* focusPrevious(void);
+
+    private:
+      /// The inernal list of Widget
+      tWidgetList mList;
+      /// An iterator to keep the focus on widget
+      tWidgetList::iterator mCurrentFocused;
+      /// Is the iterator valid ?
+      bool mValidIterator;
     };
   }
 }
-#endif // !_WIDGET_HPP_
+
+
+#endif // _WIDGET_LIST_HPP_

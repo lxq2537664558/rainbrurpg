@@ -1,4 +1,7 @@
 2010-02-16  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added src/ to directories names.
+	
+2010-02-16  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Change EasyBMP and tinyxml entries cause
 	they moved to ext/.
 	* POTFILES.in: Change ogreGui/ sources to oldOgreGui/.
