@@ -1,3 +1,9 @@
+2010-06-23 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_uml.m4 (implemented_class): Now in gray to
+	note implemented classes.
+	* m4/rb_uml.m4 (class): fix a bug due to brackets.
+
 2010-06-13 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/tests/ogreGui/WidgetListTest.cpp (testFocusMixed): implementation.

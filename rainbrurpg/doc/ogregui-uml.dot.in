@@ -52,7 +52,7 @@ digraph G {
 
 // Classes definition
 // Please keep this list sorted	
-  class([Brush],
+  implemented_class([Brush],
     members([[
       [- mAlpha: float]
     ]]),

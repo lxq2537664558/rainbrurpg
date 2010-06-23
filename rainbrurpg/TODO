@@ -113,6 +113,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-203 (13 jun 2010 - ???) SLOC ??? UT ??? FT ??:??
+- UML: new m4 macro to note implemented classes in gray   
+- fix a bug in rb_uml.m4 due to brackets
 
 * v0.0.5-202 (25 mar 2010 - 13 jun 2010) SLOC 40,550 UT ??? FT 37:29
 - WidgetList implementation finished

@@ -55,13 +55,13 @@ dnl   $4 An optional text added at the end of the class name (used
 dnl      for templates)
 m4_define([class], [dnl
   $1 [[
-    label = <{<table width = "100%" border="0" align="left" CELLPADDING="0" CELLSPACING="0">
+    label = < <table width = "100%" border="0" align="left" CELLPADDING="0" CELLSPACING="0">
 	 <TR><td align="center" CELLPADDING="5">
 	   <FONT POINT-SIZE="10">$1 $4</FONT>
 	 </td></TR>
 	 $2         
 	 $3
-	 </table>} >
+	 </table> >
     margin = 0, 0
   ]]
 ])
@@ -168,4 +168,24 @@ m4_define([relation_m],[dnl
   m4_foreach([myvar], [$2], [
     $1 -> myvar;
   ])
+])
+dnl
+dnl Defines an implemented class
+dnl
+dnl   $1 The class name
+dnl   $2 List of members
+dnl   $3 List of functions
+dnl   $4 An optional text added at the end of the class name (used 
+dnl      for templates)
+dnl
+m4_define([implemented_class], [dnl
+  node [[
+    shape = "record"
+    style = "filled"
+    fillcolor = "#DDDDDD"
+  ]]
+	
+  class([$1], [$2], [$3], [$4])
+
+  GRAPH_HEADER
 ])
