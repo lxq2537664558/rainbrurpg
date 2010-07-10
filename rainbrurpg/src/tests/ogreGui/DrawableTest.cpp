@@ -39,7 +39,7 @@ void DrawableTest::tearDown(){
   delete this->m_instance; 
 }
 
-// Test if the parent is correctly set by the constructor
+/// Test if the parent is correctly set by the constructor
 void DrawableTest::testParent(){ 
   Drawable d1(NULL, RECT);
   CPPUNIT_ASSERT( d1.getParent() == NULL);
@@ -48,13 +48,13 @@ void DrawableTest::testParent(){
   CPPUNIT_ASSERT( d2.getParent() == &d1);
 }
 
-// Test the dirty flag
+/// Test the dirty flag
 void DrawableTest::testDirty(){ 
   // At startup, dirty should be true
   CPPUNIT_ASSERT( m_instance->isDirty());
 }
 
-// Test the dirty propagation property
+/// Test the dirty propagation property
 void DrawableTest::testDirtyPropagation(){ 
   // No segfault if parent is NULL ?
   Drawable* d1=new Drawable(NULL, RECT);
@@ -71,6 +71,7 @@ void DrawableTest::testDirtyPropagation(){
   delete d1;
 }
 
+/// Test the correct computation of absolute position
 void DrawableTest::testComputeAbsolute(){ 
   Rectangle r1;
   setRectangle(&r1, 50, 50 ,100 ,100);
@@ -83,6 +84,7 @@ void DrawableTest::testComputeAbsolute(){
   CPPUNIT_ASSERT( r2.bottom == r1.bottom + 30);
 }
 
+/// First test of scissor adjustement
 void DrawableTest::testAdjustScissor1(){ 
   Rectangle r1;
   setRectangle(&r1, 50, 50 ,100 ,100);
@@ -99,6 +101,7 @@ void DrawableTest::testAdjustScissor1(){
   CPPUNIT_ASSERT( r2.bottom == 85);
 }
 
+/// Second test of scissor adjustement
 void DrawableTest::testAdjustScissor2(){ 
   Rectangle r1;
   setRectangle(&r1, 50, 50 ,100 ,100);
@@ -115,6 +118,15 @@ void DrawableTest::testAdjustScissor2(){
   CPPUNIT_ASSERT( r2.bottom == 100);
 }
 
+/** Set the values of a rectangle
+  *
+  * \param r  The rectangle to change values to
+  * \param x1 The left value
+  * \param y1 The top value
+  * \param x2 The right value
+  * \param y2 The bottom value
+  *
+  */
 void DrawableTest::setRectangle(Rectangle* r, int x1, int y1, int x2, int y2){
   r->left   = x1;
   r->top    = y1;

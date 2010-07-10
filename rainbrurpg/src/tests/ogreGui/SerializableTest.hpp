@@ -52,11 +52,11 @@ class SerializableTest : public CPPUNIT_NS::TestFixture
   /// Start the Label test 
   CPPUNIT_TEST_SUITE( SerializableTest );
 
-  CPPUNIT_TEST( testUniqueName );
-  CPPUNIT_TEST( testEqual );
-  CPPUNIT_TEST( testNotEqual );
-  CPPUNIT_TEST( testSeekg );
-  CPPUNIT_TEST( testEqualPtr );
+  CPPUNIT_TEST( testUniqueName ); //!< Test the unique name
+  CPPUNIT_TEST( testEqual );      //!< Test the equality operator
+  CPPUNIT_TEST( testNotEqual );   //!< Test the non-eaqual operator
+  CPPUNIT_TEST( testSeekg );      //!< Test the seekg function
+  CPPUNIT_TEST( testEqualPtr );   //!< Test equal pointers
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();

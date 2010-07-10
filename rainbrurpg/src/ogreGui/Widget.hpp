@@ -49,7 +49,7 @@ namespace RainbruRPG{
 
     public:
       Widget(Widget*, const string&, int, int, int, int);
-
+      virtual ~Widget();
     };
   }
 }

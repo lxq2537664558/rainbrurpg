@@ -20,33 +20,42 @@
  *
  */
 
-/** \file Widget.cpp
-  *
-  * Implementation of an ogreGui widget
-  *
-  */
- #include "Widget.hpp"
+#ifndef CONTAINER_TEST_H
+#define CONTAINER_TEST_H
 
-/** The constructor
-  *
-  * \param vParent  The parent widget
-  * \param vName    The widget's name
-  * \param vX1, vY1 The top-left position
-  * \param vX2, vY2 The bottom-right position
+#include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/portability/Stream.h>
+
+#include <Container.hpp>
+
+using namespace RainbruRPG::OgreGui;
+
+/** A test case for ogreGui's Drawable
   *
   */
-RainbruRPG::OgreGui::Widget::Widget(Widget* vParent, const string& vName, 
-				    int vX1, int vY1, int vX2, int vY2):
-  Drawable((Drawable*)vParent, vX1, vY1, vX2, vY2),
-  Focusable(true), // take focus by default
-  Serializable(vName)
+class ContainerTest : public CPPUNIT_NS::TestFixture 
 {
+  /// Start the ContainerTest
+  CPPUNIT_TEST_SUITE( ContainerTest );
 
-}
+  CPPUNIT_TEST( testEmpty );         //!< Test an empty container
+  CPPUNIT_TEST( testTrueFocusable ); //!< Test an container with a focusable
 
-/** The destructor
-  *
-  */
-RainbruRPG::OgreGui::Widget::~Widget(){
+  /// The CppUnit test end macro
+  CPPUNIT_TEST_SUITE_END();
 
-}
+protected:
+  /** An instance of the tested class
+    *
+    */
+  Container* m_instance;
+  
+public:
+  void setUp();
+  void tearDown();
+
+  void testEmpty();
+  void testTrueFocusable();
+};
+
+#endif // CONTAINER_TEST_H

@@ -27,10 +27,12 @@
 // Registers the fixture to the registry
 CPPUNIT_TEST_SUITE_REGISTRATION( WidgetListTest );
 
+/// Create the tested instance
 void WidgetListTest::setUp(){
   m_instance = new WidgetList("TestList");
 }
 
+/// Destroy the tested instance
 void WidgetListTest::tearDown(){
   delete m_instance;
 }
@@ -40,10 +42,12 @@ void WidgetListTest::testNew(){
   CPPUNIT_ASSERT( m_instance->size() == 0 );
 }
 
+/// Tests the WidgetList::empty() function
 void WidgetListTest::testEmpty(){
   CPPUNIT_ASSERT( m_instance->empty() == true );
 }
 
+/// Tests the push_back() function
 void WidgetListTest::testPushBack(){
   m_instance->push_back(new Widget(NULL, "Name", 0, 0, 10, 10));
   CPPUNIT_ASSERT( m_instance->size() == 1 );
@@ -51,6 +55,7 @@ void WidgetListTest::testPushBack(){
   
 }
 
+/// Tests the WidgetList unique name
 void WidgetListTest::testUniqueName(){ 
   vector<string> names;
   int idx = 0;
@@ -81,6 +86,7 @@ void WidgetListTest::testUniqueName(){
   CPPUNIT_ASSERT( names[4] == "Parent/TestList/Child5" );
 }
 
+/// Tests the focusNext function
 void WidgetListTest::testFocusNext(){
   // Creating widgets (canTakeFocus true by default)
   Widget w1(NULL, "Child1", 0, 0, 10, 10);
@@ -111,6 +117,7 @@ void WidgetListTest::testFocusNext(){
   CPPUNIT_ASSERT( fw4 == &w1 );
 }
 
+/// Tests the focusPrevious function
 void WidgetListTest::testFocusPrevious(){
   // Creating widgets (canTakeFocus true by default)
   Widget w1(NULL, "Child1", 0, 0, 10, 10);
@@ -141,6 +148,7 @@ void WidgetListTest::testFocusPrevious(){
   CPPUNIT_ASSERT( fw4 == &w4 );
 }
 
+/// Test the focusNext and focusPrevious functions together
 void WidgetListTest::testFocusMixed(){
   // Creating widgets (canTakeFocus true by default)
   Widget w1(NULL, "Child1", 0, 0, 10, 10);

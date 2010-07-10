@@ -52,7 +52,7 @@ digraph G {
 
 // Classes definition
 // Please keep this list sorted	
-  implemented_class([Brush],
+  class([Brush],
     members([[
       [- mAlpha: float]
     ]]),
@@ -63,7 +63,7 @@ digraph G {
     ]])
   )
 
-  class([Container],
+  implemented_class([Container],
     members([[
       [mFocused: Focusable*], 
       [PROP([Receive key and mouse events.])]]
@@ -107,7 +107,7 @@ digraph G {
     ]])
   )
 
-  class([Focusable],
+  implemented_class([Focusable],
     members([[
       [- mCanTakeFocus: bool], 
       [- mFocus: bool ]]
@@ -237,7 +237,7 @@ WidgetList::focusPrevious().
     members([[[ ], [ ]]])
   )
 
-  class([Serializable],
+  implemented_class([Serializable],
     members([[
       [- mName: string], 
       [- mUniqueName: string]
@@ -261,7 +261,7 @@ position and size. Not needed because <BR/>
 Layout::compute(...) can modify these values.
   ])
 
-  class([WidgetList],
+  implemented_class([WidgetList],
     members([[[ ], [ ]]]),
     members([[
       [virtual([+ setUniqueName(vParentUniqueName: const string&amp;): void])], 

@@ -113,6 +113,19 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-203 (13 jun 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (14) Fixed a segfault in Container keyboard hanling functions
+- ContainerTest two tests implementation
+- Fixed a typo error in the support page of the website
+- Fixed some documentation warnings in following classes:
+   Focusable, WidgetListTest, SerializableTest, Widget, DrawableTest
+- ContainerTest skeleton implemented
+- Container's key-related function implemented
+- Container's event-related functions copied from Focusable
+- Container constructor implementation
+- Container skeleton implementation
+- Serializable noted as implemented in Entity-Relation diagram
+- FocusableTest implementation
+- Focusable's event handling functions implementation
 - UML: new m4 macro to note implemented classes in gray   
 - fix a bug in rb_uml.m4 due to brackets
 

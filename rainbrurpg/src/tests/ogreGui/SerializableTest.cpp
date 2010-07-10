@@ -25,9 +25,9 @@
 // Registers the fixture to the registry
 CPPUNIT_TEST_SUITE_REGISTRATION( SerializableTest );
 
-  /** Creates a new instance to test
-    *
-    */
+/** Creates a new instance to test
+  *
+  */
 void SerializableTest::setUp(){ 
   this->m_instance = new Serializable("Name"); 
   this->m_instance->setUniqueName("Parent");
@@ -40,6 +40,9 @@ void SerializableTest::tearDown(){
   delete this->m_instance; 
 }
 
+/** Test the uniqueName creation
+  *
+  */
 void SerializableTest::testUniqueName(){ 
     std::string t="Parent";
     this->m_instance->setUniqueName(t);
@@ -47,6 +50,9 @@ void SerializableTest::testUniqueName(){
     CPPUNIT_ASSERT( ret == "Parent/Name" );
 }
 
+/** Test the equality operator \c operator==
+  *
+  */
 void SerializableTest::testEqual(){ 
   stringstream oss;
   this->m_instance->setUniqueName("testEqualParent");
@@ -70,7 +76,10 @@ void SerializableTest::testEqual(){
   delete test1;
 }
 
-
+/** Test non equal Serializable both with \c operator==
+  * and \c operator!=
+  *
+  */
 void SerializableTest::testNotEqual(){ 
   // Test a non equal assert (with operator==
   Serializable* test1 = new Serializable("Name"); 
@@ -88,7 +97,7 @@ void SerializableTest::testNotEqual(){
   delete test2;
 }
 
-/** Test is checkUniqueName correcktly seek back
+/** Test if checkUniqueName correctly seek back
   * 
   * When we deserialize an object, it first check if the unique name
   * in the stream is the same. If that fails, the object should
@@ -108,6 +117,9 @@ void SerializableTest::testSeekg(){
   CPPUNIT_ASSERT( pos == pos2 ); // Should rewind
 }
 
+/** Test with equal pointers
+  *
+  */
 void SerializableTest::testEqualPtr(){ 
   this->m_instance->setUniqueName("testEqualParent");
 

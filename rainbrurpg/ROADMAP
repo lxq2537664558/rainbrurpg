@@ -137,6 +137,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-07-10 sam 13:23]--[2010-07-10 sam 13:51] =>  0:28
+     CLOCK: [2010-07-10 sam 10:36]--[2010-07-10 sam 11:07] =>  0:31
+     CLOCK: [2010-07-09 ven 10:19]--[2010-07-09 ven 11:04] =>  0:45
+     CLOCK: [2010-07-08 jeu 11:09]--[2010-07-08 jeu 11:37] =>  0:28
+     CLOCK: [2010-07-06 mar 11:12]--[2010-07-06 mar 11:56] =>  0:44
+     CLOCK: [2010-07-06 mar 11:02]--[2010-07-06 mar 11:08] =>  0:06
+     CLOCK: [2010-07-06 mar 11:01]--[2010-07-06 mar 11:02] =>  0:01
+     CLOCK: [2010-07-06 mar 10:42]--[2010-07-06 mar 11:00] =>  0:18
      CLOCK: [2010-06-13 dim 16:12]--[2010-06-13 dim 16:35] =>  0:23
      CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:32] =>  0:47
      CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:13] =>  0:44
@@ -171,9 +179,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
       For each class implements a Test class
       - [X] WidgetList implementation
 	    Inherits from Serializable
-      - [ ] Focusable implementation
+      - [X] Focusable implementation
 	    to build WidgetList
-      - [ ] Container impl.
+      - [X] Container impl.
 	    Inherits from Widget and WidgetList
       - [ ] Brush implmentation
       - [ ] GameState modification
@@ -183,7 +191,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] Drawable implementation
 	    DrawableTest should handle the disable-dirtyflag configure option
       - [ ] Widget implementation
-      - [ ] Window impl.
+      - [ ] Window implementation
 - [ ] Skins
       - [ ] Window
       - [ ] Drawable

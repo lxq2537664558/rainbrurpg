@@ -40,15 +40,16 @@ using namespace RainbruRPG::OgreGui;
   */
 class WidgetListTest : public CPPUNIT_NS::TestFixture 
 {
+  /// Start this test fixture
   CPPUNIT_TEST_SUITE( WidgetListTest );
 
-  CPPUNIT_TEST( testNew );
-  CPPUNIT_TEST( testEmpty );
-  CPPUNIT_TEST( testPushBack );
-  CPPUNIT_TEST( testUniqueName );
-  CPPUNIT_TEST( testFocusNext );
-  CPPUNIT_TEST( testFocusPrevious );
-  CPPUNIT_TEST( testFocusMixed );
+  CPPUNIT_TEST( testNew );           //!< Test the constructor
+  CPPUNIT_TEST( testEmpty );         //!< Test for an empty list
+  CPPUNIT_TEST( testPushBack );      //!< Test the push_back function
+  CPPUNIT_TEST( testUniqueName );    //!< Test the uniqueName
+  CPPUNIT_TEST( testFocusNext );     //!< Test for focusNext
+  CPPUNIT_TEST( testFocusPrevious ); //!< Test for focusPrevious
+  CPPUNIT_TEST( testFocusMixed );    //!< Test for next/previous mixed
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();

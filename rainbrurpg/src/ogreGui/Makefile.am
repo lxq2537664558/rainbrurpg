@@ -22,14 +22,16 @@ lib_LTLIBRARIES = librainbrurpg-ogregui.la
 librainbrurpg_ogregui.adir=$(libdir)
 
 # Please keep this list sorted
-h_sources= Drawable.hpp					\
+h_sources= Container.hpp				\
+	   Drawable.hpp					\
 	   Focusable.hpp				\
 	   Serializable.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp
 
 # Please keep this list sorted
-cc_sources=Drawable.cpp					\
+cc_sources=Container.cpp				\
+	   Drawable.cpp					\
 	   Focusable.cpp				\
 	   Serializable.cpp				\
 	   Widget.cpp					\

@@ -1,3 +1,40 @@
+2010-07-10 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Container.cpp (keyReleased): Fixed a segfault.
+	* src/test/ogreGui/ContainerTest.hpp/cpp: two tests implemented.
+	
+2010-07-09 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/test/ogreGui/ContainerTest.hpp/cpp: skeleton implemented.
+	
+	* src/ogreGui/Container.cpp (keyReleased): Implementation.
+	* src/ogreGui/Container.cpp (keyPressed): Implementation.
+	
+	* src/ogreGui/Container.hpp: Using mFocusedDevalidate member.
+
+2010-07-08 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/test/ogreGui/Container.cpp: Event-related functions copied
+	from Focusable.
+	* src/test/ogreGui/Container.cpp: Constructor implementation.
+
+	* src/test/ogreGui/Widget.cpp: Destructor implementation
+
+	* src/test/ogreGui/Container.cpp: File created.
+	* src/test/ogreGui/Container.hpp: Skeleton implementation.
+	
+2010-07-06 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/test/ogreGui/FocusableTest.hpp/cpp: five tests
+	implemented.
+
+	* src/test/ogreGui/Makefile.am (INCLUDES): Added OIS_CFLAGS
+	to be able to test Focusable.
+	
+	* src/ogreGui/Focusable.cpp: Event handling default functions
+	implemented.
+	* src/ogreGui/Focusable.hpp: Event handling functions declared.
+	
 2010-06-23 Jerome Pasquier  <rainbru@free.fr>
 
 	* m4/rb_uml.m4 (implemented_class): Now in gray to

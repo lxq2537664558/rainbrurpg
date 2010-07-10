@@ -20,35 +20,42 @@
  *
  */
 
-/** \file Focusable.hpp
+/** \file Container.hpp
   *
-  * Declare an ogreGui focusable object
+  * Declares an ogreGui container
   *
   * Modifications :
-  * - 06 jul 2010 : Event handling functions implemented.
-  * - 08 jun 2010 : Starting implementation
+  * - 08 jul 2010 : Starting implementation
   *
   */
 
-#ifndef _FOCUSABLE_HPP_
-#define _FOCUSABLE_HPP_
+#ifndef _CONTAINER_HPP_
+#define _CONTAINER_HPP_
 
+#include "Widget.hpp"
+#include "WidgetList.hpp"
+
+#include <string>
 #include <OIS.h>
+
+using namespace std;
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Focusable;
+  }
+}
+// End of forward declarations
 
 namespace RainbruRPG{
   namespace OgreGui{
-    /** A GUI object able to take the keyboard focus (or not)
-      *
-      * By default, all events handling functions return \c false,
-      * saying the event is not consumed.
-      *
-      */
-    class Focusable{
-    public:
-      Focusable(bool);
 
-      bool canTakeFocus()const;
-      void setCanTakeFocus(bool);
+    class Container : public Widget, public WidgetList
+    {
+    public:
+      Container(Widget*, const string&, int, int, int, int);
+      virtual ~Container();
 
       virtual bool keyPressed(const OIS::KeyEvent&);
       virtual bool keyReleased(const OIS::KeyEvent&);
@@ -59,16 +66,16 @@ namespace RainbruRPG{
       virtual bool mouseReleased(const OIS::MouseEvent&, 
 				 const OIS::MouseButtonID&);
 
-      void setFocus(bool);
-      bool hasFocus();
-
     private:
-      /** Can this take the keyboard focus */
-      bool mCanTakeFocus;
-
-      /** This object has the focus */
-      bool mFocus;
+      /** The currently focused widget
+        *
+	* This pointer can be \c NULL.
+	*
+	*/
+      Focusable* mFocused;
     };
+
   }
 }
-#endif // !_FOCUSABLE_HPP_
+
+#endif // _CONTAINER_HPP_

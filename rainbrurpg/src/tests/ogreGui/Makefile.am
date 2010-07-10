@@ -16,10 +16,13 @@ INCLUDES = -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   $(GNET_CFLAGS) 				\
 	   $(OGRE_CFLAGS) 				\
+	   $(OIS_CFLAGS)				\
 	   $(CPPUNIT_CFLAGS)
 
 ogregui2_tests_SOURCES = main.cpp			\
 			 \
+			 ContainerTest.cpp		\
+			 FocusableTest.cpp		\
 			 DrawableTest.cpp		\
 			 SerializableTest.cpp		\
 			 WidgetListTest.cpp

@@ -20,39 +20,30 @@
  *
  */
 
-#ifndef DRAWABLE_TEST_H
-#define DRAWABLE_TEST_H
+#ifndef FOCUSABLE_TEST_H
+#define FOCUSABLE_TEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 
-#include <string>
-#include <sstream>
-#include <iostream>
-
-#include <Drawable.hpp>
-#include <OgreRectangle.h>
+#include <Focusable.hpp>
 
 using namespace std;
-using namespace Ogre;
 using namespace RainbruRPG::OgreGui;
 
-#define RECT Rectangle()
-
-/** A test case for ogreGui's Drawable
+/** A test case for ogreGui's Focusable
   *
   */
-class DrawableTest : public CPPUNIT_NS::TestFixture 
+class FocusableTest : public CPPUNIT_NS::TestFixture 
 {
-  /// The beginning of the test fixture
-  CPPUNIT_TEST_SUITE( DrawableTest );
+  /// Start the FocusableTest
+  CPPUNIT_TEST_SUITE( FocusableTest );
 
-  CPPUNIT_TEST( testParent );           //!< The parent's test
-  CPPUNIT_TEST( testDirty );            //!< The dirty flag test
-  CPPUNIT_TEST( testDirtyPropagation ); //!< Test the dirty flag propagation
-  CPPUNIT_TEST( testComputeAbsolute );  //!< Test the absolute position
-  CPPUNIT_TEST( testAdjustScissor1 );   //!< First test of the scissor
-  CPPUNIT_TEST( testAdjustScissor2 );   //!< Second test of the scissor
+  CPPUNIT_TEST( testConstructor );       //!< Test the constructor
+  CPPUNIT_TEST( testCanTakeFocus );      //!< Test canTakeFocus
+  CPPUNIT_TEST( testConsumedEvents );    //!< Test if events are consumed
+  CPPUNIT_TEST( testFocus );             //!< Test the focus ability
+  CPPUNIT_TEST( testNonFocusableFocus ); //!< Test with non-focusable
 
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -61,20 +52,18 @@ protected:
   /** An instance of the caption widget
     *
     */
-  Drawable* m_instance;
+  Focusable* m_instance;
   
 public:
   void setUp();
   void tearDown();
-  void testParent();
-  void testDirty();
-  void testDirtyPropagation();
-  void testComputeAbsolute();
-  void testAdjustScissor1();
-  void testAdjustScissor2();
 
-  void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2);
+  void testConstructor();
+  void testCanTakeFocus();
+  void testConsumedEvents();
+  void testFocus();
+  void testNonFocusableFocus();
 };
 
 
-#endif // DRAWABLE_TEST_H
+#endif // FOCUSABLE_TEST_H

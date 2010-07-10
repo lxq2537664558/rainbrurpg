@@ -84,7 +84,7 @@ template<class Archive> bool RainbruRPG::OgreGui::Serializable::serialize(Archiv
 /** Deserialize this object
   *
   * The object is deserialized only if the unique name check
-  * is successfull (see \ref checkUniqueName).
+  * is successfull.
   *
   * \param ar The archive used for deserialization
   *
