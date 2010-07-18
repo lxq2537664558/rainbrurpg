@@ -20,7 +20,7 @@
  *
  */
 
-/** \file OgreGuiTestSuite.hpp
+/** \file OgreguiTestSuite.hpp
   * Implements the test suite designed to test the OgreGui objects
   *
   */

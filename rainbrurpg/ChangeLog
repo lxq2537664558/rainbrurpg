@@ -1,3 +1,45 @@
+2010-07-18 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/gamestate.cpp (draw): draw the container member, does not
+	handle compute and dirty flag yet.
+	* src/maincore/gamestate.cpp (GameState): mContainer created with window
+	dimensions from Viewport but with a NULL parent.
+	* src/maincore/gamestate.h: Now contains a Container member;
+		
+	* src/ogreGui/GuiVertex.hpp: Now uses Ogre::Vector3 instead of
+	my own implementation from oldOgreGui.
+	
+	* src/ogreGui/GuiVertex: Retirieved from oldOgreGui.
+	
+	* src/ogreGui/Brush.cpp (checkHarwareBuffer): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (yPixelToNative): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (xPixelToNative): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (drawQuad): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (feedVectors): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (setCorners): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (setColor): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (drawRectangle): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (setScissorRectangle): Retrieved from QuadRenderer
+	double and Ogre::Recyangle version.
+	* src/ogreGui/Brush.cpp (setTexturePtr): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (end): Retrieved from QuadRenderer.
+
+2010-07-17 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Brush.cpp (begin): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (createTexture): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (setHardwareBuffer): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (~Brush): Retrieved from QuadRenderer.
+	* src/ogreGui/Brush.cpp (Brush): Retrieved from QuadRenderer.
+	
+	* src/ogreGui/Brush.cpp: Skeleton implementation.
+	* src/ogreGui/Brush.hpp: Skeleton implementation.
+	
+2010-07-11 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/test/ogreGui/DeserializationErrorTest.hpp: Source removed:
+	not used anymore.
+	
 2010-07-10 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Container.cpp (keyReleased): Fixed a segfault.

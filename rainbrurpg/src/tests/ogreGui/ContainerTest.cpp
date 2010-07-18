@@ -25,11 +25,13 @@
 // Registers the fixture to the registry
 CPPUNIT_TEST_SUITE_REGISTRATION( ContainerTest );
 
+/// Setup the tested Container instance
 void ContainerTest::setUp()
 {
   m_instance = new Container(NULL, "TestedContainer", 0, 0, 10, 10);
 }
 
+/// Delete the tested Container instance
 void ContainerTest::tearDown()
 {
   delete m_instance;

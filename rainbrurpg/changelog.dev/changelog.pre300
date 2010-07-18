@@ -1,3 +1,24 @@
+* v0.0.5-202 (25 mar 2010 - 13 jun 2010) SLOC 40,550 UT NC FT 37:29
+- WidgetList implementation finished
+- WidgetList::FocusNext and FocusPrevious tests pass
+- Documentation warnings fixed
+   Focusable, WidgetList, Serializable
+- Focusable squeleton implementation
+- WidgetList's empty() and setUniqueName() implementation and tests
+- WidgetListTest: two tests implemented
+- Implemented Widget's constructor for WidgetList's unittest purpose
+- WidgetList's push_back() an size() implementation
+- Fixed an error in tests/ogreGui/Makefile that makes building ail
+- WidgetListTest squeleton implementation
+- WidgetList squeleton implementation
+- Switched to 15 items by revision
+- Updated ROADMAP for precompute/drawing section
+- maincore lib error fixed
+- common/LoadBMP::input is now an std::string (was a char*)
+- rainbrudef.h uses NO_CONFIG_H
+- SerializableTest and DrawableTestimplementation moved to .cpp
+- ogreGui unit test now uses a CppUnit Registry
+	
 * v0.0.5-201 (04 mar 2010 - 25 mar 2010) SLOC 40,283 UT 220 FT 32:22
 - deactivated Title overlay due to an Ogre UTF string error
 - fullscreen command line option implemented

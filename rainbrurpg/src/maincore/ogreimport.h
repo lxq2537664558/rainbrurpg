@@ -50,7 +50,7 @@
 
 #ifdef __linux__
 // Included to get the RB_DISABLE_OGRE_DEPREC_WARN definition
-#  include "../config.h"
+#  include "../../config.h"
 #  ifdef RB_DISABLE_OGRE_DEPREC_WARN
 // The following #undef will disable warnings due to inclusion
 // of deprecated std headers.

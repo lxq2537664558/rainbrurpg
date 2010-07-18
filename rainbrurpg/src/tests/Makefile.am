@@ -44,7 +44,8 @@ INCLUDES = -I$(top_srcdir)/ext/ 			\
 	   $(TESTS_DIRS)				\
 	   $(GNET_CFLAGS) 				\
 	   $(CPPUNIT_CFLAGS)				\
-	   $(SIGC_CFLAGS)
+	   $(SIGC_CFLAGS)				\
+	   -DTEXT_OUTPUT
 
 rainbrurpg_tests_SOURCES = main.cpp			\
 			   tapitestsuite.cpp		\

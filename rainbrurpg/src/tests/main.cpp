@@ -28,25 +28,28 @@
   *
   */
 
-/** \mainpage RainbruRPG unit tests documentation
-  *
-  * \section intro_sec Introduction
-  *
-  * This is the documentation of the unit tests of RainbruRPG. It is 
-  * independant from the RainbruRPG documentation, so no link can be made
-  * to the main documentation. If a class name appears with no link, please
-  * search it in th main code doxumentation.
-  *
-  * \section gui_sec Result GUI
-  *
-  * The unit tests results can either be shown in Qt3 or std out. Please see
-  * in the main.cpp file the \ref TEXT_OUTPUT preprocessor macro. You also may
-  * want to modify the Makefile.am file as it links wih qt libraries.
-  *
-  * The only difference in RainbruRPG is that Qt version of the test 
-  * provides the RainbruRPG logger out in std out.
-  *
-  */
+/* This doxygen block was deacivated as it causes warning due to the conflict
+ * with the API documentation block
+ *
+ * \mainpage RainbruRPG unit tests documentation
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the documentation of the unit tests of RainbruRPG. It is 
+ * independant from the RainbruRPG documentation, so no link can be made
+ * to the main documentation. If a class name appears with no link, please
+ * search it in th main code doxumentation.
+ *
+ * \section gui_sec Result GUI
+ *
+ * The unit tests results can either be shown in Qt3 or std out. Please see
+ * in the main.cpp file the \ref TEXT_OUTPUT preprocessor macro. You also may
+ * want to modify the Makefile.am file as it links wih qt libraries.
+ *
+ * The only difference in RainbruRPG is that Qt version of the test 
+ * provides the RainbruRPG logger out in std out.
+ *
+ */
 
 /** \def TEXT_OUTPUT
   * Defines if we use text or Qt3 unit tests

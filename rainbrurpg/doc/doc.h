@@ -215,7 +215,9 @@
   *
   * The \e line count is 
   * generated using David A Wheeler's 'SLOCCount'. This value must be
-  * computed on RainbruRPG and adminsite after a 'make distclean' command.
+  * computed on RainbruRPG after a 'make distclean' command.
+  * Please note that before v0.0.5-199, this number count also generated
+  * files as sources was not is \c src/ directory.
   *
   * The \e mem column is the amount of memory used by the application on
   * Win32 system with the OpenGL renderer. 
@@ -2037,7 +2039,7 @@
   */
 #endif // ENABLE_NLS
 
-#idef RB_DIRTY_FLAG
+#ifdef RB_DIRTY_FLAG
 /** \def RB_DIRTY_FLAG
   *
   * Defined if we should enable the pre-computing and dirty flag feature of
@@ -2047,7 +2049,7 @@
   */
 #endif // RB_DIRTY_FLAG
 
-#idef HAVE_M4
+#ifdef HAVE_M4
 /** \def HAVE_M4
   * Defined if the m4 executable was found. m4 is used directly for
   * some documentation generation (mainly Entity-Relation diagrams).
@@ -2055,7 +2057,7 @@
   */
 #endif // HAVE_M4
 
-#idef HAVE_DOT
+#ifdef HAVE_DOT
 /** \def HAVE_DOT
   * Defined if the dot executable was found. dot is used directly for
   * some documentation generation (mainly Entity-Relation diagrams).

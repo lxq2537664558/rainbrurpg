@@ -40,7 +40,7 @@
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
-    class QuadRenderer;
+    class Brush;
   }
 }
 // End of forward declarations
@@ -74,7 +74,7 @@ namespace RainbruRPG{
 
       // Cannot be purely virtual to provide unit tests
       /// Draw the object
-      virtual void draw(QuadRenderer*){};
+      virtual void draw(Brush*){};
       void compute(int, int, const Rectangle&);
 
       void setDirty(bool);

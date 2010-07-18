@@ -51,6 +51,12 @@ namespace RainbruRPG{
 namespace RainbruRPG{
   namespace OgreGui{
 
+    /** An ogregui container
+      *
+      * A container is a \ref WidgetList that can be drawn, by inheriting
+      * the \ref Widget interface.
+      *
+      */
     class Container : public Widget, public WidgetList
     {
     public:

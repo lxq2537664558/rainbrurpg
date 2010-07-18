@@ -22,17 +22,21 @@ lib_LTLIBRARIES = librainbrurpg-ogregui.la
 librainbrurpg_ogregui.adir=$(libdir)
 
 # Please keep this list sorted
-h_sources= Container.hpp				\
+h_sources= Brush.hpp					\
+	   Container.hpp				\
 	   Drawable.hpp					\
 	   Focusable.hpp				\
+	   GuiVertex.hpp				\
 	   Serializable.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp
 
 # Please keep this list sorted
-cc_sources=Container.cpp				\
+cc_sources=Brush.cpp					\
+	   Container.cpp				\
 	   Drawable.cpp					\
 	   Focusable.cpp				\
+	   GuiVertex.cpp				\
 	   Serializable.cpp				\
 	   Widget.cpp					\
 	   WidgetList.cpp
@@ -46,6 +50,7 @@ inc_dir=/home/mouse/programmation/rainbrurpg
 
 INCLUDES = -I$(top_srcdir)/src/common			\
 	   -I$(top_srcdir)/src/maincore			\
+	   -I$(top_srcdir)/ext				\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\

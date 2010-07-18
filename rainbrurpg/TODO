@@ -8,6 +8,8 @@ o [Carine] cross-compilation to win32
 - Version.cpp should summary dirty flag compile-time option
 
 o [rainbru] OgreGui2: see ROADMAP
+- src/ogreGui/Container.cpp is missing on CVS
+- undefined references building unit tests
 
 * Using printf for MultiColumnListDebugSettings
 
@@ -112,8 +114,24 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-203 (13 jun 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (14) Fixed a segfault in Container keyboard hanling functions
+* v0.0.5-204 (11 jul 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (8) GameState now contains a Container member and a draw function
+- OgreGui now uses Ogre::Vector3
+- Retieved GuiVertex from oldOgreGui
+- Copied functions (and needed members) from QuadRenderer to Brush
+   end, setTexturePtr, setUvMap, setScissorRectangle (2X)
+   drawRectangle, setColor, setCorners, feedVectors, drawQuad
+   xPixelToNative, yPixelToNative, checkHarwareBuffer
+- Copied functions (and needed members) from QuadRenderer to Brush
+   constructor, destructor, setHardwareBuffer, createTexture, begin
+- Brush skeleton implementation
+- Fixed some documentation warnings
+   ContainerTest, Container, OgreguiTestSuite, \file errors, doc/doc.h
+- Made changes in doc.h to explains SLOC values between r198 and r199
+
+* v0.0.5-203 (13 jun 2010 - 11 jul 2010) SLOC 40,726 UT 245 FT 40:50
+- Removed src/tests/ogreGui/DeserializationErrorTest.hpp
+- Fixed a segfault in Container keyboard hanling functions
 - ContainerTest two tests implementation
 - Fixed a typo error in the support page of the website
 - Fixed some documentation warnings in following classes:
@@ -128,24 +146,3 @@ A system that serialize widgets position and configuration
 - Focusable's event handling functions implementation
 - UML: new m4 macro to note implemented classes in gray   
 - fix a bug in rb_uml.m4 due to brackets
-
-* v0.0.5-202 (25 mar 2010 - 13 jun 2010) SLOC 40,550 UT ??? FT 37:29
-- WidgetList implementation finished
-- WidgetList::FocusNext and FocusPrevious tests pass
-- Documentation warnings fixed
-   Focusable, WidgetList, Serializable
-- Focusable squeleton implementation
-- WidgetList's empty() and setUniqueName() implementation and tests
-- WidgetListTest: two tests implemented
-- Implemented Widget's constructor for WidgetList's unittest purpose
-- WidgetList's push_back() an size() implementation
-- Fixed an error in tests/ogreGui/Makefile that makes building ail
-- WidgetListTest squeleton implementation
-- WidgetList squeleton implementation
-- Switched to 15 items by revision
-- Updated ROADMAP for precompute/drawing section
-- maincore lib error fixed
-- common/LoadBMP::input is now an std::string (was a char*)
-- rainbrudef.h uses NO_CONFIG_H
-- SerializableTest and DrawableTestimplementation moved to .cpp
-- ogreGui unit test now uses a CppUnit Registry

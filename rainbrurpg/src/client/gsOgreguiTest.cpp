@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsOgreGuiTest.cpp
+/** \file gsOgreguiTest.cpp
   * Implements an OgreGui test game state
   *
   */

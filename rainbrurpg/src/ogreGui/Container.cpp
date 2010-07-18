@@ -51,6 +51,16 @@ RainbruRPG::OgreGui::Container::~Container()
 
 }
 
+/** The key pressed event handling function
+  *
+  * It simply returns the result of the focused widget's key pressed
+  * function or return false if no widget has the focus.
+  *
+  * \param vEvent the OIS key event
+  *
+  * \return \c true if the the event is consummed otherwise returns \c false.
+  *
+  */
 bool RainbruRPG::OgreGui::Container::keyPressed(const OIS::KeyEvent& vEvent)
 {
   if (mFocused)
@@ -59,6 +69,16 @@ bool RainbruRPG::OgreGui::Container::keyPressed(const OIS::KeyEvent& vEvent)
     return false;
 }
 
+/** The key released event handling function
+  *
+  * It handles the focus cycling of widget list with \c TAB and \c shift-Tab
+  * keus.
+  *
+  * \param vEvent the OIS key event
+  *
+  * \return \c true if the the event is consummed otherwise returns \c false.
+  *
+  */
 bool RainbruRPG::OgreGui::Container::keyReleased(const OIS::KeyEvent& vEvent)
 {
   // Prevent a segfault if WidgetList is empty

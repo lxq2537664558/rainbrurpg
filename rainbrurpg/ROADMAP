@@ -116,6 +116,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 *** TODO v0.0.6
 **** TODO Sourceforge release
 - [ ] Removed CEGUI reference from Sourceforge project overview
+- [ ] Explain CEGUI give up in an homepage news
 - [ ] File release sourceforge (zip+bz2)
 **** TODO Miscelaneous                                                [28%]
      :CLOCK:
@@ -131,26 +132,24 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
-- [ ] See what o do with RainbruRPG-common.pc.in
+- [ ] See what to do with RainbruRPG-common.pc.in
 - [ ] GuiManager::createTitleOverlay issue
       deactivated due to a malformed UTF string error from Ogre
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-07-18 dim 15:35]--[2010-07-18 dim 16:06] =>  0:31
+     CLOCK: [2010-07-17 sam 16:42]--[2010-07-17 sam 17:34] =>  0:52
+     CLOCK: [2010-07-17 sam 12:14]--[2010-07-17 sam 12:48] =>  0:28
      CLOCK: [2010-07-10 sam 13:23]--[2010-07-10 sam 13:51] =>  0:28
-     CLOCK: [2010-07-10 sam 10:36]--[2010-07-10 sam 11:07] =>  0:31
+     CLOCK: [2010-07-10 sam 10:36]--[2010-07-10 sam 11:48] =>  0:31
      CLOCK: [2010-07-09 ven 10:19]--[2010-07-09 ven 11:04] =>  0:45
-     CLOCK: [2010-07-08 jeu 11:09]--[2010-07-08 jeu 11:37] =>  0:28
-     CLOCK: [2010-07-06 mar 11:12]--[2010-07-06 mar 11:56] =>  0:44
-     CLOCK: [2010-07-06 mar 11:02]--[2010-07-06 mar 11:08] =>  0:06
-     CLOCK: [2010-07-06 mar 11:01]--[2010-07-06 mar 11:02] =>  0:01
-     CLOCK: [2010-07-06 mar 10:42]--[2010-07-06 mar 11:00] =>  0:18
-     CLOCK: [2010-06-13 dim 16:12]--[2010-06-13 dim 16:35] =>  0:23
-     CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:32] =>  0:47
-     CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:13] =>  0:44
      CLOCK: [2010-06-08 mar 10:51]--[2010-06-08 mar 11:22] =>  0:31
      CLOCK: [2010-06-07 lun 15:01]--[2010-06-07 lun 15:57] =>  0:31
      CLOCK: [2010-03-25 jeu 15:07]--[2010-03-25 jeu 15:53] =>  0:46
+     CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:41] =>  1:12
+     CLOCK: [2010-07-06 mar 10:42]--[2010-07-06 mar 11:45] =>  1:03
+     CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:55] =>  1:10
      CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 19:42] =>  2:50
      CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 12:50] =>  2:32
      CLOCK: [2010-02-16 mar 18:29]--[2010-02-16 mar 21:52] =>  3:03
@@ -183,10 +182,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    to build WidgetList
       - [X] Container impl.
 	    Inherits from Widget and WidgetList
-      - [ ] Brush implmentation
-      - [ ] GameState modification
-	    - [ ] A container member named mContainer
-	    - [ ] void draw(Brush*) implementation
+      - [X] Brush minimal implmentation
+	    Remove copied functions from QuadRenderer
+      - [X] GameState modification
+	    - [X] A container member named mContainer
+	    - [X] void draw(Brush*) implementation
+      - [ ] BrushTest implementation
       - [ ] GameEngine modification
       - [ ] Drawable implementation
 	    DrawableTest should handle the disable-dirtyflag configure option

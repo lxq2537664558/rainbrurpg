@@ -57,14 +57,10 @@
 RainbruRPG::OgreGui::QuadRenderer::
 QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ,
 	     const std::string& vCreatorName):
-  mSceneManager(mgr),
-  mRenderSystem(rs),
-  mViewport(vp),
-  mCreatorName(vCreatorName),
+  // Some member initialization moved to Brush.cpp
   useScissor(false),
   alphaValue(ALPHA),
   mColor(DEFAULT_COL),
-  mTexture(NULL),
   mTargetWidth(0.0f),
   mTargetHeight(0.0f),
   mTarget(NULL),
@@ -80,31 +76,14 @@ QuadRenderer(RenderSystem* rs, SceneManager *mgr, Viewport*vp ,
   mBlendMode(QBM_UNSET),
   mState(QRS_UNSET)
 {
-  assert(vp && "Cannot create QuadRenderer with NULL viewport");
-  assert(rs && "Cannot create QuadRenderer with NULL RenderSystem");
-
-  TextureManager::getSingleton().setDefaultNumMipmaps(5);
-  setupHardwareBuffer();
-  createTexture();
-
-  mFlipY = ( mRenderSystem->getName( ) != "OpenGL Rendering Subsystem" );
-  mDrawingDevList=new DrawingDevList();
+  // Copied to Brush.cpp
 }
 
 /** The destructor
   *
   */
 RainbruRPG::OgreGui::QuadRenderer::~QuadRenderer(){
-  // We do not delete objects, just set pointers to 0
-  mSceneManager = NULL;
-  mRenderSystem = NULL;
-  mViewport     = NULL;
-  mBatchPointer = NULL;
-
-  if (mDrawingDevList){
-    delete mDrawingDevList;
-  }
-  mDrawingDevList=NULL;
+  // Copied to Brush.cpp
 }
 
 
@@ -119,33 +98,7 @@ RainbruRPG::OgreGui::QuadRenderer::~QuadRenderer(){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::setupHardwareBuffer(){
-  mRenderOp.vertexData = new Ogre::VertexData( );
-  mRenderOp.vertexData->vertexStart = 0;
-
-  Ogre::VertexDeclaration* vd = mRenderOp.vertexData->vertexDeclaration;
-
-  // Add position
-  vd->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
-
-  // Add color
-  vd->addElement( 0, Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT3 ), 
-		  Ogre::VET_FLOAT4, Ogre::VES_DIFFUSE );
-
-  // Add texture coordinates
-  vd->addElement( 0, Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT3 ) +
-		  Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT4 ),
-		  Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES );
-
-  // Create buffer
-  mBuffer = Ogre::DefaultHardwareBufferManager::getSingleton()
-    .createVertexBuffer(vd->getVertexSize( 0 ),
-			VERTEX_COUNT,
-			HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE,
-			false );
-
-  mRenderOp.vertexData->vertexBufferBinding->setBinding( 0, mBuffer );
-  mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
-  mRenderOp.useIndexes = false;
+  // Copied to Brush.cpp
 }
 
 /** Feed vectors
@@ -168,20 +121,7 @@ void RainbruRPG::OgreGui::QuadRenderer::
 feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs, 
 	    vector<ColourValue>* cols ){
 
- vert->push_back(Vector3( finalRect.left , finalRect.top, Z_VALUE ));
- vert->push_back(Vector3( finalRect.right, finalRect.top, Z_VALUE ));
- vert->push_back(Vector3( finalRect.left , finalRect.bottom   , Z_VALUE ));
- vert->push_back(Vector3( finalRect.right, finalRect.top, Z_VALUE ));
- vert->push_back(Vector3( finalRect.right, finalRect.bottom   , Z_VALUE ));
- vert->push_back(Vector3( finalRect.left , finalRect.bottom   , Z_VALUE ));
-
- uvs->push_back(Vector2( uvRect.left, uvRect.bottom ));
- uvs->push_back(Vector2( uvRect.right, uvRect.bottom ));
- uvs->push_back(Vector2( uvRect.left, uvRect.top ));
- uvs->push_back(Vector2( uvRect.right, uvRect.bottom ));
- uvs->push_back(Vector2( uvRect.right, uvRect.top ));
- uvs->push_back(Vector2( uvRect.left, uvRect.top ));
-
+  // Move to Brush
 }
 
 
@@ -191,28 +131,7 @@ feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs,
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::drawQuad(){
-  // Lock buffer
-  GuiVertex* data = NULL;
-  data=(GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
-  checkHardwareBuffer(data);
-
-  for ( size_t x = 0; x < 6; x++ ){
-    data[x].setPosition(vert[x]);
-    data[x].setColor(mColor);
-    data[x].setUvMapping(uvs[x]);
-  }
-
-  // Unlock buffer
-  try{
-    mBuffer->unlock();
-  }
-  catch(...){
-    LOGW("QuadRenderer::drawQuad mBuffer->unlock() failed");
-  }
- 
-  // Render!
-  mRenderOp.vertexData->vertexCount = 6;
-  mRenderSystem->_render( mRenderOp );
+  // Move to Brush
 }
 
 
@@ -274,10 +193,7 @@ setCorners(int x1, int y1, int x2, int y2){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 setUvMap(double u1, double v1, double u2, double v2){
-  uvRect.left  =u1;
-  uvRect.top   =v1;
-  uvRect.right =u2;
-  uvRect.bottom=v2;
+  // Moved to Brush
 }
 
 /** Fire the drawing of the quad
@@ -285,24 +201,7 @@ setUvMap(double u1, double v1, double u2, double v2){
   */
 void RainbruRPG::OgreGui::QuadRenderer::
 drawRectangle(const Ogre::Rectangle& corners){
-  setColor(ColourValue(1.0f, 1.0f, 1.0f));
-  setCorners(corners.left, corners.top, corners.right, corners.bottom);
-  feedVectors(&vert, &uvs, &cols);
-  
-  if (!usedTexture.isNull()){
-    mRenderSystem->_setTexture(0, true, usedTexture);
-  }
-
-  if (useScissor || useParentScissor){
-      mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
-				     scissorRect.right, scissorRect.bottom );
-  }
-  else{
-    mRenderSystem->setScissorTest(false);
-  }
-
-
-  drawQuad();
+  // Moved to Brush
 }
 
 /** Begin the rendering
@@ -312,36 +211,7 @@ drawRectangle(const Ogre::Rectangle& corners){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::begin(){
-  assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
-  assert(mSceneManager && "Ogre's SceneManager is a NULL object");
-  if (mViewport == NULL){
-    LOGW("Viewport is NULL, debugging QuadRenderer");
-    this->debug("QuadRenderer::begin");
-    mViewport = GameEngine::getSingleton().getViewport();
-    
-    assert(mViewport && "Ogre's ViewPort is a NULL object");
-
-    /* v0.0.5-190 : This line fix a segfault that occurs when
-     *              called from drawBeforeOverlay().
-     */
-    mRenderSystem = GameEngine::getSingleton().getOgreRoot()
-      ->getRenderSystem();
-  }
-
-  mState = QRS_BEGIN;
-
-  //  mViewport=mSceneManager->getCurrentViewport();
-  winWidth=mViewport->getActualWidth();
-  winHeight=mViewport->getActualHeight();
-
-  mRenderSystem->_setViewport( mViewport );
-  mRenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
-  mRenderSystem->_setProjectionMatrix( Ogre::Matrix4::IDENTITY );
-  mRenderSystem->_setViewMatrix( Ogre::Matrix4::IDENTITY );
-  mRenderSystem->_setTextureUnitFiltering( 0, Ogre::FO_LINEAR, Ogre::FO_LINEAR, 
-					   Ogre::FO_NONE );
-
-  mRenderSystem->_setCullingMode( Ogre::CULL_NONE );
+  // Moved to Brush.cpp
 }
 
 /** End the rendering of a frame
@@ -364,11 +234,7 @@ void RainbruRPG::OgreGui::QuadRenderer::end(){
 void RainbruRPG::OgreGui::QuadRenderer::
 setScissorRectangle(int x1, int y1, int x2, int y2){
   if (!useParentScissor){
-    scissorRect.left  =x1;
-    scissorRect.top   =y1;
-    scissorRect.right =x2;
-    scissorRect.bottom=y2;
-    useScissor=true;
+    // Moved to Brush
   }
 }
 
@@ -384,11 +250,7 @@ setScissorRectangle(int x1, int y1, int x2, int y2){
   *
   */
 double RainbruRPG::OgreGui::QuadRenderer::xPixelToNative(int i)const{
-  double d=(double)i;
-  d/=(winWidth/2);
-  d-=1.0f;
-
-  return d;
+  // Moved to Brush
 }
 
 /** Get native coordonate from a pixel value
@@ -403,18 +265,7 @@ double RainbruRPG::OgreGui::QuadRenderer::xPixelToNative(int i)const{
   *
   */
 double RainbruRPG::OgreGui::QuadRenderer::yPixelToNative(int i)const{
-  /* Cast to double is mandatory (bud fix)
-   *
-   * If we do not cast winHeight-i to double, and if the quad is
-   * bigger than viewport, we get extreme high value for d.
-   *
-   * Example : for i=800 and winHeight=640, we get d=1.78957e+07
-   *
-   */
-  double d=(double)winHeight-i;
-  d/=(winHeight/2);
-  d-=1.0f;
-  return d;
+  // Moved to Brush
 }
 
 /** Change the transparency value
@@ -760,8 +611,7 @@ void RainbruRPG::OgreGui::QuadRenderer::disableScissor(void){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::setColor(const ColourValue& cv){
-  mColor=cv;
-  mColor.a=alphaValue;
+  // Moved to Brush
 }
 
 /** Change the current texture pointer
@@ -770,8 +620,7 @@ void RainbruRPG::OgreGui::QuadRenderer::setColor(const ColourValue& cv){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::setTexturePtr(TexturePtr tex){
-  usedTexture=tex;
-  mRenderSystem->_setTexture( 0, true, tex );
+  // Moved to Brush
 }
 
 /** Set the scissor rectangle
@@ -784,9 +633,7 @@ void RainbruRPG::OgreGui::QuadRenderer::setTexturePtr(TexturePtr tex){
   */ 
 void RainbruRPG::OgreGui::QuadRenderer::
 setScissorRectangle(const Ogre::Rectangle& vRect){
-  setScissorRectangle(vRect.left, vRect.top, 
-		      vRect.right, vRect.bottom);
-
+  // Moved to Brush
 }
 
 /** Change the blending mode
@@ -870,21 +717,7 @@ setBlendMode(tQuadRendererBlendMode vMode){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::checkHardwareBuffer(GuiVertex* ptr){
-  /* Tests if Hardware buffer is locked
-   *
-   * At this point, if the HardwareVertexBuffer is not locked, a Segfault
-   * occurs. We test it a last time.
-   *
-   */
-  if (!mBuffer->isLocked()){
-    ptr = (GuiVertex*)mBuffer->lock( Ogre::HardwareBuffer::HBL_DISCARD );
-  }
-
-  LOGA(mBuffer->isLocked(), "HardwareVertexBuffer not locked. "
-       "Program should abort.");
-
-  LOGA(ptr, "HardwareVertexBuffer pointer is NULL. Program should abort.");
-
+  // Moved to Brush
 }
 
 /** Draw a rectangle filled with the given color
@@ -1253,44 +1086,7 @@ float RainbruRPG::OgreGui::QuadRenderer::setTempAlpha(float vAlpha){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::debug(const std::string& from){
-  // Intro
-  ostringstream s;
-  s << "QuadRenderer::debug() called from " << from << endl;
-  //  s << "Creator was " << mCreatorName;
-
-  // The following cause a segfault if mDrawingDevList is NULL
-  if (mDrawingDevList){
-    s << mDrawingDevList->toString() << endl;
-  }
-  else{
-    s << "mDrawingDevList is NULL" << endl;
-  }
-  s << "using scrissor rectangle : " << useScissor << endl;
-  s << "using parent scrissor : " << useParentScissor << endl;
-  s << "Scissor rectangle :" << endl
-    << "  .left   = " << scissorRect.left   << endl
-    << "  .top    = " << scissorRect.top    << endl
-    << "  .right  = " << scissorRect.right  << endl
-    << "  .bottom = " << scissorRect.bottom << endl;
-  
-  s << "Alpha value :" << alphaValue << endl;
-  s << "Is ghost enabled :" << mIsGhostEnabled << endl;
-
-  // usedTexture member
-  if (usedTexture.isNull()){
-    s << "Current texture : None" << endl;
-  }
-  else{
-    s << "Current texture : Yes (" << usedTexture.get() << ")" << endl;
-  }
-  s << "Blend mode :" << blendModeToString(mBlendMode) << endl;
-
-  // mState
-  s << "Current state : " << stateToString(mState) << "("
-    << (int)mState << ")" << endl;
-
-  LOGI(s.str().c_str());
-
+  // Moved to brush
 }
 
 /** Adds a DrawingDevSettings to the mDrawingDevList list

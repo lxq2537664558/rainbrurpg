@@ -24,6 +24,7 @@
   * Declares a base abstract class of all the GameStates
   *
   * Modifications :
+  * - 18 jul 2010 : Now uses an ogreGui's Container
   * - 29 aug 2009 : Made messages transatable with gettext
   * - 18 oct 2008 : Added a state type parameter in constructor
   * - 16 oct 2008 : Added GST_UDEF state type
@@ -48,8 +49,19 @@
 
 #include <string>
 
+// Forward declartions
+namespace RainbruRPG {
+  namespace OgreGui {
+    class Brush;
+    class Container;
+  }
+}
+// End of forward declartions
+
+
 using namespace std;
 using namespace Ogre;
+using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG {
   namespace Core {
@@ -132,6 +144,8 @@ namespace RainbruRPG {
       void setName(const string&);
       const string& getName(void)const;
 
+      void draw(Brush*);
+
     protected:
       GameState(const string&, const tGameStateType& vState = GST_UDEF);
 
@@ -149,6 +163,8 @@ namespace RainbruRPG {
 
       /** The common input wrapper */
       tGameStateType stateType;
+
+      Container* mContainer;
    };
   }
 }

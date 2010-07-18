@@ -20,7 +20,7 @@
  *
  */
 
-/** \file rainbrurpg/client/main.cpp
+/** \file src/client/main.cpp
   *
   * The file declaring the client's main() function
   *
@@ -302,6 +302,7 @@ void showHelp(void){
   *
   * \param argc The number of command line arguments
   * \param argv The command line arguments array
+  * \param geo  The game engine related options
   *
   */
 void handleCommandLineOptions(int argc, char **argv, GameEngineOptions* geo){

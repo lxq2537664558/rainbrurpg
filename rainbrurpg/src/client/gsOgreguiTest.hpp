@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsOgreGuiTest.hpp
+/** \file gsOgreguiTest.hpp
   * Declares an OgreGui test game state
   *
   * Modifications :

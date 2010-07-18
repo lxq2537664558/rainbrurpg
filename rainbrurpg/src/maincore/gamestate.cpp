@@ -27,6 +27,13 @@
 
 #include "gamestate.h"
 
+#include "gameengine.h"
+
+#include <OgreViewport.h>
+#include <Container.hpp>
+
+using namespace Ogre;
+
 /** A default protected constructor 
   *
   * This constructor is defined protected as this class should not
@@ -42,16 +49,27 @@
 RainbruRPG::Core::GameState::
 GameState(const string& vName, const tGameStateType& vType):
   name(vName),
-  stateType(vType)
+  stateType(vType),
+  mContainer(NULL)
 {
   LOGI(_("Initializing game state super-class"));
   isInit=false;
+
+  // Container with NULL parent
+
+  Viewport* mViewport=GameEngine::getSingleton().getViewport();
+  int winWidth=mViewport->getActualWidth();
+  int winHeight=mViewport->getActualHeight();
+
+  mContainer = new Container(NULL, vName + "/Container", 0, 0, 
+			     winWidth, winHeight);
 }
 
 /** A destructor 
   *
   */ 
 RainbruRPG::Core::GameState::~GameState(){
+  delete mContainer;
 }
 
 /** Return true if the init function was call
@@ -86,4 +104,10 @@ void RainbruRPG::Core::GameState::setName(const string& vName){
   */
 const string& RainbruRPG::Core::GameState::getName(void)const{
   return this->name;
+}
+
+void RainbruRPG::Core::GameState::draw(Brush* vBrush)
+{
+  // if dirty: mContainer->compute(0,0);
+  mContainer->draw(vBrush);
 }

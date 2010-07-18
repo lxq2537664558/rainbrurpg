@@ -76,14 +76,6 @@ namespace RainbruRPG {
 // End of forward declarations
 
 
-/** The maximum number of vertices
-  *
-  * It is VERTEX_COUNT/6 to know the quad limit.
-  *
-  */
-#define VERTEX_COUNT 3072
-/** The Z-order of quad */
-#define Z_VALUE      0.0f
 /** The default color */
 #define DEFAULT_COL  ColourValue(1.0f, 1.0f, 1.0f)
 /** The initialization alpha */
@@ -119,16 +111,6 @@ namespace RainbruRPG {
       QBM_GLOBAL        //!< Use global alpha value
     }tQuadRendererBlendMode;
 
-    /** Defines the actual state of the QuadRenderer
-      *
-      */
-    typedef enum{
-      QRS_UNSET,        //!< The last operation was not set
-      QRS_RESET,        //!< The last operation was reset()
-      QRS_BEGIN,        //!< The last operation was begin()
-      QRS_END           //!< The last operation was end();
-    }tQuadRendererState;
-   
     /** A class drawing Ogre primitive
       *
       * This class is used to draw primitives with scissor support. It was
@@ -221,7 +203,6 @@ namespace RainbruRPG {
 		    const std::string&);
       ~QuadRenderer();
       
-      void begin();
       void end();
       void reset();
       
@@ -250,8 +231,6 @@ namespace RainbruRPG {
 
       void setUseParentScissor(bool);
       bool getUseParentScissor(void);
-
-      void debug(const std::string&);
 
       void drawLine( int, int, int, int, const ColourValue& );
 
@@ -301,36 +280,7 @@ namespace RainbruRPG {
       std::string stateToString(const tQuadRendererState);
 
     private:
-      /** The current Ogre scene manager
-        *
-	* Used to called the \c _setpass() function.
-	*
-	*/
-      SceneManager *mSceneManager;
     
-      /** The current Ogre rendering system
-        *
-	* It is needed as all low-level rendering statement may be called
-	* on this object.
-	*
-	*/
-      RenderSystem* mRenderSystem;
-    
-      /** The current active viewport
-        * 
-	* This is need to be able to call Ogre::RenderSystem::_setViewport() 
-	* with it.
-	*
-	*/
-      Viewport* mViewport;
-    
-      /** The name of the object which create this instance
-        *
-	* This name is set in the constructor. Feed it freely, it
-	* is only a debugging help.
-	*
-	*/
-      std::string mCreatorName;
 
       /** The Ogre material pointer that handles the texture
         *
@@ -340,79 +290,12 @@ namespace RainbruRPG {
 	*/
       MaterialPtr mMaterial;
     
-      /** The rendring operation sent to the Ogre render system
-        *
-	* The informations about the current quad are sent to the Ogre
-	* rendering  system through this object.
-	*
-	*/
-      Ogre::RenderOperation mRenderOp;
-    
-      /** The buffer that draws the quad 
-        *
-	* Please see setupHardwareBuffer() for more informations.
-	*
-	*/
-      HardwareVertexBufferSharedPtr mBuffer;
-    
-      /** The rectang to draw (can be outside of scissorRect) */
-      Ogre::Rectangle finalRect;
-      
-      /** The rectangle containing texture coordonates */
-      Ogre::Rectangle uvRect;
-      
-      /** The scissor rectangle
-        *
-	* Outside of this scissor, nothing is drawn.
-	*
-	*/
-      Ogre::Rectangle scissorRect;
-    
-      /** A vector of vertexes */
-      vector<Vector3> vert;
-      /** A vector of UV mapping */
-      vector<Vector2> uvs;
-      /** A vector of color; */
-      vector<ColourValue> cols;
-    
-      /** The viewport width in pixels
-        *
-	* This value is used to compute the native OpenGL/DirectX positions 
-	* (-1.0 to 1.0) from pixel values.
-	*
-	*/
-      int winWidth;
-    
-      /** The viewport height in pixels
-        *
-	* This value is used to compute the native OpenGL/DirectX positions 
-	* (-1.0 to 1.0) from pixel values.
-	*
-	*/
-      int winHeight;
-      
-      /** Are we using a scissor test
-        *
-	* This value is by default to \c false. We set it to \c true if you call
-	* the setScissorRectangle() function. 
-	*
-	*/
-      bool useScissor;
-      
-      /** The texture alpha value */
-      float alphaValue;
-
+             
       /** Used when drawing text */
       GuiVertex* mBatchPointer;
 
       /** Used when drawing text */
       size_t mBatchCount;
-
-      /** The current drawing color */
-      ColourValue mColor;
-
-      /** A pointer to the current texture */
-      TexturePtr mTexture;
 
       /** The width of the current target */
       float mTargetWidth;
@@ -426,26 +309,6 @@ namespace RainbruRPG {
       float mTexelOffsetX;
       /** The Y offset */
       float mTexelOffsetY;
-
-      /** The texture to draw
-        *
-	* If this pointer is NULL, we do not use texture, otherwise, we 
-	* call \c OgreRenderSystem->_setTexture() to use it. It is set
-	* to NULL is the constructor of 
-	* \ref RainbruRPG::OgreGui::QuadRenderer "QuadRenderer" 
-	* and the 
-	* \ref RainbruRPG::OgreGui::QuadRenderer::reset() 
-	* "QuadRenderer::reset()" function.
-	*
-	*/
-      TexturePtr usedTexture;
-
-      /** Do we need to flip Y coordonates of rendered quads
-        * 
-	* Flipping Y coordonates are needed in DirectX subsystems.
-	*
-	*/
-      bool mFlipY;
 
       /** Are we using a container handling its own scissor
         *
@@ -476,8 +339,6 @@ namespace RainbruRPG {
       /** The current blend mode */
       tQuadRendererBlendMode mBlendMode;
       
-      /// The QuadRenderer state
-      tQuadRendererState mState;
     };
   }
 }

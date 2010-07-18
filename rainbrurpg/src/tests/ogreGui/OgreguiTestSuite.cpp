@@ -20,7 +20,7 @@
  *
  */
 
-/** \file OgreGuiTestSuite.cpp
+/** \file OgreguiTestSuite.cpp
   * Implements the test suite designed to test the OgreGui library
   *
   */
