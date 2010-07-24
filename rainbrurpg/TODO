@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-204 (11 jul 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (8) GameState now contains a Container member and a draw function
+- (12) Some documentation warnings fixed
+- Detailled ROADMAP tasks for GameEngine and Drawable
+- BrushTest skeleton implementation
+- GameState::draw implementation (mScissor member added)
+- GameState now contains a Container member and a draw function
 - OgreGui now uses Ogre::Vector3
 - Retieved GuiVertex from oldOgreGui
 - Copied functions (and needed members) from QuadRenderer to Brush

@@ -63,6 +63,12 @@ GameState(const string& vName, const tGameStateType& vType):
 
   mContainer = new Container(NULL, vName + "/Container", 0, 0, 
 			     winWidth, winHeight);
+
+  // A scissor for the whole screen to be able to call Container::compute()
+  mScissor.left = 0;
+  mScissor.top = 0;
+  mScissor.right = winWidth;
+  mScissor.bottom = winHeight;
 }
 
 /** A destructor 
@@ -106,8 +112,16 @@ const string& RainbruRPG::Core::GameState::getName(void)const{
   return this->name;
 }
 
+/** Draw the game state's Gui
+  *
+  * \param vBrush The drawing object
+  *
+  */
 void RainbruRPG::Core::GameState::draw(Brush* vBrush)
 {
   // if dirty: mContainer->compute(0,0);
+  if (mContainer->isDirty())
+    mContainer->compute(0,0, mScissor);
+
   mContainer->draw(vBrush);
 }

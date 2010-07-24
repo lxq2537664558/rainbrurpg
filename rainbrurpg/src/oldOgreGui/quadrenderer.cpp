@@ -218,8 +218,7 @@ void RainbruRPG::OgreGui::QuadRenderer::begin(){
   *
   */
 void RainbruRPG::OgreGui::QuadRenderer::end(){
-  mState = QRS_END;
-  mRenderSystem->setScissorTest( false );
+  // Moved to Brush
 }
 
 /** Set the scissor rectangle

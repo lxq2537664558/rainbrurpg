@@ -1,5 +1,22 @@
-2010-07-18 Jerome Pasquier  <rainbru@free.fr>
+2010-07-24 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Brush.cpp (Brush): Implement a default constructor
+	for unit tests purpose.
+
+	* src/ogreGui/Brush.hpp (tBrushState): Change prefix to BRS.
+	
+2010-07-23 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/test/ogreGui/Makefile.am: Added include flag for maincore
+	due to BrushTest.
+
+	* src/maincore/gamestate.cpp (draw): Calls mContainer::draw() if 
+	mContainer::isDirty().
+	* src/maincore/gamestate.h: Added a scissor rectangle member to be
+	able to call Container::compute().
+	
+2010-07-18 Jerome Pasquier  <rainbru@free.fr>
+	
 	* src/maincore/gamestate.cpp (draw): draw the container member, does not
 	handle compute and dirty flag yet.
 	* src/maincore/gamestate.cpp (GameState): mContainer created with window

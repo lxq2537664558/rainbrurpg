@@ -54,7 +54,8 @@ Brush(RenderSystem* rs, SceneManager* mgr, Viewport* vp,
   mRenderSystem(rs),
   mViewport(vp),
   mCreatorName(vCreatorName),
-  mTexture(NULL)
+  mTexture(NULL),
+  mState(BRS_UNSET)
 {
   assert(vp && "Cannot create QuadRenderer with NULL viewport");
   assert(rs && "Cannot create QuadRenderer with NULL RenderSystem");
@@ -65,6 +66,24 @@ Brush(RenderSystem* rs, SceneManager* mgr, Viewport* vp,
 
   mFlipY = ( mRenderSystem->getName( ) != "OpenGL Rendering Subsystem" );
 }
+
+/** A default constructor only suitable for unit tests
+  *
+  * \param vCreatorName The name of the creator of this resource
+  *
+  */
+RainbruRPG::OgreGui::Brush::
+Brush(const string& vCreatorName):
+  mSceneManager(NULL),
+  mRenderSystem(NULL),
+  mViewport(NULL),
+  mCreatorName(vCreatorName),
+  mTexture(NULL),
+  mState(BRS_UNSET)
+{
+
+}
+
 
 /** The destructor
   *
@@ -154,6 +173,7 @@ void RainbruRPG::OgreGui::Brush::begin()
 {
   assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
   assert(mSceneManager && "Ogre's SceneManager is a NULL object");
+
   if (mViewport == NULL){
     LOGW("Viewport is NULL, debugging QuadRenderer");
     this->debug("QuadRenderer::begin");
@@ -191,7 +211,7 @@ void RainbruRPG::OgreGui::Brush::begin()
   *             informations)
   *
   */
-void RainbruRPG::OgreGui::Brush::debug(const string& from)
+void RainbruRPG::OgreGui::Brush::debug(const std::string& from)
 {
   /*
   // Intro
@@ -240,7 +260,8 @@ void RainbruRPG::OgreGui::Brush::debug(const string& from)
   */
 void RainbruRPG::OgreGui::Brush::end()
 {
-  // Moved to Brush
+  mState = QRS_END;
+  mRenderSystem->setScissorTest( false );
 }
 
 /** Change the current texture pointer
@@ -510,4 +531,9 @@ void RainbruRPG::OgreGui::Brush::checkHardwareBuffer(GuiVertex* ptr){
 
   LOGA(ptr, "HardwareVertexBuffer pointer is NULL. Program should abort.");
 
+}
+
+void RainbruRPG::OgreGui::Brush::reset()
+{
+  mState = BRS_RESET;
 }

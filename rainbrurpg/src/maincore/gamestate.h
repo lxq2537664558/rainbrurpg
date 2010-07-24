@@ -164,7 +164,11 @@ namespace RainbruRPG {
       /** The common input wrapper */
       tGameStateType stateType;
 
+      /** The container of OgreGui widgets */
       Container* mContainer;
+
+      /** A scissor used for Container::draw() call*/
+      Ogre::Rectangle mScissor;
    };
   }
 }

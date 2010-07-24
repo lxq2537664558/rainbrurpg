@@ -14,6 +14,7 @@ ogregui2_tests_LDADD = -L$(top_srcdir)/src/common/.libs			\
 
 INCLUDES = -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
+	   -I$(top_srcdir)/src/maincore/			\
 	   $(GNET_CFLAGS) 				\
 	   $(OGRE_CFLAGS) 				\
 	   $(OIS_CFLAGS)				\
@@ -21,6 +22,7 @@ INCLUDES = -I$(top_srcdir)/src/common/ 			\
 
 ogregui2_tests_SOURCES = main.cpp			\
 			 \
+			 BrushTest.cpp			\
 			 ContainerTest.cpp		\
 			 FocusableTest.cpp		\
 			 DrawableTest.cpp		\

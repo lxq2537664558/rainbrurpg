@@ -64,20 +64,40 @@ namespace RainbruRPG{
       *
       */
     typedef enum{
-      QRS_UNSET,        //!< The last operation was not set
-      QRS_RESET,        //!< The last operation was reset()
-      QRS_BEGIN,        //!< The last operation was begin()
-      QRS_END           //!< The last operation was end();
+      BRS_UNSET,        //!< The last operation was not set
+      BRS_RESET,        //!< The last operation was reset()
+      BRS_BEGIN,        //!< The last operation was begin()
+      BRS_END           //!< The last operation was end();
     }tBrushState;
 
 
+    /** The main darwing class
+      *
+      * Handles the drawing of GUI elements' primitives. It support
+      * UV mapping of texture, multiple blending modes and scissor
+      * rectangle.
+      *
+      * To use it : 
+      * -# start with a call to begin();
+      * -# then, call setUvMap(), setScissorRectangle() 
+      *    and other parametters settings;
+      * -# call drawRectangle(); 
+      * -# Call end() when you finished to draw the frame.
+      *
+      * Repeat the second and third steps (parameters settings) for other quads
+      * you have to draw. 
+      * The drawing must be called for each frame.
+      *
+      */
     class Brush{
     public:
       Brush(RenderSystem*, SceneManager*, Viewport*, const string&);
+      Brush(const string&);
       ~Brush();
 
       void begin();
       void end();
+      void reset();
 
       void setTexturePtr(TexturePtr);
       void setUvMap(double, double, double, double);

@@ -138,6 +138,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-07-24 sam 10:19]--[2010-07-24 sam 14:20] =>  4:01
+     CLOCK: [2010-07-23 ven 11:22]--[2010-07-23 ven 11:53] =>  0:31
      CLOCK: [2010-07-18 dim 15:35]--[2010-07-18 dim 16:06] =>  0:31
      CLOCK: [2010-07-17 sam 16:42]--[2010-07-17 sam 17:34] =>  0:52
      CLOCK: [2010-07-17 sam 12:14]--[2010-07-17 sam 12:48] =>  0:28
@@ -187,10 +189,21 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] GameState modification
 	    - [X] A container member named mContainer
 	    - [X] void draw(Brush*) implementation
-      - [ ] BrushTest implementation
+      - [X] BrushTest implementation
+	    Must found a suitable constructor for Brush
       - [ ] GameEngine modification
+	    - [ ] mBrush and mGuiTransparency member
+	    - [ ] draw() and *GuiTransparency() implementation
+      - [ ] GameEngineTest implementation		  
       - [ ] Drawable implementation
-	    DrawableTest should handle the disable-dirtyflag configure option
+            - [ ] Add members from Entity-Relation diagram
+	    - [ ] Implements getter and setter
+	    - [ ] loadTexture() implementation
+	    - [ ] loadSkinnableTexture() implementation
+	    - [ ] computeAbsolute() implementation
+	    - [ ] adjustScissor() implementation
+      - [ ] DrawableTest implementation
+	    should handle the disable-dirtyflag configure option
       - [ ] Widget implementation
       - [ ] Window implementation
 - [ ] Skins
