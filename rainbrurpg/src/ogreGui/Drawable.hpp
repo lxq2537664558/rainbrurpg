@@ -36,6 +36,7 @@
 #include "config.h"
 
 #include <OgreRectangle.h> // Members are left,top,right,bottom;
+#include <OgreTexture.h>
 
 // Forward declarations
 namespace RainbruRPG{
@@ -68,8 +69,8 @@ namespace RainbruRPG{
       */
     class Drawable{
     public:
-      Drawable(Drawable*, const Rectangle&);
-      Drawable(Drawable*, int, int, int, int);
+      Drawable(Drawable*, const Rectangle&, const std::string& vSkinName = "");
+      Drawable(Drawable*, int, int, int, int, const std::string& vSkinName = "");
       virtual ~Drawable(void);
 
       // Cannot be purely virtual to provide unit tests
@@ -96,7 +97,14 @@ namespace RainbruRPG{
       const Rectangle& getAbsolute(void)const;
       const Rectangle& getScissor(void)const;
 
+      const std::string& getSkinName(void)const;
+
+      void setTexturePtr(Ogre::TexturePtr);
+      const Ogre::TexturePtr& getTexturePtr(void)const;
+
     protected:
+      void setSkinName(const std::string&);
+
       void computeAbsolute(int, int);
       void adjustScissor(const Rectangle&);
 
@@ -108,6 +116,11 @@ namespace RainbruRPG{
       Rectangle mScissor;  //!< The scissor rectangle
       Rectangle mRelative; //!< The relative bounding box
       Rectangle mAbsolute; //!< The absolute bounding box
+
+      std::string mSkinName; //!< The current skin name
+
+      Ogre::TexturePtr mTexture; //!< The current texture
+
     };
   }
 }

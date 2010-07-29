@@ -38,14 +38,15 @@
   *
   */
 RainbruRPG::OgreGui::Drawable::
-Drawable(Drawable* vParent, const Rectangle& vRelative):
+Drawable(Drawable* vParent, const Rectangle& vRelative, 
+	 const std::string& vSkinName):
   mParent(vParent),
   mRelative(vRelative)
 #ifdef RB_DIRTY_FLAG
   ,mDirty(true)
 #endif
 {
-
+  setSkinName(vSkinName);
 }
 
 /** The constructor
@@ -56,7 +57,8 @@ Drawable(Drawable* vParent, const Rectangle& vRelative):
   *
   */
 RainbruRPG::OgreGui::Drawable::
-Drawable(Drawable* vParent, int vX1, int vY1, int vX2, int vY2):
+Drawable(Drawable* vParent, int vX1, int vY1, int vX2, int vY2, 
+	 const std::string& vSkinName):
   mParent(vParent)
 #ifdef RB_DIRTY_FLAG
   ,mDirty(true)
@@ -66,6 +68,8 @@ Drawable(Drawable* vParent, int vX1, int vY1, int vX2, int vY2):
   mRelative.top    = vY1;
   mRelative.right  = vX2;
   mRelative.bottom = vY2;
+
+  setSkinName(vSkinName);
 }
 
 
@@ -160,6 +164,34 @@ const Rectangle& RainbruRPG::OgreGui::Drawable::getAbsolute(void)const{
   * \return The actual scissor
   *
   */
-const Rectangle& RainbruRPG::OgreGui::Drawable::getScissor(void)const{
+const Rectangle& RainbruRPG::OgreGui::Drawable::getScissor(void)const
+{
   return mScissor;
+}
+
+/** Get the skin name
+  *
+  *
+  *
+  */
+const std::string& RainbruRPG::OgreGui::Drawable::getSkinName(void)const
+{
+  return mSkinName;
+}
+
+void RainbruRPG::OgreGui::Drawable::setTexturePtr(Ogre::TexturePtr vTexture)
+{
+  mTexture = vTexture;
+}
+
+const Ogre::TexturePtr& RainbruRPG::OgreGui::Drawable::getTexturePtr(void) const
+{
+  return mTexture;
+}
+
+void RainbruRPG::OgreGui::Drawable::setSkinName(const std::string& vSkinName)
+{
+  if (vSkinName == "" && mParent){
+    mSkinName = mParent->getSkinName();
+  }
 }

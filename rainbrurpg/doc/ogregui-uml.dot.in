@@ -90,7 +90,7 @@ digraph G {
       [mDirty=false: bool],
       [PROP([false by default to force the first computing])]
     ]]),
-    members([[[Drawable(vParent: Drawable*,x: int, y: int, w: int, h: int, skin = "default": const string&amp;)],
+    members([[[Drawable(vParent: Drawable*,x: int, y: int, w: int, h: int, skin = "": const string&amp;)],
       [PROP([If skin is empty, take the parent skin name])],
       [ ],
       [+ inline isDirty(): bool],
@@ -278,8 +278,10 @@ that support reverse iterator.
   ])
 
   class([Window],
-    members([[[<FONT COLOR="red">Should implement events<BR/>
-	  and  skins</FONT>], [ ]]]),
+    members([[
+      [<FONT COLOR="red">Should implement events and  skins</FONT>], 
+      [PROP([Should set SkinName to "default"])]
+    ]]),
     members([[[ ], [ ]]])
   )
      

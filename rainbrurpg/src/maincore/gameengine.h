@@ -54,13 +54,20 @@
 #include <rainbrudef.h> // For the GNU gettext stuff
 
 // Forward declaration
-namespace RainbruRPG {
-  namespace Core{
+namespace RainbruRPG 
+{
+  namespace Core
+  {
     class GameState;
     class InputManager;
   }
-  namespace Network{
+  namespace Network
+  {
     class GlobalURI;
+  }
+  namespace OgreGui
+  {
+    class Brush;
   }
 }
 // End of forward declaration
@@ -70,6 +77,8 @@ using namespace Ogre;
 
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Network::Ident;
+
+using namespace RainbruRPG::OgreGui;
 
 /** \def GET_SHARE_FILE
   * A wrapper to GlobalURI's getShareFile() function
@@ -179,6 +188,11 @@ namespace RainbruRPG {
       void registerGameState(GameState*);
       size_t getGameStateIndexByName(const std::string&);
 
+      void draw();
+
+      void setGuiTransparency(float);
+      float getGuiTransparency(void) const;
+
     private:
       /** Unimplemented copy constructors 
         *
@@ -269,6 +283,12 @@ namespace RainbruRPG {
 
       /// The options structure instance of this game engine
       GameEngineOptions mOptions;
+
+      /// The primitives drawing object
+      Brush* mBrush;
+
+      /// The GUI elements alpha value
+      float mGuiTransparency;
     };
   }
 }

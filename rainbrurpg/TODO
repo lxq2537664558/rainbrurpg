@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-204 (11 jul 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (12) Some documentation warnings fixed
+- (14) Implemented some getter/setter for Drawable
+   for mSkinName (empty propagation), mTexturePtr
+- Added mBrush and mGuiTransparency to GameEngine
+   and related functions draw() and *GuiTransparency
+- Some documentation warnings fixed
 - Detailled ROADMAP tasks for GameEngine and Drawable
 - BrushTest skeleton implementation
 - GameState::draw implementation (mScissor member added)

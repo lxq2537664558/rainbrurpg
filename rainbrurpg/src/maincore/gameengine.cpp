@@ -42,6 +42,7 @@
 #include "gameengine.h"
 
 #include <logger.h>
+#include <Brush.hpp>
 
 //using namespace RainbruRPG::Events; // Removed to avoid OgreGui deps
 
@@ -222,7 +223,10 @@ void RainbruRPG::Core::GameEngine::cleanup(){
 
   delete erc;
   erc=NULL;
+
 */
+
+  delete mBrush;
 
   LOGI(_("GameEngine cleaned"));
 }
@@ -436,6 +440,9 @@ void RainbruRPG::Core::GameEngine::initOgre(){
   // Set default mipmap level (NB some APIs ignore this)
   TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
+  // Create the Brush object
+  mBrush = new Brush(mRoot->getRenderSystem(), mSceneMgr, 
+		     mViewport, "GameEngine");
 }
 
 /** Get the PagingLandScape2 scene manager
@@ -878,7 +885,36 @@ getGameStateIndexByName(const std::string& vName){
 /** Get the current Ogre viewport
   *
   */
-Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const{
+Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const
+{
   return mViewport;
 }
 
+/** Calls draw() on the actual game state
+  *
+  */
+void RainbruRPG::Core::GameEngine::draw()
+{
+  // Should set GuiTransparency
+  states[actualState]->draw(mBrush);
+}
+
+/** Changes the transparency of the GUI drawing
+  *
+  * \param vGuiTransparency The new alpha value
+  *
+  */
+void RainbruRPG::Core::GameEngine::setGuiTransparency(float vGuiTransparency)
+{
+  mGuiTransparency = vGuiTransparency;
+}
+
+/** Get the transparency of the GUI drawing
+  *
+  * \return The alpha value
+  *
+  */
+float RainbruRPG::Core::GameEngine::getGuiTransparency(void) const
+{
+  return mGuiTransparency;
+}

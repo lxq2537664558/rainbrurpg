@@ -1,5 +1,24 @@
 2010-07-24 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Drawable.cpp (setSkinName): if vSkinName is empty, take
+	the parent skin name.
+
+	* src/ogreGui/Drawable.cpp (getSkinName): implementation.
+	* src/ogreGui/Drawable.cpp (setTexturePtr): implementation.
+	* src/ogreGui/Drawable.cpp (getTexturePtr): implementation.
+
+2010-07-24 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/gameengine.cpp (getGuiTransparency): get 
+	mGuiTransparency member value.
+	* src/maincore/gameengine.cpp (setGuiTransparency): change 
+	mGuiTransparency member value.
+	* src/maincore/gameengine.cpp (draw): Draw the actual game state.
+
+	* src/maincore/gameengine.cpp (cleanup): Delete mBrush.
+	* src/maincore/gameengine.cpp (initOgre): Instantiate mBrush.
+	* src/maincore/gameengine.h (mBrush, mGuiTransparency): Members added.
+		
 	* src/ogreGui/Brush.cpp (Brush): Implement a default constructor
 	for unit tests purpose.
 

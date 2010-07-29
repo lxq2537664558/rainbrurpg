@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2010-06-14 09:59+0200\n"
+"POT-Creation-Date: 2010-07-24 01:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1705,7 +1705,7 @@ msgstr ""
 msgid "LocalTest environment successfully initialized"
 msgstr ""
 
-#: src/maincore/gamestate.cpp:47
+#: src/maincore/gamestate.cpp:55
 msgid "Initializing game state super-class"
 msgstr ""
 

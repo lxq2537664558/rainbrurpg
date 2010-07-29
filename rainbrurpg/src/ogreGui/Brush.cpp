@@ -188,7 +188,7 @@ void RainbruRPG::OgreGui::Brush::begin()
     //      ->getRenderSystem();
   }
 
-  mState = QRS_BEGIN;
+  mState = BRS_BEGIN;
 
   //  mViewport=mSceneManager->getCurrentViewport();
   winWidth=mViewport->getActualWidth();
@@ -260,7 +260,7 @@ void RainbruRPG::OgreGui::Brush::debug(const std::string& from)
   */
 void RainbruRPG::OgreGui::Brush::end()
 {
-  mState = QRS_END;
+  mState = BRS_END;
   mRenderSystem->setScissorTest( false );
 }
 
