@@ -1,3 +1,7 @@
+2010-08-14 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/TextureNotFoundException: Implementation.
+
 2010-07-24 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Drawable.cpp (setSkinName): if vSkinName is empty, take

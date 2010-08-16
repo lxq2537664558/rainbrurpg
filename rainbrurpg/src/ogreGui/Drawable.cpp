@@ -28,8 +28,16 @@
 
 #include "Drawable.hpp"
 
+#include "TextureNotFoundException.hpp"
+#include "SkinNotFoundException.hpp"
+
 #include <cstdlib> // for NULL
 #include <logger.h>
+
+#include <OgreTextureManager.h>
+#include <OgreResourceGroupManager.h>
+
+using namespace RainbruRPG::Exception;
 
 /** The constructor
   *
@@ -194,4 +202,58 @@ void RainbruRPG::OgreGui::Drawable::setSkinName(const std::string& vSkinName)
   if (vSkinName == "" && mParent){
     mSkinName = mParent->getSkinName();
   }
+}
+
+/** Load a texture by its filename and return it
+  *
+  * \param vTextureName The filename of the image file
+  *
+  * \return The texture pointer
+  *
+  * \throw RainbruRPG::Exception::TextureNotFoundException if the 
+  *        texture cannot be found
+  */
+Ogre::TexturePtr RainbruRPG::OgreGui::Drawable::
+loadTexture(const std::string& vTextureName)
+{
+  TexturePtr texture;
+  texture = Ogre::TextureManager::getSingleton()
+    .load(vTextureName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+  if (texture.isNull())
+    throw new TextureNotFoundException(vTextureName);
+  else
+    return texture;
+}
+
+/** Load a texture by its file and skin name and return it
+  *
+  * \param vSkinName    The skin name
+  * \param vTextureName The filename of the image file
+  *
+  * \return The texture pointer
+  *
+  */
+Ogre::TexturePtr RainbruRPG::OgreGui::Drawable::
+loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureName)
+{
+  TexturePtr texture;
+  string textureName = vSkinName + "." + vTextureName;
+
+  try{
+    texture = loadTexture(textureName);
+    return texture;
+  }
+  catch(const TextureNotFoundException& e){
+    try{
+      textureName = "default." + vTextureName;
+      texture = loadTexture(textureName);
+      throw SkinNotFoundException(vSkinName, vTextureName);
+    }
+    catch(const TextureNotFoundException& e){
+      throw e;
+    }
+  }
+  return Ogre::TextureManager::getSingleton()
+    .load(textureName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 }

@@ -28,8 +28,10 @@ CPPUNIT_TEST_SUITE_REGISTRATION( DrawableTest );
 /** Creates a new instance to test
   *
   */
-void DrawableTest::setUp(){ 
-    this->m_instance = new Drawable(NULL, RECT); 
+void DrawableTest::setUp()
+{
+  mRoot = NULL;
+  this->m_instance = new Drawable(NULL, RECT); 
   }
   
 /** Delete the current tested instance
@@ -133,3 +135,60 @@ void DrawableTest::setRectangle(Rectangle* r, int x1, int y1, int x2, int y2){
   r->right  = x2;
   r->bottom = y2;
 }
+
+/** Test the loading of a texture by its name
+  *
+  *
+  *
+  */
+
+void DrawableTest::listRenderers(void){
+  Ogre::RenderSystemList::iterator listIt;
+  Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
+
+  // Adds the render name to the hold browser
+  cout << "Listing available Ogre renderers :" << endl;
+  for( listIt= list->begin(); listIt!= list->end(); listIt++){
+    cout << (*listIt)->getName().c_str() << endl;
+  }
+}
+
+void DrawableTest::testLoadTexture()
+{
+  TexturePtr t;
+  try{
+    string dir="../../../config/";
+    new Ogre::Root(dir + "plugins.cfg", dir + "ogre.cfg", dir + "ogre-unittests.log");
+    listRenderers();
+
+    // Select rendersystem
+    Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
+    Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
+    Ogre::Root::getSingleton().setRenderSystem((*list->begin()));
+    Ogre::LogManager::getSingleton().createLog("Ogre.log", true, false, true);
+    Ogre::Root::getSingleton().addResourceLocation("../../../data/", "FileSystem");
+    Ogre::Root::getSingleton().getRenderSystem()->createRenderWindow("a", 20, 20, false);
+
+    setupOgre();
+    cout << "Calling loadTexture fot the first time" << endl;
+    TextureManager::getSingleton().setDefaultNumMipmaps(5);
+    t = m_instance->loadTexture("main.bmp");
+  }
+  catch(const Ogre::RenderingAPIException e){
+    cout << "Meuuuuuuuuuuuh" << endl;
+  }
+  CPPUNIT_ASSERT(!t.isNull());
+}
+
+void DrawableTest::testLoadTextureThrow()
+{
+  setupOgre();
+  m_instance->loadTexture("UnbelievableTextureNameThatShouldNotBeFound");
+}
+
+void DrawableTest::setupOgre()
+{
+  mRoot = &Ogre::Root::getSingleton();
+  
+}
+

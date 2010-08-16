@@ -31,11 +31,15 @@
 #include <iostream>
 
 #include <Drawable.hpp>
+#include <TextureNotFoundException.hpp>
+
+#include <ogreimport.h>
 #include <OgreRectangle.h>
 
 using namespace std;
 using namespace Ogre;
 using namespace RainbruRPG::OgreGui;
+using namespace RainbruRPG::Exception;
 
 #define RECT Rectangle()
 
@@ -53,7 +57,8 @@ class DrawableTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST( testComputeAbsolute );  //!< Test the absolute position
   CPPUNIT_TEST( testAdjustScissor1 );   //!< First test of the scissor
   CPPUNIT_TEST( testAdjustScissor2 );   //!< Second test of the scissor
-
+  CPPUNIT_TEST( testLoadTexture );      //!< Test the loading of a texture
+  CPPUNIT_TEST_EXCEPTION(testLoadTextureThrow, TextureNotFoundException);
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
 
@@ -72,8 +77,16 @@ public:
   void testComputeAbsolute();
   void testAdjustScissor1();
   void testAdjustScissor2();
+  void testLoadTexture();
+  void testLoadTextureThrow();
 
   void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2);
+
+private:
+  void setupOgre(void);
+  void listRenderers(void);
+
+  Ogre::Root* mRoot;
 };
 
 

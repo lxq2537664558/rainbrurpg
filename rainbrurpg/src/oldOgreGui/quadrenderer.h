@@ -89,6 +89,12 @@ using namespace Ogre;
 namespace RainbruRPG {
   namespace OgreGui {
 
+    typedef enum{
+      BRS_UNSET,        //!< The last operation was not set
+      BRS_RESET,        //!< The last operation was reset()
+      BRS_BEGIN,        //!< The last operation was begin()
+      BRS_END           //!< The last operation was end();
+    }tQuadRendererState;
     /** Enumerates the alpha blending modes
       *
       * You should use one of these modes when you call

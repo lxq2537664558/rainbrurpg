@@ -61,6 +61,7 @@ library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 INCLUDES= -I$(top_srcdir)/src/common			\
+	  -I$(top_srcdir)/src/maincore			\
 	  -I$(top_srcdir)/src/ogreGui			\
 	  -I$(top_srcdir)/ext				\
 	  $(OGRE_CFLAGS)				\

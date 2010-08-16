@@ -29,7 +29,10 @@ h_sources= Brush.hpp					\
 	   GuiVertex.hpp				\
 	   Serializable.hpp				\
 	   Widget.hpp					\
-	   WidgetList.hpp
+	   WidgetList.hpp				\
+	   \
+	   SkinNotFoundException.hpp			\
+	   TextureNotFoundException.hpp
 
 # Please keep this list sorted
 cc_sources=Brush.cpp					\
@@ -39,7 +42,10 @@ cc_sources=Brush.cpp					\
 	   GuiVertex.cpp				\
 	   Serializable.cpp				\
 	   Widget.cpp					\
-	   WidgetList.cpp
+	   WidgetList.cpp				\
+	   \
+	   SkinNotFoundException.cpp			\
+	   TextureNotFoundException.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_OGREGUI_NAME)
 library_include_HEADERS = $(h_sources)

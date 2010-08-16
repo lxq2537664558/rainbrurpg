@@ -144,6 +144,8 @@ namespace RainbruRPG {
       /** An empty default constructor */
       GameEngine(){};
 
+      virtual ~GameEngine(){};
+
       void init(const GameEngineOptions&);
       /// The singleton destructor
       void cleanup();

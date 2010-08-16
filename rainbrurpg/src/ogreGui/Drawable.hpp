@@ -102,6 +102,9 @@ namespace RainbruRPG{
       void setTexturePtr(Ogre::TexturePtr);
       const Ogre::TexturePtr& getTexturePtr(void)const;
 
+      Ogre::TexturePtr loadTexture(const std::string&);
+      Ogre::TexturePtr loadSkinnableTexture(const std::string&, const std::string&);
+
     protected:
       void setSkinName(const std::string&);
 

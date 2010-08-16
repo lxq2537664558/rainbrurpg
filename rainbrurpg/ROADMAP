@@ -138,6 +138,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-08-15 dim 13:57]--[2010-08-15 dim 14:10] =>  0:13
+     CLOCK: [2010-08-15 dim 11:40]--[2010-08-15 dim 12:09] =>  0:29
+     CLOCK: [2010-08-15 dim 10:38]--[2010-08-15 dim 11:05] =>  0:27
+     CLOCK: [2010-08-14 sam 17:13]--[2010-08-14 sam 17:34] =>  0:21
+     CLOCK: [2010-08-14 sam 14:57]--[2010-08-14 sam 15:32] =>  0:35
+     CLOCK: [2010-08-14 sam 12:51]--[2010-08-14 sam 13:07] =>  0:16
      CLOCK: [2010-07-25 dim 09:53]--[2010-07-25 dim 10:15] =>  0:22
      CLOCK: [2010-07-24 sam 19:38]--[2010-07-24 sam 20:09] =>  0:31
      CLOCK: [2010-07-24 sam 10:19]--[2010-07-24 sam 14:20] =>  4:01
@@ -199,8 +205,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [-] Drawable implementation
             - [X] Add members from Entity-Relation diagram
 	    - [X] Implements getter and setter
-	    - [ ] loadTexture() implementation
-	    - [ ] loadSkinnableTexture() implementation
+	    - [X] loadTexture() implementation
+	    - [-] loadSkinnableTexture() implementation
+		  - [X] class implementation
+		  - [ ] tests implementation
+		  - [ ] UnitTests should initialize TextureManager correctly
+		  - [ ] UnitTests should work again
 	    - [ ] computeAbsolute() implementation
 	    - [ ] adjustScissor() implementation
       - [ ] DrawableTest implementation
