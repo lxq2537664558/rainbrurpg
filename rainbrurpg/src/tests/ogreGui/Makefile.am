@@ -11,12 +11,13 @@ ogregui2_tests_LDADD = -L$(top_srcdir)/src/common/.libs			\
 			 $(RPG_LIB_ADD)					\
 			 $(CPPUNIT_LIBS)				\
 			 $(SIGC_LIBS)					\
-	   		-lcppunit
-
+	   		-lcppunit					\
+			$(top_srcdir)/src/tests/helpers/libtesthelpers.la
 
 INCLUDES = -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
+	   -I$(top_srcdir)/src/tests/helpers/		\
 	   $(GNET_CFLAGS) 				\
 	   $(OGRE_CFLAGS) 				\
 	   $(OIS_CFLAGS)				\
@@ -28,5 +29,6 @@ ogregui2_tests_SOURCES = main.cpp			\
 			 ContainerTest.cpp		\
 			 FocusableTest.cpp		\
 			 DrawableTest.cpp		\
+			 DrawableTestWithOgre.cpp	\
 			 SerializableTest.cpp		\
 			 WidgetListTest.cpp

@@ -138,6 +138,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-08-18 mer. 22:59]--[2010-08-18 mer. 23:32] =>  0:33
+     CLOCK: [2010-08-18 mer. 20:47]--[2010-08-18 mer. 21:21] =>  0:34
+     CLOCK: [2010-08-18 mer. 17:31]--[2010-08-18 mer. 20:47] =>  3:16
+     CLOCK: [2010-08-18 mer. 15:24]--[2010-08-18 mer. 16:07] =>  0:43
+     CLOCK: [2010-08-18 mer. 11:46]--[2010-08-18 mer. 12:11] =>  0:25
+     CLOCK: [2010-08-17 mar 19:26]--[2010-08-17 mar 19:59] =>  0:33
      CLOCK: [2010-08-15 dim 13:57]--[2010-08-15 dim 14:10] =>  0:13
      CLOCK: [2010-08-15 dim 11:40]--[2010-08-15 dim 12:09] =>  0:29
      CLOCK: [2010-08-15 dim 10:38]--[2010-08-15 dim 11:05] =>  0:27
@@ -208,11 +214,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] loadTexture() implementation
 	    - [-] loadSkinnableTexture() implementation
 		  - [X] class implementation
-		  - [ ] tests implementation
-		  - [ ] UnitTests should initialize TextureManager correctly
-		  - [ ] UnitTests should work again
-	    - [ ] computeAbsolute() implementation
-	    - [ ] adjustScissor() implementation
+		  - [X] tests implementation
+		  - [X] UnitTests should initialize TextureManager correctly
+	    - [ ] computeAbsolute() implementation + unittests
+	    - [ ] adjustScissor() implementation + unittests
       - [ ] DrawableTest implementation
 	    should handle the disable-dirtyflag configure option
 	    should handle the empty skinName propagation

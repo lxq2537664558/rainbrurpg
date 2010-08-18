@@ -38,6 +38,9 @@
 #include <OgreRectangle.h> // Members are left,top,right,bottom;
 #include <OgreTexture.h>
 
+#include "TextureNotFoundException.hpp" // uses in throw() cannot be forwarded
+#include "SkinNotFoundException.hpp"
+
 // Forward declarations
 namespace RainbruRPG{
   namespace OgreGui{
@@ -47,6 +50,7 @@ namespace RainbruRPG{
 // End of forward declarations
 
 using namespace Ogre;
+using namespace RainbruRPG::Exception;
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -102,8 +106,10 @@ namespace RainbruRPG{
       void setTexturePtr(Ogre::TexturePtr);
       const Ogre::TexturePtr& getTexturePtr(void)const;
 
-      Ogre::TexturePtr loadTexture(const std::string&);
-      Ogre::TexturePtr loadSkinnableTexture(const std::string&, const std::string&);
+      void loadTexture(const std::string&)throw(TextureNotFoundException);
+      
+      void loadSkinnableTexture(const std::string&, const std::string&)
+	throw(TextureNotFoundException,SkinNotFoundException);
 
     protected:
       void setSkinName(const std::string&);

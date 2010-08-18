@@ -17,25 +17,25 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-# Simply create a 'libtool convenience library' because this code is note
-# mine. It is later incorporated in the common/ library. Headers are
-# installed in the common directory
+# This is a 'libtool convenience library' containing some helpers that can be
+# used in unit tests.
 
-noinst_LTLIBRARIES = libexternal.la
+noinst_LTLIBRARIES = libtesthelpers.la
 
-h_sources= EasyBMP_BMP.h			\
-	   EasyBMP_DataStructures.h		\
-	   EasyBMP.h				\
-	   EasyBMP_VariousBMPutilities.h	\
-	   tinystr.h				\
-	   tinyxml.h
-
-libexternal_la_SOURCES = EasyBMP.cpp		\
-			 tinystr.cpp		\
-			 tinyxml.cpp		\
-			 tinyxmlerror.cpp	\
-			 tinyxmlparser.cpp
+libtesthelpers_ladir = $(includedir)/testhelpers
+libtesthelpers_la_HEADERS = OgreMinimalSetup.hpp
+libtesthelpers_la_SOURCES = OgreMinimalSetup.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
-INCLUDES = -I$(top_srcdir)/src/common/
+INCLUDES = -I$(top_srcdir)/src/common/		\
+	   -I$(top_srcdir)/src/maincore/	\
+	   $(OGRE_CFLAGS)
+
+libtesthelpers_la_LIBADD = $(OGRE_LIBS)
+
+# The executable created here is just used for memory checking using `valgrind`.
+bin_PROGRAMS=ogreminimalsetup
+ogreminimalsetup_SOURCES=main.cpp
+ogreminimalsetup_LDADD= libtesthelpers.la $(OGRE_LIBS)
+

@@ -169,7 +169,6 @@ void WidgetListTest::testFocusMixed(){
   CPPUNIT_ASSERT( fw == &w1 );
 
   Widget* fw2 = m_instance->focusPrevious();
-  cout << fw2;
   CPPUNIT_ASSERT( fw2 == &w4 );
 
   Widget* fw3 = m_instance->focusPrevious();

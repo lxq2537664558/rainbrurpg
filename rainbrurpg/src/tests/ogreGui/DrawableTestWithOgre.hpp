@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef DRAWABLE_TEST_H
-#define DRAWABLE_TEST_H
+#ifndef _DRAWABLE_TEST_WITH_OGRE_HPP_
+#define _DRAWABLE_TEST_WITH_OGRE_HPP_
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
@@ -37,29 +37,22 @@
 #include <ogreimport.h>
 #include <OgreRectangle.h>
 
-using namespace std;
-using namespace Ogre;
+#include <OgreMinimalSetup.hpp>
+
 using namespace RainbruRPG::OgreGui;
 
-#define RECT Rectangle()
-
-/** A test case for ogreGui's Drawable 
-  *
-  * \note These tests are only for Drawable without Ogre. For Drawable tests
-  *       needing Ogre, please see DrawableTestWithOgre.
-  *
-  */
-class DrawableTest : public CPPUNIT_NS::TestFixture
+class DrawableTestWithOgre : 
+  public CPPUNIT_NS::TestFixture, 
+  public OgreMinimalSetup
 {
   /// The beginning of the test fixture
-  CPPUNIT_TEST_SUITE( DrawableTest );
+  CPPUNIT_TEST_SUITE( DrawableTestWithOgre );
 
-  CPPUNIT_TEST( testParent );           //!< The parent's test
-  CPPUNIT_TEST( testDirty );            //!< The dirty flag test
-  CPPUNIT_TEST( testDirtyPropagation ); //!< Test the dirty flag propagation
-  CPPUNIT_TEST( testComputeAbsolute );  //!< Test the absolute position
-  CPPUNIT_TEST( testAdjustScissor1 );   //!< First test of the scissor
-  CPPUNIT_TEST( testAdjustScissor2 );   //!< Second test of the scissor
+  CPPUNIT_TEST( testLoadTexture );      //!< Test the loading of a texture
+  CPPUNIT_TEST_EXCEPTION(testLoadTextureThrow, TextureNotFoundException);
+  CPPUNIT_TEST( testLoadSkinnable );    //!< Test the loading of a skinnable texture
+  CPPUNIT_TEST_EXCEPTION(testLoadSkinnableSkinNotFound, SkinNotFoundException);
+  CPPUNIT_TEST_EXCEPTION(testLoadSkinnableTextureNotFound, TextureNotFoundException);
   
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -73,15 +66,13 @@ protected:
 public:
   void setUp();
   void tearDown();
-  void testParent();
-  void testDirty();
-  void testDirtyPropagation();
-  void testComputeAbsolute();
-  void testAdjustScissor1();
-  void testAdjustScissor2();
 
-protected:
-  void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2);
+  void testLoadTexture();
+  void testLoadTextureThrow();
+  void testLoadSkinnable();
+  void testLoadSkinnableSkinNotFound();
+  void testLoadSkinnableTextureNotFound();
 };
 
-#endif // DRAWABLE_TEST_H
+
+#endif // ! _DRAWABLE_TEST_WITH_OGRE_HPP_

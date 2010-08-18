@@ -1,3 +1,21 @@
+* v0.0.5-203 (13 jun 2010 - 11 jul 2010) SLOC 40,726 UT 245 FT 40:50
+- Removed src/tests/ogreGui/DeserializationErrorTest.hpp
+- Fixed a segfault in Container keyboard hanling functions
+- ContainerTest two tests implementation
+- Fixed a typo error in the support page of the website
+- Fixed some documentation warnings in following classes:
+   Focusable, WidgetListTest, SerializableTest, Widget, DrawableTest
+- ContainerTest skeleton implemented
+- Container's key-related function implemented
+- Container's event-related functions copied from Focusable
+- Container constructor implementation
+- Container skeleton implementation
+- Serializable noted as implemented in Entity-Relation diagram
+- FocusableTest implementation
+- Focusable's event handling functions implementation
+- UML: new m4 macro to note implemented classes in gray   
+- fix a bug in rb_uml.m4 due to brackets
+	
 * v0.0.5-202 (25 mar 2010 - 13 jun 2010) SLOC 40,550 UT NC FT 37:29
 - WidgetList implementation finished
 - WidgetList::FocusNext and FocusPrevious tests pass

@@ -114,8 +114,16 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-204 (11 jul 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (15) Continue Drawable's implementation
+* v0.0.5-205 (16 aug 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (6) Separated DrawableTest and DrawableTestWithOgre
+- DrawableTest SkinnableTexture-related tests work
+- DrawableTest::testLoadTextureThrow works
+- DrawableTest::testLoadTexture works
+- tests/helpers/OgreMinimalSetup::teardownOgre() implementation
+- Created a unit tests helpers convenience library
+
+* v0.0.5-204 (11 jul 2010 - 16 aug 2010) SLOC 41,211 UT ??? FT 51:08
+- Continue Drawable's implementation
    loadTexture + tests, loadSkinnableTexture
 - Implemented some getter/setter for Drawable
    for mSkinName (empty propagation), mTexturePtr
@@ -138,21 +146,3 @@ A system that serialize widgets position and configuration
 - Fixed some documentation warnings
    ContainerTest, Container, OgreguiTestSuite, \file errors, doc/doc.h
 - Made changes in doc.h to explains SLOC values between r198 and r199
-
-* v0.0.5-203 (13 jun 2010 - 11 jul 2010) SLOC 40,726 UT 245 FT 40:50
-- Removed src/tests/ogreGui/DeserializationErrorTest.hpp
-- Fixed a segfault in Container keyboard hanling functions
-- ContainerTest two tests implementation
-- Fixed a typo error in the support page of the website
-- Fixed some documentation warnings in following classes:
-   Focusable, WidgetListTest, SerializableTest, Widget, DrawableTest
-- ContainerTest skeleton implemented
-- Container's key-related function implemented
-- Container's event-related functions copied from Focusable
-- Container constructor implementation
-- Container skeleton implementation
-- Serializable noted as implemented in Entity-Relation diagram
-- FocusableTest implementation
-- Focusable's event handling functions implementation
-- UML: new m4 macro to note implemented classes in gray   
-- fix a bug in rb_uml.m4 due to brackets

@@ -1,3 +1,20 @@
+2010-08-17 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/ogreGui/DrawableTestWithOgre: Contains Ogre-based unit tests.
+	
+	* src/tests/ogreGui/DrawableTest: SkinnableTexture-related tests work.
+
+	* src/tests/helpers/OgreMinimalSetup.cpp (teardownOgre): Delete Pgre::Logger
+	instance to prevent a segfault in second setup.
+
+	* src/tests/helpers/OgreMinimalSetup.cpp (teardownOgre): Implementation finished.
+
+	* src/tests/helpers/main.cpp: Simply use OgreMinimalSetup for valgrind tests.
+	
+	* src/tests/helpers/OgreMinimalSetup.cpp: Implementation started.
+	* src/tests/helpers/OgreMinimalSetup.hpp: Implementation started.
+	* src/Makefile.am (SUBDIRS): added helpers and oreGui.
+
 2010-08-14 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/TextureNotFoundException: Implementation.
