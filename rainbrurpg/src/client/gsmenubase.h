@@ -45,7 +45,7 @@
 #include <OIS/OISMouse.h>
 
 #include "gamestate.h"
-#include "bggui.h"
+//#include "bggui.h"
 
 /** Uncomment it to get a dynamic menu background
   *
@@ -202,7 +202,7 @@ namespace RainbruRPG {
       int mouseY;
 
       /** Contains all menu background widget */
-      Window* menuWindow;
+      BetaGUI::Window* menuWindow;
 
 
 #ifdef USE_DYNAMIC_MENU

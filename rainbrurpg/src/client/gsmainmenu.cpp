@@ -25,12 +25,14 @@
   *
   */
 
+#include <Window.hpp>
+
 #include "gsmainmenu.h"
 
 #include "keyboardnavigation.h"
 #include "vcconstant.h"
-#include "guimanager.h"
-
+//#include "guimanager.h" // redefinition of class Widget
+/*
 #include "bgcallback.h"
 #include "pushbutton.h"
 #include "vscrollbar.h"
@@ -40,8 +42,9 @@
 #include "multicolumnlistitem.h"
 #include "multicolumnlistcolumn.h"
 #include "label.h"
-
+*/
 #include <OgreViewport.h>
+
 
 using namespace RainbruRPG::OgreGui;
 
@@ -131,8 +134,8 @@ bool RainbruRPG::Core::gsMainMenu::
 onNetworkGameClicked(){
   LOGI("NetworkGame button clicked");
 
-
-  GuiManager::getSingleton().beginGuiFadeOut();
+  /*
+    GuiManager::getSingleton().beginGuiFadeOut();
 
   // We must wait for the CEGUI fade end to prevent
   // SEGFAULT in access to CEGUI windows (getAlpha())
@@ -142,7 +145,7 @@ onNetworkGameClicked(){
 
   GameEngine::getSingleton().changeState("gsConnection");
   GuiManager::getSingleton().beginGuiFadeIn();
-
+  */
 
   return true;
 }
@@ -156,8 +159,8 @@ void RainbruRPG::Core::gsMainMenu::resume(){
 
   setupMainMenu();
 
-  if (window)
-    window->show();
+  //  if (window)
+  //    window->show();
 
   setupTabOrder();
 
@@ -191,6 +194,9 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   *
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
+
+  mContainer->add(new Window(mContainer, "aze", 10, 20, 100, 100);
+
   /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();
 

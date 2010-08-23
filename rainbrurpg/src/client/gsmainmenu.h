@@ -38,16 +38,20 @@
 #include <hashpassword.h>
 
 #include "gsmenubase.h"
-#include "bgbutton.h"
-#include "bgwindow.h"
+//#include "bgbutton.h"
+//#include "bgwindow.h"
 #include "bglistener.h"
 
 #include "../config.h"
 
 // Forward declarations
+namespace BetaGUI{
+  class Button;
+}
 namespace RainbruRPG{
   namespace OgreGui{
     class PushButton;
+    class Window;
   }
 }
 // End of forward declarations

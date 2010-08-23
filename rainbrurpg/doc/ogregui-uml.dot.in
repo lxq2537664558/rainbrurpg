@@ -78,7 +78,7 @@ digraph G {
 ]])
   )
 
-  class([Drawable],
+  implemented_class([Drawable],
     members([[
       [mRelativeX: int], [mRelativeY: int],
       [mWidth: int], [mHeight: int],
@@ -251,7 +251,7 @@ WidgetList::focusPrevious().
     ]])
   )
 
-  class([Widget],
+  implemented_class([Widget],
     members([[[ ], [ ]]]),
     members([[[ ], [ ]]])
   )

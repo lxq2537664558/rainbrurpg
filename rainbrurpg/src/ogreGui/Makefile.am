@@ -30,6 +30,7 @@ h_sources= Brush.hpp					\
 	   Serializable.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp				\
+	   Window.hpp					\
 	   \
 	   SkinNotFoundException.hpp			\
 	   TextureNotFoundException.hpp
@@ -43,6 +44,7 @@ cc_sources=Brush.cpp					\
 	   Serializable.cpp				\
 	   Widget.cpp					\
 	   WidgetList.cpp				\
+	   Window.cpp					\
 	   \
 	   SkinNotFoundException.cpp			\
 	   TextureNotFoundException.cpp

@@ -40,6 +40,7 @@ INCLUDES = -I$(top_srcdir)/ext				\
 	   -I$(top_srcdir)/src/common			\
 	   -I$(top_srcdir)/src/maincore			\
 	   -I$(top_srcdir)/src/oldOgreGui		\
+	   -I$(top_srcdir)/src/ogreGui			\
 	   $(OIS_CFLAGS)				\
 	   $(OGRE_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\

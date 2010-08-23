@@ -1,3 +1,13 @@
+2010-08-22 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/client/gsmainmenu.cpp: Trying to fix name conflict with oldOgreGui
+	and OgreGui to test drawing implementation.
+
+2010-08-21 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Window.cpp: Base implementation.
+	* src/ogreGui/Window.hpp: Base implementation.
+	
 2010-08-17 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/tests/ogreGui/DrawableTestWithOgre: Contains Ogre-based unit tests.

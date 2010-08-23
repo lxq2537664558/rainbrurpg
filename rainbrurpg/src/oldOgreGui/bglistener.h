@@ -26,7 +26,9 @@
 #define _BETAGUI_LISTENER_H_
 
 #include "object.h"
-#include "bgbutton.h"
+//#include "bgbutton.h"
+
+class Button;
 
 namespace BetaGUI {
 
