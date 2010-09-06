@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-205 (16 aug 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (8) Fixed manu build issue in gsMainMenu
+- (9) Trying to build the client
+   Issues due to switch to new OgreGui (gsmainmenu, gsconection)
+- Fixed menu build issue in gsMainMenu
    switching to oldOgreGui to OgreGui
 - Window implementation
 - Separated DrawableTest and DrawableTestWithOgre

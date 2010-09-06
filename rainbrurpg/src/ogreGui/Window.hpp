@@ -42,6 +42,7 @@ namespace RainbruRPG{
 
     class Window : public Container
     {
+    public:
       Window(Container*, const string&, int, int, int, int);
       virtual ~Window();
     };

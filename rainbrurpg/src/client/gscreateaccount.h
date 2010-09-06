@@ -56,6 +56,11 @@ namespace RainbruRPG{
 }
 // End of forward declarations
 
+// A hack to make the object built
+namespace BetaGUI{
+  typedef void Button;
+}
+
 using namespace BetaGUI;
 using namespace RainbruRPG::OgreGui;
 using namespace RainbruRPG::Network::Ident;

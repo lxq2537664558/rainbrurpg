@@ -141,7 +141,7 @@ namespace RainbruRPG {
       /** The Exit button, kept for testing it */
       BetaGUI::Button* btnExit;
       /** The window where the buttons are added */
-      BetaGUI::Window* window;
+      OgreGui::Window* window;
     };
   }
 }

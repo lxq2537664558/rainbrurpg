@@ -46,7 +46,7 @@
 #include "gameengine.h"
 #include "velocitycalculator.h"
 #include "vcconstant.h"
-#include "messagebox.h"
+//#include "messagebox.h"
 
 //#define MGM_SHOW_MESSAGE_BOX_WARNING
 

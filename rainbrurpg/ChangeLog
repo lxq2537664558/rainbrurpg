@@ -1,3 +1,9 @@
+2010-09-04 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/client/gsconnection.cpp: Can now be built with new OgreGui but need
+	some ugky hach for BetaGUI::Button.
+	* src/client/gsmainmenu.cpp: Can now be built with new OgreGui.
+
 2010-08-22 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/client/gsmainmenu.cpp: Trying to fix name conflict with oldOgreGui

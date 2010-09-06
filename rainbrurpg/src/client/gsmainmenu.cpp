@@ -31,6 +31,7 @@
 
 #include "keyboardnavigation.h"
 #include "vcconstant.h"
+
 //#include "guimanager.h" // redefinition of class Widget
 /*
 #include "bgcallback.h"
@@ -44,6 +45,7 @@
 #include "label.h"
 */
 #include <OgreViewport.h>
+#include <gameengine.h>
 
 
 using namespace RainbruRPG::OgreGui;
@@ -195,7 +197,7 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
-  mContainer->add(new Window(mContainer, "aze", 10, 20, 100, 100);
+  mContainer->push_back(new OgreGui::Window(mContainer, "aze", 10, 20, 100, 100));
 
   /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();
@@ -296,7 +298,7 @@ void RainbruRPG::Core::gsMainMenu::onButtonPress(BetaGUI::Button* b){
   */
 void RainbruRPG::Core::gsMainMenu::pause(){
   if (window){
-    window->hide();
+    //    window->hide();
     delete window;
     window=NULL;
   }

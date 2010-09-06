@@ -30,9 +30,9 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
-#include <bgwindow.h>
+//#include <bgwindow.h>
 #include <bgtextinput.h>
-#include <pushbutton.h>
+//#include <pushbutton.h>
 #include <label.h>
 
 
@@ -69,16 +69,16 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
     velocity=NULL;
   }
 
-  delete btnBack;
+  //  delete btnBack;
   btnBack=NULL;
 
-  delete btnConnect;
+  //  delete btnConnect;
   btnConnect=NULL;
 
-  delete btnCreateAccount;
+  //  delete btnCreateAccount;
   btnCreateAccount=NULL;
 
-  delete btnLostPwd;
+  //  delete btnLostPwd;
   btnLostPwd=NULL;
 
   delete tiUserName;
@@ -87,10 +87,10 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
   delete tiPassword;
   tiPassword=NULL;
 
-  delete window;
+  //  delete window;
   window=NULL;
 
-  delete winBack;
+  //  delete winBack;
   winBack=NULL;
 }
 
@@ -330,14 +330,14 @@ void RainbruRPG::Core::gsConnection::pause(){
   LOGI("gsConnection::pause() called");
 
   if (window){
-    window->hide();
-    delete window;
+    //    window->hide();
+    //    delete window;
     window=NULL;
   }
 
   if (winBack){
-    winBack->hide();
-    delete winBack;
+    //    winBack->hide();
+    //    delete winBack;
     winBack=NULL;
   }
 
