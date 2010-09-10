@@ -40,13 +40,13 @@
 #include "gsmenubase.h"
 //#include "bgbutton.h"
 //#include "bgwindow.h"
-#include "bglistener.h"
+//#include "bglistener.h"
 
 #include "../config.h"
 
 // Forward declarations
 namespace BetaGUI{
-  class Button;
+  //  class Button;
 }
 namespace RainbruRPG{
   namespace OgreGui{
@@ -55,6 +55,11 @@ namespace RainbruRPG{
   }
 }
 // End of forward declarations
+
+// A hack to make the object built
+namespace BetaGUI{
+  typedef void Button;
+}
 
 using namespace RainbruRPG::Network::Ident;
 
@@ -80,7 +85,8 @@ namespace RainbruRPG {
       *       script is called with the \c --enable-mcl-test option.
       *
       */
-    class gsMainMenu : public gsMenuBase, public BetaGUI::BetaGUIListener{
+    class gsMainMenu : public gsMenuBase{
+      //, public BetaGUI::BetaGUIListener{ Removed for new OgreGui
     public:
       gsMainMenu();
       virtual ~gsMainMenu();

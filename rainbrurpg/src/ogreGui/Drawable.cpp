@@ -39,6 +39,8 @@
   *
   * \param vParent   The parent used for dirty flag propagation (can be NULL).
   * \param vRelative The placement of the widget
+  * \param vSkinName The skin name. If an empty string is passed, the
+  *                  parent's skin name will be used.
   *
   */
 RainbruRPG::OgreGui::Drawable::
@@ -55,9 +57,11 @@ Drawable(Drawable* vParent, const Rectangle& vRelative,
 
 /** The constructor
   *
-  * \param vParent  The parent used for dirty flag propagation (can be NULL).
-  * \param vX1, vY1 The position of the left/top corner relative to parent
-  * \param vX2, vY2 The position of the right/bottom corner relative to parent
+  * \param vParent   The parent used for dirty flag propagation (can be NULL).
+  * \param vX1, vY1  The position of the left/top corner relative to parent
+  * \param vX2, vY2  The position of the right/bottom corner relative to parent
+  * \param vSkinName The skin name. If an empty string is passed, the
+  *                  parent's skin name will be used.
   *
   */
 RainbruRPG::OgreGui::Drawable::
@@ -183,16 +187,32 @@ const std::string& RainbruRPG::OgreGui::Drawable::getSkinName(void)const
   return mSkinName;
 }
 
+/** Change the current texture pointer
+  *
+  * \param vTexture The new texture pointer
+  *
+  */
 void RainbruRPG::OgreGui::Drawable::setTexturePtr(Ogre::TexturePtr vTexture)
 {
   mTexture = vTexture;
 }
 
+/** Returns the current texture pointer
+  *
+  * \return The content of mTexture
+  *
+  */
 const Ogre::TexturePtr& RainbruRPG::OgreGui::Drawable::getTexturePtr(void) const
 {
   return mTexture;
 }
 
+/** Set the current skin's name
+  *
+  * \param vSkinName The new skin name or the parent's skin name if 
+  *        empty string.
+  *
+  */
 void RainbruRPG::OgreGui::Drawable::setSkinName(const std::string& vSkinName)
 {
   if (vSkinName == "" && mParent){

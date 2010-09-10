@@ -138,6 +138,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-09-07 mar 08:46]--[2010-09-07 mar 09:25] =>  0:39
      CLOCK: [2010-09-04 sam. 19:59]--[2010-09-04 sam. 20:22] =>  0:23
      CLOCK: [2010-08-22 dim. 12:37]--[2010-08-22 dim. 13:03] =>  0:26
      CLOCK: [2010-08-21 sam. 16:35]--[2010-08-21 sam. 16:55] =>  0:20
@@ -225,7 +226,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    should handle the disable-dirtyflag configure option
 	    should handle the empty skinName propagation
       - [X] Widget implementation
-      - [ ] Makes the client/ building works again
+      - [X] Makes the client/ building works again
       - [ ] Window implementation
 - [ ] Skins
       - [ ] Window

@@ -1,7 +1,16 @@
+2010-09-07 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/client/: Removed ambiguities for Window in some files.
+	
+	* src/client/gsmainmenu.cpp: Can now be built with new OgreGui.
+	* src/client/gsserverlist.cpp: Can now be built with new OgreGui.
+	* src/client/gscreateaccount.cpp: Can now be built with new OgreGui.
+
+
 2010-09-04 Jerome Pasquier  <rainbru@free.fr>
 
-	* src/client/gsconnection.cpp: Can now be built with new OgreGui but need
-	some ugky hach for BetaGUI::Button.
+	* src/client/gsconnection.cpp: Can now be built with new OgreGui but 
+	need some ugly hack for BetaGUI::Button.
 	* src/client/gsmainmenu.cpp: Can now be built with new OgreGui.
 
 2010-08-22 Jerome Pasquier  <rainbru@free.fr>

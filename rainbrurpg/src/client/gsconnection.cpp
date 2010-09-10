@@ -31,7 +31,7 @@
 #include "guimanager.h"
 
 //#include <bgwindow.h>
-#include <bgtextinput.h>
+//#include <bgtextinput.h>
 //#include <pushbutton.h>
 #include <label.h>
 
@@ -81,10 +81,10 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
   //  delete btnLostPwd;
   btnLostPwd=NULL;
 
-  delete tiUserName;
+  //  delete tiUserName;
   tiUserName=NULL;
 
-  delete tiPassword;
+  //  delete tiPassword;
   tiPassword=NULL;
 
   //  delete window;

@@ -71,30 +71,31 @@ RainbruRPG::Core::gsCreateAccount::~gsCreateAccount(){
     velocity=NULL;
   }
 
-  delete window;
+  //  delete window;
   window=NULL;
 
-  delete winBack;
+  //  delete winBack;
   winBack=NULL;
 
-  delete btnBack;
+  //  delete btnBack;
   btnBack=NULL;
 
-  delete btnSubmit;
-  btnSubmit=NULL,
+  //  delete btnSubmit;
+  btnSubmit=NULL;
 
   // Label widget
-  delete labName;  labName=NULL;
+    /*  delete labName;  labName=NULL;
   delete labPwd1;  labPwd1=NULL;
   delete labPwd2;  labPwd2=NULL;
   delete labMail;  labMail=NULL;
   delete labHelp;  labHelp=NULL;
-
+    */
   // Text input widgets
-  delete tiName;   tiName=NULL;
+    /*  delete tiName;   tiName=NULL;
   delete tiPwd1;   tiPwd1=NULL;
   delete tiPwd2;   tiPwd2=NULL;
   delete tiMail;   tiMail=NULL;
+    */
 }
 
 /** Initialize the game state
@@ -354,8 +355,8 @@ void RainbruRPG::Core::gsCreateAccount::onButtonPress(BetaGUI::Button* btn){
 void RainbruRPG::Core::gsCreateAccount::pause(){
   LOGI("RainbruRPG::Core::gsCreateAccount::pause called");
   if (window){
-    window->hide();
-    delete window;
+    //    window->hide();
+    //    delete window;
     window=NULL;
   }
   else{
@@ -363,8 +364,8 @@ void RainbruRPG::Core::gsCreateAccount::pause(){
   }
 
   if (winBack){
-    winBack->hide();
-    delete winBack;
+    //    winBack->hide();
+    //    delete winBack;
     winBack=NULL;
   }
   else{

@@ -31,8 +31,8 @@
 #include <logger.h>
 
 #include <label.h>
-#include <bgwindow.h>
-#include <pushbutton.h>
+//#include <bgwindow.h>
+//#include <pushbutton.h>
 #include <multicolumnlist.h>
 #include <multicolumnlistitem.h>
 #include <sigc++/sigc++.h>
@@ -82,19 +82,20 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
   delete xml;
   xml=NULL;
 
-  delete mWin;
+  //  delete mWin;
   mWin=NULL;
 
-  delete mMcl;
+  //  delete mMcl;
   mMcl=NULL;
 
-  delete mNumServer;
+  //  delete mNumServer;
   mNumServer=NULL;
 
   // deleting buttons
-  delete btnRefresh;
+  /*  delete btnRefresh;
   delete btnPlay;
   delete btnMoreInfos;
+  */
   btnRefresh = NULL;
   btnPlay = NULL;
   btnMoreInfos = NULL;

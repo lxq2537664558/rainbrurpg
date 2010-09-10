@@ -49,9 +49,15 @@ namespace RainbruRPG{
     class MultiColumnList;
     class PushButton;
     class Label;
+    class Window;
   }
 }
 // End of forward declarations
+
+// A hack to make the object built
+namespace BetaGUI{
+  typedef void Button;
+}
 
 using namespace BetaGUI;
 using namespace RainbruRPG::Network::Ident;
@@ -97,7 +103,7 @@ namespace RainbruRPG {
       xmlServerList* xml;
 
       /** The Wndow containing the server list */
-      Window* mWin;
+      RainbruRPG::OgreGui::Window* mWin;
 
       /** The widget used to draw server list */
       MultiColumnList* mMcl;

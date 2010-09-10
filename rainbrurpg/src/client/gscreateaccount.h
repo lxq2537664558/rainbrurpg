@@ -52,6 +52,7 @@ namespace RainbruRPG{
   namespace OgreGui{
     class Label;
     class PushButton;
+    class Window;
   }
 }
 // End of forward declarations
@@ -59,6 +60,7 @@ namespace RainbruRPG{
 // A hack to make the object built
 namespace BetaGUI{
   typedef void Button;
+  typedef void TextInput;
 }
 
 using namespace BetaGUI;
@@ -93,9 +95,9 @@ namespace RainbruRPG {
       void setupCreateAccountMenu(void);
 
       /** The create account window */
-      Window* window;
+      RainbruRPG::OgreGui::Window* window;
       /** The back button window */
-      Window* winBack;
+      RainbruRPG::OgreGui::Window* winBack;
       /** The back button */
       PushButton* btnBack;
       /** The submit button */
