@@ -1,3 +1,28 @@
+* v0.0.5-204 (11 jul 2010 - 16 aug 2010) SLOC 41,211 UT ??? FT 51:08
+- Continue Drawable's implementation
+   loadTexture + tests, loadSkinnableTexture
+- Implemented some getter/setter for Drawable
+   for mSkinName (empty propagation), mTexturePtr
+- Added mBrush and mGuiTransparency to GameEngine
+   and related functions draw() and *GuiTransparency
+- Some documentation warnings fixed
+- Detailled ROADMAP tasks for GameEngine and Drawable
+- BrushTest skeleton implementation
+- GameState::draw implementation (mScissor member added)
+- GameState now contains a Container member and a draw function
+- OgreGui now uses Ogre::Vector3
+- Retieved GuiVertex from oldOgreGui
+- Copied functions (and needed members) from QuadRenderer to Brush
+   end, setTexturePtr, setUvMap, setScissorRectangle (2X)
+   drawRectangle, setColor, setCorners, feedVectors, drawQuad
+   xPixelToNative, yPixelToNative, checkHarwareBuffer
+- Copied functions (and needed members) from QuadRenderer to Brush
+   constructor, destructor, setHardwareBuffer, createTexture, begin
+- Brush skeleton implementation
+- Fixed some documentation warnings
+   ContainerTest, Container, OgreguiTestSuite, \file errors, doc/doc.h
+- Made changes in doc.h to explains SLOC values between r198 and r199
+	
 * v0.0.5-203 (13 jun 2010 - 11 jul 2010) SLOC 40,726 UT 245 FT 40:50
 - Removed src/tests/ogreGui/DeserializationErrorTest.hpp
 - Fixed a segfault in Container keyboard hanling functions

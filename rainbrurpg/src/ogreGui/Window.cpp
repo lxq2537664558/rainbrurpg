@@ -34,7 +34,7 @@ Window(Container* vParent, const string& vName,
   Container(vParent, vName, vX1, vY1, vX2, vY2)
 {
   setSkinName("bgui");
-
+  loadSkinnableTexture("bgui", "window.png");
 }
 
 RainbruRPG::OgreGui::Window::~Window()

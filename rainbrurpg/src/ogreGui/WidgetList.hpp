@@ -66,9 +66,11 @@ namespace RainbruRPG{
       Widget* focusNext(void);
       Widget* focusPrevious(void);
 
-    private:
+    protected:
       /// The inernal list of Widget
       tWidgetList mList;
+
+    private:
       /// An iterator to keep the focus on widget
       tWidgetList::iterator mCurrentFocused;
       /// Is the iterator valid ?

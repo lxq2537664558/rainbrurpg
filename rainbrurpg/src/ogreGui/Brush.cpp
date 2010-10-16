@@ -169,6 +169,9 @@ void RainbruRPG::OgreGui::Brush::createTexture(void)
   }
 }
 
+/** Begin the drawing
+  *
+  */
 void RainbruRPG::OgreGui::Brush::begin()
 {
   assert(mRenderSystem && "Ogre's RenderSystem is a NULL object");
@@ -351,8 +354,8 @@ drawRectangle(const Ogre::Rectangle& corners)
   * The global transparency value will always be apllied to
   * the resulting color
   * 
-  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::mColor "mColor" (member),
-  *     \ref RainbruRPG::OgreGui::QuadRenderer::alphaValue "alphaValue" 
+  * \sa \ref RainbruRPG::OgreGui::Brush::mColor "mColor" (member),
+  *     \ref RainbruRPG::OgreGui::Brush::alphaValue "alphaValue" 
   *     (member)
   *
   * \param cv A Ogre color value object
@@ -448,7 +451,7 @@ void RainbruRPG::OgreGui::Brush::drawQuad(){
     mBuffer->unlock();
   }
   catch(...){
-    LOGW("QuadRenderer::drawQuad mBuffer->unlock() failed");
+    LOGW("Brush::drawQuad mBuffer->unlock() failed");
   }
  
   // Render!
@@ -510,7 +513,7 @@ double RainbruRPG::OgreGui::Brush::yPixelToNative(int i)const{
   * As we have several pointer using hardware buffer, we can test each one
   * by passing them as parameter
   *
-  * \sa \ref RainbruRPG::OgreGui::QuadRenderer::mBuffer "mBuffer" (member).
+  * \sa \ref RainbruRPG::OgreGui::Brush::mBuffer "mBuffer" (member).
   *
   * \param ptr The HardwareVertexBuffer pointer to test
   *
@@ -533,6 +536,11 @@ void RainbruRPG::OgreGui::Brush::checkHardwareBuffer(GuiVertex* ptr){
 
 }
 
+/** Reset the Brush object
+  *
+  * Should be called between each frame.
+  *
+  */
 void RainbruRPG::OgreGui::Brush::reset()
 {
   mState = BRS_RESET;

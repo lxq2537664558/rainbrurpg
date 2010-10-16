@@ -29,6 +29,7 @@
 #include "Container.hpp"
 
 #include <Focusable.hpp>
+#include <logger.h>
 
 /** A default container constructor
   *
@@ -123,3 +124,17 @@ mouseReleased(const OIS::MouseEvent& vEvent,const OIS::MouseButtonID& vButton)
   // until the first that return true
 }
 
+/** A basic childs drawing function
+  *
+  * \param vBrush The brush object used to draw primitives
+  *
+  */
+void RainbruRPG::OgreGui::Container::draw(Brush* vBrush)
+{
+  LOGI("Drawing Container");
+  Drawable::draw(vBrush);
+  tWidgetList::iterator iter;
+  for (iter = mList.begin(); iter != mList.end(); iter++){
+    (*iter)->draw(vBrush);
+  }
+}

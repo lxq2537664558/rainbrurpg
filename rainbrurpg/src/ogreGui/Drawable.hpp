@@ -77,9 +77,7 @@ namespace RainbruRPG{
       Drawable(Drawable*, int, int, int, int, const std::string& vSkinName = "");
       virtual ~Drawable(void);
 
-      // Cannot be purely virtual to provide unit tests
-      /// Draw the object
-      virtual void draw(Brush*){};
+      virtual void draw(Brush*);
       void compute(int, int, const Rectangle&);
 
       void setDirty(bool);
@@ -117,6 +115,8 @@ namespace RainbruRPG{
       void computeAbsolute(int, int);
       void adjustScissor(const Rectangle&);
 
+      std::string mSkinName; //!< The current skin name
+
     private:
 #ifdef RB_DIRTY_FLAG
       bool mDirty;         //!< The dirty flag
@@ -125,8 +125,6 @@ namespace RainbruRPG{
       Rectangle mScissor;  //!< The scissor rectangle
       Rectangle mRelative; //!< The relative bounding box
       Rectangle mAbsolute; //!< The absolute bounding box
-
-      std::string mSkinName; //!< The current skin name
 
       Ogre::TexturePtr mTexture; //!< The current texture
 

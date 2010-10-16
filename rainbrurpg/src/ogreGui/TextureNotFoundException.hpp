@@ -46,7 +46,7 @@ namespace RainbruRPG
       virtual const char* what() const throw();
 
     private:
-      string mMessage;
+      string mMessage; //!< The exception's message
     };
   }
 }

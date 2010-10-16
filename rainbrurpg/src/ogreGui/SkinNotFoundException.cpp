@@ -23,18 +23,30 @@
 #include "SkinNotFoundException.hpp"
 
 
+/** The exception's constructor
+  *
+  * \param vSkinName    The skin name
+  * \param vTextureName The name of the texture
+  *
+  */
 RainbruRPG::Exception::SkinNotFoundException::
 SkinNotFoundException(const string& vSkinName, const string& vTextureName) throw()
 {
   mMessage = "Skin '" + vSkinName + "' not found for texture '" + vTextureName + "'.";
 }
 
+/// The destructor
 RainbruRPG::Exception::SkinNotFoundException::
 ~SkinNotFoundException() throw()
 {
 
 }
 
+/** Returns the message as a C string
+  *
+  * \return The exception's message
+  *
+  */
 const char* RainbruRPG::Exception::SkinNotFoundException::
 what() const throw()
 {

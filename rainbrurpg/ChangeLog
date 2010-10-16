@@ -1,3 +1,11 @@
+2010-10-16 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Container.cpp (draw): draws all its childs.
+	
+	* src/ogreGui/Drawable.cpp (draw): basic implementation.
+	
+	* src/ogreGui/Window.cpp (Window): Constructor load skinnable texture.
+	
 2010-09-07 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/client/: Removed ambiguities for Window in some files.

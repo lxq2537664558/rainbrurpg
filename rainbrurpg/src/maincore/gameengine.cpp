@@ -21,7 +21,7 @@
  */
 
 /** \file gameengine.cpp
-  * Implements an Ogre frame listenerthe client game engine
+  * Implements the client game engine
   *
   */
 
@@ -680,7 +680,7 @@ fromMenuToGame(GameState* from, GameState* to){
 
   createCamera();
 
-  //mettre a jour la camera de mFrameListener
+  // Updates the mFrameListener's camera
   /* Removed to avoid OgreGui dependencies
   GuiFrameListener* gfl=(GuiFrameListener*)mFrameListener;
   gfl->setCamera(mCamera);
@@ -895,6 +895,7 @@ Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const
   */
 void RainbruRPG::Core::GameEngine::draw()
 {
+  LOGI("GameEngine::draw called");
   // Should set GuiTransparency
   states[actualState]->draw(mBrush);
 }

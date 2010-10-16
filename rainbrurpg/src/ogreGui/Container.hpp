@@ -72,6 +72,8 @@ namespace RainbruRPG{
       virtual bool mouseReleased(const OIS::MouseEvent&, 
 				 const OIS::MouseButtonID&);
 
+      virtual void draw(Brush*);
+
     private:
       /** The currently focused widget
         *

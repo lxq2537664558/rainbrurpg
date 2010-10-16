@@ -35,6 +35,8 @@
 #include <OgreResourceGroupManager.h>
 #include <OgreException.h>
 
+#include "Brush.hpp"
+
 /** The constructor
   *
   * \param vParent   The parent used for dirty flag propagation (can be NULL).
@@ -266,4 +268,17 @@ loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureNa
       throw e;
     }
   }
+}
+
+/** A basic rectangle drawing function
+  *
+  * \param vBrush The brush object used to draw primitives
+  *
+  */
+void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
+{
+  vBrush->setTexturePtr(mTexture);
+  vBrush->setScissorRectangle(mScissor);
+  vBrush->setUvMap(0.0, 0.0, 1.0, 1.0);
+  vBrush->drawRectangle(mAbsolute);
 }

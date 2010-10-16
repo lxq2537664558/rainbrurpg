@@ -201,10 +201,10 @@ namespace RainbruRPG{
 	* If this pointer is NULL, we do not use texture, otherwise, we 
 	* call \c OgreRenderSystem->_setTexture() to use it. It is set
 	* to NULL is the constructor of 
-	* \ref RainbruRPG::OgreGui::QuadRenderer "QuadRenderer" 
+	* \ref RainbruRPG::OgreGui::Brush" 
 	* and the 
-	* \ref RainbruRPG::OgreGui::QuadRenderer::reset() 
-	* "QuadRenderer::reset()" function.
+	* \ref RainbruRPG::OgreGui::Brush::reset() 
+	* "Brush::reset()" function.
 	*
 	*/
       TexturePtr usedTexture;

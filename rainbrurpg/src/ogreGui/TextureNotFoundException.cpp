@@ -23,18 +23,29 @@
 #include "TextureNotFoundException.hpp"
 
 
+/** The exception's constructor
+  *
+  * \param vTextureName The name of the texture
+  *
+  */
 RainbruRPG::Exception::TextureNotFoundException::
 TextureNotFoundException(const string& vTextureName) throw()
 {
   mMessage = "Texture '" + vTextureName + "' not found";
 }
 
+/// The destructor
 RainbruRPG::Exception::TextureNotFoundException::
 ~TextureNotFoundException() throw()
 {
 
 }
 
+/** Returns the message as a C string
+  *
+  * \return The exception's message
+  *
+  */
 const char* RainbruRPG::Exception::TextureNotFoundException::
 what() const throw()
 {
