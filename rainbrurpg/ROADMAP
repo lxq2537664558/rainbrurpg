@@ -132,12 +132,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [ ] Datafiles cleanup (many are not used anymore)
+      The CEGUI ones MUST be deleted in data/gui/
 - [ ] See what to do with RainbruRPG-common.pc.in
 - [ ] GuiManager::createTitleOverlay issue
       deactivated due to a malformed UTF string error from Ogre
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-10-16 sam. 19:32]--[2010-10-16 sam. 20:08] =>  0:36
      CLOCK: [2010-10-16 sam. 17:09]--[2010-10-16 sam. 17:30] =>  0:21
      CLOCK: [2010-10-16 sam. 14:43]--[2010-10-16 sam. 15:15] =>  0:32
      CLOCK: [2010-09-07 mar 08:46]--[2010-09-07 mar 09:25] =>  0:39
@@ -235,10 +237,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 		  using mTexture and QuadRenderer
       - [-] Window implementation
 	    - [X] Container::draw() should draw childs*
-	    - [ ] GameEngine::draw() should be called again
+	    - [X] GameEngine::draw() should be called again
 		  Maybe removed to avoig olgOgreGui's dependencies
-		  - [ ] Must create a renderqueuelistener as in oldOgreGui
-		  - [ ] Add it to the current SceneManager
+		  - [X] Must create a renderqueuelistener as in oldOgreGui
+		  - [X] Document the whole drawing process functions with doxygen refs
+		  - [X] Add it to the current GameEngine's SceneManager
 	    - [ ] Test it with a Label
 		  Label::Label should call Drawable::loadSkinnableTexture
 		  temporary use of textinput image

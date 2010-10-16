@@ -114,6 +114,8 @@ const string& RainbruRPG::Core::GameState::getName(void)const{
 
 /** Draw the game state's Gui
   *
+  * This function is called on actual GameState from GameEngine::draw.
+  *
   * \param vBrush The drawing object
   *
   */

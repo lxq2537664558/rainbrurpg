@@ -44,6 +44,8 @@
 #include <logger.h>
 #include <Brush.hpp>
 
+#include <OgreGuiRenderQueueListener.hpp>
+
 //using namespace RainbruRPG::Events; // Removed to avoid OgreGui deps
 
 /** A function used to know if the GameEngine is running.
@@ -456,6 +458,10 @@ void RainbruRPG::Core::GameEngine::chooseSceneManager(){
 
   // Set ambient light
   mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+
+
+  mRenderQueueListener = new OgreGuiRenderQueueListener();
+  mSceneMgr->addRenderQueueListener(mRenderQueueListener);
 }
 
 /** Create a generic Ogre camera
@@ -891,6 +897,9 @@ Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const
 }
 
 /** Calls draw() on the actual game state
+  *
+  * This function is called by \ref "OgreGui::OgreGuiRenderQueueListener::renderQueueEnded" 
+  * "RenderQueueListener::renderQueueEnded".
   *
   */
 void RainbruRPG::Core::GameEngine::draw()

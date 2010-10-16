@@ -1,5 +1,7 @@
 2010-10-16 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/OgreGuiRenderQueueListener : Implemented.
+
 	* src/ogreGui/Container.cpp (draw): draws all its childs.
 	
 	* src/ogreGui/Drawable.cpp (draw): basic implementation.

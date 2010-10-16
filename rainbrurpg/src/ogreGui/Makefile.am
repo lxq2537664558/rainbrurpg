@@ -27,6 +27,7 @@ h_sources= Brush.hpp					\
 	   Drawable.hpp					\
 	   Focusable.hpp				\
 	   GuiVertex.hpp				\
+	   OgreGuiRenderQueueListener.hpp		\
 	   Serializable.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp				\
@@ -41,6 +42,7 @@ cc_sources=Brush.cpp					\
 	   Drawable.cpp					\
 	   Focusable.cpp				\
 	   GuiVertex.cpp				\
+	   OgreGuiRenderQueueListener.cpp		\
 	   Serializable.cpp				\
 	   Widget.cpp					\
 	   WidgetList.cpp				\

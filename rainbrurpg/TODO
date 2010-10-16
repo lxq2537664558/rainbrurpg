@@ -115,7 +115,10 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-206 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (1) Fixed some doxygen warnings
+- (4) Drawing process works but nothing appears
+- GameEngine uses OgreGuiRenderQueueListener
+- OgreGuiRenderQueueListener implementation
+- Fixed some doxygen warnings
    Drawable, Container, Brush, TextureNotFoundException, SkinNotFoundException
 
 * v0.0.5-205 (16 aug 2010 - 16 oct 2010) SLOC 41,316 UT ??? FT 59:32

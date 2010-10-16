@@ -53,7 +53,7 @@
 
 #include <rainbrudef.h> // For the GNU gettext stuff
 
-// Forward declaration
+// Forward declarations
 namespace RainbruRPG 
 {
   namespace Core
@@ -68,9 +68,10 @@ namespace RainbruRPG
   namespace OgreGui
   {
     class Brush;
+    class OgreGuiRenderQueueListener;
   }
 }
-// End of forward declaration
+// End of forward declarations
 
 using namespace std;
 using namespace Ogre;
@@ -291,6 +292,10 @@ namespace RainbruRPG {
 
       /// The GUI elements alpha value
       float mGuiTransparency;
+
+      /// The GUI drawing listener
+      OgreGuiRenderQueueListener* mRenderQueueListener;
+
     };
   }
 }
