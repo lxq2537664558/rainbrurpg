@@ -277,8 +277,31 @@ loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureNa
   */
 void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
 {
+  vBrush->setBlendMode(BBM_GLOBAL);
+  LOGCATS("mScissor = ");
+  LOGCATI(mScissor.top);
+  LOGCATS(", ");
+  LOGCATI(mScissor.left);
+  LOGCATS(", ");
+  LOGCATI(mScissor.bottom);
+  LOGCATS(", ");
+  LOGCATI(mScissor.right);
+  LOGCAT();
   vBrush->setTexturePtr(mTexture);
-  vBrush->setScissorRectangle(mScissor);
+  //  vBrush->setScissorRectangle(mScissor);
   vBrush->setUvMap(0.0, 0.0, 1.0, 1.0);
+  vBrush->setColor(ColourValue(1.0f,1.0f,1.0f,1.0f));
+
+  LOGCATS("mAbsolute = ");
+  LOGCATI(mAbsolute.top);
+  LOGCATS(", ");
+  LOGCATI(mAbsolute.left);
+  LOGCATS(", ");
+  LOGCATI(mAbsolute.bottom);
+  LOGCATS(", ");
+  LOGCATI(mAbsolute.right);
+  LOGCAT();
+  vBrush->debug("Drawable::draw()");
   vBrush->drawRectangle(mAbsolute);
+  vBrush->reset();
 }

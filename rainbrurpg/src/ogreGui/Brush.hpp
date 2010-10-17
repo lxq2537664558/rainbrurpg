@@ -70,6 +70,27 @@ namespace RainbruRPG{
       BRS_END           //!< The last operation was end();
     }tBrushState;
 
+    /** Enumerates the alpha blending modes
+      *
+      * You should use one of these modes when you call
+      * \link QuadRenderer::setBlendMode() QuadRenderer::setBlendMode()
+      * \endlink.
+      *
+      * To be able to debug \ref RainbruRPG::OgreGui::QuadRenderer 
+      * "QuadRenderer" these values can be converted to string using the
+      * \ref RainbruRPG::OgreGui::QuadRenderer::blendModeToString
+      * "QuadRenderer::blendModeToString()" function.
+      *
+      */
+    typedef enum{
+      BBM_UNSET,        //!< Was never set
+      BBM_NONE,         //!< No alpha blending
+      BBM_MODULATE,     //!< Blend both source and destination color
+      BBM_DISCARDALPHA, //!< Do not use source alpha channel
+      BBM_INVERT,       //!< Invert the source alpha channel
+      BBM_ALPHA,        //!< Use source alpha channel
+      BBM_GLOBAL        //!< Use global alpha value
+    }tBrushBlendMode;
 
     /** The main darwing class
       *
@@ -110,6 +131,8 @@ namespace RainbruRPG{
 
       void debug(const std::string&);
 
+      void setBlendMode(tBrushBlendMode);
+
     protected:
       void setupHardwareBuffer(void);
       void createTexture(void);
@@ -119,6 +142,9 @@ namespace RainbruRPG{
       double xPixelToNative(int)const;
       double yPixelToNative(int)const;
       void checkHardwareBuffer(GuiVertex*);
+
+      std::string blendModeToString(tBrushBlendMode);
+      std::string stateToString(const tBrushState);
 
     private:
       /** The current Ogre scene manager
@@ -240,10 +266,10 @@ namespace RainbruRPG{
       /** The current drawing color */
       ColourValue mColor;
 
-      /** The texture alpha value */
+      /** The texture alpha value from 0.0f (fully transparent) to 1.0f (fully opaque) */
       float alphaValue;
 
-
+      tBrushBlendMode mBlendMode;
     };
 
   }

@@ -55,7 +55,11 @@ Brush(RenderSystem* rs, SceneManager* mgr, Viewport* vp,
   mViewport(vp),
   mCreatorName(vCreatorName),
   mTexture(NULL),
-  mState(BRS_UNSET)
+  mState(BRS_UNSET),
+  mBlendMode(BBM_UNSET),
+  // No window draw bugfix
+  useScissor(false),
+  alphaValue(1.0f)
 {
   assert(vp && "Cannot create QuadRenderer with NULL viewport");
   assert(rs && "Cannot create QuadRenderer with NULL RenderSystem");
@@ -179,7 +183,7 @@ void RainbruRPG::OgreGui::Brush::begin()
 
   if (mViewport == NULL){
     LOGW("Viewport is NULL, debugging QuadRenderer");
-    this->debug("QuadRenderer::begin");
+    this->debug("Brush::begin");
     mViewport = GameEngine::getSingleton().getViewport();
     
     assert(mViewport && "Ogre's ViewPort is a NULL object");
@@ -216,22 +220,13 @@ void RainbruRPG::OgreGui::Brush::begin()
   */
 void RainbruRPG::OgreGui::Brush::debug(const std::string& from)
 {
-  /*
   // Intro
   ostringstream s;
-  s << "QuadRenderer::debug() called from " << from << endl;
+  s << "Brush::debug() called from " << from << endl;
   //  s << "Creator was " << mCreatorName;
 
-  // The following cause a segfault if mDrawingDevList is NULL
-  if (mDrawingDevList){
-  /  s << mDrawingDevList->toString() << endl;
-  }
-  
-  else{
-    s << "mDrawingDevList is NULL" << endl;
-   }
   s << "using scrissor rectangle : " << useScissor << endl;
-  s << "using parent scrissor : " << useParentScissor << endl;
+  //  s << "using parent scrissor : " << useParentScissor << endl;
   s << "Scissor rectangle :" << endl
     << "  .left   = " << scissorRect.left   << endl
     << "  .top    = " << scissorRect.top    << endl
@@ -239,7 +234,7 @@ void RainbruRPG::OgreGui::Brush::debug(const std::string& from)
     << "  .bottom = " << scissorRect.bottom << endl;
   
   s << "Alpha value :" << alphaValue << endl;
-  s << "Is ghost enabled :" << mIsGhostEnabled << endl;
+  //  s << "Is ghost enabled :" << mIsGhostEnabled << endl;
 
   // usedTexture member
   if (usedTexture.isNull()){
@@ -255,7 +250,6 @@ void RainbruRPG::OgreGui::Brush::debug(const std::string& from)
     << (int)mState << ")" << endl;
 
   LOGI(s.str().c_str());
-  */
 }
 
 /** End the rendering of a frame
@@ -539,9 +533,122 @@ void RainbruRPG::OgreGui::Brush::checkHardwareBuffer(GuiVertex* ptr){
 /** Reset the Brush object
   *
   * Should be called between each frame.
+  * 
+  * Note: if not called, the Ogre overlays mau disappear.
   *
   */
 void RainbruRPG::OgreGui::Brush::reset()
 {
   mState = BRS_RESET;
+}
+
+/** Change the blending mode
+  *
+  * Please see the \link 
+  * RainbruRPG::OgreGui::tBrushBlendMode
+  * tBrushBlendMode \endlink documentation for details on blending
+  * mode.
+  *
+  * \param vMode The new blending mode
+  *
+  */
+void RainbruRPG::OgreGui::Brush::setBlendMode(tBrushBlendMode vMode)
+{
+
+  mBlendMode=vMode;
+
+  Ogre::LayerBlendModeEx defaultLBM;
+  defaultLBM.blendType=LBT_ALPHA;
+  defaultLBM.operation=LBX_MODULATE;
+  defaultLBM.source1=LBS_TEXTURE;
+  defaultLBM.source2=LBS_CURRENT;
+  defaultLBM.alphaArg1=alphaValue;
+  defaultLBM.alphaArg2=alphaValue;
+  defaultLBM.factor=alphaValue;
+ 
+
+  switch ( vMode ){
+  case BBM_NONE:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
+    break;
+
+  case BBM_MODULATE:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ZERO,Ogre::SBF_SOURCE_COLOUR );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
+    break;
+
+  case BBM_DISCARDALPHA:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE, Ogre::SBF_ZERO );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
+    break;
+
+  case BBM_INVERT:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_ONE_MINUS_DEST_COLOUR, 
+				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
+    break;
+
+  case BBM_ALPHA:
+    mRenderSystem->_setSceneBlending( Ogre::SBF_SOURCE_ALPHA, 
+				      Ogre::SBF_ONE_MINUS_SOURCE_ALPHA );
+    mRenderSystem->_setTextureBlendMode(0, defaultLBM);
+    break;
+
+  case BBM_GLOBAL:
+    Ogre::LayerBlendModeEx ex;
+    ex.blendType=LBT_ALPHA;
+    ex.operation=LBX_MODULATE;
+    ex.source1=LBS_CURRENT;
+    ex.source2=LBS_MANUAL;
+    ex.alphaArg1=alphaValue;
+    ex.alphaArg2=alphaValue;
+    ex.factor=alphaValue;
+    mRenderSystem->_setTextureBlendMode(0, ex);
+  }
+
+}
+
+/** Get a string from a blend mode
+  *
+  * \sa RainbruRPG::OgreGui::tQuadRendererBlendMode "tQuadRendererBlendMode"
+  *
+  * \param vMode The blend mode
+  *
+  * \return A human-readable string
+  *
+  */
+std::string RainbruRPG::OgreGui::Brush::
+blendModeToString(tBrushBlendMode vMode){
+  switch (vMode){
+  case BBM_UNSET:        return "BBM_UNSET";
+  case BBM_NONE:         return "BBM_NONE";
+  case BBM_MODULATE:     return "BBM_MODULATE";
+  case BBM_DISCARDALPHA: return "BBM_DISCARDALPHA";
+  case BBM_INVERT:       return "BBM_INVERT";
+  case BBM_ALPHA:        return "BBM_ALPHA";
+  case BBM_GLOBAL:       return "BBM_GLOBAL";
+  }
+}
+
+/** Get a human-readable string from a state
+  *
+  * This is mainly a debugging function used by the \ref begin()
+  * function to produce logger output.
+  *
+  * \param vState The state
+  *
+  * \return A human readable string
+  *
+  */
+std::string RainbruRPG::OgreGui::Brush::
+stateToString(const tBrushState vState){
+  // Do not return a const& because the string is temporary
+  switch (vState){
+  case BRS_UNSET:    return "unset";
+  case BRS_RESET:    return "reset";
+  case BRS_BEGIN:    return "begin";
+  case BRS_END:      return "end";
+  default:           return "none";
+  }
 }

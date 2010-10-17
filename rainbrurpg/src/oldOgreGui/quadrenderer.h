@@ -95,6 +95,7 @@ namespace RainbruRPG {
       BRS_BEGIN,        //!< The last operation was begin()
       BRS_END           //!< The last operation was end();
     }tQuadRendererState;
+
     /** Enumerates the alpha blending modes
       *
       * You should use one of these modes when you call

@@ -906,7 +906,9 @@ void RainbruRPG::Core::GameEngine::draw()
 {
   LOGI("GameEngine::draw called");
   // Should set GuiTransparency
+  mBrush->begin();
   states[actualState]->draw(mBrush);
+  mBrush->end();
 }
 
 /** Changes the transparency of the GUI drawing

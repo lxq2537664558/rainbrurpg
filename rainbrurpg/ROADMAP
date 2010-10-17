@@ -139,6 +139,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 
 **** TODO OgreGui2 implementation and UnitTest                        [57%]
      :CLOCK:
+     CLOCK: [2010-10-17 dim. 09:12]--[2010-10-17 dim. 10:01] =>  0:49
      CLOCK: [2010-10-16 sam. 19:32]--[2010-10-16 sam. 20:08] =>  0:36
      CLOCK: [2010-10-16 sam. 17:09]--[2010-10-16 sam. 17:30] =>  0:21
      CLOCK: [2010-10-16 sam. 14:43]--[2010-10-16 sam. 15:15] =>  0:32
@@ -242,6 +243,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 		  - [X] Must create a renderqueuelistener as in oldOgreGui
 		  - [X] Document the whole drawing process functions with doxygen refs
 		  - [X] Add it to the current GameEngine's SceneManager
+		  - [X] Makes the NumDebug overlay drawn again
+            - [ ] gsmainmenu's Window should be drawn
+		  call Brush::debug to know what's wrong
+	    - [ ] Remove debugging infos in Drawable::draw()
 	    - [ ] Test it with a Label
 		  Label::Label should call Drawable::loadSkinnableTexture
 		  temporary use of textinput image
