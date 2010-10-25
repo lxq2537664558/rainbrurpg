@@ -73,7 +73,7 @@ namespace RainbruRPG{
 				 const OIS::MouseButtonID&);
 
       virtual void draw(Brush*);
-
+      virtual void compute(int, int, const Rectangle&);
     private:
       /** The currently focused widget
         *

@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-206 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (8) Brush drawrectangle draw again
+- (11) Container::compute implemented
+- Fixed some compilation errors in client
+- gsMenuBase set its own texture to Container member
+- Brush drawrectangle draw again
+   Was a problem with Brush::alphavalue
 - Brush::debug() uncommented
 - Overlays draw again
 - Implemented Brush's blend mode

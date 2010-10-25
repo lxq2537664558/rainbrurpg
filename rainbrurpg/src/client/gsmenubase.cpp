@@ -36,8 +36,10 @@
 #include <OIS/OISMouse.h>
 #include <OgreVector4.h>
 
-#include <bgwindow.h>
+#include <Container.hpp>
+//#include <bgwindow.h>
 #include <staticimage.h>
+#include <TextureNotFoundException.hpp>
 
 #include "velocitycalculator.h"
 #include "keyboardnavigation.h"
@@ -47,6 +49,8 @@
 #include "guimanager.h"
 #include "bggui.h"
 
+
+using namespace RainbruRPG::Exception;
 
 /** The constructor
   *
@@ -78,6 +82,20 @@ RainbruRPG::Core::gsMenuBase::gsMenuBase(const string& vName, bool cm):
   LOGI("Constructing a  gsMenuBase");
   inputWrapper=new InputWrapper();
   tabNav=new KeyboardNavigation();
+
+  string textureName = "staticmenu.png";
+
+  try{
+    mBackgroundTexture = Ogre::TextureManager::getSingleton()
+      .load(textureName, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  }
+  catch(const Ogre::FileNotFoundException& e){
+    throw TextureNotFoundException(textureName);
+  }
+
+
+  mContainer->setTexturePtr(mBackgroundTexture);
+  
 }
 
 /** The initialization of the GameState

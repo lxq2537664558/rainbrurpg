@@ -138,3 +138,21 @@ void RainbruRPG::OgreGui::Container::draw(Brush* vBrush)
     (*iter)->draw(vBrush);
   }
 }
+
+/** Compute the absolute bounding box and scissor rectangle
+  *
+  * \param vParentX       The absolute parent X
+  * \param vParentY       The absolute parent Y
+  * \param vParentScissor The parent scissor rectangle
+  *
+  */
+void RainbruRPG::OgreGui::Container::
+compute(int vParentX, int vParentY, const Rectangle& vParentScissor){
+  computeAbsolute(vParentX, vParentY);
+  adjustScissor(vParentScissor);
+
+  tWidgetList::iterator iter;
+  for (iter = mList.begin(); iter != mList.end(); iter++){
+    (*iter)->compute(mAbsolute.left, mAbsolute.top, mScissor);
+  }
+}

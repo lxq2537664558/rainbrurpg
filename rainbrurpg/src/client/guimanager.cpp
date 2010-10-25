@@ -37,11 +37,11 @@
 #include <exception>
 #include <cstdlib>
 
-#include <bgwindow.h>
-#include <label.h>
-#include <statuslabel.h>
+//#include <bgwindow.h>
+//#include <label.h>
+//#include <statuslabel.h>
 
-#include <dialog.h> // For bug26 tests only
+//#include <dialog.h> // For bug26 tests only
 
 
 /** The constructor of the singleton
@@ -449,12 +449,13 @@ createNumDebugWindow(Ogre::RenderWindow* win){
   *
   */
 void RainbruRPG::Gui::GuiManager::setErrorMessage(const String& s){
-  if (mErrorLabel){
+  /*  if (mErrorLabel){
     mErrorLabel->setCaption(s);
   }
   else{
     LOGE("Cannot set error message, mErrorLabel is NULL");
   }
+  */
 }
 
 /** Creates the label used to print error messages

@@ -1,4 +1,17 @@
+2010-10-25 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Container (compute): basic implementation.
+	
+	* src/client/gsmenubase.cpp: Removed some references to oldOgreGui.
+
+2010-10-23 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/client/gsmenubase.cpp (gsMenuBase): Set its own TexturePtr to
+	its Container member.
+
 2010-10-17 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Brush.cpp (drawRectangle): draw again.
 
 	* src/ogreGui/Brush.cpp (debug): uncommented.
 	* src/ogreGui/Drawable.cpp (draw): call reset() to prevent overlays

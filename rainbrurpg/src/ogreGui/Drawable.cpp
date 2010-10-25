@@ -290,7 +290,7 @@ void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
   vBrush->setTexturePtr(mTexture);
   //  vBrush->setScissorRectangle(mScissor);
   vBrush->setUvMap(0.0, 0.0, 1.0, 1.0);
-  vBrush->setColor(ColourValue(1.0f,1.0f,1.0f,1.0f));
+  //  vBrush->setColor(ColourValue(1.0f, 1.0f, 1.0f)); // Not needed
 
   LOGCATS("mAbsolute = ");
   LOGCATI(mAbsolute.top);

@@ -116,15 +116,15 @@ namespace RainbruRPG{
       void adjustScissor(const Rectangle&);
 
       std::string mSkinName; //!< The current skin name
+      Rectangle mAbsolute; //!< The absolute bounding box
+      Rectangle mScissor;  //!< The scissor rectangle
 
     private:
 #ifdef RB_DIRTY_FLAG
       bool mDirty;         //!< The dirty flag
 #endif
       Drawable* mParent;   //!< The parent
-      Rectangle mScissor;  //!< The scissor rectangle
       Rectangle mRelative; //!< The relative bounding box
-      Rectangle mAbsolute; //!< The absolute bounding box
 
       Ogre::TexturePtr mTexture; //!< The current texture
 

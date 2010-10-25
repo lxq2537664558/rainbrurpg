@@ -30,6 +30,8 @@
 #include <stringconv.h>
 #include <logger.h>
 
+#include <Widget.hpp>
+
 #include <label.h>
 //#include <bgwindow.h>
 //#include <pushbutton.h>

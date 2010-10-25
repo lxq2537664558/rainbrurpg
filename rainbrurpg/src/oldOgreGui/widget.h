@@ -61,7 +61,7 @@ namespace RainbruRPG{
 using namespace RainbruRPG::OgreGui;
 
 namespace RainbruRPG{
-  namespace OgreGui{
+  namespace OldOgreGui{
 
     /** The base class of all OgreGuiToolkit widgets
       *

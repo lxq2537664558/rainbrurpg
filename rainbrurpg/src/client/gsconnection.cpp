@@ -33,7 +33,7 @@
 //#include <bgwindow.h>
 //#include <bgtextinput.h>
 //#include <pushbutton.h>
-#include <label.h>
+//#include <label.h>
 
 
 #include <OgrePrerequisites.h> // for Ogre::String

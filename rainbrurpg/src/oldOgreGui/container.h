@@ -56,7 +56,7 @@ using namespace std;
 using namespace Ogre;
 
 namespace RainbruRPG{
-  namespace OgreGui{
+  namespace OldOgreGui{
 
     /** A base class implementing the widget list and event handling
       *
