@@ -1,5 +1,8 @@
 2010-10-25 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Drawable: Remove ambigous references to Rectangle for
+	cross-compilation.
+	
 	* src/ogreGui/Container (compute): basic implementation.
 	
 	* src/client/gsmenubase.cpp: Removed some references to oldOgreGui.

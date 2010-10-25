@@ -17,7 +17,7 @@ dnl along with RainbruRPG; if not, write to the Free Software
 dnl Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 dnl 02110-1301  USA
 
-dnl Checks for the Boost.Serialization lib ad headers
+dnl Checks for the Boost.Serialization lib and headers
 dnl
 dnl
 AC_DEFUN([RB_CHECK_BOOST_SERIALIZATION],
@@ -26,7 +26,7 @@ AC_DEFUN([RB_CHECK_BOOST_SERIALIZATION],
   then	
     echo "Adding Boost.Serialization flags for "mingw32msvc""
     CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
-    LDFLAGS="$LDFLAGS -lboost_serialization$DLL_EXT"
+    LDFLAGS="$LDFLAGS -lboost_serialization-1_34_1$DLL_EXT"
   else
     AC_CHECK_LIB(boost_serialization, main, [], [
       echo "Error! You need to have Boost.Serialization installed."

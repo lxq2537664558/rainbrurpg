@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-206 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (11) Container::compute implemented
+- (12) Replaced Rectangle with Ogre::Rectangle for cross-compilation
+   Drawable, Container
+- Container::compute implemented
 - Fixed some compilation errors in client
 - gsMenuBase set its own texture to Container member
 - Brush drawrectangle draw again

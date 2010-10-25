@@ -147,7 +147,7 @@ void RainbruRPG::OgreGui::Container::draw(Brush* vBrush)
   *
   */
 void RainbruRPG::OgreGui::Container::
-compute(int vParentX, int vParentY, const Rectangle& vParentScissor){
+compute(int vParentX, int vParentY, const Ogre::Rectangle& vParentScissor){
   computeAbsolute(vParentX, vParentY);
   adjustScissor(vParentScissor);
 

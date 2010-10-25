@@ -46,7 +46,7 @@
   *
   */
 RainbruRPG::OgreGui::Drawable::
-Drawable(Drawable* vParent, const Rectangle& vRelative, 
+Drawable(Drawable* vParent, const Ogre::Rectangle& vRelative, 
 	 const std::string& vSkinName):
   mParent(vParent),
   mRelative(vRelative)
@@ -125,7 +125,7 @@ RainbruRPG::OgreGui::Drawable::getParent(void) const{
   *
   */
 void RainbruRPG::OgreGui::Drawable::
-compute(int vParentX, int vParentY, const Rectangle& vParentScissor){
+compute(int vParentX, int vParentY, const Ogre::Rectangle& vParentScissor){
   computeAbsolute(vParentX, vParentY);
   adjustScissor(vParentScissor);
 }
@@ -153,7 +153,7 @@ computeAbsolute(int vParentX, int vParentY){
   *
   */
 void RainbruRPG::OgreGui::Drawable::
-adjustScissor(const Rectangle& r){
+adjustScissor(const Ogre::Rectangle& r){
   mScissor.left  = (r.left  > mAbsolute.left)  ? r.left  : mAbsolute.left;
   mScissor.right = (r.right < mAbsolute.right) ? r.right : mAbsolute.right;
   mScissor.top   = (r.top   > mAbsolute.top)   ? r.top   : mAbsolute.top;
@@ -165,7 +165,7 @@ adjustScissor(const Rectangle& r){
   * \return The actual dimensions
   *
   */
-const Rectangle& RainbruRPG::OgreGui::Drawable::getAbsolute(void)const{
+const Ogre::Rectangle& RainbruRPG::OgreGui::Drawable::getAbsolute(void)const{
   return mAbsolute;
 }
 
@@ -174,7 +174,7 @@ const Rectangle& RainbruRPG::OgreGui::Drawable::getAbsolute(void)const{
   * \return The actual scissor
   *
   */
-const Rectangle& RainbruRPG::OgreGui::Drawable::getScissor(void)const
+const Ogre::Rectangle& RainbruRPG::OgreGui::Drawable::getScissor(void)const
 {
   return mScissor;
 }

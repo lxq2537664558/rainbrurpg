@@ -73,12 +73,12 @@ namespace RainbruRPG{
       */
     class Drawable{
     public:
-      Drawable(Drawable*, const Rectangle&, const std::string& vSkinName = "");
+      Drawable(Drawable*, const Ogre::Rectangle&, const std::string& vSkinName = "");
       Drawable(Drawable*, int, int, int, int, const std::string& vSkinName = "");
       virtual ~Drawable(void);
 
       virtual void draw(Brush*);
-      void compute(int, int, const Rectangle&);
+      void compute(int, int, const Ogre::Rectangle&);
 
       void setDirty(bool);
 
@@ -96,8 +96,8 @@ namespace RainbruRPG{
       };
 
       Drawable* getParent(void) const;
-      const Rectangle& getAbsolute(void)const;
-      const Rectangle& getScissor(void)const;
+      const Ogre::Rectangle& getAbsolute(void)const;
+      const Ogre::Rectangle& getScissor(void)const;
 
       const std::string& getSkinName(void)const;
 
@@ -113,18 +113,18 @@ namespace RainbruRPG{
       void setSkinName(const std::string&);
 
       void computeAbsolute(int, int);
-      void adjustScissor(const Rectangle&);
+      void adjustScissor(const Ogre::Rectangle&);
 
       std::string mSkinName; //!< The current skin name
-      Rectangle mAbsolute; //!< The absolute bounding box
-      Rectangle mScissor;  //!< The scissor rectangle
+      Ogre::Rectangle mAbsolute; //!< The absolute bounding box
+      Ogre::Rectangle mScissor;  //!< The scissor rectangle
 
     private:
 #ifdef RB_DIRTY_FLAG
       bool mDirty;         //!< The dirty flag
 #endif
       Drawable* mParent;   //!< The parent
-      Rectangle mRelative; //!< The relative bounding box
+      Ogre::Rectangle mRelative; //!< The relative bounding box
 
       Ogre::TexturePtr mTexture; //!< The current texture
 
