@@ -782,7 +782,7 @@ AC_DEFUN([RB_HANDLE_CROSS_COMPIL],
     echo "win32. Prefix is $1"
     rb_cross_compil_host=win32
     rb_cross_compil_prefix=$1
-    LDFLAGS="$LDFLAGS -lstdc++ -L/usr/cross/lib"
+    LDFLAGS="$LDFLAGS -mwindows -lstdc++ -L/usr/cross/lib"
     DLL_EXT="$2"
   else  
     echo "no"

@@ -898,7 +898,8 @@ Viewport* RainbruRPG::Core::GameEngine::getViewport(void) const
 
 /** Calls draw() on the actual game state
   *
-  * This function is called by \ref "OgreGui::OgreGuiRenderQueueListener::renderQueueEnded" 
+  * This function is called by 
+  * \ref OgreGui::OgreGuiRenderQueueListener::renderQueueEnded"
   * "RenderQueueListener::renderQueueEnded".
   *
   */

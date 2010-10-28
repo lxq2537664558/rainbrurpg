@@ -1,3 +1,12 @@
+2010-10-28 Jerome Pasquier  <rainbru@free.fr>
+	* acinclude.m4 (RB_HANDLE_CROSS_COMPIL): Added -mwindows to LDFLAGS.
+	* src/client/main.cpp : Remove the Win32 console capability.
+
+2010-10-25 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Makefile.am (dll): Changes needed with ext/ objects.
+	* src/common/Makefile.am (dll): Changes needed with ext/ objects.
+	
 2010-10-25 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Drawable: Remove ambigous references to Rectangle for

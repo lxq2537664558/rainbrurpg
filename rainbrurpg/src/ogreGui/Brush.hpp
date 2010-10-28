@@ -73,13 +73,13 @@ namespace RainbruRPG{
     /** Enumerates the alpha blending modes
       *
       * You should use one of these modes when you call
-      * \link QuadRenderer::setBlendMode() QuadRenderer::setBlendMode()
+      * \link Brush::setBlendMode() Brush::setBlendMode()
       * \endlink.
       *
-      * To be able to debug \ref RainbruRPG::OgreGui::QuadRenderer 
-      * "QuadRenderer" these values can be converted to string using the
-      * \ref RainbruRPG::OgreGui::QuadRenderer::blendModeToString
-      * "QuadRenderer::blendModeToString()" function.
+      * To be able to debug \ref RainbruRPG::OgreGui::Brush 
+      * "Brush" these values can be converted to string using the
+      * \ref RainbruRPG::OgreGui::Brush::blendModeToString
+      * "Brush::blendModeToString()" function.
       *
       */
     typedef enum{
@@ -266,9 +266,12 @@ namespace RainbruRPG{
       /** The current drawing color */
       ColourValue mColor;
 
-      /** The texture alpha value from 0.0f (fully transparent) to 1.0f (fully opaque) */
+      /** The texture alpha value from 0.0f (fully transparent) to 1.0f 
+        *  (fully opaque) 
+	*/
       float alphaValue;
 
+      /** The current blend (transparency) mode */
       tBrushBlendMode mBlendMode;
     };
 

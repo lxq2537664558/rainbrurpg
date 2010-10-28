@@ -86,12 +86,18 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
 
-**** TODO Cross compilation to win32                                  [57%]
+**** TODO Cross compilation to win32                                  [70%]
      :CLOCK:
+     CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
+     CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
      CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
      CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
      CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
      :END:
+     Errors are
+wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeInterrupt, aborting
+wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMutant, aborting
+
 - [X] Test created executable (164Mo)
       Unhandled page fault
 - [X] Trying cross-compilation : Works
@@ -99,6 +105,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Fixed in acinclude.m4
 - [X] Cross-compil documentation must reference mingw.sh
 - [X] Should fix the 'cannot find -lboost_serialization' error
+- [X] Tested DLL are outdated, recreating them
+      - [X] maincore: undefined references to OgreGui
+- [X] Maybe wine version is too old (wine-1.0.1-174-gc4039bd)
+      Tested with wine 1.1.42 : always an error
+- [X] rainbrurpg.exe is not view as a GUI application
+      testing it with the `file` utility
+      Must add -mwindows to the command line
 - [ ] GlobalURI + loadRessources for Win32.
 - [ ] remove config file 'ogre.cfg'.
 - [ ] Should build with debugging symbols      

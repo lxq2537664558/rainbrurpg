@@ -114,8 +114,16 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-206 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (12) Replaced Rectangle with Ogre::Rectangle for cross-compilation
+* v0.0.5-207 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
+- Fixed some documentation warnings
+   OgreGuiRenderQueueListener, Brush, GameEngine
+
+* v0.0.5-206 (16 oct 2010 - 28 oct 2010) SLOC ??? UT 250 FT 64:13
+- (15) Cross-compil : exe is now a GUI application
+- Trying new version of wine 1.1.42 Do not work
+- Tryibng to recreate DLLs
+   Common, OgreGui, Core
+- Replaced Rectangle with Ogre::Rectangle for cross-compilation
    Drawable, Container
 - Container::compute implemented
 - Fixed some compilation errors in client
@@ -130,24 +138,3 @@ A system that serialize widgets position and configuration
 - OgreGuiRenderQueueListener implementation
 - Fixed some doxygen warnings
    Drawable, Container, Brush, TextureNotFoundException, SkinNotFoundException
-
-* v0.0.5-205 (16 aug 2010 - 16 oct 2010) SLOC 41,316 UT 250 FT 59:32
-- Container::draw() draws all ist childs
-- Drawable::draw() implementation
-- Window constructor uses Drawable::loadSkinnableTexture()
-- Fixed some docuùmentation warnings
-   Drawable
-- Removed ambiguities for Window in some client files
-- Trying to build the client
-   gscreateaccount, gsserverlist, gsmainmenu
-- Trying to build the client
-   Issues due to switch to new OgreGui (gsmainmenu, gsconection)
-- Fixed menu build issue in gsMainMenu
-   switching to oldOgreGui to OgreGui
-- Window implementation
-- Separated DrawableTest and DrawableTestWithOgre
-- DrawableTest SkinnableTexture-related tests work
-- DrawableTest::testLoadTextureThrow works
-- DrawableTest::testLoadTexture works
-- tests/helpers/OgreMinimalSetup::teardownOgre() implementation
-- Created a unit tests helpers convenience library

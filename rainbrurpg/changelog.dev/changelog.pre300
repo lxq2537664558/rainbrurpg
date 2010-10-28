@@ -1,3 +1,24 @@
+* v0.0.5-205 (16 aug 2010 - 16 oct 2010) SLOC 41,316 UT 250 FT 59:32
+- Container::draw() draws all ist childs
+- Drawable::draw() implementation
+- Window constructor uses Drawable::loadSkinnableTexture()
+- Fixed some docuùmentation warnings
+   Drawable
+- Removed ambiguities for Window in some client files
+- Trying to build the client
+   gscreateaccount, gsserverlist, gsmainmenu
+- Trying to build the client
+   Issues due to switch to new OgreGui (gsmainmenu, gsconection)
+- Fixed menu build issue in gsMainMenu
+   switching to oldOgreGui to OgreGui
+- Window implementation
+- Separated DrawableTest and DrawableTestWithOgre
+- DrawableTest SkinnableTexture-related tests work
+- DrawableTest::testLoadTextureThrow works
+- DrawableTest::testLoadTexture works
+- tests/helpers/OgreMinimalSetup::teardownOgre() implementation
+- Created a unit tests helpers convenience library
+
 * v0.0.5-204 (11 jul 2010 - 16 aug 2010) SLOC 41,211 UT ??? FT 51:08
 - Continue Drawable's implementation
    loadTexture + tests, loadSkinnableTexture

@@ -73,6 +73,7 @@
 #include <optionmanager.h>
 
 #include "../config.h"
+#include <OgrePlatform.h>
 
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::Events;
@@ -81,13 +82,6 @@ using namespace RainbruRPG::Options;
 using namespace RainbruRPG::Network;
 using namespace FX;
 using namespace std;
-
-
-/** Comment it if you compile under WIN32 in a
-  * console application project
-  */
-#define WIN_GUI_APPLICATION
-
 
 // Forward declarations
 void handleCommandLineOptions(int argc, char **argv, GameEngineOptions*);
@@ -99,14 +93,13 @@ void initGameStates();
 
 
 // Handling win32 graphical main fonction
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#if (OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
 /** Tells that we are running on a Win32 platform */
 #  define WIN32_LEAN_AND_MEAN
 /** Avoid declaration of min and max macro from Win32 */
 #  define NOMINMAX
 #  include "windows.h"
 
-#  ifdef WIN_GUI_APPLICATION
 /** Win32 specific main entry for non-console application
   *
   * Actually, none of the parameters are used, however I put their
@@ -131,8 +124,7 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
   char* fakeArgv="";
   char** argv=&fakeArgv;
 
-#  endif
-#else
+#else /* OGRE_PLATFORM == OGRE_PLATFORM_WIN32 */
   /** The main function for other platforms than Win32 and for Win32 in
     * console
     *
@@ -141,7 +133,7 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
     *
     */
 int main(int argc, char **argv){
-#endif
+#endif /* OGRE_PLATFORM == OGRE_PLATFORM_WIN32 */
 
   GameEngineOptions geo;
   geo.ogreGuiTest = false;

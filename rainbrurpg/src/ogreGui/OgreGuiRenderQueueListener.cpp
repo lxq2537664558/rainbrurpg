@@ -33,7 +33,6 @@
 
 /** Constructor
   *
-  * \param g The GuiManager
   * \param vQueueID The QueueGroupId when we draw the GUI
   *
   */
