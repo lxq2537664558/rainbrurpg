@@ -127,7 +127,7 @@ create_dll(){
 
   #  $LD -shared --output-def $LIB_NAME.def --out-implib $LIB_NAME.dll.a -o $LIB_NAME.dll ${OBJ_LIST[@]:0} $LIBADD $GLOBAL_LDFLAGS
 
-$CXX -Wall -shared ${OBJ_LIST[@]:0} -o $LIB_NAME.dll -Wl,--out-implib,$LIB_NAME.a $LIBADD
+$CXX -g -Wall -shared ${OBJ_LIST[@]:0} -o $LIB_NAME.dll -Wl,--out-implib,$LIB_NAME.a $LIBADD
 
 }
 

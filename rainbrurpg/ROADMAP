@@ -86,8 +86,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
 
-**** TODO Cross compilation to win32                                  [70%]
+**** TODO Cross compilation to win32                                  [58%]
      :CLOCK:
+     CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
      CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
      CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
      CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
@@ -112,9 +113,21 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 - [X] rainbrurpg.exe is not view as a GUI application
       testing it with the `file` utility
       Must add -mwindows to the command line
+- [X] Should get good backtraces from winedbg
+      http://wiki.winehq.org/Backtraces
+      See message 'Unable to open file '''
+      - Maybe problem of creation for the following files :
+	file_extensions.accepted
+	file_extensions.refused
+      - If we create manually these file, it complains about an Ogre Error :
+	OGRE EXCEPTION(7:InternalErrorException): Could not load dynamic library /usr/lib/OGRE\RenderSystem_GL.so.  System Error: Mauvais format EXE pour %1
+ in DynLib::load at OgreDynLib.cpp (line 80)
+      - [X] Trying with limited extension .acc and .ref by example
+- [ ] Should create RenderSystem_GL.dll from Ogre3D
 - [ ] GlobalURI + loadRessources for Win32.
 - [ ] remove config file 'ogre.cfg'.
 - [ ] Should build with debugging symbols      
+- [ ] exe file contains DLLs
 **** TODO Coding standards
 - [ ] Should split the common/ library in commnon/ and net/
 - [ ] May headers files be called *.hpp

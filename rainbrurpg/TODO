@@ -115,6 +115,7 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-207 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (2) Handle std::exception when copying config files
 - Fixed some documentation warnings
    OgreGuiRenderQueueListener, Brush, GameEngine
 

@@ -41,7 +41,8 @@ namespace fs = boost::filesystem;
   *
   */
 RainbruRPG::Network::GlobalURI::GlobalURI():
-  mConfigFilesCount(0){
+  mConfigFilesCount(0)
+{
 
 #ifdef WEBSITE_DEBUG
   adminSite="http://127.0.0.1/rpg/admin/";
@@ -246,15 +247,27 @@ installConfigFile(const std::string& filename){
 
   // Need to be installed
   if (!fs::exists(userOptionXmlPath)){
-    GTS_LIT(str);
+    GTS_MID(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("The file '%s' was not found. "
 		   "Copying it from '%s' to '%s'"), filename.c_str(), 
 	    optionXmlPath.string().c_str(),
 	    userOptionXmlPath.string().c_str());
     LOGW(str);
+    /** v0.0.5-207 : Trying to handle a Win32 issue
+      *
+      * Inside this try/catch block, files are correctly copied.
+      *
+      */
+    try{
+      fs::copy_file(optionXmlPath, userOptionXmlPath);
+    }
+    catch ( const std::exception & ex ){
+      sprintf(str, _("Copying the file '%s' throws an exception. %s"
+		     "Copying it from '%s' to '%s'"), filename.c_str(), 
+	      ex.what());
+   }
 
-    fs::copy_file(optionXmlPath, userOptionXmlPath);
     it->needCreation=true;
   }
   else{

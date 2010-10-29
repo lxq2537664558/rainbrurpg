@@ -1,4 +1,9 @@
 2010-10-28 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/common/globaluri.cpp (installConfigFile): Handle std::exception
+	when copying files.
+
+2010-10-28 Jerome Pasquier  <rainbru@free.fr>
 	* acinclude.m4 (RB_HANDLE_CROSS_COMPIL): Added -mwindows to LDFLAGS.
 	* src/client/main.cpp : Remove the Win32 console capability.
 
