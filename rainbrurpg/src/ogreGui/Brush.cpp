@@ -534,7 +534,7 @@ void RainbruRPG::OgreGui::Brush::checkHardwareBuffer(GuiVertex* ptr){
   *
   * Should be called between each frame.
   * 
-  * Note: if not called, the Ogre overlays mau disappear.
+  * Note: if not called, the Ogre overlays may disappear.
   *
   */
 void RainbruRPG::OgreGui::Brush::reset()

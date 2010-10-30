@@ -1,5 +1,11 @@
 2010-10-28 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/maincore/gameengine.cpp (chooseSceneManager): Pass a
+	correct QueueID to NumDebug overlay reappear.
+	* src/ogreGui/Drawable.cpp (draw): Set the Brush's scissor rectangle.
+
+2010-10-28 Jerome Pasquier  <rainbru@free.fr>
+
 	* src/common/globaluri.cpp (installConfigFile): Handle std::exception
 	when copying files.
 

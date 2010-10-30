@@ -131,7 +131,6 @@ mouseReleased(const OIS::MouseEvent& vEvent,const OIS::MouseButtonID& vButton)
   */
 void RainbruRPG::OgreGui::Container::draw(Brush* vBrush)
 {
-  LOGI("Drawing Container");
   Drawable::draw(vBrush);
   tWidgetList::iterator iter;
   for (iter = mList.begin(); iter != mList.end(); iter++){

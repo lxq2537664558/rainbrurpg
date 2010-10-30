@@ -47,7 +47,7 @@ namespace RainbruRPG{
       */
     class OgreGuiRenderQueueListener: public RenderQueueListener{
     public:
-      OgreGuiRenderQueueListener(uint8 vQueueID=RENDER_QUEUE_OVERLAY);
+      OgreGuiRenderQueueListener(uint8 vQueueID = RENDER_QUEUE_OVERLAY);
       ~OgreGuiRenderQueueListener();
       void renderQueueStarted (uint8, const String&, bool&);
       void renderQueueEnded (uint8, const String&, bool&);

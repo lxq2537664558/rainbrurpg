@@ -168,8 +168,11 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 - [ ] GuiManager::createTitleOverlay issue
       deactivated due to a malformed UTF string error from Ogre
 
-**** TODO OgreGui2 implementation and UnitTest                        [57%]
+**** TODO OgreGui2 implementation and UnitTest                        [59%]
      :CLOCK:
+     CLOCK: [2010-10-30 sam. 18:42]--[2010-10-30 sam. 19:11] =>  0:29
+     CLOCK: [2010-10-30 sam. 18:17]--[2010-10-30 sam. 18:34] =>  0:17
+     CLOCK: [2010-10-30 sam. 17:46]--[2010-10-30 sam. 18:16] =>  0:30
      CLOCK: [2010-10-25 lun. 09:30]--[2010-10-25 lun. 09:54] =>  0:24
      CLOCK: [2010-10-23 sam. 12:42]--[2010-10-23 sam. 12:49] =>  0:07
      CLOCK: [2010-10-23 sam. 12:01]--[2010-10-23 sam. 12:25] =>  0:24
@@ -233,7 +236,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
       - [X] GameEngineOptions implementation (struct in gameengine.h)
       - [X] GameEngine uses GameEngineOptions for ogregui test
       - [X] GameEngine uses GameEngineOptions for fullscreen
-- [-] Precomputing/Draw
+- [X] Precomputing/Draw
       For each class implements a Test class
       - [X] WidgetList implementation
 	    Inherits from Serializable
@@ -270,7 +273,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
             - [X] Window::Window should call Drawable::loadSkinnableTexture
 	    - [X] Drawable::draw() implementation 
 		  using mTexture and QuadRenderer
-      - [-] Window implementation
+      - [X] Window implementation
 	    - [X] Container::draw() should draw childs*
 	    - [X] GameEngine::draw() should be called again
 		  Maybe removed to avoig olgOgreGui's dependencies
@@ -278,21 +281,86 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 		  - [X] Document the whole drawing process functions with doxygen refs
 		  - [X] Add it to the current GameEngine's SceneManager
 		  - [X] Makes the NumDebug overlay drawn again
-            - [-] gsmainmenu's Window should be drawn
+            - [X] gsmainmenu's Window should be drawn
 		  call Brush::debug to know what's wrong
 		  - [X] Make the client built again (now using OgreGui's new Container)
 		  - [X] Container::compute should call compute for all childs
-		  - [ ] See if gsmenubase's background changed
-	    - [ ] Remove debugging infos in Drawable::draw()
-	    - [ ] Test it with a Label
-		  Label::Label should call Drawable::loadSkinnableTexture
-		  temporary use of textinput image
+		  - [X] See if gsmenubase's background changed
+	    - [X] Remove debugging infos in Drawable::draw()
+	    - [X] NumericDebug overlay not shown anymore
+		  - [X] Test if Containetr is hidden : YES
+		  - [X] RenderQueue should be create with a correct ID
 - [ ] Skins
-      Should rename bgui.* images default.*
-      - [ ] Window
+      - [-] Should rename bgui.* images           [10%]
+	    To default.* (in data/gui/ogreGui)
+	    For each image, `cvs rm bgui.` then `cvs add -kb efault.`
+	    - [X] bgui.button.active.png
+	    - [X] bgui.button.png
+	    - [X] bgui.check.off.png
+	    - [X] bgui.check.on.png
+	    - [X] bgui.dialog.border.png
+	    - [ ] bgui.hscrollbar.bodyleft.png
+	    - [ ] bgui.hscrollbar.bodymid.png
+	    - [ ] bgui.hscrollbar.bodyright.png
+	    - [ ] bgui.hscrollbar.cursor.active.png
+	    - [ ] bgui.hscrollbar.cursor.png
+	    - [ ] bgui.hscrollbar.leftarrow.active.png
+	    - [ ] bgui.hscrollbar.leftarrow.png
+	    - [ ] bgui.hscrollbar.rightarrow.active.png
+	    - [ ] bgui.hscrollbar.rightarrow.png
+	    - [ ] bgui.material
+	    - [ ] bgui.pointer.hscrollbar.bstep.left.png
+	    - [ ] bgui.pointer.hscrollbar.bstep.right.png
+	    - [ ] bgui.pointer.hscrollbar.cursor.png
+	    - [ ] bgui.pointer.hscrollbar.sstep.left.png
+	    - [ ] bgui.pointer.hscrollbar.sstep.right.png
+	    - [ ] bgui.pointer.move.png
+	    - [ ] bgui.pointer.png
+	    - [ ] bgui.pointer.resize.png
+	    - [ ] bgui.pointer.text.png
+	    - [ ] bgui.pointer.vscrollbar.bstep.down.png
+	    - [ ] bgui.pointer.vscrollbar.bstep.up.png
+	    - [ ] bgui.pointer.vscrollbar.cursor.png
+	    - [ ] bgui.pointer.vscrollbar.sstep.down.png
+	    - [ ] bgui.pointer.vscrollbar.sstep.up.png
+	    - [ ] bgui.scrollbar.material
+	    - [ ] bgui.textinput.active.png
+	    - [ ] bgui.textinput.png
+	    - [ ] bgui.vscrollbar.bodybot.png
+	    - [ ] bgui.vscrollbar.bodymid.png
+	    - [ ] bgui.vscrollbar.bodytop.png
+	    - [ ] bgui.vscrollbar.botarrow.active.png
+	    - [ ] bgui.vscrollbar.botarrow.png
+	    - [ ] bgui.vscrollbar.cursor.active.png
+	    - [ ] bgui.vscrollbar.cursor.png
+	    - [ ] bgui.vscrollbar.toparrow.active.png
+	    - [ ] bgui.vscrollbar.toparrow.png
+	    - [ ] bgui.window.png
+	    - [ ] bgui.window.resize.active.png
+	    - [ ] bgui.window.resize.png
+	    - [ ] bgui.window.titlebar.active.png
+	    - [ ] bgui.window.titlebar.png
+	    - [ ] old_bgui.window.png
+      - [ ] Window should use the 'default' skinname
       - [ ] Drawable
+	    In loadSkinnableTexture, default skin is 'bgui', should be 'default'
       - [ ] Widget
+	    Should test if a widget take by default its parent's skin name 
+	    Test it with navigation skin
       - [ ] Label
+	    - [ ] Create the class
+- [ ] Text drawing ability
+      - [ ] See the existant-way in QuadRenderer
+      - [ ] Which existing classes should we take
+	    - [ ] TextSettings
+	    - [ ] Font
+	    - [ ] FontManager
+	    - [ ] LineInfo
+	    - [ ] Glyph
+      - [ ] See how we need to modify Brush
+	    - [ ] add the drawText() function (from QuadRenderer)
+	    - [ ] add the addGlyph() function (from QuadRenderer)
+      - [ ] Test the drawing ability with the Label widget
 - [ ] Layout
       - [ ] Layout<T1, T2>
       - [ ] LayoutObject
