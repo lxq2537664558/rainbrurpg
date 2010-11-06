@@ -18,59 +18,59 @@
 #  02110-1301  USA
 
 datafilesdir = $(prefix)/share/RainbruRPG/data/gui/ogreGui/
-datafiles_DATA= bgui.button.active.png     		\
-		bgui.textinput.png          		\
+datafiles_DATA= default.button.active.png     		\
+		default.textinput.png          		\
 		Commonv2c.ttf				\
-		bgui.button.png            		\
-		bgui.dialog.border.png			\
+		default.button.png            		\
+		default.dialog.border.png			\
 		\
-		bgui.hscrollbar.bodyleft.png            \
-		bgui.hscrollbar.bodymid.png             \
-		bgui.hscrollbar.bodyright.png           \
-		bgui.hscrollbar.cursor.active.png       \
-		bgui.hscrollbar.cursor.png              \
-		bgui.hscrollbar.leftarrow.active.png    \
-		bgui.hscrollbar.leftarrow.png           \
-		bgui.hscrollbar.rightarrow.active.png   \
-		bgui.hscrollbar.rightarrow.png   	\
+		default.hscrollbar.bodyleft.png            \
+		default.hscrollbar.bodymid.png             \
+		default.hscrollbar.bodyright.png           \
+		default.hscrollbar.cursor.active.png       \
+		default.hscrollbar.cursor.png              \
+		default.hscrollbar.leftarrow.active.png    \
+		default.hscrollbar.leftarrow.png           \
+		default.hscrollbar.rightarrow.active.png   \
+		default.hscrollbar.rightarrow.png   	\
 		\
-		bgui.window.png                		\
-		bgui.material              		\
-		bgui.window.resize.active.png   	\
-		old_bgui.window.png      		\
-		bgui.pointer.png                	\
-		bgui.pointer.move.png                	\
-		bgui.pointer.resize.png                	\
-		bgui.pointer.text.png          		\
+		default.window.png                		\
+		default.material              		\
+		default.window.resize.active.png   	\
+		old_default.window.png      		\
+		default.pointer.png                	\
+		default.pointer.move.png                	\
+		default.pointer.resize.png                	\
+		default.pointer.text.png          		\
 		\
-		bgui.pointer.hscrollbar.bstep.left.png 	\
-		bgui.pointer.hscrollbar.bstep.right.png \
-		bgui.pointer.hscrollbar.cursor.png     	\
-		bgui.pointer.hscrollbar.sstep.left.png 	\
-		bgui.pointer.hscrollbar.sstep.right.png \
+		default.pointer.hscrollbar.bstep.left.png 	\
+		default.pointer.hscrollbar.bstep.right.png \
+		default.pointer.hscrollbar.cursor.png     	\
+		default.pointer.hscrollbar.sstep.left.png 	\
+		default.pointer.hscrollbar.sstep.right.png \
 		\
-		bgui.pointer.vscrollbar.bstep.down.png	\
-		bgui.pointer.vscrollbar.bstep.up.png  	\
-		bgui.pointer.vscrollbar.cursor.png   	\
-		bgui.pointer.vscrollbar.sstep.down.png 	\
-		bgui.pointer.vscrollbar.sstep.up.png 	\
+		default.pointer.vscrollbar.bstep.down.png	\
+		default.pointer.vscrollbar.bstep.up.png  	\
+		default.pointer.vscrollbar.cursor.png   	\
+		default.pointer.vscrollbar.sstep.down.png 	\
+		default.pointer.vscrollbar.sstep.up.png 	\
 		\
-		bgui.window.resize.png          	\
+		default.window.resize.png          	\
 		sample.fontdef      			\
-		bgui.textinput.active.png       	\
-		bgui.window.titlebar.png		\
-		bgui.window.titlebar.active.png		\
+		default.textinput.active.png       	\
+		default.window.titlebar.png		\
+		default.window.titlebar.active.png		\
 		\
-		bgui.vscrollbar.bodybot.png		\
-		bgui.vscrollbar.botarrow.png 		\
-		bgui.vscrollbar.bodymid.png  		\
-		bgui.vscrollbar.cursor.png 		\
-		bgui.vscrollbar.bodytop.png  		\
-		bgui.vscrollbar.toparrow.png 		\
-		bgui.vscrollbar.botarrow.active.png  	\
-		bgui.vscrollbar.toparrow.active.png 	\
-		bgui.vscrollbar.cursor.active.png	\
-		bgui.scrollbar.material 		\
+		default.vscrollbar.bodybot.png		\
+		default.vscrollbar.botarrow.png 		\
+		default.vscrollbar.bodymid.png  		\
+		default.vscrollbar.cursor.png 		\
+		default.vscrollbar.bodytop.png  		\
+		default.vscrollbar.toparrow.png 		\
+		default.vscrollbar.botarrow.active.png  	\
+		default.vscrollbar.toparrow.active.png 	\
+		default.vscrollbar.cursor.active.png	\
+		default.scrollbar.material 		\
 		\
 		nav.material				\
 		nav.button.png				\
@@ -80,5 +80,5 @@ datafiles_DATA= bgui.button.active.png     		\
 		mcl.descsort.png			\
 		mcl.nosort.png				\
 		\
-		bgui.check.off.png			\
-		bgui.check.on.png
+		default.check.off.png			\
+		default.check.on.png
