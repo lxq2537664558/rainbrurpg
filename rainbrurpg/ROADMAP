@@ -170,6 +170,8 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 
 **** TODO OgreGui2 implementation and UnitTest                        [59%]
      :CLOCK:
+     CLOCK: [2010-11-06 sam. 17:26]--[2010-11-06 sam. 17:48] =>  0:22
+     CLOCK: [2010-11-06 sam. 15:02]--[2010-11-06 sam. 16:02] =>  1:00
      CLOCK: [2010-10-30 sam. 18:42]--[2010-10-30 sam. 19:11] =>  0:29
      CLOCK: [2010-10-30 sam. 18:17]--[2010-10-30 sam. 18:34] =>  0:17
      CLOCK: [2010-10-30 sam. 17:46]--[2010-10-30 sam. 18:16] =>  0:30
@@ -290,57 +292,58 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	    - [X] NumericDebug overlay not shown anymore
 		  - [X] Test if Containetr is hidden : YES
 		  - [X] RenderQueue should be create with a correct ID
-- [ ] Skins
-      - [-] Should rename bgui.* images           [10%]
+- [-] Skins
+      - [X] Should rename bgui.* images           [100%]
 	    To default.* (in data/gui/ogreGui)
-	    For each image, `cvs rm bgui.` then `cvs add -kb efault.`
+	    For each image, `cvs rm bgui.` then `cvs add -kb default.`
 	    - [X] bgui.button.active.png
 	    - [X] bgui.button.png
 	    - [X] bgui.check.off.png
 	    - [X] bgui.check.on.png
 	    - [X] bgui.dialog.border.png
-	    - [ ] bgui.hscrollbar.bodyleft.png
-	    - [ ] bgui.hscrollbar.bodymid.png
-	    - [ ] bgui.hscrollbar.bodyright.png
-	    - [ ] bgui.hscrollbar.cursor.active.png
-	    - [ ] bgui.hscrollbar.cursor.png
-	    - [ ] bgui.hscrollbar.leftarrow.active.png
-	    - [ ] bgui.hscrollbar.leftarrow.png
-	    - [ ] bgui.hscrollbar.rightarrow.active.png
-	    - [ ] bgui.hscrollbar.rightarrow.png
-	    - [ ] bgui.material
-	    - [ ] bgui.pointer.hscrollbar.bstep.left.png
-	    - [ ] bgui.pointer.hscrollbar.bstep.right.png
-	    - [ ] bgui.pointer.hscrollbar.cursor.png
-	    - [ ] bgui.pointer.hscrollbar.sstep.left.png
-	    - [ ] bgui.pointer.hscrollbar.sstep.right.png
-	    - [ ] bgui.pointer.move.png
-	    - [ ] bgui.pointer.png
-	    - [ ] bgui.pointer.resize.png
-	    - [ ] bgui.pointer.text.png
-	    - [ ] bgui.pointer.vscrollbar.bstep.down.png
-	    - [ ] bgui.pointer.vscrollbar.bstep.up.png
-	    - [ ] bgui.pointer.vscrollbar.cursor.png
-	    - [ ] bgui.pointer.vscrollbar.sstep.down.png
-	    - [ ] bgui.pointer.vscrollbar.sstep.up.png
-	    - [ ] bgui.scrollbar.material
-	    - [ ] bgui.textinput.active.png
-	    - [ ] bgui.textinput.png
-	    - [ ] bgui.vscrollbar.bodybot.png
-	    - [ ] bgui.vscrollbar.bodymid.png
-	    - [ ] bgui.vscrollbar.bodytop.png
-	    - [ ] bgui.vscrollbar.botarrow.active.png
-	    - [ ] bgui.vscrollbar.botarrow.png
-	    - [ ] bgui.vscrollbar.cursor.active.png
-	    - [ ] bgui.vscrollbar.cursor.png
-	    - [ ] bgui.vscrollbar.toparrow.active.png
-	    - [ ] bgui.vscrollbar.toparrow.png
-	    - [ ] bgui.window.png
-	    - [ ] bgui.window.resize.active.png
-	    - [ ] bgui.window.resize.png
-	    - [ ] bgui.window.titlebar.active.png
-	    - [ ] bgui.window.titlebar.png
-	    - [ ] old_bgui.window.png
+	    - [X] bgui.hscrollbar.bodyleft.png
+	    - [X] bgui.hscrollbar.bodymid.png
+	    - [X] bgui.hscrollbar.bodyright.png
+	    - [X] bgui.hscrollbar.cursor.active.png
+	    - [X] bgui.hscrollbar.cursor.png
+	    - [X] bgui.hscrollbar.leftarrow.active.png
+	    - [X] bgui.hscrollbar.leftarrow.png
+	    - [X] bgui.hscrollbar.rightarrow.active.png
+	    - [X] bgui.hscrollbar.rightarrow.png
+	    - [X] bgui.material (no -kb flags)
+	    - [X] bgui.pointer.hscrollbar.bstep.left.png
+	    - [X] bgui.pointer.hscrollbar.bstep.right.png
+	    - [X] bgui.pointer.hscrollbar.cursor.png
+	    - [X] bgui.pointer.hscrollbar.sstep.left.png
+	    - [X] bgui.pointer.hscrollbar.sstep.right.png
+	    - [X] bgui.pointer.move.png
+	    - [X] bgui.pointer.png
+	    - [X] bgui.pointer.resize.png
+	    - [X] bgui.pointer.text.png
+	    - [X] bgui.pointer.vscrollbar.bstep.down.png
+	    - [X] bgui.pointer.vscrollbar.bstep.up.png
+	    - [X] bgui.pointer.vscrollbar.cursor.png
+	    - [X] bgui.pointer.vscrollbar.sstep.down.png
+	    - [X] bgui.pointer.vscrollbar.sstep.up.png
+	    - [X] bgui.scrollbar.material
+	    - [X] bgui.textinput.active.png
+	    - [X] bgui.textinput.png
+	    - [X] bgui.vscrollbar.bodybot.png
+	    - [X] bgui.vscrollbar.bodymid.png
+	    - [X] bgui.vscrollbar.bodytop.png
+	    - [X] bgui.vscrollbar.botarrow.active.png
+	    - [X] bgui.vscrollbar.botarrow.png
+	    - [X] bgui.vscrollbar.cursor.active.png
+	    - [X] bgui.vscrollbar.cursor.png
+	    - [X] bgui.vscrollbar.toparrow.active.png
+	    - [X] bgui.vscrollbar.toparrow.png
+	    - [X] bgui.window.png
+	    - [X] bgui.window.resize.active.png
+	    - [X] bgui.window.resize.png
+	    - [X] bgui.window.titlebar.active.png
+	    - [X] bgui.window.titlebar.png
+	    - [X] old_bgui.window.png
+      - [X] Rename images in Makefile.am
       - [ ] Window should use the 'default' skinname
       - [ ] Drawable
 	    In loadSkinnableTexture, default skin is 'bgui', should be 'default'

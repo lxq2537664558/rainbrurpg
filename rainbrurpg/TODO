@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-207 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (5) Started to rename bgui images to default skin
+- (7) Renamed some bgui images to default (17 files)
+- Renamed some bgui images to default (25 files)
+- Started to rename bgui images to default skin
 - NumDebug windows drwn again
 - Menu's background shown again
 - Handle std::exception when copying config files
