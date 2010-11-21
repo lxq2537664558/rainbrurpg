@@ -26,13 +26,18 @@ h_sources= Brush.hpp					\
 	   Container.hpp				\
 	   Drawable.hpp					\
 	   Focusable.hpp				\
+	   Font.hpp					\
+	   Glyph.hpp					\
 	   GuiVertex.hpp				\
+	   Label.hpp					\
+	   LineInfo.hpp					\
 	   OgreGuiRenderQueueListener.hpp		\
 	   Serializable.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp				\
 	   Window.hpp					\
 	   \
+	   NullHeightGlyphException.hpp			\
 	   SkinNotFoundException.hpp			\
 	   TextureNotFoundException.hpp
 
@@ -41,13 +46,18 @@ cc_sources=Brush.cpp					\
 	   Container.cpp				\
 	   Drawable.cpp					\
 	   Focusable.cpp				\
+	   Font.cpp					\
+	   Glyph.cpp					\
 	   GuiVertex.cpp				\
+	   Label.cpp					\
+	   LineInfo.cpp					\
 	   OgreGuiRenderQueueListener.cpp		\
 	   Serializable.cpp				\
 	   Widget.cpp					\
 	   WidgetList.cpp				\
 	   Window.cpp					\
 	   \
+	   NullHeightGlyphException.cpp			\
 	   SkinNotFoundException.cpp			\
 	   TextureNotFoundException.cpp
 

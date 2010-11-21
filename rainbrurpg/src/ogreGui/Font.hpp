@@ -20,7 +20,7 @@
  *
  */
 
-/** \file font.h
+/** \file Font.hpp
   * Declares an OgreGui font
   *
   * \warning Please use the Ogre namespace to scope Rectangle objects
@@ -36,16 +36,16 @@
   *         
   */
 
-#ifndef _OGRE_GUI_OGRE_FONT_H_
-#define _OGRE_GUI_OGRE_FONT_H_
+#ifndef _OGRE_GUI_OGRE_FONT_HPP_
+#define _OGRE_GUI_OGRE_FONT_HPP_
 
 #include <string>
 
 #include <ogreimport.h>
 #include <rainbrudef.h>    // For the GNU gettext stuff
 
-#include "glyph.h"
-#include "lineinfo.h"
+#include "Glyph.hpp"
+#include "LineInfo.hpp"
 
 using namespace Ogre;
 using namespace RainbruRPG::OgreGui;
@@ -53,7 +53,7 @@ using namespace RainbruRPG::OgreGui;
 // Forward declarations
 namespace RainbruRPG {
   namespace OgreGui {
-    class QuadRenderer;
+    class Brush;
   }
 }
 //End of forward declarations
@@ -85,7 +85,7 @@ namespace RainbruRPG{
       HAT_CENTER  //!< The text is horizontaly centered
     }HorizontalAlignType;
 
-    /** A font used with QuadRenderer
+    /** A font used with Brush
       * 
       * This class defines a font that can be used in OgreGui. 
       *
@@ -116,14 +116,14 @@ namespace RainbruRPG{
       const String& getTextureName(void)const;
 
       // The Ogre scope for Rectangle to avoid ambigous use in Win32
-      void renderAligned( QuadRenderer*, const std::string&, 
+      void renderAligned( Brush*, const std::string&, 
 			  const ColourValue&, const Ogre::Rectangle&, bool,
 			  VerticalAlignType, HorizontalAlignType);
 
       void addGlyph(size_t, Glyph*);
 
     protected:
-      void renderAligned(QuadRenderer*, LineInfoList&, 
+      void renderAligned(Brush*, LineInfoList&, 
 			 const ColourValue&, const Ogre::Rectangle&,
 			 VerticalAlignType, HorizontalAlignType,
 			 bool vSelection = false, int vSelectionStart = -1, 
@@ -136,7 +136,7 @@ namespace RainbruRPG{
       Ogre::Vector2 calculatePos( const Ogre::Rectangle&, float, 
 		  float, HorizontalAlignType, VerticalAlignType);
 
-      void render( QuadRenderer*, const string&, const ColourValue&, 
+      void render( Brush*, const string&, const ColourValue&, 
 		   const Vector2& vPos, bool, int, int ) const;
 
       const Ogre::Rectangle& translateRectangle(Ogre::Rectangle&, float, 
@@ -170,5 +170,5 @@ namespace RainbruRPG{
   }
 }
 
-#endif // _OGRE_GUI_OGRE_FONT_H_
+#endif // _OGRE_GUI_OGRE_FONT_HPP_
 

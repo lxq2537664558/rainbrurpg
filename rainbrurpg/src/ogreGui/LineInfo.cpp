@@ -20,26 +20,50 @@
  *
  */
 
-/** \file Window.cpp
-  *
-  * Implements an ogreGui window
+/** \file LineInfo.cpp
+  * Implements a class that stores infos about a single line of text
   *
   */
 
-#include "Window.hpp"
+#include "LineInfo.hpp"
 
-RainbruRPG::OgreGui::Window::
-Window(Container* vParent, const string& vName, 
-       int vX1, int vY1, int vX2, int vY2):
-  Container(vParent, vName, vX1, vY1, vX2, vY2)
+/** Constructor
+  *
+  * \param vText  The text
+  * \param vWidth The width
+  *
+  */
+RainbruRPG::OgreGui::LineInfo::
+LineInfo( const std::string& vText, float vWidth):
+  text(vText),
+  width(vWidth)
 {
-  setSkinName("default");
-  loadSkinnableTexture("default", "window.png");
+
 }
 
-RainbruRPG::OgreGui::Window::~Window()
+/** Default constructor
+  *
+  */
+RainbruRPG::OgreGui::LineInfo::LineInfo():
+  width(0.0f)
 {
 
 }
 
+/** Get the width of this line of text
+  *
+  * \return The width
+  *
+  */
+float RainbruRPG::OgreGui::LineInfo::getWidth() const{
+  return width;
+}
 
+/** Get the content of this line of text
+  *
+  * \return The text
+  *
+  */
+const std::string& RainbruRPG::OgreGui::LineInfo::getText()const{
+  return text;
+}

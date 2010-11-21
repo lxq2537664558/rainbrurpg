@@ -20,26 +20,28 @@
  *
  */
 
-/** \file Widget.cpp
+/** \file Label.cpp
   *
-  * Implementation of an ogreGui widget
+  * Impelements an ogreGui label widget.
   *
   */
- #include "Widget.hpp"
+
+#include "Label.hpp"
+
+#include "Brush.hpp"
 
 /** The constructor
   *
   * \param vParent  The parent widget
-  * \param vName    The widget's name used in serialization
   * \param vX1, vY1 The top-left position
   * \param vX2, vY2 The bottom-right position
   *
   */
-RainbruRPG::OgreGui::Widget::Widget(Widget* vParent, const string& vName, 
-				    int vX1, int vY1, int vX2, int vY2):
-  Drawable((Drawable*)vParent, vX1, vY1, vX2, vY2),
-  Focusable(true), // take focus by default
-  Serializable(vName)
+RainbruRPG::OgreGui::Label::
+Label(Widget* vParent, int vX1, int vY1, int vX2, int vY2, 
+      const string& vCaption):
+  Widget(vParent, "Label", vX1, vY1, vX2, vY2),
+  mCaption(vCaption)
 {
 
 }
@@ -47,6 +49,32 @@ RainbruRPG::OgreGui::Widget::Widget(Widget* vParent, const string& vName,
 /** The destructor
   *
   */
-RainbruRPG::OgreGui::Widget::~Widget(){
+RainbruRPG::OgreGui::Label::~Label()
+{
 
 }
+
+/** Change the caption of the label
+  *
+  */
+void RainbruRPG::OgreGui::Label::setCaption(const string& vCaption)
+{
+  mCaption = vCaption;
+}
+
+/** Get the current caption of the label
+  *
+  */
+const string& RainbruRPG::OgreGui::Label::getCaption(void)
+{
+  return mCaption;
+}
+
+/** Draws the label
+  *
+  */
+void RainbruRPG::OgreGui::Label::Draw(Brush*)
+{
+  // Not yet implemented
+}
+

@@ -135,3 +135,24 @@ void DrawableTest::setRectangle(Rectangle* r, int x1, int y1, int x2, int y2){
   r->bottom = y2;
 }
 
+/** Test the drawable's skin name propagation from parent
+  *
+  */
+void DrawableTest::testSkinName1(){
+  Rectangle r1;
+  setRectangle(&r1, 50, 50 ,100 ,100);
+  Drawable parent(NULL, r1, "DummySkinName");
+  Drawable child(&parent, r1);
+  CPPUNIT_ASSERT( parent.getSkinName() == child.getSkinName());
+}
+
+/** Test the drawable's skin name non-propagation from parent
+  *
+  */
+void DrawableTest::testSkinName2(){
+  Rectangle r1;
+  setRectangle(&r1, 50, 50 ,100 ,100);
+  Drawable parent(NULL, r1, "DummySkinName");
+  Drawable child(&parent, r1, "OtherskinName");
+  CPPUNIT_ASSERT( parent.getSkinName() != child.getSkinName());
+}

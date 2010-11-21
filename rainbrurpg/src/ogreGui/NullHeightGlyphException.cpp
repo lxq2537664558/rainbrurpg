@@ -20,26 +20,39 @@
  *
  */
 
-/** \file Window.cpp
+#include "NullHeightGlyphException.hpp"
+
+#include <sstream>
+
+/** The exception's constructor
   *
-  * Implements an ogreGui window
+  * \param vCharCode the character code of the glyph
   *
   */
-
-#include "Window.hpp"
-
-RainbruRPG::OgreGui::Window::
-Window(Container* vParent, const string& vName, 
-       int vX1, int vY1, int vX2, int vY2):
-  Container(vParent, vName, vX1, vY1, vX2, vY2)
+RainbruRPG::Exception::NullHeightGlyphException::
+NullHeightGlyphException(long int vCharCode) throw()
 {
-  setSkinName("default");
-  loadSkinnableTexture("default", "window.png");
+  ostringstream oss;
+  oss << "The glyph with char code '";
+  oss << vCharCode;
+  oss << "' has null height";
+  mMessage = oss.str();
 }
 
-RainbruRPG::OgreGui::Window::~Window()
+/// The destructor
+RainbruRPG::Exception::NullHeightGlyphException::
+~NullHeightGlyphException() throw()
 {
 
 }
 
-
+/** Returns the message as a C string
+  *
+  * \return The exception's message
+  *
+  */
+const char* RainbruRPG::Exception::NullHeightGlyphException::
+what() const throw()
+{
+  return mMessage.c_str();
+}

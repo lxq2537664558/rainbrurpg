@@ -115,15 +115,15 @@ namespace RainbruRPG{
       void computeAbsolute(int, int);
       void adjustScissor(const Ogre::Rectangle&);
 
-      std::string mSkinName; //!< The current skin name
+      std::string mSkinName;     //!< The current skin name
       Ogre::Rectangle mAbsolute; //!< The absolute bounding box
       Ogre::Rectangle mScissor;  //!< The scissor rectangle
 
     private:
 #ifdef RB_DIRTY_FLAG
-      bool mDirty;         //!< The dirty flag
+      bool mDirty;               //!< The dirty flag
 #endif
-      Drawable* mParent;   //!< The parent
+      Drawable* mParent;         //!< The parent
       Ogre::Rectangle mRelative; //!< The relative bounding box
 
       Ogre::TexturePtr mTexture; //!< The current texture

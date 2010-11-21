@@ -20,26 +20,34 @@
  *
  */
 
-/** \file Window.cpp
-  *
-  * Implements an ogreGui window
-  *
-  */
+#ifndef _NULL_HEIGHT_GLYPH_EXCEPTION_HPP_
+#define _NULL_HEIGHT_GLYPH_EXCEPTION_HPP_
 
-#include "Window.hpp"
+#include <exception>
+#include <string>
 
-RainbruRPG::OgreGui::Window::
-Window(Container* vParent, const string& vName, 
-       int vX1, int vY1, int vX2, int vY2):
-  Container(vParent, vName, vX1, vY1, vX2, vY2)
+using namespace std;
+
+namespace RainbruRPG
 {
-  setSkinName("default");
-  loadSkinnableTexture("default", "window.png");
+  namespace Exception{
+
+    /** An exception thrown when a Glyph has a null height
+      *
+      *
+      */
+    class NullHeightGlyphException : public std::exception
+    {
+    public:
+      NullHeightGlyphException(long int) throw();
+      virtual ~NullHeightGlyphException() throw();
+
+      virtual const char* what() const throw();
+
+    private:
+      std::string mMessage; //!< The Exception's message
+    };
+  }
 }
 
-RainbruRPG::OgreGui::Window::~Window()
-{
-
-}
-
-
+#endif // !_NULL_HEIGHT_GLYPH_EXCEPTION_HPP_

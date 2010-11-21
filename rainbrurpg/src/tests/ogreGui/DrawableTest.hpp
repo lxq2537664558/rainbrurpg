@@ -60,6 +60,9 @@ class DrawableTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST( testComputeAbsolute );  //!< Test the absolute position
   CPPUNIT_TEST( testAdjustScissor1 );   //!< First test of the scissor
   CPPUNIT_TEST( testAdjustScissor2 );   //!< Second test of the scissor
+
+  CPPUNIT_TEST( testSkinName1 );         //!< Test the skin name propagation
+  CPPUNIT_TEST( testSkinName2 );         //!< Test the skin name propagation (2)
   
   /// The CppUnit test end macro
   CPPUNIT_TEST_SUITE_END();
@@ -79,6 +82,8 @@ public:
   void testComputeAbsolute();
   void testAdjustScissor1();
   void testAdjustScissor2();
+  void testSkinName1();
+  void testSkinName2();
 
 protected:
   void setRectangle(Rectangle* r, int x1, int y1, int x2, int y2);

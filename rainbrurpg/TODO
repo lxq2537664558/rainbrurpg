@@ -115,7 +115,13 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-207 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (7) Renamed some bgui images to default (17 files)
+- (12) Created an exception for null height glyph
+- Retrieved oldOgreGui text drawing related class
+   Glyph, LineInfo, Font
+- Created Label widget (draw() not yet implemented)
+- DrawableTest tests the parent skinname propagation
+- Changed the ROADMAP structure of OgreGui steps
+- Renamed some bgui images to default (17 files)
 - Renamed some bgui images to default (25 files)
 - Started to rename bgui images to default skin
 - NumDebug windows drwn again
@@ -124,7 +130,7 @@ A system that serialize widgets position and configuration
 - Fixed some documentation warnings
    OgreGuiRenderQueueListener, Brush, GameEngine
 
-* v0.0.5-206 (16 oct 2010 - 28 oct 2010) SLOC ??? UT 250 FT 64:13
+* v0.0.5-206 (16 oct 2010 - 28 oct 2010) SLOC 41,501 UT 250 FT 64:13
 - Cross-compil : exe is now a GUI application
 - Trying new version of wine 1.1.42 Do not work
 - Tryibng to recreate DLLs

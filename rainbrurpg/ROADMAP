@@ -220,6 +220,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
      :END:
      To be completed with the previous TODO task.
      Should use sigc++ for connection
+***** DONE Configuration
 - [X] Dirty flag become a configure option
 - [X] Test in cpp/layoutTemplate
       Should be use for Layout implementation
@@ -238,7 +239,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
       - [X] GameEngineOptions implementation (struct in gameengine.h)
       - [X] GameEngine uses GameEngineOptions for ogregui test
       - [X] GameEngine uses GameEngineOptions for fullscreen
-- [X] Precomputing/Draw
+***** DONE Precomputing/Draw
       For each class implements a Test class
       - [X] WidgetList implementation
 	    Inherits from Serializable
@@ -292,7 +293,11 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	    - [X] NumericDebug overlay not shown anymore
 		  - [X] Test if Containetr is hidden : YES
 		  - [X] RenderQueue should be create with a correct ID
-- [-] Skins
+***** DONE Skins
+      :CLOCK:
+      CLOCK: [2010-11-19 ven. 11:02]--[2010-11-19 ven. 11:27] =>  0:25
+      CLOCK: [2010-11-19 ven. 09:44]--[2010-11-19 ven. 10:13] =>  0:29
+      :END:
       - [X] Should rename bgui.* images           [100%]
 	    To default.* (in data/gui/ogreGui)
 	    For each image, `cvs rm bgui.` then `cvs add -kb default.`
@@ -344,59 +349,80 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	    - [X] bgui.window.titlebar.png
 	    - [X] old_bgui.window.png
       - [X] Rename images in Makefile.am
-      - [ ] Window should use the 'default' skinname
-      - [ ] Drawable
+      - [X] Window should use the 'default' skinname
+      - [X] Drawable
 	    In loadSkinnableTexture, default skin is 'bgui', should be 'default'
-      - [ ] Widget
+      - [X] Drawable
 	    Should test if a widget take by default its parent's skin name 
 	    Test it with navigation skin
-      - [ ] Label
-	    - [ ] Create the class
-- [ ] Text drawing ability
-      - [ ] See the existant-way in QuadRenderer
-      - [ ] Which existing classes should we take
+      - [X] Label
+	    - [X] Create the class
+***** TODO Text drawing ability
+      :CLOCK:
+      CLOCK: [2010-11-21 dim. 17:17]--[2010-11-21 dim. 18:04] =>  0:47
+      CLOCK: [2010-11-19 ven. 11:58]--[2010-11-19 ven. 12:26] =>  0:28
+      :END:
+      - [X] See the existant-way in QuadRenderer
+      - [-] Which existing classes should we take
+	    copy them from oldOgreGui (using camelcase and hpp for header)
+	    add them to CVS
+	    create a test class if needed
+            - [X] Glyph
+		  - [X] Copy files and make it build correctly
+		  - [X] Create a NullHeightGlyphException
+			to replace a LOGW call in a constructor
+			example is SkinNotFoundException
+			message with Glyph's charcode
+	    - [X] GlyphMap : typedef in Font
+	    - [X] LineInfo
+	    - [X] Font
+		  Before TextSetting because declare some typedefs
 	    - [ ] TextSettings
-	    - [ ] Font
 	    - [ ] FontManager
-	    - [ ] LineInfo
-	    - [ ] Glyph
-      - [ ] See how we need to modify Brush
+      - [ ] Modify Brush
 	    - [ ] add the drawText() function (from QuadRenderer)
 	    - [ ] add the addGlyph() function (from QuadRenderer)
+		  And make Font use it again
+	    - [ ] add getClipRegion() (modify Font to use it)
+	    - [ ] Font also use get DrawingDevYSum ?		  
+      - [ ] Font was modified to build (see WAS keyword)
       - [ ] Test the drawing ability with the Label widget
-- [ ] Layout
+	    - [ ] Implement Label::draw(Brush*)
+***** Layout
       - [ ] Layout<T1, T2>
       - [ ] LayoutObject
       - [ ] Window
       - [ ] FreeWindow
       - [ ] WeightWindow (can wait)
       - [ ] RelativeWindow (can wait)
-- [ ] Global alpha
+***** Global alpha
       - [ ] GameEngine
       - [ ] Brush
-- [ ] Serialization
+***** Serialization
+      Should use operator& of Boost.Serialization
       - [ ] GameEngine
       - [ ] GameState
       - [ ] Container
       - [ ] Serializable
       - [ ] Widget
-- [ ] Events Keyboard/Mouse
+***** Events Keyboard/Mouse
+      - [ ] Should use paper design (UML...)
       - [ ] GameEngine
       - [ ] GameState
       - [ ] Container
       - [ ] MouseEvent
       - [ ] KeyEvent
-- [ ] Focus/KeyboardNavigation
+***** Focus/KeyboardNavigation
       - [ ] Focusable
       - [ ] GameState
       - [ ] WidgetList
-- [ ] Hierachy
+***** Hierachy
       All widget we should need
       - [ ] Button
       - [ ] MultiColumnList
       - [ ] LineEdit
 	    and others...
-- [ ] Modified files during integration now use ogreGui2.0
+***** Modified files during integration now use ogreGui2.0
       - [ ] client/gsCreateAccount
       - [ ] client/gsConnection
       - [ ] client/gsMainMenu

@@ -68,7 +68,7 @@ namespace RainbruRPG{
         *
 	* This name will be used when deserializing, to be sure
 	* we are taking values of the same object. It is declared
-	* as protected to bu used by WidgetList.
+	* as protected to be used by WidgetList.
 	*
 	*/
       string mUniqueName;

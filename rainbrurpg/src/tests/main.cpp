@@ -58,7 +58,7 @@
   * graphic output is used. 
   *
   */
-#define TEXT_OUTPUT
+// #define TEXT_OUTPUT // Now defined as command-line argument for gcc
 
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestSuite.h>

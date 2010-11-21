@@ -220,6 +220,9 @@ void RainbruRPG::OgreGui::Drawable::setSkinName(const std::string& vSkinName)
   if (vSkinName == "" && mParent){
     mSkinName = mParent->getSkinName();
   }
+  else{
+    mSkinName = vSkinName;
+  }
 }
 
 /** Load a texture by its filename and return it
@@ -260,7 +263,7 @@ loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureNa
   }
   catch(const TextureNotFoundException& e){
     try{
-      textureName = "bgui." + vTextureName;
+      textureName = "default." + vTextureName;
       loadTexture(textureName);
       throw SkinNotFoundException(vSkinName, vTextureName);
     }

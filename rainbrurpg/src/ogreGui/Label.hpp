@@ -20,26 +20,55 @@
  *
  */
 
-/** \file Window.cpp
+/** \file Label.hpp
   *
-  * Implements an ogreGui window
+  * Declare an ogreGui label widget.
+  *
+  * Modifications :
+  * - 19 nov 2010 : Starting implementation
   *
   */
 
-#include "Window.hpp"
+#ifndef _LABEL_HPP_
+#define _LABEL_HPP_
 
-RainbruRPG::OgreGui::Window::
-Window(Container* vParent, const string& vName, 
-       int vX1, int vY1, int vX2, int vY2):
-  Container(vParent, vName, vX1, vY1, vX2, vY2)
-{
-  setSkinName("default");
-  loadSkinnableTexture("default", "window.png");
+#include "Widget.hpp"
+#include <string>
+
+using namespace std;
+
+// Forward declarations
+namespace RainbruRPG{
+  namespace OgreGui{
+    class Brush;
+  }
+}
+// End of forward declarations
+
+
+namespace RainbruRPG{
+  namespace OgreGui{
+
+    /** A simple text drawing widget
+      *
+      */
+    class Label : public Widget
+    {
+    public:
+      Label(Widget*, int, int, int, int, const string&);
+      virtual ~Label();
+
+      void setCaption(const string&);
+      const string& getCaption(void);
+
+      virtual void Draw(Brush*);
+
+    private:
+      /** The text to be drawn */
+      string mCaption;
+
+    };
+  }
 }
 
-RainbruRPG::OgreGui::Window::~Window()
-{
-
-}
-
-
+#endif // !_LABEL_HPP_
