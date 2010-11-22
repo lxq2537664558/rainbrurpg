@@ -27,12 +27,14 @@ h_sources= Brush.hpp					\
 	   Drawable.hpp					\
 	   Focusable.hpp				\
 	   Font.hpp					\
+	   FontManager.hpp				\
 	   Glyph.hpp					\
 	   GuiVertex.hpp				\
 	   Label.hpp					\
 	   LineInfo.hpp					\
 	   OgreGuiRenderQueueListener.hpp		\
 	   Serializable.hpp				\
+	   TextSettings.hpp				\
 	   Widget.hpp					\
 	   WidgetList.hpp				\
 	   Window.hpp					\
@@ -47,12 +49,14 @@ cc_sources=Brush.cpp					\
 	   Drawable.cpp					\
 	   Focusable.cpp				\
 	   Font.cpp					\
+	   FontManager.cpp				\
 	   Glyph.cpp					\
 	   GuiVertex.cpp				\
 	   Label.cpp					\
 	   LineInfo.cpp					\
 	   OgreGuiRenderQueueListener.cpp		\
 	   Serializable.cpp				\
+	   TextSettings.cpp				\
 	   Widget.cpp					\
 	   WidgetList.cpp				\
 	   Window.cpp					\
