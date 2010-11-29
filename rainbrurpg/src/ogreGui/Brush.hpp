@@ -43,6 +43,7 @@ using namespace std;
 namespace RainbruRPG{
   namespace OgreGui{
     class GuiVertex;
+    class TextSettings;
   }
 }
 // End of forward declarations
@@ -132,6 +133,8 @@ namespace RainbruRPG{
       void debug(const std::string&);
 
       void setBlendMode(tBrushBlendMode);
+      void drawFilledRectangle( const Ogre::Rectangle&, const ColourValue& );
+      void drawText(TextSettings*, const string&,const Ogre::Rectangle&, bool);
 
     protected:
       void setupHardwareBuffer(void);
@@ -142,6 +145,10 @@ namespace RainbruRPG{
       double xPixelToNative(int)const;
       double yPixelToNative(int)const;
       void checkHardwareBuffer(GuiVertex*);
+
+      void beginGlyphs(void);
+      void endGlyphs(void);
+      void renderGlyphs(void);
 
       std::string blendModeToString(tBrushBlendMode);
       std::string stateToString(const tBrushState);
@@ -273,6 +280,13 @@ namespace RainbruRPG{
 
       /** The current blend (transparency) mode */
       tBrushBlendMode mBlendMode;
+
+      /** Used when drawing text */
+      GuiVertex* mBatchPointer;
+
+      /** Used when drawing text */
+      size_t mBatchCount;
+
     };
 
   }

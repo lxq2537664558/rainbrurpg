@@ -30,7 +30,9 @@
 
 #include <gameengine.h>
 #include <logger.h>
+
 #include <GuiVertex.hpp>
+#include <TextSettings.hpp>
 
 /** The brush constructor
   *
@@ -642,7 +644,8 @@ blendModeToString(tBrushBlendMode vMode){
   *
   */
 std::string RainbruRPG::OgreGui::Brush::
-stateToString(const tBrushState vState){
+stateToString(const tBrushState vState)
+{
   // Do not return a const& because the string is temporary
   switch (vState){
   case BRS_UNSET:    return "unset";
@@ -651,4 +654,154 @@ stateToString(const tBrushState vState){
   case BRS_END:      return "end";
   default:           return "none";
   }
+}
+
+/** Draw a rectangle filled with the given color
+  *
+  * \param vRect  The rectangle to draw
+  * \param vColor The color to fill the rectangle with
+  *
+  */
+void RainbruRPG::OgreGui::Brush::
+drawFilledRectangle( const Ogre::Rectangle& vRect, const ColourValue& vColor)
+{
+
+  Ogre::Rectangle uv;
+  uv.top    = 0.0f;
+  uv.left   = 0.0f;
+  uv.bottom = 1.0f;
+  uv.right  = 1.0f;
+  usedTexture.setNull();
+
+  setColor( vColor );
+
+  setCorners( vRect.left, vRect.top, vRect.right, vRect.bottom );
+  feedVectors( &vert, &uvs, &cols );
+  
+  // If scissor not yet used, setting it to filled rectangle
+  // else, we let scissor or parent scissor configured
+  if (useScissor){
+    mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				   scissorRect.right, scissorRect.bottom );
+  }
+  else{
+    mRenderSystem->setScissorTest( true, vRect.left, vRect.top, 
+				   vRect.right, vRect.bottom );
+  }
+  
+  // drawQuad
+  if (mBuffer->isLocked()){
+    mBuffer->unlock();
+  }
+  GuiVertex* data = (GuiVertex*)mBuffer->lock( HardwareBuffer::HBL_DISCARD );
+  checkHardwareBuffer(data);
+
+  LOGA(&vert, "vert invalid.");
+
+  for ( size_t x = 0; x < 6; x++ ){
+    data[x].setPosition(vert[x]);
+    data[x].setColor(mColor);
+    data[x].setUvMapping(uvs[x]);
+  }
+
+  // Unlock buffer
+  mBuffer->unlock();
+
+  // Render!
+  mRenderOp.vertexData->vertexCount = 6;
+
+  mRenderSystem->_setTexture(0, true, mTexture );
+  mRenderSystem->_render( mRenderOp );
+
+  //  disableScissor(); // Used in QuadRenderer
+
+  // Reset renderer
+  vert.clear();
+  uvs.clear();
+  cols.clear();
+  
+  mBatchPointer=NULL;
+  mBatchCount=0;
+}
+
+/** Draw a text
+  *
+  * The rect parameter are top, bottom, left right coordonates in pixels
+  * values.
+  *
+  * The wordwrap parameter was added to correctly draw titlebar caption when
+  * window is resized.
+  *
+  * \param vSettings  The text setting
+  * \param text       The text to draw
+  * \param rect       The rectangle where to draw the text
+  * \param wordwrap   Is the text auto word wraped ?
+  *
+  */
+void RainbruRPG::OgreGui::Brush::
+drawText(TextSettings* vSettings, const string& text, 
+	 const Ogre::Rectangle& rect, bool wordwrap)
+{
+
+  beginGlyphs();
+  vSettings->renderAligned( this, text, rect, wordwrap);
+  endGlyphs( );
+}
+
+/** Begin to draw text
+  *
+  */
+void RainbruRPG::OgreGui::Brush::beginGlyphs(void){
+  setBlendMode(BBM_ALPHA);
+  if ( mBatchPointer == NULL ){
+    try{
+      mBatchPointer = (GuiVertex*)mBuffer
+	->lock( Ogre::HardwareBuffer::HBL_DISCARD );
+      checkHardwareBuffer(mBatchPointer);
+    }
+    catch(...){
+      LOGE("Cannot lock HardwareBuffer for mBatchPointer");
+    }
+    mBatchCount = 0;
+  }
+}
+
+/** End to draw text
+  *
+  * This function should be called when the text drawing is finished.
+  * It unlocks the hardware buffer (mBuffer) if necessary and call
+  * the renderGlyphs() function only if mBatchCount is greater than 0.
+  *
+  */
+void RainbruRPG::OgreGui::Brush::endGlyphs(void){
+  if ( mBatchPointer != 0 ){
+    // Avoid the assertion "Cannot unlock this buffer, it is not locked!"
+    if (mBuffer->isLocked()){
+      mBuffer->unlock();
+    }
+
+    if ( mBatchCount > 0 )
+      renderGlyphs( );
+
+    mBatchPointer = NULL;
+    mBatchCount = 0;
+  }
+}
+
+/** Render the current Ogre RenderOperation
+  *
+  */
+void RainbruRPG::OgreGui::Brush::renderGlyphs(void)
+{
+  if (useScissor){
+      mRenderSystem->setScissorTest( true, scissorRect.left, scissorRect.top, 
+				     scissorRect.right, scissorRect.bottom );
+  }
+  else{
+    mRenderSystem->setScissorTest(false);
+  }
+  
+  setBlendMode(BBM_ALPHA);
+  mRenderOp.vertexData->vertexCount = mBatchCount * 6;
+  mRenderSystem->_render( mRenderOp );
 }

@@ -71,20 +71,112 @@ name, date, heure, gamestate, position, name perso, name server, versions
    server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
    server-gui/telnet-gui/  A telnet-based command-line remote control
 
-*** v0.0.7
-**** TODO SPARE TIME CamelCase all filename
-**** TODO SPARE TIME Modification of existing unittests
-**** TODO SPARE TIME New unit tests implementation
+*** v0.0.8 A working GUI
+**** TODO Miscelaneous                                                [0%]
+- [ ] Uses GCC visibility attribute
+- [ ] May use C++ exceptions
 **** Switch to GPLv3
 - [ ] See if OSI/Sourceforge are agree
 - [ ] See compatibility with EasyBMP/TinyXML
 
+**** TODO Make a better use of CppUnit (see libkics for example)      [0%]
+- [ ] autoregister test fixtures
+- [ ] no templates
+- [ ] Integrate it to make check
+*** v0.0.7
+**** TODO Miscelaneous                                                [0%]
+- [ ] Remove terminalAPI, oldOgreGui (11,114)  and explain it in regtests.
+**** TODO SPARE TIME CamelCase all filename
+**** TODO SPARE TIME Modification of existing unittests
+**** TODO SPARE TIME New unit tests implementation
 **** tool/adminsite-databackup
     A comand-line tool to backup adminsite XML files that takes the version
     number as argument (used by backup_prog script).
 **** xIdent
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
+
+**** TODO Coding standards
+- [ ] Should split the common/ library in commnon/ and net/
+- [ ] May headers files be called *.hpp
+- [ ] Should use Boost.Format instead of printf/GTS_* macros
+- [ ] tests/Doxyfile replaced by tests/Doxyfile.in
+- [ ] acinclude.m4 code should go into separate files in m4/
+- [ ] Unit test shouldn't be template class
+      To speed up building. See ogreGui tests for example.
+**** OgreGui2 continue
+***** Serialization
+      Should use operator& of Boost.Serialization
+      - [ ] GameEngine
+      - [ ] GameState
+      - [ ] Container
+      - [ ] Serializable
+      - [ ] Widget
+
+***** Events Keyboard/Mouse
+      - [ ] Should use paper design (UML...)
+      - [ ] GameEngine
+      - [ ] GameState
+      - [ ] Container
+      - [ ] MouseEvent
+      - [ ] KeyEvent
+***** Focus/KeyboardNavigation
+      - [ ] Focusable
+      - [ ] GameState
+      - [ ] WidgetList
+
+***** Layout
+      - [ ] Layout<T1, T2>
+      - [ ] LayoutObject
+      - [ ] Window
+      - [ ] FreeWindow
+      - [ ] WeightWindow (can wait)
+      - [ ] RelativeWindow (can wait)
+***** Global alpha
+      Implement it as an event
+      - [ ] GameEngine
+      - [ ] Brush
+***** Hierachy
+      All widget we should need
+      - [ ] Button
+      - [ ] MultiColumnList
+      - [ ] LineEdit
+	    and others...
+***** Modified files during integration now use ogreGui2.0
+      - [ ] client/gsCreateAccount
+      - [ ] client/gsConnection
+      - [ ] client/gsMainMenu
+      - [ ] client/gsMenuBase
+      - [ ] client/main.cpp 
+	    OgreGuiRenderQueueListener, BetaGui::GUI and
+	    SkinManager references removed
+      - [ ] client/guimanaer.cpp 
+	    BetaGui::GUI references removed
+      - [ ] client/gsserverlist.cpp
+	    BetaGui::GUI and some Widgets references removed
+*** TODO v0.0.6
+**** TODO Sourceforge release
+- [ ] Removed CEGUI reference from Sourceforge project overview
+- [ ] Explain CEGUI give up in an homepage news
+- [ ] File release sourceforge (zip+bz2)
+**** TODO Miscelaneous                                                [28%]
+     :CLOCK:
+     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
+     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
+     CLOCK: [2010-02-17 mer 18:15]
+     :END:
+- [X] Remove tools/oldXIdent and explain it in regtests.
+- [X] Should add a configuration summary at the end of configure
+- [ ] common/version.cpp should print option summary
+- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
+- [ ] Trying to fix Doxygen documentation TODO items.
+- [ ] Trying to fix configure script warnings
+      See the 'freetype-config: integer expression expected' warning
+- [ ] Datafiles cleanup (many are not used anymore)
+      The CEGUI ones MUST be deleted in data/gui/
+- [ ] See what to do with RainbruRPG-common.pc.in
+- [ ] GuiManager::createTitleOverlay issue
+      deactivated due to a malformed UTF string error from Ogre
 
 **** TODO Cross compilation to win32                                  [58%]
      :CLOCK:
@@ -128,46 +220,6 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 - [ ] remove config file 'ogre.cfg'.
 - [ ] Should build with debugging symbols      
 - [ ] exe file contains DLLs
-**** TODO Coding standards
-- [ ] Should split the common/ library in commnon/ and net/
-- [ ] May headers files be called *.hpp
-- [ ] Should use Boost.Format instead of printf/GTS_* macros
-- [ ] tests/Doxyfile replaced by tests/Doxyfile.in
-- [ ] acinclude.m4 code should go into separate files in m4/
-- [ ] Unit test shouldn't be template class
-      To speed up building. See ogreGui tests for example.
-**** TODO Make a better use of CppUnit (see libkics for example)      [0%]
-- [ ] autoregister test fixtures
-- [ ] no templates
-- [ ] Integrate it to make check
-**** TODO Miscelaneous                                                [0%]
-- [ ] Uses GCC visibility attribute
-- [ ] May use C++ exceptions
-
-*** TODO v0.0.6
-**** TODO Sourceforge release
-- [ ] Removed CEGUI reference from Sourceforge project overview
-- [ ] Explain CEGUI give up in an homepage news
-- [ ] File release sourceforge (zip+bz2)
-**** TODO Miscelaneous                                                [28%]
-     :CLOCK:
-     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
-     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
-     CLOCK: [2010-02-17 mer 18:15]
-     :END:
-- [X] Remove tools/oldXIdent and explain it in regtests.
-- [X] Should add a configuration summary at the end of configure
-- [ ] common/version.cpp should print option summary
-- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
-- [ ] Trying to fix Doxygen documentation TODO items.
-- [ ] Trying to fix configure script warnings
-      See the 'freetype-config: integer expression expected' warning
-- [ ] Datafiles cleanup (many are not used anymore)
-      The CEGUI ones MUST be deleted in data/gui/
-- [ ] See what to do with RainbruRPG-common.pc.in
-- [ ] GuiManager::createTitleOverlay issue
-      deactivated due to a malformed UTF string error from Ogre
-
 **** TODO OgreGui2 implementation and UnitTest                        [59%]
      :CLOCK:
      CLOCK: [2010-11-06 sam. 17:26]--[2010-11-06 sam. 17:48] =>  0:22
@@ -219,7 +271,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
      CLOCK: [2010-02-16 mar 18:29]--[2010-02-16 mar 21:52] =>  3:03
      :END:
      To be completed with the previous TODO task.
-     Should use sigc++ for connection
+     Should use sigc++ for signals
 ***** DONE Configuration
 - [X] Dirty flag become a configure option
 - [X] Test in cpp/layoutTemplate
@@ -359,11 +411,14 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	    - [X] Create the class
 ***** TODO Text drawing ability
       :CLOCK:
+      CLOCK: [2010-11-28 dim. 15:42]--[2010-11-28 dim. 16:08] =>  0:26
+      CLOCK: [2010-11-22 lun. 15:26]--[2010-11-22 lun. 15:39] =>  0:13
+      CLOCK: [2010-11-22 lun. 10:30]--[2010-11-22 lun. 11:00] =>  0:30
       CLOCK: [2010-11-21 dim. 17:17]--[2010-11-21 dim. 18:04] =>  0:47
       CLOCK: [2010-11-19 ven. 11:58]--[2010-11-19 ven. 12:26] =>  0:28
       :END:
       - [X] See the existant-way in QuadRenderer
-      - [-] Which existing classes should we take
+      - [X] Which existing classes should we take
 	    copy them from oldOgreGui (using camelcase and hpp for header)
 	    add them to CVS
 	    create a test class if needed
@@ -377,10 +432,14 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	    - [X] LineInfo
 	    - [X] Font
 		  Before TextSetting because declare some typedefs
-	    - [ ] TextSettings
-	    - [ ] FontManager
-      - [ ] Modify Brush
-	    - [ ] add the drawText() function (from QuadRenderer)
+	    - [X] TextSettings
+	    - [X] FontManager
+      - [-] Modify Brush
+	    - [X] Add the drawFilledRectangle() function (for TextSetting)		  
+	    - [X] add the drawText() function (from QuadRenderer)
+		  - [X] beginGlyphs
+		  - [X] endGlyphs
+		  - [X] renderGlyphs
 	    - [ ] add the addGlyph() function (from QuadRenderer)
 		  And make Font use it again
 	    - [ ] add getClipRegion() (modify Font to use it)
@@ -388,52 +447,6 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
       - [ ] Font was modified to build (see WAS keyword)
       - [ ] Test the drawing ability with the Label widget
 	    - [ ] Implement Label::draw(Brush*)
-***** Layout
-      - [ ] Layout<T1, T2>
-      - [ ] LayoutObject
-      - [ ] Window
-      - [ ] FreeWindow
-      - [ ] WeightWindow (can wait)
-      - [ ] RelativeWindow (can wait)
-***** Global alpha
-      - [ ] GameEngine
-      - [ ] Brush
-***** Serialization
-      Should use operator& of Boost.Serialization
-      - [ ] GameEngine
-      - [ ] GameState
-      - [ ] Container
-      - [ ] Serializable
-      - [ ] Widget
-***** Events Keyboard/Mouse
-      - [ ] Should use paper design (UML...)
-      - [ ] GameEngine
-      - [ ] GameState
-      - [ ] Container
-      - [ ] MouseEvent
-      - [ ] KeyEvent
-***** Focus/KeyboardNavigation
-      - [ ] Focusable
-      - [ ] GameState
-      - [ ] WidgetList
-***** Hierachy
-      All widget we should need
-      - [ ] Button
-      - [ ] MultiColumnList
-      - [ ] LineEdit
-	    and others...
-***** Modified files during integration now use ogreGui2.0
-      - [ ] client/gsCreateAccount
-      - [ ] client/gsConnection
-      - [ ] client/gsMainMenu
-      - [ ] client/gsMenuBase
-      - [ ] client/main.cpp 
-	    OgreGuiRenderQueueListener, BetaGui::GUI and
-	    SkinManager references removed
-      - [ ] client/guimanaer.cpp 
-	    BetaGui::GUI references removed
-      - [ ] client/gsserverlist.cpp
-	    BetaGui::GUI and some Widgets references removed
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
      CLOCK: [2010-03-22 lun 11:31]--[2010-03-22 lun 11:45] =>  0:14
@@ -656,3 +669,4 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 
       
       
+

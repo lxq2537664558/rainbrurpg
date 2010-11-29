@@ -114,8 +114,15 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-207 (16 oct 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (12) Created an exception for null height glyph
+* v0.0.5-208 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
+
+* v0.0.5-207 (28 oct 2010 - 28 nov 2010) SLOC 531 UT 250 FT 70:51
+- Moved some function from QuadRenderer to Brush
+   drawFilledRectangle, drawText, beginGlyphs, endGlyphs, renderGlyphs
+- Reorganized ROADMAP file to get an earlier release (maybe this year)
+- Retrieved oldOgreGui text drawing related class
+   TextSettings, FontManager
+- Created an exception for null height glyph
 - Retrieved oldOgreGui text drawing related class
    Glyph, LineInfo, Font
 - Created Label widget (draw() not yet implemented)
