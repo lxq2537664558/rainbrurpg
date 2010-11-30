@@ -41,6 +41,7 @@ using namespace std;
 namespace RainbruRPG{
   namespace OgreGui{
     class Brush;
+    class TextSettings;
   }
 }
 // End of forward declarations
@@ -63,10 +64,16 @@ namespace RainbruRPG{
 
       virtual void Draw(Brush*);
 
+      bool getWordwrap(void)const;
+      void setWordwrap(bool);
+
     private:
       /** The text to be drawn */
       string mCaption;
-
+      /** Is the line of text wrapped when drawn ? */
+      bool mWordwrap;
+      /** The settings to draw text */
+      TextSettings* mTextSettings;
     };
   }
 }

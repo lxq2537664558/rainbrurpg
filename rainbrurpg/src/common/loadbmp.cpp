@@ -23,7 +23,7 @@
 #include "loadbmp.h"
 #include "globaluri.h"
 
-#include "boostimport.h"
+#include "BoostImport.hpp"
 
 #include <vector>
 

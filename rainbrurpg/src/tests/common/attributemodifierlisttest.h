@@ -34,7 +34,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
 
-#include <attributemodifierlist.h>
+#include <AttributeModifierList.hpp>
 #include <string>
 
 using namespace RainbruRPG::Network::Ident;

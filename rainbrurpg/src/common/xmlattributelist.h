@@ -47,7 +47,7 @@
 #include "logger.h"
 #include "curlfiletoxml.h"
 #include "globaluri.h"
-#include "attributemodifierlist.h"
+#include "AttributeModifierList.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

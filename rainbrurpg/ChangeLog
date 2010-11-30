@@ -1,3 +1,9 @@
+2010-11-30 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Label.cpp (draw): implemented using retrieved 
+	Brush::drawText().
+	* src/ogreGui/Label.hpp (draw): added a mWordwrap member.
+	
 2010-10-28 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/maincore/gameengine.cpp (chooseSceneManager): Pass a

@@ -25,9 +25,10 @@
   *
   */
 
-#include <Window.hpp>
-
 #include "gsmainmenu.h"
+
+#include <Window.hpp>
+#include <Label.hpp>
 
 #include "keyboardnavigation.h"
 #include "vcconstant.h"
@@ -197,7 +198,10 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
-  mContainer->push_back(new OgreGui::Window(mContainer, "aze", 10, 20, 100, 100));
+  OgreGui::Window* w = new OgreGui::Window(mContainer, "aze", 10, 20, 100, 100);
+  Label* l = new Label(w , 15, 25, 55, 95, "This is a label");
+  w->push_back(l);
+  mContainer->push_back(w);
 
   /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();

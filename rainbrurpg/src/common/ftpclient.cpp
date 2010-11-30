@@ -30,7 +30,7 @@
 #include "logger.h"
 #include "stringconv.h"
 
-#include "boostimport.h"
+#include "BoostImport.hpp"
 
 /** The default constructor
   *

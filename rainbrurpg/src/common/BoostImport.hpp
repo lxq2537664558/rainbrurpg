@@ -20,10 +20,11 @@
  *
  */
 
-/** \file boostimport.h
+/** \file BoostImport.hpp
   * Implements a hack used to build in win32 due to ptrdiff_t
   *
   * Modifications :
+  * - 30 nov 2010 : CamelCased this header
   * - 01 apr 2009 : Renamed from include_boost.h to boostimport.h
   * - 31 mar 2009 : Implementation
   *

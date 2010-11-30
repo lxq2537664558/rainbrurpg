@@ -35,6 +35,7 @@ h_sources= Brush.hpp					\
 	   OgreGuiRenderQueueListener.hpp		\
 	   Serializable.hpp				\
 	   TextSettings.hpp				\
+	   Vector3.hpp					\
 	   Widget.hpp					\
 	   WidgetList.hpp				\
 	   Window.hpp					\
@@ -57,6 +58,7 @@ cc_sources=Brush.cpp					\
 	   OgreGuiRenderQueueListener.cpp		\
 	   Serializable.cpp				\
 	   TextSettings.cpp				\
+	   Vector3.cpp					\
 	   Widget.cpp					\
 	   WidgetList.cpp				\
 	   Window.cpp					\

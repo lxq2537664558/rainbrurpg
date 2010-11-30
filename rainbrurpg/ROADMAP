@@ -3,7 +3,7 @@
 * v1.0.0
 ** v0.3.0
 *** v0.2.1
-**** QuadRenderer improvements
+**** OgreGui's Brush improvements
 - Text selection
 - multicolor test
 
@@ -30,6 +30,7 @@
 - restore backup
 *** v0.1.2
 **** Editor may move objects
+     Note: editor may move from a fox-based appliocation to the client itself
 - [ ] NetPacket send by editor to the server
 - [ ] Server send new position of object
 **** Screenshots
@@ -85,8 +86,120 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Integrate it to make check
 *** v0.0.7
 **** TODO Miscelaneous                                                [0%]
-- [ ] Remove terminalAPI, oldOgreGui (11,114)  and explain it in regtests.
-**** TODO SPARE TIME CamelCase all filename
+- [ ] Remove terminalAPI (2,775 SLOC)*
+- [ ] oldOgreGui (11,114 SLOC) 
+- [ ] explain it in regtests.
+**** TODO SPARE TIME CamelCase all filename and call headers .hpp  [3/101]
+     CLOCK: [2010-11-30 mar. 14:01]--[2010-11-30 mar. 14:32] =>  0:31
+     For all files, modify header and implementation file name, remove old files
+     from CVS, add new files to CVS and recompile to change include names. Maybe
+     remove /usr/local/include/... files before. Also change names in Makefile.in.
+     Also change names in doxygen \file command.
+     - [X] List class to be modified
+     + in common/
+     - [X] attributemodifierlist
+     - [X] boostimport
+     - [ ] chartbase
+     - [ ] chartline
+     - [ ] chartserie
+     - [ ] clientconnect
+     - [ ] curlaccountadd
+     - [ ] curlaccountconfirmmail
+     - [ ] curlaccountdelete
+     - [ ] curlaccounttoggleblacklist
+     - [ ] curlfiletoxml
+     - [ ] curlgetfile
+     - [ ] curlimport
+     - [ ] curlinterface
+     - [ ] curlpersoheaderadd
+     - [ ] curlpersoheaderdelete
+     - [ ] curlpersomodifattrb
+     - [ ] curlposteddata
+     - [ ] curlserveradd
+     - [ ] curlserverdelete
+     - [ ] curlservermodifclients
+     - [ ] curlsubmitform
+     - [ ] enetbase
+     - [ ] enetclient
+     - [ ] ftpclient
+     - [ ] ftpdef
+     - [ ] globaluri
+     - [ ] hashfile
+     - [ ] hashpassword
+     - [ ] httpresponse
+     - [ ] itemlistfile
+     - [ ] languagelistitem
+     - [ ] loadbmp
+     - [ ] logger
+     - [ ] netpacketbase
+     - [ ] netpacketflooderbase
+     - [ ] npconnectionresponse
+     - [ ] npflooder0004
+     - [ ] npidentification
+     - [ ] objectmesh
+     - [ ] objectpos
+     - [ ] optionattribute
+     - [ ] optionboolattribute
+     - [ ] optionbutton
+     - [ ] optionfloatattribute
+     - [ ] optionfloatrangeattribute
+     - [ ] optionintattribute
+     - [ ] optionintrangeattribute
+     - [ ] optionlistattribute
+     - [ ] optionmanager
+     - [ ] optionpanel
+     - [ ] options
+     - [ ] optionstringattribute
+     - [ ] ptypes
+     - [ ] rainbrudef
+     - [ ] serverlistitem
+     - [ ] sha1
+     - [ ] singleton
+     - [ ] stringconv
+     - [ ] taccountlist
+     - [ ] tidentreturn
+     - [ ] timer
+     - [ ] tnotelist
+     - [ ] version
+     - [ ] xmlaccountlist
+     - [ ] xmlattrbcatlist
+     - [ ] xmlattributelist
+     - [ ] xmlbonusfile
+     - [ ] xmlbonusfilelist
+     - [ ] xmllanguage
+     - [ ] xmlobjectlist
+     - [ ] xmloptions
+     - [ ] xmlpersolist
+     - [ ] xmlserverlist
+     - [ ] xmltimestamp
+     + in maincore/
+     - [ ] dumpogreobject
+     - [ ] environmentsetup
+     - [ ] gameengine
+     - [ ] gamestate
+     - [ ] gsgamebase
+     - [ ] gslocaltest
+     - [ ] highlightlistener
+     - [ ] inputmanager
+     - [ ] inputwrapper
+     - [ ] keyboardnavigation
+     - [ ] ogreimport
+     - [ ] vcconstant
+     - [ ] velocitycalculator
+     + in client/
+     - [ ] exampleframelistener
+     - [ ] gsconnection
+     - [ ] gscreateaccount
+     - [ ] gsmainmenu
+     - [ ] gsmenubase
+     - [ ] gsserverlist
+     - [ ] gsupdatedatafiles
+     - [ ] guiframelistener
+     - [ ] guimanager
+     - [ ] languageselector
+     - [ ] launcher
+     - [ ] launcheroptions
+     + Files in tests/
 **** TODO SPARE TIME Modification of existing unittests
 **** TODO SPARE TIME New unit tests implementation
 **** tool/adminsite-databackup
@@ -97,22 +210,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - Modify the connection system
 
 **** TODO Coding standards
-- [ ] Should split the common/ library in commnon/ and net/
-- [ ] May headers files be called *.hpp
+- [ ] Should split the common/ library in common/ and net/
+- [ ] May headers files be called *.hpp (previous step)
 - [ ] Should use Boost.Format instead of printf/GTS_* macros
 - [ ] tests/Doxyfile replaced by tests/Doxyfile.in
 - [ ] acinclude.m4 code should go into separate files in m4/
 - [ ] Unit test shouldn't be template class
       To speed up building. See ogreGui tests for example.
 **** OgreGui2 continue
-***** Serialization
-      Should use operator& of Boost.Serialization
-      - [ ] GameEngine
-      - [ ] GameState
-      - [ ] Container
-      - [ ] Serializable
-      - [ ] Widget
-
 ***** Events Keyboard/Mouse
       - [ ] Should use paper design (UML...)
       - [ ] GameEngine
@@ -125,6 +230,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] GameState
       - [ ] WidgetList
 
+***** Serialization
+      After Events handling because need to move window to test its position
+      Should use operator& of Boost.Serialization
+      - [ ] GameEngine
+      - [ ] GameState
+      - [ ] Container
+      - [ ] Serializable
+      - [ ] Widget
 ***** Layout
       - [ ] Layout<T1, T2>
       - [ ] LayoutObject
@@ -155,298 +268,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] client/gsserverlist.cpp
 	    BetaGui::GUI and some Widgets references removed
 *** TODO v0.0.6
-**** TODO Sourceforge release
-- [ ] Removed CEGUI reference from Sourceforge project overview
-- [ ] Explain CEGUI give up in an homepage news
-- [ ] File release sourceforge (zip+bz2)
-**** TODO Miscelaneous                                                [28%]
-     :CLOCK:
-     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
-     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
-     CLOCK: [2010-02-17 mer 18:15]
-     :END:
-- [X] Remove tools/oldXIdent and explain it in regtests.
-- [X] Should add a configuration summary at the end of configure
-- [ ] common/version.cpp should print option summary
-- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
-- [ ] Trying to fix Doxygen documentation TODO items.
-- [ ] Trying to fix configure script warnings
-      See the 'freetype-config: integer expression expected' warning
-- [ ] Datafiles cleanup (many are not used anymore)
-      The CEGUI ones MUST be deleted in data/gui/
-- [ ] See what to do with RainbruRPG-common.pc.in
-- [ ] GuiManager::createTitleOverlay issue
-      deactivated due to a malformed UTF string error from Ogre
-
-**** TODO Cross compilation to win32                                  [58%]
-     :CLOCK:
-     CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
-     CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
-     CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
-     CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
-     CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
-     CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
-     :END:
-     Errors are
-wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeInterrupt, aborting
-wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMutant, aborting
-
-- [X] Test created executable (164Mo)
-      Unhandled page fault
-- [X] Trying cross-compilation : Works
-      Get a 'undefined reference to `_libintl_gettext'' error
-      Fixed in acinclude.m4
-- [X] Cross-compil documentation must reference mingw.sh
-- [X] Should fix the 'cannot find -lboost_serialization' error
-- [X] Tested DLL are outdated, recreating them
-      - [X] maincore: undefined references to OgreGui
-- [X] Maybe wine version is too old (wine-1.0.1-174-gc4039bd)
-      Tested with wine 1.1.42 : always an error
-- [X] rainbrurpg.exe is not view as a GUI application
-      testing it with the `file` utility
-      Must add -mwindows to the command line
-- [X] Should get good backtraces from winedbg
-      http://wiki.winehq.org/Backtraces
-      See message 'Unable to open file '''
-      - Maybe problem of creation for the following files :
-	file_extensions.accepted
-	file_extensions.refused
-      - If we create manually these file, it complains about an Ogre Error :
-	OGRE EXCEPTION(7:InternalErrorException): Could not load dynamic library /usr/lib/OGRE\RenderSystem_GL.so.  System Error: Mauvais format EXE pour %1
- in DynLib::load at OgreDynLib.cpp (line 80)
-      - [X] Trying with limited extension .acc and .ref by example
-- [ ] Should create RenderSystem_GL.dll from Ogre3D
-- [ ] GlobalURI + loadRessources for Win32.
-- [ ] remove config file 'ogre.cfg'.
-- [ ] Should build with debugging symbols      
-- [ ] exe file contains DLLs
-**** TODO OgreGui2 implementation and UnitTest                        [59%]
-     :CLOCK:
-     CLOCK: [2010-11-06 sam. 17:26]--[2010-11-06 sam. 17:48] =>  0:22
-     CLOCK: [2010-11-06 sam. 15:02]--[2010-11-06 sam. 16:02] =>  1:00
-     CLOCK: [2010-10-30 sam. 18:42]--[2010-10-30 sam. 19:11] =>  0:29
-     CLOCK: [2010-10-30 sam. 18:17]--[2010-10-30 sam. 18:34] =>  0:17
-     CLOCK: [2010-10-30 sam. 17:46]--[2010-10-30 sam. 18:16] =>  0:30
-     CLOCK: [2010-10-25 lun. 09:30]--[2010-10-25 lun. 09:54] =>  0:24
-     CLOCK: [2010-10-23 sam. 12:42]--[2010-10-23 sam. 12:49] =>  0:07
-     CLOCK: [2010-10-23 sam. 12:01]--[2010-10-23 sam. 12:25] =>  0:24
-     CLOCK: [2010-10-17 dim. 09:12]--[2010-10-17 dim. 10:01] =>  0:49
-     CLOCK: [2010-10-16 sam. 19:32]--[2010-10-16 sam. 20:08] =>  0:36
-     CLOCK: [2010-10-16 sam. 17:09]--[2010-10-16 sam. 17:30] =>  0:21
-     CLOCK: [2010-10-16 sam. 14:43]--[2010-10-16 sam. 15:15] =>  0:32
-     CLOCK: [2010-09-07 mar 08:46]--[2010-09-07 mar 09:25] =>  0:39
-     CLOCK: [2010-09-04 sam. 19:59]--[2010-09-04 sam. 20:22] =>  0:23
-     CLOCK: [2010-08-22 dim. 12:37]--[2010-08-22 dim. 13:03] =>  0:26
-     CLOCK: [2010-08-21 sam. 16:35]--[2010-08-21 sam. 16:55] =>  0:20
-     CLOCK: [2010-08-18 mer. 22:59]--[2010-08-18 mer. 23:32] =>  0:33
-     CLOCK: [2010-08-18 mer. 20:47]--[2010-08-18 mer. 21:21] =>  0:34
-     CLOCK: [2010-08-18 mer. 17:31]--[2010-08-18 mer. 20:47] =>  3:16
-     CLOCK: [2010-08-18 mer. 15:24]--[2010-08-18 mer. 16:07] =>  0:43
-     CLOCK: [2010-08-18 mer. 11:46]--[2010-08-18 mer. 12:11] =>  0:25
-     CLOCK: [2010-08-17 mar 19:26]--[2010-08-17 mar 19:59] =>  0:33
-     CLOCK: [2010-08-15 dim 13:57]--[2010-08-15 dim 14:10] =>  0:13
-     CLOCK: [2010-08-15 dim 11:40]--[2010-08-15 dim 12:09] =>  0:29
-     CLOCK: [2010-08-15 dim 10:38]--[2010-08-15 dim 11:05] =>  0:27
-     CLOCK: [2010-08-14 sam 17:13]--[2010-08-14 sam 17:34] =>  0:21
-     CLOCK: [2010-08-14 sam 14:57]--[2010-08-14 sam 15:32] =>  0:35
-     CLOCK: [2010-08-14 sam 12:51]--[2010-08-14 sam 13:07] =>  0:16
-     CLOCK: [2010-07-25 dim 09:53]--[2010-07-25 dim 10:15] =>  0:22
-     CLOCK: [2010-07-24 sam 19:38]--[2010-07-24 sam 20:09] =>  0:31
-     CLOCK: [2010-07-24 sam 10:19]--[2010-07-24 sam 14:20] =>  4:01
-     CLOCK: [2010-07-23 ven 11:22]--[2010-07-23 ven 11:53] =>  0:31
-     CLOCK: [2010-07-18 dim 15:35]--[2010-07-18 dim 16:06] =>  0:31
-     CLOCK: [2010-07-17 sam 16:42]--[2010-07-17 sam 17:34] =>  0:52
-     CLOCK: [2010-07-17 sam 12:14]--[2010-07-17 sam 12:48] =>  0:28
-     CLOCK: [2010-07-10 sam 13:23]--[2010-07-10 sam 13:51] =>  0:28
-     CLOCK: [2010-07-10 sam 10:36]--[2010-07-10 sam 11:48] =>  0:31
-     CLOCK: [2010-07-09 ven 10:19]--[2010-07-09 ven 11:04] =>  0:45
-     CLOCK: [2010-06-08 mar 10:51]--[2010-06-08 mar 11:22] =>  0:31
-     CLOCK: [2010-06-07 lun 15:01]--[2010-06-07 lun 15:57] =>  0:31
-     CLOCK: [2010-03-25 jeu 15:07]--[2010-03-25 jeu 15:53] =>  0:46
-     CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:41] =>  1:12
-     CLOCK: [2010-07-06 mar 10:42]--[2010-07-06 mar 11:45] =>  1:03
-     CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:55] =>  1:10
-     CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 19:42] =>  2:50
-     CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 12:50] =>  2:32
-     CLOCK: [2010-02-16 mar 18:29]--[2010-02-16 mar 21:52] =>  3:03
-     :END:
-     To be completed with the previous TODO task.
-     Should use sigc++ for signals
-***** DONE Configuration
-- [X] Dirty flag become a configure option
-- [X] Test in cpp/layoutTemplate
-      Should be use for Layout implementation
-- [X] cpp/layoutTemplate should not use associative array (sorted)
-- [X] configure.in : library version should be 2.0.0 
-      according to the libtool versionning system
-- [X] Remove DeserializationErrorList from previous implementation
-- [X] Create a command-line option --ogregui-test which uses a new
-      gsOgreguiTest gamestate (if Boost.Program_options add to DEPENDENCIES)
-- [X] Add Boost.Serialization to DEPENDENCIES
-- [X] Serializable should use Boost.Serialization (Archive)
-- [X] gsOgreguiTest game state implementation in client (add it to cvs)
-- [X] configure should test for Boost.Serialization 
-- [X] configure should test for libbz2-dev
-- [X] command-line option --ogregui-test uses gsOgreguiTest game state
-      - [X] GameEngineOptions implementation (struct in gameengine.h)
-      - [X] GameEngine uses GameEngineOptions for ogregui test
-      - [X] GameEngine uses GameEngineOptions for fullscreen
-***** DONE Precomputing/Draw
-      For each class implements a Test class
-      - [X] WidgetList implementation
-	    Inherits from Serializable
-      - [X] Focusable implementation
-	    to build WidgetList
-      - [X] Container impl.
-	    Inherits from Widget and WidgetList
-      - [X] Brush minimal implmentation
-	    Remove copied functions from QuadRenderer
-      - [X] GameState modification
-	    - [X] A container member named mContainer
-	    - [X] void draw(Brush*) implementation
-      - [X] BrushTest implementation
-	    Must found a suitable constructor for Brush
-      - [X] GameEngine modification
-	    - [X] mBrush and mGuiTransparency members
-	    - [X] draw() and *GuiTransparency() implementation
-      - [X] Drawable implementation
-            - [X] Add members from Entity-Relation diagram
-	    - [X] Implements getter and setter
-	    - [X] loadTexture() implementation
-	    - [X] loadSkinnableTexture() implementation
-		  - [X] class implementation
-		  - [X] tests implementation
-		  - [X] UnitTests should initialize TextureManager correctly
-	    - [X] computeAbsolute() implementation + unittests
-	    - [X] adjustScissor() implementation + unittests
-      - [X] DrawableTest implementation
-	    should handle the disable-dirtyflag configure option
-	    should handle the empty skinName propagation
-      - [X] Widget implementation
-      - [X] Makes the client/ building works again
-      - [X] Makes the gsMainMenu's window be drawn		  
-            - [X] Window::Window should call Drawable::loadSkinnableTexture
-	    - [X] Drawable::draw() implementation 
-		  using mTexture and QuadRenderer
-      - [X] Window implementation
-	    - [X] Container::draw() should draw childs*
-	    - [X] GameEngine::draw() should be called again
-		  Maybe removed to avoig olgOgreGui's dependencies
-		  - [X] Must create a renderqueuelistener as in oldOgreGui
-		  - [X] Document the whole drawing process functions with doxygen refs
-		  - [X] Add it to the current GameEngine's SceneManager
-		  - [X] Makes the NumDebug overlay drawn again
-            - [X] gsmainmenu's Window should be drawn
-		  call Brush::debug to know what's wrong
-		  - [X] Make the client built again (now using OgreGui's new Container)
-		  - [X] Container::compute should call compute for all childs
-		  - [X] See if gsmenubase's background changed
-	    - [X] Remove debugging infos in Drawable::draw()
-	    - [X] NumericDebug overlay not shown anymore
-		  - [X] Test if Containetr is hidden : YES
-		  - [X] RenderQueue should be create with a correct ID
-***** DONE Skins
-      :CLOCK:
-      CLOCK: [2010-11-19 ven. 11:02]--[2010-11-19 ven. 11:27] =>  0:25
-      CLOCK: [2010-11-19 ven. 09:44]--[2010-11-19 ven. 10:13] =>  0:29
-      :END:
-      - [X] Should rename bgui.* images           [100%]
-	    To default.* (in data/gui/ogreGui)
-	    For each image, `cvs rm bgui.` then `cvs add -kb default.`
-	    - [X] bgui.button.active.png
-	    - [X] bgui.button.png
-	    - [X] bgui.check.off.png
-	    - [X] bgui.check.on.png
-	    - [X] bgui.dialog.border.png
-	    - [X] bgui.hscrollbar.bodyleft.png
-	    - [X] bgui.hscrollbar.bodymid.png
-	    - [X] bgui.hscrollbar.bodyright.png
-	    - [X] bgui.hscrollbar.cursor.active.png
-	    - [X] bgui.hscrollbar.cursor.png
-	    - [X] bgui.hscrollbar.leftarrow.active.png
-	    - [X] bgui.hscrollbar.leftarrow.png
-	    - [X] bgui.hscrollbar.rightarrow.active.png
-	    - [X] bgui.hscrollbar.rightarrow.png
-	    - [X] bgui.material (no -kb flags)
-	    - [X] bgui.pointer.hscrollbar.bstep.left.png
-	    - [X] bgui.pointer.hscrollbar.bstep.right.png
-	    - [X] bgui.pointer.hscrollbar.cursor.png
-	    - [X] bgui.pointer.hscrollbar.sstep.left.png
-	    - [X] bgui.pointer.hscrollbar.sstep.right.png
-	    - [X] bgui.pointer.move.png
-	    - [X] bgui.pointer.png
-	    - [X] bgui.pointer.resize.png
-	    - [X] bgui.pointer.text.png
-	    - [X] bgui.pointer.vscrollbar.bstep.down.png
-	    - [X] bgui.pointer.vscrollbar.bstep.up.png
-	    - [X] bgui.pointer.vscrollbar.cursor.png
-	    - [X] bgui.pointer.vscrollbar.sstep.down.png
-	    - [X] bgui.pointer.vscrollbar.sstep.up.png
-	    - [X] bgui.scrollbar.material
-	    - [X] bgui.textinput.active.png
-	    - [X] bgui.textinput.png
-	    - [X] bgui.vscrollbar.bodybot.png
-	    - [X] bgui.vscrollbar.bodymid.png
-	    - [X] bgui.vscrollbar.bodytop.png
-	    - [X] bgui.vscrollbar.botarrow.active.png
-	    - [X] bgui.vscrollbar.botarrow.png
-	    - [X] bgui.vscrollbar.cursor.active.png
-	    - [X] bgui.vscrollbar.cursor.png
-	    - [X] bgui.vscrollbar.toparrow.active.png
-	    - [X] bgui.vscrollbar.toparrow.png
-	    - [X] bgui.window.png
-	    - [X] bgui.window.resize.active.png
-	    - [X] bgui.window.resize.png
-	    - [X] bgui.window.titlebar.active.png
-	    - [X] bgui.window.titlebar.png
-	    - [X] old_bgui.window.png
-      - [X] Rename images in Makefile.am
-      - [X] Window should use the 'default' skinname
-      - [X] Drawable
-	    In loadSkinnableTexture, default skin is 'bgui', should be 'default'
-      - [X] Drawable
-	    Should test if a widget take by default its parent's skin name 
-	    Test it with navigation skin
-      - [X] Label
-	    - [X] Create the class
-***** TODO Text drawing ability
-      :CLOCK:
-      CLOCK: [2010-11-28 dim. 15:42]--[2010-11-28 dim. 16:08] =>  0:26
-      CLOCK: [2010-11-22 lun. 15:26]--[2010-11-22 lun. 15:39] =>  0:13
-      CLOCK: [2010-11-22 lun. 10:30]--[2010-11-22 lun. 11:00] =>  0:30
-      CLOCK: [2010-11-21 dim. 17:17]--[2010-11-21 dim. 18:04] =>  0:47
-      CLOCK: [2010-11-19 ven. 11:58]--[2010-11-19 ven. 12:26] =>  0:28
-      :END:
-      - [X] See the existant-way in QuadRenderer
-      - [X] Which existing classes should we take
-	    copy them from oldOgreGui (using camelcase and hpp for header)
-	    add them to CVS
-	    create a test class if needed
-            - [X] Glyph
-		  - [X] Copy files and make it build correctly
-		  - [X] Create a NullHeightGlyphException
-			to replace a LOGW call in a constructor
-			example is SkinNotFoundException
-			message with Glyph's charcode
-	    - [X] GlyphMap : typedef in Font
-	    - [X] LineInfo
-	    - [X] Font
-		  Before TextSetting because declare some typedefs
-	    - [X] TextSettings
-	    - [X] FontManager
-      - [-] Modify Brush
-	    - [X] Add the drawFilledRectangle() function (for TextSetting)		  
-	    - [X] add the drawText() function (from QuadRenderer)
-		  - [X] beginGlyphs
-		  - [X] endGlyphs
-		  - [X] renderGlyphs
-	    - [ ] add the addGlyph() function (from QuadRenderer)
-		  And make Font use it again
-	    - [ ] add getClipRegion() (modify Font to use it)
-	    - [ ] Font also use get DrawingDevYSum ?		  
-      - [ ] Font was modified to build (see WAS keyword)
-      - [ ] Test the drawing ability with the Label widget
-	    - [ ] Implement Label::draw(Brush*)
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
      CLOCK: [2010-03-22 lun 11:31]--[2010-03-22 lun 11:45] =>  0:14
@@ -667,6 +488,297 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 - [X] I currently work with many paper TODO. Update this document with them.
 - [X] Merge TODO long terms items with this document.
 
-      
-      
+**** TODO OgreGui2 implementation and UnitTest                        [59%]
+     :CLOCK:
+     CLOCK: [2010-11-06 sam. 17:26]--[2010-11-06 sam. 17:48] =>  0:22
+     CLOCK: [2010-11-06 sam. 15:02]--[2010-11-06 sam. 16:02] =>  1:00
+     CLOCK: [2010-10-30 sam. 18:42]--[2010-10-30 sam. 19:11] =>  0:29
+     CLOCK: [2010-10-30 sam. 18:17]--[2010-10-30 sam. 18:34] =>  0:17
+     CLOCK: [2010-10-30 sam. 17:46]--[2010-10-30 sam. 18:16] =>  0:30
+     CLOCK: [2010-10-25 lun. 09:30]--[2010-10-25 lun. 09:54] =>  0:24
+     CLOCK: [2010-10-23 sam. 12:42]--[2010-10-23 sam. 12:49] =>  0:07
+     CLOCK: [2010-10-23 sam. 12:01]--[2010-10-23 sam. 12:25] =>  0:24
+     CLOCK: [2010-10-17 dim. 09:12]--[2010-10-17 dim. 10:01] =>  0:49
+     CLOCK: [2010-10-16 sam. 19:32]--[2010-10-16 sam. 20:08] =>  0:36
+     CLOCK: [2010-10-16 sam. 17:09]--[2010-10-16 sam. 17:30] =>  0:21
+     CLOCK: [2010-10-16 sam. 14:43]--[2010-10-16 sam. 15:15] =>  0:32
+     CLOCK: [2010-09-07 mar 08:46]--[2010-09-07 mar 09:25] =>  0:39
+     CLOCK: [2010-09-04 sam. 19:59]--[2010-09-04 sam. 20:22] =>  0:23
+     CLOCK: [2010-08-22 dim. 12:37]--[2010-08-22 dim. 13:03] =>  0:26
+     CLOCK: [2010-08-21 sam. 16:35]--[2010-08-21 sam. 16:55] =>  0:20
+     CLOCK: [2010-08-18 mer. 22:59]--[2010-08-18 mer. 23:32] =>  0:33
+     CLOCK: [2010-08-18 mer. 20:47]--[2010-08-18 mer. 21:21] =>  0:34
+     CLOCK: [2010-08-18 mer. 17:31]--[2010-08-18 mer. 20:47] =>  3:16
+     CLOCK: [2010-08-18 mer. 15:24]--[2010-08-18 mer. 16:07] =>  0:43
+     CLOCK: [2010-08-18 mer. 11:46]--[2010-08-18 mer. 12:11] =>  0:25
+     CLOCK: [2010-08-17 mar 19:26]--[2010-08-17 mar 19:59] =>  0:33
+     CLOCK: [2010-08-15 dim 13:57]--[2010-08-15 dim 14:10] =>  0:13
+     CLOCK: [2010-08-15 dim 11:40]--[2010-08-15 dim 12:09] =>  0:29
+     CLOCK: [2010-08-15 dim 10:38]--[2010-08-15 dim 11:05] =>  0:27
+     CLOCK: [2010-08-14 sam 17:13]--[2010-08-14 sam 17:34] =>  0:21
+     CLOCK: [2010-08-14 sam 14:57]--[2010-08-14 sam 15:32] =>  0:35
+     CLOCK: [2010-08-14 sam 12:51]--[2010-08-14 sam 13:07] =>  0:16
+     CLOCK: [2010-07-25 dim 09:53]--[2010-07-25 dim 10:15] =>  0:22
+     CLOCK: [2010-07-24 sam 19:38]--[2010-07-24 sam 20:09] =>  0:31
+     CLOCK: [2010-07-24 sam 10:19]--[2010-07-24 sam 14:20] =>  4:01
+     CLOCK: [2010-07-23 ven 11:22]--[2010-07-23 ven 11:53] =>  0:31
+     CLOCK: [2010-07-18 dim 15:35]--[2010-07-18 dim 16:06] =>  0:31
+     CLOCK: [2010-07-17 sam 16:42]--[2010-07-17 sam 17:34] =>  0:52
+     CLOCK: [2010-07-17 sam 12:14]--[2010-07-17 sam 12:48] =>  0:28
+     CLOCK: [2010-07-10 sam 13:23]--[2010-07-10 sam 13:51] =>  0:28
+     CLOCK: [2010-07-10 sam 10:36]--[2010-07-10 sam 11:48] =>  0:31
+     CLOCK: [2010-07-09 ven 10:19]--[2010-07-09 ven 11:04] =>  0:45
+     CLOCK: [2010-06-08 mar 10:51]--[2010-06-08 mar 11:22] =>  0:31
+     CLOCK: [2010-06-07 lun 15:01]--[2010-06-07 lun 15:57] =>  0:31
+     CLOCK: [2010-03-25 jeu 15:07]--[2010-03-25 jeu 15:53] =>  0:46
+     CLOCK: [2010-06-08 mar 14:29]--[2010-06-08 mar 15:41] =>  1:12
+     CLOCK: [2010-07-06 mar 10:42]--[2010-07-06 mar 11:45] =>  1:03
+     CLOCK: [2010-06-12 sam 18:45]--[2010-06-12 sam 19:55] =>  1:10
+     CLOCK: [2010-03-22 lun 16:52]--[2010-03-22 lun 19:42] =>  2:50
+     CLOCK: [2010-02-18 jeu 10:18]--[2010-02-18 jeu 12:50] =>  2:32
+     CLOCK: [2010-02-16 mar 18:29]--[2010-02-16 mar 21:52] =>  3:03
+     :END:
+     To be completed with the previous TODO task.
+     Should use sigc++ for signals
+***** DONE Configuration                                    [100%]
+- [X] Dirty flag become a configure option
+- [X] Test in cpp/layoutTemplate
+      Should be use for Layout implementation
+- [X] cpp/layoutTemplate should not use associative array (sorted)
+- [X] configure.in : library version should be 2.0.0 
+      according to the libtool versionning system
+- [X] Remove DeserializationErrorList from previous implementation
+- [X] Create a command-line option --ogregui-test which uses a new
+      gsOgreguiTest gamestate (if Boost.Program_options add to DEPENDENCIES)
+- [X] Add Boost.Serialization to DEPENDENCIES
+- [X] Serializable should use Boost.Serialization (Archive)
+- [X] gsOgreguiTest game state implementation in client (add it to cvs)
+- [X] configure should test for Boost.Serialization 
+- [X] configure should test for libbz2-dev
+- [X] command-line option --ogregui-test uses gsOgreguiTest game state
+      - [X] GameEngineOptions implementation (struct in gameengine.h)
+      - [X] GameEngine uses GameEngineOptions for ogregui test
+      - [X] GameEngine uses GameEngineOptions for fullscreen
+***** DONE Precomputing/Draw                                [100%]
+      For each class implements a Test class
+      - [X] WidgetList implementation
+	    Inherits from Serializable
+      - [X] Focusable implementation
+	    to build WidgetList
+      - [X] Container impl.
+	    Inherits from Widget and WidgetList
+      - [X] Brush minimal implmentation
+	    Remove copied functions from QuadRenderer
+      - [X] GameState modification
+	    - [X] A container member named mContainer
+	    - [X] void draw(Brush*) implementation
+      - [X] BrushTest implementation
+	    Must found a suitable constructor for Brush
+      - [X] GameEngine modification
+	    - [X] mBrush and mGuiTransparency members
+	    - [X] draw() and *GuiTransparency() implementation
+      - [X] Drawable implementation
+            - [X] Add members from Entity-Relation diagram
+	    - [X] Implements getter and setter
+	    - [X] loadTexture() implementation
+	    - [X] loadSkinnableTexture() implementation
+		  - [X] class implementation
+		  - [X] tests implementation
+		  - [X] UnitTests should initialize TextureManager correctly
+	    - [X] computeAbsolute() implementation + unittests
+	    - [X] adjustScissor() implementation + unittests
+      - [X] DrawableTest implementation
+	    should handle the disable-dirtyflag configure option
+	    should handle the empty skinName propagation
+      - [X] Widget implementation
+      - [X] Makes the client/ building works again
+      - [X] Makes the gsMainMenu's window be drawn		  
+            - [X] Window::Window should call Drawable::loadSkinnableTexture
+	    - [X] Drawable::draw() implementation 
+		  using mTexture and QuadRenderer
+      - [X] Window implementation
+	    - [X] Container::draw() should draw childs*
+	    - [X] GameEngine::draw() should be called again
+		  Maybe removed to avoig olgOgreGui's dependencies
+		  - [X] Must create a renderqueuelistener as in oldOgreGui
+		  - [X] Document the whole drawing process functions with doxygen refs
+		  - [X] Add it to the current GameEngine's SceneManager
+		  - [X] Makes the NumDebug overlay drawn again
+            - [X] gsmainmenu's Window should be drawn
+		  call Brush::debug to know what's wrong
+		  - [X] Make the client built again (now using OgreGui's new Container)
+		  - [X] Container::compute should call compute for all childs
+		  - [X] See if gsmenubase's background changed
+	    - [X] Remove debugging infos in Drawable::draw()
+	    - [X] NumericDebug overlay not shown anymore
+		  - [X] Test if Containetr is hidden : YES
+		  - [X] RenderQueue should be create with a correct ID
+***** DONE Skins                                            [100%]
+      :CLOCK:
+      CLOCK: [2010-11-19 ven. 11:02]--[2010-11-19 ven. 11:27] =>  0:25
+      CLOCK: [2010-11-19 ven. 09:44]--[2010-11-19 ven. 10:13] =>  0:29
+      :END:
+      - [X] Should rename bgui.* images           [100%]
+	    To default.* (in data/gui/ogreGui)
+	    For each image, `cvs rm bgui.` then `cvs add -kb default.`
+	    - [X] bgui.button.active.png
+	    - [X] bgui.button.png
+	    - [X] bgui.check.off.png
+	    - [X] bgui.check.on.png
+	    - [X] bgui.dialog.border.png
+	    - [X] bgui.hscrollbar.bodyleft.png
+	    - [X] bgui.hscrollbar.bodymid.png
+	    - [X] bgui.hscrollbar.bodyright.png
+	    - [X] bgui.hscrollbar.cursor.active.png
+	    - [X] bgui.hscrollbar.cursor.png
+	    - [X] bgui.hscrollbar.leftarrow.active.png
+	    - [X] bgui.hscrollbar.leftarrow.png
+	    - [X] bgui.hscrollbar.rightarrow.active.png
+	    - [X] bgui.hscrollbar.rightarrow.png
+	    - [X] bgui.material (no -kb flags)
+	    - [X] bgui.pointer.hscrollbar.bstep.left.png
+	    - [X] bgui.pointer.hscrollbar.bstep.right.png
+	    - [X] bgui.pointer.hscrollbar.cursor.png
+	    - [X] bgui.pointer.hscrollbar.sstep.left.png
+	    - [X] bgui.pointer.hscrollbar.sstep.right.png
+	    - [X] bgui.pointer.move.png
+	    - [X] bgui.pointer.png
+	    - [X] bgui.pointer.resize.png
+	    - [X] bgui.pointer.text.png
+	    - [X] bgui.pointer.vscrollbar.bstep.down.png
+	    - [X] bgui.pointer.vscrollbar.bstep.up.png
+	    - [X] bgui.pointer.vscrollbar.cursor.png
+	    - [X] bgui.pointer.vscrollbar.sstep.down.png
+	    - [X] bgui.pointer.vscrollbar.sstep.up.png
+	    - [X] bgui.scrollbar.material
+	    - [X] bgui.textinput.active.png
+	    - [X] bgui.textinput.png
+	    - [X] bgui.vscrollbar.bodybot.png
+	    - [X] bgui.vscrollbar.bodymid.png
+	    - [X] bgui.vscrollbar.bodytop.png
+	    - [X] bgui.vscrollbar.botarrow.active.png
+	    - [X] bgui.vscrollbar.botarrow.png
+	    - [X] bgui.vscrollbar.cursor.active.png
+	    - [X] bgui.vscrollbar.cursor.png
+	    - [X] bgui.vscrollbar.toparrow.active.png
+	    - [X] bgui.vscrollbar.toparrow.png
+	    - [X] bgui.window.png
+	    - [X] bgui.window.resize.active.png
+	    - [X] bgui.window.resize.png
+	    - [X] bgui.window.titlebar.active.png
+	    - [X] bgui.window.titlebar.png
+	    - [X] old_bgui.window.png
+      - [X] Rename images in Makefile.am
+      - [X] Window should use the 'default' skinname
+      - [X] Drawable
+	    In loadSkinnableTexture, default skin is 'bgui', should be 'default'
+      - [X] Drawable
+	    Should test if a widget take by default its parent's skin name 
+	    Test it with navigation skin
+      - [X] Label
+	    - [X] Create the class
+***** TODO Text drawing ability                             [83%]
+      :CLOCK:
+      CLOCK: [2010-11-30 mar. 10:35]--[2010-11-30 mar. 11:04] =>  0:29
+      CLOCK: [2010-11-30 mar. 09:19]--[2010-11-30 mar. 09:51] =>  0:32
+      CLOCK: [2010-11-28 dim. 15:42]--[2010-11-28 dim. 16:08] =>  0:26
+      CLOCK: [2010-11-22 lun. 15:26]--[2010-11-22 lun. 15:39] =>  0:13
+      CLOCK: [2010-11-22 lun. 10:30]--[2010-11-22 lun. 11:00] =>  0:30
+      CLOCK: [2010-11-21 dim. 17:17]--[2010-11-21 dim. 18:04] =>  0:47
+      CLOCK: [2010-11-19 ven. 11:58]--[2010-11-19 ven. 12:26] =>  0:28
+      :END:
+      - [X] See the existant-way in QuadRenderer
+      - [X] Which existing classes should we take
+	    copy them from oldOgreGui (using camelcase and hpp for header)
+	    add them to CVS
+	    create a test class if needed
+            - [X] Glyph
+		  - [X] Copy files and make it build correctly
+		  - [X] Create a NullHeightGlyphException
+			to replace a LOGW call in a constructor
+			example is SkinNotFoundException
+			message with Glyph's charcode
+	    - [X] GlyphMap : typedef in Font
+	    - [X] LineInfo
+	    - [X] Font
+		  Before TextSetting because declare some typedefs
+	    - [X] TextSettings
+	    - [X] FontManager
+      - [-] Modify Brush
+	    - [X] Add the drawFilledRectangle() function (for TextSetting)		  
+	    - [X] add the drawText() function (from QuadRenderer)
+		  - [X] beginGlyphs
+		  - [X] endGlyphs
+		  - [X] renderGlyphs
+	    - [X] add the addGlyph() function (from QuadRenderer)
+	    - [X] And make Font use it again
+	    - [X] add getClipRegion()
+	    - [X] modify Font to use it
+	    - [ ] Font also use get DrawingDevYSum ?		  
+      - [X] Font was modified to build (see WAS keyword)
+      - [X] Test the drawing ability with the Label widget
+	    - [X] Implement Label::draw(Brush*)
+	    - [X] Add a Label widget to the mainmenu gamestate's window
+      - [X] See why Ogre complains about a bgui.pointer resource already existing		  
+      - [ ] Makes the label draw its text
+	    - [ ] Makes the Label::draw() LOGW printed in console
+**** TODO Cross compilation to win32                                  [58%]
+     :CLOCK:
+     CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
+     CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
+     CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
+     CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
+     CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
+     CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
+     :END:
+     Errors are
+wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeInterrupt, aborting
+wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMutant, aborting
 
+- [X] Test created executable (164Mo)
+      Unhandled page fault
+- [X] Trying cross-compilation : Works
+      Get a 'undefined reference to `_libintl_gettext'' error
+      Fixed in acinclude.m4
+- [X] Cross-compil documentation must reference mingw.sh
+- [X] Should fix the 'cannot find -lboost_serialization' error
+- [X] Tested DLL are outdated, recreating them
+      - [X] maincore: undefined references to OgreGui
+- [X] Maybe wine version is too old (wine-1.0.1-174-gc4039bd)
+      Tested with wine 1.1.42 : always an error
+- [X] rainbrurpg.exe is not view as a GUI application
+      testing it with the `file` utility
+      Must add -mwindows to the command line
+- [X] Should get good backtraces from winedbg
+      http://wiki.winehq.org/Backtraces
+      See message 'Unable to open file '''
+      - Maybe problem of creation for the following files :
+	file_extensions.accepted
+	file_extensions.refused
+      - If we create manually these file, it complains about an Ogre Error :
+	OGRE EXCEPTION(7:InternalErrorException): Could not load dynamic library /usr/lib/OGRE\RenderSystem_GL.so.  System Error: Mauvais format EXE pour %1
+ in DynLib::load at OgreDynLib.cpp (line 80)
+      - [X] Trying with limited extension .acc and .ref by example
+- [ ] Should create RenderSystem_GL.dll from Ogre3D
+- [ ] GlobalURI + loadRessources for Win32.
+- [ ] remove config file 'ogre.cfg'.
+- [ ] Should build with debugging symbols      
+- [ ] exe file contains DLLs
+
+**** TODO Miscelaneous                                                [33%]
+     :CLOCK:
+     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
+     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
+     CLOCK: [2010-02-17 mer 18:15]
+     :END:
+- [X] Remove tools/oldXIdent and explain it in regtests.
+- [X] Should add a configuration summary at the end of configure
+- [ ] common/version.cpp should print option summary
+- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
+- [ ] Trying to fix Doxygen documentation TODO items.
+- [ ] Trying to fix configure script warnings
+      See the 'freetype-config: integer expression expected' warning
+**** TODO Sourceforge release                                         [0%]
+- [ ] Removed CEGUI reference from Sourceforge project overview
+- [ ] Explain CEGUI give up in an homepage news
+- [ ] File release sourceforge (zip+bz2+win32bin)

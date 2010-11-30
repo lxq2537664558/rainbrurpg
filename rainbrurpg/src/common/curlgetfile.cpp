@@ -29,7 +29,7 @@
 #include "loadbmp.h"
 #include "httpresponse.h"
 
-#include "boostimport.h"
+#include "BoostImport.hpp"
 
 
 namespace fs = boost::filesystem;

@@ -20,18 +20,19 @@
  *
  */
 
-/** \file attributemodifierlist.h
+/** \file AttributeModifierList.hpp
   * Defines a list of attribute modifier
   *
   * Modifications :
+  * - 30 nov 2010 : CamelCased files
   * - 18 mar 2009 : string ready to be translated
   * - 31 jul 2008 : Documentation improved
   * - 02 mar 2007 : Avoid std::cout during unit testing
   *                 Inprove documentation
   *
   */
-#ifndef ATTRIBUTE_MODIFIER_LIST_H
-#define ATTRIBUTE_MODIFIER_LIST_H
+#ifndef _ATTRIBUTE_MODIFIER_LIST_HPP_
+#define _ATTRIBUTE_MODIFIER_LIST_HPP_
 
 #include <iostream>
 #include <string>
@@ -119,4 +120,4 @@ namespace RainbruRPG{
 }
 
 
-#endif // ATTRIBUTE_MODIFIER_LIST_H
+#endif // _ATTRIBUTE_MODIFIER_LIST_HPP_

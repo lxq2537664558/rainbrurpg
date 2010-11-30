@@ -51,7 +51,7 @@
 #include "languagelistitemtest.h"
 
 // Classes to be tested
-#include <attributemodifierlist.h>
+#include <AttributeModifierList.hpp>
 #include <chartbase.h>
 #include <chartserie.h>
 #include <clientconnect.h>

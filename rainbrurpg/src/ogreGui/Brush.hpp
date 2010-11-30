@@ -34,6 +34,8 @@
 
 #include <ogreimport.h> // For RenderSystem and others
 
+// #include "Vector3.hpp"
+
 #include <string>
 
 using namespace Ogre;
@@ -136,15 +138,23 @@ namespace RainbruRPG{
       void drawFilledRectangle( const Ogre::Rectangle&, const ColourValue& );
       void drawText(TextSettings*, const string&,const Ogre::Rectangle&, bool);
 
+      void addGlyph( const Ogre::Rectangle&, const Ogre::Rectangle&, 
+		     bool vUVRelative=true);
+      const Ogre::Rectangle& getClipRegion(void)const;
+
+
     protected:
       void setupHardwareBuffer(void);
       void createTexture(void);
       void setCorners(int, int, int, int);
-      void feedVectors(vector<Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
+      void feedVectors(vector<Ogre::Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
       void drawQuad(void);
       double xPixelToNative(int)const;
       double yPixelToNative(int)const;
       void checkHardwareBuffer(GuiVertex*);
+
+      void buildVertices(const Ogre::Rectangle&, vector<Ogre::Vector3>* )const;
+      void buildUV( const Ogre::Rectangle&, vector<Vector2>* ) const;
 
       void beginGlyphs(void);
       void endGlyphs(void);
@@ -261,7 +271,7 @@ namespace RainbruRPG{
       bool useScissor;
 
       /** A vector of vertexes */
-      vector<Vector3> vert;
+      vector<Ogre::Vector3> vert;
       /** A vector of UV mapping */
       vector<Vector2> uvs;
       /** A vector of color; */

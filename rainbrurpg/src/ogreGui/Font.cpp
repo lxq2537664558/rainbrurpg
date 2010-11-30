@@ -359,7 +359,7 @@ renderAligned(Brush* qr, LineInfoList& vLineList,
   size_t charIndex = 0;
 
   // Get screen space clip region and Brush position
-  Ogre::Rectangle clip = vRect; // WAS qr->getClipRegion();
+  Ogre::Rectangle clip = qr->getClipRegion();
   Ogre::Vector2 pos;
 
   // Go through each character
@@ -370,7 +370,7 @@ renderAligned(Brush* qr, LineInfoList& vLineList,
    * Fix the 16+ bug.
    *
    */
-  int dDevY = 5; // WAS qr->getDrawingDevYSum();
+  int dDevY = 0; // WAS qr->getDrawingDevYSum();
   clip.top += dDevY;
   clip.bottom += dDevY;
 
@@ -515,14 +515,14 @@ render( Brush* qr, const string& vText, const ColourValue& vColor,
       uvr.top /= tsize.y;
       uvr.bottom /= tsize.y;
       
-      //      WAS qr->addGlyph( r, uvr, true );
+      qr->addGlyph( r, uvr, true );
     }
     else{
       r.right=r.left+g->getSpace();
       r.bottom=r.top+mMaxGlyphHeight;
 
       if ( (x >= vSelectionStart) && (x < vSelectionEnd) ){
-	//	WAS qr->addGlyph(r, Ogre::Rectangle());
+	qr->addGlyph(r, Ogre::Rectangle());
       }
     }
 

@@ -805,3 +805,142 @@ void RainbruRPG::OgreGui::Brush::renderGlyphs(void)
   mRenderOp.vertexData->vertexCount = mBatchCount * 6;
   mRenderSystem->_render( mRenderOp );
 }
+
+/** Add a glyph to the current buffer
+  *
+  * This function writes \c vRect and \c vUV to the buffer (called
+  * \c mBuffer) before calling the renderGlyphs() function.
+  *
+  * \param vRect       The geometry rectangle
+  * \param vUV         The UV mapping
+  * \param vUVRelative Is UV mapping in relative coordonate ?
+  *
+  */
+void RainbruRPG::OgreGui::Brush::
+addGlyph( const Ogre::Rectangle& vRect, const Ogre::Rectangle& vUV, 
+	  bool vUVRelative )
+{
+
+  vector<Ogre::Vector3> verts;
+  vector<Vector2> uv;
+
+  buildVertices( vRect, &verts );
+
+  if ( mTexture.get() && (vUVRelative == false) ){
+
+    // Translate absolute coordinates to relative
+    const Vector2 size(mTexture->getWidth(), mTexture->getHeight());
+
+    Ogre::Rectangle r;
+    r.top = vUV.top / size.y;
+    r.bottom = vUV.bottom / size.y;
+    r.left = vUV.left / size.x;
+    r.right = vUV.right / size.x;
+
+    buildUV( r, &uv );
+  }
+  else{
+    buildUV( vUV, &uv );
+  }
+
+  checkHardwareBuffer(mBatchPointer);
+
+  // Write the quad to the buffer
+  for ( int x = 0; x < 6; x++ ){
+    mBatchPointer[x].setPosition(verts[x]);
+    mBatchPointer[x].setColor(mColor);
+    mBatchPointer[x].setUvMapping(uv[x]);
+  }
+
+  // Advance glyph pointer
+  mBatchPointer += 6;
+
+  // Increase glyph count
+  mBatchCount++;
+
+  // See if we're over the limit...
+  if ( mBatchCount >= (VERTEX_COUNT/6) ){
+    // First unlock the buffer
+    try{
+      mBuffer->unlock();
+    }
+    catch(...){
+      LOGW("QuadRenderer::addGlyphs mBuffer->unlock() failed");
+    }
+   
+    // Render whats in the buffer
+    renderGlyphs();
+
+    // Re-lock buffer
+    mBatchPointer=(GuiVertex*)mBuffer->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+    checkHardwareBuffer(mBatchPointer);
+
+    // Reset glyph count
+    mBatchCount = 0;
+  }
+
+  verts.clear();
+  uv.clear();
+}
+
+/** Feed a vertices mapping array
+  *
+  * \param vIn  The UV mapping rectangle
+  * \param vOut The created array on Vector2
+  *
+  */
+void RainbruRPG::OgreGui::Brush::
+buildVertices(const Ogre::Rectangle& vIn, vector<Ogre::Vector3>* vOut)const
+{
+
+  Ogre::Rectangle devRect=vIn;
+  /*
+  if (!mDrawingDevList->empty()){
+    devRect.left   -= mDrawingDevList->getDevXSum();
+    devRect.top    -= mDrawingDevList->getDevYSum();
+    devRect.right  -= mDrawingDevList->getDevXSum();
+    devRect.bottom -= mDrawingDevList->getDevYSum();
+  }
+  */
+  // Calculate final screen rectangle
+  Ogre::Rectangle finalRect;
+  //  getFinalRect( devRect, finalRect );
+
+
+  // Setup the coordinates for the quad
+  vOut->push_back(Vector3( finalRect.left, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.left, finalRect.top, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.bottom, 0.0f ));
+  vOut->push_back(Vector3( finalRect.right, finalRect.top, 0.0f ));
+  vOut->push_back(Vector3( finalRect.left, finalRect.top, 0.0f ));
+ 
+}
+
+/** Feed a UV mapping array
+  *
+  * \param vIn  The UV mapping rectangle
+  * \param vOut The created array on Vector2
+  *
+  */
+void RainbruRPG::OgreGui::Brush::
+buildUV( const Ogre::Rectangle& vIn, vector<Vector2>* vOut ) const
+{
+  // Setup the UV coordinates for the rectangle
+  vOut->push_back(Vector2( vIn.left, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.right, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.left, vIn.top ));
+  vOut->push_back(Vector2( vIn.right, vIn.bottom ));
+  vOut->push_back(Vector2( vIn.right, vIn.top ));
+  vOut->push_back(Vector2( vIn.left, vIn.top ));
+}
+
+/** Get clip region 
+  *
+  * \return the scissor rectangle
+  *
+  */
+const Ogre::Rectangle& RainbruRPG::OgreGui::Brush::
+getClipRegion(void)const{
+  return this->scissorRect;
+}

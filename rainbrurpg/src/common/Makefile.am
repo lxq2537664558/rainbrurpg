@@ -22,8 +22,8 @@ lib_LTLIBRARIES = librainbrurpg-common.la
 librainbrurpg_common.adir=$(libdir)
 
 # Please keep this file list sorted
-h_sources= attributemodifierlist.h		\
-	   boostimport.h			\
+h_sources= AttributeModifierList.hpp		\
+	   BoostImport.hpp			\
 	   chartbase.h				\
 	   chartserie.h				\
 	   chartline.h				\
@@ -95,7 +95,7 @@ h_sources= attributemodifierlist.h		\
 	   xmltimestamp.h
 
 # Please keep this file list sorted
-cc_sources=attributemodifierlist.cpp		\
+cc_sources=AttributeModifierList.cpp		\
 	  chartbase.cpp				\
 	  chartline.cpp				\
 	  chartserie.cpp			\

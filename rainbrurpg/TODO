@@ -115,8 +115,17 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-208 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (6) CamelCased some files in common/
+   AttributeModifierList, BoostImport.hpp
+- Implamented Label::Draw()
+- Implemented Label's wordwrap getter and setter
+- Retrieved oldOgreGui text drawing related class
+   Vector3
+- Retrieved some function from QuadRenderer to Brush
+   addGlyph, buildVertices, buildUV, getClipRegion
+- Changed ROADMAP to be read from top to bottom for current release 
 
-* v0.0.5-207 (28 oct 2010 - 28 nov 2010) SLOC 531 UT 250 FT 70:51
+* v0.0.5-207 (28 oct 2010 - 28 nov 2010) SLOC 42,531 UT 250 FT 70:51
 - Moved some function from QuadRenderer to Brush
    drawFilledRectangle, drawText, beginGlyphs, endGlyphs, renderGlyphs
 - Reorganized ROADMAP file to get an earlier release (maybe this year)
@@ -136,24 +145,3 @@ A system that serialize widgets position and configuration
 - Handle std::exception when copying config files
 - Fixed some documentation warnings
    OgreGuiRenderQueueListener, Brush, GameEngine
-
-* v0.0.5-206 (16 oct 2010 - 28 oct 2010) SLOC 41,501 UT 250 FT 64:13
-- Cross-compil : exe is now a GUI application
-- Trying new version of wine 1.1.42 Do not work
-- Tryibng to recreate DLLs
-   Common, OgreGui, Core
-- Replaced Rectangle with Ogre::Rectangle for cross-compilation
-   Drawable, Container
-- Container::compute implemented
-- Fixed some compilation errors in client
-- gsMenuBase set its own texture to Container member
-- Brush drawrectangle draw again
-   Was a problem with Brush::alphavalue
-- Brush::debug() uncommented
-- Overlays draw again
-- Implemented Brush's blend mode
-- Drawing process works but nothing appears
-- GameEngine uses OgreGuiRenderQueueListener
-- OgreGuiRenderQueueListener implementation
-- Fixed some doxygen warnings
-   Drawable, Container, Brush, TextureNotFoundException, SkinNotFoundException

@@ -29,6 +29,9 @@
 #include "Label.hpp"
 
 #include "Brush.hpp"
+#include "TextSettings.hpp"
+
+#include "logger.h"
 
 /** The constructor
   *
@@ -41,9 +44,10 @@ RainbruRPG::OgreGui::Label::
 Label(Widget* vParent, int vX1, int vY1, int vX2, int vY2, 
       const string& vCaption):
   Widget(vParent, "Label", vX1, vY1, vX2, vY2),
-  mCaption(vCaption)
+  mCaption(vCaption),
+  mWordwrap(true)
 {
-
+  mTextSettings = new TextSettings( "Iconiv2.ttf", 10, 1.0f, 1.0f, 1.0f );
 }
 
 /** The destructor
@@ -51,7 +55,7 @@ Label(Widget* vParent, int vX1, int vY1, int vX2, int vY2,
   */
 RainbruRPG::OgreGui::Label::~Label()
 {
-
+  delete mTextSettings;
 }
 
 /** Change the caption of the label
@@ -70,11 +74,24 @@ const string& RainbruRPG::OgreGui::Label::getCaption(void)
   return mCaption;
 }
 
+/// Return the wordwrao status of this label
+bool RainbruRPG::OgreGui::Label::getWordwrap(void)const
+{
+  return mWordwrap;
+}
+
+void RainbruRPG::OgreGui::Label::setWordwrap(bool vWordwrap)
+{
+  mWordwrap = vWordwrap;
+}
+
 /** Draws the label
   *
   */
-void RainbruRPG::OgreGui::Label::Draw(Brush*)
+void RainbruRPG::OgreGui::Label::Draw(Brush* vBrush)
 {
-  // Not yet implemented
+  LOGW("Drawing Label");
+  vBrush->setScissorRectangle(mScissor);
+  vBrush->drawText(mTextSettings, mCaption, mAbsolute, mWordwrap);
+  vBrush->reset();
 }
-

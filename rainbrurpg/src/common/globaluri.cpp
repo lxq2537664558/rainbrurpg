@@ -26,7 +26,8 @@
   */
 
 #include "globaluri.h"
-#include "boostimport.h"
+
+#include "BoostImport.hpp"
 
 
 #include "../config.h"
