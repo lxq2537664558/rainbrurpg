@@ -208,7 +208,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
 **** xIdent
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
-
 **** TODO Coding standards
 - [ ] Should split the common/ library in common/ and net/
 - [ ] May headers files be called *.hpp (previous step)
