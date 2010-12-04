@@ -36,6 +36,8 @@
 #include "Focusable.hpp"
 #include "Serializable.hpp"
 
+#include <string>
+
 using namespace std;
 
 namespace RainbruRPG{
@@ -54,3 +56,4 @@ namespace RainbruRPG{
   }
 }
 #endif // !_WIDGET_HPP_
+

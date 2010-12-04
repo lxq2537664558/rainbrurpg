@@ -88,10 +88,13 @@ void RainbruRPG::OgreGui::Label::setWordwrap(bool vWordwrap)
 /** Draws the label
   *
   */
-void RainbruRPG::OgreGui::Label::Draw(Brush* vBrush)
+void RainbruRPG::OgreGui::Label::draw(Brush* vBrush)
 {
-  LOGW("Drawing Label");
-  vBrush->setScissorRectangle(mScissor);
+  LOGI("Drawing Label");
+  //  vBrush->debug("Before drawing text");
+  vBrush->setBlendMode(BBM_NONE);
+  //  vBrush->setScissorRectangle(mScissor);
+  vBrush->setScissorRectangle(0, 0, 640, 480);
   vBrush->drawText(mTextSettings, mCaption, mAbsolute, mWordwrap);
   vBrush->reset();
 }

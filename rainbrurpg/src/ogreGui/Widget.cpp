@@ -27,6 +27,10 @@
   */
  #include "Widget.hpp"
 
+ #include "Brush.hpp"
+
+ #include "logger.h"
+
 /** The constructor
   *
   * \param vParent  The parent widget
@@ -47,6 +51,8 @@ RainbruRPG::OgreGui::Widget::Widget(Widget* vParent, const string& vName,
 /** The destructor
   *
   */
-RainbruRPG::OgreGui::Widget::~Widget(){
+RainbruRPG::OgreGui::Widget::~Widget()
+{
 
 }
+

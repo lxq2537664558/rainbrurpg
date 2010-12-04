@@ -29,6 +29,8 @@
 #include "Container.hpp"
 
 #include <Focusable.hpp>
+#include <Brush.hpp>
+
 #include <logger.h>
 
 /** A default container constructor
@@ -131,11 +133,14 @@ mouseReleased(const OIS::MouseEvent& vEvent,const OIS::MouseButtonID& vButton)
   */
 void RainbruRPG::OgreGui::Container::draw(Brush* vBrush)
 {
+  LOGI("Container::draw() called");
   Drawable::draw(vBrush);
+  //  vBrush->reset();
   tWidgetList::iterator iter;
   for (iter = mList.begin(); iter != mList.end(); iter++){
     (*iter)->draw(vBrush);
   }
+  // vBrush->reset(); // Really needed ?
 }
 
 /** Compute the absolute bounding box and scissor rectangle

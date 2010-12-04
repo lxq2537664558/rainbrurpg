@@ -46,7 +46,6 @@ namespace RainbruRPG{
 }
 // End of forward declarations
 
-
 namespace RainbruRPG{
   namespace OgreGui{
 
@@ -62,7 +61,7 @@ namespace RainbruRPG{
       void setCaption(const string&);
       const string& getCaption(void);
 
-      virtual void Draw(Brush*);
+      virtual void draw(Brush*);
 
       bool getWordwrap(void)const;
       void setWordwrap(bool);

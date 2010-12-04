@@ -280,6 +280,10 @@ loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureNa
   */
 void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
 {
+  LOGCATS("Drawable::draw() for object ");
+  LOGCATI((long int)(this));
+  LOGCAT();
+
   vBrush->setBlendMode(BBM_GLOBAL);
   vBrush->setTexturePtr(mTexture);
   vBrush->setScissorRectangle(mScissor);

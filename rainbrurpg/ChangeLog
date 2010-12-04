@@ -1,3 +1,8 @@
+2010-12-04 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Label.cpp (draw): fixed a typo within the draw()
+	function name.
+
 2010-11-30 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Label.cpp (draw): implemented using retrieved 

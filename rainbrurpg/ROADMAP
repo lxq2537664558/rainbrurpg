@@ -676,8 +676,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    Test it with navigation skin
       - [X] Label
 	    - [X] Create the class
-***** TODO Text drawing ability                             [83%]
+***** TODO Text drawing ability                             [85%]
       :CLOCK:
+      CLOCK: [2010-12-04 sam. 14:38]--[2010-12-04 sam. 15:15] =>  0:37
       CLOCK: [2010-11-30 mar. 10:35]--[2010-11-30 mar. 11:04] =>  0:29
       CLOCK: [2010-11-30 mar. 09:19]--[2010-11-30 mar. 09:51] =>  0:32
       CLOCK: [2010-11-28 dim. 15:42]--[2010-11-28 dim. 16:08] =>  0:26
@@ -703,7 +704,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 		  Before TextSetting because declare some typedefs
 	    - [X] TextSettings
 	    - [X] FontManager
-      - [-] Modify Brush
+      - [X] Modify Brush
 	    - [X] Add the drawFilledRectangle() function (for TextSetting)		  
 	    - [X] add the drawText() function (from QuadRenderer)
 		  - [X] beginGlyphs
@@ -713,7 +714,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] And make Font use it again
 	    - [X] add getClipRegion()
 	    - [X] modify Font to use it
-	    - [ ] Font also use get DrawingDevYSum ?		  
+	    - [X] Font also use get DrawingDevYSum ?		  
       - [X] Font was modified to build (see WAS keyword)
       - [X] Test the drawing ability with the Label widget
 	    - [X] Implement Label::draw(Brush*)
