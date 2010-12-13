@@ -1,5 +1,11 @@
 2010-12-04 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/tests/ogreGui/main-fontmanager.cpp : Run only one test.
+	* src/tests/ogreGui/FontManagerTest.cpp : Base implementation.
+
+	
+2010-12-04 Jerome Pasquier  <rainbru@free.fr>
+
 	* src/ogreGui/Label.cpp (draw): fixed a typo within the draw()
 	function name.
 

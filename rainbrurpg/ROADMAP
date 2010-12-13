@@ -266,6 +266,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    BetaGui::GUI references removed
       - [ ] client/gsserverlist.cpp
 	    BetaGui::GUI and some Widgets references removed
+**** Should debianize RainbruRPG
+     - [ ] Must debianize PLSM2 before
 *** TODO v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
@@ -678,6 +680,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] Create the class
 ***** TODO Text drawing ability                             [85%]
       :CLOCK:
+      CLOCK: [2010-12-11 sam. 15:32]--[2010-12-11 sam. 16:07] =>  0:35
+      CLOCK: [2010-12-11 sam. 08:49]--[2010-12-11 sam. 09:20] =>  0:31
+      CLOCK: [2010-12-11 sam. 08:32]--[2010-12-11 sam. 08:44] =>  0:12
+      CLOCK: [2010-12-04 sam. 17:23]--[2010-12-04 sam. 17:47] =>  0:24
       CLOCK: [2010-12-04 sam. 14:38]--[2010-12-04 sam. 15:15] =>  0:37
       CLOCK: [2010-11-30 mar. 10:35]--[2010-11-30 mar. 11:04] =>  0:29
       CLOCK: [2010-11-30 mar. 09:19]--[2010-11-30 mar. 09:51] =>  0:32
@@ -720,8 +726,18 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] Implement Label::draw(Brush*)
 	    - [X] Add a Label widget to the mainmenu gamestate's window
       - [X] See why Ogre complains about a bgui.pointer resource already existing		  
-      - [ ] Makes the label draw its text
-	    - [ ] Makes the Label::draw() LOGW printed in console
+      - [-] Makes the label draw its text
+	    - [X] Makes the Label::draw() LOGW printed in console (typo error)
+	    - [-] See the segfault in text drawing  
+		  - [X] Write unit tests for FontManager and related classes
+			May use OgreMinimalSetup as in DrawableTestWithOgre
+		  - [X] Create an executable with this unique tests
+			glibc detected 'double free or corruption'
+		  - [ ] Pass the executable through valgrind
+		  - [ ] FontManager::loadFont() should throw an exception if not found
+			And maybe FreeType related excepions
+	    - [ ] Does adding a child to a container set the dirty flag ?
+		  Should test it in unit tests
 **** TODO Cross compilation to win32                                  [58%]
      :CLOCK:
      CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
@@ -780,5 +796,6 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
       See the 'freetype-config: integer expression expected' warning
 **** TODO Sourceforge release                                         [0%]
 - [ ] Removed CEGUI reference from Sourceforge project overview
-- [ ] Explain CEGUI give up in an homepage news
+- [ ] Explain CEGUI give up in an blog post
+- [ ] Change libtool versionning of OgreGui
 - [ ] File release sourceforge (zip+bz2+win32bin)

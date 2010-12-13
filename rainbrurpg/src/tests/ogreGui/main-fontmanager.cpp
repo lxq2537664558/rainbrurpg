@@ -20,8 +20,8 @@
  *
  */
 
-/** \file tests/main.cpp
-  * Implements the main entry of the unit tests
+/** \file tests/main-fontmanager.cpp
+  * Implements the a test launcher for FontManagerTest
   *
   * Modifications :
   * - 27 aug 2008 : Single file documentation
@@ -32,9 +32,10 @@
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestSuite.h>
 #include <cppunit/TextTestRunner.h>
-#include <cppunit/extensions/TestFactoryRegistry.h>
 
 #include <logger.h>
+
+#include "FontManagerTest.hpp"
 
 using namespace CppUnit;
 using namespace RainbruRPG::Exception;
@@ -49,18 +50,19 @@ int main(int argc, char* argv[])
 {
 
   Logger::getSingleton().setLogType(RainbruRPG::Exception::LOG_FILE);
-  Logger::getSingleton().setFilename("Ogregui2-tests.log");
+  Logger::getSingleton().setFilename("Ogregui2-fontmanager-tests.log");
 
-  LOGI("Starting text version of unit tests");
+  LOGI("Starting text version of unit tests (FontManagerTest only)");
 
   CPPUNIT_NS::TextTestRunner runner;
   
-  Test* suite = TestFactoryRegistry::getRegistry().makeTest();
+  TestSuite suite;
+  suite.addTest( FontManagerTest::suite() );
 
   // Change the default outputter to a compiler error format outputter
   runner.setOutputter( new CompilerOutputter( &runner.result(), std::cerr));
   
-  runner.addTest(suite);
+  runner.addTest(&suite);
   
   runner.run("", false, true, true);
   return 0;

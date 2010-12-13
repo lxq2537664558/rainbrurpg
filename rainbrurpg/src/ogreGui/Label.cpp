@@ -94,7 +94,11 @@ void RainbruRPG::OgreGui::Label::draw(Brush* vBrush)
   //  vBrush->debug("Before drawing text");
   vBrush->setBlendMode(BBM_NONE);
   //  vBrush->setScissorRectangle(mScissor);
-  vBrush->setScissorRectangle(0, 0, 640, 480);
+  LOGCATS("mAbsolute = ");
+  LOGCATI(mAbsolute.left);
+  LOGCATS(", ");
+  LOGCATI(mAbsolute.right);
+  LOGCAT();
   vBrush->drawText(mTextSettings, mCaption, mAbsolute, mWordwrap);
   vBrush->reset();
 }

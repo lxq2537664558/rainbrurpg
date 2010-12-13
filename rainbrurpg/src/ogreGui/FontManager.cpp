@@ -106,7 +106,7 @@ loadFont(const String& name, unsigned int size){
 
   // The new font object
   Font* newFont=new Font(name, size);
-  // Get
+  // Get the resource
   DataStreamPtr dsp=ResourceGroupManager::getSingleton().openResource(name);
 
   FT_Library lib;

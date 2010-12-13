@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-208 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (7) Fixed a Label function typo
+- (11) Create a FontManagerTest executable
+- FontManagerTest now inherits OgreMinimalSetup
+- Writted the FontManagerTest base
+- Trying to fix a segfault when drawing text
+- Fixed a Label function typo
 - CamelCased some files in common/
    AttributeModifierList, BoostImport.hpp
 - Implamented Label::Draw()

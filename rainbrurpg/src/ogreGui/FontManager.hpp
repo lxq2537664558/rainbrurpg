@@ -68,7 +68,7 @@ namespace RainbruRPG{
       */
     typedef std::list<Font*> tFontList;
 
-    /** Avector of character code
+    /** A vector of character code
       *
       * Used in FontManager.
       *

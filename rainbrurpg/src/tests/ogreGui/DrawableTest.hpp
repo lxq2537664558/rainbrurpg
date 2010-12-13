@@ -76,6 +76,7 @@ protected:
 public:
   void setUp();
   void tearDown();
+
   void testParent();
   void testDirty();
   void testDirtyPropagation();
