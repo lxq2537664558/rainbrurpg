@@ -740,6 +740,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 		  Should test it in unit tests
 **** TODO Cross compilation to win32                                  [58%]
      :CLOCK:
+     CLOCK: [2010-12-16 jeu 15:32]
+     CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
      CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
      CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
      CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
@@ -747,9 +749,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
      CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
      :END:
-     Errors are
-wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeInterrupt, aborting
-wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMutant, aborting
 
 - [X] Test created executable (164Mo)
       Unhandled page fault
@@ -772,14 +771,39 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 	file_extensions.accepted
 	file_extensions.refused
       - If we create manually these file, it complains about an Ogre Error :
-	OGRE EXCEPTION(7:InternalErrorException): Could not load dynamic library /usr/lib/OGRE\RenderSystem_GL.so.  System Error: Mauvais format EXE pour %1
- in DynLib::load at OgreDynLib.cpp (line 80)
       - [X] Trying with limited extension .acc and .ref by example
-- [ ] Should create RenderSystem_GL.dll from Ogre3D
+- [ ] Even if the Launcher run, we get an error
+Backtrace:
+=>0 0x7edc2db7 DbgBreakPoint+0x3() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/kernel32/../../include/winternl.h:1884] in kernel32 (0x0514ef38)
+  1 0x7edc2db2 DebugBreak+0xb() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/kernel32/debugger.c:372] in kernel32 (0x0514ef48)
+  2 0x7ebf0491 DoMessageBox+0xb6(lead="Runtime error!", message="abnormal program termination") [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/msvcrt/exit.c:126] in msvcrt (0x0514f7a8)
+  3 0x7ebf05e4 MSVCRT_abort+0x80() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/msvcrt/exit.c:154] in msvcrt (0x0514f7d8)
+  4 0x10012c90 in ois (+0x12c90) (0x0514f828)
+  5 0x10012cc3 in ois (+0x12cc3) (0x0514f848)
+  6 0x1000ca78 in ois (+0xca78) (0x0514f858)
+  7 0x1000181a in ois (+0x181a) (0x0514f8b8)
+  (... many dwarf2_parse_udt_type Unhandled Tag type 0x8 errors ...)
+  8 0x00424227 in rainbrurpg (+0x24227) (0x0514fae8)
+  9 0x0041bd64 in rainbrurpg (+0x1bd64) (0x0514fb68)
+  10 0x0041f37a in rainbrurpg (+0x1f37a) (0x0514fc78)
+  11 0x00418d0e WinMain+0x2ae(hInstance=0x400000, hPrevInstance=(nil), 
+     lpCmdLine="", nCmdShow=0x000a) [/home/carine/programmation/rainbrurpg
+     /src/client/main.cpp:158] in rainbrurpg (0x0514fdb8) 
+     We are in 'GameEngine::getSingleton().init()'
+     - [ ] See why we don't have debug informations later in the backtrace
+     	   see compilation flags (-g) in Makefile.am's other than client
+	   in config.log '-g -O2' is in CXXFLAGS
+	   http://wiki.wxwidgets.org/Autoconf shows to use <canical_name>_CXXFLAGS
+	   also see AM_CXXFLAGS
+- [ ] Should read its config file (plugins.cfg) in execution directory
+      and use RenderSystem_Direct3D9.dll
+      - [ ] create a plugins-win32.cfg
+      - [ ] change use in client/main.cpp with conditionnal compilation
 - [ ] GlobalURI + loadRessources for Win32.
-- [ ] remove config file 'ogre.cfg'.
 - [ ] Should build with debugging symbols      
 - [ ] exe file contains DLLs
+- [ ] Should create RenderSystem_GL.dll from Ogre3D
+      Need OpenGL for minwg32
 
 **** TODO Miscelaneous                                                [33%]
      :CLOCK:
@@ -794,6 +818,7 @@ wine: Call from 0x7b845910 to unimplemented function ntoskrnl.exe.KeInitializeMu
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
+- [ ] Must change LauncherOptions icons
 **** TODO Sourceforge release                                         [0%]
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] Explain CEGUI give up in an blog post
