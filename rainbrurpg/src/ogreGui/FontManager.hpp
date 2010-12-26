@@ -23,6 +23,8 @@
 /** \file FontmManager.hpp
   * Declares the singleton that manages Font objects
   *
+  * Note: The macro NO_OGRE can be used to disable Ogre operations
+  *
   * Modifications :
   * - 22 nov 2010 : Using forward declartion for Font
   * - 26 oct 2009 : Made messages transatable with gettext

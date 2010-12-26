@@ -45,7 +45,7 @@ public:
   OgreMinimalSetup();
   ~OgreMinimalSetup();
 
-  void setupOgre();
+  void setupOgre(const Ogre::String& base_dir="../../../config/");
   void teardownOgre();
 
 protected:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2010-07-24 01:24+0200\n"
+"POT-Creation-Date: 2010-12-18 21:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,17 +271,17 @@ msgstr ""
 msgid "Error parsing CDATA."
 msgstr ""
 
-#: src/common/attributemodifierlist.cpp:71
-#: src/common/attributemodifierlist.cpp:186
+#: src/common/AttributeModifierList.cpp:71
+#: src/common/AttributeModifierList.cpp:186
 msgid "Cannot find the modifier's sign"
 msgstr ""
 
-#: src/common/attributemodifierlist.cpp:81
-#: src/common/attributemodifierlist.cpp:196
+#: src/common/AttributeModifierList.cpp:81
+#: src/common/AttributeModifierList.cpp:196
 msgid "Cannot find the modifier's value : modifier is not added"
 msgstr ""
 
-#: src/common/attributemodifierlist.cpp:122
+#: src/common/AttributeModifierList.cpp:122
 msgid "Cannot get usable modifier's type"
 msgstr ""
 
@@ -828,71 +828,77 @@ msgstr ""
 msgid "Transfer is terminated"
 msgstr ""
 
-#: src/common/globaluri.cpp:49
+#: src/common/globaluri.cpp:51
 msgid "Using the local website (127.0.0.1)"
 msgstr ""
 
-#: src/common/globaluri.cpp:53
+#: src/common/globaluri.cpp:55
 msgid "Using the real website"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: src/common/globaluri.cpp:58
+#: src/common/globaluri.cpp:60
 #, c-format
 msgid "USER_INSTALL_PREFIX=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: src/common/globaluri.cpp:64
+#: src/common/globaluri.cpp:66
 #, c-format
 msgid "shareDir=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: src/common/globaluri.cpp:166
+#: src/common/globaluri.cpp:168
 #, c-format
 msgid "Setting user's HOME directory to' %s'"
 msgstr ""
 
-#: src/common/globaluri.cpp:174
+#: src/common/globaluri.cpp:176
 msgid "Home directory alerady exists"
 msgstr ""
 
-#: src/common/globaluri.cpp:177
+#: src/common/globaluri.cpp:179
 msgid "Home directory doesn't exists, creating it"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: src/common/globaluri.cpp:208
+#: src/common/globaluri.cpp:210
 #, c-format
 msgid "The file '%s' doesn't exist"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:251
+#: src/common/globaluri.cpp:253
 #, c-format
 msgid "The file '%s' was not found. Copying it from '%s' to '%s'"
 msgstr ""
 
+#: src/common/globaluri.cpp:267
+#, c-format
+msgid ""
+"Copying the file '%s' throws an exception. %sCopying it from '%s' to '%s'"
+msgstr ""
+
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:263
+#: src/common/globaluri.cpp:277
 #, c-format
 msgid "The file '%s' was found. in the user's directory."
 msgstr ""
 
-#: src/common/globaluri.cpp:296
+#: src/common/globaluri.cpp:310
 msgid "uploaded/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:319
+#: src/common/globaluri.cpp:333
 msgid "quarantine/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:364
+#: src/common/globaluri.cpp:378
 msgid "Downloaded/ directory exists"
 msgstr ""
 
-#: src/common/globaluri.cpp:372
+#: src/common/globaluri.cpp:386
 msgid "Downloaded/ directory does not exist, creating it"
 msgstr ""
 
@@ -901,7 +907,7 @@ msgstr ""
 #. This message tells the user that this unique directory doesn't exist
 #. and it will not created because the variable 'createIfMissing' has
 #. the 'false' value.
-#: src/common/globaluri.cpp:386
+#: src/common/globaluri.cpp:400
 msgid ""
 "Missing server's unique directory. It is  not created because "
 "createIfMissing=false."
@@ -1545,163 +1551,163 @@ msgstr ""
 msgid "Environment correctly setup"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:97
+#: src/maincore/gameengine.cpp:100
 msgid "Exiting GameEngine ..."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:113
+#: src/maincore/gameengine.cpp:116
 msgid "starting rendering"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:119
+#: src/maincore/gameengine.cpp:122
 msgid "An exception has occured!"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:122
+#: src/maincore/gameengine.cpp:125
 msgid "An exception has occured: "
 msgstr ""
 
-#: src/maincore/gameengine.cpp:129
+#: src/maincore/gameengine.cpp:132
 msgid "GameEngine::run ended"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: src/maincore/gameengine.cpp:145
+#: src/maincore/gameengine.cpp:148
 #, c-format
 msgid "Cannot find %s state"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: src/maincore/gameengine.cpp:150
+#: src/maincore/gameengine.cpp:153
 #, c-format
 msgid "Switching to %s state"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:155
+#: src/maincore/gameengine.cpp:158
 msgid "An error will occur : we are calling a non-inexisting gamestate"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:170
+#: src/maincore/gameengine.cpp:173
 msgid "Both game states type are Undefined"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:208
+#: src/maincore/gameengine.cpp:211
 msgid "Cleaning up GameEngine..."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:227
+#: src/maincore/gameengine.cpp:233
 msgid "GameEngine cleaned"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:234
+#: src/maincore/gameengine.cpp:240
 msgid "  Cleaning up GameStates..."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:272
+#: src/maincore/gameengine.cpp:278
 msgid "Trying to connect a user"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:282
+#: src/maincore/gameengine.cpp:288
 msgid ""
 "This user does not exist.\n"
 "Please create an account"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:285
+#: src/maincore/gameengine.cpp:291
 msgid "Wrong password."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:288
+#: src/maincore/gameengine.cpp:294
 msgid "Your email was not yet validated."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:291
+#: src/maincore/gameengine.cpp:297
 msgid "You are in blacklist."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:294
+#: src/maincore/gameengine.cpp:300
 msgid "An unknown error occured."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:302
+#: src/maincore/gameengine.cpp:308
 msgid "The login of this user failed"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:311
+#: src/maincore/gameengine.cpp:317
 msgid "The login is successfull"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a graphic renderer name.
-#: src/maincore/gameengine.cpp:329
+#: src/maincore/gameengine.cpp:335
 #, c-format
 msgid "Setting renderer '%s'"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:421
+#: src/maincore/gameengine.cpp:427
 msgid "The Ogre::Root cannot be initalized"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:465
+#: src/maincore/gameengine.cpp:478
 msgid "mSceneMgr is NULL"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:491
+#: src/maincore/gameengine.cpp:504
 msgid "Invalid OgreWindow"
 msgstr ""
 
 #. TRANSLATORS: The parameters are ressource settings.
-#: src/maincore/gameengine.cpp:530
+#: src/maincore/gameengine.cpp:543
 #, c-format
 msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:540
+#: src/maincore/gameengine.cpp:553
 msgid "All resources correctly setup"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:577
+#: src/maincore/gameengine.cpp:590
 msgid "Logging available scene manager"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a scene manager name.
-#: src/maincore/gameengine.cpp:586
+#: src/maincore/gameengine.cpp:599
 #, c-format
 msgid "Scene manager '%s' found."
 msgstr ""
 
-#: src/maincore/gameengine.cpp:598
+#: src/maincore/gameengine.cpp:611
 msgid "Loading all resources"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:609
+#: src/maincore/gameengine.cpp:622
 msgid "All resources loaded"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource group name
-#: src/maincore/gameengine.cpp:622
+#: src/maincore/gameengine.cpp:635
 #, c-format
 msgid "Loading resource group '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource name
-#: src/maincore/gameengine.cpp:634
+#: src/maincore/gameengine.cpp:647
 #, c-format
 msgid "Loading ressource '%s'"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:648
+#: src/maincore/gameengine.cpp:661
 msgid "Switching from menuType to gameType"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:660
+#: src/maincore/gameengine.cpp:673
 msgid "Clearing Scene"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:666
+#: src/maincore/gameengine.cpp:679
 msgid "Setting new scene manager"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:706
+#: src/maincore/gameengine.cpp:719
 msgid "LocalTest environment successfully initialized"
 msgstr ""
 

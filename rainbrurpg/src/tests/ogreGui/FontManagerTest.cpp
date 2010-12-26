@@ -39,7 +39,11 @@ void FontManagerTest::setUp()
   */
 void FontManagerTest::tearDown()
 {
+  cout << "FontManagerTest::tearDown() called" << endl;
+
   teardownOgre();
+
+  cout << "FontManagerTest::tearDown() OK" << endl;
 }
 
 /** Test the FontManager::loadFont() function

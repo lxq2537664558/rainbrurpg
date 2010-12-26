@@ -114,8 +114,19 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-208 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (12) Get a working launcher in win32
+* v0.0.5-209 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (6) Fixed a memory access violation in OgreMinimalSetup
+- configure.in now check for Boost.Test
+- FontManager now ran by `make check` in src/ogreGui
+- Boost.Test based unit tests for FontManager now in src/ogreGui
+- Tested the Boost.Test unit test framework
+- Improved fontmanager individual unit tests
+
+* v0.0.5-208 (28 nov 2010 - 18 dec 2010) SLOC 42,784 UT 253 FT 76:58
+- Cleanup on the FontManager individual test launcher
+- FontManager now using new[] and delete[]
+- FontManager unit tests understand NO_OGRE macro
+- Get a working launcher in win32
    hacking the pligins.cfg file
 - Create a FontManagerTest executable
 - FontManagerTest now inherits OgreMinimalSetup

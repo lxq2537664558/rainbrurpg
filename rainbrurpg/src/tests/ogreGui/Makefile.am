@@ -1,5 +1,5 @@
 # The final program is called "ogregui2-tests"
-bin_PROGRAMS = ogregui2-tests ogregui-fontmanager
+bin_PROGRAMS = ogregui2-tests individual-fontmanager
 
 ogregui2_tests_LDADD = -L$(top_srcdir)/src/common/.libs			\
 			 -lrainbrurpg-common 				\
@@ -35,15 +35,17 @@ ogregui2_tests_SOURCES = main.cpp			\
 			 SerializableTest.cpp		\
 			 WidgetListTest.cpp
 
-ogregui_fontmanager_SOURCES = main-fontmanager.cpp		\
-	                      FontManagerTest.cpp
+individual_fontmanager_SOURCES = main-fontmanager.cpp		\
+	                         FontManagerTest.cpp
 
-ogregui_fontmanager_LDADD = $(RPG_LIB_ADD)				\
-			    -L$(top_srcdir)/src/common/.libs		\
-			    -lrainbrurpg-common 			\
-			    -L$(top_srcdir)/src/ogreGui/.libs		\
-			    -lrainbrurpg-ogregui			\
-			    -L$(top_srcdir)/src/maincore/.libs		\
-			    -lrainbrurpg-core				\
-			    $(CPPUNIT_LIBS)				\
-			    $(top_srcdir)/src/tests/helpers/libtesthelpers.la
+individual_fontmanager_LDADD = $(RPG_LIB_ADD)				\
+			       -L$(top_srcdir)/src/common/.libs		\
+			       -lrainbrurpg-common 			\
+			       -L$(top_srcdir)/src/ogreGui/.libs	\
+			       -lrainbrurpg-ogregui			\
+			       -L$(top_srcdir)/src/maincore/.libs	\
+			       -lrainbrurpg-core			\
+			       $(CPPUNIT_LIBS)				\
+			       $(top_srcdir)/src/tests/helpers/libtesthelpers.la
+
+

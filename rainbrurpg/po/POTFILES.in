@@ -4,7 +4,7 @@ ext/EasyBMP.cpp
 ext/tinyxmlerror.cpp
 
 # in the 'common' library
-src/common/attributemodifierlist.cpp
+src/common/AttributeModifierList.cpp
 src/common/chartbase.cpp
 src/common/chartline.cpp
 src/common/chartserie.cpp

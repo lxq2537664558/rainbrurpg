@@ -40,9 +40,12 @@ using namespace RainbruRPG::OgreGui;
   *
   */
 class FontManagerTest : 
-  public CPPUNIT_NS::TestFixture,
-  public OgreMinimalSetup
+  public CPPUNIT_NS::TestFixture
+#ifndef NO_OGRE
+  ,public OgreMinimalSetup
+#endif
 {
+
   /// The beginning of the test fixture
   CPPUNIT_TEST_SUITE( FontManagerTest );
 
@@ -53,6 +56,9 @@ class FontManagerTest :
 
 
 public:
+  FontManagerTest(){};
+  virtual ~FontManagerTest(){};
+
   void setUp();
   void tearDown();
 

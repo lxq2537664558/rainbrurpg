@@ -100,6 +100,39 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  -L$(top_srcdir)/src/common/.libs	\
 				  -L$(top_srcdir)/src/maincore/.libs
 
+
+if RB_OPTION_TESTS_FLAGS
+  AM_COLOR_TESTS=no
+  bin_PROGRAMS=ogregui-tests
+  TESTS=ogregui-tests
+
+  ogregui_tests_CPPFLAGS = -I$(top_srcdir)/src/common/ 			\
+	   -I$(top_srcdir)/src/ogreGui/			\
+	   -I$(top_srcdir)/src/maincore/		\
+	   -I$(top_srcdir)/src/tests/helpers/		\
+	   $(FREETYPE_CFLAGS)				\
+	   $(GNET_CFLAGS) 				\
+	   $(OGRE_CFLAGS) 				\
+	   $(OIS_CFLAGS)				\
+	   $(CPPUNIT_CFLAGS)
+
+ogregui_tests_LDADD = \
+	$(RPG_LIB_ADD)				\
+	-L$(top_srcdir)/src/common/.libs		\
+	-lrainbrurpg-common 			\
+	-L$(top_srcdir)/src/ogreGui/.libs	\
+	-lrainbrurpg-ogregui			\
+	-L$(top_srcdir)/src/maincore/.libs	\
+	-lrainbrurpg-core			\
+	-lboost_unit_test_framework				\
+	$(top_srcdir)/src/tests/helpers/libtesthelpers.la
+
+ogregui_tests_SOURCES=main-tests.cpp			\
+	     	        FontManagerTest.cpp
+
+endif
+
+
 dll:
 	source ../../create_dll.sh &&		\
 	run "rainbrurpg-ogregui" "-L/usr/cross/lib/ -lgnet-2.0 -lgd -lsigc-2.0 -lglib-2.0 -lenet -lboost_thread-1_34_1 -lboost_filesystem-1_34_1 -lFOX-1.6  -lcurl -lOgreMain -lfreetype6 -lfreeimage -L../../maincore/.libs/ -lrainbrurpg-core -lOIS -L../../common/.libs -lrainbrurpg-common"

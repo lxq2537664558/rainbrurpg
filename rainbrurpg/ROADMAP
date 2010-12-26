@@ -85,6 +85,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] no templates
 - [ ] Integrate it to make check
 *** v0.0.7
+**** Tests should use Boost.Test
+     - [ ] And can be ran with `make check`
+	   see ogreGui/FontManagerTest for example
+     - [ ] /src/tests/helpers should be build first
 **** TODO Miscelaneous                                                [0%]
 - [ ] Remove terminalAPI (2,775 SLOC)*
 - [ ] oldOgreGui (11,114 SLOC) 
@@ -267,6 +271,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] client/gsserverlist.cpp
 	    BetaGui::GUI and some Widgets references removed
 **** Should debianize RainbruRPG
+     - [ ] Maybe should be installed in /usr/games/ ?
      - [ ] Must debianize PLSM2 before
 *** TODO v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
@@ -678,8 +683,15 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    Test it with navigation skin
       - [X] Label
 	    - [X] Create the class
-***** TODO Text drawing ability                             [85%]
+***** DONE Text drawing ability                             [85%]
       :CLOCK:
+      CLOCK: [2010-12-26 dim. 22:44]--[2010-12-26 dim. 23:11] =>  0:27
+      CLOCK: [2010-12-26 dim. 22:00]--[2010-12-26 dim. 22:34] =>  0:34
+      CLOCK: [2010-12-21 mar. 09:12]--[2010-12-21 mar. 09:26] =>  0:14
+      CLOCK: [2010-12-20 lun. 16:31]--[2010-12-20 lun. 17:14] =>  0:43
+      CLOCK: [2010-12-18 sam. 21:33]--[2010-12-18 sam. 21:56] =>  0:23
+      CLOCK: [2010-12-18 sam. 17:40]--[2010-12-18 sam. 18:37] =>  0:57
+      CLOCK: [2010-12-18 sam. 15:43]--[2010-12-18 sam. 16:36] =>  0:53
       CLOCK: [2010-12-11 sam. 15:32]--[2010-12-11 sam. 16:07] =>  0:35
       CLOCK: [2010-12-11 sam. 08:49]--[2010-12-11 sam. 09:20] =>  0:31
       CLOCK: [2010-12-11 sam. 08:32]--[2010-12-11 sam. 08:44] =>  0:12
@@ -733,11 +745,31 @@ name, date, heure, gamestate, position, name perso, name server, versions
 			May use OgreMinimalSetup as in DrawableTestWithOgre
 		  - [X] Create an executable with this unique tests
 			glibc detected 'double free or corruption'
-		  - [ ] Pass the executable through valgrind
-		  - [ ] FontManager::loadFont() should throw an exception if not found
-			And maybe FreeType related excepions
-	    - [ ] Does adding a child to a container set the dirty flag ?
-		  Should test it in unit tests
+		  - [X] The fontmanager unit tests eecutable should 
+			be called 'individual-fontmanager'
+		  - [-] Pass the executable through valgrind
+			- [X] Create a NO_OGRE conditionnal compilation
+			      that disable Ogre/Texture loading to test other 
+			      memory related function
+			      `make CXXFLAGS=-DNO_OGRE`
+			- [X] see why i'm using delete on malloc-ed fontbuffer
+			- [X] Should fix the Ogre::Singleton assertion in ogregui-tests
+			      It comes from the FontManagerTest::tearDown
+			      Was due to plugins.cfg
+			- [X] Testing Boost.Test
+			      - [X] A simple case
+			      - [X] Testing FontManager class
+ 		        - [X] Tests now in src/ogre
+			      Memory access violation when running from :
+			      OgreMinimalSetup.cpp:59
+			      Was due to incorrect path to config files
+***** TODO Fixing text drawing
+     Test should be darwn from gsMainMenu but it doesn't
+     - [ ] Does adding a child to a container set the dirty flag ?
+	   Should test it in unit tests
+	   - [ ] First pass ContainerTest to Boost.Test in src/ogreGui
+	   - [ ] Make a test that fail (add a child and test for dirty flag)
+	   - [ ] Implement a fix
 **** TODO Cross compilation to win32                                  [58%]
      :CLOCK:
      CLOCK: [2010-12-16 jeu 15:32]

@@ -40,6 +40,10 @@
 using namespace CppUnit;
 using namespace RainbruRPG::Exception;
 
+#ifdef NO_OGRE
+#warning Building without Ogre3D support
+#endif
+
 /** The main function of the UnitTest (text version)
   *
   * \param argc The number of command-line arguments
@@ -55,14 +59,9 @@ int main(int argc, char* argv[])
   LOGI("Starting text version of unit tests (FontManagerTest only)");
 
   CPPUNIT_NS::TextTestRunner runner;
-  
-  TestSuite suite;
-  suite.addTest( FontManagerTest::suite() );
-
-  // Change the default outputter to a compiler error format outputter
   runner.setOutputter( new CompilerOutputter( &runner.result(), std::cerr));
   
-  runner.addTest(&suite);
+  runner.addTest(FontManagerTest::suite());
   
   runner.run("", false, true, true);
   return 0;

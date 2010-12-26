@@ -1,3 +1,33 @@
+2010-12-26 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/helpers/OgreMinimalSetup.cpp (setuoOgre): Fixed an issue
+	due to incorrcet path to Ogre's config files, which lead to 'memory
+	access violation' when unit testing.
+	
+	* configure.in: Now checks for Boost.Test (from acinclude.m4)
+	* acinclude.m4: conditionnal check for Boost.Test.
+	
+	* src/ogreGui/FontManagerTest.cpp: Boost.Test based tests moved from
+	src/tests/ogreGui.
+	
+2010-12-20 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/ogreGui/main-fontmanager-boost.cpp: Implemented to test 
+	Boost.Test.
+	
+	* src/tests/ogreGui/FontManagerTest-boost.cpp : Implemented to test 
+	Boost.Test.
+
+2010-12-18 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/tests/ogreGui/main-fontmanager.cpp (main): cleaned up the 
+	CppUnit code.
+	
+	* src/ogreGui/FontManager.cpp (loadFont): uses new[] and delete[] 
+	instead of malloc().
+
+	* src/tests/ogreGui/FontManagerTest.cpp : NO_OGRE macro understood.
+
 2010-12-04 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/tests/ogreGui/main-fontmanager.cpp : Run only one test.

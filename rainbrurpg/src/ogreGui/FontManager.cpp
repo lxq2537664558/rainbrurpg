@@ -104,10 +104,13 @@ getFont(const String& name, unsigned int size){
 OgreGui::Font* RainbruRPG::OgreGui::FontManager::
 loadFont(const String& name, unsigned int size){
 
+
   // The new font object
   Font* newFont=new Font(name, size);
   // Get the resource
+#ifndef NO_OGRE
   DataStreamPtr dsp=ResourceGroupManager::getSingleton().openResource(name);
+#endif 
 
   FT_Library lib;
   FT_Face face;
@@ -123,10 +126,15 @@ loadFont(const String& name, unsigned int size){
     sprintf(str, _("FT error code : %i"), err);
     LOGE(str);
   }
-
+#ifndef NO_OGRE
   int bufferSize = dsp->size();
-  FT_Byte* fontBuffer=(FT_Byte*)malloc(bufferSize*sizeof(FT_Byte));
+#else
+  int bufferSize = 512;
+#endif
+  //  FT_Byte* fontBuffer=(FT_Byte*)malloc(bufferSize*sizeof(FT_Byte));
+  FT_Byte* fontBuffer = new FT_Byte[bufferSize];
 
+#ifndef NO_OGRE
   dsp->read( fontBuffer, bufferSize );
   err= FT_New_Memory_Face( lib, fontBuffer, bufferSize, 0, &face );
   LOGA(err==0, _("Unable to load font"));
@@ -150,22 +158,23 @@ loadFont(const String& name, unsigned int size){
   // Clear texture and render glyphs
   int* buffer=(int*)texture->getBuffer()
     ->lock(HardwareBuffer::HBL_DISCARD );
+  memset( buffer, 0, texWidth * texHeight * sizeof(int) );
+#endif
 
-  memset( buffer, 0, texWidth * texHeight * 4 ); // 4 bytes int ??
+
+#ifndef NO_OGRE
   renderGlyphs( newFont, face, buffer, texWidth );
-
   texture->getBuffer()->unlock( );
-
   newFont->setTextureName(textureName);
-
 
   // Store texture in font
   newFont->setTexture( texture );
-
+#endif
 
   // Delete font buffer
-  delete fontBuffer;
-  fontBuffer=NULL;
+  //  free(fontBuffer);
+  delete[] fontBuffer;
+  //  fontBuffer=NULL;
 
   return newFont;
 }

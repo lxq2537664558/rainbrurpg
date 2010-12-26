@@ -814,3 +814,38 @@ AC_DEFUN([RB_CONDITIONAL_LINKING_CPPUNIT],
 AC_DEFUN([RB_CHECK_CPPUNIT],[
   PKG_CHECK_MODULES(CPPUNIT, [cppunit >= 1.12.0])
 ])
+
+AC_DEFUN([RB_CONDITIONAL_LINKING_BOOST_TEST],
+[
+
+  AC_MSG_CHECKING([if we should search for Boost.Test])
+
+  case $build_tests in
+    yes)
+      tests=true
+      AC_MSG_RESULT(yes)
+      RB_CHECK_BOOST_TEST
+      ;;
+    *)
+      tests=false
+      AC_MSG_RESULT(no)
+      ;;
+  esac
+])
+
+AC_DEFUN([RB_CHECK_BOOST_TEST],[
+    dnl We need to switch to the C++ compiler	
+    AC_LANG(C++)	
+
+    dnl Checks header boost header file
+    AC_CHECK_HEADER([boost/test/unit_test.hpp], [], [
+      echo "Error! Cannot find the Boost-Program_options headers."
+      exit -1
+    ])
+
+    dnl Check the Boost library
+    AC_CHECK_LIB(boost_unit_test_framework, main, [], [
+      echo "Error! You need to have Boost-Program_options library installed."
+      exit -1
+    ])
+])

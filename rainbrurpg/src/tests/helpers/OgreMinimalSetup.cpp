@@ -40,8 +40,13 @@ OgreMinimalSetup::~OgreMinimalSetup()
 
 /** Setup a minimal ogre renderer
   *
+  * \param base_dir The path to the config and data files (plugins.cfg and ogre.cfg
+  *
+  * \warning Incorrect base_dir could lead to a 'memory access violation' when
+  *          launched.
+  *
   */
-void OgreMinimalSetup::setupOgre()
+void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
 {
   mListener = new SilentLogListener();
 
@@ -49,17 +54,26 @@ void OgreMinimalSetup::setupOgre()
   logger->createLog("log.log", true, false, true);
   Ogre::LogManager::getSingleton().getDefaultLog()->addListener(mListener);
 
-    string dir="../../../config/";
-    new Ogre::Root(dir + "plugins.cfg", dir + "ogre.cfg", dir + "ogre-unittests.log");
-    
-
+  try{
+    string dir= base_dir + "config/";
+    Ogre::Root* root = new Ogre::Root(dir + "plugins.cfg", 
+				    dir + "ogre.cfg", dir + "ogre-unittests.log");
+    assert(root && "Cannot initialize Ogre::Root");
+      
     // Select rendersystem
     Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
     Ogre::Root::getSingleton().setRenderSystem((*list->begin()));
     Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
-    Ogre::Root::getSingleton().addResourceLocation("../../../data/", "FileSystem");
+    Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
+    Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
     Ogre::Root::getSingleton().getRenderSystem()->createRenderWindow("a", 20, 20, false);
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
+  }
+  catch(Ogre::Exception e){
+    cout << "setupOgre failed to initialize : "<< e.what() << endl;
+    exit(1);
+  }
+
 }
 
 /** Tear down the ogre renderer

@@ -7,7 +7,7 @@ dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
 
 dnl The release number (revision)
-RELEASE=204
+RELEASE=208
 AC_SUBST([RELEASE])
 AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 
@@ -147,6 +147,7 @@ dnl #################################################################"""
 dnl Conditionnal library linking
 RB_CONDITIONAL_LINKING_LIB_MAGIC
 RB_CONDITIONAL_LINKING_CPPUNIT
+RB_CONDITIONAL_LINKING_BOOST_TEST
 
 RB_OPTION_DEBUG
 RB_CHECK_DOT

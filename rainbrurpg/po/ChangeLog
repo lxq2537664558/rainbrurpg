@@ -1,3 +1,6 @@
+2010-12-18  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Some sources names now in CamelCase.
+
 2010-02-16  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added src/ to directories names.
 	
