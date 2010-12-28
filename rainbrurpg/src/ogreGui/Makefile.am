@@ -109,7 +109,7 @@ if RB_OPTION_TESTS_FLAGS
   ogregui_tests_CPPFLAGS = -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
-	   -I$(top_srcdir)/src/tests/helpers/		\
+	   -I$(top_srcdir)/src/testHelpers/		\
 	   $(FREETYPE_CFLAGS)				\
 	   $(GNET_CFLAGS) 				\
 	   $(OGRE_CFLAGS) 				\
@@ -125,7 +125,7 @@ ogregui_tests_LDADD = \
 	-L$(top_srcdir)/src/maincore/.libs	\
 	-lrainbrurpg-core			\
 	-lboost_unit_test_framework				\
-	$(top_srcdir)/src/tests/helpers/libtesthelpers.la
+	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
 
 ogregui_tests_SOURCES=main-tests.cpp			\
 	     	      FontManagerTest.cpp

@@ -12,12 +12,12 @@ ogregui2_tests_LDADD = -L$(top_srcdir)/src/common/.libs			\
 			 $(CPPUNIT_LIBS)				\
 			 $(SIGC_LIBS)					\
 	   		-lcppunit					\
-			$(top_srcdir)/src/tests/helpers/libtesthelpers.la
+			$(top_srcdir)/src/testHelpers/libtesthelpers.la
 
 INCLUDES = -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
-	   -I$(top_srcdir)/src/tests/helpers/		\
+	   -I$(top_srcdir)/src/testHelpers/		\
 	   $(FREETYPE_CFLAGS)				\
 	   $(GNET_CFLAGS) 				\
 	   $(OGRE_CFLAGS) 				\
@@ -46,6 +46,6 @@ individual_fontmanager_LDADD = $(RPG_LIB_ADD)				\
 			       -L$(top_srcdir)/src/maincore/.libs	\
 			       -lrainbrurpg-core			\
 			       $(CPPUNIT_LIBS)				\
-			       $(top_srcdir)/src/tests/helpers/libtesthelpers.la
+			       $(top_srcdir)/src/testHelpers/libtesthelpers.la
 
 

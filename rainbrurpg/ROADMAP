@@ -764,7 +764,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 			      OgreMinimalSetup.cpp:59
 			      Was due to incorrect path to config files
 ***** TODO tests helpers should be built before other libraries
+      :CLOCK:
+      CLOCK: [2010-12-28 mar. 18:49]
       CLOCK: [2010-12-28 mar. 17:36]--[2010-12-28 mar. 17:52] =>  0:16
+      :END:
       - [X] move in src/testHelpers
       - [ ] built first if --enable-tests
       - [ ] create OgreMinimalSetupTest with Boost.Test

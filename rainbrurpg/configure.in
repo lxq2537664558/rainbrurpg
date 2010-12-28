@@ -183,6 +183,7 @@ AC_CONFIG_FILES([Makefile			\
 	  doc/Makefile				\
 	  doc/ogregui-uml.dot			\
 	  src/Makefile				\
+          src/testHelpers/Makefile		\
           src/common/Makefile			\
           src/terminalapi/Makefile		\
 	  src/maincore/Makefile			\
