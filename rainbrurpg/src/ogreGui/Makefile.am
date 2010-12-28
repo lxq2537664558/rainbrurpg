@@ -128,7 +128,7 @@ ogregui_tests_LDADD = \
 	$(top_srcdir)/src/tests/helpers/libtesthelpers.la
 
 ogregui_tests_SOURCES=main-tests.cpp			\
-	     	        FontManagerTest.cpp
+	     	      FontManagerTest.cpp
 
 endif
 

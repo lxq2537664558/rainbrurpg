@@ -763,14 +763,30 @@ name, date, heure, gamestate, position, name perso, name server, versions
 			      Memory access violation when running from :
 			      OgreMinimalSetup.cpp:59
 			      Was due to incorrect path to config files
-***** TODO Fixing text drawing
+***** TODO tests helpers should be built before other libraries
+      CLOCK: [2010-12-28 mar. 17:36]--[2010-12-28 mar. 17:52] =>  0:16
+      - [X] move in src/testHelpers
+      - [ ] built first if --enable-tests
+      - [ ] create OgreMinimalSetupTest with Boost.Test
+      - [X] see if main-tests.cpp is needed : Yes
+            - [X] main() is a _foo_ example
+	    - [X] should contain main_cpp() 
+		  It may be in FontManagerTest.cpp
+      - [ ] Write OgreMinimalSetupTest.cpp
+      - [ ] Pass it through valgrind
+***** Fixing text drawing
      Test should be darwn from gsMainMenu but it doesn't
      - [ ] Does adding a child to a container set the dirty flag ?
 	   Should test it in unit tests
 	   - [ ] First pass ContainerTest to Boost.Test in src/ogreGui
 	   - [ ] Make a test that fail (add a child and test for dirty flag)
 	   - [ ] Implement a fix
-**** TODO Cross compilation to win32                                  [58%]
+**** Switch to 2011
+     - [ ] Uses a new ChangeLog
+	   - [ ] Rename ChangeLog ChangeLog.2010
+	   - [ ] Create a new ChangeLog and add it to cvs
+     - [ ] Update all GNU headers date
+**** Cross compilation to win32                                       [58%]
      :CLOCK:
      CLOCK: [2010-12-16 jeu 15:32]
      CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
@@ -837,7 +853,7 @@ Backtrace:
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 
-**** TODO Miscelaneous                                                [33%]
+**** Miscelaneous                                                     [33%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
@@ -851,7 +867,7 @@ Backtrace:
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [ ] Must change LauncherOptions icons
-**** TODO Sourceforge release                                         [0%]
+**** Sourceforge release                                              [0%]
 - [ ] Removed CEGUI reference from Sourceforge project overview
 - [ ] Explain CEGUI give up in an blog post
 - [ ] Change libtool versionning of OgreGui

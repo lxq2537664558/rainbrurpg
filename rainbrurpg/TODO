@@ -115,7 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-209 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (6) Fixed a memory access violation in OgreMinimalSetup
+- (7) src/tests/helpers/ moved to src/helpTesters
+- Fixed a memory access violation in OgreMinimalSetup
 - configure.in now check for Boost.Test
 - FontManager now ran by `make check` in src/ogreGui
 - Boost.Test based unit tests for FontManager now in src/ogreGui

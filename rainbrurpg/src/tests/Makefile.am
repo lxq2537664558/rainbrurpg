@@ -17,7 +17,7 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-SUBDIRS=helpers ogreGui
+SUBDIRS=ogreGui
 
 # The final program is called "rainbrurpg-tests"
 bin_PROGRAMS = rainbrurpg-tests
