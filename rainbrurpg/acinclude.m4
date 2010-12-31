@@ -834,18 +834,27 @@ AC_DEFUN([RB_CONDITIONAL_LINKING_BOOST_TEST],
 ])
 
 AC_DEFUN([RB_CHECK_BOOST_TEST],[
+dnl  if test $rb_cross_compil_host == "win32"
+dnl  then	
+dnl    echo "Adding boost.Test flags for "mingw32msvc""
+dnl    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/"
+dnl    LDFLAGS="$LDFLAGS -lboost_unit_test_framework$DLL_EXT"
+dnl  else
     dnl We need to switch to the C++ compiler	
     AC_LANG(C++)	
 
+    CPPFLAGS="$CPPFLAGS -I$rb_cross_compil_prefix/include/"
+    LDFLAGS="$LDFLAGS -L$rb_cross_compil_prefix/lib/"
     dnl Checks header boost header file
     AC_CHECK_HEADER([boost/test/unit_test.hpp], [], [
-      echo "Error! Cannot find the Boost-Program_options headers."
+      echo "Error! Cannot find the Boos.Test headers."
       exit -1
     ])
 
     dnl Check the Boost library
     AC_CHECK_LIB(boost_unit_test_framework, main, [], [
-      echo "Error! You need to have Boost-Program_options library installed."
+      echo "Error! You need to have Boost.Test library installed."
       exit -1
     ])
+dnl  fi
 ])

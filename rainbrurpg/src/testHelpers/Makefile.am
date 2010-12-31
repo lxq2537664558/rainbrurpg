@@ -1,4 +1,4 @@
-#  Copyright 2006-2010 Jerome PASQUIER
+#  Copyright 2006-2011 Jerome PASQUIER
 # 
 #  This file is part of RainbruRPG.
 #
@@ -30,12 +30,14 @@ library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
 INCLUDES = -I$(top_srcdir)/src/common/		\
 	   -I$(top_srcdir)/src/maincore/	\
-	   $(OGRE_CFLAGS)
+	   $(OGRE_CFLAGS)			\
+	   $(CFLAGS)
 
-libtesthelpers_la_LIBADD = $(OGRE_LIBS)
+libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS)
 
-# The executable created here is just used for memory checking using `valgrind`.
+# The executable created here is just used for memory checking using `valgrind`
 bin_PROGRAMS=ogreminimalsetup
+TESTS=ogreminimalsetup
 ogreminimalsetup_SOURCES=main.cpp
 ogreminimalsetup_LDADD= libtesthelpers.la $(OGRE_LIBS)
 

@@ -1,4 +1,4 @@
-#  Copyright 2006-2010 Jerome PASQUIER
+#  Copyright 2006-2011 Jerome PASQUIER
 # 
 #  This file is part of RainbruRPG.
 #
@@ -101,7 +101,8 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  -L$(top_srcdir)/src/maincore/.libs
 
 
-if RB_OPTION_TESTS_FLAGS
+# do not depend on RB_OPTION_TESTS_FLAGS
+# Because it works when cross-compiling
   AM_COLOR_TESTS=no
   bin_PROGRAMS=ogregui-tests
   TESTS=ogregui-tests
@@ -129,8 +130,6 @@ ogregui_tests_LDADD = \
 
 ogregui_tests_SOURCES=main-tests.cpp			\
 	     	      FontManagerTest.cpp
-
-endif
 
 
 dll:

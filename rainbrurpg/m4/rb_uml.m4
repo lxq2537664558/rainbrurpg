@@ -1,4 +1,4 @@
-dnl Copyright 2006-2010 Jerome PASQUIER
+dnl Copyright 2006-2011 Jerome PASQUIER
 dnl 
 dnl This file is part of RainbruRPG.
 dnl

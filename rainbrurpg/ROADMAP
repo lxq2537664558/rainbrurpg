@@ -494,6 +494,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] I currently work with many paper TODO. Update this document with them.
 - [X] Merge TODO long terms items with this document.
 
+**** DONE Switch to 2011
+     CLOCK: [2010-12-31 ven 09:15]--[2010-12-31 ven 09:23] =>  0:08
+     - [X] Uses a new ChangeLog
+	   - [X] Rename ChangeLog ChangeLog.2010
+	   - [X] Create a new ChangeLog and add it to cvs
+     - [X] Update all GNU headers date
+	   sed -i -e "s/2006-2010/2006-2011/g" <file>
 **** TODO OgreGui2 implementation and UnitTest                        [59%]
      :CLOCK:
      CLOCK: [2010-11-06 sam. 17:26]--[2010-11-06 sam. 17:48] =>  0:22
@@ -784,13 +791,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   - [ ] First pass ContainerTest to Boost.Test in src/ogreGui
 	   - [ ] Make a test that fail (add a child and test for dirty flag)
 	   - [ ] Implement a fix
-**** Switch to 2011
-     - [ ] Uses a new ChangeLog
-	   - [ ] Rename ChangeLog ChangeLog.2010
-	   - [ ] Create a new ChangeLog and add it to cvs
-     - [ ] Update all GNU headers date
-**** Cross compilation to win32                                       [58%]
+**** Cross compilation to win32                                       [90%]
      :CLOCK:
+     CLOCK: [2010-12-31 ven 09:33]--[2010-12-31 ven 10:00] =>  0:27
+     CLOCK: [2010-12-31 ven 09:15]--[2010-12-31 ven 09:15] =>  0:00
+     CLOCK: [2010-12-29 mer 20:35]--[2010-12-29 mer 20:44] =>  0:09
+     CLOCK: [2010-12-29 mer 19:03]--[2010-12-29 mer 19:17] =>  0:14
+     CLOCK: [2010-12-28 mar 22:17]--[2010-12-28 mar 22:30] =>  0:13
      CLOCK: [2010-12-16 jeu 15:32]
      CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
      CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
@@ -823,6 +830,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	file_extensions.refused
       - If we create manually these file, it complains about an Ogre Error :
       - [X] Trying with limited extension .acc and .ref by example
+- [X] Should build Boost.Test for win32
 - [ ] Even if the Launcher run, we get an error
 Backtrace:
 =>0 0x7edc2db7 DbgBreakPoint+0x3() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/kernel32/../../include/winternl.h:1884] in kernel32 (0x0514ef38)

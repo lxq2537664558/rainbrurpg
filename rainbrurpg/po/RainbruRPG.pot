@@ -1347,7 +1347,7 @@ msgstr ""
 
 #: src/common/version.cpp:99
 msgid ""
-"Copyright (C) 2006-2010 Jerome PASQUIER\n"
+"Copyright (C) 2006-2011 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
 "and you are welcome to redistribute it under certain conditions.\n"
 "See the GNU General Public License for more details.\n"
