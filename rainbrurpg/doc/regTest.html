@@ -6,7 +6,55 @@
 </head>
 
 <body>
+
+To know how many Boost.Test based tests can be launched, please uses
+<em>src/nb_unit_tests.pl</em>.
+
 <!-- This file is included by Doxygen from doc/doc.h -->
+
+   <table width=100% border="1" cellspacing ="0" 
+          cellpadding ="0">
+     <tr bgcolor="#00CC99">
+       <th rowspan=2 width=100px>Ver</th>
+       <th rowspan=2 width=100px>Date</th>
+       <th rowspan=2>Lines</th>
+       <th rowspan=2>cc</th>
+       <th colspan=2>ut</th>
+       <th colspan=2>Sys</th>
+       <th rowspan=2>Mem</th>
+       <th rowspan=2>Ref</th>
+       <th rowspan=2 width=50px>CL</th>
+       <th rowspan=2 width=50px>PoMsg</th>
+       <th rowspan=2>Pass ?</th>
+     </tr>
+     <tr bgcolor="#00CC99">
+       <th>CppUnit</th>
+       <th>Boost.Test</th>
+       <th>Lin</th>
+       <th>Win</th>
+     </tr>
+     
+<!-- Add here a version when it is finished (when switching to Ver++) -->
+     <tr class="regTest1">
+       <td>v0.0.5-209</td>
+       <td>18 dec 2010</td>                       <!-- Date -->
+       <td align="right">42&nbsp;784</td>         <!-- SLOC -->
+       <td align="right">13</td>                  <!-- Console count -->
+       <td>253&nbsp;<font color="red">fail</font></td >   <!-- CppUnit unit tests -->
+       <td>12&nbsp;<font color="green">success</font></td>     <!-- Boost.Test unit tests -->
+       <td>OK</td>                                <!-- Linux -->
+       <td><font color="red">No</font></td>       <!-- Win32 -->
+       <td>-</td>                                 <!-- Mem on win32 -->
+       <td>2&nbsp;171</td>                        <!-- Doc pages -->
+       <td>458</td>                               <!-- ChangeLog lines -->
+       <td>417</td>                               <!-- Number of PO msg -->
+       <td><font color="red">Failed</font></td>      <!-- Unit tests result -->
+     </tr>
+
+   </table>
+
+
+<!-- Old-style table -->
 
    <table width=100% border="1" cellspacing ="0" 
           cellpadding ="0">
@@ -43,7 +91,7 @@
        <td>2&nbsp;171</td>                        <!-- Doc pages -->
        <td>458</td>                               <!-- ChangeLog lines -->
        <td>417</td>                               <!-- Number of PO msg -->
-       <td>Fixing FontManager's memory leaks.</td>   <!-- Comment -->
+       <td>A simple test.</td>   <!-- Comment -->
        <td><font color="red">Failed</font></td>      <!-- Unit tests result -->
      </tr>
      <tr class="regTest2">
@@ -935,6 +983,6 @@
      <A HREF="#UpNote012">Up</a><br>
 <hr>
 
-<!-- hhmts start -->Last modified: Sat Dec 18 22:08:58 CET 2010 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sun Jan  2 18:08:29 CET 2011 <!-- hhmts end -->
 </body>
 </html>

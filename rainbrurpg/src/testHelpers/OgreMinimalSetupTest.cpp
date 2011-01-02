@@ -20,10 +20,44 @@
  *
  */
 
-// A unit-test test using Boost.Test
+#include <OgreMinimalSetup.hpp>
 
-#include <boost/test/included/unit_test.hpp>
+#define BOOST_TEST_MODULE OgreMinimalSetupTest
 
-/* Nothing here
+#include <boost/test/unit_test.hpp>
 
-*/
+OgreMinimalSetup* oms;
+
+void setup()
+{
+  oms = new OgreMinimalSetup();
+}
+
+void teardown()
+{
+  delete oms;
+}
+
+BOOST_AUTO_TEST_CASE( test_setup_pointer )
+{
+  setup();
+  BOOST_CHECK( oms );
+  teardown();
+}
+
+BOOST_AUTO_TEST_CASE( test_setup_ogre_throw )
+{
+  setup();
+  BOOST_CHECK_THROW( oms->setupOgre("../unbelievable_directory_name_for_configuration_files"),
+		     std::string);
+  teardown();
+}
+
+BOOST_AUTO_TEST_CASE( test_setup_ogre_correct_config )
+{
+  setup();
+  BOOST_CHECK( oms );
+  oms->setupOgre("../../");
+  //  oms->teardownOgre();
+  teardown();
+}

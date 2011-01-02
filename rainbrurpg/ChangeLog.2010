@@ -1,3 +1,17 @@
+2010-12-31 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/ogreimport.h: Includes ../../config.h instead
+	of ../config.h.
+	
+	* src/testHelpers/Makefile.am: Added CFLAGS and LDFLEGS to
+	handle Ogre's win32 hack from acniclude.m4.
+	
+	* src/ogreGui/Makefile.am (tests): Do not depend on 
+	RB_OPTION_TESTS_FLAGS because unit tests based on Boost.Test 
+	should now work on win32.
+	
+	* src/: Changed some gnu headers dates.
+	
 2010-12-26 Jerome Pasquier  <rainbru@free.fr>
 
 	* acinclude.m4 (RB_CHECK_BOOST_TEST): Uses CPPFLAGS.

@@ -45,10 +45,12 @@ public:
   OgreMinimalSetup();
   ~OgreMinimalSetup();
 
-  void setupOgre(const Ogre::String& base_dir="../../../config/");
+  void setupOgre(const Ogre::String& base_dir="../../../");
   void teardownOgre();
 
 protected:
+  bool dirExists(const std::string&);
+
   SilentLogListener* mListener;
 };
 

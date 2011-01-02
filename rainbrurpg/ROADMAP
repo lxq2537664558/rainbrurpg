@@ -85,6 +85,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] no templates
 - [ ] Integrate it to make check
 *** v0.0.7
+**** Cross-compilation
+     - [ ] Improve headers/libs checking for win32
+	   Example is Boost.Test
 **** Tests should use Boost.Test
      - [ ] And can be ran with `make check`
 	   see ogreGui/FontManagerTest for example
@@ -212,6 +215,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 **** xIdent
 - XIdent AddAccount dialog and other buttons
 - Modify the connection system
+**** CppUnit based Unit tests fail
+     - [ ] See why
+	   Many ClientConnect assertions fail
+	   Memory error
 **** TODO Coding standards
 - [ ] Should split the common/ library in common/ and net/
 - [ ] May headers files be called *.hpp (previous step)
@@ -770,21 +777,22 @@ name, date, heure, gamestate, position, name perso, name server, versions
 			      Memory access violation when running from :
 			      OgreMinimalSetup.cpp:59
 			      Was due to incorrect path to config files
-***** TODO tests helpers should be built before other libraries
+***** DONE tests helpers should be built before other libraries
       :CLOCK:
-      CLOCK: [2010-12-28 mar. 18:49]
+      CLOCK: [2011-01-02 dim. 16:29]--[2011-01-02 dim. 17:09] =>  0:40
+      CLOCK: [2010-12-28 mar. 18:49]--[2010-12-28 mar. 19:19] =>  0:30
       CLOCK: [2010-12-28 mar. 17:36]--[2010-12-28 mar. 17:52] =>  0:16
       :END:
       - [X] move in src/testHelpers
-      - [ ] built first if --enable-tests
-      - [ ] create OgreMinimalSetupTest with Boost.Test
+      - [X] built first
+      - [X] create OgreMinimalSetupTest with Boost.Test
       - [X] see if main-tests.cpp is needed : Yes
             - [X] main() is a _foo_ example
 	    - [X] should contain main_cpp() 
 		  It may be in FontManagerTest.cpp
-      - [ ] Write OgreMinimalSetupTest.cpp
-      - [ ] Pass it through valgrind
+      - [X] Pass it through valgrind
 ***** Fixing text drawing
+      CLOCK: [2011-01-02 dim. 17:43]--[2011-01-02 dim. 18:05] =>  0:22
      Test should be darwn from gsMainMenu but it doesn't
      - [ ] Does adding a child to a container set the dirty flag ?
 	   Should test it in unit tests
@@ -864,7 +872,7 @@ Backtrace:
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 
-**** Miscelaneous                                                     [33%]
+**** TODO Miscelaneous                                                     [33%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
@@ -872,6 +880,7 @@ Backtrace:
      :END:
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [X] Should add a configuration summary at the end of configure
+- [ ] src/nb_unit_tests.pl should work
 - [ ] common/version.cpp should print option summary
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.

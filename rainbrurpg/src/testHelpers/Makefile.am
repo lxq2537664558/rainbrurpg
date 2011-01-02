@@ -37,7 +37,13 @@ libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS)
 
 # The executable created here is just used for memory checking using `valgrind`
 bin_PROGRAMS=ogreminimalsetup
-TESTS=ogreminimalsetup
 ogreminimalsetup_SOURCES=main.cpp
 ogreminimalsetup_LDADD= libtesthelpers.la $(OGRE_LIBS)
 
+# Boost.Test based unit tests
+bin_PROGRAMS+=rainbrurpg-tests-libtesthelpers
+TESTS=rainbrurpg-tests-libtesthelpers
+rainbrurpg_tests_libtesthelpers_SOURCES= \
+	OgreMinimalSetupTest.cpp	 \
+	main-tests.cpp
+rainbrurpg_tests_libtesthelpers_LDADD= libtesthelpers.la $(OGRE_LIBS)

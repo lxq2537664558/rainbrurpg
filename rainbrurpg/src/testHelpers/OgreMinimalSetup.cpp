@@ -21,10 +21,14 @@
  */
 
 #include "OgreMinimalSetup.hpp"
-
 #include "ogreimport.h"
 
 #include <string>
+
+#include "config.h"
+#ifdef HAVE_DIRENT_H
+#  include <dirent.h>
+#endif
 
 using namespace std;
 
@@ -50,12 +54,18 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
 {
   mListener = new SilentLogListener();
 
-  Ogre::LogManager* logger = new Ogre::LogManager();
-  logger->createLog("log.log", true, false, true);
-  Ogre::LogManager::getSingleton().getDefaultLog()->addListener(mListener);
+  string dir= base_dir + "config/";
+  if (!dirExists(dir)){
+    throw "config directory '" + dir + "' does not exist.";
+  }
 
   try{
-    string dir= base_dir + "config/";
+    Ogre::LogManager* logger = new Ogre::LogManager();
+    assert(logger && "Failed to create an Ogre Logger");
+    logger->createLog("log.log", true, false, true);
+    Ogre::LogManager::getSingleton().getDefaultLog()->addListener(mListener);
+
+
     Ogre::Root* root = new Ogre::Root(dir + "plugins.cfg", 
 				    dir + "ogre.cfg", dir + "ogre-unittests.log");
     assert(root && "Cannot initialize Ogre::Root");
@@ -90,4 +100,18 @@ void OgreMinimalSetup::teardownOgre()
   delete mLog;
 
   delete mListener;
+}
+
+bool OgreMinimalSetup::dirExists(const std::string& vDir)
+{
+  DIR* dir;
+  bool ret = false;
+
+  dir = opendir( vDir.c_str() );
+  if (dir != NULL){
+    ret = true;
+    closedir(dir);
+  }
+  
+  return ret;
 }

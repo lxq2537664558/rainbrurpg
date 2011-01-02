@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-209 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (10) Fixed a flags error in testHelpers' Makefile.am
+- (14) nb_unit_tests.pl works
+- Started nb_uni_tests.pl
+- Implemented OgreMinimalSetupTest
+- Updated regtest.html with a new table
+- Fixed a flags error in testHelpers' Makefile.am
 - Changed GNU headers dates
    in *, */*, */*/*, */*/*/*
 - Improved RB_CHECK_BOOST_TEST from acinclude.m4
