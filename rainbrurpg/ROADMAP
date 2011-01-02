@@ -799,8 +799,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   - [ ] First pass ContainerTest to Boost.Test in src/ogreGui
 	   - [ ] Make a test that fail (add a child and test for dirty flag)
 	   - [ ] Implement a fix
-**** Cross compilation to win32                                       [90%]
+**** Cross compilation to win32                                       [100%]
      :CLOCK:
+     CLOCK: [2011-01-02 dim 22:12]
+     CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
+     CLOCK: [2011-01-02 dim 20:47]--[2011-01-02 dim 21:08] =>  0:21
      CLOCK: [2010-12-31 ven 09:33]--[2010-12-31 ven 10:00] =>  0:27
      CLOCK: [2010-12-31 ven 09:15]--[2010-12-31 ven 09:15] =>  0:00
      CLOCK: [2010-12-29 mer 20:35]--[2010-12-29 mer 20:44] =>  0:09
@@ -839,24 +842,12 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - If we create manually these file, it complains about an Ogre Error :
       - [X] Trying with limited extension .acc and .ref by example
 - [X] Should build Boost.Test for win32
-- [ ] Even if the Launcher run, we get an error
-Backtrace:
-=>0 0x7edc2db7 DbgBreakPoint+0x3() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/kernel32/../../include/winternl.h:1884] in kernel32 (0x0514ef38)
-  1 0x7edc2db2 DebugBreak+0xb() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/kernel32/debugger.c:372] in kernel32 (0x0514ef48)
-  2 0x7ebf0491 DoMessageBox+0xb6(lead="Runtime error!", message="abnormal program termination") [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/msvcrt/exit.c:126] in msvcrt (0x0514f7a8)
-  3 0x7ebf05e4 MSVCRT_abort+0x80() [/mnt/ramdisk/wine-1.1.40~winehq1/dlls/msvcrt/exit.c:154] in msvcrt (0x0514f7d8)
-  4 0x10012c90 in ois (+0x12c90) (0x0514f828)
-  5 0x10012cc3 in ois (+0x12cc3) (0x0514f848)
-  6 0x1000ca78 in ois (+0xca78) (0x0514f858)
-  7 0x1000181a in ois (+0x181a) (0x0514f8b8)
-  (... many dwarf2_parse_udt_type Unhandled Tag type 0x8 errors ...)
-  8 0x00424227 in rainbrurpg (+0x24227) (0x0514fae8)
-  9 0x0041bd64 in rainbrurpg (+0x1bd64) (0x0514fb68)
-  10 0x0041f37a in rainbrurpg (+0x1f37a) (0x0514fc78)
-  11 0x00418d0e WinMain+0x2ae(hInstance=0x400000, hPrevInstance=(nil), 
-     lpCmdLine="", nCmdShow=0x000a) [/home/carine/programmation/rainbrurpg
-     /src/client/main.cpp:158] in rainbrurpg (0x0514fdb8) 
-     We are in 'GameEngine::getSingleton().init()'
+- [X] We get a building error
+undefined reference to `RainbruRPG::OgreGui::Container..
+when building ogregui-tests
+- [ ] Even if the Launcher run, we get an error when opening Ogre window
+AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
+     - [ ] maincore/inutmanager.cpp:119
      - [ ] See why we don't have debug informations later in the backtrace
      	   see compilation flags (-g) in Makefile.am's other than client
 	   in config.log '-g -O2' is in CXXFLAGS
@@ -871,8 +862,8 @@ Backtrace:
 - [ ] exe file contains DLLs
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
-
-**** TODO Miscelaneous                                                     [33%]
+- [ ] Should provide GNU gettext for win32
+**** Miscelaneous                                                     [33%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16

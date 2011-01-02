@@ -1,5 +1,8 @@
 2011-01-02 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Makefile.am (ogregui_tests_SOURCES): Added 
+	$(cc_sources) to avoid undefined references.	
+	
 	* src/nb_unit_tests.pl: Started implementation
 	
 	* src/testHelpers/OgreMinimalSetupTest.cpp: basic unit tests 
