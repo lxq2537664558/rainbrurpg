@@ -801,7 +801,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   - [ ] Implement a fix
 **** Cross compilation to win32                                       [100%]
      :CLOCK:
-     CLOCK: [2011-01-02 dim 22:12]
+     CLOCK: [2011-01-02 dim 22:12]--[2011-01-02 dim 22:24] =>  0:12
      CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
      CLOCK: [2011-01-02 dim 20:47]--[2011-01-02 dim 21:08] =>  0:21
      CLOCK: [2010-12-31 ven 09:33]--[2010-12-31 ven 10:00] =>  0:27

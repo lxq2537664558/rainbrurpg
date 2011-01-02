@@ -29,6 +29,7 @@
 
 #include <logger.h>
 
+#include "../../config.h"
 
 RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
 
@@ -98,13 +99,19 @@ initialise( Ogre::RenderWindow *renderWindow ) {
     std::ostringstream windowHndStr;
     
     // Get window handle
-#if defined OIS_WIN32_PLATFORM
+    //#if defined OIS_WIN32_PLATFORM
+#ifdef WIN32
     renderWindow->getCustomAttribute( "HWND", &windowHnd );
     // Uncomment these two lines to allow users to switch keyboards via the language bar
     //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_FOREGROUND") ));
     //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_NONEXCLUSIVE") ));
 
-#elif defined OIS_LINUX_PLATFORM
+    LOGCATS("Window handle (win32 way)");
+    LOGCATI(windowHnd);
+    LOGCAT();
+
+    //#elif defined OIS_LINUX_PLATFORM
+#else
     /* v0.0.5-164
      *
      * Mouse reappears when replace GLXWINDOW by WINDOW as 
@@ -113,11 +120,15 @@ initialise( Ogre::RenderWindow *renderWindow ) {
      *
      */
     renderWindow->getCustomAttribute( "WINDOW", &windowHnd );
-#endif
+    LOGCATS("Window handle (GNU/Linux way)");
+    LOGCATI(windowHnd);
+    LOGCAT();
 
+#endif
+    
     LOGA(windowHnd, _("Cannot get non null window handle, events will "
 		      "not be captured correctly"));
-
+    
     // Fill parameter list
     windowHndStr << (unsigned int) windowHnd;
     paramList.insert(std::make_pair(std::string("WINDOW"), 

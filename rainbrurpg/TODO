@@ -114,8 +114,12 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-209 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
-- (14) nb_unit_tests.pl works
+* v0.0.5-210 (28 nov 2010 - ???) SLOC ??? UT ??? FT ??:??
+- (1) Some Win32 related improvments
+
+* v0.0.5-209 (28 nov 2010 - ???) SLOC ??? UT ??? FT 82:39
+- Fixed a win32 building error in ogreGui unit tests
+- nb_unit_tests.pl works
 - Started nb_uni_tests.pl
 - Implemented OgreMinimalSetupTest
 - Updated regtest.html with a new table

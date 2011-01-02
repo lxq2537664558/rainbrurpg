@@ -29,12 +29,19 @@
 
 using namespace RainbruRPG;
 
+// Define a configuration directory according to the platform
+#ifdef WIN32
+#  define CONFIG_DIR "./"
+#else
+#  define CONFIG_DIR "../../"
+#endif
+
 OgreMinimalSetup* oms;
 
 OgreGui::FontManager* setup()
 {
   oms = new OgreMinimalSetup();
-  oms->setupOgre("../../");
+  oms->setupOgre(CONFIG_DIR);
   return &OgreGui::FontManager::getSingleton();
 }
 

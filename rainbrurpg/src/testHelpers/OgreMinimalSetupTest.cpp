@@ -26,6 +26,13 @@
 
 #include <boost/test/unit_test.hpp>
 
+// Define a configuration directory according to the platform
+#ifdef WIN32
+#  define CONFIG_DIR "./"
+#else
+#  define CONFIG_DIR "../../"
+#endif
+
 OgreMinimalSetup* oms;
 
 void setup()
@@ -57,7 +64,7 @@ BOOST_AUTO_TEST_CASE( test_setup_ogre_correct_config )
 {
   setup();
   BOOST_CHECK( oms );
-  oms->setupOgre("../../");
-  //  oms->teardownOgre();
+  oms->setupOgre(CONFIG_DIR);
+  oms->teardownOgre();
   teardown();
 }

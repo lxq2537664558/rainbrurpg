@@ -104,10 +104,11 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 # do not depend on RB_OPTION_TESTS_FLAGS
 # Because it works when cross-compiling
   AM_COLOR_TESTS=no
-  bin_PROGRAMS=ogregui-tests
+  bin_PROGRAMS=rainbrurpg-tests-ogregui
   TESTS=ogregui-tests
 
-  ogregui_tests_CPPFLAGS = -I$(top_srcdir)/src/common/ 			\
+  rainbrurpg_tests_ogregui_CPPFLAGS = 			\
+	   -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
 	   -I$(top_srcdir)/src/testHelpers/		\
@@ -117,7 +118,7 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 	   $(OIS_CFLAGS)				\
 	   $(CPPUNIT_CFLAGS)
 
-ogregui_tests_LDADD = \
+rainbrurpg_tests_ogregui_LDADD = \
 	$(RPG_LIB_ADD)				\
 	-L$(top_srcdir)/src/common/.libs		\
 	-lrainbrurpg-common 			\
@@ -128,8 +129,9 @@ ogregui_tests_LDADD = \
 	-lboost_unit_test_framework				\
 	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
 
-ogregui_tests_SOURCES=main-tests.cpp			\
-	     	      FontManagerTest.cpp
+rainbrurpg_tests_ogregui_SOURCES=main-tests.cpp			\
+	     	      FontManagerTest.cpp		\
+		      $(cc_sources)
 
 
 dll:
