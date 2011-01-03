@@ -35,27 +35,27 @@ To know how many Boost.Test based tests can be launched, please uses
      </tr>
      
 <!-- Add here a version when it is finished (when switching to Ver++) -->
-     <tr class="regTest1">
+     <tr class="regTest2">
        <td>v0.0.5-209</td>
-       <td>18 dec 2010</td>                       <!-- Date -->
-       <td align="right">42&nbsp;784</td>         <!-- SLOC -->
+       <td>02 jan 2011</td>                       <!-- Date -->
+       <td align="right">42&nbsp;910</td>         <!-- SLOC -->
        <td align="right">13</td>                  <!-- Console count -->
        <td>253&nbsp;<font color="red">fail</font></td >   <!-- CppUnit unit tests -->
        <td>12&nbsp;<font color="green">success</font></td>     <!-- Boost.Test unit tests -->
        <td>OK</td>                                <!-- Linux -->
-       <td><font color="red">No</font></td>       <!-- Win32 -->
+       <td><font color="red">No</font>&nbsp;
+       <A NAME="UpNote013" HREF="#Note013"><sup>13</sup></A></td>       <!-- Win32 -->
        <td>-</td>                                 <!-- Mem on win32 -->
        <td>2&nbsp;171</td>                        <!-- Doc pages -->
-       <td>458</td>                               <!-- ChangeLog lines -->
+       <td>496/10&nbsp;
+	 <A NAME="UpNote014" HREF="#Note014"><sup>14</sup></A></td></td> <!-- ChangeLog lines -->
        <td>417</td>                               <!-- Number of PO msg -->
        <td><font color="red">Failed</font></td>      <!-- Unit tests result -->
      </tr>
 
    </table>
 
-
-<!-- Old-style table -->
-
+   <!-- Old-style table -->
    <table width=100% border="1" cellspacing ="0" 
           cellpadding ="0">
      <tr bgcolor="#00CC99">
@@ -981,8 +981,18 @@ To know how many Boost.Test based tests can be launched, please uses
    <A NAME="Note012"></A>12. Actually, the launcher correctly popups. However,
      <code>wine</code> now complains about something else.
      <A HREF="#UpNote012">Up</a><br>
+
+   <A NAME="Note013"></A>13. I know what's wrong with win32 :
+     <code>maincore/InputManager</code> cannot correctly get the D3D9 window's handle
+     and give it to OIS. An assertion abort the client execution before blocking all
+     inputs.
+     <A HREF="#UpNote013">Up</a><br>
+
+   <A NAME="Note014"></A>14. These numbers show ChangeLog file length both for 2010 (496)
+     and for 2011 (10).
+     <A HREF="#UpNote014">Up</a><br>
 <hr>
 
-<!-- hhmts start -->Last modified: Sun Jan  2 18:08:29 CET 2011 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Mon Jan  3 11:19:26 CET 2011 <!-- hhmts end -->
 </body>
 </html>

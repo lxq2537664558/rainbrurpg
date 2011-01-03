@@ -862,8 +862,13 @@ AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not b
 - [ ] exe file contains DLLs
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
+<<<<<<< ROADMAP
+
+**** TODO Miscelaneous                                                     [37%]
+=======
 - [ ] Should provide GNU gettext for win32
 **** Miscelaneous                                                     [33%]
+>>>>>>> 1.58
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
@@ -871,7 +876,7 @@ AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not b
      :END:
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [X] Should add a configuration summary at the end of configure
-- [ ] src/nb_unit_tests.pl should work
+- [X] src/nb_unit_tests.pl should work
 - [ ] common/version.cpp should print option summary
 - [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
