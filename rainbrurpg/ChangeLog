@@ -1,3 +1,14 @@
+2011-01-03 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/Makefile.am (SUBDIRS): testHelpers do not depends on
+	RB_OPTION_TESTS_FLAGS anymore.
+	
+	* src/maincore/inputmanager.cpp (initialise): Try to get
+	D3DX9 window handle.
+	
+	* acinclude.m4 (RB_CHECK_OGREMAIN): Added include flags for
+	d3dx9.h.
+
 2011-01-02 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Makefile.am (ogregui_tests_SOURCES): Added 

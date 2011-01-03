@@ -801,6 +801,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   - [ ] Implement a fix
 **** Cross compilation to win32                                       [100%]
      :CLOCK:
+     CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
      CLOCK: [2011-01-02 dim 22:12]--[2011-01-02 dim 22:24] =>  0:12
      CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
      CLOCK: [2011-01-02 dim 20:47]--[2011-01-02 dim 21:08] =>  0:21
@@ -809,7 +810,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-12-29 mer 20:35]--[2010-12-29 mer 20:44] =>  0:09
      CLOCK: [2010-12-29 mer 19:03]--[2010-12-29 mer 19:17] =>  0:14
      CLOCK: [2010-12-28 mar 22:17]--[2010-12-28 mar 22:30] =>  0:13
-     CLOCK: [2010-12-16 jeu 15:32]
      CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
      CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
      CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
@@ -818,7 +818,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
      CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
      :END:
-
 - [X] Test created executable (164Mo)
       Unhandled page fault
 - [X] Trying cross-compilation : Works
@@ -845,30 +844,21 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] We get a building error
 undefined reference to `RainbruRPG::OgreGui::Container..
 when building ogregui-tests
-- [ ] Even if the Launcher run, we get an error when opening Ogre window
+- [X] Even if the Launcher run, we get an error when opening Ogre window
 AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
-     - [ ] maincore/inutmanager.cpp:119
-     - [ ] See why we don't have debug informations later in the backtrace
-     	   see compilation flags (-g) in Makefile.am's other than client
-	   in config.log '-g -O2' is in CXXFLAGS
-	   http://wiki.wxwidgets.org/Autoconf shows to use <canical_name>_CXXFLAGS
-	   also see AM_CXXFLAGS
+     - [X] maincore/inutmanager.cpp:119
 - [ ] Should read its config file (plugins.cfg) in execution directory
       and use RenderSystem_Direct3D9.dll
       - [ ] create a plugins-win32.cfg
       - [ ] change use in client/main.cpp with conditionnal compilation
 - [ ] GlobalURI + loadRessources for Win32.
+      Ogre cannot find media/packs/OgreCore.zip
 - [ ] Should build with debugging symbols      
 - [ ] exe file contains DLLs
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
-<<<<<<< ROADMAP
-
-**** TODO Miscelaneous                                                     [37%]
-=======
 - [ ] Should provide GNU gettext for win32
-**** Miscelaneous                                                     [33%]
->>>>>>> 1.58
+**** Miscelaneous                                                     [37%]
      :CLOCK:
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16

@@ -31,6 +31,10 @@
 
 #include "../../config.h"
 
+#ifdef WIN32
+#  include <OgreD3D9RenderWindow.h>
+#endif // WIN32
+
 RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
 
 /** The default constructor
@@ -102,16 +106,27 @@ initialise( Ogre::RenderWindow *renderWindow ) {
     //#if defined OIS_WIN32_PLATFORM
 #ifdef WIN32
     renderWindow->getCustomAttribute( "HWND", &windowHnd );
+
+    if (!windowHnd){
+      windowHnd = (size_t)((Ogre::D3D9RenderWindow*)renderWindow)
+	->getWindowHandle();
+      LOGCATS("Window handle (DXD9 win32 way)");
+      LOGCATI(windowHnd);
+      LOGCAT();
+    }
+    else{
+      LOGCATS("Window handle (win32 way)");
+      LOGCATI(windowHnd);
+      LOGCAT();
+    }
+
     // Uncomment these two lines to allow users to switch keyboards via the language bar
     //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_FOREGROUND") ));
     //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_NONEXCLUSIVE") ));
 
-    LOGCATS("Window handle (win32 way)");
-    LOGCATI(windowHnd);
-    LOGCAT();
 
     //#elif defined OIS_LINUX_PLATFORM
-#else
+#else // WIN32
     /* v0.0.5-164
      *
      * Mouse reappears when replace GLXWINDOW by WINDOW as 
@@ -124,7 +139,7 @@ initialise( Ogre::RenderWindow *renderWindow ) {
     LOGCATI(windowHnd);
     LOGCAT();
 
-#endif
+#endif // WIN32
     
     LOGA(windowHnd, _("Cannot get non null window handle, events will "
 		      "not be captured correctly"));

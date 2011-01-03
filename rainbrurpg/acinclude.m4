@@ -93,7 +93,10 @@ AC_DEFUN([RB_CHECK_OGREMAIN],
   if test $rb_cross_compil_host == "win32"
   then	
     echo "Adding OGRE flags for "mingw32msvc""
-    CFLAGS="$CFLAGS -I$rb_cross_compil_prefix/include/OGRE"
+    OGRE_CFLAGS="$OGRE_CFLAGS -I$rb_cross_compil_prefix/include/OGRE"
+    dnl A hack for d3dx9.h header
+    OGRE_CFLAGS="$OGRE_CFLAGS -I/usr/include/wine/windows/"
+
     LDFLAGS="$LDFLAGS -lOgreMain$DLL_EXT -lfreeimage$DLL_EXT"
     echo "Adding zzip flags for "mingw32msvc""
     LDFLAGS="$LDFLAGS -lzzip$DLL_EXT $FREETYPE_LIBS"
