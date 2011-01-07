@@ -801,6 +801,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	   - [ ] Implement a fix
 **** Cross compilation to win32                                       [100%]
      :CLOCK:
+     CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
      CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
      CLOCK: [2011-01-02 dim 22:12]--[2011-01-02 dim 22:24] =>  0:12
      CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
@@ -853,8 +854,12 @@ AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not b
       - [ ] change use in client/main.cpp with conditionnal compilation
 - [ ] GlobalURI + loadRessources for Win32.
       Ogre cannot find media/packs/OgreCore.zip
+- [ ] Ogre seems to create a segfault when opening zip ressources
+      media/packs/OgreCore.zip
+      if unzipped, it works
 - [ ] Should build with debugging symbols      
 - [ ] exe file contains DLLs
+      The building command-line add libraries as .a
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
