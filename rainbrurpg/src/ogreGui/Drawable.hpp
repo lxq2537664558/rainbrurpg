@@ -109,6 +109,8 @@ namespace RainbruRPG{
       void loadSkinnableTexture(const std::string&, const std::string&)
 	throw(TextureNotFoundException,SkinNotFoundException);
 
+      void debugAbsolute(const std::string&);
+
     protected:
       void setSkinName(const std::string&);
 

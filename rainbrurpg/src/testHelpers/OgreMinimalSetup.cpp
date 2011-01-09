@@ -32,14 +32,15 @@
 
 using namespace std;
 
-OgreMinimalSetup::OgreMinimalSetup()
+OgreMinimalSetup::OgreMinimalSetup():
+  mRenderWindow(0)
 {
 
 }
 
 OgreMinimalSetup::~OgreMinimalSetup()
 {
-
+  mRenderWindow=0;
 }
 
 /** Setup a minimal ogre renderer
@@ -76,7 +77,8 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
     Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
-    Ogre::Root::getSingleton().getRenderSystem()->createRenderWindow("a", 20, 20, false);
+    mRenderWindow = Ogre::Root::getSingleton().getRenderSystem()
+      ->createRenderWindow("a", 20, 20, false);
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
   }
   catch(Ogre::Exception e){
@@ -114,4 +116,9 @@ bool OgreMinimalSetup::dirExists(const std::string& vDir)
   }
   
   return ret;
+}
+
+Ogre::RenderWindow* OgreMinimalSetup::getRenderWindow()
+{
+  return mRenderWindow;
 }

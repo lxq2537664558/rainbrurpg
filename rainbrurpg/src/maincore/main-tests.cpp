@@ -20,42 +20,10 @@
  *
  */
 
-#ifndef CONTAINER_TEST_H
-#define CONTAINER_TEST_H
+// A unit-test test using Boost.Test
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/portability/Stream.h>
+#include <boost/test/included/unit_test.hpp>
 
-#include <Container.hpp>
+/* Nothing here
 
-using namespace RainbruRPG::OgreGui;
-
-/** A test case for ogreGui's Drawable
-  *
-  */
-class ContainerTest : public CPPUNIT_NS::TestFixture 
-{
-  /// Start the ContainerTest
-  CPPUNIT_TEST_SUITE( ContainerTest );
-
-  CPPUNIT_TEST( testEmpty );         //!< Test an empty container
-  CPPUNIT_TEST( testTrueFocusable ); //!< Test an container with a focusable
-
-  /// The CppUnit test end macro
-  CPPUNIT_TEST_SUITE_END();
-
-protected:
-  /** An instance of the tested class
-    *
-    */
-  Container* m_instance;
-  
-public:
-  void setUp();
-  void tearDown();
-
-  void testEmpty();
-  void testTrueFocusable();
-};
-
-#endif // CONTAINER_TEST_H
+*/

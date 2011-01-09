@@ -29,13 +29,17 @@
 
 #include <logger.h>
 
+#include "WindowHandle.hpp"
 #include "../../config.h"
+#include "NullWindowHandleException.hpp"
 
 #ifdef WIN32
 #  include <OgreD3D9RenderWindow.h>
 #endif // WIN32
 
 RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
+
+using namespace RainbruRPG::Exception;
 
 /** The default constructor
   *
@@ -90,6 +94,7 @@ RainbruRPG::Core::InputManager::~InputManager( void ) {
   */
 void RainbruRPG::Core::InputManager::
 initialise( Ogre::RenderWindow *renderWindow ) {
+  size_t windowHnd = 0;
 
   mMouse       = NULL;
   mKeyboard    = NULL;
@@ -99,51 +104,17 @@ initialise( Ogre::RenderWindow *renderWindow ) {
   if( !mInputSystem ) {
     // Setup basic variables
     OIS::ParamList paramList;    
-    size_t windowHnd = 0;
     std::ostringstream windowHndStr;
     
-    // Get window handle
-    //#if defined OIS_WIN32_PLATFORM
-#ifdef WIN32
-    renderWindow->getCustomAttribute( "HWND", &windowHnd );
-
-    if (!windowHnd){
-      windowHnd = (size_t)((Ogre::D3D9RenderWindow*)renderWindow)
-	->getWindowHandle();
-      LOGCATS("Window handle (DXD9 win32 way)");
-      LOGCATI(windowHnd);
-      LOGCAT();
+    try{
+      // Get window handle
+      windowHnd=WindowHandle::get(renderWindow);
     }
-    else{
-      LOGCATS("Window handle (win32 way)");
-      LOGCATI(windowHnd);
-      LOGCAT();
+    catch (NullWindowHandleException e){
+      LOGE(e.what());
+      exit(1);
     }
 
-    // Uncomment these two lines to allow users to switch keyboards via the language bar
-    //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_FOREGROUND") ));
-    //paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_NONEXCLUSIVE") ));
-
-
-    //#elif defined OIS_LINUX_PLATFORM
-#else // WIN32
-    /* v0.0.5-164
-     *
-     * Mouse reappears when replace GLXWINDOW by WINDOW as 
-     * custom attribute string identifier. To provide error
-     * detection, an assertion was added on windowHnd.
-     *
-     */
-    renderWindow->getCustomAttribute( "WINDOW", &windowHnd );
-    LOGCATS("Window handle (GNU/Linux way)");
-    LOGCATI(windowHnd);
-    LOGCAT();
-
-#endif // WIN32
-    
-    LOGA(windowHnd, _("Cannot get non null window handle, events will "
-		      "not be captured correctly"));
-    
     // Fill parameter list
     windowHndStr << (unsigned int) windowHnd;
     paramList.insert(std::make_pair(std::string("WINDOW"), 

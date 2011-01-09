@@ -198,10 +198,11 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
-  OgreGui::Window* w = new OgreGui::Window(mContainer, "aze", 10, 20, 100, 100);
+  OgreGui::Window* w = new OgreGui::Window(mContainer, "aze", 10, 20, 600, 300);
   Label* l = new Label(w , 15, 25, 55, 95, "A");
   w->push_back(l);
   mContainer->push_back(w);
+  mContainer->setDirty(true);
 
   /*
   BetaGUI::GUI* mGUI = &GUI::getSingleton();

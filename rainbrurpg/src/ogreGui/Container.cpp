@@ -159,4 +159,15 @@ compute(int vParentX, int vParentY, const Ogre::Rectangle& vParentScissor){
   for (iter = mList.begin(); iter != mList.end(); iter++){
     (*iter)->compute(mAbsolute.left, mAbsolute.top, mScissor);
   }
+  setDirty(false);
+}
+
+/** Adds a widget to the end of the list
+  *
+  * \param vWidget The widget to be added
+  *
+  */
+void RainbruRPG::OgreGui::Container::push_back(Widget* vWidget){
+  WidgetList::push_back(vWidget);
+  vWidget->setDirty(true);
 }

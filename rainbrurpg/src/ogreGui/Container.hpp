@@ -63,6 +63,8 @@ namespace RainbruRPG{
       Container(Widget*, const string&, int, int, int, int);
       virtual ~Container();
 
+      virtual void push_back(Widget*);
+
       virtual bool keyPressed(const OIS::KeyEvent&);
       virtual bool keyReleased(const OIS::KeyEvent&);
 

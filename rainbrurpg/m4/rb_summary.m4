@@ -27,7 +27,7 @@ echo "------------------------------------------------------------------------"
 echo
 echo "Extra modules:"
 echo "  Server.......................${build_server}"
-echo "  Unit tests...................${build_tests}"
+echo "  Individual tests.............${build_tests}"
 echo "  Editor.......................${build_editor}"
 echo "  Tools........................${build_tools}"
 echo "  Examples.....................${build_examples}"

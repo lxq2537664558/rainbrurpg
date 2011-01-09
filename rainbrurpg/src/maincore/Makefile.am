@@ -41,7 +41,10 @@ h_sources=dumpogreobject.h		\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  ogreimport.h			\
-	  keyboardnavigation.h
+	  keyboardnavigation.h		\
+	  \
+	  WindowHandle.hpp		\
+	  NullWindowHandleException.hpp
 
 cc_sources=dumpogreobject.cpp		\
 	  gameengine.cpp		\
@@ -54,7 +57,10 @@ cc_sources=dumpogreobject.cpp		\
 	  gslocaltest.cpp		\
 	  environmentsetup.cpp		\
 	  highlightlistener.cpp		\
-	  keyboardnavigation.cpp
+	  keyboardnavigation.cpp	\
+	  \
+	  WindowHandle.cpp		\
+	  NullWindowHandleException.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
@@ -82,6 +88,38 @@ librainbrurpg_core_la_LDFLAGS=				\
   -Wl,--rpath -Wl,$(DESTDIR)$(libdir)       		\
   -L$(top_srcdir)/src/common/	 		       	\
   $(SIGC_LIBS)
+
+
+# Test target
+bin_PROGRAMS=rainbrurpg-tests-core
+TESTS=rainbrurpg-tests-core
+
+rainbrurpg_tests_core_CPPFLAGS = 			\
+	   -I$(top_srcdir)/src/common/ 			\
+	   -I$(top_srcdir)/src/ogreGui/			\
+	   -I$(top_srcdir)/src/maincore/		\
+	   -I$(top_srcdir)/src/testHelpers/		\
+	   $(FREETYPE_CFLAGS)				\
+	   $(GNET_CFLAGS) 				\
+	   $(OGRE_CFLAGS) 				\
+	   $(OIS_CFLAGS)				\
+	   $(CPPUNIT_CFLAGS)
+
+rainbrurpg_tests_core_LDADD = \
+	$(RPG_LIB_ADD)				\
+	-L$(top_srcdir)/src/common/.libs		\
+	-lrainbrurpg-common 			\
+	-L$(top_srcdir)/src/ogreGui/.libs	\
+	-lrainbrurpg-ogregui			\
+	-L$(top_srcdir)/src/maincore/.libs	\
+	-lrainbrurpg-core			\
+	-lboost_unit_test_framework				\
+	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
+
+rainbrurpg_tests_core_SOURCES=main-tests.cpp			\
+	     	      WindowHandleTest.cpp		\
+		      $(cc_sources)
+
 
 
 dll:

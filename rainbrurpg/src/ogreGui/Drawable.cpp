@@ -29,6 +29,7 @@
 #include "Drawable.hpp"
 
 #include <cstdlib> // for NULL
+#include <sstream>
 #include <logger.h>
 
 #include <OgreTextureManager.h>
@@ -128,6 +129,7 @@ void RainbruRPG::OgreGui::Drawable::
 compute(int vParentX, int vParentY, const Ogre::Rectangle& vParentScissor){
   computeAbsolute(vParentX, vParentY);
   adjustScissor(vParentScissor);
+  setDirty(false);
 }
 
 /** Compute the absolute bounding box
@@ -280,14 +282,19 @@ loadSkinnableTexture(const std::string& vSkinName, const std::string& vTextureNa
   */
 void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
 {
-  LOGCATS("Drawable::draw() for object ");
-  LOGCATI((long int)(this));
-  LOGCAT();
-
   vBrush->setBlendMode(BBM_GLOBAL);
   vBrush->setTexturePtr(mTexture);
   vBrush->setScissorRectangle(mScissor);
   vBrush->setUvMap(0.0, 0.0, 1.0, 1.0);
   vBrush->drawRectangle(mAbsolute);
   vBrush->reset();
+}
+
+void RainbruRPG::OgreGui::Drawable::debugAbsolute(const std::string& vDebug)
+{
+  std::ostringstream oss;
+  oss << "Debugging '"<< vDebug << "' absolute rectangle" << endl;
+  oss << "  (" << mAbsolute.left << ", " << mAbsolute.top << "), ";
+  oss << "  (" << mAbsolute.right << ", " << mAbsolute.bottom << "), ";
+  LOGI(oss.str().c_str());
 }

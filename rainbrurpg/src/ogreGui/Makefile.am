@@ -103,11 +103,11 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 
 # do not depend on RB_OPTION_TESTS_FLAGS
 # Because it works when cross-compiling
-  AM_COLOR_TESTS=no
-  bin_PROGRAMS=rainbrurpg-tests-ogregui
-  TESTS=ogregui-tests
+AM_COLOR_TESTS=no
+bin_PROGRAMS=rainbrurpg-tests-ogregui
+TESTS=rainbrurpg-tests-ogregui
 
-  rainbrurpg_tests_ogregui_CPPFLAGS = 			\
+rainbrurpg_tests_ogregui_CPPFLAGS = 			\
 	   -I$(top_srcdir)/src/common/ 			\
 	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
@@ -120,19 +120,46 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 
 rainbrurpg_tests_ogregui_LDADD = \
 	$(RPG_LIB_ADD)				\
-	-L$(top_srcdir)/src/common/.libs		\
+	-L$(top_srcdir)/src/common/.libs	\
 	-lrainbrurpg-common 			\
 	-L$(top_srcdir)/src/ogreGui/.libs	\
 	-lrainbrurpg-ogregui			\
 	-L$(top_srcdir)/src/maincore/.libs	\
 	-lrainbrurpg-core			\
-	-lboost_unit_test_framework				\
+	-lboost_unit_test_framework		\
 	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
 
-rainbrurpg_tests_ogregui_SOURCES=main-tests.cpp			\
-	     	      FontManagerTest.cpp		\
-		      $(cc_sources)
+rainbrurpg_tests_ogregui_SOURCES= 		\
+	main-tests.cpp				\
+	ContainerTest.cpp			\
+	FontManagerTest.cpp			\
+	$(cc_sources)
 
+
+# Here start the individual tests
+#
+# Please make sure to define '<target>_CPPFLAGS = $(INDIVIDUALS_CPPFLAGS)' line
+# to avoid the 'Object <name> created both with libtool and without' 
+# automake complain
+if RB_OPTION_TESTS_FLAGS
+  # Pleas add the following to <target>_LDADD
+  INDIVIDUALS_LDADD= \
+	-lrainbrurpg-ogregui			\
+	-L$(top_srcdir)/src/common/.libs	\
+	-lrainbrurpg-common 			\
+	-L$(top_srcdir)/src/maincore/.libs	\
+	-lrainbrurpg-core			\
+	-lboost_unit_test_framework				\
+	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
+  INDIVIDUALS_CPPFLAGS= \
+	-I$(top_srcdir)/src/testHelpers/
+
+  # Here start individual tests definitions
+  bin_PROGRAMS+=individual-test-fontmanager
+  individual_test_fontmanager_SOURCES =main-tests.cpp FontManagerTest.cpp
+  individual_test_fontmanager_CPPFLAGS= $(INDIVIDUALS_CPPFLAGS)
+  individual_test_fontmanager_LDADD   = $(INDIVIDUALS_LDADD)
+endif
 
 dll:
 	source ../../create_dll.sh &&		\

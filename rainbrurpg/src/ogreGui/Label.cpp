@@ -92,13 +92,12 @@ void RainbruRPG::OgreGui::Label::draw(Brush* vBrush)
 {
   LOGI("Drawing Label");
   //  vBrush->debug("Before drawing text");
-  vBrush->setBlendMode(BBM_NONE);
+  vBrush->setBlendMode(BBM_GLOBAL);
   //  vBrush->setScissorRectangle(mScissor);
-  LOGCATS("mAbsolute = ");
-  LOGCATI(mAbsolute.left);
-  LOGCATS(", ");
-  LOGCATI(mAbsolute.right);
-  LOGCAT();
+  debugAbsolute("Label A");
+  getParent()->debugAbsolute("Parent of Label A");
+  vBrush->begin();
   vBrush->drawText(mTextSettings, mCaption, mAbsolute, mWordwrap);
+  //  vBrush->debug("Label::draw");
   vBrush->reset();
 }

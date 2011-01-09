@@ -1,3 +1,4 @@
+
 /*
  *  Copyright 2006-2011 Jerome PASQUIER
  * 
@@ -20,11 +21,17 @@
  *
  */
 
-#ifndef _OGRE_MINIMAL_SETUP_HPP_
-#define _OGRE_MINIMAL_SETUP_HPP_
+#include "WindowHandle.hpp"
+#include "NullWindowHandleException.hpp"
 
-#include <OgreLogManager.h>
-#include <OgreRenderWindow.h>
+#include <OgreMinimalSetup.hpp>
+
+#define BOOST_TEST_MODULE WindowHandleTest
+
+#include <boost/test/unit_test.hpp>
+
+using namespace RainbruRPG::Core;
+using namespace RainbruRPG::Exception;
 
 // Define a configuration directory according to the platform
 #ifdef WIN32
@@ -33,36 +40,33 @@
 #  define CONFIG_DIR "../../"
 #endif
 
-class SilentLogListener:public Ogre::LogListener{
-  void messageLogged(const Ogre::String& message, Ogre::LogMessageLevel lml, 
-		     bool maskDebug, const Ogre::String& logName){
-    switch (lml){
-    case Ogre::LML_NORMAL:
-      break;
-    case Ogre::LML_CRITICAL:
-      break;
-    case Ogre::LML_TRIVIAL:
-      break;
-    }
-  }
-};
+OgreMinimalSetup* oms;
 
-/// Warning: using this class need X11 to run tests
-class OgreMinimalSetup{
-public:
-  OgreMinimalSetup();
-  ~OgreMinimalSetup();
+void setup()
+{
+  oms = new OgreMinimalSetup();
+  oms->setupOgre(CONFIG_DIR);
+}
 
-  void setupOgre(const Ogre::String& base_dir=CONFIG_DIR);
-  void teardownOgre();
+void teardown()
+{
+  oms->teardownOgre();
+  delete oms;
+}
 
-  Ogre::RenderWindow* getRenderWindow();
+BOOST_AUTO_TEST_CASE( test_null_render_window )
+{
+  // Need an initialization of Ogre because uses Ogre::Root
+  setup();
+  BOOST_CHECK_THROW(WindowHandle::get(NULL), NullWindowHandleException);
+  teardown();
+}
 
-protected:
-  bool dirExists(const std::string&);
-
-  SilentLogListener* mListener;
-  Ogre::RenderWindow* mRenderWindow;
-};
-
-#endif // !_OGRE_MINIMAL_SETUP_HPP_
+BOOST_AUTO_TEST_CASE( test_non_null_handle )
+{
+  // Need an initialization of Ogre because uses Ogre::Root
+  setup();
+  size_t winHnd = WindowHandle::get(oms->getRenderWindow());
+  BOOST_CHECK(winHnd != 0);
+  teardown();
+}

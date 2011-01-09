@@ -30,7 +30,6 @@
   *
   */
 
-
 #ifndef InputManager_H
 #define InputManager_H
 

@@ -1,3 +1,27 @@
+2011-01-08 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Makefile.am: individual-test-fontmanager target created.
+	
+2011-01-08 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Container.cpp (push_back): add a child set
+	dirty flag to true.
+
+	* src/ogreGui/ContainerTest.cpp: ported from CppUnit to
+	Boost.Test.
+	
+	* src/maincore/WindowHandleTest.cpp: implemented.
+	* src/testHelpers/OgreMinimalSetup (getRenderWindow) implemented.
+	
+	* src/maincore/WindowHandle.cpp (get): throws some 
+	NullWindowHandleException.
+	
+	* src/maincore/NullWindowHandleException: header and implementation 
+	added.
+	
+	* src/maincore/inputmanager.cpp (initialise): Now uses WindowHandle.
+	* src/maincore/WindowHandle: header and implementation added.
+
 2011-01-03 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/Makefile.am (SUBDIRS): testHelpers do not depends on

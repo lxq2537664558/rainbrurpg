@@ -23,25 +23,16 @@
 #include <FontManager.hpp>
 #include <OgreMinimalSetup.hpp>
 
-#define BOOST_TEST_MODULE FontManagerTest
-
 #include <boost/test/unit_test.hpp>
 
 using namespace RainbruRPG;
-
-// Define a configuration directory according to the platform
-#ifdef WIN32
-#  define CONFIG_DIR "./"
-#else
-#  define CONFIG_DIR "../../"
-#endif
 
 OgreMinimalSetup* oms;
 
 OgreGui::FontManager* setup()
 {
   oms = new OgreMinimalSetup();
-  oms->setupOgre(CONFIG_DIR);
+  oms->setupOgre();
   return &OgreGui::FontManager::getSingleton();
 }
 

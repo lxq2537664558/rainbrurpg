@@ -27,7 +27,6 @@ INCLUDES = -I$(top_srcdir)/src/common/ 			\
 ogregui2_tests_SOURCES = main.cpp			\
 			 \
 			 BrushTest.cpp			\
-			 ContainerTest.cpp		\
 			 FocusableTest.cpp		\
 			 FontManagerTest.cpp		\
 			 DrawableTest.cpp		\

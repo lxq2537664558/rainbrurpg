@@ -68,3 +68,12 @@ BOOST_AUTO_TEST_CASE( test_setup_ogre_correct_config )
   oms->teardownOgre();
   teardown();
 }
+
+BOOST_AUTO_TEST_CASE( test_setup_ogre_not_null_render_window )
+{
+  setup();
+  oms->setupOgre(CONFIG_DIR);
+  BOOST_CHECK( oms->getRenderWindow() != 0 );
+  oms->teardownOgre();
+  teardown();
+}

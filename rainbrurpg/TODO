@@ -115,8 +115,16 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-210 (02 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (2) InputManager correctly get DXD9 window's handle
-- (1) Some Win32 related improvments
+- (10) individual-test-fontmanager target created
+- Add a child to a container set its dirty flag to true
+- ContainerTest ported to Boost.Unit
+- WindowHandleTest implemented
+- OgreMinimalSetup::getRenderWindow() implemented
+- WindowHandle throws some NullWindowHandleException
+- NullWindowHandleException implemented
+- Implemented maincore/WindowHandle
+- InputManager correctly get DXD9 window's handle
+- Some Win32 related improvments
 
 * v0.0.5-209 (28 nov 2010 - 02 jan 2011) SLOC 42,910 UT 265 FT 82:39
 - Fixed a win32 building error in ogreGui unit tests

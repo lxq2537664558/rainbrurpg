@@ -406,8 +406,9 @@ dnl
 AC_DEFUN([RB_OPTION_TESTS],
 [
   AC_ARG_ENABLE(tests, AC_HELP_STRING([--enable-tests],
-    [Build the RainbruRPG unit tests. It is recommended only for package
-	maintainers and curious users
+    [Build the RainbruRPG individual unit tests. It will create many
+	executables in each directory allowing us to pass it through
+	memory profiling tools. Do not use this option.
        (default=no)]),
     [build_tests=$enableval], 
     [build_tests=no])
