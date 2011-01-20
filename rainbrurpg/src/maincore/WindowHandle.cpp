@@ -31,6 +31,10 @@
 #include "NullWindowHandleException.hpp"
 #include <logger.h>
 
+#ifdef WIN32
+#  include <OgreD3D9RenderWindow.h>
+#endif
+
 using namespace RainbruRPG::Exception;
 
 /** Get a window handle for the given render window
