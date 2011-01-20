@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-210 (02 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (10) individual-test-fontmanager target created
+- (11) BrushTest port to Boost.Unit
+   as DrawableTest
+- individual-test-fontmanager target created
 - Add a child to a container set its dirty flag to true
 - ContainerTest ported to Boost.Unit
 - WindowHandleTest implemented

@@ -29,14 +29,14 @@ using namespace RainbruRPG;
 
 OgreMinimalSetup* oms;
 
-OgreGui::FontManager* setup()
+OgreGui::FontManager* setup_FontManager()
 {
   oms = new OgreMinimalSetup();
   oms->setupOgre();
   return &OgreGui::FontManager::getSingleton();
 }
 
-void teardown(OgreGui::FontManager* vFm)
+void teardown_FontManager(OgreGui::FontManager* vFm)
 {
   oms->teardownOgre();
   delete oms;
@@ -44,18 +44,18 @@ void teardown(OgreGui::FontManager* vFm)
 
 BOOST_AUTO_TEST_CASE( test_load_font )
 {
-  OgreGui::FontManager* fm=setup();
+  OgreGui::FontManager* fm=setup_FontManager();
   RainbruRPG::OgreGui::Font* font = fm->loadFont("Iconiv2.ttf", 10);
   BOOST_CHECK( font );
-  teardown(fm);
+  teardown_FontManager(fm);
 }
 
 BOOST_AUTO_TEST_CASE( test_font_not_found )
 {
- OgreGui::FontManager* fm=setup();
+ OgreGui::FontManager* fm=setup_FontManager();
  RainbruRPG::OgreGui::Font* font=NULL;
  BOOST_CHECK_THROW( font = fm->loadFont("unexpected_font_name.ttf", 10),
 		    Ogre::FileNotFoundException);
  BOOST_CHECK( font==NULL );
- teardown(fm);
+ teardown_FontManager(fm);
 }

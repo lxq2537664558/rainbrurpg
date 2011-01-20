@@ -80,10 +80,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] See if OSI/Sourceforge are agree
 - [ ] See compatibility with EasyBMP/TinyXML
 
-**** TODO Make a better use of CppUnit (see libkics for example)      [0%]
-- [ ] autoregister test fixtures
-- [ ] no templates
-- [ ] Integrate it to make check
 *** v0.0.7
 **** OgreGui2 implementation and UnitTest                        [59%]
 ***** Fixing text drawing
@@ -839,9 +835,13 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] should contain main_cpp() 
 		  It may be in FontManagerTest.cpp
       - [X] Pass it through valgrind
-**** TODO Fix some memory-related issues                              [33%]
+**** TODO Fix some memory-related issues                              [25%]
+     :CLOCK:
+     CLOCK: [2011-01-20 jeu. 15:00]--[2011-01-20 jeu. 15:22] =>  0:22
+     CLOCK: [2011-01-20 jeu. 14:29]--[2011-01-20 jeu. 14:49] =>  0:20
+     CLOCK: [2011-01-16 dim. 12:16]--[2011-01-16 dim. 12:26] =>  0:10
      CLOCK: [2011-01-09 dim. 15:40]--[2011-01-09 dim. 15:57] =>  0:17
-     Export the environment variable GLIBCXX_FORCE_NEW with valgrind
+     :END:
 - [X] configure --enable-tests used for individual tests
       Executable names are 'invidual-<lib_name>-<class_name>'
       - [X] Change the configure script description
@@ -849,13 +849,28 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Fix the CONFIG problem for OgreMinimalSetup
       Must be repeated for all user files
       - [ ] To be tested
+- [ ] Port CppUnit tests to Boost.Test
+      - [-]  from ogreGui
+	     - [X] BrushTest
+	     - [X] DrawableTest
+	     - [ ] DrawableTestWithOgre 
+	     - [ ] FocusableTest
+	     - [ ] FontManagerTest (already done?)
+	     - [ ] SerializableTest
+	     - [ ] WidgetListTest
 - [ ] List possible spurious class and pass it through valgrind
       with individual tests
+      Export the environment variable GLIBCXX_FORCE_NEW with valgrind
       - [ ] in ogreGui/
+	    definitely lost: 60,685 bytes in 302 blocks
+	    still reachable: 39,683 bytes in 307 blocks
+	    - [ ] OgreMinimalSetup
 	    - [ ] FontManager
       - [ ] maincore
+	    definitely lost: 6,288 bytes in 16 blocks
+	    still reachable: 39,683 bytes in 307 blocks
 	    - [ ] GameEngine
-**** Cross compilation to win32                                       [100%]
+**** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
      CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
@@ -899,17 +914,17 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] Trying with limited extension .acc and .ref by example
 - [X] Should build Boost.Test for win32
 - [X] We get a building error
-undefined reference to `RainbruRPG::OgreGui::Container..
-when building ogregui-tests
+      undefined reference to `RainbruRPG::OgreGui::Container..
+      when building ogregui-tests
 - [X] Even if the Launcher run, we get an error when opening Ogre window
-AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
+      AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
      - [X] maincore/inutmanager.cpp:119
+- [X] GlobalURI + loadRessources for Win32.
+      Ogre cannot find media/packs/OgreCore.zip
 - [ ] Should read its config file (plugins.cfg) in execution directory
       and use RenderSystem_Direct3D9.dll
       - [ ] create a plugins-win32.cfg
       - [ ] change use in client/main.cpp with conditionnal compilation
-- [ ] GlobalURI + loadRessources for Win32.
-      Ogre cannot find media/packs/OgreCore.zip
 - [ ] Ogre seems to create a segfault when opening zip ressources
       media/packs/OgreCore.zip
       if unzipped, it works
@@ -939,4 +954,4 @@ AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not b
 - [ ] Explain CEGUI give up in an blog post
 - [ ] Change libtool versionning of OgreGui
 - [ ] File release sourceforge (zip+bz2+win32bin)
-      Should add all-src or win32-bin to the release names
+      - [ ] Should add all-src or win32-bin to the release names

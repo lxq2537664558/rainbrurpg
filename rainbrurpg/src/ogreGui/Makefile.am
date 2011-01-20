@@ -131,7 +131,10 @@ rainbrurpg_tests_ogregui_LDADD = \
 
 rainbrurpg_tests_ogregui_SOURCES= 		\
 	main-tests.cpp				\
+	\
+	BrushTest.cpp				\
 	ContainerTest.cpp			\
+	DrawableTest.cpp			\
 	FontManagerTest.cpp			\
 	$(cc_sources)
 

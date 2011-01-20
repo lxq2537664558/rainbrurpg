@@ -20,21 +20,26 @@
  *
  */
 
-#include "BrushTest.hpp"
+#include "Brush.hpp"
+#include <OgreMinimalSetup.hpp>
 
-// Registers the fixture to the registry
-CPPUNIT_TEST_SUITE_REGISTRATION( BrushTest );
-  
-/** Creates a new instance to test
-  *
-  */
-void BrushTest::setUp(){ 
-  //   this->m_instance = new Brush(NULL, RECT); 
+#include <boost/test/unit_test.hpp>
+
+using namespace RainbruRPG::OgreGui;
+
+Brush* setup_Brush()
+{
+
 }
-  
-/** Delete the current tested instance
- *
- */
-void BrushTest::tearDown(){ 
-  delete this->m_instance; 
+
+void teardown_Brush(Brush*)
+{
+
+}
+
+/// It is a dummy test only for memory management purpose
+BOOST_AUTO_TEST_CASE( test_bush_construct )
+{
+  Brush* instance = setup_Brush();
+  teardown_Brush(instance);
 }
