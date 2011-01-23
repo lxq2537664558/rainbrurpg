@@ -213,35 +213,6 @@
 
 /** \page reg_test Regression test
   *
-  * The \e line count is 
-  * generated using David A Wheeler's 'SLOCCount'. This value must be
-  * computed on RainbruRPG after a 'make distclean' command.
-  * Please note that before v0.0.5-199, this number count also generated
-  * files as sources was not is \c src/ directory.
-  *
-  * The \e mem column is the amount of memory used by the application on
-  * Win32 system with the OpenGL renderer. 
-  * 
-  * The \e sys is set to OK if the
-  * application can be run on the given OS. The compilation can be
-  * made on another system (cross-compilation).
-  *
-  * The column called \e cc represents the Console's Count command result
-  *
-  * The column called \e ut represents the number of unit test (made 
-  * with CppUnit).
-  *
-  * The column called \e ref is the number of pages of the Doxygen 
-  * documentation in pdf format. (not computed before build 157)
-  *
-  * The column called \e CL is the size of the ChangeLog in line number.
-  * It was not computed before build 183 because the ChangeLog was not 
-  * GNU coding standard compliant.
-  *
-  * The column called \e PoMsg is the number of ready-to-be-translated
-  * strings. There are listed in the \e po/RainbruRPG.po. It was not
-  * computed before build 191.
-  *
   * \htmlinclude regTest.html
   */
 

@@ -6,55 +6,96 @@
 </head>
 
 <body>
-
-To know how many Boost.Test based tests can be launched, please uses
-<em>src/nb_unit_tests.pl</em>.
-
 <!-- This file is included by Doxygen from doc/doc.h -->
 
-   <table width=100% border="1" cellspacing ="0" 
-          cellpadding ="0">
-     <tr bgcolor="#00CC99">
-       <th rowspan=2 width=100px>Ver</th>
-       <th rowspan=2 width=100px>Date</th>
-       <th rowspan=2>Lines</th>
-       <th rowspan=2>cc</th>
-       <th colspan=2>ut</th>
-       <th colspan=2>Sys</th>
-       <th rowspan=2>Mem</th>
-       <th rowspan=2>Ref</th>
-       <th rowspan=2 width=50px>CL</th>
-       <th rowspan=2 width=50px>PoMsg</th>
-       <th rowspan=2>Pass ?</th>
-     </tr>
-     <tr bgcolor="#00CC99">
-       <th>CppUnit</th>
-       <th>Boost.Test</th>
-       <th>Lin</th>
-       <th>Win</th>
-     </tr>
-     
+<p>Here is how are computed results :
+<DL>
+  <DT>Lines
+  <DD>The SLOC count is generated using David A Wheeler's 'SLOCCount'.
+    This value must be computed on the <em>src/</em> directory. Please note
+    that before v0.0.5-199, this number counted also generated files as
+    sources was not is <em>src/</em> directory.
+
+  <DT>cc
+  <DD>represents the Console's Count command result. Not computed since the
+    console is not accessible.
+
+  <DT>ut
+  <DD>represents the number of unit test (made with CppUnit and Boost.Test).
+    To know how many Boost.Test based tests can be launched, please uses
+    <em>src/nb_unit_tests.pl</em>.
+
+  <DT>vg
+  <DD>set to failed if valgrind reports possible memory leaks on unit tests for
+    the given library/directory.
+
+  <DT>Sys
+  <DD>set to OK if the application can be run on the given OS. The compilation
+    can be made on another system (cross-compilation).
+
+  <DT>PoMsg
+  <DD>the number of ready-to-be-translated strings. There are listed in the
+    <em>po/RainbruRPG.po</em>. It was not computed before build 191.
+
+  <DT>Pass?
+  <DD>The overall result of the non-regression tests.
+</DL>  
+<p>
+
+<table width=100% border="1" cellspacing ="0" 
+  cellpadding ="0">
+  <tr bgcolor="#00CC99">
+    <th rowspan=2 width=100px>Ver</th>
+    <th rowspan=2 width=100px>Date</th>
+    <th rowspan=2>Lines</th>
+    <th rowspan=2>cc</th>
+    <th colspan=2>ut</th>
+    <th colspan=2>vg</th>
+    <th colspan=2>Sys</th>
+    <th rowspan=2 width=50px>PoMsg</th>
+    <th rowspan=2>Pass ?</th>
+  </tr>
+  <tr bgcolor="#00CC99">
+    <th>CppUnit</th>
+    <th>Boost.Test</th>
+    <th>OgreGui</th>
+    <th>Core</th>
+    <th>Lin</th>
+    <th>Win</th>
+  </tr>
+
 <!-- Add here a version when it is finished (when switching to Ver++) -->
      <tr class="regTest2">
        <td>v0.0.5-209</td>
-       <td>02 jan 2011</td>                       <!-- Date -->
-       <td align="right">42&nbsp;910</td>         <!-- SLOC -->
-       <td align="right">13</td>                  <!-- Console count -->
-       <td>253&nbsp;<font color="red">fail</font></td >   <!-- CppUnit unit tests -->
-       <td>12&nbsp;<font color="green">success</font></td>     <!-- Boost.Test unit tests -->
-       <td>OK</td>                                <!-- Linux -->
+       <td>02 jan 2011</td>                               <!-- Date                  -->
+       <td align="right">42&nbsp;910</td>                 <!-- SLOC                  -->
+       <td align="right">13</td>                          <!-- Console count         -->
+       <td>253&nbsp;<font color="red">fail</font></td >   <!-- CppUnit unit tests    -->
+       <td>12&nbsp;<font color="green">success</font></td><!-- Boost.Test unit tests -->
+       <td><font color="red">fail</font></td >            <!-- vg OreGui             -->
+       <td><font color="red">fail</font></td >            <!-- vg Core               -->
+       <td>OK</td>                                        <!-- Linux                 -->
        <td><font color="red">No</font>&nbsp;
-       <A NAME="UpNote013" HREF="#Note013"><sup>13</sup></A></td>       <!-- Win32 -->
-       <td>-</td>                                 <!-- Mem on win32 -->
-       <td>2&nbsp;171</td>                        <!-- Doc pages -->
-       <td>496/10&nbsp;
-	 <A NAME="UpNote014" HREF="#Note014"><sup>14</sup></A></td></td> <!-- ChangeLog lines -->
-       <td>417</td>                               <!-- Number of PO msg -->
-       <td><font color="red">Failed</font></td>      <!-- Unit tests result -->
+	 <A NAME="UpNote013" HREF="#Note013">
+	 <sup>13</sup></A></td>                           <!-- Win32                 -->
+       <td>417</td>                                       <!-- Number of PO msg      -->
+       <td><font color="red">Failed</font></td>           <!-- Unit tests result     -->
      </tr>
-
    </table>
 
+
+
+   <p>The <em>mem</em> column is the amount of memory used by the application
+   on Win32 system with the OpenGL renderer.
+ 
+   <p>The column called <em>ref</em> is the number of pages of the Doxygen 
+   documentation in pdf format. (not computed before build 157)
+  
+   <p>The column called <em>CL</em> is the size of the ChangeLog in line number.
+   It was not computed before build 183 because the ChangeLog was not 
+   GNU coding standard compliant.
+   
+  
    <!-- Old-style table -->
    <table width=100% border="1" cellspacing ="0" 
           cellpadding ="0">
@@ -993,6 +1034,6 @@ To know how many Boost.Test based tests can be launched, please uses
      <A HREF="#UpNote014">Up</a><br>
 <hr>
 
-<!-- hhmts start -->Last modified: Mon Jan  3 11:19:26 CET 2011 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Jan 22 14:58:35 CET 2011 <!-- hhmts end -->
 </body>
 </html>

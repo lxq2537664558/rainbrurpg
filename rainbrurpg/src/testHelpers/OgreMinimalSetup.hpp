@@ -33,7 +33,9 @@
 #  define CONFIG_DIR "../../"
 #endif
 
+/** A quiet log listener for Ogre */
 class SilentLogListener:public Ogre::LogListener{
+  /** Does nothing with the log */
   void messageLogged(const Ogre::String& message, Ogre::LogMessageLevel lml, 
 		     bool maskDebug, const Ogre::String& logName){
     switch (lml){
@@ -60,9 +62,9 @@ public:
 
 protected:
   bool dirExists(const std::string&);
-
-  SilentLogListener* mListener;
-  Ogre::RenderWindow* mRenderWindow;
+  
+  SilentLogListener* mListener;      //!< The custom log listener
+  Ogre::RenderWindow* mRenderWindow; //!< The render window
 };
 
 #endif // !_OGRE_MINIMAL_SETUP_HPP_

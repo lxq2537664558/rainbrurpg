@@ -835,8 +835,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] should contain main_cpp() 
 		  It may be in FontManagerTest.cpp
       - [X] Pass it through valgrind
-**** TODO Fix some memory-related issues                              [25%]
+**** TODO Fix some memory-related issues                              [71%]
      :CLOCK:
+     CLOCK: [2011-01-23 dim. 11:13]--[2011-01-23 dim. 11:35] =>  0:22
+     CLOCK: [2011-01-22 sam. 17:03]--[2011-01-22 sam. 17:23] =>  0:20
+     CLOCK: [2011-01-22 sam. 14:58]--[2011-01-22 sam. 15:27] =>  0:29
+     CLOCK: [2011-01-22 sam. 13:47]--[2011-01-22 sam. 14:12] =>  0:25
+     CLOCK: [2011-01-22 sam. 12:08]--[2011-01-22 sam. 12:29] =>  0:21
+     CLOCK: [2011-01-22 sam. 11:40]--[2011-01-22 sam. 11:59] =>  0:19
      CLOCK: [2011-01-20 jeu. 15:00]--[2011-01-20 jeu. 15:22] =>  0:22
      CLOCK: [2011-01-20 jeu. 14:29]--[2011-01-20 jeu. 14:49] =>  0:20
      CLOCK: [2011-01-16 dim. 12:16]--[2011-01-16 dim. 12:26] =>  0:10
@@ -846,24 +852,28 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Executable names are 'invidual-<lib_name>-<class_name>'
       - [X] Change the configure script description
       - [X] Test it in ogreGui with FontManager
-- [ ] Fix the CONFIG problem for OgreMinimalSetup
+- [X] Fix the CONFIG problem for OgreMinimalSetup
       Must be repeated for all user files
-      - [ ] To be tested
-- [ ] Port CppUnit tests to Boost.Test
-      - [-]  from ogreGui
+      - [X] To be tested
+- [X] Update regTest.html table with valgrind results
+- [X] Add Boost.Test to DEPENCENCIES
+- [X] Port CppUnit tests to Boost.Test
+      - [X]  from ogreGui
 	     - [X] BrushTest
 	     - [X] DrawableTest
-	     - [ ] DrawableTestWithOgre 
-	     - [ ] FocusableTest
-	     - [ ] FontManagerTest (already done?)
-	     - [ ] SerializableTest
-	     - [ ] WidgetListTest
+	     - [X] DrawableTestWithOgre 
+	     - [X] FocusableTest
+	     - [X] FontManagerTest (already done?)
+	     - [X] SerializableTest
+	     - [X] WidgetListTest
+- [ ] Remove tests/ogreGui/ directory
 - [ ] List possible spurious class and pass it through valgrind
       with individual tests
       Export the environment variable GLIBCXX_FORCE_NEW with valgrind
       - [ ] in ogreGui/
-	    definitely lost: 60,685 bytes in 302 blocks
+	    definitely lost: 39,683 bytes in 307 blocks
 	    still reachable: 39,683 bytes in 307 blocks
+	    MODIFIED, please retry with valgrind
 	    - [ ] OgreMinimalSetup
 	    - [ ] FontManager
       - [ ] maincore
@@ -936,9 +946,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should provide GNU gettext for win32
 **** Miscelaneous                                                     [37%]
      :CLOCK:
+     CLOCK: [2011-01-23 dim. 16:22]--[2011-01-23 dim. 16:39] =>  0:17
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
      CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
-     CLOCK: [2010-02-17 mer 18:15]
      :END:
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [X] Should add a configuration summary at the end of configure

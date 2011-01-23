@@ -406,8 +406,9 @@ setCorners(int x1, int y1, int x2, int y2){
   *
   */
 void RainbruRPG::OgreGui::Brush::
-feedVectors(vector<Vector3>* vert, vector<Vector2>* uvs, 
-	    vector<ColourValue>* cols ){
+feedVectors(vector<Ogre::Vector3>* vert, vector<Vector2>* uvs, 
+	    vector<ColourValue>* cols )
+{
 
  vert->push_back(Vector3( finalRect.left , finalRect.top, Z_VALUE ));
  vert->push_back(Vector3( finalRect.right, finalRect.top, Z_VALUE ));

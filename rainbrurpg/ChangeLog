@@ -1,3 +1,13 @@
+2011-01-23 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/WidgetListTest: Ported from CppUnit to Boost.Test.
+
+2011-01-22 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/SerializableTest: Ported from CppUnit to Boost.Test.
+	* src/ogreGui/FocusableTest: Ported from CppUnit to Boost.Test.
+	* src/ogreGui/DrawableTestWithOgre: Ported from CppUnit to Boost.Test.
+
 2011-01-20 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/DrawableTest: Ported from CppUnit to Boost.Test.

@@ -290,6 +290,11 @@ void RainbruRPG::OgreGui::Drawable::draw(Brush* vBrush)
   vBrush->reset();
 }
 
+/** Ouput some info in logger to help deugging drawable
+  *
+  * \param vDebug A custom string added to the logger message
+  *
+  */
 void RainbruRPG::OgreGui::Drawable::debugAbsolute(const std::string& vDebug)
 {
   std::ostringstream oss;

@@ -217,6 +217,7 @@ namespace RainbruRPG {
       StaticImage* staticMenu;
 #endif // USE_DYNAMIC_MENU
 
+      /// A whole screen texture as background image
       TexturePtr mBackgroundTexture;
 
     };

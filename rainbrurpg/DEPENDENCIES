@@ -1,5 +1,12 @@
 The following package should be installed before RainbruRPG is installed:
 
+* Boost.Test 1.34
+  + Needed for unit tests
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
+
 * Freetype 9.18
   + Needed.
   + homepage:

@@ -38,6 +38,7 @@
   * \param vParent  The parent widget
   * \param vX1, vY1 The top-left position
   * \param vX2, vY2 The bottom-right position
+  * \param vCaption The text to be drawn
   *
   */
 RainbruRPG::OgreGui::Label::
@@ -80,6 +81,11 @@ bool RainbruRPG::OgreGui::Label::getWordwrap(void)const
   return mWordwrap;
 }
 
+/** Change the wordwrap property of this label
+  *
+  * \param vWordwrap A boolean value
+  *
+  */
 void RainbruRPG::OgreGui::Label::setWordwrap(bool vWordwrap)
 {
   mWordwrap = vWordwrap;
