@@ -20,11 +20,14 @@
 # This is a 'libtool convenience library' containing some helpers that can be
 # used in unit tests.
 
-noinst_LTLIBRARIES = libtesthelpers.la
+noinst_LTLIBRARIES = libtesthelpers.la 
 
 libtesthelpers_ladir = $(includedir)/testhelpers
-libtesthelpers_la_HEADERS = OgreMinimalSetup.hpp
-libtesthelpers_la_SOURCES = OgreMinimalSetup.cpp
+libtesthelpers_la_HEADERS = 	\
+  OgreMinimalSetup.hpp
+
+libtesthelpers_la_SOURCES =  	\
+  OgreMinimalSetup.cpp
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_COMMON_NAME)
 library_include_HEADERS = $(h_sources)
@@ -34,6 +37,13 @@ INCLUDES = -I$(top_srcdir)/src/common/		\
 	   $(CFLAGS)
 
 libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS)
+
+# Dummy render system
+pkg_LTLIBRARIES = RenderSystem_Dummy.la
+pkgdir=$(prefix)/lib/OGRE/
+RenderSystem_Dummy_la_SOURCES = DummyRenderSystem.cpp
+RenderSystem_Dummy_la_LDFLAGS = -module -avoid-version
+RenderSystem_Dummy_la_LIBTOOLFLAGS = --tag=disable-static
 
 # The executable created here is just used for memory checking using `valgrind`
 bin_PROGRAMS=ogreminimalsetup

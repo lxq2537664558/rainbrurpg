@@ -1,3 +1,7 @@
+2011-01-29 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/testHelpers/DummyRenderSystem: Started implementation.
+
 2011-01-23 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/WidgetListTest: Ported from CppUnit to Boost.Test.

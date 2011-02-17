@@ -114,10 +114,18 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-210 (02 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (14) Fixed some documentation warnings
+* v0.0.5-211 (28 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
+- (5) Reimplented empty DummyRenderSystem functions
+- RenderSystem_Dummy.so needs some pure virtual functions implemented
+- Get a build for RenderSystem_Dummy.so
+- DummyRenderSystem skeleton implementation
+- Added DummyRenderSystem to ROADMAP
+
+* v0.0.5-210 (02 jan 2011 - 28 jan 2011) SLOC 42,930 UT 261 FT 90:31
+- Improved Doxygen.in for faster documentation generation
+- Fixed some documentation warnings
    Drawable, Label
-- (13) Ported some unit tests to Boost.Test
+- Ported some unit tests to Boost.Test
    WidgetListTest
 - Ported some unit tests to Boost.Test
    DrawableTestWithOgre, FocusableTest, SerializableTest

@@ -880,6 +880,33 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    definitely lost: 6,288 bytes in 16 blocks
 	    still reachable: 39,683 bytes in 307 blocks
 	    - [ ] GameEngine
+**** TODO Create a DummyRenderSystem for Ogre
+     :CLOCK:
+     CLOCK: [2011-01-30 dim. 11:00]--[2011-01-30 dim. 11:20] =>  0:20
+     CLOCK: [2011-01-29 sam. 19:54]--[2011-01-29 sam. 20:34] =>  0:40
+     CLOCK: [2011-01-29 sam. 19:18]--[2011-01-29 sam. 19:46] =>  0:28
+     CLOCK: [2011-01-29 sam. 18:16]--[2011-01-29 sam. 18:39] =>  0:23
+     CLOCK: [2011-01-29 sam. 12:49]--[2011-01-29 sam. 13:11] =>  0:22
+     CLOCK: [2011-01-29 sam. 11:39]--[2011-01-29 sam. 11:51] =>  0:12
+     :END:
+     Not a fully working renderer, just a dummy one to
+     enable Ogre-based unit tests without X
+     - [X] in src/testHelpers/DummyRenderSystem.hpp/cpp
+     - [X] Should create a plugin called RenderSystem_Dummy.so
+     - [X] Name should be 'Dummy Render System'
+     - [X] OgreMinimalSetup must use it
+	   - [X] Test it with a main
+     - [X] To be implemented
+           - [X] Should implement the Ogre::Plugin interface
+	   - [X] The dllStartPlugin function
+	   - [X] Reimplement purely virtual functions
+     - [X] Fix Segfault
+	   - [X] Isolate functions that return NULL in cpp
+	   - [X] Try to return non-NULL value
+	   - [X] Maybe getting a NULL RenderSystemList
+     - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
+     - [ ] Maybe a DummyRenderWindow subclass ?
+     - [ ] Should test it memory leaks
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07

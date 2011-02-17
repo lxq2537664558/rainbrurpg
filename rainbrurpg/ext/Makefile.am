@@ -17,7 +17,7 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-# Simply create a 'libtool convenience library' because this code is note
+# Simply create a 'libtool convenience library' because this code is not
 # mine. It is later incorporated in the common/ library. Headers are
 # installed in the common directory
 

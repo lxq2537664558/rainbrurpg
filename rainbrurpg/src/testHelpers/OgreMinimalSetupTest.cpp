@@ -26,13 +26,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-// Define a configuration directory according to the platform
-#ifdef WIN32
-#  define CONFIG_DIR "./"
-#else
-#  define CONFIG_DIR "../../"
-#endif
-
 OgreMinimalSetup* oms;
 
 void setup()

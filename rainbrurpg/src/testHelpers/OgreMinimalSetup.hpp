@@ -26,6 +26,8 @@
 #include <OgreLogManager.h>
 #include <OgreRenderWindow.h>
 
+#include <OgreRoot.h>
+
 // Define a configuration directory according to the platform
 #ifdef WIN32
 #  define CONFIG_DIR "./"
@@ -62,6 +64,7 @@ public:
 
 protected:
   bool dirExists(const std::string&);
+  void debugRenderList(Ogre::RenderSystemList*);
   
   SilentLogListener* mListener;      //!< The custom log listener
   Ogre::RenderWindow* mRenderWindow; //!< The render window
