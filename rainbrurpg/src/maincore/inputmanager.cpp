@@ -37,6 +37,8 @@
 #  include <OgreD3D9RenderWindow.h>
 #endif // WIN32
 
+#include <OISPrereqs.h> // For the OIS devices enumeration (mouse keyb...)
+
 RainbruRPG::Core::InputManager *RainbruRPG::Core::InputManager::mInputManager;
 
 using namespace RainbruRPG::Exception;
@@ -124,36 +126,43 @@ initialise( Ogre::RenderWindow *renderWindow ) {
     mInputSystem = OIS::InputManager::createInputSystem( paramList );
 
     // If possible create a buffered keyboard
-    if( mInputSystem->numKeyBoards() > 0 ) {
-      mKeyboard = static_cast<OIS::Keyboard*>( mInputSystem->createInputObject( OIS::OISKeyboard, true ) );
-      mKeyboard->setEventCallback( this );
-    }
+    if( mInputSystem->getNumberOfDevices (OIS::OISKeyboard) > 0 ) 
+      {
+	mKeyboard = static_cast<OIS::Keyboard*>
+	  (mInputSystem->createInputObject( OIS::OISKeyboard, true ) );
+	mKeyboard->setEventCallback( this );
+      }
 
     // If possible create a buffered mouse
-    if( mInputSystem->numMice() > 0 ) {
-      mMouse = static_cast<OIS::Mouse*>( mInputSystem->createInputObject( OIS::OISMouse, true ) );
-      mMouse->setEventCallback( this );
+    if( mInputSystem->getNumberOfDevices (OIS::OISMouse) > 0 ) 
+      {
+	mMouse = static_cast<OIS::Mouse*>
+	  ( mInputSystem->createInputObject( OIS::OISMouse, true ) );
+	mMouse->setEventCallback( this );
       
-      // Get window size
-      unsigned int width, height, depth;
-      int left, top;
-      renderWindow->getMetrics( width, height, depth, left, top );
+	// Get window size
+	unsigned int width, height, depth;
+	int left, top;
+	renderWindow->getMetrics( width, height, depth, left, top );
       
-      // Set mouse region
-      this->setWindowExtents( width, height );
-    }
+	// Set mouse region
+	this->setWindowExtents( width, height );
+      }
     
     // If possible create all joysticks in buffered mode
-    if( mInputSystem->numJoysticks() > 0 ) {
-      mJoysticks.resize( mInputSystem->numJoysticks() );
+    if( mInputSystem->getNumberOfDevices (OIS::OISJoyStick) > 0 ) 
+      {
+	mJoysticks.resize( mInputSystem->
+			   getNumberOfDevices (OIS::OISJoyStick) );
       
-      itJoystick    = mJoysticks.begin();
-      itJoystickEnd = mJoysticks.end();
-      for(; itJoystick != itJoystickEnd; ++itJoystick ) {
-	(*itJoystick) = static_cast<OIS::JoyStick*>( mInputSystem->createInputObject( OIS::OISJoyStick, true ) );
-	(*itJoystick)->setEventCallback( this );
+	itJoystick    = mJoysticks.begin();
+	itJoystickEnd = mJoysticks.end();
+	for(; itJoystick != itJoystickEnd; ++itJoystick ) {
+	  (*itJoystick) = static_cast<OIS::JoyStick*>
+	    ( mInputSystem->createInputObject( OIS::OISJoyStick, true ) );
+	  (*itJoystick)->setEventCallback( this );
+	}
       }
-    }
   }
 }
 

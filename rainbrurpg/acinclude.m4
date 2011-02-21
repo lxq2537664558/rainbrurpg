@@ -147,9 +147,9 @@ AC_DEFUN([RB_CHECK_LIBFOX],
     FOX_LIBS="-lFOX-1.6$DLL_EXT"
   else
     dnl Get the correct executable
-    AC_PATH_TOOL(FOX_CONFIG, fox-config, 'NOT_FOUND')
+    AC_PATH_TOOL(FOX_CONFIG, fox-config, -1)
 
-    if test $FOX_CONFIG = 'NOT_FOUND'
+    if test $FOX_CONFIG -eq -1
     then
       echo "Error! You need the Fox-Toolkit installed. Cannot find the fox-config tool."
       exit -1

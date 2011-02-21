@@ -28,7 +28,7 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     Can be found in the Ogre3D cvs repository
 
-* OIS 0.1
+* OIS 1.2.0
   + Needed
   + homepage:
     http::/sourceforge.net/projects/wgois/

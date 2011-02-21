@@ -79,7 +79,7 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
     mRenderWindow = Ogre::Root::getSingleton().getRenderSystem()
-      ->createRenderWindow("a", 20, 20, false);
+      ->_createRenderWindow("a", 20, 20, false);
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
   }
   catch(Ogre::Exception e){

@@ -37,8 +37,8 @@ AC_DEFUN([RB_CHECK_FREETYPE],
     dnl Get the correct executable
     AC_PATH_TOOL(FREETYPE_CONFIG, freetype-config, -1)
     
-    dnl Check for the precense of freetype-config
-    if test $FREETYPE_CONFIG -eq -1
+    dnl Check for the presense of freetype-config
+    if test -z "$FREETYPE_CONFIG"
     then
       echo "Error! You need Freetype $1 installed. Cannot find the freetype-config tool."
       exit -1
@@ -47,8 +47,12 @@ AC_DEFUN([RB_CHECK_FREETYPE],
     dnl check for version of freetype using freetype-config
     echo -n "checking if Freetype version is at least v$1... "
     FREETYPE_VERSION=`$FREETYPE_CONFIG --version`
-    if test "${FREETYPE_VERSION:0:4}" == "$1"
-    then 
+
+    freetype_test_result=$(echo "${FREETYPE_VERSION:0:4} >= $1"|bc)
+    stat=$?
+
+    if [[[ $stat -eq 0 && $freetype_test_result -eq 1 ]]];
+     then 
       echo "yes"
     else
       echo "no"

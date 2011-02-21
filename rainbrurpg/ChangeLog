@@ -1,3 +1,13 @@
+2011-02-19 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/maincore/inputmanager.cpp (initialise): uses OIS's 
+	getNumberOfDevices() function
+
+2011-02-17 Jerome Pasquier  <rainbru@free.fr>
+
+	* m4/rb_freetype.m4: Improved version check using float number
+	and `bc`.
+
 2011-01-29 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/testHelpers/DummyRenderSystem: Started implementation.
@@ -20,7 +30,7 @@
 2011-01-08 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Makefile.am: individual-test-fontmanager target created.
-	
+
 2011-01-08 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Container.cpp (push_back): add a child set

@@ -1,4 +1,4 @@
-RainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
+xRainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
    on Ogre3D and Fox-toolkit.
 
 o [Carine] cross-compilation to win32
@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-211 (28 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (5) Reimplented empty DummyRenderSystem functions
+- (9) Updated OIS version in DEPENDENCIES
+- Some changes in InputManager
+- Reimplented empty DummyRenderSystem purely virtual functions
+- Improved FreeType library version check
+- Reimplented empty DummyRenderSystem functions
 - RenderSystem_Dummy.so needs some pure virtual functions implemented
 - Get a build for RenderSystem_Dummy.so
 - DummyRenderSystem skeleton implementation

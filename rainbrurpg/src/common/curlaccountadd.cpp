@@ -74,7 +74,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
   const char* errmsg;
 
   // The . sign
-  char* dotSign=strchr(mail, '.');
+  const char* dotSign=strchr(mail, '.');
   if (dotSign==NULL){
     errmsg=_("The email adress does not contain the 'dot' sign");
     setCustomErrorMessage(errmsg);
@@ -84,7 +84,7 @@ bool RainbruRPG::Network::Ident::CurlAccountAdd::controlBefore(){
   }
 
   // The @ sign
-  char* atSign=strchr(mail, '@');
+  const char* atSign=strchr(mail, '@');
   if (atSign==NULL){
     errmsg=_("The email adress does not contain the 'at' sign");
     setCustomErrorMessage(errmsg);
