@@ -115,7 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-211 (28 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (9) Updated OIS version in DEPENDENCIES
+- (10) configure checks for Boost.Test
+- Updated OIS version in DEPENDENCIES
 - Some changes in InputManager
 - Reimplented empty DummyRenderSystem purely virtual functions
 - Improved FreeType library version check

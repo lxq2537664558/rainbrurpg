@@ -1,6 +1,11 @@
+2011-02-26 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in: Checks for Boost.unit through m4/rb_boost_test.m4.
+	* m4/rb_boost_test.rb: Check for Boost.Test library and header.
+
 2011-02-19 Jerome Pasquier  <rainbru@free.fr>
 
-	* src/maincore/inputmanager.cpp (initialise): uses OIS's 
+	* src/maincore/inputmanager.cpp (initialise): uses OIS's
 	getNumberOfDevices() function
 
 2011-02-17 Jerome Pasquier  <rainbru@free.fr>

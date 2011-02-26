@@ -1,4 +1,4 @@
-This is RainbruRPG.info, produced by makeinfo version 4.11 from
+This is RainbruRPG.info, produced by makeinfo version 4.13 from
 RainbruRPG.texinfo.
 
 `RainbruRPG' is an in-development 3D Multiplayer Online Role-Playing
@@ -53,7 +53,6 @@ programs :
    It is generated from a texinfo source found in the root directory
 but is used in HTML form as a help center. To generate the HTML
 documentation and install it please type :
-
    make html
    cp htmlMakefile.am RainbruRPG.html/Makefile.am
    autoconf
@@ -556,11 +555,11 @@ Concept Index
 Tag Table:
 Node: Top866
 Node: Instructions1479
-Node: Copying2158
-Node: Overview21344
-Node: Server21576
-Node: Invoking RainbruRPG23211
-Node: Problems23887
-Node: Concept Index24517
+Node: Copying2157
+Node: Overview21343
+Node: Server21575
+Node: Invoking RainbruRPG23210
+Node: Problems23886
+Node: Concept Index24516
 
 End Tag Table

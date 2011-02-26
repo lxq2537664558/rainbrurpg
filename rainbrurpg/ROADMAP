@@ -835,6 +835,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 		  It may be in FontManagerTest.cpp
       - [X] Pass it through valgrind
 **** TODO Fix some memory-related issues                              [71%]
+     CLOCK: [2011-02-26 sam. 16:16]--[2011-02-26 sam. 16:39] =>  0:23
      :CLOCK:
      CLOCK: [2011-01-23 dim. 11:13]--[2011-01-23 dim. 11:35] =>  0:22
      CLOCK: [2011-01-22 sam. 17:03]--[2011-01-22 sam. 17:23] =>  0:20
@@ -880,7 +881,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    still reachable: 39,683 bytes in 307 blocks
 	    - [ ] GameEngine
 **** TODO Create a DummyRenderSystem for Ogre
-     CLOCK: [2011-02-19 sam. 16:42]
      CLOCK: [2011-02-19 sam. 15:42]--[2011-02-19 sam. 16:04] =>  0:22
      :CLOCK:
      CLOCK: [2011-01-30 dim. 11:00]--[2011-01-30 dim. 11:20] =>  0:20

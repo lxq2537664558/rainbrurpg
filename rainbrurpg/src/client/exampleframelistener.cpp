@@ -71,7 +71,7 @@ ExampleFrameListener( RenderWindow* win, Camera* cam,
       mTimeUntilNextToggle = 0;
       mMoveScale = 0.0f;
       mRotScale = 0.0f;
-      mTranslateVector = Vector3::ZERO;
+      mTranslateVector = Ogre::Vector3::ZERO;
       mAniso = 1;
       mFiltering = TFO_BILINEAR;
 }
@@ -290,7 +290,7 @@ frameStarted(const FrameEvent& evt){
     }
     mRotX = 0;
     mRotY = 0;
-    mTranslateVector = Vector3::ZERO;
+    mTranslateVector = Ogre::Vector3::ZERO;
   }
   
 

@@ -95,7 +95,7 @@ namespace RainbruRPG {
       /** The Y rotation value */
       Radian mRotY;
       /** The translation vector */
-      Vector3 mTranslateVector;
+      Ogre::Vector3 mTranslateVector;
 
       /** The input wrapper */
       InputWrapper* inputWrapper;

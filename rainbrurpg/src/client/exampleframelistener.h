@@ -100,7 +100,7 @@ namespace RainbruRPG{
       /** The Ogre camera */
       Camera* mCamera;
       /** The translation vector */
-      Vector3 mTranslateVector;
+      Ogre::Vector3 mTranslateVector;
       /** The Ogre render windows */
       RenderWindow* mWindow;
       /** Do we show statistics */
