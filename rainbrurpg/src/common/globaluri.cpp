@@ -241,18 +241,16 @@ installConfigFile(const std::string& filename){
   it->absoluteFileName = s2;
 
   // The boost path
-  fs::path optionXmlPath( s, 
-	fs::native);
-  fs::path userOptionXmlPath( s2, 
-	fs::native);
+  fs::path optionXmlPath( s, fs::native);
+  fs::path userOptionXmlPath( s2, fs::native);
 
   // Need to be installed
   if (!fs::exists(userOptionXmlPath)){
-    GTS_MID(str);
+    GTS_HUG(str);
     // TRANSLATORS: The parameter is a file name.
     sprintf(str, _("The file '%s' was not found. "
 		   "Copying it from '%s' to '%s'"), filename.c_str(), 
-	    optionXmlPath.string().c_str(),
+	    optionXmlPath.string().c_str(), 
 	    userOptionXmlPath.string().c_str());
     LOGW(str);
     /** v0.0.5-207 : Trying to handle a Win32 issue

@@ -834,6 +834,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	    - [X] should contain main_cpp() 
 		  It may be in FontManagerTest.cpp
       - [X] Pass it through valgrind
+**** DONE configure should search for pluginlandscape
+     CLOCK: [2011-03-01 mar. 16:25]--[2011-03-01 mar. 16:32] =>  0:07
+- [X] build PLSM2
+- [X] Uses pkg-config
 **** TODO Fix some memory-related issues                              [71%]
      CLOCK: [2011-02-26 sam. 16:16]--[2011-02-26 sam. 16:39] =>  0:23
      :CLOCK:

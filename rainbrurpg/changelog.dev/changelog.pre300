@@ -1,3 +1,84 @@
+* v0.0.5-210 (02 jan 2011 - 28 jan 2011) SLOC 42,930 UT 261 FT 90:31
+- Improved Doxygen.in for faster documentation generation
+- Fixed some documentation warnings
+   Drawable, Label
+- Ported some unit tests to Boost.Test
+   WidgetListTest
+- Ported some unit tests to Boost.Test
+   DrawableTestWithOgre, FocusableTest, SerializableTest
+- BrushTest port to Boost.Unit
+   as DrawableTest
+- individual-test-fontmanager target created
+- Add a child to a container set its dirty flag to true
+- ContainerTest ported to Boost.Unit
+- WindowHandleTest implemented
+- OgreMinimalSetup::getRenderWindow() implemented
+- WindowHandle throws some NullWindowHandleException
+- NullWindowHandleException implemented
+- Implemented maincore/WindowHandle
+- InputManager correctly get DXD9 window's handle
+- Some Win32 related improvments
+
+* v0.0.5-209 (28 nov 2010 - 02 jan 2011) SLOC 42,910 UT 265 FT 82:39
+- Fixed a win32 building error in ogreGui unit tests
+- nb_unit_tests.pl works
+- Started nb_uni_tests.pl
+- Implemented OgreMinimalSetupTest
+- Updated regtest.html with a new table
+- Fixed a flags error in testHelpers' Makefile.am
+- Changed GNU headers dates
+   in *, */*, */*/*, */*/*/*
+- Improved RB_CHECK_BOOST_TEST from acinclude.m4
+- src/tests/helpers/ moved to src/helpTesters
+- Fixed a memory access violation in OgreMinimalSetup
+- configure.in now check for Boost.Test
+- FontManager now ran by `make check` in src/ogreGui
+- Boost.Test based unit tests for FontManager now in src/ogreGui
+- Tested the Boost.Test unit test framework
+- Improved fontmanager individual unit tests
+
+* v0.0.5-208 (28 nov 2010 - 18 dec 2010) SLOC 42,784 UT 253 FT 76:58
+- Cleanup on the FontManager individual test launcher
+- FontManager now using new[] and delete[]
+- FontManager unit tests understand NO_OGRE macro
+- Get a working launcher in win32
+   hacking the pligins.cfg file
+- Create a FontManagerTest executable
+- FontManagerTest now inherits OgreMinimalSetup
+- Writted the FontManagerTest base
+- Trying to fix a segfault when drawing text
+- Fixed a Label function typo
+- CamelCased some files in common/
+   AttributeModifierList, BoostImport.hpp
+- Implamented Label::Draw()
+- Implemented Label's wordwrap getter and setter
+- Retrieved oldOgreGui text drawing related class
+   Vector3
+- Retrieved some function from QuadRenderer to Brush
+   addGlyph, buildVertices, buildUV, getClipRegion
+- Changed ROADMAP to be read from top to bottom for current release 
+
+* v0.0.5-207 (28 oct 2010 - 28 nov 2010) SLOC 42,531 UT 250 FT 70:51
+- Moved some function from QuadRenderer to Brush
+   drawFilledRectangle, drawText, beginGlyphs, endGlyphs, renderGlyphs
+- Reorganized ROADMAP file to get an earlier release (maybe this year)
+- Retrieved oldOgreGui text drawing related class
+   TextSettings, FontManager
+- Created an exception for null height glyph
+- Retrieved oldOgreGui text drawing related class
+   Glyph, LineInfo, Font
+- Created Label widget (draw() not yet implemented)
+- DrawableTest tests the parent skinname propagation
+- Changed the ROADMAP structure of OgreGui steps
+- Renamed some bgui images to default (17 files)
+- Renamed some bgui images to default (25 files)
+- Started to rename bgui images to default skin
+- NumDebug windows drwn again
+- Menu's background shown again
+- Handle std::exception when copying config files
+- Fixed some documentation warnings
+   OgreGuiRenderQueueListener, Brush, GameEngine
+
 * v0.0.5-206 (16 oct 2010 - 28 oct 2010) SLOC 41,501 UT 250 FT 64:13
 - Cross-compil : exe is now a GUI application
 - Trying new version of wine 1.1.42 Do not work
@@ -18,7 +99,7 @@
 - OgreGuiRenderQueueListener implementation
 - Fixed some doxygen warnings
    Drawable, Container, Brush, TextureNotFoundException, SkinNotFoundException
-	
+
 * v0.0.5-205 (16 aug 2010 - 16 oct 2010) SLOC 41,316 UT 250 FT 59:32
 - Container::draw() draws all ist childs
 - Drawable::draw() implementation

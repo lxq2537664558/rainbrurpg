@@ -211,21 +211,9 @@ AC_DEFUN([RB_CHECK_LIBSLANG],
 
 dnl Checks for the PagingLandScapeManager2 Ogre plugin
 dnl
-dnl We don't need to check headers as it is a dlopened library but 
-dnl it is not a lib* called file so we use AC_CHECK_FILE, first in /usr/lib
-dnl then, if not found, in /usr/local/lib
-dnl
-dnl If PLSM2 is not found, it does not exit, it complains about the error
-dnl but does not exit.
-dnl
 AC_DEFUN([RB_CHECK_PLSM2],
 [
-dnl  AC_CHECK_FILE(/usr/lib/OGRE/Plugin_PagingLandScape2.so, [], [
-dnl    AC_CHECK_FILE(/usr/local/lib/OGRE/Plugin_PagingLandScape2.so, [], [
-dnl      echo "Error! You need to have the PagingLandScape2 Ogre plugin."
-dnl      exit -1
-dnl    ])
-dnl  ])
+  PKG_CHECK_MODULES([PLSM2], [OGRE-PLUGIN-PLSM2]);
 ])
 
 dnl Define the server Option 

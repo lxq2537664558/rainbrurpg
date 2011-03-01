@@ -1,4 +1,12 @@
+2011-03-01 Jerome Pasquier  <rainbru@free.fr>
+
+	* acinclude.m4 (RB_CHECK_PLSM2): Check implemenetd using 
+	PKG_CHECK_MODULES.
+
 2011-02-26 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/common/globaluri.cpp (installConfigFile): Switch a GTR string
+	from _MID to _HUG to fix a memory issue.
 
 	* configure.in: Checks for Boost.unit through m4/rb_boost_test.m4.
 	* m4/rb_boost_test.rb: Check for Boost.Test library and header.
