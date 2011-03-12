@@ -5,7 +5,7 @@
 # --------------------------------------------------------
 # OgreMinimalSetup related stuff
 {
-   Ogre::glXCreateContextWithConfigSGIX
+   RainbruRPG::testHelpers::Ogre::glXCreateContextWithConfigSGIX
    Memcheck:Param
    ioctl(generic)
    fun:ioctl
@@ -23,7 +23,7 @@
 }
 
 {
-   Ogre::glXMakeContextCurrent
+   RainbruRPG::testHelpers::Ogre::glXMakeContextCurrent
    Memcheck:Param
    ioctl(generic)
    fun:ioctl
@@ -41,7 +41,7 @@
 }
 
 {
-   Ogre::glXMakeContextCurrent2
+   RainbruRPG::testHelpers::Ogre::glXMakeContextCurrent2
    Memcheck:Param
    ioctl(generic)
    fun:ioctl
@@ -59,7 +59,7 @@
 }
 
 {
-   Ogre::GLFBOManager
+   RainbruRPG::testHelpers::Ogre::GLFBOManager
    Memcheck:Param
    ioctl(generic)
    fun:ioctl

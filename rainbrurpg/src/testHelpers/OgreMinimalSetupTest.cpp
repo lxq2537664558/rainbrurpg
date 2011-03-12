@@ -70,3 +70,14 @@ BOOST_AUTO_TEST_CASE( test_setup_ogre_not_null_render_window )
   oms->teardownOgre();
   teardown();
 }
+
+/// Tested because LogManager singleton exception in ogreGui tests
+BOOST_AUTO_TEST_CASE( test_setup_ogre_not_null_log_manager )
+{
+  setup();
+  oms->setupOgre(CONFIG_DIR);
+  BOOST_CHECK( Ogre::LogManager::getSingletonPtr() != 0 );
+  BOOST_CHECK( Ogre::LogManager::getSingleton().getDefaultLog() != 0 );
+  oms->teardownOgre();
+  teardown();
+}

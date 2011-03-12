@@ -839,6 +839,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] build PLSM2
 - [X] Uses pkg-config
 **** TODO Fix some memory-related issues                              [100%]
+     CLOCK: [2011-03-12 sam. 15:41]--[2011-03-12 sam. 16:13] =>  0:32
      CLOCK: [2011-03-12 sam. 12:35]--[2011-03-12 sam. 13:22] =>  0:47
      CLOCK: [2011-03-05 sam. 08:06]--[2011-03-05 sam. 08:39] =>  0:33
      CLOCK: [2011-02-26 sam. 16:16]--[2011-02-26 sam. 16:39] =>  0:23
@@ -886,6 +887,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       - [X] is testHelpers
 	    - [X] OgreMinimalSetup : Created a valgrind suppression file
       - [ ] in ogreGui/ (valgrind for unit tests)
+	    Do not forget the --enable-tests configure option
 	    definitely lost: 8,326 bytes in 61 blocks
 	    indirectly lost: 52,723 bytes in 294 blocks
 	    possibly lost:   27,347 bytes in 706 blocks
@@ -923,6 +925,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
+**** Some ogreGui unit tests failed due to Ogre::LogManager exception
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07

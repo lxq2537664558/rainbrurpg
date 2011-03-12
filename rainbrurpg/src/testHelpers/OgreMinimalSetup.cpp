@@ -69,7 +69,6 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
     logger->createLog("log.log", true, false, true);
     Ogre::LogManager::getSingleton().getDefaultLog()->addListener(mListener);
 
-
     Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
 				    dir + "ogre.cfg", dir + "ogre.log");
     assert(root && "Cannot initialize Ogre::Root");

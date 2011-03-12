@@ -149,7 +149,7 @@ rainbrurpg_tests_ogregui_SOURCES= 		\
 # to avoid the 'Object <name> created both with libtool and without' 
 # automake complain
 if RB_OPTION_TESTS_FLAGS
-  # Pleas add the following to <target>_LDADD
+  # Please add the following to <target>_LDADD
   INDIVIDUALS_LDADD= \
 	-lrainbrurpg-ogregui			\
 	-L$(top_srcdir)/src/common/.libs	\
