@@ -30,6 +30,9 @@
 #  include <dirent.h>
 #endif
 
+// The Ogre's render window name
+#define RW_NAME "RenderWindowName"
+
 using namespace std;
 
 OgreMinimalSetup::OgreMinimalSetup():
@@ -79,7 +82,7 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
     Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
     mRenderWindow = Ogre::Root::getSingleton().getRenderSystem()
-      ->_createRenderWindow("a", 20, 20, false);
+      ->_createRenderWindow(RW_NAME, 20, 20, false);
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
   }
   catch(Ogre::Exception e){
@@ -94,6 +97,8 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
   */
 void OgreMinimalSetup::teardownOgre()
 {
+  Ogre::Root::getSingleton().getRenderSystem()
+    ->destroyRenderWindow(RW_NAME);
   Ogre::Root::getSingleton().getRenderSystem()->shutdown();
   Ogre::Root::getSingleton().shutdown();
   Ogre::Root* mRoot = Ogre::Root::getSingletonPtr();
@@ -103,6 +108,7 @@ void OgreMinimalSetup::teardownOgre()
   delete mLog;
 
   delete mListener;
+  
 }
 
 bool OgreMinimalSetup::dirExists(const std::string& vDir)

@@ -194,7 +194,6 @@ AC_CONFIG_FILES([Makefile			\
 	  src/editor/Makefile			\
 	  src/server/Makefile			\
 	  src/tests/Makefile			\
-	  src/tests/ogreGui/Makefile		\
 	  src/tools/Makefile			\
 	  src/tools/transmsg/Makefile		\
 	  src/tools/xident/Makefile		\

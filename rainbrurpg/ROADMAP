@@ -838,7 +838,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2011-03-01 mar. 16:25]--[2011-03-01 mar. 16:32] =>  0:07
 - [X] build PLSM2
 - [X] Uses pkg-config
-**** TODO Fix some memory-related issues                              [71%]
+**** TODO Fix some memory-related issues                              [100%]
+     CLOCK: [2011-03-12 sam. 12:35]--[2011-03-12 sam. 13:22] =>  0:47
+     CLOCK: [2011-03-05 sam. 08:06]--[2011-03-05 sam. 08:39] =>  0:33
      CLOCK: [2011-02-26 sam. 16:16]--[2011-02-26 sam. 16:39] =>  0:23
      :CLOCK:
      CLOCK: [2011-01-23 dim. 11:13]--[2011-01-23 dim. 11:35] =>  0:22
@@ -870,15 +872,24 @@ name, date, heure, gamestate, position, name perso, name server, versions
 	     - [X] FontManagerTest (already done?)
 	     - [X] SerializableTest
 	     - [X] WidgetListTest
-- [ ] Remove tests/ogreGui/ directory
-- [ ] List possible spurious class and pass it through valgrind
+- [X] Fix an ogre exception
+Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTexture
+      It is used as paramater of vertex_program_ref() in many 
+      media/materials/scripts/ files.
+      OK : media/materials/scripts/Makefile do not install all files
+- [X] Remove tests/ogreGui/ directory
+- [-] List possible spurious class and pass it through valgrind
       with individual tests
       Export the environment variable GLIBCXX_FORCE_NEW with valgrind
-      - [ ] in ogreGui/
-	    definitely lost: 39,683 bytes in 307 blocks
-	    still reachable: 39,683 bytes in 307 blocks
-	    MODIFIED, please retry with valgrind
-	    - [ ] OgreMinimalSetup
+      Use auto_ptr when possible (declared in the <memory> header file)
+      Do not forget suppression files
+      - [X] is testHelpers
+	    - [X] OgreMinimalSetup : Created a valgrind suppression file
+      - [ ] in ogreGui/ (valgrind for unit tests)
+	    definitely lost: 8,326 bytes in 61 blocks
+	    indirectly lost: 52,723 bytes in 294 blocks
+	    possibly lost:   27,347 bytes in 706 blocks
+	    still reachable: 756,927 bytes in 2,449 blocks
 	    - [ ] FontManager
       - [ ] maincore
 	    definitely lost: 6,288 bytes in 16 blocks

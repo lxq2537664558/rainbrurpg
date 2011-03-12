@@ -47,7 +47,7 @@ RenderSystem_Dummy_la_LIBTOOLFLAGS = --tag=disable-static
 
 # The executable created here is just used for memory checking using `valgrind`
 bin_PROGRAMS=ogreminimalsetup
-ogreminimalsetup_SOURCES=main.cpp
+ogreminimalsetup_SOURCES=OgreMinimalSetup-main.cpp
 ogreminimalsetup_LDADD= libtesthelpers.la $(OGRE_LIBS)
 
 # Boost.Test based unit tests

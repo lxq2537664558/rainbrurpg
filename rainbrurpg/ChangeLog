@@ -1,3 +1,9 @@
+2011-03-05 Jerome Pasquier  <rainbru@free.fr>
+
+	* media/materials/scripts/Makefile.am (datafiles_DATA): Added
+	Examples.program to the installed files to fix an Ogre3d
+	Exception.
+
 2011-03-01 Jerome Pasquier  <rainbru@free.fr>
 
 	* acinclude.m4 (RB_CHECK_PLSM2): Check implemenetd using 

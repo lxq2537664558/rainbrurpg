@@ -115,7 +115,10 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-211 (28 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (11) Fixed a memory issue in GlobalUri
+- (14) Created a valgrind suppression file for OgreMinimalSetup
+- Removed unused src/tests/ogerGui directory
+- Fix an Ogre3d exception due to missing material
+- Fixed a memory issue in GlobalUri
 - configure checks for Boost.Test
 - Updated OIS version in DEPENDENCIES
 - Some changes in InputManager
