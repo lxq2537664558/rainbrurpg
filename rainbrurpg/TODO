@@ -114,8 +114,11 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-211 (28 jan 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (14) Created a valgrind suppression file for OgreMinimalSetup
+* v0.0.5-212 (19 mar 2011 - ???) SLOC ??? UT ??? FT ??:??
+
+* v0.0.5-211 (28 jan 2011 - 19 mar 2011) SLOC 43,101 UT ??? FT 95:58
+- Added a parameter for Tests and custom Ogre3D log
+- Created a valgrind suppression file for OgreMinimalSetup
 - Removed unused src/tests/ogerGui directory
 - Fix an Ogre3d exception due to missing material
 - Fixed a memory issue in GlobalUri

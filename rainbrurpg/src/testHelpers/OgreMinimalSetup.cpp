@@ -48,13 +48,20 @@ OgreMinimalSetup::~OgreMinimalSetup()
 
 /** Setup a minimal ogre renderer
   *
-  * \param base_dir The path to the config and data files (plugins.cfg and ogre.cfg
+  * \param custom_log Should we cerate a custom log
+  * \param base_dir   The path to the config and data files 
+  *                   (plugins.cfg and ogre.cfg
   *
   * \warning Incorrect base_dir could lead to a 'memory access violation' when
   *          launched.
   *
+  * \note The \c custom_log parameter is used to avoid an Ogre3D assertion
+  *       that occurs when creating our custom log. 
+  *
   */
-void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
+void 
+OgreMinimalSetup::setupOgre(bool custom_log, 
+			    const Ogre::String& base_dir)
 {
   mListener = new SilentLogListener();
 
@@ -64,10 +71,14 @@ void OgreMinimalSetup::setupOgre(const Ogre::String& base_dir)
   }
 
   try{
-    Ogre::LogManager* logger = new Ogre::LogManager();
-    assert(logger && "Failed to create an Ogre Logger");
-    logger->createLog("log.log", true, false, true);
-    Ogre::LogManager::getSingleton().getDefaultLog()->addListener(mListener);
+    if (custom_log == true)
+      {
+	Ogre::LogManager* logger = new Ogre::LogManager();
+	assert(logger && "Failed to create an Ogre Logger");
+	logger->createLog("log.log", true, false, true);
+	Ogre::LogManager::getSingleton().getDefaultLog()
+	  ->addListener(mListener);
+      }
 
     Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
 				    dir + "ogre.cfg", dir + "ogre.log");

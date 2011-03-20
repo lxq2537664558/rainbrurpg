@@ -1,3 +1,9 @@
+2011-03-11 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/testHelpers/OgreMinimalSetup.hpp (setupOgre): add the
+	custom_log parameter with true default value. All classes
+	using it uses false value if an Ogre3D assertion occurs.
+
 2011-03-05 Jerome Pasquier  <rainbru@free.fr>
 
 	* media/materials/scripts/Makefile.am (datafiles_DATA): Added

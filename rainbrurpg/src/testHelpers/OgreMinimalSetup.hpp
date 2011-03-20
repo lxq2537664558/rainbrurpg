@@ -57,7 +57,7 @@ public:
   OgreMinimalSetup();
   ~OgreMinimalSetup();
 
-  void setupOgre(const Ogre::String& base_dir=CONFIG_DIR);
+  void setupOgre(bool custom_log=true, const Ogre::String& base_dir=CONFIG_DIR);
   void teardownOgre();
 
   Ogre::RenderWindow* getRenderWindow();

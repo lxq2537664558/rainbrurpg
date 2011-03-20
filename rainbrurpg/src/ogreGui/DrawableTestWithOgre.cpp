@@ -56,8 +56,8 @@ OgreMinimalSetup* oms_DrawableWithOgre;
 Drawable* setup_DrawableWithOgre()
 {
   oms_DrawableWithOgre = new OgreMinimalSetup();
-   Ogre::LogManager::LogManager();
-  oms_DrawableWithOgre->setupOgre();
+  //   Ogre::LogManager::LogManager();
+  oms_DrawableWithOgre->setupOgre(false);
   return new Drawable(NULL, RECT);
 }
 

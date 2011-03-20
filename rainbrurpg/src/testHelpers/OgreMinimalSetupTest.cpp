@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( test_setup_pointer )
 BOOST_AUTO_TEST_CASE( test_setup_ogre_throw )
 {
   setup();
-  BOOST_CHECK_THROW( oms->setupOgre("../unbelievable_directory_name_for_configuration_files"),
+  BOOST_CHECK_THROW( oms->setupOgre(true, "../unbelievable_directory_name_for_configuration_files"),
 		     std::string);
   teardown();
 }

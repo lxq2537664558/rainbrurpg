@@ -32,7 +32,7 @@ OgreMinimalSetup* oms;
 OgreGui::FontManager* setup_FontManager()
 {
   oms = new OgreMinimalSetup();
-  oms->setupOgre();
+  oms->setupOgre(false);
   return &OgreGui::FontManager::getSingleton();
 }
 

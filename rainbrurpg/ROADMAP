@@ -839,6 +839,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] build PLSM2
 - [X] Uses pkg-config
 **** TODO Fix some memory-related issues                              [100%]
+     CLOCK: [2011-03-19 sam. 11:04]--[2011-03-19 sam. 11:22] =>  0:18
      CLOCK: [2011-03-12 sam. 15:41]--[2011-03-12 sam. 16:13] =>  0:32
      CLOCK: [2011-03-12 sam. 12:35]--[2011-03-12 sam. 13:22] =>  0:47
      CLOCK: [2011-03-05 sam. 08:06]--[2011-03-05 sam. 08:39] =>  0:33
@@ -879,6 +880,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       media/materials/scripts/ files.
       OK : media/materials/scripts/Makefile do not install all files
 - [X] Remove tests/ogreGui/ directory
+- [ ] New Ogre::Singleton assertion with Ogre::Root in FontManagerTest
 - [-] List possible spurious class and pass it through valgrind
       with individual tests
       Export the environment variable GLIBCXX_FORCE_NEW with valgrind
