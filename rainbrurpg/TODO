@@ -1,4 +1,4 @@
-xRainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
+RainbruRPG - GPLv2 - A 3D multiplayer Role Playing Game project based
    on Ogre3D and Fox-toolkit.
 
 o [Carine] cross-compilation to win32
@@ -115,6 +115,7 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-212 (19 mar 2011 - ???) SLOC ??? UT ??? FT ??:??
+- (1) Search for a fix for Ogre::Root failed assertion
 
 * v0.0.5-211 (28 jan 2011 - 19 mar 2011) SLOC 43,101 UT ??? FT 95:58
 - Added a parameter for Tests and custom Ogre3D log

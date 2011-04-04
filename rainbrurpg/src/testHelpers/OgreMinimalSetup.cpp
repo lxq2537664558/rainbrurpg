@@ -48,7 +48,7 @@ OgreMinimalSetup::~OgreMinimalSetup()
 
 /** Setup a minimal ogre renderer
   *
-  * \param custom_log Should we cerate a custom log
+  * \param custom_log Should we create a custom log
   * \param base_dir   The path to the config and data files 
   *                   (plugins.cfg and ogre.cfg
   *
@@ -83,7 +83,8 @@ OgreMinimalSetup::setupOgre(bool custom_log,
     Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
 				    dir + "ogre.cfg", dir + "ogre.log");
     assert(root && "Cannot initialize Ogre::Root");
-      
+    assert(Ogre::Root::getSingletonPtr() && "Cannot initialize Ogre::Root");
+
     // Select rendersystem
     Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
     this->debugRenderList( list );

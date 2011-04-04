@@ -839,6 +839,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] build PLSM2
 - [X] Uses pkg-config
 **** TODO Fix some memory-related issues                              [100%]
+     CLOCK: [2011-04-02 sam. 20:04]--[2011-04-02 sam. 20:24] =>  0:20
      CLOCK: [2011-03-19 sam. 11:04]--[2011-03-19 sam. 11:22] =>  0:18
      CLOCK: [2011-03-12 sam. 15:41]--[2011-03-12 sam. 16:13] =>  0:32
      CLOCK: [2011-03-12 sam. 12:35]--[2011-03-12 sam. 13:22] =>  0:47
@@ -881,6 +882,11 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       OK : media/materials/scripts/Makefile do not install all files
 - [X] Remove tests/ogreGui/ directory
 - [ ] New Ogre::Singleton assertion with Ogre::Root in FontManagerTest
+      Only in FontManagerTest and DrawableTestWithOgre
+      - [ ] Try to catch an Ogre::Exception when creating root 
+	    in OgreMinimalSetup
+      - [ ] Make individual binaries for FontManagerTest 
+	    and DrawableTestWithOgre
 - [-] List possible spurious class and pass it through valgrind
       with individual tests
       Export the environment variable GLIBCXX_FORCE_NEW with valgrind
@@ -927,7 +933,8 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
-**** Some ogreGui unit tests failed due to Ogre::LogManager exception
+**** Some ogreGui unit tests failed due to Ogre::Singleton exception
+- [ ] Ogre::Singleton<T>::Singleton() [with T = Ogre::Root]: Assertion `!ms_Singleton' failed.
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
