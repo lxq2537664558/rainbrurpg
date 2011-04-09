@@ -57,7 +57,8 @@ public:
   OgreMinimalSetup();
   ~OgreMinimalSetup();
 
-  void setupOgre(bool custom_log=true, const Ogre::String& base_dir=CONFIG_DIR);
+  // Please do not set base_dir with default value to avoid type mismatch
+  void setupOgre(const Ogre::String& base_dir, bool custom_log = false);
   void teardownOgre();
 
   Ogre::RenderWindow* getRenderWindow();

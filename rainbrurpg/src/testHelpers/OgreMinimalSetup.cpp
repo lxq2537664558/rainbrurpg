@@ -60,8 +60,7 @@ OgreMinimalSetup::~OgreMinimalSetup()
   *
   */
 void 
-OgreMinimalSetup::setupOgre(bool custom_log, 
-			    const Ogre::String& base_dir)
+OgreMinimalSetup::setupOgre(const Ogre::String& base_dir, bool custom_log)
 {
   mListener = new SilentLogListener();
 
@@ -80,27 +79,29 @@ OgreMinimalSetup::setupOgre(bool custom_log,
 	  ->addListener(mListener);
       }
 
-    Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
-				    dir + "ogre.cfg", dir + "ogre.log");
-    assert(root && "Cannot initialize Ogre::Root");
-    assert(Ogre::Root::getSingletonPtr() && "Cannot initialize Ogre::Root");
-
-    // Select rendersystem
-    Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
-    this->debugRenderList( list );
-    Ogre::Root::getSingleton().setRenderSystem((*list)[0]);
-    Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
-    Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
-    Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
-    mRenderWindow = Ogre::Root::getSingleton().getRenderSystem()
-      ->_createRenderWindow(RW_NAME, 20, 20, false);
-    Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
   }
   catch(Ogre::Exception e){
-    cout << "setupOgre failed to initialize : "<< e.what() << endl;
+    cout << "setupOgre failed to initialize LogManager: "<< e.what() << endl;
     exit(1);
   }
 
+
+  Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
+				    dir + "ogre.cfg", dir + "ogre.log");
+  assert(root && "Cannot initialize Ogre::Root");
+  assert(Ogre::Root::getSingletonPtr() && "Cannot initialize Ogre::Root");
+
+  // Select rendersystem
+  Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
+  this->debugRenderList( list );
+  Ogre::Root::getSingleton().setRenderSystem((*list)[0]);
+  Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
+  Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
+  Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
+  mRenderWindow = Ogre::Root::getSingleton().getRenderSystem()
+    ->_createRenderWindow(RW_NAME, 20, 20, false);
+  Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
+ 
 }
 
 /** Tear down the ogre renderer
@@ -108,9 +109,10 @@ OgreMinimalSetup::setupOgre(bool custom_log,
   */
 void OgreMinimalSetup::teardownOgre()
 {
-  Ogre::Root::getSingleton().getRenderSystem()
+  /*  Ogre::Root::getSingleton().getRenderSystem()
     ->destroyRenderWindow(RW_NAME);
   Ogre::Root::getSingleton().getRenderSystem()->shutdown();
+  */
   Ogre::Root::getSingleton().shutdown();
   Ogre::Root* mRoot = Ogre::Root::getSingletonPtr();
   delete mRoot;

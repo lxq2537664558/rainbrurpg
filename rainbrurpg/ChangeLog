@@ -1,3 +1,13 @@
+2011-04-09 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/: reate an individual binary for DrawableTest.
+	
+	* src/testHelpers/OgreMinimalSetup.hpp (setpOgre): removed default 
+	argument to avoid type mismatch.
+	
+	* src/testHelpers/OgreMinimalSetupTest: test that Ogre::Root
+	singleton is not null.
+
 2011-03-11 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/testHelpers/OgreMinimalSetup.hpp (setupOgre): add the

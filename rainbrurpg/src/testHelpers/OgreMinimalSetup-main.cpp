@@ -30,7 +30,7 @@ int main()
 {
   try{
     OgreMinimalSetup oms;
-    oms.setupOgre();
+    oms.setupOgre(CONFIG_DIR);
     oms.teardownOgre();
   }
   catch(char* str){

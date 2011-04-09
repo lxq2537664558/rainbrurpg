@@ -933,8 +933,24 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
-**** Some ogreGui unit tests failed due to Ogre::Singleton exception
-- [ ] Ogre::Singleton<T>::Singleton() [with T = Ogre::Root]: Assertion `!ms_Singleton' failed.
+**** TODO Some ogreGui unit tests failed due to Ogre::Singleton exception
+     CLOCK: [2011-04-09 sam. 19:35]--[2011-04-09 sam. 19:53] =>  0:18
+     CLOCK: [2011-04-09 sam. 17:22]--[2011-04-09 sam. 17:45] =>  0:23
+     CLOCK: [2011-04-09 sam. 10:18]--[2011-04-09 sam. 10:34] =>  0:16
+- [X] testHelpers do not use Ogre
+      Try to use it to make it fail : test_setup_ogre_not_null_root_singleton
+- [-] Ogre::Singleton<T>::Singleton() [with T = Ogre::Root]: Assertion `!ms_Singleton' failed.
+      - [X] OgreMinimanSetupTest and OgreGui's related don't use 
+	    OgreMinimanSetup::setupOgre() parameter the same way :
+	    1. OgreMinimanSetupTest uses CONFIG_DIR
+	    2. OgreGui's tests uses false
+	    3. If OgreMinimanSetupTest passes false, it also failed
+	    4. It changes the custom_log parameter
+      - [X] Fix compilation with OgreMinimanSetup::setupOgre() new arguments NO
+      - [X] Create an individual exe for DrawableTestWithOgre 
+      - [ ] Pass individual-test-drawablewo through dbg
+	    There is also another assertion that failed
+	    radeon_texture.c:86: radeonFreeTexImageData: Assertion `!image->base.Data' failed.
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07

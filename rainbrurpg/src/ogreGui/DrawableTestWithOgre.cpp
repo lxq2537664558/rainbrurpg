@@ -47,6 +47,10 @@
 #include <ogreimport.h>
 #include <OgreRectangle.h>
 
+// Typesafe declaration (instead of a macro)
+#undef CONFIG_DIR
+const Ogre::String CONFIG_DIR = "../../";
+
 // Do not use namespace Ogre for Rectangle and win32 name conflicts
 using namespace RainbruRPG::OgreGui;
 
@@ -56,7 +60,7 @@ OgreMinimalSetup* oms_DrawableWithOgre;
 Drawable* setup_DrawableWithOgre()
 {
   oms_DrawableWithOgre = new OgreMinimalSetup();
-  oms_DrawableWithOgre->setupOgre(false);
+  oms_DrawableWithOgre->setupOgre(CONFIG_DIR, false);
   return new Drawable(NULL, RECT);
 }
 

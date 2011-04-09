@@ -162,10 +162,15 @@ if RB_OPTION_TESTS_FLAGS
 	-I$(top_srcdir)/src/testHelpers/
 
   # Here start individual tests definitions
-  bin_PROGRAMS+=individual-test-fontmanager
+  bin_PROGRAMS+=individual-test-fontmanager individual-test-drawablewo
+
   individual_test_fontmanager_SOURCES =main-tests.cpp FontManagerTest.cpp
   individual_test_fontmanager_CPPFLAGS= $(INDIVIDUALS_CPPFLAGS)
   individual_test_fontmanager_LDADD   = $(INDIVIDUALS_LDADD)
+
+  individual_test_drawablewo_SOURCES =main-tests.cpp DrawableTestWithOgre.cpp
+  individual_test_drawablewo_CPPFLAGS= $(INDIVIDUALS_CPPFLAGS)
+  individual_test_drawablewo_LDADD   = $(INDIVIDUALS_LDADD)
 endif
 
 dll:

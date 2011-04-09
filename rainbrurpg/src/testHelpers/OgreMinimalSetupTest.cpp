@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( test_setup_pointer )
 BOOST_AUTO_TEST_CASE( test_setup_ogre_throw )
 {
   setup();
-  BOOST_CHECK_THROW( oms->setupOgre(true, "../unbelievable_directory_name_for_configuration_files"),
+  BOOST_CHECK_THROW( oms->setupOgre("../unbelievable_directory_name_for_configuration_files"),
 		     std::string);
   teardown();
 }
@@ -78,6 +78,15 @@ BOOST_AUTO_TEST_CASE( test_setup_ogre_not_null_log_manager )
   oms->setupOgre(CONFIG_DIR);
   BOOST_CHECK( Ogre::LogManager::getSingletonPtr() != 0 );
   BOOST_CHECK( Ogre::LogManager::getSingleton().getDefaultLog() != 0 );
+  oms->teardownOgre();
+  teardown();
+}
+
+BOOST_AUTO_TEST_CASE( test_setup_ogre_not_null_root_singleton )
+{
+  setup();
+  oms->setupOgre(CONFIG_DIR);
+  BOOST_CHECK( Ogre::Root::getSingletonPtr() != 0 );
   oms->teardownOgre();
   teardown();
 }
