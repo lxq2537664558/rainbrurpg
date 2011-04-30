@@ -12,9 +12,6 @@ Basic Installation
 
 These are generic installation instructions.
 
-   The `boostrap' shell script will prepare some files needed by
-the `configure' script. Always launch it after a `make clean' call.
-
    The `configure' shell script attempts to guess correct values for
 various system-dependent variables used during compilation.  It uses
 those values to create a `Makefile' in each directory of the package.

@@ -115,7 +115,13 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-212 (19 mar 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (4) Create an individual binary for DrawableTest
+- (10) Removed ogreGui's unit tests using Ogre (singleton issues)
+- FontManagerTestWithOgre created
+- README ad INSTALL files update
+- Removed 'RainbruRPG.html/Makefile' in configure.in
+- Try to catch an exception in OgreMinimalSetup
+- move faillures on OgreGui unit tests to v0.0.7 (can't fix)
+- Create an individual binary for DrawableTest
 - Removed default argument to OgreMinimalSetup::setupOgre
    to avoid type mismatch
 - testHelper tests root songleton consistency

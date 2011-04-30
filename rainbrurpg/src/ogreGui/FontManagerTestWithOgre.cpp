@@ -27,19 +27,47 @@
 
 using namespace RainbruRPG;
 
+OgreMinimalSetup* oms;
 
-OgreGui::FontManager* setup_FontManager()
+OgreGui::FontManager* 
+setup_FontManagerWithOgre()
 {
+  oms = new OgreMinimalSetup();
+  oms->setupOgre(false);
   return &OgreGui::FontManager::getSingleton();
 }
 
-void teardown_FontManager(OgreGui::FontManager* vFm)
+void 
+teardown_FontManagerWithOgre(OgreGui::FontManager* vFm)
 {
+  oms->teardownOgre();
+  delete oms;
 }
 
-BOOST_AUTO_TEST_CASE( test_1 )
+BOOST_AUTO_TEST_CASE( test_load_font )
 {
-  OgreGui::FontManager* fm=setup_FontManager();
-  //  BOOST_CHECK( font );
-  teardown_FontManager(fm);
+  OgreGui::FontManager *fm;
+  RainbruRPG::OgreGui::Font *font;
+  try
+    {
+      fm=setup_FontManagerWithOgre();
+      font = fm->loadFont("Iconiv2.ttf", 10);
+   }
+  catch (std::exception e)
+    {
+      cout << e.what() << endl;
+    }
+ 
+  BOOST_CHECK( font );
+  teardown_FontManagerWithOgre(fm);
+ }
+
+BOOST_AUTO_TEST_CASE( test_font_not_found )
+{
+ OgreGui::FontManager* fm=setup_FontManagerWithOgre();
+ RainbruRPG::OgreGui::Font* font=NULL;
+ BOOST_CHECK_THROW( font = fm->loadFont("unexpected_font_name.ttf", 10),
+		    Ogre::FileNotFoundException);
+ BOOST_CHECK( font==NULL );
+ teardown_FontManagerWithOgre(fm);
 }

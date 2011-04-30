@@ -5,6 +5,7 @@ dnl Every other copy of the package version number gets its value from here
 AM_INIT_AUTOMAKE(RainbruRPG, 0.0.5)
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
+AC_CONFIG_MACRO_DIR([m4])
 
 dnl The release number (revision)
 RELEASE=211
@@ -67,8 +68,6 @@ AC_SUBST(TAPI_LIBRARY_VERSION)
 dnl --------------------------------
 dnl Package name and version number
 dnl --------------------------------
-
-
 
 dnl GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
 dnl GENERIC_RELEASE=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION
@@ -177,6 +176,8 @@ else
 fi
 AC_PATH_PROG(DLLWRAP, $dllwrap)
 
+
+dnl 'RainbruRPG.html/Makefile' removed because server is broken
 AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\
 	  \
@@ -203,7 +204,6 @@ AC_CONFIG_FILES([Makefile			\
 	  src/examples/Makefile			\
 	  src/examples/tapi/Makefile		\
 	  \
- 	  RainbruRPG.html/Makefile	        \
 	  config/Makefile			\
 	  data/Makefile				\
 	  data/fox/Makefile			\

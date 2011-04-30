@@ -1,3 +1,16 @@
+2011-04-30 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Makefile.am (rainbrurpg_tests_ogregui_SOURCES): Removed 
+	some unit tests with Ogre failling due to Singleton issues.
+	
+	* src/ogreGui/FontManagerTestWithOgre.cpp: created.
+
+	* configure.in (AC_CONFIG_FILES): Removed 'RainbruRPG.html/Makefile' 
+	to make	autoreconf work without calling ./bootstrap.
+	
+	* src/testHelpers/OgreMinimalSetup.cpp (setupOgre): Trying to catch an
+	exception when creating Ogre::Root.
+
 2011-04-09 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/: reate an individual binary for DrawableTest.

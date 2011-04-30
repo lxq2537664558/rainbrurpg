@@ -324,6 +324,24 @@ name, date, heure, gamestate, position, name perso, name server, versions
 **** Should debianize RainbruRPG
      - [ ] Maybe should be installed in /usr/games/ ?
      - [ ] Must debianize PLSM2 before
+**** TODO Some ogreGui unit tests failed due to Ogre::Singleton exception
+     CLOCK: [2011-04-09 sam. 19:35]--[2011-04-09 sam. 19:53] =>  0:18
+     CLOCK: [2011-04-09 sam. 17:22]--[2011-04-09 sam. 17:45] =>  0:23
+     CLOCK: [2011-04-09 sam. 10:18]--[2011-04-09 sam. 10:34] =>  0:16
+- [X] testHelpers do not use Ogre
+      Try to use it to make it fail : test_setup_ogre_not_null_root_singleton
+- [-] Ogre::Singleton<T>::Singleton() [with T = Ogre::Root]: Assertion `!ms_Singleton' failed.
+      - [X] OgreMinimanSetupTest and OgreGui's related don't use 
+	    OgreMinimanSetup::setupOgre() parameter the same way :
+	    1. OgreMinimanSetupTest uses CONFIG_DIR
+	    2. OgreGui's tests uses false
+	    3. If OgreMinimanSetupTest passes false, it also failed
+	    4. It changes the custom_log parameter
+      - [X] Fix compilation with OgreMinimanSetup::setupOgre() new arguments NO
+      - [X] Create an individual exe for DrawableTestWithOgre 
+      - [ ] Pass individual-test-drawablewo through dbg
+	    There is also another assertion that failed
+	    radeon_texture.c:86: radeonFreeTexImageData: Assertion `!image->base.Data' failed.
 *** TODO v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
@@ -838,7 +856,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2011-03-01 mar. 16:25]--[2011-03-01 mar. 16:32] =>  0:07
 - [X] build PLSM2
 - [X] Uses pkg-config
-**** TODO Fix some memory-related issues                              [100%]
+**** TODO Fix some memory-related issues (client's segfault)          [100%]
+     CLOCK: [2011-04-30 sam. 14:49]--[2011-04-30 sam. 15:17] =>  0:28
+     CLOCK: [2011-04-30 sam. 11:33]--[2011-04-30 sam. 11:55] =>  0:22
      CLOCK: [2011-04-02 sam. 20:04]--[2011-04-02 sam. 20:24] =>  0:20
      CLOCK: [2011-03-19 sam. 11:04]--[2011-03-19 sam. 11:22] =>  0:18
      CLOCK: [2011-03-12 sam. 15:41]--[2011-03-12 sam. 16:13] =>  0:32
@@ -881,11 +901,11 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       media/materials/scripts/ files.
       OK : media/materials/scripts/Makefile do not install all files
 - [X] Remove tests/ogreGui/ directory
-- [ ] New Ogre::Singleton assertion with Ogre::Root in FontManagerTest
+- [X] New Ogre::Singleton assertion with Ogre::Root in FontManagerTest
       Only in FontManagerTest and DrawableTestWithOgre
-      - [ ] Try to catch an Ogre::Exception when creating root 
+      - [X] Try to catch an Ogre::Exception when creating root 
 	    in OgreMinimalSetup
-      - [ ] Make individual binaries for FontManagerTest 
+      - [X] Make individual binaries for FontManagerTest 
 	    and DrawableTestWithOgre
 - [-] List possible spurious class and pass it through valgrind
       with individual tests
@@ -933,24 +953,6 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
-**** TODO Some ogreGui unit tests failed due to Ogre::Singleton exception
-     CLOCK: [2011-04-09 sam. 19:35]--[2011-04-09 sam. 19:53] =>  0:18
-     CLOCK: [2011-04-09 sam. 17:22]--[2011-04-09 sam. 17:45] =>  0:23
-     CLOCK: [2011-04-09 sam. 10:18]--[2011-04-09 sam. 10:34] =>  0:16
-- [X] testHelpers do not use Ogre
-      Try to use it to make it fail : test_setup_ogre_not_null_root_singleton
-- [-] Ogre::Singleton<T>::Singleton() [with T = Ogre::Root]: Assertion `!ms_Singleton' failed.
-      - [X] OgreMinimanSetupTest and OgreGui's related don't use 
-	    OgreMinimanSetup::setupOgre() parameter the same way :
-	    1. OgreMinimanSetupTest uses CONFIG_DIR
-	    2. OgreGui's tests uses false
-	    3. If OgreMinimanSetupTest passes false, it also failed
-	    4. It changes the custom_log parameter
-      - [X] Fix compilation with OgreMinimanSetup::setupOgre() new arguments NO
-      - [X] Create an individual exe for DrawableTestWithOgre 
-      - [ ] Pass individual-test-drawablewo through dbg
-	    There is also another assertion that failed
-	    radeon_texture.c:86: radeonFreeTexImageData: Assertion `!image->base.Data' failed.
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07

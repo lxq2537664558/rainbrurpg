@@ -34,7 +34,7 @@ using namespace RainbruRPG::OgreGui;
 
 WidgetList* setup_WidgetList()
 {
-  return new WidgetList(" TestList" );
+  return new WidgetList("TestList" );
 }
 
 void teardown_WidgetList(WidgetList* vWidgetList)
@@ -83,6 +83,8 @@ BOOST_AUTO_TEST_CASE( test_WidgetList_UniqueName )
   for (iter = list.begin(); iter != list.end(); iter++){
     names.push_back( (*iter)->getUniqueName() );
   }
+
+  cout << "UniqueName is " << ret << endl;
 
   // Test
   BOOST_ASSERT( ret == "Parent/TestList" );

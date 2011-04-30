@@ -95,7 +95,6 @@ BOOST_AUTO_TEST_CASE( test_serializable_NotEqual )
   delete test1;
   
   // Test a non equal assert (with operator !=)
-  LOGI("Starting testNotEqual");
   Serializable* test2 = new Serializable("Name"); 
   test2->setUniqueName("testNOT_EqualParent");
   bool equal = (*instance) != (*test2); // See test below

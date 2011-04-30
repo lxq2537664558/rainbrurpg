@@ -62,6 +62,8 @@ OgreMinimalSetup::~OgreMinimalSetup()
 void 
 OgreMinimalSetup::setupOgre(const Ogre::String& base_dir, bool custom_log)
 {
+  Ogre::Root *root; // The Ogre root singleton
+
   mListener = new SilentLogListener();
 
   string dir= base_dir + "config/";
@@ -85,9 +87,16 @@ OgreMinimalSetup::setupOgre(const Ogre::String& base_dir, bool custom_log)
     exit(1);
   }
 
+  try
+    {
+      root = new Ogre::Root(dir + "plugins-unittests.cfg", 
+			    dir + "ogre.cfg", dir + "ogre.log");
+    }
+  catch(Ogre::Exception e){
+    cout << "setupOgre failed to initialize Ogre::Root : "<< e.what() << endl;
+    exit(1);
+  }
 
-  Ogre::Root* root = new Ogre::Root(dir + "plugins-unittests.cfg", 
-				    dir + "ogre.cfg", dir + "ogre.log");
   assert(root && "Cannot initialize Ogre::Root");
   assert(Ogre::Root::getSingletonPtr() && "Cannot initialize Ogre::Root");
 
