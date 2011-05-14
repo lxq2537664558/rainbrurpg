@@ -78,7 +78,6 @@ RainbruRPG::Core::gsMenuBase::gsMenuBase(const string& vName, bool cm):
   staticMenu=NULL;
 #endif // USE_DYNAMIC_MENU
 
-
   LOGI("Constructing a  gsMenuBase");
   inputWrapper=new InputWrapper();
   tabNav=new KeyboardNavigation();
@@ -174,7 +173,7 @@ void RainbruRPG::Core::gsMenuBase::run(){
 
 }
 
-/** Cerates the OgreGui window used to draw dynamic menu widget
+/** Creates the OgreGui window used to draw dynamic menu widget
   *
   * This must be called before calling createBorder(), createMenuBackground()
   * or createDynamicBackground().

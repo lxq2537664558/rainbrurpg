@@ -122,6 +122,11 @@ void OgreMinimalSetup::teardownOgre()
     ->destroyRenderWindow(RW_NAME);
   Ogre::Root::getSingleton().getRenderSystem()->shutdown();
   */
+
+
+  /* Do not destroy the singleton, try to keep it on for
+     all tests*/
+  
   Ogre::Root::getSingleton().shutdown();
   Ogre::Root* mRoot = Ogre::Root::getSingletonPtr();
   delete mRoot;

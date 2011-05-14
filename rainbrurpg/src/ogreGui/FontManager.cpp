@@ -131,7 +131,7 @@ loadFont(const String& name, unsigned int size){
 #else
   int bufferSize = 512;
 #endif
-  //  FT_Byte* fontBuffer=(FT_Byte*)malloc(bufferSize*sizeof(FT_Byte));
+
   FT_Byte* fontBuffer = new FT_Byte[bufferSize];
 
 #ifndef NO_OGRE
@@ -172,9 +172,8 @@ loadFont(const String& name, unsigned int size){
 #endif
 
   // Delete font buffer
-  //  free(fontBuffer);
   delete[] fontBuffer;
-  //  fontBuffer=NULL;
+  fontBuffer=NULL;
 
   return newFont;
 }

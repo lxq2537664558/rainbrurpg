@@ -121,7 +121,6 @@ const string& RainbruRPG::Core::GameState::getName(void)const{
   */
 void RainbruRPG::Core::GameState::draw(Brush* vBrush)
 {
-  LOGI("GameState::draw() called");
   // if dirty: mContainer->compute(0,0);
   if (mContainer->isDirty())
     mContainer->compute(0,0, mScissor);

@@ -115,7 +115,10 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-212 (19 mar 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (10) Removed ogreGui's unit tests using Ogre (singleton issues)
+- (13) Client now works in debug mode
+- Restart debug with a brand-new item
+- Cancelled current ROADMAP item for ogreGui issues
+- Removed ogreGui's unit tests using Ogre (singleton issues)
 - FontManagerTestWithOgre created
 - README ad INSTALL files update
 - Removed 'RainbruRPG.html/Makefile' in configure.in

@@ -1,4 +1,8 @@
 					Hey emacs, this is a -*-org-*- file.
+
+#+TODO: TODO | DONE
+#+TODO: TODO | CANCELED
+
 					
 * v1.0.0
 ** v0.3.0
@@ -856,7 +860,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2011-03-01 mar. 16:25]--[2011-03-01 mar. 16:32] =>  0:07
 - [X] build PLSM2
 - [X] Uses pkg-config
-**** TODO Fix some memory-related issues (client's segfault)          [100%]
+**** CANCELED Fix some memory-related issues (client's segfault)          [100%]
+     CLOCK: [2011-05-14 sam. 16:30]--[2011-05-14 sam. 16:59] =>  0:29
      CLOCK: [2011-04-30 sam. 14:49]--[2011-04-30 sam. 15:17] =>  0:28
      CLOCK: [2011-04-30 sam. 11:33]--[2011-04-30 sam. 11:55] =>  0:22
      CLOCK: [2011-04-02 sam. 20:04]--[2011-04-02 sam. 20:24] =>  0:20
@@ -907,6 +912,9 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
 	    in OgreMinimalSetup
       - [X] Make individual binaries for FontManagerTest 
 	    and DrawableTestWithOgre
+- [ ] Continue ogreGui unit tests
+      - [ ] FontTest
+      - [ ] GluphTest
 - [-] List possible spurious class and pass it through valgrind
       with individual tests
       Export the environment variable GLIBCXX_FORCE_NEW with valgrind
@@ -925,7 +933,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
 	    definitely lost: 6,288 bytes in 16 blocks
 	    still reachable: 39,683 bytes in 307 blocks
 	    - [ ] GameEngine
-**** TODO Create a DummyRenderSystem for Ogre
+**** CANCELED Create a DummyRenderSystem for Ogre
      CLOCK: [2011-02-19 sam. 15:42]--[2011-02-19 sam. 16:04] =>  0:22
      :CLOCK:
      CLOCK: [2011-01-30 dim. 11:00]--[2011-01-30 dim. 11:20] =>  0:20
@@ -953,6 +961,15 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
+**** TODO Trying to get ogreGui's spurious classes
+     CLOCK: [2011-05-14 sam. 20:12]--[2011-05-14 sam. 20:47] =>  0:35
+- [ ] Completely deactivate ogreGui from maincore/client
+      Test it and see if alone, maincore still segfault
+      Mark comment blocks with REMOVED_FOR_OGREGUI_ISSUE_TRACKING
+      => `grep REMOVED_FOR_OGREGUI_ISSUE_TRACKING src/*/*.cpp` to list 
+      modified files
+      Always configure with --enable-debug to get a log
+      - [ ] It works in debug mode :( Should know why
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
