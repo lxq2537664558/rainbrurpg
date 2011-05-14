@@ -1017,6 +1017,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
+- [ ] Can we `make distbz2` from autotools
 **** Miscelaneous                                                     [37%]
      :CLOCK:
      CLOCK: [2011-01-23 dim. 16:22]--[2011-01-23 dim. 16:39] =>  0:17
@@ -1038,3 +1039,4 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
 - [ ] Change libtool versionning of OgreGui
 - [ ] File release sourceforge (zip+bz2+win32bin)
       - [ ] Should add all-src or win32-bin to the release names
+- [ ] Create README in textile (or other) format in each file directory

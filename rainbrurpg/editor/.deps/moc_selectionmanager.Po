@@ -1,1 +1,0 @@
-moc_selectionmanager.o moc_selectionmanager.o: moc_selectionmanager.cpp

@@ -1,6 +1,0 @@
-listboxitem.lo .libs/listboxitem.o: listboxitem.cpp listboxitem.h \
-  widget.h
-
-listboxitem.h:
-
-widget.h:

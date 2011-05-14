@@ -1,3 +1,0 @@
-widget.lo .libs/widget.o: widget.cpp widget.h
-
-widget.h:
