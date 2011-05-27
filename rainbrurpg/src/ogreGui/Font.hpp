@@ -58,6 +58,18 @@ namespace RainbruRPG {
 }
 //End of forward declarations
 
+/** \def GLYPH_V_SPACE
+  * Defines the vertical margin applied to glyph
+  *
+  * It is used in \ref RainbruRPG::OgreGui::Font::Font() "Font()" to 
+  * compute the value of \ref RainbruRPG::OgreGui::Font::mMaxGlyphHeight 
+  * "mMaxGlyphHeight".
+  *
+  * It is defined in the header file because it is used for maxGlyphHeight
+  * predication in unit tests.
+  *
+  */
+#define GLYPH_V_SPACE 2
 
 namespace RainbruRPG{
   namespace OgreGui{
@@ -155,7 +167,7 @@ namespace RainbruRPG{
       /** The maximum height of a glyph */
       size_t mMaxGlyphHeight;
 
-      /** A STL map iof glyphs */
+      /** A STL map of glyphs */
       GlyphMap mGlyphMap;
 
       /** \todo documentation ?? */

@@ -84,8 +84,6 @@ BOOST_AUTO_TEST_CASE( test_WidgetList_UniqueName )
     names.push_back( (*iter)->getUniqueName() );
   }
 
-  cout << "UniqueName is " << ret << endl;
-
   // Test
   BOOST_ASSERT( ret == "Parent/TestList" );
   BOOST_ASSERT( names[0] == "Parent/TestList/Child1" );

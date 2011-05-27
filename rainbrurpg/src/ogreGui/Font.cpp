@@ -37,15 +37,6 @@
 
 #include <dumpogreobject.h>
 
-/** \def GLYPH_V_SPACE
-  * Defines the vertical margin applied to glyph
-  *
-  * It is used in \ref RainbruRPG::OgreGui::Font::Font() "Font()" to 
-  * compute the value of \ref RainbruRPG::OgreGui::Font::mMaxGlyphHeight 
-  * "mMaxGlyphHeight".
-  *
-  */
-#define GLYPH_V_SPACE 2
 
 /** The font constructor
   *

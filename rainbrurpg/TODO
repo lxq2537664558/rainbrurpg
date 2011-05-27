@@ -114,8 +114,12 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-212 (19 mar 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (13) Client now works in debug mode
+* v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
+
+* v0.0.5-212 (19 mar 2011 - 27 may 2011) SLOC 43,269 UT 270 FT 100:03
+- Started Font's unittests implementation
+- Started Glyph's unittests implementation
+- Client now works in debug mode
 - Restart debug with a brand-new item
 - Cancelled current ROADMAP item for ogreGui issues
 - Removed ogreGui's unit tests using Ogre (singleton issues)
@@ -130,19 +134,3 @@ A system that serialize widgets position and configuration
 - testHelper tests root songleton consistency
 - Search for a fix for Ogre::Root failed assertion
 
-* v0.0.5-211 (28 jan 2011 - 19 mar 2011) SLOC 43,101 UT ??? FT 95:58
-- Added a parameter for Tests and custom Ogre3D log
-- Created a valgrind suppression file for OgreMinimalSetup
-- Removed unused src/tests/ogerGui directory
-- Fix an Ogre3d exception due to missing material
-- Fixed a memory issue in GlobalUri
-- configure checks for Boost.Test
-- Updated OIS version in DEPENDENCIES
-- Some changes in InputManager
-- Reimplented empty DummyRenderSystem purely virtual functions
-- Improved FreeType library version check
-- Reimplented empty DummyRenderSystem functions
-- RenderSystem_Dummy.so needs some pure virtual functions implemented
-- Get a build for RenderSystem_Dummy.so
-- DummyRenderSystem skeleton implementation
-- Added DummyRenderSystem to ROADMAP

@@ -8,7 +8,7 @@ AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
 dnl The release number (revision)
-RELEASE=211
+RELEASE=212
 AC_SUBST([RELEASE])
 AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 

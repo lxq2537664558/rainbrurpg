@@ -1,3 +1,20 @@
+* v0.0.5-211 (28 jan 2011 - 19 mar 2011) SLOC 43,101 UT ??? FT 95:58
+- Added a parameter for Tests and custom Ogre3D log
+- Created a valgrind suppression file for OgreMinimalSetup
+- Removed unused src/tests/ogerGui directory
+- Fix an Ogre3d exception due to missing material
+- Fixed a memory issue in GlobalUri
+- configure checks for Boost.Test
+- Updated OIS version in DEPENDENCIES
+- Some changes in InputManager
+- Reimplented empty DummyRenderSystem purely virtual functions
+- Improved FreeType library version check
+- Reimplented empty DummyRenderSystem functions
+- RenderSystem_Dummy.so needs some pure virtual functions implemented
+- Get a build for RenderSystem_Dummy.so
+- DummyRenderSystem skeleton implementation
+- Added DummyRenderSystem to ROADMAP
+
 * v0.0.5-210 (02 jan 2011 - 28 jan 2011) SLOC 42,930 UT 261 FT 90:31
 - Improved Doxygen.in for faster documentation generation
 - Fixed some documentation warnings

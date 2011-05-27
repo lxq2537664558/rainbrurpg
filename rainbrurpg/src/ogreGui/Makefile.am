@@ -139,7 +139,9 @@ rainbrurpg_tests_ogregui_SOURCES= 		\
 	ContainerTest.cpp			\
 	DrawableTest.cpp			\
 	FocusableTest.cpp			\
+	FontTest.cpp				\
 	FontManagerTest.cpp			\
+	GlyphTest.cpp				\
 	SerializableTest.cpp			\
 	WidgetListTest.cpp			\
 	$(cc_sources)

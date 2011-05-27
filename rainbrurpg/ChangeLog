@@ -1,5 +1,11 @@
-2011-04-30 Jerome Pasquier  <rainbru@free.fr>
+2011-05-27 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/GlyphTest.cpp: Start unit tests implementation.
+
+	* src/ogreGui/FontTest.cpp: Start unit tests implementation.
+
+2011-04-30 Jerome Pasquier  <rainbru@free.fr>
+	
 	* src/ogreGui/Makefile.am (rainbrurpg_tests_ogregui_SOURCES): Removed 
 	some unit tests with Ogre failling due to Singleton issues.
 	
