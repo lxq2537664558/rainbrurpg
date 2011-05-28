@@ -34,7 +34,7 @@
 //#include <bgtextinput.h>
 //#include <pushbutton.h>
 //#include <label.h>
-
+#include <Window.hpp>
 
 #include <OgrePrerequisites.h> // for Ogre::String
 
@@ -60,6 +60,26 @@ RainbruRPG::Core::gsConnection::gsConnection():
   velocity=new vcConstant();
 }
 
+/** The copy constructor
+  *
+  * \param rhs The right-hand side game state
+  *
+  */
+RainbruRPG::Core::gsConnection::gsConnection(const gsConnection& rhs):
+  gsMenuBase(rhs.getName(), rhs.getCreateMenu()),
+  btnConnect(rhs.btnConnect),
+  btnCreateAccount(rhs.btnCreateAccount ),
+  btnLostPwd(rhs.btnLostPwd ),
+  btnBack(rhs.btnBack ),
+  window(rhs.window ),
+  winBack(rhs.winBack ),
+  tiUserName(rhs.tiUserName ),
+  tiPassword(rhs.tiPassword )
+{
+  LOGE("DEEP_DEBUG : copy");
+}
+
+
 /** The default destructor
   *
   */
@@ -69,30 +89,46 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
     velocity=NULL;
   }
 
-  //  delete btnBack;
-  btnBack=NULL;
-
-  //  delete btnConnect;
-  btnConnect=NULL;
-
-  //  delete btnCreateAccount;
-  btnCreateAccount=NULL;
-
-  //  delete btnLostPwd;
-  btnLostPwd=NULL;
-
-  //  delete tiUserName;
-  tiUserName=NULL;
-
-  //  delete tiPassword;
-  tiPassword=NULL;
-
-  //  delete window;
-  window=NULL;
-
-  //  delete winBack;
-  winBack=NULL;
+  /* Must wait for OgreGui widgets implementation
+  delete btnBack;
+  delete btnConnect;
+  delete btnCreateAccount;
+  delete btnLostPwd;
+  delete tiUserName;
+  delete tiPassword;
+  */
+  delete window;
+  delete winBack;
 }
+
+gsConnection& RainbruRPG::Core::gsConnection::
+operator=(const  gsConnection& rhs)
+{
+    // 3.  Copy the values from rhs into this instance
+    // 4.  Return *this
+    // Only do assignment if RHS is a different object from this.
+  if (this != &rhs) 
+    {
+      // 1. Deallocate any memory that MyClass is using internally
+      /*      delete btnBack;
+      delete btnConnect;
+      delete btnCreateAccount;
+      delete btnLostPwd;
+      delete tiUserName;
+      delete tiPassword;
+      */
+      delete window;
+      delete winBack;
+
+      // 2.  Allocate some memory to hold the contents of rhs
+      //      btnBack(rhs.btnBack);
+      //      window = new Window(rhs.window);
+    }
+  LOGE("DEEP_DEBUG : assignment");
+
+  return *this;
+}
+
 
 /** Initialize the game state
   *

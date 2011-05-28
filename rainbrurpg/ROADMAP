@@ -967,14 +967,84 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
 **** TODO Trying to get ogreGui's spurious classes
+     CLOCK: [2011-05-29 dim. 00:02]--[2011-05-29 dim. 00:33] =>  0:31
+     CLOCK: [2011-05-28 sam. 22:41]--[2011-05-28 sam. 23:37] =>  0:56
+     CLOCK: [2011-05-28 sam. 01:09]--[2011-05-28 sam. 01:22] =>  0:13
      CLOCK: [2011-05-14 sam. 20:12]--[2011-05-14 sam. 20:47] =>  0:35
-- [ ] Completely deactivate ogreGui from maincore/client
+- [X] Completely deactivate ogreGui from maincore/client
       Test it and see if alone, maincore still segfault
       Mark comment blocks with REMOVED_FOR_OGREGUI_ISSUE_TRACKING
       => `grep REMOVED_FOR_OGREGUI_ISSUE_TRACKING src/*/*.cpp` to list 
       modified files
       Always configure with --enable-debug to get a log
-      - [ ] It works in debug mode :( Should know why
+      - [X] It works in debug mode :( Should know why
+- [ ] Must fix some missing copyctor assignment operator
+      - [ ] In two phases
+	    Many of these clases need members 
+	    documentation refactoring (like in Brush)
+	    - [ ] 1st : Implement copy constructor and assignement operator
+		  with LOGE(DEEP_DEBUG : copy|assignement) for test
+	    - [ ] 2nd : remove LOGE(), impl. operator== and unit tests
+      - [ ] in client/
+	    *Must wait in the following for the OgreGui's widgets*
+	    - [ ] gsconnection
+     	    - [ ] gsCreateAccount
+     	    - [ ] gsMainMenu
+     	    - [ ] gsMenuBase
+     	    - [ ] gsServerList
+     	    - [ ] gsOgreguiTest
+     - [ ] in ogregui/
+     	    - [ ] Brush (All members aren't copied/assigned)
+     	    - [ ] Container
+     	    - [ ] Drawable
+     	    - [ ] Label
+     	    - [ ] TextSettings
+     - [ ] in maincore/
+     	    - [ ] EnvironmentSetup
+     	    - [ ] GameEngine
+     	    - [ ] GameState
+     	    - [ ] gsGameBase
+     	    - [ ] InputManager
+     	    - [ ] VelocityCalculator
+     - [ ] in common/ (Many const char* to be replaced with std::string)
+      	    - [ ] ChartBase
+      	    - [ ] CurlAccountAdd
+      	    - [ ] CurlAccountConfirmMail
+      	    - [ ] CurlAccountDelete
+      	    - [ ] CurlAccountToggleBlacklist
+      	    - [ ] CurlFileToXml
+      	    - [ ] CurlInterface
+      	    - [ ] CurlPersoHeaderAdd
+      	    - [ ] CurlPersoHeaderDelete
+      	    - [ ] CurlPersoModifAttrb
+      	    - [ ] CurlPostedData
+      	    - [ ] CurlServerAdd
+      	    - [ ] CurlServerModifClients
+      	    - [ ] EnetClient
+      	    - [ ] FtpClient
+      	    - [ ] HttpResponse
+      	    - [ ] NetPacketBase
+      	    - [ ] NetPacketFlooderBase
+      	    - [ ] npConnectionResponse
+      	    - [ ] npFlooder0004
+      	    - [ ] npIdentification
+      	    - [ ] ObjectMesh
+      	    - [ ] OptionAttribute
+      	    - [ ] OptionButton
+      	    - [ ] OptionPanel
+      	    - [ ] Options
+      	    - [ ] Timer
+      	    - [ ] Version
+      	    - [ ] xmlAccountList
+      	    - [ ] xmlAttrbCatList
+      	    - [ ] xmlAttributeList
+      	    - [ ] xmlBonusFile
+      	    - [ ] xmlBonusFileList
+      	    - [ ] xmlLanguage
+      	    - [ ] xmlObjectList
+      	    - [ ] xmlOptions
+      	    - [ ] xmlPersoList
+      	    - [ ] xmlServerList
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07

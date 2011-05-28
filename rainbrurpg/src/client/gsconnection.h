@@ -73,7 +73,10 @@ namespace RainbruRPG {
     class gsConnection : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
       gsConnection();
+      gsConnection(const gsConnection&);
       virtual ~gsConnection();
+
+      gsConnection& operator=(const  gsConnection&);
 
       virtual void init();
       virtual void resume();

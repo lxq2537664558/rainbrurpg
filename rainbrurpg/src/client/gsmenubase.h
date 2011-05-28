@@ -136,6 +136,8 @@ namespace RainbruRPG {
 	*/
       virtual void setupTabOrder()=0;
 
+      bool getCreateMenu(void)const;
+
     protected:
 
       void createMenuWindow(void);

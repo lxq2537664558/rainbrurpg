@@ -90,6 +90,44 @@ Brush(const string& vCreatorName):
 
 }
 
+/** The copy constructor
+  *
+  * \param rhs The right-hand side Brush
+  *
+  */
+RainbruRPG::OgreGui::Brush::Brush(const Brush& rhs):
+  mSceneManager ( rhs.getSceneManager() ),
+  mRenderSystem ( rhs.getRenderSystem() ),
+  mViewport     ( rhs.getViewport() ),
+  mCreatorName  ( rhs.getCreatorName() ),
+  mTexture      ( rhs.getTexture() )
+{
+  LOGE("DEEP_DEBUG : copy");
+}
+
+
+/** The assignment operator
+  *
+  * \param rhs The right-hand side Brush
+  *
+  */
+Brush& RainbruRPG::OgreGui::Brush::operator=(const  Brush& rhs)
+{
+  if (this != &rhs) 
+    {
+      // 
+      mSceneManager = rhs.mSceneManager;
+      mRenderSystem = rhs.mRenderSystem;
+      mViewport     = rhs.mViewport;
+      mCreatorName  = rhs.mCreatorName;
+      mTexture      = rhs.mTexture;
+
+      delete mBatchPointer;
+      mBatchPointer = new GuiVertex(*rhs.mBatchPointer);
+    }
+
+  return *this;
+}
 
 /** The destructor
   *

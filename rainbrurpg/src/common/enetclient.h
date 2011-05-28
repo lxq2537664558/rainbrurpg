@@ -89,11 +89,11 @@ namespace RainbruRPG{
       /** The enet host used to be the client
         *
 	*/
-      ENetHost * client;
+      ENetHost* client;
       /** The global enet peer
         *
 	*/
-      ENetPeer * peer;
+      ENetPeer* peer;
       /** The enet event structure
         *
 	*/

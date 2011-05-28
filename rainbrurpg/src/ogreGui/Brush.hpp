@@ -117,6 +117,10 @@ namespace RainbruRPG{
     public:
       Brush(RenderSystem*, SceneManager*, Viewport*, const string&);
       Brush(const string&);
+
+      Brush(const Brush&);
+      Brush& operator=(const Brush&s);
+
       ~Brush();
 
       void begin();
@@ -163,13 +167,20 @@ namespace RainbruRPG{
       std::string blendModeToString(tBrushBlendMode);
       std::string stateToString(const tBrushState);
 
-    private:
+      // Accessors
+      SceneManager* getSceneManager()const { return mSceneManager; };
+      RenderSystem* getRenderSystem()const { return mRenderSystem; };
+      Viewport* getViewport()const { return mViewport; };
+      const std::string& getCreatorName()const { return mCreatorName; };
+      TexturePtr getTexture()const { return mTexture; };
+ 
+   private:
       /** The current Ogre scene manager
         *
 	* Used to called the \c _setpass() function.
 	*
 	*/
-      SceneManager *mSceneManager;
+      SceneManager* mSceneManager;
 
       /** The current Ogre rendering system
         *
@@ -217,11 +228,8 @@ namespace RainbruRPG{
 	*/
       HardwareVertexBufferSharedPtr mBuffer;
 
-      /** A pointer to the current texture */
-      TexturePtr mTexture;
+      TexturePtr mTexture; //!< A pointer to the current texture
 
-      /// The Brush state
-      tBrushState mState;
 
       /** The viewport width in pixels
         *
@@ -270,32 +278,25 @@ namespace RainbruRPG{
 	*/
       bool useScissor;
 
-      /** A vector of vertexes */
-      vector<Ogre::Vector3> vert;
-      /** A vector of UV mapping */
-      vector<Vector2> uvs;
-      /** A vector of color; */
-      vector<ColourValue> cols;
 
       /** The rectangle to draw (can be outside of scissorRect) */
       Ogre::Rectangle finalRect;
 
-      /** The current drawing color */
-      ColourValue mColor;
-
-      /** The texture alpha value from 0.0f (fully transparent) to 1.0f 
+       /** The texture alpha value from 0.0f (fully transparent) to 1.0f 
         *  (fully opaque) 
 	*/
       float alphaValue;
 
-      /** The current blend (transparency) mode */
-      tBrushBlendMode mBlendMode;
+      tBrushState mState;         //!< The Brush state
 
-      /** Used when drawing text */
-      GuiVertex* mBatchPointer;
-
-      /** Used when drawing text */
-      size_t mBatchCount;
+      vector<Ogre::Vector3> vert; //!< A vector of vertexes
+      vector<Vector2> uvs;        //!< A vector of UV mapping
+      vector<ColourValue> cols;   //!< A vector of color
+      
+      ColourValue mColor;         //!< The current drawing color
+      tBrushBlendMode mBlendMode; //!< The current blend (transparency) mode
+      GuiVertex* mBatchPointer;   //!< Used when drawing text
+      size_t mBatchCount;         //!< Used when drawing text
 
     };
 

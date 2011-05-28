@@ -561,3 +561,7 @@ void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
   GuiManager::getSingleton().createErrorLabel();
   */
 }
+
+bool RainbruRPG::Core::gsMenuBase::getCreateMenu(void)const{ 
+  return this->createMenu; 
+}

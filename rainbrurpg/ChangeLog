@@ -1,5 +1,11 @@
 2011-05-27 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Brush.cpp: Implement deep copy and assignment.
+	
+	* src/client/gsconnection.cpp: Implement deep copy and assignment.
+
+2011-05-27 Jerome Pasquier  <rainbru@free.fr>
+
 	* src/ogreGui/GlyphTest.cpp: Start unit tests implementation.
 
 	* src/ogreGui/FontTest.cpp: Start unit tests implementation.

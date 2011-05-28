@@ -95,14 +95,14 @@ namespace RainbruRPG{
 	*/
       LanguageSelector(){};
 
-      /** An empty constructor
+      /** An empty copy constructor
         *
 	* It is required by the c++ specifications to avoid 
 	* undefined references.
 	*/
       LanguageSelector(const LanguageSelector&);
 
-      /** An empty constructor
+      /** An empty assignement operator
         *
 	* It is required by the c++ specifications to avoid 
 	* undefined references.
