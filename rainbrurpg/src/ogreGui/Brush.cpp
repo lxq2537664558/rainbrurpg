@@ -96,13 +96,35 @@ Brush(const string& vCreatorName):
   *
   */
 RainbruRPG::OgreGui::Brush::Brush(const Brush& rhs):
-  mSceneManager ( rhs.getSceneManager() ),
-  mRenderSystem ( rhs.getRenderSystem() ),
-  mViewport     ( rhs.getViewport() ),
-  mCreatorName  ( rhs.getCreatorName() ),
-  mTexture      ( rhs.getTexture() )
+  mSceneManager ( rhs.mSceneManager ),
+  mRenderSystem ( rhs.mRenderSystem ),
+  mViewport     ( rhs.mViewport ),
+  mCreatorName  ( rhs.mCreatorName ),
+
+  mFlipY        ( rhs.mFlipY ),
+  mTexture      ( rhs.mTexture ),
+  mRenderOp     ( rhs.mRenderOp ),
+  mBuffer       ( rhs.mBuffer ),
+  winWidth      ( rhs.winWidth ),
+  winHeight     ( rhs.winHeight ),
+  usedTexture   ( rhs.usedTexture ),
+  uvRect        ( rhs.uvRect ),
+  scissorRect   ( rhs.scissorRect ),
+  useScissor    ( rhs.useScissor ),
+  finalRect     ( rhs.finalRect ),
+  alphaValue    ( rhs.alphaValue ),
+  mState        ( rhs.mState ),
+  vert          ( rhs.vert ),
+  uvs           ( rhs.uvs ),
+  cols          ( rhs.cols ),
+  mColor        ( rhs.mColor ),
+  mBlendMode    ( rhs.mBlendMode ),
+  mBatchPointer ( rhs.mBatchPointer ),
+  mBatchCount   ( rhs.mBatchCount )
 {
   LOGE("DEEP_DEBUG : copy");
+  
+  
 }
 
 
@@ -113,6 +135,7 @@ RainbruRPG::OgreGui::Brush::Brush(const Brush& rhs):
   */
 Brush& RainbruRPG::OgreGui::Brush::operator=(const  Brush& rhs)
 {
+  LOGE("DEEP_DEBUG : assignment");
   if (this != &rhs) 
     {
       // 
@@ -124,6 +147,28 @@ Brush& RainbruRPG::OgreGui::Brush::operator=(const  Brush& rhs)
 
       delete mBatchPointer;
       mBatchPointer = new GuiVertex(*rhs.mBatchPointer);
+
+      mFlipY        = rhs.mFlipY ;
+      mTexture      = rhs.mTexture ;
+      mRenderOp     = rhs.mRenderOp ;
+      mBuffer       = rhs.mBuffer ;
+      winWidth      = rhs.winWidth ;
+      winHeight     = rhs.winHeight ;
+      usedTexture   = rhs.usedTexture ;
+      uvRect        = rhs.uvRect ;
+      scissorRect   = rhs.scissorRect ;
+      useScissor    = rhs.useScissor ;
+      finalRect     = rhs.finalRect ;
+      alphaValue    = rhs.alphaValue ;
+      mState        = rhs.mState ;
+      vert          = rhs.vert ;
+      uvs           = rhs.uvs ;
+      cols          = rhs.cols ;
+      mColor        = rhs.mColor ;
+      mBlendMode    = rhs.mBlendMode ;
+      mBatchPointer = rhs.mBatchPointer ;
+      mBatchCount   = rhs.mBatchCount;
+
     }
 
   return *this;

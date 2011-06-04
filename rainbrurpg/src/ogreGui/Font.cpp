@@ -71,6 +71,39 @@ RainbruRPG::OgreGui::Font::~Font(){
   */
 }
 
+/// Copy constructor
+RainbruRPG::OgreGui::Font::Font(const Font& rhs):
+  mName(rhs.mName),
+  mSize(rhs.mSize),
+  mMaxGlyphHeight(rhs.mMaxGlyphHeight),
+  mGlyphMap(rhs.mGlyphMap),
+  mMaxBearingY(rhs.mMaxBearingY),
+  mTextureName(rhs.mTextureName),
+  mLineList(rhs.mLineList),
+  mTexture(rhs.mTexture)
+{
+ 
+}
+
+
+RainbruRPG::OgreGui::Font& 
+RainbruRPG::OgreGui::Font::operator=(const RainbruRPG::OgreGui::Font& rhs)
+{
+  if (this != &rhs)
+    {
+      mName           = rhs.mName;
+      mSize           = rhs.mSize;
+      mMaxGlyphHeight = rhs.mMaxGlyphHeight;
+      mGlyphMap       = rhs.mGlyphMap;
+      mMaxBearingY    = rhs.mMaxBearingY;
+      mTextureName    = rhs.mTextureName;
+      mLineList       = rhs.mLineList;
+      mTexture        = rhs.mTexture;
+    }
+  return *this;
+}
+
+
 /** Get the point size of this font
   *
   * \return The font size
@@ -305,13 +338,14 @@ Glyph* RainbruRPG::OgreGui::Font::getGlyph(size_t vChar) const{
     GTS_MID(str);
     // TRANSLATORS: The parameter is an unsigned integer (size_t typed)
     // that represents a character (a charcode).
-    sprintf(str, _("Font::getGlyph not found for charcode %u"), vChar);
+    sprintf(str, _("Font::getGlyph not found for charcode %u"), 
+	    (unsigned int)vChar);
     LOGE(str);
 
     GTS_LIT(str2);
     // TRANSLATORS: The parameter is the size of the map containing
     // character glyphs (an unsigned integer value).
-    sprintf(str2, _("mGlyphMap.size=%u"), mGlyphMap.size());
+    sprintf(str2, _("mGlyphMap.size=%u"), (unsigned int)mGlyphMap.size());
     LOGI(str2);
 
     it=mGlyphMap.begin();

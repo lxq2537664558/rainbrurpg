@@ -58,6 +58,9 @@ namespace RainbruRPG{
       Label(Widget*, int, int, int, int, const string&);
       virtual ~Label();
 
+      Label(const Label&);
+      Label& operator=(const Label&);
+
       void setCaption(const string&);
       const string& getCaption(void);
 

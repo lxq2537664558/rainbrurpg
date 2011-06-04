@@ -33,6 +33,8 @@
 
 #include "logger.h"
 
+#include <sstream>
+
 /** The constructor
   *
   * \param vParent  The parent widget
@@ -57,7 +59,34 @@ Label(Widget* vParent, int vX1, int vY1, int vX2, int vY2,
 RainbruRPG::OgreGui::Label::~Label()
 {
   delete mTextSettings;
+  mTextSettings = NULL;
 }
+
+RainbruRPG::OgreGui::Label::Label(const Label& rhs):
+  Widget(rhs),
+  mCaption(rhs.mCaption),
+  mWordwrap(rhs.mWordwrap),
+  mTextSettings(rhs.mTextSettings)
+{
+  LOGE("DEEP_DEBUG : copy");
+
+}
+
+RainbruRPG::OgreGui::Label::Label& 
+RainbruRPG::OgreGui::Label::operator=(const Label& rhs)
+{
+  LOGE("DEEP_DEBUG : assignment");
+  if (this != &rhs)
+    {
+      mCaption = rhs.mCaption;
+      mWordwrap = rhs.mWordwrap;
+
+      delete mTextSettings;
+      mTextSettings = new TextSettings(*rhs.mTextSettings);
+    }
+  return *this;
+}
+
 
 /** Change the caption of the label
   *
@@ -97,11 +126,15 @@ void RainbruRPG::OgreGui::Label::setWordwrap(bool vWordwrap)
 void RainbruRPG::OgreGui::Label::draw(Brush* vBrush)
 {
   LOGI("Drawing Label");
+
+  std::ostringstream oss;
+  oss << "Label " << mUniqueName << " ('" << mCaption << "')";
+
   //  vBrush->debug("Before drawing text");
   vBrush->setBlendMode(BBM_GLOBAL);
   //  vBrush->setScissorRectangle(mScissor);
-  debugAbsolute("Label A");
-  getParent()->debugAbsolute("Parent of Label A");
+debugAbsolute(oss.str());
+//  getParent()->debugAbsolute("Parent of Label A");
   vBrush->begin();
   vBrush->drawText(mTextSettings, mCaption, mAbsolute, mWordwrap);
   //  vBrush->debug("Label::draw");

@@ -110,6 +110,9 @@ namespace RainbruRPG{
       Font(const String&, unsigned int);
       ~Font();
 
+      Font(const Font&);
+      Font& operator=(const Font&);
+
       unsigned int getSize(void);
       const String& getName(void)const;
 

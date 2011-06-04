@@ -132,6 +132,36 @@ RainbruRPG::OgreGui::TextSettings::~TextSettings(){
   mFont=NULL;
 }
 
+/// Copy constructor
+RainbruRPG::OgreGui::TextSettings::
+TextSettings(const TextSettings& rhs):
+  mFont(rhs.getFont()),
+  mForegroundColor(rhs.mForegroundColor),
+  mBackgroundColor(rhs.mBackgroundColor),
+  mVertAlign(rhs.mVertAlign),
+  mHorzAlign(rhs.mHorzAlign),
+  mColorSetting(rhs.mColorSetting)
+{
+
+}
+
+TextSettings& RainbruRPG::OgreGui::TextSettings::
+operator=(const TextSettings& rhs)
+{
+  if (this != &rhs)
+    {
+      delete mFont;
+      mFont = new Font(*rhs.getFont());
+      mForegroundColor = rhs.mForegroundColor;
+      mBackgroundColor = rhs.mBackgroundColor;
+      mVertAlign = rhs.mVertAlign;
+      mHorzAlign = rhs.mHorzAlign;
+      mColorSetting = rhs.mColorSetting;
+    }
+  return *this;
+}
+
+
 /** Change the current font
   *
   * \note The old font is not deleted and will not be as the TextSettings
@@ -153,7 +183,9 @@ void RainbruRPG::OgreGui::TextSettings::setFont(OgreGui::Font* vFont){
   * \return The current font
   *
   */
-OgreGui::Font* RainbruRPG::OgreGui::TextSettings::getFont(void){
+OgreGui::Font* RainbruRPG::OgreGui::TextSettings::
+getFont(void)const
+{
   return this->mFont;
 }
 

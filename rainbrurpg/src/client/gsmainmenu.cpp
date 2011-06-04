@@ -72,6 +72,9 @@ RainbruRPG::Core::gsMainMenu::gsMainMenu():
   ,tiMclCol2(NULL)
   ,tiMclCol3(NULL)
 #endif // RB_MULTICOLUMNLIST_TEST
+  ,mWindow(mContainer, "aze", 10, 20, 600, 300)
+  ,mLabel( &mWindow, 15, 25, 55, 95, "Label A")
+
 {
 
   LOGI("Constructing a gsMainMenu");
@@ -198,10 +201,10 @@ void RainbruRPG::Core::gsMainMenu::setupTabOrder(){
   */
 void RainbruRPG::Core::gsMainMenu::setupMainMenu(){
 
-  OgreGui::Window* w = new OgreGui::Window(mContainer, "aze", 10, 20, 600, 300);
-  Label* l = new Label(w , 15, 25, 55, 95, "A");
-  w->push_back(l);
-  mContainer->push_back(w);
+  //  OgreGui::Window* w = new OgreGui::Window(mContainer, "aze", 10, 20, 600, 300);
+  //  Label* l = new Label(w , 15, 25, 55, 95, "A");
+  mWindow.push_back(&mLabel);
+  mContainer->push_back(&mWindow);
   mContainer->setDirty(true);
 
   /*

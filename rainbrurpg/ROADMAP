@@ -967,6 +967,8 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
 **** TODO Trying to get ogreGui's spurious classes
+     CLOCK: [2011-06-04 sam. 16:33]
+     CLOCK: [2011-06-04 sam. 11:32]--[2011-06-04 sam. 12:25] =>  0:53
      CLOCK: [2011-05-29 dim. 00:02]--[2011-05-29 dim. 00:33] =>  0:31
      CLOCK: [2011-05-28 sam. 22:41]--[2011-05-28 sam. 23:37] =>  0:56
      CLOCK: [2011-05-28 sam. 01:09]--[2011-05-28 sam. 01:22] =>  0:13
@@ -978,12 +980,14 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       modified files
       Always configure with --enable-debug to get a log
       - [X] It works in debug mode :( Should know why
-- [ ] Must fix some missing copyctor assignment operator
+- [ ] Must fix some missing copyctor && assignment operator
+      Then try client in non-debug mode
       - [ ] In two phases
 	    Many of these clases need members 
 	    documentation refactoring (like in Brush)
 	    - [ ] 1st : Implement copy constructor and assignement operator
 		  with LOGE(DEEP_DEBUG : copy|assignement) for test
+		  Only if we can't get rid of the pointer members
 	    - [ ] 2nd : remove LOGE(), impl. operator== and unit tests
       - [ ] in client/
 	    *Must wait in the following for the OgreGui's widgets*
@@ -993,12 +997,13 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      	    - [ ] gsMenuBase
      	    - [ ] gsServerList
      	    - [ ] gsOgreguiTest
-     - [ ] in ogregui/
-     	    - [ ] Brush (All members aren't copied/assigned)
+     - [-] in ogregui/
+     	    - [X] Brush
+     	    - [X] Label
+     	    - [X] TextSettings
+     	    - [X] Font
      	    - [ ] Container
      	    - [ ] Drawable
-     	    - [ ] Label
-     	    - [ ] TextSettings
      - [ ] in maincore/
      	    - [ ] EnvironmentSetup
      	    - [ ] GameEngine

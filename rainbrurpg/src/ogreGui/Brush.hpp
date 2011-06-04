@@ -167,13 +167,6 @@ namespace RainbruRPG{
       std::string blendModeToString(tBrushBlendMode);
       std::string stateToString(const tBrushState);
 
-      // Accessors
-      SceneManager* getSceneManager()const { return mSceneManager; };
-      RenderSystem* getRenderSystem()const { return mRenderSystem; };
-      Viewport* getViewport()const { return mViewport; };
-      const std::string& getCreatorName()const { return mCreatorName; };
-      TexturePtr getTexture()const { return mTexture; };
- 
    private:
       /** The current Ogre scene manager
         *

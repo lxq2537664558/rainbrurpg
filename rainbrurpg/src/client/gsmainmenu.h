@@ -44,6 +44,9 @@
 
 #include "../config.h"
 
+#include <Label.hpp>
+#include <Window.hpp>
+
 // Forward declarations
 namespace BetaGUI{
   //  class Button;
@@ -148,6 +151,9 @@ namespace RainbruRPG {
       BetaGUI::Button* btnExit;
       /** The window where the buttons are added */
       OgreGui::Window* window;
+
+      OgreGui::Window mWindow;
+      OgreGui::Label mLabel;
     };
   }
 }

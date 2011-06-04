@@ -235,7 +235,8 @@ renderGlyphs( Font* vFont, FT_Face vFace, int* vBuffer,
       GTS_MID(warn);
       // TRANSLATORS: The parameter is an unsigned integer that represents
       // a character (a charcode).
-      sprintf(warn, _("Glyph width is NULL for charcode %u"), charCode);
+      sprintf(warn, _("Glyph width is NULL for charcode %u"), 
+	      (unsigned int)charCode);
       LOGW(warn);
     }
 

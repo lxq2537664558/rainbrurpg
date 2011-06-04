@@ -88,9 +88,12 @@ namespace RainbruRPG {
       TextSettings(const Ogre::String&, unsigned int, float, float, float);
 
       ~TextSettings();
+      
+      TextSettings(const TextSettings&);
+      TextSettings& operator=(const TextSettings&);
 
       void setFont(OgreGui::Font*);
-      Font* getFont(void);
+      Font* getFont(void)const;
 
       void setForegroundColor(const Ogre::ColourValue&);
       const Ogre::ColourValue& getForegroundColor(void)const;

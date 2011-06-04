@@ -1,3 +1,16 @@
+2011-06-04 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/client/gsConnection.cpp: label and window become members.
+	* src/ogreGui/Font.cpp: Add assignent operator.
+	* src/ogreGui/Label.cpp: Add assignent operator.
+	* src/ogreGui/TextSettings.cpp: Add assignent operator and copy ctor.
+	* src/ogreGui/Brush.cpp: Finish assignent operator.
+	
+
+2011-05-28 Jerome Pasquier  <rainbru@free.fr>
+
+	* src/ogreGui/Brush.cpp: Remove some unused getters.
+
 2011-05-27 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Brush.cpp: Implement deep copy and assignment.
