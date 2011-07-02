@@ -100,22 +100,7 @@ namespace RainbruRPG {
 	* \sa serverList, feedList(), gsServerList(), ~gsServerList().
 	*
         */
-      xmlServerList* xml;
-
-      /** The Wndow containing the server list */
-      RainbruRPG::OgreGui::Window* mWin;
-
-      /** The widget used to draw server list */
-      MultiColumnList* mMcl;
-      /** The label used to show the number of server found */
-      Label* mNumServer;
-
-      /** The refresh button */
-      PushButton* btnRefresh;
-      /** The play button */
-      PushButton* btnPlay;
-      /** The 'more infos' button */
-      PushButton* btnMoreInfos;
+      xmlServerList xml;
       
     };
   }

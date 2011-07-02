@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2010-12-18 21:22+0100\n"
+"POT-Creation-Date: 2011-06-04 23:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -869,36 +869,36 @@ msgid "The file '%s' doesn't exist"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:253
+#: src/common/globaluri.cpp:251
 #, c-format
 msgid "The file '%s' was not found. Copying it from '%s' to '%s'"
 msgstr ""
 
-#: src/common/globaluri.cpp:267
+#: src/common/globaluri.cpp:265
 #, c-format
 msgid ""
 "Copying the file '%s' throws an exception. %sCopying it from '%s' to '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:277
+#: src/common/globaluri.cpp:275
 #, c-format
 msgid "The file '%s' was found. in the user's directory."
 msgstr ""
 
-#: src/common/globaluri.cpp:310
+#: src/common/globaluri.cpp:308
 msgid "uploaded/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:333
+#: src/common/globaluri.cpp:331
 msgid "quarantine/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:378
+#: src/common/globaluri.cpp:376
 msgid "Downloaded/ directory exists"
 msgstr ""
 
-#: src/common/globaluri.cpp:386
+#: src/common/globaluri.cpp:384
 msgid "Downloaded/ directory does not exist, creating it"
 msgstr ""
 
@@ -907,7 +907,7 @@ msgstr ""
 #. This message tells the user that this unique directory doesn't exist
 #. and it will not created because the variable 'createIfMissing' has
 #. the 'false' value.
-#: src/common/globaluri.cpp:400
+#: src/common/globaluri.cpp:398
 msgid ""
 "Missing server's unique directory. It is  not created because "
 "createIfMissing=false."
@@ -1727,33 +1727,28 @@ msgstr ""
 msgid "gsGameBase::resume called"
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:118
-msgid ""
-"Cannot get non null window handle, events will not be captured correctly"
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:178
+#: src/maincore/inputmanager.cpp:184
 msgid "RainbruRPG::Core::InputManager::mMouse is NULL. Program should crash."
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:184
+#: src/maincore/inputmanager.cpp:190
 msgid ""
 "RainbruRPG::Core::InputManager::mKeyboard is NULL. Program should crash."
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:225
+#: src/maincore/inputmanager.cpp:231
 msgid "Adding a mouse listener"
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:281
+#: src/maincore/inputmanager.cpp:287
 msgid "Removing MouseListener"
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:289
+#: src/maincore/inputmanager.cpp:295
 msgid "MouseListener not found"
 msgstr ""
 
-#: src/maincore/inputmanager.cpp:453
+#: src/maincore/inputmanager.cpp:459
 msgid "InputManager::keyPressed called"
 msgstr ""
 

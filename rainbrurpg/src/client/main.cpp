@@ -176,20 +176,7 @@ int main(int argc, char **argv){
     }
 
     // Moved from GameEngine::init()
-    GuiFrameListener* gfl=(GuiFrameListener*)mFrameListener;
-    gfl->setCamera(GameEngine::getSingleton().getCamera());
-
-
-    // OgreGui settings
-    /*    GUI::getSingleton()
-      .init(GameEngine::getSingleton().getOgreRoot()->getRenderSystem(),
-	    GameEngine::getSingleton().getOgreSceneMgr(),
-	    GameEngine::getSingleton().getViewport());
-    */
-    /*   GameEngine::getSingleton().getOgreSceneMgr()
-      ->addRenderQueueListener(new OgreGuiRenderQueueListener(
-         &GUI::getSingleton()));
-    */
+    mFrameListener->setCamera(GameEngine::getSingleton().getCamera());
 
 
     // GuiManager settings

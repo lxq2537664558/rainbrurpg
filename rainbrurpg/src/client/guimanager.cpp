@@ -49,8 +49,8 @@
   * This method must be called before using GuiManager
   *
   */
-void RainbruRPG::Gui::GuiManager::init(){
-  LOGI("Initializing GuiManager...");
+void RainbruRPG::Gui::GuiManager::init()
+{
   transitionTime=1200;
   guiFadeInTime=1000;
   guiOpacity=0.7f;
@@ -60,9 +60,6 @@ void RainbruRPG::Gui::GuiManager::init(){
   velocity=new vcConstant();
   win=NULL;
 
-  // Error message
-  mErrorLabel = NULL;
-  errorLabelWindow = NULL;
 }
 
 /** The destructor of the singleton

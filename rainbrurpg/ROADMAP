@@ -75,15 +75,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
    server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
    server-gui/telnet-gui/  A telnet-based command-line remote control
 
-*** v0.0.8 A working GUI
+*** v0.0.9 A working GUI
 **** TODO Miscelaneous                                                [0%]
 - [ ] Uses GCC visibility attribute
 - [ ] May use C++ exceptions
 **** Switch to GPLv3
 - [ ] See if OSI/Sourceforge are agree
 - [ ] See compatibility with EasyBMP/TinyXML
-
-*** v0.0.7
+*** v0.0.8
 **** OgreGui2 implementation and UnitTest                        [59%]
 ***** Fixing text drawing
       :CLOCK:
@@ -351,6 +350,89 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] Pass individual-test-drawablewo through dbg
 	    There is also another assertion that failed
 	    radeon_texture.c:86: radeonFreeTexImageData: Assertion `!image->base.Data' failed.
+*** v0.0.7
+**** Code refactoring to follow coding standards
+**** Cross compilation to win32                                       [66%]
+     :CLOCK:
+     CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
+     CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
+     CLOCK: [2011-01-02 dim 22:12]--[2011-01-02 dim 22:24] =>  0:12
+     CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
+     CLOCK: [2011-01-02 dim 20:47]--[2011-01-02 dim 21:08] =>  0:21
+     CLOCK: [2010-12-31 ven 09:33]--[2010-12-31 ven 10:00] =>  0:27
+     CLOCK: [2010-12-31 ven 09:15]--[2010-12-31 ven 09:15] =>  0:00
+     CLOCK: [2010-12-29 mer 20:35]--[2010-12-29 mer 20:44] =>  0:09
+     CLOCK: [2010-12-29 mer 19:03]--[2010-12-29 mer 19:17] =>  0:14
+     CLOCK: [2010-12-28 mar 22:17]--[2010-12-28 mar 22:30] =>  0:13
+     CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
+     CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
+     CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
+     CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
+     CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
+     CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
+     CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
+     :END:
+- [X] Test created executable (164Mo)
+      Unhandled page fault
+- [X] Trying cross-compilation : Works
+      Get a 'undefined reference to `_libintl_gettext'' error
+      Fixed in acinclude.m4
+- [X] Cross-compil documentation must reference mingw.sh
+- [X] Should fix the 'cannot find -lboost_serialization' error
+- [X] Tested DLL are outdated, recreating them
+      - [X] maincore: undefined references to OgreGui
+- [X] Maybe wine version is too old (wine-1.0.1-174-gc4039bd)
+      Tested with wine 1.1.42 : always an error
+- [X] rainbrurpg.exe is not view as a GUI application
+      testing it with the `file` utility
+      Must add -mwindows to the command line
+- [X] Should get good backtraces from winedbg
+      http://wiki.winehq.org/Backtraces
+      See message 'Unable to open file '''
+      - Maybe problem of creation for the following files :
+	file_extensions.accepted
+	file_extensions.refused
+      - If we create manually these file, it complains about an Ogre Error :
+      - [X] Trying with limited extension .acc and .ref by example
+- [X] Should build Boost.Test for win32
+- [X] We get a building error
+      undefined reference to `RainbruRPG::OgreGui::Container..
+      when building ogregui-tests
+- [X] Even if the Launcher run, we get an error when opening Ogre window
+      AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
+     - [X] maincore/inutmanager.cpp:119
+- [X] GlobalURI + loadRessources for Win32.
+      Ogre cannot find media/packs/OgreCore.zip
+- [ ] Should read its config file (plugins.cfg) in execution directory
+      and use RenderSystem_Direct3D9.dll
+      - [ ] create a plugins-win32.cfg
+      - [ ] change use in client/main.cpp with conditionnal compilation
+- [ ] Ogre seems to create a segfault when opening zip ressources
+      media/packs/OgreCore.zip
+      if unzipped, it works
+- [ ] Should build with debugging symbols      
+- [ ] exe file contains DLLs
+      The building command-line add libraries as .a
+- [ ] Should create RenderSystem_GL.dll from Ogre3D
+      Need OpenGL for minwg32
+- [ ] Should provide GNU gettext for win32
+**** Miscelaneous                                                     [37%]
+     :CLOCK:
+     CLOCK: [2011-01-23 dim. 16:22]--[2011-01-23 dim. 16:39] =>  0:17
+     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
+     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
+     :END:
+- [X] Remove tools/oldXIdent and explain it in regtests.
+- [X] Should add a configuration summary at the end of configure
+- [X] src/nb_unit_tests.pl should work
+- [ ] common/version.cpp should print option summary
+- [ ] Remove IrrClient and tools/xident (3,082 SLOC) and explain it in regtests.
+- [ ] Trying to fix Doxygen documentation TODO items.
+- [ ] Trying to fix configure script warnings
+      See the 'freetype-config: integer expression expected' warning
+- [ ] Must change LauncherOptions icons
+- [ ] May remove interdepencies ogreGui/Maincore 
+      and correct wiki:BuildingFromSources
 *** TODO v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
@@ -966,8 +1048,8 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
      - [ ] Should make DummyPlugin and DummyRenderSystem (to classes)
      - [ ] Maybe a DummyRenderWindow subclass ?
      - [ ] Should test it memory leaks
-**** TODO Trying to get ogreGui's spurious classes
-     CLOCK: [2011-06-04 sam. 16:33]
+**** CANCELED Trying to get ogreGui's spurious classes
+     CLOCK: [2011-06-04 sam. 19:18]--[2011-06-04 sam. 20:07] =>  0:49
      CLOCK: [2011-06-04 sam. 11:32]--[2011-06-04 sam. 12:25] =>  0:53
      CLOCK: [2011-05-29 dim. 00:02]--[2011-05-29 dim. 00:33] =>  0:31
      CLOCK: [2011-05-28 sam. 22:41]--[2011-05-28 sam. 23:37] =>  0:56
@@ -980,161 +1062,12 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       modified files
       Always configure with --enable-debug to get a log
       - [X] It works in debug mode :( Should know why
-- [ ] Must fix some missing copyctor && assignment operator
-      Then try client in non-debug mode
-      - [ ] In two phases
-	    Many of these clases need members 
-	    documentation refactoring (like in Brush)
-	    - [ ] 1st : Implement copy constructor and assignement operator
-		  with LOGE(DEEP_DEBUG : copy|assignement) for test
-		  Only if we can't get rid of the pointer members
-	    - [ ] 2nd : remove LOGE(), impl. operator== and unit tests
-      - [ ] in client/
-	    *Must wait in the following for the OgreGui's widgets*
-	    - [ ] gsconnection
-     	    - [ ] gsCreateAccount
-     	    - [ ] gsMainMenu
-     	    - [ ] gsMenuBase
-     	    - [ ] gsServerList
-     	    - [ ] gsOgreguiTest
-     - [-] in ogregui/
-     	    - [X] Brush
-     	    - [X] Label
-     	    - [X] TextSettings
-     	    - [X] Font
-     	    - [ ] Container
-     	    - [ ] Drawable
-     - [ ] in maincore/
-     	    - [ ] EnvironmentSetup
-     	    - [ ] GameEngine
-     	    - [ ] GameState
-     	    - [ ] gsGameBase
-     	    - [ ] InputManager
-     	    - [ ] VelocityCalculator
-     - [ ] in common/ (Many const char* to be replaced with std::string)
-      	    - [ ] ChartBase
-      	    - [ ] CurlAccountAdd
-      	    - [ ] CurlAccountConfirmMail
-      	    - [ ] CurlAccountDelete
-      	    - [ ] CurlAccountToggleBlacklist
-      	    - [ ] CurlFileToXml
-      	    - [ ] CurlInterface
-      	    - [ ] CurlPersoHeaderAdd
-      	    - [ ] CurlPersoHeaderDelete
-      	    - [ ] CurlPersoModifAttrb
-      	    - [ ] CurlPostedData
-      	    - [ ] CurlServerAdd
-      	    - [ ] CurlServerModifClients
-      	    - [ ] EnetClient
-      	    - [ ] FtpClient
-      	    - [ ] HttpResponse
-      	    - [ ] NetPacketBase
-      	    - [ ] NetPacketFlooderBase
-      	    - [ ] npConnectionResponse
-      	    - [ ] npFlooder0004
-      	    - [ ] npIdentification
-      	    - [ ] ObjectMesh
-      	    - [ ] OptionAttribute
-      	    - [ ] OptionButton
-      	    - [ ] OptionPanel
-      	    - [ ] Options
-      	    - [ ] Timer
-      	    - [ ] Version
-      	    - [ ] xmlAccountList
-      	    - [ ] xmlAttrbCatList
-      	    - [ ] xmlAttributeList
-      	    - [ ] xmlBonusFile
-      	    - [ ] xmlBonusFileList
-      	    - [ ] xmlLanguage
-      	    - [ ] xmlObjectList
-      	    - [ ] xmlOptions
-      	    - [ ] xmlPersoList
-      	    - [ ] xmlServerList
-**** Cross compilation to win32                                       [66%]
-     :CLOCK:
-     CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
-     CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
-     CLOCK: [2011-01-02 dim 22:12]--[2011-01-02 dim 22:24] =>  0:12
-     CLOCK: [2011-01-02 dim 21:24]--[2011-01-02 dim 21:39] =>  0:15
-     CLOCK: [2011-01-02 dim 20:47]--[2011-01-02 dim 21:08] =>  0:21
-     CLOCK: [2010-12-31 ven 09:33]--[2010-12-31 ven 10:00] =>  0:27
-     CLOCK: [2010-12-31 ven 09:15]--[2010-12-31 ven 09:15] =>  0:00
-     CLOCK: [2010-12-29 mer 20:35]--[2010-12-29 mer 20:44] =>  0:09
-     CLOCK: [2010-12-29 mer 19:03]--[2010-12-29 mer 19:17] =>  0:14
-     CLOCK: [2010-12-28 mar 22:17]--[2010-12-28 mar 22:30] =>  0:13
-     CLOCK: [2010-12-16 jeu 09:22]--[2010-12-16 jeu 09:48] =>  0:26
-     CLOCK: [2010-10-29 ven 08:26]--[2010-10-29 ven 09:08] =>  0:42
-     CLOCK: [2010-10-28 jeu 13:27]--[2010-10-28 jeu 14:04] =>  0:37
-     CLOCK: [2010-10-26 mar 09:51]--[2010-10-26 mar 10:31] =>  0:40
-     CLOCK: [2010-10-25 lun 13:53]--[2010-10-25 lun 14:21] =>  0:28
-     CLOCK: [2010-10-25 lun 09:44]--[2010-10-25 lun 09:59] =>  0:15
-     CLOCK: [2010-02-13 sam 11:07]--[2010-02-13 sam 11:45] =>  0:38
-     :END:
-- [X] Test created executable (164Mo)
-      Unhandled page fault
-- [X] Trying cross-compilation : Works
-      Get a 'undefined reference to `_libintl_gettext'' error
-      Fixed in acinclude.m4
-- [X] Cross-compil documentation must reference mingw.sh
-- [X] Should fix the 'cannot find -lboost_serialization' error
-- [X] Tested DLL are outdated, recreating them
-      - [X] maincore: undefined references to OgreGui
-- [X] Maybe wine version is too old (wine-1.0.1-174-gc4039bd)
-      Tested with wine 1.1.42 : always an error
-- [X] rainbrurpg.exe is not view as a GUI application
-      testing it with the `file` utility
-      Must add -mwindows to the command line
-- [X] Should get good backtraces from winedbg
-      http://wiki.winehq.org/Backtraces
-      See message 'Unable to open file '''
-      - Maybe problem of creation for the following files :
-	file_extensions.accepted
-	file_extensions.refused
-      - If we create manually these file, it complains about an Ogre Error :
-      - [X] Trying with limited extension .acc and .ref by example
-- [X] Should build Boost.Test for win32
-- [X] We get a building error
-      undefined reference to `RainbruRPG::OgreGui::Container..
-      when building ogregui-tests
-- [X] Even if the Launcher run, we get an error when opening Ogre window
-      AA[inputmanager.cpp:119]	EE Cannot get non null window handle, events will not be captured correctly
-     - [X] maincore/inutmanager.cpp:119
-- [X] GlobalURI + loadRessources for Win32.
-      Ogre cannot find media/packs/OgreCore.zip
-- [ ] Should read its config file (plugins.cfg) in execution directory
-      and use RenderSystem_Direct3D9.dll
-      - [ ] create a plugins-win32.cfg
-      - [ ] change use in client/main.cpp with conditionnal compilation
-- [ ] Ogre seems to create a segfault when opening zip ressources
-      media/packs/OgreCore.zip
-      if unzipped, it works
-- [ ] Should build with debugging symbols      
-- [ ] exe file contains DLLs
-      The building command-line add libraries as .a
-- [ ] Should create RenderSystem_GL.dll from Ogre3D
-      Need OpenGL for minwg32
-- [ ] Should provide GNU gettext for win32
-**** Miscelaneous                                                     [37%]
-     :CLOCK:
-     CLOCK: [2011-01-23 dim. 16:22]--[2011-01-23 dim. 16:39] =>  0:17
-     CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
-     CLOCK: [2010-02-19 ven 21:12]--[2010-02-19 ven 21:28] =>  0:16
-     :END:
-- [X] Remove tools/oldXIdent and explain it in regtests.
-- [X] Should add a configuration summary at the end of configure
-- [X] src/nb_unit_tests.pl should work
-- [ ] common/version.cpp should print option summary
-- [ ] Remove IrrClient and tools/oldXIdent (3,082 SLOC) and explain it in regtests.
-- [ ] Trying to fix Doxygen documentation TODO items.
-- [ ] Trying to fix configure script warnings
-      See the 'freetype-config: integer expression expected' warning
-- [ ] Must change LauncherOptions icons
-- [ ] May remove interdepencies ogreGui/Maincore 
-      and correct wiki:BuildingFromSources
-**** Sourceforge release                                              [0%]
-- [ ] Removed CEGUI reference from Sourceforge project overview
-- [ ] Explain CEGUI give up in an blog post
-- [ ] Change libtool versionning of OgreGui
-- [ ] File release sourceforge (zip+bz2+win32bin)
-      - [ ] Should add all-src or win32-bin to the release names
-- [ ] Create README in textile (or other) format in each file directory
+**** TODO Sourceforge release                                              [20%]
+- [X] Remove CEGUI reference from Sourceforge project overview
+- [ ] Change libtool versionning for OgreGui
+- [ ] File release sourceforge (gz+bz2)
+      - [ ] Should add rev number to the release names
+- [ ] Create README.textile in v0.0.6 directory
+      This folder contains *source-only* archive of _RainbruRPG_. It is
+      *not* a stable release and must be built manually.
+- [ ] Add a screenshot

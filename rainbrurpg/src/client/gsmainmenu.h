@@ -54,7 +54,6 @@ namespace BetaGUI{
 namespace RainbruRPG{
   namespace OgreGui{
     class PushButton;
-    class Window;
   }
 }
 // End of forward declarations

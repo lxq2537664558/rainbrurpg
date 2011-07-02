@@ -75,6 +75,8 @@ namespace RainbruRPG {
       * This class show a creen (CEGUI layout) used to submit
       * an account creation to the administration site.
       *
+      * \todo Must get rid of all these member pointers
+      *
       */
     class gsCreateAccount : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:

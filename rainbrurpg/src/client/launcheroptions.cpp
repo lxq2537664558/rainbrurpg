@@ -111,7 +111,7 @@ RainbruRPG::Gui::LauncherOptions::LauncherOptions(FXApp * a)
   tOptionPanelList* panelList=OptionManager::getSingleton().getPanelList();
   tOptionPanelList::const_iterator iter;
 
-  for (iter=panelList->begin(); iter != panelList->end(); iter++)  {
+  for (iter=panelList->begin(); iter != panelList->end(); ++iter)  {
     addOptionPanel( tab, swi, (*iter) );
   }
 
@@ -286,7 +286,7 @@ addOptionPanel(FXShutter *tab,FXSwitcher* com, OptionPanel* op){
 
   tOptionButtonList::const_iterator iter;
 
-  for (iter=btnList->begin(); iter != btnList->end(); iter++)  {
+  for (iter=btnList->begin(); iter != btnList->end(); ++iter)  {
     addOptionButton( item, com, (*iter) );
   }
 
@@ -407,7 +407,7 @@ addOptionAttribute(FXComposite* parent, OptionButton* button){
   tOptionAttributeList* lst=button->getAttributeList();
   tOptionAttributeList::const_iterator iter;
 
-  for (iter=lst->begin(); iter != lst->end(); iter++)  {
+  for (iter=lst->begin(); iter != lst->end(); ++iter)  {
 
     tOptionAttributeType type=(*iter)->getType();
 
@@ -527,7 +527,7 @@ void RainbruRPG::Gui::LauncherOptions::drawList(FXComposite*parent,
   tValueList* values=vList->getValueList();
   tValueList::const_iterator iter;
 
-  for (iter=values->begin(); iter != values->end(); iter++)  {
+  for (iter=values->begin(); iter != values->end(); ++iter)  {
     cb->appendItem((*iter));
   }
 }
@@ -777,7 +777,7 @@ void RainbruRPG::Gui::LauncherOptions::refreshSnapCombo(){
 
   // populate the combo box
   if (snapList){
-    for (iter=snapList->begin(); iter != snapList->end(); iter++){
+    for (iter=snapList->begin(); iter != snapList->end(); ++iter){
       cbSnap->appendItem((*iter));
     }
   }

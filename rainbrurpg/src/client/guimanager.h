@@ -147,6 +147,19 @@ namespace RainbruRPG {
       * that can print temporaly error messages. The messages can be set with
       * the \ref setErrorMessage() function.
       *
+      * \section title_overlay The title overlay 
+      *
+      * This Ogre overlay, shown in the first menu of the game client,
+      * shows the game name and version number. It is shown only the first
+      * time the gsMainMenu is drawn.
+      *
+      * This value is used to know if the overlay exist. detroyTitleOverlay()
+      * set it to \c NULL when it is destroyed. The other times 
+      * detroyTitleOverlay() is called, if \c mTitleOverlay==NULL, we
+      * donot try to destroy it.
+      *
+      * \sa mTitleOverlay, createTitleOverlay(), detroyTitleOverlay().
+      *
       */
     class GuiManager : public RainbruRPG::Core::Singleton<GuiManager>{
     public:
@@ -181,7 +194,7 @@ namespace RainbruRPG {
       void createErrorLabel(void);
       void setErrorMessage(const String&);
 
-    private:
+    protected:
       /** Unimplemented copy constructors 
         *
 	* In a singleton the use of this method must be forbidden.
@@ -199,45 +212,16 @@ namespace RainbruRPG {
 
       void increaseGuiTransparency(float);
 
-      /** The current Ogre render window */
-      Ogre::RenderWindow* win;
 
-      /** The menu transition time in milliseconds*/
-      unsigned int transitionTime;
-      /** The GUI fade in time in milliseconds*/
-      unsigned int guiFadeInTime;
-
-      /** The standard velocity calculator used for menu transition */
-      VelocityCalculator* velocity;
-      /** Are we in GUI fade in transition */
-      bool inGuiFadeIn;
-      /** Are we in GUI fade out transition */
-      bool inGuiFadeOut;
-
-      /** The opacity of the GUI */
-      float guiOpacity;
-
-      /** The title overlay 
-        *
-	* This Ogre overlay, shown in the first menu of the game client,
-	* shows the game name and version number. It is shown only the first
-	* time the gsMainMenu is drawn.
-	*
-	* This value is used to know if the overlay exist. detroyTitleOverlay()
-	* set it to \c NULL when it is destroyed. The other times 
-	* detroyTitleOverlay() is called, if \c mTitleOverlay==NULL, we
-	* donot try to destroy it.
-	*
-	* \sa createTitleOverlay(), detroyTitleOverlay().
-	*
-	*/
-      Ogre::Overlay* mTitleOverlay;
-
-      /** The label used to print errors */
-      StatusLabel* mErrorLabel;
-
-      /** The window that contains mErrorLabel */
-      BetaGUI::Window* errorLabelWindow;
+    private:
+      Ogre::RenderWindow* win;      //!< The current Ogre render window
+      unsigned int transitionTime;  //!< Menu transition time in ms
+      unsigned int guiFadeInTime;   //!< The GUI fade in time in milliseconds
+      VelocityCalculator* velocity; //!< Standard velocity calculator
+      bool inGuiFadeIn;             //!< Are we in GUI fade in transition ?
+      bool inGuiFadeOut;            //!< Are we in GUI fade out transition 
+      float guiOpacity;             //!< The opacity of the GUI
+      Ogre::Overlay* mTitleOverlay; //!< The title overlay 
     };
   }
 }

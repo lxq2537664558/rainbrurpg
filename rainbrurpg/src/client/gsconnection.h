@@ -34,6 +34,7 @@
 #define GS_CONNECTION_H
 
 #include <hashpassword.h>
+//#include <Window.hpp>
 
 #include "gsmenubase.h"
 #include "vcconstant.h"
@@ -69,14 +70,13 @@ namespace RainbruRPG {
       * This is the first screen shown when the user choose the network
       * game. It provides a typical user name/password identification.
       *
+      * \todo Must get rid of all these member pointers
+      *
       */
     class gsConnection : public gsMenuBase, public BetaGUI::BetaGUIListener{
     public:
       gsConnection();
-      gsConnection(const gsConnection&);
       virtual ~gsConnection();
-
-      gsConnection& operator=(const  gsConnection&);
 
       virtual void init();
       virtual void resume();
@@ -95,23 +95,6 @@ namespace RainbruRPG {
 
       void setupConnectionMenu();
 
-      /** The connect button */
-      PushButton* btnConnect;
-      /** The create acount button */
-      PushButton* btnCreateAccount;
-      /** The lost password button */
-      PushButton* btnLostPwd;
-      /** The Back navigation button */
-      PushButton* btnBack; 
-
-      /** The main OgreGUI window */
-      RainbruRPG::OgreGui::Window* window;
-      /** The OgreGUI window containing the Back button */
-      RainbruRPG::OgreGui::Window* winBack;
-      /** The widget where the user name is entered */
-      TextInput* tiUserName;
-      /** The widget where the password is entered */
-      TextInput* tiPassword;
     };
   }
 }

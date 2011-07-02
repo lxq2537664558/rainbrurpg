@@ -33,8 +33,6 @@
 #include <Widget.hpp>
 
 #include <label.h>
-//#include <bgwindow.h>
-//#include <pushbutton.h>
 #include <multicolumnlist.h>
 #include <multicolumnlistitem.h>
 #include <sigc++/sigc++.h>
@@ -51,20 +49,14 @@
   * 
   */
 RainbruRPG::Core::gsServerList::gsServerList():
-  gsMenuBase("gsServerList", false),
-  mWin(NULL),
-  mMcl(NULL),
-  mNumServer(NULL),
-  btnRefresh(NULL),
-  btnPlay(NULL),
-  btnMoreInfos(NULL)
+  gsMenuBase("gsServerList", false)
 {
 
   LOGI("Constructing a gsServerList");
   velocity=new vcConstant();
   translateTo(0.0f);
 
-  xml=new xmlServerList();
+  xml = xmlServerList();
 
 }
 
@@ -80,27 +72,6 @@ RainbruRPG::Core::gsServerList::~gsServerList(){
     delete velocity;
     velocity=NULL;
   }
-
-  delete xml;
-  xml=NULL;
-
-  //  delete mWin;
-  mWin=NULL;
-
-  //  delete mMcl;
-  mMcl=NULL;
-
-  //  delete mNumServer;
-  mNumServer=NULL;
-
-  // deleting buttons
-  /*  delete btnRefresh;
-  delete btnPlay;
-  delete btnMoreInfos;
-  */
-  btnRefresh = NULL;
-  btnPlay = NULL;
-  btnMoreInfos = NULL;
 }
 
 /** Initialize this game state
@@ -122,8 +93,6 @@ void RainbruRPG::Core::gsServerList::init(){
   *
   */
 void RainbruRPG::Core::gsServerList::resume(){
-  //  Ogre::RenderWindow* rw=GUI::getSingleton().getRenderWindow();
-
   setupTabOrder();
 }
 
@@ -134,53 +103,8 @@ void RainbruRPG::Core::gsServerList::resume(){
   */
 void RainbruRPG::Core::gsServerList::setupServerList(){
 
-  // Create the list
-  unsigned int width = 600;
-  unsigned int rwWidth=GameEngine::getSingleton().getRenderWindow()->getWidth();
-  unsigned int posX=(rwWidth/2)-(width/2);
-  /*  BetaGUI::GUI* mGUI = &GUI::getSingleton();
-  mWin =new Window(Vector4(posX, 10, width, 400), BetaGUI::OWT_RESIZE_AND_MOVE, 
-		   "Server list", mGUI);
-  mGUI->addWindow(mWin);
+  // Should now use OgerGui
 
-  Vector4 mclPosDim(10,30,width - 30,320);
-  mMcl=new MultiColumnList(mclPosDim, mWin);
-  mMcl->sigSelectionChanged.
-    connect( sigc::mem_fun(this, &RainbruRPG::Core::gsServerList::slotSelectionChanged) );
-  mMcl->setDebugName("MCL.ServerList");
-  mWin->addWidget(mMcl);
-
-  // Adding columns
-  mMcl->addColumn( "#", 30 );
-  mMcl->addColumn( "Name", 150 );
-  mMcl->addColumn( "Occ", 50 );
-  mMcl->addColumn( "Type", 100 );
-  mMcl->addColumn( "Description", 200 );
-
-  // Numbers of found servers
-  Vector4 mNumServerDim(10, 362, 20, 20);
-  mNumServer=new Label (mNumServerDim, "??? servers found", mWin);
-  mWin->addWidget(mNumServer);
-  // Boutons
-  btnRefresh= new PushButton(Vector4(200,360,100,24),
-				 "Refresh", 
-				 BetaGUI::Callback::Callback(this), mWin);
-  mWin->addWidget(btnRefresh);
-  
-  btnPlay = new PushButton(Vector4(320,360,100,24),
-				 "Play", 
-				 BetaGUI::Callback::Callback(this), mWin);
-  btnPlay->disable();
-  mWin->addWidget(btnPlay);
-
-  btnMoreInfos= new PushButton(Vector4(440,360,140,24),
-				 "More infos", 
-				 BetaGUI::Callback::Callback(this), mWin);
-  btnMoreInfos->disable();
-  mWin->addWidget(btnMoreInfos);
-
-
-  */
   feedList();
 
 }
@@ -195,32 +119,7 @@ void RainbruRPG::Core::gsServerList::setupServerList(){
   *
   */
 void RainbruRPG::Core::gsServerList::feedList(){
-  /* unsigned int itemId=1;
-  tServerList* lst=xml->getServerList();
-  tServerList::const_iterator iter;
-  MultiColumnListItem* item;
 
-  // Feed the list
-  for (iter=lst->begin(); iter != lst->end(); iter++){
-    item=new MultiColumnListItem();
-    item->setText(0, StringConv::getSingleton().itos(itemId));
-    item->setText(1, (*iter)->getName());
-    item->setText(2, (*iter)->getOccupationStr());
-    item->setText(3, (*iter)->getTypeStr());
-    item->setText(4, (*iter)->getDescription());
-
-    mMcl->addItem(item);
-    itemId++;
-  }
-
-  LOGCATI(mMcl->getItemList().size());
-  LOGCATS(" items in the MultiColumnList");
-  LOGCAT();
-
-  String numS=StringConv::getSingleton().itos(lst->size());
-  numS += " servers found";
-  mNumServer->setCaption(numS);
-  */
 }
 
 /** Setup the tabulation order 
@@ -234,15 +133,7 @@ void RainbruRPG::Core::gsServerList::feedList(){
   *
   */
 void RainbruRPG::Core::gsServerList::setupTabOrder(){
-  // Registering TabNavigation
-  /*  tabNav->clear();
-  tabNav->setParent("RainbruRPG/ServerList/");
-  //  tabNav->addMultiColumnList("RainbruRPG/ServerList/List", 
-  //	   CEGUI::Event::Subscriber(&gsServerList::onConnectClicked,this));
-  tabNav->addWidget("RainbruRPG/ServerList/Refresh");
-  tabNav->addWidget("RainbruRPG/ServerList/Connect");
-  tabNav->addWidget("RainbruRPG/ServerList/Back");
-  */
+
 }
 
 /** A button was pressed in this game state
@@ -251,24 +142,8 @@ void RainbruRPG::Core::gsServerList::setupTabOrder(){
   *
   */
 void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button* vButton){
-  std::string msg;
-  bool log=true;
 
-  if (vButton == btnRefresh){
-    log = false;
-    refreshList();
-  }
-  else if (vButton == btnPlay){
-    msg = "Play";
-  }
-  else if (vButton == btnMoreInfos){
-    msg = "MoreInfos";
-  }
 
-  if (log){
-    msg += " button pressed";
-    LOGI(msg.c_str());
-  }
 }
 
 /** The server list's selection changed
@@ -282,11 +157,7 @@ void RainbruRPG::Core::gsServerList::onButtonPress(BetaGUI::Button* vButton){
   */
 void RainbruRPG::Core::gsServerList::slotSelectionChanged(void){
   LOGI("slotSelectionChanged called");
-  /*
-  bool sel = mMcl->isOneItemSelected();
-  btnPlay->setEnable( sel );
-  btnMoreInfos->setEnable( sel );
-  */
+
 }
 
 /** Refresh the server list
@@ -298,22 +169,5 @@ void RainbruRPG::Core::gsServerList::slotSelectionChanged(void){
   */
 void RainbruRPG::Core::gsServerList::refreshList(void){
   LOGI("gsServerList::refreshList called");
-  /*
-  // Disable all buttons
-  btnRefresh->disable();
-  btnPlay->disable();
-  btnMoreInfos->disable();
 
-  // Clear the list
-  mMcl->clear();
-  
-  // Refresh xml
-  xml->refresh();
-
-  // Feed the list
-  feedList();
-
-  // Enable refresh button
-  btnRefresh->enable();
-  */
 }

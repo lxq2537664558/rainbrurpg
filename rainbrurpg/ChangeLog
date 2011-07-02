@@ -1,5 +1,13 @@
+2011-06-05 Jerome Pasquier  <rainbru@free.fr>
+	
+	* src/client/languageselector.cpp (feedComboBox): use pre-increment.
+	* src/client/main.cpp: remove unneeded cast for guiframelistener.
+	* src/client/gsmainmenu.h (getCreateMenu): remove usunsed function.
+
 2011-06-04 Jerome Pasquier  <rainbru@free.fr>
 
+	* src/client/gsmainmenu.h: get rid od the dynamic menu feature.
+	
 	* src/client/gsConnection.cpp: label and window become members.
 	* src/ogreGui/Font.cpp: Add assignent operator.
 	* src/ogreGui/Label.cpp: Add assignent operator.

@@ -115,7 +115,11 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (7) implement TextSettings' copy ctor (and Font)
+- (10) Fix some issues detected with cppcheck in client/
+   gsmenubase, main, languageselector, launcheroptions
+- Some member pointers removed from client/
+- Get rid of the gsmenubase dynamic menu option
+- implement TextSettings' copy ctor (and Font)
 - gsmainmenu win and label become references
 - 1ssignement operator for TextSettings and Font
 - Finish copy ctor and assignement for Label

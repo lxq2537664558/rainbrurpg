@@ -70,14 +70,6 @@ RainbruRPG::Core::gsMenuBase::gsMenuBase(const string& vName, bool cm):
   menuWindow(NULL)
 {
 
-#ifdef USE_DYNAMIC_MENU
-  siRight=NULL;
-  siLeft=NULL;
-  siBorder=NULL;
-#else
-  staticMenu=NULL;
-#endif // USE_DYNAMIC_MENU
-
   LOGI("Constructing a  gsMenuBase");
   inputWrapper=new InputWrapper();
   tabNav=new KeyboardNavigation();
@@ -119,14 +111,7 @@ void RainbruRPG::Core::gsMenuBase::init(){
   mSceneMgr=GameEngine::getSingleton().getOgreSceneMgr();
 
   if (this->createMenu){
-#ifdef USE_DYNAMIC_MENU
-    createMenuWindow();
-    createMenuBackground();
-    createDynamicBackground();
-    createBorder();
-#else
     createStaticMenu();
-#endif // USE_DYNAMIC_MENU
 
     translateTo(0.5);
   }
@@ -196,63 +181,6 @@ void RainbruRPG::Core::gsMenuBase::createMenuWindow(void){
   */
 }
 
-
-/** Draw the right panel background
-  *
-  */
-void RainbruRPG::Core::gsMenuBase::createMenuBackground(){
-  LOGI("Creating MenuBackground");
-
-#ifdef USE_DYNAMIC_MENU
-  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
-  unsigned int w=mRenderWindow->getWidth();
-  unsigned int h=mRenderWindow->getHeight();
-
-  Ogre::Vector4 d(0, 0, w/2,h);
-  siRight=new StaticImage(d, menuWindow);
-  siRight->setTextureName("staticmenu.png");
-  menuWindow->addWidget(siRight);
-#endif // USE_DYNAMIC_MENU
-
-}
-
-/** Draws the border
-  *
-  */
-void RainbruRPG::Core::gsMenuBase::createBorder(){
-  LOGI("Creating border");
-
-#ifdef USE_DYNAMIC_MENU
-  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
-  unsigned int w=mRenderWindow->getWidth();
-  unsigned int h=mRenderWindow->getHeight();
-  
-  Ogre::Vector4 d(w/2-20, 0, 40,h);
-  siBorder=new StaticImage(d, menuWindow);
-  siBorder->setTextureName("border.png");
-  menuWindow->addWidget(siBorder);
-#endif // USE_DYNAMIC_MENU
-  
-}
-/** Draw the left panel background
-  *
-  */
-void RainbruRPG::Core::gsMenuBase::createDynamicBackground(){
-  LOGI("Creating DynamicBackground");
-
-#ifdef USE_DYNAMIC_MENU
-  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
-  unsigned int w=mRenderWindow->getWidth();
-  unsigned int h=mRenderWindow->getHeight();
-
-  Ogre::Vector4 d(w/2, 0, w/2 ,h);
-  siLeft=new StaticImage(d, menuWindow);
-  siLeft->setTextureName("dynamicmenu.png");
-  menuWindow->addWidget(siLeft);
-#endif // USE_DYNAMIC_MENU
-  
-}
-
 /** Makes the menu transition
   *
   */
@@ -274,11 +202,6 @@ void RainbruRPG::Core::gsMenuBase::transition(){
 	float newYBorder=yBorder+1.0f;
 	int xPos=(int)newYBorder*(w/2);
 
-#ifdef USE_DYNAMIC_MENU
-	siBorder->setPosition(xPos, 0);
-	siRight->setPosition(xPos, 0);
-	siLeft->setPosition(xPos-w/2, 0);
-#endif // USE_DYNAMIC_MENU
       }
 
       // If the transition is ended
@@ -560,8 +483,4 @@ void RainbruRPG::Core::gsMenuBase::createStaticMenu(void){
 
   GuiManager::getSingleton().createErrorLabel();
   */
-}
-
-bool RainbruRPG::Core::gsMenuBase::getCreateMenu(void)const{ 
-  return this->createMenu; 
 }

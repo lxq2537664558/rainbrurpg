@@ -45,15 +45,6 @@
 #include <OIS/OISMouse.h>
 
 #include "gamestate.h"
-//#include "bggui.h"
-
-/** Uncomment it to get a dynamic menu background
-  *
-  * It was deactivated due to a lack of performance but should
-  * be tested again.
-  *
-  */
-//#define USE_DYNAMIC_MENU
 
 using namespace Ogre;
 
@@ -136,14 +127,9 @@ namespace RainbruRPG {
 	*/
       virtual void setupTabOrder()=0;
 
-      bool getCreateMenu(void)const;
-
     protected:
 
       void createMenuWindow(void);
-      void createBorder(void);
-      void createMenuBackground(void);
-      void createDynamicBackground(void);
       void createStaticMenu(void);
 
       float getTranslationLenght(float, float);
@@ -206,25 +192,22 @@ namespace RainbruRPG {
       /** Contains all menu background widget */
       BetaGUI::Window* menuWindow;
 
-
 #ifdef USE_DYNAMIC_MENU
       /** The right part of the dynamic menu */
-      StaticImage* siRight;
+      //      StaticImage* siRight;
       /** The left part of the dynamic menu */
-      StaticImage* siLeft;
+      //      StaticImage* siLeft;
       /** The border of the dynamic menu */
-      StaticImage* siBorder;
+      //      StaticImage* siBorder;
 #else
       /** The static menu */
-      StaticImage* staticMenu;
+      //      StaticImage* staticMenu;
 #endif // USE_DYNAMIC_MENU
 
       /// A whole screen texture as background image
       TexturePtr mBackgroundTexture;
 
     };
-
-
   }
 }
 

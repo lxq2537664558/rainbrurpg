@@ -166,10 +166,7 @@ void RainbruRPG::Gui::LanguageSelector::feedComboBox(FXComboBox* cb){
   // Create constant iterator for list.
   tLanguageList::const_iterator iter;
   // Iterate through list and output each element.
-  for (iter=ll->begin(); iter != ll->end(); iter++){
-    LOGCATS("Item : ");
-    LOGCATS((*iter)->getComboText());
-    LOGCAT();
+  for (iter=ll->begin(); iter != ll->end(); ++iter){
     FXint sel=cb->appendItem((*iter)->getComboText(), (*iter));
 
     // Select the newly created item if it is the current one (LastUsed)

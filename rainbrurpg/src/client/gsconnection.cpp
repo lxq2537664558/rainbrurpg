@@ -30,12 +30,6 @@
 #include "vcconstant.h"
 #include "guimanager.h"
 
-//#include <bgwindow.h>
-//#include <bgtextinput.h>
-//#include <pushbutton.h>
-//#include <label.h>
-#include <Window.hpp>
-
 #include <OgrePrerequisites.h> // for Ogre::String
 
 
@@ -45,40 +39,12 @@
   *
   */
 RainbruRPG::Core::gsConnection::gsConnection():
-  gsMenuBase("gsConnection", false),
-  btnBack(NULL),
-  btnConnect(NULL),
-  btnCreateAccount(NULL),
-  btnLostPwd(NULL),
-  window(NULL),
-  winBack(NULL),
-  tiUserName(NULL),
-  tiPassword(NULL)
+  gsMenuBase("gsConnection", false)
 {
 
   LOGI("Constructing a gsConnection");
   velocity=new vcConstant();
 }
-
-/** The copy constructor
-  *
-  * \param rhs The right-hand side game state
-  *
-  */
-RainbruRPG::Core::gsConnection::gsConnection(const gsConnection& rhs):
-  gsMenuBase(rhs.getName(), rhs.getCreateMenu()),
-  btnConnect(rhs.btnConnect),
-  btnCreateAccount(rhs.btnCreateAccount ),
-  btnLostPwd(rhs.btnLostPwd ),
-  btnBack(rhs.btnBack ),
-  window(rhs.window ),
-  winBack(rhs.winBack ),
-  tiUserName(rhs.tiUserName ),
-  tiPassword(rhs.tiPassword )
-{
-  LOGE("DEEP_DEBUG : copy");
-}
-
 
 /** The default destructor
   *
@@ -97,38 +63,10 @@ RainbruRPG::Core::gsConnection::~gsConnection(){
   delete tiUserName;
   delete tiPassword;
   */
-  delete window;
+  /* delete window;
   delete winBack;
+  */
 }
-
-gsConnection& RainbruRPG::Core::gsConnection::
-operator=(const  gsConnection& rhs)
-{
-    // 3.  Copy the values from rhs into this instance
-    // 4.  Return *this
-    // Only do assignment if RHS is a different object from this.
-  if (this != &rhs) 
-    {
-      // 1. Deallocate any memory that MyClass is using internally
-      /*      delete btnBack;
-      delete btnConnect;
-      delete btnCreateAccount;
-      delete btnLostPwd;
-      delete tiUserName;
-      delete tiPassword;
-      */
-      delete window;
-      delete winBack;
-
-      // 2.  Allocate some memory to hold the contents of rhs
-      //      btnBack(rhs.btnBack);
-      //      window = new Window(rhs.window);
-    }
-  LOGE("DEEP_DEBUG : assignment");
-
-  return *this;
-}
-
 
 /** Initialize the game state
   *
@@ -163,69 +101,9 @@ onQuitClicked(){
 /** Setup the connection menu buttons
   *
   */
-void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
-  /*  BetaGUI::GUI* mGUI =&GUI::getSingleton();
-
-  // Center the window in the right background
-  RenderWindow* mRenderWindow=GameEngine::getSingleton().getRenderWindow();
-  unsigned int w=mRenderWindow->getWidth();
-  unsigned int h=mRenderWindow->getHeight();
-
-  // The width of the window in pixels
-  unsigned int winWidth=300;
-  // The height of the window in pixels
-  unsigned int winHeight=180;
-
-  // The position of the window
-  unsigned int winY=(h/2)-(winHeight/2);
-  unsigned int winX=((w/2)-40)+(w/4-(winWidth/2));
-  winX+=(int)(double)w*0.025;     // The border
-
-  // The connection window
-  window = new BetaGUI::Window(Vector4(winX,winY,winWidth,winHeight),
-		      BetaGUI::OWT_RESIZE_AND_MOVE, "Connection", mGUI);
-
-  Vector4 laDim(10,40,80,24);
-  Label* labUserName=new Label(laDim, "User name", window);
-  window->addWidget(labUserName);
-
-  Vector4 tiDim(100,40,180,24);
-  tiUserName=new TextInput(tiDim, "", 20, window);
-  window->addWidget(tiUserName);
-
-  Vector4 laDim2(10,70,80,24);
-  Label* labPassword=new Label(laDim2, "Password", window);
-  window->addWidget(labPassword);
-
-  Vector4 tiDim2(100,70,180,24);
-  tiPassword=new TextInput(tiDim2, "", 20, window);
-  tiPassword->setMasked(true);
-  window->addWidget(tiPassword);
-  
-  // Buttons
-  btnConnect = new PushButton(Vector4(70,100,160,24),
-      "Network game", BetaGUI::Callback::Callback(this), window);
-  window->addWidget(btnConnect);
-  
-  btnCreateAccount = new PushButton(Vector4(10,130,135,24),
-       "Create account", BetaGUI::Callback::Callback(this), window);
-  window->addWidget(btnCreateAccount);
-
-  btnLostPwd = new PushButton(Vector4(winWidth-145,130,135,24),
-       "Lost password", BetaGUI::Callback::Callback(this), window);
-  window->addWidget(btnLostPwd);
-  mGUI->addWindow(window);
-
-  // The Back button window (false= no border)
-  winBack = new BetaGUI::Window(Vector4(20,h-50 ,120,53),
-		       BetaGUI::OWT_NONE, "Connection", mGUI, OSI_NAVIGATION);
-  winBack->setAlwaysTransparent(true);
-
-  btnBack = new PushButton(Vector4(10,10,100,33),
-			   "Back", BetaGUI::Callback::Callback(this), winBack);
-  winBack->addWidget(btnBack);
-  mGUI->addWindow(winBack);
-  */
+void RainbruRPG::Core::gsConnection::setupConnectionMenu()
+{
+  // Should now use OgreGui
 }
 
 /** The callback of the Connect button
@@ -236,39 +114,6 @@ void RainbruRPG::Core::gsConnection::setupConnectionMenu(){
 bool RainbruRPG::Core::gsConnection::
 onConnectClicked(){
   LOGI("Connect button clicked");
-  /*
-  // Get the strings
-  Ogre::String name=tiUserName->getValue();
-
-  if (name.empty()){
-    GuiManager::getSingleton()
-      .setErrorMessage("Please enter a user name.");
-  }
-  else{
-    const char* cName=name.c_str();
-    const char* cPwd=tiPassword->getValue().c_str();
-    
-    // connection successfull
-    if (GameEngine::getSingleton().connectUser(cName, cPwd)){
-      GuiManager::getSingleton().beginGuiFadeOut();
-
-      // We must wait for the CEGUI fade end to prevent
-      // SEGFAULT in access to CEGUI windows (getAlpha())
-      while (GuiManager::getSingleton().isInGuiFadeOut()){
-	Ogre::Root::getSingleton().renderOneFrame();
-      }
-      
-      GameEngine::getSingleton().changeState("gsServerList");
-      GuiManager::getSingleton().beginGuiFadeIn();
-    }
-    else{
-      GuiManager::getSingleton()
-	.showMessageBox("Login failed", 
-	"Please verify your username and password.");
-
-    }
-  }
-  */
   return true;
 }
 
@@ -324,17 +169,9 @@ bool RainbruRPG::Core::gsConnection::onLostPasswordClicked(){
 /** Setup the tab order for this game state
   *
   */
-void RainbruRPG::Core::gsConnection::setupTabOrder(){
-  // Registering TabNavigation
-  /*  tabNav->clear();
-  tabNav->setParent("RainbruRPG/Connection");
-  tabNav->addWidget("RainbruRPG/Connection/Name");
-  tabNav->addWidget("RainbruRPG/Connection/Pwd");
-  tabNav->addWidget("Connect");
-  tabNav->addWidget("CreateAccount");
-  tabNav->addWidget("LostPassword");
-  tabNav->addWidget("Back");
-  */
+void RainbruRPG::Core::gsConnection::
+setupTabOrder()
+{
 }
 
 /** The general OgreGUI buttons callback
@@ -342,44 +179,17 @@ void RainbruRPG::Core::gsConnection::setupTabOrder(){
   * \param btn The button that send the event
   *
   */
-void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn){
- 
-  if (btn==btnBack){
-    onBackClicked();
-  }
-  else if (btn==btnConnect){
-    onConnectClicked();
-  }
-  else if (btn==btnCreateAccount){
-    onCreateAccountClicked();
-  }
-  else if (btn==btnLostPwd){
-    onLostPasswordClicked();
-  }
+void RainbruRPG::Core::gsConnection::onButtonPress(BetaGUI::Button* btn)
+{
 
 }
 
 /** Pause the execution of this GameState
   *
   */
-void RainbruRPG::Core::gsConnection::pause(){
+void RainbruRPG::Core::gsConnection::pause()
+{
   LOGI("gsConnection::pause() called");
-
-  if (window){
-    //    window->hide();
-    //    delete window;
-    window=NULL;
-  }
-
-  if (winBack){
-    //    winBack->hide();
-    //    delete winBack;
-    winBack=NULL;
-  }
-
-  if (window==NULL || winBack==NULL){
-    LOGW("Cannot get main or back windows");
-  }
 }
 
 /** The back button implementation
@@ -387,7 +197,8 @@ void RainbruRPG::Core::gsConnection::pause(){
   * Makes the GameEngine changes to ST_MAIN_MENU, the gsMainMenu game state.
   *
   */
-void RainbruRPG::Core::gsConnection::onBackClicked(void){
+void RainbruRPG::Core::gsConnection::onBackClicked(void)
+{
     LOGI("Back button clicked");
     translateTo(0.5f);
 
