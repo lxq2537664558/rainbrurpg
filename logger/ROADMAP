@@ -1,0 +1,49 @@
+#                                Hey emacs, this is a -*-org-*- file
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** TODO Create a ruby/qt app to handle Yaml output
+     CLOCK: [2011-06-24 ven. 22:00]--[2011-06-24 ven. 22:31] =>  0:31
+     CLOCK: [2011-06-24 ven. 21:13]--[2011-06-24 ven. 21:44] =>  0:31
+     CLOCK: [2011-06-24 ven. 13:30]--[2011-06-24 ven. 13:47] =>  0:17
+     CLOCK: [2011-06-24 ven. 10:49]--[2011-06-24 ven. 11:19] =>  0:30
+     CLOCK: [2011-06-24 ven. 10:31]--[2011-06-24 ven. 10:43] =>  0:12
+     CLOCK: [2011-06-23 jeu. 21:10]--[2011-06-23 jeu. 21:26] =>  0:16
+     CLOCK: [2011-06-23 jeu. 19:12]--[2011-06-23 jeu. 19:26] =>  0:14
+- [X] Uses QtDesigner
+- [ ] rbuic4 to compile ui files
+- [ ] Feed Logfile details dock panel with '/program' YAML node values
+- [ ] Makes LoggerOutputYaml output compatible with current hard-coded parser
+
+- [ ] Please use kwalify to test YAML file
+      see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
+- [ ] YAML output versionning
+      - [ ] v1: platform independant infos
+      - [ ] v2: Add some platform dependant infos
+	    Process time, OS name, datetime of execution, compilation flags
+      - [ ] v3: sigsegv trap handling
+- [ ] Should find or create a suitable property editor 
+**** TODO Continue Logger in src/logger
+     CLOCK: [2011-06-23 jeu. 15:27]--[2011-06-23 jeu. 15:38] =>  0:11
+     CLOCK: [2011-06-22 mer. 15:10]--[2011-06-22 mer. 15:37] =>  0:27
+     CLOCK: [2011-06-22 mer. 14:41]--[2011-06-22 mer. 14:56] =>  0:15
+     CLOCK: [2011-06-22 mer. 11:48]--[2011-06-22 mer. 12:02] =>  0:14
+- [X] Retest Logger with  std container
+- [ ] May switch to GPLv3
+- [ ] Each class should have its own files
+      - [ ] Start with Logger.hpp
+      - [ ] Move maximum implementation in .cpp files
+- [ ] Must rename LoggerOutputTxt ni LoggerOutputTty
+- [ ] Find a suitable container for LoggerOutputs
+      Why static std::list make segfault
+- [ ] Doxygen documentation
+- [ ] Move it to the RainbruRPG project
+      In Rpg namespace
+- [ ] Complete LogHeader implementation
+      - [ ] Compilation date/time
+      - [ ] Execution date/time
+- [ ] May also handle Environment variables, config file...
+- [ ] Logger may log process time
+- [ ] configure must search for boost libraries
+- [ ] Create a DEPENDENCIES file

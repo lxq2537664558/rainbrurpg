@@ -1,0 +1,14 @@
+2011-06-24  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/log_reader.rb: starts to parse hard-coded YAML.
+
+2011-06-23  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/LoggerOutputYaml: first tests.
+	
+	* src/tools/log_reader.rb: first runtime UI loading.
+	
+	* src/LoggerOutputTxt: in its own file.
+	
+	* logger: initial version.
+

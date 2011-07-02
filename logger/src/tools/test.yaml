@@ -1,0 +1,1098 @@
+logfile-version : 1
+program:
+  name    : RainbruRPG
+  version : 0.0.5-216  
+
+lines:
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 46
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+  - level    : informative
+    domain   : MyLogDomain
+    filename : logger-test.cpp
+    line     : 48
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+
+
+  - level    : debug
+    domain   : gui
+    filename : roukmout.cpp
+    line     : 726
+    content  : 
+      - double : 78
+      - string : A string 
+      - double : 82
+

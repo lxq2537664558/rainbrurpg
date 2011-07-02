@@ -1,0 +1,214 @@
+program:
+  - name   : TestProgram
+  - version: 0.0.5-265
+---
+level    : informative
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 42
+content  : 
+  - string : A string
+  - double : 78
+  - double : 65
+---
+level    : informative
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 46
+content  : 
+  - string : This is my new logger
+---
+level    : informative
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 47
+content  : 
+  - string : Testing it with Carine
+---
+level    : informative
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 48
+content  : 
+  - double : 78
+  - string : A string 
+  - double : 82
+---
+level    : warning
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 49
+content  : 
+  - string : It's a warning
+---
+level    : critical
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 50
+content  : 
+  - string : A critical error occurs
+---
+level    : informative
+domain   : graphic
+filename : Point.cpp
+line     : 12
+content  : 
+  - string : Constructing a point
+  - object:
+    name   :Point
+    address:0x7ffff10503b0
+      - attribute:
+        type :int
+        name :x
+        value:10
+      - attribute:
+        type :int
+        name :y
+        value:50
+---
+level    : informative
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 53
+content  : 
+  - string : And this is a Point object :
+  - object:
+    name   :Point
+    address:0x7ffff10503b0
+      - attribute:
+        type :int
+        name :x
+        value:10
+      - attribute:
+        type :int
+        name :y
+        value:50
+---
+level    : informative
+domain   : graphic
+filename : Point.cpp
+line     : 12
+content  : 
+  - string : Constructing a point
+  - object:
+    name   :Point
+    address:0x237e640
+      - attribute:
+        type :int
+        name :x
+        value:15
+      - attribute:
+        type :int
+        name :y
+        value:55
+---
+level    : verbose 
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 56
+content  : 
+  - string : And this is a Point pointer :
+  - object:
+    name   :Point
+    address:0x237e640
+      - attribute:
+        type :int
+        name :x
+        value:15
+      - attribute:
+        type :int
+        name :y
+        value:55
+---
+level    : debug 
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 59
+content  : 
+  - string : You may also use a pointer to instance :
+  - object:
+    name   :Point
+    address:0x7ffff10503b0
+      - attribute:
+        type :int
+        name :x
+        value:10
+      - attribute:
+        type :int
+        name :y
+        value:50
+---
+level    : informative
+domain   : graphic
+filename : Point.cpp
+line     : 12
+content  : 
+  - string : Constructing a point
+  - object:
+    name   :Point
+    address:0x7ffff10503a0
+      - attribute:
+        type :int
+        name :x
+        value:10
+      - attribute:
+        type :int
+        name :y
+        value:20
+---
+level    : informative
+domain   : graphic
+filename : Point.cpp
+line     : 12
+content  : 
+  - string : Constructing a point
+  - object:
+    name   :Point
+    address:0x7ffff1050390
+      - attribute:
+        type :int
+        name :x
+        value:70
+      - attribute:
+        type :int
+        name :y
+        value:50
+---
+level    : informative
+domain   : graphic
+filename : Point.cpp
+line     : 12
+content  : 
+  - string : Constructing a point
+  - object:
+    name   :Point
+    address:0x7ffff1050380
+      - attribute:
+        type :int
+        name :x
+        value:36
+      - attribute:
+        type :int
+        name :y
+        value:52
+---
+level    : debug 
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 63
+content  : 
+  - string : Trying with nested object :
+  - object:
+    name   :Polygon
+    address:0x7ffff1050360
+      - attribute:
+        type :int
+        name :size
+        value:3
+---
+level    : debug 
+domain   : MyLogDomain
+filename : logger-test.cpp
+line     : 64
+content  : 
+  - string : Note that you get compilation error if you do not override Object::inspect()

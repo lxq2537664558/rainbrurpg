@@ -1,0 +1,29 @@
+logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
+   library
+
+* Correct project setup
+- Correct ROADMAP file
+- Create a DEPENDENCIES file
+- Switch to GPLv3
+- All goes in 'rpg' namespace
+- Add correct GNU headers
+- Make the library and examples correctly build
+- test for cross-compilation
+
+=== ChanegLog ===
+   (6 items by revision)
+   SLOC is the result of `sloccount src/`
+   FT is the ROADMAP file time
+
+* v0.0.0-2 (24 jun 2011 - ???) SLOC ??? FT ??:??
+- Added GNU headers in all src/ files
+- Handle rbuic tool and .ui compilation
+- log_reader starts hard-coded YAML parsing
+
+* v0.0.0-1 (23 jun 2011 - 24 jun 2011) SLOC 523 FT 2:06
+- Added filter box to logreader main window
+- First test of YAML output
+- Started src/tools/log_reader.rb
+- Played a bit with logreader's MainWindow
+- LoggerOutputTxt in its own file
+- Retrieved from another project
