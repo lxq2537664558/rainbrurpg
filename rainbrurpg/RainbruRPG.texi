@@ -7,12 +7,13 @@
 @c This file uses the @command command introduced in Texinfo 4.0.
 @c %**start of header
 @setfilename RainbruRPG.info
-@settitle @PACKAGE@
+@settitle RainbruRPG
+@subtitle 
 @finalout
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION @VERSION@-@RELEASE@
+@include version.texi
 
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
@@ -43,8 +44,9 @@ by the Foundation.
 
 @titlepage
 @title RainbruRPG
-@subtitle RainbruRPG is a in-development Multiplayer Online Role-Playing Game
-@subtitle for RainbruRPG Version @value{VERSION}
+@subtitle A in-development Multiplayer Online Role-Playing Game
+@subtitle For RainbruRPG Version @value{VERSION}-213
+@subtitle Last update @value{UPDATED}
 @author by J@'er@^ome PASQUIER
 
 @page
@@ -118,7 +120,7 @@ Or simply call the @command{./bootstrap} command.
 
 @node Copying, Overview, Instructions, Top
 @chapter Copying
-@include gpl.texinfo
+@include gpl.texi
 
 @node Overview, Server, Copying, Top
 @chapter Overview

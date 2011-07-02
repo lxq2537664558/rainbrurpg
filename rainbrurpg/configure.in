@@ -235,7 +235,6 @@ AC_CONFIG_FILES([Makefile			\
 	  RainbruRPG.lsm RainbruRPG.spec	\
 	  terminalapi-1.0.pc			\
 	  RainbruRPG-common.pc			\
-	  RainbruRPG.texinfo			\
 	  Doxyfile])
 
 

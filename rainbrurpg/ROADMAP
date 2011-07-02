@@ -1062,8 +1062,13 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       modified files
       Always configure with --enable-debug to get a log
       - [X] It works in debug mode :( Should know why
-**** TODO Sourceforge release                                              [20%]
+**** TODO Sourceforge release                                              [33%]
+     CLOCK: [2011-07-02 sam. 21:37]--[2011-07-02 sam. 21:52] =>  0:15
 - [X] Remove CEGUI reference from Sourceforge project overview
+- [X] Must fix the automake texifno error
+      automake: cannot open < ./RainbruRPG.texinfo
+      - [X] Do not using ...texinfo.in
+      - [X] Using the 'version.texi' feature of automake
 - [ ] Change libtool versionning for OgreGui
 - [ ] File release sourceforge (gz+bz2)
       - [ ] Should add rev number to the release names

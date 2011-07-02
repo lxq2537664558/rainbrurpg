@@ -404,7 +404,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile po/Makefile.in ext/Makefile doc/Makefile doc/ogregui-uml.dot src/Makefile src/testHelpers/Makefile src/common/Makefile src/terminalapi/Makefile src/maincore/Makefile src/ogreGui/Makefile src/design/Makefile src/client/Makefile src/editor/Makefile src/server/Makefile src/tests/Makefile src/tools/Makefile src/tools/transmsg/Makefile src/tools/xident/Makefile src/tools/netflooder/Makefile src/tools/ftpclient/Makefile src/tools/hashsum/Makefile src/examples/Makefile src/examples/tapi/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/materials/programs/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc RainbruRPG.texinfo Doxyfile"
+config_files=" Makefile po/Makefile.in ext/Makefile doc/Makefile doc/ogregui-uml.dot src/Makefile src/testHelpers/Makefile src/common/Makefile src/terminalapi/Makefile src/maincore/Makefile src/ogreGui/Makefile src/design/Makefile src/client/Makefile src/editor/Makefile src/server/Makefile src/tests/Makefile src/tools/Makefile src/tools/transmsg/Makefile src/tools/xident/Makefile src/tools/netflooder/Makefile src/tools/ftpclient/Makefile src/tools/hashsum/Makefile src/examples/Makefile src/examples/tapi/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/materials/programs/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc Doxyfile"
 config_headers=" config.h"
 config_commands=" depfiles libtool po-directories"
 
@@ -577,7 +577,7 @@ FGREP='/bin/grep -F'
 LD='/usr/bin/ld -m elf_x86_64'
 NM='/usr/bin/nm -B'
 LN_S='ln -s'
-max_cmd_len='1572864'
+max_cmd_len='3458764513820540925'
 ac_objext='o'
 exeext=''
 lt_unset='unset'
@@ -777,7 +777,7 @@ fi
 
 
     PACKAGE='RainbruRPG'
-    VERSION='0.0.5'
+    VERSION='0.0.5-213'
     TIMESTAMP=''
     RM='rm -f'
     ofile='libtool'
@@ -856,7 +856,6 @@ do
     "RainbruRPG.spec") CONFIG_FILES="$CONFIG_FILES RainbruRPG.spec" ;;
     "terminalapi-1.0.pc") CONFIG_FILES="$CONFIG_FILES terminalapi-1.0.pc" ;;
     "RainbruRPG-common.pc") CONFIG_FILES="$CONFIG_FILES RainbruRPG-common.pc" ;;
-    "RainbruRPG.texinfo") CONFIG_FILES="$CONFIG_FILES RainbruRPG.texinfo" ;;
     "Doxyfile") CONFIG_FILES="$CONFIG_FILES Doxyfile" ;;
 
   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
@@ -1049,7 +1048,7 @@ S["build_os"]="linux-gnu"
 S["build_vendor"]="unknown"
 S["build_cpu"]="x86_64"
 S["build"]="x86_64-unknown-linux-gnu"
-S["ISODATE"]="2011-05-14"
+S["ISODATE"]="2011-07-02"
 S["TAPI_LIBRARY_VERSION"]="1:1:0"
 S["OGREGUI_LIBRARY_VERSION"]="2:0:0"
 S["DESIGN_LIBRARY_VERSION"]="1:0:0"
@@ -1062,7 +1061,7 @@ S["LIB_CORE_NAME"]="core"
 S["LIB_TERAPI_NAME"]="terminalAPI"
 S["LIB_COMMON_NAME"]="common"
 S["GENERIC_LIBRARY_NAME"]="RainbruRPG"
-S["RELEASE"]="211"
+S["RELEASE"]="212"
 S["am__untar"]="${AMTAR} xf -"
 S["am__tar"]="${AMTAR} chof - \"$$tardir\""
 S["AMTAR"]="${SHELL} /home/rainbru/programmation/rainbrurpg-svn/rainbrurpg/missing --run tar"
@@ -1079,7 +1078,7 @@ S["AUTOHEADER"]="${SHELL} /home/rainbru/programmation/rainbrurpg-svn/rainbrurpg/
 S["AUTOMAKE"]="${SHELL} /home/rainbru/programmation/rainbrurpg-svn/rainbrurpg/missing --run automake-1.11"
 S["AUTOCONF"]="${SHELL} /home/rainbru/programmation/rainbrurpg-svn/rainbrurpg/missing --run autoconf"
 S["ACLOCAL"]="${SHELL} /home/rainbru/programmation/rainbrurpg-svn/rainbrurpg/missing --run aclocal-1.11"
-S["VERSION"]="0.0.5"
+S["VERSION"]="0.0.5-213"
 S["PACKAGE"]="RainbruRPG"
 S["CYGPATH_W"]="echo"
 S["am__isrc"]=""
@@ -1172,8 +1171,8 @@ D["PACKAGE_STRING"]=" \"RainbruRPG 0.0.5\""
 D["PACKAGE_BUGREPORT"]=" \"rainbru@users.sourceforge.net\""
 D["PACKAGE_URL"]=" \"\""
 D["PACKAGE"]=" \"RainbruRPG\""
-D["VERSION"]=" \"0.0.5\""
-D["BUILD_RELEASE"]=" 211"
+D["VERSION"]=" \"0.0.5-213\""
+D["BUILD_RELEASE"]=" 212"
 D["USER_INSTALL_PREFIX"]=" \"/usr/local\""
 D["STDC_HEADERS"]=" 1"
 D["HAVE_SYS_TYPES_H"]=" 1"

@@ -42,8 +42,8 @@ EXTRA_DIST= config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
 #TESTS=chk
 
 #  build and install the .info pages
-info_TEXINFOS = RainbruRPG.texinfo
-RainbruRPG_TEXINFOS = gpl.texinfo
+info_TEXINFOS = RainbruRPG.texi
+RainbruRPG_TEXINFOS = gpl.texi
 
 #  install the man pages
 man_MANS=RainbruRPG.6        \

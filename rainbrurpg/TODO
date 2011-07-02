@@ -107,7 +107,7 @@ A system that serialize widgets position and configuration
 === Changelog ===   
    15 items by revision
    Please see the ROADMAP file
-   Please update version and revision in configure.in
+   Please update version and revision in configure.in and RainbruRPG.texi
    Please update doc/regTest.html for each revision
    Please update config/languages.xml if changes in i18n
    Please update DEPENCENCIES if needed.
@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (10) Fix some issues detected with cppcheck in client/
+- (11) Changes the texinfo version behaviour
+   to fix an automake error
+- Fix some issues detected with cppcheck in client/
    gsmenubase, main, languageselector, launcheroptions
 - Some member pointers removed from client/
 - Get rid of the gsmenubase dynamic menu option
