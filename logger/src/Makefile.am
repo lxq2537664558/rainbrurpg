@@ -7,16 +7,22 @@ lib_LTLIBRARIES = librainbrurpg-logger.la
 librainbrurpg_logger.adir=$(libdir)
 
 # Please keep this file list sorted
-h_sources= Logger.hpp		\
-	   LoggerOutput.hpp	\
-	   LoggerOutputTxt.hpp	\
-	   LoggerOutputYaml.hpp
+h_sources= Logger.hpp			\
+	   LoggerOutput.hpp		\
+	   LoggerOutputTty.hpp		\
+	   LoggerOutputFile.hpp		\
+	   LoggerOutputYaml.hpp		\
+	   ObjectAttribute.hpp		\
+	   ObjectInspector.hpp
 
 # Please keep this file list sorted
-cc_sources=Logger.cpp		\
-	   LoggerOutput.cpp	\
-	   LoggerOutputTxt.cpp	\
-	   LoggerOutputYaml.cpp
+cc_sources=Logger.cpp			\
+	   LoggerOutput.cpp		\
+	   LoggerOutputTty.cpp		\
+	   LoggerOutputFile.cpp		\
+	   LoggerOutputYaml.cpp		\
+	   ObjectAttribute.cpp		\
+	   ObjectInspector.cpp
 
 
 library_includedir=$(includedir)/rainbrurpg/logger

@@ -18,28 +18,29 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
+#ifndef _OBJECT_INSECTOR_HPP_
+#define _OBJECT_INSECTOR_HPP_
 
+#include "Object.hpp"
+#include "ObjectAttribute.hpp"
 
 #include <string>
 #include <list>
-#include <sstream>
 
 using namespace std;
 
-// Forward declaration...
-class ObjectInspector;
-
-class Object
+class ObjectInspector
 {
 public:
-  Object(){};
+  ObjectInspector(string class_name, const void* address);
 
-  virtual ObjectInspector inspect()const = 0;
+  ObjectInspector& add(string name, int value);
+
+  ObjectInspector& add(string name, Object&o);
+
+  string name;
+  string address;
+  list<ObjectAttribute> attributes;
 };
 
-// ... because ObjectInspector must know about Object
-#include "ObjectInspector.hpp"
-
-#endif // _OBJECT_HPP_
+#endif // !_OBJECT_INSECTOR_HPP_

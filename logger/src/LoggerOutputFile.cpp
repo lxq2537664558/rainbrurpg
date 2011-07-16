@@ -1,3 +1,4 @@
+
 /* 
  * logger - The RainbruRPG's logging library.
  *
@@ -18,28 +19,57 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
+#include "LoggerOutputFile.hpp"
 
-
-#include <string>
-#include <list>
-#include <sstream>
-
-using namespace std;
-
-// Forward declaration...
-class ObjectInspector;
-
-class Object
+void 
+LoggerOutputFile::open()
 {
-public:
-  Object(){};
-
-  virtual ObjectInspector inspect()const = 0;
+  mFile.open ("logger-test.log"); 
 };
 
-// ... because ObjectInspector must know about Object
-#include "ObjectInspector.hpp"
+void 
+LoggerOutputFile::close()
+{
+  mFile.close(); 
+};
 
-#endif // _OBJECT_HPP_
+void 
+LoggerOutputFile::startLog(LogLevel vLevel, const string& vLogDomain, 
+			   const string& vFilename, const string& vLine)
+{
+  mFile << ll_to_abr(vLevel)
+	<< " '" <<  vLogDomain << "' " 
+	<< vFilename << ":"
+	<<  vLine;
+  
+};
+
+void 
+LoggerOutputFile::endLog()
+{
+  mFile << endl;
+};
+
+void 
+LoggerOutputFile::log(const string& str)
+{
+  mFile   << ' ' << str;  
+};
+
+void 
+LoggerOutputFile::log(double d)
+{
+  mFile   << ' ' << d;  
+};
+
+void 
+LoggerOutputFile::log(const Object&o)
+{
+  mFile << ' ' << &o;  
+};
+
+void 
+LoggerOutputFile::logHeader(const LogHeader*)
+{
+  mFile << "</ logHeader" << endl;
+}

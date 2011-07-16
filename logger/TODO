@@ -15,7 +15,12 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    SLOC is the result of `sloccount src/`
    FT is the ROADMAP file time
 
-* v0.0.0-2 (24 jun 2011 - ???) SLOC ??? FT ??:??
+* v0.0.0-3 (16 jul 2011 - ???) SLOC ??? FT ??:??
+
+* v0.0.0-2 (24 jun 2011 - 16 jul 2011 SLOC 1,044 FT 4:47
+- Added main page to documentation
+- Moved some classes in their own sources
+- Switched to GPLv3
 - Added GNU headers in all src/ files
 - Handle rbuic tool and .ui compilation
 - log_reader starts hard-coded YAML parsing

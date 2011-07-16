@@ -3,10 +3,10 @@
  *
  * Copyright (C) 2011 Jérôme Pasquier
  *
- * This program is free software; you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2, or (at your option)
- * any later version.
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,12 +14,11 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
-#include "LoggerOutputTxt.hpp"
+#include "LoggerOutputTty.hpp"
 
 
 /* Prefix are :
@@ -45,26 +44,26 @@ static const string WHITE   ="\033[01;37m";
 #define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << GRAY
 
 void 
-LoggerOutputTxt::endLog()
+LoggerOutputTty::endLog()
 {
   cout << endl;
 };
 
 void 
-LoggerOutputTxt::log(const string& str)
+LoggerOutputTty::log(const string& str)
 {
   cout << ' ' << str;  
 };
 
 void 
-LoggerOutputTxt::log(double d)
+LoggerOutputTty::log(double d)
 {
   cout << ' ' << d;  
 };
 
 
 void 
-LoggerOutputTxt::log(const Object& o){ 
+LoggerOutputTty::log(const Object& o){ 
   ObjectInspector oi = o.inspect();
   cout << " <" << oi.name << ':' << oi.address << ">[";
   list<ObjectAttribute>::iterator iter;
@@ -77,14 +76,14 @@ LoggerOutputTxt::log(const Object& o){
 };
 
 void 
-LoggerOutputTxt::logHeader(const LogHeader*lh)
+LoggerOutputTty::logHeader(const LogHeader*lh)
 {
   cout << "Logger started for '" << lh->program_name 
        << " v"<< lh->program_version<< "'" << endl;
 }
 
 void
-LoggerOutputTxt::startLog(LogLevel vLevel, const string& vLogDomain, 
+LoggerOutputTty::startLog(LogLevel vLevel, const string& vLogDomain, 
 			  const string& vFilename, 
 			  const string& vLine)
 {

@@ -1,3 +1,10 @@
+2011-07-16  Jérôme Pasquier  <rainbru@free.fr>
+
+	
+	* src/ObjectInspector: in its own files.
+	* src/LoggerOutputTxt.hpp: in its own files.
+	* src/LoggerOutputTty.hpp: renamed from LoggerOutputTxt.
+	
 2011-06-24  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/log_reader.rb: starts to parse hard-coded YAML.

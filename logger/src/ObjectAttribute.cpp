@@ -18,28 +18,9 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
+#include "ObjectAttribute.hpp"
 
-
-#include <string>
-#include <list>
-#include <sstream>
-
-using namespace std;
-
-// Forward declaration...
-class ObjectInspector;
-
-class Object
-{
-public:
-  Object(){};
-
-  virtual ObjectInspector inspect()const = 0;
+ObjectAttribute::ObjectAttribute(string t, string n, string v):
+  type(t), name(n), value(v)
+{    
 };
-
-// ... because ObjectInspector must know about Object
-#include "ObjectInspector.hpp"
-
-#endif // _OBJECT_HPP_

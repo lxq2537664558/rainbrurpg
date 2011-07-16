@@ -18,28 +18,15 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
+/* It is a documentation-only file */
 
 
-#include <string>
-#include <list>
-#include <sstream>
-
-using namespace std;
-
-// Forward declaration...
-class ObjectInspector;
-
-class Object
-{
-public:
-  Object(){};
-
-  virtual ObjectInspector inspect()const = 0;
-};
-
-// ... because ObjectInspector must know about Object
-#include "ObjectInspector.hpp"
-
-#endif // _OBJECT_HPP_
+/** \mainpage RainbruRPG's logger
+  *
+  * Here is the documentation for the RainbruRPG's logger. A library used
+  * to log program execution information to standard output, to a file
+  * or to a YAML file.
+  *
+  * \section how_to_use How to use the logger library
+  *
+  */

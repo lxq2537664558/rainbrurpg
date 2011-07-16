@@ -18,28 +18,28 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
+#ifndef _LOGGER_OUTPUT_FILE_HPP_
+#define _LOGGER_OUTPUT_FILE_HPP_
 
+#include "LoggerOutput.hpp"
 
-#include <string>
-#include <list>
-#include <sstream>
-
-using namespace std;
-
-// Forward declaration...
-class ObjectInspector;
-
-class Object
+class LoggerOutputFile : public LoggerOutput
 {
 public:
-  Object(){};
+  virtual void open();
+  virtual void close();
+  
+  virtual void startLog(LogLevel, const string&, const string&, const string&);
+  virtual void endLog();
 
-  virtual ObjectInspector inspect()const = 0;
+  virtual void log(const string&);
+  virtual void log(double);
+  virtual void log(const Object&);
+
+  virtual void logHeader(const LogHeader*);
+
+private:
+    ofstream mFile;       //!< The file to log to
 };
 
-// ... because ObjectInspector must know about Object
-#include "ObjectInspector.hpp"
-
-#endif // _OBJECT_HPP_
+#endif // !_LOGGER_OUTPUT_FILE_HPP_

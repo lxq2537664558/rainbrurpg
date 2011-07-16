@@ -18,28 +18,33 @@
  *
  */
 
-#ifndef _OBJECT_HPP_
-#define _OBJECT_HPP_
-
-
-#include <string>
-#include <list>
-#include <sstream>
-
-using namespace std;
-
-// Forward declaration...
-class ObjectInspector;
-
-class Object
-{
-public:
-  Object(){};
-
-  virtual ObjectInspector inspect()const = 0;
-};
-
-// ... because ObjectInspector must know about Object
 #include "ObjectInspector.hpp"
 
-#endif // _OBJECT_HPP_
+ObjectInspector::ObjectInspector(string class_name, const void* address):
+  name(class_name)
+{
+  ostringstream oss;
+  oss << address;
+  this->address = oss.str();
+  
+};
+
+ObjectInspector& 
+ObjectInspector::add(string name, int value)
+{
+  ostringstream oss;
+  oss << value;
+  attributes.push_back(ObjectAttribute("int", name, oss.str()));
+  return *this;
+};
+
+ObjectInspector& 
+ObjectInspector::add(string name, Object&o)
+{
+  /*
+    ostringstream oss;
+    oss << value;
+  */
+  attributes.push_back(ObjectAttribute("int", name, "Nested object"));
+  return *this;
+};

@@ -73,8 +73,9 @@ am__installdirs = "$(DESTDIR)$(libdir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 librainbrurpg_logger_la_LIBADD =
 am__objects_1 =
-am__objects_2 = Logger.lo LoggerOutput.lo LoggerOutputTxt.lo \
-	LoggerOutputYaml.lo
+am__objects_2 = Logger.lo LoggerOutput.lo LoggerOutputTty.lo \
+	LoggerOutputFile.lo LoggerOutputYaml.lo ObjectAttribute.lo \
+	ObjectInspector.lo
 am_librainbrurpg_logger_la_OBJECTS = $(am__objects_1) $(am__objects_2)
 librainbrurpg_logger_la_OBJECTS =  \
 	$(am_librainbrurpg_logger_la_OBJECTS)
@@ -274,17 +275,23 @@ lib_LTLIBRARIES = librainbrurpg-logger.la
 librainbrurpg_logger.adir = $(libdir)
 
 # Please keep this file list sorted
-h_sources = Logger.hpp		\
-	   LoggerOutput.hpp	\
-	   LoggerOutputTxt.hpp	\
-	   LoggerOutputYaml.hpp
+h_sources = Logger.hpp			\
+	   LoggerOutput.hpp		\
+	   LoggerOutputTty.hpp		\
+	   LoggerOutputFile.hpp		\
+	   LoggerOutputYaml.hpp		\
+	   ObjectAttribute.hpp		\
+	   ObjectInspector.hpp
 
 
 # Please keep this file list sorted
-cc_sources = Logger.cpp		\
-	   LoggerOutput.cpp	\
-	   LoggerOutputTxt.cpp	\
-	   LoggerOutputYaml.cpp
+cc_sources = Logger.cpp			\
+	   LoggerOutput.cpp		\
+	   LoggerOutputTty.cpp		\
+	   LoggerOutputFile.cpp		\
+	   LoggerOutputYaml.cpp		\
+	   ObjectAttribute.cpp		\
+	   ObjectInspector.cpp
 
 library_includedir = $(includedir)/rainbrurpg/logger
 library_include_HEADERS = $(h_sources)
@@ -372,8 +379,11 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Logger.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoggerOutput.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoggerOutputTxt.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoggerOutputFile.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoggerOutputTty.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoggerOutputYaml.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectAttribute.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectInspector.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
