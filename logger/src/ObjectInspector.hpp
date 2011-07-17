@@ -18,6 +18,11 @@
  *
  */
 
+/** \file ObjectInspector.hpp
+  * The header file of ObjectInspector object
+  *
+  */
+
 #ifndef _OBJECT_INSECTOR_HPP_
 #define _OBJECT_INSECTOR_HPP_
 

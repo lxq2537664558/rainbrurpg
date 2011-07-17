@@ -18,6 +18,11 @@
  *
  */
 
+/** \file Logger.hpp
+  * The header of the main logger object
+  *
+  */
+
 #ifndef _LOGGER_HPP_
 #define _LOGGER_HPP_
 
@@ -32,21 +37,28 @@ using namespace std;
 
 namespace po = boost::program_options;
 
-/// A macro used to fix a \c __LINE__ bug
+/// A macro used to fix a __LINE__ bug
 #define STRINGIFY(x) #x
 
-/// A macro used to fix a \c __LINE__ bug
+/// A macro used to stringify the __LINE__ value
 #define TOSTRING(x) STRINGIFY(x)
 
+/// The top-level macro used by all loglevel-defined ones.
 #define LOG(LEVEL, ARGS)					 \
   static_logger.startLog(LEVEL, __FILE__, TOSTRING(__LINE__)) \
   << ARGS; static_logger.endLog()
 
+/// Log at the \b debug log level
 #define LOGD(ARGS) LOG(LL_DEBUG, ARGS)
+/// Log at the \b verbose log level
 #define LOGV(ARGS) LOG(LL_VERBOSE, ARGS)
+/// Log at the \b informative log level
 #define LOGI(ARGS) LOG(LL_INFO, ARGS)
+/// Log at the \b warning log level
 #define LOGW(ARGS) LOG(LL_WARN, ARGS)
+/// Log at the \b error log level
 #define LOGE(ARGS) LOG(LL_ERRLL_ERR, ARGS)
+/// Log at the \b critical log level
 #define LOGC(ARGS) LOG(LL_CRITICAL, ARGS)
 
 /** Defines the logtype */
@@ -56,14 +68,21 @@ enum LogType{
   LT_BOTH   //!< Log to both file and cout
 };
 
-//typedef boost::array<LoggerOutput*, 3> LoggerOutputList;
-//typedef boost::array<LoggerOutput*, 3>::iterator LoggerOutputListIterator;
+// The type for a list of LoggerOutput
 typedef list<LoggerOutput*> LoggerOutputList;
+// and its iterator
 typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
 
 /** The logger class
   *
+  * This is the central, and only *needed* class in this library.
   *
+  * To get started :
+  * - call the init() and free() static functions when starting
+  *   and releasing your program.
+  * - then, create a static logger in the implementation files where
+  *   you need logging feature.
+  * - use the shortcut macro for each loggeing levels.
   *
   */
 class Logger
@@ -115,12 +134,12 @@ protected:
 
 
 private:
-  string mLogDomain; //!< The logger's log domain
-  LogType mLogType;  //!< The logger's type
+  string mLogDomain;                      // The logger's log domain
+  LogType mLogType;                       // The logger's type
 
-  static LoggerOutputList mOutputList;
-  static LoggerOutput *l1, *l2, *l3;
-  static po::options_description options;
+  static LoggerOutputList mOutputList;    // The list of LoggerOutput
+  static LoggerOutput *l1, *l2, *l3;      // The content of the list
+  static po::options_description options; // Used to parse command-line args
 };
 
 #endif // _LOGGER_HPP_

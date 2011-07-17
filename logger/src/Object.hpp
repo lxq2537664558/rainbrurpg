@@ -18,6 +18,11 @@
  *
  */
 
+/** \file Object.hpp
+  * The header file for of a logger-ready base object
+  *
+  */
+
 #ifndef _OBJECT_HPP_
 #define _OBJECT_HPP_
 

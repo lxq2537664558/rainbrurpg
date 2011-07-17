@@ -18,8 +18,12 @@
  *
  */
 
-#include "LoggerOutput.hpp"
+/** \file LoggerOutput.cpp
+  * The implementation of the LoggerOutput object
+  *
+  */
 
+#include "LoggerOutput.hpp"
 
 string 
 LoggerOutput::ll_to_abr(LogLevel vLogLevel)

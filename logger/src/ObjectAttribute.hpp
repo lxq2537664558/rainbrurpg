@@ -18,6 +18,11 @@
  *
  */
 
+/** \file ObjectAttribute.hpp
+  * The header of the ObjectAttribute object
+  *
+  */
+
 #ifndef _OBJECT_ATTRIBUTE_HPP_
 #define _OBJECT_ATTRIBUTE_HPP_
 

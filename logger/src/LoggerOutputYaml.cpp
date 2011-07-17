@@ -18,6 +18,11 @@
  *
  */
 
+/** \file LoggerOutputYaml.cpp
+  * The implementation of YAML specialization of the LoggerOutput object
+  *
+  */
+
 #include "LoggerOutputYaml.hpp"
 
 void 

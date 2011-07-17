@@ -18,6 +18,11 @@
  *
  */
 
+/** \file LoggerOutput.hpp
+  * The header of the LoggerOuput object
+  *
+  */
+
 #ifndef _LOGGER_OUTPUT_HPP_
 #define _LOGGER_OUTPUT_HPP_
 

@@ -18,6 +18,11 @@
  *
  */
 
+/** \file ObjectAttribute.cpp
+  * The implementation of ObjectAttribute object
+  *
+  */
+
 #include "ObjectAttribute.hpp"
 
 ObjectAttribute::ObjectAttribute(string t, string n, string v):

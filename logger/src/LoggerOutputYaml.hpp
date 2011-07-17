@@ -18,6 +18,11 @@
  *
  */
 
+/** \file LoggerOutputYaml.hpp
+  * The header of the YAML specialization of the LoggerOuput object
+  *
+  */
+
 #ifndef _LOGGER_OUTPUT_YAML_HPP_
 #define _LOGGER_OUTPUT_YAML_HPP_
 

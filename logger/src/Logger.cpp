@@ -18,6 +18,11 @@
  *
  */
 
+/** \file Logger.cpp
+  * The implementation of the main logger object
+  *
+  */
+
 #include "Logger.hpp"
 
 #include "LoggerOutputTty.hpp"

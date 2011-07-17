@@ -25,6 +25,8 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2011-07-17 dim. 21:29]
+     CLOCK: [2011-07-17 dim. 20:19]--[2011-07-17 dim. 20:47] =>  0:28
      CLOCK: [2011-07-16 sam. 16:59]--[2011-07-16 sam. 17:38] =>  0:39
      CLOCK: [2011-07-16 sam. 11:08]--[2011-07-16 sam. 11:38] =>  0:30
      CLOCK: [2011-06-23 jeu. 15:27]--[2011-06-23 jeu. 15:38] =>  0:11
@@ -39,10 +41,10 @@
       - [X] LoggerOutputFile in LoggerOutput
       - [X] Continue with Object.hpp
       - [X] Move maximum implementation in .cpp files
-- [ ] Find a suitable container for LoggerOutputs
-      Why static std::list make segfault
-- [ ] Doxygen documentation for public API
-      - [ ] Create a main page (maybe in Mainpage.hpp)
+- [X] Find a suitable container for LoggerOutputs
+- [-] Doxygen documentation for public API
+      - [X] Create a main page 
+      - [X] Must document all files (\file)
       - [ ] Document undocumented members
 - [ ] Move it to the RainbruRPG project (ie. In 'Rpg' namespace)
 - [ ] Complete LogHeader implementation
@@ -54,3 +56,5 @@
 - [ ] Logger may log process time
 - [ ] configure must search for boost libraries
 - [ ] Create a DEPENDENCIES file
+- [ ] Should remove autoprojext generated files
+      logger.cc, xmalloc.h, xmalloc.c ...

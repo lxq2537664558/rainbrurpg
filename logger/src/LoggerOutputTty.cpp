@@ -18,8 +18,12 @@
  *
  */
 
-#include "LoggerOutputTty.hpp"
+/** \file LoggerOutputTty.cpp
+  * The implementation of console specialization of the LoggerOutput object
+  *
+  */
 
+#include "LoggerOutputTty.hpp"
 
 /* Prefix are :
    D for Dark

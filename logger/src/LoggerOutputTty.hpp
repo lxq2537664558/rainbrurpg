@@ -18,6 +18,10 @@
  *
  */
 
+/** \file LoggerOutputTty.hpp
+  * The header of the console specialization of the LoggerOuput object
+  *
+  */
 #ifndef _LOGGER_OUTPUT_TTY_
 #define _LOGGER_OUTPUT_TTY_
 

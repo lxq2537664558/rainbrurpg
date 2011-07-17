@@ -19,6 +19,11 @@
  *
  */
 
+/** \file LoggerOutputFile.cpp
+  * The implementation of file specialization of the LoggerOutput object
+  *
+  */
+
 #include "LoggerOutputFile.hpp"
 
 void 

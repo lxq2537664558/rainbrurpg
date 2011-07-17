@@ -18,6 +18,11 @@
  *
  */
 
+/** \file ObjectInspector.cpp
+  * The implementation of ObjectInspector object
+  *
+  */
+
 #include "ObjectInspector.hpp"
 
 ObjectInspector::ObjectInspector(string class_name, const void* address):
