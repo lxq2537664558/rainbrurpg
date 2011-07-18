@@ -46,3 +46,5 @@ all: $(SOURCES)
 
 clean-local:
 	rm -fr $(SOURCES)
+
+EXTRA_DIST = ogregui-uml.dot

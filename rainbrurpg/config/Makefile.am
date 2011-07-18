@@ -27,3 +27,5 @@ datafiles_DATA= options.xml			\
 		server.xml			\
 		file_extensions.accepted	\
 		file_extensions.refused
+
+EXTRA_DIST = $(datafiles_DATA)

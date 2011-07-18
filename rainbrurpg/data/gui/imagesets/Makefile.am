@@ -22,3 +22,6 @@ datafiles_DATA= TaharezLook.imageset            \
 		TaharezLook.tga			\
 		Vanilla.imageset		\
 		vanilla.tga
+
+EXTRA_DIST = $(datafiles_DATA)
+

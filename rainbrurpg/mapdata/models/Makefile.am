@@ -22,3 +22,5 @@
 datafilesdir = $(prefix)/share/RainbruRPG/mapdata/models
 datafiles_DATA= MyPineTree.mesh      		\
 		MySecondTree.mesh
+
+EXTRA_DIST = $(datafiles_DATA)

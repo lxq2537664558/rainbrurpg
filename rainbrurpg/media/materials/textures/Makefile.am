@@ -19,3 +19,5 @@
 
 datafilesdir = $(prefix)/share/RainbruRPG/media/materials/textures
 datafiles_DATA= clouds.jpg
+
+EXTRA_DIST = $(datafiles_DATA)

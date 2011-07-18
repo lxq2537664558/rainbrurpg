@@ -20,3 +20,6 @@
 datafilesdir = $(prefix)/share/RainbruRPG/data/gui/looknfeel/
 datafiles_DATA= TaharezLook.looknfeel		\
 		Vanilla.looknfeel
+
+EXTRA_DIST = $(datafiles_DATA)
+

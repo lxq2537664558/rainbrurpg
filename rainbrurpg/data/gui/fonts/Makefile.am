@@ -22,3 +22,6 @@ datafiles_DATA= fkp-16.font		\
 		fkp.de.pcf		\
 		iconified-20.font	\
 		Iconiv2.ttf
+
+EXTRA_DIST = $(datafiles_DATA)
+

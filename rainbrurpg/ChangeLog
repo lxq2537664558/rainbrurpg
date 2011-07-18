@@ -1,3 +1,7 @@
+2011-07-18 Jerome Pasquier  <rainbru@free.fr>
+
+	* RainbruRPG.texi: fixed a @subtitle issue.
+	
 2011-06-05 Jerome Pasquier  <rainbru@free.fr>
 	
 	* src/client/languageselector.cpp (feedComboBox): use pre-increment.

@@ -19,3 +19,5 @@
 
 datafilesdir = $(prefix)/share/RainbruRPG/media/packs/
 datafiles_DATA= OgreCore.zip
+
+EXTRA_DIST = $(datafiles_DATA)

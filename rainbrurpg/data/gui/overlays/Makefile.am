@@ -23,3 +23,6 @@ datafiles_DATA= numDebug.overlay		\
 		title.material			\
 		title_bg.png			\
 		title_border.png
+
+EXTRA_DIST = $(datafiles_DATA)
+

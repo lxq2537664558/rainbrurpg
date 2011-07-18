@@ -23,3 +23,6 @@ datafiles_DATA= mainmenu.layout			\
 		dialogsystem.layout		\
 		createAccount.layout		\
 		serverList.layout
+
+EXTRA_DIST = $(datafiles_DATA)
+

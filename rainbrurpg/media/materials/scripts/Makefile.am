@@ -21,3 +21,5 @@ datafilesdir = $(prefix)/share/RainbruRPG/media/materials/scripts
 datafiles_DATA= Example.material 		\
 		highlight.material              \
 		Examples.program
+
+EXTRA_DIST = $(datafiles_DATA)

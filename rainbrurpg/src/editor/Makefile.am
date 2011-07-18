@@ -17,7 +17,6 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-# The final program is called "myapp"
 bin_PROGRAMS = rainbrurpg-editor
 
 rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\

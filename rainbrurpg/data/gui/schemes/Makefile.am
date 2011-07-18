@@ -20,3 +20,6 @@
 datafilesdir = $(prefix)/share/RainbruRPG/data/gui/schemes/
 datafiles_DATA= TaharezLook.scheme		\
 		VanillaSkin.scheme
+
+EXTRA_DIST = $(datafiles_DATA)
+

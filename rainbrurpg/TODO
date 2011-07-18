@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (11) Changes the texinfo version behaviour
+- (13) Added datafiles to the distribution
+- Fixed a texinfo @subtitle error
+- Changes the texinfo version behaviour
    to fix an automake error
 - Fix some issues detected with cppcheck in client/
    gsmenubase, main, languageselector, launcheroptions

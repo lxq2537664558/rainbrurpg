@@ -23,3 +23,6 @@ datafiles_DATA= GUIScheme.xsd		\
 		Falagard.xsd		\
 		Font.xsd		\
 		GUILayout.xsd
+
+EXTRA_DIST = $(datafiles_DATA)
+

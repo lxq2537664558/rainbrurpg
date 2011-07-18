@@ -30,3 +30,6 @@ datafiles_DATA= hf129_3.0.0.png			\
 		hf129_3.HSN.0.0.png		\
 		hf129_3.Alpha.3.0.0.png  	\
 		hf129_3.HSP.0.0.png		
+
+EXTRA_DIST = $(datafiles_DATA)
+

@@ -20,4 +20,6 @@
 SUBDIRS = hf129_3
 
 datafilesdir = $(prefix)/share/RainbruRPG/mapdata/terrains
-datafiles_DATA= hf_129_3.cfg     
+datafiles_DATA= hf_129_3.cfg  
+
+EXTRA_DIST = $(datafiles_DATA)

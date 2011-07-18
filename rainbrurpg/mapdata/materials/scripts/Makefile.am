@@ -36,3 +36,5 @@ datafiles_DATA= BaseTexture.material				\
 		Splatting7.material				\
 		Splatting.material				\
 		SplattingShader.material 
+
+EXTRA_DIST = $(datafiles_DATA)

@@ -38,3 +38,5 @@ PLDecompressUnlitVP2.cg           Splat.program    \
 PLDirectionalFP2.cg               SplatShader.cg    \
 PLDirectionalVP2.cg               SplatShader.program    \
 PLPointFP2High.cg
+
+EXTRA_DIST = $(datafiles_DATA)

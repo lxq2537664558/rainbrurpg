@@ -370,8 +370,8 @@ SUBDIRS = doc po ext src config data media mapdata
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc
 EXTRA_DIST = config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
-	   RainbruRPG.texinfo \
-	   RainbruRPG.spec.in \
+	   RainbruRPG.info 				 \
+	   RainbruRPG.spec.in				 \
 	   Doxyfile
 
 

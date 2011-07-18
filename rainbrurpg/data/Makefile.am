@@ -25,3 +25,4 @@ datafiles_DATA= GLX_icon.png		\
 		staticmenu.png  	\
 		main.bmp 
 
+EXTRA_DIST = $(datafiles_DATA)

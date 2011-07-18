@@ -25,3 +25,5 @@ datafiles_DATA= splatting_sand.png		\
 		Detail3.jpg			\
 		tree1wood.jpg 			\
 		tree1leaves.png
+
+EXTRA_DIST = $(datafiles_DATA)

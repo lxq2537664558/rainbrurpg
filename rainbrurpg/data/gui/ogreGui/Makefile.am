@@ -82,3 +82,6 @@ datafiles_DATA= default.button.active.png     		\
 		\
 		default.check.off.png			\
 		default.check.on.png
+
+EXTRA_DIST = $(datafiles_DATA)
+
