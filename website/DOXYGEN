@@ -1,0 +1,20 @@
+					-*-org-*-
+
+* Creating header file
+please refer to this example
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>RainbruRPG&#39;s logger: RainbruRPG&#39;s logger</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+
+
+- Seems need a Layout file: NO it's not that
+
+- testing HTML_HEADER and HTML_FOOTER. Set correct values
+- then generate doxygen docs
+- copy the content of the HTML dir to the www/api/logger dir
+- don't forget the skin.css file and the images

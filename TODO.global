@@ -1,0 +1,9 @@
+OVERALL TODO
+
+* Website revamping (skin, blog, wiki, API documentation, maybe 
+  texinfo manuals...)
+* DSI review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)
+* Metaserver (foswiki plugin, C++ API)
+* Server register on metaserver (+ ruby extension + ruleset)
+* ongame chat (needs network/ASN.1 support ?)
+* cli chat (need metaserver modification)

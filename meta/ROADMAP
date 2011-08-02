@@ -1,0 +1,31 @@
+#					Hey emacs, this is a -*-org-*- file
+
+* v1.0.0
+** v0.2.0 Handle complete stats
+** v0.1.0 
+*** v0.0.3 Create the error-bot
+*** v0.0.2 Create c++ libraries for client and server using REST
+    Can Boost.Asio help me doing REST client ?
+    see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
+**** Prepare the REST API
+- [ ] Needed password in Foswiki configure script
+*** v0.0.1 Correct project setup
+**** DONE create an autoconf package to make installation easier
+     CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
+- [X] Install plugin files only (no unit tests)
+**** Correct project setup
+     CLOCK: [2011-07-28 jeu. 20:06]--[2011-07-28 jeu. 20:28] =>  0:22
+- [ ] Add GPLv3 headers to sources (see Foswiki's way)
+- [X] create README files for subdirs
+**** Create unit tests for 'functions.pm'
+     CLOCK: [2011-07-28 jeu. 17:20]--[2011-07-28 jeu. 17:37] =>  0:17
+     CLOCK: [2011-07-28 jeu. 11:59]--[2011-07-28 jeu. 12:27] =>  0:28
+- [ ] Add it to the `make check` rule
+- [ ] UT-needed xml files go in src/xml/
+**** Complete XML file in src/xml/ and printing with foswiki's macros
+- [X] add ruleset-id
+- [ ] Create also a Dtd 
+- [ ] FosWiki plugin must validate XML file
+- [ ] Show mirror server when we click (as in foswiki configure)
+      A hide/show system
+- [ ] Create System.RainbrurpgMetaserverPlugin doc page

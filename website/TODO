@@ -1,0 +1,35 @@
+rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
+   integration.
+
+* To be done
+- testing menu in static/
+- A common footer with copyrights and the sourceforge logo (mandatory)
+- A 418x60 adSense banner
+- The +1 google button
+
+* Wordpress : static test
+- 'search button' hasn't this style normally
+- Find a SynthaxHighlighter plugin for wordpress
+
+* Style
+- css names must be prefixed
+   skin<name>_*
+- must add explicit sizes for the title
+   because now, we take the over css style and in the wordpress page,
+   it gives a very big 'RainbruRPG' h1 header
+
+=== ChangeLog ===
+
+   (6 items by revision)
+   FT is the ROADMAP File Time
+
+* v0.0.0-2 (23 jul 2011 - ???)
+- Found a correct menu (http://www.free-css.com)
+
+* v0.0.0-1 (19 jul 2011 - 23 jul 2011)
+- Created a ROADMAP file
+- Played a bit with a Wordpress static page
+- Installed Foswiki
+- Playing with Doxugen's HEADER and FOOTER for inline API browsing
+- Started skintest
+- Download tgz and some doc

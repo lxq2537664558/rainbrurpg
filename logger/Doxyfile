@@ -31,7 +31,7 @@ PROJECT_NAME           = "RainbruRPG's logger"
 # This could be handy for archiving the generated documentation or
 # if some version control system is used.
 
-PROJECT_NUMBER         =
+PROJECT_NUMBER         = 0.0.0-3
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
 # base path where the generated documentation will be put.
@@ -512,7 +512,7 @@ FILE_VERSION_FILTER    =
 # file name after the option, if omitted DoxygenLayout.xml will be used as the name
 # of the layout file.
 
-LAYOUT_FILE            =
+LAYOUT_FILE            = ../../rainbruWebsite/doxygen.xml
 
 #---------------------------------------------------------------------------
 # configuration options related to warning and progress messages
@@ -745,7 +745,7 @@ VERBATIM_HEADERS       = YES
 # of all compounds will be generated. Enable this if the project
 # contains a lot of classes, structs, unions or interfaces.
 
-ALPHABETICAL_INDEX     = NO
+ALPHABETICAL_INDEX     = YES
 
 # If the alphabetical index is enabled (see ALPHABETICAL_INDEX) then
 # the COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns
@@ -785,13 +785,13 @@ HTML_FILE_EXTENSION    = .html
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard header.
 
-HTML_HEADER            =
+HTML_HEADER            = /home/rainbru/programmation/rainbruWebsite/doxygen.header
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard footer.
 
-HTML_FOOTER            =
+HTML_FOOTER            =/home/rainbru/programmation/rainbruWebsite/doxygen.footer
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading
 # style sheet that is used by each HTML page. It can be used to

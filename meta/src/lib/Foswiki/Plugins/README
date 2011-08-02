@@ -1,0 +1,4 @@
+The parent directory of all _foswiki_ plugins.
+
+It contains the metaserver plugin's registration function. All logical code
+is placed in subdir.

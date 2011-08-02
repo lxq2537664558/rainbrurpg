@@ -1,0 +1,17 @@
+				-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** Correct project setup
+     CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
+- [ ] Directory structure with README file in each dir
+  skin01/
+    INTEGRATION_TESTS
+    static/
+    blog/
+    wiki/
+    api/               /* For doxygen , texinfo, man???*/
+    
+**** Starting static/ tests
+<link rel="stylesheet" href="../common/skin.css" type="text/css" />

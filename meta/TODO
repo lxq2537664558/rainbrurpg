@@ -1,0 +1,15 @@
+rainbrurpg-metaserver - GPLv3 - The metaserver, its tools and libraries.
+
+./configure --prefix=/home/rainbru/www/rainbrurpg/wiki
+
+Should use REST : see the 'restExample($session)' function
+
+* see ROADMAP file
+
+=== ChangeLog ===
+   (6 items by revision)
+
+* v0.0.0-1 (25 jul 2011 - ???) SLOC ??? UT ?? FT ??:??
+- Created a xml example file in ...Plugin directory
+- create a ROADMAP file
+- Correct project setup

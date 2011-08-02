@@ -1,0 +1,75 @@
+<!-- An example server list 
+
+The server list is built upon official/server both being possibly
+mirrored.
+
+The LastUpdate value is from Epoch.
+
+Each Server has at least a *Main* node, containing info to contact main
+server. It can also contains *Mirror*s. Mirrors are computed in the *use %*
+and they can't be directly contacted.
+
+Unofficial servers are in *Server* nodes and may also have mirrors.
+
+The official server need admin pwd to register.
+
+*Chars* contains a comma separated list of present characters known to
+have a WikiName link (not present for the Mirrors).
+
+-->
+<ServerList>
+  <LastUpdate>12532256</LastUpdate>
+  <Official> 
+    <Main>
+      <Name>OfficialFantasyOne</Name>
+      <RulesetId>r001</RulesetId>
+      <MaxClients>40</MaxClients>
+      <Clients>21</Clients>
+      <Ip>218.32.61.25</Ip>
+      <Port>82</Port>
+      <Uptime>2365</Uptime>
+      <Comment>This is actually the only official server.</Comment>
+      <Technote>
+	This is the technote.
+      </Technote>
+      <Char wikiuser="RainbruUser">Theplard</Char>
+      <Char wikiuser="RainbruUser">mydwarf</Char>
+    </Main>
+    <Mirror>
+      <Name>MyPrivateMirror</Name>
+      <MaxClients>20</MaxClients>
+      <Clients>13</Clients>
+    </Mirror>
+    <Mirror>
+      <Name>AnotherMirror</Name>
+      <MaxClients>10</MaxClients>
+      <Clients>5</Clients>
+    </Mirror>
+  </Official>
+  <Server>
+    <Main>
+      <Name>PrivateServer</Name>
+      <RulesetId>r001</RulesetId>
+      <MaxClients>20</MaxClients>
+      <Clients>6</Clients>
+      <Ip>78.62.35.84</Ip>
+      <Port>80</Port>
+      <Uptime>79685</Uptime>
+      <Comment>This is an unofficial server.</Comment>
+    </Main>
+  </Server>
+  <Server>
+    <Name>AnotherServer</Name>
+    <RulesetId>r001</RulesetId>
+    <MaxClients>20</MaxClients>
+    <Clients>4</Clients>
+    <Ip>126.52.196.35</Ip>
+    <Port>3005</Port>
+    <Uptime>235984</Uptime>
+    <Comment>This is an official server. Actually the only one.</Comment>
+  </Server>
+  <ServerError>
+    <Name>Unofficial 115</Name>
+    <Cause>I dont know</Cause>
+  </ServerError>
+</ServerList>
