@@ -12,6 +12,9 @@
     blog/
     wiki/
     api/               /* For doxygen , texinfo, man???*/
+- [ ] See if wordpress and foswiki doctype are the same
+      wordpress: <!DOCTYPE html>
+      foswiki: <!DOCTYPE html ...
     
 **** Starting static/ tests
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
