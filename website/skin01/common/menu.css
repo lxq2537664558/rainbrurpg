@@ -62,3 +62,11 @@ hr {
 { 
   color: #D00;
 }
+
+/* To show the current selected item in the menu in old browsers, 
+ * we set it in an emphasis markup. But it looks better non-italic.
+ *
+ */
+#nav li.selected em {
+  font-style:normal;
+}

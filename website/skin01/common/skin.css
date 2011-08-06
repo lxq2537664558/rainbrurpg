@@ -2,6 +2,7 @@ body
 { 
   background: #444;
   margin: 0px;
+  margin-top: 0px;
 }
 
 div#top-box
@@ -15,15 +16,31 @@ div#top-box
 
   border: 1pt solid #637b99;
   margin-bottom: 0px;
-  font-size: 48px;
+  margin-top: 0px;
+  font-size: 38px;
+
+  padding-top: 5px;
+
+}
+
+#social-networks
+{ 
+  border: 2pt solid #F00;
+  width: 106px;
+  height: 24px;  /* Height of a google +1 button */
+  position: relative;
+  float:right;
+  top: 5px;
+  right: 50px; /* google-ad's width + X */
 }
 
 div#google-ad
 { 
   width: 468px;
   height: 60px;
-  position: absolute;
-  top: 10px;
+  position: relative;
+  float:right;
+  top: 5px;
   right: 10px;
   background: #FFF;
   border: 2pt solid #F00;
@@ -32,7 +49,28 @@ div#google-ad
 
 #content
 { 
-  background:#FFF;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+  top: 40px;
+
+  background:#EEE;
   border: 1pt solid #637b99;
   padding: 10px; 
+}
+
+#rb-skin01-footer
+{ 
+  position: relative;
+  top: 40px;
+  color: #FFF;
+  padding: 10px; 
+  font-size: 12px;
+}
+
+#rb-skin01-footer-right
+{ 
+  float: right;
 }

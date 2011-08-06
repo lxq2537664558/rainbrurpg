@@ -3,18 +3,28 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.1
-**** Correct project setup
+**** DONE Correct project setup
      CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
-- [ ] Directory structure with README file in each dir
+- [X] Directory structure with README file in each dir
   skin01/
     INTEGRATION_TESTS
     static/
     blog/
     wiki/
     api/               /* For doxygen , texinfo, man???*/
-- [ ] See if wordpress and foswiki doctype are the same
+- [X] See if wordpress and foswiki doctype are the same
       wordpress: <!DOCTYPE html>
       foswiki: <!DOCTYPE html ...
     
-**** Starting static/ tests
+**** TODO Starting static/ tests
+     CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
+     CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
+- [X] Make integration tests with available browsers
+- [X] Must emphasis current page in menu for links -g
+- [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
+
+**** Wordpress theme development
+     CLOCK: [2011-08-06 sam. 11:49]--[2011-08-06 sam. 12:11] =>  0:22
+see http://codex.wordpress.org/Theme_Development
+- [ ] Trying only with a header.php/footer.php files
