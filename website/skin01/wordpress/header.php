@@ -59,18 +59,20 @@ This code mainly based the twentyeleven's one.
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
 <link rel="stylesheet" href="../common/menu.css" type="text/css" />
 </head>
-<div id="top-box">RainbruRPG</div>
-<div id="social-networks"></div>
-<div id="google-ad">Google-ad</div>
+<div id="top-box">RainbruRPG
+  <div id="google-ad">Google-ad</div>
+  <div id="social-networks"></div>
+</div>
 <ul id="nav">
-  <li id="nav-1" class="selected"><em>
-  <a href="http://www.free-css.com/">Blog</a></em></li>
-  <li id="nav-2"><a href="http://www.free-css.com/">Wiki</a></li>
+  <li id="nav-1" class="selected"><em><a href="http://www.free-css.com/">Blog</a></em></li>
+  <li id="nav-2"><a href="http://www.free-css.com/">Wiki</a>
+  </li>
   <li id="nav-3"><a href="http://www.free-css.com/">Servers status</a></li>
   <li id="nav-3"><a href="http://www.free-css.com/">API documentations</a></li>
   <li id="nav-4"><a href="http://www.free-css.com/">Manuals</a></li>
   <li id="nav-5"><a href="http://www.free-css.com/">Forums (sf.net)</a></li>
 </ul>
+<div id="content">
 
  <?php get_search_form(); ?>
 <nav id="access" role="navigation">

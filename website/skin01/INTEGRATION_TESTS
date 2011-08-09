@@ -3,7 +3,8 @@
 
 
 | version | Firefox 3.16.18 | links2 -g | Konqueror | ie6    | ie7    | chrome |
-| 0.0.0-2 | OK              | No [fn:1] | Ok        | [fn:2] | [fn:2] | Ok     |
+| 0.0.0-2 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     |
+| 0.0.0-1 | OK              | No [fn:1] | Ok        | [fn:2] | [fn:2] | Ok     |
 
 [fn:1] No way to see current page in menu
 [fn:2] No way to get ie6/7 to work correctly

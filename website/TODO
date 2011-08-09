@@ -22,7 +22,10 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    FT is the ROADMAP File Time
    see skin??/INTEGRATION_TESTS
 
-* v0.0.0-2 (23 jul 2011 - ???)
+* v0.0.0-3 (09 aug 2011 - ???)
+
+* v0.0.0-2 (23 jul 2011 - 09 aug 2011)
+- WP correctly handles the loop
 - Fixed absolute positioning
 - Added wordpress's style.scss header (needed)
 - The +1 google button: To the right of the 'RainbruRPG' text
