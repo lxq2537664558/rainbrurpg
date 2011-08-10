@@ -1,3 +1,4 @@
 These files are part of a custom wordpress theme.
 Must be placed in wp-content/themes/rainbrurpg/
 You must also update ../common files
+Also update the AddThis user ID from the header

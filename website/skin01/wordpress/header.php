@@ -58,10 +58,28 @@ This code mainly based the twentyeleven's one.
 ?>
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
 <link rel="stylesheet" href="../common/menu.css" type="text/css" />
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<!-- ADDTHIS BUTTON BEGIN -->
+<script type="text/javascript">
+var addthis_config = {
+     pubid: "YOUR-PROFILE-ID"
+}
+</script>
+
 </head>
 <div id="top-box">RainbruRPG
   <div id="google-ad">Google-ad</div>
-  <div id="social-networks"></div>
+  <div id="social-networks">
+    <g:plusone></g:plusone>
+<a href="http://www.addthis.com/bookmark.php?v=250" 
+        class="addthis_button"><img 
+        src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" 
+        width="125" height="16" border="0" alt="Share" /></a>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+<!-- ADDTHIS BUTTON END -->
+
+  </div> <!-- social networks-->
 </div>
 <ul id="nav">
   <li id="nav-1" class="selected"><em><a href="http://www.free-css.com/">Blog</a></em></li>

@@ -17,16 +17,28 @@
       foswiki: <!DOCTYPE html ...
     
 **** TODO Starting static/ tests
+     CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
      CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
      CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
 - [X] Make integration tests with available browsers
 - [X] Must emphasis current page in menu for links -g
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
+- [X] Find a way to add a AddThis.com div
 **** Wordpress theme development
+     CLOCK: [2011-08-10 mer. 18:25]--[2011-08-10 mer. 18:56] =>  0:31
      CLOCK: [2011-08-09 mar. 18:10]--[2011-08-09 mar. 18:42] =>  0:32
      CLOCK: [2011-08-09 mar. 14:57]--[2011-08-09 mar. 15:05] =>  0:08
      CLOCK: [2011-08-06 sam. 11:49]--[2011-08-06 sam. 12:11] =>  0:22
 see http://codex.wordpress.org/Theme_Development
-- [ ] Trying only with a header.php/footer.php files
-- [ ] Need content css style (see twentyten theme).
+- [-] Trying only with a header.php/footer.php files
+      - [X] header.php
+      - [ ] footer.php
+- [ ] Take the css reset code from twentyeleven
+- [ ] Make a screenshot (needed by wp)
+- [ ] Need styles for :
+      - [ ] Search for 
+      - [ ] sidebar
+      - [ ] Content (article title content...)
+	    Trying to make a coherent style with foswiki articles
+- [ ] Seems no comment form provided ?

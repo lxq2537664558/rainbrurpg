@@ -2,7 +2,7 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    integration.
 
 * To be done
-- A common footer with copyrights and the sourceforge logo (mandatory)
+- A common footer with copyrights and sourceforge logo (mandatory)
 
 * Wordpress : static test
 - 'search button' hasn't this style normally
@@ -23,19 +23,5 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
 
 * v0.0.0-3 (09 aug 2011 - ???)
-
-* v0.0.0-2 (23 jul 2011 - 09 aug 2011)
-- WP correctly handles the loop
-- Fixed absolute positioning
-- Added wordpress's style.scss header (needed)
-- The +1 google button: To the right of the 'RainbruRPG' text
-- Now in a skin01/ directory
-- Found a correct menu (http://www.free-css.com)
-
-* v0.0.0-1 (19 jul 2011 - 23 jul 2011)
-- Created a ROADMAP file
-- Played a bit with a Wordpress static page
-- Installed Foswiki
-- Playing with Doxugen's HEADER and FOOTER for inline API browsing
-- Started skintest
-- Download tgz and some doc
+- Started search box style for WP
+- Added AddThis to static skin

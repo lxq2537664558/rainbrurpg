@@ -16,3 +16,70 @@ General comments (optional).
 /* Mainly based on TwentyTen wordpress theme */
 
 
+input#s {
+	background: url(images/search.png) no-repeat 5px 6px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 14px;
+	height: 22px;
+	line-height: 1.2em;
+	padding: 4px 10px 4px 28px;
+}
+input#searchsubmit {
+	display: none;
+}
+
+/* Search Form */
+#branding #searchform {
+	position: absolute;
+	top: 3.8em;
+	right: 7.6%;
+	text-align: right;
+}
+#branding #searchform div {
+	margin: 0;
+}
+#branding #s {
+	float: right;
+	-webkit-transition-duration: 400ms;
+	-webkit-transition-property: width, background;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-duration: 400ms;
+	-moz-transition-property: width, background;
+	-moz-transition-timing-function: ease;
+	-o-transition-duration: 400ms;
+	-o-transition-property: width, background;
+	-o-transition-timing-function: ease;
+	width: 72px;
+}
+#branding #s:focus {
+	background-color: #f9f9f9;
+	width: 196px;
+}
+#branding #searchsubmit {
+	display: none;
+}
+#branding .only-search #searchform {
+	top: 5px;
+	z-index: 1;
+}
+#branding .only-search #s {
+	background-color: #666;
+	border-color: #000;
+	color: #222;
+}
+#branding .only-search #s,
+#branding .only-search #s:focus {
+	width: 85%;
+}
+#branding .only-search #s:focus {
+	background-color: #bbb;
+}
+#branding .with-image #searchform {
+	top: auto;
+	bottom: -27px;
+	max-width: 195px;
+}
+#branding .only-search + #access div {
+	padding-right: 205px;
+}
