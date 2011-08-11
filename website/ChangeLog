@@ -1,3 +1,11 @@
+* v0.0.0-3 (09 aug 2011 - 11 aug 2011)
+- Two columns layout done
+- SearchFor box style OK
+- Added a screenshot (needed by wordpress)
+- Added CSS reset code (from Twenty Eleven)
+- Started search box style for WP
+- Added AddThis to static skin
+	
 * v0.0.0-2 (23 jul 2011 - 09 aug 2011)
 - WP correctly handles the loop
 - Fixed absolute positioning

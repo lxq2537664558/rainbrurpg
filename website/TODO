@@ -6,8 +6,6 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
 
 * Wordpress : static test
 - 'search button' hasn't this style normally
-- Find a SynthaxHighlighter plugin for wordpress
-- As for foswiki, search button can be placed under 'RainbruRPG' text
 
 * Style
 - css names must be prefixed
@@ -22,6 +20,5 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    FT is the ROADMAP File Time
    see skin??/INTEGRATION_TESTS
 
-* v0.0.0-3 (09 aug 2011 - ???)
-- Started search box style for WP
-- Added AddThis to static skin
+* v0.0.0-4 (11 aug 2011 - ???)
+

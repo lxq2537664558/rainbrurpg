@@ -1,6 +1,7 @@
 					-*-org-*-
 
 
+* Static
 
 | version | Firefox 3.16.18 | links2 -g | Konqueror | ie6    | ie7    | chrome |
 | 0.0.0-2 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     |
@@ -8,3 +9,8 @@
 
 [fn:1] No way to see current page in menu
 [fn:2] No way to get ie6/7 to work correctly
+
+* Wordpress theme
+
+| version | Firefox 3.16.18 | links2 -g | Konqueror | ie6 | ie7 | chrome |
+| 0.0.0-3 | OK              | OK        | OK        | --- | --- | Ok     |

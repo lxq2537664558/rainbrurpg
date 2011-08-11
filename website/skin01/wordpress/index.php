@@ -13,7 +13,8 @@
  */
 
 get_header(); ?>
-
+            <div id="floatOuter">
+	      <div id="floatWrapper">
 		<div id="primary">
 			<div id="content" role="main">
 
@@ -59,6 +60,8 @@ get_header(); ?>
 			  
 			</div><!-- #content -->
 		</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
+  </div> <!-- #floatWrapper -->
+</div> <!-- floatOuter -->
+<div id="clear">&nbsp;</div>
 <?php get_footer(); ?>

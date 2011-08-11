@@ -91,8 +91,9 @@ var addthis_config = {
   <li id="nav-5"><a href="http://www.free-css.com/">Forums (sf.net)</a></li>
 </ul>
 <div id="content">
-
- <?php get_search_form(); ?>
+  <div id="branding">
+   <?php get_search_form(); ?>
+  </div>
 <nav id="access" role="navigation">
                                 <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
                                 <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
@@ -102,7 +103,5 @@ var addthis_config = {
                                 <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
                         </nav><!-- #access -->
 
-<div id="content">
-  
 <div id="main">
 <!-- End of the standard header code -->

@@ -16,6 +16,32 @@ General comments (optional).
 /* Mainly based on TwentyTen wordpress theme */
 
 
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+        border: 0;
+        font-family: inherit;
+        font-size: 100%;
+        font-style: inherit;
+        font-weight: inherit;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+        vertical-align: baseline;
+}
+
+#content {
+	background: #fff !important;
+}
+
 input#s {
 	background: url(images/search.png) no-repeat 5px 6px;
 	-moz-border-radius: 2px;
@@ -29,12 +55,15 @@ input#searchsubmit {
 	display: none;
 }
 
+#branding label{ visibility: hidden; }
+
 /* Search Form */
 #branding #searchform {
 	position: absolute;
 	top: 3.8em;
 	right: 7.6%;
 	text-align: right;
+                        float:right;
 }
 #branding #searchform div {
 	margin: 0;
@@ -83,3 +112,49 @@ input#searchsubmit {
 #branding .only-search + #access div {
 	padding-right: 205px;
 }
+
+
+#content{ 
+  height: 100%; 
+}
+
+#main{ 
+  font-size: 103%;
+  line-height: 1.5em;
+}
+
+#clear {
+  clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 1%;
+    overflow: hidden;
+}
+
+/* Side bar */
+
+#floatOuter{ 
+    width: 100%;
+
+}
+
+#floatWrapper{ 
+    display: inline;
+    float: left;
+    margin-left: 16em;
+}
+
+#sidebar{ 
+    display: inline;
+    float: left;
+    overflow: hidden;
+    width: 16em;
+    margin-left: -16em;
+}
+
+#primary{ 
+    display: inline;
+    float: right;
+    width: 100%;
+
+ }
