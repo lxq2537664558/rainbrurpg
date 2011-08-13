@@ -21,4 +21,8 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
 
 * v0.0.0-4 (11 aug 2011 - ???)
-
+- Styled the WP main menu and the post content
+- WP calendar correctly styled
+- WP's sidebar is now widget-ready
+- Fixed a name conflict for 'content' divs
+- Fixed wp sidebar left margin and inter-item spacing

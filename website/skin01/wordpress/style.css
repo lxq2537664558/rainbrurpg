@@ -38,9 +38,101 @@ table, caption, tbody, tfoot, thead, tr, th, td {
         vertical-align: baseline;
 }
 
-#content {
-	background: #fff !important;
+/* Text elements */
+p {
+	margin-bottom: 1.625em;
 }
+ul, ol {
+	margin: 0 0 1.625em 2.5em;
+}
+ul {
+	list-style: square;*/
+}
+ol {
+	list-style-type: decimal;
+}
+ol ol {
+	list-style: upper-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+ul ul, ol ol, ul ol, ol ul {
+	margin-bottom: 0;
+}
+dl {
+	margin: 0 1.625em;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-bottom: 1.625em;
+}
+strong {
+	font-weight: bold;
+}
+cite, em, i {
+	font-style: italic;
+}
+blockquote {
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0 3em;
+}
+blockquote em, blockquote i, blockquote cite {
+	font-style: normal;
+}
+blockquote cite {
+	color: #666;
+	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+pre {
+	background: #f4f4f4;
+	font: 13px "Courier 10 Pitch", Courier, monospace;
+	line-height: 1.5;
+	margin-bottom: 1.625em;
+	overflow: auto;
+	padding: 0.75em 1.625em;
+}
+code, kbd {
+	font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+abbr, acronym, dfn {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+address {
+	display: block;
+	margin: 0 0 1.625em;
+}
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+sup,
+sub {
+	font-size: 10px;
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+
+/* Searchbox */
 
 input#s {
 	background: url(images/search.png) no-repeat 5px 6px;
@@ -60,8 +152,8 @@ input#searchsubmit {
 /* Search Form */
 #branding #searchform {
 	position: absolute;
-	top: 3.8em;
-	right: 7.6%;
+	top: 7.6em;
+	right: 0.1em;
 	text-align: right;
                         float:right;
 }
@@ -80,6 +172,7 @@ input#searchsubmit {
 	-o-transition-property: width, background;
 	-o-transition-timing-function: ease;
 	width: 72px;
+        background-color: #FFFFFF;
 }
 #branding #s:focus {
 	background-color: #f9f9f9;
@@ -113,14 +206,10 @@ input#searchsubmit {
 	padding-right: 205px;
 }
 
-
-#content{ 
-  height: 100%; 
-}
-
 #main{ 
   font-size: 103%;
   line-height: 1.5em;
+ background: #FFF;
 }
 
 #clear {
@@ -130,6 +219,8 @@ input#searchsubmit {
     line-height: 1%;
     overflow: hidden;
 }
+
+/*#content{ width: 100%; }*/
 
 /* Side bar */
 
@@ -148,8 +239,15 @@ input#searchsubmit {
     display: inline;
     float: left;
     overflow: hidden;
-    width: 16em;
-    margin-left: -16em;
+    width: 22em;
+    margin-left: -22.2em;
+
+  font-size: small;
+  font-family: arial,verdana,sans-serif;
+}
+
+#sidebar ul{ 
+  list-style: none outside none;
 }
 
 #primary{ 
@@ -158,3 +256,182 @@ input#searchsubmit {
     width: 100%;
 
  }
+
+/* Side bar's content style */
+#sidebar li h2{ 
+  color: #333333;
+  line-height: 0.9em;
+  font-family: arial,verdana,sans-serif;
+  font-weight:bold;
+}
+/*
+[role="navigation"] 
+*/
+
+#sidebar a{ 
+   text-decoration: none;
+   color: #333333;
+ }
+#sidebar a:hover {
+  color: blue;
+}
+
+div#sidebar ul{ 
+  margin-bottom: 1em;
+}
+
+div#sidebar ul li{ 
+  padding: 0;
+  line-height: 18.06px;
+}
+
+/* Side bar space between elements */
+
+#sidebar li.widget{ 
+  margin-bottom: 2em;
+             }
+
+/* Calendar */
+.widget_calendar #wp-calendar {
+    color: #555555;
+    text-align: center;
+    width: 95%;
+  font-size: 12px;
+}
+.widget_calendar #wp-calendar caption {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 0 3px;
+  text-transform: uppercase;
+}
+
+.widget_calendar #wp-calendar caption, .widget_calendar #wp-calendar td, 
+.widget_calendar #wp-calendar th {
+  text-align: center;
+}
+
+.widget_calendar #wp-calendar th {
+  background: none repeat scroll 0 0 #F4F4F4;
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #CCCCCC;
+  font-weight: bold;
+}
+
+.widget_calendar #wp-calendar tfoot td {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+}
+
+.widget_calendar a { 
+  font-weight: bold;
+  text-decoration: none;
+  color: #1982D1 !important;
+}
+
+table#wp-calendar {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* The main menu with page navigation */
+#access {
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    background: -moz-linear-gradient(#252525, #0A0A0A) repeat scroll 0 0 transparent;
+    clear: both;
+    display: block;
+    float: left;
+    margin: 0 auto 6px;
+    width: 100%;
+    font-size: 13px;
+}
+
+#access div {
+    margin: 0 7.6%;
+}
+
+.assistive-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
+#access .current_page_item > a, #access .current_page_ancestor > a {
+    font-weight: bold;
+}
+
+#access a {
+    color: #EEEEEE;
+    display: block;
+    line-height: 3.333em;
+    padding: 0 1.2125em;
+    text-decoration: none;
+}
+
+#access li {
+    float: left;
+    position: relative;
+}
+
+#access ul {
+  list-style: none outside none;
+  margin: 0 0 0 -0.8125em;
+}
+
+#access li:hover {
+  background: #f9f9f9; /* Show a solid color for older browsers */
+  background: -moz-linear-gradient(#f9f9f9, #e5e5e5);
+  background: -o-linear-gradient(#f9f9f9, #e5e5e5);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#e5e5e5)); /* Older webkit syntax */
+  background: -webkit-linear-gradient(#f9f9f9, #e5e5e5);
+}
+
+#access li:hover a{
+  color: #373737;
+}
+
+/* Post content */
+#content{ 
+  height: 100%; 
+  background: #fff !important; 
+}
+
+.post{ 
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+
+.post a{ 
+  text-decoration: none;
+  
+}
+
+.post h2{ 
+  font-size: 145%;
+  font-weight: normal;
+  line-height: 1.1em;
+}
+
+.post h2 a{ 
+  color: #339900;
+  text-decoration: none;
+}
+
+/* Date and author */
+.post small{ 
+  color: #797979;
+  font-size: 74%;
+  line-height: 1.5em;
+}
+
+.entry{ 
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+  font-size: 92%;
+  text-align : justify;
+}
+
+.postmetadata{ 
+  color: #797979;
+  font-size: 74%;
+  line-height: 1.5em;
+}

@@ -50,18 +50,18 @@ div#google-ad
   clear: both;
 }
 
-#content
+#skin01content
 { 
-  width: 95%;
+/*  width: 95%;
   margin-left: auto;
   margin-right: auto;
-
+*/
   position: relative;
-  top: 40px;
+  top: 32px; /* Do not hide the menu  */
 
   background:#EEE;
-  border: 1pt solid #637b99;
-  padding: 10px; 
+/*  border: 1pt solid #637b99;*/
+/*  padding: 10px; */
 }
 
 #rb-skin01-footer

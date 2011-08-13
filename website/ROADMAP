@@ -26,6 +26,12 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-08-13 sam. 14:51]--[2011-08-13 sam. 15:16] =>  0:25
+     CLOCK: [2011-08-13 sam. 12:32]--[2011-08-13 sam. 12:57] =>  0:25
+     CLOCK: [2011-08-13 sam. 11:31]--[2011-08-13 sam. 11:55] =>  0:24
+     CLOCK: [2011-08-12 ven. 21:45]--[2011-08-12 ven. 22:08] =>  0:23
+     CLOCK: [2011-08-12 ven. 19:32]--[2011-08-12 ven. 19:54] =>  0:22
+     CLOCK: [2011-08-11 jeu. 21:09]--[2011-08-11 jeu. 21:28] =>  0:19
      CLOCK: [2011-08-11 jeu. 19:35]--[2011-08-11 jeu. 20:05] =>  0:30
      CLOCK: [2011-08-11 jeu. 11:42]--[2011-08-11 jeu. 12:07] =>  0:25
      CLOCK: [2011-08-10 mer. 18:25]--[2011-08-10 mer. 18:56] =>  0:31
@@ -39,57 +45,27 @@ see http://codex.wordpress.org/Theme_Development
 - [ ] Real menu links to wiki, api, blog...
 - [X] Take the css reset code from twentyeleven
 - [X] Make a screenshot (needed by wp)
-- [ ] We have a #content inside a #content
-      It give a spurious bottom overlapping
-      Partially fixed : we now have only one #content div but there
-      is the overlapping problem with the sidebar
-      - [ ] Trying to correctly place #main #sidebar
+- [X] Trying to correctly place #main #sidebar
 - [-] Need styles for :
       - [X] Search for 
-      - [ ] sidebar
-	    in Foswiki, patternMain and patternSideBar are side by side
-	    See the Foswiki patternSideBar css :
-
-
-#patternSideBar {
-    margin-left: -16em;
-    width: 16em;
-}
-column_left.css (ligne 1)
-#patternSideBar, #patternWrapper {
-    background: none repeat scroll 0 0 #FFFFFF;
-}
-colors.css (ligne 1)
-#patternSideBar {
-    display: inline;
-    float: left;
-    overflow: hidden;
-}
-layout.css (ligne 1)
-Hérité dediv.foswikiPage
-.foswikiPage {
-    font-size: 103%;
-    line-height: 1.5em;
-}
-style.css (ligne 48)
-Hérité debody.patternViewPage
-html body {
-    color: #000000;
-}
-colors.css (ligne 4)
-html > body {
-    font-size: small;
-}
-style.css (ligne 1)
-html body {
-    font-family: arial,verdana,sans-serif;
-    font-size: small;
-}
-
-      - [ ] Content (article title content...)
+      - [-] sidebar
+	    - [X] Two columns layout
+	    - [X] Make a space between Pages, Archives...
+            - [X] Must fix inter-items spacing
+            - [X] Calendar
+      - [-] Content (article title content...)
 	    Trying to make a coherent style with foswiki articles
-- [ ] Seems no comment form provided ?
-      It is normally a 'comment bubble'
+	    - [X] Remove border
+            - [X] Fix the overlapping of footer
+	    - [ ] The 'comment bubble' from Twenty Eleven
+            - [ ] Edit button
+            - [ ] The tag list (as in Twenty Eleven)
+- [X] Style the Main menu
+      - [X] may remove the 'Pages/About this' in sidebar (duplicated)
+      - [X] Add the Home link
+      - [X] Makes the 'mouse over' effect
+- [X] Remove the unstyled sidebar searchbox
+- [X] Correctly place the styled searchbox
 - [ ] HTML5 validation
-**** FosWiki theme
+**** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern

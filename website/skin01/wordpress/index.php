@@ -22,15 +22,7 @@ get_header(); ?>
 			  
 <!-- Start the Loop. -->
  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
- <!-- The following tests if the current post is in category 3. -->
- <!-- If it is, the div box is given the CSS class "post-cat-three". -->
- <!-- Otherwise, the div box will be given the CSS class "post". -->
- <?php if ( in_category('3') ) { ?>
-           <div class="post-cat-three">
- <?php } else { ?>
-           <div class="post">
- <?php } ?>
+ <div class="post">
 
  <!-- Display the Title as a link to the Post's permalink. -->
  <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
