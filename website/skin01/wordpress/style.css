@@ -435,3 +435,8 @@ table#wp-calendar {
   font-size: 74%;
   line-height: 1.5em;
 }
+
+a img {
+  text-decoration: none;
+  border: 0 none;
+}

@@ -16,7 +16,7 @@
       wordpress: <!DOCTYPE html>
       foswiki: <!DOCTYPE html ...
     
-**** TODO Starting static/ tests
+**** DONE Starting static/ tests
      CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
      CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
      CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
@@ -26,6 +26,8 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-08-25 jeu. 21:37]--[2011-08-25 jeu. 21:52] =>  0:15
+     CLOCK: [2011-08-25 jeu. 20:21]--[2011-08-25 jeu. 20:54] =>  0:33
      CLOCK: [2011-08-13 sam. 14:51]--[2011-08-13 sam. 15:16] =>  0:25
      CLOCK: [2011-08-13 sam. 12:32]--[2011-08-13 sam. 12:57] =>  0:25
      CLOCK: [2011-08-13 sam. 11:31]--[2011-08-13 sam. 11:55] =>  0:24
@@ -41,7 +43,12 @@
 see http://codex.wordpress.org/Theme_Development
 - [-] Trying only with a header.php/footer.php files
       - [X] header.php
-      - [ ] footer.php
+      - [-] footer.php
+	    - [X] Should contain wordpress link
+            - [X] SF.net logo 	  
+            - [X] WP logo should be visible with links2 -g
+            - [ ] Analytics code ?
+- [X] It seems admin bar disappeared ? fixed adding 'wp_footer();'
 - [ ] Real menu links to wiki, api, blog...
 - [X] Take the css reset code from twentyeleven
 - [X] Make a screenshot (needed by wp)
@@ -53,6 +60,7 @@ see http://codex.wordpress.org/Theme_Development
 	    - [X] Make a space between Pages, Archives...
             - [X] Must fix inter-items spacing
             - [X] Calendar
+	    - [ ] Remove indentation of <li>s 
       - [-] Content (article title content...)
 	    Trying to make a coherent style with foswiki articles
 	    - [X] Remove border
@@ -65,7 +73,8 @@ see http://codex.wordpress.org/Theme_Development
       - [X] Add the Home link
       - [X] Makes the 'mouse over' effect
 - [X] Remove the unstyled sidebar searchbox
-- [X] Correctly place the styled searchbox
+- [ ] Correctly place the styled searchbox when adminbar is visible
 - [ ] HTML5 validation
+- [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern

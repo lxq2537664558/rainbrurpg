@@ -3,14 +3,20 @@
 
 * Static
 
-| version | Firefox 3.16.18 | links2 -g | Konqueror | ie6    | ie7    | chrome |
-| 0.0.0-2 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     |
-| 0.0.0-1 | OK              | No [fn:1] | Ok        | [fn:2] | [fn:2] | Ok     |
+| version | Firefox 3.16.18 | links2 -g | Konqueror | ie6    | ie7    | chrome | uzbl |
+| 0.0.0-4 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     | Ok   |
+| 0.0.0-3 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     |      |
+| 0.0.0-2 | OK              | Ok        | Ok        | [fn:2] | [fn:2] | Ok     |      |
+| 0.0.0-1 | OK              | No [fn:1] | Ok        | [fn:2] | [fn:2] | Ok     |      |
 
 [fn:1] No way to see current page in menu
 [fn:2] No way to get ie6/7 to work correctly
 
 * Wordpress theme
 
-| version | Firefox 3.16.18 | links2 -g | Konqueror | ie6 | ie7 | chrome |
-| 0.0.0-3 | OK              | OK        | OK        | --- | --- | Ok     |
+| version | Firefox 3.16.18 | links2 -g | Konqueror | ie6    | ie7    | chrome | uzbl |
+| 0.0.0-4 | OK [fn:4]       | No [fn:3] | Ok        | [fn:2] | [fn:2] | Ok     | Ok   |
+| 0.0.0-3 | OK              | OK        | OK        | ---    | ---    | Ok     |      |
+
+[fn:3] Cannot see the WordPress logo in footer
+[fn:4] There's a blue border around SF.net logo. Ugly.

@@ -1,3 +1,11 @@
+* v0.0.0-4 (11 aug 2011 - 25 aug 2011) FT 6:15
+- Add a WP footer
+- Styled the WP main menu and the post content
+- WP calendar correctly styled
+- WP's sidebar is now widget-ready
+- Fixed a name conflict for 'content' divs
+- Fixed wp sidebar left margin and inter-item spacing
+	
 * v0.0.0-3 (09 aug 2011 - 11 aug 2011)
 - Two columns layout done
 - SearchFor box style OK
