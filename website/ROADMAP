@@ -26,6 +26,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-08-27 sam. 16:03]--[2011-08-27 sam. 16:41] =>  0:38
      CLOCK: [2011-08-27 sam. 12:02]--[2011-08-27 sam. 12:48] =>  0:46
      CLOCK: [2011-08-25 jeu. 21:37]--[2011-08-25 jeu. 21:52] =>  0:15
      CLOCK: [2011-08-25 jeu. 20:21]--[2011-08-25 jeu. 20:54] =>  0:33
@@ -68,13 +69,18 @@ see http://codex.wordpress.org/Theme_Development
             - [X] Fix the overlapping of footer
 	    - [ ] The 'comment bubble' from Twenty Eleven
             - [ ] Edit button
-            - [ ] The tag list (as in Twenty Eleven)
+            - [ ] The tag list (as in Twenty Eleven) 
+		  With the leave a comment link
+            - [ ] Style th more tag (see Continue reading of TwentyEleven)
+            - [ ] Must add a 'Leave a Reply' conent
+		  And maby show already added comments
 - [X] Style the Main menu
       - [X] may remove the 'Pages/About this' in sidebar (duplicated)
       - [X] Add the Home link
       - [X] Makes the 'mouse over' effect
 - [X] Remove the unstyled sidebar searchbox
 - [ ] Correctly place the styled searchbox when adminbar is visible
+      Avoid absolute positionning
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 **** FosWiki pattern

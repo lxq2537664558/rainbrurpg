@@ -25,10 +25,28 @@ get_header(); ?>
  <div class="post">
 
  <!-- Display the Title as a link to the Post's permalink. -->
- <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+<header class=post-header>
+  <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+
+
+			<?php if ( 'post' == get_post_type() ) : ?>
+			<div class="entry-meta">
+				<?php /* twentyeleven_posted_on();*/ ?>
+			</div><!-- .entry-meta -->
+			<?php endif; ?>
+
+			<?php if ( comments_open() && ! post_password_required() ) : ?>
+			<div class="comments-link">
+				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
+			</div>
+			<?php endif; ?>
+
+
 
  <!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
  <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
+
+</header> <!-- post-header -->
 
  <!-- Display the Post's Content in a div box. -->
  <div class="entry">

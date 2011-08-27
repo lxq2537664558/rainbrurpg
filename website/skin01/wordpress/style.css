@@ -442,3 +442,28 @@ a img {
   text-decoration: none;
   border: 0 none;
 }
+
+/* The comment bubble */
+.comments-link a {
+    background: url("images/comment-bubble.png") no-repeat scroll 0 0 #EEEEEE;
+    color: #666666;
+    width: 43px;
+    height: 36px;
+    overflow: hidden;
+    line-height: 35px;
+    position: relative;
+    top: -1.5em;
+    float: right;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+                   /*    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    right: 0;
+*/
+}
+
+.leave-reply {
+    visibility: hidden;
+}

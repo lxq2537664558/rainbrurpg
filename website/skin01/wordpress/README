@@ -3,5 +3,6 @@ Must be placed in wp-content/themes/rainbrurpg/
 You must also update ../common files
 
 To install :
+- Update the GoogleAdsense code
 - update the AddThis user ID in the header.php file
 - insert the Google Analytics code in footer.php

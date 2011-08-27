@@ -1,4 +1,4 @@
-rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
+rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    integration.
 
 * To be done
@@ -20,7 +20,11 @@ rainbruWebsite - ??? - Create a skin for our Wordpress/Foswiki
    FT is the ROADMAP File Time
    see skin??/INTEGRATION_TESTS
 
-* v0.0.0-5 (25 aug 2011 - ???) FT ??:??
+* v0.0.0-6 (27 aug 2011 - ???) FT ??:??
+
+* v0.0.0-5 (25 aug 2011 - 27 aug 2011) FT 7:54
+- Add the WP comment-bubble
+- Add GPLv2 COPYING file
 - Fixed the WP sidebar list indentation and margin issue
 - Add a Analytics dummy code in footer.phpx
 - Updated WP screenshot
