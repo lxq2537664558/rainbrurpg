@@ -26,6 +26,8 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-08-27 sam. 19:54]--[2011-08-27 sam. 20:36] =>  0:42
+     CLOCK: [2011-08-27 sam. 19:06]--[2011-08-27 sam. 19:36] =>  0:30
      CLOCK: [2011-08-27 sam. 16:03]--[2011-08-27 sam. 16:41] =>  0:38
      CLOCK: [2011-08-27 sam. 12:02]--[2011-08-27 sam. 12:48] =>  0:46
      CLOCK: [2011-08-25 jeu. 21:37]--[2011-08-25 jeu. 21:52] =>  0:15
@@ -55,7 +57,7 @@ see http://codex.wordpress.org/Theme_Development
 - [X] Take the css reset code from twentyeleven
 - [X] Make a screenshot (needed by wp)
 - [X] Trying to correctly place #main #sidebar
-- [-] Need styles for :
+- [X] Need styles for :
       - [X] Search for 
       - [X] sidebar
 	    - [X] Two columns layout
@@ -63,24 +65,30 @@ see http://codex.wordpress.org/Theme_Development
             - [X] Must fix inter-items spacing
             - [X] Calendar
 	    - [X] Remove indentation of <li>s 
-      - [-] Content (article title content...)
+      - [X] Content (article title content...)
 	    Trying to make a coherent style with foswiki articles
 	    - [X] Remove border
             - [X] Fix the overlapping of footer
-	    - [ ] The 'comment bubble' from Twenty Eleven
-            - [ ] Edit button
-            - [ ] The tag list (as in Twenty Eleven) 
+	    - [X] The 'comment bubble' from Twenty Eleven
+            - [X] Edit button
+            - [X] The tag list (as in Twenty Eleven) 
 		  With the leave a comment link
-            - [ ] Style th more tag (see Continue reading of TwentyEleven)
-            - [ ] Must add a 'Leave a Reply' conent
-		  And maby show already added comments
+            - [X] Must add a 'Leave a Reply' coment
+            - [X] Postername, categories and tags should be underlined
+		  when hovered
+            - [X] Style the more tag (see Continue reading of TwentyEleven)
 - [X] Style the Main menu
       - [X] may remove the 'Pages/About this' in sidebar (duplicated)
       - [X] Add the Home link
       - [X] Makes the 'mouse over' effect
 - [X] Remove the unstyled sidebar searchbox
+- [X] The tooltip with 'Permalink to..' has many spaces in it
+- [ ] Must Handle comments
 - [ ] Correctly place the styled searchbox when adminbar is visible
       Avoid absolute positionning
+- [ ] Title of the web page is 'skin'
+- [ ] Must fix the sidebar margin issue with Konqueror
+- [ ] Enable the RSS feed for browser that support it
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 **** FosWiki pattern

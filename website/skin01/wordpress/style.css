@@ -330,6 +330,9 @@ div#sidebar ul li{
   text-decoration: none;
   color: #1982D1 !important;
 }
+.widget_calendar a:hover { 
+  text-decoration: underline !important;
+}
 
 table#wp-calendar {
     border-collapse: separate;
@@ -339,6 +342,8 @@ table#wp-calendar {
 /* The main menu with page navigation */
 #access {
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    background: #0A0A0A;
+    background: -webkit-gradient(linear, left top, left bottom, from(#252525), to(#0A0A0A));
     background: -moz-linear-gradient(#252525, #0A0A0A) repeat scroll 0 0 transparent;
     clear: both;
     display: block;
@@ -404,7 +409,6 @@ table#wp-calendar {
 
 .post a{ 
   text-decoration: none;
-  
 }
 
 .post h2{ 
@@ -467,3 +471,36 @@ a img {
 .leave-reply {
     visibility: hidden;
 }
+
+/* Post metadata*/ 
+
+.postmetadata a { 
+  font-weight: bold;
+  text-decoration: none;
+  color: #1982D1 !important;
+}
+.postmetadata a:hover { 
+  text-decoration: underline !important;
+}
+
+.entry a { 
+  font-weight: bold;
+  color: #1982D1 !important;
+}
+.entry a:hover { 
+  text-decoration: underline !important;
+                 }
+
+/* Post edit link */
+.edit-link a {
+    -moz-border-radius: 3px 3px 3px 3px;
+    background: none repeat scroll 0 0 #EEEEEE;
+    color: #666666 !important;
+    float: right;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.5em;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
