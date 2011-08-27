@@ -28,5 +28,12 @@
 </div>
 
 <?php wp_footer(); ?>
+<!-- Google Analytics code -->
+
+<!-- Dummy code -->
+
+<!-- End of Google Analytics code -->
+
+
 </body>
 </html>

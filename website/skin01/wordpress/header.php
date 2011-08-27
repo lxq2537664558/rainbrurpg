@@ -82,13 +82,14 @@ var addthis_config = {
   </div> <!-- social networks-->
 </div>
 <ul id="nav">
-  <li id="nav-1" class="selected"><em><a href="http://www.free-css.com/">Blog</a></em></li>
-  <li id="nav-2"><a href="http://www.free-css.com/">Wiki</a>
-  </li>
-  <li id="nav-3"><a href="http://www.free-css.com/">Servers status</a></li>
-  <li id="nav-3"><a href="http://www.free-css.com/">API documentations</a></li>
-  <li id="nav-4"><a href="http://www.free-css.com/">Manuals</a></li>
-  <li id="nav-5"><a href="http://www.free-css.com/">Forums (sf.net)</a></li>
+  <li id="nav-1" class="selected">
+    <em><a href="http://rainbrurpg.sourceforge.net/blog/">Blog</a></em></li>
+  <li id="nav-2"><a href="http://rainbrurpg.sourceforge.net/wiki/">Wiki</a></li>
+  <li id="nav-3"><a href="http://rainbrurpg.sourceforge.net/wiki/wiki/bin/view/Main/RainbruRPGMetaserver">Servers status</a></li>
+  <li id="nav-3"><a href="http://rainbrurpg.sourceforge.net/api/">API documentations</a></li>
+  <li id="nav-4"><a href="http://rainbrurpg.sourceforge.net/man/">Manuals</a></li>
+  <li id="nav-5"><a href="http://sourceforge.net/projects/rainbrurpg/forums">
+                    Forums (sf.net)</a></li>
 </ul>
 <div id="skin01-content">
   <div id="branding">

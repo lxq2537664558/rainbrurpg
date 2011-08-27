@@ -1,4 +1,7 @@
 These files are part of a custom wordpress theme.
 Must be placed in wp-content/themes/rainbrurpg/
 You must also update ../common files
-Also update the AddThis user ID from the header
+
+To install :
+- update the AddThis user ID in the header.php file
+- insert the Google Analytics code in footer.php
