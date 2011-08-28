@@ -21,7 +21,9 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
 
 * v0.0.0-6 (27 aug 2011 - ???) FT ??:??
-- Post content fully styled
+- WP comments partially styled
+- WP single post has comments and comment form
+- WP post content fully styled
 - Print WP tag list and comment text
 
 * v0.0.0-5 (25 aug 2011 - 27 aug 2011) FT 7:54
