@@ -433,6 +433,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Must change LauncherOptions icons
 - [ ] May remove interdepencies ogreGui/Maincore 
       and correct wiki:BuildingFromSources
+- [ ] Should remove unused datafiles
 *** TODO v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:

@@ -92,14 +92,20 @@ see http://codex.wordpress.org/Theme_Development
       - [X] Style for the date of post (metadata)
       - [X] Theme for the reply button
       - [ ] Theme for the comment form
+- [ ] The /Server status/ link is spurious
+- [ ] Menu links are striked through when irreleevant (API...)
 - [ ] Correctly place the styled searchbox when adminbar is visible
       Avoid absolute positionning
 - [ ] Title of the web page is 'skin'
 - [ ] Must fix the sidebar margin issue with Konqueror
 - [ ] Enable the RSS feed for browser that support it
-- [ ] Use the Universal Edit Button feature
+- [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
+**** texi2html for the 'manual' link
+- [ ] Add header and footer
+      see http://ximbiot.com/texi2html/manuals/1.78/texi2html_6.html
+

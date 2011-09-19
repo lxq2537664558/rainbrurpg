@@ -2,8 +2,17 @@
 
 * v1.0.0
 ** v0.2.0 Handle complete stats
+*** v0.1.1 Improve online informations
+- [ ] May add characters informations on the WikiUser page if char is public
+- [ ] Compute server list last update with XML write/modification datetime
+- [ ] Make a little availability image (with HTML5 canvas ?)
+      With a green/yellow gradient on the left
+      A red background on the right
+      Exacts numbers ibn tooltip
 ** v0.1.0 
 *** v0.0.3 Create the error-bot
+    A cron job (maybe in perl) that test the ping of all servers. If
+    a server do not answer, it is set in 'error' state.
 *** v0.0.2 Create c++ libraries for client and server using REST
     Can Boost.Asio help me doing REST client ?
     see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
@@ -24,8 +33,11 @@
 - [ ] UT-needed xml files go in src/xml/
 **** Complete XML file in src/xml/ and printing with foswiki's macros
 - [X] add ruleset-id
+- [ ] Add an 'hardwareDescription' field for the server
 - [ ] Create also a Dtd 
 - [ ] FosWiki plugin must validate XML file
 - [ ] Show mirror server when we click (as in foswiki configure)
       A hide/show system
 - [ ] Create System.RainbrurpgMetaserverPlugin doc page
+- [ ] Add max-clients to the XML
+- [ ] Can we protect XML content with an anti-script function ?

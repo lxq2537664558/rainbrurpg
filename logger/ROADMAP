@@ -58,3 +58,4 @@
 - [ ] Create a DEPENDENCIES file
 - [ ] Should remove autoprojext generated files
       logger.cc, xmalloc.h, xmalloc.c ...
+- [ ] Should use pkg-config 
