@@ -20,16 +20,12 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    FT is the ROADMAP File Time
    see skin??/INTEGRATION_TESTS
 
-* v0.0.0-6 (27 aug 2011 - ???) FT ??:??
+* v0.0.0-7 (22 sept 2011 - ???) FT ??:??
+
+* v0.0.0-6 (27 aug 2011 - 22 sept 2011) FT 10:57
+- WP Comment form focus handling
+- WP start to style the 'leave a reply' form
 - WP comments partially styled
 - WP single post has comments and comment form
 - WP post content fully styled
 - Print WP tag list and comment text
-
-* v0.0.0-5 (25 aug 2011 - 27 aug 2011) FT 7:54
-- Add the WP comment-bubble
-- Add GPLv2 COPYING file
-- Fixed the WP sidebar list indentation and margin issue
-- Add a Analytics dummy code in footer.phpx
-- Updated WP screenshot
-- WP adminbar reappeared

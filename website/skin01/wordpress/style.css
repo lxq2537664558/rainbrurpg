@@ -580,3 +580,88 @@ color: #797979;
     font-size: 145%;
     line-height: 1.1em;
 }
+
+#respond .comment-form-author label, #respond .comment-form-email label, #respond .comment-form-url label, #respond .comment-form-comment label {
+    -moz-box-shadow: 1px 2px 2px rgba(204, 204, 204, 0.8);
+    background: none repeat scroll 0 0 #EEEEEE;
+    color: #555555;
+    display: inline-block;
+    font-size: 13px;
+    left: 4px;
+    min-width: 60px;
+    padding: 4px 10px;
+    position: relative;
+    top: 40px;
+    z-index: 1;
+}
+
+#respond label {
+    line-height: 2.2em;
+}
+
+#respond .comment-notes, #respond .logged-in-as {
+    font-size: 13px;
+}
+
+#respond .comment-form-author, #respond .comment-form-email, #respond .comment-form-url, #respond .comment-form-comment {
+    position: relative;
+}
+
+#respond .comment-form-author .required, #respond .comment-form-email .required {
+    color: #BD3500;
+    font-size: 22px;
+    font-weight: bold;
+    left: 75%;
+    position: absolute;
+    top: 45px;
+    z-index: 1;
+}
+
+#respond input[type="text"] {
+    display: block;
+    height: 24px;
+    width: 75%;
+}
+
+#respond input[type="text"], #respond textarea {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -moz-box-shadow: 0 1px 3px rgba(204, 204, 204, 0.95) inset;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 4px solid #EEEEEE;
+    padding: 10px;
+    position: relative;
+    text-indent: 80px;
+}
+
+#respond textarea {
+    width: 95%;
+}
+
+#respond input[type="text"], #respond textarea {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -moz-box-shadow: 0 1px 3px rgba(204, 204, 204, 0.95) inset;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 4px solid #EEEEEE;
+    padding: 10px;
+    position: relative;
+    text-indent: 80px;
+}
+
+textarea {
+    padding-left: 3px;
+    width: 98%;
+}
+#respond p {
+    font-size: 12px;
+}
+
+textarea {
+    font: 300 15px/1.625 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* Focus handling */
+#respond input[type="text"]:focus,
+#respond textarea:focus {
+	text-indent: 0;
+	z-index: 1;
+}

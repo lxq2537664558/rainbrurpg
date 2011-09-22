@@ -1,3 +1,11 @@
+* v0.0.0-5 (25 aug 2011 - 27 aug 2011) FT 7:54
+- Add the WP comment-bubble
+- Add GPLv2 COPYING file
+- Fixed the WP sidebar list indentation and margin issue
+- Add a Analytics dummy code in footer.phpx
+- Updated WP screenshot
+- WP adminbar reappeared
+	
 * v0.0.0-4 (11 aug 2011 - 25 aug 2011) FT 6:15
 - Add a WP footer
 - Styled the WP main menu and the post content
