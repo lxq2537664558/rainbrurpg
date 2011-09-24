@@ -1,4 +1,5 @@
 				-*-org-*-
+#+TODO: TODO | CANCELED
 
 * v1.0.0
 ** v0.1.0
@@ -26,6 +27,8 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-09-24 sam. 21:02]--[2011-09-24 sam. 21:40] =>  0:38
+     CLOCK: [2011-09-24 sam. 19:28]--[2011-09-24 sam. 19:58] =>  0:30
      CLOCK: [2011-09-22 jeu. 21:30]--[2011-09-22 jeu. 21:39] =>  0:09
      CLOCK: [2011-09-22 jeu. 21:07]--[2011-09-22 jeu. 21:30] =>  0:23
      CLOCK: [2011-09-22 jeu. 20:34]--[2011-09-22 jeu. 20:57] =>  0:23
@@ -88,27 +91,30 @@ see http://codex.wordpress.org/Theme_Development
       - [X] Makes the 'mouse over' effect
 - [X] Remove the unstyled sidebar searchbox
 - [X] The tooltip with 'Permalink to..' has many spaces in it
-- [-] Must Handle comments
+- [X] Must Handle comments
       - [X] need a single.php template
       - [X] Theme for comments in a nested way (even and odd)
       - [X] Theme for the edit button
       - [X] Style for the date of post (metadata)
       - [X] Theme for the reply button
-      - [-] Theme for the comment form
+      - [X] Theme for the comment form
 	    - [X] Basic style
 	    - [X] Focus handling
-            - [ ] The 'form-allowed-tags' style
-	    - [ ] 'Post comment' button style
-            - [ ] Try the default style for allowed HTML tags
-		  <a href="" title=""> <abbr title=""> <acronym title=""> 
-		  <b> <blockquote cite=""> <cite> <code> <del datetime=""> 
-		  <em> <i> <q cite=""> <strike> <strong> 
-- [ ] The /Server status/ link is spurious
-- [ ] Menu links are striked through when irreleevant (API...)
+            - [X] The 'form-allowed-tags' style
+	    - [X] 'Post comment' button style
+            - [X] Try the default style for allowed HTML tags
+- [X] CANCELLED Use <base> for the menus. Integration tests failed.
+- [X] The /Server status/ link is spurious
+- [X] Menu links are striked through when irreleevant (API...)
 - [ ] Correctly place the styled searchbox when adminbar is visible
       Avoid absolute positionning
 - [ ] Title of the web page is 'skin'
-- [ ] Must fix the sidebar margin issue with Konqueror
+- [ ] Must fix the sidebar margin issue with /konqueror/
+      - [ ] What is the /konqueror/ rendering engine
+      - [ ] Find other browsers using this engine to test this bug
+      - [ ] See how a default /foswiki/ install looks like with this engine
+      - [ ] Find a hack
+	    looking for /foswiki/'s css or engine/w3c documentation
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php

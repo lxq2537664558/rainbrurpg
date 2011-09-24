@@ -9,9 +9,11 @@
 | 0.0.0-3 | OK              | Ok        | Ok        | ---    | ---    | Ok     |      |
 | 0.0.0-4 | OK              | Ok        | Ok        | ---    | ---    | Ok     | Ok   |
 | 0.0.0-5 | OK              | Ok        | Ok        | ---    | ---    | Ok     | Ok   |
+|  <base> | OK [fn:3]       | OK        | NO        | ---    | ---    | OK     | NO   |
 
 [fn:1] No way to see current page in menu
 [fn:2] No way to get ie6/7 to work correctly
+[fn:3] Test the use of the <base> HTML element
 
 * Wordpress theme
 
