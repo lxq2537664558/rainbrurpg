@@ -27,6 +27,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-09-27 mar. 21:20]--[2011-09-27 mar. 21:32] =>  0:12
      CLOCK: [2011-09-24 sam. 21:02]--[2011-09-24 sam. 21:40] =>  0:38
      CLOCK: [2011-09-24 sam. 19:28]--[2011-09-24 sam. 19:58] =>  0:30
      CLOCK: [2011-09-22 jeu. 21:30]--[2011-09-22 jeu. 21:39] =>  0:09
@@ -103,11 +104,10 @@ see http://codex.wordpress.org/Theme_Development
             - [X] The 'form-allowed-tags' style
 	    - [X] 'Post comment' button style
             - [X] Try the default style for allowed HTML tags
-- [X] CANCELLED Use <base> for the menus. Integration tests failed.
+- [X] CANCELED Use <base> for the menus. Integration tests failed.
 - [X] The /Server status/ link is spurious
 - [X] Menu links are striked through when irreleevant (API...)
-- [ ] Correctly place the styled searchbox when adminbar is visible
-      Avoid absolute positionning
+- [X] Correctly place the styled searchbox when adminbar is visible
 - [ ] Title of the web page is 'skin'
 - [ ] Must fix the sidebar margin issue with /konqueror/
       - [ ] What is the /konqueror/ rendering engine

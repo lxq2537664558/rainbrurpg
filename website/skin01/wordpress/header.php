@@ -98,9 +98,6 @@ var addthis_config = {
                     Forums (sf.net)</a></li>
 </ul>
 <div id="skin01-content">
-  <div id="branding">
-   <?php get_search_form(); ?>
-  </div>
 <nav id="access" role="navigation">
   <h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
   <?php /*  Allow screen readers / text browsers to skip the navigation 
@@ -113,6 +110,10 @@ var addthis_config = {
                                 <div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
                                 <?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
                                 <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+
+  <div id="branding"><?php get_search_form(); ?></div>
+  <div id="clear">&nbsp;</div>
+
                         </nav><!-- #access -->
 
 <div id="main">

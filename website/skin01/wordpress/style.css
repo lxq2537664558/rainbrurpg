@@ -150,11 +150,11 @@ input#searchsubmit {
 
 /* Search Form */
 #branding #searchform {
-	position: absolute;
-	top: 7.6em;
-	right: 0.1em;
+	position: relative;
+        top: 0.4em;
+	right: 0em;
 	text-align: right;
-                        float:right;
+        float:right;
 }
 #branding #searchform div {
 	margin: 0;
@@ -354,7 +354,7 @@ table#wp-calendar {
 }
 
 #access div {
-    margin: 0 7.6%;
+    margin: 0 1em;
 }
 
 .assistive-text {
