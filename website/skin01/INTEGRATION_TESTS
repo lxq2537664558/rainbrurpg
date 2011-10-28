@@ -17,14 +17,15 @@
 
 * Wordpress theme
 
-| version | Firefox 3.16.18 | links2 -g | Konqueror         | ie6    | ie7    | chrome    | uzbl      |
-| 0.0.0-3 | OK              | OK        | OK                | [fn:2] | [fn:2] | Ok        |           |
-| 0.0.0-4 | OK [fn:4]       | No [fn:3] | OK                | ---    | ---    | Ok        | Ok        |
-| 0.0.0-5 | OK              | OK        | No [fn:5]  [fn:6] | ---    | ---    | No [fn:5] | No [fn:5] |
-| 0.0.0-6 | OK              | OK        | No                | ---    | ---    | OK        | OK        |
-| 0.0.0-7 | OK              | OK        | No                | ---    | ---    | OK        | OK        |
+| version | Firefox 3.16.18 | links2 -g | Konqueror         | ie6       | ie7    | chrome    | uzbl      |
+| 0.0.0-3 | OK              | OK        | OK                | [fn:2]    | [fn:2] | Ok        |           |
+| 0.0.0-4 | OK [fn:4]       | No [fn:3] | OK                | ---       | ---    | Ok        | Ok        |
+| 0.0.0-5 | OK              | OK        | No [fn:5]  [fn:6] | ---       | ---    | No [fn:5] | No [fn:5] |
+| 0.0.0-6 | OK              | OK        | No                | ---       | ---    | OK        | OK        |
+| 0.0.0-7 | OK              | OK        | No                | No [fn:7] | ---    | OK        | OK        |
 
 [fn:3] Cannot see the WordPress logo in footer
 [fn:4] There's a blue border around SF.net logo. Ugly.
 [fn:5] The black menu (containing Home and About this links) is white and
 [fn:6] The margins are false for the sidebar.
+[fn:7] The sidebar doesn't appear at all

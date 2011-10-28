@@ -108,13 +108,15 @@ see http://codex.wordpress.org/Theme_Development
 - [X] The /Server status/ link is spurious
 - [X] Menu links are striked through when irreleevant (API...)
 - [X] Correctly place the styled searchbox when adminbar is visible
-- [ ] Title of the web page is 'skin'
-- [ ] Must fix the sidebar margin issue with /konqueror/
-      - [ ] What is the /konqueror/ rendering engine
-      - [ ] Find other browsers using this engine to test this bug
+- [X] Title of the web page is 'skin'
+- [-] Must fix the sidebar margin issue with /konqueror/
+      - [X] What is the /konqueror/ rendering engine: KHTML
+      - [X] Find other browsers using this engine to test this bug
+	    konqueror-embeded (http://www.konqueror.org/embedded/)
       - [ ] See how a default /foswiki/ install looks like with this engine
       - [ ] Find a hack
 	    looking for /foswiki/'s css or engine/w3c documentation
+- [ ] Must find how the skin fail on ie6
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php
