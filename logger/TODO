@@ -16,20 +16,7 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    FT is the ROADMAP file time
 
 * v0.0.0-3 (16 jul 2011 - ???) SLOC ??? FT ??:??
+- Documentation added for ObjectInspector
+- configure checks for Boost.Program_options
 - All files ready for documentation (\file)
 
-* v0.0.0-2 (24 jun 2011 - 16 jul 2011 SLOC 1,044 FT 4:47
-- Added main page to documentation
-- Moved some classes in their own sources
-- Switched to GPLv3
-- Added GNU headers in all src/ files
-- Handle rbuic tool and .ui compilation
-- log_reader starts hard-coded YAML parsing
-
-* v0.0.0-1 (23 jun 2011 - 24 jun 2011) SLOC 523 FT 2:06
-- Added filter box to logreader main window
-- First test of YAML output
-- Started src/tools/log_reader.rb
-- Played a bit with logreader's MainWindow
-- LoggerOutputTxt in its own file
-- Retrieved from another project

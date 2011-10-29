@@ -25,7 +25,8 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
-     CLOCK: [2011-07-17 dim. 21:29]
+     CLOCK: [2011-10-29 sam. 16:28]--[2011-10-29 sam. 17:07] =>  0:39
+     CLOCK: [2011-07-17 dim. 21:29]--[2011-07-17 dim. 21:54] =>  0:25
      CLOCK: [2011-07-17 dim. 20:19]--[2011-07-17 dim. 20:47] =>  0:28
      CLOCK: [2011-07-16 sam. 16:59]--[2011-07-16 sam. 17:38] =>  0:39
      CLOCK: [2011-07-16 sam. 11:08]--[2011-07-16 sam. 11:38] =>  0:30
@@ -42,6 +43,7 @@
       - [X] Continue with Object.hpp
       - [X] Move maximum implementation in .cpp files
 - [X] Find a suitable container for LoggerOutputs
+- [X] configure checks for boost_program_options
 - [-] Doxygen documentation for public API
       - [X] Create a main page 
       - [X] Must document all files (\file)

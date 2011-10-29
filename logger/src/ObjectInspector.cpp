@@ -25,6 +25,15 @@
 
 #include "ObjectInspector.hpp"
 
+/** The innscpector constructor
+  *
+  * The <em>memory address</em> comes from a pointer to the object you
+  * inspect.
+  *
+  * \param class_name The object's class name
+  * \param address     The memory address of the object
+  *
+  */
 ObjectInspector::ObjectInspector(string class_name, const void* address):
   name(class_name)
 {
@@ -34,6 +43,14 @@ ObjectInspector::ObjectInspector(string class_name, const void* address):
   
 };
 
+/** Add an integer attribute to the inspector
+  *
+  * \param name  The name of the attribute
+  * \param value The integer value of the attribute
+  *
+  * \return a reference to this inspector
+  *
+  */
 ObjectInspector& 
 ObjectInspector::add(string name, int value)
 {
@@ -43,8 +60,16 @@ ObjectInspector::add(string name, int value)
   return *this;
 };
 
+/** Add an object attribute to the inspector
+  *
+  * \param name The name of the attribute
+  * \param o    The object
+  *
+  * \return a reference to this inspector
+  *
+  */
 ObjectInspector& 
-ObjectInspector::add(string name, Object&o)
+ObjectInspector::add(string name, Object& o)
 {
   /*
     ostringstream oss;

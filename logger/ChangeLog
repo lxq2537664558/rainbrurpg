@@ -1,10 +1,13 @@
+2011-10-29  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: check for Boost.Program_options header
+
 2011-07-16  Jérôme Pasquier  <rainbru@free.fr>
 
-	
 	* src/ObjectInspector: in its own files.
 	* src/LoggerOutputTxt.hpp: in its own files.
 	* src/LoggerOutputTty.hpp: renamed from LoggerOutputTxt.
-	
+
 2011-06-24  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/log_reader.rb: starts to parse hard-coded YAML.
@@ -12,10 +15,10 @@
 2011-06-23  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/LoggerOutputYaml: first tests.
-	
+
 	* src/tools/log_reader.rb: first runtime UI loading.
-	
+
 	* src/LoggerOutputTxt: in its own file.
-	
+
 	* logger: initial version.
 
