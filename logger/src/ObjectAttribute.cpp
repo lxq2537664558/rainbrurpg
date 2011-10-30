@@ -25,7 +25,14 @@
 
 #include "ObjectAttribute.hpp"
 
-ObjectAttribute::ObjectAttribute(string t, string n, string v):
-  type(t), name(n), value(v)
+/** The attribute constructor
+  *
+  * \param vType  The attribute type (ie. \em int for an integer)
+  * \param vName  The attribute's name
+  * \param vValue The attribute value, stored as a string
+  *
+  */
+ObjectAttribute::ObjectAttribute(string vType, string vName, string vValue):
+  type(vType), name(vName), value(vValue)
 {    
 };

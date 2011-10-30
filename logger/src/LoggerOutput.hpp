@@ -34,31 +34,55 @@
 
 using namespace std;
 
+/// The logging levels enumeration
 enum LogLevel{
-  LL_DEBUG=0,
-  LL_VERBOSE,
-  LL_INFO,
-  LL_WARN,
-  LL_ERR,
-  LL_CRITICAL
+  LL_DEBUG=0, //!< Debugging information
+  LL_VERBOSE, //!< Verbose information
+  LL_INFO,    //!< Informative message
+  LL_WARN,    //!< Message is a warning
+  LL_ERR,     //!< Indicates an error occurs
+  LL_CRITICAL //!< A crirical error occurs, the program may crash
 };
 
+/** The log header
+  *
+  * Contains informations printed only once during the program starts.
+  *
+  */
 struct LogHeader
 {
-  string program_name;
-  string program_version;
+  string program_name;    //!< The program's name
+  string program_version; //!< The program's version
 };
 
+/** The logger's output interface
+  *
+  * Defines the function a logger output must implement.
+  *
+  */
 class LoggerOutput
 {
 public:
-  virtual void open()=0;
+  /// Opens the logger, for example open the stream or the file
+  virtual void open()=0;  
+  /// Closes the logger
   virtual void close()=0;
 
-  // Loglevel, logdomain, filename, line number
-  virtual void startLog(LogLevel,const string&, const string&, const string&)=0;
+  /** Start to log a line
+    *
+    * \param vLoglevel  The logging level of the line
+    * \param vLogdomain The log domain
+    * \param vFilename  The source filename
+    * \param vLine      The source line number
+    *
+    */
+  virtual void startLog(LogLevel vLoglevel,const string& vLogdomain, 
+			const string& vFilename, const string& vLine)=0;
+
+  /// End a line started with \ref startLog
   virtual void endLog()=0;
 
+  /// Outputs the log header
   virtual void logHeader(const LogHeader*)=0;
 
   virtual void log(const string&)=0;

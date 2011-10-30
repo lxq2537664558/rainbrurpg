@@ -25,6 +25,7 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2011-10-30 dim. 11:42]--[2011-10-30 dim. 12:07] =>  0:25
      CLOCK: [2011-10-29 sam. 16:28]--[2011-10-29 sam. 17:07] =>  0:39
      CLOCK: [2011-07-17 dim. 21:29]--[2011-07-17 dim. 21:54] =>  0:25
      CLOCK: [2011-07-17 dim. 20:19]--[2011-07-17 dim. 20:47] =>  0:28
@@ -61,3 +62,4 @@
 - [ ] Should remove autoprojext generated files
       logger.cc, xmalloc.h, xmalloc.c ...
 - [ ] Should use pkg-config 
+- [ ] Many members must be private
