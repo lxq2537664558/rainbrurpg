@@ -25,6 +25,15 @@
 
 #include "LoggerOutput.hpp"
 
+/** Convert a log level to its abbreviation
+  *
+  * An abbreviation is a two character string that describe a log level.
+  *
+  * \param vLogLevel the loglevel to be converted
+  *
+  * \return The loglevel's abbreviation as a string
+  *
+  */
 string 
 LoggerOutput::ll_to_abr(LogLevel vLogLevel)
 {
@@ -40,6 +49,13 @@ LoggerOutput::ll_to_abr(LogLevel vLogLevel)
     };
 }
 
+/** Convert a log level to a human-readable string
+  *
+  * \param vLogLevel the loglevel to be converted
+  *
+  * \return The loglevel's string
+  *
+  */
 string 
 LoggerOutput::ll_to_str(LogLevel vLogLevel)
 {

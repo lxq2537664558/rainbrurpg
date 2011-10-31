@@ -29,21 +29,21 @@
    D for Dark
    L for Light
  */
-static const string BLACK   = "\033[22;30m";
-static const string RED     ="\033[22;31m";
-static const string GREEN   ="\033[22;32m";
-static const string BROWN   ="\033[22;33m";
-static const string BLUE    ="\033[22;34m";
-static const string MAGENTA ="\033[22;35m";
-static const string CYAN    ="\033[22;36m";
-static const string GRAY    ="\033[22;37m";
-static const string DGRAY   ="\033[01;30m ";
-static const string LRED    ="\033[01;31m";
-static const string LGREEN  ="\033[01;32m";
-static const string YELLOW  ="\033[01;33m ";
-static const string LBLUE   ="\033[01;34m";
-static const string LCYAN   ="\033[01;36m";
-static const string WHITE   ="\033[01;37m";
+static const string BLACK   ="\033[22;30m"; //!< Espace sequence for black
+static const string RED     ="\033[22;31m"; //!< Espace sequence for red
+static const string GREEN   ="\033[22;32m"; //!< Espace sequence for green
+static const string BROWN   ="\033[22;33m"; //!< Espace sequence for brown
+static const string BLUE    ="\033[22;34m"; //!< Espace sequence for blue
+static const string MAGENTA ="\033[22;35m"; //!< Espace sequence for magenta
+static const string CYAN    ="\033[22;36m"; //!< Espace sequence for cyan
+static const string GRAY    ="\033[22;37m"; //!< Espace sequence for gray
+static const string DGRAY   ="\033[01;30m"; //!< Espace sequence for dark gray
+static const string LRED    ="\033[01;31m"; //!< Espace sequence for light red
+static const string LGREEN  ="\033[01;32m"; //!< Espace sequence for light green
+static const string YELLOW  ="\033[01;33m"; //!< Espace sequence for yellow
+static const string LBLUE   ="\033[01;34m"; //!< Espace sequence for light blue
+static const string LCYAN   ="\033[01;36m"; //!< Espace sequence for ligth cyan
+static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
 
 #define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << GRAY
 

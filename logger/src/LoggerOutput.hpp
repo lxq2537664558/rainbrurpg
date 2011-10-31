@@ -85,9 +85,23 @@ public:
   /// Outputs the log header
   virtual void logHeader(const LogHeader*)=0;
 
-  virtual void log(const string&)=0;
-  virtual void log(double)=0;
-  virtual void log(const Object&)=0;
+  /** Log a string
+    *
+    * \param str The string to be logged
+    */
+  virtual void log(const string& str)=0;
+
+  /** Log a double
+    *
+    * \param d The double to be logged
+    */
+  virtual void log(double d)=0;
+
+  /** Log an object and its attributes
+    *
+    * \param o The object to be logged
+    */
+  virtual void log(const Object& o)=0;
 
 protected:
   string ll_to_abr(LogLevel);

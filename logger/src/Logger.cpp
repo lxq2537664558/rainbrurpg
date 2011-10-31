@@ -35,7 +35,12 @@ LoggerOutput *Logger::l1, *Logger::l2, *Logger::l3;
 po::options_description Logger::options("Logger options");
 // End of static data members initialization
 
-
+/** The logger constructor
+  *
+  * \param vLogDomain The used log domain
+  * \param vLogType   The logger type
+  *
+  */
 Logger::Logger(const string& vLogDomain, LogType vLogType):
   mLogDomain(vLogDomain),
   mLogType(vLogType)
@@ -43,6 +48,9 @@ Logger::Logger(const string& vLogDomain, LogType vLogType):
 
 }
 
+/** Initialize the logger
+  *
+  */
 void Logger::init()
 {
   l1 = new LoggerOutputTty();
@@ -69,10 +77,13 @@ void Logger::init()
     ("compression", po::value<int>(), "set compression level")
     ("version", "output the version number")
     ;
-
-
 }
 
+/** Free the memory used by this logger
+  *
+  * It especially close all registered output and clear the list.
+  *
+  */
 void Logger::free()
 {
   LoggerOutputListIterator iter;
@@ -87,6 +98,32 @@ void Logger::free()
   delete l3;
 }
 
+/** Parse the command-line options
+  *
+  * \param argc Number of options
+  * \param argv The arguments array
+  *
+  * \return \c true if program must exit, otherwise, return \c false
+  *
+  */
+bool 
+Logger::parse_program_options(int argc, char**argv)
+{
+  po::variables_map vm;
+  po::store(po::parse_command_line(argc, argv, options), vm);
+  //  po::store(po::parse_config_file("example.cfg", options), vm);
+  po::notify(vm);
+}
+
+/** Start a log line
+  *
+  * \param vLevel    The log level
+  * \param vFilename The source file name
+  * \param vLine     The line number in source file
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
 Logger& 
 Logger::startLog(LogLevel vLevel, const string& vFilename, const string& vLine)
 {
@@ -100,13 +137,89 @@ Logger::startLog(LogLevel vLevel, const string& vFilename, const string& vLine)
   return *this;
 }
 
-// return true if program must exit
-bool 
-Logger::parse_program_options(int argc, char**argv)
+/// End a log line
+void Logger::endLog()
 {
-  po::variables_map vm;
-  po::store(po::parse_command_line(argc, argv, options), vm);
-  //  po::store(po::parse_config_file("example.cfg", options), vm);
-  po::notify(vm);
+  
+  LoggerOutputListIterator iter;
+  for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)
+    {
+      (*iter)->endLog();
+    }
+  
+};
 
+/** Log a string
+  *
+  * \param str The string to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& 
+Logger::operator<<(const string& str)
+{ 
+  return log<string>(str); 
+}
+
+/** Log a single character
+  *
+  * \param c The character to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& 
+Logger::operator<<(const char& c)
+{ 
+  return log<char>(c);     
+}
+
+/** Log an integer
+  *
+  * \param i The integer to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& 
+Logger::operator<<(int i){
+  return log<int>(i);      
+}
+
+/** Log a double
+  *
+  * \param d The double to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& 
+Logger::operator<<(double d)
+{
+  return log<double>(d);   
+}
+
+/** Log a reference to an object
+  *
+  * \param o The object to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& Logger::operator<<(const Object& o)  
+{ 
+  return log<const Object&>(o);
+}
+
+/** Log a pointer to an object
+  *
+  * \param o The object to be logged
+  *
+  * \return A reference to the logger to let it be chained
+  *
+  */
+Logger& Logger::operator<<(const Object* o)  
+{ 
+  return log<const Object&>(*o);
 }

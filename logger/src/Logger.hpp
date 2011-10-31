@@ -82,7 +82,7 @@ typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
   *   and releasing your program.
   * - then, create a static logger in the implementation files where
   *   you need logging feature.
-  * - use the shortcut macro for each loggeing levels.
+  * - use the shortcut macro for each logging levels.
   *
   */
 class Logger
@@ -96,32 +96,21 @@ public:
   static bool parse_program_options(int, char**);
 
   Logger& startLog(LogLevel, const string&, const string&);
-  void endLog()
-  {
-    
-    LoggerOutputListIterator iter;
-    for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)
-      {
-	(*iter)->endLog();
-      }
-    
-  };
+  void endLog();
 
-  Logger& operator<<(const string& str){ return log<string>(str); }
-  Logger& operator<<(const char& c)    { return log<char>(c);     }
-  Logger& operator<<(int i)            { return log<int>(i);      }
-  Logger& operator<<(double d)         { return log<double>(d);   }
-  Logger& operator<<(const Object& o)  
-  { 
-    return log<const Object&>(o);
-  }
-
-  Logger& operator<<(const Object* o)  
-  { 
-    return log<const Object&>(*o);
-  }
+  Logger& operator<<(const string&);
+  Logger& operator<<(const char&);
+  Logger& operator<<(int);
+  Logger& operator<<(double);
+  Logger& operator<<(const Object&);
+  Logger& operator<<(const Object*);
 
 protected:
+  /** Log the given object to all output
+    *
+    * \param arg The object to be logged
+    *
+    */
   template <typename T> Logger& log(T arg)
   {
     LoggerOutputListIterator iter;
@@ -134,12 +123,12 @@ protected:
 
 
 private:
-  string mLogDomain;                      // The logger's log domain
-  LogType mLogType;                       // The logger's type
+  string mLogDomain;                      //!< The logger's log domain
+  LogType mLogType;                       //!< The logger's type
 
-  static LoggerOutputList mOutputList;    // The list of LoggerOutput
-  static LoggerOutput *l1, *l2, *l3;      // The content of the list
-  static po::options_description options; // Used to parse command-line args
+  static LoggerOutputList mOutputList;    //!< The list of LoggerOutput
+  static LoggerOutput *l1, *l2, *l3;      //!< The content of the list
+  static po::options_description options; //!< Used to parse command-line args
 };
 
 #endif // _LOGGER_HPP_

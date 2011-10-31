@@ -28,6 +28,11 @@
 
 #include "LoggerOutput.hpp"
 
+/** An output specialization that write a YAML file
+  *
+  * The produced YAML file can be read with the \em log_reader application.
+  *
+  */
 class LoggerOutputYaml : public LoggerOutput
 {
 public:
@@ -44,7 +49,6 @@ public:
   virtual void log(const Object&o);
 
   virtual void logHeader(const LogHeader* lh);
-
 
 private:
     ofstream mFile;       //!< The file to log to

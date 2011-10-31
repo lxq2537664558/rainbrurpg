@@ -25,6 +25,9 @@
 
 #include "LoggerOutputYaml.hpp"
 
+/** Opens the YAML file
+  *
+  */
 void 
 LoggerOutputYaml::open()
 {    
@@ -32,6 +35,7 @@ LoggerOutputYaml::open()
     
 };
 
+/// Close the YAML file
 void 
 LoggerOutputYaml::close()
 {   

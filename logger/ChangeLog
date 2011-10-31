@@ -1,3 +1,7 @@
+2011-10-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* Moved some Logger.hpp functions to implementation.
+
 2011-10-29  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: check for Boost.Program_options header
