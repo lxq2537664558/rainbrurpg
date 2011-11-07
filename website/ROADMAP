@@ -27,6 +27,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-11-07 lun. 21:56]--[2011-11-07 lun. 22:34] =>  0:38
      CLOCK: [2011-09-27 mar. 21:20]--[2011-09-27 mar. 21:32] =>  0:12
      CLOCK: [2011-09-24 sam. 21:02]--[2011-09-24 sam. 21:40] =>  0:38
      CLOCK: [2011-09-24 sam. 19:28]--[2011-09-24 sam. 19:58] =>  0:30
@@ -116,12 +117,19 @@ see http://codex.wordpress.org/Theme_Development
       - [ ] See how a default /foswiki/ install looks like with this engine
       - [ ] Find a hack
 	    looking for /foswiki/'s css or engine/w3c documentation
-- [ ] Must find how the skin fail on ie6
+- [-] Must find why the skin fail on ie6
+      - [X] Tried with the 'zoom: 1;' css attribute: OK
+      - [ ] Now, the left margin of #sidebar is spurious
+      - [ ] The black menu isn't correct
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
+- [ ] Make an 'About' page and a first post about the new website/blog
+      - [ ] Speaking about compatibility issues (KHTML and IE)
+	    with a link to wiki's NewWebsiteLayout
+- [ ] Should add a adsense block below sidebar
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link

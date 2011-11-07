@@ -66,6 +66,16 @@ var addthis_config = {
 }
 </script>
 
+<!--[if lte IE 7]>
+   <style type="text/css">
+      #sidebar {
+         zoom: 1;
+         position: relative;
+      }
+   </style>
+<![endif]-->
+
+
 </head>
 <div id="top-box">RainbruRPG
   <div id="google-ad">Google-ad</div>

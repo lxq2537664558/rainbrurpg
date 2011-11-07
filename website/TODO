@@ -21,6 +21,7 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
 
 * v0.0.0-8 (27 sept 2011 - ???) FT ??:??
+- Partially fixed the ie margin issu
 - Texted WP theme with ie6 (FAILED)
 
 * v0.0.0-7 (22 sept 2011 - 27 sep 2011) FT 12:26
