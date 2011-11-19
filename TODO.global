@@ -8,7 +8,7 @@ OVERALL TODO
   texinfo manuals...)
 
 * Others versions...
-* DSI review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)
+* DIS review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)
 * Metaserver (foswiki plugin, C++ API)
 * Server register on metaserver (+ ruby extension + ruleset)
 * ongame chat (needs network/ASN.1 support ?)

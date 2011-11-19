@@ -109,7 +109,7 @@ RB_HANDLE_CROSS_COMPIL("/usr/cross", "")
 dnl Checks for libraries and headers
 RB_CHECK_FREETYPE(9.18)
 RB_CHECK_OGREMAIN
-RB_CHECK_PLSM2
+dnl RB_CHECK_PLSM2 dnl Deactivated for `make clean`
 RB_CHECK_LIBOIS
 RB_CHECK_LIBFOX(1.6)
 RB_CHECK_LIBCURL
@@ -122,7 +122,7 @@ RB_CHECK_ENET
 RB_CHECK_GLIB
 RB_CHECK_LIBSIG
 RB_CHECK_LIBGD
-RB_CHECK_LIBGNET
+dnl RB_CHECK_LIBGNET dnl Deactivated for `make clean`
 RB_CHECK_BZ2
 
 dnl #################################################################"""
