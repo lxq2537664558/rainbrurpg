@@ -27,6 +27,9 @@
 
 #include "LoggerOutput.hpp"
 
+/** An output that writes in console (tty
+  *
+  */
 class LoggerOutputTty : public LoggerOutput
 {
 public:

@@ -28,6 +28,9 @@
 
 #include "LoggerOutput.hpp"
 
+/** An output that writes in a file
+  *
+  */
 class LoggerOutputFile : public LoggerOutput
 {
 public:

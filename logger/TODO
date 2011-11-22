@@ -14,8 +14,12 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    (6 items by revision)
    SLOC is the result of `sloccount src/`
    FT is the ROADMAP file time
+   Please update version and revision in configure.in
 
-* v0.0.0-3 (16 jul 2011 - ???) SLOC ??? FT ??:??
+* v0.0.0-4 (22 noc 2011 - ???) SLOC ??? FT ??:??
+
+* v0.0.0-3 (16 jul 2011 - 22 nov 2011) SLOC 916 FT 7:37
+- Doxygen documentation updated
 - Moved some Logger.hpp functions to implementation
 - Documentation update for some classes
 - Documentation added for some classes

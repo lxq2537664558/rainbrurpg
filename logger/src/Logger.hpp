@@ -68,9 +68,9 @@ enum LogType{
   LT_BOTH   //!< Log to both file and cout
 };
 
-// The type for a list of LoggerOutput
+/// The type for a list of LoggerOutput
 typedef list<LoggerOutput*> LoggerOutputList;
-// and its iterator
+/// The LoggerOutput predefined iterator
 typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
 
 /** The logger class
