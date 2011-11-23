@@ -28,26 +28,31 @@
 
 #include "LoggerOutput.hpp"
 
-/** An output that writes in a file
-  *
-  */
-class LoggerOutputFile : public LoggerOutput
+namespace Rpg
 {
-public:
-  virtual void open();
-  virtual void close();
-  
-  virtual void startLog(LogLevel, const string&, const string&, const string&);
-  virtual void endLog();
 
-  virtual void log(const string&);
-  virtual void log(double);
-  virtual void log(const Object&);
-
-  virtual void logHeader(const LogHeader*);
-
-private:
+  /** An output that writes into a file
+    *
+    */
+  class LoggerOutputFile : public LoggerOutput
+  {
+  public:
+    virtual void open();
+    virtual void close();
+    
+    virtual void startLog(LogLevel, const string&, const string&,const string&);
+    virtual void endLog();
+    
+    virtual void log(const string&);
+    virtual void log(double);
+    virtual void log(const Object&);
+    
+    virtual void logHeader(const LogHeader*);
+    
+  private:
     ofstream mFile;       //!< The file to log to
-};
+  };
+ 
+} // !namespace Rpg
 
 #endif // !_LOGGER_OUTPUT_FILE_HPP_

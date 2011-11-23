@@ -30,9 +30,9 @@
 #include "LoggerOutputYaml.hpp"
 
 // Static data members initialization
-LoggerOutputList Logger::mOutputList;
-LoggerOutput *Logger::l1, *Logger::l2, *Logger::l3;
-po::options_description Logger::options("Logger options");
+Rpg::LoggerOutputList Rpg::Logger::mOutputList;
+Rpg::LoggerOutput *Rpg::Logger::l1, *Rpg::Logger::l2, *Rpg::Logger::l3;
+po::options_description Rpg::Logger::options("Logger options");
 // End of static data members initialization
 
 /** The logger constructor
@@ -41,7 +41,7 @@ po::options_description Logger::options("Logger options");
   * \param vLogType   The logger type
   *
   */
-Logger::Logger(const string& vLogDomain, LogType vLogType):
+Rpg::Logger::Logger(const string& vLogDomain, LogType vLogType):
   mLogDomain(vLogDomain),
   mLogType(vLogType)
 {
@@ -51,7 +51,7 @@ Logger::Logger(const string& vLogDomain, LogType vLogType):
 /** Initialize the logger
   *
   */
-void Logger::init()
+void Rpg::Logger::init()
 {
   l1 = new LoggerOutputTty();
   l2 = new LoggerOutputFile();
@@ -84,7 +84,7 @@ void Logger::init()
   * It especially close all registered output and clear the list.
   *
   */
-void Logger::free()
+void Rpg::Logger::free()
 {
   LoggerOutputListIterator iter;
   for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)
@@ -107,7 +107,7 @@ void Logger::free()
   *
   */
 bool 
-Logger::parse_program_options(int argc, char**argv)
+Rpg::Logger::parse_program_options(int argc, char**argv)
 {
   po::variables_map vm;
   po::store(po::parse_command_line(argc, argv, options), vm);
@@ -124,8 +124,9 @@ Logger::parse_program_options(int argc, char**argv)
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& 
-Logger::startLog(LogLevel vLevel, const string& vFilename, const string& vLine)
+Rpg::Logger& 
+Rpg::Logger::startLog(LogLevel vLevel, const string& vFilename, 
+		      const string& vLine)
 {
 
   LoggerOutputListIterator iter;
@@ -138,7 +139,7 @@ Logger::startLog(LogLevel vLevel, const string& vFilename, const string& vLine)
 }
 
 /// End a log line
-void Logger::endLog()
+void Rpg::Logger::endLog()
 {
   
   LoggerOutputListIterator iter;
@@ -156,8 +157,8 @@ void Logger::endLog()
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& 
-Logger::operator<<(const string& str)
+Rpg::Logger& 
+Rpg::Logger::operator<<(const string& str)
 { 
   return log<string>(str); 
 }
@@ -169,8 +170,8 @@ Logger::operator<<(const string& str)
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& 
-Logger::operator<<(const char& c)
+Rpg::Logger& 
+Rpg::Logger::operator<<(const char& c)
 { 
   return log<char>(c);     
 }
@@ -182,8 +183,8 @@ Logger::operator<<(const char& c)
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& 
-Logger::operator<<(int i){
+Rpg::Logger& 
+Rpg::Logger::operator<<(int i){
   return log<int>(i);      
 }
 
@@ -194,8 +195,8 @@ Logger::operator<<(int i){
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& 
-Logger::operator<<(double d)
+Rpg::Logger& 
+Rpg::Logger::operator<<(double d)
 {
   return log<double>(d);   
 }
@@ -207,7 +208,7 @@ Logger::operator<<(double d)
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& Logger::operator<<(const Object& o)  
+Rpg::Logger& Rpg::Logger::operator<<(const Object& o)  
 { 
   return log<const Object&>(o);
 }
@@ -219,7 +220,7 @@ Logger& Logger::operator<<(const Object& o)
   * \return A reference to the logger to let it be chained
   *
   */
-Logger& Logger::operator<<(const Object* o)  
+Rpg::Logger& Rpg::Logger::operator<<(const Object* o)  
 { 
   return log<const Object&>(*o);
 }

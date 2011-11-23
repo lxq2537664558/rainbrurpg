@@ -30,17 +30,21 @@
 
 using namespace std;
 
-/** Defines the attribute on an object
-  *
-  */
-class ObjectAttribute
+namespace Rpg
 {
-public:
-  ObjectAttribute(string t, string n, string v);
+  /** Defines the attribute on an object
+    *
+    */
+  class ObjectAttribute
+  {
+  public:
+    ObjectAttribute(string t, string n, string v);
+    
+    string type;  //!< The internal type of the attribute (ie. int for integer)
+    string name;  //!< The attribute's name
+    string value; //!< The value to be logged
+  };
+} // !namespace Rpg
 
-  string type;  //!< The internal type of the attribute (ie. int for integer)
-  string name;  //!< The attribute's name
-  string value; //!< The value to be logged
-};
 
 #endif // !_OBJECT_ATTRIBUTE_HPP_

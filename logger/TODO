@@ -17,6 +17,7 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-4 (22 noc 2011 - ???) SLOC ??? FT ??:??
+- All clases move to Rpg namespace
 
 * v0.0.0-3 (16 jul 2011 - 22 nov 2011) SLOC 916 FT 7:37
 - Doxygen documentation updated

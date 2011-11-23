@@ -34,7 +34,7 @@
   * \param address     The memory address of the object
   *
   */
-ObjectInspector::ObjectInspector(string class_name, const void* address):
+Rpg::ObjectInspector::ObjectInspector(string class_name, const void* address):
   name(class_name)
 {
   ostringstream oss;
@@ -51,8 +51,8 @@ ObjectInspector::ObjectInspector(string class_name, const void* address):
   * \return a reference to this inspector
   *
   */
-ObjectInspector& 
-ObjectInspector::add(string name, int value)
+Rpg::ObjectInspector& 
+Rpg::ObjectInspector::add(string name, int value)
 {
   ostringstream oss;
   oss << value;
@@ -68,8 +68,8 @@ ObjectInspector::add(string name, int value)
   * \return a reference to this inspector
   *
   */
-ObjectInspector& 
-ObjectInspector::add(string name, Object& o)
+Rpg::ObjectInspector& 
+Rpg::ObjectInspector::add(string name, Object& o)
 {
   /*
     ostringstream oss;

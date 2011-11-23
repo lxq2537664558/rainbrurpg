@@ -32,7 +32,8 @@
   * \param vValue The attribute value, stored as a string
   *
   */
-ObjectAttribute::ObjectAttribute(string vType, string vName, string vValue):
+Rpg::ObjectAttribute::ObjectAttribute(string vType, string vName, 
+				      string vValue):
   type(vType), name(vName), value(vValue)
 {    
 };

@@ -27,20 +27,20 @@
 #include "LoggerOutputFile.hpp"
 
 void 
-LoggerOutputFile::open()
+Rpg::LoggerOutputFile::open()
 {
   mFile.open ("logger-test.log"); 
 };
 
 void 
-LoggerOutputFile::close()
+Rpg::LoggerOutputFile::close()
 {
   mFile.close(); 
 };
 
 void 
-LoggerOutputFile::startLog(LogLevel vLevel, const string& vLogDomain, 
-			   const string& vFilename, const string& vLine)
+Rpg::LoggerOutputFile::startLog(LogLevel vLevel, const string& vLogDomain, 
+				const string& vFilename, const string& vLine)
 {
   mFile << ll_to_abr(vLevel)
 	<< " '" <<  vLogDomain << "' " 
@@ -50,31 +50,31 @@ LoggerOutputFile::startLog(LogLevel vLevel, const string& vLogDomain,
 };
 
 void 
-LoggerOutputFile::endLog()
+Rpg::LoggerOutputFile::endLog()
 {
   mFile << endl;
 };
 
 void 
-LoggerOutputFile::log(const string& str)
+Rpg::LoggerOutputFile::log(const string& str)
 {
   mFile   << ' ' << str;  
 };
 
 void 
-LoggerOutputFile::log(double d)
+Rpg::LoggerOutputFile::log(double d)
 {
   mFile   << ' ' << d;  
 };
 
 void 
-LoggerOutputFile::log(const Object&o)
+Rpg::LoggerOutputFile::log(const Object&o)
 {
   mFile << ' ' << &o;  
 };
 
 void 
-LoggerOutputFile::logHeader(const LogHeader*)
+Rpg::LoggerOutputFile::logHeader(const LogHeader*)
 {
   mFile << "</ logHeader" << endl;
 }

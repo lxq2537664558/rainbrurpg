@@ -35,7 +35,7 @@
   *
   */
 string 
-LoggerOutput::ll_to_abr(LogLevel vLogLevel)
+Rpg::LoggerOutput::ll_to_abr(LogLevel vLogLevel)
 {
   switch (vLogLevel)
     {
@@ -57,7 +57,7 @@ LoggerOutput::ll_to_abr(LogLevel vLogLevel)
   *
   */
 string 
-LoggerOutput::ll_to_str(LogLevel vLogLevel)
+Rpg::LoggerOutput::ll_to_str(LogLevel vLogLevel)
 {
   switch (vLogLevel)
     {

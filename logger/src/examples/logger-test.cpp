@@ -26,14 +26,15 @@
 
 using namespace std;
 using namespace boost;
+// using namespace rpg;
 
-static Logger static_logger("MyLogDomain", LT_BOTH);
+static Rpg::Logger static_logger("MyLogDomain", Rpg::LT_BOTH);
 
 int
 main(int argc, char** argv)
 {
-  Logger::init();
-  Logger::parse_program_options(argc, argv);
+  Rpg::Logger::init();
+  Rpg::Logger::parse_program_options(argc, argv);
 
   //  LoggerArgs<int, int> la("aze", 12, 43);
 
@@ -61,6 +62,6 @@ main(int argc, char** argv)
   LOGD("Trying with nested object :" << pl);
   LOGD("Note that you get compilation error if you do not override Object::inspect()");
 
-  Logger::free();
+  Rpg::Logger::free();
   return 0;
 }

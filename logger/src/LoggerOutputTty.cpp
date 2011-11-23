@@ -54,27 +54,27 @@ static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
 #define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << GRAY
 
 void 
-LoggerOutputTty::endLog()
+Rpg::LoggerOutputTty::endLog()
 {
   cout << endl;
 };
 
 void 
-LoggerOutputTty::log(const string& str)
+Rpg::LoggerOutputTty::log(const string& str)
 {
   cout << ' ' << str;  
 };
 
 void 
-LoggerOutputTty::log(double d)
+Rpg::LoggerOutputTty::log(double d)
 {
   cout << ' ' << d;  
 };
 
 
 void 
-LoggerOutputTty::log(const Object& o){ 
-  ObjectInspector oi = o.inspect();
+Rpg::LoggerOutputTty::log(const Object& o){ 
+  Rpg::ObjectInspector oi = o.inspect();
   cout << " <" << oi.name << ':' << oi.address << ">[";
   list<ObjectAttribute>::iterator iter;
   for (iter = oi.attributes.begin(); 
@@ -86,14 +86,14 @@ LoggerOutputTty::log(const Object& o){
 };
 
 void 
-LoggerOutputTty::logHeader(const LogHeader*lh)
+Rpg::LoggerOutputTty::logHeader(const LogHeader*lh)
 {
   cout << "Logger started for '" << lh->program_name 
        << " v"<< lh->program_version<< "'" << endl;
 }
 
 void
-LoggerOutputTty::startLog(LogLevel vLevel, const string& vLogDomain, 
+Rpg::LoggerOutputTty::startLog(LogLevel vLevel, const string& vLogDomain, 
 			  const string& vFilename, 
 			  const string& vLine)
 {

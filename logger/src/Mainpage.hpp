@@ -62,3 +62,10 @@
   *
   *
   */
+
+/** \namespace Rpg
+  * The \em RainbruRPG's classes and types namespace.
+  *
+  * This namespace is used for all \em RainbruRPG classes and types.
+  *
+  */

@@ -1,3 +1,5 @@
+				Hey emacs, this is a -*-todoo-*- file
+
 OVERALL TODO
 
 * SPARETIME : switch to NewProjectLayout
@@ -6,6 +8,12 @@ OVERALL TODO
 * v0.0.7
 - Website revamping (skin, blog, wiki, API documentation, maybe 
   texinfo manuals...)
+- dist.bz2.pl 
+   When client/ will officially replace rainbrurpg/, this script could
+   call `make dist-bzip2` in each subdirs but OLD/ and create a
+   'rainbrurpg-all-src' global archive using the stats.pl version
+   number. It must first test if each directory doesn't contain
+   more than one tarball.
 
 * Others versions...
 * DIS review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)

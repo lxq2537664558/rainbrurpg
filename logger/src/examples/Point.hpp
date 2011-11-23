@@ -28,8 +28,7 @@
 #include <Object.hpp>
 
 using namespace std;
-
-
+using namespace Rpg;
 
 class Point: public Object
 {

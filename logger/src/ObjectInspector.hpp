@@ -34,23 +34,26 @@
 
 using namespace std;
 
-/** An object used to describe a C++ class internals
-  *
-  * This object is used when you need to log a complete object to
-  * the logger stream.
-  *
-  */
-class ObjectInspector
+namespace Rpg
 {
-public:
-  ObjectInspector(string class_name, const void* address);
-
-  ObjectInspector& add(string name, int value);
-  ObjectInspector& add(string name, Object&o);
-
-  string name;                      //!< The class name of the inspected object
-  string address;                   //!< Its memory address
-  list<ObjectAttribute> attributes; //!< The object attributes
-};
+  /** An object used to describe a C++ class internals
+    *
+    * This object is used when you need to log a complete object to
+    * the logger stream.
+    *
+    */
+  class ObjectInspector
+  {
+  public:
+    ObjectInspector(string class_name, const void* address);
+    
+    ObjectInspector& add(string name, int value);
+    ObjectInspector& add(string name, Object&o);
+    
+    string name;                     //!< The class name of the inspected object
+    string address;                  //!< Its memory address
+    list<ObjectAttribute> attributes;//!< The object attributes
+  };
+} // !namespace Rpg
 
 #endif // !_OBJECT_INSECTOR_HPP_

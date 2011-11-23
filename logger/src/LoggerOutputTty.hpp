@@ -27,23 +27,29 @@
 
 #include "LoggerOutput.hpp"
 
-/** An output that writes in console (tty
-  *
-  */
-class LoggerOutputTty : public LoggerOutput
+namespace Rpg
 {
-public:
-  virtual void open(){    /* Nothing to be done */ };
-  virtual void close(){    /* Nothing to be done */ };
-  
-  virtual void startLog(LogLevel, const string&, const string&, const string&);
-  virtual void endLog();
 
-  virtual void log(const string& str);
-  virtual void log(double d);
-  virtual void log(const Object& o);
+  /** An output that writes in console (tty
+    *
+    */
+  class LoggerOutputTty : public LoggerOutput
+  {
+  public:
+    virtual void open(){    /* Nothing to be done */ };
+    virtual void close(){    /* Nothing to be done */ };
+    
+    virtual void startLog(LogLevel, const string&, const string&,const string&);
+    virtual void endLog();
+    
+    virtual void log(const string& str);
+    virtual void log(double d);
+    virtual void log(const Object& o);
+    
+    virtual void logHeader(const LogHeader*lh);
+    
+  };
+ 
+} // !namespace Rpg
 
-  virtual void logHeader(const LogHeader*lh);
-
-};
 #endif // !_LOGGER_OUTPUT_TTY_

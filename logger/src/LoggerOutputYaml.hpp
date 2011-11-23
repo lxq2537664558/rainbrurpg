@@ -28,30 +28,35 @@
 
 #include "LoggerOutput.hpp"
 
-/** An output specialization that write a YAML file
-  *
-  * The produced YAML file can be read with the \em log_reader application.
-  *
-  */
-class LoggerOutputYaml : public LoggerOutput
+namespace Rpg
 {
-public:
-  virtual void open();
-  virtual void close();
-  
-  virtual void startLog(LogLevel, const string&,const string&, const string&);
 
-  virtual void endLog();
-
-  virtual void log(const string& str);
-  virtual void log(double d);
-
-  virtual void log(const Object&o);
-
-  virtual void logHeader(const LogHeader* lh);
-
-private:
+  /** An output specialization that write a YAML file
+    *
+    * The produced YAML file can be read with the \em log_reader application.
+    *
+    */
+  class LoggerOutputYaml : public LoggerOutput
+  {
+  public:
+    virtual void open();
+    virtual void close();
+    
+    virtual void startLog(LogLevel, const string&,const string&, const string&);
+    
+    virtual void endLog();
+    
+    virtual void log(const string& str);
+    virtual void log(double d);
+    
+    virtual void log(const Object&o);
+    
+    virtual void logHeader(const LogHeader* lh);
+    
+  private:
     ofstream mFile;       //!< The file to log to
-};
+  };
+
+} // !namespace Rpg
 
 #endif // !_LOGGER_OUTPUT_YAML_HPP_

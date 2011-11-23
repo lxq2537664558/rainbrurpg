@@ -33,31 +33,34 @@
 
 using namespace std;
 
-// Forward declaration...
-class ObjectInspector;
-
-/** Defines an object to be logged
-  *
-  * To be able to log the instance of an object, an object
-  * \b must inherit this class and implement the Object::inspect pure
-  * virtual function.
-  *
-  */
-class Object
+namespace Rpg
 {
-public:
-  /**  The default constructor
-    *
-    */
-  Object(){}; 
+  // Forward declaration...
+  class ObjectInspector;
 
-  /** The inspect function to be implemented
+  /** Defines an object to be logged
     *
-    * \return An inspector containing object's attributes
+    * To be able to log the instance of an object, an object
+    * \b must inherit this class and implement the Object::inspect pure
+    * virtual function.
     *
     */
-  virtual ObjectInspector inspect()const = 0;
-};
+  class Object
+  {
+  public:
+    /**  The default constructor
+     *
+     */
+    Object(){}; 
+    
+    /** The inspect function to be implemented
+     *
+     * \return An inspector containing object's attributes
+     *
+     */
+    virtual ObjectInspector inspect()const = 0;
+  };
+} // !namespace Rpg
 
 // ... because ObjectInspector must know about Object
 #include "ObjectInspector.hpp"

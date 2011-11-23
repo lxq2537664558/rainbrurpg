@@ -29,7 +29,7 @@
   *
   */
 void 
-LoggerOutputYaml::open()
+Rpg::LoggerOutputYaml::open()
 {    
   mFile.open ("logger-test.yml"); 
     
@@ -37,14 +37,14 @@ LoggerOutputYaml::open()
 
 /// Close the YAML file
 void 
-LoggerOutputYaml::close()
+Rpg::LoggerOutputYaml::close()
 {   
   mFile.close(); 
 };
 
 void 
-LoggerOutputYaml::startLog(LogLevel vLevel, const string& vLogDomain, 
-			   const string& vFilename, const string& vLine)
+Rpg::LoggerOutputYaml::startLog(LogLevel vLevel, const string& vLogDomain, 
+				const string& vFilename, const string& vLine)
 {
   mFile << "---" << endl
 	<< "level    : " << ll_to_str(vLevel) << endl
@@ -55,25 +55,25 @@ LoggerOutputYaml::startLog(LogLevel vLevel, const string& vLogDomain,
 };
 
 void 
-LoggerOutputYaml::endLog()
+Rpg::LoggerOutputYaml::endLog()
 {
   //
 };
 
 void 
-LoggerOutputYaml::log(const string& str)
+Rpg::LoggerOutputYaml::log(const string& str)
 {  
   mFile << "  - string : " << str << endl;  
 };
 
 void 
-LoggerOutputYaml::log(double d)
+Rpg::LoggerOutputYaml::log(double d)
 {   
   mFile << "  - double : " << d <<  endl;  
 };
 
 void 
-LoggerOutputYaml::log(const Object&o)
+Rpg::LoggerOutputYaml::log(const Object&o)
 { 
   ObjectInspector oi = o.inspect();
   mFile << "  - object:"                  << endl
@@ -92,7 +92,7 @@ LoggerOutputYaml::log(const Object&o)
 };
 
 void 
-LoggerOutputYaml::logHeader(const LogHeader* lh)
+Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
 {
   mFile << "program:" << endl
 	<< "  - name   : "<< lh->program_name << endl
