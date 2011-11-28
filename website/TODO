@@ -21,6 +21,9 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
 
 * v0.0.0-8 (27 sept 2011 - ???) FT ??:??
+- Started to see differences between LAYOUT.org and current theme
+- Locally test LAYOUT.org
+- created LAYOUT.org
 - Partially fixed the ie margin issue
 - Texted WP theme with ie6 (FAILED)
 

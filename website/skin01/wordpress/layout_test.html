@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+  <HEAD>
+    <STYLE type="text/css">
+#patternScreen {
+    padding: 0;
+}
+#patternPage {
+    position: relative;
+    width: 100%;
+}
+#patternOuter {
+    margin-left: 16em;
+    height: 100%;
+}
+#patternFloatWrap {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#patternMain {
+    display: inline;
+    float: right;
+    width: 100%;
+}
+#patternTopBar, #patternClearHeaderCenter, #patternClearHeaderLeft, #patternClearHeaderRight, #patternTopBarContents {
+    height: 75px;
+    overflow: hidden;
+}
+#patternMainContents {
+    padding-bottom: 2em;
+    padding-top: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+#patternSideBar {
+    margin-left: -16em;
+    width: 16em;
+    display: inline;
+    float: left;
+    overflow: hidden;
+}
+
+.clear {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 1%;
+    overflow: hidden;
+}
+
+#patternTopBar{
+    height: 75px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#patternTopBarContents {
+    padding-top: 12px;
+    height: 75px;
+    overflow: hidden;
+}
+
+#patternBottomBar {
+    margin-top: 3em;
+    clear: both;
+    width: 100%;
+}
+
+#patternBottomBarContents {
+    padding-bottom: 2em;
+    padding-bottom: 2em;
+    padding-top: 1em;
+    padding-left: 30px;
+    padding-right: 2em;
+}
+    </STYLE>
+  </HEAD>
+  <BODY>
+<div class="foswikiPage">
+  <div id="patternScreen"
+    <div id="patternPageShadow">
+      <div id="patternPage">
+        <div id="patternWrapper">
+	  <div id="patternOuter">
+    	    <div id="patternFloatWrap">
+	      <div id="patternMain">
+	        <div id="patternClearHeaderCenter"></div>
+		<div id="patternMainContents">
+		  Main contents
+                </div>              <!-- patternMainContents -->
+              </div>                <!-- patternMain         -->
+	      <div id="patternSideBar">
+	        Content of Side bar :
+		<ul>
+		  <li>Item 1</li>
+		  <li>Item 2</li>
+		  <li>Item 3</li>
+		  <li>Item 4</li>
+		  <li>Item 5</li>
+		  <li>Item 6</li>
+		  <li>Item 7</li>
+		  <li>Item 8</li>
+		</ul>
+		This text is a bit long to test the availability to wrap 
+		words.
+              </div>                <!-- patternSideBar      -->
+            </div>                  <!-- patternFloatWrap    -->
+            <div class="clear">&nbsp;</div>
+          </div>                    <!-- patternOuter        -->
+        </div>                      <!-- patternWrapper      -->
+	<div id="patternTopBar">
+	  <div id="patternTopBarContentsWrapper">
+	    <div id="patternTopBarContents">
+	      Top bar content
+	    </div>                  <!--/patternTopBarContents-->
+	  </div>                    <!--/patternTopBarContentsWrapper-->
+	</div>                      <!-- patternTopBar         -->
+	<div id="patternBottomBar">
+  	  <div id="patternBottomBarContents">
+	    Bottom bar contents
+          </div>                    <!-- patternBottomBarContents    -->
+        </div>                      <!-- patternBottomBar    -->
+      </div>                        <!-- patternPage         -->
+    </div>                          <!-- patternPageShadow   -->
+  </div>                            <!-- patternScreen       -->
+</div>                              <!-- foswikiPage         -->
+
+  </BODY>
+</HTML>
