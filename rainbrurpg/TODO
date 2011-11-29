@@ -115,7 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (13) Added datafiles to the distribution
+- (14) configure.in checks again gnet-2.0
+- Added datafiles to the distribution
 - Fixed a texinfo @subtitle error
 - Changes the texinfo version behaviour
    to fix an automake error
@@ -130,22 +131,3 @@ A system that serialize widgets position and configuration
 - Finish copy ctor and assignement for Brush
 - Remove some unused getters in Brush
 - Implement deep copy and assignment for gsConnection and Brush (incomplete)
-
-* v0.0.5-212 (19 mar 2011 - 27 may 2011) SLOC 43,269 UT 270 FT 100:03
-- Started Font's unittests implementation
-- Started Glyph's unittests implementation
-- Client now works in debug mode
-- Restart debug with a brand-new item
-- Cancelled current ROADMAP item for ogreGui issues
-- Removed ogreGui's unit tests using Ogre (singleton issues)
-- FontManagerTestWithOgre created
-- README ad INSTALL files update
-- Removed 'RainbruRPG.html/Makefile' in configure.in
-- Try to catch an exception in OgreMinimalSetup
-- move faillures on OgreGui unit tests to v0.0.7 (can't fix)
-- Create an individual binary for DrawableTest
-- Removed default argument to OgreMinimalSetup::setupOgre
-   to avoid type mismatch
-- testHelper tests root songleton consistency
-- Search for a fix for Ogre::Root failed assertion
-

@@ -1,3 +1,21 @@
+* v0.0.5-212 (19 mar 2011 - 27 may 2011) SLOC 43,269 UT 270 FT 100:03
+- Started Font's unittests implementation
+- Started Glyph's unittests implementation
+- Client now works in debug mode
+- Restart debug with a brand-new item
+- Cancelled current ROADMAP item for ogreGui issues
+- Removed ogreGui's unit tests using Ogre (singleton issues)
+- FontManagerTestWithOgre created
+- README ad INSTALL files update
+- Removed 'RainbruRPG.html/Makefile' in configure.in
+- Try to catch an exception in OgreMinimalSetup
+- move faillures on OgreGui unit tests to v0.0.7 (can't fix)
+- Create an individual binary for DrawableTest
+- Removed default argument to OgreMinimalSetup::setupOgre
+   to avoid type mismatch
+- testHelper tests root songleton consistency
+- Search for a fix for Ogre::Root failed assertion
+
 * v0.0.5-211 (28 jan 2011 - 19 mar 2011) SLOC 43,101 UT ??? FT 95:58
 - Added a parameter for Tests and custom Ogre3D log
 - Created a valgrind suppression file for OgreMinimalSetup

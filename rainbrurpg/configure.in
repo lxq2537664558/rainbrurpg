@@ -122,7 +122,7 @@ RB_CHECK_ENET
 RB_CHECK_GLIB
 RB_CHECK_LIBSIG
 RB_CHECK_LIBGD
-dnl RB_CHECK_LIBGNET dnl Deactivated for `make clean`
+RB_CHECK_LIBGNET dnl Deactivated for `make clean`
 RB_CHECK_BZ2
 
 dnl #################################################################"""

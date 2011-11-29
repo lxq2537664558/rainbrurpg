@@ -1,9 +1,13 @@
+2011-11-29 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in: checks again gnet-2.0.
+
 2011-07-18 Jerome Pasquier  <rainbru@free.fr>
 
 	* RainbruRPG.texi: fixed a @subtitle issue.
-	
+
 2011-06-05 Jerome Pasquier  <rainbru@free.fr>
-	
+
 	* src/client/languageselector.cpp (feedComboBox): use pre-increment.
 	* src/client/main.cpp: remove unneeded cast for guiframelistener.
 	* src/client/gsmainmenu.h (getCreateMenu): remove usunsed function.
@@ -11,13 +15,13 @@
 2011-06-04 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/client/gsmainmenu.h: get rid od the dynamic menu feature.
-	
+
 	* src/client/gsConnection.cpp: label and window become members.
 	* src/ogreGui/Font.cpp: Add assignent operator.
 	* src/ogreGui/Label.cpp: Add assignent operator.
 	* src/ogreGui/TextSettings.cpp: Add assignent operator and copy ctor.
 	* src/ogreGui/Brush.cpp: Finish assignent operator.
-	
+
 
 2011-05-28 Jerome Pasquier  <rainbru@free.fr>
 
@@ -26,7 +30,7 @@
 2011-05-27 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Brush.cpp: Implement deep copy and assignment.
-	
+
 	* src/client/gsconnection.cpp: Implement deep copy and assignment.
 
 2011-05-27 Jerome Pasquier  <rainbru@free.fr>
@@ -36,25 +40,25 @@
 	* src/ogreGui/FontTest.cpp: Start unit tests implementation.
 
 2011-04-30 Jerome Pasquier  <rainbru@free.fr>
-	
+
 	* src/ogreGui/Makefile.am (rainbrurpg_tests_ogregui_SOURCES): Removed 
 	some unit tests with Ogre failling due to Singleton issues.
-	
+
 	* src/ogreGui/FontManagerTestWithOgre.cpp: created.
 
 	* configure.in (AC_CONFIG_FILES): Removed 'RainbruRPG.html/Makefile' 
 	to make	autoreconf work without calling ./bootstrap.
-	
+
 	* src/testHelpers/OgreMinimalSetup.cpp (setupOgre): Trying to catch an
 	exception when creating Ogre::Root.
 
 2011-04-09 Jerome Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/: reate an individual binary for DrawableTest.
-	
+
 	* src/testHelpers/OgreMinimalSetup.hpp (setpOgre): removed default 
 	argument to avoid type mismatch.
-	
+
 	* src/testHelpers/OgreMinimalSetupTest: test that Ogre::Root
 	singleton is not null.
 
@@ -123,16 +127,16 @@
 
 	* src/ogreGui/ContainerTest.cpp: ported from CppUnit to
 	Boost.Test.
-	
+
 	* src/maincore/WindowHandleTest.cpp: implemented.
 	* src/testHelpers/OgreMinimalSetup (getRenderWindow) implemented.
-	
+
 	* src/maincore/WindowHandle.cpp (get): throws some 
 	NullWindowHandleException.
-	
+
 	* src/maincore/NullWindowHandleException: header and implementation 
 	added.
-	
+
 	* src/maincore/inputmanager.cpp (initialise): Now uses WindowHandle.
 	* src/maincore/WindowHandle: header and implementation added.
 
@@ -140,19 +144,19 @@
 
 	* src/Makefile.am (SUBDIRS): testHelpers do not depends on
 	RB_OPTION_TESTS_FLAGS anymore.
-	
+
 	* src/maincore/inputmanager.cpp (initialise): Try to get
 	D3DX9 window handle.
-	
+
 	* acinclude.m4 (RB_CHECK_OGREMAIN): Added include flags for
 	d3dx9.h.
 
 2011-01-02 Jerome Pasquier  <rainbru@free.fr>
 
-	* src/ogreGui/Makefile.am (ogregui_tests_SOURCES): Added 
-	$(cc_sources) to avoid undefined references.	
-	
+	* src/ogreGui/Makefile.am (ogregui_tests_SOURCES): Added
+	$(cc_sources) to avoid undefined references.
+
 	* src/nb_unit_tests.pl: Started implementation
-	
-	* src/testHelpers/OgreMinimalSetupTest.cpp: basic unit tests 
+
+	* src/testHelpers/OgreMinimalSetupTest.cpp: basic unit tests
 	implementation.
