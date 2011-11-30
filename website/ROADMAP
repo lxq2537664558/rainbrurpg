@@ -5,6 +5,8 @@
 ** v0.1.0
 *** v0.0.1
 **** DONE Correct project setup
+     CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
+     CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
      CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
 - [X] Directory structure with README file in each dir
   skin01/
@@ -16,7 +18,7 @@
 - [X] See if wordpress and foswiki doctype are the same
       wordpress: <!DOCTYPE html>
       foswiki: <!DOCTYPE html ...
-    
+- [X] Uses automake for the `make distclean` rule
 **** DONE Starting static/ tests
      CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
      CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08

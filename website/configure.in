@@ -1,0 +1,27 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.67])
+AC_INIT([website], [0.0.0-8], [rainbru@free.fr])
+AM_INIT_AUTOMAKE
+
+# Checks for programs.
+
+# Checks for libraries.
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_OUTPUT([
+  Makefile				\
+  skin01/Makefile			\
+  skin01/common/Makefile		\
+  skin01/doxygen/Makefile		\
+  skin01/foswiki/Makefile		\
+  skin01/static/Makefile		\
+  skin01/wordpress/Makefile		\
+  skin01/wordpress/images/Makefile
+])
