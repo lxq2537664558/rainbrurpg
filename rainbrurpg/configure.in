@@ -5,7 +5,7 @@ RELEASE=212
 AC_SUBST([RELEASE])
 AC_DEFINE_UNQUOTED([BUILD_RELEASE], ${RELEASE}, [The build release number])
 
-AC_INIT(RainbruRPG, 0.0.5-212, rainbru@users.sourceforge.net)
+AC_INIT(RainbruRPG, 0.0.5-213, rainbru@users.sourceforge.net)
 dnl Every other copy of the package version number gets its value from here
 AM_INIT_AUTOMAKE(RainbruRPG, 0.0.5)
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)

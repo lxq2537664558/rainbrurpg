@@ -114,8 +114,11 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-213 (27 may 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (14) configure.in checks again gnet-2.0
+* v0.0.5-214 (02 dec 2011 - ???) SLOC ??? UT ??? FT ??:??
+
+* v0.0.5-213 (27 may 2011 - 02 dec 2011) SLOC 43,836 UT 270 FT 104:29
+- Updated LSM file
+- configure.in checks again gnet-2.0
 - Added datafiles to the distribution
 - Fixed a texinfo @subtitle error
 - Changes the texinfo version behaviour

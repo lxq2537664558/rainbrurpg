@@ -17,7 +17,7 @@
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
 
-Copyright (C) 2006-2008 J@'er@^ome PASQUIER
+Copyright (C) 2006-2011 J@'er@^ome PASQUIER
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
