@@ -1,0 +1,285 @@
+<!--
+    This is a static page comming from our custom wordpress theme
+
+    Here is two known issues (to be fixed before installing) :
+    - The sidebar left margin is spurious when browsed with some browser
+    - The black menu doesn't work with ie6
+
+-->
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>RainbruRPG | Just another WordPress site</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://localtest.rainbrurpg.org/blog/wp-content/themes/rainbrurpg/style.css" />
+<link rel="pingback" href="http://localtest.rainbrurpg.org/blog/xmlrpc.php" />
+
+<meta name='robots' content='noindex,nofollow' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localtest.rainbrurpg.org/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localtest.rainbrurpg.org/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='RainbruRPG' href='http://localtest.rainbrurpg.org/blog' />
+<meta name="generator" content="WordPress 3.2.1" />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<link rel="stylesheet" href="../common/skin.css" type="text/css" />
+<link rel="stylesheet" href="../common/menu.css" type="text/css" />
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<!-- ADDTHIS BUTTON BEGIN -->
+<script type="text/javascript">
+var addthis_config = {
+     pubid: "YOUR-PROFILE-ID"
+}
+</script>
+
+
+<!--[if lte IE 7]>
+        <style type="text/css">
+            #sidebar {
+                zoom: 1;
+                position: relative;
+            }
+        </style>
+    <![endif]-->
+
+<STYLE type="text/css">
+  #sidebar{
+  background: #CEE; /* bleu clair */
+  padding-left: 0em;
+}
+#floatWrapper{ 
+  background: #CCE; /* violet */
+}
+#floatOuter{ 
+  background: #ECE;
+  z-index: -10;
+}
+#primary{ 
+  background: #CEC; /* vert */
+}
+ </STYLE>
+
+<!-- 
+     Here is a test to fix my sidebar margin issue
+
+     It is the real foswiki CSS, renamed to LAYOUT.org
+
+     Renamed css classes are :
+| floatOuter      | patternWrapper      | NO LAYOUT
+| floatWrapper    | patternOuter        |
+| primary         | patternFloatWrap    |
+| sidebar         | patternSideBar      |
+
+-->
+<STYLE type="text/css">
+#floatWrapper2 {
+    margin-left: 16em;
+    height: 100%;
+}
+#primary2 {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+#sidebar2 {
+    margin-left: -22.2em;
+    width: 22.2em;
+    display: inline;
+    float: left;
+    overflow: hidden;
+}
+
+</STYLE>
+
+</head>
+<div id="top-box">RainbruRPG
+  <div id="google-ad">Google-ad</div>
+  <div id="social-networks">
+    <g:plusone></g:plusone>
+<a href="http://www.addthis.com/bookmark.php?v=250" 
+        class="addthis_button"><img 
+        src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" 
+        width="125" height="16" border="0" alt="Share" /></a>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+<!-- ADDTHIS BUTTON END -->
+
+  </div> <!-- social networks-->
+</div>
+<ul id="nav">
+  <li id="nav-1" class="selected">
+    <em><a href="http://rainbrurpg.sourceforge.net/blog/">Blog</a></em></li>
+  <li id="nav-2"><a href="http://rainbrurpg.sourceforge.net/wiki/">Wiki</a></li>
+  <li id="nav-3">
+	  <a href="#"> <!--http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/RainbruRPGMetaserver"--> 
+          <strike>Servers status</strike></a></li>
+  <li id="nav-4">
+	  <a href="#"> <!--http://rainbrurpg.sourceforge.net/api/"-->
+	  <strike>API documentations</strike></a></li>
+  <li id="nav-5">
+	  <a href="#"> <!--http://rainbrurpg.sourceforge.net/man/"-->
+          <strike>Manuals</strike></a></li>
+  <li id="nav-6"><a href="http://sourceforge.net/projects/rainbrurpg/forums">
+                    Forums (sf.net)</a></li>
+</ul>
+<div id="skin01-content">
+<nav id="access" role="navigation">
+  <h3 class="assistive-text">Main menu</h3>
+    <div class="skip-link">
+    <a class="assistive-text" href="#content" 
+       title="Skip to primary content">
+    Skip to primary content</a></div>
+                                <div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+                                                                <div class="menu"><ul><li class="current_page_item"><a href="http://localtest.rainbrurpg.org/blog/" title="Home">Home</a></li><li class="page_item page-item-2"><a href="http://localtest.rainbrurpg.org/blog/?page_id=2" title="Sample Page">Sample Page</a></li></ul></div>
+
+  <div id="branding"><form role="search" method="get" id="searchform" action="http://localtest.rainbrurpg.org/blog/" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></div>
+  <div id="clear">&nbsp;</div>
+
+                        </nav><!-- #access -->
+
+<div id="main">
+<!-- End of the standard header code -->
+<div id="floatOuter">
+  <div id="floatWrapper">
+    <div id="primary">
+      <div id="content" role="main">
+
+        			  
+        <!-- Start the Loop. -->
+                     <div class="post">
+
+           <!-- Display the Title as a link to the Post\'s permalink. -->
+           <header class=post-header>
+              <h2><a href="http://localtest.rainbrurpg.org/blog/?p=1" rel="bookmark" 
+                     title="Permanent Link to Hello world!">
+                     Hello world!</a></h2>
+
+		 		   <div class="entry-meta">
+							</div><!-- .entry-meta -->
+			
+						<div class="comments-link">
+				<a href="http://localtest.rainbrurpg.org/blog/?p=1#comments" title="Comment on Hello world!">1</a>			</div>
+			
+
+
+ <!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
+ <small>October 28th, 2011 by <a href="http://localtest.rainbrurpg.org/blog/?author=1" title="Posts by admin" rel="author">admin</a></small>
+
+</header> <!-- post-header -->
+
+ <!-- Display the Post's Content in a div box. -->
+ <div class="entry">
+   <p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
+ </div>
+
+ <!-- Display a comma separated list of the Post's Categories. -->
+ <p class="postmetadata">Posted in <a href="http://localtest.rainbrurpg.org/blog/?cat=1" title="View all posts in Uncategorized" rel="category">Uncategorized</a>&nbsp;
+
+<!-- TAGLIST -->
+<!-- End of TAGLIST -->
+
+<!-- Comments -->
+   <span class="sep"> | </span>
+      <span class="comments-text">
+      <a href="http://localtest.rainbrurpg.org/blog/?p=1#comments" title="Comment on Hello world!"><b>1</b> Reply</a></span>
+<!-- End of Comments -->
+
+
+</p> <!-- closes the postmetadata paragraph-->
+ </div> <!-- closes the first div box -->
+
+ <!-- Stop The Loop (but note the "else:" - see next line). -->
+ 
+			  
+			</div><!-- #content -->
+		</div><!-- #primary -->
+		<div id="sidebar" role="complementary">
+  <ul>
+  
+  <!-- Author information is disabled per default. 
+       Uncomment and fill in your details if you want to use it.
+       <li><h2>Author</h2>
+       <p>A little something about you, the author. 
+       Nothing lengthy, just an overview.</p>
+       </li>
+  -->
+
+  		</ul>
+		<ul role="navigation">
+			<li class="pagenav"><h2>Pages</h2><ul><li class="page_item page-item-2"><a href="http://localtest.rainbrurpg.org/blog/?page_id=2" title="Sample Page">Sample Page</a></li>
+</ul></li>
+			<li><h2>Archives</h2>
+				<ul>
+					<li><a href='http://localtest.rainbrurpg.org/blog/?m=201110' title='October 2011'>October 2011</a></li>
+				</ul>
+			</li>
+
+			<li class="categories"><h2>Categories</h2><ul>	<li class="cat-item cat-item-1"><a href="http://localtest.rainbrurpg.org/blog/?cat=1" title="View all posts filed under Uncategorized">Uncategorized</a> (1)
+</li>
+</ul></li>		</ul>
+		<ul>
+							<li id="linkcat-2" class="linkcat"><h2>Blogroll</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://codex.wordpress.org/">Documentation</a></li>
+<li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
+<li><a href="http://wordpress.org/extend/ideas/">Suggest Ideas</a></li>
+<li><a href="http://wordpress.org/support/">Support Forum</a></li>
+<li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
+<li><a href="http://wordpress.org/news/">WordPress Blog</a></li>
+<li><a href="http://planet.wordpress.org/">WordPress Planet</a></li>
+
+	</ul>
+</li>
+
+				<li><h2>Meta</h2>
+				<ul>
+										<li><a href="http://localtest.rainbrurpg.org/blog/wp-login.php">Log in</a></li>
+					<li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a></li>
+					<li><a href="http://gmpg.org/xfn/"><abbr title="XHTML Friends Network">XFN</abbr></a></li>
+					<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress</a></li>
+									</ul>
+				</li>
+			
+					</ul>
+	</div>
+
+  </div> <!-- #floatWrapper -->
+</div> <!-- floatOuter -->
+<div id="clear">&nbsp;</div>
+</div><!-- #main -->
+<div id="rb-skin01-footer">
+
+			
+
+  Copyrights 2007-2011 The RainbruRPG contributors.
+
+  <span id="rb-skin01-footer-right">
+  <a href="http://sourceforge.net/projects/rainbrurpg">
+    <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=193011&amp;type=12" 
+    alt="Get RainbruRPG at SourceForge.net. Fast, secure and Free Open Source software downloads" 
+    height="30" width="120"></a>
+  </span>
+
+  <span id="rb-skin01-footer-right">
+	<a href="http://wordpress.org/">
+	<img src="wp-content/themes/rainbrurpg/images/smbutton-blue.png" 
+	alt="Powered by Wordpress" height="30" width="25">
+	</a>
+  </span>
+  <div id="clear">&nbsp;</div>
+</div>
+
+<!-- Google Analytics code -->
+
+<!-- Dummy code -->
+
+<!-- End of Google Analytics code -->
+
+
+</body>
+</html>

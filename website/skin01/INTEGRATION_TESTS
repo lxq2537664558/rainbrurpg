@@ -10,6 +10,8 @@
 | 0.0.0-4 | OK              | Ok        | Ok        | ---    | ---    | Ok     | Ok   |
 | 0.0.0-5 | OK              | Ok        | Ok        | ---    | ---    | Ok     | Ok   |
 |  <base> | OK [fn:3]       | OK        | NO        | ---    | ---    | OK     | NO   |
+| 0.0.0-5 | OK              | Ok        | Ok        | ---    | ---    | Ok     | Ok   |
+| 0.0.0-8 | OK              | Ok        | ---       | ---    | ---    | Ok     | Ok   |
 
 [fn:1] No way to see current page in menu
 [fn:2] No way to get ie6/7 to work correctly
@@ -23,9 +25,11 @@
 | 0.0.0-5 | OK              | OK        | No [fn:5]  [fn:6] | ---       | ---    | No [fn:5] | No [fn:5] |
 | 0.0.0-6 | OK              | OK        | No                | ---       | ---    | OK        | OK        |
 | 0.0.0-7 | OK              | OK        | No                | No [fn:7] | ---    | OK        | OK        |
+| 0.0.0-7 | OK              | OK        | ---               | No [fn:8] | ---    | OK        | OK        |
 
 [fn:3] Cannot see the WordPress logo in footer
 [fn:4] There's a blue border around SF.net logo. Ugly.
 [fn:5] The black menu (containing Home and About this links) is white and
 [fn:6] The margins are false for the sidebar.
 [fn:7] The sidebar doesn't appear at all
+[fn:8] The sidebar is far to left, masking a part of the menu text 

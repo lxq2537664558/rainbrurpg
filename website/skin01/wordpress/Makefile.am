@@ -11,4 +11,5 @@ EXTRA_DIST = comments.php	\
 	     index.php		\
 	     layout_test.html	\
 	     screenshot.png	\
-	     style.css
+	     style.css		\
+	     blog.htm

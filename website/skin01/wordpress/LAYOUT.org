@@ -82,7 +82,6 @@ definition and the <div> names table :
 }
 
 * Foswiki layout's div
-
 <div class="foswikiPage">
   <div id="patternScreen"
     <div id="patternPageShadow">
@@ -120,17 +119,40 @@ definition and the <div> names table :
   </div>                            <!-- patternScreen       -->
 </div>                              <!-- foswikiPage         -->
 
-* Diffs between blog
+* Diffs between blog and foswiki
 
-| WP's name       | Foswiki's name      | Comments |
-|-----------------+---------------------+----------|
-| skin-01-content |                     |          |
-| main            |                     |          |
-|                 | patternWrapper      |          |
-| floatOuter      | patternOuter        |          |
-| floatWrapper    | patternFloatWrap    |          |
-|                 | patternMain         |          |
-| primary         | patternMainContents |          |
-| sidebar         | patternSideBar      |          |
-| clear           | clear               |          |
-|                 |                     |          |
+| WP's name       | Foswiki's name      | Comments                         |
+|-----------------+---------------------+----------------------------------|
+| skin-01-content |                     | No layout elements               |
+| main            |                     | No layout elements               |
+| floatOuter      | patternWrapper      | WP: width: 100%                  |
+| floatWrapper    | patternOuter        | WP: no height:100%               |
+| primary         | patternFloatWrap    | The same                         |
+|                 | patternMain         | inline;float: right;width: 100%; |
+|                 | patternMainContents | only padding                     |
+| sidebar         | patternSideBar      | Globally the same                |
+| clear           | clear               |                                  |
+|                 |                     |                                  |
+
+* FosWiki sidebar-related div hierachy
+Here is the dv hierachy of the foswiki pattern layout without non-sidebar
+related divs
+
+<div class="foswikiPage">
+  <div id="patternScreen"
+    <div id="patternPageShadow">
+      <div id="patternPage">
+        <div id="patternWrapper">
+	  <div id="patternOuter">
+    	    <div id="patternFloatWrap">
+	      <div id="patternSideBar">
+	        Content of Side bar
+              </div>                <!-- patternSideBar      -->
+            </div>                  <!-- patternFloatWrap    -->
+            <div class="clear">&nbsp;</div>
+          </div>                    <!-- patternOuter        -->
+        </div>                      <!-- patternWrapper      -->
+      </div>                        <!-- patternPage         -->
+    </div>                          <!-- patternPageShadow   -->
+  </div>                            <!-- patternScreen       -->
+</div>                              <!-- foswikiPage         -->

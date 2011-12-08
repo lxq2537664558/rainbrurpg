@@ -13,7 +13,7 @@
 - Add a Analytics dummy code in footer.phpx
 - Updated WP screenshot
 - WP adminbar reappeared
-	
+
 * v0.0.0-4 (11 aug 2011 - 25 aug 2011) FT 6:15
 - Add a WP footer
 - Styled the WP main menu and the post content
@@ -21,7 +21,7 @@
 - WP's sidebar is now widget-ready
 - Fixed a name conflict for 'content' divs
 - Fixed wp sidebar left margin and inter-item spacing
-	
+
 * v0.0.0-3 (09 aug 2011 - 11 aug 2011)
 - Two columns layout done
 - SearchFor box style OK
@@ -29,7 +29,7 @@
 - Added CSS reset code (from Twenty Eleven)
 - Started search box style for WP
 - Added AddThis to static skin
-	
+
 * v0.0.0-2 (23 jul 2011 - 09 aug 2011)
 - WP correctly handles the loop
 - Fixed absolute positioning
@@ -45,4 +45,4 @@
 - Playing with Doxugen's HEADER and FOOTER for inline API browsing
 - Started skintest
 - Download tgz and some doc
-	
+

@@ -29,6 +29,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-12-08 jeu. 19:40]--[2011-12-08 jeu. 20:19] =>  0:39
      CLOCK: [2011-11-28 lun. 14:17]--[2011-11-28 lun. 14:47] =>  0:30
      CLOCK: [2011-11-28 lun. 13:28]--[2011-11-28 lun. 13:55] =>  0:27
      CLOCK: [2011-11-22 mar. 17:44]--[2011-11-22 mar. 18:00] =>  0:16
@@ -122,11 +123,14 @@ see http://codex.wordpress.org/Theme_Development
       - [X] See LAYOUT.org for WP theme
       - [X] Localy test a HTML page following LAYOUT.org
 	    It seems that it fixes the margin issues 
-      - [ ] Find a hack by searching which div are missing
-	    - [ ] Create a table to show names differences and comments
-		  about missing css in LAYOUT.org
-            - [ ] Save a blog page and modify in according to the
+      - [-] Find a hack by searching which div are missing
+	    - [X] Create a table to show names differences 
+	    - [X] comments about missing css in LAYOUT.org
+            - [X] Save a blog page and modify in according to the
 		  previous table to know if it fix the problem
+            - [ ] Review foswiki's layout-related css
+            - [ ] Trying to discover what's wrong
+            - [ ] If not found, retrying with foswiki css names and same divs
 - [ ] The black menu isn't correct in ie6
       - [ ] testing WP's twentyeleven skin with ie6
       - [ ] See what are the differences if it works
