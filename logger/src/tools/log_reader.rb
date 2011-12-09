@@ -25,6 +25,7 @@ require 'MainWindow_ui'
 
 NA = "N/A" # The 'not handled' value
 
+# The logfile panel needed informations
 class LogfileDetails
   attr_accessor :logfile_version, :program_name, :program_version 
   def initialize
@@ -68,8 +69,7 @@ end
 def open_file(filename, window)
   puts "Opening #{filename}..."
 
-#  log = File.open( filename, File::RDONLY )
-  log = File.open( 'test.yaml', File::RDONLY )
+  log = File.open( filename, File::RDONLY )
   tree = YAML::parse( log )
 
   logfile_version = tree.select('logfile-version')[0].value
@@ -115,15 +115,20 @@ class MainWindow < Ui_MainWindow
   end
 end
 
+# Check if an argument was passed to script
 if ARGV[0].nil?
   puts "Please pass a YAML logfile as first argument"
-  exit
+  exit 1
 end
 
-puts "WARNING : We do not work on the passed file, see test.yml"
+# Check if the file passed as argument exist
+if !File.exists? ARGV[0]
+  puts "The file '#{ARGV[0]}' doesn't exist"
+  exit 1
+end  
 
+# Really launch the qt4 application
 a = Qt::Application.new(ARGV)
-
 window = MainWindow.new(a)
 w = Qt::MainWindow.new
 window.setupUi(w)

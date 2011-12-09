@@ -4,6 +4,7 @@
 ** v0.1.0
 *** v0.0.1
 **** TODO Create a ruby/qt app to handle Yaml output
+     CLOCK: [2011-12-09 ven. 18:23]--[2011-12-09 ven. 18:57] =>  0:34
      CLOCK: [2011-06-24 ven. 22:00]--[2011-06-24 ven. 22:31] =>  0:31
      CLOCK: [2011-06-24 ven. 21:13]--[2011-06-24 ven. 21:44] =>  0:31
      CLOCK: [2011-06-24 ven. 13:30]--[2011-06-24 ven. 13:47] =>  0:17
@@ -12,10 +13,12 @@
      CLOCK: [2011-06-23 jeu. 21:10]--[2011-06-23 jeu. 21:26] =>  0:16
      CLOCK: [2011-06-23 jeu. 19:12]--[2011-06-23 jeu. 19:26] =>  0:14
 - [X] Uses QtDesigner
-- [ ] rbuic4 to compile ui files
-- [ ] Feed Logfile details dock panel with '/program' YAML node values
-- [ ] Makes LoggerOutputYaml output compatible with current hard-coded parser
-
+- [X] rbuic4 to compile ui files
+- [X] Feed Logfile details dock panel with '/program' YAML node values
+- [-] Makes LoggerOutputYaml output compatible with current hard-coded parser
+      Fix errors when trying to open examples/logger-test.yml
+      - [X] First the /Logfile/ panel
+      - [ ] Every message
 - [ ] Please use kwalify to test YAML file
       see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
 - [ ] YAML output versionning

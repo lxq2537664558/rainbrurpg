@@ -1,7 +1,7 @@
 logfile-version : 1
 program:
   name    : RainbruRPG
-  version : 0.0.5-216  
+  version : 0.0.5-216
 
 lines:
   - level    : informative
@@ -25,7 +25,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -53,7 +53,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -81,7 +81,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -109,7 +109,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -137,7 +137,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -165,7 +165,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -193,7 +193,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -221,7 +221,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -249,7 +249,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -277,7 +277,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -305,7 +305,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -333,7 +333,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -361,7 +361,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -389,7 +389,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -417,7 +417,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -445,7 +445,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -473,7 +473,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -501,7 +501,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -529,7 +529,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -557,7 +557,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -585,7 +585,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -613,7 +613,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -641,7 +641,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -669,7 +669,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -697,7 +697,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -725,7 +725,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -753,7 +753,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -781,7 +781,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -809,7 +809,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -837,7 +837,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -865,7 +865,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -893,7 +893,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -921,7 +921,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -949,7 +949,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -977,7 +977,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -1005,7 +1005,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -1033,7 +1033,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -1061,7 +1061,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78
@@ -1089,7 +1089,7 @@ lines:
 
   - level    : debug
     domain   : gui
-    filename : roukmout.cpp
+    filename : dummy-file.cpp
     line     : 726
     content  : 
       - double : 78

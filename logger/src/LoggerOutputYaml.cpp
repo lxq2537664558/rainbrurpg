@@ -94,7 +94,8 @@ Rpg::LoggerOutputYaml::log(const Object&o)
 void 
 Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
 {
-  mFile << "program:" << endl
-	<< "  - name   : "<< lh->program_name << endl
-	<< "  - version: "<< lh->program_version << endl;
+  mFile << "logfile-version : 1" << endl
+        << "program:" << endl
+	<< "  name   : "<< lh->program_name << endl
+	<< "  version: "<< lh->program_version << endl;
 }

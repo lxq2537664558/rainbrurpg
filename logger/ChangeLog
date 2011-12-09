@@ -1,6 +1,13 @@
+2011-12-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/LoggerOutputYaml.cpp (logHeader): writes logfile-version.
+
+	* src/tools/log_reader.rb: checks if passed files exists.
+	* src/tools/log_reader.rb: opens file passed as argument.
+
 2011-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
-	* Moved some Logger.hpp functions to implementation.
+	* Logger.hpp: Moved some functions to implementation.
 
 2011-10-29  Jérôme Pasquier  <rainbru@free.fr>
 
