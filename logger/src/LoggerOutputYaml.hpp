@@ -52,6 +52,9 @@ namespace Rpg
     virtual void log(const Object&o);
     
     virtual void logHeader(const LogHeader* lh);
+
+  protected:
+    string escape(const string&);
     
   private:
     ofstream mFile;       //!< The file to log to

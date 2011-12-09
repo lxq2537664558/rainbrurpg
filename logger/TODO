@@ -16,8 +16,4 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    FT is the ROADMAP file time
    Please update version and revision in configure.in
 
-* v0.0.0-4 (22 noc 2011 - ???) SLOC ??? FT ??:??
-- LoggerOutputYaml write logfile-version
-- log_reader checks if passed file exists
-- log_reader now reads argument file
-- All clases move to Rpg namespace
+* v0.0.0-5 (09 dec 2011 - ???) SLOC ??? FT ??:??

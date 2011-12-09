@@ -46,12 +46,11 @@ void
 Rpg::LoggerOutputYaml::startLog(LogLevel vLevel, const string& vLogDomain, 
 				const string& vFilename, const string& vLine)
 {
-  mFile << "---" << endl
-	<< "level    : " << ll_to_str(vLevel) << endl
-	<< "domain   : " << vLogDomain        << endl
-	<< "filename : " << vFilename         << endl
-	<< "line     : " << vLine             << endl
-	<< "content  : " << endl;
+  mFile << "  - level    : " << ll_to_str(vLevel) << endl
+	<< "    domain   : " << vLogDomain        << endl
+	<< "    filename : " << vFilename         << endl
+	<< "    line     : " << vLine             << endl
+	<< "    content  : " << endl;
 };
 
 void 
@@ -63,30 +62,30 @@ Rpg::LoggerOutputYaml::endLog()
 void 
 Rpg::LoggerOutputYaml::log(const string& str)
 {  
-  mFile << "  - string : " << str << endl;  
+  mFile << "      - string : " << escape(str) << endl;  
 };
 
 void 
 Rpg::LoggerOutputYaml::log(double d)
 {   
-  mFile << "  - double : " << d <<  endl;  
+  mFile << "      - double : " << d <<  endl;  
 };
 
 void 
 Rpg::LoggerOutputYaml::log(const Object&o)
 { 
   ObjectInspector oi = o.inspect();
-  mFile << "  - object:"                  << endl
-	<< "    name   :" << oi.name    << endl
-	<< "    address:" << oi.address << endl;
+  mFile << "      - object:"                  << endl
+	<< "        name   : " << oi.name    << endl
+	<< "        address: " << oi.address << endl;
   list<ObjectAttribute>::iterator iter;
   for (iter = oi.attributes.begin(); 
        iter!= oi.attributes.end(); ++iter)
     {
       mFile << "      - attribute:" << endl
-	    << "        type :"<< (*iter).type << endl
-	    << "        name :"<< (*iter).name << endl
-	    << "        value:" << (*iter).value << endl;
+	    << "        type : "<< (*iter).type << endl
+	    << "        name : "<< (*iter).name << endl
+	    << "        value: " << (*iter).value << endl;
       
     }
 };
@@ -96,6 +95,14 @@ Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
 {
   mFile << "logfile-version : 1" << endl
         << "program:" << endl
-	<< "  name   : "<< lh->program_name << endl
-	<< "  version: "<< lh->program_version << endl;
+	<< "  name   : "<< escape(lh->program_name) << endl
+	<< "  version: "<< lh->program_version << endl
+        << endl
+        << "lines:" << endl;
+}
+
+string 
+Rpg::LoggerOutputYaml::escape(const string& str)
+{
+  return "\"" + str + "\"";
 }

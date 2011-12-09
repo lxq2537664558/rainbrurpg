@@ -1,5 +1,6 @@
 2011-12-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/LoggerOutputYaml.cpp (escape): strings are in double quotes.
 	* src/LoggerOutputYaml.cpp (logHeader): writes logfile-version.
 
 	* src/tools/log_reader.rb: checks if passed files exists.

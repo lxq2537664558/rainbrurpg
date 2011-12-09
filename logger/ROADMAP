@@ -3,7 +3,8 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.1
-**** TODO Create a ruby/qt app to handle Yaml output
+**** Create a ruby/qt app to handle Yaml output
+     CLOCK: [2011-12-09 ven. 22:04]--[2011-12-09 ven. 22:34] =>  0:30
      CLOCK: [2011-12-09 ven. 18:23]--[2011-12-09 ven. 18:57] =>  0:34
      CLOCK: [2011-06-24 ven. 22:00]--[2011-06-24 ven. 22:31] =>  0:31
      CLOCK: [2011-06-24 ven. 21:13]--[2011-06-24 ven. 21:44] =>  0:31
@@ -15,11 +16,11 @@
 - [X] Uses QtDesigner
 - [X] rbuic4 to compile ui files
 - [X] Feed Logfile details dock panel with '/program' YAML node values
-- [-] Makes LoggerOutputYaml output compatible with current hard-coded parser
+- [X] Makes LoggerOutputYaml output compatible with current hard-coded parser
       Fix errors when trying to open examples/logger-test.yml
       - [X] First the /Logfile/ panel
-      - [ ] Every message
-- [ ] Please use kwalify to test YAML file
+      - [X] Every message
+- [ ] Maybe use kwalify to test YAML file
       see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
 - [ ] YAML output versionning
       - [ ] v1: platform independant infos
@@ -60,6 +61,7 @@
 - [X] Move it to the RainbruRPG project (ie. In 'Rpg' namespace)
       - [X] Fix the no match for ‘operator<<’ error
       - [X] Maybe need to document the Rpg namespace with doxygen (Mainpage.hpp)
+- [ ] Fix the tty output color issue (light gray)
 - [ ] Complete LogHeader implementation
       - [ ] Compilation date/time
       - [ ] Execution date/time
@@ -73,3 +75,4 @@
       logger.cc, xmalloc.h, xmalloc.c ...
 - [ ] Should use pkg-config 
 - [ ] Many members must be private
+- [ ] Must escape some characters (`, :)
