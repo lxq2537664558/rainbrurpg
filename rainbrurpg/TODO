@@ -115,6 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-214 (02 dec 2011 - ???) SLOC ??? UT ??? FT ??:??
+- BUILD_RELEASE issue fixed
+- Changed ROADMAP file priority and version number
 
 * v0.0.5-213 (27 may 2011 - 02 dec 2011) SLOC 43,836 UT 270 FT 104:29
 - Updated LSM file
@@ -129,7 +131,7 @@ A system that serialize widgets position and configuration
 - Get rid of the gsmenubase dynamic menu option
 - implement TextSettings' copy ctor (and Font)
 - gsmainmenu win and label become references
-- 1ssignement operator for TextSettings and Font
+- Assignement operator for TextSettings and Font
 - Finish copy ctor and assignement for Label
 - Finish copy ctor and assignement for Brush
 - Remove some unused getters in Brush

@@ -75,14 +75,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
    server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
    server-gui/telnet-gui/  A telnet-based command-line remote control
 
-*** v0.0.9 A working GUI
+*** v0.0.8A working GUI
 **** TODO Miscelaneous                                                [0%]
 - [ ] Uses GCC visibility attribute
 - [ ] May use C++ exceptions
 **** Switch to GPLv3
 - [ ] See if OSI/Sourceforge are agree
 - [ ] See compatibility with EasyBMP/TinyXML
-*** v0.0.8
+*** v0.0.7
 **** OgreGui2 implementation and UnitTest                        [59%]
 ***** Fixing text drawing
       :CLOCK:
@@ -350,7 +350,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] Pass individual-test-drawablewo through dbg
 	    There is also another assertion that failed
 	    radeon_texture.c:86: radeonFreeTexImageData: Assertion `!image->base.Data' failed.
-*** v0.0.7
+*** TODO v0.0.6 
+    We stay in a v0.0.6 release because the NewProjectLayout must
+    be the essential changes for next version but this client need
+    improvment until new client is buildable.
 **** Code refactoring to follow coding standards
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
@@ -416,7 +419,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** Miscelaneous                                                     [37%]
+**** TODO Miscelaneous                                                [36%]
+     CLOCK: [2011-12-09 ven. 12:32]--[2011-12-09 ven. 13:00] =>  0:28
+     CLOCK: [2011-12-09 ven. 10:20]--[2011-12-09 ven. 10:33] =>  0:13
      :CLOCK:
      CLOCK: [2011-01-23 dim. 16:22]--[2011-01-23 dim. 16:39] =>  0:17
      CLOCK: [2010-02-20 sam 12:04]--[2010-02-20 sam 12:15] =>  0:11
@@ -425,6 +430,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Remove tools/oldXIdent and explain it in regtests.
 - [X] Should add a configuration summary at the end of configure
 - [X] src/nb_unit_tests.pl should work
+- [X] Fix the BUILD_RELEASE issue
 - [ ] common/version.cpp should print option summary
 - [ ] Remove IrrClient and tools/xident (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
@@ -434,7 +440,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] May remove interdepencies ogreGui/Maincore 
       and correct wiki:BuildingFromSources
 - [ ] Should remove unused datafiles
-*** TODO v0.0.6
+*** DONE v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:
      CLOCK: [2010-03-22 lun 11:31]--[2010-03-22 lun 11:45] =>  0:14
@@ -1063,7 +1069,7 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       modified files
       Always configure with --enable-debug to get a log
       - [X] It works in debug mode :( Should know why
-**** TODO Sourceforge release                                              [85%]
+**** DONE Sourceforge release                                              [100%]
      CLOCK: [2011-12-02 ven. 16:51]--[2011-12-02 ven. 17:18] =>  0:27
      CLOCK: [2011-07-18 lun. 16:11]--[2011-07-18 lun. 16:33] =>  0:22
      CLOCK: [2011-07-02 sam. 21:37]--[2011-07-02 sam. 21:52] =>  0:15
@@ -1079,4 +1085,3 @@ Unable to locate vertex program called Ogre/BasicVertexPrograms/AmbientOneTextur
       - [X] Add -src suffix to the archive name
       - [X] Should add rev number to the release names
 - [X] Modify and submit the lsm file
-- [ ] Add a screenshot

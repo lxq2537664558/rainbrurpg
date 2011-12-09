@@ -1,3 +1,7 @@
+2011-12-09 Jerome Pasquier  <rainbru@free.fr>
+
+	* configure.in: BUILD_RELEASE issue fixed.
+
 2011-11-29 Jerome Pasquier  <rainbru@free.fr>
 
 	* RainbruRPG.lsm.in: modified: ready to be submitted.
