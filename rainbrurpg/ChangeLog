@@ -1,3 +1,11 @@
+2011-12-12 Jérôme Pasquier  <rainbru@free.fr>
+
+	* svn: many generated files ignored.
+
+	* various Makefiles: removed from svn repository.
+
+	* src/common/version.cpp (logOptions): logs building options.
+
 2011-12-09 Jerome Pasquier  <rainbru@free.fr>
 
 	* configure.in: BUILD_RELEASE issue fixed.

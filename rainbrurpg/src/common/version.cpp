@@ -30,6 +30,11 @@
 
 #include <sstream>
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h> // For the compilation option flags
+#endif
+
+
 using namespace std;
 
 /** The default constructor
@@ -66,7 +71,8 @@ RainbruRPG::Core::Version::~Version(){
   * it uses std::ostringstream to perform the computation of version 
   * numbers and strings, then it calls Logger::logMessage().
   */
-void RainbruRPG::Core::Version::logVersion(){
+void 
+RainbruRPG::Core::Version::logVersion(){
   GTS_BIG(str);
   // TRANSLATORS: The parameters are (in the same order and line layout) :
   // L1 : The application name, version, revision
@@ -102,6 +108,7 @@ void RainbruRPG::Core::Version::logVersion(){
       "See the GNU General Public License for more details.\n");
   Logger::getSingleton().logMessage(m.c_str());
 
+  logOptions();
 }
 
 /** Change the application's name
@@ -110,6 +117,71 @@ void RainbruRPG::Core::Version::logVersion(){
   *
   * \param name The new name of the application.
   */
-void RainbruRPG::Core::Version::setApplicationName(const char* name){
+void 
+RainbruRPG::Core::Version::setApplicationName(const char* name){
   appName=name;
+}
+
+/** Log the compilation options from config.h
+  *
+  *
+  *
+  */
+void 
+RainbruRPG::Core::Version::logOptions(void)
+{
+  ostringstream opt;
+  opt << "Build options summary :" << endl;
+
+#ifdef BUILD_EDITOR
+  opt << "- Built with editor" << endl;
+#else
+  opt << "- Built without editor" << endl;
+#endif
+
+#ifdef BUILD_LIB_DESIGN
+  opt << "- Built with libdesign" << endl;
+#else
+  opt << "- Built without libdesign" << endl;
+#endif
+
+#ifdef BUILD_SERVER
+  opt << "- Built with server" << endl;
+#else
+  opt << "- Built without server" << endl;
+#endif
+
+#ifdef BUILD_TAPI
+  opt << "- Built with libterminalapi" << endl;
+#else
+  opt << "- Built without libterminalapi" << endl;
+#endif
+
+#ifdef RB_DIRTY_FLAG
+  opt << "- Built with ogregui's dirty flag" << endl;
+#else
+  opt << "- Built without ogregui's dirty flag" << endl;
+#endif
+
+#ifdef RB_DISABLE_OGRE_DEPREC_WARN
+  opt << "- Built disabling ogre deprecated warnings" << endl;
+#else
+  opt << "- Built without disabling ogre deprecated warnings" << endl;
+#endif
+
+#ifdef RB_MULTICOLUMNLIST_TEST
+  opt << "- Built with ogregui's MulticolumnList test" << endl;
+#else
+  opt << "- Built without ogregui's MulticolumnList test" << endl;
+#endif
+
+#ifdef RB_SCROLLPANE_TEST
+  opt << "- Built with ogregui's ScrollPane test" << endl;
+#else
+  opt << "- Built without ogregui's ScrollPane test" << endl;
+#endif
+
+  opt << "- USER_INSTALL_PREFIX is " << USER_INSTALL_PREFIX << endl;
+
+  Logger::getSingleton().logMessage(opt.str().c_str());
 }

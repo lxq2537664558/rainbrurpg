@@ -85,6 +85,9 @@ namespace RainbruRPG{
 
       void setApplicationName(const char*);
 
+    protected:
+      void logOptions(void);
+
     private:
       /** The name of the application
         *

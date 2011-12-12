@@ -115,6 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-214 (02 dec 2011 - ???) SLOC ??? UT ??? FT ??:??
+- (5) Edited svn:ignore for multiples multiplesdirectories
+- Remove some generated files from svn repository
+- version.cpp logs some compilation-time options
 - BUILD_RELEASE issue fixed
 - Changed ROADMAP file priority and version number
 

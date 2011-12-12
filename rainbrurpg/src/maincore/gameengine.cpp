@@ -460,7 +460,7 @@ void RainbruRPG::Core::GameEngine::chooseSceneManager(){
   mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 
 
-  mRenderQueueListener = new OgreGuiRenderQueueListener(RENDER_QUEUE_OVERLAY - 5);
+  mRenderQueueListener = new OgreGuiRenderQueueListener(RENDER_QUEUE_OVERLAY-5);
   mSceneMgr->addRenderQueueListener(mRenderQueueListener);
 }
 

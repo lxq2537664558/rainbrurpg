@@ -75,7 +75,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
    server-gui/fox-gui/     Based on dbus-api(rainbrurpg-servergui-fox)
    server-gui/telnet-gui/  A telnet-based command-line remote control
 
-*** v0.0.8A working GUI
+*** v0.0.8 A working GUI
 **** TODO Miscelaneous                                                [0%]
 - [ ] Uses GCC visibility attribute
 - [ ] May use C++ exceptions
@@ -354,6 +354,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     We stay in a v0.0.6 release because the NewProjectLayout must
     be the essential changes for next version but this client need
     improvment until new client is buildable.
+    see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** Code refactoring to follow coding standards
 **** Cross compilation to win32                                       [66%]
      :CLOCK:
@@ -419,7 +420,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** TODO Miscelaneous                                                [36%]
+**** TODO Miscelaneous                                                [46%]
+     CLOCK: [2011-12-12 lun. 22:53]--[2011-12-12 lun. 23:18] =>  0:25
+     CLOCK: [2011-12-12 lun. 19:08]--[2011-12-12 lun. 19:37] =>  0:29
      CLOCK: [2011-12-09 ven. 12:32]--[2011-12-09 ven. 13:00] =>  0:28
      CLOCK: [2011-12-09 ven. 10:20]--[2011-12-09 ven. 10:33] =>  0:13
      :CLOCK:
@@ -431,7 +434,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Should add a configuration summary at the end of configure
 - [X] src/nb_unit_tests.pl should work
 - [X] Fix the BUILD_RELEASE issue
-- [ ] common/version.cpp should print option summary
+- [X] common/version.cpp should print option summary
+- [X] Remove some generated files from the svn repository
+- [ ] correctly set svn:ignore propset
+      Maybe some need to be ignored again after removing multiples 
+      Makefiles from the repository (see `svn status`)
 - [ ] Remove IrrClient and tools/xident (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
