@@ -1,3 +1,19 @@
+* v0.0.0-8 (27 sep 2011 - 30 sep 2011) FT 15:10
+- Now uses automake to have a `make dist-bz2` rule
+- Started to see differences between LAYOUT.org and current theme
+- Locally test LAYOUT.org
+- created LAYOUT.org
+- Partially fixed the ie margin issue
+- Texted WP theme with ie6 (FAILED)
+
+* v0.0.0-7 (22 sep 2011 - 27 sep 2011) FT 12:26
+- WP SearchBox correctly placed
+- Disabled some menu items in static and WP themes
+- Fixed the static and WP 'server status' link
+- Tested WP allowed tags styles for comments
+- WP style for the 'Post comment' button
+- WP style for the 'form-allowed-tags' par
+
 * v0.0.0-6 (27 aug 2011 - 22 sept 2011) FT 10:57
 - WP Comment form focus handling
 - WP start to style the 'leave a reply' form

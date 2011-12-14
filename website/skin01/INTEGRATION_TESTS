@@ -25,7 +25,11 @@
 | 0.0.0-5 | OK              | OK        | No [fn:5]  [fn:6] | ---       | ---    | No [fn:5] | No [fn:5] |
 | 0.0.0-6 | OK              | OK        | No                | ---       | ---    | OK        | OK        |
 | 0.0.0-7 | OK              | OK        | No                | No [fn:7] | ---    | OK        | OK        |
-| 0.0.0-7 | OK              | OK        | ---               | No [fn:8] | ---    | OK        | OK        |
+| 0.0.0-8 | OK              | OK        | ---               | No [fn:8] | ---    | OK        | OK        |
+
+| version | Epiphany 2.30.6 | Iceweasel 3.5.16 | ie6    |
+| 0.0.0-8 | Ok              | [fn:6]           | [fn:9] |
+|         |                 |                  |        |
 
 [fn:3] Cannot see the WordPress logo in footer
 [fn:4] There's a blue border around SF.net logo. Ugly.
@@ -33,3 +37,4 @@
 [fn:6] The margins are false for the sidebar.
 [fn:7] The sidebar doesn't appear at all
 [fn:8] The sidebar is far to left, masking a part of the menu text 
+[fn:9] Sidebar is invisible
