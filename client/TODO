@@ -1,0 +1,39 @@
+crainbrurpg-client - ??? - The NewProjectLayout's client.
+
+o [carine] Must switch to GPLv3
+
+* TODO Tutorial 1
+http://www.ogre3d.org/tikiwiki/Basic+Tutorial+1&structure=Tutorials#Your_first_Ogre_application
+
+
+* Then
+   Services could use the Publisher-Subscriber design pattern to hande
+   events
+- uses rainbrurpg-logger
+   Need to redirect ogre logs to logger (domain=ogre)
+- uses Services (uses ../services)
+- Launcher fox1.6 en service
+- LocalTest implementation
+   Moves with a physical engine?
+- Start multiplayer mode
+   lifesign (need ../network/)
+   chat
+   bots//fighting
+
+* Correct project setup
+- create a ROADMAP file
+- create a DEPENDENCIES file
+- must rename rpg.* files to client.*
+- must remove autoproject generated files (xmalloc...)
+
+
+=== ChangeLog ===
+   (8 items by revision)
+
+* v0.0.0-1 (5 oct 2011 - ???) SLOC ???
+- (6) Remove ogre3d/cegui from aptitude (deprecated old versions)
+- Updated cmake from 2.6.0 to 2.8.2 to build Ogre
+- download ogre3d1.7.3/cegui0.7.5 sources (in /usr/cross/src)
+- Started GameEngine
+- Created logger
+- switch to autotools
