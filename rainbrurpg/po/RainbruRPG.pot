@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-30 20:50+0100\n"
+"POT-Creation-Date: 2011-12-14 11:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1330,7 +1330,7 @@ msgstr ""
 #. L3 : Ogre major, minor version, version patch and version name
 #. L4 : Same as Ogre for OIS
 #. L5 : libCurl version, timestamp
-#: src/common/version.cpp:77
+#: src/common/version.cpp:83
 #, c-format
 msgid ""
 "Starting %s v%s-%s using :\n"
@@ -1341,12 +1341,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameters are the build (compilation) date and time.
-#: src/common/version.cpp:95
+#: src/common/version.cpp:101
 #, c-format
 msgid "Built '%s' at '%s' \n"
 msgstr ""
 
-#: src/common/version.cpp:99
+#: src/common/version.cpp:105
 msgid ""
 "Copyright (C) 2006-2011 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"

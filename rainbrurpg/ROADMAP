@@ -80,8 +80,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Uses GCC visibility attribute
 - [ ] May use C++ exceptions
 **** Switch to GPLv3
+     Could be possible with "GPLv2 or later" libraries
 - [ ] See if OSI/Sourceforge are agree
-- [ ] See compatibility with EasyBMP/TinyXML
+- [ ] See compatibility with ext/ (EasyBMP/TinyXML)
+- [ ] See compatibility in DEPENDENCIES file
+- [ ] logger/ and services/ in GPLv3 or LGPLv3 ?
 *** v0.0.7
 **** OgreGui2 implementation and UnitTest                        [59%]
 ***** Fixing text drawing
@@ -420,7 +423,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** TODO Miscelaneous                                                [46%]
+**** TODO Miscelaneous                                                [57%]
+     CLOCK: [2011-12-16 ven. 10:50]--[2011-12-16 ven. 11:18] =>  0:28
      CLOCK: [2011-12-12 lun. 22:53]--[2011-12-12 lun. 23:18] =>  0:25
      CLOCK: [2011-12-12 lun. 19:08]--[2011-12-12 lun. 19:37] =>  0:29
      CLOCK: [2011-12-09 ven. 12:32]--[2011-12-09 ven. 13:00] =>  0:28
@@ -436,10 +440,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Fix the BUILD_RELEASE issue
 - [X] common/version.cpp should print option summary
 - [X] Remove some generated files from the svn repository
-- [ ] correctly set svn:ignore propset
+- [X] correctly set svn:ignore propset
       Maybe some need to be ignored again after removing multiples 
       Makefiles from the repository (see `svn status`)
-- [ ] Remove IrrClient and tools/xident (3,082 SLOC) and explain it in regtests.
+- [X] Remove IrrClient (2,218 SLOC) and explain it in regtests.
+- [ ] Remove tools/xident (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning

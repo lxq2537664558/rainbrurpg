@@ -113,7 +113,8 @@ see http://codex.wordpress.org/Theme_Development
             - [-] trying to follow patternSkin in pattern/
 		  - [X] First with inline style for div and static text
 			It seems better than ../ in epiphany
-			ie6 doen't show 
+			ie6 doen't show sidebar: must test with a
+			  <!-- [if lt ie6] --> rule
                   - [ ] Must show sidebar content
 			There is also a leading '/' at the top of the sidebar
                   - [ ] Test it with failling browser

@@ -1,3 +1,9 @@
+2011-12-17 Jérôme Pasquier  <rainbru@free.fr>
+
+	* IrrClient/: whiole directopy move to ../OLD/.
+
+	* svn: many Makefile(s) ignored from various directories.
+
 2011-12-12 Jérôme Pasquier  <rainbru@free.fr>
 
 	* svn: many generated files ignored.

@@ -1,3 +1,22 @@
+* v0.0.5-213 (27 may 2011 - 02 dec 2011) SLOC 43,836 UT 270 FT 104:29
+- Updated LSM file
+- configure.in checks again gnet-2.0
+- Added datafiles to the distribution
+- Fixed a texinfo @subtitle error
+- Changes the texinfo version behaviour
+   to fix an automake error
+- Fix some issues detected with cppcheck in client/
+   gsmenubase, main, languageselector, launcheroptions
+- Some member pointers removed from client/
+- Get rid of the gsmenubase dynamic menu option
+- implement TextSettings' copy ctor (and Font)
+- gsmainmenu win and label become references
+- Assignement operator for TextSettings and Font
+- Finish copy ctor and assignement for Label
+- Finish copy ctor and assignement for Brush
+- Remove some unused getters in Brush
+- Implement deep copy and assignment for gsConnection and Brush (incomplete)
+
 * v0.0.5-212 (19 mar 2011 - 27 may 2011) SLOC 43,269 UT 270 FT 100:03
 - Started Font's unittests implementation
 - Started Glyph's unittests implementation

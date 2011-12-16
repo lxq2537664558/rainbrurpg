@@ -27,9 +27,9 @@
 | 0.0.0-7 | OK              | OK        | No                | No [fn:7] | ---    | OK        | OK        |
 | 0.0.0-8 | OK              | OK        | ---               | No [fn:8] | ---    | OK        | OK        |
 
-| version | Epiphany 2.30.6 | Iceweasel 3.5.16 | ie6    |
-| 0.0.0-8 | Ok              | [fn:6]           | [fn:9] |
-|         |                 |                  |        |
+| version | Epiphany 2.30.6 | Iceweasel 3.5.16 | ie6    | uzbl | chrome |
+| 0.0.0-8 | Ok              | [fn:6]           | [fn:9] |      |        |
+|         |                 |                  |        |      |        |
 
 [fn:3] Cannot see the WordPress logo in footer
 [fn:4] There's a blue border around SF.net logo. Ugly.
