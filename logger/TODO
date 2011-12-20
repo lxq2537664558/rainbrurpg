@@ -10,10 +10,12 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
 - Make the library and examples correctly build
 - test for cross-compilation
 
-=== ChanegLog ===
+=== ChangeLog ===
    (6 items by revision)
    SLOC is the result of `sloccount src/`
    FT is the ROADMAP file time
    Please update version and revision in configure.in
 
 * v0.0.0-5 (09 dec 2011 - ???) SLOC ??? FT ??:??
+- ../next_release.rb implemented
+- Added important warning in ../stats.pl

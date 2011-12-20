@@ -105,7 +105,7 @@ A system that serialize widgets position and configuration
 - Implementation of the option*attribute::update() functions
 
 === Changelog ===   
-   15 items by revision
+   (15 items by revision)
    Please see the ROADMAP file
    Please update version and revision in configure.in and RainbruRPG.texi
    Please update doc/regTest.html for each revision
