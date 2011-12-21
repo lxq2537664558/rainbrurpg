@@ -17,5 +17,6 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-5 (09 dec 2011 - ???) SLOC ??? FT ??:??
+- ../next_release.rb handles -h/--help and documentation
 - ../next_release.rb implemented
 - Added important warning in ../stats.pl

@@ -29,6 +29,8 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2011-12-21 mer. 19:38]--[2011-12-21 mer. 20:03] =>  0:25
+     CLOCK: [2011-12-21 mer. 18:02]--[2011-12-21 mer. 18:18] =>  0:16
      CLOCK: [2011-12-20 mar. 17:01]--[2011-12-20 mar. 19:32] =>  2:31
      CLOCK: [2011-12-16 ven. 20:44]--[2011-12-16 ven. 21:03] =>  0:19
      CLOCK: [2011-12-16 ven. 18:37]--[2011-12-16 ven. 18:54] =>  0:17
