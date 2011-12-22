@@ -1,3 +1,11 @@
+* v0.0.0-9 (30 sep. 2011 - 22 dec. 2011) FT 17:10
+- Fix the sidebar placement issue in skin01/wordpress/pattern
+- Trying skin01/wordpress/pattern to fix margin issue
+- Reduced number of clock items for 'Wordpress theme development (FT 15:30)'
+- WP LAYOUT.org FosWiki side-related div hierachy listed
+- WP theme: added blog.htm static page
+- Try to find missing css in LAYOUT.org
+
 * v0.0.0-8 (27 sep 2011 - 30 sep 2011) FT 15:10
 - Now uses automake to have a `make dist-bz2` rule
 - Started to see differences between LAYOUT.org and current theme

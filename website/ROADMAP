@@ -1,5 +1,5 @@
 				-*-org-*-
-#+TODO: TODO | CANCELED
+#+TODO: TODO | DONE | CANCELED
 
 * v1.0.0
 ** v0.1.0
@@ -29,6 +29,8 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-12-22 jeu. 20:48]--[2011-12-22 jeu. 21:16] =>  0:28
+     CLOCK: [2011-12-22 jeu. 20:23]--[2011-12-22 jeu. 20:42] =>  0:19
      CLOCK: [2011-12-14 mer. 10:25]--[2011-12-14 mer. 11:28] =>  1:03
      CLOCK: [2011-12-08 jeu. 19:40]--[2011-12-08 jeu. 20:19] =>  0:39
      CLOCK: [2011-11-22 mar. 17:44]--[2011-11-22 mar. 18:27] =>  0:43
@@ -98,31 +100,34 @@ see http://codex.wordpress.org/Theme_Development
 - [X] Menu links are striked through when irreleevant (API...)
 - [X] Correctly place the styled searchbox when adminbar is visible
 - [X] Title of the web page is 'skin'
-- [-] Must fix the sidebar margin issue with /konqueror/, /ie/ and /epiphany/
+- [X] Must fix the sidebar margin issue with /konqueror/, /ie/ and /epiphany/
       - [X] What is the /konqueror/ rendering engine: KHTML
       - [X] Find other browsers using this engine to test this bug
 	    konqueror-embeded (http://www.konqueror.org/embedded/)
       - [X] See LAYOUT.org for WP theme
       - [X] Localy test a HTML page following LAYOUT.org
 	    It seems that it fixes the margin issues 
-      - [-] Find a hack by searching which div are missing
+      - [X] Find a hack by searching which div are missing
 	    - [X] Create a table to show names differences 
 	    - [X] comments about missing css in LAYOUT.org
             - [X] Save a blog page and modify in according to the
 		  previous table to know if it fix the problem
-            - [-] trying to follow patternSkin in pattern/
+            - [X] trying to follow patternSkin in pattern/
 		  - [X] First with inline style for div and static text
-			It seems better than ../ in epiphany
-			ie6 doen't show sidebar: must test with a
-			  <!-- [if lt ie6] --> rule
-                  - [ ] Must show sidebar content
-			There is also a leading '/' at the top of the sidebar
-                  - [ ] Test it with failling browser
-                  - [ ] If it works, modify css files
+                  - [X] Must show sidebar content
+We must remove the margin of the sidebar div of the CSS. It also fix the ie6
+left margin issue but the top alignement is spurious. Fixed by removing
+the patternClearHeaderLeft div.
+		  - [X] There is also a leading '/' at the top of the sidebar
+                  - [X] Test it with failling browser
+                  - [ ] If it works, modify css files to remove inline CSS
+			from index.php
                   - [ ] Merge skin01/wordpress and pattern/ after a final test
+			Must remove the margin of the 'sidebar' div in CSS
 - [ ] The black menu isn't correct in ie6
       - [ ] testing WP's twentyeleven skin with ie6
       - [ ] See what are the differences if it works
+- [ ] Searchbox is angain misplaced
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php

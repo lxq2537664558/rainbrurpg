@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-/<?php /* Search for the ADDED word to see differences between . and ../ */ ?>
+<?php /* Search for the ADDED word to see differences between . and .. */ ?>
 
 <!-- ADDED --><div id="patternScreen" style="padding:0;">
 <!-- ADDED --><div id="patternPageShadow">
@@ -98,20 +98,17 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
  <?php endwhile; else: ?>
 
  <!-- The very first "if" tested to see if there were any Posts to -->
- <!-- display.  This "else" part tells what do if there weren't any. -->
+ <!-- display.  This "else" part tells what do if there were not any. -->
  <p>Sorry, no posts matched your criteria.</p>
 
  <!-- REALLY stop The Loop. -->
  <?php endif; ?>
 
-<!-- ADDED --></div> <!-- closes patternMain -->
-<!-- ADDED --></div> <!-- closes patternMain -->
-<!-- ADDED --><div id="patternSideBar" style="margin-left:-16em;width:16em;">
-<!-- ADDED --><div id="patternClearHeaderLeft" style="height:75px;overflow:hidden;"></div>
-<!-- ADDED --><div id="patternSideBarContents" style="padding:1em 2em 2em 30px;">
-Here is a static content
-<?php get_sidebar(); ?>
-
+	   <!-- ADDED --></div> <!-- closes patternMain -->
+	   <!-- ADDED --></div> <!-- closes patternMain -->
+	   <!-- ADDED --><div id="patternSideBar" style="margin-left:-16em;width:16em;display: inline; float:left;overflow: hidden;">
+	   <!-- ADDED --><div id="patternSideBarContents" style="padding:10px 2em 2em 15px;">
+	   <?php get_sidebar(); ?>
 <!-- ADDED --></div> <!-- closes patternSideBarContents -->
 <div id="clear">&nbsp;</div>
 
@@ -121,6 +118,4 @@ Here is a static content
 <!-- ADDED --></div> <!-- closes patternWrapper -->
 <!-- ADDED --></div> <!-- closes patternOuter -->
 <!-- ADDED --></div> <!-- closes patternFloatWrap -->
-
-
 <?php get_footer(); ?>

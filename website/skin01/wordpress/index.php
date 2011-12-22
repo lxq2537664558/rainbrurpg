@@ -90,7 +90,7 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
  <?php endwhile; else: ?>
 
  <!-- The very first "if" tested to see if there were any Posts to -->
- <!-- display.  This "else" part tells what do if there weren't any. -->
+ <!-- display.  This "else" part tells what do if there were not any. -->
  <p>Sorry, no posts matched your criteria.</p>
 
  <!-- REALLY stop The Loop. -->
@@ -99,7 +99,7 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
 			  
 			</div><!-- #content -->
 		</div><!-- #primary -->
-		<?php get_sidebar(); ?>
+		<?php get_sidebar('twenty_eleven'); ?>
   </div> <!-- #floatWrapper -->
 </div> <!-- floatOuter -->
 <div id="clear">&nbsp;</div>
