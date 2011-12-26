@@ -17,4 +17,4 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-SUBDIRS= transmsg xident netflooder ftpclient hashsum
+SUBDIRS= transmsg netflooder ftpclient hashsum

@@ -115,7 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-214 (02 dec 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (7) Moved IrrClient/ to ../OLD/
+- (8) Moved tools/xident to ../OLD/
+- Moved IrrClient/ to ../OLD/
 - svn ignores Makefile from multiples directories
 - Edited svn:ignore for multiples directories
 - Remove some generated files from svn repository

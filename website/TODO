@@ -22,10 +22,3 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
 
 * v0.0.0-10 (22 dec. 2011 - ???) FT ??:??
 
-* v0.0.0-9 (30 sep. 2011 - 22 dec. 2011) FT 17:10
-- Fix the sidebar placement issue in skin01/wordpress/pattern
-- Trying skin01/wordpress/pattern to fix margin issue
-- Reduced number of clock items for 'Wordpress theme development (FT 15:30)'
-- WP LAYOUT.org FosWiki side-related div hierachy listed
-- WP theme: added blog.htm static page
-- Try to find missing css in LAYOUT.org

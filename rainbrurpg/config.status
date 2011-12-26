@@ -404,7 +404,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile po/Makefile.in ext/Makefile doc/Makefile doc/ogregui-uml.dot src/Makefile src/testHelpers/Makefile src/common/Makefile src/terminalapi/Makefile src/maincore/Makefile src/ogreGui/Makefile src/design/Makefile src/client/Makefile src/editor/Makefile src/server/Makefile src/tests/Makefile src/tools/Makefile src/tools/transmsg/Makefile src/tools/xident/Makefile src/tools/netflooder/Makefile src/tools/ftpclient/Makefile src/tools/hashsum/Makefile src/examples/Makefile src/examples/tapi/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/materials/programs/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc Doxyfile"
+config_files=" Makefile po/Makefile.in ext/Makefile doc/Makefile doc/ogregui-uml.dot src/Makefile src/testHelpers/Makefile src/common/Makefile src/terminalapi/Makefile src/maincore/Makefile src/ogreGui/Makefile src/design/Makefile src/client/Makefile src/editor/Makefile src/server/Makefile src/tests/Makefile src/tools/Makefile src/tools/transmsg/Makefile src/tools/netflooder/Makefile src/tools/ftpclient/Makefile src/tools/hashsum/Makefile src/examples/Makefile src/examples/tapi/Makefile config/Makefile data/Makefile data/fox/Makefile data/gui/Makefile data/gui/XMLRefSchema/Makefile data/gui/schemes/Makefile data/gui/imagesets/Makefile data/gui/looknfeel/Makefile data/gui/fonts/Makefile data/gui/layouts/Makefile data/gui/overlays/Makefile data/gui/ogreGui/Makefile media/Makefile media/packs/Makefile media/materials/Makefile media/materials/scripts/Makefile media/materials/textures/Makefile mapdata/Makefile mapdata/terrains/Makefile mapdata/terrains/hf129_3/Makefile mapdata/materials/Makefile mapdata/materials/textures/Makefile mapdata/materials/scripts/Makefile mapdata/materials/programs/Makefile mapdata/models/Makefile RainbruRPG.lsm RainbruRPG.spec terminalapi-1.0.pc RainbruRPG-common.pc Doxyfile"
 config_headers=" config.h"
 config_commands=" depfiles libtool po-directories"
 
@@ -827,7 +827,6 @@ do
     "src/tests/Makefile") CONFIG_FILES="$CONFIG_FILES src/tests/Makefile" ;;
     "src/tools/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/Makefile" ;;
     "src/tools/transmsg/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/transmsg/Makefile" ;;
-    "src/tools/xident/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/xident/Makefile" ;;
     "src/tools/netflooder/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/netflooder/Makefile" ;;
     "src/tools/ftpclient/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/ftpclient/Makefile" ;;
     "src/tools/hashsum/Makefile") CONFIG_FILES="$CONFIG_FILES src/tools/hashsum/Makefile" ;;
@@ -1054,7 +1053,7 @@ S["build_os"]="linux-gnu"
 S["build_vendor"]="pc"
 S["build_cpu"]="i686"
 S["build"]="i686-pc-linux-gnu"
-S["ISODATE"]="2011-12-14"
+S["ISODATE"]="2011-12-26"
 S["TAPI_LIBRARY_VERSION"]="1:1:0"
 S["OGREGUI_LIBRARY_VERSION"]="2:0:0"
 S["DESIGN_LIBRARY_VERSION"]="1:0:0"

@@ -423,7 +423,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** TODO Miscelaneous                                                [57%]
+**** TODO Miscelaneous                                                [64%]
+     CLOCK: [2011-12-26 lun. 20:31]--[2011-12-26 lun. 20:43] =>  0:12
      CLOCK: [2011-12-16 ven. 10:50]--[2011-12-16 ven. 11:18] =>  0:28
      CLOCK: [2011-12-12 lun. 22:53]--[2011-12-12 lun. 23:18] =>  0:25
      CLOCK: [2011-12-12 lun. 19:08]--[2011-12-12 lun. 19:37] =>  0:29
@@ -444,7 +445,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Maybe some need to be ignored again after removing multiples 
       Makefiles from the repository (see `svn status`)
 - [X] Remove IrrClient (2,218 SLOC) and explain it in regtests.
-- [ ] Remove tools/xident (3,082 SLOC) and explain it in regtests.
+- [X] Remove tools/xident (3,082 SLOC) and explain it in regtests.
 - [ ] Trying to fix Doxygen documentation TODO items.
 - [ ] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning

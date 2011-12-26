@@ -1,6 +1,10 @@
+2011-12-26 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/xIdent/: whole directopy move to ../OLD/.
+
 2011-12-17 Jérôme Pasquier  <rainbru@free.fr>
 
-	* IrrClient/: whiole directopy move to ../OLD/.
+	* IrrClient/: whole directopy move to ../OLD/.
 
 	* svn: many Makefile(s) ignored from various directories.
 
