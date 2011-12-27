@@ -63,7 +63,6 @@ AC_DEFUN([RB_CHECK_FREETYPE],
 
     dnl Getting compiler flags
     FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
-    echo "$FREETYPE_CONFIG --cflags"
     FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
   fi
 

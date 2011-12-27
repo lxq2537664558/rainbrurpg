@@ -34,7 +34,7 @@ pkgconfig_DATA = terminalapi-1.0.pc
 
 EXTRA_DIST= config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
 	   RainbruRPG.info 				 \
-	   RainbruRPG.spec.in				 \	
+	   RainbruRPG.spec.in				 \
 	   Doxyfile
 
 #  if you write a self-test script named `chk', uncomment the

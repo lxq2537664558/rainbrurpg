@@ -99,6 +99,7 @@ dnl
 dnl v0.0.5-196 : AM_GNU_GETTEXT must be declared before AC_LANG_CPLUSPLUS.
 dnl If after, it may declare SIZE_MAX with a newline charcater causing 
 dnl errors during configure and compilation.
+AM_GNU_GETTEXT_VERSION(0.18)
 AM_GNU_GETTEXT([external]) 
 AC_LANG_CPLUSPLUS
 

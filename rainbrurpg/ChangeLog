@@ -1,3 +1,10 @@
+2011-12-27 Jérôme Pasquier  <rainbru@free.fr>
+
+	* acinclude.m4 (RB_CHECK_LIBFOX): Fix the integer warning when
+	testing $FOX_CONFIG and -1
+	* configure.in: uses AM_GNU_GETTEXT_VERSION to fix an `autoreconf`
+	warning.
+
 2011-12-26 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/xIdent/: whole directopy move to ../OLD/.

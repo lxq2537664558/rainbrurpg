@@ -148,8 +148,7 @@ AC_DEFUN([RB_CHECK_LIBFOX],
   else
     dnl Get the correct executable
     AC_PATH_TOOL(FOX_CONFIG, fox-config, -1)
-
-    if test $FOX_CONFIG -eq -1
+    if test $FOX_CONFIG = -1
     then
       echo "Error! You need the Fox-Toolkit installed. Cannot find the fox-config tool."
       exit -1
