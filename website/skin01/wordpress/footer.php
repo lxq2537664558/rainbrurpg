@@ -33,7 +33,3 @@
 <!-- Dummy code -->
 
 <!-- End of Google Analytics code -->
-
-
-</body>
-</html>

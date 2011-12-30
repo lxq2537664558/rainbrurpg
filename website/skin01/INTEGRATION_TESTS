@@ -39,4 +39,5 @@
 [fn:8] The sidebar is far to left, masking a part of the menu text 
 [fn:9] Sidebar is invisible
 [fn:10] All these tests the skin01/wordpress/pattern test with a new index.php
-        On all browsers, there is a problem with the searchbox placement
+        On all browsers, there is a problem with the searchbox placement and
+	all links are dead.

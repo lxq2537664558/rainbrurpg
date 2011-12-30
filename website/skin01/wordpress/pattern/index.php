@@ -16,15 +16,14 @@ get_header(); ?>
 
 <?php /* Search for the ADDED word to see differences between . and .. */ ?>
 
-<!-- ADDED --><div id="patternScreen" style="padding:0;">
-<!-- ADDED --><div id="patternPageShadow">
-<!-- ADDED --><div id="patternPage" style="position:relative; width:100%;">
-<!-- ADDED --><div id="patternWrapper">
-<!-- ADDED --><div id="patternOuter" style="margin-left:16em;haight:100%;">
-<!-- ADDED --><div id="patternFloatWrap" style="display:inline;float:left;width:100%;">
-<!-- ADDED --><div id="patternMain" style="display:inline;float:right;width:100%;">
-
-      <div id="content" role="main">
+<div id="patternScreen" style="padding:0;">
+  <div id="patternPageShadow">
+    <div id="patternPage" style="position:relative; width:100%;">
+      <div id="patternWrapper">
+        <div id="patternOuter" style="margin-left:16em;haight:100%;">
+          <div id="patternFloatWrap" style="display:inline;float:left;width:100%;">
+            <div id="patternMain" style="display:inline;float:right;width:100%;">
+              <div id="content" role="main">
 
         <?php /* The loop: see http://codex.wordpress.org/The_Loop */ ?>
 			  
@@ -57,12 +56,12 @@ get_header(); ?>
 
 </header> <!-- post-header -->
 
- <!-- Display the Post's Content in a div box. -->
+ <!-- Display the Post Content in a div box. -->
  <div class="entry">
    <?php the_content('Continue reading <span class="meta-nav">&rarr;</span>'); ?>
  </div>
 
- <!-- Display a comma separated list of the Post's Categories. -->
+ <!-- Display a comma separated list of the Post Categories. -->
  <p class="postmetadata">Posted in <?php the_category(', '); ?>&nbsp;
 
 <!-- TAGLIST -->
@@ -104,18 +103,27 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
  <!-- REALLY stop The Loop. -->
  <?php endif; ?>
 
-	   <!-- ADDED --></div> <!-- closes patternMain -->
-	   <!-- ADDED --></div> <!-- closes patternMain -->
-	   <!-- ADDED --><div id="patternSideBar" style="margin-left:-16em;width:16em;display: inline; float:left;overflow: hidden;">
-	   <!-- ADDED --><div id="patternSideBarContents" style="padding:10px 2em 2em 15px;">
-	   <?php get_sidebar(); ?>
-<!-- ADDED --></div> <!-- closes patternSideBarContents -->
-<div id="clear">&nbsp;</div>
+              </div> <!-- closes content::main -->
+	    </div> <!-- closes patternMain -->
+	   <div id="patternSideBar" style="margin-left:-16em;width:16em;display: inline; float:left;overflow: hidden;">
+	     <div id="patternSideBarContents" style="padding:10px 2em 2em 15px;">
+	        <?php get_sidebar(); ?>
+             </div> <!-- closes patternSideBarContents -->
+	    </div> <!-- closes patternSideBar -->
+	   <div id="clear">&nbsp;</div>
 
-<!-- ADDED --></div> <!-- closes patternScreen -->
-<!-- ADDED --></div> <!-- closes patternPageShadow -->
-<!-- ADDED --></div> <!-- closes patternPage -->
-<!-- ADDED --></div> <!-- closes patternWrapper -->
-<!-- ADDED --></div> <!-- closes patternOuter -->
 <!-- ADDED --></div> <!-- closes patternFloatWrap -->
+<!-- ADDED --></div> <!-- closes patternOuter -->
+<!-- ADDED --></div> <!-- closes patternWrapper -->
+
+</div><!-- closes skin01-content -->
+
 <?php get_footer(); ?>
+<!-- ADDED --></div> <!-- closes patternPage -->
+<!-- ADDED --></div> <!-- closes patternPageShadow -->
+<!-- ADDED --></div> <!-- closes patternScreen -->
+
+
+
+</body>
+</html>
