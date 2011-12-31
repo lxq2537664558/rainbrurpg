@@ -29,6 +29,8 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2011-12-31 sam. 11:08]--[2011-12-31 sam. 11:32] =>  0:24
+     CLOCK: [2011-12-30 ven. 17:10]--[2011-12-30 ven. 17:58] =>  0:48
      CLOCK: [2011-12-30 ven. 11:13]--[2011-12-30 ven. 12:02] =>  0:49
      CLOCK: [2011-12-22 jeu. 20:48]--[2011-12-22 jeu. 21:16] =>  0:28
      CLOCK: [2011-12-22 jeu. 20:23]--[2011-12-22 jeu. 20:42] =>  0:19
@@ -121,15 +123,18 @@ left margin issue but the top alignement is spurious. Fixed by removing
 the patternClearHeaderLeft div.
 		  - [X] There is also a leading '/' at the top of the sidebar
                   - [X] Test it with failling browser
-                  - [ ] All links are dead
-                  - [ ] If it works, modify css files to remove inline CSS
+                  - [X] Many links don't work in the sidebar and the post body
+			It seems to be related to the common/skin.css file
+                  - [X] If it works, modify css files to remove inline CSS
 			from index.php
                   - [ ] Merge skin01/wordpress and pattern/ after a final test
-			Must remove the margin of the 'sidebar' div in CSS
+- [ ] The header style must work
+      The ../common/skin.css link was removed from header.php
+      because it causes dead links
 - [ ] The black menu isn't correct in ie6
       - [ ] testing WP's twentyeleven skin with ie6
       - [ ] See what are the differences if it works
-- [ ] Searchbox is angain misplaced
+- [ ] Searchbox is again misplaced
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." on single.php

@@ -239,7 +239,10 @@ input#searchsubmit {
     float: left;
     overflow: hidden;
     width: 22em;
+/*
+  Removed for the new pattern/ test
     margin-left: -22.2em;
+*/
 
   font-size: small;
   font-family: arial,verdana,sans-serif;
@@ -698,3 +701,20 @@ textarea {
     color: #1982D1 !important;
     text-decoration: none;
 }
+
+/*
+  The following styles are from inline pattern/index.php file
+*/
+#patternScreen{ padding: 0; }
+#patternPage{ position: relative; width:100%; }
+#patternOuter{ margin-left: 16em; haight:100%; }
+#patternFloatWrap {display:inline; float:left;width:100%; }
+#patternMain{ display:inline; float:right; width:100%; }
+#patternSideBar{
+    margin-left:-16em;
+    width:16em;
+    display: inline; 
+    float:left;
+    overflow: hidden;
+}
+#patternSideBarContents{ padding:10px 2em 2em 15px;}

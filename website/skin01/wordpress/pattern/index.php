@@ -16,13 +16,13 @@ get_header(); ?>
 
 <?php /* Search for the ADDED word to see differences between . and .. */ ?>
 
-<div id="patternScreen" style="padding:0;">
+<div id="patternScreen">
   <div id="patternPageShadow">
-    <div id="patternPage" style="position:relative; width:100%;">
+    <div id="patternPage">
       <div id="patternWrapper">
-        <div id="patternOuter" style="margin-left:16em;haight:100%;">
-          <div id="patternFloatWrap" style="display:inline;float:left;width:100%;">
-            <div id="patternMain" style="display:inline;float:right;width:100%;">
+        <div id="patternOuter">
+          <div id="patternFloatWrap">
+            <div id="patternMain">
               <div id="content" role="main">
 
         <?php /* The loop: see http://codex.wordpress.org/The_Loop */ ?>
@@ -48,8 +48,6 @@ get_header(); ?>
 				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Reply', 'twentyeleven' ) . '</span>', _x( '1', 'comments number', 'twentyeleven' ), _x( '%', 'comments number', 'twentyeleven' ) ); ?>
 			</div>
 			<?php endif; ?>
-
-
 
  <!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
  <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
@@ -105,8 +103,8 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
 
               </div> <!-- closes content::main -->
 	    </div> <!-- closes patternMain -->
-	   <div id="patternSideBar" style="margin-left:-16em;width:16em;display: inline; float:left;overflow: hidden;">
-	     <div id="patternSideBarContents" style="padding:10px 2em 2em 15px;">
+	   <div id="patternSideBar">
+	     <div id="patternSideBarContents">
 	        <?php get_sidebar(); ?>
              </div> <!-- closes patternSideBarContents -->
 	    </div> <!-- closes patternSideBar -->
