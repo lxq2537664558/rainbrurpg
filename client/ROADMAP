@@ -1,0 +1,28 @@
+							-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.2 Multiplayer startx
+   lifesign (need ../network/)
+   chat
+   bots//fighting
+*** v0.0.1 Technical demo
+**** To a local test implementation
+- [ ] Uses CEGUI to get a menu
+- [ ] Uses services as a dependency
+- [ ] Create a launcher as a service and replace the Ogre3D one
+- [ ] Uses PLSM2 as a dependency
+- [ ] Implement movment (maybe need a physical engine)
+**** A first version
+- [ ] Uses rainbrurpg-logger (with pkg-config)
+- [ ] Redirect Ogre logs to logger
+- [ ] Continue to follow Ogre3D tutorials : [[http://www.ogre3d.org/tikiwiki/Basic+Tutorial+1&structure=Tutorials#Your_first_Ogre_application][link]]
+      At least to a correct model drawing
+**** Correct project setup
+     CLOCK: [2012-01-03 mar. 10:54]--[2012-01-03 mar. 11:29] =>  0:35
+- [X] Feed this ROADMAP with the TODO content
+- [X] Create a DEPENDENCIES file
+- [X] Must switch to GPLv3
+- [X] Update GNU headers for 2012
+- [ ] must rename rpg.* files to client.*
+- [ ] must remove autoproject generated files (xmalloc...)
