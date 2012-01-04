@@ -6,10 +6,4 @@ crainbrurpg-client - ??? - The NewProjectLayout's client.
    (8 items by revision)
    Update GNU ChangeLog
 
-* v0.0.0-1 (5 oct 2011 - ???) SLOC ??? FT ??:??
-- (6) Added GNU headers to src/ files
-- Create a DEPENDENCIES basical file (OIS, OGRE)
-- Create a ROADMAP file
-- Started GameEngine
-- Created logger
-- switch to autotools
+* v0.0.0-2 (4 jan 2011 - ???) SLOC 41 FT 0:52

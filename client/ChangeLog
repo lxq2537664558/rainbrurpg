@@ -1,4 +1,11 @@
-2011-10-02  Jerome Pasquier  <rainbru@free.fr>
+2012-01-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* root: remove some unneeded autoproject-generated files.
+
+	* configure.in: change name for previous modification.
+	* root: move some files from rpg.* to client.*.
+
+2011-10-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* rpg: initial version.
 

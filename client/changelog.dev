@@ -1,0 +1,9 @@
+* v0.0.0-1 (5 oct 2011 - 4 jan 2011) SLOC 41 FT 0:52
+- remove some generated files (xmalloc...)
+- move some files from rpg.* to client.*
+- Added GNU headers to src/ files
+- Create a DEPENDENCIES basical file (OIS, OGRE)
+- Create a ROADMAP file
+- Started GameEngine
+- Created logger
+- switch to autotools

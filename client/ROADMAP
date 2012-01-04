@@ -18,11 +18,12 @@
 - [ ] Redirect Ogre logs to logger
 - [ ] Continue to follow Ogre3D tutorials : [[http://www.ogre3d.org/tikiwiki/Basic+Tutorial+1&structure=Tutorials#Your_first_Ogre_application][link]]
       At least to a correct model drawing
-**** Correct project setup
+**** TODO Correct project setup
+     CLOCK: [2012-01-04 mer. 14:17]--[2012-01-04 mer. 14:34] =>  0:17
      CLOCK: [2012-01-03 mar. 10:54]--[2012-01-03 mar. 11:29] =>  0:35
 - [X] Feed this ROADMAP with the TODO content
 - [X] Create a DEPENDENCIES file
 - [X] Must switch to GPLv3
 - [X] Update GNU headers for 2012
-- [ ] must rename rpg.* files to client.*
-- [ ] must remove autoproject generated files (xmalloc...)
+- [X] must rename rpg.* files to client.*
+- [X] must remove autoproject generated files (xmalloc, rpg.cc)
