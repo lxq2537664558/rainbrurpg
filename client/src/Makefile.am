@@ -1,10 +1,10 @@
-bin_PROGRAMS = rpg
+bin_PROGRAMS = client
 
 headers = Logger.hpp GameEngine.hpp
 
 sources = main.cpp GameEngine.cpp
 
-rpg_SOURCES = $(headers) $(sources)
+client_SOURCES = $(headers) $(sources)
 
-rpg_CPPFLAGS = $(DEPS_CFLAGS)
-rpg_LDADD = $(DEPS_LIBS)
+client_CPPFLAGS = $(DEPS_CFLAGS)
+client_LDADD = $(DEPS_LIBS)

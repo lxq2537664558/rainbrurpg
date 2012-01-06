@@ -5,5 +5,8 @@ crainbrurpg-client - ??? - The NewProjectLayout's client.
 === ChangeLog ===
    (8 items by revision)
    Update GNU ChangeLog
+   Please update revision in configure.in
 
 * v0.0.0-2 (4 jan 2011 - ???) SLOC 41 FT 0:52
+- Got a black screen 
+   added FrameListener and Viewport

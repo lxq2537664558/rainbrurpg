@@ -21,10 +21,22 @@
 #ifndef _GAME_ENGINE_HPP_
 #define _GAME_ENGINE_HPP_
 
-class GameEngine
+#include <OgreFrameListener.h>
+#include <OgreRenderWindow.h>
+
+class GameEngine: public Ogre::FrameListener
 {
 public:
   GameEngine(void);
+  virtual ~GameEngine(){};
+
+protected:
+  virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
+  void setupResources(void);
+
+private:
+  Ogre::RenderWindow* mWindow;
+  Ogre::String mResourcesCfg;
 };
 
 #endif // !_GAME_ENGINE_HPP_

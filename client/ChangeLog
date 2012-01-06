@@ -1,3 +1,7 @@
+2012-01-06  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/GameEngine.cpp (): add FrameListener and Viewport.
+
 2012-01-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* root: remove some unneeded autoproject-generated files.

@@ -13,12 +13,18 @@
 - [ ] Create a launcher as a service and replace the Ogre3D one
 - [ ] Uses PLSM2 as a dependency
 - [ ] Implement movment (maybe need a physical engine)
-**** A first version
+**** TODO first version
+     CLOCK: [2012-01-06 ven. 11:43]--[2012-01-06 ven. 12:19] =>  0:36
+     CLOCK: [2012-01-06 ven. 08:53]--[2012-01-06 ven. 09:02] =>  0:09
+     CLOCK: [2012-01-04 mer. 21:42]--[2012-01-04 mer. 22:00] =>  0:18
+- [X] To a black screen
+- [ ] Add a model (ogrehead.mesh)
+- [ ] Window must be resizable and exitable
+- [ ] Integrates CEGUI window
 - [ ] Uses rainbrurpg-logger (with pkg-config)
 - [ ] Redirect Ogre logs to logger
-- [ ] Continue to follow Ogre3D tutorials : [[http://www.ogre3d.org/tikiwiki/Basic+Tutorial+1&structure=Tutorials#Your_first_Ogre_application][link]]
-      At least to a correct model drawing
-**** TODO Correct project setup
+      
+**** DONE Correct project setup
      CLOCK: [2012-01-04 mer. 14:17]--[2012-01-04 mer. 14:34] =>  0:17
      CLOCK: [2012-01-03 mar. 10:54]--[2012-01-03 mar. 11:29] =>  0:35
 - [X] Feed this ROADMAP with the TODO content
