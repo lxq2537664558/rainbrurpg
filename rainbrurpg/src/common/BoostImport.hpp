@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2011 Jerome PASQUIER, Carine CHUM
+ *  Copyright 2006-2012 Jerome PASQUIER, Carine CHUM
  *
  *  This file is part of RainbruRPG.
  *

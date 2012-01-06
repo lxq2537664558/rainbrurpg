@@ -423,7 +423,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** TODO Miscelaneous                                                [78%]
+**** TODO Miscelaneous                                                [86%]
+     CLOCK: [2012-01-06 ven. 15:36]--[2012-01-06 ven. 16:09] =>  0:33
      CLOCK: [2011-12-27 mar. 18:35]--[2011-12-27 mar. 19:06] =>  0:31
      CLOCK: [2011-12-26 lun. 20:47]--[2011-12-26 lun. 21:00] =>  0:13
      CLOCK: [2011-12-26 lun. 20:31]--[2011-12-26 lun. 20:43] =>  0:12
@@ -449,9 +450,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] Remove IrrClient (2,218 SLOC) and explain it in regtests.
 - [X] Remove tools/xident (3,082 SLOC) and explain it in regtests.
 - [X] CANCELED Trying to fix Doxygen documentation TODO items.
-- [ ] Trying to fix configure script warnings
+- [X] Trying to fix configure script warnings
       See the 'freetype-config: integer expression expected' warning
 - [X] CANCELED Must change LauncherOptions icons
+- [X] GNU headers date update for 2012
 - [ ] May remove interdepencies ogreGui/Maincore 
       and correct wiki:BuildingFromSources
 - [ ] Should remove unused datafiles
