@@ -1,7 +1,7 @@
 /* 
  * logger - The RainbruRPG's logging library.
  *
- * Copyright (C) 2011 Jérôme Pasquier
+ * Copyright (C) 2011-2012 Jérôme Pasquier
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
   * \param CONTENT The line to print
   *
   */
-#define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << GRAY
+#define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << BLACK
 
 void 
 Rpg::LoggerOutputTty::endLog()
@@ -99,6 +99,7 @@ Rpg::LoggerOutputTty::startLog(LogLevel vLevel, const string& vLogDomain,
 {
   cout << ll_to_abr(vLevel) 
        << "'" << COLOR_LOG(LRED, vLogDomain) << "' " 
-       << COLOR_LOG(LCYAN, vFilename)
-       << COLOR_LOG(YELLOW, vLine);
+       << COLOR_LOG(CYAN, vFilename)
+       << COLOR_LOG(BLACK, ":")
+       << COLOR_LOG(GREEN, vLine);
 };

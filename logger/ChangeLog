@@ -1,3 +1,10 @@
+2012-01-07  Jérôme Pasquier  <rainbru@free.fr>
+
+	* rainbrurpg-logger.pc.in: pkg-config file generated and installed.
+
+	* src/LoggerOutputTty.cpp  (startLog): change the Tty output
+	colors to fix gray message issue
+
 2011-12-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/LoggerOutputYaml.cpp (escape): strings are in double quotes.

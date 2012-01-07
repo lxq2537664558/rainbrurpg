@@ -29,6 +29,8 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-01-07 sam. 18:52]--[2012-01-07 sam. 19:04] =>  0:12
+     CLOCK: [2012-01-07 sam. 18:28]--[2012-01-07 sam. 18:44] =>  0:16
      CLOCK: [2011-12-21 mer. 19:38]--[2011-12-21 mer. 20:03] =>  0:25
      CLOCK: [2011-12-21 mer. 18:02]--[2011-12-21 mer. 18:18] =>  0:16
      CLOCK: [2011-12-20 mar. 17:01]--[2011-12-20 mar. 19:32] =>  2:31
@@ -68,18 +70,22 @@
       - [X] Maybe need to document the Rpg namespace with doxygen (Mainpage.hpp)
 - [X] Modifying ../stats.pl (keep clock)
 - [X] ../next_release.rb implementation
-- [ ] Fix the tty output color issue (light gray)
+- [X] Update GNU headers date for 2012
+- [X] Fix the tty output color issue (light gray)
+- [X] Should use pkg-config 
+      - [X] Should create a rainbrurpg-logger.pc.in file
+      - [X] Pass it to configure script
+      - [X] Install it with `make install`
 - [ ] Complete LogHeader implementation
       - [ ] Compilation date/time
       - [ ] Execution date/time
       - [ ] And all three output should use it
+- [ ] Should remove autoproject generated files
+      logger.cc, xmalloc.h, xmalloc.c ...
 - [ ] May also handle Environment variables, config file...
       To know what level to output, configure Tty logger etc...
 - [ ] Logger may log process time
 - [ ] configure must search for boost libraries
 - [ ] Create a DEPENDENCIES file
-- [ ] Should remove autoproject generated files
-      logger.cc, xmalloc.h, xmalloc.c ...
-- [ ] Should use pkg-config 
 - [ ] Many members must be private
 - [ ] Must escape some characters (`, :)

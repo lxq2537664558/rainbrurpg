@@ -18,3 +18,7 @@ logger_TEXINFOS = gpl.texinfo
 
 #  install the man pages
 man_MANS=logger.1
+
+# pkg-config file
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = rainbrurpg-logger.pc

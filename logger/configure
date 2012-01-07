@@ -3066,7 +3066,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=logger
- VERSION=0.0.0-5
+ VERSION=0.0.0-6
 
 
 cat >>confdefs.h <<_ACEOF
@@ -15304,7 +15304,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/tools/Makefile src/examples/Makefile logger.lsm logger.spec"
+ac_config_files="$ac_config_files Makefile src/Makefile src/tools/Makefile src/examples/Makefile logger.lsm logger.spec rainbrurpg-logger.pc"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -16395,6 +16395,7 @@ do
     "src/examples/Makefile") CONFIG_FILES="$CONFIG_FILES src/examples/Makefile" ;;
     "logger.lsm") CONFIG_FILES="$CONFIG_FILES logger.lsm" ;;
     "logger.spec") CONFIG_FILES="$CONFIG_FILES logger.spec" ;;
+    "rainbrurpg-logger.pc") CONFIG_FILES="$CONFIG_FILES rainbrurpg-logger.pc" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5 ;;
   esac

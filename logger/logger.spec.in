@@ -1,6 +1,6 @@
 # logger.spec
 #
-# Copyright (c) 2011 Jérôme Pasquier rainbru@free.fr
+# Copyright (c) 2011-2012 Jérôme Pasquier rainbru@free.fr
 #
 %define name logger
 %define version @VERSION@
