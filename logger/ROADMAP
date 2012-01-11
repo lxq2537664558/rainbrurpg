@@ -29,6 +29,7 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-01-11 mer. 13:41]--[2012-01-11 mer. 14:11] =>  0:30
      CLOCK: [2012-01-07 sam. 18:52]--[2012-01-07 sam. 19:04] =>  0:12
      CLOCK: [2012-01-07 sam. 18:28]--[2012-01-07 sam. 18:44] =>  0:16
      CLOCK: [2011-12-21 mer. 19:38]--[2011-12-21 mer. 20:03] =>  0:25
@@ -76,8 +77,12 @@
       - [X] Should create a rainbrurpg-logger.pc.in file
       - [X] Pass it to configure script
       - [X] Install it with `make install`
-- [ ] Complete LogHeader implementation
-      - [ ] Compilation date/time
+- [-] Complete LogHeader implementation
+      - [X] Compilation date/time
+	    - [X] Add it to LogHeader struct
+	    - [X] Initialize it in Logger::init
+	    - [X] LoggerOutputs output modifed
+	    - [X] log_reader tool print it in infos panel
       - [ ] Execution date/time
       - [ ] And all three output should use it
 - [ ] Should remove autoproject generated files

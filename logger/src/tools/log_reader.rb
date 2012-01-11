@@ -28,10 +28,13 @@ NA = "N/A" # The 'not handled' value
 # The logfile panel needed informations
 class LogfileDetails
   attr_accessor :logfile_version, :program_name, :program_version 
+  attr_accessor :compil_date, :compil_time
   def initialize
     @logfile_version = NA
     @program_name    = NA
     @program_version = NA
+    @compil_date     = NA
+    @compil_time     = NA
   end
 end
 
@@ -51,6 +54,8 @@ def parse_logfile_v1(tree, window) # A YAML tree
   lfd.logfile_version = "1"
   lfd.program_name = tree.select('/program/name')[0].value
   lfd.program_version = tree.select('/program/version')[0].value
+  lfd.compil_date = tree.select('/program/compil-date')[0].value
+  lfd.compil_time = tree.select('/program/compil-time')[0].value
   window.setLogfileDetails lfd
 
   l= tree.select('/lines/*')
@@ -91,6 +96,8 @@ class MainWindow < Ui_MainWindow
     setLogfileDetailsValue(0, lfd.logfile_version)
     setLogfileDetailsValue(1, lfd.program_name)
     setLogfileDetailsValue(2, lfd.program_version)
+    setLogfileDetailsValue(3, lfd.compil_date)
+    setLogfileDetailsValue(4, lfd.compil_time)
   end
 
   def addLineDetails(ld)

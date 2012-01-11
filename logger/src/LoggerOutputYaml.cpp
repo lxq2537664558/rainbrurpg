@@ -97,6 +97,8 @@ Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
         << "program:" << endl
 	<< "  name   : "<< escape(lh->program_name) << endl
 	<< "  version: "<< lh->program_version << endl
+	<< "  compil-date: "<< lh->compil_date << endl
+	<< "  compil-time: "<< lh->compil_time << endl
         << endl
         << "lines:" << endl;
 }

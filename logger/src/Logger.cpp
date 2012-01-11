@@ -64,6 +64,8 @@ void Rpg::Logger::init()
   LogHeader lh;
   lh.program_name="TestProgram";
   lh.program_version="0.0.5-265";
+  lh.compil_date = __DATE__;
+  lh.compil_time = __TIME__;
 
   LoggerOutputListIterator iter;
   for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)

@@ -1,3 +1,13 @@
+2012-01-11  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tool/log_reader.rb: print compil date and time in the UI.
+
+	* src/LoggerOutput*.cpp (LogHeader): print compil date and time
+	according to the output style.
+
+	* src/Logger.cpp (init): feed the compil date and time fields.
+	* src/LoggerOutput.hpp (LogHeader): added compil date and time fields.
+
 2012-01-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* rainbrurpg-logger.pc.in: pkg-config file generated and installed.

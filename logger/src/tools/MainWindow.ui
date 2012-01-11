@@ -58,7 +58,7 @@
      <x>0</x>
      <y>0</y>
      <width>547</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -86,15 +86,15 @@
        <item>
         <widget class="QToolBox" name="toolBox">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>264</width>
-            <height>350</height>
+            <width>274</width>
+            <height>332</height>
            </rect>
           </property>
           <attribute name="label">
@@ -139,6 +139,16 @@
                <string>The platform running RainbruRPG</string>
               </property>
              </row>
+             <row>
+              <property name="text">
+               <string>Compilation date</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Compilation time</string>
+              </property>
+             </row>
              <column/>
              <item row="0" column="0">
               <property name="text">
@@ -164,8 +174,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>264</width>
-            <height>350</height>
+            <width>274</width>
+            <height>332</height>
            </rect>
           </property>
           <attribute name="label">

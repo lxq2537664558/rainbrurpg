@@ -73,7 +73,11 @@ Rpg::LoggerOutputFile::log(const Object&o)
 };
 
 void 
-Rpg::LoggerOutputFile::logHeader(const LogHeader*)
+Rpg::LoggerOutputFile::logHeader(const LogHeader* lh)
 {
-  mFile << "</ logHeader" << endl;
+  mFile << "Logger started for '" << lh->program_name 
+	<< " v"<< lh->program_version<< "'" << endl
+	<< "Compiled " << lh->compil_date << " at " 
+	<< lh->compil_time << endl;
+
 }

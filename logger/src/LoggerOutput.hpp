@@ -50,12 +50,16 @@ namespace Rpg
   /** The log header
    *
    * Contains informations printed only once during the program starts.
+   * The values contained in this structure are collected in the
+   * Rpg::Logger::init() function.
    *
    */
   struct LogHeader
   {
     string program_name;    //!< The program's name
     string program_version; //!< The program's version
+    string compil_date;     //!< The compilation date
+    string compil_time;     //!< The compilation time
   };
   
   /** The logger's output interface
