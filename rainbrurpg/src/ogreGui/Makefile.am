@@ -85,7 +85,7 @@ INCLUDES = -I$(top_srcdir)/src/common			\
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
-librainbrurpg_ogregui_la_LIBADD= 
+librainbrurpg_ogregui_la_LIBADD= -lrainbrurpg-core
 #-lrainbrurpg-common			\
 #				 -lrainbrurpg-core			\
 #				 -lOgreMain
