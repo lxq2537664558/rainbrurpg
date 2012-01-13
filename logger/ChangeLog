@@ -1,3 +1,8 @@
+2012-01-12  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/Logger.hpp (init): uses default values to set binary compilation
+	date and time and not the library ones.
+
 2012-01-11  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tool/log_reader.rb: print compil date and time in the UI.

@@ -51,7 +51,8 @@ Rpg::Logger::Logger(const string& vLogDomain, LogType vLogType):
 /** Initialize the logger
   *
   */
-void Rpg::Logger::init()
+void 
+Rpg::Logger::init(const string& compil_date, const string& compil_time)
 {
   l1 = new LoggerOutputTty();
   l2 = new LoggerOutputFile();
@@ -64,8 +65,8 @@ void Rpg::Logger::init()
   LogHeader lh;
   lh.program_name="TestProgram";
   lh.program_version="0.0.5-265";
-  lh.compil_date = __DATE__;
-  lh.compil_time = __TIME__;
+  lh.compil_date = compil_date;
+  lh.compil_time = compil_time;
 
   LoggerOutputListIterator iter;
   for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)
