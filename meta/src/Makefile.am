@@ -1,1 +1,1 @@
-SUBDIRS = lib data
+SUBDIRS = foswiki_plugin

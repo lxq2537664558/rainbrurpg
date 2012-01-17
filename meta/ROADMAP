@@ -8,7 +8,7 @@
 - [ ] Make a little availability image (with HTML5 canvas ?)
       With a green/yellow gradient on the left
       A red background on the right
-      Exacts numbers ibn tooltip
+      Exacts numbers in tooltip
 ** v0.1.0 
 *** v0.0.3 Create the error-bot
     A cron job (maybe in perl) that test the ping of all servers. If
@@ -22,9 +22,25 @@
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
-**** Correct project setup
+**** TODO Correct project setup
+     CLOCK: [2012-01-17 mar. 13:44]--[2012-01-17 mar. 14:07] =>  0:23
+     CLOCK: [2012-01-17 mar. 13:31]--[2012-01-17 mar. 13:50] =>  0:19
      CLOCK: [2011-07-28 jeu. 20:06]--[2011-07-28 jeu. 20:28] =>  0:22
-- [ ] Add GPLv3 headers to sources (see Foswiki's way)
+- [X] Add GPLv3 headers to sources (see Foswiki's way) (2011-2012)
+      Is GPLv3 or AGPLv3 compatible with foswiki code?
+- [X] Make src/foswiki-plugin directory
+      Because there will be a libclient/ and libserver/ directories
+      A README in each subdir
+- [ ] DEPENDENCIES files (Xml, Yaml)
+- [ ] Remove the installation procedure for foswiki-plugin
+      Must install it manually or create a install-foswiki-plugin rule
+      And add a spoiler in the configure script
+      maybe a --foswiki-prefix option to set it different that install prefix
+- [ ] libclient/ and libserver/ directories
+      A README in each subdir
+      - [ ] a pkg-config script for each is generated
+- [ ] configure handle for config.h the META_URL define
+- [ ] Create a configure summary
 - [X] create README files for subdirs
 **** Create unit tests for 'functions.pm'
      CLOCK: [2011-07-28 jeu. 17:20]--[2011-07-28 jeu. 17:37] =>  0:17

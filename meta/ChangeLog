@@ -1,0 +1,4 @@
+2012-01-17  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/ : libclient and libserver directories added with README.
+	* src/foswiki_plugin : code and documentation move here.
