@@ -75,7 +75,7 @@ librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 inc_dir=/home/mouse/programmation/rainbrurpg
 
 INCLUDES = -I$(top_srcdir)/src/common			\
-	   -I$(top_srcdir)/src/maincore			\
+	   -I$(top_srcdir)/src/interdep			\
 	   -I$(top_srcdir)/ext				\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
@@ -85,7 +85,7 @@ INCLUDES = -I$(top_srcdir)/src/common			\
 
 librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
 
-librainbrurpg_ogregui_la_LIBADD= -lrainbrurpg-core
+librainbrurpg_ogregui_la_LIBADD= ../interdep/libinterdep.la
 #-lrainbrurpg-common			\
 #				 -lrainbrurpg-core			\
 #				 -lOgreMain
@@ -97,8 +97,7 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  $(OGRE_LIBS)				\
 				  $(SIGC_LIBS)				\
 				  $(FREETYPE_LIBS)			\
-				  -L$(top_srcdir)/src/common/.libs	\
-				  -L$(top_srcdir)/src/maincore/.libs
+				  -L$(top_srcdir)/src/common/.libs
 
 
 # do not depend on RB_OPTION_TESTS_FLAGS
@@ -107,10 +106,11 @@ AM_COLOR_TESTS=no
 bin_PROGRAMS=rainbrurpg-tests-ogregui
 TESTS=rainbrurpg-tests-ogregui
 
+# Keep -Imaincore for ogreimport.h
 rainbrurpg_tests_ogregui_CPPFLAGS = 			\
 	   -I$(top_srcdir)/src/common/ 			\
-	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/maincore/		\
+	   -I$(top_srcdir)/src/ogreGui/			\
 	   -I$(top_srcdir)/src/testHelpers/		\
 	   $(FREETYPE_CFLAGS)				\
 	   $(GNET_CFLAGS) 				\
@@ -124,8 +124,6 @@ rainbrurpg_tests_ogregui_LDADD = \
 	-lrainbrurpg-common 			\
 	-L$(top_srcdir)/src/ogreGui/.libs	\
 	-lrainbrurpg-ogregui			\
-	-L$(top_srcdir)/src/maincore/.libs	\
-	-lrainbrurpg-core			\
 	-lboost_unit_test_framework		\
 	$(top_srcdir)/src/testHelpers/.libs/libtesthelpers.la
 

@@ -17,7 +17,7 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-SUBDIRS=testHelpers common ogreGui maincore client 
+SUBDIRS=testHelpers interdep common ogreGui maincore client 
 
 if RB_OPTION_TOOLS_FLAGS
   SUBDIRS+=tools

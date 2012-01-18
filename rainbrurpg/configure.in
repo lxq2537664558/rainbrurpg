@@ -187,6 +187,7 @@ AC_CONFIG_FILES([Makefile			\
 	  src/Makefile				\
           src/testHelpers/Makefile		\
           src/common/Makefile			\
+          src/interdep/Makefile			\
           src/terminalapi/Makefile		\
 	  src/maincore/Makefile			\
 	  src/ogreGui/Makefile			\

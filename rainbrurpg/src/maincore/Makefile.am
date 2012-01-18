@@ -30,43 +30,32 @@ lib_LTLIBRARIES = librainbrurpg-core.la
 librainbrurpg_core.adir=$(libdir)
 
 h_sources=dumpogreobject.h		\
-	  gameengine.h			\
-	  gamestate.h			\
 	  velocitycalculator.h		\
 	  vcconstant.h			\
 	  inputwrapper.h		\
-	  inputmanager.h		\
 	  gsgamebase.h			\
 	  gslocaltest.h			\
 	  environmentsetup.h		\
 	  highlightlistener.h		\
 	  ogreimport.h			\
-	  keyboardnavigation.h		\
-	  \
-	  WindowHandle.hpp		\
-	  NullWindowHandleException.hpp
+	  keyboardnavigation.h
 
 cc_sources=dumpogreobject.cpp		\
-	  gameengine.cpp		\
-	  gamestate.cpp			\
 	  velocitycalculator.cpp	\
 	  vcconstant.cpp		\
 	  inputwrapper.cpp		\
-	  inputmanager.cpp		\
 	  gsgamebase.cpp		\
 	  gslocaltest.cpp		\
 	  environmentsetup.cpp		\
 	  highlightlistener.cpp		\
-	  keyboardnavigation.cpp	\
-	  \
-	  WindowHandle.cpp		\
-	  NullWindowHandleException.cpp
+	  keyboardnavigation.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)
 library_include_HEADERS = $(h_sources)
 
 INCLUDES= -I$(top_srcdir)/src/common			\
+	  -I$(top_srcdir)/src/interdep			\
 	  -I$(top_srcdir)/src/maincore			\
 	  -I$(top_srcdir)/src/ogreGui			\
 	  -I$(top_srcdir)/ext				\

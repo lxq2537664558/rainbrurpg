@@ -1,3 +1,9 @@
+2012-01-18 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/maincore: multiples files move to src/interdep/.
+	* src/interdep/: a new libtool convenience library to fix
+	circular dependencies between ogreGui/ and maincore/.
+
 2012-01-12 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/ogreGui/Makefile.am: Trying to understand circular dependencies
