@@ -558,7 +558,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
-plugindir
+foswikidir
 am__untar
 am__tar
 AMTAR
@@ -623,6 +623,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+with_foswikidir
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1238,6 +1239,11 @@ if test -n "$ac_init_help"; then
      short | recursive ) echo "Configuration of rainbrurpg-meta 0.0.0-2:";;
    esac
   cat <<\_ACEOF
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-foswikidir=PATH  where to install foswiki plugin related files
 
 Report bugs to <rainbru@users.sf.net>.
 _ACEOF
@@ -2176,7 +2182,15 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
 
 
 # Handle the custom foswiki_prefix
-plugindir='${libdir}/gedit-2/plugins'
+
+
+# Check whether --with-foswikidir was given.
+if test "${with_foswikidir+set}" = set; then :
+  withval=$with_foswikidir; foswikidir="$withval"
+else
+  foswikidir=${prefix}/foswiki
+fi
+
 
 
 # Checks for programs.
@@ -3361,3 +3375,11 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
 
+
+echo
+echo "------------------------------------------------------------------------"
+echo "$PACKAGE v$VERSION-$RELEASE configuration summary"
+echo "------------------------------------------------------------------------"
+echo
+echo "Extra directory:"
+echo "  Foswiki root directory.......${foswikidir}"

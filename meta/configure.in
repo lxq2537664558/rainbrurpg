@@ -6,7 +6,14 @@ AC_INIT([rainbrurpg-meta], [0.0.0-2], [rainbru@users.sf.net])
 AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-2)
 
 # Handle the custom foswiki_prefix
-AC_SUBST([plugindir], ['${libdir}/gedit-2/plugins'])
+AC_DEFUN([RB_FOSWIKI_DIR],
+  [AC_ARG_WITH(foswikidir,
+    AS_HELP_STRING([--with-foswikidir=PATH], 
+      [where to install foswiki plugin related files]),
+  foswikidir="$withval", foswikidir=${prefix}/foswiki)
+])
+RB_FOSWIKI_DIR
+AC_SUBST([foswikidir])dnl
 
 # Checks for programs.
 AC_PROG_INSTALL
@@ -24,3 +31,12 @@ AC_OUTPUT([
   src/Makefile
   src/foswiki_plugin/Makefile
 ])
+
+dnl Options summary
+echo
+echo "------------------------------------------------------------------------"
+echo "$PACKAGE v$VERSION-$RELEASE configuration summary"
+echo "------------------------------------------------------------------------"
+echo
+echo "Extra directory:"
+echo "  Foswiki root directory.......${foswikidir}"

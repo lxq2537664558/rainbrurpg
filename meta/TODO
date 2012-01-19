@@ -12,6 +12,7 @@ Should use REST : see the 'restExample($session)' function
    Please update GNU ChangeLog
 
 * v0.0.0-2 (17 jan 2012 - ???) SLOC ??? UT ?? FT ??:??
+- Create foswiki directory option for ./configure
 - Changed directory structure 
    to fix 'too long filenames issues' for dist-bzip2
 

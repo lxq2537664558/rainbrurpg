@@ -1,5 +1,9 @@
 2012-01-19  Jérôme Pasquier  <rainbru@free.fr>
 
+	* configure.in : add a configuration summary.
+	* configure.in (RB_FOSWIKI_DIR): create option for the foswiki
+	installation directory.
+
 	* src/foswiki_plugin/Makefile.am : three install prefix for
 	documentation and source code of foswiki plugin.
 

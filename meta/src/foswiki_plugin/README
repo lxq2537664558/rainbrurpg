@@ -1,0 +1,6 @@
+Here are all the files for the foswiki plugin
+
+System/RainbrurpgMetaserverPlugin.txt is the documentation. It is installed 
+in the /data/System directory
+
+RainbrurpgMetaserverPlugin.pm is installed in the lib/Foswiki/Plugins/ dir.
