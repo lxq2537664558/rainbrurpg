@@ -29,6 +29,12 @@
 #include "LoggerOutputFile.hpp"
 #include "LoggerOutputYaml.hpp"
 
+#include <ctime>   // To get execution date/time
+#include <iomanip> // For setfill() and setw() in iostreams
+
+/** A simple macro used to add a '0' in date and time before some values */
+#define TWOCOL(x) (setfill('0')) << setw(2) << (x )
+
 // Static data members initialization
 Rpg::LoggerOutputList Rpg::Logger::mOutputList;
 Rpg::LoggerOutput *Rpg::Logger::l1, *Rpg::Logger::l2, *Rpg::Logger::l3;
@@ -67,6 +73,21 @@ Rpg::Logger::init(const string& compil_date, const string& compil_time)
   lh.program_version="0.0.5-265";
   lh.compil_date = compil_date;
   lh.compil_time = compil_time;
+
+  // get compilation date and time
+  time_t t = time(0);// get time now
+  struct tm * now = localtime( & t );
+  ostringstream now_str, now_str2;
+
+  now_str  << (now->tm_year + 1900) << '-'
+	   <<  TWOCOL(now->tm_mon + 1)  << '-'
+	   <<  TWOCOL(now->tm_mday);
+  lh.exec_date = now_str.str();
+
+  now_str2 << TWOCOL(now->tm_hour) << ":" 
+	   << TWOCOL(now->tm_min) << ":" 
+	   << TWOCOL(now->tm_sec);
+  lh.exec_time = now_str2.str();
 
   LoggerOutputListIterator iter;
   for (iter = mOutputList.begin(); iter!=mOutputList.end(); ++iter)

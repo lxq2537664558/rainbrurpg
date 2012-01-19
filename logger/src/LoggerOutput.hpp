@@ -60,6 +60,8 @@ namespace Rpg
     string program_version; //!< The program's version
     string compil_date;     //!< The compilation date
     string compil_time;     //!< The compilation time
+    string exec_date;       //!< The execution date
+    string exec_time;       //!< The execution time
   };
   
   /** The logger's output interface

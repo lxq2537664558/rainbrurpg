@@ -149,6 +149,16 @@
                <string>Compilation time</string>
               </property>
              </row>
+             <row>
+              <property name="text">
+               <string>Execution date</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Execution time</string>
+              </property>
+             </row>
              <column/>
              <item row="0" column="0">
               <property name="text">
@@ -174,8 +184,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>274</width>
-            <height>332</height>
+            <width>104</width>
+            <height>104</height>
            </rect>
           </property>
           <attribute name="label">

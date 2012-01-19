@@ -1,3 +1,14 @@
+2012-01-19  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tool/log_reader.rb: print execution date and time in the UI.
+
+	* src/LoggerOutput*.cpp (LogHeader): print execution date and time
+	according to the output style.
+
+	* src/Logger.cpp (init): feed the execution date and time fields.
+	* src/LoggerOutput.hpp (LogHeader): added execution date and time 
+	fields.
+
 2012-01-12  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/Logger.hpp (init): uses default values to set binary compilation

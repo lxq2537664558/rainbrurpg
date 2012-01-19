@@ -90,7 +90,8 @@ Rpg::LoggerOutputTty::logHeader(const LogHeader*lh)
 {
   cout << "Logger started for '" << lh->program_name 
        << " v"<< lh->program_version<< "'" << endl
-       << "Compiled " << lh->compil_date << " at " << lh->compil_time << endl;
+       << "Compiled " << lh->compil_date << " at " << lh->compil_time << endl
+       << "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
 }
 
 void

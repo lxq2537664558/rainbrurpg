@@ -29,6 +29,8 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-01-19 jeu. 14:01]
+     CLOCK: [2012-01-19 jeu. 12:59]--[2012-01-19 jeu. 13:25] =>  0:26
      CLOCK: [2012-01-13 ven. 12:08]--[2012-01-13 ven. 12:19] =>  0:11
      CLOCK: [2012-01-11 mer. 13:41]--[2012-01-11 mer. 14:11] =>  0:30
      CLOCK: [2012-01-07 sam. 18:52]--[2012-01-07 sam. 19:04] =>  0:12
@@ -78,15 +80,19 @@
       - [X] Should create a rainbrurpg-logger.pc.in file
       - [X] Pass it to configure script
       - [X] Install it with `make install`
-- [-] Complete LogHeader implementation
+- [X] Complete LogHeader implementation
       - [X] Compilation date/time
 	    - [X] Add it to LogHeader struct
 	    - [X] Initialize it in Logger::init
 	    - [X] LoggerOutputs output modifed
 	    - [X] log_reader tool print it in infos panel
             - [X] Set it to the binary compil date and time
-      - [ ] Execution date/time
-      - [ ] And all three output should use it
+      - [X] Execution date/time
+            - [X] Add it to LogHeader struct
+	    - [X] Initialize it in Logger::init
+	    - [X] LoggerOutputs output modifed
+	    - [X] log_reader tool print it in infos panel
+- [ ] see why `make` doesn't work in src/tool
 - [ ] Should remove autoproject generated files
       logger.cc, xmalloc.h, xmalloc.c ...
 - [ ] May also handle Environment variables, config file...

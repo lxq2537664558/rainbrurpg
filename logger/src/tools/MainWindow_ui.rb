@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'MainWindow.ui'
 **
-** Created: mer. janv. 11 14:11:06 2012
+** Created: jeu. janv. 19 14:36:03 2012
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -91,7 +91,7 @@ class Ui_MainWindow
     @toolBox.addItem(@page, Qt::Application.translate("MainWindow", "Logfile", nil, Qt::Application::UnicodeUTF8))
     @page_2 = Qt::Widget.new()
     @page_2.objectName = "page_2"
-    @page_2.geometry = Qt::Rect.new(0, 0, 274, 332)
+    @page_2.geometry = Qt::Rect.new(0, 0, 104, 104)
     @gridLayout_4 = Qt::GridLayout.new(@page_2)
     @gridLayout_4.objectName = "gridLayout_4"
     @messageDetails = Qt::TableWidget.new(@page_2)
@@ -196,8 +196,8 @@ class Ui_MainWindow
     if @logfileDetails.columnCount < 1
         @logfileDetails.columnCount = 1
     end
-    if @logfileDetails.rowCount < 5
-        @logfileDetails.rowCount = 5
+    if @logfileDetails.rowCount < 7
+        @logfileDetails.rowCount = 7
     end
 
     __rowItem = Qt::TableWidgetItem.new
@@ -220,6 +220,14 @@ class Ui_MainWindow
     __rowItem4.setText(Qt::Application.translate("MainWindow", "Compilation time", nil, Qt::Application::UnicodeUTF8))
     @logfileDetails.setVerticalHeaderItem(4, __rowItem4)
 
+    __rowItem5 = Qt::TableWidgetItem.new
+    __rowItem5.setText(Qt::Application.translate("MainWindow", "Execution date", nil, Qt::Application::UnicodeUTF8))
+    @logfileDetails.setVerticalHeaderItem(5, __rowItem5)
+
+    __rowItem6 = Qt::TableWidgetItem.new
+    __rowItem6.setText(Qt::Application.translate("MainWindow", "Execution time", nil, Qt::Application::UnicodeUTF8))
+    @logfileDetails.setVerticalHeaderItem(6, __rowItem6)
+
     __item = Qt::TableWidgetItem.new
     __item.setText(Qt::Application.translate("MainWindow", "N/A", nil, Qt::Application::UnicodeUTF8))
     @logfileDetails.setItem(0, 0, __item)
@@ -240,17 +248,17 @@ class Ui_MainWindow
         @messageDetails.rowCount = 3
     end
 
-    __rowItem5 = Qt::TableWidgetItem.new
-    __rowItem5.setText(Qt::Application.translate("MainWindow", "Time", nil, Qt::Application::UnicodeUTF8))
-    @messageDetails.setVerticalHeaderItem(0, __rowItem5)
-
-    __rowItem6 = Qt::TableWidgetItem.new
-    __rowItem6.setText(Qt::Application.translate("MainWindow", "Level", nil, Qt::Application::UnicodeUTF8))
-    @messageDetails.setVerticalHeaderItem(1, __rowItem6)
-
     __rowItem7 = Qt::TableWidgetItem.new
-    __rowItem7.setText(Qt::Application.translate("MainWindow", "Level", nil, Qt::Application::UnicodeUTF8))
-    @messageDetails.setVerticalHeaderItem(2, __rowItem7)
+    __rowItem7.setText(Qt::Application.translate("MainWindow", "Time", nil, Qt::Application::UnicodeUTF8))
+    @messageDetails.setVerticalHeaderItem(0, __rowItem7)
+
+    __rowItem8 = Qt::TableWidgetItem.new
+    __rowItem8.setText(Qt::Application.translate("MainWindow", "Level", nil, Qt::Application::UnicodeUTF8))
+    @messageDetails.setVerticalHeaderItem(1, __rowItem8)
+
+    __rowItem9 = Qt::TableWidgetItem.new
+    __rowItem9.setText(Qt::Application.translate("MainWindow", "Level", nil, Qt::Application::UnicodeUTF8))
+    @messageDetails.setVerticalHeaderItem(2, __rowItem9)
 
     __item3 = Qt::TableWidgetItem.new
     __item3.setText(Qt::Application.translate("MainWindow", "N/A", nil, Qt::Application::UnicodeUTF8))
