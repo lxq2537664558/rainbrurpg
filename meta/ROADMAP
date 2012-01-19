@@ -23,6 +23,7 @@
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
 **** TODO Correct project setup
+     CLOCK: [2012-01-19 jeu. 07:34]--[2012-01-19 jeu. 08:06] =>  0:32
      CLOCK: [2012-01-17 mar. 13:44]--[2012-01-17 mar. 14:07] =>  0:23
      CLOCK: [2012-01-17 mar. 13:31]--[2012-01-17 mar. 13:50] =>  0:19
      CLOCK: [2011-07-28 jeu. 20:06]--[2011-07-28 jeu. 20:28] =>  0:22
@@ -31,11 +32,18 @@
 - [X] Make src/foswiki-plugin directory
       Because there will be a libclient/ and libserver/ directories
       A README in each subdir
-- [ ] DEPENDENCIES files (Xml, Yaml)
+- [X] Fix the too long filenames for dist-bzip2
+      - [X] All foswiki_plusing files simply go in foswiki_plugin
+      - [X] We need three install location 
+	    for RainbrurpgMetaserverPlugin.txt
+	    and RainbrurpgMetaserverPlugin.pm
+      The RainbrurpgMetaserverPlugin dir containing functions.pm
+- [ ] add src/lib* to archive
+- [ ] DEPENDENCIES files (Xml, Yaml) in each src/ subdirs
 - [ ] Remove the installation procedure for foswiki-plugin
       Must install it manually or create a install-foswiki-plugin rule
       And add a spoiler in the configure script
-      maybe a --foswiki-prefix option to set it different that install prefix
+      maybe a --foswiki-prefix option to set it different than install prefix
 - [ ] libclient/ and libserver/ directories
       A README in each subdir
       - [ ] a pkg-config script for each is generated

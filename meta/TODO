@@ -12,6 +12,8 @@ Should use REST : see the 'restExample($session)' function
    Please update GNU ChangeLog
 
 * v0.0.0-2 (17 jan 2012 - ???) SLOC ??? UT ?? FT ??:??
+- Changed directory structure 
+   to fix 'too long filenames issues' for dist-bzip2
 
 * v0.0.0-1 (25 jul 2011 - 17 jan 2012) SLOC 229 UT ?? FT 2:14
 - libclient and libserver directories added with README

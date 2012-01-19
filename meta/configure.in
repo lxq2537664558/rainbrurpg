@@ -5,6 +5,9 @@ AC_PREREQ([2.65])
 AC_INIT([rainbrurpg-meta], [0.0.0-2], [rainbru@users.sf.net])
 AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-2)
 
+# Handle the custom foswiki_prefix
+AC_SUBST([plugindir], ['${libdir}/gedit-2/plugins'])
+
 # Checks for programs.
 AC_PROG_INSTALL
 
@@ -18,15 +21,6 @@ AC_PROG_INSTALL
 
 AC_OUTPUT([
   Makefile
-
   src/Makefile
-
   src/foswiki_plugin/Makefile
-  src/foswiki_plugin/lib/Makefile
-  src/foswiki_plugin/lib/Foswiki/Makefile
-  src/foswiki_plugin/lib/Foswiki/Plugins/Makefile
-  src/foswiki_plugin/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/Makefile
-
-  src/foswiki_plugin/data/Makefile
-  src/foswiki_plugin/data/System/Makefile
 ])

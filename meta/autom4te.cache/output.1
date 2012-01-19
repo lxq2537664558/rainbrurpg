@@ -558,6 +558,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIB@&t@OBJS
+plugindir
 am__untar
 am__tar
 AMTAR
@@ -2174,6 +2175,10 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
 
 
 
+# Handle the custom foswiki_prefix
+plugindir='${libdir}/gedit-2/plugins'
+
+
 # Checks for programs.
 
 
@@ -2185,7 +2190,7 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/foswiki_plugin/Makefile src/foswiki_plugin/lib/Makefile src/foswiki_plugin/lib/Foswiki/Makefile src/foswiki_plugin/lib/Foswiki/Plugins/Makefile src/foswiki_plugin/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/Makefile src/foswiki_plugin/data/Makefile src/foswiki_plugin/data/System/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/foswiki_plugin/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -2899,12 +2904,6 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/foswiki_plugin/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/Makefile" ;;
-    "src/foswiki_plugin/lib/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/lib/Makefile" ;;
-    "src/foswiki_plugin/lib/Foswiki/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/lib/Foswiki/Makefile" ;;
-    "src/foswiki_plugin/lib/Foswiki/Plugins/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/lib/Foswiki/Plugins/Makefile" ;;
-    "src/foswiki_plugin/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/Makefile" ;;
-    "src/foswiki_plugin/data/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/data/Makefile" ;;
-    "src/foswiki_plugin/data/System/Makefile") CONFIG_FILES="$CONFIG_FILES src/foswiki_plugin/data/System/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5 ;;
   esac
