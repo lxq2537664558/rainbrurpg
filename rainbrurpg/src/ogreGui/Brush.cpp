@@ -28,7 +28,7 @@
 
 #include "Brush.hpp"
 
-#include <gameengine.h>
+#include <GameEngine.hpp>
 #include <logger.h>
 
 #include <GuiVertex.hpp>

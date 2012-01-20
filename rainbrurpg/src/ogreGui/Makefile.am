@@ -76,6 +76,7 @@ inc_dir=/home/mouse/programmation/rainbrurpg
 
 INCLUDES = -I$(top_srcdir)/src/common			\
 	   -I$(top_srcdir)/src/interdep			\
+	   -I$(top_srcdir)/src/maincore			\
 	   -I$(top_srcdir)/ext				\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\

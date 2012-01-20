@@ -36,7 +36,7 @@
 #include "exampleframelistener.h"
 
 #include "guimanager.h"
-#include "gameengine.h"
+#include "GameEngine.hpp"
 
 using namespace RainbruRPG::Gui;
 using namespace RainbruRPG::Core;

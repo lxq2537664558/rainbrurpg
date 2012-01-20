@@ -46,7 +46,7 @@
 #include "label.h"
 */
 #include <OgreViewport.h>
-#include <gameengine.h>
+#include <GameEngine.hpp>
 
 
 using namespace RainbruRPG::OgreGui;

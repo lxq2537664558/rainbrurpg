@@ -32,7 +32,7 @@
 #include "launcheroptions.h"
 #include "languageselector.h"
 #include "xmloptions.h"
-#include "gameengine.h"
+#include "GameEngine.hpp"
 
 #include <fox-1.6/FXPNGImage.h>
 #include <fox-1.6/FXMessageBox.h>

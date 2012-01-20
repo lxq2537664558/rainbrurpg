@@ -34,7 +34,7 @@
 
 #include <iostream>
 
-#include "gameengine.h"
+#include "GameEngine.hpp"
 #include <logger.h>
 #include "guimanager.h"
 #include "skinmanager.h"
@@ -147,7 +147,11 @@ int main(int argc, char **argv){
 
   // Setting up Ogre::Root
   GlobalURI gu;
+#ifdef WIN32
+  std::string plugFN=gu.getShareFile("config/plugins-win32.cfg");
+#else
   std::string plugFN=gu.getShareFile("config/plugins.cfg");
+#endif
   std::string ogreFN=gu.getUserDirFile("ogre.cfg");
   Ogre::Root* root=new Ogre::Root(plugFN.c_str(), ogreFN.c_str(), "ogre.log");
 

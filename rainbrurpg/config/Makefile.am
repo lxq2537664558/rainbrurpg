@@ -1,4 +1,4 @@
-#  Copyright 2006-2011 Jerome PASQUIER
+#  Copyright 2006-2012 Jerome PASQUIER
 # 
 #  This file is part of RainbruRPG.
 #
@@ -21,6 +21,7 @@ datafilesdir = $(prefix)/share/RainbruRPG/config
 datafiles_DATA= options.xml			\
 		languages.xml			\
 		plugins.cfg			\
+		plugins-win32.cfg		\
 		ogre.cfg			\
 		resources.cfg			\
 		objects.xml			\

@@ -1,5 +1,10 @@
 2012-01-20 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/interdep/gameengine.*: CamelCase(d) and header .hpp(ed).
+
+	* src/client/main.cpp (main): Handles plusings-win.cfg.
+	* config/plugins-win32.cfg: created with .dll extensions.
+
 	* po/POTFILES.in: Fix the interdep creation related erros
 	due to move gameengine.cpp gamestate.cpp inputmanager.cpp
 	from src/maincore/ to src/interdep/.

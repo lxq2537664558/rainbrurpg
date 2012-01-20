@@ -43,7 +43,7 @@
 #include <singleton.h>
 #include <ogreimport.h>
 
-#include "gameengine.h"
+#include "GameEngine.hpp"
 #include "velocitycalculator.h"
 #include "vcconstant.h"
 //#include "messagebox.h"

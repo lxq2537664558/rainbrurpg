@@ -29,7 +29,7 @@
 #include <iostream>
 
 #include <logger.h>
-#include "gameengine.h"
+#include "GameEngine.hpp"
 
 /** The default constructor
   *

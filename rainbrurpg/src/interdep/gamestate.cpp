@@ -27,7 +27,7 @@
 
 #include "gamestate.h"
 
-#include "gameengine.h"
+#include "GameEngine.hpp"
 
 #include <OgreViewport.h>
 #include <Container.hpp>

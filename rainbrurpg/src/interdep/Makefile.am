@@ -1,7 +1,7 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
 
 noinst_LTLIBRARIES        = libinterdep.la
-libinterdep_la_SOURCES    = gameengine.cpp 		\
+libinterdep_la_SOURCES    = GameEngine.cpp 		\
 			    gamestate.cpp 		\
 			    inputmanager.cpp 		\
 			    NullWindowHandleException.cpp \

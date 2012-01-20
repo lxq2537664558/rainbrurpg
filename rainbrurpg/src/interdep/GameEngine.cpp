@@ -39,7 +39,7 @@
 #include "globaluri.h"
 #include "inputmanager.h"
 
-#include "gameengine.h"
+#include "GameEngine.hpp"
 
 #include <logger.h>
 #include <Brush.hpp>

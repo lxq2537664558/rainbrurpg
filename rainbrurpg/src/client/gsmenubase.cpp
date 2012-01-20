@@ -45,7 +45,7 @@
 #include "keyboardnavigation.h"
 #include "inputmanager.h"
 #include "inputwrapper.h"
-#include "gameengine.h"
+#include "GameEngine.hpp"
 #include "guimanager.h"
 #include "bggui.h"
 
