@@ -1,3 +1,17 @@
+2012-01-20 Jérôme Pasquier  <rainbru@free.fr>
+
+	* po/POTFILES.in: Fix the interdep creation related erros
+	due to move gameengine.cpp gamestate.cpp inputmanager.cpp
+	from src/maincore/ to src/interdep/.
+
+	* config/resources.cfg (General): Comment out the previous
+	directories related enties.
+	* configure.in (AC_CONFIG_FILES): Remove generation of
+	Makefile(s) for previous directories.
+	* data/gui/: old datafiles, maily CEGUI related moved to
+	OLD/client_data/ : imagesets, layouts, looknfeel, schemes,
+	XMLRefSchema.
+
 2012-01-18 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/maincore: multiples files move to src/interdep/.

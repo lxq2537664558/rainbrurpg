@@ -208,12 +208,7 @@ AC_CONFIG_FILES([Makefile			\
 	  data/Makefile				\
 	  data/fox/Makefile			\
 	  data/gui/Makefile			\
-	  data/gui/XMLRefSchema/Makefile	\
-	  data/gui/schemes/Makefile		\
-	  data/gui/imagesets/Makefile		\
-	  data/gui/looknfeel/Makefile		\
 	  data/gui/fonts/Makefile		\
-	  data/gui/layouts/Makefile		\
 	  data/gui/overlays/Makefile		\
 	  data/gui/ogreGui/Makefile		\
 	  \

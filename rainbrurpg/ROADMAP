@@ -359,7 +359,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** Code refactoring to follow coding standards
-**** Cross compilation to win32                                       [66%]
+**** TODO Cross compilation to win32                                  [66%]
      :CLOCK:
      CLOCK: [2011-01-05 mer 17:36]--[2011-01-05 mer 17:43] =>  0:07
      CLOCK: [2011-01-03 lun 17:32]--[2011-01-03 lun 17:53] =>  0:21
@@ -423,7 +423,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [ ] Should create RenderSystem_GL.dll from Ogre3D
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
-**** TODO Miscelaneous                                                [93%]
+**** DONE Miscelaneous                                                [100%]
+     CLOCK: [2012-01-20 ven. 10:47]--[2012-01-20 ven. 11:09] =>  0:22
      CLOCK: [2012-01-18 mer. 16:06]--[2012-01-18 mer. 16:50] =>  0:44
      CLOCK: [2012-01-12 jeu. 10:53]--[2012-01-12 jeu. 11:28] =>  0:35
      CLOCK: [2012-01-06 ven. 15:36]--[2012-01-06 ven. 16:09] =>  0:33
@@ -459,7 +460,9 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [X] May remove interdepencies ogreGui/Maincore 
       Create the src/interdep/ convenience library containing :
   GameEngine, GameState, InputManager, NullWindowHandleException, WindowHandle
-- [ ] Should remove unused datafiles
+- [X] Should remove unused datafiles
+      Mainly CEGUI needed files (no used anymore)
+      Move it to OLD/client_data/ (create a README file)
 *** DONE v0.0.6
 **** DONE OgreGui2 UML diagram                                        [100%]
      :CLOCK:

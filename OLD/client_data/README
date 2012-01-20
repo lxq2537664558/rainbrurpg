@@ -1,0 +1,5 @@
+Here are the old datafiles used by the rainbrurpg/ client. Mainly
+CEGUI needed files, moved here because unused since the switch to 
+ogreGui.
+
+These files were in rainbrurpg/data/gui/

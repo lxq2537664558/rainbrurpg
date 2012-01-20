@@ -70,15 +70,17 @@ src/common/xmlpersolist.cpp
 src/common/xmlserverlist.cpp
 src/common/xmltimestamp.cpp
 
+# in the 'interdep' convenience library
+src/interdep/gameengine.cpp
+src/interdep/gamestate.cpp
+src/interdep/inputmanager.cpp
+
 # in the 'maincore' library
 src/maincore/dumpogreobject.cpp
 src/maincore/environmentsetup.cpp
-src/maincore/gameengine.cpp
-src/maincore/gamestate.cpp
 src/maincore/gsgamebase.cpp
 src/maincore/gslocaltest.cpp
 src/maincore/highlightlistener.cpp
-src/maincore/inputmanager.cpp
 src/maincore/inputwrapper.cpp
 src/maincore/keyboardnavigation.cpp
 src/maincore/vcconstant.cpp

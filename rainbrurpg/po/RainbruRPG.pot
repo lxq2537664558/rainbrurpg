@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2011-12-14 11:47+0100\n"
+"POT-Creation-Date: 2012-01-20 11:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1348,7 +1348,7 @@ msgstr ""
 
 #: src/common/version.cpp:105
 msgid ""
-"Copyright (C) 2006-2011 Jerome PASQUIER\n"
+"Copyright (C) 2006-2012 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
 "and you are welcome to redistribute it under certain conditions.\n"
 "See the GNU General Public License for more details.\n"
@@ -1508,6 +1508,195 @@ msgstr ""
 msgid "An error occured while getting xmlPlayerList"
 msgstr ""
 
+#: src/interdep/gameengine.cpp:100
+msgid "Exiting GameEngine ..."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:116
+msgid "starting rendering"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:122
+msgid "An exception has occured!"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:125
+msgid "An exception has occured: "
+msgstr ""
+
+#: src/interdep/gameengine.cpp:132
+msgid "GameEngine::run ended"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a game state.
+#: src/interdep/gameengine.cpp:148
+#, c-format
+msgid "Cannot find %s state"
+msgstr ""
+
+#. TRANSLATORS: The parameter is the name of a game state.
+#: src/interdep/gameengine.cpp:153
+#, c-format
+msgid "Switching to %s state"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:158
+msgid "An error will occur : we are calling a non-inexisting gamestate"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:173
+msgid "Both game states type are Undefined"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:211
+msgid "Cleaning up GameEngine..."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:233
+msgid "GameEngine cleaned"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:240
+msgid "  Cleaning up GameStates..."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:278
+msgid "Trying to connect a user"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:288
+msgid ""
+"This user does not exist.\n"
+"Please create an account"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:291
+msgid "Wrong password."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:294
+msgid "Your email was not yet validated."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:297
+msgid "You are in blacklist."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:300
+msgid "An unknown error occured."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:308
+msgid "The login of this user failed"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:317
+msgid "The login is successfull"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a graphic renderer name.
+#: src/interdep/gameengine.cpp:335
+#, c-format
+msgid "Setting renderer '%s'"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:427
+msgid "The Ogre::Root cannot be initalized"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:478
+msgid "mSceneMgr is NULL"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:504
+msgid "Invalid OgreWindow"
+msgstr ""
+
+#. TRANSLATORS: The parameters are ressource settings.
+#: src/interdep/gameengine.cpp:543
+#, c-format
+msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:553
+msgid "All resources correctly setup"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:590
+msgid "Logging available scene manager"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a scene manager name.
+#: src/interdep/gameengine.cpp:599
+#, c-format
+msgid "Scene manager '%s' found."
+msgstr ""
+
+#: src/interdep/gameengine.cpp:611
+msgid "Loading all resources"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:622
+msgid "All resources loaded"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a ressource group name
+#: src/interdep/gameengine.cpp:635
+#, c-format
+msgid "Loading resource group '%s'"
+msgstr ""
+
+#. TRANSLATORS: The parameter is a ressource name
+#: src/interdep/gameengine.cpp:647
+#, c-format
+msgid "Loading ressource '%s'"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:661
+msgid "Switching from menuType to gameType"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:673
+msgid "Clearing Scene"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:679
+msgid "Setting new scene manager"
+msgstr ""
+
+#: src/interdep/gameengine.cpp:719
+msgid "LocalTest environment successfully initialized"
+msgstr ""
+
+#: src/interdep/gamestate.cpp:55
+msgid "Initializing game state super-class"
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:184
+msgid "RainbruRPG::Core::InputManager::mMouse is NULL. Program should crash."
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:190
+msgid ""
+"RainbruRPG::Core::InputManager::mKeyboard is NULL. Program should crash."
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:231
+msgid "Adding a mouse listener"
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:287
+msgid "Removing MouseListener"
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:295
+msgid "MouseListener not found"
+msgstr ""
+
+#: src/interdep/inputmanager.cpp:459
+msgid "InputManager::keyPressed called"
+msgstr ""
+
 #: src/maincore/dumpogreobject.cpp:44
 msgid "Debugging ogre rectangle :"
 msgstr ""
@@ -1552,170 +1741,6 @@ msgstr ""
 msgid "Environment correctly setup"
 msgstr ""
 
-#: src/maincore/gameengine.cpp:100
-msgid "Exiting GameEngine ..."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:116
-msgid "starting rendering"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:122
-msgid "An exception has occured!"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:125
-msgid "An exception has occured: "
-msgstr ""
-
-#: src/maincore/gameengine.cpp:132
-msgid "GameEngine::run ended"
-msgstr ""
-
-#. TRANSLATORS: The parameter is the name of a game state.
-#: src/maincore/gameengine.cpp:148
-#, c-format
-msgid "Cannot find %s state"
-msgstr ""
-
-#. TRANSLATORS: The parameter is the name of a game state.
-#: src/maincore/gameengine.cpp:153
-#, c-format
-msgid "Switching to %s state"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:158
-msgid "An error will occur : we are calling a non-inexisting gamestate"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:173
-msgid "Both game states type are Undefined"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:211
-msgid "Cleaning up GameEngine..."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:233
-msgid "GameEngine cleaned"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:240
-msgid "  Cleaning up GameStates..."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:278
-msgid "Trying to connect a user"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:288
-msgid ""
-"This user does not exist.\n"
-"Please create an account"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:291
-msgid "Wrong password."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:294
-msgid "Your email was not yet validated."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:297
-msgid "You are in blacklist."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:300
-msgid "An unknown error occured."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:308
-msgid "The login of this user failed"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:317
-msgid "The login is successfull"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a graphic renderer name.
-#: src/maincore/gameengine.cpp:335
-#, c-format
-msgid "Setting renderer '%s'"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:427
-msgid "The Ogre::Root cannot be initalized"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:478
-msgid "mSceneMgr is NULL"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:504
-msgid "Invalid OgreWindow"
-msgstr ""
-
-#. TRANSLATORS: The parameters are ressource settings.
-#: src/maincore/gameengine.cpp:543
-#, c-format
-msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:553
-msgid "All resources correctly setup"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:590
-msgid "Logging available scene manager"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a scene manager name.
-#: src/maincore/gameengine.cpp:599
-#, c-format
-msgid "Scene manager '%s' found."
-msgstr ""
-
-#: src/maincore/gameengine.cpp:611
-msgid "Loading all resources"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:622
-msgid "All resources loaded"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a ressource group name
-#: src/maincore/gameengine.cpp:635
-#, c-format
-msgid "Loading resource group '%s'"
-msgstr ""
-
-#. TRANSLATORS: The parameter is a ressource name
-#: src/maincore/gameengine.cpp:647
-#, c-format
-msgid "Loading ressource '%s'"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:661
-msgid "Switching from menuType to gameType"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:673
-msgid "Clearing Scene"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:679
-msgid "Setting new scene manager"
-msgstr ""
-
-#: src/maincore/gameengine.cpp:719
-msgid "LocalTest environment successfully initialized"
-msgstr ""
-
-#: src/maincore/gamestate.cpp:55
-msgid "Initializing game state super-class"
-msgstr ""
-
 #: src/maincore/gsgamebase.cpp:40
 msgid "Constructing a gsGameBase"
 msgstr ""
@@ -1726,31 +1751,6 @@ msgstr ""
 
 #: src/maincore/gsgamebase.cpp:78
 msgid "gsGameBase::resume called"
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:184
-msgid "RainbruRPG::Core::InputManager::mMouse is NULL. Program should crash."
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:190
-msgid ""
-"RainbruRPG::Core::InputManager::mKeyboard is NULL. Program should crash."
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:231
-msgid "Adding a mouse listener"
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:287
-msgid "Removing MouseListener"
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:295
-msgid "MouseListener not found"
-msgstr ""
-
-#: src/maincore/inputmanager.cpp:459
-msgid "InputManager::keyPressed called"
 msgstr ""
 
 #: src/maincore/vcconstant.cpp:62

@@ -17,10 +17,12 @@
 #  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 #  02110-1301  USA
 
-SUBDIRS = fonts 			\
-	  overlays			\
-	  ogreGui
+datafilesdir = $(prefix)/share/RainbruRPG/data/gui/layouts/
+datafiles_DATA= mainmenu.layout			\
+		connection.layout		\
+		dialogsystem.layout		\
+		createAccount.layout		\
+		serverList.layout
 
+EXTRA_DIST = $(datafiles_DATA)
 
-#datafilesdir = $(prefix)/share/RainbruRPG/data
-#datafiles_DATA= GLX_icon.png

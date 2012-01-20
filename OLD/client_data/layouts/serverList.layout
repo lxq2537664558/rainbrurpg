@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="RainbruRPG/ServerList" >
+        <Property Name="InheritsAlpha" Value="False" />
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="Vanilla/Button" Name="RainbruRPG/ServerList/Back" >
+            <Property Name="Text" Value="Back" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.031928,0},{0.857404,0},{0.278916,0},{0.941015,0}}" />
+        </Window>
+        <Window Type="TaharezLook/FrameWindow" Name="RainbruRPG/ServerList/" >
+            <Property Name="Text" Value="Server list" />
+            <Property Name="TitlebarFont" Value="Commonwealth-10" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="TitlebarEnabled" Value="True" />
+            <Property Name="UnifiedAreaRect" Value="{{0.021988,0},{0.0306157,0},{0.970783,0},{0.826373,0}}" />
+            <Window Type="TaharezLook/MultiColumnList" Name="RainbruRPG/ServerList/List" >
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{0.038095,0},{0.219225,0},{0.964283,0},{0.852672,0}}" />
+            </Window>
+            <Window Type="TaharezLook/StaticText" Name="RainbruRPG/ServerList//1" >
+                <Property Name="Text" Value="Please select a server in the list below. Click on the Refresh button if you want the list to be updated." />
+                <Property Name="FrameEnabled" Value="False" />
+                <Property Name="HorzFormatting" Value="WordWrapLeftAligned" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="VertFormatting" Value="TopAligned" />
+                <Property Name="UnifiedAreaRect" Value="{{0.0396826,0},{0.0910425,0},{0.964286,0},{0.206941,0}}" />
+                <Property Name="BackgroundEnabled" Value="False" />
+            </Window>
+            <Window Type="TaharezLook/Button" Name="RainbruRPG/ServerList/Refresh" >
+                <Property Name="Text" Value="Refresh" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{0.042857,0},{0.897171,0},{0.299207,0},{0.973258,0}}" />
+            </Window>
+            <Window Type="TaharezLook/Button" Name="RainbruRPG/ServerList/Connect" >
+                <Property Name="Font" Value="Commonwealth-10" />
+                <Property Name="Text" Value="Connect" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{0.353548,0},{0.892754,0},{0.609898,0},{0.968841,0}}" />
+            </Window>
+            <Window Type="TaharezLook/StaticText" Name="RainbruRPG/ServerList/nbServers" >
+                <Property Name="Text" Value="Servers : &lt;Not yet set&gt;" />
+                <Property Name="FrameEnabled" Value="False" />
+                <Property Name="HorzFormatting" Value="RightAligned" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{0.714087,0},{0.894486,0},{0.964087,0},{0.961478,0}}" />
+                <Property Name="BackgroundEnabled" Value="False" />
+            </Window>
+        </Window>
+    </Window>
+</GUILayout>
