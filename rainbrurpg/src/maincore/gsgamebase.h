@@ -36,8 +36,8 @@
 #include <ogreimport.h>
 #include <string>
 #include <rainbrudef.h> // For the GNU gettext stuff
+#include <GameState.hpp>
 
-#include "gamestate.h"
 #include "inputwrapper.h"
 
 using namespace Ogre;

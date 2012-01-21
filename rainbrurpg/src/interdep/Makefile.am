@@ -2,8 +2,8 @@
 
 noinst_LTLIBRARIES        = libinterdep.la
 libinterdep_la_SOURCES    = GameEngine.cpp 		\
-			    gamestate.cpp 		\
-			    inputmanager.cpp 		\
+			    GameState.cpp 		\
+			    InputManager.cpp 		\
 			    NullWindowHandleException.cpp \
 		            WindowHandle.cpp
 

@@ -31,13 +31,13 @@
 
 #include <assert.h>
 
-#include "gamestate.h"
+#include "GameState.hpp"
 
 #include "gslocaltest.h"
 
 #include "xmlobjectlist.h"
 #include "globaluri.h"
-#include "inputmanager.h"
+#include "InputManager.hpp"
 
 #include "GameEngine.hpp"
 

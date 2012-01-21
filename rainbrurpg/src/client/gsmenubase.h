@@ -44,7 +44,7 @@
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-#include "gamestate.h"
+#include <GameState.hpp>
 
 using namespace Ogre;
 

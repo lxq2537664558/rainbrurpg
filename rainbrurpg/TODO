@@ -114,15 +114,16 @@ A system that serialize widgets position and configuration
    Libraries versionning in doc/libVersionning.html and configure.in
    FT is the ROADMAP file time (C-c C-x C-d)
 
-* v0.0.5-214 (02 dec 2011 - ???) SLOC ??? UT ??? FT ??:??
-- (15) Some filenames CamelCased and .hpp(ed)
-   GameEngine
-- (14) Handles plugins.cfg for win32
-- (13) old files from data/gui/ moved to OLD/client_date
-   imagesets, layouts, looknfeel, schemes, XMLRefSchema
-- (12) Avoid circular dependencies between ogreGui and maincore
-   using the src/interdep convenience library
+* v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
 
+* v0.0.5-214 (02 dec 2011 - 21 jan 2012) SLOC 42,537 UT 270 FT 110:26
+- Some filenames CamelCased and .hpp(ed)
+   GameEngine, GameState, InputManager
+- Handles plugins.cfg for win32
+- old files from data/gui/ moved to OLD/client_date
+   imagesets, layouts, looknfeel, schemes, XMLRefSchema
+- Avoid circular dependencies between ogreGui and maincore
+   using the src/interdep convenience library
 - Trying to understand ogreGui/maincore circular dependencies
 - Update GNU headers date for 2012
 - Fix some configure warnings

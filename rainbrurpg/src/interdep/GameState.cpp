@@ -25,7 +25,7 @@
   *
   */
 
-#include "gamestate.h"
+#include "GameState.hpp"
 
 #include "GameEngine.hpp"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-20 11:06+0100\n"
+"POT-Creation-Date: 2012-01-21 08:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1508,192 +1508,192 @@ msgstr ""
 msgid "An error occured while getting xmlPlayerList"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:100
+#: src/interdep/GameEngine.cpp:100
 msgid "Exiting GameEngine ..."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:116
+#: src/interdep/GameEngine.cpp:116
 msgid "starting rendering"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:122
+#: src/interdep/GameEngine.cpp:122
 msgid "An exception has occured!"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:125
+#: src/interdep/GameEngine.cpp:125
 msgid "An exception has occured: "
 msgstr ""
 
-#: src/interdep/gameengine.cpp:132
+#: src/interdep/GameEngine.cpp:132
 msgid "GameEngine::run ended"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: src/interdep/gameengine.cpp:148
+#: src/interdep/GameEngine.cpp:148
 #, c-format
 msgid "Cannot find %s state"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a game state.
-#: src/interdep/gameengine.cpp:153
+#: src/interdep/GameEngine.cpp:153
 #, c-format
 msgid "Switching to %s state"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:158
+#: src/interdep/GameEngine.cpp:158
 msgid "An error will occur : we are calling a non-inexisting gamestate"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:173
+#: src/interdep/GameEngine.cpp:173
 msgid "Both game states type are Undefined"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:211
+#: src/interdep/GameEngine.cpp:211
 msgid "Cleaning up GameEngine..."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:233
+#: src/interdep/GameEngine.cpp:233
 msgid "GameEngine cleaned"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:240
+#: src/interdep/GameEngine.cpp:240
 msgid "  Cleaning up GameStates..."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:278
+#: src/interdep/GameEngine.cpp:278
 msgid "Trying to connect a user"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:288
+#: src/interdep/GameEngine.cpp:288
 msgid ""
 "This user does not exist.\n"
 "Please create an account"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:291
+#: src/interdep/GameEngine.cpp:291
 msgid "Wrong password."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:294
+#: src/interdep/GameEngine.cpp:294
 msgid "Your email was not yet validated."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:297
+#: src/interdep/GameEngine.cpp:297
 msgid "You are in blacklist."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:300
+#: src/interdep/GameEngine.cpp:300
 msgid "An unknown error occured."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:308
+#: src/interdep/GameEngine.cpp:308
 msgid "The login of this user failed"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:317
+#: src/interdep/GameEngine.cpp:317
 msgid "The login is successfull"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a graphic renderer name.
-#: src/interdep/gameengine.cpp:335
+#: src/interdep/GameEngine.cpp:335
 #, c-format
 msgid "Setting renderer '%s'"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:427
+#: src/interdep/GameEngine.cpp:427
 msgid "The Ogre::Root cannot be initalized"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:478
+#: src/interdep/GameEngine.cpp:478
 msgid "mSceneMgr is NULL"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:504
+#: src/interdep/GameEngine.cpp:504
 msgid "Invalid OgreWindow"
 msgstr ""
 
 #. TRANSLATORS: The parameters are ressource settings.
-#: src/interdep/gameengine.cpp:543
+#: src/interdep/GameEngine.cpp:543
 #, c-format
 msgid "Loading ressource : secName='%s' typeName='%s' archName='%s'"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:553
+#: src/interdep/GameEngine.cpp:553
 msgid "All resources correctly setup"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:590
+#: src/interdep/GameEngine.cpp:590
 msgid "Logging available scene manager"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a scene manager name.
-#: src/interdep/gameengine.cpp:599
+#: src/interdep/GameEngine.cpp:599
 #, c-format
 msgid "Scene manager '%s' found."
 msgstr ""
 
-#: src/interdep/gameengine.cpp:611
+#: src/interdep/GameEngine.cpp:611
 msgid "Loading all resources"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:622
+#: src/interdep/GameEngine.cpp:622
 msgid "All resources loaded"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource group name
-#: src/interdep/gameengine.cpp:635
+#: src/interdep/GameEngine.cpp:635
 #, c-format
 msgid "Loading resource group '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a ressource name
-#: src/interdep/gameengine.cpp:647
+#: src/interdep/GameEngine.cpp:647
 #, c-format
 msgid "Loading ressource '%s'"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:661
+#: src/interdep/GameEngine.cpp:661
 msgid "Switching from menuType to gameType"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:673
+#: src/interdep/GameEngine.cpp:673
 msgid "Clearing Scene"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:679
+#: src/interdep/GameEngine.cpp:679
 msgid "Setting new scene manager"
 msgstr ""
 
-#: src/interdep/gameengine.cpp:719
+#: src/interdep/GameEngine.cpp:719
 msgid "LocalTest environment successfully initialized"
 msgstr ""
 
-#: src/interdep/gamestate.cpp:55
+#: src/interdep/GameState.cpp:55
 msgid "Initializing game state super-class"
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:184
+#: src/interdep/InputManager.cpp:184
 msgid "RainbruRPG::Core::InputManager::mMouse is NULL. Program should crash."
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:190
+#: src/interdep/InputManager.cpp:190
 msgid ""
 "RainbruRPG::Core::InputManager::mKeyboard is NULL. Program should crash."
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:231
+#: src/interdep/InputManager.cpp:231
 msgid "Adding a mouse listener"
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:287
+#: src/interdep/InputManager.cpp:287
 msgid "Removing MouseListener"
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:295
+#: src/interdep/InputManager.cpp:295
 msgid "MouseListener not found"
 msgstr ""
 
-#: src/interdep/inputmanager.cpp:459
+#: src/interdep/InputManager.cpp:459
 msgid "InputManager::keyPressed called"
 msgstr ""
 

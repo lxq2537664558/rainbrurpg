@@ -71,9 +71,9 @@ src/common/xmlserverlist.cpp
 src/common/xmltimestamp.cpp
 
 # in the 'interdep' convenience library
-src/interdep/gameengine.cpp
-src/interdep/gamestate.cpp
-src/interdep/inputmanager.cpp
+src/interdep/GameEngine.cpp
+src/interdep/GameState.cpp
+src/interdep/InputManager.cpp
 
 # in the 'maincore' library
 src/maincore/dumpogreobject.cpp

@@ -17,7 +17,7 @@
 @ifinfo
 @command{RainbruRPG} is an in-development 3D Multiplayer Online Role-Playing Game
 
-Copyright (C) 2006-2011 J@'er@^ome PASQUIER
+Copyright (C) 2006-2012 J@'er@^ome PASQUIER
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -44,7 +44,7 @@ by the Foundation.
 @titlepage
 @title RainbruRPG
 @subtitle A in-development Multiplayer Online Role-Playing Game
-@subtitle For RainbruRPG Version @value{VERSION}-213
+@subtitle For RainbruRPG Version @value{VERSION}-214
 @subtitle Last update @value{UPDATED}
 @author by J@'er@^ome PASQUIER
 

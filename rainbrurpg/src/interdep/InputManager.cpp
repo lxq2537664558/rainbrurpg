@@ -25,7 +25,7 @@
   *
   */
 
-#include "inputmanager.h"
+#include "InputManager.hpp"
 
 #include <logger.h>
 

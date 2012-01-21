@@ -2,6 +2,9 @@
 
 OVERALL TODO
 
+* TODO: stats.pl fails to call sloccount */src/
+WARNING! Directory src pre-existed when adding '???'
+
 * SPARETIME : switch to NewProjectLayout
 - client uses new logger
 

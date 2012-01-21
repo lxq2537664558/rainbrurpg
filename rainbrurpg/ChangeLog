@@ -1,5 +1,12 @@
 2012-01-20 Jérôme Pasquier  <rainbru@free.fr>
 
+	* po/POTFILES.in: CamelCase(d) and header .hpp(ed) interdep/ filenames.
+
+	* src/interdep/inputmanager.*: CamelCase(d) and header .hpp(ed).
+	* src/interdep/gamestate.*: CamelCase(d) and header .hpp(ed).
+
+2012-01-20 Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/interdep/gameengine.*: CamelCase(d) and header .hpp(ed).
 
 	* src/client/main.cpp (main): Handles plusings-win.cfg.

@@ -40,10 +40,10 @@
 //#include <bgwindow.h>
 #include <staticimage.h>
 #include <TextureNotFoundException.hpp>
+#include <InputManager.hpp>
 
 #include "velocitycalculator.h"
 #include "keyboardnavigation.h"
-#include "inputmanager.h"
 #include "inputwrapper.h"
 #include "GameEngine.hpp"
 #include "guimanager.h"
