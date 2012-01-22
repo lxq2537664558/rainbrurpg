@@ -180,6 +180,7 @@ AC_PATH_PROG(DLLWRAP, $dllwrap)
 dnl 'RainbruRPG.html/Makefile' removed because server is broken
 AC_CONFIG_FILES([Makefile			\
           po/Makefile.in			\
+          m4/Makefile				\
 	  \
 	  ext/Makefile				\
 	  doc/Makefile				\
@@ -190,6 +191,7 @@ AC_CONFIG_FILES([Makefile			\
           src/interdep/Makefile			\
           src/terminalapi/Makefile		\
 	  src/maincore/Makefile			\
+	  src/oldOgreGui/Makefile		\
 	  src/ogreGui/Makefile			\
 	  src/design/Makefile			\
 	  src/client/Makefile			\

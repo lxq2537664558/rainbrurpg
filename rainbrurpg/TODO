@@ -115,24 +115,8 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
+- Add missing files in archive 
+   singleton.h, DummyRenderSystem.hpp, rb_uml.m4, tnotelist.h
+   tidentreturn.h, ftpdef.h, src/client/*.h
 
-* v0.0.5-214 (02 dec 2011 - 21 jan 2012) SLOC 42,537 UT 270 FT 110:26
-- Some filenames CamelCased and .hpp(ed)
-   GameEngine, GameState, InputManager
-- Handles plugins.cfg for win32
-- old files from data/gui/ moved to OLD/client_date
-   imagesets, layouts, looknfeel, schemes, XMLRefSchema
-- Avoid circular dependencies between ogreGui and maincore
-   using the src/interdep convenience library
-- Trying to understand ogreGui/maincore circular dependencies
-- Update GNU headers date for 2012
-- Fix some configure warnings
-   Using AM_GNU_GETTEXT_VERSION, m4: RB_CHECK_LIBFOX integer warning
-- Moved tools/xident to ../OLD/
-- Moved IrrClient/ to ../OLD/
-- svn ignores Makefile from multiples directories
-- Edited svn:ignore for multiples directories
-- Remove some generated files from svn repository
-- version.cpp logs some compilation-time options
-- BUILD_RELEASE issue fixed
-- Changed ROADMAP file priority and version number
+   

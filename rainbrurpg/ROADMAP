@@ -359,8 +359,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-01-22 dim. 09:26]--[2012-01-22 dim. 11:47] =>  2:21
      CLOCK: [2012-01-21 sam. 07:44]--[2012-01-21 sam. 07:55] =>  0:11
      CLOCK: [2012-01-20 ven. 14:51]--[2012-01-20 ven. 15:20] =>  0:29
+- [ ] Fix some missing files in archive
 - [-] CamelCase all filenames and header are called .hpp
       - [X] in interdep/
       - [ ] in common/
@@ -374,7 +376,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] in testHelpers/
       - [ ] in tests/
       - [ ] in tools/
-- [ ] move oldOgreGui to OLD/
 - [ ] moev terminalapi to OLD/
 **** TODO Cross compilation to win32                                  [72%]
      CLOCK: [2012-01-20 ven. 13:58]--[2012-01-20 ven. 14:02] =>  0:04

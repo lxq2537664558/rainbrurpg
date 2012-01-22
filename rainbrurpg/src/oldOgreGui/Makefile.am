@@ -130,15 +130,16 @@ library_include_HEADERS = $(h_sources)
 
 librainbrurpg_ogregui_la_INCLUDES = -I$(top_srcdir)
 
-INCLUDES = -I$(top_srcdir)/common			\
-	   -I$(top_srcdir)/maincore			\
+INCLUDES = -I$(top_srcdir)/src/common			\
+	   -I$(top_srcdir)/src/maincore			\
 	   $(OGRE_CFLAGS)				\
 	   $(OIS_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\
 	   $(FREETYPE_CFLAGS)				\
 	   $(CFLAGS)
 
-librainbrurpg_ogregui_la_SOURCES= $(h_sources) $(cc_sources)
+# We must install headers but not build this library
+librainbrurpg_ogregui_la_SOURCES= $(h_sources) # $(cc_sources)
 
 librainbrurpg_ogregui_la_LIBADD= 
 #-lrainbrurpg-common			\
@@ -152,8 +153,8 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  $(OGRE_LIBS)				\
 				  $(SIGC_LIBS)				\
 				  $(FREETYPE_LIBS)			\
-				  -L$(top_srcdir)/common/.libs		\
-				  -L$(top_srcdir)/maincore/.libs
+				  -L$(top_srcdir)/src/common/.libs	\
+				  -L$(top_srcdir)/src/maincore/.libs
 
 dll:
 	source ../create_dll.sh &&		\

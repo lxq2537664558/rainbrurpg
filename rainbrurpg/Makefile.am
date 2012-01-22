@@ -1,4 +1,4 @@
-#  Copyright 2006-2011 Jerome PASQUIER
+#  Copyright 2006-2012 Jerome PASQUIER
 # 
 #  This file is part of RainbruRPG.
 #
@@ -21,7 +21,7 @@
 # You need the texinfo package
 
 # The sources
-SUBDIRS = doc po ext src
+SUBDIRS = doc po m4 ext src
 
 # The data files
 SUBDIRS+= config data media mapdata
@@ -32,10 +32,14 @@ SUBDIRS+= config data media mapdata
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = terminalapi-1.0.pc
 
-EXTRA_DIST= config.rpath m4/ChangeLog RainbruRPG.lsm.in  \
+EXTRA_DIST= config.rpath 				 \
+	   RainbruRPG.lsm.in  				 \
 	   RainbruRPG.info 				 \
 	   RainbruRPG.spec.in				 \
-	   Doxyfile
+	   Doxyfile					 \
+	   RainbruRPG.6					 \
+	   RainbruRPG-server.6				 \
+	   RainbruRPG-editor.6
 
 #  if you write a self-test script named `chk', uncomment the
 #  following and add `chk' to the EXTRA_DIST list

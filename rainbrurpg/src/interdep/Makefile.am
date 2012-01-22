@@ -7,6 +7,15 @@ libinterdep_la_SOURCES    = GameEngine.cpp 		\
 			    NullWindowHandleException.cpp \
 		            WindowHandle.cpp
 
+h_sources= GameEngine.hpp		\
+	   GameState.hpp		\
+	   InputManager.hpp		\
+	   NullWindowHandleException.hpp\
+	   WindowHandle.hpp
+
+library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/interdep
+library_include_HEADERS = $(h_sources)
+
 libinterdep_la_LIBADD         = 
 
 libinterdep_la_CPPFLAGS= 				\

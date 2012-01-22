@@ -1,4 +1,19 @@
-2012-01-20 Jérôme Pasquier  <rainbru@free.fr>
+2012-01-22 Jérôme Pasquier  <rainbru@free.fr>
+
+	* Makefile.am (EXTRA_DIST): Add manpages to make the distribution
+	finally complete.
+
+	* src/client/Makefile.am (rainbrurpg_HEADERS=): Added all headers files
+	(missing in the arcive).
+
+	* m4/: Add Makefile.am to fix missing rb_uml.m4 file.
+
+	* stc/testHelpers/Makefile.am (RenderSystem_Dummy_la_HEADERS): Add
+	missing file DummyRenderSystem.hpp.
+	* src/common/Makefile.am (h_sources): Add missing files singleton.h,
+	tnotelist.h, tidentreturn.h, ftpdef.h to archive.
+
+2012-01-21 Jérôme Pasquier  <rainbru@free.fr>
 
 	* po/POTFILES.in: CamelCase(d) and header .hpp(ed) interdep/ filenames.
 

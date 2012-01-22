@@ -39,8 +39,10 @@ INCLUDES = -I$(top_srcdir)/src/common/		\
 libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS)
 
 # Dummy render system
+RenderSystem_Dummy_ladir=$(includedir)/$(GENERIC_LIBRARY_NAME)/testHelpers
 pkg_LTLIBRARIES = RenderSystem_Dummy.la
 pkgdir=$(prefix)/lib/OGRE/
+RenderSystem_Dummy_la_HEADERS = DummyRenderSystem.hpp
 RenderSystem_Dummy_la_SOURCES = DummyRenderSystem.cpp
 RenderSystem_Dummy_la_LDFLAGS = -module -avoid-version
 RenderSystem_Dummy_la_LIBTOOLFLAGS = --tag=disable-static

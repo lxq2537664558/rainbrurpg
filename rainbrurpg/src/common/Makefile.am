@@ -47,6 +47,7 @@ h_sources= AttributeModifierList.hpp		\
 	   enetbase.h				\
 	   enetclient.h				\
 	   ftpclient.h				\
+	   ftpdef.h				\
 	   globaluri.h				\
 	   hashfile.h				\
 	   hashpassword.h			\
@@ -78,9 +79,12 @@ h_sources= AttributeModifierList.hpp		\
 	   rainbrudef.h				\
 	   serverlistitem.h			\
 	   sha1.h				\
+	   singleton.h				\
 	   stringconv.h				\
 	   taccountlist.h			\
 	   timer.h				\
+	   tidentreturn.h			\
+	   tnotelist.h				\
 	   version.h				\
 	   xmlaccountlist.h			\
 	   xmlattrbcatlist.h			\
