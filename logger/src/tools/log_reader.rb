@@ -21,7 +21,7 @@ require 'Qt4'
 require 'qtuitools'
 require 'yaml'
 
-require 'MainWindow_ui'
+require "MainWindow_ui"
 
 NA = "N/A" # The 'not handled' value
 

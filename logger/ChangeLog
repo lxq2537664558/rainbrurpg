@@ -1,3 +1,7 @@
+2012-01-25  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tool/Makefile.am: fix the rule builing MainWindow_ui.rb.
+
 2012-01-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tool/log_reader.rb: print execution date and time in the UI.
