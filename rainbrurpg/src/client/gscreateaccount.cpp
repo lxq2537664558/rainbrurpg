@@ -27,7 +27,7 @@
 
 #include "gscreateaccount.h"
 
-#include <curlaccountadd.h>
+//#include <curlaccountadd.h>
 #include <logger.h>
 
 #include "keyboardnavigation.h"

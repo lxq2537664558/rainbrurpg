@@ -48,7 +48,7 @@
 #include <list>
 #include <iostream>
 
-#include "chartserie.h"
+#include "ChartSerie.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 /// Defines PI

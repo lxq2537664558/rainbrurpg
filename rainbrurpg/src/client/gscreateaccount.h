@@ -34,7 +34,7 @@
 #define GS_CREATE_ACCOUNT_H
 
 #include <hashpassword.h>
-#include <curlaccountadd.h>
+#include <CurlAccountAdd.hpp>
 
 #include "gsmenubase.h"
 #include "vcconstant.h"

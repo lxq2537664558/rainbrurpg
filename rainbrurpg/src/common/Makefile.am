@@ -24,13 +24,13 @@ librainbrurpg_common.adir=$(libdir)
 # Please keep this file list sorted
 h_sources= AttributeModifierList.hpp		\
 	   BoostImport.hpp			\
-	   chartbase.h				\
-	   chartserie.h				\
-	   chartline.h				\
-	   clientconnect.h			\
-	   curlaccountadd.h			\
-	   curlaccountconfirmmail.h		\
-	   curlaccountdelete.h			\
+	   ChartBase.hpp			\
+	   ChartLine.hpp			\
+	   ChartSerie.hpp			\
+	   ClientConnect.hpp			\
+	   CurlAccountAdd.hpp			\
+	   CurlAccountConfirmMail.hpp		\
+	   CurlAccountDelete.hpp		\
 	   curlaccounttoggleblacklist.h		\
 	   curlfiletoxml.h			\
 	   curlgetfile.h			\
@@ -100,13 +100,13 @@ h_sources= AttributeModifierList.hpp		\
 
 # Please keep this file list sorted
 cc_sources=AttributeModifierList.cpp		\
-	  chartbase.cpp				\
-	  chartline.cpp				\
-	  chartserie.cpp			\
-	  clientconnect.cpp			\
-	  curlaccountadd.cpp			\
-	  curlaccountconfirmmail.cpp		\
-	  curlaccountdelete.cpp			\
+	  ChartBase.cpp				\
+	  ChartLine.cpp				\
+	  ChartSerie.cpp			\
+	  ClientConnect.cpp			\
+	  CurlAccountAdd.cpp			\
+	  CurlAccountConfirmMail.cpp		\
+	  CurlAccountDelete.cpp			\
 	  curlaccounttoggleblacklist.cpp	\
 	  curlfiletoxml.cpp			\
 	  curlgetfile.cpp			\

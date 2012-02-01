@@ -25,7 +25,7 @@
   *
   */
 
-#include "curlaccountadd.h"
+#include "CurlAccountAdd.hpp"
 
 #include "xmlaccountlist.h"
 #include "hashpassword.h"

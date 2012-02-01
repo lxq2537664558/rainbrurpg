@@ -25,7 +25,7 @@
   *
   */
 
-#include "curlaccountconfirmmail.h"
+#include "CurlAccountConfirmMail.hpp"
 
 #include "xmlaccountlist.h"
 #include "globaluri.h"

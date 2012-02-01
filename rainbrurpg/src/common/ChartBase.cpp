@@ -24,7 +24,7 @@
   * Implements the base-class of all generated charts
   *
   */
-#include "chartbase.h"
+#include "ChartBase.hpp"
 
 /** The sized constructor
   *

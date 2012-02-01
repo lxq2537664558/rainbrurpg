@@ -25,7 +25,7 @@
   *
   */
 
-#include "chartline.h"
+#include "ChartLine.hpp"
 
 /** The sized constructor
   *

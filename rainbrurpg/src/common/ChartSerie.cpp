@@ -25,7 +25,7 @@
   *
   */
 
-#include "chartserie.h"
+#include "ChartSerie.hpp"
 #include <logger.h>
 
 /** The default constructor

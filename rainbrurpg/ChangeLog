@@ -1,3 +1,17 @@
+2012-02-01 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+	* src/common/curlaccountdelete.h|.cpp: CamelCased and header
+	called hpp.
+	* src/common/curlaccountconfirmmail.h|.cpp: CamelCased and
+	header called hpp.
+	* src/common/curlaccountadd.h|.cpp: CamelCased and header called hpp.
+	* src/common/clientconnect.h|.cpp: CamelCased and header called hpp.
+	* src/common/chartserie.h|.cpp: CamelCased and header called hpp.
+	* src/common/chartline.h|.cpp: CamelCased and header called hpp.
+	* src/common/chartbase.h|.cpp: CamelCased and header called hpp.
+
 2012-01-22 Jérôme Pasquier  <rainbru@free.fr>
 
 	* Makefile.am (EXTRA_DIST): Add manpages to make the distribution

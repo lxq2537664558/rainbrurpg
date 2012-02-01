@@ -24,7 +24,7 @@
   * Implements the class needed to delete accounts
   *
   */
-#include "curlaccountdelete.h"
+#include "CurlAccountDelete.hpp"
 
 #include "globaluri.h"
 #include "hashpassword.h"

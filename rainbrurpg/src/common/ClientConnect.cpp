@@ -25,7 +25,7 @@
   *
   */
 
-#include "clientconnect.h"
+#include "ClientConnect.hpp"
 
 using namespace RainbruRPG::Gui;
 

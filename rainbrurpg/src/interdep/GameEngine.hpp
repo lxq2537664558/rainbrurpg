@@ -46,7 +46,7 @@
 #include <string>
 #include <singleton.h>
 #include <stringconv.h>
-#include <clientconnect.h>
+#include <ClientConnect.hpp>
 
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>

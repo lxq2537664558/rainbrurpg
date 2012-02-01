@@ -37,7 +37,7 @@
 #include <gdfonts.h>
 #include <sstream>
 
-#include <chartbase.h>
+#include <ChartBase.hpp>
 #include <logger.h>
 
 #include "rainbrudef.h"
