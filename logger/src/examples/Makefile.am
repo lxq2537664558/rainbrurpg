@@ -1,4 +1,9 @@
 bin_PROGRAMS=logger-test
+
+logger_testdir=$(libdir)/examples
+
+logger_test_HEADERS=Point.hpp
+
 logger_test_SOURCES=logger-test.cpp Point.cpp
 
 INCLUDES=-I../

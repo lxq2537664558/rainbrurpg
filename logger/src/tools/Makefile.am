@@ -23,3 +23,5 @@ clean-local:
 	rm -fr MainWindow_ui.rb
 
 logreader_LINK = @true # Disable linking
+
+EXTRA_DIST=MainWindow.ui log_reader.rb test.yaml

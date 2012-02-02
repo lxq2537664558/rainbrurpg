@@ -1,3 +1,12 @@
+2012-02-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/Makefile.am (EXTRA_DIST): Added missing files MainWindow.ui,
+	log_reader.rb and test.yaml to archive.
+	* src/examples/Makefile.am (HEADERS): Added missing files Point.hpp
+	to archive.
+	* src/Makefile.am (h_sources): Added missing files Object.hpp
+	to archive.
+
 2012-01-25  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tool/Makefile.am: fix the rule builing MainWindow_ui.rb.

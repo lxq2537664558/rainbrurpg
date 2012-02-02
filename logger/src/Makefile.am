@@ -12,6 +12,7 @@ h_sources= Logger.hpp			\
 	   LoggerOutputTty.hpp		\
 	   LoggerOutputFile.hpp		\
 	   LoggerOutputYaml.hpp		\
+	   Object.hpp			\
 	   ObjectAttribute.hpp		\
 	   ObjectInspector.hpp
 

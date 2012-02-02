@@ -186,6 +186,7 @@ top_srcdir = @top_srcdir@
 logreader_SOURCES = MainWindow_ui.rb
 SUFFIXES = .rb .ui
 logreader_LINK = @true # Disable linking
+EXTRA_DIST = MainWindow.ui log_reader.rb test.yaml
 all: all-am
 
 .SUFFIXES:
