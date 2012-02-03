@@ -1,4 +1,4 @@
-SUBDIRS = images
+SUBDIRS = images pattern
 
 EXTRA_DIST = comments.php	\
 	     header.php		\

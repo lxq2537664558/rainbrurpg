@@ -1,72 +1,8 @@
-* v0.0.0-9 (30 sep. 2011 - 22 dec. 2011) FT 17:10
-- Fix the sidebar placement issue in skin01/wordpress/pattern
-- Trying skin01/wordpress/pattern to fix margin issue
-- Reduced number of clock items for 'Wordpress theme development (FT 15:30)'
-- WP LAYOUT.org FosWiki side-related div hierachy listed
-- WP theme: added blog.htm static page
-- Try to find missing css in LAYOUT.org
+2012-02-03 Jérôme Pasquier  <rainbru@free.fr>
 
-* v0.0.0-8 (27 sep 2011 - 30 sep 2011) FT 15:10
-- Now uses automake to have a `make dist-bz2` rule
-- Started to see differences between LAYOUT.org and current theme
-- Locally test LAYOUT.org
-- created LAYOUT.org
-- Partially fixed the ie margin issue
-- Texted WP theme with ie6 (FAILED)
+	* configure.in (AC_OUTPUT): added previous Makefile.
+	* skin01/wordpress/pattern/Makefile.am (EXTRA_DIST): added missing 
+	files to archives.
+	* skin01/wordpress/Makefile.am (SUBDIRS): pattern/ was missing.
 
-* v0.0.0-7 (22 sep 2011 - 27 sep 2011) FT 12:26
-- WP SearchBox correctly placed
-- Disabled some menu items in static and WP themes
-- Fixed the static and WP 'server status' link
-- Tested WP allowed tags styles for comments
-- WP style for the 'Post comment' button
-- WP style for the 'form-allowed-tags' par
-
-* v0.0.0-6 (27 aug 2011 - 22 sept 2011) FT 10:57
-- WP Comment form focus handling
-- WP start to style the 'leave a reply' form
-- WP comments partially styled
-- WP single post has comments and comment form
-- WP post content fully styled
-- Print WP tag list and comment text
-
-* v0.0.0-5 (25 aug 2011 - 27 aug 2011) FT 7:54
-- Add the WP comment-bubble
-- Add GPLv2 COPYING file
-- Fixed the WP sidebar list indentation and margin issue
-- Add a Analytics dummy code in footer.phpx
-- Updated WP screenshot
-- WP adminbar reappeared
-
-* v0.0.0-4 (11 aug 2011 - 25 aug 2011) FT 6:15
-- Add a WP footer
-- Styled the WP main menu and the post content
-- WP calendar correctly styled
-- WP's sidebar is now widget-ready
-- Fixed a name conflict for 'content' divs
-- Fixed wp sidebar left margin and inter-item spacing
-
-* v0.0.0-3 (09 aug 2011 - 11 aug 2011)
-- Two columns layout done
-- SearchFor box style OK
-- Added a screenshot (needed by wordpress)
-- Added CSS reset code (from Twenty Eleven)
-- Started search box style for WP
-- Added AddThis to static skin
-
-* v0.0.0-2 (23 jul 2011 - 09 aug 2011)
-- WP correctly handles the loop
-- Fixed absolute positioning
-- Added wordpress's style.scss header (needed)
-- The +1 google button: To the right of the 'RainbruRPG' text
-- Now in a skin01/ directory
-- Found a correct menu (http://www.free-css.com)
-
-* v0.0.0-1 (19 jul 2011 - 23 jul 2011)
-- Created a ROADMAP file
-- Played a bit with a Wordpress static page
-- Installed Foswiki
-- Playing with Doxugen's HEADER and FOOTER for inline API browsing
-- Started skintest
-- Download tgz and some doc
-
+	* ChangeLog: replaced changelog.dev with a GNU formatted changelog.

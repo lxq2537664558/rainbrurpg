@@ -23,5 +23,6 @@ AC_OUTPUT([
   skin01/foswiki/Makefile		\
   skin01/static/Makefile		\
   skin01/wordpress/Makefile		\
-  skin01/wordpress/images/Makefile
+  skin01/wordpress/images/Makefile	\
+  skin01/wordpress/pattern/Makefile
 ])
