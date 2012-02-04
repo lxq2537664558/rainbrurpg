@@ -6,3 +6,8 @@ To install :
 - Update the GoogleAdsense code
 - update the AddThis user ID in the header.php file
 - insert the Google Analytics code in footer.php
+
+---
+
+The old_index.php is an old test, made before the pattern/ one. It is only
+here for references.

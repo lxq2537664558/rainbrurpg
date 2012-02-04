@@ -1,7 +1,14 @@
+2012-02-04 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/pattern/: directory removed.
+	* skin01/wordpress/pattern/index.php: moved to skin01/wordpress/.
+	* skin01/wordpress/index.html: renamed old_index.html, added to archive
+	and kept for referenes.
+
 2012-02-03 Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in (AC_OUTPUT): added previous Makefile.
-	* skin01/wordpress/pattern/Makefile.am (EXTRA_DIST): added missing 
+	* skin01/wordpress/pattern/Makefile.am (EXTRA_DIST): added missing
 	files to archives.
 	* skin01/wordpress/Makefile.am (SUBDIRS): pattern/ was missing.
 

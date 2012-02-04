@@ -1,7 +1,0 @@
-It is a second try to create a foswiki-like wordpress theme strictly following
-the 'pattern' foswiki default skin.
-
-See ../LAYOUT.org for more information ion the followed layout.
-
-This directory contains only files to be modified from the first try.
-Please install the ../ files then install the files in this directory.

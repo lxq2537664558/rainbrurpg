@@ -1,4 +1,4 @@
-SUBDIRS = images pattern
+SUBDIRS = images
 
 EXTRA_DIST = comments.php	\
 	     header.php		\
@@ -10,6 +10,7 @@ EXTRA_DIST = comments.php	\
 	     functions.php	\
 	     index.php		\
 	     layout_test.html	\
+	     old_index.php	\
 	     screenshot.png	\
 	     style.css		\
 	     blog.htm

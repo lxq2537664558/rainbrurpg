@@ -13,10 +13,17 @@
  */
 
 get_header(); ?>
-<div id="floatOuter">
-  <div id="floatWrapper">
-    <div id="primary">
-      <div id="content" role="main">
+
+<?php /* Search for the ADDED word to see differences between . and .. */ ?>
+
+<div id="patternScreen">
+  <div id="patternPageShadow">
+    <div id="patternPage">
+      <div id="patternWrapper">
+        <div id="patternOuter">
+          <div id="patternFloatWrap">
+            <div id="patternMain">
+              <div id="content" role="main">
 
         <?php /* The loop: see http://codex.wordpress.org/The_Loop */ ?>
 			  
@@ -42,19 +49,17 @@ get_header(); ?>
 			</div>
 			<?php endif; ?>
 
-
-
  <!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
  <small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
 
 </header> <!-- post-header -->
 
- <!-- Display the Post's Content in a div box. -->
+ <!-- Display the Post Content in a div box. -->
  <div class="entry">
    <?php the_content('Continue reading <span class="meta-nav">&rarr;</span>'); ?>
  </div>
 
- <!-- Display a comma separated list of the Post's Categories. -->
+ <!-- Display a comma separated list of the Post Categories. -->
  <p class="postmetadata">Posted in <?php the_category(', '); ?>&nbsp;
 
 <!-- TAGLIST -->
@@ -96,11 +101,27 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
  <!-- REALLY stop The Loop. -->
  <?php endif; ?>
 
-			  
-			</div><!-- #content -->
-		</div><!-- #primary -->
-		<?php get_sidebar('twenty_eleven'); ?>
-  </div> <!-- #floatWrapper -->
-</div> <!-- floatOuter -->
-<div id="clear">&nbsp;</div>
+              </div> <!-- closes content::main -->
+	    </div> <!-- closes patternMain -->
+	   <div id="patternSideBar">
+	     <div id="patternSideBarContents">
+	        <?php get_sidebar(); ?>
+             </div> <!-- closes patternSideBarContents -->
+	    </div> <!-- closes patternSideBar -->
+	   <div id="clear">&nbsp;</div>
+
+<!-- ADDED --></div> <!-- closes patternFloatWrap -->
+<!-- ADDED --></div> <!-- closes patternOuter -->
+<!-- ADDED --></div> <!-- closes patternWrapper -->
+
+</div><!-- closes skin01-content -->
+
 <?php get_footer(); ?>
+<!-- ADDED --></div> <!-- closes patternPage -->
+<!-- ADDED --></div> <!-- closes patternPageShadow -->
+<!-- ADDED --></div> <!-- closes patternScreen -->
+
+
+
+</body>
+</html>

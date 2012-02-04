@@ -238,14 +238,9 @@ input#searchsubmit {
     display: inline;
     float: left;
     overflow: hidden;
-    width: 22em;
-/*
-  Removed for the new pattern/ test
-    margin-left: -22.2em;
-*/
-
-  font-size: small;
-  font-family: arial,verdana,sans-serif;
+    width: 18em;
+    font-size: small;
+    font-family: arial,verdana,sans-serif;
 }
 
 #sidebar ul{ 
