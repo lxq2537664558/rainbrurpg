@@ -1,3 +1,12 @@
+* v0.0.0-6 (07 jan 2012 - 04 feb 2012) SLOC 957 FT 18:30
+- log_reader shows a dialog if YAML nodes are missing
+- Added missing files to archive
+   Object.hpp, Point.hpp, MainWindow.ui, log_reader.rb, test.yaml
+- Fix the src/tool Makefile error
+- Added execution date ad time to log header
+- Makes the Logger::init function set the binary compil time
+- Added compil adte ad time to log header
+
 * v0.0.0-5 (09 dec 2011 - 07 jan 2012) SLOC 1,053 FT 13:47
 - Generate and install pkg-config file
 - Change the Tty output colors to fix gray message issue

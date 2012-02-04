@@ -29,35 +29,17 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
-     CLOCK: [2012-02-02 jeu. 12:07]--[2012-02-02 jeu. 12:20] =>  0:13
-     CLOCK: [2012-01-25 mer. 18:10]--[2012-01-25 mer. 18:26] =>  0:16
-     CLOCK: [2012-01-25 mer. 11:46]--[2012-01-25 mer. 12:26] =>  0:40
-     CLOCK: [2012-01-19 jeu. 14:01]--[2012-01-19 jeu. 14:31] =>  0:30
-     CLOCK: [2012-01-19 jeu. 12:59]--[2012-01-19 jeu. 13:25] =>  0:26
-     CLOCK: [2012-01-13 ven. 12:08]--[2012-01-13 ven. 12:19] =>  0:11
-     CLOCK: [2012-01-11 mer. 13:41]--[2012-01-11 mer. 14:11] =>  0:30
-     CLOCK: [2012-01-07 sam. 18:52]--[2012-01-07 sam. 19:04] =>  0:12
-     CLOCK: [2012-01-07 sam. 18:28]--[2012-01-07 sam. 18:44] =>  0:16
-     CLOCK: [2011-12-21 mer. 19:38]--[2011-12-21 mer. 20:03] =>  0:25
-     CLOCK: [2011-12-21 mer. 18:02]--[2011-12-21 mer. 18:18] =>  0:16
+     CLOCK: [2012-02-04 sam. 17:05]--[2012-02-04 sam. 17:44] =>  0:39
+     CLOCK: [2012-02-04 sam. 08:24]--[2012-02-04 sam. 09:42] =>  1:18
+     CLOCK: [2012-01-19 jeu. 14:01]--[2012-01-19 jeu. 15:40] =>  1:39
+     CLOCK: [2012-01-19 jeu. 12:59]--[2012-01-19 jeu. 14:06] =>  1:07
+     CLOCK: [2011-12-21 mer. 19:38]--[2011-12-21 mer. 20:47] =>  1:09
      CLOCK: [2011-12-20 mar. 17:01]--[2011-12-20 mar. 19:32] =>  2:31
-     CLOCK: [2011-12-16 ven. 20:44]--[2011-12-16 ven. 21:03] =>  0:19
-     CLOCK: [2011-12-16 ven. 18:37]--[2011-12-16 ven. 18:54] =>  0:17
-     CLOCK: [2011-11-23 mer. 11:19]--[2011-11-23 mer. 11:35] =>  0:16
-     CLOCK: [2011-11-23 mer. 10:13]--[2011-11-23 mer. 10:47] =>  0:34
-     CLOCK: [2011-11-22 mar. 18:38]--[2011-11-22 mar. 18:45] =>  0:07
-     CLOCK: [2011-10-31 lun. 10:51]--[2011-10-31 lun. 11:25] =>  0:34
-     CLOCK: [2011-10-31 lun. 10:39]--[2011-10-31 lun. 10:51] =>  0:12
-     CLOCK: [2011-10-30 dim. 11:42]--[2011-10-30 dim. 12:07] =>  0:25
-     CLOCK: [2011-10-29 sam. 16:28]--[2011-10-29 sam. 17:07] =>  0:39
-     CLOCK: [2011-07-17 dim. 21:29]--[2011-07-17 dim. 21:54] =>  0:25
-     CLOCK: [2011-07-17 dim. 20:19]--[2011-07-17 dim. 20:47] =>  0:28
-     CLOCK: [2011-07-16 sam. 16:59]--[2011-07-16 sam. 17:38] =>  0:39
-     CLOCK: [2011-07-16 sam. 11:08]--[2011-07-16 sam. 11:38] =>  0:30
-     CLOCK: [2011-06-23 jeu. 15:27]--[2011-06-23 jeu. 15:38] =>  0:11
-     CLOCK: [2011-06-22 mer. 15:10]--[2011-06-22 mer. 15:37] =>  0:27
-     CLOCK: [2011-06-22 mer. 14:41]--[2011-06-22 mer. 14:56] =>  0:15
-     CLOCK: [2011-06-22 mer. 11:48]--[2011-06-22 mer. 12:02] =>  0:14
+     CLOCK: [2011-11-23 mer. 10:13]--[2011-11-23 mer. 11:46] =>  1:33
+     CLOCK: [2011-10-31 lun. 10:51]--[2011-10-31 lun. 11:37] =>  0:46
+     CLOCK: [2011-10-29 sam. 16:28]--[2011-10-29 sam. 17:32] =>  1:04
+     CLOCK: [2011-07-17 dim. 20:19]--[2011-07-17 dim. 21:51] =>  1:32
+     CLOCK: [2011-06-22 mer. 15:10]--[2011-06-22 mer. 16:47] =>  1:37
 - [X] Retest Logger with  std container
 - [X] May switch to GPLv3
 - [X] Each class should have its own files
@@ -98,7 +80,14 @@
 - [X] see why `make` doesn't work in src/tool
       `make MainWindow_ui.rb` correctly works but not `make`
 - [X] Test bzip2 archive for missing files
-- [ ] src/tools/test.yaml doesn't work anymore
+- [X] src/tools/test.yaml doesn't work anymore
+      - [X] Implement a sub to handle the yaml node
+	    Set it to 'ERROR' if missing
+      - [X] Then a trap that explain the error that occured
+      - [X] We may then open an error dialog with missing nodes
+- [ ] May use gettext for translation
+- [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
+      button
 - [ ] Should remove autoproject generated files
       logger.cc, xmalloc.h, xmalloc.c ...
 - [ ] Create a DEPENDENCIES file

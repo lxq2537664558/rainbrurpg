@@ -22,8 +22,68 @@ require 'qtuitools'
 require 'yaml'
 
 require "MainWindow_ui"
+require 'Qt'
 
-NA = "N/A" # The 'not handled' value
+NA  = "N/A"   # The 'not handled' value
+ERR = "ERROR" # Teh 'error' string
+
+=begin rdoc
+
+An exception with the ability to show a Qt dialog and
+to continue loading.
+
+critical:: Can we continue loading the application
+error::    Is this in error state
+message::  The string message, can contain HTML tags
+title::    The dialog title
+=end
+class ErrorTrap
+  attr_accessor :error, :message, :critical, :title
+  
+  def initialize
+    @error    = false
+    @message  = ''
+    @critical = false
+    @title    = "Default dialog title"
+    @message  = ''
+  end
+
+  def show_dialog
+#    buttons=@critical ? Qt::MessageBox::Abort : (Qt::MessageBox::Ok | Qt::MessageBox::Cancel)
+    buttons= Qt::MessageBox::Ok
+    m = Qt::MessageBox.new
+    m.set_text_format( Qt::RichText ) # Needed to get HTML formatted text
+    m.set_standard_buttons(buttons)
+    m.set_window_title(@title)
+    m.set_text( @message )
+    m.set_icon( Qt::MessageBox::Warning )
+    return m.exec
+  end
+end
+
+=begin rdoc
+An error trap (i.e. Exception specialized in missing YAML nodes).
+This is not a critical error.
+=end
+class MissingNode < ErrorTrap
+  attr_accessor :nodes, :version
+  
+  def initialize
+    @nodes = Array.new
+  end
+
+  def check
+    if @error
+      @message = "The logfile is not conforming the v#{@version} format.
+The following <i>YAML</i> nodes are missing :<ul>"
+      
+      @nodes.each{|item| @message << "<li><strong>#{item}</strong>;</li>"}
+      @message = @message + "</ul>Do you want to continue ? (The missing
+nodes will be filled with <u>#{ERR}</u> text)}"
+      return show_dialog
+    end
+  end
+end
 
 # The logfile panel needed informations
 class LogfileDetails
@@ -51,15 +111,33 @@ class LineDetails
   end
 end
 
+################### 
+## End of classes definition
+## Starting global variables and functions
+$missing_nodes = MissingNode.new
+
+def get_node_content(yaml_tree, node_name)
+  node = yaml_tree.select(node_name)[0]
+  if node.nil?
+    $missing_nodes.nodes << node_name
+    $missing_nodes.error = true
+    content=ERR
+  else
+    content = node.value
+  end
+  return content
+end
+
 def parse_logfile_v1(tree, window) # A YAML tree
   lfd = LogfileDetails.new
   lfd.logfile_version = "1"
-  lfd.program_name = tree.select('/program/name')[0].value
-  lfd.program_version = tree.select('/program/version')[0].value
-  lfd.compil_date = tree.select('/program/compil-date')[0].value
-  lfd.compil_time = tree.select('/program/compil-time')[0].value
-  lfd.exec_date = tree.select('/program/exec-date')[0].value
-  lfd.exec_time = tree.select('/program/exec-time')[0].value
+  $missing_nodes.version=1
+  lfd.program_name = get_node_content(tree, '/program/name')
+  lfd.program_version = get_node_content(tree, '/program/version')
+  lfd.compil_date = get_node_content(tree, '/program/compil-date')
+  lfd.compil_time = get_node_content(tree, '/program/compil-time')
+  lfd.exec_date = get_node_content(tree, '/program/exec-date')
+  lfd.exec_time = get_node_content(tree, '/program/exec-time')
   window.setLogfileDetails lfd
 
   l= tree.select('/lines/*')
@@ -145,7 +223,23 @@ a = Qt::Application.new(ARGV)
 window = MainWindow.new(a)
 w = Qt::MainWindow.new
 window.setupUi(w)
+
 open_file ARGV[0], window
 w.show
 a.connect(a, SIGNAL('lastWindowClosed()'), a, SLOT('quit()'))
+btn=$missing_nodes.check
+=begin
+  BUG:
+  Here I deactivated the cancel button of the ErrorTrap dialog.
+  Because if I try to 'exit 0', a segfault occurs and 
+  everything I tried let the process in a endless loop.
+
+  See the ErrorTrap#show_dialog function to know how to test it.
+=end
+unless btn == Qt::MessageBox::Ok
+  w.close
+  a.exit
+  a.emit(SIGNAL('lastWindowClosed()'))
+#  exit 0
+end
 a.exec

@@ -1,5 +1,15 @@
 2012-02-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/tool/log_reader.rb: deactivated dialog's cancel button
+	because of a segfault when exitting QApplication.
+	* src/tool/log_reader.rb: HTML markup in dialog works again.
+
+	* src/tool/log_reader.rb: Makes a dialog appears at startup and
+	let the user choose to continue.
+
+
+2012-02-02  Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/tools/Makefile.am (EXTRA_DIST): Added missing files MainWindow.ui,
 	log_reader.rb and test.yaml to archive.
 	* src/examples/Makefile.am (HEADERS): Added missing files Point.hpp
