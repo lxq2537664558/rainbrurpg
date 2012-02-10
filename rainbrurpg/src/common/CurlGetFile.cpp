@@ -24,7 +24,7 @@
   * Implements a class used to get a file using cUrl
   *
   */
-#include "curlgetfile.h"
+#include "CurlGetFile.hpp"
 
 #include "loadbmp.h"
 #include "httpresponse.h"

@@ -43,7 +43,7 @@
 
 #include "tnotelist.h"
 #include "xmltimestamp.h"
-#include "curlfiletoxml.h"
+#include "CurlFileToXml.hpp"
 #include "serverlistitem.h"
 #include "stringconv.h"
 

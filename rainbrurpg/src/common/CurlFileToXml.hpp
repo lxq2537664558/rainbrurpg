@@ -34,7 +34,7 @@
 #define CURL_FILE_TO_XML
 
 #include "curlimport.h"
-#include "curlgetfile.h"
+#include "CurlGetFile.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 // Forward declarations

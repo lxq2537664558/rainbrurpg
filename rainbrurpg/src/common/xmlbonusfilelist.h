@@ -44,7 +44,7 @@
 
 #include "tidentreturn.h"
 #include "logger.h"
-#include "curlfiletoxml.h"
+#include "CurlFileToXml.hpp"
 #include "globaluri.h"
 
 #include "rainbrudef.h" // For the gettext stuff

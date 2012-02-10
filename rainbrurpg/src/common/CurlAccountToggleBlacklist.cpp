@@ -24,7 +24,7 @@
   * Implements the submition of an account toggle blacklist request
   *
   */
-#include "curlaccounttoggleblacklist.h"
+#include "CurlAccountToggleBlacklist.hpp"
 
 /** The default constructor
   *

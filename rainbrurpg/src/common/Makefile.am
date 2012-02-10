@@ -31,9 +31,9 @@ h_sources= AttributeModifierList.hpp		\
 	   CurlAccountAdd.hpp			\
 	   CurlAccountConfirmMail.hpp		\
 	   CurlAccountDelete.hpp		\
-	   curlaccounttoggleblacklist.h		\
-	   curlfiletoxml.h			\
-	   curlgetfile.h			\
+	   CurlAccountToggleBlacklist.hpp	\
+	   CurlFileToXml.hpp			\
+	   CurlGetFile.hpp			\
 	   curlimport.h				\
 	   curlinterface.h			\
 	   curlpersoheaderadd.h			\
@@ -107,9 +107,9 @@ cc_sources=AttributeModifierList.cpp		\
 	  CurlAccountAdd.cpp			\
 	  CurlAccountConfirmMail.cpp		\
 	  CurlAccountDelete.cpp			\
-	  curlaccounttoggleblacklist.cpp	\
-	  curlfiletoxml.cpp			\
-	  curlgetfile.cpp			\
+	  CurlAccountToggleBlacklist.cpp	\
+	  CurlFileToXml.cpp			\
+	  CurlGetFile.cpp			\
 	  curlinterface.cpp			\
 	  curlpersoheaderadd.cpp		\
 	  curlpersoheaderdelete.cpp		\

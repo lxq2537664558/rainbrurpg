@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-01-21 08:18+0100\n"
+"POT-Creation-Date: 2012-02-10 11:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,256 +286,256 @@ msgstr ""
 msgid "Cannot get usable modifier's type"
 msgstr ""
 
-#: src/common/chartbase.cpp:43
+#: src/common/ChartBase.cpp:43
 msgid "RainbruRPG-netflooder statistics"
 msgstr ""
 
-#: src/common/chartbase.cpp:45
+#: src/common/ChartBase.cpp:45
 msgid "Left caption"
 msgstr ""
 
-#: src/common/chartbase.cpp:46
+#: src/common/ChartBase.cpp:46
 msgid "Bottom caption test filling"
 msgstr ""
 
-#: src/common/chartbase.cpp:354
+#: src/common/ChartBase.cpp:354
 msgid "Legend"
 msgstr ""
 
-#: src/common/chartline.cpp:53
+#: src/common/ChartLine.cpp:53
 msgid "ChartLine::draw() called"
 msgstr ""
 
-#: src/common/chartline.cpp:77
+#: src/common/ChartLine.cpp:77
 msgid "ChartLine: drawing axis"
 msgstr ""
 
-#: src/common/chartline.cpp:79
+#: src/common/ChartLine.cpp:79
 msgid "ChartLine: drawing chart's title"
 msgstr ""
 
-#: src/common/chartline.cpp:81
+#: src/common/ChartLine.cpp:81
 msgid "ChartLine: drawing Y axis caption"
 msgstr ""
 
-#: src/common/chartline.cpp:83
+#: src/common/ChartLine.cpp:83
 msgid "ChartLine: drawing X axis caption"
 msgstr ""
 
-#: src/common/chartline.cpp:85
+#: src/common/ChartLine.cpp:85
 msgid "ChartLine: drawing legend background"
 msgstr ""
 
-#: src/common/chartline.cpp:87
+#: src/common/ChartLine.cpp:87
 msgid "ChartLine: drawing left caption"
 msgstr ""
 
-#: src/common/chartline.cpp:89
+#: src/common/ChartLine.cpp:89
 msgid "ChartLine: drawing bottom caption"
 msgstr ""
 
-#: src/common/chartline.cpp:92
+#: src/common/ChartLine.cpp:92
 msgid "ChartLine: drawing legend"
 msgstr ""
 
-#: src/common/chartline.cpp:95
+#: src/common/ChartLine.cpp:95
 msgid "ChartLine: drawing series"
 msgstr ""
 
-#: src/common/chartline.cpp:99
+#: src/common/ChartLine.cpp:99
 msgid "ChartLine: saving image in "
 msgstr ""
 
-#: src/common/chartline.cpp:108
+#: src/common/ChartLine.cpp:108
 msgid "ChartLine: drawing complete"
 msgstr ""
 
-#: src/common/chartline.cpp:254
+#: src/common/ChartLine.cpp:254
 msgid "drawLeftCaption called"
 msgstr ""
 
-#: src/common/chartline.cpp:269
+#: src/common/ChartLine.cpp:269
 msgid "Searching for valueIndent"
 msgstr ""
 
-#: src/common/chartline.cpp:297
+#: src/common/ChartLine.cpp:297
 msgid "drawLeftCaption starting to draw"
 msgstr ""
 
-#: src/common/chartline.cpp:415
+#: src/common/ChartLine.cpp:415
 msgid "Searching valueIndent"
 msgstr ""
 
-#: src/common/chartserie.cpp:122
+#: src/common/ChartSerie.cpp:122
 msgid "getXCaption : index out of bound"
 msgstr ""
 
-#: src/common/chartserie.cpp:137
+#: src/common/ChartSerie.cpp:137
 msgid "getYCaption : index out of bound"
 msgstr ""
 
-#: src/common/clientconnect.cpp:93
+#: src/common/ClientConnect.cpp:93
 msgid "Account blacklist status : "
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:79
+#: src/common/CurlAccountAdd.cpp:79
 msgid "The email adress does not contain the 'dot' sign"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:89
+#: src/common/CurlAccountAdd.cpp:89
 msgid "The email adress does not contain the 'at' sign"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:98
+#: src/common/CurlAccountAdd.cpp:98
 msgid "Cannot add a player with empty email adress"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:107
+#: src/common/CurlAccountAdd.cpp:107
 msgid "This mail adress is already in use"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:116
+#: src/common/CurlAccountAdd.cpp:116
 msgid "The player already exists"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:126
+#: src/common/CurlAccountAdd.cpp:126
 msgid "Cannot add a player with empty password"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:135
+#: src/common/CurlAccountAdd.cpp:135
 msgid "The new player's name is empty"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:173
+#: src/common/CurlAccountAdd.cpp:173
 msgid "One of the name is empty, controlAfter failed"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:179
+#: src/common/CurlAccountAdd.cpp:179
 msgid "The name is the same"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:182
+#: src/common/CurlAccountAdd.cpp:182
 msgid "The name is not the same"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:192
+#: src/common/CurlAccountAdd.cpp:192
 msgid "The password is the same"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:195
+#: src/common/CurlAccountAdd.cpp:195
 msgid "The password is not the same"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:205
+#: src/common/CurlAccountAdd.cpp:205
 msgid "The mail adress is the same"
 msgstr ""
 
-#: src/common/curlaccountadd.cpp:208
+#: src/common/CurlAccountAdd.cpp:208
 msgid "The mail adress is not the same"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is the account name, the second
 #. is the validationId used in the confirmation mail in string format.
-#: src/common/curlaccountconfirmmail.cpp:80
+#: src/common/CurlAccountConfirmMail.cpp:80
 #, c-format
 msgid "ValidationId for account '%s' is %s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a account.
-#: src/common/curlaccountconfirmmail.cpp:87
+#: src/common/CurlAccountConfirmMail.cpp:87
 #, c-format
 msgid "Cannot get the account with the name '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter should be a date if the account
 #. was confirmed.
-#: src/common/curlaccountconfirmmail.cpp:126
+#: src/common/CurlAccountConfirmMail.cpp:126
 #, c-format
 msgid "Mail's confirm date is %s"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: src/common/curlaccountconfirmmail.cpp:134
+#: src/common/CurlAccountConfirmMail.cpp:134
 msgid "controlAfter() : confirm timestamp is empty"
 msgstr ""
 
 #. TRANSLATORS: controlAfter() is the name of a function.
 #. Do not translate it.
-#: src/common/curlaccountconfirmmail.cpp:141
+#: src/common/CurlAccountConfirmMail.cpp:141
 msgid "controlAfter() : account not found"
 msgstr ""
 
-#: src/common/curlaccountdelete.cpp:71
+#: src/common/CurlAccountDelete.cpp:71
 msgid "The player's name is empty"
 msgstr ""
 
-#: src/common/curlaccountdelete.cpp:81
+#: src/common/CurlAccountDelete.cpp:81
 msgid "The player does not exists"
 msgstr ""
 
-#: src/common/curlaccountdelete.cpp:108
+#: src/common/CurlAccountDelete.cpp:108
 msgid "The player exists"
 msgstr ""
 
-#: src/common/curlfiletoxml.cpp:92
+#: src/common/CurlFileToXml.cpp:92
 msgid "Returning a NULL xml document"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is the file name, the second
 #. if the error string returned by TinyXml
 #.
-#: src/common/curlfiletoxml.cpp:118
+#: src/common/CurlFileToXml.cpp:118
 #, c-format
 msgid ""
 "An error occured while loading curlget.xml for file '%s'. Error desc from "
 "TinyXML is : '%s'"
 msgstr ""
 
-#: src/common/curlfiletoxml.cpp:127
+#: src/common/CurlFileToXml.cpp:127
 msgid "The writeToFile operation failed"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of the file we are
 #. about to write.
-#: src/common/curlgetfile.cpp:95
+#: src/common/CurlGetFile.cpp:95
 #, c-format
 msgid "Performing CurlGetFile writeToFile action, filename : %s"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:101
+#: src/common/CurlGetFile.cpp:101
 msgid "The curl handle was not properly initialized"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:113 src/common/curlsubmitform.cpp:111
+#: src/common/CurlGetFile.cpp:113 src/common/curlsubmitform.cpp:111
 msgid "Setting the licurl URL"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:130 src/common/curlsubmitform.cpp:104
+#: src/common/CurlGetFile.cpp:130 src/common/curlsubmitform.cpp:104
 msgid "Error opening the FILE pointer"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:140
+#: src/common/CurlGetFile.cpp:140
 msgid "An error occured during CurlGetFile::writeToFile()."
 msgstr ""
 
-#: src/common/curlgetfile.cpp:144
+#: src/common/CurlGetFile.cpp:144
 msgid "Getting the last HTTP server status code"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:151
+#: src/common/CurlGetFile.cpp:151
 msgid "The CurlGetInfo was successfull"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:155
+#: src/common/CurlGetFile.cpp:155
 msgid "HTTP server returns SUCCESS."
 msgstr ""
 
-#: src/common/curlgetfile.cpp:159
+#: src/common/CurlGetFile.cpp:159
 msgid "HTTP server returns an error status code :"
 msgstr ""
 
-#: src/common/curlgetfile.cpp:167
+#: src/common/CurlGetFile.cpp:167
 msgid "An error occured during CurlGetInfo operation"
 msgstr ""
 

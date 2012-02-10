@@ -1,3 +1,14 @@
+2012-02-10 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+	* src/common/curlgetfile.h|.cpp: CamelCased and header
+	called hpp.
+	* src/common/curlfiletoxml.h|.cpp: CamelCased and header
+	called hpp.
+	* src/common/curlaccounttoggleblacklist.h|cpp: CamelCased and header
+	called hpp.
+
 2012-02-01 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased

@@ -24,7 +24,7 @@
   * Implements a class that get a file from curl and pass it to TinyXml
   *
   */
-#include "curlfiletoxml.h"
+#include "CurlFileToXml.hpp"
 
 #include "tinyxml.h"
 

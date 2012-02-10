@@ -5,16 +5,16 @@ ext/tinyxmlerror.cpp
 
 # in the 'common' library
 src/common/AttributeModifierList.cpp
-src/common/chartbase.cpp
-src/common/chartline.cpp
-src/common/chartserie.cpp
-src/common/clientconnect.cpp
-src/common/curlaccountadd.cpp
-src/common/curlaccountconfirmmail.cpp
-src/common/curlaccountdelete.cpp
-src/common/curlaccounttoggleblacklist.cpp
-src/common/curlfiletoxml.cpp
-src/common/curlgetfile.cpp
+src/common/ChartBase.cpp
+src/common/ChartLine.cpp
+src/common/ChartSerie.cpp
+src/common/ClientConnect.cpp
+src/common/CurlAccountAdd.cpp
+src/common/CurlAccountConfirmMail.cpp
+src/common/CurlAccountDelete.cpp
+src/common/CurlAccountToggleBlacklist.cpp
+src/common/CurlFileToXml.cpp
+src/common/CurlGetFile.cpp
 src/common/curlinterface.cpp
 src/common/curlpersoheaderadd.cpp
 src/common/curlpersoheaderdelete.cpp
