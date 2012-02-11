@@ -40,7 +40,7 @@
 
 #define DO_NOT_INCLUDE_WRITE_DATA
 
-#include "curlinterface.h"
+#include "CurlInterface.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG {

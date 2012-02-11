@@ -116,7 +116,9 @@ A system that serialize widgets position and configuration
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
 - (3) CamelCased some files in common/
-   CurlAccountToggleBlacklist, CurlFileToXml, CurlGetFile
+   CurlAccountToggleBlacklist, CurlFileToXml, CurlGetFile, CurlImport
+   CurlInterface, CurlPersoHeaderAdd, CurlPersoHeaderDelete
+   CurlPersoModifAttrb
 - (2) CamelCased some files in common/
    ChartBase, ChartLine, ChartSerie, ClientConnect, CurlAccountAdd
    CurlAccountConfirmMail, CurlAccountDelete

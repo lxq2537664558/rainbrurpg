@@ -24,7 +24,7 @@
   * Implements how to submit an attribute modification
   *
   */
-#include "curlpersomodifattrb.h"
+#include "CurlPersoModifAttrb.hpp"
 
 /** The default constructor 
   *

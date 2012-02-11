@@ -359,12 +359,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
-     CLOCK: [2012-02-10 ven. 10:13]--[2012-02-10 ven. 10:54] =>  0:41
-     CLOCK: [2012-02-04 sam. 18:14]--[2012-02-04 sam. 18:39] =>  0:25
-     CLOCK: [2012-02-01 mer. 16:10]--[2012-02-01 mer. 16:59] =>  0:49
+     CLOCK: [2012-02-11 sam. 10:09]--[2012-02-11 sam. 10:42] =>  0:33
+     CLOCK: [2012-02-01 mer. 16:10]--[2012-02-01 mer. 18:05] =>  1:55
      CLOCK: [2012-01-22 dim. 09:26]--[2012-01-22 dim. 11:47] =>  2:21
-     CLOCK: [2012-01-21 sam. 07:44]--[2012-01-21 sam. 07:55] =>  0:11
-     CLOCK: [2012-01-20 ven. 14:51]--[2012-01-20 ven. 15:20] =>  0:29
+     CLOCK: [2012-01-20 ven. 14:51]--[2012-01-20 ven. 15:31] =>  0:40
 - [ ] Fix some missing files in archive
 - [-] CamelCase all filenames and header are called .hpp
       Also modify po/POTFILES.in for renamed .cpp

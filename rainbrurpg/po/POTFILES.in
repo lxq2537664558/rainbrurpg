@@ -15,9 +15,10 @@ src/common/CurlAccountDelete.cpp
 src/common/CurlAccountToggleBlacklist.cpp
 src/common/CurlFileToXml.cpp
 src/common/CurlGetFile.cpp
-src/common/curlinterface.cpp
-src/common/curlpersoheaderadd.cpp
-src/common/curlpersoheaderdelete.cpp
+src/common/CurlInterface.cpp
+src/common/CurlPersoHeaderAdd.cpp
+src/common/CurlPersoHeaderDelete.cpp
+src/common/CurlPersoModifAttrb.hpp
 src/common/curlposteddata.cpp
 src/common/curlserveradd.cpp
 src/common/curlserverdelete.cpp

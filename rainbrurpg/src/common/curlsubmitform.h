@@ -44,7 +44,7 @@
 #include <curl/curl.h>
 
 #include "rainbrudef.h"
-#include "curlinterface.h"
+#include "CurlInterface.hpp"
 #include "curlposteddata.h"
 #include "hashpassword.h"
 

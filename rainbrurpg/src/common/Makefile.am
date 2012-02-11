@@ -34,11 +34,11 @@ h_sources= AttributeModifierList.hpp		\
 	   CurlAccountToggleBlacklist.hpp	\
 	   CurlFileToXml.hpp			\
 	   CurlGetFile.hpp			\
-	   curlimport.h				\
-	   curlinterface.h			\
-	   curlpersoheaderadd.h			\
-	   curlpersoheaderdelete.h		\
-	   curlpersomodifattrb.h		\
+	   CurlImport.hpp			\
+	   CurlInterface.hpp			\
+	   CurlPersoHeaderAdd.hpp		\
+	   CurlPersoHeaderDelete.hpp		\
+	   CurlPersoModifAttrb.hpp		\
 	   curlposteddata.h			\
 	   curlserveradd.h			\
 	   curlserverdelete.h			\
@@ -110,10 +110,10 @@ cc_sources=AttributeModifierList.cpp		\
 	  CurlAccountToggleBlacklist.cpp	\
 	  CurlFileToXml.cpp			\
 	  CurlGetFile.cpp			\
-	  curlinterface.cpp			\
-	  curlpersoheaderadd.cpp		\
-	  curlpersoheaderdelete.cpp		\
-	  curlpersomodifattrb.cpp		\
+	  CurlInterface.cpp			\
+	  CurlPersoHeaderAdd.cpp		\
+	  CurlPersoHeaderDelete.cpp		\
+	  CurlPersoModifAttrb.cpp		\
 	  curlposteddata.cpp			\
 	  curlserveradd.cpp			\
 	  curlserverdelete.cpp			\

@@ -20,12 +20,11 @@
  *
  */
 
-/** \file curlpersoheaderdelete.cpp
-  * Implements the 'delete perso header' request
+/** \file curlpersoheaderadd.cpp
+  * Implements the  'add perso header' request
   *
   */
-
-#include "curlpersoheaderdelete.h"
+#include "CurlPersoHeaderAdd.hpp"
 
 /** The default constructor
   *
@@ -33,25 +32,27 @@
   * player, id, timestamp.
   *
   */
-RainbruRPG::Network::CurlPersoHeaderDelete::CurlPersoHeaderDelete()
+RainbruRPG::Network::CurlPersoHeaderAdd::CurlPersoHeaderAdd()
                                           :CurlSubmitForm(){
 
-  persoName="";
+  this->persoName="";
 
   GlobalURI g;
 
   xml=new xmlPersoList();
-  this->filename=g.getAdminAdress("deleteperso.php");
+  this->filename=g.getAdminAdress("addperso.php");
   LOGI(this->filename.c_str());
   // Setting the posted data key values
   postedData.addKey("player");
+  postedData.addKey("id");
+  postedData.addKey("timestamp");
 }
 
 /** The default destructor
   *
   *
   */
-RainbruRPG::Network::CurlPersoHeaderDelete::~CurlPersoHeaderDelete(){
+RainbruRPG::Network::CurlPersoHeaderAdd::~CurlPersoHeaderAdd(){
   xml->~xmlPersoList();
   xml=NULL;
 }
@@ -60,9 +61,12 @@ RainbruRPG::Network::CurlPersoHeaderDelete::~CurlPersoHeaderDelete(){
   *
   * \return \c true if the control was successfull, otherwise false.
   */
-bool RainbruRPG::Network::CurlPersoHeaderDelete::controlBefore(){
+bool RainbruRPG::Network::CurlPersoHeaderAdd::controlBefore(){
   bool ret=true;
 
+  postedData.setTimestamp("timestamp");
+  const char* id=xml->getNextId();
+  this->setPostedData ("id", id);
 
   return ret;
 }
@@ -71,8 +75,7 @@ bool RainbruRPG::Network::CurlPersoHeaderDelete::controlBefore(){
   *
   * \return \c true if the control was successfull, otherwise false.
   */
-bool RainbruRPG::Network::CurlPersoHeaderDelete::controlAfter(){
-
+bool RainbruRPG::Network::CurlPersoHeaderAdd::controlAfter(){
   return true;
 }
 
@@ -83,8 +86,8 @@ bool RainbruRPG::Network::CurlPersoHeaderDelete::controlAfter(){
   * \param name The perso name
   *
   */
-void RainbruRPG::Network::CurlPersoHeaderDelete::
-setName(const std::string& name){
+void RainbruRPG::Network::CurlPersoHeaderAdd::setName(const std::string& name){
+  this->persoName=name;
   postedData.setValue("player", name);
 }
 
@@ -95,6 +98,6 @@ setName(const std::string& name){
   * \return The perso name
   *
   */
-const std::string& RainbruRPG::Network::CurlPersoHeaderDelete::getName(void){
+const std::string& RainbruRPG::Network::CurlPersoHeaderAdd::getName(void){
   return this->persoName;
 }

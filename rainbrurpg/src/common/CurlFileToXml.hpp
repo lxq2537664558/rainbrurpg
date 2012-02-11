@@ -33,7 +33,7 @@
 #ifndef CURL_FILE_TO_XML
 #define CURL_FILE_TO_XML
 
-#include "curlimport.h"
+#include "CurlImport.hpp"
 #include "CurlGetFile.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
