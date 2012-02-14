@@ -1,0 +1,8 @@
+The following package should be installed before RainbruRPG is installed:
+
+* rainbrurpg-logger
+  + Needed.
+  + homepage:
+    http://rainbrurpg.sourceforge.net
+  + download:
+    http://sourceforge.net/projects/rainbrurpg/files/logger/

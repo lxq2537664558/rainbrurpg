@@ -1,0 +1,4 @@
+2012-02-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: first version to build a very basic src/main.cpp.
+	* src/main.cpp: very basic file.
