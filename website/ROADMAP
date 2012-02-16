@@ -29,6 +29,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2012-02-16 jeu. 13:44]--[2012-02-16 jeu. 14:14] =>  0:30
      CLOCK: [2012-02-04 sam. 07:38]--[2012-02-04 sam. 08:10] =>  0:32
      CLOCK: [2012-02-03 ven. 09:43]--[2012-02-03 ven. 10:04] =>  0:21
      CLOCK: [2011-12-31 sam. 11:08]--[2011-12-31 sam. 11:32] =>  0:24
@@ -131,9 +132,10 @@ the patternClearHeaderLeft div.
 			from index.php
                   - [X] Merge skin01/wordpress and pattern/ after a final test
 - [X] Must test archive for missing files
-- [ ] The header style must work
-      The ../common/skin.css link was removed from header.php
-      because it causes dead links
+- [X] The header style causes dead links
+      It was due to the #rb-skin01-footer{position: relative; }
+- [ ] There is no 'login' link
+- [ ] Switch to Wordpress 3.3.1
 - [ ] The black menu isn't correct in ie6
       - [ ] testing WP's twentyeleven skin with ie6
       - [ ] See what are the differences if it works

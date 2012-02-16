@@ -66,9 +66,8 @@ div#google-ad
 
 #rb-skin01-footer
 { 
-  position: relative;
   top: 40px;
-  color: #FFF;
+  color: #222;
   padding: 10px; 
   font-size: 12px;
 }
