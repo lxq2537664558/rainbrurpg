@@ -1,5 +1,9 @@
 2012-02-16 Jérôme Pasquier  <rainbru@free.fr>
 
+	* skin01/wordpress/footer.php: added login link.
+
+2012-02-16 Jérôme Pasquier  <rainbru@free.fr>
+
 	* skin01/wordpress/header.php: include again common/skin.css
 	because of the previous fix.
 	* skin01/common/skin.css (#rb-skin01-footer): removed the

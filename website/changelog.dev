@@ -1,3 +1,11 @@
+* v0.0.0-10 (22 dec. 2011 - 17 feb 2012) FT 20:59
+- Login link added to the footer
+- Fixed the common/skin.css dead links issues
+- Merged skin01/wordpress and pattern/
+- Test archive for missing files
+- Inline style from pattern/index.php now in style.css
+- Find a way to avoid dead links (see skin01/wordpress/header.php)
+
 * v0.0.0-9 (30 sep. 2011 - 22 dec. 2011) FT 17:10
 - Fix the sidebar placement issue in skin01/wordpress/pattern
 - Trying skin01/wordpress/pattern to fix margin issue

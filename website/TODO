@@ -20,9 +20,4 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    see skin??/INTEGRATION_TESTS
    Please update configure.in for each revision
 
-* v0.0.0-10 (22 dec. 2011 - ???) FT ??:??
-- (5) Fixed the common/skin.css dead links issues
-- (4) Merged skin01/wordpress and pattern/
-- (3) Test archive for missing files
-- Inline style from pattern/index.php now in style.css
-- Find a way to avoid dead links (see skin01/wordpress/header.php)
+* v0.0.0-11 (17 feb 2012 - ???) FT ??:??

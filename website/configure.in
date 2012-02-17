@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([website], [0.0.0-9], [rainbru@free.fr])
+AC_INIT([website], [0.0.0-10], [rainbru@free.fr])
 AM_INIT_AUTOMAKE
 
 # Checks for programs.

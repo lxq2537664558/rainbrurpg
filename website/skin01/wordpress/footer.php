@@ -9,7 +9,8 @@
 			?>
 
 
-  Copyrights 2007-2011 The RainbruRPG contributors.
+  Copyrights 2007-2011 The RainbruRPG contributors.<br>
+  <a href="wp-admin/">login</a>
 
   <span id="rb-skin01-footer-right">
   <a href="http://sourceforge.net/projects/rainbrurpg">
