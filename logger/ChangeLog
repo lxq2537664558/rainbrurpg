@@ -1,3 +1,13 @@
+2012-02-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* Makefile.am: Many changes due to removing generated files.
+
+	* .: removed some autoproject generated files, including logger.cc,
+	xmalloc.* and getopt*.
+
+	* configure.in(AC_INIT): change parameter from logger.cc
+	to src/Logger.cpp. It was an autoproject generated file.
+
 2012-02-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tool/log_reader.rb: deactivated dialog's cancel button

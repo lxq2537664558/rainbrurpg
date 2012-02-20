@@ -703,7 +703,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 PACKAGE_URL=
 
-ac_unique_file="logger.cc"
+ac_unique_file="src/Logger.cpp"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>
@@ -3066,7 +3066,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=logger
- VERSION=0.0.0-6
+ VERSION=0.0.0-7
 
 
 cat >>confdefs.h <<_ACEOF

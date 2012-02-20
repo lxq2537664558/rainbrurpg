@@ -1,7 +1,7 @@
 SUBDIRS=src
 
-bin_PROGRAMS=logger
-logger_SOURCES=logger.cc logger.1 xmalloc.c system.h aclocal.m4 getopt.c getopt1.c getopt.h
+man_MANS = logger.1
+EXTRA_DIST = system.h aclocal.m4
 
 #  uncomment the following if logger requires the math library
 #logger_LDADD=-lm

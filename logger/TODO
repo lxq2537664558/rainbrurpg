@@ -17,3 +17,4 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-7 (07 jan 2012 - ???) SLOC ??? FT ??:??
+- Removed autoproject generated files
