@@ -34,7 +34,7 @@
 
 #include "rainbrudef.h"     // For the gettext stuff
 #include "globaluri.h"
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"
 
 using namespace RainbruRPG::Network::Ident;

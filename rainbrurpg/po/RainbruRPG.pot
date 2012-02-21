@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-02-10 11:00+0100\n"
+"POT-Creation-Date: 2012-02-17 12:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -539,31 +539,31 @@ msgstr ""
 msgid "An error occured during CurlGetInfo operation"
 msgstr ""
 
-#: src/common/curlinterface.cpp:55
+#: src/common/CurlInterface.cpp:55
 msgid "Initializing the libcurl interface"
 msgstr ""
 
-#: src/common/curlinterface.cpp:63
+#: src/common/CurlInterface.cpp:63
 msgid "An error occured during the libcurl iitialization"
 msgstr ""
 
-#: src/common/curlinterface.cpp:74
+#: src/common/CurlInterface.cpp:74
 msgid "Cleaning up the libcurl interface"
 msgstr ""
 
-#: src/common/curlinterface.cpp:81
+#: src/common/CurlInterface.cpp:81
 msgid "Calling cleanup on a non-existing handle"
 msgstr ""
 
-#: src/common/curlinterface.cpp:92
+#: src/common/CurlInterface.cpp:92
 msgid "Setting up a custom WriteFunction"
 msgstr ""
 
-#: src/common/curlinterface.cpp:97
+#: src/common/CurlInterface.cpp:97
 msgid "Cannot set a WriteFunction, the handle is undefined"
 msgstr ""
 
-#: src/common/curlinterface.cpp:139
+#: src/common/CurlInterface.cpp:139
 msgid "A customErrorMessage already exists. Keeping only the first one."
 msgstr ""
 

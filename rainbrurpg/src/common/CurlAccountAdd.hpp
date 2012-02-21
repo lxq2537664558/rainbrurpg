@@ -34,7 +34,7 @@
 #ifndef CURL_ACCOUNT_ADD_H
 #define CURL_ACCOUNT_ADD_H
 
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

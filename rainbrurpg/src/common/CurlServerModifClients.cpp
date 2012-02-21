@@ -23,7 +23,7 @@
   * Implements a class to modify connected clients number of a server
   *
   */
-#include "curlservermodifclients.h"
+#include "CurlServerModifClients.hpp"
 
 /** The default constructor
   *

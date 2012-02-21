@@ -33,7 +33,7 @@
 #define CURL_ACCOUNT_TOGGLE_BLACKLIST_H
 
 #include "globaluri.h"
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 #include "xmlaccountlist.h"
 #include "rainbrudef.h" // For the gettext stuff
 

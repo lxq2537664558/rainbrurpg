@@ -33,7 +33,7 @@
 #ifndef CURL_ACCOUNT_DELETE_H
 #define CURL_ACCOUNT_DELETE_H
 
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 using namespace RainbruRPG::Network;

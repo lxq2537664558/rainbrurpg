@@ -24,7 +24,7 @@
   * Implements a class to fill and submit a form via libcUrl
   *
   */
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 
 /** The default constructor
   *

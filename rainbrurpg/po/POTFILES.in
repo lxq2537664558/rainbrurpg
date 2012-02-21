@@ -19,11 +19,11 @@ src/common/CurlInterface.cpp
 src/common/CurlPersoHeaderAdd.cpp
 src/common/CurlPersoHeaderDelete.cpp
 src/common/CurlPersoModifAttrb.hpp
-src/common/curlposteddata.cpp
-src/common/curlserveradd.cpp
-src/common/curlserverdelete.cpp
-src/common/curlservermodifclients.cpp
-src/common/curlsubmitform.cpp
+src/common/CurlPostedData.cpp
+src/common/CurlServerAdd.cpp
+src/common/CurlServerDelete.cpp
+src/common/CurlServerModifClients.cpp
+src/common/CurlSubmitForm.cpp
 src/common/enetbase.cpp
 src/common/enetclient.cpp
 src/common/ftpclient.cpp

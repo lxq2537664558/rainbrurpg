@@ -25,7 +25,7 @@
   *
   */
 
-#include "curlserverdelete.h"
+#include "CurlServerDelete.hpp"
 
 /** The default contructor
   *

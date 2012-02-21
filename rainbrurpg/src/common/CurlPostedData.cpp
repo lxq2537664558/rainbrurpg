@@ -25,7 +25,7 @@
   *
   */
 
-#include "curlposteddata.h"
+#include "CurlPostedData.hpp"
 #include <cstring> // For strlen() and strcmp()
 
 

@@ -45,7 +45,7 @@
 
 #include "rainbrudef.h"
 #include "CurlInterface.hpp"
-#include "curlposteddata.h"
+#include "CurlPostedData.hpp"
 #include "hashpassword.h"
 
 namespace RainbruRPG {

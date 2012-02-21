@@ -33,7 +33,7 @@
 #ifndef CURL_ACCOUNT_CONFIRM_MAIL_H
 #define CURL_ACCOUNT_CONFIRM_MAIL_H
 
-#include "curlsubmitform.h"
+#include "CurlSubmitForm.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 // Forward declarations

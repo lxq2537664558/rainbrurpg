@@ -39,11 +39,11 @@ h_sources= AttributeModifierList.hpp		\
 	   CurlPersoHeaderAdd.hpp		\
 	   CurlPersoHeaderDelete.hpp		\
 	   CurlPersoModifAttrb.hpp		\
-	   curlposteddata.h			\
-	   curlserveradd.h			\
-	   curlserverdelete.h			\
-	   curlservermodifclients.h		\
-	   curlsubmitform.h			\
+	   CurlPostedData.hpp			\
+	   CurlServerAdd.hpp			\
+	   CurlServerDelete.hpp			\
+	   CurlServerModifClients.hpp		\
+	   CurlSubmitForm.hpp			\
 	   enetbase.h				\
 	   enetclient.h				\
 	   ftpclient.h				\
@@ -114,11 +114,11 @@ cc_sources=AttributeModifierList.cpp		\
 	  CurlPersoHeaderAdd.cpp		\
 	  CurlPersoHeaderDelete.cpp		\
 	  CurlPersoModifAttrb.cpp		\
-	  curlposteddata.cpp			\
-	  curlserveradd.cpp			\
-	  curlserverdelete.cpp			\
-	  curlservermodifclients.cpp		\
-	  curlsubmitform.cpp			\
+	  CurlPostedData.cpp			\
+	  CurlServerAdd.cpp			\
+	  CurlServerDelete.cpp			\
+	  CurlServerModifClients.cpp		\
+	  CurlSubmitForm.cpp			\
 	  enetbase.cpp				\
 	  enetclient.cpp			\
 	  ftpclient.cpp				\

@@ -34,7 +34,7 @@
 
 #include <string>
 #include <globaluri.h>
-#include <curlsubmitform.h>
+#include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
 
 #include "rainbrudef.h"
