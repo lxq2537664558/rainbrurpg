@@ -1,3 +1,11 @@
+2012-02-23  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: improved
+	plugin's documentation.
+
+	* src/foswiki_plugin/README : Updated installation instructions
+	and added dependencies list.
+
 2012-01-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in : add a configuration summary.

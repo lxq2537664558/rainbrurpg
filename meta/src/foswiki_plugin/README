@@ -1,6 +1,27 @@
-Here are all the files for the foswiki plugin
+							-*-org-*-
 
-System/RainbrurpgMetaserverPlugin.txt is the documentation. It is installed 
+* What is this
+
+Here are all the files for the foswiki plugin part of the RainbruRPG's 
+meta server.
+
+* Dependencies
+
+| *Module* | *debian package*   |
+|----------+--------------------|
+| XML      | libxml-libxml-perl |
+| DateTime | libdatetime-perl   |
+|          |                    |
+
+* Installation
+
+RainbrurpgMetaserverPlugin.txt is the documentation. It is installed 
 in the /data/System directory
 
 RainbrurpgMetaserverPlugin.pm is installed in the lib/Foswiki/Plugins/ dir.
+
+The functions.pm file must be installed in a 
+lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/ directory
+
+Then, you need to enable it in the foswiki's configure script.
+

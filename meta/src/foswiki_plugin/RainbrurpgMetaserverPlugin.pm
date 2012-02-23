@@ -40,7 +40,7 @@ our $RELEASE = '1.1.1';
 
 # Short description of this plugin
 # One line description, is shown in the %SYSTEMWEB%.TextFormattingRules topic:
-our $SHORTDESCRIPTION = 'The RainbruRPG meta server list';
+our $SHORTDESCRIPTION = 'The <nop>RainbruRPG meta server list';
 
 # %SYSTEMWEB%.DevelopingPlugins has details of how to define =$Foswiki::cfg=
 # entries so they can be used with =configure=.

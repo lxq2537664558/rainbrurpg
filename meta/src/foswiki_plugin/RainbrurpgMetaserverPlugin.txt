@@ -12,9 +12,37 @@
 ---++ Introduction
 
 This plugin is used as a meta server (i.e. a list of currently online servers) 
-for <nop>RainbruRPG, a MMORPG.
+for <nop>RainbruRPG, a MMORPG. For more information, please visit the
+[[http://rainbrurpg.sourceforge.net][game website]].
 
----++ Syntax rules
+---++ Download
+
+You can get this plugin either as an archive or using SVN repository :
+
+   * the last archive can be download here : http://sourceforge.net/projects/rainbrurpg/files/meta/.
+   * to browse the dedicated sources online, follow http://rainbrurpg.svn.sourceforge.net/viewvc/rainbrurpg/trunk/meta/.
+   * to _checkout_ the source use the following command : 
+<verbatim>
+svn co https://rainbrurpg.svn.sourceforge.net/svnroot/rainbrurpg/trunk/meta/ rainbrurpg-meta
+</verbatim>
+
+---++ Installation
+
+The plugin contains three files. Install these in the given directory,
+from te /foswiki/ installation's root.
+
+| *File* | *Location* | *Comment* |
+| <nop>RainbrurpgMetaserverPlugin.txt | =/data/System/= | the plugin's documentation. |
+| <nop>RainbrurpgMetaserverPlugin.pm | =/lib/Foswiki/Plugins/= | The plugin code. |
+| functions.pm | =/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/= | The XML handling code. |
+
+You should need to create the =Plugins/RainbrurpgMetaserverPlugin= directory
+the first time you install it.
+
+Then, you need to enable it using the _foswiki_'s =configure= script, and use
+the provided macros to use it.
+
+---++ Provided macros
 
 ---+++ RB_SERVER_LIST macro 
 
@@ -29,14 +57,15 @@ This macro prints a table containing servers in error status.
 
 ---++ Plugin Info
 
-|  Copyright: | Copyright (C) 2006-2007 Peter Thoeny, peter@thoeny.org and TWiki Contributors; 2008-2009 Foswiki Contributors |
+|  Copyright: | Copyright (C) 2011-2012 J&eacute;r&ocirc;me Pasquier, rainbru@free.fr |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Version: | 11377 (2011-04-10) |
-|  Release: | 2.2.3 |
+|  Version: | 0.0.0 |
+|  Release: | 2 |
 |  <span class="foswikiNoBreak" >Change History:</span> | <!-- versions below in reverse order -->&nbsp; |
-|  02 Dec 2003: | Initial version |
-|  Plugin Home: | http://foswiki.org/Extensions/%TOPIC% |
-|  Support: | http://foswiki.org/Support/%TOPIC% |
+|  23 Feb 2012: | Added _Download_ and _Installation_ parts. |
+|  25 Jul 2011: | Initial version |
+|  Plugin Home: | http://rainbrurpg.sourceforge.net/wiki/bin/view/System/RainbrurpgMetaserverPlugin |
+|  Support: | http://sourceforge.net/projects/rainbrurpg/support |
 
 
 ---
