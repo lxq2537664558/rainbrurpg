@@ -35,7 +35,7 @@
 
 #include "xmlaccountlist.h"
 #include "taccountlist.h"
-#include "hashpassword.h"
+#include "HashPassword.hpp"
 
 # include "rainbrudef.h" // For the gettext stuff
 

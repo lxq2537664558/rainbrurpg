@@ -25,7 +25,7 @@
   *
   */
 
-#include "httpresponse.h"
+#include "HttpResponse.hpp"
 
 /** The default constructor 
   *

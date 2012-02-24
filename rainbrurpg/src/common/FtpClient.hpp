@@ -55,8 +55,8 @@
 
 #include <sigc++/sigc++.h>
 
-#include "ftpdef.h"
-#include "globaluri.h"
+#include "FtpDef.hpp"
+#include "GlobalUri.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 
@@ -147,7 +147,7 @@ namespace RainbruRPG {
         * 
 	* The errors are defined by the 
 	* \ref RainbruRPG::Network::tTransferError "tTransferError" 
-	* enum in ftpdef.h.
+	* enum in FtpDef.hpp.
 	*
 	*/
       tVoidErrSignal sigTransferError;

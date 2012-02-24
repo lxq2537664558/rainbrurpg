@@ -33,7 +33,7 @@
 #define CURL_SERVER_DELETE_H
 
 #include <string>
-#include <globaluri.h>
+#include <GlobalUri.hpp>
 #include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
 

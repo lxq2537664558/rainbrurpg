@@ -46,7 +46,7 @@
 #include "rainbrudef.h"
 #include "CurlInterface.hpp"
 #include "CurlPostedData.hpp"
-#include "hashpassword.h"
+#include "HashPassword.hpp"
 
 namespace RainbruRPG {
   namespace Network {

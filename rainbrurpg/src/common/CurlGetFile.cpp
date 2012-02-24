@@ -26,8 +26,8 @@
   */
 #include "CurlGetFile.hpp"
 
-#include "loadbmp.h"
-#include "httpresponse.h"
+#include "LoadBmp.hpp"
+#include "HttpResponse.hpp"
 
 #include "BoostImport.hpp"
 

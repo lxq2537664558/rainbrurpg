@@ -44,17 +44,17 @@ h_sources= AttributeModifierList.hpp		\
 	   CurlServerDelete.hpp			\
 	   CurlServerModifClients.hpp		\
 	   CurlSubmitForm.hpp			\
-	   enetbase.h				\
-	   enetclient.h				\
-	   ftpclient.h				\
-	   ftpdef.h				\
-	   globaluri.h				\
-	   hashfile.h				\
-	   hashpassword.h			\
-	   httpresponse.h			\
-	   itemlistfile.h			\
-	   languagelistitem.h			\
-	   loadbmp.h				\
+	   EnetBase.hpp				\
+	   EnetClient.hpp			\
+	   FtpClient.hpp			\
+	   FtpDef.hpp				\
+	   GlobalUri.hpp			\
+	   HashFile.hpp				\
+	   HashPassword.hpp			\
+	   HttpResponse.hpp			\
+	   ItemListFile.hpp			\
+	   LanguageListItem.hpp			\
+	   LoadBmp.hpp				\
 	   logger.h				\
 	   netpacketbase.h			\
 	   netpacketflooderbase.h		\
@@ -119,16 +119,16 @@ cc_sources=AttributeModifierList.cpp		\
 	  CurlServerDelete.cpp			\
 	  CurlServerModifClients.cpp		\
 	  CurlSubmitForm.cpp			\
-	  enetbase.cpp				\
-	  enetclient.cpp			\
-	  ftpclient.cpp				\
-	  globaluri.cpp				\
-	  hashfile.cpp				\
-	  hashpassword.cpp			\
-	  httpresponse.cpp			\
-	  itemlistfile.cpp			\
-	  languagelistitem.cpp			\
-	  loadbmp.cpp				\
+	  EnetBase.cpp				\
+	  EnetClient.cpp			\
+	  FtpClient.cpp				\
+	  GlobalUri.cpp				\
+	  HashFile.cpp				\
+	  HashPassword.cpp			\
+	  HttpResponse.cpp			\
+	  ItemListFile.cpp			\
+	  LanguageListItem.cpp			\
+	  LoadBmp.cpp				\
 	  logger.cpp				\
 	  netpacketbase.cpp			\
 	  netpacketflooderbase.cpp		\

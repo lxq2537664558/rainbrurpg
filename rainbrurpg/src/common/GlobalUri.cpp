@@ -25,7 +25,7 @@
   *
   */
 
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 
 #include "BoostImport.hpp"
 

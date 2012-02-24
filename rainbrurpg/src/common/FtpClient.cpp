@@ -25,7 +25,7 @@
   *
   */
 
-#include "ftpclient.h"
+#include "FtpClient.hpp"
 
 #include "logger.h"
 #include "stringconv.h"

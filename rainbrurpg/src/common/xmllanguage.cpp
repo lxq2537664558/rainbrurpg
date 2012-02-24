@@ -28,7 +28,7 @@
 #include "xmllanguage.h"
 
 #include "logger.h"
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 #include "stringconv.h"
 
 /** The default constructor

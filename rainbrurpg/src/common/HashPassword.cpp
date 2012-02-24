@@ -25,7 +25,7 @@
   *
   */
 
-#include "hashpassword.h"
+#include "HashPassword.hpp"
 
 #include <iostream>
 #include <cstring> // For strlen()

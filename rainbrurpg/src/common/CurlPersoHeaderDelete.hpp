@@ -35,7 +35,7 @@
 #include <string>
 
 #include "rainbrudef.h" // For gettext stuff
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"
 

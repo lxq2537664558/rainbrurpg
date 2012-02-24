@@ -25,7 +25,7 @@
   *
   */
 
-#include "enetclient.h"
+#include "EnetClient.hpp"
 
 #include "logger.h"
 

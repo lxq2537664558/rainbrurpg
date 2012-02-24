@@ -1,14 +1,20 @@
+2012-02-23  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Some sources names now in CamelCase.
+
+2012-02-21  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Some sources names now in CamelCase.
+
 2010-12-18  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Some sources names now in CamelCase.
 
 2010-02-16  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added src/ to directories names.
-	
+
 2010-02-16  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Change EasyBMP and tinyxml entries cause
 	they moved to ext/.
 	* POTFILES.in: Change ogreGui/ sources to oldOgreGui/.
-	
+
 2009-08-28  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added gamestate.cpp, gsgamebase.cpp and
 	gslocaltest from maincore/.
@@ -29,7 +35,7 @@
 2009-04-28  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added common/xmlattributelist.cpp, xmlbonusfile.cpp,
 	xmlbonusfilelist.cpp
-	
+
 2009-04-24  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added common/version.cpp, xmlaccountlist.cpp,
 	xmlattrbcatlist.cpp
@@ -38,14 +44,14 @@
 	* POTFILES.in: Added common/tinyxmlerror.cpp
 
 2009-04-18  Jerome Pasquier  <rainbru@free.fr>
-	* POTFILES.in: Added common/serverlistitem.cpp, sha1.cpp, 
+	* POTFILES.in: Added common/serverlistitem.cpp, sha1.cpp,
 	stringconv.cpp, timer.cpp
 
 2009-04-04  Jerome Pasquier  <rainbru@free.fr>
-	* POTFILES.in: common/optionintattribute.cpp, 
+	* POTFILES.in: common/optionintattribute.cpp,
 	common/optionintrangeattribute.cpp, common/optionlistattribute.cpp,
 	optionmanager.cpp, optionpanel.cpp, options.cpp,
-	optionstringattribute.cpp added.	
+	optionstringattribute.cpp added.
 
 2009-04-04  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/objectpos.cpp, common/optionattribute.cpp,
@@ -66,7 +72,7 @@
 
 2009-03-30  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/EasyBMP.cpp added.
-	
+
 2009-03-28  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: common/curlserveradd.cpp, common/curlserverdelete.cpp 
 	common/curlservermodifsclients.cpp and common/curlsubmitform added.
@@ -95,7 +101,7 @@
 	common/chartbase.cpp added.
 
 2009-03-18  gettextize  <bug-gnu-gettext@gnu.org>
-	
+
 	* Makefile.in.in: New file, from gettext-0.17.
 	* boldquot.sed: New file, from gettext-0.17.
 	* en@boldquot.header: New file, from gettext-0.17.

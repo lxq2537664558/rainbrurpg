@@ -40,7 +40,7 @@
 #include <string>
 #include <list>
 #include "tinyxml.h"
-#include "loadbmp.h"
+#include "LoadBmp.hpp"
 
 #include "taccountlist.h"
 #include "tnotelist.h"
@@ -49,7 +49,7 @@
 #include "tidentreturn.h"
 #include "logger.h"
 #include "CurlFileToXml.hpp"
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

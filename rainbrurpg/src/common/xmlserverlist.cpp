@@ -26,7 +26,7 @@
   */
 
 #include "xmlserverlist.h"
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 
 /** The default constructor
   *

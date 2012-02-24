@@ -33,7 +33,7 @@
 #define CURL_SERVER_MODIF_CLIENTS_H
 
 #include <string>
-#include <globaluri.h>
+#include <GlobalUri.hpp>
 #include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
 #include <stringconv.h>

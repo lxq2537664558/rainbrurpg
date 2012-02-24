@@ -33,7 +33,7 @@
 #define CURL_PERSO_HEADER_ADD_H
 
 #include "rainbrudef.h" // For gettext stuff
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"
 

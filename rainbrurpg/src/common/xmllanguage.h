@@ -36,7 +36,7 @@
 #include <list>
 #include <string>
 
-#include "languagelistitem.h"
+#include "LanguageListItem.hpp"
 #include "tinyxml.h"
 #include "ptypes.h"     // For unsigned int types
 #include "rainbrudef.h" // For the gettext stuff

@@ -26,8 +26,8 @@
   */
 #include "CurlAccountDelete.hpp"
 
-#include "globaluri.h"
-#include "hashpassword.h"
+#include "GlobalUri.hpp"
+#include "HashPassword.hpp"
 #include "xmlaccountlist.h"
 
 /** The default constructor 

@@ -50,7 +50,7 @@
 
 #include "options.h"
 #include "vcconstant.h"
-#include "globaluri.h"
+#include <GlobalUri.hpp>
 
 // includes game states
 #include "gsmainmenu.h"

@@ -27,7 +27,7 @@
 
 #include "xmloptions.h"
 #include "config.h"
-#include "globaluri.h"
+#include "GlobalUri.hpp"
 
 /** The default constructor
   *

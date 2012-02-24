@@ -20,8 +20,8 @@
  *
  */
 
-#include "loadbmp.h"
-#include "globaluri.h"
+#include "LoadBmp.hpp"
+#include "GlobalUri.hpp"
 
 #include "BoostImport.hpp"
 

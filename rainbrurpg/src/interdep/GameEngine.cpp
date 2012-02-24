@@ -36,11 +36,11 @@
 #include "gslocaltest.h"
 
 #include "xmlobjectlist.h"
-#include "globaluri.h"
 #include "InputManager.hpp"
 
 #include "GameEngine.hpp"
 
+#include <GlobalUri.hpp>
 #include <logger.h>
 #include <Brush.hpp>
 

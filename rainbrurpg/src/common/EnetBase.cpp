@@ -25,7 +25,7 @@
   *
   */
 
-#include "enetbase.h"
+#include "EnetBase.hpp"
 
 /** The default constructor
   *

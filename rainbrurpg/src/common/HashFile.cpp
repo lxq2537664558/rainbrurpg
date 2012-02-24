@@ -25,7 +25,7 @@
   *
   */
 
-#include "hashfile.h"
+#include "HashFile.hpp"
 
 /** The default constructor
   *

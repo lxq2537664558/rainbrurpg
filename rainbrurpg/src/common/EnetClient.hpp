@@ -40,7 +40,7 @@
 #include <enet/enet.h>
 #include <glib.h>
 
-#include "enetbase.h"
+#include "EnetBase.hpp"
 #include "netpacketbase.h"
 
 #include "rainbrudef.h" // For the gettext stuff

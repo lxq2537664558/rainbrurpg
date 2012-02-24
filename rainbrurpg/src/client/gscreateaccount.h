@@ -33,7 +33,7 @@
 #ifndef GS_CREATE_ACCOUNT_H
 #define GS_CREATE_ACCOUNT_H
 
-#include <hashpassword.h>
+#include <HashPassword.hpp>
 #include <CurlAccountAdd.hpp>
 
 #include "gsmenubase.h"

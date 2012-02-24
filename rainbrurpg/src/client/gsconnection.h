@@ -33,7 +33,7 @@
 #ifndef GS_CONNECTION_H
 #define GS_CONNECTION_H
 
-#include <hashpassword.h>
+#include <HashPassword.hpp>
 //#include <Window.hpp>
 
 #include "gsmenubase.h"

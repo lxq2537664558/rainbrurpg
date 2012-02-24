@@ -115,6 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
+- (5) CamelCased some files in common/
+   EnetBase, EnetClient, FtpClient, FtpDef, GlobalUri, HashFile,
+   HashPassword, HttpResponse, ItemListFile, LanguageListItem, LoadBmp
 - (4) CamelCased some files in common/
    CurlPostedData, CurlServerAdd, CurlServerDelete,CurlSubmitForm
    CurlServerModifClients

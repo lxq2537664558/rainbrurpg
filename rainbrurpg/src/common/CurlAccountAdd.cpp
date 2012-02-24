@@ -28,8 +28,8 @@
 #include "CurlAccountAdd.hpp"
 
 #include "xmlaccountlist.h"
-#include "hashpassword.h"
-#include "globaluri.h"
+#include "HashPassword.hpp"
+#include "GlobalUri.hpp"
 
 /** The default contructor
   *

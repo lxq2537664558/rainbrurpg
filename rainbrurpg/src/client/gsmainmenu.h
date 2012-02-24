@@ -35,7 +35,7 @@
 #ifndef GS_MAIN_MENU_H
 #define GS_MAIN_MENU_H
 
-#include <hashpassword.h>
+#include <HashPassword.hpp>
 
 #include "gsmenubase.h"
 //#include "bgbutton.h"

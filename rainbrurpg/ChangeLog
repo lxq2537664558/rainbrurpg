@@ -1,3 +1,20 @@
+2012-02-23 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/common/loadbmp.h|.cpp:  CamelCased and header called hpp.
+	* src/common/languagelistitem.h|.cpp:  CamelCased and header called hpp.
+	* src/common/itemlistfile.h|.cpp:  CamelCased and header called hpp.
+	* src/common/httpresponse.h|.cpp:  CamelCased and header called hpp.
+	* src/common/hashpassword.h|.cpp:  CamelCased and header called hpp.
+	* src/common/hashfile.h|.cpp:  CamelCased and header called hpp.
+	* src/common/globaluri.h|.cpp:  CamelCased and header called hpp.
+	* src/common/ftpdef.h:  CamelCased and header called hpp.
+	* src/common/ftpclient.h|.cpp:  CamelCased and header called hpp.
+	* src/common/enetclient.h|.cpp:  CamelCased and header called hpp.
+	* src/common/enetbase.h|.cpp:  CamelCased and header called hpp.
+
 2012-02-21 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
