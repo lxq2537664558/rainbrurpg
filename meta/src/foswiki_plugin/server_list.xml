@@ -1,0 +1,11 @@
+<ServerList>
+  <Server>
+    <Name>Aze</Name>
+    <Clients>12</Clients>
+    <Ip>201.235.230.124</Ip>
+    <Port>64025</Port>
+    <Uptime>87566</Uptime>
+    <Comment>A dummy server.</Comment>
+  </Server>
+</ServerList>
+

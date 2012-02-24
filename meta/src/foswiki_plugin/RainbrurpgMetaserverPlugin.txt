@@ -15,6 +15,11 @@ This plugin is used as a meta server (i.e. a list of currently online servers)
 for <nop>RainbruRPG, a MMORPG. For more information, please visit the
 [[http://rainbrurpg.sourceforge.net][game website]].
 
+---++ Internals
+
+The plugin deals with an _XML_ file located in the =pub/= directory of
+your _foswiki_ installation.
+
 ---++ Download
 
 You can get this plugin either as an archive or using SVN repository :
@@ -35,6 +40,7 @@ from te /foswiki/ installation's root.
 | <nop>RainbrurpgMetaserverPlugin.txt | =/data/System/= | the plugin's documentation. |
 | <nop>RainbrurpgMetaserverPlugin.pm | =/lib/Foswiki/Plugins/= | The plugin code. |
 | functions.pm | =/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/= | The XML handling code. |
+| server_list.xml | =/pub/= | Optional. !%RB_SERVER_LIST% will print an empty table if not found. |
 
 You should need to create the =Plugins/RainbrurpgMetaserverPlugin= directory
 the first time you install it.
@@ -44,16 +50,16 @@ the provided macros to use it.
 
 ---++ Provided macros
 
----+++ RB_SERVER_LIST macro 
+---+++ The !%RB_SERVER_LIST% macro 
 
 This macro renders the currently online and usable servers in a nice 
 foswiki table.
 
----+++ RB_SERVER_ERROR macro 
+---+++ The !%RB_SERVER_ERROR% macro 
 
 This macro prints a table containing servers in error status.
 
----+++ RB_SERVER_IFNOYAML macro 
+---+++ The %RB_SERVER_IFNOYAML% macro 
 
 ---++ Plugin Info
 

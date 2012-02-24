@@ -1,5 +1,11 @@
 2012-02-23  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/foswiki_plugin/function.pm (getServerList): returns an 
+	empty table if XML file not found.
+	* src/foswiki_plugin/server_list.xml: added example xml file.
+
+2012-02-23  Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: improved
 	plugin's documentation.
 

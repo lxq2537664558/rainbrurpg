@@ -12,7 +12,7 @@ use DateTime;
 # =========================
 use vars qw($filename $dom $root );
 
-my $xmlfile = 'http://rainbrurpg.mondomaine.org/wiki/pub/server_list.xml';
+my $xmlfile = 'http://localtest.rainbrurpg.org/wiki/pub/server_list.xml';
 
 sub getNodeContent
 {
@@ -64,14 +64,20 @@ sub getUptime
 
 sub getServerList
 {
-    $dom = XML::LibXML->load_xml(location => $xmlfile);
-    $root = $dom->documentElement();
-    my @nodes = $root->getChildrenByTagName('Server');
 
     # Create header
     my $output = <<EOS;
 | *Name* | *clients* | *Ip:port* | *Uptime* | *Comments* |
 EOS
+
+    # Prints an empty table if XML file not found
+    if (! -e $filename) {
+	return $output .= "| No server online (_XML_ file not found) |||||";
+    }
+
+    $dom = XML::LibXML->load_xml(location => $xmlfile);
+    $root = $dom->documentElement();
+    my @nodes = $root->getChildrenByTagName('Server');
 
     foreach my $node (@nodes)
     {

@@ -16,13 +16,19 @@
 *** v0.0.2 Create c++ libraries for client and server using REST
     Can Boost.Asio help me doing REST client ?
     see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
+- [ ] Create also binary toosl to add/delete servers
 **** Prepare the REST API
 - [ ] Needed password in Foswiki configure script
+- [ ] a function to add a server
+- [ ] a function to remove a server
+- [ ] a function to get the YAML server list
+- [ ] a function to set a server in error state
 *** v0.0.1 Correct project setup
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
 **** TODO Correct project setup
+     CLOCK: [2012-02-24 ven. 10:22]--[2012-02-24 ven. 10:54] =>  0:32
      CLOCK: [2012-02-23 jeu. 18:07]--[2012-02-23 jeu. 18:50] =>  0:43
      CLOCK: [2012-01-19 jeu. 09:14]--[2012-01-19 jeu. 09:37] =>  0:23
      CLOCK: [2012-01-19 jeu. 07:34]--[2012-01-19 jeu. 08:06] =>  0:32
@@ -40,11 +46,12 @@
 	    for RainbrurpgMetaserverPlugin.txt
 	    and RainbrurpgMetaserverPlugin.pm
       The RainbrurpgMetaserverPlugin dir containing functions.pm
-- [ ] Must explain how to install and enable the foswiki plugin
+- [X] Must explain how to install and enable the foswiki plugin
       in src/foswiki_plugin/README
-- [ ] autoconf --with-foswiki-dir command-line option
-- [ ] Create a configure summary
-- [ ] add src/lib* to archive
+- [X] Handle error with %SERVER_LIST% if xml file doesn't exist
+- [X] autoconf --with-foswiki-dir command-line option
+- [X] Create a configure summary
+- [X] add src/lib* to archive
 - [ ] DEPENDENCIES files (Xml, Yaml) in each src/ subdirs
 - [ ] libclient/ and libserver/ directories
       A README in each subdir
@@ -59,6 +66,9 @@
 **** Complete XML file in src/xml/ and printing with foswiki's macros
 - [X] add ruleset-id
 - [ ] Add an 'hardwareDescription' field for the server
+- [ ] We must add a password to add and delete server to avoid
+      spam deletion of server
+- [ ] Add an admin password for the error-ot
 - [ ] Create also a Dtd 
 - [ ] FosWiki plugin must validate XML file
 - [ ] Show mirror server when we click (as in foswiki configure)
@@ -66,9 +76,4 @@
 - [ ] Create System.RainbrurpgMetaserverPlugin doc page
 - [ ] Add max-clients to the XML
 - [ ] Can we protect XML content with an anti-script function ?
-**** Use REST feature to communicate
-  see restExample() in RainbrurpgMetaserverPlugin.pm
-- [ ] a function to add a server
-- [ ] a function to remove a server
-- [ ] a function to get the YAML server list
-- [ ] a function to set a server in error state
+- [ ] Handle the ServerDetail wiki page
