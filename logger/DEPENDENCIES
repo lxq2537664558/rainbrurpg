@@ -1,0 +1,15 @@
+Please update http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/BuildingFromSources when modifying this file.
+
+The following package should be installed before RainbruRPG is installed:
+
+* Boost.Program_options 1.42
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
+
+* qt4-ruby
+  + homepage: 
+    http://rubyforge.org/projects/korundum/
+  + download:
+    http://rubyforge.org/projects/korundum/

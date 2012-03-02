@@ -33,7 +33,7 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
-     CLOCK: [2012-03-02 ven. 14:53]
+     CLOCK: [2012-03-02 ven. 14:53]--[2012-03-02 ven. 15:14] =>  0:21
      CLOCK: [2012-02-20 lun. 17:27]--[2012-02-20 lun. 17:44] =>  0:17
      CLOCK: [2012-02-04 sam. 17:05]--[2012-02-04 sam. 17:44] =>  0:39
      CLOCK: [2012-02-04 sam. 08:24]--[2012-02-04 sam. 09:42] =>  1:18
@@ -93,12 +93,12 @@
       - [X] We may then open an error dialog with missing nodes
 - [X] Should remove autoproject generated files
       logger.cc, xmalloc.h, xmalloc.c ...
-- [ ] Should remove autom4te.cache from svn repo
+- [X] Should remove autom4te.cache from svn repo
+- [X] configure must search for boost libraries
+- [X] Create a DEPENDENCIES file
 - [ ] May use gettext for translation
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
-- [ ] Create a DEPENDENCIES file
 - [ ] Logger may log process time
-- [ ] configure must search for boost libraries
 - [ ] Many members must be private
 - [ ] Must escape some characters (`, :)
