@@ -11,6 +11,6 @@ fwsource_DATA = RainbrurpgMetaserverPlugin.pm
 fwfuncdir = $(foswiki_prefix)/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin
 fwfunc_DATA = functions.pm
 
-EXTRA_DIST = $(fwdoc_DATA) $(fwsource_DATA) $(fwfunc_DATA) 
+EXTRA_DIST = $(fwdoc_DATA) $(fwsource_DATA) $(fwfunc_DATA) DEPENDENCIES
 
 TESTS=functions_Test.pl

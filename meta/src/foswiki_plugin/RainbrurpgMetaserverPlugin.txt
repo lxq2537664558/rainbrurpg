@@ -66,7 +66,7 @@ This macro prints a table containing servers in error status.
 |  Copyright: | Copyright (C) 2011-2012 J&eacute;r&ocirc;me Pasquier, rainbru@free.fr |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
 |  Version: | 0.0.0 |
-|  Release: | 2 |
+|  Release: | 3 |
 |  <span class="foswikiNoBreak" >Change History:</span> | <!-- versions below in reverse order -->&nbsp; |
 |  23 Feb 2012: | Added _Download_ and _Installation_ parts. |
 |  25 Jul 2011: | Initial version |

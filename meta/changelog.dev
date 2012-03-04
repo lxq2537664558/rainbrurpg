@@ -1,0 +1,17 @@
+* v0.0.0-2 (17 jan 2012 - 04 mar 2012) SLOC 175 UT 1 FT 5:26
+- Improved project setup
+   DEPENDENCIES files for all src subdirs
+- Defines the metaserver URL in config.h with configure option
+- FW plugin prints an empty table if XML file not found
+- Updated documentation in README and RainbrurpgMetaserverPlugin.txt
+- Create foswiki directory option for ./configure
+- Changed directory structure
+   to fix 'too long filenames issues' for dist-bzip2
+
+* v0.0.0-1 (25 jul 2011 - 17 jan 2012) SLOC 229 UT ?? FT 2:14
+- libclient and libserver directories added with README
+- foswiki plugin code and doc moved to src/foswiki_plugin
+- Updated GNU headers date for 2012
+- Created a xml example file in ...Plugin directory
+- create a ROADMAP file
+- Correct project setup

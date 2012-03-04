@@ -1,3 +1,10 @@
+2012-03-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: add AC_CONFIG_HEADERS([config.h]).
+	
+	* configure.in (RB_META_URL): created configure option and
+	summary details.
+
 2012-02-23  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/foswiki_plugin/function.pm (getServerList): returns an 

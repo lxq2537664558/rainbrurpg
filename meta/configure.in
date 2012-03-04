@@ -2,8 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
-AC_INIT([rainbrurpg-meta], [0.0.0-2], [rainbru@users.sf.net])
-AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-2)
+AC_INIT([rainbrurpg-meta], [0.0.0-3], [rainbru@users.sf.net])
+AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-3)
+AC_CONFIG_HEADERS([config.h])
 
 # Handle the custom foswiki_prefix
 AC_DEFUN([RB_FOSWIKI_DIR],
@@ -12,7 +13,18 @@ AC_DEFUN([RB_FOSWIKI_DIR],
       [where to install foswiki plugin related files]),
   foswikidir="$withval", foswikidir=${prefix}/foswiki)
 ])
+# Handle the custom foswiki_prefix
+AC_DEFUN([RB_META_URL],
+  [AC_ARG_WITH(metaurl,
+    AS_HELP_STRING([--with-metaurl=URL], 
+      [where is located the metaserver (foswiki adress)]),
+  metaurl="$withval", metaurl=127.0.0.1)
+  AC_SUBST([metaurl])dnl
+  AC_DEFINE_UNQUOTED(META_URL, "$metaurl", The online metaserver URL)
+])
+
 RB_FOSWIKI_DIR
+RB_META_URL
 AC_SUBST([foswikidir])dnl
 
 # Checks for programs.
@@ -30,6 +42,8 @@ AC_OUTPUT([
   Makefile
   src/Makefile
   src/foswiki_plugin/Makefile
+  src/libclient/Makefile
+  src/libserver/Makefile
 ])
 
 dnl Options summary
@@ -40,3 +54,4 @@ echo "------------------------------------------------------------------------"
 echo
 echo "Extra directory:"
 echo "  Foswiki root directory.......${foswikidir}"
+echo "  Metaserver URL...............${metaurl}"

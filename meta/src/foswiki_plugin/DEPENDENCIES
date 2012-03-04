@@ -1,0 +1,16 @@
+The following package should be installed before RainbruRPG-meta is installed:
+
+* Foswiki
+  + Needed : the metaserver is a foswiki's plugin
+  + homepage:
+    http://foswiki.org
+  + download:
+    http://foswiki.org/Download/DownloadFoswiki
+
+* XML::LibXML
+  + Needed : Perl bindings for libxml2
+  + homepage:
+    http://search.cpan.org/~shlomif/XML-LibXML-1.94/LibXML.pod
+  + download:
+    http://search.cpan.org/~shlomif/XML-LibXML-1.94/LibXML.pod
+    

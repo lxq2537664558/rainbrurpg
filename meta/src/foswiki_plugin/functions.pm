@@ -1,10 +1,9 @@
-
 package Foswiki::Plugins::RainbrurpgMetaserverPlugin;
 
 use strict;
 use warnings;
 
-use XML::LibXML;            # The GNOME libxml bindings
+use XML::LibXML;            # The GNOME libxml2 bindings
 
 use Data::Dumper;
 use DateTime;
