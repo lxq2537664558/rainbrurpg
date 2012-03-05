@@ -32,7 +32,7 @@
 #ifndef XML_OBJECT_LIST_H
 #define XML_OBJECT_LIST_H
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "tinyxml.h"
 #include "objectmesh.h"
 #include "objectpos.h"

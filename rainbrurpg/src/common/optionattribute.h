@@ -37,7 +37,7 @@
 #include <string>
 #include <fox-1.6/fx.h>
 
-#include "logger.h"
+#include "Logger.hpp"
 
 using namespace std;
 

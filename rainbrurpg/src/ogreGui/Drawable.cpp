@@ -30,7 +30,7 @@
 
 #include <cstdlib> // for NULL
 #include <sstream>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include <OgreTextureManager.h>
 #include <OgreResourceGroupManager.h>

@@ -29,7 +29,7 @@
 
 #include <bitset>
 #include <wchar.h>
-#include <logger.h>
+#include <Logger.hpp>
 #include <cstring> // For strcmp()
 
 

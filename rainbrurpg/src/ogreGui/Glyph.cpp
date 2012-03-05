@@ -26,7 +26,7 @@
   */
 
 #include "Glyph.hpp"
-#include "logger.h"
+#include "Logger.hpp"
 
 #include <dumpogreobject.h>
 

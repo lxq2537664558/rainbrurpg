@@ -27,7 +27,7 @@
 
 #include "ItemListFile.hpp"
 
-#include "logger.h"
+#include "Logger.hpp"
 
 /** An empty constructor */
 RainbruRPG::Options::ItemListFile::ItemListFile(void):

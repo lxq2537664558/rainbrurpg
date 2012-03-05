@@ -27,7 +27,7 @@
 
 #include "xmllanguage.h"
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "GlobalUri.hpp"
 #include "stringconv.h"
 

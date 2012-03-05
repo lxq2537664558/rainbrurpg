@@ -28,7 +28,7 @@
 #include "gsgamebase.h"
 #include <iostream>
 
-#include <logger.h>
+#include <Logger.hpp>
 #include "GameEngine.hpp"
 
 /** The default constructor

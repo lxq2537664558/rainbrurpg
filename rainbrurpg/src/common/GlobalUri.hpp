@@ -48,7 +48,7 @@
 #include <string>
 #include <list>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "rainbrudef.h"
 
 #ifdef RAINBRU_RPG_DEBUG

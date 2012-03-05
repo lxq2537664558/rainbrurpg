@@ -35,7 +35,7 @@
 
 #include <string>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "optionattribute.h"
 
 #include "rainbrudef.h" // For the gettext stuff

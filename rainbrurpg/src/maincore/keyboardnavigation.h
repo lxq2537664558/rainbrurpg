@@ -39,7 +39,7 @@
 #define _TabNavigation_h_
 
 #include <vector>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include <rainbrudef.h> // For the GNU gettext stuff
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-02-17 12:14+0100\n"
+"POT-Creation-Date: 2012-03-04 17:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,11 +507,11 @@ msgstr ""
 msgid "The curl handle was not properly initialized"
 msgstr ""
 
-#: src/common/CurlGetFile.cpp:113 src/common/curlsubmitform.cpp:111
+#: src/common/CurlGetFile.cpp:113 src/common/CurlSubmitForm.cpp:111
 msgid "Setting the licurl URL"
 msgstr ""
 
-#: src/common/CurlGetFile.cpp:130 src/common/curlsubmitform.cpp:104
+#: src/common/CurlGetFile.cpp:130 src/common/CurlSubmitForm.cpp:104
 msgid "Error opening the FILE pointer"
 msgstr ""
 
@@ -568,162 +568,162 @@ msgid "A customErrorMessage already exists. Keeping only the first one."
 msgstr ""
 
 #. TRANSLATORS: Here, CurlPostedData is a class name. Do not translate it
-#: src/common/curlposteddata.cpp:38
+#: src/common/CurlPostedData.cpp:38
 msgid "Creating a CurlPostedData structure"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:59
+#: src/common/CurlPostedData.cpp:59
 msgid "Adding a key to the CurlPostedData list"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:61
+#: src/common/CurlPostedData.cpp:61
 msgid "Trying to add a empty key to the CurlPostedData list. Aborded"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:74
+#: src/common/CurlPostedData.cpp:74
 msgid "Debugging CurlPostedData key list : "
 msgstr ""
 
-#: src/common/curlposteddata.cpp:91
+#: src/common/CurlPostedData.cpp:91
 msgid "Adding an auto timestamp"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:100
+#: src/common/CurlPostedData.cpp:100
 msgid "Setting an auto timestamp while a custom timestamp already exists"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a CurlPostedData key.
-#: src/common/curlposteddata.cpp:132
+#: src/common/CurlPostedData.cpp:132
 #, c-format
 msgid "In CurlPostedData::getValue() : this key cannot be found : '%s'"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:152
+#: src/common/CurlPostedData.cpp:152
 msgid "Setting the value of a key (std::string form)"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:163
+#: src/common/CurlPostedData.cpp:163
 msgid "Computing posted data..."
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of a posted data. It
 #. is a string.
-#: src/common/curlposteddata.cpp:176
+#: src/common/CurlPostedData.cpp:176
 #, c-format
 msgid "The key '%s' has no value."
 msgstr ""
 
-#: src/common/curlposteddata.cpp:203
+#: src/common/CurlPostedData.cpp:203
 msgid "Setting the value of a key (const char* form)"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:210
+#: src/common/CurlPostedData.cpp:210
 msgid "The key was found"
 msgstr ""
 
-#: src/common/curlposteddata.cpp:212
+#: src/common/CurlPostedData.cpp:212
 msgid "Setting a custom timestamp"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a posted data key.
-#: src/common/curlposteddata.cpp:226
+#: src/common/CurlPostedData.cpp:226
 #, c-format
 msgid "The key called '%s' was not found"
 msgstr ""
 
-#: src/common/curlserveradd.cpp:80
+#: src/common/CurlServerAdd.cpp:80
 msgid "The new server's listening port is empty"
 msgstr ""
 
-#: src/common/curlserveradd.cpp:88
+#: src/common/CurlServerAdd.cpp:88
 msgid "The new server's IP address is empty"
 msgstr ""
 
-#: src/common/curlserveradd.cpp:96
+#: src/common/CurlServerAdd.cpp:96
 msgid "The new server's name is empty"
 msgstr ""
 
-#: src/common/curlserverdelete.cpp:89
+#: src/common/CurlServerDelete.cpp:89
 msgid "The server's name is empty"
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:45
+#: src/common/CurlSubmitForm.cpp:45
 msgid "Performing CurlSubmitForm action..."
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:57
+#: src/common/CurlSubmitForm.cpp:57
 msgid "CurlSubmitForm controlAfter() failed..."
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:62
+#: src/common/CurlSubmitForm.cpp:62
 msgid "CurlSubmitForm failed to submit form..."
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:67
+#: src/common/CurlSubmitForm.cpp:67
 msgid "CurlSubmitForm failed to compute posted data..."
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:72
+#: src/common/CurlSubmitForm.cpp:72
 msgid "CurlSubmitForm controlBefore() failed..."
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:149
+#: src/common/CurlSubmitForm.cpp:149
 msgid "The form was successfully submited"
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:153
+#: src/common/CurlSubmitForm.cpp:153
 msgid "An error occured during submitForm"
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:167
+#: src/common/CurlSubmitForm.cpp:167
 msgid "Setting server response successfull"
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:170
+#: src/common/CurlSubmitForm.cpp:170
 msgid "Cannot get the server response"
 msgstr ""
 
-#: src/common/curlsubmitform.cpp:213
+#: src/common/CurlSubmitForm.cpp:213
 msgid "Adding a Pwd Data to post"
 msgstr ""
 
-#: src/common/enetclient.cpp:94
+#: src/common/EnetClient.cpp:94
 msgid "No available peers for initiating an ENet connection."
 msgstr ""
 
-#: src/common/enetclient.cpp:100
+#: src/common/EnetClient.cpp:100
 msgid "Connection to server succeeded."
 msgstr ""
 
-#: src/common/enetclient.cpp:109
+#: src/common/EnetClient.cpp:109
 msgid "Connection to server failed."
 msgstr ""
 
-#: src/common/enetclient.cpp:113
+#: src/common/EnetClient.cpp:113
 msgid "Trying to connect an already connected client"
 msgstr ""
 
-#: src/common/ftpclient.cpp:92
+#: src/common/FtpClient.cpp:92
 msgid "The given server's UniqueName is empty. FtpClient cannot work properly."
 msgstr ""
 
-#: src/common/ftpclient.cpp:99
+#: src/common/FtpClient.cpp:99
 msgid "Connection to host FAILED"
 msgstr ""
 
-#: src/common/ftpclient.cpp:115
+#: src/common/FtpClient.cpp:115
 msgid "sendString called"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the number of bytes we wrote.
-#: src/common/ftpclient.cpp:131
+#: src/common/FtpClient.cpp:131
 #, c-format
 msgid "%d bytes written"
 msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: src/common/ftpclient.cpp:144
+#: src/common/FtpClient.cpp:144
 #, c-format
 msgid ""
 "Opening data channel :\n"
@@ -733,7 +733,7 @@ msgstr ""
 
 #. TRANSLATORS: The first parameter is a string containing the server
 #. IP address, the second one is a potr number.
-#: src/common/ftpclient.cpp:154
+#: src/common/FtpClient.cpp:154
 #, c-format
 msgid ""
 "Cannot open data channel :\n"
@@ -741,165 +741,165 @@ msgid ""
 "  Server port    : %d"
 msgstr ""
 
-#: src/common/ftpclient.cpp:161
+#: src/common/FtpClient.cpp:161
 msgid "Data channel opened"
 msgstr ""
 
-#: src/common/ftpclient.cpp:187
+#: src/common/FtpClient.cpp:187
 msgid "waitControlResponse() called"
 msgstr ""
 
-#: src/common/ftpclient.cpp:217
+#: src/common/FtpClient.cpp:217
 msgid "Sending LIST command"
 msgstr ""
 
-#: src/common/ftpclient.cpp:219
+#: src/common/FtpClient.cpp:219
 msgid "Waiting for first control response"
 msgstr ""
 
-#: src/common/ftpclient.cpp:225
+#: src/common/FtpClient.cpp:225
 msgid "Waiting for second control response"
 msgstr ""
 
-#: src/common/ftpclient.cpp:239
+#: src/common/FtpClient.cpp:239
 msgid "readDataChannel called"
 msgstr ""
 
-#: src/common/ftpclient.cpp:249
+#: src/common/FtpClient.cpp:249
 msgid "Calling gnet_io_channel_readn()"
 msgstr ""
 
-#: src/common/ftpclient.cpp:252
+#: src/common/FtpClient.cpp:252
 msgid "gnet_io_channel_readn() called"
 msgstr ""
 
-#: src/common/ftpclient.cpp:269
+#: src/common/FtpClient.cpp:269
 msgid "readDataChannel() call finished"
 msgstr ""
 
-#: src/common/ftpclient.cpp:334
+#: src/common/FtpClient.cpp:334
 msgid "File does not exist"
 msgstr ""
 
-#: src/common/ftpclient.cpp:370
+#: src/common/FtpClient.cpp:370
 msgid "File already exist"
 msgstr ""
 
-#: src/common/ftpclient.cpp:398 src/common/ftpclient.cpp:519
+#: src/common/FtpClient.cpp:398 src/common/FtpClient.cpp:519
 msgid "Cannot allocate buffer"
 msgstr ""
 
-#: src/common/ftpclient.cpp:413 src/common/ftpclient.cpp:535
+#: src/common/FtpClient.cpp:413 src/common/FtpClient.cpp:535
 msgid "The filename doesn't contain path"
 msgstr ""
 
-#: src/common/ftpclient.cpp:440
+#: src/common/FtpClient.cpp:440
 msgid "The file already exists. Transfer is cancelled"
 msgstr ""
 
-#: src/common/ftpclient.cpp:465 src/common/ftpclient.cpp:595
+#: src/common/FtpClient.cpp:465 src/common/FtpClient.cpp:595
 msgid "Returned from thread"
 msgstr ""
 
-#: src/common/ftpclient.cpp:472
+#: src/common/FtpClient.cpp:472
 msgid "An error occured during opening file"
 msgstr ""
 
-#: src/common/ftpclient.cpp:498
+#: src/common/FtpClient.cpp:498
 msgid "Closing data channel"
 msgstr ""
 
-#: src/common/ftpclient.cpp:559
+#: src/common/FtpClient.cpp:559
 msgid "An error occured during opening file : "
 msgstr ""
 
-#: src/common/ftpclient.cpp:566
+#: src/common/FtpClient.cpp:566
 msgid "File is correctly opened"
 msgstr ""
 
-#: src/common/ftpclient.cpp:575
+#: src/common/FtpClient.cpp:575
 msgid "Data channel is opened"
 msgstr ""
 
-#: src/common/ftpclient.cpp:599
+#: src/common/FtpClient.cpp:599
 msgid "An error occured when opening data channel"
 msgstr ""
 
-#: src/common/ftpclient.cpp:604
+#: src/common/FtpClient.cpp:604
 msgid "Transfer is terminated"
 msgstr ""
 
-#: src/common/globaluri.cpp:51
+#: src/common/GlobalUri.cpp:51
 msgid "Using the local website (127.0.0.1)"
 msgstr ""
 
-#: src/common/globaluri.cpp:55
+#: src/common/GlobalUri.cpp:55
 msgid "Using the real website"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: src/common/globaluri.cpp:60
+#: src/common/GlobalUri.cpp:60
 #, c-format
 msgid "USER_INSTALL_PREFIX=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a direcoty name
-#: src/common/globaluri.cpp:66
+#: src/common/GlobalUri.cpp:66
 #, c-format
 msgid "shareDir=%s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: src/common/globaluri.cpp:168
+#: src/common/GlobalUri.cpp:168
 #, c-format
 msgid "Setting user's HOME directory to' %s'"
 msgstr ""
 
-#: src/common/globaluri.cpp:176
+#: src/common/GlobalUri.cpp:176
 msgid "Home directory alerady exists"
 msgstr ""
 
-#: src/common/globaluri.cpp:179
+#: src/common/GlobalUri.cpp:179
 msgid "Home directory doesn't exists, creating it"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the user's home directory.
-#: src/common/globaluri.cpp:210
+#: src/common/GlobalUri.cpp:210
 #, c-format
 msgid "The file '%s' doesn't exist"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:251
+#: src/common/GlobalUri.cpp:251
 #, c-format
 msgid "The file '%s' was not found. Copying it from '%s' to '%s'"
 msgstr ""
 
-#: src/common/globaluri.cpp:265
+#: src/common/GlobalUri.cpp:265
 #, c-format
 msgid ""
 "Copying the file '%s' throws an exception. %sCopying it from '%s' to '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/globaluri.cpp:275
+#: src/common/GlobalUri.cpp:275
 #, c-format
 msgid "The file '%s' was found. in the user's directory."
 msgstr ""
 
-#: src/common/globaluri.cpp:308
+#: src/common/GlobalUri.cpp:308
 msgid "uploaded/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:331
+#: src/common/GlobalUri.cpp:331
 msgid "quarantine/ directory does not exist, creating it"
 msgstr ""
 
-#: src/common/globaluri.cpp:376
+#: src/common/GlobalUri.cpp:376
 msgid "Downloaded/ directory exists"
 msgstr ""
 
-#: src/common/globaluri.cpp:384
+#: src/common/GlobalUri.cpp:384
 msgid "Downloaded/ directory does not exist, creating it"
 msgstr ""
 
@@ -908,114 +908,114 @@ msgstr ""
 #. This message tells the user that this unique directory doesn't exist
 #. and it will not created because the variable 'createIfMissing' has
 #. the 'false' value.
-#: src/common/globaluri.cpp:398
+#: src/common/GlobalUri.cpp:398
 msgid ""
 "Missing server's unique directory. It is  not created because "
 "createIfMissing=false."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/hashfile.cpp:64
+#: src/common/HashFile.cpp:64
 #, c-format
 msgid "The file '%s' cannot be opened."
 msgstr ""
 
-#: src/common/httpresponse.cpp:42
+#: src/common/HttpResponse.cpp:42
 msgid "Ok : The request was fulfilled"
 msgstr ""
 
-#: src/common/httpresponse.cpp:43
+#: src/common/HttpResponse.cpp:43
 msgid "Created : The POST request was successful"
 msgstr ""
 
-#: src/common/httpresponse.cpp:44
+#: src/common/HttpResponse.cpp:44
 msgid ""
 "Accepted : The request has been accepted for processing, but the processing "
 "has not been completed"
 msgstr ""
 
-#: src/common/httpresponse.cpp:46
+#: src/common/HttpResponse.cpp:46
 msgid ""
 "Partial Information : A GET command returned metainformation that is not a "
 "definitive set of the object from a server with a copy of the object"
 msgstr ""
 
-#: src/common/httpresponse.cpp:49
+#: src/common/HttpResponse.cpp:49
 msgid ""
 "No Response : Server has received the request but there is no information to "
 "send back, and the client should stay in the same document view"
 msgstr ""
 
-#: src/common/httpresponse.cpp:54
+#: src/common/HttpResponse.cpp:54
 msgid ""
 "Moved : The data requested has been assigned a new URI, the change is "
 "permanent"
 msgstr ""
 
-#: src/common/httpresponse.cpp:56
+#: src/common/HttpResponse.cpp:56
 msgid ""
 "Found : The data requested actually resides under a different URL, however, "
 "the redirection may be altered on occasion"
 msgstr ""
 
-#: src/common/httpresponse.cpp:59
+#: src/common/HttpResponse.cpp:59
 msgid ""
 "Method : The client may go try another network address. In this case, a "
 "different method may be used too, rather than GET"
 msgstr ""
 
-#: src/common/httpresponse.cpp:62
+#: src/common/HttpResponse.cpp:62
 msgid ""
 "Not Modified : If the client has done a conditional GET and access is "
 "allowed, but the document has not been modified"
 msgstr ""
 
-#: src/common/httpresponse.cpp:66
+#: src/common/HttpResponse.cpp:66
 msgid ""
 "Bad request : The request had bad syntax or was inherently impossible to be "
 "satisfied"
 msgstr ""
 
-#: src/common/httpresponse.cpp:68
+#: src/common/HttpResponse.cpp:68
 msgid ""
 "Unauthorized : The client should retry the request with a suitable "
 "Authorization header"
 msgstr ""
 
-#: src/common/httpresponse.cpp:70
+#: src/common/HttpResponse.cpp:70
 msgid ""
 "PaymentRequired : The client may retry the request with a suitable ChargeTo "
 "header"
 msgstr ""
 
-#: src/common/httpresponse.cpp:72
+#: src/common/HttpResponse.cpp:72
 msgid ""
 "Forbidden : The request is for something forbidden. Authorization will not "
 "help"
 msgstr ""
 
-#: src/common/httpresponse.cpp:74
+#: src/common/HttpResponse.cpp:74
 msgid "Not found : The server has not found anything matching the URI given"
 msgstr ""
 
-#: src/common/httpresponse.cpp:78
+#: src/common/HttpResponse.cpp:78
 msgid ""
 "Internal Error : The server encountered an unexpected condition which "
 "prevented it from fulfilling the request"
 msgstr ""
 
-#: src/common/httpresponse.cpp:80
+#: src/common/HttpResponse.cpp:80
 msgid "Not implemented : The server does not support the facility required"
 msgstr ""
 
-#: src/common/httpresponse.cpp:82
+#: src/common/HttpResponse.cpp:82
 msgid ""
 "Service temporarily overloaded : The server cannot process the request due "
 "to a high load (whether HTTP servicing or other requests). The implication "
 "is that this is a temporary condition which maybe alleviated at other times"
 msgstr ""
 
-#: src/common/httpresponse.cpp:86
+#: src/common/HttpResponse.cpp:86
 msgid ""
 "Gateway timeout : This is equivalent to Internal Error 500, but in the case "
 "of a server which is in turn accessing some other service, this indicates "
@@ -1023,25 +1023,25 @@ msgid ""
 "the gateway was prepared to wait"
 msgstr ""
 
-#: src/common/httpresponse.cpp:122
+#: src/common/HttpResponse.cpp:122
 msgid "The requested http status code is not in list. Returning empty message"
 msgstr ""
 
-#: src/common/itemlistfile.cpp:81
+#: src/common/ItemListFile.cpp:81
 msgid "Cannot append item in ItemListFile with empty file name"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/itemlistfile.cpp:119
+#: src/common/ItemListFile.cpp:119
 #, c-format
 msgid "ItemListFile object started with the '%s' file."
 msgstr ""
 
-#: src/common/itemlistfile.cpp:127
+#: src/common/ItemListFile.cpp:127
 msgid "Error while opening ItemList file"
 msgstr ""
 
-#: src/common/itemlistfile.cpp:162
+#: src/common/ItemListFile.cpp:162
 msgid "Cannot refresh an ItemListFile with empty file name"
 msgstr ""
 

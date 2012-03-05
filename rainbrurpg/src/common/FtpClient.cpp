@@ -27,7 +27,7 @@
 
 #include "FtpClient.hpp"
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "stringconv.h"
 
 #include "BoostImport.hpp"

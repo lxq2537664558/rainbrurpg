@@ -34,7 +34,7 @@ src/common/HttpResponse.cpp
 src/common/ItemListFile.cpp
 src/common/LanguageListItem.cpp
 src/common/LoadBmp.cpp
-src/common/logger.cpp
+src/common/Logger.cpp
 src/common/netpacketbase.cpp
 src/common/netpacketflooderbase.cpp
 src/common/npconnectionresponse.cpp

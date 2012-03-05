@@ -29,7 +29,7 @@
 
 #include "config.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <stringconv.h>
 
 #include <iostream>

@@ -26,7 +26,7 @@
   */
 #include "npconnectionresponse.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** The default constructor
   *

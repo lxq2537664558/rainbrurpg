@@ -55,7 +55,7 @@ h_sources= AttributeModifierList.hpp		\
 	   ItemListFile.hpp			\
 	   LanguageListItem.hpp			\
 	   LoadBmp.hpp				\
-	   logger.h				\
+	   Logger.hpp				\
 	   netpacketbase.h			\
 	   netpacketflooderbase.h		\
 	   npconnectionresponse.h		\
@@ -129,7 +129,7 @@ cc_sources=AttributeModifierList.cpp		\
 	  ItemListFile.cpp			\
 	  LanguageListItem.cpp			\
 	  LoadBmp.cpp				\
-	  logger.cpp				\
+	  Logger.cpp				\
 	  netpacketbase.cpp			\
 	  netpacketflooderbase.cpp		\
 	  npconnectionresponse.cpp		\

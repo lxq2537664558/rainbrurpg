@@ -35,7 +35,7 @@
 
 #include <string>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "optionintattribute.h"
 #include "stringconv.h"
 

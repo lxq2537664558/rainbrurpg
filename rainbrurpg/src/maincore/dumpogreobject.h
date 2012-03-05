@@ -46,7 +46,7 @@
 #ifndef _DUMP_OGRE_OBJECT_H_
 #define _DUMP_OGRE_OBJECT_H_
 
-#include <logger.h> // To define STRINGIFY
+#include <Logger.hpp> // To define STRINGIFY
 
 #include <string>
 #include <sstream>

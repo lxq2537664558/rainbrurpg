@@ -38,7 +38,7 @@
 #include <sstream>
 
 #include <ChartBase.hpp>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include "rainbrudef.h"
 using namespace std;

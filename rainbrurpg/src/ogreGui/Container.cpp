@@ -31,7 +31,7 @@
 #include <Focusable.hpp>
 #include <Brush.hpp>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** A default container constructor
   *

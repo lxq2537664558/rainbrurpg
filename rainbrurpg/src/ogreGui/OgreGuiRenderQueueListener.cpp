@@ -28,7 +28,7 @@
 
 #include "OgreGuiRenderQueueListener.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <GameEngine.hpp>
 
 /** Constructor

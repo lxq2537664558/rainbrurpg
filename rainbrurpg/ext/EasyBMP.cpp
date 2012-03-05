@@ -22,7 +22,7 @@
 
 #include <sstream>
 #include <cstring> // For memcpy()
-#include "logger.h"
+#include <Logger.hpp>
 
 using namespace std;
 using namespace RainbruRPG::Exception;

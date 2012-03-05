@@ -27,7 +27,7 @@
 
 #include "InputManager.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 #include "WindowHandle.hpp"
 #include "../../config.h"

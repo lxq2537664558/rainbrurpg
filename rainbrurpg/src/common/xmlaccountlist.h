@@ -47,7 +47,7 @@
 #include "xmltimestamp.h"
 
 #include "tidentreturn.h"
-#include "logger.h"
+#include "Logger.hpp"
 #include "CurlFileToXml.hpp"
 #include "GlobalUri.hpp"
 

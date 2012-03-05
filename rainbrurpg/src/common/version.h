@@ -50,7 +50,7 @@
 #  include <ogreimport.h> // For Ogre version
 #endif //INCLUDE_VERSION_WITHOUT_OGRE
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;

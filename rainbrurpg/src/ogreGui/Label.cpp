@@ -31,7 +31,7 @@
 #include "Brush.hpp"
 #include "TextSettings.hpp"
 
-#include "logger.h"
+#include <Logger.hpp>
 
 #include <sstream>
 

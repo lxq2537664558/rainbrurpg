@@ -35,7 +35,7 @@
 #include <iostream>
 
 #include "GameEngine.hpp"
-#include <logger.h>
+#include <Logger.hpp>
 #include "guimanager.h"
 #include "skinmanager.h"
 #include "bggui.h"

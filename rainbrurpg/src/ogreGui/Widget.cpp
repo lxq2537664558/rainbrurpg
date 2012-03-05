@@ -29,7 +29,7 @@
 
  #include "Brush.hpp"
 
- #include "logger.h"
+ #include <Logger.hpp>
 
 /** The constructor
   *

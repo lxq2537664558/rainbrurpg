@@ -32,7 +32,7 @@
 #include "Serializable.hpp"
 
 #include <rainbrudef.h> // For the gettext stuff
-#include <logger.h>
+#include <Logger.hpp>
 
 /** A named constructor
   *

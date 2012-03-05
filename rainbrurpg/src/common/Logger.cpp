@@ -25,7 +25,7 @@
   *
   */
 
-#include "logger.h"
+#include "Logger.hpp"
 
 
 /** The only constructor of the Logger

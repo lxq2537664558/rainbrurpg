@@ -40,7 +40,7 @@
 #include <sstream>
 #include <sigc++/sigc++.h>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "sha1.h"
 
 #include "rainbrudef.h" // For the gettext stuff

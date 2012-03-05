@@ -34,7 +34,7 @@
 
 #include <list>
 #include <string>
-#include "logger.h"
+#include "Logger.hpp"
 #include "tinyxml.h"
 #include "optionmanager.h"
 

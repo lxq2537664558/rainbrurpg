@@ -29,7 +29,7 @@
 
 #include "ogreimport.h"
 #include "NullWindowHandleException.hpp"
-#include <logger.h>
+#include <Logger.hpp>
 
 #ifdef WIN32
 #  include <OgreD3D9RenderWindow.h>

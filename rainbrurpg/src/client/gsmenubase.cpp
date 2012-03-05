@@ -29,7 +29,7 @@
 
 #include <iostream>
 #include <OgreSceneNode.h>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>

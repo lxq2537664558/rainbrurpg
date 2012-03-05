@@ -33,7 +33,7 @@
 #include "WidgetList.hpp"
 
 #include <rainbrudef.h> // For the gettext stuff
-#include <logger.h>
+#include <Logger.hpp>
 
 
 /** The named constructor

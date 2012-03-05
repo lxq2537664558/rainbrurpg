@@ -40,7 +40,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 /** A shortcut macro to add a message */

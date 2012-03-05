@@ -43,7 +43,7 @@
 #include <vector>
 
 #include "rainbrudef.h"
-#include "logger.h"
+#include "Logger.hpp"
 
 using namespace std;
 

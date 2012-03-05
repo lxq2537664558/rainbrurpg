@@ -29,7 +29,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 using namespace RainbruRPG::OgreGui;
 

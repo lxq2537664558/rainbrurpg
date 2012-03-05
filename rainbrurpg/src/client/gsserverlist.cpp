@@ -28,7 +28,7 @@
 #include "gsserverlist.h"
 
 #include <stringconv.h>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include <Widget.hpp>
 

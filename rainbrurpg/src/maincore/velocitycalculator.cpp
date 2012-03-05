@@ -29,7 +29,7 @@
 
 #include "ogreimport.h"
 
-#include <logger.h>
+#include <Logger.hpp>
   
 //#include "guimanager.h"
 

@@ -29,7 +29,7 @@
 
 #include "Font.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <stringconv.h>
 
 #include <OgreResourceGroupManager.h>

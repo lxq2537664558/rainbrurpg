@@ -36,7 +36,7 @@
 #include <string>
 #include <list>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "optionbutton.h"
 
 #include "rainbrudef.h"

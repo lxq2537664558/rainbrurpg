@@ -29,7 +29,7 @@
 #include "Brush.hpp"
 
 #include <GameEngine.hpp>
-#include <logger.h>
+#include <Logger.hpp>
 
 #include <GuiVertex.hpp>
 #include <TextSettings.hpp>

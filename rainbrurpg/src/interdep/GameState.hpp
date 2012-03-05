@@ -44,7 +44,7 @@
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <rainbrudef.h> // For the GNU gettext stuff
 
 #include <string>

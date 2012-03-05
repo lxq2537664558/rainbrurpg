@@ -35,7 +35,7 @@
 #include "Brush.hpp"
 #include "FontManager.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** Default constructor
   *

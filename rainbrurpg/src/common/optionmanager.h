@@ -33,7 +33,7 @@
 #define OPTION_MANAGER_H
 
 #include "singleton.h"
-#include "logger.h"
+#include "Logger.hpp"
 #include "optionpanel.h"
 #include "options.h"
 

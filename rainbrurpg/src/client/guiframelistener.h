@@ -31,7 +31,7 @@
 #ifndef GUI_FRAME_LISTENER
 #define GUI_FRAME_LISTENER
 
-#include <logger.h>
+#include <Logger.hpp>
 
 #include "exampleframelistener.h"
 

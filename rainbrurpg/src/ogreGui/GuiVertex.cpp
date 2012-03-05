@@ -27,7 +27,7 @@
 
 #include "GuiVertex.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** Default constructor
   *

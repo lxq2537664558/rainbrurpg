@@ -41,7 +41,7 @@
 #include "GameEngine.hpp"
 
 #include <GlobalUri.hpp>
-#include <logger.h>
+#include <Logger.hpp>
 #include <Brush.hpp>
 
 #include <OgreGuiRenderQueueListener.hpp>

@@ -27,8 +27,8 @@
 
 #include "vcconstant.h"
 
-#include "logger.h"
-#include "iostream"
+#include <Logger.hpp>
+#include <iostream>
 
 /** The default constructor
   *

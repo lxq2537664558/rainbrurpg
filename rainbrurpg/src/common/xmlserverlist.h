@@ -38,7 +38,7 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include <logger.h>
+#include <Logger.hpp>
 #include <tinyxml.h>
 
 #include "tnotelist.h"

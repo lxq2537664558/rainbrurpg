@@ -48,7 +48,7 @@ D:        Step right
 
 #include <OIS.h>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 using namespace Ogre;
 using namespace OIS;

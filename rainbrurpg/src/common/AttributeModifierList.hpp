@@ -39,7 +39,7 @@
 #include <list>
 #include <sstream>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "stringconv.h"
 #include "rainbrudef.h" // For the gettext stuff
 

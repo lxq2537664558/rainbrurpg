@@ -36,7 +36,7 @@
 #include <string>
 #include <cmath>
 
-#include "logger.h"
+#include "Logger.hpp"
 #include "optionattribute.h"
 #include "stringconv.h"
 #include "rainbrudef.h" // For the gettext stuff

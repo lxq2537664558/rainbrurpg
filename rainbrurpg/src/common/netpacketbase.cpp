@@ -26,7 +26,7 @@
   */
 #include "netpacketbase.h"
 
-#include "logger.h"
+#include "Logger.hpp"
 
 /** Default constructor
   *

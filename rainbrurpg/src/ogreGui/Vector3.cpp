@@ -27,7 +27,7 @@
 
 #include "Vector3.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** A default constructor
   *
