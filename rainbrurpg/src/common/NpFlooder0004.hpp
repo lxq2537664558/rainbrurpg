@@ -30,7 +30,7 @@
 #ifndef NETWORK_PACKET_FLOODER_0004_H
 #define NETWORK_PACKET_FLOODER_0004_H
 
-#include "netpacketflooderbase.h"
+#include "NetPacketFlooderBase.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{

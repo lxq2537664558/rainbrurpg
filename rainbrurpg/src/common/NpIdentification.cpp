@@ -25,7 +25,7 @@
   *
   */
 
-#include "npidentification.h"
+#include "NpIdentification.hpp"
 
 #include "Logger.hpp"
 

@@ -24,7 +24,7 @@
   * Implements a static mesh that can have multiple instances
   *
   */
-#include "objectmesh.h"
+#include "ObjectMesh.hpp"
 
 #include "Logger.hpp"
 

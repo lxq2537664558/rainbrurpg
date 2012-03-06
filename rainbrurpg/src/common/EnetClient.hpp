@@ -41,7 +41,7 @@
 #include <glib.h>
 
 #include "EnetBase.hpp"
-#include "netpacketbase.h"
+#include "NetPacketBase.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

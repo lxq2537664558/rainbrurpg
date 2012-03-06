@@ -24,7 +24,7 @@
   * Implements the packet used by server to answer to a client's connection
   *
   */
-#include "npconnectionresponse.h"
+#include "NpConnectionResponse.hpp"
 
 #include <Logger.hpp>
 

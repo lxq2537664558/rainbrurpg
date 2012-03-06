@@ -32,7 +32,7 @@
 #ifndef OBJECT_MESH_H
 #define OBJECT_MESH_H
 
-#include "objectpos.h"
+#include "ObjectPos.hpp"
 
 #include <list>
 #include <string>

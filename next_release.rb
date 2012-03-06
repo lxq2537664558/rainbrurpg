@@ -112,7 +112,7 @@ class Project
   #
   def initialize(todo_filename)
     # Extract project filename
-    if todo_filename =~ /([[:alnum:]]*)/
+    if todo_filename =~ /([A-Za-z\-_]*)/
       @name =$1
     else
       warning "Cannot extract project name for '#{todo_filename}'"
@@ -139,7 +139,7 @@ class Project
 
   # Returns the project as a string
   def to_s
-    ret =  @name.ljust(15) 
+    ret =  @name.ljust(25) 
     ret << "#{@items}/#{@items_by_revision}".rjust(6)
     ret << " (#{@percent}%)" 
 
@@ -206,4 +206,8 @@ a.reverse.each{|i|
   end
 }
 puts a
-
+puts <<EOS
+Add to this :
+* 1-2 items NOT_ADDED
+* 1-2 items rainbrurpg/
+EOS

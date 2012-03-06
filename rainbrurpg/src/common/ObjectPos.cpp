@@ -25,7 +25,7 @@
   *
   */
 
-#include "objectpos.h"
+#include "ObjectPos.hpp"
 
 /** The default constructor 
   *

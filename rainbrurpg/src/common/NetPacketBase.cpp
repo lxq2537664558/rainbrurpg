@@ -24,7 +24,7 @@
   * Implements the base packet sent over Enet network 
   *
   */
-#include "netpacketbase.h"
+#include "NetPacketBase.hpp"
 
 #include "Logger.hpp"
 

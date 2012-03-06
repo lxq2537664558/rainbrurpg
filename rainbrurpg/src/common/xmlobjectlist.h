@@ -34,8 +34,8 @@
 
 #include "Logger.hpp"
 #include "tinyxml.h"
-#include "objectmesh.h"
-#include "objectpos.h"
+#include "ObjectMesh.hpp"
+#include "ObjectPos.hpp"
 
 #include <list>
 #include <string>

@@ -56,13 +56,13 @@ h_sources= AttributeModifierList.hpp		\
 	   LanguageListItem.hpp			\
 	   LoadBmp.hpp				\
 	   Logger.hpp				\
-	   netpacketbase.h			\
-	   netpacketflooderbase.h		\
-	   npconnectionresponse.h		\
-	   npflooder0004.h			\
-	   npidentification.h			\
-	   objectmesh.h				\
-	   objectpos.h				\
+	   NetPacketBase.hpp			\
+	   NetPacketFlooderBase.hpp		\
+	   NpConnectionResponse.hpp		\
+	   NpFlooder0004.hpp			\
+	   NpIdentification.hpp			\
+	   ObjectMesh.hpp			\
+	   ObjectPos.hpp			\
 	   options.h				\
 	   optionattribute.h			\
 	   optionboolattribute.h		\
@@ -130,13 +130,13 @@ cc_sources=AttributeModifierList.cpp		\
 	  LanguageListItem.cpp			\
 	  LoadBmp.cpp				\
 	  Logger.cpp				\
-	  netpacketbase.cpp			\
-	  netpacketflooderbase.cpp		\
-	  npconnectionresponse.cpp		\
-	  npflooder0004.cpp			\
-	  npidentification.cpp			\
-	  objectmesh.cpp			\
-	  objectpos.cpp				\
+	  NetPacketBase.cpp			\
+	  NetPacketFlooderBase.cpp		\
+	  NpConnectionResponse.cpp		\
+	  NpFlooder0004.cpp			\
+	  NpIdentification.cpp			\
+	  ObjectMesh.cpp			\
+	  ObjectPos.cpp				\
 	  optionattribute.cpp			\
 	  optionbutton.cpp			\
 	  optionboolattribute.cpp		\

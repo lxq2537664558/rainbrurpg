@@ -25,7 +25,7 @@
   *
   */
 
-#include "npflooder0004.h"
+#include "NpFlooder0004.hpp"
 
 /** The identified constructor
   *

@@ -34,8 +34,8 @@
 #include <ogreimport.h>
 
 #include <xmlobjectlist.h>
-#include <objectmesh.h>
-#include <objectpos.h>
+#include <ObjectMesh.hpp>
+#include <ObjectPos.hpp>
 
 #include <string>
 

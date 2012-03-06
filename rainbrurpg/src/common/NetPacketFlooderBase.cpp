@@ -25,7 +25,7 @@
   *
   */
 
-#include "netpacketflooderbase.h"
+#include "NetPacketFlooderBase.hpp"
 
 /** The constructor
   *

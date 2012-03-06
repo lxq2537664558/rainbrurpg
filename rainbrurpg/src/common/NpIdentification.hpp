@@ -36,7 +36,7 @@
 #ifndef NETWORK_PACKET_IDENTIFICATION_H
 #define NETWORK_PACKET_IDENTIFICATION_H
 
-#include "netpacketbase.h"
+#include "NetPacketBase.hpp"
 #include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{
