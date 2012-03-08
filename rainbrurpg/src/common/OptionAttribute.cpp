@@ -25,9 +25,9 @@
   *
   */
 
-#include "optionattribute.h"
+#include "OptionAttribute.hpp"
 
-// Added here cause it doesn't work if added in optionattribute.h
+// Added here cause it doesn't work if added in OptionAttribute.hpp
 #include "rainbrudef.h" // For the gettext stuff
 
 /** A typed default constructor

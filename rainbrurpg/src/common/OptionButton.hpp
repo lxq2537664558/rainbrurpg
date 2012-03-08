@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionbutton.h
+/** \file OptionButton.hpp
   * Declares a button for the launcher's options editor
   *
   * Modifications :
@@ -37,7 +37,7 @@
 #include <list>
 
 #include "Logger.hpp"
-#include "optionattribute.h"
+#include "OptionAttribute.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

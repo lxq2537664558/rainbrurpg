@@ -20,23 +20,24 @@
  *
  */
 
-/** \file optionintrangeattribute.h
-  * Declares a range of integer for the launcher's options editor
+/** \file OptionListAttribute.hpp
+  * Declares a list of string for the launcher's options editor
   *
   * Modifications :
-  * - 29 apr 2009 : Constructor need caption parameter
-  * - 14 apr 2009 : Using gettext compliant strings
+  * - 30 apr 2009 : Need caption in constructor
+  * - 14 apr 2009 : Using gettext strings
   * - 09 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_INT_RANGE_ATTRIBUTE_H
-#define OPTION_INT_RANGE_ATTRIBUTE_H
+#ifndef OPTION_LIST_ATTRIBUTE_H
+#define OPTION_LIST_ATTRIBUTE_H
 
 #include <string>
+#include <list>
 
 #include "Logger.hpp"
-#include "optionintattribute.h"
+#include "OptionAttribute.hpp"
 #include "stringconv.h"
 
 #include "rainbrudef.h" // For the gettext stuff
@@ -47,42 +48,50 @@ using namespace std;
 namespace RainbruRPG {
   namespace Options{
 
-    /** An option storing a signed int value beetween a range
+    /** The values of a OptionListAttribute */
+    typedef list<const char*> tValueList;
+
+    /** An option storing a list of string
       *
       * It is used with the OptionManager and may be added to an
       * OptionButton. 
       *
       */
-    class OptionIntRangeAttribute : public OptionIntAttribute{
+    class OptionListAttribute : public OptionAttribute{
 
     public:
-      OptionIntRangeAttribute(const char*,const char*, int, int);
-      OptionIntRangeAttribute(const char*,const char*, int, int, unsigned int);
-
-      /** An empty default destructor */
-      ~OptionIntRangeAttribute(){};
-
-      void setMinRange(int);
-      void setMaxRange(int);
-
-      int getMinRange();
-      int getMaxRange();
+      OptionListAttribute(const char*, const char*);
+      /** An empty default constructor */
+      virtual ~OptionListAttribute(){};
 
       virtual bool setValueStr(const char*);
+      virtual const char* getValueStr() const;
       virtual void update();
-      virtual void increase();
-      virtual void decrease();
+
+
+      bool exists(const char*);
+      void add(const char*); 
+      unsigned int valueCount();
+      tValueList* getValueList();
+
+    protected:
+      /** The value of the OptionListAttribute */
+      std::string value;
 
     private:
-      /** the minimum range of the value */
-      int minRange;
-
-      /** the maximum range of the value */
-      int maxRange;
-
+      /** The list of possible values */
+      tValueList valueList;
+      /** This attribute has set a default value
+        *
+	* The initial value of this boolean is \c false, when we
+	* first use add(), it is set to true and the value added is
+	* set using setValueStr()
+	*
+	*/
+      bool hasDefaultValue;
     };
   }
 }
 
-#endif // OPTION_INT_RANGE_ATTRIBUTE_H
+#endif // OPTION_LIST_ATTRIBUTE_H
 

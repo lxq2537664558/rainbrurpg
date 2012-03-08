@@ -1,17 +1,37 @@
+2012-03-08 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/common/optionlistattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optioninrangetattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optionintattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optionfloatrangeattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optionfloatattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optionbutton.h|.cpp:  CamelCased and header called hpp.
+	* src/common/optionboolattribute.h|.cpp:  CamelCased and header
+	called hpp.
+	* src/common/optionattribute.h|.cpp:  CamelCased and header called hpp.
+
 2012-03-06 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
 	files and new header names.
 
-	* src/common/objectpos.h|.cpp:  CamelCased and header called hpp.
-	* src/common/objectmesh.h|.cpp:  CamelCased and header called hpp.
-	* src/common/npidentification.h|.cpp:  CamelCased and header called hpp.
-	* src/common/npflooder0004.h|.cpp:  CamelCased and header called hpp.
-	* src/common/npconnectionresponse.h|.cpp:  CamelCased and header
+	* src/common/objectpos.h|.cpp: CamelCased and header called hpp.
+	* src/common/objectmesh.h|.cpp: CamelCased and header called hpp.
+	* src/common/npidentification.h|.cpp: CamelCased and header called hpp.
+	* src/common/npflooder0004.h|.cpp: CamelCased and header called hpp.
+	* src/common/npconnectionresponse.h|.cpp: CamelCased and header
 	called hpp.
-	* src/common/netpacketflooderbase.h|.cpp:  CamelCased and header
+	* src/common/netpacketflooderbase.h|.cpp: CamelCased and header
 	called hpp.
-	* src/common/netpacketbase.h|.cpp:  CamelCased and header called hpp.
+	* src/common/netpacketbase.h|.cpp: CamelCased and header called hpp.
 
 2012-03-05 Jérôme Pasquier  <rainbru@free.fr>
 

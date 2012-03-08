@@ -20,12 +20,12 @@
  *
  */
 
-/** \file optionintattribute.cpp
+/** \file OptionIntAttribute.cpp
   * Implements an integer option for the launcher's options editor
   *
   */
 
-#include "optionintattribute.h"
+#include "OptionIntAttribute.hpp"
 
 /** A named integer attribute constructor
   *

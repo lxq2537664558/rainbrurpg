@@ -20,26 +20,26 @@
  *
  */
 
-/** \file optionintattribute.h
-  * Declares an integer option for the launcher's options editor
+/** \file OptionBoolAttribute.hpp
+  * Declares an option attribute storing a boolean value
   *
   * Modifications :
-  * - 29 apr 2009 : Constructor need caption parameter
-  * - 14 apr 2009 : Now using gettext
-  * - 09 aug 2008 : Single file documentation
+  * - 30 apr 2009 : Added caption parameter to constructor
+  * - 04 apr 2009 : Now using gettext
+  * - 08 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_INTEGER_ATTRIBUTE_H
-#define OPTION_INTEGER_ATTRIBUTE_H
+#ifndef OPTION_BOOLEAN_ATTRIBUTE_H
+#define OPTION_BOOLEAN_ATTRIBUTE_H
 
 #include <string>
 
 #include "Logger.hpp"
-#include "optionattribute.h"
+#include "OptionAttribute.hpp"
 #include "stringconv.h"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "rainbrudef.h"
 
 using namespace std;
 
@@ -47,43 +47,39 @@ using namespace std;
 namespace RainbruRPG {
   namespace Options{
 
-    /** An option storing a signed int value
+    /** An option attribute storing a boolean value
       *
-      * It is used with the OptionManager and may be added to an
-      * OptionButton. 
+      * A boolean attribute is shown as a checkbox in the FOX LauncherOption
+      * dialog
+      *
+      * \sa OptionManager, OptionAttribute
       *
       */
-    class OptionIntAttribute : public OptionAttribute{
+    class OptionBoolAttribute : public OptionAttribute{
 
     public:
-      OptionIntAttribute(const char*, const char*);
-      /** An empty default destructor */
-      ~OptionIntAttribute(){};
+      OptionBoolAttribute(const char*, const char*);
+      /** An empty default constructor 
+        *
+        */
+      ~OptionBoolAttribute(){};
 
-      virtual void update();
       virtual bool setValueStr(const char*);
       virtual const char* getValueStr() const;
 
-      void setStep(unsigned int);
-      unsigned int getStep();
+      virtual void update();
 
-      virtual void increase();
-      virtual void decrease();
-
-    protected:
-      void controlStep();
-
-
-      /** The value of the OptionIntAttribute */
-      int value;
-
-      /** The value for incrementing or decrementing value */
-      unsigned int step;
-
+    private:
+      /** The boolean value of the attribute
+        *
+	* \sa setValueStr(), getValueStr()
+	*
+	*/
+      bool value;
 
     };
   }
 }
 
-#endif // OPTION_INTEGER_ATTRIBUTE_H
+#endif // OPTION_BOOLEAN_ATTRIBUTE_H
 

@@ -36,7 +36,7 @@
 #include <Logger.hpp>
 #include <optionmanager.h>
 #include <optionpanel.h>
-#include <optionlistattribute.h>
+#include <OptionListAttribute.hpp>
 
 using namespace RainbruRPG::Options;
 

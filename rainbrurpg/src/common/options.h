@@ -31,10 +31,10 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-#include "optionintattribute.h"
+#include "OptionIntAttribute.hpp"
 #include "optionstringattribute.h"
-#include "optionboolattribute.h"
-#include "optionlistattribute.h"
+#include "OptionBoolAttribute.hpp"
+#include "OptionListAttribute.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

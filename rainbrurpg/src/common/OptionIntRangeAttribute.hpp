@@ -20,23 +20,23 @@
  *
  */
 
-/** \file optionfloatrangeattribute.h
-  * Declares a range of floats for the launcher's options editor
+/** \file OptionIntRangeAttribute.hpp
+  * Declares a range of integer for the launcher's options editor
   *
   * Modifications :
-  * - 29 apr 2009 : Added caption to the constructor
-  * - 04 apr 2009 : Now uses gettext strings
+  * - 29 apr 2009 : Constructor need caption parameter
+  * - 14 apr 2009 : Using gettext compliant strings
   * - 09 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_FLOAT_RANGE_ATTRIBUTE_H
-#define OPTION_FLOAT_RANGE_ATTRIBUTE_H
+#ifndef OPTION_INT_RANGE_ATTRIBUTE_H
+#define OPTION_INT_RANGE_ATTRIBUTE_H
 
 #include <string>
 
 #include "Logger.hpp"
-#include "optionfloatattribute.h"
+#include "OptionIntAttribute.hpp"
 #include "stringconv.h"
 
 #include "rainbrudef.h" // For the gettext stuff
@@ -53,36 +53,36 @@ namespace RainbruRPG {
       * OptionButton. 
       *
       */
-    class OptionFloatRangeAttribute : public OptionFloatAttribute{
+    class OptionIntRangeAttribute : public OptionIntAttribute{
 
     public:
-      OptionFloatRangeAttribute(const char*, const char*, float, float);
-      OptionFloatRangeAttribute(const char*,const char*, float, float, float);
+      OptionIntRangeAttribute(const char*,const char*, int, int);
+      OptionIntRangeAttribute(const char*,const char*, int, int, unsigned int);
 
-      /** An empty default constructor */
-      ~OptionFloatRangeAttribute(){};
+      /** An empty default destructor */
+      ~OptionIntRangeAttribute(){};
 
-      void setMinRange(float);
-      void setMaxRange(float);
+      void setMinRange(int);
+      void setMaxRange(int);
 
-      float getMinRange();
-      float getMaxRange();
+      int getMinRange();
+      int getMaxRange();
 
-      virtual void update();
       virtual bool setValueStr(const char*);
+      virtual void update();
       virtual void increase();
       virtual void decrease();
 
     private:
       /** the minimum range of the value */
-      float minRange;
+      int minRange;
 
       /** the maximum range of the value */
-      float maxRange;
+      int maxRange;
 
     };
   }
 }
 
-#endif // OPTION_FLOAT_RANGE_ATTRIBUTE_H
+#endif // OPTION_INT_RANGE_ATTRIBUTE_H
 

@@ -20,24 +20,23 @@
  *
  */
 
-/** \file optionlistattribute.h
-  * Declares a list of string for the launcher's options editor
+/** \file OptionIntAttribute.hpp
+  * Declares an integer option for the launcher's options editor
   *
   * Modifications :
-  * - 30 apr 2009 : Need caption in constructor
-  * - 14 apr 2009 : Using gettext strings
+  * - 29 apr 2009 : Constructor need caption parameter
+  * - 14 apr 2009 : Now using gettext
   * - 09 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_LIST_ATTRIBUTE_H
-#define OPTION_LIST_ATTRIBUTE_H
+#ifndef OPTION_INTEGER_ATTRIBUTE_H
+#define OPTION_INTEGER_ATTRIBUTE_H
 
 #include <string>
-#include <list>
 
 #include "Logger.hpp"
-#include "optionattribute.h"
+#include "OptionAttribute.hpp"
 #include "stringconv.h"
 
 #include "rainbrudef.h" // For the gettext stuff
@@ -48,50 +47,43 @@ using namespace std;
 namespace RainbruRPG {
   namespace Options{
 
-    /** The values of a OptionListAttribute */
-    typedef list<const char*> tValueList;
-
-    /** An option storing a list of string
+    /** An option storing a signed int value
       *
       * It is used with the OptionManager and may be added to an
       * OptionButton. 
       *
       */
-    class OptionListAttribute : public OptionAttribute{
+    class OptionIntAttribute : public OptionAttribute{
 
     public:
-      OptionListAttribute(const char*, const char*);
-      /** An empty default constructor */
-      virtual ~OptionListAttribute(){};
+      OptionIntAttribute(const char*, const char*);
+      /** An empty default destructor */
+      ~OptionIntAttribute(){};
 
+      virtual void update();
       virtual bool setValueStr(const char*);
       virtual const char* getValueStr() const;
-      virtual void update();
 
+      void setStep(unsigned int);
+      unsigned int getStep();
 
-      bool exists(const char*);
-      void add(const char*); 
-      unsigned int valueCount();
-      tValueList* getValueList();
+      virtual void increase();
+      virtual void decrease();
 
     protected:
-      /** The value of the OptionListAttribute */
-      std::string value;
+      void controlStep();
 
-    private:
-      /** The list of possible values */
-      tValueList valueList;
-      /** This attribute has set a default value
-        *
-	* The initial value of this boolean is \c false, when we
-	* first use add(), it is set to true and the value added is
-	* set using setValueStr()
-	*
-	*/
-      bool hasDefaultValue;
+
+      /** The value of the OptionIntAttribute */
+      int value;
+
+      /** The value for incrementing or decrementing value */
+      unsigned int step;
+
+
     };
   }
 }
 
-#endif // OPTION_LIST_ATTRIBUTE_H
+#endif // OPTION_INTEGER_ATTRIBUTE_H
 

@@ -359,6 +359,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-03-08 jeu. 18:39]--[2012-03-08 jeu. 19:20] =>  0:41
      CLOCK: [2012-03-06 mar. 08:27]--[2012-03-06 mar. 08:58] =>  0:31
      CLOCK: [2012-03-05 lun. 15:15]--[2012-03-05 lun. 16:03] =>  0:48
      CLOCK: [2012-02-24 ven. 08:47]--[2012-02-24 ven. 09:47] =>  1:00
@@ -382,6 +383,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] in testHelpers/
       - [ ] in tests/
       - [ ] in tools/
+      - [ ] Must also modify doxygen doc. for files and test it
 - [ ] move terminalapi to OLD/
 **** TODO Cross compilation to win32                                  [72%]
      CLOCK: [2012-01-20 ven. 13:58]--[2012-01-20 ven. 14:02] =>  0:04

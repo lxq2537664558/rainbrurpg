@@ -20,13 +20,13 @@
  *
  */
 
-/** \file optionbutton.cpp
+/** \file OptionButton.cpp
   * Implements a button for the launcher's options editor
   *
   *
   */
 
-#include "optionbutton.h"
+#include "OptionButton.hpp"
 
 /** A constructuion that initialize the m_caption
   *

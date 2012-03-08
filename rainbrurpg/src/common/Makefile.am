@@ -64,14 +64,14 @@ h_sources= AttributeModifierList.hpp		\
 	   ObjectMesh.hpp			\
 	   ObjectPos.hpp			\
 	   options.h				\
-	   optionattribute.h			\
-	   optionboolattribute.h		\
-	   optionbutton.h			\
-	   optionfloatattribute.h		\
-	   optionfloatrangeattribute.h		\
-	   optionintattribute.h			\
-	   optionintrangeattribute.h		\
-	   optionlistattribute.h		\
+	   OptionAttribute.hpp			\
+	   OptionBoolAttribute.hpp		\
+	   OptionButton.hpp			\
+	   OptionFloatAttribute.hpp		\
+	   OptionFloatRangeAttribute.hpp	\
+	   OptionIntAttribute.hpp		\
+	   OptionIntRangeAttribute.hpp		\
+	   OptionListAttribute.hpp		\
 	   optionmanager.h			\
 	   optionpanel.h			\
 	   optionstringattribute.h		\
@@ -137,14 +137,14 @@ cc_sources=AttributeModifierList.cpp		\
 	  NpIdentification.cpp			\
 	  ObjectMesh.cpp			\
 	  ObjectPos.cpp				\
-	  optionattribute.cpp			\
-	  optionbutton.cpp			\
-	  optionboolattribute.cpp		\
-	  optionfloatattribute.cpp		\
-	  optionfloatrangeattribute.cpp		\
-	  optionintattribute.cpp		\
-	  optionintrangeattribute.cpp		\
-	  optionlistattribute.cpp		\
+	  OptionAttribute.cpp			\
+	  OptionBoolAttribute.cpp		\
+	  OptionButton.cpp			\
+	  OptionFloatAttribute.cpp		\
+	  OptionFloatRangeAttribute.cpp		\
+	  OptionIntAttribute.cpp		\
+	  OptionIntRangeAttribute.cpp		\
+	  OptionListAttribute.cpp		\
 	  optionmanager.cpp			\
 	  optionpanel.cpp			\
 	  options.cpp				\

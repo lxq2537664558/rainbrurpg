@@ -28,7 +28,7 @@
 #include "options.h"
 
 #include "optionpanel.h"
-#include "optionbutton.h"
+#include "OptionButton.hpp"
 #include "optionmanager.h"
 
 /** An empty constructor

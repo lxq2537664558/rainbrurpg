@@ -20,12 +20,12 @@
  *
  */
 
-/** \file optionboolattribute.cpp
+/** \file OptionBoolAttribute.cpp
   * Implements an option attribute storing a boolean value
   *
   *
   */
-#include "optionboolattribute.h"
+#include "OptionBoolAttribute.hpp"
 
 /** The named constructor
   *

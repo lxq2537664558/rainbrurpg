@@ -20,26 +20,26 @@
  *
  */
 
-/** \file optionboolattribute.h
-  * Declares an option attribute storing a boolean value
+/** \file OptionFloatAttribute.hpp
+  * Declares a float attribute for the launcher's options editor
   *
   * Modifications :
-  * - 30 apr 2009 : Added caption parameter to constructor
+  * - 29 apr 2009 : Added caption in constructor
   * - 04 apr 2009 : Now using gettext
-  * - 08 aug 2008 : Single file documentation
+  * - 09 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_BOOLEAN_ATTRIBUTE_H
-#define OPTION_BOOLEAN_ATTRIBUTE_H
+#ifndef OPTION_FLOAT_ATTRIBUTE_H
+#define OPTION_FLOAT_ATTRIBUTE_H
 
 #include <string>
+#include <cmath>
 
 #include "Logger.hpp"
-#include "optionattribute.h"
+#include "OptionAttribute.hpp"
 #include "stringconv.h"
-
-#include "rainbrudef.h"
+#include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
 
@@ -47,39 +47,45 @@ using namespace std;
 namespace RainbruRPG {
   namespace Options{
 
-    /** An option attribute storing a boolean value
+    /** An option storing a signed float value
       *
-      * A boolean attribute is shown as a checkbox in the FOX LauncherOption
-      * dialog
-      *
-      * \sa OptionManager, OptionAttribute
+      * It is used with the OptionManager and may be added to an
+      * OptionButton. 
       *
       */
-    class OptionBoolAttribute : public OptionAttribute{
+    class OptionFloatAttribute : public OptionAttribute{
 
     public:
-      OptionBoolAttribute(const char*, const char*);
-      /** An empty default constructor 
-        *
-        */
-      ~OptionBoolAttribute(){};
+      OptionFloatAttribute(const char*, const char*);
+      /** An empty default constructor */
+      ~OptionFloatAttribute(){};
 
       virtual bool setValueStr(const char*);
       virtual const char* getValueStr() const;
 
-      virtual void update();
+      void setStep(float);
+      float getStep();
 
-    private:
-      /** The boolean value of the attribute
+      virtual void update();
+      virtual void increase();
+      virtual void decrease();
+
+    protected:
+      void controlStep();
+
+      /** The value of the OptionIntAttribute */
+      float value;
+
+      /** The value for incrementing or decrementing value 
         *
-	* \sa setValueStr(), getValueStr()
-	*
+	* I cannot set a unsigned float so it is a float, but
+	* i must use abs to get only positive number.
 	*/
-      bool value;
+      float step;
 
     };
   }
 }
 
-#endif // OPTION_BOOLEAN_ATTRIBUTE_H
+#endif // OPTION_FLOAT_ATTRIBUTE_H
 

@@ -20,25 +20,25 @@
  *
  */
 
-/** \file optionfloatattribute.h
-  * Declares a float attribute for the launcher's options editor
+/** \file OptionFloatRangeAttribute.hpp
+  * Declares a range of floats for the launcher's options editor
   *
   * Modifications :
-  * - 29 apr 2009 : Added caption in constructor
-  * - 04 apr 2009 : Now using gettext
+  * - 29 apr 2009 : Added caption to the constructor
+  * - 04 apr 2009 : Now uses gettext strings
   * - 09 aug 2008 : Single file documentation
   *
   */
 
-#ifndef OPTION_FLOAT_ATTRIBUTE_H
-#define OPTION_FLOAT_ATTRIBUTE_H
+#ifndef OPTION_FLOAT_RANGE_ATTRIBUTE_H
+#define OPTION_FLOAT_RANGE_ATTRIBUTE_H
 
 #include <string>
-#include <cmath>
 
 #include "Logger.hpp"
-#include "optionattribute.h"
+#include "OptionFloatAttribute.hpp"
 #include "stringconv.h"
+
 #include "rainbrudef.h" // For the gettext stuff
 
 using namespace std;
@@ -47,45 +47,42 @@ using namespace std;
 namespace RainbruRPG {
   namespace Options{
 
-    /** An option storing a signed float value
+    /** An option storing a signed int value beetween a range
       *
       * It is used with the OptionManager and may be added to an
       * OptionButton. 
       *
       */
-    class OptionFloatAttribute : public OptionAttribute{
+    class OptionFloatRangeAttribute : public OptionFloatAttribute{
 
     public:
-      OptionFloatAttribute(const char*, const char*);
+      OptionFloatRangeAttribute(const char*, const char*, float, float);
+      OptionFloatRangeAttribute(const char*,const char*, float, float, float);
+
       /** An empty default constructor */
-      ~OptionFloatAttribute(){};
+      ~OptionFloatRangeAttribute(){};
 
-      virtual bool setValueStr(const char*);
-      virtual const char* getValueStr() const;
+      void setMinRange(float);
+      void setMaxRange(float);
 
-      void setStep(float);
-      float getStep();
+      float getMinRange();
+      float getMaxRange();
 
       virtual void update();
+      virtual bool setValueStr(const char*);
       virtual void increase();
       virtual void decrease();
 
-    protected:
-      void controlStep();
+    private:
+      /** the minimum range of the value */
+      float minRange;
 
-      /** The value of the OptionIntAttribute */
-      float value;
-
-      /** The value for incrementing or decrementing value 
-        *
-	* I cannot set a unsigned float so it is a float, but
-	* i must use abs to get only positive number.
-	*/
-      float step;
+      /** the maximum range of the value */
+      float maxRange;
 
     };
   }
 }
 
-#endif // OPTION_FLOAT_ATTRIBUTE_H
+#endif // OPTION_FLOAT_RANGE_ATTRIBUTE_H
 

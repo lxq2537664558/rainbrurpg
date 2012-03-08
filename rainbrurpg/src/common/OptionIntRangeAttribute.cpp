@@ -20,12 +20,12 @@
  *
  */
 
-/** \file optionintrangeattribute.cpp
+/** \file OptionIntRangeAttribute.cpp
   * Implements a range of integers for the launcher's options editor
   *
   */
 
-#include "optionintrangeattribute.h"
+#include "OptionIntRangeAttribute.hpp"
 
 /** The base constructor
   *
