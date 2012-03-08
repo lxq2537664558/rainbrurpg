@@ -125,6 +125,7 @@ namespace Rpg
       return *this;
     }
 
+    static void liblogger_initialize (void);
 
   private:
     string mLogDomain;                      //!< The logger's log domain
@@ -133,6 +134,8 @@ namespace Rpg
     static LoggerOutputList mOutputList;    //!< The list of LoggerOutput
     static LoggerOutput *l1, *l2, *l3;      //!< The content of the list
     static po::options_description options; //!< Used to parse command-line args
+
+    static bool liblogger_initialized;      //!< gettext initialization flag
   };
 } // !namespace Rpg
 

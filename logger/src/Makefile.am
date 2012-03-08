@@ -6,8 +6,12 @@ lib_LTLIBRARIES = librainbrurpg-logger.la
 
 librainbrurpg_logger.adir=$(libdir)
 
+localedir = $(datadir)/locale
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+
 # Please keep this file list sorted
 h_sources= Logger.hpp			\
+	   LoggerDef.hpp		\
 	   LoggerOutput.hpp		\
 	   LoggerOutputTty.hpp		\
 	   LoggerOutputFile.hpp		\

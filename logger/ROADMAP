@@ -33,6 +33,7 @@
       - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor 
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-03-08 jeu. 11:09]--[2012-03-08 jeu. 12:01] =>  0:52
      CLOCK: [2012-03-02 ven. 14:53]--[2012-03-02 ven. 15:14] =>  0:21
      CLOCK: [2012-02-20 lun. 17:27]--[2012-02-20 lun. 17:44] =>  0:17
      CLOCK: [2012-02-04 sam. 17:05]--[2012-02-04 sam. 17:44] =>  0:39
@@ -96,7 +97,16 @@
 - [X] Should remove autom4te.cache from svn repo
 - [X] configure must search for boost libraries
 - [X] Create a DEPENDENCIES file
-- [ ] May use gettext for translation
+- [X] May use gettext for translation
+      - [X] Must create an initialization function
+      - [X] Make a LoggerDef.hpp header with _() definition
+	    And use it in the log_header
+      - [X] gettextize invocation
+- [ ] May use Boost.Format to get more translatable messages
+      - [ ] configure script should test it
+      - [ ] see the LoggerOutputTty::logHeader implementation
+- [ ] Really make translatable strings
+- [ ] May move configure.in DEFUN to m4/
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
 - [ ] Logger may log process time

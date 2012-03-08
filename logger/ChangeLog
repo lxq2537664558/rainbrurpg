@@ -1,3 +1,25 @@
+2012-03-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* Makefile.am: remove multiple definition of EXTRA_DIST and
+	man_MANS.
+
+	* configure.in: added invocation to AM_GNU_GETTEXT and
+	AM_GNU_GETTEXT_VERSION.
+
+2012-03-08  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po.
+	(ACLOCAL_AMFLAGS): New variable.
+	(EXTRA_DIST): Add config.rpath, m4/ChangeLog.
+	* configure.in (AC_OUTPUT): Add po/Makefile.in.
+
+2012-03-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/LoggerDef.hpp: gettext macro implemented.
+
+	* src/Logger.cpp (liblogger_initialize): implementation of the
+	library initialization for gettext.
+
 2012-02-20  Jérôme Pasquier  <rainbru@free.fr>
 
 	* Makefile.am: Many changes due to removing generated files.

@@ -1,12 +1,14 @@
-SUBDIRS=src
+SUBDIRS= po src
 
+ACLOCAL_AMFLAGS = -I m4
+
+#  install the man pages
 man_MANS = logger.1
-EXTRA_DIST = system.h aclocal.m4
+EXTRA_DIST = config.rpath m4/ChangeLoglogger.lsm.in system.h aclocal.m4 \
+	gettext.h
 
 #  uncomment the following if logger requires the math library
 #logger_LDADD=-lm
-
-EXTRA_DIST=logger.lsm.in #NAME.texinfo logger.spec.in
 
 #  if you write a self-test script named `chk', uncomment the
 #  following and add `chk' to the EXTRA_DIST list
@@ -16,9 +18,7 @@ EXTRA_DIST=logger.lsm.in #NAME.texinfo logger.spec.in
 info_TEXINFOS = logger.texinfo
 logger_TEXINFOS = gpl.texinfo
 
-#  install the man pages
-man_MANS=logger.1
-
 # pkg-config file
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = rainbrurpg-logger.pc
+ACLOCAL_AMFLAGS = -I m4

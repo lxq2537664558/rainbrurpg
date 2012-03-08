@@ -24,10 +24,13 @@
   */
 
 #include "Logger.hpp"
+#include "LoggerDef.hpp" // USES gettext macro
 
 #include "LoggerOutputTty.hpp"
 #include "LoggerOutputFile.hpp"
 #include "LoggerOutputYaml.hpp"
+
+#include "config.h"
 
 #include <ctime>   // To get execution date/time
 #include <iomanip> // For setfill() and setw() in iostreams
@@ -39,6 +42,7 @@
 Rpg::LoggerOutputList Rpg::Logger::mOutputList;
 Rpg::LoggerOutput *Rpg::Logger::l1, *Rpg::Logger::l2, *Rpg::Logger::l3;
 po::options_description Rpg::Logger::options("Logger options");
+bool Rpg::Logger::liblogger_initialized = false;
 // End of static data members initialization
 
 /** The logger constructor
@@ -51,7 +55,9 @@ Rpg::Logger::Logger(const string& vLogDomain, LogType vLogType):
   mLogDomain(vLogDomain),
   mLogType(vLogType)
 {
-
+  /* Must ensure the initialization is performed.  */
+  if (!liblogger_initialized)
+    liblogger_initialize ();
 }
 
 /** Initialize the logger
@@ -247,4 +253,10 @@ Rpg::Logger& Rpg::Logger::operator<<(const Object& o)
 Rpg::Logger& Rpg::Logger::operator<<(const Object* o)  
 { 
   return log<const Object&>(*o);
+}
+
+void  Rpg::Logger::liblogger_initialize (void)
+{
+  bindtextdomain (PACKAGE, LOCALEDIR);
+  liblogger_initialized = true;
 }
