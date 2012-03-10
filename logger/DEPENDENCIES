@@ -8,6 +8,13 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http::/sourceforge.net/projects/boost/files/
 
+* Boost.Format 1.42
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
+
+
 * qt4-ruby
   + homepage: 
     http://rubyforge.org/projects/korundum/

@@ -25,7 +25,11 @@
 
 #include "LoggerOutputTty.hpp"
 
-/* Prefix are :
+#include <boost/format.hpp> // USES Boost.Format
+#include "LoggerDef.hpp"    // USES gettext macro
+#include <iomanip>
+
+/* Prefixes are :
    D for Dark
    L for Light
  */
@@ -88,10 +92,21 @@ Rpg::LoggerOutputTty::log(const Object& o){
 void 
 Rpg::LoggerOutputTty::logHeader(const LogHeader*lh)
 {
-  cout << "Logger started for '" << lh->program_name 
+  /*  cout << "Logger started for '" << lh->program_name 
        << " v"<< lh->program_version<< "'" << endl
        << "Compiled " << lh->compil_date << " at " << lh->compil_time << endl
        << "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
+  */
+  using boost::format;
+  using boost::io::group;
+
+ 
+  /*
+  cout << format(_("Logger started for '%s v%s'\n Compiled %s at %s\nExecuted %s at %s\n")) 
+    % lh->program_name % lh->program_version & lh->compil_date & lh->compil_time & lh->exec_date & lh->exec_time;
+  */
+
+  cout << format("Logger started for '%s") & "aze";
 }
 
 void

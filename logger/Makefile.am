@@ -21,4 +21,3 @@ logger_TEXINFOS = gpl.texinfo
 # pkg-config file
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = rainbrurpg-logger.pc
-ACLOCAL_AMFLAGS = -I m4

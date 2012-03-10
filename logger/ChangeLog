@@ -1,3 +1,7 @@
+2012-03-10  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: search for Boost.Format with AC_CHECK_HEADERS.
+
 2012-03-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* Makefile.am: remove multiple definition of EXTRA_DIST and

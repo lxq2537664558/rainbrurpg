@@ -17,6 +17,8 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-7 (07 jan 2012 - ???) SLOC ??? FT ??:??
+- (5) Integrates Boost.Format in configure and DEPENDENCIES
+- (4) Removed some po/ files from SVN
 - (3) Add gettext support
 - Improved project setup
    svn repo cleanup, DEPENDENCIES file
