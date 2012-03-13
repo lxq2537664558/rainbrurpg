@@ -29,6 +29,9 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2012-03-13 mar. 18:15]--[2012-03-13 mar. 18:31] =>  0:16
+     CLOCK: [2012-03-12 lun. 10:17]--[2012-03-12 lun. 11:04] =>  0:47
+     CLOCK: [2012-03-10 sam. 13:38]--[2012-03-10 sam. 13:45] =>  0:07
      CLOCK: [2012-02-17 ven. 11:25]--[2012-02-17 ven. 11:50] =>  0:25
      CLOCK: [2012-02-16 jeu. 13:44]--[2012-02-16 jeu. 14:14] =>  0:30
      CLOCK: [2012-02-04 sam. 07:38]--[2012-02-04 sam. 08:10] =>  0:32
@@ -136,10 +139,16 @@ the patternClearHeaderLeft div.
 - [X] The header style causes dead links
       It was due to the #rb-skin01-footer{position: relative; }
 - [X] There is no 'login' link
-- [ ] Switch to Wordpress 3.3.1 and upgrade plugins
-- [ ] The black menu isn't correct in ie6
-      - [ ] testing WP's twentyeleven skin with ie6
-      - [ ] See what are the differences if it works
+- [X] Switch to Wordpress 3.3.1 and upgrade plugins
+- [-] The black menu isn't correct in ie6
+      - [X] testing WP's twentyeleven skin with ie6 : it works
+      - [X] See what are the differences in CSS if it works : does not work
+      - [X] Found a post about enabling new HTML5 element in JS
+	    http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
+	    It presents the same bug
+	    - [X] Test it in an static page with inline javascript
+            - [X] Add it in common/
+      - [ ] There is a text overlapping bug again
 - [ ] Searchbox is again misplaced
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
@@ -156,4 +165,6 @@ the patternClearHeaderLeft div.
 **** texi2html for the 'manual' link
 - [ ] Add header and footer
       see http://ximbiot.com/texi2html/manuals/1.78/texi2html_6.html
+- [ ] If different library/binary documentation with black menu, do not
+      forget to add the createHtml5Elements.js anchor
 

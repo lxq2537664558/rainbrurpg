@@ -1,3 +1,9 @@
+2012-03-13 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/header.php: add an anchor to the previous script.
+	* skin01/common/createHtml5Elements.js: add the JavaScript hack
+	to fix the black menu bug in ie6.
+
 2012-02-16 Jérôme Pasquier  <rainbru@free.fr>
 
 	* skin01/wordpress/footer.php: added login link.

@@ -59,6 +59,7 @@ This code mainly based the twentyeleven's one.
 <link rel="stylesheet" href="../common/skin.css" type="text/css" />
 <link rel="stylesheet" href="../common/menu.css" type="text/css" />
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript" src="../common/createHtml5Elements.js"></script>
 <!-- ADDTHIS BUTTON BEGIN -->
 <script type="text/javascript">
 var addthis_config = {

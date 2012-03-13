@@ -1,9 +1,6 @@
 rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    integration.
 
-* To be done
-- A common footer with copyrights and sourceforge logo (mandatory)
-
 * Wordpress : static test
 - 'search button' hasn't this style normally
 
@@ -21,3 +18,5 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    Please update configure.in for each revision
 
 * v0.0.0-11 (17 feb 2012 - ???) FT ??:??
+- Started to fix the black menu bug in ie6
+- Switch to Wordpress 3.3.1 and theme tested
