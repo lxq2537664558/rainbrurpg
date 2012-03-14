@@ -26,12 +26,9 @@
 #ifndef _OBJECT_HPP_
 #define _OBJECT_HPP_
 
-
 #include <string>
 #include <list>
 #include <sstream>
-
-using namespace std;
 
 namespace Rpg
 {

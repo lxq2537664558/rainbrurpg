@@ -42,11 +42,12 @@ namespace Rpg
     virtual void open();
     virtual void close();
     
-    virtual void startLog(LogLevel, const string&,const string&, const string&);
+    virtual void startLog(LogLevel, const std::string&,const std::string&, 
+			  const std::string&);
     
     virtual void endLog();
     
-    virtual void log(const string& str);
+    virtual void log(const std::string& str);
     virtual void log(double d);
     
     virtual void log(const Object&o);
@@ -54,10 +55,10 @@ namespace Rpg
     virtual void logHeader(const LogHeader* lh);
 
   protected:
-    string escape(const string&);
+    std::string escape(const std::string&);
     
   private:
-    ofstream mFile;       //!< The file to log to
+    std::ofstream mFile;       //!< The file to log to
   };
 
 } // !namespace Rpg

@@ -32,8 +32,6 @@
 #include <string>
 #include <list>
 
-using namespace std;
-
 namespace Rpg
 {
   /** An object used to describe a C++ class internals
@@ -45,14 +43,14 @@ namespace Rpg
   class ObjectInspector
   {
   public:
-    ObjectInspector(string class_name, const void* address);
+    ObjectInspector(std::string class_name, const void* address);
     
-    ObjectInspector& add(string name, int value);
-    ObjectInspector& add(string name, Object&o);
+    ObjectInspector& add(std::string name, int value);
+    ObjectInspector& add(std::string name, Object&o);
     
-    string name;                     //!< The class name of the inspected object
-    string address;                  //!< Its memory address
-    list<ObjectAttribute> attributes;//!< The object attributes
+    std::string name;                //!< The class name of the inspected object
+    std::string address;             //!< Its memory address
+    std::list<ObjectAttribute> attributes;//!< The object attributes
   };
 } // !namespace Rpg
 

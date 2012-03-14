@@ -28,8 +28,6 @@
 
 #include <string>
 
-using namespace std;
-
 namespace Rpg
 {
   /** Defines the attribute on an object
@@ -38,11 +36,11 @@ namespace Rpg
   class ObjectAttribute
   {
   public:
-    ObjectAttribute(string t, string n, string v);
+    ObjectAttribute(std::string t, std::string n, std::string v);
     
-    string type;  //!< The internal type of the attribute (ie. int for integer)
-    string name;  //!< The attribute's name
-    string value; //!< The value to be logged
+    std::string type;  //!< The internal type of the attribute
+    std::string name;  //!< The attribute's name
+    std::string value; //!< The value to be logged
   };
 } // !namespace Rpg
 

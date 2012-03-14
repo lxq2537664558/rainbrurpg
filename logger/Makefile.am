@@ -4,8 +4,8 @@ ACLOCAL_AMFLAGS = -I m4
 
 #  install the man pages
 man_MANS = logger.1
-EXTRA_DIST = config.rpath m4/ChangeLoglogger.lsm.in system.h aclocal.m4 \
-	gettext.h
+EXTRA_DIST = config.rpath m4/ChangeLog logger.lsm.in system.h aclocal.m4 \
+	gettext.h logger.1
 
 #  uncomment the following if logger requires the math library
 #logger_LDADD=-lm

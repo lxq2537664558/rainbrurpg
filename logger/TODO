@@ -16,10 +16,13 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    FT is the ROADMAP file time
    Please update version and revision in configure.in
 
-* v0.0.0-7 (07 jan 2012 - ???) SLOC ??? FT ??:??
-- (5) Integrates Boost.Format in configure and DEPENDENCIES
-- (4) Removed some po/ files from SVN
-- (3) Add gettext support
+* v0.0.0-8 (14 mar 2012 - ???) SLOC ??? FT ??:??
+
+* v0.0.0-7 (07 jan 2012 - 14 mar 2012) SLOC 1,131 FT 21:40
+- Now using gettext for i18n
+- Integrates Boost.Format in configure and DEPENDENCIES
+- Removed some po/ files from SVN
+- Add gettext support
 - Improved project setup
    svn repo cleanup, DEPENDENCIES file
 - Removed autoproject generated files

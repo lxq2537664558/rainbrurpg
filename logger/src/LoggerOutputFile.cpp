@@ -25,6 +25,8 @@
 
 #include "LoggerOutputFile.hpp"
 
+using namespace std;
+
 void 
 Rpg::LoggerOutputFile::open()
 {

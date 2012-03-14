@@ -25,6 +25,8 @@
 
 #include "LoggerOutputYaml.hpp"
 
+using namespace std;
+
 /** Opens the YAML file
   *
   */

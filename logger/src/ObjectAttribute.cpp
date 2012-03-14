@@ -25,6 +25,8 @@
 
 #include "ObjectAttribute.hpp"
 
+using namespace std;
+
 /** The attribute constructor
   *
   * \param vType  The attribute type (ie. \em int for an integer)

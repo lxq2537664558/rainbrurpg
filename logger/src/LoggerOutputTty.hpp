@@ -39,10 +39,11 @@ namespace Rpg
     virtual void open(){    /* Nothing to be done */ };
     virtual void close(){    /* Nothing to be done */ };
     
-    virtual void startLog(LogLevel, const string&, const string&,const string&);
+    virtual void startLog(LogLevel, const std::string&, const std::string&,
+			  const std::string&);
     virtual void endLog();
     
-    virtual void log(const string& str);
+    virtual void log(const std::string& str);
     virtual void log(double d);
     virtual void log(const Object& o);
     

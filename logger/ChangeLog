@@ -1,3 +1,13 @@
+2012-03-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/LoggerOutputTty.cpp (logHeader): now using gettext.
+
+	* src/LoggerOutputTty.hpp: remove 'using namespace std'.
+	* src/LoggerOutputYaml.hpp: remove 'using namespace std'.
+	* src/LoggerOutputFile.hpp: remove 'using namespace std'.
+	* src/LoggerOutput.hpp: remove 'using namespace std'.
+	* src/ObjectAttribute.hpp: remove 'using namespace std'.
+
 2012-03-10  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: search for Boost.Format with AC_CHECK_HEADERS.

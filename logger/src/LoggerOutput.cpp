@@ -25,6 +25,8 @@
 
 #include "LoggerOutput.hpp"
 
+using namespace std;
+
 /** Convert a log level to its abbreviation
   *
   * An abbreviation is a two character string that describe a log level.

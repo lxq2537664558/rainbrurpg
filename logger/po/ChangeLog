@@ -1,5 +1,9 @@
 2012-03-08  Jérôme Pasquier  <rainbru@free.fr>
 
+	* Makevars (XGETTEXT_OPTIONS): added --add-comments=/.
+
+2012-03-08  Jérôme Pasquier  <rainbru@free.fr>
+
 	* Makevars: created from Makevars.template.
 
 2012-03-08  gettextize  <bug-gnu-gettext@gnu.org>

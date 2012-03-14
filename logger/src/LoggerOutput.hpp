@@ -32,8 +32,6 @@
 
 #include "Object.hpp"
 
-using namespace std;
-
 namespace Rpg
 {
 
@@ -56,12 +54,12 @@ namespace Rpg
    */
   struct LogHeader
   {
-    string program_name;    //!< The program's name
-    string program_version; //!< The program's version
-    string compil_date;     //!< The compilation date
-    string compil_time;     //!< The compilation time
-    string exec_date;       //!< The execution date
-    string exec_time;       //!< The execution time
+    std::string program_name;    //!< The program's name
+    std::string program_version; //!< The program's version
+    std::string compil_date;     //!< The compilation date
+    std::string compil_time;     //!< The compilation time
+    std::string exec_date;       //!< The execution date
+    std::string exec_time;       //!< The execution time
   };
   
   /** The logger's output interface
@@ -85,8 +83,8 @@ namespace Rpg
      * \param vLine      The source line number
      *
      */
-    virtual void startLog(LogLevel vLoglevel,const string& vLogdomain, 
-			  const string& vFilename, const string& vLine)=0;
+    virtual void startLog(LogLevel vLoglevel,const std::string& vLogdomain, 
+		  const std::string& vFilename, const std::string& vLine)=0;
     
     /// End a line started with \ref startLog
     virtual void endLog()=0;
@@ -98,7 +96,7 @@ namespace Rpg
      *
      * \param str The string to be logged
      */
-    virtual void log(const string& str)=0;
+    virtual void log(const std::string& str)=0;
 
     /** Log a double
      *
@@ -113,8 +111,8 @@ namespace Rpg
     virtual void log(const Object& o)=0;
     
   protected:
-    string ll_to_abr(LogLevel);
-    string ll_to_str(LogLevel);
+    std::string ll_to_abr(LogLevel);
+    std::string ll_to_str(LogLevel);
     
   };
 } // !namespace Rpg

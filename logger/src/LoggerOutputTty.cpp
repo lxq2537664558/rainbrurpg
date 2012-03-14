@@ -25,9 +25,13 @@
 
 #include "LoggerOutputTty.hpp"
 
+#include <iomanip>
+#include <cassert>
 #include <boost/format.hpp> // USES Boost.Format
 #include "LoggerDef.hpp"    // USES gettext macro
-#include <iomanip>
+
+using std::string;
+using std::list;
 
 /* Prefixes are :
    D for Dark
@@ -56,6 +60,26 @@ static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
   *
   */
 #define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << BLACK
+
+namespace MyNS_ForOutput {
+  
+  using std::cout; using std::cerr;
+  using std::string;
+  using std::endl; using std::flush;
+  
+  using boost::format;
+  using boost::io::group;
+}
+
+namespace MyNS_Manips {
+  using std::setfill;
+  using std::setw;
+  using std::hex ;
+  using std::dec ;
+}
+
+using namespace MyNS_ForOutput;
+using namespace MyNS_Manips;
 
 void 
 Rpg::LoggerOutputTty::endLog()
@@ -97,16 +121,19 @@ Rpg::LoggerOutputTty::logHeader(const LogHeader*lh)
        << "Compiled " << lh->compil_date << " at " << lh->compil_time << endl
        << "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
   */
-  using boost::format;
-  using boost::io::group;
 
  
-  /*
-  cout << format(_("Logger started for '%s v%s'\n Compiled %s at %s\nExecuted %s at %s\n")) 
-    % lh->program_name % lh->program_version & lh->compil_date & lh->compil_time & lh->exec_date & lh->exec_time;
-  */
-
-  cout << format("Logger started for '%s") & "aze";
+  
+  /// TRANSLATORS: Parameters are :
+  /// %1 = program name, 
+  /// %2 = program version
+  /// %3 = comilation date
+  /// %4 = compilation time
+  /// %5 = execution date
+  /// %6 = execution time
+  cout << format(_("Logger started for '%s v%s'\nCompiled %s at %s\nExecuted %s at %s\n")) 
+    % lh->program_name % lh->program_version % lh->compil_date %
+    lh->compil_time % lh->exec_date % lh->exec_time;
 }
 
 void

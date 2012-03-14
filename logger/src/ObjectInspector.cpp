@@ -25,6 +25,8 @@
 
 #include "ObjectInspector.hpp"
 
+using namespace std;
+
 /** The innscpector constructor
   *
   * The <em>memory address</em> comes from a pointer to the object you
