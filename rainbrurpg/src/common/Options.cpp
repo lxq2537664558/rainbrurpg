@@ -20,16 +20,16 @@
  *
  */
 
-/** \file options.cpp
+/** \file Options.cpp
   * Implements a class used to initialize OptionManager
   *
   */
 
-#include "options.h"
+#include "Options.hpp"
 
-#include "optionpanel.h"
+#include "OptionPanel.hpp"
 #include "OptionButton.hpp"
-#include "optionmanager.h"
+#include "OptionManager.hpp"
 
 /** An empty constructor
   *

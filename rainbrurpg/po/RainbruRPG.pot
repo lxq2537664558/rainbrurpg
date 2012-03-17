@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-03-04 17:19+0100\n"
+"POT-Creation-Date: 2012-03-14 18:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,7 +212,7 @@ msgstr ""
 
 #. TRANSLATORS: The following define an error in the handling of a
 #. packet type.
-#: ext/tinyxmlerror.cpp:37 src/common/netpacketbase.cpp:152
+#: ext/tinyxmlerror.cpp:37 src/common/NetPacketBase.cpp:152
 msgid "Error"
 msgstr ""
 
@@ -1045,143 +1045,143 @@ msgstr ""
 msgid "Cannot refresh an ItemListFile with empty file name"
 msgstr ""
 
-#: src/common/logger.cpp:185
+#: src/common/Logger.cpp:185
 msgid " LOGGER CAN'T OPEN FILE "
 msgstr ""
 
-#: src/common/logger.cpp:271 src/common/stringconv.cpp:139
+#: src/common/Logger.cpp:271 src/common/stringconv.cpp:139
 msgid "true"
 msgstr ""
 
-#: src/common/logger.cpp:273 src/common/stringconv.cpp:141
+#: src/common/Logger.cpp:273 src/common/stringconv.cpp:141
 msgid "false"
 msgstr ""
 
 #. TRANSLATORS: The following define an Identification network packet.
-#: src/common/netpacketbase.cpp:129
+#: src/common/NetPacketBase.cpp:129
 msgid "Identification"
 msgstr ""
 
 #. TRANSLATORS: The following the response packet of the server to the
 #. network connection.
-#: src/common/netpacketbase.cpp:135
+#: src/common/NetPacketBase.cpp:135
 msgid "Server connection response"
 msgstr ""
 
 #. TRANSLATORS: The following define a flood network packet. 'Netflooder'
 #. is the name of a tool.
-#: src/common/netpacketbase.cpp:141
+#: src/common/NetPacketBase.cpp:141
 msgid "Netflooder packet (4 bytes)"
 msgstr ""
 
 #. TRANSLATORS: The following define an unset network packet type.
-#: src/common/netpacketbase.cpp:146
+#: src/common/NetPacketBase.cpp:146
 msgid "Unset"
 msgstr ""
 
-#: src/common/npconnectionresponse.cpp:68
+#: src/common/NpConnectionResponse.cpp:68
 msgid "The server's response is not set"
 msgstr ""
 
-#: src/common/npidentification.cpp:79
+#: src/common/NpIdentification.cpp:79
 msgid "The client type is not set"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: src/common/npidentification.cpp:157
+#: src/common/NpIdentification.cpp:157
 msgid "NetFlooder"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: src/common/npidentification.cpp:162
+#: src/common/NpIdentification.cpp:162
 msgid "Editor"
 msgstr ""
 
 #. TRANSLATORS: This is the name of a client type.
-#: src/common/npidentification.cpp:167
+#: src/common/NpIdentification.cpp:167
 msgid "Game"
 msgstr ""
 
 #. TRANSLATORS: This is the unknown client type.
-#: src/common/npidentification.cpp:172
+#: src/common/NpIdentification.cpp:172
 msgid "Unknown"
 msgstr ""
 
 #. TRANSLATORS: This is the unknown client type.
-#: src/common/npidentification.cpp:177
+#: src/common/NpIdentification.cpp:177
 msgid "Default"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of an ObjectPos.
-#: src/common/objectmesh.cpp:174
+#: src/common/ObjectMesh.cpp:174
 #, c-format
 msgid "ObjectPos '%s' not found."
 msgstr ""
 
-#: src/common/optionattribute.cpp:57
+#: src/common/OptionAttribute.cpp:57
 msgid "Setting a unknown type to an OptionAttribute"
 msgstr ""
 
-#: src/common/optionattribute.cpp:88
+#: src/common/OptionAttribute.cpp:88
 msgid "Setting an empty name to an OptionAttribute"
 msgstr ""
 
-#: src/common/optionboolattribute.cpp:51
+#: src/common/OptionBoolAttribute.cpp:51
 msgid "Constructing a bool OptionAttribute"
 msgstr ""
 
-#: src/common/optionboolattribute.cpp:95 src/common/optionintattribute.cpp:131
+#: src/common/OptionBoolAttribute.cpp:95 src/common/OptionIntAttribute.cpp:131
 msgid "Updating an OptionIntAttribute"
 msgstr ""
 
-#: src/common/optionboolattribute.cpp:99
+#: src/common/OptionBoolAttribute.cpp:99
 msgid "Cannot get a valid FXCheckButton"
 msgstr ""
 
-#: src/common/optionboolattribute.cpp:103
-#: src/common/optionfloatattribute.cpp:136
-#: src/common/optionfloatrangeattribute.cpp:194
+#: src/common/OptionBoolAttribute.cpp:103
+#: src/common/OptionFloatAttribute.cpp:136
+#: src/common/OptionFloatRangeAttribute.cpp:194
 msgid "Cannot update optionattribute : widget=NULL"
 msgstr ""
 
-#: src/common/optionbutton.cpp:44
+#: src/common/OptionButton.cpp:44
 msgid "Creating an OptionButton without an Icon"
 msgstr ""
 
-#: src/common/optionbutton.cpp:73
+#: src/common/OptionButton.cpp:73
 msgid "Creating an OptionButton with empty caption"
 msgstr ""
 
-#: src/common/optionbutton.cpp:87
+#: src/common/OptionButton.cpp:87
 msgid "Creating an OptionButton with empty icon filename"
 msgstr ""
 
-#: src/common/optionfloatattribute.cpp:123
-#: src/common/optionintattribute.cpp:119
+#: src/common/OptionFloatAttribute.cpp:123
+#: src/common/OptionIntAttribute.cpp:119
 msgid "Calling increase or decrease with a step set to 0"
 msgstr ""
 
-#: src/common/optionfloatattribute.cpp:133
-#: src/common/optionfloatrangeattribute.cpp:191
+#: src/common/OptionFloatAttribute.cpp:133
+#: src/common/OptionFloatRangeAttribute.cpp:191
 msgid "Update not yet implemented"
 msgstr ""
 
 #. TRANSLATORS: The parameters are : The attribute name, the attribute
 #. value (as a float) and the min and max ranges in floats.
-#: src/common/optionfloatrangeattribute.cpp:143
+#: src/common/OptionFloatRangeAttribute.cpp:143
 #, c-format
 msgid "Value out of range for attribute '%s'. Value %f (range %f to %f)"
 msgstr ""
 
-#: src/common/optionintattribute.cpp:45
+#: src/common/OptionIntAttribute.cpp:45
 msgid "Constructing an integer OptionAttribute"
 msgstr ""
 
-#: src/common/optionintattribute.cpp:135
+#: src/common/OptionIntAttribute.cpp:135
 msgid "Cannot get a valid FXSpinner"
 msgstr ""
 
-#: src/common/optionintattribute.cpp:139
+#: src/common/OptionIntAttribute.cpp:139
 msgid "Cannot update OptionIntAttribute : widget=NULL"
 msgstr ""
 
@@ -1190,37 +1190,37 @@ msgstr ""
 #. The first parameter is the name of the atribute. The second
 #. parameter is the value the user attempt to set. The two last
 #. parameters are the min and max range of this attribute.
-#: src/common/optionintrangeattribute.cpp:141
+#: src/common/OptionIntRangeAttribute.cpp:141
 #, c-format
 msgid ""
 "Value out of range for attribute %s (value = %d, Accepted range : %d to %d"
 msgstr ""
 
-#: src/common/optionintrangeattribute.cpp:190
+#: src/common/OptionIntRangeAttribute.cpp:190
 msgid "Update not yet implemented for IntRangeAttribute"
 msgstr ""
 
 #. TRANSLATORS: This message is used when trying to select a
 #. value that does not exist in the list. The parameter is the
 #. value we are trying to set.
-#: src/common/optionlistattribute.cpp:68
+#: src/common/OptionListAttribute.cpp:68
 #, c-format
 msgid "The requested value (%s) does not exist in the list"
 msgstr ""
 
-#: src/common/optionlistattribute.cpp:103
+#: src/common/OptionListAttribute.cpp:103
 msgid "Inserting an existing value to an OptionListAttribute"
 msgstr ""
 
-#: src/common/optionlistattribute.cpp:107
+#: src/common/OptionListAttribute.cpp:107
 msgid "Inserting an empty string to an OptionListAttribute"
 msgstr ""
 
-#: src/common/optionlistattribute.cpp:161
+#: src/common/OptionListAttribute.cpp:161
 msgid "Updating an OptionListAttribute"
 msgstr ""
 
-#: src/common/optionlistattribute.cpp:166
+#: src/common/OptionListAttribute.cpp:166
 msgid "Cannot get a valid FXCheckButton to update an OptionListAttribute"
 msgstr ""
 

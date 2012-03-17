@@ -1,3 +1,15 @@
+2012-03-17 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/common/ptypes.h:  CamelCased and header called hpp.
+	* src/common/optionstringattribute.h|.cpp:  CamelCased and header 
+	called hpp.
+	* src/common/options.h|.cpp:  CamelCased and header called hpp.
+	* src/common/optionpanel.h|.cpp:  CamelCased and header called hpp.
+	* src/common/optionmanager.h|.cpp:  CamelCased and header called hpp.
+
 2012-03-08 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased

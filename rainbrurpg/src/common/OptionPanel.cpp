@@ -20,12 +20,12 @@
  *
  */
 
-/** \file optionpanel.cpp
+/** \file OptionPanel.cpp
   * Implements a panel for the launcher's options editor
   *
   */
 
-#include "optionpanel.h"
+#include "OptionPanel.hpp"
 
 
 /** A constructor setting the caption

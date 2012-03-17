@@ -38,7 +38,7 @@
 
 #include "LanguageListItem.hpp"
 #include "tinyxml.h"
-#include "ptypes.h"     // For unsigned int types
+#include "PTypes.hpp"     // For unsigned int types
 #include "rainbrudef.h" // For the gettext stuff
 
 namespace RainbruRPG{

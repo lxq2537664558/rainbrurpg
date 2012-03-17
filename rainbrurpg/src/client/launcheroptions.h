@@ -34,8 +34,8 @@
 
 #include <fox-1.6/fx.h>
 #include <Logger.hpp>
-#include <optionmanager.h>
-#include <optionpanel.h>
+#include <OptionManager.hpp>
+#include <OptionPanel.hpp>
 #include <OptionListAttribute.hpp>
 
 using namespace RainbruRPG::Options;

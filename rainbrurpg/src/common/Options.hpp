@@ -20,7 +20,7 @@
  *
  */
 
-/** \file options.h
+/** \file Options.hpp
   * Declares a class used to initialize OptionManager
   *
   * Modifications :
@@ -32,7 +32,7 @@
 #define OPTIONS_H
 
 #include "OptionIntAttribute.hpp"
-#include "optionstringattribute.h"
+#include "OptionStringAttribute.hpp"
 #include "OptionBoolAttribute.hpp"
 #include "OptionListAttribute.hpp"
 

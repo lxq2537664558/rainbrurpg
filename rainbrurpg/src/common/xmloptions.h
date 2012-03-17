@@ -36,7 +36,7 @@
 #include <string>
 #include "Logger.hpp"
 #include "tinyxml.h"
-#include "optionmanager.h"
+#include "OptionManager.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

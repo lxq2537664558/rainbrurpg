@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionmanager.h
+/** \file OptionManager.hpp
   * Declares the option manager singleton
   *
   * Modifications :
@@ -34,8 +34,8 @@
 
 #include "singleton.h"
 #include "Logger.hpp"
-#include "optionpanel.h"
-#include "options.h"
+#include "OptionPanel.hpp"
+#include "Options.hpp"
 
 #include "rainbrudef.h" // For the gettext stuff
 

@@ -50,10 +50,10 @@ src/common/OptionFloatRangeAttribute.cpp
 src/common/OptionIntAttribute.cpp
 src/common/OptionIntRangeAttribute.cpp
 src/common/OptionListAttribute.cpp
-src/common/optionmanager.cpp
-src/common/optionpanel.cpp
-src/common/options.cpp
-src/common/optionstringattribute.cpp
+src/common/OptionManager.cpp
+src/common/OptionPanel.cpp
+src/common/Options.cpp
+src/common/OptionStringAttribute.cpp
 src/common/serverlistitem.cpp
 src/common/sha1.cpp
 src/common/stringconv.cpp

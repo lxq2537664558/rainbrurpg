@@ -29,7 +29,7 @@
 #include <iostream>
 
 #include "languageselector.h"
-#include "options.h"
+#include <Options.hpp>
 #include <xmloptions.h>
 
 /** Defines the Fox-toolkit event mapping

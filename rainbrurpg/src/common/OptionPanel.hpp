@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionpanel.h
+/** \file OptionPanel.hpp
   * Declares a panel for the launcher's options editor
   *
   * Modifications :

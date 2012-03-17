@@ -20,7 +20,7 @@
  *
  */
 
-/** \file optionstringattribute.h
+/** \file OptionStringAttribute.hpp
   * Declares a string for the launcher's options editor
   *
   * Modifications :

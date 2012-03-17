@@ -48,8 +48,8 @@
 #include <iostream>
 #include <string>
 
-#include "options.h"
 #include "vcconstant.h"
+#include <Options.hpp>
 #include <GlobalUri.hpp>
 
 // includes game states
@@ -70,7 +70,7 @@
   */
 #include "launcher.h"
 #include <fox-1.6/fx.h>
-#include <optionmanager.h>
+#include <OptionManager.hpp>
 
 #include "../config.h"
 #include <OgrePlatform.h>

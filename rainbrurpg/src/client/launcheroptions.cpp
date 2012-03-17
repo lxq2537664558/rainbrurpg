@@ -29,10 +29,10 @@
 #include <iostream>
 
 #include "launcheroptions.h"
-#include "options.h"
+#include <Options.hpp>
 #include <xmloptions.h>
 
-#include "ptypes.h" // for ui_ptr
+#include "PTypes.hpp" // for ui_ptr
 #include "config.h"
 
 /** The Fox-toolkit event mapping */
@@ -567,7 +567,7 @@ onAttributeChange(FXObject * o,FXSelector s,void* v){
 	attrb->setValueStr(StringConv::getSingleton().btoc(b));
       }
       else if (strcmp("FXSpinner", id->getClassName())==0){
-	// Use ui_ptr from common/ptypes.h because pointer's
+	// Use ui_ptr from common/PTypes.hpp because pointer's
 	// size is 32 bits or 64 bits according to the CPU type.
 	// It is to avoid a 'loses precision' compilation error
 	ui_ptr i=(ui_ptr)v;

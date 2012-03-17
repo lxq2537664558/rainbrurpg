@@ -20,7 +20,7 @@
  *
  */
 
-/** \file ptypes.h
+/** \file PTypes.hpp
   * Defines portables types for signed and unsigned integers.
   *
   * These types was originally defined to provide a 32/64 bits portability.

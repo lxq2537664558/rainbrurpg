@@ -20,12 +20,12 @@
  *
  */
 
-/** \file optionstringattribute.cpp
+/** \file OptionStringAttribute.cpp
   * Implements a string for the launcher's options editor
   *
   */
 
-#include "optionstringattribute.h"
+#include "OptionStringAttribute.hpp"
 
 /** The named constructor
   *

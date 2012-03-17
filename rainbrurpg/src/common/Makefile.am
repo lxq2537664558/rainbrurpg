@@ -63,7 +63,6 @@ h_sources= AttributeModifierList.hpp		\
 	   NpIdentification.hpp			\
 	   ObjectMesh.hpp			\
 	   ObjectPos.hpp			\
-	   options.h				\
 	   OptionAttribute.hpp			\
 	   OptionBoolAttribute.hpp		\
 	   OptionButton.hpp			\
@@ -72,10 +71,11 @@ h_sources= AttributeModifierList.hpp		\
 	   OptionIntAttribute.hpp		\
 	   OptionIntRangeAttribute.hpp		\
 	   OptionListAttribute.hpp		\
-	   optionmanager.h			\
-	   optionpanel.h			\
-	   optionstringattribute.h		\
-	   ptypes.h				\
+	   OptionManager.hpp			\
+	   OptionPanel.hpp			\
+	   Options.hpp				\
+	   OptionStringAttribute.hpp		\
+	   PTypes.hpp				\
 	   rainbrudef.h				\
 	   serverlistitem.h			\
 	   sha1.h				\
@@ -145,10 +145,10 @@ cc_sources=AttributeModifierList.cpp		\
 	  OptionIntAttribute.cpp		\
 	  OptionIntRangeAttribute.cpp		\
 	  OptionListAttribute.cpp		\
-	  optionmanager.cpp			\
-	  optionpanel.cpp			\
-	  options.cpp				\
-	  optionstringattribute.cpp		\
+	  OptionManager.cpp			\
+	  OptionPanel.cpp			\
+	  Options.cpp				\
+	  OptionStringAttribute.cpp		\
 	  serverlistitem.cpp			\
 	  sha1.cpp				\
 	  stringconv.cpp			\
