@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gamestate.h
+/** \file GameState.hpp
   * Declares a base abstract class of all the GameStates
   *
   * Modifications :
@@ -45,7 +45,7 @@
 #include <OIS/OISMouse.h>
 
 #include <Logger.hpp>
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 #include <string>
 

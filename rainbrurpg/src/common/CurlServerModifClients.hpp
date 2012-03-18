@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlservermodifclients.h
+/** \file CurlServerModifClients.hpp
   * Defines a class to modify connected clients number of a server
   *
   * Modifications :
@@ -36,9 +36,9 @@
 #include <GlobalUri.hpp>
 #include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
-#include <stringconv.h>
+#include <StringConv.hpp>
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Core;

@@ -43,7 +43,7 @@
 
 #include <ogreimport.h>
 #include <stringconv.h>    // For itobin()
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace RainbruRPG{

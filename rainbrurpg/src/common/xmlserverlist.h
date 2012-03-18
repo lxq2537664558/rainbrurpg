@@ -44,10 +44,10 @@
 #include "tnotelist.h"
 #include "xmltimestamp.h"
 #include "CurlFileToXml.hpp"
-#include "serverlistitem.h"
-#include "stringconv.h"
+#include "ServerListItem.hpp"
+#include "StringConv.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

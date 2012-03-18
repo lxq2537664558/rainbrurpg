@@ -35,7 +35,7 @@
 #define _OGRE_GUI_MOUSE_EVENT_H_
 
 #include <ogreimport.h>
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 /** The minimum duration of a long click */
 #define LONG_CLICK_DURATION 200

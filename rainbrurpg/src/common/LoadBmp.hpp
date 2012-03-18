@@ -40,7 +40,7 @@
 #include <string>
 
 #include "EasyBMP.h"
-#include "rainbrudef.h" 
+#include "RainbruDef.hpp" 
 
 using namespace std;
 

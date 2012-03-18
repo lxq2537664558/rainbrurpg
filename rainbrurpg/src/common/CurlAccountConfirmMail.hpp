@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlaccountconfirmmail.h 
+/** \file CurlAccountConfirmMail.hpp
   * Defines confirmation of a account's mail address
   *
   * Modifications :
@@ -34,7 +34,7 @@
 #define CURL_ACCOUNT_CONFIRM_MAIL_H
 
 #include "CurlSubmitForm.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 // Forward declarations
 namespace RainbruRPG {

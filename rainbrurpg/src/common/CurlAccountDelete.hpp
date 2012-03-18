@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlaccountdelete.h 
+/** \file CurlAccountDelete.hpp
   * Defines the class needed to delete accounts
   *
   * Modification :
@@ -34,7 +34,7 @@
 #define CURL_ACCOUNT_DELETE_H
 
 #include "CurlSubmitForm.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

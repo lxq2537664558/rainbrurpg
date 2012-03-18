@@ -32,7 +32,7 @@
 
 #include "WidgetList.hpp"
 
-#include <rainbrudef.h> // For the gettext stuff
+#include <RainbruDef.hpp> // For the gettext stuff
 #include <Logger.hpp>
 
 

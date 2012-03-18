@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlposteddata.h
+/** \file CurlPostedData.hpp
   * Defines a class used to compute data for a form submit action
   *
   * Modification :
@@ -40,7 +40,7 @@
 #include <time.h>
 #include <string>
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 #include "Logger.hpp"
 
 using namespace std;

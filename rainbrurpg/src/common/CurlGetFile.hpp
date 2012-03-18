@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlgetfile.h
+/** \file CurlGetFile.hpp
   * Declare a class used to get a file using cUrl
   *
   * Modification :
@@ -41,7 +41,7 @@
 #define DO_NOT_INCLUDE_WRITE_DATA
 
 #include "CurlInterface.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Network {

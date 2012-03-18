@@ -49,7 +49,7 @@
 #include <list>
 
 #include "Logger.hpp"
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 #ifdef RAINBRU_RPG_DEBUG
 #  define WEBSITE_DEBUG

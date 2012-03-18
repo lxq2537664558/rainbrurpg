@@ -38,8 +38,8 @@
 
 #include "Logger.hpp"
 #include "OptionAttribute.hpp"
-#include "stringconv.h"
-#include "rainbrudef.h" // For the gettext stuff
+#include "StringConv.hpp"
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 

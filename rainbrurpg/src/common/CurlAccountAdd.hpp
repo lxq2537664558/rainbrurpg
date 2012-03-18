@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlaccountadd.h
+/** \file CurlAccountAdd.hpp
   * Defines how to submit an account addition
   *
   * Modifications :
@@ -36,7 +36,7 @@
 
 #include "CurlSubmitForm.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

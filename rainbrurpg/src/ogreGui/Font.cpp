@@ -32,7 +32,7 @@
 #include "Font.hpp"
 
 #include "Logger.hpp"
-#include "stringconv.h"
+#include "StringConv.hpp"
 #include "Brush.hpp"
 
 #include <dumpogreobject.h>

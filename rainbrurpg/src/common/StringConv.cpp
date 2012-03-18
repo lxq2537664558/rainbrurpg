@@ -25,7 +25,7 @@
   *
   */
 
-#include "stringconv.h"
+#include "StringConv.hpp"
 
 #include <bitset>
 #include <wchar.h>

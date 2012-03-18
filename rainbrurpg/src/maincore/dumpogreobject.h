@@ -55,7 +55,7 @@
 #include <OgreVector4.h>
 #include <OgreRectangle.h>
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 using namespace std;
 using namespace Ogre;

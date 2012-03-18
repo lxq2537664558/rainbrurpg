@@ -37,9 +37,9 @@
 
 #include "Logger.hpp"
 #include "OptionIntAttribute.hpp"
-#include "stringconv.h"
+#include "StringConv.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 

@@ -34,7 +34,7 @@
 #define _OGRE_GUI_GUI_VERTEX_H_
 
 #include <ogreimport.h>
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 #include "vector3.h"
 

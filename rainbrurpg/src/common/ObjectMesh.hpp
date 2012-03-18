@@ -20,7 +20,7 @@
  *
  */
 
-/** \file objectmesh.h
+/** \file ObjectMesh.hpp
   * Defines a static mesh that can have multiple instances
   *
   * Modifications :
@@ -37,7 +37,7 @@
 #include <list>
 #include <string>
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 using namespace std;
 

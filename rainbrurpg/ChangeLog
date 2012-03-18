@@ -1,10 +1,22 @@
+2012-03-18 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/common/taccountlist.h:  CamelCased and header called hpp.
+	* src/common/stringconv.h|.cpp:  CamelCased and header called hpp.
+	* src/common/singleton.h:  CamelCased and header called hpp.
+	* src/common/sha1.h|.cpp:  CamelCased and header called hpp.
+	* src/common/sererlistitem.h|.cpp:  CamelCased and header called hpp.
+	* src/common/rainbrudef.h:  CamelCased and header called hpp.
+
 2012-03-17 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
 	files and new header names.
 
 	* src/common/ptypes.h:  CamelCased and header called hpp.
-	* src/common/optionstringattribute.h|.cpp:  CamelCased and header 
+	* src/common/optionstringattribute.h|.cpp:  CamelCased and header
 	called hpp.
 	* src/common/options.h|.cpp:  CamelCased and header called hpp.
 	* src/common/optionpanel.h|.cpp:  CamelCased and header called hpp.
@@ -338,10 +350,10 @@
 	* src/maincore/WindowHandleTest.cpp: implemented.
 	* src/testHelpers/OgreMinimalSetup (getRenderWindow) implemented.
 
-	* src/maincore/WindowHandle.cpp (get): throws some 
+	* src/maincore/WindowHandle.cpp (get): throws some
 	NullWindowHandleException.
 
-	* src/maincore/NullWindowHandleException: header and implementation 
+	* src/maincore/NullWindowHandleException: header and implementation
 	added.
 
 	* src/maincore/inputmanager.cpp (initialise): Now uses WindowHandle.

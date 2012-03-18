@@ -32,8 +32,8 @@
 #ifndef LANGUAGE_LIST_ITEM_H
 #define LANGUAGE_LIST_ITEM_H
 
-#include "stringconv.h"
-#include "rainbrudef.h"
+#include "StringConv.hpp"
+#include "RainbruDef.hpp"
 
 using namespace RainbruRPG::Core;
 

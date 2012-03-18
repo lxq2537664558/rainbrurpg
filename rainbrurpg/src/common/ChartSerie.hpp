@@ -20,7 +20,7 @@
  *
  */
 
-/** \file chartserie.h
+/** \file ChartSerie.hpp
   * Defines a serie of values used in a chart
   *
   * Modifications :
@@ -36,7 +36,7 @@
 #include <vector>
 #include <string>
 
-#include "rainbrudef.h" // for gettext stuff
+#include "RainbruDef.hpp" // for gettext stuff
 
 using namespace std;
 

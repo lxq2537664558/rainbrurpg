@@ -35,7 +35,7 @@
 
 #include "CurlImport.hpp"
 #include "CurlGetFile.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 // Forward declarations
 class TiXmlDocument;

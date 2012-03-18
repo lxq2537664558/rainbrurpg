@@ -38,7 +38,7 @@
 #include <glib.h>
 
 #include "NetPacketBase.hpp"
-#include "rainbrudef.h"      // For the gettext stuff
+#include "RainbruDef.hpp"      // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network;

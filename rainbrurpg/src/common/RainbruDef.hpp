@@ -20,7 +20,7 @@
  *
  */
 
-/** \file rainbrudef.h
+/** \file RainbruDef.hpp
   * Handle the GCC visibility patch and win32 declspec
   *
   * For more informations on GCC visibility please follow

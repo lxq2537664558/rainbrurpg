@@ -41,11 +41,11 @@
 
 #include <ogreimport.h>
 
-#include <singleton.h>
+#include <Singleton.hpp>
 
 #include <vector>
 #include <list>
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 #include "mouseevent.h"
 

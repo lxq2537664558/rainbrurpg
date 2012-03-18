@@ -117,6 +117,7 @@ A system that serialize widgets position and configuration
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
 - (8) CamelCased some files in common/
    OptionManager, OptionPanel, Options, OptionStringAttribute, PTypes
+   RainbruDef, ServerListItem, Sha1, Singleton, StringConv, AccountList
 - (7) CamelCased some files in common/
    OptionAttribute, OptionBoolAttribute, OptionButton
    OptionFloatAttribute, OptionFloatRangeAttribute, OptionIntAttribute

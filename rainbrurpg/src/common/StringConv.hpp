@@ -45,8 +45,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "singleton.h"
-#include "rainbrudef.h"
+#include "Singleton.hpp"
+#include "RainbruDef.hpp"
 
 using namespace std;
 using namespace RainbruRPG::Core;

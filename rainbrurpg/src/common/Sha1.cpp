@@ -29,12 +29,12 @@
  *
  */
 
-/** \file sha1.cpp
+/** \file Sha1.cpp
   * Implements the Secure Hashing Algorithm
   *
   */
 
-#include "sha1.h"
+#include "Sha1.hpp"
 
 /** Define the SHA1 circular left shift macro
   *

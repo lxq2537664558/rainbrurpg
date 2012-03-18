@@ -25,7 +25,7 @@
  *
  */
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 #ifdef _MSC_VER 
 // MS Visual Studio gives warnings when using 

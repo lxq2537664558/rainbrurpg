@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlpersomodifattrb.h
+/** \file CurlPersoModifAttrb.hpp
   * Defines how to submit an attribute modification
   *
   * Modifications :
@@ -32,7 +32,7 @@
 #ifndef CURL_PERSO_MODIF_ATTRB_H
 #define CURL_PERSO_MODIF_ATTRB_H
 
-#include "rainbrudef.h"     // For the gettext stuff
+#include "RainbruDef.hpp"     // For the gettext stuff
 #include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"

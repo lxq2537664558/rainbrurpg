@@ -20,7 +20,7 @@
  *
  */
 
-/** \file chartline.h
+/** \file ChartLine.hpp
   * Defines a chart based on lines
   *
   * Modifications :
@@ -40,7 +40,7 @@
 #include <ChartBase.hpp>
 #include <Logger.hpp>
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 using namespace std;
 
 namespace RainbruRPG{

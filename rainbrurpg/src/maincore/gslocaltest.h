@@ -31,7 +31,7 @@
 #ifndef GS_LOCAL_TEST
 #define GS_LOCAL_TEST
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 #include "gsgamebase.h"
 

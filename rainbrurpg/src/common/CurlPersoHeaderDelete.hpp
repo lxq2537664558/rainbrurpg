@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlpersoheaderdelete.h
+/** \file CurlPersoHeaderDelete.hpp
   * Defines how to delete the header of a perso
   *
   * Modifications : 
@@ -34,7 +34,7 @@
 
 #include <string>
 
-#include "rainbrudef.h" // For gettext stuff
+#include "RainbruDef.hpp" // For gettext stuff
 #include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"

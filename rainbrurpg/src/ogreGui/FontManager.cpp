@@ -30,7 +30,7 @@
 #include "Font.hpp"
 
 #include <Logger.hpp>
-#include <stringconv.h>
+#include <StringConv.hpp>
 
 #include <OgreResourceGroupManager.h>
 #include <OgreTextureManager.h>

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gameengine.h
+/** \file GameEngine.hpp
   * Declares an Ogre frame listenerthe client game engine
   *
   * Modifications :
@@ -44,14 +44,14 @@
 #include <ogreimport.h>
 #include <vector>
 #include <string>
-#include <singleton.h>
-#include <stringconv.h>
+#include <Singleton.hpp>
+#include <StringConv.hpp>
 #include <ClientConnect.hpp>
 
 #include <OIS/OISKeyboard.h>
 #include <OIS/OISMouse.h>
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 // Forward declarations
 namespace RainbruRPG 

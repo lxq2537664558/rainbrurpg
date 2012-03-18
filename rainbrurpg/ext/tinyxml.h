@@ -42,7 +42,7 @@ distribution.
 #include <string.h>
 #include <assert.h>
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 // Help out windows:
 #if defined( _DEBUG ) && !defined( DEBUG )

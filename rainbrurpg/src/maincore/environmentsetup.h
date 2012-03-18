@@ -39,7 +39,7 @@
 
 #include <string>
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 using namespace Ogre;
 

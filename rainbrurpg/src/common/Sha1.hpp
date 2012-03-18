@@ -1,5 +1,5 @@
 /*
- *  sha1.h
+ *  Sha1.hpp
  *
  *  Description:
  *      This is the header file for code which implements the Secure
@@ -14,7 +14,7 @@
  *
  */
 
-/** \file sha1.h
+/** \file Sha1.hpp
   * Declares the Secure Hashing Algorithm
   *
   * Modifications :
@@ -28,7 +28,7 @@
 #ifndef _SHA1_H_
 #define _SHA1_H_
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 #include <stdint.h>
 /*

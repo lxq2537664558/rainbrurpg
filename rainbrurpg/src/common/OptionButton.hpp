@@ -39,7 +39,7 @@
 #include "Logger.hpp"
 #include "OptionAttribute.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 

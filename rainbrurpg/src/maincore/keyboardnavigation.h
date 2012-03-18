@@ -41,7 +41,7 @@
 #include <vector>
 #include <Logger.hpp>
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 /** \def MULTI_COLUMN_LIST_ENTER_EVENT_NAME
   * Defines the name of the event fired when Enter or

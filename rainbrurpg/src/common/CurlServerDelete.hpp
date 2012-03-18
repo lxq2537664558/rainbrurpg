@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlserverdelete.h
+/** \file CurlServerDelete.hpp
   * Defines a class used to delete a server in the server list
   *
   * Modifications :
@@ -37,7 +37,7 @@
 #include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 using namespace std;
 using namespace RainbruRPG::Network;

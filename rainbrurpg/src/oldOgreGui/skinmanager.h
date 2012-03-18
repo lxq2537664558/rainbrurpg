@@ -33,7 +33,7 @@
 #ifndef _OGRE_GUI_SKIN_MANAGER_H_
 #define _OGRE_GUI_SKIN_MANAGER_H_
 
-#include "singleton.h"
+#include <Singleton.hpp>
 #include "skin.h"
 
 #include <vector>

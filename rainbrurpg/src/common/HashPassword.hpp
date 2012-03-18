@@ -20,7 +20,7 @@
  *
  */
 
-/** \file hashpassword.h
+/** \file HashPassword.hpp
   * Declares a class used to compute password's hashsum 
   *
   * Modifications :
@@ -40,8 +40,8 @@
 #include <sstream>
 
 #include "Logger.hpp"
-#include "sha1.h"
-#include "rainbrudef.h" // For the gettext stuff
+#include "Sha1.hpp"
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace RainbruRPG::Core;
 using namespace std;

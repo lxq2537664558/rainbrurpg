@@ -35,7 +35,7 @@
 #define NETWORK_PACKET_CONNECTION_RESPONSE_H
 
 #include "NetPacketBase.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Network{

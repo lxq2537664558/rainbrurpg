@@ -42,7 +42,7 @@
 #include <string>
 
 #include <ogreimport.h>
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 #include "glyph.h"
 #include "lineinfo.h"

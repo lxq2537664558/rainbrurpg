@@ -38,7 +38,7 @@
 #include "tinyxml.h"
 #include "OptionManager.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Options{

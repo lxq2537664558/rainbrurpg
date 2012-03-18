@@ -37,7 +37,7 @@
 
 #include <string>
 #include <vector>
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 // Forward declarations
 namespace RainbruRPG{

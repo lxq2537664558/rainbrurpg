@@ -36,7 +36,7 @@
 #include "OptionBoolAttribute.hpp"
 #include "OptionListAttribute.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Options{

@@ -39,7 +39,7 @@
 #include "Logger.hpp"
 #include "OptionButton.hpp"
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 using namespace std;
 

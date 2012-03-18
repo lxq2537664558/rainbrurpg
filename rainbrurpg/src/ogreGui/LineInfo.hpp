@@ -34,7 +34,7 @@
 #define _OGRE_GUI_LINE_INFO_HPP_
 
 #include <string>
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 using namespace std;
 

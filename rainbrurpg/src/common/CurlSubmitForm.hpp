@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlsubmitform.h
+/** \file CurlSubmitForm.hpp
   * Defines a class used to fill a form and submit it
   *
   * Modification :
@@ -43,7 +43,7 @@
 #include <vector>
 #include <curl/curl.h>
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 #include "CurlInterface.hpp"
 #include "CurlPostedData.hpp"
 #include "HashPassword.hpp"

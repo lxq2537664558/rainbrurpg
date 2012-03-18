@@ -29,7 +29,7 @@
 
 #include "Logger.hpp"
 #include "GlobalUri.hpp"
-#include "stringconv.h"
+#include "StringConv.hpp"
 
 /** The default constructor
   *

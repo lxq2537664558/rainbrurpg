@@ -41,9 +41,9 @@
 #include <sigc++/sigc++.h>
 
 #include "Logger.hpp"
-#include "sha1.h"
+#include "Sha1.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 

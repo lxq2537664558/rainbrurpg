@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlaccounttoggleblacklist.h
+/** \file CurlAccountToggleBlacklist.hpp
   * Defines how submit a toggle blacklist request of an account
   *
   * Modifications :
@@ -35,7 +35,7 @@
 #include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlaccountlist.h"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace RainbruRPG::Network;
 

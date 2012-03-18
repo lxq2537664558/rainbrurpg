@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlserveradd.h
+/** \file CurlServerAdd.hpp
   * Defines a class used to add a server in the server list
   *
   * Modifications :
@@ -38,7 +38,7 @@
 #include <CurlSubmitForm.hpp>
 #include <xmlserverlist.h>
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Network;

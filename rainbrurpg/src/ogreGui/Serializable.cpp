@@ -31,7 +31,7 @@
 
 #include "Serializable.hpp"
 
-#include <rainbrudef.h> // For the gettext stuff
+#include <RainbruDef.hpp> // For the gettext stuff
 #include <Logger.hpp>
 
 /** A named constructor

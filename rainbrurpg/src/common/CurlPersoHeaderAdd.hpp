@@ -20,7 +20,7 @@
  *
  */
 
-/** \file curlpersoheaderadd.h
+/** \file CurlPersoHeaderAdd.hpp
   * Defines how to submits a add perso header request
   *
   * Modifications :
@@ -32,7 +32,7 @@
 #ifndef CURL_PERSO_HEADER_ADD_H
 #define CURL_PERSO_HEADER_ADD_H
 
-#include "rainbrudef.h" // For gettext stuff
+#include "RainbruDef.hpp" // For gettext stuff
 #include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
 #include "xmlpersolist.h"

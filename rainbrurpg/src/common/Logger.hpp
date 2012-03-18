@@ -20,7 +20,7 @@
  *
  */
 
-/** \file logger.h
+/** \file Logger.hpp
   * Defines preprocessor macros used to debug at runtime
   *
   * \note There is a hack on this file that avoid multiple definition of
@@ -46,8 +46,8 @@
 #include <string>
 #include <sstream>
 
-#include "singleton.h"
-#include "rainbrudef.h"
+#include "Singleton.hpp"
+#include "RainbruDef.hpp"
 
 // Avoid multiple definitions of these macros
 #ifdef __WIN32__

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file httpresponse.h
+/** \file HttpResponse.hpp
   * Declares types and class that return string from an HTTP status code
   *
   * Modifications :
@@ -41,7 +41,7 @@
 #include <sstream>
 
 #include "Logger.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 /** A shortcut macro to add a message */
 #define RESPADD(ID,MSG) (msgMap->insert(HttpMessagePair(ID, MSG)))

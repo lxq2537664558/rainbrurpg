@@ -20,7 +20,7 @@
  *
  */
 
-/** \file serverlistitem.h
+/** \file ServerListItem.hpp
   * Defines an item used in the tServerList
   *
   * Modifications :
@@ -35,7 +35,7 @@
 #ifndef _SERVER_LIST_ITEM_H_
 #define _SERVER_LIST_ITEM_H_
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 /** Defines the initial value of server's type
   *

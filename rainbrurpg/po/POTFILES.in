@@ -54,9 +54,9 @@ src/common/OptionManager.cpp
 src/common/OptionPanel.cpp
 src/common/Options.cpp
 src/common/OptionStringAttribute.cpp
-src/common/serverlistitem.cpp
-src/common/sha1.cpp
-src/common/stringconv.cpp
+src/common/ServerListItem.cpp
+src/common/Sha1.cpp
+src/common/StringConv.cpp
 src/common/timer.cpp
 src/common/version.cpp
 src/common/xmlaccountlist.cpp

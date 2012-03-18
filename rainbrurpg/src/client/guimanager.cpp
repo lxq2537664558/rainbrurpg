@@ -30,7 +30,7 @@
 #include "config.h"
 
 #include <Logger.hpp>
-#include <stringconv.h>
+#include <StringConv.hpp>
 
 #include <iostream>
 #include <sstream>

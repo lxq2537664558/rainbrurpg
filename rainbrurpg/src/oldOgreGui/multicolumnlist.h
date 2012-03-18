@@ -51,7 +51,7 @@
 #include <list>
 #include <sigc++/sigc++.h>
 #include <algorithm> // for sort
-#include <rainbrudef.h>    // For the GNU gettext stuff
+#include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 /// The sensitivity in pixels
 #define COLUMN_RESIZE_SENSITIVITY 4

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file inputmanager.h
+/** \file InputManager.hpp
   * Declares an input manager for OIS to be used with Ogre3D
   *
   * Modifications :
@@ -40,7 +40,7 @@
 
 #include <ogreimport.h>
 
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 namespace RainbruRPG {
   namespace Core{

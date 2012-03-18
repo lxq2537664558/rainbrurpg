@@ -37,9 +37,9 @@
 
 #include "Logger.hpp"
 #include "OptionAttribute.hpp"
-#include "stringconv.h"
+#include "StringConv.hpp"
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 
 using namespace std;
 

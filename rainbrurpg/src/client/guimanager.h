@@ -40,7 +40,7 @@
 #ifndef GUI_MANAGER_H
 #define GUI_MANAGER_H
 
-#include <singleton.h>
+#include <Singleton.hpp>
 #include <ogreimport.h>
 
 #include "GameEngine.hpp"

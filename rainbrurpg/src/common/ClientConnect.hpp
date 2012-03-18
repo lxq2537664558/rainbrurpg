@@ -20,7 +20,7 @@
  *
  */
 
-/** \file clientconnect.h
+/** \file ClientConnect.hpp
   * Defines the client connection ability
   *
   * Modifications :
@@ -37,7 +37,7 @@
 #include "taccountlist.h"
 #include "HashPassword.hpp"
 
-# include "rainbrudef.h" // For the gettext stuff
+# include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 using namespace RainbruRPG::Gui;

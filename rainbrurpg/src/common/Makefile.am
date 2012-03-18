@@ -22,7 +22,8 @@ lib_LTLIBRARIES = librainbrurpg-common.la
 librainbrurpg_common.adir=$(libdir)
 
 # Please keep this file list sorted
-h_sources= AttributeModifierList.hpp		\
+h_sources= AccountList.hpp			\
+	   AttributeModifierList.hpp		\
 	   BoostImport.hpp			\
 	   ChartBase.hpp			\
 	   ChartLine.hpp			\
@@ -76,12 +77,11 @@ h_sources= AttributeModifierList.hpp		\
 	   Options.hpp				\
 	   OptionStringAttribute.hpp		\
 	   PTypes.hpp				\
-	   rainbrudef.h				\
-	   serverlistitem.h			\
-	   sha1.h				\
-	   singleton.h				\
-	   stringconv.h				\
-	   taccountlist.h			\
+	   RainbruDef.hpp			\
+	   ServerListItem.hpp			\
+	   Sha1.hpp				\
+	   Singleton.hpp			\
+	   StringConv.hpp			\
 	   timer.h				\
 	   tidentreturn.h			\
 	   tnotelist.h				\
@@ -149,9 +149,9 @@ cc_sources=AttributeModifierList.cpp		\
 	  OptionPanel.cpp			\
 	  Options.cpp				\
 	  OptionStringAttribute.cpp		\
-	  serverlistitem.cpp			\
-	  sha1.cpp				\
-	  stringconv.cpp			\
+	  ServerListItem.cpp			\
+	  Sha1.cpp				\
+	  StringConv.cpp			\
 	  timer.cpp				\
 	  version.cpp				\
 	  xmlaccountlist.cpp			\

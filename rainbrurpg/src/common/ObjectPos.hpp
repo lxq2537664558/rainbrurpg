@@ -20,7 +20,7 @@
  *
  */
 
-/** \file objectpos.h
+/** \file ObjectPos.hpp
   * Defines an object defining the position/rotation of a mesh
   *
   * Modifications :
@@ -35,7 +35,7 @@
 
 #include <string>
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG{
   namespace Core{

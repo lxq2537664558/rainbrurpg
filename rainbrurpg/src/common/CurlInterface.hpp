@@ -42,7 +42,7 @@
 #include <string>
 #include <vector>
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 #include "Logger.hpp"
 
 using namespace std;

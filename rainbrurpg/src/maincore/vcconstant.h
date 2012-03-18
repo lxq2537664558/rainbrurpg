@@ -34,7 +34,7 @@
 #define VELOCITY_CALCULATOR_CONSTANT_H
 
 #include "velocitycalculator.h"
-#include <rainbrudef.h> // For the GNU gettext stuff
+#include <RainbruDef.hpp> // For the GNU gettext stuff
 
 using namespace std;
 

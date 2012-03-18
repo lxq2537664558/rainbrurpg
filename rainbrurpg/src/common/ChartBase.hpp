@@ -20,7 +20,7 @@
  *
  */
 
-/** \file chartbase.h
+/** \file ChartBase.hpp
   * Defines the base-class of all generated charts
   *
   * Modifications :
@@ -49,7 +49,7 @@
 #include <iostream>
 
 #include "ChartSerie.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 /// Defines PI
 #define PI 3.1415916

@@ -54,7 +54,7 @@
 #ifndef _QHUAD_RENDERER_H_
 #define _QHUAD_RENDERER_H_
 
-#include "rainbrudef.h"
+#include "RainbruDef.hpp"
 #include "font.h"            // For text alignment enumerations
 #include "vector3.h"
 #include "guivertex.h"

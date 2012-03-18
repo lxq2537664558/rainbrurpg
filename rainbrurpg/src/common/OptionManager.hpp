@@ -32,12 +32,12 @@
 #ifndef OPTION_MANAGER_H
 #define OPTION_MANAGER_H
 
-#include "singleton.h"
+#include "Singleton.hpp"
 #include "Logger.hpp"
 #include "OptionPanel.hpp"
 #include "Options.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 #include <list>
 

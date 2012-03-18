@@ -20,14 +20,14 @@
  *
  */
 
-/** \file serverlistitem.cpp
+/** \file ServerListItem.cpp
   * Implements an item used in the tServerList
   *
   */
 
-#include "serverlistitem.h"
+#include "ServerListItem.hpp"
 
-#include "stringconv.h"
+#include "StringConv.hpp"
 
 /** The default constructor
   *

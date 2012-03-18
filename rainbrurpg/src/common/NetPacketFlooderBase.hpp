@@ -34,7 +34,7 @@
 #define NET_PACKET_FLOODER_BASE_H
 
 #include "NetPacketBase.hpp"
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 namespace RainbruRPG {
   namespace Network{

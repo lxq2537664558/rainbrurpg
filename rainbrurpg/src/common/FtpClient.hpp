@@ -58,7 +58,7 @@
 #include "FtpDef.hpp"
 #include "GlobalUri.hpp"
 
-#include "rainbrudef.h" // For the gettext stuff
+#include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace std;
 
