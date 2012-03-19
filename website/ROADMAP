@@ -29,6 +29,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
      CLOCK: [2012-03-13 mar. 18:15]--[2012-03-13 mar. 18:31] =>  0:16
      CLOCK: [2012-03-12 lun. 10:17]--[2012-03-12 lun. 11:04] =>  0:47
      CLOCK: [2012-03-10 sam. 13:38]--[2012-03-10 sam. 13:45] =>  0:07
@@ -140,7 +141,7 @@ the patternClearHeaderLeft div.
       It was due to the #rb-skin01-footer{position: relative; }
 - [X] There is no 'login' link
 - [X] Switch to Wordpress 3.3.1 and upgrade plugins
-- [-] The black menu isn't correct in ie6
+- [X] The black menu isn't correct in ie6
       - [X] testing WP's twentyeleven skin with ie6 : it works
       - [X] See what are the differences in CSS if it works : does not work
       - [X] Found a post about enabling new HTML5 element in JS
@@ -148,8 +149,9 @@ the patternClearHeaderLeft div.
 	    It presents the same bug
 	    - [X] Test it in an static page with inline javascript
             - [X] Add it in common/
-      - [ ] There is a text overlapping bug again
-- [ ] Searchbox is again misplaced
+      - [X] There is a text overlapping bug again
+      - [X] The black menu hover doesn't work in ie6
+- [ ] Searchbox is again misplaced (test it when logged in and out)
 - [ ] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." in single.php

@@ -356,7 +356,7 @@ table#wp-calendar {
 }
 
 .assistive-text {
-    clip: rect(1px, 1px, 1px, 1px);
+    clip: rect(1px 1px 1px 1px);
     position: absolute !important;
 }
 
@@ -390,9 +390,8 @@ table#wp-calendar {
   background: -webkit-linear-gradient(#f9f9f9, #e5e5e5);
 }
 
-#access li:hover a{
-  color: #373737;
-}
+#access li:hover a{  color: #373737; }
+#access a:hover {  background: #f9f9f9;  color: #373737; } /* For ie6 */
 
 /* Post content */
 #content{ 

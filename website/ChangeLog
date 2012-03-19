@@ -1,3 +1,10 @@
+2012-03-19 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/style.css (#access a:hover): added for ie6 
+	compatibility.
+	* skin01/wordpress/style.css (.assistive-text): remove commas to be
+	compatible with ie6.
+
 2012-03-13 Jérôme Pasquier  <rainbru@free.fr>
 
 	* skin01/wordpress/header.php: add an anchor to the previous script.

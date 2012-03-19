@@ -18,5 +18,6 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    Please update configure.in for each revision
 
 * v0.0.0-11 (17 feb 2012 - ???) FT ??:??
+- (3) Black menu overlapping text fixed in ie6
 - Started to fix the black menu bug in ie6
 - Switch to Wordpress 3.3.1 and theme tested
