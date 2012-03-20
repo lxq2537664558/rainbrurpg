@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmlserverlist.h
+/** \file XmlServerList.hpp
   * Declares a class that read the server list
   *
   * Modifications :
@@ -42,7 +42,7 @@
 #include <tinyxml.h>
 
 #include "NoteList.hpp"
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 #include "CurlFileToXml.hpp"
 #include "ServerListItem.hpp"
 #include "StringConv.hpp"

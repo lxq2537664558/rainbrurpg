@@ -31,7 +31,6 @@
 
 #include "launcheroptions.h"
 #include "languageselector.h"
-#include "xmloptions.h"
 #include "GameEngine.hpp"
 
 #include <fox-1.6/FXPNGImage.h>

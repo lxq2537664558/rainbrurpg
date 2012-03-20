@@ -1,3 +1,6 @@
+2012-03-20  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Some sources names now in CamelCase in src/common/.
+
 2012-03-18  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Some sources names now in CamelCase in src/common/.
 

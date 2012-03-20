@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlpersolist.cpp
+/** \file XmlPersoList.cpp
   * Implements a class that read the character list
   *
   */
 
-#include "xmlpersolist.h"
+#include "XmlPersoList.hpp"
 
 /** The default constructor
   *

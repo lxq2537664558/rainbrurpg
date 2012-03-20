@@ -20,19 +20,19 @@
  *
  */
 
-/** \file xmlattributelist.h
-  * Declares a class used to read the XML file of the attribute list
+/** \file XmlBonusFile.hpp
+  * Declares a BonusFile choice
   *
   * Modifications :
-  * - 28 apr 2009 : Using gettext compliant string
+  * - 28 apr 2009 : Strings gettextized
   * - 14 jan 2009 : refresh() now uses LOGCAT instead of a std::cout
   * - 11 aug 2008 : Single file documentation
   * - 02 mar 2007 : remove an <code>include "tplayerlist.h"</code>
   *
   */
 
-#ifndef XML_ATTRBIBUTE_LIST_H
-#define XML_ATTRBIBUTE_LIST_H
+#ifndef XML_BONUS_FILE_H
+#define XML_BONUS_FILE_H
 
 #include <iostream>
 #include <string>
@@ -41,13 +41,12 @@
 #include "LoadBmp.hpp"
 
 #include "NoteList.hpp"
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 
-#include "tidentreturn.h"
+#include "IdentificationReturn.hpp"
 #include "Logger.hpp"
 #include "CurlFileToXml.hpp"
 #include "GlobalUri.hpp"
-#include "AttributeModifierList.hpp"
 
 #include "RainbruDef.hpp" // For the gettext stuff
 
@@ -59,42 +58,53 @@ namespace RainbruRPG{
     namespace Ident {
 
 
-      /** An attribute like it appears in the server-side XML file
+      /** A BonusFile choice like it appears in the server-side XML file
         *
 	*/
-      struct tAttributeListItem {
-	const char* name;     //!< The name of the attribute
-	const char* cat;      //!< The category of this attribute
-	const char* type;     //!< The type
- 	const char* param1;   //!< The first parameter
- 	const char* param2;   //!< The second parameter
- 	const char* desc;     //!< The description
-	AttributeModifierList modList; //!< The list of attributes's modifiers
+      struct tBonusFileChoiceListItem {
+	const char* name;     //!< The name of the choice
+ 	const char* desc;      //!< The tab function
      };
 
-      /** A stl list of tAttributeListItem
+      /** A modifier like it appears in the server-side XML file
         *
 	*/
-      typedef std::list<tAttributeListItem*> tAttributeList;
+      struct tBonusModifierListItem{
+	const char* attrb;     //!< The attribute it modifies
+ 	const char* mod;      //!< The modifier value
 
-      /** Read the XML file of the attribute list
+      };
+
+      /** A stl list of tAttrbCatListItem
         *
+	*/
+      typedef std::list<tBonusFileChoiceListItem*> tBonusFileChoiceList;
+
+      /** A stl list of tBonusModifierListItem
+        *
+	*/
+      typedef std::list<tBonusModifierListItem*> tBonusModifierList;
+
+      /** Read a Bonus XML file
+        *
+	* It is different from the xmlBonusFileList. The xmlBonusFileList keep
+	* all the BonusFile with a string identifier and a description.
+	*
 	* It uses TinyXML to deal with the file.
 	*/
-      class xmlAttributeList : public CurlFileToXml{
+      class xmlBonusFile : public CurlFileToXml{
       public:
-	xmlAttributeList();
-	~xmlAttributeList();
+	xmlBonusFile(std::string);
+	~xmlBonusFile();
 
-	tAttributeList* getAttributeList();
-
-
-	tAttributeListItem* getAttribute(const char*);
+	tBonusFileChoiceList* getChoiceList();
+	tBonusModifierList* getModifierList(const char*);
 	bool refresh();
 
       private:
 	bool loadDocument(CurlFileToXml*);
 
+	tBonusModifierList* makeModifierList(TiXmlElement*);
 	/** The global xml document pointer */
 	TiXmlDocument *doc;
 	/** A global pointer to the \c PlayerList xml node */
@@ -102,6 +112,8 @@ namespace RainbruRPG{
 
 	/** Says if the document was correctly or not */
 	bool correctlyLoaded;
+	/** The filename of the bonus file */
+	std::string filename;
       };
 
     }
@@ -109,4 +121,4 @@ namespace RainbruRPG{
 }
 
 
-#endif // XML_ATTRBIBUTE_LIST_H
+#endif // XML_BONUS_FILE_H

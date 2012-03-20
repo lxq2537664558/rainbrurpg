@@ -30,7 +30,7 @@
 
 #include "launcheroptions.h"
 #include <Options.hpp>
-#include <xmloptions.h>
+#include <XmlOptions.hpp>
 
 #include "PTypes.hpp" // for ui_ptr
 #include "config.h"

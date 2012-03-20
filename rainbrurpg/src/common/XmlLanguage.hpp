@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmllanguage.h
+/** \file XmlLanguage.hpp
   * Declares a class used to read and write languages configuration file
   *
   * Modifications :

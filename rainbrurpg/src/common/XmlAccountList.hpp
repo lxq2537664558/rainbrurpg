@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmlaccountlist.h
+/** \file XmlAccountList.hpp
   * Declares a class used to read XML accounts file
   *
   * Modifications :
@@ -44,9 +44,9 @@
 
 #include "AccountList.hpp"
 #include "NoteList.hpp"
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 
-#include "tidentreturn.h"
+#include "IdentificationReturn.hpp"
 #include "Logger.hpp"
 #include "CurlFileToXml.hpp"
 #include "GlobalUri.hpp"

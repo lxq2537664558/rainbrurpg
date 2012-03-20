@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlbonusfile.cpp
+/** \file XmlBonusFile.cpp
   * Declares a BonusFile choice
   *
   */
 
-#include "xmlbonusfile.h"
+#include "XmlBonusFile.hpp"
 
 /** The default constructor
   *

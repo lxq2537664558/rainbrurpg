@@ -36,7 +36,7 @@
 #include <string>
 #include <GlobalUri.hpp>
 #include <CurlSubmitForm.hpp>
-#include <xmlserverlist.h>
+#include <XmlServerList.hpp>
 
 #include "RainbruDef.hpp" // For the gettext stuff
 

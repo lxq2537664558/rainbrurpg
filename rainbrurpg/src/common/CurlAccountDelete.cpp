@@ -28,7 +28,7 @@
 
 #include "GlobalUri.hpp"
 #include "HashPassword.hpp"
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 
 /** The default constructor 
   *

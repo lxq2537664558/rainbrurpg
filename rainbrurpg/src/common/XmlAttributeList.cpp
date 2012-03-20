@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlattributelist.cpp
+/** \file XmlAttributeList.cpp
   * Implements a class used to read the XML file of the attribute list
   *
   */
 
-#include "xmlattributelist.h"
+#include "XmlAttributeList.hpp"
 
 /** The default constructor
   *

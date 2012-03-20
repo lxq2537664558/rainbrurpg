@@ -27,7 +27,7 @@
 
 #include "CurlAccountConfirmMail.hpp"
 
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 #include "GlobalUri.hpp"
 
 /** The default constructor

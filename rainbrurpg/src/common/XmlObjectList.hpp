@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmlobjectlist.h
+/** \file XmlObjectList.hpp
   * Declares a class that read and create the objects in \c config/objects.xml
   *
   * Modifications :

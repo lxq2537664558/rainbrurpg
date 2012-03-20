@@ -21,7 +21,7 @@
  */
 
 
-/** \file tidentreturn.h
+/** \file IdentificationReturn.hpp
   * Declares the returned values used in the identification process
   *
   * Modifications :

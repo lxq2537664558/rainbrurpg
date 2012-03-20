@@ -27,7 +27,7 @@
 
 #include "OptionManager.hpp"
 
-#include "xmloptions.h"
+#include "XmlOptions.hpp"
 
 /** Initialize the OptionManager
   *

@@ -34,7 +34,7 @@
 
 #include "GlobalUri.hpp"
 #include "CurlSubmitForm.hpp"
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 #include "RainbruDef.hpp" // For the gettext stuff
 
 using namespace RainbruRPG::Network;

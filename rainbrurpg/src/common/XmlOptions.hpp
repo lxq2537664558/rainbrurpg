@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmloptions.h
+/** \file XmlOptions.hpp
   * Declares a class used to store client's options
   *
   * Modifications :

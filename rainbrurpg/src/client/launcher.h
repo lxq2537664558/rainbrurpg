@@ -33,7 +33,7 @@
   */
 #include <fox-1.6/fx.h>
 
-#include <xmloptions.h>
+#include <XmlOptions.hpp>
 /** To avoid multiple definitions of the PI macro
   * we must undef it because FOX and OGRE define it 
   */

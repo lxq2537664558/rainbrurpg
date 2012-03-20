@@ -115,27 +115,32 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
+- (9) CamelCased some files in common/
+   IdentificationReturn, Timer, NoteList, Version, Timer,
+   XmlAccountList, XmlAttrCatList, XmlAttributeList, XmlBonusFile,
+   XmlBonusFileList, XmlObjectList, XmlOptions, XmlPersoList,
+   XmlServerList, XmlTimestamp
 - (8) CamelCased some files in common/
    OptionManager, OptionPanel, Options, OptionStringAttribute, PTypes
    RainbruDef, ServerListItem, Sha1, Singleton, StringConv, AccountList
-- (7) CamelCased some files in common/
+- CamelCased some files in common/
    OptionAttribute, OptionBoolAttribute, OptionButton
    OptionFloatAttribute, OptionFloatRangeAttribute, OptionIntAttribute
    OptionIntRangeAttribute, OptionListAttribute
-- (6) CamelCased some files in common/
+- CamelCased some files in common/
    Logger, NetPacketBase, NetPacketFlooderBase, NpConnectionResponse
    NpFlooder0004, NpIdentification, ObjectMesh, ObjectPos
-- (5) CamelCased some files in common/
+- CamelCased some files in common/
    EnetBase, EnetClient, FtpClient, FtpDef, GlobalUri, HashFile,
    HashPassword, HttpResponse, ItemListFile, LanguageListItem, LoadBmp
-- (4) CamelCased some files in common/
+- CamelCased some files in common/
    CurlPostedData, CurlServerAdd, CurlServerDelete,CurlSubmitForm
    CurlServerModifClients
-- (3) CamelCased some files in common/
+- CamelCased some files in common/
    CurlAccountToggleBlacklist, CurlFileToXml, CurlGetFile, CurlImport
    CurlInterface, CurlPersoHeaderAdd, CurlPersoHeaderDelete
    CurlPersoModifAttrb
-- (2) CamelCased some files in common/
+- CamelCased some files in common/
    ChartBase, ChartLine, ChartSerie, ClientConnect, CurlAccountAdd
    CurlAccountConfirmMail, CurlAccountDelete
 - Add missing files in archive 

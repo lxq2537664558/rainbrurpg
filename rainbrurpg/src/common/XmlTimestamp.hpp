@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmltimestamp.h
+/** \file XmlTimestamp.hpp
   * Declares a class that manage XML timestamps
   *
   * Modifications :

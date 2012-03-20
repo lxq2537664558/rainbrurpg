@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlobjectlist.cpp
+/** \file XmlObjectList.cpp
   * Implements a class that read and create the objects in \c config/objects.xml
   *
   */
 
-#include "xmlobjectlist.h"
+#include "XmlObjectList.hpp"
 #include "GlobalUri.hpp"
 
 /** The default constructor

@@ -42,7 +42,7 @@
 #include "guiframelistener.h"
 #include <renderqueuelistener.h>
 
-#include <version.h>
+#include <Version.hpp>
 //#include <cstdlib> 
 #include <ctime> 
 #include <iostream>

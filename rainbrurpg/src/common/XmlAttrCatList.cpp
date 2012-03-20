@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlattrbcatlist.cpp
+/** \file XmlAttrCatList.cpp
   * Implements a class that read the XML file of the attribute categories list
   *
   */
 
-#include "xmlattrbcatlist.h"
+#include "XmlAttrCatList.hpp"
 
 /** The default constructor
   *

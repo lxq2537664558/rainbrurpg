@@ -33,7 +33,7 @@
 #ifndef CLIENT_CONNECT_H
 #define CLIENT_CONNECT_H
 
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 #include "AccountList.hpp"
 #include "HashPassword.hpp"
 

@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlaccountlist.cpp
+/** \file XmlAccountList.cpp
   * Implements a class used to read XML accounts file
   *
   */
 
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 
 /** The default constructor
   *

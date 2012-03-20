@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlbonusfilelist.cpp
+/** \file XmlBonusFileList.cpp
   * Implements a class that read a BonusFile XML list
   *
   */
 
-#include "xmlbonusfilelist.h"
+#include "XmlBonusFileList.hpp"
 
 /** The default constructor
   *

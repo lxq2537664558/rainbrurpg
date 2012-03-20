@@ -359,6 +359,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-03-20 mar. 11:29]--[2012-03-20 mar. 13:13] =>  1:44
      CLOCK: [2012-03-18 dim. 18:40]--[2012-03-18 dim. 19:31] =>  0:51
      CLOCK: [2012-03-18 dim. 17:40]--[2012-03-18 dim. 18:40] =>  1:00
      CLOCK: [2012-03-17 sam. 23:16]--[2012-03-18 dim. 00:04] =>  0:48
@@ -375,7 +376,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
 - [-] CamelCase all filenames and header are called .hpp
       Also modify po/POTFILES.in for renamed .cpp
       - [X] in interdep/
-      - [ ] in common/         STARTED
+      - [X] in common/
       - [ ] in ogreGui/
       - [ ] in maincore/
       - [ ] in client/

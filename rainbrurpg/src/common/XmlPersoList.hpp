@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmlpersolist.h
+/** \file XmlPersoList.hpp
   * Declares a class that read the character list
   *
   * Modifications :
@@ -43,9 +43,9 @@
 #include "LoadBmp.hpp"
 
 #include "NoteList.hpp"
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 
-#include "tidentreturn.h"
+#include "IdentificationReturn.hpp"
 #include "Logger.hpp"
 #include "CurlFileToXml.hpp"
 #include "GlobalUri.hpp"

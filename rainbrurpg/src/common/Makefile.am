@@ -53,6 +53,7 @@ h_sources= AccountList.hpp			\
 	   HashFile.hpp				\
 	   HashPassword.hpp			\
 	   HttpResponse.hpp			\
+	   IdentificationReturn.hpp		\
 	   ItemListFile.hpp			\
 	   LanguageListItem.hpp			\
 	   LoadBmp.hpp				\
@@ -82,21 +83,20 @@ h_sources= AccountList.hpp			\
 	   Sha1.hpp				\
 	   Singleton.hpp			\
 	   StringConv.hpp			\
-	   IdentificationReturn.hpp		\
 	   Timer.hpp				\
 	   NoteList.hpp				\
 	   Version.hpp				\
-	   xmlaccountlist.h			\
-	   xmlattrbcatlist.h			\
-	   xmlattributelist.h			\
-	   xmlbonusfile.h			\
-	   xmlbonusfilelist.h			\
-	   xmllanguage.h			\
-	   xmlobjectlist.h			\
-	   xmloptions.h				\
-	   xmlpersolist.h			\
-	   xmlserverlist.h			\
-	   xmltimestamp.h
+	   XmlAccountList.hpp			\
+	   XmlAttrCatList.hpp			\
+	   XmlAttributeList.hpp			\
+	   XmlBonusFile.hpp			\
+	   XmlBonusFileList.hpp			\
+	   XmlLanguage.hpp			\
+	   XmlObjectList.hpp			\
+	   XmlOptions.hpp			\
+	   XmlPersoList.hpp			\
+	   XmlServerList.hpp			\
+	   XmlTimestamp.hpp
 
 # Please keep this file list sorted
 cc_sources=AttributeModifierList.cpp		\
@@ -154,17 +154,17 @@ cc_sources=AttributeModifierList.cpp		\
 	  StringConv.cpp			\
 	  Timer.cpp				\
 	  Version.cpp				\
-	  xmlaccountlist.cpp			\
-	  xmlattrbcatlist.cpp			\
-	  xmlattributelist.cpp			\
-	  xmlbonusfile.cpp			\
-	  xmlbonusfilelist.cpp			\
-	  xmllanguage.cpp			\
-	  xmlobjectlist.cpp			\
-	  xmloptions.cpp			\
-	  xmlpersolist.cpp			\
-	  xmltimestamp.cpp			\
-	  xmlserverlist.cpp
+	  XmlAccountList.cpp			\
+	  XmlAttrCatList.cpp			\
+	  XmlAttributeList.cpp			\
+	  XmlBonusFile.cpp			\
+	  XmlBonusFileList.cpp			\
+	  XmlLanguage.cpp			\
+	  XmlObjectList.cpp			\
+	  XmlOptions.cpp			\
+	  XmlPersoList.cpp			\
+	  XmlServerList.cpp			\
+	  XmlTimestamp.cpp
 
 
 

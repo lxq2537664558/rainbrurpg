@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmllanguage.cpp
+/** \file XmlLanguage.cpp
   * Implements a class used to read and write languages configuration file
   *
   */
 
-#include "xmllanguage.h"
+#include "XmlLanguage.hpp"
 
 #include "Logger.hpp"
 #include "GlobalUri.hpp"

@@ -33,7 +33,7 @@
 #ifndef GS_SERVER_LIST_H
 #define GS_SERVER_LIST_H
 
-#include <xmlserverlist.h>
+#include <XmlServerList.hpp>
 
 #include "gsmenubase.h"
 #include "vcconstant.h"

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file xmlattrbcatlist.h
+/** \file XmlAttrCatList.hpp
   * Declares a class used to read the XML file of the attribute categories list
   *
   * Modifications :
@@ -41,9 +41,9 @@
 #include "LoadBmp.hpp"
 
 #include "NoteList.hpp"
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 
-#include "tidentreturn.h"
+#include "IdentificationReturn.hpp"
 #include "Logger.hpp"
 #include "CurlFileToXml.hpp"
 #include "GlobalUri.hpp"

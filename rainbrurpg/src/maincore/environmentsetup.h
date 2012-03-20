@@ -33,7 +33,7 @@
 
 #include <ogreimport.h>
 
-#include <xmlobjectlist.h>
+#include <XmlObjectList.hpp>
 #include <ObjectMesh.hpp>
 #include <ObjectPos.hpp>
 

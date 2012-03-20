@@ -27,7 +27,7 @@
 
 #include "CurlAccountAdd.hpp"
 
-#include "xmlaccountlist.h"
+#include "XmlAccountList.hpp"
 #include "HashPassword.hpp"
 #include "GlobalUri.hpp"
 

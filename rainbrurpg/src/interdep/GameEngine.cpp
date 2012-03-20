@@ -35,7 +35,7 @@
 
 #include "gslocaltest.h"
 
-#include "xmlobjectlist.h"
+#include <XmlObjectList.hpp>
 #include "InputManager.hpp"
 
 #include "GameEngine.hpp"

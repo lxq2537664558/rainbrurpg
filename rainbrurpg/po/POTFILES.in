@@ -57,19 +57,19 @@ src/common/OptionStringAttribute.cpp
 src/common/ServerListItem.cpp
 src/common/Sha1.cpp
 src/common/StringConv.cpp
-src/common/timer.cpp
-src/common/version.cpp
-src/common/xmlaccountlist.cpp
-src/common/xmlattrbcatlist.cpp
-src/common/xmlattributelist.cpp
-src/common/xmlbonusfile.cpp
-src/common/xmlbonusfilelist.cpp
-src/common/xmllanguage.cpp
-src/common/xmlobjectlist.cpp
-src/common/xmloptions.cpp
-src/common/xmlpersolist.cpp
-src/common/xmlserverlist.cpp
-src/common/xmltimestamp.cpp
+src/common/Timer.cpp
+src/common/Version.cpp
+src/common/XmlAccountList.cpp
+src/common/XmlAttrCatList.cpp
+src/common/XmlAttributeList.cpp
+src/common/XmlBonusFile.cpp
+src/common/XmlBonusFileList.cpp
+src/common/XmlLanguage.cpp
+src/common/XmlObjectList.cpp
+src/common/XmlOptions.cpp
+src/common/XmlPersoList.cpp
+src/common/XmlServerList.cpp
+src/common/XmlTimestamp.cpp
 
 # in the 'interdep' convenience library
 src/interdep/GameEngine.cpp

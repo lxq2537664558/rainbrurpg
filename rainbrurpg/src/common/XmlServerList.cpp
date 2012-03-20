@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmlserverlist.cpp
+/** \file XmlServerList.cpp
   * Implements a class that read the server list
   *
   */
 
-#include "xmlserverlist.h"
+#include "XmlServerList.hpp"
 #include "GlobalUri.hpp"
 
 /** The default constructor

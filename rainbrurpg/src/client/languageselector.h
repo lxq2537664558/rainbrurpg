@@ -30,7 +30,7 @@
 
 #include <fox-1.6/fx.h>
 #include <Logger.hpp>
-#include <xmllanguage.h>
+#include <XmlLanguage.hpp>
 
 using namespace RainbruRPG::Options;
 

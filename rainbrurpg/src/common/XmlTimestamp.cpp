@@ -20,12 +20,12 @@
  *
  */
 
-/** \file xmltimestamp.cpp
+/** \file XmlTimestamp.cpp
   * Implements a class that manage XML timestamps
   *
   */
 
-#include "xmltimestamp.h"
+#include "XmlTimestamp.hpp"
 #include "Logger.hpp"
 
 /** The default constructor
