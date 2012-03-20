@@ -82,10 +82,10 @@ h_sources= AccountList.hpp			\
 	   Sha1.hpp				\
 	   Singleton.hpp			\
 	   StringConv.hpp			\
-	   timer.h				\
-	   tidentreturn.h			\
-	   tnotelist.h				\
-	   version.h				\
+	   IdentificationReturn.hpp		\
+	   Timer.hpp				\
+	   NoteList.hpp				\
+	   Version.hpp				\
 	   xmlaccountlist.h			\
 	   xmlattrbcatlist.h			\
 	   xmlattributelist.h			\
@@ -152,8 +152,8 @@ cc_sources=AttributeModifierList.cpp		\
 	  ServerListItem.cpp			\
 	  Sha1.cpp				\
 	  StringConv.cpp			\
-	  timer.cpp				\
-	  version.cpp				\
+	  Timer.cpp				\
+	  Version.cpp				\
 	  xmlaccountlist.cpp			\
 	  xmlattrbcatlist.cpp			\
 	  xmlattributelist.cpp			\

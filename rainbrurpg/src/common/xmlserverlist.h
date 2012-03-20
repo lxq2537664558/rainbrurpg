@@ -41,7 +41,7 @@
 #include <Logger.hpp>
 #include <tinyxml.h>
 
-#include "tnotelist.h"
+#include "NoteList.hpp"
 #include "xmltimestamp.h"
 #include "CurlFileToXml.hpp"
 #include "ServerListItem.hpp"

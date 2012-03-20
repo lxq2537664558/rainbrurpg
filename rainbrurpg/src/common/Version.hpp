@@ -20,7 +20,7 @@
  *
  */
 
-/** \file version.h
+/** \file Version.hpp
   * Declares a class for libraries versions logging
   *
   * Modifications :

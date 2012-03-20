@@ -20,38 +20,45 @@
  *
  */
 
-/** \file tnotelist.h
-  * Declares a player's notepad object and a list of them
+/** \file Timer.hpp
+  * Declares a timer based on glib 2.0
   *
   * Modifications :
   * - 11 aug 2008 : Single file documentation
-  * - 02 jan 2008 : GNU header added
+  * - 10 apr 2007 : Starting implementation
   *
-  */ 
+  */
 
-#ifndef T_NOTE_LIST_H
-#define T_NOTE_LIST_H
+#ifndef __Timer_H__
+#define __Timer_H__
 
-#include <list>
+#include <glib.h>
 
-using namespace std;
+namespace RainbruRPG {
+  namespace Core {
 
-namespace RainbruRPG{
-    namespace Gui{
+    /** A Timer based on glib 2.0
+      *
+      * Used to get elapsed time in microseconds or milliseconds.
+      * The timer is automatically started in the constructor. Call reset()
+      * To start it from 0.
+      *
+      */
+    class Timer {
+    public:
+      Timer();
+      ~Timer();
+		
+      void reset();
+		
+      unsigned long getMilliseconds() ;
+      unsigned long getMicroseconds() ;
 
-      /** It is a player's notepad object
-       *
-       */
-      struct tNoteListItem{
-	const char* title; //!< The title of the note
-	const char* text;  //!< The text of the note
-      };
-
-      /** A STL list of notepad item
-        *
-	*/
-      typedef std::list<tNoteListItem*> tNoteList;
-
-    }
+    private:	
+      /** The glib Timer object */
+      GTimer* start;    
+	
+    } ;
+  }
 }
-#endif // T_NOTE_LIST_H
+#endif

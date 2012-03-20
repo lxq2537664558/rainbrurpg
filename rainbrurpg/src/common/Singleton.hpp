@@ -20,7 +20,7 @@
  *
  */
 
-/** \file singleton.h
+/** \file Singleton.hpp
   * Implementation of the Meyer's Singleton design pattern
   *
   * Modifications :

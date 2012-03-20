@@ -39,7 +39,7 @@
 #include "tinyxml.h"
 #include "LoadBmp.hpp"
 
-#include "tnotelist.h"
+#include "NoteList.hpp"
 #include "xmltimestamp.h"
 
 #include "tidentreturn.h"

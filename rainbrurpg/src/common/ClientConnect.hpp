@@ -34,7 +34,7 @@
 #define CLIENT_CONNECT_H
 
 #include "xmlaccountlist.h"
-#include "taccountlist.h"
+#include "AccountList.hpp"
 #include "HashPassword.hpp"
 
 # include "RainbruDef.hpp" // For the gettext stuff

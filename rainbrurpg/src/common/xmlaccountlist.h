@@ -42,8 +42,8 @@
 #include "tinyxml.h"
 #include "LoadBmp.hpp"
 
-#include "taccountlist.h"
-#include "tnotelist.h"
+#include "AccountList.hpp"
+#include "NoteList.hpp"
 #include "xmltimestamp.h"
 
 #include "tidentreturn.h"

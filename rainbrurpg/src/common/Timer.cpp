@@ -20,12 +20,12 @@
  *
  */
 
-/** \file timer.cpp
+/** \file Timer.cpp
   * Implements a timer based on glib 2.0
   *
   */
 
-#include "timer.h"
+#include "Timer.hpp"
 
 /** The default constructor
   *
