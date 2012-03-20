@@ -17,6 +17,7 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-8 (14 mar 2012 - ???) SLOC ??? FT ??:??
+- Found some translatable files
 
 * v0.0.0-7 (07 jan 2012 - 14 mar 2012) SLOC 1,131 FT 21:40
 - Now using gettext for i18n

@@ -103,9 +103,9 @@ Rpg::Logger::init(const string& compil_date, const string& compil_time)
     }
 
   options.add_options()
-    ("help", "produce a help message")
-    ("compression", po::value<int>(), "set compression level")
-    ("version", "output the version number")
+    ("help", _("produce a help message"))
+    //    ("compression", po::value<int>(), _("set compression level"))
+    ("version", _("output the version number"))
     ;
 }
 

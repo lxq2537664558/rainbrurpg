@@ -1,3 +1,9 @@
+2012-03-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* rb_boost_formatr.m4: New file, moved from configure.in.
+	* rb_boost_program_options.m4: New file, moved from configure.in.
+	* rb_rbuic.m4: New file, moved from configure.in.
+
 2012-03-08  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* gettext.m4: New file, from gettext-0.18.1.

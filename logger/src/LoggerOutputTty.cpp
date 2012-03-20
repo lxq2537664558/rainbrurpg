@@ -122,8 +122,6 @@ Rpg::LoggerOutputTty::logHeader(const LogHeader*lh)
        << "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
   */
 
- 
-  
   /// TRANSLATORS: Parameters are :
   /// %1 = program name, 
   /// %2 = program version

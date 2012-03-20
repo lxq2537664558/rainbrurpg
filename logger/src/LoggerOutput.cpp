@@ -25,6 +25,8 @@
 
 #include "LoggerOutput.hpp"
 
+#include "LoggerDef.hpp"
+
 using namespace std;
 
 /** Convert a log level to its abbreviation
@@ -53,6 +55,9 @@ Rpg::LoggerOutput::ll_to_abr(LogLevel vLogLevel)
 
 /** Convert a log level to a human-readable string
   *
+  * This version will not be translated, especially for the Yaml
+  * output.
+  *
   * \param vLogLevel the loglevel to be converted
   *
   * \return The loglevel's string
@@ -63,8 +68,8 @@ Rpg::LoggerOutput::ll_to_str(LogLevel vLogLevel)
 {
   switch (vLogLevel)
     {
-    case LL_DEBUG:    return "debug ";break;
-    case LL_VERBOSE:  return "verbose ";break;
+    case LL_DEBUG:    return "debug";break;
+    case LL_VERBOSE:  return "verbose";break;
     case LL_INFO:     return "informative";break;
     case LL_WARN:     return "warning";break;
     case LL_ERR:      return "error";break;

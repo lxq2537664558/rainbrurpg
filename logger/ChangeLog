@@ -1,3 +1,10 @@
+2012-03-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: some checks move to the m4/ directory.
+
+	* src/Logger.cpp (init): makes help messages for program options
+	translatable.
+
 2012-03-14  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/LoggerOutputTty.cpp (logHeader): now using gettext.
