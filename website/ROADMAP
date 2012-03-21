@@ -29,6 +29,7 @@
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
 **** TODO Wordpress theme development
+     CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
      CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
      CLOCK: [2012-03-13 mar. 18:15]--[2012-03-13 mar. 18:31] =>  0:16
      CLOCK: [2012-03-12 lun. 10:17]--[2012-03-12 lun. 11:04] =>  0:47
@@ -151,8 +152,8 @@ the patternClearHeaderLeft div.
             - [X] Add it in common/
       - [X] There is a text overlapping bug again
       - [X] The black menu hover doesn't work in ie6
-- [ ] Searchbox is again misplaced (test it when logged in and out)
-- [ ] Enable the RSS feed for browser that support it
+- [X] Searchbox is again misplaced (test it when logged in and out)
+- [X] Enable the RSS feed for browser that support it
 - [ ] Use the Universal Edit Button feature (as RSS feed)
 - [ ] Should add the "Bookmark the permalink." in single.php
 - [ ] HTML5 validation

@@ -146,12 +146,20 @@ input#searchsubmit {
 	display: none;
 }
 
-#branding label{ visibility: hidden; }
+/*
+  For screnn readers only. 
+  See http://juicystudio.com/article/screen-readers-display-none.php
+  for explanations
+*/
+#branding label{ 
+    display: none;
+    visibility: hidden; 
+}
 
 /* Search Form */
 #branding #searchform {
 	position: relative;
-        top: 0.4em;
+        top: 0.2em;
 	right: 0em;
 	text-align: right;
         float:right;

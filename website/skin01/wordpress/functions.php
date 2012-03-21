@@ -5,13 +5,20 @@ if ( function_exists('register_sidebar') )
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function twentyeleven_page_menu_args( $args ) {
+function rainbrurpg_page_menu_args( $args )
+{
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'twentyeleven_page_menu_args' );
 
+function rainbrurpg_setup()
+{
+  // Add default posts and comments RSS feed links to <head>.
+  add_theme_support( 'automatic-feed-links' );
 
+}
 
+add_filter( 'wp_page_menu_args', 'rainbrurpg_page_menu_args' );
+add_action( 'after_setup_theme', 'rainbrurpg_setup' );
 
 ?>

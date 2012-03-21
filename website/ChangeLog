@@ -1,6 +1,14 @@
+2012-03-21 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/function.php (rainbrurpg_setup): added support
+	for both RSS feed and comments RSS feed.
+
+	* skin01/wordpress/style.css (#branding label): find a hack for a better
+	searchbox placement
+
 2012-03-19 Jérôme Pasquier  <rainbru@free.fr>
 
-	* skin01/wordpress/style.css (#access a:hover): added for ie6 
+	* skin01/wordpress/style.css (#access a:hover): added for ie6
 	compatibility.
 	* skin01/wordpress/style.css (.assistive-text): remove commas to be
 	compatible with ie6.
