@@ -1,3 +1,8 @@
+2012-03-22 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/function.php (ueb_add_head_link): now handles
+	Universal Edit Button.
+
 2012-03-21 Jérôme Pasquier  <rainbru@free.fr>
 
 	* skin01/wordpress/function.php (rainbrurpg_setup): added support

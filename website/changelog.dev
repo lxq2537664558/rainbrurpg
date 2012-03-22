@@ -1,3 +1,11 @@
+* v0.0.0-11 (17 feb 2012 - ???) FT ??:??
+- Handles Universal Edit Button
+- Enable posts and comments RSS feeds
+- Better searchbox placement for wordpress theme
+- Black menu overlapping text fixed in ie6
+- Started to fix the black menu bug in ie6
+- Switch to Wordpress 3.3.1 and theme tested
+
 * v0.0.0-10 (22 dec. 2011 - 17 feb 2012) FT 20:59
 - Login link added to the footer
 - Fixed the common/skin.css dead links issues
