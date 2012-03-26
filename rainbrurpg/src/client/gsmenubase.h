@@ -36,7 +36,7 @@
 #ifndef GS_MAIN_MENU_BASE_H
 #define GS_MAIN_MENU_BASE_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <string>
 

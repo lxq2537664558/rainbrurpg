@@ -29,26 +29,26 @@ lib_LTLIBRARIES = librainbrurpg-core.la
 
 librainbrurpg_core.adir=$(libdir)
 
-h_sources=dumpogreobject.h		\
-	  velocitycalculator.h		\
-	  vcconstant.h			\
-	  inputwrapper.h		\
-	  gsgamebase.h			\
-	  gslocaltest.h			\
-	  environmentsetup.h		\
-	  highlightlistener.h		\
-	  ogreimport.h			\
-	  keyboardnavigation.h
+h_sources=DumpOgreObject.hpp		\
+	  EnvironmentSetup.hpp		\
+	  GsGameBase.hpp		\
+	  GsLocalTest.hpp		\
+	  HighlightListener.hpp		\
+	  InputWrapper.hpp		\
+	  KeyboardNavigation.hpp	\
+	  OgreImport.hpp		\
+	  VcConstant.hpp		\
+	  VelocityCalculator.hpp
 
-cc_sources=dumpogreobject.cpp		\
-	  velocitycalculator.cpp	\
-	  vcconstant.cpp		\
-	  inputwrapper.cpp		\
-	  gsgamebase.cpp		\
-	  gslocaltest.cpp		\
-	  environmentsetup.cpp		\
-	  highlightlistener.cpp		\
-	  keyboardnavigation.cpp
+cc_sources=DumpOgreObject.cpp		\
+	   EnvironmentSetup.cpp		\
+	   GsGameBase.cpp		\
+	   GsLocalTest.cpp		\
+	   HighlightListener.cpp	\
+	   InputWrapper.cpp		\
+	   KeyboardNavigation.cpp	\
+	   VcConstant.cpp		\
+	   VelocityCalculator.cpp
 
 
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_CORE_NAME)

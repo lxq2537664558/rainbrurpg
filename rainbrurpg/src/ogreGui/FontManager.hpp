@@ -36,7 +36,7 @@
 #ifndef _OGRE_GUI_OGRE_FONT_MANAGER_H_
 #define _OGRE_GUI_OGRE_FONT_MANAGER_H_
 
-#include <ogreimport.h>    // For the Ogre's String class
+#include <OgreImport.hpp>    // For the Ogre's String class
 #include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 #include "Singleton.hpp"

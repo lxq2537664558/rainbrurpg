@@ -42,12 +42,13 @@
 #include <TextureNotFoundException.hpp>
 #include <InputManager.hpp>
 
-#include "velocitycalculator.h"
-#include "keyboardnavigation.h"
-#include "inputwrapper.h"
 #include "GameEngine.hpp"
 #include "guimanager.h"
 #include "bggui.h"
+
+#include <InputWrapper.hpp>
+#include <KeyboardNavigation.hpp>
+#include <VelocityCalculator.hpp>
 
 
 using namespace RainbruRPG::Exception;

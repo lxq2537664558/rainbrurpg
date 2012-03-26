@@ -35,7 +35,7 @@
 #include "StringConv.hpp"
 #include "Brush.hpp"
 
-#include <dumpogreobject.h>
+#include <DumpOgreObject.hpp>
 
 
 /** The font constructor

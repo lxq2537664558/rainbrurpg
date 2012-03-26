@@ -48,7 +48,7 @@
 #include <iostream>
 #include <string>
 
-#include "vcconstant.h"
+#include <VcConstant.hpp>
 #include <Options.hpp>
 #include <GlobalUri.hpp>
 
@@ -61,7 +61,7 @@
 
 #include "gsOgreguiTest.hpp"
 
-#include <gslocaltest.h>
+#include <GsLocalTest.hpp>
 
 /** To avoid a double definition of PI, launcher.h, that include Ogre3D
   * headers must be included before fox headers. Fox and Ogre both defines 

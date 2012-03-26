@@ -30,8 +30,8 @@
 #include <Window.hpp>
 #include <Label.hpp>
 
-#include "keyboardnavigation.h"
-#include "vcconstant.h"
+#include <VcConstant.hpp>
+#include <KeyboardNavigation.hpp>
 
 //#include "guimanager.h" // redefinition of class Widget
 /*

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file velocitycalculator.h
+/** \file VelocityCalculator.hpp
   * Declares a superlass for computation of moving velocity
   *
   * Modifications :
@@ -32,7 +32,7 @@
 #ifndef VELOCITY_CALCULATOR_H
 #define VELOCITY_CALCULATOR_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 
 

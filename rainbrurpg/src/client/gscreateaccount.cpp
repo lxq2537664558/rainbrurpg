@@ -30,7 +30,7 @@
 //#include <curlaccountadd.h>
 #include <Logger.hpp>
 
-#include "keyboardnavigation.h"
+#include <KeyboardNavigation.hpp>
 
 /*#include "ogreGui/bgwindow.h"
 #include "ogreGui/bgbutton.h"

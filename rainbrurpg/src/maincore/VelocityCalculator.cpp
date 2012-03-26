@@ -20,14 +20,12 @@
  *
  */
 
-/** \file velocitycalculator.cpp
+/** \file VelocityCalculator.cpp
   * Implements a superlass for computation of moving velocity
   *
   */
 
-#include "velocitycalculator.h"
-
-#include "ogreimport.h"
+#include "VelocityCalculator.hpp"
 
 #include <Logger.hpp>
   

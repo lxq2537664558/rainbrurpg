@@ -20,17 +20,17 @@
  *
  */
 
-/** \file dumpogreobject.cpp
+/** \file DumpOgreObject.cpp
   * Implements some functions used to dump Ogre objects
   *
   */
 
-#include "dumpogreobject.h"
+#include "DumpOgreObject.hpp"
 
 /** Shows debug informations on an Ogre rectangle
   * 
   * You should better use the \ref DUMP_RECT macro defined in the file
-  * dumpogreobject.h as the file and line parameters ars autofilled.
+  * DumpOgreObject.hpp as the file and line parameters ars autofilled.
   *
   * \param file The filename
   * \param line The line
@@ -55,7 +55,7 @@ void dumpOgreRectangle(const string& file, const string& line,
 /** Shows debug informations on an Ogre Vector4
   * 
   * You should better use the \ref DUMP_VEC4 macro defined in the file
-  * dumpogreobject.h as the file and line parameters ars autofilled.
+  * DumpOgreObject.hpp as the file and line parameters ars autofilled.
   *
   * \param file The filename
   * \param line The line
@@ -80,7 +80,7 @@ void dumpOgreVector4(const string& file, const string& line,
 /** Shows debug informations on an Ogre Vector2
   * 
   * You should better use the \ref DUMP_VEC2 macro defined in the file
-  * dumpogreobject.h as the file and line parameters ars autofilled.
+  * DumpOgreObject.hpp as the file and line parameters ars autofilled.
   *
   * \param file The filename
   * \param line The line

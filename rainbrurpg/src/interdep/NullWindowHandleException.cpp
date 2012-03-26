@@ -28,7 +28,7 @@
 #include "NullWindowHandleException.hpp"
 
 #include <sstream>
-#include "ogreimport.h"
+#include <OgreImport.hpp>
 
 /** The exception constructor
   *

@@ -41,7 +41,7 @@
 
 #include <string>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 #include "glyph.h"

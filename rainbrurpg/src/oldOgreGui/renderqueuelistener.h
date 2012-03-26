@@ -33,7 +33,7 @@
 #ifndef _OGRE_GUI_RENDER_QUEUE_LISTENER_H__
 #define _OGRE_GUI_RENDER_QUEUE_LISTENER_H__
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include "bggui.h"
 

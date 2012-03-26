@@ -1,24 +1,44 @@
+2012-03-26 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/maincore/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/maincore/velocitycalculator.h|.cpp: CamelCased and header
+	called hpp.
+	* src/maincore/vcconstant.h|.cpp: CamelCased and header called hpp.
+	* src/maincore/ogreimport.h: CamelCased and header called hpp.
+	* src/maincore/keyboardnavigation.h|.cpp: CamelCased and header
+	called hpp.
+	* src/maincore/inputwrapper.h|.cpp: CamelCased and header called hpp.
+	* src/maincore/highlightlistener.h|.cpp: CamelCased and header
+	called hpp.
+	* src/maincore/gslocaltest.h|.cpp: CamelCased and header called hpp.
+	* src/maincore/gsgamebase.h|.cpp: CamelCased and header called hpp.
+	* src/maincore/environmentsetup.h|.cpp: CamelCased and header called
+	hpp.
+	* src/maincore/dumpogreobject.h|.cpp: CamelCased and header called hpp.
+
 2012-03-20 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/Makefile.am (h_sources, cc_sources): Handles CamelCased
 	files and new header names.
 
-	* src/common/xmltimestamp.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlserverlist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlpersolist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmloptions.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlobjectlist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmllanguage.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlbonusfilelist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlbonusfile.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlattributelist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlattrcatlist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/xmlaccountlist.h|.cpp:  CamelCased and header called hpp.
-	* src/common/timer.h|.cpp:  CamelCased and header called hpp.
-	* src/common/version.h|.cpp:  CamelCased and header called hpp.
-	* src/common/tnotelist.h:  CamelCased and header called hpp.
-	* src/common/timer.h|.cpp:  CamelCased and header called hpp.
-	* src/common/tidentreturn.h:  CamelCased and header called hpp.
+	* src/common/xmltimestamp.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlserverlist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlpersolist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmloptions.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlobjectlist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmllanguage.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlbonusfilelist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlbonusfile.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlattributelist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlattrcatlist.h|.cpp: CamelCased and header called hpp.
+	* src/common/xmlaccountlist.h|.cpp: CamelCased and header called hpp.
+	* src/common/timer.h|.cpp: CamelCased and header called hpp.
+	* src/common/version.h|.cpp: CamelCased and header called hpp.
+	* src/common/tnotelist.h: CamelCased and header called hpp.
+	* src/common/timer.h|.cpp: CamelCased and header called hpp.
+	* src/common/tidentreturn.h: CamelCased and header called hpp.
 
 2012-03-18 Jérôme Pasquier  <rainbru@free.fr>
 

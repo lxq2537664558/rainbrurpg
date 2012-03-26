@@ -115,12 +115,16 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
-- (9) CamelCased some files in common/
+- (10) CamelCased some files in maincore/
+   DumpOgreObject, EnvironmentSetup, GsGameBase, GsLocalTest,
+   highlightlistener, InputWrapper, KayboardNavigation, OgreImport
+   VcConstant, VelocityCalculator
+- CamelCased some files in common/
    IdentificationReturn, Timer, NoteList, Version, Timer,
    XmlAccountList, XmlAttrCatList, XmlAttributeList, XmlBonusFile,
    XmlBonusFileList, XmlObjectList, XmlOptions, XmlPersoList,
    XmlServerList, XmlTimestamp
-- (8) CamelCased some files in common/
+- CamelCased some files in common/
    OptionManager, OptionPanel, Options, OptionStringAttribute, PTypes
    RainbruDef, ServerListItem, Sha1, Singleton, StringConv, AccountList
 - CamelCased some files in common/

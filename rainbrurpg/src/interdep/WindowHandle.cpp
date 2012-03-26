@@ -27,8 +27,9 @@
 
 #include "WindowHandle.hpp"
 
-#include "ogreimport.h"
 #include "NullWindowHandleException.hpp"
+
+#include <OgreImport.hpp>
 #include <Logger.hpp>
 
 #ifdef WIN32

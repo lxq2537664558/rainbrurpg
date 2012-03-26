@@ -20,7 +20,7 @@
  *
  */
 
-/** \file keyboardnavigation.h
+/** \file KeyboardNavigation.hpp
   * Declares a class that provides keyboard navigation and selection
   *
   * This code was originally found in the official CEGUI wiki :

@@ -35,7 +35,7 @@
 #ifndef _OGRE_GUI_GLYPH_H_
 #define _OGRE_GUI_GLYPH_H_
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <RainbruDef.hpp>    // For the GNU gettext stuff
 
 namespace RainbruRPG{

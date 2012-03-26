@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-03-14 18:46+0100\n"
+"POT-Creation-Date: 2012-03-22 18:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1049,11 +1049,11 @@ msgstr ""
 msgid " LOGGER CAN'T OPEN FILE "
 msgstr ""
 
-#: src/common/Logger.cpp:271 src/common/stringconv.cpp:139
+#: src/common/Logger.cpp:271 src/common/StringConv.cpp:139
 msgid "true"
 msgstr ""
 
-#: src/common/Logger.cpp:273 src/common/stringconv.cpp:141
+#: src/common/Logger.cpp:273 src/common/StringConv.cpp:141
 msgid "false"
 msgstr ""
 
@@ -1224,103 +1224,103 @@ msgstr ""
 msgid "Cannot get a valid FXCheckButton to update an OptionListAttribute"
 msgstr ""
 
-#: src/common/optionmanager.cpp:38
+#: src/common/OptionManager.cpp:38
 msgid "Initializing OptionManager"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a OptionPanel object name
-#: src/common/optionmanager.cpp:145
+#: src/common/OptionManager.cpp:145
 #, c-format
 msgid "Cannot get the OptionPanel named '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is the name of an option snapshot.
-#: src/common/optionmanager.cpp:226
+#: src/common/OptionManager.cpp:226
 #, c-format
 msgid "Loading options snapshots named '%s'"
 msgstr ""
 
-#: src/common/optionpanel.cpp:56
+#: src/common/OptionPanel.cpp:56
 msgid "You are setting an empty caption on a OptionPanel"
 msgstr ""
 
-#: src/common/optionpanel.cpp:79
+#: src/common/OptionPanel.cpp:79
 msgid "You are adding a NULL OptionButton pointer"
 msgstr ""
 
-#: src/common/options.cpp:45
+#: src/common/Options.cpp:45
 msgid "Graphics"
 msgstr ""
 
-#: src/common/options.cpp:46
+#: src/common/Options.cpp:46
 msgid "Renderer"
 msgstr ""
 
-#: src/common/options.cpp:49
+#: src/common/Options.cpp:49
 msgid "Integer Attribute"
 msgstr ""
 
-#: src/common/options.cpp:50
+#: src/common/Options.cpp:50
 msgid "A simple example integer value to test the layout disposition."
 msgstr ""
 
-#: src/common/options.cpp:55
+#: src/common/Options.cpp:55
 msgid "String Attribute"
 msgstr ""
 
-#: src/common/options.cpp:59
+#: src/common/Options.cpp:59
 msgid "Fullscreen"
 msgstr ""
 
-#: src/common/options.cpp:60
+#: src/common/Options.cpp:60
 msgid "Will the game launch in full screen or windowed mode"
 msgstr ""
 
-#: src/common/options.cpp:65
+#: src/common/Options.cpp:65
 msgid "Resolution"
 msgstr ""
 
-#: src/common/options.cpp:66
+#: src/common/Options.cpp:66
 msgid "Sets the screen size for both fullscreen and windowed mode"
 msgstr ""
 
-#: src/common/options.cpp:92
+#: src/common/Options.cpp:92
 msgid "Sounds"
 msgstr ""
 
-#: src/common/optionstringattribute.cpp:46
+#: src/common/OptionStringAttribute.cpp:46
 msgid "Constructing an OptionStringAttribute"
 msgstr ""
 
-#: src/common/optionstringattribute.cpp:84
+#: src/common/OptionStringAttribute.cpp:84
 msgid "Updating an OptionStringAttribute"
 msgstr ""
 
-#: src/common/optionstringattribute.cpp:88
+#: src/common/OptionStringAttribute.cpp:88
 msgid "Cannot get a valid FXTextField to update an OptionStringAttribute"
 msgstr ""
 
-#: src/common/serverlistitem.cpp:286
+#: src/common/ServerListItem.cpp:286
 msgid "1 (Fantasy)"
 msgstr ""
 
-#: src/common/serverlistitem.cpp:289
+#: src/common/ServerListItem.cpp:289
 msgid "2 (Contemporary)"
 msgstr ""
 
-#: src/common/serverlistitem.cpp:292
+#: src/common/ServerListItem.cpp:292
 msgid "3 (Futuristic)"
 msgstr ""
 
-#: src/common/serverlistitem.cpp:295
+#: src/common/ServerListItem.cpp:295
 msgid "4 (Post-apocalyptic)"
 msgstr ""
 
-#: src/common/stringconv.cpp:45
+#: src/common/StringConv.cpp:45
 msgid "  desalocating memory for char*..."
 msgstr ""
 
-#: src/common/stringconv.cpp:262
+#: src/common/StringConv.cpp:262
 msgid "StringConv::itobin base parameter unrecognized"
 msgstr ""
 
@@ -1330,7 +1330,7 @@ msgstr ""
 #. L3 : Ogre major, minor version, version patch and version name
 #. L4 : Same as Ogre for OIS
 #. L5 : libCurl version, timestamp
-#: src/common/version.cpp:83
+#: src/common/Version.cpp:83
 #, c-format
 msgid ""
 "Starting %s v%s-%s using :\n"
@@ -1341,12 +1341,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameters are the build (compilation) date and time.
-#: src/common/version.cpp:101
+#: src/common/Version.cpp:101
 #, c-format
 msgid "Built '%s' at '%s' \n"
 msgstr ""
 
-#: src/common/version.cpp:105
+#: src/common/Version.cpp:105
 msgid ""
 "Copyright (C) 2006-2012 Jerome PASQUIER\n"
 "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
@@ -1355,156 +1355,156 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: src/common/xmlaccountlist.cpp:62 src/common/xmlattrbcatlist.cpp:59
+#: src/common/XmlAccountList.cpp:62 src/common/XmlAttrCatList.cpp:59
 #, c-format
 msgid "An error occured while getting xmlAccountList. Server response was : %d"
 msgstr ""
 
-#: src/common/xmlaccountlist.cpp:98
+#: src/common/XmlAccountList.cpp:98
 msgid "An error occured while getting xmlAccountList"
 msgstr ""
 
-#: src/common/xmlaccountlist.cpp:154
+#: src/common/XmlAccountList.cpp:154
 msgid "Cannot get a valid root element, account list will be NULL"
 msgstr ""
 
-#: src/common/xmlaccountlist.cpp:221
+#: src/common/XmlAccountList.cpp:221
 msgid "A note has no text"
 msgstr ""
 
-#: src/common/xmlaccountlist.cpp:224
+#: src/common/XmlAccountList.cpp:224
 msgid "A note element has no child"
 msgstr ""
 
-#: src/common/xmlattrbcatlist.cpp:99
+#: src/common/XmlAttrCatList.cpp:99
 msgid "An error occured while getting xmlAttrbCatList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: src/common/xmlattributelist.cpp:66
+#: src/common/XmlAttributeList.cpp:66
 #, c-format
 msgid ""
 "An error occured while getting xmlAttrbibuteList. Server response was : %d"
 msgstr ""
 
-#: src/common/xmlattributelist.cpp:108
+#: src/common/XmlAttributeList.cpp:108
 msgid "An error occured while getting xmlAttributeList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: src/common/xmlbonusfile.cpp:66
+#: src/common/XmlBonusFile.cpp:66
 #, c-format
 msgid "An error occured while getting xmlBonusFile. Server response was : %d"
 msgstr ""
 
-#: src/common/xmlbonusfile.cpp:104
+#: src/common/XmlBonusFile.cpp:104
 msgid "An error occured while getting xmlBonusFile"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: src/common/xmlbonusfilelist.cpp:65
+#: src/common/XmlBonusFileList.cpp:65
 #, c-format
 msgid ""
 "An error occured while getting xmlBonusFileList. Server response was : %d"
 msgstr ""
 
-#: src/common/xmlbonusfilelist.cpp:107
+#: src/common/XmlBonusFileList.cpp:107
 msgid "An error occured while getting xmlBonusFileList"
 msgstr ""
 
-#: src/common/xmlbonusfilelist.cpp:141
+#: src/common/XmlBonusFileList.cpp:141
 msgid "Cannot get BonusFile list, document not loaded"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a language name.
-#: src/common/xmllanguage.cpp:60
+#: src/common/XmlLanguage.cpp:60
 #, c-format
 msgid "Last used language found : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a language name.
-#: src/common/xmllanguage.cpp:65
+#: src/common/XmlLanguage.cpp:65
 #, c-format
 msgid "Default language found : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an integer (the list size).
-#: src/common/xmllanguage.cpp:72
+#: src/common/XmlLanguage.cpp:72
 #, c-format
 msgid "Language list size is '%d'"
 msgstr ""
 
-#: src/common/xmllanguage.cpp:77
+#: src/common/XmlLanguage.cpp:77
 msgid "Cannot load languages.xml"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an absolute file name (i.e. with paths).
-#: src/common/xmllanguage.cpp:81
+#: src/common/XmlLanguage.cpp:81
 #, c-format
 msgid "languages.xml absolute filename : '%s'"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an error string
-#: src/common/xmllanguage.cpp:86
+#: src/common/XmlLanguage.cpp:86
 #, c-format
 msgid "TinyXml error description '%s'"
 msgstr ""
 
-#: src/common/xmllanguage.cpp:211
+#: src/common/XmlLanguage.cpp:211
 msgid "Empty language list found"
 msgstr ""
 
-#: src/common/xmllanguage.cpp:245
+#: src/common/XmlLanguage.cpp:245
 msgid "Empty country list found"
 msgstr ""
 
-#: src/common/xmlobjectlist.cpp:35
+#: src/common/XmlObjectList.cpp:35
 msgid "Loading object list"
 msgstr ""
 
-#: src/common/xmlobjectlist.cpp:50
+#: src/common/XmlObjectList.cpp:50
 msgid "Object list correctly loaded"
 msgstr ""
 
-#: src/common/xmlobjectlist.cpp:85
+#: src/common/XmlObjectList.cpp:85
 msgid "Empty object list found"
 msgstr ""
 
-#: src/common/xmlobjectlist.cpp:89
+#: src/common/XmlObjectList.cpp:89
 msgid "Can not get a valid root element for ObjectList"
 msgstr ""
 
 #. TRANSLATORS: The parameter is an object name.
-#: src/common/xmlobjectlist.cpp:117
+#: src/common/XmlObjectList.cpp:117
 #, c-format
 msgid "Empty position list found for mesh %s"
 msgstr ""
 
 #. TRANSLATORS: The parameter is a file name.
-#: src/common/xmloptions.cpp:71
+#: src/common/XmlOptions.cpp:71
 #, c-format
 msgid "Cannot load the XML options from file %s"
 msgstr ""
 
-#: src/common/xmloptions.cpp:161
+#: src/common/XmlOptions.cpp:161
 msgid "An error occured while saving panel to XML option file."
 msgstr ""
 
-#: src/common/xmloptions.cpp:233
+#: src/common/XmlOptions.cpp:233
 msgid "Empty snapshot list found in XML options file."
 msgstr ""
 
-#: src/common/xmloptions.cpp:238
+#: src/common/XmlOptions.cpp:238
 msgid "Cannot get a valid root element for XML options snapshot list."
 msgstr ""
 
 #. TRANSLATORS: The parameter is a numerical error code.
-#: src/common/xmlpersolist.cpp:60
+#: src/common/XmlPersoList.cpp:60
 #, c-format
 msgid "An error occured while getting xmlPersoList.Server response was : %d"
 msgstr ""
 
-#: src/common/xmlpersolist.cpp:95
+#: src/common/XmlPersoList.cpp:95
 msgid "An error occured while getting xmlPlayerList"
 msgstr ""
 

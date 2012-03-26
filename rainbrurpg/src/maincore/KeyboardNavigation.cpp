@@ -20,7 +20,7 @@
  *
  */
 
-/** \file keyboardnavigation.cpp
+/** \file KeyboardNavigation.cpp
   * Implements a class that provides keyboard navigation and selection
   *
   * This code was originally found in the official CEGUI wiki :
@@ -28,7 +28,7 @@
   *
   */
 
-#include "keyboardnavigation.h"
+#include "KeyboardNavigation.hpp"
 
 /*void RainbruRPG::Gui::KeyboardNavigation::setParent(const CEGUI::String& window){
 

@@ -21,7 +21,7 @@
  */
 
 #include "OgreMinimalSetup.hpp"
-#include "ogreimport.h"
+#include <OgreImport.hpp>
 
 #include <string>
 

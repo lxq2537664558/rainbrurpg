@@ -38,7 +38,7 @@
   * we must undef it because FOX and OGRE define it 
   */
 #undef PI
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 using namespace RainbruRPG::Options;
 

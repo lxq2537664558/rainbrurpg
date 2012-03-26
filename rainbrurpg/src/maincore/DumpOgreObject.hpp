@@ -20,7 +20,7 @@
  *
  */
 
-/** \file dumpogreobject.h
+/** \file DumpOgreObject.hpp
   * Declares preprocessor macros used to dump Ogre objects
   *
   * The preprocessor macros in this header may be use to dump Ogre object.

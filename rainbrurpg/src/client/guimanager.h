@@ -41,11 +41,11 @@
 #define GUI_MANAGER_H
 
 #include <Singleton.hpp>
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include "GameEngine.hpp"
-#include "velocitycalculator.h"
-#include "vcconstant.h"
+#include <VelocityCalculator.hpp>
+#include <VcConstant.hpp>
 //#include "messagebox.h"
 
 //#define MGM_SHOW_MESSAGE_BOX_WARNING

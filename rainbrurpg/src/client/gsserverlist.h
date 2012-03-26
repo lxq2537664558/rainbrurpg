@@ -36,9 +36,10 @@
 #include <XmlServerList.hpp>
 
 #include "gsmenubase.h"
-#include "vcconstant.h"
 #include "guimanager.h"
 #include "bglistener.h"
+
+#include <VcConstant.hpp>
 
 // Forward declarations
 namespace BetaGUI{

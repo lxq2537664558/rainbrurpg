@@ -20,7 +20,7 @@
  *
  */
 
-/** \file vcconstant.h
+/** \file VcConstant.hpp
   * Declares a constant time velocity calculator
   *
   * Modifications :
@@ -33,7 +33,7 @@
 #ifndef VELOCITY_CALCULATOR_CONSTANT_H
 #define VELOCITY_CALCULATOR_CONSTANT_H
 
-#include "velocitycalculator.h"
+#include "VelocityCalculator.hpp"
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 
 using namespace std;

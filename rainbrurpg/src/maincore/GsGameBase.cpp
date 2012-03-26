@@ -20,12 +20,12 @@
  *
  */
 
-/** \file gsgamebase.cpp
+/** \file GsGameBase.cpp
   * Implements a base class for all state supplying game capabilities
   *
   */
 
-#include "gsgamebase.h"
+#include "GsGameBase.hpp"
 #include <iostream>
 
 #include <Logger.hpp>

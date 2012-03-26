@@ -38,7 +38,7 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <OIS/OISPrereqs.h>
 #include <OIS/OISKeyboard.h>

@@ -32,7 +32,7 @@
 #ifndef _BRUSH_HPP_
 #define _BRUSH_HPP_
 
-#include <ogreimport.h> // For RenderSystem and others
+#include <OgreImport.hpp> // For RenderSystem and others
 
 // #include "Vector3.hpp"
 

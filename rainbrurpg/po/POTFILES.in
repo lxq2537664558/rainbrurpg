@@ -77,15 +77,15 @@ src/interdep/GameState.cpp
 src/interdep/InputManager.cpp
 
 # in the 'maincore' library
-src/maincore/dumpogreobject.cpp
-src/maincore/environmentsetup.cpp
-src/maincore/gsgamebase.cpp
-src/maincore/gslocaltest.cpp
-src/maincore/highlightlistener.cpp
-src/maincore/inputwrapper.cpp
-src/maincore/keyboardnavigation.cpp
-src/maincore/vcconstant.cpp
-src/maincore/velocitycalculator.cpp
+src/maincore/DumpOgreObject.cpp
+src/maincore/EnvironmentSetup.cpp
+src/maincore/GsGameBase.cpp
+src/maincore/GsLocalTest.cpp
+src/maincore/HighlightListener.cpp
+src/maincore/InputWrapper.cpp
+src/maincore/KeyboardNavigation.cpp
+src/maincore/VcConstant.cpp
+src/maincore/VelocityCalculator.cpp
 
 # in the 'oldOgreGui' library
 src/oldOgreGui/bgbutton.cpp

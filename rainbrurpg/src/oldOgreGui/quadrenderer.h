@@ -27,7 +27,7 @@
   *          to avoid ambiguous use on Win32 platform
   *
   * Modifications :
-  * - 01 apr 2009 : Now using ogreimport.h from maincore to handle
+  * - 01 apr 2009 : Now using OgreImport.hpppp from maincore to handle
   *                 an error due to ptrdiff_t on win32
   * - 02 fev 2009 : In begin, retrieve a RenderSystem pointer if NULL
   * - 01 fev 2009 : Creator name added (member, constructor, debug)
@@ -64,7 +64,7 @@
 #include <vector>
 #include <iostream>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 // Forward declarations
 namespace RainbruRPG {

@@ -44,7 +44,7 @@ D:        Step right
 #ifndef __ExampleFrameListener_H__
 #define __ExampleFrameListener_H__
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <OIS.h>
 

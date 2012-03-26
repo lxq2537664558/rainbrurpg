@@ -20,7 +20,7 @@
  *
  */
 
-/** \file inputwrapper.h
+/** \file InputWrapper.hpp
   * Declares a class defining some mouse and keyboard wrapping
   *
   * Modifications :

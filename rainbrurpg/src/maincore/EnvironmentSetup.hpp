@@ -20,7 +20,7 @@
  *
  */
 
-/** \file environmentsetup.h
+/** \file EnvironmentSetup.hpp
   * Declares a class that creates the Ogre environment for the game/editor
   *
   * Modifications :
@@ -31,7 +31,7 @@
 #ifndef ENVIRONMENT_SETUP_H
 #define ENVIRONMENT_SETUP_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <XmlObjectList.hpp>
 #include <ObjectMesh.hpp>

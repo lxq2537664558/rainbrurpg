@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsgamebase.h
+/** \file GsGameBase.hpp
   * Declares a base class for all state supplying game capabilities
   *
   * Modifications :
@@ -33,12 +33,12 @@
 #ifndef GS_GAME_BASE_H
 #define GS_GAME_BASE_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <string>
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 #include <GameState.hpp>
 
-#include "inputwrapper.h"
+#include "InputWrapper.hpp"
 
 using namespace Ogre;
 

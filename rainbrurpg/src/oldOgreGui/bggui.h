@@ -39,7 +39,7 @@
 #ifndef _BETA_GUI_GUI_H_
 #define _BETA_GUI_GUI_H_
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <Singleton.hpp>
 

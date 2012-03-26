@@ -38,7 +38,7 @@
 #include <OIS/OISJoyStick.h>
 #include <OIS/OISInputManager.h>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 

@@ -36,7 +36,7 @@
 #ifndef _OGRE_GUI_LABEL_H_
 #define _OGRE_GUI_LABEL_H_
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include "widget.h" 
 #include "skinmanager.h" // For OgreGuiSkinID

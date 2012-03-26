@@ -20,12 +20,12 @@
  *
  */
 
-/** \file highlightlistener.cpp
+/** \file HighlightListener.cpp
   * Implements a class used to highlight an entity in the editor 
   *
   */
 
-#include "highlightlistener.h"
+#include "HighlightListener.hpp"
 
 /** The Ogre renderQueueStarted implementation
   *

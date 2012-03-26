@@ -40,7 +40,7 @@
 #include <TextureNotFoundException.hpp>
 #include <SkinNotFoundException.hpp>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <OgreRectangle.h>
 
 // Do not use namespace Ogre for Rectangle and win32 name conflicts

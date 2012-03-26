@@ -33,7 +33,7 @@
 
 #include "GameState.hpp"
 
-#include "gslocaltest.h"
+#include <GsLocalTest.hpp>
 
 #include <XmlObjectList.hpp>
 #include "InputManager.hpp"

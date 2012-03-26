@@ -41,7 +41,7 @@
 #define GAME_ENGINE
 
 // OGRE headers
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <vector>
 #include <string>
 #include <Singleton.hpp>

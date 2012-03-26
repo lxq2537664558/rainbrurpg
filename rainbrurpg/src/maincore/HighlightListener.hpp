@@ -20,7 +20,7 @@
  *
  */
 
-/** \file highlightlistener.h
+/** \file HighlightListener.hpp
   * Declares a class used to highlight an entity in the editor 
   *
   * Modifications :
@@ -32,7 +32,7 @@
 #ifndef HIGHLIGHT_QUEUE_LISTENER_H
 #define HIGHLIGHT_QUEUE_LISTENER_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 

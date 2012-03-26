@@ -47,7 +47,7 @@
  * to prevent compilation error
  */
 #ifndef INCLUDE_VERSION_WITHOUT_OGRE
-#  include <ogreimport.h> // For Ogre version
+#  include <OgreImport.hpp> // For Ogre version
 #endif //INCLUDE_VERSION_WITHOUT_OGRE
 
 #include "Logger.hpp"

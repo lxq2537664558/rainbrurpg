@@ -33,8 +33,9 @@
 #define _GS_UPDATE_DATAFILES_H_
 
 #include "gsmenubase.h"
-#include "vcconstant.h"
 #include "guimanager.h"
+
+#include <VcConstant.hpp>
 
 namespace RainbruRPG {
   namespace Core{

@@ -28,7 +28,7 @@
 #include "Glyph.hpp"
 #include "Logger.hpp"
 
-#include <dumpogreobject.h>
+#include <DumpOgreObject.hpp>
 
 #include "NullHeightGlyphException.hpp"
 

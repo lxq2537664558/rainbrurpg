@@ -20,7 +20,7 @@
  *
  */
 
-/** \file ogreimport.h
+/** \file OgreImport.hpp
   * The file used to include all needed Ogre headers
   *
   * This file includes all Ogre headers with a little hack. If you

@@ -32,7 +32,7 @@
 #ifndef _OGRE_GUI_RENDER_QUEUE_LISTENER_HPP__
 #define _OGRE_GUI_RENDER_QUEUE_LISTENER_HPP__
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 using namespace Ogre;
 

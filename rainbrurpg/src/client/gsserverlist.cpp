@@ -36,8 +36,8 @@
 #include <multicolumnlist.h>
 #include <multicolumnlistitem.h>
 #include <sigc++/sigc++.h>
+#include <KeyboardNavigation.hpp>
 
-#include "keyboardnavigation.h"
 
 /** The default constructor
   *

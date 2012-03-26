@@ -25,10 +25,10 @@
   *
   */
 
-#include "keyboardnavigation.h"
 #include "gsconnection.h"
-#include "vcconstant.h"
 #include "guimanager.h"
+
+#include <KeyboardNavigation.hpp>
 
 #include <OgrePrerequisites.h> // for Ogre::String
 

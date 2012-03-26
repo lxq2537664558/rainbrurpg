@@ -20,12 +20,12 @@
  *
  */
 
-/** \file inputwrapper.cpp
+/** \file InputWrapper.cpp
   * Implements a class defining some mouse and keyboard wrapping
   *
   */
 
-#include "inputwrapper.h"
+#include "InputWrapper.hpp"
 
 /** The default constructor
   *

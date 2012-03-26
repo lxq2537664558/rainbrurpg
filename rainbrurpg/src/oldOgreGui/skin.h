@@ -48,7 +48,7 @@
 
 #include <string>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 //#include "bgbutton.h"
 

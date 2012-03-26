@@ -20,12 +20,12 @@
  *
  */
 
-/** \file environmentsetup.cpp
+/** \file EnvironmentSetup.cpp
   * Implements a class that creates the Ogre environment for the game/editor
   *
   */
 
-#include "environmentsetup.h"
+#include "EnvironmentSetup.hpp"
 
 #include <Logger.hpp>
 

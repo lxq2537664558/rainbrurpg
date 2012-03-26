@@ -20,38 +20,19 @@
  *
  */
 
-/** \file gslocaltest.h
-  * Declares a game state class for test purpose only
-  *
-  * Modifications :
-  * - 29 aug 2009 : Made messages transatable with gettext
-  * - 16 aug 2008 : Single file documentation
+/** \file GsLocalTest.cpp
+  * Implements a game state class for test purpose only
   *
   */
-#ifndef GS_LOCAL_TEST
-#define GS_LOCAL_TEST
 
-#include <RainbruDef.hpp> // For the GNU gettext stuff
+#include "GsLocalTest.hpp"
 
-#include "gsgamebase.h"
+RainbruRPG::Core::gsLocalTest::gsLocalTest():
+  gsGameBase("gsLocalTest")
+{
 
-namespace RainbruRPG {
-  namespace Core{
-
-    /** A local game for test purpose only
-      *
-      */
-    class gsLocalTest : public gsGameBase{
-    public:
-      gsLocalTest();
-
-      /** An empty default destructor needed to avoid compilation warnings */
-      virtual ~gsLocalTest(){};
-
-      virtual void init();
-
-    };
-  }
 }
 
-#endif // GS_LOCAL_TEST
+void RainbruRPG::Core::gsLocalTest::init(){
+  mapName="paginglandscape2.cfg";
+}
