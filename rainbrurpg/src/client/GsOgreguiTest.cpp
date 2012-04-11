@@ -20,39 +20,41 @@
  *
  */
 
-/** \file gsOgreguiTest.hpp
-  * Declares an OgreGui test game state
-  *
-  * Modifications :
-  * - 22 mar 2010 : Implementation started
+/** \file GsOgreguiTest.cpp
+  * Implements an OgreGui test game state
   *
   */
 
-#ifndef GS_OGREGUI_TEST_H
-#define GS_OGREGUI_TEST_H
+#include "GsOgreguiTest.hpp"
 
-#include "gsmenubase.h"
+/** The game state constructor
+  *
+  */
+RainbruRPG::Core::gsOgreguiTest::gsOgreguiTest():
+  gsMenuBase("gsOgreguiTest", false)
+{
 
-namespace RainbruRPG {
-  namespace Core{
-
-    /** A gamestate to test OgreGui
-      *
-      */
-    class gsOgreguiTest : public gsMenuBase{
-    public:
-      gsOgreguiTest();
-      virtual ~gsOgreguiTest();
-
-      virtual void init();
-      virtual void resume();
-      virtual void pause();
-
-      // Purely virtual in gsmenubase
-      virtual void setupTabOrder(){
-
-      };
-    };
-  }
 }
-#endif // GS_OGREGUI_TEST_H
+
+/** The game state destructor
+  *
+  */
+RainbruRPG::Core::gsOgreguiTest::~gsOgreguiTest()
+{
+
+}
+
+void RainbruRPG::Core::gsOgreguiTest::init()
+{
+
+}
+
+void RainbruRPG::Core::gsOgreguiTest::resume()
+{
+
+}
+
+void RainbruRPG::Core::gsOgreguiTest::pause()
+{
+
+}

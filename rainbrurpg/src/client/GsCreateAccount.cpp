@@ -20,12 +20,12 @@
  *
  */
 
-/** \file gscreateaccount.cpp
+/** \file GsCreateAccount.cpp
   * Implements a gamestate that lets the user create an account
   *
   */
 
-#include "gscreateaccount.h"
+#include "GsCreateAccount.hpp"
 
 //#include <curlaccountadd.h>
 #include <Logger.hpp>

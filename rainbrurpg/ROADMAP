@@ -359,6 +359,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-04-11 mer. 11:26]--[2012-04-11 mer. 11:45] =>  0:19
+     CLOCK: [2012-04-11 mer. 11:01]--[2012-04-11 mer. 11:26] =>  0:25
      CLOCK: [2012-03-26 lun. 18:23]--[2012-03-26 lun. 19:19] =>  0:56
      CLOCK: [2012-03-20 mar. 11:29]--[2012-03-20 mar. 13:13] =>  1:44
      CLOCK: [2012-03-18 dim. 18:40]--[2012-03-18 dim. 19:31] =>  0:51
@@ -380,7 +382,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [X] in common/
       - [X] in ogreGui/
       - [X] in maincore/
-      - [ ] in client/
+      - [ ] in client/      STARTED
       - [ ] in design/
       - [ ] in editor/
       - [ ] in examples/

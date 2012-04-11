@@ -20,12 +20,12 @@
  *
  */
 
-/** \file exampleframelistener.cpp
+/** \file ExampleFrameListener.cpp
   * Implements an Ogre frame listener
   *
   */
 
-#include "exampleframelistener.h"
+#include "ExampleFrameListener.hpp"
 
 #include <iostream>
 #include <assert.h>

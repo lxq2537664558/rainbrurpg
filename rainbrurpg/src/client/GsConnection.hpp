@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsconnection.h
+/** \file GsConnection.hpp
   * Declares a gamestate that lets the user enter its username and password
   *
   * Modifications :
@@ -36,7 +36,7 @@
 #include <HashPassword.hpp>
 //#include <Window.hpp>
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 #include "guimanager.h"
 #include "bglistener.h"
 

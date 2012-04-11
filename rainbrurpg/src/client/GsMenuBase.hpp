@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsmenubase.h
+/** \file GsMenuBase.hpp
   * Declares the base class for all menu game state
   *
   * Modifications :
@@ -84,7 +84,7 @@ namespace RainbruRPG {
       *
       * \note Since v0.0.5-164, the dynamic menu feature was deactivated.
       *       It is done with a conditionnal compilation found in 
-      *       \c gsmenubase.h. Please see sources for more information on
+      *       \c GsMenuBase.hpp. Please see sources for more information on
       *       dynamic background test.
       *
       */

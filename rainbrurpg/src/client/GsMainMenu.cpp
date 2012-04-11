@@ -20,12 +20,12 @@
  *
  */
 
-/** \file gsmainmenu.cpp
+/** \file GsMainMenu.cpp
   * Implements the main menu game state
   *
   */
 
-#include "gsmainmenu.h"
+#include "GsMainMenu.hpp"
 
 #include <Window.hpp>
 #include <Label.hpp>

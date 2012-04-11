@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gscreateaccount.h
+/** \file GsCreateAccount.hpp
   * Declares a gamestate that lets the user create an account
   *
   * Modifications :
@@ -36,7 +36,7 @@
 #include <HashPassword.hpp>
 #include <CurlAccountAdd.hpp>
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 #include "guimanager.h"
 #include "bglistener.h"
 

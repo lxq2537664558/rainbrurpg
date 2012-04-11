@@ -33,7 +33,7 @@
 
 #include <Logger.hpp>
 
-#include "exampleframelistener.h"
+#include "ExampleFrameListener.hpp"
 
 #include "guimanager.h"
 #include "GameEngine.hpp"

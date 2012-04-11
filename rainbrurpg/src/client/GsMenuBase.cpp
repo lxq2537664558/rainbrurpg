@@ -20,12 +20,12 @@
  *
  */
 
-/** \file gsmenubase.cpp
+/** \file GsMenuBase.cpp
   * Implements the base class for all menu game state
   *
   */
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 
 #include <iostream>
 #include <OgreSceneNode.h>

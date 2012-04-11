@@ -13,7 +13,7 @@ LGPL like the rest of the engine.
 */
 /*
 -----------------------------------------------------------------------------
-Filename:    ExampleFrameListener.h
+Filename:    ExampleFrameListener.hpp
 Description: Defines an example frame listener which responds to frame events.
 This frame listener just moves a specified camera around based on
 keyboard and mouse movements.
@@ -32,7 +32,7 @@ D:        Step right
 -----------------------------------------------------------------------------
 */
 
-/** \file exampleframelistener.h
+/** \file ExampleFrameListener.hpp
   * Declares an Ogre frame listener
   *
   * Modifications :

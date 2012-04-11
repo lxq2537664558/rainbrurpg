@@ -1,4 +1,4 @@
-/*
+ /*
  *  Copyright 2006-2012 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
@@ -32,7 +32,7 @@
 #ifndef _GS_UPDATE_DATAFILES_H_
 #define _GS_UPDATE_DATAFILES_H_
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 #include "guimanager.h"
 
 #include <VcConstant.hpp>

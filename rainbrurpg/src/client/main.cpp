@@ -53,13 +53,13 @@
 #include <GlobalUri.hpp>
 
 // includes game states
-#include "gsmainmenu.h"
-#include "gsconnection.h"
-#include "gscreateaccount.h"
-#include "gsserverlist.h"
+#include "GsMainMenu.hpp"
+#include "GsConnection.hpp"
+#include "GsCreateAccount.hpp"
+#include "GsServerList.hpp"
 #include "gsupdatedatafiles.h"
 
-#include "gsOgreguiTest.hpp"
+#include "GsOgreguiTest.hpp"
 
 #include <GsLocalTest.hpp>
 

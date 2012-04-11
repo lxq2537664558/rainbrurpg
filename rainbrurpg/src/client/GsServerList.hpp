@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsserverlist.h
+/** \file GsServerList.hpp
   * Declares the state showing the server list
   *
   * Modifications :
@@ -35,7 +35,7 @@
 
 #include <XmlServerList.hpp>
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 #include "guimanager.h"
 #include "bglistener.h"
 

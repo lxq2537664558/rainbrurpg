@@ -20,7 +20,7 @@
  *
  */
 
-/** \file gsmainmenu.h
+/** \file GsMainMenu.hpp
   * Declares the main menu game state
   *
   * Modifications :
@@ -37,7 +37,7 @@
 
 #include <HashPassword.hpp>
 
-#include "gsmenubase.h"
+#include "GsMenuBase.hpp"
 //#include "bgbutton.h"
 //#include "bgwindow.h"
 //#include "bglistener.h"

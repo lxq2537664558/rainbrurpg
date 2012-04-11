@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-03-22 18:25+0100\n"
+"POT-Creation-Date: 2012-04-11 11:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1697,67 +1697,67 @@ msgstr ""
 msgid "InputManager::keyPressed called"
 msgstr ""
 
-#: src/maincore/dumpogreobject.cpp:44
+#: src/maincore/DumpOgreObject.cpp:44
 msgid "Debugging ogre rectangle :"
 msgstr ""
 
-#: src/maincore/dumpogreobject.cpp:69
+#: src/maincore/DumpOgreObject.cpp:69
 msgid "Debugging ogre Vector4 : "
 msgstr ""
 
-#: src/maincore/dumpogreobject.cpp:93
+#: src/maincore/DumpOgreObject.cpp:93
 msgid "Debugging ogre Vector2 : "
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:45
+#: src/maincore/EnvironmentSetup.cpp:45
 msgid "Starting environment setup"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:51
+#: src/maincore/EnvironmentSetup.cpp:51
 msgid "Creating SceneManeger"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:53
+#: src/maincore/EnvironmentSetup.cpp:53
 msgid "Creating camera"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:55
+#: src/maincore/EnvironmentSetup.cpp:55
 msgid "Creating viewport"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:57
+#: src/maincore/EnvironmentSetup.cpp:57
 msgid "Creating light"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:59
+#: src/maincore/EnvironmentSetup.cpp:59
 msgid "Initialising Ogre resources"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:62
+#: src/maincore/EnvironmentSetup.cpp:62
 msgid "Starting adding objects"
 msgstr ""
 
-#: src/maincore/environmentsetup.cpp:64
+#: src/maincore/EnvironmentSetup.cpp:64
 msgid "Environment correctly setup"
 msgstr ""
 
-#: src/maincore/gsgamebase.cpp:40
+#: src/maincore/GsGameBase.cpp:40
 msgid "Constructing a gsGameBase"
 msgstr ""
 
-#: src/maincore/gsgamebase.cpp:51
+#: src/maincore/GsGameBase.cpp:51
 msgid "Initialising gsGameBase"
 msgstr ""
 
-#: src/maincore/gsgamebase.cpp:78
+#: src/maincore/GsGameBase.cpp:78
 msgid "gsGameBase::resume called"
 msgstr ""
 
-#: src/maincore/vcconstant.cpp:62
+#: src/maincore/VcConstant.cpp:62
 msgid "VelocityCalculator not started"
 msgstr ""
 
-#: src/maincore/velocitycalculator.cpp:109
+#: src/maincore/VelocityCalculator.cpp:107
 msgid "setting a null transition time"
 msgstr ""
 

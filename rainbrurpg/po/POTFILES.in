@@ -112,3 +112,13 @@ src/oldOgreGui/multicolumnlistcell.cpp
 src/oldOgreGui/multicolumnlistcolumn.cpp
 src/oldOgreGui/multicolumnlistdebugsettings.cpp
 src/oldOgreGui/multicolumnlistitem.cpp
+
+# The client binary
+src/client/ExampleFrameListener.cpp
+src/client/GsConnection.cpp
+src/client/GsCreateAccount.cpp
+src/client/GsMainMenu.cpp
+src/client/GsMenuBase.cpp
+src/client/GsOgreguiTest.cpp
+src/client/GsServerList.cpp
+

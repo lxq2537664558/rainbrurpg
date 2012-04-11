@@ -21,27 +21,27 @@ bin_PROGRAMS=rainbrurpg
 
 rainbrurpgdir=..
 
-rainbrurpg_HEADERS= exampleframelistener.h  		\
-		    gsmainmenu.h    			\
+rainbrurpg_HEADERS= ExampleFrameListener.hpp  		\
+		    GsConnection.hpp          		\
+		    GsCreateAccount.hpp       		\
+		    GsMainMenu.hpp    			\
+		    GsMenuBase.hpp			\
+		    GsOgreguiTest.hpp  			\
+	            GsServerList.hpp  			\
 		    gsupdatedatafiles.h  		\
 	    	    languageselector.h			\
-		    gsconnection.h          		\
-		    gsmenubase.h    			\
 		    guiframelistener.h   		\
 	            launcher.h				\
-		    gscreateaccount.h       		\
-	            gsserverlist.h  			\
 		    guimanager.h         		\
-		    launcheroptions.h			\
-		    gsOgreguiTest.hpp
+		    launcheroptions.h
 
-rainbrurpg_SOURCES= exampleframelistener.cpp		\
-		    gsconnection.cpp			\
-		    gscreateaccount.cpp			\
-		    gsmainmenu.cpp			\
-		    gsmenubase.cpp                      \
-		    gsOgreguiTest.cpp			\
-		    gsserverlist.cpp			\
+rainbrurpg_SOURCES= ExampleFrameListener.cpp		\
+		    GsConnection.cpp			\
+		    GsCreateAccount.cpp			\
+		    GsMainMenu.cpp			\
+		    GsMenuBase.cpp                      \
+		    GsOgreguiTest.cpp			\
+		    GsServerList.cpp			\
 	            gsupdatedatafiles.cpp		\
 		    guiframelistener.cpp		\
 		    guimanager.cpp			\
