@@ -13,11 +13,30 @@ use vars qw($filename $dom $root );
 
 my $xmlfile = 'http://localtest.rainbrurpg.org/wiki/pub/server_list.xml';
 
+=begin
+    Get the content of a named child node
+    
+    Parameters :
+    $node : a XML::LibXML node
+    $key  : The name of the child as a string
+
+    Return :
+    - The string content of the first named node
+    - 0 if no corresponding node was found
+
+=cut
 sub getNodeContent
 {
     my ($node, $key) = @_;
     my @content_node = $node->getChildrenByTagName($key);
-    return $content_node[0]->textContent;
+    if (@content_node)
+    {
+	return $content_node[0]->textContent;
+    }
+    else
+    {
+	return 0;
+    }
 }
 
 # Trying to compute uptime

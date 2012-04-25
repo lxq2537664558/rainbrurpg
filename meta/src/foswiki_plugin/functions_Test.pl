@@ -1,20 +1,50 @@
 #!/usr/bin/perl -w
 
 # Unit test
-package MenuTest;
-
+package Foswiki::Plugins::RainbrurpgMetaserverPlugin;
+use functions;
 use strict;
 use warnings;
 
 use Test::Unit::Procedural;
+use XML::LibXML;
 use Error qw(:try);
 
 require 'functions.pm';
 
+=begin
+    Simply test if node content currectly returned given correct node child 
+    name.
+=cut
 sub test_getNodeContent
 {
-    assert(0);
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<child>azeaze</child>
+    </root>
+EOT
+    if (my $root = $dom->documentElement())
+    {
+        assert(getNodeContent($root, "child")=~m/^azeaze$/, 
+	       "Node content is spurious");
+    }
 }
+
+=begin
+    Test if node content currectly return 0 if the node cannot be found
+=cut
+sub test_getNodeContent_incorrectChildName
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<child>azeaze</child>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(!getNodeContent($root, "chiild"), 
+	   "Unexisting node was not detected");
+}
+
 
 create_suite();
 run_suite();

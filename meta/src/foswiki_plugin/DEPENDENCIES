@@ -14,3 +14,9 @@ The following package should be installed before RainbruRPG-meta is installed:
   + download:
     http://search.cpan.org/~shlomif/XML-LibXML-1.94/LibXML.pod
     
+* Test::Unit::Procedural
+  + Optional : to run unit tests
+  + homepage:
+    http://search.cpan.org/dist/Test-Unit/lib/Test/Unit/Procedural.pm
+  + download:
+    http://ftp.easynet.be/pub/CPAN/authors/id/M/MC/MCAST/

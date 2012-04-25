@@ -1,6 +1,14 @@
 2012-04-25  Jérôme Pasquier  <rainbru@free.fr>
 
-	* configure.in: generate both pkg-config file for libclient and 
+	* src/foswiki_plugin/functions_Test.pl
+	(test_getNodeContent_incorrectChildName): test if getNodeContent()
+	correctly returns 0 if no child exist with the given name.
+	* src/foswiki_plugin/functions.pm (getNodeContent): returns 0
+	if the searched node name cannot be found.
+	* src/foswiki_plugin/DEPENDENCIES: added Test::Unit::Procedural for
+	unit tests running.
+
+	* configure.in: generate both pkg-config file for libclient and
 	libserver.
 	* src/libserver/rainbrurpg-meta-server.pc.in: first version of the
 	pkg-config compliant file.
