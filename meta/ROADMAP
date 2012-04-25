@@ -27,7 +27,8 @@
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
-**** TODO Correct project setup
+**** DONE Correct project setup
+     CLOCK: [2012-04-25 mer. 15:32]--[2012-04-25 mer. 15:47] =>  0:15
      CLOCK: [2012-03-04 dim. 16:17]--[2012-03-04 dim. 17:19] =>  1:02
      CLOCK: [2012-02-24 ven. 10:22]--[2012-02-24 ven. 10:54] =>  0:32
      CLOCK: [2012-02-23 jeu. 18:07]--[2012-02-23 jeu. 18:50] =>  0:43
@@ -56,11 +57,11 @@
 - [X] configure handle for config.h the META_URL define
       and add it to the configure summary
 - [X] DEPENDENCIES files (Xml, Yaml) in each src/ subdirs
-- [ ] libclient/ and libserver/ directories
+- [X] libclient/ and libserver/ directories
       A README in each subdir
-      - [ ] a pkg-config script for each is generated
+      - [X] a pkg-config script for each is generated
 - [X] create README files for subdirs
-**** Create unit tests for 'functions.pm'
+**** TODO Create unit tests for 'functions.pm'
      CLOCK: [2011-07-28 jeu. 17:20]--[2011-07-28 jeu. 17:37] =>  0:17
      CLOCK: [2011-07-28 jeu. 11:59]--[2011-07-28 jeu. 12:27] =>  0:28
 - [ ] Add it to the `make check` rule

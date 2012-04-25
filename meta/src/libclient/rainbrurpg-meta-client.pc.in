@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: RainbruRPG meta client
+Description: The RainbruRPG's meta-server client-side library
+Version: @VERSION@
+Libs: -L${libdir} -lrainbrurpg-@PACKAGE@-client
+Cflags: -I${includedir}/rainbrurpg/@PACKAGE@

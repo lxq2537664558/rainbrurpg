@@ -1,13 +1,22 @@
+2012-04-25  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in: generate both pkg-config file for libclient and 
+	libserver.
+	* src/libserver/rainbrurpg-meta-server.pc.in: first version of the
+	pkg-config compliant file.
+	* src/libclient/rainbrurpg-meta-client.pc.in: first version of the
+	pkg-config compliant file.
+
 2012-03-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: add AC_CONFIG_HEADERS([config.h]).
-	
+
 	* configure.in (RB_META_URL): created configure option and
 	summary details.
 
 2012-02-23  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/foswiki_plugin/function.pm (getServerList): returns an 
+	* src/foswiki_plugin/function.pm (getServerList): returns an
 	empty table if XML file not found.
 	* src/foswiki_plugin/server_list.xml: added example xml file.
 
