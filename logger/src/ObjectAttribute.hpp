@@ -37,7 +37,12 @@ namespace Rpg
   {
   public:
     ObjectAttribute(std::string t, std::string n, std::string v);
-    
+
+    const std::string& getType(void);
+    const std::string& getName(void);
+    const std::string& getValue(void);
+
+  private:
     std::string type;  //!< The internal type of the attribute
     std::string name;  //!< The attribute's name
     std::string value; //!< The value to be logged

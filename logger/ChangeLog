@@ -1,5 +1,15 @@
 2012-04-30  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/LoggerOutputYaml.cpp: uses ObjectInspector accessors.
+	* src/LoggerOutputTty.cpp: uses ObjectInspector accessors.
+	* src/ObjectInspector.hpp: make all members private, accessed through
+	accessors.
+
+	* src/LoggerOutputYaml.cpp: uses ObjectAttribute accessors.
+	* src/LoggerOutputTty.cpp: uses ObjectAttribute accessors.
+	* src/ObjectAttribute.hpp: make all members private, accessed through
+	accessors.
+
 	* logger.spec.in: filename now prefixed with 'rainbrurpg-' to fix
 	conflict with bsdutils' logger binary.
 	* logger.texinfo: filename now prefixed with 'rainbrurpg-' to fix

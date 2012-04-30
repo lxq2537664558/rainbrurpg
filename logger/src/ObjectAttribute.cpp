@@ -39,3 +39,21 @@ Rpg::ObjectAttribute::ObjectAttribute(string vType, string vName,
   type(vType), name(vName), value(vValue)
 {    
 };
+
+const std::string&
+Rpg::ObjectAttribute::getType(void)
+{
+  return this->type;
+}
+
+const std::string& 
+Rpg::ObjectAttribute::getName(void)
+{
+  return this->name;
+}
+
+const std::string& 
+Rpg::ObjectAttribute::getValue(void)
+{
+  return this->value;
+}

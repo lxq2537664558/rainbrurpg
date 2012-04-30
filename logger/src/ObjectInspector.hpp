@@ -47,7 +47,12 @@ namespace Rpg
     
     ObjectInspector& add(std::string name, int value);
     ObjectInspector& add(std::string name, Object&o);
-    
+
+    const std::string& getName(void);
+    const std::string& getAddress(void);
+    std::list<ObjectAttribute> getAttributes(void);
+
+  private:    
     std::string name;                //!< The class name of the inspected object
     std::string address;             //!< Its memory address
     std::list<ObjectAttribute> attributes;//!< The object attributes

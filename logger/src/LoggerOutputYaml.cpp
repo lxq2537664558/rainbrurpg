@@ -78,16 +78,17 @@ Rpg::LoggerOutputYaml::log(const Object&o)
 { 
   ObjectInspector oi = o.inspect();
   mFile << "      - object:"                  << endl
-	<< "        name   : " << oi.name    << endl
-	<< "        address: " << oi.address << endl;
+	<< "        name   : " << oi.getName()    << endl
+	<< "        address: " << oi.getAddress() << endl;
+
+  list<ObjectAttribute> loa = oi.getAttributes();
   list<ObjectAttribute>::iterator iter;
-  for (iter = oi.attributes.begin(); 
-       iter!= oi.attributes.end(); ++iter)
+  for (iter = loa.begin(); iter!= loa.end(); ++iter)
     {
       mFile << "      - attribute:" << endl
-	    << "        type : "<< (*iter).type << endl
-	    << "        name : "<< (*iter).name << endl
-	    << "        value: " << (*iter).value << endl;
+	    << "        type : "<< (*iter).getType() << endl
+	    << "        name : "<< (*iter).getName() << endl
+	    << "        value: " << (*iter).getValue() << endl;
       
     }
 };

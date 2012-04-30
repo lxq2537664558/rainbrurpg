@@ -103,12 +103,12 @@ Rpg::LoggerOutputTty::log(double d)
 void 
 Rpg::LoggerOutputTty::log(const Object& o){ 
   Rpg::ObjectInspector oi = o.inspect();
-  cout << " <" << oi.name << ':' << oi.address << ">[";
+  cout << " <" << oi.getName() << ':' << oi.getAddress() << ">[";
+  list<ObjectAttribute> loa = oi.getAttributes();
   list<ObjectAttribute>::iterator iter;
-  for (iter = oi.attributes.begin(); 
-       iter!= oi.attributes.end(); ++iter)
+  for (iter = loa.begin(); iter!= loa.end(); ++iter)
     {
-      cout << (*iter).name << "=" << (*iter).value <<';';
+      cout << (*iter).getName() << "=" << (*iter).getValue() <<';';
     }
   cout << "]";
 };

@@ -80,3 +80,22 @@ Rpg::ObjectInspector::add(string name, Object& o)
   attributes.push_back(ObjectAttribute("int", name, "Nested object"));
   return *this;
 };
+
+
+const std::string& 
+Rpg::ObjectInspector::getName(void)
+{
+  return this->name;
+}
+
+const std::string& 
+Rpg::ObjectInspector::getAddress(void)
+{
+  return this->address;
+}
+
+std::list<Rpg::ObjectAttribute> 
+Rpg::ObjectInspector::getAttributes(void)
+{
+  return this->attributes;
+}
