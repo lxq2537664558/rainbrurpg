@@ -2,7 +2,11 @@
 
 * v1.0.0
 ** v0.1.0
-*** v0.0.1
+*** v0.0.2 to YAML output v2
+**** Add platform dependant header data
+**** Add platform dependant log data
+- [ ] Logger may log process time
+*** v0.0.1 to a v1 YAML output
 **** May also handle Environment variables, config file...
       To know what level to output, configure Tty logger etc...
 **** handle end-user program options
@@ -27,12 +31,20 @@
 - [ ] Maybe use kwalify to test YAML file
       see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
 - [ ] YAML output versionning
+      Explain it in texinfo manual
       - [ ] v1: platform independant infos
       - [ ] v2: Add some platform dependant infos
 	    Process time, OS name, datetime of execution, compilation flags
       - [ ] v3: sigsegv trap handling
-- [ ] Should find or create a suitable property editor 
+- [ ] Should find or create a suitable property editor widget
+      I can't find a suitable widget, neither in /designer/, neither
+      in the API, but we can test the following URL
+      http://qt-apps.org/content/show.php/QPropertyEditor?content=68684
+      How to make a ruby binging for this ?
+- [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
+      button
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-04-30 lun. 17:15]--[2012-04-30 lun. 17:51] =>  0:36
      CLOCK: [2012-03-20 mar. 19:26]--[2012-03-20 mar. 19:46] =>  0:20
      CLOCK: [2012-03-20 mar. 18:46]--[2012-03-20 mar. 19:04] =>  0:18
      CLOCK: [2012-03-14 mer. 17:50]--[2012-03-14 mer. 18:33] =>  0:43
@@ -116,8 +128,10 @@
       - [X] gettext must handle TRANSLATORS comments
 - [X] Find other translatable strings
 - [X] May move configure.in DEFUN to m4/
-- [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
-      button
-- [ ] Logger may log process time
+- [ ] A bin from this library is in conflict with bsdutils's logger
+      Fix this
+      - [ ] Prefix manual and texinfo called 'logger' with 'rainbrurpg-'
+      - [ ] Is there a binary called logger ?
 - [ ] Many members must be private
 - [ ] Must escape some characters (`, :)
+- [ ] Must update texinfo for v1 YAML output

@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c This file uses the @command command introduced in Texinfo 4.0.
 @c %**start of header
-@setfilename logger.info
+@setfilename rainbrurpg-logger.info
 @settitle The RainbruRPG's stream-oriented multi-output logging library
 @finalout
 @setchapternewpage odd
@@ -37,7 +37,7 @@ by the Foundation.
 @end ifinfo
 
 @titlepage
-@title logger
+@title rainbrurpg-logger
 @subtitle The RainbruRPG's stream-oriented multi-output logging library
 @subtitle for logger Version @value{VERSION}
 @author by Jérôme Pasquier

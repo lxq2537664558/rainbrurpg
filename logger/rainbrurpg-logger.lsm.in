@@ -1,10 +1,10 @@
 Begin3
-Title:		logger
+Title:		rainbrurpg-logger
 Version:	@VERSION@
 Entered-date:	@ISODATE@
 Description:	The RainbruRPG's stream-oriented multi-output logging library
 		@configure_input@
-		Please edit logger.lsm.in to fix the Keywords and
+		Please edit rainbrurpg-logger.lsm.in to fix the Keywords and
 		Primary-site entries, add several more lines of
 		description here if appropriate, and to delete these
 		instructions.
@@ -13,7 +13,7 @@ Author: 	rainbru@free.fr (Jérôme Pasquier)
 Maintained-by:	rainbru@free.fr (Jérôme Pasquier)
 Primary-site:	metlab.unc.edu pub/Linux/apps/some/directory
 		31k logger-@VERSION@.tar.gz
-		500  logger.lsm
+		500  rainbrurpg-logger.lsm
 Alternate-site: 
 Original-site:  
 Platforms:      

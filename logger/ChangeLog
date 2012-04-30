@@ -1,3 +1,12 @@
+2012-04-30  Jérôme Pasquier  <rainbru@free.fr>
+
+	* logger.spec.in: filename now prefixed with 'rainbrurpg-' to fix
+	conflict with bsdutils' logger binary.
+	* logger.texinfo: filename now prefixed with 'rainbrurpg-' to fix
+	conflict with bsdutils' logger binary.
+	* logger.1: filename now prefixed with 'rainbrurpg-' to fix
+	conflict with bsdutils' logger binary.
+
 2012-03-20  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: some checks move to the m4/ directory.

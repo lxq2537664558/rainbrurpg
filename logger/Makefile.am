@@ -3,9 +3,15 @@ SUBDIRS= po src
 ACLOCAL_AMFLAGS = -I m4
 
 #  install the man pages
-man_MANS = logger.1
-EXTRA_DIST = config.rpath m4/ChangeLog logger.lsm.in system.h aclocal.m4 \
-	gettext.h logger.1
+man_MANS = rainbrurpg-logger.1
+EXTRA_DIST = config.rpath 		\
+	     m4/ChangeLog 		\
+	     rainbrurpg-logger.lsm.in	\
+	     system.h 			\
+	     aclocal.m4 		\
+	     gettext.h 			\
+	     rainbrurpg-logger.spec.in	\
+	     rainbrurpg-logger.1
 
 #  uncomment the following if logger requires the math library
 #logger_LDADD=-lm
@@ -15,7 +21,7 @@ EXTRA_DIST = config.rpath m4/ChangeLog logger.lsm.in system.h aclocal.m4 \
 #TESTS=chk
 
 #  build and install the .info pages
-info_TEXINFOS = logger.texinfo
+info_TEXINFOS = rainbrurpg-logger.texinfo
 logger_TEXINFOS = gpl.texinfo
 
 # pkg-config file

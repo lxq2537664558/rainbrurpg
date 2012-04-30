@@ -46,12 +46,16 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 
 dnl Checks for library functions.
 
-AC_OUTPUT([			 po/Makefile.in\
+AC_OUTPUT([			\
+  po/Makefile.in		\
   Makefile	       		\
   src/Makefile 	       		\
   src/tools/Makefile   		\
   src/examples/Makefile		\
-  logger.lsm logger.spec rainbrurpg-logger.pc])
+  rainbrurpg-logger.lsm 	\
+  rainbrurpg-logger.spec 	\
+  rainbrurpg-logger.pc
+])
 
 echo
 echo "------------------------------------------------------------------------"

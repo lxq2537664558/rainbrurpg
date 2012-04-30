@@ -1,3 +1,12 @@
+* v0.0.0-7 (07 jan 2012 - 14 mar 2012) SLOC 1,131 FT 21:40
+- Now using gettext for i18n
+- Integrates Boost.Format in configure and DEPENDENCIES
+- Removed some po/ files from SVN
+- Add gettext support
+- Improved project setup
+   svn repo cleanup, DEPENDENCIES file
+- Removed autoproject generated files
+
 * v0.0.0-6 (07 jan 2012 - 04 feb 2012) SLOC 957 FT 18:30
 - log_reader shows a dialog if YAML nodes are missing
 - Added missing files to archive
