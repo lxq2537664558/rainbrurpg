@@ -129,6 +129,7 @@ def get_node_content(yaml_tree, node_name)
 end
 
 def parse_logfile_v1(tree, window) # A YAML tree
+  puts "Parsing logfile version 1"
   lfd = LogfileDetails.new
   lfd.logfile_version = "1"
   $missing_nodes.version=1
@@ -149,7 +150,7 @@ def parse_logfile_v1(tree, window) # A YAML tree
     ld.line     =  line.select('line')[0].value
     window.addLineDetails ld
   end
-
+  puts "Finished parsing logfile version 1"
   return lfd
 end
 
@@ -165,7 +166,6 @@ def open_file(filename, window)
   else
     throw "logfile version #{logfile_version} not handled"
   end
-
 end #def open_file
 
 class MainWindow < Ui_MainWindow
@@ -236,10 +236,15 @@ btn=$missing_nodes.check
 
   See the ErrorTrap#show_dialog function to know how to test it.
 =end
+puts "Starting UI..."
+=begin
+  The following lines make the window application never show.
+
 unless btn == Qt::MessageBox::Ok
   w.close
   a.exit
   a.emit(SIGNAL('lastWindowClosed()'))
 #  exit 0
 end
+=end
 a.exec

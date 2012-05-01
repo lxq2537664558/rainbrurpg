@@ -17,8 +17,9 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in
 
 * v0.0.0-8 (14 mar 2012 - ???) SLOC ??? FT ??:??
+- (5) Escaped several string in YAML output
 - (4) Make some members private in ObjectInspector and ObjectAttribute
-- (3) Avoid name conflixt with bsdutils' logger by prefixing filename
+- (3) Avoid name conflict with bsdutils' logger by prefixing filename
    manual page, texinfo, logger.spec.in file
 - Move some ./configure.in checks to the m4/ directory
 - Found some translatable files

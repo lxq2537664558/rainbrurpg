@@ -44,6 +44,7 @@
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-05-01 mar. 09:51]--[2012-05-01 mar. 10:21] =>  0:30
      CLOCK: [2012-04-30 lun. 19:22]--[2012-04-30 lun. 20:09] =>  0:47
      CLOCK: [2012-04-30 lun. 17:15]--[2012-04-30 lun. 17:51] =>  0:36
      CLOCK: [2012-03-20 mar. 19:26]--[2012-03-20 mar. 19:46] =>  0:20
@@ -134,5 +135,5 @@
       - [X] Prefix manual and texinfo called 'logger' with 'rainbrurpg-'
       - [X] Is there a binary called logger ? NO
 - [X] Many members must be private
-- [ ] Must escape some characters (`, :) in YAML output
+- [X] Must escape some characters with double quotes (`, :) in YAML output
 - [ ] Must update texinfo for v1 YAML output

@@ -25,6 +25,9 @@
 
 #include "LoggerOutputYaml.hpp"
 
+// A simple shortcut macro to Rpg::LoggerOutputYaml::escape()
+#define _e(STR) (this->escape(STR))
+
 using namespace std;
 
 /** Opens the YAML file
@@ -48,9 +51,9 @@ void
 Rpg::LoggerOutputYaml::startLog(LogLevel vLevel, const string& vLogDomain, 
 				const string& vFilename, const string& vLine)
 {
-  mFile << "  - level    : " << ll_to_str(vLevel) << endl
-	<< "    domain   : " << vLogDomain        << endl
-	<< "    filename : " << vFilename         << endl
+  mFile << "  - level    : " << _e(ll_to_str(vLevel)) << endl
+	<< "    domain   : " << _e(vLogDomain)        << endl
+	<< "    filename : " << _e(vFilename)         << endl
 	<< "    line     : " << vLine             << endl
 	<< "    content  : " << endl;
 };
@@ -64,7 +67,7 @@ Rpg::LoggerOutputYaml::endLog()
 void 
 Rpg::LoggerOutputYaml::log(const string& str)
 {  
-  mFile << "      - string : " << escape(str) << endl;  
+  mFile << "      - string : " << _e(str) << endl;  
 };
 
 void 
@@ -78,8 +81,8 @@ Rpg::LoggerOutputYaml::log(const Object&o)
 { 
   ObjectInspector oi = o.inspect();
   mFile << "      - object:"                  << endl
-	<< "        name   : " << oi.getName()    << endl
-	<< "        address: " << oi.getAddress() << endl;
+	<< "        name   : " << _e(oi.getName())    << endl
+	<< "        address: " << _e(oi.getAddress()) << endl;
 
   list<ObjectAttribute> loa = oi.getAttributes();
   list<ObjectAttribute>::iterator iter;
@@ -87,8 +90,8 @@ Rpg::LoggerOutputYaml::log(const Object&o)
     {
       mFile << "      - attribute:" << endl
 	    << "        type : "<< (*iter).getType() << endl
-	    << "        name : "<< (*iter).getName() << endl
-	    << "        value: " << (*iter).getValue() << endl;
+	    << "        name : "<< _e((*iter).getName()) << endl
+	    << "        value: " << _e((*iter).getValue()) << endl;
       
     }
 };
@@ -98,8 +101,8 @@ Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
 {
   mFile << "logfile-version : 1" << endl
         << "program:" << endl
-	<< "  name   : "<< escape(lh->program_name) << endl
-	<< "  version: "<< lh->program_version << endl
+	<< "  name   : "<< _e(lh->program_name) << endl
+	<< "  version: "<< _e(lh->program_version) << endl
 	<< "  compil-date: "<< lh->compil_date << endl
 	<< "  compil-time: "<< lh->compil_time << endl
 	<< "  exec-date: "<< lh->exec_date << endl
