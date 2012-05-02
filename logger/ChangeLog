@@ -1,5 +1,13 @@
 2012-05-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* rainbrurpg-logger.texinfo: now really rainbrurpg-logger related.
+	Was an autoproject skeleton.
+
+	* src/Logger.cpp (init): handle '?' shortcut for help and 'V' for
+	version as command line options.
+
+2012-05-01  Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/tools/log_reader.rb: fix a bug preventing main window to appear.
 
 	* src/LoggerOutputYaml.cpp: many output functinos now use the

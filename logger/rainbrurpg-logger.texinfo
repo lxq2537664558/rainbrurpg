@@ -7,10 +7,11 @@
 @setchapternewpage odd
 @c %**end of header
 
-@set VERSION 0.1.0
+@set VERSION 0.0.0-9
 
 @ifinfo
-This file documents the @command{logger} command which The RainbruRPG's stream-oriented multi-output logging library
+This file documents the @command{rainbrurpg-logger} command which is the 
+RainbruRPG's stream-oriented multi-output logging library
 
 Copyright (C) 2011 Jérôme Pasquier
 
@@ -40,11 +41,11 @@ by the Foundation.
 @title rainbrurpg-logger
 @subtitle The RainbruRPG's stream-oriented multi-output logging library
 @subtitle for logger Version @value{VERSION}
-@author by Jérôme Pasquier
+@author by J@'er@^ome Pasquier
 
 @page
 @vskip 0pt plus 1filll
-Copyright @copyright{} 2011 Jérôme Pasquier
+Copyright @copyright{} 2011-2012 J@'er@^ome Pasquier
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -66,7 +67,8 @@ by the Foundation.
 @node Top, Instructions, (dir), (dir)
 
 @ifinfo
-This file documents the @command{logger} command to The RainbruRPG's stream-oriented multi-output logging library.
+This file documents the @command{rainbrurpg-logger} stream-oriented
+multi-output logging library used by @command{RainbruRPG}.
 @end ifinfo
 
 @c All the menus can be updated with the EMACS command
@@ -87,14 +89,11 @@ This file documents the @command{logger} command to The RainbruRPG's stream-orie
 @cindex reading
 @cindex manual, how to read
 @cindex how to read
-To read this manual, begin at the beginning, reading from left to right
-and top to bottom, until you get to the end.  Then stop.  You may pause
-for a beer anywhere in the middle as well, if you wish.  (Please note,
-however, that The King strongly advises against heavy use of
-prescription pharmaceuticals, based on his extensive personal and
-professional experience.)
+This manual briefly presents the @emph{rainbrurpg logger} library, its usage,
+command line options and main features.
 
 @node Copying, Overview, Instructions, Top
+@chapter Copying
 @include gpl.texinfo
 
 @node Overview, Sample, Copying, Top
@@ -102,37 +101,60 @@ professional experience.)
 @cindex greetings
 @cindex overview
 
-The GNU @command{logger} program produces a familiar, friendly greeting.
-It allows nonprogrammers to use a classic computer science tool which
-would otherwise be unavailable to them.  Because it is protected by the
-GNU General Public License, users are free to share and change it.
+The GNU @command{rainbrurpg-logger} is a stream-oriented, multi-output
+library. It is packaged with a @emph{log-reader} application to read
+@strong{YAML} output to make easier log analysis after program execution.
 
-GNU @command{logger} was written by Jérôme Pasquier.
+GNU @command{rainbrurpg-logger} library was written by J@'er@^ome Pasquier.
 
 @node Sample, Invoking logger, Overview, Top
 @chapter Sample Output
-@cindex sample
+@cindex sample, macros
 
-Here are some realistic examples of running @command{logger}.
+Here are a realistic example of using the @command{rainbrurpg-logger}
+library. The @emph{Logger.hpp} header defines some shortcut macros named
+according to its log level.
 
-This is the output of the command @samp{logger}:
+@table @emph
+@item LOGD
+Log this message at @strong{debug} level, the less important one.
+@item LOGV
+With @strong{verbose} level, a bit more interesting that the previous one.
+@item LOGI
+@strong{informative} level for informations on normal program execution.
+@item LOGW
+the @strong{warning} level. Something goes wrong, but may be ignored in
+many cases.
+@item LOGE
+Log this message at @strong{error} level. An error occurs and the program
+may crash.
+@item LOGC
+the @strong{crirical} level indicates the program can't recover from an
+error. Please feed a bug report.
+@end table
 
+Here how you can use the @command{logger} library :
 @example
-hello, world!
+#include <Logger.hpp>
+
+int
+main(int argc, char** argv)
+@{
+  Rpg::Logger::init();
+  Rpg::Logger::parse_program_options(argc, argv);
+
+  LOGI("This is my new logger");
+  LOGI("Testing it with Carine");
+  LOGI(78 << "A string " << 'R');
+  LOGW("It's a warning");
+  LOGC("A critical error occurs");
+
+  Rpg::Logger::free();
+  return 0;
+@}
 @end example
 
-This is the output of the command @samp{logger --help}:
-
-@example
-Usage: logger [OPTION...] [FILE...]
-The RainbruRPG's stream-oriented multi-output logging library
-
-  -?, --help                 Give this help list
-      --usage                Give a short usage message
-  -V, --version              Print program version
-
-Report bugs to <rainbru@@free.fr>.
-@end example
+It will produce @emph{tty}, @emph{plain text} and @emph{yaml} files.
 
 @node Invoking logger, Problems, Sample, Top
 @chapter Invoking @command{logger}
@@ -143,13 +165,13 @@ Report bugs to <rainbru@@free.fr>.
 @cindex help
 @cindex getting help
 
-The format for running the @command{logger} program is:
+The format for running a @command{rainbrurpg-logger} based program is:
 
 @example
-logger @var{option} @dots{}
+[executable] @var{option} @dots{}
 @end example
 
-@code{logger} supports the following options:
+@code{rainbrurpg-logger} supports the following options:
 
 @c Formatting copied from the Texinfo 4.0 manual.
 @table @code
@@ -158,12 +180,9 @@ logger @var{option} @dots{}
 Print an informative help message describing the options and then exit
 successfully.
 
-@item --usage
-Briefly list the options.
-
 @item --version
 @itemx -V
-Print the version number of @command{logger} on the standard output
+Print the version number of @command{rainbrurpg-logger} on the standard output
 and then exit successfully.
 @end table
 
@@ -172,13 +191,15 @@ and then exit successfully.
 @cindex bugs
 @cindex problems
 
-If you find a bug in @command{logger}, please send electronic mail to
-@email{rainbru@@free.fr}.  Include the version number, which you can find by
-running @w{@samp{logger --version}}.  Also include in your message the
-output that the program produced and the output you expected.@refill
+If you find a bug in the @command{rainbrurpg-logger} library, please send 
+electronic mail to @email{rainbru@@free.fr}. Do not report bug about a
+program using the library, but the library itself.
+Include the version number, which you can find by
+running @w{@samp{[executable] --version}}.  Also include in your message 
+the output that the program produced and the output you expected.@refill
 
 If you have other questions, comments or suggestions about
-@command{logger}, contact the author via electronic mail to
+@command{rainbrurpg-logger}, contact the author via electronic mail to
 @email{rainbru@@free.fr}.  The author will try to help you out, although he
 may not have time to fix your problems.
 

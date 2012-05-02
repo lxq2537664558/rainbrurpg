@@ -1,3 +1,12 @@
+* v0.0.0-8 (14 mar 2012 - 02 may 2012) SLOC 1,176 FT 25:15
+- Updated texinfo manual
+- Escaped several string in YAML output
+- Make some members private in ObjectInspector and ObjectAttribute
+- Avoid name conflict with bsdutils' logger by prefixing filename
+   manual page, texinfo, logger.spec.in file
+- Move some ./configure.in checks to the m4/ directory
+- Found some translatable files
+
 * v0.0.0-7 (07 jan 2012 - 14 mar 2012) SLOC 1,131 FT 21:40
 - Now using gettext for i18n
 - Integrates Boost.Format in configure and DEPENDENCIES

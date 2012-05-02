@@ -14,12 +14,6 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    (6 items by revision)
    SLOC is the result of `sloccount src/`
    FT is the ROADMAP file time
-   Please update version and revision in configure.in
+   Please update version and revision in configure.in and texinfo manual
 
-* v0.0.0-8 (14 mar 2012 - ???) SLOC ??? FT ??:??
-- (5) Escaped several string in YAML output
-- (4) Make some members private in ObjectInspector and ObjectAttribute
-- (3) Avoid name conflict with bsdutils' logger by prefixing filename
-   manual page, texinfo, logger.spec.in file
-- Move some ./configure.in checks to the m4/ directory
-- Found some translatable files
+* v0.0.0-9 (02 may 2012 - ???) SLOC ??? FT ??:??

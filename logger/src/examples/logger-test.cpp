@@ -42,6 +42,7 @@ main(int argc, char** argv)
   /*  void log(LogLevel vLogLevel, const string& filename, const string&line,
 	   const string& format, Args... args)
   */
+
   LOGI("This is my new logger");
   LOGI("Testing it with Carine");
   LOGI(78 << "A string " << 'R');
