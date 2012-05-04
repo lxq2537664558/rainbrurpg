@@ -115,7 +115,9 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
-- (11) CamelCased some files in client/
+- (12) CamelCased some files in client/
+   GsUpdateDatafiles, GuiFrameListener, GuiManager, LanguageSelector
+- CamelCased some files in client/
    ExampleFrameListener, GsConnection, GsCreateAccount, GsMainMenu
    GsMenuBase, GsOgreguiTest, GsServerList
 - CamelCased some files in maincore/

@@ -121,4 +121,7 @@ src/client/GsMainMenu.cpp
 src/client/GsMenuBase.cpp
 src/client/GsOgreguiTest.cpp
 src/client/GsServerList.cpp
-
+src/client/GsUpdateDatafiles.cpp
+src/client/GuiFrameListener.cpp
+src/client/GuiManager.cpp
+src/client/LanguageSelector.cpp

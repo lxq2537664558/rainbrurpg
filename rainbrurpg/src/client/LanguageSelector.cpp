@@ -20,7 +20,7 @@
  *
  */
 
-/** \file languageselector.cpp
+/** \file LanguageSelector.cpp
   * Implementation of the client's language selector
   *
   *
@@ -28,7 +28,7 @@
 
 #include <iostream>
 
-#include "languageselector.h"
+#include "LanguageSelector.hpp"
 #include <Options.hpp>
 #include <XmlOptions.hpp>
 

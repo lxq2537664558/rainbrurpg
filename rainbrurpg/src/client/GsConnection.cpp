@@ -26,7 +26,7 @@
   */
 
 #include "GsConnection.hpp"
-#include "guimanager.h"
+#include "GuiManager.hpp"
 
 #include <KeyboardNavigation.hpp>
 

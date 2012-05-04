@@ -20,7 +20,7 @@
  *
  */
 
-/** \file guimanager.h
+/** \file GuiManager.hpp
   * Declares a singleton used to manage GUI
   *
   * Modifications :

@@ -1,4 +1,4 @@
- /*
+/*
  *  Copyright 2006-2012 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
@@ -20,38 +20,27 @@
  *
  */
 
-/** \file gsupdatedatafiles.h
-  * Declares the state showing the datafiles that need to be updated
-  *
-  * Modifications :
-  * - 16 aug 2008 : Single file documentation
-  * - 30 jul 2007 : Starting implementation
+/** \file GsUpdateDatafiles.cpp
+  * Implements the state showing the datafiles that need to be updated
   *
   */
 
-#ifndef _GS_UPDATE_DATAFILES_H_
-#define _GS_UPDATE_DATAFILES_H_
+#include "GsUpdateDatafiles.hpp"
 
-#include "GsMenuBase.hpp"
-#include "guimanager.h"
+#include "GuiManager.hpp"
 
-#include <VcConstant.hpp>
+/** The default constructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::gsUpdateDatafiles()
+  :gsMenuBase("gsUpdateDatafiles", false){
 
-namespace RainbruRPG {
-  namespace Core{
 
-    /** A game state used to show client update progression
-      *
-      *
-      *
-      */
-    class gsUpdateDatafiles : public gsMenuBase{
-    public:
-      gsUpdateDatafiles();
-      virtual ~gsUpdateDatafiles();
-    };
-  }
 }
 
-#endif // _GS_UPDATE_DATAFILES_H_
+/** The destructor
+  *
+  */
+RainbruRPG::Core::gsUpdateDatafiles::~gsUpdateDatafiles(){
 
+}

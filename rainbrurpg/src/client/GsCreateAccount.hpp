@@ -37,7 +37,6 @@
 #include <CurlAccountAdd.hpp>
 
 #include "GsMenuBase.hpp"
-#include "guimanager.h"
 #include "bglistener.h"
 
 #include <VcConstant.hpp>

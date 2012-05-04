@@ -20,7 +20,7 @@
  *
  */
 
-/** \file guiframelistener.h
+/** \file GuiFrameListener.hpp
   * Declares a frame listener designed for User Interface game state
   *
   * Modifications :
@@ -35,7 +35,6 @@
 
 #include "ExampleFrameListener.hpp"
 
-#include "guimanager.h"
 #include "GameEngine.hpp"
 
 using namespace RainbruRPG::Gui;

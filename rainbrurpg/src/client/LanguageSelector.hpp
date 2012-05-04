@@ -20,7 +20,7 @@
  *
  */
 
-/** \file languageselector.h
+/** \file LanguageSelector.hpp
   * Header file of the client's language selector
   *
   * Modifications :

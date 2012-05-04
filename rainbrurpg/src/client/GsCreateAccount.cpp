@@ -27,9 +27,10 @@
 
 #include "GsCreateAccount.hpp"
 
+#include "GuiManager.hpp"
+
 //#include <curlaccountadd.h>
 #include <Logger.hpp>
-
 #include <KeyboardNavigation.hpp>
 
 /*#include "ogreGui/bgwindow.h"

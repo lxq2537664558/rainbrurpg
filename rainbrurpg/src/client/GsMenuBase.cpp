@@ -43,7 +43,7 @@
 #include <InputManager.hpp>
 
 #include "GameEngine.hpp"
-#include "guimanager.h"
+#include "GuiManager.hpp"
 #include "bggui.h"
 
 #include <InputWrapper.hpp>

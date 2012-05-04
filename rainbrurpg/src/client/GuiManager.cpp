@@ -20,12 +20,12 @@
  *
  */
 
-/** \file guimanager.cpp
+/** \file GuiManager.cpp
   * Implements a singleton used to manage GUI
   *
   */
 
-#include "guimanager.h"
+#include "GuiManager.hpp"
 
 #include "config.h"
 
@@ -352,7 +352,7 @@ void RainbruRPG::Gui::GuiManager::destroyTitleOverlay(){
   * give the focus to \c widget when it is closed.
   *
   * \note A conditionnal warning is available through the 
-  *       MGM_SHOW_MESSAGE_BOX_WARNING you can find in the \ref guimanager.h 
+  *       MGM_SHOW_MESSAGE_BOX_WARNING you can find in the \ref GuiManager.hpp 
   *       file. If this macro is defined, a warning message is sent to the
   *       logger when this function is called. It has been used when
   *       switching to the \ref setErrorMessage() function.
@@ -369,7 +369,7 @@ showMessageBox(const String& title, const String& message){
   LOGW("*************************************");
   LOGW("You are about to use a function that should be used only if you	\
    do not want to use the setErrorMessage() function instead. You can	\
-   disable this warning from the file maincore/guimanager.h");
+   disable this warning from the file GuiManager.hpp");
   LOGW("*************************************");
 
 #endif // !MGM_SHOW_MESSAGE_BOX_WARNING

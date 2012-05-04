@@ -36,10 +36,10 @@
 
 #include "GameEngine.hpp"
 #include <Logger.hpp>
-#include "guimanager.h"
+#include "GuiManager.hpp"
 #include "skinmanager.h"
 #include "bggui.h"
-#include "guiframelistener.h"
+#include "GuiFrameListener.hpp"
 #include <renderqueuelistener.h>
 
 #include <Version.hpp>
@@ -57,7 +57,7 @@
 #include "GsConnection.hpp"
 #include "GsCreateAccount.hpp"
 #include "GsServerList.hpp"
-#include "gsupdatedatafiles.h"
+#include "GsUpdateDatafiles.hpp"
 
 #include "GsOgreguiTest.hpp"
 

@@ -28,11 +28,11 @@ rainbrurpg_HEADERS= ExampleFrameListener.hpp  		\
 		    GsMenuBase.hpp			\
 		    GsOgreguiTest.hpp  			\
 	            GsServerList.hpp  			\
-		    gsupdatedatafiles.h  		\
-	    	    languageselector.h			\
-		    guiframelistener.h   		\
+		    GsUpdateDatafiles.hpp  		\
+		    GuiFrameListener.hpp   		\
+		    GuiManager.hpp         		\
+	    	    LanguageSelector.hpp		\
 	            launcher.h				\
-		    guimanager.h         		\
 		    launcheroptions.h
 
 rainbrurpg_SOURCES= ExampleFrameListener.cpp		\
@@ -42,13 +42,13 @@ rainbrurpg_SOURCES= ExampleFrameListener.cpp		\
 		    GsMenuBase.cpp                      \
 		    GsOgreguiTest.cpp			\
 		    GsServerList.cpp			\
-	            gsupdatedatafiles.cpp		\
-		    guiframelistener.cpp		\
-		    guimanager.cpp			\
+	            GsUpdateDatafiles.cpp		\
+		    GuiFrameListener.cpp		\
+		    GuiManager.cpp	 		\
+		    LanguageSelector.cpp		\
 		    launcher.cpp			\
 		    launcheroptions.cpp			\
-		    main.cpp	 			\
-		    languageselector.cpp		
+		    main.cpp
 
 INCLUDES = -I$(top_srcdir)/ext				\
 	   -I$(top_srcdir)/src/common			\

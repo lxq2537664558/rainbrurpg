@@ -27,6 +27,8 @@
 
 #include "GsServerList.hpp"
 
+#include "GuiManager.hpp"
+
 #include <StringConv.hpp>
 #include <Logger.hpp>
 

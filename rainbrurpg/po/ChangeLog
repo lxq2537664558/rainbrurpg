@@ -1,3 +1,6 @@
+2012-05-04  Jerome Pasquier  <rainbru@free.fr>
+	* POTFILES.in: Added sources from src/client/.
+
 2012-04-11  Jerome Pasquier  <rainbru@free.fr>
 	* POTFILES.in: Added sources from src/client/.
 
