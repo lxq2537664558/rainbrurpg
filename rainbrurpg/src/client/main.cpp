@@ -63,12 +63,12 @@
 
 #include <GsLocalTest.hpp>
 
-/** To avoid a double definition of PI, launcher.h, that include Ogre3D
+/** To avoid a double definition of PI, Launcher.hpp, that include Ogre3D
   * headers must be included before fox headers. Fox and Ogre both defines 
   * PI (fxdefs.h and OgreMath.h).
   *
   */
-#include "launcher.h"
+#include "Launcher.hpp"
 #include <fox-1.6/fx.h>
 #include <OptionManager.hpp>
 

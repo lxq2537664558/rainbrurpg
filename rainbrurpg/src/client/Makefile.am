@@ -32,8 +32,8 @@ rainbrurpg_HEADERS= ExampleFrameListener.hpp  		\
 		    GuiFrameListener.hpp   		\
 		    GuiManager.hpp         		\
 	    	    LanguageSelector.hpp		\
-	            launcher.h				\
-		    launcheroptions.h
+	            Launcher.hpp			\
+		    LauncherOptions.hpp
 
 rainbrurpg_SOURCES= ExampleFrameListener.cpp		\
 		    GsConnection.cpp			\
@@ -46,8 +46,8 @@ rainbrurpg_SOURCES= ExampleFrameListener.cpp		\
 		    GuiFrameListener.cpp		\
 		    GuiManager.cpp	 		\
 		    LanguageSelector.cpp		\
-		    launcher.cpp			\
-		    launcheroptions.cpp			\
+		    Launcher.cpp			\
+		    LauncherOptions.cpp			\
 		    main.cpp
 
 INCLUDES = -I$(top_srcdir)/ext				\

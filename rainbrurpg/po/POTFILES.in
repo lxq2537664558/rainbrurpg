@@ -125,3 +125,5 @@ src/client/GsUpdateDatafiles.cpp
 src/client/GuiFrameListener.cpp
 src/client/GuiManager.cpp
 src/client/LanguageSelector.cpp
+src/client/Launcher.cpp
+src/client/LauncherOptions.cpp

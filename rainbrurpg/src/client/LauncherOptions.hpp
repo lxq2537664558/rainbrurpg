@@ -20,7 +20,7 @@
  *
  */
 
-/** \file launcheroptions.h
+/** \file LauncherOptions.hpp
   * Header file of the client's options editor
   *
   * Modifications :

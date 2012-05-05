@@ -20,16 +20,16 @@
  *
  */
 
-/** \file launcher.cpp
+/** \file Launcher.cpp
   * The implementation of the Fox-toolkit based launcher
   *
   *
   */
-#include "launcher.h"
+#include "Launcher.hpp"
 
 #include <iostream>
 
-#include "launcheroptions.h"
+#include "LauncherOptions.hpp"
 #include "LanguageSelector.hpp"
 #include "GameEngine.hpp"
 

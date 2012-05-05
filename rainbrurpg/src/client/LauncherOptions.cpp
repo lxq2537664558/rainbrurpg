@@ -20,7 +20,7 @@
  *
  */
 
-/** \file launcheroptions.cpp
+/** \file LauncherOptions.cpp
   * The implementation of the Fox-toolkit based options editor
   *
   *
@@ -28,7 +28,7 @@
 
 #include <iostream>
 
-#include "launcheroptions.h"
+#include "LauncherOptions.hpp"
 #include <Options.hpp>
 #include <XmlOptions.hpp>
 

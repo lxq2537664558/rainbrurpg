@@ -1,3 +1,11 @@
+2012-05-05 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/client/launcheroptions.h|.cpp: CamelCased and header called hpp.
+	* src/client/launcher.h|.cpp: CamelCased and header called hpp.
+
 2012-05-04 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/Makefile.am (h_sources, cc_sources): Handles CamelCased

@@ -20,7 +20,7 @@
  *
  */
 
-/** \file client/launcher.h
+/** \file Launcher.hpp
   *
   * The declaration file of the class \ref RainbruRPG::Gui::Launcher "Launcher"
   *
