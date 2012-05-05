@@ -20,7 +20,7 @@
  *
  */
 
-/** \file filepreview.h
+/** \file FilePreview.hpp
   * Declares a class that creates a dialog used to preview a file.
   *
   * Modifications :

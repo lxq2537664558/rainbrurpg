@@ -20,12 +20,12 @@
  *
  */
 
-/** \file filetypeguesser.cpp
+/** \file FileTypeGuesser.cpp
   * Implements a class that try to guess the type of a file
   *
   */
 
-#include "filetypeguesser.h"
+#include "FileTypeGuesser.hpp"
 
 #include <logger.h>
 

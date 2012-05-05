@@ -26,17 +26,17 @@ lib_LTLIBRARIES = librainbrurpg-design.la
 
 librainbrurpg_design.adir=.
 
-h_sources =filetypeguesser.h		\
-	   helpviewer.h			\
-	   filepreview.h
+h_sources =FilePreview.hpp		\
+	   FileTypeGuesser.hpp		\
+	   HelpViewer.hpp
 
-MOC_FILES = moc_helpviewer.cpp		\
-	   moc_filepreview.cpp
+MOC_FILES = moc_HelpViewer.cpp		\
+	    moc_FilePreview.cpp
 
 
-cc_sources=filetypeguesser.cpp		\
-	   helpviewer.cpp		\
-	   filepreview.cpp		\
+cc_sources=FilePreview.cpp		\
+	   FileTypeGuesser.cpp		\
+	   HelpViewer.cpp		\
 	   \
 	   $(MOC_FILES)
 

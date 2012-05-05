@@ -20,7 +20,7 @@
  *
  */
 
-/** \file filetypeguesser.h
+/** \file FileTypeGuesser.hpp
   * Declares a class that try to guess the type of a file
   *
   * Modifications :

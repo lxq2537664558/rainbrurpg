@@ -1,5 +1,12 @@
 2012-05-05 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/design/Makefile.am (h_sources, cc_sources): Handles CamelCased
+	files and new header names.
+
+	* src/design/helpviewer.h|.cpp: CamelCased and header called hpp.
+	* src/design/filetypeguesser.h|.cpp: CamelCased and header called hpp.
+	* src/design/filepreview.h|.cpp: CamelCased and header called hpp.
+
 	* src/client/Makefile.am (h_sources, cc_sources): Handles CamelCased
 	files and new header names.
 

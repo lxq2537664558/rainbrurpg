@@ -127,3 +127,8 @@ src/client/GuiManager.cpp
 src/client/LanguageSelector.cpp
 src/client/Launcher.cpp
 src/client/LauncherOptions.cpp
+
+# The design library
+src/design/FilePreview.cpp
+src/design/FileTypeGuesser.cpp
+src/design/HelpViewer.cpp
