@@ -25,11 +25,18 @@
 
 
 #include <iostream>
+#include <Logger.hpp>
 
 using namespace std;
+
+static Rpg::Logger static_logger("server_main", Rpg::LT_BOTH);
 
 int
 main(int argc, char** argv)
 {
-  cout << "Server's not yet implemented :)";
+  Rpg::Logger::init();
+  Rpg::Logger::parse_program_options(argc, argv);
+  
+  LOGI("Server's not yet implemented :)");
+  return 0;
 }

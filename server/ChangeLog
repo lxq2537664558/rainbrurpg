@@ -1,3 +1,9 @@
+2012-05-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/main.cpp: creates static_logger and start to use it.
+	* src/Makefile.am: CPPFLAGS and LDADD now uses rainbrurpg-logger flags.
+	* configure.in: PKG_CHECK_MODULES checks for rainbrurpg-logger.
+
 2012-02-14  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: first version to build a very basic src/main.cpp.

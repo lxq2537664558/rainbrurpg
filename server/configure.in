@@ -11,6 +11,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CXX
 
 # Checks for libraries.
+PKG_CHECK_MODULES([LOG], [rainbrurpg-logger > 0])
 
 # Checks for header files.
 

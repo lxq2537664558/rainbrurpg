@@ -6,4 +6,5 @@ server - GPLv3 - The RainbruRPG's server binary.
    (10 items by revision)
 
 * v0.0.0-0 (14 feb 2012 - ???) FT ??:?? SLOC ???
+- Now uses logger
 - Improved project setup
