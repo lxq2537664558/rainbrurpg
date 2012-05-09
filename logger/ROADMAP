@@ -44,6 +44,7 @@
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
 **** TODO Continue Logger in src/logger
+     CLOCK: [2012-05-09 mer. 08:50]--[2012-05-09 mer. 09:09] =>  0:19
      CLOCK: [2012-05-02 mer. 09:11]--[2012-05-02 mer. 09:34] =>  0:23
      CLOCK: [2012-05-02 mer. 08:02]--[2012-05-02 mer. 08:43] =>  0:41
      CLOCK: [2012-05-01 mar. 09:51]--[2012-05-01 mar. 10:21] =>  0:30
@@ -138,7 +139,10 @@
       - [X] Is there a binary called logger ? NO
 - [X] Many members must be private
 - [X] Must escape some characters with double quotes (`, :) in YAML output
+- [X] Make some vars accessor for server : log Logfilename, program name, version
 - [-] Must update texinfo for v1 YAML output
       - [X] Makes the manual logger-related (actually an autoproject skeleton)
       - [ ] Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
+      - [ ] Can we import doxygen documentation to texinfo
 - [ ] src/example/logger-test does not handle commandline options correctly
+- [ ] Must change dist-bzip2 name to rainbrurpg-logger

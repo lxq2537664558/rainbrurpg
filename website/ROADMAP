@@ -164,6 +164,7 @@ the patternClearHeaderLeft div.
 	    with a link to wiki's NewWebsiteLayout
 	    as a post or a 'Compatibility notes' page
 - [ ] Should add a adsense block below sidebar
+- [ ] Add /AddThis/ button in post detail
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link

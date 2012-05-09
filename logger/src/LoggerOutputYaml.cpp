@@ -30,13 +30,19 @@
 
 using namespace std;
 
+Rpg::LoggerOutputYaml::LoggerOutputYaml(const std::string& vFilename)
+{
+  setFilename (vFilename);
+}
+
+
 /** Opens the YAML file
   *
   */
 void 
 Rpg::LoggerOutputYaml::open()
 {    
-  mFile.open ("logger-test.yml"); 
+  mFile.open (this->mFilename.c_str()); 
     
 };
 
@@ -116,4 +122,10 @@ string
 Rpg::LoggerOutputYaml::escape(const string& str)
 {
   return "\"" + str + "\"";
+}
+
+void  
+Rpg::LoggerOutputYaml::setFilename(const std::string& vFilename)
+{
+  this->mFilename = vFilename + ".yml";
 }

@@ -27,6 +27,10 @@
 #include <iostream>
 #include <Logger.hpp>
 
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+
 using namespace std;
 
 static Rpg::Logger static_logger("server_main", Rpg::LT_BOTH);
@@ -34,7 +38,7 @@ static Rpg::Logger static_logger("server_main", Rpg::LT_BOTH);
 int
 main(int argc, char** argv)
 {
-  Rpg::Logger::init();
+  Rpg::Logger::init("rainbrurpg-server", PACKAGE_VERSION, "rainbrurpg-server");
   Rpg::Logger::parse_program_options(argc, argv);
   
   LOGI("Server's not yet implemented :)");

@@ -27,10 +27,16 @@
 
 using namespace std;
 
+ Rpg::LoggerOutputFile::LoggerOutputFile(const std::string& vFilename)
+ {
+   this->setFilename(vFilename);
+ }
+
+
 void 
 Rpg::LoggerOutputFile::open()
 {
-  mFile.open ("logger-test.log"); 
+  mFile.open (this->mFilename.c_str()); 
 };
 
 void 
@@ -82,4 +88,10 @@ Rpg::LoggerOutputFile::logHeader(const LogHeader* lh)
 	<< "Compiled " << lh->compil_date << " at " 
 	<< lh->compil_time << endl
 	<< "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
+}
+
+void  
+Rpg::LoggerOutputFile::setFilename(const std::string& vFilename)
+{
+  this->mFilename = vFilename + ".log";
 }

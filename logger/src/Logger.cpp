@@ -64,19 +64,21 @@ Rpg::Logger::Logger(const string& vLogDomain, LogType vLogType):
   *
   */
 void 
-Rpg::Logger::init(const string& compil_date, const string& compil_time)
+Rpg::Logger::init(const string& vAppName, const string& vAppVersion, 
+		  const string& vLogFilename, const string& compil_date, 
+		  const string& compil_time)
 {
   l1 = new LoggerOutputTty();
-  l2 = new LoggerOutputFile();
-  l3 = new LoggerOutputYaml();
+  l2 = new LoggerOutputFile(vLogFilename);
+  l3 = new LoggerOutputYaml(vLogFilename);
 
   Logger::mOutputList.push_back(l1);
   Logger::mOutputList.push_back(l2);
   Logger::mOutputList.push_back(l3);
 
   LogHeader lh;
-  lh.program_name="TestProgram";
-  lh.program_version="0.0.5-265";
+  lh.program_name=vAppName;
+  lh.program_version=vAppVersion;
   lh.compil_date = compil_date;
   lh.compil_time = compil_time;
 

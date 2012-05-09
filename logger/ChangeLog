@@ -1,3 +1,16 @@
+2012-05-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/examples/logger-test.cpp (main): uses new customizable values.
+
+	* src/LoggerOutputYaml.cpp (LoggerOutputYaml): add a parameter to set
+	logfile filename.
+
+	* src/LoggerOutputFile.cpp (LoggerOutputFile): add a parameter to set
+	logfile filename.
+
+	* src/Logger.cpp (init): add some parameters to let user customize
+	logger's application name and version and log filename.
+
 2012-05-01  Jérôme Pasquier  <rainbru@free.fr>
 
 	* rainbrurpg-logger.texinfo: now really rainbrurpg-logger related.

@@ -37,6 +37,8 @@ namespace Rpg
   class LoggerOutputFile : public LoggerOutput
   {
   public:
+    LoggerOutputFile(const std::string&);
+
     virtual void open();
     virtual void close();
     
@@ -50,8 +52,10 @@ namespace Rpg
     
     virtual void logHeader(const LogHeader*);
     
+    void setFilename(const std::string&);
   private:
     std::ofstream mFile;       //!< The file to log to
+    std::string mFilename;
   };
  
 } // !namespace Rpg

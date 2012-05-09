@@ -33,16 +33,11 @@ static Rpg::Logger static_logger("MyLogDomain", Rpg::LT_BOTH);
 int
 main(int argc, char** argv)
 {
-  Rpg::Logger::init();
+  Rpg::Logger::init("logger-test", "1.0", "logger-test");
   Rpg::Logger::parse_program_options(argc, argv);
 
-  //  LoggerArgs<int, int> la("aze", 12, 43);
 
   LOGI("A string" << 78 << 'A');
-  /*  void log(LogLevel vLogLevel, const string& filename, const string&line,
-	   const string& format, Args... args)
-  */
-
   LOGI("This is my new logger");
   LOGI("Testing it with Carine");
   LOGI(78 << "A string " << 'R');

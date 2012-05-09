@@ -94,7 +94,8 @@ namespace Rpg
     Logger(const string& vLogDomain="", LogType vLogType=LT_COUT);
     ~Logger(){};
     
-    static void init(const string& compil_date = __DATE__, 
+    static void init(const string&, const string&, const string&, 
+		     const string& compil_date = __DATE__, 
 		     const string& compil_time = __TIME__);
     static void free();
     static bool parse_program_options(int, char**);
