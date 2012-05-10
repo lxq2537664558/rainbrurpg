@@ -27,7 +27,7 @@
 
 #include "FileTypeGuesser.hpp"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** Default constructor
   *

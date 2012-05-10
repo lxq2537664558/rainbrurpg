@@ -36,7 +36,7 @@
 #include <QLabel>
 #include <QDoubleSpinBox>
 
-#include "objectpos.h"
+#include <ObjectPos.hpp>
 
 using namespace RainbruRPG::Core;
 

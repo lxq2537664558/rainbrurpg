@@ -27,7 +27,7 @@
 
 #include "meshviewer.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 #if !defined(Q_WS_WIN)
 #include <QX11Info>

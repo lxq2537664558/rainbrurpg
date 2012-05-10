@@ -34,11 +34,11 @@
 
 #include <fox-1.6/fx.h>
 
-#include <npidentification.h>
-#include <serverlistitem.h>
+#include <NpIdentification.hpp>
+#include <ServerListItem.hpp>
 #include <sigc++/sigc++.h>
-#include <xmlserverlist.h>
-#include <stringconv.h>
+#include <XmlServerList.hpp>
+#include <StringConv.hpp>
 #include <string>
 
 #include "enetflooderclient.h"

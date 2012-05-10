@@ -43,7 +43,7 @@ cc_sources=FilePreview.cpp		\
 library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)/$(LIB_DESIGN_NAME)
 library_include_HEADERS = $(h_sources)
 
-INCLUDES = -I$(top_srcdir)/common 		\
+INCLUDES = -I$(top_srcdir)/src/common 		\
 	   -I/usr/include/qt4/QtGui 		\
 	   -I/usr/include/qt4 			\
 	   -I/usr/include/qt4/QtCore 		\
@@ -64,7 +64,7 @@ librainbrurpg_design_la_LIBADD= -lrainbrurpg-common		\
 librainbrurpg_design_la_LDFLAGS= \
   $(SHARED_FLAG) 		 		\
   -version-info $(DESIGN_LIBRARY_VERSION) 	\
-  -L$(top_srcdir)/common/.libs 			\
+  -L$(top_srcdir)/src/common/.libs 		\
   -Wl,--rpath -Wl,$(top_srcdir)/common/.libs 	\
   $(OGRE_LIBS)
 

@@ -37,7 +37,7 @@
 
 #include <string>
 
-#include "filetypeguesser.h"
+#include "FileTypeGuesser.hpp"
 
 namespace RainbruRPG{
   namespace Gui{

@@ -37,11 +37,11 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
-#include <xmlobjectlist.h>
-#include <objectmesh.h>
-#include <objectpos.h>
+#include <XmlObjectList.hpp>
+#include <ObjectMesh.hpp>
+#include <ObjectPos.hpp>
 #include <string>
 
 #include "staticmeshdialog.h"

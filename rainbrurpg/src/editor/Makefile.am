@@ -24,17 +24,18 @@ rainbrurpg_editor_LDADD=-lQtCore -lQtGui 		\
 			-lrainbrurpg-core		\
 			-lrainbrurpg-ogregui		\
 			-lrainbrurpg-design 		\
-			-L$(top_srcdir)/common/.libs 	\
-			-L$(top_srcdir)/design/.libs 	\
-			-L$(top_srcdir)/maincore/.libs	\
-			-L$(top_srcdir)/ogreGui/.libs	\
+			-L$(top_srcdir)/src/common/.libs 	\
+			-L$(top_srcdir)/src/design/.libs 	\
+			-L$(top_srcdir)/src/maincore/.libs	\
+			-L$(top_srcdir)/src/ogreGui/.libs	\
 			$(OIS_LIBS)			\
 			$(OGRE_LIBS)
 
-INCLUDES = -I$(top_srcdir)/common/ 			\
-	   -I$(top_srcdir)/maincore/ 			\
-	   -I$(top_srcdir)/design/ 			\
-	   -I$(top_srcdir)/ogreGui/			\
+INCLUDES = -I$(top_srcdir)/src/common/ 			\
+	   -I$(top_srcdir)/src/maincore/ 		\
+	   -I$(top_srcdir)/src/design/ 			\
+	   -I$(top_srcdir)/src/ogreGui/			\
+	   -I$(top_srcdir)/ext/				\
            -I/usr/include/qt4/QtGui -I/usr/include/qt4  \
            -I/usr/include/qt4/QtCore 			\
 	   $(OIS_CFLAGS)				\

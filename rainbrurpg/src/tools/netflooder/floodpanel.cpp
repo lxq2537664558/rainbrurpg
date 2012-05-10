@@ -27,7 +27,7 @@
 
 #include "floodpanel.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <fox-1.6/FXMessageBox.h>
 
 /** To avoid multiple definition of PI (defined by fxdefs.h 

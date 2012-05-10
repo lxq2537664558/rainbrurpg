@@ -32,7 +32,7 @@
 #define MESH_VIEWER_H
 
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #if (OGRE_PLATFORM  == OGRE_PLATFORM_WIN32)
 #include <windows.h>
 #endif

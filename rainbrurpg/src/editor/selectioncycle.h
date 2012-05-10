@@ -31,7 +31,7 @@
 #ifndef SELECTION_CYCLE_H
 #define SELECTION_CYCLE_H
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 
 
 namespace RainbruRPG{

@@ -34,9 +34,9 @@
 
 #include <string>
 
-#include <itemlistfile.h>
+#include <ItemListFile.hpp>
+#include <GlobalUri.hpp>
 #include <magic.h>
-#include <globaluri.h>
 
 using namespace RainbruRPG::Network;
 using namespace RainbruRPG::Options;

@@ -26,9 +26,9 @@
   */
 
 #include "ftreliable.h"
-#include "timer.h"
 
-#include <logger.h>
+#include <Timer.hpp>
+#include <Logger.hpp>
 
 /** The default constructor
   *

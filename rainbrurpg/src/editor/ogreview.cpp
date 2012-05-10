@@ -28,11 +28,11 @@
 #include "ogreview.h"
 #include "mainwindow.h"
 
-#include <environmentsetup.h>
-#include <highlightlistener.h>
+#include <EnvironmentSetup.hpp>
+#include <HighlightListener.hpp>
 
 #include "selectionmanager.h"
-#include "globaluri.h"
+#include <GlobalUri.hpp>
 
 using namespace Ogre;
 

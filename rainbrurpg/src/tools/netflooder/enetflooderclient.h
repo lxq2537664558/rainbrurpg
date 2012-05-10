@@ -33,13 +33,13 @@
 #ifndef ENET_FLOODER_CLIENT_H
 #define ENET_FLOODER_CLIENT_H
 
-#include <enetclient.h>
-#include <netpacketbase.h>
+#include <EnetClient.hpp>
+#include <NetPacketBase.hpp>
 #include <sigc++/sigc++.h>
 
 #include <iostream>
 
-#include "netpacketflooderbase.h"
+#include <NetPacketFlooderBase.hpp>
 
 using namespace std;
 

@@ -27,7 +27,7 @@
 
 #include "posordialog.h"
 
-#include <xmlobjectlist.h>
+#include <XmlObjectList.hpp>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

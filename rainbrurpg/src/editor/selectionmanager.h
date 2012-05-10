@@ -31,8 +31,8 @@
 #ifndef SELECTION_MANAGER_H
 #define SELECTION_MANAGER_H
 
-#include <singleton.h>
-#include <ogreimport.h>
+#include <Singleton.hpp>
+#include <OgreImport.hpp>
 
 using namespace RainbruRPG::Core;
 

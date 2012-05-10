@@ -27,9 +27,9 @@
 
 #include "enetflooderclient.h"
 
-#include <logger.h>
-#include <npconnectionresponse.h>
-#include <npflooder0004.h>
+#include <Logger.hpp>
+#include <NpConnectionResponse.hpp>
+#include <NpFlooder0004.hpp>
 
 /** The default constructor
   *

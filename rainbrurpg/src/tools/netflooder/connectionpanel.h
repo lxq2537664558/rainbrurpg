@@ -34,9 +34,10 @@
 
 #include <fox-1.6/fx.h>
 
-#include <serverlistitem.h>
-#include <xmlserverlist.h>
-#include <stringconv.h>
+#include <ServerListItem.hpp>
+#include <XmlServerList.hpp>
+#include <StringConv.hpp>
+
 #include <string>
 
 using namespace std;

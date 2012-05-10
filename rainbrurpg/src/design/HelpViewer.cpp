@@ -25,10 +25,10 @@
   *
   */
 
-#include "helpviewer.h"
-#include "../config.h"
+#include "HelpViewer.hpp"
 
-#include <logger.h>
+#include <config.h>
+#include <Logger.hpp>
 
 /** The server's help viewer constructor
   *

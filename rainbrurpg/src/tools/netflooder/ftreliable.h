@@ -34,12 +34,13 @@
 
 #include <ctime>
 #include <iostream>
-#include <chartserie.h>
-#include <chartline.h>
 #include <sigc++/sigc++.h>
 
+#include <ChartSerie.hpp>
+#include <ChartLine.hpp>
+#include <NpFlooder0004.hpp>
+
 #include "floodertestbase.h"
-#include "npflooder0004.h"
 
 /** If a response is more than this, it is eaqual to this
   *

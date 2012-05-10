@@ -30,7 +30,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** The default constructor
   *

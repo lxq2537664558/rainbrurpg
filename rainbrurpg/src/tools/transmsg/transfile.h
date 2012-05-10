@@ -35,7 +35,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <logger.h>
+#include <Logger.hpp>
 
 /// Maximum number of char in a line
 #define MAX_CHAR_BY_LINE 256

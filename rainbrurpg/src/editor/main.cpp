@@ -30,8 +30,8 @@
   */
 
 #include <QApplication>
-#include <ogreimport.h>
-#include <version.h>
+#include <OgreImport.hpp>
+#include <Version.hpp>
 
 #include "mainwindow.h"
 

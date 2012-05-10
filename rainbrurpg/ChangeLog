@@ -1,3 +1,12 @@
+2012-05-10 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/nerflooder/: changed many includes to their CamelCased 
+	version. Nuild again.
+
+	* src/editor/*.h: changed many includes to their CamelCased version.
+	* src/design/: changed many includes to their CamelCased version.
+	* src/editor/Makefile.am: prepend -I directories with src/.
+
 2012-05-05 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/design/Makefile.am (h_sources, cc_sources): Handles CamelCased

@@ -35,8 +35,8 @@
 #include <QDialog>
 #include <QTabWidget>
 
-#include <xmlobjectlist.h>
-#include <objectmesh.h>
+#include <XmlObjectList.hpp>
+#include <ObjectMesh.hpp>
 
 #include "meshviewer.h"
 

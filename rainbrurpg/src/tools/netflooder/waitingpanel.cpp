@@ -27,7 +27,7 @@
 
 #include "waitingpanel.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <fox-1.6/FXMessageBox.h>
 
 /** The Fox-toolkit event mapping 

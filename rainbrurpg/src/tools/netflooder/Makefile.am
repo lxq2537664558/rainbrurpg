@@ -25,11 +25,12 @@ bin_PROGRAMS = rainbrurpg-tools-netflooder
 rainbrurpg_tools_netflooder_LDADD = -lrainbrurpg-common 	\
 				    -lglib-2.0 			\
 				    -lsigc-2.0			\
-				    -L$(top_srcdir)/common/.libs\
+				    -L$(top_srcdir)/src/common/.libs\
 				    $(GLIB_LIBS) 		\
 				    $(SIGC_LIBS)
 
-INCLUDES = -I$(top_srcdir)/common 				\
+INCLUDES = -I$(top_srcdir)/src/common 				\
+	   -I$(top_srcdir)/ext	 				\
 	   $(GLIB_CFLAGS)					\
 	   $(SIGC_CFLAGS)
 

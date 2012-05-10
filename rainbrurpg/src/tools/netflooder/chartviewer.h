@@ -30,7 +30,7 @@
   */
 
 #include <fox-1.6/fx.h>
-#include <logger.h>
+#include <Logger.hpp>
 
 namespace RainbruRPG{
   namespace Gui{

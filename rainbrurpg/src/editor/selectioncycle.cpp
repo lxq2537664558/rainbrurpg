@@ -27,7 +27,7 @@
 
 #include "selectioncycle.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 #include <OgreMovableObject.h>
 
 

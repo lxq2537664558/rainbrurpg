@@ -44,7 +44,7 @@
 #include <TextureNotFoundException.hpp>
 #include <SkinNotFoundException.hpp>
 
-#include <ogreimport.h>
+#include <OgreImport.hpp>
 #include <OgreRectangle.h>
 
 // Typesafe declaration (instead of a macro)
