@@ -34,8 +34,8 @@
 #include <string>
 #include <cstring> // For strcmp
 
-#include <hashfile.h>
-#include <hashpassword.h>
+#include <HashFile.hpp>
+#include <HashPassword.hpp>
 
 #include <sigc++/sigc++.h>
 

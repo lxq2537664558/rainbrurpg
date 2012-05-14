@@ -27,9 +27,9 @@
 
 #include "xmlserverconf.h"
 
-#include <globaluri.h>
-#include <logger.h>
-#include <stringconv.h>
+#include <GlobalUri.hpp>
+#include <Logger.hpp>
+#include <StringConv.hpp>
 
 /** The default constructor
   *

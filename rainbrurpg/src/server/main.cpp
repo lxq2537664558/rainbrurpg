@@ -33,10 +33,10 @@
 #include <QApplication>
 #include <QWidget>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 #define INCLUDE_VERSION_WITHOUT_OGRE
-#include <version.h>
+#include <Version.hpp>
 
 
 #include <string>

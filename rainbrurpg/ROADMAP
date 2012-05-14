@@ -359,6 +359,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-05-14 lun. 11:15]--[2012-05-14 lun. 12:00] =>  0:45
      CLOCK: [2012-05-10 jeu. 10:32]--[2012-05-10 jeu. 12:02] =>  1:30
      CLOCK: [2012-05-05 sam. 10:02]--[2012-05-05 sam. 10:30] =>  0:28
      CLOCK: [2012-05-05 sam. 09:47]--[2012-05-05 sam. 09:56] =>  0:09
@@ -380,6 +381,8 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2012-01-22 dim. 09:26]--[2012-01-22 dim. 11:47] =>  2:21
      CLOCK: [2012-01-20 ven. 14:51]--[2012-01-20 ven. 15:31] =>  0:40
 - [X] Fix some missing files in archive
+- [ ] Trying to rebuild all `./configure --enable-server --enable-tests 
+      --enable-editor --enable-tools --enable-examples`
 - [-] CamelCase all filenames and header are called .hpp
       Also modify po/POTFILES.in for renamed .cpp
       - [X] in interdep/
@@ -395,8 +398,6 @@ name, date, heure, gamestate, position, name perso, name server, versions
       - [ ] in tests/
       - [ ] in tools/
       - [ ] Must also modify doxygen doc. for files and test it
-- [ ] Trying to rebuild all `./configure --enable-server --enable-tests 
-      --enable-editor --enable-tools --enable-examples`
 - [ ] move terminalapi to OLD/
 - [ ] May test common errors with `cppcheck`
 **** TODO Cross compilation to win32                                  [72%]

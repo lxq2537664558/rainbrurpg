@@ -38,13 +38,13 @@
 #include <QtGui>
 #include <QMetaType>
 
-#include <curlserveradd.h>
-#include <curlserverdelete.h>
-#include <stringconv.h>
+#include <CurlServerAdd.hpp>
+#include <CurlServerDelete.hpp>
+#include <StringConv.hpp>
 #include <enet/enet.h>
 
-#include <npidentification.h>
-#include <npconnectionresponse.h>
+#include <NpIdentification.hpp>
+#include <NpConnectionResponse.hpp>
 
 #include "configdialog.h"
 #include "technotedialog.h"

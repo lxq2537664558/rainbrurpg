@@ -1,7 +1,18 @@
+2012-05-14 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/server/: changed many includes to their CamelCased
+	version. Build again.
+
+	* src/tools/hashsum/: changed many includes to their CamelCased
+	version. Build again.
+
+	* src/tools/ftpclient/: changed many includes to their CamelCased
+	version. Build again.
+
 2012-05-10 Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/tools/nerflooder/: changed many includes to their CamelCased 
-	version. Nuild again.
+	* src/tools/netflooder/: changed many includes to their CamelCased
+	version. Build again.
 
 	* src/editor/*.h: changed many includes to their CamelCased version.
 	* src/design/: changed many includes to their CamelCased version.

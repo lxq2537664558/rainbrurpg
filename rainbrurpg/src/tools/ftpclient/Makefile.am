@@ -22,13 +22,14 @@ bin_PROGRAMS = rainbrurpg-tools-ftpclient
 
 #add_libs = $(shell pkg-config --libs glib-2.0 sigc++-2.0)
 
-rainbrurpg_tools_ftpclient_LDADD = -L$(top_srcdir)/common/.libs \
+rainbrurpg_tools_ftpclient_LDADD = -L$(top_srcdir)/src/common/.libs \
 				   -lrainbrurpg-common 		\
 				   $(GLIB_LIBS)			\
 				   $(SIGC_LIBS)			\
 				   $(GNET_LIBS)
 
-INCLUDES = -I$(top_srcdir)/common 		\
+INCLUDES = -I$(top_srcdir)/src/common 		\
+	   -I$(top_srcdir)/ext	 		\
 	   $(GLIB_CFLAGS)			\
 	   $(SIGC_CFLAGS)			\
 	   $(GNET_CFLAGS)

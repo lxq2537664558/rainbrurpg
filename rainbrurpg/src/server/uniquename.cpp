@@ -27,7 +27,7 @@
 
 #include "uniquename.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** Get the unique name of this server
   *

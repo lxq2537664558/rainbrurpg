@@ -116,7 +116,7 @@ A system that serialize widgets position and configuration
 
 * v0.0.5-215 (21 jan 2012 - ???) SLOC ??? UT ??? FT ???:??
 - (14) Trying to build all extra --enable-* modules
-   Design, Editor, NetFlooder
+   Design, Editor, NetFlooder, FtpClient, Hashsum, Server
 - CamelCased some files in client/
    FilePreview, FileTypeGuesser, HelpViewer
 - Finished CamelCased all files in client/

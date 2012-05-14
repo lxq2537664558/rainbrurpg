@@ -28,10 +28,10 @@
 #include "mainwindow.h"
 
 #include "xmlserverconf.h"
-#include "helpviewer.h"
 
-#include <logger.h>
-#include <npflooder0004.h>
+#include <HelpViewer.hpp>
+#include <Logger.hpp>
+#include <NpFlooder0004.hpp>
 
 #include <QTextEdit>
 #include <QDockWidget>

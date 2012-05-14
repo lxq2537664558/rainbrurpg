@@ -37,8 +37,8 @@
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
 
-#include <xmlaccountlist.h>
-#include <globaluri.h>
+#include <XmlAccountList.hpp>
+#include <GlobalUri.hpp>
 #include <iostream>
 
 

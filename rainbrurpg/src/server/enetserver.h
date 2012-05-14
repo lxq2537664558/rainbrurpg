@@ -39,8 +39,8 @@
 #include <QObject>
 #include <cstring>
 
-#include "enetbase.h"
-#include "netpacketbase.h"
+#include <EnetBase.hpp>
+#include <NetPacketBase.hpp>
 
 using namespace std;
 using namespace RainbruRPG::Network;

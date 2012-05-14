@@ -47,8 +47,8 @@
 #include <iostream>
 #include <list>
 
-#include <ftpdef.h>
-#include <globaluri.h>
+#include <FtpDef.hpp>
+#include <GlobalUri.hpp>
 
 #include "ftpdataconnection.h"
 

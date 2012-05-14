@@ -25,7 +25,7 @@
   *
   */
 
-#include <logger.h>
+#include <Logger.hpp>
 
 #include "technotedialog.h"
 

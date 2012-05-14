@@ -38,10 +38,10 @@
 #include <sigc++/sigc++.h>
 #include <fox-1.6/fx.h>
 
-#include <xmlserverlist.h>
-#include <ftpclient.h>
-#include <logger.h>
-#include <ftpdef.h>
+#include <XmlServerList.hpp>
+#include <FtpClient.hpp>
+#include <Logger.hpp>
+#include <FtpDef.hpp>
 #include <gnet.h>
 
 /** A define macro used to indent the help messages */

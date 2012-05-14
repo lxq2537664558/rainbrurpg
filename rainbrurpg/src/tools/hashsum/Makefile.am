@@ -21,10 +21,10 @@
 bin_PROGRAMS = rainbrurpg-tools-hashsum
 
 rainbrurpg_tools_hashsum_LDADD = -lrainbrurpg-common			\
-				 -L$(top_srcdir)/common/.libs 		\
+				 -L$(top_srcdir)/src/common/.libs	\
 				 $(SIGC_LIBS)
 
-INCLUDES = 	-I$(top_srcdir)/common 			\
+INCLUDES = 	-I$(top_srcdir)/src/common 			\
 		$(SIGC_CFLAGS)
 
 rainbrurpg_tools_hashsum_SOURCES = main.cpp

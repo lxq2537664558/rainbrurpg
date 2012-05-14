@@ -22,13 +22,15 @@ bin_PROGRAMS = rainbrurpg-server
 
 rainbrurpg_server_LDADD=-lQtCore -lQtGui -lrainbrurpg-common 	\
 			-lrainbrurpg-design 			\
-			-L$(top_srcdir)/common/.libs 		\
-			-L$(top_srcdir)/design/.libs 		\
+			-L$(top_srcdir)/src/common/.libs 	\
+			-L$(top_srcdir)/src/design/.libs 	\
 			-lQtSql 				\
 			-lQt3Support				\
 			$(GLIB_LIBS)
 
-INCLUDES = -I$(top_srcdir)/common -I$(top_srcdir)/design 	\
+INCLUDES = -I$(top_srcdir)/src/common 				\
+	   -I$(top_srcdir)/src/design 				\
+	   -I$(top_srcdir)/ext/ 				\
            -I/usr/include/qt4/QtGui -I/usr/include/qt4 		\
            -I/usr/include/qt4/QtCore 				\
 	   -I/usr/include/qt4/Qt3Support 			\

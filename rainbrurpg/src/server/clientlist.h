@@ -35,9 +35,9 @@
 
 #include <QtGui>
 #include <enet/enet.h>
-#include <stringconv.h>
 
-#include "npidentification.h"
+#include <StringConv.hpp>
+#include <NpIdentification.hpp>
 
 using namespace RainbruRPG::Core;
 using namespace RainbruRPG::Network;

@@ -37,9 +37,9 @@
 #include <QObject>
 #include <QFile>
 
-#include <globaluri.h>
-#include <ftpdef.h>
-#include <logger.h>
+#include <GlobalUri.hpp>
+#include <FtpDef.hpp>
+#include <Logger.hpp>
 
 #include "transfervisual.h"
 

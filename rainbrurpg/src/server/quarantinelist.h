@@ -34,10 +34,10 @@
 
 #include <QtGui>
 
-#include <filetypeguesser.h>
-#include <filepreview.h>
-#include <helpviewer.h>
-#include <globaluri.h>
+#include <FileTypeGuesser.hpp>
+#include <FilePreview.hpp>
+#include <HelpViewer.hpp>
+#include <GlobalUri.hpp>
 #include <string>
 
 using namespace RainbruRPG::Gui;

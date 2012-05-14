@@ -37,7 +37,8 @@
 #include <QtGui/QtGui>
 #include <QtGui/QTreeWidget>
 #include <Qt3Support>
-#include <ftpdef.h>
+
+#include <FtpDef.hpp>
 
 // Forward declarations
 namespace RainbruRPG{

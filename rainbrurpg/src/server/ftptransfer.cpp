@@ -27,7 +27,7 @@
 
 #include "ftptransfer.h"
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** The constructor
   *

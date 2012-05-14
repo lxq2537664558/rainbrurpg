@@ -34,7 +34,7 @@
 #include <QPushButton>
 #include <QFile>
 
-#include <logger.h>
+#include <Logger.hpp>
 
 /** The default constructor
   *
