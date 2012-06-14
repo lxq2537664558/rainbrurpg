@@ -2,6 +2,13 @@ Please update http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/BuildingFromS
 
 The following package should be installed before RainbruRPG is installed:
 
+* bc
+  + Needed to test for freetype version
+  + homepage:
+    http://www.gnu.org/software/bc/
+  + download
+    ftp://ftp.gnu.org/gnu/bc/
+
 * Boost.Test 1.34
   + Needed for unit tests
   + homepage:

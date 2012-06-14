@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.67])
-AC_INIT(RainbruRPG, 0.0.5-214, rainbru@users.sourceforge.net)
+AC_INIT(RainbruRPG, 0.0.5-215, rainbru@users.sourceforge.net)
 dnl Every other copy of the package version number gets its value from here
 AM_INIT_AUTOMAKE(RainbruRPG, 0.0.5)
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
@@ -88,6 +88,14 @@ dnl Checks for programs.
 AC_PROG_INSTALL
 AC_PROG_CC
 AC_PROG_CXX
+
+dnl The following test for `bc'. Needed to correctly test freetype version.
+AC_CHECK_PROG(BCTOOL,bc,yes)
+if test x"${BCTOOL}" == x"yes" ; then
+    AC_MSG_RESULT([yes])
+else
+    AC_MSG_ERROR([Please install the bc package.])
+fi
 
 AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL dnl Handle dlls

@@ -359,6 +359,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
 **** TODO Code refactoring to follow coding standards
+     CLOCK: [2012-06-14 jeu. 12:48]--[2012-06-14 jeu. 13:07] =>  0:19
      CLOCK: [2012-05-14 lun. 11:15]--[2012-05-14 lun. 12:00] =>  0:45
      CLOCK: [2012-05-10 jeu. 10:32]--[2012-05-10 jeu. 12:02] =>  1:30
      CLOCK: [2012-05-05 sam. 10:02]--[2012-05-05 sam. 10:30] =>  0:28
@@ -381,6 +382,10 @@ name, date, heure, gamestate, position, name perso, name server, versions
      CLOCK: [2012-01-22 dim. 09:26]--[2012-01-22 dim. 11:47] =>  2:21
      CLOCK: [2012-01-20 ven. 14:51]--[2012-01-20 ven. 15:31] =>  0:40
 - [X] Fix some missing files in archive
+- [ ] configure must test for the `bc` tool to avoid error in rb_freetype.m4
+      if not present.
+      The line =freetype_test_result=$(echo "${FREETYPE_VERSION:0:4} >= $1"|bc)=
+      makes an error if bc is not present, assuming freetype version mismatch.
 - [ ] Trying to rebuild all `./configure --enable-server --enable-tests 
       --enable-editor --enable-tools --enable-examples`
 - [-] CamelCase all filenames and header are called .hpp
