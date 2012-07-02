@@ -65,7 +65,7 @@ public:
 
 protected:
   bool dirExists(const std::string&);
-  void debugRenderList(Ogre::RenderSystemList*);
+  void debugRenderList(const Ogre::RenderSystemList&);
   
   SilentLogListener* mListener;      //!< The custom log listener
   Ogre::RenderWindow* mRenderWindow; //!< The render window

@@ -156,6 +156,15 @@ public:
   virtual void initialiseFromRenderSystemCapabilities(RenderSystemCapabilities*, RenderTarget*);
 
 
+  virtual void _setSceneBlending(Ogre::SceneBlendFactor, Ogre::SceneBlendFactor, Ogre::SceneBlendOperation){};
+
+  virtual void _setSeparateSceneBlending(Ogre::SceneBlendFactor, Ogre::SceneBlendFactor, Ogre::SceneBlendFactor, Ogre::SceneBlendFactor, Ogre::SceneBlendOperation, Ogre::SceneBlendOperation){};
+
+  virtual void bindGpuProgramParameters(Ogre::GpuProgramType, Ogre::GpuProgramParametersSharedPtr, Ogre::uint16){};
+
+  virtual void _setRenderTarget(Ogre::RenderTarget*){};
+  virtual unsigned int getDisplayMonitorCount() const{};
+
 private:
   String mName;
   ConfigOptionMap mConfigOptionMap;

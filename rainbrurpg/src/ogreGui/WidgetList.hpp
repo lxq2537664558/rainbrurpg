@@ -43,7 +43,7 @@ namespace RainbruRPG{
   namespace OgreGui{
  
     /// The internal type used in WidgetList class
-    typedef list<Widget*> tWidgetList;
+    typedef std::list<Widget*> tWidgetList;
 
    /** A list of widget
       *

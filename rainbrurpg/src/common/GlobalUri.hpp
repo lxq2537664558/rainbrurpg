@@ -94,7 +94,7 @@ namespace RainbruRPG{
       * "getInstallConfigFilesList()" function.
       *
       */
-    typedef list<tInstalledConfigFilesListItem*> tInstalledConfigFilesList;
+    typedef std::list<tInstalledConfigFilesListItem*> tInstalledConfigFilesList;
 
     /** A class to get the uri of a page, according to the website adress or
       * to get a directory

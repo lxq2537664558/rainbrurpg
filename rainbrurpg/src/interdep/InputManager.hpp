@@ -33,10 +33,10 @@
 #ifndef InputManager_H
 #define InputManager_H
 
-#include <OIS/OISMouse.h>
-#include <OIS/OISKeyboard.h>
-#include <OIS/OISJoyStick.h>
-#include <OIS/OISInputManager.h>
+#include <OISMouse.h>
+#include <OISKeyboard.h>
+#include <OISJoyStick.h>
+#include <OISInputManager.h>
 
 #include <OgreImport.hpp>
 

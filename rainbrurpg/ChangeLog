@@ -1,3 +1,27 @@
+2012-07-02 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/common/EnetClient.cpp(EnetClient): fix build error because of 
+	enet API changes.
+
+	* src/ogreGui/WidgetList.hpp: prepend some STL types with std::.
+	* src/interdep/GameEngine.hpp: prepend some STL types with std::.
+	* src/ogreGui/Brush.hpp: prepend some STL types with std::.
+	* src/common/GlobalUri.hpp: prepend some STL types with std::.
+
+	* src/interdep/InputManager.hpp: remove OIS/ from several #include.
+	* src/maincore/InputWrapper.hpp: remove OIS/ from several #include.
+	* src/interdep/GameState.hpp: remove OIS/ from several #include.
+	* src/interdep/GameEngine.hpp: remove OIS/ from several #include.
+
+2012-06-30 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/testHelpers/DummyRenderSystem.hpp: several new pure virtual
+	functions overriden due to API changes in Ogre3D.
+
+	* src/testHelpers/OgreMinimalSetup.cpp (debugRenderList): some changes
+	due to API changes in Ogre3D (RenderSystemList switch to pointer
+	to const reference).
+
 2012-06-14 Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: check for the `bc' tool needed to ensure freetype

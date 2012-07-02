@@ -33,9 +33,9 @@
 #ifndef INPUT_WRAPPER_H
 #define INPUT_WRAPPER_H
 
-#include <OIS/OISMouse.h>
-#include <OIS/OISKeyboard.h>
-#include <OIS/OISPrereqs.h>
+#include <OISMouse.h>
+#include <OISKeyboard.h>
+#include <OISPrereqs.h>
 
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 

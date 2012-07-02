@@ -40,9 +40,9 @@
 
 #include <OgreImport.hpp>
 
-#include <OIS/OISPrereqs.h>
-#include <OIS/OISKeyboard.h>
-#include <OIS/OISMouse.h>
+#include <OISPrereqs.h>
+#include <OISKeyboard.h>
+#include <OISMouse.h>
 
 #include <Logger.hpp>
 #include <RainbruDef.hpp> // For the GNU gettext stuff

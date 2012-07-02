@@ -101,9 +101,9 @@ OgreMinimalSetup::setupOgre(const Ogre::String& base_dir, bool custom_log)
   assert(Ogre::Root::getSingletonPtr() && "Cannot initialize Ogre::Root");
 
   // Select rendersystem
-  Ogre::RenderSystemList* list=Ogre::Root::getSingleton().getAvailableRenderers();
+  Ogre::RenderSystemList list=Ogre::Root::getSingleton().getAvailableRenderers();
   this->debugRenderList( list );
-  Ogre::Root::getSingleton().setRenderSystem((*list)[0]);
+  Ogre::Root::getSingleton().setRenderSystem(list[0]);
   Ogre::Root::getSingleton().initialise(false, "RainbruRPG blah");
   Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/", "FileSystem");
   Ogre::Root::getSingleton().addResourceLocation(base_dir + "data/gui/fonts", "FileSystem");
@@ -157,12 +157,11 @@ Ogre::RenderWindow* OgreMinimalSetup::getRenderWindow()
   return mRenderWindow;
 }
 
-void OgreMinimalSetup::debugRenderList(Ogre::RenderSystemList* rsl)
+void OgreMinimalSetup::debugRenderList(const Ogre::RenderSystemList& rsl)
 {
-  assert(rsl && "RenderSystemList is NULL");
-  assert(rsl->size() && "RenderSystemList size is 0");
-  cout << "RenderSystemList size is " << rsl->size() << endl;
-  Ogre::RenderSystem* rs = (*rsl)[0];
+  assert(rsl.size() && "RenderSystemList size is 0");
+  cout << "RenderSystemList size is " << rsl.size() << endl;
+  Ogre::RenderSystem* rs = rsl[0];
   assert(rs && "First RenderSystem is NULL");
   cout << "First RenderSystem name is '" << rs->getName() << "'" << endl;
 }

@@ -151,14 +151,14 @@ namespace RainbruRPG{
       void setupHardwareBuffer(void);
       void createTexture(void);
       void setCorners(int, int, int, int);
-      void feedVectors(vector<Ogre::Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
+      void feedVectors(std::vector<Ogre::Vector3>*,std::vector<Vector2>*,std::vector<ColourValue>*); 
       void drawQuad(void);
       double xPixelToNative(int)const;
       double yPixelToNative(int)const;
       void checkHardwareBuffer(GuiVertex*);
 
-      void buildVertices(const Ogre::Rectangle&, vector<Ogre::Vector3>* )const;
-      void buildUV( const Ogre::Rectangle&, vector<Vector2>* ) const;
+      void buildVertices(const Ogre::Rectangle&, std::vector<Ogre::Vector3>* )const;
+      void buildUV( const Ogre::Rectangle&, std::vector<Vector2>* ) const;
 
       void beginGlyphs(void);
       void endGlyphs(void);
@@ -282,9 +282,9 @@ namespace RainbruRPG{
 
       tBrushState mState;         //!< The Brush state
 
-      vector<Ogre::Vector3> vert; //!< A vector of vertexes
-      vector<Vector2> uvs;        //!< A vector of UV mapping
-      vector<ColourValue> cols;   //!< A vector of color
+      std::vector<Ogre::Vector3> vert; //!< A vector of vertexes
+      std::vector<Vector2> uvs;        //!< A vector of UV mapping
+      std::vector<ColourValue> cols;   //!< A vector of color
       
       ColourValue mColor;         //!< The current drawing color
       tBrushBlendMode mBlendMode; //!< The current blend (transparency) mode

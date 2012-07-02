@@ -48,8 +48,8 @@
 #include <StringConv.hpp>
 #include <ClientConnect.hpp>
 
-#include <OIS/OISKeyboard.h>
-#include <OIS/OISMouse.h>
+#include <OISKeyboard.h>
+#include <OISMouse.h>
 
 #include <RainbruDef.hpp> // For the GNU gettext stuff
 
@@ -229,7 +229,7 @@ namespace RainbruRPG {
 	* All the GameStates the GameEngine can use are in this STL
 	* vector. We know wich state we use with the actualState integer.
 	*/
-      vector<GameState*> states;
+      std::vector<GameState*> states;
 
       /** The index of the in-use State
         *

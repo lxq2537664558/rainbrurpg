@@ -38,11 +38,13 @@ RainbruRPG::Network::EnetClient::EnetClient(){
 
   connected=false;
 
-  /* create a client host */
-  /* only allow 1 outgoing connection */
-  /* 56K modem with 56 Kbps downstream bandwidth */
-  /* 56K modem with 14 Kbps upstream bandwidth */
-  client = enet_host_create (NULL , 1 , 57600 / 8 , 14400 / 8 );
+  /* create a client host 
+     only allow 1 outgoing connection 
+     with unlimited channel count 
+     56K modem with 56 Kbps downstream bandwidth 
+     56K modem with 14 Kbps upstream bandwidth 
+  */
+  client = enet_host_create (NULL , 1 , 0, 57600 / 8 , 14400 / 8 );
   address=new ENetAddress();
 
 }
@@ -88,7 +90,8 @@ connect(const char* hostName, enet_uint16 port, int waitingTime){
     address->port = port;
     
     /* Initiate the connection, allocating the two channels 0 and 1. */
-    peer = enet_host_connect (client, address, 2);    
+    enet_uint32 data = 0;
+    peer = enet_host_connect (client, address, 2, data);    
     
     if (peer == NULL){
       LOGE(_("No available peers for initiating an ENet connection."));

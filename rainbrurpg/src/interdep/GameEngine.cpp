@@ -342,12 +342,12 @@ void RainbruRPG::Core::GameEngine::setRender(const char* rName){
   Ogre::RenderSystemList::iterator listIt;
   Ogre::RenderSystem* item;
 
-  Ogre::RenderSystemList* list=Ogre::Root::getSingleton().
+  Ogre::RenderSystemList list=Ogre::Root::getSingleton().
     getAvailableRenderers();
 
 
   // Adds the render name to the hold browser
-  for( listIt= list->begin(); listIt!= list->end(); listIt++){
+  for( listIt= list.begin(); listIt!= list.end(); listIt++){
     item=*listIt;
     name=item->getName().c_str();
     // We have the good Render system

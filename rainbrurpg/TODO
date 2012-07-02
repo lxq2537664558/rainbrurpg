@@ -115,4 +115,6 @@ A system that serialize widgets position and configuration
    FT is the ROADMAP file time (C-c C-x C-d)
 
 * v0.0.5-216 (14 jun 2012 - ???) SLOC ??? UT ??? FT ???:??
-
+- Some changes due to Ogre3D and OIS APIs
+   OgreMinimalSetup, DummyRenderSystem
+   remove OIS/ from several #include
