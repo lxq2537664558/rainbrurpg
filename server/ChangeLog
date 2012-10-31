@@ -1,6 +1,12 @@
+2012-10-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/main.cpp: create a basic asynchronous server
+	* src/Makefile.am: Added -lboost_system needed by filesystem.
+	* configure.in: check for Asio header.
+
 2012-05-08  Jérôme Pasquier  <rainbru@free.fr>
 
-	* configure.in: correctly et PACKAGE_VERSION.
+	* configure.in: correctly set PACKAGE_VERSION.
 	* src/main.cpp: customize logger.
 
 2012-05-08  Jérôme Pasquier  <rainbru@free.fr>

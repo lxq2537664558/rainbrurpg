@@ -6,3 +6,16 @@ The following package should be installed before RainbruRPG is installed:
     http://rainbrurpg.sourceforge.net
   + download:
     http://sourceforge.net/projects/rainbrurpg/files/logger/
+
+* Boost.Asio
+  + Needed.
+  + homepage:
+    http://think-async.com/Asio
+  + download:
+    http://sourceforge.net/projects/asio/files/asio/
+
+* Boost.Filesystem 1.34
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
