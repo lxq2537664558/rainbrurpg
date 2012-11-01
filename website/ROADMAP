@@ -166,6 +166,8 @@ the patternClearHeaderLeft div.
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ button in post detail
 **** TODO Fix the foswiki registration issue
+     CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
+     CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
      CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
      CLOCK: [2012-05-18 ven. 13:46]--[2012-05-18 ven. 13:55] =>  0:09
      CLOCK: [2012-05-18 ven. 11:05]--[2012-05-18 ven. 11:41] =>  0:36
@@ -177,19 +179,22 @@ without sending confirmation mail.
 - [X] Create FOSWIKI_REGISTRATION.org 
 - [-] Simply test with a script from the sf.net shell
       Doesn't work
-      - [X] Sending a support ticket to sourceforge team
-      - [-] From the staff hints
-	    - [X] Move scripts to cgi-bin
-            - [X] Create a script to test from a newly created website
-		  Because shell service doesn't use the correct environmant
-            - [ ] Test a simple wiki2 dir with .htaccess to
-		  remove the cgi-bin dir in URL
-		  rainbrurpg.sourceforge.net/wiki2/ -> cgi-bin/wiki2/
-            - [ ] Move foswiki to cgi-bin
-		  =chmod  +rx FILENAME= to be exec. by apache user
-            - [ ] Modify the sendMail() function (using TLS ou SMTPS)
-            - [ ] configure foswiki to use registration with email confirmation
-            - [ ] Test it with a TestMail user
+  - [X] Sending a support ticket to sourceforge team
+  - [-] From the staff hints
+    - [X] Move scripts to cgi-bin
+    - [X] Create a script to test from a newly created website
+	  Because shell service doesn't use the correct environmant
+    - [ ] Test a simple wiki2 dir with .htaccess to
+	  remove the cgi-bin dir in URL
+	  rainbrurpg.sourceforge.net/wiki2/ -> cgi-bin/wiki2/
+      Redirect /* to cgi-bin/*
+=RedirectMatch permanent ^/([A-Za-z0-9].*) /cgi-bin/$1=
+    - [X] Move foswiki to cgi-bin
+	  =chmod  +rx FILENAME= to be exec. by apache user
+    - [ ] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
+    - [ ] Modify the sendMail() function (using TLS ou SMTPS)
+    - [ ] configure foswiki to use registration with email confirmation
+    - [ ] Test it with a TestMail user
 - [ ] Write an explanation in a foswiki page
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern

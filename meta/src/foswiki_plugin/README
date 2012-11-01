@@ -7,11 +7,12 @@ meta server.
 
 * Dependencies
 
-| *Module* | *debian package*   |
-|----------+--------------------|
-| XML      | libxml-libxml-perl |
-| DateTime | libdatetime-perl   |
-|          |                    |
+| *Module*               | *debian package*   | * Dependency*           |
+|------------------------+--------------------+-------------------------|
+| XML                    | libxml-libxml-perl | Mandatory               |
+| DateTime               | libdatetime-perl   | Mandatory               |
+| Test::Unit::Procedural | libtest-unit-perl  | Optional for Unit tests |
+|                        |                    |                         |
 
 * Installation
 
@@ -23,5 +24,10 @@ RainbrurpgMetaserverPlugin.pm is installed in the lib/Foswiki/Plugins/ dir.
 The functions.pm file must be installed in a 
 lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin/ directory
 
-Then, you need to enable it in the foswiki's configure script.
+Then, you need to enable it in the foswiki's configure script, using the 
+'Extensions' tab.
 
+* Usage
+
+You can find online documentation in the System/RainbrurpgMetaserverPlugin
+wiki page.

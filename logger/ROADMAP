@@ -28,6 +28,8 @@
       Fix errors when trying to open examples/logger-test.yml
       - [X] First the /Logfile/ panel
       - [X] Every message
+- [ ] If `rbuic4' is not found by ./configure, it tries to build .ui files
+  with a tool named `no'. For sure it fails.
 - [ ] Maybe use kwalify to test YAML file
       see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
 - [ ] YAML output versionning
