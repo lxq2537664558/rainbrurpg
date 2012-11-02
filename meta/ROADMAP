@@ -16,14 +16,14 @@
 *** v0.0.2 Create c++ libraries for client and server using REST
     Can Boost.Asio help me doing REST client ?
     see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
-- [ ] Create also binary toosl to add/delete servers
+- [ ] Create also binary tools to add/delete servers
 **** Prepare the REST API
 - [ ] Needed password in Foswiki configure script
 - [ ] a function to add a server
 - [ ] a function to remove a server
 - [ ] a function to get the YAML server list
 - [ ] a function to set a server in error state
-*** v0.0.1 Correct project setup
+*** TODO v0.0.1 Correct project setup
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
@@ -62,6 +62,7 @@
       - [X] a pkg-config script for each is generated
 - [X] create README files for subdirs
 **** TODO Create unit tests for 'functions.pm'
+     CLOCK: [2012-11-02 ven. 17:31]--[2012-11-02 ven. 18:03] =>  0:32
      CLOCK: [2012-04-25 mer. 15:56]--[2012-04-25 mer. 16:38] =>  0:42
      CLOCK: [2011-07-28 jeu. 17:20]--[2011-07-28 jeu. 17:37] =>  0:17
      CLOCK: [2011-07-28 jeu. 11:59]--[2011-07-28 jeu. 12:27] =>  0:28
@@ -76,7 +77,7 @@
 - [ ] Add an 'hardwareDescription' field for the server
 - [ ] We must add a password to add and delete server to avoid
       spam deletion of server
-- [ ] Add an admin password for the error-ot
+- [ ] Add an admin password for the error-bot
 - [ ] Create also a Dtd 
 - [ ] FosWiki plugin must validate XML file
 - [ ] Show mirror server when we click (as in foswiki configure)

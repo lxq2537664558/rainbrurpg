@@ -39,12 +39,24 @@ sub getNodeContent
     }
 }
 
-# Trying to compute uptime
-# uptime is in seconds
+=begin
+    Trying to compute uptime 
+    
+    Parameters :
+    $node : a XML::LibXML node containing at least a Uptime child with
+      uptime in seconds
+    
+
+    Return :
+    - The string content of the first named node
+    - 0 if an error occur (cannot find Uptime node, etc)
+
+=cut
 sub getUptime
 {
     my ($node) = @_;
     my $uptime = getNodeContent($node, 'Uptime');
+    return 0 if $uptime==0;
 
     my $dt = DateTime->from_epoch( epoch => $uptime );
 
@@ -74,7 +86,7 @@ sub getUptime
     }
     if ($dt->second > 0)
     {
-	$output .= $dt->second." s ";
+	$output .= $dt->second." s";
     }
 
     return $output;

@@ -41,11 +41,76 @@ sub test_getNodeContent_incorrectChildName
     </root>
 EOT
     my $root = $dom->documentElement();
-    assert(!getNodeContent($root, "chiild"), 
+    assert(!getNodeContent($root, "incorrect-child-name"), 
 	   "Unexisting node was not detected");
 }
 
 
+=bgin
+    Multiple tests of getUptime
+=cut
+sub test_Uptime_seconds
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<Uptime>45</Uptime>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(getUptime($root)=~m/^45 s$/, 
+	   "Uptime() doesn't return correct string");
+}
+sub test_Uptime_minutes
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<Uptime>75</Uptime>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(getUptime($root)=~m/^1 m 15 s$/, 
+	   "Uptime() doesn't return correct string");
+}
+
+sub test_Uptime_hours
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<Uptime>3722</Uptime>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(getUptime($root)=~m/^1 h 2 m 2 s$/, 
+	   "Uptime() doesn't return correct string");
+}
+
+sub test_Uptime_hours_without_minutes
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<Uptime>3602</Uptime>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(getUptime($root)=~m/^1 h 2 s$/, 
+	   "Uptime() doesn't return correct string");
+}
+
+sub test_Uptime_no_Uptime_node
+{
+    my $dom = XML::LibXML->load_xml(string => <<'EOT');
+    <root>
+	<NoUptime>3602</NoUptime>
+    </root>
+EOT
+    my $root = $dom->documentElement();
+    assert(!getUptime($root), 
+	   "Uptime() Cannot return correct string");
+
+}
+
+
+# Here start the test suite code
 create_suite();
 run_suite();
 

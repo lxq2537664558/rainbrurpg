@@ -1,3 +1,14 @@
+2012-11-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/foswiki_plugin/functions_Test.pl (test_Uptime_hours): First
+	implementation.
+	* src/foswiki_plugin/functions_Test.pl (test_Uptime_minutes): First
+	implementation.
+	* src/foswiki_plugin/functions_Test.pl (test_Uptime_seconds): First
+	implementation.
+	* src/foswiki_plugin/functions.pm (getUptime): write a better
+	documentation with parameter and return value.
+
 2012-04-25  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/foswiki_plugin/functions_Test.pl

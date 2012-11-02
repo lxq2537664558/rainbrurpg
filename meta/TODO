@@ -12,5 +12,6 @@ Should use REST : see the 'restExample($session)' function
    Please update GNU ChangeLog
 
 * v0.0.0-3 (04 mar 2012 - ???) SLOC ??? UT ?? FT ??:??
+- Some new unit tests for functions.pm implemented
 - 2 unit tests for getNodeContent() implemented.
 - Create pkg-config autoconf's input files for libclient and libserver
