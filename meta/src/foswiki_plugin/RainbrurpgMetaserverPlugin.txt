@@ -17,8 +17,29 @@ for <nop>RainbruRPG, a MMORPG. For more information, please visit the
 
 ---++ Internals
 
-The plugin deals with an _XML_ file located in the =pub/= directory of
-your _foswiki_ installation.
+The plugin deals with an _XML_ file (=server_list.xml) located in the =pub/= 
+directory of your _foswiki_ installation. If includes several datas used
+to identify, contact and choose servers.
+
+---+++ Name
+
+The name of the server.
+
+---+++ Clients
+
+The number of clients actually connected to the server.
+
+---+++ Ip/Port
+
+How to contact the server.
+
+---+++ Uptime
+
+The uptime of the server from epoch.
+
+---+++ Comment
+
+A comment added by the server administrator.
 
 ---++ Download
 
@@ -58,8 +79,6 @@ foswiki table.
 ---+++ The !%RB_SERVER_ERROR% macro 
 
 This macro prints a table containing servers in error status.
-
----+++ The %RB_SERVER_IFNOYAML% macro 
 
 ---++ Plugin Info
 

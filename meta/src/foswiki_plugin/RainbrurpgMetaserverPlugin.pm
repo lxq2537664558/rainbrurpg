@@ -60,7 +60,6 @@ sub initPlugin {
     # Register tag rendering
     Foswiki::Func::registerTagHandler( 'RB_SERVER_LIST', \&_ServerList );
     Foswiki::Func::registerTagHandler( 'RB_SERVER_ERROR', \&_ErrorList );
-    Foswiki::Func::registerTagHandler( 'RB_SERVER_IFNOYAML', \&_IfNoYaml );
 
     # Allow a sub to be called from the REST interface
     # using the provided alias
@@ -75,24 +74,7 @@ sub _ServerList
 {
     my($session, $params, $topic, $web, $topicObject) = @_;
 
-    if ($session->getSkin() =~ /yaml/)
-    {
-	return 'RB_YAML_OUTPUT';
-    }
-
     return getServerList();
-
-}
-
-# Text is drawn 'as is' only if skin isn't 'yaml'
-sub _IfNoYaml 
-{
-    my($session, $params, $topic, $web, $topicObject) = @_;
-    if ($session->getSkin() =~ /yaml/)
-    {
-	return '';
-    }
-    return $params->{_DEFAULT};
 
 }
 

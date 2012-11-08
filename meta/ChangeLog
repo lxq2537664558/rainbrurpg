@@ -1,3 +1,16 @@
+2012-11-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/foswiki_plugin/ServerDetail.txt: Page started.
+
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: Improve
+	documentation for XML nodes.
+
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.pm: Revome stuff
+	related to %IF_NOYAML% macro.
+
+	* src/foswiki_plugin/functions.pm: $ilename uses foswiki's variable
+	to get host URL and pub/ dirname.
+
 2012-11-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/foswiki_plugin/functions_Test.pl (test_Uptime_hours): First

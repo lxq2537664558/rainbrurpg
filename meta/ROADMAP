@@ -62,6 +62,7 @@
       - [X] a pkg-config script for each is generated
 - [X] create README files for subdirs
 **** TODO Create unit tests for 'functions.pm'
+     CLOCK: [2012-11-08 jeu. 19:57]--[2012-11-08 jeu. 20:46] =>  0:49
      CLOCK: [2012-11-02 ven. 17:31]--[2012-11-02 ven. 18:03] =>  0:32
      CLOCK: [2012-04-25 mer. 15:56]--[2012-04-25 mer. 16:38] =>  0:42
      CLOCK: [2011-07-28 jeu. 17:20]--[2011-07-28 jeu. 17:37] =>  0:17
@@ -74,15 +75,24 @@
       - [ ] Write unit tests for existing function of functions.pm
 **** Complete XML file in src/xml/ and printing with foswiki's macros
 - [X] add ruleset-id
+- [X] Create System.RainbrurpgMetaserverPlugin doc page
+- [ ] Handle the ServerDetail wiki page
+  As we can't test all XML field on a simple %RB_SERVER_LIST% table
+  - [ ] Started but need more infos.
+  - [ ] We must create a foswiki macro RB_SERVER_DETAIL{servername, nodename}  
+    And handle this in RainbrurpgMetaserverPlugin.pm
+    But we will open XML file each time we call it. Too bad.
 - [ ] Add an 'hardwareDescription' field for the server
+- [ ] Add max-clients to the XML
+- [ ] Find a way to produce Yaml output and get it using REST
+  see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
 - [ ] We must add a password to add and delete server to avoid
       spam deletion of server
 - [ ] Add an admin password for the error-bot
-- [ ] Create also a Dtd 
+- [ ] Create also a Dtd to validate server_list.xml
+  http://search.cpan.org/~shlomif/XML-LibXML-2.0011/lib/XML/LibXML/Document.pod
+  Trying `$dom->validate();'
 - [ ] FosWiki plugin must validate XML file
 - [ ] Show mirror server when we click (as in foswiki configure)
       A hide/show system
-- [ ] Create System.RainbrurpgMetaserverPlugin doc page
-- [ ] Add max-clients to the XML
 - [ ] Can we protect XML content with an anti-script function ?
-- [ ] Handle the ServerDetail wiki page

@@ -11,7 +11,8 @@ use DateTime;
 # =========================
 use vars qw($filename $dom $root );
 
-my $xmlfile = 'http://localtest.rainbrurpg.org/wiki/pub/server_list.xml';
+my $filename = $Foswiki::cfg{DefaultUrlHost} . $Foswiki::cfg{PubUrlPath} .
+    '/server_list.xml';
 
 =begin
     Get the content of a named child node
@@ -101,18 +102,18 @@ sub getServerList
 EOS
 
     # Prints an empty table if XML file not found
-    if (! -e $filename) {
-	return $output .= "| No server online (_XML_ file not found) |||||";
-    }
+#    if (! -e $filename) {
+#	return $output .= "| No server online (_XML_ file not found) |||||";
+#    }
 
-    $dom = XML::LibXML->load_xml(location => $xmlfile);
+    $dom = XML::LibXML->load_xml(location => $filename);
     $root = $dom->documentElement();
     my @nodes = $root->getChildrenByTagName('Server');
 
     foreach my $node (@nodes)
     {
 	my $name=getNodeContent($node, 'Name');
-	$output .= " | [[ServerDetail?servername='".$name."'][".
+	$output .= " | [[ServerDetail?servername=".$name."][".
 	    $name.']]';
 	$output .= '  |'.getNodeContent($node, 'Clients');
 	$output .= ' | '.getNodeContent($node, 'Ip');
@@ -128,7 +129,7 @@ EOS
 
 sub getYamlServerList
 {
-    $dom = XML::LibXML->load_xml(location => $xmlfile);
+    $dom = XML::LibXML->load_xml(location => $filename);
     $root = $dom->documentElement();
     my @nodes = $root->getChildrenByTagName('Server');
 
@@ -138,8 +139,10 @@ sub getYamlServerList
     {
 	$output .= "\n  - server:";
 	$output .= "\n    name: ".getNodeContent($node, 'Name');
-	$output .= "\n    ip: ".getNodeContent($node, 'Ip');
 	$output .= "\n    port: ".getNodeContent($node, 'Port');
+	$output .= "\n    ip: ".getNodeContent($node, 'Ip');
+	$output .= "\n    clients: ".getNodeContent($node, 'Clients');
+	$output .= "\n    comment: ".getNodeContent($node, 'Comment');
 	
     }
     return $output

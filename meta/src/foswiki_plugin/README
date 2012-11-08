@@ -19,6 +19,8 @@ meta server.
 RainbrurpgMetaserverPlugin.txt is the documentation. It is installed 
 in the /data/System directory
 
+ServerDetail.txt must be installed in the data/Main/ directory
+
 RainbrurpgMetaserverPlugin.pm is installed in the lib/Foswiki/Plugins/ dir.
 
 The functions.pm file must be installed in a 
