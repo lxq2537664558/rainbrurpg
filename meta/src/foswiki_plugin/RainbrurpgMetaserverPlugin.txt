@@ -41,6 +41,13 @@ The uptime of the server from epoch.
 
 A comment added by the server administrator.
 
+---+++ Error
+
+This is the _error status_ of the server. A server with _true_ value indicates
+the =error bot= had some difficulties to contact this server. When in error 
+status, we must set an XML attribute called _since_ filled with epoch time
+we discover the server error.
+
 ---++ Download
 
 You can get this plugin either as an archive or using SVN repository :

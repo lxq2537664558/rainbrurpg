@@ -73,8 +73,7 @@ sub initPlugin {
 sub _ServerList 
 {
     my($session, $params, $topic, $web, $topicObject) = @_;
-
-    return getServerList();
+    return getServerList('false');
 
 }
 
@@ -82,17 +81,7 @@ sub _ServerList
 sub _ErrorList 
 {
     my($session, $params, $topic, $web, $topicObject) = @_;
-    if ($session->getSkin() =~ /yaml/)
-    {
-	return '';
-    }
-
-my $output = <<EOS;
-| *Name* | *Since* | *Cause* |
-| aze | 25 jun. 2011 12:45 |  A sample |\
-EOS
-   
-    return $output;
+    return getServerList('true');
 }
 
 

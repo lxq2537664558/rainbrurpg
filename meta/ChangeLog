@@ -1,3 +1,15 @@
+2012-11-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: Improve
+	documentation for the 'Error' XML node.
+
+	* src/foswiki_plugin/functions.pm (uptimeToStr): Implementation
+	splited from getUptime.
+	* src/foswiki_plugin/functions.pm (getAttributeContent): Implemented
+	to get the content of Error's since attribute.
+	* src/foswiki_plugin/functions.pm: Handles the 'Error' field of
+	XML file and correctly print %RB_SERVER_ERROR% macro's table.
+
 2012-11-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/foswiki_plugin/ServerDetail.txt: Page started.
@@ -8,7 +20,7 @@
 	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.pm: Revome stuff
 	related to %IF_NOYAML% macro.
 
-	* src/foswiki_plugin/functions.pm: $ilename uses foswiki's variable
+	* src/foswiki_plugin/functions.pm: $filename uses foswiki's variable
 	to get host URL and pub/ dirname.
 
 2012-11-02  Jérôme Pasquier  <rainbru@free.fr>

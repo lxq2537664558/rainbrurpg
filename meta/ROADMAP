@@ -73,17 +73,20 @@
       otherwise, if a $node is needed in tested function
       we can use 'XML::LibXML->load_xml(string =>)'
       - [ ] Write unit tests for existing function of functions.pm
-**** Complete XML file in src/xml/ and printing with foswiki's macros
-- [X] add ruleset-id
+**** TODO Complete XML file in src/xml/ and printing with foswiki's macros
+     CLOCK: [2012-11-09 ven. 15:03]--[2012-11-09 ven. 15:49] =>  0:46
 - [X] Create System.RainbrurpgMetaserverPlugin doc page
+- [X] Correctly handle servers in error status
 - [ ] Handle the ServerDetail wiki page
   As we can't test all XML field on a simple %RB_SERVER_LIST% table
   - [ ] Started but need more infos.
   - [ ] We must create a foswiki macro RB_SERVER_DETAIL{servername, nodename}  
     And handle this in RainbrurpgMetaserverPlugin.pm
     But we will open XML file each time we call it. Too bad.
-- [ ] Add an 'hardwareDescription' field for the server
-- [ ] Add max-clients to the XML
+- [ ] Some fields must be added
+  - [ ] hardwareDescription
+  - [ ] max-clients
+  - [ ] ruleset-id
 - [ ] Find a way to produce Yaml output and get it using REST
   see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
 - [ ] We must add a password to add and delete server to avoid

@@ -6,6 +6,16 @@
     <Port>64025</Port>
     <Uptime>87566</Uptime>
     <Comment>A dummy server.</Comment>
+    <Error>false</Error>
+  </Server>
+  <Server>
+    <Name>Error_01</Name>
+    <Clients>5</Clients>
+    <Ip>201.235.230.124</Ip>
+    <Port>64025</Port>
+    <Uptime>2035</Uptime>
+    <Comment>A dummy server in error status.</Comment>
+    <Error since="1845">true</Error>
   </Server>
 </ServerList>
 

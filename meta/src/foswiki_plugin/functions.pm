@@ -41,24 +41,33 @@ sub getNodeContent
 }
 
 =begin
-    Trying to compute uptime 
+    Get the content of a named attribute for the given node
     
     Parameters :
-    $node : a XML::LibXML node containing at least a Uptime child with
-      uptime in seconds
-    
+    $node : the XML::LibXML node of the server
+    $childNodeName : The child node name (example 'Error')
+    $key  : The name of the child as a string
 
     Return :
     - The string content of the first named node
-    - 0 if an error occur (cannot find Uptime node, etc)
-
 =cut
-sub getUptime
+sub getAttributeContent
 {
-    my ($node) = @_;
-    my $uptime = getNodeContent($node, 'Uptime');
-    return 0 if $uptime==0;
+    my ($node, $childNodeName, $key) = @_;
+    my @content_node = $node->getChildrenByTagName($childNodeName);
+    if (@content_node)
+    {
+	return $content_node[0]->getAttribute( $key );;
+    }
+    else
+    {
+	return 'error in getAttributeContent';
+    }
+}
 
+sub uptimeToStr
+{
+    my ($uptime) = @_;
     my $dt = DateTime->from_epoch( epoch => $uptime );
 
     my $output;
@@ -89,17 +98,50 @@ sub getUptime
     {
 	$output .= $dt->second." s";
     }
-
     return $output;
 }
 
+=begin
+    Trying to compute uptime 
+    
+    Parameters :
+    $node : a XML::LibXML node containing at least a Uptime child with
+      uptime in seconds
+    
+
+    Return :
+    - The string content of the first named node
+    - 0 if an error occur (cannot find Uptime node, etc)
+
+=cut
+sub getUptime
+{
+    my ($node) = @_;
+    my $uptime = getNodeContent($node, 'Uptime');
+    return 0 if $uptime==0;
+
+    return uptimeToStr( $uptime );
+    my $output;
+}
+
+=begin
+    Parameters:
+    $1: The error status you want to be printed (true||false)
+=cut
 sub getServerList
 {
+     my ($error_status) = @_;
 
-    # Create header
-    my $output = <<EOS;
-| *Name* | *clients* | *Ip:port* | *Uptime* | *Comments* |
-EOS
+     # Create header
+     my $output = '| *Name* | *clients* | *Ip:port* | *Uptime* ';
+     if ($error_status eq 'false')
+     {
+	 $output .= "| *Comments* |\n";
+     }
+     else
+     {
+	 $output .= "| *In error since* |\n";
+     }	 
 
     # Prints an empty table if XML file not found
 #    if (! -e $filename) {
@@ -112,18 +154,29 @@ EOS
 
     foreach my $node (@nodes)
     {
-	my $name=getNodeContent($node, 'Name');
-	$output .= " | [[ServerDetail?servername=".$name."][".
-	    $name.']]';
-	$output .= '  |'.getNodeContent($node, 'Clients');
-	$output .= ' | '.getNodeContent($node, 'Ip');
-	$output .= ':'.getNodeContent($node, 'Port');
-	$output .= ' | '.getUptime($node);
-	$output .= ' | '.getNodeContent($node, 'Comment');
-
-	$output .= " | \n";
+	my $error = getNodeContent($node, 'Error') eq $error_status;
+	if ($error)
+	{
+	    my $name=getNodeContent($node, 'Name');
+	    $output .= " | [[ServerDetail?servername=".$name."][".
+		$name.']]';
+	    $output .= '  |'.getNodeContent($node, 'Clients');
+	    $output .= ' | '.getNodeContent($node, 'Ip');
+	    $output .= ':'.getNodeContent($node, 'Port');
+	    $output .= ' | '.getUptime($node);
+	    if ($error_status eq 'false')
+	    {
+		$output .= ' | '.getNodeContent($node, 'Comment');
+	    }
+	    else
+	    {
+		my $since = getAttributeContent($node, 'Error', 'since');
+		$output .= ' | '.uptimeToStr( $since );
+	    }
+	    $output .= " | \n";
+	}
     }
-    return $output
+return $output;
 
 }
 
