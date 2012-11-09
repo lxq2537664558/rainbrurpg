@@ -18,6 +18,20 @@ AC_PROG_CXX
 # Checks for libraries.
 PKG_CHECK_MODULES([LOG], [rainbrurpg-logger > 0])
 
+AC_CHECK_LIB(readline, main, [], [
+  echo "Error! You need to have libreadline installed."
+  exit -1
+])
+AC_CHECK_LIB(history, main, [], [
+  echo "Error! You need to have libreadline installed."
+  exit -1
+])
+
+AC_CHECK_HEADER([readline/readline.h], [], [
+  echo "Error! Cannot find the libreadline headers."
+  exit -1
+])
+
 AC_LANG_CPLUSPLUS
 AC_DEFINE([HAVE_ASIO], [], [Was Asio library found])
 AC_CHECK_HEADER(asio.hpp, AC_DEFINE(HAVE_ASIO), 
@@ -37,6 +51,8 @@ AC_CHECK_HEADER(asio.hpp, AC_DEFINE(HAVE_ASIO),
 # Checks for library functions.
 
 AC_OUTPUT([
-  Makefile		\
-  src/Makefile
+  Makefile			\
+  src/Makefile			\
+  src/tools/Makefile		\
+  src/tools/server_ctl/Makefile
 ])

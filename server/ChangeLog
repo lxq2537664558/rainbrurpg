@@ -1,5 +1,15 @@
 2012-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/tools/server_ctl/main.cpp (main): add a basic auto
+	completion feature.
+	* src/tools/server_ctl/main.cpp (main): a really basic binary with
+	readline history.
+	* DEPENDENCIES: add GNU readline dependency for server-ctl.
+	* configure.in: Checks for libreadline library and headers.
+	* configure.in: add generation of tools Makefiles.
+
+2012-10-31  Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/main.cpp: create a basic asynchronous server
 	* src/Makefile.am: Added -lboost_system needed by filesystem.
 	* configure.in: check for Asio header.

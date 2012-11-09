@@ -10,6 +10,12 @@
    (-lboost_filesystem). */
 #undef HAVE_LIBBOOST_FILESYSTEM
 
+/* Define to 1 if you have the `history' library (-lhistory). */
+#undef HAVE_LIBHISTORY
+
+/* Define to 1 if you have the `readline' library (-lreadline). */
+#undef HAVE_LIBREADLINE
+
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 

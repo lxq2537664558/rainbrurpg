@@ -19,3 +19,10 @@ The following package should be installed before RainbruRPG is installed:
     http://boost.org
   + download:
     http::/sourceforge.net/projects/boost/files/
+
+* GNU readline 
+  + Needed for server_ctl tool history
+  + homepage:
+    http://www.gnu.org/software/readline/ 
+  + download:
+    http://ftp.gnu.org/gnu/readline/
