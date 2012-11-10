@@ -87,6 +87,27 @@ foswiki table.
 
 This macro prints a table containing servers in error status.
 
+---++ The REST API
+
+From the game point of view, server and client contact foswiki through a
+[[http://en.wikipedia.org/wiki/Representational_State_Transfer][REST]] API.
+Basically, this API deserve Yaml data and is used to modify server list.
+It needs identification.
+
+To test a function, you must use a URL like this 
+=http://my.host/bin/rest/<subject>/<verb>= where <subject> is 
+_RainbrurpgMetaserverPlugin_ and <verb> is the function to be called. For more
+informations on the _foswiki_ REST feature, please see 
+ http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61.
+
+Here is a list of functions currently implemented :
+
+---+++ server_list
+
+Simply list all servers (even those in error status) in YAML format.
+
+
+
 ---++ Plugin Info
 
 |  Copyright: | Copyright (C) 2011-2012 J&eacute;r&ocirc;me Pasquier, rainbru@free.fr |
@@ -101,7 +122,5 @@ This macro prints a table containing servers in error status.
 
 
 ---
-*Related Topics:* [[%SYSTEMWEB%.Plugins][Plugins]], %SYSTEMWEB%.DeveloperDocumen
-tationCategory, %SYSTEMWEB%.AdminDocumentationCategory, %SYSTEMWEB%.DefaultPrefe
-rences, %USERSWEB%.SitePreferences, Foswiki:Extensions/TreePlugin
+*Related Topics:* [[%SYSTEMWEB%.Plugins][Plugins]], %SYSTEMWEB%.DeveloperDocumentationCategory, %SYSTEMWEB%.AdminDocumentationCategory, %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, Foswiki:Extensions/TreePlugin
 <!-- %JQREQUIRE{"chili"}% -->

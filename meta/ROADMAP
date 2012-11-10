@@ -18,10 +18,19 @@
     see http://foswiki.org/TWiki/CommandAndCGIScripts#A_61rest_61
 - [ ] Create also binary tools to add/delete servers
 **** Prepare the REST API
+     CLOCK: [2012-11-10 sam. 13:12]--[2012-11-10 sam. 13:57] =>  0:45
+- [-] a function to get the YAML server list
+  - [X] Return YAML server list
+  - [X] Must see if we always need to be connected
+     It seems that URL is working
+     http://{HOST}/bin/login/RainbrurpgMetaserverPlugin/server_list?password={PWD};username={USER};foswiki_origin=GET%2crest%2c/bin/rest/RainbrurpgMetaserverPlugin/server_list
+     But we must give clear password and after that, we're connected :(
+  - [ ] Find a better way
+    Maybe creating a rest_user with no other permissions that executing
+    login/rest (block view/edit...)
 - [ ] Needed password in Foswiki configure script
 - [ ] a function to add a server
 - [ ] a function to remove a server
-- [ ] a function to get the YAML server list
 - [ ] a function to set a server in error state
 *** TODO v0.0.1 Correct project setup
 **** DONE create an autoconf package to make installation easier

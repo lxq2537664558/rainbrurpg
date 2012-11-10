@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
-AC_INIT([rainbrurpg-meta], [0.0.0-3], [rainbru@users.sf.net])
-AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-3)
+AC_INIT([rainbrurpg-meta], [0.0.0-4], [rainbru@users.sf.net])
+AM_INIT_AUTOMAKE(rainbrurpg-meta, 0.0.0-4)
 AC_CONFIG_HEADERS([config.h])
 
 # Handle the custom foswiki_prefix

@@ -196,7 +196,9 @@ sub getYamlServerList
 	$output .= "\n    ip: ".getNodeContent($node, 'Ip');
 	$output .= "\n    clients: ".getNodeContent($node, 'Clients');
 	$output .= "\n    comment: ".getNodeContent($node, 'Comment');
-	
+	$output .= "\n    error: ".getNodeContent($node, 'Error');
+	$output .= "\n    error-since: ".getAttributeContent($node, 'Error', 'since');
+
     }
     return $output
 }

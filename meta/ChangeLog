@@ -1,5 +1,15 @@
 2012-11-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: add a section
+	on REST api and details on server_list REST function.
+	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.pm: register
+	the server_list REST function.
+	* src/foswiki_plugin/functions.pm (getYamlServerList): add
+	error and error-since fields.
+
+
+2012-11-09  Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: Improve
 	documentation for the 'Error' XML node.
 

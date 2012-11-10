@@ -63,7 +63,7 @@ sub initPlugin {
 
     # Allow a sub to be called from the REST interface
     # using the provided alias
-    Foswiki::Func::registerRESTHandler( 'example', \&restExample );
+    Foswiki::Func::registerRESTHandler( 'server_list', \&restServerList );
 
     # Plugin correctly initialized
     return 1;
@@ -167,34 +167,6 @@ Since Foswiki::Plugins::VERSION = '2.0'
 
 =begin TML
 
----++ postRenderingHandler( $text )
-   * =$text= - the text that has just been rendered. May be modified in place.
-
-*NOTE*: This handler is called once for each rendered block of text i.e. 
-it may be called several times during the rendering of a topic.
-
-*NOTE:* meta-data is _not_ embedded in the text passed to this
-handler.
-
-*NOTE:* Read the developer supplement at
-Foswiki:Development.AddToZoneFromPluginHandlers if you are calling
-=addToZone()= from this handler
-
-Since Foswiki::Plugins::VERSION = '2.0'
-
-=cut
-
-# Handle YAML output
-sub postRenderingHandler 
-{
-    ### my $text = shift;
-
-    if ($_[0] =~ /RB_YAML_OUTPUT/)
-    {
-	$_[0] = getYamlServerList();
-    }
-
-}
 
 =begin TML
 
@@ -221,10 +193,10 @@ Foswiki:Support.Faq1
 
 =cut
 
-#sub restExample {
-#   my ( $session, $subject, $verb, $response ) = @_;
-#   return "This is an example of a REST invocation\n\n";
-#}
+sub restServerList {
+   my ( $session, $subject, $verb, $response ) = @_;
+   return getYamlServerList();
+}
 
 1;
 

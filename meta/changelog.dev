@@ -1,3 +1,11 @@
+* v0.0.0-3 (04 mar 2012 - 10 nov 2012) SLOC 320 UT 7 FT 9:15
+- Implements server_list REST function
+- Implements the 'error servers' table
+- Impove the XML filename used in foswiki plugin.
+- Some new unit tests for functions.pm implemented
+- 2 unit tests for getNodeContent() implemented.
+- Create pkg-config autoconf's input files for libclient and libserver
+
 * v0.0.0-2 (17 jan 2012 - 04 mar 2012) SLOC 175 UT 1 FT 5:26
 - Improved project setup
    DEPENDENCIES files for all src subdirs
