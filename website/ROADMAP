@@ -28,6 +28,25 @@
 - [X] Must emphasis current page in menu for links -g
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
+**** TODO Upgrade to Foswiki 1.1.5
+     CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
+     CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
+- [X] How to know current running release
+  go to System/WebHome; it's printed (Foswiki-1.1.2)
+     see http://foswiki.org/System/UpgradeGuide#Upgrading_to_a_new_patch_release
+- [X] Try using a Upgrade version locally
+  http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.5.tgz
+  - [X] Make the local install works
+  - [X] Create a UPGRADE_FOSWIKI_1.1.5.org file
+  - [X] Copy the contents of the upgrade tgz or zipfile onto your installation
+  - [X] Update file ownership and permissions- See SettingFileAccessRightsLinuxUnix
+  - [X] Visit bin/configure
+    - [X] Address any warnings or errors reported by the new configuration checkers
+    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
+      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
+  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
+- [ ] Add this walkthrough to the wiki page :
+  http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/WebsiteRevamping
 **** TODO Wordpress theme development
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
@@ -184,18 +203,14 @@ without sending confirmation mail.
     - [X] Move scripts to cgi-bin
     - [X] Create a script to test from a newly created website
 	  Because shell service doesn't use the correct environmant
-    - [ ] Test a simple wiki2 dir with .htaccess to
-	  remove the cgi-bin dir in URL
-	  rainbrurpg.sourceforge.net/wiki2/ -> cgi-bin/wiki2/
-      Redirect /* to cgi-bin/*
-=RedirectMatch permanent ^/([A-Za-z0-9].*) /cgi-bin/$1=
-    - [X] Move foswiki to cgi-bin
+     - [X] Move foswiki to cgi-bin
 	  =chmod  +rx FILENAME= to be exec. by apache user
-    - [ ] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
-    - [ ] Modify the sendMail() function (using TLS ou SMTPS)
+    - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
+    - [ ] Modify the sendMail() function (using TLS)
+      I'm sure using TLS works
     - [ ] configure foswiki to use registration with email confirmation
     - [ ] Test it with a TestMail user
-- [ ] Write an explanation in a foswiki page
+    - [ ] Write an explanation in a foswiki page
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link
