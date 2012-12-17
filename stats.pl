@@ -14,7 +14,7 @@ use warnings;
 my $version1 = 0;
 my $version2 = 0;
 my $version3 = 0;
-my $revision = 2; # Starts to 2 because I lost some work
+my $revision = 0;
 my $nb_items = 0;
 
 # Keep the last TODO file we extracted revision from 

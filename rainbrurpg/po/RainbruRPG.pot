@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RainbruRPG 0.0.5\n"
 "Report-Msgid-Bugs-To: rainbru@users.sourceforge.net\n"
-"POT-Creation-Date: 2012-04-11 11:13+0200\n"
+"POT-Creation-Date: 2012-11-10 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -687,19 +687,19 @@ msgstr ""
 msgid "Adding a Pwd Data to post"
 msgstr ""
 
-#: src/common/EnetClient.cpp:94
+#: src/common/EnetClient.cpp:97
 msgid "No available peers for initiating an ENet connection."
 msgstr ""
 
-#: src/common/EnetClient.cpp:100
+#: src/common/EnetClient.cpp:103
 msgid "Connection to server succeeded."
 msgstr ""
 
-#: src/common/EnetClient.cpp:109
+#: src/common/EnetClient.cpp:112
 msgid "Connection to server failed."
 msgstr ""
 
-#: src/common/EnetClient.cpp:113
+#: src/common/EnetClient.cpp:116
 msgid "Trying to connect an already connected client"
 msgstr ""
 

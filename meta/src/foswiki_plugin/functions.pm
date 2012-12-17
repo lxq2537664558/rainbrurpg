@@ -11,8 +11,7 @@ use DateTime;
 # =========================
 use vars qw($filename $dom $root );
 
-my $filename = $Foswiki::cfg{DefaultUrlHost} . $Foswiki::cfg{PubUrlPath} .
-    '/server_list.xml';
+my $filename = $Foswiki::cfg{PubDir}.'/server_list.xml';
 
 =begin
     Get the content of a named child node

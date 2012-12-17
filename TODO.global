@@ -21,16 +21,6 @@ WARNING! Directory src pre-existed when adding '???'
 
 * Others versions...
 - DIS review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)
-- A network/ library used both by server and client
-   1. We must find a good asn.1 to C++ compiler that works with
-   Boost.Asio. Then we create a wrapper script in perl called 
-   `rainbrurpg-asnc` that wrap to the chosen asn.1 compiler
-   2. Common ASN.1 files stay in the network/src/asn/ directory and
-   client/ and server/ had their own src/asn/ subdir for their
-   sources.
-   3. src/example contain a TCPServer and a TCPClient using simple
-   ASN.1 file to test the whole toolchain.
-   4. Must create a Concept/NewProjectLayoutetwork wiki page
 - Metaserver (foswiki plugin, C++ API)
 - Server register on metaserver (+ ruby extension + ruleset)
 - ongame chat (needs network/ASN.1 support ?)

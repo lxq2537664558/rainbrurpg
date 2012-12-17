@@ -30,6 +30,7 @@
   - [ ] boost-program_options to read argument
   - [ ] regex to get port and to test for IP
   - [ ] manpage and texinfo manual for the available commands
+- [ ] See if gearman could be interresting (see http://gearman.org)
 **** DONE Correct project setup
      CLOCK: [2012-05-09 mer. 09:17]--[2012-05-09 mer. 09:25] =>  0:08
      CLOCK: [2012-05-07 lun. 09:42]--[2012-05-07 lun. 10:14] =>  0:32

@@ -9,12 +9,24 @@ http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.
 in the root dir of foswiki, run the command 
 =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=.
 
+Update file ownership and permissions
+
+  - [X] Visit bin/configure
+    - [X] Check again your file/directories permissions
+    - [X] Address any warnings or errors reported by the new configuration checkers
+    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
+      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
+  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
+
+
 * Troubleshooting
 - When in bin/configure, you see this error in your browser :
   =Use of uninitialized value in string eq at /home/rainbru/www/upgrade_foswiki/wiki/wiki/lib/Foswiki/Configure/Checkers/SMTP/Username.pm line 26.=
   - I personnaly have to add
   =$Foswiki::cfg{Email}{MailMethod} = 'Net::SMTP';=
   in the lib/LocalSite.cfg file.
+  Add it to the end of LocalSite.cfg (but before the =1;= line.
+
 - There are only 2 tabs in configure script output (Web Server Environment and
   General path settings), so cannot go to Extension tab for next step
   (Select the 1.7.1 version of jquery in the Extension/JQuery tab)

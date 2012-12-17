@@ -28,7 +28,8 @@
 - [X] Must emphasis current page in menu for links -g
 - [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
 - [X] Find a way to add a AddThis.com div
-**** TODO Upgrade to Foswiki 1.1.5
+**** DONE Upgrade to Foswiki 1.1.5
+     CLOCK: [2012-11-16 ven. 15:31]--[2012-11-16 ven. 17:03] =>  1:32
      CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
      CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
 - [X] How to know current running release
@@ -45,8 +46,49 @@
     - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
       ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
   - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
-- [ ] Add this walkthrough to the wiki page :
-  http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/WebsiteRevamping
+- [X] Make the changes to online installation
+- [X] Add this walkthrough to a wiki page
+- [X] Remove local install and tests
+**** Try a xml sitemap generatot
+- [ ] in doc/XML_SITEMAP_GENERATOR.org     
+**** TODO Improve foswiki
+     CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
+- [X] Find a good way to create a sitemap.xml
+  Trying http://www.neuroticweb.com Last update : 17 dec. 2012 (47 URLs)
+- [ ] see http://foswiki.org/Extensions/TopicTranslationsPlugin for i18n
+  Set TOPICTRANSLATIONS = pt-br, en, fr
+  See locally if it set correctly the HTML language (for SEO)
+- [ ] May improve mobile devices support
+  hostname/m/wiki/bin/view -> ....?layout=mobile
+- [-] RainbrurpgSeoPlugin
+  *Always remove client ID before committing*
+  - [X] To add a meta description for bing
+    Already done in local installation
+  - [X] Add  Flattr button on all pages (HTML + javascript code)
+  - [ ] Can actual hacks become plugins (for easy upgrade)
+    AdSense banners
+    Concept status banners
+    Analytics code
+  - [ ] Try to place all javascript code in an only one <script> markup
+    http://www.woorank.com/en/www/rainbrurpg.sourceforge.net -> 
+      Technologies -> Too much javascript code blocks
+- [ ] Bad hints from woorank
+  - [ ] WML sidemap is missing
+  - [ ] Description is missing
+  - [ ] Website is too slow
+  - [ ] Do not use microformats
+  - [ ] W3C validity (13 errors, 1 warning)
+  - [ ] Speed tips
+    - [ ] We are using inline style
+    - [ ] Too many javascript (more than 7)
+    - [ ] Do not take advantage of gzip 
+- [-] Bad hints from websiteanalyzer.org
+  - [ ] Using social network to promote website
+  - [-] Website need more content
+    Tried to remove some robots.txt content (System and Sandbox)
+  - [ ] See keywords consistency
+- [ ] May create a HackingFoswiki page from Main.WebHome:wiki status||history
+- [ ] http://foswiki.org/Extensions/MicroformatsPlugin could be used ?
 **** TODO Wordpress theme development
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
@@ -196,21 +238,25 @@ the patternClearHeaderLeft div.
 I have many spams in the foswiki installation since I enabled registration
 without sending confirmation mail.
 - [X] Create FOSWIKI_REGISTRATION.org 
-- [-] Simply test with a script from the sf.net shell
-      Doesn't work
+- [X] Simply test with a script from the sf.net shell
   - [X] Sending a support ticket to sourceforge team
-  - [-] From the staff hints
+  - [X] From the staff hints
     - [X] Move scripts to cgi-bin
     - [X] Create a script to test from a newly created website
 	  Because shell service doesn't use the correct environmant
-     - [X] Move foswiki to cgi-bin
-	  =chmod  +rx FILENAME= to be exec. by apache user
+      - [X] Move foswiki to cgi-bin
+	   =chmod  +rx FILENAME= to be exec. by apache user
     - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
-    - [ ] Modify the sendMail() function (using TLS)
-      I'm sure using TLS works
-    - [ ] configure foswiki to use registration with email confirmation
-    - [ ] Test it with a TestMail user
-    - [ ] Write an explanation in a foswiki page
+- [ ] Could we write email::TLS handler ?
+  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
+      I'm sure using TLS workk
+    $session->net->sendEmail($text); ?
+    all is in lib/Foswiki/Net.pm :
+    _installMailHandler set $this->{mailHandler}
+    I'm not sure we can modify $session->net->sendEmail($text);
+  - [ ] configure foswiki to use registration with email confirmation
+  - [ ] Test it with a TestMail user or configure test mail function
+  - [ ] Write an explanation in a foswiki page
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link

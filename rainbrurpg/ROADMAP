@@ -358,6 +358,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
     be the essential changes for next version but this client need
     improvment until new client is buildable.
     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Concept/NewProjectLayout
+**** There is a problem with qt4-moc
+     When creating dist-bzip2 archive
+     Pas de règle pour fabriquer la cible « moc_FilePreview.cpp », nécessaire pour « distdir ». Arrêt.
+     with g++ (Debian 4.4.7-1) 4.4.7
+
 **** TODO Rebuild with Ogre 1.7.4 and changed dependencies
      CLOCK: [2012-10-21 dim. 11:10]--[2012-10-21 dim. 11:21] =>  0:11
      CLOCK: [2012-07-02 lun. 16:35]--[2012-07-02 lun. 17:19] =>  0:44

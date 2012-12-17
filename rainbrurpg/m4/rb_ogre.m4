@@ -22,7 +22,7 @@ AC_DEFUN([RB_CHECK_OGREMAIN],
     LDFLAGS="$LDFLAGS -lintl$DLL_EXT"
     AC_SUBST(OGRE_PLUGINDIR, [$rb_cross_compil_prefix/lib/OGRE])
   else
-    PKG_CHECK_MODULES(OGRE, [OGRE >= 1.6.0 OGRE < 1.8.0])
+    PKG_CHECK_MODULES(OGRE, [OGRE >= 1.8.0])
     AC_SUBST(OGRE_PLUGINDIR, [$($PKG_CONFIG --variable=plugindir OGRE)])
 
     # Devil
