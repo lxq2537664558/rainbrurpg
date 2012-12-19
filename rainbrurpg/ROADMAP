@@ -364,15 +364,19 @@ name, date, heure, gamestate, position, name perso, name server, versions
      with g++ (Debian 4.4.7-1) 4.4.7
 
 **** TODO Rebuild with Ogre 1.8 and changed dependencies
-     CLOCK: [2012-12-19 mer. 11:08]--[2012-12-19 mer. 11:13] =>  0:05
-     CLOCK: [2012-10-21 dim. 11:10]--[2012-10-21 dim. 11:21] =>  0:11
+     CLOCK: [2012-12-19 mer. 13:04]--[2012-12-19 mer. 13:27] =>  0:23
+     CLOCK: [2012-12-19 mer. 11:17]--[2012-12-19 mer. 11:50] =>  0:33
+     CLOCK: [2012-10-21 dim. 11:10]--[2012-10-21 dim. 11:26] =>  0:16
      CLOCK: [2012-07-02 lun. 16:35]--[2012-07-02 lun. 17:19] =>  0:44
 - [X] ois include dir is now ois/
   Must remove OIS/ form some #include directives
 - [X] Must prepend some STL types with std:: to avoid conflict wih Ogre3D ones
 - [X] enet API seems to be changed
-- [ ] Can we remove config.status from SVN ?
+- [X] Can we remove config.status from SVN ?
 - [ ] Rebuild with Ogre 1.8
+  - [ ] Must fix the 'freetype.la No such file or directory' error from libtool
+    make clean and distclean did nothing
+    fixed with a ln -s but weird
 - [ ] Must update DEPENDENCIES and wiki page BuildingFromSources
 **** TODO Code refactoring to follow coding standards
      CLOCK: [2012-06-30 sam. 11:43]--[2012-06-30 sam. 11:52] =>  0:09

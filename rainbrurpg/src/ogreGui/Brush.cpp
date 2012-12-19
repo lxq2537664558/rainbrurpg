@@ -489,8 +489,8 @@ setCorners(int x1, int y1, int x2, int y2){
   *
   */
 void RainbruRPG::OgreGui::Brush::
-feedVectors(vector<Ogre::Vector3>* vert, vector<Vector2>* uvs, 
-	    vector<ColourValue>* cols )
+feedVectors(std::vector<Ogre::Vector3>* vert, std::vector<Vector2>* uvs, 
+	    std::vector<ColourValue>* cols )
 {
 
  vert->push_back(Vector3( finalRect.left , finalRect.top, Z_VALUE ));
@@ -905,8 +905,8 @@ addGlyph( const Ogre::Rectangle& vRect, const Ogre::Rectangle& vUV,
 	  bool vUVRelative )
 {
 
-  vector<Ogre::Vector3> verts;
-  vector<Vector2> uv;
+  std::vector<Ogre::Vector3> verts;
+  std::vector<Vector2> uv;
 
   buildVertices( vRect, &verts );
 
@@ -974,7 +974,7 @@ addGlyph( const Ogre::Rectangle& vRect, const Ogre::Rectangle& vUV,
   *
   */
 void RainbruRPG::OgreGui::Brush::
-buildVertices(const Ogre::Rectangle& vIn, vector<Ogre::Vector3>* vOut)const
+buildVertices(const Ogre::Rectangle& vIn, std::vector<Ogre::Vector3>* vOut)const
 {
 
   Ogre::Rectangle devRect=vIn;
@@ -1008,7 +1008,7 @@ buildVertices(const Ogre::Rectangle& vIn, vector<Ogre::Vector3>* vOut)const
   *
   */
 void RainbruRPG::OgreGui::Brush::
-buildUV( const Ogre::Rectangle& vIn, vector<Vector2>* vOut ) const
+buildUV( const Ogre::Rectangle& vIn, std::vector<Vector2>* vOut ) const
 {
   // Setup the UV coordinates for the rectangle
   vOut->push_back(Vector2( vIn.left, vIn.bottom ));

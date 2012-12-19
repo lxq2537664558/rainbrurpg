@@ -165,6 +165,8 @@ public:
   virtual void _setRenderTarget(Ogre::RenderTarget*){};
   virtual unsigned int getDisplayMonitorCount() const{};
 
+  virtual DepthBuffer* _createDepthBufferFor(RenderTarget*){};
+
 private:
   String mName;
   ConfigOptionMap mConfigOptionMap;

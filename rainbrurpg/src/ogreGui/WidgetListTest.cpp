@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE( test_WidgetList_PushBack )
 BOOST_AUTO_TEST_CASE( test_WidgetList_UniqueName )
 {
   WidgetList* instance = setup_WidgetList();
-  vector<string> names;
+  std::vector<string> names;
   int idx = 0;
 
   // instance name is "TestList"

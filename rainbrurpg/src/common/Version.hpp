@@ -41,7 +41,7 @@
 #include <sstream>
 #include <curl/curlver.h>
 #include <fox-1.6/fxver.h>
-#include <OIS/OISPrereqs.h>
+#include <ois/OISPrereqs.h>
 
 /* The following macro is used by server and tools that do not link Ogre3D
  * to prevent compilation error

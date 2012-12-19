@@ -1,6 +1,23 @@
+2012-12-19 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src.ogreGui/WidgetListTest.cpp: must prepend STL vector with
+	std:: to avoid ambigous reference with Ogre::Vector.
+
+	* src.ogreGui/Brush.cpp: must prepend STL vector with std:: to
+	avoid ambigous reference with Ogre::Vector.
+
+	* src/common/Version.hpp: renamed libois include directory from OIS
+	to ois.
+
+	* src/testHelpers/DummyRenderSystem.hpp: add _createDepthBufferFor
+	empty function.
+	* src/testHelpers/OgreMinimalSetup.hpp: add skipThisMessage parameter
+	to SilentLogListener::messageLogged avoid abstract type when building
+	with Ogre 1.8.
+
 2012-10-21 Jérôme Pasquier  <rainbru@free.fr>
 
-	* m4/rb_ogre.m4 (RB_CHECK_OGREMAIN): check for a range of Ogre3D 
+	* m4/rb_ogre.m4 (RB_CHECK_OGREMAIN): check for a range of Ogre3D
 	version (OGRE >= 1.6.0 OGRE < 1.8.0).
 	* acinclude.m4: move RB_CHECK_OGREMAIN to its own m4/ file.
 

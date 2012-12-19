@@ -36,7 +36,7 @@ INCLUDES = -I$(top_srcdir)/src/common/		\
 	   $(OGRE_CFLAGS)			\
 	   $(CFLAGS)
 
-libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS)
+libtesthelpers_la_LIBADD = $(OGRE_LIBS) $(LDFLAGS) $(FREETYPE_LIBS)
 
 # Dummy render system
 RenderSystem_Dummy_ladir=$(includedir)/$(GENERIC_LIBRARY_NAME)/testHelpers
@@ -46,6 +46,7 @@ RenderSystem_Dummy_la_HEADERS = DummyRenderSystem.hpp
 RenderSystem_Dummy_la_SOURCES = DummyRenderSystem.cpp
 RenderSystem_Dummy_la_LDFLAGS = -module -avoid-version
 RenderSystem_Dummy_la_LIBTOOLFLAGS = --tag=disable-static
+RenderSystem_Dummy_la_LIBADD = $(FREETYPE_LIBS)
 
 # The executable created here is just used for memory checking using `valgrind`
 bin_PROGRAMS=ogreminimalsetup
