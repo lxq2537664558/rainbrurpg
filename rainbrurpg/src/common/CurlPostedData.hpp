@@ -54,7 +54,7 @@ namespace RainbruRPG {
         *
         * \sa CurlPostedData
 	*/
-      typedef map<const char*, string>        PostedDataMap;
+      typedef std::map<const char*, string>        PostedDataMap;
 
       /** A shortcut for the PostedDataMapiterator */
       typedef PostedDataMap::iterator         PostedDataMapIterator;
@@ -63,13 +63,13 @@ namespace RainbruRPG {
         *
         * \sa CurlPostedData
 	*/
-      typedef pair<const char*, const char*>  PostedDataPair;
+      typedef std::pair<const char*, const char*>  PostedDataPair;
 
       /** The list of keys 
         *
 	* \sa CurlPostedData
         */
-      typedef list<const char*>               PostedDataKeyList;
+      typedef std::list<const char*>               PostedDataKeyList;
 
       /** A class used to compute data to be submitted in a form 
         * submit action

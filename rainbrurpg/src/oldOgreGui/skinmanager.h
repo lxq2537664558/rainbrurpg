@@ -108,7 +108,7 @@ namespace RainbruRPG{
 	* \sa init()
 	*
 	*/
-      vector<RainbruRPG::OgreGui::Skin*> skins;
+      std::vector<RainbruRPG::OgreGui::Skin*> skins;
 
       /** The default skin 
         *

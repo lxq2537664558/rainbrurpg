@@ -266,7 +266,8 @@ namespace RainbruRPG {
       void checkHardwareBuffer(GuiVertex*);
 
       void setCorners(int, int, int, int);
-      void feedVectors(vector<Vector3>*,vector<Vector2>*,vector<ColourValue>*); 
+      void feedVectors(std::vector<Vector3>*,std::vector<Vector2>*,
+		       std::vector<ColourValue>*); 
       void drawQuad(void);
       void createTexture(void);
 
@@ -276,8 +277,8 @@ namespace RainbruRPG {
       void beginGlyphs(void);
       void endGlyphs(void);
 
-      void buildUV(const Ogre::Rectangle&, vector<Vector2>*) const;
-      void buildVertices(const Ogre::Rectangle&, vector<OgreGui::Vector3>*) const;
+      void buildUV(const Ogre::Rectangle&, std::vector<Vector2>*) const;
+      void buildVertices(const Ogre::Rectangle&, std::vector<OgreGui::Vector3>*) const;
       void getFinalRect( const Ogre::Rectangle&, Ogre::Rectangle&) const;
 
       const Ogre::Rectangle& translateRectangle(Ogre::Rectangle&, float, float)const;

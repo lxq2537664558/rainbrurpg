@@ -57,7 +57,7 @@ namespace RainbruRPG{
   namespace OgreGui{
 
     /** A list of cell */
-    typedef vector<MultiColumnListCell*> tMultiColumnListCellList;
+    typedef std::vector<MultiColumnListCell*> tMultiColumnListCellList;
 
     /** An item of the MultiColumnList
       *

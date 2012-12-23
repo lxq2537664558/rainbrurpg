@@ -49,7 +49,7 @@ namespace RainbruRPG {
 
 
     /** A stl list of  OptionAttribute*/
-    typedef list<OptionAttribute*> tOptionAttributeList;
+    typedef std::list<OptionAttribute*> tOptionAttributeList;
 
 
     /** A button for the launcher's options dialog

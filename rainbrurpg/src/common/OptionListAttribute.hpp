@@ -49,7 +49,7 @@ namespace RainbruRPG {
   namespace Options{
 
     /** The values of a OptionListAttribute */
-    typedef list<const char*> tValueList;
+    typedef std::list<const char*> tValueList;
 
     /** An option storing a list of string
       *

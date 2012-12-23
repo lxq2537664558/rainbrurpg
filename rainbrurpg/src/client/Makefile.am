@@ -54,8 +54,8 @@ INCLUDES = -I$(top_srcdir)/ext				\
 	   -I$(top_srcdir)/src/common			\
 	   -I$(top_srcdir)/src/interdep			\
 	   -I$(top_srcdir)/src/maincore			\
-	   -I$(top_srcdir)/src/oldOgreGui		\
 	   -I$(top_srcdir)/src/ogreGui			\
+	   -I$(top_srcdir)/src/oldOgreGui		\
 	   $(OIS_CFLAGS)				\
 	   $(OGRE_CFLAGS)				\
 	   $(SIGC_CFLAGS)				\
@@ -72,7 +72,8 @@ rainbrurpg_LDFLAGS= -L$(top_srcdir)/src/common/		\
 rainbrurpg_LDADD= $(FREETYPE_LIBS)			\
 		  $(FOX_LIBS)				\
 		  $(FREETYPE_LIBS)			\
-		  $(LDFLAGS)
+		  $(LDFLAGS)				\
+		  $(OGRE_LIBS)
 
 exe:
 	i586-mingw32msvc-g++ -g -O2 -o rainbrurpg.exe exampleframelistener.o gsconnection.o gscreateaccount.o gsmainmenu.o gsmenubase.o gsserverlist.o gsupdatedatafiles.o guiframelistener.o guimanager.o launcher.o launcheroptions.o main.o languageselector.o -L/home/carine/programmation/rainbrurpg/common/.libs -L/home/carine/programmation/rainbrurpg/maincore/.libs -L/home/carine/programmation/rainbrurpg/common -L/home/carine/programmation/rainbrurpg/maincore -L/home/carine/programmation/rainbrurpg/ogreGui -L/usr/cross/lib /home/carine/programmation/rainbrurpg/src/maincore/.libs/rainbrurpg-core.dll /home/carine/programmation/rainbrurpg/src/common/.libs/rainbrurpg-common.dll -lcurl /home/carine/programmation/rainbrurpg/src/ogreGui/.libs/rainbrurpg-ogregui.dll /usr/cross/lib/OgreMain.dll /usr/cross/lib/libintl3.dll -lFOX-1.6 -lstdc++ -lfreeimage -lzzip -lfreetype6 -lOIS -lboost_filesystem-1_34_1 -lboost_thread-1_34_1 -lenet -lglib-2.0 -lsigc-2.0 -lgd -lgnet-2.0 

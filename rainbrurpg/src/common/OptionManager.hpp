@@ -49,7 +49,7 @@ namespace RainbruRPG {
     /** A stl list of OptionPanel
       *
       */
-    typedef list<OptionPanel*> tOptionPanelList;
+    typedef std::list<OptionPanel*> tOptionPanelList;
 
     /** Provides an interface beetween plugins, launcher and game.
       *

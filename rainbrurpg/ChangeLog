@@ -1,3 +1,19 @@
+2012-12-23 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/Launcher.cpp (createRenderCombo): Ogre root's
+	getAvailableRenderers function now returns a reference list
+	(was a pointer to a list).
+
+	* src/common/: many reference to STL was ambigous. Prepend
+	them with std::.
+	* src/olgOgreGui/: many reference to STL was ambigous. Prepend
+	them with std::.
+
+	* src/client/GsMenubase.cpp: renamed libois include directory
+	from OIS to ois.
+	* src/client/GsMenubase.hpp: renamed libois include directory
+	from OIS to ois.
+
 2012-12-19 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src.ogreGui/WidgetListTest.cpp: must prepend STL vector with

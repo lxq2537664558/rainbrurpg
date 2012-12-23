@@ -310,14 +310,14 @@ void RainbruRPG::Gui::Launcher::createRenderCombo(FXComposite* parent){
 		     LAYOUT_FILL_Y|LAYOUT_FILL_X|LAYOUT_FILL_COLUMN);
 
  
-  Ogre::RenderSystemList* renderList=Ogre::Root::getSingleton()
+  Ogre::RenderSystemList renderList=Ogre::Root::getSingleton()
     .getAvailableRenderers();
 
 
   Ogre::RenderSystemList::iterator renderIterator;	
     
-  for( renderIterator= renderList->begin(); 
-       renderIterator != renderList->end();
+  for( renderIterator= renderList.begin(); 
+       renderIterator != renderList.end();
        renderIterator++){
     
     lbRend->appendItem((*renderIterator)->getName().c_str());

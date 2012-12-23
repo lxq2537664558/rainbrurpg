@@ -54,7 +54,7 @@ namespace RainbruRPG{
   namespace OgreGui{
 
     /** A STL list of DrawingDevSettings pointers */
-    typedef list<DrawingDevSettings*> tDrawingDevSettingsList;
+    typedef std::list<DrawingDevSettings*> tDrawingDevSettingsList;
 
     /** A list of DrawingDevSettings used by QuadRenderer
       * 

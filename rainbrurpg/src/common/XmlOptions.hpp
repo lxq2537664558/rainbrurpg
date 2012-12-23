@@ -44,7 +44,7 @@ namespace RainbruRPG {
   namespace Options{
 
     /** A std list of snapshot name */
-    typedef list<const char*> tSnapshotList;
+    typedef std::list<const char*> tSnapshotList;
 
     /** Used to store client options
       *

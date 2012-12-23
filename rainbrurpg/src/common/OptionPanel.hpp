@@ -48,7 +48,7 @@ namespace RainbruRPG {
   namespace Options{
 
     /** A stl list of OptionButton */
-    typedef list<OptionButton*> tOptionButtonList;
+    typedef std::list<OptionButton*> tOptionButtonList;
 
     /** A panel for the launcher option dialog
       *

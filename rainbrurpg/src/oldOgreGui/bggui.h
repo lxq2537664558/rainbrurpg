@@ -176,9 +176,9 @@ namespace BetaGUI {
     bool handleWindowsEvents(void);
 
     /** A const iterator over windowList */
-    typedef list<Window*>::const_iterator WindowListIterator;
+    typedef std::list<Window*>::const_iterator WindowListIterator;
     /** An iterator used to cross the list from end to begin */
-    typedef list<Window*>::reverse_iterator WindowListReverseIterator;
+    typedef std::list<Window*>::reverse_iterator WindowListReverseIterator;
 
     /** The current GUI transparency value
       *
@@ -224,10 +224,10 @@ namespace BetaGUI {
     /** A vector of windows  drawn after Ogre overlays
       *
       */
-    list<Window*> windowList;
+    std::list<Window*> windowList;
 
     /** A list of window that will be drawn before Ogre overlays */
-    list<Window*> windowBeforeOverlayList;
+    std::list<Window*> windowBeforeOverlayList;
 
     /** A pointer to the currently resized window
       *
