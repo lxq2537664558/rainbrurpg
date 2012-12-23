@@ -23,19 +23,12 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http://sourceforge.net/project/showfiles.php?group_id=3157
 
-* Ogre3D 1.6.4 
+* Ogre3D 1.8.0
   + Needed.
   + homepage:
     http://www.ogre3d.org
   + download:
     http://www.ogre3d.org/download
-
-* Plugin Landscape Scene Manager 2
-  + Needed
-  + homepage:
-    http://www.ogre3d.org/wiki/index.php/Paging_Scene_Manager
-  + download:
-    Can be found in the Ogre3D cvs repository
 
 * OIS 1.2.0
   + Needed
