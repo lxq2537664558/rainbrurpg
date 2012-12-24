@@ -8,7 +8,7 @@ AM_GNU_GETTEXT_VERSION(0.18)
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
-
+AC_CONFIG_MACRO_DIR([m4])
 AC_SUBST(VERSION)
 
 ISODATE=`date +%Y-%m-%d`
