@@ -167,6 +167,10 @@ public:
 
   virtual DepthBuffer* _createDepthBufferFor(RenderTarget*){};
 
+  virtual void beginProfileEvent(const String&){};
+  virtual void endProfileEvent(){};
+  virtual void markProfileEvent(const String&){};
+
 private:
   String mName;
   ConfigOptionMap mConfigOptionMap;

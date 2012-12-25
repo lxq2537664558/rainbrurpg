@@ -23,7 +23,7 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http://sourceforge.net/project/showfiles.php?group_id=3157
 
-* Ogre3D 1.8.0
+* Ogre3D 1.8.1
   + Needed.
   + homepage:
     http://www.ogre3d.org
