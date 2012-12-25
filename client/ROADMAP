@@ -2,28 +2,40 @@
 
 * v1.0.0
 ** v0.1.0
-*** v0.0.2 Multiplayer startx
-   lifesign (need ../network/)
-   chat
+*** v0.0.2 Multiplayer starts
    bots//fighting
+   lifesign (need ../network/)
+**** chat
+- [ ] Possibly with simple markup if CEGUI support it
+  Must see for multiple states text (italic
+  - /italic/ : italic
+  - *bold*
+  - _underlined_
+  - +strikethriugh+  
+  May also handle smileys
 *** v0.0.1 Technical demo
+**** Search for server and list them
+- [ ] meta-client library become a dependency
+- [ ] Add a network play button 
+- [ ] Create the GsServerList game state
+- [ ] Prepare GsUpdateDatafiles (from network library)
 **** To a local test implementation
 - [ ] Uses CEGUI to get a menu
 - [ ] Uses services as a dependency
 - [ ] Create a launcher as a service and replace the Ogre3D one
 - [ ] Uses PLSM2 as a dependency
+  Not sure because of the switch to Ogre 1.8 (builtin Terrain)
 - [ ] Implement movment (maybe need a physical engine)
 **** TODO first version
      CLOCK: [2012-01-06 ven. 11:43]--[2012-01-06 ven. 12:19] =>  0:36
      CLOCK: [2012-01-06 ven. 08:53]--[2012-01-06 ven. 09:02] =>  0:09
      CLOCK: [2012-01-04 mer. 21:42]--[2012-01-04 mer. 22:00] =>  0:18
 - [X] To a black screen
+- [ ] Uses rainbrurpg-logger (with pkg-config)
 - [ ] Add a model (ogrehead.mesh)
 - [ ] Window must be resizable and exitable
 - [ ] Integrates CEGUI window
-- [ ] Uses rainbrurpg-logger (with pkg-config)
-- [ ] Redirect Ogre logs to logger
-      
+- [ ] Redirect Ogre logs to logger      
 **** DONE Correct project setup
      CLOCK: [2012-01-04 mer. 14:17]--[2012-01-04 mer. 14:34] =>  0:17
      CLOCK: [2012-01-03 mar. 10:54]--[2012-01-03 mar. 11:29] =>  0:35
