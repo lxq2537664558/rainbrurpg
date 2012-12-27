@@ -1,1 +1,33 @@
-Trying to embed a guile-2.0 interpreter
+service - GPLv3 - A service handling library.
+
+* ROADMAP : Correct project setup
+- create autoproject
+- uses Boost.Test for unit tests
+
+* ServiceManager's API (Singleton)
+   Can set .so plugins directory and .rb ruby services directory
+   Must at least have a 'depend' list
+- addService
+- removeService
+- sanityCheck
+- computeLoadOrder
+
+* Miscellaneous
+- uses logger/
+- search the lib apt to compute debian package dependencies (xapian)
+- see how to draw dependencies tree (maybe with graphviz?)
+
+* To be solved
+- API publication: 
+   Publisher-Subscriber with string-based id for C++
+   SWIG and ruby interpreter for ruby services
+- Services loading order
+
+=== ChangeLog ===
+   (10 items by revision)
+
+* v0.0.0-1 (28 oct 2011 - ???)
+- Merged two different trees
+- Added some paper TODOs content to ROADMAP
+- Started unit tests for Dependencies parsing
+- play a bit with compute_dependencies.rb
