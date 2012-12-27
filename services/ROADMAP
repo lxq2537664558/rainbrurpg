@@ -1,0 +1,36 @@
+					-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** Found a way to generate documentation
+     
+     For registered function and objects, we must have HTML
+     documentation for C++/guile/ruby.
+
+     See doxygen for aliasses and custom output. In last ressort, use
+     the given XML output and generator to generate our own HTML output.
+
+- [ ] Try in apidoc/
+  Using doxygen to include ../logger/src
+  With logger classes usable in extension in particular group
+  explain this in APIDOC.org
+
+
+**** Make logger usable in plugins using SWIG
+
+**** Must have a common interface
+     
+     To register C++ functions and objects to guile and ruby.
+     C++ code may be in shared library. Maybe using the PubSub
+     design pattern.
+
+- [ ] Make a list if possible events name
+  events name become function names in guile/ruby
+
+**** TODO Correct project setup
+- [ ] Uses autotools
+- [ ] all sources go in src/
+- [ ] generate a pkg-config file
+- [ ] create a DEPENDENCIES
+- [ ] Create a wiki page under NewrojectLayout
