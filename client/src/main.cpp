@@ -18,11 +18,23 @@
  *
  */
 
+#include <Logger.hpp>
+
 #include "GameEngine.hpp"
+
+static Rpg::Logger static_logger ("main", Rpg::LT_BOTH);
+
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
 
 int
 main(int argc, char** argv)
 {
+  Rpg::Logger::init ("rainbrurpg-client", VERSION, "rainbrurpg-client");
+  Rpg::Logger::parse_program_options (argc, argv);
+
+  LOGI("Starting main loop");
   try
     {
       GameEngine ge;
@@ -31,7 +43,8 @@ main(int argc, char** argv)
     {
       return 1;
     }
-      
+  LOGI("main loop ended");
+  Rpg::Logger::free();
   return 0;
 }
 
