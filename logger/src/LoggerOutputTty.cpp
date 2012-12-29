@@ -52,6 +52,7 @@ static const string YELLOW  ="\033[01;33m"; //!< Espace sequence for yellow
 static const string LBLUE   ="\033[01;34m"; //!< Espace sequence for light blue
 static const string LCYAN   ="\033[01;36m"; //!< Espace sequence for ligth cyan
 static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
+static const string RESET   ="\033[0;m";    //!< Restet display attribute
 
 /** Logs a single text with the given color and returns to gray
   *
@@ -59,7 +60,7 @@ static const string WHITE   ="\033[01;37m"; //!< Espace sequence for white
   * \param CONTENT The line to print
   *
   */
-#define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << BLACK
+#define COLOR_LOG(COLOR, CONTENT) COLOR << CONTENT << RESET
 
 namespace MyNS_ForOutput {
   

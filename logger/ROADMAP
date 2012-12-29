@@ -75,76 +75,77 @@
 - [X] Retest Logger with  std container
 - [X] May switch to GPLv3
 - [X] Each class should have its own files
-      - [X] Start with Logger.hpp
-      - [X] Must rename LoggerOutputTxt to LoggerOutputTty
-      - [X] LoggerOutputFile in LoggerOutput
-      - [X] Continue with Object.hpp
-      - [X] Move maximum implementation in .cpp files
+  - [X] Start with Logger.hpp
+  - [X] Must rename LoggerOutputTxt to LoggerOutputTty
+  - [X] LoggerOutputFile in LoggerOutput
+  - [X] Continue with Object.hpp
+  - [X] Move maximum implementation in .cpp files
 - [X] Find a suitable container for LoggerOutputs
 - [X] configure checks for boost_program_options
 - [X] Doxygen documentation for public API
-      - [X] Create a main page 
-      - [X] Must document all files (\file)
-      - [X] Document undocumented members
+  - [X] Create a main page 
+  - [X] Must document all files (\file)
+  - [X] Document undocumented members
 - [X] Move it to the RainbruRPG project (ie. In 'Rpg' namespace)
-      - [X] Fix the no match for ‘operator<<’ error
-      - [X] Maybe need to document the Rpg namespace with doxygen (Mainpage.hpp)
+  - [X] Fix the no match for ‘operator<<’ error
+  - [X] Maybe need to document the Rpg namespace with doxygen (Mainpage.hpp)
 - [X] Modifying ../stats.pl (keep clock)
 - [X] ../next_release.rb implementation
 - [X] Update GNU headers date for 2012
 - [X] Fix the tty output color issue (light gray)
 - [X] Should use pkg-config 
-      - [X] Should create a rainbrurpg-logger.pc.in file
-      - [X] Pass it to configure script
-      - [X] Install it with `make install`
+  - [X] Should create a rainbrurpg-logger.pc.in file
+  - [X] Pass it to configure script
+  - [X] Install it with `make install`
 - [X] Complete LogHeader implementation
-      - [X] Compilation date/time
-	    - [X] Add it to LogHeader struct
-	    - [X] Initialize it in Logger::init
-	    - [X] LoggerOutputs output modifed
-	    - [X] log_reader tool print it in infos panel
-            - [X] Set it to the binary compil date and time
-      - [X] Execution date/time
-            - [X] Add it to LogHeader struct
-	    - [X] Initialize it in Logger::init
-	    - [X] LoggerOutputs output modifed
-	    - [X] log_reader tool print it in infos panel
+  - [X] Compilation date/time
+    - [X] Add it to LogHeader struct
+    - [X] Initialize it in Logger::init
+    - [X] LoggerOutputs output modifed
+    - [X] log_reader tool print it in infos panel
+    - [X] Set it to the binary compil date and time
+  - [X] Execution date/time
+    - [X] Add it to LogHeader struct
+    - [X] Initialize it in Logger::init
+    - [X] LoggerOutputs output modifed
+    - [X] log_reader tool print it in infos panel
 - [X] see why `make` doesn't work in src/tool
       `make MainWindow_ui.rb` correctly works but not `make`
 - [X] Test bzip2 archive for missing files
 - [X] src/tools/test.yaml doesn't work anymore
-      - [X] Implement a sub to handle the yaml node
-	    Set it to 'ERROR' if missing
-      - [X] Then a trap that explain the error that occured
-      - [X] We may then open an error dialog with missing nodes
+  - [X] Implement a sub to handle the yaml node
+	Set it to 'ERROR' if missing
+  - [X] Then a trap that explain the error that occured
+  - [X] We may then open an error dialog with missing nodes
 - [X] Should remove autoproject generated files
       logger.cc, xmalloc.h, xmalloc.c ...
 - [X] Should remove autom4te.cache from svn repo
 - [X] configure must search for boost libraries
 - [X] Create a DEPENDENCIES file
 - [X] May use gettext for translation
-      - [X] Must create an initialization function
-      - [X] Make a LoggerDef.hpp header with _() definition
-	    And use it in the log_header
-      - [X] gettextize invocation
+  - [X] Must create an initialization function
+  - [X] Make a LoggerDef.hpp header with _() definition
+	And use it in the log_header
+  - [X] gettextize invocation
 - [X] May remove some po/ files from SVN
 - [X] May use Boost.Format to get more translatable messages
-      - [X] configure script should test it
-     - [X] Add it in DEPENDENCIES and pkg-config file
-      - [X] see the LoggerOutputTty::logHeader implementation
-      - [X] gettext must handle TRANSLATORS comments
+  - [X] configure script should test it
+- [X] Add it in DEPENDENCIES and pkg-config file
+  - [X] see the LoggerOutputTty::logHeader implementation
+  - [X] gettext must handle TRANSLATORS comments
 - [X] Find other translatable strings
 - [X] May move configure.in DEFUN to m4/
 - [X] A bin from this library is in conflict with bsdutils's logger
       Fix this
-      - [X] Prefix manual and texinfo called 'logger' with 'rainbrurpg-'
-      - [X] Is there a binary called logger ? NO
+  - [X] Prefix manual and texinfo called 'logger' with 'rainbrurpg-'
+  - [X] Is there a binary called logger ? NO
 - [X] Many members must be private
 - [X] Must escape some characters with double quotes (`, :) in YAML output
 - [X] Make some vars accessor for server : log Logfilename, program name, version
+- [X] Found a bug that makes the console black on exit
 - [-] Must update texinfo for v1 YAML output
-      - [X] Makes the manual logger-related (actually an autoproject skeleton)
-      - [ ] Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
-      - [ ] Can we import doxygen documentation to texinfo
+  - [X] Makes the manual logger-related (actually an autoproject skeleton)
+  - [ ] Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
+  - [ ] Can we import doxygen documentation to texinfo
 - [ ] src/example/logger-test does not handle commandline options correctly
 - [ ] Must change dist-bzip2 name to rainbrurpg-logger
