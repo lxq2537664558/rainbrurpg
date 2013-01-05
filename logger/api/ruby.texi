@@ -1,0 +1,8 @@
+@menu
+* The logger ruby object::    Description of this section.
+@c * Sect. 2.2::  
+@end menu
+
+@comment  node-name,  next,      previous,  up
+@node The logger ruby object, , ,Logger ruby bindings
+@subsection The logger ruby object

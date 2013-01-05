@@ -1,0 +1,14 @@
+@menu
+* The logger object::    Description of this section.
+@c * Sect. 2.2::  
+@end menu
+
+@comment  node-name,  next,      previous,  up
+@node The logger object, , ,Logger ruby bindings
+@subsection The logger object
+
+To use the logger library, you first need to load it :
+
+@example 
+(load-extension "./example.so" "SWIG_init")
+@end example
