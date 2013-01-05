@@ -54,7 +54,7 @@
 **** TODO Improve foswiki
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
-  Trying http://www.neuroticweb.com Last update : 17 dec. 2012 (47 URLs)
+  Trying http://www.neuroticweb.com/recursos/sitemap/#  Last update : 17 dec. 2012 (47 URLs)
 - [ ] see http://foswiki.org/Extensions/TopicTranslationsPlugin for i18n
   Set TOPICTRANSLATIONS = pt-br, en, fr
   See locally if it set correctly the HTML language (for SEO)
@@ -87,8 +87,12 @@
   - [-] Website need more content
     Tried to remove some robots.txt content (System and Sandbox)
   - [ ] See keywords consistency
+- [ ] Fix errors from W3C validators
 - [ ] May create a HackingFoswiki page from Main.WebHome:wiki status||history
 - [ ] http://foswiki.org/Extensions/MicroformatsPlugin could be used ?
+- [ ] May create a HackingFoswiki page
+  with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
+  TLS mail stuff that do not survive an upgrade
 **** TODO Wordpress theme development
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
@@ -225,7 +229,8 @@ the patternClearHeaderLeft div.
 	    with a link to wiki's NewWebsiteLayout
 	    as a post or a 'Compatibility notes' page
 - [ ] Should add a adsense block below sidebar
-- [ ] Add /AddThis/ button in post detail
+- [ ] Add /AddThis/ and /Flattr/ buttons in post detail
+- [ ] Add a spoiler in homepage (this custom theme is a work in progress)
 **** TODO Fix the foswiki registration issue
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
@@ -249,7 +254,7 @@ without sending confirmation mail.
     - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
 - [ ] Could we write email::TLS handler ?
   - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
-      I'm sure using TLS workk
+      I'm sure using TLS works
     $session->net->sendEmail($text); ?
     all is in lib/Foswiki/Net.pm :
     _installMailHandler set $this->{mailHandler}
