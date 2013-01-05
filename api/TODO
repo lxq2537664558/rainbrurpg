@@ -1,0 +1,15 @@
+rainbrurpg-api - GPLV3 - Tools to generate RPG api documentation.
+
+* Must handle
+   Generate API doc with AdSense, Analytics, AddThis, Flattr and
+   custom grey menu
+- libraries API (logger, servces..) with doxygen
+   URLs like api/logger/, api/services/...
+- Then Documentation for plugins creation
+   Maybe in texinfo in each library/api/ 
+   Where texinfo can be generated from doxygen wih special macro
+     API_RUBY || API_GUILE || API_BOTH
+   URL like scripting/guile/
+                     /ruby/
+- Subdirs for tests are in ../test_api_01/
+- Maybe copy these files to web using rsync

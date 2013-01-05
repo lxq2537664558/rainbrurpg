@@ -1,0 +1,133 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename rainbrurpg-scripting.info
+@include version.texi
+@settitle RainbruRPG Scripting guide @value{VERSION}
+@syncodeindex pg cp
+@comment %**end of header
+@copying
+This manual is for Scripting RainbruRPG (version @value{VERSION}, 
+@value{UPDATED}), which is a manual on writing extension for a MMORPG 
+both in guile and ruby programming languages.
+
+Copyright @copyright{} 2012 RainbruRPG team.
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have the freedom to
+copy and modify this GNU manual.  Buying copies from the FSF
+supports it in developing GNU and promoting software freedom.''
+@end quotation
+@end copying
+
+@dircategory Games
+@direntry
+* sample: RainbruiRPG scripting guide.
+@end direntry
+
+@titlepage
+@title Scripting for RainbruRPG
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author J@'er@^ome Pasquier (@email{rainbru@free.fr})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top, How scripting works, (dir), (dir)
+@top GNU Sample
+
+This manual explains how to write plugins for @emph{RainbruRPG} version 
+@value{VERSION}, @value{UPDATED}.
+@end ifnottex
+
+@menu
+* How scripting works::         
+* Guile wrapper::               
+* Ruby wrapper::                
+* GNU Free Documentation License::  
+* Index::                       
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Guile wrapper
+
+* Logger ruby bindings::        
+
+Ruby wrapper
+
+* Logger ruby bindings::        Description of this section.
+
+@end detailmenu
+@end menu
+
+@node How scripting works, Guile wrapper, Top, Top
+@chapter How scripting works
+
+@pindex sample
+@cindex invoking @command{sample}
+
+@emph{RainbruRPG} is developed following a multi-library layout. The scripting
+follow the same architecture. You have logger, network, service, server, client
+and other modules, named after the C++ library it intends to wrap.
+
+But before you need to read these per-library documentation, you must make
+a choice. Writting extension in @emph{guile} or @emph{ruby}.
+
+@node Guile wrapper, Ruby wrapper, How scripting works, Top
+@comment  node-name,  next,      previous,  up
+@chapter Guile wrapper
+
+To start in Guile
+
+@menu
+* Logger ruby bindings::        
+@end menu
+
+
+@node Logger ruby bindings,  , Guile wrapper, Guile wrapper
+@section Logger guile bindings
+@include ../logger/api/ruby.texi
+
+
+@node Ruby wrapper, GNU Free Documentation License, Guile wrapper, Top
+@chapter Ruby wrapper
+
+@emph{RainbruRPG} is developed following a multi-library layout. The scripting
+follow the same architecture. You have logger, network, service, server, client
+and other modules, named after the C++ library it intends to wrap.
+
+Please choose the library bindings you need :
+@menu
+* Logger ruby bindings::        Description of this section.
+@end menu
+
+
+@node Logger ruby bindings,  , Ruby wrapper, Ruby wrapper
+@section Logger ruby bindings
+@include ../logger/api/ruby.texi
+
+
+
+@node GNU Free Documentation License, Index, Ruby wrapper, Top
+@appendix GNU Free Documentation License
+
+@include fdl.texi
+
+@node Index,  , GNU Free Documentation License, Top
+@unnumbered Index
+
+@printindex cp
+
+@bye

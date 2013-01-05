@@ -1,0 +1,15 @@
+						-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** Find a good way to expose libraries API in documentation
+     CLOCK: [2013-01-04 ven. 22:05]--[2013-01-04 ven. 23:11] =>  1:06
+     CLOCK: [2013-01-04 ven. 20:03]--[2013-01-04 ven. 20:53] =>  0:50
+- [X] Create a Makefile clean rule 
+- [ ] See how to generate documentation
+- [ ] Could we create all SWIG interface here in a single
+  RainbruRPG
+**** Start to play with logger's guile bindings
+- [ ] Got segfault when loading library :
+     (load-extension (string-append (getcwd) "/liblogger.so") "SWIG_init")
