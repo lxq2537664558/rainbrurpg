@@ -1,0 +1,25 @@
+						-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** [svn:feature_LoggerApi] Start to play with logger's guile bindings
+     CLOCK: [2013-01-07 lun. 15:47]--[2013-01-07 lun. 16:26] =>  0:39
+     CLOCK: [2013-01-07 lun. 13:55]--[2013-01-07 lun. 14:14] =>  0:19
+
+     These tests are made with guile (GNU Guile) 2.0.6, SWIG Version 2.0.9
+     and libgmp3-dev.
+
+- [X] Got segfault when loading library :
+     (load-extension (string-append (getcwd) "/liblogger.so") "SWIG_init")
+     Fixed adding -lboost_program_options when compilign module 
+     Testing with `LD_DEBUG=all LD_DEBUG_OUTPUT=tmp.txt guile' gives hints
+#+BEGIN_EXAMPLE
+cat tmp.txt.19236 |grep fatal
+     19236:     /usr/lib/i386-linux-gnu/gconv/ISO8859-1.so: error: symbol lookup error: undefined symbol: gconv_end (fatal)
+     19236:     /usr/local/lib/libguilereadline-v-18.so.18: error: symbol lookup error: undefined symbol: libguilereadline_v_18_LTX_scm_init_readline (fatal)
+     19236:     ./logger.so: error: symbol lookup error: undefined symbol: _ZN5boost15program_options19options_description21m_default_line_lengthE (fatal)
+#+END_EXAMPLE
+     Maybe I forgot to add boost.program_options
+
+- [ ] Must got the Makefile from automake
