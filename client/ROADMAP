@@ -26,17 +26,23 @@
 - [ ] Uses PLSM2 as a dependency
   Not sure because of the switch to Ogre 1.8 (builtin Terrain)
 - [ ] Implement movment (maybe need a physical engine)
+**** Make a rainbrurpg-client-ruby-console binary
+     The same as the previous item (guile one)
+**** Make a rainbrurpg-client-guile-console binary
+     in src/tools, with needed api modules preloaded to be
+     able to test for guile an interactive way.
 **** TODO first version
      CLOCK: [2012-12-29 sam. 13:13]--[2012-12-29 sam. 13:33] =>  0:20
      CLOCK: [2012-01-06 ven. 11:43]--[2012-01-06 ven. 12:19] =>  0:36
      CLOCK: [2012-01-06 ven. 08:53]--[2012-01-06 ven. 09:02] =>  0:09
      CLOCK: [2012-01-04 mer. 21:42]--[2012-01-04 mer. 22:00] =>  0:18
 - [X] To a black screen
-- [ ] Uses rainbrurpg-logger (with pkg-config)
+- [X] Uses rainbrurpg-logger (with pkg-config)
+- [ ] Rename binary to rainbrurpg-client
 - [ ] Add a model (ogrehead.mesh)
 - [ ] Window must be resizable and exitable
 - [ ] Integrates CEGUI window
-- [ ] Redirect Ogre logs to logger      
+- [ ] Redirect Ogre logs to logger or to a file      
 **** DONE Correct project setup
      CLOCK: [2012-01-04 mer. 14:17]--[2012-01-04 mer. 14:34] =>  0:17
      CLOCK: [2012-01-03 mar. 10:54]--[2012-01-03 mar. 11:29] =>  0:35

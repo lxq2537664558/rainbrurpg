@@ -210,4 +210,5 @@ puts <<EOS
 Add to this :
 * 1-2 items NOT_ADDED
 * 1-2 items rainbrurpg/
+* 1-2 items from the oldest SVN feature branch
 EOS
