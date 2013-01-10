@@ -8,6 +8,7 @@ crainbrurpg-client - ??? - The NewProjectLayout's client.
    Please update revision in configure.in
 
 * v0.0.0-2 (4 jan 2011 - ???) SLOC 41 FT 0:52
+- Update GNU headers for 2013
 - Now uses rainbrurpg-logger
 - Got a black screen 
    added FrameListener and Viewport

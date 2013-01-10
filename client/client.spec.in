@@ -1,6 +1,6 @@
 # rpg.spec
 #
-# Copyright (c) 2011 Jerome Pasquier rainbru@free.fr
+# Copyright (c) 2011-2013 Jerome Pasquier rainbru@free.fr
 #
 %define name rpg
 %define version @VERSION@
