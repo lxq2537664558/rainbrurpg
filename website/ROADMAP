@@ -52,9 +52,11 @@
 **** Try a xml sitemap generatot
 - [ ] in doc/XML_SITEMAP_GENERATOR.org     
 **** TODO Improve foswiki
+     CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
   Trying http://www.neuroticweb.com/recursos/sitemap/#  Last update : 17 dec. 2012 (47 URLs)
+- [X] Update GNU headers for 2013
 - [ ] see http://foswiki.org/Extensions/TopicTranslationsPlugin for i18n
   Set TOPICTRANSLATIONS = pt-br, en, fr
   See locally if it set correctly the HTML language (for SEO)

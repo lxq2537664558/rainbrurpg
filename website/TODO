@@ -18,6 +18,7 @@ rainbruWebsite - GPLv2 - Create a skin for our Wordpress/Foswiki
    Please update configure.in for each revision
 
 * v0.0.0-12 (22 mar 2012 - ???) FT ??:??
+- (4) Update GNU headers for 2013
 - (3) Job #10 for James in one hour
 - Locally upgrade Foswiki from 1.1.2 to 1.1.5
 - Tried to install foswiki in cgi-bin/ after sf.net outage
