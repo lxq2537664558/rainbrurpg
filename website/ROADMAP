@@ -72,16 +72,16 @@
   - [ ] Try to place all javascript code in an only one <script> markup
     http://www.woorank.com/en/www/rainbrurpg.sourceforge.net -> 
       Technologies -> Too much javascript code blocks
-- [ ] Bad hints from woorank
+- [-] Bad hints from woorank
   - [ ] WML sidemap is missing
   - [ ] Description is missing
   - [ ] Website is too slow
   - [ ] Do not use microformats
   - [ ] W3C validity (13 errors, 1 warning)
-  - [ ] Speed tips
+  - [-] Speed tips
     - [ ] We are using inline style
     - [ ] Too many javascript (more than 7)
-    - [ ] Do not take advantage of gzip 
+    - [X] Do not take advantage of gzip (Configure script tuning option)
 - [-] Bad hints from websiteanalyzer.org
   - [ ] Using social network to promote website
   - [-] Website need more content
@@ -231,7 +231,9 @@ the patternClearHeaderLeft div.
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-**** TODO Fix the foswiki registration issue
+**** DONE Fix the foswiki registration issue
+     CLOCK: [2013-01-14 lun. 18:52]--[2013-01-14 lun. 19:43] =>  0:51
+     CLOCK: [2013-01-14 lun. 15:43]--[2013-01-14 lun. 16:32] =>  0:49
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
      CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
@@ -252,16 +254,15 @@ without sending confirmation mail.
       - [X] Move foswiki to cgi-bin
 	   =chmod  +rx FILENAME= to be exec. by apache user
     - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
-- [ ] Could we write email::TLS handler ?
-  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
-      I'm sure using TLS works
-    $session->net->sendEmail($text); ?
-    all is in lib/Foswiki/Net.pm :
-    _installMailHandler set $this->{mailHandler}
-    I'm not sure we can modify $session->net->sendEmail($text);
+- [-] Update on using TLS 
+  According to http://foswiki.org/Development/SupportSSLandTLSforSMTP ,
+  support of TLS is incomplete and not usable with Foswiki.
+  I have to make SSL work
+  see http://stackoverflow.com/questions/2869886/why-is-perls-iosocketssl-new-failing
+  Maybe a hostname resolution error FIXED: hostname should be prwebmail:465
   - [ ] configure foswiki to use registration with email confirmation
-  - [ ] Test it with a TestMail user or configure test mail function
-  - [ ] Write an explanation in a foswiki page
+  - [X] Test it with configure script test mail function
+  - [ ] Write an explanation in a foswiki page (RegistrationFailureIncident)
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link
