@@ -49,7 +49,7 @@
 - [X] Make the changes to online installation
 - [X] Add this walkthrough to a wiki page
 - [X] Remove local install and tests
-**** Try a xml sitemap generatot
+**** Try a xml sitemap generator
 - [ ] in doc/XML_SITEMAP_GENERATOR.org     
 **** TODO Improve foswiki
      CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
@@ -75,7 +75,7 @@
     http://www.woorank.com/en/www/rainbrurpg.sourceforge.net -> 
       Technologies -> Too much javascript code blocks
 - [ ] Bad hints from woorank
-  - [ ] WML sidemap is missing
+  - [ ] XML sitemap is missing
   - [ ] Description is missing
   - [ ] Website is too slow
   - [ ] Do not use microformats
@@ -233,7 +233,7 @@ the patternClearHeaderLeft div.
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-**** TODO Fix the foswiki registration issue
+**** DONE Fix the foswiki registration issue
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
      CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
@@ -254,16 +254,6 @@ without sending confirmation mail.
       - [X] Move foswiki to cgi-bin
 	   =chmod  +rx FILENAME= to be exec. by apache user
     - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
-- [ ] Could we write email::TLS handler ?
-  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
-      I'm sure using TLS works
-    $session->net->sendEmail($text); ?
-    all is in lib/Foswiki/Net.pm :
-    _installMailHandler set $this->{mailHandler}
-    I'm not sure we can modify $session->net->sendEmail($text);
-  - [ ] configure foswiki to use registration with email confirmation
-  - [ ] Test it with a TestMail user or configure test mail function
-  - [ ] Write an explanation in a foswiki page
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link
