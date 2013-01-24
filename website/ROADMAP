@@ -96,6 +96,7 @@
   with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
   TLS mail stuff that do not survive an upgrade
 **** TODO Wordpress theme development
+     CLOCK: [2013-01-24 jeu. 10:37]
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
      CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
@@ -211,28 +212,32 @@ the patternClearHeaderLeft div.
 - [X] There is no 'login' link
 - [X] Switch to Wordpress 3.3.1 and upgrade plugins
 - [X] The black menu isn't correct in ie6
-      - [X] testing WP's twentyeleven skin with ie6 : it works
-      - [X] See what are the differences in CSS if it works : does not work
-      - [X] Found a post about enabling new HTML5 element in JS
-	    http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
-	    It presents the same bug
-	    - [X] Test it in an static page with inline javascript
-            - [X] Add it in common/
-      - [X] There is a text overlapping bug again
-      - [X] The black menu hover doesn't work in ie6
+  - [X] testing WP's twentyeleven skin with ie6 : it works
+  - [X] See what are the differences in CSS if it works : does not work
+  - [X] Found a post about enabling new HTML5 element in JS
+	http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
+	It presents the same bug
+    - [X] Test it in an static page with inline javascript
+    - [X] Add it in common/
+  - [X] There is a text overlapping bug again
+  - [X] The black menu hover doesn't work in ie6
 - [X] Searchbox is again misplaced (test it when logged in and out)
 - [X] Enable the RSS feed for browser that support it
 - [X] Use the Universal Edit Button feature (as RSS feed)
-- [ ] Should add the "Bookmark the permalink." in single.php
+- [X] Should add the "Bookmark the permalink." in single.php
+- [ ] Should add a HOWTO on installing common's menu in foswiki
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 - [ ] Make an 'About' page and a first post about the new website/blog
-      - [ ] Speaking about compatibility issues (KHTML and IE)
-	    with a link to wiki's NewWebsiteLayout
-	    as a post or a 'Compatibility notes' page
+  - [ ] Speaking about compatibility issues (KHTML and IE)
+	with a link to wiki's NewWebsiteLayout
+	as a post or a 'Compatibility notes' page
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
+- [ ] In a post detail, there is soe graphical glitches
+  Sidebar is drawn below article content
+  grey menu is a non-styled <li>
 **** DONE Fix the foswiki registration issue
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25

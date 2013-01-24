@@ -69,6 +69,9 @@ if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
          $show_sep = true; ?></span>
 			<?php endif; // End if $tags_list ?>
 <!-- End of TAGLIST -->
+|&nbsp;<span>Bookmark the 
+<?php printf( "<a href='%s' title = 'Permalink to %s'>permalink</a>", esc_url( get_permalink() ), the_title_attribute( 'echo=0' )); ?></span>
+
 
 <!-- Comments -->
 <div class="comments-template">

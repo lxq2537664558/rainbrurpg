@@ -1,3 +1,8 @@
+2013-01-24 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/single.php: add the 'Bookmark the permalink'
+	anchor.
+
 2012-03-22 Jérôme Pasquier  <rainbru@free.fr>
 
 	* skin01/wordpress/function.php (ueb_add_head_link): now handles
