@@ -18,8 +18,7 @@ Update file ownership and permissions
       ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
   - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
 
-
-* Troubleshooting
+** Troubleshooting
 - When in bin/configure, you see this error in your browser :
   =Use of uninitialized value in string eq at /home/rainbru/www/upgrade_foswiki/wiki/wiki/lib/Foswiki/Configure/Checkers/SMTP/Username.pm line 26.=
   - I personnaly have to add
@@ -32,3 +31,37 @@ Update file ownership and permissions
   (Select the 1.7.1 version of jquery in the Extension/JQuery tab)
   - Was a problem in lib/LocalSite.cfg (forgotten the ; at the end of the
   =$Foswiki::cfg{Email}{MailMethod} = 'Net::SMTP'= line).
+
+* Upgrade from Foswiki 1.1.5 to 1.1.7
+
+Using a patch release
+
+- Make sure you have an up-to-date CPAN::version running :
+  =perl -Mversion -e 'print "$version::VERSION\n"'=
+  it must eb at least 0.77
+- Copy the upgrade patch to your foswiki root directory and issue :
+  =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
+  
+  If you have several /Cannot utime: Permission denied/ message from tar, 
+  it's not that important, files are overriden anyway
+
+- Go to your bin/configure script and fix for files/directories permissions
+  I personnaly had to :
+    chmod 0777 -R data/
+    chmod 0777 -R working/
+  You also have to save once, to avoid the /PatternSkinTheme/ error.
+
+- Go to Main.SitePreferences and add this setting
+  =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
+- If you're using a cache functionality, refresh it :
+  refresh cache (add ?refresh=all) to the url
+
+** Troubleshooting
+
+- Got a /Error: no such theme PatternSkinTheme/ error
+    see http://foswiki.org/Support/Question1207
+    Simply go to bin/configure and save or manually add the following in /LocalSite.cfg/
+#+BEGIN_EXAMPLE
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
+#+END_EXAMPLE

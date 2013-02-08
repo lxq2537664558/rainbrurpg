@@ -49,22 +49,24 @@
 - [X] Make the changes to online installation
 - [X] Add this walkthrough to a wiki page
 - [X] Remove local install and tests
+**** DONE Try a xml sitemap generator
+Finally found and using   http://www.neuroticweb.com/recursos/sitemap/#
 **** TODO Upgrade to Foswiki 1.1.7
+     CLOCK: [2013-02-08 ven. 15:20]--[2013-02-08 ven. 16:08] =>  0:48
      CLOCK: [2013-02-08 ven. 14:42]--[2013-02-08 ven. 14:58] =>  0:16
      CLOCK: [2013-02-06 mer. 20:10]--[2013-02-06 mer. 20:40] =>  0:30
      from http://foswiki.org/Download/FoswikiRelease01x01x07#Upgrade_Instructions
-- [ ] be sure installed version of CPAN:version is at least version 0.77
-#+BEGIN_EXAMPLE
-perl -Mversion -e 'print "$version::VERSION\n"'=
-#+END_EXAMPLE
+- [X] be sure installed version of CPAN:version is at least version 0.77
 - [ ] Update UPGRADE_FOSWIKI.org
-- [ ] The tar command is =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
+- [X] The tar command is =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
 - [ ] If needed create a Main/UpgradeFoswiki01x01x07 page and add
   a link to it from Main.WebHome#Wiki history
 - [ ] Maybe must update our meta plugin with new version declaration (CPAN:version)
 - [ ] If we're using cache, refresh it
-- [ ] Collected from local installation upgrade
-  - [ ] tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.7.tgz
+- [-] Collected from local installation upgrade
+  - [X] tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.7.tgz
+    if you see several =tar: locale/zh-cn.po: Cannot utime: Permission denied=
+    it's not that important, files are overriden anyway
   - [ ] Must be added to Main.SitePreferences
      =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
   - [ ] Go to bin/configure and change files/directories permissions
@@ -78,8 +80,6 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubU
 $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+END_EXAMPLE
   - [ ] refresh cache (add ?refresh=all) to the url
-**** Try a xml sitemap generator
-- [ ] in doc/XML_SITEMAP_GENERATOR.org     
 **** TODO Improve foswiki
      CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
