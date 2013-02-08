@@ -57,29 +57,30 @@ Finally found and using   http://www.neuroticweb.com/recursos/sitemap/#
      CLOCK: [2013-02-06 mer. 20:10]--[2013-02-06 mer. 20:40] =>  0:30
      from http://foswiki.org/Download/FoswikiRelease01x01x07#Upgrade_Instructions
 - [X] be sure installed version of CPAN:version is at least version 0.77
-- [ ] Update UPGRADE_FOSWIKI.org
+- [X] Update UPGRADE_FOSWIKI.org
 - [X] The tar command is =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
-- [ ] If needed create a Main/UpgradeFoswiki01x01x07 page and add
+- [X] If needed create a Main/UpgradeFoswiki01x01x07 page and add
   a link to it from Main.WebHome#Wiki history
-- [ ] Maybe must update our meta plugin with new version declaration (CPAN:version)
-- [ ] If we're using cache, refresh it
-- [-] Collected from local installation upgrade
+- [X] Maybe must update our meta plugin with new version declaration (CPAN:version)
+- [X] If we're using cache, refresh it
+- [X] Collected from local installation upgrade
   - [X] tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.7.tgz
     if you see several =tar: locale/zh-cn.po: Cannot utime: Permission denied=
     it's not that important, files are overriden anyway
-  - [ ] Must be added to Main.SitePreferences
+  - [X] Must be added to Main.SitePreferences
      =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
-  - [ ] Go to bin/configure and change files/directories permissions
+  - [X] Go to bin/configure and change files/directories permissions
     chmod 0777 -R data/
     chmod 0777 -R working/
-  - [ ] Got a /Error: no such theme PatternSkinTheme/ error
+  - [X] Got a /Error: no such theme PatternSkinTheme/ error
     see http://foswiki.org/Support/Question1207
     Simply go to bin/configure and save or manually add the following in /LocalSite.cfg/
 #+BEGIN_EXAMPLE
 $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
 $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+END_EXAMPLE
-  - [ ] refresh cache (add ?refresh=all) to the url
+  - [X] refresh cache (add ?refresh=all) to the url
+- [ ] See error in http://rainbrurpg.sourceforge.net/wiki/bin/view/Sandbox/WebHome
 **** TODO Improve foswiki
      CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
