@@ -50,18 +50,12 @@
 - [X] Add this walkthrough to a wiki page
 - [X] Remove local install and tests
 **** TODO Upgrade to Foswiki 1.1.7
-     CLOCK: [2013-02-06 mer. 20:10]
+     CLOCK: [2013-02-08 ven. 14:42]--[2013-02-08 ven. 14:58] =>  0:16
+     CLOCK: [2013-02-06 mer. 20:10]--[2013-02-06 mer. 20:40] =>  0:30
      from http://foswiki.org/Download/FoswikiRelease01x01x07#Upgrade_Instructions
 - [ ] be sure installed version of CPAN:version is at least version 0.77
 #+BEGIN_EXAMPLE
 perl -Mversion -e 'print "$version::VERSION\n"'=
-#+END_EXAMPLE
-- [ ] Maybe set =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
-  Main.SitePreferences if DefaultPreferences was customized
-- [ ] Add the following in /LocalSite.cfg/
-#+BEGIN_EXAMPLE
-$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
-$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+END_EXAMPLE
 - [ ] Update UPGRADE_FOSWIKI.org
 - [ ] The tar command is =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
@@ -69,6 +63,21 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
   a link to it from Main.WebHome#Wiki history
 - [ ] Maybe must update our meta plugin with new version declaration (CPAN:version)
 - [ ] If we're using cache, refresh it
+- [ ] Collected from local installation upgrade
+  - [ ] tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.7.tgz
+  - [ ] Must be added to Main.SitePreferences
+     =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
+  - [ ] Go to bin/configure and change files/directories permissions
+    chmod 0777 -R data/
+    chmod 0777 -R working/
+  - [ ] Got a /Error: no such theme PatternSkinTheme/ error
+    see http://foswiki.org/Support/Question1207
+    Simply go to bin/configure and save or manually add the following in /LocalSite.cfg/
+#+BEGIN_EXAMPLE
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
+#+END_EXAMPLE
+  - [ ] refresh cache (add ?refresh=all) to the url
 **** Try a xml sitemap generator
 - [ ] in doc/XML_SITEMAP_GENERATOR.org     
 **** TODO Improve foswiki
