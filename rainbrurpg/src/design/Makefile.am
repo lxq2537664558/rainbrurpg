@@ -52,7 +52,7 @@ INCLUDES = -I$(top_srcdir)/src/common 		\
 	   $(OGRE_CFLAGS)
 
 # This rule lets GNU make create any moc_*.cpp from the equivalent *.h
-moc_%.cpp: %.h
+moc_%.cpp: %.hpp
 	moc-qt4 $< -o $@
 
 librainbrurpg_design_la_SOURCES= $(h_sources) $(cc_sources)
