@@ -71,3 +71,4 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+BEGIN_EXAMPLE
 Could not perform search. Error was: Error in tempfile() using /home/project-web/rainbrurpg/cgi-bin/wiki/working/tmp/XXXXXXXXXX: Could not create temp file /home/project-web/rainbrurpg/cgi-bin/wiki/working/tmp/uDBAKwwTJ3: Permission denied at /home/project-web/rainbrurpg/cgi-bin/wiki/lib//Foswiki/Sandbox.pm line 506 at /usr/share/perl5/File/Temp.pm line 1381 
 #+END_EXAMPLE
+    Seems to be fixed by ?refresh=all

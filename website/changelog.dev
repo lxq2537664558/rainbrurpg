@@ -1,3 +1,11 @@
+* v0.0.0-12 (22 mar 2012 - 11 feb 2013) FT 35:50
+- Online Foswiki upgrade to 1.1.7
+- Add the bookmark the permalinks in post detail
+- Update GNU headers for 2013
+- Online Foswiki upgrade to 1.1.5
+- Locally upgrade Foswiki from 1.1.2 to 1.1.5
+- Tried to install foswiki in cgi-bin/ after sf.net outage
+
 * v0.0.0-11 (17 feb 2012 - 22 mar 2012) FT 23:45
 - Handles Universal Edit Button
 - Enable posts and comments RSS feeds

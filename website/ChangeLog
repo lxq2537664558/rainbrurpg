@@ -1,3 +1,8 @@
+2013-02-12 Jérôme Pasquier  <rainbru@free.fr>
+
+	* UPGRADE_FOSWIKI.org (Sandbox.WebHome error): seems to be fixed
+	by a ?refresh=all URL parameter.
+
 2013-01-24 Jérôme Pasquier  <rainbru@free.fr>
 
 	* skin01/wordpress/single.php: add the 'Bookmark the permalink'

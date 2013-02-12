@@ -51,7 +51,7 @@
 - [X] Remove local install and tests
 **** DONE Try a xml sitemap generator
 Finally found and using   http://www.neuroticweb.com/recursos/sitemap/#
-**** TODO Upgrade to Foswiki 1.1.7
+**** DONE Upgrade to Foswiki 1.1.7
      CLOCK: [2013-02-08 ven. 15:20]--[2013-02-08 ven. 16:08] =>  0:48
      CLOCK: [2013-02-08 ven. 14:42]--[2013-02-08 ven. 14:58] =>  0:16
      CLOCK: [2013-02-06 mer. 20:10]--[2013-02-06 mer. 20:40] =>  0:30
@@ -80,8 +80,9 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubU
 $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+END_EXAMPLE
   - [X] refresh cache (add ?refresh=all) to the url
-- [ ] See error in http://rainbrurpg.sourceforge.net/wiki/bin/view/Sandbox/WebHome
+  - [X] See error in http://rainbrurpg.sourceforge.net/wiki/bin/view/Sandbox/WebHome
 **** TODO Improve foswiki
+     CLOCK: [2013-02-12 mar. 14:37]--[2013-02-12 mar. 14:48] =>  0:11
      CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
@@ -104,11 +105,12 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
   - [ ] Try to place all javascript code in an only one <script> markup
     http://www.woorank.com/en/www/rainbrurpg.sourceforge.net -> 
       Technologies -> Too much javascript code blocks
-- [ ] Bad hints from woorank
-  - [ ] XML sitemap is missing
-  - [ ] Description is missing
-  - [ ] Website is too slow
-  - [ ] Do not use microformats
+- [-] Bad hints from woorank
+  - [X] XML sitemap is missing
+  - [X] Description is missing
+  - [X] Website is too slow
+    Using foswiki cache should fix it
+  - [X] Do not use microformats
   - [ ] W3C validity (13 errors, 1 warning)
   - [ ] Speed tips
     - [ ] We are using inline style
@@ -124,7 +126,6 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 - [ ] http://foswiki.org/Extensions/MicroformatsPlugin could be used ?
 - [ ] May create a HackingFoswiki page
   with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
-  TLS mail stuff that do not survive an upgrade
 **** TODO Wordpress theme development
      CLOCK: [2013-01-24 jeu. 10:37]--[2013-01-24 jeu. 10:57] =>  0:20
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
