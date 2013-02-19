@@ -1,3 +1,7 @@
+2013-02-19 Jérôme Pasquier  <rainbru@free.fr>
+
+	* IrrClient/: change GNU headers date for 2013 in all files.
+
 2013-02-12 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/design/Makefile.am: fix an issue with moc_% custom
