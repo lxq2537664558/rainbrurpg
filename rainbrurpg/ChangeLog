@@ -1,5 +1,7 @@
 2013-02-19 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/editor/: change GNU headers date for 2013 in all files.
+	* src/tools/netflooder/: change GNU headers date for 2013 in all files.
 	* src/tools/ftpclient/: change GNU headers date for 2013 in all files.
 	* src/tools/hashsum/: change GNU headers date for 2013 in all files.
 	* src/tools/transmsg/: change GNU headers date for 2013 in all files.
