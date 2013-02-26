@@ -1,5 +1,9 @@
 2013-02-19 Jérôme Pasquier  <rainbru@free.fr>
 
+	* */Makefile.am: change GNU headers date for 2013 in all files.
+
+2013-02-19 Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/testHelpers: change GNU headers date for 2013 in all files.
 	* IrrClient/: change GNU headers date for 2013 in all files.
 
