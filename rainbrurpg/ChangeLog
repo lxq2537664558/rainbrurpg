@@ -1,4 +1,9 @@
-2013-02-19 Jérôme Pasquier  <rainbru@free.fr>
+2013-02-27 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/terminalapi/: change GNU headers date for 2013 in all files.
+	* src/tests/common/: change GNU headers date for 2013 in all files.
+
+2013-02-26 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tests/tapi/: change GNU headers date for 2013 in all files.
 	* src/editor/: change GNU headers date for 2013 in all files.

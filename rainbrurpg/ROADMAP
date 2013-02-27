@@ -481,13 +481,14 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
 **** TODO Change GNU headers date for 2013
+     CLOCK: [2013-02-27 mer. 16:31]
      CLOCK: [2013-02-26 mar. 19:09]--[2013-02-26 mar. 19:33] =>  0:24
      sed command is =sed -i -e "s/2006-2012/2006-2013/g" <files>=
 - [X] Some files are in 2006-2009
 - [X] Some files are still in 2006-2011
   - [X] in sql
   - [X] in IrrClient
-  - [ ] Mainly Makefiles
+  - [X] Mainly Makefiles
 - [ ] For 2006-2012
 **** DONE Rebuild with Ogre 1.8.1 and changed dependencies
      CLOCK: [2012-12-25 mar. 17:03]--[2012-12-25 mar. 17:17] =>  0:14
