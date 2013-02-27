@@ -1,5 +1,6 @@
 2013-02-27 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/examples/: change GNU headers date for 2013 in all files.
 	* src/terminalapi/: change GNU headers date for 2013 in all files.
 	* src/tests/common/: change GNU headers date for 2013 in all files.
 
