@@ -481,7 +481,7 @@ name, date, heure, gamestate, position, name perso, name server, versions
       Need OpenGL for minwg32
 - [ ] Should provide GNU gettext for win32
 **** TODO Change GNU headers date for 2013
-     CLOCK: [2013-03-04 lun. 11:21]
+     CLOCK: [2013-03-04 lun. 11:21]--[2013-03-04 lun. 11:35] =>  0:14
      CLOCK: [2013-02-27 mer. 16:31]--[2013-02-27 mer. 16:46] =>  0:15
      CLOCK: [2013-02-26 mar. 19:09]--[2013-02-26 mar. 19:33] =>  0:24
 

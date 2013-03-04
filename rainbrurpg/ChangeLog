@@ -1,5 +1,6 @@
 2013-03-04 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/common/: change GNU headers date for 2013 in all files.
 	* src/client/: change GNU headers date for 2013 in all files.
 	* src/design/: change GNU headers date for 2013 in all files.
 

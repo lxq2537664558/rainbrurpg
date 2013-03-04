@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2012 Jerome PASQUIER
+ *  Copyright 2006-2013 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -102,7 +102,7 @@ RainbruRPG::Core::Version::logVersion(){
   Logger::getSingleton().logMessage( str2 );
 
   string m;
-  m=_("Copyright (C) 2006-2012 Jerome PASQUIER\n"
+  m=_("Copyright (C) 2006-2013 Jerome PASQUIER\n"
       "RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,\n"
       "and you are welcome to redistribute it under certain conditions.\n"
       "See the GNU General Public License for more details.\n");

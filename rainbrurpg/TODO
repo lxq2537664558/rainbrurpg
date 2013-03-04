@@ -117,7 +117,7 @@ A system that serialize widgets position and configuration
 * v0.0.5-216 (14 jun 2012 - ???) SLOC ??? UT ??? FT ???:??
 - (5) Changed GNU headers date for 2013 (in progress)
    IrrClient, testHelpers, tools, editor, tests, terminalapi, examples
-   oldOgreGui, design, client
+   oldOgreGui, design, client, common
 - Now build with Ogre 1.8
 - Starting to build  wih Ogre 1.8
    testHelpers/ and common/ compile
