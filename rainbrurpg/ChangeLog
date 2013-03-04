@@ -1,3 +1,8 @@
+2013-03-04 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/: change GNU headers date for 2013 in all files.
+	* src/design/: change GNU headers date for 2013 in all files.
+
 2013-02-27 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/oldOgreGui/: change GNU headers date for 2013 in all files.
