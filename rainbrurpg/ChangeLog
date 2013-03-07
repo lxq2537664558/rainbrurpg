@@ -1,3 +1,8 @@
+2013-03-07 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/maincore/: change GNU headers date for 2013 in all files.
+	* src/server/: change GNU headers date for 2013 in all files.
+
 2013-03-04 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/common/: change GNU headers date for 2013 in all files.
