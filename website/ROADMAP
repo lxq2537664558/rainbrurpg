@@ -81,7 +81,7 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 #+END_EXAMPLE
   - [X] refresh cache (add ?refresh=all) to the url
   - [X] See error in http://rainbrurpg.sourceforge.net/wiki/bin/view/Sandbox/WebHome
-**** TODO Upgrade to Foswiki 1.1.8
+**** DONE Upgrade to Foswiki 1.1.8
      CLOCK: [2013-03-11 lun. 11:12]--[2013-03-11 lun. 11:29] =>  0:17
 
 see http://foswiki.org/Download/FoswikiRelease01x01x08
@@ -89,7 +89,7 @@ see http://foswiki.org/Download/FoswikiRelease01x01x08
 - [X] We need to upgrade CPAN:version as well
 - [X] Write down a draft in UPGRADE_FOSWIKI.org
 - [X] Test locally the upgrade
-- [ ] Upgrade online installation
+- [X] Upgrade online installation
 **** TODO Improve foswiki
      CLOCK: [2013-02-12 mar. 14:37]--[2013-02-12 mar. 14:48] =>  0:11
      CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05

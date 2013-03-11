@@ -124,13 +124,16 @@ command :
 *** Change directories permissions
 - Go to your bin/configure script and fix for files/directories permissions
   I personnaly had to :
-    chmod 0777 -R data/
-    chmod 0777 -R working/
-
+  chmod 0775 -R pub/
+  chmod 0775 -R data/
+  chmod 0775 -R working/
 *** Refresh cache
     
 Calling ?refresh=all
 
+*** configure scripts warnings
+**** Upgrade Locale::MakeText
+Same way as used for CPAN:version
 ** Conclusion
 
 You can see foswiki version in System.WebHome. Now it should be 1.1.8.
