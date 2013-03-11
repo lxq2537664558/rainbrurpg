@@ -72,3 +72,70 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 Could not perform search. Error was: Error in tempfile() using /home/project-web/rainbrurpg/cgi-bin/wiki/working/tmp/XXXXXXXXXX: Could not create temp file /home/project-web/rainbrurpg/cgi-bin/wiki/working/tmp/uDBAKwwTJ3: Permission denied at /home/project-web/rainbrurpg/cgi-bin/wiki/lib//Foswiki/Sandbox.pm line 506 at /usr/share/perl5/File/Temp.pm line 1381 
 #+END_EXAMPLE
     Seems to be fixed by ?refresh=all
+* Upgrade from Foswiki 1.1.7 to 1.1.8
+
+This new Foswiki release fix a *Critical Security Vulnerability* in
+Locale:Maketext, see http://foswiki.org/Support/SecurityAlert-CVE-2013-1666
+for more informations.
+
+Foswiki now need at least CPAN:version 0.77. My hosting provider
+only has version 0.72, so we need to updgrade this before
+
+** How to know the current version's version
+
+Go to _configure_ script and go to the 'Web server environment' page.
+Under the 'Perl modules' category, you can see the version item.
+
+** Upgrade CPAN:version
+Go to http://search.cpan.org/perldoc?version and download latest tar.gz.
+This test was done with version 0.9902.
+
+- Extract archive and go to the created directory: 
+tar -xvf version-0.9902.tar.gz
+cd version-0.9902/
+- Create Makefile for perl only and call make
+perl Makefile.PL --perl_only
+make
+- Copy new files to your LIB directory. The LIB directory is the 'lib/' 
+directory, in your foswiki root, do not copy to Foswiki/lib/CPAN/lib, it
+doesn't work. To eb sure, go to bin/configure, in the 'Web server environment' 
+page and search for the '@INC library path' : this is the first listed 
+directory.
+
+cd /blib/lib
+cp -R version* /path-to-your-wiki/lib/
+
+Go back to configure to check for the CPAN:version's version, this should
+be 0.9902.
+
+** Upgrading Foswiki
+
+*** Install the upgrade package
+Go and download the upgrade package :
+http://sourceforge.net/projects/foswiki/files/foswiki/1.1.8/Foswiki-upgrade-1.1.8.tgz
+
+Verify you're not running perl 5.16.x, if you are running it, please see
+http://foswiki.org/Tasks/Item12413 for a patch.
+
+Put the upgrade patch in the Foswiki root directory and issue the following 
+command :
+=tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.8.tgz=
+
+*** Change directories permissions
+- Go to your bin/configure script and fix for files/directories permissions
+  I personnaly had to :
+    chmod 0777 -R data/
+    chmod 0777 -R working/
+
+*** Refresh cache
+    
+Calling ?refresh=all
+
+** Conclusion
+
+You can see foswiki version in System.WebHome. Now it should be 1.1.8.
+All is working just fine _out of the box_ so I don't have to write a 
+*troubleshooting* section.
+
+Test your installation : search, test sending a mail through the =configure=
+script.
