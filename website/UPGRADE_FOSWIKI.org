@@ -98,7 +98,7 @@ perl Makefile.PL --perl_only
 make
 - Copy new files to your LIB directory. The LIB directory is the 'lib/' 
 directory, in your foswiki root, do not copy to Foswiki/lib/CPAN/lib, it
-doesn't work. To eb sure, go to bin/configure, in the 'Web server environment' 
+doesn't work. To be sure, go to bin/configure, in the 'Web server environment' 
 page and search for the '@INC library path' : this is the first listed 
 directory.
 
