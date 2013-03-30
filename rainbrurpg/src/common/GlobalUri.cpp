@@ -169,7 +169,7 @@ void RainbruRPG::Network::GlobalURI::homeSetup(){
   LOGI(str);
 
   // Creating directory if inexists
-  fs::path homePath(userDir.c_str(), fs::native);
+  fs::path homePath(userDir.c_str()); //, fs::native); //rem. for filesystem v3
 
   bool ex=fs::exists( homePath );
   if (ex){
@@ -203,7 +203,7 @@ getShareFile(const std::string& file)const{
   std::string s=shareDir;
   s+=file;
 
-  fs::path test( s,fs::native);
+  fs::path test( s ); //,fs::native); //removed for filesystem v3
   if (!fs::exists(test)){
     char str[80];
     // TRANSLATORS: The parameter is the user's home directory.
@@ -240,9 +240,9 @@ installConfigFile(const std::string& filename){
   s2+=filename;
   it->absoluteFileName = s2;
 
-  // The boost path
-  fs::path optionXmlPath( s, fs::native);
-  fs::path userOptionXmlPath( s2, fs::native);
+  // The boost path // native removed for filesystem v3
+  fs::path optionXmlPath( s ); //, fs::native);
+  fs::path userOptionXmlPath( s2 );//, fs::native);
 
   // Need to be installed
   if (!fs::exists(userOptionXmlPath)){
@@ -303,7 +303,7 @@ getUploadFile(const std::string& s)const{
   std::string ret=uploadDir+s;
 
   // Create the directory if not exist
-  fs::path p(uploadDir, fs::native);
+  fs::path p(uploadDir); //, fs::native); //removed for filesystem v3
   if(!fs::exists(p)){
     LOGW(_("uploaded/ directory does not exist, creating it"));
     // If the uploaded directory does not exist, create it
@@ -326,7 +326,7 @@ getQuarantineFile(const std::string& s)const{
   std::string ret=quarantineDir+s;
 
   // Create the directory if not exist
-  fs::path p(quarantineDir, fs::native);
+  fs::path p(quarantineDir); //, fs::native);//removed for filesystem v3
   if(!fs::exists(p)){
     LOGW(_("quarantine/ directory does not exist, creating it"));
     // If the uploaded directory does not exist, create it
@@ -369,8 +369,8 @@ getDownloadFile(const std::string& s, const std::string& sun,
   ret+=s;
 
   // Test if the unique directory exists
-  fs::path p(dir, fs::native);
-  fs::path p2(dirWoSun, fs::native);
+  fs::path p(dir); //, fs::native); //removed for filesystem v3
+  fs::path p2(dirWoSun); //, fs::native); //removed for filesystem v3
   if(fs::exists(p)){
     if (fs::is_directory(p)){
       LOGI(_("Downloaded/ directory exists"));

@@ -128,7 +128,7 @@ void RainbruRPG::Network::FtpClient::sendString(const std::string& s){
 
   GTS_TIN(msg);
   // TRANSLATORS: The parameter is the number of bytes we wrote.
-  sprintf(msg, _("%d bytes written"), bytesWritten);
+  sprintf(msg, _("%L bytes written"), bytesWritten);
   LOGI(msg);
 }
 
@@ -545,8 +545,8 @@ void RainbruRPG::Network::FtpClient::RETR_ThreadedFunction(){
   // Open the file according to the transfer type
   try{
     // Using a path object to avoid exception due to '.RainbruRPG'
-    // filesystem error (the dot is misunderstood)
-    boost::filesystem::path p(transferFilename, boost::filesystem::native);
+    // filesystem error (the dot is misunderstood) //removed for filesystem v3
+    boost::filesystem::path p(transferFilename);//, boost::filesystem::native);
 
     if (transferType==FTT_BINARY){
       fs.open( p, ios::out|ios::binary );

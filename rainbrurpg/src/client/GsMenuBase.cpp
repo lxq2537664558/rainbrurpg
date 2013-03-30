@@ -31,9 +31,9 @@
 #include <OgreSceneNode.h>
 #include <Logger.hpp>
 
-#include <ois/OISPrereqs.h>
-#include <ois/OISKeyboard.h>
-#include <ois/OISMouse.h>
+#include <OISPrereqs.h>
+#include <OISKeyboard.h>
+#include <OISMouse.h>
 #include <OgreVector4.h>
 
 #include <Container.hpp>

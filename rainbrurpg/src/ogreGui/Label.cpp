@@ -72,7 +72,7 @@ RainbruRPG::OgreGui::Label::Label(const Label& rhs):
 
 }
 
-RainbruRPG::OgreGui::Label::Label& 
+RainbruRPG::OgreGui::Label& 
 RainbruRPG::OgreGui::Label::operator=(const Label& rhs)
 {
   LOGE("DEEP_DEBUG : assignment");

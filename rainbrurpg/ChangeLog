@@ -1,5 +1,17 @@
 2013-03-07 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/ogreGui/Label.cpp (operator=): returned value was
+	constructor.
+
+	* src/common/FtpClient.cpp: change usage of boost's path.
+	* src/common/FtpClient.cpp: change usage of boost's path.
+
+	* src/client/GsMenuBase.hpp: changes include of ois headers.
+	* src/client/GsMenuBase.cpp: changes include of ois headers.
+	* src/common/Version.hpp: changes include of ois headers.
+
+2013-03-07 Jérôme Pasquier  <rainbru@free.fr>
+
 	* src/interdep/: change GNU headers date for 2013 in all files.
 	* src/ogreGui/: change GNU headers date for 2013 in all files.
 	* src/maincore/: change GNU headers date for 2013 in all files.

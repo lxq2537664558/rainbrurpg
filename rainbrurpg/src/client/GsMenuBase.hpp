@@ -40,9 +40,9 @@
 
 #include <string>
 
-#include <ois/OISPrereqs.h>
-#include <ois/OISKeyboard.h>
-#include <ois/OISMouse.h>
+#include <OISPrereqs.h>
+#include <OISKeyboard.h>
+#include <OISMouse.h>
 
 #include <GameState.hpp>
 

@@ -96,6 +96,7 @@ librainbrurpg_ogregui_la_LDFLAGS= $(SHARED_FLAG)			\
 				  $(OGREGUI_LIBRARY_VERSION)		\
 				  -Wl,--rpath -Wl,$(DESTDIR)$(libdir)	\
 				  $(OGRE_LIBS)				\
+				  $(OIS_LIBS)				\
 				  $(SIGC_LIBS)				\
 				  $(FREETYPE_LIBS)			\
 				  -L$(top_srcdir)/src/common/.libs
@@ -121,6 +122,7 @@ rainbrurpg_tests_ogregui_CPPFLAGS = 			\
 
 rainbrurpg_tests_ogregui_LDADD = \
 	$(RPG_LIB_ADD)				\
+        $(OIS_LIBS)				\
 	-L$(top_srcdir)/src/common/.libs	\
 	-lrainbrurpg-common 			\
 	-L$(top_srcdir)/src/ogreGui/.libs	\

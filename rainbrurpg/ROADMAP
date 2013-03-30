@@ -362,7 +362,11 @@ name, date, heure, gamestate, position, name perso, name server, versions
      When creating dist-bzip2 archive
      Pas de règle pour fabriquer la cible « moc_FilePreview.cpp », nécessaire pour « distdir ». Arrêt.
      with g++ (Debian 4.4.7-1) 4.4.7
-
+**** TODO Fix the building on Ubuntu
+     CLOCK: [2013-03-30 sam. 14:26]--[2013-03-30 sam. 15:29] =>  1:03
+     - [X] headers of ois can be installed in OIS/ and ois/ in some platforms. 
+     - [X] Now uses boost filesystem v3  
+     - [ ] There is always undefined references on OIS
 **** TODO Code refactoring to follow coding standards
      CLOCK: [2012-06-30 sam. 11:43]--[2012-06-30 sam. 11:52] =>  0:09
      CLOCK: [2012-06-19 mar. 11:23]--[2012-06-19 mar. 11:48] =>  0:25
