@@ -1,3 +1,7 @@
+2013-04-16  Jérôme Pasquier  <rainbru@free.fr>
+
+	* ROADMAP: complete refactory due to DataForms planned usage.
+
 2012-11-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/foswiki_plugin/RainbrurpgMetaserverPlugin.txt: add a section

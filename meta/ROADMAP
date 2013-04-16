@@ -1,5 +1,8 @@
 #					Hey emacs, this is a -*-org-*- file
 
+#+TODO: TODO | DONE
+#+TODO: TODO | CANCELED
+
 * v1.0.0
 ** v0.2.0 Handle complete stats
 *** v0.1.1 Improve online informations
@@ -34,13 +37,42 @@
 - [ ] a function to set a server in error state
 *** TODO v0.0.1 Correct project setup
 **** Switch to a DataForm based plugin
+     CLOCK: [2013-04-16 mar. 20:57]--[2013-04-16 mar. 21:30] =>  0:33
      see http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/Rainbru_Current_Tasks#Meta_Server
+- [X] This ROADMAP needs refactoring
+- [ ] Remove XML dependency (replaced by DataForm metadata)
 - [ ] Create a DataForm based web
-  It will make easer searc and other sorting functions
+  It will make easier search and other sorting functions
+  Maybe create it as a subweb of SandBox before moving it to toplevel
 - [ ] Use REST function to create and update a page for each server
-   - [ ] We first need to uniquely identify the server/world tuple
-   - [ ] We need to identify the needed REST function
-     It'll give the 
+  Only Admin or Server owner should be able to modify its page.
+  - [ ] We first need to uniquely identify the server/world tuple
+    Maybe based on a name choosen by the admin at the server first start
+    We can ask the metaserver if this name isn't used yet
+    The admin may rename its server but we need to rename the page as well 
+  - [ ] We need to identify the needed REST function
+    It'll give the 
+- [ ] complete unit tests
+
+  *Planned metadata :*
+  Maybe a help page for each field (please use WikiNames)
+  Label are automatically set by libserver.
+| *field name*         | *type*   | *description*                      |
+| ServerName           | label    | read-only                          |
+| ServerStatus         | label    | online, offline, maintenance...    |
+| MaintenanceText      | textarea |                                    |
+| WorldDescription     | textarea |                                    |
+| HardwareDesctription | textarea | optional                           |
+| MaxClients           | label    | Max number of player               |
+| CurrentClients       | label    | Currently connected players number |
+| RulesetId            | label    | The ruleset description            |
+| SessionUptime        | label    | Uptime this session.               |
+| TotalUptime          | label    | Uptime from the beginning.         |
+|                      |          |                                    |
+
+The RulesetId could lead to another web that serve as a repository 
+for ruleset (role type: fantasy, listing races).
+
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)
@@ -78,7 +110,7 @@
       A README in each subdir
       - [X] a pkg-config script for each is generated
 - [X] create README files for subdirs
-**** TODO Create unit tests for 'functions.pm'
+**** CANCELED Create unit tests for 'functions.pm'
      CLOCK: [2012-11-08 jeu. 19:57]--[2012-11-08 jeu. 20:46] =>  0:49
      CLOCK: [2012-11-02 ven. 17:31]--[2012-11-02 ven. 18:03] =>  0:32
      CLOCK: [2012-04-25 mer. 15:56]--[2012-04-25 mer. 16:38] =>  0:42
@@ -90,7 +122,7 @@
       otherwise, if a $node is needed in tested function
       we can use 'XML::LibXML->load_xml(string =>)'
       - [ ] Write unit tests for existing function of functions.pm
-**** TODO Complete XML file in src/xml/ and printing with foswiki's macros
+**** CANCELED Complete XML file in src/xml/ and printing with foswiki's macros
      CLOCK: [2012-11-09 ven. 15:03]--[2012-11-09 ven. 15:49] =>  0:46
 - [X] Create System.RainbrurpgMetaserverPlugin doc page
 - [X] Correctly handle servers in error status
@@ -101,7 +133,6 @@
     And handle this in RainbrurpgMetaserverPlugin.pm
     But we will open XML file each time we call it. Too bad.
 - [ ] Some fields must be added
-  - [ ] hardwareDescription
   - [ ] max-clients
   - [ ] ruleset-id
 - [ ] Find a way to produce Yaml output and get it using REST

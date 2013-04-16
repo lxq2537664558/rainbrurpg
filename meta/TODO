@@ -11,4 +11,5 @@ Should use REST : see the 'restExample($session)' function
    Please update revision in configure.in and RainbrurpgMetaserverPlugin.txt
    Please update GNU ChangeLog
 
-* v0.0.0-4(04 mar 2012 - ???) SLOC ??? UT ?? FT ??:??
+* v0.0.0-4 (04 mar 2012 - ???) SLOC ??? UT ?? FT ??:??
+- Complete ROADMAP refactory due to DataForms planned usage
