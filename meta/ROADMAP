@@ -33,6 +33,14 @@
 - [ ] a function to remove a server
 - [ ] a function to set a server in error state
 *** TODO v0.0.1 Correct project setup
+**** Switch to a DataForm based plugin
+     see http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/Rainbru_Current_Tasks#Meta_Server
+- [ ] Create a DataForm based web
+  It will make easer searc and other sorting functions
+- [ ] Use REST function to create and update a page for each server
+   - [ ] We first need to uniquely identify the server/world tuple
+   - [ ] We need to identify the needed REST function
+     It'll give the 
 **** DONE create an autoconf package to make installation easier
      CLOCK: [2011-07-28 jeu. 14:41]--[2011-07-28 jeu. 15:06] =>  0:25
 - [X] Install plugin files only (no unit tests)

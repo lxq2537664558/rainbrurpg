@@ -9,7 +9,7 @@ fwsourcedir = $(foswiki_prefix)/lib/Foswiki/Plugins/
 fwsource_DATA = RainbrurpgMetaserverPlugin.pm
 
 fwmaindir = $(foswiki_prefix)/data/Main
-fwsource_DATA = ServerDetail.txt
+fwmain_DATA = ServerDetail.txt
 
 fwfuncdir = $(foswiki_prefix)/lib/Foswiki/Plugins/RainbrurpgMetaserverPlugin
 fwfunc_DATA = functions.pm
