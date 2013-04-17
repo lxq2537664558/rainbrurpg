@@ -1,5 +1,10 @@
 2013-04-16  Jérôme Pasquier  <rainbru@free.fr>
 
+	* Makefile.am (plugin): first version of the plugin's archive creation rule.
+	* configure.in: add the webanme configure option.
+
+2013-04-16  Jérôme Pasquier  <rainbru@free.fr>
+
 	* ROADMAP: complete refactory due to DataForms planned usage.
 
 2012-11-09  Jérôme Pasquier  <rainbru@free.fr>

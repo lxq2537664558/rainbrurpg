@@ -36,23 +36,36 @@
 - [ ] a function to remove a server
 - [ ] a function to set a server in error state
 *** TODO v0.0.1 Correct project setup
-**** Switch to a DataForm based plugin
+**** TODO Switch to a DataForm based plugin
+     CLOCK: [2013-04-17 mer. 12:51]--[2013-04-17 mer. 13:52] =>  1:01
+     CLOCK: [2013-04-17 mer. 12:12]--[2013-04-17 mer. 12:23] =>  0:11
      CLOCK: [2013-04-16 mar. 20:57]--[2013-04-16 mar. 21:30] =>  0:33
      see http://rainbrurpg.sourceforge.net/wiki/bin/view/Main/Rainbru_Current_Tasks#Meta_Server
 - [X] This ROADMAP needs refactoring
+- [-] a `make plugin` rule that makes the foswiki plugin content an archive
+  The `make install` one only install libraries
+  - [X] The 'Meta' web can be configured by autoconf
+  - [X] Output its name in the 'Options summary' of configure.in
+  - [X] Create a simple WebHome to test for archive creation
+  - [X] Must exclude backup files (*~)
+  - [X] Update INSTALL about this special rule
+  - [ ] May remove the 'Foswiki root directory' option
 - [ ] Remove XML dependency (replaced by DataForm metadata)
 - [ ] Create a DataForm based web
   It will make easier search and other sorting functions
   Maybe create it as a subweb of SandBox before moving it to toplevel
 - [ ] Use REST function to create and update a page for each server
   Only Admin or Server owner should be able to modify its page.
+  - [ ] We need to authenticate all REST calls withj the WikiName/password
+    of the GameServerAdmin
   - [ ] We first need to uniquely identify the server/world tuple
     Maybe based on a name choosen by the admin at the server first start
     We can ask the metaserver if this name isn't used yet
     The admin may rename its server but we need to rename the page as well 
   - [ ] We need to identify the needed REST function
-    It'll give the 
 - [ ] complete unit tests
+- [ ] User must be part of the GameServerAdmin user group
+  We can provide a DataForm to let the user apply to this group
 
   *Planned metadata :*
   Maybe a help page for each field (please use WikiNames)
@@ -68,7 +81,7 @@
 | RulesetId            | label    | The ruleset description            |
 | SessionUptime        | label    | Uptime this session.               |
 | TotalUptime          | label    | Uptime from the beginning.         |
-|                      |          |                                    |
+| GameServerAdmin      | label    | Main.WikiUser                      |
 
 The RulesetId could lead to another web that serve as a repository 
 for ruleset (role type: fantasy, listing races).

@@ -12,4 +12,5 @@ Should use REST : see the 'restExample($session)' function
    Please update GNU ChangeLog
 
 * v0.0.0-4 (04 mar 2012 - ???) SLOC ??? UT ?? FT ??:??
+- 'plugin' Makefile rule implemented
 - Complete ROADMAP refactory due to DataForms planned usage

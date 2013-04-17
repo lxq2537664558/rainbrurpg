@@ -23,9 +23,21 @@ AC_DEFUN([RB_META_URL],
   AC_DEFINE_UNQUOTED(META_URL, "$metaurl", The online metaserver URL)
 ])
 
+# Handle foswiki Web name (default to Meta)
+AC_DEFUN([RB_WEB_NAME],
+  [AC_ARG_WITH(webname,
+    AS_HELP_STRING([--with-webname=WIKINAME], 
+      [in which Web will the metaserver archive will be generated]),
+  webname="$withval", webname=Meta)
+  AC_SUBST([metaurl])dnl
+  AC_DEFINE_UNQUOTED(META_URL, "$metaurl", The online metaserver URL)
+])
+
 RB_FOSWIKI_DIR
 RB_META_URL
+RB_WEB_NAME
 AC_SUBST([foswikidir])dnl
+AC_SUBST([webname])dnl
 
 # Checks for programs.
 AC_PROG_INSTALL
@@ -55,5 +67,6 @@ echo "$PACKAGE v$VERSION-$RELEASE configuration summary"
 echo "------------------------------------------------------------------------"
 echo
 echo "Extra directory:"
-echo "  Foswiki root directory.......${foswikidir}"
-echo "  Metaserver URL...............${metaurl}"
+echo "  Foswiki root directory.......: ${foswikidir}"
+echo "  Metaserver URL...............: ${metaurl}"
+echo "  Metaserver plugin WebName....: ${webname}"

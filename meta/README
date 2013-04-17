@@ -1,0 +1,20 @@
+Specific installation instruction
+=================================
+
+  This project contains a Foswiki plugin (see http://foswiki.org for 
+more information about it). To install it, you must first create the 
+plugin archive :
+
+    1. `./configure`
+
+       Eventually you can set the metaserver WebName using the 
+       --with-webname='AnotherWikiName'. Default for webname is
+       'Meta'.
+
+    2. `make plugin` to create the package
+
+    3. mv the created archive to your foswiki root directory.
+
+    4. `tar --strip-components=1 -xvzpf <plugin_archive_name>.
+
+    5. Activate the plugin using fowiki's configure script.
