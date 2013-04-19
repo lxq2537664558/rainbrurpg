@@ -35,7 +35,7 @@ GameEngine::GameEngine(void):
   if (mRoot->showConfigDialog())
     {
       //    log("Creating rendering window");
-      mWindow = mRoot->initialise(true, "RPG");
+      mWindow = mRoot->initialise(true, "RainbruRPG");
       
       // Create the SceneManager, in this case a generic one
       SceneManager* mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
@@ -43,7 +43,7 @@ GameEngine::GameEngine(void):
       SceneNode* headNode = mSceneMgr->getRootSceneNode()
 	->createChildSceneNode("HeadNode");
 
-      Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "dragon.mesh");
+      Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
       headNode->attachObject(ogreHead);
       
       // Create the camera

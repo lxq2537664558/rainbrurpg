@@ -33,7 +33,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-bin_PROGRAMS = client$(EXEEXT)
+bin_PROGRAMS = rainbrurpg-client$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -48,11 +48,12 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 =
-am__objects_2 = client-main.$(OBJEXT) client-GameEngine.$(OBJEXT)
-am_client_OBJECTS = $(am__objects_1) $(am__objects_2)
-client_OBJECTS = $(am_client_OBJECTS)
+am__objects_2 = rainbrurpg_client-main.$(OBJEXT) \
+	rainbrurpg_client-GameEngine.$(OBJEXT)
+am_rainbrurpg_client_OBJECTS = $(am__objects_1) $(am__objects_2)
+rainbrurpg_client_OBJECTS = $(am_rainbrurpg_client_OBJECTS)
 am__DEPENDENCIES_1 =
-client_DEPENDENCIES = $(am__DEPENDENCIES_1)
+rainbrurpg_client_DEPENDENCIES = $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -65,8 +66,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(client_SOURCES)
-DIST_SOURCES = $(client_SOURCES)
+SOURCES = $(rainbrurpg_client_SOURCES)
+DIST_SOURCES = $(rainbrurpg_client_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -177,9 +178,9 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 headers = Logger.hpp GameEngine.hpp
 sources = main.cpp GameEngine.cpp
-client_SOURCES = $(headers) $(sources)
-client_CPPFLAGS = $(DEPS_CFLAGS)
-client_LDADD = $(DEPS_LIBS)
+rainbrurpg_client_SOURCES = $(headers) $(sources)
+rainbrurpg_client_CPPFLAGS = $(DEPS_CFLAGS)
+rainbrurpg_client_LDADD = $(DEPS_LIBS)
 all: all-am
 
 .SUFFIXES:
@@ -236,9 +237,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-client$(EXEEXT): $(client_OBJECTS) $(client_DEPENDENCIES) 
-	@rm -f client$(EXEEXT)
-	$(CXXLINK) $(client_OBJECTS) $(client_LDADD) $(LIBS)
+rainbrurpg-client$(EXEEXT): $(rainbrurpg_client_OBJECTS) $(rainbrurpg_client_DEPENDENCIES) 
+	@rm -f rainbrurpg-client$(EXEEXT)
+	$(CXXLINK) $(rainbrurpg_client_OBJECTS) $(rainbrurpg_client_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -246,8 +247,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/client-GameEngine.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/client-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rainbrurpg_client-GameEngine.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rainbrurpg_client-main.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -263,33 +264,33 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-client-main.o: main.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT client-main.o -MD -MP -MF $(DEPDIR)/client-main.Tpo -c -o client-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/client-main.Tpo $(DEPDIR)/client-main.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='client-main.o' libtool=no @AMDEPBACKSLASH@
+rainbrurpg_client-main.o: main.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT rainbrurpg_client-main.o -MD -MP -MF $(DEPDIR)/rainbrurpg_client-main.Tpo -c -o rainbrurpg_client-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/rainbrurpg_client-main.Tpo $(DEPDIR)/rainbrurpg_client-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='rainbrurpg_client-main.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o client-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o rainbrurpg_client-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
 
-client-main.obj: main.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT client-main.obj -MD -MP -MF $(DEPDIR)/client-main.Tpo -c -o client-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/client-main.Tpo $(DEPDIR)/client-main.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='client-main.obj' libtool=no @AMDEPBACKSLASH@
+rainbrurpg_client-main.obj: main.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT rainbrurpg_client-main.obj -MD -MP -MF $(DEPDIR)/rainbrurpg_client-main.Tpo -c -o rainbrurpg_client-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/rainbrurpg_client-main.Tpo $(DEPDIR)/rainbrurpg_client-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='rainbrurpg_client-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o client-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o rainbrurpg_client-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
 
-client-GameEngine.o: GameEngine.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT client-GameEngine.o -MD -MP -MF $(DEPDIR)/client-GameEngine.Tpo -c -o client-GameEngine.o `test -f 'GameEngine.cpp' || echo '$(srcdir)/'`GameEngine.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/client-GameEngine.Tpo $(DEPDIR)/client-GameEngine.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GameEngine.cpp' object='client-GameEngine.o' libtool=no @AMDEPBACKSLASH@
+rainbrurpg_client-GameEngine.o: GameEngine.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT rainbrurpg_client-GameEngine.o -MD -MP -MF $(DEPDIR)/rainbrurpg_client-GameEngine.Tpo -c -o rainbrurpg_client-GameEngine.o `test -f 'GameEngine.cpp' || echo '$(srcdir)/'`GameEngine.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/rainbrurpg_client-GameEngine.Tpo $(DEPDIR)/rainbrurpg_client-GameEngine.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GameEngine.cpp' object='rainbrurpg_client-GameEngine.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o client-GameEngine.o `test -f 'GameEngine.cpp' || echo '$(srcdir)/'`GameEngine.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o rainbrurpg_client-GameEngine.o `test -f 'GameEngine.cpp' || echo '$(srcdir)/'`GameEngine.cpp
 
-client-GameEngine.obj: GameEngine.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT client-GameEngine.obj -MD -MP -MF $(DEPDIR)/client-GameEngine.Tpo -c -o client-GameEngine.obj `if test -f 'GameEngine.cpp'; then $(CYGPATH_W) 'GameEngine.cpp'; else $(CYGPATH_W) '$(srcdir)/GameEngine.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/client-GameEngine.Tpo $(DEPDIR)/client-GameEngine.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GameEngine.cpp' object='client-GameEngine.obj' libtool=no @AMDEPBACKSLASH@
+rainbrurpg_client-GameEngine.obj: GameEngine.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT rainbrurpg_client-GameEngine.obj -MD -MP -MF $(DEPDIR)/rainbrurpg_client-GameEngine.Tpo -c -o rainbrurpg_client-GameEngine.obj `if test -f 'GameEngine.cpp'; then $(CYGPATH_W) 'GameEngine.cpp'; else $(CYGPATH_W) '$(srcdir)/GameEngine.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/rainbrurpg_client-GameEngine.Tpo $(DEPDIR)/rainbrurpg_client-GameEngine.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GameEngine.cpp' object='rainbrurpg_client-GameEngine.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o client-GameEngine.obj `if test -f 'GameEngine.cpp'; then $(CYGPATH_W) 'GameEngine.cpp'; else $(CYGPATH_W) '$(srcdir)/GameEngine.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(rainbrurpg_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o rainbrurpg_client-GameEngine.obj `if test -f 'GameEngine.cpp'; then $(CYGPATH_W) 'GameEngine.cpp'; else $(CYGPATH_W) '$(srcdir)/GameEngine.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

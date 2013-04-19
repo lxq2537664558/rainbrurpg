@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2013-04-19 ven. 20:59]--[2013-04-19 ven. 21:23] =>  0:24
      CLOCK: [2013-01-10 jeu. 20:31]--[2013-01-10 jeu. 20:40] =>  0:09
      CLOCK: [2012-12-29 sam. 13:13]--[2012-12-29 sam. 13:33] =>  0:20
      CLOCK: [2012-01-06 ven. 11:43]--[2012-01-06 ven. 12:19] =>  0:36
@@ -40,8 +41,9 @@
 - [X] To a black screen
 - [X] Uses rainbrurpg-logger (with pkg-config)
 - [X] Update GNU headers date for 2013
-- [ ] Rename binary to rainbrurpg-client
+- [X] Rename binary to rainbrurpg-client
 - [ ] Add a model (ogrehead.mesh)
+  dragon.mesh already added, should be shown
 - [ ] Window must be resizable and exitable
 - [ ] Integrates CEGUI window
 - [ ] Redirect Ogre logs to logger or to a file      
