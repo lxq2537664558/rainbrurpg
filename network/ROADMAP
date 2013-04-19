@@ -1,0 +1,32 @@
+					-*-org-*-
+
+* v1.0.0
+** v0.1.0
+*** v0.0.1
+**** First step
+- [ ] We must find a good asn.1 to C++ compiler that works with
+  Boost.Asio/C++11. Then we create a wrapper script in perl called 
+  `rainbrurpg-asnc` that wrap to the chosen asn.1 compiler
+- [ ] Common ASN.1 files stay in the network/src/asn/ directory and
+  client/ and server/ had their own src/asn/ subdir for their
+  sources.
+- [ ] src/example contain a TCPServer and a TCPClient using simple
+  ASN.1 file to test the whole toolchain.
+- [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
+**** TODO Creating benchmark for serialization
+     CLOCK: [2013-04-19 ven. 16:10]--[2013-04-19 ven. 16:33] =>  0:03
+     I'm not sure ASN.1 is the best solution and many other binary
+     exist : Bson, Boost.Serialization
+- [X] Find a way to create benchmarks
+  - [X] A really simple benchmark header using template and `gettimeofday`
+- [ ] separate .hpp and .cpp
+- [ ] Should be a configure option, not built by default
+- [ ] We also could make benchmark against Boost.Asio and libenet
+**** TODO Correct project setup
+     CLOCK: [2012-11-03 sam. 19:18]--[2012-11-03 sam. 19:31] =>  0:13
+- [ ] Use autoscan to create autotools needed files
+- [ ] set COPYING to the GPLv3 licence 
+  As other symlinks, replaced by real files
+- [ ] GNU ChangeLog
+- [ ] Create a pkg-config file
+- [ ] Add to svn repository

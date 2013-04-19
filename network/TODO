@@ -1,0 +1,9 @@
+rainbrurpg-network - GPLv3 - A serialization/network library.
+
+* A network/ library used both by server and client
+
+==== ChangeLog ====
+   (6 items by revision)
+
+* v0.0.0-0 (03 nov. 2012 - ???) 
+- Created a first ROADMAP file
