@@ -1,3 +1,4 @@
 2013-04-18 Jérôme Pasquier  <rainbru@free.fr>
 
+	* configure.in: first version building benchmark.
 	* benchmark.hpp: some functions used to compute times.
