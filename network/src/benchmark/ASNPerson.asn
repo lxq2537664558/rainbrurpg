@@ -1,0 +1,7 @@
+BenchmarkProtocol DEFINITIONS ::= BEGIN
+    ASNPerson ::= SEQUENCE
+    {
+	name	GraphicString,
+	age	INTEGER(0..150)
+    }
+END

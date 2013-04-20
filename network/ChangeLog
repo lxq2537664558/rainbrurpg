@@ -1,5 +1,6 @@
 2013-04-20 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/benchmark/ASNPerson.asn: start to use snacc.
 	* src/benchmark/main.cpp: started benchmarks.
 
 2013-04-18 Jérôme Pasquier  <rainbru@free.fr>

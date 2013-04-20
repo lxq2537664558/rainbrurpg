@@ -14,6 +14,7 @@
   ASN.1 file to test the whole toolchain.
 - [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
 **** TODO Creating benchmark for serialization
+     CLOCK: [2013-04-20 sam. 20:11]--[2013-04-20 sam. 20:35] =>  0:24
      CLOCK: [2013-04-20 sam. 18:38]--[2013-04-20 sam. 18:56] =>  0:18
      CLOCK: [2013-04-20 sam. 17:58]--[2013-04-20 sam. 18:25] =>  0:27
      CLOCK: [2013-04-19 ven. 16:10]--[2013-04-19 ven. 16:33] =>  0:23
@@ -24,17 +25,17 @@
 - [X] separate .hpp and .cpp
 - [ ] Should be a configure option, not built by default
   an option called 'enable-benchmark'
-- [ ] src/benchmark/serialization compare ASN.1 speed with Bson
-  - [ ] Write bson test using mongodb-dev packagg
-  - [ ] Then try Boost.Serialization
-  - [ ] Try ASN.1 compiler
+- [-] src/benchmark/serialization compare ASN.1 speed with Bson
+  - [X] Write bson test using mongodb-dev packagg
+  - [X] Then try Boost.Serialization
+  - [ ] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
 - [ ] We also could make benchmark against Boost.Asio and libenet
 **** TODO Correct project setup
      CLOCK: [2013-04-19 ven. 19:32]--[2013-04-19 ven. 20:17] =>  0:45
      CLOCK: [2012-11-03 sam. 19:18]--[2012-11-03 sam. 19:31] =>  0:13
-- [ ] Use autoscan to create autotools needed files
-- [ ] set COPYING to the GPLv3 licence 
+- [X] Use autoscan to create autotools needed files
+- [X] set COPYING to the GPLv3 licence 
   As other symlinks, replaced by real files
-- [ ] GNU ChangeLog
+- [X] GNU ChangeLog
+- [X] Add to svn repository
 - [ ] Create a pkg-config file
-- [ ] Add to svn repository

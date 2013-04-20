@@ -1,4 +1,4 @@
- /*
+/*
  *  Copyright 2006-2013 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
@@ -20,48 +20,33 @@
  *
  */
 
-#include "Benchmark.hpp"
-#include "Person.hpp" 
+#include <string>
 
-#include <mongo/db/jsobj.h>
-#include <boost/serialization/serialization.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <fstream>
+using namespace std;
 
-#include <snacc.h>
-//#include <snacc/c++/asn-type.h>
-
-#include "ASNPerson.h" 
-
-void serialize_bson(void)
-{
-  mongo::BSONObjBuilder b;
-  b << "name" << "Joe" << "age" << 33;
-  mongo::BSONObj p = b.obj();
+namespace boost {
+  namespace serialization {
+    class access;
+  }
 }
 
-void serialize_boost(void)
-{
-  std::ofstream ifs("archive.bin");
-  boost::archive::binary_oarchive ar(ifs);
-  Person p("Joe", 33);
-  ar << p;
+class Person {
+public:
+  // Serialization expects the object to have a default constructor
+  Person() : name(""), age(20) {}
+  Person(const string& n, int a) : name(n), age(a) {}
+  bool operator==(const Person& o) const {
+    return name == o.name && age == o.age;
+  }
+private:
+  string  name;
+  int age;
 
-}
+  // Allow serialization to access non-public data members.
+  friend class boost::serialization::access;
 
-void serialize_asn(void)
-{
-  ASNPerson p;
-  p.name = "Joe";
-  p.age = 33;
-  
-}
-
-int
-main()
-{
-  benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
-  benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
-
-  return 0;
-}
+  template<typename Archive>
+  void serialize(Archive& ar, const unsigned version) {
+    ar & name & age;  // Simply serialize the data members of Obj
+  }
+};
