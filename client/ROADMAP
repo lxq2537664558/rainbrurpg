@@ -42,8 +42,8 @@
 - [X] Uses rainbrurpg-logger (with pkg-config)
 - [X] Update GNU headers date for 2013
 - [X] Rename binary to rainbrurpg-client
-- [ ] Add a model (ogrehead.mesh)
-  dragon.mesh already added, should be shown
+- [ ] Add a terrain
+  see http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Basic+Tutorial+3
 - [ ] Window must be resizable and exitable
 - [ ] Integrates CEGUI window
 - [ ] Redirect Ogre logs to logger or to a file      

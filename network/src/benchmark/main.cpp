@@ -21,24 +21,34 @@
  */
 
 #include "Benchmark.hpp"
+#include "Person.hpp" 
 
-void myfunc(void)
+#include <mongo/db/jsobj.h>
+#include <boost/serialization/serialization.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <fstream>
+
+void serialize_bson(void)
 {
-  int t = 1;
-  double t2 = 1 * 8000 /3;
-  for (int i=0; i < 15000; i++) t2 = t+i;
+  mongo::BSONObjBuilder b;
+  b << "name" << "Joe" << "age" << 33;
+  mongo::BSONObj p = b.obj();
+}
+
+void serialize_boost(void)
+{
+  std::ofstream ifs("archive.bin");
+  boost::archive::binary_oarchive ar(ifs);
+  Person p("Joe", 33);
+  ar << p;
+
 }
 
 int
 main()
 {
-  
-  benchmark ("myfunc", "v1.0", &myfunc, 1);
-  benchmark ("myfunc", "v1.0", &myfunc, 10);
-  benchmark ("myfunc", "v1.0", &myfunc, 100);
-  benchmark ("myfunc", "v1.0", &myfunc, 1000);
-  benchmark ("myfunc", "v1.0", &myfunc, 10000);
-  benchmark ("myfunc", "v1.0", &myfunc, 100000);
+  benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
+  benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
 
   return 0;
 }

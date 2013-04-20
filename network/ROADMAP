@@ -14,6 +14,8 @@
   ASN.1 file to test the whole toolchain.
 - [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
 **** TODO Creating benchmark for serialization
+     CLOCK: [2013-04-20 sam. 18:38]--[2013-04-20 sam. 18:56] =>  0:18
+     CLOCK: [2013-04-20 sam. 17:58]--[2013-04-20 sam. 18:25] =>  0:27
      CLOCK: [2013-04-19 ven. 16:10]--[2013-04-19 ven. 16:33] =>  0:23
      I'm not sure ASN.1 is the best solution and many other binary
      exist : Bson, Boost.Serialization
@@ -23,6 +25,9 @@
 - [ ] Should be a configure option, not built by default
   an option called 'enable-benchmark'
 - [ ] src/benchmark/serialization compare ASN.1 speed with Bson
+  - [ ] Write bson test using mongodb-dev packagg
+  - [ ] Then try Boost.Serialization
+  - [ ] Try ASN.1 compiler
 - [ ] We also could make benchmark against Boost.Asio and libenet
 **** TODO Correct project setup
      CLOCK: [2013-04-19 ven. 19:32]--[2013-04-19 ven. 20:17] =>  0:45

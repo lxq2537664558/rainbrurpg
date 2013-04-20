@@ -1,3 +1,7 @@
+2013-04-20 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/main.cpp: started benchmarks.
+
 2013-04-18 Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in: first version building benchmark.
