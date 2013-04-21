@@ -14,6 +14,7 @@
   ASN.1 file to test the whole toolchain.
 - [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
 **** TODO Creating benchmark for serialization
+     CLOCK: [2013-04-21 dim. 10:32]--[2013-04-21 dim. 11:20] =>  0:48
      CLOCK: [2013-04-20 sam. 20:11]--[2013-04-20 sam. 20:35] =>  0:24
      CLOCK: [2013-04-20 sam. 18:38]--[2013-04-20 sam. 18:56] =>  0:18
      CLOCK: [2013-04-20 sam. 17:58]--[2013-04-20 sam. 18:25] =>  0:27
@@ -29,6 +30,8 @@
   - [X] Write bson test using mongodb-dev packagg
   - [X] Then try Boost.Serialization
   - [ ] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
+    Can't compile ASN generated header due to errors.
+    Maube benchmark snacc with both C/C++ output
 - [ ] We also could make benchmark against Boost.Asio and libenet
 **** TODO Correct project setup
      CLOCK: [2013-04-19 ven. 19:32]--[2013-04-19 ven. 20:17] =>  0:45

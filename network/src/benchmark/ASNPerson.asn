@@ -1,4 +1,5 @@
-BenchmarkProtocol DEFINITIONS ::= BEGIN
+BenchmarkProtocol DEFINITIONS ::= 
+BEGIN
     ASNPerson ::= SEQUENCE
     {
 	name	GraphicString,

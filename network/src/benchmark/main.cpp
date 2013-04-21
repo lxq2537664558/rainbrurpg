@@ -54,7 +54,7 @@ void serialize_asn(void)
   ASNPerson p;
   p.name = "Joe";
   p.age = 33;
-  
+  AsnLen len = p.BEncContent();
 }
 
 int
@@ -62,6 +62,7 @@ main()
 {
   benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
   benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
+  benchmark ("Serialization", "Snacc (?? bytes)", &serialize_asn, 100);
 
   return 0;
 }
