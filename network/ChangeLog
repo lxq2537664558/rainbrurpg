@@ -1,3 +1,7 @@
+2013-04-22 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/main.cpp: finally BER ancoding works.
+
 2013-04-20 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/ASNPerson.asn: start to use snacc.

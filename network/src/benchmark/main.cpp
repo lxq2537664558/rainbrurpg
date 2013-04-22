@@ -28,7 +28,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <fstream>
 
-#include <snacc.h>
+#include <asn-incl.h>
 //#include <snacc/c++/asn-type.h>
 
 #include "ASNPerson.h" 
@@ -51,18 +51,37 @@ void serialize_boost(void)
 
 void serialize_asn(void)
 {
+  AsnBuf buf;
+  const size_t dataSize = 1024;
+  char data[dataSize];
+  std::ofstream outputFile;
+  size_t encodedLen;
+  bool writeToFile = false; // to true only to get result size in pr.ber
+  
   ASNPerson p;
   p.name = "Joe";
   p.age = 33;
-  AsnLen len = p.BEncContent();
+  buf.Init (data, dataSize);
+  buf.ResetInWriteRvsMode();
+  AsnLen len = p.BEncPdu ( buf, encodedLen );
+
+  if (writeToFile)
+    {
+      outputFile.open ("pr.ber");
+      buf.ResetInReadMode();
+      for (; encodedLen > 0; encodedLen--)
+        outputFile.put (buf.GetByte());
+    }
 }
+
+
 
 int
 main()
 {
   benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
   benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
-  benchmark ("Serialization", "Snacc (?? bytes)", &serialize_asn, 100);
+  benchmark ("Serialization", "Snacc (10 bytes)", &serialize_asn, 100);
 
   return 0;
 }
