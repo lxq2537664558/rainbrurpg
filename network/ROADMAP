@@ -27,7 +27,7 @@
 - [X] separate .hpp and .cpp
 - [ ] Should be a configure option, not built by default
   an option called 'enable-benchmark'
-- [-] src/benchmark/serialization compare ASN.1 speed with Bson
+$- [-] src/benchmark/serialization compare ASN.1 speed with Bson
   - [X] Write bson test using mongodb-dev packagg
   - [X] Then try Boost.Serialization
   - [ ] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
