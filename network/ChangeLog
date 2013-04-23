@@ -1,3 +1,8 @@
+2013-04-23 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/Makefile.am: snacc generate files before building.
+	* configure.in: implements with-benchmarks feature.
+
 2013-04-22 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/main.cpp: finally BER ancoding works.

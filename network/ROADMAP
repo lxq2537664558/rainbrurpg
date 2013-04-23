@@ -13,7 +13,12 @@
 - [ ] src/example contain a TCPServer and a TCPClient using simple
   ASN.1 file to test the whole toolchain.
 - [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
-**** TODO Creating benchmark for serialization
+**** We also could make benchmark against Boost.Asio and libenet
+**** Test the RainbruRPG protocol in src/proto
+- [ ] Make it an autoconf feature (AC_ARG_ENALE)
+- [ ] Make two binaries encode and decode
+**** DONE Creating benchmark for serialization
+     CLOCK: [2013-04-23 mar. 20:21]--[2013-04-23 mar. 20:43] =>  0:22
      CLOCK: [2013-04-22 lun. 18:00]--[2013-04-22 lun. 18:45] =>  0:45
      CLOCK: [2013-04-21 dim. 10:32]--[2013-04-21 dim. 11:20] =>  0:48
      CLOCK: [2013-04-20 sam. 20:11]--[2013-04-20 sam. 20:35] =>  0:24
@@ -25,15 +30,14 @@
 - [X] Find a way to create benchmarks
   - [X] A really simple benchmark header using template and `gettimeofday`
 - [X] separate .hpp and .cpp
-- [ ] Should be a configure option, not built by default
+- [X] Should be a configure option, not built by default
   an option called 'enable-benchmark'
-$- [-] src/benchmark/serialization compare ASN.1 speed with Bson
+- [X] src/benchmark/serialization compare ASN.1 speed with Bson
   - [X] Write bson test using mongodb-dev packagg
   - [X] Then try Boost.Serialization
-  - [ ] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
+  - [X] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
     Can't compile ASN generated header due to errors.
     Maube benchmark snacc with both C/C++ output
-- [ ] We also could make benchmark against Boost.Asio and libenet
 **** TODO Correct project setup
      CLOCK: [2013-04-19 ven. 19:32]--[2013-04-19 ven. 20:17] =>  0:45
      CLOCK: [2012-11-03 sam. 19:18]--[2012-11-03 sam. 19:31] =>  0:13

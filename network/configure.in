@@ -12,6 +12,17 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CXX
 AC_PROG_CC
 
+# Conditional modules
+AC_ARG_ENABLE(benchmarks,
+  AC_HELP_STRING([--enable-benchmarks], [Enable network packets serializatiion 
+    benchmarks]), [case "${enableval}" in
+     yes | no ) WITH_BENCHMARKS="${enableval}" ;;
+     *) AC_MSG_ERROR(bad value ${enableval} for --enable-benchmarks) ;;
+   esac],
+  [WITH_BENCHMARKS="no"]
+)
+AM_CONDITIONAL([WITH_BENCHMARKS], [test "x$WITH_BENCHMARKS" = "xyes"])
+
 # Checks for libraries.
 
 # Checks for header files.
