@@ -1,0 +1,65 @@
+-- The whole protocol for Server/Game communication
+--
+-- Only one type of communication can be sent to a thread.
+-- A thread only receive a single packet type.
+
+-- Use a http://www.freesoft.org/CIE/RFC/1902/3.htm like structure
+RainbrurpgProtocol DEFINITIONS ::= 
+BEGIN
+
+	-- the path to the root
+	rpg      OBJECT IDENTIFIER ::= { iso 9 }
+	lifesign OBJECT IDENTIFIER ::= { rpg 1 }
+
+	-- Custom data types
+	RPGID ::= [APPLICATION 1] IMPLICIT INTEGER
+	PLAYER-ID ::= [APPLICATION 2] IMPLICIT RPGID
+	GEOHASH   ::= [APPLICATION 3] OCTET STRING
+
+	-- Used types
+	GeoPlayer ::= SEQUENCE
+	  {
+	  	player       PLAYER-ID,
+		localisation GEOHASH
+	  }
+
+	-- Define which action can be made on an object
+	ObjectAction ::= ENUMERATED
+	  {
+	  	pickup	(0),
+		drop	(1),
+		harvest (2)
+	  }
+
+	-- The lifesign is an automated packet sent to actualize the
+	-- current position of a player
+	LifeSign ::= SEQUENCE
+	  {
+	  	player GeoPlayer,
+		actionId RPGID
+	  }
+
+	-- Defines the a player issue an action that may be of interest
+	-- for others (broadcasted)
+	--
+	-- It may concern, a move key actionned, a chat action (message sent)  
+	PlayerAction ::=SEQUENCE
+	  {
+	  	player GeoPlayer
+		
+	  }
+
+	-- Player issue a private interaction with the world or an NPC
+	PrivateInteraction ::= SEQUENCE
+	  {
+	  	player PLAYER-ID -- No need for Geoloc (no graph. updates)
+	  }
+
+	-- Sent when a user modify the world (heightfield or move an object)
+	WorldEdition ::= SEQUENCE
+	  {
+	  	author PLAYER-ID
+
+	  }
+
+END
