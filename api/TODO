@@ -1,15 +1,28 @@
 rainbrurpg-api - GPLV3 - Tools to generate RPG api documentation.
 
 * Must handle
-   Generate API doc with AdSense, Analytics, AddThis, Flattr and
-   custom grey menu
+   A perl script generates Foswiki webs we can easily rsync with
+   webhost :
+   - We only parse C++ comments that start with '*>'
+   - We have to handle some oeg-mode styleed metatags '*> UPPER+=... '
+      and maybe the script scope (complete directory or file)
+   - How to discover C++ name in ruby and guile (for x-reference) ?
+   - I don't know yet how to use subwebs :
+   Api        or           Api               or      Doc
+   | C++                   | Logger                  | Api
+   | Ruby                  | Network                 | Scripting
+   | Guile                 | (others)
+   Or simply an Api web with use of DataForms (we can easily generate
+   %META:FORM% and %META:FIELD% Values, using a special User
+   (DocGeneraor)
+   Then some search results : browse by language, browse by library.
+   We have to handle cross-reference of type by language and to the Concept web.
 - libraries API (logger, servces..) with doxygen
    URLs like api/logger/, api/services/...
+   Using doxygen XML output, we can easily generate Foswiki pages.
 - Then Documentation for plugins creation
-   Maybe in texinfo in each library/api/ 
+   Maybe in texinfo in each library/api/ *TO BE REMOVED*
    Where texinfo can be generated from doxygen wih special macro
      API_RUBY || API_GUILE || API_BOTH
    URL like scripting/guile/
                      /ruby/
-- Subdirs for tests are in ../test_api_01/
-- Maybe copy these files to web using rsync
