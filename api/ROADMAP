@@ -11,7 +11,8 @@
 
 **** TODO Start the apigen.pl script
      CLOCK: [2013-04-25 jeu. 13:18]--[2013-04-25 jeu. 14:13] =>  0:35
-
+- [ ] Should handle this source :
+     =include = FileToAdd.txt => Web/Destination.txt
 **** [svn:feature_ApiDoc] Find a way to document libraries API
      CLOCK: [2013-01-04 ven. 22:05]--[2013-01-04 ven. 23:11] =>  1:06
      CLOCK: [2013-01-04 ven. 20:03]--[2013-01-04 ven. 20:53] =>  0:50
@@ -19,4 +20,7 @@
 - [X] Create a Makefile clean rule 
 - [ ] See how to generate documentation
 - [ ] Could we create all SWIG interface here in a single
-  RainbruRPG
+  RainbruRPG namespace
+- [ ] Create a GNU ChangeLog
+- [ ] Add GNU headers to existant files
+- [ ] Move TODO content here
