@@ -10,7 +10,10 @@
      (load-extension (string-append (getcwd) "/liblogger.so") "SWIG_init")
 
 **** TODO Start the apigen.pl script
+     CLOCK: [2013-04-29 lun. 18:08]--[2013-04-29 lun. 18:26] =>  0:18
      CLOCK: [2013-04-25 jeu. 13:18]--[2013-04-25 jeu. 14:13] =>  0:35
+- [ ] Write a complete pod documentation
+  use =pod2man genapi.pl |nroff -man -= to test it
 - [ ] Should handle this source :
      =include = FileToAdd.txt => Web/Destination.txt
 **** [svn:feature_ApiDoc] Find a way to document libraries API

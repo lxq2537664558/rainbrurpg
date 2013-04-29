@@ -1,11 +1,5 @@
 #!/usr/bin/perl
 
-=begin
-    ./genapi.pl - Generate a Foswiki web containing RainbruRPG API 
-    documentation.
-
-=cut
-
 use strict;
 use warnings;
 use Config::Tiny;
