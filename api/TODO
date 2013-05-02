@@ -26,3 +26,13 @@ rainbrurpg-api - GPLV3 - Tools to generate RPG api documentation.
      API_RUBY || API_GUILE || API_BOTH
    URL like scripting/guile/
                      /ruby/
+
+
+=== ChangeLog ===
+   (6 items by revision)
+   SLOC is the number of lines in src/ 
+   FT is the ROADMAP file time
+
+* v0.0.0-0 (01 may 2013 - ???) SLOC ??? FT ??
+- Add some needed files
+   COPYING, DEPENDENCIES...

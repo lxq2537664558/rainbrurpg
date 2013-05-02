@@ -1,0 +1,8 @@
+Here are the dependencies needed to run genapi.pl
+
+* Config::Tiny
+  + Needed to read configuration file
+  + homepage:
+    http://search.cpan.org/~adamk/Config-Tiny-2.14/lib/Config/Tiny.pm
+  + download
+    http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Config-Tiny-2.14.tar.gz
