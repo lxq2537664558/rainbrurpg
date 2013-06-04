@@ -1,0 +1,51 @@
+=pod
+
+=head1 NAME
+
+=over
+
+=item B<genapi.pl> [-h]
+- generate a I<Foswiki> web containing RainbruRPG API documentation.
+
+=back
+
+=head1 SYNOPSIS
+
+genapi.pl
+
+=head1 CONFIGURATION
+
+=head2 genapi.cfg
+
+A simple unix configuration file setting [general] values :
+
+=over
+
+=item webname
+The generated I<Foswiki> web name.
+
+=item rpgroot
+The value to replace B<%ROOT%> with in sources definition.
+
+=back
+
+=head2 genapi.src
+
+A simple text file containing typed sources, one per line, in a key=value 
+style. The key type include :
+
+=over
+
+=item doxygen
+A doxygen file that should generate a XML documentation.
+
+=item path
+The full path, and it's subdirectories will represent a documentation 
+for a single module.
+
+=item file
+A single file module.
+
+=back
+
+=cut
