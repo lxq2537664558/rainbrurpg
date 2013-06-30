@@ -27,6 +27,7 @@ service - GPLv3 - A service handling library.
    (10 items by revision)
 
 * v0.0.0-1 (28 oct 2011 - ???)
+- Now uses autotools
 - Merged two different trees
 - Added some paper TODOs content to ROADMAP
 - Started unit tests for Dependencies parsing

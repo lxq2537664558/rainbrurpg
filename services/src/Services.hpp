@@ -68,6 +68,7 @@ service_name(SCM name)
   cout << "Plugin set Name to '"<< n << "'" << endl;
   scm_dynwind_free (n);
   scm_dynwind_end();
+  return SCM_UNSPECIFIED;
 }
 
 static void*

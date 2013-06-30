@@ -52,7 +52,7 @@ http://dev.rubycentral.com/pickaxe/ext_ruby.html
      C++ code may be in shared library. Maybe using the PubSub
      design pattern.
 
-- [ ] Make a list if possible events name
+- [ ] Make a list of possible events name
   events name become function names in guile/ruby
 
 **** [Design] Handle PubSub to make usable C++ code with ruby/guile
@@ -118,13 +118,17 @@ template<typename O> send(string serviceName, O options)
       returns the iterator of the insert() or an error
       string mLoadOrderError contains last dependency error
 **** TODO Correct project setup
+     CLOCK: [2013-06-30 dim. 09:35]--[2013-06-30 dim. 09:48] =>  0:13
+     CLOCK: [2013-05-03 ven. 11:55]--[2013-05-03 ven. 12:53] =>  0:58
      CLOCK: [2012-12-27 jeu. 21:41]--[2012-12-27 jeu. 21:55] =>  0:14
-- [ ] Merge with older concept tree
+- [X] Merge with older concept tree
+- [X] Uses autotools
 - [ ] uses rainbrurpg-logger
-- [ ] Uses autotools
-- [ ] Set LICENSE file to GPLv3
-- [ ] all sources go in src/
+- [X] Set LICENSE file to GPLv3
+  Make symlinks real files
+- [X] all sources go in src/
+  An example binary is in tools/ or examples/ and scm/ follow
 - [ ] generate a pkg-config file
 - [ ] create a DEPENDENCIES file
-- [ ] Create a wiki page under NewrojectLayout
-- [ ] ay use C++11
+- [ ] Create a wiki page under NewProjectLayout
+- [ ] use C++11
