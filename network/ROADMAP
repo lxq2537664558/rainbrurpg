@@ -14,9 +14,14 @@
   ASN.1 file to test the whole toolchain.
 - [ ] Must create a Concept/NewProjectLayoutNetwork wiki page
 **** We also could make benchmark against Boost.Asio and libenet
-**** Test the RainbruRPG protocol in src/proto
+**** TODO Test the RainbruRPG protocol in src/proto
 - [ ] Make it an autoconf feature (AC_ARG_ENALE)
-- [ ] Make two binaries encode and decode
+- [ ] Make two binaries CLI client and server
+  using libenet http://enet.bespin.org/index.html
+  - [ ] Using Boost.Program_options
+  - [ ] server listen to a port and waiting for client connection
+  - [ ] client connect to server and send protocol packages
+    Maybe a very simple CLI interface based on verbs (using readline ?)
 **** DONE Creating benchmark for serialization
      CLOCK: [2013-04-23 mar. 20:21]--[2013-04-23 mar. 20:43] =>  0:22
      CLOCK: [2013-04-22 lun. 18:00]--[2013-04-22 lun. 18:45] =>  0:45
