@@ -1,0 +1,5 @@
+base referer
+rect $infodialog_8h.html 255,132 356,156
+rect $dialog_8h.html 407,132 481,156
+rect $caption_8h.html 691,157 776,181
+rect $pushbutton_8h.html 531,107 643,131

@@ -1,0 +1,9 @@
+base referer
+rect $server_8cpp.html 785,57 876,81
+rect $apitest_8cpp.html 741,252 920,276
+rect $terminalapp_8h.html 231,203 428,227
+rect $menubar_8cpp.html 233,400 425,424
+rect $hook_8h.html 511,203 660,227
+rect $lineedit_8cpp.html 495,301 676,325
+rect $pushbutton_8cpp.html 480,107 691,131
+rect $terminalapp_8cpp.html 479,155 692,179

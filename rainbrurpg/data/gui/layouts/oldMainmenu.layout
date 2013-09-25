@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<GUILayout>
+  <Window Type="Vanilla/StaticImage" Name="RainbruRPG/Connection">
+    <Property Name="AlwaysOnTop" Value="True" />
+    <Property Name="UnifiedMinSize" Value="w:0.2 h:0.2" />
+    <Property Name="UnifiedMaxSize" Value="w:0.8 h:0.8" />
+    <Property Name="Position" Value="x:0.6 y:0.4" />
+    <Property Name="Size" Value="w:0.4 h:0.6" />
+    <Property Name="Text" Value="Main menu" />
+    <Property Name="FrameEnabled" Value="False"/>
+    <Property Name="BackgroundEnabled" Value="False"/>
+   
+    <Window Type="Vanilla/Button" Name="NetGame">
+      <Property Name="UnifiedAreaRect" Value="l:0.1 t:0.0 r:0.9 b:0.20" />
+      <Property Name="Text" Value="Network game" />
+    </Window>
+
+    <Window Type="Vanilla/Button" Name="LocalTest">
+      <Property Name="UnifiedAreaRect" Value="l:0.1 t:0.25 r:0.9 b:0.45" />
+      <Property Name="Text" Value="Local test" />
+    </Window>
+
+    <Window Type="Vanilla/Button" Name="Quit">
+     <Property Name="AbsoluteRect" Value="l:224 t:216 r:416 b:264" /> 
+      <Property Name="RelativeRect" Value="l:0.1 t:0.7 r:0.9 b:0.9" />
+      <Property Name="Text" Value="Quit" />
+    </Window>
+
+  </Window>
+</GUILayout>

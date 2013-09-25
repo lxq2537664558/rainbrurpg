@@ -1,0 +1,7 @@
+base referer
+rect $console_8h.html 261,78 405,102
+rect $tokenizerdbg_8cpp.html 235,126 432,150
+rect $console_8cpp.html 497,6 657,30
+rect $erconsole_8cpp.html 491,54 664,78
+rect $ergame_8cpp.html 497,102 657,126
+rect $IrrClient_2gameengine_8cpp.html 481,150 673,174

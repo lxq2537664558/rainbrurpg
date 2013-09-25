@@ -1,0 +1,26 @@
+// Test de commentaire sur une seule ligne
+
+/* Ceci est un fichier de test pour transmsg
+ * exemple TR("Exemple");
+ */
+TR("Chaine1");
+
+
+cout << "aze" << endl;
+
+class {
+
+TR( "Chaine2");
+
+TR( "Chaine3"	     // Chaine
+    " suite");
+
+}
+
+TR("Ceci est une tres longue chaine a traduire, " /** Comm */
+   "donc elle tient sur plusieurs ligne... "
+   "Ligne3");
+
+TR("Mise a jour?");
+
+TR("CA devrait " /** Commentaire */ "Foirer");

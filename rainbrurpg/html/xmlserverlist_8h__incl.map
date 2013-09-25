@@ -1,0 +1,5 @@
+base referer
+rect $logger_8h.html 447,180 524,204
+rect $playerlist_8h.html 280,155 376,179
+rect $tools_2xident_2tnotelist_8h.html 283,107 373,131
+rect $xmltimestamp_8h.html 263,304 393,328

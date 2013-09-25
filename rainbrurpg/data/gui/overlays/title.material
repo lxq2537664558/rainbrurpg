@@ -1,0 +1,19 @@
+material RainbruRPG/Title/PanelBackGround
+{
+  technique tec01
+  {
+    pass 
+    {
+      ambient 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0
+      lighting off
+      scene_blend alpha_blend
+      depth_check off
+
+      texture_unit
+      {
+        texture title_bg.png
+      }
+    }
+  }
+}

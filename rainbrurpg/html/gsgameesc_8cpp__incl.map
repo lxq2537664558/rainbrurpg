@@ -1,0 +1,5 @@
+base referer
+rect $gsgameesc_8h.html 252,6 364,30
+rect $logger_8h.html 269,54 347,78
+rect $IrrClient_2gameengine_8h.html 248,102 368,126
+rect $irrfontmanager_8h.html 240,150 376,174

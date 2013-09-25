@@ -1,0 +1,10 @@
+base referer
+rect $clientconnect_8h.html 247,5 436,29
+rect $curlposteddata_8h.html 241,53 441,77
+rect $curlplayeradd_8h.html 245,101 437,125
+rect $addplayer_8h.html 507,151 693,175
+rect $playerlist_8h.html 757,227 939,251
+rect $curlplayerdelete_8h.html 496,252 704,276
+rect $xmlplayerlist_8cpp.html 241,301 441,325
+rect $playernotepad_8h.html 492,325 708,349
+rect $addserver_8h.html 248,400 435,424

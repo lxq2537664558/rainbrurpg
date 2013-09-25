@@ -1,0 +1,4 @@
+base referer
+rect $globaluri_8h.html 476,56 569,80
+rect $curlsubmitform_8h.html 288,56 427,80
+rect $xmlpersolist_8h.html 299,104 416,128

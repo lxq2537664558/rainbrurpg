@@ -1,0 +1,8 @@
+base referer
+rect $terminalapp_8h.html 270,299 387,323
+rect $logger_8h.html 686,56 763,80
+rect $singleton_8h.html 812,203 908,227
+rect $hook_8h.html 503,397 570,421
+rect $menubar_8h.html 490,56 583,80
+rect $window_8h.html 494,445 579,469
+rect $dialog_8h.html 499,544 574,568

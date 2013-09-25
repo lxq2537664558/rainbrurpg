@@ -1,0 +1,6 @@
+base referer
+rect $curlplayeradd_8h.html 262,80 390,104
+rect $globaluri_8h.html 644,44 738,68
+rect $curlsubmitform_8h.html 438,104 576,128
+rect $hashpassword_8h.html 626,116 756,140
+rect $xmlplayerlist_8h.html 446,56 568,80

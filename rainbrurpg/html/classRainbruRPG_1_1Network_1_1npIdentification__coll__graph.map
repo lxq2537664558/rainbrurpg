@@ -1,0 +1,4 @@
+base referer
+rect $classRainbruRPG_1_1Network_1_1NetPacketBase.html 19,98 293,122
+rect $unionRainbruRPG_1_1Network_1_1npPacketBaseData.html 5,7 307,31
+rect $unionRainbruRPG_1_1Network_1_1npIdentificationData.html 317,98 632,122

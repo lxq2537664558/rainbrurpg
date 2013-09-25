@@ -1,0 +1,12 @@
+  [version.cpp:74]	EE Can't open file version.txt, please run this program from the /bin directory
+Copyright (C) 2006 Jerome PASQUIER
+RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+See the GNU General Public License for more details.
+  [launcher.cpp:179]	II Click sur DriverList
+  [launcher.cpp:179]	II Click sur DriverList
+  [launcher.cpp:144]	II Setting GameEngine driver type...
+  [gameengine.cpp:96]	II Initializing the GameEngine...
+  [gameengine.cpp:112]	II Using OPENGL graphic driver
+  [gameengine.cpp:155]	II Initialization of Irrlicht...
+  [gameengine.cpp:157]	II   Creating Irrlicht device

@@ -1,0 +1,572 @@
+* v 0.0.4-125
+- Doxygen documentation
+- GNU headers missing in some files
+- A ScriptEditor class that contains the QTextEdit and Highlighter
+- ScriptEditor addeed in the OgreView's QTabWidget
+- OgreWiew in a QTabWidget
+- EditorMainWindow in RainbruRPG::Editor namespace
+- Highlighter and LuaHighlighter in server/
+- Integration of ChartLine in common/
+- Lua scripting test in prog/cpp/lua/   OK
+- Doxygen documentation of unit tests
+
+* v 0.0.4-124
+- ChartSerie::getValue(int index) implementation
+- ChartLine::drawOneSerie implementation
+- ChartLine implementation in prog/cpp/gdImage started
+- tChartSerie become a class : ChartSerie
+- prog/cpp/gdImage uses librainbrurpg-commons
+- NetFlooder goes to the FloodPanel if the connection is accepted
+- CharBase::addSerie(ChartSerie*);
+- A ChartSerie class in chartbase.h
+- Is libgd in configure.in ? No, added
+- A function FlooderTestBase::run(EnetBase*);
+- FloodPanel feed combobox with test name and description
+- FloodPanel : A ComboBox to choose test to make
+- A superclass FlooderTestBase
+- FloodPanel has 2 progressbar : one general and one for the current test
+- Netflooder has a FloodPanel
+- NetFlooder's Waiting panel is reset if the connection is refused
+- Netflooder returns to the connectionpannel if connection is refused
+
+* v 0.0.4-123
+- Draw the legend in TrueType font
+- Rename GraphBase to ChartBase
+- bottomCaption implementation
+- Fixing leftCaption and bottomCaption placement bugs
+- leftCaptionMargin computation
+- GraphBase is now part of the RainbruRPG::Core namespace
+- tGraphTitlePlacement declared in graphbase.h
+- xTitle become title (xAxisCaption and yAxisCaption are different)
+- All margin computation in a single function, called at the beginning
+  of the draw() function
+- getTextUpWidth and getTextUpHeight functions
+- Draw the yTitle in TrueType (not correctly placed)
+- Make a superclass GraphBase using libgd (as another project)
+
+* v 0.0.4-122
+- doxygen documentation
+- NetFlooder show messageBox if the server refuses flooder connections
+- void EnetFlooderClient::eventLoop uses libsigc++ signals for server response
+- Adding sigc++-2.0 in configure.in
+  Added to common/ and netflooder/
+- Trying to use callback for EnetFlooderClient events
+  sigc++-2.0 is OK
+- The ServerLog widget is a MDI child, not a dock window
+- The netFlooder understand the npConnectionResponse packet
+- Answer to a connection of a client with a npConnectionResponse packet
+- Try to use tReceivedPacket struct in enetserver.h to store a peer pointer
+- npConnectionResponse is in common
+- The serverlog lines are added from the beginning (LIFO)
+  The treeview is now sorted in the ascending order
+- Adds a ClientList entry for each different connection tried
+- Server watch in ServerConfiguration if the client's type is accepted
+- When a packet is received by server/enetserver, we must know
+  from which host (ip and port) it comes.
+   A tReceivedPacket struct that contains data defined in enetserver.h
+- [fixed]Netflooder : If we do not click on a table item (below) the prg crash
+- npConnectionResponse implementation
+
+* v 0.0.4-121
+- npIdentification is finished and server understand it
+- The server receive correctly the packet (npIdentification isn't finished)
+- NetFlooder sends npIdentification
+- If the server is started, stopped and started again this cause a
+   segfault
+   The server wasn't cleanup
+- A netflooder connection error (Fixed by adding connected and isConnected())
+- TerminalAPI's Unittest doxygen documentation done
+- Doxygen documentation
+- ClientList is created as a top level widget
+- A signal is connected to a mainwindow slot when a client try to connect
+- ServerThread uses Q_OBJECT to be able to use signals
+- A client connection emit a signal from EnetServer
+- EnetServer uses Q_OBJECT macro to be able to use signals/slots
+- Only one ClientList instance exist
+- A ClientList widget
+  showing the ip, port, type information in a table
+- ServerThread is a real class
+- Try to made a Qthread that runs the eventloop of the EnetServer
+   It works
+- A EnetServer class used by the server
+
+* v 0.0.4-120
+- UnitTest curlaccountconfirmmail
+- Finding a system to update Waitingpanel proressbar during the client
+   connection 
+  The connection is set to 200ms and we call connect several times
+- enetflooderclient implementation
+- Trying to update the screen during WaitingPanel::runClient
+- WaitingPanel must know the server ip and port
+  The selected tServerListItem is sent by the fox message
+- Waitingpanel get a EnetFlooderClient in constructor from NetFlooderWindow
+- Adds a client creation item to the Waiting panel
+- Showing waiting panel after connection chosen
+- enetflooderclient basic implementation
+- enetclient basic implementation
+- npidentification::setClientType implementation
+- enetbase : eventLoop and sendPacket functions
+
+* v 0.0.4-119
+- enetbase : Init function that init the enet library
+- enetbase : Cleanup function  that deinit the enet library
+- WaitingPanel : The base class
+- WaitingPanel : Creates widgets
+- Implements StringConv::xmlToNewLine() which makes ch(13) new lines
+- Implements StringConv::xmlStripNewLine() which remove ch(13) chars
+- Showing if the adminsite can save the newline in xml
+  Changing admin/xmlinterface save function. newline is now 13.
+- If the selected server has a technote, it show it 
+  Using a FXMessageBox::question.
+- NetFlooder : connect button shown only if a server is selected
+- NetFlooder : Selection of a server select all the table row
+- Netflooder connectionpanel : Implementation of the refresh callback
+- xmlServerList refresh function
+- NetFlooder : Try to use the Layout option PACK_UNIFORM_WIDTH for buttons
+- Update regression test documentation page
+- A refresh button with callback
+- A connect button with callback
+- A ConnectionPanel which provides a server list with name&description
+- Bug #19 : In xident with client name, invert some server
+  Cannot reproduce the bug. I think it was a printing bug in xident
+
+* v 0.0.4-118
+- Unittest : class common/CurlAccountAdd
+- Server : The exit action quit the game
+- Doxygen documentation
+- Run the server add it to the admin site
+- Stop the server remove it to the admin site
+- netSerialization tests made with union
+- netSerialization tests made with stringstream
+- Server : When we try quit the server, it shutdown it
+- Server : Run and stop icons and slots
+- Common : A enet base packet : netPacketBase
+- Common : A enet identification packet : npIdentification
+- Common : Set glib-2.0 in autotools libcommon Makefile.am
+
+* v 0.0.4-117
+- Doxygen documentation
+- CurlInterface : many functions become protected 
+- Unit test ClientConnect
+  tests CCR_INEXISTANT_USER                  OK
+  tests CCR_UNKNOWN_ERROR                    OK
+  tests CCR_EMAIL_NOT_VALIDATED              OK
+  tests CCR_WRONG_PWD                        OK
+  tests CCR_BLACKLIST                        OK
+  tests CCR_SUCCESS                          OK
+- ClientConnect doesn't correctly manage Blacklist status
+- A CurlAccountToggleBlacklist class                 OK
+- Watch if CurlAccountConfirmMail need timestamp     Yes, it is needed
+- SEGFAULT during test unit                          FIXED
+- A CurlAccountConfirmMail class
+- Doxygen documentation
+- tplayerlist.h become taccountlist.h
+- A cout adds a linebreak in the testunit output
+- xmlPlayerList become xmlAccountList
+- A CurlPlayer* become CurlAccount*
+- CurlSubmitForm::setPostedData ans cie become protected
+- CurlPlayerAdd implements setName, setPassword, setMail
+- CurlPlayerDelete implements setName
+- Modify ClientConnect to be tested
+  Default constructor              OK
+  A connect function               OK
+- Unist tests attributemodifierlist
+  attributemodifierlist tests addModifier (positive and negative)       OK
+  attributemodifierlist tests addModifierInverse                        OK
+  attributemodifierlist tests unsigned modifiers                        OK
+  attributemodifierlist tests getTotalString                            OK
+  attributemodifierlist tests getTotalString if total is 0              OK
+- includes unittest with an --enable-test option
+- A configure option --enable-tests enable/disable tests
+- Fixed the last failed unittest in ListView : a return statement missing
+- Unittest are now in the main project
+
+* v 0.0.3-116
+- ServerDesc and ServerTechNote
+  Minimal size
+- ServerDesc (lecture seule)
+- ServerTechNote (lecture seule)
+- Make the dialogs resizable
+    Setting DECOR_TITLE|DECOR_BORDER|DECOR_RESIZE as 3rd argument
+  ServerDesc                      OK
+  ServerTechNote                  OK
+  AddServer                       OK
+  DeleteServer                    OK
+  ModifServer                     OK
+- A callback for description and technote buttons
+- Description and Technote buttons only enable if a server is selected
+- common/CurlServerModifClients implementation
+- A FXSpinner to enter the wanted connected clients
+- xmlServerList::getServerByName implemented
+- EditServer get the actual client info and shows it     
+- FoxServerList opens a EditServer dialog
+  The Edit button has a callback                          OK
+  Creates a base EditServer dialog                        OK
+- FoxServerList Edit button enable only if a server is selected
+- FoxServerList show number of clients
+  tServerListItem must contain the client information
+
+* v 0.0.3-115
+- CurlServerDelete implementation
+  The webpage is deleteserver.php
+- A DeleteServer dialog
+  Cancel and OK Callbacks
+- foxserverlist : The delete button is grayed until a server is selected
+  calling disabled()/enable()
+- foxserverlist : a callback each times the table selection change
+  onTableSelectionChange
+- A foxserverlist::getSelectedServerName() function
+- Refresh the server list when a server is added
+- Doxygen warnings fixed
+  Do not use relative paths : ../doc/
+  Using EXAMPLE_PATH instead
+- Testing with an empty techNote
+- Description and technote seems don't work
+- Test the multiline ability of description and technote
+- A std::string form of the CurlServerAdd::set???
+- Why the server isn't added
+  The PostedData fields are empty
+    It is a conversion error from FXString to const char*
+- Using accessors in CurlServerAdd
+  setName
+  setIpAddress
+  setPort
+  setMaxClients
+  setDescription
+  setTechNote
+
+* v 0.0.3-114
+- curlserveradd moves from server/ to common
+- xIdent AddServer dialog : Using CurlServerAdd to add the server
+- xIdent AddServer dialog : Get the CurlServerAdd response and test it
+- Make some control before adding the server
+  The server's name isn't empty
+  The IP adress isn't empty
+- AddServer dialog : Cancel and OK callbacks close the dialog
+- Start implement the AddServer dialog and show it from foxServerList
+- See why the PLACEMENT_SCREEN causes the application to freeze
+  In FoxServerList::onShowAddServerDialog  [222]
+  Using default PLACEMENT_CURSOR instead works
+- doxygen documentation
+- xident serverlist table fed up with server information
+- xIdent has a new widget showing the server list
+  FoxServerList
+- xmlServerList must inherits CurlFileToXml
+  All modification functions are deleted
+- tools/oldxident/xmlserverlist.h/cpp and dependencies move to common
+- Adds the IP port of the server in its configuration
+  ConfigDialog : Adds the IP port field               OK
+  ServerConfiguration : Adds the std::string ipAdress OK
+  Saves and loads the IP adress in the xml            OK
+- ConfigDialog tests the configuration before accept() the dialog
+  The name cannot be empty
+- HelpViewer : a OK button that closes the dialog
+
+* v 0.0.3-113
+- Create a help page for the Port-Forwarind in the texinfo manual
+  Can be accessible via the configuration dialog
+- A basic help viewer for the server
+  QTextBrowser can show HTML
+  Starting page RainbruRPG.html/index.html
+- Install RainbruRPG.html/* in $PREFIX/share/doc/RainbruRPG
+- See the allowed UDP port (by convention)
+  28000-30000
+  49152-65535 dynamic or private ports
+- See the router web interface for port forwarding (UDP)
+  The router need to be restarted
+- Searching documentation on NAT (Network Adress Translation)
+  http://www.mindcontrol.org/~hplus/nat-punch.html
+  We can use Port forwarding
+- An errors occurs when TechnicalNote is empty
+  from xmlserverconf.cpp:135 :
+  terminate called after throwing an instance of 'std::logic_error'
+    what():  basic_string::_S_construct NULL not valid
+  Abandon
+- ServerConfiguration datas are saved in a xml file
+- ServerConfiguration datas are loaded from server.xml
+- Update doxygen documentation of GlobalURI (installation of files...)
+
+* v 0.0.3-112
+- A field in Server configuration dialog telling if technote is empty
+- A little explanation in the TechNote dialog
+- The Server/Stop menu item start grayed
+- dialog's widget modification modify ServerConfiguration
+  TechNote                    OK
+  Description                 OK
+  Name                        OK
+  PlayMode                    OK   
+  EditMode                    OK   
+  FloodMode                   OK    
+  Port                        OK
+  MaxClient                   OK    
+- Server's technical note is in its own dialog
+  TechNoteDialog
+- ConfigDialog takes its initial values from the given ServerConfiguration
+  The widget are showing the ServerConfiguration's values at startup
+- ConfigDialog need a title
+- Server configuration dialog tooltips
+- A ServerConfiguration class 
+  It is passed to the configuration dialog to be modified
+- Add a technical note
+- A server configuration dialog
+  Server mode : player, editor, flooder
+  Max number of connecion
+  Server name
+  Input Port
+
+* v 0.0.3-111
+- A server statusbar
+- A Server menu
+- Adding libenet to the configure.in script
+- NewAdmin sent to website
+  Some errors still occurs in some pages
+- Adds a player in the table
+- Feed the account list : xmlplayerlist.cpp:112
+- Print the account total below the list
+- SEGFAULT when using xmlPlayerList
+  Trying to get it from http://127.0.0.1/rpg/players.xml while
+  no web server is running.
+    OK if file players.xml is found
+- Starting foxAccountList as a mega-widget
+  Always use a FXPacker (never a FXComposite) as base-class for
+   mega-widget
+  OK for the graphical representation (Table+Buttons)
+- FOX MDI test give up
+
+* v 0.0.3-110
+- First version of 'environ' sh script
+- Using FXMDIMenu
+- StatusBar
+- Menu enties for Manage/Accounts and Manage/Servers
+- An about dialog for xident
+- xident is a MDI window
+  A MDIClient manages a number of MDIChild
+- XIdentWindow contains field for admin name/passwd
+- xIdent menubar
+  File::Quit and Help::About
+- xIdent compilation error
+  Main window OK
+- xident remaned oldXident
+  oldXident used FLTK, xident now using FOX-toolkit
+- A problem if Qt4 is not installed
+  ./configure passed but compilation errors
+  Testing libs but not headers files
+
+* v 0.0.3-109
+- an option --enable-all that build client+server+tools+editor
+- includes tools with an --enable-tools option
+    The bin tools are named RainbruRPG-tools-??? (transmsg or xident...)
+  Option                                     OK
+  tools directory Makefile.am                OK
+  transmsg Makefile.am                       OK
+- Cannot find Outline's material
+  highlight.material        media/materials/scripts/     ??
+- Disable handles of selection
+- An Ogre error : cannot found mesh files :
+  MyPineTree.mesh        mapdata/models/                    OK
+  MySecondTree.mesh      mapdata/models/                    OK
+  tree1wood.jpg          mapdata/materials/textures/        OK
+  tree1leaves.png        mapdata/materials/textures/        OK
+- object list not found
+  objects.xml is installed in $HOME/.RainbruRPG/
+- Editor : Cannot initialise - no render system has been selected..
+- Missing resources.cfg when launching editor
+- Don't print the CompletePerCent if language is default
+- If LastUsed is empty : SEGFAULT
+  LastUsed is set to 'None' or ??_?? for a language but never empty
+- Fix the LanguageSelector placement
+- Setting the current LanguageListItem selected in the LanguageSelector
+- LanguageListItem must know if it is default or current
+- Feeds up the language combobox
+  It is fed up from the common/xmlLanguage list
+- common/xmlLanguage creates the language list from the xml file
+  Install the language.xml file          OK
+  Need to be modified for the LastUsed   OK
+  Loading LastUsed                       OK
+  Loading Default language               OK
+  TreatsAllLanguages                     OK
+  TreatOneLanguage                       OK
+  TreatLanguageCountries                 OK
+  TreatCountry                           OK
+  getCommonCode                          OK          
+  getCommonText                          OK
+  getCountryPerCent                      OK
+- LanguageListItem implements copy constructor
+- A FOX language selector dialog 
+
+* v 0.0.3-108
+- Set the config.h VERSION-BUILD numbers in the title overlay
+  The title.overlay field is RainbruRPG/Title/Version (a TextArea)
+  Modification in maincore/GuiManager::createTitleOverlay
+- Connection.layout doesn't appear
+  Waiting for connection to be a real GameState
+- Adding LOGCATB to logger for boolean
+- Font missing (CEGUI error)
+  Iconified-20      data/gui/fonts/iconified-20.font
+- missing layout
+  connection.layout      data/gui/layouts/      OK
+- Local test works : OK
+- Missing textures files
+  clouds.jpg       media/materials/textures/
+  Detail3          mapdata/materials/textures/
+- Sky dome material 'Examples/CloudySky' not found
+  in media/materials/scripts/Example.material
+- OgrePagingLandScapeTexture.cpp:372 assertion material.isNull() failed
+  splatting_sand.png       mapdata/materials/textures/
+  splatting_grass.png      mapdata/materials/textures/
+  splatting_rock.png       mapdata/materials/textures/
+  splatting_snow.png       mapdata/materials/textures/
+    Adding mapdata/materials/scripts
+- Cannot found ressources 
+  paginglandscape2.cfg    mapdata/                     OK
+  hf_129_3.cfg            mapdata/terrains/            OK
+  hf129_3/                mapdata/terrains/            OK
+
+* v 0.0.3-107
+- Title overlay doesn't appear
+- Cannot find material
+  Core/StatsBlockCenter       media/packs/OgreCore.zip   OK
+- OverlayElement with name RainbruRPG/NumericDebug/AverageFps not found
+  numDebug.overlay            data/gui/overlays/         OK
+- Cannot find resources for main menu
+  border.jpg            data/                         OK
+  dynamicmenu.jpg       data/                         OK
+  staticmenu.jpg        data/                         OK
+  GUIScheme.xsd         data/gui/XMLRefSchema         OK
+  TaharezLook.scheme    data/gui/schemes/             OK
+  Imageset.xsd          data/gui/XMLRefSchema/        OK
+  TaharezLook.imageset  data/gui/imagesets/           OK
+  TaharezLook.tga       data/gui/imagesets/           OK
+  Falagard.xsd          data/gui/XMLRefSchema/        OK
+  TaharezLook.looknfeel data/gui/looknfeel/           OK
+  VanillaSkin.scheme    data/gui/schemes/             OK
+  Vanilla.imageset      data/gui/imagesets/           OK
+  vanilla.tga           data/gui/imagesets/           OK
+  Vanilla.looknfeel     data/gui/looknfeel/           OK
+  Font.xsd              data/gui/XMLRefSchema/        OK
+  fkp-16.font           data/gui/fonts/               OK
+  fkp.de.pcf            data/gui/fonts/               OK
+  GUILayout.xsd         data/gui/XMLRefSchema/        OK
+  mainmenu.layout       data/gui/layouts/             OK
+- Modify GameEngine::setupResources to load in $PREFIX/share...
+- Cannot open ../data dir from resources.cfg
+  Ogre seems to start from execution dir
+  Opening it from $PREFIX/share/RainbruRPG/config/
+- config/ogre.cfg must be in $HOME to be modified
+- The Launcher's renderer list isn't feed
+  The plugins.cfg is setup in the main.cpp
+  The Ore::Root renderer list is setup in GameEngine::setupResources
+- version.cpp Take the version from config.h
+- Install LauncherOption icon for Renderer OptionButton
+  Currently loaded icon is ../data/fox/dawntime.ico
+  This filename is taken from OptionButton.getIconFilename
+  Filenames are defined in common/options.cpp
+- xmlOptions must come from ~/.RainbruRPG/
+- Use common/GlobalURI to get files from $HOME/.RainbruRPG/
+  Setting up HOME in GlobalURI with <stdlib.h>:getenv("HOME");
+  Testing if the $HOME/.RainbruRPG directory exists
+  If options.xml doesn't exists, copy it from PREFIX/local/RainbruRPG
+  Using boost-filesystem
+- Using boost-filesystem
+- Install config/options.xml in $PREFIX/share
+  This file must be copy in the $HOME/.RainbruRPG/ directory later
+
+* v 0.0.3-106
+- Launcher takes the image in the $prefix/share/RainbruRPG/data/fox directory
+- Installing the data/fox datafiles used by the launcher
+- The launcher image isn't drawn
+  The image must be installed in the $PREFIX/share/RainbruRPG/ directory
+    The EXTRA_DIST files seems to not be installed
+  Using :
+    datafilesdir = $(prefix)/share/RainbruRPG/client
+    datafiles_DATA= DawnTime.ico
+  is OK
+- Manage the --enable-option of ./configure for building
+  --enable-client, server, editor
+- Give up qmake
+  Using standard Makefile by ./configure instead
+    Editor and Server ok
+- Using make install after qmake doesn't work
+- Test if editor make a SEGFAULT if it doesn't find datafiles
+  No, Ogre doesn't found the ressources.cfg file
+- doc/editorManual disapear because of the texinfo manual
+- Tests the PagingLandscapeManager library (not the header)
+  The lib name is Plugin_PagingLandScape2.so
+    Cannot use AC_CHECK_LIB macro because the lib is not called
+    lib* and we don't need -lPLugin... for linkage
+      Using AC_CHECK_FILE instead and searching in /usr/lib/OGRE then
+      /usr/local/lib/OGRE
+- client (rainbrurpg) SEGFAULT
+  This happen if we are'nt in the client sub directory because
+  in xmloptions, filename is set to '../config/options.xml'
+  Logs are now Errors and an error message box may appears
+  on startup if a critical error occurs.
+- Creates manual page for server and editor
+  Called from root directory Makefile.am
+- Setting AC_CHECK_LIB(???, main, []) in acinclude.m4
+  To get a more readable configure.in and to test the headers
+    Ogre, CEGUI, CEGUIOgre, OIS, FOX, Curl, SLang
+- Installation dir is define in USER_INSTALL_PREFIX in config.h
+  It is the PREFIX used in the ./configure script, it may be used
+  to define the datafiles (ressources.cfg) place.
+    If ./configure is called without the --prefix parameter, the
+    $prefix variable is undefined ("NONE"). We must assume it is
+    /usr/local with a warning message.  OK
+  Move it to acinclude.m4               OK
+
+* v 0.0.3-105
+- Using GNU Autotools
+  The installation is now ./configure&&make&&sudo make install
+  The server and editor must be separated built by qmake in the subdirectory
+- Making conventions for the database names
+  They are in the sql/createdb.sql script
+- Creates a user's changelog 
+- The changelog's format changes
+  The new format can be manages with the  emacs-goodies-el package
+- LanguageListItem est une class
+- LanguageSelector combox et bouton OK
+- TokenizerDbg must be in RainbruRPG::Exception namespace
+- Server : LogExportDialog filename init et choix
+- Server : Implementer ServerLog::serializeTree
+
+* v 0.0.3-104
+- Server : The log is a real Qwidget (ServerLog)
+- Doxygen started for unittest classes
+- UnitTest : Setting TerminalAPI in its own testsuite
+- Changer l'entete GNU du mainwindow de l'editeur
+- Mise en place du serveur en Qt4 (menu+workspace+log)
+- ObjectsTab :
+	- ObjectsTab fait partie de RainbruRPG::Editor
+	- renommer ObjectTab::setBoundingBox ObjectTab::selectObject
+
+* v 0.0.3-103
+- PosorDialog started
+- Position and orientation temporally give up
+- mesh moveHandle.mesh and rotateHandle.mesh in /media/models
+  Material MoveHandle, texture moveHandle.png
+- SelectionCycle doesn't return the nearest objects
+- OgreView mouse-click selection
+  If it is a first selection, no cycling
+- ObjectTab's selection uses SelectionManager
+- A SelectionManager (singleton) provides selection
+	- init(Ogre::SceneManager*);
+	- selectNewObject(Ogre::String);
+	- selectAddObject(Ogre::String);
+- Trying to port SkyWorks : creates a custom Makefile
+
+* v 0.0.3-102
+- Cleaning up MainWindow global variables
+- When we open a StaticMeshDialog, we have a SEGFAULT
+- A SelectionCycle class can select several superposed objects
+- Editor manual startedin doc/editorManual
+
+* v 0.0.3-101
+- HighlightListener becomes real class (h/cpp)
+- ObjectsTab contains a MeshViewStats
+- MeshViewStats is a widget to show informations on the  MeshViewer
+	- setAverageFps
+	- setTriCount
+	- updateCameraStats
+	- Les valeurs sont tronquees (2 chiffres apres la virgule)
+- starting MeshViewer
+- StaticMeshDialog contains som tabs

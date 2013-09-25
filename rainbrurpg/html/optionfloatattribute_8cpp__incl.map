@@ -1,0 +1,6 @@
+base referer
+rect $optionfloatattribute_8h.html 303,107 468,131
+rect $logger_8h.html 716,107 793,131
+rect $optionattribute_8h.html 517,57 653,81
+rect $stringconv_8h.html 703,156 807,180
+rect $singleton_8h.html 857,203 953,227

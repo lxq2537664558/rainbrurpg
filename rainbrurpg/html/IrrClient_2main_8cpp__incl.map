@@ -1,0 +1,6 @@
+base referer
+rect $IrrClient_2launcher_8h.html 211,207 304,231
+rect $IrrClient_2gameengine_8h.html 198,7 318,31
+rect $IrrClient_2guimanager_8h.html 367,56 482,80
+rect $logger_8h.html 386,256 463,280
+rect $version_8h.html 216,306 299,330

@@ -1,0 +1,5 @@
+base referer
+rect $curlinterface_8h.html 292,131 412,155
+rect $curldefaultwritefunction_8h.html 253,203 451,227
+rect $logger_8h.html 505,155 583,179
+rect $singleton_8h.html 639,155 735,179

@@ -1,0 +1,6 @@
+base referer
+rect $IrrClient_2gamestate_8h.html 552,8 659,32
+rect $ergame_8h.html 201,132 287,156
+rect $logger_8h.html 707,33 784,57
+rect $IrrClient_2gameengine_8h.html 360,107 480,131
+rect $screenshotmanager_8h.html 336,205 504,229

@@ -1,0 +1,11 @@
+base referer
+rect $classRainbruRPG_1_1Network_1_1CurlPersoHeaderAdd.html 783,6 1098,30
+rect $classRainbruRPG_1_1Network_1_1CurlPersoModifAttrb.html 786,54 1095,78
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlAccountAdd.html 776,102 1104,126
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlAccountConfirmMail.html 750,150 1131,174
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlAccountDelete.html 768,198 1112,222
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlAccountToggleBlacklist.html 740,246 1140,270
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlServerAdd.html 782,294 1099,318
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlServerDelete.html 774,342 1107,366
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlServerModifClients.html 754,390 1127,414
+rect $classRainbruRPG_1_1Network_1_1Ident_1_1CurlInterface.html 6,198 312,222

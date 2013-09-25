@@ -1,0 +1,8 @@
+base referer
+rect $xmlplayerlist_8h.html 247,6 431,30
+rect $xmlpersolist_8h.html 248,54 430,78
+rect $xmlattrbcatlist_8h.html 242,102 436,126
+rect $xmlattributelist_8h.html 239,150 439,174
+rect $xmlbonusfile_8h.html 247,198 431,222
+rect $xmlbonusfilelist_8h.html 236,246 442,270
+rect $xidentwindow_8h.html 234,294 444,318

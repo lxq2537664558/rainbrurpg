@@ -1,0 +1,7 @@
+base referer
+rect $singleton_8h.html 387,256 483,280
+rect $tokenizer_8h.html 387,428 483,452
+rect $tokenizerdbg_8h.html 200,403 323,427
+rect $IrrClient_2gameengine_8h.html 201,206 321,230
+rect $consoleobject_8h.html 371,107 499,131
+rect $cocore_8h.html 221,107 301,131

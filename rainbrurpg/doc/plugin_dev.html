@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<title></title>
+</head>
+
+<body>
+
+<p>Here, you can find help on plugins development. I will try to show you
+the class you can use, and how you can use it.
+
+<h2>Prerequisites</h2>
+
+To make a plugin for RainbruRPG, you must know C++ programmation rules.
+Making a dynamic library (.dll under win32, .so under *nix) is also needed.
+
+
+<h2>Options integration</h2>
+RainbruRPG lets you add your own options to the launcher option editor. We
+will add a boolean option in a custom optionButton.
+
+<div class="fragment"><pre class="fragment">
+<span class="comment">// First, we get the 'plugins' OptionPanel</span>
+OptionPanel* pluginsPanel=OptionManager::getSingleton().getPluginsPanel();
+
+<span class="comment">// We create our custom button (our plugin is called Foo and we choose an icon</span>
+OptionButton* btn1=<span class="keyword">new</span> OptionButton("Foo", "../data/fox/dawntime.ico");
+
+<span class="comment">// We create the boolean option attribute</span>
+OptionBoolAttribute *boo=<span class="keyword">new</span> OptionBoolAttribute("FooBool");
+boo->setToolTip("A tooltip that helps the user :)");
+
+btn1->add(boo);
+
+</pre>
+</div>
+<hr>
+<address></address>
+<!-- hhmts start -->Last modified: Sat Feb 10 00:41:18 CET 2007 <!-- hhmts end -->
+</body> </html>

@@ -1,0 +1,243 @@
+* v 0.0.3-100
+- Delete the last selection
+- The selected object is highlighted
+- EnvironmentSetup adds objects from xmlObjectList
+- StaticMeshDialog started
+* Deplacer la camera sur l'ObjectPos quand double-clique
+
+* v 0.0.3-99
+- Editor : Get the name of an object when a mouse-click occurs
+  and be able to know if it is an ObjectMesh or an ObjectPos
+- Editor : ObjectsTab manage the mouse double-click
+- Editor : Get the object list from common/xmlObjectList
+- Client : a LanguageSelector skeleton
+- Client : Each different menu become a real GameState being a C++ class
+  inherited from  gsMenuBase
+- A super-class gsGameBase which gsNetworkGame et gsLocalTest inherits from
+
+* v 0.0.3-98
+- xmlObjectList (librainbrurpg-core) manages objects.xml file
+- GameEngine, GameState and gsGameBase are in librainbruRPG-core
+- gsGameBase manage a camera and a simple move
+
+* v 0.0.3-97
+- gsMenuBase inject mouse events from OIS to CEGUI
+- GameEngine::enterLocalTest deleted
+- LocalTest is a GameState
+
+* v 0.0.3-96
+- PLSM2 works with an example map
+- The libs are now installed in /usr/local/lib/ 
+	- ld config may be modified
+	- LD_LIBRARY_PATH and LD_RUN_PATH reference /usr/local/lib 
+ 	  in the /etc/ld.so.conf file
+- Unit tests
+- Switching to Ogre 1.2 and CEGUI 0.5.0
+
+* v 0.0.2-95
+- terminalepi/Caption unittest OK
+- Adds unittest number if the regression page
+- gsMainMenuTest become gsmainmenu
+- Creates a skeleton of latex documentation
+- TerminalAPI ListView 
+- TerminalAPI ScrollingPanel's concept
+- TerminalAPI ListBoxItem
+- gsMainMenuBase become gsMenuBase 
+
+* v 0.0.2-94
+- php::newadmin replace php::admin
+- GameState::frameStarted and GameState::frameEnded
+- gamestate::run() is replaced by gamestate::framestarted and
+	gamestate::frameended
+- GuiFrameListener simply calls GameEngine::currentState::framestarted()
+- a 'lost password' button in the connection screen
+- Connection of an account works
+- Network game show a connection screen
+- Doxygen
+- renderer list
+- local test
+
+* v 0.0.2-93
+- GuiManager::beginGUIFadeIn(); implementation
+- GuiFrameListener become a class (.h/.cpp)
+- A number of initialization frame are defined to let the graphic renderer
+  start to run before transitions
+- guiManager::transitionTime 
+- A class vcConstant inherits VelocityCalculator
+- Starting VelocityCalculator superclass
+- The password field print hidden char (*) instead of password
+- A FrameListener superclass
+- Using CEGUI skin Vanilla for the main menu buttons
+- gsMainMenuBase using an Ogre overlay  for the game name and its version
+- Implementing a GameState gsMainMenuBase, superclass of other menus
+- gsMainMenuBase/gsMainMenuTest
+- GuiManager changes CEGUI layouts on demand
+
+* v 0.0.2-92
+- numDebugWindow values are cast to integer
+- Launcher uses lastuse
+- LauncherOption snapshot implementation
+
+* v 0.0.2-91
+- oldLauncher deleted
+- optionattribute update implemented
+- A plugin development page
+- Default values for OptionAttribute
+- Dynamic LauncherOption
+
+* v 0.0.2-90
+- transmsg : A tool for translation
+  Read a single file and make a list of string to translate
+- Logger manages concatenation with iostringstream
+	- LOGCATS(const char*)
+	- LOGCATI(int)
+	- LOGCATF(float)
+	- LOGCATFREE vide la chaine 
+	- LOGCAT() sort la chaine
+- Dynamic LauncherOption
+	- OptionListAttribute
+	- OptionBoolAttribute
+	- OptionStringAttribute
+	- OptionIntAttribute
+	- OptionPanel::getButtonByName(const char*)
+	- OptionManager::getButtonByName(const char*);
+	- OptionManager::getPanelByName(const char*)
+	- in OptionButton, we keep a reference to the panel Id to be able
+ 	  to show it
+- Version uses FOX-toolkit version
+	/usr/include/fox-1.6/fxver.F
+	#define FOX_MAJOR  1
+	#define FOX_MINOR  6
+	#define FOX_LEVEL  14
+
+* v 0.0.2-89
+- Doxygen documentation
+- OptionIntAttribute
+- OptionAttribute
+	-OptionFloatAttribute
+      	-OptionFloatRangeAttribute
+- step, increase() and descrease() are parts of intattribute and floatattrb
+- OptionAttribute
+      -OptionListAttribute
+      -OptionStringAttribute
+      -OptionIntRangeAttribute
+- OptionPanel manages a button list
+- OptionManager : list of buttonPanel
+- OptionManager(Singleton)
+	- List::OptionPanel
+	  - OptionButton
+	    - OptionAttribute
+	      -OptionIntAttribute
+	      -OptionBooleanAttribute
+- disable Logger's std::out if WIN32
+
+* v 0.0.2-88
+- LauncherOption : cancel/OK buttons
+- using namespaces RainbruRPG::Gui and RainbruRPG::Options
+- Beginning LauncherOptions
+- Launcher Quit button
+- Launcher depend of libfox1.6 (FOX-Toolkit)
+- New client using Ogre/CEGUI
+
+* v 0.0.1-87
+- Give up Irrlicht and using Ogre/CEGUI instead
+  	- client beciom IrrClient
+- Doxygen documentation
+- CurlPersoModifAttrb calls modifpersoattrb.php
+- CurlPersoHeaderAdd inherits CurlSubmitForm
+- xmlPersoList inherits CurlSubmitForm
+- Newadmin persoList
+
+* v 0.0.1-86
+- Perso creation
+
+* v 0.0.1-85
+- GuiTransparencyAttribute inherits intAttribute but segfault
+- xmlBonusFile::getModifierList(const char* choiceName);
+- Perso ceration
+- Console is now const char* driven
+
+* v 0.0.1-84
+- GNU notification in the launcher
+RainbruRPG version 0.0.0-40, Copyright (C) 2006 Jerome PASQUIER
+RainbruRPG comes with ABSOLUTELY NO WARRANTY. This is free software, 
+and you are welcome to redistribute it under certain conditions;
+See the GNU General Public License for more details.
+- gsCreatePerso
+- gsCreatePerso
+- Using GlobalURI for xml files
+- Totals levels get/available OK
+- NewAdmin can now moveUp and moveDown attrb and attrbCat
+
+* v 0.0.1-83
+- gsCreatePerso
+- XmlAttrbibuteList
+- XmlAttrbCatList
+- gsSelectPerso (createPerso button)
+- erSelectPerso
+
+* v 0.0.1-82
+- NewAdmin attributes
+
+* v 0.0.1-81
+- NewAdmin OK
+- xident uses curlplayerdelete
+- xident addplayer ok
+- playerlist autorefresh
+- xident uses curl to add an account
+- showcurlerror may print libcurl errors with fltk
+- gschangepassword
+- erchangepassword
+- erCreateAccount
+- gsCreateAccount
+
+* v 0.0.1-80
+- All the buttons make a log
+- Implementation of gsConnection
+- The gamestate are initialized the first time they are called
+- The client manages 2 sofware renderers
+- XIdent get the player list
+- customErrorMessage is used for custom error messages
+- xmlplayerlist has some unused variables
+- Print the total number of account and server
+
+* v 0.0.1-79
+- Implementation of curlPlayerAdd::controlAfter()
+- Implementation of xmlplayerlist::getPlayer(const char* name);
+- Implementation of hashpassword::compare(const char*, const char*)
+- lastServerResponse has now a default value (-1)
+- customerrormessage cannot be modified if it was already set
+- curlplayeradd uses sha-1 for hashsum generation
+- curlsubmitform become a virtual class
+- Implementation of xmlplayerlist.refresh()
+- A page in my wiki to discuss the char* conversion
+
+* v 0.0.1-78
+- curlplayeradd uses xmlplayerlist in controlbefore()
+- Timestamp adds by posteddata if the user don't set it
+- xmlplayerlist is now part of librainbrurpg-commons.so
+- tidentreturn is now part of librainbrurpg-commons.so
+- Implementation of curlplayeradd from curlsubmitform
+- Implementation of GlobalURI
+- curlsubmitform returns value are tested
+
+* 0.0.1-77
+- Implementation of curlsubmitform
+- CurlPostedData works
+- Implemention of CurlFileToXml
+- Implemention of HttpResponse
+- curlGetFile works
+- a defaultWriteData function in curlInterface
+- In prog/cpp a project testcommcurl to test libcurl
+
+* v 0.0.1-76
+- CurlInterface is a superclass for all libcurl actions
+- CurlGetFile inherits CurlInterface
+- CurlSubmitForm inherits CurlInterface
+- CurlFileToXml  inherits CurlInterface
+- StringConverter is part of librainbrurpg-commons.so
+- version number in a txt file
+- Doxygen documentation
+- When starting a versionning message
+- Doxygen exclude the include/ directory
+- regression tests and bugList in a separate file in the doc/ directory

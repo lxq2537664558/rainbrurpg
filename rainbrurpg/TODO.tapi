@@ -1,0 +1,31 @@
+*** TerminalAPI ***
+/usr/share/doc/libslang2-dev/examples
+* ScrollingPanel devient un wrapper des commandes S-Lang
+	- Il met toutes ces commandes dans une liste
+	- Execute la liste des commandes
+	- SLangCommand , slcGoto, slcPrint...
+	- essayer ca sur ListBox
+* chaque widget peut emettre ses propres evenements (style FOX)
+	- Un type d'evenement COMMAND, SELECT, CANCEL, EXECUTE
+	- On subscribe un event avec
+		- son type (COMMAND)
+		- la classe (void*)
+		- la fonction (Class::fonction)
+		- Chaque evenement peut avoir un parametre (void*)
+* Utiliser SLsmg_write_nchars("12345", 3) ecrit 123 (pour les captions...
+* Possibilite de 3 boutons pour un dialog
+* Les widgets ont 2 colorModes (window et dialog)
+* InformationDialog (avec un bouton OK)
+	- FreeDialog (Permettant de placer des widgets)
+	- InformationDialog
+	- QuestionDialog
+	- ProgressDialog (Progression d'un chargement...)
+* Dans la fenetre F11 permet de quitter le focus Widget et de focuser la 
+	fenetre
+* TestWindow devient un example de l'API
+* Si la barre de menu est trop grande, elle tient sur plusieurs lignes
+* Si le menu est trop grand pour tenir dans le terminal, la derniere ligne est 
+	un vvvvvv (SLSMG_DARROW_CHAR)
+* Regarder le probleme de SIGWINCH dans hook.h
+* Le 'A+' du keycode pour montrer qu'on appuie sur Alt
+* Un resetCursor pour eviter d'avoir le curseur n'importe ou

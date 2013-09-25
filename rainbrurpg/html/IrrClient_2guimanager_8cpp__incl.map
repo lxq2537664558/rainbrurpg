@@ -1,0 +1,5 @@
+base referer
+rect $IrrClient_2guimanager_8h.html 244,56 359,80
+rect $logger_8h.html 263,156 340,180
+rect $singleton_8h.html 577,105 673,129
+rect $IrrClient_2gameengine_8h.html 408,56 528,80

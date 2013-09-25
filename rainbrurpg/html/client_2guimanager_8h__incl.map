@@ -1,0 +1,4 @@
+base referer
+rect $singleton_8h.html 486,296 582,320
+rect $IrrClient_2gameengine_8h.html 260,296 380,320
+rect $client_2gameengine_8h.html 260,56 380,80

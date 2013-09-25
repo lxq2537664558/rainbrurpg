@@ -1,0 +1,11 @@
+resources.o resources.o: resources.cpp /usr/include/qt4/QtCore/qglobal.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h \
+  /usr/include/qt4/QtCore/qconfig.h /usr/include/qt4/QtCore/qfeatures.h
+
+/usr/include/qt4/QtCore/qglobal.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.2/include/stddef.h:
+
+/usr/include/qt4/QtCore/qconfig.h:
+
+/usr/include/qt4/QtCore/qfeatures.h:

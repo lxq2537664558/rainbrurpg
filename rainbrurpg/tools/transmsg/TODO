@@ -1,0 +1,18 @@
+--- Outils de creation des chaines de translation : transmsg ---
+* Essaiyer boost-filesystem
+
+
+
+
+
+
+
+---- ChangeLog ----
+
+
+* Traiter les debut de commentaires multilignes
+
+** Necessite libboost
+	- libboost-filesystem
+
+

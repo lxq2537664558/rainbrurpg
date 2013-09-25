@@ -1,0 +1,4 @@
+base referer
+rect $optionmanager_8h.html 234,6 434,30
+rect $optionpanel_8cpp.html 236,54 431,78
+rect $optionmanager_8cpp.html 484,6 700,30

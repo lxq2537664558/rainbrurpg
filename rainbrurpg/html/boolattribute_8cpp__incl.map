@@ -1,0 +1,5 @@
+base referer
+rect $boolattribute_8h.html 251,30 374,54
+rect $logger_8h.html 274,102 351,126
+rect $objectattribute_8h.html 423,6 556,30
+rect $singleton_8h.html 442,198 538,222

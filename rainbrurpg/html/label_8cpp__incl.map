@@ -1,0 +1,5 @@
+base referer
+rect $label_8h.html 224,54 291,78
+rect $logger_8h.html 219,174 296,198
+rect $widget_8h.html 353,54 433,78
+rect $singleton_8h.html 345,294 441,318

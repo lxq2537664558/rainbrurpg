@@ -1,0 +1,11 @@
+base referer
+rect $IrrClient_2gameengine_8h.html 243,5 419,29
+rect $IrrClient_2gameengine_8cpp.html 492,200 684,224
+rect $gscreateperso_8h.html 238,104 424,128
+rect $gsgame_8h.html 258,152 404,176
+rect $gsgameesc_8h.html 247,200 415,224
+rect $gsconnection_8h.html 240,248 422,272
+rect $gscreateaccount_8h.html 228,296 434,320
+rect $gschangepassword_8h.html 220,344 442,368
+rect $gsselectperso_8h.html 238,392 424,416
+rect $IrrClient_2gamestate_8cpp.html 240,440 422,464

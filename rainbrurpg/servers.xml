@@ -1,0 +1,26 @@
+<ServerList>
+    <Server>
+        <Timestamp tag="creation">1156674827</Timestamp>
+        <Name>DummyServer</Name>
+        <Desc>This server is a dummy</Desc>
+        <Ip>128.123.42.63</Ip>
+        <Port>4236</Port>
+        <TechNote>A simple technote</TechNote>
+    </Server>
+    <Server>
+        <Timestamp tag="creation">1156674827</Timestamp>
+        <Name>aze</Name>
+        <Desc>ert</Desc>
+        <Ip>tryu</Ip>
+        <Port>ghj</Port>
+        <TechNote>n,;</TechNote>
+    </Server>
+    <Server>
+        <Timestamp tag="creation">1156675562</Timestamp>
+        <Name>aze2</Name>
+        <Desc>a</Desc>
+        <Ip>dfg</Ip>
+        <Port>ghj</Port>
+        <TechNote>b</TechNote>
+    </Server>
+</ServerList>
