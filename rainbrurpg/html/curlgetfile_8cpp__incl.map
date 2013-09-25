@@ -1,6 +1,0 @@
-base referer
-rect $curlgetfile_8h.html 239,103 340,127
-rect $curlinterface_8h.html 392,103 512,127
-rect $httpresponse_8h.html 391,252 513,276
-rect $logger_8h.html 569,203 647,227
-rect $singleton_8h.html 703,227 799,251

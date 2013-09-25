@@ -1,5 +1,0 @@
-base referer
-rect $listbox_8h.html 232,103 312,127
-rect $logger_8h.html 361,152 439,176
-rect $widget_8h.html 360,200 440,224
-rect $singleton_8h.html 489,271 585,295

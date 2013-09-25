@@ -1,5 +1,0 @@
-base referer
-rect $classRainbruRPG_1_1Core_1_1gsMenuBase.html 273,97 511,121
-rect $classRainbruRPG_1_1Core_1_1GameState.html 5,7 232,31
-rect $classRainbruRPG_1_1Core_1_1VelocityCalculator.html 256,7 528,31
-rect $classRainbruRPG_1_1Core_1_1InputWrapper.html 552,7 795,31

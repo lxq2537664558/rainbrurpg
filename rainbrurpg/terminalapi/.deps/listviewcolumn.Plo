@@ -1,4 +1,0 @@
-listviewcolumn.lo .libs/listviewcolumn.o: listviewcolumn.cpp \
-  listviewcolumn.h
-
-listviewcolumn.h:

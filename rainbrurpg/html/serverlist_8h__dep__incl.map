@@ -1,6 +1,0 @@
-base referer
-rect $addserver_8cpp.html 240,6 443,30
-rect $serverlist_8cpp.html 243,54 440,78
-rect $xidentwindow_8h.html 236,102 447,126
-rect $xident_8cpp.html 523,78 699,102
-rect $xidentwindow_8cpp.html 498,126 724,150

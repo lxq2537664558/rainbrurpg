@@ -1,8 +1,0 @@
-base referer
-rect $freelayout_8cpp.html 242,59 442,83
-rect $window_8h.html 259,107 424,131
-rect $server_8cpp.html 783,33 874,57
-rect $apitest_8cpp.html 739,81 918,105
-rect $terminalapp_8h.html 492,57 690,81
-rect $testwindow_8h.html 495,156 687,180
-rect $window_8cpp.html 500,204 682,228

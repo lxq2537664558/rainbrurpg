@@ -1,6 +1,0 @@
-base referer
-rect $optionmanager_8h.html 273,108 409,132
-rect $singleton_8h.html 921,8 1017,32
-rect $logger_8h.html 795,105 872,129
-rect $optionpanel_8h.html 460,157 575,181
-rect $optionbutton_8h.html 624,157 747,181

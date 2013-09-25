@@ -1,5 +1,0 @@
-base referer
-rect $IrrClient_2gamestate_8h.html 259,151 365,175
-rect $irrfontmanager_8h.html 413,102 549,126
-rect $logger_8h.html 443,151 520,175
-rect $singleton_8h.html 599,198 695,222

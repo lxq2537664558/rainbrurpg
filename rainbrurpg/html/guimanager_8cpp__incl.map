@@ -1,5 +1,0 @@
-base referer
-rect $guimanager_8h.html 228,153 343,177
-rect $logger_8h.html 247,348 324,372
-rect $singleton_8h.html 667,153 763,177
-rect $gameengine_8h.html 441,104 561,128

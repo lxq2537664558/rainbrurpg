@@ -1,9 +1,0 @@
-base referer
-rect $curlsubmitform_8h.html 261,126 461,150
-rect $curlposteddata_8cpp.html 253,174 469,198
-rect $curlpersoheaderadd_8h.html 517,6 752,30
-rect $curlpersomodifattrb_8h.html 519,54 751,78
-rect $curlplayeradd_8h.html 539,102 731,126
-rect $curlplayerdelete_8h.html 531,150 739,174
-rect $curlsubmitform_8cpp.html 527,198 743,222
-rect $showcurlerror_8h.html 529,246 740,270

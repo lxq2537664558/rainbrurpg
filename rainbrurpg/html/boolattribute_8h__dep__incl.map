@@ -1,7 +1,0 @@
-base referer
-rect $boolattribute_8cpp.html 247,6 441,30
-rect $showstatsattribute_8h.html 235,54 453,78
-rect $cocore_8h.html 551,30 687,54
-rect $showstatsattribute_8cpp.html 501,78 736,102
-rect $cocore_8cpp.html 785,6 937,30
-rect $console_8h.html 789,54 933,78

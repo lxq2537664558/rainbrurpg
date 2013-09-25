@@ -1,1 +1,0 @@
-moc_loglistener.o moc_loglistener.o: moc_loglistener.cpp

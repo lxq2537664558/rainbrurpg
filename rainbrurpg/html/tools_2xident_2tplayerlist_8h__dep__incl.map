@@ -1,6 +1,0 @@
-base referer
-rect $playerlist_8h.html 240,78 421,102
-rect $addplayer_8cpp.html 475,6 677,30
-rect $xmlserverlist_8h.html 473,54 679,78
-rect $playerlist_8cpp.html 477,102 675,126
-rect $xidentwindow_8h.html 471,150 681,174

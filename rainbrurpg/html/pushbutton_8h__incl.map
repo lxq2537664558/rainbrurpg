@@ -1,6 +1,0 @@
-base referer
-rect $logger_8h.html 400,152 477,176
-rect $widget_8h.html 260,104 340,128
-rect $caption_8h.html 257,56 343,80
-rect $menuitem_8h.html 248,152 352,176
-rect $singleton_8h.html 527,104 623,128

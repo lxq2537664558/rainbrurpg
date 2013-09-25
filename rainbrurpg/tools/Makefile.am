@@ -1,1 +1,0 @@
-SUBDIRS= transmsg xident netflooder

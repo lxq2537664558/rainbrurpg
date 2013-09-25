@@ -1,7 +1,0 @@
-base referer
-rect $gsgame_8h.html 217,230 305,254
-rect $logger_8h.html 861,255 939,279
-rect $IrrClient_2gameengine_8h.html 515,304 635,328
-rect $IrrClient_2gamestate_8h.html 707,304 813,328
-rect $ergame_8h.html 356,230 441,254
-rect $screenshotmanager_8h.html 491,155 659,179

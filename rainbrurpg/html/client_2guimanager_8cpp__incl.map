@@ -1,6 +1,0 @@
-base referer
-rect $client_2guimanager_8h.html 228,183 343,207
-rect $logger_8h.html 247,400 324,424
-rect $singleton_8h.html 667,133 763,157
-rect $IrrClient_2gameengine_8h.html 441,108 561,132
-rect $client_2gameengine_8h.html 441,60 561,84

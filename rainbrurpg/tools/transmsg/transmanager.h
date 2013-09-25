@@ -1,4 +1,0 @@
-#ifndef TRANS_MANAGER_H
-#define TRANS_MANAGER_H
-
-#endif // TRANS_MANAGER_H

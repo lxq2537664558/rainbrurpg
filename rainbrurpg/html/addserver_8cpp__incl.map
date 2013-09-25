@@ -1,7 +1,0 @@
-base referer
-rect $addserver_8h.html 446,323 547,347
-rect $serverlist_8h.html 258,587 354,611
-rect $logger_8h.html 819,251 896,275
-rect $xmlplayerlist_8h.html 643,200 766,224
-rect $hashpassword_8h.html 639,299 770,323
-rect $xmlserverlist_8h.html 643,637 766,661

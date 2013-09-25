@@ -1,6 +1,0 @@
-base referer
-rect $singleton_8h.html 796,106 892,130
-rect $gameengine_8h.html 260,470 380,494
-rect $stringconv_8h.html 560,203 664,227
-rect $clientconnect_8h.html 550,302 675,326
-rect $gamestate_8h.html 559,974 666,998

@@ -1,6 +1,0 @@
-base referer
-rect $menubar_8h.html 247,58 340,82
-rect $logger_8h.html 664,106 741,130
-rect $menu_8h.html 391,107 463,131
-rect $singleton_8h.html 791,10 887,34
-rect $menuitem_8h.html 512,104 616,128

@@ -1,7 +1,0 @@
-base referer
-rect $gameengine_8h.html 485,56 645,80
-rect $guimanager_8h.html 715,56 872,80
-rect $logger_8h.html 247,155 385,179
-rect $optionmanager_8h.html 465,179 665,203
-rect $stringconv_8h.html 232,56 400,80
-rect $terminalapp_8h.html 217,254 415,278

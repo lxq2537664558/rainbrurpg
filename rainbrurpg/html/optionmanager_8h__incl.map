@@ -1,5 +1,0 @@
-base referer
-rect $singleton_8h.html 719,8 815,32
-rect $logger_8h.html 592,105 669,129
-rect $optionpanel_8h.html 257,157 372,181
-rect $optionbutton_8h.html 421,157 544,181

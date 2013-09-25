@@ -1,5 +1,0 @@
-base referer
-rect $attributemodifierlist_8h.html 305,131 473,155
-rect $logger_8h.html 537,107 615,131
-rect $stringconv_8h.html 524,155 628,179
-rect $singleton_8h.html 679,151 775,175

@@ -1,7 +1,0 @@
-base referer
-rect $curlplayerdelete_8cpp.html 261,30 485,54
-rect $playerlist_8h.html 283,78 464,102
-rect $addplayer_8cpp.html 539,6 741,30
-rect $xmlserverlist_8h.html 537,54 743,78
-rect $playerlist_8cpp.html 541,102 739,126
-rect $xidentwindow_8h.html 535,150 745,174

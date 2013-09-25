@@ -1,7 +1,0 @@
-base referer
-rect $server_8cpp.html 724,204 815,228
-rect $apitest_8cpp.html 680,57 859,81
-rect $menubar_8h.html 208,155 384,179
-rect $menu_8cpp.html 211,304 381,328
-rect $terminalapp_8h.html 433,107 631,131
-rect $menubar_8cpp.html 436,155 628,179
