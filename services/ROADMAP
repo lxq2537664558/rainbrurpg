@@ -98,13 +98,16 @@ template<typename O> send(string serviceName, O options)
 #+END_EXAMPLE
 - NetWorkServiceOption become part of the NetworkService header.
 
-**** TODO Compute load order
-     CLOCK: [2012-02-18 sam. 16:36]--[2012-02-18 sam. 16:42] =>  0:06
-     CLOCK: [2011-10-29 sam. 11:30]--[2011-10-29 sam. 11:43] =>  0:13
-     CLOCK: [2011-10-28 ven. 10:25]--[2011-10-28 ven. 10:56] =>  0:31
-- [X] Depends.rb handles the depends string and returns a list of dependencies
-- [X] Unit tests fail because Dependencies returns an empty array
-- [ ] Remove ruby tests
+**** [GUI] Implement a services editor in fox-1.6
+- [ ] Could show a graph of installed plugins using `graphviz` if this tool
+  was found by ./configure. If not found, print a message for 
+  `graphviz`'s missing.
+  - [ ] This graph could highlight in red circular dependencies
+- [ ] Could update automatically installed plugins with the use
+  of Rainbrurpg's Extension Repository (a foswiki web)
+**** Implement dependency graph in C++
+     using Boost Graph Library
+- [ ] Must be fully unit tested
 - [ ] Implements Service
 - [ ] vector::insert can add a service just before the given iterator
 - [ ] Implements a flex/bison parser or Boost.Spirit
@@ -117,6 +120,16 @@ template<typename O> send(string serviceName, O options)
 - [ ] const_iterator computeLoadOrder(const Service*) 
       returns the iterator of the insert() or an error
       string mLoadOrderError contains last dependency error
+**** TODO Compute load order
+     CLOCK: [2012-02-18 sam. 16:36]--[2012-02-18 sam. 16:42] =>  0:06
+     CLOCK: [2011-10-29 sam. 11:30]--[2011-10-29 sam. 11:43] =>  0:13
+     CLOCK: [2011-10-28 ven. 10:25]--[2011-10-28 ven. 10:56] =>  0:31
+- [X] Depends.rb handles the depends string and returns a list of dependencies
+- [X] Unit tests fail because Dependencies returns an empty array
+- [ ] Ruby tests should use a directed graph (from Ruby Graph Library)
+  see http://en.wikipedia.org/wiki/Dependency_graph
+- [ ] Must be able to detect circular dependencies
+- [ ] Use an output for gnuplot
 **** TODO Correct project setup
      CLOCK: [2013-06-30 dim. 09:35]--[2013-06-30 dim. 09:48] =>  0:13
      CLOCK: [2013-05-03 ven. 11:55]--[2013-05-03 ven. 12:53] =>  0:58
