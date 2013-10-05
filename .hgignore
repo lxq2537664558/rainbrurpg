@@ -1,0 +1,8 @@
+# The global ignore file
+syntax: glob
+
+
+# services/ related
+services/configure
+services/Makefile.in
+services/src/Makefile.in
