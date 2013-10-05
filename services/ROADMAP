@@ -108,6 +108,13 @@ template<typename O> send(string serviceName, O options)
 **** Implement dependency graph in C++
      using Boost Graph Library
 - [ ] Must be fully unit tested
+- [ ] We must use 'Topological sorting' to find load order
+  see http://en.wikipedia.org/wiki/Dependency_graph#Deriving_an_evaluation_order
+  and http://en.wikipedia.org/wiki/Topological_sorting
+  then http://www.boost.org/doc/libs/1_42_0/libs/graph/doc/topological_sort.html
+  - [ ] we need a Directed Acyclic Graph
+
+
 - [ ] Implements Service
 - [ ] vector::insert can add a service just before the given iterator
 - [ ] Implements a flex/bison parser or Boost.Spirit
@@ -116,11 +123,11 @@ template<typename O> send(string serviceName, O options)
       - [ ] version = x*, x.y* or x.y.z* or x.y.z-r*
       - [ ] DEP = service_name OP version
       - [ ] DEPS = DEP or DEP;DEP;DEP
-- [ ] Implements ServiceManeger
+- [ ] Implements ServiceManager
 - [ ] const_iterator computeLoadOrder(const Service*) 
       returns the iterator of the insert() or an error
       string mLoadOrderError contains last dependency error
-**** TODO Compute load order
+**** TODO Compute load order in ruby
      CLOCK: [2012-02-18 sam. 16:36]--[2012-02-18 sam. 16:42] =>  0:06
      CLOCK: [2011-10-29 sam. 11:30]--[2011-10-29 sam. 11:43] =>  0:13
      CLOCK: [2011-10-28 ven. 10:25]--[2011-10-28 ven. 10:56] =>  0:31
@@ -129,7 +136,8 @@ template<typename O> send(string serviceName, O options)
 - [ ] Ruby tests should use a directed graph (from Ruby Graph Library)
   see http://en.wikipedia.org/wiki/Dependency_graph
 - [ ] Must be able to detect circular dependencies
-- [ ] Use an output for gnuplot
+  Maybe this method http://rdoc.info/gems/rgl/0.4.0/RGL/Graph#strongly_connected_components-instance_method
+- [ ] Use an output for graphviz
 **** TODO Correct project setup
      CLOCK: [2013-06-30 dim. 09:35]--[2013-06-30 dim. 09:48] =>  0:13
      CLOCK: [2013-05-03 ven. 11:55]--[2013-05-03 ven. 12:53] =>  0:58
