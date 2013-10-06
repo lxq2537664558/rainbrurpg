@@ -1,6 +1,8 @@
 # The global ignore file
 syntax: glob
 
+# Global
+*~
 
 # services/ related
 services/configure

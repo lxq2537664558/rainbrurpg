@@ -106,10 +106,11 @@ template<typename O> send(string serviceName, O options)
 - [ ] Could update automatically installed plugins with the use
   of Rainbrurpg's Extension Repository (a foswiki web)
 **** Implement dependency graph in C++
-     CLOCK: [2013-10-06 dim. 19:14]
+     CLOCK: [2013-10-06 dim. 19:14]--[2013-10-06 dim. 19:50] =>  0:36
      using Boost Graph Library
 - [ ] Implements a flex/bison parser or Boost.Spirit
       Maybe in a lib dependsParser
+      - [ ] Extension name must be a WikiName
       - [ ] OP are =, <, <=, >, >=
       - [ ] version = x*, x.y* or x.y.z* or x.y.z-r*
       - [ ] DEP = service_name OP version
