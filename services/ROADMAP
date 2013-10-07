@@ -106,15 +106,20 @@ template<typename O> send(string serviceName, O options)
 - [ ] Could update automatically installed plugins with the use
   of Rainbrurpg's Extension Repository (a foswiki web)
 **** Implement dependency graph in C++
+     CLOCK: [2013-10-07 lun. 10:09]--[2013-10-07 lun. 10:56] =>  0:47
      CLOCK: [2013-10-06 dim. 22:19]--[2013-10-06 dim. 23:25] =>  1:06
      CLOCK: [2013-10-06 dim. 19:14]--[2013-10-06 dim. 19:50] =>  0:36
      using Boost Graph Library
 - [ ] Implements a flex/bison parser or Boost.Spirit
       Maybe in a lib dependsParser
-      - [ ] Extension name must be a WikiName
+      We need some semantic actions : http://www.boost.org/doc/libs/1_54_0/libs/spirit/doc/html/spirit/qi/tutorials/semantic_actions.html
+      - [ ] Extension name must be a WikiWord
+	http://foswiki.org/System/WikiWord
+	How to unit test this ? Maybe a splitted grammar if possible ?
       - [ ] OP are =, <, <=, >, >=
       - [ ] version = x*, x.y* or x.y.z* or x.y.z-r*
-      - [ ] DEP = service_name OP version
+	Where x,y,z,r are one or more digit
+      - [ ] DEP = ServiceName OR service_name OP version
       - [ ] DEPS = DEP or DEP;DEP;DEP
 - [ ] Must be fully unit tested
 - [ ] We must use 'Topological sorting' to find load order

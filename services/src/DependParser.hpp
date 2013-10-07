@@ -1,43 +1,35 @@
-#include <boost/spirit/include/classic.hpp>
+#include <boost/config/warning_disable.hpp>
 #include <boost/spirit/include/qi.hpp>
 
-// see http://www.boost.org/doc/libs/1_54_0/libs/spirit/doc/html/spirit/qi/tutorials/employee___parsing_into_structs.html
+#include <iostream>
+#include <string>
+#include <vector>
 
-using namespace boost::spirit;
-
-struct depend
+namespace client
 {
-    int age;
-    std::string surname;
-    std::string forename;
-    double salary;
-};
+    namespace qi = boost::spirit::qi;
+    namespace ascii = boost::spirit::ascii;
 
-
-template <typename Iterator>
-struct depend_parser : qi::grammar<Iterator, depend(), ascii::space_type>
-{
-    depend_parser() : depend_parser::base_type(start)
+    ///////////////////////////////////////////////////////////////////////////
+    //  Our number list parser
+    ///////////////////////////////////////////////////////////////////////////
+    //[tutorial_numlist1
+    template <typename Iterator>
+    bool parse_numbers(Iterator first, Iterator last)
     {
-        using qi::int_;
-        using qi::lit;
         using qi::double_;
-        using qi::lexeme;
-        using ascii::char_;
+        using qi::phrase_parse;
+        using ascii::space;
 
-        quoted_string %= lexeme['"' >> +(char_ - '"') >> '"'];
-
-        start %=
-            lit("employee")
-            >> '{'
-            >>  int_ >> ','
-            >>  quoted_string >> ','
-            >>  quoted_string >> ','
-            >>  double_
-            >>  '}'
-            ;
+        bool r = phrase_parse(
+            first,                          /*< start iterator >*/
+            last,                           /*< end iterator >*/
+            double_ >> *(',' >> double_),   /*< the parser >*/
+            space                           /*< the skip-parser >*/
+        );
+        if (first != last) // fail if we did not get a full match
+            return false;
+        return r;
     }
-
-    qi::rule<Iterator, std::string(), ascii::space_type> quoted_string;
-    qi::rule<Iterator, depend(), ascii::space_type> start;
-};
+    //]
+}
