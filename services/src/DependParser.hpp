@@ -2,6 +2,8 @@
 #include <boost/spirit/include/qi.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 
+using namespace std;
+
 struct Date {
     int year, month, day;
 };
@@ -58,4 +60,22 @@ class DateTimeParser:
         }
         DateParser date_parser;
         TimeParser time_parser;
+};
+
+struct WikiWord {
+    char content;
+};
+BOOST_FUSION_ADAPT_STRUCT(
+    WikiWord,
+    (char, content)
+)
+
+class WikiWordParser:
+  public qi::grammar < Iterator, WikiWord()> {
+  qi::rule <Iterator, WikiWord()> main;
+  
+public:
+  WikiWordParser(): base_type(main) {
+    main %= qi::upper;
+  }
 };
