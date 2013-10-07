@@ -67,15 +67,27 @@ struct WikiWord {
 };
 BOOST_FUSION_ADAPT_STRUCT(
     WikiWord,
-    (char, content)
+    (std::string, content)
 )
 
 class WikiWordParser:
-  public qi::grammar < Iterator, WikiWord()> {
-  qi::rule <Iterator, WikiWord()> main;
-  
+  public qi::grammar < Iterator, std::string()> {
+  qi::rule <Iterator, std::string()> main;
+
+  qi::rule <Iterator, std::string()> upperLetters;
+  qi::rule <Iterator, std::string()> lowerNumLetters;
+  qi::rule <Iterator, char()> lowerNum;
+
 public:
   WikiWordParser(): base_type(main) {
-    main %= qi::upper;
+    using ascii::char_;
+
+    // from http://foswiki.org/System/WikiWord
+    main %= upperLetters >> lowerNumLetters >> upperLetters >> +qi::alnum;
+
+    upperLetters    %= +qi::upper;
+    // char to string fails !
+    lowerNumLetters %= lowerNum >> +lowerNum;
+    lowerNum        %= char_("a-z0-9"); 
   }
 };

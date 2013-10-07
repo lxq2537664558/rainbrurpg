@@ -1,5 +1,7 @@
 2013-10-07  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/DependParser.hpp (WikiWordParser): finally works correctly.
+
 	* src/DependParser.hpp (DataTimeParser): using qi and multiple
 	grammars could work.
 
