@@ -25,5 +25,4 @@ int main() {
     puts("Parse failed.");
   else
     std::cout << "WikiWord is '" << ret << "'" << std::endl; 
-  //  boost::apply_visitor(Printer(), ret);
 }
