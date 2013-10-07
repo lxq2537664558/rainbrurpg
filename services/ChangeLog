@@ -1,6 +1,9 @@
 2013-10-07  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/DependParser.hpp (parse_numbers): found a little tutorial 
+	* src/DependParser.hpp (DataTimeParser): using qi and multiple
+	grammars could work.
+
+	* src/DependParser.hpp (parse_numbers): found a little tutorial
 	that can be compiled.
 
 2013-10-06  Jérôme Pasquier  <rainbru@free.fr>

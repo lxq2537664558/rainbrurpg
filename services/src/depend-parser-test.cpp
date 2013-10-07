@@ -1,35 +1,25 @@
+#include<iostream>
+#include<cstdio>
+
 #include "DependParser.hpp"
 
-int
-main()
-{
-    std::cout << "/////////////////////////////////////////////////////////\n\n";
-    std::cout << "\t\tA comma separated list parser for Spirit...\n\n";
-    std::cout << "/////////////////////////////////////////////////////////\n\n";
-
-    std::cout << "Give me a comma separated list of numbers.\n";
-    std::cout << "Type [q or Q] to quit\n\n";
-
-    std::string str;
-    while (getline(std::cin, str))
-    {
-        if (str.empty() || str[0] == 'q' || str[0] == 'Q')
-            break;
-
-        if (client::parse_numbers(str.begin(), str.end()))
-        {
-            std::cout << "-------------------------\n";
-            std::cout << "Parsing succeeded\n";
-            std::cout << str << " Parses OK: " << std::endl;
-        }
-        else
-        {
-            std::cout << "-------------------------\n";
-            std::cout << "Parsing failed\n";
-            std::cout << "-------------------------\n";
-        }
+struct Printer : public boost::static_visitor<> {
+    void operator()(Date a) const {
+        printf("Year: %d, Month: %d, Day: %d\n", a.year, a.month, a.day);
     }
+    void operator()(Time a) const {
+        printf("Hour: %d, Minute: %d, Second: %d\n", a.hour, a.minute, a.second);
+    }
+};
 
-    std::cout << "Bye... :-) \n\n";
-    return 0;
+int main() {
+    std::string s;
+    std::getline(std::cin, s);
+    Iterator beg = s.begin(), end = s.end();
+    boost::variant<Date, Time> ret;
+    phrase_parse(beg, end, DateParser(), ascii::space, ret);
+    if (beg != end)
+        puts("Parse failed.");
+    else
+        boost::apply_visitor(Printer(), ret);
 }
