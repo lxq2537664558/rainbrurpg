@@ -1,3 +1,7 @@
+2013-10-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/DependGraph.cpp: can generate a graphiz graph.
+
 2013-10-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/DependParser.hpp (WikiWordParser): finally works correctly.

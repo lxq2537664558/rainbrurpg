@@ -106,6 +106,7 @@ template<typename O> send(string serviceName, O options)
 - [ ] Could update automatically installed plugins with the use
   of Rainbrurpg's Extension Repository (a foswiki web)
 **** TODO Implement dependency graph in C++
+     CLOCK: [2013-10-09 mer. 10:27]--[2013-10-09 mer. 12:52] =>  2:25
      CLOCK: [2013-10-07 lun. 21:21]--[2013-10-07 lun. 22:46] =>  1:25
      CLOCK: [2013-10-07 lun. 18:22]--[2013-10-07 lun. 19:17] =>  0:55
      CLOCK: [2013-10-07 lun. 10:09]--[2013-10-07 lun. 10:56] =>  0:47
