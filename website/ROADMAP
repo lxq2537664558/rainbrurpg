@@ -278,6 +278,14 @@ the patternClearHeaderLeft div.
 - [ ] In a post detail, there is soe graphical glitches
   Sidebar is drawn below article content
   grey menu is a non-styled <li>
+**** DONE Remove underscore from URLs for SEO
+     CLOCK: [2013-11-12 mar. 16:02]--[2013-11-12 mar. 16:18] =>  0:16
+     It seems underscore make troubles for SEO.
+- [X] Some pages in the wiki contain underscore (we must modify internal
+  backlinks at the same time)
+  - [X] Main/Roadmap_0_0_6 to Roadmap00x00x06
+  - [X] Roadmap00x00x07
+  - [X] Main/Rainbru_Current_Tasks (not in sitemap)
 **** DONE Fix the foswiki registration issue
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
