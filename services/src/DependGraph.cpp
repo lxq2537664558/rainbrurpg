@@ -89,5 +89,8 @@ int main()
   // Generate a png with dot
   // dot my_file.dot -Tpng -o my_fsm.png
 
+  // see http://www.boost.org/doc/libs/1_42_0/libs/graph/doc/strong_components.html
+  // To detect circular references
+
   return 0;
 }

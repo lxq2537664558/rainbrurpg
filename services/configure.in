@@ -12,7 +12,7 @@ AC_PROG_CXX
 AC_PROG_LIBTOOL
 
 # Checks for libraries.
-PKG_CHECK_MODULES([DEPENDENCIES], [guile-2.0])
+PKG_CHECK_MODULES([DEPENDENCIES], [guile-2.0  rainbrurpg-logger])
 
 # Checks for header files.
 

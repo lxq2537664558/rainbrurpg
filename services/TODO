@@ -35,3 +35,4 @@ service - GPLv3 - A service handling library.
 - Added some paper TODOs content to ROADMAP
 - Started unit tests for Dependencies parsing
 - play a bit with compute_dependencies.rb
+- Mostly worked on project setup
