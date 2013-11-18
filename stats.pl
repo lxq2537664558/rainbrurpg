@@ -3,6 +3,7 @@
 =begin
 
     Modifications:
+    - 18 nov. 2013: Added OLD/rainbrurpg/TODO to @TODOs to get correct revision number.
     - 16 dec. 2011: Some warning added when 'x items by revision' not found
       Count as a logger/ modification (TODO and ROADMAP).
 =cut
@@ -85,7 +86,7 @@ sub one_todo($)
 
 
 # one_todo "rgc";
-my @TODOs = `ls */TODO`;
+my @TODOs = `ls */TODO OLD/rainbrurpg/TODO`;
 
 my $nb_todos = @TODOs;
 foreach my $t (@TODOs)
@@ -98,11 +99,6 @@ print "Global version is $version1.$version2.$version3-$revision ";
 print "($nb_items items by revision) ";
 print "for $nb_todos subdirs\n";
 
-# Sloccount result
-print `sloccount */src/ | grep 'Total '`;
-
-# Get total file time for all */ROADMAP files
 # FT.sh should be ported to perl
-`./FT.sh`
-
-
+print `sh FT.sh`;
+print `sh SLOC.sh`;
