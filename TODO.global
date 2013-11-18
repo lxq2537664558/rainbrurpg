@@ -2,8 +2,15 @@
 
 OVERALL TODO
 
-* TODO: stats.pl fails to call sloccount */src/
-WARNING! Directory src pre-existed when adding '???'
+* TODO: release-all.sh
+- Make a complete archive containing all code from actual sub-projects
+   with a README file containing building order/instructions.
+- We have to call autoreconf&&./configure&&make dist-bzip2 for each
+   subdir
+-  call `make dist-bzip2` in each subdirs but OLD/ and create a
+   'rainbrurpg-all-src' global archive using the stats.pl version
+   number. It must first test if each directory doesn't contain
+   more than one tarball.
 
 * SPARETIME : switch to NewProjectLayout
 - client uses new logger
@@ -11,12 +18,6 @@ WARNING! Directory src pre-existed when adding '???'
 * v0.0.7
 - Website revamping (skin, blog, wiki, API documentation, maybe 
   texinfo manuals...)
-- dist.bz2.pl 
-   When client/ will officially replace rainbrurpg/, this script could
-   call `make dist-bzip2` in each subdirs but OLD/ and create a
-   'rainbrurpg-all-src' global archive using the stats.pl version
-   number. It must first test if each directory doesn't contain
-   more than one tarball.
 
 
 * Others versions...
