@@ -3,7 +3,7 @@ DIR=`pwd`
 TMP=$DIR/release-all.tmp
 
 # Please keep this list in the compilation order
-SUBP="logger client services network meta server website"
+SUBP="logger client services " #network meta server website"
 
 # Check the exit status of a command
 #   $1 the quoted exit status of the command to be tested (i.e. "$?")
@@ -16,8 +16,7 @@ function check_status
     fi
 }
 
-rm -fr $TMP
-mkdir $TMP
+rm -fr $TMP && mkdir $TMP
 
 # Create tar-bzip2 archive of all subprojects
 for i in $SUBP; do
@@ -34,4 +33,13 @@ for i in $SUBP; do
       make dist-bzip2 >> $LOG
       check_status "$?" "make dist-bzip2 failed for $PWD failed"
       mv *.tar.bz2 $TMP
+done
+
+# Decompress all archives in temp dir
+cd $TMP
+archives=`ls`
+for i in $archives; do
+    echo "Decompressing $i"
+    tar -xf $i && rm -fr $i
+    
 done
