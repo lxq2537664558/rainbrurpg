@@ -112,7 +112,13 @@ template<typename O> send(string serviceName, O options)
      CLOCK: [2013-10-07 lun. 10:09]--[2013-10-07 lun. 10:56] =>  0:47
      CLOCK: [2013-10-06 dim. 22:19]--[2013-10-06 dim. 23:25] =>  1:06
      CLOCK: [2013-10-06 dim. 19:14]--[2013-10-06 dim. 19:50] =>  0:36
+
      using Boost Graph Library
+
+- [ ] Should remove -fpermissive from src/Makefile.am :
+  *librainbrurpg_services_la_CPPFLAGS=-fpermissive $(DEPENDENCIES_CFLAGS)*
+- [ ] use C++11: because AX_CXX_COMPILE_STDCXX_11 isn't recognized
+- [ ] Update the wiki page under NewProjectLayoutServices
 - [ ] Implements a flex/bison parser or Boost.Spirit
       Maybe in a lib dependsParser
       We need some semantic actions : http://www.boost.org/doc/libs/1_54_0/libs/spirit/doc/html/spirit/qi/tutorials/semantic_actions.html
@@ -152,7 +158,7 @@ template<typename O> send(string serviceName, O options)
   Maybe this method http://rdoc.info/gems/rgl/0.4.0/RGL/Graph#strongly_connected_components-instance_method
 - [ ] Use an output for graphviz
 **** TODO Correct project setup
-     CLOCK: [2013-11-25 lun. 17:46]
+     CLOCK: [2013-11-25 lun. 17:46]--[2013-11-25 lun. 18:59] =>  1:13
      CLOCK: [2013-11-15 ven. 16:43]--[2013-11-15 ven. 17:04] =>  0:21
      CLOCK: [2013-11-15 ven. 16:23]--[2013-11-15 ven. 16:32] =>  0:09
      CLOCK: [2013-06-30 dim. 09:35]--[2013-06-30 dim. 09:48] =>  0:13
@@ -168,5 +174,3 @@ template<typename O> send(string serviceName, O options)
 - [X] generate a pkg-config file
 - [X] create a DEPENDENCIES file
 - [X] These deps should be tested by theconfigure script
-- [ ] Update the wiki page under NewProjectLayoutServices
-- [ ] use C++11

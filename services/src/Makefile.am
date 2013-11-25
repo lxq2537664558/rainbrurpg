@@ -7,6 +7,5 @@ cc_sources=main.cpp
 
 librainbrurpg_services_la_SOURCES= $(h_sources) $(cc_sources)
 
-AM_CPPFLAGS=-fpermissive
-librainbrurpg_services_la_CPPFLAGS=$(DEPENDENCIES_CFLAGS)
+librainbrurpg_services_la_CPPFLAGS=-fpermissive $(DEPENDENCIES_CFLAGS)
 librainbrurpg_services_la_LIBADD=$(DEPENDENCIES_LIBS)

@@ -3,13 +3,17 @@
 
 AC_PREREQ([2.68])
 AC_INIT([src/main.cpp])
-AM_INIT_AUTOMAKE(rainbrurpg-services, 0.0.0-0)
+AM_INIT_AUTOMAKE(rainbrurpg-services, 0.0.0-1)
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_LIBTOOL
+
+# Enable C++11
+AC_LANG_CPLUSPLUS
+AX_CXX_COMPILE_STDCXX_11
 
 # Checks for libraries.
 PKG_CHECK_MODULES([DEPENDENCIES], [guile-2.0  rainbrurpg-logger])

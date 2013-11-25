@@ -26,13 +26,5 @@ service - GPLv3 - A service handling library.
 === ChangeLog ===
    (10 items by revision)
 
-* v0.0.0-1 (28 oct 2011 - ???)
-- src/DependGraph.cpp can generate a graphiz output
-- WikiWordParser seems to work
-- Tested a bit a dependency parser in Boost.Spirit
-- Now uses autotools
-- Merged two different trees
-- Added some paper TODOs content to ROADMAP
-- Started unit tests for Dependencies parsing
-- play a bit with compute_dependencies.rb
-- Mostly worked on project setup
+* v0.0.0-2 (25 nov. 2013 - ???)
+

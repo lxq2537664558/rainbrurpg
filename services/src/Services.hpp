@@ -63,7 +63,7 @@ version()
 static SCM
 service_name(SCM name)
 {
-  scm_dynwind_begin (0);
+  scm_dynwind_begin ((scm_t_dynwind_flags)0);
   char* n = scm_to_locale_string (name);
   cout << "Plugin set Name to '"<< n << "'" << endl;
   scm_dynwind_free (n);

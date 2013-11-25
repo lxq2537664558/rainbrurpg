@@ -1,5 +1,8 @@
 2013-10-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/Makefile.am (librainbrurpg_services_la_CPPFLAGS) add the
+	-fpermissive flag due to compilation errors with guile 2.0.
+
 	* configure.in: use RB_CHECK_BOOST_GRAPH and RB_CHECK_BOOST_SPIRIT.
 	* m4/rb_boost_graph.m4 (RB_CHECK_BOOST_GRAPH): test for the usability
 	and presence of one Boost.Graph header file.
