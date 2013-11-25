@@ -1,0 +1,17 @@
+Please update http://www.rainbrurpg.org/Main/BuildingFromSources when modifying this 
+file.
+
+The following package should be installed before RainbruRPG's services library is 
+installed:
+
+* Boost.Spirit
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/
+
+* Boost.Graph
+  + homepage:
+    http://boost.org
+  + download:
+    http::/sourceforge.net/projects/boost/files/

@@ -1,5 +1,7 @@
 2013-10-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* DEPENDENCIES: newly created with a couple of Boost libraries.
+
 	* configure.in (AC_CONFIG_FILES): add rainbrurpg-services.pc to output.
 	* rainbrurpg-services.pc.in: create the input file to generate
 	a pkg-config file.
