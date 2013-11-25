@@ -1,4 +1,10 @@
-2013-10-09  Jérôme Pasquier  <rainbru@free.fr>
+2013-10-25  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.in (AC_CONFIG_FILES): add rainbrurpg-services.pc to output.
+	* rainbrurpg-services.pc.in: create the input file to generate
+	a pkg-config file.
+
+2013-10-11  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.in (PKG_CHECK_MODULES): now checks for RainbruRPG's
 	logger.

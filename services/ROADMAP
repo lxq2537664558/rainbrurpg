@@ -152,6 +152,7 @@ template<typename O> send(string serviceName, O options)
   Maybe this method http://rdoc.info/gems/rgl/0.4.0/RGL/Graph#strongly_connected_components-instance_method
 - [ ] Use an output for graphviz
 **** TODO Correct project setup
+     CLOCK: [2013-11-25 lun. 17:46]
      CLOCK: [2013-11-15 ven. 16:43]--[2013-11-15 ven. 17:04] =>  0:21
      CLOCK: [2013-11-15 ven. 16:23]--[2013-11-15 ven. 16:32] =>  0:09
      CLOCK: [2013-06-30 dim. 09:35]--[2013-06-30 dim. 09:48] =>  0:13
@@ -164,7 +165,7 @@ template<typename O> send(string serviceName, O options)
   Make symlinks real files
 - [X] all sources go in src/
   An example binary is in tools/ or examples/ and scm/ follow
-- [ ] generate a pkg-config file
+- [X] generate a pkg-config file
 - [ ] create a DEPENDENCIES file
 - [ ] Update the wiki page under NewProjectLayoutServices
 - [ ] use C++11
