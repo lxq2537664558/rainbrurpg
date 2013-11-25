@@ -167,6 +167,6 @@ template<typename O> send(string serviceName, O options)
   An example binary is in tools/ or examples/ and scm/ follow
 - [X] generate a pkg-config file
 - [X] create a DEPENDENCIES file
-- [ ] These deps should be tested by theconfigure script
+- [X] These deps should be tested by theconfigure script
 - [ ] Update the wiki page under NewProjectLayoutServices
 - [ ] use C++11

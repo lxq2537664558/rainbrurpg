@@ -1,5 +1,11 @@
 2013-10-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* configure.in: use RB_CHECK_BOOST_GRAPH and RB_CHECK_BOOST_SPIRIT.
+	* m4/rb_boost_graph.m4 (RB_CHECK_BOOST_GRAPH): test for the usability
+	and presence of one Boost.Graph header file.
+	* m4/rb_boost_spirit.m4 (RB_CHECK_BOOST_SPIRIT): test for the usability
+	and presence of one Boost.Spirit header file.
+
 	* DEPENDENCIES: newly created with a couple of Boost libraries.
 
 	* configure.in (AC_CONFIG_FILES): add rainbrurpg-services.pc to output.
