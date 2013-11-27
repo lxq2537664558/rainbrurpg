@@ -45,5 +45,6 @@ for i in $archives; do
     rm -fr $i
 done
 
-# Create archive
-tar -cjf $TMP-src.tar.bz2 rainbrurpg-$GLV
+# Create final archive
+cd $DIR
+tar -cjf $TMP-src.tar.bz2 rainbrurpg-$GLV/
