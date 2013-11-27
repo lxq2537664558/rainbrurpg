@@ -95,10 +95,26 @@ foreach my $t (@TODOs)
     one_todo $t;
 }
 
-print "Global version is $version1.$version2.$version3-$revision ";
-print "($nb_items items by revision) ";
-print "for $nb_todos subdirs\n";
+# If we have one argument
+if ($#ARGV + 1== 1){
 
-# FT.sh should be ported to perl
-print `sh FT.sh`;
-print `sh SLOC.sh`;
+    if ($ARGV[0] eq "-v" || $ARGV[0] eq "--version")
+    {
+	print "$version1.$version2.$version3-$revision";    
+    }
+    elsif ($ARGV[0] eq "-h" || $ARGV[0] eq "--help")
+    {
+	print "-h,--help    Print this help message.\n";
+	print "-v,--version Print global version and exit.\n";
+    }
+}
+else
+{
+    print "Global version is $version1.$version2.$version3-$revision ";
+    print "($nb_items items by revision) ";
+    print "for $nb_todos subdirs\n";
+
+    # FT.sh should be ported to perl
+    print `sh FT.sh`;
+    print `sh SLOC.sh`;
+}

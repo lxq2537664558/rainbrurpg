@@ -1,6 +1,7 @@
 #!/bin/bash
 DIR=`pwd`
-TMP=$DIR/release-all.tmp
+GLV=`./stats.pl -v` # Global version
+TMP=$DIR/rainbrurpg-$GLV
 
 # Please keep this list in the compilation order
 SUBP="logger client services " #network meta server website"
@@ -41,5 +42,8 @@ archives=`ls`
 for i in $archives; do
     echo "Decompressing $i"
     tar -xf $i && rm -fr $i
-    
+    rm -fr $i
 done
+
+# Create archive
+tar -cjf $TMP-src.tar.bz2 rainbrurpg-$GLV
