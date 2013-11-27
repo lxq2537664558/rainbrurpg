@@ -1,4 +1,4 @@
-noinst_PROGRAMS = encode decode
+noinst_PROGRAMS = #encode decode
 
 asn:
 	snacc -C -u /usr/include/snacc/asn1/asn-useful.asn1 RainbruRPG.asn

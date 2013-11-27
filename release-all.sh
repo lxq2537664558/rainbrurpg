@@ -4,7 +4,7 @@ GLV=`./stats.pl -v` # Global version
 TMP=$DIR/rainbrurpg-$GLV
 
 # Please keep this list in the compilation order
-SUBP="logger client services " #network meta server website"
+SUBP="logger client services network meta server website"
 
 # Check the exit status of a command
 #   $1 the quoted exit status of the command to be tested (i.e. "$?")
@@ -28,11 +28,11 @@ for i in $SUBP; do
       echo "Creating $PWD"
       rm -f *.tar.bz2 $LOG 
       autoreconf > $LOG 2> /dev/null
-      check_status "$?" "Autoreconf failed for $PWD failed"
+      check_status "$?" "Autoreconf failed for '$PWD'"
       ./configure >> $LOG
-      check_status "$?" "./configure failed for $PWD failed"
+      check_status "$?" "./configure failed for '$PWD'"
       make dist-bzip2 >> $LOG
-      check_status "$?" "make dist-bzip2 failed for $PWD failed"
+      check_status "$?" "make dist-bzip2 failed for '$PWD'"
       mv *.tar.bz2 $TMP
 done
 
