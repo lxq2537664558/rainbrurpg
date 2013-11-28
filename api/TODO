@@ -4,7 +4,7 @@ rainbrurpg-api - GPLV3 - Tools to generate RPG api documentation.
    A perl script generates Foswiki webs we can easily rsync with
    webhost :
    - We only parse C++ comments that start with '*>'
-   - We have to handle some oeg-mode styleed metatags '*> UPPER+=... '
+   - We have to handle some org-mode styled metatags '*> UPPER+=... '
       and maybe the script scope (complete directory or file)
    - How to discover C++ name in ruby and guile (for x-reference) ?
    - I don't know yet how to use subwebs :

@@ -1,4 +1,9 @@
+2013-11-28 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/genapi.pl (usage): kept from previous removed file.
+	* genapi.pl: file removed.
+
 2013-05-02 Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/genapi.pl : sources moved in src/ subdirectory.
+	* src/genapi.pl: sources moved in src/ subdirectory.
 

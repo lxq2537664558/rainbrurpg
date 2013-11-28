@@ -4,6 +4,22 @@ use strict;
 use warnings;
 use Config::Tiny;
 use genapi;
+use Pod::Usage;
+use Getopt::Std;
+
+sub usage
+{
+    pod2usage(
+	-input => 'genapi.pod',
+	-verbose => 3
+	);
+    exit 0;
+} 
+
+# declare the perl command line flags/options we want to allow
+my %options=();
+getopts("h", \%options);
+usage() if defined $options{h}; 
 
 # Reading config file
 my $config = Config::Tiny->new;
