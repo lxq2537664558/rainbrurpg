@@ -1,0 +1,13 @@
+syntax: glob
+
+# All subprojects
+*~
+*.o
+*.log
+
+# Autoconf generated files
+configure
+Makefile
+Makefile.in
+autom4te.cache
+.deps
