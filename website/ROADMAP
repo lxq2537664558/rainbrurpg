@@ -49,54 +49,41 @@
 - [X] Make the changes to online installation
 - [X] Add this walkthrough to a wiki page
 - [X] Remove local install and tests
-**** DONE Try a xml sitemap generator
-Finally found and using   http://www.neuroticweb.com/recursos/sitemap/#
-**** DONE Upgrade to Foswiki 1.1.7
-     CLOCK: [2013-02-08 ven. 15:20]--[2013-02-08 ven. 16:08] =>  0:48
-     CLOCK: [2013-02-08 ven. 14:42]--[2013-02-08 ven. 14:58] =>  0:16
-     CLOCK: [2013-02-06 mer. 20:10]--[2013-02-06 mer. 20:40] =>  0:30
-     from http://foswiki.org/Download/FoswikiRelease01x01x07#Upgrade_Instructions
-- [X] be sure installed version of CPAN:version is at least version 0.77
-- [X] Update UPGRADE_FOSWIKI.org
-- [X] The tar command is =tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.5.tgz=
-- [X] If needed create a Main/UpgradeFoswiki01x01x07 page and add
-  a link to it from Main.WebHome#Wiki history
-- [X] Maybe must update our meta plugin with new version declaration (CPAN:version)
-- [X] If we're using cache, refresh it
-- [X] Collected from local installation upgrade
-  - [X] tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.7.tgz
-    if you see several =tar: locale/zh-cn.po: Cannot utime: Permission denied=
-    it's not that important, files are overriden anyway
-  - [X] Must be added to Main.SitePreferences
-     =* Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme= in
-  - [X] Go to bin/configure and change files/directories permissions
-    chmod 0777 -R data/
-    chmod 0777 -R working/
-  - [X] Got a /Error: no such theme PatternSkinTheme/ error
-    see http://foswiki.org/Support/Question1207
-    Simply go to bin/configure and save or manually add the following in /LocalSite.cfg/
-#+BEGIN_EXAMPLE
-$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
-$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
-#+END_EXAMPLE
-  - [X] refresh cache (add ?refresh=all) to the url
-  - [X] See error in http://rainbrurpg.sourceforge.net/wiki/bin/view/Sandbox/WebHome
-**** DONE Upgrade to Foswiki 1.1.8
-     CLOCK: [2013-03-11 lun. 11:12]--[2013-03-11 lun. 11:29] =>  0:17
-
-see http://foswiki.org/Download/FoswikiRelease01x01x08
-
-- [X] We need to upgrade CPAN:version as well
-- [X] Write down a draft in UPGRADE_FOSWIKI.org
-- [X] Test locally the upgrade
-- [X] Upgrade online installation
+**** DONE Fix the foswiki registration issue
+     CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
+     CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
+     CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
+     CLOCK: [2012-05-18 ven. 13:46]--[2012-05-18 ven. 13:55] =>  0:09
+     CLOCK: [2012-05-18 ven. 11:05]--[2012-05-18 ven. 11:41] =>  0:36
+     CLOCK: [2012-05-12 sam. 17:21]--[2012-05-12 sam. 19:03] =>  1:42
+     CLOCK: [2012-05-12 sam. 15:18]--[2012-05-12 sam. 16:02] =>  0:44
+     CLOCK: [2012-05-12 sam. 12:38]--[2012-05-12 sam. 13:51] =>  1:13
+I have many spams in the foswiki installation since I enabled registration
+without sending confirmation mail.
+- [X] Create FOSWIKI_REGISTRATION.org 
+- [X] Simply test with a script from the sf.net shell
+  - [X] Sending a support ticket to sourceforge team
+  - [X] From the staff hints
+    - [X] Move scripts to cgi-bin
+    - [X] Create a script to test from a newly created website
+	  Because shell service doesn't use the correct environmant
+      - [X] Move foswiki to cgi-bin
+	   =chmod  +rx FILENAME= to be exec. by apache user
+    - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
+- [ ] Could we write email::TLS handler ?
+  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
+      I'm sure using TLS works
+    $session->net->sendEmail($text); ?
+    all is in lib/Foswiki/Net.pm :
+    _installMailHandler set $this->{mailHandler}
+    I'm not sure we can modify $session->net->sendEmail($text);
+  - [ ] configure foswiki to use registration with email confirmation
+  - [ ] Test it with a TestMail user or configure test mail function
+  - [ ] Write an explanation in a foswiki page
 **** TODO Improve foswiki
-     CLOCK: [2013-02-12 mar. 14:37]--[2013-02-12 mar. 14:48] =>  0:11
-     CLOCK: [2013-01-10 jeu. 20:43]--[2013-01-10 jeu. 20:48] =>  0:05
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
   Trying http://www.neuroticweb.com/recursos/sitemap/#  Last update : 17 dec. 2012 (47 URLs)
-- [X] Update GNU headers for 2013
 - [ ] see http://foswiki.org/Extensions/TopicTranslationsPlugin for i18n
   Set TOPICTRANSLATIONS = pt-br, en, fr
   See locally if it set correctly the HTML language (for SEO)
@@ -117,9 +104,8 @@ see http://foswiki.org/Download/FoswikiRelease01x01x08
 - [-] Bad hints from woorank
   - [X] XML sitemap is missing
   - [X] Description is missing
-  - [X] Website is too slow
-    Using foswiki cache should fix it
-  - [X] Do not use microformats
+  - [ ] Website is too slow
+  - [ ] Do not use microformats
   - [ ] W3C validity (13 errors, 1 warning)
   - [ ] Speed tips
     - [ ] We are using inline style
@@ -135,8 +121,8 @@ see http://foswiki.org/Download/FoswikiRelease01x01x08
 - [ ] http://foswiki.org/Extensions/MicroformatsPlugin could be used ?
 - [ ] May create a HackingFoswiki page
   with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
+  TLS mail stuff that do not survive an upgrade
 **** TODO Wordpress theme development
-     CLOCK: [2013-01-24 jeu. 10:37]--[2013-01-24 jeu. 10:57] =>  0:20
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
      CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
@@ -252,61 +238,44 @@ the patternClearHeaderLeft div.
 - [X] There is no 'login' link
 - [X] Switch to Wordpress 3.3.1 and upgrade plugins
 - [X] The black menu isn't correct in ie6
-  - [X] testing WP's twentyeleven skin with ie6 : it works
-  - [X] See what are the differences in CSS if it works : does not work
-  - [X] Found a post about enabling new HTML5 element in JS
-	http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
-	It presents the same bug
-    - [X] Test it in an static page with inline javascript
-    - [X] Add it in common/
-  - [X] There is a text overlapping bug again
-  - [X] The black menu hover doesn't work in ie6
+      - [X] testing WP's twentyeleven skin with ie6 : it works
+      - [X] See what are the differences in CSS if it works : does not work
+      - [X] Found a post about enabling new HTML5 element in JS
+	    http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
+	    It presents the same bug
+	    - [X] Test it in an static page with inline javascript
+            - [X] Add it in common/
+      - [X] There is a text overlapping bug again
+      - [X] The black menu hover doesn't work in ie6
 - [X] Searchbox is again misplaced (test it when logged in and out)
 - [X] Enable the RSS feed for browser that support it
 - [X] Use the Universal Edit Button feature (as RSS feed)
-- [X] Should add the "Bookmark the permalink." in single.php
-- [ ] Should add a HOWTO on installing common's menu in foswiki
+- [ ] Should add the "Bookmark the permalink." in single.php
 - [ ] HTML5 validation
 - [ ] See the checklist at http://codex.wordpress.org/Theme_Development
 - [ ] Make an 'About' page and a first post about the new website/blog
-  - [ ] Speaking about compatibility issues (KHTML and IE)
-	with a link to wiki's NewWebsiteLayout
-	as a post or a 'Compatibility notes' page
+      - [ ] Speaking about compatibility issues (KHTML and IE)
+	    with a link to wiki's NewWebsiteLayout
+	    as a post or a 'Compatibility notes' page
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-- [ ] In a post detail, there is soe graphical glitches
-  Sidebar is drawn below article content
-  grey menu is a non-styled <li>
-**** DONE Remove underscore from URLs for SEO
-     CLOCK: [2013-11-12 mar. 16:02]--[2013-11-12 mar. 16:18] =>  0:16
-     It seems underscore make troubles for SEO.
-- [X] Some pages in the wiki contain underscore (we must modify internal
-  backlinks at the same time)
-  - [X] Main/Roadmap_0_0_6 to Roadmap00x00x06
-  - [X] Roadmap00x00x07
-  - [X] Main/Rainbru_Current_Tasks (not in sitemap)
-**** DONE Fix the foswiki registration issue
-     CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
-     CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
-     CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
-     CLOCK: [2012-05-18 ven. 13:46]--[2012-05-18 ven. 13:55] =>  0:09
-     CLOCK: [2012-05-18 ven. 11:05]--[2012-05-18 ven. 11:41] =>  0:36
-     CLOCK: [2012-05-12 sam. 17:21]--[2012-05-12 sam. 19:03] =>  1:42
-     CLOCK: [2012-05-12 sam. 15:18]--[2012-05-12 sam. 16:02] =>  0:44
-     CLOCK: [2012-05-12 sam. 12:38]--[2012-05-12 sam. 13:51] =>  1:13
-I have many spams in the foswiki installation since I enabled registration
-without sending confirmation mail.
-- [X] Create FOSWIKI_REGISTRATION.org 
-- [X] Simply test with a script from the sf.net shell
-  - [X] Sending a support ticket to sourceforge team
-  - [X] From the staff hints
-    - [X] Move scripts to cgi-bin
-    - [X] Create a script to test from a newly created website
-	  Because shell service doesn't use the correct environmant
-      - [X] Move foswiki to cgi-bin
-	   =chmod  +rx FILENAME= to be exec. by apache user
-    - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
+**** TODO Upgrade foswiki to 1.1.9
+- [ ] First locally
+- [ ] Write notes about this change
+- [ ] Upgrade online version
+- [ ] Create a UpgradeFoswiki01x01x09
+- [ ] We may group all these upgrade pages in a single /WikiHistory/ page
+  Remenber to reparent all existing pages for this
+  - [ ] UpgradeFoswiki01x01x05
+  - [ ] UpgradeFoswiki01x01x07
+  - [ ] UpgradeFoswiki01x01x08
+**** Install the wordpress-powered blog
+- [ ] When installed, create a Google Analytics annotation
+- [ ] Complete the *About this blog* page (first local then online)
+- [ ] Must generate a XML sitemap and commit it to GWT and BWT
+**** Try a xml sitemap generation tool
+- [ ] in doc/XML_SITEMAP_GENERATOR.org     
 **** FosWiki pattern
 - [ ] Must replace the TopBar and the BottomBar pattern
 **** texi2html for the 'manual' link

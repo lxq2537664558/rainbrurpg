@@ -10,7 +10,13 @@
 **** May also handle Environment variables, config file...
       To know what level to output, configure Tty logger etc...
 **** handle end-user program options
-     And the --help output
+- [ ] program arguments chaining
+  Other libraries can add their own arguments
+  - [ ] The -h,--help for all program
+  - [ ] The list must be sorted for help output
+  - [ ] We must avoid duplicates, at least for short form
+    if we have multiple -h, --help and --logger-help must stay here but
+    only one -h can stay
 **** Create a ruby/qt app to handle Yaml output
      CLOCK: [2011-12-09 ven. 22:04]--[2011-12-09 ven. 22:34] =>  0:30
      CLOCK: [2011-12-09 ven. 18:23]--[2011-12-09 ven. 18:57] =>  0:34

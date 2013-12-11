@@ -3,6 +3,8 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.1
+**** A foswiki-powered DataForm-based metaserver web
+- [ ] We may have to modify robots.txt to make this web indexable
 **** Server's git-based filesystem
 - [ ] libmagic auto distribute uploaded files in the data tree
    data/

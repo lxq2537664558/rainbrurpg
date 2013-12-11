@@ -157,7 +157,7 @@ template<typename O> send(string serviceName, O options)
 - [ ] Must be able to detect circular dependencies
   Maybe this method http://rdoc.info/gems/rgl/0.4.0/RGL/Graph#strongly_connected_components-instance_method
 - [ ] Use an output for graphviz
-**** TODO Correct project setup
+**** SONE Correct project setup
      CLOCK: [2013-11-25 lun. 17:46]--[2013-11-25 lun. 18:59] =>  1:13
      CLOCK: [2013-11-15 ven. 16:43]--[2013-11-15 ven. 17:04] =>  0:21
      CLOCK: [2013-11-15 ven. 16:23]--[2013-11-15 ven. 16:32] =>  0:09
