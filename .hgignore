@@ -3,8 +3,9 @@ syntax: glob
 
 # Global
 *~
+Makefile
+Makefile.in
+autom4te.cache/*
 
 # services/ related
 services/configure
-services/Makefile.in
-services/src/Makefile.in
