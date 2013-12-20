@@ -4,7 +4,7 @@ GLV=`./stats.pl -v` # Global version
 TMP=$DIR/rainbrurpg-$GLV
 
 # Please keep this list in the compilation order
-SUBP="logger client services network meta server website"
+SUBP="logger client services " #network meta server website"
 
 # Check the exit status of a command
 #   $1 the quoted exit status of the command to be tested (i.e. "$?")
@@ -45,6 +45,30 @@ for i in $archives; do
     rm -fr $i
 done
 
+# Create a README file
+echo "Creating README file"
+cat <<EOF > README
+This is a complete archive of RainbruRPG $GLV. To be
+able to build it, you must compile and install sub-projects in this order :
+
+EOF
+
+for i in $SUBP; do
+    echo "  $i" >> README
+done
+
+cat <<EOF >> README
+
+To fully compile and install a package, you should run
+  autoreconf
+  ./configure
+  make
+  make install (as root or with sudo)
+
+For more informations, please see individual package's INSTALL file.
+EOF
+
 # Create final archive
 cd $DIR
 tar -cjf $TMP-src.tar.bz2 rainbrurpg-$GLV/
+
