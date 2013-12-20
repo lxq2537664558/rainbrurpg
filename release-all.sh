@@ -1,10 +1,11 @@
 #!/bin/bash
 DIR=`pwd`
-GLV=`./stats.pl -v` # Global version
-TMP=$DIR/rainbrurpg-$GLV
+GLV=`./stats.pl -v`      # Global version
+TMP=$DIR/rainbrurpg-$GLV # The temporary directory name
+RDM=$TMP/README          # The README path
 
 # Please keep this list in the compilation order
-SUBP="logger client services " #network meta server website"
+SUBP="logger client services network meta server website"
 
 # Check the exit status of a command
 #   $1 the quoted exit status of the command to be tested (i.e. "$?")
@@ -47,17 +48,17 @@ done
 
 # Create a README file
 echo "Creating README file"
-cat <<EOF > README
+cat <<EOF > $RDM
 This is a complete archive of RainbruRPG $GLV. To be
 able to build it, you must compile and install sub-projects in this order :
 
 EOF
 
 for i in $SUBP; do
-    echo "  $i" >> README
+    echo "  $i" >> $RDM
 done
 
-cat <<EOF >> README
+cat <<EOF >> $RDM
 
 To fully compile and install a package, you should run
   autoreconf
