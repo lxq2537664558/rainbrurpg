@@ -31,12 +31,13 @@
 - [ ] Should handle this source :
      =include = FileToAdd.txt => Web/Destination.txt=
 **** [svn:feature_ApiDoc] Find a way to document libraries API
+     CLOCK: [2014-01-07 mar. 09:28]--[2014-01-07 mar. 09:48] =>  0:20
      CLOCK: [2013-01-04 ven. 22:05]--[2013-01-04 ven. 23:11] =>  1:06
      CLOCK: [2013-01-04 ven. 20:03]--[2013-01-04 ven. 20:53] =>  0:50
 - [X] Create a Makefile clean rule 
 - [X] Create a GNU ChangeLog
+- [X] Add GNU headers to existant files
 - [ ] See how to generate documentation
 - [ ] Could we create all SWIG interface here in a single
   RainbruRPG namespace
-- [ ] Add GNU headers to existant files
 - [ ] Move TODO content here
