@@ -1,3 +1,8 @@
+2014-01-23 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/genapi.pm (validate): validates sources for doxygen files.
+	* src/genapi.pl: puts sources in a temporary array of hashes.
+
 2014-01-07 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/genapi.pm: started a switch to handle doxygen sources.

@@ -37,7 +37,8 @@ style. The key type include :
 =over
 
 =item doxygen
-A doxygen file that should generate a XML documentation.
+A directory that contains a doxygen file named B<Doxyfile.genapi> that should 
+generate a XML documentation.
 
 =item path
 The full path, and it's subdirectories will represent a documentation 

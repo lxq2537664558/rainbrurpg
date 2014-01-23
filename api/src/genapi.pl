@@ -49,13 +49,18 @@ my $root        = $config->{general}->{rpgroot};
 # Reading sources location
 open my $SRC, "genapi.src" or die "Could not open 'genapi.src': $!";
 
+my @sources = (); # An array of hashes
+
 while( my $line = <$SRC>)  {   
     $line =~ m/(.*)=(.*)/;
     my $path = $2;
     if ($root){ $path =~ s/%ROOT%/$root/g } 
-    handle_source ($1, $path);
+#    handle_source ($1, $path);
+    push @sources, { type => $1, location => $path };
 }
 close $SRC;
+
+validate(@sources);
 
 =begin
 print "Webname: $webname\n";

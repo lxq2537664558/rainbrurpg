@@ -9,6 +9,8 @@
 - [ ] Got segfault when loading library :
      (load-extension (string-append (getcwd) "/liblogger.so") "SWIG_init")
 **** TODO [svn:feature_ApiDoc] Start the apigen.pl script
+     CLOCK: [2014-01-23 jeu. 14:33]--[2014-01-23 jeu. 14:56] =>  0:23
+     CLOCK: [2014-01-23 jeu. 13:34]--[2014-01-23 jeu. 14:02] =>  0:28
      CLOCK: [2013-11-28 jeu. 17:59]--[2013-11-28 jeu. 18:09] =>  0:10
      CLOCK: [2013-04-29 lun. 18:08]--[2013-04-29 lun. 18:42] =>  0:34
      CLOCK: [2013-04-25 jeu. 13:18]--[2013-04-25 jeu. 14:13] =>  0:35
@@ -22,14 +24,21 @@
      - Then we can use  XSLT file to transform doxygen XML output to
        foswiki page.
   
-- [X] use Pod::Usage if --help or -? -h provided
-- [X] Write a DEPENDENCIES file
-- [X] Should go in src/
-- [ ] Add files needed by `automake --add-missing`
-- [ ] Write a complete pod documentation
-  use =pod2man genapi.pl |nroff -man -= to test it
+     - [X] use Pod::Usage if --help or -? -h provided
+     - [X] Write a DEPENDENCIES file
+     - [X] Should go in src/
+     - [X] Handle a validation step for genapi.cfg
+       - [X] Create a temporary array of hashes
+       - [X] We must test if *doxy* actually contains a Doxyfile.genapi file 
+     - [ ] Now in /handle_doxy/, we must launch doxygen on the 
+       Doxyfile.genapi file
+     - [ ] Add files needed by `automake --add-missing`
+     - [ ] Write a complete pod documentation
+     use =pod2man genapi.pl |nroff -man -= to test it
 - [ ] Should handle this source :
      =include = FileToAdd.txt => Web/Destination.txt=
+- [ ] Transform Doxygen's XML output to fosiki page via XSLT
+  - [ ] Generated pages are authored by /GenapiBot/
 **** [svn:feature_ApiDoc] Find a way to document libraries API
      CLOCK: [2014-01-07 mar. 09:28]--[2014-01-07 mar. 09:48] =>  0:20
      CLOCK: [2013-01-04 ven. 22:05]--[2013-01-04 ven. 23:11] =>  1:06

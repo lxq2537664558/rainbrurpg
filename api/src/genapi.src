@@ -1,4 +1,4 @@
-doxy=file.xml-or-doxyfile-to-launch
+doxy=%ROOT%/logger
 path=%ROOT%/aze
 path=%ROOT%/zer
 file=dfg

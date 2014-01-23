@@ -45,4 +45,35 @@ sub handle_doxy
     # here we have to run doxygen to handle the given file
 }
 
+# Valisate a array of sources
+sub validate
+{
+    my @tmp = @_;
+ 
+    foreach $i (@tmp)
+    {
+	use Data::Dumper;
+#	print Dumper($i);
+	my $t = $$i{'type'};
+	my $l = $$i{'location'};
+	print "$t $l\n";
+
+	switch ($t) {
+	    case m/doxy/   { validate_doxy ($l) }
+	}
+#	print "$_{'type'}\n";
+    }
+   
+}
+
+sub validate_doxy
+{
+    my $path =shift;
+    $f = "$path/Doxyfile.genapi";
+    unless (-e $f)
+    {
+	print "File not found: '$f'\n";
+	exit(1);
+    }
+}
 1;

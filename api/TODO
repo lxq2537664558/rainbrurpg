@@ -33,6 +33,7 @@ rainbrurpg-api - GPLV3 - Tools to generate RPG api documentation.
    FT is the ROADMAP file time
 
 * v0.0.0-0 (01 may 2013 - ???) SLOC ??? FT ??
+- genapi.pl now validates doxygen path location
 - Add GNU header for genapi.pl
 - Generate -h usage message for genapi.pl with Pod::Usage
 - Add some needed files
