@@ -39,6 +39,13 @@
      =include = FileToAdd.txt => Web/Destination.txt=
 - [ ] Transform Doxygen's XML output to fosiki page via XSLT
   - [ ] Generated pages are authored by /GenapiBot/
+  - [ ] To present code usage/examples in C++/ruby/guile, for foswiki,
+    we can use  varTABPANE with one tab per language and the code
+    relevant to the language in a %CODE{...}% block (need 
+    SyntaxHighlightingPlugin wich handle scheme, while 
+    DpSyntaxHighlighterPlugin doesn't support guile). The problem
+    is we have already DpSyntaxHighlighterPlugin nstalled
+    (see http://www.rainbrurpg.org/System/InstalledPlugins).
 **** [svn:feature_ApiDoc] Find a way to document libraries API
      CLOCK: [2014-01-07 mar. 09:28]--[2014-01-07 mar. 09:48] =>  0:20
      CLOCK: [2013-01-04 ven. 22:05]--[2013-01-04 ven. 23:11] =>  1:06
