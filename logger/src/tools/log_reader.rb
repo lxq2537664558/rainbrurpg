@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby1.8
+# -*- coding: utf-8 -*-
 
 # logger - The RainbruRPG's logging library.
 #
