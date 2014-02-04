@@ -261,6 +261,9 @@ the patternClearHeaderLeft div.
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
 **** TODO Upgrade foswiki to 1.1.9
+
+   see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
+
 - [ ] First locally
 - [ ] Write notes about this change
 - [ ] Upgrade online version
