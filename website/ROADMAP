@@ -4,54 +4,9 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.1
-**** DONE Correct project setup
-     CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
-     CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
-     CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
-- [X] Directory structure with README file in each dir
-  skin01/
-    INTEGRATION_TESTS
-    static/
-    blog/
-    wiki/
-    api/               /* For doxygen , texinfo, man???*/
-- [X] See if wordpress and foswiki doctype are the same
-      wordpress: <!DOCTYPE html>
-      foswiki: <!DOCTYPE html ...
-- [X] Uses automake for the `make distclean` rule
-**** DONE Starting static/ tests
-     CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
-     CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
-     CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
-<link rel="stylesheet" href="../common/skin.css" type="text/css" />
-- [X] Make integration tests with available browsers
-- [X] Must emphasis current page in menu for links -g
-- [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
-- [X] Find a way to add a AddThis.com div
-**** DONE Upgrade to Foswiki 1.1.5
-     CLOCK: [2012-11-16 ven. 15:31]--[2012-11-16 ven. 17:03] =>  1:32
-     CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
-     CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
-- [X] How to know current running release
-  go to System/WebHome; it's printed (Foswiki-1.1.2)
-     see http://foswiki.org/System/UpgradeGuide#Upgrading_to_a_new_patch_release
-- [X] Try using a Upgrade version locally
-  http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.5.tgz
-  - [X] Make the local install works
-  - [X] Create a UPGRADE_FOSWIKI_1.1.5.org file
-  - [X] Copy the contents of the upgrade tgz or zipfile onto your installation
-  - [X] Update file ownership and permissions- See SettingFileAccessRightsLinuxUnix
-  - [X] Visit bin/configure
-    - [X] Address any warnings or errors reported by the new configuration checkers
-    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
-      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
-  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
-- [X] Make the changes to online installation
-- [X] Add this walkthrough to a wiki page
-- [X] Remove local install and tests
 **** Try a xml sitemap generatot
 - [ ] in doc/XML_SITEMAP_GENERATOR.org     
-**** TODO Improve foswiki
+**** Improve foswiki
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
   Trying http://www.neuroticweb.com/recursos/sitemap/#  Last update : 17 dec. 2012 (47 URLs)
@@ -91,9 +46,9 @@
 - [ ] May create a HackingFoswiki page from Main.WebHome:wiki status||history
 - [ ] http://foswiki.org/Extensions/MicroformatsPlugin could be used ?
 - [ ] May create a HackingFoswiki page
-  with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
+  with view.rainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
   TLS mail stuff that do not survive an upgrade
-**** TODO Wordpress theme development
+**** Wordpress theme development
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
      CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
@@ -231,7 +186,61 @@ the patternClearHeaderLeft div.
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-**** TODO Fix the foswiki registration issue
+**** TODO Install  wordpress blog
+     No need for a custom theme aat this time.
+- [ ] So we can switch RainbruRPG to 0.0.6
+**** TODO Improve our foswiki installation
+     CLOCK: [2014-02-04 mar. 15:35]
+- [ ] Switch to DataForms based RoadMaps
+- [ ] Fix some sitemap.xml duplicates and add www.
+**** TODO Must upgrade online installation with Foswiki 1.1.9
+
+**** DONE Correct project setup
+     CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
+     CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
+     CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
+- [X] Directory structure with README file in each dir
+  skin01/
+    INTEGRATION_TESTS
+    static/
+    blog/
+    wiki/
+    api/               /* For doxygen , texinfo, man???*/
+- [X] See if wordpress and foswiki doctype are the same
+      wordpress: <!DOCTYPE html>
+      foswiki: <!DOCTYPE html ...
+- [X] Uses automake for the `make distclean` rule
+**** DONE Starting static/ tests
+     CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
+     CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
+     CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
+<link rel="stylesheet" href="../common/skin.css" type="text/css" />
+- [X] Make integration tests with available browsers
+- [X] Must emphasis current page in menu for links -g
+- [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
+- [X] Find a way to add a AddThis.com div
+**** DONE Upgrade to Foswiki 1.1.5
+     CLOCK: [2012-11-16 ven. 15:31]--[2012-11-16 ven. 17:03] =>  1:32
+     CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
+     CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
+- [X] How to know current running release
+  go to System/WebHome; it's printed (Foswiki-1.1.2)
+     see http://foswiki.org/System/UpgradeGuide#Upgrading_to_a_new_patch_release
+- [X] Try using a Upgrade version locally
+  http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.5.tgz
+  - [X] Make the local install works
+  - [X] Create a UPGRADE_FOSWIKI_1.1.5.org file
+  - [X] Copy the contents of the upgrade tgz or zipfile onto your installation
+  - [X] Update file ownership and permissions- See SettingFileAccessRightsLinuxUnix
+  - [X] Visit bin/configure
+    - [X] Address any warnings or errors reported by the new configuration checkers
+    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
+      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
+  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
+- [X] Make the changes to online installation
+- [X] Add this walkthrough to a wiki page
+- [X] Remove local install and tests
+**** DONE Fix the foswiki registration issue
      CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
      CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
      CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
