@@ -190,11 +190,11 @@ the patternClearHeaderLeft div.
      No need for a custom theme aat this time.
 - [ ] So we can switch RainbruRPG to 0.0.6
 **** TODO Improve our foswiki installation
-     CLOCK: [2014-02-04 mar. 15:35]
+     CLOCK: [2014-02-04 mar. 15:35]--[2014-02-04 mar. 15:47] =>  0:12
+- [X] Fix some sitemap.xml duplicates and add www.
 - [ ] Switch to DataForms based RoadMaps
-- [ ] Fix some sitemap.xml duplicates and add www.
 **** TODO Must upgrade online installation with Foswiki 1.1.9
-
+     see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
 **** DONE Correct project setup
      CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
      CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
