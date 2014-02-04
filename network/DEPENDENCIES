@@ -1,0 +1,7 @@
+The following package should be installed before rainbrurpg-network is 
+installed:
+
+* Boost.Asio 1.42 (example)
+  + homepage:
+    http://boost.org
+  + download:

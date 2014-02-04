@@ -38,6 +38,8 @@ AC_CONFIG_FILES([
    src/Makefile
    src/benchmark/Makefile
    src/proto/Makefile
+   rainbrurpg-network.pc
+
  ])
 
 AC_OUTPUT

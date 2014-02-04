@@ -6,6 +6,7 @@ rainbrurpg-network - GPLv3 - A serialization/network library.
    (6 items by revision)
 
 * v0.0.0-0 (03 nov. 2012 - ???) 
+- Finished project setup
 - Started benchmarks
 - Correct project setup
 - Created a first ROADMAP file
