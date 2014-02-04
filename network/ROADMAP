@@ -24,6 +24,10 @@
 **** We also could make benchmark against Boost.Asio and libenet
 
 **** TODO Create benchmarks for deserialization
+     CLOCK: [2014-02-04 mar. 19:55]--[2014-02-04 mar. 20:24] =>  0:29
+- [X] BSon one
+- [ ] Boost.Serialization one
+- [ ] ASN.1 one
 **** DONE Creating benchmark for serialization
      CLOCK: [2013-04-23 mar. 20:21]--[2013-04-23 mar. 20:43] =>  0:22
      CLOCK: [2013-04-22 lun. 18:00]--[2013-04-22 lun. 18:45] =>  0:45

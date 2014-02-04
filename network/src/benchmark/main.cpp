@@ -33,11 +33,22 @@
 
 #include "ASNPerson.h" 
 
+// Global vars used in deserialization
+mongo::BSONObj d_bsonobj;
+// End of global variables
+
+
 void serialize_bson(void)
 {
   mongo::BSONObjBuilder b;
   b << "name" << "Joe" << "age" << 33;
-  mongo::BSONObj p = b.obj();
+  d_bsonobj = b.obj();
+}
+
+void deserialize_bson()
+{
+  const char* str = d_bsonobj.getStringField("name"); 
+  int str2 = d_bsonobj.getIntField("age");
 }
 
 void serialize_boost(void)
@@ -79,9 +90,13 @@ void serialize_asn(void)
 int
 main()
 {
+  // Serialization
   benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
   benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
   benchmark ("Serialization", "Snacc (10 bytes)", &serialize_asn, 100);
+
+  // Deserialization
+  benchmark ("Deserialization", "BSon (28 bytes)", &deserialize_bson, 100);
 
   return 0;
 }

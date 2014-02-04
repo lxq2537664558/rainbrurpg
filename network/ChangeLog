@@ -1,3 +1,7 @@
+2014-02-04 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/main.cpp: start BSON deserialization benchmarks.
+
 2013-04-23 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/Makefile.am: snacc generate files before building.
