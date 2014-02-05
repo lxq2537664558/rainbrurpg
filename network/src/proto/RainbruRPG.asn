@@ -39,7 +39,7 @@ BEGIN
 		actionId RPGID
 	  }
 
-	-- Defines the a player issue an action that may be of interest
+	-- Defines that a player issue an action that may be of interest
 	-- for others (broadcasted)
 	--
 	-- It may concern, a move key actionned, a chat action (message sent)  

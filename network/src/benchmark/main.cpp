@@ -41,7 +41,8 @@ mongo::BSONObj d_bsonobj;
 void serialize_bson(void)
 {
   mongo::BSONObjBuilder b;
-  b << "name" << "Joe" << "age" << 33;
+  Person p("Joe", 33);
+  p.serialize(b);
   d_bsonobj = b.obj();
 }
 
@@ -53,8 +54,8 @@ void deserialize_bson()
 
 void serialize_boost(void)
 {
-  std::ofstream ifs("archive.bin");
-  boost::archive::binary_oarchive ar(ifs);
+  std::ofstream ofs("archive.bin");
+  boost::archive::binary_oarchive ar(ofs);
   Person p("Joe", 33);
   ar << p;
 

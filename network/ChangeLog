@@ -1,3 +1,9 @@
+2014-02-05 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/main.cpp (serialize_bson): uses the Person.hpp
+	BSON way.
+	* src/benchmark/Person.hpp (serialize): implements the BSON way.
+
 2014-02-04 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/main.cpp: start BSON deserialization benchmarks.

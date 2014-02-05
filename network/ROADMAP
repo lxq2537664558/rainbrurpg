@@ -29,6 +29,7 @@
 - [ ] Boost.Serialization one
 - [ ] ASN.1 one
 **** DONE Creating benchmark for serialization
+     CLOCK: [2014-02-05 mer. 12:25]--[2014-02-05 mer. 12:51] =>  0:26
      CLOCK: [2013-04-23 mar. 20:21]--[2013-04-23 mar. 20:43] =>  0:22
      CLOCK: [2013-04-22 lun. 18:00]--[2013-04-22 lun. 18:45] =>  0:45
      CLOCK: [2013-04-21 dim. 10:32]--[2013-04-21 dim. 11:20] =>  0:48
@@ -49,6 +50,7 @@
   - [X] Try ASN.1 compiler (test only in BER, only encoding supported by snacc)
     Can't compile ASN generated header due to errors.
     Maube benchmark snacc with both C/C++ output
+- [X] Must handle BSon serialization in an OO way
 **** DONE Correct project setup
      CLOCK: [2014-02-04 mar. 19:20]--[2014-02-04 mar. 19:47] =>  0:27
      CLOCK: [2013-04-19 ven. 19:32]--[2013-04-19 ven. 20:17] =>  0:45

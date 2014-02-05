@@ -21,6 +21,7 @@
  */
 
 #include <string>
+#include <mongo/db/jsobj.h>
 
 using namespace std;
 
@@ -45,8 +46,17 @@ private:
   // Allow serialization to access non-public data members.
   friend class boost::serialization::access;
 
+public:
+  void serialize(mongo::BSONObjBuilder& o )
+  {
+    o << "name" << name << "age" << age;
+  }
+  
+
+private:
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned version) {
+  void serialize(Archive& ar, const unsigned version) 
+  {
     ar & name & age;  // Simply serialize the data members of Obj
   }
 };
