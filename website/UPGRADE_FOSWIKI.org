@@ -181,4 +181,15 @@ $Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
 
 ** Troubleshooting
 
-The *Could not create file parser context for file "path": No such file or directory* error
+- The *Could not create file parser context for file "path": No such file or directory* error
+   *fixed* : Was due to MetaserverPlugin
+- System.WebHome shows version 1.1.8
+
+
+** Conclusion
+
+You must refresf the cache, adding =?refresh=all= at the end of the URL.
+
+You can see foswiki version in System.WebHome. Now it should be 1.1.8.
+All is working just fine _out of the box_ so I don't have to write a 
+*troubleshooting* section.
