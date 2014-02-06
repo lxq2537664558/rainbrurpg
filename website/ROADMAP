@@ -80,6 +80,25 @@ without sending confirmation mail.
   - [ ] configure foswiki to use registration with email confirmation
   - [ ] Test it with a TestMail user or configure test mail function
   - [ ] Write an explanation in a foswiki page
+**** DONE Upgrade foswiki to 1.1.9
+     CLOCK: [2014-02-06 jeu. 16:43]
+     CLOCK: [2014-02-06 jeu. 15:37]--[2014-02-06 jeu. 16:33] =>  0:56
+     CLOCK: [2014-02-06 jeu. 15:05]--[2014-02-06 jeu. 15:30] =>  0:25
+     CLOCK: [2014-02-06 jeu. 11:20]--[2014-02-06 jeu. 12:10] =>  0:50
+
+   see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
+
+- [X] First locally. Write notes about this change in UPGRADE_FOSWIKI
+  Must fix the *Could not create file parser context for file "path": No such file or directory* error
+  No such error when Metaserver plugin disabled
+- [X] Upgrade online version
+- [X] Create a UpgradeFoswiki01x01x09
+- [X] We may group all these upgrade pages in a single /WikiHistory/ page
+  Remenber to reparent all existing pages for this
+  - [X] RegistrationFailureIncident
+  - [X] UpgradeFoswiki01x01x05
+  - [X] UpgradeFoswiki01x01x07
+  - [X] UpgradeFoswiki01x01x08
 **** TODO Improve foswiki
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
@@ -260,22 +279,6 @@ the patternClearHeaderLeft div.
 - [ ] Should add a adsense block below sidebar
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-**** TODO Upgrade foswiki to 1.1.9
-     CLOCK: [2014-02-06 jeu. 15:05]--[2014-02-06 jeu. 15:30] =>  0:25
-     CLOCK: [2014-02-06 jeu. 11:20]--[2014-02-06 jeu. 12:10] =>  0:50
-
-   see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
-
-- [X] First locally. Write notes about this change in UPGRADE_FOSWIKI
-  Must fix the *Could not create file parser context for file "path": No such file or directory* error
-  No such error when Metaserver plugin disabled
-- [ ] Upgrade online version
-- [ ] Create a UpgradeFoswiki01x01x09
-- [ ] We may group all these upgrade pages in a single /WikiHistory/ page
-  Remenber to reparent all existing pages for this
-  - [ ] UpgradeFoswiki01x01x05
-  - [ ] UpgradeFoswiki01x01x07
-  - [ ] UpgradeFoswiki01x01x08
 **** Install the wordpress-powered blog
 - [ ] When installed, create a Google Analytics annotation
 - [ ] Complete the *About this blog* page (first local then online)
