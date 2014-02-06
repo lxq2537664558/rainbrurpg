@@ -142,3 +142,43 @@ All is working just fine _out of the box_ so I don't have to write a
 
 Test your installation : search, test sending a mail through the =configure=
 script.
+* Upgrade from Foswiki 1.1.8 to 1.1.9
+
+** Verify CPAN version's version
+Verify Version's version : (must be at least 0.77)
+=perl -Mversion -e 'print "$version::VERSION\n"'=
+If not, look at previous upgrade (1.1.7 to 1.1.8)
+
+
+** Install the upgrade package
+
+from http://foswiki.org/Download/FoswikiRelease01x01x09
+
+Put the upgrade patch in the Foswiki root directory and issue the following 
+command :
+=tar --strip-components=1 -xvzpf Foswiki-upgrade-1.1.9.tgz=
+
+*** Change directories permissions
+- Go to your bin/configure script and fix for files/directories permissions
+  I personnaly had to :
+  chmod 0777 -R pub/
+  chmod 0777 -R data/
+  chmod 0777 -R working/
+
+** Configuration upgrade
+Add This setting to Main.SitePreferences :
+   * Set PATTERNSKIN_JQUERY_THEME = PatternSkinTheme
+
+Open configure and save configuration 
+to register the new JQuery pattern theme in the configuration
+or edit the LocalSite.cfg file by hand and add
+
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;Or edit the LocalSite.cfg file by hand and add
+
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Url} = '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/PatternSkinTheme/jquery-ui.css';
+$Foswiki::cfg{JQueryPlugin}{Themes}{PatternSkinTheme}{Enabled} = 1;
+
+** Troubleshooting
+
+The *Could not create file parser context for file "path": No such file or directory* error

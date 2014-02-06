@@ -261,11 +261,13 @@ the patternClearHeaderLeft div.
 - [ ] Add /AddThis/ and /Flattr/ buttons in post detail
 - [ ] Add a spoiler in homepage (this custom theme is a work in progress)
 **** TODO Upgrade foswiki to 1.1.9
+     CLOCK: [2014-02-06 jeu. 11:20]--[2014-02-06 jeu. 12:10] =>  0:50
 
    see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
 
-- [ ] First locally
-- [ ] Write notes about this change
+- [ ] First locally. Write notes about this change in UPGRADE_FOSWIKI
+  Must fix the *Could not create file parser context for file "path": No such file or directory* error
+  No such error when Metaserver plugin disabled
 - [ ] Upgrade online version
 - [ ] Create a UpgradeFoswiki01x01x09
 - [ ] We may group all these upgrade pages in a single /WikiHistory/ page
