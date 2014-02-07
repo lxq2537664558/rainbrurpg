@@ -1,5 +1,7 @@
 2014-02-07 Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/benchmark/main.cpp (
+
 	* src/benchmark/Person.cpp: split method implementation.
 	* src/benchmark/Person.hpp: group multiple private/public groups.
 	* src/benchmark/Person.hpp: add multiple inclusion guard.

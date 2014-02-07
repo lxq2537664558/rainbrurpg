@@ -23,10 +23,11 @@
 #include "Benchmark.hpp"
 #include "Person.hpp" 
 
+#include <sstream>
 #include <mongo/db/jsobj.h>
 #include <boost/serialization/serialization.hpp>
 #include <boost/archive/binary_oarchive.hpp>
-#include <fstream>
+#include <boost/archive/binary_iarchive.hpp>
 
 #include <asn-incl.h>
 //#include <snacc/c++/asn-type.h>
@@ -35,6 +36,7 @@
 
 // Global vars used in deserialization
 mongo::BSONObj d_bsonobj;
+std::stringstream ss;
 // End of global variables
 
 
@@ -54,20 +56,17 @@ void deserialize_bson()
 
 void serialize_boost(void)
 {
-  std::ofstream ofs("archive.bin");
-  boost::archive::binary_oarchive ar(ofs);
   Person p("Joe", 33);
-  ar << p;
-
+  boost::archive::binary_oarchive oa(ss);
+  ss.clear(); ss.str(std::string()); // empty ss
+  oa << p;
 }
 
 void deserialize_boost(void)
 {
-  std::ofstream ofs("archive.bin");
-  boost::archive::binary_oarchive ar(ofs);
-  Person p("Joe", 33);
-  ar << p;
-
+  Person p;
+  boost::archive::binary_iarchive ia(ss);
+  ia >> p;
 }
 
 void serialize_asn(void)
@@ -101,12 +100,15 @@ int
 main()
 {
   // Serialization
-  benchmark ("Serialization", "BSon (28 bytes)", &serialize_bson, 100);
-  benchmark ("Serialization", "Boost (69 bytes)", &serialize_boost, 100);
-  benchmark ("Serialization", "Snacc (10 bytes)", &serialize_asn, 100);
+  benchmark ("Serialization  ", "BSon (28 bytes)", &serialize_bson, 100);
+  benchmark ("Serialization  ", "Boost (69 bytes)", &serialize_boost, 100);
+  benchmark ("Serialization  ", "Snacc (10 bytes)", &serialize_asn, 100);
+
+  std::cout << ss.str() << std::endl;
 
   // Deserialization
   benchmark ("Deserialization", "BSon (28 bytes)", &deserialize_bson, 100);
+  benchmark ("Deserialization", "Boost (69 bytes)", &deserialize_boost, 100);
 
   return 0;
 }

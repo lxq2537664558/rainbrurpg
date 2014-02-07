@@ -24,10 +24,15 @@
 **** We also could make benchmark against Boost.Asio and libenet
 
 **** TODO Create benchmarks for deserialization
-     CLOCK: [2014-02-07 ven. 10:36]
+     CLOCK: [2014-02-07 ven. 10:36]--[2014-02-07 ven. 12:05] =>  1:29
      CLOCK: [2014-02-04 mar. 19:55]--[2014-02-04 mar. 20:24] =>  0:29
 - [X] BSon one
 - [X] Update GNU headers for 2014
+- [X] Need to revamp the Boost.Serialization benchmark
+  now using a std::string for result because actually we are
+  creating the file. The speed difference between Boost and Bson/Asn
+  could be due to file access time.
+- [ ] Must fix the Boost.deserialization exception
 - [ ] Boost.Serialization one
 - [ ] ASN.1 one
 **** DONE Creating benchmark for serialization
