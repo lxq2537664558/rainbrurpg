@@ -1,9 +1,9 @@
 EXTRA_DIST=ASNPerson.asn
 noinst_PROGRAMS = benchmark
 
-headers = Benchmark.hpp
+headers = Benchmark.hpp Person.hpp
 
-sources = ASNPerson.C main.cpp
+sources = ASNPerson.C main.cpp Person.cpp
 
 benchmark_SOURCES = $(headers) $(sources)
 

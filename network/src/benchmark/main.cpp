@@ -61,6 +61,15 @@ void serialize_boost(void)
 
 }
 
+void deserialize_boost(void)
+{
+  std::ofstream ofs("archive.bin");
+  boost::archive::binary_oarchive ar(ofs);
+  Person p("Joe", 33);
+  ar << p;
+
+}
+
 void serialize_asn(void)
 {
   AsnBuf buf;

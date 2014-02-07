@@ -37,11 +37,13 @@ namespace boost {
 class Person {
 public:
   // Serialization expects the object to have a default constructor
-  Person() : name(""), age(20) {}
-  Person(const string& n, int a) : name(n), age(a) {}
-  bool operator==(const Person& o) const {
-    return name == o.name && age == o.age;
-  }
+  Person();
+  Person(const string&, int);
+  bool operator==(const Person& o) const;
+
+  void serialize(mongo::BSONObjBuilder&);
+  void deserialize(const mongo::BSONObj&);
+
 private:
   string  name;
   int age;
@@ -49,19 +51,6 @@ private:
   // Allow serialization to access non-public data members.
   friend class boost::serialization::access;
 
-public:
-  void serialize(mongo::BSONObjBuilder& o )
-  {
-    o << "name" << name << "age" << age;
-  }
-
-  void deserialize(const mongo::BSONObj& o)
-  {
-    name = o.getStringField("name"); 
-    age  = o.getIntField("age");
-  }
-
-private:
   template<typename Archive>
   void serialize(Archive& ar, const unsigned version) 
   {
@@ -69,4 +58,4 @@ private:
   }
 };
 
-#andif // _PERSON_HPP_ 
+#endif // _PERSON_HPP_ 
