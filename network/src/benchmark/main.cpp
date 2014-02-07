@@ -1,5 +1,5 @@
  /*
- *  Copyright 2006-2013 Jerome PASQUIER
+ *  Copyright 2006-2014 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -48,8 +48,8 @@ void serialize_bson(void)
 
 void deserialize_bson()
 {
-  const char* str = d_bsonobj.getStringField("name"); 
-  int str2 = d_bsonobj.getIntField("age");
+  Person p;
+  p.deserialize(d_bsonobj);
 }
 
 void serialize_boost(void)

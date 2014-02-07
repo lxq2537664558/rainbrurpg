@@ -1,3 +1,8 @@
+2014-02-07 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/Person.hpp: add multiple inclusion guard.
+	* src/benchmark/Person.hpp (deserialize): implements the BSON way.
+
 2014-02-05 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/main.cpp (serialize_bson): uses the Person.hpp

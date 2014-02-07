@@ -1,5 +1,5 @@
 /*
- *  Copyright 2006-2013 Jerome PASQUIER
+ *  Copyright 2006-2014 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *
@@ -19,6 +19,9 @@
  *  02110-1301  USA
  *
  */
+
+#ifndef _PERSON_HPP_
+#  define _PERSON_HPP_ 
 
 #include <string>
 #include <mongo/db/jsobj.h>
@@ -51,7 +54,12 @@ public:
   {
     o << "name" << name << "age" << age;
   }
-  
+
+  void deserialize(const mongo::BSONObj& o)
+  {
+    name = o.getStringField("name"); 
+    age  = o.getIntField("age");
+  }
 
 private:
   template<typename Archive>
@@ -60,3 +68,5 @@ private:
     ar & name & age;  // Simply serialize the data members of Obj
   }
 };
+
+#andif // _PERSON_HPP_ 
