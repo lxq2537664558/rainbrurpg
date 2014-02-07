@@ -25,6 +25,8 @@
 
 #include <string>
 #include <mongo/db/jsobj.h>
+#include <asn-incl.h>
+#include "ASNPerson.h" 
 
 using namespace std;
 
@@ -43,6 +45,9 @@ public:
 
   void serialize(mongo::BSONObjBuilder&);
   void deserialize(const mongo::BSONObj&);
+
+  void serialize(AsnBuf&);
+  void deserialize(AsnBuf&);
 
 private:
   string  name;

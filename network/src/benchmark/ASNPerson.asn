@@ -1,4 +1,5 @@
-BenchmarkProtocol DEFINITIONS ::= 
+BenchmarkProtocol 
+DEFINITIONS EXPLICIT TAGS::= 
 BEGIN
     ASNPerson ::= SEQUENCE
     {

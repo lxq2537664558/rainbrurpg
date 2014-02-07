@@ -21,9 +21,19 @@
   - [ ] server listen to a port and waiting for client connection
   - [ ] client connect to server and send protocol packages
     Maybe a very simple CLI interface based on verbs (using readline ?)
+**** TODO Define Which serializer/transport to use
+
+     In term of speed, see benchmarks.
+     The packets must be cross-platform, it seems Boost isn't 
+     (http://boost.2283326.n4.nabble.com/cross-platfrom-binary-serialization-td2583818.html)
+     while ASN.1 is.
+
+     *The good choice for serialization/deserialization could be ASN.1*
+
 **** We also could make benchmark against Boost.Asio and libenet
 
 **** TODO Create benchmarks for deserialization
+     CLOCK: [2014-02-07 ven. 14:24]--[2014-02-07 ven. 16:03] =>  1:39
      CLOCK: [2014-02-07 ven. 10:36]--[2014-02-07 ven. 12:05] =>  1:29
      CLOCK: [2014-02-04 mar. 19:55]--[2014-02-04 mar. 20:24] =>  0:29
 - [X] BSon one
@@ -32,9 +42,11 @@
   now using a std::string for result because actually we are
   creating the file. The speed difference between Boost and Bson/Asn
   could be due to file access time.
-- [ ] Must fix the Boost.deserialization exception
-- [ ] Boost.Serialization one
+- [X] Must fix the Boost.deserialization exception
+- [X] Boost.Serialization one
 - [ ] ASN.1 one
+  - [ ] Fix the Decoding error "wrong tag"
+  - [ ] Add error handling code
 **** DONE Creating benchmark for serialization
      CLOCK: [2014-02-05 mer. 12:25]--[2014-02-05 mer. 12:51] =>  0:26
      CLOCK: [2013-04-23 mar. 20:21]--[2013-04-23 mar. 20:43] =>  0:22
