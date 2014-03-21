@@ -33,6 +33,7 @@
 **** We also could make benchmark against Boost.Asio and libenet
 
 **** TODO Create benchmarks for deserialization
+     CLOCK: [2014-03-21 ven. 09:01]--[2014-03-21 ven. 09:56] =>  0:55
      CLOCK: [2014-02-07 ven. 14:24]--[2014-02-07 ven. 16:03] =>  1:39
      CLOCK: [2014-02-07 ven. 10:36]--[2014-02-07 ven. 12:05] =>  1:29
      CLOCK: [2014-02-04 mar. 19:55]--[2014-02-04 mar. 20:24] =>  0:29

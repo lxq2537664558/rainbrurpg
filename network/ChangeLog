@@ -1,3 +1,9 @@
+2014-03-21 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/Person.cpp: ASN.1 works using a file.
+	* src/benchmark/ASNPerson.asn: tested multiple tags declarations
+	to avoit wront tag error.
+
 2014-02-07 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/main.cpp (deserialize_asn): starting to

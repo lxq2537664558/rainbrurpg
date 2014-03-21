@@ -23,6 +23,9 @@
 #ifndef _PERSON_HPP_
 #  define _PERSON_HPP_ 
 
+// If not define, use char* buffer
+#define ASN_USE_FILE 
+
 #include <string>
 #include <mongo/db/jsobj.h>
 #include <asn-incl.h>
@@ -46,8 +49,8 @@ public:
   void serialize(mongo::BSONObjBuilder&);
   void deserialize(const mongo::BSONObj&);
 
-  void serialize(AsnBuf&);
-  void deserialize(AsnBuf&);
+  void serialize(char*);
+  void deserialize(char*);
 
 private:
   string  name;

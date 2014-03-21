@@ -31,7 +31,7 @@
 
 // Global vars used in deserialization
 mongo::BSONObj    d_bsonobj;
-AsnBuf            a_buffer;
+char              a_buffer[1024];
 std::stringstream ss;
 // End of global variables
 

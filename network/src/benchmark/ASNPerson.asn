@@ -3,7 +3,7 @@ DEFINITIONS EXPLICIT TAGS::=
 BEGIN
     ASNPerson ::= SEQUENCE
     {
-	name	GraphicString,
-	age	INTEGER(0..150)
+	name	[0] GraphicString,
+	age	    INTEGER (0..150)
     }
 END
