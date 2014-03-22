@@ -1,3 +1,8 @@
+2014-03-22 Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/benchmark/main.cpp: made some tests with lebenet packet
+	for Asn.1 serialization.
+
 2014-03-21 Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/benchmark/Person.cpp: ASN.1 works using a file.

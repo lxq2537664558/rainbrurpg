@@ -31,8 +31,18 @@
      *The good choice for serialization/deserialization could be ASN.1*
 
 **** We also could make benchmark against Boost.Asio and libenet
-
+- With enet, we could use the Channel ID to know which packet
+  to decode, for example :
+  | *Channel ID* | *Usage/Package* |
+  |            0 | Lifesign        |
+  |            1 | IM              |
+  |            2 | Move            |
+  |            3 | Action          |
+  |            4 | World edition   |
+  
 **** TODO Create benchmarks for deserialization
+     CLOCK: [2014-03-22 sam. 07:16]--[2014-03-22 sam. 07:38] =>  0:22
+     CLOCK: [2014-03-22 sam. 05:38]--[2014-03-22 sam. 06:14] =>  0:36
      CLOCK: [2014-03-21 ven. 09:01]--[2014-03-21 ven. 09:56] =>  0:55
      CLOCK: [2014-02-07 ven. 14:24]--[2014-02-07 ven. 16:03] =>  1:39
      CLOCK: [2014-02-07 ven. 10:36]--[2014-02-07 ven. 12:05] =>  1:29
@@ -45,8 +55,16 @@
   could be due to file access time.
 - [X] Must fix the Boost.deserialization exception
 - [X] Boost.Serialization one
-- [ ] ASN.1 one
-  - [ ] Fix the Decoding error "wrong tag"
+- [-] ASN.1 one
+  - [X] Fix the Decoding error "wrong tag"
+  - [ ] Since using a file works, try using a char* vector
+    or directly an enet packet using this pseudocode
+    I have a " invalid use of ‘::’" when using enet
+#+BEGIN_EXAMPLE
+enet_packet_create(data,length,flags)
+memcopy/strcopy
+enet_packet_destroy
+#+END_EXAMPLE
   - [ ] Add error handling code
 **** DONE Creating benchmark for serialization
      CLOCK: [2014-02-05 mer. 12:25]--[2014-02-05 mer. 12:51] =>  0:26

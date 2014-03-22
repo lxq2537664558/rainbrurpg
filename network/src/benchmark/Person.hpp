@@ -31,6 +31,8 @@
 #include <asn-incl.h>
 #include "ASNPerson.h" 
 
+#include <enet/enet.h>
+
 using namespace std;
 
 namespace boost {
@@ -49,8 +51,8 @@ public:
   void serialize(mongo::BSONObjBuilder&);
   void deserialize(const mongo::BSONObj&);
 
-  void serialize(char*);
-  void deserialize(char*);
+  void serialize(ENetPacket*);
+  void deserialize(ENetPacket*);
 
 private:
   string  name;

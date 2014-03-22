@@ -20,21 +20,20 @@
  *
  */
 
-#include "Benchmark.hpp"
-#include "Person.hpp" 
-
 #include <sstream>
 #include <mongo/db/jsobj.h>
 #include <boost/serialization/serialization.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
+#include "Person.hpp" 
+#include "Benchmark.hpp"
+
 // Global vars used in deserialization
 mongo::BSONObj    d_bsonobj;
-char              a_buffer[1024];
+ENetPacket*       a_buffer; // For Asn serialization
 std::stringstream ss;
 // End of global variables
-
 
 void serialize_bson(void)
 {
@@ -82,6 +81,13 @@ void deserialize_asn(void)
 int
 main()
 {
+  if (enet_initialize () != 0)
+    {
+      std::cerr << "An error occurred while initializing ENet." << std::endl;
+      return 1;
+    }
+  atexit (enet_deinitialize);
+
   // Serialization
   benchmark ("Serialization  ", "BSon (28 bytes)", &serialize_bson, 100);
   benchmark ("Serialization  ", "Boost (69 bytes)", &serialize_boost, 100);

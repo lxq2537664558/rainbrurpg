@@ -20,6 +20,9 @@
  *
  */
 
+#ifndef _BENCHMARK_HPP_
+#define _BENCHMARK_HPP_
+
 #include <sys/time.h> // use gettimeofday()
 #include <string> 
 #include <iostream>
@@ -49,3 +52,5 @@ benchmark( const string& name, const string& version, ptrfunc f, int times = 1)
        << " (soit " << mspertime << "ms per time)"
        << endl;
 }
+
+#endif // _BENCHMARK_HPP_
