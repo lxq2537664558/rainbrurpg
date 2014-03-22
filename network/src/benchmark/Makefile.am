@@ -3,7 +3,7 @@ noinst_PROGRAMS = benchmark
 
 headers = Benchmark.hpp Person.hpp
 
-sources = ASNPerson.C main.cpp Person.cpp
+sources = ASNPerson.h ASNPerson.C main.cpp Person.cpp
 
 benchmark_SOURCES = $(headers) $(sources)
 
