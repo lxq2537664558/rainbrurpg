@@ -4,10 +4,8 @@ rainbrurpg-network - GPLv3 - A serialization/network library.
 
 ==== ChangeLog ====
    (6 items by revision)
+   FT id the file time of ROADMAP
+   SLOC s the result of sloccount src after a `make distclean`
 
-* v0.0.0-0 (03 nov. 2012 - ???)
-- Started deserialization benchmark with BSon
-- Finished project setup
-- Started benchmarks
-- Correct project setup
-- Created a first ROADMAP file
+
+* v0.0.0-1 (22 Mar.2014 - ???) FT ??:?? SLOC ???

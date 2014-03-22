@@ -1,0 +1,7 @@
+* v0.0.0-0 (03 nov. 2012 - 22 Mar.2014)  FT 10:48 SLOC 197
+- Start to use libenet for Asn.1 serialization
+- Started deserialization benchmark with BSon
+- Finished project setup
+- Started benchmarks
+- Correct project setup
+- Created a first ROADMAP file
