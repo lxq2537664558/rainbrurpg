@@ -18,6 +18,7 @@
     if we have multiple -h, --help and --logger-help must stay here but
     only one -h can stay
 **** TODO Create a ruby/qt app to handle Yaml output
+     CLOCK: [2014-07-31 jeu. 14:33]--[2014-07-31 jeu. 15:21] =>  0:48
      CLOCK: [2014-07-31 jeu. 10:03]--[2014-07-31 jeu. 11:59] =>  1:56
      CLOCK: [2011-12-09 ven. 22:04]--[2011-12-09 ven. 22:34] =>  0:30
      CLOCK: [2011-12-09 ven. 18:23]--[2011-12-09 ven. 18:57] =>  0:34
@@ -36,8 +37,14 @@
   - [X] First the /Logfile/ panel
   - [X] Every message
 - [X] log_reader must use Psych to load YAML content
-- [ ] Must feed Source file combo with every filenae found on the 
-  YAML file
+- [X] May use multiple files (main_window...)
+- [ ] May correctly feed .hgignore for this subproject
+- [-] Missing implemented features
+  - [X] A log file must be a complete object, written directly by main window
+  - [X] Must feed Source file combo with every filenae found on the 
+    YAML file
+  - [ ] Add and feed a Domain combobox
+  - [ ] Create signals, slots for two combos
 - [ ] If `rbuic4' is not found by ./configure, it tries to build .ui files
   with a tool named `no'. For sure it fails.
 - [ ] Maybe use kwalify to test YAML file

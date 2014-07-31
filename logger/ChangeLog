@@ -1,4 +1,6 @@
 2014-07-31  Jérôme Pasquier  <rainbru@free.fr>
+	* src/tools/main_window.rb (feed_cbSources): feed source files combo.
+	* src/tools/log_reader.rb (open_file): now creates an abstract object.
 
 	* src/tools/log_reader.rb (parse_logfile_v1_psych): correctly
 	flatten the message arrah of hashes.

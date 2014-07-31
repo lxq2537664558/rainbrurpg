@@ -22,95 +22,12 @@ require 'Qt4'
 require 'qtuitools'
 require 'yaml'
 
-require_relative "MainWindow_ui"
 require 'Qt'
 
-NA  = "N/A"   # The 'not handled' value
-ERR = "ERROR" # The 'error' string
+require_relative 'main_window'
+require_relative 'log_file'
+require_relative 'errors'
 
-=begin rdoc
-
-An exception with the ability to show a Qt dialog and
-to continue loading.
-
-critical:: Can we continue loading the application
-error::    Is this in error state
-message::  The string message, can contain HTML tags
-title::    The dialog title
-=end
-class ErrorTrap
-  attr_accessor :error, :message, :critical, :title
-  
-  def initialize
-    @error    = false
-    @message  = ''
-    @critical = false
-    @title    = "Default dialog title"
-    @message  = ''
-  end
-
-  def show_dialog
-#    buttons=@critical ? Qt::MessageBox::Abort : (Qt::MessageBox::Ok | Qt::MessageBox::Cancel)
-    buttons= Qt::MessageBox::Ok
-    m = Qt::MessageBox.new
-    m.set_text_format( Qt::RichText ) # Needed to get HTML formatted text
-    m.set_standard_buttons(buttons)
-    m.set_window_title(@title)
-    m.set_text( @message )
-    m.set_icon( Qt::MessageBox::Warning )
-    return m.exec
-  end
-end
-
-=begin rdoc
-An error trap (i.e. Exception specialized in missing YAML nodes).
-This is not a critical error.
-=end
-class MissingNode < ErrorTrap
-  attr_accessor :nodes, :version
-  
-  def initialize
-    @nodes = Array.new
-  end
-
-  def check
-    if @error
-      @message = "The logfile is not conforming the v#{@version} format.
-The following <i>YAML</i> nodes are missing :<ul>"
-      
-      @nodes.each{|item| @message << "<li><strong>#{item}</strong>;</li>"}
-      @message = @message + "</ul>Do you want to continue ? (The missing
-nodes will be filled with <u>#{ERR}</u> text)}"
-      return show_dialog
-    end
-  end
-end
-
-# The logfile panel needed informations
-class LogfileDetails
-  attr_accessor :logfile_version, :program_name, :program_version 
-  attr_accessor :compil_date, :compil_time, :exec_date, :exec_time
-  def initialize
-    @logfile_version = NA
-    @program_name    = NA
-    @program_version = NA
-    @compil_date     = NA
-    @compil_time     = NA
-    @exec_date       = NA
-    @exec_time       = NA
-  end
-end
-
-class LineDetails
-  attr_accessor :level, :domain, :filename, :line, :message
-  def initialize
-    @level    = NA
-    @domain   = NA
-    @filename = NA
-    @line     = NA
-    @message  = NA
-  end
-end
 
 ################### 
 ## End of classes definition
@@ -135,7 +52,7 @@ def get_psych_node_content(yaml, node, subnode = nil)
   return yaml[node.to_s]
 end
 
-def parse_logfile_v1_psych(tree, window) # A YAML tree
+def parse_logfile_v1_psych(tree, logfile) # A YAML tree and a logfile object
   puts "Parsing logfile version 1 (using Psych)"
   lfd = LogfileDetails.new
   lfd.logfile_version = "1"
@@ -154,43 +71,15 @@ def parse_logfile_v1_psych(tree, window) # A YAML tree
     ld.filename = get_psych_node_content(line, :filename)
     ld.line = get_psych_node_content(line, :line)
     ld.message =  line['content'].map{ |a| a.values }.flatten.join(' ')
-    window.addLineDetails ld
+    logfile <<  ld
   end
 
-  window.setLogfileDetails(lfd)
-  return lfd
+  logfile.details = lfd
 end
 
-# an antiuated version using Sick (for Ruby 1.8)
-def parse_logfile_v1(tree, window) # A YAML tree
-=begin
-  puts "Parsing logfile version 1"
-  lfd = LogfileDetails.new
-  lfd.logfile_version = "1"
-  $missing_nodes.version=1
-  lfd.program_name = get_node_content(tree, '/program/name')
-  lfd.program_version = get_node_content(tree, '/program/version')
-  lfd.compil_date = get_node_content(tree, '/program/compil-date')
-  lfd.compil_time = get_node_content(tree, '/program/compil-time')
-  lfd.exec_date = get_node_content(tree, '/program/exec-date')
-  lfd.exec_time = get_node_content(tree, '/program/exec-time')
-  window.setLogfileDetails lfd
+def open_file(filename)
+  lf = LogFile.new
 
-  l= tree.lazy.select('/lines/*')
-  lines = l.each do |line|
-    ld = LineDetails.new
-    ld.level    =  line.select('level')[0].value
-    ld.domain   =  line.select('domain')[0].value
-    ld.filename =  line.select('filename')[0].value
-    ld.line     =  line.select('line')[0].value
-    window.addLineDetails ld
-  end
-  puts "Finished parsing logfile version 1"
-  return lfd
-=end
-end
-
-def open_file(filename, window)
   puts "Opening #{filename}..."
 
 #  log = File.open( filename, File::RDONLY )
@@ -203,55 +92,13 @@ def open_file(filename, window)
   logfile_version = yaml['logfile-version']
 
   if logfile_version == 1 then
-    parse_logfile_v1_psych(yaml, window)
+    parse_logfile_v1_psych(yaml, lf)
   else
     throw "logfile version '#{logfile_version}' not handled"
   end
+
+  return lf
 end #def open_file
-
-class MainWindow < Ui_MainWindow
-  def initialize(app)
-    super()
-    @app = app
-  end
-
-  def setLogfileDetails(lfd)
-    setLogfileDetailsValue(0, lfd.logfile_version)
-    setLogfileDetailsValue(1, lfd.program_name)
-    setLogfileDetailsValue(2, lfd.program_version)
-    setLogfileDetailsValue(3, lfd.compil_date)
-    setLogfileDetailsValue(4, lfd.compil_time)
-    setLogfileDetailsValue(5, lfd.exec_date)
-    setLogfileDetailsValue(6, lfd.exec_time)
-  end
-
-  def addLineDetails(ld)
-    row = @linesTable.rowCount
-    @linesTable.insertRow(row);
-    setLineDetails row, ld
-  end
-
-  private
-  def setLogfileDetailsValue(idx, str)
-    @logfileDetails.setItem(0, idx,  Qt::TableWidgetItem.new(str));
-  end
-  def setLineDetails(row, ld)
-    setLineDetailsValue(row, 0, ld.level)
-    setLineDetailsValue(row, 1, ld.domain)
-    setLineDetailsValue(row, 2, ld.filename)
-    setLineDetailsValueInt(row, 3, ld.line)
-    setLineDetailsValue(row, 4, ld.message)
-  end
-  def setLineDetailsValue(row, col, str)
-    @linesTable.setItem(row, col,  Qt::TableWidgetItem.new(str));
-  end
-  def setLineDetailsValueInt(row, col, str)
-    # FIXME: try to handle integer sort in table widget
-    it = Qt::TableWidgetItem.new(str.to_s)
-    it.setTextAlignment(Qt::AlignRight)
-    @linesTable.setItem(row, col, it);
-  end
-end
 
 # Check if an argument was passed to script
 if ARGV[0].nil?
@@ -267,16 +114,13 @@ end
 
 # Really launch the qt4 application
 a = Qt::Application.new(ARGV)
-window = MainWindow.new(a)
-w = Qt::MainWindow.new
-window.setupUi(w)
-
-open_file ARGV[0], window
-w.show
+logfile = open_file(ARGV[0])
+window = MainWindow.new(a, logfile)
+Qt::MainWindow.new
 a.connect(a, SIGNAL('lastWindowClosed()'), a, SLOT('quit()'))
 btn=$missing_nodes.check
 =begin
-  BUG:
+  FIXME:
   Here I deactivated the cancel button of the ErrorTrap dialog.
   Because if I try to 'exit 0', a segfault occurs and 
   everything I tried let the process in a endless loop.
@@ -284,14 +128,4 @@ btn=$missing_nodes.check
   See the ErrorTrap#show_dialog function to know how to test it.
 =end
 puts "Starting UI..."
-=begin
-  The following lines make the window application never show.
-
-unless btn == Qt::MessageBox::Ok
-  w.close
-  a.exit
-  a.emit(SIGNAL('lastWindowClosed()'))
-#  exit 0
-end
-=end
 a.exec
