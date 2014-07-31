@@ -17,7 +17,8 @@
   - [ ] We must avoid duplicates, at least for short form
     if we have multiple -h, --help and --logger-help must stay here but
     only one -h can stay
-**** Create a ruby/qt app to handle Yaml output
+**** TODO Create a ruby/qt app to handle Yaml output
+     CLOCK: [2014-07-31 jeu. 10:03]--[2014-07-31 jeu. 11:59] =>  1:56
      CLOCK: [2011-12-09 ven. 22:04]--[2011-12-09 ven. 22:34] =>  0:30
      CLOCK: [2011-12-09 ven. 18:23]--[2011-12-09 ven. 18:57] =>  0:34
      CLOCK: [2011-06-24 ven. 22:00]--[2011-06-24 ven. 22:31] =>  0:31
@@ -32,18 +33,21 @@
 - [X] Feed Logfile details dock panel with '/program' YAML node values
 - [X] Makes LoggerOutputYaml output compatible with current hard-coded parser
       Fix errors when trying to open examples/logger-test.yml
-      - [X] First the /Logfile/ panel
-      - [X] Every message
+  - [X] First the /Logfile/ panel
+  - [X] Every message
+- [X] log_reader must use Psych to load YAML content
+- [ ] Must feed Source file combo with every filenae found on the 
+  YAML file
 - [ ] If `rbuic4' is not found by ./configure, it tries to build .ui files
   with a tool named `no'. For sure it fails.
 - [ ] Maybe use kwalify to test YAML file
       see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
 - [ ] YAML output versionning
       Explain it in texinfo manual
-      - [ ] v1: platform independant infos
-      - [ ] v2: Add some platform dependant infos
-	    Process time, OS name, datetime of execution, compilation flags
-      - [ ] v3: sigsegv trap handling
+  - [ ] v1: platform independant infos
+  - [ ] v2: Add some platform dependant infos
+	Process time, OS name, datetime of execution, compilation flags
+  - [ ] v3: sigsegv trap handling
 - [ ] Should find or create a suitable property editor widget
       I can't find a suitable widget, neither in /designer/, neither
       in the API, but we can test the following URL

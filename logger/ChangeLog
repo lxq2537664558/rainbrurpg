@@ -1,3 +1,13 @@
+2014-07-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/log_reader.rb (parse_logfile_v1_psych): correctly
+	flatten the message arrah of hashes.
+	* src/tools/log_reader.rb (get_psych_node_content): now works
+	for program details.
+	* src/tools/log_reader.rb (open_file): now uses Psych.load_file.
+	* src/tools/log_reader.rb (open_file): get 'logfile-version' value
+	the Psych way.
+
 2012-05-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/examples/logger-test.cpp (main): uses new customizable values.

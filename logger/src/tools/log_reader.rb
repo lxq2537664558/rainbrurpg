@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# -*- coding: utf-8 -*-
 
 # logger - The RainbruRPG's logging library.
 #
@@ -21,11 +22,11 @@ require 'Qt4'
 require 'qtuitools'
 require 'yaml'
 
-require "MainWindow_ui"
+require_relative "MainWindow_ui"
 require 'Qt'
 
 NA  = "N/A"   # The 'not handled' value
-ERR = "ERROR" # Teh 'error' string
+ERR = "ERROR" # The 'error' string
 
 =begin rdoc
 
@@ -116,8 +117,9 @@ end
 ## Starting global variables and functions
 $missing_nodes = MissingNode.new
 
+# An old Sych version
 def get_node_content(yaml_tree, node_name)
-  node = yaml_tree.select(node_name)[0]
+#  node_idx = yaml_tree.find{|t| t.value == node_name}
   if node.nil?
     $missing_nodes.nodes << node_name
     $missing_nodes.error = true
@@ -128,7 +130,40 @@ def get_node_content(yaml_tree, node_name)
   return content
 end
 
+def get_psych_node_content(yaml, node, subnode = nil)
+  return yaml[node.to_s][subnode.to_s] unless subnode.nil?
+  return yaml[node.to_s]
+end
+
+def parse_logfile_v1_psych(tree, window) # A YAML tree
+  puts "Parsing logfile version 1 (using Psych)"
+  lfd = LogfileDetails.new
+  lfd.logfile_version = "1"
+  $missing_nodes.version=1
+  lfd.program_name = get_psych_node_content(tree, :program, :name)
+  lfd.program_version = get_psych_node_content(tree, :program, :version)
+  lfd.compil_date = get_psych_node_content(tree, :program, 'compil-date')
+  lfd.compil_time = get_psych_node_content(tree, :program, 'compil-time')
+  lfd.exec_date = get_psych_node_content(tree, :program, 'exec-date')
+  lfd.exec_time = get_psych_node_content(tree, :program, 'exec-time')
+
+  tree['lines'].each do |line|
+    ld = LineDetails.new
+    ld.level = get_psych_node_content(line, :level)
+    ld.domain = get_psych_node_content(line, :domain)
+    ld.filename = get_psych_node_content(line, :filename)
+    ld.line = get_psych_node_content(line, :line)
+    ld.message =  line['content'].map{ |a| a.values }.flatten.join(' ')
+    window.addLineDetails ld
+  end
+
+  window.setLogfileDetails(lfd)
+  return lfd
+end
+
+# an antiuated version using Sick (for Ruby 1.8)
 def parse_logfile_v1(tree, window) # A YAML tree
+=begin
   puts "Parsing logfile version 1"
   lfd = LogfileDetails.new
   lfd.logfile_version = "1"
@@ -141,7 +176,7 @@ def parse_logfile_v1(tree, window) # A YAML tree
   lfd.exec_time = get_node_content(tree, '/program/exec-time')
   window.setLogfileDetails lfd
 
-  l= tree.select('/lines/*')
+  l= tree.lazy.select('/lines/*')
   lines = l.each do |line|
     ld = LineDetails.new
     ld.level    =  line.select('level')[0].value
@@ -152,19 +187,25 @@ def parse_logfile_v1(tree, window) # A YAML tree
   end
   puts "Finished parsing logfile version 1"
   return lfd
+=end
 end
 
 def open_file(filename, window)
   puts "Opening #{filename}..."
 
-  log = File.open( filename, File::RDONLY )
-  tree = YAML::parse( log )
+#  log = File.open( filename, File::RDONLY )
+#  tree = YAML::parse( log )
 
-  logfile_version = tree.select('logfile-version')[0].value
-  if logfile_version == "1" then
-    parse_logfile_v1(tree, window)
+  yaml = Psych.load_file(filename)
+
+#  logfile_version = tree.select('logfile-version')[0].value
+
+  logfile_version = yaml['logfile-version']
+
+  if logfile_version == 1 then
+    parse_logfile_v1_psych(yaml, window)
   else
-    throw "logfile version #{logfile_version} not handled"
+    throw "logfile version '#{logfile_version}' not handled"
   end
 end #def open_file
 
@@ -198,11 +239,17 @@ class MainWindow < Ui_MainWindow
     setLineDetailsValue(row, 0, ld.level)
     setLineDetailsValue(row, 1, ld.domain)
     setLineDetailsValue(row, 2, ld.filename)
-    setLineDetailsValue(row, 3, ld.line)
+    setLineDetailsValueInt(row, 3, ld.line)
     setLineDetailsValue(row, 4, ld.message)
   end
   def setLineDetailsValue(row, col, str)
     @linesTable.setItem(row, col,  Qt::TableWidgetItem.new(str));
+  end
+  def setLineDetailsValueInt(row, col, str)
+    # FIXME: try to handle integer sort in table widget
+    it = Qt::TableWidgetItem.new(str.to_s)
+    it.setTextAlignment(Qt::AlignRight)
+    @linesTable.setItem(row, col, it);
   end
 end
 

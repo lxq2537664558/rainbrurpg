@@ -17,4 +17,5 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in and texinfo manual
 
 * v0.0.0-9 (02 may 2012 - ???) SLOC ??? FT ??:??
+- log_reader now uses Psych to read yaml
 - Makes some values customizable for server usage
