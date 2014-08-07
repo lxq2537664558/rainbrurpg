@@ -4,6 +4,7 @@
 ** v0.1.0
 *** v0.0.1
 **** [svn:feature_LoggerApi] Start to play with logger's guile bindings
+     CLOCK: [2014-08-07 jeu. 17:22]--[2014-08-07 jeu. 18:49] =>  1:27
      CLOCK: [2013-01-07 lun. 15:47]--[2013-01-07 lun. 16:26] =>  0:39
      CLOCK: [2013-01-07 lun. 13:55]--[2013-01-07 lun. 14:14] =>  0:19
 
@@ -11,7 +12,6 @@
      and libgmp3-dev.
 
 - [X] Got segfault when loading library :
-     (load-extension (string-append (getcwd) "/liblogger.so") "SWIG_init")
      Fixed adding -lboost_program_options when compilign module 
      Testing with `LD_DEBUG=all LD_DEBUG_OUTPUT=tmp.txt guile' gives hints
 #+BEGIN_EXAMPLE
@@ -21,8 +21,18 @@ cat tmp.txt.19236 |grep fatal
      19236:     ./logger.so: error: symbol lookup error: undefined symbol: _ZN5boost15program_options19options_description21m_default_line_lengthE (fatal)
 #+END_EXAMPLE
 - [X] Must test it with debian's versions (swig 1.3 + guile 1.8.7): works
-- [ ] Should use passive linkage (http://www.swig.org/Doc1.3/Guile.html#Guile_nn6)
-  Because we will have multiple modules loaded at runtime
+- [X] Should use passive linkage (logger at least use it)
+
+- [ ] First tests in logger/api (Swig 2.0.4 + guile 2.0.5)
+     (load-extension (string-append (getcwd) "/logger.so") "scm_init_rainbrurpg_logger_module")
+  or
+     (define my-so (dynamic-link "./logger.so"))
+     (dynamic-call "scm_init_rainbrurpg_logger_module" my-so) 
+
+  - [ ] should generated swig procedure documentation
+     But I got an empty .texi filex
+  - [ ] Get rid of the deprecated-declarations from guile
+
 - [ ] In normal use, a logger already exists (created by client or server
   binary). How to deal wih that
 - [ ] Must got the Makefile from automake

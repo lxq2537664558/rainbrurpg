@@ -1,7 +1,8 @@
 /* logger.i */
 %module logger
 %{
-  //  #include "../src/Logger.hpp"
-  static const int MyVariable = 21;
+
+#include "../src/Logger.hpp"
+  //static const int MyVariable = 21;
 %}
-%scheme %{ (export MyVariable) %}
+%scheme %{ (export logger) %}
