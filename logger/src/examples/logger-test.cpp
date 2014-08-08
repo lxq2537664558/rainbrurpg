@@ -43,10 +43,22 @@ main(int argc, char** argv)
   po::options_description od("Logger-test options");
   od.add_options()("test", "Just testing options chaining");
   
-  Rpg::Logger::add_program_options(od);
+  po::variables_map vm;
+
+  struct tOptionMap om;
+  om.options = &od;
+  om.map = &vm;
+  Rpg::Logger::add_program_options(om);
 
   if (Rpg::Logger::parse_program_options(argc, argv) == true)
     return 0;
+
+  if (vm.count("test")) {
+    cout << endl << "This was the test option text.";
+    
+ 
+  }
+
 
 
   LOGI("A string" << 78 << 'A');

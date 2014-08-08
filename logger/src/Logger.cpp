@@ -140,32 +140,48 @@ void Rpg::Logger::free()
   *
   */
 bool 
-Rpg::Logger::parse_program_options(int argc, char**argv, 
-				   po::variables_map* ext_vm)
+Rpg::Logger::parse_program_options(int argc, char**argv)
 {
   po::variables_map vm;
   //  po::store(po::parse_config_file("example.cfg", options), vm);
 
-  if (ext_vm != NULL)
+  // Handle external options first
+  CommandLineOptionsList::reverse_iterator it;
+  for (it = options_list.rbegin();  it != options_list.rend(); it++)
     {
-      po::store(po::parse_command_line(argc, argv, options), &ext_vm);
-      po::notify(&ext_vm);
+      /* Doesn't work
+      struct tOptionMap om = (*it);
+      po::store(po::parse_command_line(argc, argv, om.options, om.map);
+		po::notify((*(*it).map));
+      */
     }
 
+
+
+  /*  if (ext_vm != NULL)
+    {
+	po::store(po::parse_command_line(argc, argv, options), *ext_vm);
+	po::notify(*ext_vm);
+	//	cerr << "No option handlint for logger-test";
+
+    }
+  */
+
+  // Handles logger options only
   po::store(po::parse_command_line(argc, argv, options), vm);
   po::notify(vm);
-  if (vm.count("help")) {
-    cout << endl << options;
 
-    for (CommandLineOptionsList::iterator it = options_list.begin(); 
-	 it != options_list.end(); it++)
-      {
-	cout << endl << *it;
-      }
-    
+  if (vm.count("help")) 
+    {
+      cout << endl << options;
 
-    return true;
-  }
+      CommandLineOptionsList::iterator it;
+      for (it = options_list.begin();  it != options_list.end(); it++)
+	{
+	  cout << endl << (*it).options;
+	}
+      return true;
+    }
 
 }
 
@@ -285,7 +301,7 @@ void  Rpg::Logger::liblogger_initialize (void)
   liblogger_initialized = true;
 }
 
-void Rpg::Logger::add_program_options(const po::options_description& od)
+void Rpg::Logger::add_program_options(struct tOptionMap it)
 {
-  options_list.push_back(od);
+  options_list.push_back(it);
 }

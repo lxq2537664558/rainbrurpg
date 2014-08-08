@@ -11,12 +11,19 @@
       To know what level to output, configure Tty logger etc...
 **** handle end-user program options
 - [ ] program arguments chaining
+  - [ ] Tests using command_options list of struct
+    - Printing work, now we should notify external variable map
+    - Rpg::Logger::parse_program_options must handle the list of struct
+      *Doesn't work*
+
   Other libraries can add their own arguments
   - [ ] The -h,--help for all program
   - [ ] The list must be sorted for help output
   - [ ] We must avoid duplicates, at least for short form
     if we have multiple -h, --help and --logger-help must stay here but
     only one -h can stay
+
+**** Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
 **** TODO Create a ruby/qt app to handle Yaml output
      CLOCK: [2014-07-31 jeu. 14:33]--[2014-07-31 jeu. 15:21] =>  0:48
      CLOCK: [2014-07-31 jeu. 10:03]--[2014-07-31 jeu. 11:59] =>  1:56
@@ -62,7 +69,8 @@
       How to make a ruby binging for this ?
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
-**** TODO Continue Logger in src/logger
+**** DONE Continue Logger in src/logger
+     CLOCK: [2014-08-08 ven. 16:50]--[2014-08-08 ven. 17:43] =>  0:53
      CLOCK: [2014-08-08 ven. 12:20]--[2014-08-08 ven. 14:09] =>  1:49
      CLOCK: [2012-05-09 mer. 08:50]--[2012-05-09 mer. 09:09] =>  0:19
      CLOCK: [2012-05-02 mer. 09:11]--[2012-05-02 mer. 09:34] =>  0:23
@@ -161,16 +169,6 @@
 - [X] Must escape some characters with double quotes (`, :) in YAML output
 - [X] Make some vars accessor for server : log Logfilename, program name, version
 - [X] Found a bug that makes the console black on exit
-- [-] Must update texinfo for v1 YAML output
+- [X] Must update texinfo for v1 YAML output
   - [X] Makes the manual logger-related (actually an autoproject skeleton)
-  - [ ] Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
-  - [ ] Can we import doxygen documentation to texinfo
-- [ ] src/example/logger-test does not handle commandline options correctly
-  - [ ] Using command_options list
-    - Printing work, now we should notify external variable map
-    -  Rpg::Logger::parse_program_options must handle ext_vm
-  - [ ] logger should handle arguments chaining
-    Could we add multiple options_description objects?
-    From a LIFO object so the last added option is handled first
- 
-- [ ] Must change dist-bzip2 name to rainbrurpg-logger
+- [X] Must change dist-bzip2 name to rainbrurpg-logger

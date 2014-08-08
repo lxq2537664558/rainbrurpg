@@ -64,6 +64,13 @@ namespace po = boost::program_options;
 namespace Rpg
 {
 
+  struct tOptionMap
+  {
+    po::options_description* options;
+    po::variables_map*       map;
+  };
+
+
   /** Defines the logtype */
   enum LogType{ 
     LT_FILE,  //!< Log output in a file
@@ -76,7 +83,7 @@ namespace Rpg
   /// The LoggerOutput predefined iterator
   typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
 
-  typedef list<po::options_description> CommandLineOptionsList;
+  typedef list<struct tOptionMap> CommandLineOptionsList;
 
   /** The logger class
     *
@@ -101,9 +108,8 @@ namespace Rpg
 		     const string& compil_time = __TIME__);
     static void free();
 
-    static bool parse_program_options(int, char**, 
-				      po::variables_map* ext_vm= NULL);
-    static void add_program_options(const po::options_description&);
+    static bool parse_program_options(int, char**);
+    static void add_program_options(struct tOptionMap);
     
     Logger& startLog(LogLevel, const string&, const string&);
     void endLog();

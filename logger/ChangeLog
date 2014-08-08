@@ -1,5 +1,8 @@
 2014-08-08  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/Logger.cpp (parse_program_options): several try for the
+	program options chaining failed.
+
 	* configure.ac: renamed and some modifications to make autoconf 2.69
 	happy.
 
