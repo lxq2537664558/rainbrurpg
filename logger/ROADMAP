@@ -63,6 +63,7 @@
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
 **** TODO Continue Logger in src/logger
+     CLOCK: [2014-08-08 ven. 12:20]--[2014-08-08 ven. 14:09] =>  1:49
      CLOCK: [2012-05-09 mer. 08:50]--[2012-05-09 mer. 09:09] =>  0:19
      CLOCK: [2012-05-02 mer. 09:11]--[2012-05-02 mer. 09:34] =>  0:23
      CLOCK: [2012-05-02 mer. 08:02]--[2012-05-02 mer. 08:43] =>  0:41
@@ -165,4 +166,11 @@
   - [ ] Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
   - [ ] Can we import doxygen documentation to texinfo
 - [ ] src/example/logger-test does not handle commandline options correctly
+  - [ ] Using command_options list
+    - Printing work, now we should notify external variable map
+    -  Rpg::Logger::parse_program_options must handle ext_vm
+  - [ ] logger should handle arguments chaining
+    Could we add multiple options_description objects?
+    From a LIFO object so the last added option is handled first
+ 
 - [ ] Must change dist-bzip2 name to rainbrurpg-logger

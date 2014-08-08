@@ -6,5 +6,5 @@ logger_test_HEADERS=Point.hpp
 
 logger_test_SOURCES=logger-test.cpp Point.cpp
 
-INCLUDES=-I../
+AM_CPPFLAGS=-I../
 logger_test_LDADD=-L../ -lrainbrurpg-logger -lboost_program_options

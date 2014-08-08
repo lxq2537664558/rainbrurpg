@@ -1,3 +1,8 @@
+2014-08-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.ac: renamed and some modifications to make autoconf 2.69
+	happy.
+
 2014-07-31  Jérôme Pasquier  <rainbru@free.fr>
 	* src/tools/main_window.rb (feed_cbSources): feed source files combo.
 	* src/tools/log_reader.rb (open_file): now creates an abstract object.

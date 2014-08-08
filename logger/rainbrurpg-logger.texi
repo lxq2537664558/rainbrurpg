@@ -94,7 +94,7 @@ command line options and main features.
 
 @node Copying, Overview, Instructions, Top
 @chapter Copying
-@include gpl.texinfo
+@include gpl.texi
 
 @node Overview, Sample, Copying, Top
 @chapter Overview

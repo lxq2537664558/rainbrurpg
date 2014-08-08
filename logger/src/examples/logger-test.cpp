@@ -24,6 +24,10 @@
 #include <Logger.hpp>
 #include <Point.hpp>
 
+#include <boost/program_options.hpp>
+namespace po = boost::program_options;
+
+
 using namespace std;
 using namespace boost;
 // using namespace rpg;
@@ -34,7 +38,15 @@ int
 main(int argc, char** argv)
 {
   Rpg::Logger::init("logger-test", "1.0", "logger-test");
-  Rpg::Logger::parse_program_options(argc, argv);
+
+  // Testing program option chaining
+  po::options_description od("Logger-test options");
+  od.add_options()("test", "Just testing options chaining");
+  
+  Rpg::Logger::add_program_options(od);
+
+  if (Rpg::Logger::parse_program_options(argc, argv) == true)
+    return 0;
 
 
   LOGI("A string" << 78 << 'A');

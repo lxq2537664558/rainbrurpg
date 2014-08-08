@@ -76,6 +76,8 @@ namespace Rpg
   /// The LoggerOutput predefined iterator
   typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
 
+  typedef list<po::options_description> CommandLineOptionsList;
+
   /** The logger class
     *
     * This is the central, and only *needed* class in this library.
@@ -98,7 +100,10 @@ namespace Rpg
 		     const string& compil_date = __DATE__, 
 		     const string& compil_time = __TIME__);
     static void free();
-    static bool parse_program_options(int, char**);
+
+    static bool parse_program_options(int, char**, 
+				      po::variables_map* ext_vm= NULL);
+    static void add_program_options(const po::options_description&);
     
     Logger& startLog(LogLevel, const string&, const string&);
     void endLog();
@@ -135,6 +140,7 @@ namespace Rpg
     static LoggerOutputList mOutputList;    //!< The list of LoggerOutput
     static LoggerOutput *l1, *l2, *l3;      //!< The content of the list
     static po::options_description options; //!< Used to parse command-line args
+    static CommandLineOptionsList options_list;    // Modifiable po list
 
     static bool liblogger_initialized;      //!< gettext initialization flag
   };

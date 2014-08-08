@@ -21,8 +21,8 @@ EXTRA_DIST = config.rpath 		\
 #TESTS=chk
 
 #  build and install the .info pages
-info_TEXINFOS = rainbrurpg-logger.texinfo
-logger_TEXINFOS = gpl.texinfo
+info_TEXINFOS = rainbrurpg-logger.texi
+logger_TEXINFOS = gpl.texi
 
 # pkg-config file
 pkgconfigdir = $(libdir)/pkgconfig

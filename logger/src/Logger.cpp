@@ -42,6 +42,7 @@
 Rpg::LoggerOutputList Rpg::Logger::mOutputList;
 Rpg::LoggerOutput *Rpg::Logger::l1, *Rpg::Logger::l2, *Rpg::Logger::l3;
 po::options_description Rpg::Logger::options("Logger options");
+Rpg::CommandLineOptionsList Rpg::Logger::options_list;
 bool Rpg::Logger::liblogger_initialized = false;
 // End of static data members initialization
 
@@ -106,7 +107,6 @@ Rpg::Logger::init(const string& vAppName, const string& vAppVersion,
 
   options.add_options()
     ("help,?", _("produce a help message"))
-    //    ("compression", po::value<int>(), _("set compression level"))
     ("version,V", _("output the version number"))
     ;
 }
@@ -134,17 +134,39 @@ void Rpg::Logger::free()
   *
   * \param argc Number of options
   * \param argv The arguments array
+  * \ param ext_vm An extern variable map (may be NULL)
   *
   * \return \c true if program must exit, otherwise, return \c false
   *
   */
 bool 
-Rpg::Logger::parse_program_options(int argc, char**argv)
+Rpg::Logger::parse_program_options(int argc, char**argv, 
+				   po::variables_map* ext_vm)
 {
   po::variables_map vm;
-  po::store(po::parse_command_line(argc, argv, options), vm);
   //  po::store(po::parse_config_file("example.cfg", options), vm);
+
+  if (ext_vm != NULL)
+    {
+      po::store(po::parse_command_line(argc, argv, options), &ext_vm);
+      po::notify(&ext_vm);
+    }
+
+  po::store(po::parse_command_line(argc, argv, options), vm);
   po::notify(vm);
+  if (vm.count("help")) {
+    cout << endl << options;
+
+    for (CommandLineOptionsList::iterator it = options_list.begin(); 
+	 it != options_list.end(); it++)
+      {
+	cout << endl << *it;
+      }
+    
+
+    return true;
+  }
+
 }
 
 /** Start a log line
@@ -261,4 +283,9 @@ void  Rpg::Logger::liblogger_initialize (void)
 {
   bindtextdomain (PACKAGE, LOCALEDIR);
   liblogger_initialized = true;
+}
+
+void Rpg::Logger::add_program_options(const po::options_description& od)
+{
+  options_list.push_back(od);
 }

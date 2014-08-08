@@ -35,7 +35,7 @@ library_include_HEADERS = $(h_sources)
 
 librainbrurpg_logger_la_INCLUDES = -I$(top_srcdir) 
 
-INCLUDES= 
+AM_CPPFLAGS= 
 
 librainbrurpg_logger_la_SOURCES= $(h_sources) $(cc_sources)
 
