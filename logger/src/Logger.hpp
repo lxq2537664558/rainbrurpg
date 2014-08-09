@@ -34,8 +34,7 @@
 #include "LoggerOutput.hpp"
 
 using namespace std;
-
-namespace po = boost::program_options;
+using namespace boost::program_options;
 
 /// A macro used to fix a __LINE__ bug
 #define STRINGIFY(x) #x
@@ -134,7 +133,7 @@ namespace Rpg
     
     static LoggerOutputList mOutputList;    //!< The list of LoggerOutput
     static LoggerOutput *l1, *l2, *l3;      //!< The content of the list
-    static po::options_description options; //!< Used to parse command-line args
+    static options_description options; //!< Used to parse command-line args
 
     static bool liblogger_initialized;      //!< gettext initialization flag
   };

@@ -41,7 +41,7 @@
 // Static data members initialization
 Rpg::LoggerOutputList Rpg::Logger::mOutputList;
 Rpg::LoggerOutput *Rpg::Logger::l1, *Rpg::Logger::l2, *Rpg::Logger::l3;
-po::options_description Rpg::Logger::options("Logger options");
+options_description Rpg::Logger::options("Logger options");
 bool Rpg::Logger::liblogger_initialized = false;
 // End of static data members initialization
 
@@ -106,7 +106,7 @@ Rpg::Logger::init(const string& vAppName, const string& vAppVersion,
 
   options.add_options()
     ("help,?", _("produce a help message"))
-    //    ("compression", po::value<int>(), _("set compression level"))
+    //    ("compression", value<int>(), _("set compression level"))
     ("version,V", _("output the version number"))
     ;
 }
@@ -141,10 +141,10 @@ void Rpg::Logger::free()
 bool 
 Rpg::Logger::parse_program_options(int argc, char**argv)
 {
-  po::variables_map vm;
-  po::store(po::parse_command_line(argc, argv, options), vm);
-  //  po::store(po::parse_config_file("example.cfg", options), vm);
-  po::notify(vm);
+  variables_map vm;
+  store(parse_command_line(argc, argv, options), vm);
+  //  store(parse_config_file("example.cfg", options), vm);
+  notify(vm);
 }
 
 /** Start a log line
