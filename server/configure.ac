@@ -1,11 +1,13 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
+
 AC_PREREQ([2.67])
-AC_INIT(rainbrurpg-server, 0.0.0-0, rainbru@users.sourceforge.net)
-dnl Every other copy of the package version number gets its value from here
-AM_INIT_AUTOMAKE(rainbrurpg-server, 0.0.0)
-dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
+
+AC_INIT([rainbrurpg-server], [0.0.0-0], [rainbru@users.sourceforge.net])
+AC_CONFIG_SRCDIR([src/main.cpp])
+AM_INIT_AUTOMAKE
+
 AM_CONFIG_HEADER(config.h)
 #AC_INIT(src/main.cpp)
 #AM_INIT_AUTOMAKE(rainbrurpg-server,0.0.0-0,[rainbru@users.sourceforge.net])

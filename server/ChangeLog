@@ -1,3 +1,8 @@
+2014-08-12  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/server_ctl: starts to implement command map.
+	* configure.ac (AC_INIT): modernized call.
+
 2012-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/server_ctl/main.cpp (main): add a basic auto
