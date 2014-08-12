@@ -1,12 +1,13 @@
 
 OPTS = -Wno-deprecated
+SO   = rainbrurpg-logger-guile.so
 
 all: guile
 
 guile:
 	swig -c++ -guile -Linkage module -package rainbrurpg -procdoc logger.texi -procdocformat texinfo logger.i
 	g++ -c -fPIC $(OPTS) logger_wrap.cxx `guile-config compile`
-	g++ -shared -fPIC $(OPTS) logger_wrap.o ../src/.libs/*.o -o logger.so -lboost_program_options
+	g++ -shared -fPIC $(OPTS) logger_wrap.o ../src/.libs/*.o -o $(SO) -lboost_program_options
 
 install: install-guile
 
