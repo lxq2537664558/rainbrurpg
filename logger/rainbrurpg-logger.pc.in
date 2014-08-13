@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: RainbruRPG logger
 Description: The RainbruRPG's stream-oriented multi-output logging library
 Version: @VERSION@
-Libs: -L${libdir} -lrainbrurpg-@PACKAGE@
-Cflags: -I${includedir}/rainbrurpg/@PACKAGE@
+Libs: -L${libdir} -l@PACKAGE@
+Cflags: -I${includedir}/rainbrurpg/logger/
