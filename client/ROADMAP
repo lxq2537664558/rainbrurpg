@@ -32,7 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
-     CLOCK: [2014-08-13 mer. 17:30]
+     CLOCK: [2014-08-13 mer. 17:30]--[2014-08-13 mer. 18:17] =>  0:47
      CLOCK: [2013-04-19 ven. 20:59]--[2013-04-19 ven. 21:23] =>  0:24
      CLOCK: [2013-01-10 jeu. 20:31]--[2013-01-10 jeu. 20:40] =>  0:09
      CLOCK: [2012-12-29 sam. 13:13]--[2012-12-29 sam. 13:33] =>  0:20
@@ -43,7 +43,7 @@
 - [X] Uses rainbrurpg-logger (with pkg-config)
 - [X] Update GNU headers date for 2013
 - [X] Rename binary to rainbrurpg-client
-- [ ] Should modernize automake files
+- [X] Should modernize automake files
 - [ ] May update GNU headers data
 - [ ] Add a terrain
   see http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Basic+Tutorial+3

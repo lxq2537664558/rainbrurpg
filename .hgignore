@@ -25,6 +25,15 @@ stamp-h1
 # release-all logs
 log-release-all-network.log
 
+# client/ related
+client/client.lsm
+client/client.spec
+client/compile
+client/src/Ogre.log
+client/src/rainbrurpg-client
+client/src/rainbrurpg-client.log
+client/src/rainbrurpg-client.yml
+
 # services/ related
 
 # network/ related
