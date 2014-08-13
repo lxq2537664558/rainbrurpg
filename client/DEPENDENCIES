@@ -13,3 +13,6 @@ The following package should be installed before RainbruRPG is installed:
     http::/sourceforge.net/projects/wgois/
   + download:
     http::/sourceforge.net/projects/wgois/files/
+
+* Boost 1.55
+  + Needed

@@ -84,7 +84,7 @@ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
-	$(top_srcdir)/configure.in
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -282,7 +282,7 @@ headers = GameEngine.hpp TutorialApplication.h
 sources = main.cpp GameEngine.cpp
 rainbrurpg_client_SOURCES = $(headers) $(sources)
 rainbrurpg_client_CPPFLAGS = $(DEPS_CFLAGS)
-rainbrurpg_client_LDADD = $(DEPS_LIBS)
+rainbrurpg_client_LDADD = $(DEPS_LIBS) -lboost_system
 all: all-am
 
 .SUFFIXES:

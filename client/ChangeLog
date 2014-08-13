@@ -1,3 +1,8 @@
+2014-09-13  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.ac: renamed from configure.in and modernized automake
+	init.
+
 2013-04-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/plugins.cfg: fix path to plugins to make the window open.

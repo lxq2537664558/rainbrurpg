@@ -1,8 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(src/main.cpp)
-dnl Every other copy of the package version number gets its value from here
-AM_INIT_AUTOMAKE(rainbrurpg-client, 0.0.0-1)
+AC_INIT([rainbrurpg-client], [0.0.0-1], [rainbru@users.sourceforge.net])
+AC_CONFIG_SRCDIR([src/main.cpp])
+AM_INIT_AUTOMAKE
+
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)

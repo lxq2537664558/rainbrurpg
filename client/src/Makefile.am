@@ -7,4 +7,4 @@ sources = main.cpp GameEngine.cpp
 rainbrurpg_client_SOURCES = $(headers) $(sources)
 
 rainbrurpg_client_CPPFLAGS = $(DEPS_CFLAGS)
-rainbrurpg_client_LDADD = $(DEPS_LIBS)
+rainbrurpg_client_LDADD = $(DEPS_LIBS) -lboost_system
