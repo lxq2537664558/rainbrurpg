@@ -1,5 +1,8 @@
 2014-09-17  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/GameEnginer.cpp (setupResources): take an extra argument
+	which lad only the named section.
+
 	* client.texi: renamed from client.texinfo.
 
 2014-09-13  Jérôme Pasquier  <rainbru@free.fr>

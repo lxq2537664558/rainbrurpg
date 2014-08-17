@@ -21,6 +21,8 @@
 #ifndef _GAME_ENGINE_HPP_
 #define _GAME_ENGINE_HPP_
 
+#include <string>
+
 #include <OgreFrameListener.h>
 #include <OgreRenderWindow.h>
 
@@ -32,7 +34,7 @@ public:
 
 protected:
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
-  void setupResources(void);
+  void setupResources(const std::string&);
 
 private:
   Ogre::RenderWindow* mWindow;

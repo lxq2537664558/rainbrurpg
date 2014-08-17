@@ -19,11 +19,15 @@
  */
 
 #include "GameEngine.hpp"
-//#include "Logger.hpp"
+#include "Logger.hpp"
+
+#include <iostream>
 
 #include <Ogre.h>
 
 using namespace Ogre;
+
+static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 GameEngine::GameEngine(void):
   mResourcesCfg("resources.cfg")
@@ -31,21 +35,24 @@ GameEngine::GameEngine(void):
 
   //  log("Starting Ogre::Root");
   Root* mRoot = new Root();
-  setupResources();
+  setupResources("Bootstrap");
   if (mRoot->showConfigDialog())
     {
       //    log("Creating rendering window");
       mWindow = mRoot->initialise(true, "RainbruRPG");
       
       // Create the SceneManager, in this case a generic one
-      SceneManager* mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
-      
+      SceneManager* mSceneMgr = mRoot->
+	createSceneManager(ST_GENERIC, "ExampleSMInstance");
+
+      setupResources("General");
       SceneNode* headNode = mSceneMgr->getRootSceneNode()
 	->createChildSceneNode("HeadNode");
 
       Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
       headNode->attachObject(ogreHead);
       
+   
       // Create the camera
       Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
       
@@ -67,6 +74,7 @@ GameEngine::GameEngine(void):
 
       mRoot->addFrameListener(this);
       mRoot->startRendering();
+
     }
 
 }
@@ -79,7 +87,7 @@ bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
     return true;
 }
 
-void GameEngine::setupResources(void)
+void GameEngine::setupResources(const std::string& section)
 {
     // Load resource paths from config file
     Ogre::ConfigFile cf;
@@ -92,14 +100,20 @@ void GameEngine::setupResources(void)
     while (seci.hasMoreElements())
     {
         secName = seci.peekNextKey();
-        Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
-        Ogre::ConfigFile::SettingsMultiMap::iterator i;
-        for (i = settings->begin(); i != settings->end(); ++i)
-        {
-            typeName = i->first;
-            archName = i->second;
-            Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
-                archName, typeName, secName);
-        }
+  
+	Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
+	if (secName == section)
+	  {
+	    LOGI("resources section name match" << secName << "... loading.");
+	
+	    Ogre::ConfigFile::SettingsMultiMap::iterator i;
+	    for (i = settings->begin(); i != settings->end(); ++i)
+	      {
+		typeName = i->first;
+		archName = i->second;
+		Ogre::ResourceGroupManager::getSingleton()
+		  .addResourceLocation(archName, typeName, secName);
+	      }
+	  }
     }
 }

@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2014-08-17 dim. 20:34]--[2014-08-17 dim. 20:44] =>  0:10
      CLOCK: [2014-08-17 dim. 18:51]--[2014-08-17 dim. 19:46] =>  0:55
      CLOCK: [2014-08-13 mer. 17:30]--[2014-08-13 mer. 18:17] =>  0:47
      CLOCK: [2013-04-19 ven. 20:59]--[2013-04-19 ven. 21:23] =>  0:24
@@ -46,8 +47,10 @@
 - [X] Should modernize automake files
 - [X] May update GNU headers date
 - [X] To a black screen
-- [ ] Should move media here
+- [ ] Should initialize OIS
+- [ ] Should move media here (find CEGUI medias)
 - [ ] Must show loading progress bar
+  - [ ] Bootstrap resource to show CEGUI related resources loading
   - [ ] Only the simplest one for the CEGUI loading game state. 
     see http://3dlearn.googlecode.com/svn/trunk/Samples/Ogre/sinbad/Common/ExampleLoadingBar.h
   - [ ] This CEGUI state loads ressources needed for CEGUI then launch gsStart
