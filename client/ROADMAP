@@ -45,8 +45,7 @@
 - [X] Rename binary to rainbrurpg-client
 - [X] Should modernize automake files
 - [X] May update GNU headers date
-- [ ] To a black screen
-  OgreException ZipArchive::checkZzipError at /usr/local/src/ogre_src_v1-8-0/OgreMain/src/OgreZip.cpp
+- [X] To a black screen
 - [ ] Add a terrain
   see http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Basic+Tutorial+3
 - [ ] Window must be resizable and exitable
