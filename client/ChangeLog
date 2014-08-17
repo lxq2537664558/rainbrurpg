@@ -1,3 +1,7 @@
+2014-09-17  Jérôme Pasquier  <rainbru@free.fr>
+
+	* client.texi: renamed from client.texinfo.
+
 2014-09-13  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.ac: renamed from configure.in and modernized automake

@@ -1,3 +1,5 @@
 SUBDIRS=src
 
 EXTRA_DIST=configure
+
+info_TEXINFOS=client.texi

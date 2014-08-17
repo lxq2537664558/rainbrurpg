@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2014-08-17 dim. 18:51]
      CLOCK: [2014-08-13 mer. 17:30]--[2014-08-13 mer. 18:17] =>  0:47
      CLOCK: [2013-04-19 ven. 20:59]--[2013-04-19 ven. 21:23] =>  0:24
      CLOCK: [2013-01-10 jeu. 20:31]--[2013-01-10 jeu. 20:40] =>  0:09
@@ -39,12 +40,13 @@
      CLOCK: [2012-01-06 ven. 11:43]--[2012-01-06 ven. 12:19] =>  0:36
      CLOCK: [2012-01-06 ven. 08:53]--[2012-01-06 ven. 09:02] =>  0:09
      CLOCK: [2012-01-04 mer. 21:42]--[2012-01-04 mer. 22:00] =>  0:18
-- [X] To a black screen
 - [X] Uses rainbrurpg-logger (with pkg-config)
 - [X] Update GNU headers date for 2013
 - [X] Rename binary to rainbrurpg-client
 - [X] Should modernize automake files
-- [ ] May update GNU headers data
+- [X] May update GNU headers date
+- [ ] To a black screen
+  OgreException ZipArchive::checkZzipError at /usr/local/src/ogre_src_v1-8-0/OgreMain/src/OgreZip.cpp
 - [ ] Add a terrain
   see http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Basic+Tutorial+3
 - [ ] Window must be resizable and exitable
