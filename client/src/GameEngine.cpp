@@ -69,7 +69,7 @@ GameEngine::GameEngine(void):
       size_t windowHnd = 0;
       std::ostringstream windowHndStr; 
 #if defined OIS_LINUX_PLATFORM
-      mWindow->getCustomAttribute( "GLXWINDOW", &windowHnd ); 
+      mWindow->getCustomAttribute( "WINDOW", &windowHnd ); 
       windowHndStr << windowHnd; 
       
       pl.insert(std::make_pair(string("WINDOW"), windowHndStr.str())); 
@@ -103,6 +103,8 @@ GameEngine::GameEngine(void):
 
   try {
     OIS::Mouse* m_Mouse = static_cast<OIS::Mouse*>(m_InputManager->createInputObject(OIS::OISMouse, true));
+    LOGI("OIS mouse correctly initialized");
+
     // Initialize OIS mouse metrics
     unsigned int width, height, depth;
     int top, left;
@@ -112,8 +114,7 @@ GameEngine::GameEngine(void):
     ms.height = height;
   }
   catch (OIS::Exception e){
-    cerr << "An error occurs while initialize IOS mouse 1(" 
-	 << e.eFile << ":" << e.eText << ")" << endl;
+    LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
   }
 
   // Create the GUI manager
