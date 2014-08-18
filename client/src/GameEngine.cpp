@@ -24,7 +24,9 @@
 #include <iostream>
 
 #include <Ogre.h>
+#include <OIS.h>
 
+using namespace std;
 using namespace Ogre;
 
 static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
@@ -59,6 +61,64 @@ GameEngine::GameEngine(void):
       // Create one viewport, entire window
       Ogre::Viewport* vp = mWindow->addViewport(mCamera);
       vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+
+
+      // Initialize OIS
+      OIS::InputManager* m_InputManager;
+      OIS::ParamList pl;   
+      size_t windowHnd = 0;
+      std::ostringstream windowHndStr; 
+#if defined OIS_LINUX_PLATFORM
+      mWindow->getCustomAttribute( "GLXWINDOW", &windowHnd ); 
+      windowHndStr << windowHnd; 
+      
+      pl.insert(std::make_pair(string("WINDOW"), windowHndStr.str())); 
+      pl.insert(std::make_pair(string("x11_mouse_grab"),
+			       std::string("false"))); 
+      pl.insert(std::make_pair(std::string("x11_mouse_hide"),
+			       std::string("false"))); 
+
+#else
+      mWindow->getCustomAttribute( "HWND", &windowHnd );
+      windowHndStr << windowHnd;
+      pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+      pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND" )));
+      pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE"))); 
+
+#endif
+
+      m_InputManager = OIS::InputManager::createInputSystem( pl );
+      if (!m_InputManager)
+	cerr << "OIS inputmanager object is null" << endl;
+
+  // Get mouse and keyboard
+  try{
+    OIS::Keyboard* m_Keyboard = static_cast<OIS::Keyboard*>(m_InputManager->createInputObject(OIS::OISKeyboard, true));
+    LOGI("OIS keyboard correctly initialized");
+
+  }
+  catch (OIS::Exception e){
+    LOGE("Error while initialize IOS keyboard "<< e.eFile << ":" << e.eText);
+  }
+
+  try {
+    OIS::Mouse* m_Mouse = static_cast<OIS::Mouse*>(m_InputManager->createInputObject(OIS::OISMouse, true));
+    // Initialize OIS mouse metrics
+    unsigned int width, height, depth;
+    int top, left;
+    mWindow->getMetrics(width, height, depth, left, top);
+    const OIS::MouseState &ms = m_Mouse->getMouseState();
+    ms.width = width;
+    ms.height = height;
+  }
+  catch (OIS::Exception e){
+    cerr << "An error occurs while initialize IOS mouse 1(" 
+	 << e.eFile << ":" << e.eText << ")" << endl;
+  }
+
+  // Create the GUI manager
+  //  OgreBites::SdkTrayManager* mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mRenderWindow, m_Mouse, 0); // The 0 is of type SdkTrayListener* 
+
 
       // Alter the camera aspect ratio to match the viewport
       mCamera->setAspectRatio(

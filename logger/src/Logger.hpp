@@ -57,7 +57,7 @@ namespace po = boost::program_options;
 /// Log at the \b warning log level
 #define LOGW(ARGS) LOG(Rpg::LL_WARN, ARGS)
 /// Log at the \b error log level
-#define LOGE(ARGS) LOG(Rpg::LL_ERRLL_ERR, ARGS)
+#define LOGE(ARGS) LOG(Rpg::LL_ERR, ARGS)
 /// Log at the \b critical log level
 #define LOGC(ARGS) LOG(Rpg::LL_CRITICAL, ARGS)
 

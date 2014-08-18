@@ -21,7 +21,8 @@ AC_PROG_CC
 AC_PROG_CXX
 
 dnl Checks for libraries.
-PKG_CHECK_MODULES([DEPS], [OGRE >= 1.6 OIS CEGUI CEGUI-OGRE rainbrurpg-logger])
+PKG_CHECK_MODULES([DEPS], 
+  [OGRE >= 1.6 OIS >= 1.4 CEGUI CEGUI-OGRE rainbrurpg-logger])
 
 dnl Checks for header files.
 AC_HEADER_STDC
