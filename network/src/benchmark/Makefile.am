@@ -11,7 +11,7 @@ benchmark_SOURCES = $(headers) $(sources)
 benchmark_CPPFLAGS = $(DEPS_CFLAGS) -I/usr/include/snacc/c++/ -DUSE_EXP_BUF
 
 # snacc-config --language=C++ --libs ebuf
-benchmark_LDADD = $(DEPS_LIBS) /usr/lib/libmongoclient.a -lboost_system -lboost_filesystem -lboost_thread -lboost_serialization -lasn1c++
+benchmark_LDADD = $(DEPS_LIBS) -lmongoclient -lboost_system -lboost_filesystem -lboost_thread -lboost_serialization -lasn1c++ -lpthread -lssl -lcrypto
 
 ASNPerson.C: ASNPerson.asn
 	snacc -C -u /usr/include/snacc/asn1/asn-useful.asn1 ASNPerson.asn

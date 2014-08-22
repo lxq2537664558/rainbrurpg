@@ -31,7 +31,7 @@
 #include <asn-incl.h>
 #include "ASNPerson.h" 
 
-/#include <enet/enet.h>
+#include <enet/enet.h>
 
 using namespace std;
 
