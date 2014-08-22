@@ -21,41 +21,121 @@
  */
 
 #include "Person.hpp"
-
-Person::Person()
-{
-
-}
  
-Person::Person(const string&n, int a):
-  name(n), age(a)
+#include "ASNPerson.h"
+
+Person::Person(): 
+  name(""), 
+  age(20) 
 {
+}
+
+Person::Person(const string& n, int a): 
+  name(n), 
+  age(a) 
+{
+}
+
+bool
+Person::operator==(const Person& o) const 
+{
+  return name == o.name && age == o.age;
+}
+
+
+// BSON related methods
+
+void
+Person::serialize(mongo::BSONObjBuilder& o )
+{
+  o << "name" << name << "age" << age;
+}
+
+void
+Person::deserialize(const mongo::BSONObj& o)
+{
+  name = o.getStringField("name"); 
+  age  = o.getIntField("age");
+}
+
+// ASN.1 related methods
+void 
+Person::serialize(ENetPacket* buf)
+{
+  ASNPerson p;
+  p.name = name.c_str();
+  p.age = age;
+
+  AsnBuf abuf;
+  const size_t dataSize = 1024;
+  char data[dataSize];
+  size_t encodedLen;
+  abuf.Init (data, dataSize);
+  abuf.ResetInWriteRvsMode();
+  AsnLen len = p.BEncPdu ( abuf, encodedLen );
+
+#ifndef ASN_USE_FILE
+  ofstream outputFile;  
+  outputFile.open ("pr.ber");
+  abuf.ResetInReadMode();
+  for (; encodedLen > 0; encodedLen--)
+    outputFile.put (abuf.GetByte());
+#else
+# error "Char Asn Encoding not implemented"
+#endif
 
 }
 
-bool Person::operator==(const Person& o) const
+void 
+Person::deserialize(ENetPacket* buf)
 {
-  return (name == o.name) && (age == o.age);
-}
+#ifndef ASN_USE_FILE
+  // open the data file  
+  ifstream dataFile;  
+  dataFile.open ("pr.ber");
 
-void Person::serialize(mongo::BSONObjBuilder& bson)
-{
-  bson << "name" << name << "age" << age;
-}
+  // get size of the data file file  
+  dataFile.seekg (0, ios::end);  
+  int dataSize = dataFile.tellg();  
+  dataFile.seekg (0);
 
-void Person::deserialize(const mongo::BSONObj& bson)
-{
-  bson.getStringField("name");
-  bson.getIntField("age");
+  // read data from file into contiguous block for a buffer
+  char data[dataSize];  
+  dataFile.read (data, dataSize);  
+  dataFile.close();  
 
-}
+  //  
+  // put the BER data read from the file  
+  // into buffer format, ready for reading from the  
+  // beginning  
+  //  
+  AsnBuf inputBuf;  
+  inputBuf.InstallData ((char*)data, dataSize);  
 
-void Person::serialize(ENetPacket*)
-{
+  size_t decodedLen;  
+  ASNPerson p;
 
-}
+  if (!p.BDecPdu (inputBuf, decodedLen))  
+    {  
+      std::cerr << "ERROR - Decode routines failed, exiting..." << endl;  
+        exit (1);  
+    }  
 
-void Person::deserialize(ENetPacket*)
-{
+#else
+# error "Char Asn Decoding not implemented"
+#endif
 
+  /*
+  ASNPerson p;
+  const size_t dataSize = 10;
+  char data[dataSize];
+  size_t decodedLen;
+  //buf.Init (data, dataSize);
+  buf.ResetInReadMode();
+  if (!p.BDecPdu ( buf, decodedLen ))
+    {
+      std::cerr << "Failed to decode Asn.1"<< std::endl;
+      exit (1);
+    }
+  */
 }
