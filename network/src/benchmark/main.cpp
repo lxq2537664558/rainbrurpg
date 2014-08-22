@@ -68,26 +68,27 @@ void deserialize_boost(void)
 void serialize_asn(void)
 {
   Person p("joe", 33);;
-  p.serialize (a_buffer);
+  //  p.serialize (a_buffer);
 }
 
 void deserialize_asn(void)
 {
   Person p;
-  p.deserialize (a_buffer);
+  //  p.deserialize (a_buffer);
 }
 
 
 int
 main()
 {
+  /*
   if (enet_initialize () != 0)
     {
       std::cerr << "An error occurred while initializing ENet." << std::endl;
       return 1;
     }
   atexit (enet_deinitialize);
-
+  */
   // Serialization
   benchmark ("Serialization  ", "BSon (28 bytes)", &serialize_bson, 100);
   benchmark ("Serialization  ", "Boost (69 bytes)", &serialize_boost, 100);
