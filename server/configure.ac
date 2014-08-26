@@ -16,6 +16,7 @@ AM_CONFIG_HEADER(config.h)
 
 # Checks for programs.
 AC_PROG_CXX
+AX_CXX_COMPILE_STDCXX_11
 
 # Checks for libraries.
 PKG_CHECK_MODULES([LOG], [rainbrurpg-logger > 0])

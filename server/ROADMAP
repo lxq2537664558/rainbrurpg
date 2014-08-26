@@ -23,6 +23,8 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO Create a basic TCP server with a server-ctl tool
+     CLOCK: [2014-08-26 mar. 19:16]--[2014-08-26 mar. 19:35] =>  0:19
+     CLOCK: [2014-08-26 mar. 16:40]--[2014-08-26 mar. 19:16] =>  2:36
      CLOCK: [2014-08-12 mar. 15:42]--[2014-08-12 mar. 17:18] =>  1:36
      CLOCK: [2012-11-09 ven. 23:25]--[2012-11-10 sam. 00:15] =>  0:50
      CLOCK: [2012-10-31 mer. 19:51]--[2012-10-31 mer. 20:38] =>  0:47
@@ -30,7 +32,7 @@
 - [X] Need boost_filestem to avoid undefined reference to 
      `boost::system::get_generic_category() error
 - [X] Create a TCP server listening to a default port
-- [-] server-ctl IP:port using default port if missing
+- [X] server-ctl IP:port using default port if missing
   We should find a way to get multi GUI ctl tool, for example Qt, cwidget.
   Maybe as a subdir with configure options. 
   - [X] libreadline to get history of command
@@ -38,6 +40,20 @@
       start, stop, list, help, quit
   - [X] Must modernize automake files
   - [X] Fix boost::asio::ip::tcp::acceptor has no 'io_service'
+- [X] Add GNU headers to all files
+- [X] CommandLine (hpp/cpp)
+  - [X] #bool getNext() return true if we must quit
+  - [X] 3 pure C functions remain in CommandLine.cpp
+    - [X] First the completion function (my_completion)
+      it's a fonction pointer, uses an instance and a wrapper
+    - [X] Then, other wrappers
+    - [X] Must handle the cmd char array correctly and add added commands
+      to it
+- [ ] Completion add an extra space to command so quit when called from
+  completion isn't understand properly, we must chomp command before testing it
+- [ ] May handle short command a guile-ish way as ,q ,h and others
+- [ ] Remove dupstr
+- [ ] Continue server-ctl implementation
   - [ ] basic command should run functions
     A ServerCommand superclass with a execute(str parmas) virtual function
     - [ ] readline usage code must be ported to C++
@@ -47,7 +63,6 @@
   - [ ] boost-program_options to read argument
   - [ ] regex to get port and to test for IP
   - [ ] manpage and texinfo manual for the available commands
-- [ ] Add GNU headers to all files
 - [ ] See if gearman could be interresting (see http://gearman.org)
 **** DONE Correct project setup
      CLOCK: [2012-05-09 mer. 09:17]--[2012-05-09 mer. 09:25] =>  0:08

@@ -1,3 +1,15 @@
+2014-08-26  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/server_ctl/CommandLine.cpp (mCmdlist): correctly handle
+	the command list for autocompletion.
+	* src/configure.ac: switch to C++11.
+
+	* src/tools/server_ctl/CommandLine.cpp: almost full cpp implementation.
+	* src/tools/server_ctl/main.cpp: unused and removed xmalloc().
+
+	* src/tools: updated GNU headers date for 2014.
+	* src/tools: added GNU headers to all files.
+
 2014-08-12  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/server_ctl: starts to implement command map.
