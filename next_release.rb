@@ -127,6 +127,7 @@ class Project
   def read_file(todo_filename)
     p = Parser.new
     file = File.new(todo_filename, "r")
+
     while (line = file.gets)
       res = p.parse_line line
       break if res == true
