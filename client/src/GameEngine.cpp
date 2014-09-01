@@ -18,8 +18,10 @@
  *
  */
 
+#include <Logger.hpp> // Before headers to avoid std::list/Ogre::list conflict
+
 #include "GameEngine.hpp"
-#include "Logger.hpp"
+#include "LoadingBar.hpp"
 
 #include <iostream>
 
@@ -27,7 +29,6 @@
 #include <OIS.h>
 
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
-
 
 using namespace std;
 using namespace Ogre;
@@ -44,7 +45,7 @@ GameEngine::GameEngine(void):
 {
 
   //  log("Starting Ogre::Root");
-  Root* mRoot = new Root();
+  mRoot = new Root();
   if (mRoot->showConfigDialog())
     {
       //    log("Creating rendering window");
@@ -143,8 +144,7 @@ GameEngine::GameEngine(void):
       l->setPosition(20,80,50);
 
       mRoot->addFrameListener(this);
-      mRoot->startRendering();
-
+ 
       // Initialize CEGUI
       CEGUI::OgreRenderer& mRenderer = CEGUI::OgreRenderer::bootstrapSystem();
 
@@ -153,7 +153,6 @@ GameEngine::GameEngine(void):
       CEGUI::Scheme::setDefaultResourceGroup("Schemes");
       CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
       CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
-
 
       WindowEventUtilities::addWindowEventListener(mWindow, this);
     }
@@ -174,23 +173,57 @@ bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
   return true;
 }
 
+void
+GameEngine::run()
+{
+
+  setupResources();
+
+  LoadingBar* lb = new LoadingBar();
+  lb->start(mWindow, 1, 1, 0.75);
+
+  //  if (current_gamestate != NULL)
+  // current_gamestate->run(this);
+
+  ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
+  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
+  CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().
+    setDefaultImage("Vanilla-Images/MouseArrow");
+
+
+  // Align CEGUI mouse with OIS mouse
+  const OIS::MouseState state = mMouse->getMouseState();
+  CEGUI::Vector2f mousePos = CEGUI::System::getSingleton().
+    getDefaultGUIContext().getMouseCursor().getPosition(); 
+  CEGUI::System::getSingleton().getDefaultGUIContext()
+    .injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
+  CEGUI::Window *guiRoot = CEGUI::WindowManager::getSingleton()
+    .loadLayoutFromFile("menu.layout"); 
+  CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(guiRoot);
+
+
+  lb->finish();
+
+  // Start rendering
+  LOGI("Staring rendering loop");
+  mRoot->startRendering();
+
+}
+
 void GameEngine::setupResources(void)
 {
-    // Load resource paths from config file
-    Ogre::ConfigFile cf;
-    cf.load(mResourcesCfg);
-
-    // Go through all sections & settings in the file
-    Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
-
-    Ogre::String secName, typeName, archName;
-    while (seci.hasMoreElements())
+  LOGI("Setting up resources");
+  // Load resource paths from config file
+  Ogre::ConfigFile cf;
+  cf.load(mResourcesCfg);
+  // Go through all sections & settings in the file
+  Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
+  Ogre::String secName, typeName, archName;
+  while (seci.hasMoreElements())
     {
       secName = seci.peekNextKey();
-  
       Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
-      LOGI("resources section name match" << secName << "... loading.");
-	
       Ogre::ConfigFile::SettingsMultiMap::iterator i;
       for (i = settings->begin(); i != settings->end(); ++i)
 	{
@@ -200,6 +233,7 @@ void GameEngine::setupResources(void)
 	    .addResourceLocation(archName, typeName, secName);
 	}
     }
+  LOGI("All resources groups added");
 }
 
 void 

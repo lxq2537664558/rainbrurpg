@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<GUILayout version="4">
+    <Window name="root" type="Vanilla/StaticImage">
+        <Property name="Position" value="{{0,0},{0,0}}" />
+        <Property name="Size" value="{{1,0},{1,0}}" />
+        <Property name="FrameEnabled" value="False" />
+        <Property name="BackgroundEnabled" value="False" />
+
+       <Window name="GameMenu" type="Vanilla/FrameWindow">
+	 <Property name="MinSize" value="{{0.1,0},{0.1,0}}" />
+	 <Property name="MaxSize" value="{{0.8,0},{0.8,0}}" />
+	 <Property name="Position" value="{{0.35,0},{0.1,0}}" />
+	 <Property name="Size" value="{{0.3,0},{0.5,0}}" />
+	 <Property name="Text" value="GameMenu" />
+	 <Property name="CloseButtonEnabled" value="False" />
+
+	 <Window name="NetworkPlay" type="Vanilla/Button">
+	   <Property name="ID" value="1" />
+	   <Property name="HorizontalAlignment" value="Centre" />
+	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
+	   <Property name="Position" value="{{0,0},{0,0}}" />
+	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
+	   <Property name="Text" value="Network play" />
+	 </Window>
+	 <Window name="LocalTest" type="Vanilla/Button">
+	   <Property name="ID" value="2" />
+	   <Property name="HorizontalAlignment" value="Centre" />
+	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
+	   <Property name="Position" value="{{0,0},{0,60}}" />
+	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
+	   <Property name="Text" value="Local test" />
+	 </Window>
+
+	 <Window name="Options" type="Vanilla/Button">
+	   <Property name="VerticalAlignment" value="Top" />
+	   <Property name="HorizontalAlignment" value="Centre" />
+	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
+	   <Property name="Position" value="{{0,0},{0,100}}" />
+	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
+	   <Property name="Text" value="Options" />
+	 </Window>
+
+	 <Window name="Exit" type="Vanilla/Button">
+	   <Property name="VerticalAlignment" value="Top" />
+	   <Property name="HorizontalAlignment" value="Centre" />
+	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
+	   <Property name="Position" value="{{0,0},{0,160}}" />
+	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
+	   <Property name="Text" value="Exit" />
+	 </Window>
+
+       </Window>
+
+    </Window>
+</GUILayout>

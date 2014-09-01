@@ -7,11 +7,5 @@ crainbrurpg-client - ??? - The NewProjectLayout's client.
    Update GNU ChangeLog
    Please update revision in configure.in
 
-* v0.0.0-2 (4 jan 2011 - ???) SLOC 41 FT 0:52
-- Fully initialize CEGUI
-- Fully implements OIS/OGRE's FrameListener event callbacks
-- Correctly initialized OIS
-- Ogre window now open
-- Update GNU headers for 2013/2014
-- Now uses rainbrurpg-logger
-- Got a black screen (added FrameListener and Viewport)
+* v0.0.0-3 (A1 Sept 2014 - ???) SLOC ??? FT ??:??
+

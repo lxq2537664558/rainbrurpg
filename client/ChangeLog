@@ -1,5 +1,8 @@
 2014-10-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/GameEngine.cpp (run): added loading bar.
+	* src/GameEngine.cpp (run): CEGUI window appears.
+
 	* src/GameEngine.cpp (GameEngine): handles CEGUI initialization.
 
 	* src/GameEngine.hpp: fully implements OIS mouse and keyboard

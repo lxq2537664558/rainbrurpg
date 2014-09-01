@@ -34,6 +34,10 @@
 #include <CEGUI/CEGUI.h>
 
 // Forward declarations
+namespace Ogre
+{
+  class Root;
+}
 namespace OIS
 {
   class InputManager;
@@ -50,6 +54,8 @@ public:
   GameEngine(void);
   virtual ~GameEngine(){};
 
+  void run();
+
 protected:
   // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
@@ -65,6 +71,7 @@ protected:
   void setupResources(void);
   CEGUI::MouseButton convertButton(OIS::MouseButtonID);
 private:
+  Ogre::Root* mRoot;
   Ogre::RenderWindow* mWindow;
 
   OIS::InputManager* mInputManager;

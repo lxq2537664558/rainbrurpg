@@ -1,8 +1,8 @@
 bin_PROGRAMS = rainbrurpg-client
 
-headers = GameEngine.hpp TutorialApplication.h 
+headers = GameEngine.hpp TutorialApplication.h LoadingBar.hpp
 
-sources = main.cpp GameEngine.cpp
+sources = main.cpp GameEngine.cpp LoadingBar.cpp
 
 rainbrurpg_client_SOURCES = $(headers) $(sources)
 

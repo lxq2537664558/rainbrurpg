@@ -38,6 +38,7 @@ main(int argc, char** argv)
   try
     {
       GameEngine ge;
+      ge.run();
     }
   catch (...)
     {
