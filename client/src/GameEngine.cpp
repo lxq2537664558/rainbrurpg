@@ -32,6 +32,10 @@ using namespace Ogre;
 static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 GameEngine::GameEngine(void):
+  mWindow(NULL),
+  mInputManager(NULL),
+  mKeyboard(NULL),
+  mMouse(NULL),
   mResourcesCfg("resources.cfg")
 {
 
@@ -64,7 +68,6 @@ GameEngine::GameEngine(void):
 
 
       // Initialize OIS
-      OIS::InputManager* m_InputManager;
       OIS::ParamList pl;   
       size_t windowHnd = 0;
       std::ostringstream windowHndStr; 
@@ -87,13 +90,13 @@ GameEngine::GameEngine(void):
 
 #endif
 
-      m_InputManager = OIS::InputManager::createInputSystem( pl );
-      if (!m_InputManager)
+      mInputManager = OIS::InputManager::createInputSystem( pl );
+      if (!mInputManager)
 	cerr << "OIS inputmanager object is null" << endl;
 
   // Get mouse and keyboard
   try{
-    OIS::Keyboard* m_Keyboard = static_cast<OIS::Keyboard*>(m_InputManager->createInputObject(OIS::OISKeyboard, true));
+    mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject(OIS::OISKeyboard, true));
     LOGI("OIS keyboard correctly initialized");
 
   }
@@ -102,14 +105,14 @@ GameEngine::GameEngine(void):
   }
 
   try {
-    OIS::Mouse* m_Mouse = static_cast<OIS::Mouse*>(m_InputManager->createInputObject(OIS::OISMouse, true));
+    mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(OIS::OISMouse, true));
     LOGI("OIS mouse correctly initialized");
 
     // Initialize OIS mouse metrics
     unsigned int width, height, depth;
     int top, left;
     mWindow->getMetrics(width, height, depth, left, top);
-    const OIS::MouseState &ms = m_Mouse->getMouseState();
+    const OIS::MouseState &ms = mMouse->getMouseState();
     ms.width = width;
     ms.height = height;
   }
@@ -121,20 +124,23 @@ GameEngine::GameEngine(void):
   //  OgreBites::SdkTrayManager* mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mRenderWindow, m_Mouse, 0); // The 0 is of type SdkTrayListener* 
 
 
-      // Alter the camera aspect ratio to match the viewport
-      mCamera->setAspectRatio(
-        Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+  // Alter the camera aspect ratio to match the viewport
+  mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
+			  Ogre::Real(vp->getActualHeight()));
 
 
-      // Set ambient light
-      mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+  // Set ambient light
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
  
-      // Create a light
-      Ogre::Light* l = mSceneMgr->createLight("MainLight");
-      l->setPosition(20,80,50);
+  // Create a light
+  Ogre::Light* l = mSceneMgr->createLight("MainLight");
+  l->setPosition(20,80,50);
 
-      mRoot->addFrameListener(this);
-      mRoot->startRendering();
+  mRoot->addFrameListener(this);
+  mRoot->startRendering();
+
+  WindowEventUtilities::addWindowEventListener(mWindow, this);
+  
 
     }
 
@@ -176,5 +182,22 @@ void GameEngine::setupResources(const std::string& section)
 		  .addResourceLocation(archName, typeName, secName);
 	      }
 	  }
+    }
+}
+
+void 
+GameEngine::windowClosed(Ogre::RenderWindow* rw)
+{
+  //Only close for window that created OIS (the main window in these demos)
+  if( rw == mWindow )
+    {
+      if( mInputManager )
+	{
+	  mInputManager->destroyInputObject( mMouse );
+	  mInputManager->destroyInputObject( mKeyboard );
+	  
+	  OIS::InputManager::destroyInputSystem(mInputManager);
+	  mInputManager = NULL;
+	}
     }
 }

@@ -25,20 +25,40 @@
 
 #include <OgreFrameListener.h>
 #include <OgreRenderWindow.h>
+#include <OgreWindowEventUtilities.h> // for Ogre::WindowEventListener
 
-class GameEngine: public Ogre::FrameListener
+// Forward declarations
+namespace OIS
+{
+  class InputManager;
+  class Keyboard;
+  class Mouse;
+}
+// End of forward declarations
+
+class GameEngine: public Ogre::FrameListener,
+		  public Ogre::WindowEventListener
 {
 public:
   GameEngine(void);
   virtual ~GameEngine(){};
 
 protected:
+  // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
+  virtual void windowClosed(Ogre::RenderWindow*);
+
   void setupResources(const std::string&);
 
 private:
   Ogre::RenderWindow* mWindow;
+
+  OIS::InputManager* mInputManager;
+  OIS::Keyboard* mKeyboard;
+  OIS::Mouse* mMouse;
+
   Ogre::String mResourcesCfg;
+
 };
 
 #endif // !_GAME_ENGINE_HPP_

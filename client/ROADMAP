@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2014-09-01 lun. 11:57]
      CLOCK: [2014-08-18 lun. 10:26]--[2014-08-18 lun. 11:10] =>  0:44
      CLOCK: [2014-08-17 dim. 20:34]--[2014-08-17 dim. 20:44] =>  0:10
      CLOCK: [2014-08-17 dim. 18:51]--[2014-08-17 dim. 19:46] =>  0:55
@@ -49,7 +50,8 @@
 - [X] May update GNU headers date
 - [X] To a black screen
 - [X] Should initialize OIS
-- [ ] Should move media here (find CEGUI medias)
+- [X] Switch to CEGUI 0.8
+- [X] Should move media here (find CEGUI medias)
 - [ ] Must show loading progress bar
   - [ ] Bootstrap resource to show CEGUI related resources loading
     Initialize SdkTray manager

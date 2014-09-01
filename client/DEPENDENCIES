@@ -16,3 +16,10 @@ The following package should be installed before RainbruRPG is installed:
 
 * Boost 1.55
   + Needed
+
+* CEGUI 0.8
+  + Needed
+  + homepage:
+    http://cegui.org.uk
+  + download
+    http://sourceforge.net/projects/crayzedsgui/files/

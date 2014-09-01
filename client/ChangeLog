@@ -1,8 +1,12 @@
+2014-10-01  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.ac: switch CEGUI 0.8 (pkg module called CEGUI-0).
+
 2014-09-18  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/GameEngine.cpp (GameEngine) : correctly initialize OIS with
 	exception handling.
-	
+
 	* configure.ac: PKG_CHECK_MODULES needs OIS >= 1.4.
 
 2014-09-17  Jérôme Pasquier  <rainbru@free.fr>
