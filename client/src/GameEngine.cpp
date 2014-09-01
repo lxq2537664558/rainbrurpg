@@ -26,6 +26,9 @@
 #include <Ogre.h>
 #include <OIS.h>
 
+#include <CEGUI/RendererModules/Ogre/Renderer.h>
+
+
 using namespace std;
 using namespace Ogre;
 
@@ -36,12 +39,12 @@ GameEngine::GameEngine(void):
   mInputManager(NULL),
   mKeyboard(NULL),
   mMouse(NULL),
-  mResourcesCfg("resources.cfg")
+  mResourcesCfg("resources.cfg"),
+  mShutdown(false)
 {
 
   //  log("Starting Ogre::Root");
   Root* mRoot = new Root();
-  setupResources("Bootstrap");
   if (mRoot->showConfigDialog())
     {
       //    log("Creating rendering window");
@@ -51,13 +54,12 @@ GameEngine::GameEngine(void):
       SceneManager* mSceneMgr = mRoot->
 	createSceneManager(ST_GENERIC, "ExampleSMInstance");
 
-      setupResources("General");
-      SceneNode* headNode = mSceneMgr->getRootSceneNode()
+      /*      SceneNode* headNode = mSceneMgr->getRootSceneNode()
 	->createChildSceneNode("HeadNode");
 
       Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
       headNode->attachObject(ogreHead);
-      
+      */
    
       // Create the camera
       Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
@@ -94,67 +96,85 @@ GameEngine::GameEngine(void):
       if (!mInputManager)
 	cerr << "OIS inputmanager object is null" << endl;
 
-  // Get mouse and keyboard
-  try{
-    mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject(OIS::OISKeyboard, true));
-    LOGI("OIS keyboard correctly initialized");
+      // Get mouse and keyboard
+      try
+	{
+	  mKeyboard = static_cast<OIS::Keyboard*>
+	    (mInputManager->createInputObject(OIS::OISKeyboard, true));
+	  LOGI("OIS keyboard correctly initialized");
+	  
+	}
+      catch (OIS::Exception e){
+	LOGE("Error while initialize IOS keyboard "<< e.eFile 
+	     << ":" << e.eText);
+      }
 
-  }
-  catch (OIS::Exception e){
-    LOGE("Error while initialize IOS keyboard "<< e.eFile << ":" << e.eText);
-  }
+      try 
+	{
+	  mMouse = static_cast<OIS::Mouse*>
+	    (mInputManager->createInputObject(OIS::OISMouse, true));
+	  LOGI("OIS mouse correctly initialized");
 
-  try {
-    mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(OIS::OISMouse, true));
-    LOGI("OIS mouse correctly initialized");
+	  // Initialize OIS mouse metrics
+	  unsigned int width, height, depth;
+	  int top, left;
+	  mWindow->getMetrics(width, height, depth, left, top);
+	  const OIS::MouseState &ms = mMouse->getMouseState();
+	  ms.width = width;
+	  ms.height = height;
+	}
+      catch (OIS::Exception e){
+	LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
+      }
 
-    // Initialize OIS mouse metrics
-    unsigned int width, height, depth;
-    int top, left;
-    mWindow->getMetrics(width, height, depth, left, top);
-    const OIS::MouseState &ms = mMouse->getMouseState();
-    ms.width = width;
-    ms.height = height;
-  }
-  catch (OIS::Exception e){
-    LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
-  }
+      // Set OIS event callbacks
+      mKeyboard->setEventCallback(this);
+      mMouse->setEventCallback(this);
 
-  // Create the GUI manager
-  //  OgreBites::SdkTrayManager* mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mRenderWindow, m_Mouse, 0); // The 0 is of type SdkTrayListener* 
+      // Alter the camera aspect ratio to match the viewport
+      mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
+			      Ogre::Real(vp->getActualHeight()));
 
-
-  // Alter the camera aspect ratio to match the viewport
-  mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
-			  Ogre::Real(vp->getActualHeight()));
-
-
-  // Set ambient light
-  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+      // Set ambient light
+      mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
  
-  // Create a light
-  Ogre::Light* l = mSceneMgr->createLight("MainLight");
-  l->setPosition(20,80,50);
+      // Create a light
+      Ogre::Light* l = mSceneMgr->createLight("MainLight");
+      l->setPosition(20,80,50);
 
-  mRoot->addFrameListener(this);
-  mRoot->startRendering();
+      mRoot->addFrameListener(this);
+      mRoot->startRendering();
 
-  WindowEventUtilities::addWindowEventListener(mWindow, this);
-  
+      // Initialize CEGUI
+      CEGUI::OgreRenderer& mRenderer = CEGUI::OgreRenderer::bootstrapSystem();
 
+      CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
+      CEGUI::Font::setDefaultResourceGroup("Fonts");
+      CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+      CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
+      CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+
+
+      WindowEventUtilities::addWindowEventListener(mWindow, this);
     }
-
 }
 
 bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
-    if(mWindow->isClosed())
-        return false;
+  mMouse->capture();
+  mKeyboard->capture();
 
-    return true;
+  if (mShutdown)
+    return false;
+
+
+  if(mWindow->isClosed())
+    return false;
+
+  return true;
 }
 
-void GameEngine::setupResources(const std::string& section)
+void GameEngine::setupResources(void)
 {
     // Load resource paths from config file
     Ogre::ConfigFile cf;
@@ -166,22 +186,19 @@ void GameEngine::setupResources(const std::string& section)
     Ogre::String secName, typeName, archName;
     while (seci.hasMoreElements())
     {
-        secName = seci.peekNextKey();
+      secName = seci.peekNextKey();
   
-	Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
-	if (secName == section)
-	  {
-	    LOGI("resources section name match" << secName << "... loading.");
+      Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
+      LOGI("resources section name match" << secName << "... loading.");
 	
-	    Ogre::ConfigFile::SettingsMultiMap::iterator i;
-	    for (i = settings->begin(); i != settings->end(); ++i)
-	      {
-		typeName = i->first;
-		archName = i->second;
-		Ogre::ResourceGroupManager::getSingleton()
-		  .addResourceLocation(archName, typeName, secName);
-	      }
-	  }
+      Ogre::ConfigFile::SettingsMultiMap::iterator i;
+      for (i = settings->begin(); i != settings->end(); ++i)
+	{
+	  typeName = i->first;
+	  archName = i->second;
+	  Ogre::ResourceGroupManager::getSingleton()
+	    .addResourceLocation(archName, typeName, secName);
+	}
     }
 }
 
@@ -199,5 +216,80 @@ GameEngine::windowClosed(Ogre::RenderWindow* rw)
 	  OIS::InputManager::destroyInputSystem(mInputManager);
 	  mInputManager = NULL;
 	}
+    }
+}
+
+bool  
+GameEngine::mouseMoved( const OIS::MouseEvent& evt )
+{
+  CEGUI::GUIContext& sys = CEGUI::System::getSingleton().getDefaultGUIContext();
+  sys.injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
+  // Scroll wheel.
+  if (evt.state.Z.rel)
+    sys.injectMouseWheelChange(evt.state.Z.rel / 120.0f);
+
+  return true;
+}
+
+bool  
+GameEngine::mousePressed( const OIS::MouseEvent& evt, OIS::MouseButtonID id )
+{
+  CEGUI::System::getSingleton().getDefaultGUIContext().
+    injectMouseButtonDown(convertButton(id));
+  return true;
+}
+
+bool  
+GameEngine::mouseReleased( const OIS::MouseEvent& evt, OIS::MouseButtonID id )
+{
+  CEGUI::System::getSingleton().getDefaultGUIContext().
+    injectMouseButtonUp(convertButton(id));
+  return true;
+}
+
+bool  
+GameEngine::keyPressed( const OIS::KeyEvent& evt )
+{
+  CEGUI::GUIContext& context = CEGUI::System::getSingleton().
+    getDefaultGUIContext();
+  context.injectKeyDown((CEGUI::Key::Scan)evt.key);
+  context.injectChar((CEGUI::Key::Scan)evt.text);
+
+  switch (evt.key)
+    {
+    case OIS::KC_ESCAPE: 
+      mShutdown = true;
+      break;
+    default:
+      break;
+    }
+
+  return true;
+}
+
+bool  
+GameEngine::keyReleased( const OIS::KeyEvent& evt )
+{
+  CEGUI::System::getSingleton().getDefaultGUIContext().
+    injectKeyUp((CEGUI::Key::Scan)evt.key);
+  return true;
+}
+
+CEGUI::MouseButton 
+GameEngine::convertButton(OIS::MouseButtonID buttonID)
+{
+    switch (buttonID)
+    {
+    case OIS::MB_Left:
+        return CEGUI::LeftButton;
+ 
+    case OIS::MB_Right:
+        return CEGUI::RightButton;
+ 
+    case OIS::MB_Middle:
+        return CEGUI::MiddleButton;
+ 
+    default:
+        return CEGUI::LeftButton;
     }
 }

@@ -27,17 +27,24 @@
 #include <OgreRenderWindow.h>
 #include <OgreWindowEventUtilities.h> // for Ogre::WindowEventListener
 
+#include <OISEvents.h>
+#include <OISMouse.h>
+#include <OISKeyboard.h>
+
+#include <CEGUI/CEGUI.h>
+
 // Forward declarations
 namespace OIS
 {
   class InputManager;
   class Keyboard;
-  class Mouse;
 }
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
-		  public Ogre::WindowEventListener
+		  public Ogre::WindowEventListener,
+		  public OIS::MouseListener,
+		  public OIS::KeyListener
 {
 public:
   GameEngine(void);
@@ -47,9 +54,16 @@ protected:
   // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
   virtual void windowClosed(Ogre::RenderWindow*);
+  // OIS::MouseListener
+  bool mouseMoved( const OIS::MouseEvent&);
+  bool mousePressed( const OIS::MouseEvent&, OIS::MouseButtonID);
+  bool mouseReleased( const OIS::MouseEvent&, OIS::MouseButtonID);
+  // OIS::KeyListener
+  bool keyPressed( const OIS::KeyEvent&);
+  bool keyReleased( const OIS::KeyEvent&);
 
-  void setupResources(const std::string&);
-
+  void setupResources(void);
+  CEGUI::MouseButton convertButton(OIS::MouseButtonID);
 private:
   Ogre::RenderWindow* mWindow;
 
@@ -58,6 +72,7 @@ private:
   OIS::Mouse* mMouse;
 
   Ogre::String mResourcesCfg;
+  bool mShutdown;
 
 };
 

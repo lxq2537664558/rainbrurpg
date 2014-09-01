@@ -1,5 +1,14 @@
 2014-10-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/GameEngine.cpp (GameEngine): handles CEGUI initialization.
+
+	* src/GameEngine.hpp: fully implements OIS mouse and keyboard
+	event callbacks.
+
+	* src/GameEngine.cpp (windowClosed): correctly destroy OIS input
+	objets when render window's closed.
+	* src/GameEngine.hpp: now inherits Ogre::WindowEventListener.
+
 	* configure.ac: switch CEGUI 0.8 (pkg module called CEGUI-0).
 
 2014-09-18  Jérôme Pasquier  <rainbru@free.fr>
