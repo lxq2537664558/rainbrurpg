@@ -63,16 +63,20 @@ get_header(); ?>
  <p class="postmetadata">Posted in <?php the_category(', '); ?>&nbsp;
 
 <!-- TAGLIST -->
-<?php $show_sep = false; ?>
-<?$tags_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
+<?php 
+$show_sep = false;
+$tags_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
 if ( $tags_list ):
   $show_sep = true;
-if ( $show_sep ) : ?><span class="sep"> | </span><?php endif; ?>
-
-<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 'twentyeleven' ),
-       'entry-utility-prep entry-utility-prep-tag-links', $tags_list );
-         $show_sep = true; ?></span>
-			<?php endif; // End if $tags_list ?>
+  if ( $show_sep ) : 
+    print('<span class=\"sep\"> | </span>');
+  endif; 
+  printf( __( '<span class="%1$s">Tagged</span> %2$s', 'twentyeleven' ),
+	  'entry-utility-prep entry-utility-prep-tag-links', $tags_list );
+  $show_sep = true; 
+  printf('</span>'); 
+endif; 
+?>
 <!-- End of TAGLIST -->
 
 <!-- Comments -->

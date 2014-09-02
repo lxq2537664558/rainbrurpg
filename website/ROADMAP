@@ -4,101 +4,20 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.1
-**** DONE Correct project setup
-     CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
-     CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
-     CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
-- [X] Directory structure with README file in each dir
-  skin01/
-    INTEGRATION_TESTS
-    static/
-    blog/
-    wiki/
-    api/               /* For doxygen , texinfo, man???*/
-- [X] See if wordpress and foswiki doctype are the same
-      wordpress: <!DOCTYPE html>
-      foswiki: <!DOCTYPE html ...
-- [X] Uses automake for the `make distclean` rule
-**** DONE Starting static/ tests
-     CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
-     CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
-     CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
-<link rel="stylesheet" href="../common/skin.css" type="text/css" />
-- [X] Make integration tests with available browsers
-- [X] Must emphasis current page in menu for links -g
-- [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
-- [X] Find a way to add a AddThis.com div
-**** DONE Upgrade to Foswiki 1.1.5
-     CLOCK: [2012-11-16 ven. 15:31]--[2012-11-16 ven. 17:03] =>  1:32
-     CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
-     CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
-- [X] How to know current running release
-  go to System/WebHome; it's printed (Foswiki-1.1.2)
-     see http://foswiki.org/System/UpgradeGuide#Upgrading_to_a_new_patch_release
-- [X] Try using a Upgrade version locally
-  http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.5.tgz
-  - [X] Make the local install works
-  - [X] Create a UPGRADE_FOSWIKI_1.1.5.org file
-  - [X] Copy the contents of the upgrade tgz or zipfile onto your installation
-  - [X] Update file ownership and permissions- See SettingFileAccessRightsLinuxUnix
-  - [X] Visit bin/configure
-    - [X] Address any warnings or errors reported by the new configuration checkers
-    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
-      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
-  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
-- [X] Make the changes to online installation
-- [X] Add this walkthrough to a wiki page
-- [X] Remove local install and tests
-**** DONE Fix the foswiki registration issue
-     CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
-     CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
-     CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
-     CLOCK: [2012-05-18 ven. 13:46]--[2012-05-18 ven. 13:55] =>  0:09
-     CLOCK: [2012-05-18 ven. 11:05]--[2012-05-18 ven. 11:41] =>  0:36
-     CLOCK: [2012-05-12 sam. 17:21]--[2012-05-12 sam. 19:03] =>  1:42
-     CLOCK: [2012-05-12 sam. 15:18]--[2012-05-12 sam. 16:02] =>  0:44
-     CLOCK: [2012-05-12 sam. 12:38]--[2012-05-12 sam. 13:51] =>  1:13
-I have many spams in the foswiki installation since I enabled registration
-without sending confirmation mail.
-- [X] Create FOSWIKI_REGISTRATION.org 
-- [X] Simply test with a script from the sf.net shell
-  - [X] Sending a support ticket to sourceforge team
-  - [X] From the staff hints
-    - [X] Move scripts to cgi-bin
-    - [X] Create a script to test from a newly created website
-	  Because shell service doesn't use the correct environmant
-      - [X] Move foswiki to cgi-bin
-	   =chmod  +rx FILENAME= to be exec. by apache user
-    - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
-- [ ] Could we write email::TLS handler ?
-  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
-      I'm sure using TLS works
-    $session->net->sendEmail($text); ?
-    all is in lib/Foswiki/Net.pm :
-    _installMailHandler set $this->{mailHandler}
-    I'm not sure we can modify $session->net->sendEmail($text);
-  - [ ] configure foswiki to use registration with email confirmation
-  - [ ] Test it with a TestMail user or configure test mail function
-  - [ ] Write an explanation in a foswiki page
-**** DONE Upgrade foswiki to 1.1.9
-     CLOCK: [2014-02-06 jeu. 16:43]
-     CLOCK: [2014-02-06 jeu. 15:37]--[2014-02-06 jeu. 16:33] =>  0:56
-     CLOCK: [2014-02-06 jeu. 15:05]--[2014-02-06 jeu. 15:30] =>  0:25
-     CLOCK: [2014-02-06 jeu. 11:20]--[2014-02-06 jeu. 12:10] =>  0:50
+**** Install the wordpress-powered blog
+- [ ] When installed, create a Google Analytics annotation
+- [ ] Complete the *About this blog* page (first local then online)
+- [ ] Must generate a XML sitemap and commit it to GWT and BWT
+**** Try a xml sitemap generation tool
+- [ ] in doc/XML_SITEMAP_GENERATOR.org     
+**** FosWiki pattern
+- [ ] Must replace the TopBar and the BottomBar pattern
+**** texi2html for the 'manual' link
+- [ ] Add header and footer
+      see http://ximbiot.com/texi2html/manuals/1.78/texi2html_6.html
+- [ ] If different library/binary documentation with black menu, do not
+      forget to add the createHtml5Elements.js anchor
 
-   see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
-
-- [X] First locally. Write notes about this change in UPGRADE_FOSWIKI
-  Must fix the *Could not create file parser context for file "path": No such file or directory* error
-  No such error when Metaserver plugin disabled
-- [X] Upgrade online version
-- [X] Create a UpgradeFoswiki01x01x09
-- [X] We may group all these upgrade pages in a single /WikiHistory/ page
-  Remenber to reparent all existing pages for this
-  - [X] RegistrationFailureIncident
-  - [X] UpgradeFoswiki01x01x05
-  - [X] UpgradeFoswiki01x01x07
-  - [X] UpgradeFoswiki01x01x08
 **** TODO Improve foswiki
      CLOCK: [2012-12-17 lun. 14:36]--[2012-12-17 lun. 15:21] =>  0:45
 - [X] Find a good way to create a sitemap.xml
@@ -141,7 +60,27 @@ without sending confirmation mail.
 - [ ] May create a HackingFoswiki page
   with view.ainbru.tmpl et viewsidebar.rainbru.tmpl : -> survive upgrade
   TLS mail stuff that do not survive an upgrade
-**** TODO Wordpress theme development
+**** TODO Continue to improve the wodpress theme
+     CLOCK: [2014-09-02 mar. 11:43]--[2014-09-02 mar. 12:40] =>  0:57
+- [X] Gray menu isn't styled
+  common/skin.css : 403 forbidden
+- [ ] Sidebar is completely above the comment box in single page
+  Maybe increase a bit sidebar margin
+- [ ] see TODO for the wordpress title size
+- [ ] Should replace rainbrurpg.sourceforge.net by rainbrurpg.org
+- [ ] Should find a good synthax highlighter for source code
+- [ ] Should add the "Bookmark the permalink." in single.php
+- [-] HTML5 validation
+- [ ] See the checklist at http://codex.wordpress.org/Theme_Development
+- [ ] Make an 'About' page and a first post about the new website/blog
+  - [ ] Speaking about compatibility issues (KHTML and IE)
+    with a link to wiki's NewWebsiteLayout
+    as a post or a 'Compatibility notes' page
+- [ ] Should add a adsense block below sidebar
+- [ ] Add /AddThis/ and /Flattr/ buttons in post detail
+- [ ] Add a spoiler in homepage (this custom theme is a work in progress)
+
+**** DONE Wordpress theme development
      CLOCK: [2012-03-22 jeu. 20:28]--[2012-03-22 jeu. 20:38] =>  0:10
      CLOCK: [2012-03-21 mer. 09:07]--[2012-03-21 mer. 09:45] =>  0:38
      CLOCK: [2012-03-19 lun. 18:58]--[2012-03-19 lun. 19:46] =>  0:48
@@ -251,45 +190,119 @@ the patternClearHeaderLeft div.
                   - [X] If it works, modify css files to remove inline CSS
 			from index.php
                   - [X] Merge skin01/wordpress and pattern/ after a final test
-- [X] Must test archive for missing files
-- [X] The header style causes dead links
-      It was due to the #rb-skin01-footer{position: relative; }
-- [X] There is no 'login' link
-- [X] Switch to Wordpress 3.3.1 and upgrade plugins
-- [X] The black menu isn't correct in ie6
-      - [X] testing WP's twentyeleven skin with ie6 : it works
-      - [X] See what are the differences in CSS if it works : does not work
-      - [X] Found a post about enabling new HTML5 element in JS
-	    http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
-	    It presents the same bug
-	    - [X] Test it in an static page with inline javascript
-            - [X] Add it in common/
-      - [X] There is a text overlapping bug again
-      - [X] The black menu hover doesn't work in ie6
-- [X] Searchbox is again misplaced (test it when logged in and out)
-- [X] Enable the RSS feed for browser that support it
-- [X] Use the Universal Edit Button feature (as RSS feed)
-- [ ] Should add the "Bookmark the permalink." in single.php
-- [ ] HTML5 validation
-- [ ] See the checklist at http://codex.wordpress.org/Theme_Development
-- [ ] Make an 'About' page and a first post about the new website/blog
-      - [ ] Speaking about compatibility issues (KHTML and IE)
-	    with a link to wiki's NewWebsiteLayout
-	    as a post or a 'Compatibility notes' page
-- [ ] Should add a adsense block below sidebar
-- [ ] Add /AddThis/ and /Flattr/ buttons in post detail
-- [ ] Add a spoiler in homepage (this custom theme is a work in progress)
-**** Install the wordpress-powered blog
-- [ ] When installed, create a Google Analytics annotation
-- [ ] Complete the *About this blog* page (first local then online)
-- [ ] Must generate a XML sitemap and commit it to GWT and BWT
-**** Try a xml sitemap generation tool
-- [ ] in doc/XML_SITEMAP_GENERATOR.org     
-**** FosWiki pattern
-- [ ] Must replace the TopBar and the BottomBar pattern
-**** texi2html for the 'manual' link
-- [ ] Add header and footer
-      see http://ximbiot.com/texi2html/manuals/1.78/texi2html_6.html
-- [ ] If different library/binary documentation with black menu, do not
-      forget to add the createHtml5Elements.js anchor
+		  - [X] Must test archive for missing files
+		  - [X] The header style causes dead links
+			It was due to the #rb-skin01-footer{position: relative; }
+		  - [X] There is no 'login' link
+		  - [X] Switch to Wordpress 3.3.1 and upgrade plugins
+		  - [X] The black menu isn't correct in ie6
+		    - [X] testing WP's twentyeleven skin with ie6 : it works
+		    - [X] See what are the differences in CSS if it works : does not work
+		    - [X] Found a post about enabling new HTML5 element in JS
+			  http://net.tutsplus.com/tutorials/html-css-techniques/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6/
+			  It presents the same bug
+		      - [X] Test it in an static page with inline javascript
+		      - [X] Add it in common/
+		    - [X] There is a text overlapping bug again
+		    - [X] The black menu hover doesn't work in ie6
+		  - [X] Searchbox is again misplaced (test it when logged in and out)
+		  - [X] Enable the RSS feed for browser that support it
+		  - [X] Use the Universal Edit Button feature (as RSS feed)
+		  - [X] Fix the endif error
+		    - [X] in index.php
+		    - [X] in single.php
+**** DONE Upgrade foswiki to 1.1.9
+     CLOCK: [2014-02-06 jeu. 16:43]--[2014-02-06 jeu. 17:03] =>  0:20
+     CLOCK: [2014-02-06 jeu. 15:37]--[2014-02-06 jeu. 16:33] =>  0:56
+     CLOCK: [2014-02-06 jeu. 15:05]--[2014-02-06 jeu. 15:30] =>  0:25
+     CLOCK: [2014-02-06 jeu. 11:20]--[2014-02-06 jeu. 12:10] =>  0:50
 
+   see http://foswiki.org/Download/FoswikiRelease01x01x09#Upgrade_Instructions
+
+- [X] First locally. Write notes about this change in UPGRADE_FOSWIKI
+  Must fix the *Could not create file parser context for file "path": No such file or directory* error
+  No such error when Metaserver plugin disabled
+- [X] Upgrade online version
+- [X] Create a UpgradeFoswiki01x01x09
+- [X] We may group all these upgrade pages in a single /WikiHistory/ page
+  Remenber to reparent all existing pages for this
+  - [X] RegistrationFailureIncident
+  - [X] UpgradeFoswiki01x01x05
+  - [X] UpgradeFoswiki01x01x07
+  - [X] UpgradeFoswiki01x01x08
+**** DONE Fix the foswiki registration issue
+     CLOCK: [2012-10-25 jeu. 10:16]--[2012-10-25 jeu. 10:46] =>  0:30
+     CLOCK: [2012-10-24 mer. 12:32]--[2012-10-24 mer. 12:57] =>  0:25
+     CLOCK: [2012-05-18 ven. 15:37]--[2012-05-18 ven. 16:35] =>  0:58
+     CLOCK: [2012-05-18 ven. 13:46]--[2012-05-18 ven. 13:55] =>  0:09
+     CLOCK: [2012-05-18 ven. 11:05]--[2012-05-18 ven. 11:41] =>  0:36
+     CLOCK: [2012-05-12 sam. 17:21]--[2012-05-12 sam. 19:03] =>  1:42
+     CLOCK: [2012-05-12 sam. 15:18]--[2012-05-12 sam. 16:02] =>  0:44
+     CLOCK: [2012-05-12 sam. 12:38]--[2012-05-12 sam. 13:51] =>  1:13
+I have many spams in the foswiki installation since I enabled registration
+without sending confirmation mail.
+- [X] Create FOSWIKI_REGISTRATION.org 
+- [X] Simply test with a script from the sf.net shell
+  - [X] Sending a support ticket to sourceforge team
+  - [X] From the staff hints
+    - [X] Move scripts to cgi-bin
+    - [X] Create a script to test from a newly created website
+	  Because shell service doesn't use the correct environmant
+      - [X] Move foswiki to cgi-bin
+	   =chmod  +rx FILENAME= to be exec. by apache user
+    - [X] Still have a 'Could not load CGI::Carp.' when loading wiki/bin/configure
+- [ ] Could we write email::TLS handler ?
+  - [ ] Modify the sendMail() function (using TLS) in lib/Foswiki/UI/Register.pm
+      I'm sure using TLS works
+    $session->net->sendEmail($text); ?
+    all is in lib/Foswiki/Net.pm :
+    _installMailHandler set $this->{mailHandler}
+    I'm not sure we can modify $session->net->sendEmail($text);
+  - [ ] configure foswiki to use registration with email confirmation
+  - [ ] Test it with a TestMail user or configure test mail function
+  - [ ] Write an explanation in a foswiki page
+**** DONE Upgrade to Foswiki 1.1.5
+     CLOCK: [2012-11-16 ven. 15:31]--[2012-11-16 ven. 17:03] =>  1:32
+     CLOCK: [2012-11-16 ven. 10:36]--[2012-11-16 ven. 11:15] =>  0:39
+     CLOCK: [2012-11-15 jeu. 19:34]--[2012-11-15 jeu. 20:16] =>  0:42
+- [X] How to know current running release
+  go to System/WebHome; it's printed (Foswiki-1.1.2)
+     see http://foswiki.org/System/UpgradeGuide#Upgrading_to_a_new_patch_release
+- [X] Try using a Upgrade version locally
+  http://sourceforge.net/projects/foswiki/files/foswiki/1.1.5/Foswiki-upgrade-1.1.5.tgz
+  - [X] Make the local install works
+  - [X] Create a UPGRADE_FOSWIKI_1.1.5.org file
+  - [X] Copy the contents of the upgrade tgz or zipfile onto your installation
+  - [X] Update file ownership and permissions- See SettingFileAccessRightsLinuxUnix
+  - [X] Visit bin/configure
+    - [X] Address any warnings or errors reported by the new configuration checkers
+    - [X] Go to the Extensions, JQuery tab, Select the 1.7.1 version of jquery,
+      ensure that a JQuery theme has been selected, Disable any JQuery plugins flagged as obsolete
+  - [X] If you use the Foswiki Cache, be sure to refresh the cache. See System.PageCaching#Refreshing_the_cache
+- [X] Make the changes to online installation
+- [X] Add this walkthrough to a wiki page
+- [X] Remove local install and tests
+**** DONE Starting static/ tests
+     CLOCK: [2011-08-10 mer. 17:59]--[2011-08-10 mer. 18:14] =>  0:15
+     CLOCK: [2011-08-06 sam. 15:41]--[2011-08-06 sam. 15:49] =>  0:08
+     CLOCK: [2011-08-03 mer. 10:51]--[2011-08-03 mer. 11:11] =>  0:20
+<link rel="stylesheet" href="../common/skin.css" type="text/css" />
+- [X] Make integration tests with available browsers
+- [X] Must emphasis current page in menu for links -g
+- [X] Avoid absolute positionning to be able to use WP admin bar (top:28px;)
+- [X] Find a way to add a AddThis.com div
+**** DONE Correct project setup
+     CLOCK: [2011-11-30 mer. 17:12]--[2011-11-30 mer. 17:43] =>  0:31
+     CLOCK: [2011-11-30 mer. 09:30]--[2011-11-30 mer. 09:52] =>  0:22
+     CLOCK: [2011-07-31 dim. 11:05]--[2011-07-31 dim. 11:18] =>  0:13
+- [X] Directory structure with README file in each dir
+  skin01/
+    INTEGRATION_TESTS
+    static/
+    blog/
+    wiki/
+    api/               /* For doxygen , texinfo, man???*/
+- [X] See if wordpress and foswiki doctype are the same
+      wordpress: <!DOCTYPE html>
+      foswiki: <!DOCTYPE html ...
+- [X] Uses automake for the `make distclean` rule

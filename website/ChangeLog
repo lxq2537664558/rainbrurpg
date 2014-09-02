@@ -1,3 +1,14 @@
+2014-10-02 Jérôme Pasquier  <rainbru@free.fr>
+
+	* skin01/wordpress/header.php: fix the common/ gray menu
+	directory error.
+
+	* ROADMAP: change TODO items direction.
+
+	* skin01/wordpress/single.php: same fix as below.
+	* skin01/wordpress/index.php: fix an endif error in the taglist
+	generation.
+
 2013-03-11 Jérôme Pasquier  <rainbru@free.fr>
 
 	* UPGRADE_FOSWIKI.org (Upgrade to 1.1.8): Written a basic draft.
