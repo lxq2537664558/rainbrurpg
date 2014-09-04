@@ -24,6 +24,8 @@
  
 #include "ASNPerson.h"
 
+#include <fstream>
+
 Person::Person(): 
   name(""), 
   age(20) 

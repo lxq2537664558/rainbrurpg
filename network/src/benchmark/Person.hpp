@@ -24,7 +24,7 @@
 #  define _PERSON_HPP_ 
 
 // If not define, use char* buffer
-#define ASN_USE_FILE 
+//#define ASN_USE_FILE 
 
 #include <string>
 #include <mongo/db/jsobj.h>
