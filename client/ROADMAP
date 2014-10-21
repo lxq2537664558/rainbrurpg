@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2014-10-21 mar. 18:03]--[2014-10-21 mar. 18:26] =>  0:23
      CLOCK: [2014-09-01 lun. 17:00]--[2014-09-01 lun. 17:38] =>  0:38
      CLOCK: [2014-09-01 lun. 15:51]--[2014-09-01 lun. 16:22] =>  0:31
      CLOCK: [2014-09-01 lun. 11:57]--[2014-09-01 lun. 14:07] =>  2:10
@@ -56,6 +57,7 @@
 - [X] Should move media here (find CEGUI medias)
 - [X] Integrates CEGUI window
 - [X] Must show loading progress bar
+- [X] Add media to the distribution
 - [ ] Handle interaction in menu layout (maybe another gamestate)
 - [ ] Window must be resizable and exitable
 - [ ] Must hide the system mouse cursor

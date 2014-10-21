@@ -41,4 +41,10 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 
 dnl Checks for library functions.
 
-AC_OUTPUT(Makefile src/Makefile client.lsm client.spec)
+AC_OUTPUT(Makefile		\
+  src/Makefile			\
+  media/Makefile		\
+  media/cegui-orig/Makefile	\
+  media/layouts/Makefile	\
+  \
+  client.lsm client.spec)

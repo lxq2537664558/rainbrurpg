@@ -1,3 +1,8 @@
+2014-10-21  Jérôme Pasquier  <rainbru@free.fr>
+
+	* medias/*/Makefile.am: added datafiles to tarball.
+	* configure.ac (AC_OUTPUT): added medias/*Makefile generation.
+
 2014-10-01  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/GameEngine.cpp (run): added loading bar.
