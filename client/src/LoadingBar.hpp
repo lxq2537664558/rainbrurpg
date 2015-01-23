@@ -1,7 +1,7 @@
 /*
- * Copyright 2014 Jerome Pasquier
+ * Copyright 2011-2015 Jerome Pasquier
  *
- * This file is part of free_theft_auto.
+ * This file is part of rainbrurpg-client.
  *
  * rainbrurpg-client is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
