@@ -1,3 +1,10 @@
+2015-05-23  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/tools/main_window.rb (setup_actions): changing the loglevel
+	combo changes the table content.
+	* src/tools/main_window.rb (feed_cbDomains): feed the domain combo.
+	* src/tools/MainWindow.ui: add the Domain Label and ComboBox.
+
 2014-08-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/Logger.cpp (parse_program_options): several try for the

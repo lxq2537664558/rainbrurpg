@@ -25,6 +25,7 @@
 
 **** Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
 **** TODO Create a ruby/qt app to handle Yaml output
+     CLOCK: [2015-04-23 jeu. 14:13]--[2015-04-23 jeu. 15:19] =>  1:06
      CLOCK: [2014-07-31 jeu. 14:33]--[2014-07-31 jeu. 15:21] =>  0:48
      CLOCK: [2014-07-31 jeu. 10:03]--[2014-07-31 jeu. 11:59] =>  1:56
      CLOCK: [2011-12-09 ven. 22:04]--[2011-12-09 ven. 22:34] =>  0:30
@@ -50,8 +51,11 @@
   - [X] A log file must be a complete object, written directly by main window
   - [X] Must feed Source file combo with every filenae found on the 
     YAML file
-  - [ ] Add and feed a Domain combobox
-  - [ ] Create signals, slots for two combos
+  - [X] Add and feed a Domain combobox
+  - [-] Create signals, slots for the three combos
+    - [-] The loglevel combo
+      - [X] Feed the table
+      - [ ] Change other combos content ?
 - [ ] If `rbuic4' is not found by ./configure, it tries to build .ui files
   with a tool named `no'. For sure it fails.
 - [ ] Maybe use kwalify to test YAML file

@@ -17,6 +17,7 @@ logger - GPLv3 - The RainbruRPG's stream-oriented multi-output logging
    Please update version and revision in configure.in and texinfo manual
 
 * v0.0.0-9 (02 may 2012 - ???) SLOC ??? FT ??:??
+- The log reader's loglevel combo updates the table
 - Closed a ROADMAP item (logger is usable)
 - log_reader feeds sourcefiles combo box
 - log_reader now uses Psych to read yaml

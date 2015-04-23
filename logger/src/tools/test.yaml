@@ -125,7 +125,7 @@ lines:
       - string : A string 
       - double : 82
 
-  - level    : informative
+  - level    : warning
     domain   : MyLogDomain
     filename : logger-test.cpp
     line     : 48
@@ -237,7 +237,7 @@ lines:
       - string : A string 
       - double : 82
 
-  - level    : informative
+  - level    : critical
     domain   : MyLogDomain
     filename : logger-test.cpp
     line     : 48
@@ -293,7 +293,7 @@ lines:
       - string : A string 
       - double : 82
 
-  - level    : informative
+  - level    : warning
     domain   : MyLogDomain
     filename : logger-test.cpp
     line     : 48

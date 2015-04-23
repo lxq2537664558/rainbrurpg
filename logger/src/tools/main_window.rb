@@ -1,10 +1,17 @@
 require_relative "MainWindow_ui"
 
+class MainWindowFilter
+  attr_accessor :loglevel
+
+end
+
 class MainWindow < Qt::MainWindow
   def initialize(app, logfile)
     super()
     @app = app
     @logfile = logfile
+
+    @filters = MainWindowFilter.new
 
     @ui = Ui::MainWindow.new
     @ui.setup_ui(self)
@@ -18,14 +25,27 @@ class MainWindow < Qt::MainWindow
 
   def update_ui(logfile)
     setLogfileDetails(logfile.details)
+    feed_list(logfile)
+    feed_cbSources(logfile)
+    feed_cbDomains(logfile)
+  end
+
+  def feed_list(logfile)
+    @ui.linesTable.clear
+    @ui.linesTable.setRowCount( 0);
+
     logfile.lines.each do |l|
       addLineDetails(l)
     end
-    feed_cbSources(logfile)
   end
 
   def setup_actions
-
+    levels = [ "debug", "informative", "warning", "critical" ]
+    @ui.cbLogLevels.connect(SIGNAL('currentIndexChanged(int)')) do |idx|
+      # Here we create a regex containing the accetable log levels
+      @filters.loglevel =  Regexp.new(Regexp.new(levels[idx..3].join('|')))
+      feed_list(@logfile)
+    end
   end
 
   private
@@ -37,6 +57,16 @@ class MainWindow < Qt::MainWindow
     end
     @ui.cbSourcesFiles.clear
     @ui.cbSourcesFiles.addItems(a)
+  end
+
+  def feed_cbDomains(logfile)
+    a = Array.new
+    a << "<All domains>"
+    logfile.lines.uniq { |l| l.domain  }.map{ |l| l.domain}.each do |l|
+      a << l
+    end
+    @ui.cbDomains.clear
+    @ui.cbDomains.addItems(a)
   end
   
   def setLogfileDetails(lfd)
@@ -50,9 +80,18 @@ class MainWindow < Qt::MainWindow
   end
 
   def addLineDetails(ld)
-    row = @ui.linesTable.rowCount
-    @ui.linesTable.insertRow(row);
-    setLineDetails row, ld
+    add = true
+    unless @filters.loglevel.nil?
+      p ld.level
+      unless @filters.loglevel.match(ld.level)
+        add = false
+      end
+    end
+    if add
+      row = @ui.linesTable.rowCount
+      @ui.linesTable.insertRow(row);
+      setLineDetails row, ld
+    end
   end
 
   # Low level functions
