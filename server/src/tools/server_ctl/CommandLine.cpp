@@ -30,9 +30,14 @@
 
 #include <iostream>
 
+#include <boost/algorithm/string.hpp> // For the trim command
+
 #ifdef HAVE_CONFIG_H
 #  include <config.h> // USES PACKAGE_VERSION
 #endif
+
+using namespace std;
+using namespace boost::algorithm;
 
 // Static members
 CommandLine* CommandLine::mInstance;
@@ -82,7 +87,10 @@ CommandLine::getNext(void)
 	      it->second->execute(strcmd);
 	    }
 	  
-	  printf("[%s]\n",mCommandBuffer);
+	  // Trim the command string
+	  trim(strcmd);
+
+	  cout << "["  << strcmd << "]" << endl;
 	  
 	  if (mCommandBuffer[0]!=0)
 	    add_history(mCommandBuffer);

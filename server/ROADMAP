@@ -23,6 +23,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO Create a basic TCP server with a server-ctl tool
+     CLOCK: [2015-04-24 ven. 13:10]--[2015-04-24 ven. 13:51] =>  0:41
      CLOCK: [2014-08-26 mar. 19:16]--[2014-08-26 mar. 19:35] =>  0:19
      CLOCK: [2014-08-26 mar. 16:40]--[2014-08-26 mar. 19:16] =>  2:36
      CLOCK: [2014-08-12 mar. 15:42]--[2014-08-12 mar. 17:18] =>  1:36
@@ -49,7 +50,7 @@
     - [X] Then, other wrappers
     - [X] Must handle the cmd char array correctly and add added commands
       to it
-- [ ] Completion add an extra space to command so quit when called from
+- [X] Completion add an extra space to command so quit when called from
   completion isn't understand properly, we must chomp command before testing it
 - [ ] May handle short command a guile-ish way as ,q ,h and others
 - [ ] Remove dupstr
@@ -64,6 +65,15 @@
   - [ ] regex to get port and to test for IP
   - [ ] manpage and texinfo manual for the available commands
 - [ ] See if gearman could be interresting (see http://gearman.org)
+- [ ] Could start to use IPC for server/ctl communication
+  - Boost.Interprocess could be fine
+  - Or use a real network connection with an admin user to be able to admin
+    distant server. 
+  - Packets are send in BSon format) and proto defined in
+    src/tools/proto to be able to create a Qt5 admin tool and so on.
+  - Maybe authenticate the admin user using a SSH key
+    see http://api.libssh.org/master/libssh_tutor_guided_tour.html
+  - Regular client could choose to use SSH as well.
 **** DONE Correct project setup
      CLOCK: [2012-05-09 mer. 09:17]--[2012-05-09 mer. 09:25] =>  0:08
      CLOCK: [2012-05-07 lun. 09:42]--[2012-05-07 lun. 10:14] =>  0:32

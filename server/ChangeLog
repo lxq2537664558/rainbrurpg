@@ -1,3 +1,7 @@
+2015-04-24  Jérôme Pasquier  <rainbru@free.fr>
+	* src/tools/server_ctl/CommandLine.cpp (getNext): simply trim the
+	command using boost/algorithm/string before printing it.
+
 2014-08-26  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/server_ctl/CommandLine.cpp (mCmdlist): correctly handle
