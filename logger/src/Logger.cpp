@@ -46,6 +46,8 @@ Rpg::CommandLineOptionsList Rpg::Logger::options_list;
 bool Rpg::Logger::liblogger_initialized = false;
 // End of static data members initialization
 
+using namespace std;
+
 /** The logger constructor
   *
   * \param vLogDomain The used log domain

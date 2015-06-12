@@ -1,3 +1,7 @@
+2015-06-12  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/Logger.hpp: remove all occurences of using namespace.
+
 2015-05-23  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/tools/main_window.rb (setup_actions): changing the loglevel

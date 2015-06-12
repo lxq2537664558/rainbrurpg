@@ -33,8 +33,6 @@
 #include "Object.hpp"
 #include "LoggerOutput.hpp"
 
-using namespace std;
-
 namespace po = boost::program_options;
 
 /// A macro used to fix a __LINE__ bug
@@ -79,11 +77,11 @@ namespace Rpg
   };
 
   /// The type for a list of LoggerOutput
-  typedef list<LoggerOutput*> LoggerOutputList;
+  typedef std::list<LoggerOutput*> LoggerOutputList;
   /// The LoggerOutput predefined iterator
-  typedef list<LoggerOutput*>::iterator LoggerOutputListIterator;
+  typedef std::list<LoggerOutput*>::iterator LoggerOutputListIterator;
 
-  typedef list<struct tOptionMap> CommandLineOptionsList;
+  typedef std::list<struct tOptionMap> CommandLineOptionsList;
 
   /** The logger class
     *
@@ -100,21 +98,21 @@ namespace Rpg
   class Logger
   {
   public:
-    Logger(const string& vLogDomain="", LogType vLogType=LT_COUT);
+    Logger(const std::string& vLogDomain="", LogType vLogType=LT_COUT);
     ~Logger(){};
     
-    static void init(const string&, const string&, const string&, 
-		     const string& compil_date = __DATE__, 
-		     const string& compil_time = __TIME__);
+    static void init(const std::string&, const std::string&, const std::string&, 
+		     const std::string& compil_date = __DATE__, 
+		     const std::string& compil_time = __TIME__);
     static void free();
 
     static bool parse_program_options(int, char**);
     static void add_program_options(struct tOptionMap);
     
-    Logger& startLog(LogLevel, const string&, const string&);
+    Logger& startLog(LogLevel, const std::string&, const std::string&);
     void endLog();
     
-    Logger& operator<<(const string&);
+    Logger& operator<<(const std::string&);
     Logger& operator<<(const char&);
     Logger& operator<<(int);
     Logger& operator<<(double);
@@ -140,7 +138,7 @@ namespace Rpg
     static void liblogger_initialize (void);
 
   private:
-    string mLogDomain;                      //!< The logger's log domain
+    std::string mLogDomain;                      //!< The logger's log domain
     LogType mLogType;                       //!< The logger's type
     
     static LoggerOutputList mOutputList;    //!< The list of LoggerOutput
