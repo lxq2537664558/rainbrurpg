@@ -1,3 +1,7 @@
+2015-06-19  Jérôme Pasquier  <rainbru@free.fr>
+
+	* configure.ac (PKG_CHECK_MODULES): search for Ogre's exact version.
+
 2014-10-21  Jérôme Pasquier  <rainbru@free.fr>
 
 	* medias/*/Makefile.am: added datafiles to tarball.

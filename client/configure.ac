@@ -3,7 +3,7 @@ dnl Process this file with autoconf to produce a configure script.
 AC_INIT([rainbrurpg-client], [0.0.0-2], [rainbru@users.sourceforge.net])
 AC_CONFIG_SRCDIR([src/main.cpp])
 AM_INIT_AUTOMAKE
-
+AC_CONFIG_MACRO_DIR([m4])
 
 dnl create a config.h file (Automake will add -DHAVE_CONFIG_H)
 AM_CONFIG_HEADER(config.h)
@@ -22,7 +22,8 @@ AC_PROG_CXX
 
 dnl Checks for libraries.
 PKG_CHECK_MODULES([DEPS], 
-  [OGRE >= 1.6 OIS >= 1.3 CEGUI-0 CEGUI-0-OGRE rainbrurpg-logger])
+  [OGRE = 1.8.0 OIS >= 1.3 CEGUI-0 CEGUI-0-OGRE rainbrurpg-logger])
+RB_CHECK_BOOST_PROGRAM_OPTIONS
 
 dnl Checks for header files.
 AC_HEADER_STDC
