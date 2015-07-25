@@ -1,6 +1,6 @@
 The following package should be installed before RainbruRPG is installed:
 
-* Ogre3D 1.6.4 
+* Ogre3D 1.8
   + Needed.
   + homepage:
     http://www.ogre3d.org
@@ -17,7 +17,7 @@ The following package should be installed before RainbruRPG is installed:
 * Boost 1.55
   + Needed
 
-* CEGUI 0.8
+* CEGUI 0.7.6
   + Needed
   + homepage:
     http://cegui.org.uk

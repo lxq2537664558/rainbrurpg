@@ -1,0 +1,7 @@
+syntax: glob
+
+*~
+Makefile
+Makefile.in
+configure
+*.o

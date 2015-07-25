@@ -32,6 +32,7 @@
      in src/tools, with needed api modules preloaded to be
      able to test for guile an interactive way.
 **** TODO first version
+     CLOCK: [2015-07-25 sam. 17:21]--[2015-07-25 sam. 18:01] =>  0:40
      CLOCK: [2015-06-19 ven. 13:21]--[2015-06-19 ven. 13:32] =>  0:11
      CLOCK: [2015-01-23 ven. 10:59]--[2015-01-23 ven. 11:29] =>  0:30
      CLOCK: [2014-10-21 mar. 18:03]--[2014-10-21 mar. 18:26] =>  0:23
@@ -63,6 +64,7 @@
 - [X] Update GNU headers date for 2015 
   Using =sed -i -e "s/2011-2012, 2014/2011-2012, 2014-2015/g"=
 - [X] configure should search for Boost.Program_options
+- [ ] Switch back to Ogre1.8 CEGUI0.7.6 (follow debian Jessie)
 - [ ] Handle interaction in menu layout (maybe another gamestate)
 - [ ] Window must be resizable and exitable
 - [ ] Must hide the system mouse cursor

@@ -28,7 +28,7 @@
 #include <Ogre.h>
 #include <OIS.h>
 
-#include <CEGUI/RendererModules/Ogre/Renderer.h>
+#include <CEGUI/RendererModules/Ogre/CEGUIOgreRenderer.h>
 
 using namespace std;
 using namespace Ogre;
@@ -148,7 +148,7 @@ GameEngine::GameEngine(void):
       // Initialize CEGUI
       CEGUI::OgreRenderer& mRenderer = CEGUI::OgreRenderer::bootstrapSystem();
 
-      CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
+      CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
       CEGUI::Font::setDefaultResourceGroup("Fonts");
       CEGUI::Scheme::setDefaultResourceGroup("Schemes");
       CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
@@ -186,21 +186,19 @@ GameEngine::run()
   // current_gamestate->run(this);
 
   ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
-  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
-  CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().
-    setDefaultImage("Vanilla-Images/MouseArrow");
+  CEGUI::SchemeManager::getSingleton().create("VanillaSkin.scheme");
+  CEGUI::SchemeManager::getSingleton().create("VanillaCommonDialogs.scheme");
+  CEGUI::MouseCursor::getSingleton().setImage("Vanilla", "MouseArrow");
 
 
   // Align CEGUI mouse with OIS mouse
   const OIS::MouseState state = mMouse->getMouseState();
-  CEGUI::Vector2f mousePos = CEGUI::System::getSingleton().
-    getDefaultGUIContext().getMouseCursor().getPosition(); 
-  CEGUI::System::getSingleton().getDefaultGUIContext()
-    .injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
+  CEGUI::Vector2 mousePos = CEGUI::MouseCursor::getSingleton().getPosition(); 
+  CEGUI::System::getSingleton().
+    injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
   CEGUI::Window *guiRoot = CEGUI::WindowManager::getSingleton()
-    .loadLayoutFromFile("menu.layout"); 
-  CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(guiRoot);
+    .loadWindowLayout("menu.layout"); 
+  CEGUI::System::getSingleton().setGUISheet(guiRoot);
 
 
   lb->finish();
@@ -256,11 +254,13 @@ GameEngine::windowClosed(Ogre::RenderWindow* rw)
 bool  
 GameEngine::mouseMoved( const OIS::MouseEvent& evt )
 {
-  CEGUI::GUIContext& sys = CEGUI::System::getSingleton().getDefaultGUIContext();
-  sys.injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
+  CEGUI::System::getSingleton().
+    injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
+  
   // Scroll wheel.
   if (evt.state.Z.rel)
-    sys.injectMouseWheelChange(evt.state.Z.rel / 120.0f);
+    CEGUI::System::getSingleton().
+      injectMouseWheelChange(evt.state.Z.rel / 120.0f);
 
   return true;
 }
@@ -268,26 +268,22 @@ GameEngine::mouseMoved( const OIS::MouseEvent& evt )
 bool  
 GameEngine::mousePressed( const OIS::MouseEvent& evt, OIS::MouseButtonID id )
 {
-  CEGUI::System::getSingleton().getDefaultGUIContext().
-    injectMouseButtonDown(convertButton(id));
+  CEGUI::System::getSingleton().injectMouseButtonDown(convertButton(id));
   return true;
 }
 
 bool  
 GameEngine::mouseReleased( const OIS::MouseEvent& evt, OIS::MouseButtonID id )
 {
-  CEGUI::System::getSingleton().getDefaultGUIContext().
-    injectMouseButtonUp(convertButton(id));
+  CEGUI::System::getSingleton().injectMouseButtonUp(convertButton(id));
   return true;
 }
 
 bool  
 GameEngine::keyPressed( const OIS::KeyEvent& evt )
 {
-  CEGUI::GUIContext& context = CEGUI::System::getSingleton().
-    getDefaultGUIContext();
-  context.injectKeyDown((CEGUI::Key::Scan)evt.key);
-  context.injectChar((CEGUI::Key::Scan)evt.text);
+  CEGUI::System::getSingleton().injectKeyDown((CEGUI::Key::Scan)evt.key);
+  CEGUI::System::getSingleton().injectChar((CEGUI::Key::Scan)evt.text);
 
   switch (evt.key)
     {
@@ -304,8 +300,7 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
 bool  
 GameEngine::keyReleased( const OIS::KeyEvent& evt )
 {
-  CEGUI::System::getSingleton().getDefaultGUIContext().
-    injectKeyUp((CEGUI::Key::Scan)evt.key);
+  CEGUI::System::getSingleton().injectKeyUp((CEGUI::Key::Scan)evt.key);
   return true;
 }
 

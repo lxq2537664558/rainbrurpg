@@ -2,6 +2,8 @@
 
 OVERALL TODO
 
+* Enable travis-ci build on these projects
+
 * TODO: release-all.sh
 - Make a complete archive containing all code from actual sub-projects
    with a README file containing building order/instructions.
