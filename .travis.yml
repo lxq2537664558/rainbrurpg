@@ -7,5 +7,5 @@ only:
 - master
 before_install:
 - ./CI/before_install.sh
-before_script:
-- ./CI/before_script.sh
+script:
+- ./CI/script.sh

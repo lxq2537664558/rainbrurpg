@@ -5,9 +5,19 @@ Makefile
 Makefile.in
 configure
 *.o
+*.lo
 
+config.log
 Ogre.log
 CEGUI.log
 
 .libs/
 .deps/
+
+*.lsm
+*.spec
+
+*.info
+*.pc
+*.la
+*.so

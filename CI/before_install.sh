@@ -7,4 +7,4 @@ sudo apt-get update -qq
 
 
 sudo apt-get install libogre-dev libcegui-mk2-dev libois-dev \
-     libboost-program-options-dev
+     libboost-program-options-dev libenet-dev guile-2.0-dev
