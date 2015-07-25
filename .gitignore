@@ -4,13 +4,16 @@ syntax: glob
 Makefile
 Makefile.in
 configure
-*.o
-*.lo
+autom4te.cache/
+aclocal.m4
 
 config.log
 Ogre.log
 CEGUI.log
 
+# C++ object/libraries
+*.o
+*.lo
 .libs/
 .deps/
 
@@ -21,3 +24,20 @@ CEGUI.log
 *.pc
 *.la
 *.so
+
+# 
+compile
+stamp-h1
+libtool
+
+# checkinstall files
+description-pak
+doc-pak/
+backup-*.tgz
+*.deb
+
+# Generated binaries/logfiles
+logger/src/examples/logger-test
+client/src/rainbrurpg-client
+client/src/rainbrurpg-client.log
+client/src/rainbrurpg-client.yml

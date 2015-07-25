@@ -1,6 +1,9 @@
-#!/bin/sh   
+#!/bin/sh -e
 
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+# The '-e' flag in the shebang should make fail the script if
+# an error occurs.
+
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 sudo ldconfig
 
 list="logger network services meta client server"   
