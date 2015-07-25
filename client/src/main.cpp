@@ -42,6 +42,7 @@ main(int argc, char** argv)
     }
   catch (...)
     {
+      LOGE("Something went wrong in the GameEngine. Please see the Ogre logs.");
       return 1;
     }
   LOGI("main loop ended");

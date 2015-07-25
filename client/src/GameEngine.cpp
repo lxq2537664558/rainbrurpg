@@ -176,14 +176,15 @@ bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 void
 GameEngine::run()
 {
-
+  LOGE("GameEngine::run() called...");
+  
   setupResources();
 
   LoadingBar* lb = new LoadingBar();
   lb->start(mWindow, 1, 1, 0.75);
 
   //  if (current_gamestate != NULL)
-  // current_gamestate->run(this);
+  //   current_gamestate->run(this);
 
   ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
   CEGUI::SchemeManager::getSingleton().create("VanillaSkin.scheme");
@@ -199,7 +200,6 @@ GameEngine::run()
   CEGUI::Window *guiRoot = CEGUI::WindowManager::getSingleton()
     .loadWindowLayout("menu.layout"); 
   CEGUI::System::getSingleton().setGUISheet(guiRoot);
-
 
   lb->finish();
 

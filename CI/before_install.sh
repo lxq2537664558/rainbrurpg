@@ -1,7 +1,10 @@
 #!/bin/sh   
 
+# Ogre isn in universe
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+
 sudo apt-get update -qq
 
 
-sudo apt-get install libogre-1.8-dev libcegui-mk2-dev libois-dev \
+sudo apt-get install libogre-dev libcegui-mk2-dev libois-dev \
      libboost-program-options-dev

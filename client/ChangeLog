@@ -1,3 +1,11 @@
+2015-07-25  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/plugins.cfg.in (PluginFolder): comes from pkg-config from
+	an automake substitution.
+	* src/plugins.cfg: hardcoded fix for the PluginFolder issue.
+
+	* DEPENDENCIES: Switch back to Ogre 1.8 and CEGUI 0.7.6.
+
 2015-06-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* configure.ac (PKG_CHECK_MODULES): search for Ogre's exact version.

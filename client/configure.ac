@@ -22,7 +22,11 @@ AC_PROG_CXX
 
 dnl Checks for libraries.
 PKG_CHECK_MODULES([DEPS], 
-  [OGRE = 1.8.0 OIS >= 1.3 CEGUI CEGUI-OGRE rainbrurpg-logger])
+  [OGRE = 1.8.0 OIS >= 1.3 CEGUI CEGUI-OGRE rainbrurpg-logger],
+  [ac_ogre_plugindir=`$PKG_CONFIG --variable=plugindir OGRE`]
+)
+AC_SUBST(OGRE_PLUGINDIR, $ac_ogre_plugindir)
+
 RB_CHECK_BOOST_PROGRAM_OPTIONS
 
 dnl Checks for header files.
@@ -47,5 +51,7 @@ AC_OUTPUT(Makefile		\
   media/Makefile		\
   media/cegui-orig/Makefile	\
   media/layouts/Makefile	\
+  \
+  src/plugins.cfg
   \
   client.lsm client.spec)
