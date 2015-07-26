@@ -10,6 +10,7 @@ list="logger network services meta client server"
 for element in $list    
 do   
     cd $element
+    pwd
     automake --add-missing
     autoreconf
     ./configure

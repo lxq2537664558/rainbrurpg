@@ -8,6 +8,20 @@ compiler:
 branches:
   only:
     - master
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "dMAYU0TEqSGIuQLPKbojOiKBDciXdNRl5p2h76wEB9J9QhNAsirqA8bjLZVeNdktY8mohPBI0vKgRHUtyzpnt8GzLVB9vX8zussr/gOT6s49eiWQ+d/1lb9zf0GK8CEmce0aR+o2whIuECwrYh/tV3TkVsMnA7LivGfq92rI/7bZQZZ/+rl0D5pQA0V+d7NPbl5F0vrjkDVeZcapyyD9jY63enVyh6SdmrmwG6fVZykmFWDV5cEzWTpgJRpUVjsrgAu/H2nnLWC2634MaM4K6xPZwfKZIx6PJMSfAGyWh+79sv/7U+4JMsaRcBaiWARjVFDGyxYlyarvkuFGa2XHppFmaPuKTcGVEjSq2uh0HfD2kuniVkZ/j4GZAlgvH33F2SQdoMAxezIoPe9X+ccQKyxdrcm94K6MoYkL63JQL7UViEBV+hDBBC9dsuk2ey3U6lVSzK1KChZYK8ZED8i1NZp4z2zks3DwvcWMyIxYhThBEdwRX3xMnSzY+hPyS8vlspQE+0aZGNoYzLG6jyCrEJhqL1djdQcXCXUqxMc09JZnrnXmj4Dn2rf4ndILFz5ilMj8LoV1RFJLNSVPvKqvBelu1Iu1mHMsxoFuigVycKeTaosuwXcbQqOV4L/g3y9Kr+bJv1fao+hGRmMIDFwoNzc+g0O758OKTSB2vt4XfVI="
+
+addons:
+  coverity_scan:
+    project:
+      name: "rainbru/rainbrurpg"
+      description: "<Your project description here>"
+    notification_email: rainbru@free.fr
+    build_command_prepend: "./CI/script.sh"
+    build_command:   "make"
 before_install:
 - ./CI/before_install.sh
 script:
