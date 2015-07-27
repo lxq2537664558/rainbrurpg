@@ -1,0 +1,9 @@
+					-*-org-*-
+
+* Trying cmake as a global build system
+  CLOCK: [2015-07-27 lun. 22:23]--[2015-07-27 lun. 23:10] =>  0:47
+  Because the actual multi-projects setup id failing and to ease the
+  travis-ci and coverity usage.
+- [ ] Create CMakeLists.txt
+- [ ] May create a config.h
+- [ ] All sources should be in src/
