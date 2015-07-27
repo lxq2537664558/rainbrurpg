@@ -13,6 +13,8 @@
   - _underlined_
   - +strikethriugh+  
   May also handle smileys
+**** If we need an in-game text editor
+see these colors https://github.com/altercation/solarized/
 *** v0.0.1 Technical demo
 **** Search for server and list them
 - [ ] meta-client library become a dependency
