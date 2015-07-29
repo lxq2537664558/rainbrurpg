@@ -31,10 +31,13 @@ This source file is part of the
 #include <OISKeyboard.h>
 #include <OISMouse.h>
 
-#include <SdkTrays.h>
-#include <SdkCameraMan.h>
+//#include <SdkTrays.h>
+//#include <SdkCameraMan.h>
 
-class BaseApplication : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
+// public Ogre::WindowEventListener,
+class BaseApplication : public Ogre::FrameListener,
+    public OIS::KeyListener,
+    public OIS::MouseListener
 {
 public:
     BaseApplication(void);
