@@ -1,10 +1,23 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-07-29 mer. 19:00]--[2015-07-29 mer. 19:45] =>  0:45
   CLOCK: [2015-07-29 mer. 18:17]--[2015-07-29 mer. 18:46] =>  0:29
   CLOCK: [2015-07-27 lun. 22:23]--[2015-07-27 lun. 23:10] =>  0:47
   Because the actual multi-projects setup id failing and to ease the
   travis-ci and coverity usage.
-- [ ] Create CMakeLists.txt
-- [ ] May create a config.h
+- [X] Create CMakeLists.txt
+- [X] May create a config.h
+- [X] Fix multiple errors in client/src/BaseApplication
+  It's a Ogre1.9 source, not used anymore in Makefile.am
+  The error is due to the CMake way to add sources (GLOB)
+- [X] Add missing declaration in config.h
+- [ ] Build another components
+  Now that logger ad client correctly build
+  - [ ] meta
+    - [ ] libclient
+    - [ ] libserver
+  - [ ] network
+  - [ ] services
+  - [ ] server
 - [ ] All sources should be in src/

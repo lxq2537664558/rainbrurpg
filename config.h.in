@@ -3,8 +3,10 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define PACKAGE "@CMAKE_PROJECT_NAME@"
+#define PACKAGE   "@CMAKE_PROJECT_NAME@"
 #define LOCALEDIR "@CMAKE_INSTALL_FULL_LOCALEDIR@"
-#define VERSION 0
+
+#define VERSION  "@VERSION@"
+#define REVISION @REVISION@
 
 #endif // _CONFIG_H_

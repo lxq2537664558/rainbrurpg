@@ -1,6 +1,11 @@
 cmake_minimum_required (VERSION 2.8)
 project (rainbrurpg)
+
 message(STATUS "Configuring RainbruRPG...")
+# set( CMAKE_VERBOSE_MAKEFILE on ) # To debug this file
+
+set(VERSION 0.0.5)
+set(REVISION 248)
 
 # Generate config file
 configure_file(
@@ -24,13 +29,18 @@ else()
 endif()
 
 # Check dependencies
-set(CLI_DEPS OGRE CEGUI CEGUI-OGRE) # Client-only dependencies
-pkg_check_modules(CLI REQUIRED "${CLI_DEPS}")
+set(CLI_DEPS OGRE CEGUI CEGUI-OGRE OIS) # Client-only dependencies
+pkg_check_modules(CLI REQUIRED ${CLI_DEPS})
+set(BOOST_COMPONENTS system filesystem program_options thread
+  unit_test_framework)
+find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+
 
 # add the binary tree to the search path for include files
 include_directories(
-  ${PROJECT_BINARY_DIR}
-  ${CLI_CFLAGS}
+  ${CMAKE_SOURCE_DIR}
+  ${CLI_INCLUDE_DIRS}
+  logger/src
   )
 
 FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/logger/src/*.cpp")
@@ -38,5 +48,10 @@ add_library(rainbrurpg-logger ${logger-src})
 
 FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/client/src/*.cpp")
 add_executable(rainbrurpg-client ${client-src})
+target_link_libraries(rainbrurpg-client
+  rainbrurpg-logger
+  ${CLI_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
 
 #add_executable(rainbrurpg client)
