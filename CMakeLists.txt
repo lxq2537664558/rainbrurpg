@@ -64,4 +64,12 @@ target_link_libraries(rainbrurpg-client
   ${Boost_LIBRARIES}
 )
 
+FILE(GLOB server-src "${CMAKE_SOURCE_DIR}/server/src/*.cpp")
+add_executable(rainbrurpg-server ${server-src})
+target_link_libraries(rainbrurpg-server
+  rainbrurpg-logger
+  rainbrurpg-services
+  ${Boost_LIBRARIES}
+)
+
 #add_executable(rainbrurpg client)

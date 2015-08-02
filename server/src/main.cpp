@@ -32,9 +32,7 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/asio.hpp>
 
-#ifdef HAVE_CONFIG_H
-#  include "config.h"
-#endif
+#include "config.h"
 
 using namespace std;
 using boost::asio::ip::tcp;
@@ -119,7 +117,7 @@ void start_accept()
 int
 main(int argc, char** argv)
 {
-  Rpg::Logger::init("rainbrurpg-server", PACKAGE_VERSION, "rainbrurpg-server");
+  Rpg::Logger::init("rainbrurpg-server", VERSION, "rainbrurpg-server");
   Rpg::Logger::parse_program_options(argc, argv);
   
   try
