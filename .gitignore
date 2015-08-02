@@ -45,3 +45,6 @@ client/src/rainbrurpg-client.yml
 # CMake files
 config.h
 build/
+
+# Automake generated files (those need to switch to cmake)
+client/src/plugins.cfg
