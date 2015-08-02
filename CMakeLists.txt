@@ -31,25 +31,35 @@ endif()
 # Check dependencies
 set(CLI_DEPS OGRE CEGUI CEGUI-OGRE OIS) # Client-only dependencies
 pkg_check_modules(CLI REQUIRED ${CLI_DEPS})
-set(BOOST_COMPONENTS system filesystem program_options thread
+set(BOOST_COMPONENTS system filesystem program_options thread graph
   unit_test_framework)
 find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+pkg_check_modules(GUILE REQUIRED guile-2.0)
 
 
 # add the binary tree to the search path for include files
 include_directories(
   ${CMAKE_SOURCE_DIR}
   ${CLI_INCLUDE_DIRS}
+  ${GUILE_INCLUDE_DIRS}
   logger/src
   )
 
 FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/logger/src/*.cpp")
 add_library(rainbrurpg-logger ${logger-src})
 
+FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/services/src/*.cpp")
+add_library(rainbrurpg-services ${services-src})
+target_link_libraries(rainbrurpg-services
+  rainbrurpg-logger
+  ${GUILE_LIBRARIES}
+)
+
 FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/client/src/*.cpp")
 add_executable(rainbrurpg-client ${client-src})
 target_link_libraries(rainbrurpg-client
   rainbrurpg-logger
+  rainbrurpg-services
   ${CLI_LIBRARIES}
   ${Boost_LIBRARIES}
 )

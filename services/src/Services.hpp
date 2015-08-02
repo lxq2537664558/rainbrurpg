@@ -94,8 +94,9 @@ service_name(SCM name)
 static void*
 register_functions(void* data)
 {
-  scm_c_define_gsubr("version", 0, 0, 0, &version);
-  scm_c_define_gsubr("service-name", 1, 0, 0, &service_name);
+  
+  //  scm_c_define_gsubr("version", 0, 0, 0, &version);
+  //  scm_c_define_gsubr("service-name", 1, 0, 0, &service_name);
   return NULL;
 }
 

@@ -1,6 +1,7 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-08-02 dim. 15:34]--[2015-08-02 dim. 16:09] =>  0:35
   CLOCK: [2015-07-29 mer. 19:00]--[2015-07-29 mer. 19:45] =>  0:45
   CLOCK: [2015-07-29 mer. 18:17]--[2015-07-29 mer. 18:46] =>  0:29
   CLOCK: [2015-07-27 lun. 22:23]--[2015-07-27 lun. 23:10] =>  0:47
@@ -12,12 +13,13 @@
   It's a Ogre1.9 source, not used anymore in Makefile.am
   The error is due to the CMake way to add sources (GLOB)
 - [X] Add missing declaration in config.h
-- [ ] Build another components
+- [-] Build another components
   Now that logger ad client correctly build
-  - [ ] meta
-    - [ ] libclient
-    - [ ] libserver
-  - [ ] network
-  - [ ] services
+  - [X] meta
+    - [X] libclient (no sources)
+    - [X] libserver (no sources)
+  - [X] network  (no sources)
+  - [X] services
   - [ ] server
+- [ ] Move cmake-cuilt sources to a top-level src dircetory
 - [ ] All sources should be in src/
