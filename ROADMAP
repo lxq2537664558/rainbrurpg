@@ -24,3 +24,5 @@
   - [X] server
 - [ ] Move cmake-built sources to a top-level src dircetory
   - [ ] All sources should be in src/ so we have src/client src/server...
+- [ ] We also have to generate some extra files
+  - [ ] as client/src/plugins.cfg
