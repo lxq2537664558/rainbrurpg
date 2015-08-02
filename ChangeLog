@@ -1,0 +1,10 @@
+2015-08-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt: correctly build services and server with cmake.
+
+2015-07-29  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (find_package): search for Boost packages.
+	* CMakeLists.txt (include_directories): adds CMAKE_SOURCE_DIR to
+	make the client find config.h
+

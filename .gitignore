@@ -41,3 +41,7 @@ logger/src/examples/logger-test
 client/src/rainbrurpg-client
 client/src/rainbrurpg-client.log
 client/src/rainbrurpg-client.yml
+
+# CMake files
+config.h
+build/

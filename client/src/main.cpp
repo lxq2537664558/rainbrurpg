@@ -22,6 +22,8 @@
 
 #include "GameEngine.hpp"
 
+#include "config.h"
+
 static Rpg::Logger static_logger ("main", Rpg::LT_BOTH);
 
 #ifdef HAVE_CONFIG_H
