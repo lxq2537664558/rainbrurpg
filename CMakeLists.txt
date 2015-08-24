@@ -42,10 +42,10 @@ include_directories(
   ${CMAKE_SOURCE_DIR}
   ${CLI_INCLUDE_DIRS}
   ${GUILE_INCLUDE_DIRS}
-  logger/src
+  src/logger
   )
 
-FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/logger/src/*.cpp")
+FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/src/logger/*.cpp")
 add_library(rainbrurpg-logger ${logger-src})
 
 FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/services/src/*.cpp")
