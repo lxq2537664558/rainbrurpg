@@ -1,6 +1,7 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-08-24 lun. 20:52]--[2015-08-24 lun. 21:23] =>  0:31
   CLOCK: [2015-08-02 dim. 16:10]--[2015-08-02 dim. 16:16] =>  0:06
   CLOCK: [2015-08-02 dim. 15:34]--[2015-08-02 dim. 16:09] =>  0:35
   CLOCK: [2015-07-29 mer. 19:00]--[2015-07-29 mer. 19:45] =>  0:45
@@ -22,8 +23,15 @@
   - [X] network  (no sources)
   - [X] services
   - [X] server
-- [ ] Move cmake-built sources to a top-level src dircetory
-  - [ ] All sources should be in src/ so we have src/client src/server...
+- [-] Move cmake-built sources to a top-level src dircetory
+  All sources should be in src/ so we have src/client src/server...
+  - [-] First, mv logger
+    - [X] move .hpp an .cpp
+    - [X] Logger examples conditionnal compilation
+    - [X] Add a README.md file
+    - [ ] May move tools sources
+      We must generate _ui.rb file using rbuic4
+    - [ ] What to do with standard files (COPYING, etc...)
 - [ ] We also have to generate some extra files
   - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
