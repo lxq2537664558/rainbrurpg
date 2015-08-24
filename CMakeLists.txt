@@ -4,6 +4,8 @@ project (rainbrurpg)
 message(STATUS "Configuring RainbruRPG...")
 # set( CMAKE_VERBOSE_MAKEFILE on ) # To debug this file
 
+option(BUILD_LOGGER_EXAMPLES "If we build logger examples binaries" OFF)
+
 set(VERSION 0.0.5)
 set(REVISION 248)
 
@@ -43,6 +45,7 @@ include_directories(
   ${CLI_INCLUDE_DIRS}
   ${GUILE_INCLUDE_DIRS}
   src/logger
+  src/logger/examples
   )
 
 FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/src/logger/*.cpp")
@@ -72,4 +75,15 @@ target_link_libraries(rainbrurpg-server
   ${Boost_LIBRARIES}
 )
 
-#add_executable(rainbrurpg client)
+# Conditional building
+
+## Loger examples
+if(BUILD_LOGGER_EXAMPLES)
+  FILE(GLOB logger-examples-src "${CMAKE_SOURCE_DIR}/src/logger/examples/*.cpp")
+  add_executable(rainbrurpg-logger-example ${logger-examples-src})
+  target_link_libraries(rainbrurpg-logger-example
+    rainbrurpg-logger
+    ${Boost_LIBRARIES}
+    )
+  target_link_libraries(rainbrurpg-logger-example rainbrurpg-logger)
+endif(BUILD_LOGGER_EXAMPLES)

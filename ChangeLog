@@ -1,3 +1,7 @@
+2015-08-24  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt: conditionnal logger examples compilation works.
+
 2015-08-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt: correctly build services and server with cmake.
