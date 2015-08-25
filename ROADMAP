@@ -36,3 +36,12 @@
   - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others
+* Trying to create a new landing page for rainbrurpg.org
+  CLOCK: [2015-08-25 mar. 21:27]--[2015-08-25 mar. 21:55] =>  0:28
+- [ ] A single homepage using bootstrap
+  Trying to base it on http://startbootstrap.com/template-overviews/grayscale/
+- [ ] Could we use github API to get last commit/last tag (v???) is 
+  the last stable version
+  see https://github.com/michael/github/blob/master/github.js #listTags
+- [ ] Must sue cookiechoice
+- [ ] Maybe add Adsense ?
