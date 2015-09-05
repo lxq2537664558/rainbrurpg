@@ -5,6 +5,7 @@ message(STATUS "Configuring RainbruRPG...")
 # set( CMAKE_VERBOSE_MAKEFILE on ) # To debug this file
 
 option(BUILD_LOGGER_EXAMPLES "If we build logger examples binaries" OFF)
+option(BUILD_LOGREADER "If we build the Qt-based logreader" OFF)
 
 set(VERSION 0.0.5)
 set(REVISION 248)
@@ -87,3 +88,11 @@ if(BUILD_LOGGER_EXAMPLES)
     )
   target_link_libraries(rainbrurpg-logger-example rainbrurpg-logger)
 endif(BUILD_LOGGER_EXAMPLES)
+
+if(BUILD_LOGREADER)
+  find_program (UIC NAMES rbuic4)
+  add_custom_target(MainWindow.ui
+    COMMAND MainWindow.ui -o MainWindow_ui.rb
+    DEPENDS ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/MainWindow.ui
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/)
+endif(BUILD_LOGREADER)

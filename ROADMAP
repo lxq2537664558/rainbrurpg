@@ -1,6 +1,7 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-09-05 sam. 20:03]--[2015-09-05 sam. 20:39] =>  0:36
   CLOCK: [2015-08-24 lun. 20:52]--[2015-08-24 lun. 21:23] =>  0:31
   CLOCK: [2015-08-02 dim. 16:10]--[2015-08-02 dim. 16:16] =>  0:06
   CLOCK: [2015-08-02 dim. 15:34]--[2015-08-02 dim. 16:09] =>  0:35
@@ -31,6 +32,7 @@
     - [X] Add a README.md file
     - [ ] May move tools sources
       We must generate _ui.rb file using rbuic4
+      The actual custom_target doesn't work
     - [ ] What to do with standard files (COPYING, etc...)
 - [ ] We also have to generate some extra files
   - [ ] as client/src/plugins.cfg
