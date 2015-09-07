@@ -91,8 +91,11 @@ endif(BUILD_LOGGER_EXAMPLES)
 
 if(BUILD_LOGREADER)
   find_program (UIC NAMES rbuic4)
-  add_custom_target(MainWindow.ui
-    COMMAND MainWindow.ui -o MainWindow_ui.rb
+  add_custom_command(OUTPUT MainWindow_ui.rb
+    COMMAND ${UIC} MainWindow.ui -o MainWindow_ui.rb
     DEPENDS ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/MainWindow.ui
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/)
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/
+    COMMENT "Generating ruby sources from .ui file"
+    )
+  add_custom_target(logreader ALL DEPENDS MainWindow_ui.rb)
 endif(BUILD_LOGREADER)

@@ -48,3 +48,5 @@ build/
 
 # Automake generated files (those need to switch to cmake)
 client/src/plugins.cfg
+
+src/logger/tools/logreader/MainWindow_ui.rb

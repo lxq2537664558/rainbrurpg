@@ -1,5 +1,10 @@
 2015-09-05  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (BUILD_LOGREADER): correctly generate MainWindow_ui
+	ruby sources from .ui file.
+
+2015-09-05  Jérôme Pasquier  <rainbru@free.fr>
+
 	* CMakeLists.txt: trying to use rbuic using a custom_target.
 
 2015-08-24  Jérôme Pasquier  <rainbru@free.fr>
