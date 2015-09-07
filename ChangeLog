@@ -1,5 +1,8 @@
 2015-09-05  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (BUILD_LOGREADER): add an error message and fatal
+	error if we can't find rbuic4.
+
 	* CMakeLists.txt (BUILD_LOGREADER): correctly generate MainWindow_ui
 	ruby sources from .ui file.
 

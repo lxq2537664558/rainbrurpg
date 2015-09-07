@@ -91,11 +91,18 @@ endif(BUILD_LOGGER_EXAMPLES)
 
 if(BUILD_LOGREADER)
   find_program (UIC NAMES rbuic4)
-  add_custom_command(OUTPUT MainWindow_ui.rb
-    COMMAND ${UIC} MainWindow.ui -o MainWindow_ui.rb
-    DEPENDS ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/MainWindow.ui
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/
-    COMMENT "Generating ruby sources from .ui file"
-    )
-  add_custom_target(logreader ALL DEPENDS MainWindow_ui.rb)
+  message(STATUS "Found rbuic4 executable (${UIC})")
+  if (UIC)
+    add_custom_command(OUTPUT MainWindow_ui.rb
+      COMMAND ${UIC} MainWindow.ui -o MainWindow_ui.rb
+      DEPENDS ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/MainWindow.ui
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/logger/tools/logreader/
+      COMMENT "Generating ruby sources from .ui file"
+      )
+    add_custom_target(logreader ALL DEPENDS MainWindow_ui.rb)
+  else(UIC)
+    message(FATAL_ERROR "The rbuic4 executable was not found, "
+      "please verify your ruby-qt4 installation or disable "
+      "BUILD_LOGREADER building.")
+  endif(UIC)
 endif(BUILD_LOGREADER)

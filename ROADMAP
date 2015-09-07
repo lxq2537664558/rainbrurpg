@@ -1,6 +1,7 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-09-07 lun. 22:29]--[2015-09-07 lun. 22:40] =>  0:11
   CLOCK: [2015-09-07 lun. 22:03]--[2015-09-07 lun. 22:13] =>  0:10
   CLOCK: [2015-09-05 sam. 20:03]--[2015-09-05 sam. 20:39] =>  0:36
   CLOCK: [2015-08-24 lun. 20:52]--[2015-08-24 lun. 21:23] =>  0:31
@@ -34,6 +35,8 @@
     - [X] May move tools sources
       We must generate _ui.rb file using rbuic4
       The actual custom_target doesn't work
+    - [X] We should stop compilation and have a comprehensive
+      error message if we can't find rbuic4
     - [ ] What to do with standard files (COPYING, etc...)
 - [ ] We also have to generate some extra files
   - [ ] as client/src/plugins.cfg
