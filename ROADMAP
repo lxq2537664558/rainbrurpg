@@ -1,6 +1,7 @@
 					-*-org-*-
 
 * Trying cmake as a global build system
+  CLOCK: [2015-09-08 mar. 21:39]--[2015-09-08 mar. 21:42] =>  0:03
   CLOCK: [2015-09-08 mar. 21:20]--[2015-09-08 mar. 21:38] =>  0:18
   CLOCK: [2015-09-07 lun. 22:29]--[2015-09-07 lun. 22:40] =>  0:11
   CLOCK: [2015-09-07 lun. 22:03]--[2015-09-07 lun. 22:13] =>  0:10
@@ -38,9 +39,10 @@
       The actual custom_target doesn't work
     - [X] We should stop compilation and have a comprehensive
       error message if we can't find rbuic4
-    - [ ] What to do with standard files (COPYING, etc...)
-      - [ ] COPYING and AUTHORS now are top-level files
-    - [ ] Since logger have a po/ directory, how to use gettext with cmake
+    - [-] What to do with standard files (COPYING, etc...)
+      - [X] COPYING and AUTHORS now are top-level files
+      - [ ] What to do with automake-based INSTALL file      
+      - [ ] Since logger have a po/ directory, how to use gettext with cmake
 - [ ] We also have to generate some extra files
   - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
