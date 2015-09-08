@@ -1,3 +1,9 @@
+2015-09-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* logger/AUTHORS: move to top-level and remove all other copies.
+	* logger/COPYING: move to top-level and remove other copies (client,
+	meta, network, server,services).
+
 2015-09-05  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (BUILD_LOGREADER): add an error message and fatal
