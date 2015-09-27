@@ -56,3 +56,19 @@
   see https://github.com/michael/github/blob/master/github.js #listTags
 - [ ] Must sue cookiechoice
 - [ ] Maybe add Adsense ?
+* DONE Must install cookiechoices on rainbrurpg.org
+  CLOCK: [2015-09-27 dim. 18:21]--[2015-09-27 dim. 19:30] =>  1:09
+- [X] For reference
+  - How to copy a file to sf.net web server https://sourceforge.net/p/forge/documentation/Project%20Web%20Services/
+    - How to connect to ssh webservers =ssh -t USER,PROJECT@shell.sourceforge.net create=
+  - How to test a new template using foswiki Add =?cover=myskin?refresh=cache= to url
+- [X] Copy cookiechoices.js file to web server
+   /home/project-web/fooproject/htdocs
+  ou
+  /home/users/r/ra/rainbru
+- [X] May work on a new template to test it before launching
+  - [X] Create the cookie-ex.js and add it to template
+    in /static/pub/cookiechoices/
+  - [X] May create a Main/PrivacyPolicy page and make cookie-ex redirect here
+  - [X] Finally, set the cookies, rainbru and template order in Preferences
+    in page Main.SitePreferences 
