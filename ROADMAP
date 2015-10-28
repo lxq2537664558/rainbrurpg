@@ -58,6 +58,11 @@
       - [X] What to do with automake-based INSTALL file      
 	Just added a simple cmake based INSTALL in root dir.
       - [X] Since logger have a po/ directory, how to use gettext with cmake
+    - [ ] Remove unneeded logger/ files
+- [ ] Finish services migration
+  - [ ] Remove unneeded files
+- [ ] Finish client/server migration
+  - [ ] Remove unneeded files
 - [ ] We also have to generate some extra files
   - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
