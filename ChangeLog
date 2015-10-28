@@ -1,3 +1,9 @@
+2015-10-28  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt: uses FindGettext.
+	* README.md: added cmake based install instructions.
+	* INSTALL: basic cmake based steps.
+
 2015-09-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* logger/AUTHORS: move to top-level and remove all other copies.

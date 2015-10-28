@@ -18,6 +18,7 @@ configure_file(
 
 INCLUDE(GNUInstallDirs)
 INCLUDE(FindPkgConfig)
+INCLUDE(FindGettext)
 
 # Enables C++11
 include(CheckCXXCompilerFlag)
