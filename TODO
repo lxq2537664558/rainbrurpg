@@ -30,7 +30,9 @@ OVERALL TODO
 - cli chat (need metaserver modification)
 
 === ChangeLog ===
-  (10 items by revision)
-   
+   (10 items by revision)
+   SLOC is the result of `sloccount src/` (inacurate until complete switch)
+   SH is the result of `sh FT.sh`
 
 * v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
+   
