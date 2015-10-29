@@ -67,6 +67,9 @@
   - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others
+* TODO Correct project setup
+- [ ] Find how to compute FT and SLOC for the now-global TODO version
+
 * DONE Must install cookiechoices on rainbrurpg.org
   CLOCK: [2015-09-27 dim. 18:21]--[2015-09-27 dim. 19:30] =>  1:09
 - [X] For reference

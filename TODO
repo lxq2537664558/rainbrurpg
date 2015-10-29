@@ -22,10 +22,15 @@ OVERALL TODO
 - Website revamping (skin, blog, wiki, API documentation, maybe 
   texinfo manuals...)
 
-
 * Others versions...
 - DIS review (http://en.wikipedia.org/wiki/Distributed_Interactive_Simulation)
 - Metaserver (foswiki plugin, C++ API)
 - Server register on metaserver (+ ruby extension + ruleset)
 - ongame chat (needs network/ASN.1 support ?)
 - cli chat (need metaserver modification)
+
+=== ChangeLog ===
+  (10 items by revision)
+   
+
+* v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
