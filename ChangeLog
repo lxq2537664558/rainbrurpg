@@ -1,3 +1,7 @@
+2016-01-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* clicnt/src/: change headers date for 2016.
+
 2015-10-28  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt: uses FindGettext.

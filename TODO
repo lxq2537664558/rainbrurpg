@@ -32,7 +32,7 @@ OVERALL TODO
 === ChangeLog ===
    (10 items by revision)
    SLOC is the result of `sloccount src/` (inacurate until complete switch)
-   SH is the result of `sh FT.sh`
+   FT is the result of `sh FT.sh`
 
 * v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
-   
+- (1) Change headers date for 2016 in client subdirs   
