@@ -1,6 +1,11 @@
+2016-01-05  Jérôme Pasquier  <rainbru@free.fr>
+
+	* network/src/benchmark/ : change headers date for 2016.
+	* meta/src/*.pm: change footers date for 2016.
+
 2016-01-04  Jérôme Pasquier  <rainbru@free.fr>
 
-	* clicnt/src/: change headers date for 2016.
+	* client/src/: change headers date for 2016.
 
 2015-10-28  Jérôme Pasquier  <rainbru@free.fr>
 

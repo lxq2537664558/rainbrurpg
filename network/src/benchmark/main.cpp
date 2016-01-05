@@ -1,5 +1,5 @@
  /*
- *  Copyright 2006-2015 Jerome PASQUIER
+ *  Copyright 2006-2016 Jerome PASQUIER
  * 
  *  This file is part of RainbruRPG.
  *

@@ -207,7 +207,7 @@ sub getYamlServerList
 __END__
 RainbruRPG metaserver - A metaserver as foswiki plugin
 
-Copyright (C) 2011-2012 Jérôme Pasquier
+Copyright (C) 2011-2012, 2016 Jérôme Pasquier
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
