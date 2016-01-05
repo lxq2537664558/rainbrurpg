@@ -1,5 +1,7 @@
 2016-01-05  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/logger/ : change headers date for 2016.
+
 	* server/ : change headers date for 2016.
 	* services/ : change headers date for 2016.
 
