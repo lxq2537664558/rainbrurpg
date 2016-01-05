@@ -1,5 +1,8 @@
 2016-01-05  Jérôme Pasquier  <rainbru@free.fr>
 
+	* server/ : change headers date for 2016.
+	* services/ : change headers date for 2016.
+
 	* network/src/benchmark/ : change headers date for 2016.
 	* meta/src/*.pm: change footers date for 2016.
 
