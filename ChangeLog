@@ -1,5 +1,8 @@
 2016-01-16  Jérôme Pasquier  <rainbru@free.fr>
 
+	* client/media/: moved to media/ (top level).
+	* client/src/resources.cfg:  renamed resources.cfg.in.
+
 	* CMakeLists.txt (CONFIGURE_FILE): cmake now generates plugins.cfg.
 
 2016-01-05  Jérôme Pasquier  <rainbru@free.fr>

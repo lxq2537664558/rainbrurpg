@@ -35,6 +35,7 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
 
 * v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
-- (3) cmake now generates plugins.cfg
+- (4) Fix the resources.cfg generation and media location
+- cmake now generates plugins.cfg
 - Change headers date for 2016 in server/ services/
 - Change headers date for 2016 in client/ subdir

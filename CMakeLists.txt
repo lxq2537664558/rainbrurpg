@@ -50,6 +50,10 @@ set(OGRE_PLUGINDIR "${_pkg_result}")
 CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/client/src/plugins.cfg.in"
                "${CMAKE_BINARY_DIR}/plugins.cfg")
 
+# Generate resources.cfg (actualy a simple copy without any substitution)
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/client/src/resources.cfg.in"
+               "${CMAKE_BINARY_DIR}/resources.cfg")
+
 # add the binary tree to the search path for include files
 include_directories(
   ${CMAKE_SOURCE_DIR}
@@ -88,7 +92,7 @@ target_link_libraries(rainbrurpg-server
 
 # Conditional building
 
-## Loger examples
+## Logger examples
 if(BUILD_LOGGER_EXAMPLES)
   FILE(GLOB logger-examples-src "${CMAKE_SOURCE_DIR}/src/logger/examples/*.cpp")
   add_executable(rainbrurpg-logger-example ${logger-examples-src})

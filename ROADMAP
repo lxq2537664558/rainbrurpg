@@ -68,11 +68,10 @@
   - [ ] Remove unneeded files
 - [ ] Finish client/server migration
   - [ ] Remove unneeded files
-- [ ] We also have to generate some extra files
-  - [ ] as client/src/plugins.cfg
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others
 ***** TODO Correct NEW project setup
+      CLOCK: [2016-01-16 sam. 23:13]--[2016-01-16 sam. 23:23] =>  0:10
       CLOCK: [2016-01-16 sam. 19:49]--[2016-01-16 sam. 20:38] =>  0:49
       CLOCK: [2016-01-05 mar. 22:14]--[2016-01-05 mar. 22:20] =>  0:06
       CLOCK: [2016-01-05 mar. 21:24]--[2016-01-05 mar. 21:41] =>  0:17
@@ -87,11 +86,11 @@
   - [X] in services/
   - [X] in src/logger/
   - [X] in website/
-- [-] The client can't find plugins.cfg, so we have an Ogre error
+- [X] The client can't find plugins.cfg, so we have an Ogre error
   =Error: Shell widget menu has zero width and/or height=
   - [X] We also have to create them from *.cfg.in (with ressources.cfg)
     The generated file is dirctly generated in client's binary dir.
-- [ ] Now, We have to generate resources.cfg the same way
+- [X] Now, We have to generate resources.cfg the same way
 - [ ] Find how to compute FT and SLOC for the now-global TODO version
 - [ ] Individual project README items should go here
 - [ ] Logger prints full pathname with the filename, fix it
