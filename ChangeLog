@@ -1,3 +1,7 @@
+2016-01-16  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (CONFIGURE_FILE): cmake now generates plugins.cfg.
+
 2016-01-05  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/logger/ : change headers date for 2016.

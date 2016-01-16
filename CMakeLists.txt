@@ -40,6 +40,15 @@ set(BOOST_COMPONENTS system filesystem program_options thread graph
 find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 pkg_check_modules(GUILE REQUIRED guile-2.0)
 
+# Generate plugins.cfg from client's plugins.cfg.in
+#  Here is call to `pkg-config --variable=plugindir OGRE` to get the plugins
+#  directory variable
+execute_process(COMMAND ${PKG_CONFIG_EXECUTABLE} --variable=plugindir OGRE
+                        OUTPUT_VARIABLE _pkg_result
+                        OUTPUT_STRIP_TRAILING_WHITESPACE)
+set(OGRE_PLUGINDIR "${_pkg_result}")
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/client/src/plugins.cfg.in"
+               "${CMAKE_BINARY_DIR}/plugins.cfg")
 
 # add the binary tree to the search path for include files
 include_directories(
