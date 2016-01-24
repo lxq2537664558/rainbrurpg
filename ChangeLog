@@ -1,3 +1,10 @@
+2016-01-24  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (CMAKE_CXX_FLAGS): defines the __FILENAME__ variable
+	to fix the full path.
+	* src/logger/Logger.hpp (LOG): now uses __FILENAME__ to fix full path
+	in output.
+
 2016-01-16  Jérôme Pasquier  <rainbru@free.fr>
 
 	* client/media/: moved to media/ (top level).

@@ -42,8 +42,8 @@ namespace po = boost::program_options;
 #define TOSTRING(x) STRINGIFY(x)
 
 /// The top-level macro used by all loglevel-defined ones.
-#define LOG(LEVEL, ARGS)					 \
-  static_logger.startLog(LEVEL, __FILE__, TOSTRING(__LINE__)) \
+#define LOG(LEVEL, ARGS)					  \
+  static_logger.startLog(LEVEL, __FILENAME__, TOSTRING(__LINE__)) \
   << ARGS; static_logger.endLog()
 
 /// Log at the \b debug log level
