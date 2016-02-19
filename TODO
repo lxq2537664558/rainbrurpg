@@ -35,7 +35,8 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
 
 * v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
-- (5) Partially fixed the logger long-path issue
+- (6) Finished correct project setup
+- Partially fixed the logger long-path issue
 - Fix the resources.cfg generation and media location
 - cmake now generates plugins.cfg
 - Change headers date for 2016 in server/ services/

@@ -9,7 +9,7 @@
   See automake's INSTALL file for info
 ***** TODO Trying to create a new landing page for rainbrurpg.org
   CLOCK: [2015-08-25 mar. 21:27]--[2015-08-25 mar. 21:55] =>  0:28
-- [ ] Mybe this could become a github page
+- [ ] Maybe this could become a github page
   see https://pages.github.com/
 - [ ] A single homepage using bootstrap
   Trying to base it on http://startbootstrap.com/template-overviews/grayscale/
@@ -18,6 +18,7 @@
   see https://github.com/michael/github/blob/master/github.js #listTags
 - [ ] Must use cookiechoice
 - [ ] Maybe add Analytics/Adsense ?
+- [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
   CLOCK: [2015-10-28 mer. 19:29]--[2015-10-28 mer. 19:44] =>  0:15
   CLOCK: [2015-09-08 mar. 21:39]--[2015-09-08 mar. 21:42] =>  0:03
@@ -72,7 +73,8 @@
   and remove all others
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
   in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
-***** TODO Correct NEW project setup
+***** DONE Correct NEW project setup
+      CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10
       CLOCK: [2016-01-16 sam. 23:13]--[2016-01-16 sam. 23:23] =>  0:10
       CLOCK: [2016-01-16 sam. 19:49]--[2016-01-16 sam. 20:38] =>  0:49
@@ -95,8 +97,8 @@
     The generated file is dirctly generated in client's binary dir.
 - [X] Now, We have to generate resources.cfg the same way
 - [X] Logger prints full pathname with the filename, fix it
-- [ ] Find how to compute FT and SLOC for the now-global TODO version
-- [ ] Individual project README items should go here
+- [X] Find how to compute FT and SLOC for the now-global TODO version
+- [X] Individual project README items should go here
 ***** DONE Must install cookiechoices on rainbrurpg.org
   CLOCK: [2015-09-27 dim. 18:21]--[2015-09-27 dim. 19:30] =>  1:09
 - [X] For reference

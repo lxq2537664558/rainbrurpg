@@ -1,3 +1,8 @@
+2016-02-19  Jérôme Pasquier  <rainbru@free.fr>
+
+	* */README: removed from git control.
+	* FT.sh: add top-level ROADMAP to cat.
+
 2016-01-24  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (CMAKE_CXX_FLAGS): defines the __FILENAME__ variable
