@@ -1,4 +1,5 @@
 					-*-org-*-
+
 * v1.0.0
 ** v0.1.0
 *** v0.0.6
@@ -20,6 +21,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-03-13 dim. 22:22]--[2016-03-13 dim. 22:49] =>  0:27
   CLOCK: [2015-10-28 mer. 19:29]--[2015-10-28 mer. 19:44] =>  0:15
   CLOCK: [2015-09-08 mar. 21:39]--[2015-09-08 mar. 21:42] =>  0:03
   CLOCK: [2015-09-08 mar. 21:20]--[2015-09-08 mar. 21:38] =>  0:18
@@ -48,9 +50,9 @@
   - [X] network  (no sources)
   - [X] services
   - [X] server
-- [X] Move cmake-built sources to a top-level src dircetory
+- [-] Move cmake-built sources to a top-level src dircetory
   All sources should be in src/ so we have src/client src/server...
-  - [X] First, mv logger
+  - [-] First, mv logger
     - [X] move .hpp an .cpp
     - [X] Logger examples conditionnal compilation
     - [X] Add a README.md file
@@ -64,9 +66,14 @@
       - [X] What to do with automake-based INSTALL file      
 	Just added a simple cmake based INSTALL in root dir.
       - [X] Since logger have a po/ directory, how to use gettext with cmake
-    - [ ] Remove unneeded logger/ files
+    - [-] Remove unneeded logger/ files
+      - [X] Remove autoconf files
+      - [ ] What to do with po/ directpry ?
+      - [ ] Add ROADMAP content here (and TODO content also)
+      - [ ] Compare DEPENDENCIES with top-evel one
+      - [ ] How to add ChangeLog content sorted by date
 - [ ] Finish services migration
-  - [ ] Remove unneeded files
+  - [ ] Remove unneeded files 
 - [ ] Finish client/server migration
   - [ ] Remove unneeded files
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
