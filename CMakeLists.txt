@@ -20,6 +20,12 @@ INCLUDE(GNUInstallDirs)
 INCLUDE(FindPkgConfig)
 INCLUDE(FindGettext)
 
+# Used to debug cmake variables
+#get_cmake_property(_variableNames VARIABLES)
+#foreach (_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()
+
 # Enables C++11
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -31,6 +37,22 @@ elseif(COMPILER_SUPPORTS_CXX0X)
 else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
+
+# Handle gettext translations
+SET(_potFile ${PROJECT_NAME}.pot)
+find_program (XGETTEXT_CMD xgettext)
+message(STATUS "Found xgettext executable at ${XGETTEXT_CMD}")
+ADD_CUSTOM_COMMAND(OUTPUT ${_potFile}
+  COMMAND "${XGETTEXT_CMD} ${_xgettext_option_list} -o ${_potFile} ${_src_list}"
+    DEPENDS ${_src_list}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Extract translatable messages to ${_potFile}"
+)
+ADD_CUSTOM_TARGET(pot_file ${_all}
+DEPENDS ${_potFile}
+)
+GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot" ALL
+  "${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot")
 
 # Check dependencies
 set(CLI_DEPS OGRE CEGUI CEGUI-OGRE OIS) # Client-only dependencies

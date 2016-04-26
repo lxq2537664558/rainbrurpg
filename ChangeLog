@@ -1,3 +1,8 @@
+2016-04-27  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (pot_file): start to handle translation with cmake.
+	* CMakeLists.txt (XGETTEXT_CMD): search for the xgettext executable.
+
 2016-03-13  Jérôme Pasquier  <rainbru@free.fr>
 
 	* logger/src/ : start to remove unneeded autotools files.
