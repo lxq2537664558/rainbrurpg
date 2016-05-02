@@ -21,6 +21,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-05-02 lun. 20:49]--[2016-05-02 lun. 21:47] =>  0:58
       CLOCK: [2016-04-26 mar. 23:44]--[2016-04-27 mer. 00:18] =>  0:34
       CLOCK: [2016-03-13 dim. 22:22]--[2016-03-13 dim. 22:49] =>  0:27
   CLOCK: [2015-10-28 mer. 19:29]--[2015-10-28 mer. 19:44] =>  0:15
@@ -69,12 +70,13 @@
       - [X] Since logger have a po/ directory, how to use gettext with cmake
     - [-] Remove unneeded logger/ files
       - [X] Remove autoconf files
-      - [ ] What to do with po/ directpry ?
-	- Maybe in a top-level dir, test it with cmake
-	- [ ] We must find a way to call xgettext to extract translatable messages 
+      - [X] What to do with po/ directpry ?
+	- [X] Maybe in a top-level dir, test it with cmake
+	- [X] We must find a way to call xgettext to extract translatable messages 
               from sources
-	- [ ] We have to correctly set logger_src (or _src_list)
-        - [ ] We must call xgettext on logger sources to extract messages
+	- [X] We have to correctly set logger_src (or _src_list)
+        - [X] We must call xgettext on logger sources to extract messages
+      - [ ] We must handle a call to msgmerge
       - [ ] Add ROADMAP content here (and TODO content also)
       - [ ] Compare DEPENDENCIES with top-evel one
       - [ ] How to add ChangeLog content sorted by date
@@ -86,6 +88,7 @@
   and remove all others
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
   in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
+- [ ] Should not use file(GLOB...) from cmake to collect sources files
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10

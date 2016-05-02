@@ -1,3 +1,10 @@
+2016-05-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (pot_file): add xgettext parameter to append
+	TRANSLATORS comments.
+	* CMakeLists.txt (pot_file): now uses po/POTFILES.in as file list.
+	* po/POTFILES.in: add a list of translatable files.
+
 2016-04-27  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (pot_file): start to handle translation with cmake.

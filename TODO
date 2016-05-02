@@ -35,7 +35,8 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
 
 * v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
-- (8) Start to hanle translation with cmake
+- (9) Find a way to handle xgettext with cmake
+- Start to hanle translation with cmake
 - Start to remove logger unneeded files
 - Finished correct project setup
 - Partially fixed the logger long-path issue

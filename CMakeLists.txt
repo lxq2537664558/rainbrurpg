@@ -39,14 +39,18 @@ else()
 endif()
 
 # Handle gettext translations
-SET(_potFile ${PROJECT_NAME}.pot)
+SET(_potFile ${CMAKE_SOURCE_DIR}/po/${PROJECT_NAME}.pot)
 find_program (XGETTEXT_CMD xgettext)
 message(STATUS "Found xgettext executable at ${XGETTEXT_CMD}")
+message(STATUS "Executing xgettext on ${CMAKE_SOURCE_DIR}/po/POTFILES.in")
 ADD_CUSTOM_COMMAND(OUTPUT ${_potFile}
-  COMMAND "${XGETTEXT_CMD} ${_xgettext_option_list} -o ${_potFile} ${_src_list}"
-    DEPENDS ${_src_list}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Extract translatable messages to ${_potFile}"
+  COMMAND ${XGETTEXT_CMD} ${_xgettext_option_list} -o ${_potFile}
+  --files-from=${CMAKE_SOURCE_DIR}/po/POTFILES.in
+  --keyword=_
+  --add-comments=TRANSLATORS
+  DEPENDS ${CMAKE_SOURCE_DIR}/po/POTFILES.in
+  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+  COMMENT "Extract translatable messages to ${_potFile}"
 )
 ADD_CUSTOM_TARGET(pot_file ${_all}
 DEPENDS ${_potFile}
@@ -85,6 +89,8 @@ include_directories(
   src/logger/examples
   )
 
+# Individual libraries rules
+# Defines sources (defined here because used by i18n)
 FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/src/logger/*.cpp")
 add_library(rainbrurpg-logger ${logger-src})
 
@@ -95,6 +101,7 @@ target_link_libraries(rainbrurpg-services
   ${GUILE_LIBRARIES}
 )
 
+# Executables rules
 FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/client/src/*.cpp")
 add_executable(rainbrurpg-client ${client-src})
 target_link_libraries(rainbrurpg-client
