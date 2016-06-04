@@ -1,3 +1,7 @@
+2016-05-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* DEPENDENCIES: client file becomes top-level one.
+
 2016-05-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (pot_file): add xgettext parameter to append

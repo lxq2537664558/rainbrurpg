@@ -3,6 +3,8 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.6
+**** Client work
+- [ ] See why client get stuck in 'parsing scripts' loading bar
 **** TODO Git switch items
 ***** Starts to use cmake/gettext with logger/po directory
 ***** Continue the INSTALL file
@@ -21,6 +23,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-06-04 sam. 05:40]--[2016-06-04 sam. 06:09] =>  0:29
       CLOCK: [2016-05-02 lun. 20:49]--[2016-05-02 lun. 21:47] =>  0:58
       CLOCK: [2016-04-26 mar. 23:44]--[2016-04-27 mer. 00:18] =>  0:34
       CLOCK: [2016-03-13 dim. 22:22]--[2016-03-13 dim. 22:49] =>  0:27
@@ -76,9 +79,9 @@
               from sources
 	- [X] We have to correctly set logger_src (or _src_list)
         - [X] We must call xgettext on logger sources to extract messages
-      - [ ] We must handle a call to msgmerge
+      - [X] Compare DEPENDENCIES with top-evel one
+	In fact, client's one becomes top-level DEPENDENCIES file
       - [ ] Add ROADMAP content here (and TODO content also)
-      - [ ] Compare DEPENDENCIES with top-evel one
       - [ ] How to add ChangeLog content sorted by date
 - [ ] Finish services migration
   - [ ] Remove unneeded files 
@@ -89,6 +92,7 @@
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
   in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
 - [ ] Should not use file(GLOB...) from cmake to collect sources files
+- [ ] We must handle a call to msgmerge in CMakeLists.txt
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10

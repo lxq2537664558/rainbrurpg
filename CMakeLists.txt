@@ -41,6 +41,7 @@ endif()
 # Handle gettext translations
 SET(_potFile ${CMAKE_SOURCE_DIR}/po/${PROJECT_NAME}.pot)
 find_program (XGETTEXT_CMD xgettext)
+find_program (MSGMERGE_CMD msgmerge)
 message(STATUS "Found xgettext executable at ${XGETTEXT_CMD}")
 message(STATUS "Executing xgettext on ${CMAKE_SOURCE_DIR}/po/POTFILES.in")
 ADD_CUSTOM_COMMAND(OUTPUT ${_potFile}
@@ -52,9 +53,8 @@ ADD_CUSTOM_COMMAND(OUTPUT ${_potFile}
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
   COMMENT "Extract translatable messages to ${_potFile}"
 )
-ADD_CUSTOM_TARGET(pot_file ${_all}
-DEPENDS ${_potFile}
-)
+ADD_CUSTOM_TARGET(pot_file ${_all} DEPENDS ${_potFile})
+
 GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot" ALL
   "${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot")
 
