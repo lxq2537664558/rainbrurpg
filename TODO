@@ -34,14 +34,5 @@ OVERALL TODO
    SLOC is the result of `sloccount src/` (inacurate until complete switch)
    FT is the result of `sh FT.sh`
 
-* v0.0.5-248 (29 Oct. 2015 - ???) SLOC ??? FT ??:??
-- Add a top-level DEPENDENCIES file
-- Find a way to handle xgettext with cmake
-- Start to hanle translation with cmake
-- Start to remove logger unneeded files
-- Finished correct project setup
-- Partially fixed the logger long-path issue
-- Fix the resources.cfg generation and media location
-- cmake now generates plugins.cfg
-- Change headers date for 2016 in server/ services/
-- Change headers date for 2016 in client/ subdir
+* v0.0.5-249 (04 Jun. 2016 - ???) SLOC ??? FT ??:??
+

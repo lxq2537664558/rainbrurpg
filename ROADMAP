@@ -88,11 +88,12 @@
 - [ ] Finish client/server migration
   - [ ] Remove unneeded files
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
-  and remove all others
+  and remove all others. The actual one is from client subproject.
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
   in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
 - [ ] Should not use file(GLOB...) from cmake to collect sources files
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
+- [ ] Should move all changelog.dev in top-level one
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10
