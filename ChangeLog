@@ -1,4 +1,9 @@
-2016-05-04  Jérôme Pasquier  <rainbru@free.fr>
+2016-06-06  Jérôme Pasquier  <rainbru@free.fr>
+
+	* logger/: move many files to OLD.
+	* logger/ROADMAP: move many remaining items to top-level ROADMAP.
+
+2016-06-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* DEPENDENCIES: client file becomes top-level one.
 

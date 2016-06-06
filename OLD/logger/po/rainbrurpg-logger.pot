@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Jérôme Pasquier
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: rainbrurpg-logger 0.0.0-9\n"
+"Report-Msgid-Bugs-To: rainbru.free.fr\n"
+"POT-Creation-Date: 2015-07-25 16:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. / TRANSLATORS: Parameters are :
+#. / %1 = program name,
+#. / %2 = program version
+#. / %3 = comilation date
+#. / %4 = compilation time
+#. / %5 = execution date
+#. / %6 = execution time
+#: src/LoggerOutputTty.cpp:133
+#, c-format
+msgid ""
+"Logger started for '%s v%s'\n"
+"Compiled %s at %s\n"
+"Executed %s at %s\n"
+msgstr ""
+
+#: src/Logger.cpp:112
+msgid "output the version number"
+msgstr ""
+
+#: src/Logger.cpp:111
+msgid "produce a help message"
+msgstr ""

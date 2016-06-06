@@ -1,0 +1,3 @@
+     ../src/Logger.cpp \
+     ../src/LoggerOutputFile.cpp \
+     ../src/LoggerOutputTty.cpp

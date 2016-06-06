@@ -33,6 +33,7 @@ OVERALL TODO
    (10 items by revision)
    SLOC is the result of `sloccount src/` (inacurate until complete switch)
    FT is the result of `sh FT.sh`
-
+   Add git tag r-1 when switching
+   
 * v0.0.5-249 (04 Jun. 2016 - ???) SLOC ??? FT ??:??
 

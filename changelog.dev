@@ -1,0 +1,12 @@
+* v0.0.5-248 (29 Oct. 2015 - 04 Jun. 2016) SLOC 1,320 FT 274:49
+	SLOC is inaccurate until complete switch
+- Add a top-level DEPENDENCIES file
+- Find a way to handle xgettext with cmake
+- Start to hanle translation with cmake
+- Start to remove logger unneeded files
+- Finished correct project setup
+- Partially fixed the logger long-path issue
+- Fix the resources.cfg generation and media location
+- cmake now generates plugins.cfg
+- Change headers date for 2016 in server/ services/
+- Change headers date for 2016 in client/ subdir

@@ -3,6 +3,64 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.6
+**** Logger work
+***** For logger v2
+****** Add platform dependant header data
+****** Add platform dependant log data
+- [ ] Logger may log process time
+***** May also handle Environment variables, config file...
+      To know what level to output, configure Tty logger etc...
+***** handle end-user program options
+- [ ] program arguments chaining
+  - [ ] Tests using command_options list of struct
+    - Printing work, now we should notify external variable map
+    - Rpg::Logger::parse_program_options must handle the list of struct
+      *Doesn't work*
+
+  Other libraries can add their own arguments
+  - [ ] The -h,--help for all program
+  - [ ] The list must be sorted for help output
+  - [ ] We must avoid duplicates, at least for short form
+    if we have multiple -h, --help and --logger-help must stay here but
+    only one -h can stay
+
+***** Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
+***** About the log-reader application
+- [ ] UI controls handling
+  - [ ] Create signals, slots for the three combos
+    - [ ] The loglevel combo
+      - [ ] Change other combos content ?
+- [ ] Test how cmake handle .ui files if rbuic isn't found
+- [ ] Maybe use kwalify to test YAML file
+      see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
+- [ ] YAML output versionning
+      Explain it in texinfo manual
+  - [ ] v1: platform independant infos
+  - [ ] v2: Add some platform dependant infos
+	Process time, OS name, datetime of execution, compilation flags
+  - [ ] v3: sigsegv trap handling
+- [ ] Should find or create a suitable property editor widget
+      I can't find a suitable widget, neither in /designer/, neither
+      in the API, but we can test the following URL
+      http://qt-apps.org/content/show.php/QPropertyEditor?content=68684
+      How to make a ruby binging for this ?
+- [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
+      button
+**** Meta libray
+     CLOCK: [2016-06-06 lun. 06:01]--[2016-06-06 lun. 06:09] =>  0:08
+     This new meta library is used both by server/client to find
+     server to play on. It's based on websocket, to be able to
+     use it in a browser (for a further webgl implementation ?)
+
+- [ ] Current one should go to OLD/ because based on foswiki
+- [ ] cmake should search for a good C++ websocket library
+  and add this library to top-level DEPENDENCIES file
+- [ ] Implement the base class (server's IP + port,Name, description,
+      max player... ping, # player)
+- [ ] The server add itself with mininmum values, the ones that depend on time
+  or network (ping, player number) will be added by client when trying to 
+  directly contact the server
+  - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** Client work
 - [ ] See why client get stuck in 'parsing scripts' loading bar
 **** TODO Git switch items
@@ -83,6 +141,7 @@
 	In fact, client's one becomes top-level DEPENDENCIES file
       - [ ] Add ROADMAP content here (and TODO content also)
       - [ ] How to add ChangeLog content sorted by date
+- [ ] Move meta to OLD/ because 
 - [ ] Finish services migration
   - [ ] Remove unneeded files 
 - [ ] Finish client/server migration

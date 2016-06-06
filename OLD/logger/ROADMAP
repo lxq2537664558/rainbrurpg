@@ -3,28 +3,8 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.2 to YAML output v2
-**** Add platform dependant header data
-**** Add platform dependant log data
-- [ ] Logger may log process time
 *** v0.0.1 to a v1 YAML output
-**** May also handle Environment variables, config file...
-      To know what level to output, configure Tty logger etc...
-**** handle end-user program options
-- [ ] program arguments chaining
-  - [ ] Tests using command_options list of struct
-    - Printing work, now we should notify external variable map
-    - Rpg::Logger::parse_program_options must handle the list of struct
-      *Doesn't work*
-
-  Other libraries can add their own arguments
-  - [ ] The -h,--help for all program
-  - [ ] The list must be sorted for help output
-  - [ ] We must avoid duplicates, at least for short form
-    if we have multiple -h, --help and --logger-help must stay here but
-    only one -h can stay
-
-**** Present v1 YAML output (maybe in doc/texinfo/yaml-v1.tex)
-**** TODO Create a ruby/qt app to handle Yaml output
+**** DONE Create a ruby/qt app to handle Yaml output
      CLOCK: [2015-06-12 ven. 18:40]--[2015-06-12 ven. 18:45] =>  0:05
      CLOCK: [2015-06-12 ven. 18:22]--[2015-06-12 ven. 18:37] =>  0:15
      CLOCK: [2015-04-23 jeu. 14:13]--[2015-04-23 jeu. 15:19] =>  1:06
@@ -48,34 +28,13 @@
   - [X] Every message
 - [X] log_reader must use Psych to load YAML content
 - [X] May use multiple files (main_window...)
-- [ ] May correctly feed .hgignore for this subproject
-- [-] Missing implemented features
+- [X] May correctly feed .hgignore for this subproject
+- [X] Missing implemented features
   - [X] A log file must be a complete object, written directly by main window
   - [X] Must feed Source file combo with every filenae found on the 
     YAML file
   - [X] Add and feed a Domain combobox
-  - [-] Create signals, slots for the three combos
-    - [-] The loglevel combo
-      - [X] Feed the table
-      - [ ] Change other combos content ?
 - [X] Must avoid the use of using namespaace in headers
-- [ ] If `rbuic4' is not found by ./configure, it tries to build .ui files
-  with a tool named `no'. For sure it fails.
-- [ ] Maybe use kwalify to test YAML file
-      see http://www.kuwata-lab.com/kwalify/ruby/users-guide.01.html for validation
-- [ ] YAML output versionning
-      Explain it in texinfo manual
-  - [ ] v1: platform independant infos
-  - [ ] v2: Add some platform dependant infos
-	Process time, OS name, datetime of execution, compilation flags
-  - [ ] v3: sigsegv trap handling
-- [ ] Should find or create a suitable property editor widget
-      I can't find a suitable widget, neither in /designer/, neither
-      in the API, but we can test the following URL
-      http://qt-apps.org/content/show.php/QPropertyEditor?content=68684
-      How to make a ruby binging for this ?
-- [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
-      button
 **** DONE Continue Logger in src/logger
      CLOCK: [2014-08-08 ven. 16:50]--[2014-08-08 ven. 17:43] =>  0:53
      CLOCK: [2014-08-08 ven. 12:20]--[2014-08-08 ven. 14:09] =>  1:49
