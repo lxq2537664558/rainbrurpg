@@ -55,8 +55,8 @@ ADD_CUSTOM_COMMAND(OUTPUT ${_potFile}
 )
 ADD_CUSTOM_TARGET(pot_file ${_all} DEPENDS ${_potFile})
 
-GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot" ALL
-  "${CMAKE_SOURCE_DIR}/logger/po/rainbrurpg-logger.pot")
+GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/po/rainbrurpg-logger.pot" ALL
+  "${CMAKE_SOURCE_DIR}/po/rainbrurpg-logger.pot")
 
 # Check dependencies
 set(CLI_DEPS OGRE CEGUI CEGUI-OGRE OIS) # Client-only dependencies

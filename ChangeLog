@@ -1,5 +1,10 @@
 2016-06-06  Jérôme Pasquier  <rainbru@free.fr>
 
+	* meta/ completely moved to OLD/.
+	* CMakeLists.txt (GETTEXT_CREATE_TRANSLATIONS): fix a broken
+	target dur to the lack of logger/po/rainbrurpg-logger.pot.
+	* DEPENDENCIES: merge it with the logger/DEPENDENCIES content.
+
 	* logger/: move many files to OLD.
 	* logger/ROADMAP: move many remaining items to top-level ROADMAP.
 

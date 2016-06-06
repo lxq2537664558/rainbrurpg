@@ -16,6 +16,7 @@ The following package should be installed before RainbruRPG is installed:
 
 * Boost 1.55
   + Needed
+  + Components: Program_options, Format
 
 * CEGUI 0.7.6
   + Needed
@@ -23,3 +24,10 @@ The following package should be installed before RainbruRPG is installed:
     http://cegui.org.uk
   + download
     http://sourceforge.net/projects/crayzedsgui/files/
+
+* qt4-ruby
+  + Optional : only used by the logreader application.
+  + homepage: 
+    http://rubyforge.org/projects/korundum/
+  + download:
+    http://rubyforge.org/projects/korundum/

@@ -113,9 +113,9 @@
   - [X] network  (no sources)
   - [X] services
   - [X] server
-- [-] Move cmake-built sources to a top-level src dircetory
+- [X] Move cmake-built sources to a top-level src dircetory
   All sources should be in src/ so we have src/client src/server...
-  - [-] First, mv logger
+  - [X] First, mv logger
     - [X] move .hpp an .cpp
     - [X] Logger examples conditionnal compilation
     - [X] Add a README.md file
@@ -129,7 +129,7 @@
       - [X] What to do with automake-based INSTALL file      
 	Just added a simple cmake based INSTALL in root dir.
       - [X] Since logger have a po/ directory, how to use gettext with cmake
-    - [-] Remove unneeded logger/ files
+    - [X] Remove unneeded logger/ files
       - [X] Remove autoconf files
       - [X] What to do with po/ directpry ?
 	- [X] Maybe in a top-level dir, test it with cmake
@@ -139,9 +139,11 @@
         - [X] We must call xgettext on logger sources to extract messages
       - [X] Compare DEPENDENCIES with top-evel one
 	In fact, client's one becomes top-level DEPENDENCIES file
-      - [ ] Add ROADMAP content here (and TODO content also)
-      - [ ] How to add ChangeLog content sorted by date
-- [ ] Move meta to OLD/ because 
+      - [X] Add ROADMAP content here (and TODO content also)
+      - [X] How to add ChangeLog content sorted by date
+	Finally, the content of ChangeLog and changelog.dev are moved
+	to OLD and not added to current top-level files.
+- [ ] Move meta to OLD/ because the implementation will change
 - [ ] Finish services migration
   - [ ] Remove unneeded files 
 - [ ] Finish client/server migration
@@ -153,6 +155,7 @@
 - [ ] Should not use file(GLOB...) from cmake to collect sources files
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
 - [ ] Should move all changelog.dev in top-level one
+- [ ] Must make a cmake target to run unit tests
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10
