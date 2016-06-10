@@ -94,7 +94,7 @@ include_directories(
 FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/src/logger/*.cpp")
 add_library(rainbrurpg-logger ${logger-src})
 
-FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/services/src/*.cpp")
+FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/src/services/*.cpp")
 add_library(rainbrurpg-services ${services-src})
 target_link_libraries(rainbrurpg-services
   rainbrurpg-logger
