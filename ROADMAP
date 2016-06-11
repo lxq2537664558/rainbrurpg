@@ -64,6 +64,21 @@
 **** Client work
 - [ ] See why client get stuck in 'parsing scripts' loading bar
 **** TODO Git switch items
+***** Fix the CI build with clang
+      CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
+- [ ] Fix the error in DependGraph.cpp
+#+BEGIN_EXAMPLE
+  /usr/include/boost/xpressive/detail/utility/tracking_ptr.hpp:282:19: error: 
+  invalid operands to binary expression...
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+  call to implicitly-deleted copy constructor of
+  'boost::shared_ptr<boost::dynamic_property_map>'
+#+END_EXAMPLE
+- [ ] Try to fix warnings   
+  Many in logger : delete called on 'Rpg::LoggerOutput' that is abstract but 
+  has non-virtual destructor
 ***** Starts to use cmake/gettext with logger/po directory
 ***** Continue the INSTALL file
 - [ ] With cmake flags on how to change install dirs...

@@ -70,6 +70,8 @@ namespace Rpg
   class LoggerOutput
   {
   public:
+    virtual ~LoggerOutput(){ };
+    
     /// Opens the logger, for example open the stream or the file
     virtual void open()=0;  
     /// Closes the logger

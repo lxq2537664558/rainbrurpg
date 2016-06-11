@@ -184,7 +184,7 @@ Rpg::Logger::parse_program_options(int argc, char**argv)
 	}
       return true;
     }
-
+  return false;
 }
 
 /** Start a log line

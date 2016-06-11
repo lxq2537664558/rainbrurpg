@@ -1,5 +1,10 @@
 2016-06-11  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/logger/Logger.cpp (parse_program_options): returns false by
+	default to fix a clang warning.
+	* src/logger/LoggerOutput.hpp (~LoggerOutput): add an empty virtual
+	destructor to fix some clang warnings.
+
 	* services/: move remaining files to OLD/services.
 	* services/: remove autotools files.
 
