@@ -36,5 +36,6 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-249 (04 Jun. 2016 - ???) SLOC ??? FT ??:??
+- Moved services to OLD/
 - Moved services sources to src/services
 - logger/ directory moved to OLD/

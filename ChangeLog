@@ -1,5 +1,8 @@
 2016-06-11  Jérôme Pasquier  <rainbru@free.fr>
 
+	* services/: move remaining files to OLD/services.
+	* services/: remove autotools files.
+
 	* CMakeLists.txt (rainbrurpg-services): changed sources path.
 	* services/src/: *.hpp and *.cpp moved to src/services/.
 

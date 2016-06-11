@@ -81,6 +81,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-06-11 sam. 02:08]--[2016-06-11 sam. 02:18] =>  0:10
       CLOCK: [2016-06-11 sam. 01:32]--[2016-06-11 sam. 01:56] =>  0:24
       CLOCK: [2016-06-04 sam. 05:40]--[2016-06-04 sam. 06:09] =>  0:29
       CLOCK: [2016-05-02 lun. 20:49]--[2016-05-02 lun. 21:47] =>  0:58
@@ -145,13 +146,21 @@
 	Finally, the content of ChangeLog and changelog.dev are moved
 	to OLD and not added to current top-level files.
 - [X] Move meta to OLD/ because the implementation will change
-- [-] Finish services migration
+- [X] Finish services migration
   - [X] move .hpp and .cpp to src/services
   - [X] Change the path for cmake
+  - [X] Remove autotools files
+  - [X] move unneeded files to OLD/services
+- [ ] Finish client migration
+  - [ ] Remove unneeded files
+  - [ ] Change cmake path to correctly build the library
   - [ ] Remove autotools files
   - [ ] move unneeded files to OLD/services
-- [ ] Finish client/server migration
+- [ ] Finish server migration
   - [ ] Remove unneeded files
+  - [ ] Change cmake path to correctly build the library
+  - [ ] Remove autotools files
+  - [ ] move unneeded files to OLD/services
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others. The actual one is from client subproject.
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
