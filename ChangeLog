@@ -1,3 +1,11 @@
+2016-07-29  Jérôme Pasquier  <rainbru@free.fr>
+
+	* client/ : move remaining files to OLD/service.
+	* client/ : remove autotools files.
+	* CMakeLists.txt (rainbrurpg-services): changed path to build
+	client and .cfg files.
+	* src/client: moved client/src files .?pp and .cfg.in here.
+
 2016-06-11  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/logger/Logger.cpp (parse_program_options): returns false by

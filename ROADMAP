@@ -96,6 +96,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-07-29 ven. 00:08]--[2016-07-29 ven. 00:32] =>  0:24
       CLOCK: [2016-06-11 sam. 02:08]--[2016-06-11 sam. 02:18] =>  0:10
       CLOCK: [2016-06-11 sam. 01:32]--[2016-06-11 sam. 01:56] =>  0:24
       CLOCK: [2016-06-04 sam. 05:40]--[2016-06-04 sam. 06:09] =>  0:29
@@ -166,16 +167,20 @@
   - [X] Change the path for cmake
   - [X] Remove autotools files
   - [X] move unneeded files to OLD/services
-- [ ] Finish client migration
-  - [ ] Remove unneeded files
-  - [ ] Change cmake path to correctly build the library
-  - [ ] Remove autotools files
-  - [ ] move unneeded files to OLD/services
+- [X] Finish client migration
+  - [X] move .hpp and .cpp to src/client
+  - [X] Change .cfg.in to src/client
+  - [X] Change cmake path to correctly build the library
+  - [X] Change cmake path to correctly build .cfg files
+  - [X] Remove unneeded files
+  - [X] Remove autotools files
+  - [X] move unneeded files to OLD/client
 - [ ] Finish server migration
+  - [ ] move .hpp and .cpp to src/services
   - [ ] Remove unneeded files
   - [ ] Change cmake path to correctly build the library
   - [ ] Remove autotools files
-  - [ ] move unneeded files to OLD/services
+  - [ ] move unneeded files to OLD/server
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others. The actual one is from client subproject.
 - [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS

@@ -73,11 +73,11 @@ execute_process(COMMAND ${PKG_CONFIG_EXECUTABLE} --variable=plugindir OGRE
                         OUTPUT_VARIABLE _pkg_result
                         OUTPUT_STRIP_TRAILING_WHITESPACE)
 set(OGRE_PLUGINDIR "${_pkg_result}")
-CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/client/src/plugins.cfg.in"
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/src/client/plugins.cfg.in"
                "${CMAKE_BINARY_DIR}/plugins.cfg")
 
 # Generate resources.cfg (actualy a simple copy without any substitution)
-CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/client/src/resources.cfg.in"
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/src/client/resources.cfg.in"
                "${CMAKE_BINARY_DIR}/resources.cfg")
 
 # add the binary tree to the search path for include files
@@ -102,7 +102,7 @@ target_link_libraries(rainbrurpg-services
 )
 
 # Executables rules
-FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/client/src/*.cpp")
+FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/src/client/*.cpp")
 add_executable(rainbrurpg-client ${client-src})
 target_link_libraries(rainbrurpg-client
   rainbrurpg-logger
