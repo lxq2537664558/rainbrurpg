@@ -1,1 +1,0 @@
-SUBDIRS=server_ctl

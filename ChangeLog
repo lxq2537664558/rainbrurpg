@@ -1,5 +1,10 @@
 2016-08-04  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt: make CMAKE_CXX_FLAGS also remove src/ from the
+	filename.
+	* server/ : move remaining files to OLD/service.
+	* server/ : remove autotools files.
+
 	* CMakeLists.txt: now search for Readline.
 	* CMakeLists.txt: add setting for CMAKE_MODULE_PATH.
 	* cmake/FindReadline.cmake: add a cmake script used to search for

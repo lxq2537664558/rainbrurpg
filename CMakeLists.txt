@@ -164,5 +164,5 @@ endif(BUILD_LOGREADER)
 # This is a fix for the GNU C __FILE__ thing :
 #  __FILE__ shows the full path of the file, so the logger text output
 #  is weird.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILENAME__='\"$(subst ${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILENAME__='\"$(subst ${CMAKE_SOURCE_DIR}/src/,,$(abspath $<))\"'")
 

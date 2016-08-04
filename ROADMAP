@@ -102,7 +102,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
-      CLOCK: [2016-08-04 jeu. 23:08]
+      CLOCK: [2016-08-04 jeu. 23:08]--[2016-08-04 jeu. 23:52] =>  0:44
       CLOCK: [2016-07-29 ven. 00:08]--[2016-07-29 ven. 00:32] =>  0:24
       CLOCK: [2016-06-11 sam. 02:08]--[2016-06-11 sam. 02:18] =>  0:10
       CLOCK: [2016-06-11 sam. 01:32]--[2016-06-11 sam. 01:56] =>  0:24
@@ -182,19 +182,19 @@
   - [X] Remove unneeded files
   - [X] Remove autotools files
   - [X] move unneeded files to OLD/client
-- [-] Nuild again the server-ctl binary
+- [X] Nuild again the server-ctl binary
   - [X] Uses cmake's config.h file
-  - [ ] Should add readline to dependencies checked by cmake
-- [ ] Finish server migration
-  - [ ] move .hpp and .cpp to src/services
-  - [ ] Remove unneeded files
-  - [ ] Change cmake path to correctly build the library
-  - [ ] Remove autotools files
-  - [ ] move unneeded files to OLD/server
+  - [X] Should add readline to dependencies checked by cmake
+- [X] Finish server migration
+  - [X] move .hpp and .cpp to src/services
+  - [X] Remove unneeded files
+  - [X] Change cmake path to correctly build the library
+  - [X] Remove autotools files
+  - [X] move unneeded files to OLD/server
+- [X] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
+  in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
 - [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others. The actual one is from client subproject.
-- [ ] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
-  in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
 - [ ] Should not use file(GLOB...) from cmake to collect sources files
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
 - [ ] Should move all changelog.dev in top-level one
