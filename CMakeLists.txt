@@ -4,6 +4,8 @@ project (rainbrurpg)
 message(STATUS "Configuring RainbruRPG...")
 # set( CMAKE_VERBOSE_MAKEFILE on ) # To debug this file
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 option(BUILD_LOGGER_EXAMPLES "If we build logger examples binaries" OFF)
 option(BUILD_LOGREADER "If we build the Qt-based logreader" OFF)
 
@@ -65,6 +67,7 @@ set(BOOST_COMPONENTS system filesystem program_options thread graph
   unit_test_framework)
 find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 pkg_check_modules(GUILE REQUIRED guile-2.0)
+find_package(Readline)
 
 # Generate plugins.cfg from client's plugins.cfg.in
 #  Here is call to `pkg-config --variable=plugindir OGRE` to get the plugins
@@ -111,12 +114,20 @@ target_link_libraries(rainbrurpg-client
   ${Boost_LIBRARIES}
 )
 
-FILE(GLOB server-src "${CMAKE_SOURCE_DIR}/server/src/*.cpp")
+FILE(GLOB server-src "${CMAKE_SOURCE_DIR}/src/server/*.cpp")
 add_executable(rainbrurpg-server ${server-src})
 target_link_libraries(rainbrurpg-server
   rainbrurpg-logger
   rainbrurpg-services
   ${Boost_LIBRARIES}
+)
+
+FILE(GLOB server-ctl "${CMAKE_SOURCE_DIR}/src/server/tools/server_ctl/*.cpp")
+add_executable(rainbrurpg-server-ctl ${server-ctl})
+target_link_libraries(rainbrurpg-server-ctl
+  rainbrurpg-logger
+  rainbrurpg-services
+  ${Boost_LIBRARIES} ${Readline_LIBRARY}
 )
 
 # Conditional building

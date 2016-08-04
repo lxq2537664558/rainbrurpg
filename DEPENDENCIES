@@ -31,3 +31,6 @@ The following package should be installed before RainbruRPG is installed:
     http://rubyforge.org/projects/korundum/
   + download:
     http://rubyforge.org/projects/korundum/
+
+* readline
+  + Needed for server-ctl binary

@@ -1,3 +1,16 @@
+2016-08-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt: now search for Readline.
+	* CMakeLists.txt: add setting for CMAKE_MODULE_PATH.
+	* cmake/FindReadline.cmake: add a cmake script used to search for
+	readlien library.
+	* src/server/tools/server_ctl/CommandLine.cpp (prompt); replace
+	PACKAGE_VERSION macro with VERSION because of the cmake-based
+	config.h.
+	* src/server/tools/server_ctl/CommandLine.cpp: remove conditionnal
+	include of config.h.
+	* CMakeLists.txt (rainbrurpg-server-ctl): added rule for new executable.
+
 2016-07-29  Jérôme Pasquier  <rainbru@free.fr>
 
 	* client/ : move remaining files to OLD/service.
@@ -17,7 +30,7 @@
 	* services/: remove autotools files.
 
 	* CMakeLists.txt (rainbrurpg-services): changed sources path.
-	* services/src/: *.hpp and *.cpp moved to src/services/.
+	* services/src/: *hpp and *.cpp moved to src/services/.
 
 2016-06-06  Jérôme Pasquier  <rainbru@free.fr>
 

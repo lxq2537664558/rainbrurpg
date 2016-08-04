@@ -32,9 +32,7 @@
 
 #include <boost/algorithm/string.hpp> // For the trim command
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h> // USES PACKAGE_VERSION
-#endif
+#include <config.h> // USES VERSION
 
 using namespace std;
 using namespace boost::algorithm;
@@ -62,7 +60,7 @@ CommandLine::~CommandLine()
 void
 CommandLine::prompt(void)
 {
-  cout << "Welcome to rainbrurpg-server-ctl v" << PACKAGE_VERSION << endl 
+  cout << "Welcome to rainbrurpg-server-ctl v" << VERSION << endl 
        << endl << "Use `help' to get a list of working commands." << endl;
 }
 
