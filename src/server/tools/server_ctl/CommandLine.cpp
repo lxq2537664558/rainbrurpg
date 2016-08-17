@@ -28,8 +28,6 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-#include <iostream>
-
 #include <boost/algorithm/string.hpp> // For the trim command
 
 #include <config.h> // USES VERSION

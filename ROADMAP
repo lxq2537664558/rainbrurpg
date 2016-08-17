@@ -8,7 +8,8 @@
   see https://www.ipify.org/
   Read IP from the api.ipify.org URL
   Must be integreted to network (at least used by server and meta)
-  
+  - Also note that this is the same work as downloading the meta's entry point
+    we should share this code. Maybe meta could use network library.
 **** Logger work
 ***** For logger v2
 ****** Add platform dependant header data
@@ -58,6 +59,9 @@
      server to play on. It's based on websocket, to be able to
      use it in a browser (for a further webgl implementation ?)
 
+     See the 'Server work' for the entry-point downloading thing. Shared
+     with public-IP.
+
 - [ ] Current one should go to OLD/ because based on foswiki
 - [ ] cmake should search for a good C++ websocket library
   and add this library to top-level DEPENDENCIES file
@@ -86,6 +90,7 @@
   Many in logger : delete called on 'Rpg::LoggerOutput' that is abstract but 
   has non-virtual destructor
 ***** Starts to use cmake/gettext with logger/po directory
+- [ ] We must handle a call to msgmerge in CMakeLists.txt
 ***** Continue the INSTALL file
 - [ ] With cmake flags on how to change install dirs...
   See automake's INSTALL file for info
@@ -102,6 +107,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-08-18 jeu. 00:59]--[2016-08-18 jeu. 01:24] =>  0:25
       CLOCK: [2016-08-04 jeu. 23:08]--[2016-08-04 jeu. 23:52] =>  0:44
       CLOCK: [2016-07-29 ven. 00:08]--[2016-07-29 ven. 00:32] =>  0:24
       CLOCK: [2016-06-11 sam. 02:08]--[2016-06-11 sam. 02:18] =>  0:10
@@ -193,12 +199,12 @@
   - [X] move unneeded files to OLD/server
 - [X] When all sources in src/ top-level dir, changes CMAKE_CXX_FLAGS
   in CMakeLists to ${CMAKE_SOURCE_DIR}/src/,,
-- [ ] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
+- [X] Make a top-level DEPENDENCIES file (from CI/before_install.sh)
   and remove all others. The actual one is from client subproject.
 - [ ] Should not use file(GLOB...) from cmake to collect sources files
-- [ ] We must handle a call to msgmerge in CMakeLists.txt
 - [ ] Should move all changelog.dev in top-level one
 - [ ] Must make a cmake target to run unit tests (as `make check`)
+  And run it on travis-ci
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10

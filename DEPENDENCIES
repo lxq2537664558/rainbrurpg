@@ -16,7 +16,11 @@ The following package should be installed before RainbruRPG is installed:
 
 * Boost 1.55
   + Needed
-  + Components: Program_options, Format
+  + Components: Program_options, Format, System, FileSystem, Graph, Test
+  + homepage:
+    http://www.boost.org/
+  + download:
+    http://www.boost.org/users/download/
 
 * CEGUI 0.7.6
   + Needed
@@ -32,5 +36,21 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http://rubyforge.org/projects/korundum/
 
-* readline
+* GNU readline
   + Needed for server-ctl binary
+  + homepage:
+    http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+  + download:
+    ftp://ftp.cwru.edu/pub/bash/
+
+* Guile 2.0+
+  + homepage:
+    https://www.gnu.org/software/guile/
+  + download:
+    https://www.gnu.org/software/guile/download/
+
+* Enet
+  + homepage:
+    http://enet.bespin.org/
+  + download:
+    http://enet.bespin.org/Downloads.html

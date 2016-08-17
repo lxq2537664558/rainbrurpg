@@ -1,3 +1,14 @@
+2016-08-18  Jérôme Pasquier  <rainbru@free.fr>
+
+	* DEPENDENCIES (Enet): add full section from CI/before_install.sh.
+	* DEPENDENCIES (readline): add homepage and download sections.
+	* src/server/tools/server_ctl/CommandLine.cpp: remove iostream include
+	trying to fix the ci build.
+	* DEPENDENCIES (Boost): add homepage and download sections.
+	* DEPENDENCIES (Guile): add full section from CI/before_install.sh.
+	* DEPENDENCIES (Boost): add some needed components (System, FileSystem,
+	Graph, Test).
+
 2016-08-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt: make CMAKE_CXX_FLAGS also remove src/ from the
