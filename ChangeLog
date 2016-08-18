@@ -1,5 +1,8 @@
 2016-08-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt: replace GLOB with hardcoded filenames for all other
+	targets.
+
 	* CMakeLists.txt (logger-src): replace GLOB with hardcoded filenames.
 	* src/server/tools/server_ctl/CommandLine.cpp (getNext): remove
 	trim to fix CI fail.

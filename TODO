@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-249 (04 Jun. 2016 - ???) SLOC ??? FT ??:??
-- (9) Cmake's logger files now hardcoded
+- No more GLOB in CMakeLists.txt
+- Cmake's logger files now hardcoded
 - Updated DEPENDENCIES from CI install script
 - Server moved to src/server and OLD
 - server-ctl binary built again

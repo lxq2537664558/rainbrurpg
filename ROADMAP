@@ -107,6 +107,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Trying cmake as a global build system
+      CLOCK: [2016-08-18 jeu. 02:24]
       CLOCK: [2016-08-18 jeu. 01:36]--[2016-08-18 jeu. 02:14] =>  0:38
       CLOCK: [2016-08-18 jeu. 00:59]--[2016-08-18 jeu. 01:24] =>  0:25
       CLOCK: [2016-08-04 jeu. 23:08]--[2016-08-04 jeu. 23:52] =>  0:44
@@ -204,7 +205,7 @@
   and remove all others. The actual one is from client subproject.
 - [X] Should move all changelog.dev in top-level one
   Canceled: not needed and to much work to sotr it by date
-- [ ] Should not use file(GLOB...) from cmake to collect sources files
+- [X] Should not use file(GLOB...) from cmake to collect sources files
 - [ ] Must make a cmake target to run unit tests (as `make check`)
   And run it on travis-ci
 ***** DONE Correct NEW project setup

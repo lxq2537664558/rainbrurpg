@@ -104,7 +104,11 @@ set(logger-src
   src/logger/ObjectInspector.cpp)
 add_library(rainbrurpg-logger SHARED ${logger-src})
 
-FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/src/services/*.cpp")
+set(services-src
+  src/services/DependGraph.cpp
+  src/services/main.cpp
+  src/services/depend-parser-test.cpp
+  )
 add_library(rainbrurpg-services ${services-src})
 target_link_libraries(rainbrurpg-services
   rainbrurpg-logger
@@ -112,24 +116,34 @@ target_link_libraries(rainbrurpg-services
 )
 
 # Executables rules
-FILE(GLOB client-src "${CMAKE_SOURCE_DIR}/src/client/*.cpp")
+set (client-src
+  src/client/GameEngine.cpp
+  src/client/LoadingBar.cpp
+  src/client/main.cpp
+  )
 add_executable(rainbrurpg-client ${client-src})
 target_link_libraries(rainbrurpg-client
   rainbrurpg-logger
   rainbrurpg-services
   ${CLI_LIBRARIES}
   ${Boost_LIBRARIES}
-)
+  )
 
-FILE(GLOB server-src "${CMAKE_SOURCE_DIR}/src/server/*.cpp")
+set (server-src
+  src/server/main.cpp
+  )
 add_executable(rainbrurpg-server ${server-src})
 target_link_libraries(rainbrurpg-server
   rainbrurpg-logger
   rainbrurpg-services
   ${Boost_LIBRARIES}
-)
+  )
 
-FILE(GLOB server-ctl "${CMAKE_SOURCE_DIR}/src/server/tools/server_ctl/*.cpp")
+set(server-ctl
+  src/server/tools/server_ctl/CommandLine.cpp
+  src/server/tools/server_ctl/main.cpp
+  src/server/tools/server_ctl/ServerCommand.cpp
+  )
 add_executable(rainbrurpg-server-ctl ${server-ctl})
 target_link_libraries(rainbrurpg-server-ctl
   rainbrurpg-logger
@@ -141,7 +155,10 @@ target_link_libraries(rainbrurpg-server-ctl
 
 ## Logger examples
 if(BUILD_LOGGER_EXAMPLES)
-  FILE(GLOB logger-examples-src "${CMAKE_SOURCE_DIR}/src/logger/examples/*.cpp")
+  set(logger-examples-src
+    src/logger/examples/logger-test.cpp
+    src/logger/examples/Point.cpp
+    )
   add_executable(rainbrurpg-logger-example ${logger-examples-src})
   target_link_libraries(rainbrurpg-logger-example
     rainbrurpg-logger

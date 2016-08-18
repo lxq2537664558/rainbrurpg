@@ -22,13 +22,13 @@
 
 #include "ServerCommand.hpp"
 
-#include <cstdio>
-#include <cstdlib>
+#include <iostream>
+//#include <cstdio>
+//#include <cstdlib>
 
 #include <readline/readline.h>
 #include <readline/history.h>
 
-#include <iostream>
 
 
 #include <config.h> // USES VERSION
