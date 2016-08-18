@@ -1,5 +1,9 @@
 2016-08-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (logger-src): replace GLOB with hardcoded filenames.
+	* src/server/tools/server_ctl/CommandLine.cpp (getNext): remove
+	trim to fix CI fail.
+
 	* DEPENDENCIES (Enet): add full section from CI/before_install.sh.
 	* DEPENDENCIES (readline): add homepage and download sections.
 	* src/server/tools/server_ctl/CommandLine.cpp: remove iostream include

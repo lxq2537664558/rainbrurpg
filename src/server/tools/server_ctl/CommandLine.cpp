@@ -28,12 +28,13 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-#include <boost/algorithm/string.hpp> // For the trim command
+#include <iostream>
+
 
 #include <config.h> // USES VERSION
 
 using namespace std;
-using namespace boost::algorithm;
+//using namespace boost::algorithm;
 
 // Static members
 CommandLine* CommandLine::mInstance;
@@ -83,9 +84,6 @@ CommandLine::getNext(void)
 	      it->second->execute(strcmd);
 	    }
 	  
-	  // Trim the command string
-	  trim(strcmd);
-
 	  cout << "["  << strcmd << "]" << endl;
 	  
 	  if (mCommandBuffer[0]!=0)

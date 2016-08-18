@@ -94,8 +94,15 @@ include_directories(
 
 # Individual libraries rules
 # Defines sources (defined here because used by i18n)
-FILE(GLOB logger-src "${CMAKE_SOURCE_DIR}/src/logger/*.cpp")
-add_library(rainbrurpg-logger ${logger-src})
+set(logger-src
+  src/logger/Logger.cpp
+  src/logger/LoggerOutputYaml.cpp
+  src/logger/LoggerOutput.cpp
+  src/logger/ObjectAttribute.cpp
+  src/logger/LoggerOutputFile.cpp
+  src/logger/LoggerOutputTty.cpp
+  src/logger/ObjectInspector.cpp)
+add_library(rainbrurpg-logger SHARED ${logger-src})
 
 FILE(GLOB services-src "${CMAKE_SOURCE_DIR}/src/services/*.cpp")
 add_library(rainbrurpg-services ${services-src})
