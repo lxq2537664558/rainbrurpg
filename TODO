@@ -35,14 +35,5 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-249 (04 Jun. 2016 - ???) SLOC ??? FT ??:??
-- No more GLOB in CMakeLists.txt
-- Cmake's logger files now hardcoded
-- Updated DEPENDENCIES from CI install script
-- Server moved to src/server and OLD
-- server-ctl binary built again
-- Moved client sources to src/client
-- Try to fix some CI warnings with clang
-- Moved services to OLD/
-- Moved services sources to src/services
-- logger/ directory moved to OLD/
+* v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:??
+

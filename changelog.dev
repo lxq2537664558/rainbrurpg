@@ -1,3 +1,15 @@
+* v0.0.5-249 (04 Jun. 2016 - 18 Agu. 2016) SLOC 2,308 FT 277:56
+- No more GLOB in CMakeLists.txt
+- Cmake's logger files now hardcoded
+- Updated DEPENDENCIES from CI install script
+- Server moved to src/server and OLD
+- server-ctl binary built again
+- Moved client sources to src/client
+- Try to fix some CI warnings with clang
+- Moved services to OLD/
+- Moved services sources to src/services
+- logger/ directory moved to OLD/
+
 * v0.0.5-248 (29 Oct. 2015 - 04 Jun. 2016) SLOC 1,320 FT 274:49
 	SLOC is inaccurate until complete switch
 - Add a top-level DEPENDENCIES file
