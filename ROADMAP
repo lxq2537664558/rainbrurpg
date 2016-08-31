@@ -106,7 +106,15 @@
 - [ ] Must use cookiechoice
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
-***** TODO Trying cmake as a global build system
+***** TODO Handle unit tests
+- [ ] Implement a simple unit test
+  - [ ] Create a cmake option for unit tests (default to ON)
+  - [ ] cmake must search for Boost.Test if unit tests are ON
+  - [ ] Add 'UT ?' to the TODO revision
+- [ ] run it on travis-ci
+  - [ ] Link unit tests with `make check`
+  - [ ] Make travis run them
+***** DONE Trying cmake as a global build system
       CLOCK: [2016-08-18 jeu. 02:24]--[2016-08-18 jeu. 02:32] =>  0:08
       CLOCK: [2016-08-18 jeu. 01:36]--[2016-08-18 jeu. 02:14] =>  0:38
       CLOCK: [2016-08-18 jeu. 00:59]--[2016-08-18 jeu. 01:24] =>  0:25
@@ -206,8 +214,6 @@
 - [X] Should move all changelog.dev in top-level one
   Canceled: not needed and to much work to sotr it by date
 - [X] Should not use file(GLOB...) from cmake to collect sources files
-- [ ] Must make a cmake target to run unit tests (as `make check`)
-  And run it on travis-ci
 ***** DONE Correct NEW project setup
       CLOCK: [2016-02-19 ven. 19:32]--[2016-02-19 ven. 19:43] =>  0:11
       CLOCK: [2016-01-24 dim. 22:17]--[2016-01-24 dim. 22:27] =>  0:10

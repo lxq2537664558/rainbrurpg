@@ -1,3 +1,7 @@
+2016-08-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* ROADMAP: add Unit tests section.
+
 2016-08-18  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt: replace GLOB with hardcoded filenames for all other
