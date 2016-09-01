@@ -1,5 +1,11 @@
 2016-08-31  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine_Test.cpp (my_test): fake unit test.
+	* CI/script.sh: add `make check` to travis-ci.
+	* CMakeLists.txt (BUILD_UNITTESTS): search for Boost.Test only if
+	needed.
+	* CMakeLists.txt (BUILD_UNITTESTS): add the unit tests option.
+
 	* ROADMAP: add Unit tests section.
 
 2016-08-18  Jérôme Pasquier  <rainbru@free.fr>

@@ -35,5 +35,5 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:??
-
+* v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:?? UT ?
+- Unit tests building works

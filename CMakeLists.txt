@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 option(BUILD_LOGGER_EXAMPLES "If we build logger examples binaries" OFF)
 option(BUILD_LOGREADER "If we build the Qt-based logreader" OFF)
+option(BUILD_TESTS "Defines if we build unit tests" ON)
 
 set(VERSION 0.0.5)
 set(REVISION 248)
@@ -33,11 +34,11 @@ include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
 if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 elseif(COMPILER_SUPPORTS_CXX0X)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 else()
-        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
 # Handle gettext translations
@@ -63,8 +64,11 @@ GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/po/rainbrurpg-logger.pot" ALL
 # Check dependencies
 set(CLI_DEPS OGRE CEGUI CEGUI-OGRE OIS) # Client-only dependencies
 pkg_check_modules(CLI REQUIRED ${CLI_DEPS})
-set(BOOST_COMPONENTS system filesystem program_options thread graph
-  unit_test_framework)
+set(BOOST_COMPONENTS system filesystem program_options thread graph)
+if (BUILD_TESTS) 
+  list(APPEND BOOST_COMPONENTS unit_test_framework)
+endif()
+
 find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 pkg_check_modules(GUILE REQUIRED guile-2.0)
 find_package(Readline)
@@ -184,6 +188,31 @@ if(BUILD_LOGREADER)
       "BUILD_LOGREADER building.")
   endif(UIC)
 endif(BUILD_LOGREADER)
+
+if (BUILD_TESTS)
+  # All files with the given pattern will be use as unit tests.
+  # No main function/file needed.
+  file(GLOB unittests-src src/*/*_Test.cpp)
+
+  # Append some sources to fix undefined references but we need to remove
+  # some main() to avoid multiple definitions
+  list(REMOVE_ITEM client-src src/client/main.cpp)
+  message(STATUS "${client-src}")
+  list(APPEND unittests-src ${client-src})
+  list(APPEND unittests-src ${logger-src})
+  
+  add_executable(rainbrurpg-tests ${unittests-src})
+  target_link_libraries(rainbrurpg-tests
+    rainbrurpg-logger
+    rainbrurpg-services
+    ${CLI_LIBRARIES}
+    ${Boost_LIBRARIES}
+    )
+  IF(UNIX)
+    ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) # Make Boost.Test generate a main()
+  ENDIF(UNIX)
+  add_custom_target(check COMMAND rainbrurpg-tests) # Add the `make check` cmd
+endif()
 
 # This is a fix for the GNU C __FILE__ thing :
 #  __FILE__ shows the full path of the file, so the logger text output
