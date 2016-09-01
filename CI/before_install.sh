@@ -10,7 +10,8 @@ wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
 
 sudo apt-get update -qq
 
-sudo apt-get install libogre-dev libcegui-mk2-dev libois-dev \
+# Here I use --force-yes due to llvm signature errors
+sudo apt-get --yes --force-yes install libogre-dev libcegui-mk2-dev libois-dev \
      libboost-program-options-dev libboost-system-dev libboost-filesystem-dev \
      libboost-graph-dev libboost-test-dev libenet-dev guile-2.0-dev \
-     clang-3.8 lldb-3.8
+     clang-3.8 lldb-3.8 
