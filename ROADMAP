@@ -74,21 +74,9 @@
 **** Client work
 - [ ] See why client get stuck in 'parsing scripts' loading bar
 **** TODO Git switch items
-***** Fix the CI build with clang
+***** Improve CI with other oses
       CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
-- [ ] Fix the error in DependGraph.cpp
-#+BEGIN_EXAMPLE
-  /usr/include/boost/xpressive/detail/utility/tracking_ptr.hpp:282:19: error: 
-  invalid operands to binary expression...
-#+END_EXAMPLE
-
-#+BEGIN_EXAMPLE
-  call to implicitly-deleted copy constructor of
-  'boost::shared_ptr<boost::dynamic_property_map>'
-#+END_EXAMPLE
-- [ ] Try to fix warnings   
-  Many in logger : delete called on 'Rpg::LoggerOutput' that is abstract but 
-  has non-virtual destructor
+- [ ] Start with osx but allow_failure
 ***** Starts to use cmake/gettext with logger/po directory
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
 ***** Continue the INSTALL file
@@ -107,6 +95,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Handle unit tests
+      CLOCK: [2016-09-01 jeu. 18:38]--[2016-09-01 jeu. 18:46] =>  0:08
       CLOCK: [2016-09-01 jeu. 05:39]--[2016-09-01 jeu. 05:45] =>  0:06
       CLOCK: [2016-09-01 jeu. 05:19]--[2016-09-01 jeu. 05:29] =>  0:10
       CLOCK: [2016-09-01 jeu. 04:14]--[2016-09-01 jeu. 04:45] =>  0:31
@@ -121,11 +110,13 @@
   - [X] Link unit tests with `make check`
   - [X] Make travis run them
 - [X] Got segfault in unit tests (but work with travis-ci)
-- [ ] See why librainbrurpg-logger.so is a shared lib. while 
-  - [ ] Only install install clang on 3.8 if clang is selected (not for g++)
-  - [ ] Note that clang can fail
-  - [ ] Try to install clang 3.8 on travis
+- [X] See why librainbrurpg-logger.so is a shared lib. while 
+  - [X] Only install install clang on 3.8 if clang is selected (not for g++)
+  - [X] Note that clang can fail
+  - [X] Try to install clang 3.8 on travis
     got a 404 on llvm apt repository URL
+- [ ] Testing now wih trusty
+  - [ ] undefined references to program_options when linking client
 ***** DONE Trying cmake as a global build system
       CLOCK: [2016-08-18 jeu. 02:24]--[2016-08-18 jeu. 02:32] =>  0:08
       CLOCK: [2016-08-18 jeu. 01:36]--[2016-08-18 jeu. 02:14] =>  0:38

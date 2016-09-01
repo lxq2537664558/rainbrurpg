@@ -114,11 +114,11 @@ set(logger-src
 add_library(rainbrurpg-logger SHARED ${logger-src})
 
 set(services-src
-  src/services/DependGraph.cpp
+#  src/services/DependGraph.cpp # Just a test, contains a main() function
   src/services/main.cpp
-  src/services/depend-parser-test.cpp
+#  src/services/depend-parser-test.cpp # another main function here
   )
-add_library(rainbrurpg-services ${services-src})
+add_library(rainbrurpg-services SHARED ${services-src})
 target_link_libraries(rainbrurpg-services
   rainbrurpg-logger
   ${GUILE_LIBRARIES}

@@ -1,5 +1,9 @@
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (rainbrurpg-services): remove two sources that
+	contain additional main() function.
+	* CMakeLists.txt (rainbrurpg-services): becomes a shared library.
+
 	* CI/before_install.sh (libogre-dev): fix name issue to libogre-1.8-dev.
 
 	* .travis.yml (dist): switch to trusty to have clang 3.8.
