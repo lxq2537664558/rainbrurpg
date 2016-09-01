@@ -14,7 +14,7 @@ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ trusty-updates ma
 sudo apt-get update -qq
 
 # Here I use --force-yes due to llvm signature errors
-sudo apt-get --yes install libogre-dev libcegui-mk2-dev libois-dev \
+sudo apt-get --yes install libogre-1.8-dev libcegui-mk2-dev libois-dev \
      libboost-program-options-dev libboost-system-dev libboost-filesystem-dev \
      libboost-graph-dev libboost-test-dev libenet-dev guile-2.0-dev \
      clang-3.8 lldb-3.8
