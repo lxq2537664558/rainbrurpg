@@ -36,4 +36,5 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:?? UT ?
+- CI switch to trusty to =install clang 3.8
 - Unit tests building works

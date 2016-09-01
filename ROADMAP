@@ -122,6 +122,8 @@
   - [X] Make travis run them
 - [X] Got segfault in unit tests (but work with travis-ci)
 - [ ] See why librainbrurpg-logger.so is a shared lib. while 
+  - [ ] Only install install clang on 3.8 if clang is selected (not for g++)
+  - [ ] Note that clang can fail
   - [ ] Try to install clang 3.8 on travis
     got a 404 on llvm apt repository URL
 ***** DONE Trying cmake as a global build system

@@ -1,5 +1,9 @@
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* .travis.yml (dist): switch to trusty to have clang 3.8.
+	* CI/before_install.sh (clang): try conditionnal installation of
+	clang 3.8.
+
 	* CI/script.sh (clang++): try using libc++ to fix max_align_t issue.
 
 	* CI/before_install.sh (apt-get): add --force-yes due to GPG errors.
