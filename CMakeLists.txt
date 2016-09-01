@@ -34,7 +34,12 @@ include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
 if(COMPILER_SUPPORTS_CXX11)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  # Disabling C++11 support for clang to avoid CI fails
+  if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  else(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    message(STATUS "Disabling CXX11 support for clang.")
+  endif(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 elseif(COMPILER_SUPPORTS_CXX0X)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 else()
@@ -197,7 +202,6 @@ if (BUILD_TESTS)
   # Append some sources to fix undefined references but we need to remove
   # some main() to avoid multiple definitions
   list(REMOVE_ITEM client-src src/client/main.cpp)
-  message(STATUS "${client-src}")
   list(APPEND unittests-src ${client-src})
   list(APPEND unittests-src ${logger-src})
   

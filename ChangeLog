@@ -1,3 +1,8 @@
+2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt: disable C++11 support for clang compiler to
+	avoid CI fails.
+
 2016-08-31  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine_Test.cpp (my_test): fake unit test.
