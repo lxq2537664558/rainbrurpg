@@ -1,5 +1,7 @@
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CI/before_install.sh: trying clang 3.8 instead of 3.9.
+
 	* CI/before_install.sh: add '-y' to ppa line.
 
 	* CMakeLists.txt: re-enable C++11 to test it with cmang 3.9.
