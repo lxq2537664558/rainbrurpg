@@ -1,5 +1,8 @@
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt: re-enable C++11 to test it with cmang 3.9.
+	* CI/before_install.sh: trying to install clang 3.9.
+
 	* CMakeLists.txt: disable C++11 support for clang compiler to
 	avoid CI fails.
 

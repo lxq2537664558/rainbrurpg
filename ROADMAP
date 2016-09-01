@@ -107,6 +107,7 @@
 - [ ] Maybe add Analytics/Adsense ?
 - [ ] Place other social network buttons (addthis/flattr)
 ***** TODO Handle unit tests
+      CLOCK: [2016-09-01 jeu. 05:39]--[2016-09-01 jeu. 05:45] =>  0:06
       CLOCK: [2016-09-01 jeu. 05:19]--[2016-09-01 jeu. 05:29] =>  0:10
       CLOCK: [2016-09-01 jeu. 04:14]--[2016-09-01 jeu. 04:45] =>  0:31
       CLOCK: [2016-08-31 mer. 21:50]--[2016-08-31 mer. 22:20] =>  0:30
@@ -121,11 +122,7 @@
   - [X] Make travis run them
 - [X] Got segfault in unit tests (but work with travis-ci)
 - [ ] See why librainbrurpg-logger.so is a shared lib. while 
-  librainbrurpg-services.a is a static one
-  To locally test for clang build : Works locally.
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
-  It seems an incompatibility with clang and c++11
+  - [ ] Try to install clang 3.8 on travis
 ***** DONE Trying cmake as a global build system
       CLOCK: [2016-08-18 jeu. 02:24]--[2016-08-18 jeu. 02:32] =>  0:08
       CLOCK: [2016-08-18 jeu. 01:36]--[2016-08-18 jeu. 02:14] =>  0:38
