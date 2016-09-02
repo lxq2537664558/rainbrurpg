@@ -53,7 +53,7 @@
       How to make a ruby binging for this ?
 - [ ] see the log_reader.rb bug about the ErrorTrap#show_dialog cancel
       button
-**** Meta libray
+**** Meta library
      CLOCK: [2016-06-06 lun. 06:01]--[2016-06-06 lun. 06:09] =>  0:08
      This new meta library is used both by server/client to find
      server to play on. It's based on websocket, to be able to
@@ -85,6 +85,7 @@
 - [ ] With cmake flags on how to change install dirs...
   See automake's INSTALL file for info
 ***** TODO Handle unit tests
+      CLOCK: [2016-09-02 ven. 02:55]--[2016-09-02 ven. 03:18] =>  0:23
       CLOCK: [2016-09-01 jeu. 18:38]--[2016-09-01 jeu. 18:46] =>  0:08
       CLOCK: [2016-09-01 jeu. 05:39]--[2016-09-01 jeu. 05:45] =>  0:06
       CLOCK: [2016-09-01 jeu. 05:19]--[2016-09-01 jeu. 05:29] =>  0:10

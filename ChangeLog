@@ -1,5 +1,9 @@
 2016-09-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (include_directories): add Boost include dir.
+	* CMakeLists.txt (rainbrurpg-logger): add ${Boost_LIBRARIES} to fix
+	CI issues.
+
 	* ROADMAP: close the landing page section.
 
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>

@@ -97,8 +97,8 @@ include_directories(
   ${CMAKE_SOURCE_DIR}
   ${CLI_INCLUDE_DIRS}
   ${GUILE_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
   src/logger
-  src/logger/examples
   )
 
 # Individual libraries rules
@@ -112,6 +112,9 @@ set(logger-src
   src/logger/LoggerOutputTty.cpp
   src/logger/ObjectInspector.cpp)
 add_library(rainbrurpg-logger SHARED ${logger-src})
+target_link_libraries(rainbrurpg-logger
+  ${Boost_LIBRARIES}
+  )
 
 set(services-src
 #  src/services/DependGraph.cpp # Just a test, contains a main() function
