@@ -1,3 +1,7 @@
+2016-09-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* ROADMAP: close the landing page section.
+
 2016-09-01  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (rainbrurpg-services): remove two sources that
