@@ -1,5 +1,7 @@
 2016-09-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CI/script.sh: remove libc++ reference since we use clang 3.8.
+
 	* CMakeLists.txt (include_directories): add Boost include dir.
 	* CMakeLists.txt (rainbrurpg-logger): add ${Boost_LIBRARIES} to fix
 	CI issues.
