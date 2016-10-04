@@ -17,5 +17,12 @@ sudo apt-get update -qq
 sudo apt-get --yes install libogre-1.8-dev libcegui-mk2-dev libois-dev \
      libboost-program-options-dev libboost-system-dev libboost-filesystem-dev \
      libboost-graph-dev libboost-test-dev libenet-dev guile-2.0-dev \
-     clang-3.8 lldb-3.8
-     
+     clang-3.8 lldb-3.8 libgtest-dev google-mock
+
+# build libgtest & libgtest_main
+sudo mkdir /usr/src/gtest/build
+cd /usr/src/gtest/build
+sudo cmake .. -DBUILD_SHARED_LIBS=1
+sudo make -j4
+sudo ln -s /usr/src/gtest/build/libgtest.so /usr/lib/libgtest.so
+sudo ln -s /usr/src/gtest/build/libgtest_main.so /usr/lib/libgtest_main.so

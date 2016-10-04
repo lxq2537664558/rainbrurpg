@@ -22,6 +22,7 @@ configure_file(
 INCLUDE(GNUInstallDirs)
 INCLUDE(FindPkgConfig)
 INCLUDE(FindGettext)
+INCLUDE(FindGTest)
 
 # Used to debug cmake variables
 #get_cmake_property(_variableNames VARIABLES)
@@ -213,7 +214,7 @@ if (BUILD_TESTS)
     rainbrurpg-logger
     rainbrurpg-services
     ${CLI_LIBRARIES}
-    ${Boost_LIBRARIES}
+    ${GTEST_LIBRARIES}
     )
   IF(UNIX)
     ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) # Make Boost.Test generate a main()
