@@ -3,6 +3,22 @@
 * v1.0.0
 ** v0.1.0
 *** v0.0.6
+**** Postponed unit tests thing
+***** Search for the guile error
+- [ ] The same error occurs in two builds now
+  =guile: uncaught throw to system-error: (open-file ~A: ~S (No such file or directory scm/test.scm) (2))=
+  - [ ] Maybe try for GTest
+    Because we have localc segfault
+    The segfault isn't here anymore but now the guile error is local
+***** Improve CI with other OSes
+      CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
+- [ ] Start with osx but allow_failure
+**** Handle coverity scan 
+     see https://scan.coverity.com/download for more (currently at 4%)
+**** Handling i18n 
+- [ ] We must handle a call to msgmerge in CMakeLists.txt
+- [ ] Must handle `make install` command
+
 **** Server work
 - [ ] Server must print its public IP adress
   see https://www.ipify.org/
@@ -71,32 +87,17 @@
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
-**** Client work
+**** TODO Client work
 - [ ] See why client get stuck in 'parsing scripts' loading bar
-**** Handle coverity scan 
-     see https://scan.coverity.com/download for more (currently at 4%)
-**** Postponed unit tests thing
-***** Search for the guile error
-- [ ] The same error occurs in two builds now
-  =guile: uncaught throw to system-error: (open-file ~A: ~S (No such file or directory scm/test.scm) (2))=
-  - [ ] Maybe try for GTest
-    Because we have localc segfault
-    The segfault isn't here anymore but now the guile error is local
-***** Improve CI with other OSes
-      CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
-- [ ] Start with osx but allow_failure
-**** TODO Git switch items
-***** Starts to use cmake/gettext with logger/po directory
-- [ ] We must handle a call to msgmerge in CMakeLists.txt
-- [ ] Must handle `make install` command
-***** TODO Continue the INSTALL file
+**** DONE Git switch items
+***** DONE Continue the INSTALL file
       CLOCK: [2016-10-05 mer. 02:20]--[2016-10-05 mer. 03:16] =>  0:56
 - [X] Rename it to INSTALL.md
-- [-] With cmake flags on how to change install dirs...
+- [X] With cmake flags on how to change install dirs...
   See automake's INSTALL file for info (/usr/share/automake-1.14/INSTALL)
   - [X] Basic installation (from automake's INSTALL)
-  - [ ] Compilers and Options
-  - [ ] Optional Features
+  - [X] Compilers and Options
+  - [X] Optional Features
 ***** DONE Handle unit tests
       CLOCK: [2016-10-04 mar. 03:43]--[2016-10-04 mar. 04:21] =>  0:38
       CLOCK: [2016-09-02 ven. 02:55]--[2016-09-02 ven. 03:18] =>  0:23

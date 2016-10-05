@@ -1,5 +1,7 @@
 2016-10-05  Jérôme Pasquier  <rainbru@free.fr>
 
+	* ROADMAP: close the git switch item.
+
 	* INSTALL.md: updated with 'Installation Instructions'.
 	* INSTALL: renamed to INSTALL.md.
 	* ROADMAP: postponed unit test scm/test.scm issue.
