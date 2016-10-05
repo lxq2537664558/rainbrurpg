@@ -1,3 +1,14 @@
+2016-10-05  Jérôme Pasquier  <rainbru@free.fr>
+
+	* INSTALL.md: updated with 'Installation Instructions'.
+	* INSTALL: renamed to INSTALL.md.
+	* ROADMAP: postponed unit test scm/test.scm issue.
+
+2016-10-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine_Test.cpp (my_test): switch to GTest.
+	* CI/before_install.sh: install GTest.
+
 2016-09-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CI/script.sh: remove libc++ reference since we use clang 3.8.

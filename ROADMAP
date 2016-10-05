@@ -75,16 +75,30 @@
 - [ ] See why client get stuck in 'parsing scripts' loading bar
 **** Handle coverity scan 
      see https://scan.coverity.com/download for more (currently at 4%)
-**** TODO Git switch items
+**** Postponed unit tests thing
+***** Search for the guile error
+- [ ] The same error occurs in two builds now
+  =guile: uncaught throw to system-error: (open-file ~A: ~S (No such file or directory scm/test.scm) (2))=
+  - [ ] Maybe try for GTest
+    Because we have localc segfault
+    The segfault isn't here anymore but now the guile error is local
 ***** Improve CI with other OSes
       CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
 - [ ] Start with osx but allow_failure
+**** TODO Git switch items
 ***** Starts to use cmake/gettext with logger/po directory
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
-***** Continue the INSTALL file
-- [ ] With cmake flags on how to change install dirs...
-  See automake's INSTALL file for info
-***** TODO Handle unit tests
+- [ ] Must handle `make install` command
+***** TODO Continue the INSTALL file
+      CLOCK: [2016-10-05 mer. 02:20]--[2016-10-05 mer. 03:16] =>  0:56
+- [X] Rename it to INSTALL.md
+- [-] With cmake flags on how to change install dirs...
+  See automake's INSTALL file for info (/usr/share/automake-1.14/INSTALL)
+  - [X] Basic installation (from automake's INSTALL)
+  - [ ] Compilers and Options
+  - [ ] Optional Features
+***** DONE Handle unit tests
+      CLOCK: [2016-10-04 mar. 03:43]--[2016-10-04 mar. 04:21] =>  0:38
       CLOCK: [2016-09-02 ven. 02:55]--[2016-09-02 ven. 03:18] =>  0:23
       CLOCK: [2016-09-01 jeu. 18:38]--[2016-09-01 jeu. 18:46] =>  0:08
       CLOCK: [2016-09-01 jeu. 05:39]--[2016-09-01 jeu. 05:45] =>  0:06
@@ -106,8 +120,8 @@
   - [X] Note that clang can fail
   - [X] Try to install clang 3.8 on travis
     got a 404 on llvm apt repository URL
-- [ ] Testing now wih trusty
-  - [ ] undefined references to program_options when linking client
+- [X] Testing now wih trusty
+  - [X] undefined references to program_options when linking client : FIXED
 ***** DONE Trying to create a new landing page for rainbrurpg.org
   CLOCK: [2015-08-25 mar. 21:27]--[2015-08-25 mar. 21:55] =>  0:28
   *Project already create *

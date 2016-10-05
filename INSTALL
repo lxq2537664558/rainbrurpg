@@ -1,9 +1,0 @@
-rainbrurpg instalation
-
-This is a cmake-based installation file :
-
-   mkdir build
-   cd build
-   cmake ..
-   make
-   ./rainbrurpg-client
