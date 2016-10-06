@@ -52,8 +52,7 @@ GameEngine::GameEngine(void):
       mWindow = mRoot->initialise(true, "RainbruRPG");
       
       // Create the SceneManager, in this case a generic one
-      SceneManager* mSceneMgr = mRoot->
-	createSceneManager(ST_GENERIC, "ExampleSMInstance");
+      mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
 
       /*      SceneNode* headNode = mSceneMgr->getRootSceneNode()
 	->createChildSceneNode("HeadNode");
@@ -181,16 +180,28 @@ GameEngine::run()
   setupResources();
 
   LoadingBar* lb = new LoadingBar();
+  LOGI("Starting loadingbar");
   lb->start(mWindow, 1, 1, 0.75);
-
-  //  if (current_gamestate != NULL)
-  //   current_gamestate->run(this);
-
+      // Turn off rendering of everything except overlays
+      mSceneMgr->clearSpecialCaseRenderQueues();
+      mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
+      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
+  mWindow->update();
+  
   ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+  // Back to// Back to full rendering
+      mSceneMgr->clearSpecialCaseRenderQueues();
+      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
+      mSceneMgr->clearSpecialCaseRenderQueues();
+      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
+  lb->finish();
+  LOGI("Loadingbar->finish() closed");
+  mWindow->update();
+  
   CEGUI::SchemeManager::getSingleton().create("VanillaSkin.scheme");
   CEGUI::SchemeManager::getSingleton().create("VanillaCommonDialogs.scheme");
   CEGUI::MouseCursor::getSingleton().setImage("Vanilla", "MouseArrow");
-
 
   // Align CEGUI mouse with OIS mouse
   const OIS::MouseState state = mMouse->getMouseState();
@@ -201,7 +212,6 @@ GameEngine::run()
     .loadWindowLayout("menu.layout"); 
   CEGUI::System::getSingleton().setGUISheet(guiRoot);
 
-  lb->finish();
 
   // Start rendering
   LOGI("Staring rendering loop");

@@ -80,7 +80,7 @@ private:
 
   Ogre::String mResourcesCfg;
   bool mShutdown;
-
+  Ogre::SceneManager* mSceneMgr;
 };
 
 #endif // !_GAME_ENGINE_HPP_
