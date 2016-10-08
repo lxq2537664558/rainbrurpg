@@ -70,6 +70,8 @@ protected:
 
   void setupResources(void);
   CEGUI::MouseButton convertButton(OIS::MouseButtonID);
+  void initializeCegui();
+  
 private:
   Ogre::Root* mRoot;
   Ogre::RenderWindow* mWindow;

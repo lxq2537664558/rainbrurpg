@@ -1,3 +1,14 @@
+2016-10-07  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (initializeCegui): becomes a new function
+	to be able to move this code.
+
+2016-10-06  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (GameEngine): move lb->finish() and
+	add some logger message.
+	* src/client/GameEngine.hpp (GameEngine): mSceneMgr becomes a member.
+
 2016-10-05  Jérôme Pasquier  <rainbru@free.fr>
 
 	* ROADMAP: close the git switch item.

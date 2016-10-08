@@ -66,7 +66,7 @@ GameEngine::GameEngine(void):
       
       // Create one viewport, entire window
       Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-      vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+      vp->setBackgroundColour(Ogre::ColourValue(1.0,0,1.0));
 
 
       // Initialize OIS
@@ -144,18 +144,23 @@ GameEngine::GameEngine(void):
 
       mRoot->addFrameListener(this);
  
-      // Initialize CEGUI
-      CEGUI::OgreRenderer& mRenderer = CEGUI::OgreRenderer::bootstrapSystem();
-
-      CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
-      CEGUI::Font::setDefaultResourceGroup("Fonts");
-      CEGUI::Scheme::setDefaultResourceGroup("Schemes");
-      CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
-      CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
-
       WindowEventUtilities::addWindowEventListener(mWindow, this);
     }
 }
+
+void
+GameEngine::initializeCegui()
+{
+  // Initialize CEGUI
+  CEGUI::OgreRenderer& mRenderer = CEGUI::OgreRenderer::bootstrapSystem();
+
+  CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
+  CEGUI::Font::setDefaultResourceGroup("Fonts");
+  CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+  CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
+  CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+}
+
 
 bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
@@ -181,28 +186,32 @@ GameEngine::run()
 
   LoadingBar* lb = new LoadingBar();
   LOGI("Starting loadingbar");
-  lb->start(mWindow, 1, 1, 0.75);
-      // Turn off rendering of everything except overlays
-      mSceneMgr->clearSpecialCaseRenderQueues();
-      mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
-      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
-  mWindow->update();
-  
+  lb->start(mWindow, 5, 5, 0.75);
+  // Turn off rendering of everything except overlays
+  mSceneMgr->clearSpecialCaseRenderQueues();
+  mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
+  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
+      
+  //  mWindow->update();
   ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
-  // Back to// Back to full rendering
-      mSceneMgr->clearSpecialCaseRenderQueues();
-      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-      mSceneMgr->clearSpecialCaseRenderQueues();
-      mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
+  // Back to full rendering
+  mSceneMgr->clearSpecialCaseRenderQueues();
+  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
+  mSceneMgr->clearSpecialCaseRenderQueues();
+  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
   lb->finish();
+  
   LOGI("Loadingbar->finish() closed");
-  mWindow->update();
+  //  mWindow->update();
+
+  initializeCegui();
   
   CEGUI::SchemeManager::getSingleton().create("VanillaSkin.scheme");
   CEGUI::SchemeManager::getSingleton().create("VanillaCommonDialogs.scheme");
   CEGUI::MouseCursor::getSingleton().setImage("Vanilla", "MouseArrow");
 
+  
   // Align CEGUI mouse with OIS mouse
   const OIS::MouseState state = mMouse->getMouseState();
   CEGUI::Vector2 mousePos = CEGUI::MouseCursor::getSingleton().getPosition(); 
@@ -212,6 +221,7 @@ GameEngine::run()
     .loadWindowLayout("menu.layout"); 
   CEGUI::System::getSingleton().setGUISheet(guiRoot);
 
+  
 
   // Start rendering
   LOGI("Staring rendering loop");
