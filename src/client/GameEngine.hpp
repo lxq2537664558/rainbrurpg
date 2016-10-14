@@ -83,6 +83,8 @@ private:
   Ogre::String mResourcesCfg;
   bool mShutdown;
   Ogre::SceneManager* mSceneMgr;
+
+  CEGUI::GUIContext* mContext;
 };
 
 #endif // !_GAME_ENGINE_HPP_

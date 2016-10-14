@@ -88,6 +88,9 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-14 ven. 23:01]--[2016-10-15 sam. 00:15] =>  1:14
+     CLOCK: [2016-10-12 mer. 03:03]--[2016-10-12 mer. 03:22] =>  0:19
+     CLOCK: [2016-10-12 mer. 02:27]--[2016-10-12 mer. 02:43] =>  0:16
      CLOCK: [2016-10-08 sam. 04:01]--[2016-10-08 sam. 05:02] =>  1:01
      CLOCK: [2016-10-06 jeu. 02:30]--[2016-10-06 jeu. 03:46] =>  1:16
 - [ ] See why client get stuck in 'parsing scripts' loading bar
@@ -100,8 +103,27 @@
   - It seems LoadingBar is shown only when all work is done.  
   - Try to see BspDemo as an example
   - I changed the background color to see when ist drawn : at the end of loading  
-  - The screnn isn't updated if we change window
+  - The screen isn't updated if we change window
+- [X] Let's test with Ogre 1.9 in another branch [test_ogre1.9]
+  Tested, but failed due to a segfault
+- [-] Test for locally built CEGUI 0.8
+  - [X] It works
+  - [ ] Change CMakeLists.txt to search for this version
+  - [ ] Change DEPENDENCIES file
+  - [ ] Can't find "TaharezLook/MouseArrow" image
+- [ ] Test if basic tutorials for Ogre 1.8.0 work
 - [ ] Maybe switch to OSG 3.4 ?
+  currently testing ~/Jeux/osg-test/osg-cegui/
+  Testing with CEGUI 0.8.7
+**** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
+     CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48
+     fix the client's issues
+- [ ] Mainly the CEGUI rendering and the LoadingBar ones
+  - removes LoadingBar.cpp from client's CMakeFiles.txt
+  - Removed OgreOerlay.h from LoadingBar.hpp
+  - Remove multiple LoadingBar references in GameEngine.cpp
+  - Direct modification of /usr/include/CEGUI/RendererModules/Ogre/CEGUIOgreRenderer.h
+- [ ] To much compilation errors, this code is definitely for 1.8
 **** DONE Git switch items
 ***** DONE Continue the INSTALL file
       CLOCK: [2016-10-05 mer. 02:20]--[2016-10-05 mer. 03:16] =>  0:56

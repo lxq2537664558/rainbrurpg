@@ -1,3 +1,9 @@
+2016-10-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp: many changes due to new CEGUI version.
+	* src/client/GameEngine.cpp: CEGUI's inject* called from mContext.
+	* src/client/GameEngine.hpp (mContext): add CEGUI context as pointer.
+
 2016-10-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (initializeCegui): becomes a new function

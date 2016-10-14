@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- (5) Can't fix client issue
+- (6) Client's main menu is back
+- Can't fix client issue
 - Updated INSTALL.md with installation instructions
 - Services is now a shared library
 - CI switch to trusty to install clang 3.8
