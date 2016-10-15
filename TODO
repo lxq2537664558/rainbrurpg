@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- (6) Client's main menu is back
+- (7) Initialize mouse position to 0,0
+- Client's main menu is back
 - Can't fix client issue
 - Updated INSTALL.md with installation instructions
 - Services is now a shared library

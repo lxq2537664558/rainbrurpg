@@ -211,22 +211,23 @@ GameEngine::run()
   CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
   CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
   CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
-  //CEGUI::MouseCursor::getSingleton().setImage("Vanilla", "MouseArrow");
 
-  /* FIXME: get a segfaut here*/
-  //  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-  
-  
+  // Get the CEGUI's default context
+  mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
+  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+
   // Align CEGUI mouse with OIS mouse
-  //  const OIS::MouseState state = mMouse->getMouseState();
-  //  CEGUI::UVector2 mousePos = CEGUI::MouseCursor::getSingleton().getPosition(); 
-  //  CEGUI::System::getSingleton().
-  //injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
+  /*  const OIS::MouseState state = mMouse->getMouseState();
+  CEGUI::UVector2 mousePos = CEGUI::MouseCursor::getSingleton().getPosition(); 
+  mContext->injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
   CEGUI::Window *guiRoot = CEGUI::WindowManager::getSingleton()
     .loadLayoutFromFile("menu.layout");
+  */
+
+  // Move CEGUI mouse to (0,0)
+  CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
+  mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
   
-  
-  mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
 
   //  CEGUI::System::getSingleton().setGUISheet(guiRoot);
   CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();

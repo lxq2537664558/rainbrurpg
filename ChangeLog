@@ -1,5 +1,9 @@
 2016-10-14  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (run): Initialize mouse position to 0,0.
+	* src/client/GameEngine.cpp (run): Taharez mouse cursor is back.
+	* DEPENDENCIES (CEGUI): change from 0.7 to 0.8.
+
 	* src/client/GameEngine.cpp: many changes due to new CEGUI version.
 	* src/client/GameEngine.cpp: CEGUI's inject* called from mContext.
 	* src/client/GameEngine.hpp (mContext): add CEGUI context as pointer.

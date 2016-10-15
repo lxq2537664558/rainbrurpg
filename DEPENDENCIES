@@ -22,7 +22,7 @@ The following package should be installed before RainbruRPG is installed:
   + download:
     http://www.boost.org/users/download/
 
-* CEGUI 0.7.6
+* CEGUI 0.8.7
   + Needed
   + homepage:
     http://cegui.org.uk
