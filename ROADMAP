@@ -94,7 +94,7 @@
      CLOCK: [2016-10-12 mer. 02:27]--[2016-10-12 mer. 02:43] =>  0:16
      CLOCK: [2016-10-08 sam. 04:01]--[2016-10-08 sam. 05:02] =>  1:01
      CLOCK: [2016-10-06 jeu. 02:30]--[2016-10-06 jeu. 03:46] =>  1:16
-- [ ] See why client get stuck in 'parsing scripts' loading bar
+- [X] See why client get stuck in 'parsing scripts' loading bar
   Last message is :
   Parsing scripts for resource group Schemes
   Finished parsing scripts for resource group Schemes
@@ -107,19 +107,21 @@
   - The screen isn't updated if we change window
 - [X] Let's test with Ogre 1.9 in another branch [test_ogre1.9]
   Tested, but failed due to a segfault
-- [-] Test for locally built CEGUI 0.8
+- [X] Test if basic tutorials for Ogre 1.8.0 work
+- [X] Maybe switch to OSG 3.4 ? NO
+  currently testing ~/Jeux/osg-test/osg-cegui/
+  Testing with CEGUI 0.8.7
+- [X] Test for locally built CEGUI 0.8
   - [X] It works
   - [X] Change CMakeLists.txt to search for this version 
     Can't test the but the -0 suffix makes sCEGUI 0.7 fail
   - [X] Change DEPENDENCIES file
   - [X] Can't find "TaharezLook/MouseArrow" image or get a segfault
   - [X] Mouse Coords are wrong
+- [ ] Next steps to get a working GUI
   - [ ] Seems the resize icon is wrong too
-
-- [ ] Test if basic tutorials for Ogre 1.8.0 work
-- [ ] Maybe switch to OSG 3.4 ?
-  currently testing ~/Jeux/osg-test/osg-cegui/
-  Testing with CEGUI 0.8.7
+  - [ ] Make the exit button work
+  - [ ] Maybe add a static image as logo
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48
      fix the client's issues
