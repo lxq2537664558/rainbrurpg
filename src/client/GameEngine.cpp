@@ -81,7 +81,7 @@ GameEngine::GameEngine(void):
       pl.insert(std::make_pair(string("x11_mouse_grab"),
 			       std::string("false"))); 
       pl.insert(std::make_pair(std::string("x11_mouse_hide"),
-			       std::string("false"))); 
+			       std::string("true"))); 
 
 #else
       mWindow->getCustomAttribute( "HWND", &windowHnd );
@@ -214,15 +214,8 @@ GameEngine::run()
 
   // Get the CEGUI's default context
   mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
-  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-
-  // Align CEGUI mouse with OIS mouse
-  /*  const OIS::MouseState state = mMouse->getMouseState();
-  CEGUI::UVector2 mousePos = CEGUI::MouseCursor::getSingleton().getPosition(); 
-  mContext->injectMouseMove(state.X.abs-mousePos.d_x,state.Y.abs-mousePos.d_y);
-  CEGUI::Window *guiRoot = CEGUI::WindowManager::getSingleton()
-    .loadLayoutFromFile("menu.layout");
-  */
+  //  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+  mContext->getMouseCursor().setDefaultImage("Vanilla-Images/MouseArrow");
 
   // Move CEGUI mouse to (0,0)
   CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
