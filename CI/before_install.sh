@@ -24,8 +24,10 @@ make
 sudo make install
 
 ## Handle linking from /usr/local
-sudo echo "/usr/local/lib" >> /etc/ld.so.conf
+echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/local-lib.conf
 sudo ldconfig
+
+
 
 # build libgtest & libgtest_main
 sudo mkdir /usr/src/gtest/build
