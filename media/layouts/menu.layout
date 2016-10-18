@@ -6,7 +6,8 @@
         <Property name="FrameEnabled" value="False" />
         <Property name="BackgroundEnabled" value="False" />
 
-       <Window name="GameMenu" type="Vanilla/FrameWindow">
+	<!-- Type was Vanilla/FrameWindow" -->
+       <Window name="GameMenu" type="TaharezLook/FrameWindow">
 	 <Property name="MinSize" value="{{0.1,0},{0.1,0}}" />
 	 <Property name="MaxSize" value="{{0.8,0},{0.8,0}}" />
 	 <Property name="Position" value="{{0.35,0},{0.1,0}}" />
@@ -18,7 +19,7 @@
 	   <Property name="ID" value="1" />
 	   <Property name="HorizontalAlignment" value="Centre" />
 	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
-	   <Property name="Position" value="{{0,0},{0,0}}" />
+	   <Property name="Position" value="{{0,0},{0,20}}" />
 	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
 	   <Property name="Text" value="Network play" />
 	 </Window>
@@ -26,7 +27,7 @@
 	   <Property name="ID" value="2" />
 	   <Property name="HorizontalAlignment" value="Centre" />
 	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
-	   <Property name="Position" value="{{0,0},{0,60}}" />
+	   <Property name="Position" value="{{0,0},{0,80}}" />
 	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
 	   <Property name="Text" value="Local test" />
 	 </Window>
@@ -35,7 +36,7 @@
 	   <Property name="VerticalAlignment" value="Top" />
 	   <Property name="HorizontalAlignment" value="Centre" />
 	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
-	   <Property name="Position" value="{{0,0},{0,100}}" />
+	   <Property name="Position" value="{{0,0},{0,120}}" />
 	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
 	   <Property name="Text" value="Options" />
 	 </Window>
@@ -44,7 +45,7 @@
 	   <Property name="VerticalAlignment" value="Top" />
 	   <Property name="HorizontalAlignment" value="Centre" />
 	   <Property name="MaxSize" value="{{1.0,0},{1.0,0}}" />
-	   <Property name="Position" value="{{0,0},{0,160}}" />
+	   <Property name="Position" value="{{0,0},{0,180}}" />
 	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
 	   <Property name="Text" value="Exit" />
 	 </Window>

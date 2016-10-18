@@ -208,19 +208,19 @@ GameEngine::run()
 
   initializeCegui();
   
-  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
-  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
   CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
+  //  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
 
   // Get the CEGUI's default context
   mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
-  //  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-  mContext->getMouseCursor().setDefaultImage("Vanilla-Images/MouseArrow");
+  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
 
   // Move CEGUI mouse to (0,0)
   CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
-  
+
+
 
   //  CEGUI::System::getSingleton().setGUISheet(guiRoot);
   CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();

@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-250 (18 Agu. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- (8) Hide system mouse cursor
+- (9) Change menu.layout window type to Taharez
+- Hide system mouse cursor
 - Initialize mouse position to 0,0
 - Client's main menu is back
 - Can't fix client issue

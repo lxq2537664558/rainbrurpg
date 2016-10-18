@@ -1,5 +1,10 @@
 2016-10-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* media/layouts/menu.layout: change Y positions to buttons to make
+	the buttons appear in new window type.
+	* media/layouts/menu.layout (GameMenu): change type to
+	TaharezLook/FrameWindow to make the resize cursors appear.
+
 	* src/client/GameEngine.cpp (GameEngine): hide OIS mouse cursor.
 
 2016-10-14  Jérôme Pasquier  <rainbru@free.fr>
