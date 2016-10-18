@@ -130,9 +130,9 @@
   - [X] Seems the resize icon is wrong too
     Maybe try the Vanilla mouse cursor : do not work
     Testing with Taharez-based layout : it works fine
-- [ ] Must manually build CEGUI 0.8 for CI
+- [X] Must manually build CEGUI 0.8 for CI
   because CEGUI-0' and 'CEGUI-0-OGRE' can't be found
-  - [ ] Trying to build (follow http://cegui.org.uk/wiki/Building_from_source)
+  - [X] Trying to build (follow http://cegui.org.uk/wiki/Building_from_source)
 - [ ] Continue client work
   - [ ] Make the exit button work
   - [ ] Maybe add a static image as logo

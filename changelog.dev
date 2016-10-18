@@ -1,3 +1,15 @@
+* v0.0.5-250 (18 Agu. 2016 - 19 Oct. 2016) SLOC 2,328 FT 288:23 UT 1
+- CI now manually install CEGUI
+- Change menu.layout window type to Taharez
+- Hide system mouse cursor
+- Initialize mouse position to 0,0
+- Client's main menu is back
+- Can't fix client issue
+- Updated INSTALL.md with installation instructions
+- Services is now a shared library
+- CI switch to trusty to install clang 3.8
+- Unit tests building works
+
 * v0.0.5-249 (04 Jun. 2016 - 18 Agu. 2016) SLOC 2,308 FT 277:56
 - No more GLOB in CMakeLists.txt
 - Cmake's logger files now hardcoded
