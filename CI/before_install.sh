@@ -24,7 +24,7 @@ make
 sudo make install
 
 ## Handle linking from /usr/local
-sudo echo "/usr/local/lib" > /etc/ld.so.conf.d/cegui.conf
+sudo echo "/usr/local/lib" >> /etc/ld.so.conf
 sudo ldconfig
 
 # build libgtest & libgtest_main
