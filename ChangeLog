@@ -1,3 +1,7 @@
+2016-10-19  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CI/before_install.sh: add basic manual installation of CEGUI 0.8.
+
 2016-10-18  Jérôme Pasquier  <rainbru@free.fr>
 
 	* media/layouts/menu.layout: change Y positions to buttons to make
