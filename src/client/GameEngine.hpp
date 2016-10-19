@@ -71,6 +71,9 @@ protected:
   void setupResources(void);
   CEGUI::MouseButton convertButton(OIS::MouseButtonID);
   void initializeCegui();
+
+  // CEGUI events
+  bool Exit_OnClick(const CEGUI::EventArgs &args);
   
 private:
   Ogre::Root* mRoot;

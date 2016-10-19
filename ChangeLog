@@ -1,3 +1,9 @@
+2016-10-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (Exit_OnClick): make the main menu's exit
+	button exit the game.
+	* src/client/GameEngine.hpp (GameEngine): add Exit_OnClick declaration.
+
 2016-10-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CI/before_install.sh: another /usr/local/lib test using tee.

@@ -226,7 +226,12 @@ GameEngine::run()
   CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
   CEGUI::Window* root = wmgr->createWindow("DefaultWindow", "Root");
   mContext->setRootWindow(root);
-  root->addChild((wmgr->loadLayoutFromFile("menu.layout")));
+  CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
+  root->addChild(menuWindow);
+
+  // Handle CEGUI events
+  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
+  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::Exit_OnClick, this));
   
   // Start rendering
   LOGI("Staring rendering loop");
@@ -344,4 +349,9 @@ GameEngine::convertButton(OIS::MouseButtonID buttonID)
     default:
         return CEGUI::LeftButton;
     }
+}
+
+bool GameEngine::Exit_OnClick(const CEGUI::EventArgs &args)
+{
+  mShutdown = true;
 }
