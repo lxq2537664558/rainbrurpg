@@ -78,6 +78,8 @@
      See the 'Server work' for the entry-point downloading thing. Shared
      with public-IP.
 
+     *This part will use the new libwsmeta repository*
+
 - [ ] Current one should go to OLD/ because based on foswiki
 - [ ] cmake should search for a good C++ websocket library
   and add this library to top-level DEPENDENCIES file
@@ -88,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-20 jeu. 23:19]--[2016-10-20 jeu. 23:36] =>  0:17
      CLOCK: [2016-10-20 jeu. 00:00]--[2016-10-20 jeu. 00:46] =>  0:46
      CLOCK: [2016-10-19 mer. 00:27]--[2016-10-19 mer. 01:00] =>  0:33
      CLOCK: [2016-10-19 mer. 00:10]--[2016-10-19 mer. 00:24] =>  0:14
@@ -136,9 +139,8 @@
   - [X] Trying to build (follow http://cegui.org.uk/wiki/Building_from_source)
 - [-] Continue client work
   - [X] Make the exit button work
-    The button is named Exit
+  - [X] Client has a segfault if we cancel Ogre configuration dialog
   - [ ] Maybe add a static image as logo
-  - [ ] Client has a segfault if we cancel Ogre configuration dialog
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48
      fix the client's issues

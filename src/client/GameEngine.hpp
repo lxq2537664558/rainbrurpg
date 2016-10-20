@@ -55,6 +55,7 @@ public:
   virtual ~GameEngine(){};
 
   void run();
+  bool running();
 
 protected:
   // Ogre::FrameListener

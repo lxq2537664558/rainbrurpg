@@ -1,3 +1,10 @@
+2016-10-21  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/main.cpp (main): use running() to exit before calling
+	run().
+	* src/client/GameEngine.cpp (running): implement getter function.
+	* src/client/GameEngine.hpp (running): add running() declaration.
+
 2016-10-20  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (Exit_OnClick): make the main menu's exit

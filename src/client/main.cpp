@@ -40,7 +40,8 @@ main(int argc, char** argv)
   try
     {
       GameEngine ge;
-      ge.run();
+      if (ge.running())
+	ge.run();
     }
   catch (...)
     {

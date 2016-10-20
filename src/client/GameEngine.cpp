@@ -46,106 +46,103 @@ GameEngine::GameEngine(void):
 
   //  log("Starting Ogre::Root");
   mRoot = new Root();
-  if (mRoot->showConfigDialog())
+  if (!mRoot->showConfigDialog())
     {
-      //    log("Creating rendering window");
-      mWindow = mRoot->initialise(true, "RainbruRPG");
+      mShutdown=true;
+      return;
+    }
+
+  //    log("Creating rendering window");
+  mWindow = mRoot->initialise(true, "RainbruRPG");
       
-      // Create the SceneManager, in this case a generic one
-      mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
+  // Create the SceneManager, in this case a generic one
+  mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
 
-      /*      SceneNode* headNode = mSceneMgr->getRootSceneNode()
-	->createChildSceneNode("HeadNode");
-
-      Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
-      headNode->attachObject(ogreHead);
-      */
-   
-      // Create the camera
-      Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
+  // Create the camera
+  Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
       
-      // Create one viewport, entire window
-      Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-      vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+  // Create one viewport, entire window
+  Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+  vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
 
 
-      // Initialize OIS
-      OIS::ParamList pl;   
-      size_t windowHnd = 0;
-      std::ostringstream windowHndStr; 
+  // Initialize OIS
+  OIS::ParamList pl;   
+  size_t windowHnd = 0;
+  std::ostringstream windowHndStr; 
 #if defined OIS_LINUX_PLATFORM
-      mWindow->getCustomAttribute( "WINDOW", &windowHnd ); 
-      windowHndStr << windowHnd; 
-      
-      pl.insert(std::make_pair(string("WINDOW"), windowHndStr.str())); 
-      pl.insert(std::make_pair(string("x11_mouse_grab"),
-			       std::string("false"))); 
-      pl.insert(std::make_pair(std::string("x11_mouse_hide"),
-			       std::string("true"))); 
+  mWindow->getCustomAttribute( "WINDOW", &windowHnd ); 
+  windowHndStr << windowHnd; 
+  
+  pl.insert(std::make_pair(string("WINDOW"), windowHndStr.str())); 
+  pl.insert(std::make_pair(string("x11_mouse_grab"),
+			   std::string("false"))); 
+  pl.insert(std::make_pair(std::string("x11_mouse_hide"),
+			   std::string("true"))); 
 
 #else
-      mWindow->getCustomAttribute( "HWND", &windowHnd );
-      windowHndStr << windowHnd;
-      pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
-      pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND" )));
-      pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE"))); 
+  mWindow->getCustomAttribute( "HWND", &windowHnd );
+  windowHndStr << windowHnd;
+  pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+  pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND" )));
+  pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE"))); 
 
 #endif
 
-      mInputManager = OIS::InputManager::createInputSystem( pl );
-      if (!mInputManager)
-	cerr << "OIS inputmanager object is null" << endl;
-
-      // Get mouse and keyboard
-      try
-	{
-	  mKeyboard = static_cast<OIS::Keyboard*>
-	    (mInputManager->createInputObject(OIS::OISKeyboard, true));
-	  LOGI("OIS keyboard correctly initialized");
+  mInputManager = OIS::InputManager::createInputSystem( pl );
+  if (!mInputManager)
+    cerr << "OIS inputmanager object is null" << endl;
+  
+  // Get mouse and keyboard
+  try
+    {
+      mKeyboard = static_cast<OIS::Keyboard*>
+	(mInputManager->createInputObject(OIS::OISKeyboard, true));
+      LOGI("OIS keyboard correctly initialized");
 	  
-	}
-      catch (OIS::Exception e){
-	LOGE("Error while initialize IOS keyboard "<< e.eFile 
-	     << ":" << e.eText);
-      }
-
-      try 
-	{
-	  mMouse = static_cast<OIS::Mouse*>
-	    (mInputManager->createInputObject(OIS::OISMouse, true));
-	  LOGI("OIS mouse correctly initialized");
-
-	  // Initialize OIS mouse metrics
-	  unsigned int width, height, depth;
-	  int top, left;
-	  mWindow->getMetrics(width, height, depth, left, top);
-	  const OIS::MouseState &ms = mMouse->getMouseState();
-	  ms.width = width;
-	  ms.height = height;
-	}
-      catch (OIS::Exception e){
-	LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
-      }
-
-      // Set OIS event callbacks
-      mKeyboard->setEventCallback(this);
-      mMouse->setEventCallback(this);
-
-      // Alter the camera aspect ratio to match the viewport
-      mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
-			      Ogre::Real(vp->getActualHeight()));
-
-      // Set ambient light
-      mSceneMgr->setAmbientLight(Ogre::ColourValue(0.0, 0.0, 0.0));
- 
-      // Create a light
-      Ogre::Light* l = mSceneMgr->createLight("MainLight");
-      l->setPosition(20,80,50);
-
-      mRoot->addFrameListener(this);
- 
-      WindowEventUtilities::addWindowEventListener(mWindow, this);
     }
+  catch (OIS::Exception e){
+    LOGE("Error while initialize IOS keyboard "<< e.eFile 
+	 << ":" << e.eText);
+  }
+
+  try 
+    {
+      mMouse = static_cast<OIS::Mouse*>
+	(mInputManager->createInputObject(OIS::OISMouse, true));
+      LOGI("OIS mouse correctly initialized");
+      
+      // Initialize OIS mouse metrics
+      unsigned int width, height, depth;
+      int top, left;
+      mWindow->getMetrics(width, height, depth, left, top);
+      const OIS::MouseState &ms = mMouse->getMouseState();
+      ms.width = width;
+      ms.height = height;
+    }
+  catch (OIS::Exception e){
+    LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
+  }
+
+  // Set OIS event callbacks
+  mKeyboard->setEventCallback(this);
+  mMouse->setEventCallback(this);
+  
+  // Alter the camera aspect ratio to match the viewport
+  mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
+			  Ogre::Real(vp->getActualHeight()));
+  
+  // Set ambient light
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.0, 0.0, 0.0));
+  
+  // Create a light
+  Ogre::Light* l = mSceneMgr->createLight("MainLight");
+  l->setPosition(20,80,50);
+  
+  mRoot->addFrameListener(this);
+  
+  WindowEventUtilities::addWindowEventListener(mWindow, this);
+
 }
 
 void
@@ -187,7 +184,7 @@ GameEngine::run()
 
   LoadingBar* lb = new LoadingBar();
   LOGI("Starting loadingbar");
-  lb->start(mWindow, 5, 5, 0.75);
+  //  lb->start(mWindow, 5, 5, 0.75);
   // Turn off rendering of everything except overlays
   mSceneMgr->clearSpecialCaseRenderQueues();
   mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
@@ -201,7 +198,7 @@ GameEngine::run()
   mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
   mSceneMgr->clearSpecialCaseRenderQueues();
   mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-  lb->finish();
+  //  lb->finish();
   
   LOGI("Loadingbar->finish() closed");
   //  mWindow->update();
@@ -354,4 +351,9 @@ GameEngine::convertButton(OIS::MouseButtonID buttonID)
 bool GameEngine::Exit_OnClick(const CEGUI::EventArgs &args)
 {
   mShutdown = true;
+}
+
+bool GameEngine::running()
+{
+  return !mShutdown;
 }
