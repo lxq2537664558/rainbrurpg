@@ -1,3 +1,10 @@
+2016-10-22  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (run): try to add the previous layout but
+	something's wrong.
+	* media/layouts/logo.*: add an imageset, a layout and a scheme file.
+	* media/logo.png: add a logo.
+
 2016-10-21  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/main.cpp (main): use running() to exit before calling

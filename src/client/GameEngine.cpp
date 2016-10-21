@@ -217,15 +217,24 @@ GameEngine::run()
   CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
 
-
-
-  //  CEGUI::System::getSingleton().setGUISheet(guiRoot);
+  //  Loading the main menu
   CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
   CEGUI::Window* root = wmgr->createWindow("DefaultWindow", "Root");
   mContext->setRootWindow(root);
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
 
+  // Trying to add a logo image
+  //  CEGUI::SchemeManager::getSingleton().createFromFile("logo.scheme");
+  CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
+  root->addChild(logoWindow);
+  //  CEGUI::ImageManager::getSingleton().createImagesetFromImageFile("Logo", "logo.png");
+  //  CEGUI::DefaultWindow* staticImage = static_cast<CEGUI::DefaultWindow*>
+  //    (logoWindow->getChild("StaticLogo"));
+  //  staticImage->setProperty("Image", "set:Logo image:full_image"); // "full_image" is a default name from CEGUIImageset::Imageset()
+ 
+
+  
   // Handle CEGUI events
   CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
   exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::Exit_OnClick, this));
