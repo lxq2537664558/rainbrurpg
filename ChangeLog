@@ -1,3 +1,12 @@
+2016-10-23  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (overlayHandler): implement and draw
+	a CEGUI overlay for the logo.
+	* src/client/GameEngine.cpp (~GameEngine): implement destructor.
+	* media/logo.png: moved and renamed to media/imagesets/rpglogo.png.
+	* src/client/resources.cfg.in (imagesets): add ../media/imagesets.
+	* media/layouts/logo.imageset: now specify version 2 in imageset.
+
 2016-10-22  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (run): try to add the previous layout but

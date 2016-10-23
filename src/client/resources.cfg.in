@@ -10,6 +10,7 @@ Zip=../media/OgreCore.zip
 [Imagesets]
 Zip=../media/cegui-orig/imagesets-1.zip
 Zip=../media/cegui-orig/imagesets-2.zip
+FileSystem=../media/imagesets
 [Fonts]
 Zip=../media/cegui-orig/fonts.zip
 [Schemes]

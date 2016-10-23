@@ -90,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-24 lun. 00:17]--[2016-10-24 lun. 01:15] =>  0:58
      CLOCK: [2016-10-22 sam. 00:54]--[2016-10-22 sam. 01:24] =>  0:30
      CLOCK: [2016-10-21 ven. 23:27]--[2016-10-22 sam. 00:13] =>  0:46
      CLOCK: [2016-10-20 jeu. 23:19]--[2016-10-20 jeu. 23:36] =>  0:17
@@ -144,10 +145,17 @@
   - [X] Client has a segfault if we cancel Ogre configuration dialog
   - [-] Maybe add a static image as logo
     - [X] Create the logo image, imageset and scheme, following http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Creating+a+good+looking+Confirm+Dialog+with+CEGUI#ConfirmDialogBackground.imageset
-    - [ ] Load the .scheme file (commented out for instance)
+    - [X] Load the .scheme file (commented out for instance)
     but now, nothing shown and can't interact, it seems this scheme file 
     breaks something
-    
+    - [X] Try to use /ImagesetFromImage/ in scheme file and remove 
+    the .imageset file
+    CEGUI error =Unknown element encountered: <ImagesetFromFile>=
+    - [X] Try to use an overlayHandler
+    - [ ] Now correctly move the logo
+    - [ ] Remove unneeded files (scheme, imagesets etc...)
+    - [ ] May remove the CEGUI logo image
+- [ ] Add a CEGUI overlay with version-revision numbers
 - [ ] There is a segfault when we close the window using system's close button
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48

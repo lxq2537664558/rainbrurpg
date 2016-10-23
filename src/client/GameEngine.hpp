@@ -43,6 +43,11 @@ namespace OIS
   class InputManager;
   class Keyboard;
 }
+namespace CEGUI
+{
+  class OgreRenderer;
+  class GeometryBuffer;
+}
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
@@ -52,7 +57,7 @@ class GameEngine: public Ogre::FrameListener,
 {
 public:
   GameEngine(void);
-  virtual ~GameEngine(){};
+  virtual ~GameEngine();
 
   void run();
   bool running();
@@ -74,8 +79,8 @@ protected:
   void initializeCegui();
 
   // CEGUI events
-  bool Exit_OnClick(const CEGUI::EventArgs &args);
-  
+  bool Exit_OnClick(const CEGUI::EventArgs&);
+  bool overlayHandler(const CEGUI::EventArgs&);
 private:
   Ogre::Root* mRoot;
   Ogre::RenderWindow* mWindow;
@@ -89,6 +94,8 @@ private:
   Ogre::SceneManager* mSceneMgr;
 
   CEGUI::GUIContext* mContext;
+  CEGUI::OgreRenderer* mRenderer;
+  CEGUI::GeometryBuffer* mLogoGeometry;
 };
 
 #endif // !_GAME_ENGINE_HPP_
