@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-251 (19 Oct. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- (4) Add a CEGUI overlay to draw the logo
+- (5) Draw the weird logo
+- Add a CEGUI overlay to draw the logo
 - Start to add a logo to main menu
 - Fix the configuration cancel button segfault
 - Make the main menu's exit button exit the game

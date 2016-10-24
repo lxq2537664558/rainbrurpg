@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
-  <Imageset Name="LogoBackground" Imagefile="logo.png" AutoScaled="false" >
+<?xml version="1.0" ?> <!--                 -*-xml-*-           -->
+<Imageset version="2" Name="LogoBackground" Imagefile="logo.png" AutoScaled="false" >
   <Image Name="Background" XPos="0" YPos="0" Width="500" Height="96" />
 </Imageset>

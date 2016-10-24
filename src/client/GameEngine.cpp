@@ -240,10 +240,10 @@ GameEngine::run()
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
   CEGUI::ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
-        CEGUI::Rectf(0, 0, 183, 89), 0, CEGUI::ColourRect(0xFFFFFFFF));
+        CEGUI::Rectf(0, 0, 500, 70), 0, CEGUI::ColourRect(0xFFFFFFFF));
   const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
   mLogoGeometry->setClippingRegion(scrn);
-  mLogoGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 89.0f, 0.0f));
+  mLogoGeometry->setTranslation(CEGUI::Vector3f((scrn.getSize().d_width/2) - 250, 38.0f, 0.0f));
   
   // clearing this queue actually makes sure it's created(!)
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);

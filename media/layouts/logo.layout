@@ -5,9 +5,11 @@
         <Property name="Size" value="{{0.8,0},{0.2,0}}" />
         <Property name="FrameEnabled" value="False" />
 <!--        <Property name="BackgroundEnabled" value="True" /> -->
-	
+<!--	
 	<Window name="StaticLogo" type="Vanilla/FrameWindow">
-	  <Property Name="BackgroundImage" Value="set:logo image:logoBackground" />
+          <Property name="Size" value="{{1,0},{1,0}}" />
+	  <Property Name="BackgroundImage" Value="set:Logo image:full_image" />
 	</Window>
+	-->
 </Window>
 </GUILayout>

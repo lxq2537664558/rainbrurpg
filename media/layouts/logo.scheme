@@ -1,4 +1,4 @@
 <?xml version="1.0" ?><!--			-*-xml-*-  -->
-  <GUIScheme version="5" name="LogoScheme">
-  <Imageset Name="LogoBackground" Filename="logo.imageset" />
+<GUIScheme version="5" name="LogoScheme">
+<Imageset Name="LogoBackground" Filename="logo.imageset" />
 </GUIScheme>
