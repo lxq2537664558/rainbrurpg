@@ -9,4 +9,6 @@
 #define VERSION  "@VERSION@"
 #define REVISION @REVISION@
 
+#define VERSTRING "v@VERSION@-@REVISION@"
+
 #endif // _CONFIG_H_

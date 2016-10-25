@@ -95,7 +95,9 @@ private:
 
   CEGUI::GUIContext* mContext;
   CEGUI::OgreRenderer* mRenderer;
+
   CEGUI::GeometryBuffer* mLogoGeometry;
+  CEGUI::GeometryBuffer* mVersionGeometry;
 };
 
 #endif // !_GAME_ENGINE_HPP_

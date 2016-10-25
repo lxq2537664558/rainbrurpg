@@ -30,6 +30,8 @@
 
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
+#include "config.h" // Uses VERSTRING
+
 using namespace std;
 using namespace Ogre;
 
@@ -45,7 +47,8 @@ GameEngine::GameEngine(void):
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
-  mLogoGeometry(NULL)
+  mLogoGeometry(NULL),
+  mVersionGeometry(NULL)
 {
 
   //  log("Starting Ogre::Root");
@@ -152,6 +155,7 @@ GameEngine::GameEngine(void):
 GameEngine::~GameEngine()
 {
   mRenderer->destroyGeometryBuffer(*mLogoGeometry);
+  mRenderer->destroyGeometryBuffer(*mVersionGeometry);
 }
 
 void
@@ -232,11 +236,7 @@ GameEngine::run()
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
 
-  // Trying to add a logo image
-  LOGE("Loading logo.scheme");
-  //  CEGUI::SchemeManager::getSingleton().createFromFile("logo.scheme");
-  //    CEGUI::ImageManager::getSingleton().loadImageset("logo.imageset", "Imagesets");
-  // Try to manually load the logo.png image !!
+  // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
   CEGUI::ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
@@ -244,21 +244,22 @@ GameEngine::run()
   const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
   mLogoGeometry->setClippingRegion(scrn);
   mLogoGeometry->setTranslation(CEGUI::Vector3f((scrn.getSize().d_width/2) - 250, 38.0f, 0.0f));
+
+  // Add a version buffer
+  mVersionGeometry = &mRenderer->createGeometryBuffer();
+  mVersionGeometry->setClippingRegion(scrn);
+  mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 20, 0.0f));
+  CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+  fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
+                        CEGUI::Colour(0xFFFFFFFF));
   
   // clearing this queue actually makes sure it's created(!)
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
 	      CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
-  LOGE("Loaded logo.scheme"); // never got this log
   
   CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
   root->addChild(logoWindow);
-  //  CEGUI::ImageManager::getSingleton().createImagesetFromImageFile("Logo", "logo.png");
-  //  CEGUI::DefaultWindow* staticImage = static_cast<CEGUI::DefaultWindow*>
-  //    (logoWindow->getChild("StaticLogo"));
-  //  staticImage->setProperty("Image", "set:Logo image:full_image"); // "full_image" is a default name from CEGUIImageset::Imageset()
- 
-
   
   // Handle CEGUI events
   CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
@@ -398,8 +399,9 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
     if (static_cast<const CEGUI::RenderQueueEventArgs&>(args).queueID != CEGUI::RQ_OVERLAY)
         return false;
 
-    // draw the LOGO overlay
+    // draw the CEGUI overlays
     mLogoGeometry->draw();
-
+    mVersionGeometry->draw();
+    
     return true;
 }

@@ -90,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-25 mar. 03:27]--[2016-10-25 mar. 04:08] =>  0:41
      CLOCK: [2016-10-25 mar. 02:29]--[2016-10-25 mar. 02:37] =>  0:08
      CLOCK: [2016-10-24 lun. 01:21]--[2016-10-24 lun. 02:24] =>  1:03
      CLOCK: [2016-10-24 lun. 00:17]--[2016-10-24 lun. 01:15] =>  0:58
@@ -142,10 +143,10 @@
 - [X] Must manually build CEGUI 0.8 for CI
   because CEGUI-0' and 'CEGUI-0-OGRE' can't be found
   - [X] Trying to build (follow http://cegui.org.uk/wiki/Building_from_source)
-- [-] Continue client work
+- [X] Continue client work
   - [X] Make the exit button work
   - [X] Client has a segfault if we cancel Ogre configuration dialog
-  - [-] Maybe add a static image as logo
+  - [X] Maybe add a static image as logo
     - [X] Create the logo image, imageset and scheme, following http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Creating+a+good+looking+Confirm+Dialog+with+CEGUI#ConfirmDialogBackground.imageset
     - [X] Load the .scheme file (commented out for instance)
     but now, nothing shown and can't interact, it seems this scheme file 
@@ -156,9 +157,18 @@
     - [X] Try to use an overlayHandler
     - [X] Now correctly move the logo
     - [X] Remove unneeded files (scheme, imagesets etc...)
-    - [ ] May remove the CEGUI logo image
-- [ ] Add a CEGUI overlay with version-revision numbers
+    - [X] May remove the CEGUI logo image : No, part of the cegui-orig archive
+- [X] Add a CEGUI overlay with version-revision numbers
+  - [X] Add a verstring to config.h.in "version-revision"
+  - [X] Add the GeometryBuffer as a GameEngine private member
+  - [X] Find how to draw text in geometry buffer
+    may try with a CEGUI::RenderedString
+    See how the exampleFramework draw the FPS
 - [ ] There is a segfault when we close the window using system's close button
+- [ ] Add a NYI layout (A simple dialog with Not Yet Implemented text)
+  Possibly with a parameter : unimplemented feature
+- [ ] Must implement a GameState system
+  - [ ] Current work goes in gsMainMenu
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48
      fix the client's issues

@@ -1,5 +1,11 @@
 2016-10-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (run): implement the version-revision
+	geometry buffer (CEGUI overlay).
+	* src/client/GameEngine.hpp (GameEngine): add mVersionGeometry member
+	pointer.
+	* config.h.in: add VERSTRING macro.
+
 	* media/layouts/logo.scheme: remove unneeded file.
 	* media/imagesets/logo.imageset: remove unneeded file.
 
