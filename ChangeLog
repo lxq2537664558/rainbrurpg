@@ -1,3 +1,11 @@
+2016-10-26  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (~GameEngine): now delete root.
+	* src/client/GameEngine.cpp (~GameEngine): remove itself ad a
+	windowEventListener.
+	* src/client/GameEngine.cpp (frameRenderingQueued): check for shutdown
+	or losed window before capturing OIS devices.
+
 2016-10-25  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (run): implement the version-revision

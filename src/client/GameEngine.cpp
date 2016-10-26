@@ -156,6 +156,10 @@ GameEngine::~GameEngine()
 {
   mRenderer->destroyGeometryBuffer(*mLogoGeometry);
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
+
+  Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
+  //  windowClosed(mWindow);
+  delete mRoot;
 }
 
 void
@@ -174,15 +178,11 @@ GameEngine::initializeCegui()
 
 bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
+  if (mShutdown || mWindow->isClosed())
+    return false;
+  
   mMouse->capture();
   mKeyboard->capture();
-
-  if (mShutdown)
-    return false;
-
-
-  if(mWindow->isClosed())
-    return false;
 
   return true;
 }
@@ -299,6 +299,8 @@ void GameEngine::setupResources(void)
 void 
 GameEngine::windowClosed(Ogre::RenderWindow* rw)
 {
+  mShutdown = true;
+  
   //Only close for window that created OIS (the main window in these demos)
   if( rw == mWindow )
     {
