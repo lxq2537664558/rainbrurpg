@@ -1,5 +1,8 @@
 2016-10-26  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (windowResized): update OIS mouse metrics.
+	* src/client/GameEngine.hpp (GameEngine): add windowResized declaration.
+
 	* src/client/GameEngine.cpp (~GameEngine): now delete root.
 	* src/client/GameEngine.cpp (~GameEngine): remove itself ad a
 	windowEventListener.
