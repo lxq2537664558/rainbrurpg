@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!--		-*-xml-*-    -->
+<GUILayout version="4">
+  <!-- type was DefaultWindow -->
+  <Window type="Vanilla/StaticImage" name="Root" >
+        <Property name="InheritsAlpha" value="False" />
+        <Property name="Size" value="{{1,0},{1,0}}" />
+        <Window type="TaharezLook/FrameWindow" name="winToolbar" >
+            <Property name="Text" value="Not Yet Implemented feature" />
+            <Property name="AlwaysOnTop" value="True" />
+            <Property name="CloseButtonEnabled" value="False" />
+            <Property name="Size" value="{{0.5,0},{0.4,0}}" />
+            <Property name="Position" value="{{0.25,0},{0.3,0}}" />
+            <Window type="TaharezLook/StaticText" name="static_Text" >
+	      <Property name="Text" value="Undefined text" />
+	      <Property name="Size" value="{{1,0},{0.8,0}}" />
+	      <Property name="HorzFormatting" value="WordWrapLeftAligned" />
+              <Property name="VertFormatting" value="TopAligned" />
+            </Window>
+            <Window type="TaharezLook/Button" name="btnOk" >
+                <Property name="Text" value="Ok" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="Position" value="{{0.7,0},{0.82,0},{0.20,0},{0.20,0}}" />
+                <Property name="MouseCursorImage" value="set:TaharezLook image:MouseArrow" />
+            </Window>
+
+        </Window>
+  </Window>
+</GUILayout>

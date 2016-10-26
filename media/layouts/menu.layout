@@ -6,7 +6,6 @@
         <Property name="FrameEnabled" value="False" />
         <Property name="BackgroundEnabled" value="False" />
 
-	<!-- Type was Vanilla/FrameWindow" -->
        <Window name="GameMenu" type="TaharezLook/FrameWindow">
 	 <Property name="MinSize" value="{{0.1,0},{0.3,0}}" />
 	 <Property name="MaxSize" value="{{0.8,0},{0.8,0}}" />

@@ -90,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-27 jeu. 00:06]--[2016-10-27 jeu. 00:59] =>  0:53
      CLOCK: [2016-10-26 mer. 02:11]--[2016-10-26 mer. 02:31] =>  0:20
      CLOCK: [2016-10-26 mer. 01:12]--[2016-10-26 mer. 01:57] =>  0:45
      CLOCK: [2016-10-25 mar. 03:27]--[2016-10-25 mar. 04:08] =>  0:41
@@ -170,8 +171,14 @@
   in =GameEngine::frameRenderingQueued(Ogre::FrameEvent const&)=
 - [X] Test if resizing the renderwindow works properly
   see http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Basic+Tutorial+6
-- [ ] Add a NYI layout (A simple dialog with Not Yet Implemented text)
+- [-] Add a NYI layout (A simple dialog with Not Yet Implemented text)
   Possibly with a parameter : unimplemented feature
+  - [X] Create a new layout NyiDialog.layout
+  - [X] Try this layout until it works
+  - [ ] Make this a real class with the featurename parameter
+  - [ ] Try to use styled text to  emphasis the featurename
+- [ ] Try to use the 'FetteUNZFraktur' font from the CEGUI demo
+- [ ] These is (again) a segfault when cancel the Ogre3D config dialog
 - [ ] Must implement a GameState system
   - [ ] Current work goes in gsMainMenu
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9

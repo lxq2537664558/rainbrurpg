@@ -1,3 +1,8 @@
+2016-10-27  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/layouts/nyi_dialog.layout: create a basic Not Yet Implemented
+	layout file.
+
 2016-10-26  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (windowResized): update OIS mouse metrics.

@@ -235,7 +235,10 @@ GameEngine::run()
   mContext->setRootWindow(root);
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
-
+  
+  /*CEGUI::Window* nyiWindow = wmgr->loadLayoutFromFile("nyi_dialog.layout");
+  root->addChild(nyiWindow);
+  */
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
