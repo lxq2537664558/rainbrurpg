@@ -32,6 +32,8 @@
 
 #include "config.h" // Uses VERSTRING
 
+#include "CeguiDialog.hpp" // to be tested
+
 using namespace std;
 using namespace Ogre;
 
@@ -235,10 +237,9 @@ GameEngine::run()
   mContext->setRootWindow(root);
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
+
+  CeguiDialog cd = CeguiDialog("nyi_dialog.layout");
   
-  /*CEGUI::Window* nyiWindow = wmgr->loadLayoutFromFile("nyi_dialog.layout");
-  root->addChild(nyiWindow);
-  */
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");

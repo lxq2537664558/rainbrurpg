@@ -1,3 +1,10 @@
+2016-10-28  Jérôme Pasquier  <rainbru@free.fr>
+
+	* CMakeLists.txt (client-src): add CeguiDialog.cpp to client sources.
+	* src/client/CeguiDialog.cpp (CeguiDialog): basic constructor
+	implementation.
+	* src/client/CeguiDialog.hpp (CeguiDialog): add basic class and members.
+
 2016-10-27  Jérôme Pasquier  <rainbru@free.fr>
 
 	* media/layouts/nyi_dialog.layout: create a basic Not Yet Implemented

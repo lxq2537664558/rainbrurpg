@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-251 (19 Oct. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- (9) Add a very basic NYI dialog layout
+- Add a basic CeguiDialog implementation
+- Add a very basic NYI dialog layout
 - Add a windowResized handler
 - Fix the closed window segfault
 - Add a version-revision overlay
