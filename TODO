@@ -31,18 +31,9 @@ OVERALL TODO
 
 === ChangeLog ===
    (10 items by revision)
-   SLOC is the result of `sloccount src/` (inacurate until complete switch)
+   SLOC is the result of `sloccount src/`
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-251 (19 Oct. 2016 - ???) SLOC ??? FT ???:?? UT ?
-- Add a basic CeguiDialog implementation
-- Add a very basic NYI dialog layout
-- Add a windowResized handler
-- Fix the closed window segfault
-- Add a version-revision overlay
-- Draw the weird logo
-- Add a CEGUI overlay to draw the logo
-- Start to add a logo to main menu
-- Fix the configuration cancel button segfault
-- Make the main menu's exit button exit the game
+* v0.0.5-252 (28 Oct. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+

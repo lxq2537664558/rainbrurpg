@@ -187,6 +187,9 @@
     - [ ] Then handle the visibility
       with show(), hide() and isVisible() function
     - [ ] We should handle the Ok button callback (simply hide this)
+- [ ] Now, create the NyiDialog, based on CeguiDialog
+  - [ ] Pass the featurename to named constructor
+    and add this to the dialog text
   - [ ] Try to use styled text to  emphasis the featurename
 - [ ] Try to use the 'FetteUNZFraktur' font from the CEGUI demo
 - [ ] These is (again) a segfault when cancel the Ogre3D config dialog

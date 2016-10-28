@@ -1,3 +1,15 @@
+* v0.0.5-251 (19 Oct. 2016 - 28 Oct. 2016) SLOC 2,448 FT 296:17 UT 1
+- Add a basic CeguiDialog implementation
+- Add a very basic NYI dialog layout
+- Add a windowResized handler
+- Fix the closed window segfault
+- Add a version-revision overlay
+- Draw the weird logo
+- Add a CEGUI overlay to draw the logo
+- Start to add a logo to main menu
+- Fix the configuration cancel button segfault
+- Make the main menu's exit button exit the game
+
 * v0.0.5-250 (18 Agu. 2016 - 19 Oct. 2016) SLOC 2,328 FT 288:23 UT 1
 - CI now manually install CEGUI
 - Change menu.layout window type to Taharez
