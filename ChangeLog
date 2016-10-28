@@ -1,5 +1,8 @@
 2016-10-28  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/CeguiDialog.hpp (CeguiDialog): implement basic visibility
+	thing, including show(), hide() and isVisible().
+
 	* CMakeLists.txt (client-src): add CeguiDialog.cpp to client sources.
 	* src/client/CeguiDialog.cpp (CeguiDialog): basic constructor
 	implementation.

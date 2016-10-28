@@ -44,12 +44,33 @@ CeguiDialog::CeguiDialog(const string& layoutName):
 
   mDialogWindow = mWmgr->loadLayoutFromFile(mLayoutName);
   mRootWindow->addChild(mDialogWindow);
-  mDialogWindow->moveToFront();
+
+  hide();
 }
 
 CeguiDialog::~CeguiDialog()
 {
-  mDialogWindow = NULL;
+  mDialogWindow = NULL; // How to really destroy it ?
   mRootWindow   = NULL;
   mWmgr         = NULL;
+}
+
+
+void
+CeguiDialog::hide()
+{
+  mDialogWindow->setVisible(false);
+}
+
+void
+CeguiDialog::show()
+{
+  mDialogWindow->setVisible(true);
+  mDialogWindow->activate();        // gives the focus to the dialog
+}
+
+bool
+CeguiDialog::isVisible()
+{
+  return mDialogWindow->isVisible();
 }

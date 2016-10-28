@@ -90,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-28 ven. 03:41]--[2016-10-28 ven. 03:52] =>  0:11
      CLOCK: [2016-10-28 ven. 02:47]--[2016-10-28 ven. 03:34] =>  0:47
      CLOCK: [2016-10-27 jeu. 00:06]--[2016-10-27 jeu. 00:59] =>  0:53
      CLOCK: [2016-10-26 mer. 02:11]--[2016-10-26 mer. 02:31] =>  0:20
@@ -184,7 +185,7 @@
       CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
       the CEGUI root window (Maybe with GUIContext::getRootWindow();)
     - [X] First, implement in a simple window
-    - [ ] Then handle the visibility
+    - [X] Then handle the visibility
       with show(), hide() and isVisible() function
     - [ ] We should handle the Ok button callback (simply hide this)
 - [ ] Now, create the NyiDialog, based on CeguiDialog

@@ -42,6 +42,10 @@ public:
   CeguiDialog(const string&);
   virtual ~CeguiDialog();
 
+  void hide();
+  void show();
+  bool isVisible();
+  
 private:
   string mLayoutName;           // The layout file to be loaded
   CEGUI::Window* mRootWindow;   // The default GUI context' root window

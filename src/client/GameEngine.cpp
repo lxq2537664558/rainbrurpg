@@ -239,6 +239,7 @@ GameEngine::run()
   root->addChild(menuWindow);
 
   CeguiDialog cd = CeguiDialog("nyi_dialog.layout");
+  cd.show();
   
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
