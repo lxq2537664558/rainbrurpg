@@ -20,10 +20,15 @@
 
 #include "CeguiDialog.hpp"
 
+#include "Logger.hpp"
+
 #include <CEGUI/System.h>
 #include <CEGUI/GUIContext.h>
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/Window.h>
+#include <CEGUI/widgets/PushButton.h>
+
+static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 /* Named constructor
  *
@@ -46,6 +51,10 @@ CeguiDialog::CeguiDialog(const string& layoutName):
   mRootWindow->addChild(mDialogWindow);
 
   hide();
+
+  CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)mDialogWindow->
+    getChild("winToolbar/btnOk");
+  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&CeguiDialog::onOk, this));
 }
 
 CeguiDialog::~CeguiDialog()
@@ -59,18 +68,26 @@ CeguiDialog::~CeguiDialog()
 void
 CeguiDialog::hide()
 {
-  mDialogWindow->setVisible(false);
+  //  mDialogWindow->setVisible(false);
+  mDialogWindow->hide();
 }
 
 void
 CeguiDialog::show()
 {
   mDialogWindow->setVisible(true);
-  mDialogWindow->activate();        // gives the focus to the dialog
+  mDialogWindow->activate();
 }
 
 bool
 CeguiDialog::isVisible()
 {
   return mDialogWindow->isVisible();
+}
+
+bool
+CeguiDialog::onOk(const CEGUI::EventArgs&)
+{
+  hide();
+  return true;
 }

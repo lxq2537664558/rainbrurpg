@@ -22,6 +22,7 @@
 #define _CEGUI_DIALOG_HPP_
 
 #include <string>
+#include <CEGUI/EventArgs.h>  // Used as a reference
 
 using namespace std;
 
@@ -35,6 +36,19 @@ namespace CEGUI
 
 /* A really simple super-class for all CEGUI-related dialogs
  *
+ * If you plan to use it multiple times in a single game state, do not create
+ * and destroy it. The Ok button only hides the dialog. You just
+ * have to create it once and show() it after that :
+ *
+ * constructor:
+ *   CeguiDialog* mydialog = NULL;
+ *
+ * onShow:
+ *   if (!mydialog);
+ *     mydialog = new CeguiDialog("mylayout");
+ *
+ *   mydialog->show();
+ *
  */
 class CeguiDialog
 {
@@ -45,6 +59,9 @@ public:
   void hide();
   void show();
   bool isVisible();
+
+protected:
+  bool onOk(const CEGUI::EventArgs&);
   
 private:
   string mLayoutName;           // The layout file to be loaded

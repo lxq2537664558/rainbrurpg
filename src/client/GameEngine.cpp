@@ -50,7 +50,8 @@ GameEngine::GameEngine(void):
   mContext(NULL),
   mRenderer(NULL),
   mLogoGeometry(NULL),
-  mVersionGeometry(NULL)
+  mVersionGeometry(NULL),
+  mNyiDialog(NULL)
 {
 
   //  log("Starting Ogre::Root");
@@ -159,6 +160,10 @@ GameEngine::~GameEngine()
   mRenderer->destroyGeometryBuffer(*mLogoGeometry);
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
 
+  if (!mNyiDialog)
+    delete mNyiDialog;
+
+  
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   //  windowClosed(mWindow);
   delete mRoot;
@@ -238,9 +243,7 @@ GameEngine::run()
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
 
-  CeguiDialog cd = CeguiDialog("nyi_dialog.layout");
-  cd.show();
-  
+ 
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
@@ -265,11 +268,16 @@ GameEngine::run()
   
   CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
   root->addChild(logoWindow);
-  
+
   // Handle CEGUI events
   CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
-  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::Exit_OnClick, this));
-  
+  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
+
+  CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)menuWindow->
+    getChild("GameMenu/NetworkPlay");
+  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onNetworkPlay, this));
+
+   
   // Start rendering
   LOGI("Staring rendering loop");
   mRoot->startRendering();
@@ -390,9 +398,10 @@ GameEngine::convertButton(OIS::MouseButtonID buttonID)
     }
 }
 
-bool GameEngine::Exit_OnClick(const CEGUI::EventArgs &args)
+bool GameEngine::onExit(const CEGUI::EventArgs &args)
 {
   mShutdown = true;
+  return true;
 }
 
 bool GameEngine::running()
@@ -423,4 +432,14 @@ GameEngine::windowResized(Ogre::RenderWindow* rw)
   const OIS::MouseState &ms = mMouse->getMouseState();
   ms.width = width;
   ms.height = height;
+}
+
+bool
+GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
+{
+  if (!mNyiDialog)
+    mNyiDialog = new CeguiDialog("nyi_dialog.layout");
+    
+  mNyiDialog->show();
+  return true;
 }

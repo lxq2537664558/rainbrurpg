@@ -48,6 +48,7 @@ namespace CEGUI
   class OgreRenderer;
   class GeometryBuffer;
 }
+class CeguiDialog;
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
@@ -80,8 +81,10 @@ protected:
   void initializeCegui();
 
   // CEGUI events
-  bool Exit_OnClick(const CEGUI::EventArgs&);
+  bool onExit(const CEGUI::EventArgs&);
+  bool onNetworkPlay(const CEGUI::EventArgs&);
   bool overlayHandler(const CEGUI::EventArgs&);
+
 private:
   Ogre::Root* mRoot;
   Ogre::RenderWindow* mWindow;
@@ -99,6 +102,8 @@ private:
 
   CEGUI::GeometryBuffer* mLogoGeometry;
   CEGUI::GeometryBuffer* mVersionGeometry;
+
+  CeguiDialog* mNyiDialog;
 };
 
 #endif // !_GAME_ENGINE_HPP_
