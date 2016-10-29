@@ -48,7 +48,7 @@ namespace CEGUI
   class OgreRenderer;
   class GeometryBuffer;
 }
-class CeguiDialog;
+class NyiDialog;
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
@@ -103,7 +103,7 @@ private:
   CEGUI::GeometryBuffer* mLogoGeometry;
   CEGUI::GeometryBuffer* mVersionGeometry;
 
-  CeguiDialog* mNyiDialog;
+  NyiDialog* mNyiDialog;
 };
 
 #endif // !_GAME_ENGINE_HPP_

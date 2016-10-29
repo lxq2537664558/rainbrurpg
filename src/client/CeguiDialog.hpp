@@ -63,11 +63,12 @@ public:
 protected:
   bool onOk(const CEGUI::EventArgs&);
   
-private:
-  string mLayoutName;           // The layout file to be loaded
   CEGUI::Window* mRootWindow;   // The default GUI context' root window
   CEGUI::Window* mDialogWindow; // The default that will contain our dialog
   CEGUI::WindowManager* mWmgr;  // the CEGUI windowManager
+
+private:
+  string mLayoutName;           // The layout file to be loaded
 };
 
 #endif // !_CEGUI_DIALOG_HPP_

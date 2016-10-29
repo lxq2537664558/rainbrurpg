@@ -133,6 +133,7 @@ set (client-src
   src/client/CeguiDialog.cpp
   src/client/GameEngine.cpp
   src/client/LoadingBar.cpp
+  src/client/NyiDialog.cpp
   src/client/main.cpp
   )
 add_executable(rainbrurpg-client ${client-src})

@@ -32,7 +32,7 @@
 
 #include "config.h" // Uses VERSTRING
 
-#include "CeguiDialog.hpp" // to be tested
+#include "NyiDialog.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -438,7 +438,7 @@ bool
 GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
 {
   if (!mNyiDialog)
-    mNyiDialog = new CeguiDialog("nyi_dialog.layout");
+    mNyiDialog = new NyiDialog("Network play");
     
   mNyiDialog->show();
   return true;

@@ -1,15 +1,22 @@
 2016-10-29  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (onNetworkPlay): now uses the new
+	NyiDialog class.
+	* src/client/NyiDialog.cpp (NyiDialog): implements the featureName
+	text.
+	* src/client/NyiDialog.hpp (NyiDialog): uses CeguiDialog as a base
+	class.
+
 	* src/client/CeguiDialog.cpp (#CeguiDialog): correctly destroy
 	the underlying cegui window.
 
 	* src/client/CeguiDialog.cpp (onOk): hide the dialog on event.
 	* media/layouts/nyi_dialog.layout: remove background.
-	* src/client/GameEngine.cpp (onNetworkPlay) create a CeguiDoalog
+	* src/client/GameEngine.cpp (onNetworkPlay): create a CeguiDoalog
 	instance and show it.
-	* src/client/GameEngine.cpp (onExit) cegui event callback returns
+	* src/client/GameEngine.cpp (onExit): cegui event callback returns
 	true value.
-	* src/client/GameEngine.cpp (Exit_OnClick) rename to onExit().
+	* src/client/GameEngine.cpp (Exit_OnClick): rename to onExit().
 
 2016-10-28  Jérôme Pasquier  <rainbru@free.fr>
 
