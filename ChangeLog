@@ -1,5 +1,8 @@
 2016-10-29  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/CeguiDialog.cpp (#CeguiDialog): correctly destroy
+	the underlying cegui window.
+
 	* src/client/CeguiDialog.cpp (onOk): hide the dialog on event.
 	* media/layouts/nyi_dialog.layout: remove background.
 	* src/client/GameEngine.cpp (onNetworkPlay) create a CeguiDoalog

@@ -59,7 +59,7 @@ CeguiDialog::CeguiDialog(const string& layoutName):
 
 CeguiDialog::~CeguiDialog()
 {
-  mDialogWindow = NULL; // How to really destroy it ?
+  mWmgr->destroyWindow(mDialogWindow);
   mRootWindow   = NULL;
   mWmgr         = NULL;
 }
@@ -68,7 +68,6 @@ CeguiDialog::~CeguiDialog()
 void
 CeguiDialog::hide()
 {
-  //  mDialogWindow->setVisible(false);
   mDialogWindow->hide();
 }
 
