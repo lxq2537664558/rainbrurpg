@@ -1,3 +1,8 @@
+2016-10-30  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (onLocalTest): add a second NyiDialog
+	instance for a test.
+
 2016-10-29  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (onNetworkPlay): now uses the new
@@ -7,7 +12,7 @@
 	* src/client/NyiDialog.hpp (NyiDialog): uses CeguiDialog as a base
 	class.
 
-	* src/client/CeguiDialog.cpp (#CeguiDialog): correctly destroy
+	* src/client/CeguiDialog.cpp (CeguiDialog): correctly destroy
 	the underlying cegui window.
 
 	* src/client/CeguiDialog.cpp (onOk): hide the dialog on event.

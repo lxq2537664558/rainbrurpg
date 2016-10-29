@@ -51,7 +51,8 @@ GameEngine::GameEngine(void):
   mRenderer(NULL),
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
-  mNyiDialog(NULL)
+  mNyiDialog(NULL),
+  mNyiLocalTest(NULL)
 {
 
   //  log("Starting Ogre::Root");
@@ -162,6 +163,9 @@ GameEngine::~GameEngine()
 
   if (!mNyiDialog)
     delete mNyiDialog;
+
+  if (!mNyiLocalTest)
+    delete mNyiLocalTest;
 
   
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
@@ -276,6 +280,10 @@ GameEngine::run()
   CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)menuWindow->
     getChild("GameMenu/NetworkPlay");
   btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onNetworkPlay, this));
+  
+  CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
+    getChild("GameMenu/LocalTest");
+  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
 
    
   // Start rendering
@@ -441,5 +449,15 @@ GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
     mNyiDialog = new NyiDialog("Network play");
     
   mNyiDialog->show();
+  return true;
+}
+
+bool
+GameEngine::onLocalTest(const CEGUI::EventArgs& evt)
+{
+  if (!mNyiLocalTest)
+    mNyiLocalTest = new NyiDialog("Local Test");
+    
+  mNyiLocalTest->show();
   return true;
 }

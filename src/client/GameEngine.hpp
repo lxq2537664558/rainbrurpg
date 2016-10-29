@@ -83,6 +83,7 @@ protected:
   // CEGUI events
   bool onExit(const CEGUI::EventArgs&);
   bool onNetworkPlay(const CEGUI::EventArgs&);
+  bool onLocalTest(const CEGUI::EventArgs&);
   bool overlayHandler(const CEGUI::EventArgs&);
 
 private:
@@ -104,6 +105,7 @@ private:
   CEGUI::GeometryBuffer* mVersionGeometry;
 
   NyiDialog* mNyiDialog;
+  NyiDialog* mNyiLocalTest;
 };
 
 #endif // !_GAME_ENGINE_HPP_
