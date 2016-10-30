@@ -283,7 +283,7 @@ GameEngine::run()
   
   CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
     getChild("GameMenu/LocalTest");
-  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
+  btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
 
    
   // Start rendering
@@ -446,7 +446,7 @@ bool
 GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
 {
   if (!mNyiDialog)
-    mNyiDialog = new NyiDialog("Network play");
+    mNyiDialog = new NyiDialog("Network play", "nyiNetworkPlay");
     
   mNyiDialog->show();
   return true;
@@ -456,7 +456,7 @@ bool
 GameEngine::onLocalTest(const CEGUI::EventArgs& evt)
 {
   if (!mNyiLocalTest)
-    mNyiLocalTest = new NyiDialog("Local Test");
+    mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
     
   mNyiLocalTest->show();
   return true;

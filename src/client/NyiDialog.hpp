@@ -32,7 +32,7 @@ using namespace std;
 class NyiDialog : public CeguiDialog
 {
 public:
-  NyiDialog(const string&);
+  NyiDialog(const string&, const string&);
   ~NyiDialog();
 
 private:

@@ -22,12 +22,12 @@
 
 #include <CEGUI/Window.h>
 
-NyiDialog::NyiDialog(const string& featureName):
-  CeguiDialog("nyi_dialog.layout"),
+NyiDialog::NyiDialog(const string& featureName, const string& uniqueName):
+  CeguiDialog("nyi_dialog.layout", uniqueName),
   mFeatureName(featureName)
 {
   CEGUI::Window* mT = static_cast<CEGUI::Window*>
-    (mDialogWindow->getChild("winToolbar/static_Text"));
+    (mDialogWindow->getChild("nyiRoot/winToolbar/static_Text"));
 
   mT->setProperty("Text", "The feature [colour='FFFF0000']" + featureName + "[colour='FFFFFFFF'] is not yet implemented.");
 }

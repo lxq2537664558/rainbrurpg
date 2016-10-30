@@ -53,7 +53,7 @@ namespace CEGUI
 class CeguiDialog
 {
 public:
-  CeguiDialog(const string&);
+  CeguiDialog(const string&, const string&);
   virtual ~CeguiDialog();
 
   void hide();
@@ -69,6 +69,7 @@ protected:
 
 private:
   string mLayoutName;           // The layout file to be loaded
+  string mUniqueName;
 };
 
 #endif // !_CEGUI_DIALOG_HPP_

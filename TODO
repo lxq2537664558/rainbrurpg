@@ -36,6 +36,7 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-252 (28 Oct. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (3) Implement the NyiDialog
+- (4) Handle multiple NyiDialog per context
+- Implement the NyiDialog
 - Makes the CeguiDialog Ok button hide the dialog
 - Implement CeguiDialog visibility
