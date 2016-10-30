@@ -469,7 +469,7 @@ GameEngine::onLocalTest(const CEGUI::EventArgs& evt)
 
 bool GameEngine::onOptions(const CEGUI::EventArgs&)
 {
-  if (!mNyiLocalTest)
+  if (!mNyiOptions)
     mNyiOptions = new NyiDialog("Options", "nyiOptions");
     
   mNyiOptions->show();
