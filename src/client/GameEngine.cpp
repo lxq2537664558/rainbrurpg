@@ -52,7 +52,8 @@ GameEngine::GameEngine(void):
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mNyiDialog(NULL),
-  mNyiLocalTest(NULL)
+  mNyiLocalTest(NULL),
+  mNyiOptions(NULL)
 {
 
   //  log("Starting Ogre::Root");
@@ -167,6 +168,8 @@ GameEngine::~GameEngine()
   if (!mNyiLocalTest)
     delete mNyiLocalTest;
 
+  if (!mNyiOptions)
+    delete mNyiOptions;
   
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   //  windowClosed(mWindow);
@@ -284,6 +287,8 @@ GameEngine::run()
   CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
     getChild("GameMenu/LocalTest");
   btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
+
+  menuWindow->getChild("GameMenu/Options")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onOptions, this));
 
    
   // Start rendering
@@ -459,5 +464,14 @@ GameEngine::onLocalTest(const CEGUI::EventArgs& evt)
     mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
     
   mNyiLocalTest->show();
+  return true;
+}
+
+bool GameEngine::onOptions(const CEGUI::EventArgs&)
+{
+  if (!mNyiLocalTest)
+    mNyiOptions = new NyiDialog("Options", "nyiOptions");
+    
+  mNyiOptions->show();
   return true;
 }

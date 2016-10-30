@@ -1,5 +1,7 @@
 2016-10-30  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/NyiDialog.cpp (NyiDialog): handle the uniqueName parameter
+	and a new parent window to allow multiple dialogs in the same context
 	* src/client/NyiDialog.cpp (NyiDialog): add the uniqueName member.
 
 	* src/client/GameEngine.cpp (onLocalTest): add a second NyiDialog
