@@ -135,6 +135,7 @@ set (client-src
   src/client/GameState.cpp
   src/client/LoadingBar.cpp
   src/client/NyiDialog.cpp
+  src/client/StateManager.cpp
   src/client/main.cpp
   )
 add_executable(rainbrurpg-client ${client-src})

@@ -1,5 +1,9 @@
 2016-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameState_Test.cpp: useless GameState unit tests.
+	* src/client/StateManager.cpp: new StateManager class.
+	* src/client/GameState.cpp: new GameState class.
+
 	* src/services/Services.hpp (main): fix the unit tests issue
 
 	* src/client/GameEngine.cpp (overlayHandler): implement a one second

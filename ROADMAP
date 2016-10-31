@@ -94,6 +94,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-31 lun. 04:36]--[2016-10-31 lun. 04:47] =>  0:11
      CLOCK: [2016-10-31 lun. 04:07]--[2016-10-31 lun. 04:35] =>  0:28
      CLOCK: [2016-10-31 lun. 01:50]--[2016-10-31 lun. 02:53] =>  1:03
      CLOCK: [2016-10-30 dim. 01:34]--[2016-10-30 dim. 01:57] =>  0:23
@@ -217,6 +218,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] First, add the geometrybuffer in the bottom right corner
   - [X] Get the RenderTarget stats every second
   - [X] Print essential values
+- [ ] If CI fixed, add image in README.md
 - [ ] Must implement a GameState system
   - Current work goes in gsMainMenu
   - [ ] Implement it as GameState/StateManager with unit tests
