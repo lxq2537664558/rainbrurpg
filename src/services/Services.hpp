@@ -109,13 +109,13 @@ main(int argc, char** argv)
   //scm_shell (argc, argv);
 
   // Now running init-service
-  SCM func_symbol;
+  /*  SCM func_symbol;
   SCM func;
   scm_c_primitive_load("scm/test.scm");
   func_symbol = scm_c_lookup ("init-service");
   func = scm_variable_ref (func_symbol);
   scm_call_0 (func);
-
+  */
 
   return 0;
 }

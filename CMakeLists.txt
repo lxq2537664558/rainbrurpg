@@ -132,6 +132,7 @@ target_link_libraries(rainbrurpg-services
 set (client-src
   src/client/CeguiDialog.cpp
   src/client/GameEngine.cpp
+  src/client/GameState.cpp
   src/client/LoadingBar.cpp
   src/client/NyiDialog.cpp
   src/client/main.cpp
@@ -204,6 +205,7 @@ if (BUILD_TESTS)
   # All files with the given pattern will be use as unit tests.
   # No main function/file needed.
   file(GLOB unittests-src src/*/*_Test.cpp)
+  list(APPEND unittests-src src/tests.cpp)
 
   # Append some sources to fix undefined references but we need to remove
   # some main() to avoid multiple definitions

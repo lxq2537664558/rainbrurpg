@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-252 (28 Oct. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (6) Add a stats geometry buffer
+- (7) Fix the guile/unit tests issue
+- Add a stats geometry buffer
 - Add a NyiDialog for the Options menu
 - Handle multiple NyiDialog per context
 - Implement the NyiDialog

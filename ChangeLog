@@ -1,5 +1,7 @@
 2016-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/services/Services.hpp (main): fix the unit tests issue
+
 	* src/client/GameEngine.cpp (overlayHandler): implement a one second
 	update for stats overlay.
 	* src/client/GameEngine.hpp (GameEngine): add a FPS geometry buffer.
