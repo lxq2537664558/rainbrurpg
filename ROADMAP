@@ -90,6 +90,7 @@
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-10-31 lun. 01:50]--[2016-10-31 lun. 02:53] =>  1:03
      CLOCK: [2016-10-30 dim. 01:34]--[2016-10-30 dim. 01:57] =>  0:23
      CLOCK: [2016-10-30 dim. 01:01]--[2016-10-30 dim. 01:17] =>  0:16
      CLOCK: [2016-10-29 sam. 04:38]--[2016-10-29 sam. 04:50] =>  0:12
@@ -198,15 +199,19 @@
     - [X] We should handle the Ok button callback (simply hide this)
       - [X] Handle the Ok button and close the dialog
     - [X] Correctly handle the destruction of CeguiDialog underlying window
-- [-] Now, create the NyiDialog, based on CeguiDialog
+- [X] Now, create the NyiDialog, based on CeguiDialog
   - [X] Pass the featurename to named constructor
     and add this to the dialog text
   - [X] Try to use styled text to  emphasis the featurename
   - [X] Must be tested with multiple NyiDialog at the same time
     - We have an CEGUI::AlreadyExistsException, we must add a uniqueName
       and create a parentWindow
-  - [ ] Now, two dialogs open at the same time
-- [ ] May add a FPS CEGUI geometryBuffer
+  - [X] Now, two dialogs open at the same time
+- [X] May add a FPS CEGUI geometryBuffer and maybe other stats
+  We can get FPS with RenderTarget (http://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_render_target.html)
+  - [X] First, add the geometrybuffer in the bottom right corner
+  - [X] Get the RenderTarget stats every second
+  - [X] Print essential values
 - [ ] Try to use the 'FetteUNZFraktur' font from the CEGUI demo
 - [ ] These is (again) a segfault when cancel the Ogre3D config dialog
 - [ ] Must implement a GameState system

@@ -1,3 +1,9 @@
+2016-10-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (overlayHandler): implement a one second
+	update for stats overlay.
+	* src/client/GameEngine.hpp (GameEngine): add a FPS geometry buffer.
+
 2016-10-30  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (onOptions): fix the wrong NULL test issue.

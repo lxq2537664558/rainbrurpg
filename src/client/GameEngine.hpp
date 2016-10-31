@@ -26,6 +26,7 @@
 #include <OgreFrameListener.h>
 #include <OgreRenderWindow.h>
 #include <OgreWindowEventUtilities.h> // for Ogre::WindowEventListener
+#include <OgreTimer.h>
 
 #include <OISEvents.h>
 #include <OISMouse.h>
@@ -104,10 +105,13 @@ private:
 
   CEGUI::GeometryBuffer* mLogoGeometry;
   CEGUI::GeometryBuffer* mVersionGeometry;
-
+  CEGUI::GeometryBuffer* mFpsGeometry;
+  
   NyiDialog* mNyiDialog;
   NyiDialog* mNyiLocalTest;
   NyiDialog* mNyiOptions;
+
+  Ogre::Timer mTimer;
 };
 
 #endif // !_GAME_ENGINE_HPP_

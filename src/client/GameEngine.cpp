@@ -24,6 +24,7 @@
 #include "LoadingBar.hpp"
 
 #include <iostream>
+#include <sstream>
 
 #include <Ogre.h>
 #include <OIS.h>
@@ -51,6 +52,7 @@ GameEngine::GameEngine(void):
   mRenderer(NULL),
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
+  mFpsGeometry(NULL),
   mNyiDialog(NULL),
   mNyiLocalTest(NULL),
   mNyiOptions(NULL)
@@ -161,7 +163,8 @@ GameEngine::~GameEngine()
 {
   mRenderer->destroyGeometryBuffer(*mLogoGeometry);
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
-
+  mRenderer->destroyGeometryBuffer(*mFpsGeometry);
+  
   if (!mNyiDialog)
     delete mNyiDialog;
 
@@ -267,6 +270,11 @@ GameEngine::run()
   CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
   fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
                         CEGUI::Colour(0xFFFFFFFF));
+
+  // Add a FPS + stats buffer
+  mFpsGeometry = &mRenderer->createGeometryBuffer();
+  mFpsGeometry->setClippingRegion(scrn);
+  mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f)); // a line of text = 20.0 height
   
   // clearing this queue actually makes sure it's created(!)
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
@@ -431,6 +439,32 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
     // draw the CEGUI overlays
     mLogoGeometry->draw();
     mVersionGeometry->draw();
+
+    // Update FPS
+
+    // Update FPS stats every second
+    if (mTimer.getMilliseconds() > 1000)
+      {
+	CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().
+	  get("DejaVuSans-12");
+	CEGUI::Colour c = CEGUI::Colour(0xFFFFFFFF);
+	mFpsGeometry->reset();
+
+	ostringstream os1, os2, os3;
+	os1 << "Batch count : " << mWindow->getBatchCount();
+	fnt->drawText(*mFpsGeometry, os1.str(), CEGUI::Vector2f(0, 0), 0, c);
+	
+	os2 << "Best FPS : " << mWindow->getBestFPS ();
+	fnt->drawText(*mFpsGeometry, os2.str(), CEGUI::Vector2f(0, 20.0), 0, c);
+
+	os3 << "Last FPS : " << mWindow->getLastFPS ();
+	fnt->drawText(*mFpsGeometry, os3.str(), CEGUI::Vector2f(0, 40.0), 0, c);
+
+	mTimer.reset();
+      }
+	
+    mFpsGeometry->draw();
+
     
     return true;
 }
