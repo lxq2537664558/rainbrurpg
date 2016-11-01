@@ -33,12 +33,12 @@ public:
   }
   
   virtual void enter(GameEngine*){};
-  virtual void exit(){};
+  virtual void exit(GameEngine*){};
 };
 
 // Usefull test :(
 TEST( GameState, name )
 {
   EmptyGameState gs("myname");
-  EXPECT_EQ( gs.getName(), "myname" );        // #1 continues on error
+  EXPECT_EQ( gs.getName(), "myname" );
 }

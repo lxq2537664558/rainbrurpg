@@ -7,13 +7,14 @@
 - [ ] Try to use the 'FetteUNZFraktur' font from the CEGUI demo
 - [ ] Start with the localTest menu
 **** Postponed unit tests thing
-***** DONE Search for the guile error
+***** Fix the actual CI issues
 - [X] The same error occurs in two builds now
   =guile: uncaught throw to system-error: (open-file ~A: ~S (No such file or directory scm/test.scm) (2))=
   - [X] Maybe try for GTest
     Because we have localc segfault
     The segfault isn't here anymore but now the guile error is local
 Error is fixed, was due to a src/services/Services.hpp old code    
+- [ ] Can't find clang++ when building rainbrurpg but cegui is correctly built
 ***** Improve CI with other OSes
       CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
 - [ ] Start with osx but allow_failure
@@ -94,6 +95,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-11-01 mar. 22:01]--[2016-11-01 mar. 22:55] =>  0:54
      CLOCK: [2016-10-31 lun. 04:36]--[2016-10-31 lun. 04:47] =>  0:11
      CLOCK: [2016-10-31 lun. 04:07]--[2016-10-31 lun. 04:35] =>  0:28
      CLOCK: [2016-10-31 lun. 01:50]--[2016-10-31 lun. 02:53] =>  1:03
@@ -218,11 +220,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] First, add the geometrybuffer in the bottom right corner
   - [X] Get the RenderTarget stats every second
   - [X] Print essential values
-- [ ] If CI fixed, add image in README.md
-- [ ] Must implement a GameState system
+- [-] Must implement a GameState system
   - Current work goes in gsMainMenu
-  - [ ] Implement it as GameState/StateManager with unit tests
-  - [ ] Then, GameEngine publicly inherits StateMnager
+  - [X] Implement it as GameState/StateManager with unit tests
+    Continue to implement StateManager and its tests
+  - [X] Then, GameEngine publicly inherits StateManager
+  - [ ] Move actual GameEngine test in a MainMenu gamestate
+- [ ] If CI fixed, add image in README.md
 - [ ] These is (again) a segfault when cancel the Ogre3D config dialog
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48

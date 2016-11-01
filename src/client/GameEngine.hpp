@@ -34,6 +34,8 @@
 
 #include <CEGUI/CEGUI.h>
 
+#include "StateManager.hpp"
+
 // Forward declarations
 namespace Ogre
 {
@@ -55,7 +57,8 @@ class NyiDialog;
 class GameEngine: public Ogre::FrameListener,
 		  public Ogre::WindowEventListener,
 		  public OIS::MouseListener,
-		  public OIS::KeyListener
+		  public OIS::KeyListener,
+		  public StateManager
 {
 public:
   GameEngine(void);

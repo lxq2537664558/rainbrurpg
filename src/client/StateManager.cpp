@@ -20,9 +20,11 @@
 
 #include "StateManager.hpp"
 
+#include "GameEngine.hpp"
 #include "GameState.hpp"
 
-StateManager::StateManager():
+StateManager::StateManager(GameEngine* ge):
+  mGameEngine(ge),
   mCurrentState(NULL)
 {
 
@@ -30,6 +32,27 @@ StateManager::StateManager():
 
 StateManager::~StateManager()
 {
-
+  mGameEngine = NULL;
 }
 
+/* Returns the current gamestate. 
+ *
+ * May return a NULL pointer.
+ *
+ */
+GameState*
+StateManager::getCurrentState()
+{
+  return mCurrentState;
+}
+
+void
+StateManager::setCurrentState(GameState* gs)
+{
+  if (mCurrentState)
+    mCurrentState->exit(mGameEngine);
+
+  // Actually changing gamestate
+  mCurrentState = gs;
+  gs->enter(mGameEngine);
+}

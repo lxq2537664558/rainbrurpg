@@ -40,7 +40,7 @@ public:
   virtual ~GameState();
   
   virtual void enter(GameEngine*)=0;
-  virtual void exit()=0;
+  virtual void exit(GameEngine*)=0;
 
   const string& getName()const;
   

@@ -23,15 +23,26 @@
 
 // Forward declarations
 class GameState;
+class GameEngine;
 // End of forward declarations
 
+/* The GameState manager
+ *
+ * This is used to be publicly inherited by GameEngine, passing
+ * itself (this) as argument.
+ *
+ */
 class StateManager
 {
 public:
-  StateManager();
+  StateManager(GameEngine*);
   ~StateManager();
 
+  GameState* getCurrentState();
+  void setCurrentState(GameState*);
+ 
 protected:
+  GameEngine* mGameEngine;
   GameState* mCurrentState;
 
 };

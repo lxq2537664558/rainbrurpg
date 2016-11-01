@@ -1,3 +1,13 @@
+2016-11-011  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/StateManager (StateManager): GameEngine pointer comes
+	from here.
+	* src/client/GameState.hpp (exit): now takes a GameEngine pointer
+	parameter.
+	* src/client/GameState.hpp (enter): now takes a GameEngine pointer
+	parameter.
+	* src/client/StateManager_Test.cpp: implement some unit tests.
+
 2016-10-31  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameState_Test.cpp: useless GameState unit tests.

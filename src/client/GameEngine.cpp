@@ -41,6 +41,7 @@ using namespace Ogre;
 static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 GameEngine::GameEngine(void):
+  StateManager(this),
   mWindow(NULL),
   mInputManager(NULL),
   mKeyboard(NULL),
