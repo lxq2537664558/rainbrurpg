@@ -18,46 +18,38 @@
  *
  */
 
+#include "GameState.hpp"
 #include "StateManager.hpp"
 
-#include "GameEngine.hpp"
-#include "GameState.hpp"
-#include "Logger.hpp"
+#include "gtest/gtest.h"
 
-static Rpg::Logger static_logger("statemanager", Rpg::LT_BOTH);
-
-StateManager::StateManager(GameEngine* ge):
-  mGameEngine(ge),
-  mCurrentState(NULL)
+// Just defined to override pure virtual functions
+class EmptyGameState : public GameState
 {
+public:
+  EmptyGameState(const string& name):
+    GameState(name)
+  {
 
+  }
+  
+  virtual void enter(GameEngine*){};
+  virtual void exit(GameEngine*){};
+};
+
+// Test if current is NULL
+TEST( StateManager, constructor_state_is_null )
+{
+  StateManager sm(NULL);   // a NULL GameEngine*
+  ASSERT_TRUE(sm.getCurrentState() == NULL);
 }
 
-StateManager::~StateManager()
+// Chang current state and test if it actually changed it
+TEST( StateManager, set_current_state )
 {
-  mGameEngine = NULL;
-}
-
-/* Returns the current gamestate. 
- *
- * May return a NULL pointer.
- *
- */
-GameState*
-StateManager::getCurrentState()
-{
-  return mCurrentState;
-}
-
-void
-StateManager::setCurrentState(GameState* gs)
-{
-  LOGI("Switching to" << gs->getName() << "game state");
-
-  if (mCurrentState)
-    mCurrentState->exit(mGameEngine);
-
-  // Actually changing gamestate
-  mCurrentState = gs;
-  gs->enter(mGameEngine);
+  EmptyGameState gs("myname");
+  StateManager sm(NULL);   // a NULL GameEngine*
+  sm.setCurrentState(&gs);
+  
+  EXPECT_EQ( sm.getCurrentState(), &gs);
 }

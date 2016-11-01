@@ -18,46 +18,23 @@
  *
  */
 
-#include "StateManager.hpp"
+#ifndef _MAIN_MENU_HPP_
+#define _MAIN_MENU_HPP_
 
-#include "GameEngine.hpp"
 #include "GameState.hpp"
-#include "Logger.hpp"
 
-static Rpg::Logger static_logger("statemanager", Rpg::LT_BOTH);
-
-StateManager::StateManager(GameEngine* ge):
-  mGameEngine(ge),
-  mCurrentState(NULL)
-{
-
-}
-
-StateManager::~StateManager()
-{
-  mGameEngine = NULL;
-}
-
-/* Returns the current gamestate. 
- *
- * May return a NULL pointer.
+/* The MainMenu game state
  *
  */
-GameState*
-StateManager::getCurrentState()
+class MainMenu: public GameState
 {
-  return mCurrentState;
-}
+public:
+  MainMenu();
+  ~MainMenu();
 
-void
-StateManager::setCurrentState(GameState* gs)
-{
-  LOGI("Switching to" << gs->getName() << "game state");
+  virtual void enter(GameEngine*);
+  virtual void exit(GameEngine*);
+  
+};
 
-  if (mCurrentState)
-    mCurrentState->exit(mGameEngine);
-
-  // Actually changing gamestate
-  mCurrentState = gs;
-  gs->enter(mGameEngine);
-}
+#endif //!_MAIN_MENU_HPP_

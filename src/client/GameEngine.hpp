@@ -52,6 +52,7 @@ namespace CEGUI
   class GeometryBuffer;
 }
 class NyiDialog;
+class MainMenu;
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
@@ -115,6 +116,8 @@ private:
   NyiDialog* mNyiOptions;
 
   Ogre::Timer mTimer;
+
+  MainMenu* mMainMenu;
 };
 
 #endif // !_GAME_ENGINE_HPP_

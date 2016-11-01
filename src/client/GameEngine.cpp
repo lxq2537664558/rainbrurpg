@@ -21,7 +21,6 @@
 #include <Logger.hpp> // Before headers to avoid std::list/Ogre::list conflict
 
 #include "GameEngine.hpp"
-#include "LoadingBar.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -34,6 +33,7 @@
 #include "config.h" // Uses VERSTRING
 
 #include "NyiDialog.hpp"
+#include "MainMenu.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -56,9 +56,12 @@ GameEngine::GameEngine(void):
   mFpsGeometry(NULL),
   mNyiDialog(NULL),
   mNyiLocalTest(NULL),
-  mNyiOptions(NULL)
+  mNyiOptions(NULL),
+  mMainMenu(NULL)
 {
 
+  mMainMenu = new MainMenu();
+  
   //  log("Starting Ogre::Root");
   mRoot = new Root();
   if (!mRoot->showConfigDialog())
@@ -79,7 +82,6 @@ GameEngine::GameEngine(void):
   // Create one viewport, entire window
   Ogre::Viewport* vp = mWindow->addViewport(mCamera);
   vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
-
 
   // Initialize OIS
   OIS::ParamList pl;   
@@ -211,28 +213,6 @@ GameEngine::run()
   LOGE("GameEngine::run() called...");
   
   setupResources();
-
-  LoadingBar* lb = new LoadingBar();
-  LOGI("Starting loadingbar");
-  //  lb->start(mWindow, 5, 5, 0.75);
-  // Turn off rendering of everything except overlays
-  mSceneMgr->clearSpecialCaseRenderQueues();
-  mSceneMgr->addSpecialCaseRenderQueue(RENDER_QUEUE_OVERLAY);
-  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_INCLUDE);
-      
-  //  mWindow->update();
-  ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
-
-  // Back to full rendering
-  mSceneMgr->clearSpecialCaseRenderQueues();
-  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-  mSceneMgr->clearSpecialCaseRenderQueues();
-  mSceneMgr->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
-  //  lb->finish();
-  
-  LOGI("Loadingbar->finish() closed");
-  //  mWindow->update();
-
   initializeCegui();
   
   CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
@@ -247,6 +227,8 @@ GameEngine::run()
   CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
 
+  setCurrentState(mMainMenu);
+  
   //  Loading the main menu
   CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
   CEGUI::Window* root = wmgr->createWindow("DefaultWindow", "Root");
@@ -329,6 +311,7 @@ void GameEngine::setupResources(void)
 	}
     }
   LOGI("All resources groups added");
+  ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
 void 

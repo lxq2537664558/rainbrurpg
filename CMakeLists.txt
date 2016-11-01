@@ -134,6 +134,7 @@ set (client-src
   src/client/GameEngine.cpp
   src/client/GameState.cpp
   src/client/LoadingBar.cpp
+  src/client/MainMenu.cpp
   src/client/NyiDialog.cpp
   src/client/StateManager.cpp
   src/client/main.cpp

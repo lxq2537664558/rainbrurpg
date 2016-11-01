@@ -1,6 +1,8 @@
 2016-11-011  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/client/StateManager (StateManager): GameEngine pointer comes
+	* src/client/MainMenu.cpp: create new class.
+
+	* src/client/StateManager.cpp (StateManager): GameEngine pointer comes
 	from here.
 	* src/client/GameState.hpp (exit): now takes a GameEngine pointer
 	parameter.

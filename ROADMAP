@@ -95,6 +95,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-11-01 mar. 23:04]--[2016-11-01 mar. 23:46] =>  0:42
      CLOCK: [2016-11-01 mar. 22:01]--[2016-11-01 mar. 22:55] =>  0:54
      CLOCK: [2016-10-31 lun. 04:36]--[2016-10-31 lun. 04:47] =>  0:11
      CLOCK: [2016-10-31 lun. 04:07]--[2016-10-31 lun. 04:35] =>  0:28
@@ -127,9 +128,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2016-10-12 mer. 02:27]--[2016-10-12 mer. 02:43] =>  0:16
      CLOCK: [2016-10-08 sam. 04:01]--[2016-10-08 sam. 05:02] =>  1:01
      CLOCK: [2016-10-06 jeu. 02:30]--[2016-10-06 jeu. 03:46] =>  1:16
-     :PROPERTIES:
-     :ORDERED:  t
-     :END:
 - [X] See why client get stuck in 'parsing scripts' loading bar
   Last message is :
   Parsing scripts for resource group Schemes
@@ -225,7 +223,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] Implement it as GameState/StateManager with unit tests
     Continue to implement StateManager and its tests
   - [X] Then, GameEngine publicly inherits StateManager
-  - [ ] Move actual GameEngine test in a MainMenu gamestate
+  - [-] Move actual GameEngine test in a MainMenu gamestate
+    - [X] Create the main class
+    - [ ] Move current GameEngine::run() content to MainMenu gamestate
+      We need a GameState::draw() callback at least for geometrybuffers
+- [ ] May remove the src/client/LoadingBar.* (not used anymore)
 - [ ] If CI fixed, add image in README.md
 - [ ] These is (again) a segfault when cancel the Ogre3D config dialog
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
