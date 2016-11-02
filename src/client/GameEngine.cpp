@@ -264,10 +264,11 @@ GameEngine::run()
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
 	      CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
   
-  CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
+  /*  CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
   root->addChild(logoWindow);
-
+  */
   // Handle CEGUI events
+  /*
   CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
   exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
 
@@ -280,7 +281,7 @@ GameEngine::run()
   btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
 
   menuWindow->getChild("GameMenu/Options")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onOptions, this));
-
+  */
    
   // Start rendering
   LOGI("Staring rendering loop");

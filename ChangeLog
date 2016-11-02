@@ -1,4 +1,10 @@
-2016-11-011  Jérôme Pasquier  <rainbru@free.fr>
+2016-11-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameState.hpp (loadLayout): simpler way to load a CEGUI
+	layout file.
+	* src/client/GameState.hpp: add mRoot member.
+
+2016-11-01  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/MainMenu.cpp (enter): create the menu.layout.
 

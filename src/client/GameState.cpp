@@ -20,17 +20,22 @@
 
 #include "GameState.hpp"
 
+#include <CEGUI/Window.h>
+
 #include "GameEngine.hpp"
 
+using namespace CEGUI;
+
 GameState::GameState(const string& name):
-  mName(name)
+  mName(name),
+  mRoot(NULL)
 {
 
 }
 
 GameState::~GameState()
 {
-
+  mRoot = NULL;
 }
   
 const string&
@@ -38,3 +43,23 @@ GameState::getName()const
 {
   return mName;
 }
+
+/* Load a CEGUI layout from a file
+ *
+ */
+CEGUI::Window*
+GameState::loadLayout(const string& filename)
+{
+  if (!mRoot)
+    {
+      // Create it only the first time
+      mRoot = WindowManager::getSingletonPtr()->
+	createWindow("DefaultWindow", "Root");
+      System::getSingleton().getDefaultGUIContext().setRootWindow(mRoot);
+    }
+
+    Window* w = WindowManager::getSingletonPtr()->loadLayoutFromFile(filename);
+    mRoot->addChild(w);
+    return w;
+}
+

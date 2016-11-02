@@ -38,13 +38,15 @@ public:
   StateManager(GameEngine*);
   ~StateManager();
 
-  GameState* getCurrentState();
+  GameState* getCurrentState()const;
   void setCurrentState(GameState*);
  
 protected:
-  GameEngine* mGameEngine;
   GameState* mCurrentState;
+
+private:
+  GameEngine* mGameEngine;
 
 };
 
-#endif // _STATE_MANAGER_HPP_
+#endif // !_STATE_MANAGER_HPP_

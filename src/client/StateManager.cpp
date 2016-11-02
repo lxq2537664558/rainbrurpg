@@ -27,8 +27,8 @@
 static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 StateManager::StateManager(GameEngine* ge):
-  mGameEngine(ge),
-  mCurrentState(NULL)
+  mCurrentState(NULL),
+  mGameEngine(ge)
 {
 
 }
@@ -44,7 +44,7 @@ StateManager::~StateManager()
  *
  */
 GameState*
-StateManager::getCurrentState()
+StateManager::getCurrentState() const
 {
   return mCurrentState;
 }

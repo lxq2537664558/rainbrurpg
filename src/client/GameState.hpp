@@ -24,6 +24,10 @@
 #include <string>
 
 // Forward declaration
+namespace CEGUI
+{
+  class Window;
+}
 class GameEngine;
 // End of forward declaration
 
@@ -43,9 +47,13 @@ public:
   virtual void exit(GameEngine*)=0;
 
   const string& getName()const;
+
+protected:
+  CEGUI::Window* loadLayout(const string&);
   
 private:
-  string mName; // The state name, only for debuging purpose
+  string mName;         // The state name, only for debuging purpose
+  CEGUI::Window* mRoot; // The root window for all CEGUI layouts
 };
 
 #endif // !_GAME_STATE_HPP_
