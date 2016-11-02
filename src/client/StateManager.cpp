@@ -24,7 +24,7 @@
 #include "GameState.hpp"
 #include "Logger.hpp"
 
-static Rpg::Logger static_logger("statemanager", Rpg::LT_BOTH);
+static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 StateManager::StateManager(GameEngine* ge):
   mGameEngine(ge),

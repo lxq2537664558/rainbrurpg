@@ -1,5 +1,7 @@
 2016-11-011  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp (enter): create the menu.layout.
+
 	* src/client/MainMenu.cpp: create new class.
 
 	* src/client/StateManager.cpp (StateManager): GameEngine pointer comes

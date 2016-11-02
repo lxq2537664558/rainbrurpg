@@ -20,6 +20,17 @@
 
 #include "MainMenu.hpp"
 
+#include <CEGUI/System.h>
+#include <CEGUI/GUIContext.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/Window.h>
+
+#include "Logger.hpp"
+
+using namespace CEGUI;
+
+static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
+
 MainMenu::MainMenu():
   GameState("MainMenu")
 {
@@ -34,7 +45,16 @@ MainMenu::~MainMenu()
 void
 MainMenu::enter(GameEngine*)
 {
+  LOGI("Entering MainMenu gamestate");
 
+  //  Loading the main menu
+  GUIContext* context = &System::getSingleton().getDefaultGUIContext();
+  WindowManager *wmgr = WindowManager::getSingletonPtr();
+  Window* root = wmgr->createWindow("DefaultWindow", "Root");
+  context->setRootWindow(root);
+  Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
+  root->addChild(menuWindow);
+  
 }
 
 void

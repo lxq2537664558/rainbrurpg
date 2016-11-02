@@ -230,12 +230,12 @@ GameEngine::run()
   setCurrentState(mMainMenu);
   
   //  Loading the main menu
-  CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
+  /*  CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
   CEGUI::Window* root = wmgr->createWindow("DefaultWindow", "Root");
   mContext->setRootWindow(root);
   CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
   root->addChild(menuWindow);
-
+  */
  
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
