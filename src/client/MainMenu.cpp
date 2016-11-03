@@ -21,9 +21,10 @@
 #include "MainMenu.hpp"
 
 #include <CEGUI/System.h>
+#include <CEGUI/Window.h>
 #include <CEGUI/GUIContext.h>
 #include <CEGUI/WindowManager.h>
-#include <CEGUI/Window.h>
+#include <CEGUI/widgets/PushButton.h>
 
 #include "Logger.hpp"
 
@@ -48,17 +49,28 @@ MainMenu::enter(GameEngine*)
   LOGI("Entering MainMenu gamestate");
 
   //  Loading the main menu
-  GUIContext* context = &System::getSingleton().getDefaultGUIContext();
-  WindowManager *wmgr = WindowManager::getSingletonPtr();
-  Window* root = wmgr->createWindow("DefaultWindow", "Root");
-  context->setRootWindow(root);
-  Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
-  root->addChild(menuWindow);
-  
+  loadLayout("menu.layout");
+  addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
+  /*  
+  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
+  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
+  */
 }
 
 void
 MainMenu::exit(GameEngine*)
 {
+
+}
+
+
+/* The callback for the menu.layout's exit button
+ *
+ */
+bool
+MainMenu::onExit(const CEGUI::EventArgs& evt)
+{
+  LOGI("MainMenu::exit() called");
 
 }

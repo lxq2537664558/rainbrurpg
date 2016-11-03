@@ -63,3 +63,24 @@ GameState::loadLayout(const string& filename)
     return w;
 }
 
+/* Subscribe an event to a CEGUI window/button
+ *
+ * /param button The name of the button is the CEGUI way (i.e. something like
+ *        "root/GameMenu/Exit").
+ * /param event the CEGUI event name (i.e. CEGUI::PushButton::EventClicked).
+ * /param callback A CEGUI event subscriber (i.e. CEGUI::Event::
+ *        Subscriber(&GameEngine::onExit, this).
+ *
+ */
+
+void
+GameState::addEvent(const string& button, const CEGUI::String& event,
+		    CEGUI::Event::Subscriber callback)
+{
+  /*
+  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
+  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
+  */
+
+  mRoot->getChild(button)->subscribeEvent(event, callback);
+}

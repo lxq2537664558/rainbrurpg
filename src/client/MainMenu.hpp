@@ -23,6 +23,8 @@
 
 #include "GameState.hpp"
 
+#include <CEGUI/EventArgs.h>
+
 /* The MainMenu game state
  *
  */
@@ -34,6 +36,9 @@ public:
 
   virtual void enter(GameEngine*);
   virtual void exit(GameEngine*);
+
+private:
+  bool onExit(const CEGUI::EventArgs&);
   
 };
 

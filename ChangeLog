@@ -1,5 +1,8 @@
 2016-11-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameState.cpp (addEvent): find a one-liner to
+	subscribe to CEGUI event.
+
 	* src/client/GameState.hpp (loadLayout): simpler way to load a CEGUI
 	layout file.
 	* src/client/GameState.hpp: add mRoot member.

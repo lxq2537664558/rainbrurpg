@@ -22,6 +22,8 @@
 #define _GAME_STATE_HPP_
 
 #include <string>
+#include <CEGUI/String.h>
+#include <CEGUI/Event.h>
 
 // Forward declaration
 namespace CEGUI
@@ -50,7 +52,8 @@ public:
 
 protected:
   CEGUI::Window* loadLayout(const string&);
-  
+  void addEvent(const string&, const CEGUI::String&,CEGUI::Event::Subscriber);
+
 private:
   string mName;         // The state name, only for debuging purpose
   CEGUI::Window* mRoot; // The root window for all CEGUI layouts

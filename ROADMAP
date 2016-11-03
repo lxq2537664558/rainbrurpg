@@ -95,6 +95,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** TODO Client work
+     CLOCK: [2016-11-03 jeu. 00:28]--[2016-11-03 jeu. 01:26] =>  0:58
      CLOCK: [2016-11-02 mer. 23:44]--[2016-11-03 jeu. 00:21] =>  0:37
      CLOCK: [2016-11-01 mar. 23:49]--[2016-11-02 mer. 00:16] =>  0:27
      CLOCK: [2016-11-01 mar. 23:04]--[2016-11-01 mar. 23:46] =>  0:42
@@ -230,6 +231,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [-] Move current GameEngine::run() content to MainMenu gamestate
       - [X] Create a simpler GameState::loadLayout function
       - [ ] Now, we have to handle events a better way	
+      - [ ] Find a better way to handle GeometryBuffer object	
       We need a GameState::draw() callback at least for geometrybuffers
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times

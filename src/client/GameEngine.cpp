@@ -229,14 +229,6 @@ GameEngine::run()
 
   setCurrentState(mMainMenu);
   
-  //  Loading the main menu
-  /*  CEGUI::WindowManager *wmgr = CEGUI::WindowManager::getSingletonPtr();
-  CEGUI::Window* root = wmgr->createWindow("DefaultWindow", "Root");
-  mContext->setRootWindow(root);
-  CEGUI::Window* menuWindow = wmgr->loadLayoutFromFile("menu.layout");
-  root->addChild(menuWindow);
-  */
- 
   // Manually load the logo.png image !!
   mLogoGeometry = &mRenderer->createGeometryBuffer();
   CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
@@ -269,8 +261,6 @@ GameEngine::run()
   */
   // Handle CEGUI events
   /*
-  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
-  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
 
   CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)menuWindow->
     getChild("GameMenu/NetworkPlay");
