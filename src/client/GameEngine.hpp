@@ -67,6 +67,7 @@ public:
 
   void run();
   bool running();
+  void shutdown();
 
 protected:
   // Ogre::FrameListener
@@ -86,7 +87,6 @@ protected:
   void initializeCegui();
 
   // CEGUI events
-  bool onExit(const CEGUI::EventArgs&);
   bool onNetworkPlay(const CEGUI::EventArgs&);
   bool onLocalTest(const CEGUI::EventArgs&);
   bool onOptions(const CEGUI::EventArgs&);

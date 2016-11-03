@@ -394,10 +394,9 @@ GameEngine::convertButton(OIS::MouseButtonID buttonID)
     }
 }
 
-bool GameEngine::onExit(const CEGUI::EventArgs &args)
+void GameEngine::shutdown()
 {
   mShutdown = true;
-  return true;
 }
 
 bool GameEngine::running()

@@ -25,6 +25,10 @@
 
 #include <CEGUI/EventArgs.h>
 
+// Forward declaration
+class GameEngine;
+// End of forward declaration
+
 /* The MainMenu game state
  *
  */
@@ -40,6 +44,7 @@ public:
 private:
   bool onExit(const CEGUI::EventArgs&);
   
+  GameEngine* mGameEngine; // Keep a pointer to be able to shutdown
 };
 
 #endif //!_MAIN_MENU_HPP_

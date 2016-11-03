@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-252 (28 Oct. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (8) Implement a basic GameState/StateManager system
+- (9) MainMenu's exit button handles GameEngine's shutdown
+- Implement a basic GameState/StateManager system
 - Fix the guile/unit tests issue
 - Add a stats geometry buffer
 - Add a NyiDialog for the Options menu

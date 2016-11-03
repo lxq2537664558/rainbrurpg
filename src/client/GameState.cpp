@@ -77,10 +77,5 @@ void
 GameState::addEvent(const string& button, const CEGUI::String& event,
 		    CEGUI::Event::Subscriber callback)
 {
-  /*
-  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
-  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
-  */
-
   mRoot->getChild(button)->subscribeEvent(event, callback);
 }

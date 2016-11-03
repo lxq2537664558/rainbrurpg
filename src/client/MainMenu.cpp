@@ -27,35 +27,40 @@
 #include <CEGUI/widgets/PushButton.h>
 
 #include "Logger.hpp"
+#include "GameEngine.hpp"
 
 using namespace CEGUI;
 
 static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 MainMenu::MainMenu():
-  GameState("MainMenu")
+  GameState("MainMenu"),
+  mGameEngine(NULL)
 {
 
 }
 
 MainMenu::~MainMenu()
 {
-
+  mGameEngine = NULL;
 }
 
 void
-MainMenu::enter(GameEngine*)
+MainMenu::enter(GameEngine* ge)
 {
   LOGI("Entering MainMenu gamestate");
 
+  if (!ge)
+    LOGE("MainMenu gamestate received a NULL GameEngine pointer");
+  
+  mGameEngine = ge;
+  
   //  Loading the main menu
   loadLayout("menu.layout");
+
+  // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
-  /*  
-  CEGUI::PushButton* exitButton = (CEGUI::PushButton *)menuWindow->getChild("GameMenu/Exit");
-  exitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onExit, this));
-  */
 }
 
 void
@@ -71,6 +76,5 @@ MainMenu::exit(GameEngine*)
 bool
 MainMenu::onExit(const CEGUI::EventArgs& evt)
 {
-  LOGI("MainMenu::exit() called");
-
+  mGameEngine->shutdown();
 }

@@ -1,5 +1,9 @@
 2016-11-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameState.cpp (onExit): peacefully shutdown GameEngine.
+	* src/client/GameEngine.cpp (onExit): replace with a public
+	shutdown() function.
+
 	* src/client/GameState.cpp (addEvent): find a one-liner to
 	subscribe to CEGUI event.
 
