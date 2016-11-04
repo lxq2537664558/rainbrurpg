@@ -88,7 +88,6 @@ protected:
 
   // CEGUI events
   bool onNetworkPlay(const CEGUI::EventArgs&);
-  bool onLocalTest(const CEGUI::EventArgs&);
   bool onOptions(const CEGUI::EventArgs&);
   bool overlayHandler(const CEGUI::EventArgs&);
 
@@ -111,8 +110,7 @@ private:
   CEGUI::GeometryBuffer* mVersionGeometry;
   CEGUI::GeometryBuffer* mFpsGeometry;
   
-  NyiDialog* mNyiDialog;
-  NyiDialog* mNyiLocalTest;
+  NyiDialog* mNyiNetworkPlay;
   NyiDialog* mNyiOptions;
 
   Ogre::Timer mTimer;

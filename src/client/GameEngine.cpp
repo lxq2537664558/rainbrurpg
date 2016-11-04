@@ -54,8 +54,7 @@ GameEngine::GameEngine(void):
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
-  mNyiDialog(NULL),
-  mNyiLocalTest(NULL),
+  mNyiNetworkPlay(NULL),
   mNyiOptions(NULL),
   mMainMenu(NULL)
 {
@@ -168,11 +167,8 @@ GameEngine::~GameEngine()
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
   mRenderer->destroyGeometryBuffer(*mFpsGeometry);
   
-  if (!mNyiDialog)
-    delete mNyiDialog;
-
-  if (!mNyiLocalTest)
-    delete mNyiLocalTest;
+  if (!mNyiNetworkPlay)
+    delete mNyiNetworkPlay;
 
   if (!mNyiOptions)
     delete mNyiOptions;
@@ -266,10 +262,6 @@ GameEngine::run()
     getChild("GameMenu/NetworkPlay");
   btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onNetworkPlay, this));
   
-  CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
-    getChild("GameMenu/LocalTest");
-  btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
-
   menuWindow->getChild("GameMenu/Options")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onOptions, this));
   */
    
@@ -458,20 +450,10 @@ GameEngine::windowResized(Ogre::RenderWindow* rw)
 bool
 GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
 {
-  if (!mNyiDialog)
-    mNyiDialog = new NyiDialog("Network play", "nyiNetworkPlay");
+  if (!mNyiNetworkPlay)
+    mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
     
-  mNyiDialog->show();
-  return true;
-}
-
-bool
-GameEngine::onLocalTest(const CEGUI::EventArgs& evt)
-{
-  if (!mNyiLocalTest)
-    mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
-    
-  mNyiLocalTest->show();
+  mNyiNetworkPlay->show();
   return true;
 }
 

@@ -27,6 +27,7 @@
 
 // Forward declaration
 class GameEngine;
+class NyiDialog;
 // End of forward declaration
 
 /* The MainMenu game state
@@ -41,10 +42,13 @@ public:
   virtual void enter(GameEngine*);
   virtual void exit(GameEngine*);
 
-private:
+protected:
   bool onExit(const CEGUI::EventArgs&);
+  bool onLocalTest(const CEGUI::EventArgs&);
   
+private:
   GameEngine* mGameEngine; // Keep a pointer to be able to shutdown
+  NyiDialog* mNyiLocalTest;
 };
 
 #endif //!_MAIN_MENU_HPP_

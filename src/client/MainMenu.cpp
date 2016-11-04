@@ -28,6 +28,7 @@
 
 #include "Logger.hpp"
 #include "GameEngine.hpp"
+#include "NyiDialog.hpp"
 
 using namespace CEGUI;
 
@@ -35,7 +36,8 @@ static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 MainMenu::MainMenu():
   GameState("MainMenu"),
-  mGameEngine(NULL)
+  mGameEngine(NULL),
+  mNyiLocalTest(NULL)
 {
 
 }
@@ -43,6 +45,9 @@ MainMenu::MainMenu():
 MainMenu::~MainMenu()
 {
   mGameEngine = NULL;
+
+  if (mNyiLocalTest)
+    delete mNyiLocalTest;
 }
 
 void
@@ -61,6 +66,14 @@ MainMenu::enter(GameEngine* ge)
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
+  addEvent("root/GameMenu/LocalTest", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&MainMenu::onLocalTest, this));
+
+  /*
+    CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
+    getChild("GameMenu/LocalTest");
+  btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
+  */
 }
 
 void
@@ -77,4 +90,19 @@ bool
 MainMenu::onExit(const CEGUI::EventArgs& evt)
 {
   mGameEngine->shutdown();
+  return true;
+}
+
+
+/* The callback for the 'Local Test' button
+ *
+ */
+bool
+MainMenu::onLocalTest(const CEGUI::EventArgs&)
+{
+  if (!mNyiLocalTest)
+    mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
+    
+  mNyiLocalTest->show();
+  return true;
 }

@@ -1,3 +1,7 @@
+2016-11-04  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (onLocalTest): move to MainMenu.cpp.
+
 2016-11-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameState.cpp (onExit): peacefully shutdown GameEngine.
