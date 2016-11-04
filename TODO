@@ -35,14 +35,5 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-252 (28 Oct. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- New MainMenu gamestate handle all its events
-- MainMenu's exit button handles GameEngine's shutdown
-- Implement a basic GameState/StateManager system
-- Fix the guile/unit tests issue
-- Add a stats geometry buffer
-- Add a NyiDialog for the Options menu
-- Handle multiple NyiDialog per context
-- Implement the NyiDialog
-- Makes the CeguiDialog Ok button hide the dialog
-- Implement CeguiDialog visibility
+* v0.0.5-253 (04 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+

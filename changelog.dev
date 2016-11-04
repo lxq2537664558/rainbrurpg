@@ -1,3 +1,15 @@
+* v0.0.5-252 (28 Oct. 2016 - 04 Nov. 2016) SLOC 2,785 FT 306:07 UT 4
+- New MainMenu gamestate handle all its events
+- MainMenu's exit button handles GameEngine's shutdown
+- Implement a basic GameState/StateManager system
+- Fix the guile/unit tests issue
+- Add a stats geometry buffer
+- Add a NyiDialog for the Options menu
+- Handle multiple NyiDialog per context
+- Implement the NyiDialog
+- Makes the CeguiDialog Ok button hide the dialog
+- Implement CeguiDialog visibility
+
 * v0.0.5-251 (19 Oct. 2016 - 28 Oct. 2016) SLOC 2,448 FT 296:17 UT 1
 - Add a basic CeguiDialog implementation
 - Add a very basic NYI dialog layout
