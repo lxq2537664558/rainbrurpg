@@ -38,7 +38,8 @@ MainMenu::MainMenu():
   GameState("MainMenu"),
   mGameEngine(NULL),
   mNyiLocalTest(NULL),
-  mNyiNetworkPlay(NULL)
+  mNyiNetworkPlay(NULL),
+  mNyiOptions(NULL)
 {
 
 }
@@ -52,6 +53,9 @@ MainMenu::~MainMenu()
   
   if (mNyiNetworkPlay)
     delete mNyiLocalTest;
+
+  if (mNyiOptions)
+    delete mNyiOptions;
 }
 
 void
@@ -73,6 +77,8 @@ MainMenu::enter(GameEngine* ge)
   addEvent("root/GameMenu/LocalTest", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onLocalTest, this));
   addEvent("root/GameMenu/NetworkPlay", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
+  addEvent("root/GameMenu/Options", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
 
 }
@@ -118,5 +124,18 @@ MainMenu::onNetworkPlay(const CEGUI::EventArgs&)
     mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
     
   mNyiNetworkPlay->show();
+  return true;
+}
+
+/** The Options button menu callback
+ *
+ */
+bool
+MainMenu::onOptions(const CEGUI::EventArgs&)
+{
+  if (!mNyiOptions)
+    mNyiOptions = new NyiDialog("Options", "nyiOptions");
+    
+  mNyiOptions->show();
   return true;
 }

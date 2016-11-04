@@ -1,5 +1,10 @@
 2016-11-04  Jérôme Pasquier  <rainbru@free.fr>
 
+	* ROADMAP: create a new 'client work/game state' section.
+	* src/client/GameEngine.cpp: remoev NyiDialog header inclusion.
+	* src/client/MainMenu.cpp (onOptions): move GameEngine's function
+	here.
+
 	* src/client/MainMenu.cpp (onNetworkPlay): use a NyiDialog.
 
 	* src/client/GameEngine.cpp (onLocalTest): move to MainMenu.cpp.

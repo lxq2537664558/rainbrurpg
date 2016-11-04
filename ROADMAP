@@ -6,6 +6,8 @@
 **** More client work
 - [ ] Try to use the 'FetteUNZFraktur' font from the CEGUI demo
 - [ ] Start with the localTest menu
+- [ ] Must remove the OLD sources but keep the ROADMAP file for GT stat
+  Mainly to make coverity scan padd (> 80%?)
 **** Postponed unit tests thing
 ***** Fix the actual CI issues
 - [X] The same error occurs in two builds now
@@ -94,7 +96,18 @@ Error is fixed, was due to a src/services/Services.hpp old code
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
-**** TODO Client work
+**** TODO GameState system switch and more client work
+- [ ] Find a better way to handle GeometryBuffer object	
+  We need a GameState::draw() callback at least for geometrybuffers
+  or a list of buffers in GameEngine (or a superclass) with a draw
+  callback.
+- [ ] May remove the src/client/LoadingBar.* (not used anymore)
+  Maybe keep it to change it to a CEGUI layout, used multiple times
+  When generating local level the first time, when cloning a server etc...
+- [ ] If CI fixed, add image in README.md
+- [ ] These is (again) a segfault when cancel the Ogre3D config dialog
+**** DONE Client work
+     CLOCK: [2016-11-04 ven. 02:26]--[2016-11-04 ven. 02:42] =>  0:16
      CLOCK: [2016-11-04 ven. 01:55]--[2016-11-04 ven. 02:24] =>  0:29
      CLOCK: [2016-11-04 ven. 01:03]--[2016-11-04 ven. 01:54] =>  0:51
      CLOCK: [2016-11-03 jeu. 01:28]--[2016-11-03 jeu. 01:42] =>  0:14
@@ -233,20 +246,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Create the main class
     - [-] Move current GameEngine::run() content to MainMenu gamestate
       - [X] Create a simpler GameState::loadLayout function
-      - [-] Now, we have to handle events a better way	
+      - [X] Now, we have to handle events a better way	
 	- [X] Handle onExit
 	- [X] Shows NyiDialog on onLocalTest  
 	- [X] Shows NyiDialog on onNetworkPlay  
-	- [ ] Same NyiDialog work on onOptions
-      - [ ] Find a better way to handle GeometryBuffer object	
-      We need a GameState::draw() callback at least for geometrybuffers
-      or a list of buffers in GameEngine (or a superclass) with a draw
-      callback.
-- [ ] May remove the src/client/LoadingBar.* (not used anymore)
-  Maybe keep it to change it to a CEGUI layout, used multiple times
-  When generating local level the first time, when cloning a server etc...
-- [ ] If CI fixed, add image in README.md
-- [ ] These is (again) a segfault when cancel the Ogre3D config dialog
+	- [X] Same NyiDialog work on onOptions
+        - [X] Remove all refrences to NyiDialog in GameEngine
 **** DONE [test_ogre1.9] Let's test if switching to Ogre1.9
      CLOCK: [2016-10-12 mer. 01:19]--[2016-10-12 mer. 02:07] =>  0:48
      fix the client's issues

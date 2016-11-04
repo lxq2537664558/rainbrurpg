@@ -46,11 +46,13 @@ protected:
   bool onExit(const CEGUI::EventArgs&);
   bool onLocalTest(const CEGUI::EventArgs&);
   bool onNetworkPlay(const CEGUI::EventArgs&);
+  bool onOptions(const CEGUI::EventArgs&);
   
 private:
-  GameEngine* mGameEngine; // Keep a pointer to be able to shutdown
-  NyiDialog* mNyiLocalTest;
-  NyiDialog* mNyiNetworkPlay;
+  GameEngine* mGameEngine;    // Keep a pointer to be able to shutdown
+  NyiDialog* mNyiLocalTest;   // NotYetImpl. dialog for the LocalTest button
+  NyiDialog* mNyiNetworkPlay; // NotYetImpl. dialog for the NetworkPlay button
+  NyiDialog* mNyiOptions;     // NotYetImpl. dialog for the Options button
 };
 
 #endif //!_MAIN_MENU_HPP_

@@ -32,7 +32,6 @@
 
 #include "config.h" // Uses VERSTRING
 
-#include "NyiDialog.hpp"
 #include "MainMenu.hpp"
 
 using namespace std;
@@ -54,7 +53,6 @@ GameEngine::GameEngine(void):
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
-  mNyiOptions(NULL),
   mMainMenu(NULL)
 {
 
@@ -166,9 +164,6 @@ GameEngine::~GameEngine()
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
   mRenderer->destroyGeometryBuffer(*mFpsGeometry);
   
-  if (!mNyiOptions)
-    delete mNyiOptions;
-  
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   //  windowClosed(mWindow);
   delete mRoot;
@@ -248,16 +243,6 @@ GameEngine::run()
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
 	      CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
   
-  /*  CEGUI::Window* logoWindow = wmgr->loadLayoutFromFile("logo.layout");
-  root->addChild(logoWindow);
-  */
-  // Handle CEGUI events
-  /*
-
-  
-  menuWindow->getChild("GameMenu/Options")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onOptions, this));
-  */
-   
   // Start rendering
   LOGI("Staring rendering loop");
   mRoot->startRendering();
@@ -438,13 +423,4 @@ GameEngine::windowResized(Ogre::RenderWindow* rw)
   const OIS::MouseState &ms = mMouse->getMouseState();
   ms.width = width;
   ms.height = height;
-}
-
-bool GameEngine::onOptions(const CEGUI::EventArgs&)
-{
-  if (!mNyiOptions)
-    mNyiOptions = new NyiDialog("Options", "nyiOptions");
-    
-  mNyiOptions->show();
-  return true;
 }

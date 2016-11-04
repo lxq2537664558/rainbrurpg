@@ -51,7 +51,6 @@ namespace CEGUI
   class OgreRenderer;
   class GeometryBuffer;
 }
-class NyiDialog;
 class MainMenu;
 // End of forward declarations
 
@@ -109,8 +108,6 @@ private:
   CEGUI::GeometryBuffer* mVersionGeometry;
   CEGUI::GeometryBuffer* mFpsGeometry;
   
-  NyiDialog* mNyiOptions;
-
   Ogre::Timer mTimer;
 
   MainMenu* mMainMenu;
