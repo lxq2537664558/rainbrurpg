@@ -37,7 +37,8 @@ static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 MainMenu::MainMenu():
   GameState("MainMenu"),
   mGameEngine(NULL),
-  mNyiLocalTest(NULL)
+  mNyiLocalTest(NULL),
+  mNyiNetworkPlay(NULL)
 {
 
 }
@@ -47,6 +48,9 @@ MainMenu::~MainMenu()
   mGameEngine = NULL;
 
   if (mNyiLocalTest)
+    delete mNyiLocalTest;
+  
+  if (mNyiNetworkPlay)
     delete mNyiLocalTest;
 }
 
@@ -68,12 +72,9 @@ MainMenu::enter(GameEngine* ge)
 	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
   addEvent("root/GameMenu/LocalTest", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onLocalTest, this));
+  addEvent("root/GameMenu/NetworkPlay", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
 
-  /*
-    CEGUI::PushButton* btnLocalTest = (CEGUI::PushButton *)menuWindow->
-    getChild("GameMenu/LocalTest");
-  btnLocalTest->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onLocalTest, this));
-  */
 }
 
 void
@@ -104,5 +105,18 @@ MainMenu::onLocalTest(const CEGUI::EventArgs&)
     mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
     
   mNyiLocalTest->show();
+  return true;
+}
+
+/** The Network Play menu callback
+ *
+ */
+bool
+MainMenu::onNetworkPlay(const CEGUI::EventArgs&)
+{
+  if (!mNyiNetworkPlay)
+    mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
+    
+  mNyiNetworkPlay->show();
   return true;
 }

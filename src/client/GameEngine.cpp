@@ -54,7 +54,6 @@ GameEngine::GameEngine(void):
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
-  mNyiNetworkPlay(NULL),
   mNyiOptions(NULL),
   mMainMenu(NULL)
 {
@@ -167,9 +166,6 @@ GameEngine::~GameEngine()
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
   mRenderer->destroyGeometryBuffer(*mFpsGeometry);
   
-  if (!mNyiNetworkPlay)
-    delete mNyiNetworkPlay;
-
   if (!mNyiOptions)
     delete mNyiOptions;
   
@@ -258,9 +254,6 @@ GameEngine::run()
   // Handle CEGUI events
   /*
 
-  CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)menuWindow->
-    getChild("GameMenu/NetworkPlay");
-  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onNetworkPlay, this));
   
   menuWindow->getChild("GameMenu/Options")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameEngine::onOptions, this));
   */
@@ -445,16 +438,6 @@ GameEngine::windowResized(Ogre::RenderWindow* rw)
   const OIS::MouseState &ms = mMouse->getMouseState();
   ms.width = width;
   ms.height = height;
-}
-
-bool
-GameEngine::onNetworkPlay(const CEGUI::EventArgs& evt)
-{
-  if (!mNyiNetworkPlay)
-    mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
-    
-  mNyiNetworkPlay->show();
-  return true;
 }
 
 bool GameEngine::onOptions(const CEGUI::EventArgs&)
