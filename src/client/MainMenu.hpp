@@ -28,6 +28,10 @@
 // Forward declaration
 class GameEngine;
 class NyiDialog;
+namespace CEGUI
+{
+  class GeometryBuffer;
+}
 // End of forward declaration
 
 /* The MainMenu game state
@@ -42,6 +46,8 @@ public:
   virtual void enter(GameEngine*);
   virtual void exit(GameEngine*);
 
+  virtual void drawOverlay();
+  
 protected:
   bool onExit(const CEGUI::EventArgs&);
   bool onLocalTest(const CEGUI::EventArgs&);
@@ -50,9 +56,12 @@ protected:
   
 private:
   GameEngine* mGameEngine;    // Keep a pointer to be able to shutdown
+
   NyiDialog* mNyiLocalTest;   // NotYetImpl. dialog for the LocalTest button
   NyiDialog* mNyiNetworkPlay; // NotYetImpl. dialog for the NetworkPlay button
   NyiDialog* mNyiOptions;     // NotYetImpl. dialog for the Options button
+
+  CEGUI::GeometryBuffer* mLogoGeometry; // The logo overlay
 };
 
 #endif //!_MAIN_MENU_HPP_

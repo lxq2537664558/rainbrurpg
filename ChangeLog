@@ -1,3 +1,17 @@
+2016-11-05  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (mLogoGeometry): remoev all occurences.
+	* src/client/GameState.cpp (enter): create mLogoGeometryBuffer here.
+	* src/client/GameState.cpp (drawOverlay): override game state function.
+	* src/client/MainMenu.hpp (mLogoGeometry): new member definition
+	here.
+	* src/client/GameEngine.hpp (getOgreRenderer): new getter added.
+	* src/client/GameEngine.cpp (overlayHandler): call the
+	* src/client/GameEngine.cpp (overlayHandler): call the
+	GameState::drawOverlay function for actual game state.
+	* src/client/GameState.cpp (drawOverlay): implement an empty virtual
+	callback.
+
 2016-11-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* ROADMAP: create a new 'client work/game state' section.

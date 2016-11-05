@@ -79,3 +79,15 @@ GameState::addEvent(const string& button, const CEGUI::String& event,
 {
   mRoot->getChild(button)->subscribeEvent(event, callback);
 }
+
+/* Overlay drawing handler
+ *
+ * This function is called for every frame when it's time to draw CEGUI
+ * overlays. Override it if tou need to draw some CEGUI GeometryBuffer.
+ *
+ */
+void
+GameState::drawOverlay()
+{
+  
+}

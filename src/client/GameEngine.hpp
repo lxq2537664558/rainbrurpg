@@ -68,6 +68,8 @@ public:
   bool running();
   void shutdown();
 
+  CEGUI::OgreRenderer* getOgreRenderer()const;
+  
 protected:
   // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
@@ -104,7 +106,6 @@ private:
   CEGUI::GUIContext* mContext;
   CEGUI::OgreRenderer* mRenderer;
 
-  CEGUI::GeometryBuffer* mLogoGeometry;
   CEGUI::GeometryBuffer* mVersionGeometry;
   CEGUI::GeometryBuffer* mFpsGeometry;
   

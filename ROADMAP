@@ -96,11 +96,28 @@ Error is fixed, was due to a src/services/Services.hpp old code
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
+**** Handle the Options gamestate
+- [ ] It could be fine if this changes could be serialized in the same
+  way Oger does it. This way, at next startup, the Ogre config dialog
+  would be defaulted to in-game options.
 **** TODO GameState system switch and more client work
-- [ ] Find a better way to handle GeometryBuffer object	
-  We need a GameState::draw() callback at least for geometrybuffers
-  or a list of buffers in GameEngine (or a superclass) with a draw
-  callback.
+     CLOCK: [2016-11-05 sam. 02:50]--[2016-11-05 sam. 04:56] =>  2:06
+- [-] Find a better way to handle GeometryBuffer object	
+  - [-] We need a GameState::draw() callback at least for geometrybuffers
+    or a list of buffers in GameEngine (or a superclass) with a draw
+    callback.
+    - [X] Create an empty but implemented callback in GameState. Do not
+      override it to let it empty.
+    - [X] Create needed geometry bufers in MainMenu
+      We need an access to OgreRenderer to destroy geometryBuffers
+      - [X] Start with GeometryBuffer
+	Try to set a little clippingRect from the size of geometrybuffer
+      - [X] Override the drawGeometry function in MainMenu and draw it in callback
+      - [X] Correctly destroy it in MainMenu::exit()
+      - [X] Completely remove mLogoGeometry references in GameEngine
+    - [ ] Handle next GeometryBuffer in MainMenu
+  - [ ] How to deal with the 1 second update ?
+    - [ ] Maybe a oneSecondUpdate() function in GameState ?
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

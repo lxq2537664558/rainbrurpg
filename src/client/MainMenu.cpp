@@ -25,6 +25,9 @@
 #include <CEGUI/GUIContext.h>
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/widgets/PushButton.h>
+#include <CEGUI/GeometryBuffer.h>
+#include <CEGUI/RendererModules/Ogre/Renderer.h>
+#include <CEGUI/Vector.h>
 
 #include "Logger.hpp"
 #include "GameEngine.hpp"
@@ -39,7 +42,8 @@ MainMenu::MainMenu():
   mGameEngine(NULL),
   mNyiLocalTest(NULL),
   mNyiNetworkPlay(NULL),
-  mNyiOptions(NULL)
+  mNyiOptions(NULL),
+  mLogoGeometry(NULL)
 {
 
 }
@@ -71,6 +75,18 @@ MainMenu::enter(GameEngine* ge)
   //  Loading the main menu
   loadLayout("menu.layout");
 
+  // Get screen size
+  const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
+  
+  // Create geometry buffers
+  mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
+
+  ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
+  ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
+	 Rectf(0, 0, 500, 70), 0, ColourRect(0xFFFFFFFF));
+  mLogoGeometry->setClippingRegion(scrn);
+  mLogoGeometry->setTranslation(Vector3f((scrn.getSize().d_width/2)-250, 38.0f, 0.0f));
+    
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
@@ -84,11 +100,12 @@ MainMenu::enter(GameEngine* ge)
 }
 
 void
-MainMenu::exit(GameEngine*)
+MainMenu::exit(GameEngine* ge)
 {
+  // Remove GeometryBuffer objects
+  ge->getOgreRenderer()->destroyGeometryBuffer(*mLogoGeometry);
 
 }
-
 
 /* The callback for the menu.layout's exit button
  *
@@ -139,3 +156,11 @@ MainMenu::onOptions(const CEGUI::EventArgs&)
   mNyiOptions->show();
   return true;
 }
+				
+void
+MainMenu::drawOverlay()
+{
+  mLogoGeometry->draw();
+}
+				
+				

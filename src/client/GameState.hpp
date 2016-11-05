@@ -47,9 +47,10 @@ public:
   
   virtual void enter(GameEngine*)=0;
   virtual void exit(GameEngine*)=0;
+  virtual void drawOverlay();
 
   const string& getName()const;
-
+  
 protected:
   CEGUI::Window* loadLayout(const string&);
   void addEvent(const string&, const CEGUI::String&,CEGUI::Event::Subscriber);

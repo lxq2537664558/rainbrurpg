@@ -50,7 +50,6 @@ GameEngine::GameEngine(void):
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
-  mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
   mMainMenu(NULL)
@@ -160,7 +159,6 @@ GameEngine::GameEngine(void):
 
 GameEngine::~GameEngine()
 {
-  mRenderer->destroyGeometryBuffer(*mLogoGeometry);
   mRenderer->destroyGeometryBuffer(*mVersionGeometry);
   mRenderer->destroyGeometryBuffer(*mFpsGeometry);
   
@@ -215,16 +213,9 @@ GameEngine::run()
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
 
   setCurrentState(mMainMenu);
-  
-  // Manually load the logo.png image !!
-  mLogoGeometry = &mRenderer->createGeometryBuffer();
-  CEGUI::ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
-  CEGUI::ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
-        CEGUI::Rectf(0, 0, 500, 70), 0, CEGUI::ColourRect(0xFFFFFFFF));
-  const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
-  mLogoGeometry->setClippingRegion(scrn);
-  mLogoGeometry->setTranslation(CEGUI::Vector3f((scrn.getSize().d_width/2) - 250, 38.0f, 0.0f));
 
+  const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
+  
   // Add a version buffer
   mVersionGeometry = &mRenderer->createGeometryBuffer();
   mVersionGeometry->setClippingRegion(scrn);
@@ -380,8 +371,9 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
     if (static_cast<const CEGUI::RenderQueueEventArgs&>(args).queueID != CEGUI::RQ_OVERLAY)
         return false;
 
+    mCurrentState->drawOverlay();
+    
     // draw the CEGUI overlays
-    mLogoGeometry->draw();
     mVersionGeometry->draw();
 
     // Update FPS
@@ -423,4 +415,16 @@ GameEngine::windowResized(Ogre::RenderWindow* rw)
   const OIS::MouseState &ms = mMouse->getMouseState();
   ms.width = width;
   ms.height = height;
+}
+
+/* A simple getter for the current CEGUI OgreRenderer
+ *
+ * Make this pointer available to game states, i.e. to create
+ * CEGUI GeometryBufer objects.
+ *
+ */
+CEGUI::OgreRenderer*
+GameEngine::getOgreRenderer()const
+{
+  return mRenderer;
 }
