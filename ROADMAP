@@ -8,6 +8,8 @@
 - [ ] Start with the localTest menu
 - [ ] Must remove the OLD sources but keep the ROADMAP file for GT stat
   Mainly to make coverity scan padd (> 80%?)
+- [ ] May add a sharebar in mainmenu with Twitter,Facebook,G+ (using
+  font-awesome)
 **** Postponed unit tests thing
 ***** Fix the actual CI issues
 - [X] The same error occurs in two builds now
@@ -101,6 +103,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   way Oger does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
 **** TODO GameState system switch and more client work
+     CLOCK: [2016-11-06 dim. 23:46]--[2016-11-07 lun. 00:10] =>  0:24
      CLOCK: [2016-11-05 sam. 02:50]--[2016-11-05 sam. 04:56] =>  2:06
 - [-] Find a better way to handle GeometryBuffer object	
   - [-] We need a GameState::draw() callback at least for geometrybuffers
@@ -115,9 +118,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Override the drawGeometry function in MainMenu and draw it in callback
       - [X] Correctly destroy it in MainMenu::exit()
       - [X] Completely remove mLogoGeometry references in GameEngine
-    - [ ] Handle next GeometryBuffer in MainMenu
+    - [-] Handle next GeometryBuffer in MainMenu
+      - [X] VersionGeometry
+      - [ ] FpsGeometry
+    - [ ] Try to make geometrybuffer's clipping	rectangle more little
   - [ ] How to deal with the 1 second update ?
     - [ ] Maybe a oneSecondUpdate() function in GameState ?
+      or a hudUpdate callback()
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

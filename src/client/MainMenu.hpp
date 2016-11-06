@@ -61,7 +61,8 @@ private:
   NyiDialog* mNyiNetworkPlay; // NotYetImpl. dialog for the NetworkPlay button
   NyiDialog* mNyiOptions;     // NotYetImpl. dialog for the Options button
 
-  CEGUI::GeometryBuffer* mLogoGeometry; // The logo overlay
+  CEGUI::GeometryBuffer* mLogoGeometry;    // The logo overlay
+  CEGUI::GeometryBuffer* mVersionGeometry; // Where we print version-revision
 };
 
 #endif //!_MAIN_MENU_HPP_

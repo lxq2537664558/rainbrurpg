@@ -36,4 +36,5 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-253 (04 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+- Version overlay now in MainMenu
 - MainMenu handles Logo geometry buffer

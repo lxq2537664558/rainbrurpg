@@ -33,6 +33,8 @@
 #include "GameEngine.hpp"
 #include "NyiDialog.hpp"
 
+#include "config.h" // Uses VERSTRING
+
 using namespace CEGUI;
 
 static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
@@ -43,7 +45,8 @@ MainMenu::MainMenu():
   mNyiLocalTest(NULL),
   mNyiNetworkPlay(NULL),
   mNyiOptions(NULL),
-  mLogoGeometry(NULL)
+  mLogoGeometry(NULL),
+  mVersionGeometry(NULL)
 {
 
 }
@@ -78,7 +81,7 @@ MainMenu::enter(GameEngine* ge)
   // Get screen size
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
   
-  // Create geometry buffers
+  // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
 
   ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
@@ -86,7 +89,16 @@ MainMenu::enter(GameEngine* ge)
 	 Rectf(0, 0, 500, 70), 0, ColourRect(0xFFFFFFFF));
   mLogoGeometry->setClippingRegion(scrn);
   mLogoGeometry->setTranslation(Vector3f((scrn.getSize().d_width/2)-250, 38.0f, 0.0f));
-    
+
+  // Add a version buffer
+  mVersionGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
+  mVersionGeometry->setClippingRegion(scrn);
+  mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 20, 0.0f));
+  CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+  fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
+                        CEGUI::Colour(0xFFFFFFFF));
+
+  
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
@@ -104,6 +116,7 @@ MainMenu::exit(GameEngine* ge)
 {
   // Remove GeometryBuffer objects
   ge->getOgreRenderer()->destroyGeometryBuffer(*mLogoGeometry);
+  ge->getOgreRenderer()->destroyGeometryBuffer(*mVersionGeometry);
 
 }
 
@@ -161,6 +174,7 @@ void
 MainMenu::drawOverlay()
 {
   mLogoGeometry->draw();
+  mVersionGeometry->draw();
 }
 				
 				

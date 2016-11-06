@@ -30,8 +30,6 @@
 
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
-#include "config.h" // Uses VERSTRING
-
 #include "MainMenu.hpp"
 
 using namespace std;
@@ -50,7 +48,6 @@ GameEngine::GameEngine(void):
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
-  mVersionGeometry(NULL),
   mFpsGeometry(NULL),
   mMainMenu(NULL)
 {
@@ -159,7 +156,6 @@ GameEngine::GameEngine(void):
 
 GameEngine::~GameEngine()
 {
-  mRenderer->destroyGeometryBuffer(*mVersionGeometry);
   mRenderer->destroyGeometryBuffer(*mFpsGeometry);
   
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
@@ -216,14 +212,6 @@ GameEngine::run()
 
   const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
   
-  // Add a version buffer
-  mVersionGeometry = &mRenderer->createGeometryBuffer();
-  mVersionGeometry->setClippingRegion(scrn);
-  mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 20, 0.0f));
-  CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
-  fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
-                        CEGUI::Colour(0xFFFFFFFF));
-
   // Add a FPS + stats buffer
   mFpsGeometry = &mRenderer->createGeometryBuffer();
   mFpsGeometry->setClippingRegion(scrn);
@@ -373,10 +361,7 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
 
     mCurrentState->drawOverlay();
     
-    // draw the CEGUI overlays
-    mVersionGeometry->draw();
 
-    // Update FPS
 
     // Update FPS stats every second
     if (mTimer.getMilliseconds() > 1000)
