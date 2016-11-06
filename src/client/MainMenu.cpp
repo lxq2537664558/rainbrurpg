@@ -46,7 +46,8 @@ MainMenu::MainMenu():
   mNyiNetworkPlay(NULL),
   mNyiOptions(NULL),
   mLogoGeometry(NULL),
-  mVersionGeometry(NULL)
+  mVersionGeometry(NULL),
+  mFpsGeometry(NULL)
 {
 
 }
@@ -98,6 +99,13 @@ MainMenu::enter(GameEngine* ge)
   fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
                         CEGUI::Colour(0xFFFFFFFF));
 
+  // Add a FPS + stats buffer (a line of text = 20.0 height)
+  mFpsGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
+  mFpsGeometry->setClippingRegion(scrn);
+  mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f));
+  fnt->drawText(*mFpsGeometry, "No update slot", CEGUI::Vector2f(0, 0), 0,
+                        CEGUI::Colour(0xFFFFFFFF));
+
   
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
@@ -117,6 +125,7 @@ MainMenu::exit(GameEngine* ge)
   // Remove GeometryBuffer objects
   ge->getOgreRenderer()->destroyGeometryBuffer(*mLogoGeometry);
   ge->getOgreRenderer()->destroyGeometryBuffer(*mVersionGeometry);
+  ge->getOgreRenderer()->destroyGeometryBuffer(*mFpsGeometry);
 
 }
 
@@ -175,6 +184,7 @@ MainMenu::drawOverlay()
 {
   mLogoGeometry->draw();
   mVersionGeometry->draw();
+  mFpsGeometry->draw();
 }
 				
 				

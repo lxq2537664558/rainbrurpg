@@ -106,8 +106,6 @@ private:
   CEGUI::GUIContext* mContext;
   CEGUI::OgreRenderer* mRenderer;
 
-  CEGUI::GeometryBuffer* mFpsGeometry;
-  
   Ogre::Timer mTimer;
 
   MainMenu* mMainMenu;

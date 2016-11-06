@@ -1,6 +1,14 @@
+2016-11-07  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameState.cpp (drawOverlay): handle mFpsGeometry.
+	* src/client/GameEngine.cpp (mFpsGeometry): remove all occurences.
+
+	* src/client/GameState.cpp (drawOverlay): handle mVersionGeometry.
+	* src/client/GameEngine.cpp (mVersionGeometry): remove all occurences.
+
 2016-11-05  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/client/GameEngine.cpp (mLogoGeometry): remoev all occurences.
+	* src/client/GameEngine.cpp (mLogoGeometry): remove all occurences.
 	* src/client/GameState.cpp (enter): create mLogoGeometryBuffer here.
 	* src/client/GameState.cpp (drawOverlay): override game state function.
 	* src/client/MainMenu.hpp (mLogoGeometry): new member definition

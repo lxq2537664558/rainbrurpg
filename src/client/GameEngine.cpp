@@ -48,7 +48,6 @@ GameEngine::GameEngine(void):
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
-  mFpsGeometry(NULL),
   mMainMenu(NULL)
 {
 
@@ -156,8 +155,6 @@ GameEngine::GameEngine(void):
 
 GameEngine::~GameEngine()
 {
-  mRenderer->destroyGeometryBuffer(*mFpsGeometry);
-  
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   //  windowClosed(mWindow);
   delete mRoot;
@@ -210,15 +207,10 @@ GameEngine::run()
 
   setCurrentState(mMainMenu);
 
-  const CEGUI::Rectf scrn(mRenderer->getDefaultRenderTarget().getArea());
-  
-  // Add a FPS + stats buffer
-  mFpsGeometry = &mRenderer->createGeometryBuffer();
-  mFpsGeometry->setClippingRegion(scrn);
-  mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f)); // a line of text = 20.0 height
-  
-  // clearing this queue actually makes sure it's created(!)
+  // This line in needed to make the CEGUI::GeometryBuffer objects actually
+  // appear
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
+  
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
 	      CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
   
@@ -362,7 +354,7 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
     mCurrentState->drawOverlay();
     
 
-
+    /*
     // Update FPS stats every second
     if (mTimer.getMilliseconds() > 1000)
       {
@@ -383,8 +375,8 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
 
 	mTimer.reset();
       }
-	
-    mFpsGeometry->draw();
+    */	
+    //    mFpsGeometry->draw();
 
     
     return true;

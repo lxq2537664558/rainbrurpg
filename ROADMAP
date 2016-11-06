@@ -103,10 +103,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
   way Oger does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
 **** TODO GameState system switch and more client work
+     CLOCK: [2016-11-07 lun. 00:13]--[2016-11-07 lun. 00:47] =>  0:34
      CLOCK: [2016-11-06 dim. 23:46]--[2016-11-07 lun. 00:10] =>  0:24
      CLOCK: [2016-11-05 sam. 02:50]--[2016-11-05 sam. 04:56] =>  2:06
 - [-] Find a better way to handle GeometryBuffer object	
-  - [-] We need a GameState::draw() callback at least for geometrybuffers
+  - [X] We need a GameState::draw() callback at least for geometrybuffers
     or a list of buffers in GameEngine (or a superclass) with a draw
     callback.
     - [X] Create an empty but implemented callback in GameState. Do not
@@ -118,13 +119,16 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Override the drawGeometry function in MainMenu and draw it in callback
       - [X] Correctly destroy it in MainMenu::exit()
       - [X] Completely remove mLogoGeometry references in GameEngine
-    - [-] Handle next GeometryBuffer in MainMenu
+    - [X] Handle next GeometryBuffer in MainMenu
       - [X] VersionGeometry
-      - [ ] FpsGeometry
-    - [ ] Try to make geometrybuffer's clipping	rectangle more little
+      - [X] FpsGeometry
+	Not shown because have no text
   - [ ] How to deal with the 1 second update ?
     - [ ] Maybe a oneSecondUpdate() function in GameState ?
       or a hudUpdate callback()
+      - [ ] Remove the mFpsGeometry "no update slot" text
+      - [ ] Make the actual CEGUI::Font used for drawing text an instance member
+  - [ ] Try to make geometrybuffer's clipping	rectangle more little
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

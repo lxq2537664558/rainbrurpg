@@ -63,6 +63,8 @@ private:
 
   CEGUI::GeometryBuffer* mLogoGeometry;    // The logo overlay
   CEGUI::GeometryBuffer* mVersionGeometry; // Where we print version-revision
+  CEGUI::GeometryBuffer* mFpsGeometry;     // A geometryBuffer to print stats
+
 };
 
 #endif //!_MAIN_MENU_HPP_
