@@ -47,7 +47,9 @@ public:
   
   virtual void enter(GameEngine*)=0;
   virtual void exit(GameEngine*)=0;
+
   virtual void drawOverlay();
+  virtual void hudUpdate();
 
   const string& getName()const;
   

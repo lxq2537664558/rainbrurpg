@@ -186,5 +186,12 @@ MainMenu::drawOverlay()
   mVersionGeometry->draw();
   mFpsGeometry->draw();
 }
-				
-				
+
+/* FPS update function
+ *
+ */
+void
+MainMenu::hudUpdate()
+{
+
+}

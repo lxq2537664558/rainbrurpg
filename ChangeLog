@@ -1,5 +1,10 @@
 2016-11-07  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (overlayHandler): call hudUpdater()
+	of current game state every second.
+	* src/client/GameState.cpp (hudUpdate): override empty function.
+	* src/client/MainMenu.hpp (hudUpdate): new empty member function.
+
 	* src/client/GameState.cpp (drawOverlay): handle mFpsGeometry.
 	* src/client/GameEngine.cpp (mFpsGeometry): remove all occurences.
 

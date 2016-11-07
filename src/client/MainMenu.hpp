@@ -47,6 +47,7 @@ public:
   virtual void exit(GameEngine*);
 
   virtual void drawOverlay();
+  virtual void hudUpdate();
   
 protected:
   bool onExit(const CEGUI::EventArgs&);

@@ -91,3 +91,14 @@ GameState::drawOverlay()
 {
   
 }
+
+/* A function called every second
+ *
+ * Override this if you need to update things about once per second.
+ *
+ */
+void
+GameState::hudUpdate()
+{
+
+}
