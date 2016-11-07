@@ -31,6 +31,7 @@ class NyiDialog;
 namespace CEGUI
 {
   class GeometryBuffer;
+  class Font;
 }
 // End of forward declaration
 
@@ -66,6 +67,7 @@ private:
   CEGUI::GeometryBuffer* mVersionGeometry; // Where we print version-revision
   CEGUI::GeometryBuffer* mFpsGeometry;     // A geometryBuffer to print stats
 
+  CEGUI::Font* mDejavuSans12; // A font used to draw in geometry buffers
 };
 
 #endif //!_MAIN_MENU_HPP_

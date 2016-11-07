@@ -103,6 +103,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   way Oger does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
 **** TODO GameState system switch and more client work
+     CLOCK: [2016-11-07 lun. 01:15]--[2016-11-07 lun. 01:37] =>  0:22
      CLOCK: [2016-11-07 lun. 00:51]--[2016-11-07 lun. 01:10] =>  0:19
      CLOCK: [2016-11-07 lun. 00:13]--[2016-11-07 lun. 00:47] =>  0:34
      CLOCK: [2016-11-06 dim. 23:46]--[2016-11-07 lun. 00:10] =>  0:24
@@ -124,14 +125,15 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] VersionGeometry
       - [X] FpsGeometry
 	Not shown because have no text
-  - [-] How to deal with the 1 second update ?
-    - [-] Maybe a oneSecondUpdate() function in GameState ?
+  - [X] How to deal with the 1 second update ?
+    - [X] Maybe a oneSecondUpdate() function in GameState ?
       or a hudUpdate callback()
       - [X] Cerate an empty callback in Gamestate
       - [X] Override it in MainMenu
-      - [ ] Remove the mFpsGeometry "no update slot" text
-      - [ ] Make the actual CEGUI::Font used for drawing text an instance member
-  - [ ] Try to make geometrybuffer's clipping	rectangle more little
+      - [X] Make the actual CEGUI::Font used for drawing text an instance member
+      - [X] Update the overlay text
+      - [X] Remove the mFpsGeometry "no update slot" text
+  - [ ] Try to make geometrybuffer's clipping rectangles more little
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

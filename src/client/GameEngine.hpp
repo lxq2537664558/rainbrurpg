@@ -69,6 +69,7 @@ public:
   void shutdown();
 
   CEGUI::OgreRenderer* getOgreRenderer()const;
+  Ogre::RenderWindow* getRendererWindow()const;
   
 protected:
   // Ogre::FrameListener

@@ -402,3 +402,12 @@ GameEngine::getOgreRenderer()const
 {
   return mRenderer;
 }
+
+/* Get the Ogre renderer window created during initialization
+ *
+ */
+Ogre::RenderWindow*
+GameEngine::getRendererWindow()const
+{
+  return mWindow;
+}

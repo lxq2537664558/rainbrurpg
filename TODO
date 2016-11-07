@@ -36,5 +36,7 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-253 (04 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+- (4) MainMenu updates stats geometry buffer 
+- Create the hudUpdate function and override it
 - Version overlay now in MainMenu
 - MainMenu handles Logo geometry buffer

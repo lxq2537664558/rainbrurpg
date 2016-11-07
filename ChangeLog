@@ -1,5 +1,8 @@
 2016-11-07  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp (hudUpdate): update text in stats buffer.
+	* src/client/GameEngine.cpp (getRendererWindow): new getter.
+
 	* src/client/GameEngine.cpp (overlayHandler): call hudUpdater()
 	of current game state every second.
 	* src/client/GameState.cpp (hudUpdate): override empty function.

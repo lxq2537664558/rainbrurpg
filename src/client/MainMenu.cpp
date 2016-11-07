@@ -47,7 +47,8 @@ MainMenu::MainMenu():
   mNyiOptions(NULL),
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
-  mFpsGeometry(NULL)
+  mFpsGeometry(NULL),
+  mDejavuSans12(NULL)
 {
 
 }
@@ -79,8 +80,9 @@ MainMenu::enter(GameEngine* ge)
   //  Loading the main menu
   loadLayout("menu.layout");
 
-  // Get screen size
+  // Get screen size and font
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
+  mDejavuSans12 = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
   
   // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
@@ -95,17 +97,14 @@ MainMenu::enter(GameEngine* ge)
   mVersionGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   mVersionGeometry->setClippingRegion(scrn);
   mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 20, 0.0f));
-  CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
-  fnt->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
+  mDejavuSans12->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
                         CEGUI::Colour(0xFFFFFFFF));
 
   // Add a FPS + stats buffer (a line of text = 20.0 height)
   mFpsGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   mFpsGeometry->setClippingRegion(scrn);
   mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f));
-  fnt->drawText(*mFpsGeometry, "No update slot", CEGUI::Vector2f(0, 0), 0,
-                        CEGUI::Colour(0xFFFFFFFF));
-
+  
   
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
@@ -193,5 +192,17 @@ MainMenu::drawOverlay()
 void
 MainMenu::hudUpdate()
 {
+  
+  CEGUI::Colour c = CEGUI::Colour(0xFFFFFFFF);
+  mFpsGeometry->reset();
 
+  ostringstream os1, os2, os3;
+  os1 << "Batch count : " << mGameEngine->getRendererWindow()->getBatchCount();
+  mDejavuSans12->drawText(*mFpsGeometry, os1.str(), CEGUI::Vector2f(0, 0), 0, c);
+  
+  os2 << "Best FPS : " << mGameEngine->getRendererWindow()->getBestFPS ();
+  mDejavuSans12->drawText(*mFpsGeometry, os2.str(), CEGUI::Vector2f(0, 20.0), 0, c);
+  
+  os3 << "Last FPS : " << mGameEngine->getRendererWindow()->getLastFPS ();
+  mDejavuSans12->drawText(*mFpsGeometry, os3.str(), CEGUI::Vector2f(0, 40.0), 0, c);
 }
