@@ -86,7 +86,6 @@ MainMenu::enter(GameEngine* ge)
   
   // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
-
   ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
   ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
 	 Rectf(0, 0, 500, 70), 0, ColourRect(0xFFFFFFFF));

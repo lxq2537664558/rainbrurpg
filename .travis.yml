@@ -6,6 +6,9 @@ language: cpp
 compiler:
   - gcc
   - clang
+matrix:
+  allow_failures:
+    - compiler: clang
 branches:
   only:
     - master

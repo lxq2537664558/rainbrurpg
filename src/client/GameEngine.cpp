@@ -353,29 +353,12 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
 
     mCurrentState->drawOverlay();
     
-
     // Update FPS stats every second
     if (mTimer.getMilliseconds() > 1000)
       {
 	mCurrentState->hudUpdate();
 	mTimer.reset();
       }
-    /*
-	CEGUI::Font* fnt = &CEGUI::FontManager::getSingleton().
-	  get("DejaVuSans-12");
-	CEGUI::Colour c = CEGUI::Colour(0xFFFFFFFF);
-	mFpsGeometry->reset();
-
-	ostringstream os1, os2, os3;
-	os1 << "Batch count : " << mWindow->getBatchCount();
-	fnt->drawText(*mFpsGeometry, os1.str(), CEGUI::Vector2f(0, 0), 0, c);
-	
-	os2 << "Best FPS : " << mWindow->getBestFPS ();
-	fnt->drawText(*mFpsGeometry, os2.str(), CEGUI::Vector2f(0, 20.0), 0, c);
-
-	os3 << "Last FPS : " << mWindow->getLastFPS ();
-	fnt->drawText(*mFpsGeometry, os3.str(), CEGUI::Vector2f(0, 40.0), 0, c);
-    */	
     return true;
 }
 

@@ -1,5 +1,7 @@
 # RainbruRPG
 
+[![Build Status](https://travis-ci.org/rainbru/rainbrurpg.svg?branch=master)](https://travis-ci.org/rainbru/rainbrurpg)
+
 Here is an open source 3D MMORPG project.
 
 # Build and installation

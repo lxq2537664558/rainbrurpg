@@ -1,3 +1,8 @@
+2016-11-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* .travis-ci: add allow_failures for clang.
+	* README.md: add travis-ci build image.
+
 2016-11-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/MainMenu.cpp (hudUpdate): update text in stats buffer.
