@@ -50,3 +50,9 @@ build/
 client/src/plugins.cfg
 
 src/logger/tools/logreader/MainWindow_ui.rb
+
+# Doxygen generated files/output dir
+Doxyfile
+doxygen.log
+html/
+latex/

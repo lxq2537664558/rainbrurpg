@@ -19,6 +19,11 @@ configure_file(
   "${PROJECT_SOURCE_DIR}/config.h"
   )
 
+configure_file(
+  "${PROJECT_SOURCE_DIR}/Doxyfile.in"
+  "${PROJECT_SOURCE_DIR}/Doxyfile"
+  )
+
 INCLUDE(GNUInstallDirs)
 INCLUDE(FindPkgConfig)
 INCLUDE(FindGettext)

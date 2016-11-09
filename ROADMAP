@@ -128,6 +128,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
+**** TODO Handle doxygen documentation
+     CLOCK: [2016-11-09 mer. 18:59]
+- [ ] Handle Doxyfile version number from a cmake config file
+- [ ] The main page is the logger's one, fix that
+  Maybe with submodules
 **** DONE GameState system switch and more client work
      CLOCK: [2016-11-09 mer. 04:19]--[2016-11-09 mer. 04:45] =>  0:26
      CLOCK: [2016-11-09 mer. 03:01]--[2016-11-09 mer. 03:41] =>  0:40
