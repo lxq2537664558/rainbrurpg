@@ -19,6 +19,9 @@
     The segfault isn't here anymore but now the guile error is local
 Error is fixed, was due to a src/services/Services.hpp old code    
 - [ ] Can't find clang++ when building rainbrurpg but cegui is correctly built
+  The build works fine with clang++ if we can correctly configure it
+  Allow failure now works fine but still
+  ==Could not find compiler set in environment variable CXX:=
 ***** Improve CI with other OSes
       CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
 - [ ] Start with osx but allow_failure
@@ -98,11 +101,35 @@ Error is fixed, was due to a src/services/Services.hpp old code
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
-**** Handle the Options gamestate
+**** Start to handle Local test
+     While waiting for the meta library
+- [ ] Launch an embedded server
+- [ ] See if we can generate a first landscape
+**** Start to handle the Profile GameState
+     I would like to try to handle SSH key to handle authentication.
+     It can be useful if we use a git-base filesystem.
+- [ ] Find a lib to handle (generate etc...) SSH asymetric keys
+  The library must be able to generate keys. According to this link 
+  (http://stackoverflow.com/a/4985328) it seems https://www.libssh.org/ has
+  a C++ wrapper in a header called libsshpp.h.
+  It seems we can generaet a key pair : http://api.libssh.org/master/group__libssh__pki.html#gae038fa1b34f9427c7ba84082a1a20bad
+  - a warning states that generating a ssh key could be long
+    - test it to see how long
+    - see if we can have a progress bar callback for this
+- [ ] Create a multi-profile layout that lets the user create/modify and delete
+  profiles, eventually with a password on private key
+- [ ] Create a new geometry buffer that prints the current profile name
+  and a way to tell the user to create a profile before using the 
+  server/local test
+**** TODO Handle the Options gamestate
 - [ ] It could be fine if this changes could be serialized in the same
   way Oger does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
-**** TODO GameState system switch and more client work
+- [ ] May remove the src/client/LoadingBar.* (not used anymore)
+  Maybe keep it to change it to a CEGUI layout, used multiple times
+  When generating local level the first time, when cloning a server etc...
+**** DONE GameState system switch and more client work
+     CLOCK: [2016-11-09 mer. 04:19]--[2016-11-09 mer. 04:45] =>  0:26
      CLOCK: [2016-11-09 mer. 03:01]--[2016-11-09 mer. 03:41] =>  0:40
      CLOCK: [2016-11-09 mer. 02:08]--[2016-11-09 mer. 02:38] =>  0:30
      CLOCK: [2016-11-08 mar. 05:26]--[2016-11-08 mar. 05:43] =>  0:17
@@ -138,12 +165,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Remove the mFpsGeometry "no update slot" text
 - [X] Try to make geometrybuffer's clipping rectangles more little : not needed
 - [X] If CI fixed, add image in README.md (add it anyway)
-- [ ] Must make the allow_faillure work on CI/clang
-  The build works fine with clang++ if we can correctly configure it
-- [ ] May remove the src/client/LoadingBar.* (not used anymore)
-  Maybe keep it to change it to a CEGUI layout, used multiple times
-  When generating local level the first time, when cloning a server etc...
-- [ ] There is (again) a segfault when cancel the Ogre3D config dialog
+- [X] There is (again) a segfault when cancel the Ogre3D config dialog
+  Can't see this segfault again. 
+  Trying with a clang++ build: no segault
 **** DONE Client work
      CLOCK: [2016-11-04 ven. 02:26]--[2016-11-04 ven. 02:42] =>  0:16
      CLOCK: [2016-11-04 ven. 01:55]--[2016-11-04 ven. 02:24] =>  0:29
