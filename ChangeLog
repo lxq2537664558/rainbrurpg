@@ -1,3 +1,7 @@
+2016-11-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* .travis-ci: remove rvm reference in allow_failures.
+
 2016-11-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* .travis-ci: add allow_failures for clang.

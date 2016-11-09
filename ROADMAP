@@ -103,6 +103,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
   way Oger does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
 **** TODO GameState system switch and more client work
+     CLOCK: [2016-11-09 mer. 03:01]--[2016-11-09 mer. 03:41] =>  0:40
+     CLOCK: [2016-11-09 mer. 02:08]--[2016-11-09 mer. 02:38] =>  0:30
      CLOCK: [2016-11-08 mar. 05:26]--[2016-11-08 mar. 05:43] =>  0:17
      CLOCK: [2016-11-07 lun. 01:15]--[2016-11-07 lun. 01:37] =>  0:22
      CLOCK: [2016-11-07 lun. 00:51]--[2016-11-07 lun. 01:10] =>  0:19
@@ -135,11 +137,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Update the overlay text
       - [X] Remove the mFpsGeometry "no update slot" text
 - [X] Try to make geometrybuffer's clipping rectangles more little : not needed
-- [ ] If CI fixed, add image in README.md (add it anyway)
+- [X] If CI fixed, add image in README.md (add it anyway)
+- [ ] Must make the allow_faillure work on CI/clang
+  The build works fine with clang++ if we can correctly configure it
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
-- [ ] These is (again) a segfault when cancel the Ogre3D config dialog
+- [ ] There is (again) a segfault when cancel the Ogre3D config dialog
 **** DONE Client work
      CLOCK: [2016-11-04 ven. 02:26]--[2016-11-04 ven. 02:42] =>  0:16
      CLOCK: [2016-11-04 ven. 01:55]--[2016-11-04 ven. 02:24] =>  0:29
