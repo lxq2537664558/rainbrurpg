@@ -1,5 +1,7 @@
 2016-11-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/logger/Logger.hpp (tOptionMap): fix some undocumented members.
+
 	* CMakeLists.txt: generate Doxyfile from Doxyfile.in
 	* .gitignore: add doxygen generated files.
 	* Doxyfile.in: template file for doxygen documentation gneration.

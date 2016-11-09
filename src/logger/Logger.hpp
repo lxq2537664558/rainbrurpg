@@ -62,10 +62,13 @@ namespace po = boost::program_options;
 namespace Rpg
 {
 
+  /** Defines a command line option
+    *
+    */
   struct tOptionMap
   {
-    po::options_description* options;
-    po::variables_map*       map;
+    po::options_description* options; //!< The description of the option
+    po::variables_map*       map;     //!< The concrete variables store
   };
 
 
@@ -138,7 +141,7 @@ namespace Rpg
     static void liblogger_initialize (void);
 
   private:
-    std::string mLogDomain;                      //!< The logger's log domain
+    std::string mLogDomain;                 //!< The logger's log domain
     LogType mLogType;                       //!< The logger's type
     
     static LoggerOutputList mOutputList;    //!< The list of LoggerOutput

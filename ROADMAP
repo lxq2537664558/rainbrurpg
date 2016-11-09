@@ -129,7 +129,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
 **** TODO Handle doxygen documentation
-     CLOCK: [2016-11-09 mer. 18:59]
+     CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
 - [ ] Handle Doxyfile version number from a cmake config file
 - [ ] The main page is the logger's one, fix that
   Maybe with submodules
