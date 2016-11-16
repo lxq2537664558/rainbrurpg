@@ -1,3 +1,11 @@
+2016-11-16  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/SateSaver.hpp (StateSaver): setter and getter implementation
+	with std::exception throw.
+	* src/client/StateSaver_Test.cpp: some basic unit tests.
+	* src/client/SateSaver.cpp (exists): basic implementation.
+	* src/client/SateSaver.hpp (StateSaver): new class created.
+
 2016-11-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/logger/Logger.hpp (tOptionMap): fix some undocumented members.
