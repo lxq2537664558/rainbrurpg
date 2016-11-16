@@ -18,46 +18,26 @@
  *
  */
 
-#include "StateSaver.hpp"
+#include "Exception.hpp"
 #include <gtest/gtest.h>
 
-TEST( StateSaver, set_get )
+TEST( Exception, one_param )
 {
-  StateSaver sv;
-  sv.set<int>("an_int", 12);
-  EXPECT_EQ( sv.get<int>("an_int"), 12);
+  RainbrurpgException re("aze");
+  cout << re.what();
+  EXPECT_STREQ( re.what(), "aze");
 }
 
-TEST( StateSaver, exists_false )
+TEST( Exception, two_param )
 {
-  StateSaver sv;
-  EXPECT_EQ( sv.exists("aze"), false);
+  RainbrurpgException re("aze", "poi");
+  cout << re.what();
+  EXPECT_STREQ( re.what(), "azepoi");
 }
 
-TEST( StateSaver, exists_true )
+TEST( Exception, three_param )
 {
-  StateSaver sv;
-  sv.set<int>("an_int", 12);
-  EXPECT_EQ( sv.exists("an_int"), true);
+  RainbrurpgException re("This is a ", "real", " message");
+  cout << re.what();
+  EXPECT_STREQ( re.what(), "This is a real message");
 }
-
-TEST( StateSaver, already_exists )
-{
-  StateSaver sv;
-  sv.set<int>("an_int", 12);
-  ASSERT_THROW(sv.set<int>("an_int", 64) , std::exception);
-}
-
-TEST( StateSaver, cant_be_found )
-{
-  StateSaver sv;
-  ASSERT_THROW( sv.get<int>("an_int"), RainbrurpgException);
-}
-
-TEST( StateSaver, cast_error )
-{
-  StateSaver sv;
-  sv.set<int>("an_int", 12);
-  ASSERT_THROW(sv.get<string>("an_int") , boost::bad_get);
-}
-

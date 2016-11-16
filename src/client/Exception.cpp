@@ -18,24 +18,24 @@
  *
  */
 
-#include "StateSaver.hpp"
+#include "Exception.hpp"
 
-/** The default constructor */
-StateSaver::StateSaver()
+#include <sstream>
+
+RainbrurpgException::RainbrurpgException(const string& what1,
+					 const string& what2,
+					 const string& what3):
+  exception()
 {
-
+  ostringstream oss;
+  oss << what1 << what2 << what3;
+  mWhat = oss.str();
 }
 
-/** Tests if the given key exists in this map
-  *
-  * \return true if the key doesn't exist, false otherwise.
-  *
-  */
-bool
-StateSaver::exists(const string& key)const
+const char*
+RainbrurpgException::what() const noexcept
 {
-  if (mStates.find(key) == mStates.end())
-    return false;
-
-  return true;
+  return mWhat.c_str();
 }
+
+

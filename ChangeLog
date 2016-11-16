@@ -1,7 +1,14 @@
 2016-11-16  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/client/SateSaver.hpp (StateSaver): setter and getter implementation
-	with std::exception throw.
+	* src/client/Exception_Test.cpp (three_param): some exception
+	constructor unit tests.
+	* src/client/Exception.cpp (RainbrurpgException): create a base
+	eception class.
+	* src/client/StateSaver_Test.cpp (cast_error): implement one more
+	unit tests.
+
+	* src/client/SateSaver.hpp (StateSaver): setter and getter
+	implementationwith std::exception throw.
 	* src/client/StateSaver_Test.cpp: some basic unit tests.
 	* src/client/SateSaver.cpp (exists): basic implementation.
 	* src/client/SateSaver.hpp (StateSaver): new class created.

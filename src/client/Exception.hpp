@@ -18,24 +18,27 @@
  *
  */
 
-#include "StateSaver.hpp"
+#ifndef _RAINBRURPG_EXCEPTION_HPP_
+#define _RAINBRURPG_EXCEPTION_HPP_
 
-/** The default constructor */
-StateSaver::StateSaver()
-{
+#include <stdexcept>
+#include <string>
 
-}
+using namespace std;
 
-/** Tests if the given key exists in this map
+/** A simple override of standard exception with error message concatenation
   *
-  * \return true if the key doesn't exist, false otherwise.
   *
   */
-bool
-StateSaver::exists(const string& key)const
+class RainbrurpgException : public exception
 {
-  if (mStates.find(key) == mStates.end())
-    return false;
+public:
+  RainbrurpgException(const string&, const string& = "", const string& = "");
 
-  return true;
-}
+  const char* what() const noexcept;
+
+private:
+  string mWhat;
+};
+
+#endif // !_RAINBRURPG_EXCEPTION_HPP_

@@ -25,6 +25,8 @@
 #include <string>
 #include <boost/variant.hpp>
 
+#include "Exception.hpp"
+
 using namespace std;
 using namespace boost;
 
@@ -34,9 +36,10 @@ typedef variant<int,float,bool,string> tStateMapType;
 /** The map that stores StateSaver properties */
 typedef map<std::string, tStateMapType> tStateMap;
 
-/** A property map used to store a some GameState values
+/** A key-value map used to store some GameState values
   *
-  *
+  * It was designed to store some state values before Ogre3D 
+  * reconfiguration.
   *
   */
 class StateSaver
@@ -47,18 +50,33 @@ public:
 
   bool exists(const string&)const;
 
+  /** Store a valeu with the given unique key
+    *
+    * If the key already exists, it will throw an instance of 
+    * RainbrurpgException.
+    *
+    */
   template<typename T> void set(const string& key, const T& value)
   {
     if (exists(key))
-      throw "Duplicate key";
+      throw RainbrurpgException("Cannot add duplicate key '", key, "'");
       
     mStates[key] = value;
   }
 
+  /** Get a previously stored value
+    *
+    * If you try to get it with the wrong type, you will get a
+    * boost::bad_get exception.
+    *
+    * If the key can't be found, it will raise an instance of 
+    * RainbrurpgException.
+    *
+    */
   template<typename T> const T& get(const string& key)const
   {
     if (!exists(key))
-      throw "Can't find key";
+      throw RainbrurpgException("Can't find key '", key, "'");
 
     return boost::get<T>(mStates.find(key)->second);
   }
