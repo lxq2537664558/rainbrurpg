@@ -71,18 +71,29 @@ StateSaver::restore(const string& key, UDim* d)
 /** Save the position and dimensions of a CEGUI::URect
   *
   */
-/*void
+void
 StateSaver::save(const string& key, URect* r)
 {
-  set<float>(subkey(key, "x"), r->getPosition().d_x);
-  set<float>(subkey(key, "y"), r->getPosition().d_y);
-  set<float>(subkey(key, "width"), r->getWidth());
-  set<float>(subkey(key, "height"), r->getHeight());
+  // Avoid invalid conversion from const to non const
+  UDim x = r->getPosition().d_x, y = r->getPosition().d_y;
+  save(subkey(key, "x"), &x);
+  save(subkey(key, "y"), &y);
+  // Avoid taking adress of temporary
+  UDim w = r->getWidth(), h = r->getHeight();
+  save(subkey(key, "width"), &w);
+  save(subkey(key, "height"), &h);
 }
 
 void
-StateSaver::restore(const string& key, URect*)
+StateSaver::restore(const string& key, URect* r)
 {
-  
+  UDim x, y, w, h;
+  restore(subkey(key, "x"), &x); 
+  restore(subkey(key, "y"), &y);
+  r->setPosition(UVector2(x, y));
+  restore(subkey(key, "width"), &w);
+  restore(subkey(key, "height"), &h);
+  r->setWidth(w);
+  r->setHeight(h);
 }
-*/
+

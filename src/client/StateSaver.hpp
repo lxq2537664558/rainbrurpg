@@ -87,9 +87,9 @@ public:
   void save(const string&, UDim*);
   void restore(const string&, UDim*);
 
-  /*  void save(const string&, URect*);
+  void save(const string&, URect*);
   void restore(const string&, URect*);
-  */
+  
 protected:
   string subkey(const string&, const string&)const;
   

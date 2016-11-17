@@ -78,3 +78,20 @@ TEST( StateSaver, udim_eq )
   sv.restore("udim", &b);
   EXPECT_EQ(b, d);
 }
+
+TEST( StateSaver, urect_ne )
+{
+  URect a, b = URect(UDim(1.0, 1.2), UDim(1.0, 1.2),
+		     UDim(1.0, 1.2), UDim(1.0, 1.2));
+  EXPECT_NE(a, b); 
+}
+
+TEST( StateSaver, urect_eq )
+{
+  StateSaver sv;
+  URect a, b = URect(UDim(1.0, 1.2), UDim(1.7, 2.2),
+		     UDim(3.0, 2.8), UDim(4.0, 5.2));
+  sv.save("urect", &b);
+  sv.restore("urect", &a);
+  EXPECT_EQ(a, b);
+}

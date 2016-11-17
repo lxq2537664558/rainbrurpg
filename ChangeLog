@@ -1,5 +1,10 @@
 2016-11-17  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/StateSaver_Test.cpp (urect_eq): two more tests on
+	URect save/restore.
+	* src/client/StateSaver.cpp (save): implement save/restore function
+	for CEGUI::Urect type.
+
 	* src/client/StateSaver_Test.cpp (udim_eq): two more tests on
 	UDim save/restore.
 	* src/client/StateSaver.cpp (save): add save/restore functions to

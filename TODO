@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-253 (04 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (6) Start StateSaver implementation
+- (7) StateSaver start to save/restore complex types
+- Start StateSaver implementation
 - No more client segfault and CI fix
 - MainMenu updates stats geometry buffer 
 - Create the hudUpdate function and override it
