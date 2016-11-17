@@ -20,6 +20,8 @@
 
 #include "StateSaver.hpp"
 
+#include <sstream>
+
 /** The default constructor */
 StateSaver::StateSaver()
 {
@@ -39,3 +41,48 @@ StateSaver::exists(const string& key)const
 
   return true;
 }
+
+/** Create a key:subkey concatenation
+  *
+  */
+string
+StateSaver::subkey(const string& key, const string& subkey)const
+{
+  ostringstream oss;
+  oss << key << ':' << subkey;
+  return oss.str();
+}
+
+void
+StateSaver::save(const string& key, UDim* d)
+{
+  set<float>(subkey(key, "scale"), d->d_scale);
+  set<float>(subkey(key, "offset"), d->d_offset);
+}
+
+void
+StateSaver::restore(const string& key, UDim* d)
+{
+  d->d_scale = get<float>(subkey(key, "scale") );
+  d->d_offset = get<float>(subkey(key, "offset") );
+}
+
+
+/** Save the position and dimensions of a CEGUI::URect
+  *
+  */
+/*void
+StateSaver::save(const string& key, URect* r)
+{
+  set<float>(subkey(key, "x"), r->getPosition().d_x);
+  set<float>(subkey(key, "y"), r->getPosition().d_y);
+  set<float>(subkey(key, "width"), r->getWidth());
+  set<float>(subkey(key, "height"), r->getHeight());
+}
+
+void
+StateSaver::restore(const string& key, URect*)
+{
+  
+}
+*/

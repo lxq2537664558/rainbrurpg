@@ -1,3 +1,12 @@
+2016-11-17  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/StateSaver_Test.cpp (udim_eq): two more tests on
+	UDim save/restore.
+	* src/client/StateSaver.cpp (save): add save/restore functions to
+	easily handle CEGUI::UDim types.
+	* src/client/StateSaver.hpp (subkey): helper function for easily
+	create subkey names.
+
 2016-11-16  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/Exception_Test.cpp (three_param): some exception

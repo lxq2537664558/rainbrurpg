@@ -24,11 +24,13 @@
 #include <map>
 #include <string>
 #include <boost/variant.hpp>
+#include <CEGUI/Rect.h> // Uses typedef URect and UDim
 
 #include "Exception.hpp"
 
 using namespace std;
 using namespace boost;
+using namespace CEGUI;
 
 /** The basic tStateMap value type */
 typedef variant<int,float,bool,string> tStateMapType;
@@ -81,6 +83,16 @@ public:
     return boost::get<T>(mStates.find(key)->second);
   }
 
+  // save/restore function for more complex objects
+  void save(const string&, UDim*);
+  void restore(const string&, UDim*);
+
+  /*  void save(const string&, URect*);
+  void restore(const string&, URect*);
+  */
+protected:
+  string subkey(const string&, const string&)const;
+  
 private:
   tStateMap mStates;                 //!< The property map
 };

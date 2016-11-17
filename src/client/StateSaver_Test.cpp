@@ -19,7 +19,9 @@
  */
 
 #include "StateSaver.hpp"
+
 #include <gtest/gtest.h>
+#include <CEGUI/Rect.h> // Uses typedef URect and UDim
 
 TEST( StateSaver, set_get )
 {
@@ -61,3 +63,18 @@ TEST( StateSaver, cast_error )
   ASSERT_THROW(sv.get<string>("an_int") , boost::bad_get);
 }
 
+TEST( StateSaver, udim_ne )
+{
+  // More a test the UDim equality
+  UDim b, d = UDim(1.2, 8.3);
+  EXPECT_NE(b, d); 
+}
+
+TEST( StateSaver, udim_eq )
+{
+  StateSaver sv;
+  UDim b, d = UDim(1.2, 8.3);
+  sv.save("udim", &d);
+  sv.restore("udim", &b);
+  EXPECT_EQ(b, d);
+}
