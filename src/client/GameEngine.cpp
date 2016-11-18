@@ -173,7 +173,9 @@ GameEngine::initializeCegui()
   CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 }
 
-
+/** Return true to continue rendering, false to drop out of the rendering loop
+  *
+  */
 bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
   if (mShutdown || mWindow->isClosed())
@@ -302,6 +304,9 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
     case OIS::KC_ESCAPE: 
       mShutdown = true;
       break;
+    case OIS::KC_RETURN: /* Alt+Enter to switch fullscreen mode */
+      if (mKeyboard->isModifierDown(OIS::Keyboard::Alt))
+	LOGI("Switching fullscreen mode");
     default:
       break;
     }

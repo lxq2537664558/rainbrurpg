@@ -1,5 +1,8 @@
 2016-11-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (keyPressed): simple log on the Alt +
+	Enter event.
+
 	* src/client/EmptyGameState.hpp: created becaused used in two
 	test files.
 
