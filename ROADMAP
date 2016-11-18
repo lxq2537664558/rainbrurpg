@@ -122,6 +122,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   and a way to tell the user to create a profile before using the 
   server/local test
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-18 ven. 02:35]--[2016-11-18 ven. 03:02] =>  0:27
      CLOCK: [2016-11-17 jeu. 05:04]--[2016-11-17 jeu. 05:32] =>  0:28
      CLOCK: [2016-11-17 jeu. 04:10]--[2016-11-17 jeu. 05:04] =>  0:54
      CLOCK: [2016-11-16 mer. 05:24]--[2016-11-16 mer. 06:10] =>  0:46
@@ -144,16 +145,17 @@ Error is fixed, was due to a src/services/Services.hpp old code
         - [X] Must unit test Exception what text
         - [X] Must handle cast errors in a exception-based way
       - [X] Must fully document StateSaver class and members
-      - [-] We can also handle CEGUI::Windows size and position and add
+      - [X] We can also handle CEGUI::Windows size and position and add
 	    some typed ::save ::restore(const str& name, Window*) functions.
 	- [X] First, we need a concat function with key and subkey
         - [X] We need to save/restore a CEGUI::UDim
-        - [ ] How to get CEGUI::Window position and size : getArea and setArea
+        - [X] How to get CEGUI::Window position and size : getArea and setArea
 	  from CEGUI::Element uses a URect object setget/width/height
-	  All these are floats
-	- [ ] Must also handle visible state
+	  - [X] Can unit tests can safely create CEGUI::Window ? NO
+          - [X] Implement its dave/restore anyway
+	- [X] Must also handle visible state
       - [ ] Then we'll need two GameState pure virtual function
-	maybe save/load or save/restore (what's the antonym)
+	maybe save/load or save/restore
       - [ ] Then implement them in MainMenu
 	save the visible state of NyiDialogs, positions of windows etc...
       - [ ] Next thing is to handle GameEngine::reconfigure()

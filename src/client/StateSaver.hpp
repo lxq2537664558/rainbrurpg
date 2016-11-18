@@ -30,6 +30,14 @@
 
 using namespace std;
 using namespace boost;
+
+// Forward declarations
+namespace CEGUI
+{
+  class Window;
+}
+// End of forward declarations
+
 using namespace CEGUI;
 
 /** The basic tStateMap value type */
@@ -89,6 +97,9 @@ public:
 
   void save(const string&, URect*);
   void restore(const string&, URect*);
+
+  void save(const string&, Window*);
+  void restore(const string&, Window*);
   
 protected:
   string subkey(const string&, const string&)const;

@@ -22,6 +22,8 @@
 
 #include <sstream>
 
+#include <CEGUI/Window.h>  // Uses CEGUI::Window
+
 /** The default constructor */
 StateSaver::StateSaver()
 {
@@ -97,3 +99,26 @@ StateSaver::restore(const string& key, URect* r)
   r->setHeight(h);
 }
 
+
+void
+StateSaver::save(const string& key, Window* w)
+{
+  // Save scalars
+  set<bool>(subkey(key, "visible"), w->isVisible());
+
+  // Save complex types
+  URect area =w->getArea();
+  save(subkey(key, "area"), &area);
+}
+
+void
+StateSaver::restore(const string& key, Window* w)
+{
+  // Restore scalars
+  w->setVisible(get<bool>(subkey(key, "visible")));
+
+  // Restore Complex types
+  URect area;
+  restore(subkey(key, "area"), &area);
+  w->setArea(area);
+}

@@ -1,3 +1,9 @@
+2016-11-18  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/StateSaver.cpp (save): implement save/restore function
+	for CEGUI::Window type.
+
+
 2016-11-17  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/StateSaver_Test.cpp (urect_eq): two more tests on

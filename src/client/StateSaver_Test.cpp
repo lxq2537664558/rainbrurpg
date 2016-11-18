@@ -21,7 +21,12 @@
 #include "StateSaver.hpp"
 
 #include <gtest/gtest.h>
-#include <CEGUI/Rect.h> // Uses typedef URect and UDim
+#include <CEGUI/Rect.h>   // Uses typedef URect and UDim
+
+/* What can't be tested here :
+ * - CEGUI::Window creation result in segfault
+ *
+ */
 
 TEST( StateSaver, set_get )
 {
@@ -95,3 +100,4 @@ TEST( StateSaver, urect_eq )
   sv.restore("urect", &a);
   EXPECT_EQ(a, b);
 }
+
