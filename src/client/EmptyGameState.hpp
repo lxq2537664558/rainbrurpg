@@ -18,27 +18,31 @@
  *
  */
 
+#ifndef _EMPTY_GAME_STATE_HPP_
+#define _EMPTY_GAME_STATE_HPP_
+
 #include "GameState.hpp"
-#include "StateManager.hpp"
 
-#include <gtest/gtest.h>
-
-#include "EmptyGameState.hpp"
-
-
-// Test if current is NULL
-TEST( StateManager, constructor_state_is_null )
+/** Just defined to override pure virtual functions
+  *
+  * This class is only used by some unit tests
+  *
+  */
+class EmptyGameState : public GameState
 {
-  StateManager sm(NULL);   // a NULL GameEngine*
-  ASSERT_TRUE(sm.getCurrentState() == NULL);
-}
+public:
+  EmptyGameState(const string& name):
+    GameState(name)
+  {
 
-// Chang current state and test if it actually changed it
-TEST( StateManager, set_current_state )
-{
-  EmptyGameState gs("myname");
-  StateManager sm(NULL);   // a NULL GameEngine*
-  sm.setCurrentState(&gs);
+  }
   
-  EXPECT_EQ( sm.getCurrentState(), &gs);
-}
+  virtual void enter(GameEngine*){};
+  virtual void exit(GameEngine*){};
+  virtual void save(StateSaver*){};
+  virtual void restore(StateSaver*){};
+};
+
+
+#endif // !_EMPTY_GAME_STATE_HPP_
+

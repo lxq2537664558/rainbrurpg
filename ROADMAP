@@ -122,6 +122,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   and a way to tell the user to create a profile before using the 
   server/local test
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-18 ven. 04:03]--[2016-11-18 ven. 04:21] =>  0:18
      CLOCK: [2016-11-18 ven. 03:06]--[2016-11-18 ven. 03:39] =>  0:33
      CLOCK: [2016-11-18 ven. 02:35]--[2016-11-18 ven. 03:02] =>  0:27
      CLOCK: [2016-11-17 jeu. 05:04]--[2016-11-17 jeu. 05:32] =>  0:28
@@ -155,9 +156,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	  - [X] Can unit tests can safely create CEGUI::Window ? NO
           - [X] Implement its dave/restore anyway
 	- [X] Must also handle visible state
-      - [ ] Make EmptyGameState become a header because used by some 
-	Tests classes
-      - [ ] Then we'll need two GameState pure virtual function
+      - [X] Make EmptyGameState become a header because used by some 
+	GameState_Test.cpp and StateManager_Test.cpp
+      - [X] Then we'll need two GameState pure virtual function
 	maybe save/load or save/restore passing a StateSaver* argument
       - [ ] Then implement them in MainMenu
 	save the visible state of NyiDialogs, positions of windows etc...

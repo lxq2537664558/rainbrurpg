@@ -20,23 +20,9 @@
 
 #include "GameState.hpp"
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
-// Just defined to override pure virtual functions
-class EmptyGameState : public GameState
-{
-public:
-  EmptyGameState(const string& name):
-    GameState(name)
-  {
-
-  }
-  
-  virtual void enter(GameEngine*){};
-  virtual void exit(GameEngine*){};
-  virtual void save(StateSaver*){};
-  virtual void restore(StateSaver*){};
-};
+#include "EmptyGameState.hpp"
 
 // Usefull test :(
 TEST( GameState, name )
