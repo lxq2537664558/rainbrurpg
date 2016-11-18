@@ -1,5 +1,10 @@
 2016-11-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp  (save/restore): empty override of pure
+	virtual functions.
+	* src/client/GameState.hpp (save/restore): add two pure virtual
+	functions.
+
 	* src/client/StateSaver.cpp (save): implement save/restore function
 	for CEGUI::Window type.
 

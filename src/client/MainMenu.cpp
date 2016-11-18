@@ -32,6 +32,7 @@
 #include "Logger.hpp"
 #include "GameEngine.hpp"
 #include "NyiDialog.hpp"
+#include "StateSaver.hpp"
 
 #include "config.h" // Uses VERSTRING
 
@@ -204,4 +205,16 @@ MainMenu::hudUpdate()
   
   os3 << "Last FPS : " << mGameEngine->getRendererWindow()->getLastFPS ();
   mDejavuSans12->drawText(*mFpsGeometry, os3.str(), CEGUI::Vector2f(0, 40.0), 0, c);
+}
+
+void
+MainMenu::save(StateSaver* st)
+{
+
+}
+
+void
+MainMenu::restore(StateSaver* st)
+{
+
 }

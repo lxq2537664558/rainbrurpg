@@ -34,6 +34,8 @@ public:
   
   virtual void enter(GameEngine*){};
   virtual void exit(GameEngine*){};
+  virtual void save(StateSaver*){};
+  virtual void restore(StateSaver*){};
 };
 
 // Usefull test :(

@@ -31,6 +31,7 @@ namespace CEGUI
   class Window;
 }
 class GameEngine;
+class StateSaver;
 // End of forward declaration
 
 using namespace std;
@@ -48,6 +49,9 @@ public:
   virtual void enter(GameEngine*)=0;
   virtual void exit(GameEngine*)=0;
 
+  virtual void save(StateSaver*)=0;
+  virtual void restore(StateSaver*)=0;
+  
   virtual void drawOverlay();
   virtual void hudUpdate();
 

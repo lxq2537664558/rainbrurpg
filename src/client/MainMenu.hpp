@@ -27,6 +27,7 @@
 
 // Forward declaration
 class GameEngine;
+class StateSaver;
 class NyiDialog;
 namespace CEGUI
 {
@@ -47,6 +48,9 @@ public:
   virtual void enter(GameEngine*);
   virtual void exit(GameEngine*);
 
+  virtual void save(StateSaver*);
+  virtual void restore(StateSaver*);
+ 
   virtual void drawOverlay();
   virtual void hudUpdate();
   
