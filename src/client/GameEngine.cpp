@@ -157,8 +157,12 @@ GameEngine::GameEngine(void):
 
 GameEngine::~GameEngine()
 {
+  if (mCurrentState)
+    delete mCurrentState;
+  
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   //  windowClosed(mWindow);
+  CEGUI::System::destroy();
   delete mRoot;
 }
 

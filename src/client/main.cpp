@@ -18,9 +18,10 @@
  *
  */
 
-#include <Logger.hpp>
-
+#include "Logger.hpp"
 #include "GameEngine.hpp"
+
+#include <exception>
 
 #include "config.h"
 
@@ -40,12 +41,15 @@ main(int argc, char** argv)
   try
     {
       GameEngine ge;
-      if (ge.running())
-	ge.run();
+      do{
+	// if ge.restarting => reconfigure
+	  ge.run();
+      }while (ge.restarting());
     }
-  catch (...)
+  catch (const std::exception &exc)
     {
       LOGE("Something went wrong in the GameEngine. Please see the Ogre logs.");
+      LOGE("Catched exception" << exc.what());
       return 1;
     }
   LOGI("main loop ended");
