@@ -1,5 +1,11 @@
 2016-11-19  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (shutdownOgre): moved here from destructor.
+	* src/client/GameEngine.cpp (initialiseOgre): new protected function
+	handles Ogre initialisation.
+	* src/client/GameEngine.cpp (reconfigure): start to use StateSaver
+	on current game state.
+
 	* src/client/main.cpp (main): beter exception message handling.
 	* src/client/GameEngine.cpp (~GameEngine): better cleanup process.
 	* src/client/main.cpp (main): handle the restarting game engine.

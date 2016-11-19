@@ -31,6 +31,7 @@
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
 #include "MainMenu.hpp"
+#include "StateSaver.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -63,20 +64,11 @@ GameEngine::GameEngine(void):
       return;
     }
 
-  //    log("Creating rendering window");
-  mWindow = mRoot->initialise(true, "RainbruRPG");
-      
-  // Create the SceneManager, in this case a generic one
-  mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
+  initialiseOgre();
 
-  // Create the camera
-  Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
-      
-  // Create one viewport, entire window
-  Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-  vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
 
-  // Initialize OIS
+  
+  // Initialise OIS
   OIS::ParamList pl;   
   size_t windowHnd = 0;
   std::ostringstream windowHndStr; 
@@ -108,11 +100,11 @@ GameEngine::GameEngine(void):
     {
       mKeyboard = static_cast<OIS::Keyboard*>
 	(mInputManager->createInputObject(OIS::OISKeyboard, true));
-      LOGI("OIS keyboard correctly initialized");
+      LOGI("OIS keyboard correctly initialised");
 	  
     }
   catch (OIS::Exception e){
-    LOGE("Error while initialize IOS keyboard "<< e.eFile 
+    LOGE("Error while initialise IOS keyboard "<< e.eFile 
 	 << ":" << e.eText);
   }
 
@@ -120,9 +112,9 @@ GameEngine::GameEngine(void):
     {
       mMouse = static_cast<OIS::Mouse*>
 	(mInputManager->createInputObject(OIS::OISMouse, true));
-      LOGI("OIS mouse correctly initialized");
+      LOGI("OIS mouse correctly initialised");
       
-      // Initialize OIS mouse metrics
+      // Initialise OIS mouse metrics
       unsigned int width, height, depth;
       int top, left;
       mWindow->getMetrics(width, height, depth, left, top);
@@ -131,17 +123,14 @@ GameEngine::GameEngine(void):
       ms.height = height;
     }
   catch (OIS::Exception e){
-    LOGE("Error while initialize IOS mouse "<< e.eFile << ":" << e.eText);
+    LOGE("Error while initialise IOS mouse "<< e.eFile << ":" << e.eText);
   }
 
   // Set OIS event callbacks
   mKeyboard->setEventCallback(this);
   mMouse->setEventCallback(this);
   
-  // Alter the camera aspect ratio to match the viewport
-  mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
-			  Ogre::Real(vp->getActualHeight()));
-  
+ 
   // Set ambient light
   mSceneMgr->setAmbientLight(Ogre::ColourValue(0.0, 0.0, 0.0));
   
@@ -161,15 +150,22 @@ GameEngine::~GameEngine()
     delete mCurrentState;
   
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
-  //  windowClosed(mWindow);
-  CEGUI::System::destroy();
-  delete mRoot;
+  shutdownOgre();
 }
 
 void
-GameEngine::initializeCegui()
+GameEngine::shutdownOgre()
 {
-  // Initialize CEGUI
+  CEGUI::System::destroy();
+  delete mRoot;
+
+}
+
+
+void
+GameEngine::initialiseCegui()
+{
+  // Initialise CEGUI
   mRenderer  = &CEGUI::OgreRenderer::bootstrapSystem();
 
   CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
@@ -199,7 +195,7 @@ GameEngine::run()
   LOGE("GameEngine::run() called...");
   
   setupResources();
-  initializeCegui();
+  initialiseCegui();
   
   CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
   CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
@@ -413,4 +409,60 @@ bool
 GameEngine::restarting()
 {
   return mRestart;
+}
+
+/** Used to reconfigure after shutdown for fullscreen flag change
+  *
+  */
+void
+GameEngine::reconfigure()
+{
+  mRestart = false;
+  LOGI("Reconfiguring Ogre...");
+  LOGD("Fullscreen is now :" << mToFullscreen);
+
+  // Save current state
+  StateSaver sv;
+  mCurrentState->save(&sv);
+
+  RenderSystem* rs = mRoot->getRenderSystem();
+  //string rendererName =   mRoot->getRenderSystem()->getName;
+
+  
+  // Restart Ogre/CEGUI
+  shutdownOgre();
+  LOGI("Restarting Ogre");
+  mRoot = new Root();
+  mRoot->setRenderSystem(rs);
+  
+
+  LOGI("Initialising Ogre");
+  initialiseOgre();
+
+  // mRoot->getRenderSystem()->setConfigOption("Full screen", "true");
+  
+  // Restore saved state
+  mCurrentState->restore(&sv);
+}
+
+void
+GameEngine::initialiseOgre()
+{
+  //    log("Creating rendering window");
+  mWindow = mRoot->initialise(true, "RainbruRPG");
+  
+  // Create the SceneManager, in this case a generic one
+  mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
+
+  // Create the camera
+  Camera* mCamera = mSceneMgr->createCamera("PlayerCam");
+      
+  // Create one viewport, entire window
+  Ogre::Viewport* vp = mWindow->addViewport(mCamera);
+  vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+
+  // Alter the camera aspect ratio to match the viewport
+  mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
+			  Ogre::Real(vp->getActualHeight()));
+
 }

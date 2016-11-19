@@ -42,14 +42,17 @@ main(int argc, char** argv)
     {
       GameEngine ge;
       do{
-	// if ge.restarting => reconfigure
+	if (ge.restarting())
+	  ge.reconfigure();
+	else
 	  ge.run();
-      }while (ge.restarting());
+      }
+      while (ge.restarting());
     }
   catch (const std::exception &exc)
     {
       LOGE("Something went wrong in the GameEngine. Please see the Ogre logs.");
-      LOGE("Catched exception" << exc.what());
+      LOGE("Catched exception :" << exc.what());
       return 1;
     }
   LOGI("main loop ended");

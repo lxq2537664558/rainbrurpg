@@ -68,7 +68,8 @@ public:
   bool running();
   bool restarting();
   void shutdown();
-
+  void reconfigure();
+  
   CEGUI::OgreRenderer* getOgreRenderer()const;
   Ogre::RenderWindow* getRendererWindow()const;
   
@@ -87,12 +88,15 @@ protected:
 
   void setupResources(void);
   CEGUI::MouseButton convertButton(OIS::MouseButtonID);
-  void initializeCegui();
-
+  void initialiseCegui();
+  void initialiseOgre();
+  void shutdownOgre();
+  
   // CEGUI events
   bool onOptions(const CEGUI::EventArgs&);
   bool overlayHandler(const CEGUI::EventArgs&);
 
+  
 private:
   Ogre::Root* mRoot;
   Ogre::RenderWindow* mWindow;
