@@ -45,6 +45,8 @@ GameEngine::GameEngine(void):
   mMouse(NULL),
   mResourcesCfg("resources.cfg"),
   mShutdown(false),
+  mRestart(false),
+  mToFullscreen(false), // do not interfere with Ogre's configdialog
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
@@ -178,7 +180,7 @@ GameEngine::initializeCegui()
   */
 bool GameEngine::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
-  if (mShutdown || mWindow->isClosed())
+  if (mShutdown || mRestart || mWindow->isClosed())
     return false;
   
   mMouse->capture();
@@ -306,7 +308,10 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
       break;
     case OIS::KC_RETURN: /* Alt+Enter to switch fullscreen mode */
       if (mKeyboard->isModifierDown(OIS::Keyboard::Alt))
-	LOGI("Switching fullscreen mode");
+	{
+	  mRestart = true;
+	  mToFullscreen = !mWindow->isFullScreen();
+	}
     default:
       break;
     }
@@ -398,4 +403,10 @@ Ogre::RenderWindow*
 GameEngine::getRendererWindow()const
 {
   return mWindow;
+}
+
+bool
+GameEngine::restarting()
+{
+  return mRestart;
 }

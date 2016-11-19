@@ -1,3 +1,15 @@
+2016-11-19  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (restarting): new getter for mRestart.
+	* src/client/GameEngine.cpp (keyPressed): set mToFullscreen to
+	!mWindow->isFullscreen().
+	* src/client/GameEngine.hpp (mToFullscreen): set next fullscreen
+	status.
+
+	* src/client/GameEngine.cpp (keyPressed): set mRestart to true
+	when Alt+Enter pressed.
+	* src/client/GameEngine.hpp (mRestart): add new boolean member;
+
 2016-11-18  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (keyPressed): simple log on the Alt +
