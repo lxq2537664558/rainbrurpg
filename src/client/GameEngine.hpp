@@ -90,6 +90,7 @@ protected:
   CEGUI::MouseButton convertButton(OIS::MouseButtonID);
   void initialiseCegui();
   void initialiseOgre();
+  void initialiseOIS();
   void shutdownOgre();
   
   // CEGUI events

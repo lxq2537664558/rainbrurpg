@@ -65,9 +65,11 @@ GameEngine::GameEngine(void):
     }
 
   initialiseOgre();
+  initialiseOIS();
+}
 
-
-  
+void GameEngine::initialiseOIS()
+{
   // Initialise OIS
   OIS::ParamList pl;   
   size_t windowHnd = 0;
@@ -129,19 +131,6 @@ GameEngine::GameEngine(void):
   // Set OIS event callbacks
   mKeyboard->setEventCallback(this);
   mMouse->setEventCallback(this);
-  
- 
-  // Set ambient light
-  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.0, 0.0, 0.0));
-  
-  // Create a light
-  Ogre::Light* l = mSceneMgr->createLight("MainLight");
-  l->setPosition(20,80,50);
-  
-  mRoot->addFrameListener(this);
-  
-  WindowEventUtilities::addWindowEventListener(mWindow, this);
-
 }
 
 GameEngine::~GameEngine()
@@ -173,6 +162,18 @@ GameEngine::initialiseCegui()
   CEGUI::Scheme::setDefaultResourceGroup("Schemes");
   CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
   CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+
+  CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
+  //  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
+
+  // Get the CEGUI's default context
+  mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
+  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+
+  // Move CEGUI mouse to (0,0)
+  CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
+  mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
 }
 
 /** Return true to continue rendering, false to drop out of the rendering loop
@@ -197,18 +198,6 @@ GameEngine::run()
   setupResources();
   initialiseCegui();
   
-  CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
-  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
-  //  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
-
-  // Get the CEGUI's default context
-  mContext = &CEGUI::System::getSingleton().getDefaultGUIContext();
-  mContext->getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-
-  // Move CEGUI mouse to (0,0)
-  CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
-  mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
-
   setCurrentState(mMainMenu);
 
   // This line in needed to make the CEGUI::GeometryBuffer objects actually
@@ -434,15 +423,28 @@ GameEngine::reconfigure()
   LOGI("Restarting Ogre");
   mRoot = new Root();
   mRoot->setRenderSystem(rs);
-  
 
+  if (mToFullscreen)
+    mRoot->getRenderSystem()->setConfigOption("Full Screen", "Yes");
+  else
+    mRoot->getRenderSystem()->setConfigOption("Full Screen", "No");
+  
   LOGI("Initialising Ogre");
   initialiseOgre();
-
-  // mRoot->getRenderSystem()->setConfigOption("Full screen", "true");
+  initialiseOIS();
+  setupResources();
+  initialiseCegui();
   
+
   // Restore saved state
   mCurrentState->restore(&sv);
+
+  /* We can't use run() here because of a segfault in GameState::loadLayout()
+   *
+   */
+  // run();
+  
+  mRoot->startRendering();
 }
 
 void
@@ -464,5 +466,17 @@ GameEngine::initialiseOgre()
   // Alter the camera aspect ratio to match the viewport
   mCamera->setAspectRatio(Ogre::Real(vp->getActualWidth()) /
 			  Ogre::Real(vp->getActualHeight()));
+
+// Just added
+  // Set ambient light
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.0, 0.0, 0.0));
+  
+  // Create a light
+  Ogre::Light* l = mSceneMgr->createLight("MainLight");
+  l->setPosition(20,80,50);
+  
+  mRoot->addFrameListener(this);
+  
+  WindowEventUtilities::addWindowEventListener(mWindow, this);
 
 }

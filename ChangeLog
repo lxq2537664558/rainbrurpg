@@ -1,3 +1,9 @@
+2016-11-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (reconfigure): fully restarting with correct
+	fullscreen status now works.
+	* src/client/GameEngine.hpp (initialiseOis): new member function.
+
 2016-11-19  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (shutdownOgre): moved here from destructor.
