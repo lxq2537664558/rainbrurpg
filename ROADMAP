@@ -122,7 +122,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   and a way to tell the user to create a profile before using the 
   server/local test
 **** TODO Handle the Options gamestate
-     CLOCK: [2016-11-20 dim. 21:04]
+     CLOCK: [2016-11-20 dim. 21:04]--[2016-11-20 dim. 23:01] =>  1:57
      CLOCK: [2016-11-19 sam. 03:54]--[2016-11-19 sam. 04:04] =>  0:10
      CLOCK: [2016-11-19 sam. 02:20]--[2016-11-19 sam. 03:35] =>  1:15
      CLOCK: [2016-11-19 sam. 01:50]--[2016-11-19 sam. 02:18] =>  0:28
@@ -181,11 +181,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	    - [X] We have many things to initialise without config dialog
             - [X] We saw the fullscreen window appear and disappear
             - [ ] Everything works except for resolution (not the same)
-        - [ ] Ogre startup process must stay in little members function
+        - [X] Ogre startup process must stay in little members function
 	  so we exactly know the order of initialization
-        - [ ] Shutdown Ogre
-        - [ ] Change its fullscreen configuration (maybe save it to file)
-        - [ ] Restart Ogre an subsystem (OIS, CEGUI etc...)
+        - [X] Shutdown Ogre
+        - [X] Change its fullscreen configuration (maybe save it to file)
+        - [X] Restart Ogre an subsystem (OIS, CEGUI etc...)
       - [ ] Then implement save/restore in MainMenu
 	save the visible state of NyiDialogs, positions of windows etc...
 - [ ] It could be fine if this changes could be serialized in the same

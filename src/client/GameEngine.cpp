@@ -414,9 +414,9 @@ GameEngine::reconfigure()
   StateSaver sv;
   mCurrentState->save(&sv);
 
+  // Keep actual render system and options
   RenderSystem* rs = mRoot->getRenderSystem();
-  //string rendererName =   mRoot->getRenderSystem()->getName;
-
+  ConfigOptionMap com = rs->getConfigOptions();
   
   // Restart Ogre/CEGUI
   shutdownOgre();
@@ -424,6 +424,14 @@ GameEngine::reconfigure()
   mRoot = new Root();
   mRoot->setRenderSystem(rs);
 
+  // Copy last renderer's options to new renderer
+  for (ConfigOptionMap::iterator iter=com.begin(); iter!=com.end(); ++iter)
+    {
+      mRoot->getRenderSystem()
+	->setConfigOption(iter->first, iter->second.currentValue);
+    }
+
+  // Override fullscreen value
   if (mToFullscreen)
     mRoot->getRenderSystem()->setConfigOption("Full Screen", "Yes");
   else
