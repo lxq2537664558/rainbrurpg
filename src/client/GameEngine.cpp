@@ -150,7 +150,6 @@ GameEngine::shutdownOgre()
 
 }
 
-
 void
 GameEngine::initialiseCegui()
 {
@@ -413,7 +412,8 @@ GameEngine::reconfigure()
   // Save current state
   StateSaver sv;
   mCurrentState->save(&sv);
-
+  mCurrentState->exit(this);
+  
   // Keep actual render system and options
   RenderSystem* rs = mRoot->getRenderSystem();
   ConfigOptionMap com = rs->getConfigOptions();
@@ -442,8 +442,26 @@ GameEngine::reconfigure()
   initialiseOIS();
   setupResources();
   initialiseCegui();
-  
 
+  /* TODO: handle this case when another state will be the current one 
+   * We have to completely re-instance it.
+   */
+  mMainMenu = new MainMenu();
+  mCurrentState = mMainMenu;
+  /* We need to recreate the full gamestate to fire the GeometeryBuffer
+   * objects creation. 
+   * Without that line, we have segfaults in overlayHandler() because
+   * of the destruction/reinitialisation of CEGUI, all GameState's pointer
+   * are now invalid.
+   */
+  mCurrentState->enter(this);
+  
+  CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
+  
+  mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
+			   CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
+
+  
   // Restore saved state
   mCurrentState->restore(&sv);
 

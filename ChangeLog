@@ -1,5 +1,7 @@
 2016-11-20  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameState.cpp (loadLayout): more error check to debug
+	reconfigurarion of GameEngine.
 	* src/client/GameEngine.cpp (reconfigure): copy last renderer's
 	config map to new one.
 

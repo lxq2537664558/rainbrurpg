@@ -14,6 +14,13 @@ Switch to `cmake` is a work-in-progress. The build may fail.
 	make
 	./rainbrurpg-client
 
+# Client key bindings
+
+The following keys works in main menu :
+
+| ESC         | Exit the game     |
+| Alt + Enter | Switch fullscreen | 
+
 # Development status
 
 The project is a work-in-progress. The game itself isn't playable.

@@ -22,7 +22,11 @@
 
 #include <CEGUI/Window.h>
 
+#include "Logger.hpp"
+
 #include "GameEngine.hpp"
+
+static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 using namespace CEGUI;
 
@@ -50,6 +54,11 @@ GameState::getName()const
 CEGUI::Window*
 GameState::loadLayout(const string& filename)
 {
+  Window* w;
+  
+  if (!WindowManager::getSingletonPtr())
+    LOGE("Can't get a valid CEGUI WindowManager");
+
   if (!mRoot)
     {
       // Create it only the first time
@@ -57,10 +66,15 @@ GameState::loadLayout(const string& filename)
 	createWindow("DefaultWindow", "Root");
       System::getSingleton().getDefaultGUIContext().setRootWindow(mRoot);
     }
-
-    Window* w = WindowManager::getSingletonPtr()->loadLayoutFromFile(filename);
+ 
+  try{
+    w = WindowManager::getSingletonPtr()->loadLayoutFromFile(filename);
     mRoot->addChild(w);
-    return w;
+  }
+  catch (...){
+    LOGE("Can't load CEGUI layout");
+  }
+  return w;
 }
 
 /* Subscribe an event to a CEGUI window/button
