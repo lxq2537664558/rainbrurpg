@@ -196,6 +196,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
         - [ ] position of main menu
 	  Can't really save it. I don't know why.
         - [ ] Position of dialogs
+      - [ ] Should save this configuration for future launchs
+- [ ] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
+  - [ ] Must get the supported "Video Mode" list
+  - [ ] We must find a way to tell which options to override in
+    GameEngine::reconfigure()
 - [ ] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.

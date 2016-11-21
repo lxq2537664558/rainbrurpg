@@ -16,10 +16,12 @@ Switch to `cmake` is a work-in-progress. The build may fail.
 
 # Client key bindings
 
-The following keys works in main menu :
+The following keys work in main menu :
 
-| ESC         | Exit the game     |
-| Alt + Enter | Switch fullscreen | 
+Key         | Action
+------------|------------------
+ESC         | Exit the game
+Alt + Enter | Switch fullscreen
 
 # Development status
 

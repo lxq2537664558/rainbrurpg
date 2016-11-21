@@ -1,4 +1,11 @@
+2016-11-21  Jérôme Pasquier  <rainbru@free.fr>
+
+	* README.md: try to fix client key binding table.
+
 2016-11-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/MainMenu.cpp (save): try to save/restore menu position.
+	* src/client/MainMenu.hpp (mMenuWindow): add a member for the menu.
 
 	* src/client/MainMenu.cpp (save): restore previous Nyi dialogs state.
 	* src/client/MainMenu.cpp (save): fully handle Nyi dialogs visibility
