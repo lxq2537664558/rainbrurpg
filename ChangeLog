@@ -1,5 +1,13 @@
 2016-11-20  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp (save): restore previous Nyi dialogs state.
+	* src/client/MainMenu.cpp (save): fully handle Nyi dialogs visibility
+	state.
+	* src/client/MainMenu.cpp (enter): fix an event connection (Options
+	button was calling onNetworkPlay).
+
+	* src/client/CeguiDialog.cpp (setVisible): new member function.
+
 	* src/client/GameState.cpp (loadLayout): more error check to debug
 	reconfigurarion of GameEngine.
 	* src/client/GameEngine.cpp (reconfigure): copy last renderer's
@@ -39,7 +47,7 @@
 	* src/client/EmptyGameState.hpp: created becaused used in two
 	test files.
 
-	* src/client/MainMenu.cpp  (save/restore): empty override of pure
+	* src/client/MainMenu.cpp (save/restore): empty override of pure
 	virtual functions.
 	* src/client/GameState.hpp (save/restore): add two pure virtual
 	functions.

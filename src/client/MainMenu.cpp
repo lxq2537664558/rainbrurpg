@@ -62,7 +62,7 @@ MainMenu::~MainMenu()
     delete mNyiLocalTest;
   
   if (mNyiNetworkPlay)
-    delete mNyiLocalTest;
+    delete mNyiNetworkPlay;
 
   if (mNyiOptions)
     delete mNyiOptions;
@@ -114,7 +114,7 @@ MainMenu::enter(GameEngine* ge)
   addEvent("root/GameMenu/NetworkPlay", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
   addEvent("root/GameMenu/Options", CEGUI::PushButton::EventClicked,
-	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
+	   CEGUI::Event::Subscriber(&MainMenu::onOptions, this));
 
 }
 
@@ -210,11 +210,23 @@ MainMenu::hudUpdate()
 void
 MainMenu::save(StateSaver* st)
 {
+  st->set<bool>("localtest", mNyiLocalTest && mNyiLocalTest->isVisible());
+  st->set<bool>("networkplay", mNyiNetworkPlay && mNyiNetworkPlay->isVisible())
+  st->set<bool>("options", mNyiOptions && mNyiOptions->isVisible())
 
 }
 
 void
 MainMenu::restore(StateSaver* st)
 {
+  
+  if (st->get<bool>("localtest"))
+    onLocalTest(CEGUI::EventArgs());
 
+  if (st->get<bool>("networkplay"))
+    onNetworkPlay(CEGUI::EventArgs());
+
+  if (st->get<bool>("options"))
+    onOptions(CEGUI::EventArgs());
+  
 }

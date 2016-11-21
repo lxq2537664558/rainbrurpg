@@ -59,7 +59,8 @@ public:
   void hide();
   void show();
   bool isVisible();
-
+  void setVisible(bool);
+  
 protected:
   bool onOk(const CEGUI::EventArgs&);
   

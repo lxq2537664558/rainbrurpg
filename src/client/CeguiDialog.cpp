@@ -103,3 +103,12 @@ CeguiDialog::onOk(const CEGUI::EventArgs&)
   hide();
   return true;
 }
+
+void
+CeguiDialog::setVisible(bool v)
+{
+  if (v)
+    show();
+  else
+    hide();
+}
