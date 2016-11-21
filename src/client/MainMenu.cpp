@@ -49,7 +49,8 @@ MainMenu::MainMenu():
   mLogoGeometry(NULL),
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
-  mDejavuSans12(NULL)
+  mDejavuSans12(NULL),
+  mMenuWindow(NULL)
 {
 
 }
@@ -79,7 +80,7 @@ MainMenu::enter(GameEngine* ge)
   mGameEngine = ge;
   
   //  Loading the main menu
-  loadLayout("menu.layout");
+  mMenuWindow = loadLayout("menu.layout");
 
   // Get screen size and font
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
@@ -210,16 +211,19 @@ MainMenu::hudUpdate()
 void
 MainMenu::save(StateSaver* st)
 {
+  // Dialogs visibility
   st->set<bool>("localtest", mNyiLocalTest && mNyiLocalTest->isVisible());
-  st->set<bool>("networkplay", mNyiNetworkPlay && mNyiNetworkPlay->isVisible())
-  st->set<bool>("options", mNyiOptions && mNyiOptions->isVisible())
+  st->set<bool>("networkplay", mNyiNetworkPlay && mNyiNetworkPlay->isVisible());
+  st->set<bool>("options", mNyiOptions && mNyiOptions->isVisible());
 
+  // CEGUI windows
+  st->save("mainmenu", mMenuWindow);
 }
 
 void
 MainMenu::restore(StateSaver* st)
 {
-  
+  // Dialogs visibility
   if (st->get<bool>("localtest"))
     onLocalTest(CEGUI::EventArgs());
 
@@ -228,5 +232,7 @@ MainMenu::restore(StateSaver* st)
 
   if (st->get<bool>("options"))
     onOptions(CEGUI::EventArgs());
-  
+
+  // CEGUI windows
+  st->restore("mainmenu", mMenuWindow);
 }

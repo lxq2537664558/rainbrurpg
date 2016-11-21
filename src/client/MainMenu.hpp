@@ -72,6 +72,7 @@ private:
   CEGUI::GeometryBuffer* mFpsGeometry;     // A geometryBuffer to print stats
 
   CEGUI::Font* mDejavuSans12; // A font used to draw in geometry buffers
+  CEGUI::Window* mMenuWindow;
 };
 
 #endif //!_MAIN_MENU_HPP_
