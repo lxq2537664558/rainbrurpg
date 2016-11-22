@@ -73,27 +73,38 @@ Rpg::ObjectInspector::add(string name, int value)
 Rpg::ObjectInspector& 
 Rpg::ObjectInspector::add(string name, Object& o)
 {
-  /*
-    ostringstream oss;
-    oss << value;
-  */
   attributes.push_back(ObjectAttribute("int", name, "Nested object"));
   return *this;
 };
 
 
+/** Get the name
+  *
+  * \return the name of this inspector
+  *
+  */
 const std::string& 
 Rpg::ObjectInspector::getName(void)
 {
   return this->name;
 }
 
+/** Return the inpsector address
+  *
+  * \return the address as a string
+  *
+  */
 const std::string& 
 Rpg::ObjectInspector::getAddress(void)
 {
   return this->address;
 }
 
+/** The attributes getter
+  *
+  * \return The list of ObjectAttribute
+  *
+  */
 std::list<Rpg::ObjectAttribute> 
 Rpg::ObjectInspector::getAttributes(void)
 {
