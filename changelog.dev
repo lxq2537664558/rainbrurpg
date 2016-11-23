@@ -1,3 +1,15 @@
+* v0.0.5-253 (04 Nov. 2016 - ???) SLOC 3,197 FT 325:26 UT 17
+- Handle F11/screenshot keybinding
+- Fully handle GameEngine reconfiguration
+- Start to handle Ogre3D reconfiguration
+- StateSaver start to save/restore complex types
+- Start StateSaver implementation
+- No more client segfault and CI fix
+- MainMenu updates stats geometry buffer
+- Create the hudUpdate function and override it
+- Version overlay now in MainMenu
+- MainMenu handles Logo geometry buffer
+
 * v0.0.5-252 (28 Oct. 2016 - 04 Nov. 2016) SLOC 2,785 FT 306:07 UT 4
 - New MainMenu gamestate handle all its events
 - MainMenu's exit button handles GameEngine's shutdown

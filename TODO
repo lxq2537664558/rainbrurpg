@@ -35,14 +35,5 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-253 (04 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- Handle F11/screenshot keybinding
-- Fully handle GameEngine reconfiguration
-- Start to handle Ogre3D reconfiguration
-- StateSaver start to save/restore complex types
-- Start StateSaver implementation
-- No more client segfault and CI fix
-- MainMenu updates stats geometry buffer 
-- Create the hudUpdate function and override it
-- Version overlay now in MainMenu
-- MainMenu handles Logo geometry buffer
+* v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+
