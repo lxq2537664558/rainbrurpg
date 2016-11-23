@@ -1,5 +1,0 @@
-This is the root directory of the RainbruRPG's metaserver source tree.
-
-The =data= and =lib= directory go in the same directory hierachy as in
-_foswiki_. These directories contain implementation and documentation for
-the foswiki metaserver plugin.

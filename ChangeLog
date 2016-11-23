@@ -1,5 +1,7 @@
 2016-11-23  Jérôme Pasquier  <rainbru@free.fr>
 
+	* OLD/: recursively remove directory.
+
 	* src/client/GameEngine.cpp (keyPressed): add F11/screenshot
 	keybinding.
 	* README.md: add F11 key binding for screenshot.

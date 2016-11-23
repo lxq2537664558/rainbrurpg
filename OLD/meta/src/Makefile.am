@@ -1,1 +1,0 @@
-SUBDIRS = foswiki_plugin libserver libclient

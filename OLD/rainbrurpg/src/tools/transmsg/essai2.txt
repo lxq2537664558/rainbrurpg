@@ -1,5 +1,0 @@
-
-TR("Chaine1");
-TR ("Chaine2");
-TR( "Chaine3");
-TR ( "Chaine4");

@@ -1,6 +1,0 @@
-<!ENTITY Name "value">
-<!ELEMENT Options (Default?, Snapshot*)>
-<!ELEMENT Snapshot(name)>
-<!ELEMENT Fullscreen    (#PCDATA)>
-<!ELEMENT heading (#PCDATA)>
-<!ELEMENT body    (#PCDATA)>
