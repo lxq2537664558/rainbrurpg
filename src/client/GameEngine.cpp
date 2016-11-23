@@ -286,6 +286,7 @@ GameEngine::mouseReleased( const OIS::MouseEvent& evt, OIS::MouseButtonID id )
 bool  
 GameEngine::keyPressed( const OIS::KeyEvent& evt )
 {
+  std::string fn;
   mContext->injectKeyDown((CEGUI::Key::Scan)evt.key);
   mContext->injectChar((CEGUI::Key::Scan)evt.text);
 
@@ -300,6 +301,19 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
 	  mRestart = true;
 	  mToFullscreen = !mWindow->isFullScreen();
 	}
+    case OIS::KC_F11:
+      /* F11 to take a screenshot */
+      try
+	{
+	  fn = mWindow->writeContentsToTimestampedFile("rainbrurpg-", ".png");
+	  LOGI("Screenshot saved in " << fn);
+	}
+      catch(Ogre::Exception e)
+	{
+	  LOGE("Cannot take screenshot" << fn);
+	  LOGE(e.what());
+	}
+      
     default:
       break;
     }

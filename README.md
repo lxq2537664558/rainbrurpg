@@ -21,6 +21,7 @@ The following keys work in main menu :
 Key         | Action
 ------------|------------------
 ESC         | Exit the game
+F11         | Create a rainbrurpg-<timestamp>.png screenshot
 Alt + Enter | Switch fullscreen
 
 # Development status

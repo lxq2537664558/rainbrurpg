@@ -1,3 +1,9 @@
+2016-11-23  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (keyPressed): add F11/screenshot
+	keybinding.
+	* README.md: add F11 key binding for screenshot.
+
 2016-11-21  Jérôme Pasquier  <rainbru@free.fr>
 
 	* README.md: try to fix client key binding table.

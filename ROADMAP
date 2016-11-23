@@ -122,6 +122,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   and a way to tell the user to create a profile before using the 
   server/local test
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-23 mer. 00:38]--[2016-11-23 mer. 01:04] =>  0:26
      CLOCK: [2016-11-21 lun. 01:44]--[2016-11-21 lun. 02:01] =>  0:17
      CLOCK: [2016-11-21 lun. 00:15]--[2016-11-21 lun. 01:41] =>  1:26
      CLOCK: [2016-11-20 dim. 23:03]--[2016-11-21 lun. 00:06] =>  1:03
@@ -200,14 +201,14 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	    pass a second argument to return the right Window* object
         - [ ] Position of dialogs
       - [ ] May add a temporary (say 5 seconds) geometrybuffer object
-	to tell what changed (Fullscreen : On|Off)
+	with centered to tell what changed (Fullscreen : On|Off)
       - [ ] Should save this configuration for future launchs
-- [ ] F11 write a screenshot to file
+- [-] F11 write a screenshot to file
   Must save the CEGUI::GeometryBuffers
-  - [ ] Using RenderWindow::writeContentToTimestampedFile()
+  - [X] Using RenderWindow::writeContentToTimestampedFile()
     http://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_render_window.html#a2c3046ce0995cc3058e2919b985e80f6
+  - [X] Add this key binding to the README.md file  
   - [ ] Must write a centered message with name of the created file
-  - [ ] Add this key binding to the README.md file  
 - [ ] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
   - [ ] Must get the supported "Video Mode" list
   - [ ] We must find a way to tell which options to override in
