@@ -1,5 +1,11 @@
 2016-11-24  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp (save/restore): All ByiDialogs should be
+	saved/restored.
+	* src/client/CeguiDialog.cpp (save/restore): implemented for
+	CeguiMember pointer.
+	* src/client/CeguiDialog.hpp (mDialog): new member.
+
 	* src/client/MainMenu.cpp (enter): setting the correct windowName
 	when calling loadLayout makes the MainMenu window getting saved.
 	* src/client/GameState.cpp (loadLayout): add a second string argument

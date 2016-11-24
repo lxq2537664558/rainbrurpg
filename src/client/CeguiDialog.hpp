@@ -60,12 +60,27 @@ public:
   void show();
   bool isVisible();
   void setVisible(bool);
+
+  CEGUI::Window* getDialog();
   
 protected:
   bool onOk(const CEGUI::EventArgs&);
   
   CEGUI::Window* mRootWindow;   // The default GUI context' root window
-  CEGUI::Window* mDialogWindow; // The default that will contain our dialog
+  /** The window that will contain our dialog
+    *
+    * This is the fullscreen transparent window that will contains the dialog.
+    * Use it if you need to call getChild().
+    * 
+    * Note: If this window is visible, no event will work on other controls.
+    */
+  CEGUI::Window* mDialogWindow;
+  /** The real dialog
+    *
+    * This is the visible falagard-styled window. Use it with StateSaver
+    * to save/restore state.
+    */
+  CEGUI::Window* mDialog; 
   CEGUI::WindowManager* mWmgr;  // the CEGUI windowManager
 
 private:

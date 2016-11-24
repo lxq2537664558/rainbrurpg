@@ -44,7 +44,8 @@ CeguiDialog::CeguiDialog(const string& layoutName, const string& uniqueName):
   mUniqueName(uniqueName),
   mRootWindow(NULL),
   mDialogWindow(NULL),
-  mWmgr(NULL)
+  mWmgr(NULL),
+  mDialog(NULL)
 {
   mWmgr = CEGUI::WindowManager::getSingletonPtr();
 
@@ -63,6 +64,8 @@ CeguiDialog::CeguiDialog(const string& layoutName, const string& uniqueName):
   mRootWindow->addChild(mDialogWindow);
   mDialogWindow->addChild(layoutWindow);
 
+  mDialog = mDialogWindow->getChild("nyiRoot/winToolbar");
+  
   hide();
 
   CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)mDialogWindow->
@@ -82,19 +85,21 @@ void
 CeguiDialog::hide()
 {
   mDialogWindow->hide();
+  mDialog->hide();
 }
 
 void
 CeguiDialog::show()
 {
   mDialogWindow->setVisible(true);
-  mDialogWindow->activate();
+  mDialog->setVisible(true);
+  mDialog->activate();
 }
 
 bool
 CeguiDialog::isVisible()
 {
-  return mDialogWindow->isVisible();
+  return mDialog->isVisible();
 }
 
 bool
@@ -111,4 +116,14 @@ CeguiDialog::setVisible(bool v)
     show();
   else
     hide();
+}
+
+/** Direct access to the underlying CEGUI::Window pointer
+  *
+  * Can't be used a const function, primarly used with StateSaver.
+  */
+CEGUI::Window*
+CeguiDialog::getDialog()
+{
+  return mDialog;
 }

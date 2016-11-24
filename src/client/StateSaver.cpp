@@ -24,6 +24,9 @@
 
 #include <CEGUI/Window.h>  // Uses CEGUI::Window
 
+#include "CeguiDialog.hpp"
+
+
 /** The default constructor */
 StateSaver::StateSaver()
 {
@@ -104,7 +107,7 @@ void
 StateSaver::save(const string& key, Window* w)
 {
   // Save scalars
-  set<bool>(subkey(key, "visible"), w->isVisible());
+ set<bool>(subkey(key, "visible"), w->isVisible());
 
   // Save complex types
   URect area =w->getArea();
@@ -121,4 +124,27 @@ StateSaver::restore(const string& key, Window* w)
   URect area;
   restore(subkey(key, "area"), &area);
   w->setArea(area);
+}
+
+void
+StateSaver::save(const string& key, CeguiDialog* d)
+{
+  // Save scalars
+ set<bool>(subkey(key, "visible"), d->isVisible());
+
+  // Save complex types
+  URect area =d->getDialog()->getArea();
+  save(subkey(key, "area"), &area);
+}
+
+void
+StateSaver::restore(const string& key, CeguiDialog* d)
+{
+  // Restore scalars
+  d->setVisible(get<bool>(subkey(key, "visible")));
+
+  // Restore Complex types
+  URect area;
+  restore(subkey(key, "area"), &area);
+  d->getDialog()->setArea(area);
 }

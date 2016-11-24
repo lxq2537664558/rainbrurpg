@@ -36,6 +36,7 @@ namespace CEGUI
 {
   class Window;
 }
+class CeguiDialog;
 // End of forward declarations
 
 using namespace CEGUI;
@@ -100,7 +101,10 @@ public:
 
   void save(const string&, Window*);
   void restore(const string&, Window*);
-  
+
+  void save(const string&, CeguiDialog*);
+  void restore(const string&, CeguiDialog*);
+
 protected:
   string subkey(const string&, const string&)const;
   

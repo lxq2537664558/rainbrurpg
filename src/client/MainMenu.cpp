@@ -52,21 +52,17 @@ MainMenu::MainMenu():
   mDejavuSans12(NULL),
   mMenuWindow(NULL)
 {
-
+  // We can't instanciate dialogs here because
+  // CEGUI isn't fully usable (GameEngine not yet started)
 }
 
 MainMenu::~MainMenu()
 {
   mGameEngine = NULL;
 
-  if (mNyiLocalTest)
-    delete mNyiLocalTest;
-  
-  if (mNyiNetworkPlay)
-    delete mNyiNetworkPlay;
-
-  if (mNyiOptions)
-    delete mNyiOptions;
+  delete mNyiLocalTest;
+  delete mNyiNetworkPlay;
+  delete mNyiOptions;
 }
 
 void
@@ -106,6 +102,11 @@ MainMenu::enter(GameEngine* ge)
   mFpsGeometry->setClippingRegion(scrn);
   mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f));
   
+  // Create dialogs
+  mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
+  mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
+  mNyiOptions = new NyiDialog("Options", "nyiOptions");
+
   
   // Handle events
   addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
@@ -146,9 +147,6 @@ MainMenu::onExit(const CEGUI::EventArgs& evt)
 bool
 MainMenu::onLocalTest(const CEGUI::EventArgs&)
 {
-  if (!mNyiLocalTest)
-    mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
-    
   mNyiLocalTest->show();
   return true;
 }
@@ -159,9 +157,6 @@ MainMenu::onLocalTest(const CEGUI::EventArgs&)
 bool
 MainMenu::onNetworkPlay(const CEGUI::EventArgs&)
 {
-  if (!mNyiNetworkPlay)
-    mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
-    
   mNyiNetworkPlay->show();
   return true;
 }
@@ -172,9 +167,6 @@ MainMenu::onNetworkPlay(const CEGUI::EventArgs&)
 bool
 MainMenu::onOptions(const CEGUI::EventArgs&)
 {
-  if (!mNyiOptions)
-    mNyiOptions = new NyiDialog("Options", "nyiOptions");
-    
   mNyiOptions->show();
   return true;
 }
@@ -211,28 +203,19 @@ MainMenu::hudUpdate()
 void
 MainMenu::save(StateSaver* st)
 {
-  // Dialogs visibility
-  st->set<bool>("localtest", mNyiLocalTest && mNyiLocalTest->isVisible());
-  st->set<bool>("networkplay", mNyiNetworkPlay && mNyiNetworkPlay->isVisible());
-  st->set<bool>("options", mNyiOptions && mNyiOptions->isVisible());
-
-  // CEGUI windows
+  // CEGUI windows and CeguiDialogs
   st->save("mainmenu", mMenuWindow);
+  st->save("nyiLocalTest", mNyiLocalTest);
+  st->save("NyiNetworkPlay", mNyiNetworkPlay);
+  st->save("NyiOptions", mNyiOptions);
 }
 
 void
 MainMenu::restore(StateSaver* st)
 {
-  // Dialogs visibility
-  if (st->get<bool>("localtest"))
-    onLocalTest(CEGUI::EventArgs());
-
-  if (st->get<bool>("networkplay"))
-    onNetworkPlay(CEGUI::EventArgs());
-
-  if (st->get<bool>("options"))
-    onOptions(CEGUI::EventArgs());
-
-  // CEGUI windows
+  // CEGUI windows and CeguiDialogs
   st->restore("mainmenu", mMenuWindow);
+  st->restore("nyiLocalTest", mNyiLocalTest);
+  st->restore("NyiNetworkPlay", mNyiNetworkPlay);
+  st->restore("NyiOptions", mNyiOptions);
 }
