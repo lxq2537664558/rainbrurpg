@@ -34,12 +34,17 @@ using namespace std;
   * \param vValue The attribute value, stored as a string
   *
   */
-Rpg::ObjectAttribute::ObjectAttribute(string vType, string vName, 
-				      string vValue):
+Rpg::ObjectAttribute::ObjectAttribute(const std::string& vType,
+				      const std::string& vName, 
+				      const std::string& vValue):
   type(vType), name(vName), value(vValue)
 {    
 };
 
+/** Get the type of this attribute
+  *
+  * \return The type as a string
+  */
 const std::string&
 Rpg::ObjectAttribute::getType(void)
 {

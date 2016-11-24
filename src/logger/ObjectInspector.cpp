@@ -54,7 +54,7 @@ Rpg::ObjectInspector::ObjectInspector(string class_name, const void* address):
   *
   */
 Rpg::ObjectInspector& 
-Rpg::ObjectInspector::add(string name, int value)
+Rpg::ObjectInspector::add(std::string name, int value)
 {
   ostringstream oss;
   oss << value;
@@ -71,7 +71,7 @@ Rpg::ObjectInspector::add(string name, int value)
   *
   */
 Rpg::ObjectInspector& 
-Rpg::ObjectInspector::add(string name, Object& o)
+Rpg::ObjectInspector::add(std::string name, Object& o)
 {
   attributes.push_back(ObjectAttribute("int", name, "Nested object"));
   return *this;

@@ -25,8 +25,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
 ***** Improve CI with other OSes
       CLOCK: [2016-06-11 sam. 02:39]--[2016-06-11 sam. 02:45] =>  0:06
 - [ ] Start with osx but allow_failure
-**** Handle coverity scan 
-     see https://scan.coverity.com/download for more (currently at 4%)
 **** Handling i18n 
 - [ ] We must handle a call to msgmerge in CMakeLists.txt
 - [ ] Must handle `make install` command
@@ -121,6 +119,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Create a new geometry buffer that prints the current profile name
   and a way to tell the user to create a profile before using the 
   server/local test
+**** TODO Handle coverity scan 
+     see https://scan.coverity.com/download for more (currently at 4%)
+- [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
      CLOCK: [2016-11-23 mer. 00:38]--[2016-11-23 mer. 01:04] =>  0:26
      CLOCK: [2016-11-21 lun. 01:44]--[2016-11-21 lun. 02:01] =>  0:17
@@ -142,7 +143,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2016-11-16 mer. 01:52]--[2016-11-16 mer. 02:11] =>  0:19
      CLOCK: [2016-11-16 mer. 00:25]--[2016-11-16 mer. 00:54] =>  0:29
 - [-] Must handle 'Alt + Enter' keybinding to switch fullscreen status
-  - [ ] Handle the keybinding in GameEngine, so it's available in all gamestates
+  - [X] Handle the keybinding in GameEngine, so it's available in all gamestates
   - [-] How to make it happens with Ogre3D 
     see http://ogre3d.org/forums/viewtopic.php?f=2&t=10811
     We have to save state, kill renderWindow and recreate it
@@ -223,11 +224,16 @@ Error is fixed, was due to a src/services/Services.hpp old code
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
 **** TODO Handle doxygen documentation
+     CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
      CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
      CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
 - [X] Handle Doxyfile version number from a cmake config file
-- [ ] The main page is the logger's one, fix that
-  Maybe with submodules
+- [X] The main page is the logger's one, fix that
+  Maybe with submodules. In fact handled by a page.
+- [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
+  Because using a \subpage command in mainpage makes it appears as a subpage
+- [ ] Create a real Homepage in src/Mainpage.hmm
+- [ ] May document undocumented members (see docygen.log)
 **** DONE GameState system switch and more client work
      CLOCK: [2016-11-09 mer. 04:19]--[2016-11-09 mer. 04:45] =>  0:26
      CLOCK: [2016-11-09 mer. 03:01]--[2016-11-09 mer. 03:41] =>  0:40

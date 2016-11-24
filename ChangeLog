@@ -1,3 +1,9 @@
+2016-11-24  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/Mainpage.hpp: create the client page.
+	* src/Mainpage.hpp: mainpage created.
+	* src/logger/Mainpage.hpp: becomes a subpage instead of the mainpage.
+
 2016-11-23  Jérôme Pasquier  <rainbru@free.fr>
 
 	* OLD/: recursively remove directory.

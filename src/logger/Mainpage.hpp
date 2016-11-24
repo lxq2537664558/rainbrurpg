@@ -21,7 +21,7 @@
 /* It is a documentation-only file */
 
 
-/** \mainpage RainbruRPG's logger
+/** \page logger Logger library
   *
   * Here is the documentation for the RainbruRPG's logger. A library used
   * to log program execution information to standard output, to a file

@@ -18,36 +18,15 @@
  *
  */
 
-/** \file ObjectAttribute.hpp
-  * The header of the ObjectAttribute object
+/* It is a documentation-only file */
+
+
+/** \mainpage RainbruRPG
   *
+  * RainbruRPG is a MMORPG project written in C++. To contribute, you
+  * need to understand the project isn't that big, but can be seen as complex.
+  * Many components are used :
+  *
+  * * The \subpage logger
+  * * The \subpage client
   */
-
-#ifndef _OBJECT_ATTRIBUTE_HPP_
-#define _OBJECT_ATTRIBUTE_HPP_
-
-#include <string>
-
-namespace Rpg
-{
-  /** Defines the attribute on an object
-    *
-    */
-  class ObjectAttribute
-  {
-  public:
-    ObjectAttribute(const std::string&, const std::string&, const std::string&);
-
-    const std::string& getType(void);
-    const std::string& getName(void);
-    const std::string& getValue(void);
-
-  private:
-    std::string type;  //!< The internal type of the attribute
-    std::string name;  //!< The attribute's name
-    std::string value; //!< The value to be logged
-  };
-} // !namespace Rpg
-
-
-#endif // !_OBJECT_ATTRIBUTE_HPP_
