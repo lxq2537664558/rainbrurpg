@@ -32,6 +32,7 @@
 
 #include "MainMenu.hpp"
 #include "StateSaver.hpp"
+#include "TempMessage.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -51,7 +52,8 @@ GameEngine::GameEngine(void):
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
-  mMainMenu(NULL)
+  mMainMenu(NULL),
+  mTempMsg(NULL)
 {
 
   mMainMenu = new MainMenu();
@@ -145,6 +147,12 @@ GameEngine::~GameEngine()
 void
 GameEngine::shutdownOgre()
 {
+  if (mTempMsg)
+    delete mTempMsg;
+  
+  // Make sure it will be recreated in reconfigure
+  mTempMsg = NULL; 
+  
   CEGUI::System::destroy();
   delete mRoot;
 
@@ -173,6 +181,10 @@ GameEngine::initialiseCegui()
   // Move CEGUI mouse to (0,0)
   CEGUI::Vector2f mousePos = mContext->getMouseCursor().getPosition();  
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
+
+  // Created here to make sure it will be called at reconfigure
+  if (!mTempMsg)
+    mTempMsg = new TempMessage(this);
 }
 
 /** Return true to continue rendering, false to drop out of the rendering loop
@@ -199,6 +211,7 @@ GameEngine::run()
   
   setCurrentState(mMainMenu);
 
+ 
   // This line in needed to make the CEGUI::GeometryBuffer objects actually
   // appear
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
@@ -364,11 +377,13 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
         return false;
 
     mCurrentState->drawOverlay();
+    mTempMsg->draw();
     
     // Update FPS stats every second
     if (mTimer.getMilliseconds() > 1000)
       {
 	mCurrentState->hudUpdate();
+	mTempMsg->countdown();
 	mTimer.reset();
       }
     return true;
@@ -470,6 +485,11 @@ GameEngine::reconfigure()
    */
   mCurrentState->enter(this);
   
+  if (mToFullscreen)
+    mTempMsg->print("Fullscreen : On", 4);
+  else
+    mTempMsg->print("Fullscreen : Off", 4);
+
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
   
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,

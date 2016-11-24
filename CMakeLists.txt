@@ -144,6 +144,7 @@ set (client-src
   src/client/NyiDialog.cpp
   src/client/StateManager.cpp
   src/client/StateSaver.cpp
+  src/client/TempMessage.cpp
   src/client/main.cpp
   )
 add_executable(rainbrurpg-client ${client-src})

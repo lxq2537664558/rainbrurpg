@@ -1,5 +1,10 @@
 2016-11-24  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (reconfigure): use TempMessage to
+	print new Fullscreen option value.
+	* src/client/TempMessage.cpp: created to print a temporary message
+	after fullscreen switch.
+
 	* src/client/MainMenu.cpp (save/restore): All ByiDialogs should be
 	saved/restored.
 	* src/client/CeguiDialog.cpp (save/restore): implemented for

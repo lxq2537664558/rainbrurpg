@@ -123,6 +123,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-24 jeu. 07:42]--[2016-11-24 jeu. 08:17] =>  0:35
+     CLOCK: [2016-11-24 jeu. 05:44]--[2016-11-24 jeu. 06:17] =>  0:33
      CLOCK: [2016-11-24 jeu. 03:51]--[2016-11-24 jeu. 04:52] =>  1:01
      CLOCK: [2016-11-24 jeu. 03:18]--[2016-11-24 jeu. 03:43] =>  0:25
      CLOCK: [2016-11-23 mer. 00:38]--[2016-11-23 mer. 01:04] =>  0:26
@@ -144,12 +146,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2016-11-16 mer. 02:11]--[2016-11-16 mer. 02:39] =>  0:28
      CLOCK: [2016-11-16 mer. 01:52]--[2016-11-16 mer. 02:11] =>  0:19
      CLOCK: [2016-11-16 mer. 00:25]--[2016-11-16 mer. 00:54] =>  0:29
-- [-] Must handle 'Alt + Enter' keybinding to switch fullscreen status
+- [X] Must handle 'Alt + Enter' keybinding to switch fullscreen status
   - [X] Handle the keybinding in GameEngine, so it's available in all gamestates
-  - [-] How to make it happens with Ogre3D 
+  - [X] How to make it happens with Ogre3D 
     see http://ogre3d.org/forums/viewtopic.php?f=2&t=10811
     We have to save state, kill renderWindow and recreate it
-    - [-] Maybe implement a StateSaver (with unit tests) to handle
+    - [X] Maybe implement a StateSaver (with unit tests) to handle
       the storage, for example in an associative array as strings,
       from and to typed variables using template functions.
       - [X] Do we need to search for boost.variant in cmake ?? NO
@@ -174,20 +176,20 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Then we'll need two GameState pure virtual function
 	maybe save/load or save/restore passing a StateSaver* argument
       - [X] Handle Alt+Enter in GameEngine
-      - [-] Next thing is to handle GameEngine::reconfigure()
+      - [X] Next thing is to handle GameEngine::reconfigure()
         - [X] Must get the acual fullscreen value from Ogre config
 	- [X] Save current gamestate and serialize it
-        - [-] Handle the Ogre restart as for shutdown. A boolean flag
+        - [X] Handle the Ogre restart as for shutdown. A boolean flag
 	  member that shutdown and restart Ogre
 	  But that's the function that can handle restart after
 	  frameRenderingQueued returns false 
 	  - [X] Directly in main.cpp
 	  - [X] The CEGUI log tells we don't have correctly shutdown   
 	    CEGUI::System object is already initialized
-          - [-] Must implement GameEngine::reconfigure()
+          - [X] Must implement GameEngine::reconfigure()
 	    - [X] We have many things to initialise without config dialog
             - [X] We saw the fullscreen window appear and disappear
-            - [ ] Everything works except for resolution (not the same)
+            - [X] Everything works except for resolution (not the same)
         - [X] Ogre startup process must stay in little members function
 	  so we exactly know the order of initialization
         - [X] Shutdown Ogre
@@ -209,12 +211,14 @@ Error is fixed, was due to a src/services/Services.hpp old code
           - [X] mDialogWindow isn't the good one
 	  - [X] Dialog oposition is saved but not visibility  
 	    Visibility is a special case
-
-      - [ ] May add a temporary (say 5 seconds) geometrybuffer object
-	with centered to tell what changed (Fullscreen : On|Off)
-	- [ ] We can get width of text using Font::getTextExtent
-	- [ ] After that, we have to center it  
-      - [ ] Should save this configuration for future launchs
+- [X] May add a temporary (say 5 seconds) geometrybuffer object
+  with centered text to tell what changed (Fullscreen : On|Off)
+  Created in a TempMessage class with a draw(int seconds) and a countdown()
+  called every seconds
+  - [X] We can get width of text using Font::getTextExtent
+  - [X] After that, we have to center it  
+  - [X] Shoudl print Fullscreen : On/Off
+- [ ] Should save this configuration for future launchs
 - [ ] We must prepare the Ogre ConfigMap override for future
   multi-options reconfigure
   - [ ] With a Specialized map used to override Ogre options

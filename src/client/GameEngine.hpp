@@ -52,6 +52,7 @@ namespace CEGUI
   class GeometryBuffer;
 }
 class MainMenu;
+class TempMessage;
 // End of forward declarations
 
 class GameEngine: public Ogre::FrameListener,
@@ -116,8 +117,8 @@ private:
   CEGUI::OgreRenderer* mRenderer;
 
   Ogre::Timer mTimer;
-
   MainMenu* mMainMenu;
+  TempMessage* mTempMsg; // A temporary message buffer
 };
 
 #endif // !_GAME_ENGINE_HPP_
