@@ -58,7 +58,7 @@ public:
   const string& getName()const;
   
 protected:
-  CEGUI::Window* loadLayout(const string&);
+  CEGUI::Window* loadLayout(const string&, const string&);
   void addEvent(const string&, const CEGUI::String&,CEGUI::Event::Subscriber);
 
 private:

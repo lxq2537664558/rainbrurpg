@@ -1,5 +1,10 @@
 2016-11-24  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/MainMenu.cpp (enter): setting the correct windowName
+	when calling loadLayout makes the MainMenu window getting saved.
+	* src/client/GameState.cpp (loadLayout): add a second string argument
+	for CEGUI window name to be returned.
+
 	* src/client/Mainpage.hpp: create the client page.
 	* src/Mainpage.hpp: mainpage created.
 	* src/logger/Mainpage.hpp: becomes a subpage instead of the mainpage.

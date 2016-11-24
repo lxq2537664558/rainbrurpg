@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-24 jeu. 03:18]
      CLOCK: [2016-11-23 mer. 00:38]--[2016-11-23 mer. 01:04] =>  0:26
      CLOCK: [2016-11-21 lun. 01:44]--[2016-11-21 lun. 02:01] =>  0:17
      CLOCK: [2016-11-21 lun. 00:15]--[2016-11-21 lun. 01:41] =>  1:26
@@ -195,15 +196,21 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	  We have a segfault when re-entering gamestate in GameState::loadLayout()
       - [-] Then implement save/restore in MainMenu
 	- [X] save the visible state of NyiDialogs, 
-        - [ ] position of main menu
+        - [X] position of main menu
 	  - Can't really save it. I don't know why. 
           - Maybe it's not the good window. 
           - When loading a layout in GameState::loadLayout, we should
 	    pass a second argument to return the right Window* object
+	    - [ ] We'll add a parameter to loadLayout()
+	      The windowName to be returned
         - [ ] Position of dialogs
       - [ ] May add a temporary (say 5 seconds) geometrybuffer object
 	with centered to tell what changed (Fullscreen : On|Off)
       - [ ] Should save this configuration for future launchs
+- [ ] We must prepare the Ogre ConfigMap override for future
+  multi-options reconfigure
+  - [ ] With a Specialized map used to override Ogre options
+    Does a map<string,string> is good ? or we need <string, Option>
 - [-] F11 write a screenshot to file
   Must save the CEGUI::GeometryBuffers
   - [X] Using RenderWindow::writeContentToTimestampedFile()

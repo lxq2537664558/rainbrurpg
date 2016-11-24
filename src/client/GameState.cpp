@@ -50,11 +50,14 @@ GameState::getName()const
 
 /* Load a CEGUI layout from a file
  *
+ * \param filename   The layout filename.
+ * \param windowName The to-be-returned CEGUI window name.
+ *
  */
 CEGUI::Window*
-GameState::loadLayout(const string& filename)
+GameState::loadLayout(const string& filename, const string& windowName)
 {
-  Window* w;
+  Window *w, *ret;
   
   if (!WindowManager::getSingletonPtr())
     LOGE("Can't get a valid CEGUI WindowManager");
@@ -70,11 +73,12 @@ GameState::loadLayout(const string& filename)
   try{
     w = WindowManager::getSingletonPtr()->loadLayoutFromFile(filename);
     mRoot->addChild(w);
+    ret = mRoot->getChild(windowName);
   }
   catch (...){
     LOGE("Can't load CEGUI layout");
   }
-  return w;
+  return ret;
 }
 
 /* Subscribe an event to a CEGUI window/button

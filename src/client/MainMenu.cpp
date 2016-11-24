@@ -80,7 +80,7 @@ MainMenu::enter(GameEngine* ge)
   mGameEngine = ge;
   
   //  Loading the main menu
-  mMenuWindow = loadLayout("menu.layout");
+  mMenuWindow = loadLayout("menu.layout", "root/GameMenu");
 
   // Get screen size and font
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
