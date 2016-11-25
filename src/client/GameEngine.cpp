@@ -313,7 +313,17 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
       if (mKeyboard->isModifierDown(OIS::Keyboard::Alt))
 	{
 	  mRestart = true;
-	  mToFullscreen = !mWindow->isFullScreen();
+	  if (!mWindow->isFullScreen())
+	    {
+	      mCfgOverride["Full Screen"] = "Yes";
+	      mRestartMessage = "Fullscreen : On";
+	    }
+	  else
+	    {
+	      mCfgOverride["Full Screen"] = "No";
+	      mRestartMessage = "Fullscreen : Off";
+	    }
+
 	}
       break;
     case OIS::KC_F11:
@@ -440,8 +450,6 @@ void
 GameEngine::reconfigure()
 {
   mRestart = false;
-  LOGI("Reconfiguring Ogre...");
-  LOGD("Fullscreen is now :" << mToFullscreen);
 
   // Save current state
   StateSaver sv;
@@ -465,12 +473,13 @@ GameEngine::reconfigure()
 	->setConfigOption(iter->first, iter->second.currentValue);
     }
 
-  // Override fullscreen value
-  if (mToFullscreen)
-    mRoot->getRenderSystem()->setConfigOption("Full Screen", "Yes");
-  else
-    mRoot->getRenderSystem()->setConfigOption("Full Screen", "No");
-
+  // Override using the tOgreCfgOverride map
+  for (tOgreCfgOverride::iterator iter=mCfgOverride.begin();
+       iter!=mCfgOverride.end(); ++iter)
+    {
+      mRoot->getRenderSystem()->setConfigOption(iter->first, iter->second);
+    }
+  
   LOGI("Initialising Ogre");
   initialiseOgre();
   initialiseOIS();
@@ -493,12 +502,9 @@ GameEngine::reconfigure()
    * are now invalid.
    */
   mCurrentState->enter(this);
-  
-  if (mToFullscreen)
-    mTempMsg->print("Fullscreen : On", 4);
-  else
-    mTempMsg->print("Fullscreen : Off", 4);
 
+  mTempMsg->print(mRestartMessage, 4);
+  
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
   
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,

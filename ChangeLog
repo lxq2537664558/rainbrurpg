@@ -1,5 +1,10 @@
 2016-11-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.hpp (mRestartMessage): to-be-printed message
+	after reconfigure is now a member.
+	* src/client/GameEngine.hpp (mCfgOverride): new ogre configuration
+	overriding map.
+
 	* src/client/OgreCfgSaver.cpp: new class used to serialize new
 	Ogre configuration after fullscreen switch.
 	* src/client/GameEngine.cpp (keyPressed): taking a screenshot now

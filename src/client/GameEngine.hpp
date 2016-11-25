@@ -22,6 +22,7 @@
 #define _GAME_ENGINE_HPP_
 
 #include <string>
+#include <map>
 
 #include <OgreFrameListener.h>
 #include <OgreRenderWindow.h>
@@ -54,6 +55,17 @@ namespace CEGUI
 class MainMenu;
 class TempMessage;
 // End of forward declarations
+
+using namespace std;
+
+/** A map used to override Ogre configuration when restarting engine
+  *
+  * Instead of switch fullscreen using a boolean, we set
+  * the new confiuration in this map. All configuration in this
+  * map will override the current Renderer's ConfigMapOption.
+  *
+  */
+typedef map<string,string> tOgreCfgOverride; 
 
 class GameEngine: public Ogre::FrameListener,
 		  public Ogre::WindowEventListener,
@@ -119,6 +131,8 @@ private:
   Ogre::Timer mTimer;
   MainMenu* mMainMenu;
   TempMessage* mTempMsg; // A temporary message buffer
+  tOgreCfgOverride mCfgOverride; // Ogre configuration override map
+  string mRestartMessage;  // The temporary message printed at reconfiguration
 };
 
 #endif // !_GAME_ENGINE_HPP_
