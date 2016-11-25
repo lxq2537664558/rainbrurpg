@@ -1,5 +1,9 @@
 2016-11-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (reconfigure): mCfgOverride cleaned after
+	override.
+	* src/client/GameEngine.hpp (toFullscreen): removed.
+
 	* src/client/GameEngine.hpp (mRestartMessage): to-be-printed message
 	after reconfigure is now a member.
 	* src/client/GameEngine.hpp (mCfgOverride): new ogre configuration

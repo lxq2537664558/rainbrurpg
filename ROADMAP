@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-25 ven. 06:03]--[2016-11-25 ven. 06:16] =>  0:13
      CLOCK: [2016-11-25 ven. 05:33]--[2016-11-25 ven. 06:01] =>  0:28
      CLOCK: [2016-11-25 ven. 03:30]--[2016-11-25 ven. 05:31] =>  2:01
      CLOCK: [2016-11-24 jeu. 07:42]--[2016-11-24 jeu. 08:17] =>  0:35
@@ -227,12 +228,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] Add this key binding to the README.md file  
   - [X] Must write a centered message with name of the created file
 - [X] Should save this configuration for future launchs
-- [ ] We must prepare the Ogre ConfigMap override for future
+- [X] We must prepare the Ogre ConfigMap override for future
   multi-options reconfigure
-  - [ ] With a Specialized map used to override Ogre options
+  - [X] With a Specialized map used to override Ogre options
     - Does a map<string,string> is good ? or we need <string, Option>
     - It can be a string,string
-    - [ ] Must clear the map after config override  
+    - [X] Must clear the map after config override  
 - [-] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
   - [ ] Must get the supported "Video Mode" list
     OgreOptionsMap has a supported value list.
@@ -242,7 +243,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - Maybe a map<string, string> of to-be-overriden options
       configure it in keypressed callback then reconfigure. So we don't
       need toFullscreen member anymore.
-  - [ ] Now can safely remove toFullscreen member
+  - [X] Now can safely remove toFullscreen member
 - [ ] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.

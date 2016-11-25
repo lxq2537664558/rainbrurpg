@@ -49,7 +49,6 @@ GameEngine::GameEngine(void):
   mResourcesCfg("resources.cfg"),
   mShutdown(false),
   mRestart(false),
-  mToFullscreen(false), // do not interfere with Ogre's configdialog
   mSceneMgr(NULL),
   mContext(NULL),
   mRenderer(NULL),
@@ -479,6 +478,7 @@ GameEngine::reconfigure()
     {
       mRoot->getRenderSystem()->setConfigOption(iter->first, iter->second);
     }
+  mCfgOverride.clear();
   
   LOGI("Initialising Ogre");
   initialiseOgre();

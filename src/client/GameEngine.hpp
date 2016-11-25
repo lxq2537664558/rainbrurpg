@@ -122,7 +122,6 @@ private:
   Ogre::String mResourcesCfg;
   bool mShutdown;
   bool mRestart; //!< Used to reconfigure Ogre (i.e. for fullscreen
-  bool mToFullscreen; //!< Will reconfigure Ogre with this state
   Ogre::SceneManager* mSceneMgr;
 
   CEGUI::GUIContext* mContext;
