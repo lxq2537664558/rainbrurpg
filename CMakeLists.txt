@@ -142,6 +142,7 @@ set (client-src
   src/client/LoadingBar.cpp
   src/client/MainMenu.cpp
   src/client/NyiDialog.cpp
+  src/client/OgreCfgSaver.cpp
   src/client/StateManager.cpp
   src/client/StateSaver.cpp
   src/client/TempMessage.cpp

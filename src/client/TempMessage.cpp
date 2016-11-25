@@ -25,15 +25,7 @@
 #include <CEGUI/GeometryBuffer.h>
 #include <CEGUI/Vector.h>
 #include <CEGUI/Font.h>
-/*
-#include <CEGUI/Window.h>
-#include <CEGUI/GUIContext.h>
-#include <CEGUI/WindowManager.h>
-#include <CEGUI/widgets/PushButton.h>
-#include <CEGUI/GeometryBuffer.h>
-#include <CEGUI/RendererModules/Ogre/Renderer.h>
-#include <CEGUI/Vector.h>
-*/
+
 #include "GameEngine.hpp"
 
 using namespace CEGUI;
@@ -66,6 +58,7 @@ TempMessage::~TempMessage()
 void
 TempMessage::print(const string& str, int seconds)
 {
+  mBuffer->reset();
   int width = mFont->getTextExtent(str);
 
   mFont->drawText(*mBuffer, str, CEGUI::Vector2f(midscreen - (width/2), 0), 0,

@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-25 ven. 03:30]--[2016-11-25 ven. 05:31] =>  2:01
      CLOCK: [2016-11-24 jeu. 07:42]--[2016-11-24 jeu. 08:17] =>  0:35
      CLOCK: [2016-11-24 jeu. 05:44]--[2016-11-24 jeu. 06:17] =>  0:33
      CLOCK: [2016-11-24 jeu. 03:51]--[2016-11-24 jeu. 04:52] =>  1:01
@@ -218,17 +219,17 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] We can get width of text using Font::getTextExtent
   - [X] After that, we have to center it  
   - [X] Shoudl print Fullscreen : On/Off
-- [ ] Should save this configuration for future launchs
-- [ ] We must prepare the Ogre ConfigMap override for future
-  multi-options reconfigure
-  - [ ] With a Specialized map used to override Ogre options
-    Does a map<string,string> is good ? or we need <string, Option>
-- [-] F11 write a screenshot to file
+- [X] F11 write a screenshot to file
   Must save the CEGUI::GeometryBuffers
   - [X] Using RenderWindow::writeContentToTimestampedFile()
     http://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_render_window.html#a2c3046ce0995cc3058e2919b985e80f6
   - [X] Add this key binding to the README.md file  
-  - [ ] Must write a centered message with name of the created file
+  - [X] Must write a centered message with name of the created file
+- [X] Should save this configuration for future launchs
+- [ ] We must prepare the Ogre ConfigMap override for future
+  multi-options reconfigure
+  - [ ] With a Specialized map used to override Ogre options
+    Does a map<string,string> is good ? or we need <string, Option>
 - [ ] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
   - [ ] Must get the supported "Video Mode" list
   - [ ] We must find a way to tell which options to override in
@@ -242,6 +243,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
+- [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
+
 **** TODO Handle doxygen documentation
      CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
      CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15

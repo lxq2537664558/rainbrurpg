@@ -1,3 +1,10 @@
+2016-11-25  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/OgreCfgSaver.cpp: new class used to serialize new
+	Ogre configuration after fullscreen switch.
+	* src/client/GameEngine.cpp (keyPressed): taking a screenshot now
+	print a TempMessage including name of PNG file.
+
 2016-11-24  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (reconfigure): use TempMessage to

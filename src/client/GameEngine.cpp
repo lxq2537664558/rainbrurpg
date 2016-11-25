@@ -33,6 +33,7 @@
 #include "MainMenu.hpp"
 #include "StateSaver.hpp"
 #include "TempMessage.hpp"
+#include "OgreCfgSaver.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -314,19 +315,23 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
 	  mRestart = true;
 	  mToFullscreen = !mWindow->isFullScreen();
 	}
+      break;
     case OIS::KC_F11:
       /* F11 to take a screenshot */
       try
 	{
 	  fn = mWindow->writeContentsToTimestampedFile("rainbrurpg-", ".png");
-	  LOGI("Screenshot saved in " << fn);
+	  ostringstream oss;
+	  oss << "Screenshot saved in " << fn;
+	  string msg = oss.str();
+	  mTempMsg->print(oss.str(), 4);
 	}
       catch(Ogre::Exception e)
 	{
 	  LOGE("Cannot take screenshot" << fn);
 	  LOGE(e.what());
 	}
-      
+      break;
     default:
       break;
     }
@@ -465,13 +470,17 @@ GameEngine::reconfigure()
     mRoot->getRenderSystem()->setConfigOption("Full Screen", "Yes");
   else
     mRoot->getRenderSystem()->setConfigOption("Full Screen", "No");
-  
+
   LOGI("Initialising Ogre");
   initialiseOgre();
   initialiseOIS();
   setupResources();
   initialiseCegui();
 
+  // Try to get Ogre options map and save them
+  OgreCfgSaver ocs("ogre.cfg", mRoot->getRenderSystem(),
+		   &mRoot->getRenderSystem()->getConfigOptions());
+  
   /* TODO: handle this case when another state will be the current one 
    * We have to completely re-instance it.
    */
