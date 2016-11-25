@@ -75,7 +75,9 @@ CeguiDialog::CeguiDialog(const string& layoutName, const string& uniqueName):
 
 CeguiDialog::~CeguiDialog()
 {
-  mWmgr->destroyWindow(mDialogWindow);
+  if (mWmgr && mDialogWindow)
+    mWmgr->destroyWindow(mDialogWindow);
+  
   mRootWindow   = NULL;
   mWmgr         = NULL;
 }

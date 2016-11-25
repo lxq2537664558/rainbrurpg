@@ -1,5 +1,12 @@
 2016-11-25  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (keyPressed): handle Alt++/Alt+- to change
+	resolution.
+	* src/client/GameEngine.cpp (getPreviousResolution): get the previous
+	available resolution from Ogre.
+	* src/client/GameEngine.cpp (getNextResolution): get the next available
+	resolution from Ogre.
+
 	* src/client/GameEngine.cpp (reconfigure): mCfgOverride cleaned after
 	override.
 	* src/client/GameEngine.hpp (toFullscreen): removed.

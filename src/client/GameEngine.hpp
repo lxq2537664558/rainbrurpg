@@ -110,6 +110,8 @@ protected:
   bool onOptions(const CEGUI::EventArgs&);
   bool overlayHandler(const CEGUI::EventArgs&);
 
+  string getNextResolution(bool*);
+  string getPreviousResolution(bool*);
   
 private:
   Ogre::Root* mRoot;

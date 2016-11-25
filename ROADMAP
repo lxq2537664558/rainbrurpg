@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Handle the Options gamestate
+     CLOCK: [2016-11-25 ven. 06:25]--[2016-11-25 ven. 09:40] =>  3:15
      CLOCK: [2016-11-25 ven. 06:03]--[2016-11-25 ven. 06:16] =>  0:13
      CLOCK: [2016-11-25 ven. 05:33]--[2016-11-25 ven. 06:01] =>  0:28
      CLOCK: [2016-11-25 ven. 03:30]--[2016-11-25 ven. 05:31] =>  2:01
@@ -234,8 +235,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - Does a map<string,string> is good ? or we need <string, Option>
     - It can be a string,string
     - [X] Must clear the map after config override  
-- [-] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
-  - [ ] Must get the supported "Video Mode" list
+- [X] Maybe use the same concept for [Alt++]/{Alt+-] to change resolution
+  - [X] Must get the supported "Video Mode" list
     OgreOptionsMap has a supported value list.
     Must first find the actual value, then select the next/previous one
   - [X] We must find a way to tell which options to override in
@@ -244,6 +245,18 @@ Error is fixed, was due to a src/services/Services.hpp old code
       configure it in keypressed callback then reconfigure. So we don't
       need toFullscreen member anymore.
   - [X] Now can safely remove toFullscreen member
+  - [ ] We now have a segfault when changing resolution but not fullscreen
+    When destroying CeguiDialog
+    Error in `./rainbrurpg-client': free(): invalid pointer: 0x00007ffce72ca018
+When destroying a map<string,string>
+#13 0x00000000004385e9 in GameEngine::~GameEngine() ()
+#14 0x0000000000452c7d in main ()
+    - The client accepted to get a lower resolution when at 800x600
+      and it resulted in '�T' string
+    - It almost works : we have a segfault one time on 5/6 reschange.
+      Does this segfaults only occurs when switching to lowest/higthest res ?
+      Not only, on 1024x720
+  - [ ] Add these keybindings to README.md when finished
 - [ ] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
@@ -251,7 +264,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
 - [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
-
+- [ ] Some overlay disappears in 1280x1024 resolution
 **** TODO Handle doxygen documentation
      CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
      CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15

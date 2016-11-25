@@ -36,4 +36,5 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
+- Auto-save configuration on fullscreen/resolution changes
 - Print fullscreen status after reconfigure

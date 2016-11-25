@@ -24,6 +24,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <algorithm>   // Uses std::find()
 
 #include <Ogre.h>
 #include <OIS.h>
@@ -325,8 +326,39 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
 
 	}
       break;
-    case OIS::KC_F11:
-      /* F11 to take a screenshot */
+    case OIS::KC_ADD: /* Next resolution Up */
+      if (mKeyboard->isModifierDown(OIS::Keyboard::Alt))
+	{
+	  bool canChange;
+	  string nextUp = getNextResolution(&canChange);
+	  if (canChange)
+	    {
+	      mCfgOverride["Video Mode"] = nextUp;
+	      mRestartMessage = "Resolution : " + nextUp;
+	      mRestart = true;
+	    }
+	  else{
+	    mTempMsg->print("Can't get highter resolution", 4);
+	  }
+	}
+      break;
+    case OIS::KC_SUBTRACT: /* Next resolution down */
+      if (mKeyboard->isModifierDown(OIS::Keyboard::Alt))
+	{
+	  bool canChange;
+	  string nextDown = getPreviousResolution(&canChange);
+	  if (canChange)
+	    {
+	      mCfgOverride["Video Mode"] = nextDown;
+	      mRestartMessage = "Resolution : " + nextDown;
+	      mRestart = true;
+	    }
+	  else{
+	    mTempMsg->print("Can't get lower resolution", 4);
+	  }
+	}
+      break;
+    case OIS::KC_F11: /* F11 to take a screenshot */
       try
 	{
 	  fn = mWindow->writeContentsToTimestampedFile("rainbrurpg-", ".png");
@@ -554,4 +586,79 @@ GameEngine::initialiseOgre()
   
   WindowEventUtilities::addWindowEventListener(mWindow, this);
 
+}
+
+/** Return the next available resolution
+  *
+  * Will set canChange to true if can be changed or false otherwide.
+  *
+  */
+string
+GameEngine::getNextResolution(bool* canChange)
+{
+  // Get our current resolution
+  ConfigOptionMap com = mRoot->getRenderSystem()->getConfigOptions();
+  
+  StringVector pv = com["Video Mode"].possibleValues;
+  string res = com["Video Mode"].currentValue;
+  StringVector::iterator it = find(pv.begin(), pv.end(),res);
+
+  
+  // Get resolution list
+  if (it == pv.end()) // Can't find value
+    {
+      *canChange = false;
+      LOGE("Can't find current resolution (" << res << ")");
+    }
+  else
+    {
+      if (++it == pv.end())
+	{
+	  *canChange = false;
+	  LOGI("Can't change resolution." <<res<< "is already the highest one");
+	}
+      else
+	{
+	  *canChange = true;
+	  string toRes = *it;
+	  LOGI("Next resolution will be " << toRes);
+	  return toRes;
+	}
+    }
+}
+
+string
+GameEngine::getPreviousResolution(bool* canChange)
+{
+  // Get our current resolution
+  ConfigOptionMap com = mRoot->getRenderSystem()->getConfigOptions();
+  StringVector pv = com["Video Mode"].possibleValues;
+
+  /*  // Output the vector content
+  for (StringVector::iterator it = pv.begin(); it != pv.end(); ++it)
+    cout << *it << endl;
+  */
+  
+  string res = com["Video Mode"].currentValue;
+  StringVector::iterator it = find(pv.begin(), pv.end(),res);
+
+  // Get resolution list
+  if (it == pv.end()) // Can't find value
+    {
+      *canChange = false;
+      LOGE("Can't find current resolution (" << res << ")");
+    }
+  else
+    {
+      if (it == pv.begin()){
+	  *canChange = false;
+	  LOGI("Can't change resolution." <<res<< "is already the lowest one");
+      }
+      else{
+	*canChange = true;
+	string toRes =  *--it;
+	cout << "Next resolution will be " << toRes << endl;
+	return toRes;
+      }
+    }
 }
