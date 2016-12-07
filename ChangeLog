@@ -1,5 +1,10 @@
 2016-12-07  Jérôme Pasquier  <rainbru@free.fr>
 
+	* media/schemes/TaharezLook.scheme: extracted from schemes.zip to be
+	modified.
+	* media/cegui-orig/Makefile.am: remove unneeded old file.
+	* ROADMAP: new section for actual GUI work.
+
 	* src/logger/ObjectAttribute.hpp: update doxygen documentation.
 	* src/logger/ObjectAttribute.hpp: add const qualifier to getters.
 

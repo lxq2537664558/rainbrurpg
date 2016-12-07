@@ -14,7 +14,8 @@ FileSystem=../media/imagesets
 [Fonts]
 Zip=../media/cegui-orig/fonts.zip
 [Schemes]
-Zip=../media/cegui-orig/schemes.zip
+#Zip=../media/cegui-orig/schemes.zip
+FileSystem=../media/schemes
 [LookNFeel]
 Zip=../media/cegui-orig/looknfeel.zip
 [Layouts]

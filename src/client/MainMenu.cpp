@@ -75,12 +75,22 @@ MainMenu::enter(GameEngine* ge)
   
   mGameEngine = ge;
   
-  //  Loading the main menu
-  mMenuWindow = loadLayout("menu.layout", "root/GameMenu");
-
-  // Get screen size and font
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
-  mDejavuSans12 = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+  //  Loading the main menu
+  try
+    {
+      mMenuWindow = loadLayout("menu.layout", "root/GameMenu");
+
+      if(! CEGUI::FontManager::getSingleton().isDefined( "DejaVuSans-12" ) )
+	LOGE("'DejaVuSans-12' font is undefined");
+      
+  // Get screen size and font
+      mDejavuSans12 = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+    }
+  catch(CEGUI::UnknownObjectException e)
+    {
+      LOGE("Can't load 'DejaVuSans-12' font");
+    }
   
   // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
