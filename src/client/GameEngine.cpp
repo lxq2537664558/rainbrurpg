@@ -171,7 +171,7 @@ GameEngine::initialiseCegui()
   CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
   CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 
-  CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+    CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
   CEGUI::SchemeManager::getSingleton().createFromFile("VanillaSkin.scheme");
   //  CEGUI::SchemeManager::getSingleton().createFromFile("VanillaCommonDialogs.scheme");
 

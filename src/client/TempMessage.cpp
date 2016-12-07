@@ -26,9 +26,13 @@
 #include <CEGUI/Vector.h>
 #include <CEGUI/Font.h>
 
+#include "Logger.hpp"
+
 #include "GameEngine.hpp"
 
 using namespace CEGUI;
+
+static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 TempMessage::TempMessage(GameEngine* ge):
   mEngine(ge),

@@ -122,15 +122,18 @@ Error is fixed, was due to a src/services/Services.hpp old code
 **** TODO Handle coverity scan 
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
-**** TODO GUI scale handling and Options gamestate
+**** TODO [feature_GuiScaling] GUI scale handling and Options gamestate
+     CLOCK: [2016-12-07 mer. 07:27]--[2016-12-07 mer. 08:28] =>  1:01
      CLOCK: [2016-12-07 mer. 04:06]--[2016-12-07 mer. 04:39] =>  0:33
 - [ ] The GUI is huge at high resolution
+  - [ ] Fix this CEGUIerror
+    =No object of type 'Font' named 'DejaVuSans-12' i=
+    Can't find the reason of this error
+    - [ ] Try to find source of error using try/catch
   - [ ] Maybe try to add a scale factor
     TaharezLook uses DEjaVu-12
     See if font's AutoScaled value isn't set to True
     Maybe also on the imageset definition
-  - [ ] Fix this CEGUIerror
-    =No object of type 'Font' named 'DejaVuSans-12' i=
 - [ ] Changing resolution
   We sometimes have a segfault when changing resolution.
   - [ ] Add a ResolutionHandler class we can unit test
@@ -138,8 +141,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
       If this function can't have actual resolution from Ogre cfg file.
       Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
-- [ ] Add these keybindings to README.md when finished
-
 - [X] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.

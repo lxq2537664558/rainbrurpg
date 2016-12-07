@@ -39,7 +39,7 @@ main(int argc, char** argv)
 
   LOGI("Starting main loop");
   try
-    {
+  {
       GameEngine ge;
       do{
 	if (ge.restarting())
@@ -48,13 +48,14 @@ main(int argc, char** argv)
 	  ge.run();
       }
       while (ge.restarting());
-    }
+  }
   catch (const std::exception &exc)
     {
       LOGE("Something went wrong in the GameEngine. Please see the Ogre logs.");
       LOGE("Catched exception :" << exc.what());
       return 1;
     }
+  
   LOGI("main loop ended");
   Rpg::Logger::free();
   return 0;
