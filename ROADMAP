@@ -123,14 +123,17 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO GUI scale handling and Options gamestate
+     CLOCK: [2016-12-07 mer. 12:44]--[2016-12-07 mer. 13:52] =>  1:08
      CLOCK: [2016-12-07 mer. 04:06]--[2016-12-07 mer. 04:39] =>  0:33
 - [ ] The GUI is huge at high resolution
+  - [ ] Fix this CEGUIerror
+    =No object of type 'Font' named 'DejaVuSans-12' i=
+    - [ ] First isolate the call that throws this exception
+      At least two error in TempMessage() and MainMenu()
   - [ ] Maybe try to add a scale factor
     TaharezLook uses DEjaVu-12
     See if font's AutoScaled value isn't set to True
     Maybe also on the imageset definition
-  - [ ] Fix this CEGUIerror
-    =No object of type 'Font' named 'DejaVuSans-12' i=
 - [ ] Changing resolution
   We sometimes have a segfault when changing resolution.
   - [ ] Add a ResolutionHandler class we can unit test

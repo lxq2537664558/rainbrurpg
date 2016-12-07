@@ -1,5 +1,10 @@
 2016-12-07  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (initialiseCegui): found the cause of
+	the font exception.
+	* src/client/GameEngine.cpp (run): isolation of the CEGUI font
+	exception.
+
 	* media/schemes/TaharezLook.scheme: extracted from schemes.zip to be
 	modified.
 	* media/cegui-orig/Makefile.am: remove unneeded old file.
