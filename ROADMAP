@@ -245,6 +245,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
       configure it in keypressed callback then reconfigure. So we don't
       need toFullscreen member anymore.
   - [X] Now can safely remove toFullscreen member
+- [ ] The GUI is huge at high resolution
+  - [ ] Maybe try to add a scale factor
+- [ ] Changing resolution
   - [ ] We now have a segfault when changing resolution but not fullscreen
     When destroying CeguiDialog
     Error in `./rainbrurpg-client': free(): invalid pointer: 0x00007ffce72ca018
@@ -256,6 +259,8 @@ When destroying a map<string,string>
     - It almost works : we have a segfault one time on 5/6 reschange.
       Does this segfaults only occurs when switching to lowest/higthest res ?
       Not only, on 1024x720
+    - Second problem here is that CEGUI element are scaled
+      In higher resolutions, GUI is really big
   - [ ] Add these keybindings to README.md when finished
 - [ ] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
@@ -266,6 +271,7 @@ When destroying a map<string,string>
 - [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
 - [ ] Some overlay disappears in 1280x1024 resolution
 **** TODO Handle doxygen documentation
+     CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
      CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
      CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
      CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
@@ -274,7 +280,7 @@ When destroying a map<string,string>
   Maybe with submodules. In fact handled by a page.
 - [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
   Because using a \subpage command in mainpage makes it appears as a subpage
-- [ ] Create a real Homepage in src/Mainpage.hmm
+- [X] Create a real Homepage in src/Mainpage.hmm
 - [ ] May document undocumented members (see docygen.log)
 **** DONE GameState system switch and more client work
      CLOCK: [2016-11-09 mer. 04:19]--[2016-11-09 mer. 04:45] =>  0:26

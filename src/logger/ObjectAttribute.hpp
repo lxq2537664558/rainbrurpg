@@ -32,15 +32,17 @@ namespace Rpg
 {
   /** Defines the attribute on an object
     *
+    * An attribute is a type/name/value tuple used in ObjectInspector.
+    *
     */
   class ObjectAttribute
   {
   public:
     ObjectAttribute(const std::string&, const std::string&, const std::string&);
 
-    const std::string& getType(void);
-    const std::string& getName(void);
-    const std::string& getValue(void);
+    const std::string& getType(void) const;
+    const std::string& getName(void) const;
+    const std::string& getValue(void) const;
 
   private:
     std::string type;  //!< The internal type of the attribute

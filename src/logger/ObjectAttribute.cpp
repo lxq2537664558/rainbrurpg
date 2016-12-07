@@ -44,21 +44,32 @@ Rpg::ObjectAttribute::ObjectAttribute(const std::string& vType,
 /** Get the type of this attribute
   *
   * \return The type as a string
+  *
   */
 const std::string&
-Rpg::ObjectAttribute::getType(void)
+Rpg::ObjectAttribute::getType(void) const
 {
   return this->type;
 }
 
+/** Get the name of this attribute
+  *
+  * \return The name as a string
+  *
+  */
 const std::string& 
-Rpg::ObjectAttribute::getName(void)
+Rpg::ObjectAttribute::getName(void) const
 {
   return this->name;
 }
 
+/** Return the actual value of this attribute
+  *
+  * \return The attribute's value as a string.
+  *
+  */
 const std::string& 
-Rpg::ObjectAttribute::getValue(void)
+Rpg::ObjectAttribute::getValue(void) const
 {
   return this->value;
 }
