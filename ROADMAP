@@ -150,6 +150,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
 - [ ] Some overlay disappears in 1280x1024 resolution
 **** TODO Handle doxygen documentation
+     CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
      CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
      CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
      CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
@@ -160,7 +161,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
   Because using a \subpage command in mainpage makes it appears as a subpage
 - [X] Create a real Homepage in src/Mainpage.hmm
-- [ ] May document undocumented members (see docygen.log)
+- [ ] May document undocumented members (see doxygen.log)
 **** DONE Handle the Options gamestate
      CLOCK: [2016-11-25 ven. 06:25]--[2016-11-25 ven. 09:40] =>  3:15
      CLOCK: [2016-11-25 ven. 06:03]--[2016-11-25 ven. 06:16] =>  0:13

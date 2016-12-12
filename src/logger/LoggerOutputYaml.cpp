@@ -25,11 +25,16 @@
 
 #include "LoggerOutputYaml.hpp"
 
-// A simple shortcut macro to Rpg::LoggerOutputYaml::escape()
+/// A simple shortcut macro to Rpg::LoggerOutputYaml::escape()
 #define _e(STR) (this->escape(STR))
 
 using namespace std;
 
+/** Output constructor
+  *
+  * /param vFilename The YAML filename without extension.
+  *
+  */
 Rpg::LoggerOutputYaml::LoggerOutputYaml(const std::string& vFilename)
 {
   setFilename (vFilename);
@@ -118,12 +123,26 @@ Rpg::LoggerOutputYaml::logHeader(const LogHeader* lh)
         << "lines:" << endl;
 }
 
+/** Escape the given string with double quotes
+  *
+  * Escape a string to be printed in YAML file.
+  *
+  * \param str The string to be escaped.
+  *
+  * \return The double-quotes escaped string.
+  *
+  */
 string 
-Rpg::LoggerOutputYaml::escape(const string& str)
+Rpg::LoggerOutputYaml::escape(const std::string& str)
 {
   return "\"" + str + "\"";
 }
 
+/** Set the output filename
+  *
+  * \param vFilename the filename without extension.
+  *
+  */
 void  
 Rpg::LoggerOutputYaml::setFilename(const std::string& vFilename)
 {

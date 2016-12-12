@@ -63,7 +63,7 @@ namespace Rpg
     
   private:
     std::ofstream mFile;       //!< The file to log to
-    std::string mFilename;
+    std::string mFilename;     //!< The log filename
   };
 
 } // !namespace Rpg

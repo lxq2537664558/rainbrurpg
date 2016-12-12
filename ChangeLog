@@ -1,3 +1,7 @@
+2016-12-12  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/logger/LoggerOutputYaml.cpp: update doxygen documentation.
+
 2016-12-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/TempMessage.cpp: add a static logger.
