@@ -1,3 +1,7 @@
+2016-12-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/cegui-orig/fonts.zip: extract DejaVu-12 fonts.
+
 2016-12-07  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (initialiseCegui): found the cause of
