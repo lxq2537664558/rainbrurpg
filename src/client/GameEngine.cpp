@@ -185,13 +185,7 @@ GameEngine::initialiseCegui()
 
   // Created here to make sure it will be called at reconfigure
   if (!mTempMsg){
-    try{
       mTempMsg = new TempMessage(this);
-    }
-  catch(CEGUI::UnknownObjectException e)
-    {
-      LOGE("Cannot get a CEGUI font");
-    }
 
   }
 }
