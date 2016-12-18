@@ -1,5 +1,7 @@
 2016-12-18  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/TempMessage.cpp (TempMessage): using DejaVuSans-10-NoScale
+	make the messages appear again.
 	* src/client/GameEngine.cpp (initialiseCegui): move the try/catch
 	of the font exception into TempMessage.cpp.
 

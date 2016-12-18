@@ -36,6 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (3) Disable TempMessage to fix a segfault
+- (5) GUI font is not scaling anymore
+- TempMessage now uses DejaVuSans-10-NoScale
+- Disable TempMessage to fix a segfault
 - Auto-save configuration on fullscreen/resolution changes
 - Print fullscreen status after reconfigure

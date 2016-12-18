@@ -43,7 +43,7 @@ TempMessage::TempMessage(GameEngine* ge):
 {
   // The font object
     try{
-      mFont = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+      mFont = &CEGUI::FontManager::getSingleton().get("DejaVuSans-10-NoScale");
     }
   catch(CEGUI::UnknownObjectException e)
     {
