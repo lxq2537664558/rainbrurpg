@@ -61,7 +61,7 @@ public:
 
   bool exists(const string&)const;
 
-  /** Store a valeu with the given unique key
+  /** Store a value with the given unique key
     *
     * If the key already exists, it will throw an instance of 
     * RainbrurpgException.

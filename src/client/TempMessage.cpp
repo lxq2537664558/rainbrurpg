@@ -18,6 +18,8 @@
  *
  */
 
+#include <Logger.hpp> // Before headers to avoid std::list/Ogre::list conflict
+
 #include "TempMessage.hpp"
 
 #include <CEGUI/System.h>
@@ -42,7 +44,13 @@ TempMessage::TempMessage(GameEngine* ge):
   midscreen(0)
 {
   // The font object
-  mFont = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
+    try{
+      mFont = &CEGUI::FontManager::getSingleton().get("DejaVuSans-10-NoScale");
+    }
+  catch(CEGUI::UnknownObjectException e)
+    {
+      LOGE("Cannot get a CEGUI font");
+    }
 
   // Create the geometry buffer
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
@@ -63,10 +71,14 @@ void
 TempMessage::print(const string& str, int seconds)
 {
   mBuffer->reset();
-  int width = mFont->getTextExtent(str);
-
-  mFont->drawText(*mBuffer, str, CEGUI::Vector2f(midscreen - (width/2), 0), 0,
-		  CEGUI::Colour(0xFFFFFFFF));
+  if (mFont)
+    {
+      // Get text width to center it
+      int width = mFont->getTextExtent(str);
+      mFont->drawText(*mBuffer, str,
+		      CEGUI::Vector2f(midscreen - (width/2), 0), 0,
+		      CEGUI::Colour(0xFFFFFFFF));
+    }
   remaining = seconds;
 }
 

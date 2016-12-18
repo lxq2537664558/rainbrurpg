@@ -1,10 +1,27 @@
+2016-12-18  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/TempMessage.cpp (TempMessage): using DejaVuSans-10-NoScale
+	make the messages appear again.
+	* src/client/GameEngine.cpp (initialiseCegui): move the try/catch
+	of the font exception into TempMessage.cpp.
+
+2016-12-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/cegui-orig/fonts.zip: add media/fonts filesystem.
+
+	* media/cegui-orig/fonts.zip: extract DejaVu-12 fonts.
+
 2016-12-12  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/logger/LoggerOutputYaml.cpp: update doxygen documentation.
 
 2016-12-07  Jérôme Pasquier  <rainbru@free.fr>
-
 	* src/client/TempMessage.cpp: add a static logger.
+
+	* src/client/GameEngine.cpp (initialiseCegui): found the cause of
+	the font exception.
+	* src/client/GameEngine.cpp (run): isolation of the CEGUI font
+	exception.
 
 	* media/schemes/TaharezLook.scheme: extracted from schemes.zip to be
 	modified.

@@ -131,19 +131,43 @@ Error is fixed, was due to a src/services/Services.hpp old code
     Can't find the reason of this error
     - [ ] Try to find source of error using try/catch
   - [ ] Maybe try to add a scale factor
-    TaharezLook uses DEjaVu-12
+    TaharezLook uses DejaVu-12
+**** TODO GUI scale handling and Options gamestate
+     CLOCK: [2016-12-18 dim. 09:08]--[2016-12-18 dim. 09:24] =>  0:16
+     CLOCK: [2016-12-18 dim. 09:05]--[2016-12-18 dim. 09:07] =>  0:02
+     CLOCK: [2016-12-18 dim. 08:20]--[2016-12-18 dim. 08:35] =>  0:15
+     CLOCK: [2016-12-18 dim. 07:47]--[2016-12-18 dim. 08:01] =>  0:14
+     CLOCK: [2016-12-14 mer. 01:54]--[2016-12-14 mer. 02:46] =>  0:52
+     CLOCK: [2016-12-07 mer. 12:44]--[2016-12-07 mer. 13:52] =>  1:08
+     CLOCK: [2016-12-07 mer. 04:06]--[2016-12-07 mer. 04:39] =>  0:33
+- [X] The GUI is huge at high resolution
+  - [X] Fix this CEGUI error: =No object of type 'Font' named 'DejaVuSans-12' i=
+    - [X] First extract DejaVu font and add its location to resources.cfg.in
+    - [X] Finally, maybe we don't have to extract these files
+      Because DejaVu-12-NoScale can be the trick
+      *Can't fix* : really an unknown issue
+    - [X] First isolate the call that throws this exception
+      At least two error in TempMessage() and MainMenu()
+  - [X] The segfault is fixed (comes from TempMessage
+    but we don't have message when switching fullscreen or changing resolution
+    However, the version number is printed correctly
+    Using DejavuSans-12-NoScale fixed segfault
+  - [X] Maybe try to add a scale factor
+    TaharezLook uses DejaVu-12
     See if font's AutoScaled value isn't set to True
     Maybe also on the imageset definition
+- [X] It could be fine if this changes could be serialized in the same
+  way Ogre does it. This way, at next startup, the Ogre config dialog
+  would be defaulted to in-game options.
+- [ ] Need to merge GuiScaling branch
 - [ ] Changing resolution
   We sometimes have a segfault when changing resolution.
   - [ ] Add a ResolutionHandler class we can unit test
+    - [ ] May try the DejaVuSans-12-NoScale font
     - [ ] Get the actually rsolution using a probe(GameEngine*) function
       If this function can't have actual resolution from Ogre cfg file.
       Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
-- [X] It could be fine if this changes could be serialized in the same
-  way Ogre does it. This way, at next startup, the Ogre config dialog
-  would be defaulted to in-game options.
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

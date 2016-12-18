@@ -184,8 +184,10 @@ GameEngine::initialiseCegui()
   mContext->injectMouseMove(-mousePos.d_x,-mousePos.d_y);
 
   // Created here to make sure it will be called at reconfigure
-  if (!mTempMsg)
-    mTempMsg = new TempMessage(this);
+  if (!mTempMsg){
+      mTempMsg = new TempMessage(this);
+
+  }
 }
 
 /** Return true to continue rendering, false to drop out of the rendering loop
@@ -206,23 +208,30 @@ void
 GameEngine::run()
 {
   LOGE("GameEngine::run() called...");
-  
+      
   setupResources();
   initialiseCegui();
+    
   
+
   setCurrentState(mMainMenu);
 
- 
+
+  
   // This line in needed to make the CEGUI::GeometryBuffer objects actually
   // appear
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
   
   mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
 	      CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
+
+
+  // catch
   
   // Start rendering
   LOGI("Staring rendering loop");
   mRoot->startRendering();
+
 
 }
 

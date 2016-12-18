@@ -11,13 +11,17 @@ Zip=../media/OgreCore.zip
 Zip=../media/cegui-orig/imagesets-1.zip
 Zip=../media/cegui-orig/imagesets-2.zip
 FileSystem=../media/imagesets
+
 [Fonts]
 Zip=../media/cegui-orig/fonts.zip
+
 [Schemes]
 #Zip=../media/cegui-orig/schemes.zip
 FileSystem=../media/schemes
+
 [LookNFeel]
 Zip=../media/cegui-orig/looknfeel.zip
+
 [Layouts]
 Zip=../media/cegui-orig/layouts.zip
 FileSystem=../media/layouts

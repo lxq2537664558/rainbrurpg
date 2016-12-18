@@ -74,17 +74,25 @@ MainMenu::enter(GameEngine* ge)
     LOGE("MainMenu gamestate received a NULL GameEngine pointer");
   
   mGameEngine = ge;
-  
-  //  Loading the main menu
-  mMenuWindow = loadLayout("menu.layout", "root/GameMenu");
+  const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
 
-  if(! CEGUI::FontManager::getSingleton().isDefined( "DejaVuSans-12" ) )
-    LOGE("'DejaVuSans-12' font is undefined");
+  //  Loading the main menu
+  string fontname = "DejaVuSans-10-NoScale";
+  try
+    {
+      mMenuWindow = loadLayout("menu.layout", "root/GameMenu");
+
+      if(! CEGUI::FontManager::getSingleton().isDefined( fontname ) )
+	LOGE("'" << fontname << "' font is undefined");
       
   // Get screen size and font
-  const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
-  mDejavuSans12 = &CEGUI::FontManager::getSingleton().get("DejaVuSans-12");
-
+      mDejavuSans12 = &CEGUI::FontManager::getSingleton().get(fontname);
+    }
+  catch(CEGUI::UnknownObjectException e)
+    {
+      LOGE("Can't load '" << fontname << "' font");
+    }
+  
   // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
