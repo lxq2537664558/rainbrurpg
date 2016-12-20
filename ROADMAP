@@ -133,6 +133,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] Maybe try to add a scale factor
     TaharezLook uses DejaVu-12
 **** TODO GUI scale handling and Options gamestate
+     CLOCK: [2016-12-20 mar. 04:22]--[2016-12-20 mar. 05:38] =>  1:16
      CLOCK: [2016-12-18 dim. 09:08]--[2016-12-18 dim. 09:24] =>  0:16
      CLOCK: [2016-12-18 dim. 09:05]--[2016-12-18 dim. 09:07] =>  0:02
      CLOCK: [2016-12-18 dim. 08:20]--[2016-12-18 dim. 08:35] =>  0:15
@@ -159,15 +160,22 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [X] It could be fine if this changes could be serialized in the same
   way Ogre does it. This way, at next startup, the Ogre config dialog
   would be defaulted to in-game options.
-- [ ] Need to merge GuiScaling branch
+- [X] Need to merge GuiScaling branch
 - [ ] Changing resolution
   We sometimes have a segfault when changing resolution.
   - [ ] Add a ResolutionHandler class we can unit test
-    - [ ] May try the DejaVuSans-12-NoScale font
-    - [ ] Get the actually rsolution using a probe(GameEngine*) function
+    - [ ] Get the actual resolution using a probe(GameEngine*) function
       If this function can't have actual resolution from Ogre cfg file.
-      Try to get it with RenderWindow(or RenderSystem) width/height and 
+      Test it using regex
+      - [ ] To unit test it, create a unit test class that override
+	protected members
+	Actually 17 tests
+      - [ ] Handle probe error using an exception
+    - [ ] Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
+    - [ ] We must find in wich string form we must save resolution
+      to save resolution to ogre.cfg. String have spaces before and
+      after the "x" character. Sometimes one space, sometimes two.
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

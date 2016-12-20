@@ -1,3 +1,10 @@
+2016-12-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/ResolutionHandler_Test.cpp: unit tests for previous class.
+	* src/client/ResolutionHandler.cpp (ResolutionHandler): empty probe
+	class.
+	* src/client/ResolutionHandler.hpp: start new class implementation.
+
 2016-12-18  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/TempMessage.cpp (TempMessage): using DejaVuSans-10-NoScale
