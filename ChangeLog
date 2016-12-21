@@ -1,5 +1,8 @@
 2016-12-20  Jérôme Pasquier  <rainbru@free.fr>
 
+	* DEPENDENCIES: add Boost.Regex dependency.
+	* CMakeLists.txt:search for Boost.Regex.
+
 	* src/client/ResolutionHandler_Test.cpp: unit tests for previous class.
 	* src/client/ResolutionHandler.cpp (ResolutionHandler): empty probe
 	class.

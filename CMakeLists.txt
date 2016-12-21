@@ -75,7 +75,7 @@ GETTEXT_CREATE_TRANSLATIONS("${CMAKE_SOURCE_DIR}/po/rainbrurpg-logger.pot" ALL
 # Check dependencies
 set(CLI_DEPS OGRE CEGUI-0 CEGUI-0-OGRE OIS) # Client-only dependencies
 pkg_check_modules(CLI REQUIRED ${CLI_DEPS})
-set(BOOST_COMPONENTS system filesystem program_options thread graph)
+set(BOOST_COMPONENTS system filesystem program_options thread graph regex)
 if (BUILD_TESTS) 
   list(APPEND BOOST_COMPONENTS unit_test_framework)
 endif()
