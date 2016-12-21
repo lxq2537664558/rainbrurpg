@@ -1,5 +1,8 @@
 2016-12-20  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ResolutionHandler.cpp (probeFromString): implented using
+	Boost.regex.
+
 	* DEPENDENCIES: add Boost.Regex dependency.
 	* CMakeLists.txt:search for Boost.Regex.
 

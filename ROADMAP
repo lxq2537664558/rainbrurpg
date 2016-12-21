@@ -133,7 +133,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] Maybe try to add a scale factor
     TaharezLook uses DejaVu-12
 **** TODO GUI scale handling and Options gamestate
-     CLOCK: [2016-12-21 mer. 06:13]
+     CLOCK: [2016-12-21 mer. 06:13]--[2016-12-21 mer. 07:12] =>  0:59
      CLOCK: [2016-12-20 mar. 04:22]--[2016-12-20 mar. 05:38] =>  1:16
      CLOCK: [2016-12-18 dim. 09:08]--[2016-12-18 dim. 09:24] =>  0:16
      CLOCK: [2016-12-18 dim. 09:05]--[2016-12-18 dim. 09:07] =>  0:02
@@ -170,9 +170,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
       Test it using regex
       - [X] To unit test it, create a unit test class that override
 	protected members
-      - [ ] cmake search for boost.regex 
-      - [ ] Add Boost.regex component to DEPENDENCIES
-      - [ ] Implement probeFromString function	
+      - [X] cmake search for boost.regex 
+      - [X] Add Boost.regex component to DEPENDENCIES
+      - [X] Implement probeFromString function	
 	#include <boost/regex.hpp>
 	boost::regex e(regx);
         boost::smatch what;
@@ -180,9 +180,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	  what.captures(i)[j]
         else "No match found"
 	see http://www.boost.org/doc/libs/1_62_0/libs/regex/doc/html/boost_regex/captures.html
-      - [ ] Handle probe error using an exception
+	Classes : [[:blank digit
+	"^ blank* (digit*)x(digit*) blank* $
+	4 failing unit tests
     - [ ] Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
+    - [ ] Handle probe error using an exception if we can't probe
+      in any ways (if two ways fail)
     - [ ] We must find in wich string form we must save resolution
       to save resolution to ogre.cfg. String have spaces before and
       after the "x" character. Sometimes one space, sometimes two.

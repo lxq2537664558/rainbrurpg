@@ -51,9 +51,10 @@ TEST( ResolutionHandler, fromString_Success_1024x768 )
 {
   // Normal resolution without any extra whitespace
   ResolutionHandlerTestClass rh;
-  ASSERT_TRUE( rh.fromString("1024 x 768")); 
+  bool b = rh.fromString("1024 x 768");
   EXPECT_EQ( rh.getResult().width, 1024 ); 
   EXPECT_EQ( rh.getResult().height,  768 ); 
+  ASSERT_TRUE( b ); 
 }
 
 TEST( ResolutionHandler, fromString_Success_ExtraSpaces )

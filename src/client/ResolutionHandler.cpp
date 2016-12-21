@@ -22,6 +22,11 @@
 
 #include "GameEngine.hpp"
 
+#include <boost/regex.hpp>
+#include <stdexcept>   // Uses std::invalid_argument
+
+#include <iostream>
+
 ResolutionHandler::ResolutionHandler():
   mGameEngine(NULL)
 {
@@ -63,9 +68,28 @@ ResolutionHandler::probeFromWindow()
 }
 
 bool
-ResolutionHandler::probeFromString(const std::string&)
+ResolutionHandler::probeFromString(const std::string& text)
 {
+  string regx = "^[[:space:]]*([[:digit:]]*)[[:space:]]*x[[:space:]]*([[:digit:]]*)[[:space:]]*$";
+  boost::regex e(regx);
+  boost::smatch what;
   
+  if(boost::regex_search(text, what, e, boost::match_extra))
+    {
+      try
+	{
+	  mResult->width = stoi(std::string(what[1].first, what[1].second));
+	  mResult->height = stoi(std::string(what[2].first, what[2].second));
+      }
+      catch (const std::invalid_argument& ia)
+	{
+	  // stoi throw this if it can't convert string to int
+	  return false;
+	}
+      return true;
+    }
+  else
+    return false;
 }
 
 bool

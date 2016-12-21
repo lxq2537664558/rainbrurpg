@@ -24,20 +24,17 @@
 TEST( Exception, one_param )
 {
   RainbrurpgException re("aze");
-  cout << re.what();
   EXPECT_STREQ( re.what(), "aze");
 }
 
 TEST( Exception, two_param )
 {
   RainbrurpgException re("aze", "poi");
-  cout << re.what();
   EXPECT_STREQ( re.what(), "azepoi");
 }
 
 TEST( Exception, three_param )
 {
   RainbrurpgException re("This is a ", "real", " message");
-  cout << re.what();
   EXPECT_STREQ( re.what(), "This is a real message");
 }
