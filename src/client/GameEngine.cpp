@@ -472,7 +472,7 @@ GameEngine::getOgreRenderer()const
  *
  */
 Ogre::RenderWindow*
-GameEngine::getRendererWindow()const
+GameEngine::getRenderWindow()const
 {
   return mWindow;
 }

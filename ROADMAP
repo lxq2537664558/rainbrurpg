@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2016-12-28 mer. 07:56]--[2016-12-28 mer. 08:46] =>  0:50
      CLOCK: [2016-12-28 mer. 07:13]--[2016-12-28 mer. 07:54] =>  0:41
      CLOCK: [2016-12-21 mer. 06:13]--[2016-12-21 mer. 07:12] =>  0:59
      CLOCK: [2016-12-20 mar. 04:22]--[2016-12-20 mar. 05:38] =>  1:16
@@ -146,6 +147,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Implement probeFromString function	
     - [ ] Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
+    - [ ] May remove the unneeded probeFromInts function
     - [ ] Handle probe error using an exception if we can't probe
       in any ways (if two ways fail)
       From src/client/Exception.hpp

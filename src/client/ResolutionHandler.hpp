@@ -29,6 +29,10 @@ using namespace std;
 
 // Forward declaratiobs
 class GameEngine;
+namespace Ogre
+{
+  class RenderWindow;
+}
 // End of forward declaratiobs
 
 typedef struct
@@ -53,7 +57,7 @@ public:
 
 protected:
   // Top-level probing functions
-  bool probeFromWindow();
+  bool probeFromWindow(const Ogre::RenderWindow* rw);
 
   // Low level (unit tested function
   bool probeFromString(const std::string&);

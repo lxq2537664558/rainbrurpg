@@ -56,18 +56,25 @@ ResolutionHandler::probe(GameEngine* ge)
   
   ConfigOptionMap com = ge->getRenderSystem()->getConfigOptions();
   string res = com["Video Mode"].currentValue;
+
+  
   
   if (!probeFromString(res))
-    if (!probeFromWindow())
+    if (!probeFromWindow(ge->getRenderWindow()))
       throw "Resolution not found";
   
   return *mResult;
 }
 
 bool
-ResolutionHandler::probeFromWindow()
+ResolutionHandler::probeFromWindow(const Ogre::RenderWindow* rw)
 {
+  if (rw == null)
+    return false;
 
+  mResult->width = rw->getWidth();
+  mResult->height = rw->getHeight();
+  return true;
 }
 
 bool

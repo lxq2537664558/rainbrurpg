@@ -201,13 +201,13 @@ MainMenu::hudUpdate()
   mFpsGeometry->reset();
 
   ostringstream os1, os2, os3;
-  os1 << "Batch count : " << mGameEngine->getRendererWindow()->getBatchCount();
+  os1 << "Batch count : " << mGameEngine->getRenderWindow()->getBatchCount();
   mDejavuSans12->drawText(*mFpsGeometry, os1.str(), CEGUI::Vector2f(0, 0), 0, c);
   
-  os2 << "Best FPS : " << mGameEngine->getRendererWindow()->getBestFPS ();
+  os2 << "Best FPS : " << mGameEngine->getRenderWindow()->getBestFPS ();
   mDejavuSans12->drawText(*mFpsGeometry, os2.str(), CEGUI::Vector2f(0, 20.0), 0, c);
   
-  os3 << "Last FPS : " << mGameEngine->getRendererWindow()->getLastFPS ();
+  os3 << "Last FPS : " << mGameEngine->getRenderWindow()->getLastFPS ();
   mDejavuSans12->drawText(*mFpsGeometry, os3.str(), CEGUI::Vector2f(0, 40.0), 0, c);
 }
 

@@ -40,6 +40,10 @@ public:
   {
     return this->probeFromInts(width, height);
   }
+  bool fromWindow(const Ogre::RenderWindow* rw)
+  {
+    return this->probeFromWindow(rw);
+  }
 
   const ResolutionHandlerResult& getResult()
   {
@@ -117,4 +121,11 @@ TEST( ResolutionHandler, fromStringFail_StartWithLetter )
 {
   ResolutionHandlerTestClass rh;
   ASSERT_FALSE( rh.fromString("az 24 x")); // Not starting with an int
+}
+
+TEST( ResolutionHandler, fromWindowFailWithNullPointer )
+{
+  ResolutionHandlerTestClass rh;
+  // Passing null pointer should return false
+  ASSERT_FALSE(rh.fromWindow((Ogre::RenderWindow*)NULL));
 }

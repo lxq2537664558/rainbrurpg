@@ -85,7 +85,7 @@ public:
   void reconfigure();
   
   CEGUI::OgreRenderer* getOgreRenderer()const;
-  Ogre::RenderWindow* getRendererWindow()const;
+  Ogre::RenderWindow* getRenderWindow()const;
   Ogre::RenderSystem* getRenderSystem()const;
   
 protected:
