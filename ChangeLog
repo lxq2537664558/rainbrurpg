@@ -1,5 +1,8 @@
 2016-12-28  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ResolutionHandler.cpp (probeFromInts): remove unneeded
+	function.
+
 	* src/client/ResolutionHandler.cpp (probeFromWindow): implement a first
 	version.
 	* src/client/ResolutionHandler_Test.cpp (fromWindowFailWithNullPointer):

@@ -36,10 +36,6 @@ public:
   {
     return  this->probeFromString(str);
   }
-  bool fromInts(int width, int height)
-  {
-    return this->probeFromInts(width, height);
-  }
   bool fromWindow(const Ogre::RenderWindow* rw)
   {
     return this->probeFromWindow(rw);

@@ -61,7 +61,6 @@ protected:
 
   // Low level (unit tested function
   bool probeFromString(const std::string&);
-  bool probeFromInts(int, int);
 
   ResolutionHandlerResult* mResult; // protected to be used in unit tests
 

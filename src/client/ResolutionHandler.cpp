@@ -69,7 +69,7 @@ ResolutionHandler::probe(GameEngine* ge)
 bool
 ResolutionHandler::probeFromWindow(const Ogre::RenderWindow* rw)
 {
-  if (rw == null)
+  if (rw == NULL)
     return false;
 
   mResult->width = rw->getWidth();
@@ -100,10 +100,4 @@ ResolutionHandler::probeFromString(const std::string& text)
     }
   else
     return false;
-}
-
-bool
-ResolutionHandler::probeFromInts(int, int)
-{
-
 }
