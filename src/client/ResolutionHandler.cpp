@@ -25,7 +25,12 @@
 #include <boost/regex.hpp>
 #include <stdexcept>   // Uses std::invalid_argument
 
+#include <OgreRenderSystem.h>
+#include <OgreConfigOptionMap.h>
+
 #include <iostream>
+
+using namespace Ogre;
 
 ResolutionHandler::ResolutionHandler():
   mGameEngine(NULL)
@@ -48,17 +53,15 @@ const ResolutionHandlerResult&
 ResolutionHandler::probe(GameEngine* ge)
 {
   mGameEngine = ge;
-
-  if (!probeFromCfg() && probeFromWindow())
-    throw "Resolution not found";
+  
+  ConfigOptionMap com = ge->getRenderSystem()->getConfigOptions();
+  string res = com["Video Mode"].currentValue;
+  
+  if (!probeFromString(res))
+    if (!probeFromWindow())
+      throw "Resolution not found";
   
   return *mResult;
-}
-
-bool
-ResolutionHandler::probeFromCfg()
-{
-
 }
 
 bool

@@ -1,3 +1,9 @@
+2016-12-28  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/ResolutionHandler.cpp (probeFromCfg): remove unneeded
+	function.
+	* src/client/GameEngine.hpp (getRenderSystem): add new getter.
+
 2016-12-20  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/ResolutionHandler.cpp (probeFromString): implented using

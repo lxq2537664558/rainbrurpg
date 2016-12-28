@@ -23,6 +23,8 @@
 
 #include <string>
 
+#include "Exception.hpp"
+
 using namespace std;
 
 // Forward declaratiobs
@@ -51,7 +53,6 @@ public:
 
 protected:
   // Top-level probing functions
-  bool probeFromCfg();
   bool probeFromWindow();
 
   // Low level (unit tested function

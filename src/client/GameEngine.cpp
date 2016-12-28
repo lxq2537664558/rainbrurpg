@@ -671,3 +671,9 @@ GameEngine::getPreviousResolution(bool* canChange)
       }
     }
 }
+
+Ogre::RenderSystem*
+GameEngine::getRenderSystem()const
+{
+  return mRoot->getRenderSystem();
+}

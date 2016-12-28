@@ -41,6 +41,7 @@
 namespace Ogre
 {
   class Root;
+  class RenderSystem;
 }
 namespace OIS
 {
@@ -85,6 +86,7 @@ public:
   
   CEGUI::OgreRenderer* getOgreRenderer()const;
   Ogre::RenderWindow* getRendererWindow()const;
+  Ogre::RenderSystem* getRenderSystem()const;
   
 protected:
   // Ogre::FrameListener
