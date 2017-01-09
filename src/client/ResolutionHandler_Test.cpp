@@ -45,6 +45,11 @@ public:
   {
     return *mResult;
   }
+  
+  string _resultToString(const ResolutionHandlerResult& r)
+  {
+    return resultToString(r);
+  }
 };
   
 TEST( ResolutionHandler, fromString_Success_1024x768 )
@@ -133,6 +138,6 @@ TEST( ResolutionHandler, toStringWidth_1 )
   r.width = 1024;
   r.height= 768;
   // Passing null pointer should return false
-  EXPECT_EQ(rh.resultToString(r), "1024 x  768");
+  EXPECT_EQ(rh._resultToString(r), "1024 x  768");
 }
 

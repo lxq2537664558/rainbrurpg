@@ -53,8 +53,7 @@ public:
   ResolutionHandler();
   ~ResolutionHandler();
   
-  const ResolutionHandlerResult& probe(GameEngine*);
-  string resultToString(const ResolutionHandlerResult&)const;
+  string probe(GameEngine*);
   
 protected:
   // Top-level probing functions
@@ -63,6 +62,8 @@ protected:
   // Low level (unit tested function
   bool probeFromString(const std::string&);
 
+  string resultToString(const ResolutionHandlerResult&)const;
+  
   ResolutionHandlerResult* mResult; // protected to be used in unit tests
 
 private:

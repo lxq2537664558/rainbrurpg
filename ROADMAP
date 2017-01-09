@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-01-09 lun. 14:59]--[2017-01-09 lun. 15:23] =>  0:24
      CLOCK: [2017-01-09 lun. 14:22]--[2017-01-09 lun. 14:57] =>  0:35
      CLOCK: [2017-01-09 lun. 13:54]--[2017-01-09 lun. 14:18] =>  0:24
      CLOCK: [2016-12-28 mer. 08:50]--[2016-12-28 mer. 08:55] =>  0:05
@@ -137,9 +138,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2016-12-14 mer. 01:54]--[2016-12-14 mer. 02:46] =>  0:52
      CLOCK: [2016-12-07 mer. 12:44]--[2016-12-07 mer. 13:52] =>  1:08
      CLOCK: [2016-12-07 mer. 04:06]--[2016-12-07 mer. 04:39] =>  0:33
-- [-] Changing resolution
+- [X] Changing resolution
   We sometimes have a segfault when changing resolution.
-  - [-] Add a ResolutionHandler class we can unit test
+  - [X] Add a ResolutionHandler class we can unit test
     - [X] Get the actual resolution using a probe(GameEngine*) function
       If this function can't have actual resolution from Ogre cfg file.
       Test it using regex
@@ -157,8 +158,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] We must find in wich string form we must save resolution
       to save resolution to ogre.cfg. String have spaces before and
       after the "x" character. Sometimes one space, sometimes two.
-    - [ ] Not sure we need the int/int result, maybe the probe function
+    - [X] Not sure we need the int/int result, maybe the probe function
       could directly return string version
+- [ ] GamerEngine finally uses ResolutionHandler to get current resolution
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...

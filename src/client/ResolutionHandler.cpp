@@ -51,7 +51,7 @@ ResolutionHandler::~ResolutionHandler()
   * \return the found resolution ot throw an exception
   *
   */
-const ResolutionHandlerResult&
+string
 ResolutionHandler::probe(GameEngine* ge)
 {
   mGameEngine = ge;
@@ -64,7 +64,7 @@ ResolutionHandler::probe(GameEngine* ge)
       throw RainbrurpgException("Resolution not found (Current video mode ='",
 				res, "')");
   
-  return *mResult;
+  return resultToString(*mResult);
 }
 
 bool

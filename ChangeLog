@@ -1,5 +1,8 @@
 2017-01-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ResolutionHandler.cpp (probe): now return a temporary
+	string from resultToString.
+
 	* src/client/ResolutionHandler.cpp (resultToString): int result to
 	string.
 
