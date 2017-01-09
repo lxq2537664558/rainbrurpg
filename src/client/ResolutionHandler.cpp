@@ -102,3 +102,25 @@ ResolutionHandler::probeFromString(const std::string& text)
   else
     return false;
 }
+
+/** Must return a result as a string
+  *
+  * This format will be compared to 'ogre.cfg' Video Mode key content.
+  *
+  */
+string
+ResolutionHandler::resultToString(const ResolutionHandlerResult& r)const
+{
+  /*
+    '1024 x  768'
+   */
+  ostringstream oss;
+  oss.width(4);
+  oss << r.width;
+  oss.width(0);
+  oss << " x ";
+  oss.width(4);
+  oss << r.height;
+  return oss.str();
+}
+

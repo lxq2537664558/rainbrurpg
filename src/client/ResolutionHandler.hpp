@@ -54,7 +54,8 @@ public:
   ~ResolutionHandler();
   
   const ResolutionHandlerResult& probe(GameEngine*);
-
+  string resultToString(const ResolutionHandlerResult&)const;
+  
 protected:
   // Top-level probing functions
   bool probeFromWindow(const Ogre::RenderWindow* rw);

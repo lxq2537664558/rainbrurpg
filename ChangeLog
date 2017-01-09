@@ -1,5 +1,8 @@
 2017-01-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ResolutionHandler.cpp (resultToString): int result to
+	string.
+
 	* src/client/ResolutionHandler.cpp (probe): use RainbrurpgException
 	to thrown error.
 

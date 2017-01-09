@@ -35,6 +35,7 @@
 #include "StateSaver.hpp"
 #include "TempMessage.hpp"
 #include "OgreCfgSaver.hpp"
+#include "ResolutionHandler.hpp"
 
 using namespace std;
 using namespace Ogre;

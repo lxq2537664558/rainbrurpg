@@ -125,3 +125,14 @@ TEST( ResolutionHandler, fromWindowFailWithNullPointer )
   // Passing null pointer should return false
   ASSERT_FALSE(rh.fromWindow((Ogre::RenderWindow*)NULL));
 }
+
+TEST( ResolutionHandler, toStringWidth_1 )
+{
+  ResolutionHandlerTestClass rh;
+  ResolutionHandlerResult r;
+  r.width = 1024;
+  r.height= 768;
+  // Passing null pointer should return false
+  EXPECT_EQ(rh.resultToString(r), "1024 x  768");
+}
+
