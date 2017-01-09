@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016 Jerome Pasquier
+ * Copyright 2011-2017 Jerome Pasquier
  *
  * This file is part of rainbrurpg-client.
  *
@@ -30,6 +30,8 @@
 
 #include <iostream>
 
+#include "Exception.hpp"
+
 using namespace Ogre;
 
 ResolutionHandler::ResolutionHandler():
@@ -56,12 +58,11 @@ ResolutionHandler::probe(GameEngine* ge)
   
   ConfigOptionMap com = ge->getRenderSystem()->getConfigOptions();
   string res = com["Video Mode"].currentValue;
-
-  
   
   if (!probeFromString(res))
     if (!probeFromWindow(ge->getRenderWindow()))
-      throw "Resolution not found";
+      throw RainbrurpgException("Resolution not found (Current video mode ='",
+				res, "')");
   
   return *mResult;
 }

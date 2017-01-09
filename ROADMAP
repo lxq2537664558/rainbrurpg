@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-01-09 lun. 13:54]--[2017-01-09 lun. 14:18] =>  0:24
      CLOCK: [2016-12-28 mer. 08:50]--[2016-12-28 mer. 08:55] =>  0:05
      CLOCK: [2016-12-28 mer. 07:56]--[2016-12-28 mer. 08:46] =>  0:50
      CLOCK: [2016-12-28 mer. 07:13]--[2016-12-28 mer. 07:54] =>  0:41
@@ -149,7 +150,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Try to get it with RenderWindow(or RenderSystem) width/height and 
       cast it to a string value.
     - [X] May remove the unneeded probeFromInts function
-    - [ ] Handle probe error using an exception if we can't probe
+    - [X] Handle probe error using an exception if we can't probe
       in any ways (if two ways fail)
       From src/client/Exception.hpp
     - [ ] We must find in wich string form we must save resolution
@@ -173,6 +174,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   Because using a \subpage command in mainpage makes it appears as a subpage
 - [X] Create a real Homepage in src/Mainpage.hmm
 - [ ] May document undocumented members (see doxygen.log)
+**** TODO Update GNU headers date for 2017
 **** DONE [feature_GuiScaling] GUI scale handling and Options gamestate
      CLOCK: [2016-12-07 mer. 07:27]--[2016-12-07 mer. 08:28] =>  1:01
      CLOCK: [2016-12-07 mer. 04:06]--[2016-12-07 mer. 04:39] =>  0:33

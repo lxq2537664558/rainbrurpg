@@ -1,3 +1,8 @@
+2017-01-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/ResolutionHandler.cpp (probe): use RainbrurpgException
+	to thrown error.
+
 2016-12-28  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/ResolutionHandler.cpp (probeFromInts): remove unneeded
