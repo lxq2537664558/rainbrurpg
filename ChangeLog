@@ -1,3 +1,7 @@
+2017-01-13  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/services/: change headers dates for 0217 for all sources.
+
 2017-01-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/ResolutionHandler.cpp (probe): now return a temporary

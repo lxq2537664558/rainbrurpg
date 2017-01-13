@@ -36,7 +36,9 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-* (7) ResolutionHandler to string implementation
+- (8) Change headers date for 2017
+   services/
+- ResolutionHandler to string implementation
 - Start to implement ResolutionHandler with tests
 - GUI font is not scaling anymore
 - TempMessage now uses DejaVuSans-10-NoScale

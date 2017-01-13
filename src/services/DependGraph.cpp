@@ -1,7 +1,7 @@
 /* 
  * server - The RainbruRPG's services binary.
  *
- * Copyright (C) 2014-2016 Jérôme Pasquier
+ * Copyright (C) 2014-2017 Jérôme Pasquier
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
