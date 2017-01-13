@@ -180,10 +180,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [X] Create a real Homepage in src/Mainpage.hmm
 - [ ] May document undocumented members (see doxygen.log)
 **** TODO Update GNU headers date for 2017
+     CLOCK: [2017-01-13 ven. 13:07]--[2017-01-13 ven. 13:12] =>  0:05
      CLOCK: [2017-01-13 ven. 11:20]--[2017-01-13 ven. 11:22] =>  0:02
 - [X] In subdir services
+- [X] In subdir logger
 - [ ] In subdir client
-- [ ] In subdir logger
 - [ ] In subdir server
 **** DONE [feature_GuiScaling] GUI scale handling and Options gamestate
      CLOCK: [2016-12-07 mer. 07:27]--[2016-12-07 mer. 08:28] =>  1:01

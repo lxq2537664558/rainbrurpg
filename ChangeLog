@@ -1,6 +1,7 @@
 2017-01-13  Jérôme Pasquier  <rainbru@free.fr>
 
-	* src/services/: change headers dates for 0217 for all sources.
+	* src/logger/: change headers dates for 2017 for all sources.
+	* src/services/: change headers dates for 2017 for all sources.
 
 2017-01-09  Jérôme Pasquier  <rainbru@free.fr>
 
