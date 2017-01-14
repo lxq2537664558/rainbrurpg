@@ -37,7 +37,7 @@ OVERALL TODO
    
 * v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
 - (8) Change headers date for 2017
-   services/, logger/
+   services/, logger/, client/
 - ResolutionHandler to string implementation
 - Start to implement ResolutionHandler with tests
 - GUI font is not scaling anymore
