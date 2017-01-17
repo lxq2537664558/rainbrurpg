@@ -1,5 +1,11 @@
 2017-01-17  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (getNextResolution): uses
+	ResolutionHandler to get actual screen size.
+	* src/client/GameEngine.cpp (getPreviousResolution): uses
+	ResolutionHandler to get actual screen size.
+	* src/client/ResolutionHandler.hpp: fix multiple inclusion guard name.
+
 	* src/logger/Logger.cpp: document some members.
 	* src/logger/LoggerOutputFile.cpp: update doxygen documentation.
 

@@ -610,9 +610,9 @@ GameEngine::getNextResolution(bool* canChange)
   ConfigOptionMap com = mRoot->getRenderSystem()->getConfigOptions();
   
   StringVector pv = com["Video Mode"].possibleValues;
-  string res = com["Video Mode"].currentValue;
+  ResolutionHandler rh;
+  string res = rh.probe(this);
   StringVector::iterator it = find(pv.begin(), pv.end(),res);
-
   
   // Get resolution list
   if (it == pv.end()) // Can't find value
@@ -644,12 +644,8 @@ GameEngine::getPreviousResolution(bool* canChange)
   ConfigOptionMap com = mRoot->getRenderSystem()->getConfigOptions();
   StringVector pv = com["Video Mode"].possibleValues;
 
-  /*  // Output the vector content
-  for (StringVector::iterator it = pv.begin(); it != pv.end(); ++it)
-    cout << *it << endl;
-  */
-  
-  string res = com["Video Mode"].currentValue;
+  ResolutionHandler rh;
+  string res = rh.probe(this);
   StringVector::iterator it = find(pv.begin(), pv.end(),res);
 
   // Get resolution list

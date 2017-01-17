@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef _GAME_STATE_HPP_
-#define _GAME_STATE_HPP_
+#ifndef _RESOLUTION_HANDLER_HPP_
+#define _RESOLUTION_HANDLER_HPP_
 
 #include <string>
 
@@ -70,4 +70,4 @@ private:
   GameEngine* mGameEngine;
 };
 
-#endif // !_GAME_STATE_HPP_
+#endif // !_RESOLUTION_HANDLER_HPP_

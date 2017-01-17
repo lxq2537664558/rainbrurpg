@@ -123,6 +123,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-01-17 mar. 12:17]--[2017-01-17 mar. 12:46] =>  0:29
      CLOCK: [2017-01-09 lun. 14:59]--[2017-01-09 lun. 15:23] =>  0:24
      CLOCK: [2017-01-09 lun. 14:22]--[2017-01-09 lun. 14:57] =>  0:35
      CLOCK: [2017-01-09 lun. 13:54]--[2017-01-09 lun. 14:18] =>  0:24
@@ -160,7 +161,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
       after the "x" character. Sometimes one space, sometimes two.
     - [X] Not sure we need the int/int result, maybe the probe function
       could directly return string version
-- [ ] GamerEngine finally uses ResolutionHandler to get current resolution
+- [X] GameEngine finally uses ResolutionHandler to get current resolution
 - [ ] May remove the src/client/LoadingBar.* (not used anymore)
   Maybe keep it to change it to a CEGUI layout, used multiple times
   When generating local level the first time, when cloning a server etc...
