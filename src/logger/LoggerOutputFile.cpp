@@ -27,10 +27,18 @@
 
 using namespace std;
 
- Rpg::LoggerOutputFile::LoggerOutputFile(const std::string& vFilename)
- {
+/** Named constructor
+ *
+ * Create a new logger output with the given filename. A .log extension 
+ * will be added to the filename.
+ *
+ * \param vFilename The filename without extension
+ *
+ */
+Rpg::LoggerOutputFile::LoggerOutputFile(const std::string& vFilename)
+{
    this->setFilename(vFilename);
- }
+}
 
 
 void 
@@ -90,6 +98,13 @@ Rpg::LoggerOutputFile::logHeader(const LogHeader* lh)
 	<< "Executed " << lh->exec_date << " at " << lh->exec_time << endl;
 }
 
+/** Set the current filename
+ *
+ * A .log extension will be added to the filename.
+ *
+ * \param vFilename The filename without extension
+ *
+ */
 void  
 Rpg::LoggerOutputFile::setFilename(const std::string& vFilename)
 {

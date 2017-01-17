@@ -127,6 +127,8 @@ namespace Rpg
      *
      * \param arg The object to be logged
      *
+     * \return A reference to this logger object
+     *
      */
   template <typename T> Logger& log(T arg)
     {

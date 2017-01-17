@@ -65,11 +65,17 @@ Rpg::Logger::Logger(const string& vLogDomain, LogType vLogType):
 
 /** Initialize the logger
   *
+  * \param vAppName     The application name
+  * \param vAppVersion  The application's version string
+  * \param vLogFilename The logfile name
+  * \param compil_date  The compilation date
+  * \param compil_time  The compilation time
+  *
   */
 void 
-Rpg::Logger::init(const string& vAppName, const string& vAppVersion, 
-		  const string& vLogFilename, const string& compil_date, 
-		  const string& compil_time)
+Rpg::Logger::init(const std::string& vAppName, const std::string& vAppVersion, 
+		const std::string& vLogFilename,const std::string& compil_date, 
+		const std::string& compil_time)
 {
   l1 = new LoggerOutputTty();
   l2 = new LoggerOutputFile(vLogFilename);
@@ -197,8 +203,8 @@ Rpg::Logger::parse_program_options(int argc, char**argv)
   *
   */
 Rpg::Logger& 
-Rpg::Logger::startLog(LogLevel vLevel, const string& vFilename, 
-		      const string& vLine)
+Rpg::Logger::startLog(LogLevel vLevel, const std::string& vFilename, 
+		      const std::string& vLine)
 {
 
   LoggerOutputListIterator iter;
@@ -230,7 +236,7 @@ void Rpg::Logger::endLog()
   *
   */
 Rpg::Logger& 
-Rpg::Logger::operator<<(const string& str)
+Rpg::Logger::operator<<(const std::string& str)
 { 
   return log<string>(str); 
 }
@@ -297,12 +303,20 @@ Rpg::Logger& Rpg::Logger::operator<<(const Object* o)
   return log<const Object&>(*o);
 }
 
+/** Logger library initialization
+  *
+  */
 void  Rpg::Logger::liblogger_initialize (void)
 {
   bindtextdomain (PACKAGE, LOCALEDIR);
   liblogger_initialized = true;
 }
 
+/** Adds the given program option to the options_list
+  *
+  * \param it The program option to be added
+  *
+  */
 void Rpg::Logger::add_program_options(struct tOptionMap it)
 {
   options_list.push_back(it);

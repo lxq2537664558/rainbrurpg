@@ -167,6 +167,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
 - [ ] Some overlay disappears in 1280x1024 resolution
 **** TODO Handle doxygen documentation
+     CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
      CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
      CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
      CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
