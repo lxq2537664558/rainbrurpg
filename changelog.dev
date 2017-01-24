@@ -1,3 +1,16 @@
+* v0.0.5-254 (23 Nov. 2016 - 24 Jan. 2017) SLOC 3,549 FT 82:53 UT 27
+- Remove LoaddingBar class
+- GameEngine uses ResolutionHandler
+- Change headers date for 2017
+   services/, logger/, client/, server/
+- ResolutionHandler to string implementation
+- Start to implement ResolutionHandler with tests
+- GUI font is not scaling anymore
+- TempMessage now uses DejaVuSans-10-NoScale
+- Disable TempMessage to fix a segfault
+- Auto-save configuration on fullscreen/resolution changes
+- Print fullscreen status after reconfigure
+
 * v0.0.5-253 (04 Nov. 2016 - ???) SLOC 3,197 FT 325:26 UT 17
 - Handle F11/screenshot keybinding
 - Fully handle GameEngine reconfiguration

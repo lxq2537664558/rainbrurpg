@@ -35,15 +35,5 @@ OVERALL TODO
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
    
-* v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- Remove LoaddingBar class
-- GameEngine uses ResolutionHandler
-- Change headers date for 2017
-   services/, logger/, client/, server/
-- ResolutionHandler to string implementation
-- Start to implement ResolutionHandler with tests
-- GUI font is not scaling anymore
-- TempMessage now uses DejaVuSans-10-NoScale
-- Disable TempMessage to fix a segfault
-- Auto-save configuration on fullscreen/resolution changes
-- Print fullscreen status after reconfigure
+* v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
+
