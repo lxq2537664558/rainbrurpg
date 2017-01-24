@@ -11,7 +11,7 @@ option(BUILD_LOGREADER "If we build the Qt-based logreader" OFF)
 option(BUILD_TESTS "Defines if we build unit tests" ON)
 
 set(VERSION 0.0.5)
-set(REVISION 248)
+set(REVISION 255)
 
 # Generate config file
 configure_file(

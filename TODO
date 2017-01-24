@@ -34,6 +34,7 @@ OVERALL TODO
    SLOC is the result of `sloccount src/`
    FT is the result of `sh FT.sh`
    Add git tag r-1 when switching
+   Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
 
