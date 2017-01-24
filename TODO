@@ -36,7 +36,8 @@ OVERALL TODO
    Add git tag r-1 when switching
    
 * v0.0.5-254 (23 Nov. 2016 - ???) SLOC ?,??? FT ???:?? UT ?
-- (9) GameEngine uses ResolutionHandler
+- Remove LoaddingBar class
+- GameEngine uses ResolutionHandler
 - Change headers date for 2017
    services/, logger/, client/, server/
 - ResolutionHandler to string implementation

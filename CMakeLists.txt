@@ -134,12 +134,13 @@ target_link_libraries(rainbrurpg-services
 )
 
 # Executables rules
+#   src/client/LoadingBar.cpp
+
 set (client-src
   src/client/CeguiDialog.cpp
   src/client/Exception.cpp
   src/client/GameEngine.cpp
   src/client/GameState.cpp
-  src/client/LoadingBar.cpp
   src/client/MainMenu.cpp
   src/client/NyiDialog.cpp
   src/client/OgreCfgSaver.cpp
