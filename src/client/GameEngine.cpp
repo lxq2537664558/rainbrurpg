@@ -36,6 +36,7 @@
 #include "TempMessage.hpp"
 #include "OgreCfgSaver.hpp"
 #include "ResolutionHandler.hpp"
+#include "ModalDialog.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -528,10 +529,6 @@ GameEngine::reconfigure()
   setupResources();
   initialiseCegui();
 
-  // Try to get Ogre options map and save them
-  OgreCfgSaver ocs("ogre.cfg", mRoot->getRenderSystem(),
-		   &mRoot->getRenderSystem()->getConfigOptions());
-  
   /* TODO: handle this case when another state will be the current one 
    * We have to completely re-instance it.
    */
@@ -545,6 +542,16 @@ GameEngine::reconfigure()
    */
   mCurrentState->enter(this);
 
+  // Asks the user if we must save new configuration
+  ModalDialog md("nyi_dialog.layout", "modal_dioialog");
+  if (md.exec())
+    {
+      LOGI("Modal dialog's released");
+      // Try to get Ogre options map and save them
+      OgreCfgSaver ocs("ogre.cfg", mRoot->getRenderSystem(),
+		       &mRoot->getRenderSystem()->getConfigOptions());
+    }
+  
   mTempMsg->print(mRestartMessage, 4);
   
   CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
