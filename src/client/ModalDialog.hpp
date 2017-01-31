@@ -24,6 +24,13 @@
 #include <string>
 #include "CeguiDialog.hpp"
 
+// Forward declarations
+namespace Ogre
+{
+  class Root;
+}
+// End of forward declarations
+
 using namespace std;
 
 /** This is a base-class for all modal dialogs.
@@ -35,7 +42,7 @@ public:
   ModalDialog(const string&, const string&);
   ~ModalDialog();
 
-  bool exec();
+  bool exec(Ogre::Root*);
 
 private:
   bool waiting;

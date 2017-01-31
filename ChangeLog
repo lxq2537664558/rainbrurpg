@@ -1,3 +1,10 @@
+2017-01-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/ModalDialog.cpp (exec): calling CEGUI's context function
+	clearGeometry(CEGUI::RQ_OVERLAY) to make geometry buffers drawn again.
+	* src/client/ModalDialog.cpp (exec): add Ogre::Root parameter to
+	eb able to call renderOneFrame().
+
 2017-01-26  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (reconfigure): now using ModalDialog.

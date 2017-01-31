@@ -544,7 +544,7 @@ GameEngine::reconfigure()
 
   // Asks the user if we must save new configuration
   ModalDialog md("nyi_dialog.layout", "modal_dioialog");
-  if (md.exec())
+  if (md.exec(mRoot))
     {
       LOGI("Modal dialog's released");
       // Try to get Ogre options map and save them
