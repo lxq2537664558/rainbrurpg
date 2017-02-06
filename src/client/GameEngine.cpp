@@ -427,12 +427,9 @@ bool GameEngine::running()
   return !mShutdown;
 }
 
-bool
-GameEngine::overlayHandler(const CEGUI::EventArgs& args)
+void
+GameEngine::drawOverlays()
 {
-    if (static_cast<const CEGUI::RenderQueueEventArgs&>(args).queueID != CEGUI::RQ_OVERLAY)
-        return false;
-
     mCurrentState->drawOverlay();
     mTempMsg->draw();
     
@@ -443,6 +440,15 @@ GameEngine::overlayHandler(const CEGUI::EventArgs& args)
 	mTempMsg->countdown();
 	mTimer.reset();
       }
+}
+
+bool
+GameEngine::overlayHandler(const CEGUI::EventArgs& args)
+{
+    if (static_cast<const CEGUI::RenderQueueEventArgs&>(args).queueID != CEGUI::RQ_OVERLAY)
+        return false;
+
+    drawOverlays();
     return true;
 }
 
@@ -544,7 +550,7 @@ GameEngine::reconfigure()
 
   // Asks the user if we must save new configuration
   ModalDialog md("nyi_dialog.layout", "modal_dioialog");
-  if (md.exec(mRoot))
+  if (md.exec(this))
     {
       LOGI("Modal dialog's released");
       // Try to get Ogre options map and save them

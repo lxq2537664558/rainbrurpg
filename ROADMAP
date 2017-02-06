@@ -124,6 +124,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-02-06 lun. 09:48]--[2017-02-06 lun. 10:47] =>  0:59
      CLOCK: [2017-01-31 mar. 22:48]--[2017-01-31 mar. 23:48] =>  1:00
      CLOCK: [2017-01-26 jeu. 19:39]--[2017-01-26 jeu. 20:25] =>  0:46
      CLOCK: [2017-01-24 mar. 19:03]--[2017-01-24 mar. 19:08] =>  0:05
@@ -167,19 +168,19 @@ Error is fixed, was due to a src/services/Services.hpp old code
       could directly return string version
 - [X] GameEngine finally uses ResolutionHandler to get current resolution
 - [X] May remove the src/client/LoadingBar.* (not used anymore)
-- [ ] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
-  - [ ] Maybe we need a ModalDialog class that handles an bool exec() method
+- [-] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
+  - [-] Maybe we need a ModalDialog class that handles an bool exec() method
     We have an issue with the blocking exec function.
     Maybe We must register a listener for this class and wait
     - Maybe we have to call Ogre::Root::renderOneFrame()
       http://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_root.html#aeaad25268c0ad8007ce8961a32242c77
     Actually, changing resolution will test the exec() function.
     The dialog is shown and event on the Ok button work.
-    - [ ] Should pass a GameEngine* parameter to exec() function
-    - [ ] The we don't set waiting to false so the exec() function never exit.
+    - [X] Should pass a GameEngine* parameter to exec() function
     - [ ] Geometry buffers aren't drawn. It seems normal since overlays are
       manually drawn in GameEngine::overlayHandler. Maybe we need to
-      call it from exec() for every frame ?
+      call it from exec() for every frame ? This doesn't work!
+    - [ ] We don't set waiting to false so the exec() function never exit.
   - [ ] Create a ConfirmationDialog class (based on ModalDialog)
     - [ ] Current dialog is currently drawn but it seems events don't work
       Also, geometry buffers aren't drawn

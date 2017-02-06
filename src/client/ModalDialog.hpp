@@ -29,6 +29,7 @@ namespace Ogre
 {
   class Root;
 }
+class GameEngine;
 // End of forward declarations
 
 using namespace std;
@@ -42,7 +43,7 @@ public:
   ModalDialog(const string&, const string&);
   ~ModalDialog();
 
-  bool exec(Ogre::Root*);
+  bool exec(GameEngine*);
 
 private:
   bool waiting;

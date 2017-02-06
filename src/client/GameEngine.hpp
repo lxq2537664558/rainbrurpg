@@ -87,7 +87,9 @@ public:
   CEGUI::OgreRenderer* getOgreRenderer()const;
   Ogre::RenderWindow* getRenderWindow()const;
   Ogre::RenderSystem* getRenderSystem()const;
-  
+
+  void drawOverlays();
+
 protected:
   // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);

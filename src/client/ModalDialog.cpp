@@ -27,6 +27,8 @@
 
 #include <OgreWindowEventUtilities.h> // Uses MEU::messagePump()
 
+#include "GameEngine.hpp"
+
 /* Named constructor
  *
  * Create a dialog based on a CEGUI XML-based layout file.
@@ -50,18 +52,22 @@ ModalDialog::~ModalDialog()
 
 
 bool
-ModalDialog::exec(Ogre::Root* root)
+ModalDialog::exec(GameEngine* ge)
 {
   cout << "Entering ModalDialog::exec" << endl;
   waiting = true;
   show();
+
+
   while (waiting)
     {
       //      cout << "Waiting in ModalDialog::exec()'s loop" << endl;
-      CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
 
       Ogre::WindowEventUtilities::messagePump();
-      root->renderOneFrame();
+      Ogre::Root::getSingleton().renderOneFrame();
+
+      CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
+      ge->drawOverlays();
     }
 
 }
