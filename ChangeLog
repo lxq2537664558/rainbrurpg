@@ -1,3 +1,7 @@
+2017-02-06  Jérôme Pasquier  <rainbru@free.fr>
+	* src/client/ModalDialog.cpp (exec): move show() before starting
+	the endless loop.
+
 2017-01-31  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/ModalDialog.cpp (exec): calling CEGUI's context function

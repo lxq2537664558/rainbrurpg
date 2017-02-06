@@ -173,6 +173,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
     Maybe We must register a listener for this class and wait
     - Maybe we have to call Ogre::Root::renderOneFrame()
       http://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_root.html#aeaad25268c0ad8007ce8961a32242c77
+    Actually, changing resolution will test the exec() function.
+    The dialog is shown and event on the Ok button work.
+    - [ ] Should pass a GameEngine* parameter to exec() function
+    - [ ] The we don't set waiting to false so the exec() function never exit.
+    - [ ] Geometry buffers aren't drawn. It seems normal since overlays are
+      manually drawn in GameEngine::overlayHandler. Maybe we need to
+      call it from exec() for every frame ?
   - [ ] Create a ConfirmationDialog class (based on ModalDialog)
     - [ ] Current dialog is currently drawn but it seems events don't work
       Also, geometry buffers aren't drawn

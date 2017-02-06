@@ -54,6 +54,7 @@ ModalDialog::exec(Ogre::Root* root)
 {
   cout << "Entering ModalDialog::exec" << endl;
   waiting = true;
+  show();
   while (waiting)
     {
       //      cout << "Waiting in ModalDialog::exec()'s loop" << endl;
@@ -63,7 +64,6 @@ ModalDialog::exec(Ogre::Root* root)
       root->renderOneFrame();
     }
 
-  show();
 }
 
 
