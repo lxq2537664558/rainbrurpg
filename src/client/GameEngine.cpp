@@ -557,6 +557,9 @@ GameEngine::reconfigure()
       OgreCfgSaver ocs("ogre.cfg", mRoot->getRenderSystem(),
 		       &mRoot->getRenderSystem()->getConfigOptions());
     }
+  else
+    LOGI("Modal dialog's released (with false value)");
+
   
   mTempMsg->print(mRestartMessage, 4);
   

@@ -27,6 +27,7 @@
 
 #include <OgreWindowEventUtilities.h> // Uses MEU::messagePump()
 
+
 #include "GameEngine.hpp"
 
 /* Named constructor
@@ -58,18 +59,17 @@ ModalDialog::exec(GameEngine* ge)
   waiting = true;
   show();
 
-
+  /*
   while (waiting)
     {
       //      cout << "Waiting in ModalDialog::exec()'s loop" << endl;
 
+      CEGUI::System::getSingleton().getDefaultGUIContext()
+	.clearGeometry(CEGUI::RQ_OVERLAY);
       Ogre::WindowEventUtilities::messagePump();
       Ogre::Root::getSingleton().renderOneFrame();
-
-      CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
       ge->drawOverlays();
+
     }
-
+  */
 }
-
-
