@@ -32,17 +32,26 @@
 
 /* Named constructor
  *
- * Create a dialog based on a CEGUI XML-based layout file.
+ * Create a modal dialog.
  *
- * \param layoutName the xml layout filename.
+ * \param message    The in-dialog message.
  * \param uniqueName a context name that is unique to avoid a 
  *          CEGUI::AlreadyExistsException
  *
  */
-ModalDialog::ModalDialog(const string& layoutName, const string& uniqueName):
-  CeguiDialog(layoutName, uniqueName),
+ModalDialog::ModalDialog(const string& title,const string& message,
+			 const string& uniqueName):
+  CeguiDialog("modal_dialog.layout", uniqueName),
   waiting(false)
+
 {
+  CEGUI::Window* mT = static_cast<CEGUI::Window*>
+    (mDialogWindow->getChild("nyiRoot/winToolbar"));
+  mT->setProperty("Text", title);
+
+  CEGUI::Window* mM = static_cast<CEGUI::Window*>
+    (mDialogWindow->getChild("nyiRoot/winToolbar/static_Text"));
+  mM->setProperty("Text", message);
 
 }
 

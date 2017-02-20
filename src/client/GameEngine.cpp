@@ -549,7 +549,8 @@ GameEngine::reconfigure()
   mCurrentState->enter(this);
 
   // Asks the user if we must save new configuration
-  ModalDialog md("nyi_dialog.layout", "modal_dioialog");
+  ModalDialog md("Configuration changed",
+		 "Do you want to save the new configuration ?", "modal_dialog");
   if (md.exec(this))
     {
       LOGI("Modal dialog's released");

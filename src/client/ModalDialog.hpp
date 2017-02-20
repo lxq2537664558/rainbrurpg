@@ -40,7 +40,7 @@ using namespace std;
 class ModalDialog : public CeguiDialog
 {
 public:
-  ModalDialog(const string&, const string&);
+  ModalDialog(const string&, const string&, const string&);
   ~ModalDialog();
 
   bool exec(GameEngine*);

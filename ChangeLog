@@ -1,3 +1,10 @@
+2017-02-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/layouts/modal_dialog.layout: add the cancel button.
+	* src/client/ModalDialog.hpp (ModalDialog): add the title parameter
+	to constructor.
+	* media/layouts/modal_dialog.layout: add the modal dialog layout.
+
 2017-02-06  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/ModalDialog.cpp (exec): directly call GameEngine::

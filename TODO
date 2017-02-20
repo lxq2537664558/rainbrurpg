@@ -37,4 +37,4 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-
+- Add the modal GUI layout
