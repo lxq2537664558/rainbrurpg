@@ -1,5 +1,10 @@
 2017-02-24  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ConfirmationDialog.cpp (onCancel): move event handler
+	from ModalDialog.cpp
+	* src/client/ConfirmationDialog.cpp (onOk): move event handler
+	from ModalDialog.cpp
+
 	* src/client/ConfirmationDialog.hpp (ConfirmationDialog); create the
 	empty class.
 

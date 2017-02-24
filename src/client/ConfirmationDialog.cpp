@@ -20,16 +20,36 @@
 
 #include "ConfirmationDialog.hpp"
 
+#include <CEGUI/CEGUI.h> // Uses CEGUI::PushButton
+
 ConfirmationDialog::ConfirmationDialog(const string& title,
 				       const string& message,
 				       const string& uniqueName):
   ModalDialog("modal_dialog.layout", title, message, uniqueName)
 {
-  // 
+  // Dialog creation is in ModalDialog::ModalDialog()
+  CEGUI::PushButton* btnOk = (CEGUI::PushButton *)mDialogWindow->
+    getChild("nyiRoot/winToolbar/btnOk");
+  btnOk->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ConfirmationDialog::onOk, this));
 
+  CEGUI::PushButton* btnCancel = (CEGUI::PushButton *)mDialogWindow->
+    getChild("nyiRoot/winToolbar/btnCancel");
+  btnCancel->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ConfirmationDialog::onCancel, this));
 }
 
 ConfirmationDialog::~ConfirmationDialog()
 {
 
+}
+
+bool
+ConfirmationDialog::onOk(const CEGUI::EventArgs&)
+{
+  return closeDialog(true);
+}
+
+bool
+ConfirmationDialog::onCancel(const CEGUI::EventArgs&)
+{
+  return closeDialog(false);
 }

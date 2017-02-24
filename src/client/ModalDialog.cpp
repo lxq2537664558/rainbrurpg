@@ -54,15 +54,7 @@ ModalDialog::ModalDialog(const string& layoutName, const string& title,
   CEGUI::Window* mM = static_cast<CEGUI::Window*>
     (mDialogWindow->getChild("nyiRoot/winToolbar/static_Text"));
   mM->setProperty("Text", message);
-
-  CEGUI::PushButton* btnOk = (CEGUI::PushButton *)mDialogWindow->
-    getChild("nyiRoot/winToolbar/btnOk");
-  btnOk->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ModalDialog::onOk, this));
-
-  CEGUI::PushButton* btnCancel = (CEGUI::PushButton *)mDialogWindow->
-    getChild("nyiRoot/winToolbar/btnCancel");
-  btnCancel->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ModalDialog::onCancel, this));
-
+  // Event registration is handled in subclasses
 }
 
 ModalDialog::~ModalDialog()
@@ -70,19 +62,9 @@ ModalDialog::~ModalDialog()
 
 }
 
-/*
-void
-ModalDialog::hide()
-{
-  mDialogWindow->hide();
-  mDialog->hide();
-}
-*/
-
 bool
 ModalDialog::exec(GameEngine* ge)
 {
-  cout << "Entering ModalDialog::exec" << endl;
   waiting = true;
   show();
 
@@ -107,16 +89,4 @@ ModalDialog::closeDialog(bool value)
   waiting = false;
   hide();
   return true;
-}
-
-bool
-ModalDialog::onOk(const CEGUI::EventArgs&)
-{
-  return closeDialog(true);
-}
-
-bool
-ModalDialog::onCancel(const CEGUI::EventArgs&)
-{
-  return closeDialog(false);
 }

@@ -21,6 +21,8 @@
 #ifndef _CONFIRMATION_DIALOG_HPP_
 #define _CONFIRMATION_DIALOG_HPP_
 
+#include <CEGUI/EventArgs.h>  // Used as a reference
+
 #include "ModalDialog.hpp"
 
 /** A modal dialog with Ok/Cancel buttons
@@ -32,6 +34,9 @@ public:
   ConfirmationDialog(const string&, const string&, const string&);
   ~ConfirmationDialog();
 
+protected:
+  bool onOk(const CEGUI::EventArgs&);
+  bool onCancel(const CEGUI::EventArgs&);
 };
 
 #endif // !_CONFIRMATION_DIALOG_HPP_

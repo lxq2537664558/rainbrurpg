@@ -135,6 +135,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-02-24 ven. 14:02]--[2017-02-24 ven. 14:34] =>  0:32
      CLOCK: [2017-02-24 ven. 13:07]--[2017-02-24 ven. 13:39] =>  0:32
      CLOCK: [2017-02-24 ven. 12:34]--[2017-02-24 ven. 12:42] =>  0:08
      CLOCK: [2017-02-24 ven. 11:47]--[2017-02-24 ven. 12:31] =>  0:44
@@ -185,7 +186,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
       could directly return string version
 - [X] GameEngine finally uses ResolutionHandler to get current resolution
 - [X] May remove the src/client/LoadingBar.* (not used anymore)
-- [-] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
+- [X] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
   - [X] Maybe we need a ModalDialog class that handles an bool exec() method
     We have an issue with the blocking exec function.
     Maybe We must register a listener for this class and wait
@@ -212,13 +213,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Still doesn't work	
   - [X] It seems the Modal dialog doesn't work when called twice
     Maybe because the ModalDialog::closeDialog() only hide() the dialog.
-  - [-] Create a ConfirmationDialog class (based on ModalDialog)
+  - [X] Create a ConfirmationDialog class (based on ModalDialog)
     For instance, ModalDialog *is* the ConfirmationDialog. We need to
     move some members in this new class. It is correctly shown but events
     don't work.
     - [X] Create an empty class
-    - [ ] Move events handler from constructor
-    - [ ] Then move event handlers
+    - [X] Move events handler from constructor
+    - [X] Then move event handlers
       exec() should stay in ModalDialog
 - [ ] Some overlays disappear in 1280x1024 resolution
   - List all overlays affected by this bug
