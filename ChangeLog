@@ -1,5 +1,11 @@
 2017-02-24  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/ConfirmationDialog.hpp (ConfirmationDialog); create the
+	empty class.
+
+	* src/client/ModalDialog.cpp (exec): uncomment the loop and add a
+	FIXME comment.
+
 	* src/client/ModalDialog.cpp (closeDialog): set returnValue and
 	stop waiting.
 	* src/client/ModalDialog.hpp (returnValue): add the exec() function

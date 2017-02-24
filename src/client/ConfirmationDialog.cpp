@@ -18,44 +18,18 @@
  *
  */
 
-#ifndef _MODAL_DIALOG_HPP_
-#define _MODAL_DIALOG_HPP_
+#include "ConfirmationDialog.hpp"
 
-#include <string>
-#include <CEGUI/EventArgs.h>  // Used as a reference
-
-#include "CeguiDialog.hpp"
-
-// Forward declarations
-namespace Ogre
+ConfirmationDialog::ConfirmationDialog(const string& title,
+				       const string& message,
+				       const string& uniqueName):
+  ModalDialog("modal_dialog.layout", title, message, uniqueName)
 {
-  class Root;
+  // 
+
 }
-class GameEngine;
-// End of forward declarations
 
-using namespace std;
-
-/** This is a base-class for all modal dialogs.
- *
- */
-class ModalDialog : public CeguiDialog
+ConfirmationDialog::~ConfirmationDialog()
 {
-public:
-  ModalDialog(const string&, const string&, const string&, const string&);
-  ~ModalDialog();
 
-  bool exec(GameEngine*);
-
-protected:
-  bool onOk(const CEGUI::EventArgs&);
-  bool onCancel(const CEGUI::EventArgs&);
-  bool closeDialog(bool);
-
-private:
-  bool waiting;
-  bool returnValue;
-};
-
-
-#endif // !_MODAL_DIALOG_HPP_
+}

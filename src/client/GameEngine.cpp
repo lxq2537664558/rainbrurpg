@@ -36,7 +36,7 @@
 #include "TempMessage.hpp"
 #include "OgreCfgSaver.hpp"
 #include "ResolutionHandler.hpp"
-#include "ModalDialog.hpp"
+#include "ConfirmationDialog.hpp"
 
 using namespace std;
 using namespace Ogre;
@@ -549,8 +549,9 @@ GameEngine::reconfigure()
   mCurrentState->enter(this);
 
   // Asks the user if we must save new configuration
-  ModalDialog md("Configuration changed",
-		 "Do you want to save the new configuration ?", "modal_dialog");
+  ConfirmationDialog md("Configuration changed",
+			"Do you want to save the new configuration ?",
+			"modal_dialog");
   if (md.exec(this))
     {
       LOGI("Modal dialog's released");
@@ -560,7 +561,6 @@ GameEngine::reconfigure()
     }
   else
     LOGI("Modal dialog's released (with false value)");
-
   
   mTempMsg->print(mRestartMessage, 4);
   

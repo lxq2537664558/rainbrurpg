@@ -34,17 +34,18 @@
  *
  * Create a modal dialog.
  *
+ * \param layoutName The XML layout filename.
+ * \param title      The title of the dialog.
  * \param message    The in-dialog message.
  * \param uniqueName a context name that is unique to avoid a 
  *          CEGUI::AlreadyExistsException
  *
  */
-ModalDialog::ModalDialog(const string& title,const string& message,
-			 const string& uniqueName):
-  CeguiDialog("modal_dialog.layout", uniqueName),
+ModalDialog::ModalDialog(const string& layoutName, const string& title,
+			 const string& message, const string& uniqueName):
+  CeguiDialog(layoutName, uniqueName),
   waiting(false),
   returnValue(false)
-
 {
   CEGUI::Window* mT = static_cast<CEGUI::Window*>
     (mDialogWindow->getChild("nyiRoot/winToolbar"));

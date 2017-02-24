@@ -138,6 +138,7 @@ target_link_libraries(rainbrurpg-services
 
 set (client-src
   src/client/CeguiDialog.cpp
+  src/client/ConfirmationDialog.cpp
   src/client/Exception.cpp
   src/client/GameEngine.cpp
   src/client/GameState.cpp
