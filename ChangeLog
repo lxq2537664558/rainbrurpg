@@ -1,3 +1,10 @@
+2017-02-24  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/ModalDialog.cpp (closeDialog): set returnValue and
+	stop waiting.
+	* src/client/ModalDialog.hpp (returnValue): add the exec() function
+	return value as member.
+
 2017-02-20  Jérôme Pasquier  <rainbru@free.fr>
 
 	* media/layouts/modal_dialog.layout: add the cancel button.

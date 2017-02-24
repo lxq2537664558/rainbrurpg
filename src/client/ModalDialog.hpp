@@ -22,6 +22,8 @@
 #define _MODAL_DIALOG_HPP_
 
 #include <string>
+#include <CEGUI/EventArgs.h>  // Used as a reference
+
 #include "CeguiDialog.hpp"
 
 // Forward declarations
@@ -45,8 +47,14 @@ public:
 
   bool exec(GameEngine*);
 
+protected:
+  bool onOk(const CEGUI::EventArgs&);
+  bool onCancel(const CEGUI::EventArgs&);
+  bool closeDialog(bool);
+
 private:
   bool waiting;
+  bool returnValue;
 };
 
 

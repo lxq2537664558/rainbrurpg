@@ -42,7 +42,8 @@
 ModalDialog::ModalDialog(const string& title,const string& message,
 			 const string& uniqueName):
   CeguiDialog("modal_dialog.layout", uniqueName),
-  waiting(false)
+  waiting(false),
+  returnValue(false)
 
 {
   CEGUI::Window* mT = static_cast<CEGUI::Window*>
@@ -53,6 +54,14 @@ ModalDialog::ModalDialog(const string& title,const string& message,
     (mDialogWindow->getChild("nyiRoot/winToolbar/static_Text"));
   mM->setProperty("Text", message);
 
+  CEGUI::PushButton* btnOk = (CEGUI::PushButton *)mDialogWindow->
+    getChild("nyiRoot/winToolbar/btnOk");
+  btnOk->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ModalDialog::onOk, this));
+
+  CEGUI::PushButton* btnCancel = (CEGUI::PushButton *)mDialogWindow->
+    getChild("nyiRoot/winToolbar/btnCancel");
+  btnCancel->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&ModalDialog::onCancel, this));
+
 }
 
 ModalDialog::~ModalDialog()
@@ -60,6 +69,14 @@ ModalDialog::~ModalDialog()
 
 }
 
+/*
+void
+ModalDialog::hide()
+{
+  mDialogWindow->hide();
+  mDialog->hide();
+}
+*/
 
 bool
 ModalDialog::exec(GameEngine* ge)
@@ -81,4 +98,26 @@ ModalDialog::exec(GameEngine* ge)
 
     }
   */
+  return returnValue;
+}
+
+bool
+ModalDialog::closeDialog(bool value)
+{
+  returnValue = value;
+  waiting = false;
+  hide();
+  return true;
+}
+
+bool
+ModalDialog::onOk(const CEGUI::EventArgs&)
+{
+  return closeDialog(true);
+}
+
+bool
+ModalDialog::onCancel(const CEGUI::EventArgs&)
+{
+  return closeDialog(false);
 }
