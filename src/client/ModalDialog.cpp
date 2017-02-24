@@ -85,11 +85,10 @@ ModalDialog::exec(GameEngine* ge)
   waiting = true;
   show();
 
-  /*
+  /* FIXME: I can't draw CEGUI's GeometryBuffer here.
+   */
   while (waiting)
     {
-      //      cout << "Waiting in ModalDialog::exec()'s loop" << endl;
-
       CEGUI::System::getSingleton().getDefaultGUIContext()
 	.clearGeometry(CEGUI::RQ_OVERLAY);
       Ogre::WindowEventUtilities::messagePump();
@@ -97,7 +96,6 @@ ModalDialog::exec(GameEngine* ge)
       ge->drawOverlays();
 
     }
-  */
   return returnValue;
 }
 

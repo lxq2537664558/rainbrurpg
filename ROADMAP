@@ -135,6 +135,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-02-24 ven. 12:34]--[2017-02-24 ven. 12:42] =>  0:08
      CLOCK: [2017-02-24 ven. 11:47]--[2017-02-24 ven. 12:31] =>  0:44
      CLOCK: [2017-02-20 lun. 12:04]--[2017-02-20 lun. 12:52] =>  0:48
      CLOCK: [2017-02-20 lun. 10:30]--[2017-02-20 lun. 11:15] =>  0:45
@@ -184,7 +185,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [X] GameEngine finally uses ResolutionHandler to get current resolution
 - [X] May remove the src/client/LoadingBar.* (not used anymore)
 - [-] Maybe we could ask for OgreCfgSaver save using a CeguiDialog
-  - [-] Maybe we need a ModalDialog class that handles an bool exec() method
+  - [X] Maybe we need a ModalDialog class that handles an bool exec() method
     We have an issue with the blocking exec function.
     Maybe We must register a listener for this class and wait
     - Maybe we have to call Ogre::Root::renderOneFrame()
@@ -199,7 +200,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	the CeguiDialog's constructor which use nyiRoot
       - [X] Must contain at least two buttons (Ok/Cancel)	
       - [X] Handle Ok and Cancel buttons events
-    - [-] Geometry buffers aren't drawn. It seems normal since overlays are
+    - [X] Geometry buffers aren't drawn. It seems normal since overlays are
       manually drawn in GameEngine::overlayHandler. Maybe we need to
       call it from exec() for every frame ? This doesn't work!
       Calling clearGeometry(CEGUI::RQ_OVERLAY) doesn't fix that
@@ -207,8 +208,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	Got a sefault, because overlays aren't yet created in MainMenu::drawOverlay()
       - [X] Trying to move clearGeometry and drawOverlay between messagePump and renderOneFrame
 	Don't work
-      - [ ] Still doesn't work	
+      - [X] Still doesn't work	
+  - [ ] It seems the Modal dialog doesn't work when called twice
+    Maybe because the ModalDialog::closeDialog() only hide() the dialog.
   - [ ] Create a ConfirmationDialog class (based on ModalDialog)
+    For instance, ModalDialog *is* the ConfirmationDialog. We need to
+    move some members in this new class. It is correctly shown but events
+    don't work.
 - [ ] Some overlays disappear in 1280x1024 resolution
   - List all overlays affected by this bug
     At least tempMessage
