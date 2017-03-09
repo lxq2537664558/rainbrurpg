@@ -131,10 +131,19 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Create a new geometry buffer that prints the current profile name
   and a way to tell the user to create a profile before using the 
   server/local test
+**** TODO Some wiki work
+     See 'My Current Tasks' in my page
+- [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG
+  is about sourceforge project and FRS : change it to github
+- [ ] Is the SwitchtoMercurial page finished ?
+  Maybe create a SwitchToGit page ?
+- [ ] Modify Foswiki's ROADMAP links to github
+- [ ] Make social news about changes
 **** TODO Handle coverity scan 
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
 **** TODO Options gamestate
+     CLOCK: [2017-03-09 jeu. 13:32]--[2017-03-09 jeu. 14:26] =>  0:54
      CLOCK: [2017-02-24 ven. 14:02]--[2017-02-24 ven. 14:34] =>  0:32
      CLOCK: [2017-02-24 ven. 13:07]--[2017-02-24 ven. 13:39] =>  0:32
      CLOCK: [2017-02-24 ven. 12:34]--[2017-02-24 ven. 12:42] =>  0:08
@@ -221,9 +230,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Move events handler from constructor
     - [X] Then move event handlers
       exec() should stay in ModalDialog
-- [ ] Some overlays disappear in 1280x1024 resolution
-  - List all overlays affected by this bug
-    At least tempMessage
 **** TODO Handle doxygen documentation
      CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
      CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34

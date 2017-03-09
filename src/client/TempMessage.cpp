@@ -56,9 +56,10 @@ TempMessage::TempMessage(GameEngine* ge):
   const Rectf scrn(ge->getOgreRenderer()->getDefaultRenderTarget().getArea());
   mBuffer = &ge->getOgreRenderer()->createGeometryBuffer();
   mBuffer->setClippingRegion(scrn);
-  mBuffer->setTranslation(CEGUI::Vector3f(0.0f, scrn.getSize().d_height - 20, 0.0f));
-  
+  float y = scrn.getSize().d_height - 20.0f;
+  mBuffer->setTranslation(CEGUI::Vector3f(0.0f, y, 0.0f));
   midscreen = scrn.getSize().d_width / 2;
+  
 }
 
 TempMessage::~TempMessage()
