@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!--		-*-xml-*-    -->
+<GUILayout version="4">
+  <!-- type was DefaultWindow -->
+  <Window type="Vanilla/StaticImage" name="loadingbarRoot" >
+        <Property name="InheritsAlpha" value="False" />
+        <Property name="Size" value="{{1.0,0},{0.2,0}}" />
+        <Property name="FrameEnabled" value="False" />
+	<Property name="BackgroundEnabled" value="False" />
+
+            <Window type="TaharezLook/StaticText" name="titleText" >
+	      <Property name="Text" value="Title" />
+	      <Property name="Size" value="{{1,0},{0.8,0}}" />
+                <Property name="Position" value="{{0.0,0},{0.2,0},{1.0,0},{1.0,0}}" /> 
+	      <Property name="HorzFormatting" value="WordWrapLeftAligned" />
+              <Property name="VertFormatting" value="TopAligned" />
+            </Window>
+            <Window type="TaharezLook/ProgressBar" name="progressBar" >
+                <Property name="Text" value="Cancel" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="Position" value="{{0.1,0},{0.82,0},{0.20,0},{0.20,0}}" /> 
+            </Window>
+            <Window type="TaharezLook/StaticText" name="stepText" >
+                <Property name="Text" value="Step 1" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="Position" value="{{0.7,0},{0.82,0},{0.20,0},{0.20,0}}" /> 
+            </Window>
+
+  </Window>
+</GUILayout>

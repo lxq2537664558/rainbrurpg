@@ -37,6 +37,7 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
+- (5) create the LoadingBar layout file
 - Create the LoadingBar empty class
 - Implement ConfirmationDialog
 - Handle ModalDialog button events

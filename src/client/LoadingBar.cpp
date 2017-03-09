@@ -21,6 +21,7 @@
 #include "LoadingBar.hpp"
 
 #include <CEGUI/WindowManager.h>
+#include <CEGUI/Window.h>
 
 LoadingBar::LoadingBar(const string& vTitle):
   title(vTitle),
@@ -36,6 +37,13 @@ LoadingBar::init()
 {
   mWmgr = CEGUI::WindowManager::getSingletonPtr();
 
+  CEGUI::Window* layoutWindow = mWmgr->loadLayoutFromFile("loading_bar.layout");
+
+  CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()
+    ->addChild(layoutWindow);
+
+  layoutWindow->setVisible(true);
+  
   /*
 
   // Create the parent window using unique name, makes it fullsize
