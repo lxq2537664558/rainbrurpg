@@ -110,11 +110,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
-**** Start to handle Local test
-     While waiting for the meta library
-- [ ] Create a new LoadingBar base don a CEGUI layout
-- [ ] Launch an embedded server
-- [ ] See if we can generate a first landscape
 **** Start to handle the Profile GameState
      I would like to try to handle SSH key to handle authentication.
      It can be usefull if we use a git-base filesystem.
@@ -131,6 +126,35 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Create a new geometry buffer that prints the current profile name
   and a way to tell the user to create a profile before using the 
   server/local test
+**** Some overlays disappear in 1280x1024 resolution
+- List all overlays affected by this bug :  tempMessage, stats and version
+  - Logo is not affected
+- Does this bug persist in fullscreen mode ? NO
+- [X] Try to see if tempMessage position is correct
+  Even if height - 120, tmpMsg isn't drawn
+- [X] Check if the draw() function is actually caled : YES
+- [X] Is the clippingregion correct ?
+  isClippingActive() returns true
+- [ ] What is different between the logo geometry/others
+  - tmpMsg is drawn from GameEngine::drawOverlays()
+  - logo, version and stats are drawn in MainMenu::drawOverlay()
+**** TODO Start to handle Local test
+     CLOCK: [2017-03-09 jeu. 15:43]--[2017-03-09 jeu. 16:20] =>  0:37
+     While waiting for the meta library
+- [-] Create a new LoadingBar based on a CEGUI layout
+  Maybe based on http://static.cegui.org.uk/docs/0.7.9/classCEGUI_1_1ProgressBar.html
+  - [X] Create the base class, as a CEGUI dialog
+    Must have a title and a step text
+  - [ ] Show it when MainMenu's LocalTest button is clicked
+  - [ ] Must create the layout file 
+  - [ ] get the progress and title textpointer
+- [ ] Create a real GameState
+  - [ ] Work on the MainMenu LocalTest transition
+    - [ ] destroy MainMenu
+    - [ ] instanciate LocalTest
+    - [ ] set current gamestate to LocalTest
+- [ ] Launch an embedded server
+- [ ] See if we can generate a first landscape
 **** TODO Some wiki work
      See 'My Current Tasks' in my page
 - [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG
@@ -142,7 +166,21 @@ Error is fixed, was due to a src/services/Services.hpp old code
 **** TODO Handle coverity scan 
      see https://scan.coverity.com/download for more (currently at 4%)
 - [ ] rev 253 uploaded to coverity scan 23 Nov     
-**** TODO Options gamestate
+**** TODO Handle doxygen documentation
+     CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
+     CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
+     CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
+     CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
+     CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
+     CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
+- [X] Handle Doxyfile version number from a cmake config file
+- [X] The main page is the logger's one, fix that
+  Maybe with submodules. In fact handled by a page.
+- [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
+  Because using a \subpage command in mainpage makes it appears as a subpage
+- [X] Create a real Homepage in src/Mainpage.hmm
+- [ ] May document undocumented members (see doxygen.log)
+**** DONE Options gamestate
      CLOCK: [2017-03-09 jeu. 13:32]--[2017-03-09 jeu. 14:26] =>  0:54
      CLOCK: [2017-02-24 ven. 14:02]--[2017-02-24 ven. 14:34] =>  0:32
      CLOCK: [2017-02-24 ven. 13:07]--[2017-02-24 ven. 13:39] =>  0:32
@@ -230,20 +268,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Move events handler from constructor
     - [X] Then move event handlers
       exec() should stay in ModalDialog
-**** TODO Handle doxygen documentation
-     CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
-     CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
-     CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
-     CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
-     CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
-     CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
-- [X] Handle Doxyfile version number from a cmake config file
-- [X] The main page is the logger's one, fix that
-  Maybe with submodules. In fact handled by a page.
-- [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
-  Because using a \subpage command in mainpage makes it appears as a subpage
-- [X] Create a real Homepage in src/Mainpage.hmm
-- [ ] May document undocumented members (see doxygen.log)
 **** DONE Update GNU headers date for 2017
      CLOCK: [2017-01-14 sam. 13:58]--[2017-01-14 sam. 13:58] =>  0:00
      CLOCK: [2017-01-14 sam. 13:51]--[2017-01-14 sam. 13:57] =>  0:06

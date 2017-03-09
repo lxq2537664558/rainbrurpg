@@ -142,6 +142,7 @@ set (client-src
   src/client/Exception.cpp
   src/client/GameEngine.cpp
   src/client/GameState.cpp
+  src/client/LoadingBar.cpp
   src/client/MainMenu.cpp
   src/client/ModalDialog.cpp
   src/client/NyiDialog.cpp
