@@ -20,21 +20,69 @@
 
 #include "LoadingBar.hpp"
 
-LoadingBar::LoadingBar(const string& vTitle):
-  title(vTitle)
-{
+#include <CEGUI/WindowManager.h>
 
+LoadingBar::LoadingBar(const string& vTitle):
+  title(vTitle),
+  mWmgr(NULL)
+{
+  // Do not instanciate anything Ogre/CEGUI related here
+
+  
 }
+
+void
+LoadingBar::init()
+{
+  mWmgr = CEGUI::WindowManager::getSingletonPtr();
+
+  /*
+
+  // Create the parent window using unique name, makes it fullsize
+  // and transparent
+  mDialogWindow=mWmgr->createWindow("Vanilla/StaticImage", uniqueName);
+  mDialogWindow->setProperty("Size", "{{1,0},{1,0}}");
+  mDialogWindow->setProperty("FrameEnabled", "False");
+  mDialogWindow->setProperty("BackgroundEnabled", "False");
+  
+  // Load the given layout file
+  CEGUI::Window* layoutWindow = mWmgr->loadLayoutFromFile(mLayoutName);
+
+  mRootWindow = CEGUI::System::getSingleton().getDefaultGUIContext().
+    getRootWindow();
+  mRootWindow->addChild(mDialogWindow);
+  mDialogWindow->addChild(layoutWindow);
+
+  mDialog = mDialogWindow->getChild("nyiRoot/winToolbar");
+  
+  hide();
+
+  CEGUI::PushButton* btnNetPl = (CEGUI::PushButton *)mDialogWindow->
+    getChild("nyiRoot/winToolbar/btnOk");
+  btnNetPl->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&CeguiDialog::onOk, this));
+  */
+
+  
+}
+
 
 LoadingBar::~LoadingBar()
 {
 
 }
 
+size_t
+LoadingBar::getStepNumber()
+{
+  return stepNames.size();
+}
+
+
 void
 LoadingBar::addStep(const string& name)
 {
   stepNames.push_back(name);
+  adjustProgress();
 }
 
 void

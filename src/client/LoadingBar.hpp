@@ -29,6 +29,7 @@
 namespace CEGUI
 {
   class ProgressBar;
+  class WindowManager;
 }
 // End of forward declarations
 
@@ -45,10 +46,19 @@ public:
   LoadingBar(const string&);
   ~LoadingBar();
 
+  void init();
+  
   void addStep(const string&);
+  void step();
+
+  size_t getStepNumber();
+  
+protected:  
   void adjustProgress();
   
 private:
+  CEGUI::WindowManager* mWmgr;  // the CEGUI windowManager
+
   string title;
   vector<string> stepNames;
 

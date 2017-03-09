@@ -139,15 +139,19 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-03-09 jeu. 18:05]--[2017-03-09 jeu. 18:22] =>  0:17
+     CLOCK: [2017-03-09 jeu. 16:44]--[2017-03-09 jeu. 17:07] =>  0:23
      CLOCK: [2017-03-09 jeu. 15:43]--[2017-03-09 jeu. 16:20] =>  0:37
      While waiting for the meta library
 - [-] Create a new LoadingBar based on a CEGUI layout
   Maybe based on http://static.cegui.org.uk/docs/0.7.9/classCEGUI_1_1ProgressBar.html
   - [X] Create the base class, as a CEGUI dialog
     Must have a title and a step text
-  - [ ] Show it when MainMenu's LocalTest button is clicked
+  - [X] Instanciate and show it when MainMenu's LocalTest button is clicked
+  - [X] May create unit tests
   - [ ] Must create the layout file 
-  - [ ] get the progress and title textpointer
+  - [ ] Show the layout file in LoadingBar::init()
+  - [ ] get the progress and title text pointer
 - [ ] Create a real GameState
   - [ ] Work on the MainMenu LocalTest transition
     - [ ] destroy MainMenu

@@ -33,6 +33,7 @@
 #include "GameEngine.hpp"
 #include "NyiDialog.hpp"
 #include "StateSaver.hpp"
+#include "LoadingBar.hpp"
 
 #include "config.h" // Uses VERSTRING
 
@@ -158,7 +159,11 @@ MainMenu::onExit(const CEGUI::EventArgs& evt)
 bool
 MainMenu::onLocalTest(const CEGUI::EventArgs&)
 {
-  mNyiLocalTest->show();
+  //mNyiLocalTest->show();
+  LoadingBar* lb = new LoadingBar("Testing loadingbar");
+  lb->addStep("Step 1");
+  lb->addStep("Step 2");
+  lb->init();
   return true;
 }
 
