@@ -21,11 +21,20 @@
 #include "LoadingBar.hpp"
 
 #include <CEGUI/WindowManager.h>
+
 #include <CEGUI/Window.h>
+#include <CEGUI/widgets/ProgressBar.h>
+
+#include "Logger.hpp"
+
+static Rpg::Logger static_logger("engine", Rpg::LT_BOTH);
 
 LoadingBar::LoadingBar(const string& vTitle):
   title(vTitle),
-  mWmgr(NULL)
+  mWmgr(NULL),
+  stepLabel(NULL),
+  progressbar(NULL),
+  stepSize(0.0f)
 {
   // Do not instanciate anything Ogre/CEGUI related here
 
@@ -43,6 +52,16 @@ LoadingBar::init()
     ->addChild(layoutWindow);
 
   layoutWindow->setVisible(true);
+
+  CEGUI::Window* titleLabel = layoutWindow->getChild("titleLabel");
+  titleLabel->setProperty("Text", title);
+  
+  stepLabel = layoutWindow->getChild("stepLabel");
+  stepLabel->setProperty("Text", stepNames[0]);
+
+  progressbar = static_cast<CEGUI::ProgressBar*>
+    (layoutWindow->getChild("ProgressBar"));
+
   
   /*
 
@@ -96,6 +115,19 @@ LoadingBar::addStep(const string& name)
 void
 LoadingBar::adjustProgress()
 {
+  stepSize = 1.0f / getStepNumber();
+
+  if (progressbar)
+    progressbar->setStepSize(stepSize);
+
   
+  LOGI("Stepsize = " << stepSize);
+
 }
 
+
+float
+LoadingBar::getStepSize()
+{
+  return stepSize;
+}

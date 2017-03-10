@@ -28,6 +28,7 @@
 // Forward declarations
 namespace CEGUI
 {
+  class Window;
   class ProgressBar;
   class WindowManager;
 }
@@ -52,16 +53,19 @@ public:
   void step();
 
   size_t getStepNumber();
+  float getStepSize();
   
 protected:  
   void adjustProgress();
   
 private:
   CEGUI::WindowManager* mWmgr;  // the CEGUI windowManager
-
+  
   string title;
   vector<string> stepNames;
-
+  float stepSize;
+  
+  CEGUI::Window* stepLabel;
   CEGUI::ProgressBar* progressbar;
 };
 

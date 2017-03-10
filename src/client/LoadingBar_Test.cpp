@@ -30,3 +30,13 @@ TEST( LoadingBar, vectorSize )
   lb.addStep("Step 2");
   ASSERT_EQ( lb.getStepNumber(), 2 ); 
 }
+
+
+TEST( LoadingBar, stepSize )
+{
+  // Normal resolution without any extra whitespace
+  LoadingBar lb("Testing loadingbar");
+  lb.addStep("Step 1");
+  lb.addStep("Step 2");
+  ASSERT_EQ( lb.getStepSize(), 0.5f ); 
+}

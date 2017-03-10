@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!--		-*-xml-*-    -->
 <GUILayout version="4">
-<Window type="VerticalLayoutContainer" name="VerticalLayoutContainer" >
+<Window type="VerticalLayoutContainer" name="loading" >
   <Property name="Area" value="{{0.01,0},{0.78,0},{0.4,0},{0.78,0}}" />
   <Window type="TaharezLook/Label" name="titleLabel" >
     <Property name="Area" value="{{0,0},{0,0},{1.0,245},{0,38}}" />
