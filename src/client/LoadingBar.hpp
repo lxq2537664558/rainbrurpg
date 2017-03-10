@@ -54,6 +54,7 @@ public:
 
   size_t getStepNumber();
   float getStepSize();
+  size_t getCurrentStep();
   
 protected:  
   void adjustProgress();
@@ -64,6 +65,7 @@ private:
   string title;
   vector<string> stepNames;
   float stepSize;
+  size_t currentStep;
   
   CEGUI::Window* stepLabel;
   CEGUI::ProgressBar* progressbar;

@@ -34,7 +34,8 @@ LoadingBar::LoadingBar(const string& vTitle):
   mWmgr(NULL),
   stepLabel(NULL),
   progressbar(NULL),
-  stepSize(0.0f)
+  stepSize(0.0f),
+  currentStep(0)
 {
   // Do not instanciate anything Ogre/CEGUI related here
 
@@ -131,3 +132,22 @@ LoadingBar::getStepSize()
 {
   return stepSize;
 }
+
+void
+LoadingBar::step()
+{
+  ++currentStep;
+
+  if (stepLabel)
+    stepLabel->setProperty("Text", stepNames[currentStep]);
+
+  if (progressbar)
+    progressbar->step();
+}
+
+size_t
+LoadingBar::getCurrentStep()
+{
+  return currentStep;
+}
+

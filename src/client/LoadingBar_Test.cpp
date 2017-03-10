@@ -24,7 +24,6 @@
 
 TEST( LoadingBar, vectorSize )
 {
-  // Normal resolution without any extra whitespace
   LoadingBar lb("Testing loadingbar");
   lb.addStep("Step 1");
   lb.addStep("Step 2");
@@ -34,9 +33,25 @@ TEST( LoadingBar, vectorSize )
 
 TEST( LoadingBar, stepSize )
 {
-  // Normal resolution without any extra whitespace
   LoadingBar lb("Testing loadingbar");
   lb.addStep("Step 1");
   lb.addStep("Step 2");
   ASSERT_EQ( lb.getStepSize(), 0.5f ); 
+}
+
+TEST( LoadingBar, currentStep )
+{
+  // Current step should be 0
+  LoadingBar lb("Testing loadingbar");
+  ASSERT_EQ( lb.getCurrentStep(), 0 ); 
+}
+
+TEST( LoadingBar, currentStep2 )
+{
+  // Calling step() should advance currentStep
+  LoadingBar lb("Testing loadingbar");
+  lb.addStep("Step 1");
+  lb.addStep("Step 2");
+  lb.step();
+  ASSERT_EQ( lb.getCurrentStep(), 1 ); 
 }

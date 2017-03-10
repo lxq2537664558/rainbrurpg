@@ -139,6 +139,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-03-10 ven. 16:11]--[2017-03-10 ven. 16:45] =>  0:34
      CLOCK: [2017-03-10 ven. 14:08]--[2017-03-10 ven. 14:47] =>  0:39
      CLOCK: [2017-03-10 ven. 13:20]--[2017-03-10 ven. 13:34] =>  0:14
      CLOCK: [2017-03-09 jeu. 18:24]--[2017-03-09 jeu. 18:50] =>  0:26
@@ -146,7 +147,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2017-03-09 jeu. 16:44]--[2017-03-09 jeu. 17:07] =>  0:23
      CLOCK: [2017-03-09 jeu. 15:43]--[2017-03-09 jeu. 16:20] =>  0:37
      While waiting for the meta library
-- [-] Create a new LoadingBar based on a CEGUI layout
+- [X] Create a new LoadingBar based on a CEGUI layout
   Maybe based on http://static.cegui.org.uk/docs/0.7.9/classCEGUI_1_1ProgressBar.html
   - [X] Create the base class, as a CEGUI dialog
     Must have a title and a step text
@@ -155,8 +156,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] Must create the layout file 
   - [X] Show the layout file in LoadingBar::init()
   - [X] Fix the layout file
-  - [ ] get the progressbar and title text pointer
+  - [X] get the progressbar and title text pointer
     then set them to the actual values
+  - [X] Implement the step function  
 - [ ] Create a real GameState
   - [ ] Work on the MainMenu LocalTest transition
     - [ ] destroy MainMenu
