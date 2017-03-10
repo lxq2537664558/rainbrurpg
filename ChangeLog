@@ -1,5 +1,9 @@
 2017-03-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* media/layouts/loading_bar.layout: fix the windows placements.
+
+2017-03-09  Jérôme Pasquier  <rainbru@free.fr>
+
 	* media/layouts/loading_bar.layout: add the LoadingBar layout file.
 
 	* src/client/LoadingBar_Test.cpp (vectorSize): add a unit test to
