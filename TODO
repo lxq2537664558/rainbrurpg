@@ -37,7 +37,8 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-- (6) Implement LoadingBar::step function
+- (7) Start to implement LocalTest game state
+- Implement LoadingBar::step function
 - Create the LoadingBar layout file
 - Create the LoadingBar empty class
 - Implement ConfirmationDialog

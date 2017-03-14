@@ -20,4 +20,42 @@
 
 #include "LocalTest.hpp"
 
+LocalTest::LocalTest():
+  GameState("LocalTest")
+{
+
+}
+
+LocalTest::~LocalTest()
+{
+
+}
+  
+void
+LocalTest::enter(GameEngine*)
+{
+
+}
+
+
+void
+LocalTest::exit(GameEngine*)
+{
+
+}
+
+
+void
+LocalTest::save(StateSaver*)
+{
+
+}
+
+
+void
+LocalTest::restore(StateSaver*)
+{
+
+}
+
 

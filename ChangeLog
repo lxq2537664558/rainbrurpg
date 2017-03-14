@@ -1,3 +1,8 @@
+2017-03-14  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp: add empty overriden functions.
+	* src/client/LocalTest.cpp: add empty class.
+
 2017-03-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/LoadingBar.cpp (step): implement function.

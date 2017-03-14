@@ -160,10 +160,12 @@ bool
 MainMenu::onLocalTest(const CEGUI::EventArgs&)
 {
   //mNyiLocalTest->show();
-  LoadingBar* lb = new LoadingBar("Testing loadingbar");
+  /*  LoadingBar* lb = new LoadingBar("Testing loadingbar");
   lb->addStep("Step 1");
   lb->addStep("Step 2");
   lb->init();
+  */
+  mGameEngine->toLocalTest();
   return true;
 }
 

@@ -31,7 +31,10 @@
 
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
+// Gamestates
 #include "MainMenu.hpp"
+#include "LocalTest.hpp"
+
 #include "StateSaver.hpp"
 #include "TempMessage.hpp"
 #include "OgreCfgSaver.hpp"
@@ -56,10 +59,12 @@ GameEngine::GameEngine(void):
   mContext(NULL),
   mRenderer(NULL),
   mMainMenu(NULL),
+  mLocalTest(NULL),
   mTempMsg(NULL)
 {
 
   mMainMenu = new MainMenu();
+  mLocalTest = new LocalTest();
   
   //  log("Starting Ogre::Root");
   mRoot = new Root();
@@ -691,3 +696,10 @@ GameEngine::getRenderSystem()const
 {
   return mRoot->getRenderSystem();
 }
+
+void
+GameEngine::toLocalTest()
+{
+  setCurrentState(mLocalTest);
+}
+

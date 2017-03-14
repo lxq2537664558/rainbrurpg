@@ -54,6 +54,7 @@ namespace CEGUI
   class GeometryBuffer;
 }
 class MainMenu;
+class LocalTest;
 class TempMessage;
 // End of forward declarations
 
@@ -89,7 +90,8 @@ public:
   Ogre::RenderSystem* getRenderSystem()const;
 
   void drawOverlays();
-
+  void toLocalTest();
+  
 protected:
   // Ogre::FrameListener
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
@@ -135,6 +137,7 @@ private:
 
   Ogre::Timer mTimer;
   MainMenu* mMainMenu;
+  LocalTest* mLocalTest;
   TempMessage* mTempMsg; // A temporary message buffer
   tOgreCfgOverride mCfgOverride; // Ogre configuration override map
   string mRestartMessage;  // The temporary message printed at reconfiguration

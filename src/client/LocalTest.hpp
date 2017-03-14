@@ -21,4 +21,18 @@
 #ifndef _LOCACL_TEST_HPP_
 #define _LOCACL_TEST_HPP_
 
+#include "GameState.hpp"
+
+class LocalTest: public GameState
+{
+public:
+  LocalTest();
+  ~LocalTest();
+
+  void enter(GameEngine*);
+  void exit(GameEngine*);
+  void save(StateSaver*);
+  void restore(StateSaver*);
+};
+
 #endif  // !_LOCACL_TEST_HPP_

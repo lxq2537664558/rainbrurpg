@@ -159,11 +159,16 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] get the progressbar and title text pointer
     then set them to the actual values
   - [X] Implement the step function  
-- [ ] Create a real GameState
+- [ ] Create a real LocalTest GameState
+  - [ ] Implement overriden functions
   - [ ] Work on the MainMenu LocalTest transition
     - [ ] destroy MainMenu
     - [ ] instanciate LocalTest
     - [ ] set current gamestate to LocalTest
+  - [ ] Create and load the CEGUI layout file
+    - [ ] Layout must have a world configuration window
+    - [ ] with Seed textedit and random button 
+    - [ ] Global window button : Back/Play  
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work
