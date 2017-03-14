@@ -134,8 +134,6 @@ target_link_libraries(rainbrurpg-services
 )
 
 # Executables rules
-#   src/client/LoadingBar.cpp
-
 set (client-src
   src/client/CeguiDialog.cpp
   src/client/ConfirmationDialog.cpp
@@ -143,6 +141,7 @@ set (client-src
   src/client/GameEngine.cpp
   src/client/GameState.cpp
   src/client/LoadingBar.cpp
+  src/client/LocalTest.cpp
   src/client/MainMenu.cpp
   src/client/ModalDialog.cpp
   src/client/NyiDialog.cpp
