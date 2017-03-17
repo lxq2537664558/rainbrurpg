@@ -139,6 +139,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-03-17 ven. 15:24]--[2017-03-17 ven. 16:09] =>  0:45
      CLOCK: [2017-03-10 ven. 16:11]--[2017-03-10 ven. 16:45] =>  0:34
      CLOCK: [2017-03-10 ven. 14:08]--[2017-03-10 ven. 14:47] =>  0:39
      CLOCK: [2017-03-10 ven. 13:20]--[2017-03-10 ven. 13:34] =>  0:14
@@ -159,16 +160,25 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] get the progressbar and title text pointer
     then set them to the actual values
   - [X] Implement the step function  
-- [ ] Create a real LocalTest GameState
-  - [ ] Implement overriden functions
-  - [ ] Work on the MainMenu LocalTest transition
-    - [ ] destroy MainMenu
-    - [ ] instanciate LocalTest
-    - [ ] set current gamestate to LocalTest
+- [-] Create a real LocalTest GameState
+  - [X] Work on the MainMenu LocalTest transition
+    - [X] destroy MainMenu
+    - [X] instanciate LocalTest
+    - [X] set current gamestate to LocalTest
+  - [ ] Implement LocalTest overriden functions
   - [ ] Create and load the CEGUI layout file
-    - [ ] Layout must have a world configuration window
-    - [ ] with Seed textedit and random button 
-    - [ ] Global window button : Back/Play  
+    - [ ] Must choose to generate a new world or select an existing one
+      Try to use a TabControl with /NewWorld/ and /ExistingWorld/ tabs
+      http://cegui.org.uk/wiki/Sample_code_for_all_Widgets#TabControl
+    - [ ] Layout must have a New World configuration window
+      - [ ] World generation with Seed textedit and random button 
+    - [ ] For the existing world tab, we must have a RGL function
+      that returns existing local worlds
+      - [ ] We need to free librlgl first
+      - [ ] Then add rlgl as a git submodule in ext/
+      - [ ] Then implement and use the getLocalWorlds() function
+    - [ ] Global gamestate button : Back/Play  
+      The global Play button should only be enabled if a world is available
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work

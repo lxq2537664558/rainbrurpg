@@ -23,6 +23,14 @@
 
 #include "GameState.hpp"
 
+// Forward declaration
+namespace CEGUI
+{
+  class Window;
+}
+// End of forward declaration
+
+
 class LocalTest: public GameState
 {
 public:
@@ -33,6 +41,10 @@ public:
   void exit(GameEngine*);
   void save(StateSaver*);
   void restore(StateSaver*);
+
+private:
+  CEGUI::Window* mMenuWindow;
+
 };
 
 #endif  // !_LOCACL_TEST_HPP_

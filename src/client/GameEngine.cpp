@@ -700,6 +700,8 @@ GameEngine::getRenderSystem()const
 void
 GameEngine::toLocalTest()
 {
+  mCurrentState->exit(this);
+  mLocalTest->enter(this);
   setCurrentState(mLocalTest);
 }
 

@@ -18,10 +18,13 @@
  *
  */
 
+#include <CEGUI/Window.h>
+
 #include "LocalTest.hpp"
 
 LocalTest::LocalTest():
-  GameState("LocalTest")
+  GameState("LocalTest"),
+  mMenuWindow(NULL)
 {
 
 }
@@ -41,7 +44,7 @@ LocalTest::enter(GameEngine*)
 void
 LocalTest::exit(GameEngine*)
 {
-
+  
 }
 
 

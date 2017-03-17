@@ -140,6 +140,8 @@ MainMenu::exit(GameEngine* ge)
   ge->getOgreRenderer()->destroyGeometryBuffer(*mVersionGeometry);
   ge->getOgreRenderer()->destroyGeometryBuffer(*mFpsGeometry);
 
+  CEGUI::WindowManager::getSingleton().destroyWindow(mMenuWindow);
+  
 }
 
 /* The callback for the menu.layout's exit button
