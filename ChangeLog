@@ -1,3 +1,9 @@
+2017-03-17  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/layouts/local_test.layout: add and load the XML layout.
+	* src/client/GameEngine.cpp (toLocalTest): correctly switch from
+	current state to LocalTest.
+
 2017-03-14  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/LocalTest.cpp: add empty overriden functions.

@@ -59,6 +59,8 @@ public:
   
 protected:
   CEGUI::Window* loadLayout(const string&, const string&);
+  void destroyRootWindow();
+  
   void addEvent(const string&, const CEGUI::String&,CEGUI::Event::Subscriber);
 
 private:

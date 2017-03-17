@@ -50,6 +50,10 @@ GameState::getName()const
 
 /* Load a CEGUI layout from a file
  *
+ * To remove the created window, simply destroy it using :
+ * CEGUI::WindowManager::getSingleton().destroyWindow(windowPtr)
+ *
+ *
  * \param filename   The layout filename.
  * \param windowName The to-be-returned CEGUI window name.
  *
@@ -80,6 +84,19 @@ GameState::loadLayout(const string& filename, const string& windowName)
   }
   return ret;
 }
+
+/** Destroys and the root window
+ */
+
+void GameState::destroyRootWindow()
+{
+  if (mRoot)
+    {
+      CEGUI::WindowManager::getSingleton().destroyWindow(mRoot);
+      mRoot = NULL;
+    }
+}
+
 
 /* Subscribe an event to a CEGUI window/button
  *

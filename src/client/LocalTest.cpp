@@ -19,8 +19,12 @@
  */
 
 #include <CEGUI/Window.h>
+#include <CEGUI/WindowManager.h>
+#include <CEGUI/CEGUI.h>
 
 #include "LocalTest.hpp"
+
+using namespace CEGUI;
 
 LocalTest::LocalTest():
   GameState("LocalTest"),
@@ -37,13 +41,29 @@ LocalTest::~LocalTest()
 void
 LocalTest::enter(GameEngine*)
 {
+  mMenuWindow = loadLayout("local_test.layout", "LocalTestWin");
 
+  WindowManager& winMgr = WindowManager::getSingleton();
+  TabControl* winTabControl = static_cast<TabControl*>(mMenuWindow->getChild("TabControl"));
+  winTabControl->setTabHeight(UDim(0.15f, 0.0f)); // Make the tab buttons a little bigger
+  Window* tabPage = mMenuWindow->getChild("TabPane1");
+  tabPage->setText("  New world  ");
+  winTabControl->addTab(tabPage);
+  tabPage->setProperty("Size", "{{1,0},{1,0}}");
+  tabPage->setProperty("Position", "{{0,0},{0,0}}");
+
+  Window* tabPage2 = mMenuWindow->getChild("TabPane2");
+  tabPage2->setText("  Existing world  ");
+  winTabControl->addTab(tabPage2);
+  tabPage2->setProperty("Size", "{{1,0},{1,0}}");
+  tabPage2->setProperty("Position", "{{0,0},{0,0}}");
 }
 
 
 void
 LocalTest::exit(GameEngine*)
 {
+  CEGUI::WindowManager::getSingleton().destroyWindow(mMenuWindow);
   
 }
 
