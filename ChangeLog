@@ -1,5 +1,7 @@
 2017-03-27  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (serverlib): add the rule and link it for client.
+	* src/server/lib/Server.cpp (Server): add empty class.
 	* media/layouts/local_test.layout: add a random seed button.
 	* media/layouts/local_test.layout: Play button is disabled by default.
 	* media/layouts/local_test.layout: add existing world list..

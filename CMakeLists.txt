@@ -105,6 +105,7 @@ include_directories(
   ${GUILE_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
   src/logger
+  src/server/lib
   )
 
 # Individual libraries rules
@@ -119,6 +120,16 @@ set(logger-src
   src/logger/ObjectInspector.cpp)
 add_library(rainbrurpg-logger SHARED ${logger-src})
 target_link_libraries(rainbrurpg-logger
+  ${Boost_LIBRARIES}
+  )
+
+# Serverlib library : shared by server and client
+set(serverlib-src
+  src/server/lib/Server.cpp
+)
+add_library(rainbrurpg-serverlib SHARED ${serverlib-src})
+target_link_libraries(rainbrurpg-serverlib
+  rainbrurpg-logger
   ${Boost_LIBRARIES}
   )
 
@@ -156,6 +167,7 @@ add_executable(rainbrurpg-client ${client-src})
 target_link_libraries(rainbrurpg-client
   rainbrurpg-logger
   rainbrurpg-services
+  rainbrurpg-serverlib
   ${CLI_LIBRARIES}
   ${Boost_LIBRARIES}
   )
@@ -232,6 +244,7 @@ if (BUILD_TESTS)
   target_link_libraries(rainbrurpg-tests
     rainbrurpg-logger
     rainbrurpg-services
+    rainbrurpg-serverlib
     ${CLI_LIBRARIES}
     ${GTEST_LIBRARIES}
     )

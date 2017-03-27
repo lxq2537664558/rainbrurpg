@@ -139,6 +139,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-03-27 lun. 22:47]--[2017-03-27 lun. 23:21] =>  0:34
      CLOCK: [2017-03-27 lun. 22:00]--[2017-03-27 lun. 22:11] =>  0:11
      CLOCK: [2017-03-27 lun. 21:26]--[2017-03-27 lun. 21:58] =>  0:32
      CLOCK: [2017-03-17 ven. 19:19]--[2017-03-17 ven. 19:54] =>  0:35
@@ -180,11 +181,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Layout must have a New World configuration window
       - [X] World generation with Seed textedit and random button 
 	Must add the random button to seed
-    - [ ] Should we rely on a server's class to generate the new world ?
-      It could make sense because the server generate the new world
-      and sent it (or its path) to each client. The server also need
-      to know the world to interact with it and players.
-      - something server::load(worldcnfig) or server::generate(config)
+    - [-] Should we rely on a server's class to generate the new world ?
+      - [X] should be compiled as a shared lib used by both server & client	
+      - [ ] something server::load(worldconfig) or server::generate(config)
     - [ ] For the existing world tab, we must have a RGL function
       that returns existing local worlds
       - [ ] We need to free librlgl first

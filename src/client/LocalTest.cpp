@@ -24,6 +24,8 @@
 
 #include "LocalTest.hpp"
 
+#include "Server.hpp"
+
 using namespace CEGUI;
 
 LocalTest::LocalTest():
@@ -31,6 +33,9 @@ LocalTest::LocalTest():
   mMenuWindow(NULL)
 {
 
+  // Just to test for thze serverlib library
+  Server* s = new Server(STT_EMBEDDED);
+  
 }
 
 LocalTest::~LocalTest()

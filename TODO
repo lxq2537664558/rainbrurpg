@@ -37,7 +37,8 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-- (8) Start to implement LocalTest layout file
+- (9) Start to handle server as serverlib
+- Start to implement LocalTest layout file
 - Start to implement LocalTest game state
 - Implement LoadingBar::step function
 - Create the LoadingBar layout file
