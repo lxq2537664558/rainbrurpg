@@ -1,3 +1,11 @@
+2017-03-27  Jérôme Pasquier  <rainbru@free.fr>
+
+	* media/layouts/local_test.layout: add name text edit.
+
+2017-03-20  Jérôme Pasquier  <rainbru@free.fr>
+
+	* ROADMAP: add the new world/server relation question.
+
 2017-03-17  Jérôme Pasquier  <rainbru@free.fr>
 
 	* media/layouts/local_test.layout: add and load the XML layout.

@@ -170,6 +170,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] Implement LocalTest overriden functions
   - [-] Create and load the CEGUI layout file
     - [X] implement GameState::unloadLayout()
+    - [ ] Must add world's Name and associated textedit  
+    - [ ] Should we rely on a server's class to generate the new world ?
+      It could make sense because the server generate the new world
+      and sent it (or its path) to each client. The server also need
+      to know the world to interact with it and players.
+      - something server::load(worldcnfig) or server::generate(config)
     - [ ] Must choose to generate a new world or select an existing one
       Try to use a TabControl with /NewWorld/ and /ExistingWorld/ tabs
       http://cegui.org.uk/wiki/Sample_code_for_all_Widgets#TabControl

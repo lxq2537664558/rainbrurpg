@@ -25,29 +25,38 @@
       <Property name="Position" value="{{0.7,0},{0.82,0},{0.20,0},{0.20,0}}" />
     </Window>
 
-      <Window type="DefaultWindow" name="TabPane1" >
-        <Property name="ClippedByParent" Value="False" />
-        <Window type="TaharezLook/Label" name="StaticTextPage1" >
-          <Property name="Text" >Seed:</Property>
-	  <Property name="Size" value="{{0.15,0},{0.2,0}}" />
-	  <Property name="Position" value="{{0.05,0},{0.05,0}}" />
-        </Window>
-        <Window type="TaharezLook/Editbox" name="EditBoxPage1" >
-          <Property name="MaxTextLength" Value="1073741823" />
-	  <Property name="Size" value="{{0.75,0},{0.2,0}}" />
-	  <Property name="Position" value="{{0.20,0},{0.05,0}}" />
-        </Window>
+    <Window type="DefaultWindow" name="TabPane1" >
+      <Property name="ClippedByParent" Value="False" />
+      <Window type="TaharezLook/Label" name="StaticTextPage1" >
+        <Property name="Text" >Name:</Property>
+	<Property name="Size" value="{{0.15,0},{0.2,0}}" />
+	<Property name="Position" value="{{0.05,0},{0.05,0}}" />
+      </Window>
+      <Window type="TaharezLook/Editbox" name="ebName" >
+        <Property name="MaxTextLength" Value="1073741823" />
+	<Property name="Size" value="{{0.75,0},{0.2,0}}" />
+	<Property name="Position" value="{{0.20,0},{0.05,0}}" />
       </Window>
 
-      <Window type="DefaultWindow" name="TabPane2" >
-        <Property name="ClippedByParent" Value="False" />
-        <Window type="TaharezLook/Label" name="StaticTextPage2" >
-          <Property name="Text" >Select a world :</Property>
-	  <Property name="Size" value="{{0.40,0},{0.2,0}}" />
-	  <Property name="Position" value="{{0.05,0},{0.05,0}}" />
-        </Window>
+      <Window type="TaharezLook/Label" name="stSeed" >
+        <Property name="Text" >Seed:</Property>
+	<Property name="Size" value="{{0.15,0},{0.2,0}}" />
+	<Property name="Position" value="{{0.05,0},{0.25,0}}" />
       </Window>
-
- </Window>
-  
+      <Window type="TaharezLook/Editbox" name="ebSeed" >
+        <Property name="MaxTextLength" Value="1073741823" />
+	<Property name="Size" value="{{0.75,0},{0.2,0}}" />
+	<Property name="Position" value="{{0.20,0},{0.25,0}}" />
+      </Window>
+    </Window>
+      
+    <Window type="DefaultWindow" name="TabPane2" >
+      <Property name="ClippedByParent" Value="False" />
+      <Window type="TaharezLook/Label" name="StaticTextPage2" >
+        <Property name="Text" >Select a world :</Property>
+	<Property name="Size" value="{{0.40,0},{0.2,0}}" />
+	<Property name="Position" value="{{0.05,0},{0.05,0}}" />
+      </Window>
+    </Window>
+  </Window>
 </GUILayout>
