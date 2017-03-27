@@ -1,5 +1,7 @@
 2017-03-27  Jérôme Pasquier  <rainbru@free.fr>
 
+	* media/layouts/local_test.layout: Play button is disabled by default.
+	* media/layouts/local_test.layout: add existing world list..
 	* media/layouts/local_test.layout: add name text edit.
 
 2017-03-20  Jérôme Pasquier  <rainbru@free.fr>

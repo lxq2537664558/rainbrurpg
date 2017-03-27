@@ -23,6 +23,7 @@
       <Property name="Text" value="Play" />
       <Property name="MaxSize" value="{{1,0},{1,0}}" />
       <Property name="Position" value="{{0.7,0},{0.82,0},{0.20,0},{0.20,0}}" />
+      <Property name="Disabled" value="True" />
     </Window>
 
     <Window type="DefaultWindow" name="TabPane1" >
@@ -56,6 +57,11 @@
         <Property name="Text" >Select a world :</Property>
 	<Property name="Size" value="{{0.40,0},{0.2,0}}" />
 	<Property name="Position" value="{{0.05,0},{0.05,0}}" />
+      </Window>
+      <Window type="TaharezLook/Listbox" name="Listbox" >
+        <Property name="Text" >List Box</Property>
+	<Property name="Size" value="{{0.90,0},{0.7,0}}" />
+	<Property name="Position" value="{{0.05,0},{0.25,0}}" />
       </Window>
     </Window>
   </Window>
