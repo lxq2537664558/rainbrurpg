@@ -38,7 +38,6 @@
 	<Property name="Size" value="{{0.75,0},{0.2,0}}" />
 	<Property name="Position" value="{{0.20,0},{0.05,0}}" />
       </Window>
-
       <Window type="TaharezLook/Label" name="stSeed" >
         <Property name="Text" >Seed:</Property>
 	<Property name="Size" value="{{0.15,0},{0.2,0}}" />
@@ -46,8 +45,14 @@
       </Window>
       <Window type="TaharezLook/Editbox" name="ebSeed" >
         <Property name="MaxTextLength" Value="1073741823" />
-	<Property name="Size" value="{{0.75,0},{0.2,0}}" />
+	<Property name="Size" value="{{0.45,0},{0.2,0}}" />
 	<Property name="Position" value="{{0.20,0},{0.25,0}}" />
+      </Window>
+      <Window type="TaharezLook/Button" name="btnRandom" >
+	<Property name="Text" value="Random" />
+	<Property name="MaxSize" value="{{1,0},{1,0}}" />
+	<Property name="Position" value="{{0.70,0},{0.25,0}}" />
+	<Property name="Size" value="{{0.25,0},{0.20,0}}" />
       </Window>
     </Window>
       
