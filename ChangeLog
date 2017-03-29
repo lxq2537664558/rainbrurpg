@@ -1,5 +1,7 @@
 2017-03-29  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (frameStarted): inject time to CEGUI.
+
 	* src/client/LocalTest.cpp (enter): add randomSeed handler to layout's
 	random button.
 	* src/client/LocalTest.cpp (randomSeed): randomly update textbox.

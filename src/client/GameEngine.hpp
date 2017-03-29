@@ -97,6 +97,8 @@ protected:
   virtual bool frameRenderingQueued(const Ogre::FrameEvent&);
   virtual void windowClosed(Ogre::RenderWindow*);
   virtual void windowResized(Ogre::RenderWindow* rw);
+  virtual bool frameStarted(const Ogre::FrameEvent&);
+    
   // OIS::MouseListener
   bool mouseMoved( const OIS::MouseEvent&);
   bool mousePressed( const OIS::MouseEvent&, OIS::MouseButtonID);
