@@ -44,6 +44,7 @@
 	<Property name="Position" value="{{0.05,0},{0.25,0}}" />
       </Window>
       <Window type="TaharezLook/Editbox" name="ebSeed" >
+	<Property name="Text" value="Random" />
         <Property name="MaxTextLength" Value="1073741823" />
 	<Property name="Size" value="{{0.45,0},{0.2,0}}" />
 	<Property name="Position" value="{{0.20,0},{0.25,0}}" />

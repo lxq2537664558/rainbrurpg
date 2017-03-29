@@ -22,10 +22,14 @@
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/CEGUI.h>
 
+#include <time.h>       // Uses time 
+#include <cstdlib>      // Uses srand, rand
+
 #include "LocalTest.hpp"
 
 #include "Server.hpp"
 
+using namespace std;
 using namespace CEGUI;
 
 LocalTest::LocalTest():
@@ -62,6 +66,14 @@ LocalTest::enter(GameEngine*)
   winTabControl->addTab(tabPage2);
   tabPage2->setProperty("Size", "{{1,0},{1,0}}");
   tabPage2->setProperty("Position", "{{0,0},{0,0}}");
+
+  randomSeed();
+
+  // Handle events
+  addEvent("LocalTestWin/TabControl/TabPane1/btnRandom",
+	   CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&LocalTest::randomSeed, this));
+
 }
 
 
@@ -86,4 +98,11 @@ LocalTest::restore(StateSaver*)
 
 }
 
+void
+LocalTest::randomSeed()
+{
+  Window* teSeed = mMenuWindow->getChild("TabControl/TabPane1/ebSeed");
+  srand(time(NULL));
+  teSeed->setText(std::to_string(rand()));
+}
 

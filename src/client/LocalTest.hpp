@@ -42,6 +42,8 @@ public:
   void save(StateSaver*);
   void restore(StateSaver*);
 
+  void randomSeed();
+  
 private:
   CEGUI::Window* mMenuWindow;
 

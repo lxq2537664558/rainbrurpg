@@ -1,3 +1,9 @@
+2017-03-29  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (enter): add randomSeed handler to layout's
+	random button.
+	* src/client/LocalTest.cpp (randomSeed): randomly update textbox.
+
 2017-03-27  Jérôme Pasquier  <rainbru@free.fr>
 
 	* CMakeLists.txt (serverlib): add the rule and link it for client.
