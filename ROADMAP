@@ -139,6 +139,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-03-29 mer. 23:48]--[2017-03-30 jeu. 00:03] =>  0:15
      CLOCK: [2017-03-29 mer. 22:15]--[2017-03-29 mer. 22:43] =>  0:28
      CLOCK: [2017-03-29 mer. 19:35]--[2017-03-29 mer. 20:43] =>  1:08
      CLOCK: [2017-03-27 lun. 22:47]--[2017-03-27 lun. 23:21] =>  0:34
@@ -172,7 +173,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] destroy MainMenu
     - [X] instanciate LocalTest
     - [X] set current gamestate to LocalTest
-  - [ ] Implement LocalTest overriden functions
   - [-] Create and load the CEGUI layout file
     - [X] implement GameState::unloadLayout()
     - [X] Must add world's Name and associated textedit  
@@ -183,10 +183,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Layout must have a New World configuration window
       - [X] World generation with Seed textedit and random button 
 	Must add the random button to seed
-    - [ ] Should inject passed time to CEGUI	
-    - [ ] Should send keyboard input to CEGUI
+    - [X] Should inject passed time to CEGUI	
+    - [-] Should send keyboard input to CEGUI
       This bug occurs in all game states
-      - [ ] Should send these events to gamestate before
+      - [X] Char is correctly sent
+      - [ ] Should send these events to gamestate
 	 return true if event is used
     - [-] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
@@ -198,6 +199,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [ ] Then implement and use the getLocalWorlds() function
     - [ ] Global gamestate button : Back/Play  
       The global Play button should only be enabled if a world is available
+  - [ ] Implement LocalTest overriden functions
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work

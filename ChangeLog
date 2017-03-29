@@ -1,3 +1,7 @@
+2017-03-30  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/GameEngine.cpp (keyPressed): fix the textbox handling bug.
+
 2017-03-29  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (frameStarted): inject time to CEGUI.
