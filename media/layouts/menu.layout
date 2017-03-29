@@ -48,8 +48,6 @@
 	   <Property name="Size" value="{{0.8,-21},{0,30}}" />
 	   <Property name="Text" value="Exit" />
 	 </Window>
-
        </Window>
-
     </Window>
 </GUILayout>

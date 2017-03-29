@@ -1,3 +1,15 @@
+* v0.0.5-255 (24 Jan. 2017 - 29 Mar. 2017) SLOC 3,939 FT 99:01 UT 31
+- Handle local test's random seed button
+- Start to handle server as serverlib
+- Start to implement LocalTest layout file
+- Start to implement LocalTest game state
+- Implement LoadingBar::step function
+- Create the LoadingBar layout file
+- Create the LoadingBar empty class
+- Implement ConfirmationDialog
+- Handle ModalDialog button events
+- Add the modal GUI layout
+
 * v0.0.5-254 (23 Nov. 2016 - 24 Jan. 2017) SLOC 3,549 FT 82:53 UT 27
 - Remove LoaddingBar class
 - GameEngine uses ResolutionHandler

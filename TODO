@@ -36,13 +36,5 @@ OVERALL TODO
    Add git tag r-1 when switching
    Update VERSION and REVISION in CMakeLists.txt
    
-* v0.0.5-255 (24 Jan. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-- (9) Start to handle server as serverlib
-- Start to implement LocalTest layout file
-- Start to implement LocalTest game state
-- Implement LoadingBar::step function
-- Create the LoadingBar layout file
-- Create the LoadingBar empty class
-- Implement ConfirmationDialog
-- Handle ModalDialog button events
-- Add the modal GUI layout
+* v0.0.5-256 (29 Mar. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
+

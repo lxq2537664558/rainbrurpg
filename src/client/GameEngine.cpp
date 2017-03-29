@@ -318,8 +318,15 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
 {
   std::string fn;
   mContext->injectKeyDown((CEGUI::Key::Scan)evt.key);
-  mContext->injectChar((CEGUI::Key::Scan)evt.text);
+  //  mContext->injectChar((CEGUI::Key::Scan)evt.text);
+  //mContext->injectChar(evt.text);
 
+  CEGUI::System::getSingleton().getDefaultGUIContext()
+    .injectKeyDown(static_cast<CEGUI::Key::Scan>(evt.key));
+  CEGUI::System::getSingleton().getDefaultGUIContext().injectChar(evt.text);
+
+  LOGI("Keydown char : " << (char)evt.text);
+  
   switch (evt.key)
     {
     case OIS::KC_ESCAPE: 
