@@ -40,7 +40,8 @@ public:
 
   GameState* getCurrentState()const;
   void setCurrentState(GameState*);
- 
+
+  
 protected:
   GameState* mCurrentState;
 

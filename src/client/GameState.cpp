@@ -137,3 +137,25 @@ GameState::hudUpdate()
 {
 
 }
+
+/** Send a pressed key event
+  *
+  * \return true if you're the last event user (consume event)
+  *
+  */
+bool
+GameState::keyPressed( const OIS::KeyEvent&)
+{
+  return false;
+}
+
+/** Send a released key event
+  *
+  * \return true if you're the last event user (consume event)
+  *
+  */
+bool
+GameState::keyReleased( const OIS::KeyEvent&)
+{
+  return false;
+}

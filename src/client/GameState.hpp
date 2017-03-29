@@ -24,6 +24,7 @@
 #include <string>
 #include <CEGUI/String.h>
 #include <CEGUI/Event.h>
+#include <OIS.h>
 
 // Forward declaration
 namespace CEGUI
@@ -55,8 +56,12 @@ public:
   virtual void drawOverlay();
   virtual void hudUpdate();
 
+  // Keyboard handling (return true if event was used)
+  virtual bool keyPressed( const OIS::KeyEvent& );
+  virtual bool keyReleased( const OIS::KeyEvent& );
+
   const string& getName()const;
-  
+
 protected:
   CEGUI::Window* loadLayout(const string&, const string&);
   void destroyRootWindow();

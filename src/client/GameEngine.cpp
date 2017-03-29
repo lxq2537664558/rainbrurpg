@@ -320,6 +320,9 @@ GameEngine::keyPressed( const OIS::KeyEvent& evt )
   CEGUI::System::getSingleton().getDefaultGUIContext()
     .injectKeyDown(static_cast<CEGUI::Key::Scan>(evt.key));
   CEGUI::System::getSingleton().getDefaultGUIContext().injectChar(evt.text);
+
+  if (mCurrentState->keyPressed(evt))
+    return true;
   
   switch (evt.key)
     {
@@ -401,6 +404,10 @@ bool
 GameEngine::keyReleased( const OIS::KeyEvent& evt )
 {
   mContext->injectKeyUp((CEGUI::Key::Scan)evt.key);
+
+  if (mCurrentState->keyReleased(evt))
+    return true;
+
   return true;
 }
 

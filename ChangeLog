@@ -1,5 +1,11 @@
 2017-03-30  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (keyReleased): send event to cuurent
+	gamestate.
+	* src/client/GameEngine.cpp (keyPressed): send event to cuurent
+	gamestate.
+	* src/client/GameState.cpp: implement empty key related functions.
+
 	* src/client/GameEngine.cpp (keyPressed): fix the textbox handling bug.
 
 2017-03-29  Jérôme Pasquier  <rainbru@free.fr>
