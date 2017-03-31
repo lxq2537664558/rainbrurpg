@@ -1,3 +1,11 @@
+2017-03-31  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/MainMenu.cpp (logoCreated): avoid creating the logo
+	geometry buffer twice.
+
+	* src/client/LocalTest.cpp (onBack): go back to MainMenu.
+	* src/client/GameEngine.cpp (toMainMenu): go back from Localest.
+
 2017-03-30  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (keyReleased): send event to cuurent

@@ -51,7 +51,8 @@ MainMenu::MainMenu():
   mVersionGeometry(NULL),
   mFpsGeometry(NULL),
   mDejavuSans12(NULL),
-  mMenuWindow(NULL)
+  mMenuWindow(NULL),
+  logoCreated(false)
 {
   // We can't instanciate dialogs here because
   // CEGUI isn't fully usable (GameEngine not yet started)
@@ -94,14 +95,17 @@ MainMenu::enter(GameEngine* ge)
       LOGE("Can't load '" << fontname << "' font");
     }
 
-  // Create logo geometry buffer
-  mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
+  if (!logoCreated)
+    {
+      // Create logo geometry buffer
+      mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");
   ImageManager::getSingleton().get("rpgLogo").render(*mLogoGeometry,
 	 Rectf(0, 0, 500, 70), 0, ColourRect(0xFFFFFFFF));
   mLogoGeometry->setClippingRegion(scrn);
   mLogoGeometry->setTranslation(Vector3f((scrn.getSize().d_width/2)-250, 38.0f, 0.0f));
-
+  logoCreated = true;
+    }
   // Add a version buffer
   mVersionGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   mVersionGeometry->setClippingRegion(scrn);

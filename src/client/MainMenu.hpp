@@ -73,6 +73,8 @@ private:
 
   CEGUI::Font* mDejavuSans12; // A font used to draw in geometry buffers
   CEGUI::Window* mMenuWindow;
+
+  bool logoCreated; // A flag to avoid double creation of logo texture
 };
 
 #endif //!_MAIN_MENU_HPP_
