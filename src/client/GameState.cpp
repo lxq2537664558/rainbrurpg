@@ -85,9 +85,12 @@ GameState::loadLayout(const string& filename, const string& windowName)
   return ret;
 }
 
-/** Destroys and the root window
- */
-
+/** Destroys the root window
+  *
+  * If you don't call this, you may have a CEGUI when registering event
+  * (something like 'root/GameMenu/Exit' is not attached to Element at 'Root').
+  *
+  */
 void GameState::destroyRootWindow()
 {
   if (mRoot)

@@ -87,7 +87,7 @@ MainMenu::enter(GameEngine* ge)
       if(! CEGUI::FontManager::getSingleton().isDefined( fontname ) )
 	LOGE("'" << fontname << "' font is undefined");
       
-  // Get screen size and font
+      // Get screen size and font
       mDejavuSans12 = &CEGUI::FontManager::getSingleton().get(fontname);
     }
   catch(CEGUI::UnknownObjectException e)
@@ -141,10 +141,16 @@ MainMenu::exit(GameEngine* ge)
 {
   // Remove GeometryBuffer objects
   ge->getOgreRenderer()->destroyGeometryBuffer(*mLogoGeometry);
+  mLogoGeometry = NULL;
+  
   ge->getOgreRenderer()->destroyGeometryBuffer(*mVersionGeometry);
+  mVersionGeometry = NULL;
+  
   ge->getOgreRenderer()->destroyGeometryBuffer(*mFpsGeometry);
+  mFpsGeometry = NULL;
 
   CEGUI::WindowManager::getSingleton().destroyWindow(mMenuWindow);
+  destroyRootWindow();
 }
 
 /* The callback for the menu.layout's exit button
@@ -197,9 +203,12 @@ MainMenu::onOptions(const CEGUI::EventArgs&)
 void
 MainMenu::drawOverlay()
 {
-  mLogoGeometry->draw();
-  mVersionGeometry->draw();
-  mFpsGeometry->draw();
+  if (mLogoGeometry)
+    {
+      mLogoGeometry->draw();
+      mVersionGeometry->draw();
+      mFpsGeometry->draw();
+    }
 }
 
 /* FPS update function
