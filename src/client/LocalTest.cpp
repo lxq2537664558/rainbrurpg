@@ -27,6 +27,8 @@
 
 #include "LocalTest.hpp"
 
+#include "GameEngine.hpp"
+
 #include "Server.hpp"
 
 using namespace std;
@@ -34,6 +36,7 @@ using namespace CEGUI;
 
 LocalTest::LocalTest():
   GameState("LocalTest"),
+  mGameEngine(NULL),
   mMenuWindow(NULL)
 {
 
@@ -48,8 +51,11 @@ LocalTest::~LocalTest()
 }
   
 void
-LocalTest::enter(GameEngine*)
+LocalTest::enter(GameEngine* ge)
 {
+  // Keep a pointer to GameEngine to be able to go back to MainMenu
+  mGameEngine = ge;
+  
   mMenuWindow = loadLayout("local_test.layout", "LocalTestWin");
 
   WindowManager& winMgr = WindowManager::getSingleton();
@@ -73,6 +79,8 @@ LocalTest::enter(GameEngine*)
   addEvent("LocalTestWin/TabControl/TabPane1/btnRandom",
 	   CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&LocalTest::randomSeed, this));
+  addEvent("LocalTestWin/btnBack", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&LocalTest::onBack, this));
 
 }
 
@@ -98,6 +106,10 @@ LocalTest::restore(StateSaver*)
 
 }
 
+/** Get a new random seed and set it to the GUI text box.
+  *
+  *
+  */
 void
 LocalTest::randomSeed()
 {
@@ -106,3 +118,9 @@ LocalTest::randomSeed()
   teSeed->setText(std::to_string(rand()));
 }
 
+/** Go back to the main menu */
+bool
+LocalTest::onBack(const CEGUI::EventArgs&)
+{
+  mGameEngine->toMainMenu();
+}

@@ -24,6 +24,7 @@
 #include "GameState.hpp"
 
 // Forward declaration
+class GameEngine;
 namespace CEGUI
 {
   class Window;
@@ -42,9 +43,13 @@ public:
   void save(StateSaver*);
   void restore(StateSaver*);
 
+protected:
+  bool onBack(const CEGUI::EventArgs&);
+
   void randomSeed();
   
 private:
+  GameEngine* mGameEngine;    // To be able to go back to MainMenu
   CEGUI::Window* mMenuWindow;
 
 };

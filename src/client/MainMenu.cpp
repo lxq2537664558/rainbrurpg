@@ -93,7 +93,7 @@ MainMenu::enter(GameEngine* ge)
     {
       LOGE("Can't load '" << fontname << "' font");
     }
-  
+
   // Create logo geometry buffer
   mLogoGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   ImageManager::getSingleton().addFromImageFile("rpgLogo","rpglogo.png");

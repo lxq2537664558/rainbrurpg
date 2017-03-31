@@ -711,10 +711,18 @@ GameEngine::toLocalTest()
   setCurrentState(mLocalTest);
 }
 
-
 bool
 GameEngine::frameStarted(const Ogre::FrameEvent& evt)
 {
   CEGUI::System::getSingleton().getDefaultGUIContext()
     .injectTimePulse(evt.timeSinceLastFrame);
+}
+
+/** Go back to main menu game state
+  *
+  */
+void 
+GameEngine::toMainMenu()
+{
+  setCurrentState(mMainMenu);
 }

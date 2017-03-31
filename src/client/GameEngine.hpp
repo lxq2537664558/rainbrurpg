@@ -91,6 +91,7 @@ public:
 
   void drawOverlays();
   void toLocalTest();
+  void toMainMenu();
   
 protected:
   // Ogre::FrameListener
