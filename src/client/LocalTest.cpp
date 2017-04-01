@@ -30,9 +30,12 @@
 #include "GameEngine.hpp"
 
 #include "Server.hpp"
+#include "Logger.hpp"
 
 using namespace std;
 using namespace CEGUI;
+
+static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
 LocalTest::LocalTest():
   GameState("LocalTest"),
@@ -82,6 +85,8 @@ LocalTest::enter(GameEngine* ge)
   addEvent("LocalTestWin/btnBack", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&LocalTest::onBack, this));
 
+  LOGI("LocalTest signals successfully registered");
+  
 }
 
 
@@ -89,7 +94,7 @@ void
 LocalTest::exit(GameEngine*)
 {
   CEGUI::WindowManager::getSingleton().destroyWindow(mMenuWindow);
-  
+  mMenuWindow = NULL;
 }
 
 

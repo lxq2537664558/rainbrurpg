@@ -106,34 +106,36 @@ MainMenu::enter(GameEngine* ge)
   mLogoGeometry->setTranslation(Vector3f((scrn.getSize().d_width/2)-250, 38.0f, 0.0f));
   logoCreated = true;
     }
+  
   // Add a version buffer
   mVersionGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   mVersionGeometry->setClippingRegion(scrn);
-  mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f, scrn.getSize().d_height - 20, 0.0f));
-  mDejavuSans12->drawText(*mVersionGeometry, VERSTRING, CEGUI::Vector2f(0, 0), 0,
-                        CEGUI::Colour(0xFFFFFFFF));
+  mVersionGeometry->setTranslation(CEGUI::Vector3f(10.0f,
+		    scrn.getSize().d_height - 20, 0.0f));
+  mDejavuSans12->drawText(*mVersionGeometry, VERSTRING,
+			  CEGUI::Vector2f(0, 0), 0, CEGUI::Colour(0xFFFFFFFF));
 
   // Add a FPS + stats buffer (a line of text = 20.0 height)
   mFpsGeometry = &ge->getOgreRenderer()->createGeometryBuffer();
   mFpsGeometry->setClippingRegion(scrn);
-  mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150, scrn.getSize().d_height - 60, 0.0f));
+  mFpsGeometry->setTranslation(CEGUI::Vector3f(scrn.getSize().d_width - 150,
+					       scrn.getSize().d_height - 60,
+					       0.0f));
   
   // Create dialogs
   mNyiLocalTest = new NyiDialog("Local Test", "nyiLocalTest");
   mNyiNetworkPlay = new NyiDialog("Network play", "nyiNetworkPlay");
   mNyiOptions = new NyiDialog("Options", "nyiOptions");
-
   
   // Handle events
-  addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
-	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
   addEvent("root/GameMenu/LocalTest", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onLocalTest, this));
+  addEvent("root/GameMenu/Exit", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&MainMenu::onExit, this));
   addEvent("root/GameMenu/NetworkPlay", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onNetworkPlay, this));
   addEvent("root/GameMenu/Options", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&MainMenu::onOptions, this));
-
 }
 
 void
@@ -170,12 +172,6 @@ MainMenu::onExit(const CEGUI::EventArgs& evt)
 bool
 MainMenu::onLocalTest(const CEGUI::EventArgs&)
 {
-  //mNyiLocalTest->show();
-  /*  LoadingBar* lb = new LoadingBar("Testing loadingbar");
-  lb->addStep("Step 1");
-  lb->addStep("Step 2");
-  lb->init();
-  */
   mGameEngine->toLocalTest();
   return true;
 }

@@ -1,3 +1,7 @@
+2017-04-02  Jérôme Pasquier  <rainbru@free.fr>
+
+	* ROADMAP: postponed the LocalTest shutdown bug.
+
 2017-03-31  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/MainMenu.cpp (exit): now call destroyRootWindow to

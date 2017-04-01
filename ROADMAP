@@ -110,6 +110,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
   or network (ping, player number) will be added by client when trying to 
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
+**** Postponed bugs
+- [ ] Trying to go back to localTest seems to exit the game
+  Going to LocalTest, then go back to MainMenu and again to LocalTest
+  actually switch to LocalTest (as a proff, we connect signals from
+  LocalTest::enter(), then we properly leave the game
+
 **** Start to handle the Profile GameState
      I would like to try to handle SSH key to handle authentication.
      It can be usefull if we use a git-base filesystem.
@@ -139,6 +145,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-04-01 sam. 23:23]--[2017-04-02 dim. 00:06] =>  0:43
      CLOCK: [2017-03-31 ven. 22:20]--[2017-03-31 ven. 23:44] =>  1:24
      CLOCK: [2017-03-30 jeu. 00:17]--[2017-03-30 jeu. 00:38] =>  0:21
      CLOCK: [2017-03-29 mer. 23:48]--[2017-03-30 jeu. 00:03] =>  0:15
@@ -198,7 +205,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	- Now calling GameState::destroyRootWindow()
 	We have a segfault in MainMenu::drawOverlay()
 	in CEGUI::RenderingSurface::draw()
-      - [ ] Trying to go back to localTest seems to fail
     - [-] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
       - [ ] something like server::load(worldconfig) or server::generate(config)

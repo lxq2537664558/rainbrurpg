@@ -115,6 +115,8 @@ void
 GameState::addEvent(const string& button, const CEGUI::String& event,
 		    CEGUI::Event::Subscriber callback)
 {
+  
+  LOGI("Connecting button " << button << ")");
   mRoot->getChild(button)->subscribeEvent(event, callback);
 }
 
