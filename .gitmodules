@@ -1,0 +1,3 @@
+[submodule "ext/librlgl"]
+	path = ext/librlgl
+	url = git@github.com:rainbru/librlgl.git

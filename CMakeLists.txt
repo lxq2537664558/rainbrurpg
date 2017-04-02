@@ -6,6 +6,9 @@ message(STATUS "Configuring RainbruRPG...")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+# Include git submodules
+include("${PROJECT_SOURCE_DIR}/ext/librlgl/src/lib/CMakeLists.txt")
+
 option(BUILD_LOGGER_EXAMPLES "If we build logger examples binaries" OFF)
 option(BUILD_LOGREADER "If we build the Qt-based logreader" OFF)
 option(BUILD_TESTS "Defines if we build unit tests" ON)
@@ -259,3 +262,7 @@ endif()
 #  is weird.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILENAME__='\"$(subst ${CMAKE_SOURCE_DIR}/src/,,$(abspath $<))\"'")
 
+# Define a librlgl-related macro
+# Should be ~/programmation/github.com/rainbrurpg/ext/librlgl/
+set(RLGLDIR ${CMAKE_CURRENT_SOURCE_DIR}/ext/librlgl)
+add_definitions(-DROOTDIR="${RLGLDIR}")
