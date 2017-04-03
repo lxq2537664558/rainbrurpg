@@ -173,8 +173,24 @@ LocalTest::check()
   else /* Existing world tab */
     {
       // Must test if a world is selected
-      play = false;
-      // if ListBox::getSelectedCount (void) const > 0
+      //      play = false;
+      Listbox* ilb = static_cast<Listbox*>(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
+      //      CEGUI::ListboxItem* it1 = new CEGUI::ListboxItem("power up")
+      //      lb->addItem(it1);
+	//      lb->addItem(new CEGUI::ListboxItem("power down"));
+
+      ilb->setMultiselectEnabled(false);
+      ilb->setSortingEnabled(true);
+      ListboxTextItem* itemListbox = new ListboxTextItem("Value A", 1);
+      //      itemListbox->setSelectionBrushImage("TaharezLook", "MultiListSelectionBrush");
+      itemListbox->setSelectionColours(CEGUI::Colour(0xFFFFFFFF));
+      ilb->addItem(itemListbox);
+
+      ilb->setItemSelectState(itemListbox, true);
+      ilb->ensureItemIsVisible(itemListbox);
+
+      play = ilb->getSelectedCount();
+      
     }
 
   // Change the Play button state

@@ -145,7 +145,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
-     CLOCK: [2017-04-03 lun. 21:06]
+     CLOCK: [2017-04-03 lun. 21:06]--[2017-04-03 lun. 22:52] =>  1:46
      CLOCK: [2017-04-03 lun. 20:29]--[2017-04-03 lun. 21:01] =>  0:32
      CLOCK: [2017-04-03 lun. 19:54]--[2017-04-03 lun. 20:28] =>  0:34
      CLOCK: [2017-04-03 lun. 00:54]--[2017-04-03 lun. 01:23] =>  0:29
@@ -231,8 +231,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
   In the key pressed GameState event
   - [X] Call the check() function when needed
   - [X] Get the currently selected tab
-  - [ ] If new world, test if the name and seed aren't empty
+  - [X] If new world, test if the name and seed aren't empty
   - [ ] If in existing world tab, search for a selected one
+    Can't have a selection in the listbox.
   - [ ] Must add some dummy worlds
   - [ ] Must add an event on th world list
 - [ ] Launch an embedded server

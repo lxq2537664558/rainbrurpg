@@ -61,7 +61,7 @@
 	<Property name="Size" value="{{0.40,0},{0.2,0}}" />
 	<Property name="Position" value="{{0.05,0},{0.05,0}}" />
       </Window>
-      <Window type="TaharezLook/Listbox" name="Listbox" >
+      <Window type="TaharezLook/Listbox" name="lbExisting" >
         <Property name="Text" >List Box</Property>
 	<Property name="Size" value="{{0.90,0},{0.7,0}}" />
 	<Property name="Position" value="{{0.05,0},{0.25,0}}" />
