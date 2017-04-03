@@ -144,7 +144,7 @@ LocalTest::keyPressed( const OIS::KeyEvent& )
 bool
 LocalTest::onTabChange(const CEGUI::EventArgs&)
 {
-  LOGI("onTabChange");
+  check();
 }
 
 
@@ -154,6 +154,28 @@ LocalTest::onTabChange(const CEGUI::EventArgs&)
 void
 LocalTest::check()
 {
-  LOGI("Checking");
-  // Must get the active Tabcontrol
+  // Must enable play button ?
+  bool play = false;
+  
+  // Get the active Tabcontrol
+  TabControl* tc=static_cast<TabControl*>(mMenuWindow->getChild("TabControl"));
+  int sel = tc->getSelectedTabIndex();
+
+  if (sel ==0 ) /* New world tab */
+    {
+      // Must test if name and seed aren't empty
+      play = true;
+    }
+  else /* Existing world tab */
+    {
+      // Must test if a world is selected
+      play = false;
+    }
+
+  Window* btnPlay = mMenuWindow->getChild("btnPlay");
+  if (play)
+    btnPlay->setProperty("Disabled", "False");
+  else
+    btnPlay->setProperty("Disabled", "True");
+    
 }
