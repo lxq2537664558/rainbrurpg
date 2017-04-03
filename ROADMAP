@@ -145,6 +145,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-04-03 lun. 21:06]
      CLOCK: [2017-04-03 lun. 20:29]--[2017-04-03 lun. 21:01] =>  0:32
      CLOCK: [2017-04-03 lun. 19:54]--[2017-04-03 lun. 20:28] =>  0:34
      CLOCK: [2017-04-03 lun. 00:54]--[2017-04-03 lun. 01:23] =>  0:29

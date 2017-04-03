@@ -1,5 +1,10 @@
 2017-04-03  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/LocalTest.cpp (check): finished the new world tab
+	validation.
+
+	* src/client/LocalTest.cpp (check): implement the basic layout.
+
 	* src/client/LocalTest.cpp (keyPressed): override GameState function
 	to call check().
 	* src/client/LocalTest.hpp (check): enw function to test if we need

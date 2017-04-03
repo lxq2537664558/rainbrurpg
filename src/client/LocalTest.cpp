@@ -164,14 +164,20 @@ LocalTest::check()
   if (sel ==0 ) /* New world tab */
     {
       // Must test if name and seed aren't empty
-      play = true;
+      bool s1 = !mMenuWindow->getChild("TabControl/TabPane1/ebSeed")
+	->getText().empty();
+      bool s2 = !mMenuWindow->getChild("TabControl/TabPane1/ebName")
+	->getText().empty();
+      play = s1 && s2;
     }
   else /* Existing world tab */
     {
       // Must test if a world is selected
       play = false;
+      // if ListBox::getSelectedCount (void) const > 0
     }
 
+  // Change the Play button state
   Window* btnPlay = mMenuWindow->getChild("btnPlay");
   if (play)
     btnPlay->setProperty("Disabled", "False");
