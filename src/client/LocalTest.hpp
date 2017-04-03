@@ -43,9 +43,13 @@ public:
   void save(StateSaver*);
   void restore(StateSaver*);
 
+  virtual bool keyPressed( const OIS::KeyEvent& );
+  void check();
+  
 protected:
   bool onBack(const CEGUI::EventArgs&);
-
+  bool onTabChange(const CEGUI::EventArgs&);
+  
   void randomSeed();
   
 private:

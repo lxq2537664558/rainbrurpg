@@ -1,3 +1,10 @@
+2017-04-03  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (keyPressed): override GameState function
+	to call check().
+	* src/client/LocalTest.hpp (check): enw function to test if we need
+	to enable Play button.
+
 2017-04-02  Jérôme Pasquier  <rainbru@free.fr>
 
 	* README.md: add buidl instructions using git submodule.

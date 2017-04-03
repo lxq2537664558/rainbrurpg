@@ -85,9 +85,12 @@ LocalTest::enter(GameEngine* ge)
 	   CEGUI::Event::Subscriber(&LocalTest::randomSeed, this));
   addEvent("LocalTestWin/btnBack", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&LocalTest::onBack, this));
+  addEvent("LocalTestWin/btnBack", CEGUI::PushButton::EventClicked,
+	   CEGUI::Event::Subscriber(&LocalTest::onBack, this));
+  addEvent("LocalTestWin/TabControl", CEGUI::TabControl::EventSelectionChanged,
+	   CEGUI::Event::Subscriber(&LocalTest::onTabChange, this));
 
   LOGI("LocalTest signals successfully registered");
-  
 }
 
 
@@ -130,4 +133,27 @@ bool
 LocalTest::onBack(const CEGUI::EventArgs&)
 {
   mGameEngine->toMainMenu();
+}
+
+bool
+LocalTest::keyPressed( const OIS::KeyEvent& )
+{
+  check();
+}
+
+bool
+LocalTest::onTabChange(const CEGUI::EventArgs&)
+{
+  LOGI("onTabChange");
+}
+
+
+/** Check for the playability of the form
+  *
+  */
+void
+LocalTest::check()
+{
+  LOGI("Checking");
+  // Must get the active Tabcontrol
 }
