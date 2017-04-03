@@ -109,6 +109,7 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
   src/logger
   src/server/lib
+  ext/librlgl/src/lib
   )
 
 # Individual libraries rules
@@ -171,6 +172,7 @@ target_link_libraries(rainbrurpg-client
   rainbrurpg-logger
   rainbrurpg-services
   rainbrurpg-serverlib
+  librlgl
   ${CLI_LIBRARIES}
   ${Boost_LIBRARIES}
   )
@@ -182,6 +184,7 @@ add_executable(rainbrurpg-server ${server-src})
 target_link_libraries(rainbrurpg-server
   rainbrurpg-logger
   rainbrurpg-services
+  librlgl
   ${Boost_LIBRARIES}
   )
 
@@ -248,6 +251,7 @@ if (BUILD_TESTS)
     rainbrurpg-logger
     rainbrurpg-services
     rainbrurpg-serverlib
+    librlgl
     ${CLI_LIBRARIES}
     ${GTEST_LIBRARIES}
     )

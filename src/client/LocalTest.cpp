@@ -22,8 +22,8 @@
 #include <CEGUI/WindowManager.h>
 #include <CEGUI/CEGUI.h>
 
-#include <time.h>       // Uses time 
-#include <cstdlib>      // Uses srand, rand
+//#include <time.h>       // Uses time 
+//#include <cstdlib>      // Uses srand, rand
 
 #include "LocalTest.hpp"
 
@@ -31,6 +31,7 @@
 
 #include "Server.hpp"
 #include "Logger.hpp"
+#include "Seed.hpp"
 
 using namespace std;
 using namespace CEGUI;
@@ -119,8 +120,9 @@ void
 LocalTest::randomSeed()
 {
   Window* teSeed = mMenuWindow->getChild("TabControl/TabPane1/ebSeed");
-  srand(time(NULL));
-  teSeed->setText(std::to_string(rand()));
+  RLGL::Seed s;
+  s.randomize();
+  teSeed->setText(s.to_s());
 }
 
 /** Go back to the main menu */

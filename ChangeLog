@@ -1,5 +1,17 @@
 2017-04-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* CMakeLists.txt (rainbrurpg-tests): add librlgl to
+	target_link_libraries rule.
+	* CMakeLists.txt (rainbrurpg-client): add librlgl to
+	target_link_libraries rule.
+	* src/client/LocalTest.cpp (randomSeed): uses RLGL::Seed to get
+	a random seed.
+	* CMakeLists.txt (include_directories): add librlgl sources.
+
+	* CMakeLists.txt (ROOTDIR): add macro definition to build rlgl.
+	* CMakeLists.txt (include): include enw submodule.
+	* ext/librlgl: add new submodule.
+
 	* ROADMAP: postponed the LocalTest shutdown bug.
 
 2017-03-31  Jérôme Pasquier  <rainbru@free.fr>

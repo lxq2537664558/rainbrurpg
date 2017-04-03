@@ -145,6 +145,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-04-03 lun. 00:54]--[2017-04-03 lun. 01:23] =>  0:29
+     CLOCK: [2017-04-02 dim. 23:59]--[2017-04-03 lun. 00:47] =>  0:48
      CLOCK: [2017-04-01 sam. 23:23]--[2017-04-02 dim. 00:06] =>  0:43
      CLOCK: [2017-03-31 ven. 22:20]--[2017-03-31 ven. 23:44] =>  1:24
      CLOCK: [2017-03-30 jeu. 00:17]--[2017-03-30 jeu. 00:38] =>  0:21
@@ -198,21 +200,26 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Char is correctly sent
       - [X] Should send these events to gamestate
 	 return true if event is used
-    - [-] Implement the Back button
+    - [X] Implement the Back button
       - [X] There is a  =Texture already exists: rpgLogo= when creating MainMenu
       - [X] There's an event issue when trying to go back to MainMenu
         ='root/GameMenu/Exit' is not attached to Element at 'Root'=
 	- Now calling GameState::destroyRootWindow()
 	We have a segfault in MainMenu::drawOverlay()
 	in CEGUI::RenderingSurface::draw()
+    - [-] For the existing world tab, we must have a RGL function
+      that returns existing local worlds
+      - [X] We need to free librlgl first
+      - [X] Then add rlgl as a git submodule in ext/
+      - [X] Add liblrgl CMakefile to top-level one
+	We have an issue with ‘ROOTDIR’
+      - [X] Use the Seed and randomize thing to get a random seed in LocalTest
+	To see if the librlgl include works
+      - [ ] Explain in README.md how to use submodule
+      - [ ] Then implement and use the getLocalWorlds() function
     - [-] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
       - [ ] something like server::load(worldconfig) or server::generate(config)
-    - [ ] For the existing world tab, we must have a RGL function
-      that returns existing local worlds
-      - [ ] We need to free librlgl first
-      - [ ] Then add rlgl as a git submodule in ext/
-      - [ ] Then implement and use the getLocalWorlds() function
     - [ ] Random seed may come from a RLGL function
       Because the seed could come from another function than simply rand()
   - [ ] Implement LocalTest overriden functions
