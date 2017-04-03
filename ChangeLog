@@ -1,5 +1,7 @@
 2017-04-02  Jérôme Pasquier  <rainbru@free.fr>
 
+	* README.md: add buidl instructions using git submodule.
+
 	* CMakeLists.txt (rainbrurpg-tests): add librlgl to
 	target_link_libraries rule.
 	* CMakeLists.txt (rainbrurpg-client): add librlgl to

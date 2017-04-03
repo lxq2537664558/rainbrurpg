@@ -6,12 +6,15 @@ Here is an open source 3D MMORPG project.
 
 # Build and installation
 
-Switch to `cmake` is a work-in-progress. The build may fail.
+You should be able to build all components :
 
+	git submodule init
+	git submodule update
 	mkdir build
 	cd build
 	cmake ..
 	make
+	make check
 	./rainbrurpg-client
 
 # Client key bindings

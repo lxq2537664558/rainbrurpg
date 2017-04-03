@@ -207,6 +207,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	- Now calling GameState::destroyRootWindow()
 	We have a segfault in MainMenu::drawOverlay()
 	in CEGUI::RenderingSurface::draw()
+    - [X] Random seed may come from a RLGL function
+      Because the seed could come from another function than simply rand()
     - [-] For the existing world tab, we must have a RGL function
       that returns existing local worlds
       - [X] We need to free librlgl first
@@ -215,13 +217,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	We have an issue with ‘ROOTDIR’
       - [X] Use the Seed and randomize thing to get a random seed in LocalTest
 	To see if the librlgl include works
-      - [ ] Explain in README.md how to use submodule
+      - [X] Explain in README.md how to use submodule
       - [ ] Then implement and use the getLocalWorlds() function
     - [-] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
       - [ ] something like server::load(worldconfig) or server::generate(config)
-    - [ ] Random seed may come from a RLGL function
-      Because the seed could come from another function than simply rand()
   - [ ] Implement LocalTest overriden functions
     Save/Restore state functions
 - [ ] Must validate the LocalTest layout and enable Play button
