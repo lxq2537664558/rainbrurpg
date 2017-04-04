@@ -126,6 +126,7 @@ LocalTest::randomSeed()
   RLGL::Seed s;
   s.randomize();
   teSeed->setText(s.to_s());
+  check();
 }
 
 /** Go back to the main menu */
@@ -173,24 +174,21 @@ LocalTest::check()
   else /* Existing world tab */
     {
       // Must test if a world is selected
-      //      play = false;
-      Listbox* ilb = static_cast<Listbox*>(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
-      //      CEGUI::ListboxItem* it1 = new CEGUI::ListboxItem("power up")
-      //      lb->addItem(it1);
-	//      lb->addItem(new CEGUI::ListboxItem("power down"));
+      Listbox* lb = static_cast<Listbox*>
+	(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
 
-      ilb->setMultiselectEnabled(false);
-      ilb->setSortingEnabled(true);
+      lb->setMultiselectEnabled(false);
+      lb->setSortingEnabled(true);
       ListboxTextItem* itemListbox = new ListboxTextItem("Value A", 1);
-      //      itemListbox->setSelectionBrushImage("TaharezLook", "MultiListSelectionBrush");
-      itemListbox->setSelectionColours(CEGUI::Colour(0xFFFFFFFF));
-      ilb->addItem(itemListbox);
+      itemListbox->setSelectionColours(CEGUI::Colour(0.0f, 0.0f, 0.8f));
+      itemListbox->setTextColours(CEGUI::Colour(0xFFFFFFFF));
+      itemListbox->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
+      lb->addItem(itemListbox);
 
-      ilb->setItemSelectState(itemListbox, true);
-      ilb->ensureItemIsVisible(itemListbox);
-
-      play = ilb->getSelectedCount();
+      lb->setItemSelectState(itemListbox, true);
+      lb->ensureItemIsVisible(itemListbox);
       
+      play = lb->getSelectedCount() != 0;
     }
 
   // Change the Play button state
