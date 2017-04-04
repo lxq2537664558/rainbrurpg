@@ -145,6 +145,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-04-04 mar. 21:00]--[2017-04-04 mar. 21:56] =>  0:56
      CLOCK: [2017-04-04 mar. 19:22]--[2017-04-04 mar. 20:30] =>  1:08
      CLOCK: [2017-04-03 lun. 21:06]--[2017-04-03 lun. 22:52] =>  1:46
      CLOCK: [2017-04-03 lun. 20:29]--[2017-04-03 lun. 21:01] =>  0:32
@@ -183,6 +184,15 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] get the progressbar and title text pointer
     then set them to the actual values
   - [X] Implement the step function  
+- [X] Must validate the LocalTest layout and enable Play button
+  In the key pressed GameState event
+  - [X] Call the check() function when needed
+  - [X] Get the currently selected tab
+  - [X] If new world, test if the name and seed aren't empty
+  - [X] If in existing world tab, search for a selected one
+  - [X] We call check() when changing tab, now handle list change
+  - [X] Must add some dummy worlds via a addWorld(string) function
+  - [X] Must add an event on th world list
 - [-] Create a real LocalTest GameState
   - [X] Work on the MainMenu LocalTest transition
     - [X] destroy MainMenu
@@ -228,15 +238,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [ ] something like server::load(worldconfig) or server::generate(config)
   - [ ] Implement LocalTest overriden functions
     Save/Restore state functions
-- [-] Must validate the LocalTest layout and enable Play button
-  In the key pressed GameState event
-  - [X] Call the check() function when needed
-  - [X] Get the currently selected tab
-  - [X] If new world, test if the name and seed aren't empty
-  - [ ] If in existing world tab, search for a selected one
-    Can't have a selection in the listbox.
-  - [ ] Must add some dummy worlds
-  - [ ] Must add an event on th world list
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work

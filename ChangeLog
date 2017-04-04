@@ -1,5 +1,11 @@
 2017-04-04  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/LocalTest.cpp (addWorld): add an helper function.
+	* src/client/LocalTest.hpp (lbWorlds): add a global pointer to
+	existing worlds listbox.
+
+	* src/client/LocalTest.cpp (onSelectionChange): call check() to
+	update Play button.
 	* src/client/LocalTest.cpp (check): add a selection brush image.
 
 2017-04-03  Jérôme Pasquier  <rainbru@free.fr>

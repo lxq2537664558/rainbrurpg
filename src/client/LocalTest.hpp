@@ -27,6 +27,7 @@
 class GameEngine;
 namespace CEGUI
 {
+  class Listbox;
   class Window;
 }
 // End of forward declaration
@@ -45,6 +46,8 @@ public:
 
   virtual bool keyPressed( const OIS::KeyEvent& );
   void check();
+
+  void addWorld(const string&);
   
 protected:
   bool onBack(const CEGUI::EventArgs&);
@@ -56,7 +59,8 @@ protected:
 private:
   GameEngine* mGameEngine;    // To be able to go back to MainMenu
   CEGUI::Window* mMenuWindow;
-
+  CEGUI::Listbox* lbWorlds; // Existing worlds listbox
+  
 };
 
 #endif  // !_LOCACL_TEST_HPP_

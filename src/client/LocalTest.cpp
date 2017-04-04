@@ -41,7 +41,8 @@ static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 LocalTest::LocalTest():
   GameState("LocalTest"),
   mGameEngine(NULL),
-  mMenuWindow(NULL)
+  mMenuWindow(NULL),
+  lbWorlds(NULL)
 {
 
   // Just to test for thze serverlib library
@@ -80,19 +81,15 @@ LocalTest::enter(GameEngine* ge)
   randomSeed();
 
   // Add some existing worlds
-      Listbox* lb = static_cast<Listbox*>
-	(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
+  lbWorlds = static_cast<Listbox*>
+    (mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
+  lbWorlds->setMultiselectEnabled(false);
+  lbWorlds->setSortingEnabled(true);
 
-      lb->setMultiselectEnabled(false);
-      lb->setSortingEnabled(true);
-      ListboxTextItem* itemListbox = new ListboxTextItem("Value A", 1);
-      itemListbox->setSelectionColours(CEGUI::Colour(0.0f, 0.0f, 0.8f));
-      itemListbox->setTextColours(CEGUI::Colour(0xFFFFFFFF));
-      itemListbox->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
-      lb->addItem(itemListbox);
-      //     lb->setItemSelectState(itemListbox, true);
-      lb->ensureItemIsVisible(itemListbox);
-
+  // Add some summy worlds to test for selection
+  addWorld("World 1");
+  addWorld("World A");
+  addWorld("World lplp");
   
   // Handle events
   addEvent("LocalTestWin/TabControl/TabPane1/btnRandom",
@@ -220,4 +217,15 @@ LocalTest::onSelectionChange(const CEGUI::EventArgs&)
 {
   check();
   return true;
+}
+
+void
+LocalTest::addWorld(const string& worldName)
+{
+  // lbWorlds
+  ListboxTextItem* lbi = new ListboxTextItem(worldName, 1);
+  lbi->setSelectionColours(CEGUI::Colour(0.0f, 0.0f, 0.8f));
+  lbi->setTextColours(CEGUI::Colour(0xFFFFFFFF));
+  lbi->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
+  lbWorlds->addItem(lbi);
 }
