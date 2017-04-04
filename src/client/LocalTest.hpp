@@ -49,6 +49,7 @@ public:
 protected:
   bool onBack(const CEGUI::EventArgs&);
   bool onTabChange(const CEGUI::EventArgs&);
+  bool onSelectionChange(const CEGUI::EventArgs&);
   
   void randomSeed();
   

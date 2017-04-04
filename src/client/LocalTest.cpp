@@ -79,6 +79,21 @@ LocalTest::enter(GameEngine* ge)
 
   randomSeed();
 
+  // Add some existing worlds
+      Listbox* lb = static_cast<Listbox*>
+	(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
+
+      lb->setMultiselectEnabled(false);
+      lb->setSortingEnabled(true);
+      ListboxTextItem* itemListbox = new ListboxTextItem("Value A", 1);
+      itemListbox->setSelectionColours(CEGUI::Colour(0.0f, 0.0f, 0.8f));
+      itemListbox->setTextColours(CEGUI::Colour(0xFFFFFFFF));
+      itemListbox->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
+      lb->addItem(itemListbox);
+      //     lb->setItemSelectState(itemListbox, true);
+      lb->ensureItemIsVisible(itemListbox);
+
+  
   // Handle events
   addEvent("LocalTestWin/TabControl/TabPane1/btnRandom",
 	   CEGUI::PushButton::EventClicked,
@@ -88,8 +103,11 @@ LocalTest::enter(GameEngine* ge)
   addEvent("LocalTestWin/btnBack", CEGUI::PushButton::EventClicked,
 	   CEGUI::Event::Subscriber(&LocalTest::onBack, this));
   addEvent("LocalTestWin/TabControl", CEGUI::TabControl::EventSelectionChanged,
-	   CEGUI::Event::Subscriber(&LocalTest::onTabChange, this));
-
+  	   CEGUI::Event::Subscriber(&LocalTest::onTabChange, this));
+  addEvent("LocalTestWin/TabControl/TabPane2/lbExisting",
+	   CEGUI::TabControl::EventSelectionChanged,
+	   CEGUI::Event::Subscriber(&LocalTest::onSelectionChange, this));
+  
   LOGI("LocalTest signals successfully registered");
 }
 
@@ -140,16 +158,21 @@ bool
 LocalTest::keyPressed( const OIS::KeyEvent& )
 {
   check();
+  return true;
 }
 
 bool
 LocalTest::onTabChange(const CEGUI::EventArgs&)
 {
   check();
+  return true;
 }
 
 
 /** Check for the playability of the form
+  *
+  * This function shouldn't change the existing worlds list box selection
+  * to avoid an infinite loop.
   *
   */
 void
@@ -176,17 +199,6 @@ LocalTest::check()
       // Must test if a world is selected
       Listbox* lb = static_cast<Listbox*>
 	(mMenuWindow->getChild("TabControl/TabPane2/lbExisting"));
-
-      lb->setMultiselectEnabled(false);
-      lb->setSortingEnabled(true);
-      ListboxTextItem* itemListbox = new ListboxTextItem("Value A", 1);
-      itemListbox->setSelectionColours(CEGUI::Colour(0.0f, 0.0f, 0.8f));
-      itemListbox->setTextColours(CEGUI::Colour(0xFFFFFFFF));
-      itemListbox->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
-      lb->addItem(itemListbox);
-
-      lb->setItemSelectState(itemListbox, true);
-      lb->ensureItemIsVisible(itemListbox);
       
       play = lb->getSelectedCount() != 0;
     }
@@ -198,4 +210,14 @@ LocalTest::check()
   else
     btnPlay->setProperty("Disabled", "True");
     
+}
+
+/** Event handler fired when the existing worlds list box selection changed
+  *
+  */
+bool
+LocalTest::onSelectionChange(const CEGUI::EventArgs&)
+{
+  check();
+  return true;
 }
