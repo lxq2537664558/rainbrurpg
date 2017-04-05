@@ -18,49 +18,34 @@
  *
  */
 
-#ifndef _LOCAL_TEST_HPP_
-#define _LOCAL_TEST_HPP_
+#ifndef _ANIMATED_IMAGE_HPP_
+#define _ANIMATED_IMAGE_HPP_
 
-#include "GameState.hpp"
+#include <CEGUI/CEGUI.h>
+
+#include <vector>
 
 // Forward declaration
 class GameEngine;
-namespace CEGUI
-{
-  class Listbox;
-  class Window;
-}
 // End of forward declaration
 
-
-class LocalTest: public GameState
+/** Implement a waiting indication
+  *
+  * May be renamed AnimatedImage
+  *
+  */
+class AnimatedImage : public CEGUI::DefaultWindow
 {
 public:
-  LocalTest();
-  ~LocalTest();
+  AnimatedImage(GameEngine*);
+  ~AnimatedImage();
 
-  void enter(GameEngine*);
-  void exit(GameEngine*);
-  void save(StateSaver*);
-  void restore(StateSaver*);
-
-  virtual bool keyPressed( const OIS::KeyEvent& );
-  void check();
-
-  void addWorld(const string&);
-  
 protected:
-  bool onBack(const CEGUI::EventArgs&);
-  bool onTabChange(const CEGUI::EventArgs&);
-  bool onSelectionChange(const CEGUI::EventArgs&);
-  
-  void randomSeed();
+  virtual void 	drawSelf (const CEGUI::RenderingContext &);
   
 private:
-  GameEngine* mGameEngine;    // To be able to go back to MainMenu
-  CEGUI::Window* mMenuWindow;
-  CEGUI::Listbox* lbWorlds; // Existing worlds listbox
-  
+  std::vector<CEGUI::Image*> mImages;
+  CEGUI::GeometryBuffer* gb;
 };
 
-#endif  // !_LOCAL_TEST_HPP_
+#endif // !_ANIMATED_IMAGE_HPP_

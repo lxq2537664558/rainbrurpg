@@ -145,6 +145,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
+     CLOCK: [2017-04-05 mer. 21:30]
+     CLOCK: [2017-04-05 mer. 18:50]--[2017-04-05 mer. 19:40] =>  0:50
      CLOCK: [2017-04-04 mar. 21:00]--[2017-04-04 mar. 21:56] =>  0:56
      CLOCK: [2017-04-04 mar. 19:22]--[2017-04-04 mar. 20:30] =>  1:08
      CLOCK: [2017-04-03 lun. 21:06]--[2017-04-03 lun. 22:52] =>  1:46
@@ -193,12 +195,12 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] We call check() when changing tab, now handle list change
   - [X] Must add some dummy worlds via a addWorld(string) function
   - [X] Must add an event on th world list
-- [-] Create a real LocalTest GameState
+- [X] Create a real LocalTest GameState
   - [X] Work on the MainMenu LocalTest transition
     - [X] destroy MainMenu
     - [X] instanciate LocalTest
     - [X] set current gamestate to LocalTest
-  - [-] Create and load the CEGUI layout file
+  - [X] Create and load the CEGUI layout file
     - [X] implement GameState::unloadLayout()
     - [X] Must add world's Name and associated textedit  
     - [X] Should add a list widget for the "existing world" pane  
@@ -223,7 +225,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
 	in CEGUI::RenderingSurface::draw()
     - [X] Random seed may come from a RLGL function
       Because the seed could come from another function than simply rand()
-    - [-] For the existing world tab, we must have a RGL function
+    - [X] For the existing world tab, we must have a RGL function
       that returns existing local worlds
       - [X] We need to free librlgl first
       - [X] Then add rlgl as a git submodule in ext/
@@ -232,12 +234,23 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Use the Seed and randomize thing to get a random seed in LocalTest
 	To see if the librlgl include works
       - [X] Explain in README.md how to use submodule
-      - [ ] Then implement and use the getLocalWorlds() function
-    - [-] Should we rely on a server's class to generate the new world ?
+    - [X] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
-      - [ ] something like server::load(worldconfig) or server::generate(config)
+- [ ] Create an AnimatedImage class
+  - [ ] From the media/imagesets/waiting.png
+    Currently disabled in LocalTest::enter()
+  
+- [ ] Create a positionnable waiting circle possibly with description test
+  See http://cegui.org.uk/forum/viewtopic.php?t=5102
+  May become a base class called AnimatedImage
+  - [ ] Make it positionnable in a given Area or from a Widget name
+    for example 
+- [ ] Finish the LocalTest implementation (waiting for RLGL)
   - [ ] Implement LocalTest overriden functions
     Save/Restore state functions
+  - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
+    Use the listener and the WaintingCircle class
+  - [ ] Call server::load(worldconfig) or server::generate(config)
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work

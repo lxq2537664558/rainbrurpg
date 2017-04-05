@@ -1,3 +1,10 @@
+2017-04-05  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/AnimatedImage.cpp (drawSelf): start to implement the
+	drawing.
+	* src/client/AnimatedImage.hpp (AnimatedImage): start a new class.
+	* src/client/LocalTest.hpp (_LOCAL_TEST_HPP_): fix a typo in guards.
+
 2017-04-04  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/LocalTest.cpp (addWorld): add an helper function.

@@ -150,6 +150,7 @@ target_link_libraries(rainbrurpg-services
 
 # Executables rules
 set (client-src
+  src/client/AnimatedImage.cpp
   src/client/CeguiDialog.cpp
   src/client/ConfirmationDialog.cpp
   src/client/Exception.cpp

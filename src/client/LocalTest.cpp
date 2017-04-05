@@ -28,6 +28,7 @@
 #include "LocalTest.hpp"
 
 #include "GameEngine.hpp"
+#include "AnimatedImage.hpp"
 
 #include "Server.hpp"
 #include "Logger.hpp"
@@ -106,6 +107,9 @@ LocalTest::enter(GameEngine* ge)
 	   CEGUI::Event::Subscriber(&LocalTest::onSelectionChange, this));
   
   LOGI("LocalTest signals successfully registered");
+
+  //  AnimatedImage* wic = new AnimatedImage(ge);
+  //  mMenuWindow->addChild(wic);
 }
 
 
