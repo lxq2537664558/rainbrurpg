@@ -1,3 +1,9 @@
+2017-04-06  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/AnimatedImage.cpp (AnimatedImage): resize the image
+	vector fix a segfault.
+
+
 2017-04-05  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/AnimatedImage.cpp (drawSelf): start to implement the

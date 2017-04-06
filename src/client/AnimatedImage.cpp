@@ -34,10 +34,19 @@ static Rpg::Logger static_logger("waiting-circle", Rpg::LT_BOTH);
 AnimatedImage::AnimatedImage(GameEngine* ge):
   DefaultWindow("AnimatedImage", "waitingCircle1")
 {
-  ImageManager::getSingleton().loadImageset("waiting.imageset");
-  mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img1");
-  gb = &ge->getOgreRenderer()->createGeometryBuffer();
+  mImages.resize(8);
+  try
+    {
+      ImageManager::getSingleton().loadImageset("waiting.imageset");
+      mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img1");
+      gb = &ge->getOgreRenderer()->createGeometryBuffer();
+    }
+  catch (std::exception e)
+    {
+      LOGE("There was an error in AnimatedImage::AnimatedImage()");
+    }
   mImages[0]->render(*gb, Vector2f(0.0f, 0.0f));
+  show(); 
 }
 
 AnimatedImage::~AnimatedImage()

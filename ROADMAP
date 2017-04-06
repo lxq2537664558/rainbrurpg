@@ -145,7 +145,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Start to handle Local test
-     CLOCK: [2017-04-05 mer. 21:30]
+     CLOCK: [2017-04-06 jeu. 19:48]--[2017-04-06 jeu. 20:35] =>  0:47
+     CLOCK: [2017-04-05 mer. 21:30]--[2017-04-05 mer. 22:10] =>  0:40
      CLOCK: [2017-04-05 mer. 18:50]--[2017-04-05 mer. 19:40] =>  0:50
      CLOCK: [2017-04-04 mar. 21:00]--[2017-04-04 mar. 21:56] =>  0:56
      CLOCK: [2017-04-04 mar. 19:22]--[2017-04-04 mar. 20:30] =>  1:08
@@ -237,9 +238,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
 - [ ] Create an AnimatedImage class
+  *May be the subject of a blog post*
   - [ ] From the media/imagesets/waiting.png
-    Currently disabled in LocalTest::enter()
-  
+  - [ ] First draw a static image
+  - [ ] Then change the image every x ms
+  - [ ] Try to get image list from an imageset  
 - [ ] Create a positionnable waiting circle possibly with description test
   See http://cegui.org.uk/forum/viewtopic.php?t=5102
   May become a base class called AnimatedImage
