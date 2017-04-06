@@ -38,14 +38,15 @@ AnimatedImage::AnimatedImage(GameEngine* ge):
   try
     {
       ImageManager::getSingleton().loadImageset("waiting.imageset");
-      mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img1");
+      mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img4");
       gb = &ge->getOgreRenderer()->createGeometryBuffer();
+      CEGUI::Rectf area= CEGUI::Rectf(0.0f, 64.0f, 64.0f, 0.0f);
+      mImages[0]->render(*gb, Vector2f(0.0f, 0.0f));
     }
   catch (std::exception e)
     {
       LOGE("There was an error in AnimatedImage::AnimatedImage()");
     }
-  mImages[0]->render(*gb, Vector2f(0.0f, 0.0f));
   show(); 
 }
 
@@ -53,12 +54,35 @@ AnimatedImage::~AnimatedImage()
 {
 
 }
-  
+
+void
+AnimatedImage::debug()
+{
+  int batch = (int)gb->getBatchCount();
+  int vert = (int)gb->getVertexCount();
+ 
+  LOGI("Drawing waiting-circle with" << batch << "batches and"
+       << vert << "vertexes");
+  bool clip = gb->isClippingActive();
+  if (clip)
+    {
+      LOGI("Clipping : enabled"  );
+    }
+  else
+    {
+      LOGI("Clipping : disabled"  );
+    }
+
+}
+
+
 void
 AnimatedImage::drawSelf (const RenderingContext &ctx)
 {
-  LOGI("Drawing waiting-circle");
-  ctx.surface->addGeometryBuffer(RQ_OVERLAY , *gb);
+  gb->setClippingActive(false);
+  debug();
+  ctx.surface->addGeometryBuffer(RQ_BASE , *gb);
+  ctx.surface->draw();
   //  mImages[0]->render();
   
 }

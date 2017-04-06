@@ -42,6 +42,7 @@ public:
 
 protected:
   virtual void 	drawSelf (const CEGUI::RenderingContext &);
+  void debug();
   
 private:
   std::vector<CEGUI::Image*> mImages;

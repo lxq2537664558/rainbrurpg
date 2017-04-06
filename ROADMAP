@@ -144,7 +144,54 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] What is different between the logo geometry/others
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
-**** TODO Start to handle Local test
+**** TODO Create AnimatedImage class and continue LocalTest
+- [ ] Create an AnimatedImage class
+  *May be the subject of a blog post*
+  - From the media/imagesets/waiting.png
+  - [ ] First draw a static image
+  - [ ] Then change the image every x ms
+  - [ ] Try to get image list from an imageset  
+
+- [ ] Create a positionnable waiting circle possibly with description test
+  See http://cegui.org.uk/forum/viewtopic.php?t=5102
+  May become a base class called AnimatedImage
+  - [ ] Make it positionnable in a given Area or from a Widget name
+    for example 
+- [ ] Finish the LocalTest implementation (waiting for RLGL)
+  - [ ] Implement LocalTest overriden functions
+    Save/Restore state functions
+  - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
+    Use the listener and the WaintingCircle class
+  - [ ] Call server::load(worldconfig) or server::generate(config)
+- [ ] Launch an embedded server
+- [ ] See if we can generate a first landscape
+**** TODO Some wiki work
+     See 'My Current Tasks' in my page
+- [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG
+  is about sourceforge project and FRS : change it to github
+- [ ] Is the SwitchtoMercurial page finished ?
+  Maybe create a SwitchToGit page ?
+- [ ] Modify Foswiki's ROADMAP links to github
+- [ ] Make social news about changes
+**** TODO Handle coverity scan 
+     see https://scan.coverity.com/download for more (currently at 4%)
+- [ ] rev 253 uploaded to coverity scan 23 Nov     
+**** TODO Handle doxygen documentation
+     CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
+     CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
+     CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
+     CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
+     CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
+     CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
+- [X] Handle Doxyfile version number from a cmake config file
+- [X] The main page is the logger's one, fix that
+  Maybe with submodules. In fact handled by a page.
+- [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
+  Because using a \subpage command in mainpage makes it appears as a subpage
+- [X] Create a real Homepage in src/Mainpage.hmm
+- [ ] May document undocumented members (see doxygen.log)
+**** DONE Start to handle Local test
+     CLOCK: [2017-04-06 jeu. 20:36]--[2017-04-06 jeu. 21:23] =>  0:47
      CLOCK: [2017-04-06 jeu. 19:48]--[2017-04-06 jeu. 20:35] =>  0:47
      CLOCK: [2017-04-05 mer. 21:30]--[2017-04-05 mer. 22:10] =>  0:40
      CLOCK: [2017-04-05 mer. 18:50]--[2017-04-05 mer. 19:40] =>  0:50
@@ -237,50 +284,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
       - [X] Explain in README.md how to use submodule
     - [X] Should we rely on a server's class to generate the new world ?
       - [X] should be compiled as a shared lib used by both server & client	
-- [ ] Create an AnimatedImage class
-  *May be the subject of a blog post*
-  - [ ] From the media/imagesets/waiting.png
-  - [ ] First draw a static image
-  - [ ] Then change the image every x ms
-  - [ ] Try to get image list from an imageset  
-- [ ] Create a positionnable waiting circle possibly with description test
-  See http://cegui.org.uk/forum/viewtopic.php?t=5102
-  May become a base class called AnimatedImage
-  - [ ] Make it positionnable in a given Area or from a Widget name
-    for example 
-- [ ] Finish the LocalTest implementation (waiting for RLGL)
-  - [ ] Implement LocalTest overriden functions
-    Save/Restore state functions
-  - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
-    Use the listener and the WaintingCircle class
-  - [ ] Call server::load(worldconfig) or server::generate(config)
-- [ ] Launch an embedded server
-- [ ] See if we can generate a first landscape
-**** TODO Some wiki work
-     See 'My Current Tasks' in my page
-- [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG
-  is about sourceforge project and FRS : change it to github
-- [ ] Is the SwitchtoMercurial page finished ?
-  Maybe create a SwitchToGit page ?
-- [ ] Modify Foswiki's ROADMAP links to github
-- [ ] Make social news about changes
-**** TODO Handle coverity scan 
-     see https://scan.coverity.com/download for more (currently at 4%)
-- [ ] rev 253 uploaded to coverity scan 23 Nov     
-**** TODO Handle doxygen documentation
-     CLOCK: [2017-01-17 mar. 10:37]--[2017-01-17 mar. 11:04] =>  0:27
-     CLOCK: [2016-12-12 lun. 02:12]--[2016-12-12 lun. 02:46] =>  0:34
-     CLOCK: [2016-12-07 mer. 03:31]--[2016-12-07 mer. 03:44] =>  0:13
-     CLOCK: [2016-11-24 jeu. 02:27]--[2016-11-24 jeu. 03:06] =>  0:39
-     CLOCK: [2016-11-22 mar. 23:48]--[2016-11-23 mer. 00:03] =>  0:15
-     CLOCK: [2016-11-09 mer. 18:59]--[2016-11-09 mer. 19:17] =>  0:18
-- [X] Handle Doxyfile version number from a cmake config file
-- [X] The main page is the logger's one, fix that
-  Maybe with submodules. In fact handled by a page.
-- [X] Could be a good thing to add a Mainpage.hpp for each lib/bin subdir
-  Because using a \subpage command in mainpage makes it appears as a subpage
-- [X] Create a real Homepage in src/Mainpage.hmm
-- [ ] May document undocumented members (see doxygen.log)
 **** DONE Options gamestate
      CLOCK: [2017-03-09 jeu. 13:32]--[2017-03-09 jeu. 14:26] =>  0:54
      CLOCK: [2017-02-24 ven. 14:02]--[2017-02-24 ven. 14:34] =>  0:32
