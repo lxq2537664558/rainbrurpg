@@ -109,7 +109,7 @@ LocalTest::enter(GameEngine* ge)
   LOGI("LocalTest signals successfully registered");
 
   AnimatedImage* wic = new AnimatedImage(ge);
-  mMenuWindow->addChild(wic);
+  lbWorlds->addChild(wic);
 }
 
 

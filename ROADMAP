@@ -145,10 +145,14 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-07 ven. 19:17]--[2017-04-07 ven. 19:48] =>  0:31
+- [ ] Call`git pull` in ext/librlgl to update it.
 - [ ] Create an AnimatedImage class
   *May be the subject of a blog post*
   - From the media/imagesets/waiting.png
   - [ ] First draw a static image
+    Don't know why but the image isn't drawn. The titlebar of the
+    LocalTest window is hidden.
   - [ ] Then change the image every x ms
   - [ ] Try to get image list from an imageset  
 

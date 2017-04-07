@@ -26,28 +26,47 @@
 #include "Logger.hpp"
 
 #include "GameEngine.hpp"
+#include <iostream>
 
 using namespace CEGUI;
 
 static Rpg::Logger static_logger("waiting-circle", Rpg::LT_BOTH);
 
 AnimatedImage::AnimatedImage(GameEngine* ge):
-  DefaultWindow("AnimatedImage", "waitingCircle1")
+  DefaultWindow("AnimatedImage", "AnimatedImage")
 {
   mImages.resize(8);
+  gb = &ge->getOgreRenderer()->createGeometryBuffer();
   try
     {
       ImageManager::getSingleton().loadImageset("waiting.imageset");
       mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img4");
-      gb = &ge->getOgreRenderer()->createGeometryBuffer();
       CEGUI::Rectf area= CEGUI::Rectf(0.0f, 64.0f, 64.0f, 0.0f);
-      mImages[0]->render(*gb, Vector2f(0.0f, 0.0f));
+      mImages[0]->render(*gb, Vector2f(0.0f, 0.0f), Sizef(64.0f, 64.0f));
     }
   catch (std::exception e)
     {
       LOGE("There was an error in AnimatedImage::AnimatedImage()");
     }
-  show(); 
+
+  //  lbi->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
+  mImages[1] = &ImageManager::getSingleton()
+    .get("TaharezLook/MultiListSelectionBrush");
+  CEGUI::Colour brush = CEGUI::Colour(1.0f, 1.0f, 1.0f);
+  mImages[1]->render( *gb, Vector2f( 0.0f, 0.0f ) /* position */,
+		      Sizef( 100.0f, 100.0f ) /* size */,
+		      new Rectf(0.0f, 0.0f, 64.0f, 64.0f), ColourRect(brush));
+
+  // position a quarter of the way in from the top-left of parent.
+  this->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f ) ) );
+// set size to be half the size of the parent
+  this->setSize( USize( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );
+
+  show();
+  /*  
+  Image brush = ImagesetManager::getSingleton().get( "BlenderTheme" ).getImage( "ClientBrush" );
+  brush.draw( *gb, Vector2( 0, 0 ), Size( 100, 100 ), new Rect(0, 0, 100, 100),  0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF );
+  */
 }
 
 AnimatedImage::~AnimatedImage()
@@ -72,17 +91,16 @@ AnimatedImage::debug()
     {
       LOGI("Clipping : disabled"  );
     }
-
+  /* Rectf clipr = gb->getClipRect();
+  cout << "Clipping rect " << clipr << endl;
+  */
 }
 
 
 void
 AnimatedImage::drawSelf (const RenderingContext &ctx)
 {
-  gb->setClippingActive(false);
   debug();
-  ctx.surface->addGeometryBuffer(RQ_BASE , *gb);
+  ctx.surface->addGeometryBuffer(ctx.queue , *gb); // RQ_BASE
   ctx.surface->draw();
-  //  mImages[0]->render();
-  
 }
