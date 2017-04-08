@@ -1,5 +1,8 @@
 2017-04-08  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/AnimatedImage.cpp (AnimatedImage): prerender all images
+	in goemetry buffer vector.
+
 	* src/client/AnimatedImage.cpp (updateSelf): implement update callback.
 
 2017-04-06  Jérôme Pasquier  <rainbru@free.fr>

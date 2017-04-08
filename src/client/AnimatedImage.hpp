@@ -37,7 +37,7 @@ class GameEngine;
 class AnimatedImage : public CEGUI::DefaultWindow
 {
 public:
-  AnimatedImage(GameEngine*);
+  AnimatedImage(GameEngine*, float animationTime = 1.0f);
   ~AnimatedImage();
 
 protected:
@@ -47,11 +47,12 @@ protected:
   
   
 private:
-  std::vector<CEGUI::Image*> mImages;
+  std::vector<CEGUI::GeometryBuffer*> mBuffers;
   CEGUI::Image* mBackground;
-  CEGUI::GeometryBuffer* gb;
+ 
   float updateTime;   // Change image every x seconds
-  float currentTime;
+  float currentTime;  // Needed to compare elapsed and update time 
+  float currentImage; // Currently drawn image
 };
 
 #endif // !_ANIMATED_IMAGE_HPP_

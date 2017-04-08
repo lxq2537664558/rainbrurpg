@@ -32,27 +32,42 @@ using namespace CEGUI;
 
 static Rpg::Logger static_logger("waiting-circle", Rpg::LT_BOTH);
 
-AnimatedImage::AnimatedImage(GameEngine* ge):
+/**
+  *
+  * \param animationTime The full animation in seconds
+  *
+  */
+AnimatedImage::AnimatedImage(GameEngine* ge, float animationTime):
   DefaultWindow("AnimatedImage", "AnimatedImage"),
   mBackground(NULL),
-  updateTime(0.8f),
-  currentTime(0)
+  updateTime(0),
+  currentTime(0),
+  currentImage(0)
 {
-  mImages.resize(8);
-  gb = &ge->getOgreRenderer()->createGeometryBuffer();
-  /*  try
+  // This need to come from the imageSet.size()
+  int imageNumber = 8;
+  mBuffers.resize(imageNumber);
+  updateTime = animationTime / imageNumber; // Per-image time
+  
+
+  
+  ImageManager::getSingleton().loadImageset("waiting.imageset");
+  for (int i = 0; i< imageNumber; ++i)
     {
-      ImageManager::getSingleton().loadImageset("waiting.imageset");
-      mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img4");
-      CEGUI::Rectf area= CEGUI::Rectf(0.0f, 64.0f, 64.0f, 0.0f);
-      mImages[0]->render(*gb, Vector2f(0.0f, 0.0f), Sizef(64.0f, 64.0f));
+      LOGI("Incrementing i to" << i);
+      ostringstream oss;
+      
+      oss << "WaitingCircle/Img" << i + 1;
+      CEGUI::Image* img = &ImageManager::getSingleton().get(oss.str());
+      mBuffers[i] = &ge->getOgreRenderer()->createGeometryBuffer();
+      img->render(*mBuffers[i], Vector2f(0.0f, 0.0f), Sizef(1.0f, 1.0f));
+
     }
-  catch (std::exception e)
-    {
-      LOGE("There was an error in AnimatedImage::AnimatedImage()");
-    }
+  /*
+  CEGUI::Rectf area= CEGUI::Rectf(0.0f, 64.0f, 64.0f, 0.0f);
+  mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img4");
+  mImages[0]->render(*gb, Vector2f(0.0f, 0.0f), Sizef(1.0f, 1.0f));
   */
-  //  lbi->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
   mBackground = &ImageManager::getSingleton()
     .get("TaharezLook/MultiListSelectionBrush");
 
@@ -76,17 +91,17 @@ AnimatedImage::~AnimatedImage()
 void
 AnimatedImage::debug()
 {
-  int batch = (int)gb->getBatchCount();
-  int vert = (int)gb->getVertexCount();
-
+  int batch = (int)mBuffers[currentImage]->getBatchCount();
+  int vert = (int)mBuffers[currentImage]->getVertexCount();
+  /*
   CEGUI::Colour brush = CEGUI::Colour(1.0f, 1.0f, 1.0f);
-  mBackground->render( *gb, Vector2f( 0.0f, 0.0f ) /* position */,
-		       Sizef( 100.0f, 100.0f ) /* size */,
+  mBackground->render( mBuffers[currentImage], Vector2f( 0.0f, 0.0f ),
+		       Sizef( 100.0f, 100.0f ) ,
 		       new Rectf(0.0f, 0.0f, 64.0f, 64.0f), ColourRect(brush));
-  
+  */
   LOGI("Drawing waiting-circle with" << batch << "batches and"
        << vert << "vertexes");
-  bool clip = gb->isClippingActive();
+  bool clip = mBuffers[currentImage]->isClippingActive();
   if (clip)
     {
       LOGI("Clipping : enabled"  );
@@ -105,7 +120,7 @@ void
 AnimatedImage::drawSelf (const RenderingContext &ctx)
 {
   debug();
-  ctx.surface->addGeometryBuffer(ctx.queue , *gb); // RQ_BASE
+  ctx.surface->addGeometryBuffer(ctx.queue , *mBuffers[currentImage]); // RQ_BASE
   ctx.surface->draw();
 }
 
@@ -117,6 +132,9 @@ AnimatedImage::updateSelf (float elapsed)
     {
       LOGI("Changing image after" << currentTime << "seconds");
       currentTime = 0;
+      currentImage++;
+      if (currentImage == 8)
+	currentImage = 0;
       
     }
 }
