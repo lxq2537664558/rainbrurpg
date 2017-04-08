@@ -1,3 +1,7 @@
+2017-04-08  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/AnimatedImage.cpp (updateSelf): implement update callback.
+
 2017-04-06  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/AnimatedImage.cpp (debug): add a logging function to

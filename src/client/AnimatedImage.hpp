@@ -42,11 +42,16 @@ public:
 
 protected:
   virtual void 	drawSelf (const CEGUI::RenderingContext &);
+  virtual void 	updateSelf (float);
   void debug();
+  
   
 private:
   std::vector<CEGUI::Image*> mImages;
+  CEGUI::Image* mBackground;
   CEGUI::GeometryBuffer* gb;
+  float updateTime;   // Change image every x seconds
+  float currentTime;
 };
 
 #endif // !_ANIMATED_IMAGE_HPP_

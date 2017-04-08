@@ -33,11 +33,14 @@ using namespace CEGUI;
 static Rpg::Logger static_logger("waiting-circle", Rpg::LT_BOTH);
 
 AnimatedImage::AnimatedImage(GameEngine* ge):
-  DefaultWindow("AnimatedImage", "AnimatedImage")
+  DefaultWindow("AnimatedImage", "AnimatedImage"),
+  mBackground(NULL),
+  updateTime(0.8f),
+  currentTime(0)
 {
   mImages.resize(8);
   gb = &ge->getOgreRenderer()->createGeometryBuffer();
-  try
+  /*  try
     {
       ImageManager::getSingleton().loadImageset("waiting.imageset");
       mImages[0] = &ImageManager::getSingleton().get("WaitingCircle/Img4");
@@ -48,18 +51,14 @@ AnimatedImage::AnimatedImage(GameEngine* ge):
     {
       LOGE("There was an error in AnimatedImage::AnimatedImage()");
     }
-
+  */
   //  lbi->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
-  mImages[1] = &ImageManager::getSingleton()
+  mBackground = &ImageManager::getSingleton()
     .get("TaharezLook/MultiListSelectionBrush");
-  CEGUI::Colour brush = CEGUI::Colour(1.0f, 1.0f, 1.0f);
-  mImages[1]->render( *gb, Vector2f( 0.0f, 0.0f ) /* position */,
-		      Sizef( 100.0f, 100.0f ) /* size */,
-		      new Rectf(0.0f, 0.0f, 64.0f, 64.0f), ColourRect(brush));
 
   // position a quarter of the way in from the top-left of parent.
   this->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f ) ) );
-// set size to be half the size of the parent
+  // set size to be half the size of the parent
   this->setSize( USize( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );
 
   show();
@@ -79,7 +78,12 @@ AnimatedImage::debug()
 {
   int batch = (int)gb->getBatchCount();
   int vert = (int)gb->getVertexCount();
- 
+
+  CEGUI::Colour brush = CEGUI::Colour(1.0f, 1.0f, 1.0f);
+  mBackground->render( *gb, Vector2f( 0.0f, 0.0f ) /* position */,
+		       Sizef( 100.0f, 100.0f ) /* size */,
+		       new Rectf(0.0f, 0.0f, 64.0f, 64.0f), ColourRect(brush));
+  
   LOGI("Drawing waiting-circle with" << batch << "batches and"
        << vert << "vertexes");
   bool clip = gb->isClippingActive();
@@ -103,4 +107,16 @@ AnimatedImage::drawSelf (const RenderingContext &ctx)
   debug();
   ctx.surface->addGeometryBuffer(ctx.queue , *gb); // RQ_BASE
   ctx.surface->draw();
+}
+
+void
+AnimatedImage::updateSelf (float elapsed)
+{
+  currentTime += elapsed;
+  if (currentTime > updateTime)
+    {
+      LOGI("Changing image after" << currentTime << "seconds");
+      currentTime = 0;
+      
+    }
 }
