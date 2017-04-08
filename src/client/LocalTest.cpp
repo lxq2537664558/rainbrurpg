@@ -108,7 +108,10 @@ LocalTest::enter(GameEngine* ge)
   
   LOGI("LocalTest signals successfully registered");
 
-  AnimatedImage* wic = new AnimatedImage(ge);
+  // AnimatedImage* wic = new AnimatedImage(ge);
+  ImageManager::getSingleton().loadImageset("waiting.imageset");
+  CEGUI::Window *wic = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticImage","PrettyWindow" );
+  wic->setProperty("Image","WaitingCircle/Img1");
   lbWorlds->addChild(wic);
 }
 

@@ -155,6 +155,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] First draw a static image
     Don't know why but the image isn't drawn. The titlebar of the
     LocalTest window is hidden.
+    - [ ] Must try to base this on StaticImage
+      With StaticImage it works (implementation says nothing)
   - [ ] Try to get image list and number of image from an imageset's name
 
 - [ ] Create a positionnable waiting circle possibly with description test

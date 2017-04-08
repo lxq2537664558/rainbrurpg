@@ -1,5 +1,8 @@
 2017-04-08  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/LocalTest.cpp (enter): testing with StaticImage.
+	* ext/librlgl: updated to head.
+
 	* src/client/AnimatedImage.cpp (AnimatedImage): prerender all images
 	in goemetry buffer vector.
 
