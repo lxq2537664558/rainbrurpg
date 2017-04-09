@@ -716,6 +716,8 @@ GameEngine::frameStarted(const Ogre::FrameEvent& evt)
 {
   CEGUI::System::getSingleton().getDefaultGUIContext()
     .injectTimePulse(evt.timeSinceLastFrame);
+  mCurrentState->update(evt.timeSinceLastFrame);
+  return true; // Continue rendering
 }
 
 /** Go back to main menu game state

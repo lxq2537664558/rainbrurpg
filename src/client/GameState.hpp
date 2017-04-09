@@ -55,7 +55,8 @@ public:
   
   virtual void drawOverlay();
   virtual void hudUpdate();
-
+  virtual void update(float elapsed);
+  
   // Keyboard handling (return true if event was used)
   virtual bool keyPressed( const OIS::KeyEvent& );
   virtual bool keyReleased( const OIS::KeyEvent& );

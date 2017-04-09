@@ -47,9 +47,9 @@ WaitingCircle::WaitingCircle(const string message, float animationTime):
   int imageNumber = 8;
   mImages.resize(imageNumber);
   updateTime = animationTime / imageNumber; // Per-image time
+
   mScreenArea = CEGUI::System::getSingletonPtr()->getRenderer()
     ->getDefaultRenderTarget().getArea();
-  //  crn.getSize().d_height
   mDrawArea = Rectf(0.0f, 0.0f, 32.0f, 32.0f);
   
   ImageManager::getSingleton().loadImageset("waiting.imageset");
@@ -79,12 +79,7 @@ WaitingCircle::debug()
 {
   int batch = (int)mScreenBuffer->getBatchCount();
   int vert = (int)mScreenBuffer->getVertexCount();
-  /*
-  CEGUI::Colour brush = CEGUI::Colour(1.0f, 1.0f, 1.0f);
-  mBackground->render( mBuffers[currentImage], Vector2f( 0.0f, 0.0f ),
-		       Sizef( 100.0f, 100.0f ) ,
-		       new Rectf(0.0f, 0.0f, 64.0f, 64.0f), ColourRect(brush));
-  */
+
   LOGI("Drawing waiting-circle with" << batch << "batches and"
        << vert << "vertexes");
   bool clip = mScreenBuffer->isClippingActive();
@@ -96,34 +91,29 @@ WaitingCircle::debug()
     {
       LOGI("Clipping : disabled"  );
     }
-  /* Rectf clipr = gb->getClipRect();
-  cout << "Clipping rect " << clipr << endl;
-  */
 }
 
 
 void
 WaitingCircle::draw()
 {
-  debug();
-  /*  ctx.surface->addGeometryBuffer(ctx.queue , *mBuffers[currentImage]); // RQ_BASE
-  ctx.surface->draw();
-  */
+  // debug();
   mScreenBuffer->draw();
 }
 
 void
-WaitingCircle::updateSelf (float elapsed)
+WaitingCircle::update(float elapsed)
 {
   currentTime += elapsed;
   if (currentTime > updateTime)
     {
-      LOGI("Changing image after" << currentTime << "seconds");
-      currentTime = 0;
       currentImage++;
-      if (currentImage == 8)
-	currentImage = 0;
+      currentTime = 0;
       
+      if (currentImage > 7)
+	  currentImage = 0;
+
+      updateBuffer();
     }
 }
 

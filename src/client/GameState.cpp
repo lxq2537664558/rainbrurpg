@@ -164,3 +164,12 @@ GameState::keyReleased( const OIS::KeyEvent&)
 {
   return false;
 }
+
+/** \param elapsed The elapsed time in seconds
+  *
+  */
+void
+GameState::update(float elapsed)
+{
+
+}

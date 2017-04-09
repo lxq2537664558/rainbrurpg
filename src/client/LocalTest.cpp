@@ -115,7 +115,7 @@ LocalTest::enter(GameEngine* ge)
   wic->setProperty("Image","WaitingCircle/Img1");
   lbWorlds->addChild(wic);
   */
-  mWaiting = new WaitingCircle();
+  mWaiting = new WaitingCircle("Message", 0.6f);
 }
 
 
@@ -246,3 +246,10 @@ LocalTest::drawOverlay()
   LOGI("in LocalTest::drawOverlay()");
   mWaiting->draw();
 }
+
+void
+LocalTest::update(float elapsed)
+{
+  mWaiting->update(elapsed);
+}
+

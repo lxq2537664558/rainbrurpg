@@ -47,6 +47,7 @@ public:
 
   virtual bool keyPressed( const OIS::KeyEvent& );
   virtual void drawOverlay();
+  virtual void update(float);
   void check();
 
   void addWorld(const string&);

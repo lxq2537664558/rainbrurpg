@@ -39,10 +39,10 @@ public:
   WaitingCircle(const std::string message = "", float animationTime = 1.0f);
   ~WaitingCircle();
 
+  void 	update (float);
   void 	draw();
 
 protected:
-  virtual void 	updateSelf (float);
   void debug();
 
   void updateBuffer();
