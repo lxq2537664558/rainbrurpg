@@ -39,9 +39,12 @@ public:
   WaitingCircle(const std::string message = "", float animationTime = 1.0f);
   ~WaitingCircle();
 
-  void 	update (float);
-  void 	draw();
+  void update (float);
+  void draw();
 
+  void show();
+  void hide();
+ 
 protected:
   void debug();
 
@@ -57,6 +60,8 @@ private:
   float updateTime;   // Change image every x seconds
   float currentTime;  // Needed to compare elapsed and update time 
   float currentImage; // Currently drawn image
+
+  bool visible;       // Is this buffer visible
 };
 
 #endif // !_WAITING_CIRCLE_HPP_

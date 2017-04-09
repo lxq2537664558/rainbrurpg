@@ -41,7 +41,8 @@ WaitingCircle::WaitingCircle(const string message, float animationTime):
   updateTime(0),
   currentTime(0),
   currentImage(0),
-  mScreenBuffer(NULL)
+  mScreenBuffer(NULL),
+  visible(true)
 {
   // This need to come from the imageSet.size()
   int imageNumber = 8;
@@ -97,13 +98,16 @@ WaitingCircle::debug()
 void
 WaitingCircle::draw()
 {
-  // debug();
-  mScreenBuffer->draw();
+  if (visible)
+    mScreenBuffer->draw();
 }
 
 void
 WaitingCircle::update(float elapsed)
 {
+  if (!visible)
+    return;
+    
   currentTime += elapsed;
   if (currentTime > updateTime)
     {
@@ -127,4 +131,16 @@ WaitingCircle::updateBuffer()
 		    mScreenArea.getSize().d_height - 64, 0.0f));
   mImages[currentImage]->render(*mScreenBuffer, mDrawArea, 0,
 				ColourRect(0xFFFFFFFF));
+}
+
+void
+WaitingCircle::show()
+{
+  visible = true;
+}
+
+void
+WaitingCircle::hide()
+{
+  visible = false;
 }

@@ -243,7 +243,6 @@ LocalTest::addWorld(const string& worldName)
 void
 LocalTest::drawOverlay()
 {
-  LOGI("in LocalTest::drawOverlay()");
   mWaiting->draw();
 }
 

@@ -111,11 +111,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
   directly contact the server
   - [ ] Implement unit test, at least to be sure a server can't add itself twice
 **** Postponed bugs
-- [ ] Trying to go back to localTest seems to exit the game
+- [-] Trying to go back to localTest seems to exit the game
   Going to LocalTest, then go back to MainMenu and again to LocalTest
   actually switch to LocalTest (as a proff, we connect signals from
   LocalTest::enter(), then we properly leave the game
-
+  - [X] This seems to be fixed (was due to bool frameStarted not returning true)
+  - [ ] Close the github issue
+- [ ] The same way, when we come back, the LocalTest window is missing
 **** Start to handle the Profile GameState
      I would like to try to handle SSH key to handle authentication.
      It can be usefull if we use a git-base filesystem.
@@ -145,6 +147,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-09 dim. 20:47]--[2017-04-09 dim. 21:02] =>  0:15
      CLOCK: [2017-04-09 dim. 19:31]--[2017-04-09 dim. 20:33] =>  1:02
      CLOCK: [2017-04-09 dim. 18:54]--[2017-04-09 dim. 19:26] =>  0:32
      CLOCK: [2017-04-09 dim. 17:39]--[2017-04-09 dim. 18:06] =>  0:27
@@ -152,7 +155,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2017-04-07 ven. 19:17]--[2017-04-07 ven. 19:48] =>  0:31
 - [ ] Call`git pull` in ext/librlgl to update it.
 
-- [X] Trying another WaitingCircle implementation
+- [-] Trying another WaitingCircle implementation
   - [X] Create it from AnimatedImage for the image loading thing
   - [X] Draw it in a simple GeometryBuffer like for RpgLogo image
   - [X] Place it in bottom-right corner
@@ -162,6 +165,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] We need this function in GameState base class
     - [X] Then call it from GameEngine::frameStarted
     - [X] Then override it in LocalTest
+  - [X] Should have show()/hide() functions
+  - [ ] Handle the message drawing
 
 - [-] Create an AnimatedImage class
   *May be the subject of a blog post*

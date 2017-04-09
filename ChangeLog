@@ -1,5 +1,10 @@
 2017-04-09  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/WaitingCircle.hpp (visible): implement visibility
+	and show()/hide() functions. 
+
+	* src/client/WaitingCircle.cpp (update): called from LocalTest.
+
 	* src/client/WaitingCircle.cpp (updateBuffer): draw the first image of
 	the animation.
 
