@@ -18,51 +18,45 @@
  *
  */
 
-#ifndef _LOCAL_TEST_HPP_
-#define _LOCAL_TEST_HPP_
+#ifndef _WAITING_CIRCLE_HPP_
+#define _WAITING_CIRCLE_HPP_
 
-#include "GameState.hpp"
+#include <CEGUI/CEGUI.h>
+
+#include <string>
+#include <vector>
 
 // Forward declaration
 class GameEngine;
-class WaitingCircle;
-namespace CEGUI
-{
-  class Listbox;
-  class Window;
-}
 // End of forward declaration
 
-
-class LocalTest: public GameState
+/** Implement a waiting indication
+  *
+  */
+class WaitingCircle
 {
 public:
-  LocalTest();
-  ~LocalTest();
+  WaitingCircle(const std::string message = "", float animationTime = 1.0f);
+  ~WaitingCircle();
 
-  void enter(GameEngine*);
-  void exit(GameEngine*);
-  void save(StateSaver*);
-  void restore(StateSaver*);
+  void 	draw();
 
-  virtual bool keyPressed( const OIS::KeyEvent& );
-  virtual void drawOverlay();
-  void check();
-
-  void addWorld(const string&);
-  
 protected:
-  bool onBack(const CEGUI::EventArgs&);
-  bool onTabChange(const CEGUI::EventArgs&);
-  bool onSelectionChange(const CEGUI::EventArgs&);
-  
-  void randomSeed();
+  virtual void 	updateSelf (float);
+  void debug();
+
+  void updateBuffer();
   
 private:
-  GameEngine* mGameEngine;    // To be able to go back to MainMenu
-  CEGUI::Window* mMenuWindow;
-  CEGUI::Listbox* lbWorlds; // Existing worlds listbox
-  WaitingCircle* mWaiting;
+  std::string mMessage;       // The message to be printed
+  std::vector<CEGUI::Image*> mImages;
+  CEGUI::GeometryBuffer* mScreenBuffer;
+  CEGUI::Rectf mScreenArea;
+  CEGUI::Rectf mDrawArea;
+  
+  float updateTime;   // Change image every x seconds
+  float currentTime;  // Needed to compare elapsed and update time 
+  float currentImage; // Currently drawn image
 };
 
-#endif  // !_LOCAL_TEST_HPP_
+#endif // !_WAITING_CIRCLE_HPP_

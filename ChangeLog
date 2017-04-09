@@ -1,3 +1,8 @@
+2017-04-09  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/WaitingCircle.cpp (updateBuffer): draw the first image of
+	the animation.
+
 2017-04-08  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/LocalTest.cpp (enter): testing with StaticImage.

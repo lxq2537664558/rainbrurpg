@@ -37,7 +37,8 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-256 (29 Mar. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-- (5) Closed a LocalTest-related ROADMAP section
+- (6) Start to implement WaitingCircle
+- Closed a LocalTest-related ROADMAP section
 - Start to implement AnimatedImage class
 - LocalTest uses RLGL::Seed
 - Implement the LocalTest::onBack event

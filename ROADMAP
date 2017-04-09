@@ -145,9 +145,23 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-09 dim. 18:54]--[2017-04-09 dim. 19:26] =>  0:32
+     CLOCK: [2017-04-09 dim. 17:39]--[2017-04-09 dim. 18:06] =>  0:27
      CLOCK: [2017-04-08 sam. 20:35]--[2017-04-08 sam. 22:14] =>  1:39
      CLOCK: [2017-04-07 ven. 19:17]--[2017-04-07 ven. 19:48] =>  0:31
 - [ ] Call`git pull` in ext/librlgl to update it.
+
+- [-] Trying another WaitingCircle implementation
+  - [X] Create it from AnimatedImage for the image loading thing
+  - [X] Draw it in a simple GeometryBuffer like for RpgLogo image
+  - [X] Place it in bottom-right corner
+    With an optional message "Parsing local worlds"
+  - [ ] with a update(float elapsed) function
+    that handle image changing etc...
+    - [ ] We need this function in GameState base class
+    - [ ] Then call it from GameEngine::frameStarted
+    - [ ] Then override it in LocalTest
+
 - [-] Create an AnimatedImage class
   *May be the subject of a blog post*
   - From the media/imagesets/waiting.png

@@ -28,7 +28,7 @@
 #include "LocalTest.hpp"
 
 #include "GameEngine.hpp"
-#include "AnimatedImage.hpp"
+#include "WaitingCircle.hpp"
 
 #include "Server.hpp"
 #include "Logger.hpp"
@@ -43,7 +43,8 @@ LocalTest::LocalTest():
   GameState("LocalTest"),
   mGameEngine(NULL),
   mMenuWindow(NULL),
-  lbWorlds(NULL)
+  lbWorlds(NULL),
+  mWaiting(NULL)
 {
 
   // Just to test for thze serverlib library
@@ -109,10 +110,12 @@ LocalTest::enter(GameEngine* ge)
   LOGI("LocalTest signals successfully registered");
 
   // AnimatedImage* wic = new AnimatedImage(ge);
-  ImageManager::getSingleton().loadImageset("waiting.imageset");
+  /*  ImageManager::getSingleton().loadImageset("waiting.imageset");
   CEGUI::Window *wic = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticImage","PrettyWindow" );
   wic->setProperty("Image","WaitingCircle/Img1");
   lbWorlds->addChild(wic);
+  */
+  mWaiting = new WaitingCircle();
 }
 
 
@@ -235,4 +238,11 @@ LocalTest::addWorld(const string& worldName)
   lbi->setTextColours(CEGUI::Colour(0xFFFFFFFF));
   lbi->setSelectionBrushImage("TaharezLook/MultiListSelectionBrush");
   lbWorlds->addItem(lbi);
+}
+
+void
+LocalTest::drawOverlay()
+{
+  LOGI("in LocalTest::drawOverlay()");
+  mWaiting->draw();
 }

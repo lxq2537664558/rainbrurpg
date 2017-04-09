@@ -166,6 +166,7 @@ set (client-src
   src/client/StateManager.cpp
   src/client/StateSaver.cpp
   src/client/TempMessage.cpp
+  src/client/WaitingCircle.cpp
   src/client/main.cpp
   )
 add_executable(rainbrurpg-client ${client-src})
