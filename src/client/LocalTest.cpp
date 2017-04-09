@@ -115,7 +115,7 @@ LocalTest::enter(GameEngine* ge)
   wic->setProperty("Image","WaitingCircle/Img1");
   lbWorlds->addChild(wic);
   */
-  mWaiting = new WaitingCircle("Message", 0.6f);
+  mWaiting = new WaitingCircle("Parsing local worlds...", 0.6f);
 }
 
 

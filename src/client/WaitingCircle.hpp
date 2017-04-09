@@ -32,6 +32,11 @@ class GameEngine;
 
 /** Implement a waiting indication
   *
+  * While the LoadingBar is used for a long blocking task, the class
+  * is used when loading partial data, for example from a PubSub.
+  *
+  * Be sure to call update() to update the animation and inject elapsed time.
+  * 
   */
 class WaitingCircle
 {
@@ -39,7 +44,7 @@ public:
   WaitingCircle(const std::string message = "", float animationTime = 1.0f);
   ~WaitingCircle();
 
-  void update (float);
+  void update(float);
   void draw();
 
   void show();
@@ -62,6 +67,7 @@ private:
   float currentImage; // Currently drawn image
 
   bool visible;       // Is this buffer visible
+  CEGUI::Font* mFont; // A font used to draw message
 };
 
 #endif // !_WAITING_CIRCLE_HPP_

@@ -118,6 +118,18 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] This seems to be fixed (was due to bool frameStarted not returning true)
   - [ ] Close the github issue
 - [ ] The same way, when we come back, the LocalTest window is missing
+
+- [-] See the AnimatedImage class
+  *May be the subject of a blog post*
+  - From the media/imagesets/waiting.png
+  - [X] Then change the image every x ms
+  - [ ] First draw a static image
+    Don't know why but the image isn't drawn. The titlebar of the
+    LocalTest window is hidden.
+    - [ ] Must try to base this on StaticImage
+      With StaticImage it works (implementation says nothing)
+  - [ ] Try to get image list and number of image from an imageset's name
+
 **** Start to handle the Profile GameState
      I would like to try to handle SSH key to handle authentication.
      It can be usefull if we use a git-base filesystem.
@@ -147,6 +159,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-09 dim. 21:04]--[2017-04-09 dim. 22:02] =>  0:58
      CLOCK: [2017-04-09 dim. 20:47]--[2017-04-09 dim. 21:02] =>  0:15
      CLOCK: [2017-04-09 dim. 19:31]--[2017-04-09 dim. 20:33] =>  1:02
      CLOCK: [2017-04-09 dim. 18:54]--[2017-04-09 dim. 19:26] =>  0:32
@@ -155,7 +168,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
      CLOCK: [2017-04-07 ven. 19:17]--[2017-04-07 ven. 19:48] =>  0:31
 - [ ] Call`git pull` in ext/librlgl to update it.
 
-- [-] Trying another WaitingCircle implementation
+- [X] Trying another WaitingCircle implementation
   - [X] Create it from AnimatedImage for the image loading thing
   - [X] Draw it in a simple GeometryBuffer like for RpgLogo image
   - [X] Place it in bottom-right corner
@@ -166,24 +179,8 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Then call it from GameEngine::frameStarted
     - [X] Then override it in LocalTest
   - [X] Should have show()/hide() functions
-  - [ ] Handle the message drawing
-
-- [-] Create an AnimatedImage class
-  *May be the subject of a blog post*
-  - From the media/imagesets/waiting.png
-  - [X] Then change the image every x ms
-  - [ ] First draw a static image
-    Don't know why but the image isn't drawn. The titlebar of the
-    LocalTest window is hidden.
-    - [ ] Must try to base this on StaticImage
-      With StaticImage it works (implementation says nothing)
-  - [ ] Try to get image list and number of image from an imageset's name
-
-- [ ] Create a positionnable waiting circle possibly with description test
-  See http://cegui.org.uk/forum/viewtopic.php?t=5102
-  May become a base class called AnimatedImage
-  - [ ] Make it positionnable in a given Area or from a Widget name
-    for example 
+  - [X] Handle the message drawing
+    
 - [ ] Finish the LocalTest implementation (waiting for RLGL)
   - [ ] Implement LocalTest overriden functions
     Save/Restore state functions

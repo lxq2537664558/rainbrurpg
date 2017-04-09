@@ -38,11 +38,13 @@ static Rpg::Logger static_logger("waiting-circle", Rpg::LT_BOTH);
   *
   */
 WaitingCircle::WaitingCircle(const string message, float animationTime):
+  mMessage(message),
   updateTime(0),
   currentTime(0),
   currentImage(0),
   mScreenBuffer(NULL),
-  visible(true)
+  visible(true),
+  mFont(NULL)
 {
   // This need to come from the imageSet.size()
   int imageNumber = 8;
@@ -52,7 +54,8 @@ WaitingCircle::WaitingCircle(const string message, float animationTime):
   mScreenArea = CEGUI::System::getSingletonPtr()->getRenderer()
     ->getDefaultRenderTarget().getArea();
   mDrawArea = Rectf(0.0f, 0.0f, 32.0f, 32.0f);
-  
+
+  // Load all images
   ImageManager::getSingleton().loadImageset("waiting.imageset");
   for (int i = 0; i< imageNumber; ++i)
     {
@@ -64,6 +67,15 @@ WaitingCircle::WaitingCircle(const string message, float animationTime):
 
     }
 
+  // Load the message font
+  string fontname = "DejaVuSans-10-NoScale";
+  if(! CEGUI::FontManager::getSingleton().isDefined(fontname))
+    LOGE("'" << fontname << "' font is undefined");
+  
+  mFont = &CEGUI::FontManager::getSingleton().get(fontname);
+
+  
+  // Create only one GeometryBuffer object
   mScreenBuffer = &CEGUI::System::getSingletonPtr()->getRenderer()
     ->createGeometryBuffer();
 
@@ -131,6 +143,10 @@ WaitingCircle::updateBuffer()
 		    mScreenArea.getSize().d_height - 64, 0.0f));
   mImages[currentImage]->render(*mScreenBuffer, mDrawArea, 0,
 				ColourRect(0xFFFFFFFF));
+
+  float te = mFont->getTextExtent(mMessage) + 10;
+  mFont->drawText(*mScreenBuffer, mMessage, CEGUI::Vector2f(64 - te, 38),
+		  0, CEGUI::Colour(0xFFFFFFFF));
 }
 
 void
