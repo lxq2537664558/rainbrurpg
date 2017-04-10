@@ -62,9 +62,15 @@ LocalTest::enter(GameEngine* ge)
 {
   // Keep a pointer to GameEngine to be able to go back to MainMenu
   mGameEngine = ge;
-  
-  mMenuWindow = loadLayout("local_test.layout", "LocalTestWin");
 
+  try {
+    mMenuWindow = loadLayout("local_test.layout", "LocalTestWin");
+  }
+  catch(CEGUI::UnknownObjectException e)
+    {
+      LOGE("Error, loading LocalTest layout");
+    }
+  
   WindowManager& winMgr = WindowManager::getSingleton();
   TabControl* winTabControl = static_cast<TabControl*>(mMenuWindow->getChild("TabControl"));
   winTabControl->setTabHeight(UDim(0.15f, 0.0f)); // Make the tab buttons a little bigger
@@ -109,12 +115,6 @@ LocalTest::enter(GameEngine* ge)
   
   LOGI("LocalTest signals successfully registered");
 
-  // AnimatedImage* wic = new AnimatedImage(ge);
-  /*  ImageManager::getSingleton().loadImageset("waiting.imageset");
-  CEGUI::Window *wic = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticImage","PrettyWindow" );
-  wic->setProperty("Image","WaitingCircle/Img1");
-  lbWorlds->addChild(wic);
-  */
   mWaiting = new WaitingCircle("Parsing local worlds...", 0.6f);
 }
 
@@ -123,21 +123,7 @@ void
 LocalTest::exit(GameEngine*)
 {
   CEGUI::WindowManager::getSingleton().destroyWindow(mMenuWindow);
-  mMenuWindow = NULL;
-}
-
-
-void
-LocalTest::save(StateSaver*)
-{
-
-}
-
-
-void
-LocalTest::restore(StateSaver*)
-{
-
+  destroyRootWindow();
 }
 
 /** Get a new random seed and set it to the GUI text box.
@@ -252,3 +238,15 @@ LocalTest::update(float elapsed)
   mWaiting->update(elapsed);
 }
 
+void
+LocalTest::save(StateSaver*)
+{
+
+}
+
+
+void
+LocalTest::restore(StateSaver*)
+{
+
+}

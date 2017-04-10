@@ -1,7 +1,12 @@
+2017-04-10  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (enter): call loadLayout now in a
+	try/catch block.
+
 2017-04-09  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/WaitingCircle.hpp (visible): implement visibility
-	and show()/hide() functions. 
+	and show()/hide() functions.
 
 	* src/client/WaitingCircle.cpp (update): called from LocalTest.
 

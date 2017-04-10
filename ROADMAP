@@ -159,6 +159,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-10 lun. 19:11]--[2017-04-10 lun. 19:30] =>  0:19
      CLOCK: [2017-04-09 dim. 21:04]--[2017-04-09 dim. 22:02] =>  0:58
      CLOCK: [2017-04-09 dim. 20:47]--[2017-04-09 dim. 21:02] =>  0:15
      CLOCK: [2017-04-09 dim. 19:31]--[2017-04-09 dim. 20:33] =>  1:02
@@ -181,7 +182,9 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] Should have show()/hide() functions
   - [X] Handle the message drawing
     
-- [ ] Finish the LocalTest implementation (waiting for RLGL)
+- [-] Finish the LocalTest implementation (waiting for RLGL)
+  - [X] LocalTest window must reappear when we come for the second time
+  - [ ] Keybinding for fullscreen res. change don't work in LocalTest
   - [ ] Implement LocalTest overriden functions
     Save/Restore state functions
   - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
