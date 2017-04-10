@@ -1,5 +1,8 @@
 2017-04-10  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/LocalTest.cpp (keyPressed): return false to enable
+	GmeEngine key bindings.
+
 	* src/client/LocalTest.cpp (enter): call loadLayout now in a
 	try/catch block.
 

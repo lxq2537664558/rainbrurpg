@@ -151,7 +151,7 @@ bool
 LocalTest::keyPressed( const OIS::KeyEvent& )
 {
   check();
-  return true;
+  return false;
 }
 
 bool
