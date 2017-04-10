@@ -512,8 +512,8 @@ GameEngine::reconfigure()
 {
   mRestart = false;
 
-  // Save current state
   StateSaver sv;
+  // Save current state
   mCurrentState->save(&sv);
   mCurrentState->exit(this);
   
@@ -550,9 +550,15 @@ GameEngine::reconfigure()
 
   /* TODO: handle this case when another state will be the current one 
    * We have to completely re-instance it.
+   *
+   * UPDATE: for instance, using the new LocalTest state, we need to remove
+   * this new instanciation. If the enter/exit functions are clean (no
+   * remaining pointers etc...) this should work.
+   *
    */
-  mMainMenu = new MainMenu();
-  mCurrentState = mMainMenu;
+  //  mMainMenu = new MainMenu();
+  //  mCurrentState = mMainMenu;
+
   /* We need to recreate the full gamestate to fire the GeometeryBuffer
    * objects creation. 
    * Without that line, we have segfaults in overlayHandler() because

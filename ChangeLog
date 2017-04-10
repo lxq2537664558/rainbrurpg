@@ -1,5 +1,9 @@
 2017-04-10  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (reconfigure): remove MainMenu
+	instantiation after ogre reconfiguration to avoid issue while
+	reconfiguration in LocalTest.
+
 	* src/client/LocalTest.cpp (keyPressed): return false to enable
 	GmeEngine key bindings.
 
