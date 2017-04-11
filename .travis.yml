@@ -26,7 +26,12 @@ addons:
     notification_email: rainbru@free.fr
     build_command_prepend: "./CI/script.sh"
     build_command:   "make"
+    
+git:
+  ￼ submodules_depth: 10
+  
 before_install:
 - ./CI/before_install.sh
+
 script:
 - ./CI/script.sh

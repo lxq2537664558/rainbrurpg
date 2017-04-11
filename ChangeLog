@@ -1,5 +1,7 @@
 2017-04-11  Jérôme Pasquier  <rainbru@free.fr>
 
+	* .travis.yml (git): add submodules_depth to fix the travis-ci build.
+
 	* src/client/LocalTest.cpp (save): save and restore CEGUI window
 	and WaitingCircle.
 	* src/client/StateSaver.cpp: implement save and restore functions
