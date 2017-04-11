@@ -206,7 +206,11 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Try to fix current travis-ci build
+     CLOCK: [2017-04-11 mar. 20:20]--[2017-04-11 mar. 20:41] =>  0:21
 - [ ] Cloning submodule fails
+  It seems due to SSH. Change URL to https in .gitlmodules
+  from https://docs.travis-ci.com/user/common-build-problems/#Git-Submodules-are-not-updated-correctly
+  - [ ] Always failing. Trying to add a depth parameter
 **** TODO Some wiki work
      See 'My Current Tasks' in my page
 - [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG

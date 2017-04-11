@@ -28,9 +28,10 @@ addons:
     build_command:   "make"
     
 git:
-  ￼ submodules_depth: 10
+  ￼ submodules: false
   
 before_install:
+- git submodule update --init --recursive --depth=10
 - ./CI/before_install.sh
 
 script:

@@ -1,5 +1,10 @@
 2017-04-11  Jérôme Pasquier  <rainbru@free.fr>
 
+	* .travis.yml (before_install): try to init module with depth.
+
+	* ext/librlgl: update to head.
+	* .gitmodules: change git URL from git@ to https://.
+
 	* .travis.yml (git): add submodules_depth to fix the travis-ci build.
 
 	* src/client/LocalTest.cpp (save): save and restore CEGUI window
