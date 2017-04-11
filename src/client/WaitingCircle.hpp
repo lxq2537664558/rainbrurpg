@@ -49,7 +49,10 @@ public:
 
   void show();
   void hide();
- 
+
+  bool isVisible();
+  void setVisible(bool);
+  
 protected:
   void debug();
 

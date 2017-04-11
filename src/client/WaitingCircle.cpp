@@ -160,3 +160,15 @@ WaitingCircle::hide()
 {
   visible = false;
 }
+
+bool
+WaitingCircle::isVisible()
+{
+  return visible;
+}
+
+void
+WaitingCircle::setVisible(bool v)
+{
+  visible = v;
+}

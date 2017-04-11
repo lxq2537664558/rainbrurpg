@@ -1,3 +1,10 @@
+2017-04-11  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (save): save and restore CEGUI window
+	and WaitingCircle.
+	* src/client/StateSaver.cpp: implement save and restore functions
+	for WaitingCircle.
+
 2017-04-10  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/GameEngine.cpp (reconfigure): remove MainMenu

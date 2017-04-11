@@ -25,7 +25,7 @@
 #include <CEGUI/Window.h>  // Uses CEGUI::Window
 
 #include "CeguiDialog.hpp"
-
+#include "WaitingCircle.hpp"
 
 /** The default constructor */
 StateSaver::StateSaver()
@@ -147,4 +147,16 @@ StateSaver::restore(const string& key, CeguiDialog* d)
   URect area;
   restore(subkey(key, "area"), &area);
   d->getDialog()->setArea(area);
+}
+
+void 
+StateSaver::save(const string& key, WaitingCircle* w)
+{
+  set<bool>(subkey(key, "visible"), w->isVisible());
+}
+
+void 
+StateSaver::restore(const string& key, WaitingCircle* w)
+{
+  w->setVisible(get<bool>(subkey(key, "visible")));
 }

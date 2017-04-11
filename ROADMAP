@@ -159,6 +159,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-11 mar. 19:17]--[2017-04-11 mar. 19:48] =>  0:31
      CLOCK: [2017-04-10 lun. 20:10]--[2017-04-10 lun. 20:33] =>  0:23
      CLOCK: [2017-04-10 lun. 19:11]--[2017-04-10 lun. 19:30] =>  0:19
      CLOCK: [2017-04-09 dim. 21:04]--[2017-04-09 dim. 22:02] =>  0:58
@@ -190,8 +191,15 @@ Error is fixed, was due to a src/services/Services.hpp old code
     =Catched exception : Can't find key 'mainmenu:visible'=
     StateManager must remember the latest loaded GameState
     Currently in GameEngine::reconfigure, 
-  - [ ] Implement LocalTest overriden functions
+  - [-] Implement LocalTest overriden functions
     make Save/Restore state functions
+    - [X] Must implent StateSaver helper for WaitingCircle
+      visibility state only
+    - [ ] Save the actual name and seed content
+    - [ ] Must implent StateSaver helper for CEGUI::TabControl
+      Selected tab
+    - [ ] Must implent StateSaver helper for CEGUI::ListBox
+      List items. Maybe a standard helper for StringLists
   - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
     Use the listener and the WaintingCircle class
   - [ ] Call server::load(worldconfig) or server::generate(config)

@@ -29,6 +29,7 @@
 
 #include "GameEngine.hpp"
 #include "WaitingCircle.hpp"
+#include "StateSaver.hpp"
 
 #include "Server.hpp"
 #include "Logger.hpp"
@@ -239,14 +240,18 @@ LocalTest::update(float elapsed)
 }
 
 void
-LocalTest::save(StateSaver*)
+LocalTest::save(StateSaver* st)
 {
-
+  st->save("mainmenu", mMenuWindow);
+  st->save("waiting-circle", mWaiting);
+  
 }
 
 
 void
-LocalTest::restore(StateSaver*)
+LocalTest::restore(StateSaver* st)
 {
+  st->restore("mainmenu", mMenuWindow);
+  st->restore("waiting-circle", mWaiting);
 
 }
