@@ -28,7 +28,7 @@ addons:
     build_command:   "make"
     
 git:
-  ￼ submodules: false
+  - submodules: false
   
 before_install:
 - git submodule update --init --recursive --depth=10

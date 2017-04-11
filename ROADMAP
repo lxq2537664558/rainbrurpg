@@ -158,6 +158,13 @@ Error is fixed, was due to a src/services/Services.hpp old code
 - [ ] What is different between the logo geometry/others
   - tmpMsg is drawn from GameEngine::drawOverlays()
   - logo, version and stats are drawn in MainMenu::drawOverlay()
+**** TODO Try to fix current travis-ci build
+     CLOCK: [2017-04-11 mar. 20:20]--[2017-04-11 mar. 20:41] =>  0:21
+- [ ] Cloning submodule fails
+  It seems due to SSH. Change URL to https in .gitlmodules
+  from https://docs.travis-ci.com/user/common-build-problems/#Git-Submodules-are-not-updated-correctly
+  - [ ] Always failing. Trying to add a depth parameter
+  - [ ] Maybe we need to add rlgl to travis ?
 **** TODO Create AnimatedImage class and continue LocalTest
      CLOCK: [2017-04-11 mar. 19:17]--[2017-04-11 mar. 19:48] =>  0:31
      CLOCK: [2017-04-10 lun. 20:10]--[2017-04-10 lun. 20:33] =>  0:23
@@ -205,12 +212,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] Call server::load(worldconfig) or server::generate(config)
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
-**** TODO Try to fix current travis-ci build
-     CLOCK: [2017-04-11 mar. 20:20]--[2017-04-11 mar. 20:41] =>  0:21
-- [ ] Cloning submodule fails
-  It seems due to SSH. Change URL to https in .gitlmodules
-  from https://docs.travis-ci.com/user/common-build-problems/#Git-Submodules-are-not-updated-correctly
-  - [ ] Always failing. Trying to add a depth parameter
 **** TODO Some wiki work
      See 'My Current Tasks' in my page
 - [ ] http://www.rainbrurpg.org/Main/WebHome#How_to_get_RainbruRPG
