@@ -1,3 +1,11 @@
+2017-04-12  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (enter): subscribe to RLGL::System and
+	override all LocalWorldsListener pure virtual functions.
+	* src/client/LocalTest.hpp (LocalTest): now inherits
+	LocalWorldsListener.
+	* ext/librlgl: update to last head.
+
 2017-04-11  Jérôme Pasquier  <rainbru@free.fr>
 
 	* .travis.yml (before_install): try to init module with depth.

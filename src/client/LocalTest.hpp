@@ -23,6 +23,8 @@
 
 #include "GameState.hpp"
 
+#include <LocalWorldsListener.hpp>
+
 // Forward declaration
 class GameEngine;
 class WaitingCircle;
@@ -34,11 +36,11 @@ namespace CEGUI
 // End of forward declaration
 
 
-class LocalTest: public GameState
+class LocalTest: public GameState, public RLGL::LocalWorldsListener
 {
 public:
   LocalTest();
-  ~LocalTest();
+  virtual ~LocalTest();
 
   void enter(GameEngine*);
   void exit(GameEngine*);
@@ -51,6 +53,11 @@ public:
   void check();
 
   void addWorld(const string&);
+
+  // Overides from LocalWorldsListener
+  virtual void parsingStarted(int);
+  virtual void parsingFinished();
+  virtual void gotWorld(const std::string&); 
   
 protected:
   bool onBack(const CEGUI::EventArgs&);

@@ -37,7 +37,8 @@ OVERALL TODO
    Update VERSION and REVISION in CMakeLists.txt
    
 * v0.0.5-256 (29 Mar. 2017 - ???) SLOC ?,??? FT ??:?? UT ?
-- (6) Start to implement WaitingCircle
+- (7) LocalTest inherits LocalWorldsListener
+- Start to implement WaitingCircle
 - Closed a LocalTest-related ROADMAP section
 - Start to implement AnimatedImage class
 - LocalTest uses RLGL::Seed

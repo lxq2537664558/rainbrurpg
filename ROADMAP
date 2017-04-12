@@ -166,6 +166,7 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [ ] Always failing. Trying to add a depth parameter
   - [ ] Maybe we need to add rlgl to travis ?
 **** TODO Create AnimatedImage class and continue LocalTest
+     CLOCK: [2017-04-12 mer. 20:21]--[2017-04-12 mer. 21:13] =>  0:52
      CLOCK: [2017-04-11 mar. 19:17]--[2017-04-11 mar. 19:48] =>  0:31
      CLOCK: [2017-04-10 lun. 20:10]--[2017-04-10 lun. 20:33] =>  0:23
      CLOCK: [2017-04-10 lun. 19:11]--[2017-04-10 lun. 19:30] =>  0:19
@@ -203,13 +204,17 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [X] Must implent StateSaver helper for WaitingCircle
       visibility state only
     - [ ] Save the actual name and seed content
-    - [ ] Must implent StateSaver helper for CEGUI::TabControl
+      We must have 
+   - [ ] Must implent StateSaver helper for CEGUI::TabControl
       Selected tab
     - [ ] Must implent StateSaver helper for CEGUI::ListBox
       List items. Maybe a standard helper for StringLists
   - [ ] Use RlglSystem::getLocalWorlds() and add them to existing worlds listbox
     Use the listener and the WaintingCircle class
+    - [ ] Try to use it. LocalTest should override LocalWorldsListener.hpp
+    - [ ] We have undefined references to RLGL::LocalWorldsListener's ctor
   - [ ] Call server::load(worldconfig) or server::generate(config)
+- [ ] Must be able to use keyboard arrows (up, down) on local worlds listbox
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape
 **** TODO Some wiki work

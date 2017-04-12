@@ -35,8 +35,11 @@
 #include "Logger.hpp"
 #include "Seed.hpp"
 
+#include <RlglSystem.hpp>
+
 using namespace std;
 using namespace CEGUI;
+using namespace RLGL;
 
 static Rpg::Logger static_logger("state", Rpg::LT_BOTH);
 
@@ -95,11 +98,6 @@ LocalTest::enter(GameEngine* ge)
   lbWorlds->setMultiselectEnabled(false);
   lbWorlds->setSortingEnabled(true);
 
-  // Add some summy worlds to test for selection
-  addWorld("World 1");
-  addWorld("World A");
-  addWorld("World lplp");
-  
   // Handle events
   addEvent("LocalTestWin/TabControl/TabPane1/btnRandom",
 	   CEGUI::PushButton::EventClicked,
@@ -117,6 +115,12 @@ LocalTest::enter(GameEngine* ge)
   LOGI("LocalTest signals successfully registered");
 
   mWaiting = new WaitingCircle("Parsing local worlds...", 0.6f);
+  mWaiting->hide();
+  
+  // Handle LocalWorlds pubsub
+  RLGL::System* rs = new RLGL::System();
+  rs->subscribe(this);     // Mark this instance as a listener
+  rs->parseLocalWorlds(".rainbrurpg");
 }
 
 
@@ -254,4 +258,24 @@ LocalTest::restore(StateSaver* st)
   st->restore("mainmenu", mMenuWindow);
   st->restore("waiting-circle", mWaiting);
 
+}
+
+void
+LocalTest::parsingStarted(int nbWorlds)
+{
+  LOGI("Local worlds parsing starts for" << nbWorlds << "worlds");
+  if (nbWorlds > 20)
+    mWaiting->show();
+}
+
+void
+LocalTest::parsingFinished()
+{
+    mWaiting->hide();
+}
+
+void
+LocalTest::gotWorld(const std::string& worldName)
+{
+  addWorld(worldName);
 }
