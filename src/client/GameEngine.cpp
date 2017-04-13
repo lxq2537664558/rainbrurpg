@@ -567,6 +567,17 @@ GameEngine::reconfigure()
    */
   mCurrentState->enter(this);
 
+  // Restore saved state and print notification
+  mCurrentState->restore(&sv);
+  mTempMsg->print(mRestartMessage, 4);
+
+  // Needed to show overlay/temporary message
+  CEGUI::System::getSingleton().getDefaultGUIContext()
+    .clearGeometry(CEGUI::RQ_OVERLAY);
+  mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
+			 CEGUI::Event::Subscriber(&GameEngine::overlayHandler,
+						  this));
+
   // Asks the user if we must save new configuration
   ConfirmationDialog md("Configuration changed",
 			"Do you want to save the new configuration ?",
@@ -581,17 +592,6 @@ GameEngine::reconfigure()
   else
     LOGI("Modal dialog's released (with false value)");
   
-  mTempMsg->print(mRestartMessage, 4);
-  
-  CEGUI::System::getSingleton().getDefaultGUIContext().clearGeometry(CEGUI::RQ_OVERLAY);
-  
-  mContext->subscribeEvent(CEGUI::RenderingSurface::EventRenderQueueStarted,
-			   CEGUI::Event::Subscriber(&GameEngine::overlayHandler,  this));
-
-  
-  // Restore saved state
-  mCurrentState->restore(&sv);
-
   /* We can't use run() here because of a segfault in GameState::loadLayout()
    *
    */

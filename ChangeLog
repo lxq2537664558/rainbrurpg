@@ -1,5 +1,10 @@
 2017-04-13  Jérôme Pasquier  <rainbru@free.fr>
 
+	* src/client/GameEngine.cpp (restore): restore gamestate before showing
+	confirmation dialog.
+
+	* src/client/LocalTest.cpp (save): save and restore seed value.
+
 	* src/client/LocalTest.cpp (check): uses getSeed().
 	* src/client/LocalTest.cpp (randomize): uses setSeed().
 	* src/client/LocalTest.cpp (setSeed): implement setter.

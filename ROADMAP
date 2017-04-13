@@ -193,6 +193,10 @@ Error is fixed, was due to a src/services/Services.hpp old code
   - [X] Should have show()/hide() functions
   - [X] Handle the message drawing
     
+- [X] See why, when we reconfigure ogre, after a res. change or ullscreen,
+  we restore gamestate only after we close the confirmation dialog
+  - Maybe we restore the gamestate after we save the new config. We must
+    restore the gamestate /before/ we show the confirmation dialog
 - [-] Finish the LocalTest implementation (waiting for RLGL)
   - [X] LocalTest window must reappear when we come for the second time
   - [X] Keybinding for fullscreen res. change don't work in LocalTest
@@ -219,10 +223,6 @@ Error is fixed, was due to a src/services/Services.hpp old code
     - [ ] Try to use it. LocalTest should override LocalWorldsListener.hpp
     - [ ] We have undefined references to RLGL::LocalWorldsListener's ctor
   - [ ] Call server::load(worldconfig) or server::generate(config)
-- [ ] See why, when we reconfigure ogre, after a res. change or ullscreen,
-  we restore gamestate only after we close the confirmation dialog
-  - Maybe we restore the gamestate after we save the new config. We must
-    restore the gamestate /before/ we show the confirmation dialog
 - [ ] Must be able to use keyboard arrows (up, down) on local worlds listbox
 - [ ] Launch an embedded server
 - [ ] See if we can generate a first landscape

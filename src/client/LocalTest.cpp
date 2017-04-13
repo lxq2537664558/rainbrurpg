@@ -247,7 +247,11 @@ LocalTest::update(float elapsed)
 void
 LocalTest::save(StateSaver* st)
 {
-  st->save("mainmenu", mMenuWindow);
+  // Scalars
+  st->set<string>("seed", getSeed());
+
+  // Complex types
+  st->save("localtest", mMenuWindow);
   st->save("waiting-circle", mWaiting);
   
 }
@@ -256,7 +260,11 @@ LocalTest::save(StateSaver* st)
 void
 LocalTest::restore(StateSaver* st)
 {
-  st->restore("mainmenu", mMenuWindow);
+  // Scalars
+  setSeed(st->get<string>("seed"));
+    
+  // Complex types
+  st->restore("localtest", mMenuWindow);
   st->restore("waiting-circle", mWaiting);
 
 }
