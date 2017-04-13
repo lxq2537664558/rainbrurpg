@@ -138,10 +138,9 @@ LocalTest::exit(GameEngine*)
 void
 LocalTest::randomSeed()
 {
-  Window* teSeed = mMenuWindow->getChild("TabControl/TabPane1/ebSeed");
   RLGL::Seed s;
   s.randomize();
-  teSeed->setText(s.to_s());
+  setSeed(s.to_s());
   check();
 }
 
@@ -186,11 +185,13 @@ LocalTest::check()
   if (sel ==0 ) /* New world tab */
     {
       // Must test if name and seed aren't empty
-      bool s1 = !mMenuWindow->getChild("TabControl/TabPane1/ebSeed")
+      /*      bool s1 = !mMenuWindow->getChild("TabControl/TabPane1/ebSeed")
 	->getText().empty();
+      */
+      LOGI("getSeed(): " << getSeed());
       bool s2 = !mMenuWindow->getChild("TabControl/TabPane1/ebName")
 	->getText().empty();
-      play = s1 && s2;
+      play = !getSeed().empty() && s2;
     }
   else /* Existing world tab */
     {
@@ -278,4 +279,19 @@ void
 LocalTest::gotWorld(const std::string& worldName)
 {
   addWorld(worldName);
+}
+
+string
+LocalTest::getSeed()
+{
+  Window* teSeed = mMenuWindow->getChild("TabControl/TabPane1/ebSeed");
+  std::string str = teSeed->getText().c_str();
+  return str;
+}
+
+void
+LocalTest::setSeed(const string& seed)
+{
+  Window* teSeed = mMenuWindow->getChild("TabControl/TabPane1/ebSeed");
+  teSeed->setText(seed);
 }

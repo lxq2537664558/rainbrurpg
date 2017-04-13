@@ -1,3 +1,10 @@
+2017-04-13  Jérôme Pasquier  <rainbru@free.fr>
+
+	* src/client/LocalTest.cpp (check): uses getSeed().
+	* src/client/LocalTest.cpp (randomize): uses setSeed().
+	* src/client/LocalTest.cpp (setSeed): implement setter.
+	* src/client/LocalTest.cpp (getSeed): implement getter.
+
 2017-04-12  Jérôme Pasquier  <rainbru@free.fr>
 
 	* src/client/LocalTest.cpp (enter): subscribe to RLGL::System and

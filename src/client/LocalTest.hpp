@@ -58,6 +58,10 @@ public:
   virtual void parsingStarted(int);
   virtual void parsingFinished();
   virtual void gotWorld(const std::string&); 
+
+  // Getters and setters
+  string getSeed();
+  void setSeed(const string&);
   
 protected:
   bool onBack(const CEGUI::EventArgs&);
